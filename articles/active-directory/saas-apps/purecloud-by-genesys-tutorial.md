@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 764ad8f1ca19238e1986d1d187d19c405963a832
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267395"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65868856"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purecloud-by-genesys"></a>Oktatóanyag: PureCloud Genesys által az Azure Active Directory-integráció
 
@@ -146,7 +146,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés által Genesys PureC
 
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------------- |
-    | E-mail | user.userprinicipalname |
+    | E-mail-cím | user.userprinicipalname |
     | Cégnév | `Your organization name` |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -203,7 +203,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés által Genesys PureC
 
     ![Egyszeri bejelentkezés konfigurálása](./media/purecloud-by-genesys-tutorial/configure06.png)
 
-    e. Kattintson a **Mentés** gombra.   
+    e. Kattintson a **Save** (Mentés) gombra   
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -282,7 +282,7 @@ Ahhoz, hogy az Azure AD-felhasználók által Genesys PureCloud jelentkezzen be,
     
     c. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

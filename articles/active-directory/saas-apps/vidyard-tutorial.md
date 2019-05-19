@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 94e5893caa4dc19702f45e9b42727aab4f884bcd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273855"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865616"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Vidyard
 
@@ -239,7 +239,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Vidyard jön létre. Vid
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Vidyard támogatási csapatának](mailto:support@vidyard.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

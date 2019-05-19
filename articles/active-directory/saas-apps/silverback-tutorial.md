@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: d02ec23e7e6ce936fdbcce63d1394e3a8681c65b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268636"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867337"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Silverback
 
@@ -228,7 +228,7 @@ Ahhoz, hogy az Azure AD-felhasználók Silverback jelentkezzen be, akkor ki kell
 > [!NOTE]
 > Ha nem szeretné manuálisan létrehozni a minden felhasználó engedélyezése a **dinamikus felhasználó létrehozása** alatt jelölőnégyzet **rendszergazdai** > **hitelesítési szolgáltató**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

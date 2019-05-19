@@ -16,11 +16,11 @@ ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a62aa573d49ccdd237e692b63a6fda0dd83d52a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888297"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65869994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Oktatóanyag: A Palo Alto hálózatok függő Portal Azure Active Directory-integráció
 
@@ -197,7 +197,7 @@ Ezután hozzon létre egy nevű felhasználó *Britta Simon* Palo Alto hálózat
 > [!NOTE]
 > Ha szeretné manuálisan hozzon létre egy felhasználót, lépjen kapcsolatba a [Palo Alto hálózatok függő portál ügyfél-támogatási csapatának](https://support.paloaltonetworks.com/support).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Tűzfal mögött lévő Windows virtuális gép telepítve van a Palo Alto hálózatok függő portál. Egyszeri bejelentkezés tesztelése a Palo Alto hálózatok függő portál, jelentkezzen be a Windows virtuális gép távoli asztali protokoll (RDP) használatával. Az RDP-munkamenetet nyisson meg egy böngészőt, és bármely webhelyen. Az egyszeri bejelentkezési URL-címet nyitja meg, és hitelesítést kér. Ha hitelesítési befejeződött, a websites érheti el.
 

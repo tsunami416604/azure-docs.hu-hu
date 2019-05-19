@@ -16,11 +16,11 @@ ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 876780189768411eba40a99192755bee6732728b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57874813"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65862980"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-drift"></a>Oktatóanyag: Az eltéréseket az Azure Active Directory-integráció
 
@@ -229,7 +229,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre az eltérés
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [eltéréseket támogatási csapatának](mailto:integrations@drift.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

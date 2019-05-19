@@ -16,11 +16,11 @@ ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5839329f78fc349210f9439c5b1580a21f5172a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834404"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867532"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Oktatóanyag: A Citrix ShareFile az Azure Active Directory-integráció
 
@@ -247,7 +247,7 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Citrix ShareFile, akkor
     >[!NOTE]
     >Az Azure ad-ben fióktulajdonos kap egy e-mailt, és a egy hivatkozásra kattintva a fiók megerősítéséhez, mielőtt aktívvá válik. A Citrix ShareFile felhasználói fiók létrehozása eszközöket és a Citrix ShareFile által biztosított API-k segítségével az Azure AD-felhasználói fiókok kiépítése.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3da6277d2e816960f3db8964fd8b849c7d2a497c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57876935"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65858734"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>Oktatóanyag: A Háttérkép Online az Azure Active Directory-integráció
 
@@ -193,7 +193,7 @@ Ebben a szakaszban engedélyezze Britta Simon Háttérkép online-hoz való hozz
 
 Ebben a szakaszban egy a Háttérkép Online Britta Simon nevű felhasználó hoz létre. Együttműködve [Háttérkép Online támogatási csoport](mailto:bgsdashboardteam@millwardbrown.com) a felhasználók hozzáadása a Háttérkép Online platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

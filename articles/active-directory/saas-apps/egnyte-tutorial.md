@@ -16,11 +16,11 @@ ms.date: 2/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ff1718211fa298e4daee694795a0b2438033fe2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838131"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65861920"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Egnyte
 
@@ -245,7 +245,7 @@ Ahhoz, hogy az Azure AD-felhasználók Egnyte jelentkezzen be, akkor ki kell ép
 >Bármely más Egnyte felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Egnyte által biztosított API-k.
 >
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: e0c2dc6c370e697f896e24e7d56c6eb8900601a9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271050"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Oktatóanyag: Az Azure Active Directory-integráció SkyDesk e-mail-címmel
 
@@ -231,7 +231,7 @@ Kattintson a **felhasználói hozzáférés** bal oldali panelen SkyDesk e-mailb
 > [!NOTE]
 > Ha a felhasználók tömeges létrehozásához szüksége, lépjen kapcsolatba kell a [SkyDesk E-mail ügyfél-támogatási csapatának](https://www.skydesk.jp/apps/support/).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

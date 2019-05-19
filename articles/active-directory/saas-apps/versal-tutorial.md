@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 83a5d4c1d9c0475609a506fbfe6ae23bd9e236fa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262652"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865505"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zményes
 
@@ -188,7 +188,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Zményes hoz létre. Kövesse a [tesztfelhasználó létrehozása egy SAML](https://support.versal.com/hc/articles/115011672887-Creating-a-SAML-test-user) támogatási útmutató Britta Simon a szervezetben lévő felhasználó létrehozásához. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt Zményes aktiválva. 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a webhelyre beágyazva Zményes tanfolyam segítségével tesztelnie.
 Tekintse át a [szervezeti tanfolyamok beágyazás](https://support.versal.com/hc/en-us/articles/203271866-Embedding-organizational-courses) **SAML egyszeri bejelentkezés** támogatása az útmutató utasításokat Zményes tanfolyam beágyazásával támogatásával az Azure ad egyszeri bejelentkezés. 

@@ -16,11 +16,11 @@ ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86112c6d1c720787af80a9846b5c94ec59895ecb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884769"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65862112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>Oktatóanyag: Az Azure Active Directory integrációja az Dome9 ívvé
 
@@ -273,7 +273,7 @@ Ahhoz, hogy az Azure AD-felhasználók Dome9 ív jelentkezzen be, akkor ki kell 
 
     e. Kattintson a **létrehozás**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

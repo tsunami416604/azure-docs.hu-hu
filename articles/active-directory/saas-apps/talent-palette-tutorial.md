@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6752a2474f3629ad79f6a652bba475691b6a53e5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897509"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65866311"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>Oktatóanyag: Az Azure Active Directory integrációja az szakembereket paletta
 
@@ -190,7 +190,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy szakembereket paletta Britta Simon nevű felhasználó hoz létre. Együttműködve [szakembereket paletta támogatási csapatának](mailto:talent-support@pa-consul.co.jp) a felhasználók hozzáadása az szakembereket paletta platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

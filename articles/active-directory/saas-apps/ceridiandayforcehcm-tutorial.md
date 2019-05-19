@@ -16,11 +16,11 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 79741d9ec71dd7735ef94ef8172921965a9e9df1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57905256"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65863784"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Ceridian Dayforce HCM
 
@@ -107,21 +107,21 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Ceridian Dayforce HC
 
     a. Az a **bejelentkezési URL-** beviteli mező, írja be az URL-cím való bejelentkezés Ceridian Dayforce HCM alkalmazását a felhasználók által használt-e.
 
-    | Környezet | URL-cím |
+    | Környezet | URL |
     | :-- | :-- |
     | Éles környezethez | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
     | Teszt | `https://ssotest.dayforcehcm.com/<DayforcehcmNamespace>` |
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
 
-    | Környezet | URL-cím |
+    | Környezet | URL |
     | :-- | :-- |
     | Éles környezethez | `https://ncpingfederate.dayforcehcm.com/sp` |
     | Teszt | `https://fs-test.dayforcehcm.com/sp` |
 
     c. Az a **válasz URL-cím** beviteli mező, írja be az URL-cím által használt Azure ad-ben a válasz közzététele.
 
-    | Környezet | URL-cím |
+    | Környezet | URL |
     | :-- | :-- |
     | Éles környezethez | `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2` |
     | Teszt | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
@@ -230,7 +230,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Ceridian Dayforce HCM hoz létre. Együttműködve [Ceridian Dayforce HCM támogatási csapatának](https://www.ceridian.com/support) a felhasználók hozzáadása az Ceridian Dayforce HCM platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 371ea6609181b84ff8554b9e2f1a5047d2d48c48
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258453"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>Oktatóanyag: Az Azure Active Directory integrációja az SciQuest költségek igazgató
 
@@ -195,7 +195,7 @@ Just-in-time-kiépítés engedélyezve van, ha felhasználók automatikusan hozz
 
 Get-igény kiépítés engedélyezve van, lépjen kapcsolatba kell a [SciQuest költségek igazgató támogatási csapatának](https://www.jaggaer.com/contact-us/).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

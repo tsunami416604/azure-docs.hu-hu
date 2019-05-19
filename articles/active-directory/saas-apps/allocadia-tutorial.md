@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab731bf7526521f6c091d2cd7d7d296636f76f67
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855988"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65859175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Allocadia
 
@@ -131,7 +131,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Allocadia, hajtsa v�
     | ------------------- | -------------------- |
     | Keresztnév | user.givenname |
     | Vezetéknév | user.surname |
-    | e-mail | user.mail |
+    | email | user.mail |
     | | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -225,7 +225,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó Allocadia jön létre. Allocadia támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az Allocadia, egy új jön létre a hitelesítés után.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

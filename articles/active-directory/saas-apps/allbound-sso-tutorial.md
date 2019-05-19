@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8f06fa6d387cfb8ec01437e6a6aa9925907a45b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904524"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65864238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció Allbound SSO-val
 
@@ -195,7 +195,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Allbound SSO jön létre
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Allbound SSO támogatási csapatának](mailto:engineering@allbound.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

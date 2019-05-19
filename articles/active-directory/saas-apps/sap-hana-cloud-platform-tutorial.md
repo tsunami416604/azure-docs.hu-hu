@@ -16,11 +16,11 @@ ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b345656b30a9bb182c097a4c9e18d71a293bf420
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852548"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65868091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP Cloud platformon
 
@@ -215,7 +215,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az SAP Cloud platformon, hajts
     | --- | --- |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |Keresztnév |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |Vezetéknév |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |e-mail |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |email |
    
      >[!NOTE]
      >A konfiguráció az attribútumok attól függ, hogyan a szolgáltatáskapcsolódási pont (ok) lettek kifejlesztve, azt jelenti, mely attribútumokkal, a SAML-válasz többek között elvárják, és mely néven (rendszerbiztonsági tag attribútum) férnek hozzá ezt az attribútumot a kódot.
@@ -308,7 +308,7 @@ Ahhoz, hogy az SAP-Felhőplatformmal jelentkezzen be az Azure AD-felhasználók,
 
     e. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 6f742def0441b5ae18ad9da3a8ac9d280de8f824
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565478"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867427"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SignalFx
 
@@ -246,7 +246,7 @@ Amikor egy felhasználó bejelentkezik SignalFx a SAML SSO az első alkalommal [
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [SignalFx támogatási csoport](mailto:kmazzola@signalfx.com)
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

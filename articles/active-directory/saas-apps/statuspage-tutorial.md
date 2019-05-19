@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 49f77da5843bc2438ea7f82475b4faf753b66f09
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565195"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65866678"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező StatusPage
 
@@ -245,7 +245,7 @@ StatusPage támogatja a just-in-time-kiépítés. Már engedélyezte a [konfigur
 
 1. Kattintson a **fiók létrehozása**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

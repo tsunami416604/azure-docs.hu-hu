@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 4b7a9409052d8255bbad00b38217bcff030e8620
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277017"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65869503"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Érzete Egyesült Államok (nem-UltiPro)
 
@@ -221,7 +221,7 @@ Ebben a szakaszban engedélyezze Britta Simon ehhez biztosítson hozzáférést 
 
 Ebben a szakaszban egy Britta Simon a megfigyelés é Egyesült Államok (nem-UltiPro) nevű felhasználó létrehozásához. Együttműködve [Érzete Egyesült Államok (nem-UltiPro) támogatási csapatának](https://www.ultimatesoftware.com/Contact/ContactUs) a felhasználók hozzáadása a megfigyelés é Egyesült Államok (nem-UltiPro) platform.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

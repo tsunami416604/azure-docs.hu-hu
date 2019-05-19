@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 7bbba92b7a26f74c636cc97134a1a2f2303347bb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59275630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65870881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Nimblex
 
@@ -216,7 +216,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Nimblex jön létre. Nim
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Nimblex ügyfél-támogatási csapatának](mailto:support@ebms.com.au).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

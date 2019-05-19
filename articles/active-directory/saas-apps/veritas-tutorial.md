@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 59012bf32a4e1f0532b4d42e510d431180c35730
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264182"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció, a Veritas vállalati Vault.cloud SSO-val
 
@@ -109,7 +109,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Veritas vállalati Vault.clo
 
     b. Az a **azonosító** használja az URL-cím, az Adatközpont megfelelően:
 
-    | Adatközpont| URL-cím |
+    | Adatközpont| URL |
     |----------|----|
     | Észak-Amerika| `https://auth.lax.archivecloud.net` |
     | Európa | `https://auth.ams.archivecloud.net` |
@@ -117,7 +117,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Veritas vállalati Vault.clo
 
     c. Az a **válasz URL-cím** szöveg az URL-cím, az Adatközpont megfelelően használja:
 
-    | Adatközpont| URL-cím |
+    | Adatközpont| URL |
     |----------|----|
     | Észak-Amerika| `https://auth.lax.archivecloud.net` |
     | Európa | `https://auth.ams.archivecloud.net` |
@@ -198,7 +198,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű Veritas vállalati Vault.cloud egyszeri Bejelentkezést a felhasználó hoz létre. Együttműködve [ügyfélszolgálathoz Veritas vállalati Vault.cloud SSO](https://www.veritas.com/support/.html) a felhasználók hozzáadása az Veritas vállalati Vault.cloud SSO-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

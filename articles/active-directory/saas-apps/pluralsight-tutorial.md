@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 4904e98556f5d4a033b178bfdc4305714a80e07e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257875"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65869339"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>Oktatóanyag: Az Azure Active Directory-integráció a Pluralsighttal együttműködésben
 
@@ -127,7 +127,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a Pluralsighttal együttműk
     | --------------- | --------- |
     | Utónév  | user.givenname  |
     | Vezetéknév  | user.surname  |
-    | E-mail  | user.mail  |
+    | E-mail-cím  | user.mail  |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -210,7 +210,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó a Pluralsight jön létre. A Pluralsight támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik a Pluralsight, a hitelesítés után egy új jön létre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

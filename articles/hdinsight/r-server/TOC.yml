@@ -127,7 +127,7 @@
               href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
             - name: Azure PowerShell használatával
               href: ../hdinsight-administer-use-powershell.md
-            - name: Az Azure klasszikus parancssori felületének használata
+            - name: Az Azure parancssori felületének használata
               href: ../hdinsight-administer-use-command-line.md
         - name: Fürtök kezelése az Apache Ambari webes felülettel
           href: ../hdinsight-hadoop-manage-ambari.md

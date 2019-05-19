@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 6d434295a6a46ee5b7089608cbf788ff91589fb7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281675"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65863768"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-netscaler"></a>Oktatóanyag: A Citrix Netscaler integrálása az Azure Active Directory
 
@@ -375,7 +375,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó a Citrix Netscaler jön 
 >[!NOTE]
 >Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Citrix Netscaler ügyfél-támogatási csapatának](https://www.citrix.com/contact/technical-support.html).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

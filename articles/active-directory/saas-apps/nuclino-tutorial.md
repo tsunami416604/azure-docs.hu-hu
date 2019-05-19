@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 4788b65201792292d79cd8c4d1b22f22c5e67eb6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278802"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65870752"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nuclino"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Nuclino
 
@@ -257,7 +257,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Nuclino jön létre. Nuc
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Nuclino támogatási csapatának](mailto:contact@nuclino.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

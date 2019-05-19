@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 91675cd8348ed9d564b3e6b01ebcb039eabf0929
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269860"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65870101"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező gyorsmeneti
 
@@ -189,7 +189,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó gyorsmeneti jön létre.
 >Bármely más gyorsmeneti felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését gyorsmeneti által biztosított API-k.
 >
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

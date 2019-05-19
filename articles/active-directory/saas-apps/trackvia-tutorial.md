@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: a04622d0c35a93d954dcca38859ea3a48a8d5416
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261938"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865988"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TrackVia
 
@@ -144,7 +144,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TrackVia, hajtsa vé
 
     b. Válassza ki a **fájl kiválasztása** az Azure-portálról letöltött metaadatfájl feltöltése.
 
-    c. Kattintson a **Mentés** gombra.
+    c. Kattintson a **Save** (Mentés) gombra
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -202,7 +202,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó TrackVia jön létre. Tr
 
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [TrackVia támogatási csapatának](mailto:support@trackvia.com).
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22d24b62532190ebd4d119b4ced03ddbd9dde8f8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852768"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65863227"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező CloudPassage
 
@@ -124,7 +124,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés CloudPassage, hajtsa
     | ---------------| --------------- |
     | Keresztnév |user.givenname |
     | Vezetéknév |user.surname |
-    | e-mail |user.mail |
+    | email |user.mail |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -265,9 +265,9 @@ Ez a szakasz célja CloudPassage Britta Simon nevű felhasználó létrehozásá
   
     d. Mint **hozzáférés típusa**válassza **Halo portál hozzáférés engedélyezése**.
   
-    e. Kattintson a **Hozzáadás** parancsra.
+    e. Kattintson a **Hozzáadás**lehetőségre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

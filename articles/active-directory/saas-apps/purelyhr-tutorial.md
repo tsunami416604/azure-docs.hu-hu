@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: b6e004ea613d1a3dfd47a2798e0298f41eab2d3d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263723"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65868619"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező PurelyHR
 
@@ -206,7 +206,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ahhoz, hogy az Azure AD-felhasználók PurelyHR bejelentkezni, akkor ki kell építeni PurelyHR be. PurelyHR, a kiépítés egy automatikus feladat, és nem manuális lépések szükségesek, ha a felhasználók automatikus kiépítés engedélyezve van.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

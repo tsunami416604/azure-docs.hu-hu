@@ -16,11 +16,11 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8092724a8ebf04342e00d054cc78fe26b48d2f82
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842702"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65864017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Boomi
 
@@ -258,7 +258,7 @@ Ahhoz, hogy az Azure AD-felhasználók Boomi jelentkezzen be, akkor ki kell ép�
     > [!NOTE]
     > A felhasználó nem kap meg az üdvözlő e-mailben értesítést tartalmazó egy jelszót, amely használható a AtomSphere fiók bejelentkezni, mert az identitásszolgáltató kezelhető a jelszavát. Előfordulhat, hogy bármely más Boomi felhasználói fiók létrehozása az eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Boomi által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

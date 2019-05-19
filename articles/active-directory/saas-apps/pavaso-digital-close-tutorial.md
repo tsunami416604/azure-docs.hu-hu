@@ -16,11 +16,11 @@ ms.date: 01/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b9e6a271f4e2c2190abf0074eb11c2a5e0e60755
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861519"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65869718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pavaso-digital-close"></a>Oktatóanyag: Pavaso digitális zárja be az Azure Active Directory-integráció
 
@@ -191,7 +191,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű Pavaso digitális zárja be a felhasználó hoz létre. Együttműködve [Pavaso digitális Bezárás támogatási csapatának](mailto:support@pavaso.com) a felhasználók hozzáadása az Pavaso digitális Bezárás platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

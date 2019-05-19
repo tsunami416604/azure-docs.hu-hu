@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 01d39cfd5b87f9547659c79f3b748c7b23a87c77
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278496"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65862688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>Oktatóanyag: Az Azure Active Directory-integráció magyarázata-alapú naplózás rendszerrel
 
@@ -171,7 +171,7 @@ Ebben a szakaszban engedélyezze Britta Simon magyarázata naplózási rendszerb
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó magyarázata-alapú naplózás rendszer jön létre. MAGYARÁZAT-alapú naplózás rendszer támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik a magyarázat naplózási rendszerbe, a hitelesítés után egy új jön létre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

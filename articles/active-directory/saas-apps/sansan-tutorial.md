@@ -5,7 +5,7 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: barbkess
+ms.reviewer: celested
 ms.assetid: f653a0f2-c44a-4670-b936-68c136b578ea
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,235 +13,127 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 05/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 59cfdfaae597feb8f1cab212b407a8879d78f9f9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d24c635607e41b83b33f7168be9d31e69245b06a
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104544"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65868163"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sansan"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Sansan
+# <a name="tutorial-integrate-sansan-with-azure-active-directory"></a>Oktatóanyag: Sansan integrálása az Azure Active Directoryval
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Sansan integrálása az Azure Active Directory (Azure AD).
-Sansan integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja a Sansan integrálása az Azure Active Directory (Azure AD) lesz. Sansan integrálása az Azure ad-vel, akkor a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá Sansan Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Sansan (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Szabályozza, ki férhet hozzá Sansan Azure AD-ben.
+* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve Sansan az Azure AD-fiókjukat.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Sansan az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Első lépésként szüksége van a következő elemek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Sansan egyszeri bejelentkezés engedélyezve van az előfizetés
+* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, hozzájuthat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* Sansan egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
-
-* Támogatja a Sansan **SP** által kezdeményezett egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Támogatja a Sansan **SP** által kezdeményezett egyszeri bejelentkezés.
 
 ## <a name="adding-sansan-from-the-gallery"></a>Sansan hozzáadása a katalógusból
 
 Az Azure AD integrálása a Sansan konfigurálásához hozzá kell Sansan a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Sansan hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
-
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
-
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
-
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
-
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
-
-    ![Az új alkalmazás gomb](common/add-new-app.png)
-
-4. A Keresés mezőbe írja be a **Sansan**válassza **Sansan** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
-
-     ![Az eredmények listájában Sansan](common/search-new-app.png)
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
+1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
+1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
+1. Az a **Hozzáadás a katalógusból** területén írja be a **Sansan** kifejezést a keresőmezőbe.
+1. Válassza ki **Sansan** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Sansan nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Sansan hivatkozás kapcsolata kell létrehozni.
+Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata Sansan **Britta Simon**. Az SSO működjön kell Sansan az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
 
-Az Azure AD egyszeri bejelentkezés az Sansan tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD SSO Sansan tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Sansan egyszeri bejelentkezés konfigurálása](#configure-sansan-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Sansan tesztfelhasználót](#create-sansan-test-user)**  – egy megfelelője a Britta Simon Sansan, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Konfigurálja a Sansan](#configure-sansan)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Sansan tesztfelhasználót](#create-sansan-test-user)**  van egy megfelelője a Britta Simon Sansan, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Sansan, hajtsa végre az alábbi lépéseket:
+1. Az a [az Azure portal](https://portal.azure.com/), a a **Sansan** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
+1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Sansan** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+1. Az a **alapszintű SAML-konfigurációja** lap, adja meg az értékeket a következő mezőket:
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
-
-    ![Sansan tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-signonurl.png)
-
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:
-    | Környezet | URL-cím |
+    1. Az a **bejelentkezési URL-** szöveg írja be az URL-cím a következő minta használatával bármelyike:
+    
+    | Környezet | URL |
     |:--- |:--- |
     | PC-s webhely |`https://ap.sansan.com/v/saml2/<company name>/acs` |
     | Natív mobilalkalmazás |`https://internal.api.sansan.com/saml2/<company name>/acs` |
-    | Mobil böngésző beállításai |`https://ap.sansan.com/s/saml2/<company name>/acs` |  
+    | Mobil böngésző beállításai |`https://ap.sansan.com/s/saml2/<company name>/acs` |
+
+    2. Az a **azonosító (entityid)** beállítás több azonosító értéket, majd válassza ki a környezetet megfelelően ezek közül bármelyik is szövegbeviteli mezőben.
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Sansan ügyfél-támogatási csapatának](https://www.sansan.com/form/contact) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Base64)** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+   ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-6. Sansan alkalmazás vár több **azonosítók** és **válasz URL-címek** támogatásához több környezethez (PC-s webes, natív mobilalkalmazás, mobil böngésző beállításait), amely konfigurálható a PowerShell használatával parancsfájl. A részletes lépéseket alá vannak írva.
+1. Az a **Sansan beállítása** területén másolja a megfelelő URL-címe szerint.
 
-7. Több konfigurálása **azonosítók** és **válasz URL-címek** Sansan alkalmazáshoz a PowerShell-parancsfájl használatával, hajtsa végre a következő lépéseket:
+   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    ![Obj egyszeri bejelentkezés konfigurálása](./media/sansan-tutorial/tutorial_sansan_objid.png)  
-
-    a. Nyissa meg a **tulajdonságok** lapján **Sansan** alkalmazást, és másolja a **Objektumazonosító** használatával **másolási** gombra, és illessze be a Jegyzettömbbe.
-
-    b. A **Objektumazonosító**, az Azure Portalról másolt használt **ServicePrincipalObjectId** a PowerShell parancsfájlokban az oktatóanyag későbbi részében használni.
-
-    c. Most nyisson meg egy rendszergazda jogú Windows PowerShell-parancssort.
-
-    >[!NOTE]
-    > Az Azure ad-modul telepítéséhez szüksége (a parancs használata `Install-Module -Name AzureAD`). Ha kéri, telepítse a NuGet-modult vagy az új Azure Active Directory V2 PowerShell modul, írja be az Y, és nyomja le az ENTER billentyűt.
-
-    d. Futtatás `Connect-AzureAD` , és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
-
-    e. Egy alkalmazás több URL-cím frissítéséhez használja a következő szkriptet:
-
-    ```powershell
-     Param(
-    [Parameter(Mandatory=$true)][guid]$ServicePrincipalObjectId,
-    [Parameter(Mandatory=$false)][string[]]$ReplyUrls,
-    [Parameter(Mandatory=$false)][string[]]$IdentifierUrls
-    )
-
-    $servicePrincipal = Get-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId
-
-    if($ReplyUrls.Length)
-    {
-    echo "Updating Reply urls"
-    Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls $ReplyUrls
-    echo "updated"
-    }
-    if($IdentifierUrls.Length)
-    {
-    echo "Updating Identifier urls"
-    $applications = Get-AzureADApplication -SearchString $servicePrincipal.AppDisplayName 
-    echo "Found Applications =" $applications.Length
-    $i = 0;
-    do
-    {  
-    $application = $applications[$i];
-    if($application.AppId -eq $servicePrincipal.AppId){
-    Set-AzureADApplication -ObjectId $application.ObjectId -IdentifierUris $IdentifierUrls
-    $servicePrincipal = Get-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId
-    echo "Updated"
-    return;
-    }
-    $i++;
-    }while($i -lt $applications.Length);
-    echo "Not able to find the matched application with this service principal"
-    }
-    ```
-
-8. A PowerShell-parancsfájlt a sikeres telepítést követően a parancsfájl eredményét ehhez hasonló lesz, ahogy az alábbi és az URL-címértékekre frissítésére, de azok nem get megjelennek az Azure Portalon.
-
-    ![Egyszeri bejelentkezési parancsfájl konfigurálása](./media/sansan-tutorial/tutorial_sansan_powershell.png)
-
-9. Az a **Sansan beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
-
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
-
-    a. Bejelentkezési URL
-
-    b. Azure AD-azonosító
-
-    c. Kijelentkezési URL
-
-### <a name="configure-sansan-single-sign-on"></a>Sansan egyszeri bejelentkezés konfigurálása
+### <a name="configure-sansan"></a>Sansan konfigurálása
 
 Az egyszeri bejelentkezés konfigurálása **Sansan** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és az Azure Portalról másolt URL-címek megfelelő [Sansan ügyfél-támogatási csapatának](https://www.sansan.com/form/contact). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
-
-2. Válassza ki **új felhasználó** a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
-
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
+1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
+   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `BrittaSimon@contoso.com`.
+   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Sansan Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban Britta Simon által biztosított hozzáférés Sansan Azure egyszeri bejelentkezés használatához engedélyeznie kell.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Sansan**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+1. Az alkalmazások listájában jelölje ki a **Sansan**.
+1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-2. Az alkalmazások listájában jelölje ki a **Sansan**.
+1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Az alkalmazások listáját a Sansan hivatkozásra](common/all-applications.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
-
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. Az a **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
+1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
 ### <a name="create-sansan-test-user"></a>Sansan tesztfelhasználó létrehozása
 
@@ -250,11 +142,9 @@ Ebben a szakaszban egy felhasználói Britta Simon nevű Sansan hoz létre. Sans
 > [!NOTE]
 > Ha szeretné manuálisan hozzon létre egy felhasználót vagy a batch-felhasználó, lépjen kapcsolatba kell a [Sansan támogatási csapatának](https://www.sansan.com/form/contact).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
-
-Ha a hozzáférési panelen a Sansan csempére kattint, meg kell lehet automatikusan bejelentkezett a Sansan, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+A Sansan csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a Sansan, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

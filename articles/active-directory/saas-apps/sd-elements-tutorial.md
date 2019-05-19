@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a18971125724e6e2fdc6b37de15894efb8b9071a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258946"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867568"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>Oktatóanyag: Az Azure Active Directory integrációja az SD-elemek
 
@@ -120,7 +120,7 @@ Az SD-elemek konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre 
 
     | Name (Név) |  Adatforrás-attribútum|
     | --- | --- |
-    | e-mail |user.mail |
+    | email |user.mail |
     | Keresztnév |user.givenname |
     | Vezetéknév |user.surname |
 
@@ -259,7 +259,7 @@ Ez a szakasz célja az SD-elemeket Britta Simon nevű felhasználó létrehozás
 
     e. Kattintson a **felhasználó létrehozása**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

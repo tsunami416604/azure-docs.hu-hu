@@ -16,11 +16,11 @@ ms.date: 01/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00e838dd3df417bd0b26167d5f316225520e7263
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889590"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65859007"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Autotask munkahelyi
 
@@ -215,7 +215,7 @@ Ebben a szakaszban engedélyezze Britta Simon Autotask munkahelyi hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű Autotask munkahelyi felhasználó hoz létre. Együttműködve [Autotask munkahelyi támogatási csapatának](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) a felhasználók hozzáadása az Autotask munkahelyi platformon.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

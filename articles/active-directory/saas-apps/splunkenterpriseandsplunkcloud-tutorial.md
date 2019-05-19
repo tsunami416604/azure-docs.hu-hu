@@ -16,11 +16,11 @@ ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28b98a5001d5b02c61fab1bc6ce06a8f08eaf0e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875600"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65866895"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Oktatóanyag: A Splunk Enterprise szolgáltatásaival és Splunk felhőalapú Azure Active Directory-integráció
 
@@ -177,7 +177,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 Ebben a szakaszban egy Britta Simon a Splunk Enterprise szolgáltatásaival és Splunk felhő nevű felhasználó hoz létre. Együttműködve [Splunk Enterprise szolgáltatásaival és Splunk felhő támogatási csoportjának](https://www.splunk.com/about-us/contact.html#tabs/customer-support) a felhasználók hozzáadása a Splunk Enterprise szolgáltatásaival és Splunk Cloud platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: cc2bbd0c1220a37de640bde6294eb096b25e5398
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258198"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65870503"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Oktatóanyag: Szervezeti diagram most az Azure Active Directory-integráció
 
@@ -223,9 +223,9 @@ Ahhoz, hogy jelentkezzen be szervezeti diagram most az Azure AD-felhasználók, 
 
     * A **E-mail cím** szöveget adja meg az e-mailt, például a felhasználó **brittasimon\@contoso.com**.
 
-    * Kattintson a **Hozzáadás** parancsra.
+    * Kattintson a **Hozzáadás**lehetőségre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

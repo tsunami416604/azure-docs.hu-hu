@@ -16,11 +16,11 @@ ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eba63f8295fb5bebffdc8480f763c852521e331b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880908"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65859205"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ADP
 
@@ -296,7 +296,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ez a szakasz célja ADP Britta Simon nevű felhasználó létrehozásához. Együttműködve [ADP támogatási csapatának](https://www.adp.com/contact-us/overview.aspx) a felhasználók hozzáadása a ADP fiókban. 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

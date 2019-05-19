@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f8e0b79d5aebd1e92dd71bba72efa7430aa475b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: acd100ccc3aafc2de1f2c7970ff9437c92156b17
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357466"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861536"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
 
-Ebben az oktatóanyagban engedélyezi, hogy a felhasználók új jelszót kérjenek a Windows 10 bejelentkezési képernyőjéről. A Windows 10 2018. áprilisi frissítésében az **Azure AD-hez csatlakoztatott** vagy **hibrid Azure AD-hez csatlakoztatott** eszközökkel rendelkező felhasználók a bejelentkezési képernyőn egy „Új jelszó kérése” hivatkozást használhatnak. Erre kattintva eljuthatnak a már ismert, új jelszó önkiszolgáló kérésére (SSPR) szolgáló felülethez.
+Ebben az oktatóanyagban engedélyezi, hogy a felhasználók új jelszót kérjenek a Windows 10 bejelentkezési képernyőjéről. A Windows 10 2018. áprilisi frissítésében az **Azure AD-hez csatlakoztatott** vagy **hibrid Azure AD-hez csatlakoztatott** eszközökkel rendelkező felhasználók a bejelentkezési képernyőn egy „Új jelszó kérése” hivatkozást használhatnak. Erre kattintva eljuthatnak a már ismert, új jelszó önkiszolgáló kérésére (SSPR) szolgáló felülethez. Ha egy felhasználó ki van zárva. Ez a folyamat nem fiókok zárolásának feloldása a helyszíni Active Directoryban.
 
 > [!div class="checklist"]
 > * Jelszó-visszaállítási hivatkozás konfigurálása az Intune használatával
@@ -60,7 +60,7 @@ A legrugalmasabb módszer az, ha az Intune használatával telepíti a konfigur�
       * Állítsa az **Érték** beállítást **1** értékre
       * Kattintson az **OK** gombra
    * Kattintson az **OK** gombra
-4. Kattintson a **Create** (Létrehozás) gombra
+4. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-a-device-configuration-policy-in-intune"></a>Eszközkonfigurációs szabályzat hozzárendelése az Intune-ban
 
@@ -71,7 +71,7 @@ A legrugalmasabb módszer az, ha az Intune használatával telepíti a konfigur�
 3. Adja meg a csoport nevét, majd a **Tagság típusa** beállításnál válassza a **Hozzárendelt** lehetőséget.
    * A **Tagok** területen válassza ki azokat az Azure AD-hoz csatlakoztatott Windows 10-eszközöket, amelyekre alkalmazni szeretné a szabályzatot.
    * Kattintson a **Kiválasztás** gombra.
-4. Kattintson a **Create** (Létrehozás) gombra
+4. Kattintson a **Létrehozás** gombra.
 
 A csoportok létrehozásával kapcsolatos további információkért lásd: [Erőforrások hozzáférésének kezelése Azure Active Directory-csoportokkal](../fundamentals/active-directory-manage-groups.md).
 

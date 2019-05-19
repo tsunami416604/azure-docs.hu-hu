@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d0bb43f1dad775594e3c3229bc5d69528f055144
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877547"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65864356"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ADP Globalview
 
@@ -125,8 +125,8 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ADP Globalview, hajt
     | Name (Név)  |  Adatforrás-attribútum|
     | ---------------| --------- |
     | personalimmutableid | user.extensionattribute2 |
-    | e-mail               | user.mail |
-    | felhasználói azonosító              | user.userprincipalname|
+    | email               | user.mail |
+    | userid              | user.userprincipalname|
     | | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -223,7 +223,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű ADP Globalview hoz létre. Együttműködve [ADP Globalview támogatási csapatának](https://www.adp.com/contact-us/overview.aspx) a felhasználók hozzáadása az ADP Globalview platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

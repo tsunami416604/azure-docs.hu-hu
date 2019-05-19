@@ -16,11 +16,11 @@ ms.date: 1/3/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2281fb046ca9b96aa5800150d630b9086236c5c5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57846922"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65866600"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SuccessFactors
 
@@ -284,7 +284,7 @@ Ahhoz, hogy az Azure AD-felhasználók SuccessFactors jelentkezzen be, akkor ki 
 
 SuccessFactors létrehozott felhasználók lekéréséhez lépjen kapcsolatba kell a [SuccessFactors támogatási csoportjának](https://www.successfactors.com/content/ssf-site/en/support.html).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

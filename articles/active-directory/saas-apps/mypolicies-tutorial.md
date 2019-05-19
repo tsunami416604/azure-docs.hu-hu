@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 240291c7ec1d989e52a2896dc696f69afbee0093
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279363"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65871336"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mypolicies"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező myPolicies
 
@@ -184,7 +184,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű myPolicies hoz létre. Együttműködve [myPolicies támogatási csoportjának](mailto:support@mypolicies.com) a felhasználók hozzáadása az myPolicies platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 71feb455457fdf75fb19121bac1927b42fe38b67
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265882"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865315"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Wdesk
 
@@ -254,7 +254,7 @@ Ahhoz, hogy az Azure AD-felhasználók Wdesk bejelentkezni, akkor ki kell épít
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser5.png)
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

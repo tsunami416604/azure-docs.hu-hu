@@ -16,11 +16,11 @@ ms.date: 1/3/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ec8ffebbbe339e00431f510978f1d3155f1bc4c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885215"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65868564"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>Oktatóanyag: Az Azure Active Directory-integráció az RedBrick Health
 
@@ -228,7 +228,7 @@ Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejel
 
 Ebben a szakaszban egy Britta Simon nevű RedBrick állapota a felhasználó hoz létre. Együttműködve [RedBrick Health támogatási csapatának](https://home.redbrickhealth.com/contact/) a felhasználók hozzáadása az RedBrick egészségügyi platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

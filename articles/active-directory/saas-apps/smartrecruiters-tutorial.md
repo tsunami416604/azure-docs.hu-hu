@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 79223a7f5c1f16eaf09de8efd05e0ec096ac73ab
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279448"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65866974"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SmartRecruiters
 
@@ -213,7 +213,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű SmartRecruiters hoz létre. Együttműködve [SmartRecruiters támogatási csoportjának](https://www.smartrecruiters.com/about-us/contact-us/) a felhasználók hozzáadása az SmartRecruiters platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

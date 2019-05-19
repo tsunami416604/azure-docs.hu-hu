@@ -16,11 +16,11 @@ ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e242e85525b446fcbe8a2ec05da539fb45acf487
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850309"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867977"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP Felhőplatform Identitáshitelesítésével
 
@@ -256,7 +256,7 @@ Az identitás-összevonási beállítás alapértelmezés szerint le van tiltva.
 
 Engedélyezheti vagy tilthatja le az identitás-összevonás az SAP Felhőplatform Identitáshitelesítésével kapcsolatos további információkért lásd a "Engedélyezése identitás összevonási az SAP Felhőplatform Identitáshitelesítésével" [identitás-összevonás konfigurálása az a Felhasználói Store az SAP-Felhőplatform Identitáshitelesítésével](https://help.hana.ondemand.com/cloud_identity/frameset.htm?c029bbbaefbf4350af15115396ba14e2.html).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

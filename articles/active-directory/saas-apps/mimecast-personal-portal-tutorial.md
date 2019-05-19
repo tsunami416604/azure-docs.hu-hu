@@ -16,11 +16,11 @@ ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed7d8d1a2c2f8c515fa520f6701068e4655cad35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898584"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65871932"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Oktatóanyag: Az Azure Active Directory-integráció Mimecast személyes portállal
 
@@ -107,7 +107,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Mimecast személyes portáll
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe: 
 
-    | Régió  |  Érték | 
+    | Régió  |  Value | 
     | --------------- | --------------- | 
     | Európa          | `https://eu-api.mimecast.com/login/saml`|
     | Egyesült Államok   | `https://us-api.mimecast.com/login/saml`|
@@ -117,7 +117,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Mimecast személyes portáll
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
 
-    | Régió  |  Érték | 
+    | Régió  |  Value | 
     | --------------- | --------------- |
     | Európa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
     | Egyesült Államok   | `https://us-api.mimecast.com/sso/<accountcode>`|    
@@ -127,7 +127,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Mimecast személyes portáll
 
     c. Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címe: 
 
-    | Régió  |  Érték | 
+    | Régió  |  Value | 
     | --------------- | --------------- | 
     | Európa          | `https://eu-api.mimecast.com/login/saml`|
     | Egyesült Államok   | `https://us-api.mimecast.com/login/saml`|
@@ -278,7 +278,7 @@ Szeretne regisztrálni egy tartományban, felhasználók létrehozása előtt.
 >[!NOTE]
 >Mimecast személyes portál felhasználói fiók létrehozása eszközöket és Mimecast személyes portál által biztosított API-k segítségével az Azure AD-felhasználói fiókok kiépítése.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

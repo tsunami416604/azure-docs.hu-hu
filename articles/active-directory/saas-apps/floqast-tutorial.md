@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 5b3e839af886dc23bdfb11dacfb1854a2277bf3a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281014"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65862637"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-floqast"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező FloQast
 
@@ -122,7 +122,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés FloQast, hajtsa vég
     | ------------------- | -------------------- |    
     | FirstName           | user.givenname |
     | LastName            | user.surname |
-    | E-mail               | user.mail    |
+    | E-mail-cím               | user.mail    |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -152,7 +152,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés FloQast, hajtsa vég
 
     a. Válassza ki **bejelentkezési SAML-válasz és -előfeltétel** származó a **aláírási beállítás**.
     
-    b. Kattintson a **Mentés** gombra.
+    b. Kattintson a **Save** (Mentés) gombra
 
     ![Communifire aláírási beállítás](./media/floqast-tutorial/tutorial-floqast-signing-option.png)
 
@@ -225,7 +225,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű FloQast hoz létre. Együttműködve [FloQast támogatási csapatának](mailto:support@floqast.com) a felhasználók hozzáadása az FloQast platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

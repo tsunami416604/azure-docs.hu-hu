@@ -16,11 +16,11 @@ ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d5c79709344d8a110495b16afdc61a5ff1f68cf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849193"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65857788"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-capriza-platform"></a>Oktatóanyag: Az Azure Active Directory-integráció Capriza platformmal
 
@@ -186,7 +186,7 @@ Ez a szakasz célja Capriza Britta Simon nevű felhasználó létrehozásához. 
 
 Nincs meg ebben a szakaszban a művelet elem. Egy új felhasználót hoz létre az Capriza elérésére, ha még nem létezik tett kísérlet során.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

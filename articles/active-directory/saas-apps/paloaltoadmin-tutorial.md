@@ -16,11 +16,11 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f45b0779693433f1b1fad3c5bfd4323eacb9a63b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838646"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65870232"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Oktatóanyag: Az Azure Active Directory-integráció a Palo Alto Networks - felügyeleti felhasználói Felületéhez
 
@@ -127,7 +127,7 @@ A Palo Alto Networks - felügyeleti felhasználói Felületéhez, az Azure AD eg
 
     | Name (Név) |  Adatforrás-attribútum|
     | --- | --- |
-    | felhasználónév | user.userprincipalname |
+    | username | user.userprincipalname |
     | adminrole | customadmin |
     | | |
 
@@ -308,7 +308,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Palo Alto Networks - rendszergazdai felhasználói felület támogatja a just-in-time-felhasználók létrehozásának. Ha a felhasználó még nem létezik, automatikusan létrejön a rendszer a sikeres hitelesítés után. Semmit nem kell az, hogy a felhasználó létrehozásához.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

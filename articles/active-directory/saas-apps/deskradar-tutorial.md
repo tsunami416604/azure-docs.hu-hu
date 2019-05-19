@@ -16,11 +16,11 @@ ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea17794a5ca57ae0d38d9a90857706cf380cab36
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895668"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65862212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deskradar"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Deskradar
 
@@ -128,7 +128,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
     | ---------------| --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | E-mail | user.userprincipalname |
+    | E-mail-cím | user.userprincipalname |
     | | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -240,7 +240,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Deskradar hoz létre. Együttműködve [Deskradar ügyfél-támogatási csapatának](mailto:support@deskradar.com) a felhasználók hozzáadása az Deskradar platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

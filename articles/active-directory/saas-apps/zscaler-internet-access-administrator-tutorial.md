@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2265c4227601c5273f093af9768864a8c7e07b89
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862778"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zscaler internetes hozzáférés rendszergazdája
 
@@ -182,7 +182,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Zscaler internetes hoz
 
 3. A rendszergazda felhasználói felületén hajtsa végre az alábbi lépéseket:
 
-    ![Adminisztráció](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
+    ![Felügyelet](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
 
     a. A kurzort a **aktiválási** menüjének bal alsó.
 
@@ -246,7 +246,7 @@ Bemutatjuk, hogyan hozhat létre egy rendszergazdai fiók tekintse meg Zscaler d
 
 https://help.zscaler.com/zia/adding-admins
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

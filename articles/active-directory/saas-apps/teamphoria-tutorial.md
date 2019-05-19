@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 11d0a0a67d1ce5049166cab3d9ca3e4903b6b460
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277204"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65866181"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Teamphoria
 
@@ -229,7 +229,7 @@ Ahhoz, hogy az Azure AD-felhasználók Teamphoria bejelentkezni, akkor ki kell �
 
     d. Kattintson a **MEGHÍVÓ 1 felhasználó**. Fogadja el a meghívást, a rendszer létrehozza a felhasználónak kell.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: f395ae51d51e56668482ad6c8d446bdd31050fea
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280168"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65870656"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Oktatóanyag: Az Azure Active Directory-integráció az opsgenie segítségével
 
@@ -223,7 +223,7 @@ Ez a szakasz célja az opsgenie segítségével Britta Simon nevű felhasználó
 >[!NOTE]
 >Britta egy saját profil beállításával kapcsolatos utasításokat tartalmazó e-mailt kapja.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

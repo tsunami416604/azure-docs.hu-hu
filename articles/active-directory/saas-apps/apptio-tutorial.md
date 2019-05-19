@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f239c7ab92ad2de4391468b646ff08fb61721517
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884863"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65864227"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apptio"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Apptio
 
@@ -213,7 +213,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Apptio hoz létre. Együttműködve [Apptio támogatási csapatának](https://www.apptio.com/about/contact) a felhasználók hozzáadása az Apptio platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
