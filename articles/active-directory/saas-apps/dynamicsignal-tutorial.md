@@ -16,11 +16,11 @@ ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d36b81530989517167e3c9ae5baa125f2d09bbf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57870078"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65862058"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dynamic-signal"></a>Oktatóanyag: Az Azure Active Directory-integráció, a dinamikus jel
 
@@ -192,7 +192,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó dinamikus jel jön létr
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [dinamikus jel támogatási csapatának](mailto:support@dynamicsignal.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
