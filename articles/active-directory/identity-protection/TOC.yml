@@ -46,6 +46,8 @@
           href: security-overview.md
         - name: Kockázatos felhasználók és bejelentkezések vizsgálata
           href: howto-investigate-risky-users-signins.md
+        - name: Visszajelzés kockázati eseményekről
+          href: howto-provide-risk-event-feedback.md
         - name: Kockázati szabályzatok beállítása
           href: howto-configure-risk-policies.md
         - name: Észlelés pontosságának javítása

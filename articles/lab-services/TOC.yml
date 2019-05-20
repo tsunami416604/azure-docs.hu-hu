@@ -176,6 +176,8 @@
               href: integrate-environments-devops-pipeline.md
             - name: PaaS szolgáltatások használata
               href: use-paas-services.md
+            - name: Beágyazott sablonok üzembe helyezése
+              href: deploy-nested-template-environments.md
         - name: Biztonságos hozzáférés a tesztkörnyezetekhez
           items:
             - name: Labortulajdonosok és -felhasználók hozzáadása
@@ -188,6 +190,8 @@
           items:
             - name: Szabályzatok és ütemezések beállítása
               href: devtest-lab-set-lab-policy.md
+            - name: Automatikus leállítással kapcsolatos értesítések küldése
+              href: devtest-lab-auto-shutdown.md
             - name: Költségkezelés konfigurálása
               href: devtest-lab-configure-cost-management.md
             - name: Azure Marketplace-rendszerképek konfigurálása

@@ -15,7 +15,7 @@ metadata:
   ms.date: 05/07/2019
   ms.author: celested
 abstract:
-  description: 'A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg az olyan Microsoft API-kat, mint a Microsoft Graph, vagy olyan API-kat, amelyeket fejlesztők készítettek. Ez egy teljes körű szolgáltatásokat nyújtó platform, amely egy OAuth 2.0- és OpenID Connect-szabvánnyal kompatibilis hitelesítési szolgáltatásból, nyílt forráskódú kódtárakból, alkalmazásregisztrációból és -konfigurációból, átfogó fogalmi és referenciadokumentációból, rövid útmutatókból, kódmintákból és egyéb útmutatókból áll.'
+  description: 'A Microsoft identitásplatformja az Azure Active Directory (Azure AD) fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg az olyan Microsoft API-kat, mint a Microsoft Graph, vagy olyan API-kat, amelyeket fejlesztők készítettek. Ez egy teljes körű szolgáltatásokat nyújtó platform, amely egy OAuth 2.0- és OpenID Connect-szabvánnyal kompatibilis hitelesítési szolgáltatásból, nyílt forráskódú kódtárakból, alkalmazásregisztrációból és -konfigurációból, átfogó fogalmi és referenciadokumentációból, rövid útmutatókból, kódmintákból és egyéb útmutatókból áll.'
   aside:
     image:
       alt: null

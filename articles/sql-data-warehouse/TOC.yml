@@ -177,7 +177,7 @@
       items:
         - name: Erőforrásosztályok és számítási feladatok kezelése
           href: resource-classes-for-workload-management.md
-        - name: Számítási feladat osztályozása
+        - name: Számítási feladatok besorolása
           href: sql-data-warehouse-workload-classification.md
         - name: Számítási feladat fontossága
           href: sql-data-warehouse-workload-importance.md
@@ -253,7 +253,7 @@
           href: sql-data-warehouse-query-visual-studio.md
         - name: A Visual Studio telepítése
           href: sql-data-warehouse-install-visual-studio.md
-    - name: Számítási feladat kezelése
+    - name: Számítási feladatok kezelése
       items:
         - name: A számítási feladatok elemzése
           href: analyze-your-workload.md

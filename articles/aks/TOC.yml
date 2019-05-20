@@ -63,8 +63,9 @@
     - name: Méretezés
       href: concepts-scale.md
     - name: Ajánlott eljárások
-      href: best-practices.md
       items:
+        - name: Áttekintés
+          href: best-practices.md
         - name: Fürtüzemeltetőknek
           items:
             - name: Több-bérlős működés és fürtelkülönítés
@@ -115,9 +116,9 @@
           maintainContext: true
         - name: Virtuális csomópontok létrehozása
           items:
-            - name: Azure CLI
+            - name: Az Azure parancssori felületének használata
               href: virtual-nodes-cli.md
-            - name: Azure Portal
+            - name: Az Azure Portal használata
               href: virtual-nodes-portal.md
         - name: A Virtual Kubelet használata
           href: virtual-kubelet.md
@@ -152,7 +153,7 @@
               href: configure-azure-cni.md
         - name: Hozzon létre egy belső terheléselosztót
           href: internal-lb.md
-        - name: Statikus IP-címek használata
+        - name: Statikus IP-cím használata
           href: static-ip.md
         - name: Bejövő forgalom
           items:
@@ -165,8 +166,9 @@
             - name: TLS használata saját tanúsítványokkal
               href: ingress-own-tls.md
             - name: TLS használata Let's Encrypt szolgáltatással
-              href: ingress-tls.md
               items:
+                - name: Dinamikus nyilvános IP-cím használata
+                  href: ingress-tls.md
                 - name: Statikus nyilvános IP-cím használata
                   href: ingress-static-ip.md
         - name: Kimenő forgalom
@@ -212,6 +214,20 @@
         - name: Valós idejű tárolónaplók megtekintése (előnézet)
           href: ../azure-monitor/insights/container-insights-live-logs.md
           maintainContext: true
+    - name: Windows Server-tárolók használata (előzetes verzió)
+      items:
+        - name: AKS-fürt létrehozása
+          href: windows-container-cli.md
+        - name: Távoli csatlakozás
+          href: rdp.md
+        - name: Ismert korlátozások
+          href: windows-node-limitations.md
+        - name: A Kubernetes-irányítópult használata
+          href: kubernetes-dashboard.md
+        - name: Docker-fájlok létrehozása Windows Server-tárolók számára
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+        - name: Docker-fájlok optimalizálása Windows Server-tárolók számára
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
     - name: Alkalmazások fejlesztése és futtatása
       items:
         - name: Fejlesztés a Dev Spaces használatával

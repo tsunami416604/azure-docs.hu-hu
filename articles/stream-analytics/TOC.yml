@@ -149,7 +149,7 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: API használata az IoT Edge-feladatokhoz
           href: stream-analytics-cicd-api.md
-    - name: Visual Studio és VS Code
+    - name: Visual Studio
       items:
         - name: Eszközök telepítése
           href: stream-analytics-tools-for-visual-studio-install.md
@@ -165,8 +165,14 @@
           href: stream-analytics-tools-for-visual-studio-cicd.md
         - name: .NET UDF írása az Edge-hez
           href: stream-analytics-edge-csharp-udf-methods.md
-        - name: A Stream Analytics áttekintése a VS Code-ban
-          href: vs-code-how-to.md
+    - name: Visual Studio Code
+      items:
+        - name: Tesztelés mintaadatokkal
+          href: vscode-local-run.md
+        - name: CI-/CD-folyamat beállítása
+          href: setup-cicd-vs-code.md
+        - name: Feladatok böngészése
+          href: vscode-explore-jobs.md
     - name: Hibaelhárítás
       items:
         - name: Input (Bemenet)
