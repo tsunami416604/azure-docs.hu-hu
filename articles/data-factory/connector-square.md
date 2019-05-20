@@ -45,7 +45,7 @@ Négyzetes társított szolgáltatás a következő tulajdonságok támogatottak
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Négyszög** | Igen |
-| gazdagép | A példány URL-címét a négyzetes. (i.e. mystore.mysquare.com)  | Igen |
+| host | A példány URL-címét a négyzetes. (i.e. mystore.mysquare.com)  | Igen |
 | clientId | A négyzetes alkalmazással társított ügyfél-azonosító.  | Igen |
 | clientSecret | A négyzetes az alkalmazáshoz tartozó titkos ügyfélkulcsot. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | redirectUri | Az átirányítási URL-cím hozzárendelve az négyzetes irányítópult. (azaz http:\//localhost:2500)  | Igen |
@@ -111,7 +111,7 @@ Adatok másolása szögletes, állítsa be a forrás típusaként a másolási t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **SquareSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Business"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Business"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
