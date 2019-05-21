@@ -17,11 +17,11 @@ ms.date: 08-04-2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b0c6fc9ed196a1b3ddd3d8e67887e2340ddbcda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60319530"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65888439"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Teamwork.com
 
@@ -190,7 +190,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Teamwork.com hoz létre. Együttműködve [Teamwork.com támogatási csapatának](mailto:support@teamwork.com) a felhasználók hozzáadása az Teamwork.com platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

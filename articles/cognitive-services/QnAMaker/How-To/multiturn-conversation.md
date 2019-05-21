@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/14/2019
 ms.author: diberry
-ms.openlocfilehash: 24158d5949c0a31e5444c609cbfced970bdeca07
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: f12b55e9b00e933e13f84832b8cc36267a1da05f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471967"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954868"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Hozzon létre egy témakör több hellyé követő utasításokat használatával
 
@@ -52,7 +52,7 @@ A PDF-dokumentum importálásakor a QnA Maker követő utasításokat a struktú
 
 ![! [A PDF-dokumentum importálásakor a QnA Maker meghatározza, hogy a struktúrát, természetes nyelvi folyamat létrehozása a további utasításokat. ](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
-## <a name="filter-questions-and-answers-by-context"></a>Kérdések és válaszok szűrés környezet
+## <a name="show-questions-and-answers-with-context"></a>Kérdések és válaszok kontextusú megjelenítése
 
 1. Csökkentse a kérdés és válasz párok korlátoznia környezetfüggő beszélgetések az megjelenik. Válassza ki **beállítások megtekintéséhez**, majd **Show környezet (előzetes verzió)**. A lista üres lesz, amíg nem az első kérdést és választ pár és követési kéri. 
 
@@ -64,22 +64,36 @@ A PDF-dokumentum importálásakor a QnA Maker követő utasításokat a struktú
 1. Adja meg a kérdés új szövegét `Give feedback.` , választ `What kind of feedback do you have?`.
 
 1. Az a **válasz** oszlop a kérdésre, válassza ki a **Hozzáadás követő parancssor**. 
-1. A **követő parancssor** felugró párbeszédpanel lehetővé teszi, hogy egy meglévő kérdés kereséséhez, vagy adjon meg egy másik kérdést. Ebben az eljárásban írja be a szöveget `Feedback on an QnA Maker service`, az a **szöveg megjelenítése**. 
-1. Ellenőrizze **csak helyi**. A **csak helyi** beállítás azt jelzi, hogy a felhasználó szöveges érthető lehet _csak_ Ha adja meg az előző kérdésre adott válaszként. Ebben a forgatókönyvben az adatkérési szöveget értelmetlen bármely, egy különálló kérdést, csak logikus az előző kérdésnél környezetéből.
-1. Az a **választ hivatkozás** szöveget adja meg a választ `How would you rate QnA Maker?`.
-1. Válassza ki **új létrehozása** majd **mentése**. 
+1. A **követő parancssor (előzetes verzió)** előugró ablak lehetővé teszi, hogy egy meglévő kérdés kereséséhez, vagy adjon meg egy másik kérdést. Hozzon létre egy új parancssort, írja be a következő értékeket: 
+
+    |Szövegmező|Value|
+    |--|--|
+    |**Megjelenítendő szöveg**|`Feedback on an QnA Maker service`|
+    |**Hivatkozás választ**|`How would you rate QnA Maker??`|
+    |||
 
     ![Hozzon létre új parancssor kérdések és válaszok](../media/conversational-context/create-child-prompt-from-parent.png)
 
-    Létrehozott egy új kérdés-válasz párt, és a kapcsolódó követési kérdés, a kiválasztott kérdés. A **környezet** oszlop, ha mindkét kérdése van, követő parancssor kapcsolat jelölése. 
+1. Ellenőrizze **csak helyi**. A **csak helyi** beállítás azt jelzi, hogy a felhasználó szöveges érthető lehet _csak_ Ha adja meg az előző kérdésre adott válaszként. Ebben a forgatókönyvben az adatkérési szöveget értelmetlen bármely, egy különálló kérdést, csak logikus az előző kérdésnél környezetéből.
+1. Válassza ki **új létrehozása** majd **mentése**. 
+
+    Létrehozott egy új kérdés-válasz párt, és a kapcsolódó követési kérdés, a kiválasztott kérdés. A **környezet** mindkét kérdésre-oszlop azt jelzi, hogy követő parancssor kapcsolat. 
 
     ![! [A környezet oszlop mindkét kérdése van, az azt jelzi, hogy követő parancssor kapcsolat.] (.. / media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
-1. Válassza ki **Hozzáadás követő parancssor** számára a `Give feedback` kérdés hozzáadása egy másik követő parancssor. 
-1. Hozzon létre egy új kérdést megadásával `Feedback on an existing feature`, a válasz az `Which feature would you like to give feedback on?`.  
+1. Válassza ki **Hozzáadás követő parancssor** számára a `Give feedback` kérdés hozzáadása egy másik követő parancssor. Ekkor megnyílik a **követő parancssor (előzetes verzió)** előugró ablak.
 
-1.  Ellenőrizze **csak helyi**. A **csak helyi** beállítás azt jelzi, hogy a felhasználó szöveges érthető lehet _csak_ Ha adja meg az előző kérdésre adott válaszként. Ebben a forgatókönyvben az adatkérési szöveget értelmetlen bármely, egy különálló kérdést, csak logikus az előző kérdésnél környezetéből.
-1.  Kattintson a **Mentés** gombra. 
+1. Hozzon létre egy új parancssort, írja be a következő értékeket:
+
+    |Szövegmező|Value|
+    |--|--|
+    |**Megjelenítendő szöveg**|`Feedback on an existing feature`|
+    |**Hivatkozás választ**|`Which feature would you like to give feedback on?`|
+    |||
+
+1. Ellenőrizze **csak helyi**. A **csak helyi** beállítás azt jelzi, hogy a felhasználó szöveges érthető lehet _csak_ Ha adja meg az előző kérdésre adott válaszként. Ebben a forgatókönyvben az adatkérési szöveget értelmetlen bármely, egy különálló kérdést, csak logikus az előző kérdésnél környezetéből.
+
+1. Kattintson a **Mentés** gombra. 
 
     Ezzel létrehozott egy új kérdést, és csatolva a kérdést, követő kérdés feltevése a `Give feedback` kérdést.
     
@@ -93,26 +107,34 @@ A PDF-dokumentum importálásakor a QnA Maker követő utasításokat a struktú
 
 1. Ha azt szeretné, összekapcsolása egy meglévő QnA pár, nyomon követési kérdés, válassza a sor számára a kérdés és válasz párt.
 1. Válassza ki **Hozzáadás követő parancssor** abban a sorban.
-1. Az előugró párbeszédpanelen adja meg a kérdés szöveget a keresőmezőbe. Minden megfelelő elemet adja vissza. Válassza ki a kérdést, az azt követő szeretne, majd ellenőrizze **csak helyi**, majd **mentése**. 
+1. Az a **követő parancssor (előzetes verzió)** előugró ablak, írja be a válasz szöveget a keresőmezőbe. Minden megfelelő elemet adja vissza. Válassza ki a választ, az azt követő szeretne, majd ellenőrizze **csak helyi**, majd **mentése**. 
 
-    Miután a szervezeti egység hozzáadta a nyomon követési rendszer kéri, ne felejtse el bejelölni **mentéséhez és a vonat**.
+    ![Keresse meg a követési rendszer mutató hivatkozást a meglévő válasz, válasz párbeszédpanel használatával a válasz szövegét.](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
+
+    Miután hozzáadta a nyomon követési rendszer kéri, akkor ne felejtse el bejelölni **mentéséhez és a vonat**.
   
-## <a name="add-metadata-to-follow-up-prompts"></a>Eseményt követő utasításokat ad hozzá metaadatokat 
+<!--
 
-A Tudásbázis Ha kapcsolódik egy kérdés-válasz párt követő kérni fogja, a metaadatok alkalmazza a rendszer először, és a követések adja vissza.
+## To find best prompt answer, add metadata to follow-up prompts 
 
-1. A két követő QnA párok minden egyes metaadatok hozzáadása:
+If you have several follow-up prompts for a given QnA pair, but you know as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base, then send the metadata from the client application as part of the GenerateAnswer request.
 
-    |Kérdés|metaadatok hozzáadása|
+In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, then the follow-ups are returned.
+
+1. For the two follow-up QnA pairs, add metadata to each one:
+
+    |Question|Add metadata|
     |--|--|
-    |`Feedback on an QnA Maker service`|"Szolgáltatás": "all"|
-    |`Feedback on an existing feature`|"Szolgáltatás": "egy"|
+    |`Feedback on an QnA Maker service`|"Feature":"all"|
+    |`Feedback on an existing feature`|"Feature":"one"|
     
-    ![Metaadatok hozzáadása követő parancssor, így szűrhetők a beszélgetés szolgáltatástól kapott válasz](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
+    ![Add metadata to follow-up prompt so it can be filtered in conversation response from service](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
 
-1. Mentse és betanításához. 
+1. Save and train. 
 
-    Amikor elküldi a kérdés `Give feedback` a metaadatok szűrővel `Feature` értékkel `all`, csak a QnA pár az ezekhez a metaadatokhoz adja vissza. Mindkét QnA párok nem jelennek meg, mert mindkettő nem egyezik meg a szűrő. 
+    When you send the question `Give feedback` with the metadata filter `Feature` with a value of `all`, only the QnA pair with that metadata will be returned. Both QnA pairs are not returned because they both do not match the filter. 
+
+-->
 
 ## <a name="test-the-qna-set-to-get-all-the-follow-up-prompts"></a>A QnA beállítása minden követő első vizsgálat kéri
 
@@ -145,7 +167,7 @@ Az előző szakaszban a kért választ, és bármely követő utasításokat kö
             "questions": [
                 "Accounts and signing in"
             ],
-            "answer": "**Accounts and signing in**\n\nWhen you set up your Surface, an account is set up for you. You can create additional accounts later for family and friends, so each person using your Surface can set it up just the way he or she likes. For more info, see All about accounts on Surface.com. \n\nThere are several ways to sign in to your Surface Pro 4: ",
+            "answer": "**Accounts and signing in**\n\nWhen you set up your Surface, an account is set up for you. You can create additional accounts later for family and friends, so each person using your Surface can set it up just the way they like. For more info, see All about accounts on Surface.com. \n\nThere are several ways to sign in to your Surface Pro 4: ",
             "score": 86.96,
             "id": 37,
             "source": "surface-pro-4-user-guide-EN .pdf",
@@ -269,15 +291,11 @@ A QnA Maker _GenerateAnswer_ JSON-válasz tartalmazza a nyomon követési utasí
 
 ## <a name="displaying-prompts-and-sending-context-in-the-client-application"></a>Megjelenítés, üzenetek és a környezet küldését az ügyfélalkalmazásban 
 
-Az ügyfélalkalmazás jeleníti meg, melyre a felhasználó számára az utasításokat gombok / javasolt műveletek jelenít meg a kérdéseket.
-Az ügyfélalkalmazás ezután az aktuális kérdés-válasz párt és felhasználói lekérdezés a következő felhasználó lekérdezése átadandó környezeti tárolja. 
+Ha hozzáadott utasításokat a Tudásbázisban, és a folyamat tesztelése a ablaktáblán, az utasításokat fog nem indul el automatikusan jelenik meg az ügyfélalkalmazások számára. Megjelenítheti az utasításokat a javasolt műveletek vagy gombok a választ a felhasználó lekérdezés részeként az ügyfél alkalmazások együtt ez [Bot Framework minta](https://aka.ms/qnamakermultiturnsample) a kódban. Az ügyfélalkalmazás az aktuális QnA-Azonosítót és a felhasználó lekérdezése tárolására, és adja meg azokat a a [context objektumot az GenerateAnswer API](#json-request-to-return-non-initial-answer-and-follow-up-prompts) a következő felhasználói lekérdezés.
 
-Ezzel [Bot Framework minta](https://aka.ms/qnamakermultiturnsample) több kapcsolja párbeszédpanel működő-végpontok a QnA Maker robotprogramok megtekintéséhez.
+## <a name="display-order-supported-in-api"></a>Megjelenítési sorrendjét támogatott API-ban
 
-
-## <a name="prompt-order-supported-in-api"></a>API-ban támogatott adatkérés sorrendje
-
-Az adatkérés sorrendje, a JSON-válaszban visszaadott szerkesztésre, csak az API által támogatott. 
+A megjelenítési sorrendjét, a JSON-válaszban visszaadott szerkesztésre, csak az API által támogatott. 
 
 ## <a name="next-steps"></a>További lépések
 

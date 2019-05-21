@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 5bd7c5fe97d18d83f07db2b8b75ee556b0ad685d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60277369"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898530"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Oktatóanyag: Az Azure Active Directory integrációja az üvegházhatást
 
@@ -210,7 +210,7 @@ Ahhoz, hogy az Azure AD-felhasználók üvegházhatást szolgáltatásba való b
       >[!NOTE]
       >Az Azure Active Directory-fiók tulajdonosai és a telepítőre mutató, mielőtt aktívvá válik, győződjön meg arról, hogy a fiók az e-mailt fog kapni.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

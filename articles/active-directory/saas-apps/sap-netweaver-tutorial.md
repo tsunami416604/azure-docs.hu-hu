@@ -16,11 +16,11 @@ ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b648b8458c7f91cae6edb079fbd2ac78553dd969
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523783"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65903230"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP netweaver megoldással
 
@@ -353,7 +353,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezést az 
 
 Ebben a szakaszban egy Britta Simon nevű SAP NetWeaver a felhasználó hoz létre. A házon belül SAP szakértői csapat működik, vagy a felhasználók hozzáadása az SAP NetWeaver platformon, a szervezet SAP partnerrel együttműködve.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 1. Miután az identitásszolgáltató az Azure AD lett aktiválva, próbálja alatt ellenőrizze az egyszeri bejelentkezési URL-cím elérése (hiba fog kérés nem felhasználónév és jelszó)
 

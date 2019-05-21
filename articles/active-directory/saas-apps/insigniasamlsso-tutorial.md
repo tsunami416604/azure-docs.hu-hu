@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: b649c77b34837ba2220d04b36d4a46598c321fdf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684283"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció rendfokozati SAML SSO-val
 
@@ -192,7 +192,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon rendfokozati SAML SSO nevű hoz létre. Együttműködve [rendfokozati SAML SSO-ügyfélszolgálathoz](https://www.insigniasoftware.com/insignia/Techsupport.aspx) a felhasználók hozzáadása az rendfokozati SAML SSO-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

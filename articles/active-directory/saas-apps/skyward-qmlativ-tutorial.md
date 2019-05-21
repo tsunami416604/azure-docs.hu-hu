@@ -16,11 +16,11 @@ ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9faf5068f6007cc357bcd22480c08af4223ba906
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883026"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65890048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyward-qmlativ"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Skyward Qmlativ
 
@@ -175,7 +175,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Skyward Qmlativ hoz létre. Együttműködve [Skyward Qmlativ támogatási csapatának](mailto:steveb@skyward.com) a felhasználók hozzáadása az Skyward Qmlativ platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

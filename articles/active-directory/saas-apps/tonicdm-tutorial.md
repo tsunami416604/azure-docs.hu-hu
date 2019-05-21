@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: b648c51b1b169c02f149493c53b6ef738b736e61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337838"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905673"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TonicDM
 
@@ -183,7 +183,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű TonicDM hoz létre. Együttműködve [TonicDM támogatási csapatának](mailto:support@tonicdm.com) a felhasználók hozzáadása az TonicDM platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

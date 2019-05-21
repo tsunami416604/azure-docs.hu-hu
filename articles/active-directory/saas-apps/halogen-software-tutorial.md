@@ -16,11 +16,11 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f7925e6fe66579c8bf702acbe165c50d2aed536e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60276776"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898356"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>Oktatóanyag: Az Azure Active Directory-integráció halogén szoftverrel
 
@@ -240,7 +240,7 @@ Ez a szakasz célja halogén szoftver Britta Simon nevű felhasználó létrehoz
 
     e. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

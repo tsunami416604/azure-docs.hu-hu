@@ -16,11 +16,11 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 88d181c2e761679d7f52208b2086404411bc2012
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60274277"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező IdeaScale
 
@@ -242,7 +242,7 @@ Ahhoz, hogy az Azure AD-felhasználók IdeaScale szolgáltatásba való bejelent
 > [!NOTE]
 > Bármely más IdeaScale felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését IdeaScale által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

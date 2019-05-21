@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 7507e5d23898fd069797c14d0fa18419b8345d78
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62736293"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65888263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Oktatóanyag: Az Azure Active Directory-integráció TigerText biztonságos Messenger
 
@@ -184,7 +184,7 @@ Ebben a szakaszban engedélyezze Britta Simon TigerText biztonságos Messenger s
 
 Ebben a szakaszban egy TigerText biztonságos Messenger Britta Simon nevű felhasználó hoz létre. Együttműködik a [TigerText biztonságos Messenger támogatási csapatának](mailto:prosupport@tigertext.com) Britta Simon TigerText biztonságos Messenger felhasználóként hozzáadni. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
 

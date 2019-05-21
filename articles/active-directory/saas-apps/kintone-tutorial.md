@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: a66d1cb16f47ebe7aeba3685b3567620ae4a8a51
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60262712"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898022"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Kintone
 
@@ -249,7 +249,7 @@ Ahhoz, hogy az Azure AD-felhasználók Kintone-bejelentkezés, akkor ki kell ép
 > [!NOTE]
 > Bármely más Kintone felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Kintone által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

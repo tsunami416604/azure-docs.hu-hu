@@ -17,11 +17,11 @@ ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 798245dc293ecac01fb874fc57b98b14d258f686
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564883"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900290"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amms"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AMMS
 
@@ -175,7 +175,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű AMMS hoz létre. Együttműködve [AMMS támogatási csoportjának](mailto:techsupport@microwestsoftware.com) a felhasználók hozzáadása az AMMS platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 3/28/2019
+ms.date: 04/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: d2f5e87bd6c6780e8504abe1753e90eca5db763a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1518af9c37ffe0b8175e741b363d79941e3caaf
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60507764"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905704"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Gyors útmutató: A Bing Visual Search REST API használatával kép elemzések lekérése ésC#
 
@@ -23,7 +23,7 @@ Ez a rövid útmutató bemutatja, hogyan tölthet fel képeket, a Bing Visual Se
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
+* Bármely kiadása [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * A [Json.NET keretrendszer](https://www.newtonsoft.com/json), NuGet-csomagként érhető el.
 * Ha Linux/MacOS rendszeren használja, akkor futtathatja az alkalmazást a [Mono](https://www.mono-project.com/).
 

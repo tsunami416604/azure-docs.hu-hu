@@ -16,11 +16,11 @@ ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5a2472e78a9da223b0c651551d7cc8e05ab6eea9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905494"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65889645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Oktatóanyag: Slack-az Azure Active Directory-integráció
 
@@ -249,7 +249,7 @@ Ez a szakasz célja, a Slack Britta Simon nevű felhasználó létrehozásához.
 > [!NOTE]
 > Az Azure AD Connect a szinkronizálási eszközt, amely szinkronizálhatja a helyszíni Active Directory-identitásokkal az Azure AD, és ezután ezek a szinkronizált felhasználók is használhatja az alkalmazásokat, például más felhőbeli felhasználók.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

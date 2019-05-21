@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: bcad6232de7fa257b58fe6d84f2c2ff794b64589
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005417"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902282"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>Oktatóanyag: Az Azure Active Directory-integráció SilkRoad életre Suite-tal
 
@@ -274,7 +274,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 Ebben a szakaszban egy SilkRoad életre Suite Britta Simon nevű felhasználó hoz létre. Együttműködve [SilkRoad életre Suite ügyfél-támogatási csapatának](https://www.silkroad.com/locations/) a felhasználók hozzáadása az SilkRoad életre Suite platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

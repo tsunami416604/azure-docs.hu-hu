@@ -17,11 +17,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f231d3d966154c1ea5cca808eedad1051089fea
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563556"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897370"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Oktatóanyag: A 10 000 szerint tervek az Azure Active Directory-integráció
 
@@ -189,7 +189,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó a tervek szerint 10 000 
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [10 000 szerint csomagok ügyfél-támogatási csapatával](https://www.10000ft.com/plans/support).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

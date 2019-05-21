@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: ec1fce18913d6763514abb80ceba471bf73d59ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60257889"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Lessonly.com
 
@@ -225,7 +225,7 @@ Nincs meg ebben a szakaszban a művelet elem. Egy új felhasználót hoz létre 
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Lessonly.com támogatási csapatának](mailto:support@lessonly.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

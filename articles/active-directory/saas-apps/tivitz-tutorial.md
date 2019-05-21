@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 831077142519bb0c740e61a6897215c0b1c8ae1d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344359"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tivitz"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TiViTz
 
@@ -189,7 +189,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó TiViTz jön létre. TiVi
 >[!NOTE]
 >Hozzon létre egy felhasználót manuálisan kell, ha kapcsolatba kell [TiViTz támogatási csapatának](mailto:info@tivitz.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

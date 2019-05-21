@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b4360150064d2f42cc2dc2cc3ef9f7783a5cb175
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: a4a8212906f384494a9e2e005eee8c4dbdfa14a3
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866547"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954634"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési rekord hangalapú minták
 
@@ -53,7 +53,7 @@ Válassza ki a hangalapú szakembereket, amelynek a természetes hangtípus, pé
 
 Az egyik legfontosabb tényező hangalapú szakembereket kiválasztására vonatkozó konzisztencia. A felvételek kell az összes hang-, módosította őket ugyanarra a napra ugyanabban a helyiségben. Ez ideális jó felvétel eljárások és mérnöki keretében is készíthető elő.
 
-A szóbeli szakembereket a másik fele a egyenlet. Ő az egységes sebesség, a kötetek szintjén, a lényegét és a képviselő hangvételét mérnökeinkkel képesnek kell lennie. Egyértelmű diction kell. A szakembereket is képesnek kell lennie a szigorúan ellenőrzik a saját projektjeire variation érzelmi hatással és speech mannerisms.
+A szóbeli szakembereket a másik fele a egyenlet. Azok az egységes sebesség, a kötetek szintjén, a lényegét és a képviselő hangvételét mérnökeinkkel képesnek kell lennie. Egyértelmű diction kell. A szakembereket is képesnek kell lennie a szigorúan ellenőrzik a saját projektjeire variation, érzelmi hatással és speech mannerisms.
 
 Egyedi Hangüzenetek minták rögzítése több fatiguing, mint más hangalapú munka lehet. A legtöbb hangalapú szakembereket napi két vagy három órán vehet fel. Ha lehetséges korlátozza a munkamenetek három vagy négy egy hét naponta köztes ki.
 
@@ -117,7 +117,7 @@ Szerencsére a lehetőség a problémák teljes egészében elkerülése érdek�
 
 Jegyezze fel a található szakmai felvétel stúdióban, amely a szkriptet az hangalapú során. A rögzítés érzékelőadatainak, a megfelelő eszközök és működjön, a megfelelő személyeknek rendelkeznek. Nem, a rögzítés mulassza fizet.
 
-A projekt tárgyalják a studio felvétel szakértővel, és figyeli a saját tanácsokat. A felvétel alig vagy egyáltalán nem dinamikus tartományának tömörítés (legfeljebb 4:1) kell rendelkeznie. Rendkívül fontos, hogy a hanganyag konzisztens kötet és a egy magas jel zaj arány rendelkezik ugyanakkor nemkívánatos hangok ingyenes.
+A projekt tárgyalják a studio felvétel szakértővel, és figyeli a Tanácsot. A felvétel alig vagy egyáltalán nem dinamikus tartományának tömörítés (legfeljebb 4:1) kell rendelkeznie. Rendkívül fontos, hogy a hanganyag konzisztens kötet és a egy magas jel zaj arány rendelkezik ugyanakkor nemkívánatos hangok ingyenes.
 
 ### <a name="do-it-yourself"></a>Ön megteheti
 
@@ -131,7 +131,7 @@ Egy analóg mikrofon is használhatja. Számos bérleti házak "szüreti" mikrof
 
 Telepítse a mikrofon egy önálló vagy bumm, és telepítése előtt a mikrofon "plosive" mássalhangzók, például a "p" és "b". a háttérzaj kiküszöbölése pop szűrő Néhány mikrofonok, amely elkülöníti azokat a rezgés bővíteni, ami hasznos lehet a felfüggesztés csatlakoztatási kapható.
 
-A szóbeli szakembereket a mikrofon konzisztens távolságra kell maradnia. Az emelet a szalag használatával, vagy amelyekhez üzembe kell megjelölni. Szeretném a szakembereket részesíti előnyben, különös gondot mic távolság figyelése, és elkerülheti az elnöki zaj igénybe vehet.
+A szóbeli szakembereket a mikrofon konzisztens távolságra kell maradnia. Az emelet a szalag használatával, üzembe kell megjelölni. Szeretném a szakembereket részesíti előnyben, különös gondot mic távolság figyelése, és elkerülheti az elnöki zaj igénybe vehet.
 
 Használjon a parancsfájl tárolásához. Kerülje a horgászat bővíteni, hogy tükrözzék, hang, mikrofon felé.
 
@@ -158,7 +158,7 @@ A szerepkörök igazgató, a visszafejtés és szakembereket szolgálja ki a kü
 
 ### <a name="before-the-session"></a>Mielőtt a munkamenet
 
-Elkerülése érdekében, ami pazarolja a studio idő, futtassa a parancsfájlt a hangalapú szakembereket keresztül a rögzítési munkamenet előtt. A beszédfelismerési szakembereket válik a szöveg ismeri, miközben ő a kiejtés bármely ismeretlen szavak is tisztázása.
+Elkerülése érdekében, ami pazarolja a studio idő, futtassa a parancsfájlt a hangalapú szakembereket keresztül a rögzítési munkamenet előtt. A beszédfelismerési szakembereket válik a szöveg jól ismert, amíg azok jól átláthatók a kiejtés bármely ismeretlen szavak.
 
 > [!NOTE]
 > A legtöbb felvétel studios elektronikus megjelenítését a rögzítés érzékelőadatainak parancsfájlok kínálnak. Ebben az esetben a run-through megjegyzések közvetlenül írja be a parancsfájl-dokumentumot. Érdemes a papír másolatot feljegyzéseket a munkamenet során azonban továbbra is. A legtöbb mérnökök túl érdemes egy merevlemez másolása. És továbbra is gondoskodni a harmadik a szakembereket a biztonsági nyomtatott példány, abban az esetben, ha a számítógép nem működik.
@@ -196,7 +196,7 @@ Szorosan, figyelési, fejhallgatót a hangalapú szakembereket teljesítménye. 
 
 Megjegyzés: a lekérési szám, vagy minden kimondásakor, amikor a parancsfájlt a kódot. Kérje meg a felvételt metaadatok vagy köteg lap, valamint minden kimondásakor megjelölni a mérnök.
 
-Rendszeres oldaltörések igénybe vehet, és adjon meg egy ital érdekében a hangalapú szakembereket hangjának fenntartható a jó minősége.
+Rendszeres oldaltörések igénybe vehet, és adjon meg egy ital érdekében a hangalapú szakembereket beszéddel fenntartható a jó minősége.
 
 ### <a name="after-the-session"></a>A munkamenet után
 

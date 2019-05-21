@@ -16,11 +16,11 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78901524392c575fcb9e821650b392dcea28c8b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60275904"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heroku"></a>Oktatóanyag: Az Azure Active Directory-integráció, a Heroku
 
@@ -205,7 +205,7 @@ Nincs meg ebben a szakaszban a művelet elem. Új felhasználó létrejön, Hero
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Heroku ügyfél-támogatási csapatának](https://www.heroku.com/support).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

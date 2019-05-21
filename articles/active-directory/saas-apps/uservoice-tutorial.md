@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: dbd7189b1761a9ea88ce32dae3d7b45a88301ff6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60338776"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905633"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Oktatóanyag: Az Azure Active Directory-integráció a uservoice-on
 
@@ -239,7 +239,7 @@ Ahhoz, hogy jelentkezzen be a uservoice-hoz az Azure AD-felhasználók, akkor ki
 > [!NOTE]
 > Bármely más UserVoice felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését UserVoice által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

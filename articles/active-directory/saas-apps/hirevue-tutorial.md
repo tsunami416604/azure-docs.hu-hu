@@ -16,11 +16,11 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7617889bfbdfecb421538cbc261dace5b4b8279c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60275467"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898232"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hirevue"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező HireVue
 
@@ -107,17 +107,17 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés HireVue, hajtsa vég
 
     a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
 
-    | Környezet | URL-cím |
+    | Környezet | URL |
     |-------------|---|
-    | Production | `https://<companyname>.hirevue.com` |
-    | Előkészítés    | `https://<companyname>.stghv.com` |
+    | Üzemi | `https://<companyname>.hirevue.com` |
+    | Fájlok másolása folyamatban    | `https://<companyname>.stghv.com` |
 
     b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím:
 
     | Környezet | URN |
     |-------------|-----|
-    | Production |`urn:federation:hirevue.com:saml:sp:prod` |
-    | Előkészítés    | `urn:federation:hirevue.com:saml:sp:staging`|
+    | Üzemi |`urn:federation:hirevue.com:saml:sp:prod` |
+    | Fájlok másolása folyamatban    | `urn:federation:hirevue.com:saml:sp:staging`|
 
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [HireVue ügyfél-támogatási csapatának](mailto:samlsupport@hirevue.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
@@ -195,7 +195,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű HireVue hoz létre. Együttműködve [HireVue támogatási csapatának](mailto:samlsupport@hirevue.com) a felhasználók hozzáadása az HireVue platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

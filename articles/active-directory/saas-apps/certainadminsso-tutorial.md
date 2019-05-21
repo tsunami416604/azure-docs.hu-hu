@@ -16,11 +16,11 @@ ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d45b52ac6d51560f2a07de9f629d3b2ccfccb5e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60281671"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899928"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>Oktatóanyag: Az egyes rendszergazda egyszeri bejelentkezés az Azure Active Directory-integráció
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon bizonyos rendszergazdai egyszeri B
 
 Ebben a szakaszban egy Britta Simon nevű bizonyos rendszergazdai egyszeri Bejelentkezést a felhasználó hoz létre. Együttműködve [támogatási csoport egyes felügyeleti SSO](mailto:integrations@certain.com) a felhasználók hozzáadása az egyes felügyeleti SSO-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

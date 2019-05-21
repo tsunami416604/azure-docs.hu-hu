@@ -16,11 +16,11 @@ ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 507a5d7209c2ae873bbfc2d9f5f5fa1c8fa17758
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57846871"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65889573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartfile"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SmartFile
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű SmartFile hoz létre. Együttműködve [SmartFile támogatási csapatának](https://support.lumanox.com/hc/sections/360003453152-SAML-Authentication) a felhasználók hozzáadása az SmartFile platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

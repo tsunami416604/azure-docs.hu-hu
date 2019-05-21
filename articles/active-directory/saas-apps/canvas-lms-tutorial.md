@@ -16,11 +16,11 @@ ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7556e93e6e7b7e9bdb1f19f5a6e5b3c15c7b910
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894070"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900602"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Oktatóanyag: Az Azure Active Directory-integráció a vászonra
 
@@ -250,7 +250,7 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a vászonra, akkor ki kel
 > [!NOTE]
 > Bármely más Vászonalapú felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Vászonalapú által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

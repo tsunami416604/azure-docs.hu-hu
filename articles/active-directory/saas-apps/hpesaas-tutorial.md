@@ -16,11 +16,11 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43a231a4317aa2500b6377b512ae9311b2c7acda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60275026"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hpe-saas"></a>Oktatóanyag: Az Azure Active Directory-integráció, a HPE saas-alkalmazásokban
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 Ebben a szakaszban egy Britta Simon nevű HPE SaaS a felhasználó hoz létre. Együttműködve [HPE SaaS támogatási csoportjának](https://saas.hpe.com/en-us/contact) a felhasználók hozzáadása a HPE SaaS-platformként a. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60aacc3d4d5743187ec826fb9f544488171b1285
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838544"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900727"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Oktatóanyag: Antik ismerje meg az Azure Active Directory-integráció
 
@@ -214,7 +214,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 Ebben a szakaszban egy Britta Simon nevű Antik ismerje meg a felhasználó hoz létre. Antik ismerje meg az alkalmazás támogatja a csak az idő felhasználókiépítés. Győződjön meg arról, hogy konfigurálta a jogcímeket a szakaszban leírt módon **konfigurálása az Azure AD egyszeri bejelentkezés**
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

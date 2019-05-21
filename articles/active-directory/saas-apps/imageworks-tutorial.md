@@ -16,11 +16,11 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cde9d4efd3d6eb5bc987a4bf7eb423447ceddc2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60273842"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898078"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-works"></a>Oktatóanyag: A RENDSZERKÉP működését az Azure Active Directory-integráció
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon RENDSZERKÉP működik a hozzáfé
 
 Ebben a szakaszban egy Britta Simon nevű LEMEZKÉP működik a felhasználó hoz létre. Együttműködve [RENDSZERKÉP működését támogatási csoportjának](mailto:iw-sd-support@fujifilm.com) a felhasználók hozzáadása a RENDSZERKÉP működését platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

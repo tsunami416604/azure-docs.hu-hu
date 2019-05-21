@@ -16,11 +16,11 @@ ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e8b2b4d1a660fe2f1289bba6fa596d08ec824b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341479"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65889991"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-soloinsight-cloudgate-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció Soloinsight-CloudGate SSO-val
 
@@ -225,7 +225,7 @@ Hozzon létre egy tesztfelhasználót, jelölje be **alkalmazottak** a főmenüb
 
 ![Alkalmazott teszt](./media/soloinsight-cloudgate-sso-tutorial/employee-test.png)
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

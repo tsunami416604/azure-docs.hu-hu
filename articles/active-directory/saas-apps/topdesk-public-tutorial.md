@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: d5ecfcd249dd07dc94b3b17ea0a7a7de3559c681
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c4052dd3b4c8f49b19193109eb5e8d2306646960
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407938"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65888565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TOPdesk – nyilvános
 
@@ -193,7 +193,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása TOPdesk - nyilvános, hajtsa
 
     c. A kapott az TOPdesk ügyfélszolgálathoz alatt embléma fájlt feltölteni **embléma ikon**, kattintson a **Tallózás**.
 
-    d. Az a **felhasználói név attribútum** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    d. Az a **felhasználói név attribútum** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     e. Az a **megjelenítendő név** szövegmezőbe írja be a konfiguráció nevét.
 

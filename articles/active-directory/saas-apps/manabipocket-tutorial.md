@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 7f793741638db5196bbf8bcd97e7f42d79548f0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60255516"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897392"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>Oktatóanyag: Manabi zsebébe tenni az Azure Active Directory-integráció
 
@@ -184,7 +184,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű Manabi zsebébe tenni a felhasználó hoz létre. Együttműködve [Manabi Pocket támogatási csapatának](mailto:info-ed-cl@ntt.com) a felhasználók hozzáadása az Manabi Pocket platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

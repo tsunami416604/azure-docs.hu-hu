@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 79e9952aefc44b7c490bb9fe375487c1a3335fc8
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560503"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901503"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Predictix rendezése
 

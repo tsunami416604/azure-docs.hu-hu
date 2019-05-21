@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb0610ac9578b1aa85ae422275d69e651b0b4cfd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838204"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65895776"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező YouEarnedIt
 
@@ -107,16 +107,16 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés YouEarnedIt, hajtsa 
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minták használatával URL-címe:
 
-    | Környezet  | Mintázat  |
+    | Környezet  | Minta  |
     |:--- |:--- |
-    | Production | `https://<company name>.youearnedit.com/users/sign_in` |
+    | Üzemi | `https://<company name>.youearnedit.com/users/sign_in` |
     | Védőfal  |`https://<company name>.sandbox.youearnedit.com/users/sign_in` |
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minták használatával URL-címe:
 
-    | Környezet  | Mintázat  |
+    | Környezet  | Minta  |
     |:--- |:--- |
-    | Production | `<company name>.youearnedit.com` |
+    | Üzemi | `<company name>.youearnedit.com` |
     | Védőfal  |`<company name>.sandbox.youearnedit.com` |
 
     > [!NOTE]
@@ -198,7 +198,7 @@ Ebben a szakaszban egy felhasználói Britta Simon nevű YouEarnedIt hoz létre.
 > [!NOTE]
 > YouEarnedIt várhatóan az identitásszolgáltató a NameID attribútum egy e-mail cím vagy felhasználónév fogja tartalmazni. Ha a megfelelő felhasználónév vagy e-mail cím nem található az adatbázisban, vagy nem felel meg pontosan a hitelesítés sikertelen lesz. Ezt a beállítást, hogy fiókok importálni a YouEarnedIt rendszeren, mielőtt az SSO-integráció (általában akár import API- vagy CSV-n keresztül).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

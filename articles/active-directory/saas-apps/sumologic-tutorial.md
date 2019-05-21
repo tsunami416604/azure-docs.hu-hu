@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 4edd445fe526b9be5c421b21b25f9b095c734f43
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269894"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901674"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SumoLogic
 
@@ -233,7 +233,7 @@ Ahhoz, hogy az Azure AD-felhasználók SumoLogic bejelentkezni, akkor ki kell é
 
     ![Felhasználók](./media/sumologic-tutorial/ic778561.png "felhasználók")
 
-1. Kattintson a **Hozzáadás** parancsra.
+1. Kattintson a **Hozzáadás**lehetőségre.
 
     ![Felhasználók](./media/sumologic-tutorial/ic778562.png "felhasználók")
 
@@ -252,7 +252,7 @@ Ahhoz, hogy az Azure AD-felhasználók SumoLogic bejelentkezni, akkor ki kell é
 > [!NOTE]
 > Bármely más SumoLogic felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését SumoLogic által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

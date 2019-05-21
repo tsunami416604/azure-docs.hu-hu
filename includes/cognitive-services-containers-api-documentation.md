@@ -1,26 +1,24 @@
 ---
 author: diberry
-ms.author: v-junlch
+ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 03/25/2019
-ms.date: 04/23/2019
-ms.openlocfilehash: 94e95864d8bac2d6dc0ff690a2a8f53bd2db5a40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/25/2019
+ms.openlocfilehash: f4925401235aedb341a7e29ca36b079126647f7b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598806"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65885005"
 ---
-## <a name="validate-container-is-running"></a>Érvényesítése tároló fut-e 
+## <a name="validate-that-a-container-is-running"></a>Ellenőrizze, hogy a tároló fut-e. 
 
-Nincsenek a többféle módon ellenőrizze a tároló fut: 
+Többféleképpen is lehet ellenőrizni, hogy a tároló fut-e. 
 
-|Kérés|Cél|
+|Lekérés|Cél|
 |--|--|
-|`http://localhost:5000/`|A tároló kezdőlapja biztosít.|
-|`http://localhost:5000/status`|A kért az GET, a tároló ellenőrzése fut anélkül, hogy ez egy végpont lekérdezés. A Kubernetes esetében használható [liveness és a készültségi vizsgálatok](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).|
-|`http://localhost:5000/swagger`|A tároló a végpontok dokumentáció teljes készletét nyújtja, valamint egy `Try it now` funkció. Ez a funkció lehetővé teszi, hogy a beállítások megadása HTML webes űrlapon, és győződjön meg arról, a lekérdezés, kód írása nélkül. Ha a lekérdezés visszatér, például a CURL-parancs megadott bemutatják a HTTP-fejlécek és törzs szükséges formátumban. |
+|`http://localhost:5000/`|A tároló kezdőlap biztosít.|
+|`http://localhost:5000/status`|GET, a kért ellenőrzése, hogy a tároló fut-e anélkül, hogy ez egy végpont lekérdezést. Ezt a kérelmet a Kubernetes esetében használható [liveness és a készültségi vizsgálatok](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).|
+|`http://localhost:5000/swagger`|A tároló biztosít teljes körű dokumentációja a végpontok és a egy `Try it now` funkció. Ezzel a funkcióval az beállítások megadása HTML webes űrlapon, és győződjön meg arról, a lekérdezés, kód írása nélkül. A lekérdezés adja vissza, miután egy példaparancs a CURL biztosított szükséges a HTTP-fejlécek és törzs szövegformátumot bemutatása. |
 
 ![Tároló kezdőlapja](./media/cognitive-services-containers-api-documentation/container-webpage.png)
-

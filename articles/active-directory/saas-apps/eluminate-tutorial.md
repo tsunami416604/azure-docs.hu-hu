@@ -16,11 +16,11 @@ ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b62be58a4ba08aa77e32f08ed85c5600c48a050
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60279960"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eluminate"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező eLuminate
 
@@ -175,7 +175,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű eLuminate hoz létre. Együttműködve [eLuminate támogatási csapatának](mailto:support@intellimedia.ca) a felhasználók hozzáadása az eLuminate platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

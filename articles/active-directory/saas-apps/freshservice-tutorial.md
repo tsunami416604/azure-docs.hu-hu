@@ -16,11 +16,11 @@ ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26f41165b94db8252d0094f2b082f3fc98cf01a7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878023"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshservice"></a>Oktatóanyag: Az Azure Active Directory-integráció a Freshservice
 
@@ -156,7 +156,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Freshservice, hajtsa
 
     e. A **biztonsági tanúsítvány-ujjlenyomat** szövegmezőjébe illessze be a **UJJLENYOMAT** tanúsítványt, amely az Azure Portalról másolt értékét.
 
-    f. Kattintson a **Mentés** gombra.
+    f. Kattintson a **Save** (Mentés) gombra
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -244,7 +244,7 @@ Ahhoz, hogy az Azure AD-felhasználók FreshService jelentkezzen be, akkor ki ke
 > [!NOTE]
 > Bármely más FreshService felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését FreshService által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

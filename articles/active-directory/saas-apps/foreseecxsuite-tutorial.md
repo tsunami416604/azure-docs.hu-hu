@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: af849fa6790dfdb57d8073b17f6d31a3f59a532d
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999757"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898698"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Oktatóanyag: A CX Suite bizonyulhat az Azure Active Directory-integráció
 
@@ -196,7 +196,7 @@ Ebben a szakaszban engedélyezze Britta Simon CX Suite bizonyulhat a hozzáfér�
 
 Ebben a szakaszban egy Britta Simon nevű CX Suite bizonyulhat a felhasználó hoz létre. Együttműködve [fája CX Suite támogatási csapatának](mailto:support@foresee.com) hozzáadása a felhasználók és a tartományt, amely a CX Suite fája platform az engedélyezéshez van szükség. Ha a tartomány a csapata által hozzáadott, a CX Suite fája platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

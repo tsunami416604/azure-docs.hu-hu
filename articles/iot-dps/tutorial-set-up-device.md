@@ -2,20 +2,19 @@
 title: Eszköz beállítása az Azure IoT Hub Device Provisioning Service szolgáltatáshoz
 description: Az IoT Hub Device Provisioning Service általi eszközregisztráció beállítása az eszközgyártási folyamat során
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 04/10/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 344cc3b8ba3f7698f5124d464f3c277b6cb5cdde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5a4f6c7d7d19ced4f2cd9ff21b00e58703f795e
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61249032"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65911681"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Az eszközregisztráció beállítása az Azure IoT Hub Device Provisioning Service használatával
 
@@ -28,7 +27,7 @@ Az előző oktatóanyagban bemutattuk, hogyan állíthatja be, hogy az Azure IoT
 
 Ehhez az oktatóanyag feltételezi, hogy már létrehozta a Device Provisioning Service-példányt és az IoT hubot az előző, [Felhőerőforrások beállítása](tutorial-set-up-cloud.md) című oktatóanyag alapján.
 
-Ez az oktatóanyag az [Azure IoT SDKs and libraries for C](https://github.com/Azure/azure-iot-sdk-c) (Azure IoT SDK-k és tárak – C) adattárt használja, amely a C nyelvhez készült Device Provisioning Service ügyfél-SDK-t tartalmazza. Az SDK jelenleg Windows- és Ubuntu-implementációkon futó rendszerek számára kínál TPM- és X.509-támogatást. Az oktatóanyag egy Windows rendszerű fejlesztési ügyfél alapján készült, amely alapszintű jártasságot feltételez a Visual Studio 2017 használatában. 
+Ez az oktatóanyag az [Azure IoT SDKs and libraries for C](https://github.com/Azure/azure-iot-sdk-c) (Azure IoT SDK-k és tárak – C) adattárt használja, amely a C nyelvhez készült Device Provisioning Service ügyfél-SDK-t tartalmazza. Az SDK jelenleg Windows- és Ubuntu-implementációkon futó rendszerek számára kínál TPM- és X.509-támogatást. Ebben az oktatóanyagban használja egy Windows fejlesztési ügyfél, amely feltételezi a Visual Studióval alapszintű ismerete alapul. 
 
 Amennyiben nem ismeri az automatikus regisztrálás folyamatát, a folytatás előtt olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket. 
 
@@ -37,14 +36,14 @@ Amennyiben nem ismeri az automatikus regisztrálás folyamatát, a folytatás el
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Visual Studio 2015 vagy [Visual Studio 2017](https://www.visualstudio.com/vs/), amelyben engedélyezve van az [„Asztali fejlesztés C++ használatával”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladat.
+* [A Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 vagy újabb verzió a ["asztali fejlesztés C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladat engedélyezve van.
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
 
 
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>Az SDK platformspecifikus verziójának kiépítése
 
-A Device Provisioning Service ügyfél-SDK az eszközregisztrációs szoftver implementálását segíti. Az SDK használata előtt azonban ki kell építenie annak fejlesztésiügyfél-platformjához tartozó verzióját, illetve az igazolási eljárást. Az oktatóanyagot követve kiépít egy támogatott igazolástípussal rendelkező SDK-t, amely egy fejlesztési Windows-platformon használja a Visual Studio 2017-et:
+A Device Provisioning Service ügyfél-SDK az eszközregisztrációs szoftver implementálását segíti. Az SDK használata előtt azonban ki kell építenie annak fejlesztésiügyfél-platformjához tartozó verzióját, illetve az igazolási eljárást. Ebben az oktatóanyagban létrehozhat egy SDK-t, amely egy Windows fejlesztési platformon használja a Visual Studio igazolási támogatott típusú:
 
 1. Töltse le a [CMake buildelési rendszert](https://cmake.org/download/).
 

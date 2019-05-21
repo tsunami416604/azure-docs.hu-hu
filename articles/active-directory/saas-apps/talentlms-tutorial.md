@@ -17,11 +17,11 @@ ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c17c055b79b8b90bd56a1dcd6472cf74d2512137
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922315"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TalentLMS
 
@@ -242,7 +242,7 @@ Ahhoz, hogy az Azure AD-felhasználók TalentLMS bejelentkezni, akkor ki kell é
 > [!NOTE]
 > Bármely más TalentLMS felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését TalentLMS által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

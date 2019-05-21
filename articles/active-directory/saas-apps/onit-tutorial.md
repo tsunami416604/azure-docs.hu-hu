@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 56b3e42a65eb84ef6ee53b4ba16e5fafc4473405
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60243758"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904863"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onit"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Onit
 
@@ -120,7 +120,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Onit, hajtsa végre 
 
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------------- |
-    | e-mail | user.mail |
+    | email | user.mail |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -260,7 +260,7 @@ Ahhoz, hogy az Azure AD-felhasználók Onit szolgáltatásba való bejelentkezé
     > [!NOTE]
     > Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozást, mielőtt aktívvá válik, győződjön meg arról, hogy fiókjuk követi.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

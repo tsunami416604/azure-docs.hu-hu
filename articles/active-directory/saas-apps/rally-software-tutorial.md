@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 800b6307504632be5b584dd645f74c6b48962d20
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274161"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65903046"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>Oktatóanyag: Az Azure Active Directory-integráció Rally szoftverrel
 
@@ -227,7 +227,7 @@ Az Azure AD-felhasználók tudnak bejelentkezni akkor ki kell építeni az Azure
    >[!NOTE]
    >Rally felhasználói fiók létrehozása szoftvereszközök vagy Rally szoftver által biztosított API-k segítségével az Azure AD-felhasználói fiókok kiépítése.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 03/11/2019
-ms.openlocfilehash: ce1af9c88bbdad96a22eb96abc26026abcad56cc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: cda9c4c914e4ec955d2009ce3f015bf7807027f6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793036"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65922200"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>A .NET SDK használatával az Azure Cosmos DB Table API és az Azure Table storage használatának első lépései
 
@@ -41,15 +41,15 @@ A minta sikeres teljesítéséhez a következőkre lesz szüksége:
 
 ## <a name="create-a-net-console-project"></a>Hozzon létre egy .NET-konzol projektet
 
-A Visual Studióban hozzon létre egy új .NET-konzolalkalmazást. A következő lépések azt mutatják be, hogyan hozhat létre konzolalkalmazást a Visual Studio 2017-ben. A lépések a Visual Studio más verziói esetén is hasonlók. Az Azure Cosmos DB tábla kódtárat bármilyen típusú .NET-alkalmazást, beleértve egy Azure-felhő vagy -webappokat alkalmazást, és az asztali és mobil alkalmazások is használhatja. Ebben az útmutatóban az egyszerűség kedvéért egy konzolalkalmazást használunk.
+A Visual Studióban hozzon létre egy új .NET-konzolalkalmazást. A következő lépések bemutatják, hogyan hozzon létre egy konzolalkalmazást a Visual Studio 2019. Az Azure Cosmos DB tábla kódtárat bármilyen típusú .NET-alkalmazást, beleértve egy Azure-felhő vagy -webappokat alkalmazást, és az asztali és mobil alkalmazások is használhatja. Ebben az útmutatóban az egyszerűség kedvéért egy konzolalkalmazást használunk.
 
 1. Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget.
 
-1. Válassza ki **telepített** > **Visual C#**   >  **Console App (.NET Core)**.
+1. Válasszon **Console App (.NET Core)**, majd válassza ki **tovább**.
 
-1. Az a **neve** mezőben adjon meg egy nevet az alkalmazásnak, például **CosmosTableSamples** (megadhat egy másik nevet igény szerint).
+1. Az a **projektnév** mezőben adjon meg egy nevet az alkalmazásnak, például **CosmosTableSamples**. (Megadhat egy másik nevet igény szerint.)
 
-1. Kattintson az **OK** gombra.
+1. Kattintson a **Létrehozás** gombra.
 
 A példában szereplő példák is hozzáadhatók a Konzolalkalmazás a Main() módjának **Program.cs** fájlt.
 

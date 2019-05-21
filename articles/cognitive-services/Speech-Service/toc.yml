@@ -303,9 +303,9 @@
         - name: Névjegy
           href: speech-devices-sdk.md
         - name: Licenc
-          href: speech-devices-sdk-license.md
+          href: 'https://aka.ms/sdsdk-license'
         - name: Harmadik felekkel kapcsolatos közlemények
-          href: devices-sdk-third-party-notices.md
+          href: 'https://aka.ms/sdsdk-toctpn'
     - name: A Speech SDK hibaelhárítása
       href: troubleshooting.md
     - name: A Beszédeszközök SDK hibaelhárítása

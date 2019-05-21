@@ -16,11 +16,11 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 499cbcada19728a0d0eba1831460ea38245b7f5c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267412"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899937"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ChronicX®
 
@@ -189,7 +189,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó ChronicX® jön létre. 
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [ChronicX® támogatási csapatának](https://www.casebank.com/contact-us/).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

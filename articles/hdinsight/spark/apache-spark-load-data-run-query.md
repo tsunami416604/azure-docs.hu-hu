@@ -7,18 +7,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
-ms.date: 04/03/2019
-ms.openlocfilehash: f480aeb7e126cb6ab8286bbfbfb8441fefeb07ef
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/16/2019
+ms.openlocfilehash: 09509b32320fb10b8ab3d563442b6d0fb44ad34e
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716084"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65909200"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Oktatóanyag: Adatok betöltése, és lekérdezéseket futtathat az Azure HDInsight az Apache Spark-fürt
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozzon létre dataframe-csv-fájlból, és hogyan futtathat interaktív Spark SQL-lekérdezéseket az egy [Apache Spark](https://spark.apache.org/) Azure HDInsight-fürt. A Sparkban az adathalmazok olyan elosztott adatgyűjtemények, amelyek megnevezett oszlopokba vannak rendezve. Az adathalmazok elméleti szinten azonosak a relációs adatbázisokban található táblákkal vagy R/Python-adathalmazokkal.
- 
+
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Adathalmaz létrehozása egy CSV-fájlból
@@ -26,7 +26,22 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Végezze el az [Apache Spark-fürt az Azure HDInsightban történő létrehozását](apache-spark-jupyter-spark-sql.md) ismertető oktatóanyagot.
+Apache Spark-fürt megléte a HDInsightban. Lásd: [hozzon létre egy Apache Spark-fürt](./apache-spark-jupyter-spark-sql-use-portal.md).
+
+## <a name="create-a-jupyter-notebook"></a>Jupyter notebook létrehozása
+
+A Jupyter Notebook egy interaktív notebook-környezet, amely számos programozási nyelvet támogat. A notebook lehetővé teszi az adatai használatát, a kódok és markdown-szövegek egyesítését, valamint egyszerű vizualizációk elvégzését. 
+
+1. Szerkessze az URL-címet `https://SPARKCLUSTER.azurehdinsight.net/jupyter` lecserélésével `SPARKCLUSTER` a Spark-fürt nevére. Ezután írja be a szerkesztett URL-CÍMÉT egy webböngészőben. Ha a rendszer kéri, adja meg a fürthöz tartozó bejelentkezési hitelesítő adatokat.
+
+2. Válassza ki a Jupyter weblapról **új** > **PySpark** , hozzon létre egy notebookot. 
+
+   ![Jupyter notebook létrehozása interaktív Spark SQL-lekérdezés futtatásához](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter notebook létrehozása interaktív Spark SQL-lekérdezés futtatásához")
+
+   Egy új notebook létrejött, és névtelen nevű megnyitott (`Untitled.ipynb`).
+
+    > [!NOTE]  
+    > Ha a notebookot a PySpark-kernellel hozza létre, a `spark`-munkamenet az első kódcella futtatásakor automatikusan jön létre. A munkamenetet nem szükséges manuálisan létrehoznia.
 
 ## <a name="create-a-dataframe-from-a-csv-file"></a>Adathalmaz létrehozása egy CSV-fájlból
 
@@ -34,13 +49,7 @@ Az alkalmazások közvetlenül hozhatnak létre adathalmazokat a távoli tárhel
     
 ![Az interaktív Spark SQL-lekérdezés adatainak pillanatképe](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Az interaktív Spark SQL-lekérdezés adatainak pillanatképe")
 
-
-1. Nyissa meg az Előfeltételek szakaszban létrehozott Jupyter notebookot, és az új notebook létrehozása PySpark.
-
-    > [!NOTE]  
-    > Ha a notebookot a PySpark-kernellel hozza létre, a `spark`-munkamenet az első kódcella futtatásakor automatikusan jön létre. A munkamenetet nem szükséges manuálisan létrehoznia.
-
-2. Illessze be a következő kódot a notebook egy üres cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához. A kód importálja az alábbi forgatókönyvhöz szükséges típusokat:
+1. Illessze be a következő kódot egy üres cellába, a Jupyter notebookot, és nyomja le az **SHIFT + ENTER** a kód futtatásához. A kód importálja az alábbi forgatókönyvhöz szükséges típusokat:
 
     ```python
     from pyspark.sql import *
@@ -51,7 +60,7 @@ Az alkalmazások közvetlenül hozhatnak létre adathalmazokat a távoli tárhel
 
     ![Az interaktív Spark SQL-lekérdezés állapota](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Az interaktív Spark SQL-lekérdezés állapota")
 
-3. Hozzon létre egy adathalmazt és egy ideiglenes táblát (**hvac**) a következő kód futtatásával. 
+2. Hozzon létre egy adathalmazt és egy ideiglenes táblát (**hvac**) a következő kód futtatásával. 
 
     ```python
     # Create a dataframe and table from sample data
@@ -94,11 +103,7 @@ Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport ol
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-> [!div class="checklist"]
-> * Hozzon létre egy Apache Spark dataframe.
-> * Spark SQL-lekérdezések futtatása az adathalmazon
+Ebben az oktatóanyagban megtudhatta, hogyan hozzon létre dataframe-csv-fájlból, és hogyan interaktív Spark SQL-lekérdezések futtatásához az Azure HDInsight az Apache Spark-fürt. Folytassa a következő cikkben tekintheti meg az adatokat, az Apache Spark regisztrált hogyan tölthetők be egy BI elemzőeszköz, mint a Power BI.
 
-Folytassa a következő cikkben tekintheti meg az adatokat, az Apache Spark regisztrált hogyan tölthetők be egy BI elemzőeszköz, mint a Power BI. 
 > [!div class="nextstepaction"]
 > [Adatok elemzése BI-eszközökkel](apache-spark-use-bi-tools.md)

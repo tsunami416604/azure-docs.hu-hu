@@ -16,11 +16,11 @@ ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0efc69aa7fb081303df6fc6327253fd5b8336999
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60241578"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Oktatóanyag: A servicenow segítségével az Azure Active Directory-integráció
 
@@ -261,7 +261,7 @@ A servicenow segítségével konfigurálja az Azure AD egyszeri bejelentkezés, 
 
         * Adja meg a **alkalmazás összevonási metaadatainak URL-címe** Azure Portalról másolt.
 
-        * Kattintson az **Importálás** gombra.
+        * Kattintson az **Importálás** elemre.
 
     * Ez olvassa be az identitásszolgáltató metaadatok URL-címet, és tölti fel a mezők adatai.
 
@@ -476,7 +476,7 @@ Ez a szakasz célja a ServiceNow Britta Simon nevű felhasználó létrehozásá
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolatba kell [ServiceNow ügyfél-támogatási csoport](https://www.servicenow.com/support/contact-support.html)
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

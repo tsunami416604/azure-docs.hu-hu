@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
-ms.date: 3/5/2018
+ms.date: 04/26/2019
 ms.author: v-jaswel
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a76c11341d0e145e6d2e9f86a7300ddb9319f6f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4fe4f651340ef54c2907192f3a96e9a017ab1dd
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827493"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65910510"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>Gyors útmutató: Translator Speech API-C#
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan használhatja a Translator Speech API-t egy .wav fá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód Windowson történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.) Ha Mac OS- vagy Linux is használhatja a szövegszerkesztőben [Visual Studio Code](https://code.visualstudio.com/Download) alternatívájaként.
+Szüksége lesz [Visual Studio 2019](https://www.visualstudio.com/downloads/) ezt a kódot futtathatnak Windows. (Az ingyenes Community Edition is elegendő.) Ha Mac OS- vagy Linux is használhatja a szövegszerkesztőben [Visual Studio Code](https://code.visualstudio.com/Download) alternatívájaként.
 
 A „speak.wav” fájlnak ugyanabban a mappában kell lennie, mint az alábbi kódból fordított végrehajtható fájlnak. Ennek a .wav fájlnak standard PCM, 16 bites, 16 kHz-es, mono formátumúnak kell lennie.
 

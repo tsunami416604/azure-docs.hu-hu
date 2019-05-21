@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 7cd20397c122834a23586bf51af6467f58531094
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60248674"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65890596"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RingCentral
 
@@ -255,7 +255,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű RingCentral hoz létre. Együttműködve [RingCentral ügyfél-támogatási csapatának](https://success.ringcentral.com/RCContactSupp) a felhasználók hozzáadása az RingCentral platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: c1b35e6a28948cf952c61ec700cbd2ba764674ab
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920148"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65895991"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardione"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező YardiOne
 
@@ -179,7 +179,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó YardiOne jön létre. Ya
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [YardiOne támogatási csapatának](https://clientcentral.yardi.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25540d1f26fa6021ef05108f9743e77a6184f3b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278094"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898568"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Oktatóanyag: Az Azure Active Directory-integráció a Githubon
 
@@ -162,7 +162,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés GitHub, hajtsa végr
 
     ![Beállítások](./media/github-tutorial/tutorial_github_config_github_06.png)
 
-6. Kattintson a **Mentés** gombra.
+6. Kattintson a **Save** (Mentés) gombra
 
 > [!NOTE]
 > Egyszeri bejelentkezés a GitHub egy adott szervezet számára, a GitHub hitelesíti, és nem helyettesíti a hitelesítés a GitHub magát. Ezért ha a felhasználó github.com munkamenete lejárt, előfordulhat, hogy megkérdezi, hogy az egyszeri bejelentkezési folyamat során a GitHub/jelszó-hitelesítést.
@@ -247,7 +247,7 @@ Ez a szakasz célja, a GitHub Britta Simon nevű felhasználó létrehozásához
     > [!NOTE]
     > Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozásra kattintva a fiók megerősítéséhez, mielőtt aktívvá válik.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

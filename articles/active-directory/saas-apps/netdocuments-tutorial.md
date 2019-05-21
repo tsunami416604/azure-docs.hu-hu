@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: cc5d8e4791bc109f4a804aad33bfc258eed97a25
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 724d47695c2878caf6ae18e2622f72dc59767ea0
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65871277"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921717"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező NetDocuments
 
@@ -104,12 +104,12 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés NetDocuments, hajtsa
 
     ![NetDocuments tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-reply.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>`
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és a válasz URL-cím ezeket az értékeket. Kapcsolattartó [NetDocuments ügyfél-támogatási csapatának](https://support.netdocuments.com/hc/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és a válasz URL-cím ezeket az értékeket. Tárház-azonosító értéke belevághat CA-8 karakterből álló kódot a NetDocuments tárházhoz tartozó követ. Ellenőrizheti a [NetDocuments összevont identitás támogatása a dokumentum](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) további információt. Másik lehetőségként felveheti a kapcsolatot [NetDocuments ügyfél-támogatási csapatának](https://support.netdocuments.com/hc/) beolvasni ezeket az értékeket, ha dificulties konfigurálása a fenti adatok használatával. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 

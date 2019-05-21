@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 39ff12a853b38b843a73f4a87a24db0292d1accd
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 139c0c29033dc45d07fd0987c2eee92308512329
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601611"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65906982"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API a pythonnal
 
@@ -26,15 +26,31 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Rövid útmutató elvégzéséhez kell rendelkeznie:
 - Az űrlap felismerő korlátozott hozzáférésű előzetes verzióra való hozzáférést. Töltse ki az előzetes verzió eléréséhez, és küldje el a [űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap.
 - [Python](https://www.python.org/downloads/) telepítve (Ha a minta futtatása helyben szeretné).
-- Az űrlap felismerő egy előfizetési kulcsot. Előfizetés – olyan egyetlen szolgáltatást kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) felismerő képernyő előfizetés és a kulcs beszerzése. Egy több szolgáltatásos előfizetés nem használható, mert nem tartalmazza az űrlap felismerő szolgáltatás.
 - Az azonos típusú legalább öt űrlapok készlete. Használhat egy [mintaadatkészlettel](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban.
+
+## <a name="create-a-form-recognizer-resource"></a>Űrlap felismerő erőforrás létrehozása
+
+Használja az űrlap felismerő hozzáférést kapnak, amikor kap egy üdvözlő e-mailt, több hivatkozásokat és forrásanyagokat. Ebben az üzenetben az "Az Azure portal" hivatkozás segítségével nyissa meg az Azure Portalt, és hozzon létre egy űrlap felismerő erőforrást. Az a **létrehozás** panelen adja meg a következő információkat:
+
+|    |    |
+|--|--|
+| **Name (Név)** | Az erőforrás egy leíró nevet. Azt javasoljuk egy leíró nevet, például *MyNameFormRecognizer*. |
+| **Előfizetés** | Válassza ki az Azure-előfizetést, amelynek hozzáférési engedélyt kapott. |
+| **Hely** | A cognitive Services-példány helye. Különböző helyeken a késés bevezetni, de semmilyen hatást nem futásidejű rendelkezésre állását az erőforrást. |
+| **Tarifacsomag** | Az erőforrás költségének, válassza ki a tarifacsomagot, és a használat függ. További információkért tekintse meg az API-t [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/).
+| **Erőforráscsoport** | A [Azure-erőforráscsoport](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) , amely tartalmazza az erőforrás. Hozzon létre egy új csoportot, vagy adja hozzá egy meglévő csoportot. |
+
+> [!IMPORTANT]
+> Általában a Cognitive Services-erőforrás létrehozásakor az Azure Portalon lehetősége van egy több szolgáltatásos előfizetési kulcsot (több, a cognitive services futásideje) vagy egy (csak egy adott cognitive szolgáltatáshoz használt) – olyan egyetlen szolgáltatást előfizetési kulcs létrehozása. Azonban mivel az űrlap felismerő előzetes kiadás, több szolgáltatásos az előfizetésben nem szerepel, és a egyszolgáltatásos előfizetés nem hozható létre, ha nem használ az üdvözlő e-mailt a megadott hivatkozás.
+
+Befejeztével az űrlap felismerő erőforrás üzembe helyezéséhez keresse meg és válassza ki a **összes erőforrás** listájához a portálon. Válassza ki a **kulcsok** fülre kattintva megtekintheti az előfizetési kulcsok. Egyiket sem az alkalmazás hozzáférést biztosít az erőforráshoz. Másolja az értéket a **kulcs 1**. A következő szakaszban be fogja használni.
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
 Hozhat létre, és futtassa a mintát, hajtsa végre ezeket a módosításokat a következő kódrészletet:
 1. Cserélje le `<Endpoint>` az űrlap felismerő erőforrás Azure-régióban, ahol beszerzett az előfizetési kulcsok a végpont URL-címet.
 1. Cserélje le `<SAS URL>` a egy Azure Blob storage-tároló megosztott hozzáférhetnek a betanítási adatok helye jogosultságkód (SAS) URL-CÍMÉT.  
-1. A `<Subscription Key>` helyére írja be az előfizetési kulcsot.
+1. Cserélje le `<Subscription key>` az előfizetés az előző lépésben kimásolt kulccsal.
     ```python
     ########### Python Form Recognizer Train #############
     from requests import post as http_post

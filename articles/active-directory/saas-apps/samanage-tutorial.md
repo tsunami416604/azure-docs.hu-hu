@@ -16,11 +16,11 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b00e27a0620212fbc09f8b7d91d8f5b9d0971c8f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105717"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902982"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Samanage
 
@@ -237,7 +237,7 @@ Samanage, esetén kiépítése a manuális feladat.
    >[!NOTE]
    >Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozásra kattintva a fiók megerősítéséhez, mielőtt aktívvá válik. Bármely más Samanage felhasználói fiók létrehozása eszközöket használhatja, vagy API-k által biztosított Samanage üzembe helyezni az Azure Active Directory felhasználói fiókokat.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

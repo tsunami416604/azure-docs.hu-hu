@@ -17,11 +17,11 @@ ms.date: 04/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23669671c9aec2ebad8e03e06a0ea1b139214cad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683851"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902839"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP Business Bydesignnal
 
@@ -245,7 +245,7 @@ Ebben a szakaszban egy SAP Business bydesign megoldással Britta Simon nevű fel
 > [!NOTE]
 > Győződjön meg arról, hogy NameID értékének egyeznie kell a felhasználónév mező az SAP Business bydesign megoldással platformon.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

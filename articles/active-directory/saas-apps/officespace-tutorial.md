@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 6547a640f6e56865d44b6848cf37078161faa538
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261538"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>Oktatóanyag: Az Azure Active Directory-integráció OfficeSpace szoftverrel
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása OfficeSpace szoftverrel, haj
 
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------------- |
-    | e-mail | user.mail |
+    | email | user.mail |
     | név | user.displayname |
     | first_name | user.givenname |
     | last_name | user.surname |
@@ -245,7 +245,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó OfficeSpace szoftver jö
 > [!NOTE]
 > Ha kézzel létrehoz egy felhasználót van szüksége, forduljon kell [OfficeSpace szoftver támogatási csapatának](mailto:support@officespacesoftware.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

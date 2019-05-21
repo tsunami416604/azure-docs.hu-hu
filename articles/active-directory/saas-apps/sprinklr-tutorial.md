@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 1c3b95686b8c91552615a9014102fd6a14f8c385
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277068"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65889071"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Sprinklr
 
@@ -263,7 +263,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 > [!NOTE]
 > Eszközt is használhat bármilyen más Sprinklr felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése Sprinklr által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

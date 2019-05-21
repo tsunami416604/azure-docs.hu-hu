@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52c49bdd51bda7876d19a681bde79c9dbeeb4ea7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60284612"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901282"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AnswerHub
 
@@ -180,7 +180,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
 3. A felhasználói tulajdonságok a lépések végrehajtásához.
 
-    ![Felhasználói tulajdonságok](common/user-properties.png)
+    ![Felhasználó tulajdonságai](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
@@ -242,7 +242,7 @@ Ahhoz, hogy az Azure AD-felhasználók AnswerHub bejelentkezni, hozzá kell őke
 > [!NOTE]
 > Bármely egyéb felhasználói fiók létrehozási eszköz is használhatja, vagy API Azure AD felhasználói fiók beállítása AnswerHub által biztosított.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panel segítségével tesztelheti.
 

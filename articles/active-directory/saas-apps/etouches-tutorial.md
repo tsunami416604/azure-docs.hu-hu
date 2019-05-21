@@ -16,11 +16,11 @@ ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46fa85581829f82da9a137315e1f890aa481408d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850785"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898922"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező etouches
 
@@ -121,7 +121,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés etouches, hajtsa vé
 
     | Name (Név) | Adatforrás-attribútum|
     | ------------------- | -------------------- |
-    | E-mail | user.mail | 
+    | E-mail-cím | user.mail | 
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -234,7 +234,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű etouches hoz létre. Együttműködve [etouches ügyfél-támogatási csoportjának](https://www.etouches.com/event-software/support/customer-support/) a felhasználók hozzáadása az etouches platformon.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

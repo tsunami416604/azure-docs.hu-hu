@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: c5d1a791de5c295b4644e5633983a5369200498e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256583"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65888414"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Oktatóanyag: Az Azure Active Directory integrációja az Trisotech digitális vállalati kiszolgáló
 
@@ -140,11 +140,11 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Trisotech digitális
 
     c. Az a **Alkalmazásazonosító** szövegmezőbe írja be az URL-cím a következő minta használatával: `https://<companyname>.trisotech.com`.
 
-    d. Kattintson a **Mentés** gombra.
+    d. Kattintson a **Save** (Mentés) gombra
 
     e. Adja meg a tartománynevet a **engedélyezett tartományok (üres azt jelenti, hogy mindenki)** szövegmezőbe azt automatikusan licenceket rendel hozzá a megengedett tartomány megfelelő felhasználókat keres
 
-    f. Kattintson a **Mentés** gombra.
+    f. Kattintson a **Save** (Mentés) gombra
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -203,7 +203,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Trisotech digitális vá
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Trisotech digitális Enterprise Server támogatási csoport](mailto:support@trisotech.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

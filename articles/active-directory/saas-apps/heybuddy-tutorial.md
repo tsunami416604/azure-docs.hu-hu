@@ -16,11 +16,11 @@ ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 850f5e3f96439e1fea0a77b94f2ed733cc451bdf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60275871"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898258"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező HeyBuddy
 
@@ -211,7 +211,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó HeyBuddy jön létre. He
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [HeyBuddy támogatási csapatának](mailto:support@heybuddy.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

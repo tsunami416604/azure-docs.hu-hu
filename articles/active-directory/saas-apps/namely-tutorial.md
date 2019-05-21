@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 7298c8a9220332f1361e673b5000c2df37a88865
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59259558"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904923"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>Oktatóanyag: Az Azure Active Directory-integráció engedélyezésével
 
@@ -234,7 +234,7 @@ Ez a szakasz célja, nevezetesen Britta Simon nevű felhasználó létrehozásá
 
     d. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -17,11 +17,11 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ca2e717e612973fa4c46c9ab4e70091d32fcf19
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713201"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902424"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>Oktatóanyag: BIZTONSÁGOS KÉZBESÍTÉSÉHEZ az Azure Active Directory-integráció
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával,
 
 Ebben a szakaszban egy biztonságos továbbítására Britta Simon nevű felhasználói hoz létre. Együttműködve [biztonságos NYÚJTHAT a támogatási csapat](mailto:iw-sd-support@fujifilm.com) a felhasználók hozzáadása az biztonságos továbbítására platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

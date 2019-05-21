@@ -16,11 +16,11 @@ ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6741cf58208e972c85d41f2fa657e7dd82cc4f2b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877683"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900206"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-degreed"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Degreed
 
@@ -193,7 +193,7 @@ Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az D
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Degreed támogatási csapatának](mailto:admin@degreed.com).
 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

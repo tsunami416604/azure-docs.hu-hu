@@ -17,11 +17,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 11cb309e6c49ed36247398909e5e1b7ad9f7bc42
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: HT
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62736426"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező PageDNA
 
@@ -199,7 +199,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés Page
 
 Britta Simon nevű felhasználót a PageDNA megtörtént. Nem kell tennie semmit, a felhasználó létrehozásához. PageDNA támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Britta Simon nevű felhasználó már nem létezik az PageDNA, ha egy új jön létre a hitelesítés után.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
 

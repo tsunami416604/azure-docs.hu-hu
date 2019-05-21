@@ -16,11 +16,11 @@ ms.date: 12/18/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21e71e38cd8e2a6d627676cddd400f625452e449
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886347"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900683"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-box"></a>Oktatóanyag: A mezőbe az Azure Active Directory-integráció
 
@@ -183,7 +183,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó hoznak létre a boxban. 
 > [!NOTE]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [be támogatási csapatának](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

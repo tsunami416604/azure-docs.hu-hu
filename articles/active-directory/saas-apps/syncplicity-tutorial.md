@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 041f1e9706c7d815dad1a33104e7dd15b2cc3893
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270234"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901981"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Syncplicity
 
@@ -235,7 +235,7 @@ AAD-felhasználók számára jelentkezhetnek be akkor ki kell építeni Syncplic
 > [!NOTE]
 > Bármely más Syncplicity felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Syncplicity által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

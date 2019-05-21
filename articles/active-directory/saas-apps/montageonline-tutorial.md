@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 28d52a6eb5018aac8ebeb48b0a2a60a1dd9e1a43
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59260255"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Oktatóanyag: Az Azure Active Directory-integráció Montázs Online-nal
 
@@ -192,7 +192,7 @@ Ebben a szakaszban engedélyezze Britta Simon Montázs online-hoz való hozzáf�
 
 Ebben a szakaszban egy Montázs online Britta Simon nevű felhasználó hoz létre. Együttműködve [Montázs Online támogatási csoport](https://www.montage.co.nz/contact-us/) a felhasználók hozzáadása az Online Montázs platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

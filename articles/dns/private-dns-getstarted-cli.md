@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: victorh
 ms.openlocfilehash: 2758817d58fdd2e80b302b5f833308dbde1a6b63
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779164"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65916058"
 ---
 # <a name="create-an-azure-dns-private-zone-using-the-azure-cli"></a>Saját Azure DNS-zóna létrehozása az Azure CLI használatával
 
@@ -148,7 +148,7 @@ Most tesztelheti a névfeloldás a **private.contoso.com** saját zóna.
 A névfeloldás teszteléséhez használhatja a ping parancsot. Ehhez konfigurálja mindkét virtuális gépen a tűzfalat arra, hogy engedélyezze a bejövő ICMP-csomagokat.
 
 1. Csatlakozzon a myVM01 virtuális géphez, és nyisson meg egy Windows PowerShell-ablakot rendszergazdai jogosultsággal.
-2. Futtassa az alábbi parancsot:
+2. Futtassa a következő parancsot:
 
    ```powershell
    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4

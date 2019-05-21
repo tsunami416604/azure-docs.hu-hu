@@ -17,11 +17,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a23b024737f6af1f6361983045037b325783518a
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564900"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>Oktatóanyag: Az Azure Active Directory integrációja az Yardi tanulás
 
@@ -190,7 +190,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Yardi tanulási jön lé
 >[!NOTE]
 >Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Yardi tanulási támogatási csapatának](mailto:elearning@yardi.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

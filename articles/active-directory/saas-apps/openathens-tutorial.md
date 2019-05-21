@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbb1bc64d923add0b1fd38749299714a9093633
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3eca6fc3ab788ee7085c0df5f6c9770858af29ba
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408021"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891681"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező OpenAthens
 
@@ -143,11 +143,11 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés OpenAthens, hajtsa v
 
     a. A **megjelenített névleképezés**válassza **attribútum használata**.
 
-    b. Az a **megjelenítési név attribútum** szöveget adja meg az értéket `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    b. Az a **megjelenítési név attribútum** szöveget adja meg az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
     
     c. A **egyedi felhasználóleképezést**válassza **attribútum használata**.
 
-    d. Az a **egyedi felhasználói attribútum** szöveget adja meg az értéket `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    d. Az a **egyedi felhasználói attribútum** szöveget adja meg az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     e. A **állapot**, jelölje be mind a három jelölőnégyzetet.
 

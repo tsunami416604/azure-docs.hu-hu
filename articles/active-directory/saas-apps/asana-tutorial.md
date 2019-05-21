@@ -16,11 +16,11 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 73f6126d6bf172a35a284e92b65b1c3ef449949e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60283816"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900184"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Oktatóanyag: Az Azure Active Directory integrációja az Asanában
 
@@ -208,7 +208,7 @@ Ebben a szakaszban egy asana Britta Simon nevű felhasználó létrehozásához.
 
 3. Kattintson a **meghívó küldése**. Az új felhasználó kap egy e-mailt saját e-mail-fiókba. felhasználó létrehozása és érvényesíteni a fiókot kell.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -5,15 +5,15 @@ author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 04/26/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 5e88602aa3b983e1533248253d53967f39e6b5eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7a37b0b1a804851268fad30038388c20d2e4fb6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894390"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912693"
 ---
 # <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Műveletek tömeges végrehajtása a BulkExecutor .NET-gráfkódtár használatával az Azure Cosmos DB Gremlin API-ban
 
@@ -114,7 +114,7 @@ e.AddProperty("customProperty", "value");
 ## <a name="sample-application"></a>Mintaalkalmazás
 
 ### <a name="prerequisites"></a>Előfeltételek
-* Az Azure-fejlesztési számítási feladatot is tartalmazó Visual Studio 2017. Ingyenesen elkezdheti a [Visual Studio 2017 Community Edition](https://visualstudio.microsoft.com/downloads/) használatát.
+* Az Azure-fejlesztési számítási feladatot a Visual Studio 2019. A használatának megkezdése a [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) ingyenes.
 * Azure-előfizetés. Itt hozhat létre [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Alternatív lehetőségként [ingyenesen kipróbálhatja az Azure Cosmos DB-t](https://azure.microsoft.com/try/cosmosdb/), és Azure-előfizetés nélkül hozhat létre egy Cosmos DB-adatbázisfiókot.
 * Azure Cosmos DB Gremlin API-adatbázis **korlátlan gyűjteménnyel**. Ez az útmutató bemutatja, hogy hogyan foghat neki [az Azure Cosmos DB Gremlin API használatának a .NET környezetben](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet).
 * Git. További információért tekintse meg a [Git letöltési oldalát](https://git-scm.com/downloads).

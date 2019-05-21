@@ -16,11 +16,11 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c0d595bcd96bb38021a2128138f7ee49f9b8354
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60283069"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Bime
 
@@ -232,7 +232,7 @@ Ahhoz, hogy az Azure AD-felhasználók Bime jelentkezzen be, akkor ki kell épí
 > [!NOTE]
 > Bármely más Bime felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Bime által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

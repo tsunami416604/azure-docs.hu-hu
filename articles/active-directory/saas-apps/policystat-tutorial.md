@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 98ab9904f8afc5c74d9f043b0964bc56b49670cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60335867"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904558"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező PolicyStat
 
@@ -247,7 +247,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó PolicyStat jön létre. 
 >[!NOTE]
 >Eszközt is használhat bármilyen más PolicyStat felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése PolicyStat által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 4d50c4366128edb5b4bc76408eb1085817af1ce3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271900"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896739"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>Oktatóanyag: Az Azure Active Directory-integráció, a New relic használatával
 
@@ -227,7 +227,7 @@ Ahhoz, hogy az Azure Active Directory-felhasználók jelentkezzen be a New relic
 >Bármely más New relic-bővítménnyel felhasználói fiók létrehozása eszközöket használhatja, vagy aad-ben a felhasználói fiókok kiépítését a New Relic által biztosított API-k.
 > 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.date: 01/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7fbaad8ea3e242c79f06ac314f551bddd892d45
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852149"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>Oktatóanyag: Az Azure Active Directory-integráció az eszköz Bank
 
@@ -189,7 +189,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó az eszköz Bank jön lé
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [eszköz Bank támogatási csapatának](mailto:support@assetbank.co.uk).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

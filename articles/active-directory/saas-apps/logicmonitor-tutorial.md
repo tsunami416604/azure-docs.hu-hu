@@ -16,11 +16,11 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a953ae52f37b8d48f9e2e0566325691dbb08307
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60257768"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező LogicMonitor
 
@@ -213,7 +213,7 @@ Az Azure AD-felhasználók számára jelentkezhetnek be akkor ki kell építeni 
 
     ![Szerepkörök és a felhasználók](./media/logicmonitor-tutorial/ic790056.png "szerepkörök és a felhasználók")
 
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 
 4. Az a **vegyen fel egy fiókot** szakaszban, hajtsa végre az alábbi lépéseket:
 
@@ -228,7 +228,7 @@ Az Azure AD-felhasználók számára jelentkezhetnek be akkor ki kell építeni 
 > [!NOTE]
 > Bármely más LogicMonitor felhasználói fiók létrehozása eszközöket használhatja, vagy API-k által biztosított LogicMonitor üzembe helyezni az Azure Active Directory felhasználói fiókokat.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

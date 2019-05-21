@@ -16,11 +16,11 @@ ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2692d4109b5ca673b2acffe19eac1b141e5b8067
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891450"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902863"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>Oktatóanyag: Az Azure Active Directory integrációja az SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazás
 
@@ -185,7 +185,7 @@ Ebben a szakaszban Britta Simon használható az Azure engedélyezi az egyszeri 
 
 Ebben a szakaszban hoz létre egy nevű Britta Simon felhasználó SAML 1.1-es Token LOB-alkalmazás engedélyezve. A SAML 1.1-es jogkivonat használata engedélyezve van a LOB-alkalmazás támogatási csapatával a SAML 1.1-es jogkivonat számára engedélyezve van a LOB-alkalmazás platform hozzáadása. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

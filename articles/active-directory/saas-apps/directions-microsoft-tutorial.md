@@ -16,11 +16,11 @@ ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ca35e1c6966365fab1a53fe9674a8f361422eea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280541"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899741"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>Oktatóanyag: Az utasításokat a Microsoft Azure Active Directory-integráció
 
@@ -200,7 +200,7 @@ Nincs művelet elem Microsoft irányban történő felhasználókiépítés konf
 
 Egy hozzárendelt felhasználó megpróbál bejelentkezni a Microsoft a hozzáférési panelen megjelenő utasításokat, ha a megjelenő utasításokat a Microsoft ellenőrzi, hogy létezik-e a felhasználó. Ha nincs felhasználói fiók elérhető még, a utasításokat a Microsoft automatikusan létre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

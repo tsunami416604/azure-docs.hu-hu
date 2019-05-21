@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 33fd6b8b7423f8640910e02383bba8397d2f8336
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 45ffcaa1d5bccb0746ce86ec0f98342ce5e9bcc9
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408079"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65903961"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező QuickHelp
 
@@ -150,11 +150,11 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés QuickHelp, hajtsa v�
    
     b. A letöltött Azure-metaadatfájl feltöltésére, kattintson a **Tallózás**, keresse meg a fájlt, kattintson záró **metaadatok feltöltése**.
    
-    c. Az a **E-mail** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. Az a **E-mail** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
    
-    d. Az a **Utónév** szövegmezőbe `type https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. Az a **Utónév** szövegmezőbe `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
    
-    e. Az a **Vezetéknév** szövegmezőbe `type https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. Az a **Vezetéknév** szövegmezőbe `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
    
     f. Az a **Műveletsáv**, kattintson a **mentése**.
 

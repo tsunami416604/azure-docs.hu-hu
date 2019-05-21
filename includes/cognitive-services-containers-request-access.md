@@ -1,39 +1,36 @@
 ---
 author: diberry
-ms.author: v-junlch
+ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 01/24/2019
-ms.date: 02/21/2019
-ms.openlocfilehash: 11a336bbcf75c6c4de61f1bb681ab6ee7aa05650
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/24/2019
+ms.openlocfilehash: 4cdcec850f32d7e94f33eb28e5bf7839e511f347
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815631"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891228"
 ---
-Először végezze el, és küldje el a [Cognitive Services Látástechnológia tárolók kérelem űrlap](https://aka.ms/VisionContainersPreview) hozzáférés kéréséhez a tárolóhoz. Az űrlap kérelmek, a vállalat és a felhasználói forgatókönyvet, amelynek a tároló használni kívánt információkat. Miután elküldte, az Azure Cognitive Services-csapat áttekinti az űrlap győződjön meg arról, hogy megfelel a feltételeknek a privát tárolóregisztrációs adatbázis eléréséhez.
+Töltse ki és küldje el a [Cognitive Services Látástechnológia tárolók kérelem űrlap](https://aka.ms/VisionContainersPreview) hozzáférés kéréséhez a tárolóhoz. Az űrlap kérelmek, a vállalat és a felhasználói forgatókönyvet, amelynek a tároló használni kívánt információkat. Az űrlap mentése után az Azure Cognitive Services-csapat áttekinti a annak ellenőrzésére, hogy megfelel a feltételeknek a privát tárolóregisztrációs adatbázis eléréséhez.
 
 > [!IMPORTANT]
-> Egy a képernyőn egy Microsoft-fiók (MSA) vagy az Azure Active Directory (Azure AD)-fiókjához társított e-mail-címet kell használnia.
+> Társított vagy egy Microsoft fiók (MSA), vagy a képernyőn egy Azure Active Directory (Azure AD-) fiók egy e-mail-címet kell használnia.
 
-Ha jóváhagyja a kérést, majd egy e-mailt kap az utasítások a szerezze be a hitelesítő adatokat, és a privát tárolóregisztrációs adatbázis eléréséhez.
+Ha jóváhagyja a kérelmét, kap egy e-mailt az utasításokat, amelyek bemutatják, hogyan szerezze be a hitelesítő adatokat, és a privát tárolóregisztrációs adatbázis eléréséhez.
 
 ## <a name="log-in-to-the-private-container-registry"></a>Jelentkezzen be a privát tárolóregisztrációs adatbázis
 
-Többféleképpen is a Cognitive Services-tárolók a privát tárolóregisztrációs adatbázis hitelesítéséhez, de a parancssorból az ajánlott módszer használatával a [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/).
+Többféleképpen is lehet hitelesíteni a privát tárolóregisztrációs adatbázis, a Cognitive Services-tárolók. Azt javasoljuk, hogy használja-e a parancssori metódus használatával a [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/).
 
-Használja a [docker login](https://docs.docker.com/engine/reference/commandline/login/) parancsot, amellyel majd bejelentkezik a következő példában látható módon `containerpreview.azurecr.io`, a Cognitive Services-tárolók privát tárolójegyzékben. Cserélje le *\<felhasználónév\>* felhasználónévvel és *\<jelszó\>* az Azure-tól kapott a hitelesítő adatokban megadott jelszóval Cognitive Services team.
+Használja a [docker login](https://docs.docker.com/engine/reference/commandline/login/) paranccsal jelentkezzen be az alábbi példában látható módon `containerpreview.azurecr.io`, vagyis a Cognitive Services-tárolók privát tárolójegyzékben. Cserélje le *\<felhasználónév\>* felhasználónévvel és *\<jelszó\>* az Azure-tól kapott a hitelesítő adatokban megadott jelszóval Cognitive Services team.
 
 ```
 docker login containerpreview.azurecr.io -u <username> -p <password>
 ```
 
-Biztonságossá tett egy szövegfájlt a hitelesítő adatait, ha a szöveges tartalmát összefűzheti fájlt, a `cat` parancsra a `docker login` parancsot az alábbi példában látható módon. Cserélje le *\<passwordFile\>* elérési útja és a jelszót tartalmazó szöveges fájl neve és *\<felhasználónév\>* felhasználónévvel a megadott a hitelesítő adatait.
+Ha beállította a hitelesítő adatait egy szövegfájlba, összefűzheti a szöveges fájl tartalmát a `docker login` parancsot. Használja a `cat` parancsot, az alábbi példában látható módon. Cserélje le *\<passwordFile\>* elérési útja és a jelszót tartalmazó szöveges fájl neve. Cserélje le *\<felhasználónév\>* a hitelesítő adatait a megadott felhasználónévvel.
 
 ```
 cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
 ```
 
-
-<!-- ms.date: 02/21/2019 -->

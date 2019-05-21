@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: c2964169996aa3b2ac18c9c2accf358b7213c1c1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854517"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>Oktatóanyag: Az Azure Active Directory-integráció Menlo biztonság
 
@@ -202,7 +202,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Menlo biztonsági Britta Simon nevű felhasználó hoz létre. Együttműködve [Menlo biztonsági ügyfél-támogatási csapatának](https://www.menlosecurity.com/menlo-contact) a felhasználók hozzáadása az Menlo biztonsági platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

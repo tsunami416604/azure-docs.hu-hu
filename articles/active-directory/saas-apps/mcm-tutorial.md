@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 9214f438df57ca9cd95fd1f5827db8ab82f5a136
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60255131"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897354"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező MCM
 
@@ -187,7 +187,7 @@ Ebben a szakaszban egy felhasználói Britta Simon nevű MCM hoz létre. Együtt
 >[!NOTE]
 >Bármely más MCM felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését MCM által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

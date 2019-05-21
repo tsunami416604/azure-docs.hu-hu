@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8acc835a7f18ee673f0857f65d49eed59638a6d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60271167"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Oktatóanyag: Az Azure Active Directory-integráció InstaVR Viewer
 
@@ -209,7 +209,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó InstaVR megjelenítőben jön létre. InstaVR megjelenítő támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik InstaVR megjelenítőben, egy új jön létre a hitelesítés után. Ha között olyan probléma, forduljon a [InstaVR megjelenítő támogatási csapatának](mailto:contact@instavr.co).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 1. Nyissa meg egy új böngészőablakban, és jelentkezzen be a InstaVR megjelenítő vállalati hely rendszergazdaként.
 

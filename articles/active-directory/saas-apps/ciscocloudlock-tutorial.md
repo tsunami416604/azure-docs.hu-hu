@@ -17,11 +17,11 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c43a38a456eb0fce3f46409bd256f0fc42e8ade
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691441"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899966"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-security-fabric"></a>Oktatóanyag: A Felhőbeli biztonsági Fabric az Azure Active Directory-integráció
 
@@ -195,7 +195,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéses ho
 
 Ebben a szakaszban egy Felhőbeli biztonsági hálóban Britta Simon nevű felhasználó létrehozásához. Együttműködve [Felhőháló biztonsági támogatási csapatának](mailto:support@cloudlock.com) a felhasználók hozzáadása a Cloud Security Fabric platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

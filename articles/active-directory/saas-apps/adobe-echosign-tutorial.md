@@ -16,11 +16,11 @@ ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8942ebf3f006c2e1cc72b322dd243d46bf69f04d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888127"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899648"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Oktatóanyag: Az Azure Active Directory integrációja az Adobe Sign
 
@@ -250,7 +250,7 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be Adobe Sign, akkor ki kell
 >[!NOTE]
 >Az Azure Active Directory fióktulajdonos kap egy e-mailt, amelyben a hivatkozást a fiók megerősítéséhez, mielőtt aktívvá válik. 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

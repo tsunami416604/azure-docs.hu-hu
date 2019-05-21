@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e48e353df6c14ec24a01fe3b1852de2c6a0a3155
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843691"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901045"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>Oktatóanyag: Az Azure Active Directory integrációja az AppNeta Teljesítményfigyelő
 
@@ -123,9 +123,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés AppNeta Teljesítmé
     | --------| ----------------|
     | Keresztnév| user.givenname|
     | Vezetéknév| user.surname|
-    | e-mail| user.userprincipalname|
+    | email| user.userprincipalname|
     | név| user.userprincipalname|
-    | csoportok  | user.assignedroles |
+    | Csoportok  | user.assignedroles |
     | telefon| user.telephonenumber |
     | cím| user.jobtitle|
     | | |
@@ -227,7 +227,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó a Teljesítményfigyelő
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [AppNeta Teljesítményfigyelő támogatási csapatának](mailto:support@appneta.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

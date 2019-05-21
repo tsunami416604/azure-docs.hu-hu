@@ -16,11 +16,11 @@ ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 426162d6655a107aad6fc7dd1081ca9352099449
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60261376"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897897"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-korn-ferry-alp"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Korn komphajó ALP
 
@@ -187,7 +187,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Korn komphajó ALP hoz létre. Együttműködve [Korn komphajó ALP támogatási csapatának](mailto:noreply@kornferry.com) a felhasználók hozzáadása az Korn komphajó ALP platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

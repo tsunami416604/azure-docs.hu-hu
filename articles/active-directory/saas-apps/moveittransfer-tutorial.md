@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a491cd303cccd94cbb489654890d55c03912a63
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: d7020299bbd52f5e7ba22809847815cb04048cb6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408044"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Oktatóanyag: MOVEit átvitele – az Azure AD-integráció az Azure Active Directory-integráció
 
@@ -174,7 +174,7 @@ MOVEit átvitele – az Azure AD-integráció, az Azure AD egyszeri bejelentkez�
     
     b. Válassza ki **más** , **teljes fájlvisszaállítási név** és a a **attribútumnév** szövegmezőben, hogy az érték put: `http://schemas.microsoft.com/identity/claims/displayname`.
     
-    c. Válassza ki **más** , **E-mail** és a a **attribútumnév** szövegmezőben, hogy az érték put: `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. Válassza ki **más** , **E-mail** és a a **attribútumnév** szövegmezőben, hogy az érték put: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
     
     d. Válassza ki **Igen** , **frissítsen-fiók automatikus létrehozása**.
     

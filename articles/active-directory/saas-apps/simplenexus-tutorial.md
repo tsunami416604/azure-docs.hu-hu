@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 44959410b68439dd6a132c41d2a51dcdafdec846
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257671"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65889928"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SimpleNexus
 
@@ -188,7 +188,7 @@ Ahhoz, hogy az Azure AD-felhasználók SimpleNexus jelentkezzen be, akkor ki kel
 > [!NOTE]
 > Bármely más SimpleNexus felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését SimpleNexus által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.date: 01/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd5f32fd43d75ee91460a5d94ec4bcd57edb0769
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60276679"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898341"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Oktatóanyag: GTNexus egyszeri Bejelentkezéses rendszert az Azure Active Directory-integráció
 
@@ -181,7 +181,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű GTNexus egyszeri Bejelentkezéses rendszert hoz létre. Együttműködve [GTNexus egyszeri Bejelentkezéses rendszert támogatási csapatának](mailto:support@gtnexus.com) a felhasználók hozzáadása az egyszeri Bejelentkezéses rendszert GTNexus platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

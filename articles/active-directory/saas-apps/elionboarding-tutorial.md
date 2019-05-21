@@ -16,11 +16,11 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9f79a573eedba781c38facb63a2ab86b3897545
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876595"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eli-onboarding"></a>Oktatóanyag: Az Azure Active Directory-integráció Eli üzembe helyezésében
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 Ebben a szakaszban egy Britta Simon nevű Eli bevezetése a felhasználó hoz létre. Együttműködve [Eli bevezetési támogatási csapat](mailto:support@geteli.com) a felhasználók hozzáadása az Eli bevezetési platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: jeedes
 ms.openlocfilehash: b2940f3eee3112fe1c6d57cc92157c573ecad109
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722568"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904279"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Oktatóanyag: Az Azure Active Directory-integráció, a Salesforce-tesztkörnyezet
 
@@ -298,7 +298,7 @@ Ebben a szakaszban engedélyezze Britta Simon ad hozzáférést, a Salesforce v�
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó Salesforce tesztkörnyezetben jön létre. Salesforce-tesztkörnyezet támogatja a just-in-time-kiépítés, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik, a Salesforce-tesztkörnyezet, egy új jön létre, a Salesforce-tesztkörnyezet elérése megkísérlésekor. Salesforce-tesztkörnyezet is támogatja a felhasználók automatikus átadása, további részleteket talál [Itt](salesforce-sandbox-provisioning-tutorial.md) konfigurálásának a felhasználók automatikus átadása.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

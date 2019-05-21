@@ -16,11 +16,11 @@ ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 308f745489fba2e2b539a2f2615b65228565dcf9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850009"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>Oktatóanyag: Cisco Webex értekezletek az Azure Active Directory-integráció
 
@@ -132,7 +132,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Cisco Webex értekez
     | ---------------|  --------- |
     |   Keresztnév    | user.givenname |
     |   Vezetéknév    | user.surname |
-    |   e-mail       | user.mail |
+    |   email       | user.mail |
     |   egyedi azonosítója    | user.mail |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -249,7 +249,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ez a szakasz célja a Cisco Webex értekezletek Britta Simon nevű felhasználó létrehozásához. Cisco Webex értekezletek támogatja **just-in-time** kiépítést, amely alapértelmezés szerint ki van engedélyezve. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik a Cisco Webex értekezletek, amikor megpróbálja elérni a Cisco Webex értekezletek egy új jön létre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

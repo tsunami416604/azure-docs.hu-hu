@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 15cfa025bde3367c57255ce50f95c69293b63f92
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60338946"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905614"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező UserEcho
 
@@ -240,7 +240,7 @@ Ez a szakasz célja UserEcho Britta Simon nevű felhasználó létrehozásához.
     
     c. Kattintson a **meghívása**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

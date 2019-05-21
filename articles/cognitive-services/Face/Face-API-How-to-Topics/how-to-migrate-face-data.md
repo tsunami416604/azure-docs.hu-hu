@@ -10,36 +10,38 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: lewlu
-ms.openlocfilehash: 02e9b64c89eda1471d644e0116bbf8c1c061ccc3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 702aed12860c090e83b997e6b56d56e06b416568
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682519"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65913793"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Az arcfelismerés adatmigrálás Face másik előfizetésbe való
 
-Ez az útmutató bemutatja, hogyan face adatáthelyezést (például egy mentett **is lehet PersonGroup** téglalapot) egy másik Face API-előfizetésbe, a pillanatkép funkció használatát. Ez lehetővé teszi, hogy ne kelljen ismételten hozhat létre és betanítunk egy **is lehet PersonGroup** vagy **FaceList** áthelyezése vagy a tevékenységek kibontása. Például előfordulhat, hogy létrehozott egy **is lehet PersonGroup** használatával egy ingyenes próba-előfizetését, és most szeretné áttelepíteni a díjköteles előfizetésre, vagy szükség lehet arcfelismerési adatokat szinkronizálhat a nagyvállalati művelet régióban.
+Ez az útmutató bemutatja, hogyan arcfelismerési adatokat, például az arcok, egy mentett is lehet PersonGroup objektum áthelyezése egy másik Azure Cognitive Services Face API-előfizetésbe. Az adatok áthelyezéséhez használja a pillanatkép-szolgáltatását. Ezzel a módszerrel, ne kelljen ismételt létrehozása és betanítása egy is lehet PersonGroup vagy FaceList objektum áthelyezése, vagy bontsa ki az operations. Például talán, ingyenes próba-előfizetés használatával is lehet PersonGroup objektumot hozott létre, és most szeretné áttelepíteni a díjköteles előfizetésre. Vagy szinkronizálja az arcfelismerési adatokat nagyvállalati művelet régióban szüksége lehet.
 
-Ez ugyanolyan stratégiájának is vonatkozik **LargePersonGroup** és **LargeFaceList** objektumokat. Ha nem ismeri a jelen útmutatóban fogalmait, tekintse meg a definíciójukat a a [felismerés fogalmak arc](../concepts/face-recognition.md) útmutató. Ez az útmutató a Face API .NET ügyféloldali kódtárat használja C#.
+Ez ugyanolyan stratégiájának LargePersonGroup és LargeFaceList objektumokat is vonatkozik. Ha nem ismeri a fogalmak, ebben az útmutatóban, tekintse meg a definíciójukat a a [felismerés fogalmak arc](../concepts/face-recognition.md) útmutató. Ez az útmutató a Face API .NET ügyféloldali kódtárat használja C#.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Két Face API előfizetési kulcsok (egyet a meglévő adatokkal, és át). Kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
-- A Face API előfizetési azonosító karakterláncát a célként megadott előfizetés (megtalálható a **áttekintése** panel az Azure Portalon). 
+A következőkre lesz szüksége:
+
+- Két Face API előfizetési kulcsot, egyet a meglévő adatok és a egy történő áttelepítéséhez. A Face API-szolgáltatás, és a kulcs beszerzéséhez, kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+- A Face API előfizetési azonosító karakterlánc, amely megfelel a célként megadott előfizetés. Megkereséséhez jelölje ki a **áttekintése** az Azure Portalon. 
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
-Ez az útmutató egy egyszerű Konzolalkalmazás használatával hajtsa végre a face adatok migrálása. Teljes körű, tekintse meg a [Face API-pillanatkép minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) a Githubon.
+Ez az útmutató egy egyszerű konzolalkalmazást használja a face adatáttelepítés futtatásához. Teljes körű, tekintse meg a [Face API pillanatkép minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) a Githubon.
 
-1. A Visual Studióban hozzon létre egy új **Console app (.NET Framework)** projektre, és adja neki **FaceApiSnapshotSample**.
-1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza ki **NuGet-csomagok kezelése**. Kattintson a **Tallózás** lapot, és válasszon **előzetes verzió**; majd keresse meg és telepítse a következő csomagot:
+1. A Visual Studióban hozzon létre egy új konzol alkalmazás .NET-keretrendszer-projektet. Nevezze el **FaceApiSnapshotSample**.
+1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza ki **NuGet-csomagok kezelése**. Válassza ki a **Tallózás** lapot, majd **előzetes verzió**. Keresse meg és telepítse a következő csomagot:
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.3.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
 ## <a name="create-face-clients"></a>Face ügyfelek létrehozása
 
-Az a **fő** metódus az *Program.cs*, hozzon létre két **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** példányok a forrás- és előfizetés esetében. Ebben a példában használjuk forrásaként a kelet-ázsiai régióban Face előfizetés és az USA nyugati RÉGIÓJA előfizetés célként. Bemutatjuk, hogy hogyan telepítheti át adatait egy Azure-régióból a másikba. Ha az előfizetések különböző régiókban, szüksége lesz módosítani a `Endpoint` karakterláncokat.
+Az a **fő** metódus az *Program.cs*, hozzon létre két [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) példányok a forrás- és előfizetés esetében. Ebben a példában a kelet-ázsiai régióban Face előfizetés használja a forrás- és USA nyugati RÉGIÓJA és a cél előfizetést as. Ez a példa bemutatja, hogyan telepítheti át adatait egy Azure-régióból a másikba. Ha az előfizetések különböző régiókban, módosítsa a `Endpoint` karakterláncokat.
 
 ```csharp
 var FaceClientEastAsia = new FaceClient(new ApiKeyServiceClientCredentials("<East Asia Subscription Key>"))
@@ -53,21 +55,21 @@ var FaceClientWestUS = new FaceClient(new ApiKeyServiceClientCredentials("<West 
     };
 ```
 
-Adja meg az előfizetési kulcs-értékeket és a végponti URL-címek, a forrás- és előfizetések kell.
+Adja meg az előfizetési kulcs-értékeket és a végponti URL-címek, a forrás- és előfizetés esetében.
 
 
 ## <a name="prepare-a-persongroup-for-migration"></a>Egy is lehet PersonGroup előkészítése az áttelepítésre
 
-Szüksége lesz, a **is lehet PersonGroup** a célelőfizetésbe áttelepíteni a forrás-előfizetés. Használja a **[PersonGroupOperationsExtensions.ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet)** metódussal lehet bekérni listáját a **is lehet PersonGroup** objektumok; kérje le a **[ PersonGroup.PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId)** tulajdonság. Ez a folyamat fog kinézni, attól függően, hogy milyen **is lehet PersonGroup** objektumok rendelkezik. A a jelen útmutató, a forrás **is lehet PersonGroup** tárol Azonosítót `personGroupId`.
+Az is lehet PersonGroup Azonosítóját kell áttelepíteni a célként megadott előfizetés, a forrás-előfizetés. Használja a [PersonGroupOperationsExtensions.ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) metódussal lehet bekérni az is lehet PersonGroup objektumok listája. Kérje le a [PersonGroup.PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) tulajdonság. Ez a folyamat megjelenése alapján milyen is lehet PersonGroup objektumok rendelkezik. Ebben az útmutatóban a forrás is lehet PersonGroup Azonosítóját tárolja `personGroupId`.
 
 > [!NOTE]
-> A [mintakód](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) hoz létre, és a egy új betanítja **is lehet PersonGroup** áttelepíteni, de a legtöbb esetben már rendelkezik egy **is lehet PersonGroup** használatára.
+> A [mintakód](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) létrehozza és betanítja egy új is lehet PersonGroup áttelepíteni. A legtöbb esetben kell hoznia egy is lehet PersonGroup használatára.
 
-## <a name="take-snapshot-of-persongroup"></a>Az is lehet PersonGroup pillanatkép készítése
+## <a name="take-a-snapshot-of-a-persongroup"></a>Pillanatkép készítése a is lehet PersonGroup
 
-Pillanatkép egy ideiglenes távtároló bizonyos Face adattípus. A vágólap másolhat adatokat egy előfizetésből egy másikba egyfajta működik. Először a felhasználó "" egy pillanatképet készít az adatokat a forrás-előfizetés, és ezek "alkalmazza" azt egy új objektum a cél előfizetésben.
+Egy pillanatképet egy ideiglenes távoli tároló bizonyos Face adattípusokhoz. A vágólap másolhat adatokat egy előfizetésből egy másikba egyfajta működik. Először is, készítsen pillanatképet az adatokat a forrás-előfizetés. Akkor alkalmazza azt egy új objektum a cél előfizetésben.
 
-A forrás-előfizetés használata **FaceClient** -példány, készítsen pillanatképet a **is lehet PersonGroup**révén **[TakeAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperationsextensions.takeasync?view=azure-dotnet)** a az **Is lehet PersonGroup** Azonosítóját és a célként megadott előfizetés-azonosítójára. Ha a cél több előfizetéssel rendelkezik, a tömb bejegyzésként, harmadik paraméterként az felveheti őket.
+A forrás-előfizetés FaceClient példány használatával az is lehet PersonGroup pillanatkép készítése. Használat [TakeAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperationsextensions.takeasync?view=azure-dotnet) is lehet PersonGroup azonosítója és a célként megadott előfizetés-azonosítójára. Ha cél több előfizetéssel rendelkezik, vegye fel őket a harmadik paraméter tömb bejegyzéseket.
 
 ```csharp
 var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
@@ -77,18 +79,18 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 ```
 
 > [!NOTE]
-> Véve, és a pillanatképek alkalmazására a folyamat nem akadályozza meg a forrás- vagy normál visszavonásokat **is lehet PersonGroup**s (vagy **FaceList**s). Azonban nem ajánlott egyidejű hívás, amely módosíthatja az adatforrás-objektum ([FaceList felügyeleti hívások](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet) vagy a [is lehet PersonGroup Train](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet) hívja, például), mert a pillanatkép-készítési művelet lehet végrehajtása előtt vagy után ezeket a műveleteket vagy hibákat tapasztalhat.
+> Véve, és a pillanatképek alkalmazására folyamata nem zavarja a forrás-rendszeres visszavonásokat vagy Persongroup vagy Facelist. Ne módosítsa az adatforrás-objektum, például egyidejű hívások [FaceList felügyeleti hívások](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet) vagy a [is lehet PersonGroup Train](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet) hívja, például. A pillanatkép-készítési művelet előtt vagy után ezek a műveletek futtatásával, vagy hibák jelentkezhetnek.
 
 ## <a name="retrieve-the-snapshot-id"></a>A pillanatkép-azonosító lekéréséhez
 
-A pillanatkép véve metódus az aszinkron, így kell megvárni a (pillanatkép-művelet nem szakítható meg). Ebben a kódban a `WaitForOperation` metódus figyeli az aszinkron hívás, az állapot ellenőrzése minden 100 MS. A művelet befejeződésekor meg fogja tudni lekérni egy műveletet. Úgy szerezhet, elemzés a `OperationLocation` mező. 
+A pillanatképek használt módszer aszinkron, így meg kell várnia a befejezéséig. Pillanatkép-készítési műveletek nem szakítható meg. Ebben a kódban a `WaitForOperation` metódus az aszinkron hívás figyeli. Minden 100 ms állapotát ellenőrzi. A művelet befejezését követően egy Műveletazonosító lekéréséhez elemzés a `OperationLocation` mező. 
 
 ```csharp
 var takeOperationId = Guid.Parse(takeSnapshotResult.OperationLocation.Split('/')[2]);
 var operationStatus = await WaitForOperation(FaceClientEastAsia, takeOperationId);
 ```
 
-Egy tipikus `OperationLocation` értéket fog kinézni:
+Egy tipikus `OperationLocation` érték néz ki:
 
 ```csharp
 "/operations/a63a3bdd-a1db-4d05-87b8-dbad6850062a"
@@ -123,21 +125,21 @@ private static async Task<OperationStatus> WaitForOperation(IFaceClient client, 
 }
 ```
 
-Ha van megjelölve a művelet állapotának `Succeeded`, majd megkaphassa a pillanatkép-azonosító elemzésekor a `ResourceLocation` mezőt, a visszaadott **OperationStatus** példány.
+Után a művelet állapotát jeleníti meg `Succeeded`, elemzés a pillanatkép-azonosító lekéréséhez a `ResourceLocation` mezőt, a visszaadott OperationStatus példány.
 
 ```csharp
 var snapshotId = Guid.Parse(operationStatus.ResourceLocation.Split('/')[2]);
 ```
 
-Egy tipikus `resourceLocation` értéket fog kinézni:
+Egy tipikus `resourceLocation` érték néz ki:
 
 ```csharp
 "/snapshots/e58b3f08-1e8b-4165-81df-aa9858f233dc"
 ```
 
-## <a name="apply-snapshot-to-target-subscription"></a>A célként megadott előfizetés pillanatkép alkalmazása
+## <a name="apply-a-snapshot-to-a-target-subscription"></a>Pillanatkép alkalmazni a célként megadott előfizetés
 
-Következő lépésként hozzon létre az új **is lehet PersonGroup** a célul szolgáló előfizetésben használatával egy véletlenszerűen generált. Ezután használja a célként megadott előfizetés **FaceClient** alkalmazandó a pillanatkép a is lehet PersonGroup adja a pillanatkép-azonosító és az új példány **is lehet PersonGroup** azonosítóját. 
+Ezután hozza létre az új is lehet PersonGroup a célul szolgáló előfizetésben használatával egy véletlenszerűen generált. A célként megadott előfizetés FaceClient példány használatával a pillanatképet az is lehet PersonGroup vonatkoznak. Adja át a pillanatkép azonosítója és az új is lehet PersonGroup.
 
 ```csharp
 var newPersonGroupId = Guid.NewGuid().ToString();
@@ -146,15 +148,15 @@ var applySnapshotResult = await FaceClientWestUS.Snapshot.ApplyAsync(snapshotId,
 
 
 > [!NOTE]
-> A pillanatkép-objektum csak a érvényes 48 óra. Csak kell tennie egy pillanatképet, ha szeretne használni, az adatok migrálása után minél hamarabb.
+> A pillanatkép-objektumot a érvényes csak 48 óra. Csak készítsen egy pillanatképet, ha szeretne használni, az adatok migrálása után minél hamarabb.
 
-A pillanatkép alkalmazása kérelem adja vissza egy másik művelet azonosítója. Ez az azonosító megkaphassa elemzés a `OperationLocation` mezőt, a visszaadott **applySnapshotResult** példány. 
+A pillanatkép alkalmazása kérelem adja vissza egy másik művelet azonosítója. Ez az azonosító lekéréséhez elemezni a `OperationLocation` mezőt, a visszaadott applySnapshotResult példány. 
 
 ```csharp
 var applyOperationId = Guid.Parse(applySnapshotResult.OperationLocation.Split('/')[2]);
 ```
 
-A pillanatkép folyamatának is aszinkron, ezért újra használja `WaitForOperation` , várjon, amíg annak végrehajtása befejeződik.
+A pillanatkép folyamatának is aszinkron, ezért újra használja `WaitForOperation` , várjon, amíg befejeződik.
 
 ```csharp
 operationStatus = await WaitForOperation(FaceClientWestUS, applyOperationId);
@@ -162,9 +164,9 @@ operationStatus = await WaitForOperation(FaceClientWestUS, applyOperationId);
 
 ## <a name="test-the-data-migration"></a>Az adatáttelepítés tesztelése
 
-A pillanatkép alkalmazása után az új **is lehet PersonGroup** a cél előfizetés töltse fel az eredeti face adatokkal. Alapértelmezés szerint képzési eredményeket is másolja, ezért az új **is lehet PersonGroup** átképezési nélkül kész arcok azonosítása hívásokhoz lesz.
+Miután telepítette a pillanatképet, az új a célul szolgáló előfizetésben is lehet PersonGroup az eredeti face adatokkal tölti fel. Alapértelmezés szerint képzési eredményeket is másolja. Az új is lehet PersonGroup készen áll a face azonosító hívások átképezési nélkül.
 
-Az adatáttelepítés teszteléséhez futtassa a következő műveleteket, és összehasonlíthatja az eredményeket a konzolon nyomtatási.
+Az adatáttelepítés ellenőrzéséhez futtassa a következő műveleteket, és összehasonlíthatja az eredményeket a konzolon nyomtatási:
 
 ```csharp
 await DisplayPersonGroup(FaceClientEastAsia, personGroupId);
@@ -212,13 +214,13 @@ private static async Task IdentifyInPersonGroup(IFaceClient client, string perso
 }
 ```
 
-Most elkezdheti használni az új **is lehet PersonGroup** a cél előfizetésben. 
+Most már használhatja az új is lehet PersonGroup a cél előfizetésben. 
 
-Ha frissíti a cél **is lehet PersonGroup** újra a jövőben kell hozzon létre egy új **is lehet PersonGroup** (Ez az Útmutató lépéseit követve a következőket), az kapja meg. Egyetlen **is lehet PersonGroup** objektum legfeljebb egyszer alkalmazott pillanatképet.
+A későbbiekben frissíteni is lehet PersonGroup cél, hozzon létre egy új is lehet PersonGroup, az kapja meg. Ehhez kövesse a jelen útmutató lépéseit. Egyetlen is lehet PersonGroup objektumra csak egyszer alkalmazott pillanatkép rendelkezhet.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Miután végzett a face adatok áttelepítését végzi, javasoljuk, hogy manuálisan törölje a pillanatkép-objektumot.
+Áttelepítés befejezése után adatok között, törölje kézzel a pillanatkép-objektumot.
 
 ```csharp
 await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
@@ -226,10 +228,10 @@ await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután tekintse meg a megfelelő API referenciadokumentációt tartalmaz, ismerje meg egy mintaalkalmazást, amely a pillanatkép funkciót használja, vagy hajtsa végre a használatához itt említett egyéb API műveletek használati útmutatója.
+Ezután tekintse meg a megfelelő API referenciadokumentációt tartalmaz, ismerje meg egy mintaalkalmazást, amely a pillanatkép funkciót használja, vagy hajtsa végre a használatához itt említett egyéb API műveletek használati útmutatója:
 
 - [Pillanatkép dokumentációja (.NET SDK-val)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
-- [Face API pillanatkép minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
+- [A Face API pillanatkép minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [Arcok hozzáadása](how-to-add-faces.md)
-- [Hogyan lehet arcokat megtalálni a képen](HowtoDetectFacesinImage.md)
-- [Hogyan kell azonosítani arcokat kép](HowtoIdentifyFacesinImage.md)
+- [A kép arcok észlelése](HowtoDetectFacesinImage.md)
+- [Arcazonosítás képen egy](HowtoIdentifyFacesinImage.md)

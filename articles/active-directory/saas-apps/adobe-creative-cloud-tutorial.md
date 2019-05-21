@@ -16,11 +16,11 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35bd52904ab081e41cb43a346288234c18a7f43b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285121"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Oktatóanyag: Az Adobe Creative Cloud az Azure Active Directory-integráció
 
@@ -122,7 +122,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az Adobe Creative Cloud, hajts
     |----- | --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | E-mail | user.mail
+    | E-mail-cím | user.mail
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -253,7 +253,7 @@ Ahhoz, hogy jelentkezzen be Adobe Creative Cloud az Azure AD-felhasználók, akk
    * Az asztali alkalmazás segédprogram belül > jelentkezzen be
    * Az alkalmazáson belül > Súgó > jelentkezzen be
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.date: 12/20/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d55ae4077b3ec14cb8dc2226714b094574ed9522
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905647"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899018"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>Oktatóanyag: A Dropbox Business az Azure Active Directory-integráció
 
@@ -224,7 +224,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Dropbox Business jön l�
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót, lépjen kapcsolatba kell [üzleti ügyfél támogatási csapata Dropbox](https://www.dropbox.com/business/contact)
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,11 +16,11 @@ ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a4e128e7e8b39075d23d7d4fe2bdc856b030ea05
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57874898"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899886"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>Oktatóanyag: Clever az Azure Active Directory-integráció
 
@@ -233,7 +233,7 @@ Clever, esetén együttműködve [ötletes ügyfél-támogatási csapatának](ht
 >[!NOTE]
 >Eszközt is használhat bármilyen más ötletes felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése Clever által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

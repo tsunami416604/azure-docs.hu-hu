@@ -16,11 +16,11 @@ ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 896f24ee20aece111c496a5b16d4b3dade119f85
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842379"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900538"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>Oktatóanyag: Az Azure Active Directory-integráció a híd
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezést a h
 
 Ebben a szakaszban egy Bridge Britta Simon nevű felhasználó hoz létre. Együttműködve [híd támogatási csapatának](https://community.bridgeapp.com/community/help) a felhasználók hozzáadása a híd platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

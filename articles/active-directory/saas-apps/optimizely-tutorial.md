@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 066847ff8428a5080e655712c1a6bbe504c5cdbc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257790"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904608"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Optimizely
 
@@ -120,7 +120,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Optimizely, hajtsa v
 
     | Name (Név) | Adatforrás-attribútum |
     | ---------------| --------------- |
-    | e-mail | user.mail |
+    | email | user.mail |
     
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -174,7 +174,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Optimizely, hajtsa v
   
     ![Az Azure AD egyszeri bejelentkezés](./media/optimizely-tutorial/tutorial_optimizely_10.png)
 
-6. Kattintson a **Mentés** gombra.
+6. Kattintson a **Save** (Mentés) gombra
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -243,7 +243,7 @@ Ebben a szakaszban egy felhasználói Britta Simon nevű Optimizely hoz létre.
 
 4. A meghívó e-mailt kapnak. E-mail-cím használatával kell Optimizely bejelentkezni.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c114c726bea34465972a282acac6b8acbbf9a80f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1cbf1514ac5eba4e288ecb78944878217fc5ba3e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60514989"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954520"
 ---
 # <a name="basic-concepts"></a>Alapfogalmak
 
@@ -32,7 +32,7 @@ Ha első alkalommal hoz létre egy beszéd-kompatibilis alkalmazás, vagy ha els
 
 Legelső az alapvető fogalmait, beszéd között van a *audio-adatfolyam*. Ellentétben az egy kattintással, egy ponton időpontban következik be, és a egy darab információkat tartalmaz, amely használja a beszélt kérelem száz között oszlik, és számos kilobájt információkat tartalmaz. Használja a beszélt utterances időtartama nehézségekbe megadja a fejlesztők számára szeretne biztosítani az alkalmazásokban egyszerű és elegáns speech élményt biztosítani. A mai számítógépek és algoritmusok hajtsa végre lejegyzés az utterance (kifejezés), időtartama körülbelül felét egy 2 másodperces utterance (kifejezés) is lehet megjelenített érzéseket, körülbelül 1 másodperc, azonban minden alkalmazás, amely során a feldolgozó felhasználó 1 másodperces késleltetés lép nem egyszerű és elegáns.
 
-Szerencsére a módon a "elrejtése" beszédátírási idő szerint beszédátírási végez az utterance (kifejezés) egy részét, amíg a felhasználó egy másik elnököt. Például egy 1 másodperces utterance (kifejezés) adattömbökbe 10 ezredmásodperc 100 felosztásával és elvégzésével beszédátírási az egyes adattömbök viszont, több mint 450 beszédátírási szükséges teljes 500 idő ezredmásodpercben is "rejtett" úgy, hogy a felhasználó tudomása beszédátírási van miközben hallgatója elnököt végzi. Során szem előtt tartva ebben a példában ne feledje, hogy a szolgáltatás működik-e beszédátírási az előző 100 ezredmásodpercben hang adja meg, amíg a felhasználó a következő 100 elnököt, így ha a felhasználó leállítja a beszéd, a szolgáltatás csak van lefényképezze körülbelül 100 az eredmény hang ezredmásodperc.
+Szerencsére a módon a "elrejtése" beszédátírási idő szerint beszédátírási végez az utterance (kifejezés) egy részét, amíg a felhasználó egy másik elnököt. Például egy 1 másodperces utterance (kifejezés) adattömbökbe 10 ezredmásodperc 100 felosztásával és elvégzésével beszédátírási az egyes adattömbök viszont, több mint 450 beszédátírási szükséges teljes 500 idő ezredmásodpercben is "rejtett" úgy, hogy a felhasználó tudomása beszédátírási van végzi, beszéd közben. Során szem előtt tartva ebben a példában ne feledje, hogy a szolgáltatás működik-e beszédátírási az előző 100 ezredmásodpercben hang adja meg, amíg a felhasználó a következő 100 elnököt, így ha a felhasználó leállítja a beszéd, a szolgáltatás csak van lefényképezze körülbelül 100 az eredmény hang ezredmásodperc.
 
 A felhasználói élmény eléréséhez használja a beszélt hang adatokat tömbökben gyűjti, és megjelenített érzéseket, ahogy a felhasználó ad elő. Ezek együttesen a hang adattömböket a *audio-adatfolyam*, és ezek hang adattömbök küld a szolgáltatásnak folyamatán nevezzük *hang streamelési.* Hang streamelési bármely beszédfeldolgozó alkalmazás; fontos részét képezi az adatrészlet méretének finomhangolásához és optimalizáláshoz streamelési végrehajtása néhány a legnagyobb hatású módon az alkalmazás felhasználói élmény javítása érdekében.
 
@@ -160,9 +160,9 @@ Az átírási válaszok a felismert szöveget visszaadása az ügyfeleknek a han
 
 - `RecognitionStatus` a beszédfelismerést állapotát határozza meg. A lehetséges értékeket az alábbi táblázat a.
 
-| status | Leírás |
+| Állapot | Leírás |
 | ------------- | ---------------- |
-| Sikeres | A beszédfelismerést sikeres volt, és a megjelenő mezőben szerepel. |
+| Siker | A beszédfelismerést sikeres volt, és a megjelenő mezőben szerepel. |
 | NoMatch | Beszéd az audio-adatfolyam észlelt, de nincs szó azoktól a Célnyelv sem felel meg is. [NoMatch felismerés Status(#nomatch-recognition-status) további részletekért lásd:  |
 | InitialSilenceTimeout | A hang stream elején szereplő csak csend, és a szolgáltatás, beszédfelismerés várakozás túllépte az időkorlátot |
 | BabbleTimeout | A hang stream elején szereplő csak zaj, és a szolgáltatás, beszédfelismerés várakozás túllépte az időkorlátot |

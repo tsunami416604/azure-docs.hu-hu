@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 571ab38dd52d83f1391b555bc4dfc8c091f1fd1b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256702"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896899"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Mindflash
 
@@ -204,13 +204,13 @@ Ahhoz, hogy az Azure AD-felhasználók Mindflash szolgáltatásba való bejelent
     
     c. Az a **E-mail** szövegmezőbe írja be **E-mail cím** , a felhasználó **BrittaSimon\@contoso.com**.
 
-    b. Kattintson a **Hozzáadás** parancsra.
+    b. Kattintson a **Hozzáadás**lehetőségre.
 
 >[!NOTE]
 >Bármely más Mindflash felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Mindflash által biztosított API-k. 
 > 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

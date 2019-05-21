@@ -16,11 +16,11 @@ ms.date: 03/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 641fe5439e320208d41969b9563293257648d488
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842090"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65895902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Oktatóanyag: Nagyítás az Azure Active Directory-integráció
 
@@ -120,7 +120,7 @@ A Nagyítás konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre 
     
     | Name (Név) | Névtér  |  Adatforrás-attribútum|
     | ---------------| --------------- | --------- |
-    | E-mail-cím  | user.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
+    | E-mail cím  | user.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
     | Utónév  | user.givenname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |
     | Vezetéknév  | user.surname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |
     | Telefonszám  | user.telephonenumber  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone` |
@@ -273,12 +273,12 @@ Ahhoz, hogy a nagyításhoz. Jelentkezzen be az Azure AD-felhasználók, akkor k
 
     b. Az a **e-mailek** beviteli mező, írja be az e-mail-címe érvényes Azure AD-fiók kíván üzembe helyezni.
 
-    c. Kattintson a **Hozzáadás** parancsra.
+    c. Kattintson a **Hozzáadás**lehetőségre.
 
 > [!NOTE]
 > Bármely más nagyítás felhasználói fiók létrehozása eszközöket használhatja, vagy nagyítás üzembe helyezni az Azure Active Directory által biztosított API-k felhasználói fiókok.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
