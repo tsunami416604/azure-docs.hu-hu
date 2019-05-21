@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f69b3f2c8de4cf137583ad7a33e8edfe31373096
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9746dae4cdf10a10922be41602f4ecd7f032f5b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461068"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949788"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>1. oktatóanyag: Hitelkockázat - Azure Machine Learning Studio előrejelzése
 
@@ -78,7 +78,7 @@ A **german.data** adatkészlet a 1000 elmúlt kérelmezők számára ajánlatbel
 
 A szolgáltatás vektor ezen adatok jellemzőit ismerteti, a UCI webhelyén. Ezeket az adatokat a pénzügyi adatokat, kreditelőzmények, állapota és személyes adatokat tartalmaz. Az egyes kérelmező bináris minősítést lett adott, amely azt jelzi, hogy azok egy alacsony és magas kockázati kreditet. 
 
-Ezek az adatok betanítunk egy prediktív elemzési modellt fogja használni. Ha elkészült, a modell fogadja el a szolgáltatás vektor egy új egyedi, és hogy ő-e a kis vagy nagy hitelkockázat előrejelzése képesnek kell lennie.  
+Ezek az adatok betanítunk egy prediktív elemzési modellt fogja használni. Ha elkészült, a modell fogadja el a szolgáltatás vektor egy új egyedi, és hogy azok egy kis vagy nagy hitelkockázat előrejelzése képesnek kell lennie.  
 
 Íme egy érdekes twist.
 

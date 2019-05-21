@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 7507e5d23898fd069797c14d0fa18419b8345d78
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
-ms.translationtype: HT
+ms.openlocfilehash: 840b1fe55556cfd853e0928164891d6b21b17cc2
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2019
-ms.locfileid: "65888263"
+ms.locfileid: "65956862"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Oktatóanyag: Az Azure Active Directory-integráció TigerText biztonságos Messenger
 
@@ -156,7 +156,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon TigerText biztonságos Messenger számára a hozzáférés biztosításával az Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezze Britta Simon TigerText biztonságos Messenger, a hozzáférés biztosításával őket Azure egyszeri bejelentkezés használatára.
 
 1. Az Azure Portalon válassza ki a **vállalati alkalmazások** > **minden alkalmazás** > **TigerText biztonságos Messenger**.
 

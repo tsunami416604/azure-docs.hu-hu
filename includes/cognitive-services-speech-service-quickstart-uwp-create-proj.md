@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: b5c61ecb74c0fcdacc6024a74565f05b036e2ac6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: fe2978e176b986164ebb01fddbd29481f8a117bd
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65081217"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65954809"
 ---
 1. Indítsa el a Visual Studio 2017-et.
 
@@ -23,7 +23,7 @@ ms.locfileid: "65081217"
 
     ![Képernyőkép az Új projekt párbeszédpanelről](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-01-new-blank-app.png)
 
-1. A Speech SDK használata érdekében az alkalmazást a Windows 10 Fall Creators Update vagy újabb verziójához kell összeállítani. A felugró **Új Universal Windows Platform-projekt** ablak **Minimális verzió** beállításánál válassza a **Windows 10 Fall Creators Update (10.0; Build 16299)** értéket. A **Célverzió** mezőben válassza ki ezt vagy egy későbbi verziót, és kattintson az **OK** gombra.
+1. A beszédfelismerés SDK megköveteli, hogy az alkalmazás a Windows 10 Fall Creators Update vagy újabb verzió felépítve. A felugró **Új Universal Windows Platform-projekt** ablak **Minimális verzió** beállításánál válassza a **Windows 10 Fall Creators Update (10.0; Build 16299)** értéket. A **Célverzió** mezőben válassza ki ezt vagy egy későbbi verziót, és kattintson az **OK** gombra.
 
     ![Az Új Universal Windows Platform-projekt ablak képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 

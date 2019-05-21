@@ -1,27 +1,27 @@
 ---
-title: Oktatóanyag – Webes forgalom irányítása URL-cím alapján – Azure CLI
-description: Ez az oktatóanyag azt ismerteti, hogyan lehet a webes forgalmat az URL-cím alapján adott méretezhető kiszolgálókészletekre irányítani az Azure CLI segítségével.
+title: Webes forgalom irányítása az URL-cím – Azure CLI-vel alapján
+description: Ebből a cikkből megtudhatja, hogyan irányíthatja a webes forgalom meghatározott méretezhető készletek a kiszolgálók az Azure CLI használatával URL-címe alapján.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 10/25/2018
+ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4f0c93c41a468b62baf1ec50d030f235d36a8dd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c0954d1010a6cf5ef6f8edab1470588df9fba559
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006473"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955535"
 ---
-# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Oktatóanyag: Webes forgalom irányítása az Azure CLI-vel, az URL-cím alapján
+# <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Webes forgalom irányítása az Azure CLI-vel, az URL-cím alapján
 
-A webes forgalmat felügyelő rendszergazdaként a feladatai közé tartozik annak a biztosítása, hogy az ügyfelek és a felhasználók minél gyorsabban érhessék el a szükséges információkat. Ennek az egyik módja, ha a különböző típusú webes forgalmakat különböző kiszolgáló-erőforrásokra irányítja. Ez az oktatóanyag azt mutatja be, hogyan állíthatja be és konfigurálhatja az Azure CLI-vel az Application Gateway-útválasztást az alkalmazásból érkező különböző típusú adatforgalmakhoz. Az útválasztás ezután URL-cím alapján különböző kiszolgálókészletekre irányítja a forgalmat.
+A webes forgalmat felügyelő rendszergazdaként a feladatai közé tartozik annak a biztosítása, hogy az ügyfelek és a felhasználók minél gyorsabban érhessék el a szükséges információkat. Ennek az egyik módja, ha a különböző típusú webes forgalmakat különböző kiszolgáló-erőforrásokra irányítja. Ez a cikk bemutatja, hogyan állítsa be, és az Application Gateway az alkalmazásból az adatforgalom különböző típusai útválasztásának konfigurálása az Azure CLI használatával. Az útválasztás ezután URL-cím alapján különböző kiszolgálókészletekre irányítja a forgalmat.
 
 ![URL-útválasztási példa](./media/tutorial-url-route-cli/scenario.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Erőforráscsoport létrehozása a szükséges hálózati erőforrások számára
@@ -31,13 +31,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Méretezési csoport létrehozása az egyes készletekhez azok automatikus méretezésének megvalósításához
 > * Teszt futtatása annak ellenőrzéséhez, hogy a forgalom különféle típusai a megfelelő készletekre irányulnak-e
 
-Igény szerint az oktatóanyag az [Azure PowerShell](tutorial-url-route-powershell.md) vagy az [Azure Portal](create-url-route-portal.md) használatával is elvégezhető.
+Ha szeretné, ez az eljárás használatával elvégezhető [Azure PowerShell-lel](tutorial-url-route-powershell.md) vagy a [az Azure portal](create-url-route-portal.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha helyi telepítése és használata a parancssori felület, ez a cikk futtatnia kell az Azure CLI 2.0.4-es vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -182,7 +182,7 @@ az network application-gateway rule create \
 
 ## <a name="create-vm-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása
 
-Ebben az oktatóanyagban három virtuálisgép-méretezési csoportot hoz létre, amelyek a három létrehozott háttérkészletet támogatják. A *myvmss1*, *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyeken az NGINX-et telepíti.
+Ez a cikk három virtuális gép méretezési csoportjairól, amelyek támogatják a létrehozott három háttérkészletek hoz létre. A *myvmss1*, *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyeken az NGINX-et telepíti.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -264,5 +264,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Alkalmazásátjáró létrehozása URL-alapú átirányítással](./tutorial-url-redirect-cli.md)
+* [Alkalmazásátjáró létrehozása URL-alapú átirányítással](./tutorial-url-redirect-cli.md)

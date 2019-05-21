@@ -3,33 +3,23 @@ title: Webalkalmazási tűzfal engedélyezése – Azure CLI
 description: Megismerheti, hogyan korlátozható a webes forgalom webalkalmazási tűzfallal egy alkalmazásátjárón az Azure CLI használatával.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 1387dc5bb2cabf9a3078474564aadc81b28fd9a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1822fe032a7c7a6382dbae2cb9f7095d1d076008
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60407163"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955493"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Az Azure CLI-vel a webalkalmazási tűzfal engedélyezése
 
-> [!div class="op_single_selector"]
->
-> - [Azure Portal](application-gateway-web-application-firewall-portal.md)
-> - [PowerShell](tutorial-restrict-web-traffic-powershell.md)
-> - [Azure CLI](tutorial-restrict-web-traffic-cli.md)
->
-> 
+Az [alkalmazásátjáró](overview.md) forgalmát korlátozhatja [webalkalmazási tűzfallal](waf-overview.md) (WAF). A WAF [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-szabályokkal védi az alkalmazást. Ezek a szabályok olyan támadások ellen nyújtanak védelmet, mint az SQL-injektálás, a Cross-Site Scripting támadások és a munkamenet-eltérítések.
 
-Az [alkalmazásátjáró](overview.md) forgalmát korlátozhatja [webalkalmazási tűzfallal](waf-overview.md) (WAF). A WAF [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-szabályokkal védi az alkalmazást. Ezek a szabályok olyan támadások ellen nyújtanak védelmet, mint az SQL-injektálás, a Cross-Site Scripting támadások és a munkamenet-eltérítések. 
-
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
@@ -39,13 +29,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ![Példa webalkalmazási tűzfalra](./media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
 
-Igény szerint az oktatóanyag az [Azure PowerShell](tutorial-restrict-web-traffic-powershell.md) használatával is elvégezhető.
+Ha szeretné, ez az eljárás használatával elvégezhető [Azure PowerShell-lel](tutorial-restrict-web-traffic-powershell.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -148,7 +138,7 @@ az vmss extension set \
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Tárfiók létrehozása és diagnosztika konfigurálása
 
-Ebben az oktatóanyagban az alkalmazásátjáró tárfiókban tárolja az adatokat észlelési és megelőzési célra. Jegyezze fel az adatokat az Azure Monitor naplóira vagy akár Eseményközpontba is használhatja. 
+Ebben a cikkben az application gateway használja a storage-fiók és -megelőző célú adatok tárolására. Jegyezze fel az adatokat az Azure Monitor naplóira vagy akár Eseményközpontba is használhatja. 
 
 ### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
@@ -196,18 +186,9 @@ az network public-ip show \
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmazásátjárót és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG 
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * A hálózat beállítása
-> * Alkalmazásátjáró létrehozása engedélyezett WAF-fel
-> * Virtuálisgép-méretezési csoport létrehozása
-> * Tárfiók létrehozása és diagnosztika konfigurálása
-
-> [!div class="nextstepaction"]
-> [Alkalmazásátjáró létrehozása az SSL leállításával](./tutorial-ssl-cli.md)
+* [Alkalmazásátjáró létrehozása az SSL leállításával](./tutorial-ssl-cli.md)

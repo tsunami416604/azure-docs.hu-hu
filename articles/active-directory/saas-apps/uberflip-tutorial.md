@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 69e86e486a9cdb058b972bda5176c14e15f4630a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55fa42eb1c35025b1008b3b5d26f61c243ff2b97
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865669"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Uberflip
 
@@ -72,15 +72,15 @@ Az Azure AD integrálása a Uberflip konfigurálásához hozzá kell Uberflip az
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az nevű tesztfelhasználó alapján Uberflip **Britta Simon**. Az egyszeri bejelentkezés működéséhez Azure AD-felhasználót és a egy kapcsolódó felhasználó közötti kapcsolatot létesít a Uberflip kell.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az nevű tesztfelhasználó alapján Uberflip **B Simon**. Az egyszeri bejelentkezés működéséhez Azure AD-felhasználót és a egy kapcsolódó felhasználó közötti kapcsolatot létesít a Uberflip kell.
 
 Az Azure AD egyszeri bejelentkezés az Uberflip tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
 1. **[Uberflip egyszeri bejelentkezés konfigurálása](#configure-uberflip-single-sign-on)**  az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazás oldalán.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Hozzon létre egy Uberflip tesztfelhasználót](#create-an-uberflip-test-user)**  úgy, hogy a felhasználó a Uberflip elnevezett olyan Britta Simon kapcsolódik az Azure AD-felhasználó, aki nevű Britta Simon.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés a b Simon teszteléséhez.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  b Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Hozzon létre egy Uberflip tesztfelhasználót](#create-an-uberflip-test-user)**  úgy, hogy a felhasználó a Uberflip elnevezett olyan b Simon kapcsolódik az Azure AD-felhasználó, aki nevű b Simon.
 1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  ellenőrzése, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -136,7 +136,7 @@ A Uberflip oldalon konfigurálása egyszeri bejelentkezéshez, kell küldenie a 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az Azure Portalon.
+Ebben a szakaszban hozzon létre egy tesztfelhasználót b Simon nevű az Azure Portalon.
 
 1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
 
@@ -150,9 +150,9 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
     ![A felhasználói panelen](common/user-properties.png)
 
-    1. Az a **neve** mezőbe írja be **BrittaSimon**.
+    1. Az a **neve** mezőbe írja be **BSimon**.
   
-    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon\@\<vállalati_tartomány >.\< bővítmény >**. Ha például **BrittaSimon\@contoso.com**.
+    1. Az a **felhasználónév** mezőbe írja be **BSimon\@\<vállalati_tartomány >.\< bővítmény >**. Ha például **BSimon\@contoso.com**.
 
     1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
@@ -160,7 +160,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés Uberflip saját hozzáférésének engedélyezésére használja.
+Ebben a szakaszban engedélyezze b Simon által biztosított a hozzáférés Uberflip Azure egyszeri bejelentkezés használatára.
 
 1. Az Azure Portalon válassza ki a **vállalati alkalmazások** > **minden alkalmazás** > **Uberflip**.
 
@@ -178,7 +178,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés Uber
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** panelen válassza **Britta Simon** a a **felhasználók** listában, és válassza a **kiválasztása** a panel alján.
+1. Az a **felhasználók és csoportok** panelen válassza **B Simon** a a **felhasználók** listában, és válassza a **kiválasztása** a panel alján.
 
 1. Ha valakitől egy szerepkör értéket a SAML helyességi feltétel, majd a a **Szerepkörválasztás** ablaktáblán válassza ki a megfelelő szerepkört a felhasználóhoz a listából. A panel alján válassza **kiválasztása**.
 
@@ -186,7 +186,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés Uber
 
 ### <a name="create-an-uberflip-test-user"></a>Hozzon létre egy Uberflip tesztfelhasználó számára
 
-Britta Simon nevű felhasználót a Uberflip megtörtént. Nem kell tennie semmit, a felhasználó létrehozásához. Uberflip támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Britta Simon nevű felhasználó már nem létezik az Uberflip, ha egy új jön létre a hitelesítés után.
+B Simon nevű felhasználót a Uberflip megtörtént. Nem kell tennie semmit, a felhasználó létrehozásához. Uberflip támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Ha a b Simon nevű felhasználó már nem létezik az Uberflip, egy új hitelesítés után jön létre.
 
 > [!NOTE]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, lépjen kapcsolatba a [Uberflip támogatási csapatának](mailto:support@uberflip.com).

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: ba198cbe0c362055f36cb4bdecf34a0dbad477a8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b332c11e76ad335772cc607edcf569f896acb873
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788075"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951392"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Data Lake Storage Gen2-adatok elérhetők az Azure Databricks Spark használatával
 
@@ -48,7 +48,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
   > [!IMPORTANT]
   > Ellenőrizze, hogy a szerepkört a Data Lake Storage Gen2 storage-fiók hatókörében. Szerepkör hozzárendelése a szülő erőforráscsoportba vagy előfizetésbe, de kap engedélyekkel kapcsolatos hibákat addig, amíg azokat a szerepkör-hozzárendeléseket a tárfiókhoz való propagálása.
 
-  :heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, Alkalmazásazonosító és hitelesítési kulcs értékeit egy szövegfájlba. Kell azokat, hamarosan.
+  :heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, app ID és jelszó értéket egy szövegfájlba. Kell azokat, hamarosan.
 
 ### <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
@@ -82,11 +82,9 @@ Ebben a szakaszban létrehoz egy Azure Databricks szolgáltatást az Azure porta
 
     ![Az Azure Databricks-munkaterület létrehozása](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "hozzon létre egy Azure Databricks szolgáltatás")
 
-3. Válassza a **Rögzítés az irányítópulton**, majd a **Létrehozás** lehetőséget.
+3. A fiók létrehozása eltarthat néhány percig. Műveleti állapotának figyelése, megtekintheti a folyamatjelző sáv tetején.
 
-4. A fiók létrehozása eltarthat néhány percig. Fiók létrehozása során a portál megjeleníti a **üzemelő példány elküldése az Azure Databricks** csempére a jobb oldalon. Műveleti állapotának figyelése, megtekintheti a folyamatjelző sáv tetején.
-
-    ![Databricks üzembe helyezési csempe](./media/data-lake-storage-use-databricks-spark/databricks-deployment-tile.png "Databricks üzembe helyezési csempe")
+4. Válassza a **Rögzítés az irányítópulton**, majd a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-spark-cluster-in-azure-databricks"></a>Spark-fürt létrehozása az Azure Databricksben
 
@@ -179,7 +177,7 @@ Használja ezeket az értékeket cserélje le a említett helyőrzőket.
    * Cserélje le a `file-system-name` bármilyen nevet kíván rendelni a fájlrendszer helyőrzőt.
 
    > [!NOTE]
-   > Éles környezetben, fontolja meg, a hitelesítési kulcs tárolása az Azure Databricksben. Ezután adja hozzá egy keresse meg a kulcs a kódblokk, a hitelesítési kulcs helyett. Ez a rövid útmutató befejezése után tekintse meg a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikk webhelyen az Azure Databricks erre a megközelítésre példa látható.
+   > Fontolja meg egy éles beállítást a jelszó tárolásához az Azure Databricksben. Ezután adja hozzá egy keresse meg a kulcs a kódblokk, a jelszó helyett. Ez a rövid útmutató befejezése után tekintse meg a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikk webhelyen az Azure Databricks erre a megközelítésre példa látható.
 
 19. Nyomja le az **SHIFT + ENTER** kulcsok a kód futtatásához a blokk.
 

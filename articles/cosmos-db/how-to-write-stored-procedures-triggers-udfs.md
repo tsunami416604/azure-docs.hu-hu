@@ -4,14 +4,14 @@ description: Ismerje meg az Azure Cosmos DB-ben tárolt eljárások, eseményind
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 12/11/2018
+ms.date: 05/21/2019
 ms.author: mjbrown
-ms.openlocfilehash: eaf2d4a5a34a42867debcff4163f692431c8e0ab
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 66e0a7e13df9eddcd722492c9c894721517af5f9
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573854"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968915"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása
 

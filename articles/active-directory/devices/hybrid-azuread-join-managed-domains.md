@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f080e315430cba986642e4a24af776cc82062c0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 94fbcc1c29c1860642dda0afab6a1f10e719a05a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190795"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962201"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: Hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása
 
@@ -178,12 +178,12 @@ Emellett engedélyezni kell **az állapotsor szkriptekkel való frissítését**
 
 ### <a name="configure-seamless-sso"></a>Közvetlen egyszeri bejelentkezés konfigurálása
 
-Sikeresen befejeződött a hibrid Azure AD join a Windows, a régebbi verziójú eszközök, az Azure AD átmenő hitelesítés (ESP) vagy a jelszó Jelszókivonat szinkronizálása (nál) segítségével felügyelt tartományban felhőalapú hitelesítési mód, ezenkívül meg kell adnia [konfigurálása Közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). 
+Sikeresen befejeződött a hibrid Azure AD join a Windows, a régebbi verziójú eszközök, az Azure AD átmenő hitelesítés (ESP) vagy a jelszó Jelszókivonat szinkronizálása (nál) segítségével felügyelt tartományban felhőalapú hitelesítési mód, ezenkívül meg kell adnia [konfigurálása Közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). Ha gondjai vannak közvetlen egyszeri bejelentkezés konfigurálása, tekintse meg a cikket [hibaelhárítása az Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/tshoot-connect-sso).
 
 
 ### <a name="control-windows-down-level-devices"></a>A korábbi verziójú Windows-eszközök vezérlése 
 
-A korábbi verziójú Windows-eszközök regisztrálásához a Letöltőközpontból le kell töltenie, majd telepítenie kell egy Windows Installer-csomagot (.msi). További információért kattintson [ide](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
+A korábbi verziójú Windows-eszközök regisztrálásához a Letöltőközpontból le kell töltenie, majd telepítenie kell egy Windows Installer-csomagot (.msi). További információkért tekintse meg a cikket [szabályozhatja az eszközt, a hibrid Azure AD join](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
 
 
 ## <a name="verify-the-registration"></a>A regisztráció ellenőrzése

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c279a224a7692a64621e24cc8fe2213b78b54ce
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: HT
+ms.openlocfilehash: 1e67f3c7f9413382d169837eaba50d6af18552e6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62735618"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956672"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TurboRater
 
@@ -70,15 +70,15 @@ Az Azure AD integrálása a TurboRater konfigurálásához hozzá kell TurboRate
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az nevű tesztfelhasználó alapján TurboRater **Britta Simon**. Az egyszeri bejelentkezés működjön a TurboRater a kell létesítenie az Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolat.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az nevű tesztfelhasználó alapján TurboRater **B Simon**. Az egyszeri bejelentkezés működjön a TurboRater a kell létesítenie az Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolat.
 
 Az Azure AD egyszeri bejelentkezés az TurboRater tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
 1. **[TurboRater egyszeri bejelentkezés konfigurálása](#configure-turborater-single-sign-on)**  az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazás oldalán.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Hozzon létre egy TurboRater tesztfelhasználót](#create-a-turborater-test-user)**  úgy, hogy a felhasználó a TurboRater elnevezett olyan Britta Simon kapcsolódik az Azure AD-felhasználó, aki nevű Britta Simon.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés a b Simon teszteléséhez.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  b Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Hozzon létre egy TurboRater tesztfelhasználót](#create-a-turborater-test-user)**  úgy, hogy a felhasználó a TurboRater elnevezett olyan b Simon kapcsolódik az Azure AD-felhasználó, aki nevű b Simon.
 1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  ellenőrzése, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -109,7 +109,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TurboRater, tegye a 
 
     1. Az a **válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe)** mezőbe írjon be egy URL-címet a következő minta használatával:
 
-       | Környezet | URL-cím |
+       | Környezet | URL |
        | ---------------| --------------- |
        | Tesztelés  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
        | Élő  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
@@ -149,9 +149,9 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
     ![A felhasználói panelen](common/user-properties.png)
 
-    1. Az a **neve** mezőbe írja be **BrittaSimon**.
+    1. Az a **neve** mezőbe írja be **BSimon**.
   
-    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon\@\<vállalati_tartomány >.\< bővítmény >**. Ha például **BrittaSimon\@contoso.com**.
+    1. Az a **felhasználónév** mezőbe írja be **BSimon\@\<vállalati_tartomány >.\< bővítmény >**. Ha például **BSimon\@contoso.com**.
 
     1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
@@ -159,7 +159,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés TurboRater saját hozzáférésének engedélyezésére használja.
+Ebben a szakaszban engedélyezze b Simon által biztosított a hozzáférés TurboRater Azure egyszeri bejelentkezés használatára.
 
 1. Az Azure Portalon válassza ki a **vállalati alkalmazások** > **minden alkalmazás** > **TurboRater**.
 
@@ -177,7 +177,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés Turb
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** panelen válassza **Britta Simon** a a **felhasználók** listában, és válassza a **kiválasztása** a panel alján.
+1. Az a **felhasználók és csoportok** panelen válassza **b Simon** a a **felhasználók** listában, és válassza a **kiválasztása** a panel alján.
 
 1. Ha valakitől egy szerepkör értéket a SAML helyességi feltétel, majd a a **Szerepkörválasztás** ablaktáblán válassza ki a megfelelő szerepkört a felhasználóhoz a listából. A panel alján válassza **kiválasztása**.
 
@@ -185,9 +185,9 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés Turb
 
 ### <a name="create-a-turborater-test-user"></a>TurboRater tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű TurboRater hoz létre. Együttműködik a [TurboRater támogatási csapatának](https://www.getitc.com/support) Britta Simon TurboRater felhasználóként hozzáadni. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói b Simon nevű TurboRater hoz létre. Együttműködik a [TurboRater támogatási csapatának](https://www.getitc.com/support) b Simon TurboRater felhasználóként hozzáadni. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
 

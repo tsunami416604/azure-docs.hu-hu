@@ -3,25 +3,23 @@ title: Több webhelyet üzemeltető alkalmazásátjáró létrehozása – Azure
 description: Megismerheti, hogyan hozható létre több webhelyet üzemeltető alkalmazásátjáró az Azure CLI használatával.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a1f1b464b2ac6fc62ea23a80a3887961ebe2d87e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9c99b534a40b5c87cf511c75ccdb19df4d9aaf63
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100717"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955638"
 ---
-# <a name="tutorial-create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Oktatóanyag: Az Azure CLI használatával több webhely üzemeltető application gateway létrehozása
+# <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Az Azure CLI használatával több webhely üzemeltető application gateway létrehozása
 
-Az Azure CLI használatával [konfigurálhatja több webhely üzemeltetését](multiple-site-overview.md), amikor [alkalmazásátjárót](overview.md) hoz létre. Ebben az oktatóanyagban háttércímkészleteket határoz meg virtuálisgép-méretezési készletek használatával. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez az oktatóanyag feltételezi, hogy a saját több tartományok és felhasználási mintái *www\.contoso.com* és *www\.fabrikam.com*.
+Az Azure CLI használatával [konfigurálhatja több webhely üzemeltetését](multiple-site-overview.md), amikor [alkalmazásátjárót](overview.md) hoz létre. Ez a cikk a háttércímkészletek virtuálisgép-méretezési csoportok segítségével határozhatók meg. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez a cikk feltételezi, hogy a saját több tartományok és felhasználási mintái *www\.contoso.com* és *www\.fabrikam.com*.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
@@ -33,8 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ![Többhelyes útválasztási példa](./media/tutorial-multiple-sites-cli/scenario.png)
 
-
-Igény szerint az oktatóanyag az [Azure PowerShell](tutorial-multiple-sites-powershell.md) használatával is elvégezhető.
+Ha szeretné, ez az eljárás használatával elvégezhető [Azure PowerShell-lel](tutorial-multiple-sites-powershell.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -48,11 +45,11 @@ Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi
 
 A következő példában létrehozunk egy *myResourceGroupAG* nevű erőforráscsoportot az *eastus* helyen.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus
 ```
 
-## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása 
+## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
 
 Hozza létre a virtuális hálózatot és a *myAGSubnet* nevű alhálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. Ezután hozzáadhatja a háttérkiszolgálók számára szükséges alhálózatot az [az network vnet subnet create](/cli/azure/network/vnet/subnet) paranccsal. Hozza létre a *myAGPublicIPAddress* elnevezésű nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip) paranccsal.
 
@@ -254,15 +251,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * A hálózat beállítása
-> * Application Gateway létrehozása
-> * Háttérbeli figyelők létrehozása
-> * Útválasztási szabályok létrehozása
-> * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
-> * CNAME rekord létrehozása a tartományban
-
-> [!div class="nextstepaction"]
-> [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-cli.md)
+* [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-cli.md)

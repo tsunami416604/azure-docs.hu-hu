@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8092724a8ebf04342e00d054cc78fe26b48d2f82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1fe436632eee12157dde2b082a5c77e67e7977cc
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65864017"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957166"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Boomi
 
@@ -251,7 +251,7 @@ Ahhoz, hogy az Azure AD-felhasználók Boomi jelentkezzen be, akkor ki kell ép�
 
     d. Adja meg a felhasználó **összevonási azonosító**. Minden felhasználónak rendelkeznie kell egy összevonási azonosítója, amely egyedileg azonosítja a felhasználó a fiókon belül.
 
-    e. Rendelje hozzá a **általános jogú felhasználói** szerepkört a felhasználóhoz. Ne rendeljen a rendszergazda szerepkör, mert az, hogy adna neki, normál levegőben hozzáférését, valamint az egyszeri bejelentkezéses hozzáférést.
+    e. Rendelje hozzá a **általános jogú felhasználói** szerepkört a felhasználóhoz. Ne rendeljen a rendszergazda szerepkör, mert, amely biztosít számukra légköri normál hozzáférését, valamint az egyszeri bejelentkezéses hozzáférést.
 
     f. Kattintson az **OK** gombra.
 

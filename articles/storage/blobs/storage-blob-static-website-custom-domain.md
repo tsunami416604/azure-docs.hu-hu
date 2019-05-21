@@ -9,12 +9,12 @@ ms.date: 12/07/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: seodec18
-ms.openlocfilehash: 4b074c9dee93ba44659b0321ae3eee7fbea1c61f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7320f5cd8d012973139adb099785cddae123f775
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145059"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949603"
 ---
 # <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Oktatóanyag: Statikus webhely egyéni tartomány SSL engedélyezése az Azure CDN használatával
 
@@ -44,8 +44,9 @@ Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a kezdéshez.
 1. Az a **új végpont** területen töltse ki a mezőket egy új CDN-végpont létrehozása.
 1. Adja meg a végpont neve, például *mystaticwebsiteCDN*.
 1. Adja meg a webhely tartomány szerint az állomásnevet a CDN-végponthoz.
-1. A forrás állomásnevének adja meg a statikus webhely végpont Ön. Keresse meg a statikus webhely-végpontra, nyissa meg a **statikus webhely** a tárfiók szakaszt, és másolja a végpont. 
+1. A forrás állomásnevének adja meg a statikus webhely végpont Ön. Keresse meg a statikus webhely-végpontra, nyissa meg a **statikus webhely** a tárfiók szakaszt, és másolja a végpont (távolítsa el az előző https://)
 1. Lépjen a CDN-végpont tesztelése *mywebsitecdn.azureedge.net* a böngészőben.
+1. Levélobjektumot megnyitásával ellenőrizze a **új végpont** beállítások területén megtekintheti, ha a forrástípus értéke a forrás *egyéni forrás* és *forrás gazdaneve* jeleníti meg a statikus webiste végpont neve.
 
 ## <a name="enable-custom-domain-and-ssl"></a>Egyéni tartományt és SSL engedélyezése
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
 ms.date: 05/14/2019
-ms.openlocfilehash: 404450584fa9928b6a345cf7ab13006d11587c46
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: d8d767b97e335feeb31851c89a9b21eddf7157ea
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872940"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962212"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift-fürt létrehozása
 
@@ -35,7 +35,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!IMPORTANT]
 > Ehhez az oktatóanyaghoz az Azure CLI 2.0.65 verzióját.
 >    
-> Azure Red Hat Openshift használata előtt meg kell vásárolnia az Azure fenntartott virtuálisgép-példányok leírtak szerint [az Azure Red Hat Openshift fejlesztési környezet beállítása](howto-setup-environment.md#purchase-azure-red-hat-openshift-application-nodes-reserved-instances).
+> Az Azure Red Hat OpenShift használata előtt, be kell szereznie legalább 4 Azure Red Hat OpenShift fenntartott alkalmazás csomópontok leírtak szerint [az Azure Red Hat OpenShift fejlesztési környezet beállítása](howto-setup-environment.md#purchase-azure-red-hat-openshift-application-nodes-reserved-instances).
 
 Az oktatóanyag elkezdése előtt:
 

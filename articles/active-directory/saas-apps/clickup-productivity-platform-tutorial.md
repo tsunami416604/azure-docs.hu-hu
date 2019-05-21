@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 3244140999dc61560549db077d4c402b3986956b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
-ms.translationtype: HT
+ms.openlocfilehash: 2a14b251df0bedbcd27ab4e9bf1abe9a27ad50d6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900436"
+ms.locfileid: "65950912"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Oktatóanyag: Az Azure Active Directory-integráció ClickUp termelékenység platformmal
 
@@ -203,7 +203,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
     ![ClickUp termelékenység konfiguráció](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
-    > Felhasználó megkapja az értesítést, és rendelkezik a fiók aktiválásához a meghívás elfogadásához.
+    > A felhasználó megkapja az értesítést, és el kell fogadnia a meghívást, a fiók aktiválásához.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 

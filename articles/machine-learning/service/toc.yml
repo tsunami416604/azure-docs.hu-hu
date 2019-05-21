@@ -6,6 +6,9 @@
     - name: Mi az Azure Machine Learning szolgáltatás?
       displayName: AML services overview
       href: overview-what-is-azure-ml.md
+    - name: A szolgáltatás működése
+      displayName: architecture concepts definitions
+      href: concept-azure-machine-learning-architecture.md
 - name: Beállítás
   items:
     - name: Munkaterület létrehozása
@@ -77,9 +80,6 @@
           href: ui-sample-classification-predict-churn.md
 - name: Alapelvek
   items:
-    - name: A szolgáltatás működése
-      displayName: architecture concepts definitions
-      href: concept-azure-machine-learning-architecture.md
     - name: Munkaterület
       displayName: concept definitions architecture
       href: concept-workspace.md

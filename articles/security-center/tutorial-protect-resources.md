@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
-ms.author: monhaber
-ms.openlocfilehash: 6e8c10ecb85addf2ef6a995e3c0b8ac611343cfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-mohabe
+ms.openlocfilehash: 8fc287826d1a98b5d61229979544fdb3780455d4
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60612461"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967937"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Oktatóanyag: Erőforrások védelme az Azure Security Centerben
 A Security Center korlátozza a fenyegetéseknek való kitettségét azzal, hogy hozzáférés- és alkalmazásvezérlőket használ a kártékony tevékenységek blokkolására. – Igény szerinti (JIT) virtuális gép (VM) hozzáférés engedélyezésével, hogy a virtuális gépek állandó hozzáférés letiltása csökkenti a támadásoknak való kitettség csökkentése. Az állandó hozzáférés helyett szabályozott és naplózott hozzáférést biztosít a virtuális gépekhez – csak akkor, ha szükség van rá. Az adaptív alkalmazásvezérlők segítenek felvértezni a virtuális gépeket a kártevők ellen azáltal, hogy szabályozzák, mely alkalmazások futhatnak rajtuk. A Security Center gépi tanulási módszerekkel elemzi a virtuális gépen futó folyamatokat, és az így szerzett információk alapján segít az engedélyezési szabályok alkalmazásában.
@@ -43,7 +43,7 @@ A felügyeleti portoknak nem kell mindig nyitva lenniük. Csak addig kell nyitva
 
 1. A Security Center főmenüjében válassza **Just in Time VM eléréséhez** alatt **speciális FELHŐVÉDELEM**.
 
-   ![Igény szerinti hozzáférés a virtuális gépekhez][1]
+   ![Virtuális gépek igény szerinti elérése][1]
 
    **Just-in-Time VM access** információt nyújt a virtuális gépek állapotát:
 
@@ -77,7 +77,7 @@ Ez a funkció csak Windows rendszerű gépeken használható.
 
 1. Térjen vissza a Security Center főmenüjébe. Az **ADVANCED CLOUD DEFENSE** (SPECIÁLIS FELHŐVÉDELEM) területen válassza ki az **Adaptive application controls** (Adaptív alkalmazásvezérlők) elemet.
 
-   ![Adaptív alkalmazásvezérlők][3]
+   ![Adaptív alkalmazásvezérlés][3]
 
    A **Resource groups** (Erőforráscsoportok) szakaszban három lap található:
 

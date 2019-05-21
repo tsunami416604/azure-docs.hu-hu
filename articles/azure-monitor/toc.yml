@@ -305,6 +305,12 @@
                       href: app/snapshot-debugger-troubleshoot.md
                 - name: Diagnosztika
                   href: ../application-insights/app-insights-azure-diagnostics.md
+            - name: ASP.NET-mag
+              displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
+              href: app/asp-net-core.md
+              items:
+                - name: ILogger
+                  href: app/ilogger.md
             - name: ASP.NET-alkalmazások
               items:
                 - name: Webalkalmazások
@@ -339,13 +345,6 @@
                   href: app/windows-services.md
                 - name: Asztali Windows
                   href: app/windows-desktop.md
-                - name: ASP.NET-mag
-                  href: app/asp-net-core.md
-                  items:
-                    - name: Profilkészítő a Linux App Serviceshez (előzetes verzió)
-                      href: app/profiler-aspnetcore-linux.md
-                - name: ASP.NET Core Visual Studio nélkül
-                  href: app/asp-net-core-no-visualstudio.md
                 - name: Konzol
                   href: app/console.md
                 - name: Alkalmazás irányítópultja
@@ -356,8 +355,6 @@
                   href: app/asp-net-exceptions.md
                 - name: Nyomkövetési naplók
                   href: app/asp-net-trace-logs.md
-                - name: ILogger
-                  href: app/ilogger.md
                 - name: Teljesítményszámlálók
                   href: app/performance-counters.md
                 - name: Függőségek

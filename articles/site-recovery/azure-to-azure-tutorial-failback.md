@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9bc2bd50fda34b493463898d8ef47ed2c246b7d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 339cbf18d79053dfb0704d928b8c9251c73b3a6e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790109"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951787"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Feladat-visszavételt az Azure virtuális Gépekhez az Azure-régiók között
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag leírja, hogyan visszavételhez egy Azure virtuális Gépen. 
 > 
 > [!NOTE]
 > 
-> Ebben az oktatóanyagban megismerheti, hogyan átadja a feladatokat a célrégióban, és térjen vissza a forrásrégióban a minimális testreszabások néhány virtuális gépet. További részletes útmutatásért tekintse át a [útmutató végigvezeti az Azure virtuális gépekhez](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/).
+> Ebben az oktatóanyagban megismerheti, hogyan átadja a feladatokat a célrégióban, és térjen vissza a forrásrégióban a minimális testreszabások néhány virtuális gépet. További részletes útmutatásért tekintse át a [útmutató végigvezeti az Azure virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/windows/).
 
 ## <a name="before-you-start"></a>Előkészületek
 

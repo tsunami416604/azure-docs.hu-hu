@@ -49,6 +49,7 @@
       items:
         - name: Storage
           href: storage-account-concept.md
+          displayName: Storage side encryption
         - name: Adategységek API
           href: assets-concept.md
     - name: Encoding
@@ -169,6 +170,7 @@
       items:
         - name: Fiók létrehozása – parancssori felület
           href: create-account-cli-how-to.md
+          displayName: storage
         - name: Fiók hitelesítő adatainak alaphelyzetbe állítása – parancssori felület
           href: cli-reset-account-credentials.md
         - name: Adatelérési API-k – parancssori felület

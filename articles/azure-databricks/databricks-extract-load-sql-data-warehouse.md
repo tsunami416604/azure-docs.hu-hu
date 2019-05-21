@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/17/2019
-ms.openlocfilehash: 7c60b2ae3d403584822e694daf3357b86cba34d7
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a6a681ace95f9bab3c77e4a0f9982a2281c778b8
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864753"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966442"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Oktatóanyag: A kinyerési, átalakítási és az adatok betöltése az Azure Databricks használatával
 
@@ -63,7 +63,7 @@ Hajtsa végre ezeket a feladatokat, ez az oktatóanyag megkezdése előtt:
 
       Ha inkább a hozzáférés-vezérlési lista (ACL) segítségével hozzárendelni az egyszerű szolgáltatás egy adott fájl vagy könyvtár, referencia [hozzáférés-vezérlés az Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
-   * A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, Alkalmazásazonosító és hitelesítési kulcs értékeit egy szövegfájlba. Kell azokat, hamarosan.
+   * A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, app ID és jelszó értéket egy szövegfájlba. Kell azokat, hamarosan.
 
 * Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -103,11 +103,9 @@ Ebben a szakaszban létrehoz egy Azure Databricks szolgáltatást az Azure porta
     |**Hely**     | Válassza az **USA 2. nyugati régióját**.  A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/).      |
     |**Tarifacsomag**     |  Válassza ki **Standard**.     |
 
-3. Válassza a **Rögzítés az irányítópulton**, majd a **Létrehozás** lehetőséget.
+3. A fiók létrehozása eltarthat néhány percig. Műveleti állapotának figyelése, megtekintheti a folyamatjelző sáv tetején.
 
-4. A fiók létrehozása eltarthat néhány percig. Fiók létrehozása során a portál megjeleníti a **üzemelő példány elküldése az Azure Databricks** csempére a jobb oldalon. Műveleti állapotának figyelése, megtekintheti a folyamatjelző sáv tetején.
-
-    ![Databricks üzembe helyezési csempe](./media/databricks-extract-load-sql-data-warehouse/databricks-deployment-tile.png "Databricks üzembe helyezési csempe")
+4. Válassza a **Rögzítés az irányítópulton**, majd a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-spark-cluster-in-azure-databricks"></a>Spark-fürt létrehozása az Azure Databricksben
 
@@ -154,8 +152,8 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
    ```scala
    spark.conf.set("fs.azure.account.auth.type", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-   spark.conf.set("fs.azure.account.oauth2.client.id", "<application-id>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.id", "<appID>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
@@ -167,17 +165,17 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
    ```scala
    spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<appID>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. A kódblokk, cserélje le a `application-id`, `authentication-id`, `tenant-id`, és `storage-account-name` helyőrző értékeket az előfeltételeket a jelen oktatóanyag végrehajtása során gyűjtött értékek a kód blokk. Cserélje le a `file-system-name` nevét bármilyen, a helyőrző értékét szeretné adni a fájlrendszer.
+6. A kódblokk, cserélje le a `appID`, `password`, `tenant-id`, és `storage-account-name` helyőrző értékeket az előfeltételeket a jelen oktatóanyag végrehajtása során gyűjtött értékek a kód blokk. Cserélje le a `file-system-name` nevét bármilyen, a helyőrző értékét szeretné adni a fájlrendszer.
 
-   * A `application-id`, és `authentication-id` a regisztrált alkalmazást, és az active directory egyszerű szolgáltatás létrehozása során a rendszer.
+   * A `appID`, és `password` a regisztrált alkalmazást, és az active directory egyszerű szolgáltatás létrehozása során a rendszer.
 
    * A `tenant-id` az előfizetésből van.
 
@@ -338,7 +336,7 @@ Ahogy korábban említettük, az SQL Data Warehouse-összekötő használatával
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Adja meg az Azure SQL Data Warehouse-példányhoz való csatlakozáshoz szükséges értékeket. Meg kell létrehozni egy SQL data warehouse előfeltétele.
+4. Adja meg az Azure SQL Data Warehouse-példányhoz való csatlakozáshoz szükséges értékeket. Meg kell létrehozni egy SQL data warehouse előfeltétele. A kiszolgáló teljes nevét használja **dwServer**. Például: `<servername>.database.windows.net`.
 
    ```scala
    //SQL Data Warehouse related settings
