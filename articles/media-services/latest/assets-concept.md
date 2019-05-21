@@ -36,15 +36,15 @@ Miután a digitális fájlok feltöltése a storage-ba, és az eszközhöz társ
 
 1. Hozzon létre egy új „bemeneti” adategységet a Media Services v3 API használatával. Ez a művelet létrehoz egy tárolót a Media Services-fiókjához társított tárfiókban. Az API-t adja vissza a tároló nevét (például `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
    
-    Ha már rendelkezik egy blobtárolóval, amelyet társítani szeretne az adategységhez, az adategység létrehozásakor megadhatja a tároló nevét. A Media Services jelenleg csak a tároló gyökerében található blobokat támogatja, a fájlnévben elérési utat tartalmazó blobokat nem. Ennélfogva egy „input.mp4” nevű fájlt tartalmazó tároló használható lesz. Azonban a „videos/inputs/input.mp4” nevű fájt tartalmazó tároló nem fog működni.
+    Ha már rendelkezik egy blobtárolóval, amelyet társítani szeretne az adategységhez, az adategység létrehozásakor megadhatja a tároló nevét. A Media Services jelenleg csak a tároló gyökerében található blobokat támogatja, a fájlnévben elérési utat tartalmazó blobokat nem. Ennélfogva egy „input.mp4” nevű fájlt tartalmazó tároló használható lesz. Azonban a „videos/inputs/input.mp4” nevű fájlt tartalmazó tároló nem fog működni.
 
     Az Azure CLI-vel közvetlenül feltölthet bármilyen tárfiókba és tárolóba, amelyhez jogosultsággal rendelkezik az előfizetésében. <br/>A tárolók nevének egyedinek kell lennie, és követnie kell a tárolók elnevezésére vonatkozó irányelveket. A névnek nem kell követnie a Media Services adategység-tárolójának elnevezési formátumát (Adategység-GUID). 
     
     ```azurecli
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
-2. Használjon egy olvasási és írási engedélyekkel rendelkező SAS URL-címet a digitális fájlok az adategység-tárolóba történő feltöltéséhez. A Media Services API segítségével [kilistázhatja az adategység-tárolók URL-címét](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
-3. Használja az Azure Storage API-kat vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md)-t, a [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md)-t vagy a [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t) a fájlok az adategység-tárolóba történő feltöltéséhez. 
+2. Használjon egy olvasási és írási engedélyekkel rendelkező SAS URL-címet a digitális fájlok adategység-tárolóba történő feltöltéséhez. A Media Services API segítségével [kilistázhatja az adategység-tárolók URL-címét](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
+3. Használja az Azure Storage API-kat vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md)-t, a [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md)-t vagy a [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t) a fájlok adategység-tárolóba történő feltöltéséhez. 
 4. A Media Services v3 API-k segítségével hozzon létre egy Átalakítást és egy Feladatot a „bemeneti” adategység feldolgozásához. További információt az [átalakításokkal és feladatokkal](transform-concept.md) kapcsolatos cikkben olvashat.
 5. A Stream a tartalom a "kimeneti" objektum.
 
