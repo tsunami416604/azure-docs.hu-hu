@@ -819,53 +819,47 @@
       items:
         - name: Riasztások
           items:
-            - name: Metrikariasztások használata
-              items:
-                - name: 'Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorban'
-                  href: platform/alerts-metric.md
-                - name: 'Klasszikus metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorban'
-                  href: platform/alerts-classic-portal.md
-                - name: Metrikariasztások dinamikus küszöbértékekkel
-                  href: platform/alerts-dynamic-thresholds.md
-                - name: Metrikariasztások konfigurálása naplókhoz
-                  href: platform/alerts-metric-logs.md
-                - name: Új metrikariasztás létrehozása Resource Manager-sablonnal
-                  href: platform/alerts-metric-create-templates.md
-                - name: Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
-                  href: platform/alerts-enable-template.md
-                - name: Webhook meghívatása klasszikus metrikariasztással
-                  href: platform/alerts-webhooks.md
-            - name: Naplóriasztások használata
-              items:
-                - name: Riasztások konfigurálása elemzési lekérdezésekhez
-                  href: platform/alerts-log.md
-                - name: Naplóriasztások lekérdezései
-                  href: platform/alerts-log-query.md
-                - name: Naplóriasztásokra vonatkozó webhook-műveletek
-                  href: platform/alerts-log-webhook.md
-                - name: Hibaelhárítási naplóriasztások
-                  href: platform/alert-log-troubleshoot.md
-            - name: Tevékenységnapló-riasztások használata
-              items:
-                - name: Riasztások beállítása egy tevékenységnapló eseményéhez
-                  href: platform/alerts-activity-log.md
-                - name: Migrálás a tevékenységnapló-riasztásokra
-                  href: platform/migrate-management-alerts.md
-                - name: Riasztások beállítása szolgáltatási értesítésekhez
-                  href: platform/alerts-activity-log-service-notifications.md
-            - name: Alkalmazásriasztások használata
+            - name: Alkalmazásriasztási szabályok
               items:
                 - name: Rendelkezésre állás
                   href: app/monitor-web-app-availability.md
                 - name: Metrikákhoz kapcsolódó riasztások
                   href: app/alerts.md
-            - name: Műveletcsoportok használata riasztásokkal
+            - name: Platformmetrika riasztási szabályai
               items:
-                - name: Műveletcsoportok létrehozása
+                - name: Metrikariasztások kezelése
+                  href: platform/alerts-metric.md
+                - name: Dinamikus küszöbértékek használata
+                  href: platform/alerts-dynamic-thresholds.md
+                - name: Metrikariasztások naplókhoz
+                  href: platform/alerts-metric-logs.md
+                - name: Resource Manager-sablon használata
+                  href: platform/alerts-metric-create-templates.md
+            - name: Naplóriasztási szabályok
+              items:
+                - name: Riasztások konfigurálása elemzési lekérdezésekhez
+                  href: platform/alerts-log.md
+                - name: Lekérdezések
+                  href: platform/alerts-log-query.md
+                - name: Webhook-műveletek
+                  href: platform/alerts-log-webhook.md
+                - name: Hibaelhárítás
+                  href: platform/alert-log-troubleshoot.md
+            - name: Tevékenységnapló-riasztási szabályok
+              items:
+                - name: Riasztás tevékenységnapló-eseményhez
+                  href: platform/alerts-activity-log.md
+                - name: Migráláskezelési események tevékenységnapló-riasztásokra
+                  href: platform/migrate-management-alerts.md
+                - name: Riasztás a szolgáltatás állapotával kapcsolatos értesítésekre
+                  href: platform/alerts-activity-log-service-notifications.md
+            - name: Műveletcsoportok használata
+              items:
+                - name: Műveletcsoport létrehozása
                   href: platform/action-groups.md
-                - name: Információ a webhook sémáról
+                - name: Webhookséma
                   href: platform/activity-log-alerts-webhook.md
-                - name: Gyakori riasztásiséma-definíciók
+                - name: Gyakori riasztásiséma-definíció
                   href: platform/alerts-common-schema-definitions.md
                 - name: Az SMS-riasztás viselkedése
                   href: platform/alerts-sms-behavior.md
@@ -875,9 +869,9 @@
                   href: platform/action-groups-create-resource-manager-template.md
                 - name: Logikai alkalmazási művelet megvalósítása
                   href: platform/action-groups-logic-app.md
-            - name: Az Operations Manager riasztásai
+            - name: Riasztáskezelési megoldás
               href: platform/alert-management-solution.md
-            - name: Riasztások kezelése
+            - name: Riasztás felhasználói felülete
               items:
                 - name: Riasztáspéldányok kezelése
                   href: platform/alerts-managing-alert-instances.md
@@ -887,19 +881,31 @@
                   href: platform/alerts-managing-alert-states.md
                 - name: Egyéb monitorozási szolgáltatások riasztásainak kezelése
                   href: platform/alerts-managing-nagios-zabbix-scom.md
-            - name: Klasszikus riasztások migrálása
+            - name: Klasszikus riasztási szabályok migrálása
               items:
-                - name: A migrálási eszköz használata
-                  href: platform/alerts-using-migration-tool.md
                 - name: Előkészületek a migráláshoz
                   href: platform/alerts-prepare-migration.md
                 - name: A migrálási eszköz ismertetése
                   href: platform/alerts-understand-migration.md
+                - name: A migrálási eszköz használata
+                  href: platform/alerts-using-migration-tool.md
+                - name: Klasszikus metrikariasztások kezelése
+                  href: platform/alerts-classic-portal.md
+                - name: Klasszikus metrikariasztás Resource Manager-sablonnal
+                  href: platform/alerts-enable-template.md
+                - name: Webhook meghívatása klasszikus metrikariasztással
+                  href: platform/alerts-webhooks.md
+        - name: Szolgáltatás állapotával kapcsolatos értesítések a tevékenységnaplóban
+          items:
+            - name: Értesítések megtekintése
+              href: platform/service-notifications.md
+            - name: Riasztások beállítása értesítési eseményekhez
+              href: platform/alerts-activity-log-service-notifications.md
         - name: Automatikus méretezés
           items:
-            - name: Az automatikus méretezés bemutatása
+            - name: Útmutatás
               href: platform/autoscale-get-started.md
-            - name: Ismerkedés az automatikus méretezési beállításokkal
+            - name: Beállítások
               href: platform/autoscale-understanding-settings.md
             - name: Ajánlott eljárások
               href: platform/autoscale-best-practices.md
@@ -907,20 +913,14 @@
               href: platform/autoscale-common-metrics.md
             - name: Gyakori minták
               href: platform/autoscale-common-scale-patterns.md
-            - name: Automatikus méretezés egyéni metrikával
+            - name: Méretezés egyéni metrikákkal
               href: platform/autoscale-custom-metric.md
-            - name: Virtuálisgép-méretezési csoportok automatikus skálázása Resource Manager-sablonok használatával
-              href: platform/autoscale-virtual-machine-scale-sets.md
-            - name: Virtuálisgép-méretezési csoportok gépeinek automatikus skálázása
+            - name: Virtuálisgép-méretezési csoportok méretezése
               href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
-            - name: Webhookok és e-mailes értesítések beállítása az automatikus méretezésben
+            - name: Virtuálisgép-méretezési csoportok méretezése Resource Manager-sablonokkal
+              href: platform/autoscale-virtual-machine-scale-sets.md
+            - name: Webhookok és e-mailes értesítések használata
               href: platform/autoscale-webhook-email.md
-        - name: Szolgáltatási értesítések
-          items:
-            - name: Szolgáltatási értesítések megtekintése
-              href: platform/service-notifications.md
-            - name: Riasztások beállítása szolgáltatási értesítésekhez
-              href: platform/alerts-activity-log-service-notifications.md
         - name: Informatikai szolgáltatásfelügyelet
           items:
             - name: Informatikai szolgáltatásfelügyeleti összekötő
