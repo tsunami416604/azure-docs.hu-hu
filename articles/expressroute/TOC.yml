@@ -21,13 +21,12 @@
     - name: Kapcsolatcsoportok és társviszonyok
       href: expressroute-circuit-peerings.md
     - name: Helyek és partnerek
-      href: expressroute-locations.md
       items:
         - name: Szolgáltatók hely alapján
           href: expressroute-locations-providers.md
         - name: Helyek szolgáltató alapján
           href: expressroute-locations.md
-    - name: A virtuális hálózati átjárók ismertetése
+    - name: ExpressRoute virtuális hálózati átjáró és FastPath
       href: expressroute-about-virtual-network-gateways.md
     - name: Előfeltételek
       href: expressroute-prerequisites.md

@@ -18,19 +18,7 @@ metadata:
   ms.author: erhopf
   ms.custom: seodec18
 abstract:
-  description: |
-    Ismerje meg a Speech Services REST API-kkal vagy a Speech SDK-val történő használatát az alkalmazások beszédalapú szolgáltatásokkal való bővítésére. A Speech SDK használatával többek között a következő képességeket adhatja hozzá alkalmazásaihoz&colon; 
-    <div class="row" style="font-size:16px"><div class="column"><ul>
-    <li><b><a href="speech-to-text.md">diktálás</a></b> (beszédfelismerés/SR)</li>
-    <li><b><a href="speech-devices-sdk-create-kws.md">egyéni ébresztőszó</a></b> (kulcsszófelismerő/KWS)</li>
-    <li><b><a href="how-to-recognize-intents-from-speech-csharp.md">szándék</a></b></li>
-    <li><b><a href="speech-translation.md">fordítás</a></b></li>
-    <li><b><a href="speech-container-howto.md">helyszíni tároló</a></b></li></ul></div><div class="column"><ul>
-    <li><b><a href="text-to-speech.md">szövegfelolvasás</a></b> (TTS)</li>
-    <li><b><a href="conversation-transcription-service.md">beszédátírás</a></b> (CTS)</li>
-    <li><b><a href="how-to-phrase-lists.md">kifejezéslista személyre szabása</a>/<a href="how-to-custom-speech.md">egyéni beszédadaptáció</a></b></li>
-    <li><b><a href="voice-first-virtual-assistants.md">hangközpontú virtuális asszisztens</a></b></li>
-    <li><b><a href="call-center-transcription.md">telefonos ügyfélszolgálati felvételek átírása</a></b></li></ul></div></div>
+  description: Ehhez használja a Speech SDK-t vagy a REST API-t.
 sections:
   - items:
       - type: list
@@ -53,10 +41,26 @@ sections:
             image:
               src: ../media/index/i_guidelines.svg
             title: Beszédeszközök SDK
+  - title: Bevezetés
+    items:
+      - type: paragraph
+        text: |
+          A Speech SDK használatával többek között a következő képességeket adhatja hozzá alkalmazásaihoz&colon; 
+          <div class="row"><div class="column"><ul>
+          <li><b><a href="speech-to-text.md">diktálás</a></b> (beszédfelismerés/SR)</li>
+          <li><b><a href="speech-devices-sdk-create-kws.md">egyéni ébresztőszó</a></b> (kulcsszófelismerő/KWS)</li>
+          <li><b><a href="how-to-recognize-intents-from-speech-csharp.md">szándék</a></b></li>
+          <li><b><a href="speech-translation.md">fordítás</a></b></li>
+          <li><b><a href="speech-container-howto.md">helyszíni tároló</a></b></li></ul></div><div class="column"><ul>
+          <li><b><a href="text-to-speech.md">szövegfelolvasás</a></b> (TTS)</li>
+          <li><b><a href="conversation-transcription-service.md">beszédátírás</a></b> (CTS)</li>
+          <li><b><a href="how-to-phrase-lists.md">kifejezéslista személyre szabása</a>/<a href="how-to-custom-speech.md">egyéni beszédadaptáció</a></b></li>
+          <li><b><a href="voice-first-virtual-assistants.md">hangközpontú virtuális asszisztens</a></b></li>
+          <li><b><a href="call-center-transcription.md">telefonos ügyfélszolgálati felvételek átírása</a></b></li></ul></div></div>
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph
-        text: 'Megtudhatja, hogyan töltheti le, telepítheti és használhatja az SDK-t az egyes nyilak hivatkozására kattintva <img src="media/index/link.jpg" height="15" width="15"></img>.<br/><br/>A nyilak hivatkozásainak <img src="media/index/link.jpg" height="15" width="15"></img> mindegyike alapértelmezés szerint egy szövegfelolvasási rövid útmutatóhoz vezet. Innen további rövid útmutatókhoz juthat el (<a href="scenario-availability.md">amennyiben elérhetők</a>), például a szövegfelolvasáséhoz vagy a virtuális asszisztenséhez.'
+        text: 'Megtudhatja, hogyan töltheti le, telepítheti és használhatja az SDK-t az egyes nyilak hivatkozására kattintva <img src="media/index/link.jpg" height="15" width="15"></img>.<br/>A nyilak hivatkozásainak <img src="media/index/link.jpg" height="15" width="15"></img> mindegyike alapértelmezés szerint egy szövegfelolvasási rövid útmutatóhoz vezet. Innen további rövid útmutatókhoz juthat el (<a href="scenario-availability.md">amennyiben elérhetők</a>), például a szövegfelolvasáséhoz vagy a virtuális asszisztenséhez.'
       - type: table
         style: dataMatrix
         columns:

@@ -116,8 +116,9 @@
             - name: Adatmegőrzési szabályzat beállítása és tisztítószkript futtatása
               href: image-factory-set-retention-policy-cleanup.md
         - name: Vállalati DevTest Labs
-          href: devtest-lab-guidance-prescriptive-adoption.md
           items:
+            - name: DevTest Labs vállalati szinten
+              href: devtest-lab-guidance-prescriptive-adoption.md
             - name: Referenciaarchitektúra
               href: devtest-lab-reference-architecture.md
             - name: A DevTest Labs üzemelő példányának vertikális felskálázása

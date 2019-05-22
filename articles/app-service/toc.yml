@@ -92,11 +92,11 @@
   items:
     - name: Alkalmazás konfigurálása
       items:
-        - name: Alkalmazásbeállítások használata
-          href: web-sites-configure.md
+        - name: Általános beállítások konfigurálása
+          href: configure-common.md
         - name: A PHP konfigurálása
           href: web-sites-php-configure.md
-        - name: Java-fejlesztői útmutató
+        - name: A Java konfigurálása
           href: configure-language-java.md
         - name: Csatlakozás helyszíni erőforrásokhoz
           href: web-sites-integrate-with-vnet.md

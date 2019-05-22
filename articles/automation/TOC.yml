@@ -42,6 +42,8 @@
           href: automation-onboard-solutions-from-vm.md
         - name: Előkészítés Automation-fiókból
           href: automation-onboard-solutions-from-automation-account.md
+        - name: Régióleképezések
+          href: how-to/region-mappings.md
     - name: Frissítéskezelés
       items:
         - name: A frissítéskezelés áttekintése

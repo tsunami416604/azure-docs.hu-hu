@@ -44,6 +44,8 @@
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Törölt felhasználó visszaállítása
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Nem felügyelt könyvtárban található fiók bezárása
+          href: users-close-account.md
         - name: B2B-felhasználók hozzáadása
           href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Szerepkörök hozzárendelése B2B-felhasználókhoz

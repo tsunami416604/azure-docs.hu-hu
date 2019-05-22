@@ -1,21 +1,47 @@
-- name: OpenShift – dokumentáció
-  href: index.md
-- name: Gyors útmutatók
-  expanded: true
+- name: Azure Red Hat OpenShift
+  href: index.yml
+- name: Áttekintés
   items:
-    - name: 'OpenShift:  Közösségi sablon'
-      href: 'https://azure.microsoft.com/resources/templates/openshift-origin-rhel/'
+    - name: AZ Azure Red Hat OpenShift bemutatása
+      href: intro-openshift.md
 - name: Oktatóanyagok
   items:
-    - name: Üzembe helyezés Azure-beli virtuális gépeken
-      href: /azure/virtual-machines/linux/openshift-get-started
+    - name: Azure Red Hat OpenShift-fürt létrehozása és felügyelete
+      items:
+        - name: 1 – Azure Red Hat OpenShift-fürt létrehozása
+          href: tutorial-create-cluster.md
+        - name: 2 – Azure Red Hat OpenShift-fürt skálázása
+          href: tutorial-scale-cluster.md
+        - name: 3 – Azure Red Hat OpenShift-fürt törlése
+          href: tutorial-delete-cluster.md
+- name: Útmutatók
+  expanded: true
+  items:
+    - name: Az Azure Red Hat OpenShift fejlesztői környezetének beállítása
+      href: howto-setup-environment.md
+      expanded: true
+      items:
+        - name: Azure AD-bérlő létrehozása
+          href: howto-create-tenant.md
+        - name: Azure AD-alkalmazásobjektum és -felhasználó létrehozása
+          href: howto-aad-app-configuration.md
+- name: Referencia
+  items:
+    - name: Az Azure Red Hat OpenShift parancssori felülete
+      href: /cli/azure/openshift
+    - name: Azure Red Hat OpenShift REST API-k
+      href: /rest/api/openshift
 - name: További források
   items:
+    - name: Gyakori kérdések
+      href: openshift-faq.md
+    - name: Hibaelhárítás
+      href: troubleshoot.md
+    - name: Támogatott erőforrások
+      href: supported-resources.md
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: A Red Hat OpenShift dokumentációja
+      href: 'https://docs.openshift.com/aro/welcome/index.html'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: OpenShift-tárolósablon
-      href: 'https://github.com/Microsoft/openshift-container-platform'
-    - name: OpenShift Origin
-      href: 'https://docs.openshift.org/latest/getting_started/index.html'
-    - name: OpenShift-hely
-      href: 'https://docs.openshift.org/latest/welcome/index.html'
