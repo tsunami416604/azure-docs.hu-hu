@@ -55,9 +55,9 @@ Teradata-beli társított szolgáltatás a következő tulajdonságok támogatot
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Teradata** | Igen |
-| kiszolgáló | A Teradata-kiszolgáló neve. | Igen |
+| server | A Teradata-kiszolgáló neve. | Igen |
 | authenticationType | A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű**, és **Windows**. | Igen |
-| felhasználónév | Adja meg a felhasználónevet a Teradata-adatbázishoz való csatlakozáshoz. | Igen |
+| username | Adja meg a felhasználónevet a Teradata-adatbázishoz való csatlakozáshoz. | Igen |
 | password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Egy helyi Integration Runtime szükség, az említett [Előfeltételek](#prerequisites). |Igen |
 
@@ -123,7 +123,7 @@ Adatok másolása a Teradata, állítsa be a forrás típusaként a másolási t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **RelationalSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
@@ -167,37 +167,37 @@ Ha az adatok másolása a Teradata, Azure Data Factory-közbenső adattípusok a
 | Blob |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| char |String |
-| CLOB |String |
-| Dátum |DateTime |
+| Char |String |
+| Clob |String |
+| Date |DateTime |
 | Decimal |Decimal |
 | Double |Double |
-| Kép |String |
-| Egész szám |Int32 |
-| Napi időköz |TimeSpan |
-| Intervallum nap – óra |TimeSpan |
-| Intervallum nap – perc |TimeSpan |
-| Intervallum nap – másodperc |TimeSpan |
-| Intervallum óra |TimeSpan |
-| Intervallum óra – perc |TimeSpan |
-| Intervallum óra – másodperc |TimeSpan |
-| Időköz percben |TimeSpan |
-| Második időköz percben |TimeSpan |
-| Intervallum hónap |String |
-| Intervallum második |TimeSpan |
-| Intervallum év |String |
-| Intervallum év, hónap |String |
-| Szám |Double |
-| Period(date) |String |
+| Graphic |String |
+| Integer |Int32 |
+| Interval Day |TimeSpan |
+| Interval Day To Hour |TimeSpan |
+| Interval Day To Minute |TimeSpan |
+| Interval Day To Second |TimeSpan |
+| Interval Hour |TimeSpan |
+| Interval Hour To Minute |TimeSpan |
+| Interval Hour To Second |TimeSpan |
+| Interval Minute |TimeSpan |
+| Interval Minute To Second |TimeSpan |
+| Interval Month |String |
+| Interval Second |TimeSpan |
+| Interval Year |String |
+| Interval Year To Month |String |
+| Number |Double |
+| Period(Date) |String |
 | Period(Time) |String |
-| Időszak (idő időzónával együtt) |String |
+| Period(Time With Time Zone) |String |
 | Period(Timestamp) |String |
-| Időszak (Timestamp időzónával együtt) |String |
+| Period(Timestamp With Time Zone) |String |
 | SmallInt |Int16 |
 | Time |TimeSpan |
-| Idő időzónával együtt |String |
-| Időbélyeg |DateTime |
-| Az időzóna időbélyeg |DateTimeOffset |
+| Time With Time Zone |String |
+| Timestamp |DateTime |
+| Timestamp With Time Zone |DateTimeOffset |
 | VarByte |Byte[] |
 | VarChar |String |
 | VarGraphic |String |
