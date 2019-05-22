@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dc04a307779b47b50cd16a81c0566b72bafab95
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c4beac0ab739d62eb7acb00e6b2db717b5f43e15
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900702"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Boxcryptor
 
@@ -181,7 +181,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-boxcryptor-test-user"></a>Boxcryptor tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Boxcryptor hoz létre. Együttműködve [Boxcryptor támogatási csapatának](mailto:support@boxcryptor.com) hozzáadása a felhasználók és a tartományt, amely a Boxcryptor platform az engedélyezéshez van szükség. Ha a tartomány a csapata által hozzáadott, a Boxcryptor platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Boxcryptor hoz létre. Együttműködve [Boxcryptor támogatási csapatának](mailto:support@boxcryptor.com) a felhasználók vagy a tartományban, amelyhez hozzá kell adni a Boxcryptor platform engedélyezési lista hozzáadása. Ha a tartomány a csapata által hozzáadott, a Boxcryptor platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 

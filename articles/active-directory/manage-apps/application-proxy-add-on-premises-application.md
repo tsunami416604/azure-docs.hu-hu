@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/18/2019
+ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c82e810671c3a643e7fb2d019f58e70a07fe1e62
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6ae8b9709e7294e8cb7819afe3ec9f6eb5a06427
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783907"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015430"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 
@@ -95,7 +95,7 @@ A következő URL-hozzáférés engedélyezése:
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az Azure az alábbi URL-címek segítségével tanúsítványok. |
 | login.windows.net<br>login.microsoftonline.com<br>secure.aadcdn.microsoftonline-p.com  | Az összekötő URL-használ a regisztrációs folyamat során. |
 
-Engedélyezési lista kapcsolatokat is \*. msappproxy.net és \*. servicebus.windows.net, ha a tűzfal vagy proxy lehetővé teszi a DNS-címei engedélyezési listára helyezhetők. Ha nem, engedélyeznie kell a hozzáférést a [Azure DataCenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Az IP-címtartományok minden héten frissülnek.
+Engedélyezheti a kapcsolatok \*. msappproxy.net és \*. servicebus.windows.net, ha a tűzfal vagy proxy engedélyezi, hogy a DNS konfigurálása listák engedélyezése. Ha nem, engedélyeznie kell a hozzáférést a [Azure DataCenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Az IP-címtartományok minden héten frissülnek.
 
 ## <a name="install-and-register-a-connector"></a>Telepítés és a egy összekötő regisztrálása
 

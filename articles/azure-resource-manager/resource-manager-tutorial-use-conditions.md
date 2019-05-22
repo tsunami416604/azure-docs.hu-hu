@@ -10,21 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/04/2019
+ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ad7c87161c550c4728978e9c975252cab34f76ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a03707246f27bcba9cc46168ec04893b7bbc4c3
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389803"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990791"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Oktatóanyag: Feltétel használatához az Azure Resource Manager-sablonokban
 
 Megtudhatja, hogyan helyezhet üzembe Azure-erőforrásokat feltételek alapján.
 
-Az [erőforrások üzembehelyezési sorrendjének beállítását](./resource-manager-tutorial-create-templates-with-dependent-resources.md) ismertető oktatóanyagban egy virtuális gépet, egy virtuális hálózatot és egyéb függő erőforrásokat fog létrehozni, például egy tárfiókot. Ahelyett, hogy minden alkalommal egy új tárfiókot kellene létrehozni, megengedheti a felhasználóknak, hogy maguk döntsék el, új tárfiókot hoznak létre vagy egy meglévőt használnak. Ehhez egy további paramétert kell meghatároznia. Ha a paraméter értéke „új”, akkor a rendszer új tárfiókot hoz létre.
+Az [erőforrások üzembehelyezési sorrendjének beállítását](./resource-manager-tutorial-create-templates-with-dependent-resources.md) ismertető oktatóanyagban egy virtuális gépet, egy virtuális hálózatot és egyéb függő erőforrásokat fog létrehozni, például egy tárfiókot. Ahelyett, hogy minden alkalommal egy új tárfiókot kellene létrehozni, megengedheti a felhasználóknak, hogy maguk döntsék el, új tárfiókot hoznak létre vagy egy meglévőt használnak. Ehhez egy további paramétert kell meghatároznia. Ha a paraméter értéke „új”, akkor a rendszer új tárfiókot hoz létre. Ellenkező esetben a megadott nevű meglévő storage-fiókot használja.
 
 ![Resource Manager sablon használata az állapot diagramja](./media/resource-manager-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
 
@@ -35,6 +35,13 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A sablon módosítása
 > * A sablon üzembe helyezése
 > * Az erőforrások eltávolítása
+
+Ebben az oktatóanyagban csak egy foglalkozik alapvető feltételek használatával. További információkért lásd:
+
+* [Sablon fájlstruktúra: A feltétel](./resource-group-authoring-templates.md#condition).
+* [Erőforrás feltételes üzembe helyezése az Azure Resource Manager-sablon](/azure/architecture/building-blocks/extending-templates/conditional-deploy.md).
+* [Sablon függvény: Ha](./resource-group-template-functions-logical.md#if).
+* [Összehasonlító függvények az Azure Resource Manager-sablonok](./resource-group-template-functions-comparison.md)
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -48,6 +55,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
     ```azurecli-interactive
     openssl rand -base64 32
     ```
+
     Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információkért lásd: [oktatóanyag: Integrálhatja az Azure Key Vault Resource Manager-sablon üzembe helyezési](./resource-manager-tutorial-use-key-vault.md). Javasoljuk továbbá, hogy a jelszót három havonta frissítse.
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
@@ -60,6 +68,7 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
+
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
 4. A sablon öt erőforrást határoz meg:
 
@@ -82,12 +91,11 @@ A meglévő sablont két helyen kell módosítania:
 A következő eljárással hajthatja végre a módosításokat:
 
 1. Nyissa meg az **azuredeploy.json** fájlt a Visual Studio Code-ban.
-2. Cserélje le a **variables('storageAccountName')** kifejezést a **parameters('storageAccountName')** kifejezésre a teljes sablonban.  A **variables('storageAccountName')** kifejezés három helyen szerepel.
+2. Cserélje le a három **variables('storageAccountName')** a **parameters('storageAccountName')** a teljes sablonban.
 3. Távolítsa el az alábbi változódefiníciót:
 
-    ```json
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'sawinvm')]",
-    ```
+    ![Resource Manager sablon használata az állapot diagramja](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+
 4. Adja hozzá a sablonhoz az alábbi két paramétert:
 
     ```json
@@ -95,13 +103,14 @@ A következő eljárással hajthatja végre a módosításokat:
       "type": "string"
     },
     "newOrExisting": {
-      "type": "string", 
+      "type": "string",
       "allowedValues": [
-        "new", 
+        "new",
         "existing"
       ]
     },
     ```
+
     A frissített paraméterdefiníció a következőképpen néz ki:
 
     ![Feltétel használata a Resource Managerben](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-parameters.png)
@@ -117,7 +126,7 @@ A következő eljárással hajthatja végre a módosításokat:
     A frissített tárfiók-definíció a következőképpen néz ki:
 
     ![Feltétel használata a Resource Managerben](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. Frissítse a **storageUri** értékét a következőre:
+6. Frissítés a **storageUri** tulajdonság a virtuális gép erőforrás-definíció a következő értékkel:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -129,11 +138,7 @@ A következő eljárással hajthatja végre a módosításokat:
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-Kövesse [a sablon üzembe helyezését](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) ismertető témakörben található utasításokat a sablon üzembe helyezéséhez.
-
-A sablon Azure PowerShell használatával történő üzembe helyezésekor egy további paramétert kell megadnia. A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót a virtuális gép rendszergazdai fiókjához. Lásd: [Előfeltételek](#prerequisites).
+Kövesse a [a sablon üzembe helyezéséhez](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) , a Cloud shellt, és töltse fel a módosított sablont, és futtassa a következő PowerShell-parancsfájl a sablon üzembe helyezéséhez.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -162,12 +167,12 @@ Végezze el az üzembe helyezést úgy is, hogy a **newOrExisting** paramétert 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
+Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Az erőforráscsoport törléséhez válassza ki **kipróbálás** megnyitása a Cloud shellben. Illessze be a PowerShell-parancsfájlt, kattintson a jobb gombbal a rendszerhéj ablaktáblán, és válassza **illessze be**.
 
-1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
-2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
-3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
-4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"
+Remove-AzResourceGroup -Name $resourceGroupName
+```
 
 ## <a name="next-steps"></a>További lépések
 

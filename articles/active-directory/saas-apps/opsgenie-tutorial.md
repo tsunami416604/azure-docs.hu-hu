@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: f395ae51d51e56668482ad6c8d446bdd31050fea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 98e4d1870c57c9718e2d4293157b21ead8ea44e1
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65870656"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987485"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Oktatóanyag: Az Azure Active Directory-integráció az opsgenie segítségével
 
@@ -71,16 +71,16 @@ Az Azure AD integrálása opsgenie segítségével a konfigurálása, hozzá kel
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az opsgenie segítségével egy teszt nevű felhasználó alapján **Britta Simon**.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az opsgenie segítségével egy teszt nevű felhasználó alapján **b Simon**.
 Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó az opsgenie segítségével hivatkozás kapcsolata kell hozható létre.
 
 Az Azure AD egyszeri bejelentkezés az opsgenie segítségével tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Opsgenie segítségével egyszeri bejelentkezés konfigurálása](#configure-opsgenie-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre opsgenie segítségével tesztfelhasználót](#create-opsgenie-test-user)**  – egy megfelelője a Britta Simon opsgenie segítségével, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés a b Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – b Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre opsgenie segítségével tesztfelhasználót](#create-opsgenie-test-user)**  – egy megfelelője a b Simon opsgenie segítségével, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -149,7 +149,7 @@ Konfigurálás az opsgenie segítségével az Azure AD egyszeri bejelentkezés, 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja az Azure Portalon b Simon nevű hozzon létre egy tesztfelhasználót.
 
 1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
@@ -163,10 +163,10 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. Az a **neve** mezőbe írja be **b Simon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőtípus **bsimon@yourcompanydomain.extension**  
+    Például: BSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
@@ -174,7 +174,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés opsgenie segítségével Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezze b Simon által biztosított hozzáférés opsgenie segítségével Azure egyszeri bejelentkezés használatára.
 
 1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **opsgenie segítségével**.
 
@@ -192,7 +192,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **b Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
 6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
@@ -200,7 +200,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-opsgenie-test-user"></a>Opsgenie segítségével tesztfelhasználó létrehozása
 
-Ez a szakasz célja az opsgenie segítségével Britta Simon nevű felhasználó létrehozásához. 
+Ez a szakasz célja az opsgenie segítségével b Simon nevű felhasználó létrehozásához. 
 
 1. Egy böngészőablakban jelentkezzen be rendszergazdaként az opsgenie segítségével bérlő.
 
@@ -214,14 +214,14 @@ Ez a szakasz célja az opsgenie segítségével Britta Simon nevű felhasználó
    
     ![Opsgenie segítségével beállításai](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
    
-    a. Az a **E-mail** szövegmezőbe BrittaSimon az e-mail-cím típusú foglalkozik az Azure Active Directoryban.
+    a. Az a **E-mail** szövegmezőbe b Simon az e-mail-cím típusú foglalkozik az Azure Active Directoryban.
    
-    b. Az a **teljes fájlvisszaállítási név** szövegmezőbe írja be **Britta Simon**.
+    b. Az a **teljes fájlvisszaállítási név** szövegmezőbe írja be **b Simon**.
    
     c. Kattintson a **Save** (Mentés) gombra. 
 
 >[!NOTE]
->Britta egy saját profil beállításával kapcsolatos utasításokat tartalmazó e-mailt kapja.
+>B. Simon egy saját profil beállításával kapcsolatos utasításokat tartalmazó e-mailt kapja.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 

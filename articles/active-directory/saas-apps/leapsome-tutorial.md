@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 602e3145a003a0413287b08151abf472ecf4ade0
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: dbdf6847658e6a5a3999007f51b409e47a65e4cd
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406712"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988074"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Leapsome
 
@@ -126,10 +126,10 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Leapsome, hajtsa vé
 
     | Name (Név) | Adatforrás-attribútum | Névtér |
     | ---------------| --------------- | --------- |  
-    | Keresztnév | user.givenname | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Vezetéknév | user.surname | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | cím | user.jobtitle | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | kép | Az alkalmazott kép URL-címe | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Keresztnév | user.givenname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Vezetéknév | user.surname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | cím | user.jobtitle | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | kép | Az alkalmazott kép URL-címe | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
     > [!Note]
@@ -244,7 +244,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-leapsome-test-user"></a>Leapsome tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Leapsome hoz létre. Együttműködve [Leapsome ügyfél-támogatási csapatának](mailto:support@leapsome.com) hozzáadása a felhasználók vagy a tartományban kell lennie a Leapsome platform szerepel az engedélyezési listán. Ha a tartomány a csapata által hozzáadott, a Leapsome platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Leapsome hoz létre. Együttműködve [Leapsome ügyfél-támogatási csapatának](mailto:support@leapsome.com) a felhasználók vagy a tartományban, amelyhez hozzá kell adni a Leapsome platform engedélyezési lista hozzáadása. Ha a tartomány a csapata által hozzáadott, a Leapsome platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 

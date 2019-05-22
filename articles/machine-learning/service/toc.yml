@@ -138,6 +138,18 @@
         - name: Adathalmazok hozzáadása és regisztrálása
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
+        - name: Adatok megismerése
+          displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
+          href: how-to-explore-prepare-data.md
+        - name: Adatdefiníciók verziószámozása és kezelése
+          displayName: 'data, etl, dataset, data preparation, dataprep, version'
+          href: how-to-manage-dataset-definitions.md
+        - name: Pillanatfelvétel készítése az adatokról
+          displayName: 'snapshots, profile, summary statistics, data copy'
+          href: how-to-create-dataset-snapshots.md
+        - name: Adatok lekérése adattárból
+          displayName: blob get fileshare access storage
+          href: how-to-access-data.md
         - name: Előkészítés az azureml.dataprep használatával
           items:
             - name: Adatok betöltése
@@ -149,18 +161,6 @@
             - name: Adatok írása
               displayName: 'data, etl, data prep, dataprep'
               href: how-to-write-data.md
-        - name: Előkészítés adathalmazokkal (előzetes verzió)
-          displayName: 'data, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
-          href: how-to-explore-prepare-data.md
-        - name: Adatdefiníciók verziószámozása és kezelése
-          displayName: 'data, etl, dataset, data preparation, dataprep, version'
-          href: how-to-manage-dataset-definitions.md
-        - name: Pillanatfelvétel készítése az adatokról
-          displayName: 'snapshots, profile, summary statistics, data copy'
-          href: how-to-create-dataset-snapshots.md
-        - name: Adatok lekérése adattárból
-          displayName: blob get fileshare access storage
-          href: how-to-access-data.md
     - name: Modellek betanítása
       items:
         - name: Betanítási környezetek beállítása

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2fd3416824189007bfdbe55d30907d9cb56f87ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdf5508475d868ccb8c271daaac7449d3c940301
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598400"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "65073156"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Jó utterances Mik a LUIS alkalmazás ismertetése
 
@@ -74,13 +74,47 @@ A LUIS épít fel, hogy alaposan választja ki a LUIS-modell Szerző megcímkéz
 
 Néhány utterances, majd indítása jobb [tekintse át a végpont utterances](luis-how-to-review-endpoint-utterances.md) megfelelő szándék előrejelzése és egyéb entitások kivonási.
 
-## <a name="punctuation-marks"></a>Központozási jelek
+## <a name="utterance-normalization"></a>Normalizálási utterance (kifejezés)
 
-A LUIS nem hagyja figyelmen kívül írásjelek, alapértelmezés szerint, mert egyes ügyfélalkalmazások helyezhet többszörösére. Ezek közé. Ellenőrizze, hogy a példa utterances használatával írásjelek és a nem absztrakt ahhoz, hogy mindkét stílusok azonos relatív pontszámokat ad vissza. Ha írásjelek nincs meghatározott jelentéssel az ügyfélalkalmazásban, érdemes lehet [figyelmen kívül hagyja a központozási](#ignoring-words-and-punctuation) minták használatával. 
+Utterance (kifejezés) értéke az a folyamat figyelmen kívül hagyása írásjelek és mellékjeleket hatásait, betanítási és Predikciós során.
 
-## <a name="ignoring-words-and-punctuation"></a>Szavak és írásjelek figyelmen kívül hagyása
+## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>E mellékjeleket és írásjelek utterance (kifejezés) normalizálási
 
-Ha azt szeretné, figyelmen kívül hagyja a szó vagy az a példában utterance (kifejezés) absztrakt, egy [minta](luis-concept-patterns.md#pattern-syntax) az a _figyelmen kívül hagyása_ szintaxist. 
+Utterance (kifejezés) normalizálási létrehozásakor vagy az alkalmazás importálható, mert egy beállítást, az alkalmazás JSON-fájlban van meghatározva. Az utterance (kifejezés) normalizálási beállítások alapértelmezés szerint ki van kapcsolva. 
+
+E mellékjeleket is jelek, illetve a sérülésre szövegében, például: 
+
+```
+İ ı Ş Ğ ş ğ ö ü
+```
+
+Ha az alkalmazás bekapcsolja a normalizálást, pontszámmodell a a **teszt** ablaktáblán, a batch-tesztek és a végpont lekérdezések esetében minden utterances mellékjeleket vagy absztrakt módosulnak.
+
+Kapcsolja be az utterance (kifejezés) normalizálási mellékjeleket vagy az intelligens HANGFELISMERÉSI JSON alkalmazás fájlhoz írásjelek a `settings` paraméter.
+
+```JSON
+"settings": [
+    {"name": "NormalizePunctuation", "value": "true"},
+    {"name": "NormalizeDiacritics", "value": "true"}
+] 
+```
+
+Normalizálása **írásjelek** azt jelenti, hogy mielőtt modelljeit észen, és a végpont előtt lekérdezések előrejelzett beolvasása, írásjelek törlődni fognak a kimondott szöveg. 
+
+Normalizálása **mellékjeleket** váltja fel a karaktereket a normál karakterek utterances mellékjeleket. Például: `Je parle français` válik `Je parle francais`. 
+
+Normalizálási nem jelenti azt, a rendszer nem lásd: írásjelek és példa kimondott szöveg-vagy előrejelzési válaszokat annak érdekében, e mellékjeleket csupán, hogy azok figyelmen kívül betanítási és Predikciós során.
+
+
+### <a name="punctuation-marks"></a>Központozási jelek
+
+Ha nem normalizált absztrakt, LUIS nem figyelmen kívül írásjelek, alapértelmezés szerint mivel egyes ügyfélalkalmazások helyezhet többszörösére. Ezek közé. Ellenőrizze, hogy a példa utterances használatával írásjelek és a nem absztrakt ahhoz, hogy mindkét stílusok azonos relatív pontszámokat ad vissza. 
+
+Ha írásjelek nincs meghatározott jelentéssel az ügyfélalkalmazásban, érdemes lehet [figyelmen kívül hagyja a központozási](#utterance-normalization) normalizálása központozást által. 
+
+### <a name="ignoring-words-and-punctuation"></a>Szavak és írásjelek figyelmen kívül hagyása
+
+Ha figyelmen kívül hagyja a szavakat vagy minták írásjelek szeretne, használja egy [minta](luis-concept-patterns.md#pattern-syntax) az a _figyelmen kívül hagyása_ szögletes zárójelben szintaxisát `[]`. 
 
 ## <a name="training-utterances"></a>Képzési kimondott szöveg
 

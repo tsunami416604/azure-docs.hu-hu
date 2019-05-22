@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 0879f9026276eb7149ae44906377a7b369e05116
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a3e457ca29ebe086c6097528af5a9253446b757c
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865299"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990556"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Vodeclic
 
@@ -191,7 +191,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Vodeclic hoz létre. Együttműködve [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com) a felhasználók hozzáadása az Vodeclic platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 > [!NOTE]
-> Alkalmazás követelményeinek megfelelően szüksége lehet beolvasni a gép szerepel az engedélyezési listán. Az, hogy megtörténjen, meg kell osztania a nyilvános IP-címet a [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com).
+> Alkalmazás követelményeinek megfelelően szüksége lehet az engedélyezési listához hozzáadott gépet. Az, hogy megtörténjen, meg kell osztania a nyilvános IP-címet a [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com).
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 

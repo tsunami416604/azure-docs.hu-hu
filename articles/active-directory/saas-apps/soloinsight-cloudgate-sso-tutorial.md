@@ -5,142 +5,120 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: barbkess
+ms.reviewer: celested
 ms.assetid: 9263c241-85a4-4724-afac-0351d6275958
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/07/2019
+ms.date: 05/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e8b2b4d1a660fe2f1289bba6fa596d08ec824b8
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c131f034b4a8b5afaa2556c5c8d053b3e6793b4d
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65889991"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987218"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-soloinsight-cloudgate-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció Soloinsight-CloudGate SSO-val
+# <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>Oktatóanyag: Soloinsight-CloudGate SSO integrálása az Azure Active Directoryval
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Soloinsight-CloudGate SSO integrálása az Azure Active Directory (Azure AD).
-Soloinsight-CloudGate SSO integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja a Soloinsight-CloudGate SSO integrálása az Azure Active Directory (Azure AD) lesz. Soloinsight-CloudGate SSO integrálása az Azure ad-vel, akkor a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá Soloinsight-CloudGate egyszeri bejelentkezés az Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Soloinsight-CloudGate egyszeri bejelentkezés (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Szabályozza, ki férhet hozzá Soloinsight-CloudGate egyszeri bejelentkezés az Azure AD-ben.
+* Engedélyezze a felhasználókat, hogy a rendszer automatikusan bejelentkezve Soloinsight-CloudGate egyszeri bejelentkezés az Azure AD-fiókjukat.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása Soloinsight-CloudGate SSO-val, a következőkre van szükség:
+Első lépésként szüksége van a következő elemek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Soloinsight-CloudGate egyszeri bejelentkezés az egyszeri bejelentkezés engedélyezve van az előfizetés
+* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, beszerezheti a egyhónapos ingyenes próbaidőszakot [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Soloinsight-CloudGate SSO egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
-
-* Soloinsight-CloudGate egyszeri Bejelentkezést támogatja **SP** által kezdeményezett egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Soloinsight-CloudGate egyszeri Bejelentkezést támogatja **SP** által kezdeményezett egyszeri bejelentkezés.
 
 ## <a name="adding-soloinsight-cloudgate-sso-from-the-gallery"></a>Soloinsight-CloudGate SSO hozzáadása a katalógusból
 
 Soloinsight-CloudGate SSO integrálása az Azure AD beállítása, hozzá kell Soloinsight-CloudGate SSO a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Soloinsight-CloudGate SSO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
-
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
-
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
-
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
-
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
-
-    ![Az új alkalmazás gomb](common/add-new-app.png)
-
-4. A Keresés mezőbe írja be a **Soloinsight-CloudGate SSO**, jelölje be **Soloinsight-CloudGate SSO** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
-
-     ![Az eredmények listájában Soloinsight-CloudGate SSO](common/search-new-app.png)
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
+1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
+1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
+1. Az a **Hozzáadás a katalógusból** területén írja be a **Soloinsight-CloudGate SSO** kifejezést a keresőmezőbe.
+1. Válassza ki **Soloinsight-CloudGate SSO** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés alapján nevű tesztfelhasználó Soloinsight-CloudGate SSO-val **Britta Simon**.
-Az egyszeri bejelentkezés működjön az Azure AD-felhasználót és a kapcsolódó felhasználó Soloinsight-CloudGate egyszeri bejelentkezési hivatkozás kapcsolata kell hozható létre.
+Konfigurálás és tesztelés az Azure AD SSO Soloinsight-CloudGate SSO-t egy tesztfelhasználót nevű **Britta Simon**. Az SSO működjön kell Soloinsight-CloudGate egyszeri bejelentkezés az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
 
-Az Azure AD egyszeri bejelentkezés Soloinsight-CloudGate SSO-val tesztelése és konfigurálása, kell hajtsa végre a következő építőelemeket:
+Soloinsight-CloudGate SSO-val az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Egyszeri bejelentkezés Soloinsight-CloudGate egyszeri bejelentkezés konfigurálása](#configure-soloinsight-cloudgate-sso-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Soloinsight-CloudGate SSO tesztfelhasználót](#create-soloinsight-cloudgate-sso-test-user)**  – egy megfelelője a Britta Simon Soloinsight-CloudGate SSO, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Soloinsight-CloudGate egyszeri bejelentkezést](#configure-soloinsight-cloudgate-sso)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Soloinsight-CloudGate SSO tesztfelhasználót](#create-soloinsight-cloudgate-sso-test-user)**  van egy megfelelője a Britta Simon Soloinsight-CloudGate SSO, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés konfigurálása Soloinsight-CloudGate SSO-val, hajtsa végre az alábbi lépéseket:
+1. Az a [az Azure portal](https://portal.azure.com/), a a **Soloinsight-CloudGate SSO** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezés**.
+1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Soloinsight-CloudGate SSO** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+1. Az a **alapszintű SAML-konfigurációja** lap, adja meg az értékeket a következő mezőket:
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+    1. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.sigateway.com/login`
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    1. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.sigateway.com/process/sso`
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+   > [!NOTE]
+   > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és a később ismertetett azonosító ezeket az értékeket a **konfigurálása Soloinsight-CloudGate SSO egyszeri bejelentkezés** az oktatóanyag szakaszában.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Base64)** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+   ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-    ![Soloinsight-CloudGate SSO tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+1. Az a **Soloinsight-CloudGate egyszeri bejelentkezés beállítása** területén másolja a megfelelő URL-címe szerint.
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.sigateway.com/login`
+   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.sigateway.com/process/sso`
+### <a name="configure-soloinsight-cloudgate-sso"></a>Soloinsight-CloudGate egyszeri bejelentkezés konfigurálása
 
-    > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és a később ismertetett azonosító ezeket az értékeket a **konfigurálása Soloinsight-CloudGate SSO egyszeri bejelentkezés** az oktatóanyag szakaszában.
+1. Belül Soloinsight-CloudGate egyszeri Bejelentkezéssel konfigurálásának automatizálásához, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+    ![Saját alkalmazások kiterjesztése](common/install-myappssecure-extension.png)
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+2. A felvett bővítmény a böngészőre, kattintson a **telepítő Soloinsight-CloudGate egyszeri bejelentkezés** fog irányítja át a Soloinsight-CloudGate SSO-alkalmazás. Itt adja meg a rendszergazdai hitelesítő adataival bejelentkezni Soloinsight-CloudGate egyszeri Bejelentkezést. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 3 – 8. lépések automatizálásához.
 
-6. Az a **Soloinsight-CloudGate egyszeri bejelentkezés beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+    ![Konfiguráció beállítása](common/setup-sso.png)
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+3. Szeretne Soloinsight-CloudGate egyszeri bejelentkezés manuális beállítása, ha nyisson meg egy új böngészőablakban, és jelentkezzen be rendszergazdaként vállalati Soloinsight-CloudGate SSO webhelyét, és hajtsa végre az alábbi lépéseket:
 
-    a. Bejelentkezési URL
-
-    b. Azure Ad Identifier
-
-    c. Kijelentkezési URL
-
-### <a name="configure-soloinsight-cloudgate-sso-single-sign-on"></a>Configure Soloinsight-CloudGate SSO Single Sign-On
-
-1. Jelentkezzen be a CloudGate webes portálra, majd a hitelesítő adatok használatával, amelyek az Azure Portalon alapszintű SAML konfigurálása közben beillesztésre váró értékének lekéréséhez, nyissa meg az egyszeri bejelentkezési beállításainak, amely a következő elérési úton található **Kezdőlap > Administration > System Beállítások > Általános**.
+4. Alapszintű SAML konfigurálása során az Azure Portalon beillesztésre váró értékek beszerzéséhez jelentkezzen be a hitelesítő adatok használatával CloudGate webes portálon, majd elérni az SSO-beállításokat, amelyeket a következő elérési úton található **Kezdőlap > Administration > Rendszerbeállítások > Általános**.
 
     ![CloudGate SSO Settings](./media/soloinsight-cloudgate-sso-tutorial/sso-main-settings.png)
 
-2. **SAML-ügyfél URL-címe**
+5. **SAML-ügyfél URL-címe**
 
     * Elleni elérhető hivatkozásokra kattintva másolja a **Saml ügyfél URL-címe** és a **átirányítási URL-cím** mezőket, és illessze be őket az Azure Portalon **alapszintű SAML-konfigurációja** akövetkezőszakaszban **Azonosító (entityid)** és **válasz URL-cím** mezők jelölik.
 
         ![SAMLIdentifier](./media/soloinsight-cloudgate-sso-tutorial/saml-identifier.png)
 
-3. **SAML-aláíró tanúsítvány**
+6. **SAML-aláíró tanúsítvány**
 
-    * Nyissa meg a tanúsítvány (Base64) Azure Portal SAML-aláíró tanúsítvány listák és kattintson rá a jobb gombbal a letöltött fájl forrása. Válasszon **Szerkesztés a Jegyzettömb ++** lehetőséget a listából. 
+    * Nyissa meg a tanúsítvány (Base64) fájl, a SAML-aláíró tanúsítvány az Azure Portalról letöltött listák forrását, és kattintson rá a jobb gombbal. Válasszon **Szerkesztés a Jegyzettömb ++** lehetőséget a listából. 
 
         ![SAMLcertificate](./media/soloinsight-cloudgate-sso-tutorial/certificate-file.png)
 
@@ -152,72 +130,51 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Soloinsight-CloudGate SSO-va
 
         ![Tanúsítvány-portál](./media/soloinsight-cloudgate-sso-tutorial/certificate-portal.png)
 
-4. **Alapértelmezett csoport**
+7. **Alapértelmezett csoport**
 
     * Válassza ki **üzleti felügyeleti** a legördülő listából a **alapértelmezett csoport** CloudGate webes portálon való lehetőség
 
         ![Alapértelmezett csoport](./media/soloinsight-cloudgate-sso-tutorial/default-group.png)
 
-5. **AD-azonosítóját, valamint a bejelentkezési URL-címe**
+8. **AD-azonosítóját, valamint a bejelentkezési URL-címe**
 
-    * A másolt **bejelentkezési URL-cím** az Azure Portalról **Soloinsight-CloudGate egyszeri bejelentkezés beállítása** konfigurációk a következők megadni a CloudGate webes portál egyszeri bejelentkezési beállítások szakaszban. 
+    * A másolt **bejelentkezési URL-cím** az Azure Portalról **Soloinsight-CloudGate egyszeri bejelentkezés beállítása** konfigurációk a következők megadni a CloudGate webes portál egyszeri bejelentkezési beállítások szakaszban.
 
-    * Illessze be a **bejelentkezési URL-cím** az Azure Portalról CloudGate webes portálon való hivatkozás **AD bejelentkezési URL-cím** mező.
-     
-    * Illessze be a **az Azure AD-azonosító** az Azure Portalról CloudGate webes portálon való hivatkozás **AD azonosító** mező
+    * Illessze be a **bejelentkezési URL-cím** Azure Portalról CloudGate webes portálon való hivatkozás **AD bejelentkezési URL-cím** mező.
+
+    * Illessze be a **az Azure AD-azonosító** Azure Portalról CloudGate webes portálon való hivatkozás **AD azonosító** mező
 
         ![Ad-bejelentkezés](./media/soloinsight-cloudgate-sso-tutorial/ad-login.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
-
-2. Válassza ki **új felhasználó** a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. Az a **neve** írja be a következőt **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
-
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
+1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
+   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `BrittaSimon@contoso.com`.
+   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Soloinsight-CloudGate SSO Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban Britta Simon által biztosított hozzáférés Soloinsight-CloudGate SSO Azure egyszeri bejelentkezés használatához engedélyeznie kell.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Soloinsight-CloudGate SSO**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+1. Az alkalmazások listájában jelölje ki a **Soloinsight-CloudGate SSO**.
+1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-2. Az alkalmazások listájában jelölje ki a **Soloinsight-CloudGate SSO**.
+1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Az alkalmazások listáját a Soloinsight-CloudGate egyszeri bejelentkezési hivatkozás](common/all-applications.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
-
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. Az a **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
+1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
 ### <a name="create-soloinsight-cloudgate-sso-test-user"></a>Soloinsight-CloudGate SSO tesztfelhasználó létrehozása
 
@@ -225,11 +182,9 @@ Hozzon létre egy tesztfelhasználót, jelölje be **alkalmazottak** a főmenüb
 
 ![Alkalmazott teszt](./media/soloinsight-cloudgate-sso-tutorial/employee-test.png)
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
-
-Ha a hozzáférési panelen a Soloinsight-CloudGate SSO csempére kattint, meg kell kell automatikusan bejelentkezett a Soloinsight-CloudGate SSO, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+A Soloinsight-CloudGate SSO csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a Soloinsight-CloudGate SSO, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -238,4 +193,3 @@ Ha a hozzáférési panelen a Soloinsight-CloudGate SSO csempére kattint, meg k
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

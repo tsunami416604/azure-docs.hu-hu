@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: e9378f8d2b31bfed4c464951c427b1e9d00b7893
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b073a270fabb8657be19b79601fa90f1b9a0351b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699373"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "66015233"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -104,7 +104,7 @@ A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https:
 
 1. Az eszköz kapcsolati oldalon jegyezze fel a **hatókör azonosítója**, **Eszközazonosító** és **elsődleges kulcs** értékeket. Ezeket az értékeket a következő lépésben fogja használni.
 
-   ![Kapcsolat adatai](media/tutorial-add-device/device-connect.png)
+   ![Kapcsolat részletei](media/tutorial-add-device/device-connect.png)
 
 ### <a name="generate-the-connection-string"></a>A kapcsolati karakterlánc létrehozása
 
@@ -348,7 +348,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Annak megértése, hogyan történik az ügyfélkód leképezése az alkalmazásra
 > * Ügyfélkód konfigurálása valós eszközhöz
 
-Most, hogy az Azure IoT Central alkalmazásnak csatlakozott egy igazi eszközön, az alábbiakban a javasolt következő lépések:
+Most, hogy az Azure IoT Central alkalmazásnak csatlakozott egy igazi eszközön, az alábbiakban néhány javasolt következő lépések.
 
 Operátorként a következőket sajátítja el:
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: e29e36807aff6c32f295c79c90d80c7d2b5b4bcc
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: dc0871c0b16246fa178072e9d9f266d4c02ba1c4
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510733"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002991"
 ---
 # <a name="what-are-the-speech-services"></a>Mi az a Speech Services?
 
@@ -42,7 +42,9 @@ Ezeket a funkciókat az Azure Speech Services alkotják. Ebben a táblázatban h
 Ismerje meg, mi az az Azure Speech Services új.
 
 * 2019. május - dokumentációja már elérhető a [beszélgetés Beszédátírási](conversation-transcription-service.md), [Center meghívása átírást](call-center-transcription.md), és [hang-és felhőközpontú virtuális asszisztensek](voice-first-virtual-assistants.md).
-* 2019. május - kiadott SDK 1.5.0 Speech. Frissítéseket, fejlesztéseket és ismert problémák teljes listáját lásd: [kibocsátási megjegyzések](releasenotes.md).
+* 2019. május
+    * Kiadás dátuma: SDK 1.5.1 Speech. Frissítéseket, fejlesztéseket és ismert problémák teljes listáját lásd: [kibocsátási megjegyzések](releasenotes.md).
+    * Kiadás dátuma: Speech SDK 1.5.0. Frissítéseket, fejlesztéseket és ismert problémák teljes listáját lásd: [kibocsátási megjegyzések](releasenotes.md).
 * Április a 2019 - kiadott beszéd SDK 1.4.0-s C++, a szöveg-hang transzformációs (bétaverzió) támogatásával C#, és a Windows és Linux rendszeren Java használatával. Emellett az SDK mostantól támogatja a MP3 és Opus/Ogg hangformátumok Pro C++ és C# Linux rendszeren. Frissítéseket, fejlesztéseket és ismert problémák teljes listáját lásd: [kibocsátási megjegyzések](releasenotes.md).
 * Március 2019 - szövegfelolvasás, amely egy adott régióban elérhető beszédhangot teljes listáját adja vissza az új végpont már elérhető. Új régiók emellett mostantól használható az szöveg-beszéd átalakítás. További információkért lásd: [szöveg-hang transzformációs API-referencia (REST)](rest-text-to-speech.md).
 

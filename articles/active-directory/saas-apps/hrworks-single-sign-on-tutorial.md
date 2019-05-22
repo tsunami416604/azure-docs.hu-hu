@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f69ef2c7c260d8df918fb2495bded6910d6b17b1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e994150f68c0f274c97c27fccc89f226bc8236cd
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707639"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000500"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező HRworks egyszeri bejelentkezés
 
@@ -130,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az HRworks egyszeri bejelent
 
 2. Kattintson a **rendszergazda** > **alapjai** > **biztonsági** > **egyszeri bejelentkezési** a a bal oldali menü sávot, és hajtsa végre az alábbi lépéseket:
 
-       ![Egyszeri bejelentkezés konfigurálása](./media/hrworks-single-sign-on-tutorial/configure01.png)
+       ![Configure Single Sign-On](./media/hrworks-single-sign-on-tutorial/configure01.png)
 
     a. Ellenőrizze a **használata egyszeri bejelentkezéshez** mezőbe.
 
@@ -138,7 +138,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az HRworks egyszeri bejelent
 
     c. Válassza ki **egyes NameID azonosító** , **NameID értéke**.
 
-    d. A Jegyzettömbben, nyissa meg a metaadatok XML-t az Azure Portalról letöltött, másolja a tartalmat, és illessze be azt a **metaadatok** szövegmezőbe.
+    d. A Jegyzettömbben, nyissa meg a metaadatok XML-t az Azure Portalról letöltött, másolja a tartalmat, és illessze be azt a **metaadatok** szövegmezőbe.
 
     e. Kattintson a **Save** (Mentés) gombra.
 
@@ -202,7 +202,7 @@ Engedélyezi az Azure AD-felhasználók, jelentkezzen be a való HRworks egyszer
 
 2. Kattintson a **rendszergazda** > **személyek** > **személyek** > **új személy** származó a a menüsávon bal oldalán.
 
-     ![Egyszeri bejelentkezés konfigurálása](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![Egyszeri bejelentkezés konfigurálása](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
 3. Az előugró ablakban kattintson a **tovább**.
 
@@ -212,7 +212,7 @@ Engedélyezi az Azure AD-felhasználók, jelentkezzen be a való HRworks egyszer
     
     ![Egyszeri bejelentkezés konfigurálása](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

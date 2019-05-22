@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a86e63f17230ed30bd5ae164d2d17d65b5cde745
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ae0b8bb6dec4b129a4965426789819e119a25c53
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408056"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991500"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Oktatóanyag: Meta hálózatok összekötő az Azure Active Directory-integráció
 
@@ -131,8 +131,8 @@ Konfigurálja az Azure AD egyszeri bejelentkezés Meta hálózatok összekötőv
     | ---------------| --------------- | -------- |
     | Keresztnév | user.givenname | |
     | Vezetéknév | user.surname | |
-    | e-mail cím| user.mail| `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | név | user.userprincipalname| `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | e-mail cím| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | név | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | telefon | user.telephonenumber | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -172,7 +172,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés Meta hálózatok összekötőv
 1. Nyisson meg egy új lapot a böngészőben, és jelentkezzen be a Meta hálózatok összekötő rendszergazdai fiókjával.
     
     > [!NOTE]
-    > Meta hálózatok összekötő egy olyan biztonságos rendszer. Ezért a portál elérése előtt le szeretné kérni a nyilvános IP-cím engedélyezési listán az oldalon. A nyilvános IP-cím lekéréséhez kövesse az alábbi hivatkozással megadott [Itt](https://whatismyipaddress.com/). Az IP-cím küldése az [Meta hálózatokhoz csatlakozó ügyfél-támogatási csapatának](mailto:support@metanetworks.com) beolvasni az IP-cím engedélyezési listán.
+    > Meta hálózatok összekötő egy olyan biztonságos rendszer. Ezért a portál elérése előtt le szeretné kérni a nyilvános IP-cím azok oldalán az engedélyezési listához hozzáadni. A nyilvános IP-cím lekéréséhez kövesse az alábbi hivatkozással megadott [Itt](https://whatismyipaddress.com/). Az IP-cím küldése az [Meta hálózatokhoz csatlakozó ügyfél-támogatási csoport](mailto:support@metanetworks.com) , az IP-címet az engedélyezési listához hozzáadni.
     
 2. Lépjen a **rendszergazda** válassza **beállítások**.
     
