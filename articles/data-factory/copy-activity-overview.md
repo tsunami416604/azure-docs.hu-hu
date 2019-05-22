@@ -131,12 +131,12 @@ Az alábbi sablont, a másolási tevékenység támogatott tulajdonságok teljes
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység type tulajdonsága értékre kell állítani: **Másolás** | Igen |
-| bemenetek | Adja meg az adatkészlet mely mutat a forrásadatok létrehozott. A másolási tevékenység csak egy egyetlen bemeneti támogatja. | Igen |
-| kimenetek | Adja meg az adatkészlet mely mutat a fogadó adatait létrehozott. A másolási tevékenység csak egyetlen kimeneti támogatja. | Igen |
+| inputs | Adja meg az adatkészlet mely mutat a forrásadatok létrehozott. A másolási tevékenység csak egy egyetlen bemeneti támogatja. | Igen |
+| outputs | Adja meg az adatkészlet mely mutat a fogadó adatait létrehozott. A másolási tevékenység csak egyetlen kimeneti támogatja. | Igen |
 | typeProperties | Egy csoport tulajdonságainak konfigurálása a másolási tevékenység. | Igen |
 | source | Adja meg a másolat forrástípusa és a vonatkozó tulajdonságok adatok lekérésével.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolási tevékenység tulajdonságai" szakaszban [támogatott adattárak és formátumok](#supported-data-stores-and-formats). | Igen |
-| fogadó | Adja meg a másolat fogadótípusa és a vonatkozó tulajdonságok hogyan szeretne adatokat írni.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolási tevékenység tulajdonságai" szakaszban [támogatott adattárak és formátumok](#supported-data-stores-and-formats). | Igen |
-| Translator | Adja meg a forrás és fogadó-, a kifejezett oszlopleképezés. Érvényes, ha az alapértelmezett másolási viselkedés nem teljesíthető az igényeknek.<br/><br/>A részletek [séma és adatok Típusleképezés](copy-activity-schema-and-type-mapping.md). | Nem |
+| sink | Adja meg a másolat fogadótípusa és a vonatkozó tulajdonságok hogyan szeretne adatokat írni.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolási tevékenység tulajdonságai" szakaszban [támogatott adattárak és formátumok](#supported-data-stores-and-formats). | Igen |
+| translator | Adja meg a forrás és fogadó-, a kifejezett oszlopleképezés. Érvényes, ha az alapértelmezett másolási viselkedés nem teljesíthető az igényeknek.<br/><br/>A részletek [séma és adatok Típusleképezés](copy-activity-schema-and-type-mapping.md). | Nem |
 | dataIntegrationUnits | Adja meg annak a powerfulness [Azure integrációs modul](concepts-integration-runtime.md) megjelenő új adatok másolását. Korábbi nevén a felhőbeli adatok adatáthelyezési egységek (DMU). <br/><br/>A részletek [integrációs adategységek](copy-activity-performance.md#data-integration-units). | Nem |
 | parallelCopies | Adja meg, amelyeket szeretne használni a forrás- és adatok írása az adatok olvasásakor a fogadó a másolási tevékenység párhuzamosságát.<br/><br/>A részletek [másolási párhuzamos](copy-activity-performance.md#parallel-copy). | Nem |
 | enableStaging<br/>stagingSettings | Válassza ki az átmeneti adatok egy blob Storage-adatok másolása közvetlenül az a forrás és fogadó-, a helyett előkészítéséhez.<br/><br/>Ismerje meg, a hasznos forgatókönyveket és a konfigurációs részleteket [szakaszos Másolás](copy-activity-performance.md#staged-copy). | Nem |
@@ -173,14 +173,14 @@ Másolási tevékenység végrehajtásának részletei és teljesítményjellemz
 
 | Tulajdonság neve  | Leírás | Unit (Egység) |
 |:--- |:--- |:--- |
-| DataRead | Olvassa el a forrásból származó adatok mérete | Int64 típusú érték a **bájtok** |
-| DataWritten | A fogadó írt adatok mérete | Int64 típusú érték a **bájtok** |
+| dataRead | Olvassa el a forrásból származó adatok mérete | Int64 típusú érték a **bájtok** |
+| dataWritten | A fogadó írt adatok mérete | Int64 típusú érték a **bájtok** |
 | filesRead | A fájlok másolását, amikor az adatok másolása a file storage száma. | Int64 típusú érték (egység) |
 | filesWritten | A fájlok másolását, amikor az adatok másolása a file Storage száma. | Int64 típusú érték (egység) |
 | rowsRead | (Ez nem vonatkozik a bináris másolat) forrásból beolvasott sorok száma. | Int64 típusú érték (egység) |
 | rowsCopied | (Ez nem vonatkozik a bináris másolat) fogadó másolását sorok száma. | Int64 típusú érték (egység) |
 | rowsSkipped | Kihagyta a inkompatibilis sorok száma. A szolgáltatás által beállított "enableSkipIncompatibleRow" true bekapcsolhatja. | Int64 típusú érték (egység) |
-| Átviteli sebesség | Adatok továbbításának arány. | Lebegőpontos szám a **KB/s** |
+| throughput | Adatok továbbításának arány. | Lebegőpontos szám a **KB/s** |
 | copyDuration | A Másolás időtartama. | Másodpercek alatt Int32 érték |
 | sourcePeakConnections | Másolása során, a forrásadattár létesített egyidejű kapcsolatok maximális száma. | Int32 érték |
 | sinkPeakConnections| Másolása során a fogadó adattárba létesített egyidejű kapcsolatok maximális száma.| Int32 érték |
