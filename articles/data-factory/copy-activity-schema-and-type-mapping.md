@@ -90,12 +90,12 @@ A következő tulajdonságok támogatottak alatt `translator`  ->  `mappings` ->
 
 | Tulajdonság | Leírás                                                  | Szükséges |
 | -------- | ------------------------------------------------------------ | -------- |
-| név     | A forrás és fogadó oszlop neve.                           | Igen      |
-| Sorszám  | Az oszlopindex. Indítsa el az 1. <br>Alkalmazása és megadása kötelező, ha használatával tagolt szöveg fejlécsort nélkül. | Nem       |
-| elérési út     | Az egyes mezőkhöz a kinyerni vagy leképezése JSON-útvonalának kifejezését. Hierarchikus adatokra vonatkozik például mongodb-hez, illetve a REST.<br>A gyökérobjektum alatti mezők esetében a JSON-útvonal elindítja a gyökér $; által kiválasztott tömbben lévő mezők esetében `collectionReference` tulajdonság, a tömbelem indul JSON-útvonalhoz. | Nem       |
+| name     | A forrás és fogadó oszlop neve.                           | Igen      |
+| ordinal  | Az oszlopindex. Indítsa el az 1. <br>Alkalmazása és megadása kötelező, ha használatával tagolt szöveg fejlécsort nélkül. | Nem       |
+| path     | Az egyes mezőkhöz a kinyerni vagy leképezése JSON-útvonalának kifejezését. Hierarchikus adatokra vonatkozik például mongodb-hez, illetve a REST.<br>A gyökérobjektum alatti mezők esetében a JSON-útvonal elindítja a gyökér $; által kiválasztott tömbben lévő mezők esetében `collectionReference` tulajdonság, a tömbelem indul JSON-útvonalhoz. | Nem       |
 | type     | Data Factory közbenső a forrás és fogadó oszlop adattípusát. | Nem       |
-| kulturális környezet  | A forrás és fogadó oszlopban kultúrájának. <br>Típus esetén a alkalmazni `Datetime` vagy `Datetimeoffset`. A mező alapértelmezett értéke: `en-us`. | Nem       |
-| Formátum   | Formázó karakterlánc típus esetén használandó `Datetime` vagy `Datetimeoffset`. Tekintse meg [egyéni dátum- és időformátum karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) a dátum és idő formázása. | Nem       |
+| culture  | A forrás és fogadó oszlopban kultúrájának. <br>Típus esetén a alkalmazni `Datetime` vagy `Datetimeoffset`. A mező alapértelmezett értéke: `en-us`. | Nem       |
+| format   | Formázó karakterlánc típus esetén használandó `Datetime` vagy `Datetimeoffset`. Tekintse meg [egyéni dátum- és időformátum karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) a dátum és idő formázása. | Nem       |
 
 A következő tulajdonságok támogatottak alatt `translator`  ->  `mappings` mellett objektum `source` és `sink`:
 
@@ -287,7 +287,7 @@ A Data Factory a következő, köztes adattípusokat támogatja: Írja be az ada
 
 * Byte[]
 * Boolean
-* DateTime
+* Datetime
 * Datetimeoffset
 * Decimal
 * Double
@@ -297,7 +297,7 @@ A Data Factory a következő, köztes adattípusokat támogatja: Írja be az ada
 * Int64
 * Single
 * String
-* Időtartomány
+* Timespan
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység egyéb cikkekben talál:
