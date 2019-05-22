@@ -7,12 +7,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: f9dc6e98e184e6eeeca3a56ff4a28739369a3d24
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e38eb1315cde3400b70925059d4dd50475a47835
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800486"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979670"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: Egyéni szabályzatdefiníció létrehozása
 
@@ -46,12 +46,11 @@ Mielőtt létrehozná a szabályzatdefiníció, fontos tudni, hogy a szabályzat
 
 A követelmények egyértelműen azonosítani mind a "" és a "nem az" erőforrás-állapotok.
 
-Hogy meghatároztuk a várható állapotát az erőforrást, miközben még nincs definiálva, amit szeretnénk végrehajtott rendelkező nem megfelelő erőforrások. A házirend szélesebbé váló skáláját támogatja [hatások](../concepts/effects.md). Ebben az oktatóanyagban az üzleti követelményt fogunk meghatározni, ha azok nem felelnek meg az üzleti szabályok megakadályozza, hogy az erőforrások létrehozását. E cél elérése érdekében használjuk a [Megtagadás](../concepts/effects.md#deny) érvénybe. Szeretnénk továbbá biztosítani arra, hogy a szabályzat az egyes hozzárendelések felfüggesztése. Ezért használjuk a [letiltott](../concepts/effects.md#disabled) életbe lépjenek, és adja meg azt a hatást egy [paraméter](../concepts/definition-structure.md#parameters) a szabályzat-definícióban.
+Hogy meghatároztuk a várható állapotát az erőforrást, miközben még nincs definiálva, amit szeretnénk végrehajtott rendelkező nem megfelelő erőforrások. Az Azure Policy szélesebbé váló skáláját támogatja [hatások](../concepts/effects.md). Ebben az oktatóanyagban az üzleti követelményt fogunk meghatározni, ha azok nem felelnek meg az üzleti szabályok megakadályozza, hogy az erőforrások létrehozását. E cél elérése érdekében használjuk a [Megtagadás](../concepts/effects.md#deny) érvénybe. Szeretnénk továbbá biztosítani arra, hogy a szabályzat az egyes hozzárendelések felfüggesztése. Ezért használjuk a [letiltott](../concepts/effects.md#disabled) életbe lépjenek, és adja meg azt a hatást egy [paraméter](../concepts/definition-structure.md#parameters) a szabályzat-definícióban.
 
 ## <a name="determine-resource-properties"></a>Erőforrás-tulajdonságok meghatározása
 
-Alapján az üzleti követelményt, az Azure-erőforráshoz naplózási házirend-e.
-A tulajdonságait a szabályzat-definícióban nem tudjuk. Szabályzat a JSON-reprezentációja az erőforráshoz értékeli, ezért meg kell tudni, hogy az erőforráson elérhető tulajdonságok.
+Alapján az üzleti követelményt, az Azure-erőforráshoz az Azure Policyvel naplózási tárfiók. A tulajdonságait a szabályzat-definícióban nem tudjuk. Az Azure Policy a JSON-reprezentációja az erőforráshoz értékeli, ezért meg kell tudni, hogy az erőforráson rendelkezésre álló tulajdonságok.
 
 Számos módon az Azure-beli erőforráshoz tulajdonságok meghatározásához. Megnézzük, minden egyes, ebben az oktatóanyagban:
 
@@ -121,8 +120,7 @@ A **tulajdonságok** nevű érték **supportsHttpsTrafficOnly** beállítása **
 
 #### <a name="create-a-resource-in-the-portal"></a>Erőforrás létrehozása a portálon
 
-A portálon keresztül egy másik módja az erőforrás-létrehozási folyamatának. A portálon, a menüben található egy storage-fiók létrehozása során a **speciális** lap **biztonsági átvitelre van szükség**.
-Ez a tulajdonság _letiltott_ és _engedélyezve_ beállítások. Az információs ikon, amely megerősíti, hogy ez a beállítás valószínűleg a tulajdonság azt szeretnénk, hogy a rendszer további szöveget rendelkezik. Azonban a portál nem ossza meg velünk a tulajdonságnév ezen a képernyőn.
+A portálon keresztül egy másik módja az erőforrás-létrehozási folyamatának. A portálon, a menüben található egy storage-fiók létrehozása során a **speciális** lap **biztonsági átvitelre van szükség**. Ez a tulajdonság _letiltott_ és _engedélyezve_ beállítások. Az információs ikon, amely megerősíti, hogy ez a beállítás valószínűleg a tulajdonság azt szeretnénk, hogy a rendszer további szöveget rendelkezik. Azonban a portál nem ossza meg velünk a tulajdonságnév ezen a képernyőn.
 
 Az a **felülvizsgálat + létrehozása** lap hivatkozása a lap alján **automatizálási sablon letöltése**. A hivatkozásra kattintva megnyílik a sablont, amely létrehozza az erőforrás konfiguráltuk. Ebben az esetben két kulcsfontosságú adatokat fogjuk látni:
 
@@ -181,8 +179,7 @@ Az eredmények között, láthatjuk, nevű storage-fiókok által támogatott al
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Az Azure PowerShell a `Get-AzPolicyAlias` parancsmag segítségével keresse meg az erőforrás-aliasok.
-A szűrjük a **Microsoft.Storage** névtér kaptunk az Azure-erőforrás kapcsolatos korábbi adatok alapján.
+Az Azure PowerShell a `Get-AzPolicyAlias` parancsmag segítségével keresse meg az erőforrás-aliasok. A szűrjük a **Microsoft.Storage** névtér kaptunk az Azure-erőforrás kapcsolatos korábbi adatok alapján.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -312,7 +309,8 @@ Az Azure Erőforrás-grafikon (előzetes verzió) segítségével keresztül [Cl
 
 ## <a name="determine-the-effect-to-use"></a>Határozza meg a hatást használata
 
-Annak eldöntése, hogy mi történjen a nem megfelelő erőforrások a szinte olyan fontos, mint annak eldöntésében, hogy mit kell kiértékelni az elsőként. Minden lehetséges válasz nem kompatibilis erőforrás neve egy [érvénybe](../concepts/effects.md). A hatás szabályozza a nem megfelelő erőforrást a rendszer naplózza, le van tiltva, ha rendelkezik adatokat hozzáfűzi, vagy rendelkezik egy központi telepítési társítva van hozzá tartozó erőforrás vissza és a egy megfelelő állapotba kerülnek.
+Annak eldöntése, hogy mi történjen a nem megfelelő erőforrások a szinte olyan fontos, mint annak eldöntésében, hogy mit kell kiértékelni az elsőként. Minden lehetséges válasz nem kompatibilis erőforrás neve egy [érvénybe](../concepts/effects.md).
+A hatás szabályozza a nem megfelelő erőforrást a rendszer naplózza, le van tiltva, ha rendelkezik adatokat hozzáfűzi, vagy rendelkezik egy központi telepítési társítva van hozzá tartozó erőforrás vissza és a egy megfelelő állapotba kerülnek.
 
 A példánkban a Megtagadás a hatása, mivel nem szeretnénk létrehozása Azure környezetben a nem megfelelő erőforrások szeretnénk. Naplózási megfelelő első választás az olyan meghatározásához a házirend hatásának előtt beállítása a letiltva a szabályzat hatása. Egyik módja, hogy a hatás könnyebben hozzárendelés kiszolgálónként módosítása paraméterezni hatással. Lásd: [paraméterek](#parameters) alább a részleteket az.
 
