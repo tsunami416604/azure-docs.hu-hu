@@ -109,12 +109,12 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | serviceBusRuleId |String | A service bus szabály azonosítója a service bus-névteret, amelyben meg szeretné, hogy a diagnosztikai naplók streameléshez létrehozott Event Hubs. A szabály csomagazonosítója a következő formátumban: "{service bus az erőforrás-azonosító} /authorizationrules/ {kulcsnév}".|
 | workspaceId | Komplex típus | Metrika idő magok és az adatmegőrzési szabályzatok tömbje. Ez a tulajdonság jelenleg üres. |
 |metrics| A folyamatfuttatás a meghívott folyamat átadandó paraméterértékek| JSON-objektum argumentumértékként paraméterneveket leképezése |
-| naplók| Komplex típus| Az erőforrástípushoz diagnosztikai napló kategória neve. Diagnosztikai napló kategóriák egy erőforrás beszerzéséhez hajtsa végre a diagnosztikai beállítások művelet. |
+| logs| Komplex típus| Az erőforrástípushoz diagnosztikai napló kategória neve. Diagnosztikai napló kategóriák egy erőforrás beszerzéséhez hajtsa végre a diagnosztikai beállítások művelet. |
 | category| String| Naplókategóriák és azok adatmegőrzési szabályzatok tömbje |
 | timeGrain | String | Metrikák időtartama ISO 8601 formátumban rögzített részletességét. PT1M (egy percig) kell lennie.|
-| engedélyezve| Boolean | Megadja, hogy a metrika- vagy naplófájl kategória gyűjteményét engedélyezett ehhez az erőforráshoz|
+| enabled| Boolean | Megadja, hogy a metrika- vagy naplófájl kategória gyűjteményét engedélyezett ehhez az erőforráshoz|
 | retentionPolicy| Komplex típus| A metrika- vagy naplófájl kategória esetén a megtartási házirendben ismerteti. Csak a tárolási fiók lehetőséget használja.|
-| nap| Int| Ennyi napig megőrzi a metrikákat vagy naplókat. A 0 érték határozatlan ideig őrzi meg a naplókat. Csak a tárolási fiók lehetőséget használja. |
+| days| Int| Ennyi napig megőrzi a metrikákat vagy naplókat. A 0 érték határozatlan ideig őrzi meg a naplókat. Csak a tárolási fiók lehetőséget használja. |
 
 **Válasz**
 
