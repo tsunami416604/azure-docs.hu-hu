@@ -164,8 +164,8 @@ Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factor
 
    | Tulajdonság | Leírás |
    |:--- |:--- |
-   | ClusterSize |Megadja a HDInsight-fürt méretét. |
-   | TimeToLive |Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer. |
+   | clusterSize |Megadja a HDInsight-fürt méretét. |
+   | timeToLive |Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer. |
    | linkedServiceName |Megadja a HDInsight által előállított naplók tárolására szolgáló tárfiókot. |
 
     Vegye figyelembe a következő szempontokat:
