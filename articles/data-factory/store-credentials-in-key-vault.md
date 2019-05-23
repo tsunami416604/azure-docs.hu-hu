@@ -79,7 +79,7 @@ A következő tulajdonságok támogatottak a key vault titkos társított szolg�
 | type | A type tulajdonság, mező értékre kell állítani: **AzureKeyVaultSecret**. | Igen |
 | secretName | Az azure key vault titkos neve. | Igen |
 | secretVersion | Az azure key vaultban titkos kód verziója.<br/>Ha nincs megadva, mindig használja a titkos kulcs legújabb verzióját.<br/>Ha meg van adva, majd azt csatlakoztat az adott verzióra.| Nem |
-| Store | Hivatkozik egy társított Azure Key Vault szolgáltatás, amellyel a hitelesítő adatok tárolásához. | Igen |
+| store | Hivatkozik egy társított Azure Key Vault szolgáltatás, amellyel a hitelesítő adatok tárolásához. | Igen |
 
 **Használatával a szerzői műveletek a felhasználói felület:**
 
