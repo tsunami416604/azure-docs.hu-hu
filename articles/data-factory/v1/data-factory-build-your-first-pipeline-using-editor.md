@@ -212,12 +212,12 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
    | Tulajdonság | A beágyazott | Leírás |
    |:--- |:--- |:--- |
    | type | properties |A tulajdonság beállítása **AzureBlob**, mert az adatok blobtárolóban találhatók. |
-   | linkedServiceName | Formátum |Az előzőleg létrehozott AzureStorageLinkedService szolgáltatásra hivatkozik. |
+   | linkedServiceName | format |Az előzőleg létrehozott AzureStorageLinkedService szolgáltatásra hivatkozik. |
    | folderPath | typeProperties | A bemeneti blobokat tartalmazó blobtárolót és mappát adja meg. | 
    | fileName | typeProperties |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az oktatóanyagban csak az input.log fájl feldolgozása történik meg. |
-   | type | Formátum |A naplófájlok szövegformátumúak, ezért a **TextFormat** típust használjuk. |
-   | columnDelimiter | Formátum |A naplófájlokban az oszlopok vesszővel (`,`) vannak elválasztva. |
-   | frequency/interval | rendelkezésre állás |A gyakoriság beállítás értéke **Hónap**, az időköz beállítás értéke **1**, tehát a bemeneti szeletek havonta érhetők el. |
+   | type | format |A naplófájlok szövegformátumúak, ezért a **TextFormat** típust használjuk. |
+   | columnDelimiter | format |A naplófájlokban az oszlopok vesszővel (`,`) vannak elválasztva. |
+   | frequency/interval | availability |A gyakoriság beállítás értéke **Hónap**, az időköz beállítás értéke **1**, tehát a bemeneti szeletek havonta érhetők el. |
    | external | properties | Ez a tulajdonság **igaz** értékre van állítva, ha a bemeneti adatokat nem ez a folyamat hozta létre. Mivel ebben az oktatóanyagban a bemeneti naplófájlt nem ez a folyamat hozta létre, a tulajdonság értéke **igaz**. |
 
     További információ ezekről a JSON-tulajdonságokról: [Azure Blob-összekötő](data-factory-azure-blob-connector.md#dataset-properties).
