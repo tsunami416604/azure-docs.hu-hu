@@ -125,8 +125,8 @@ Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságoka
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| ClusterSize |A HDInsight-fürt mérete. |
-| TimeToLive |Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer. |
+| clusterSize |A HDInsight-fürt mérete. |
+| timeToLive |Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer. |
 | linkedServiceName |Megadja a HDInsight által előállított naplók tárolására szolgáló tárfiókot. |
 
 Vegye figyelembe a következő szempontokat:
