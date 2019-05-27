@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 7ce57e1f8b2732ea909625c89f3e8148cb70635c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bbf43ecb07947fad8cc1ee064d2038e4a21d4444
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728844"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964767"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>A Media Services-metrikák és diagnosztikai naplók figyelése
 
-[Az Azure Monitor](../../azure-monitor/overview.md) lehetővé teszi, hogy a figyelő metrikák és diagnosztikai naplók, amelyek segítenek megérteni, hogyan az alkalmazások hajt végre. Az Azure Monitor által gyűjtött összes adat mérőszámokban és naplófájlokban két alapvető típusok egyikével illeszkedik. Figyelheti a Media Services diagnosztikai naplók és riasztások és értesítések a gyűjtött metrikák és naplók létrehozása. Megjelenítheti és elemezheti a metrikák adatait az [metrikaböngésző](../../azure-monitor/platform/metrics-getting-started.md). A naplókat elküldheti [Azure Storage](https://azure.microsoft.com/services/storage/), azokat a stream [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket [Log Analytics](https://azure.microsoft.com/services/log-analytics/), vagy használja a 3. fél által nyújtott szolgáltatások.
+[Az Azure Monitor](../../azure-monitor/overview.md) lehetővé teszi, hogy a figyelő metrikák és diagnosztikai naplók, amelyek segítenek megérteni, hogyan az alkalmazások hajt végre. Az Azure Monitor által gyűjtött összes adat megfelel a két alapvető típus, metrikák és naplók egyikébe. Figyelheti a Media Services diagnosztikai naplók és riasztások és értesítések a gyűjtött metrikák és naplók létrehozása. Megjelenítheti és elemezheti a metrikák adatait az [metrikaböngésző](../../azure-monitor/platform/metrics-getting-started.md). A naplókat elküldheti [Azure Storage](https://azure.microsoft.com/services/storage/), azokat a stream [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket [Log Analytics](https://azure.microsoft.com/services/log-analytics/), vagy használja a 3. fél által nyújtott szolgáltatások.
 
 Részletes ismertetőt talál [Azure Monitor-metrikák](../../azure-monitor/platform/data-platform.md) és [Azure Monitor-diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md).
 
@@ -34,11 +34,11 @@ Rendszeres időközönként metrikákat gyűjt az érték-e. Hasznos, mert azok 
 
 Jelenleg a következő Media Services [adatfolyam-továbbítási végpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints) metrikák vannak kibocsátva az Azure-ban:
 
-|Name (Név)|Leírás|
-|---|---|
-|Kérelmek|A folyamatos átviteli végponton által feldolgozott kérelmek teljes száma körül részleteket nyújt.|
-|Kimenő forgalom|Kimenő bájtok teljes száma. Ha például bájt streameli a folyamatos átviteli végponton.|
-|Sikeres végpontok közötti késése| Sikeres kérések végpontok közötti késés kapcsolatos információkat biztosít.|
+|Metrika|Display name|Leírás|
+|---|---|---|
+|Kérelmek|Kérelmek|A folyamatos átviteli végponton által feldolgozott kérelmek teljes száma körül részleteket nyújt.|
+|Kimenő forgalom|Kimenő forgalom|Kimenő bájtok teljes száma. Ha például bájt streameli a folyamatos átviteli végponton.|
+|SuccessE2ELatency|Sikeres végpontok közötti késése| Sikeres kérések végpontok közötti késés kapcsolatos információkat biztosít.|
 
 Például a CLI-vel "Kimenő" metrikáinak beolvasása, futtatná a következő `az monitor metrics` parancssori felületi parancsot:
 

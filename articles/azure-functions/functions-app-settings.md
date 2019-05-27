@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: d78fb546e954c4ae12e5836d9a7bef7ed5003090
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 02becd787fcc5f82efff7ef21feaf336fba3a26f
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511077"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967588"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
@@ -122,7 +122,7 @@ A használatához a függvényalkalmazást a Functions futtatókörnyezetének v
 
 ## <a name="functionsworkerruntime"></a>FÜGGVÉNYEK\_FELDOLGOZÓ\_MODUL
 
-A nyelvi feldolgozói modul betöltése a függvényalkalmazáshoz.  Ez felel meg a nyelvet, az alkalmazásban (például "dotnet") használja. Functions több nyelven is szüksége lesz, ha közzétesszük őket, több alkalmazás, amelyek mindegyike egy megfelelő értéket a worker futásidejű.  Érvényes értékek a következők `dotnet` (C#/F#), `node` (JavaScript/TypeScript) `java` (Java), és `python` (Python).
+A nyelvi feldolgozói modul betöltése a függvényalkalmazáshoz.  Ez felel meg a nyelvet, az alkalmazásban (például "dotnet") használja. Functions több nyelven is szüksége lesz, ha közzétesszük őket, több alkalmazás, amelyek mindegyike egy megfelelő értéket a worker futásidejű.  Érvényes értékek a következők `dotnet` (C#/F#), `node` (JavaScript/TypeScript) `java` (Java), `powershell` (PowerShell), és `python` (Python).
 
 |Kulcs|Mintaérték|
 |---|------------|

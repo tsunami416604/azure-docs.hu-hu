@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/05/2019
-ms.author: monhaber
-ms.openlocfilehash: 0465f12e3da6acc2ec8f7259ee9f040ccd3ce88e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: v-mohabe
+ms.openlocfilehash: 7f738350743b0b80bf39a322043c514081721def
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236306"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967846"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -94,7 +94,7 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
 > - Házirendek hozzárendelésekor a megtekintése, láthatja, hogy több hozzárendeléseket, és láthatja, hogyan minden hozzárendelés önállóan van konfigurálva.
 
 ## <a name="edit-security-policies"></a>Biztonsági szabályzatok szerkesztése
-Az Azure-előfizetések és a felügyeleti csoportok az egyes szerkesztheti az alapértelmezett biztonsági szabályzatban [Azure Policy](../governance/policy/tutorials/create-and-manage.md). Biztonsági szabályzat módosításához az előfizetésben vagy az azt tartalmazó felügyeleti csoportban tulajdonos, közreműködő vagy biztonsági rendszergazda szerepkörrel kell rendelkeznie.
+Az egyes Azure-előfizetések és felügyeleti csoportok alapértelmezett biztonsági szabályzatait az [Azure Policyban](../governance/policy/tutorials/create-and-manage.md) szerkesztheti. Biztonsági szabályzat módosításához az előfizetésben vagy az azt tartalmazó felügyeleti csoportban tulajdonos, közreműködő vagy biztonsági rendszergazda szerepkörrel kell rendelkeznie.
 
 Egy biztonsági szabályzatot az Azure Policy szerkesztésére vonatkozó utasításokért lásd: és [létrehozása és a megfelelőség kikényszerítése céljából házirendek kezelése](../governance/policy/tutorials/create-and-manage.md).
 

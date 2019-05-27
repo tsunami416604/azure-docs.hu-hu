@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2f856e9c42b26d4e286493e2eb5d019a8cff6c23
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6e3e01ca9bd459aa6c6aca8dfaacb98b1267fada
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868721"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979351"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -85,7 +85,7 @@ Ezeket a részleteket ismertetik, hogy miért erőforrás jelenleg nem megfelel�
 
 A következő mátrix térképek minden lehetséges _OK_ a a felelős [feltétel](../concepts/definition-structure.md#conditions) szabályzatdefinícióban:
 
-|Ok | Állapot |
+|Reason | Feltétel |
 |-|-|
 |Az aktuális értéknek tartalmaznia kell a célértéket kulcsként. |containsKey vagy **nem** notContainsKey |
 |Az aktuális értéknek tartalmaznia kell a célértéket. |tartalmaz vagy **nem** notContains |
@@ -215,11 +215,11 @@ Egy új részeként **nyilvános előzetes verzióban**, a változások nyomon k
 
 1. Válassza ki a **változások nyomon követése (előzetes verzió)** lapján a **erőforrás megfelelőségi** lapot. Listáját módosítások észlelése, ha a bármely exist jelennek meg.
 
-   ![Erőforrás megfelelősége oldalon házirend-változások nyomon követése lap](../media/determine-non-compliance/change-history-tab.png)
+   ![Erőforrás megfelelősége oldalon Azure házirend változások nyomon követése lap](../media/determine-non-compliance/change-history-tab.png)
 
 1. Válassza ki az egyik észlelt változás. A _diff vizuális_ esetében az erőforrás egyike jelenik meg a **módosítási előzmények** lapot.
 
-   ![Szabályzat módosítása előzmények vizuális Diff módosítási előzmények lapon](../media/determine-non-compliance/change-history-visual-diff.png)
+   ![Az Azure szabályzat módosítási előzmények Visual Diff módosítási előzmények lapon](../media/determine-non-compliance/change-history-visual-diff.png)
 
 A _diff vizuális_ segédeszközökkel erőforrásai azonosításában. A módosítások észlelhetők nem kapcsolódik az erőforrás aktuális megfelelőségi állapotát.
 
@@ -228,7 +228,7 @@ Módosítási előzmények adatok által biztosított [Azure Erőforrás-grafiko
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse át a következő példák [Azure Policy minták](../samples/index.md).
-- A [Szabályzatdefiníciók struktúrájának](../concepts/definition-structure.md) áttekintése.
+- Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
 - Megismerheti, hogyan [szabályzatok létrehozása programozott módon](programmatically-create.md).
 - Ismerje meg, hogyan [megfelelőségi adatok](getting-compliance-data.md).

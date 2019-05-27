@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994961"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66127138"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Az Azure-erőforrások foglalások kezelése
 
@@ -70,7 +70,7 @@ A Foglalás kezelési delegálása:
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki **minden szolgáltatás** > **foglalás** lista foglalásokat, amely hozzáfér a.
 3. Válassza ki a foglalást, amelyet szeretne más felhasználókkal való hozzáférés delegálására.
-4. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
+4. Válassza ki **hozzáférés-vezérlés (IAM)**.
 5. Válassza ki **szerepkör-hozzárendelés hozzáadása** > **szerepkör** > **tulajdonosa**. Ha korlátozott hozzáférést szeretne biztosítani, válasszon egy másik szerepkört.
 6. Írja be a tulajdonosként hozzáadni kívánt felhasználó e-mail-címét.
 7. Válassza ki a felhasználót, majd válassza a **Mentés** lehetőséget.
@@ -132,7 +132,7 @@ A Foglalás az optimalizálási beállítás frissítése:
 4. Válassza a **Beállítások** > **Konfiguráció** lehetőséget.
 5. Módosítsa a **optimalizálás** beállítás.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 

@@ -46,6 +46,8 @@
           href: 'https://docs.microsoft.com/rest/api/consumption'
         - name: Resource Manager-sablon
           href: /azure/templates/microsoft.consumption/budgets
+        - name: Cost Management REST API-minták
+          href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
     - name: További források
       items:
         - name: Fejlessze a készségeit a Microsoft Learnnel

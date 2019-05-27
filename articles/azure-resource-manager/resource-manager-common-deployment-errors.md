@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
 ms.openlocfilehash: f6ebeb1d9953311ad1cb85d8ab33c83d5e92d687
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405521"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128550"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli hibák az Azure Resource Manager hibaelhárítása
 
@@ -30,7 +30,7 @@ Ez a cikk ismerteti az Azure-beli leggyakoribb hibák, és információkat a hib
 
 ## <a name="error-codes"></a>Hibakódok
 
-| Hibakód | Kezelés | További információ |
+| Hibakód | Kockázatcsökkentés | További információ |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Hajtsa végre a storage-fiókok vonatkozó elnevezési korlátozás. | [Oldja meg a tárfiók neve](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | Ellenőrizze a rendelkezésre álló tár fiók tulajdonságait. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |

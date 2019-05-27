@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128333"
 ---
 # <a name="azure-signalr-service-authentication"></a>Az Azure SignalR Service-hitelesítés
 

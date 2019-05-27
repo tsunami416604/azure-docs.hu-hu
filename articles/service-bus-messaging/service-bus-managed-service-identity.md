@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: aschhab
-ms.openlocfilehash: abba0e15314387aed09e39f05d9127f346f9c799
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8477ff8c8ff0bc1629ff4cdc61f7c28c6eed778c
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228396"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978801"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Felügyelt identitások az Azure Service Bus-erőforrások 
 
@@ -29,7 +29,23 @@ A felügyelt identitásokból az Azure platform kezeli a futtatókörnyezet iden
 
 ## <a name="service-bus-roles-and-permissions"></a>A Service Bus-szerepkörök és engedélyek
 
-Hozzáadhat egy felügyelt identitás csak a "Tulajdonos" vagy "Közreműködő" Service Bus-névtér-szerepkörökhöz. Az identitás a névtérben lévő összes entitáshoz teljes hozzáférést ad. Azonban a névtér topológia módosító műveletekre kezdetben felügyeleti támogatott azonban csak az Azure Resource Manager. Nem áll a natív Service Bus REST-felügyeleti felületén keresztül. Ez a támogatás azt is jelenti, hogy nem használható a .NET-keretrendszer ügyfél [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy a .NET Standard ügyféloldali [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) egy felügyelt identitás objektumához.
+A "Service Bus adatok tulajdonosa" szerepkört a Service Bus-névtér is hozzáadhat egy felügyelt identitás. Az identitás, a névtérben lévő összes entitáshoz (a felügyeleti és az üzemeltetés) teljes hozzáférést ad.
+
+>[!IMPORTANT]
+> Korábban támogatva a felügyelt identitás hozzáadása a **"Owner"** vagy **"Közreműködő"** szerepkör.
+>
+> Azonban, adat-hozzáférési jogosultságokat a **"Owner"** és **"Közreműködő"** szerepkör már nem lesz érvényes. Ha használta a **"Owner"** vagy **"Közreműködő"** szerepkört, majd azokat felhasználja módosítani kell a kell a **"Service Bus adatok tulajdonosa"** szerepkör.
+
+Az új beépített szerepkör használja, hajtsa végre az alábbi lépések szükségesek:
+
+1. folytassa a [Azure Portalon](https://portal.azure.com)
+2. Keresse meg a Service Bus-névtér esetében jelenleg a telepítő a "Tulajdonos" vagy "Közreműködő" szerepkör.
+3. Kattintson a "Hozzáférés Control(IAM)" lehetőséget a bal oldali panelen menüből.
+4. A folytatáshoz az alábbi új szerepkör-hozzárendelés hozzáadása
+
+    ![](./media/service-bus-role-based-access-control/ServiceBus_RBAC_SBDataOwner.png)
+
+5. Kattintson a "Mentés" gombra az új szerepkör-hozzárendelés mentése.
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>A Service Bus felügyelt identitások az Azure-erőforrások
 
@@ -51,7 +67,7 @@ Miután engedélyezte a funkciót, egy új felügyeltszolgáltatás-identitás l
 
 ### <a name="create-a-new-service-bus-messaging-namespace"></a>Hozzon létre egy új Service Bus Messaging-névteret
 
-Ezután [hozzon létre egy Service Bus üzenetkezelési névteret](service-bus-create-namespace-portal.md) RBAC előzetes támogató Azure-régiók egyikében: **USA keleti régiója**, **USA keleti régiója 2**, vagy **Nyugat-Európa**. 
+Ezután [hozzon létre egy Service Bus üzenetkezelési névteret](service-bus-create-namespace-portal.md). 
 
 Keresse meg a névtér **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **szerepkör-hozzárendelés hozzáadása** felügyelt identitásnak hozzáadása a **tulajdonosa** szerepkör. Ehhez keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra.
 

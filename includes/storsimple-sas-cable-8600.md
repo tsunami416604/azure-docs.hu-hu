@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482730"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66155908"
 ---
 #### <a name="to-attach-the-sas-cables"></a>A SAS-kábel csatolása
 1. Azonosítsa az elsődleges és a EBOD mindegyikéből. A két házak azonosíthatók azok megfelelő vissza síkok megtekintésével. Lásd az alábbi képen útmutatást. 
@@ -18,9 +18,9 @@ ms.locfileid: "60482730"
    
     **Biztonsági másolatot az elsődleges és a EBOD ház nézete**
    
-   | Címke | Leírás |
+   | Felirat | Leírás |
    |:--- |:--- |
-   | 1 |Elsődleges ház |
+   | 1. |Elsődleges ház |
    | 2 |EBOD ház |
 2. Keresse meg a sorozatszámokat, az elsődleges és a EBOD mindegyikéből. A sorozatszám matricát a háttérrendszer fülön az összes rendszerházon rögzítettek. A sorozatszámokat mindkét ház azonosnak kell lennie. [Forduljon a Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md) azonnal, ha a sorozatszám nem egyezik. Tekintse meg az alábbi ábrán a sorozatszám megkereséséhez.
    
@@ -28,9 +28,9 @@ ms.locfileid: "60482730"
    
     **Sorozatszám matricát helye**
    
-   | Címke | Leírás |
+   | Felirat | Leírás |
    |:--- |:--- |
-   | 1 |A ház, sszes törlése |
+   | 1. |A ház, sszes törlése |
 3. A megadott SAS-kábel használatával a EBOD ház csatlakozhat az elsődleges ház módon:
    
    1. Azonosítsa az elsődleges ház és a EBOD ház négy SAS-porttal. A SAS-porttal EBOD a elsődleges tárolóeszközön van jelölve, és a port a EBOD tárolóeszközön felel meg a SAS-kábelezés ábrán is látható, alább látható módon.
@@ -41,11 +41,11 @@ ms.locfileid: "60482730"
       
       **SAS-kábelezés**
       
-      | Címke | Leírás |
+      | Felirat | Leírás |
       |:--- |:--- |
       | A |Elsődleges ház |
       | B |EBOD ház |
-      | 1 |0. vezérlő |
+      | 1. |0. vezérlő |
       | 2 |1. vezérlő |
       | 3 |Az EBOD-vezérlő 0 |
       | 4 |Az EBOD-vezérlő 1 |

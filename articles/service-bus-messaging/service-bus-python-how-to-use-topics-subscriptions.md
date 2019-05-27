@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 102fe85916194648501be3d2cb39d8bcda9e9f5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 47cd0621a601e3f1ef53572bc7bb8bc1c7ea76ab
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811074"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991997"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Service Bus-üzenettémák és előfizetések használata pythonnal
 
@@ -189,6 +189,9 @@ Egy témakör törlése az adott témakörre regisztrált összes előfizetést 
 ```python
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
+
+> [!NOTE]
+> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
 
 ## <a name="next-steps"></a>További lépések
 

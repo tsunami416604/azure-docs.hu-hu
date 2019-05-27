@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e258670e863ff195190bae5cd50537e50d40d942
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 4cc742a6b1a7f3fc78e8639206e06c2937f00c30
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825645"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956915"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Egyéni tartományok használata az Azure AD-alkalmazásproxy
 
@@ -71,7 +71,9 @@ Ha készen áll három követelményekről, kövesse az alábbi lépéseket az e
 ### <a name="certificate-format"></a>Tanúsítvány formátuma
 A tanúsítvány-aláírás módszerek korlátozva van. Elliptikus görbéjű titkosítási (ECC), a tulajdonos alternatív nevére (SAN) és egyéb gyakori tanúsítványtípusok egyaránt támogatottak. 
 
-Helyettesítő tanúsítvány mindaddig, amíg a helyettesítő karakteres megegyezik a kívánt külső URL-cím használható. 
+Helyettesítő tanúsítvány mindaddig, amíg a helyettesítő karakteres megegyezik a kívánt külső URL-cím használható.
+
+Nem használhat saját nyilvános kulcsokra épülő infrastruktúrájú (PKI) biztonsági szempontok miatt által kibocsátott tanúsítvánnyal.
 
 ### <a name="changing-the-domain"></a>A tartomány módosítása
 Összes ellenőrzött tartományt az alkalmazás a külső URL-cím legördülő listában jelennek meg. Ha módosítani szeretné a tartományhoz, csak frissítse ezt a mezőt az alkalmazás. Ha azt szeretné, a tartomány nem szerepel a listán, [, egy ellenőrzött tartomány hozzáadása](../fundamentals/add-custom-domain.md). Ha olyan tartományhoz, amely rendelkezik egy társított tanúsítvány még nem, kövesse a lépéseket a tanúsítvány hozzáadása 5 – 7. Ezután ellenőrizze a DNS-rekord az új külső URL-átirányítás frissítenie. 

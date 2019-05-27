@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/8/2018
 ms.author: tomfitz
 ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270453"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128700"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok tömb- és objektumfüggvények
 
@@ -196,8 +196,8 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | stringOutput | String | alapértelmezett |
-| intOutput | Int | 1 |
-| objectOutput | Objektum | {"first": "alapértelmezett"} |
+| intOutput | Int | 1. |
+| objectOutput | Object | {"first": "alapértelmezett"} |
 | arrayOutput | Tömb | [1] |
 | emptyOutput | Bool | True (Igaz) |
 
@@ -338,7 +338,7 @@ Ellenőrzi, hogy egy tömb értéket tartalmaz, objektum kulcsot tartalmaz, vagy
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| tároló |Igen |tömb, objektumot vagy karakterlánc |Az érték, amely tartalmazza a keresendő érték. |
+| container |Igen |tömb, objektumot vagy karakterlánc |Az érték, amely tartalmazza a keresendő érték. |
 | itemToFind |Igen |karakterlánc- vagy int |Keresendő érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
@@ -403,11 +403,11 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True (Igaz) |
-| stringFalse | Bool | False (Hamis) |
+| stringFalse | Bool | Hamis |
 | objectTrue | Bool | True (Igaz) |
-| objectFalse | Bool | False (Hamis) |
+| objectFalse | Bool | Hamis |
 | arrayTrue | Bool | True (Igaz) |
-| arrayFalse | Bool | False (Hamis) |
+| arrayFalse | Bool | Hamis |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -709,7 +709,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| objectOutput | Objektum | {"egy": "a", "három": "c"} |
+| objectOutput | Object | {"egy": "a", "három": "c"} |
 | arrayOutput | Tömb | ["két", "három"] |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
@@ -733,7 +733,7 @@ Egy JSON-objektumot ad vissza.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |sztring |Az érték átalakítása JSON. |
+| arg1 |Igen |string |Az érték átalakítása JSON. |
 
 
 ### <a name="return-value"></a>Vrácená hodnota
@@ -781,9 +781,9 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| jsonOutput | Objektum | {"a": "b"} |
-| nullOutput | Logikai | True (Igaz) |
-| paramOutput | Objektum | {"a": "értékét bemutató"}
+| jsonOutput | Object | {"a": "b"} |
+| nullOutput | Boolean | True (Igaz) |
+| paramOutput | Object | {"a": "értékét bemutató"}
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -1363,7 +1363,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| objectOutput | Objektum | {"egy": "a", "2": "b", "három": "c2", "négy": "d", "5": "e"} |
+| objectOutput | Object | {"egy": "a", "2": "b", "három": "c2", "négy": "d", "5": "e"} |
 | arrayOutput | Tömb | ["egy", "két", "három", "négy"] |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:

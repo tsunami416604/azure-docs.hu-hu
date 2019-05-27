@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
 ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996125"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66153236"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factoryban történő futtatásának biztonsági szempontjai
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -135,11 +135,11 @@ Az Azure virtuális hálózat a felhőbeli hálózatának logikai megfelelője. 
 
 A következő táblázat összefoglalja a hálózaton, és eltérő kombinációja a forrás- és helyek az adatok hibrid áthelyezése alapján saját üzemeltetésű integrációs modul konfigurációs javaslatokat.
 
-| Forrás      | Cél                              | Hálózati konfiguráció                    | Integrációs modul telepítése                |
+| Source      | Célhely                              | Hálózati konfiguráció                    | Integrációs modul telepítése                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Helyszíni követelmények | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | IPSec VPN (pont – hely vagy site-to-site) | A saját üzemeltetésű integrációs modul egy Azure virtuális gépen a virtuális hálózatban kell telepíteni.  |
-| Helyszíni követelmények | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | ExpressRoute (privát társviszony-létesítés)           | A saját üzemeltetésű integrációs modul egy Azure virtuális gépen a virtuális hálózatban kell telepíteni.  |
-| Helyszíni követelmények | Egy nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (a Microsoft társviszony-létesítés)            | A saját üzemeltetésű integrációs modult is lehet a telepített helyszíni vagy Azure virtuális géphez. |
+| Helyszíni | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | IPSec VPN (pont – hely vagy site-to-site) | A saját üzemeltetésű integrációs modul egy Azure virtuális gépen a virtuális hálózatban kell telepíteni.  |
+| Helyszíni | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | ExpressRoute (privát társviszony-létesítés)           | A saját üzemeltetésű integrációs modul egy Azure virtuális gépen a virtuális hálózatban kell telepíteni.  |
+| Helyszíni | Egy nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (a Microsoft társviszony-létesítés)            | A saját üzemeltetésű integrációs modult is lehet a telepített helyszíni vagy Azure virtuális géphez. |
 
 Az alábbi képeken az adatok áthelyezése egy helyszíni adatbázisból és az Azure-szolgáltatások között ExpressRoute- és IPSec VPN (az Azure Virtual Network) a saját üzemeltetésű integrációs modul használata:
 

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: eb19833251fc9ee08a12aaf6ffcef55d59cea5d6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 076e3b41a50681e453c1a07575ac6cb7071d97d2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500634"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992026"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Gyors útmutató: Az Azure CLI használatával hozzon létre egy Service Bus-üzenetsorba
 Ebben a rövid útmutató üzenetek küldése és fogadása Service Bus szolgáltatással az Azure CLI és a Service Bus-Java-kódtár használatával. Ha további technikai részletekre kíváncsi, olvassa el a mintakód fő elemeihez tartozó [magyarázatot](#understand-the-sample-code).
@@ -366,6 +366,9 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 
 }
 ```
+
+> [!NOTE]
+> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
 
 ## <a name="next-steps"></a>További lépések
 

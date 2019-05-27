@@ -14,11 +14,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: dea0153b9ca6d8e751fd94cc558abd44b2591907
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453031"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66120435"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Az Azure SQL Database georeplikációja és a feladatátvétel az Azure-SSIS integrációs modul konfigurálása
 
@@ -107,6 +107,6 @@ Vegye figyelembe ezeket az Azure-SSIS integrációs modul az egyéb konfiguráci
 
 - [A nagy teljesítményű, az Azure-SSIS integrációs modul konfigurálása](configure-azure-ssis-integration-runtime-performance.md)
 
-- [A telepítő az Azure-SSIS integrációs modul testreszabása](how-to-configure-azure-ssis-ir-custom-setup.md)
+- [Az Azure-SSIS Integration Runtime telepítésének testreszabása](how-to-configure-azure-ssis-ir-custom-setup.md)
 
 - [Az Azure-SSIS integrációs modul üzembe helyezése Enterprise Edition](how-to-configure-azure-ssis-ir-enterprise-edition.md)

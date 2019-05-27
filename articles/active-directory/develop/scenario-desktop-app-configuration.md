@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/o7/2019
+ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eadcae393128d9721f2c988f713af07913c5fd1d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: bc0042d6392891e8282c563afea2212031a0f49a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545503"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121884"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Asztali alkalmazás, hogy a hívások webes API-k – helykódot
 
@@ -38,7 +38,7 @@ A kód szempontjából asztali alkalmazások nyilvános ügyfélalkalmazások sz
 
 ### <a name="exclusively-by-code"></a>Kizárólag a code szerint
 
-Az alábbi kód példányosít egy nyilvános ügyfélalkalmazás aláírási a felhasználók a Microsoft Azure nyilvános felhő, a munkahelyi és iskolai fiókokhoz vagy személyes Microsoft-fiókjukkal.
+A következő kódot a bejelentkezés a Microsoft Azure nyilvános felhő, munkahelyi és iskolai fiókot, vagy személyes Microsoft-fiókkal rendelkező felhasználók nyilvános ügyfélalkalmazás példányosítja.
 
 ```CSharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
@@ -50,8 +50,8 @@ Ha szeretne használni az interaktív hitelesítéshez, ahogy fent látható, sz
 ```CSharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithRedirectUri(PublicClientApplicationBuilder.DefaultInteractiveDesktopRedirectUri)
-         .Build();
+        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+        .Build();
 ```
 
 ### <a name="using-configuration-files"></a>Konfigurációs fájlok használatával
@@ -61,7 +61,8 @@ Az alábbi kód példányosít egy nyilvános ügyfélalkalmazást egy konfigur�
 ```CSharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
 IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicationOptions(options)
-    .Build();
+        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+        .Build();
 ```
 
 ### <a name="more-elaborated-configuration"></a>További konfigurációs kidolgozott
@@ -71,6 +72,7 @@ Az alkalmazás készítése dostupnosti számos hozzáadásával is dolgoznak ki
 ```CSharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
+        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
         .WithAadAuthority(AzureCloudInstance.AzureUsGovernment,
                          AadAuthorityAudience.AzureAdMultipleOrgs)
         .Build();
@@ -167,6 +169,7 @@ Most az alkalmazás létrehozásához, csak szüksége írása a következő kó
 ```CSharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
+           .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
            .Build();
 ```
 

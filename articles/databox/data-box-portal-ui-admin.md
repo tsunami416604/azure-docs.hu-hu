@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 5d1c3e4bb1c4b3545c8f051432016348112f16b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c998e01cdb9031771acd3d9605da3e77d5ae3201
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406248"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953370"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>A Data Box-lemezek felügyelete az Azure portal használatával
 
@@ -76,7 +76,7 @@ Csak a teljesített vagy visszavont rendeléseket törölheti. A rendelések tö
      ![Data Box Disk-rendelés törlése 2](media/data-box-portal-ui-admin/delete-order2.png)
 
 
-## <a name="download-shipping-label"></a>Fuvarlevélcímke letöltése
+## <a name="download-shipping-label"></a>Levélcímke letöltése
 
 Ha a meghajtókkal szállított fuvarlevélcímke elveszett vagy nem találja, le kell töltenie a portálról. 
 
@@ -103,9 +103,9 @@ A rendelés szerkesztéséhez kövesse az alábbi lépéseket.
 
     ![Szállítási cím szerkesztése 2](media/data-box-portal-ui-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Értesítési adatok szerkesztése
+## <a name="edit-notification-details"></a>Értesítés adatainak szerkesztése
 
-Lehet, hogy módosítani szeretné, hogy mely felhasználók kapjanak értesítő e-maileket a rendelés állapotáról. Például előfordulhat, hogy valamelyik felhasználót értesíteni kell, ha a meghajtót kiszállítják vagy már átvették. Egy másikat pedig esetleg akkor kell értesíteni, ha az adatok másolása befejeződött, hogy a forrás törlése előtt ellenőrizhesse, hogy az adatok valóban átkerültek-e az Azure-tárfiókba. Ilyen esetekben szerkesztheti az értesítési adatokat.
+Lehet, hogy módosítani szeretné, hogy mely felhasználók kapjanak értesítő e-maileket a rendelés állapotáról. Például előfordulhat, hogy valamelyik felhasználót értesíteni kell, ha a meghajtót kiszállítják vagy már átvették. Egy másik felhasználó szükség lehet az adatok másolása befejeződött, így azok ellenőrizheti a forrás törlése előtt az Azure storage-fiókban van az adatok tájékoztatni kell. Ilyen esetekben szerkesztheti az értesítési adatokat.
 
 Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 
@@ -126,7 +126,7 @@ Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 |Feladva     | A rendelés fel lett adva. A rendelést 1–2 napon belül kapja kézhez.        |
 |Kézbesítve     | A rendelés ki lett kézbesítve a rendelésben megadott címre.        |
 |Szállítás alatt     |A visszaküldött csomagot a futár átvette. <br> Miután a szállítmány érkezik az Azure-adatközpontban, adatokat automatikusan töltődnek fel az Azure-bA.         |
-|Megérkezett     | A meghajtókat átvették az Azure-adatközpontban. Az adatok másolása hamarosan megkezdődik.        |
+|Érkezett     | A meghajtókat átvették az Azure-adatközpontban. Az adatok másolása hamarosan megkezdődik.        |
 |Adatok átmásolva     |Az adatok másolása folyamatban van.<br> Várjon, amíg az adatok másolása befejeződik.         |
 |Befejezve       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
 |Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek. <br> Tekintse át a másolási naplókat az **Áttekintés** lapon megadott útvonalon. További információért [töltse le a diagnosztikai naplókat](data-box-disk-troubleshoot.md#download-diagnostic-logs).   |

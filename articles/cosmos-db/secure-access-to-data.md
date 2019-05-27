@@ -4,14 +4,14 @@ description: Ismerje meg, access control fogalmaival, az Azure Cosmos DB, beleé
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 133181fcc76d759a57725df1ff965966f3797399
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ccb9afb528edf67b29c781217ca1de97b81e017
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446489"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969216"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés az adatokhoz az Azure Cosmos DB-ben
 
@@ -19,7 +19,7 @@ Ez a cikk áttekintést tárolt adatokhoz való hozzáférés biztonságossá t�
 
 Az Azure Cosmos DB kétféle típusú kulcsok használatával hitelesítheti a felhasználókat, és adja meg az adatok és erőforrások elérését. 
 
-|Kulcs típusa|További források|
+|Kulcstípus|További források|
 |---|---|
 |[Mesterkulcs](#master-keys) |Felügyeleti erőforrásainak: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-jogkivonatokat](#resource-tokens)|Alkalmazás erőforrásainak: tárolók, dokumentumok, a mellékleteket, tárolt eljárások, eseményindítók és felhasználói függvények|

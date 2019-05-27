@@ -11,12 +11,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: b33561ad80207a5d649ac1fd497c9d6c7add78c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: fe472b8a19b45d7f7b00a8f858c9179d6ee51999
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723991"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951576"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Az Azure SQL Database Machine Learning-szolgáltatások (előzetes verzió) R-rel
 
@@ -49,9 +49,7 @@ Leggyakrabban használt nyílt forráskódú R-csomagok olyan előre telepített
 | [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR az elsődleges tár, ebben a könyvtárban méretezhető R. funkciók a következők közül a legszélesebb körben használt. Ezek a kódtárak adatátalakítások és adatmanipulációs, statisztikai összegzési, vizualizációs és modellezési és elemzések sok formáját találhatók. Ezenkívül ezek a kódtárak függvényei automatikusan elosztják a munkaterhelést párhuzamos feldolgozás, lehetővé teszi az dolgoznak adattömböket koordinált és a számítási motor által kezelt adatok elérhető magok száma. |
 | [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML hozzáadja a gépi tanulási algoritmusok, szövegelemzés, képelemzés és hangulatelemzés egyéni modellek létrehozásának eljárásait. |
 
-<!-- Add this back when the new package-related article is written
-In addition to the pre-installed packages, you can [install additional packages](sql-database-quickstart-r-create-script.md#add-a-package).
--->
+Az előre telepített csomag mellett is [további csomagokat telepíteni](sql-database-machine-learning-services-add-r-packages.md).
 
 <a name="signup"></a>
 

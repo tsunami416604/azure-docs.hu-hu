@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 05/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6a66d45028b9fbf9c421b10ffb7863fcb9be5bec
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f4ecc01f42d491f5d9d967b9983e773c1df22298
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779846"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65986821"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C-vel egyéni szabályzatok – első lépések
 
@@ -31,7 +31,7 @@ ms.locfileid: "65779846"
 ## <a name="add-signing-and-encryption-keys"></a>Aláírási és titkosítási kulcsok hozzáadása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő tartalmazó könyvtárba. Kattintson a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása. 
+2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő tartalmazó könyvtárba. Kattintson a **címtár és előfizetés-szűrő** a felső menüben, és válassza ki a bérlő tartalmazó könyvtárra. 
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer**.
 
@@ -70,17 +70,17 @@ Az Azure AD B2C szükséges, hogy regisztráljon, és a felhasználók használt
 
 ### <a name="register-the-identityexperienceframework-application"></a>Register the IdentityExperienceFramework application
 
-1. Válasszon **minden szolgáltatás** az Azure portal bal felső sarkában lévő keresése és kiválasztása **alkalmazásregisztrációk**.
-2. Válassza az **Új alkalmazás regisztrálása** elemet.
-3. A **neve**, adja meg `IdentityExperienceFramework`.
-4. A **alkalmazástípus**, válassza a **Web app és az API**.
-5. A **bejelentkezési URL-**, adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, ahol `your-tenant-name` van az Azure AD B2C-bérlői tartomány neve.
-6. Kattintson a **Create** (Létrehozás) gombra. 
-7. Miután elkészült, az alkalmazás azonosítóját, és mentse későbbi használatra.
+1. Válasszon **minden szolgáltatás** az Azure portal bal felső sarkában lévő keresése és kiválasztása **Azure Active Directory**.
+2. Válassza a menüben **alkalmazásregisztrációk (örökölt)**.
+3. Válassza az **Új alkalmazás regisztrálása** elemet.
+4. A **neve**, adja meg `IdentityExperienceFramework`.
+5. A **alkalmazástípus**, válassza a **Web app és az API**.
+6. A **bejelentkezési URL-**, adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, ahol `your-tenant-name` van az Azure AD B2C-bérlői tartomány neve. Most kell használnia az összes URL-címek [b2clogin.com](b2clogin.md).
+7. Kattintson a **Create** (Létrehozás) gombra. Miután elkészült, az alkalmazás azonosítóját, és mentse későbbi használatra.
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Register the ProxyIdentityExperienceFramework application
 
-1. Válassza ki **alkalmazásregisztrációk**, majd válassza ki **új alkalmazásregisztráció**.
+1. A **alkalmazásregisztrációk (örökölt)** válassza **új alkalmazásregisztráció**.
 2. A **neve**, adja meg `ProxyIdentityExperienceFramework`.
 3. A **alkalmazástípus**, válassza a **natív**.
 4. A **átirányítási URI-t**, adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, ahol `yourtenant` van az Azure AD B2C-bérlőben.

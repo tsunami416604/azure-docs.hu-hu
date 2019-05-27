@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 58abe3a3973986ab489456be7958361ad8ab06f4
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 12eea032c37c8d737ae004d622b72536195c4444
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922827"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977570"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Az Azure monitorozási ügynökök 
 A Microsoft Azure több módszert is biztosít a különböző típusú adatok gyűjtésére a Microsoft Windows és az Azure, a helyi adatközpontban vagy egyéb felhőszolgáltatók üzemeltetett Linux rendszerű virtuális gépek. Három különböző típusa érhető el a virtuális gép figyelése ügynökök a következők:
 
 * Az Azure Diagnostics bővítmény
 * Log Analytics-ügynököket a Linux és Windows
-* Függőségi ügynök
+* Dependency Agent
 
 Ez a cikk ahhoz, hogy melyik támogatni fogja az IT service management vagy általános a figyelési követelmények meghatározása őket, és azok képességeinek közötti különbségeket mutatja be.  
 
 ## <a name="azure-diagnostic-extension"></a>Az Azure diagnosztikai bővítmény
-A [Azure Diagnostics bővítmény](../../azure-monitor/platform/diagnostics-extension-overview.md) (más néven a Windows Azure diagnosztikai (WAD) vagy a Linux Azure diagnosztikai (LAD) kiterjesztéssel), amely megadva az Azure Cloud Services általánosan elérhető a 2010-vált, mivel diagnosztikai adatok egyszerű gyűjteménye biztosít a számítási Azure-erőforrások, például egy virtuális Gépet, és továbbra is fennáll az Azure storage-ügynök van. Miután a tároló úgy döntött, hogy az egyik számos elérhető eszköz, például megtekintheti [a Visual Studio Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) és [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
+A [Azure Diagnostics bővítmény](../../azure-monitor/platform/diagnostics-extension-overview.md) (más néven a Windows Azure diagnosztikai (WAD) vagy a Linux Azure diagnosztikai (LAD) kiterjesztéssel), amely megadva az Azure Cloud Services általánosan elérhető a 2010-vált, mivel diagnosztikai adatok egyszerű gyűjteménye biztosít a számítási Azure-erőforrások, például egy virtuális Gépet, és továbbra is fennáll az Azure storage-ügynök van. Miután a tároló úgy dönt, hogy az egyik számos elérhető eszköz, például megtekintheti [a Visual Studio Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) és [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Ha szeretné, gyűjtése:
 
@@ -59,7 +59,7 @@ Speciális monitorozás kell több mint gyűjtenek, metrikák és naplók egy r�
 A Log Analytics-ügynököket kell használni, ha meg szeretné:
 
 * Többféle forrásból, mind az Azure, a más felhőszolgáltatók és a helyszíni erőforrásokhoz történő adatgyűjtést. 
-* Az Azure Monitor figyelési megoldások például valamelyik [-beli virtuális gépek az Azure Monitor](../insights/vminsights-overview.md), [-tárolókhoz az Azure Monitor](../insights/container-insights-overview.md)stb.  
+* Az Azure Monitor, például a figyelési megoldások valamelyikével [-beli virtuális gépek az Azure Monitor](../insights/vminsights-overview.md), [-tárolókhoz az Azure Monitor](../insights/container-insights-overview.md)stb.  
 * Használjon egy más az Azure management szolgáltatás például [az Azure Security Center](../../security-center/security-center-intro.md), [Azure Automation](../../automation/automation-intro.md)stb.
 
 Korábban, a több Azure-szolgáltatások kötegelve is a *Operations Management Suite*, és ennek eredményeképpen a Log Analytics-ügynököket közösen használja többek között az Azure Security Center és Azure Automation szolgáltatásokat.  Ez magában foglalja a kínálnak, továbbítása az Azure-beli virtuális életciklusuk átfogó felügyeleti funkciók teljes készletét.  Néhány példa ennek a következők:
@@ -69,7 +69,7 @@ Korábban, a több Azure-szolgáltatások kötegelve is a *Operations Management
 * Konfigurációs változások követése a [Azure Automation Change Tracking and Inventory](../../automation/change-tracking.md).
 * Azure-szolgáltatások például [Application Insights](https://docs.microsoft.com/azure/application-insights/) és [az Azure Security Center](https://docs.microsoft.com/azure/security-center/), amelyek natív módon tárolja az adatokat közvetlenül a Log Analytics.  
 
-## <a name="dependency-agent"></a>Függőségi ügynök
+## <a name="dependency-agent"></a>Dependency Agent
 A függőségi ügynök fejlesztette ki a Service Map megoldást, amely eredetileg nem célja a Microsoft részeként. [A Service Map](../insights/service-map.md) és [-beli virtuális gépek az Azure Monitor](../insights/vminsights-overview.md) használatához a függőségi ügynököt Windows és Linux rendszerű virtuális gépek és a virtuális futó folyamatok detektált adatok gyűjtése a Log Analytics-ügynök integrálható gép és a külső folyamatok függőségeit. Ez tárolja ezeket az adatokat a Log Analytics-munkaterületen, és megjeleníti a felderített összekapcsolt összetevőket.
 
 Ezeket az ügynököket a virtuális gép figyelése valamilyen kombinációját szükség lehet. Az ügynökök is telepíthető egymás mellett az Azure-bővítmény, azonban a Linux, a Log Analytics-ügynököket *kell* telepíthető telepítési ellenkező esetben az első sikertelen lesz. 

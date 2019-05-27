@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: ade5d55833f1d63a8d70b6eedb3c3e4bdffe590b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c4bb06bd4c75dfeb164341d8cc5084030d3a08a7
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276490"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979306"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
 
-Ez a cikk végigvezeti programozott módon szabályzatok létrehozása és kezelése. A szabályzatdefiníciók különböző szabályokat és hatások kényszerítenek az erőforrások. Kényszerítési gondoskodik arról, hogy az erőforrások maradjon felelnek meg a vállalati szabványoknak és szolgáltatói szerződéseknek.
+Ez a cikk végigvezeti programozott módon szabályzatok létrehozása és kezelése. Azure szabályzatdefiníciók különböző szabályokat és hatások kényszerítenek az erőforrások. Kényszerítési gondoskodik arról, hogy az erőforrások maradjon felelnek meg a vállalati szabványoknak és szolgáltatói szerződéseknek.
 
 Megfelelőségi kapcsolatos információkért lásd: [megfelelőségi adatok](getting-compliance-data.md).
 
@@ -31,13 +31,13 @@ Mielőtt elkezdené, győződjön meg arról, hogy a következő előfeltételek
 
 1. Az Azure PowerShell-modul frissítése a legújabb verzióra. Lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) részletes információkat. A legújabb verzióval kapcsolatos további információkért lásd: [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases).
 
-1. Regisztrálja a Policy Insights erőforrás-szolgáltató ellenőrzése, hogy működik-e az előfizetés az erőforrás-szolgáltató az Azure PowerShell-lel. Erőforrás-szolgáltató regisztrálásához rendelkeznie kell engedéllyel az erőforrás-szolgáltató regisztrálási műveletének futtatása. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
+1. Az Azure PowerShell-lel történő ellenőrzése, hogy működik-e az előfizetés az erőforrás-szolgáltató az Azure Policy Insights erőforrás-szolgáltató regisztrálásához. Erőforrás-szolgáltató regisztrálásához rendelkeznie kell engedéllyel az erőforrás-szolgáltató regisztrálási műveletének futtatása. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
 
    ```azurepowershell-interactive
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
-   Erőforrás-szolgáltatók regisztrálásával és megtekintésével kapcsolatos további információkért lásd: [erőforrás-szolgáltatókat és típusaikat](../../../azure-resource-manager/resource-manager-supported-services.md).
+   Az erőforrás-szolgáltatók regisztrálásával és megtekintésével kapcsolatos további információért tekintse meg az [erőforrás-szolgáltatókat és típusaikat](../../../azure-resource-manager/resource-manager-supported-services.md) ismertető cikket.
 
 1. Ha még nem tette, az Azure CLI telepítése. Megtekintheti a legújabb verzió [Azure CLI telepítése a Windows](/cli/azure/install-azure-cli-windows).
 
@@ -148,7 +148,7 @@ Az alábbi eljárás segítségével létrehozhat egy szabályzatdefiníciót.
 
    Cserélje le az előző {subscriptionId} azonosítójú, az előfizetés vagy {managementGroupId} azonosítójú, a [felügyeleti csoport](../../management-groups/overview.md).
 
-   A lekérdezés szerkezete kapcsolatos további információkért lásd: [Szabályzatdefiníciók – létrehozás vagy frissítés](/rest/api/resources/policydefinitions/createorupdate) és [Szabályzatdefiníciók – létrehozás vagy frissítés: felügyeleti csoport](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   A lekérdezés szerkezete kapcsolatos további információkért lásd: [Azure Szabályzatdefiníciók – létrehozás vagy frissítés](/rest/api/resources/policydefinitions/createorupdate) és [Szabályzatdefiníciók – létrehozás vagy frissítés: felügyeleti csoport](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
 
 A következő eljárással hozhat létre szabályzat-hozzárendelést, és rendelje hozzá a szabályzatdefiníciót az erőforráscsoport szintjén.
 
@@ -230,7 +230,7 @@ Szabályzatdefiníció létrehozásához használja az alábbi eljárást:
    - Előfizetés – `/subscriptions/{subID}`
    - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-A Szabályzatdefiníció azonosítója a következő parancsot a PowerShell használatával kaphat:
+Szabályzatdefiníció azonosítója az Azure PowerShell használatával a következő paranccsal kaphat:
 
 ```azurecli-interactive
 az policy definition show --name 'Audit Storage Accounts with Open Public Networks'
@@ -251,5 +251,5 @@ Tekintse át a parancsok és lekérdezések ebben a cikkben további informáci�
 - [Az Azure REST API-erőforrásokhoz](/rest/api/resources/)
 - [Az Azure PowerShell-modulok](/powershell/module/az.resources/#policies)
 - [A házirend-parancsok az Azure CLI](/cli/azure/policy?view=azure-cli-latest)
-- [A házirend Insights erőforrás-szolgáltató REST API-referencia](/rest/api/policy-insights)
-- [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/overview.md)
+- [Az Azure Policy Insights erőforrás-szolgáltató REST API-referencia](/rest/api/policy-insights)
+- [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/overview.md).

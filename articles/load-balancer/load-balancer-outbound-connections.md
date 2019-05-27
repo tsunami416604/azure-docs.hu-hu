@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: kumud
-ms.openlocfilehash: d5f52829f5895b30afd160cc8ded755332aca5c5
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f9742d14fc14230f2424d005aa6aa8b1db3cece4
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190176"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967733"
 ---
 # <a name="outbound-connections-in-azure"></a>Az Azure kimenő kapcsolatainak
 
@@ -34,7 +34,7 @@ Az Azure forrás hálózati címfordítás (SNAT) használ, ez a függvény vég
 Egyszerre több [kimenő forgatókönyveket](#scenarios). Igény szerint kombinálhatja ezeket a forgatókönyveket. Tekintse át alaposan, hogy értelmezését képességek, korlátozások és minták a-alapú üzemi modellre vonatkoznak és a forgatókönyvet. Tekintse át az útmutató a [ezek a forgatókönyvek kezelése](#snatexhaust).
 
 >[!IMPORTANT] 
->Standard Load Balancer és a Standard nyilvános IP-cím bevezetni új funkciókat vehetnek igénybe, és különböző beállításokat a kimenő kapcsolatot.  Ezek nem azonosak, az alapszintű termékváltozatban.  Kimenő kapcsolat azt szeretné, ha Standard termékváltozatok dolgozik, ha explicit módon definiálnia kell azt a Standard nyilvános IP-címeket vagy nyilvános terheléselosztót.  Ide tartoznak a kimenő kapcsolatok használata esetén és a belső Standard Load Balancer létrehozása.  Azt javasoljuk, hogy a nyilvános Standard Load Balancer mindig használja a kimenő szabályok.  [3. forgatókönyv](#defaultsnat) nem érhető el a Standard Termékváltozat.  Ez azt jelenti, egy belső Standard Load Balancer használatakor, kell lépésekkel hozhat létre a kimenő kapcsolatot a virtuális gépek, a háttérkészletben, ha a kimenő kapcsolat van szükség.  A környezetben a kimenő hálózati kapcsolat, egy különálló virtuális Géppel, minden a virtuális gép egy rendelkezésre állási csoportban, a VMSS szereplő összes példányt csoportként viselkedése. Ez azt jelenti, ha egyetlen virtuális Gépet egy rendelkezésre állási csoportban társítva a Standard Termékváltozat a rendelkezésre állási csoportban lévő összes Virtuálisgép-példány most tekint ugyanazok a szabályok által azok a Standard Termékváltozat, még akkor is, ha egy egyéni példány nem közvetlenül társítva hozzá.  Gondosan tekintse át az általános fogalmak megértéséhez, tekintse át a teljes dokumentum [Standard Load Balancer](load-balancer-standard-overview.md) SKU-k, és tekintse át közötti különbségekről [kimenő szabályok](load-balancer-outbound-rules-overview.md).  Kimenő szabályok használatával teszi lehetővé szabályozásához kimenő kapcsolat minden aspektusát.
+>Standard Load Balancer és a Standard nyilvános IP-cím bevezetni új funkciókat vehetnek igénybe, és különböző beállításokat a kimenő kapcsolatot.  Ezek nem azonosak, az alapszintű termékváltozatban.  Kimenő kapcsolat azt szeretné, ha Standard termékváltozatok dolgozik, ha explicit módon definiálnia kell azt a Standard nyilvános IP-címeket vagy nyilvános terheléselosztót.  Ide tartoznak a kimenő kapcsolatok létrehozása, ha egy belső Standard Load Balancer használatával.  Azt javasoljuk, hogy a nyilvános Standard Load Balancer mindig használja a kimenő szabályok.  [3. forgatókönyv](#defaultsnat) nem érhető el a Standard Termékváltozat.  Ez azt jelenti, egy belső Standard Load Balancer használatakor, kell lépésekkel hozhat létre a kimenő kapcsolatot a virtuális gépek, a háttérkészletben, ha a kimenő kapcsolat van szükség.  A környezetben a kimenő hálózati kapcsolat, egy különálló virtuális Géppel, minden a virtuális gép egy rendelkezésre állási csoportban, a VMSS szereplő összes példányt csoportként viselkedése. Ez azt jelenti, ha egyetlen virtuális Gépet egy rendelkezésre állási csoportban társítva a Standard Termékváltozat a rendelkezésre állási csoportban lévő összes Virtuálisgép-példány most tekint ugyanazok a szabályok által azok a Standard Termékváltozat, még akkor is, ha egy egyéni példány nem közvetlenül társítva hozzá.  Gondosan tekintse át az általános fogalmak megértéséhez, tekintse át a teljes dokumentum [Standard Load Balancer](load-balancer-standard-overview.md) SKU-k, és tekintse át közötti különbségekről [kimenő szabályok](load-balancer-outbound-rules-overview.md).  Kimenő szabályok használatával teszi lehetővé szabályozásához kimenő kapcsolat minden aspektusát.
 
 ## <a name="scenarios"></a>Forgatókönyv áttekintése
 

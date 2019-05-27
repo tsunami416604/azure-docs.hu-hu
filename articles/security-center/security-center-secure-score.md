@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
-ms.author: monhaber
-ms.openlocfilehash: 22791fc43ff17d56e1f51e7f7737a10109f47c59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-mohabe
+ms.openlocfilehash: c23c9a2b9af1947c397b96431ae3c3bcd0e30aaa
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60906227"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968300"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Az Azure Security Centerben a biztonságos pontszám javítása
 
@@ -43,7 +43,7 @@ A teljes biztonságos pontszám megtekintése:
 
 1. Az Azure irányítópultján kattintson **a Security Center** majd **biztonságos pontszám**.
 2. Tetején látható biztonságos pontozása emeli ki:
-   - A **teljes biztonságos pontszám** jelenti. a szabályzatok kiválasztott előfizetésenként kiszolgálónként pontszám
+   - A **teljes biztonsági pontszám** a szabályzatonkénti és kiválasztott előfizetésenkénti pontszámot jelöli.
    - **Pontszám biztonságos kategória szerint** azt mutatja be, mely erőforrásokat a legtöbb figyelmet igénylő
    - **Leggyakoribb ajánlásokat, biztonságos pontszám hatás** biztosít, amely a biztonságos pontszám javulni fog a legtöbb, ha azok végrehajtása a javaslatok listája.
  
@@ -52,7 +52,7 @@ A teljes biztonságos pontszám megtekintése:
 3. Az alábbi táblázat az egyes láthatja minden egyes előfizetés és a teljes biztonságos pontszámot.
 
    > [!NOTE]
-   > A biztonságos pontszám előfizetések összegét nem egyenlő a teljes biztonságos pontszámot. A biztonságos pontszám, a kifogástalan állapotú erőforrások és a teljes erőforrások száma javaslat, nem biztonságos pontszámokat több előfizetéshez összege aránya alapján. 
+   > Az egyes előfizetések biztonsági pontszámának összege nem egyenlő a teljes biztonsági pontszámmal. A biztonsági pontszám a kifogástalan állapotú erőforrások és a teljes erőforrások javaslatonkénti arányán alapuló számítás, nem pedig az előfizetések biztonsági pontszámainak összege. 
    >
 4. Kattintson a **ajánlás megtekintése** , tekintse meg ezt az előfizetést, amely akkor javíthatja a biztonságos pontszám javítására vonatkozó javaslatok láthatók.
 4. A javaslatok listája, láthatja, hogy az egyes javaslatok van egy oszlop, amely jelöli az **pontszám hatás biztonságos**. A szám jelöli, mennyi a teljes biztonságos pontszám javítja, ha követi az ajánlások. Például az a képernyő, ha az alábbi, **tároló biztonsági konfigurációk a biztonsági rések**, a biztonságos pontszám 35 pontok nő.
@@ -65,9 +65,9 @@ A teljes biztonságos pontszám megtekintése:
 
 Emellett egyes biztonságos pontszámok megtekintéséhez annak belül az egyes javaslatok panel.  
 
-A **javaslat biztonságos pontszám** a számítás, a kifogástalan állapotú erőforrások és az összes erőforrás aránya alapján. Kifogástalan állapotú erőforrások száma megegyezik az erőforrások teljes száma, ha az ajánlott érték az 50 maximális biztonságos pontszámot kap. Próbálja a biztonságos pontszám közelebb a maximális pontszámot, javítsa ki a nem megfelelő állapotú erőforrások a javaslatok követésével.
+A **javaslat biztonsági pontszáma** a kifogástalan állapotú erőforrások és a teljes erőforrások arányán alapuló számítás. Ha a kifogástalan állapotú erőforrások száma megegyezik az erőforrások teljes számával, a javaslat az 50 pontot, a maximális biztonsági pontszámot kapja. A biztonsági pontszám maximális pontszámhoz való közelítése érdekében javítsa ki a sérült erőforrásokat az alábbi javaslatok szerint.
 
-A **javaslatok hatás** lehetővé teszi, hogy tudja, milyen mértékben javítja a a biztonságos pontszám Ha alkalmazza a javasolt következő lépésre. Például, ha a biztonságos pontszám: 42 és a **javaslatok hatás** + 3, akkor a pontszám 45 válik a javaslat lépéseinek végrehajtása javítása.
+A **Javaslat hatása** megmutatja, milyen mértékben javítja a javaslat lépéseinek alkalmazása a biztonsági pontszámot. Például ha a biztonsági pontszám 42, és a **Javaslat hatása** +3, akkor a pontszám a javaslat lépéseinek végrehajtása után 45-re emelkedik.
 
 A javaslat azt mutatja, hogy milyen fenyegetéseket a számítási feladat közvetlenül csatlakozik, ha a rendszer nem hajtja végre a hibaelhárítási lépéseket.
 

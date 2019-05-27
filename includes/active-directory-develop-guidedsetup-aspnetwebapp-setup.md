@@ -15,11 +15,11 @@ ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: dcfc341b89a3cfebcb5538f88481fd2fbb2936a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298189"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121825"
 ---
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
@@ -146,6 +146,6 @@ Az alábbi lépések segítségével hozzon létre egy OWIN indítási osztályt
 > Beállítás `ValidateIssuer = false` van ebben a rövid útmutatóban egyszerűsítését. Valós alkalmazások érvényesítenie kell a kibocsátó megtudhatja, hogyan valósítható meg mintáiban találhat.
 
 <!--start-collapse-->
-> ### <a name="more-information"></a>További információ
+> ### <a name="more-information"></a>További információk
 > Az *OpenIDConnectAuthenticationOptions* alatt megadott paraméterek koordinátaként szolgálnak az alkalmazás számára az Azure AD-vel való kommunikációhoz. Az OpenID Connect közbenső szoftvert használ cookie-kat a háttérben, mert azt is be kell állítania hitelesítési cookie-k a fent látható kóddal. A *ValidateIssuer* értéke arra utasítja az OpenIdConnectet, hogy ne korlátozza a hozzáférést egy adott szervezetre.
 <!--end-collapse-->

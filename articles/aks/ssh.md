@@ -5,18 +5,18 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: d421fad5f574b0d10b24453aca01adf574f493e8
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: a85c39fbfbf629e6ba9e668d55dd905c1ce0800c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407701"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956351"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Csatlakozzon SSH-n keresztül az Azure Kubernetes Service (AKS) karbantartási és hibaelhárítási fürtcsomópontok
 
-Az Azure Kubernetes Service (AKS)-fürt életciklusa során szükség lehet egy AKS-csomópont eléréséhez. Ez a hozzáférés karbantartási, a naplógyűjtés vagy egyéb hibaelhárítási művelet lehet. Az AKS-csomópontok Linux rendszerű virtuális gépekhez, így elérheti azokat SSH-val. Biztonsági okokból az AKS-csomópontok nem jelennek meg a az interneten.
+Az Azure Kubernetes Service (AKS)-fürt életciklusa során szükség lehet egy AKS-csomópont eléréséhez. Ez a hozzáférés karbantartási, a naplógyűjtés vagy egyéb hibaelhárítási művelet lehet. AKS-csomópontok ssh-t, beleértve a Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben) használatával is elérheti. Emellett [kapcsolódni a távoli asztali protokoll (RDP) kapcsolatokat használt Windows Server-csomópontok][aks-windows-rdp]. Biztonsági okokból az AKS-csomópontok nem jelennek meg a az interneten.
 
 Ez a cikk bemutatja, hogyan hozhat létre az SSH-kapcsolatot egy AKS-csomópont privát IP-címeik használatával.
 
@@ -24,13 +24,16 @@ Ez a cikk bemutatja, hogyan hozhat létre az SSH-kapcsolatot egy AKS-csomópont 
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
-Emellett az Azure CLI 2.0.59 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
+Emellett az Azure CLI 2.0.64 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
 ## <a name="add-your-public-ssh-key"></a>A nyilvános SSH-kulcs hozzáadása
 
-Alapértelmezés szerint az SSH-kulcsok egy AKS-fürt létrehozásakor jönnek létre. Ha nem adta meg a saját SSH-kulcsokat, az AKS-fürt létrehozása során, a nyilvános SSH-kulcsok hozzáadása az AKS-csomópontok.
+Alapértelmezés szerint az SSH-kulcsok kapott, vagy a generált, akkor hozzá csomópontokra, amikor az AKS-fürt létrehozása. Adja meg a különböző, mint az AKS-fürt létrehozásakor használt SSH-kulcsokat kell, ha a nyilvános SSH-kulcsot a Linux-AKS-csomópontok hozzáadása. Szükség esetén is létrehozhat egy SSH kulcs [macOS vagy Linux-alapú] [ ssh-nix] vagy [Windows][ssh-windows]. A PuTTY általános használatakor a kulcspár létrehozása, mentse a kulcspár egy OpenSSH formátumban ahelyett, hogy az alapértelmezett PuTTy titkos kulcs formátuma (.ppk fájlt).
 
-Az SSH-kulcs ad hozzá egy AKS-csomópont, hajtsa végre az alábbi lépéseket:
+> [!NOTE]
+> SSH-kulcsokat is jelenleg csak lehet hozzáadni az Azure parancssori felületével Linux-csomópontokat. Ha a Windows Server-csomópontok használata esetén az AKS-fürt létrehozásakor megadott SSH-kulcsok használata, és ugorjon a [beszerzése az AKS címe](#get-the-aks-node-address). Másik lehetőségként [kapcsolódni a távoli asztali protokoll (RDP) kapcsolatokat használt Windows Server-csomópontok][aks-windows-rdp].
+
+Adjon hozzá az SSH-kulcsot a Linux AKS csomóponthoz, hajtsa végre az alábbi lépéseket:
 
 1. Az erőforráscsoport nevét az AKS-fürt használatával erőforrások beolvasása [az aks show][az-aks-show]. Adja meg a saját alapvető erőforrás-csoport és az AKS-fürt nevét:
 
@@ -64,7 +67,12 @@ Az SSH-kulcs ad hozzá egy AKS-csomópont, hajtsa végre az alábbi lépéseket:
 
 ## <a name="get-the-aks-node-address"></a>Az AKS címe beolvasása
 
-Az AKS-csomópontok nyilvánosan nem jelennek meg a az interneten. Az AKS-csomópontok ssh-n használhatja a magánhálózati IP-címet. A következő lépésben létrehozott segítő podot az AKS-fürt, amely lehetővé teszi az SSH a csomópont a magánhálózati IP-címe.
+Az AKS-csomópontok nyilvánosan nem jelennek meg a az interneten. Az AKS-csomópontok ssh-n használhatja a magánhálózati IP-címet. A következő lépésben létrehozott segítő podot az AKS-fürt, amely lehetővé teszi az SSH a csomópont a magánhálózati IP-címe. A lépéseket a az AKS-csomópontok a magánhálózati IP-címe eltér futtatása AKS-fürt típusa alapján:
+
+* A legtöbb AKS-fürtök esetén kövesse a lépéseket a [IP-címének lekéréséhez rendszeres AKS-fürtök](#regular-aks-clusters).
+* Az aks-ben, amely használhatja a virtuális gép méretezési csoportokat, például több csomópontkészletek vagy Windows Server-tároló támogatása, minden előzetes verziójú funkciók használatakor [kövesse a lépéseket, a virtuális gép scale set-alapú AKS fürtök](#virtual-machine-scale-set-based-aks-clusters).
+
+### <a name="regular-aks-clusters"></a>Rendszeres AKS-fürtök
 
 A magánhálózati IP-címe egy AKS fürt csomópont használatával megtekintheti a [az vm list-ip-addresses] [ az-vm-list-ip-addresses] parancsot. Adja meg a saját AKS-fürt erőforrás csoport nevét egy korábbi kapott [az-aks-show] [ az-aks-show] . lépés:
 
@@ -80,6 +88,26 @@ VirtualMachine            PrivateIPAddresses
 aks-nodepool1-79590246-0  10.240.0.4
 ```
 
+### <a name="virtual-machine-scale-set-based-aks-clusters"></a>Virtual machine scale set-alapú AKS fürtök
+
+A belső IP-cím használatával csomópont listában a [kubectl get parancs][kubectl-get]:
+
+```console
+kubectl get nodes -o wide
+```
+
+Az alábbi példa kimenetében látható a fürtöt, a Windows Server-csomópont a belső IP-címek az összes csomópont.
+
+```console
+$ kubectl get nodes -o wide
+
+NAME                                STATUS   ROLES   AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                    KERNEL-VERSION      CONTAINER-RUNTIME
+aks-nodepool1-42485177-vmss000000   Ready    agent   18h   v1.12.7   10.240.0.4    <none>        Ubuntu 16.04.6 LTS          4.15.0-1040-azure   docker://3.0.4
+aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67   <none>        Windows Server Datacenter   10.0.17763.437
+```
+
+Jegyezze fel a csomópont hibaelhárítása kívánt belső IP-címe. Ez a cím egy későbbi lépésben fogja használni.
+
 ## <a name="create-the-ssh-connection"></a>Az SSH-kapcsolat létrehozása
 
 Hozzon létre egy SSH-kapcsolatot egy AKS-csomópontra, a futtatásához az AKS-fürt segítő podot. A segítő pod biztosít SSH-hozzáférés a fürthöz, és ezután további SSH-csomópont elérése. Hozzon létre, és ez segítő pod használja, hajtsa végre az alábbi lépéseket:
@@ -89,6 +117,11 @@ Hozzon létre egy SSH-kapcsolatot egy AKS-csomópontra, a futtatásához az AKS-
     ```console
     kubectl run -it --rm aks-ssh --image=debian
     ```
+
+    > [!TIP]
+    > Használatakor a Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben), egy csomópont-választó hozzáadása a egy Linux-csomóponton a Debian tároló ütemezni a következő parancsot:
+    >
+    > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
 1. Az alap Debian rendszerképet az SSH-összetevők nem tartalmazza. Után a terminál-munkamenetet a tárolóhoz van csatlakoztatva, egy SSH-ügyfél használatával telepítse `apt-get` módon:
 
@@ -163,3 +196,6 @@ Ha további hibaelhárítási adatokat van szüksége, akkor az [kubelet-naplók
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[aks-windows-rdp]: rdp.md
+[ssh-nix]: ../virtual-machines/linux/mac-create-ssh-keys.md
+[ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md

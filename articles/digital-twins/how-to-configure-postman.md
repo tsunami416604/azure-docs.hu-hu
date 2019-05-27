@@ -7,13 +7,13 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: adgera
-ms.openlocfilehash: 49b073952b0923b940204b19680dcc9a1ffa44b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-adgera
+ms.openlocfilehash: 797dfc44b9897920f9fd74346ee01e4b157a4ce8
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926146"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967780"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Az Azure digitális Twins Postman konfigurálása
 
@@ -73,8 +73,8 @@ Ezután állítsa be, és a egy Azure Active Directory-jogkivonat beszerzése Po
     | Engedélyezési típus | `Implicit` |
     | Visszahívási URL | `https://www.getpostman.com/oauth2/callback` |
     | Hitelesítési URL-cím | Használja a **engedélyezési URL-címet** a 2. lépés |
-    | Ügyfél-azonosító | Használja a **Alkalmazásazonosító** létrehozott vagy az előző szakaszban azt egy megváltozott célra az Azure Active Directory-alkalmazás |
-    | Hatókör | Hagyja üresen |
+    | Ügyfélazonosító | Használja a **Alkalmazásazonosító** létrehozott vagy az előző szakaszban azt egy megváltozott célra az Azure Active Directory-alkalmazás |
+    | Scope | Hagyja üresen |
     | Állapot | Hagyja üresen |
     | Ügyfél-hitelesítés | `Send as Basic Auth header` |
 

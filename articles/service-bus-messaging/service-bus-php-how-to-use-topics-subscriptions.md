@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 1ce9c5ddb08f3e81a0f0050048a8afef24e4c625
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0ae734ac8814cc605ce03756fde5545c77c837d
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203709"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992068"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Service Bus-üzenettémák és előfizetések használata PHP
 
@@ -343,6 +343,9 @@ Használatával a `deleteSubscription` metódus, egymástól függetlenül is t�
 ```php
 $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 ```
+
+> [!NOTE]
+> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
 
 ## <a name="next-steps"></a>További lépések
 További információkért lásd: [üzenetsorok, témakörök és előfizetések][Queues, topics, and subscriptions].

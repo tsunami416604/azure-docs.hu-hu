@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
 ms.openlocfilehash: 6fbdee71ab1123c258a5191a78e38f51eb41cbab
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433229"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66152936"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Hozzon létre egy eseményindítót, amely futtatja a folyamatot egy átfedésmentes ablak
 Ez a cikk létrehozása, indítása és monitorozása az átfedésmentes ablakos eseményindító lépéseit ismerteti. Eseményindítók és a támogatott típusok kapcsolatos általános információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
@@ -74,18 +74,18 @@ Az átfedésmentes ablakos eseményindítók olyan eseményindítók, amelyek re
 
 Az alábbi táblázat a fő JSON-elemek, amelyek kapcsolatos ismétlődés és ütemezés átfedésmentes ablakos eseményindító magas szintű áttekintést nyújt:
 
-| JSON-elem | Leírás | Typo | Megengedett értékek | Szükséges |
+| JSON-elem | Leírás | Típus | Megengedett értékek | Szükséges |
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | A trigger típusa. A típus a rögzített érték "TumblingWindowTrigger." | String | "TumblingWindowTrigger" | Igen |
 | **runtimeState** | Az eseményindító-futtatás ideje aktuális állapotát.<br/>**Megjegyzés**: Ez az elem \<readOnly >. | String | "Elindítva", "leállított," "Letiltva" | Igen |
 | **frequency** | Az eseményindító ismétlődésének gyakorisági gyakoriság egysége (percek vagy órák) jelölő karakterláncot. Ha a **startTime** dátum értékek a következők részletesebben, mint a **gyakorisága** érték, a **startTime** dátumok számítanak, amikor számítja ki az ablak határok. Például ha a **gyakorisága** értéke óránként és a **startTime** értéke 2017-09-01T10:10:10Z, az első ablak van (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | String | "minute", "hour"  | Igen |
-| **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Például ha a **időköz** 3 és a **gyakorisága** "hour", akkor az eseményindító 3 óránként ismétlődik. | Egész szám | Pozitív egész szám. | Igen |
+| **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Például ha a **időköz** 3 és a **gyakorisága** "hour", akkor az eseményindító 3 óránként ismétlődik. | Integer | Pozitív egész szám. | Igen |
 | **startTime**| Az első előfordulás, amely lehet múltbeli. Az első eseményindító időköz (**startTime**, **startTime** + **időköz**). | DateTime | Egy dátum/idő érték. | Igen |
 | **endTime**| Az utolsó előfordulás, amely lehet múltbeli. | DateTime | Egy dátum/idő érték. | Igen |
-| **delay** | Az adatfeldolgozási időszak kezdete késleltetés időtartama. A folyamat futtatása után a várt végrehajtási idő plusz a elindult **késleltetés**. A **késleltetés** határozza meg, mennyi ideig vár, a trigger új futtatását elindítása előtt az esedékes időn túli. A **késleltetés** nem módosítható az ablak **startTime**. Ha például egy **késleltetés** 00:10:00 érték azt jelenti, egy 10 perces késleltetést. | Időtartomány<br/>(ÓÓ)  | Egy timespan értékre, ahol az alapértelmezett beállítás 00:00:00. | Nem |
-| **maxConcurrency** | A windows-készen áll a kiváltó egyidejű eseményindító-futtatások száma. Például a Háttérkitöltés óránként fut 24 windows tegnap eredményez. Ha **maxConcurrency** = 10, az eseményindító események csak az első 10 windows elindulása esetén (00:00-01:00 - 09:00-10:00). Az első 10 aktivált folyamatfuttatást befejezése után, az eseményindító-futtatások vannak aktivált a következő 10 Windows (10:00 – 11:00 – 19:00-20:00). Ebben a példában a folytatása **maxConcurrency** = 10, készen áll, nincsenek 10 teljes folyamatfuttatások a windows 10 esetén. Ha csak 1 ablak készen áll, nincs csak 1 folyamatfuttatás. | Egész szám | Egy egész számot 1 és 50 között. | Igen |
-| **retryPolicy: Count** | A folyamat futásának előtti újrapróbálkozások száma "Nem sikerült." van megjelölve.  | Egész szám | Egy egész számot, ahol az alapértelmezett érték a 0 (nincs újrapróbálkozás). | Nem |
-| **retryPolicy: intervalInSeconds** | A másodpercben megadott újrapróbálkozási kísérletek közötti késleltetést. | Egész szám | A másodperc, ahol az alapértelmezett beállítás 30 száma. | Nem |
+| **delay** | Az adatfeldolgozási időszak kezdete késleltetés időtartama. A folyamat futtatása után a várt végrehajtási idő plusz a elindult **késleltetés**. A **késleltetés** határozza meg, mennyi ideig vár, a trigger új futtatását elindítása előtt az esedékes időn túli. A **késleltetés** nem módosítható az ablak **startTime**. Ha például egy **késleltetés** 00:10:00 érték azt jelenti, egy 10 perces késleltetést. | Timespan<br/>(ÓÓ)  | Egy timespan értékre, ahol az alapértelmezett beállítás 00:00:00. | Nem |
+| **maxConcurrency** | A windows-készen áll a kiváltó egyidejű eseményindító-futtatások száma. Például a Háttérkitöltés óránként fut 24 windows tegnap eredményez. Ha **maxConcurrency** = 10, az eseményindító események csak az első 10 windows elindulása esetén (00:00-01:00 - 09:00-10:00). Az első 10 aktivált folyamatfuttatást befejezése után, az eseményindító-futtatások vannak aktivált a következő 10 Windows (10:00 – 11:00 – 19:00-20:00). Ebben a példában a folytatása **maxConcurrency** = 10, készen áll, nincsenek 10 teljes folyamatfuttatások a windows 10 esetén. Ha csak 1 ablak készen áll, nincs csak 1 folyamatfuttatás. | Integer | Egy egész számot 1 és 50 között. | Igen |
+| **retryPolicy: Száma** | A folyamat futásának előtti újrapróbálkozások száma "Nem sikerült." van megjelölve.  | Integer | Egy egész számot, ahol az alapértelmezett érték a 0 (nincs újrapróbálkozás). | Nem |
+| **retryPolicy: intervalInSeconds** | A másodpercben megadott újrapróbálkozási kísérletek közötti késleltetést. | Integer | A másodperc, ahol az alapértelmezett beállítás 30 száma. | Nem |
 
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart és WindowEnd rendszerváltozók
 

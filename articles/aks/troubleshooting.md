@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: d1c1ed7388ff55e4f17559742054cea973f65ba7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f0b0ff3ff4ac742a7e850798c736eb31098f66e8
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192277"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966382"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -118,3 +118,15 @@ Az Azure-platform és az AKS által megvalósított vonatkozó elnevezési korl�
 
 * Az AKS *MC_* erőforráscsoport-név egyesíti az erőforráscsoport nevét és az erőforrás neve. Automatikusan létrehozott szintaxisát `MC_resourceGroupName_resourceName_AzureRegion` nem lehet nagyobb, mint 80 karakter. Szükség esetén csökkentse a hosszát az erőforráscsoport neve vagy az AKS-fürt nevét.
 * A *dnsPrefix* kell kezdődnie és végződnie számokat. Érvényes karakterek:, számokat és kötőjelet (-). A *dnsPrefix* nem tartalmazhat különleges karaktereket, például egy pontot (.).
+
+## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Hibák kapok, létrehozása, frissítése, méretezhető, törölje vagy fürt, amely a művelet nem engedélyezett, mert egy másik művelet van folyamatban lévő frissítése közben.
+
+*A hibaelhárítási segítséget aka.ms/aks-folyamatban-művelet van irányítva.*
+
+Fürtműveletek korlátozva, amikor egy korábbi művelet még folyamatban van. A fürt állapotának részletes leírását lekéréséhez használja a `az aks show -g myResourceGroup -n myAKSCluster -o table` parancsot. A saját erőforráscsoport és az AKS-fürt nevét használja, szükség szerint.
+
+A kimenet a fürt állapotának alapján:
+
+* Ha a fürt bármely kiépítési állapotban lévő más, *sikeres* vagy *sikertelen*, várja meg, amíg a művelet (*frissítése / frissítése / létrehozásához / méretezés / törlése /áttelepítése*) végződik. Az előző művelet befejezése után próbálja meg újra a legújabb fürtművelet.
+
+* Ha a fürt rendelkezik a sikertelen frissítés, hajtsa végre a lépéseket követve [fogadása a hibákat, a fürt hibás állapotban van és frissítésével vagy a skálázás nem fog működni addig, amíg azt rögzített](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).

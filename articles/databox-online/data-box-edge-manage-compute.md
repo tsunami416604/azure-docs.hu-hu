@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: a90475cfd1d166b8fae1c2b872cbbb9d48b50392
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785815"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953122"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Az Azure Data Box Edge számítások kezelése
 
@@ -129,24 +129,6 @@ Az alábbi lépéseket az eszköz számára a hozzáférési kulcsok szinkroniz�
 
 3. A szinkronizálást követően zárja be a párbeszédpanelt.
 
-## <a name="enable-a-network-interface-for-compute"></a>Egy hálózati adapter számítási engedélyezése
-
-Szükség lehet a Data Box peremhálózati eszközön futó modul eléréséhez. A modul el kívülről, szüksége lesz egy IP-cím hozzárendelése egy hálózati adapter az eszközön. Ezek kezelheti számítási beállításokat a helyi webes felületén.
-
-Az alábbi lépéseket a helyi webes felületén számítási beállítások konfigurálása.
-
-1. A helyi webes felhasználói felületen váltson **Configuration > Számítási beállítások**.  
-
-2. **Engedélyezése** a hálózati adapter, amelyet szeretne csatlakozni a számítási modulokat az eszközön. 
-
-    - Ha statikus IP-címeket használ, adja meg a hálózati adapter IP-címet.
-    - Ha a DHCP használatával, majd az IP-címek lesz automatikusan hozzárendelve.
-
-3. Válassza ki **alkalmaz** a alkalmazni a beállításokat.
-
-    ![Compute-beállítások engedélyezése](media/data-box-edge-manage-compute/compute-settings-1.png)
-
-
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [kezelheti a felhasználókat az Azure Portalon keresztül](data-box-edge-manage-users.md).
+- Ismerje meg, hogyan [kezelése peremhálózati számítási Azure-portálon hálózati](data-box-edge-extend-compute-access-modules.md).

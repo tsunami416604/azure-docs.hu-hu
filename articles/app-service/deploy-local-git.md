@@ -15,11 +15,11 @@ ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405028"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65956045"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
@@ -158,21 +158,21 @@ Az alábbiakban gyakori hibák vagy problémák az Azure App Service-alkalmazás
 
 **Ok**: Ez a hiba akkor fordulhat elő, ha az alkalmazás működése nem áll.
 
-**Megoldás**: Indítsa el az alkalmazást az Azure Portalon. Git-telepítés nem érhető el, ha a webalkalmazás leállt.
+**Feloldási**: Indítsa el az alkalmazást az Azure Portalon. Git-telepítés nem érhető el, ha a webalkalmazás leállt.
 
 ---
 **Jelenség**: `Couldn't resolve host 'hostname'`
 
 **Ok**: Ez a hiba akkor fordulhat elő, ha a megadott létrehozásakor az "azure" távoli címadatok helytelen volt.
 
-**Megoldás**: Használja a `git remote -v` paranccsal listát készíthet az összes távoli, és a társított URL-címe. Győződjön meg arról, hogy helyesen szerepel-e az "azure" távoli URL-CÍMÉT. Ha szükséges, távolítsa el, és hozza létre újból a távoli, a helyes URL-cím használatával.
+**Feloldási**: Használja a `git remote -v` paranccsal listát készíthet az összes távoli, és a társított URL-címe. Győződjön meg arról, hogy helyesen szerepel-e az "azure" távoli URL-CÍMÉT. Ha szükséges, távolítsa el, és hozza létre újból a távoli, a helyes URL-cím használatával.
 
 ---
 **Jelenség**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
 
 **Ok**: Ez a hiba akkor fordulhat elő, ha nem ad meg egy ágat során `git push`, vagy ha nem állított be a `push.default` értékét `.gitconfig`.
 
-**Megoldás**: Futtatás `git push` újra, adja meg a master ágról. Példa:
+**Feloldási**: Futtatás `git push` újra, adja meg a master ágról. Példa:
 
 ```bash
 git push azure master
@@ -183,7 +183,7 @@ git push azure master
 
 **Ok**: Ez a hiba akkor fordulhat elő, ha megpróbálja a főadatbázison kívül egyik ágára való leküldés az "Azure" a távoli mappához küldéssel.
 
-**Megoldás**: Futtatás `git push` újra, adja meg a master ágról. Példa:
+**Feloldási**: Futtatás `git push` újra, adja meg a master ágról. Példa:
 
 ```bash
 git push azure master
@@ -194,7 +194,7 @@ git push azure master
 
 **Ok**: Ez a hiba akkor fordulhat elő, ha megpróbál egy nagy git-tárház leküldéses HTTPS-kapcsolaton keresztül.
 
-**Megoldás**: A helyi gépen, hogy a postBuffer nagyobb a git-konfiguráció módosítása
+**Feloldási**: A helyi gépen, hogy a postBuffer nagyobb a git-konfiguráció módosítása
 
 ```bash
 git config --global http.postBuffer 524288000
@@ -205,7 +205,7 @@ git config --global http.postBuffer 524288000
 
 **Ok**: Ez a hiba akkor fordulhat elő, ha, a Node.js-alkalmazás üzembe helyezése egy _package.json_ fájlt, amely meghatározza a további szükséges modulokat.
 
-**Megoldás**: A(z) "npm ERR!' a további üzeneteket Ez a hiba előtt be kell jelentkeznie, és a hibával kapcsolatban további környezet tud biztosítani. Az alábbiakban néhány ismert oka ezt a hibát, és a megfelelő "npm ERR!" üzenet:
+**Feloldási**: A(z) "npm ERR!' a további üzeneteket Ez a hiba előtt be kell jelentkeznie, és a hibával kapcsolatban további környezet tud biztosítani. Az alábbiakban néhány ismert oka ezt a hibát, és a megfelelő "npm ERR!" üzenet:
 
 * **Helytelen formátumú package.json fájl**: npm hiba! Nem lehetett olvasni a függőségek.
 * **Natív modul, hogy egy nem bináris terjesztési Windows**:

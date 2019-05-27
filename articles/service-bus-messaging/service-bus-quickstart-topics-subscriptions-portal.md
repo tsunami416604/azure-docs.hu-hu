@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: spelluru
-ms.openlocfilehash: e943dbff71fdbd98773587c8ac5a62dd081b49a2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a392f8b11a7ab1ad72f4da289c54e34b022f1ea6
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698866"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990317"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Gyors útmutató: A témakör előfizetési és a egy Service Bus-témakör létrehozása az Azure portal használatával
 Ebben a rövid útmutatóban használatával az Azure Portalon hozzon létre egy Service Bus-témakörbe, és hozzon létre előfizetéseket az adott üzenettémakörhöz. 
@@ -31,7 +31,8 @@ Service Bus-üzenettémák és előfizetések lehetővé teszi nagy mennyiségű
 
 [!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
-
+> [!NOTE]
+> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
 
 ## <a name="next-steps"></a>További lépések
 Megtudhatja, hogyan üzenetek küldése egy üzenettémakörbe, és a egy előfizetés útján üzeneteket kapni, tekintse meg a következő cikket: válassza ki a programozási nyelvet a tartalomjegyzékben. 

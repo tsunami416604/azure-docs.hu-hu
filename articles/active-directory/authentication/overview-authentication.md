@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38bc2f138a8e56fc56b48ccdaf0636a93138f95d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2f53243e49cc961f50ef09cf43a7ed174a82a9c
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60413992"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65997265"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>Milyen hitelesítési módszerek érhetők el?
 
@@ -50,6 +50,10 @@ Az új jelszó önkiszolgáló kérése a következőkből áll:
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. A rendszergazda által engedélyezett hitelesítési módszerek használatával az Azure MFA segíti az adatok és alkalmazások védelmét az illetéktelen hozzáféréssel szemben, miközben lehetővé teszi az igényeknek megfelelő, egyszerű bejelentkezési folyamat használatát.
+
+## <a name="license-requirements"></a>Licenckövetelmények
+
+[!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>További lépések
 

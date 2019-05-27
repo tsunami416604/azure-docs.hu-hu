@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 892b9bc63f9f2d9abc7108587a7bf929473e4648
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3acaf86123f2cab871bc2f99cc873a73015875e2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779434"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989846"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -30,6 +30,24 @@ Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismer
 ### <a name="azure-machine-learning-sdk-for-python-v1039"></a>Az Azure Machine Learning SDK for Python v1.0.39
 + **Módosítások**
   + Futtatási konfigurációs auto_prepare_environment beállítás elavulttá válik, az automatikus előkészítése az alapértelmezett váljon.
+
+## <a name="2019-05-08"></a>2019-05-08
+
+### <a name="azure-machine-learning-data-prep-sdk-v113"></a>Az Azure Machine Learning adat-előkészítési SDK v1.1.3
+
++ **Új funkciók**
+  + Támogatás hozzáadva egy PostgresSQL adatbázist, vagy read_postgresql hívása, vagy egy adattárolója használatával olvasni.
+    + A gyakorlati példa látható:
+      + [Adatok Adatbetöltési notebook](https://aka.ms/aml-data-prep-ingestion-nb)
+      + [Adattároló-jegyzetfüzet](https://aka.ms/aml-data-prep-datastore-nb)
+
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + Oszlop típusának átalakítása fix problémái:
+  + Most már megfelelően alakítja át egy olyan logikai vagy numerikus oszlop egy logikai típusú oszlop.
+  + Most nem sikertelen megkísérlésekor. a dátum oszlop dátumtípus kell beállítani.
+  + Továbbfejlesztett JoinType típusok valamint a hozzájuk kapcsolódó dokumentációja. Amikor két adatfolyamot, most már megadhatja ezeket különböző típusú join:
+    + NINCS MEGFELELŐ, A BELSŐ, UNMATCHLEFT, LEFTANTI, LEFTOUTER, UNMATCHRIGHT, RIGHTANTI, RIGHTOUTER, FULLANTI, TELJES.
+  + Továbbfejlesztett adattípus következtetési további dátumformátumok felismerni.
 
 ## <a name="2019-05-06"></a>2019-05-06
 
@@ -367,7 +385,7 @@ Az Azure Machine Learning szolgáltatás már általánosan elérhető.
 Ebben a kiadásban bejelentjük, hogy egy új felügyelt számítási környezet révén a [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute). A számítási célnak az Azure Machine Learning az Azure Batch AI-számítási váltja fel. 
 
 A számítási célnak:
-+ Képzés és a batch következtetési modell használható
++ Modell képzés és a batch következtetésekhez/pontozási használatos
 + Van egy - a több - node számítási
 + A fürt felügyeleti does és a felhasználó feladatütemezésre
 + Alapértelmezés szerint automatikusan Leskálázódik

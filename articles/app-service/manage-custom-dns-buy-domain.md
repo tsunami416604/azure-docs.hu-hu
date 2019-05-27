@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 06337fef1a9d9b41fd41ff7c67611581639adc0a
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: b3177c5dfc5602dd2b6530b0934c17400ab5d528
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65619720"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978883"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Az Azure App Service egyéni tartománynév vásárlása
 
@@ -201,7 +201,9 @@ Keresse meg a listában szereplő állomásnevek a böngészőben. A példa az e
 
 ## <a name="renew-the-domain"></a>A tartomány megújítása
 
-Az App Service-tartomány, amelytől vásárolta a vásárlás időpontjától egy évig érvényes. Alapértelmezés szerint a tartományhoz van konfigurálva a következő évre díjszabási a fizetési mód szerint automatikusan megújul. Ha azt szeretné, kapcsolja ki az automatikus megújítását, vagy ha azt szeretné, manuálisan megújítani a tartományát, kövesse ezeket a lépéseket.
+Az App Service-tartomány, amelytől vásárolta a vásárlás időpontjától egy évig érvényes. Alapértelmezés szerint a tartományhoz van konfigurálva a következő évre díjszabási a fizetési mód szerint automatikusan megújul. Manuálisan újíthatja meg a tartomány nevét.
+
+Ha azt szeretné, kapcsolja ki az automatikus megújítását, vagy ha azt szeretné, manuálisan megújítani a tartományát, kövesse ezeket a lépéseket.
 
 Az a **App Services** lapra, majd az alkalmazást, válassza a neve **beállítások**, majd válassza ki **egyéni tartományok**.
 
@@ -211,11 +213,25 @@ Az a **App Service-tartományok** területen válassza ki a konfigurálni kívá
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
-A tartomány a bal oldali navigációs sávján válassza **tartománymegújítás**. A tartomány automatikus megújítása leállításához válassza ki **ki**, majd **mentése**. 
+A tartomány a bal oldali navigációs sávján válassza **tartománymegújítás**. A tartomány automatikus megújítása leállításához válassza ki **ki**, majd **mentése**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
-Válassza ki a manuálisan megújítani a tartományban, **tartomány megújítása**. Ez a gomb viszont nem aktív a tartomány lejártát megelőzően 90 napig.
+Válassza ki a manuálisan megújítani a tartományban, **tartomány megújítása**. Ez a gomb viszont nem aktív, amíg [90 nappal a tartomány lejártát megelőzően](#when-domain-expires).
+
+Ha a tartomány megújítása sikeres, 24 órán belül e-mailben értesítést kap.
+
+## <a name="when-domain-expires"></a>Amikor a tartomány érvényessége lejár
+
+Azure-ban foglalkozik, hamarosan lejár vagy lejárt módon az App Service-tartományok:
+
+* Ha az automatikus megújítási le van tiltva: 90 nappal a tartomány lejártát, mielőtt megújítási értesítő e-mailt kap, és a **tartomány megújítása** gomb aktívvá válik a portálon.
+* Ha az automatikus megújítás engedélyezve van: A tartomány lejárati dátum után egy napon Azure próbál számláz, a tartomány nevét megújításához.
+* Ha az automatikus megújítás során hiba történik (például a fájl a kártya lejárt), vagy ha le van tiltva, az automatikus megújítását, és engedélyezi, hogy a tartomány lejár, az Azure értesíti a felhasználót, a tartomány lejártát és parkot tartománynevére. Is [manuálisan megújítani a](#renew-the-domain) tartományához.
+* A lejárat után a 4 és 12 nap nap Azure küld Önnek további értesítő e-mailek. Is [manuálisan megújítani a](#renew-the-domain) tartományához.
+* A lejárat után a 19. nap a tartomány felfüggesztve marad, de válik visszavásárlási díj vonatkozik. Hívása az ügyfélszolgálattal újítsa meg a tartománynevet, bármely alkalmazandó megújítási és érvényesítési díjak érvényesek.
+* Lejárat után 25 napjától Azure helyezi a tartomány egy tartomány neve iparági árverés szolgáltatással árverés regisztrálásához. Hívása az ügyfélszolgálattal újítsa meg a tartománynevet, bármely alkalmazandó megújítási és érvényesítési díjak érvényesek.
+* A lejárat után 30 nappal hogy már nem a tartomány be tud váltani.
 
 <a name="custom"></a>
 

@@ -9,13 +9,13 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
-ms.date: 03/25/2019
-ms.openlocfilehash: c3d06d3c0f9c86b4fe6495632b48051fd69dc663
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.date: 05/22/2019
+ms.openlocfilehash: b37a6b6995df6f784b5f1b4a7a3f54d91faafc13
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544542"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990190"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Az Azure Logic Apps díjszabási modell
 
@@ -92,11 +92,15 @@ Miután letiltja az egy logikai alkalmazást, a jelenleg futó példányok eltar
 Használatalapú díjszabás vonatkozik [integrációs fiókok](logic-apps-enterprise-integration-create-integration-account.md) , ismerje meg, fejlesztheti és tesztelheti a [B2B- és EDI](logic-apps-enterprise-integration-b2b.md) és [XML-feldolgozás](logic-apps-enterprise-integration-xml.md) szolgáltatások Azure Logic Apps nélkül További költség.
 Egy integrációs fiókban rendelkezhet minden egyes Azure-régióban. Minden integrációs fiók adott is tárolhatja [összetevők számú](../logic-apps/logic-apps-limits-and-config.md), többek között a kereskedelmi partnerek, szerződések, térképeket, sémákat, szerelvényeket, tanúsítványok, kötegkonfigurációk és így tovább.
 
-Az Azure Logic Apps is kínál az alapszintű és standard szintű integrációs fiók támogatott Logic Apps SLA-val. Itt módon kiválaszthatja, hogy e alapszintű vagy standard szintű integrációs fiók használatára:
+Az Azure Logic Apps ingyenes, alapszintű és standard szintű integrációs fiókok kínál. Az alapszintű és Standard szinten által támogatott a Logic Apps szolgáltatásiszint-szerződés (SLA), míg az ingyenes szint nem támogatja a szolgáltatásiszint-szerződés és a korlátozások vonatkoznak az átviteli sebesség és a használat.
 
-* Alapszintű integrációs fiók akkor használja, ha csak szeretné, üzenetkezelés vagy olyan kisméretű vállalkozások partner, amely a kereskedelmi partneri kapcsolatban áll azzal a nagyobb üzleti entitásban szerepét.
+Választhat egy ingyenes, alapszintű vagy standard szintű integrációs fiók:
 
-* Standard szintű integrációs fiókok akkor használja, ha összetettebb B2B-kapcsolatokat, és növelje a szervezetek kezelheti szeretné.
+* **Ingyenes**: Ha szeretné kipróbálni a felderítő forgatókönyvek esetén nem termelési forgatókönyvekhez tartozó.
+
+* **Alapszintű**: Ha azt szeretné, hogy csak üzenetkezelés vagy kisvállalati partner-kiszolgálóként, amely rendelkezik a kereskedelmi partneri kapcsolatban van-e a nagyobb üzleti entitásban.
+
+* **Standard szintű**: Ha összetettebb B2B-kapcsolatok és a megnövekedett számát, amely a következőket kell tennie entitások rendelkezik a kezeléséhez.
 
 Díjszabási információkért tekintse meg a [Azure Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps).
 

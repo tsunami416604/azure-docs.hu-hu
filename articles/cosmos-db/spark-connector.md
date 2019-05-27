@@ -4,14 +4,14 @@ description: További információ az Azure Cosmos DB Spark-összekötő, amely 
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 60afd8128224050d456699e798d814a259e106ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc0f2044f70c674177f9c9786f56f0441db2e282
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61330246"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978904"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel a big data-elemzés az Azure Cosmos DB-összekötő az Apache Spark használatával
 
@@ -31,7 +31,7 @@ Használhatja az összekötőnél a [Azure Databricks](https://azure.microsoft.c
 > A Cosmos DB Cassandra API-t használja a [Cassandra Spark-összekötő](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="quickstart"></a>Első lépések
+## <a name="quickstart"></a>Gyors üzembe helyezés
 
 * Kövesse a lépéseket [a Java SDK használatának első lépései](sql-api-async-java-get-started.md) egy Cosmos DB-fiók beállítását, és töltse ki az egyes adatokat.
 * Kövesse a lépéseket [első lépései az Azure Databricks](https://docs.azuredatabricks.net/getting-started/index.html) egy Azure Databricks-munkaterület és egy fürt beállításához.
@@ -179,7 +179,7 @@ A [Cosmos DB Spark GitHub-adattár](https://github.com/Azure/azure-cosmosdb-spar
 * **[Csatlakozás az Azure Databricks az Azure Cosmos DB](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)**  használatával `azure-cosmosdb-spark`.  Csatolva ide van is egy Azure Databricks verzióját a [időben repülési teljesítmény notebook](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks).
 * **[Lambda architektúra az Azure Cosmos DB és a HDInsight (az Apache Spark)](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)**: Csökkentheti a Cosmos DB- és Spark használata big data-adatcsatornákat fenntartásának üzemeltetési terheit.
 
-## <a name="more-information"></a>További információ
+## <a name="more-information"></a>További információk
 
 További információt van a `azure-cosmosdb-spark` [wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki) többek között:
 

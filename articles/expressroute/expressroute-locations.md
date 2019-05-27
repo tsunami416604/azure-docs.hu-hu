@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/08/2019
+ms.date: 05/20/2019
 ms.author: pareshmu
-ms.openlocfilehash: 63d6d1419b0a70a0bcf3532a13d6f7491b792593
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 00748f0a245dd0c63d59b32113077b5b10915d3d
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467714"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977962"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -50,7 +50,7 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | **India** | 2 |Nyugat-India, Közép-India, Dél-India |Csennai, Csennai2, Mumbai, Mumbai2 |
 | **Japán** | 2 |Nyugat-Japán, Kelet-Japán |Oszaka, Tokió |
 | **Dél-Korea** | 2 |Korea középső régiója, Korea déli régiója |Busan, Szöul|
-| **AZ EGYESÜLT ARAB EMÍRSÉGEK** | 3 | Az Egyesült Arab Emírségek középső régiója, Egyesült Arab Emírségek északi régiója | Dubai |
+| **AZ EGYESÜLT ARAB EMÍRSÉGEK** | 3 | Az Egyesült Arab Emírségek középső régiója, Egyesült Arab Emírségek északi régiója | Dubai, Dubai2 |
 | **Dél-Afrika** | 3 |Dél-Afrika nyugati régiója, Dél-Afrika északi régiója |Fokváros, Johannesburg |
 | **Dél-Amerika** | 3 |Dél-Brazília |Sao Paulo |
 
@@ -93,8 +93,9 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Támogatott |Támogatott |Chicago, Szilícium-völgy, Washington, D.C. |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Támogatott |Támogatott |Chicago, Denver, Los Angeles, New York, szilícium-völgy, szilícium-Valley2, Washington DC, Washington dc2 számítógépre |
 | **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/directcloud/find-a-cloud-service/detail/microsoft-azure)** | Támogatott |Támogatott |Amsterdam2, Frankfurt|
+| **du datamena** |Támogatott |Támogatott | Dubai2 |
 | **eir** |Támogatott |Támogatott |Dublin|
-| **Epsilon Global Communications** |Támogatott |Támogatott |Szingapúr, Szingapúr2 |
+| **[Epszilon globális kommunikáció](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Támogatott |Támogatott |Szingapúr, Szingapúr2 |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Támogatott |Támogatott |Amszterdam, Atlanta, Chicago, Dallas, Dublin, Hongkong (KKT), London, London2, Los Angeles, Melbourne, Miami, New York, Oszaka, Párizs, Sao Paulo, Seattle, szilícium-völgy, Szingapúr, Sydney, Tokió, Toronto, Washington, D.C. |
 | **Etisalat Egyesült Arab Emírségek** |Támogatott |Támogatott |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Támogatott |Támogatott |Amszterdam, Dublin, London |

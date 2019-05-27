@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/14/2019
+ms.date: 05/20/2019
 ms.topic: overview
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 58fd09726f05ba442c66387ecbd6cfad37f598e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 16e2497f4e26d16c008161477fd7d573e59e84db
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60896158"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955203"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Mi az Azure Blockchain Workbench?
 
@@ -41,13 +41,13 @@ A Workbench automatikusan továbbítja az eseményeket a Service Bus és az Even
 
 Az Azure Blockchain Workbench előre konfigurált megoldásként egy Azure Resource Manager megoldássablon használatával egyszerűsíti a konzorcium blokklánchálózatának beállítását. A sablon egyszerűsített üzembe helyezést tesz lehetővé, amely a konzorcium futtatásához szükséges összes összetevőt telepíti. Jelenleg a Blockchain Workbench támogatja az Ethereumot.
 
-## <a name="use-active-directory-login"></a>Az Active Directory-bejelentkezés használata
+## <a name="use-active-directory"></a>Active Directory használata
 
 A meglévő blokkláncprotokollokkal a blokkláncidentitások címként jelennek meg a hálózaton. Az Azure Blockchain Workbench átveszi a blokkláncidentitást azáltal, hogy társítja azt egy Active Directory-identitással, így a vállalati alkalmazások Active Directory-identitásokkal történő felépítése egyszerűbbé válik.
 
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>Láncon belüli adatok szinkronizálása láncon kívüli tárolóval
 
-Az Azure Blockchain Workbench megkönnyíti a blokkláncesemények és az adatok elemzését azáltal, hogy a blokkláncon szereplő adatokat automatikusan szinkronizálja a láncon kívüli tárolóval. Ahelyett, hogy közvetlenül a blokkláncról nyerné az adatokat, láncon kívüli adatbázisrendszerekről, például az SQL Serverről kérdezheti le azokat. Az adatelemzési feladatokat végző végfelhasználók részéről nincs szükség a blokkláncokkal kapcsolatos szaktudásra. 
+Az Azure Blockchain Workbench megkönnyíti a blokkláncesemények és az adatok elemzését azáltal, hogy a blokkláncon szereplő adatokat automatikusan szinkronizálja a láncon kívüli tárolóval. Ahelyett, hogy közvetlenül a blokkláncról nyerné az adatokat, láncon kívüli adatbázisrendszerekről, például az SQL Serverről kérdezheti le azokat. Blockchain-szaktudását, nem szükséges a végfelhasználók számára, akik elemzési feladatok állapotát.
 
 ## <a name="next-steps"></a>További lépések
 

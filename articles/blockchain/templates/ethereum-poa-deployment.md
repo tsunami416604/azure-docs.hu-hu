@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
 ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274790"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66126381"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>A koncepció jogosultság consortium Ethereum
 
@@ -208,17 +208,17 @@ A **alapjai**, megadhatja a környezethez, például az előfizetés, erőforrá
 
 Egyes paraméterek részletes leírását a következő:
 
-Paraméter neve|Leírás|Megengedett értékek|Alapértelmezett értékek
+Paraméternév|Leírás|Megengedett értékek|Alapértelmezett értékek
 ---|---|---|---
 Hozzon létre egy új vagy meglévő hálózaton való csatlakozás?|Hozzon létre egy új hálózatot, vagy egy már meglévő consortium network csatlakoztatása|Hozzon létre új való csatlakozás meglévő|Új létrehozása
-E-mail cím (nem kötelező)|Az üzembe helyezés befejezése után az üzembe helyezéssel kapcsolatos adatokat az e-mailben értesítést kap.|Érvényes e-mail címet|NA
-Virtuális gép felhasználóneve|Az egyes üzembe helyezett virtuális gépek (csak alfanumerikus karaktereket) a rendszergazdai jogosultságú felhasználónevet|1 – 64 karakter|NA
+E-mail cím (nem kötelező)|Az üzembe helyezés befejezése után az üzembe helyezéssel kapcsolatos adatokat az e-mailben értesítést kap.|Érvényes e-mail címet|n/a
+Virtuális gép felhasználóneve|Az egyes üzembe helyezett virtuális gépek (csak alfanumerikus karaktereket) a rendszergazdai jogosultságú felhasználónevet|1 – 64 karakter|n/a
 Hitelesítés típusa|A módszert a virtuális géphez.|Jelszó vagy SSH nyilvános kulcs|Jelszó
-Jelszó (hitelesítési típus = jelszó)|Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava.  A jelszónak tartalmaznia kell a következő 3: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter. Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|12 – 72 karakter|NA
-SSH-kulcs (hitelesítési típus = a nyilvános kulcs)|A secure shell-kulcsot a távoli bejelentkezéshez használt.||NA
-Előfizetés|Az előfizetés, melyben szeretné üzembe helyezni a consortium network||NA
-Erőforráscsoport|Az erőforráscsoport, melyben szeretné üzembe helyezni a consortium network.||NA
-Földrajzi egység|Az Azure-régió erőforráscsoport.||NA
+Jelszó (hitelesítési típus = jelszó)|Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava.  A jelszónak tartalmaznia kell a következő 3: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter. Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|12 – 72 karakter|n/a
+SSH-kulcs (hitelesítési típus = a nyilvános kulcs)|A secure shell-kulcsot a távoli bejelentkezéshez használt.||n/a
+Előfizetés|Az előfizetés, melyben szeretné üzembe helyezni a consortium network||n/a
+Erőforráscsoport|Az erőforráscsoport, melyben szeretné üzembe helyezni a consortium network.||n/a
+Location egység|Az Azure-régió erőforráscsoport.||n/a
 
 Üzembe helyezési minta az alább látható: ![alapszintű panel](./media/ethereum-poa-deployment/basic-blade.png)
 
@@ -228,14 +228,14 @@ Ezután üzembe helyezési régiók szerint adja meg a bemenetek száma régió(
 
 Egyes paraméterek részletes leírását a következő:
 
-  Paraméter neve|Leírás|Megengedett értékek|Alapértelmezett értékek
+  Paraméternév|Leírás|Megengedett értékek|Alapértelmezett értékek
   ---|---|---|---
-  Régió(k) száma|Több régióban való üzembe helyezése a consortium network|1, 2, 3, 4, 5|1
-  Első régióban|Első régióban való üzembe helyezése a consortium network|Az összes engedélyezett az Azure-régiók|NA
-  Második régióban|Második régióban való üzembe helyezése a consortium network (csak akkor, ha több régióban beállítás van megadva 2 látható)|Az összes engedélyezett az Azure-régiók|NA
-  Harmadik régiót|Harmadik régiót üzembe helyezéséhez a consortium network (Visible csak akkor, ha több régióban 3 van kiválasztva)|Az összes engedélyezett az Azure-régiók|NA
-  Negyedik régió|Negyedik régióban való üzembe helyezése a consortium network (Visible csak akkor, ha több régióban 4 van kiválasztva)|Az összes engedélyezett az Azure-régiók|NA
-  Ötödik régió|Ötödik régióban való üzembe helyezése a consortium network (Visible csak akkor, ha több régióban van jelölve, mint 5)|Az összes engedélyezett az Azure-régiók|NA
+  Régió(k) száma|Több régióban való üzembe helyezése a consortium network|1, 2, 3, 4, 5|1.
+  Első régióban|Első régióban való üzembe helyezése a consortium network|Az összes engedélyezett az Azure-régiók|n/a
+  Második régióban|Második régióban való üzembe helyezése a consortium network (csak akkor, ha több régióban beállítás van megadva 2 látható)|Az összes engedélyezett az Azure-régiók|n/a
+  Harmadik régiót|Harmadik régiót üzembe helyezéséhez a consortium network (Visible csak akkor, ha több régióban 3 van kiválasztva)|Az összes engedélyezett az Azure-régiók|n/a
+  Negyedik régió|Negyedik régióban való üzembe helyezése a consortium network (Visible csak akkor, ha több régióban 4 van kiválasztva)|Az összes engedélyezett az Azure-régiók|n/a
+  Ötödik régió|Ötödik régióban való üzembe helyezése a consortium network (Visible csak akkor, ha több régióban van jelölve, mint 5)|Az összes engedélyezett az Azure-régiók|n/a
 
 Üzembe helyezési minta az alább látható: ![üzembe helyezési régiók](./media/ethereum-poa-deployment/deployment-regions.png)
 
@@ -246,7 +246,7 @@ Az érvényesítő csomópont tárméret szabja meg a blockchain lehetséges mé
 
 Egyes paraméterek részletes leírását a következő:
 
-  Paraméter neve|Leírás|Megengedett értékek|Alapértelmezett értékek
+  Paraméternév|Leírás|Megengedett értékek|Alapértelmezett értékek
   ---|---|---|---
   Elosztott terhelésű érvényesítő csomópontok száma|Az üzembe helyezni a hálózat részét képező érvényesítő csomópontok számát|2-15|2
   Érvényesítési csomópont tároló-teljesítményre|A telepített érvényesítő csomópontok biztonsági felügyelt lemez típusa.|Standard SSD- vagy prémium|Standard SSD
@@ -272,16 +272,16 @@ Ezután Ethereum-beállítások területén adja meg a Ethereum-konfigurációs 
 
 Egyes paraméterek részletes leírását a következő:
 
-  Paraméter neve|Leírás|Megengedett értékek|Alapértelmezett értékek
+  Paraméternév|Leírás|Megengedett értékek|Alapértelmezett értékek
   ---|---|---|---
-Consortium tag azonosítója|Minden tagja részt vesz a consortium network konfigurálhatók az IP-címterek ütközések elkerülése érdekében társított azonosítója. A privát hálózat esetén Tagazonosító egyedinek kell lennie különböző szervezetekhez ugyanazon a hálózaton keresztül.  Egy egyedi Tagazonosító van szükség, akkor is, ha több régióban telepít ugyanazon a szervezeten belül. Jegyezze meg a paraméter értékét, mivel annak biztosítására ne legyen semmilyen ütközési csatlakozó tagjaival ossza meg kell.|0-255|NA
+Consortium tag azonosítója|Minden tagja részt vesz a consortium network konfigurálhatók az IP-címterek ütközések elkerülése érdekében társított azonosítója. A privát hálózat esetén Tagazonosító egyedinek kell lennie különböző szervezetekhez ugyanazon a hálózaton keresztül.  Egy egyedi Tagazonosító van szükség, akkor is, ha több régióban telepít ugyanazon a szervezeten belül. Jegyezze meg a paraméter értékét, mivel annak biztosítására ne legyen semmilyen ütközési csatlakozó tagjaival ossza meg kell.|0-255|n/a
 Hálózatazonosító|A hálózati Azonosítót a consortium Ethereum hálózati üzembe helyezve.  Minden egyes Ethereum hálózati rendelkezik a saját hálózati azonosító, az 1 folyamatban van a nyilvános hálózat azonosítója.|5 - 999,999,999|10101010
-Rendszergazdai Ethereum-cím|Ethereum fiók címét, amely részt vesz a PoA cégirányítási szolgál.  Az Ethereum-cím generálásához MetaMask használatát javasoljuk.|0 x 42 alfanumerikus karakterek|NA
+Rendszergazdai Ethereum-cím|Ethereum fiók címét, amely részt vesz a PoA cégirányítási szolgál.  Az Ethereum-cím generálásához MetaMask használatát javasoljuk.|0 x 42 alfanumerikus karakterek|n/a
 Speciális beállítások|Speciális beállítások Ethereum-beállítások|Engedélyezése vagy letiltása|Letiltás
 Nyilvános IP-cím (Speciális beállítások = engedélyezés)|A hálózati virtuális hálózati átjáró mögött helyezi üzembe, és eltávolítja a társviszony-létesítési hozzáférés. Ha ezt a lehetőséget választja, minden tag kell használnia a kapcsolatot a virtuális hálózati átjáró kompatibilis.|Nyilvános IP-Címek privát virtuális hálózaton|Nyilvános IP-cím
 Gáz korlát letiltása (Speciális beállítások = engedélyezés)|A hálózati kezdő blokk gáz korlátot|Numerikus|50000000
 Tiltási Reseal időtartam (másodperc)|A gyakoriságot, amellyel üres blokk jön létre, amikor nem léteznek tranzakciók a hálózaton. Nagyobb gyakorisággal lesz gyorsabb véglegességére, de magasabb tárolási költségek.|Numerikus|15
-Tranzakció engedély szerződés (Speciális beállítások = engedélyezés)|A tranzakció csatornákban szerződés ByteCode. Korlátozza az intelligens szerződés üzembe helyezésének és végrehajtásának engedélyezett listájához, Ethereum-fiókok.|Szerződés bytecode|NA
+Tranzakció engedély szerződés (Speciális beállítások = engedélyezés)|A tranzakció csatornákban szerződés ByteCode. Korlátozza az intelligens szerződés üzembe helyezésének és végrehajtásának engedélyezett listájához, Ethereum-fiókok.|Szerződés bytecode|n/a
 
 Üzembe helyezési minta az alább látható: ![ethereum-beállítások](./media/ethereum-poa-deployment/ethereum-settings.png)
 
@@ -291,13 +291,13 @@ A figyelés panel az Azure Monitor naplók erőforrás a hálózat konfigurálá
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-  Paraméter neve|Leírás|Megengedett értékek|Alapértelmezett értékek
+  Paraméternév|Leírás|Megengedett értékek|Alapértelmezett értékek
   ---|---|---|---
-Figyelés|A beállítás figyelés engedélyezése|Engedélyezése vagy letiltása|Bekapcsolás
-Kapcsolódás a meglévő Azure Monitor naplóira|Az Azure Monitor naplók új példány létrehozása vagy csatlakozás meglévő példányt|Új létrehozása vagy csatlakozás meglévő|Új létrehozása
-Hely figyelése (Kapcsolódás a meglévő Azure Monitor naplóira = új létrehozása)|A régió, ahol az új Azure Monitor-naplók példány telepítve lesz|Az összes Azure Monitor-naplók régiók|NA
-Meglévő log analytics-munkaterület Azonosítójára (Kapcsolódás a meglévő Azure Monitor naplóira = csatlakozás meglévő)|Munkaterület-Azonosítót a meglévő Azure monitor-példány naplók||NA
-Meglévő log analytics elsődleges kulcs (Kapcsolódás a meglévő Azure Monitor naplóira = csatlakozás meglévő)|A meglévő Azure Monitor-naplók példányhoz való csatlakozáshoz használt elsődleges kulcs||NA
+Figyelés|A beállítás figyelés engedélyezése|Engedélyezése vagy letiltása|Engedélyezés
+Kapcsolódás a meglévő Azure Monitor naplóira|Az Azure Monitor naplók új példány létrehozása vagy csatlakozás meglévő példányt|Új létrehozása vagy csatlakozás meglévő|Új
+Hely figyelése (Kapcsolódás a meglévő Azure Monitor naplóira = új létrehozása)|A régió, ahol az új Azure Monitor-naplók példány telepítve lesz|Az összes Azure Monitor-naplók régiók|n/a
+Meglévő log analytics-munkaterület Azonosítójára (Kapcsolódás a meglévő Azure Monitor naplóira = csatlakozás meglévő)|Munkaterület-Azonosítót a meglévő Azure monitor-példány naplók||n/a
+Meglévő log analytics elsődleges kulcs (Kapcsolódás a meglévő Azure Monitor naplóira = csatlakozás meglévő)|A meglévő Azure Monitor-naplók példányhoz való csatlakozáshoz használt elsődleges kulcs||n/a
 
 
 Üzembe helyezési minta az alább látható: ![az azure monitor](./media/ethereum-poa-deployment/azure-monitor.png)
@@ -627,7 +627,7 @@ A válasz hasznos, ha tagjai (képződés letiltása, érvényesítő beállítv
 }
 
 ```
-## <a name="tutorials"></a>Oktatóanyagok
+## <a name="tutorials"></a>Oktatóprogramok
 
 ### <a name="programmatically-interacting-with-a-smart-contract"></a>Egy intelligens szerződés programozott módon használata
 
@@ -760,7 +760,7 @@ WebAssembly támogatási már engedélyezve van az Ön számára újonnan üzemb
 
 ## <a name="reference"></a>Leírások
 
-### <a name="faq"></a>GYIK
+### <a name="faq"></a>gyakori kérdésekben
 
 #### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>E figyelje meg, hány tranzakció a hálózat, amely helytelen\'t küldése. Ha ezeknek érkeznek?
 

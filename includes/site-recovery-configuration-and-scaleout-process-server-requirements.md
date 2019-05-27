@@ -10,11 +10,11 @@ ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: 371cbcc50b574f95e8d9ba4efe79058b2b25a8ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58016680"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66127729"
 ---
 **Configuration/Process server-követelmények**
 
@@ -35,7 +35,7 @@ Csoportházirendek | Ezek a szabályzatok csoport nem engedélyezi: <br> -Hozzá
 IIS | – Nincs már meglévő alapértelmezett webhelye <br> – Nincs már létező webhely vagy alkalmazás 443-as porton <br>-Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás 
 | 
 **HÁLÓZATI BEÁLLÍTÁSOK** | 
-IP-cím típusa | Statikus 
+IP-cím típusa | Statikus tartalom 
 Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel) 
 Hálózati adapter típusa | VMXNET3 (Ha a konfigurációs kiszolgáló VMware virtuális gép)
  |

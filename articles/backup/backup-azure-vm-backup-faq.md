@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 05/21/2019
 ms.author: sogup
-ms.openlocfilehash: 9f233af316bd6022b93a7208bf3fae37e913e6af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60848180"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966316"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – biztonsági mentése Azure virtuális gépek
 
@@ -24,25 +24,25 @@ Ez a cikk az Azure virtuális gépek biztonsági mentésével kapcsolatos gyakor
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Melyik Virtuálisgép-rendszerképek biztonsági mentés esetén is engedélyezhető, ha hozhatok létre?
 Egy virtuális gép létrehozásakor engedélyezheti a futó virtuális gépek biztonsági mentési [támogatott operációs rendszerek](backup-support-matrix-iaas.md#supported-backup-actions)
- 
-### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>A virtuális gép díja magában foglalja a biztonsági mentési mennyibe kerül? 
+
+### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>A virtuális gép díja magában foglalja a biztonsági mentési mennyibe kerül?
 
 Nem. Biztonsági mentési díjakat külön, a virtuális gép költségeket. Tudjon meg többet [Azure Backup árairól](https://azure.microsoft.com/pricing/details/backup/).
- 
-### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>Milyen engedélyek szükségesek egy virtuális gép biztonsági mentésének engedélyezése? 
 
-Ha Ön egy virtuális gép közreműködő, engedélyezheti a virtuális gép biztonsági mentése. Ha egy egyéni szerepkör használata esetén szüksége a virtuális gép biztonsági mentésének engedélyezése a következő engedélyekkel: 
+### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>Milyen engedélyek szükségesek egy virtuális gép biztonsági mentésének engedélyezése?
 
-- Microsoft.RecoveryServices/Vaults/write 
-- Microsoft.RecoveryServices/Vaults/read 
-- Microsoft.RecoveryServices/locations/* 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write 
-- Microsoft.RecoveryServices/Vaults/backupPolicies/read 
-- Microsoft.RecoveryServices/Vaults/backupPolicies/write 
- 
+Ha Ön egy virtuális gép közreműködő, engedélyezheti a virtuális gép biztonsági mentése. Ha egy egyéni szerepkör használata esetén szüksége a virtuális gép biztonsági mentésének engedélyezése a következő engedélyekkel:
+
+- Microsoft.RecoveryServices/Vaults/write
+- Microsoft.RecoveryServices/Vaults/read
+- Microsoft.RecoveryServices/locations/*
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write
+- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write
+- Microsoft.RecoveryServices/Vaults/backupPolicies/read
+- Microsoft.RecoveryServices/Vaults/backupPolicies/write
+
 Ha a Recovery Services-tároló és a virtuális gép eltérő erőforráscsoportokban, győződjön meg arról, van is írási engedélye a Recovery Services-tároló az erőforráscsoportban.  
 
 
@@ -140,3 +140,6 @@ A virtuális gép biztonsági másolat a módosított vagy új szabályzat ütem
 3. Az ugyanazon vagy egy új tárolóban újraengedélyezése biztonsági mentés.
 
 A virtuális gép visszaállíthatja az áthelyezési művelet előtt létrehozott rendelkezésre álló helyreállítási pontokból.
+
+### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy"></a>A társítható egy azonos mentési házirenddel rendelkező virtuális gépek száma korlátozva van?
+Igen, nincs a korlát 100 virtuális gép, amelyeket összekapcsolhat az azonos mentési házirenddel a portálról. Azt javasoljuk, hogy több mint 100 virtuális gép esetében, azonos ütemezéssel vagy más ütemezés több biztonsági mentési szabályzat létrehozásához.

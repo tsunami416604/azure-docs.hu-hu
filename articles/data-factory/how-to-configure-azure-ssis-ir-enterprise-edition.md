@@ -13,11 +13,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: d2b06d044f68972ef72dd9b53401980e84ef779f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440930"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66152434"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS integrációs modul üzembe helyezése Enterprise Edition
 
@@ -42,7 +42,7 @@ Ezek a funkciók némelyike szükségessé telepítenek további összetevőket 
 | Az intelligens csoportosítási és intelligens keresési átalakítások  | Az Azure-SSIS integrációs modul Enterprise Edition intelligens csoportosítási és intelligens keresési átalakítások van előtelepítve. Ezek az összetevők referencia-adatok tárolására szolgáló SQL Server és az Azure SQL Database támogatja. |
 | Kifejezés kinyerése és a keresési kifejezés átalakítások | Az Azure-SSIS integrációs modul Enterprise Edition kifejezés kinyerése és a keresési kifejezés átalakítások van előtelepítve. Ezek az összetevők referencia-adatok tárolására szolgáló SQL Server és az Azure SQL Database támogatja. |
 
-## <a name="instructions"></a>Utasítások
+## <a name="instructions"></a>Útmutatás
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

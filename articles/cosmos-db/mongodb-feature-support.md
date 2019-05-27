@@ -4,15 +4,15 @@ description: További információ a MongoDB 3.4 biztosító Azure Cosmos DB Mon
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 12/26/2018
+ms.date: 05/21/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 168b5cdf4f65992bad886352921e9aaff6d5b09c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09d12c817e9e8678cf96c63c0bff623923f7074d
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446618"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978841"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Az Azure Cosmos DB MongoDB API-: támogatott funkcióihoz és szintaxisához
 
@@ -212,7 +212,7 @@ Alább a támogatott operátorok láthatók a használatukat bemutató megfelel�
 }
 ```
 
-Művelet | Példa |
+Operátor | Példa |
 --- | --- |
 $eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
 $gt | `{ "Elevation": { $gt: 4000 } }` |  | -
@@ -267,7 +267,7 @@ Az első rész az indexet fogja használni a keresés ^abc kezdetű dokumentumok
 
 ### <a name="geospatial-operators"></a>Térinformatikai operátorok
 
-Művelet | Példa | |
+Operátor | Példa | |
 --- | --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Igen |
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Igen |
@@ -286,7 +286,7 @@ Használatakor a `findOneAndUpdate` művelet, rendezési műveletekben egyetlen 
 
 ## <a name="additional-operators"></a>További operátorok
 
-Művelet | Példa | Megjegyzések 
+Operátor | Példa | Megjegyzések 
 --- | --- | --- |
 $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` | 
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
@@ -322,7 +322,7 @@ A cosmos DB támogatja az egy idő-az-élettartam (TTL) alapján történő kül
 
 A cosmos DB még nem támogatja felhasználók és szerepkörök. Azonban a Cosmos DB támogatja a szerepköralapú hozzáférés-vezérlés (RBAC) és az olvasási és írási és olvasási jelszavakkal/kulcsokkal keresztül elérhető a [az Azure portal](https://portal.azure.com) (kapcsolati karakterlánc oldalán).
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 
 A cosmos DB támogatja az automatikus, natív replikációt a legalacsonyabb rétegeken. A rendszer az alacsony késésű, globális replikáció elérése érdekében kiterjeszti ezt a logikát. A cosmos DB támogatja a manuális replikációs parancsokat.
 

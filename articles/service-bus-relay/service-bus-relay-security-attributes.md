@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f8827ac290393c9f394c3b13149555a1a2aa6df9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d8ce3c995e8e0f20ed6d694f481cc5fc9fde4fa7
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927492"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000147"
 ---
-# <a name="common-security-attributes-for-azure-service-bus-relay"></a>Gyakori biztonsági attribútumok az Azure Service Bus Relay használatával
+# <a name="security-attributes-for-azure-service-bus-relay"></a>Az Azure Service Bus Relay biztonsági attribútumok
 
-Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a cikk a gyakori biztonsági attribútumok építve az Azure Service Bus Relay dokumentumok.
+Ez a cikk az Azure Service Bus Relay beépített biztonsági attribútumok dokumentumok.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -27,7 +27,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
 | Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>|  – | Relay egy web socket, és nem marad meg adatokat. |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | Szolgáltatás szükséges a TLS. |
+| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | Szolgáltatás szükséges a TLS. |
 | Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Nem | Csak a Microsoft a TLS-tanúsítványokat használ.  |
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| – | |
 | Titkosított API-hívások| Igen | HTTPS. |

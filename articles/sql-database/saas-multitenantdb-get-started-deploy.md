@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: 8f19303dba7fcf2a9edb325464fdd3748220903e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 350e67f5a1e7e1eab7abe27a6ca851ed2420af84
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61486152"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978525"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Üzembe helyezése és megismerése a horizontálisan skálázott több-bérlős alkalmazás
 
@@ -58,7 +58,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 ### <a name="plan-the-names"></a>A nevek megtervezése
 
 Ez a szakasz a lépések adjon meg egy *felhasználói* érték, amely annak biztosítása érdekében, erőforrásnevek globálisan egyedi, és a egy nevet a *erőforráscsoport* központi telepítés által létrehozott összes erőforrást tartalmazó az alkalmazás. Nevű személy *Reino Finley*, javasoljuk, hogy:
-- *Felhasználó:* **af1**  *(saját monogramját és egy számjegy. Használjon egy másik értéket (pl. af2) másodszor az alkalmazás telepítésekor.)*
+- *Felhasználó:* **af1***(rövidítése, és egy számjegy.   Használjon egy másik értéket (pl. af2) másodszor az alkalmazás telepítésekor.)*
 - *Erőforráscsoport:* **wingtip-mt-af1** *(wingtip-mt azt jelzi, hogy ez az a horizontálisan skálázott több-bérlős alkalmazást. A felhasználó neve af1 hozzáfűzése utal. az erőforráscsoport nevét a benne található erőforrást neveinek.)*
 
 Most válassza ki a nevét, és írja le. 

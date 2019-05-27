@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/12/2019
+ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e4d4ac45ad0ba9516d863682015b9c07096ae106
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 75c0deaa8bca94349091e3317e4ca70129bb4426
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794753"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991608"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -71,7 +71,8 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 * Dynamics 365 for Finance and Operations (korábbi nevén Dynamics AX Online-hoz)
 * Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>
   **A következő szolgáltatások nem támogatottak**:
-    * Tartalomkézbesítési hálózat (CDN)
+    * CDN
+    * Az Azure bejárati ajtajának
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -83,7 +84,8 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 * Azure Active Directory
 * [Az Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (globális Azure-szolgáltatások közösségi)
 * Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>**A következő szolgáltatások nem támogatottak**:
-    * Tartalomkézbesítési hálózat (CDN)
+    * CDN
+    * Az Azure bejárati ajtajának
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -220,7 +222,7 @@ Igen. Legfeljebb 4000 útvonal címelőtagjainak magánhálózati társviszony-l
 
 ### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>Tudom a BGP-munkamenetben meghirdetni is IP-címtartományok korlátozások vannak?
 
-A Microsoft társviszony-létesítési BGP-munkamenet nem fogadunk el saját előtagok (RFC1918).
+A Microsoft társviszony-létesítési BGP-munkamenet nem fogadunk el saját előtagok (RFC1918). A Microsoft és a privát társviszony-létesítés fogadunk bármilyen (legfeljebb tulajdonságot/32) előtag méretét.
 
 ### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>Mi történik, ha túllépem a BGP-t korlátai?
 
@@ -283,6 +285,26 @@ Tekintse meg [díjszabás](https://azure.microsoft.com/pricing/details/expressro
 ### <a name="do-i-pay-for-expressroute-premium-in-addition-to-standard-expressroute-charges"></a>Kell fizetnem a standard ExpressRoute díjain felül kivetett díjak az ExpressRoute prémium?
 
 Igen. Az ExpressRoute prémium szintű díjak vonatkoznak, és az ExpressRoute kapcsolatcsoport a kapcsolatszolgáltató által igényelt díjakat felett.
+
+## <a name="expressroute-local"></a>ExpressRoute Local
+### <a name="what-is-expressroute-local"></a>Mit jelent a helyi ExpressRoute?
+Az ExpressRoute helyi egy Termékváltozat az ExpressRoute-kapcsolatcsoportot. A rendszer helyi egyik legfőbb jellemzője, hogy egy helyi circit egy ExpressRoute-társviszony-létesítési helyszínen biztosítja a hozzáférést csak egy vagy két Azure-régiókban lévő vagy a azonos metro. Ezzel szemben a standard szintű kapcsolatcsoportot hozzáférést biztosít minden Azure-régióban egy geopolitikai területen és a egy prémium szintű Azure-régiók mindegyikében kapcsolatcsoport globálisan. 
+
+### <a name="what-are-the-benefits-of-expressroute-local"></a>Milyen előnyökkel jár az ExpressRoute helyi?
+Míg a Standard vagy prémium szintű ExpressRoute-kapcsolatcsoport kimenő adatforgalom díjköteles van szüksége, nem kell fizetnie kimenő adatátvitel külön-külön helyi ExpressRoute-kapcsolatcsoporthoz. Más szóval az ára az ExpressRoute helyi adatok átviteli díján tartalmazza. Az ExpressRoute helyi a leggazdaságosabb megoldás, ha nagy mennyiségű adat átvitelét és a kívánt Azure-régiók közel társviszony-létesítési ExpressRoute-egységekhez egy privát kapcsolaton keresztül az adatok is tenné. 
+
+### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>Milyen funkciók érhetők el és mit nem az ExpressRoute helyi?
+Egy Standard ExpressRoute-kapcsolatcsoport képest, helyi expressroute-kapcsolatcsoporthoz ugyanazokat a funkciókat kivéve rendelkezik:
+* Az Azure-régiókhoz való hozzáféréshez leírtaknak megfelelően a fenti hatóköre
+* Az ExpressRoute globális elérhetőségű nem érhető el helyi
+
+ExpressRoute helyi is az azonos korlátozások vonatkoznak az erőforrások (pl. a száma virtuális hálózatok kapcsolatcsoportonként) standard. 
+
+### <a name="how-to-configure-expressroute-local"></a>Hogyan kell konfigurálni a helyi ExpressRoute? 
+Az ExpressRoute helyi csak az ExpressRoute közvetlen érhető el. Ezért először kell konfigurálnia az ExpressRoute közvetlen portot. A közvetlen port létrehozása után hozhat létre a biztonsági utasítások helyi expressroute-kapcsolatcsoporthoz [Itt](expressroute-howto-erdirect.md).
+
+### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Hol érhető el az ExpressRoute helyi és melyik Azure-régiók minden társviszony-létesítési helyszínen hozzárendelt?
+A társviszony-létesítési helyszínek, ahol egy vagy két Azure-régióban, zárja be a helyi ExpressRoute érhető el. Nem érhető el egy társviszony-létesítési helyen, ahol az adott állam vagy megye vagy ország nem Azure-régióban van. További információt a pontos leképezések [a helyek lapot](expressroute-locations-providers.md).  
 
 ## <a name="expressroute-for-office-365"></a>Az Office 365 ExpressRoute
 

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
-ms.author: monhaber
-ms.openlocfilehash: ea738535ae9326109a7c3fdd0b5d0c4f4691fdf0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: v-mohabe
+ms.openlocfilehash: b18267b1443b257a575bf2e1199b9f8fa8c419fc
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62095270"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966809"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>App Service-ben az Azure Security Center védelme
 Ez a cikk segít az Azure Security Center segítségével történő figyeléséhez és védelméhez az alkalmazások futtatása az App Service.
@@ -34,7 +34,7 @@ A Security Center az az App Service-alkalmazások ellen indított támadások az
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Figyelheti, és az App Service biztonságos, rendelkeznie kell egy App Service-csomag, amely dedikált gépek társítva van. Ezek a csomagok a következők: Alapszintű, Standard, prémium szintű, elkülönített, vagy Linux. Az Azure Security Center nem támogatja az ingyenes, megosztott vagy Használatalapú csomagok. További információkért lásd: [App Service-csomagok](https://azure.microsoft.com/pricing/details/app-service/plans/).
+Az App Service monitorozásához és védelméhez egy, a dedikált gépekkel társított App Service-csomaggal kell rendelkeznie. A csomagok a következők: alapszintű, standard, prémium, izolált és Linux. Az Azure Security Center nem támogatja az ingyenes, közös és használatalapú csomagokat. További információkért lásd: [App Service-csomagok](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
 ## <a name="security-center-protection"></a>A Security Center védelme
 

@@ -8,11 +8,11 @@ ms.date: 06/12/2018
 ms.topic: include
 ms.custom: include file
 ms.openlocfilehash: 9f44bb5353a522e187adf8da0d1a573e3a4489aa
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913699"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66118928"
 ---
 > [!IMPORTANT]
 > Ez a cikk a klasszikus Azure CLI szükséges tartalom található. Az Azure CLI jelenlegi kiadása nem rendelkezik az ebben a cikkben ismertetett, így a klasszikus parancssori felület megadása kötelező funkciók támogatása. 

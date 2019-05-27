@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c11d6519986cf7a0e70d1fe004ef527c3df247d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c98229a28f31ff715f252dc3915ca690e99245ff
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277723"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979517"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
@@ -63,7 +63,7 @@ Az alábbi táblázat az egyes támogatott operációs rendszeren használja a h
 
 ### <a name="validation-frequency"></a>Ellenőrzés gyakorisága
 
-Új tartalom 5 percenként ellenőrzi a Vendég konfigurációs ügyfél. Miután egy Vendég-hozzárendelés érkezik, a beállításokat egy 15 perces időközönként ellenőrzi. Eredmények küldése a Vendég-konfigurációs erőforrás-szolgáltató, amint az ellenőrzés befejeződött. Ha egy szabályzat [értékelési eseményindító](../how-to/get-compliance-data.md#evaluation-triggers) történik, a számítógép állapotának írása a Vendég-konfigurációs erőforrás-szolgáltató. Ennek hatására az Azure Policy az Azure Resource Manager-tulajdonságok kiértékelése. Egy igény szerinti szabályzat-kiértékelés átveszi a Vendég-konfigurációs erőforrás-szolgáltató a legújabb értékeket. Azonban ez nem következik be egy új naplózási a konfiguráció a virtuális gépen.
+Új tartalom 5 percenként ellenőrzi a Vendég konfigurációs ügyfél. Miután egy Vendég-hozzárendelés érkezik, a beállításokat egy 15 perces időközönként ellenőrzi. Eredmények küldése a Vendég-konfigurációs erőforrás-szolgáltató, amint az ellenőrzés befejeződött. Ha egy szabályzat [értékelési eseményindító](../how-to/get-compliance-data.md#evaluation-triggers) történik, a számítógép állapotának írása a Vendég-konfigurációs erőforrás-szolgáltató. Ennek hatására az Azure Policy az Azure Resource Manager-tulajdonságok kiértékelése. Egy igény szerinti Azure szabályzat-kiértékelés átveszi a Vendég-konfigurációs erőforrás-szolgáltató a legújabb értékeket. Azonban ez nem következik be egy új naplózási a konfiguráció a virtuális gépen.
 
 ### <a name="supported-client-types"></a>Támogatott ügyfél típusú
 
@@ -74,13 +74,13 @@ Az alábbi táblázat az Azure-rendszerképek támogatott operációs rendszerek
 |Canonical|Ubuntu Server|14.04-es, 16.04, 18.04|
 |credativ|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenterhez, a 2012 R2 Datacenter, a 2016 Datacenter, a 2019 adatközpont|
-|Microsoft|Windows-ügyfél|Windows 10|
+|Microsoft|Windows ügyfél|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5|
 |Red Hat|Red Hat Enterprise Linux|7.4, 7.5|
 |SUSE|SLES|12 SP3|
 
 > [!IMPORTANT]
-> Vendég konfigurációs van egy támogatott operációs rendszert futtató csomópontok naplózására.  Ha szeretné egy egyéni rendszerképet használó virtuális gépek naplózása, szeretné-e ismétlődő a **DeployIfNotExists** definíció és módosíthatja a **Ha** című szakaszt a lemezkép tulajdonságai.
+> Vendég konfigurációs van egy támogatott operációs rendszert futtató csomópontok naplózására. Ha szeretné egy egyéni rendszerképet használó virtuális gépek naplózása, szeretné-e ismétlődő a **DeployIfNotExists** definíció és módosíthatja a **Ha** című szakaszt a lemezkép tulajdonságai.
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyfélalkalmazás típusa
 
@@ -93,9 +93,7 @@ Az Azure-ban a Vendég-konfigurációs erőforrás-szolgáltató kommunikálni, 
 IP-cím listák, letöltheti [a Microsoft Azure adatközpont IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Ez a fájl hetente frissül, és a jelenleg üzembe helyezett tartományokat és minden jövőbeni változtatásokról, az IP tartományokat. Csak kell az IP-címek a régióban, a virtuális gépek telepítve vannak-e kimenő hozzáférésének engedélyezéséhez.
 
 > [!NOTE]
-> Az Azure Datacenter IP-cím XML-fájlt a Microsoft Azure-adatközpontok az által használt IP-címtartományok listája. A fájl a compute, SQL és storage tartományokat tartalmaz.
-> A frissített hetente tesznek közzé. A fájl a jelenleg üzembe helyezett tartományokat és minden jövőbeni változtatásokról, az IP tartományokat tükrözi. A fájlban megjelenő új tartományokat legalább egy hétig nem használják az adatközpontokban.
-> Célszerű letölteni az új XML-fájlt minden héten. Ezután frissítse a helyet, hogy helyesen azonosítsa az Azure-ban futó szolgáltatásokat. Az Azure ExpressRoute-felhasználók vegye figyelembe, hogy ez a fájl minden hónap első hetében Azure címterületek a Border Gateway Protocol (BGP) hirdetés frissítésére használatos.
+> Az Azure Datacenter IP-cím XML-fájlt a Microsoft Azure-adatközpontok az által használt IP-címtartományok listája. A fájl a compute, SQL és storage tartományokat tartalmaz. A frissített hetente tesznek közzé. A fájl a jelenleg üzembe helyezett tartományokat és minden jövőbeni változtatásokról, az IP tartományokat tükrözi. A fájlban megjelenő új tartományokat legalább egy hétig nem használják az adatközpontokban. Célszerű letölteni az új XML-fájlt minden héten. Ezután frissítse a helyet, hogy helyesen azonosítsa az Azure-ban futó szolgáltatásokat. Az Azure ExpressRoute-felhasználók vegye figyelembe, hogy ez a fájl minden hónap első hetében Azure címterületek a Border Gateway Protocol (BGP) hirdetés frissítésére használatos.
 
 ## <a name="guest-configuration-definition-requirements"></a>Vendég konfigurációkra definíciója
 
@@ -140,7 +138,7 @@ Vendég Szabályzatkonfiguráció-minták az alábbi helyeken érhetők el:
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse át a következő példák [Azure Policy minták](../samples/index.md).
-- A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.
+- Tekintse meg az [Azure szabályzatdefiníciók struktúrája](definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](effects.md).
 - Megismerheti, hogyan [szabályzatok létrehozása programozott módon](../how-to/programmatically-create.md).
 - Ismerje meg, hogyan [megfelelőségi adatok](../how-to/getting-compliance-data.md).

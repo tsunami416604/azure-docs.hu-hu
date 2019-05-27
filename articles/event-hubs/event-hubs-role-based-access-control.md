@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: 549cfb84ff247295e01c800aa41ba265bb8921c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae970b9612154a6463c4bf44a65da71a20c81635
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343460"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978316"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktív Directory Role-Based hozzáférés-vezérlés (előzetes verzió)
 
@@ -27,8 +27,13 @@ Azure Event hubs-névterek és az összes kapcsolódó erőforrást az Azure Por
 Azure AD RBAC használó alkalmazások nem kell kezelni a SAS-szabályok és a kulcsok vagy bármilyen más konkrét és az Event Hubs hozzáférési jogkivonatok. Az ügyfélalkalmazás kommunikál az Azure AD-hitelesítési környezetet létrehozni, és a egy hozzáférési jogkivonatot szerez az Event Hubs. A tartományi felhasználói fiókokat, amelyek interaktív bejelentkezést igényelnek, az alkalmazás soha nem kezeli a hitelesítő adatokat közvetlenül.
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs szerepkörök és engedélyek
+Az Azure Event Hubs-névtérré való hozzáférésre biztosít a következő beépített RBAC-szerepkörök:
 
-A kezdeti nyilvános előzetes verzió csak hozzáadhat az Azure AD-fiókok és az egyszerű szolgáltatások a "Tulajdonos" vagy "Közreműködő" Event Hubs-névtér-szerepkörökhöz. Ez a művelet az identitás a névtérben lévő összes entitáshoz teljes hozzáférést biztosít. Felügyeleti műveleteket, amelyek a névtér topológia módosítása rendszer kezdetben csak támogatott, ha az Azure erőforrás-kezelést, és nem a natív Event hubs szolgáltatás REST-felügyeleti felületén keresztül. Ez a támogatás is azt jelenti, hogy a .NET-keretrendszer ügyfél [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objektum nem használható az Azure AD-fiókot.  
+A [Event Hubs-adatok tulajdonosa (előzetes verzió)](../role-based-access-control/built-in-roles.md#service-bus-data-owner) szerepkör lehetővé teszi az adatokhoz való hozzáférést az Event Hubs-névtér és az entitások (üzenetsorok, témakörök, előfizetések és szűrők)
+
+>[!IMPORTANT]
+> Korábban támogatva a felügyelt identitás hozzáadása a **tulajdonosa** vagy **közreműködői** szerepkör. Azonban, adat-hozzáférési jogosultságokat a **tulajdonosa** és **közreműködői** szerepkör már nem összes régió megfelel. Ha használja a **tulajdonosa** vagy **közreműködői** szerepkör, kapcsolót használó a **Event Hubs-adatok tulajdonosa** szerepkör.
+
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Event Hubs használata az Azure AD tartományi felhasználói fiók
 
@@ -44,7 +49,7 @@ Ha továbbra is szeretne létrehozni ebben a forgatókönyvben egy külön fiók
 
 ### <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-Ezután [Event Hubs-névtér létrehozása](event-hubs-create.md) RBAC Event hubs szolgáltatás előzetes támogató Azure-régiók egyikében: **USA keleti régiója**, **USA keleti régiója 2**, vagy **Nyugat-Európa**. 
+Ezután [Event Hubs-névtér létrehozása](event-hubs-create.md). 
 
 Miután létrejött a névteret, lépjen a **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **szerepkör-hozzárendelés hozzáadása** az Azure AD felhasználói fiók hozzáadása a tulajdonosi szerepkör. Saját felhasználói fiókját használja, és létrehozta a névteret, ha Ön már a tulajdonosi szerepkör. Egy másik fiókot ad hozzá a szerepkört, keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra. A felhasználói fiókot most már hozzáférhet az Event Hubs-névtér és az event hubs korábban hozott létre.
  

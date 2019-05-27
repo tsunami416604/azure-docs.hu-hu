@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
-ms.openlocfilehash: a48a72fe36b7925936758e844d959968ea921c65
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: aac60d3d4fd154847bdfae3dfb590b947e861e9e
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130772"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978821"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Alkalmazás üzembe helyezése az Azure App Service egy ZIP- vagy WAR-fájlt
 
@@ -95,7 +95,7 @@ További információkért lásd: [Kudu dokumentáció](https://github.com/proje
 
 ## <a name="deploy-war-file"></a>WAR-fájl telepítése
 
-A WAR-fájlt az App Service üzembe helyezéséhez https://<app_name>.scm.azurewebsites.net/api/wardeploy egy POST kérést küld. A POST kérelem üzenettörzsének tartalmaznia kell a .war fájlt. Az alkalmazás üzembehelyezési hitelesítő adatai a kérelemben alapszintű HTTP-hitelesítéssel vannak megadva. 
+A WAR-fájlt az App Service üzembe helyezéséhez küldjön egy POST kérelmet `https://<app_name>.scm.azurewebsites.net/api/wardeploy`. A POST kérelem üzenettörzsének tartalmaznia kell a .war fájlt. Az alkalmazás üzembehelyezési hitelesítő adatai a kérelemben alapszintű HTTP-hitelesítéssel vannak megadva.
 
 Az ALAPSZINTŰ HTTP-hitelesítést az App Service-üzembehelyezési hitelesítő adatokat kell. Az üzembe helyezési hitelesítő adatok beállítása, olvassa el [beállítása és a felhasználói szintű hitelesítő adatok alaphelyzetbe állítása](deploy-configure-credentials.md#userscope).
 
@@ -117,7 +117,7 @@ $password = "<deployment_password>"
 $filePath = "<war_file_path>"
 $apiUrl = "https://<app_name>.scm.azurewebsites.net/api/wardeploy"
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
-Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Method POST -InFile $filePath -ContentType "multipart/form-data"
+Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Method POST -InFile $filePath -ContentType "application/octet-stream"
 ```
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]

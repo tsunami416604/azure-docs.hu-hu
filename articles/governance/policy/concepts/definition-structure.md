@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b9fe723ca13cbee0e31b14e60a6bd740d2a282df
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779292"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979550"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -100,7 +100,8 @@ A paraméter a következő tulajdonságokat a szabályzat-definícióban haszná
   - `displayName`: A rövid név jelenik meg a paraméter a portálon.
   - `strongType`: (Nem kötelező) Használja a portálon keresztül a szabályzatdefiníció hozzárendelésekor. Környezet figyelembe listáját tartalmazza. További információkért lásd: [strongType](#strongtype).
   - `assignPermissions`: (Nem kötelező) Beállítás _igaz_ szeretné, hogy a szerepkör-hozzárendelések létrehozása a szabályzat-hozzárendelés során az Azure Portalon. Ez a tulajdonság akkor hasznos, abban az esetben, ha szeretne hozzárendelni kívánt hozzárendelési hatókör kívül engedélyeket. Egy szerepkör-hozzárendelés a házirendben a szerepkör-definíció (időszakonkénti, vagy minden kezdeményezésére a szabályzatokat a szerepkör-definíció) van. A paraméter értéke egy érvényes erőforrás vagy -hatókörön kell lennie.
-- `defaultValue`: (Nem kötelező) Beállítja a hozzárendelés a paraméter értékét, ha nincs érték megadva. Szükséges, amikor frissíti egy meglévő szabályzat-definíció, amely hozzá van rendelve.
+- `defaultValue`: (Nem kötelező) Beállítja a hozzárendelés a paraméter értékét, ha nincs érték megadva.
+  Szükséges, amikor frissíti egy meglévő szabályzat-definíció, amely hozzá van rendelve.
 - `allowedValues`: (Nem kötelező) Itt egy olyan értéktömböt, paraméterben hozzárendelés során.
 
 Például meghatározhat szabályzatdefiníció korlátozni a helyeken, ahol erőforrásokat is üzembe helyezhetők. A szabályzat-definíció egy paramétere lehet **allowedLocations**. Ez a paraméter az elfogadott értékek korlátozásának mindegyik szabályzatdefiníció-hozzárendelés volna használható. Használatát **strongType** nyújt hatékonyabb, ha a portálon keresztül a hozzárendelés befejezése:
@@ -268,8 +269,7 @@ A következő mezők támogatottak:
 - vlastnost aliasok -, lásd: [aliasok](#aliases).
 
 > [!NOTE]
-> `tags.<tagName>`, `tags[tagName]`, és `tags[tag.with.dots]` egy címkemező deklaráló továbbra is elfogadható módja.
-> Az előnyben részesített kifejezések azonban fent felsoroltak is.
+> `tags.<tagName>`, `tags[tagName]`, és `tags[tag.with.dots]` egy címkemező deklaráló továbbra is elfogadható módja. Az előnyben részesített kifejezések azonban fent felsoroltak is.
 
 #### <a name="use-tags-with-parameters"></a>Címkék használata paraméterekkel
 
@@ -293,7 +293,7 @@ A következő példában `concat` a címkék a mező keresési értékét nevű 
 }
 ```
 
-### <a name="value"></a>Value
+### <a name="value"></a>Érték
 
 Feltételek is alakítható használatával **érték**. **érték** feltételek alapján ellenőrzi [paraméterek](#parameters), [sablonfüggvények támogatott](#policy-functions), vagy literálok lehetnek.
 **érték** van párosítva bármely támogatott [feltétel](#conditions).

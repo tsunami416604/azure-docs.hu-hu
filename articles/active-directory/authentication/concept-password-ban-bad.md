@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc2c125df2e3455b0e90919dbca92fe497a4b1b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 50452dc5a0c2074c452878c890643f7b21591689
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415709"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977310"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Rossz jelszavak, a szervezet számára
 
@@ -75,7 +75,7 @@ A fenti jelszavak mindegyike külön nem egyezik a letiltott jelszavak "abcdef".
 
 Karakterláncrészletet megfelelő szolgál a normalizált jelszót ellenőrizze a felhasználó első és a Vezetéknév, valamint a bérlő neve (vegye figyelembe, hogy bérlői névegyeztetés nem történik meg egy Active Directory-tartományvezérlő jelszavak érvényesítése során).
 
-Példa: Tegyük fel, hogy van-e, amely a "J0hn123fb" jelszó visszaállítása szeretne John Doe felhasználó. Normalizálási, miután ezt a jelszót "john123fb" válnak. Megállapítja, hogy a jelszó tartalmazza-e a felhasználó utóneve "János" megfelelő karakterláncrészletet. Annak ellenére, hogy kifejezetten vagy letiltott jelszavak listán szereplő nem volt "J0hn123fb", "János" karakterláncrészletet megfelelő található a jelszót. Ezért ezt a jelszót szeretne elutasították.
+Példa: feltételezik, hogy van-e egy felhasználó, Pol jelszavuk "P0l123fb" kívánó. Normalizálási, miután ezt a jelszót "pol123fb" válnak. Megállapítja, hogy a jelszó tartalmazza-e a felhasználó utóneve "Pol" megfelelő karakterláncrészletet. Annak ellenére, hogy kifejezetten vagy letiltott jelszavak listán szereplő nem volt "P0l123fb", "Pol" karakterláncrészletet megfelelő található a jelszót. Ezért ezt a jelszót szeretne elutasították.
 
 #### <a name="score-calculation"></a>Pontszám számítási
 

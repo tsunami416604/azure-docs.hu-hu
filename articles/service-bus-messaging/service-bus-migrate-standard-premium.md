@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/18/2019
+ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 65f89e234317c5a17e4443e767528fb9be9a8b72
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 65c207b4d03e7d156c8c871a3642601fd0489ead
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687069"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991423"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>A prémium szint meglévő standard szintű Azure Service Bus-névterek áttelepítése
 Korábban az Azure Service Bus névtér csak a standard szinten érhető el. Névterek olyan több-bérlős beállítását, amely az alacsony átviteli sebesség és a fejlesztői környezetben vannak optimalizálva. A prémium szint dedikált erőforrások névterenként előre jelezhető késés és nagyobb átviteli sebesség, fix áron kínál. A prémium szint nagy átviteli sebességű és újabb nagyvállalati funkciókat igényelnek, éles üzemi környezetek van optimalizálva.
 
-Ez a cikk ismerteti a meglévő standard szintű névterek áttelepítése a prémium szint.
+Ez a cikk ismerteti a meglévő standard szintű névterek áttelepítése a prémium szint.  
 
 >[!WARNING]
 > Áttelepítési frissíteni kell a prémium szintű Service Bus a standard szintű névterek számára készült. Az áttelepítési eszköz alacsonyabb verziójúra változtatása nem támogatja.
@@ -33,6 +33,7 @@ Egyes megjegyezni pontok:
 - A **prémium** névteret kell **nincsenek entitások** , az áttelepítés sikeres. 
 - Az összes **entitások** a standard szintű névtérben vannak **másolt** a prémium névtérhez az áttelepítés során. 
 - Áttelepítés által támogatott **1000 entitás / üzenetkezelési egység** a prémium szint. Azonosíthatja a hány üzenetkezelési egység van szüksége, kezdje a jelenlegi standard névtérben rendelkező entitások száma. 
+- Nem lehet közvetlenül áttelepít **alapszintű csomag** való **premier szintű**, azonban az alapszintű, standard első és a standard, Premium, a következő lépésben a migrálással közvetve úgy van.
 
 ## <a name="migration-steps"></a>Migrálási lépések
 Az áttelepítési folyamat egyes feltételek tartoznak. Ismerje meg az alábbi lépéseket a hibázás lehetőségét csökkentése érdekében. Ezeket a lépéseket a migrálási folyamatot körvonalazzák, és a következő szakaszok a témakör részletesen láthatók.

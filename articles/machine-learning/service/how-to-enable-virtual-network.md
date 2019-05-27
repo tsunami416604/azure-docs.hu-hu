@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: fe51f4589075cb275e867c943c5d7df3e8d5d4a0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c1006aa21b3009bb7508c7a24ab501d39737261c
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795043"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978222"
 ---
-# <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Biztonságos futtatására kísérletek vagy következtetési egy Azure virtuális hálózaton belül
+# <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Biztonságos futtatására kísérletek tanuláshoz és következtetésekhez egy Azure virtuális hálózaton belül
 
-Ebből a cikkből elsajátíthatja a kísérletek és a egy virtuális hálózaton belül következtetési futtatásához. Virtuális hálózat biztonsági határt, a nyilvános interneten keresztül az Azure-erőforrások elkülönítése funkcionál. A helyszíni hálózathoz is csatlakozhat az Azure-beli virtuális hálózathoz. Lehetővé teszi, hogy biztonságosan a modellek betanítása és a telepített modelljeit következtetési eléréséhez.
+Ebből a cikkből elsajátíthatja a kísérletek tanuláshoz és következtetésekhez virtuális hálózatokon belüli futtatásáról. Virtuális hálózat biztonsági határt, a nyilvános interneten keresztül az Azure-erőforrások elkülönítése funkcionál. A helyszíni hálózathoz is csatlakozhat az Azure-beli virtuális hálózathoz. Lehetővé teszi, hogy biztonságosan a modellek betanítása és a telepített modelljeit következtetésekhez eléréséhez. Következtetésekhez vagy a modell pontozása, nem a fázis, az üzembe helyezett modell előrejelzési leggyakrabban a termelési adatok szolgál.
 
 Az Azure Machine Learning szolgáltatás más Azure-szolgáltatások számítási erőforrások is támaszkodik. A számítási erőforrások (számítási céljainak) segítségével betanítása és a modellek üzembe helyezése. Ezek a számítási céljainak egy virtuális hálózaton belül hozható létre. Például használhatja a Microsoft Data Science virtuális gép betanítja a modellt, és majd a modell üzembe helyezése az Azure Kubernetes Service (AKS). Virtuális hálózatokkal kapcsolatos további információkért lásd: a [Azure Virtual Network áttekintése](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
@@ -35,16 +35,16 @@ Jelen dokumentum céljából feltételezzük, hogy Ön ismeri az Azure-beli virt
 ## <a name="storage-account-for-your-workspace"></a>Storage-fiók a munkaterülethez
 
 > [!IMPORTANT]
-> A storage-fiókot csak Kísérletezési közben a virtuális hálózat mögött az Azure Machine Learning szolgáltatás munkaterületén csatolt helyezheti. Következtetési korlátlan hozzáférést a storage-fiók szükséges. Ha nem biztos benne, hogy módosította ezeket a beállításokat, vagy nem, lásd: __módosítsa az alapértelmezett hálózati hozzáférési szabály__ a [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](https://docs.microsoft.com/azure/storage/common/storage-network-security). A lépések segítségével engedélyezze a hozzáférést minden hálózatból elérhető következtetési közben.
+> A storage-fiókot csak Kísérletezési közben a virtuális hálózat mögött az Azure Machine Learning szolgáltatás munkaterületén csatolt helyezheti. Következtetésekhez korlátlan hozzáférést a storage-fiók szükséges. Ha nem biztos benne, hogy módosította ezeket a beállításokat, vagy nem, lásd: __módosítsa az alapértelmezett hálózati hozzáférési szabály__ a [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](https://docs.microsoft.com/azure/storage/common/storage-network-security). A lépések segítségével engedélyezze a hozzáférést minden hálózatból elérhető következtetésekhez során, vagy a modell pontozása.
 
-Azure Machine Learning-kísérletezés használandó virtuális hálózat az Azure Storage funkciókat kövesse az alábbi lépéseket:
+Az Azure Machine Learning-Kísérletezési képességek használata az Azure Storage mögött egy virtuális hálózatot, kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy Kísérletezési számítási ex. Learning Compute Machine mögött egy virtuális hálózatot, vagy egy Kísérletezési számítási csatolása ex a munkaterületen. HDInsight-fürt vagy a virtuális gép. További információkért lásd: [Machine Learning Compute](#use-machine-learning-compute) és [egy virtuális gép vagy HDInsight-fürt](#use-a-virtual-machine-or-hdinsight-cluster) szakaszok a jelen dokumentum
 2. Nyissa meg a storage, a munkaterülethez csatlakozik. ![Az Azure portál Azure Storage, amely csatlakozik az Azure Machine Learning szolgáltatás munkaterület képe](./media/how-to-enable-virtual-network/workspace-storage.png)
 3. Az Azure Storage oldalon válassza ki a __tűzfalak és virtuális hálózatok__. ![Kép az Azure portal megjelenítése a tűzfalak és virtuális hálózatok szakaszban Azure Storage az oldalon](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
-4. Az a __tűzfalak és virtuális hálózatok__ oldalon válassza ki a következőket:
+4. Az a __tűzfalak és virtuális hálózatok__ oldalon válassza ki az alábbi bejegyzéseket:
     - Válassza a __Kiválasztott hálózatok__ lehetőséget.
-    - A __virtuális hálózatok__ kiválasztása __meglévő virtuális hálózat hozzáadása__ hozzáadása a virtuális hálózatot, amelyben a Kísérletezési számítási található. (Lásd az 1. lépés.)
+    - A __virtuális hálózatok__válassza __meglévő virtuális hálózat hozzáadása__ hozzáadása a virtuális hálózatot, amelyben a Kísérletezési számítási található. (Lásd az 1. lépés.)
     - Válassza ki __engedélyezése megbízható Microsoft-szolgáltatások a tárfiók__.
 ![Kép az Azure portal megjelenítése a tűzfalak és virtuális hálózatok lapján az Azure Storage](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png) 
 
@@ -61,10 +61,10 @@ Key Vault-példány a munkaterülethez társított Azure Machine Learning szolg�
 
 Egy virtuális hálózati funkciókat a Key Vault használata az Azure Machine Learning-kísérletezés kövesse az alábbi lépéseket:
 1. Nyissa meg a Key Vault társítva a munkaterülethez. ![A Key Vault az Azure Machine Learning szolgáltatás munkaterülethez társított Azure portál képe](./media/how-to-enable-virtual-network/workspace-key-vault.png)
-2. A Key vaulttal lapon jelölje be __tűzfalak és virtuális hálózatok__ szakaszban. ![Lemezkép az Azure portal megjelenítése a tűzfalak és virtuális hálózatok, a Key Vault lapon szakasz](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
-3. Az a __tűzfalak és virtuális hálózatok__ oldalon válassza ki a következőket:
+2. A Key Vault oldalon válassza ki a __tűzfalak és virtuális hálózatok__ szakaszban. ![Lemezkép az Azure portal megjelenítése a tűzfalak és virtuális hálózatok, a Key Vault lapon szakasz](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
+3. Az a __tűzfalak és virtuális hálózatok__ oldalon válassza ki az alábbi bejegyzéseket:
     - Válassza a __Kiválasztott hálózatok__ lehetőséget.
-    - Alatt a __virtuális hálózatok__ kiválasztása __adja hozzá a meglévő virtuális hálózatok__ hozzáadása a virtuális hálózatot, amelyben a Kísérletezési számítási található.
+    - Alatt a __virtuális hálózatok__válassza __adja hozzá a meglévő virtuális hálózatok__ hozzáadása a virtuális hálózatot, amelyben a Kísérletezési számítási található.
     - Válassza ki __engedélyezése megbízható Microsoft-szolgáltatások a tűzfal megkerülését__.
 ![Lemezkép az Azure portal megjelenítése a tűzfalak és virtuális hálózatok lapon a Key vaultban](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png) 
 
@@ -101,7 +101,7 @@ A megadott virtuális hálózatban lévő virtuális gépek kiépítése Azure B
 
     ![Az Azure portál egy bejövő szabályt a BatchNodeManagement szolgáltatáscímke használatával képe](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
  
-- (nem kötelező) A bejövő TCP-forgalom engedélyezéséhez a távelérés 22-es port. Ez csak akkor van szükség, ha az SSH használata a nyilvános IP-cím a csatlakozni kíván.
+- (nem kötelező) A bejövő TCP-forgalom engedélyezéséhez a távelérés 22-es port. Ez a port csak akkor van szükség, ha az SSH használata a nyilvános IP-cím a csatlakozni kíván.
  
 - Kimenő forgalom bármilyen porton keresztül a virtuális hálózathoz.
 
@@ -129,8 +129,19 @@ Az alábbi képernyőképen látható, hogyan néz ki az NSG-szabály konfigurá
 
 ![Képernyőkép a kimenő NSG-t a Machine Learning Compute szabályok](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)
 
+### <a name="user-defined-routes-for-forced-tunneling"></a>Felhasználó által megadott útvonalak a kényszerített bújtatás
 
+Ha használja az Azure Machine Learning Compute kényszerített bújtatás, hozzá kell adnia [felhasználó által megadott útvonalak (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) az alhálózatra, amely a számítási erőforrást tartalmaz.
 
+* Egy felhasználó által megadott útvonal abban a régióban, ahol az erőforrások léteznek-e az Azure Batch szolgáltatás által használt IP-címeket. Ezek az udr-EK feladat ütemezésére a számítási csomópontok kommunikálnak a batch szolgáltatás engedélyezése. A Batch szolgáltatás az IP-címek listájának beolvasása, forduljon az Azure ügyfélszolgálatához.
+
+* Kimenő forgalom az Azure Storage (pontosabban az űrlap URL `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`, és `<account>.blob.core.windows.net`) nem a helyszíni hálózati berendezés blokkolja kell.
+
+A felhasználó által megadott útvonalak hozzáadásakor adja meg az egyes kapcsolódó Batch IP-címelőtag útvonalát, és állítsa be __következő ugrás típusa__ való __Internet__. Az alábbi képen egy példa az udr-t az Azure Portalon:
+
+![Példa egy címelőtag felhasználó által megadott útvonala](./media/how-to-enable-virtual-network/user-defined-route.png)
+
+További információkért lásd: a [Azure Batch-készlet létrehozása egy virtuális hálózaton belül](/azure/batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling) cikk.
 
 ### <a name="create-machine-learning-compute-in-a-virtual-network"></a>Hozzon létre a Machine Learning Compute a virtuális hálózaton
 
@@ -233,7 +244,7 @@ Virtuális gép vagy Azure HDInsight-fürt használata a munkaterület egy virtu
 > [!IMPORTANT]
 > Az Előfeltételek ellenőrzése és a lépések végrehajtása előtt a fürt IP-címzés tervezése. További információkért lásd: [hálózat az Azure Kubernetes Service speciális konfigurálása](https://docs.microsoft.com/azure/aks/configure-advanced-networking).
 > 
-
+>
 > Tartsa meg az alapértelmezett kimenő szabályokat az NSG. További információkért tekintse meg az alapértelmezett biztonsági szabályok az [biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
 >
 > Az Azure Kubernetes Service és az Azure virtuális hálózat ugyanabban a régióban kell lennie.
@@ -295,7 +306,7 @@ aks_target = ComputeTarget.create(workspace = ws,
                                   provisioning_configuration = config)
 ```
 
-A létrehozási folyamat befejezése után az AKS-fürt virtuális hálózat mögött következtetési teheti meg. További információkért lásd: [hogyan helyezhet üzembe az aks](how-to-deploy-to-aks.md).
+A létrehozási folyamat befejezése után következtetésekhez/pontszám a virtuális hálózat mögött egy AKS-fürtöt is. További információkért lásd: [hogyan helyezhet üzembe az aks](how-to-deploy-to-aks.md).
 
 ## <a name="next-steps"></a>További lépések
 

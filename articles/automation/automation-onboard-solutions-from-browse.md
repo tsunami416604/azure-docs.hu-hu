@@ -9,20 +9,20 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: df59342bebae3ac0f6e80e5b58f429fedf3c3336
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e6359d57a1f4cce6ec89fd76ef343b515cafae6e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739047"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133144"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Az Update Management, Change Tracking és Inventory megoldások a több virtuális gépen
 
 Az Azure Automation segítségével a megoldások kezelése az operációs rendszer biztonsági frissítéseit, nyomon követéséhez és szoftverleltár, a számítógépeken telepítve legyen. Gépek előkészítésének több módja van, a segítségével készítheti elő a megoldás [a virtuális gépről](automation-onboard-solutions-from-vm.md), az a [Automation-fiók](automation-onboard-solutions-from-automation-account.md), amikor a virtuális gépek tallózásával vagy által [runbook](automation-onboard-solutions.md). Ez a cikk előkészítést részletezi ezeket a megoldásokat az Azure virtual machines böngészésekor.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-ba a https://portal.azure.com címen
+Jelentkezzen be az Azure-ba a https://portal.azure.com címen.
 
 ## <a name="enable-solutions"></a>Megoldások engedélyezése
 
@@ -59,27 +59,10 @@ Ha a kiválasztott munkaterület nincs Automation-fiók van csatolva, látni fog
 
 ![Nincs munkaterület](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
-A megoldások engedélyezésekor csak bizonyos régiók esetén lehet összekapcsolni egy Log Analytics-munkaterületet és egy Automation-fiókot.
-
-Az alábbi táblázat bemutatja a támogatott leképezések:
-
-|**Log Analytics-munkaterület régiója**|**Az Azure Automation-régió**|
-|---|---|
-|Délkelet-Ausztrália|Délkelet-Ausztrália|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|USA keleti régiója<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|WestEurope|WestEurope|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP és az USA keleti régiója leképezések a Log Analytics-munkaterületek az Automation-fiókokhoz nem egy pontos régiók-hozzárendelést, de a megfelelő megfeleltetés.
-
-<sup>2</sup> kapacitás korlátozások miatt a régió nem érhető el új erőforrás létrehozásakor. Az Automation-fiókok és a Log Analytics-munkaterületekre is érvényes. A régió már létező kapcsolt erőforrások azonban továbbra is működik.
+> [!NOTE]
+> A megoldások engedélyezésekor csak bizonyos régiók esetén lehet összekapcsolni egy Log Analytics-munkaterületet és egy Automation-fiókot.
+>
+> A támogatott leképezés párok listáját lásd: [régió hozzárendelése Automation-fiók és a Log Analytics-munkaterület](how-to/region-mappings.md).
 
 Kapcsolja ki bármelyik virtuális gépet, amely nem szeretné engedélyezni, jelölőnégyzetét. Virtuális gépek, amelyek nem lehet engedélyezni a rendszer már sincs kijelölve.
 
@@ -122,6 +105,8 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás használ
 * Virtuális gép runbookok elindítása és leállítása
 * Változók
 
+Másik megoldásként is megszüntetheti a munkaterület az Automation-fiókjából a Log Analytics-munkaterület. Válassza ki a munkaterület **Automation-fiók** alatt **kapcsolódó erőforrások**. Az Automation-fiók oldalon válassza ki a **fiók leválasztása a**.
+
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 Amikor bevezetése több gépet, előfordulhat, hogy azt mutatják be, mint gépek **nem lehet engedélyezni a**. Másik oka miért bizonyos számítógépeken nem lehet engedélyezni. A következő szakaszok bemutatják a hiba lehetséges okai a **nem lehet engedélyezni a** állapot, a virtuális gép előkészítése tett kísérlet közben.
@@ -152,7 +137,7 @@ Amikor bevezetése több gépet, előfordulhat, hogy azt mutatják be, mint gép
 
 **Ok**: A klasszikus üzemi modellt használó virtuális gépek nem támogatottak.
 
-**Megoldás**: A virtuális gép áttelepítése a resource manager-alapú üzemi modellbe. Ezzel kapcsolatban lásd: [klasszikus üzemi modell erőforrások áttelepítése](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+**Megoldás**: A virtuális gép áttelepítése a Resource Manager-alapú üzemi modellbe. Ezzel kapcsolatban lásd: [klasszikus üzemi modell erőforrások áttelepítése](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 ### <a name="vm-is-stopped-deallocated"></a>Virtuális gép leállt. (felszabadítva)
 

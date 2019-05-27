@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: ca842ce46a58dafa87581b77bcbd802191f7fcd1
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: fd5a16334fff0319d7993fb2403a48d1777f6bce
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511032"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955344"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>A .NET Core ILogger naplókhoz ApplicationInsightsLoggerProvider
 
@@ -437,7 +437,7 @@ public class MyController : ApiController
 ```
 
 > [!NOTE]
-> Ha a Microsoft.ApplicationInsights.AspNetCore csomag segítségével az Application Insights engedélyezése, módosítsa a kód segítségével kérheti le `TelemetryClient` közvetlenül a konstruktor. Egy vonatkozó példáért lásd: [Ez a GYIK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core-no-visualstudio#frequently-asked-questions).
+> Ha a Microsoft.ApplicationInsights.AspNetCore csomag segítségével az Application Insights engedélyezése, módosítsa a kód segítségével kérheti le `TelemetryClient` közvetlenül a konstruktor. Egy vonatkozó példáért lásd: [Ez a GYIK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#frequently-asked-questions).
 
 
 ### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-or-where-can-i-see-ilogger-logs-in-application-insights"></a>Az Application Insights telemetria típusa előállított ILogger naplók? Vagy ahol látható ILogger naplók az Application Insights?

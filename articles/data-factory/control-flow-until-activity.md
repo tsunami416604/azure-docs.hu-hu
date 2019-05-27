@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447472"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66155171"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>UNTIL tevékenység az Azure Data Factoryban
 Until tevékenység ugyanazokat a funkciókat nyújtja, amely egy do-until ciklusos szerkezete a programozási nyelvek. Egy tevékenységkészletet futtat le ciklusosan addig, amíg a tevékenységhez rendelt feltétel igaz értéket nem ad vissza. Megadhat egy időtúllépési értéket az Until tevékenységhez a Data Factoryban. 
@@ -52,12 +52,12 @@ Until tevékenység ugyanazokat a funkciókat nyújtja, amely egy do-until ciklu
 
 ## <a name="type-properties"></a>Tulajdonságok
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | Neve a `Until` tevékenység. | String | Igen
-type | Meg kell **mindaddig, amíg**. | String | Igen
+name | Neve a `Until` tevékenység. | String | Igen
+típus | Meg kell **mindaddig, amíg**. | String | Igen
 kifejezés | IGAZ vagy hamis kifejezés | Kifejezés.  | Igen
-timeout | A do-until ciklus időtúllépés történik a megadott időpont után. | karakterlánc. `d.hh:mm:ss` (vagy) `hh:mm:ss`. Az alapértelmezett érték: 7 nap. Maximális érték: 90 napig. | Nem
+időtúllépés | A do-until ciklus időtúllépés történik a megadott időpont után. | karakterlánc. `d.hh:mm:ss` (vagy) `hh:mm:ss`. Az alapértelmezett érték: 7 nap. Maximális érték: 90 napig. | Nem
 Tevékenységek | Mindaddig, amíg a kifejezés eredménye végrehajtott tevékenységek `true`. | Tevékenységek tömbje. |  Igen
 
 ## <a name="example-1"></a>1. példa
