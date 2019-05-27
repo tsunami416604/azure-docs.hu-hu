@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2018
+ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: a053beb121e1b3c0db020094c29a9a1e0117da87
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 53185caa6a0492702035041a893f20a78cf1ea4d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203539"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65911244"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Kezelheti az Azure DDoS Protection szabványos az Azure portal használatával
 
@@ -189,7 +189,7 @@ Forgalmi naplók fog rendelkezni a következő mezőket:
 - Forrás IP-címe
 - Cél IP-címe
 - Forrásport 
-- Célport 
+- Célhely portja 
 - Protokoll típusa 
 - Kockázatcsökkentési során végrehajtott műveletek
 
@@ -203,6 +203,19 @@ A Microsoft közzétegyék az általuk [BreakingPoint Cloud](https://www.ixiacom
 - Az incidensmegoldási folyamatba, a DDoS-támadások optimalizálása
 - A dokumentum a DDoS-megfelelőség
 - A hálózati biztonsági csoportok betanítása
+
+## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>A DDoS protection-riasztások megtekintése az Azure Security Centerben
+
+Az Azure Security Center listáját tartalmazza [biztonsági riasztások](/azure/security-center/security-center-managing-and-responding-alerts), kapcsolatos problémák kivizsgálásához és elhárításához problémákat. Ezzel a szolgáltatással riasztásokat, beleértve a DDoS-támadás kapcsolatos riasztásokat és a közel időben a támadás kockázatainak csökkentésére végrehajtott műveletek egységes képet kaphat.
+Nincsenek a két meghatározott riasztások, látni fogja a bármely DDoS elleni támadás észlelési és kockázatenyhítő:
+
+- **DDoS-támadás észlelve a nyilvános IP-cím**: Ez a riasztás akkor jön létre, amikor a DDoS protection szolgáltatás azt észleli, hogy a nyilvános IP-címek egyike a cél DDoS-támadások.
+- **Nyilvános IP-címek megszűnése DDoS-támadások**: Ez a riasztás akkor jön létre, ha a nyilvános IP-cím a támadás rendelkezik lett problémák elhárításáról.
+A riasztások megtekintéséhez nyissa meg a **a Security Center** az Azure Portalon. A **veszélyforrások elleni védelem**válassza **biztonsági riasztások**. A következő képernyőképen látható egy példa a DDoS-támadás riasztásokat.
+
+![Az Azure Security Centerben a DDoS-riasztás](./media/manage-ddos-protection/ddos-alert-asc.png)
+
+A riasztások a nyilvános IP-címet, amely alatt a támadás, földrajzi és fenyegetésfelderítési információk és szervizelések lépések általános információkat tartalmaznak.
 
 ## <a name="permissions"></a>Engedélyek
 

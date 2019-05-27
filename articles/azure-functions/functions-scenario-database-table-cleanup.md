@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 19a5fe4c087d477ff15d2237a36d1c4ecaa0e070
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120670"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908187"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Csatlakozás az Azure SQL Database az Azure Functions használatával
 
-Ez a cikk bemutatja, hogyan hozzon létre egy ütemezett feladatot, amely egy Azure SQL Database-példányhoz csatlakozik az Azure Functions használatával. A függvénykód törli azokat a sorokat egy táblában az adatbázisban. Az új C# függvény egy előre meghatározott időzítő eseményindító sablonjához a Visual Studio 2017 alapján jön létre. Ennek támogatásához is meg kell adni egy adatbázis-kapcsolati karakterlánc, a függvényalkalmazáshoz egy alkalmazásbeállításhoz. Ebben a forgatókönyvben az adatbázison tömeges műveletet használja. 
+Ez a cikk bemutatja, hogyan hozzon létre egy ütemezett feladatot, amely egy Azure SQL Database-példányhoz csatlakozik az Azure Functions használatával. A függvénykód törli azokat a sorokat egy táblában az adatbázisban. Az új C# függvény egy előre meghatározott időzítő eseményindító sablonjához a Visual Studio 2019 alapján jön létre. Ennek támogatásához is meg kell adni egy adatbázis-kapcsolati karakterlánc, a függvényalkalmazáshoz egy alkalmazásbeállításhoz. Ebben a forgatókönyvben az adatbázison tömeges műveletet használja. 
 
 Ha ez az első élményre C# funkciók, olvassa el a [Azure Functions C# – fejlesztői referencia](functions-dotnet-class-library.md).
 
@@ -64,7 +64,7 @@ Meg kell korábban feltöltötte az alkalmazást az Azure-bA. Ha ezt még nem te
 
 Adja hozzá a NuGet-csomagot, amely már tartalmaz az SqlClient kell. A data access könyvtár egy SQL-adatbázishoz való kapcsolódáshoz van szükség.
 
-1. Nyissa meg a helyi függvényalkalmazás projektjét a Visual Studio 2017-ben.
+1. Nyissa meg a helyi függvényalkalmazás projektjét a Visual Studio 2019.
 
 1. A Megoldáskezelőben kattintson a jobb gombbal a függvényalkalmazás projektjét, és válassza a **NuGet-csomagok kezelése**.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359279"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119368"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -30,12 +30,12 @@ A Microsoft nyomatékosan javasolja a rendszergazdák engedélyezés felhasznál
 | --- | --- |
 | Jelszó | Többtényezős hitelesítés és az SSPR |
 | Biztonsági kérdések | SSPR Only |
-| E-mail-cím | SSPR Only |
-| A Microsoft Authenticator alkalmazás | Többtényezős hitelesítés és az SSPR nyilvános előzetes verzió |
+| E-mail cím | SSPR Only |
+| Microsoft Authenticator alkalmazás | Többtényezős hitelesítés és az SSPR nyilvános előzetes verzió |
 | OATH-token hardver | A többtényezős hitelesítés és az SSPR nyilvános előzetes verzió |
 | SMS | Többtényezős hitelesítés és az SSPR |
 | Hanghívás | Többtényezős hitelesítés és az SSPR |
-| Alkalmazásjelszók | Bizonyos esetekben csak a többtényezős hitelesítés |
+| Alkalmazásjelszavak | Bizonyos esetekben csak a többtényezős hitelesítés |
 
 ![Használja a bejelentkezési képernyőn hitelesítési módszerek](media/concept-authentication-methods/overview-login.png)
 
@@ -113,13 +113,13 @@ Egyéni biztonsági kérdések maximális hossza 200 karakternél hosszabb.
 * Bármely karakterkészlet segítségével határozza meg a kérdéseket és válaszokat, beleértve a Unicode-karaktereket.
 * A megadott kérdések száma nagyobb vagy egyenlő, amelyek korábban regisztrálásához szükséges kérdések száma kell lennie.
 
-## <a name="email-address"></a>E-mail-cím
+## <a name="email-address"></a>E-mail cím
 
 E-mail-cím áll rendelkezésre **csak az Azure AD önkiszolgáló jelszó-visszaállítási**.
 
 A Microsoft azt javasolja, hogy egy e-mail-fiókot, amely nincs szüksége a felhasználó Azure AD jelszó használatát.
 
-## <a name="microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás
+## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás
 
 A Microsoft Authenticator alkalmazás egy további, az Azure ad-ben munkahelyi vagy iskolai Microsoft-fiókja biztonsági szintet biztosít.
 
@@ -165,7 +165,7 @@ Az OATH-tokenek hardver részeként egy nyilvános előzetes verziója támogato
 Miután jogkivonatok beszerzett, fel kell tölteni egy vesszővel tagolt (CSV) fájlformátumban, például az egyszerű felhasználónév, sorozatszám, titkos kulcs, időtartam alatt, gyártó és modell, az alábbi példában.
 
 ```csv
-upn,serial number,secret key,timeinterval,manufacturer,model
+upn,serial number,secret key,time interval,manufacturer,model
 Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
 ```
 

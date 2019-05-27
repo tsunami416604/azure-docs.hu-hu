@@ -12,11 +12,11 @@ author: gauravmalhot
 ms.author: gamal
 manager: craigg
 ms.openlocfilehash: b62cbe75730da8c5764839d41887deb7e6cd0e90
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576332"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122611"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Az Azure Data Factory integrációs modul monitorozása  
 **Az Integration runtime** különböző adatintegrációs képességeket biztosít a különböző hálózati környezetekben az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modulok a Data Factory által kínált három típusa van:
@@ -45,15 +45,15 @@ Az alábbi táblázat ismerteti az Azure-beli integrációs modul a parancsmag �
 -------- | ------------- | 
 | Name (Név) | Az Azure-beli integrációs modul neve. |  
 | Állapot | Az Azure integrációs modul állapotának. | 
-| Hely | Az Azure-beli integrációs modul helye. További információk az Azure integrációs modul helye: [Bevezetés a saját üzemeltetésű integrációs](concepts-integration-runtime.md). |
+| Location egység | Az Azure-beli integrációs modul helye. További információk az Azure integrációs modul helye: [Bevezetés a saját üzemeltetésű integrációs](concepts-integration-runtime.md). |
 | DataFactoryName | Az adat-előállítóhoz tartozó az Azure-beli integrációs modul neve. | 
 | ResourceGroupName | Az erőforráscsoporthoz tartozik, az adat-előállító neve.  |
 | Leírás | Az integrációs modul leírása.  |
 
-### <a name="status"></a>status
+### <a name="status"></a>Állapot
 A következő táblázat tartalmazza az Azure-beli integrációs modul lehetséges állapotok:
 
-| status | Megjegyzések és forgatókönyvek | 
+| Állapot | Megjegyzések és forgatókönyvek | 
 | ------ | ------------------ |
 | Online | Az Azure-beli integrációs modul áll a használatra kész. | 
 | Offline | Az Azure-beli integrációs modul az offline állapotú egy belső hiba miatt. |
@@ -71,8 +71,8 @@ Az alábbi táblázat ismerteti tulajdonságainak figyelési **minden csomópont
 | Tulajdonság | Leírás | 
 | -------- | ----------- | 
 | Name (Név) | A saját üzemeltetésű integrációs modul és a hozzá társított csomópontok neve. Csomópont egy helyszíni Windows-gépen, amelyen a saját üzemeltetésű integrációs modul telepítve. |  
-| status | Az általános saját üzemeltetésű integrációs modult és minden egyes csomópont állapotát. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért tekintse meg a következő szakaszban. | 
-| Verzió | A saját üzemeltetésű integrációs modult és minden egyes csomópont verziója. A saját üzemeltetésű integrációs modul verzióját határozza meg a csoport csomópontjának többsége verzióján alapul. Ha a saját üzemeltetésű integrációs modul telepítése különböző verziójú csomópontok, csak a csomópontok, a logikai verziószámmal saját üzemeltetésű integrációs modul függvény megfelelően. Mások a korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés nem működik). | 
+| Állapot | Az általános saját üzemeltetésű integrációs modult és minden egyes csomópont állapotát. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért tekintse meg a következő szakaszban. | 
+| Version | A saját üzemeltetésű integrációs modult és minden egyes csomópont verziója. A saját üzemeltetésű integrációs modul verzióját határozza meg a csoport csomópontjának többsége verzióján alapul. Ha a saját üzemeltetésű integrációs modul telepítése különböző verziójú csomópontok, csak a csomópontok, a logikai verziószámmal saját üzemeltetésű integrációs modul függvény megfelelően. Mások a korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés nem működik). | 
 | Elérhető memória | Rendelkezésre álló memória egy saját üzemeltetésű integrációs modul csomópontján. Ez az érték közel valós idejű pillanatképet. | 
 | Processzorkihasználtság | Egy saját üzemeltetésű integration runtime csomópontja CPU-felhasználását. Ez az érték közel valós idejű pillanatképet. |
 | Hálózatkezelés (In/Out) | Egy saját üzemeltetésű integration runtime csomópontja hálózatfelhasználásáról. Ez az érték közel valós idejű pillanatképet. | 
@@ -92,7 +92,7 @@ A számított alapértelmezett érték az Azure Portalon felül lehet bírálni.
 ### <a name="status-per-node"></a>Állapot (csomópontonkénti)
 Az alábbi táblázatban egy saját üzemeltetésű integration runtime csomópontját a lehetséges állapotok:
 
-| status | Leírás |
+| Állapot | Leírás |
 | ------ | ------------------ | 
 | Online | Csomópont csatlakoztatva van a Data Factory szolgáltatásban. |
 | Offline | Csomópont offline állapotban. |
@@ -105,7 +105,7 @@ Egy csomópont inaktív lehet, ha a többi csomópont nem tud kapcsolódni.
 ### <a name="status-overall-self-hosted-integration-runtime"></a>Állapot (általános saját üzemeltetésű integrációs modul)
 A következő táblázat a lehetséges állapotok egy saját üzemeltetésű integrációs modul. Ez az állapot attól függ, hogy az összes olyan csomópontot, a futásidejű tartozó állapotok. 
 
-| status | Leírás |
+| Állapot | Leírás |
 | ------ | ----------- | 
 | Regisztráció szükséges | Nem csomópont még a saját üzemeltetésű integrációs modul regisztrálva. |
 | Online | Összes csomópontja online állapotban. |
@@ -164,7 +164,7 @@ Az Azure-SSIS integrációs modul, az Azure virtuális gépeken (vagy csomópont
 | OtherErrors | A nem csomópont-specifikus műveletet igénylő hibák az Azure-SSIS integrációs modulban. |
 | LastOperation | Az Azure-SSIS integrációs modul sem gyakorlatban hasznosítható hibákkal utolsó indítása és leállítása műveletet eredménye. |
 | Állapot | Az általános állapota (kezdeti/indítása/indítása/leállítása/leállítva) az Azure-SSIS integrációs modult. |
-| Hely | Az Azure-SSIS integrációs modul helye. |
+| Location egység | Az Azure-SSIS integrációs modul helye. |
 | NodeSize | Az egyes csomópontok az Azure-SSIS integrációs modul méretét. |
 | NodeCount | Az Azure-SSIS integrációs modult a csomópontok számát. |
 | MaxParallelExecutionsPerNode | Az Azure-SSIS integrációs modult a csomópontonkénti párhuzamos végrehajtások száma. |
@@ -174,8 +174,8 @@ Az Azure-SSIS integrációs modul, az Azure virtuális gépeken (vagy csomópont
 | CatalogPricingTier | A meglévő Azure SQL Database-kiszolgáló által üzemeltetett SSISDB tarifacsomagja.  Az Azure SQL Database felügyelt példányain SSISDB üzemeltetési nem alkalmazható. |
 | VNetId | A virtuális hálózati erőforrás-azonosító az Azure-SSIS integrációs modullal való csatlakozásra. |
 | Alhálózat | Az alhálózat neve az Azure-SSIS integrációs modul csatlakozni. |
-| ID (Azonosító) | Erőforrás-Azonosítóját az Azure-SSIS integrációs modult. |
-| Typo | A típusa (felügyelt/önkiszolgáló-Hosted) az Azure-SSIS integrációs modult. |
+| azonosító | Erőforrás-Azonosítóját az Azure-SSIS integrációs modult. |
+| Típus | A típusa (felügyelt/önkiszolgáló-Hosted) az Azure-SSIS integrációs modult. |
 | ResourceGroupName | Az Azure-erőforráscsoport, amelyben az adat-előállító és az Azure-SSIS integrációs modul létrehozott neve. |
 | DataFactoryName | Az Azure-beli adat-előállító neve. |
 | Name (Név) | Az Azure-SSIS integrációs modul neve. |
@@ -184,10 +184,10 @@ Az Azure-SSIS integrációs modul, az Azure virtuális gépeken (vagy csomópont
   
 ### <a name="status-per-node"></a>Állapot (csomópontonkénti)
 
-| status | Leírás |
+| Állapot | Leírás |
 | ------ | ----------- | 
 | Indítás | Ez a csomópont előkészítésére. |
-| Elérhető | Ez a csomópont készen áll a SSIS-csomagok üzembe helyezése/végrehajtását. |
+| Szabad | Ez a csomópont készen áll a SSIS-csomagok üzembe helyezése/végrehajtását. |
 | Újrahasznosítása | Ez a csomópont folyamatban javítani vagy újraindítása. |
 | Nem elérhető | Ez a csomópont nem áll készen az SSIS-csomagok üzembe helyezése/futtathat, és gyakorlatban hasznosítható hibák vagy problémák feloldására. |
 

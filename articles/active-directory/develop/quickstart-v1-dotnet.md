@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beccd3f28cd3f5de3ef777b80c53651c76017619
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: a2d9639c21e201db1df5145caf1345d4f0879af6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545632"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121945"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>Gyors útmutató: A felhasználók és a Microsoft Graph API hívása egy .NET (WPF) asztali alkalmazásból
 
@@ -57,13 +57,15 @@ Ahhoz, hogy az alkalmazást, hogy a jogkivonatok lekérésére, az alkalmazás r
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Az a felső menüsávon válassza ki a fiókját és a **Directory** menüben válassza ki az Active Directory-bérlőt, az alkalmazásokat regisztrálni szeretne.
 3. Válassza ki a **minden szolgáltatás** a bal oldali navigációs válassza **Azure Active Directory**.
-4. A **alkalmazásregisztrációk**, válassza a **Hozzáadás**.
-5. Kövesse az utasításokat, és hozzon létre egy új **natív** ügyfélalkalmazás.
-    * A **neve** az alkalmazás ismerteti az alkalmazást a végfelhasználók számára
-    * A **átirányítási URI-t** sémát és karakterlánc kombinációja, amely az Azure AD a jogkivonatválaszok visszaadására fog használni. Adja meg például egy adott értéket az alkalmazás `http://DirectorySearcher`.
+4. A **alkalmazásregisztrációk**, válassza a **új regisztrációs**.
+5. Kövesse az utasításokat követve hozzon létre egy új ügyfélalkalmazást.
+    * A **név** az alkalmazás neve, amely a végfelhasználók számára ad leírást az alkalmazásról.
+    * A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
+    * Az **Átirányítási URI** egy sémából és sztringből álló kombináció, amelyet az Azure AD jogkivonatválaszok visszaadására használ. Adjon meg egy értéket, az alkalmazás adott (például `http://DirectorySearcher`) és a korábbi átirányítási URI-t adatai alapján. Is **(asztali és mobil) nyilvános ügyfél** a legördülő listából. 
 
 6. Miután végrehajtotta a regisztráció, AAD rendeli az alkalmazást egy egyedi azonosítóját. Ez az érték kell a következő szakaszokban, ezért másolja ki az alkalmazás oldaláról.
-7. Az a **beállítások** lapon a **szükséges engedélyek** válassza **Hozzáadás**. Válassza ki **Microsoft Graph** az API-ként, majd a **delegált engedélyek** adja hozzá a **címtáradatok olvasása** engedéllyel. Ez az engedély beállítása lehetővé teszi, hogy az alkalmazás a felhasználók számára a Graph API lekérdezéséhez.
+7. Az a **API-engedélyek** lapon jelölje be **adjon hozzá egy engedélyt**. Belül **API kiválasztása** kiválasztása ***Microsoft Graph***.
+8. Alatt **delegált engedélyek**, válassza ki az engedély **User.Read**, majd kattintson a **Hozzáadás** mentéséhez. Ez az engedély lehetővé teszi az alkalmazás számára a felhasználók lekérdezését az Azure AD Graph API-n keresztül.
 
 ## <a name="step-2-install-and-configure-adal"></a>2. lépés: Telepítse és konfigurálja az adal-t
 

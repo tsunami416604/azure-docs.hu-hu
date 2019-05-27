@@ -16,11 +16,11 @@ ms.date: 11/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c61313190615c2f30a7d37202bc0f9bcf14d800
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449526"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66112880"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Felügyelt identitások az Azure-erőforrások konfigurálása-beli virtuális gépen az Azure CLI használatával
 
@@ -118,7 +118,7 @@ Ebben a szakaszban megtudhatja hogyan adhat hozzá, és távolítsa el a felhasz
 
 Egy felhasználó által hozzárendelt identitással hozzárendelése egy virtuális Gépet annak létrehozásakor, a fióknak rendelkeznie kell a [virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseket. Nincsenek további Azure AD-címtár szerepkör-hozzárendelések szükségesek.
 
-1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoportot. Hozzon létre egy [erőforráscsoport](~/articles/azure-resource-manager/resource-group-overview.md#terminology) tartalmazási és telepítéséhez, a felhasználó által hozzárendelt felügyelt identitást, használatával [az csoport létrehozása](/cli/azure/group/#az-group-create). Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. :
+1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoportot. Hozzon létre egy [erőforráscsoport](~/articles/azure-resource-manager/resource-group-overview.md#terminology) tartalmazási és telepítéséhez, a felhasználó által hozzárendelt felügyelt identitást, használatával [az csoport létrehozása](/cli/azure/group/#az-group-create). Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. : 
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>

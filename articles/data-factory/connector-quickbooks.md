@@ -122,7 +122,7 @@ Adatok másolása a QuickBooks online-hoz, állítsa be a forrás típusaként a
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **QuickBooksSource** | Igen |
-| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

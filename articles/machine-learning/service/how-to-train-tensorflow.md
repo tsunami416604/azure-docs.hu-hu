@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d5751ab96dc6b44229e2b18b832a570930058ca
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 82c9aa961221b582bb16438f30a0584232164393
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442351"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65915098"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Tensorflow-hoz és a Keras modellek Azure Machine Learning szolgáltatással
 
@@ -28,7 +28,7 @@ A `TensorFlow` estimator Ezenfelül készít egy absztrakciós réteget végreha
 
 Mivel a `TensorFlow` estimator osztály hasonlít az alapszintű [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py), azt javasoljuk, hogy először olvassa el a [Estimator útmutató cikkét](how-to-train-ml-models.md) címtérrel kapcsolatos fogalmak megismeréséhez.
 
-Az Azure Machine Learning szolgáltatás használatába [a rövid útmutató](quickstart-run-cloud-notebook.md). Ha elkészült, rendelkezni fog egy [Azure Machine Learning-munkaterületet](concept-azure-machine-learning-architecture.md#workspace) és az összes a [notebookok minta](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml) beleértve a tensorflow-hoz és a Keras képzési dnn-eket.
+Az Azure Machine Learning szolgáltatás használatába [a rövid útmutató](quickstart-run-cloud-notebook.md). Ha elkészült, rendelkezni fog egy [Azure Machine Learning-munkaterületet](concept-workspace.md) és az összes a [notebookok minta](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml) beleértve a tensorflow-hoz és a Keras képzési dnn-eket.
 
 ## <a name="single-node-training"></a>Egy csomópontos képzés
 

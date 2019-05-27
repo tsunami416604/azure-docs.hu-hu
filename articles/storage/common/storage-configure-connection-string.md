@@ -9,12 +9,12 @@ ms.date: 04/12/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7029f07b494630cc1ebe4a2dbfb297e73d85ec5e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ef01cf194ea7a0afea033d2888df946208073e41
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153189"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65874124"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Configure Azure Storage connection strings (Az Azure Storage kapcsolati sztringek konfigurálása)
 
@@ -35,7 +35,7 @@ Az alkalmazás az Azure Storage-kérelmek hitelesítéséhez futásidőben a kap
 
 A kapcsolati karakterlánc egy konfigurációs fájl tárolása megkönnyíti a storage emulator és a felhőben egy Azure storage-fiók közötti váltáshoz a kapcsolati karakterlánc frissítése. Csak akkor módosíthatók a kapcsolati karakterláncot, hogy a célkörnyezetben mutasson.
 
-Használhatja a [a Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) eléréséhez a kapcsolati karakterláncot, függetlenül attól, ahol az alkalmazás fut-e futásidőben.
+Használhatja a [a Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) eléréséhez a kapcsolati karakterláncot, függetlenül attól, ahol az alkalmazás fut-e futásidőben.
 
 ## <a name="create-a-connection-string-for-the-storage-emulator"></a>A storage Emulator kapcsolati karakterlánc létrehozása
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
@@ -107,7 +107,7 @@ Ha már hozzárendelt egy storage-végpont egyéni tartományt, és hagyja ki, h
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Hozzon létre egy kapcsolati karakterláncot egy végpont utótagja
-Hozzon létre egy kapcsolati karakterláncot a régiókban, vagy a példányok különböző végpont utótagok, a storage szolgáltatás például az Azure China vagy az Azure Government, használja a következő kapcsolati karakterlánc formátuma. Azt jelzi, hogy kívánja-e a tárfiók (ajánlott) HTTPS-en keresztül csatlakozni vagy a HTTP, cserélje le `myAccountName` cserélje a tárfiókja nevére, `myAccountKey` a tárfiók hozzáférési kulcsát, és cserélje le a `mySuffix` az URI utótaggal:
+Hozzon létre egy kapcsolati karakterláncot, a storage szolgáltatás régiókban, vagy másik végpont utótagok, a példányok például az Azure China 21Vianet vagy az Azure Government, használja a következő kapcsolati karakterlánc formátuma. Azt jelzi, hogy kívánja-e a tárfiók (ajánlott) HTTPS-en keresztül csatlakozni vagy a HTTP, cserélje le `myAccountName` cserélje a tárfiókja nevére, `myAccountKey` a tárfiók hozzáférési kulcsát, és cserélje le a `mySuffix` az URI utótaggal:
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -116,7 +116,7 @@ AccountKey=myAccountKey;
 EndpointSuffix=mySuffix;
 ```
 
-Íme egy példa tárolási szolgáltatások Azure China a kapcsolati karakterláncot:
+Íme egy példa kapcsolati karakterláncára az Azure China 21Vianet tárolási szolgáltatások:
 
 ```
 DefaultEndpointsProtocol=https;

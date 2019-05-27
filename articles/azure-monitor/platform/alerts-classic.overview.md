@@ -5,14 +5,14 @@ author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/29/2018
+ms.date: 05/19/2018
 ms.author: robb
-ms.openlocfilehash: 0d91e12de075ee6efebe39fd5ab582d4998046f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 96183e22f0aeafc681a782e7d3d8bd29a6ec9617
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776635"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914705"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik azok a Microsoft Azure klasszikus riasztások?
 
@@ -24,7 +24,7 @@ Riasztások lehetővé teszik a feltételek konfigurálása adatokon, és értes
 
 ## <a name="old-and-new-alerting-capabilities"></a>Régi és Új riasztási képességek
 
-Az Azure Monitor, az Application Insights, a Log Analytics és a Service Health kellett külön elmúlt riasztási funkciókat. Az Azure túlóra, továbbfejlesztett, és a felhasználói felület és a különböző módszerek riasztások kombinált. A konszolidáció még folyamatban van. Riasztások
+Az Azure Monitor, az Application Insights, a Log Analytics és a Service Health kellett külön elmúlt riasztási funkciókat. Az Azure túlóra, továbbfejlesztett, és a felhasználói felület és a különböző módszerek riasztások kombinált. A konszolidáció még folyamatban van.
 
 Csak a klasszikus riasztások felhasználói képernyő az Azure Portalon a klasszikus riasztások is megtekintheti. Az ezen a képernyőn megjelenik a **klasszikus riasztások megtekintése** a riasztások képernyőn megjelenő gomb. 
 

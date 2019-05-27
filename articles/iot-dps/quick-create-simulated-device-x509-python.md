@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 6a62e75fadad14148f5f82da3a213d4b13cbe343
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12ccff3676cb35ac27126360dbcf5a1b9b3e131f
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61250798"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914148"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált X.509-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Python eszközoldali SDK-val
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -34,7 +34,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése 
 
-1. Győződjön meg arról, hogy a [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/) vagy a [Visual Studio 2017](https://www.visualstudio.com/vs/) telepítve van a gépen. A Visual Studio telepítésekor engedélyezni kell az „Asztali fejlesztés C++ használatával” számítási feladatot.
+1. Győződjön meg arról, hogy telepítette, vagy [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 vagy újabb verzió, az "asztali fejlesztés C++" számítási feladat, a Visual Studio telepítésekor engedélyezni.
 
 2. Töltse le és telepítse a [CMake buildelési rendszert](https://cmake.org/download/).
 

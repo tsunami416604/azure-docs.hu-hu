@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 08/25/2017
+ms.date: 05/17/2019
 ms.author: yizhon
-ms.openlocfilehash: a0099fa085e21c381b74dc2690ffcf0870345f21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d758d761e560642de76e149c83fc6898aa78bafb
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401241"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65910328"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Az Azure IoT eszközoldali SDK-t a c nyelvhez készült
 
@@ -126,7 +126,7 @@ A Windows verziója a **iothub_client\_minták\_iothub_convenience_sample** alka
   ![Visual Studio Solution Explorer](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
 > [!NOTE]
-> Ha megnyitja a projektet a Visual Studio 2017, fogadja el az utasításokat a legújabb verzióra a projekt átirányítása.
+> Ha a Visual Studio átirányítása a legújabb verzióra a projekt kéri, fogadja el a rendszer.
 
 Ez a megoldás egyetlen projekt tartalmazza. Van telepítve Ez a megoldás a négy NuGet-csomagok:
 
@@ -339,7 +339,7 @@ Belül a **szerializáló** mappájában a [azure-iot-sdk-c adattár](https://gi
   ![A Visual Studio-megoldás mqtt-minta](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
 > [!NOTE]
-> Ha megnyitja a projektet a Visual Studio 2017, fogadja el az utasításokat a legújabb verzióra a projekt átirányítása.
+> Ha a Visual Studio átirányítása a legújabb verzióra a projekt kéri, fogadja el a rendszer.
 
 Csakúgy, mint az előző mintától, ez egy több NuGet-csomagot tartalmazza:
 

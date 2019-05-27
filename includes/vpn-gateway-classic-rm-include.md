@@ -2,18 +2,17 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: vpn-gateway
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 03/21/2018
-ms.date: 12/24/2018
-ms.author: v-jay
+ms.date: 03/21/2018
+ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 07d32faf2416de554c84a5a26520bcdf0398f406
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60365127"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121278"
 ---
 Az Azure jelenleg két üzembe helyezési modellel működik: Resource Manager és klasszikus. A két modell nem teljesen kompatibilis egymással. Mielőtt belekezdene, tudnia kell, hogy melyik modellben kíván dolgozni. További információt az üzembehelyezési modellekről [az üzembehelyezési modellek ismertetésében](../articles/resource-manager-deployment-model.md) talál. Ha még nem ismeri az Azure-t, javasoljuk, hogy használja a Resource Manager-alapú üzemi modellt.

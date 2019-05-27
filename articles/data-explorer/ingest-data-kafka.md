@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 11/19/2018
-ms.openlocfilehash: 180053aa2146d8ab80df832044ac3ee4d45970da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/17/2019
+ms.openlocfilehash: f36acb7237438848a53fdf91c291c4f67233af5d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60445607"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901021"
 ---
 # <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Gyors útmutató: Betölteni az adatokat a Kafkából az Azure Data Explorer
  
@@ -22,11 +22,11 @@ Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési s
  
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. 
  
-* [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
+* [Egy teszt fürt és az adatbázis](create-cluster-database-portal.md).
  
-* [Egy mintaalkalmazás](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) , amely adatokat állít elő, és elküldi azokat a Kafka
+* [Egy mintaalkalmazás](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) , amely adatokat állít elő, és elküldi azokat a Kafka.
 
-* A [Visual Studio 2017 szoftver 15.3.2-es vagy újabb verziója](https://www.visualstudio.com/vs/) a mintaalkalmazás futtatásához
+* [A Visual Studio 2019](https://visualstudio.microsoft.com/vs/) , futtassa a mintaalkalmazást.
  
 ## <a name="kafka-connector-setup"></a>A Kafka-összekötő telepítése
 
@@ -43,7 +43,7 @@ git clone git://github.com:Azure/kafka-sink-azure-kusto.git
 cd ./kafka-sink-azure-kusto/kafka/
 ```
 
-#### <a name="build"></a>Felépítés
+#### <a name="build"></a>Build
 
 Helyileg készítése a Mavennel előállításához egy `.jar` függőségekkel befejeződött.
 

@@ -14,11 +14,11 @@ ms.workload: NA
 ms.date: 03/22/2019
 ms.author: aljo
 ms.openlocfilehash: 2e9c41409c1f528947e3bef281e9a3c34da39e9b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050442"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66119160"
 ---
 # <a name="enable-disk-encryption-for-service-fabric-windows-cluster-nodes"></a>Disk encryption Windows uzly clusteru service fabric-szolgáltatás engedélyezése 
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
 * Telepítse a legújabb [Azure CLI-vel](/cli/azure/install-azure-cli) , amely rendelkezik az új titkosítási parancsait.
 * Telepítse a legújabb verzióját, [Azure SDK-t az Azure PowerShell](https://github.com/Azure/azure-powershell/releases) kiadás. A virtuális gép méretezési ADE parancsmagjaival engedélyezhetik a következők ([beállítása](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) titkosítási, lekérése ([első](/powershell/module/az.compute/get-azvmssvmdiskencryption)) titkosítási állapotát, és távolítsa el ([letiltása](/powershell/module/az.compute/disable-azvmssdiskencryption)) titkosítás a méretezési csoportban a példány.
 
-| Parancs | Verzió |  Forrás  |
+| Parancs | Version |  Source  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 vagy újabb | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 vagy újabb | Az.Compute |

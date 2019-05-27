@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/29/2098
+ms.date: 05/20/2019
 ms.author: rajanaki
-ms.openlocfilehash: aa135fef2850a692d45d932c15d4be74ccba5724
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1d36145b2a38c0f1106b4468eab226996e270ae1
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925700"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65922177"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Az Azure – Azure replikációs a mobilitási szolgáltatás automatikus frissítése
 
@@ -535,3 +535,14 @@ Ha nem engedélyezi az automatikus frissítések, tekintse meg a következő gya
 - **Hiba**: Futtató fiók nem található. Vagy ezek egyikét törölték, vagy nem lett létrehozva: Azure Active Directory-alkalmazás, szolgáltatásnév, szerepkör, Automation-tanúsítvány, Automation-kapcsolatobjektum - vagy az ujjlenyomat nem azonos a tanúsítvány és a kapcsolat. 
 
     **Javasolt művelet**: Törölje, majd [hozza létre újból a futtató fiók](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+
+-  **Hiba**: Az Azure Run as az automation-fiók által használt tanúsítvány érvényessége hamarosan lejár. 
+
+    A futtató fiókhoz létrehozott önaláírt tanúsítvány lejár, a létrehozás dátumától számítva egy év. A tanúsítványt bármikor meg lehet újítani a lejárata előtt. Előfizetett e-mail értesítések, ha is kap e-maileket, ha intézkedésre szükség a oldaláról. Ez a hiba jelenik meg a lejárati dátum előtt 2 hónapra, és a kritikus hiba változik, ha a tanúsítvány lejárt. Miután a tanúsítvány lejárt, az automatikus frissítés nem fognak működni amíg megújítása azonos.
+
+   **Javasolt művelet**: Kattintson a "Javítás", majd tanúsítvány megújítása a probléma megoldásához.
+    
+   ![renew-cert](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
+
+> [!NOTE]
+> Miután a tanúsítvány megújításához frissítse a lapot, hogy a jelenlegi állapota frissül.

@@ -14,11 +14,11 @@ ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445143"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122676"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Folyamatok figyelése és felügyelete az Azure Data Factory az Azure portal és a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ Ez a szakasz azt is ismerteti, hogyan adatkészletet szelet átvált egy állapo
 #### <a name="diagram-view-of-your-data-factory"></a>Az adat-előállító diagramnézete
 A **Diagram** adat-előállító nézetét biztosítja tekinthesse felügyelhető és kezelhető a data factory és az eszközök. Megtekintheti a **Diagram** tekintse meg az adat-előállító, kattintson **Diagram** a data Factory kezdőlapján.
 
-![Diagramnézet](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
+![Diagram nézet](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
 Nagyítás, Kicsinyítés, szélességhez, kicsinyíthet, 100 %, a diagram elrendezését zárolása és automatikusan elhelyezheti a folyamatokat és adatkészletek nagyítás. Megtekintheti az adatok leszármaztatási információkat is (azaz megjelenítése a kijelölt elemek fölérendelt vagy alárendelt elemeinek).
 
@@ -107,10 +107,10 @@ Az adatkészlet szeleteit adat-előállító a következő állapotok egyike leh
 <td>ActivityResume</td><td>A tevékenység szüneteltetve van, és nem tudja futtatni a szeletet, amíg a tevékenység folytatása.</td>
 </tr>
 <tr>
-<td>Retry</td><td>Tevékenység-végrehajtási lesz hajtva.</td>
+<td>Ismét</td><td>Tevékenység-végrehajtási lesz hajtva.</td>
 </tr>
 <tr>
-<td>Ellenőrzés</td><td>Érvényesítés még nem indul el.</td>
+<td>Érvényesítés</td><td>Érvényesítés még nem indul el.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Érvényesítés újrapróbálására vár.</td>
@@ -123,13 +123,13 @@ Az adatkészlet szeleteit adat-előállító a következő állapotok egyike leh
 <td>A szelet feldolgozása folyamatban van.</td>
 </tr>
 <tr>
-<td rowspan="4">Meghiúsult</td><td>TimedOut</td><td>A tevékenység-végrehajtási a tevékenység által engedélyezett hosszabb időt vett igénybe.</td>
+<td rowspan="4">Sikertelen</td><td>TimedOut</td><td>A tevékenység-végrehajtási a tevékenység által engedélyezett hosszabb időt vett igénybe.</td>
 </tr>
 <tr>
 <td>Megszakítva</td><td>A szelet felhasználói művelet megszakította.</td>
 </tr>
 <tr>
-<td>Ellenőrzés</td><td>Az érvényesítés nem sikerült.</td>
+<td>Érvényesítés</td><td>Az érvényesítés nem sikerült.</td>
 </tr>
 <tr>
 <td>-</td><td>A szelet generált kell és/vagy érvényesítése nem sikerült.</td>
@@ -137,10 +137,10 @@ Az adatkészlet szeleteit adat-előállító a következő állapotok egyike leh
 <td>Kész</td><td>-</td><td>A szelet készen áll a felhasználásra.</td>
 </tr>
 <tr>
-<td>Kihagyva</td><td>None</td><td>A szelet feldolgozás alatt nem.</td>
+<td>Kihagyva</td><td>Egyik sem</td><td>A szelet feldolgozás alatt nem.</td>
 </tr>
 <tr>
-<td>None</td><td>-</td><td>A szelet használt létezett egy eltérő állapottal, de azt vissza lett állítva.</td>
+<td>Egyik sem</td><td>-</td><td>A szelet használt létezett egy eltérő állapottal, de azt vissza lett állítva.</td>
 </tr>
 </table>
 

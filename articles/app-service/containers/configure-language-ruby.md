@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 402c85e7902c8c2f612ad6c777d8f6773a4d0ca3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 412efac3742acf7ad1cdc3d08f9d90c4d39bad3e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60854867"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956117"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Egy Linux-Ruby-alkalmazás konfigurálása az Azure App Service-ben
 
@@ -65,7 +65,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
-Az App Service-ben is [állítsa be az alkalmazásbeállításokat](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) kívül a kódját. Ezután elérheti azokat a standard használatával [ENV ['< elérési út-neve >']](https://ruby-doc.org/core-2.3.3/ENV.html) mintát. Például egy alkalmazás-beállítás eléréséhez nevű `WEBSITE_SITE_NAME`, a következő kóddal:
+Az App Service-ben is [állítsa be az alkalmazásbeállításokat](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) kívül a kódját. Ezután elérheti azokat a standard használatával [ENV ['< elérési út-neve >']](https://ruby-doc.org/core-2.3.3/ENV.html) mintát. Például egy alkalmazás-beállítás eléréséhez nevű `WEBSITE_SITE_NAME`, a következő kóddal:
 
 ```ruby
 ENV['WEBSITE_SITE_NAME']
@@ -82,7 +82,7 @@ Telepítésekor meg kell adnia egy [Git-tárház](../deploy-local-git.md?toc=%2f
 
 ### <a name="use---without-flag"></a>Használja a--jelző nélkül
 
-Futtatásához `bundle install` az a [--nélkül](https://bundler.io/man/bundle-install.1.html) jelzőt, állítsa be a `BUNDLE_WITHOUT` [Alkalmazásbeállítás](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) csoportok vesszővel elválasztott listáját. Például a következő parancs beállítja azt `development,test`.
+Futtatásához `bundle install` az a [--nélkül](https://bundler.io/man/bundle-install.1.html) jelzőt, állítsa be a `BUNDLE_WITHOUT` [Alkalmazásbeállítás](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) csoportok vesszővel elválasztott listáját. Például a következő parancs beállítja azt `development,test`.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings BUNDLE_WITHOUT="development,test"
@@ -92,7 +92,7 @@ Ha ez a beállítás, akkor az üzembe helyezési motorban fut `bundle install` 
 
 ### <a name="precompile-assets"></a>Üzembehelyezésnél fordítson elő objektumokat
 
-Az üzembe helyezés utáni lépéseket nem üzembehelyezésnél fordítson elő objektumokat alapértelmezés szerint. Előfordítás eszközintelligencia bekapcsolásához állítsa be a `ASSETS_PRECOMPILE` [Alkalmazásbeállítás](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) való `true`. Ezután a parancs `bundle exec rake --trace assets:precompile` fut, az üzembe helyezés utáni lépéseket végén. Példa:
+Az üzembe helyezés utáni lépéseket nem üzembehelyezésnél fordítson elő objektumokat alapértelmezés szerint. Előfordítás eszközintelligencia bekapcsolásához állítsa be a `ASSETS_PRECOMPILE` [Alkalmazásbeállítás](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) való `true`. Ezután a parancs `bundle exec rake --trace assets:precompile` fut, az üzembe helyezés utáni lépéseket végén. Példa:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
@@ -121,7 +121,7 @@ Testre szabhatja az indítási folyamat a következő módon:
 Alapértelmezés szerint éles módban futtatja a Rails-kiszolgálót, a Ruby-tárolóban és [feltételezi, hogy az eszközök előre lefordított vannak, és a webkiszolgáló által szolgáltatott](https://guides.rubyonrails.org/asset_pipeline.html#in-production). A Rails-kiszolgálót a statikus objektumokat kiszolgálására, kell tennie a két dolgokat:
 
 - **Üzembehelyezésnél fordítson elő objektumokat a** - [üzembehelyezésnél fordítson elő a statikus objektumokat helyileg](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) és üzembe helyezheti őket manuálisan. Vagy lehetővé teszik az üzembe helyezési motorban inkább kezelni azt (lásd: [üzembehelyezésnél fordítson elő objektumokat](#precompile-assets).
-- **Engedélyezze a statikus fájlok kiszolgálása** – az szolgálja ki a statikus objektumokat, a Ruby-tárolóból, és állítsa a `RAILS_SERVE_STATIC_FILES` [állítsa be a `RAILS_SERVE_STATIC_FILES` Alkalmazásbeállítás](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) való `true`. Példa:
+- **Engedélyezze a statikus fájlok kiszolgálása** – az szolgálja ki a statikus objektumokat, a Ruby-tárolóból, és állítsa a `RAILS_SERVE_STATIC_FILES` [állítsa be a `RAILS_SERVE_STATIC_FILES` Alkalmazásbeállítás](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) való `true`. Példa:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true
@@ -129,13 +129,13 @@ Alapértelmezés szerint éles módban futtatja a Rails-kiszolgálót, a Ruby-t�
 
 ### <a name="run-in-non-production-mode"></a>Nem éles módban
 
-Alapértelmezés szerint a éles módban futtatja a Rails-kiszolgálót. Fejlesztői módban fusson, például állítsa be a `RAILS_ENV` [Alkalmazásbeállítás](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) való `development`.
+Alapértelmezés szerint a éles módban futtatja a Rails-kiszolgálót. Fejlesztői módban fusson, például állítsa be a `RAILS_ENV` [Alkalmazásbeállítás](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) való `development`.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-Azonban ez a beállítás hatására a Rails-kiszolgálót, a fejlesztői módban, amely elfogadja a localhost csak kéréseket, és nem lesz elérhető a tárolón kívüli elindításához. Távoli ügyfél-kérelmek fogadásához, állítsa be a `APP_COMMAND_LINE` [Alkalmazásbeállítás](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) való `rails server -b 0.0.0.0`. Ennek az alkalmazásbeállításnak lehetővé teszi egyéni parancsokat futtathatnak a Ruby-tárolóban. Példa:
+Azonban ez a beállítás hatására a Rails-kiszolgálót, a fejlesztői módban, amely elfogadja a localhost csak kéréseket, és nem lesz elérhető a tárolón kívüli elindításához. Távoli ügyfél-kérelmek fogadásához, állítsa be a `APP_COMMAND_LINE` [Alkalmazásbeállítás](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) való `rails server -b 0.0.0.0`. Ennek az alkalmazásbeállításnak lehetővé teszi egyéni parancsokat futtathatnak a Ruby-tárolóban. Példa:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
@@ -143,7 +143,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="set-secretkeybase-manually"></a>Secret_key_base manuális beállítása
 
-Használatához a saját `secret_key_base` helyett, ami lehetővé teszi az App Service-ben hozzon létre egyet, és állítsa a `SECRET_KEY_BASE` [Alkalmazásbeállítás](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) a kívánt értéket. Példa:
+Használatához a saját `secret_key_base` helyett, ami lehetővé teszi az App Service-ben hozzon létre egyet, és állítsa a `SECRET_KEY_BASE` [Alkalmazásbeállítás](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) a kívánt értéket. Példa:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"

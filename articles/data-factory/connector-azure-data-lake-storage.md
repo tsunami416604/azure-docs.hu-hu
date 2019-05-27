@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 355f61d6282c822e18cf4752044c1e1a5cbbc6a0
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: c0591a7850516a419cb59045754cc4eb02979dfd
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560790"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66122597"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Lake Storage Gen2 Azure Data Factory használatával
 
@@ -167,6 +167,9 @@ Felügyelt identitások Azure-erőforrások hitelesítés használatához köves
 >- **Adatok másolása eszköz** a szerző másolási folyamat.
 >- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt. 
 >Ha a fiók szintjén engedély megadására szempont, kihagyhatja kapcsolat tesztelése és a bemeneti elérési út manuális létrehozása alatt. A másolási tevékenység továbbra is működni fog, amíg a felügyelt identitást kapnak a átmásolni a fájlokat a megfelelő engedéllyel rendelkező.
+
+>[!IMPORTANT]
+>Ha betölteni az ADLS Gen2 az SQL dw-vel, amikor ADLS Gen2 felügyelt identitás hitelesítési adatait, győződjön meg arról is konfigurálhatja a megfelelően az ADLS Gen2 storage MSI használata az SQL dw-vel, a PolyBase használata esetén kövesse a lépéseket #1 a #3.b [Ez az útmutató](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Az ADLS Gen2 szolgáltatásvégpont van beállítva, ha, az adatok betöltése a PolyBase használatával kell használnia felügyelt identitás hitelesítést.
 
 Ezek a Tulajdonságok támogatottak társított szolgáltatást:
 

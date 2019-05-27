@@ -17,12 +17,12 @@ ms.date: 04/22/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b924746c00a438ec4ac81dacc02905565adf30e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cffef4028a684e27c0941c234df551d844f13420
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682113"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896863"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Tevékenységnaplók az Azure monitorban
 
@@ -78,10 +78,10 @@ Az alábbi táblázat tartalmaz egy költségbecslést a bérlő méretének fü
 
 | Naplókategória | Felhasználók száma | Napi események | Havi adatmennyiség (becsült) | Havi költség (becsült) | Éves költség (becsült) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
-| Naplózás | 100 000 | 1,5&nbsp;millió | 90 GB | 1,93 dollár | 23,12 dollár |
-| Naplózás | 1,000 | 15 000 | 900 MB | 0,02 dollár | 0,24 dollár |
+| Naplózás | 100,000 | 1,5&nbsp;millió | 90 GB | 1,93 dollár | 23,12 dollár |
+| Naplózás | 1,000 | 15,000 | 900 MB | 0,02 dollár | 0,24 dollár |
 | Bejelentkezések | 1,000 | 34 800 | 4 GB | 0,13 dollár | 1,56 dollár |
-| Bejelentkezések | 100 000 | 15&nbsp;millió | 1,7 TB | 35,41 dollár | 424,92 dollár |
+| Bejelentkezések | 100,000 | 15&nbsp;millió | 1,7 TB | 35,41 dollár | 424,92 dollár |
  
 
 
@@ -102,11 +102,28 @@ Az alábbi táblázat egy alapszintű eseményközpont becsült havi költségé
 
 | Naplókategória | Felhasználók száma | Események száma másodpercenként | Események száma ötperces időközönként | Adatmennyiség az egyes időablakokban | Üzenetek száma időközönként | Üzenetek száma havonta | Havi költség (becsült) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
-| Naplózás | 100 000 | 18 | 5400 | 10,8 MB | 43 | 371 520 | 10,83 dollár |
-| Naplózás | 1,000 | 0,1 | 52 | 104 KB | 1 | 8640 | 10,80 dollár |
+| Naplózás | 100,000 | 18 | 5400 | 10,8 MB | 43 | 371 520 | 10,83 dollár |
+| Naplózás | 1,000 | 0,1 | 52 | 104 KB | 1. | 8640 | 10,80 dollár |
 | Bejelentkezések | 1,000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 dollár |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Az Azure Monitor-naplók költség kapcsolatos szempontok
+
+
+
+| Naplókategória       | Felhasználók száma | Napi események | Esemény havonta (30 nap) | (Est.) USD havi költség |
+| :--                | ---             | ---            | ---                        | --:                          |
+| Naplózási és bejelentkezések | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
+| Naplózás              | 100,000         | 1,500,000      | 45,000,000                 |  $246.66                     |
+| Bejelentkezések           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
+
+
+
+
+
+
+
+
+
 
 Az Azure Monitor naplóira felügyeletével kapcsolatos költségek áttekintéséhez lásd: [költségek kezelése adatmennyiség és megőrzés az Azure Monitor naplóira szabályozásával](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
 

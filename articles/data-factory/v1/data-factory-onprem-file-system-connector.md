@@ -14,11 +14,11 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 40086924731876dc44d9651ca46814149dba52f0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432780"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122460"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Adatok másolása a és a egy helyi fájlrendszerből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -73,10 +73,10 @@ Az Azure data factory egy helyszíni fájlrendszer kapcsolat a **helyi fájlkisz
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| type |Győződjön meg arról, hogy a type tulajdonság értéke **OnPremisesFileServer**. |Igen |
-| gazdagép |Megadja a gyökér elérési útja a másolni kívánt mappa. Használja az escape-karaktert "\" a speciális karakterek a karakterláncban. Lásd: [minta társított szolgáltatás és az adatkészlet-definíciók](#sample-linked-service-and-dataset-definitions) példákat. |Igen |
-| felhasználói azonosító |Adja meg a felhasználó, aki hozzáfér a server azonosítója. |Nem (Ha úgy dönt, hogy encryptedCredential) |
-| jelszó |Adja meg a jelszót a felhasználó (felhasználóazonosító). |Nem (Ha úgy dönt, hogy encryptedCredential |
+| típus |Győződjön meg arról, hogy a type tulajdonság értéke **OnPremisesFileServer**. |Igen |
+| host |Megadja a gyökér elérési útja a másolni kívánt mappa. Használja az escape-karaktert "\" a speciális karakterek a karakterláncban. Lásd: [minta társított szolgáltatás és az adatkészlet-definíciók](#sample-linked-service-and-dataset-definitions) példákat. |Igen |
+| userid |Adja meg a felhasználó, aki hozzáfér a server azonosítója. |Nem (Ha úgy dönt, hogy encryptedCredential) |
+| password |Adja meg a jelszót a felhasználó (felhasználóazonosító). |Nem (Ha úgy dönt, hogy encryptedCredential |
 | encryptedCredential |Adja meg a titkosított hitelesítő adatokat, amelyeket lekérhet a New-AzDataFactoryEncryptValue parancsmag futtatásával. |Nem (Ha úgy dönt, hogy adja meg a felhasználói azonosítót és jelszót a szövegként) |
 | átjáró neve |Itt adhatja meg, amelyet a Data Factory a helyszíni fájl-kiszolgálóhoz való csatlakozáshoz használnia kell az átjárója nevére. |Igen |
 
@@ -134,8 +134,8 @@ A typeProperties szakasz eltér az egyes adatkészlet. Biztosít információkat
 | fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg semmilyen értéket ehhez a tulajdonsághoz, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve a következő formátumban van: <br/><br/>`Data.<Guid>.txt` (Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nem |
 | fileFilter |Adjon meg egy szűrőt használt összes fájlja helyett a folderPath lévő fájlok egy adott sorkészletét jelölik ki. <br/><br/>Engedélyezett értékek a következők: `*` (több karakter) és `?` (egyetlen karakter).<br/><br/>1. példa: "fileFilter": "* .log"<br/>2. példa: "fileFilter": 2014-1-?.txt"<br/><br/>Vegye figyelembe, hogy fileFilter a fájlmegosztás a bemeneti adatkészletek vonatkozik. |Nem |
 | partitionedBy |PartitionedBy segítségével adja meg a dinamikus folderPath/fileName idősorozat-adatok. Ilyen például az adatok óránkénti paraméteres folderPath. |Nem |
-| Formátum | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquetformátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszokat. <br><br> Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
-| A tömörítés | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok a következők: **A GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők: **Optimális** és **leggyorsabb**. Lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
+| format | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquetformátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszokat. <br><br> Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
+| compression | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok a következők: **A GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők: **Optimális** és **leggyorsabb**. Lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 
 > [!NOTE]
 > Fájlnév és fileFilter egyidejűleg nem használható.
@@ -180,15 +180,15 @@ A másolási tevékenységhez azok változhat a forrásként és fogadóként t�
 
 **FileSystemSource** támogatja a következő tulajdonságokkal:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| a rekurzív |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappába. |TRUE, False (alapértelmezett) |Nem |
+| recursive |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappába. |TRUE, False (alapértelmezett) |Nem |
 
 **FileSystemSink** támogatja a következő tulajdonságokkal:
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| a copyBehavior |A másolási viselkedés határozza meg, ha a forrás BlobSource vagy fájlrendszer. |**PreserveHierarchy:** Megőrzi a hierarchiája a célmappában. Hogy a relatív elérési útját a forrásfájl, a megadott forrásmappához ugyanaz, mint a célmappában cél fájl relatív elérési útját.<br/><br/>**FlattenHierarchy:** Minden fájl a forrásmappából az első szintű célmappában jönnek létre. A cél fájlt hoz létre egy automatikusan létrehozott névvel.<br/><br/>**MergeFiles:** Egy fájl összes fájlt a forrásmappából egyesíti. A fájl neve és a blob neve meg van adva, az egyesített fájlnév-e a megadott néven. Ellenkező esetben egy automatikusan létrehozott nevét. |Nem |
+| copyBehavior |A másolási viselkedés határozza meg, ha a forrás BlobSource vagy fájlrendszer. |**PreserveHierarchy:** Megőrzi a hierarchiája a célmappában. Hogy a relatív elérési útját a forrásfájl, a megadott forrásmappához ugyanaz, mint a célmappában cél fájl relatív elérési útját.<br/><br/>**FlattenHierarchy:** Minden fájl a forrásmappából az első szintű célmappában jönnek létre. A cél fájlt hoz létre egy automatikusan létrehozott névvel.<br/><br/>**MergeFiles:** Egy fájl összes fájlt a forrásmappából egyesíti. A fájl neve és a blob neve meg van adva, az egyesített fájlnév-e a megadott néven. Ellenkező esetben egy automatikusan létrehozott nevét. |Nem |
 
 ### <a name="recursive-and-copybehavior-examples"></a>a rekurzív és copyBehavior példák
 Ez a szakasz ismerteti az eredményül kapott viselkedéstől a másolási művelet a rekurzív és a copyBehavior tulajdonság értékei különböző kombinációihoz.

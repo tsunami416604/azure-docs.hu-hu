@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b54c4ef1b188896a70cf8b2f9352d0b76874fd50
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5d8d97aefa2efadae70c976b8a1876b2c7d8f1c1
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204295"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921936"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -53,7 +53,7 @@ Az alábbi adatok kapcsolat módszerek az Azure-Sentinel támogatja:
 - **API-n keresztül külső megoldások**: Egyes adatforrásokhoz csatlakoznak, a csatlakoztatott adatforrás által biztosított API-k használatával. Általában a legtöbb biztonsági technológiákat biztosítanak egy API-k, amelyen keresztül az eseménynaplókat lehet beolvasni. Az API-k Azure Sentinel-csatlakozhat, és megadott adattípusokat gyűjt, és küldhet nekik az Azure Log Analytics. API-n keresztül csatlakoztatott készülékeket a következők:
     - [Barracuda](connect-barracuda.md)
     - [Symantec](connect-symantec.md)
-- **Külső megoldások ügynökön keresztül**: Minden más adatforrás által végrehajtható műveleteket, valós idejű naplóstreamelés egy ügynökön keresztül, a Syslog protokollt használó Azure Sentinel csatlakoztatható legyen. <br>Legtöbb készülékek a Syslog protokollt használják a naplót tartalmazó eseményt üzenetek küldéséhez, saját maga és a naplózási adatait. A naplók formátuma érték, de a legtöbb berendezések támogatja a Common Event Format (CEF). <br>Az Azure Sentinel-ügynök, amely az OMS-ügynök alapul, konvertálja CEF naplók formázni a olyan formátumra, amely a Log Analytics által olvasódnak. A berendezés típusától függően az ügynök telepítve van a készüléken közvetlenül vagy egy dedikált Linux-kiszolgálón. A Linuxhoz készült ügynök fogad eseményeket a Syslog démon UDP-n keresztül, de azokban az esetekben, ahol nagy mennyiségű, a Syslog-események gyűjtése a Linuxos gépek várható, küldés TCP-n keresztül az ügynöknek a Syslog démonból, és ott a Log Analytics szolgáltatásba.
+- **Külső megoldások ügynökön keresztül**: Minden más adatforrás által végrehajtható műveleteket, valós idejű naplóstreamelés egy ügynökön keresztül, a Syslog protokollt használó Azure Sentinel csatlakoztatható legyen. <br>Legtöbb készülékek a Syslog protokollt használják a naplót tartalmazó eseményt üzenetek küldéséhez, saját maga és a naplózási adatait. A naplók formátuma érték, de a legtöbb berendezések támogatja a Common Event Format (CEF). <br>Az Azure Sentinel-ügynök, amely a Microsoft Monitoring Agent alapul, a CEF formátumú naplók olyan formátumra, amely a Log Analytics által olvasódnak alakítja át. A berendezés típusától függően az ügynök telepítve van a készüléken közvetlenül vagy egy dedikált Linux-kiszolgálón. A Linuxhoz készült ügynök fogad eseményeket a Syslog démon UDP-n keresztül, de azokban az esetekben, ahol nagy mennyiségű, a Syslog-események gyűjtése a Linuxos gépek várható, küldés TCP-n keresztül az ügynöknek a Syslog démonból, és ott a Log Analytics szolgáltatásba.
     - Tűzfalak, proxyk és végpontok:
         - [F5](connect-f5.md)
         - [A Check Point](connect-checkpoint.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Active Directory csatlakoztatása az Azure Active Directoryhoz | Microsoft Docs
-description: Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Így közös identitást biztosíthat az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz.
+title: Mi a hibrid identitás az Azure Active Directoryval?
+description: Hibrid identitás van egy általános felhasználói identitás a hitelesítéshez és engedélyezéshez kellene a helyszínen és a felhőben.
 keywords: az Azure AD Connect bemutatása, az Azure AD Connect áttekintése, mi az Azure AD Connect, az Active Directory telepítése
 services: active-directory
 author: billmath
@@ -9,24 +9,26 @@ ms.assetid: 59bd209e-30d7-4a89-ae7a-e415969825ea
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 11/28/2018
+ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6393d363c85fd22b28a3bc2ac5ef02047ebaacf0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9c43238d44b2309d105ef14e696a5a16848d0b58
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784356"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896833"
 ---
-# <a name="what-is-hybrid-identity"></a>Mi az a hibrid identitás?
+# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Mi a hibrid identitás az Azure Active Directoryval?
 
-Ma, a vállalatok és a vállalatok egyre több és több helyszíni vegyesen, és a felhőbeli alkalmazásokhoz.  Felhasználók igényelnek, ezeknek az alkalmazásoknak hozzáférést a helyszínen és a felhőben. Ez a követelmény kihívást a forgatókönyv elérhetetlenné válik. 
+Ma, a vállalatok és a vállalatok egyre több és több helyszíni vegyesen, és a felhőbeli alkalmazásokhoz.  Felhasználók igényelnek, ezeknek az alkalmazásoknak hozzáférést a helyszínen és a felhőben. Felhasználók kezelése a helyszíni és a felhő kockázatot kihívást forgatókönyveket. 
 
 A Microsoft identitáskezelési megoldások kiterjednek a helyszíni és felhőalapú képességek.  Ezeket a megoldásokat hozzon létre egy általános felhasználói identitást, hitelesítés és engedélyezés az összes erőforráshoz, helytől függetlenül. Erre **hibrid identitás**.
 
-Hibrid identitás eléréséhez három hitelesítési módszerek közül az használható, attól függően, a forgatókönyvekhez.   A következők: 
+Az Azure AD hibrid identitás- és hibrid identitás-kezelési forgatókönyvekben lehetségessé válik.
+
+Hibrid identitás az Azure ad-vel eléréséhez három hitelesítési módszerek közül az használható, attól függően, a forgatókönyvekhez.   A következők: 
 
 - **[A Jelszókivonat-szinkronizálás (nál)](whatis-phs.md)**  
 - **[Az átmenő hitelesítés (ESP)](how-to-connect-pta.md)**  

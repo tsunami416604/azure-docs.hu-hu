@@ -18,11 +18,11 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fe9b70d74e326166afae366becc47fbcc8b2ea56
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788715"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66120284"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Az SAP NetWeaver több biztonsági AZONOSÍTÓVAL konfigurációjának létrehozása
 
@@ -89,7 +89,7 @@ A teljes fekvő két magas rendelkezésre állású SAP-rendszerek a következő
 ## <a name="prepare-the-infrastructure"></a>Az infrastruktúra előkészítése
 Az infrastruktúra előkészítése, egy további SAP ASCS/SCS-példányt is telepíthet a következő paraméterekkel:
 
-| Paraméter neve | Érték |
+| Paraméternév | Érték |
 | --- | --- |
 | SAP ASCS/SCS SID |PR1-lb-ascs |
 | Az SAP DBMS belső load balancer | PR5 |

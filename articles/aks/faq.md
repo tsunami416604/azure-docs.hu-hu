@@ -1,83 +1,89 @@
 ---
 title: Gyakori kérdések az Azure Kubernetes Service (AKS)
-description: Az Azure Kubernetes Service (AKS) kapcsolatos gyakori kérdésekre adott válaszokat biztosít.
+description: Válaszok az Azure Kubernetes Service (AKS) kapcsolatos gyakori kérdésekre.
 services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 17bc1d2b7a08314f19f1bf8f87d0c774afc37500
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 6bfcd11dd6bfd31583fb2d0cd3f4229d3dd70065
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508181"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65887360"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>– Azure Kubernetes Service (AKS) kapcsolatos gyakori kérdések
 
 Ez a cikk címek gyakori kérdések az Azure Kubernetes Service (AKS) kapcsolatos.
 
-## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>Mely Azure-régiók az Azure Kubernetes Service (AKS) jelenleg elérhető?
+## <a name="which-azure-regions-currently-provide-aks"></a>Mely Azure-régiók jelenleg elérhető AKS?
 
 Az elérhető régiók teljes listáját lásd: [AKS régiók és rendelkezésre állás][aks-regions].
 
 ## <a name="does-aks-support-node-autoscaling"></a>Az AKS támogatja az automatikus skálázás csomópont?
 
-Igen, az automatikus skálázás keresztül érhető el a [Kubernetes méretező] [ auto-scaler] Kubernetes 1.10 kezdődően. Konfigurálása és a fürt automatikus méretező használatához további információkért lásd: [fürt az automatikus skálázás AKS][aks-cluster-autoscale].
+Igen, az automatikus skálázás keresztül érhető el a [Kubernetes méretező] [ auto-scaler] Kubernetes 1.10 kezdődően. A manuális konfigurálása és a fürt automatikus méretező használatához további információkért lásd: [fürt az automatikus skálázás AKS][aks-cluster-autoscale].
 
-## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>Támogatja az AKS Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC)?
+Csomópontok szerepkörtípusok (jelenleg előzetes verzióban érhető el az aks-ben) is használhatja a beépített fürt méretező. További információkért lásd: [automatikus méretezése egy fürtöt az aks-ben alkalmazás figyelembevételével][aks-cluster-autoscaler].
 
-Igen, Kubernetes RBAC is alapértelmezés szerint a engedélyezve van, amikor az Azure CLI-vel való létrehozása. Az RBAC az Azure portal vagy a sablonok használatával létrehozott fürtök esetén engedélyezhető.
+## <a name="does-aks-support-kubernetes-rbac"></a>Támogatja az AKS Kubernetes RBAC?
+
+Igen, Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) is alapértelmezés szerint a engedélyezve van, amikor az Azure CLI-vel való létrehozása. RBAC használata az Azure portal vagy a sablonok által létrehozott fürtök esetén engedélyezhető.
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Üzembe helyezhetem az AKS a meglévő virtuális hálózatban?
 
-Igen, telepíthet egy AKS-fürtöt egy meglévő virtuális hálózat használatával, a [speciális hálózatkezelési funkció][aks-advanced-networking].
+Igen, telepíthet egy AKS-fürtöt egy meglévő virtuális hálózatban használatával a [speciális hálózatkezelési funkció][aks-advanced-networking].
 
-## <a name="can-i-restrict-the-kubernetes-api-server-to-only-be-accessible-within-my-virtual-network"></a>Korlátozhatja a csak a saját virtuális hálózaton belül elérhetők lesznek a Kubernetes API-t kiszolgáló?
+## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Tehetők a Kubernetes API-kiszolgálóhoz elérhető csak a saját virtuális hálózaton belül?
 
-Jelenleg nem. A Kubernetes API-kiszolgálóhoz van közzétéve, mert egy nyilvános teljesen minősített tartományneve (FQDN). A fürt használatával szabályozhatja a hozzáférést [Kubernetes szerepköralapú hozzáférés-vezérlési (RBAC) és az Azure Active Directory (AAD)][aks-rbac-aad]
+Jelenleg nem. A Kubernetes API-kiszolgálóhoz van közzétéve, mert egy nyilvános teljesen minősített tartományneve (FQDN). Szabályozhatja a hozzáférést a fürthöz való használatával [Kubernetes rbac-RÓL és az Azure Active Directory (Azure AD)][aks-rbac-aad].
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>AKS-ügyfélcsomóponttal rendelkezik érvényes biztonsági frissítések?
 
-Igen, az Azure automatikusan alkalmazza a biztonsági javítások éjszakai ütemezés szerint a fürt csomópontjaihoz. Azonban Ön felelős azért, hogy csomópontok indulnak újra lesz szükség szerint. A csomópont újraindul végrehajtása több lehetősége van:
+Az Azure automatikusan alkalmazza a Linux-csomópontok a fürtben éjszakai ütemezett biztonsági javítások. Azonban Ön felelős azért, hogy szükséges-e ezen csomópontok újraindulásakor, Linux. A csomópont újraindítása számos lehetősége van:
 
 - Manuálisan keresztül az Azure portal vagy az Azure parancssori felület.
-- Az AKS-fürt frissítésével. Fürt frissítése automatikusan [Ez a három csomópontunk, és a csomópont kiürítési][cordon-drain], majd hálózatra a legújabb Ubuntu-rendszerképet és a egy új biztonsági javítást vagy egy Kubernetes-alverzió készítsen biztonsági másolatot minden csomóponton. További információkért lásd: [AKS-fürt frissítése][aks-upgrade].
-- Használatával [Kured](https://github.com/weaveworks/kured), egy nyílt forráskódú újraindítás démon a Kubernetes esetében. Kured fut, mint egy [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) , és figyeli a-fájljának jelenlétét, arról, hogy a számítógép újraindítása nem szükséges minden egyes csomópont. Az operációs rendszer-újraindítások felügyelt ugyanazzal a fürtön [Ez a három csomópontunk, és a kiürítési folyamat] [ cordon-drain] mint a fürtfrissítések.
+- Az AKS-fürt frissítésével. A fürtfrissítések [Ez a három csomópontunk, és a csomópont kiürítési] [ cordon-drain] automatikusan és a egy új csomópontot online a legújabb Ubuntu-rendszerképet és a egy új biztonsági javítást vagy egy Kubernetes-alverzió. További információkért lásd: [AKS-fürt frissítése][aks-upgrade].
+- Használatával [Kured](https://github.com/weaveworks/kured), egy nyílt forráskódú újraindítás démon a Kubernetes esetében. Kured fut, mint egy [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) , és a egy fájlt, amely azt jelzi, hogy újraindítás szükséges meglétének minden csomópont figyeli. A fürtön, az operációs rendszer-újraindítások azonos által kezelt [Ez a három csomópontunk, és a kiürítési folyamat] [ cordon-drain] mint a fürtfrissítések.
 
 Kured használatával kapcsolatos további információkért lásd: [biztonsági és a kernel-frissítések alkalmazása a csomópontok az aks-ben][node-updates-kured].
+
+### <a name="windows-server-nodes"></a>A Windows Server-csomópontok
+
+A Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben) a Windows Update futtatása és automatikusan alkalmazza a legújabb frissítéseket. A Windows Update kiadási ciklus, és a saját érvényesítési folyamat rendszeres időközönként meg kell hajtsa végre a Windows Server-csomóponton vagy tárolókészleteit a frissítés az AKS-fürt. A frissítés során hoz létre a csomópontokat, amelyeken a legújabb Windows Server-rendszerképet és azok javításait, majd eltávolítja a régebbi csomópontok. Ezen folyamatról további információkért lásd: [frissítése az aks-ben csomópontkészletek][nodepool-upgrade].
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Két erőforráscsoport miért jönnek létre az aks-sel?
 
 Minden egyes az AKS üzembe helyezési kiterjedő két erőforráscsoport:
 
-- Az első erőforráscsoport jön létre, és csak a Kubernetes szolgáltatás-erőforrást tartalmaz. Az AKS erőforrás-szolgáltató automatikusan létrehozza a központi telepítése során a másodikat például *MC_myResourceGroup_myAKSCluster_eastus*. Az erőforráscsoport nevét, a második adhatja meg a további információkért lásd: a következő szakaszban.
-- A második erőforráscsoportja, mint például *MC_myResourceGroup_myAKSCluster_eastus*, a fürthöz társított infrastruktúrát erőforrásokat tartalmaz. Ilyen erőforrások többek között a Kubernetes csomópont virtuális gépek, virtuális hálózati és storage. Erőforrás-karbantartása leegyszerűsítése érdekében külön ebben az erőforráscsoportban jön létre.
+1. Az első erőforráscsoport létrehozásához. Csak a Kubernetes szolgáltatás-erőforrást tartalmazó csoport. Az AKS erőforrás-szolgáltató üzembe helyezése során automatikusan hoz létre a második erőforráscsoport. A második erőforráscsoport például *MC_myResourceGroup_myAKSCluster_eastus*. Az erőforráscsoport nevét, a második megadására vonatkozó további információkért lásd: a következő szakaszban.
+1. A második erőforráscsoportja, mint például *MC_myResourceGroup_myAKSCluster_eastus*, a fürthöz társított infrastruktúrát erőforrásokat tartalmaz. Ilyen erőforrások többek között a Kubernetes csomópont virtuális gépek, virtuális hálózati és storage. Ez az erőforráscsoport célja erőforrás karbantartása leegyszerűsítése érdekében.
 
-Az AKS-fürt használatra erőforrásokat hoz létre, ha például a storage-fiókok vagy fenntartott nyilvános IP-címeket elhelyezése egy az automatikusan létrehozott erőforráscsoportot.
+Ha hoz létre az AKS-fürt a használni kívánt erőforrások, például a storage-fiókok vagy fenntartott nyilvános IP-címeket elhelyezése egy az automatikusan létrehozott erőforráscsoportot.
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>Biztosíthat a saját nevét az AKS-infrastruktúra erőforráscsoport?
 
-Igen. Alapértelmezés szerint az AKS erőforrás-szolgáltató automatikusan létrehoz egy másodlagos erőforráscsoport üzembe helyezése során például *MC_myResourceGroup_myAKSCluster_eastus*. Ahhoz, hogy megfeleljenek a vállalati házirenddel, adja meg a saját felügyelt fürt nevét (*MC_*) erőforráscsoportot.
+Igen. Alapértelmezés szerint az AKS erőforrás-szolgáltató automatikusan létrehoz egy másodlagos erőforráscsoportot (például *MC_myResourceGroup_myAKSCluster_eastus*) üzembe helyezése során. Ahhoz, hogy megfeleljenek a vállalati házirenddel, adja meg a saját felügyelt fürt nevét (*MC_*) erőforráscsoportot.
 
-Adja meg a saját erőforráscsoport neve, telepítse a [aks előzetes] [ aks-preview-cli] Azure CLI-bővítmény verziója *0.3.2-es verzióra* vagy újabb. Létrehozásakor egy AKS fürt használatával a [az aks létrehozása] [ az-aks-create] parancsot, használja a *– csomópont-resource-group* paraméter, és adja meg az erőforráscsoport nevét. Ha Ön [egy Azure Resource Manager-sablonnal] [ aks-rm-template] AKS-fürt üzembe helyezéséhez határozhatja meg az erőforrás csoport nevének használatával a *nodeResourceGroup* tulajdonság.
+Adja meg a saját erőforráscsoport neve, telepítse a [aks előzetes] [ aks-preview-cli] Azure CLI-bővítmény verziója *0.3.2-es verzióra* vagy újabb. Az AKS-fürt létrehozásakor a [az aks létrehozása] [ az-aks-create] parancsot, használja a *– csomópont-resource-group* paramétert, és adja meg az erőforráscsoport nevét. Ha Ön [egy Azure Resource Manager-sablonnal] [ aks-rm-template] AKS-fürt üzembe helyezéséhez használatával adhatja meg az erőforráscsoport neve a *nodeResourceGroup* tulajdonság.
 
-* Ez az erőforráscsoport automatikusan létrejön a Azure-erőforrás-szolgáltató saját előfizetésében.
-* Csak adhat egy egyéni erőforráscsoport-nevet, amikor létrehozza a fürtöt.
+* A másodlagos erőforráscsoport automatikusan létrejön a Azure-erőforrás-szolgáltató saját előfizetésében.
+* Egy egyéni erőforráscsoport-nevet is megadhat, csak a fürt létrehozásakor.
 
-A következő helyzetek nem támogatottak:
+Végzett munka során a *MC_* erőforráscsoportot, ne feledje, hogy nem lehet:
 
-* Nem adhat meg egy meglévő erőforráscsoportot, a *MC_* csoport.
-* Nem adhat meg egy másik előfizetéshez tartozó a *MC_* erőforráscsoportot.
-* Nem módosítható a *MC_* erőforráscsoport-nevet a fürt létrehozása után.
-* Nem adható meg belül a felügyelt erőforrások nevét a *MC_* erőforráscsoportot.
-* Nem lehet módosítani vagy törölni a felügyelt erőforrások címkék a *MC_* resource-group (lásd a további információkat a következő szakaszban).
+* Adjon meg egy meglévő erőforráscsoportot a *MC_* csoport.
+* Adjon meg egy másik előfizetéshez tartozó a *MC_* erőforráscsoportot.
+* Módosítsa a *MC_* erőforráscsoport-nevet a fürt létrehozása után.
+* Belül a felügyelt erőforrások nevét adja meg a *MC_* erőforráscsoportot.
+* Módosítja vagy törli a felügyelt erőforrások címkék a *MC_* erőforráscsoportot. (Lásd a következő szakaszban további információt.)
 
-## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Címkék és egyéb tulajdonságait az AKS a MC_ * erőforráscsoportban lévő erőforrásokat is módosíthatja?
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Címkék és egyéb tulajdonságok MC_ erőforráscsoporthoz tartozik, az AKS-erőforrások is módosíthatja?
 
-Módosítása és törlése az Azure által létrehozott címkék és egyéb erőforrások tulajdonságait a *MC_** erőforráscsoportban például a méretezés és a hibák frissítése váratlan eredményekhez vezethet. Létrehozásához és módosításához a további egyéni címkéket, mint például egy üzleti egységet vagy költség center hozzárendelése támogatott. Az erőforrások alapján módosítja a *MC_** az aks-ben a fürt működésképtelenné válik a szolgáltatási szint célkitűzés (SLO). További információkért lásd: [Does AKS kínál egy szolgáltatói szerződést?](#does-aks-offer-a-service-level-agreement)
+Ha módosítja vagy törli az Azure által létrehozott címkék és egyéb erőforrás-tulajdonságok a *MC_* erőforráscsoport, a, például a méretezés és a hibák frissítése nem várt eredmények kérhetők. Az AKS létrehozásához és módosításához az egyéni címkéket teszi lehetővé. Érdemes létrehozni vagy módosítani a egyéni címkéket, például, egy üzleti egységet vagy költség center hozzárendelni. Az erőforrások alapján módosításával a *MC_* az AKS-fürtöt, az megszakítja a szolgáltatásiszint-célkitűzés (SLO). További információkért lásd: [Does AKS kínál egy szolgáltatásiszint-szerződést?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Milyen Kubernetes már a betegfelvétel tartományvezérlők támogatja az AKS? Is már a betegfelvétel vezérlők hozzáadásának vagy eltávolításának?
 
@@ -94,32 +100,34 @@ Az AKS támogatja a következő [már a betegfelvétel tartományvezérlők][adm
 - *DenyEscalatingExec*
 - *AlwaysPullImages*
 
-Nincs jelenleg lehetséges módosítani az aks-ben már a betegfelvétel tartományvezérlők listáját.
+Jelenleg nem módosítható az aks-ben már a betegfelvétel tartományvezérlők listáját.
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Az aks-sel integrált Azure Key Vault?
 
-Az AKS nem natív módon jelenleg az Azure Key Vault integrált. Azonban a [Azure Key Vault FlexVolume Kubernetes projekt] [ keyvault-flexvolume] lehetővé teszi, hogy közvetlen integráció a Kubernetes-podok KeyVault titkos kódokhoz való.
+Az AKS jelenleg a natív módon az Azure Key Vault nem integrált. Azonban a [Azure Key Vault FlexVolume Kubernetes projekt] [ keyvault-flexvolume] lehetővé teszi, hogy közvetlen integráció a Kubernetes-podok Key Vault titkos kódokhoz való.
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Futtatható Windows Server-tárolók az aks-en?
 
-A Windows Server-tárolókat futtathat, Windows Server-alapú csomópontokon futtatni kell. A Windows Server-alapú csomópontokat jelenleg nem állnak rendelkezésre az aks-ben. Azonban segítségével Virtual Kubelet Windows-tárolókhoz az Azure Container Instances ütemezheti és kezelheti azokat az AKS-fürt részeként. További információkért lásd: [Virtual Kubelet használata az aks-sel][virtual-kubelet].
+Igen, a Windows Server-tárolók előzetes verziójában érhető el. Az aks-ben a Windows Server-tárolók futtatásához, a vendég operációs rendszer Windows Server rendszert futtató csomópontot készletet hoz létre. A Windows Server-tárolók segítségével csak Windows Server 2019. Első lépésként lásd [AKS-fürt létrehozása a Windows Server csomópontkészletek][aks-windows-cli].
 
-## <a name="does-aks-offer-a-service-level-agreement"></a>Az AKS kínál egy szolgáltatói szerződést?
+Csomópontkészlet ablak kiszolgáló támogatás magában foglalja a Kubernetes-projektben a felsőbb rétegbeli Windows Server részét képező bizonyos korlátozások. Ezek a korlátozások további információkért lásd: [AKS korlátozásai a Windows Server-tárolók][aks-windows-limitations].
 
-A egy szolgáltatásiszint-szerződés (SLA) a szolgáltató vállalja, hogy megtéríti a szolgáltatás díja a vásárlónak, ha a közzétett szolgáltatási szint nem teljesül. Mivel az AKS maga ingyenes, nincs költség nélkül érhető el, hogy megtéríti, és így nem hivatalos tartozik vállalt SZOLGÁLTATÁSSZINT. Azonban az AKS célja, hogy a Kubernetes API-kiszolgálóhoz legalább 99,5 %-os rendelkezésre állását.
+## <a name="does-aks-offer-a-service-level-agreement"></a>Az AKS kínál egy szolgáltatásiszint-szerződést?
 
-## <a name="why-can-i-not-set-maxpods-below-30"></a>Miért nem állítható `maxPods` 30 alatt?
+A szolgáltatásiszint-szerződés (SLA) a szolgáltató vállalja, hogy megtéríti a szolgáltatás díja a vásárlónak, ha a közzétett szolgáltatási szint nem teljesül. AKS díjmentes, mert nem érhető el úgy, hogy így AKS nem tartozik formális SLA. Azonban az AKS célja, hogy a Kubernetes API-kiszolgálóhoz legalább 99,5 %-os rendelkezésre állását.
 
-Az AKS beállítást támogatja a `maxPods` értéke a fürt létrehozáskor az Azure parancssori felület és Azure Resource Manager-sablonok használatával. Van azonban egy *minimális érték* (Létrehozás ideje ellenőrizni) Kubenet és Azure CNI, az alább látható:
+## <a name="why-cant-i-set-maxpods-below-30"></a>Miért nem állítható be alább 30 maxPods?
+
+Az aks-ben, beállíthatja a `maxPods` értéke, ha a fürt létrehozása az Azure CLI-vel és az Azure Resource Manager-sablonok használatával. Azonban Kubenet és Azure CNI is szükség van egy *minimális érték* (érvényesíteni a Létrehozás időpontja):
 
 | Hálózat | Minimum | Maximum |
 | -- | :--: | :--: |
 | Azure CNI | 30 | 250 |
 | Kubenet | 30 | 110 |
 
-Mivel az AKS egy felügyelt szolgáltatás, bővítmények és a podok, hogy üzembe helyezése és kezelése a fürt részeként biztosítunk. A múltban felhasználók megadására a `maxPods` érték kisebb, mint a felügyelt podok futtatásához szükséges értéket (Példa: 30), az AKS most számítja ki a podok keresztül minimális száma: ((maxPods vagy (maxPods * vm_count)) > felügyelt bővítmény podok minimális.
+Az AKS egy olyan felügyelt szolgáltatás, hogy üzembe helyezheti és felügyelheti a bővítmények és a podok a fürt részeként. A múltban felhasználók megadására a `maxPods` kisebb az érték, amely a felügyelt podok (például: 30) futtatásához szükséges. AKS most kiszámítja a podok minimális számát a képlettel: ((maxPods vagy (maxPods * vm_count)) > felügyelt bővítmény podok minimális.
 
-Felhasználók nem írhatja felül a minimális `maxPods` érvényesítése.
+Felhasználók nem bírálhatják felül a minimális `maxPods` érvényesítése.
 
 <!-- LINKS - internal -->
 
@@ -133,6 +141,10 @@ Felhasználók nem írhatja felül a minimális `maxPods` érvényesítése.
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
+[aks-cluster-autoscaler]: cluster-autoscaler.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[aks-windows-cli]: windows-container-cli.md
+[aks-windows-limitations]: windows-node-limitations.md
 
 <!-- LINKS - external -->
 

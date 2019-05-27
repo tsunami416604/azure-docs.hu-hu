@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: eade9f4e2a956a6542b69e93b0102169ddd32ccf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 6c7952f5baf2e6956e4052f68ede6fb0c4902854
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61381972"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921349"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>A JavaScript tartós függvény létrehozása
 
@@ -117,7 +117,7 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 2. A függvény teszteléséhez állítson be egy töréspontot a függvény kódjában, majd nyomja le az F5 billentyűt a függvényalkalmazás-projekt elindításához. A Core Tools kimenete a **Terminal** (Terminál) panelen jelenik meg. Ha ez az első alkalommal használja a Durable Functions, a Durable Functions bővítmény telepítve van, és a build néhány másodpercig is eltarthat.
 
     > [!NOTE]
-    > JavaScript-Durable Functions-verzió megkövetelése **1.7.0-ás** vagy nagyobb, mint a **Microsoft.Azure.WebJobs.Extensions.DurableTask** bővítmény. Ellenőrizze a Durable Functions bővítmény verzióját a `extensions.csproj` fájl megfelel a követelményeknek. Ha nem jelenik meg, állítsa le a függvényalkalmazás, módosítsa a verzióját, és nyomja le az F5 billentyűt, indítsa újra a függvényalkalmazás.
+    > JavaScript-Durable Functions-verzió megkövetelése **1.7.0-ás** vagy nagyobb, mint a **Microsoft.Azure.WebJobs.Extensions.DurableTask** bővítmény. Futtassa a következő parancsot a abból a gyökérmappából, az Azure Functions-alkalmazás a Durable Functions bővítmény telepítése `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
 
 3. A **Terminal** (Terminál) panelen másolja a vágólapra a HTTP által indított függvény URL-végpontját.
 

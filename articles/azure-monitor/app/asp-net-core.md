@@ -10,402 +10,379 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/03/2018
+ms.date: 05/21/2019
 ms.author: mbullwin
-ms.openlocfilehash: ae0d3658d9ae8534b1596fa7363495926cd0dfe7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8522b1d0a8f8466870966d3f11ce66f7bf15672b
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60693796"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016367"
 ---
-# <a name="application-insights-for-aspnet-core"></a>ASP.Net Core-hoz készült Application Insights
+# <a name="application-insights-for-aspnet-core-applications"></a>Application Insights az ASP.NET Core-alkalmazások
 
-Az Azure Application Insights a a webalkalmazás a code szintre részletes figyelését teszi lehetővé. Könnyedén figyelheti a webalkalmazása rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat.
+Ez a cikk bemutatja, hogyan készült Application Insights engedélyezése egy [ASP.NET Core](https://docs.microsoft.com/aspnet/core) alkalmazás. Amikor befejezte a jelen cikkben lévő utasítások, az Application Insights indul el kéréseket, függőségek, kivételek, teljesítményszámlálók, szívverések és naplók összegyűjtése az ASP.NET Core-alkalmazást. Mintaalkalmazás van egy [MVC alkalmazás](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) célzó `netcoreapp2.2`, de ezek az utasítások érvényesek minden ASP.NET Core-alkalmazásra.
 
-Ez a cikk végigvezeti az egy mintául szolgáló ASP.NET Core létrehozásának lépésein [Razor Pages](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/?tabs=visual-studio) alkalmazáshoz a Visual Studióban. Azt is bemutatja, hogyan figyelése az Application Insights használatával.
+## <a name="supported-scenarios"></a>Támogatott esetek
+
+A [Application Insights SDK (Software Development Kitet) az ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) figyelheti az alkalmazások, függetlenül attól, hol és hogyan az alkalmazás futtatásakor. Ha az alkalmazás fut, és rendelkezik hálózati kapcsolattal az Azure-ba, telemetriai adatokat lehessen gyűjteni. Ez azt jelenti, hogy az Application Insights figyelési támogatott mindenhol .NET Core használata támogatott. Ez a támogatás magában foglalja, bármely operációs rendszert (Windows, Linux, Mac), a üzemeltetési módot (a folyamat a vs-folyamaton), az üzembe helyezési módszer (keretrendszer-függő vagy önálló), webkiszolgáló (IIS, a Kestrel), (az Azure Web Apps, Azure virtuális Gépen, Docker, a üzemeltetési platform Az Azure Kubernetes Service (AKS), és így tovább.) vagy az IDE (Visual Studio, a VS Code-parancssor.)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- .NET core 2.0.0 SDK vagy újabb
-- [A Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.7.3 verzió vagy újabb verzió, az ASP.NET- és fejlesztési számítási feladatot
+- Egy működő ASP.NET Core-alkalmazást. Kövesse a [ASP.NET Core első lépések útmutató](https://docs.microsoft.com/aspnet/core/getting-started/) hozhat létre egy ASP.NET Core-alkalmazást, ha szükséges.
+- Egy érvényes az Application Insights kialakítási kulcsot, amely azonban szükséges a telemetriát az Application Insights szolgáltatás. Kövesse a [erőforrás létrehozása utasításokat](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) hozzon létre egy új Application Insights-erőforrást, ha szükséges, és a egy kialakítási kulcs beszerzése.
 
-## <a name="create-an-aspnet-core-project-in-visual-studio"></a>Hozzon létre egy ASP.NET Core-projektet a Visual Studióban
+## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Az Application Insights kiszolgálóoldali telemetria (Visual Studio) engedélyezése
 
-1. Kattintson a jobb gombbal **Visual Studio 2017**, majd válassza ki **Futtatás rendszergazdaként**.
-2. Válassza ki **fájl** > **új** > **projekt** (Ctrl + Shift + N).
+1. Nyissa meg a projektjét a Visual Studióban.
 
-   ![Képernyőfelvétel a Visual Studio új projekt menü](./media/asp-net-core/001-new-project.png)
+    > [!TIP]
+    > Nem kötelező lépés, miközben hasznos lehet a állítható be verziókövetés a projekthez, így nyomon követheti az Application Insights által végzett összes módosítást. Forrás vezérlő select engedélyezéséhez **fájl** > **Hozzáadás a Forráskezelőhöz**.
 
-3. Bontsa ki a **Visual C#** elemet. Válassza ki **.NET Core** > **ASP.NET Core-webalkalmazás**. Adja meg a projekt nevét és a egy megoldás nevét, és válassza ki **hozzon létre új Git-tárház**.
+2. Válassza ki **projekt** > **Application Insights Telemetria hozzáadása**.
 
-   ![Képernyőfelvétel a Visual Studio új projekt varázsló](./media/asp-net-core/002-asp-net-core-web-application.png)
+3. Válassza ki **Ismerkedés**. (A Visual Studio verziójától függően a szöveg kis mértékben eltérhetnek. Egyes régebbi verziók esetében a **ingyenes próba megkezdése** inkább gombra.)
 
-4. Válassza ki **.NET Core** > **az ASP.NET Core 2.0** **webes alkalmazás** > **OK**.
+4. Válassza ki az előfizetését, majd válassza ki **erőforrás** > **regisztrálása**.
 
-    ![Képernyőfelvétel a Visual Studio új projekt sablon kiválasztása](./media/asp-net-core/003-web-application.png)
+5. Az Application Insights hozzáadása a projekthez, után ellenőrizze, hogy erősítse meg, hogy az SDK legújabb stabil kiadását használja-e. Lépjen a **projekt** > **NuGet-csomagok kezelése** > **Microsoft.ApplicationInsights.AspNetCore** > Ha szükséges, válassza ki a **Frissítés**.
 
-## <a name="application-insights-search"></a>Application Insights-keresés
+     ![Képernyőfelvétel a NuGet csomag képernyő kezelése az Application Insights-csomag frissítése a kijelölt](./media/asp-net-core/update-nuget-package.png)
 
-A Visual Studio 2015 Update 2 vagy újabb egy ASP.NET Core 2 + alapú projekttel, akkor kihasználhatja [Application Insights keresés](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio), még mielőtt, explicit módon Application Insights hozzáadása a projekthez.
+6. Ha a választható tipp követni, és a projekthez hozzáadandó verziókövetés, majd lekérheti a **nézet** > **Team Explorer** > **módosítások** és Válassza ki az egyes fájlok az Application Insights telemetria hozzáadása végzett módosítások diff megjelenítéséhez.
 
-Ez a funkció teszteléséhez:
+## <a name="enable-application-insights-server-side-telemetry-without-visual-studio"></a>Az Application Insights kiszolgálóoldali telemetria (nélkül a Visual Studio) engedélyezése
 
-1. Futtassa az alkalmazást. Futtassa az alkalmazást, jelölje be a **IIS Express** ikonra (![képernyőfelvétel a Visual Studio IIS Express ikon](./media/asp-net-core/004-iis-express.png)).
+1. Telepítse a [ASP.NET Core Application Insights SDK NuGet-csomagja](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore). Azt javasoljuk, hogy mindig a legújabb stabil verzióját használja. Kibocsátási megjegyzések az SDK találhatók a [nyissa meg a GitHub-adattárat forrás](https://github.com/Microsoft/ApplicationInsights-aspnetcore/releases).
 
-2. Válassza ki **nézet** > **más Windows** > **Application Insights keresés**.
-
-   ![A Visual Studio képernyőképe a diagnosztikai eszközök kiválasztása](./media/asp-net-core/005-view-other-windows-search.png)
-
-3. A hibakeresési munkamenet telemetriájában jelenleg csak helyi analysis érhető el. Az Application Insights teljes körű engedélyezéséhez jelölje be **Telemetriai készültségi** a következő szakaszban ismertetett lépéseket felső sarokban, vagy a teljes.
-
-   ![Képernyőfelvétel a Visual Studio Application Insights-keresés](./media/asp-net-core/006-search.png)
-
-> [!NOTE]
-> További információ a módját, például a Visual Studio lámpa funkciók mentése [Application Insights keresés](../../azure-monitor/app/visual-studio.md) és [Codelensben](../../azure-monitor/app/visual-studio-codelens.md) helyileg előtt Application Insights hozzáadása az ASP.NET Core-projektet, tekintse meg [ Application Insights keresés folyamatos](#application-insights-search-continued).
-
-## <a name="add-application-insights-telemetry"></a>Application Insights Telemetria hozzáadása
-
-1. Válassza ki **projekt** > **Application Insights Telemetria hozzáadása**. (Vagy a jobb gombbal **csatlakoztatott szolgáltatás**, majd válassza ki **csatlakoztatott szolgáltatás hozzáadása**.)
-
-    ![Új projekt menüben a Visual Studio képernyőképe](./media/asp-net-core/007-project-add-telemetry.png)
-
-2. Válassza ki **Ismerkedés**. (A Visual Studio verziójától függően a szöveg kis mértékben eltérhetnek. Egyes régebbi verziók esetében a **ingyenes próba megkezdése** inkább gombra.)
-
-    ![Képernyőkép az Application Insights első lépések gombra](./media/asp-net-core/008-get-started.png)
-
-3. Válassza ki az előfizetését, majd válassza ki **erőforrás** > **regisztrálása**.
-
-## <a name="changes-made-to-your-project"></a>A projekt végrehajtott módosítások
-
-Application Insights jelenleg alacsony többletterhelést okoznak. A módosítások fényében, amelyek a projekt adja hozzá az Application Insights telemetria áttekintése:
-
-Válassza ki **nézet** > **Team Explorer** (Ctrl +\, Ctrl + M) > **projekt** > **módosítások**
-
-- A módosítások összesen négy jelennek meg:
-
-  ![Az Application Insights hozzáadásával módosított fájlok képernyőképe](./media/asp-net-core/009-changes.png)
-
-- Egy új fájl jön létre:
-
-  - _ConnectedService.json_
-
-    ```json
-    {
-     "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
-     "Version": "8.12.10405.1",
-     "GettingStartedDocument": {
-       "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
-     }
-    }
-    ```
-
-- Három fájlt módosítanak (kiemelés hozzá további megjegyzések):
-
-  - _appsettings.json_:
-
-    ```json
-    {
-      "Logging": {
-        "IncludeScopes": false,
-        "LogLevel": {
-          "Default": "Warning"
-        }
-      },
-    // Changes to file post adding Application Insights Telemetry:
-      "ApplicationInsights": {
-        "InstrumentationKey": "10101010-1010-1010-1010-101010101010"
-      }
-    }
-    //
-    ```
-
-  - _ContosoDotNetCore.csproj_:
+    A következő kódrészlet azt mutatja be, a módosítások a projekthez hozzáadandó `.csproj` fájlt.
 
     ```xml
-    <Project Sdk="Microsoft.NET.Sdk.Web">
-      <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
-    <!--Changes to file post adding Application Insights Telemetry:-->
-        <ApplicationInsightsResourceId>/subscriptions/2546c5a9-fa20-4de1-9f4a-62818b14b8aa/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/DotNetCore</ApplicationInsightsResourceId>
-        <ApplicationInsightsAnnotationResourceId>/subscriptions/2546c5a9-fa20-4de1-9f4a-62818b14b8aa/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/DotNetCore</ApplicationInsightsAnnotationResourceId>
-    <!---->
-      </PropertyGroup>
-      <ItemGroup>
-    <!--Changes to file post adding Application Insights Telemetry:-->
-        <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
-    <!---->
-        <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
-      </ItemGroup>
-      <ItemGroup>
-        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
-      </ItemGroup>
-    <!--Changes to file post adding Application Insights Telemetry:-->
-      <ItemGroup>
-        <WCFMetadata Include="Connected Services" />
-      </ItemGroup>
-    <!---->
-    </Project>
+        <ItemGroup>
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.6.1" />
+        </ItemGroup>
     ```
 
-  -  _Program.cs_:
+2. Adjon hozzá `services.AddApplicationInsightsTelemetry();` , a `ConfigureServices()` metódus az a `Startup` osztály. Az alábbi teljes példa.
 
-      ```csharp
-      using System;
-      using System.Collections.Generic;
-      using System.IO;
-      using System.Linq;
-      using System.Threading.Tasks;
-      using Microsoft.AspNetCore;
-      using Microsoft.AspNetCore.Hosting;
-      using Microsoft.Extensions.Configuration;
-      using Microsoft.Extensions.Logging;
+    ```csharp
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // The following line enables Application Insights telemetry collection.
+            services.AddApplicationInsightsTelemetry();
+    
+            // code adding other services for your application
+            services.AddMvc();
+        }
+    ```
 
-      namespace DotNetCore
-      {
-          public class Program
-          {
-              public static void Main(string[] args)
-              {
-                  BuildWebHost(args).Run();
-              }
+3. Állítsa be a kialakítási kulcsot.
 
-              public static IWebHost BuildWebHost(string[] args) =>
-                  WebHost.CreateDefaultBuilder(args)
-      // Change to file post adding Application Insights Telemetry:
-                      .UseApplicationInsights()
-      //
-                      .UseStartup<Startup>()
-                      .Build();
+    Bár a kialakítási kulcsot biztosít jako argument Pro `AddApplicationInsightsTelemetry`, azt javasoljuk, hogy a konfigurációs adja meg a kialakítási kulcsot. A következő bemutatja, hogyan adjon meg egy kialakítási kulcsot az `appsettings.json`. Győződjön meg arról, hogy `appsettings.json` közzététel során az alkalmazás gyökér mappába másolja.
+
+    ```json
+        {
+          "ApplicationInsights": {
+            "InstrumentationKey": "putinstrumentationkeyhere"
+          },
+          "Logging": {
+            "LogLevel": {
+              "Default": "Warning"
+            }
           }
-      }
-      ```
+        }
+    ```
 
-## <a name="send-ilogger-logs-to-application-insights"></a>Az Application Insights ILogger naplók küldése
+    Azt is megteheti a kialakítási kulcsot is adható meg az alábbi környezeti változókat valamelyikében.
 
-Az Application Insights ILogger küldött rögzítését naplókat támogatja. Naplózás kivétele állíthatja be a Kódminták [Itt](https://docs.microsoft.com/azure/azure-monitor/app/ilogger).
+    ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY
 
-## <a name="synthetic-transactions-with-powershell"></a>Szintetikus tranzakciók a PowerShell-lel
+    ApplicationInsights:InstrumentationKey
 
-Szintetikus tranzakciók használatával automatizálhatja a kérelmeket az alkalmazás:
+    Példa:
 
-1. Futtassa az alkalmazást, válassza a ![Képernyőfelvétel a Visual Studio IIS Express ikon](./media/asp-net-core/004-iis-express.png) ikon.
+    `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
-2. Másolja az URL-címet a böngésző címsorában. Az URL-cím a következő formátumban kell `http://localhost:<port number>`.
+    `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-   ![Képernyőkép a böngésző URL-CÍMÉT a címsorba](./media/asp-net-core/0013-copy-url.png)
+    `APPINSIGHTS_INSTRUMENTATIONKEY` általában segítségével adja meg az üzembe helyezett Azure Web Apps alkalmazások számára.
 
-3. Futtassa a következő PowerShell-hurok létrehozása 100 szintetikus tranzakciók a vizsga alkalmazás használatával. Módosítsa a portszámot után `localhost:` megfelelően az előző lépésben másolt URL-címét. Példa:
+    > [!NOTE]
+    > Egy környezeti változó keresztül kód wins-ben megadott kialakítási kulcs `APPINSIGHTS_INSTRUMENTATIONKEY`, amely wins-más lehetőségekhez képest.
 
-   ```powershell
-   for ($i = 0 ; $i -lt 100; $i++)
-   {
-    Invoke-WebRequest -uri http://localhost:50984/
-   }
-   ```
+## <a name="run-your-application"></a>Alkalmazás futtatása
 
-## <a name="open-the-application-insights-portal"></a>Az Application Insights portál megnyitása
+ Futtassa az alkalmazást, és hozzá kérelmeket. Telemetria most el kell Application Insights halad. A következő telemetriát az Application Insights SDK automatikusan gyűjti.
 
-Után az előző szakaszban futtatta a PowerShell-parancsokat, nyissa meg az Application Insights megtekintheti a tranzakciókat, és győződjön meg arról, hogy gyűjtenek adatokat. 
+|Kérések/függőségek |Részletek|
+|---------------|-------|
+|Kérelmek | A beérkező webes kérelmek az alkalmazáshoz. |
+|Http/Https | A hívások `HttpClient`. |
+|SQL | A hívások `SqlClient`. |
+|[Azure Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) | Az Azure Storage-kliens indított hívások. |
+|[EventHub Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0-s verzió vagy újabb verzió. |
+|[ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3.0.0-s verziójával vagy újabb verzió. |
+|Azure Cosmos DB | Csak automatikusan rögzíti a HTTP/HTTPS használata esetén. Az Application Insights nem rögzíti a TCP-módot. |
 
-A Visual Studio menüjében válassza **projekt** > **Application Insights** > **Application Insights portál megnyitása**.
+### <a name="performance-counters"></a>Teljesítményszámlálók
 
-   ![Képernyőkép az Application Insights áttekintése](./media/asp-net-core/010-portal.png)
+Támogatja a [teljesítményszámlálók](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/) ASP.NET Core korlátozódik, a következő
+
+   * SDK verziója 2.4.1 és teljesítményszámlálók fent gyűjt, ha az alkalmazás fut, az Azure Web App (Windows)
+   * SDK verziója 2.7.0-beta3 és teljesítményszámlálók fent gyűjt, ha az alkalmazás a Windows rendszert futtató, és célcsoport-kezelési `NETSTANDARD2.0` vagy újabb verziója.
+   * Az alkalmazások .NET-keretrendszerre teljesítményszámlálók SDK összes verziói támogatottak.
+   * Ez a cikk is frissülnek, amikor teljesítmény számláló támogatás a Linux.
+
+### <a name="ilogger-logs"></a>ILogger naplók
+
+[ILogger naplók](https://docs.microsoft.com/azure/azure-monitor/app/ilogger) súlyosságú `Warning` vagy újabb rendszer automatikusan rögzített, az SDK-verzió 2.7.0-beta3 vagy újabb.
+
+### <a name="live-metrics"></a>Élő metrikák
+
+Eltarthat néhány percig, telemetriai adatok jelennek meg a portál elindításához. Gyorsan ellenőrizheti, ha minden megfelelően működik, akkor érdemes választani, [élő mérőszámok](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream), míg lehetővé kéri, hogy a futó alkalmazás.
+
+## <a name="enable-client-side-telemetry-for-web-applications"></a>Ügyféloldali Telemetria engedélyezése webes alkalmazásokhoz
+
+A fenti lépések elegendőek a kiszolgálóoldali telemetriai adatok gyűjtésének megkezdéséhez. Ha az alkalmazás ügyféloldali összetevők, majd kövesse az alábbi lépéseket a gyűjtésének megkezdéséhez [használat telemetriai adatai](https://docs.microsoft.com/azure/azure-monitor/app/usage-overview) onnan.
+
+1. A `_ViewImports.cshtml`, injektálási hozzáadása:
+
+    ```cshtml
+        @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+    ```
+
+2. A `_Layout.cshtml`, insert HtmlHelper végéhez `<head>` szakaszt, de minden egyéb parancsfájl előtt. Ez a kódrészlet után bármely egyéni JavaScript-telemetriát az oldalról szeretne jelentést kell beszúrásra:
+
+    ```cshtml
+        @Html.Raw(JavaScriptSnippet.FullScript)
+        </head>
+    ```
+
+A `.cshtml` fájlneveket, a fentiekben említett egy alapértelmezett MVC alkalmazássablon származnak. Végső soron megfelelően engedélyezéséhez az alkalmazás az ügyféloldali figyelés kell lennie a JavaScript-kódrészletet a `<head>` minden oldalán megjelenik az alkalmazáshoz, amely a figyelni kívánt szakasza. A kérelem sablon hozzáadása a Javascript-kódrészletet a `_Layout.cshtml` hatékonyan érheti el ezt a célt. Ha a projekt nem rendelkezik az adott fájl továbbra is felvehetőek [az ügyféloldali figyelés](https://docs.microsoft.com/azure/azure-monitor/app/website-monitoring). Szeretné csak kell vagy ad hozzá a JavaScript egy azzal egyenértékű fájlt, amely szabályozza a `<head>` az alkalmazást, vagy másik lehetőségként belüli összes lapokra sikerült felvenni a kódrészletet több személy lapok, bár ez nehéz lenne, és általában nincs ajánlott.
+
+## <a name="configuring-application-insights-sdk"></a>Az Application Insights SDK konfigurálása
+
+Application Insights SDK for ASP.NET Core testre szabható az alapértelmezett konfiguráció módosítását. Lehet, hogy az Application Insights SDK-t az ASP.NET felhasználói jól ismerik a konfigurációs `ApplicationInsights.config`, vagy módosításával `TelemetryConfiguration.Active`. ASP.NET Core, a konfiguráció másképp történik. Az ASP.NET Core SDK vesznek fel az alkalmazás és ASP.NET Core beépített segítségével konfigurált [függőségi beszúrást](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection). Szinte minden konfigurációmódosítás történik, az a `ConfigureServices()` módszere a `Startup.cs` osztályhoz, amennyiben másként nincs feltüntetve. Kövesse az alábbiakban további.
 
 > [!NOTE]
-> Az előző példa képernyőfelvételen **élő Stream**, **lapmegtekintés betöltési ideje**, és **sikertelen kérelmek** nem gyűjtött. Ez a szakasz végigvezeti a hozzáadásához minden egyes lépéseket. Ha már gyűjt **élő Stream** és **lapmegtekintés betöltési ideje**, hajtsa végre a lépéseket csak **sikertelen kérelmek**.
+>  Változó-konfigurációjának módosítása `TelemetryConfiguration.Active` az ASP.NET Core-alkalmazások nem ajánlott.
 
-## <a name="collect-failed-requests-live-stream-and-page-view-load-time"></a>Sikertelen kérelmek, az élő Stream és a lapmegtekintés betöltési ideje gyűjtése
+### <a name="configuring-using-applicationinsightsserviceoptions"></a>ApplicationInsightsServiceOptions használatával konfigurálása
 
-### <a name="failed-requests"></a>Sikertelen kérelmek
+Néhány gyakori beállításainak módosításához átadásával lehetséges `ApplicationInsightsServiceOptions` való `AddApplicationInsightsTelemetry`. Az alábbiakban egy példa látható.
 
-Technikailag sikertelen kérelmek gyűjtött, de még nincsenek sikertelen kérelmek történt. Gyorsítsa fel a folyamatot, egy egyéni kivétel adhat hozzá a meglévő projekt egy való életből vett kivétel szimulálásához. Ha az alkalmazás továbbra is fut a Visual Studióban, mielőtt továbblépne, válassza ki a **hibakeresés leállításához** (Shift + F5).
-
-1. A **Megoldáskezelőben**, bontsa ki a **oldalak** > **About.cshtml**, majd nyissa meg *About.cshtml.cs*.
-
-   ![Képernyőfelvétel a Visual Studio Solution Explorerben](./media/asp-net-core/011-about.png)
-
-2. Adja hozzá a kivétel ``Message=``, majd mentse a módosítást a fájl.
-
-    ```csharp
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
-
-    namespace DotNetCore.Pages
+```csharp
+    public void ConfigureServices(IServiceCollection services)
     {
-        public class AboutModel : PageModel
-        {
-            public string Message { get; set; }
+        Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions aiOptions
+                    = new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions();
+        // Disables adaptive sampling.
+        aiOptions.EnableAdaptiveSampling = false;
 
-            public void OnGet()
-            {
-                Message = "Your application description page.";
-                throw new Exception("Test Exception");
-            }
+        // Disables QuickPulse (Live Metrics stream).
+        aiOptions.EnableQuickPulseMetricStream = false;
+        services.AddApplicationInsightsTelemetry(aiOptions);
+    }
+```
+
+A konfigurálható beállítások listája pontosan `ApplicationInsightsServiceOptions` található [Itt](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Microsoft.ApplicationInsights.AspNetCore/Extensions/ApplicationInsightsServiceOptions.cs).
+
+### <a name="sampling"></a>Mintavételezés
+
+Application Insights SDK for ASP.NET Core FixedRate és adaptív mintavételezés is támogatja. Az adaptív mintavételezési alapértelmezés szerint engedélyezve van. Kövesse a [adaptív mintavételezés útmutatást](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)tekintse meg a mintavétel az ASP.NET Core-alkalmazások konfigurálása.
+
+### <a name="adding-telemetryinitializers"></a>TelemetryInitializers hozzáadása
+
+[Telemetria inicializálók](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) küldött összes telemetriai adat az általános tulajdonságainak megadása szeretné használják.
+
+Egy új `TelemetryInitializer`, adja hozzá a DependencyInjection tárolóba alább látható módon. `TelemetryInitializer`s DependencyInjection tárolóhoz adni fog észlelnie kell az SDK automatikusan.
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();
+    }
+```
+
+### <a name="removing-telemetryinitializers"></a>Removing TelemetryInitializers
+
+Távolítsa el az összes, vagy adott TelemetryInitializers, amelyek alapértelmezés szerint jelen van, használja az alábbi mintakód **után** hívása `AddApplicationInsightsTelemetry()`.
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddApplicationInsightsTelemetry();
+
+        // Remove a specific built-in TelemetryInitializer
+        var tiToRemove = services.FirstOrDefault<ServiceDescriptor>
+                         (t => t.ImplementationType == typeof(AspNetCoreEnvironmentTelemetryInitializer));
+        if (tiToRemove != null)
+        {
+            services.Remove(tiToRemove);
+        }
+
+        // Remove all initializers
+        // This requires importing namespace using Microsoft.Extensions.DependencyInjection.Extensions;
+        services.RemoveAll(typeof(ITelemetryInitializer));
+    }
+```
+
+### <a name="adding-telemetryprocessors"></a>TelemetryProcessors hozzáadása
+
+Egyéni telemetriát processzorok lehet hozzáadni a `TelemetryConfiguration` a bővítmény módszer használatával `AddApplicationInsightsTelemetryProcessor` a `IServiceCollection`. Telemetria processzorok használt [speciális forgatókönyvek szűrés](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#filtering-itelemetryprocessor) , hogy mit tartalmaz, vagy zárva a telemetriát küld az Application Insights szolgáltatás több közvetlenül lehet szabályozni az. Használja az alábbi példát.
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // ...
+        services.AddApplicationInsightsTelemetry();
+        services.AddApplicationInsightsTelemetryProcessor<MyFirstCustomTelemetryProcessor>();
+
+        // If you have more processors:
+        services.AddApplicationInsightsTelemetryProcessor<MySecondCustomTelemetryProcessor>();
+    }
+```
+
+### <a name="configuring-or-removing-default-telemetrymodules"></a>Konfigurálás vagy alapértelmezett fájl TelemetryModules eltávolítása
+
+Az Application Insights telemetria modult használ, így [hasznos információk automatikus gyűjtése](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies) kapcsolatos, adott munkaterhelés konkrét további konfiguráció nélkül.
+
+A következő automatikus adatgyűjtő modulok alapértelmezés szerint engedélyezve vannak, és automatikusan a telemetriai adatok gyűjtésének felelős. Is ezek le van tiltva, és úgy konfigurálva, hogy az alapértelmezett viselkedés módosítható.
+
+* `RequestTrackingTelemetryModule`
+* `DependencyTrackingTelemetryModule`
+* `PerformanceCollectorModule`
+* `QuickPulseTelemetryModule`
+* `AppServicesHeartbeatTelemetryModule`
+* `AzureInstanceMetadataTelemetryModule`
+
+Minden olyan alapértelmezett `TelemetryModule`, használja a bővítmény módszert `ConfigureTelemetryModule<T>` a `IServiceCollection` az alábbi példában látható módon.
+
+```csharp
+using Microsoft.ApplicationInsights.DependencyCollector;
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddApplicationInsightsTelemetry();
+
+        // The following configures DependencyTrackingTelemetryModule.
+        // Similarly, any other default modules can be configured.
+        services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) =>
+                        {
+                            module.EnableW3CHeadersInjection = true;
+                        });
+
+        // The following removes PerformanceCollectorModule to disable perf-counter collection.
+        // Similarly, any other default modules can be removed.
+        var performanceCounterService = services.FirstOrDefault<ServiceDescriptor>(t => t.ImplementationType == typeof(PerformanceCollectorModule));
+        if (performanceCounterService != null)
+        {
+         services.Remove(performanceCounterService);
         }
     }
-    ```
+```
 
-### <a name="live-stream"></a>Élő stream
+### <a name="configuring-telemetry-channel"></a>Telemetria csatorna konfigurálása
 
-Az élő Stream funkciók, az Application Insights az ASP.NET Core használatának eléréséhez a Microsoft.ApplicationInsights.AspNetCore 2.2.0 NuGet-csomagok frissítése.
+A használt alapértelmezett csatorna a `ServerTelemetryChannel`. Az alábbi példa szerint felülbírálható.
 
-A Visual Studióban válassza ki a **projekt** > **NuGet-csomagok kezelése** > **Microsoft.ApplicationInsights.AspNetCore** > (verzió) **2.2.0** > **frissítés**.
+```csharp
+using Microsoft.ApplicationInsights.Channel;
 
-  ![Képernyőfelvétel a NuGet-Csomagkezelő](./media/asp-net-core/012-nuget-update.png)
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // use the following to replace the default channel with InMemoryChannel.
+        // this can also be applied to ServerTelemetryChannel as well.
+        services.AddSingleton(typeof(ITelemetryChannel), new InMemoryChannel() {MaxTelemetryBufferCapacity = 19898 });
 
-Több megerősítési kérések jelennek meg. Olvassa el és fogadja el, ha elfogadja a módosításokat.
+        services.AddApplicationInsightsTelemetry();
+    }
+```
 
-### <a name="page-view-load-time"></a>Lapmegtekintés betöltési ideje
+## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-1. A Visual Studióban nyissa meg **Megoldáskezelőben** > **oldalak**. Két fájlt kell módosítania: *Layout.cshtml* és *ViewImports.cshtml*.
+### <a name="i-want-to-track-additional-telemetry-other-than-the-auto-collected-telemetry-how-do-i-do-it"></a>Szeretnék nyomon követheti az automatikusan gyűjtött telemetria eltérő további telemetriai adatokat. Hogyan készíthetek azt?
 
-2. A *ViewImports.cshtml*, adja hozzá a kódot:
+Szerezzen be egy példányát `TelemetryClient` a konstruktor injektálási használ, és hívja a szükséges `TrackXXX()` metódust. Nem javasoljuk, hogy hozzon létre új `TelemetryClient` példányok az ASP.NET Core-alkalmazás-példányként `TelemetryClient` már regisztrálva van a DI tároló, amely közös `TelemetryConfiguration` telemetriai adatot rest-tel. Hozzon létre egy új `TelemetryClient` példány ajánlott csak akkor, ha szeretné, hogy a többi a telemetria egy külön konfigurációs van. Az alábbi példa bemutatja, hogyan nyomon lehet követni további telemetria a vezérlő.
 
-   ```csharp
-   @using Microsoft.ApplicationInsights.AspNetCore
-   @inject JavaScriptSnippet snippet
-   ```
+```csharp
+using Microsoft.ApplicationInsights;
 
-3. A *Layout.cshtml*, előtt az alábbi kódot a ``</head>`` címke és egyéb szkripteket előtt:
+public class HomeController : Controller
+{
+    private TelemetryClient telemetry;
 
-    ```csharp
-    @Html.Raw(snippet.FullScript)
-    ```
+    // use constructor injection to get TelemetryClient instance
+    public HomeController(TelemetryClient telemetry)
+    {
+        this.telemetry = telemetry;
+    }
 
-### <a name="test-failed-requests-page-view-load-time-and-live-stream"></a>Teszt sikertelen kérelmeket, lapmegtekintés betöltési ideje, és az élő Stream
+    public IActionResult Index()
+    {
+        // call required TrackXXX method.
+        this.telemetry.TrackEvent("HomePageRequested");
+        return View();
+    }
+```
 
-Tesztelje, és győződjön meg arról, hogy minden működik:
+ Tekintse meg [egyéni metrikákat az Application Insights API-referencia](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/) egyéni jelentések készítése az Application Insights-adatok leírását.
 
-1. Futtassa az alkalmazást. Futtassa az alkalmazást, válassza a ![Képernyőfelvétel a Visual Studio IIS Express ikon](./media/asp-net-core/004-iis-express.png) ikon.
+### <a name="some-visual-studio-templates-used-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Néhány Visual Studio-sablonok a IWebHostBuilder UseApplicationInsights() metódust segítségével az Application Insights engedélyezése. Még mindig érvényes felhasználási?
 
-2. Nyissa meg a **kapcsolatos** a vizsgált kivételt kiváltó lapot. (Ha hibakeresési módban, a Visual Studióban válassza ki a **Folytatás** az Application Insights megjelennek a kivétel.)
+Ezzel a módszerrel az Application Insights engedélyezése érvényes, és a Visual Studio az előkészítési, illetve a az Azure Web App bővítményeket is használható. Azonban javasoljuk, hogy használjon `services.AddApplicationInsightsTelemetry()` néhány konfigurációs szabályozásához túlterheléssel biztosít. Mindkét módszerek belsőleg járjon el ugyanígy, ha nem tartozik a alkalmazni egyéni konfiguráció, a hívó vagy nem okoz gondot.
 
-3. Futtassa újra a szimulált PowerShell tranzakció parancsfájl korábban már használt. (Előfordulhat, hogy kell módosítani a port számát, a parancsfájl.)
+### <a name="i-am-deploying-my-aspnet-core-application-to-azure-web-apps-should-i-still-enable-the-application-insights-extension-from-web-apps"></a>Saját ASP.NET Core-alkalmazás az Azure Web Appshez vagyok telepítése Kell továbbra is engedélyezhető a Web Apps Application Insights-bővítmény?
 
-4. Ha a **áttekintése** Applications Insights lapjának még nincs megnyitva, a Visual Studio menüjében válassza a **projekt** > **Application Insights**  >  **Nyissa meg az Application Insights portál**. 
+Az SDK-val, ahogyan az ebben a cikkben összeállítás során települ, ha nincs az App Service-portál a Application Insights-bővítmény engedélyezéséhez szükség. Akkor is, ha a bővítmény telepítve van, ki, amikor azt észleli, hogy az SDK-t már szerepel az alkalmazás biztonsági. Az Application Insights engedélyezése a bővítmény a Önnek nem kell a telepítése és frissítése az SDK-t. Azonban ez a cikk megfelelően az Application Insights engedélyezése csak olyan rugalmasabb, az alábbi okok miatt.
+   * Application Insights Telemetria továbbra is működnek:
+       * Az összes operációs rendszer – Windows, Linux, Mac rendszerre.
+       * Az összes közzététele módok – önálló vagy keretrendszer-függő.
+       * Az összes cél keretrendszereket, beleértve a teljes .NET-keretrendszer.
+       * Az összes üzemeltetési lehetőségek – Azure Web APP, virtuális gépek, Linux, tárolók, az AKS, nem Azure-beli.
+   * Telemetria látható helyileg, a Visual Studióban történő hibakeresése során.
+   * Lehetővé teszi, hogy követési további egyéni telemetriát `TrackXXX()` API-t.
+   * A konfiguráció teljes hozzáféréssel rendelkezik.
 
-   > [!TIP]
-   > Ha nem látja az új forgalmat, ellenőrizze a értékét **időtartomány**, majd válassza ki **frissítése**.
+### <a name="can-i-enable-application-insights-monitoring-using-tools-like-status-monitor"></a>Lehet engedélyezni az Application Insights figyelési hasonló eszközökkel Állapotfigyelőt?
 
-   ![Az áttekintés ablak képernyőképe](./media/asp-net-core/0019-overview-updated.png)
+Nem. [Az állapotfigyelő](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) és a közelgő helyettesítő [Állapotfigyelőt v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) jelenleg támogatja az ASP.NET 4.x csak.
 
-5. Válassza ki **élő Stream**.
+### <a name="i-have-an-aspnet-core-20-application-isnt-application-insights-automatically-enabled-without-me-doing-anything"></a>Az ASP.NET Core 2.0-alkalmazások vannak. Nem az Application Insights automatikusan engedélyezve van velem csinál semmit nélkül?
 
-   ![Képernyőkép a Stream az élő metrikák](./media/asp-net-core/0020-live-metrics-stream.png)
+`Microsoft.AspNetCore.All` 2.0-s metapackage Application Insights SDK-t (2.1.0-ás) tartalmazza, és futtatja az alkalmazást a Visual Studio hibakereső funkcióját, ha a Visual Studio Application Insights lehetővé teszi, és telemetriát helyileg magát az IDE-ben jeleníti meg. Telemetria az Application Insights szolgáltatásba nem lett elküldve, egy kialakítási kulcs explicit módon není zadána klauzule. Javasoljuk, hogy kövesse a jelen cikkben lévő utasítások még a 2.0-hoz készült Application Insights engedélyezése alkalmazásokat.
 
-   (Ha a PowerShell-parancsfájl továbbra is fut, megtekintheti az élő metrikákat. Ha a PowerShell-parancsfájl futása leállt, futtassa a parancsprogramot az élő Stream nyílt.)
+### <a name="i-run-my-application-in-linux-are-all-features-supported-in-linux-as-well"></a>Az alkalmazásom Linux rendszeren futtatható. Minden funkció támogatja a Linux is?
 
-## <a name="application-insights-sdk-comparison"></a>Application Insights SDK-t összehasonlító
+* Igen. Az SDK szolgáltatás támogatása a következő azonos az összes platform, a következő kivételekkel:
 
-Az Application Insights termékcsoport dolgozott a merevlemez között funkcióparitás eléréséhez a [teljes .NET-keretrendszer SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) és a .NET Core SDK-t. A 2.2.0 kiadása a [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) az Application Insights nagymértékben bezárja a szolgáltatás közötti eltérés.
+    * Teljesítményszámlálók még nem támogatottak a nem-Windows.
+    * Annak ellenére, hogy `ServerTelemetryChannel` engedélyezve van alapértelmezés szerint az alkalmazás fut, Linux vagy MacOS rendszeren, ha a csatorna nem hoz létre automatikusan egy helyi tároló mappa a telemetriai adatokat ideiglenesen hálózati merül fel. Ez a korlátozás hatására a telemetriai adatok elvesznek, ha vannak az átmeneti hálózati vagy kiszolgálói problémák. A probléma megoldása van a felhasználó egy helyi mappába a csatorna konfigurálhatja az alább látható módon.
 
-Az alábbi táblázat ismerteti a különbségeket több és közti kompromisszummal [.NET és .NET Core](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server):
+```csharp
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
-   | SDK-t összehasonlító | ASP.NET        | ASP.NET Core 2.1.0    | ASP.NET Core 2.2.0 |
-  |:-- | :-------------: |:------------------------:|:----------------------:|
-   | **Élő metrikák**      | **+** |**-** | **+** |
-   | **Kiszolgáló telemetriai csatorna** | **+** |**-** | **+**|
-   |**Az adaptív mintavétel**| **+** | **-** | **+**|
-   | **SQL függőségi hívások**     | **+** |**-** | **+**|
-   | **Teljesítményszámlálók*** | **+** | **-**| **-**|
-
-Tekintse meg ebben a környezetben teljesítményszámlálók [kiszolgálóoldali teljesítményszámlálók](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) , például a processzor, memória és lemezhasználat.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // The following will configure channel to use the given folder to temporarily
+        // store telemetry items during network or application insights server issues.
+        // User should ensure that the given folder already exists,
+        // and that application has read/write permissions.
+        services.AddSingleton(typeof(ITelemetryChannel),
+                                new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
+        services.AddApplicationInsightsTelemetry();
+    }
+```
 
 ## <a name="open-source-sdk"></a>Open-source SDK
 [Olvassa el, és hozzájárulnak a kód](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
 
-## <a name="application-insights-search-continued"></a>Application Insights keresés folytatása
-
-Ez a szakasz segítségével jobban megismerheti az Application Insights keresés működése a Visual Studióban egy ASP.NET Core 2 projekt. Ezzel a módszerrel úgy működik, akkor is, ha még nem explicit módon telepítette az Application Insights NuGet-csomagok még. Azt is hasznos lehet a hibakeresési kimeneti vizsgálatához.
-
-Ha a kimeneti szóra keres _insight_, az alábbihoz hasonló eredményeket vannak kiemelve:
-
-```DebugOutput
-'dotnet.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\store\x64\netcoreapp2.0\microsoft.aspnetcore.applicationinsights.hostingstartup\2.0.3\lib\netcoreapp2.0\Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll'.
-'dotnet.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\store\x64\netcoreapp2.0\microsoft.applicationinsights.aspnetcore\2.1.1\lib\netstandard1.6\Microsoft.ApplicationInsights.AspNetCore.dll'.
-
-Application Insights Telemetry (unconfigured): {"name":"Microsoft.ApplicationInsights.Dev.Message","time":"2018-06-03T17:32:38.2796801Z","tags":{"ai.location.ip":"127.0.0.1","ai.operation.name":"DEBUG /","ai.internal.sdkVersion":"aspnet5c:2.1.1","ai.application.ver":"1.0.0.0","ai.cloud.roleInstance":"CONTOSO-SERVER","ai.operation.id":"de85878e-4618b05bad11b5a6","ai.internal.nodeName":"CONTOSO-SERVER","ai.operation.parentId":"|de85878e-4618b05bad11b5a6."},"data":{"baseType":"MessageData","baseData":{"ver":2,"message":"Request starting HTTP/1.1 DEBUG http://localhost:53022/  0","severityLevel":"Information","properties":{"AspNetCoreEnvironment":"Development","Protocol":"HTTP/1.1","CategoryName":"Microsoft.AspNetCore.Hosting.Internal.WebHost","Host":"localhost:53022","Path":"/","Scheme":"http","ContentLength":"0","DeveloperMode":"true","Method":"DEBUG"}}}}
-```
-
-A kimenetben coreclr-nek két szerelvényből tölti be: 
-
-- _Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll_
-- _Microsoft.ApplicationInsights.AspNetCore.dll_.
-
-A _nincs beállítva_ hivatkozás az Application Insights telemetria minden példánya azt jelzi, hogy az alkalmazás nem változón társítva. Az alkalmazás futása közben létrehozott az adatok nem küldi el az Azure-bA. Az adatok csak a helyi keresési és elemzési érhető el.
-
-Az funkciók azért lehetséges részben a NuGet-csomag _Microsoft.AspNetCore.All_ veszi [ _Microsoft.ASPNetCoreApplicationInsights.HostingStartup_ ](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.applicationinsights.hostingstartup.applicationinsightshostingstartup?view=aspnetcore-2.1) függőségként.
-
-![Képernyőfelvétel a NuGet függőségi grafikon a Microsoft.AspNETCore.all](./media/asp-net-core/013-dependency.png)
-
-A Visual Studio-en kívül Szerkesztés egy ASP.NET Core-projektet a VSCode vagy más szerkesztőbe, ha ezekkel a szerelvényekkel nem automatikusan betöltése során hibakeresési Ha még nem explicit módon hozzáadva a projekthez az Application Insights.
-
-Azonban a Visual Studióban, a külső szerelvények helyi Application Insights funkciók mentése a világítás végezhető el a [IHostingStartup felület](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1). A felület dinamikusan hozzáadja az Application Insights hibakeresése során.
-
-További információ az alkalmazás továbbfejlesztésének egy [ASP.NET Core IHostingStartup és a külső szerelvény](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/platform-specific-configuration?view=aspnetcore-2.1). 
-
-### <a name="disable-application-insights-in-visual-studio-net-core-projects"></a>Tiltsa le az Application Insights a Visual Studio .NET Core-projektek
-
-Bár a automatikus világos-fel az Application Insights keresés funkció hasznos lehet, megrendítő azt látni, hibakeresési telemetriai jönnek létre, ha nem várt, ehelyett zavaró lehet.
-
-Csak a telemetria generációs letiltása nem elegendő, ha a kódblokkot, amellyel is hozzáadhat a **konfigurálása** módszere a _Startup.cs_ fájlt:
-
-```csharp
-  var configuration = app.ApplicationServices.GetService<Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration>();
-            configuration.DisableTelemetry = true;
-            if (env.IsDevelopment())
-```
-
-Coreclr-nek is betöltődik _Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll_ és _Microsoft.ApplicationInsights.AspNetCore.dll_, de a fájlok nem csinál semmi.
-
-Ha azt szeretné, teljesen letiltja az Application Insights a Visual Studio .NET Core-projektben,-e az előnyben részesített módszer kiválasztásához **eszközök** > **beállítások**  >   **Projektek és megoldások** > **webes projektek**. Válassza ki a **tiltsa le a helyi Application Insights az ASP.NET Core webes projektek** jelölőnégyzetet. Ez a funkció a Visual Studio 15,6 lett hozzáadva.
-
-![Képernyőfelvétel a Visual Studio beállítások ablak Web-projektek képernyő](./media/asp-net-core/014-disable.png)
-
-Ha a Visual Studio egy korábbi verzióját futtatja, és teljesen eltávolítja az összes szerelvények keresztül betöltött *IHostingStartup*, két lehetősége van:
-
-* Adjon hozzá `.UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")` való _Program.cs_:
-
-  ```csharp
-  using System;
-  using System.Collections.Generic;
-  using System.IO;
-  using System.Linq;
-  using System.Threading.Tasks;
-  using Microsoft.AspNetCore;
-  using Microsoft.AspNetCore.Hosting;
-  using Microsoft.Extensions.Configuration;
-  using Microsoft.Extensions.Logging;
-
-  namespace DotNetCore
-  {
-      public class Program
-      {
-          public static void Main(string[] args)
-          {
-              BuildWebHost(args).Run();
-          }
-
-          public static IWebHost BuildWebHost(string[] args) =>
-              WebHost.CreateDefaultBuilder(args)
-                  .UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")
-                  .UseStartup<Startup>()
-                  .Build();
-      }
-  }
-  ```
-
-* Adjon hozzá ``"ASPNETCORE_preventHostingStartup": "True"`` való _launchSettings.json_ környezeti változókat.
-
-Ezen módszerek bármelyikével problémája, hogy azok ne tiltsa le csak az Application Insights. A módszerek bármit használta a szolgáltatást a Visual studióban is letilthatók a *IHostingStartup* világos felskálázás funkció.
-
 ## <a name="video"></a>Videó
 
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
+- Külső részletes videó [Application Insights konfigurálása a .NET Core és a Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) sablon nélkül.
 
 ## <a name="next-steps"></a>További lépések
 * [Ismerje meg a felhasználói folyamatok](../../azure-monitor/app/usage-flows.md) tudni, hogy a felhasználók hogyan navigálnak az alkalmazáson keresztül.

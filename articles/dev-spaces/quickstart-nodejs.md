@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Gyors fejlesztés a tárolók, mikroszolgáltatások és Node.js az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: jeconnoc
-ms.openlocfilehash: 9aa5f14f9a9c914cb95422086107d18c1e0b6491
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7507b6741a373f28e0e780af08d076235e377839
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765254"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873153"
 ---
 # <a name="quickstart-develop-with-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Fejlesztés node.js nyelven, a Kubernetes Azure fejlesztési tárolóhelyek használatával
 
@@ -39,7 +39,7 @@ Az AKS-fürt létrehozásához szükséges egy [támogatott régió](https://doc
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-count 1 --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az AKS-fürt az Azure fejlesztési tárolóhelyek engedélyezése

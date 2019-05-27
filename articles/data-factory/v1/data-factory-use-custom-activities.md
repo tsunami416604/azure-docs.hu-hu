@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 0ddc235064d99e9d6385ab48e78f893952eefa15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7e3b1496890a4b97fc435b49ab9bf282134d1a6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61254659"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65910812"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +44,7 @@ A következő forgatókönyv részletes útmutatást nyújt a .NET egyéni tevé
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Forgatókönyv: egyéni tevékenységek létrehozása
 ### <a name="prerequisites"></a>Előfeltételek
-* Visual Studio 2012/2013/2015
+* Visual Studio 2012/2013/2015/2017
 * Az [Azure .NET SDK](https://azure.microsoft.com/downloads/) letöltése és telepítése.
 
 ### <a name="azure-batch-prerequisites"></a>Az Azure Batch előfeltételei
@@ -100,10 +100,10 @@ A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenys
 ### <a name="procedure"></a>Eljárás
 1. Hozzon létre egy **.NET osztálytár** projekt.
    <ol type="a">
-     <li>Indítsa el a <b>Visual Studio 2017</b> vagy <b>Visual Studio 2015</b> vagy <b>Visual Studio 2013</b> vagy <b>Visual Studio 2012</b>.</li>
+     <li>Indítsa el a Visual Studiót.</li>
      <li>Kattintson a <b>File</b> (Fájl) menüre, mutasson a <b>New</b> (Új) elemre, és kattintson a <b>Project</b> (Projekt) lehetőségre.</li>
      <li>Bontsa ki a <b>Sablonok</b> lehetőséget, és válassza a <b>Visual C#</b> lehetőséget. Ez az útmutató használata a C#, de bármilyen .NET programozási nyelvvel használhatja az egyéni tevékenység fejlesztéséhez.</li>
-     <li>Válassza ki <b>osztálytár</b> projekttípusok jobb listájából. A VS 2017-ben, válasszon <b>osztálytár (.NET-keretrendszer)</b> </li>
+     <li>Válassza ki <b>osztálytár</b> projekttípusok jobb listájából. A Visual Studióban válassza <b>osztálytár (.NET-keretrendszer)</b> </li>
      <li>Adja meg <b>MyDotNetActivity</b> számára a <b>neve</b>.</li>
      <li>Válassza ki <b>C:\ADFGetStarted</b> számára a <b>hely</b>.</li>
      <li>A projekt létrehozásához kattintson az <b>OK</b> gombra.</li>
@@ -550,7 +550,7 @@ Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat k
 
    | Szelet | Kezdő időpont | Kimeneti fájl |
    |:--- |:--- |:--- |
-   | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
+   | 1. |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
    | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
@@ -628,7 +628,7 @@ Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat k
     ![Diagram csempe](./media/data-factory-use-custom-activities/DataFactoryBlade.png)
 2. A Diagram nézet most kattintson az OutputDataset.
 
-    ![Diagramnézet](./media/data-factory-use-custom-activities/diagram.png)
+    ![Diagram nézet](./media/data-factory-use-custom-activities/diagram.png)
 3. Megtekintheti, hogy öt kimeneti szelet kész állapotban van. Ha nem üzemkész állapotba kerül, azok még nem készült még.
 
    ![Kimeneti szeletek](./media/data-factory-use-custom-activities/OutputSlices.png)

@@ -2,20 +2,20 @@
 title: Az SQL Data Warehouse-adatok az integrációs partnerek |} A Microsoft Docs
 description: Adatintegrációs megoldásokat, amelyek támogatják az Azure SQL Data Warehouse a külső partnerek listája.
 services: sql-data-warehouse
-author: jrowlandjones
+author: mabasile-MSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
 ms.date: 03/27/2019
-ms.author: jrj
+ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 74449f7319f800e8008c5d457351fa49ae1af59a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5593d6e392915448845adcac95da869e72a11310
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61476738"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873799"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Az SQL Data Warehouse-adatok az integrációs partnerek
 Az adattárház-megoldást létrehozni, számos különböző iparágvezető eszközök közül választhat. Ez a cikk a Microsoft partnervállalatokban hivatalos adatintegrációs megoldásokat támogató Azure SQL Data Warehouse-emeli ki.

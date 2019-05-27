@@ -2,20 +2,20 @@
 title: Az Azure SQL Data Warehouse kibocsátási megjegyzések 2018 augusztus |} A Microsoft Docs
 description: Kibocsátási megjegyzések az Azure SQL Data warehouse-hoz.
 services: sql-data-warehouse
-author: twounder
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 08/13/2018
-ms.author: twounder
-ms.reviewer: twounder
-ms.openlocfilehash: 9547380d4636c1a72add9dab7a9eed850abd0307
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: anjangsh
+ms.reviewer: jrasnick
+ms.openlocfilehash: f0840e9b91c81b8a99e8c736c3c5db082c92fe76
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474997"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912207"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Mi az új Azure SQL Data warehouse? 2018. augusztus
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 augusztus.
@@ -30,7 +30,7 @@ Tekintse meg az adott riasztásra vonatkozó javaslatok láthatók legördülőm
 
 ## <a name="bug-fixes"></a>Hibajavítások
 
-| Cím | Leírás |
+| Beosztás | Leírás |
 |:---|:---|
 | **A felosztás száma meghaladja a maximális korlátot lehetséges lekérdezés-hibák** |A felső határa 1 millió fájl-felosztás korlát túllépésekor nem kezelt kivételt okozott az SQL-kezelő kiírása, és az összes lekérdezés nem sikerült. Javítás a probléma processzorsebezhetőségről megfelelően kezeli a kivételt, és anélkül, hogy ez a lekérdezések hibát adnak vissza. |
 | **ExternalMoveReadersPerNode alapértelmezett hasznosításával betöltési teljesítmény javítása érdekében** |A probléma a ExternalMoveReadersPerNode tulajdonság beállítása folyamatban van a szinkronizált beállítása service fabric okozta. A regresszió miatt egy csökkentett teljesítményű Gen2 betöltési teljesítmény. A javítás Gen2 betöltési teljesítmény optimalizált tervezési paraméterek belül újra elérhetővé teszi.|

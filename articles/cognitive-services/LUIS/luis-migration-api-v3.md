@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 6412f0a2e295a19f741c70e7870a4d198ee03b71
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233552"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66123888"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Előzetes verzió: API-verzió át 3.x LUIS-alkalmazások
 
@@ -343,6 +343,9 @@ A prediction válasz tartalmazza a lista entitás összes a más entitásokkal e
 
 **A v3-as**, az entitás meg van jelölve `startIndex` és `entityLength`.
 
+## <a name="deprecation"></a>Elavulás 
+
+A V2 API nem a v3-as előzetes legalább 9 hónapig elavulttá válik. 
 
 ## <a name="next-steps"></a>További lépések
 

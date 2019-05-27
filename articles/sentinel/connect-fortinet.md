@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8e00fd312dd335551f5ba8e7dcec2baa4f7e2643
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 72306132f88f211180c99cd30845781667605204
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204328"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921881"
 ---
 # <a name="connect-your-fortinet-appliance"></a>Csatlakozás a Fortinet berendezés 
 
@@ -120,13 +120,50 @@ Syslog-üzeneteket az Azure-munkaterülethez a Syslog-ügynökön keresztül a C
    > [!NOTE] 
    > További információkért látogasson el a [Fortinet dokumentumtár](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Válassza ki a verziót, és használja a **kézikönyv** és **üzenet naplózása**.
 
+ A Fortinet események Log Analytics használja a megfelelő sémát, keresse meg `CommonSecurityLog`.
+
+
 ## <a name="step-3-validate-connectivity"></a>3. lépés: Kapcsolat ellenőrzése
 
 Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 percig is eltarthat. 
 
-1. Győződjön meg arról, hogy a naplók a Syslog-ügynök a megfelelő porthoz van első. Futtassa ezt a parancsot a Syslog-ügynök gépen: `tcpdump -A -ni any  port 514 -vv` Ez a parancs megjeleníti a naplókat, amely az eszközről a Syslog-géphez streameli. Győződjön meg arról, hogy a forrás-berendezés a megfelelő port és a megfelelő létesítmény naplók érkeznek.
+1. Ellenőrizze, hogy a megfelelő funkcióval. A létesítmény meg kell egyeznie a berendezés és az Azure-Sentinel. Az Azure-Sentinel használja, és módosítsa a fájl melyik létesítmény fájlban `security-config-omsagent.conf`. 
 
-2. Ellenőrizze, hogy nincs-e a Syslog-démont és az ügynök közötti kommunikációhoz. Futtassa ezt a parancsot a Syslog-ügynök gépen: `tcpdump -A -ni any  port 25226 -vv` Ez a parancs megjeleníti a naplókat, amely az eszközről a Syslog-géphez streameli. Győződjön meg arról, hogy a naplók is fogadja az ügynökön.
+2. Győződjön meg arról, hogy a naplók a Syslog-ügynök a megfelelő porthoz van első. Futtassa ezt a parancsot a Syslog-ügynök gépen: `tcpdump -A -ni any  port 514 -vv` Ez a parancs megjeleníti a naplókat, amely az eszközről a Syslog-géphez streameli. Győződjön meg arról, hogy a forrás-berendezés a megfelelő port és a megfelelő létesítmény naplók érkeznek.
+
+3. Győződjön meg arról, hogy megfelelnek-e a naplókat küld a [RFC 5424](https://tools.ietf.org/html/rfc542).
+
+4. A Syslog-ügynököt futtató számítógépen ellenőrizze, hogy ezeket a portokat 514-es, a 25226 nyílt forráskódú és figyel-e, a parancs `netstat -a -n:`. Ez a parancs használatával kapcsolatos további információk: [netstat(8) – Linux man lap](https://linux.die.netman/8/netstat). Ha megfelelően figyel, láthatja a:
+
+   ![Az Azure Sentinel-portok](./media/connect-cef/ports.png) 
+
+5. Ellenőrizze a démont értéke 514-es, porton figyelnek, amelyen a naplók küldése folyamatban van.
+    - Rsyslog:<br>Győződjön meg arról, hogy a fájl `/etc/rsyslog.conf` ezt a konfigurációt tartalmazza:
+
+           # provides UDP syslog reception
+           module(load="imudp")
+           input(type="imudp" port="514")
+        
+           # provides TCP syslog reception
+           module(load="imtcp")
+           input(type="imtcp" port="514")
+
+      További információkért lásd: [imudp: UDP Syslog bemeneti modul](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module) és [imtcp: TCP, Syslog bemeneti modul](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module)
+
+   - A syslog-ng esetén:<br>Győződjön meg arról, hogy a fájl `/etc/syslog-ng/syslog-ng.conf` ezt a konfigurációt tartalmazza:
+
+           # source s_network {
+            network( transport(UDP) port(514));
+             };
+     További információkért lásd: [imudp: UDP Syslog bemeneti modul] (további információkért lásd: a [syslog-ng az adatforrás-Edition 3.16 nyílt - felügyeleti útmutató](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455).
+
+1. Ellenőrizze, hogy nincs-e a Syslog-démont és az ügynök közötti kommunikációhoz. Futtassa ezt a parancsot a Syslog-ügynök gépen: `tcpdump -A -ni any  port 25226 -vv` Ez a parancs megjeleníti a naplókat, amely az eszközről a Syslog-géphez streameli. Győződjön meg arról, hogy a naplók is fogadja az ügynökön.
+
+6. Ha sikeres eredményt adott mindkét azokat a parancsokat, ellenőrizze a Log Analyticsben, hogy tekintse meg, ha a naplók érkezési. Ezek a készülékek a streamelt minden eseményt a Log Analytics a nyers formában jelennek meg `CommonSecurityLog` típusa.
+
+7. Ellenőrizze, hogy vannak-e hibák, vagy ha a naplók nem érkező, nézze meg `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`. Allocated a napló formátuma eltérés hibák, Ugrás `/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` , és keresse meg a fájlban `security_events.conf`, és győződjön meg arról, hogy a naplók a regex formátumban jelenik meg ez a fájl megfelel-e.
+
+8. Győződjön meg arról, hogy a Syslog-üzenet alapértelmezett mérete legfeljebb 2048 bájtok száma (2KB). Ha naplók túl hosszú, frissítse a security_events.conf ezzel a paranccsal: `message_length_limit 4096`
 
 1. Ha nem fogadja a Fortinet naplók az ügynök, futtassa a következő parancsot a Syslog démon használ, állítsa be a létesítmény, és állítsa be a naplókat, keresse meg a naplók a Fortinet word típusától függően:
    - rsyslog.d: `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
@@ -135,11 +172,6 @@ Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 
    - Syslog-ng: `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
       
      A Syslog démon újraindításához: `sudo service syslog-ng restart`
-1. Ha sikeres eredményt adott mindkét azokat a parancsokat, ellenőrizze a Log Analyticsben, hogy tekintse meg, ha a naplók érkezési. Ezek a készülékek a streamelt minden eseményt a Log Analytics a nyers formában jelennek meg `CommonSecurityLog` típusa.
-1. Ha nincsenek hibák, vagy ha a naplók nem érkező ellenőrzéséhez tekintse meg `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
-1. Győződjön meg arról, hogy a Syslog-üzenet alapértelmezett mérete legfeljebb 2048 bájtok száma (2KB). Ha naplók túl hosszú, frissítse a security_events.conf ezzel a paranccsal: `message_length_limit 4096`
-6. A Fortinet események Log Analytics használja a megfelelő sémát, keresse meg **CommonSecurityLog**.
-
 
 ## <a name="next-steps"></a>További lépések
 Ebben a dokumentumban megtudhatta, hogyan szeretne csatlakozni a Fortinet berendezések Azure Sentinel. Azure-Sentinel kapcsolatos további információkért tekintse meg a következő cikkeket:

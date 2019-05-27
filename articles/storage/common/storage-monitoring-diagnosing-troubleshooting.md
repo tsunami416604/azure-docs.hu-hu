@@ -9,12 +9,12 @@ ms.date: 05/11/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b929d9d1acc217c291c5aa645ee2d8952f401cd1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ccafa3431e12b036346c4fd654b2978dc9021471
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192168"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912412"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -426,7 +426,7 @@ Ha a **percentthrottlingerror értéket mutatnak** metrika emelkedő szabályoz�
 Növekedése **percentthrottlingerror értéket mutatnak** gyakran tárolási kérelmek számának növelését, egy időben történik, vagy ha kezdetben betölteni az alkalmazás tesztelése. Ez előfordulhat, hogy is manifest magát az ügyfél "503-as kiszolgáló foglalt" vagy "500 művelet időtúllépése" HTTP állapotüzenete tárolási műveletek.
 
 #### <a name="transient-increase-in-PercentThrottlingError"></a>Átmeneti növekedése percentthrottlingerror értéket mutatnak
-Ha látja az értékét kiugrások **percentthrottlingerror értéket mutatnak** , amely az alkalmazás magas tevékenységű időszakok egybe, az ügyfél egy exponenciális (lineáris) visszatartási stratégia újrapróbálkozások megvalósítása. Visszatartás újrapróbálkozások a partíció azonnali terhelésének csökkentése, és segít az alkalmazás adatforgalmi kiugrások a forgalom. A Storage ügyféloldali kódtár használatával újrapróbálkozási szabályzatok implementálása kapcsolatos további információkért lásd: [Microsoft.WindowsAzure.Storage.RetryPolicies Namespace](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.retrypolicy).
+Ha látja az értékét kiugrások **percentthrottlingerror értéket mutatnak** , amely az alkalmazás magas tevékenységű időszakok egybe, az ügyfél egy exponenciális (lineáris) visszatartási stratégia újrapróbálkozások megvalósítása. Visszatartás újrapróbálkozások a partíció azonnali terhelésének csökkentése, és segít az alkalmazás adatforgalmi kiugrások a forgalom. A Storage ügyféloldali kódtár használatával újrapróbálkozási szabályzatok implementálása kapcsolatos további információkért lásd: a [Microsoft.Azure.Storage.RetryPolicies névtér](/dotnet/api/microsoft.azure.storage.retrypolicies).
 
 > [!NOTE]
 > Is megjelenhetnek értékét kiugrások **percentthrottlingerror értéket mutatnak** , amely nem esik egybe az alkalmazás magas tevékenységű időszakok: a legvalószínűbb oka a terheléselosztás javítása érdekében a partíciók áthelyezése a storage-szolgáltatás.
@@ -467,17 +467,17 @@ Ez a hiba leggyakoribb oka egy ügyfél leválasztása a storage szolgáltatásb
 ### <a name="the-client-is-receiving-403-messages"></a>Az ügyfél fogad üzeneteket HTTP 403 (tiltott)
 Ha az ügyfélalkalmazás HTTP 403 (Tiltott) hibákat jelez, annak egyik valószínű oka lehet, hogy az ügyfél egy lejárt közös hozzáférésű jogosultságkódot (SAS-t) használ, amikor tárolási kérelmet küld (egyéb lehetséges okok lehetnek még az óraeltérés, az érvénytelen kulcsok és az üres fejlécek). Ha egy lejárt SAS-kulcs a hiba oka, akkor nem fog bejegyzéseket látni a kiszolgálóoldali Storage naplózási szolgáltatásának naplóadataiban. Az alábbi táblázat a ügyféloldali naplóból, amely bemutatja, hogy ez a probléma lépett fel a Storage ügyféloldali kódtár által létrehozott minta:
 
-| Adatforrás | Részletesség | Részletesség | Ügyfélkérelem azonosítója | A művelet szöveg |
+| Source | Részletesség | Részletesség | Ügyfélkérelem azonosítója | A művelet szöveg |
 | --- | --- | --- | --- | --- |
-| Microsoft.WindowsAzure.Storage |Tájékoztatás |3 |85d077ab-… |Hely elsődleges hely módban PrimaryOnly kiindulási műveletet. |
-| Microsoft.WindowsAzure.Storage |Tájékoztatás |3 |85d077ab -… |A szinkron kérelem indítása <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
-| Microsoft.WindowsAzure.Storage |Tájékoztatás |3 |85d077ab -… |Várakozás a válaszra. |
-| Microsoft.WindowsAzure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel lépett fel a várakozás során: A távoli kiszolgáló hibát adott vissza: (403) Tiltott. |
-| Microsoft.WindowsAzure.Storage |Tájékoztatás |3 |85d077ab -… |A válasz érkezett. Állapotkód = 403-as, kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, tartalom-MD5 =, az ETag =. |
-| Microsoft.WindowsAzure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel lépett fel a művelet során: A távoli kiszolgáló hibát adott vissza: (403) tiltott... |
-| Microsoft.WindowsAzure.Storage |Tájékoztatás |3 |85d077ab -… |Annak ellenőrzése, ha a műveletet meg kell ismételni. Ismétlések száma = 0, HTTP-állapotkód: 403-as, Exception = = a távoli kiszolgáló hibát adott vissza: (403) tiltott... |
-| Microsoft.WindowsAzure.Storage |Tájékoztatás |3 |85d077ab -… |A következő helyre elsődleges, a hely módja alapján van beállítva. |
-| Microsoft.WindowsAzure.Storage |Hiba |1. |85d077ab -… |Újrapróbálkozási szabályzat nem engedélyezte az újrapróbálkozást. Sikertelen a távoli kiszolgálóval hibát adott vissza: (403) Tiltott. |
+| Microsoft.Azure.Storage |Tájékoztatás |3 |85d077ab-… |Hely elsődleges hely módban PrimaryOnly kiindulási műveletet. |
+| Microsoft.Azure.Storage |Tájékoztatás |3 |85d077ab -… |A szinkron kérelem indítása <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft.Azure.Storage |Tájékoztatás |3 |85d077ab -… |Várakozás a válaszra. |
+| Microsoft.Azure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel lépett fel a várakozás során: A távoli kiszolgáló hibát adott vissza: (403) Tiltott. |
+| Microsoft.Azure.Storage |Tájékoztatás |3 |85d077ab -… |A válasz érkezett. Állapotkód = 403-as, kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, tartalom-MD5 =, az ETag =. |
+| Microsoft.Azure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel lépett fel a művelet során: A távoli kiszolgáló hibát adott vissza: (403) tiltott... |
+| Microsoft.Azure.Storage |Tájékoztatás |3 |85d077ab -… |Annak ellenőrzése, ha a műveletet meg kell ismételni. Ismétlések száma = 0, HTTP-állapotkód: 403-as, Exception = = a távoli kiszolgáló hibát adott vissza: (403) tiltott... |
+| Microsoft.Azure.Storage |Tájékoztatás |3 |85d077ab -… |A következő helyre elsődleges, a hely módja alapján van beállítva. |
+| Microsoft.Azure.Storage |Hiba |1. |85d077ab -… |Újrapróbálkozási szabályzat nem engedélyezte az újrapróbálkozást. Sikertelen a távoli kiszolgálóval hibát adott vissza: (403) Tiltott. |
 
 Ebben az esetben kell vizsgálni, miért lejár az SAS-token előtt az ügyfél elküldi a kiszolgálón:
 
@@ -626,7 +626,7 @@ Ha a probléma gyakran előfordul, meg kell vizsgálni, miért az ügyfél nem t
 ### <a name="the-client-is-receiving-409-messages"></a>Az ügyfél fogad üzeneteket HTTP 409 (Ütközés)
 Az alábbi táblázat bemutatja a kiszolgálóoldali naplóból Ügyfélműveletek két kinyerési: **DeleteIfExists** azonnal által követett **CreateIfNotExists** blob tároló nevének használatával. Minden ügyfél művelet eredményeként két kérelmet küldött a kiszolgálónak, először egy **GetContainerProperties** kérést ellenőrizze, hogy a tároló, kiegészítve a **DeleteContainer** vagy  **CreateContainer** kérelmet.
 
-| Időbélyeg | Művelet | Eredmény | Tároló neve | Ügyfélkérelem azonosítója |
+| Timestamp | Művelet | Eredmény | Tároló neve | Ügyfélkérelem azonosítója |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |

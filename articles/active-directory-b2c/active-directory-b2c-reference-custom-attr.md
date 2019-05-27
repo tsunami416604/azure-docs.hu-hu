@@ -10,18 +10,22 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4debd5408abda7e6ae7a7ebf2210fb69210582ae
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 629b872f78a30592fc00cb268066970b12b20561
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687928"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952800"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Egyéni attribútumok megadása az Azure Active Directory B2C-vel
 
  Minden ügyfél felé irányuló kérelmet kell gyűjteni az információkat egyedi követelményeket támaszt. Az Azure Active Directory (Azure AD) B2C-bérlő tartalmaz egy beépített az attribútumok, például utónév, Vezetéknév, város és irányítószám tárolt adatok. Az Azure AD B2C bővítheti az egyes felhasználói fiók a tárolt attribútumokat. 
  
- Létrehozhat egyéni attribútumokat a [az Azure portal](https://portal.azure.com/) és használja őket a regisztrálási felhasználói folyamatok, a regisztrálási vagy bejelentkezési felhasználói folyamatok vagy a Profilszerkesztési felhasználói folyamatok. Is olvasása és írása, ezek az attribútumok használatával a [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md). Az Azure AD B2C-vel egyéni attribútumok használata [az Azure AD Graph API Directory Sémakiterjesztései](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
+ Létrehozhat egyéni attribútumokat a [az Azure portal](https://portal.azure.com/) és használja őket a regisztrálási felhasználói folyamatok, a regisztrálási vagy bejelentkezési felhasználói folyamatok vagy a Profilszerkesztési felhasználói folyamatok. Is olvasása és írása, ezek az attribútumok használatával a [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md). Az Azure AD B2C-vel egyéni attribútumok használata [az Azure AD Graph API Directory Sémakiterjesztései](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).  
+
+> [!NOTE]
+> Támogatja a újabb [Microsoft Graph API](https://docs.microsoft.com/graph/overview?view=graph-rest-1.0) az Azure AD B2C bérlő még fejlesztés alatt áll.
+>
 
 ## <a name="create-a-custom-attribute"></a>Egyéni attribútum létrehozása
 
@@ -41,7 +45,8 @@ ms.locfileid: "64687928"
 7. Megadhatja egy **leírás** tájékoztató jellegű. 
 8. Kattintson a **Create** (Létrehozás) gombra.
 
-Az egyéni attribútum már elérhető a listájában **felhasználói attribútumok** és a felhasználói folyamatokban való használatra. Vlastní atribut akkor csak az első alkalommal szerepel, minden felhasználói folyamat létrehozása, és nem listájának hozzáadása **felhasználói attribútumok**.
+Az egyéni attribútum már elérhető a listájában **felhasználói attribútumok** és a felhasználói folyamatokban való használatra. Vlastní atribut akkor csak az első alkalommal szerepel, minden felhasználói folyamat létrehozása, és nem listájának hozzáadása **felhasználói attribútumok**. 
+
 
 ## <a name="use-a-custom-attribute-in-your-user-flow"></a>Egyéni attribútum használata a felhasználói folyamat
 
@@ -51,5 +56,5 @@ Az egyéni attribútum már elérhető a listájában **felhasználói attribút
 5. Válassza ki **alkalmazásjogcímek** , és válassza ki az egyéni attribútum. 
 6. Kattintson a **Save** (Mentés) gombra.
 
-Használhatja a **felhasználói folyamat futtatása** a felhasználói folyamatot, ellenőrizze a felhasználói élmény funkciót. Meg kell jelennie **ShoeSize** az előfizetési út során gyűjtött attribútumok listáját, és nézze meg az alkalmazásnak küldött jogkivonatban.
+Miután létrehozott egy új felhasználót a felhasználói folyamat, amely használja az újonnan létrehozott egyéni attribútum használatával, az objektum kérdezhetők le a [Azure AD Graph Explorer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart). Másik lehetőségként használhatja a [ **felhasználói folyamat futtatása** ](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) a felhasználói folyamatot, ellenőrizze a felhasználói élmény funkciót. Meg kell jelennie **ShoeSize** az előfizetési út során gyűjtött attribútumok listáját, és nézze meg az alkalmazásnak küldött jogkivonatban. 
 

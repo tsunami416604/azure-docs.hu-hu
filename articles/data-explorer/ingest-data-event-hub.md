@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 02/02/2018
-ms.openlocfilehash: 52bdbe6d34fb631cd4b2205dfad25399fe0e43fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/17/2019
+ms.openlocfilehash: d5bd291758d6bb445b757b93fd91a4c2321b97db
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60445990"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898938"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Gyors útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer
 
@@ -22,11 +22,11 @@ Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési s
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-* [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
+* [Egy teszt fürt és az adatbázis](create-cluster-database-portal.md).
 
 * [Egy mintaalkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) , amely adatokat állít elő, és elküldi azt az eseményközpontba. Töltse le a mintaalkalmazást a rendszer.
 
-* A [Visual Studio 2017 szoftver 15.3.2-es vagy újabb verziója](https://www.visualstudio.com/vs/) a mintaalkalmazás futtatásához
+* [A Visual Studio 2019](https://visualstudio.microsoft.com/vs/) , futtassa a mintaalkalmazást.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -112,7 +112,7 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
     |---|---|---|
     | Adatkapcsolat neve | *test-hub-connection* | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.|
     | Eseményközpont-névtér | A névtér egyedi neve | A korábban a névtér azonosításához választott név. |
-    | Eseményközpont | *test-hub* | A létrehozott eseményközpont. |
+    | Event Hubs | *test-hub* | A létrehozott eseményközpont. |
     | Fogyasztói csoport | *test-group* | A létrehozott eseményközponton definiált fogyasztói csoport. |
     | | |
 
@@ -134,7 +134,7 @@ Amikor elindítja az Előfeltételek között szereplő [mintaalkalmazást](http
 
 1. A létrehozott eseményközpont-névtér alatt válassza a **Megosztott elérési szabályzatok**, majd a **RootManageSharedAccessKey** lehetőséget.
 
-    ![Megosztott elérési házirendek](media/ingest-data-event-hub/shared-access-policies.png)
+    ![Megosztott elérési szabályzatok](media/ingest-data-event-hub/shared-access-policies.png)
 
 1. Másolja ki a **kapcsolati sztring elsődleges kulcsát**. A következő szakaszban kell beillesztenie.
 

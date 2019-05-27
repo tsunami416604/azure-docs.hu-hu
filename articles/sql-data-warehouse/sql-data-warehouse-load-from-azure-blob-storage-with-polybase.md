@@ -2,20 +2,20 @@
 title: Contoso kereskedelmi adatok betöltése az Azure SQL Data Warehouse |} A Microsoft Docs
 description: Két tábla betöltése az a Contoso kereskedelmi adatok az Azure SQL Data Warehouse a PolyBase és T-SQL parancsok használatával.
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: load data
 ms.date: 04/17/2018
-ms.author: cakarst
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 33a5f9eebeb68981a9ccd13bb24834f5a9eabd85
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 946d7685839b949a50604bf255809cb00086af99
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875678"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873563"
 ---
 # <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Contoso kereskedelmi adatok betöltése az Azure SQL Data warehouse-bA
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag tartalma:
 2. Nyilvános adatok betöltése az adatbázisba
 3. Hajtsa végre a optimalizálása, a betöltés befejezése után.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 Ez az oktatóanyag futtatásához szüksége van egy Azure-fiókra, amely már rendelkezik az SQL Data Warehouse. Ha nem rendelkezik kiosztott adattárház, [SQL Data Warehouse létrehozása és kiszolgálószintű tűzfalszabály beállításához][Create a SQL Data Warehouse].
 
 ## <a name="1-configure-the-data-source"></a>1. Az adatforrás konfigurálása

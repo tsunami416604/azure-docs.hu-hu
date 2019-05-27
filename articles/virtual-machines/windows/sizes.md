@@ -15,22 +15,22 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/14/2018
 ms.author: jonbeck
-ms.openlocfilehash: 45fc4655d8afd2127c2f3057eb8a42ee80be4021
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b9a81fb451164aa58ca4ba943ed000c14d9f87cc
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539655"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873567"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Az Azure-beli Windows virtuális gépek méretei
 
 Ez a cikk ismerteti az elérhető méretek és a beállításokat az Azure virtuális gépeket, a Windows-alkalmazások és számítási feladatok futtatására használhatja. Érdemes figyelembe vennie, ha tervezi az ezekkel az erőforrásokkal való telepítésével kapcsolatos megfontolások is tartalmazza.  Ez a cikk érhető el is [Linux rendszerű virtuális gépek](../linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
-| Typo                     | Méretek           |    Leírás       |
+| Típus                     | Méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](sizes-general.md)          | B, Dsv3, Dv3, DSv2, Dv2, Av2, DC | Kiegyensúlyozott processzor-memória arány. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. |
-| [Számításra optimalizált](sizes-compute.md)        | Fsv2, Fs, F             | Magas processzor-memória arány. Alkalmas közepes adatforgalmú webkiszolgálók, hálózati berendezések, kötegfolyamatok és alkalmazáskiszolgálók számára.        |
+| [Számításra optimalizált](sizes-compute.md)        | Fsv2          | Magas processzor-memória arány. Alkalmas közepes adatforgalmú webkiszolgálók, hálózati berendezések, kötegfolyamatok és alkalmazáskiszolgálók számára.        |
 | [Memóriaoptimalizált](../virtual-machines-windows-sizes-memory.md)         | Esv3, Ev3, M, GS, G, DSv2, Dv2  | Magas memória – Processzor arány. Ideális választás relációs adatbázis-kiszolgálókhoz, közepes és nagy gyorsítótárakhoz és memóriabeli elemzésekhez.                 |
 | [Tárolásra optimalizált](../virtual-machines-windows-sizes-storage.md)        | Lsv2, Ls                | Magas lemez-adatátviteli és i/o ideális Big Data, SQL, nosql-alapú adatbázisok, az adattárházak és a nagy tranzakciós adatbázisok.  |
 | [GPU](sizes-gpu.md)            | NV, NVv2, NC, NCv2, az NCv3, ND, NDv2 (előzetes verzió)            | Specializált virtuális gépek grafikai renderelésre és videószerkesztésre célzott, valamint modell a betanítási vagy következtetési (ND) használatával deep learninget. Elérhető egy vagy több gpu-kkal.       |

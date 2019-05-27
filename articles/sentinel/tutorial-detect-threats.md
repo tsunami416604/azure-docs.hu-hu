@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 319ec5d09a6daddb5c1fc36f680ee6d0d856e337
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6cb40f8c9f1ee85848b5e3db311d0fb652ec1bc3
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205431"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921810"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Oktatóanyag: Az Azure-on Előzetesben Sentinel-fenyegetések észlelése
 
@@ -59,6 +59,10 @@ Esetek vizsgálatához, először be kell észlelési szabályok létrehozásáh
         | where OperationName == "Create or Update Virtual Machine" or OperationName == "Create Deployment"
         | where ActivityStatus == "Succeeded"
         | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+
+   > [!NOTE]
+   > A lekérdezés hossza 1 és 10000 közötti karakter közötti hosszúságú lehet, és nem tartalmazhatja a "search *" és "union *".
+
 
 5. Az a **entitásleképezése** területén terület **entitástípus** a lekérdezésben az oszlopok leképezése ismeri fel az Azure-Sentinel Entitásmezők. Az egyes mezőkhöz tartozó képezze le a Log Analytics, a megfelelő entitás mezőjére létrehozott lekérdezés a megfelelő oszlopban. Válassza ki a megfelelő oszlop neve alatt a **tulajdonság**. Minden entitás tartalmaz több mező, például a biztonsági azonosító, GUID, stb. Leképezheti az entitás valamelyik mezőjére, nem csak a felső szintű entitás alapján.
 

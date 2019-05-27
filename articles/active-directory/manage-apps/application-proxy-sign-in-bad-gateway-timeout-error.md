@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 290b548f31a967d514b09e4de775b12de7703b07
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7499dbe1f3f0b89a11814ad1b65a52bb9ba9fd05
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782952"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016061"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Az Application Proxy-alkalmazások használata esetén "Nem tud hozzáférni a vállalati alkalmazás" hiba
 
@@ -77,7 +77,7 @@ Ellenőrizze az alkalmazás hozzá van rendelve egy működő Összekötőcsopor
 
 1. Nyissa meg az alkalmazás a portálon a **Azure Active Directory**, kattintson a **vállalati alkalmazások**, majd **összes alkalmazáshoz.** Nyissa meg az alkalmazást, majd válassza ki **alkalmazásproxy** a bal oldali menüből.
 
-2. Tekintse meg a Összekötőcsoport mező. Ha a csoport nincs aktív összekötő, megjelenik egy figyelmeztetés. Ha nem látja a figyelmeztetéseket, helyezze át a "Ellenőrizze-e minden szükséges port szerepel az engedélyezési listán".
+2. Tekintse meg a Összekötőcsoport mező. Ha a csoport nincs aktív összekötő, megjelenik egy figyelmeztetés. Ha nem látja a figyelmeztetéseket, helyezze át Ellenőrizze minden szükséges port engedélyezve van.
 
 3. Ha nem a megfelelő Összekötőcsoport jelennek meg, használatával a listából válassza ki a megfelelő csoportot, majd erősítse meg, nem lesznek láthatók a figyelmeztetéseket. Ha az importálni kívánt Összekötőcsoport jelenik-e meg, kattintson a figyelmeztető üzenetet, nyissa meg a-összekötő felügyeleti.
 
@@ -87,11 +87,11 @@ Ellenőrizze az alkalmazás hozzá van rendelve egy működő Összekötőcsopor
 
    * Az adott csoporthoz új összekötő letöltéséhez: A hivatkozásra kattintva megjelenik ezen az oldalon [új összekötő letöltéséhez](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Telepítse az egy gépen a közvetlen üzemel, a háttéralkalmazás. Általában az összekötő telepítve van az alkalmazás ugyanazon a kiszolgálón. A letöltési hivatkozás összekötő használatával a célgépen alakzatot összekötő letöltéséhez. Ezután kattintson az összekötőt, és a "Összekötő csoport" legördülő menü használatával ellenőrizze, hogy a megfelelő csoporthoz tartozik.
 
-   * Az inaktív csatlakozó vizsgálata: Egy összekötő akkor jeleníti meg inaktívként, ha az nem érhető el a szolgáltatást. Ez a hiba általában néhány szükséges portokat nem blokkolja miatt nem lehetséges. A probléma megoldásához, helyezze át a "Ellenőrizze minden szükséges port szerepel az engedélyezési listán."
+   * Az inaktív csatlakozó vizsgálata: Egy összekötő akkor jeleníti meg inaktívként, ha az nem érhető el a szolgáltatást. Ez a hiba általában néhány szükséges portokat nem blokkolja miatt nem lehetséges. A probléma megoldásához, helyezze át Ellenőrizze minden szükséges port engedélyezve van.
 
 Használata után ezeket a lépéseket, az alkalmazás hozzá van rendelve egy csoport használata összekötők, hogy tesztelje újból az alkalmazást. Ha nem továbbra is működik, továbbra is a következő szakaszban.
 
-## <a name="check-all-required-ports-are-whitelisted"></a>Ellenőrizze, szerepel az engedélyezési listán-e minden szükséges port
+## <a name="check-all-required-ports-are-open"></a>Ellenőrizze, hogy az összes szükséges portok nyitva.
 
 Annak ellenőrzéséhez, hogy minden szükséges portok nyitva, a portok megnyitása a-dokumentációjában talál. Ha a szükséges portok nyitva, helyezze át a következő szakaszban.
 

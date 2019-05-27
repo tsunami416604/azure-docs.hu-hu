@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0b8139f11f937ddae30e25f4153e35287289a4d1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ad7ef714147616fe55a9b978d501b974323e251
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233995"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949577"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen2
 
@@ -150,7 +150,7 @@ Automatikusan az elem tulajdonosa lesz az a felhasználó, aki létrehozta az el
 
 #### <a name="the-owning-group"></a>A tulajdonoscsoport
 
-A POSIX ACL-ekben minden felhasználó társítva van egy *elsődleges csoportos*. Például "Alice nevű" felhasználó a "finance" csoportba tartozhat. Alice több csoporthoz is tartozhat, de egy csoport mindig ki van jelölve elsődleges csoportjaként. A POSIX-ben ha Alice létrehoz egy fájlt, a fájl tulajdonoscsoportja Alice elsődleges csoportja lesz, ami ebben az esetben a „finance”. A tulajdonos csoport egyéb esetben egyéb felhasználókhoz/csoportokhoz hozzárendelt engedélyekhez hasonlóan viselkedik.
+A POSIX ACL-ekben minden felhasználó társítva van egy *elsődleges csoportos*. Például "Alice nevű" felhasználó a "finance" csoportba tartozhat. Alice több csoporthoz is tartozhat, de egy csoport mindig ki van jelölve az elsődleges csoportjaként. A POSIX-ben ha Alice létrehoz egy fájlt, a fájl tulajdonoscsoportja Alice elsődleges csoportja lesz, ami ebben az esetben a „finance”. A tulajdonos csoport egyéb esetben egyéb felhasználókhoz/csoportokhoz hozzárendelt engedélyekhez hasonlóan viselkedik.
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>A tulajdonoscsoport egy új fájl vagy címtár hozzárendelése
 

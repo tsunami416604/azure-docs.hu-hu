@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60631026"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66118291"
 ---
 #### <a name="to-connect-through-the-serial-console"></a>Csatlakozás soros konzolon keresztül
 1. Csatlakoztassa a soros kábelt az eszközhöz (közvetlenül vagy egy USB–soros adapteren keresztül).
@@ -23,9 +23,9 @@ ms.locfileid: "60631026"
    
    * Sebesség: 115,200
    * Adatbitek: 8
-   * Stopbitek: 1
-   * Paritás: None
-   * Átvitelvezérlés: None
+   * Stopbitek: 1.
+   * Paritás: Egyik sem
+   * Átvitelvezérlés: Egyik sem
      
      Ezek a beállítások az alábbi ábrán láthatók.
      

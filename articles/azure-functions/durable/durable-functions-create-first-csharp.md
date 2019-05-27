@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2a0cee1ad750144f30b9ab6732e0bbdf8138db28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0288d9c0932d012bc83f23053b661c5a7ea2ef82
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60731515"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872958"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Az első tartós függvény létrehozása a C\#
 
 *Durable Functions* kiterjesztése [Azure Functions](../functions-overview.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
 
-Ebből a cikkből elsajátíthatja, hogyan használja a Visual Studio 2017-eszközök az Azure Functions helyi létrehozásához és a egy "hello world" tartós függvény tesztelése.  Ez a funkció, amellyel előkészíthető és egyéb funkciók láncok együtt hívások. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök a Visual Studio 2017 Azure-fejlesztési számítási feladatának részeként érhetők el.
+Ebből a cikkből megismerheti, hogyan helyi létrehozásához és a egy "hello world" tartós függvény tesztelése az Azure Functions Visual Studio 2019 eszközei használatával.  Ez a funkció, amellyel előkészíthető és egyéb funkciók láncok együtt hívások. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök érhetők el a Visual Studio 2019 az Azure development workload munkafolyamatának részét képező.
 
 ![Azure-ban futó tartós függvény](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
@@ -30,7 +30,7 @@ Ebből a cikkből elsajátíthatja, hogyan használja a Visual Studio 2017-eszk�
 
 Az oktatóanyag elvégzéséhez:
 
-* Telepítse a [Visual Studio 2017](https://azure.microsoft.com/downloads/)-et. Győződjön meg arról, hogy a **Azure-fejlesztési** számítási feladatot is telepítve van.
+* Telepítés [Visual Studio 2019](https://azure.microsoft.com/downloads/). Győződjön meg arról, hogy a **Azure-fejlesztési** számítási feladatot is telepítve van.
 
 * Győződjön meg arról, hogy rendelkezik a [legújabb Azure Functions-eszközökkel](../functions-develop-vs.md#check-your-tools-version).
 

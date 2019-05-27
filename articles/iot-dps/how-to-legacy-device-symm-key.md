@@ -2,19 +2,18 @@
 title: Szimmetrikus kulcsok használata az Azure IoT Hub Device Provisioning Service szolgáltatással örökölt eszközök kiépítése |} A Microsoft Docs
 description: A szimmetrikus kulcsok használata a device provisioning service-példány az örökölt eszközök kiépítése
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 248c7977752eaec86121a0dd197e5bff2621ead5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: philmea
+ms.openlocfilehash: 00161f8158ad73591687764528258e1081f81ce2
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775179"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914300"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>A szimmetrikus kulcsok használata örökölt eszközök kiépítése
 
@@ -44,7 +43,7 @@ Ebben a cikkben bemutatott eszközkóddal, ugyanezt a mintát követi a [a rövi
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Befejezése után a [IoT Hub Device Provisioning Service beállítása az Azure Portallal](./quick-setup-auto-provision.md) rövid.
-* Visual Studio 2015 vagy [Visual Studio 2017](https://www.visualstudio.com/vs/), amelyben engedélyezve van az [„Asztali fejlesztés C++ használatával”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladat.
+* [A Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 vagy újabb verzió a ["asztali fejlesztés C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladat engedélyezve van.
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
 
@@ -173,7 +172,7 @@ Ha egy Windows-alapú munkaállomást használ, a PowerShell használatával hoz
 
 Cserélje le a értékét **REG_ID** regisztrációs ID azonosítójával.
 
-```PowerShell
+```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
 $REG_ID='sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6'
 
@@ -184,7 +183,7 @@ $derivedkey = [Convert]::ToBase64String($sig)
 echo "`n$derivedkey`n"
 ```
 
-```PowerShell
+```powershell
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 

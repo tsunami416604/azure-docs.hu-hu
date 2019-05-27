@@ -2,20 +2,20 @@
 title: Rendszernézetek – Azure SQL Data Warehouse |} A Microsoft Docs
 description: Az Azure SQL Data Warehouse támogatott rendszernézetek dokumentációját mutató hivatkozásokat tartalmaz.
 services: sql-data-warehouse
-author: twounder
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: query
 ms.date: 06/13/2018
-ms.author: twounder
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a172f469ef3ff1107179dcd7a8d501cfe6d70049
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6687a279b9992d31e3529aaf47054b3cb5c6d0eb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475830"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873437"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse támogatott rendszernézetek
 Az Azure SQL Data Warehouse támogatott T-SQL-utasítások dokumentációját mutató hivatkozásokat tartalmaz.

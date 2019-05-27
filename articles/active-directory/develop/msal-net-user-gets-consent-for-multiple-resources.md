@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f7d24a1e14cfbb1163ab78b94dd36ec288dce50
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: e8bd9a86d5ec0d39a7f1c26adac52f41e6420283
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544044"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121989"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>Felhasználói jóváhagyás az MSAL.NET használatával több erőforrás beolvasása
 A Microsoft identity platform végpont nem engedélyezi, hogy egyszerre több erőforrás lekérése egy token. A Microsoft-hitelesítési tár .NET (MSAL.NET) használata esetén a beolvasási token módszer a hatókörök paramétere csak tartalmaznia kell egy adott erőforrás hatókörök. Azonban meg előre engedélyezhetik, hogy előre a számos erőforrás használatával további hatókörökkel megadásával a `.WithExtraScopeToConsent` builder metódust.
@@ -32,8 +32,8 @@ A Microsoft identity platform végpont nem engedélyezi, hogy egyszerre több er
 
 Ha például két olyan erőforrásokat, ha a 2 hatókörök minden:
 
-- https://mytenant.onmicrosoft.com/customerapi (2 hatókörökkel `customer.read` és `customer.write`)
-- https://mytenant.onmicrosoft.com/vendorapi (2 hatókörökkel `vendor.read` és `vendor.write`)
+- https:\//mytenant.onmicrosoft.com/customerapi (2 hatókörökkel `customer.read` és `customer.write`)
+- https:\//mytenant.onmicrosoft.com/vendorapi (2 hatókörökkel `vendor.read` és `vendor.write`)
 
 Használjon a `.WithExtraScopeToConsent` módosító, amelyen a *extraScopesToConsent* paramétert az alábbi példában látható módon:
 
