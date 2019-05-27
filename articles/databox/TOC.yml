@@ -121,6 +121,12 @@
           items:
             - name: Mi az a Data Box Heavy?
               href: data-box-heavy-overview.md
+        - name: Alapelvek
+          items:
+            - name: Követelmények áttekintése
+              href: data-box-heavy-system-requirements.md
+            - name: A korlátozások ismertetése
+              href: data-box-heavy-limits.md
     - name: További források
       items:
         - name: Data Box-termék

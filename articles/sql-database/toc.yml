@@ -754,17 +754,3 @@
       href: /azure/architecture/
     - name: Ügyfelek történetei
       href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'
-    - name: Rugalmas feladatok (elavult)
-      items:
-        - name: Rugalmas feladatok (elavult)
-          href: sql-database-elastic-jobs-overview.md
-        - name: Rugalmas feladat telepítése (elavult)
-          href: sql-database-elastic-jobs-service-installation.md
-        - name: Feladat létrehozása – portál (elavult)
-          href: sql-database-elastic-jobs-create-and-manage.md
-        - name: Feladat létrehozása – Azure PowerShell (elavult)
-          href: sql-database-elastic-jobs-powershell.md
-        - name: Feladat létrehozása – mintaalkalmazás (elavult)
-          href: sql-database-elastic-jobs-getting-started.md
-        - name: Rugalmas feladat eltávolítása (elavult)
-          href: sql-database-elastic-jobs-uninstall.md
