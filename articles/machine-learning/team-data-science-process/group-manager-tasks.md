@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fb0482be1670a96befdd69a5356c9e21476d9f9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85a4aca0c4b80eaab1f43bcbec33dc9cf37aa655
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60305188"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950094"
 ---
 # <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>A data science csapatprojekt csoportvezető feladatai
 
-Ez a témakör ismerteti a feladatokat, a csoport kezelőjének várhatóan végezze el a előzmény / saját data science szervezet. Együttműködésen alapuló csoport környezet, amely szabványosítja a célja a [csoportos adatelemzési folyamat](overview.md) (TDSP). Röviden ismerteti a személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat adatelemzési csapatával által végrehajtott ezt a folyamatot, a szabványosításával lásd [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md).
+Ez a témakör ismerteti a feladatokat, amely a csoport kezelőjének data science szervezet esetében várható. Együttműködésen alapuló csoport környezet, amely szabványosítja a célja a [csoportos adatelemzési folyamat](overview.md) (TDSP). Röviden ismerteti a személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat adatelemzési csapatával által végrehajtott ezt a folyamatot, a szabványosításával lásd [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md).
 
 A **Csoportkezelő** a vállalaton belül, a teljes adatelemzési egység vezetője. Előfordulhat, hogy a data science egység több csapat, amelyek mindegyike több különböző üzleti referenciaegyenesen az adatelemzési projektek dolgozik. A csoport kezelőjének delegálhat egy helyettes a feladataikat, de a feladatokat a szerepkörhöz társított azonos. Nincsenek hat fő tevékenység a következő ábrán látható módon:
 

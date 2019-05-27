@@ -4,15 +4,15 @@ description: Az Azure Cosmos DB módosításához használja a hírcsatorna az A
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 18780deba1910b3ea77f7313bfb6d204dacabd82
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 08429ca76823b9e6c80a197cc390a5964c4198e6
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692754"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969013"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Az Azure Cosmos DB és az Azure Functions kiszolgáló nélküli, eseményalapú architektúrákkal
 

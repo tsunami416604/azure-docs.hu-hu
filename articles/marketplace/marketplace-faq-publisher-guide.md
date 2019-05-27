@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: 3e1bad5902bb35ce0c037835359c267582cc8bc7
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 152be044b5696a0d9017729d731e080ed9163828
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938655"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964052"
 ---
 # <a name="marketplace-faqs"></a>Marketplace – gyakori kérdések
 
@@ -310,7 +310,7 @@ Tekintse át a [útmutató Közzétevőknek](https://docs.microsoft.com/azure/ma
 
 **Hogyan tehetek közzé az Azure Marketplace-en?**
 
-Indítsa el az Azure Marketplace piactéren áttekintésével a [Azure Marketplace közzétételi útmutatójában](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) és [alapjairól](https://docs.microsoft.com/azure/marketplace/become-publisher). Ezután küldje be az alkalmazás; Ehhez hajtsa végre a [Azure Marketplace-en jelölési űrlapot](https://azuremarketplace.microsoft.com/sell/signup).
+Indítsa el az Azure Marketplace piactéren áttekintésével a [Azure Marketplace közzétételi útmutatójában](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) és [alapjairól](https://docs.microsoft.com/azure/marketplace/become-publisher). Ezután küldje be az alkalmazás által [elküldése az ajánlat](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv). Lásd: hogyan [Partnerközpont-fiókkal létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) további információt.
 
 **Kell tartoznia, a Microsoft Partner Network (MPN) a saját alkalmazások és szolgáltatásaim megjelenjenek az Azure piactéren?**
 

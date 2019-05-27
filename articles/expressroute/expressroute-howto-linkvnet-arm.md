@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 05/20/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: b0ae3d5b2c60badfb9b59820b1e0b85383e524ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 620eff5468d7d3b4bf8ddeea62fa67b39609fce6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60366341"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950366"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz
 > [!div class="op_single_selector"]
@@ -175,6 +175,20 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 ```
 
 A számos *routingweight értékének* 0 a 32000 van. Az alapértelmezett érték a 0.
+
+## <a name="configure-expressroute-fastpath"></a>Configure ExpressRoute FastPath 
+Engedélyezheti a [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) Ha az ExpressRoute-kapcsolatcsoport [ExpressRoute közvetlen](expressroute-erdirect-about.md) és a virtuális newtork átjáró Ultranagy teljesítményű vagy ErGw3AZ. FastPath javítja az adatok elérési útja preformance például a csomagok másodpercenkénti számát és a kapcsolatok száma másodpercenként a helyszíni hálózat és a virtuális hálózat között. 
+
+> [!NOTE] 
+> Ha már rendelkezik a virtuális hálózati kapcsolat, de még nem engedélyezte a FastPath kell törölni a virtuális hálózati kapcsolatot, és hozzon létre egy újat. 
+> 
+>  
+
+```azurepowershell-interactive 
+$circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG" 
+$gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG" 
+$connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
+``` 
 
 ## <a name="next-steps"></a>További lépések
 További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3593324523340300279232e0e63392c9c127991d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 1107a6df92bf577cd60b9ad31627219da8e1a388
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823563"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956541"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
@@ -335,14 +335,14 @@ Megtekintheti, állítsa be, és alaphelyzetbe állítása hitelesítési módsz
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="b2c-user-flow-administrator"></a>B2C felhasználói folyamat rendszergazdája
+### <a name="b2c-user-flow-administrator"></a>B2C felhasználói folyamat rendszergazda
 Létrehozhat és kezelhet felhasználói folyamatok minden aspektusát.
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | microsoft.aad.b2c/userFlows/allTasks | Olvassa el, és a felhasználói folyamatok konfigurálása az Azure Active Directory B2C-t. |
 
-### <a name="b2c-user-flow-attribute-administrator"></a>B2C felhasználói folyamat attribútum rendszergazdája
+### <a name="b2c-user-flow-attribute-administrator"></a>B2C felhasználói folyamat attribútum rendszergazda
 Hozzon létre, és az összes felhasználói folyamatok számára elérhető attribútum séma kezelése.
 
 | **Műveletek** | **Leírás** |
@@ -356,7 +356,7 @@ Hozzon létre, és az összes felhasználói folyamatok számára elérhető att
 | --- | --- |
 | microsoft.aad.b2c/trustFramework/keySets/allTasks | Olvassa el, és az Azure Active Directory B2C kulcsfontosságú csoportjainak konfigurálása. |
 
-### <a name="b2c-ief-policy-administrator"></a>B2C IEF csoportházirendet felügyelő rendszergazda
+### <a name="b2c-ief-policy-administrator"></a>B2C IEF szabályzat rendszergazda
 Szabályzatok létrehozása és kezelése bizalmi keretrendszer az az identitás-kezelőfelületi keretrendszer.
 
 | **Műveletek** | **Leírás** |
@@ -367,7 +367,7 @@ Szabályzatok létrehozása és kezelése bizalmi keretrendszer az az identitás
 Számlázással kapcsolatos általános feladatokat hajthat végre, például frissítheti a fizetési adatokat.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -385,7 +385,7 @@ Számlázással kapcsolatos általános feladatokat hajthat végre, például fr
 Elérheti és kezelheti az asztali felügyeleti eszközöket és szolgáltatásokat, beleértve az Intune-ban.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -458,7 +458,7 @@ Teljes körű jogosultság az eszközök Azure AD-beli kezelésére.
 Az Azure AD-identitásokat használó Azure AD- és Microsoft-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -524,7 +524,7 @@ Az Azure AD-identitásokat használó Azure AD- és Microsoft-szolgáltatásokka
 Megtekintheti és kezelheti a megfelelőségi konfigurációt és jelentéseket az Azure AD-ban és az Office 365-ben.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -558,7 +558,7 @@ A feltételes hozzáférési lehetőségekkel kapcsolatos összes felügyeleti j
 A Dynamics 365 termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -575,7 +575,7 @@ A Dynamics 365 termékkel kapcsolatos összes felügyeleti jogosultsággal rende
 Jóváhagyhatja a szervezeti ügyféladatok elérésére vonatkozó Microsoft-támogatási kérelmeket.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -705,7 +705,7 @@ Olvasás, és alapszintű directory adatokat írnak a. Az alkalmazásokhoz való
 Az Exchange termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -765,7 +765,7 @@ Alaphelyzetbe állíthatja a nem rendszergazdák és a segélyszolgálat rendsze
 Az Azure Information Protection termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -781,7 +781,7 @@ Az Azure Information Protection termékkel kapcsolatos összes felügyeleti jogo
 Az Intune termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -829,7 +829,7 @@ A felhasználók és csoportok terméklicencek kezelheti.
 A Skype Vállalati verzió termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -846,7 +846,7 @@ A Skype Vállalati verzió termékkel kapcsolatos összes felügyeleti jogosults
 Csak a szervezet Office 365 Üzenetközpontbeli üzeneteit és frissítéseit olvashatja. 
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -859,7 +859,7 @@ Csak a szervezet Office 365 Üzenetközpontbeli üzeneteit és frissítéseit ol
 Ne használjon – általános használatra nem alkalmas.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -891,7 +891,7 @@ Ne használjon – általános használatra nem alkalmas.
 Ne használjon – általános használatra nem alkalmas.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -925,7 +925,7 @@ Ne használjon – általános használatra nem alkalmas.
 A Power BI termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -955,7 +955,7 @@ Jogosult bármely felhasználó (rendszergazda vagy nem rendszergazda) hitelesí
 Az Azure AD szerepkör-hozzárendelések és a Privileged Identity Management minden aspektusát felügyelheti.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -968,7 +968,7 @@ Az Azure AD szerepkör-hozzárendelések és a Privileged Identity Management mi
 Megtekintheti a bejelentkezési és a naplózási jelentéseket.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -984,7 +984,7 @@ Megtekintheti a bejelentkezési és a naplózási jelentéseket.
 Olvassa el a biztonsági adatokat és jelentéseket, és beállíthatja az Azure AD-konfiguráció és az Office 365.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -1013,7 +1013,7 @@ Olvassa el a biztonsági adatokat és jelentéseket, és beállíthatja az Azure
 Megtekintheti a biztonsági információkat és jelentéseket az Azure AD-ban és az Office 365-ben.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -1033,7 +1033,7 @@ Megtekintheti a biztonsági információkat és jelentéseket az Azure AD-ban é
 Megtekintheti a szolgáltatásállapot-adatokat, és kezelheti a támogatási jegyeket.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -1049,7 +1049,7 @@ Megtekintheti a szolgáltatásállapot-adatokat, és kezelheti a támogatási je
 A SharePoint-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -1072,7 +1072,7 @@ A SharePoint-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultságga
 Kezelheti a Microsoft Teams szolgáltatás hívási és értekezletfunkcióit.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -1089,7 +1089,7 @@ Kezelheti a Microsoft Teams szolgáltatás hívási és értekezletfunkcióit.
 Speciális eszközökkel háríthatja el a Teams szolgáltatásban fellépő kommunikációs problémákat.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -1103,7 +1103,7 @@ Speciális eszközökkel háríthatja el a Teams szolgáltatásban fellépő kom
 Alapszintű eszközökkel háríthatja el a Teams szolgáltatásban fellépő kommunikációs problémákat.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -1117,7 +1117,7 @@ Alapszintű eszközökkel háríthatja el a Teams szolgáltatásban fellépő ko
 Kezelheti a Microsoft Teams szolgáltatást.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 

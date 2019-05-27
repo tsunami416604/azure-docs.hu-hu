@@ -8,15 +8,15 @@ ms.assetid: 5a7e6bb2-863c-4eca-b614-1c814920d9ed
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 3a66c8c5963972828723dd74ffe560a0e2240165
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 18dfd9eb66c1dc71ecb14bb748d9cdd6afeb00a7
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61001936"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953172"
 ---
 # <a name="how-to-annotate-data-sources"></a>Adatforrások ellátása megjegyzésekkel
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Bemutatás
 **A Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőszolgáltatás, amely egy regisztrációs és felderítőrendszert biztosít a vállalati adatforrások. Más szóval a Data Catalog szól segít az embereknek felderíteni, ismertetése és adatforrások és segítve a szervezeteket kihasználása a meglévő adatok használatával. Ha egy adatforrás regisztrálva van a Data Catalog, másolt és a szolgáltatás indexeli metaadatait, de a történetet ott nem végződhet. A Data Catalog lehetővé teszi, hogy a felhasználók a saját leíró metaadatok – például a leírások és címkék – az adatforrásból kinyert metaadatok kiegészítése, és végezze el az adatforrás érhetőbbé több ember számára.
 
 ## <a name="annotation-and-crowdsourcing"></a>Jegyzet és közösségi hozzáadása
@@ -27,7 +27,7 @@ A Data Catalog felismeri, hogy különböző felhasználók rendelkeznek-e a vá
 * Az adatbázis-rendszergazda tudja, hogy minden egyes adatbázishoz, és az ETL megengedett feldolgozási windows biztonsági mentési ütemezését.
 * A rendszer tulajdonosa tudja, hogy a folyamat a felhasználók számára az adatforráshoz való hozzáférés kérése.
 * Az adatgazdai tudja, hogyan az eszközök és az adatforrás attribútumok leképezése a vállalati adatok modell.
-* Az elemző tudja, hogy az adatok használatának módja a következőben az ő támogatja az üzleti folyamatok keretében.
+* Az elemző tudja, hogy az adatok használatának módja a következőben az általuk támogatott üzleti folyamatok keretében.
 
 A szempontok mindegyikének értékes, és a Data Catalog egy közösségi módszert használ, amely lehetővé teszi, hogy mindegyikhez rögzített és a egy regisztrált adatforrások átfogó képet biztosítanak a metaadatok. A Data Catalog-portál használata esetén minden egyes felhasználó is hozzáadhatnak és szerkeszthetnek a saját jegyzetek képes arra, hogy más felhasználók által biztosított jegyzetek megtekintése közben.
 

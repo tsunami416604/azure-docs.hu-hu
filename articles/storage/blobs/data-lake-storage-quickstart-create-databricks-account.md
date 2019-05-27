@@ -8,12 +8,12 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
-ms.openlocfilehash: c5c69ded05e5ec6d1df6bd2befb4fe89417bae06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e6d153ff0e4f32c352694f51953c6955fae7f12f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60849538"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949667"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Gyors útmutató: Adatok elemzése az Azure Data Lake Storage Gen2 Azure Databricks használatával
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
   > [!IMPORTANT]
   > Ellenőrizze, hogy a szerepkört a Data Lake Storage Gen2 storage-fiók hatókörében. Szerepkör hozzárendelése a szülő erőforráscsoportba vagy előfizetésbe, de kap engedélyekkel kapcsolatos hibákat addig, amíg azokat a szerepkör-hozzárendeléseket a tárfiókhoz való propagálása.
 
-  :heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, Alkalmazásazonosító és hitelesítési kulcs értékeit egy szövegfájlba. Kell azokat, hamarosan.
+  :heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, app ID és jelszó értéket egy szövegfájlba. Kell azokat, hamarosan.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
@@ -62,11 +62,9 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     |**Hely**     | Válassza az **USA 2. nyugati régióját**. Nyugodtan választhat egy másik nyilvános régiót is igény szerint.        |
     |**Tarifacsomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-    Válassza a **Rögzítés az irányítópulton** lehetőséget, majd kattintson a **Létrehozás** gombra.
+3. A fiók létrehozása eltarthat néhány percig. Műveleti állapotának figyelése, megtekintheti a folyamatjelző sáv tetején.
 
-3. Egy kis időt a munkaterület létrehozásához vesz igénybe. A munkaterület létrehozása folyamatban van, míg a **üzemelő példány elküldése az Azure Databricks** csempe jobb oldalán. Megtekintheti a címet, akkor előfordulhat, hogy görgessen jobbra az irányítópulton. Egy folyamatjelző sávot a képernyő tetején megjelenő is van. Mindkét területen nyomon követheti a folyamat előrehaladását.
-
-    ![Databricks üzembe helyezési csempe](./media/data-lake-storage-quickstart-create-databricks-account/databricks-deployment-tile.png "Databricks üzembe helyezési csempe")
+4. Válassza a **Rögzítés az irányítópulton**, majd a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Spark-fürt létrehozása a Databricks használatával
 
@@ -111,8 +109,8 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
    ```scala
    spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<appID>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
@@ -123,7 +121,7 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
     > [!NOTE]
     > A kódblokk közvetlenül hozzáfér a Data Lake Gen2 végpont OAuth használatával, de más módon való csatlakozáshoz a Data Lake Storage Gen2-fiókot a Databricks-munkaterület. Például sikerült csatlakoztathatja a fájlrendszert az OAuth használatával, vagy egy közvetlen hozzáférés használata a megosztott kulcsot. <br>Ezek a módszerek példák, olvassa el a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) a cikk az Azure Databricks webhelyén.
 
-5. A kódblokk, cserélje le a `storage-account-name`, `application-id`, `authentication-id`, és `tenant-id` helyőrző értékeket az egyszerű szolgáltatás létrehozása során gyűjtött értékek a kód blokk. Állítsa be a `file-system-name` nevét bármilyen, a helyőrző értékét szeretné adni a fájlrendszerben.
+5. A kódblokk, cserélje le a `storage-account-name`, `appID`, `password`, és `tenant-id` helyőrző értékeket az egyszerű szolgáltatás létrehozása során gyűjtött értékek a kód blokk. Állítsa be a `file-system-name` nevét bármilyen, a helyőrző értékét szeretné adni a fájlrendszerben.
 
     > [!NOTE]
     > Éles környezetben, fontolja meg, a hitelesítési kulcs tárolása az Azure Databricksben. Ezután adja hozzá egy keresse meg a kulcs a kódblokk, a hitelesítési kulcs helyett. Ez a rövid útmutató befejezése után tekintse meg a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikk webhelyen az Azure Databricks erre a megközelítésre példa látható.

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e958aa82eb1e2fbf21a44df333533c6da058a966
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1a6797c7bd0c6bd8ce8d3f51b42cb4c2b1338fd6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448477"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950479"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Gyakori kérdések és ismert problémái az Azure-erőforrások felügyelt identitásokból
 
@@ -81,6 +81,11 @@ Nem. Ha egy előfizetést másik könyvtárba helyezi át, akkor manuálisan hoz
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Egy felügyelt identitás használata egy másik címtár bérlőben lévő erőforrások eléréséhez?
 
 Nem. Felügyelt identitások jelenleg nem támogatja cross-directory-forgatókönyvet. 
+
+### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Milyen Azure RBAC-engedélyek szükségesek egy erőforrást a felügyelt identitás? 
+
+- Rendszer által hozzárendelt felügyelt identitás: Az erőforrás keresztül kell írási engedéllyel. Példa: Microsoft.Compute/virtualMachines/write vagy ez a művelet adott beépített szerepkörök, például erőforrás megtalálható [virtuális gépek Közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
+- Felhasználó által hozzárendelt felügyelt identitás: Az erőforrás keresztül kell írási engedéllyel. Példa: Microsoft.Compute/virtualMachines/write . Mellett [felügyelt identitások üzemeltetője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendelés a felügyelt identitás keresztül. 
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Hogyan újraindítja a felügyelt identitások Azure-erőforrás-kiterjesztés?
 A Windows és Linux-bizonyos verziók Ha leáll a bővítményt, a következő parancsmag használható indítsa újra manuálisan:

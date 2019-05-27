@@ -2,20 +2,20 @@
 title: T-SQL-utasítások – Azure SQL Data Warehouse |} A Microsoft Docs
 description: Az Azure SQL Data Warehouse támogatott T-SQL-utasítások dokumentációját mutató hivatkozásokat tartalmaz.
 services: sql-data-warehouse
-author: twounder
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: query
 ms.date: 05/01/2019
-ms.author: twounder
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 5bab83c2cb3874ad662ad54a9646cc3fc406046e
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: 984d8ffa9f901437f1413e1d5d3145cabba80883
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561362"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954985"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse támogatott T-SQL-utasítások
 Az Azure SQL Data Warehouse támogatott T-SQL-utasítások dokumentációját mutató hivatkozásokat tartalmaz.
@@ -52,7 +52,7 @@ Az Azure SQL Data Warehouse támogatott T-SQL-utasítások dokumentációját mu
 * [KÖZVETLEN MEGTEKINTÉSE](https://msdn.microsoft.com/library/ms173492.aspx)
 * [DOBJA EL A SZÁMÍTÁSI FELADATOK OSZTÁLYOZÓ](/sql/t-sql/statements/drop-workload-classifier-transact-sql)
 * [RENAME](https://msdn.microsoft.com/library/mt631611.aspx)
-* [SET RESULT_SET_CACHING](/sql/t-sql/statements/set-statements-transact-sql) (előzetes verzió)
+* [SET RESULT_SET_CACHING](/sql/t-sql/statements/set-result-set-caching-transact-sql) (előzetes verzió)
 * [TRUNCATE TABLE](https://msdn.microsoft.com/library/ms177570.aspx)
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 

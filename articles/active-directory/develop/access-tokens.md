@@ -5,7 +5,6 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
@@ -17,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24b2281e09da0bdcff0abec8be0091dcbb32cc51
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: ea1e47939913435b5b7040c0e6d01b1208d709d3
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544792"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962901"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>A Microsoft identity platform hozzáférési jogkivonatok
 
@@ -136,7 +135,7 @@ A következő jogcímek 1.0-s verziójú jogkivonatok, ha van ilyen fog szerepel
 
 A Microsoft identitások különböző módon, ami fontos lehet az alkalmazás hitelesítheti. A `amr` jogcím egy tömb, amely több elemet is tartalmazhat, mint például `["mfa", "rsa", "pwd"]`, egy jelszó és a hitelesítő alkalmazás használt hitelesítéshez.
 
-| Value | Leírás |
+| Érték | Leírás |
 |-----|-------------|
 | `pwd` | Jelszavas hitelesítést, vagy a felhasználó Microsoft-jelszavát, vagy egy alkalmazás titkos. |
 | `rsa` | Hitelesítés alapján történt a koncepció igazolása RSA-kulcs, például az a [Microsoft Authenticator alkalmazás](https://aka.ms/AA2kvvu). Ez magában foglalja, ha a hitelesítést egy önaláírt JWT végezhető el egy szolgáltatással X509 birtokolt tanúsítványt. |

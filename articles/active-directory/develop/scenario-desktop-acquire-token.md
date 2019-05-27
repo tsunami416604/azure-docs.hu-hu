@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1fe9594471c6e8f723afff2def940bb675e04fb
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 9d18c92cccac6bfb0bd359767ecdb51951268735
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407003"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962538"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Asztali alkalmazás, amely meghívja a webes API - jogkivonat beszerzése
 
@@ -163,7 +163,7 @@ Az MSAL.NET csapat a bővítési mechanizmust kihasználhatja a felhasználói f
 
 #### <a name="other-optional-parameters"></a>Más választható paraméterek:
 
-További információ az összes többi nem kötelező paraméter a `AcquireTokenInteractive` az a dokumentáció a [AcquireTokenInteractiveParameterBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.apiconfig.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)
+További információ az összes többi nem kötelező paraméter a `AcquireTokenInteractive` az a dokumentáció a [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)
 
 ## <a name="integrated-windows-authentication"></a>Integrált Windows-hitelesítés
 
@@ -283,7 +283,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-A AcquireTokenByIntegratedWindowsAuthentication lehetséges dostupnosti listáját lásd: [AcquireTokenByIntegratedWindowsAuthParameterBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.apiconfig.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods)
+A AcquireTokenByIntegratedWindowsAuthentication lehetséges dostupnosti listáját lásd: [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods)
 
 ## <a name="username--password"></a>Felhasználónév / jelszó
 
@@ -519,7 +519,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-Alkalmazható az összes dostupnosti részleteiért `AcquireTokenByUsernamePassword`, lásd: [AcquireTokenByUsernamePasswordParameterBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.apiconfig.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods)
+Alkalmazható az összes dostupnosti részleteiért `AcquireTokenByUsernamePassword`, lásd: [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods)
 
 ## <a name="command-line-tool-without-web-browser"></a>Parancssori eszköz (nélkül a webböngésző)
 

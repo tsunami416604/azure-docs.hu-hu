@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 84ed1632a61ae097bd2e187de4766dfc50f2503f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 050f301b55c718e80c1b4157639bd9dce506f6ba
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263778"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979503"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi adatok lekérése
 
-Egyik legnagyobb előnye az Azure Policy egy insight- és vezérlőket biztosít egy adott előfizetés erőforrások vagy [felügyeleti csoport](../../management-groups/overview.md) előfizetések. Ez a vezérlő megakadályozza az erőforrások a megfelelő helyen létrehozott kényszerítése általános és következetes címke használatot, például számos különböző módon lehet érvényesíteni, vagy naplózási meglévő erőforrások, a szükséges konfigurációk és beállítások. Minden esetben adatokat ahhoz, hogy a környezet megfelelési állapotának megjelenítése szabályzat jön létre.
+Egyik legnagyobb előnye az Azure Policy egy insight- és vezérlőket biztosít egy adott előfizetés erőforrások vagy [felügyeleti csoport](../../management-groups/overview.md) előfizetések. Ez a vezérlő megakadályozza az erőforrások a megfelelő helyen létrehozott kényszerítése általános és következetes címke használatot, például számos különböző módon lehet érvényesíteni, vagy naplózási meglévő erőforrások, a szükséges konfigurációk és beállítások. Minden esetben az adatokat, hogy jobban megismerhesse a környezet megfelelőségi állapotát az Azure Policy által jön létre.
 
 Többféleképpen is lehet a megfelelőségi adatokat a szabályzat és a kezdeményezési hozzárendelések által generált eléréséhez:
 
@@ -33,7 +33,7 @@ Mielőtt megnézzük a jelentés a megfelelőségi módszereket, tekintsük át 
 
 ## <a name="evaluation-triggers"></a>Értékelés eseményindítók
 
-A befejezett kiértékelési ciklusa eredményeit érhetők el a `Microsoft.PolicyInsights` erőforrás-szolgáltató `PolicyStates` és `PolicyEvents` műveletek. A szabályzat Insights REST API kapcsolatos további információkért lásd: [Policy Insights](/rest/api/policy-insights/).
+A befejezett kiértékelési ciklusa eredményeit érhetők el a `Microsoft.PolicyInsights` erőforrás-szolgáltató `PolicyStates` és `PolicyEvents` műveletek. Az Azure-szabályzat Insights REST API kapcsolatos további információkért lásd: [Azure Policy Insights](/rest/api/policy-insights/).
 
 Hozzárendelt házirendeket és kezdeményezések értékelések történt különféle események eredményeként fordulhat elő:
 
@@ -88,7 +88,8 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ## <a name="how-compliance-works"></a>Megfelelőségi működése
 
-A hozzárendelés, van egy erőforrás **nem megfelelő** Ha nem követi a szabályzatot vagy kezdeményezést szabályokat. Az alábbi táblázat a különböző házirend hatások működnek a feltételek kiértékelésével a az eredményül kapott megfelelőségi állapot:
+A hozzárendelés, van egy erőforrás **nem megfelelő** Ha nem követi a szabályzatot vagy kezdeményezést szabályokat.
+Az alábbi táblázat a különböző házirend hatások működnek a feltételek kiértékelésével a az eredményül kapott megfelelőségi állapot:
 
 | Erőforrás állapota | Következmény | Szabályzat-kiértékelés | Megfelelőségi állapot |
 | --- | --- | --- | --- |
@@ -114,7 +115,7 @@ Mellett **megfelelő** és **nem megfelelő**, szabályzatok és az erőforráso
 - **Nem indult el**: A kiértékelési ciklusa a házirend vagy az erőforrás nem indul el.
 - **Nincs regisztrálva**: Az Azure házirend erőforrás-szolgáltató nincs regisztrálva, vagy a bejelentkezett fiók nem rendelkezik a megfelelőségi adatok olvasásához szükséges engedély.
 
-Szabályzat használja a **típus** és **neve** mezőket a definícióban, hogy egy erőforrás egyezést. Az erőforrás megegyezik, azt alkalmazható számít, és állapota vagy **megfelelő** vagy **nem megfelelő**. Ha bármelyik **típus** vagy **neve** nem az egyetlen tulajdonság a definícióban összes erőforrás tekinti a alkalmazni, és értékeli ki.
+Az Azure Policy használja a **típus** és **neve** mezőket a definícióban, hogy egy erőforrás egyezést. Az erőforrás megegyezik, azt alkalmazható számít, és állapota vagy **megfelelő** vagy **nem megfelelő**. Ha bármelyik **típus** vagy **neve** nem az egyetlen tulajdonság a definícióban összes erőforrás tekinti a alkalmazni, és értékeli ki.
 
 Határozza meg a megfelelőség százalékos értékkel való osztásának **megfelelő** erőforrásokat _erőforrások teljes_.
 _Erőforrások teljes_ összege típusúként van definiálva a **megfelelő**, **nem megfelelő**, és **ütköző** erőforrásokat. Az általános megfelelőségi szám, a különböző erőforrások, amelyek összege **megfelelő** elosztja az összes különböző erőforrás. Az alábbi képen vannak 20 különböző erőforrások, amelyek alkalmazhatók, és csak az egyiket **nem megfelelő**. A teljes erőforrás-megfelelőség 95 %-os (19 20).
@@ -123,23 +124,22 @@ _Erőforrások teljes_ összege típusúként van definiálva a **megfelelő**, 
 
 ## <a name="portal"></a>Portál
 
-Az Azure Portalon bemutatja egy grafikus felületet jelenítenek meg, és a környezet megfelelőségi állapotát ismertetése. Az a **házirend** lapon a **áttekintése** beállítás részletes adatokat biztosít a megfelelőségi szabályzatok és a kezdeményezések elérhető hatóköreit. A megfelelőségi állapotok és száma felhasználónként hozzárendelés együtt diagramját, az elmúlt hét napban megfelelőségi tartalmazza.
-A **megfelelőségi** lap tartalmaz szinte ugyanezeket az adatokat (kivéve a diagramot), de további szűrési és rendezési lehetőségeket biztosít.
+Az Azure Portalon bemutatja egy grafikus felületet jelenítenek meg, és a környezet megfelelőségi állapotát ismertetése. Az a **házirend** lapon a **áttekintése** beállítás részletes adatokat biztosít a megfelelőségi szabályzatok és a kezdeményezések elérhető hatóköreit. A megfelelőségi állapotok és száma felhasználónként hozzárendelés együtt diagramját, az elmúlt hét napban megfelelőségi tartalmazza. A **megfelelőségi** lap tartalmaz szinte ugyanezeket az adatokat (kivéve a diagramot), de további szűrési és rendezési lehetőségeket biztosít.
 
-![Megfelelőségi szabályzat lapjának – példa](../media/getting-compliance-data/compliance-page.png)
+![Az Azure megfelelőségi oldal példája](../media/getting-compliance-data/compliance-page.png)
 
 Egy szabályzatot vagy kezdeményezést több hatókörhöz is rendelhető, mert a tábla minden hozzárendelés és-definíciót, amely hozzá volt rendelve típusát a hatókör magában foglalja. A nem megfelelő erőforrások és a nem megfelelő szabályzatok egyes hozzárendelések száma is biztosítja. Kattintson egy szabályzatot vagy kezdeményezést a tábla a biztosít, hogy adott hozzárendelés megfelelőségi alaposabban.
 
-![Példa a szabályzatot a megfelelőségi Részletek lap](../media/getting-compliance-data/compliance-details.png)
+![Azure szabályzatot a megfelelőségi Részletek lap – példa](../media/getting-compliance-data/compliance-details.png)
 
 Az erőforrások listájában a **erőforrás megfelelőségi** lapon a meglévő erőforrások, az aktuális hozzárendelés értékelési állapotát jeleníti meg. A lapon alapértelmezés szerint a **nem megfelelő**, de szűrésével.
 Események (hozzáfűzés, naplózása, megtagadása, üzembe helyezése) váltott erőforrás létrehozására vonatkozó kérelem alatt látható a **események** fülre.
 
-![Szabályzatoknak való megfelelés események – példa](../media/getting-compliance-data/compliance-events.png)
+![Az Azure megfelelőségi események – példa](../media/getting-compliance-data/compliance-events.png)
 
 Kattintson a jobb gombbal a sor az esemény gyűjtse össze a további részleteket a, és válassza ki, szeretné **Tevékenységnaplók megjelenítése**. A tevékenységnapló oldalon megnyílik, és a Keresés az események és az a hozzárendelés részleteit megjelenítő előre szűrt. A tevékenységnapló további kontextus és eseményekből információkat biztosít.
 
-![Szabályzat megfelelőség-tevékenységnaplóban – példa](../media/getting-compliance-data/compliance-activitylog.png)
+![Az Azure Policy megfelelőségi tevékenységnapló – példa](../media/getting-compliance-data/compliance-activitylog.png)
 
 ### <a name="understand-non-compliance"></a>Meg nem felelés ismertetése
 
@@ -149,7 +149,7 @@ Egy erőforrásokat kell meghatározásakor **nem megfelelő**, számos oka lehe
 
 ## <a name="command-line"></a>Parancssor
 
-A REST API-val lekérheti a portálon elérhető ugyanazokat az információkat (beleértve az [ARMClient](https://github.com/projectkudu/ARMClient)) vagy az Azure PowerShell-lel. Részletes információ a REST API-t, lásd: a [Policy Insights](/rest/api/policy-insights/) hivatkozást. A REST API-referencia lapok ", próbálja meg" egy zöld gombot rendelkezik minden művelet, amely lehetővé teszi, hogy próbálja ki a jobb oldalon, a böngészőben.
+A REST API-val lekérheti a portálon elérhető ugyanazokat az információkat (beleértve az [ARMClient](https://github.com/projectkudu/ARMClient)) vagy az Azure PowerShell-lel. Részletes információ a REST API-t, lásd: a [Azure Policy Insights](/rest/api/policy-insights/) hivatkozást. A REST API-referencia lapok ", próbálja meg" egy zöld gombot rendelkezik minden művelet, amely lehetővé teszi, hogy próbálja ki a jobb oldalon, a böngészőben.
 
 Az alábbi példák az Azure PowerShell használatához hozhatnak létre egy hitelesítési tokent ebben a példában kóddal. Ezután cserélje le a $restUri a példákban egy JSON-objektumot, majd a program értelmezni tudja beolvasni a karakterláncot.
 
@@ -178,7 +178,7 @@ $response
 
 ### <a name="summarize-results"></a>Összegzés eredményei
 
-A REST API-val összegzési tároló, a definition vagy a hozzárendelés alapján végezheti el. Íme egy példa az előfizetés szintjén házirend Insight használatával összegzésének [összefoglalója az előfizetés](/rest/api/policy-insights/policystates/summarizeforsubscription):
+A REST API-val összegzési tároló, a definition vagy a hozzárendelés alapján végezheti el. Íme egy példa az előfizetés szintjén használatával Azure házirend Insight összegzésének [összefoglalója az előfizetés](/rest/api/policy-insights/policystates/summarizeforsubscription):
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
@@ -288,11 +288,12 @@ Az eredmények a következő példához hasonlók:
 }
 ```
 
-Házirend-események lekérdezésével kapcsolatos további információkért lásd: a [házirend-események](/rest/api/policy-insights/policyevents) áttekintésével foglalkozó cikkben.
+Házirend-események lekérdezésével kapcsolatos további információkért lásd: a [Azure szabályzat-események](/rest/api/policy-insights/policyevents) áttekintésével foglalkozó cikkben.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Az Azure PowerShell-modul házirend érhető el, a PowerShell-galériából [Az.PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights). A PowerShellGet használata esetén telepítheti a modul használatával `Install-Module -Name Az.PolicyInsights` (Ellenőrizze, hogy a legújabb [Azure PowerShell-lel](/powershell/azure/install-az-ps) telepítve van):
+Azure Policy az Azure PowerShell-modulja érhető el, a PowerShell-galériából [Az.PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights).
+A PowerShellGet használata esetén telepítheti a modul használatával `Install-Module -Name Az.PolicyInsights` (Ellenőrizze, hogy a legújabb [Azure PowerShell-lel](/powershell/azure/install-az-ps) telepítve van):
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
@@ -417,13 +418,13 @@ Trent Baker
 
 Ha rendelkezik egy [Log Analytics-munkaterület](../../../log-analytics/log-analytics-overview.md) a `AzureActivity` származó a [Activity Log Analytics megoldás](../../../azure-monitor/platform/collect-activity-logs.md) vannak kötve, az előfizetéséhez, megtekintheti az értékelési ciklus használatával meg nem felelés eredményeinek egyszerű Kusto-lekérdezés és a `AzureActivity` tábla. A részleteket a naplókban az Azure Monitor riasztások beállítható úgy, hogy tekintse meg a meg nem felelés esetén.
 
-![Szabályzatoknak való megfelelőség az Azure Monitor-naplók használatával](../media/getting-compliance-data/compliance-loganalytics.png)
+![Az Azure szabályzati megfelelőség az Azure Monitor-naplók használatával](../media/getting-compliance-data/compliance-loganalytics.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a következő példák [Azure Policy-minták](../samples/index.md)
-- Tekintse át a [szabályzatdefiníciók struktúrája](../concepts/definition-structure.md)
-- Felülvizsgálat [házirend hatások ismertetése](../concepts/effects.md)
-- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](programmatically-create.md)
-- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](remediate-resources.md)
-- A felügyeleti csoportok áttekintéséért lásd [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](../../management-groups/overview.md) ismertető részt.
+- Tekintse át a következő példák [Azure Policy minták](../samples/index.md).
+- Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
+- A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
+- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](programmatically-create.md).
+- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](remediate-resources.md).
+- Tekintse át a felügyeleti csoport van [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/overview.md).

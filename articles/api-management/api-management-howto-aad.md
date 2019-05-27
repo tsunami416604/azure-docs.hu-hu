@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 422c2a8a61b1df36b452c153aa6cd78ba7e2dcef
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d267ff3a43438d9fe6e4e21f0ac023cfa6675f19
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723642"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956305"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Az Azure Active Directoryval az Azure API Management fejlesztői fiókok engedélyezése
 
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan hozzáférés engedélyezése a felhasználók szám
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Fejlesztői fiókok engedélyezése az Azure AD-vel
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Válassza ezt: ![nyíl](./media/api-management-howto-aad/arrow.png).
+2. Kiválasztás ![nyíl](./media/api-management-howto-aad/arrow.png).
 3. Típus **api** kifejezést a keresőmezőbe.
 4. Válassza ki **API Management-szolgáltatások**.
 5. Válassza ki az API Management-szolgáltatáspéldányát.
@@ -61,21 +61,22 @@ Ez a cikk bemutatja, hogyan hozzáférés engedélyezése a felhasználók szám
 14.  Miután az alkalmazás regisztrálva van, másolja a **Alkalmazásazonosítót (ügyfél)** a a **áttekintése** lap. 
 15. Lépjen vissza az API Management-példány. Az a **Hozzáadás identitásszolgáltató** ablakban illessze be a **Alkalmazásazonosítót (ügyfél)** be értéket a **ügyfél-azonosító** mezőbe.
 16. Váltson vissza az Azure AD-konfigurációjának, válassza ki a **tanúsítványok és titkos kulcsok** alatt **kezelés**. Válassza ki a **új titkos ügyfélkulcsot** gombra. Adjon meg egy értéket a **leírás**, az egyik lehetőséget sem **lejárat** válassza **Hozzáadás**. Másolja ki az ügyfél titkos érték, mielőtt elhagyja a lapot. A következő lépésben szüksége lesz ezekre. 
-17. Lépjen vissza az API Management-példány, a titkos kulcsát a illessze be a **titkos Ügyfélkód** mezőbe.
+17. Alatt **kezelés**, jelölje be **hitelesítési** majd **azonosító-jogkivonatokat** alatt **típusú Implicit engedélyezés**
+18. Lépjen vissza az API Management-példány, a titkos kulcsát a illessze be a **titkos Ügyfélkód** mezőbe.
 
     > [!IMPORTANT]
     > Ellenőrizze, hogy frissítette a **titkos Ügyfélkód** a kulcs érvényességének lejárta előtt. 
     >  
     >
 
-18. A **Hozzáadás identitásszolgáltató** ablakban is tartalmaz a **engedélyezett bérlők** szövegmezőben. Itt adja meg a tartományban, amelyhez hozzá szeretné hozzáférést biztosítani az API-k az API Management szolgáltatáspéldányt, az Azure AD-példányban. Több tartomány elválasztás sortörésekből álló szóközöket tartalmazza, szóközök és vesszővel válassza el egymástól.
+19. A **Hozzáadás identitásszolgáltató** ablakban is tartalmaz a **engedélyezett bérlők** szövegmezőben. Itt adja meg a tartományban, amelyhez hozzá szeretné hozzáférést biztosítani az API-k az API Management szolgáltatáspéldányt, az Azure AD-példányban. Több tartomány elválasztás sortörésekből álló szóközöket tartalmazza, szóközök és vesszővel válassza el egymástól.
 
 > [!NOTE]
 > A több tartományt is megadhat a **engedélyezett bérlők** szakaszban. Minden felhasználó egy másik tartományban található, mint az eredeti tartomány, ahol az alkalmazás regisztrálva lett a bejelentkezéshez, a másik tartományban globális rendszergazdájának engedélyt kell az alkalmazás hozzáférési címtáradatok. Engedélyt adni, a globális rendszergazdának kell: egy. Lépjen a `https://<URL of your developer portal>/aadadminconsent` (például https://contoso.portal.azure-api.net/aadadminconsent).
 > b. Írja be az Azure AD-bérlővel, amelyeket be szeretne hozzáférést biztosít a tartomány nevét.
 > c. Válassza ki **elküldése**. 
 
-19.  Miután megadta a szükséges konfiguráció, válassza ki a **Hozzáadás**.
+20.  Miután megadta a szükséges konfiguráció, válassza ki a **Hozzáadás**.
 
 Miután menti a módosításokat, felhasználók a megadott Azure ad-példány bejelentkezhet a fejlesztői portál által leírt lépések végrehajtásával [egy olyan Azure AD felhasználói fiókkal jelentkezzen be a fejlesztői portál](#log_in_to_dev_portal).
 

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/01/2019
+ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 804efa6e0a39e009e18bbb9dec5ad1638a163597
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6bafa4614e40bb1796ec90e07ecf5b9286a8acb9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60247100"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113515"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>A csoportok a hozzáférési felülvizsgálat létrehozása és alkalmazások az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -30,8 +30,11 @@ Ez a cikk ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+- Azure AD Premium P2
 - [A hozzáférési felülvizsgálatok engedélyezve](access-reviews-overview.md)
 - Globális rendszergazda vagy felhasználói rendszergazda
+
+További információkért lásd: [mely felhasználók rendelkeznie kell licencekkel?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="create-one-or-more-access-reviews"></a>Hozzon létre egy vagy több hozzáférési felülvizsgálatok
 
@@ -77,9 +80,13 @@ Ez a cikk ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvi
 
     ![Hozzáférési felülvizsgálat - felülvizsgálók létrehozása](./media/create-access-review/reviewers.png)
 
-1. Az a **programok** területen válassza ki a használni kívánt programot. Egyszerűsítheti a nyomon követni, és a hozzáférési felülvizsgálatok gyűjtése a különböző felhasználási célokra szervezetspecifikus programokban rendezve kezelje. **Alapértelmezett Program** mindig jelen, vagy létrehozhat egy másik program. Választhat, például, hogy az egyes megfelelőségi-kezdeményezéshez egy program vagy üzleti cél.
+1. Az a **programok** területen válassza ki a használni kívánt programot. **Alapértelmezett Program** mindig szerepel.
 
     ![Hozzáférési felülvizsgálat - programok létrehozása](./media/create-access-review/programs.png)
+
+    Egyszerűsítheti a nyomon követni, és a hozzáférési felülvizsgálatok gyűjtése a különböző felhasználási célokra szervezetspecifikus programokban rendezve kezelje. Minden hozzáférési felülvizsgálat program lehet kapcsolódni. Ezután egy auditor jelentések előkészületeként, összpontosíthat a hozzáférési felülvizsgálatok egy adott kezdeményezés terjed ki. Programok és a hozzáférési felülvizsgálat eredményei láthatók a globális rendszergazdai, felhasználó rendszergazdai, biztonsági rendszergazdai vagy biztonsági olvasói szerepkör felhasználói számára.
+
+    Programok listájának megtekintéséhez nyissa meg a hozzáférési felülvizsgálatok lapot, és válassza ki **programok**. Ha Ön globális rendszergazda vagy felhasználói rendszergazda szerepkört, az további programokat is létrehozhat. Választhat, például, hogy az egyes megfelelőségi-kezdeményezéshez egy program vagy üzleti cél. Ha már nincs szüksége egy programot, és nem kell minden olyan vezérlőelemek, hozzá kell kapcsolni, törölheti azt.
 
 ### <a name="upon-completion-settings"></a>A befejezést követő művelet beállításai
 
@@ -110,6 +117,8 @@ Ez a cikk ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvi
 
 1. Állítsa be **emlékeztetők** való **engedélyezése** , az Azure AD emlékeztetőt küldjön a hozzáférési felülvizsgálatok folyamatban felülvizsgálóknak, akik még nem fejezték be a felülvizsgálatot.
 
+    Alapértelmezés szerint az Azure AD a rendelkezésre álló idő felénél automatikusan emlékeztetőt küld azoknak a felülvizsgálóknak, akik még nem tettek eleget a kérésnek.
+
 ## <a name="start-the-access-review"></a>A hozzáférési felülvizsgálat indítása
 
 Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a **Start**. A hozzáférési felülvizsgálat megjelenik a listában, az azt jelzi, hogy annak állapotát.
@@ -118,19 +127,7 @@ Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a 
 
 Alapértelmezés szerint az Azure AD-e-mailt küld felülvizsgálók elindítja a felülvizsgálatot követően rövid időn belül. Ha nem rendelkezik Azure ad-ben az e-mailt, mindenképpen tájékoztatja a felülvizsgálatot, amely a hozzáférési felülvizsgálat várakozik, amíg befejeződnek. Mutathat nekik az utasításokat, hogy hogyan [csoportokhoz vagy alkalmazásokhoz való hozzáférés felülvizsgálata](perform-access-review.md). Ha áttekintésre vendégek tekintse át a saját hozzáférését, azokat az utasítások megjelenítése, hogy hogyan [hozzáférés felülvizsgálata maga a csoportokat vagy alkalmazásokat](review-your-access.md).
 
-Ha a felülvizsgálók néhány Vendégek, Vendégek értesítést kap e-mailen keresztül csak akkor, ha korábban már fogadta el a meghívót.
-
-## <a name="manage-the-access-review"></a>A hozzáférési felülvizsgálat kezelése
-
-Követheti a folyamat állapotát, a felülvizsgálók a legteljesebb körű áttekintette a **áttekintése** a hozzáférési felülvizsgálat lapján. Nincs hozzáférési jogosultsága változnak, amíg a könyvtárban [a felülvizsgálat befejeződött](complete-access-review.md).
-
-![A hozzáférési felülvizsgálatok folyamatban](./media/create-access-review/overview-progress.png)
-
-Ha ez egy egyszeri tekintse át, majd a hozzáférési felülvizsgálati időszak felett van, vagy a rendszergazda a hozzáférési felülvizsgálat leállítása után kövesse a lépéseket a [csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat befejezése](complete-access-review.md) megtekintéséhez és a alkalmazni az eredményeket.  
-
-Kezelheti a hozzáférést egy sorozatát értékelések, keresse meg a hozzáférési felülvizsgálatot, és hoz közelgő események keresése az ütemezett ellenőrzések, és módosítsa a záró dátumot vagy hozzáadása/eltávolítása felülvizsgálóknak annak megfelelően.
-
-A beállításokat az alapján **befejezést követő művelet beállításai**, automatikus alkalmazása lesz a felülvizsgálat záró dátuma, vagy ha manuálisan leállítja a felülvizsgálatot követően hajtható végre. A felülvizsgálat állapota változik **befejezve** például köztes állapotok keresztül **alkalmazása** végül állapotba **alkalmazott**. Tekintse meg a letiltott felhasználók, ha bármely, a csoport tagsági és alkalmazás-hozzárendelés néhány perc múlva távolít el kell látnia.
+Hozzárendelt vendégek felülvizsgálók, és azok nem fogadta el a meghívást, ha azok nem kapják e-mailt a hozzáférési felülvizsgálatok mivel először el kell fogadniuk előtt tekintse át a meghívást.
 
 ## <a name="create-reviews-via-apis"></a>API-kon keresztül felülvizsgálat létrehozása
 

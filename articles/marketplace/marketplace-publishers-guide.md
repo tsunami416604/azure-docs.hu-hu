@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: a3d75f09ac21fcdb4862cf8eefff0b5c05fd3369
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 58591302280c67dbd0f69ebe0bc47cf95c8bfc18
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937611"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956744"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Az Azure Marketplace és AppSource közzétételi útmutató
 
@@ -62,7 +62,7 @@ A Marketplace új ajánlatai jogosultak kezébe a különböző segítségével 
 
 *   Közös értékesítés: Kezdődhet, és gyorsabban értékesítése a Microsofttal a Marketplace-en keresztül. Programok és a támogatási szolgáltatások együttes az értékesítést és a Microsoft teams eléréséhez.
 
-Miután [küldje el a megoldás](https://azuremarketplace.microsoft.com/sell/signup) a piactéren, az előkészítő csapatunk kapcsolatba lép a közzétételi felhasználói élmény támogatását.
+Miután [küldje el a megoldás](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) a piactéren, az előkészítő csapatunk kapcsolatba lép a közzétételi felhasználói élmény támogatását.  Lásd: [Partnerközpont-fiókkal létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) további információt.
 
 További információ a Microsoft a piaci megjelenést előnyökről és növelje üzletét a Marketplace-en: [a Microsoft piaci megjelenést szolgáltatások](https://partner.microsoft.com/reach-customers/gtm).
 

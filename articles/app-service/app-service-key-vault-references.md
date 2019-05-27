@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 662260c3cf37f8f8a675c522f3d3dea41153e485
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f086850ecc2f15c41ab89db34b16d6d2e4a229cb
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853143"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956220"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>A Key Vault hivatkozások használata az App Service és az Azure Functions (előzetes verzió)
 
@@ -67,7 +67,7 @@ Azt is megteheti:
 
 ## <a name="source-application-settings-from-key-vault"></a>A Key Vault alkalmazás forrásbeállítások
 
-Key Vault hivatkozások használható értékeit [Alkalmazásbeállítások](web-sites-configure.md#app-settings), lehetővé téve, hogy a titkos kulcsok a Key Vaultban helykonfigurációjában helyett. Alkalmazásbeállítások biztonságosan titkosított inaktív, de a titkos kódok kezelése képességek van szüksége, ha azok kell lépjen be a Key Vault.
+Key Vault hivatkozások használható értékeit [Alkalmazásbeállítások](configure-common.md#configure-app-settings), lehetővé téve, hogy a titkos kulcsok a Key Vaultban helykonfigurációjában helyett. Alkalmazásbeállítások biztonságosan titkosított inaktív, de a titkos kódok kezelése képességek van szüksége, ha azok kell lépjen be a Key Vault.
 
 Alkalmazás-beállítás, a Key Vault hivatkozás használatához állítja be a hivatkozást a beállítás értékét. Az alkalmazás a szokásos módon keresztül is lehet hivatkozni a titkos kulcsot. Kódmódosítás nélkül szükség.
 

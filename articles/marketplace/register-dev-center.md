@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 559b5a519a48d4aa8022961a59f6f29cef28f948
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 1caa523b2bc43b7b3690e01f589aecf18fd3da9e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937600"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965109"
 ---
 # <a name="register-in-dev-center"></a>Regisztrálás a fejlesztői központban  
 Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző személyes fiók, nyisson meg egy új Internet Explorer InPrivate vagy Chrome Inkognitó böngészési munkamenetében.  
@@ -156,7 +156,7 @@ A banki és adózási adatait az ajánlati típus transact használatával minde
   > Ellenőrizze, hogy a zip-kód megfelelően túl van megadva. Van egy város, a zip-kód érvényesítése.
 
 * **Hogyan kaphatok egy promóciós kódot?**
-  > Végezze el a [Marketplace regisztrációs](https://azuremarketplace.microsoft.com/en-us/sell/signup) kérésűrlapot Dev Center promóciós kódot.
+  > Végezze el a [Marketplace regisztrációs](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) kérésűrlapot Dev Center promóciós kódot. Lásd: hogyan [Partnerközpont-fiókkal létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) további információt.
  
 * **Mire számíthatok a regisztráció elvégzése után?**
   > Keresse meg az e-mailt verify@microsoft.com tárgysorban a "beavatkozás szükséges: Ellenőrizze az e-mail-fiókjába, a Microsoft". Kattintson a regisztráció befejezéséhez idő-és nagybetűket visszaigazoló hivatkozásra. *Ha még nem kapott belül 24 órában e-mailt, ellenőrizze a Levélszemét mappát.*

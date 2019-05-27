@@ -9,12 +9,12 @@ ms.date: 10/24/2018
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9fd594fb264ff0467cc315f59927cd157068d522
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3d4c40e172352fc2d92ea5523cad2aebe5468e1e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146172"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65961441"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zónaredundáns tárolás (ZRS): Azure Storage magas rendelkezésre állású alkalmazások
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -31,11 +31,11 @@ A ZRS az alábbi régiókban általában érhető el:
 - Észak-Európa
 - Közép-Franciaország
 - Kelet-Japán
-- Az Egyesült Királyság déli régiója
+- Egyesült Királyság déli régiója
+- USA középső régiója
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA 2. nyugati régiója
-- USA középső régiója
 
 A Microsoft továbbra is fennáll, további Azure-régióban ZRS engedélyezéséhez. Ellenőrizze a [Azure szolgáltatási hírek](https://azure.microsoft.com/updates/) oldalon rendszeresen új régiókra vonatkozó információkat.
 
@@ -75,6 +75,7 @@ Tartsa szem előtt az élő áttelepítés a következő korlátozásokkal:
 - Csak áttelepítheti az adatokat egy régión belül. Ha szeretne migrálni, mint a forrás-fiók más régióban található ZRS-fiókok adatait, végre kell hajtania manuális áttelepítést.
 - Csak a standard szintű storage fióktípus esetében támogatja az élő áttelepítés. Premium storage-fiókok manuálisan kell áttelepíteni.
 - A ZRS az LRS, GRS vagy RA-GRS élő áttelepítés nem támogatott. Manuálisan helyezze át az adatokat egy új vagy meglévő storage-fiókot kell.
+- A felügyelt lemezek csak az lrs esetén érhető el, és a ZRS nem telepíthető át. Integráció a rendelkezésre állási csoportokhoz lásd [Bevezetés az Azure-ba, felügyelt lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets). Tárolhatja pillanatképek és lemezképek SSD a standard szintű felügyelt lemezek a standard szintű HDD-tárolási és [választhatnak az LRS és ZRS](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
 Kérheti az élő áttelepítés révén a [Azure-támogatási portál](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). A portálról válassza ki a tárfiókot, ZRS az átalakítani kívánt.
 1. Válassza ki **új támogatási kérelem**
@@ -96,7 +97,7 @@ Egy támogatási szakember fog kapcsolatba lépni Önnel, és segítséget kell 
 
 **Készüljek, leállás az áttelepítés során?**
 
-Nem jár az áttelepítés által okozott. Egy élő áttelepítés közben folytathatja a tárfiók során a forrás- és tárolási stampek között telepít át az adatokat. Az áttelepítési folyamat során, hogy ugyanolyan szintű tartósságot és rendelkezésre állási SLA szerint Ön többnyire.
+Nem jár az áttelepítés által okozott. Egy élő áttelepítés közben folytathatja a forrás- és tárolási stampek között telepít át az adatokat a tárfiók használatával. Az áttelepítési folyamat során, hogy ugyanolyan szintű tartósságot és rendelkezésre állási SLA szerint Ön többnyire.
 
 **Az áttelepítés társított adatvesztés van?**
 

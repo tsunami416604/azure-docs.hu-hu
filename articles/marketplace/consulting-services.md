@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: e13111eb241c7734e25a28fcaeea55b1c70bc267
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 225a4936bbbb8d068caa0ee2a3280c395dbd490e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938313"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964113"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Tanácsadási szolgáltatások az Azure Marketplace és appsource-ban
 Tanácsadási szolgáltatások az Azure Marketplace és AppSource biztosít a Microsoft-partnerek, a cél támogatja, és bővítheti használata során az Azure-szolgáltatásokkal csatlakozó ügyfelek és az üzleti céljainak megvalósítását. 
@@ -80,7 +80,7 @@ Partnerek van szüksége egy **silver vagy gold kompetencia** a szolgáltatásuk
 Tanácsadási szolgáltatásokat vehet igénybe a bevezetésre kerül élő meghatározott földrajzi régióban. Az alkalmazás első indításakor a következő lesz: Egyesült Államok, Kanada, az Egyesült Királyságban és Ausztrália. A katalógus más országok és régiók élesben elteltével egy jelentéssel bíró és lenyűgöző szolgáltatásajánlatok választott partnerek által küldött és megtörtént a Microsoft által jóváhagyott.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>How To Register tanácsadási szolgáltatások az Azure Marketplace és appsource-ban a
-Első lépésként [regisztrálása](https://azuremarketplace.microsoft.com/sell/signup) a vállalati adatok a Marketplace-en. A kiadók is hivatkozhatnak [válhat Kiadóvá a piactéren](https://docs.microsoft.com/azure/marketplace/become-publisher), teljes ellenőrzés-listáját a eszközregisztráció követelményeinek. 
+Első lépésként [regisztrálása](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) a vállalati adatok a Marketplace-en. A kiadók is hivatkozhatnak [válhat Kiadóvá a piactéren](https://docs.microsoft.com/azure/marketplace/become-publisher), teljes ellenőrzés-listáját a eszközregisztráció követelményeinek. 
 
 **Milyen a várható után regisztrációs** a bevezetési csapat felveszi Önnel 1-3 munkanapon egy üdvözlő e-mailt, amely magában foglalja a Cloud Partner Portal (CPP) bejelentkezési adatait. [Cloud Partner Portalon](https://cloudpartner.azure.com) a ajánlat listaelem portál, ahol a kiadók az ajánlati információk és jelentkezés küldje el. 
 
@@ -149,7 +149,7 @@ Példák:
 
 Ajánlat leírása és összefoglalók ajánlat áttekintése, ha a csapat hatálya a következő feltételeknek:
 
-|Csomag típusa  |Szükséges |Ajánlott  |
+|Csomag típusa  |Kötelező |Ajánlott  |
 |---------|---------|---------|
 |**Értékelés**    |   Egy többnapos vagy több hét értékelések részletes napirend tartalmazzák, és mi adjuk a terméket az ügyfél várható      |    Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása     |
 |**Briefing**    |   Mi adjuk a terméket az ügyfél várható. Ne feledje, hogy Briefing személyesen kell kínáljuk. Ha meg van adva egy virtuális szolgáltatást, válasszon egy másik ajánlatra típusa    |  Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása       |

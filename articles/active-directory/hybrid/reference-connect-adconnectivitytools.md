@@ -5,18 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-origin.date: 10/19/2018
-ms.date: 04/09/2019
+ms.date: 10/19/2018
 ms.subservice: hybrid
-ms.author: v-junlch
+ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40b4be9aca5243b80151afac0ae221f0d44509c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1084a3e546a234739fbede46612dce96537c7d4a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454642"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950636"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:  ADConnectivityTools PowerShell-referencia
 
@@ -24,7 +23,7 @@ A következő dokumentáció arról nyújt a ADConnectivityTools.psm1 PowerShell
 
 ## <a name="confirm-dnsconnectivity"></a>Confirm-DnsConnectivity
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Észleli a helyi Dns-probléma.
 
@@ -37,7 +36,7 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 ### <a name="description"></a>LEÍRÁS
 
 Helyi Dns-kapcsolat teszteket futtat.
-Az Active Directory-összekötő konfigurálásához felhasználónak rendelkeznie kell mindkét névfeloldás esetében az erdő he\she hasonlóan a tartományvezérlők, az erdőhöz tartozó, valamint csatlakozni próbál.
+Az Active Directory-összekötő konfigurálásához a felhasználónak mindkét névfeloldás az erdő megpróbálnak csatlakozni, valamint a tartományvezérlők, ebben az erdőben kapcsolódó hasonlóan kell rendelkeznie.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -111,7 +110,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-forestexists"></a>Győződjön meg róla ForestExists
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Meghatározza, hogy létezik-e a megadott erdő.
 
@@ -158,7 +157,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-functionallevel"></a>Confirm-FunctionalLevel
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Ellenőrzi az AD-erdő működési szintje.
 
@@ -259,7 +258,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-networkconnectivity"></a>Confirm-NetworkConnectivity
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Észleli a helyi hálózati problémák léptek fel.
 
@@ -310,7 +309,7 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-Ha a felhasználó nem használja az Active Directory-hely által biztosított DNS-szolgáltatások / bejelentkezési DC, majd he\she előfordulhat, hogy ki szeretné hagyni 53-as port ellenőrzése.
+Ha a felhasználó nem használja az Active Directory-hely által biztosított DNS-szolgáltatások / bejelentkezési tartományvezérlő, akkor előfordulhat, hogy ki szeretné hagyni 53-as port ellenőrzése.
 Felhasználó továbbra is tudja feloldani az _.ldap._tcp kell lennie. \<forestfqdn\> ahhoz, hogy az Active Directory-összekötő konfigurálása sikeres.
 
 ```yml
@@ -349,7 +348,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-targetsarereachable"></a>Confirm-TargetsAreReachable
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Azt határozza meg, ha a megadott erdő és a társított tartományvezérlők érhetők el.
 
@@ -418,7 +417,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-validdomains"></a>Confirm-ValidDomains
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Ellenőrizze a érhetők el, hogy a kapott erdő teljes Tartományneve tartományban
 
@@ -518,7 +517,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-validenterpriseadmincredentials"></a>Confirm-ValidEnterpriseAdminCredentials
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Ellenőrzi, ha a felhasználó rendelkezik-e a vállalati rendszergazdai hitelesítő adatokat.
 
@@ -572,7 +571,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="get-domainfqdndata"></a>Get-DomainFQDNData
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Lekéri egy DomainFQDN kívül egy fiók és jelszó kombinációjával.
 
@@ -661,7 +660,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="get-forestfqdn"></a>Get-ForestFQDN
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Lekéri egy ForestFQDN kívül egy fiók és jelszó kombinációjával.
 
@@ -731,7 +730,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Fő függvényt.
 
@@ -813,7 +812,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="start-networkconnectivitydiagnosistools"></a>Start-NetworkConnectivityDiagnosisTools
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Hálózati kapcsolat a fő függvény azt teszteli.
 
@@ -964,5 +963,3 @@ Accept wildcard characters: False
 
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
-
-<!-- Update_Description: wording update -->

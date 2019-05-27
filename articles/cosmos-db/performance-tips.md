@@ -4,14 +4,14 @@ description: Ismerje meg az ügyfél-konfigurációs beállításokat az Azure C
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/24/2018
+ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: e03fa427227bed745b53d43aaebc4dc58ad5bb9d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: feab3ee1a21a52e8b18d59e67e8410fcbeb4ff5e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097895"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953782"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB- és .NET
 
@@ -48,8 +48,8 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
      |Kapcsolat módja  |Támogatott protokollok  |Támogatott SDK-k  |API-szolgáltatás portja  |
      |---------|---------|---------|---------|
      |Átjáró  |   HTTPS    |  All SDKS    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Direct    |    HTTPS     |  .NET and Java SDK    |   10 000-20 000 tartományon belüli portok    |
-     |Direct    |     TCP    |  .NET SDK    | 10 000-20 000 tartományon belüli portok |
+     |Közvetlen    |    HTTPS     |  .NET and Java SDK    |   10 000-20 000 tartományon belüli portok    |
+     |Közvetlen    |     TCP    |  .NET SDK    | 10 000-20 000 tartományon belüli portok |
 
      Az Azure Cosmos DB egy egyszerű, és nyissa meg RESTful programozási modellt kínál a HTTPS-kapcsolaton keresztül. Ezenkívül kínál egy hatékony TCP protokoll, amely egyben a RESTful a kommunikációt a modellben, és a .NET ügyféloldali SDK keresztül érhető el. Közvetlen TCP és a HTTPS SSL használata a kezdeti hitelesítésre és a titkosított forgalmat. A legjobb teljesítmény érdekében használja a TCP protokollt, amikor csak lehetséges.
 
@@ -164,7 +164,7 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
  
 1. **A fel nem használt elérési utak kizárása a gyorsabb írások indexelése**
 
-    Cosmos DB indexelési házirendet is lehetővé teszi, hogy adja meg, mely a dokumentum elérési útjait belefoglalása vagy kizárása indexelő útvonalak (IndexingPolicy.IncludedPaths és IndexingPolicy.ExcludedPaths) kihasználásával az indexelés. Indexelő elérési utak használatát is kínál a továbbfejlesztett írási teljesítmény- és alacsonyabb index forgatókönyvekhez, ahol a lekérdezési mintáknak előzetesen ismert, mivel az indexelő költségek közvetlenül indexelt egyedi elérési utak száma közötti kapcsolatot.  Például a következő kód bemutatja, hogyan zárhat ki (más néven a dokumentumok egy teljes szakasz részfa) az indexelő használatával a "*" helyettesítő karakter.
+    Cosmos DB indexelési házirendet is lehetővé teszi, hogy adja meg, mely a dokumentum elérési útjait belefoglalása vagy kizárása indexelő útvonalak (IndexingPolicy.IncludedPaths és IndexingPolicy.ExcludedPaths) kihasználásával az indexelés. Indexelő elérési utak használatát is kínál a továbbfejlesztett írási teljesítmény- és alacsonyabb index forgatókönyvekhez, ahol a lekérdezési mintáknak előzetesen ismert, mivel az indexelő költségek közvetlenül indexelt egyedi elérési utak száma közötti kapcsolatot.  Például a következő kód bemutatja az indexelő használatával hogyan zárhat ki a dokumentumok (részfájának) egy teljes szakaszban a "*" helyettesítő karakter.
 
     ```csharp
     var collection = new DocumentCollection { Id = "excludedPathCollection" };

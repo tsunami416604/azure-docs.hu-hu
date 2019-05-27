@@ -1,23 +1,23 @@
 ---
 title: 'Adja meg az ExpressRoute - kapcsolatcsoport társviszony-létesítést: Azure | Microsoft Docs'
-description: A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
+description: Ez a cikk dokumentumok létrehozása és üzembe helyezése, ExpressRoute privát és Microsoft társviszony-létesítés lépéseit. Ez a cikk is bemutatja, hogyan ellenőrizheti az állapotot, frissíteni vagy törölni a kapcsolatcsoport társviszonyainak.
 services: expressroute
-author: cherylmc
+author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.author: cherylmc
+ms.date: 05/20/2019
+ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: e1f94b7b2ab71afaa40831446e5e5aede00db7b1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f6061710fb15d4183bd42a82c4bd269a69fc9be2
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570844"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964440"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport társviszony létesítése és módosítása
 
-Ez a cikk segítséget nyújt a létrehozása, és a Resource Manager üzemi modellben az Azure portal használatával egy ExpressRoute-Kapcsolatcsoportok útválasztási konfigurációjának. Ellenőrizze az állapotot, frissítési vagy törlési is, és ExpressRoute-kapcsolatcsoport társviszonyainak megszüntetése. Ha szeretne egy másik módszer használható a kapcsolatcsoport-, válassza ki a cikk az alábbi listából:
+Ez a cikk segít az Azure Resource Manager (ARM) ExpressRoute-kapcsolatcsoport, az Azure portal használatával útválasztási konfigurációjának létrehozási és. Ellenőrizze az állapotot, frissítési vagy törlési is, és ExpressRoute-kapcsolatcsoport társviszonyainak megszüntetése. Ha szeretne egy másik módszer használható a kapcsolatcsoport-, válassza ki a cikk az alábbi listából:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
@@ -29,12 +29,12 @@ Ez a cikk segítséget nyújt a létrehozása, és a Resource Manager üzemi mod
 > * [PowerShell (klasszikus)](expressroute-howto-routing-classic.md)
 > 
 
-Egy, két vagy akár mindhárom társviszony-létesítést (Azure privát, Azure nyilvános és Microsoft) is konfigurálhatja egy adott ExpressRoute-kapcsolatcsoportban. A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. Útválasztási tartományok és a társviszony-létesítéseket kapcsolatos további információkért lásd: [Kapcsolatcsoportok és társviszony-létesítéseket](expressroute-circuit-peerings.md).
+Konfigurálhatja, hogy Azure-beli privát társviszony-létesítési ExpressRoute-kapcsolatcsoport Microsoft (az Azure nyilvános társviszony-létesítés esetében elavult új kapcsolatcsoportot). A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. Útválasztási tartományok és a társviszony-létesítéseket kapcsolatos további információkért lásd: [Kapcsolatcsoportok és társviszony-létesítéseket](expressroute-circuit-peerings.md).
 
 ## <a name="configuration-prerequisites"></a>Konfigurációs előfeltételek
 
 * A konfigurálás megkezdése előtt mindenképp tekintse át az [előfeltételek](expressroute-prerequisites.md), az [útválasztási követelmények](expressroute-routing.md) és a [munkafolyamatok](expressroute-workflows.md) lapot.
-* Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Kövesse az [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-portal-resource-manager.md) részben foglalt lépéseket, és engedélyeztesse a kapcsolatcsoportot kapcsolatszolgáltatójával, mielőtt továbblépne. Az ExpressRoute-kapcsolatcsoport kiosztott és engedélyezett állapotban kell tudni futtassa a parancsmagokat a következő szakaszokban kell lennie.
+* Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Kövesse az [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-portal-resource-manager.md) részben foglalt lépéseket, és engedélyeztesse a kapcsolatcsoportot kapcsolatszolgáltatójával, mielőtt továbblépne. Annak érdekében, hogy konfigurálja a társviszony-létesítés (s), az ExpressRoute-kapcsolatcsoport kiosztott és engedélyezett állapotban kell lennie. 
 * Ha azt tervezi, a megosztott kulcs/MD5-kivonatot használja, mindenképpen használja ezt az alagutat mindkét oldalán, és legfeljebb 25 alfanumerikus karakterek száma korlátozza. Speciális karakterek használata nem támogatott. 
 
 Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgáltatóknál létrehozott kapcsolatcsoportokra vonatkoznak. Ha használja a szolgáltató által felügyelt Layer 3 szolgáltatások (általában egy IPVPN, mint az MPLS), a kapcsolatszolgáltató konfigurálja és kezeli az útválasztást Ön helyett. 
@@ -55,7 +55,7 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és t
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft társviszony-létesítés létrehozása
 
-1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti a Microsoft társviszony-létesítés, a kapcsolat szolgáltatóját. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Azonban ha a kapcsolatszolgáltató felügyeli az útválasztást, a kapcsolatcsoport létrehozását követően továbbra is a konfiguráció a következő lépéseket.
+1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti a Microsoft társviszony-létesítés, a kapcsolat szolgáltatóját. Ebben az esetben nem kell a következő szakaszokban szereplő utasításokat követve. Azonban ha a kapcsolatszolgáltató felügyeli az útválasztást, a kapcsolatcsoport létrehozását követően folytassa a következő lépéseket.
 
    ![Microsoft társviszony-létesítés listázása](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. Konfigurálja a Microsoft társviszony-létesítést a kapcsolatcsoporthoz. Mielőtt folytatná, ellenőrizze az alábbi információk meglétét.
@@ -85,7 +85,7 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és t
    ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
 
 
-1. Miután a konfiguráció sikeres elfogadása, hasonló az alábbi képen láthatja:
+1. Miután a konfiguráció sikeres elfogadása, megjelenik az alábbi képhez hasonló:
 
    ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
 
@@ -113,7 +113,7 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és t
 
 ### <a name="to-create-azure-private-peering"></a>Azure privát társviszony-létesítés létrehozása
 
-1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti engedélyezése az Azure privát társviszony-létesítést, a kapcsolat szolgáltatóját. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Azonban ha a kapcsolatszolgáltató felügyeli az útválasztást, a kapcsolatcsoport létrehozását követően továbbra is a konfiguráció a következő lépéseket.
+1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti engedélyezése az Azure privát társviszony-létesítést, a kapcsolat szolgáltatóját. Ebben az esetben nem kell a következő szakaszokban szereplő utasításokat követve. Azonban ha a kapcsolatszolgáltató felügyeli az útválasztást, a kapcsolatcsoport létrehozását követően folytassa a következő lépéseket.
 
    ![lista](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. Konfigurálja az Azure privát társviszony-létesítést a kapcsolatcsoport számára. Mielőtt folytatná a következő lépésekkel, ellenőrizze az alábbi elemek meglétét:

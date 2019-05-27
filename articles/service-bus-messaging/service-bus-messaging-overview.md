@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: dd73fd8105de2a5fd24ffa8ad5db85da5e52228c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ab658b26a44e98b073c477c1aaeeb683372ee46
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60863244"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988490"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 
@@ -33,11 +33,11 @@ Néhány gyakori üzenetküldési forgatókönyv:
 
 A névtér egy hatókörkezelési tároló az üzenetkezelés összes összetevője számára. Egyetlen névtér több üzenetsort és témakört tartalmazhat, és a névterek gyakran alkalmazástárolókként is szolgálnak.
 
-## <a name="queues"></a>Üzenetsorok
+## <a name="queues"></a>Várólisták
 
 Az üzenetek az *üzenetsorokba* érkeznek be, és onnan küldi ki őket a rendszer. Az üzenetsorok segítségével addig tárolhatja az üzeneteket, amíg a fogadó alkalmazás elérhetővé nem válik a fogadásra és feldolgozásra.
 
-![Várólista](./media/service-bus-messaging-overview/about-service-bus-queue.png)
+![Üzenetsor](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
 Az üzenetsorok üzenetek vannak rendezve, és a beérkezéskor időbélyegzővel. Az üzenet elfogadása után azt a rendszer egy redundáns tárolóban helyezi biztonságba. Üzenetek kézbesítése *lekéréses* üzemmódot, amely a kérést továbbítja az üzeneteket.
 
@@ -55,7 +55,7 @@ Bizonyos esetekben nem célszerű az, ha az egyes előfizetések az adott témak
 
 A Service Bus olyan speciális funkciókkal is rendelkezik, amelyek segítségével jóval összetettebb üzenetküldési problémákat is megoldhat. A következő szakaszok ezeket a funkciókat ismertetik:
 
-### <a name="message-sessions"></a>Üzenet-munkamenetek
+### <a name="message-sessions"></a>Csevegések
 
 Az érkezési sorrend alapján (FIFO) törtnő feldolgozás garantálásához a Service Busban munkameneteket használhat. Az [üzenet-munkamenetek](message-sessions.md) lehetővé teszik a nem kötött kapcsolódó üzenetsorozatok együttes és rendezett kezelését. 
 
@@ -103,7 +103,7 @@ A Service Bus támogatja az olyan biztonsági protokollokat, mint a [közös hoz
 
 Az Azure-régiók vagy adatközpontok leállása esetében a [Geo-vészhelyreállítás](service-bus-geo-dr.md) lehetővé teszi az adatfeldolgozási művelet folytatását egy másik régióban vagy adatközpontban.
 
-### <a name="security"></a>Biztonság
+### <a name="security"></a>Biztonsági
 
 A Service Bus támogatja a szabványos [AMQP 1.0](service-bus-amqp-overview.md) és [HTTP/REST](/rest/api/servicebus/) protokollokat.
 
@@ -129,3 +129,4 @@ A Service Bus-üzenetküldéssel való megismerkedéshez tekintse meg a követke
 * További tudnivalók az Azure Service Bus [Standard és Prémium](https://azure.microsoft.com/pricing/details/service-bus/) szintjeiről és azok díjszabásáról
 * [Az Azure Service Bus Prémium szintű csomag teljesítménye és késése](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)
 * Próbálja ki a [.NET-hez](service-bus-dotnet-get-started-with-queues.md), [Javához](service-bus-java-how-to-use-queues.md) vagy [JMS-hez](service-bus-java-how-to-use-jms-api-amqp.md) készült gyors útmutatókat
+* [A Service Bus-erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

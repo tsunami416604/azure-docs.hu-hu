@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6b629c7b8a6addbb2ef6f9ced58d4db656ad2480
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 631338c0217eb61f4f98cd06ffa16cb2500f246b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576795"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146728"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Oktatóanyag: Fejlesztés az IoT Edge-modulok Windows-eszközökhöz
 
@@ -49,7 +49,7 @@ A következő táblázat felsorolja a támogatott fejlesztési forgatókönyvek 
 | - | ------------------ | ------------------ |
 | **Azure-szolgáltatások** | Azure Functions <br> Azure Stream Analytics |   |
 | **Nyelvek** | C#(hibakeresés nem támogatott) | C <br> C# |
-| **További információ** | [A Visual Studio Code az Azure IoT Edge](https://marketplace.visualstudio.com/itemdetails?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
+| **További információ** | [A Visual Studio Code az Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
 
 Ebben az oktatóanyagban a fejlesztési lépések a Visual Studio 2017 azzal foglalkozunk. Ha a Visual Studio Code inkább használna, tekintse meg a következő témakör utasításait [használja a Visual Studio Code fejlesztésről és hibakeresésről modulok az Azure IoT Edge](how-to-vs-code-develop-module.md).
 
@@ -261,7 +261,7 @@ A fejlesztői gépén most már hozzáfér a tárolóregisztrációs adatbázisb
 
     ![Mindkét képen verziók megtekintése a tárolóregisztrációs adatbázis](./media/tutorial-develop-for-windows/view-repository-versions.png)
 
-### <a name="troubleshoot"></a>Hibaelhárítás
+### <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
 
 Összeállításakor és a modul rendszerképének leküldése hibákat észlel, ha gyakran rendelkezik, hogy a fejlesztői gépen a Docker-konfigurációját. A következő ellenőrzések segítségével áttekintheti a konfigurációt: 
 

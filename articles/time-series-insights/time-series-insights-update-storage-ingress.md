@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 05/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 35d9e953ade337672fd57149e325b507f6ce115f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: cebe22dddf9ef382c4eceb799e05cbaab30aedaa
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405715"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951103"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Az adattárolás és a bejövő forgalom az Azure Time Series Insights előzetes verziója
 
@@ -28,7 +28,7 @@ A Time Series Insights előzetes verziója használatalapú Termékváltozat kö
 * Egy Time Series Insights-környezetet.
 * Azure Storage-általános célú V1 fiók az adatok tárolásához.
 
-Time Series Insights előzetes verziója a parquet eszközökben típusa Azure Blob storage használ. A Time Series Insights létrehozása a blobok, beleértve az műveletek kezeli, indexelési és az Azure storage-fiókban az adatok particionálása. Ezek a blobok Azure storage-fiók használatával hoz létre.
+A Time Series Insights előzetes verziója a parquet eszközökben típusa Azure Blob storage használ. A Time Series Insights létrehozása a blobok, beleértve az műveletek kezeli, indexelési és az Azure storage-fiókban az adatok particionálása. Ezek a blobok Azure storage-fiók használatával hoz létre.
 
 Más Azure Storage-blobokkal, például a Time Series Insights által létrehozott blobok lehetővé teszik olvasási és írási őket a különböző integrációs forgatókönyvek támogatásához.
 
@@ -101,12 +101,12 @@ Egy fizikai partíciónak a storage-fiókban tárolt blokkblobok. A tényleges m
 
 ### <a name="logical-partitions"></a>Logikai partíciók
 
-A logikai partíció egy partíción belül egy fizikai partíciónak, amely egy adott partíciókulcs-értékhez társított minden adatot tárol. Time Series Insights előzetes verziója logikailag particionálja minden egyes blob két tulajdonság alapján:
+A logikai partíció egy partíción belül egy fizikai partíciónak, amely egy adott partíciókulcs-értékhez társított minden adatot tárol. A Time Series Insights előzetes verziója logikailag particionálja minden egyes blob két tulajdonság alapján:
 
 * **Time Series azonosító**: A partíciókulcs belül az eseménystream, valamint az összes Time Series Insights adatait.
 * **Időbélyeg**: Az az idő alapján a kezdeti bejövő forgalom.
 
-Time Series Insights előzetes verziója biztosít nagy teljesítményű lekérdezések, amelyek a két tulajdonság alapulnak. A két tulajdonság is biztosítanak a gyors kézbesítéséhez a Time Series Insights adatait a leghatékonyabb módszert.
+A Time Series Insights előzetes verziója biztosít nagy teljesítményű lekérdezések, amelyek a két tulajdonság alapulnak. A két tulajdonság is biztosítanak a gyors kézbesítéséhez a Time Series Insights adatait a leghatékonyabb módszert.
 
 Fontos, válasszon egy megfelelő idő Azonosítót, egy a tulajdonság nem módosítható, mert. További információkért lásd: [válasszon idő sorozat azonosítók](./time-series-insights-update-how-to-id.md).
 
@@ -146,13 +146,13 @@ Előfordulhat, hogy szeretné elérni a Time Series Insights előzetes verziója
 
 ### <a name="data-deletion"></a>Adatok törlése
 
-Blobok, nem törölhető, mert a Time Series Insights előzetes verziója a benne lévő blobok metaadatait tárolja.
+Ne törölje a blobot. Nem csak hasznos a naplózási és a egy rekordot az adatok karbantartása, a Time Series Insights előzetes verziója fenntartja belül minden egyes blob blob metaadatait.
 
 ## <a name="time-series-insights-data-ingress"></a>Time Series Insights beérkező adatok
 
 ### <a name="ingress-policies"></a>Bejövő házirendek
 
-Time Series Insights előzetes verziója, amely a Time Series Insights jelenleg ugyanazon eseményforrásokból és fájltípus esetében támogatja.
+A Time Series Insights előzetes verziója, amely a Time Series Insights jelenleg ugyanazon eseményforrásokból és fájltípus esetében támogatja.
 
 Támogatott eseményforrások a következők:
 
@@ -168,7 +168,7 @@ Támogatott fájltípusok:
 
 ### <a name="data-availability"></a>Az adatok elérhetősége
 
-Time Series Insights előzetes verziója egy blob-méret optimalizálása stratégia használatával indexeli az adatokat. Adatok indexelése után, mennyi adatot érkezik, és milyen sebesség a alapuló lekérdezhetők válnak.
+A Time Series Insights előzetes verziója egy blob-méret optimalizálása stratégia használatával indexeli az adatokat. Adatok indexelése után, mennyi adatot érkezik, és milyen sebesség a alapuló lekérdezhetők válnak.
 
 > [!IMPORTANT]
 > * A Time Series Insights általánosan (elérhetővé tétel GA) kiadásban elérhetővé adatok eseményforrás lenyomásával 60 másodpercen belül. 
@@ -177,7 +177,7 @@ Time Series Insights előzetes verziója egy blob-méret optimalizálása strat�
 
 ### <a name="scale"></a>Méretezés
 
-Time Series Insights előzetes verziója egy kezdeti bejövő forgalom mértéke legfeljebb 6 Mega bájt / másodperc (Mbps) környezetenként támogatja. Továbbfejlesztett skálázási támogatást folyamatban. Tervezzük frissíteni a dokumentációban, hogy ezek a fejlesztések
+A Time Series Insights előzetes verziója támogatja a legfeljebb 1 Mega bájt / másodperc (Mbps) egy kezdeti bejövő forgalom mértéke környezetenként. Továbbfejlesztett skálázási támogatást folyamatban. Tervezzük frissíteni, hogy ezek a fejlesztések dokumentációnkat.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,21 +4,21 @@ description: Ez a cikk ismerteti az adatbázis-tranzakciók és az Azure Cosmos 
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 568f47aacf39793d4c2da46798682abc002ca33b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1da5dabad04d72c903072a33dfb7b0229f99c62d
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889355"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978992"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Tranzakciók és optimista egyidejűség vezérlése
 
 Adatbázis-tranzakciók adjon meg egy biztonságos és kiszámítható programozási modell segítségével az adatok egyidejű módosításait foglalkozik. Hagyományos relációs adatbázisoktól, például az SQL Server lehetővé teszi, hogy a használatával, és/vagy a tárolt eljárások, eseményindítók üzleti logika írását küldje el a kiszolgálónak a végrehajtási közvetlenül az adatbázismotor belül. A hagyományos relációs adatbázisoktól szükségesek kezelésére két különböző programozási nyelvekhez programozási nyelvet, például a JavaScript, Python, a (nem tranzakciós) alkalmazás C#, Java és az egyéb és a tranzakciós programozási nyelvet () például a T-SQL), amely natív módon által végrehajtott az adatbázisban.
 
-Az adatbázismotor, az Azure Cosmos DB támogatja a teljes ACID (atomitást, konzisztencia, elkülönítés, tartósság) megfelelő tranzakciót a pillanatkép-elkülönítés. Minden az adatbázis-műveletek a hatókörön belül egy adott tároló [logikai partíció](partition-data.md) tranzakciós szempontból tevékenységében az adatbázismotor által a partícióhoz tartozó replika futtatott. Ezek a műveletek is tartalmazza (a logikai partíció található egy vagy több elem frissítése) írási és olvasási műveletek. Az alábbi táblázatban látható, különböző műveleteket és transcation típusok:
+Az adatbázismotor, az Azure Cosmos DB támogatja a teljes ACID (atomitást, konzisztencia, elkülönítés, tartósság) megfelelő tranzakciót a pillanatkép-elkülönítés. Minden az adatbázis-műveletek a hatókörön belül egy adott tároló [logikai partíció](partition-data.md) tranzakciós szempontból tevékenységében az adatbázismotor által a partícióhoz tartozó replika futtatott. Ezek a műveletek is tartalmazza (a logikai partíció található egy vagy több elem frissítése) írási és olvasási műveletek. Az alábbi táblázatban látható, különböző műveleteket és tranzakciótípusok:
 
 | **Művelet**  | **Művelet típusa** | **Egyetlen vagy több elem tranzakció** |
 |---------|---------|---------|

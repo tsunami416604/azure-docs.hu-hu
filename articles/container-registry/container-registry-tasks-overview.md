@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/20/2019
 ms.author: danlep
-ms.openlocfilehash: b97db09c477a940ca36129316613f5ceb4eb13b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc182743c3879ab2748f92022437bc23c26c371c
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582414"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977197"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Az operációs rendszer és a keretrendszer javítás ACR feladatok automatizálása
 
@@ -94,6 +94,16 @@ Például egy több lépésből álló feladat, amely automatizálja a következ
 Többlépéses feladatok lehetővé teszik az épület, fut, és a egy kép több algyűjteményeinek összefüggő lépésekre lépés közötti függőségi támogatásával tesztelése felosztása. Az ACR-feladatokat több lépésből álló feladatokat a lemezkép létrehozása, tesztelése, és operációs rendszerrel és javítási munkafolyamatra keretrendszer részletesebb hozzáféréssel rendelkeznek.
 
 További információ a több lépésből álló feladatokat [többlépéses buildelési, tesztelési és patch feladatok futtatása az ACR-feladatokban](container-registry-tasks-multi-step.md).
+
+## <a name="view-task-logs"></a>A feladat naplók megtekintése
+
+Minden egyes feladat futtatása log kimenetet vizsgálhatja meg meghatározni, hogy a feladatütemezés lépései sikeresen lefutott-e. Ha használja a [az acr-build](/cli/azure/acr#az-acr-build), [futtatása az acr](/cli/azure/acr#az-acr-run), vagy [az acr-feladat futtatása](/cli/azure/acr/task#az-acr-task-run) parancsot a feladat indításához, a napló kimenetét a tevékenység futtatása adatfolyamként történő a konzolon, is tárolja a későbbi használatra lekéréséhez. A nézet a naplók egy feladat futtatása az Azure Portalon, vagy használja a [az acr feladat naplók](/cli/azure/acr/task#az-acr-task-logs) parancsot.
+
+A július a 2019-től kezdődően adatokat és naplókat a további tevékenység fut egy beállításjegyzék lesz alapértelmezés szerint 30 napig őrzi meg, és majd üríti ki automatikusan. Ha szeretne egy feladat futtatása az adatok archiválása, archiválás használatával a [az acr feladat futtatása – frissítés](/cli/azure/acr/task#az-acr-task-update-run) parancsot. Az alábbi példa lehetővé teszi, hogy a feladat futtatása Archiválás *cf11* beállításjegyzékben *myregistry*.
+
+```azurecli
+az acr task update-run --registry myregistry --run-id cf11 --no-archive false
+```
 
 ## <a name="next-steps"></a>További lépések
 

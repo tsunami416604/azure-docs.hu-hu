@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: d62632d6c28ac137095307e95dbbdab7e8573bbc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e09eec89c683d36df49110227488a6413ed371c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137880"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955955"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Állítsa be átmeneti környezeteket az Azure App Service-ben
 <a name="Overview"></a>
@@ -99,7 +99,7 @@ Szolgáltatások jelölve egy * kell tenni a bővítőhelyre kiemelt bevezetés�
 * Lépték beállításai
 * Webjobs-feladatok ütemezők
 * Az IP-korlátozások
-* Folyamatos üzem
+* Mindig bekapcsolva
 * Beállítások protokollt (HTTP**S**, TLS-verziót, ügyfél-tanúsítványok)
 * Diagnosztikai beállítások
 * CORS
@@ -217,7 +217,7 @@ Használata esetén [Auto-Swap](#Auto-Swap), bizonyos alkalmazásokhoz szükség
 
 Testreszabásáról további információkat a `applicationInitialization` elem, lásd: [leggyakoribb slot swap sikertelen, és hogyan javíthatók](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
-Testre szabhatja a bemelegítési viselkedését egy vagy több, a következő [Alkalmazásbeállítások](web-sites-configure.md):
+Testre szabhatja a bemelegítési viselkedését egy vagy több, a következő [Alkalmazásbeállítások](configure-common.md):
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: A ping paranccsal melegítési a hely elérési útja. Adja hozzá ennek az alkalmazásbeállításnak értékeként perjellel adnak meg egyéni elérési úttal, amely a kezdődik. Például: `/statuscheck`. Az alapértelmezett érték `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Érvényes HTTP-válaszkódot a bemelegítési művelethez. Adja hozzá ennek az alkalmazásbeállításnak a HTTP-kódok vesszővel tagolt listája. Például: `200,202` . A visszaadott állapotkód nem szerepel a listában, ha a melegítési és a Váltás műveletek le vannak állítva. Alapértelmezés szerint minden válaszkódot érvényesek.

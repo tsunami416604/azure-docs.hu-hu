@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Gyors, tárolók, mikroszolgáltatások és a Java Azure-beli Kubernetes-fejlesztés
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Java, Helm, szolgáltatás-háló, szolgáltatás háló az Útválasztás, a kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: f39fc0a7094941bb44fbe717879b3a2179c3be25
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 26efa17ee699aed87ecfbbd21e7880e7538de4ea
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800885"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979128"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Fejlesztés Java nyelven, a Kubernetes Azure fejlesztési tárolóhelyek használatával
 
@@ -41,7 +41,7 @@ Az AKS-fürt létrehozásához szükséges egy [támogatott régió](https://doc
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-count 1 --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az AKS-fürt az Azure fejlesztési tárolóhelyek engedélyezése
@@ -122,7 +122,7 @@ Ha leállítja a `azds up` parancsának használatával *Ctrl + c*, a szolgálta
 A szolgáltatás frissített verziójának üzembe helyezéséhez bármilyen fájl frissítése a projekt és futtassa újra a `azds up` parancsot. Példa:
 
 1. Ha `azds up` továbbra is fut, nyomja le az *Ctrl + c*.
-1. Frissítés [16 a sor `src/main/java/com/ms/sample/webfrontend/Application.java` ](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L16) való:
+1. Frissítés [a 19. sor `src/main/java/com/ms/sample/webfrontend/Application.java` ](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) való:
     
     ```java
     return "Hello from webfrontend in Azure!";
@@ -178,17 +178,17 @@ Kattintson a *Debug* majd *hibakeresés leállításához* a hibakereső leáll�
 
 Indítsa el a szolgáltatást a hibakeresés módban a *indítsa el a Java-Program (AZDS)*.
 
-Lépjen vissza a *Explorer* nézet kattintva *nézet* majd *Explorer*. Nyissa meg `src/main/java/com/ms/sample/webfrontend/Application.java` valahol kattintson a sor létezik helyezze a kurzort a 16. Állítson be egy töréspontot, nyomja le az *F9* , vagy kattintson *Debug* majd *töréspont*.
+Lépjen vissza a *Explorer* nézet kattintva *nézet* majd *Explorer*. Nyissa meg `src/main/java/com/ms/sample/webfrontend/Application.java` kattintson valahol van helyezze a kurzort a 19. sorban. Állítson be egy töréspontot, nyomja le az *F9* , vagy kattintson *Debug* majd *töréspont*.
 
-Egy böngészőben nyissa meg a szolgáltatást, és figyelje meg, hogy nem jelenik meg. Térjen vissza a Visual Studio Code-ot, és vizsgálja meg, 16 sor van kijelölve. A töréspont beállíthat 16 sor a szolgáltatás szünetel. A szolgáltatás folytatásához nyomja le az *F5* , vagy kattintson *Debug* majd *Folytatás*. Térjen vissza a böngészőben, és figyelje meg, hogy az üzenet jelenik meg.
+Egy böngészőben nyissa meg a szolgáltatást, és figyelje meg, hogy nem jelenik meg. Térjen vissza a Visual Studio Code-ot, és tekintse meg az 19 sor van kijelölve. A töréspont beállított 19. sorban a szolgáltatás szünetel. A szolgáltatás folytatásához nyomja le az *F5* , vagy kattintson *Debug* majd *Folytatás*. Térjen vissza a böngészőben, és figyelje meg, hogy az üzenet jelenik meg.
 
 Miközben fut a szolgáltatás a Kubernetes egy hibakeresővel, akkor a hibakeresési információkat, például a hívási verem, a helyi változókat és a kivétel adatai teljes hozzáféréssel rendelkezik.
 
-A töréspont eltávolítása ehhez vigye a kurzort a 16 sor `src/main/java/com/ms/sample/webfrontend/Application.java` és lenyomásával *F9*.
+A töréspont eltávolítása ehhez vigye a kurzort 19. sorban a `src/main/java/com/ms/sample/webfrontend/Application.java` és lenyomásával *F9*.
 
 ## <a name="update-code-from-visual-studio-code"></a>A Visual Studio Code-ból kódjának frissítése
 
-A szolgáltatás futása hibakeresési módban, frissítse a 16 sora `src/main/java/com/ms/sample/webfrontend/Application.java`. Példa:
+A szolgáltatás futása hibakeresési módban, frissítse a 19. sorban található `src/main/java/com/ms/sample/webfrontend/Application.java`. Példa:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: kumud
-ms.openlocfilehash: ee0dc1b9879c8a26c7f3e48cc8daf6ae3511b27a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 266630cb7c9601af69073a6c9beb7d7ada9b8034
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60734515"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957484"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Az Azure Standard Load Balancer áttekintése
 
@@ -204,7 +204,7 @@ SKU-k, amelyek nem módosítható. Kövesse az ebben a szakaszban egy erőforrá
 >
 >SKU-k megfelelő a Load Balancer és a nyilvános IP-cím erőforrást kell használni. Alapszintű Termékváltozat a Standard Termékváltozat erőforrásokat és vegyesen nem rendelkezhet. Nem csatolhat mindkét SKU-hoz egyszerre önálló virtuális gépeket, rendelkezésre állási csoportban lévő virtuális gépeket vagy virtuálisgép-méretezési csoport típusú erőforrásokat.
 
-## <a name="region-availability"></a>Régiónkénti elérhetőség
+## <a name="region-availability"></a>Regionális elérhetőség
 
 A standard Load Balancer jelenleg nyilvános felhő minden régióban.
 
@@ -226,7 +226,6 @@ A Standard Load Balancer díjszabásáról a [Load Balancer díjszabását](http
 - SKU-k, amelyek nem módosítható. Meglévő erőforrás-Termékváltozat nem módosítható.
 - Egy különálló virtuális gép típusú erőforrást, a rendelkezésre állási csoport erőforrás, vagy a virtuálisgép-méretezési készlet erőforrás egy SKU, soha nem is hivatkozhat.
 - A terheléselosztási szabállyal a két virtuális hálózat nem terjedhetnek ki.  Előterek és azok kapcsolódó háttérpéldányokkal ugyanahhoz a virtuális hálózathoz kell működnie.  
-- Load Balancer és előtérrendszerek globális virtuális társhálózatok között nem érhetők el.
 - [Helyezze át az előfizetési műveleteket](../azure-resource-manager/resource-group-move-resources.md) nem támogatja a Standard Termékváltozat LB és a PIP-erőforrásokat.
 - Webes feldolgozói szerepkörök egy VNet és más Microsoft-platformszolgáltatások nélkül elérhető lehet, ha csak egy belső Standard Load Balancer miatt a hogyan előtti – VNet-szolgáltatások és más platform sem services függvény mellékhatása szolgál. Meg kell támaszkodjon Ez a megfelelő szolgáltatás, saját maga, vagy az alapul szolgáló, előzetes értesítés nélkül platformmegbízhatósági módosíthatja. Meg kell mindig feltételezze, hogy létre kell [kimenő kapcsolat](load-balancer-outbound-connections.md) explicit módon, ha egy belső Standard Load Balancer csak használata esetén szükséges.
 - A Load Balancer egy TCP- és UDP-termék az adott IP-protokollok terheléselosztásához és porttovábbításához.  A TCP és az UDP támogatja a terheléselosztási szabályokat és a bejövő NAT-szabályokat, de egyéb IP-protokollok (mint például az ICMP) nem támogatják őket. A Load Balancer nem szakít meg folyamatokat, nem válaszol rájuk, és semmilyen egyéb módon nem lép kapcsolatba egy UDP- vagy TCP-folyamat adatcsomagjával. Nem egy proxy. Sikeres érvényesítésének feltétele lesz egy előtér-kapcsolatának végre kell hajtania sávon hely ugyanazt a protokollt egy terheléselosztási és bejövő NAT-szabályt (TCP vagy UDP) használt a _és_ a virtuális gépek legalább egyikének kell létrehozni a válasz-ügyfélhez megtekintheti egy előtér-válaszát.  Sávon belüli választ nem fogad a terheléselosztó előtérrendszerét azt jelzi, hogy nincsenek olyan virtuális gépek is tud válaszolni.  Nem alkalmas interakcióba egy terheléselosztó előtérrendszerhez, anélkül, hogy egy virtuális gép tud válaszolni.  Ez vonatkozik a kimenő kapcsolatokra is, ahol a [porthelyettesítő SNAT](load-balancer-outbound-connections.md#snat) csak a TCP-hez és UDP-hez támogatott – bármely más IP-protokoll, többek között az ICMP is sikertelen lesz.  A mérsékléshez rendeljen hozzá egy példányszintű nyilvános IP-címet.

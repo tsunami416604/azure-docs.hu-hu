@@ -27,8 +27,6 @@
           href: manage-guest-access-with-access-reviews.md
         - name: Felhasználói hozzáférések kezelése felülvizsgálatokkal
           href: manage-user-access-with-access-reviews.md
-        - name: Programok és vezérlőik kezelése
-          href: manage-programs-controls.md
         - name: A feltételes hozzáférésből kizárt felhasználók kezelése
           href: conditional-access-exclusion.md
 - name: Útmutatók
@@ -64,8 +62,6 @@
               href: review-your-access.md
             - name: Hozzáférési felülvizsgálat befejezése
               href: complete-access-review.md
-            - name: Hozzáférési felülvizsgálatok eredményeinek lekérése
-              href: retrieve-access-review.md
         - name: Azure AD-szerepkörök
           items:
             - name: Hozzáférési felülvizsgálat létrehozása

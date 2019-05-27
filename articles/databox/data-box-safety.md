@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: d0ef3e407fd256b4db351f86b51964cbcb16e819
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1bad50f2d97434865bb02ad54b1643c54e01790
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60747753"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953032"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Biztonságosan telepítése és üzemeltetése az Azure Data Box
 ![Figyelmeztetés ikon](./media/data-box-safety/warning_icon.png)
@@ -116,7 +116,7 @@ Megváltozik, vagy a módosítások fényében, amelyek az eszköz nem kifejezet
 
 ![Figyelje meg, hogy ikon](./media/data-box-safety/notice_icon.png) **értesítés:** 
 
-Ez a berendezés tesztelte, és a korlátok részére FCC szabályok 15 része egy osztály egy digitális eszköz megfelelőként. Ezek a korlátok káros hozzáféréstől ésszerű védelmet biztosíthat, amikor a készülék kereskedelmi környezetben lettek kialakítva. Ez a berendezés állít elő, használ, és készülékben rádiófrekvenciás energia és, ha nincs telepítve, és a használati utasítás megfelelően használt okozhat interferencia választógomb kommunikáció. Ez egy helyi terület berendezések művelet káros zavaró tényező, amely esetben a felhasználó lesz szükség, javítsa ki a saját költségén zavaró tényező okozhatja.
+Ez a berendezés tesztelte, és a korlátok részére FCC szabályok 15 része egy osztály egy digitális eszköz megfelelőként. Ezek a korlátok káros hozzáféréstől ésszerű védelmet biztosíthat, amikor a készülék kereskedelmi környezetben lettek kialakítva. Ez a berendezés állít elő, használ, és készülékben rádiófrekvenciás energia és, ha nincs telepítve, és a használati utasítás megfelelően használt okozhat interferencia választógomb kommunikáció. Ez egy helyi terület berendezések művelet káros zavaró tényező, amely esetben a felhasználó lesz szükség, javítsa ki a saját számára zavaró tényező okozhatja.
 
 Ez az eszköz megfelel-e az részét képező 15 FCC szabályok és iparági Kanada licenc-mentesített RSS standardot. A művelet a következő két feltételek van: (1) az eszköz nem okozhat interferencia, és (2) az eszköz el kell fogadnia beavatkozás kapott, beleértve a zavaró tényező, amelyek az eszköz nem kívánt művelet okozhatnak.
 

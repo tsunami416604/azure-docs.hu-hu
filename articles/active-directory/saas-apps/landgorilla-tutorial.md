@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2e1288885476aeeba01f966b615c23c5fe51081
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d12519a2bd0a5e3951d0ca9ae51a54bd728a782b
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60261007"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987900"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>Oktatóanyag: A föld Gorilla ügyfél az Azure Active Directory-integráció
 
@@ -87,7 +87,7 @@ Az Azure AD integrálása a föld Gorilla ügyfél konfigurálásához hozzá ke
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés föld Gorilla ügyfél "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a "b nevű tesztelési felhasználó föld Gorilla ügyféllel Simon".
 
 Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a partner felhasználó föld Gorilla ügyfél mi egy felhasználó számára az Azure ad-ben. Más szóval Azure AD-felhasználót és a kapcsolódó felhasználó a föld Gorilla ügyfél közötti kapcsolat kapcsolatot kell létrehozni.
 
@@ -97,8 +97,8 @@ Az Azure AD egyszeri bejelentkezés a föld Gorilla ügyfél tesztelése és kon
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés korlátozott csoporttal teszteléséhez.
-1. **[A föld Gorilla tesztfelhasználó létrehozása](#creating-a-land-gorilla-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[A föld Gorilla tesztfelhasználó létrehozása](#creating-a-land-gorilla-test-user)**  – az Azure AD egyszeri bejelentkezés a b Simon teszteléséhez.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – b Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -150,7 +150,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure fe
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
-Ez a szakasz célja az Azure felügyeleti portálján, Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja az Azure felügyeleti portálján, b Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
@@ -172,9 +172,9 @@ Ez a szakasz célja az Azure felügyeleti portálján, Britta Simon nevű hozzon
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/landgorilla-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **b Simon**.
 
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** a b Simon.
 
     c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
@@ -186,11 +186,11 @@ Együttműködve [föld Gorilla támogatási csapatának](https://www.landgorill
     
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon föld Gorilla ügyfél számára a hozzáférés biztosításával az Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezze b Simon föld Gorilla ügyfél számára a hozzáférés biztosításával őket Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon rendel a föld Gorilla ügyfél, hajtsa végre az alábbi lépéseket:**
+**B Simon rendel a föld Gorilla ügyfél, hajtsa végre az alábbi lépéseket:**
 
 1. Az Azure felügyeleti portálon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
@@ -208,7 +208,7 @@ Ebben a szakaszban engedélyezze Britta Simon föld Gorilla ügyfél számára a
 
     ![Felhasználó hozzárendelése][203]
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **b Simon** a felhasználók listában.
 
 1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 

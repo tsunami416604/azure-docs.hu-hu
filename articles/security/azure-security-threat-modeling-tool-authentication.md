@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 56620dc1d3e315caa3e259715ed84a539b91356d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b170a214c7c3c464f7ea645fa1dc42cce0a0580
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610882"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951712"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Biztonsági keret: Hitelesítési |} Megoldások 
 
@@ -41,10 +41,10 @@ ms.locfileid: "60610882"
 
 ## <a id="standard-authn-web-app"></a>Fontolja meg a standard hitelesítési mechanizmust webes alkalmazásba való hitelesítéséhez
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -52,10 +52,10 @@ ms.locfileid: "60610882"
 
 ## <a id="handle-failed-authn"></a>Alkalmazások biztonságos módon kell kezelnie a sikertelen hitelesítési forgatókönyvek
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -63,10 +63,10 @@ ms.locfileid: "60610882"
 
 ## <a id="step-up-adaptive-authn"></a>Enable lépés felfelé vagy adaptív hitelesítés
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -74,10 +74,10 @@ ms.locfileid: "60610882"
 
 ## <a id="admin-interface-lockdown"></a>Győződjön meg arról, hogy a felügyeleti felületek megfelelően zárolva lefelé
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -85,10 +85,10 @@ ms.locfileid: "60610882"
 
 ## <a id="forgot-pword-fxn"></a>Megvalósítása biztonságosan elfelejtett jelszó funkciói
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -96,21 +96,21 @@ ms.locfileid: "60610882"
 
 ## <a id="pword-account-policy"></a>Győződjön meg arról, hogy a jelszó- és házirend vannak megvalósítva
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| Részletek | <p>Jelszó- és házirend megfelelnek-e a szervezeti házirendnek és az ajánlott eljárásokat kell végrehajtani.</p><p>Elleni találgatásos és szótár találgatás alapú: Erős jelszót kell valósítja meg, győződjön meg arról, hogy a felhasználók létre összetett jelszót (például minimális hosszának 12 karakter hosszú, alfanumerikus vagy speciális karaktereket).</p><p>Fiókzárolási házirendeket is kell végrehajtani a következő módon:</p><ul><li>**Helyreállítható zár ki:** Ez a felhasználók a találgatásos támadások elleni védelme jó választás lehet. Például, amikor a felhasználó helytelen jelszót ad az alkalmazás három alkalommal tudta zárolni a fiók egy percet ahhoz, hogy le a kevésbé nyereséges folytatja a támadó így jelszó kényszerítése találgatásos folyamata lassú. Ha ebben a példában, akkor merevlemez zárolása kibővített ellenintézkedések megvalósításához "DOS" véglegesen a fiókok zárolásának szerint. Azt is megteheti, alkalmazás készítése az OTP (egy idő jelszó) és küldje el a sávon kívüli (e-mailben, sms stb.) a felhasználó számára. Egy másik módszer a CAPTCHA megvalósításához, a sikertelen bejelentkezési kísérletek számát küszöbérték elérése után lehet.</li><li>**Merevlemez zárolása felskálázás:** Az ilyen típusú fiókzárolási, amikor egy felhasználó intézményt az alkalmazás és a számláló neki ügyfélügynökkel véglegesen fiókját zárolásának mindaddig, amíg egy válasz csapat időm hajtsa végre a törvényszéki észlelni a alkalmazni kell. Eldöntheti, hogy a felhasználó ezen folyamat után vissza a fiókját, vagy további ellene jogi műveletek végrehajtása. Az ilyen megközelítés megakadályozza, hogy a támadó további túljutó az alkalmazás és -infrastruktúra.</li></ul><p>Az alapértelmezett és kiszámítható fiókok ellen indított támadások elleni védelemre, győződjön meg arról, hogy az összes kulcsait és jelszavait cserélhető, és létrehozott vagy a telepítés után cseréje.</p><p>Ha az alkalmazás automatikus létrehozása jelszavak, győződjön meg arról, hogy a létrehozott jelszavakat véletlenszerű és magas vysokou.</p>|
+| Részletek | <p>Jelszó- és házirend megfelelnek-e a szervezeti házirendnek és az ajánlott eljárásokat kell végrehajtani.</p><p>Elleni találgatásos és szótár találgatás alapú: Erős jelszót kell valósítja meg, győződjön meg arról, hogy a felhasználók létre összetett jelszót (például minimális hosszának 12 karakter hosszú, alfanumerikus vagy speciális karaktereket).</p><p>Fiókzárolási házirendeket is kell végrehajtani a következő módon:</p><ul><li>**Helyreállítható zár ki:** Ez a felhasználók a találgatásos támadások elleni védelme jó választás lehet. Például, amikor a felhasználó helytelen jelszót ad meg az alkalmazás három alkalommal tudta zárolni egy percet a fiók annak érdekében, hogy kevesebb nyereséges folytatja a támadó így jelszó kényszerítése találgatásos folyamata lelassulnak. Ha ebben a példában, akkor merevlemez zárolása kibővített ellenintézkedések megvalósításához "DOS" véglegesen a fiókok zárolásának szerint. Azt is megteheti, alkalmazás készítése az OTP (egy idő jelszó) és küldje el a sávon kívüli (e-mailben, sms stb.) a felhasználó számára. Egy másik módszer a CAPTCHA megvalósításához, a sikertelen bejelentkezési kísérletek számát küszöbérték elérése után lehet.</li><li>**Merevlemez zárolása felskálázás:** Az ilyen típusú fiókzárolási, amikor egy felhasználó az alkalmazás és a számláló azokat ügyfélügynökkel véglegesen zárolják a fiók csak egy választ csapat volt időm hajtsa végre a törvényszéki intézményt észlelni a alkalmazni kell. Eldöntheti, hogy a felhasználó ezen folyamat után biztonsági fiókjukat, vagy műveleteket további jogi őket. Az ilyen megközelítés megakadályozza, hogy a támadó további túljutó az alkalmazás és -infrastruktúra.</li></ul><p>Az alapértelmezett és kiszámítható fiókok ellen indított támadások elleni védelemre, győződjön meg arról, hogy az összes kulcsait és jelszavait cserélhető, és létrehozott vagy a telepítés után cseréje.</p><p>Ha az alkalmazás automatikus létrehozása jelszavak, győződjön meg arról, hogy a létrehozott jelszavakat véletlenszerű és magas vysokou.</p>|
 
 ## <a id="controls-username-enum"></a>Alkalmazzon-vezérlést, hogy a felhasználónév-enumerálás
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -118,10 +118,10 @@ ms.locfileid: "60610882"
 
 ## <a id="win-authn-sql"></a>Ha lehetséges, használja a Windows-hitelesítés az SQL Serverhez való csatlakozáshoz
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | OnPrem |
 | **Attribútumok**              | SQL-verzió - minden |
 | **Hivatkozások**              | [Az SQL Server - hitelesítési mód kiválasztása](https://msdn.microsoft.com/library/ms144284.aspx) |
@@ -129,10 +129,10 @@ ms.locfileid: "60610882"
 
 ## <a id="aad-authn-sql"></a>Ha lehetséges SQL-adatbázishoz való csatlakozás használja az Azure Active Directory-hitelesítés
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | SQL Azure |
 | **Attribútumok**              | SQL-verzió - 12-es verzió |
 | **Hivatkozások**              | [Csatlakozás az SQL Database az Azure Active Directory-hitelesítés használatával](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
@@ -140,10 +140,10 @@ ms.locfileid: "60610882"
 
 ## <a id="authn-account-pword"></a>SQL-hitelesítési mód használata esetén ellenőrizze, hogy fiókkal és jelszóval házirend érvényben vannak-e az SQL server
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az SQL Server jelszóházirend](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
@@ -151,10 +151,10 @@ ms.locfileid: "60610882"
 
 ## <a id="autn-contained-db"></a>Ne használja a tartalmazott adatbázisok SQL-hitelesítés
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | OnPrem, SQL Azure |
 | **Attribútumok**              | SQL-12-es verzió - MSSQL2012, SQL-verzió- |
 | **Hivatkozások**              | [Ajánlott biztonsági eljárások a tartalmazott adatbázisok](https://msdn.microsoft.com/library/ff929055.aspx) |
@@ -162,10 +162,10 @@ ms.locfileid: "60610882"
 
 ## <a id="authn-sas-tokens"></a>Használja az eszköz hitelesítő adatok használatával SaS-jogkivonatok száma
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure-eseményközpont | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Event Hubs hitelesítési és biztonsági modell áttekintése](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -173,7 +173,7 @@ ms.locfileid: "60610882"
 
 ## <a id="multi-factor-azure-admin"></a>Az Azure multi-factor Authentication szolgáltatás engedélyezése az Azure-rendszergazdák
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -184,7 +184,7 @@ ms.locfileid: "60610882"
 
 ## <a id="anon-access-cluster"></a>Service Fabric-fürtön való névtelen hozzáférés korlátozása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -195,7 +195,7 @@ ms.locfileid: "60610882"
 
 ## <a id="fabric-cn-nn"></a>Győződjön meg arról, hogy a Service Fabric-csomópont ügyfél tanúsítvány eltérő csomópontok tanúsítvány
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -206,7 +206,7 @@ ms.locfileid: "60610882"
 
 ## <a id="aad-client-fabric"></a>Az AAD ügyfelek számára, hogy a service fabric-fürtök hitelesítéséhez
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -217,7 +217,7 @@ ms.locfileid: "60610882"
 
 ## <a id="fabric-cert-ca"></a>Győződjön meg arról, hogy a service fabric-tanúsítványok vannak lekérdezve az egy elismert hitelesítésszolgáltató (CA)
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -228,10 +228,10 @@ ms.locfileid: "60610882"
 
 ## <a id="standard-authn-id"></a>Identitáskezelési kiszolgáló támogatja a standard hitelesítési forgatókönyvek használata
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Identity Server | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [IdentityServer3 - átfogó kép](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
@@ -239,7 +239,7 @@ ms.locfileid: "60610882"
 
 ## <a id="override-token"></a>Bírálja felül az alapértelmezett Identitáskiszolgálók-jogkivonatok gyorsítótárának egy méretezhető megoldás
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Identity Server | 
 | **SDL Phase**               | Környezet |  
@@ -250,7 +250,7 @@ ms.locfileid: "60610882"
 
 ## <a id="binaries-signed"></a>Győződjön meg arról, hogy az üzembe helyezett alkalmazás bináris fájljainak digitális aláírással
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -261,10 +261,10 @@ ms.locfileid: "60610882"
 
 ## <a id="msmq-queues"></a>Hitelesítés engedélyezése, amikor csatlakozik a WCF lévő MSMQ-várólista
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános, 3. NET-keretrendszer |
 | **Attribútumok**              | – |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
@@ -301,10 +301,10 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 
 ## <a id="message-none"></a>WCF-ne beállítása üzenet clientCredentialType nincs
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | Ügyfél-hitelesítő adat típusa – None |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_message_client) |
@@ -317,10 +317,10 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 
 ## <a id="transport-none"></a>WCF-ne beállítása átviteli clientCredentialType nincs
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános, .NET-keretrendszer 3 |
 | **Attribútumok**              | Ügyfél-hitelesítő adat típusa – None |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
@@ -333,10 +333,10 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 
 ## <a id="authn-secure-api"></a>Győződjön meg arról, hogy standard hitelesítési módszerek segítségével biztonságos webes API-k
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Hitelesítés és engedélyezés az ASP.NET webes API-k](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [külső hitelesítési szolgáltatások az ASP.NET webes API-k (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
@@ -344,10 +344,10 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 
 ## <a id="authn-aad"></a>Használja az Azure Active Directory által támogatott szabványos hitelesítési forgatókönyvek
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure AD | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Hitelesítési forgatókönyvek az Azure ad-ben](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/), [Azure Active Directory-Kódminták](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/), [Azure Active Directory fejlesztői útmutatója](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
@@ -355,10 +355,10 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 
 ## <a id="adal-scalable"></a>Bírálja felül az alapértelmezett ADAL-jogkivonatok gyorsítótárának egy méretezhető megoldás
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure AD | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [A webes alkalmazásokhoz az Azure Active Directoryval modern hitelesítést](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/), [használatával a Redis ADAL-jogkivonatok gyorsítótárának használata](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
@@ -366,10 +366,10 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 
 ## <a id="tokenreplaycache-adal"></a>Győződjön meg arról, hogy az TokenReplayCache használja az ADAL-hitelesítési tokenek az ismétlés megakadályozása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure AD | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Modern hitelesítés az Azure Active Directory webes alkalmazásokhoz](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
@@ -427,10 +427,10 @@ Vegye figyelembe, hogy ezt a konfigurációt, jelentkezzen be a helyi OIDC álta
 
 ## <a id="adal-oauth2"></a>ADAL könyvtárakat használata kezelheti a jogkivonat-kérelmeket OAuth2-ügyfelekről az aad-be (vagy a helyszíni AD)
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure AD | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
@@ -438,10 +438,10 @@ Vegye figyelembe, hogy ezt a konfigurációt, jelentkezzen be a helyi OIDC álta
 
 ## <a id="authn-devices-field"></a>Eszközök csatlakoztatása a helyszíni átjáró hitelesítése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT helyszíni átjáró | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -449,10 +449,10 @@ Vegye figyelembe, hogy ezt a konfigurációt, jelentkezzen be a helyi OIDC álta
 
 ## <a id="authn-devices-cloud"></a>Győződjön meg arról, hogy a felhő-átjáróhoz való csatlakozáskor eszközök hitelesítés
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT Cloud Gateway | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános, C#, Node.JS,  |
 | **Attribútumok**              | Nem releváns, átjáró kiválasztása – Azure IoT Hub |
 | **Hivatkozások**              | Nem releváns, [Azure IoT hubba a .NET-tel](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/), [Ismerkedés az IoT hub és a Node-JS](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted), [SAS és tanúsítványok védelmét biztosító IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [Git-tárház](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
@@ -549,10 +549,10 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="authn-cred"></a>Eszközönkénti hitelesítés hitelesítő adatok használata
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT Cloud Gateway  | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | Átjáró kiválasztása – Azure IoT Hub |
 | **Hivatkozások**              | [Az Azure IoT Hub biztonsági tokenek](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
@@ -560,10 +560,10 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="req-containers-anon"></a>Győződjön meg arról, hogy csak a szükséges tárolók és blobok névtelen olvasási hozzáférés megadva
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | StorageType - Blob |
 | **Hivatkozások**              | [Tárolók és blobok névtelen olvasási hozzáférésének kezelése](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/), [közös hozzáférési aláírások, 1. rész: A SAS-modell ismertetése](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
@@ -571,10 +571,10 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="limited-access-sas"></a>Korlátozott hozzáférést biztosít az Azure storage-, SAS- vagy az SAP-objektumokhoz
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
-| **SDL Phase**               | Felépítés |  
+| **SDL Phase**               | Build |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | – |
 | **Hivatkozások**              | [A közös hozzáférésű Jogosultságkódot, 1. rész: A SAS-modell ismertetése](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/), [közös hozzáférési aláírások, a 2. rész: Hozzon létre, és használhatja az SAS-Blob storage-](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/), [hogyan delegálása közös hozzáférési aláírások és a tárolt hozzáférési szabályzatok segítségével-fiókjában található objektumok elérése](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |

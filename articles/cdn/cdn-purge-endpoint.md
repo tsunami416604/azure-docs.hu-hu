@@ -5,21 +5,21 @@ services: cdn
 documentationcenter: ''
 author: mdgattuso
 manager: danielgi
-editor: ''
+editor: sohamnchatterjee
 ms.assetid: 0b50230b-fe82-4740-90aa-95d4dde8bd4f
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 05/17/2019
 ms.author: magattus
-ms.openlocfilehash: 76e7817be81a97c8d1a0b9ca2fea8378c3c733e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 94d9fb0878458f3de0a64fac57af4a70e1875112
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60324884"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65909679"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Az Azure CDN-végpont végleges törlése
 ## <a name="overview"></a>Áttekintés
@@ -69,7 +69,7 @@ Ez az oktatóanyag végigvezeti a végpont összes élcsomópontokból eszközö
     ![Végleges törlés gomb](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> Végleges törlés kérelmek igénybe körülbelül 2-3 perc alatt dolgozza fel a **verizon Azure CDN** (standard és prémium szintű), és körülbelül 7 perc alatt a **Akamai Azure CDN**.  Az Azure CDN esetében 50 egyidejű kérések kiürítése egy adott időpontban a profil szintjén. 
+> Végleges törlés kérelmeket feldolgozni a körülbelül 2 percet vesz igénybe **a Microsoft Azure CDN** és **verizon Azure CDN** (standard és prémium szintű), és a körülbelül 10 másodpercig **Azure CDN Akamai**.  Az Azure CDN esetében 50 egyidejű kérések kiürítése egy adott időpontban a profil szintjén. 
 > 
 > 
 

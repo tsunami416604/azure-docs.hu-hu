@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 3dd61ae9298a03ce0cbb9e9a5b143229c15ea9bb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f455985d2a7d05f45100d4a88b43c688fe1a7767
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786377"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955766"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Alkalmazások teljesítményének – gyakori kérdések az Azure Web Apps esetében
 
@@ -161,7 +161,7 @@ Fontolja meg az áttérést a 64 bites folyamatokat, így kihasználhatja a webe
 
 Azt is vegye figyelembe, hogy egy 64 bites környezet egy alapszintű vagy standard szintű szolgáltatáscsomag szükséges. Az ingyenes és közös csomagok mindig 32-bit-es környezetben futnak.
 
-További információkért lásd: [webalkalmazások konfigurálása az App Service-ben](web-sites-configure.md).
+További információkért lásd: [webalkalmazások konfigurálása az App Service-ben](configure-common.md).
 
 ## <a name="why-does-my-request-time-out-after-230-seconds"></a>Miért nem a kérelem időkorlátja 230 másodperc után?
 

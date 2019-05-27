@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c4d213a7c08162ef0b107572cfb79b6e96e271d6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5f8d8d96e15fe3b59cb288a9a1cf6c547312fe67
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205500"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951315"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS használatával magas rendelkezésre állású alkalmazások tervezése
 
@@ -54,7 +54,7 @@ Ez a cikk célja megmutatjuk, hogyan tervezhető olyan alkalmazás, amely továb
 
 A javasolt megoldás feltételezi, hogy ez elfogadható, ha a hívó alkalmazás esetlegesen elavult adatokat. Mivel a másodlagos régióban lévő adatok konzisztens másolataként, akkor lehet az elsődleges régió elérhetetlenné válhat, előtt a másodlagos régióba frissítés befejeződött, replikálásához.
 
-Tegyük fel például, hogy az ügyfél sikeres frissítést küld, de az elsődleges régió nem sikerül, mielőtt végbement volna a frissítés van a másodlagos régióba. Ha az ügyfél kéri vissza az adatokat, az elavult adatok mailekben helyett a következő frissített adatokat a másodlagos régióból. Az alkalmazás tervezésekor el kell döntenie ez elfogadható-e, és ha igen, hogyan fogja jelenik meg az ügyfél. 
+Tegyük fel például, hogy az ügyfél sikeres frissítést küld, de az elsődleges régió nem sikerül, mielőtt végbement volna a frissítés van a másodlagos régióba. Ha az ügyfél kéri vissza az adatok olvasásához, kapnak az elavult adatok helyett a következő frissített adatokat a másodlagos régióból. Az alkalmazás tervezésekor el kell döntenie ez elfogadható-e, és ha igen, hogyan fogja jelenik meg az ügyfél. 
 
 Ez a cikk későbbi részében bemutatjuk, hogyan ellenőrizheti a legutóbbi szinkronizálás időpontja a másodlagos adatok ellenőrzéséhez, hogy naprakész állapotban-e a másodlagos.
 
@@ -197,7 +197,7 @@ A harmadik forgatókönyvhöz, amikor az elsődleges tárolóvégpont pingelése
 
 Az RA-GRS úgy működik, hogy az elsődleges régióból a másodlagosba replikálja a tranzakciókat. A replikációs folyamat garantálja, hogy van-e a másodlagos régióban lévő adatok *végül konzisztens*. Ez azt jelenti, hogy az elsődleges régióban tranzakciók végül jelenik meg a másodlagos régióhoz, azonban, hogy a késés csak akkor jelennek meg is lehet, és, hogy nincs-e a másodlagos régió, amelyben, amely ugyanabban a sorrendben érkeznek a tranzakciók garancia arra, hogy eredetileg voltak a alkalmazni az elsődleges régióba. Ha a tranzakciók a másodlagos régió sorrendje, nem érkezik meg *előfordulhat, hogy* fontolja meg az adatok mindaddig, amíg a szolgáltatás behozza inkonzisztens állapotban lennie a másodlagos régióban.
 
-Az alábbi táblázat egy példát, hogy mi történne, ha tagként számára egy egy alkalmazott adatainak frissítése a *rendszergazdák* szerepkör. Ebben a példában az ehhez szükséges frissítenie a **alkalmazott** entitás- és update- **rendszergazdai szerepkör** entitás-számot tartalmazza a rendszergazdák teljes száma. Figyelje meg, hogy a frissítések alkalmazása sorrendben a másodlagos régióban.
+Az alábbi táblázat egy példát, hogy mi történne, ha egy alkalmazott tagja, így adatainak frissítése a *rendszergazdák* szerepkör. Ebben a példában az ehhez szükséges frissítenie a **alkalmazott** entitás- és update- **rendszergazdai szerepkör** entitás-számot tartalmazza a rendszergazdák teljes száma. Figyelje meg, hogy a frissítések alkalmazása sorrendben a másodlagos régióban.
 
 | **idő** | **Tranzakció**                                            | **Replikáció**                       | **Utolsó szinkronizálás időpontja** | **Eredmény** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 

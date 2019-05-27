@@ -14,23 +14,25 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8e1c031643fc3ce75d99ad619ce46b38c9cba82c
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: c7415bfeadc978fe7b3b6a03265c0643b129afbf
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472694"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000166"
 ---
 # <a name="creating-filters-with-cli"></a>Szűrők létrehozása a CLI-vel 
 
-Kézbesítse a tartalmakat az ügyfelek számára (élő eseményeket vagy igény szerinti Videószolgáltatás streaming), amikor az ügyfél az alapértelmezett eszköz jegyzékfájl leírtnál nagyobb rugalmasságot előfordulhat, hogy kell. Az Azure Media Services lehetővé teszi, hogy meghatározza a fiók és a tartalom eszköz szűrőket. További információkért lásd: [szűrők és dinamikus jegyzékek](filters-dynamic-manifest-overview.md).
+Kézbesítse a tartalmakat az ügyfelek számára (élő eseményeket vagy igény szerinti Videószolgáltatás streaming), amikor az ügyfél az alapértelmezett eszköz jegyzékfájl leírtnál nagyobb rugalmasságot előfordulhat, hogy kell. Az Azure Media Services lehetővé teszi, hogy meghatározza a fiók és a tartalom eszköz szűrőket. További információkért lásd: [szűrők](filters-concept.md) és [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md).
 
 Ez a témakör bemutatja, hogyan beállít egy szűrőt az igény szerinti videó eszköz és a CLI a Media Services v3 használatával létrehozhat [Fiókszűrők](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) és [eszköz szűrők](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest). 
+
+> [!NOTE]
+> Mindenképpen tekintse át [presentationTimeRange](filters-concept.md#presentationtimerange).
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
 - [A Media Services-fiók létrehozása](create-account-cli-how-to.md). Ellenőrizze, hogy ne felejtse el az erőforráscsoport nevét és a Media Services-fiók nevét. 
-- Felülvizsgálat [szűrők és dinamikus jegyzékek](filters-dynamic-manifest-overview.md).
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -99,7 +101,7 @@ Lásd még [JSON példák a szűrők](https://docs.microsoft.com/rest/api/media/
 
 ## <a name="associate-filters-with-streaming-locator"></a>Streamelési lokátor szűrők társítása
 
-Megadhatja, hogy az eszköz vagy a fiók szűrők, a Streamelési lokátor is érvényesek listáját. A [dinamikus packager (folyamatos átviteli végponton)](dynamic-packaging-overview.md) vonatkozik ez a lista azokat az URL-címet adja meg az ügyfél és-szűrők. Állít elő, ez a kombináció egy [dinamikus jegyzékfájl](filters-dynamic-manifest-overview.md), amely alapján az URL-címben szűrők + szűrők megad a Streamelési lokátor. Azt javasoljuk, hogy a szolgáltatás használata, ha alkalmazza a szűrőket, de nem szeretné elérhetővé tenni az URL-szűrő nevét.
+Megadhatja, hogy az eszköz vagy a fiók szűrők, a Streamelési lokátor is érvényesek listáját. A [dinamikus Packager (folyamatos átviteli végponton)](dynamic-packaging-overview.md) vonatkozik ez a lista azokat az URL-címet adja meg az ügyfél és-szűrők. Állít elő, ez a kombináció egy [dinamikus Manifest](filters-dynamic-manifest-overview.md), amely alapján az URL-címben szűrők + szűrők megad a Streamelési lokátor. Azt javasoljuk, hogy a szolgáltatás használata, ha alkalmazza a szűrőket, de nem szeretné elérhetővé tenni az URL-szűrő nevét.
 
 A következő CLI-kód bemutatja, hogyan hozzon létre egy Streamelési Lokátort, és adja meg `filters`. Ez a tulajdonságot nem kötelező, amely az eszközintelligencia szűrő nevét és/vagy a szűrő nevének szóközzel elválasztott listáját.
 

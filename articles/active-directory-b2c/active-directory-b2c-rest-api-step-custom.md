@@ -1,41 +1,36 @@
 ---
-title: REST API-jogcímek cseréje, egy vezénylési lépés az Azure Active Directory B2C |} A Microsoft Docs
-description: A témakör az Azure Active Directory B2C-vel egyéni szabályzatok, amelyek integrálhatók az API-k.
+title: REST API-jogcímek cseréje – Azure Active Directory B2C |} A Microsoft Docs
+description: Adja hozzá az Active Directory B2C-vel egyéni szabályzatok REST API-val jogcím cseréje.
 services: active-directory-b2c
 author: davidmu1
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/24/2017
+ms.date: 05/20/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c0a29bcbd3142be577d4cf1f64ff8c9921010bba
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e705c12782310597ea14d5253aba8b6a1a004e6d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688017"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952785"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Forgatókönyv: Integrálhatja az Azure AD B2C felhasználói interakciósorozatban szereplő REST API-val jogcím cseréje egy vezénylési lépés
+# <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Adja hozzá a REST API-val jogcím cseréje az Azure Active Directory B2C-vel egyéni szabályzatok
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az identitás élmény keretrendszer (IEF) alapjául szolgáló Azure Active Directory B2C (Azure AD B2C-vel) lehetővé teszi, hogy az identitás fejlesztői integrálható a RESTful API-t a felhasználói út használata közben.  
+RESTful API-val való interakció is hozzáadhat a [egyéni szabályzatok](active-directory-b2c-overview-custom.md) Azure Active Directory (Azure AD) B2C-ben. Ez a cikk bemutatja, hogyan hozhat létre egy Azure AD B2C felhasználói interakciósorozat, együttműködő RESTful-szolgáltatásokat.
 
-Ez az útmutató végén lesz egy Azure AD B2C felhasználói interakciósorozat, együttműködő létrehozása a REST-alapú szolgáltatások.
-
-A IEF adatokat küld a jogcímeket, valamint adatokat fogad újra a jogcím. A REST API-val jogcímcsere:
+A kapcsolati a jogcímek az exchange között a REST API-jogcímek és az Azure AD B2C-vel is tartalmaz. Jogcím cseréje a következő jellemzőkkel rendelkeznek:
 
 - Megtervezhetők úgy, mint egy vezénylési lépés.
 - Egy külső műveletet is indíthat. Például a külső adatbázis azt is naplózhat egy eseményt.
 - Olyan érték beolvasása, és tárolja a felhasználói adatbázis használható.
+- Módosíthatja a folyamat végrehajtása. 
 
-A kapott jogcímek később segítségével módosítsa a folyamat végrehajtása.
-
-A kapcsolati érvényesítési profil is tervezhet. További információkért lásd: [forgatókönyv: A felhasználói bevitel auditáló integrálása a REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő](active-directory-b2c-rest-api-validation-custom.md).
-
-A forgatókönyv a következő, hogy a felhasználók a profilszerkesztés hajt végre, ha azt szeretné:
+A forgatókönyv, amely ebben a cikkben szerepel az alábbi műveleteket tartalmazza:
 
 1. Keresse meg a felhasználó egy külső rendszerben.
 2. A város, ahol regisztrálva van-e az adott felhasználó kaphat.
@@ -43,180 +38,170 @@ A forgatókönyv a következő, hogy a felhasználók a profilszerkesztés hajt 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure AD B2C-bérlő egy helyi fiók regisztrálási-regisztrálási vagy bejelentkezési, végrehajtásához leírtak szerint konfigurálva [bevezetés](active-directory-b2c-get-started-custom.md).
-- REST API-végpont használatával kommunikálhat. Ez az útmutató egy egyszerű Azure-függvény alkalmazás webhook használja példaként.
-- *Ajánlott*: Végezze el a [REST API-ellenőrzésként exchange forgatókönyv jogcímek](active-directory-b2c-rest-api-validation-custom.md).
+- Hajtsa végre a [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
+- REST API-végpont használatával kommunikálhat. A cikk használ egy egyszerű Azure-függvény példaként. Az Azure-függvény létrehozásához lásd: [az első függvény létrehozása az Azure Portalon](../azure-functions/functions-create-first-azure-function.md).
 
-## <a name="step-1-prepare-the-rest-api-function"></a>1. lépés: Készítse elő a REST API-függvénye
+## <a name="prepare-the-api"></a>Készítse elő az API-hoz
 
-> [!NOTE]
-> REST API-függvények, a telepítő nem ez a cikk foglalkozik. [Az Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) biztosít egy kiváló eszközkészlet RESTful szolgáltatás létrehozásához a felhőben.
+Ebben a szakaszban az Azure-függvény értéket kap előkészítése `email`, és visszaadja az érték `city` , amely használható az Azure AD B2C által jogcímként.
 
-Nem kell beállítani egy Azure-függvényt, amely megkapja a nevű jogcím `email`, majd visszaadja a jogcím `city` hozzárendelt értékét `Redmond`. A minta Azure-függvény megtalálható [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
+Módosítsa a run.csx fájlt az Azure-függvény, amely létrehozta a következő kóddal: 
 
-A `userMessage` jogcímet, amelyet az Azure-függvény adja vissza. nem kötelező ebben a környezetben, és a IEF figyelmen kívül hagyja azt. Potenciálisan használhatja azt az alkalmazásnak átadott és jelenik meg a felhasználó újabb üzenetnek számít.
-
-```csharp
-if (requestContentAsJObject.email == null)
+```
+public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 {
-    return request.CreateResponse(HttpStatusCode.BadRequest);
-}
+  log.LogInformation("C# HTTP trigger function processed a request.");
+  string email = req.Query["email"];
+  string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+  dynamic data = JsonConvert.DeserializeObject(requestBody);
+  email = email ?? data?.email;
 
-var email = ((string) requestContentAsJObject.email).ToLower();
-
-return request.CreateResponse<ResponseContent>(
-    HttpStatusCode.OK,
-    new ResponseContent
-    {
+  return email != null
+    ? (ActionResult)new OkObjectResult(
+      new ResponseContent
+      {
         version = "1.0.0",
         status = (int) HttpStatusCode.OK,
-        userMessage = "User Found",
         city = "Redmond"
-    },
-    new JsonMediaTypeFormatter(),
-    "application/json");
+      })
+      : new BadRequestObjectResult("Please pass an email on the query string or in the request body");
+}
+
+public class ResponseContent
+{
+    public string version { get; set; }
+    public int status { get; set; }
+    public string city {get; set; }
+}
 ```
 
-Azure-függvényalkalmazás megkönnyíti a függvény URL-címére, amely tartalmazza az azonosító az adott függvény. Ebben az esetben a URL-je: https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==. Használhatja a teszteléshez.
+## <a name="configure-the-claims-exchange"></a>A jogcímek az exchange konfigurálása
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>2. lépés: A TrustFrameworExtensions.xml fájlban technikai profil RESTful API jogcímcsere konfigurálása
+A technikai profil biztosít a konfiguráció a jogcím Exchange-hez. 
 
-Egy technikai profil a RESTful szolgáltatás kívánt exchange teljes konfigurációját. Nyissa meg a TrustFrameworkExtensions.xml fájlt, és adja hozzá a következő XML-részletet belül a `<ClaimsProvider>` elemet.
-
-> [!NOTE]
-> A következő XML formátumú, RESTful szolgáltató `Version=1.0.0.0` protokoll leírását. Érdemes használni, mint a függvényt, amely a külső szolgáltatás használni fog. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
+Nyissa meg a *TrustFrameworkExtensions.xml* fájlt, és adja hozzá a következő XML-elemeket belül a **ClaimsProvider** elemet.
 
 ```XML
 <ClaimsProvider>
-    <DisplayName>REST APIs</DisplayName>
-    <TechnicalProfiles>
-        <TechnicalProfile Id="AzureFunctions-LookUpLoyaltyWebHook">
-            <DisplayName>Check LookUpLoyalty Web Hook Azure Function</DisplayName>
-            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-            <Metadata>
-                <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==</Item>
-                <Item Key="AuthenticationType">None</Item>
-                <Item Key="SendClaimsIn">Body</Item>
-                <Item Key="AllowInsecureAuthInProduction">true</Item>
-            </Metadata>
-            <InputClaims>
-                <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
-            </InputClaims>
-            <OutputClaims>
-                <OutputClaim ClaimTypeReferenceId="city" PartnerClaimType="city" />
-            </OutputClaims>
-            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-        </TechnicalProfile>
-    </TechnicalProfiles>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="AzureFunctions-WebHook">
+      <DisplayName>Azure Function Web Hook</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="ServiceUrl">https://myfunction.azurewebsites.net/api/HttpTrigger1?code=bAZ4lLy//ZHZxmncM8rI7AgjQsrMKmVXBpP0vd9smOzdXDDUIaLljA==</Item>
+        <Item Key="AuthenticationType">None</Item>
+        <Item Key="SendClaimsIn">Body</Item>
+        <Item Key="AllowInsecureAuthInProduction">true</Item>
+      </Metadata>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
+      </InputClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="city" PartnerClaimType="city" />
+      </OutputClaims>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+    </TechnicalProfile>
+  </TechnicalProfiles>
 </ClaimsProvider>
 ```
 
-A `<InputClaims>` elem definiálja a jogcímeket, amely a REST-szolgáltatás, a IEF kapnak. Ebben a példában a jogcím tartalmát `givenName` küld a REST-szolgáltatás, mint a jogcím `email`.  
+A **InputClaims** elem definiálja a jogcímeket, a REST-szolgáltatás küldött. Ebben a példában a jogcím értéke `givenName` a REST-szolgáltatás, mint a jogcím küldendő `email`. A **OutputClaims** elem definiálja a jogcímeket, amelyek várhatóan a REST-szolgáltatás.
 
-A `<OutputClaims>` elem definiálja a jogcímeket a IEF rendszer várható a REST-szolgáltatást. A jogcímszolgáltatótól kapott száma, függetlenül a IEF fogja használni csak azok azonosított itt. Ebben a példában egy jogcímet kapott `city` lesz rendelve egy IEF nevű jogcím `city`.
+## <a name="add-the-claim-definition"></a>Adja hozzá a jogcím-definíció
 
-## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>3. lépés: Adja hozzá az új jogcímet `city` a sémának a TrustFrameworkExtensions.xml fájl
-
-Az igényt `city` még nem határozott bármilyen környezetben a sémában. Adjunk hozzá egy definíciót a elemen belül `<BuildingBlocks>`. Ez az elem a TrustFrameworkExtensions.xml fájl elején annak.
+Adja hozzá a definíciót a `city` belül a **BuildingBlocks** elemet. Ez az elem a TrustFrameworkExtensions.xml fájl elején annak.
 
 ```XML
 <BuildingBlocks>
-    <!--The claimtype city must be added to the TrustFrameworkPolicy-->
-    <!-- You can add new claims in the BASE file Section III, or in the extensions file-->
-    <ClaimsSchema>
-        <ClaimType Id="city">
-            <DisplayName>City</DisplayName>
-            <DataType>string</DataType>
-            <UserHelpText>Your city</UserHelpText>
-            <UserInputType>TextBox</UserInputType>
-        </ClaimType>
-    </ClaimsSchema>
+  <ClaimsSchema>
+    <ClaimType Id="city">
+      <DisplayName>City</DisplayName>
+      <DataType>string</DataType>
+      <UserHelpText>Your city</UserHelpText>
+      <UserInputType>TextBox</UserInputType>
+    </ClaimType>
+  </ClaimsSchema>
 </BuildingBlocks>
 ```
 
-## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>4. lépés: Egy vezénylési lépés a profil szerkesztése felhasználói interakciósorozat TrustFrameworkExtensions.xml a REST szolgáltatás jogcímcsere közé
+## <a name="add-an-orchestration-step"></a>Egy vezénylési lépés hozzáadása
 
-Adjon hozzá egy lépéssel a profil szerkesztése felhasználói interakciósorozat, ha a felhasználó már hitelesített (vezénylési lépésekből 1 – 4 a következő XML formátumú), és a felhasználó már rendelkezik a frissített profil adatait (5. lépés).
+Nincsenek számos használati esetek, amikor egy vezénylési lépés használható a REST API-hívás. Egy vezénylési lépésként használat frissítés után a felhasználó sikeresen végrehajtotta egy feladat, például az első regisztráció külső rendszerre, vagy a profil frissítése, hogy az adatok szinkronizálását. Ebben az esetben szolgál, mivel megvédi a profil szerkesztése után az alkalmazásnak megadott információkat.
 
-> [!NOTE]
-> Nincsenek számos használati esetek, amikor egy vezénylési lépés használható a REST API-hívás. Egy vezénylési lépésként használat frissítés után a felhasználó sikeresen végrehajtotta egy feladat, például az első regisztráció külső rendszerre, vagy a profil frissítése, hogy az adatok szinkronizálását. Ebben az esetben szolgál, mivel megvédi a profil szerkesztése után az alkalmazásnak megadott információkat.
-
-Másolás a profil szerkesztése felhasználói interakciósorozat XML kódot a TrustFrameworkBase.xml fájlból a TrustFrameworkExtensions.xml fájllal belül a `<UserJourneys>` elemet. Végezze el a módosítást, a 6. lépés.
+Lépés hozzáadása a profil szerkesztése felhasználói interakciósorozat. Miután a felhasználó hitelesítése (vezénylési lépésekből 1 – 4 a következő XML formátumú), és a felhasználó megadta a frissített profil információkat (5. lépés). Másolás a profil felhasználói interakciósorozat XML-kódot a Szerkesztés a *TrustFrameworkBase.xml* fájlt a *TrustFrameworkExtensions.xml* belül fájlt a **UserJourneys** elem. Végezze el a módosítást, a 6. lépés.
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
-    <ClaimsExchanges>
-        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
-    </ClaimsExchanges>
+  <ClaimsExchanges>
+    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+  </ClaimsExchanges>
 </OrchestrationStep>
 ```
 
-> [!IMPORTANT]
-> Ha a rendelés nem egyezik meg a verziót, győződjön meg arról, hogy Ön a kódot is beilleszthet a lépés előtt a `ClaimsExchange` típus `SendClaims`.
-
-A felhasználói út tartalomdefinícióinak végső XML kell kinéznie:
+A felhasználói út tartalomdefinícióinak végső XML példához hasonlóan kell kinéznie:
 
 ```XML
 <UserJourney Id="ProfileEdit">
-    <OrchestrationSteps>
-        <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
-            <ClaimsProviderSelections>
-                <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
-                <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
-            </ClaimsProviderSelections>
-        </OrchestrationStep>
-        <OrchestrationStep Order="2" Type="ClaimsExchange">
-            <ClaimsExchanges>
-                <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
-                <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-            </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="3" Type="ClaimsExchange">
-            <Preconditions>
-                <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-                    <Value>authenticationSource</Value>
-                    <Value>localAccountAuthentication</Value>
-                    <Action>SkipThisOrchestrationStep</Action>
-                </Precondition>
-            </Preconditions>
-            <ClaimsExchanges>
-                <ClaimsExchange Id="AADUserRead" TechnicalProfileReferenceId="AAD-UserReadUsingAlternativeSecurityId" />
-            </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="4" Type="ClaimsExchange">
-            <Preconditions>
-                <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-                    <Value>authenticationSource</Value>
-                    <Value>socialIdpAuthentication</Value>
-                    <Action>SkipThisOrchestrationStep</Action>
-                </Precondition>
-            </Preconditions>
-            <ClaimsExchanges>
-                <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
-            </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="5" Type="ClaimsExchange">
-            <ClaimsExchanges>
-                <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
-            </ClaimsExchanges>
-        </OrchestrationStep>
-        <!-- Add a step 6 to the user journey before the JWT token is created-->
-        <OrchestrationStep Order="6" Type="ClaimsExchange">
-            <ClaimsExchanges>
-                <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
-            </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
-    </OrchestrationSteps>
-    <ClientDefinition ReferenceId="DefaultWeb" />
+  <OrchestrationSteps>
+    <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
+      <ClaimsProviderSelections>
+        <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
+        <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
+      </ClaimsProviderSelections>
+    </OrchestrationStep>
+    <OrchestrationStep Order="2" Type="ClaimsExchange">
+      <ClaimsExchanges>
+        <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
+        <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    <OrchestrationStep Order="3" Type="ClaimsExchange">
+      <Preconditions>
+        <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+          <Value>authenticationSource</Value>
+          <Value>localAccountAuthentication</Value>
+          <Action>SkipThisOrchestrationStep</Action>
+        </Precondition>
+      </Preconditions>
+      <ClaimsExchanges>
+        <ClaimsExchange Id="AADUserRead" TechnicalProfileReferenceId="AAD-UserReadUsingAlternativeSecurityId" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    <OrchestrationStep Order="4" Type="ClaimsExchange">
+      <Preconditions>
+        <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+          <Value>authenticationSource</Value>
+          <Value>socialIdpAuthentication</Value>
+          <Action>SkipThisOrchestrationStep</Action>
+        </Precondition>
+      </Preconditions>
+      <ClaimsExchanges>
+        <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    <OrchestrationStep Order="5" Type="ClaimsExchange">
+      <ClaimsExchanges>
+        <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    <!-- Add a step 6 to the user journey before the JWT token is created-->
+    <OrchestrationStep Order="6" Type="ClaimsExchange">
+      <ClaimsExchanges>
+        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+  </OrchestrationSteps>
+  <ClientDefinition ReferenceId="DefaultWeb" />
 </UserJourney>
 ```
 
-## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>5. lépés: Adja hozzá a jogcím `city` a függő házirend-fájlba a jogcímet küld az alkalmazás
+## <a name="add-the-claim"></a>Az igényt hozzáadása
 
-Szerkessze a ProfileEdit.xml függő entitásonkénti (RP) fájlt, és módosítsa a `<TechnicalProfile Id="PolicyProfile">` adja hozzá a következő elem: `<OutputClaim ClaimTypeReferenceId="city" />`.
+Szerkessze a *ProfileEdit.xml* fájlt, és `<OutputClaim ClaimTypeReferenceId="city" />` , a **OutputClaims** elemet.
 
-Miután az új jogcímet ad hozzá, a technikai profil néz ki:
+Az új jogcímet ad hozzá, miután a technikai profil példához hasonlóan néz ki:
 
 ```XML
 <DisplayName>PolicyProfile</DisplayName>
@@ -229,17 +214,15 @@ Miután az új jogcímet ad hozzá, a technikai profil néz ki:
 </TechnicalProfile>
 ```
 
-## <a name="step-6-upload-your-changes-and-test"></a>6. lépés: Töltse fel a módosításokat, és tesztelése
+## <a name="upload-your-changes-and-test"></a>Töltse fel a módosításokat, és tesztelése
 
-Írja felül a meglévő verziói a szabályzatot.
+1. (Nem kötelező:) Mentse a meglévő verziót (Letöltés) a fájlok folytatás előtt.
+2. Töltse fel a *TrustFrameworkExtensions.xml* és *ProfileEdit.xml* , és válassza ki a meglévő fájl felülírásához.
+3. Válassza ki **B2C_1A_ProfileEdit**.
+4. A **válassza ki az alkalmazás** az egyéni házirend áttekintése lapon válassza ki a nevű webalkalmazás *webapp1* , amely korábban regisztrálva. Győződjön meg arról, hogy a **válasz URL-cím** van `https://jwt.ms`.
+4. Válassza ki **Futtatás most**. Jelentkezzen be a fiók hitelesítő adatait, és kattintson a **Folytatás**.
 
-1.  (Nem kötelező:) Mentse a meglévő verziót (Letöltés) a bővítmények fájl folytatás előtt. A kezdeti összetettsége alacsony megtartani, azt javasoljuk, ne töltse fel a bővítmények fájl több verzióját.
-2.  (Nem kötelező:) Nevezze át az új verziójának a házirend-azonosító, a házirend szerkesztése fájl módosításával `PolicyId="B2C_1A_TrustFrameworkProfileEdit"`.
-3.  Töltse fel a bővítmények fájlt.
-4.  A szabályzat szerkesztése RP-fájl feltöltése.
-5.  Használat **Futtatás most** a szabályzat teszteléséhez. Tekintse át a jogkivonatot, amely a IEF adja vissza az alkalmazásba.
-
-Ha minden helyesen van beállítva, a jogkivonat tartalmazza az új jogcímet `city`, a következő értékkel `Redmond`.
+Ha minden helyesen van beállítva, a jogkivonat tartalmazza-e az új jogcímet `city`, a következő értékkel `Redmond`.
 
 ```JSON
 {
@@ -249,7 +232,7 @@ Ha minden helyesen van beállítva, a jogkivonat tartalmazza az új jogcímet `c
   "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
   "sub": "a58e7c6c-7535-4074-93da-b0023fbaf3ac",
   "aud": "4e87c1dd-e5f5-4ac8-8368-bc6a98751b8b",
-  "acr": "b2c_1a_trustframeworkprofileedit",
+  "acr": "b2c_1a_profileedit",
   "nonce": "defaultNonce",
   "iat": 1493049692,
   "auth_time": 1493049692,
@@ -259,6 +242,5 @@ Ha minden helyesen van beállítva, a jogkivonat tartalmazza az új jogcímet `c
 
 ## <a name="next-steps"></a>További lépések
 
-[Ellenőrzésként egy REST API használata](active-directory-b2c-rest-api-validation-custom.md)
-
-[További információkat kell gyűjteni a felhasználók a profilszerkesztés módosítása](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+- A kapcsolati érvényesítési profil is tervezhet. További információkért lásd: [forgatókönyv: A felhasználói bevitel auditáló integrálása a REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő](active-directory-b2c-rest-api-validation-custom.md).
+- [További információkat kell gyűjteni a felhasználók a profilszerkesztés módosítása](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)

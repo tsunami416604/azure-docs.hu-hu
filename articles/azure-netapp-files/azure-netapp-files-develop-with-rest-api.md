@@ -12,18 +12,25 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 05/17/2019
 ms.author: b-juche
-ms.openlocfilehash: 56667b9a47411b2abae30ff159fa6bc555fec070
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 996fbcc7c3c9af0da9160216785ecd54840660e8
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61087247"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957040"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>Fejlesztés az Azure NetApp fájlok REST API-val 
 
 Az Azure Files-NetApp szolgáltatás REST API HTTP-erőforrásokkal kapcsolatos művelet például a NetApp fiók, a kapacitás-készlet, kötetek és a pillanatképek határozza meg. Ez a cikk segít az Azure NetApp fájlok REST API használatának első lépései.
+
+## <a name="azure-netapp-files-rest-api-specification"></a>Az Azure NetApp Files REST API-specifikáció
+
+A REST API-specifikációnak NetApp Azure-fájlok közzétett [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager):
+
+`https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
+
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Az Azure NetApp fájlok REST API eléréséhez  
 

@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 91548a4df4a77623978ea4bcb214b76427c026a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d919453816436366c00dde506210a2ed38cc69b7
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345302"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952209"
 ---
 # <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>A külső felhasználók számára az RBAC használatával Azure-erőforrásokhoz való hozzáférés kezelése
 
@@ -57,7 +57,7 @@ Az előfizetés kiválasztása után a rendszergazda felhasználónak kell katti
 
 A következő lépés, hogy válassza ki a szerepkör hozzárendelését és a felhasználó, akinek az RBAC-szerepkört rendel. Az a **szerepkör** legördülő menüben a rendszergazda felhasználó látja csak a beépített RBAC-szerepkör, amely elérhető az Azure-ban. További részletes magyarázatát minden szerepkör és a hozzárendelhető hatókörökkel,: [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
 
-A rendszergazdai felhasználót kell majd adja hozzá a külső felhasználó e-mail-címét. A várt működése a külső felhasználó számára nem jelenik meg a meglévő bérlőhöz. Után a külső felhasználó kapott meghívót, ő lesz látható a **előfizetések > hozzáférés-vezérlés (IAM)** az összes aktuális felhasználóval, amely már hozzá vannak rendelve az RBAC-szerepkör az előfizetések szintjén.
+A rendszergazdai felhasználót kell majd adja hozzá a külső felhasználó e-mail-címét. A várt működése a külső felhasználó számára nem jelenik meg a meglévő bérlőhöz. A külső felhasználó kapott meghívót, miután alatt látható lesz **előfizetések > hozzáférés-vezérlés (IAM)** az összes aktuális felhasználóval, amely már hozzá vannak rendelve az RBAC-szerepkör az előfizetések szintjén.
 
 ![engedélyek hozzáadása új RBAC-szerepkör](./media/role-assignments-external-users/3.png)
 
@@ -66,7 +66,7 @@ A rendszergazdai felhasználót kell majd adja hozzá a külső felhasználó e-
 A felhasználó "chessercarlton@gmail.com" kell kapott meghívót egy **tulajdonos** az "Ingyenes próbaverzió" előfizetéshez. A meghívó küldése, után a külső felhasználót egy aktiválási hivatkozás egy megerősítő e-mailt kapja.
 ![e-mailben kapott RBAC szerepkör](./media/role-assignments-external-users/5.png)
 
-Folyamatban van a szervezeten kívüli, az új felhasználó nincs meglévő attribútumokat a címtárban "Alapértelmezett bérlőt Azure". Ezek létrehozása után a külső felhasználó hozzájárult rögzítsen a rendszer a címtárban, az előfizetéshez társított rendelt szerepkör.
+Folyamatban van a szervezeten kívüli, az új felhasználó nincs meglévő attribútumokat a címtárban "Alapértelmezett bérlőt Azure". Ezek létrehozása után a külső felhasználó hozzájárult a címtárban, az előfizetéshez társított rögzíteni, van hozzájuk rendelve egy szerepkör.
 
 ![meghívó e-mailt az RBAC-szerepkör](./media/role-assignments-external-users/6.png)
 

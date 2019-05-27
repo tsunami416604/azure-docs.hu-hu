@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 188c17b4e8ef84f3907b63fd62bf110ee94b4d7f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 92ca09040836dfc55a9d709b12a0ee01192d6bac
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511238"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957390"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Az Azure Portalon a függvényalkalmazás kezelése 
 
@@ -61,7 +61,7 @@ Ez a témakör a következő App Service-szolgáltatások az Azure Portalon, ame
 + [Hitelesítés](#auth)
 + [API-definíció](#swagger)
 
-Az App Service-beállításokkal kapcsolatos további információkért lásd: [konfigurálása az Azure App Service beállítások](../app-service/web-sites-configure.md).
+Az App Service-beállításokkal kapcsolatos további információkért lásd: [konfigurálása az Azure App Service beállítások](../app-service/configure-common.md).
 
 ### <a name="editor"></a>App Service Editor
 
@@ -124,7 +124,7 @@ Az App Service-beállításokkal kapcsolatos további információkért lásd: [
 
 ## <a name="next-steps"></a>További lépések
 
-+ [Az Azure App Service szolgáltatás beállításainak konfigurálása](../app-service/web-sites-configure.md)
++ [Az Azure App Service szolgáltatás beállításainak konfigurálása](../app-service/configure-common.md)
 + [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)
 
 

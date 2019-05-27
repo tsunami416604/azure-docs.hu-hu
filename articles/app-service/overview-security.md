@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e4feaed9f4e8f6dd3275da25e33e57197731572
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 374fd700f3ac99c00b922f4fca330fee9acfd704
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60838960"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955748"
 ---
 # <a name="security-in-azure-app-service"></a>Biztonság az Azure App Service-ben
 
@@ -105,7 +105,7 @@ Biztonságosan elérhet a helyszíni erőforrásokat, például adatbázisokat, 
 
 ## <a name="application-secrets"></a>Titkos alkalmazáskulcsok
 
-Titkos alkalmazáskulcsok, például az adatbázis hitelesítő adatait, API-jogkivonatai és titkos kulcsok ne tároljon a kódot, vagy a konfigurációs fájlokban. Az általánosan elfogadott megközelítés érheti el őket, mint a következő [környezeti változók](https://wikipedia.org/wiki/Environment_variable) tetszőleges nyelven a szokásos mintájának használatával. Az App Service-ben a környezeti változókat határozhat meg módja keresztül [Alkalmazásbeállítások](web-sites-configure.md#app-settings) (és a .NET-alkalmazásokban, különösen [kapcsolati karakterláncok](web-sites-configure.md#connection-strings)). Az alkalmazásbeállítások és a kapcsolati karakterláncok titkosítva tárolódnak az Azure-ban, és azokat csak előtt folyamatban kártevő program férkőzik be az alkalmazás folyamata memória az alkalmazás indításakor már visszafejteni. A titkosítási kulcsokat a rendszer rendszeresen elforgatva.
+Titkos alkalmazáskulcsok, például az adatbázis hitelesítő adatait, API-jogkivonatai és titkos kulcsok ne tároljon a kódot, vagy a konfigurációs fájlokban. Az általánosan elfogadott megközelítés érheti el őket, mint a következő [környezeti változók](https://wikipedia.org/wiki/Environment_variable) tetszőleges nyelven a szokásos mintájának használatával. Az App Service-ben a környezeti változókat határozhat meg módja keresztül [Alkalmazásbeállítások](configure-common.md#configure-app-settings) (és a .NET-alkalmazásokban, különösen [kapcsolati karakterláncok](configure-common.md#configure-connection-strings)). Az alkalmazásbeállítások és a kapcsolati karakterláncok titkosítva tárolódnak az Azure-ban, és azokat csak előtt folyamatban kártevő program férkőzik be az alkalmazás folyamata memória az alkalmazás indításakor már visszafejteni. A titkosítási kulcsokat a rendszer rendszeresen elforgatva.
 
 Azt is megteheti, integrálható az App Service-alkalmazás az [Azure Key Vault](/azure/key-vault/) speciális titkos kulcsok kezeléséhez. Által [felügyelt identitással a Key Vault elérése](../key-vault/tutorial-web-application-keyvault.md), az App Service-alkalmazást biztonságosan férhet hozzá a titkos kulcsok van szüksége.
 

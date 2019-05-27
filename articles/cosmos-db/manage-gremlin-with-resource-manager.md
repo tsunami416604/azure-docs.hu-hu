@@ -4,20 +4,20 @@ description: Azure Resource Manager-sablonok létrehozása és konfigurálása a
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: d1928606a22eba180ebd3f1e979362e75edaf2d7
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 9f62399e3a1ef2a4ceaa8bdf64196bdb634fb4b6
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077785"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968887"
 ---
-# <a name="create-azure-cosmos-db-gremlin-api-resources-from-a-resource-manager-template"></a>Azure Cosmos DB Gremlin API-erőforrások létrehozása a Resource Manager-sablonnal
+# <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok segítségével Azure Cosmos DB Gremlin API-erőforrások kezelése
 
-Ismerje meg, hogyan hozhat létre egy Azure Cosmos DB Gremlin API-erőforrások egy Azure Resource Manager-sablon használatával. Az alábbi példa létrehoz egy Azure Cosmos DB Gremlin API-jával egy [Azure gyorsindítási sablon](https://aka.ms/gremlin-arm-qs). Ezzel a sablonnal hoz létre egy Azure Cosmos-fiók a Gremlin API-hoz két grafikon, amely az adatbázis szintjén 400 RU/s átviteli megosztani.
+## Azure Cosmos DB API létrehozása a MongoDB-fiókot, adatbázist és gyűjteményt <a id="create-resource"></a>
 
-Itt látható a sablon egy példányát:
+Hozzon létre egy Azure Resource Manager-sablon használatával az Azure Cosmos DB-erőforrásokat. Ezzel a sablonnal hoz létre egy Azure Cosmos-fiók a Gremlin API-hoz két grafikon, amely az adatbázis szintjén 400 RU/s átviteli megosztani. Másolja ki a sablont, és üzembe helyezése a lent látható módon, vagy keresse fel [Azure gyorsindítási galéria](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin/) és üzembe helyezése az Azure Portalról. Is a sablon letöltése a helyi számítógépen, vagy hozzon létre egy új sablont és a helyi elérési útját adja meg a `--template-file` paraméter.
 
 [!code-json[create-cosmos-gremlin](~/quickstart-templates/101-cosmosdb-gremlin/azuredeploy.json)]
 
@@ -47,7 +47,48 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 A `az cosmosdb show` parancs megjeleníti az újonnan létrehozott Azure Cosmos-fiók után van kiépítve. Ha úgy dönt, hogy a cloud Shell használata helyett használhatja az Azure CLI helyileg telepített verzióját, [Azure parancssori felület (CLI)](/cli/azure/) cikk.
 
-Az előző példában a githubon tárolt sablonból rendelkezik hivatkozott. Is a sablon letöltése a helyi számítógépen, vagy hozzon létre egy új sablont és a helyi elérési útját adja meg a `--template-file` paraméter.
+## Átviteli sebesség (RU/s) az adatbázis frissítése <a id="database-ru-update"></a>
+
+Az alábbi sablont frissíteni fogja az adatbázis átviteli sebességet. Másolja ki a sablont, és üzembe helyezése a lent látható módon, vagy keresse fel [Azure gyorsindítási galéria](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin-database-ru-update/) és üzembe helyezése az Azure Portalról. Is a sablon letöltése a helyi számítógépen, vagy hozzon létre egy új sablont és a helyi elérési útját adja meg a `--template-file` paraméter.
+
+[!code-json[cosmosdb-gremlin-database-ru-update](~/quickstart-templates/101-cosmosdb-gremlin-database-ru-update/azuredeploy.json)]
+
+### <a name="deploy-database-template-via-azure-cli"></a>Azure CLI-n keresztül az adatbázis-sablon üzembe helyezése
+
+Azure CLI használatával a Resource Manager-sablon üzembe helyezéséhez válassza **kipróbálás** az Azure Cloud shell megnyitásához. Illessze be a parancsfájlt, kattintson a jobb gombbal a rendszerhéjat, és válassza **illessze be**:
+
+```azurecli-interactive
+read -p 'Enter the Resource Group name: ' resourceGroupName
+read -p 'Enter the account name: ' accountName
+read -p 'Enter the database name: ' databaseName
+read -p 'Enter the new throughput: ' throughput
+
+az group deployment create --resource-group $resourceGroupName \
+   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-gremlin-database-ru-update/azuredeploy.json \
+   --parameters accountName=$accountName databaseName=$databaseName throughput=$throughput
+```
+
+## Átviteli sebesség (RU/s), a gráf frissítése <a id="graph-ru-update"></a>
+
+Az alábbi sablont frissíteni fogja az átviteli sebességet egy gráf. Másolja ki a sablont, és üzembe helyezése a lent látható módon, vagy keresse fel [Azure gyorsindítási galéria](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin-graph-ru-update/) és üzembe helyezése az Azure Portalról. Is a sablon letöltése a helyi számítógépen, vagy hozzon létre egy új sablont és a helyi elérési útját adja meg a `--template-file` paraméter.
+
+[!code-json[cosmosdb-gremlin-graph-ru-update](~/quickstart-templates/101-cosmosdb-gremlin-graph-ru-update/azuredeploy.json)]
+
+### <a name="deploy-graph-template-via-azure-cli"></a>Azure CLI-n keresztül graph-sablon üzembe helyezése
+
+Azure CLI használatával a Resource Manager-sablon üzembe helyezéséhez válassza **kipróbálás** az Azure Cloud shell megnyitásához. Illessze be a parancsfájlt, kattintson a jobb gombbal a rendszerhéjat, és válassza **illessze be**:
+
+```azurecli-interactive
+read -p 'Enter the Resource Group name: ' resourceGroupName
+read -p 'Enter the account name: ' accountName
+read -p 'Enter the database name: ' databaseName
+read -p 'Enter the graph name: ' graphName
+read -p 'Enter the new throughput: ' throughput
+
+az group deployment create --resource-group $resourceGroupName \
+   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-gremlin-graph-ru-update/azuredeploy.json \
+   --parameters accountName=$accountName databaseName=$databaseName graphName=$graphName throughput=$throughput
+```
 
 ## <a name="next-steps"></a>További lépések
 

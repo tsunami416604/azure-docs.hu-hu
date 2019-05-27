@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: raynew
-ms.openlocfilehash: c91629d24267d280edefdb7530e2614eb7be89fd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4500f4c53ed2731e9f96add97018b16d83f9d304
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704880"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955112"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware – Azure vészhelyreállítási recovery architektúrájáról
 
@@ -45,7 +45,7 @@ A következő táblázat és grafikus adja meg a VMware-vészhelyreállításhoz
         - **Helyreállítási pont megőrzése**. Ezzel a beállítással illesztésnek vissza szeretne lépni egy bekövetkező szolgáltatáskimaradás esetén időben. A premium storage maximális megőrzési ideje 24 órán keresztül. Standard szintű tárolóban működő érték 72 óra. 
         - **Alkalmazáskonzisztens pillanatképek**. Alkalmazáskonzisztens pillanatkép is kell minden 1 12 órát vehet attól függően, az alkalmazás igényeinek megfelelően. Standard szintű Azure blob-pillanatfelvételek a pillanatképeket. A mobilitási ügynök, a virtuális gépeken futó kérelmek megfelelően ezt a beállítást, és a könyvjelzők, amelyek a replikáció Stream-időponthoz egy konzisztens alkalmazás VSS-pillanatkép.
 
-2. Forgalom replikálja az Azure storage nyilvános végpontokat az interneten keresztül. Másik lehetőségként használhatja az Azure ExpressRoute [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering). Forgalom a helyek közötti virtuális magánhálózati (VPN) keresztül egy helyszíni hely Azure-ba történő nem támogatott.
+2. Forgalom replikálja az Azure storage nyilvános végpontokat az interneten keresztül. Másik lehetőségként használhatja az Azure ExpressRoute [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Forgalom a helyek közötti virtuális magánhálózati (VPN) keresztül egy helyszíni hely Azure-ba történő nem támogatott.
 3. Kezdeti replikálás befejezése után kezdődik replikációja az Azure-bA. A gépek nyomon követett módosításait a folyamatkiszolgálónak érkeznek.
 4. Kommunikáció a következőképpen történik:
 

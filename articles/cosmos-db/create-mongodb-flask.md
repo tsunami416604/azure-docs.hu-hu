@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 3a95ee065b25f936f08e1c775dc9c42e75a0f67e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 07f213de3509ed16af627af5e0583cd985c278f6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793862"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954656"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Azure Cosmos DB API használatával a mongodb-hez a Python-alkalmazás létrehozása
 
@@ -28,7 +28,7 @@ ms.locfileid: "65793862"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Gyors létrehozása és lekérdezése, a dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike globális elosztási és horizontális skálázhatósági képességeket Cosmos DB középpontjában.
 
-Ez a rövid útmutató használja a következő [Flask példát](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) és bemutatja, hogyan hozhat létre egy egyszerű teendőlista Flask alkalmazást a [Azure Cosmos DB Emulatort](local-emulator.md) és az Azure Cosmos DB API a mongodb-hez.
+A rövid útmutató használja a következő [Flask példát](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) és bemutatja, hogyan hozhat létre egy egyszerű teendőlista Flask alkalmazást a [Azure Cosmos DB Emulatort](local-emulator.md) és az Azure Cosmos DB API a mongodb-hez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -142,7 +142,7 @@ Amikor az Azure-ba végez üzembe helyezést, el kell távolítania az alkalmaz�
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-Ezután hozzá kell adnia a MONGOURL, MONGO_PASSWORD és MONGO_USERNAME elemeket az alkalmazásbeállításokhoz. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/app-service-web/web-sites-configure#application-settings) követve további információkat tudhat meg az Azure-webalkalmazások alkalmazásbeállításairól.
+Ezután hozzá kell adnia a MONGOURL, MONGO_PASSWORD és MONGO_USERNAME elemeket az alkalmazásbeállításokhoz. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings) követve további információkat tudhat meg az Azure-webalkalmazások alkalmazásbeállításairól.
 
 Ha nem szeretne létrehozni elágazást ehhez az adattárhoz, az alul található Üzembe helyezés az Azure-ban gombra is kattinthat. Ezután nyissa meg az Azure-t, és állítsa be az alkalmazásbeállításokat a Cosmos DB-fiókadatokkal.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: anavin
-ms.openlocfilehash: 82ee9d04785fc0f6ac534428bf411ca0fe3204ad
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601514"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952681"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Létrehozása, módosítása vagy törlése egy nyilvános IP-cím előtagja
 
@@ -50,7 +50,7 @@ Nyilvános IP-címelőtagokat díj rendelkezik. További információkért lásd
    |Előfizetés|Igen|Léteznie kell az azonos [előfizetés](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) és az erőforrásnak a nyilvános IP-címet társítani szeretné.|
    |Erőforráscsoport|Igen|Az azonos vagy eltérő létrejöhet [erőforráscsoport](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) és az erőforrásnak a nyilvános IP-címet társítani szeretné.|
    |Name (Név)|Igen|A nevét, válassza ki az erőforráscsoporton belül egyedinek kell lennie.|
-   |Régió|Igen|Léteznie kell az azonos [régió](https://azure.microsoft.com/regions)nyilvános IP-címeket, a tartomány címek fogja tudni hozzárendelni. Előtag jelenleg az USA nyugati középső Régiója, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa és Délkelet-Ázsia előzetes van.|
+   |Régió|Igen|Léteznie kell az azonos [régió](https://azure.microsoft.com/regions)nyilvános IP-címeket, a tartomány címek fogja tudni hozzárendelni.|
    |Előtag hossza|Igen| Van szüksége az előtag méretét. Egy/28 vagy 16 IP-címet az alapértelmezett érték.
 
 **Parancsok**
@@ -73,6 +73,13 @@ Miután létrehozta az előtag, az előtag a statikus IP-címeket kell létrehoz
    |Name (Név)|Igen|A nyilvános IP-cím nevére, válassza ki az erőforráscsoporton belül egyedinek kell lennie.|
    |Üresjárat időkorlátja (perc)|Nem|Hány perc a TCP- vagy HTTP-kapcsolat nyitva tartása anélkül, hogy az ügyfelek életben tartási üzenetek küldéséhez. |
    |DNS-névcímke|Nem|(Között az összes előfizetés és az összes ügyfél) a nevét a hoz létre az Azure-régión belül egyedinek kell lennie. Az Azure automatikusan regisztrálja a nevét és IP-cím a DNS-ben úgy csatlakozhat a nevű erőforrás. Azure hozzáfűz egy alapértelmezett alhálózat például *location.cloudapp.azure.com* (ahol a helye az választja) nevet ad meg, hozhat létre teljesen minősített DNS-neve. További információkért lásd: [használata az Azure DNS az Azure nyilvános IP-címet](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
+
+Másik lehetőségként használhatja a parancssori felület és a--public-ip-előtag (CLI) az alábbi parancsok PS és - PublicIpPrefix (PS) paramétereket, hozzon létre egy nyilvános IP-cím erőforrás. 
+
+|Eszköz|Parancs|
+|---|---|
+|CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
+|PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
 
 ## <a name="view-or-delete-a-prefix"></a>Megtekintése és törlése előtag
 

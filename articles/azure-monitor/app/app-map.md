@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ba4643118c5d90b91c3e51d569e9a628c84159fc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 70d1f54aed5e83801b1d1e249d7a412dd6d9a49a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780020"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964042"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: Az elosztott alkalmazások osztályozása
 
@@ -94,7 +94,9 @@ Az aktív riasztások és az alapul szolgáló szabályok aktiválását a riasz
 
 Alkalmazás-hozzárendelés használja a **felhőalapú szerepkör neve** tulajdonság a térképen az összetevők azonosításához. Az Application Insights SDK automatikusan hozzáadja a felhőalapú szerepkör neve tulajdonság összetevők által kibocsátott telemetriai adatokat. Például az SDK adnak hozzá egy webhely vagy szolgáltatás szerepkör nevében az felhőalapú szerepkör neve tulajdonság. Azonban előfordulhatnak olyan esetek, ahol lehetséges, hogy szeretné felülbírálni az alapértelmezett érték. Felhőalapú szerepkör neve és milyen megjelenik a az alkalmazás-hozzárendelés módosítása:
 
-### <a name="net"></a>.NET
+### <a name="netnet-core"></a>.NET/.NET Core
+
+**Az írási egyéni TelemetryInitializer az alábbiak szerint.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -117,7 +119,7 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**Az inicializáló betöltése**
+**Az aktív TelemetryConfiguration az inicializáló betöltése**
 
 Az applicationinsights.config fájlban:
 
@@ -131,7 +133,10 @@ Az applicationinsights.config fájlban:
     </ApplicationInsights>
 ```
 
-Alternatív módszert, hogy a kódban, például a Global.aspx.cs osztályból az inicializáló hozza létre:
+> [!NOTE]
+> Használatával hozzáadása inicializáló `ApplicationInsights.config` használata az ASP.NET Core-alkalmazások esetén nem érvényes.
+
+ASP.NET-webalkalmazásokhoz alternatív módszert, hogy hozza létre az inicializáló a kódban, például a Global.aspx.cs osztályból:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -141,6 +146,17 @@ Alternatív módszert, hogy a kódban, például a Global.aspx.cs osztályból a
     {
         // ...
         TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
+    }
+```
+
+A [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) alkalmazásokat, egy `TelemetryInitializer` alább látható módon történik a függőségi beszúrást tárolóban való hozzáadásával. Ezt `ConfigureServices` módszere a `Startup.cs` osztály.
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();
     }
 ```
 

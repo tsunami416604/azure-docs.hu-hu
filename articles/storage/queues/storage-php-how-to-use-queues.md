@@ -10,12 +10,12 @@ ms.date: 01/11/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: b827894c633c425220bf94be1f51c52d464bd79b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 4ff54f9ca20c101de55bec2c7acf914c17bd7709
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410449"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951209"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>How to use Queue storage from PHP (A Queue Storage használata PHP-val)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -87,7 +87,7 @@ UseDevelopmentStorage=true
 Az Azure Queue szolgáltatásügyfél létrehozásának, kell használnia a **QueueRestProxy** osztály. Az alábbi módszerek bármelyikét használhatja:
 
 * Adja meg a kapcsolati karakterlánc közvetlenül azt.
-* A webalkalmazásban a környezeti változók használatával tárolja a kapcsolati karakterláncot. Lásd: [Azure webalkalmazás-konfigurációs beállítások](../../app-service/web-sites-configure.md) dokumentum kapcsolati karakterláncok konfigurálása.
+* A webalkalmazásban a környezeti változók használatával tárolja a kapcsolati karakterláncot. Lásd: [Azure webalkalmazás-konfigurációs beállítások](../../app-service/configure-common.md) dokumentum kapcsolati karakterláncok konfigurálása.
 Az itt ismertetett példák esetében a kapcsolati sztringet közvetlenül továbbítjuk.
 
 ```php

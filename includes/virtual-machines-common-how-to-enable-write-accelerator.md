@@ -9,11 +9,11 @@ ms.date: 02/22/2019
 ms.author: raiye
 ms.custom: include file
 ms.openlocfilehash: 72d9ec52732a78e39f6481e2cb2d40f17f86f028
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478156"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147413"
 ---
 # <a name="enable-write-accelerator"></a>Írásgyorsító engedélyezése
 
@@ -52,7 +52,7 @@ Az Azure Premium Storage virtuális merevlemezek Írásgyorsító támogató vir
 | M64ms, M64ls, M64s | 8 | 10000 |
 | M32ms, M32ls, M32ts, M32s | 4 | 5000 |
 | M16ms, M16s | 2 | 2500 |
-| M8ms, M8s | 1 | 1250 |
+| M8ms, M8s | 1. | 1250 |
 
 Virtuális gépenként vannak az IOPS-korlátok és *nem* lemezenként. Az összes Írásgyorsító lemezek ossza meg a virtuális géphez ugyanazon IOPS-korlátját.
 

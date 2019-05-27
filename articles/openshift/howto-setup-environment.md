@@ -9,14 +9,14 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: 6e859f57f9b5f24ea2f0172f5aa35a60d9769f19
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 6ba7e67620ebfd7ff98c1ba81c7cecb133288be7
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551702"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962137"
 ---
-# <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Az Azure Red Hat OpenShift fejlesztési környezet beállítása
+# <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Az Azure Red Hat OpenShift fejlesztői környezetének beállítása
 
 Alkalmazások létrehozását és futtatását a Microsoft Azure Red Hat OpenShift, a következőket kell tennie:
 
@@ -29,13 +29,15 @@ Alkalmazások létrehozását és futtatását a Microsoft Azure Red Hat OpenShi
 
 Az alábbi utasításokat követve végigvezeti az összes ezeket az előfeltételeket.
 
-## <a name="purchase-azure-virtual-machine-reserved-instances"></a>Az Azure virtuális gép fenntartott példányok vásárlása
+## <a name="purchase-azure-red-hat-openshift-application-nodes-reserved-instances"></a>Az Azure Red Hat OpenShift alkalmazás csomópontokon fenntartott példányok vásárlása
 
-Az Azure Red Hat OpenShift használata előtt kell vásárolni az Azure fenntartott virtuálisgép-példányok.
+Az Azure Red Hat OpenShift használata előtt kell vásárolni egy legalább 4 Azure Red Hat OpenShift fenntartott alkalmazás csomópontból, amely után is elérheti a fürtök létrehozása.
 
-Ha Ön Azure-ügyfélnek, itt a hogyan [beszerzési Azure virtuális gép fenntartott példányok](https://aka.ms/openshift/buy). Foglalás csökkenti a teljes körűen felügyelt Azure-szolgáltatások előzetes és felhőköltéseiket. Tekintse meg [ *Mik az Azure-foglalások* ](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) tudhat meg többet a foglalást, és hogyan, pénzt takaríthat meg.
+Ha Ön Azure-ügyfélnek, [Azure Red Hat OpenShift fenntartott példányok megvásárlása](https://aka.ms/openshift/buy) az Azure Portalon keresztül. Vásárlás, után az előfizetés 24 órán belül aktív lesz.
 
 Ha nem Azure-ügyfélnek, [kapcsolatfelvétel az értékesítési részleggel](https://aka.ms/openshift/contact-sales) és a folyamat elindításához az oldal alján az értékesítési űrlap kitöltésekor.
+
+Tekintse meg a [Azure Red Hat OpenShift díjszabását ismertető lapon](https://aka.ms/openshift/pricing) további információt.
 
 ## <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
 

@@ -3,17 +3,17 @@ title: Helyi (Visual Studio IDE) – keresztül a távoli figyelési megoldásba
 description: Ez az útmutató bemutatja, hogyan lehet a távoli figyelési megoldásgyorsító üzembe helyezése a helyi gépen a Visual Studio használatával a teszteléshez és fejlesztéshez.
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a5754fc2f7e0fc36a6708bfd4d2d1d3d6f016b27
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1adf59feca7db4c5903b04c59e1bd23290c1855e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150963"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967503"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>A távoli figyelési megoldásgyorsító helyileg – Visual Studio telepítése
 
@@ -60,9 +60,9 @@ Futtassa a következő parancsot a Docker-tárolót, az eszköz szimulálása sz
 
 ### <a name="deploy-all-other-microservices-on-local-machine"></a>A helyi számítógépen az összes többi mikroszolgáltatások üzembe helyezéséhez
 
-A következő lépések bemutatják, hogyan futtathatja a távoli figyelési mikroszolgáltatás-alapú Visual Studio 2017-ben:
+A következő lépések bemutatják, hogyan a távoli figyelési mikroszolgáltatások futtatni a Visual Studióban:
 
-1. Indítsa el a Visual Studio 2017-ben
+1. Indítsa el a Visual Studiót.
 1. Nyissa meg a **távoli-monitoring.sln** megoldás a **szolgáltatások** mappa-adattár helyi példányában.
 1. A **Megoldáskezelőben**, kattintson a jobb gombbal a megoldásra, majd a kattintson **tulajdonságok**.
 1. Válassza ki **gyakori tulajdonságai > Kezdőprojekt**.

@@ -17,15 +17,15 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47430b4bd2f7fa6811785247ae6cd4f6df6f8f5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: f809fa856d39096a85dcc205d8211ba3551eeb48
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546126"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962850"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directory aláírókulcs
-Ez a cikk ismerteti, mit kell tudni az Azure Active Directory (Azure AD) biztonsági jogkivonatok aláírásához használt nyilvános kulcsok. Fontos megjegyezni, hogy a kulcsok váltása rendszeres időközönként, és a egy robotkart sikerült kell leváltani azonnal. Minden alkalmazás, amely az Azure AD használata programozott módon kezelni a kulcshoz kapcsolódó kulcsváltás folyamat vagy rendszeres manuális váltása folyamatot képesnek kell lennie. Tudni, hogyan működnek a kulcsokat, olvassa tovább az alkalmazás a Váltás hatásainak kiértékelését és frissítheti az alkalmazást, vagy időszakos manuális váltása folyamatot kulcsváltás kezelésére, ha szükséges.
+Ez a cikk ismerteti, mit kell tudni az Azure Active Directory (Azure AD) biztonsági jogkivonatok aláírásához használt nyilvános kulcsok. Fontos megjegyezni, hogy ezek a kulcsok rendszeres időközönként vihető-, egy robotkart sikerült kell leváltani azonnal. Minden alkalmazás, amely az Azure AD használata programozott módon kezelni a kulcshoz kapcsolódó kulcsváltás folyamat vagy rendszeres manuális váltása folyamatot képesnek kell lennie. Tudni, hogyan működnek a kulcsokat, olvassa tovább az alkalmazás a Váltás hatásainak kiértékelését és frissítheti az alkalmazást, vagy időszakos manuális váltása folyamatot kulcsváltás kezelésére, ha szükséges.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Az Azure Active Directory aláírókulcs áttekintése
 Az Azure AD és az azt használó alkalmazások között megbízhatósági kapcsolat létrehozása iparági szabványokon nyilvános kulcsú titkosítás használ. Gyakorlatilag ez használható a következő módon: Azure ad-ben, amely egy nyilvános és titkos kulcsból álló párként áll aláíró kulcsot használ. Ha egy felhasználó bejelentkezik az Azure AD hitelesítésre használó alkalmazások, az Azure AD egy biztonsági jogkivonatot, amely tartalmazza a felhasználó adatai hoz létre. A jogkivonat aláírásával rendelkezik Azure AD-bA annak titkos kulcsát, az alkalmazásnak továbbítás előtt. Annak ellenőrzéséhez, hogy a jogkivonat érvényes, és az Azure ad-ből származó, az alkalmazásnak érvényesítenie kell a nyilvános kulccsal, amely tartalmazza a bérlő Azure AD által elérhetővé tett a jogkivonat aláírása [OpenID Connect-felderítési dokumentum](https://openid.net/specs/openid-connect-discovery-1_0.html) vagy SAML / WS-Fed [összevonási metaadatok dokumentuma](azure-ad-federation-metadata.md).
@@ -43,7 +43,7 @@ Hogyan kezeli az alkalmazás a kulcshoz kapcsolódó kulcsváltás attól függ,
 * [Webes alkalmazások / API-k használata a .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication közbenső szoftveres erőforrások védelme](#owin)
 * [Webes alkalmazások / API-k használata a .NET Core OpenID Connect vagy JwtBearerAuthentication közbenső szoftveres erőforrások védelme](#owincore)
 * [Webes alkalmazások / API-k használata a Node.js passport-azure-ad-modul erőforrások védelme](#passport)
-* [Webes alkalmazások / erőforrások védelme és a Visual Studio 2015 vagy Visual Studio 2017 használatával létrehozott API-k](#vs2015)
+* [Webes alkalmazások / erőforrások védelme és a létrehozása a Visual Studio 2015 vagy újabb API-k](#vs2015)
 * [Erőforrások védelme és a Visual Studio 2013 létrehozott webalkalmazások](#vs2013)
 * Webes API-k erőforrások védelméről, és Visual Studio 2013-hoz létre
 * [Erőforrások védelme és a Visual Studio 2012-vel létrehozott webalkalmazások](#vs2012)
@@ -128,8 +128,8 @@ passport.use(new OIDCStrategy({
 ));
 ```
 
-### <a name="vs2015"></a>Webes alkalmazások / erőforrások védelme és a Visual Studio 2015 vagy Visual Studio 2017 használatával létrehozott API-k
-Ha az alkalmazás webes alkalmazást sablon a Visual Studio 2015 vagy Visual Studio 2017 használatával lett létrehozva, és a kiválasztott **munkahelyi és iskolai fiókok** származó a **hitelesítés módosítása** menüben, ha már van a szükséges logikával kulcsváltás automatikusan kezeli. A logikai az OWIN OpenID Connect közbenső szoftverek, a beágyazott kérdezi le, és az OpenID Connect-felderítési dokumentum kulcsait gyorsítótárazza, és rendszeres időközönként frissíti.
+### <a name="vs2015"></a>Webes alkalmazások / erőforrások védelme és a létrehozása a Visual Studio 2015 vagy újabb API-k
+Ha az alkalmazás a Visual Studio 2015 vagy újabb verziójú webes alkalmazást sablon használatával lett létrehozva, és a kiválasztott **munkahelyi vagy iskolai fiókok** származó a **hitelesítés módosítása** menüben már rendelkezik a szükséges logika kulcsváltás automatikusan kezeli. A logikai az OWIN OpenID Connect közbenső szoftverek, a beágyazott kérdezi le, és az OpenID Connect-felderítési dokumentum kulcsait gyorsítótárazza, és rendszeres időközönként frissíti.
 
 Adott hitelesítési megoldását manuálisan, ha az alkalmazás előfordulhat, hogy rendelkezik a szükséges kulcsváltás logikát. Írhat saját maga, vagy kövesse a kell [webes alkalmazások API-k használatával bármilyen más könyvtárat vagy manuális megvalósítása a támogatott protokollok /](#other).
 

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b312f284d557c2c1344b82b9fcd570d3392077
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aff695307fc97e9f2acfd44f7434d5cbb26ef53e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381271"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950828"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Hibrid identitás-életciklus bevezetési stratégiája határozza meg
 Ebben a feladatban meg fogja definiálni, a hibrid identitáskezelési megoldás az üzleti szükségletek kielégítése céljából, amelyet a megadott identity management stratégiája [határozza meg a hibrid identitáskezelési feladatokat](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -42,7 +42,7 @@ Kifinomult informatikai nagyvállalatok számára fiókjainak tartalmazza a hite
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 Szerepköralapú hozzáférés-vezérlőelemet használ szerepkörök (RBAC) és kiépítési szabályzatok kiértékelése, tesztelése és az üzleti folyamatokat és a felhasználók hozzáférésének engedélyezésére vonatkozó szabályok. Kulcs rendszergazdák kiépítési szabályzatok létrehozása és a felhasználók szerepkörökhöz rendelése és erőforrásokra vonatkozó ezek a szerepkörök definiáló jogosultságok beállítása. RBAC kibővíti az identitáskezelési megoldás szoftveres folyamatok használhatja, és csökkentheti a felhasználói manuális beavatkozás a kiépítési folyamat során.
-Az Azure AD RBAC lehetővé teszi, hogy a cég, amely egy egyéni teheti meg, ha rendelkezik hozzáféréssel az Azure portal-műveletek számának korlátozása. RBAC használatával férhet hozzá a portálon, a hitelesítésszolgáltatói rendszergazdák hozzáférés delegálása a következő hozzáférés-felügyeleti módszerek használatával:
+Az Azure AD RBAC lehetővé teszi, hogy a vállalat korlátozásához, amelyeket egy személy férhet hozzá az Azure Portalon, ha műveletek száma. RBAC használatával férhet hozzá a portálon, a hitelesítésszolgáltatói rendszergazdák hozzáférés delegálása a következő hozzáférés-felügyeleti módszerek használatával:
 
 * **Csoport alapú szerepkör-hozzárendelés**: Hozzáférés a helyi Active Directoryból hozzárendelheti az Azure AD-csoportokat, ingyeneseket szinkronizálja. Ez lehetővé teszi, hogy a meglévő befektetések által a szervezet tett eszközök és csoportok kezelése a folyamatok. Prémium szintű Azure AD a delegált csoport felügyeleti funkciót is használhatja.
 * **Használja ki a beépített szerepkörök az Azure-ban**: Három szerepkört is használhatja – tulajdonos, közreműködő és olvasó, győződjön meg arról, hogy felhasználók és csoportok engedélye csak a feladataik elvégzéséhez szükséges feladatokat végezheti el.
@@ -86,7 +86,7 @@ A helyszíni címtárak és az Azure AD integrálása révén a felhasználók m
 
 Az alábbi ábra egy identitás szinkronizálási folyamat áttekintése példát tartalmaz.
 
-![Sync](./media/plan-hybrid-identity-design-considerations/identitysync.png)
+![Szinkronizálás](./media/plan-hybrid-identity-design-considerations/identitysync.png)
 
 Identitás-szinkronizációs folyamata
 

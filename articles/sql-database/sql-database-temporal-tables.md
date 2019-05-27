@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 49491c5283ba16c5379c1115fae597bd7fd6ea19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbb2458e73330a09124c00cebe3eb7bcaba5408d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614065"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951498"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Bevezetés az Azure SQL Database időbeli Verziózású táblák használatába
 
@@ -109,7 +109,7 @@ WITH (DROP_EXISTING = ON);
 ## <a name="step-2-run-your-workload-regularly"></a>2. lépés: Rendszeresen futtassa a számítási feladatok
 A fő időbeli Verziózású táblák előnye, hogy nem kell módosítani, vagy módosítsa oly módon, amely a change tracking végrehajtani a webhely. Létrehozása után a Historikus táblák transzparens módon megőrizni sor korábbi verziók, minden alkalommal, amikor módosításokat végez az adatok. 
 
-Ebben a konkrét esetben automatikus változáskövetés használatához, csak frissítsük oszlop **PagesVisited** minden alkalommal, amikor a felhasználó megszűnik munkamenet a webhelyen befejezése:
+Ebben a konkrét esetben automatikus változáskövetés használatához, csak frissítsük oszlop **PagesVisited** minden alkalommal, amikor egy felhasználó befejezi a munkamenetet a webhelyen:
 
 ```
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5 

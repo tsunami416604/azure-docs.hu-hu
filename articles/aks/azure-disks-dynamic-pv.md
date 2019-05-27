@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 735be71faecb9882b13f6f536d43715139d0f4db
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 334e56db97213206d9ab7ed5ef4d1d96ab9325d6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071984"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956473"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dinamikusan létrehozása és a egy tartós kötet használata Azure-lemezek az Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ Tartós kötet egy Kubernetes-podok való használatra vett tárolási részét 
 
 A Kubernetes-köteteken további információkért lásd: [tárolási lehetőségek az aks-ben alkalmazásokhoz][concepts-storage].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
@@ -39,6 +39,8 @@ Minden egyes AKS-fürt tartalmazza a két előre létrehozott storage osztályai
     * Standard szintű storage meghajtókra, és költséghatékony tárolási megoldás kínál a nagy teljesítményű ugyanakkor továbbra is. A standard lemezek ideális megoldást jelentenek költséghatékony fejlesztési és tesztelési számítási feladatokhoz.
 * A *felügyelt prémium szintű* tárolási osztály egy prémium szintű Azure-lemez építi ki.
     * A prémium lemezek SSD-alapú, nagy teljesítményű, kis késleltetésű lemezek. Az éles számítási feladatokat futtató virtuális gépek esetén érdemes a használatuk mellett dönteni. Ha az AKS-csomópontok a fürtben használni a prémium szintű storage, válassza ki a *felügyelt prémium szintű* osztály.
+    
+Ezek az alapértelmezett tároló osztályok nem engedélyezi, hogy a kötet méretét, ezután frissítse. Ahhoz, hogy ezt a lehetőséget, adja hozzá a *allowVolumeExpansion: true* az egyik alapértelmezett tárolási osztályokat. sor, vagy hozzon létre, akkor saját egyéni tárolási osztály. Egy meglévő tároló osztály használatával szerkesztheti a `kubectl edit sc` parancsot. A tárolási osztályokhoz és saját létrehozása youor további információkért lásd: [tárolási lehetőségek az aks-ben alkalmazásokhoz][storage-class-concepts].
 
 Használja a [kubectl get sc] [ kubectl-get] paranccsal tekintheti meg az előre létrehozott storage osztályai. A következő példa bemutatja a storage osztályai és a egy AKS-fürtön belül elérhető előzetes létrehozása:
 
@@ -86,7 +88,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Használja a tartós kötet
 
-Ha a tartós kötet jogcím létrejött, és sikeresen üzembe lett helyezve a lemez lehet létrehozni egy pod a lemez elérésére. A következő jegyzékfájl hoz létre egy alapszintű NGINX-pod a tartós kötet jogcím nevű használó *azure managed disk* csatlakoztatása az Azure-lemez elérési útja a `/mnt/azure`.
+Ha a tartós kötet jogcím létrejött, és sikeresen üzembe lett helyezve a lemez lehet létrehozni egy pod a lemez elérésére. A következő jegyzékfájl hoz létre egy alapszintű NGINX-pod a tartós kötet jogcím nevű használó *azure managed disk* csatlakoztatása az Azure-lemez elérési útja a `/mnt/azure`. A Windows Server tárolók (jelenleg előzetes verzióban az aks-ben), adja meg egy *mountPath* használjon, például a Windows-elérési út egyezmény *"D:"*.
 
 Hozzon létre egy fájlt `azure-pvc-disk.yaml`, és másolja a következő jegyzékfájlban.
 
@@ -279,3 +281,4 @@ További tudnivalók a Kubernetes Azure-lemezek használatával állandó kötet
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
+[storage-class-concepts]: concepts-storage.md#storage-classes

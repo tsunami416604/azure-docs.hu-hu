@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: ed6a50ee68d39e6e0d01b405eb02edd6d4c93613
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 637feb855c7816dfb26229c5a65a069260a58cd3
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407590"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66003094"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Az Azure App Service Linux PHP-alkalmazás konfigurálása
 
@@ -105,7 +105,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
-Az App Service-ben is [állítsa be az alkalmazásbeállításokat](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) kívül a kódját. Ezután elérheti azokat a standard használatával [getenv()](https://secure.php.net/manual/function.getenv.php) mintát. Például egy alkalmazás-beállítás eléréséhez nevű `DB_HOST`, a következő kóddal:
+Az App Service-ben is [állítsa be az alkalmazásbeállításokat](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) kívül a kódját. Ezután elérheti azokat a standard használatával [getenv()](https://secure.php.net/manual/function.getenv.php) mintát. Például egy alkalmazás-beállítás eléréséhez nevű `DB_HOST`, a következő kóddal:
 
 ```php
 getenv("DB_HOST")
@@ -147,7 +147,7 @@ Ha módosítania kell a PHP-telepítés, bármelyikét módosíthatja a [php.ini
 > A legjobb módszer, a PHP-verzió és az aktuális *php.ini* konfigurálás az, hogy a hívás [phpinfo()](https://php.net/manual/function.phpinfo.php) az alkalmazásban.
 >
 
-### <a name="customize-non-phpinisystem-directives"></a>Nem PHP_INI_SYSTEM irányelvek testreszabása
+### <a name="Customize-non-PHP_INI_SYSTEM directives"></a>Testreszabása – nem-PHP_INI_SYSTEM irányelvek
 
 PHP_INI_USER PHP_INI_PERDIR és PHP_INI_ALL irányelvek testreszabása (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)), adjon hozzá egy *.htaccess* fájlt az alkalmazás gyökérkönyvtárára.
 
@@ -237,7 +237,7 @@ Amikor működő PHP-alkalmazás működését eltérően az App Service-ben, va
     - Attól függően, a *composer.json*, különböző csomagokban megtalál mindent éles üzemmódhoz előfordulhat, hogy telepíteni (`require` és `require-dev`).
     - Bizonyos webes keretrendszerek statikus fájlok eltérően éles módban helyezheti üzembe.
     - Bizonyos webes keretrendszerek egyéni indítási parancsfájlok felhasználhatja az éles módban való futtatáskor.
-- Hibakeresési módban futtatja az alkalmazást az App Service-ben. Például a [Laravel](https://meanjs.org/), konfigurálhatja az alkalmazás hibakeresési üzeneteket által éles környezetben kimeneti [beállítás a `APP_DEBUG` Alkalmazásbeállítás `true` ](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Hibakeresési módban futtatja az alkalmazást az App Service-ben. Például a [Laravel](https://meanjs.org/), konfigurálhatja az alkalmazás hibakeresési üzeneteket által éles környezetben kimeneti [beállítás a `APP_DEBUG` Alkalmazásbeállítás `true` ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
 ### <a name="robots933456"></a>robots933456
 

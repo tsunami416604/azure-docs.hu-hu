@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: bf1d810733df4eaae17d092caba42888a63cc59f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 31909e1f13d211aa87f13547218a6967d8e195ac
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919237"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950607"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box"></a>Az Azure portal használata az Azure Data Box felügyeletéhez
 
@@ -67,7 +67,7 @@ Csak a teljesített vagy visszavont rendeléseket törölheti. A rendelések tö
 
 3. Ha a rendszer kéri, írja be a rendelés nevét a rendelés törlésének megerősítéséhez. Kattintson a **Törlés** gombra.
 
-## <a name="download-shipping-label"></a>Fuvarlevélcímke letöltése
+## <a name="download-shipping-label"></a>Levélcímke letöltése
 
 Ha a Data Box E-ink kijelzője nem működik és nem jeleníti meg a visszaküldési fuvarlevélcímkét, akkor azt le kell töltenie a portálról. 
 
@@ -75,7 +75,7 @@ A fuvarlevélcímkék letöltéséhez kövesse az alábbi lépéseket.
 
 1.  Lépjen az **Áttekintés > Levélcímke letöltése** menüpontra. Ez a lehetőség csak az eszköz kézbesítését követően érhető el. 
 
-    ![Fuvarlevélcímke letöltése](media/data-box-portal-admin/download-shipping-label.png)
+    ![Levélcímke letöltése](media/data-box-portal-admin/download-shipping-label.png)
 
 2.  Ezzel letölti a következő fuvarlevélcímkét a visszaküldéshez. Mentse a címkét, majd nyomtassa ki. Hajtsa össze, majd helyezze a címkét az eszközön található átlátszó zsebbe. Győződjön meg arról, hogy a címke jól látható. Távolítsa el a matricákat, amelyek az előző szállítás során kerültek az eszközre.
 
@@ -95,9 +95,9 @@ A rendelés szerkesztéséhez kövesse az alábbi lépéseket.
 
     ![Szállítási cím szerkesztése 2](media/data-box-portal-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Értesítési adatok szerkesztése
+## <a name="edit-notification-details"></a>Értesítés adatainak szerkesztése
 
-Lehet, hogy módosítani szeretné, hogy mely felhasználók kapjanak értesítő e-maileket a rendelés állapotáról. Például előfordulhat, hogy valamelyik felhasználót értesíteni kell, ha az eszközt kiszállítják vagy már átvették. Egy másikat pedig esetleg akkor kell értesíteni, ha az adatok másolása befejeződött, hogy a forrás törlése előtt ellenőrizhesse, hogy az adatok valóban átkerültek-e az Azure-tárfiókba. Ilyen esetekben szerkesztheti az értesítési adatokat.
+Lehet, hogy módosítani szeretné, hogy mely felhasználók kapjanak értesítő e-maileket a rendelés állapotáról. Például előfordulhat, hogy valamelyik felhasználót értesíteni kell, ha az eszközt kiszállítják vagy már átvették. Egy másik felhasználó szükség lehet az adatok másolása befejeződött, így azok ellenőrizheti a forrás törlése előtt az Azure storage-fiókban van az adatok tájékoztatni kell. Ilyen esetekben szerkesztheti az értesítési adatokat.
 
 Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 
@@ -204,7 +204,7 @@ Az eszköz állapotának a portálon való változásáról a rendszer értesít
 |Feladva     | A rendelés fel lett adva. A portálon a rendelésnél feltüntetett követési azonosítóval követheti nyomon a szállítást.        |
 |Kézbesítve     | A rendelés ki lett kézbesítve a rendelésben megadott címre.        |
 |Szállítás alatt     |A visszaküldött csomagot a szállítmányozó átvette és ellenőrizte.         |
-|Megérkezett     | Az eszközt átvették és ellenőrizték az Azure-adatközpontban. <br> Miután a szállítmányt megvizsgálták, elkezdődik az eszköz feltöltése.      |
+|Érkezett     | Az eszközt átvették és ellenőrizték az Azure-adatközpontban. <br> Miután a szállítmányt megvizsgálták, elkezdődik az eszköz feltöltése.      |
 |Adatok másolása     | Az adatok másolása folyamatban van. Kövesse nyomon a rendelés másolásának folyamatát az Azure Portalon. <br> Várjon, amíg az adatok másolása befejeződik. |
 |Befejezve       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
 |Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek a másolás során. <br> Tekintse át a másolási naplókat az Azure Portalon megadott útvonalon.   |

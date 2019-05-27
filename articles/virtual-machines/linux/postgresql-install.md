@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 76f1ddeebb173bf19b15753d12e4374e6365bf8f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5fe5e819c4f1079b6eb1fa8bb19d337ecfed600d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474227"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955145"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása Azure-ban
 PostgreSQL az Oracle- és DB2 hasonlít egy speciális nyílt forráskódú adatbázis. Teljes ACID megfelelőségi, megbízható tranzakciós feldolgozást, és többverziós egyidejűségi vezérlésre nagyvállalati szintű funkciókat tartalmaz. Támogatja a szabványok – például az ANSI SQL és az SQL/MED (beleértve a külső adatok burkolókat az Oracle, MySQL, mongodb-hez és sok más) is. Fontos a nagy mértékben bővíthetők, a JSON és a kulcs-érték-alapú alkalmazások több mint 12 eljárási nyelvet, a GIN és GiST indexek, a térbeli adatok támogatása és a több NoSQL-hez hasonló funkciók támogatása.
@@ -232,7 +232,7 @@ Ezzel törli a "János" sort található összes információt. A kimenet a köv
 ![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>Egy tábla adatainak frissítése
-A következő parancsot használja egy tábla adatainak frissítéséhez. Ez egy Sandy megerősítette, hogy ő lesz ott, így saját RSVP "N", "Y" módosítjuk:
+A következő parancsot használja egy tábla adatainak frissítéséhez. Ez egy Sandy megerősítette, hogy azok is részt vesz, így módosítjuk az RSVP "N", "Y":
 
      UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 

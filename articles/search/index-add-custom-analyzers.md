@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5983c2036ff206825a82072b57ca2b9bb44ca678
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e9daebf46093e38858feff87ca5c4ba89638aa74
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021662"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951905"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Egyéni elemzők az Azure Search-index hozzáadása
 
@@ -223,7 +223,7 @@ Az elemzők, indexattribútumokat eltérőek lehetnek attól függően, hogy az 
 |-|-|  
 |Name (Név)|Csak tartalmazhat betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásjeleket tartalmazhat, azonban csak kezdő és záró betűket és számokat tartalmazhatnak, és legfeljebb 128 karakter hosszúságú lehet.|  
 |Típus|Must be "#Microsoft.Azure.Search.CustomAnalyzer".|  
-|CharFilters|Állítsa a felsorolt előre meghatározott char szűrők egyikét a [Char szűrők](#CharFilter) tábla vagy az index definícióját a megadott egyéni char szűrőt.|  
+|CharFilters|Állítsa a felsorolt előre meghatározott char szűrők egyikét a [Char szűrők](#char-filters-reference) tábla vagy az index definícióját a megadott egyéni char szűrőt.|  
 |Jogkivonatokat létrehozó|Kötelező. Vagy az előre meghatározott tokenizers szereplő egyik beállítása a [Tokenizers](#Tokenizers) az alábbi táblázat vagy egy egyéni tokenizer, az index definícióját megadott.|  
 |TokenFilters|Állítsa a felsorolt előre meghatározott token szűrők egyikét a [jogkivonat-szűrők](#TokenFilters) tábla vagy az index definícióját a megadott egyéni token szűrő.|  
 
@@ -236,8 +236,8 @@ Az elemzők, indexattribútumokat eltérőek lehetnek attól függően, hogy az 
 |||  
 |-|-|  
 |Name (Név)|Csak tartalmazhat betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásjeleket tartalmazhat, azonban csak kezdő és záró betűket és számokat tartalmazhatnak, és legfeljebb 128 karakter hosszúságú lehet.|  
-|Típus|Támogatott char szűrőt a listából Char szűrőtípust. Lásd: **char_filter_type** oszlopa a [Char szűrők](#CharFilter) az alábbi táblázat.|  
-|Beállítások|Az érvényes beállítások kell lennie egy adott [Char szűrők](#CharFilter) típusa.|  
+|Típus|Támogatott char szűrőt a listából Char szűrőtípust. Lásd: **char_filter_type** oszlopa a [Char szűrők](#char-filters-reference) az alábbi táblázat.|  
+|Beállítások|Az érvényes beállítások kell lennie egy adott [Char szűrők](#char-filters-reference) típusa.|  
 
 ### <a name="tokenizers"></a>Tokenizers
 

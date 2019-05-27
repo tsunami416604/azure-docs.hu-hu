@@ -8,15 +8,15 @@ ms.assetid: 623f5ed4-8da7-48f5-943a-448d0b7cba69
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 0b155a5cdfa1c540e1cfb92147f6ebc7f88dd929
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 407e25b7bb1a2220448c9701bbef208195c50b63
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61003712"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953108"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Az Azure Data Catalogban az adategységek felügyelete
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Bemutatás
 Az Azure Data Catalog adatforrás-felderítés, célja, hogy egyszerűen felderítése és értelmezni azon adatforrásokat kell elemzéseket végezhet, és döntéseket. Felderítési képességek győződjön meg arról, a lehető leghatékonyabb felhasználásához és más felhasználók is található, és az elérhető adatforrások széles ismertetése. Ezeket az elemeket a szem előtt, a Data Catalog alapértelmezett viselkedését az összes regisztrált adatforrások számára látható és a katalógus összes felhasználó által felderíthető van.
 
 A Data Catalog nem biztosít hozzáférést magukhoz az adatokhoz. Adatok elérését az adatforrás tulajdonosa szabályozza. A Data Catalog adatforrások felfedezése és a megtekintéséhez, amely kapcsolódik a a katalógusban regisztrált adatforrások metaadatait.
@@ -52,7 +52,7 @@ Ha egy adategységet már van tulajdonosa, más felhasználók nem egyszerűen s
 ### <a name="remove-owners"></a>Tulajdonosok eltávolítása
 Bármely eszköz tulajdonosa adhat hozzá a társtulajdonosok, mint bármely eszköz tulajdonosa távolíthatja el bármilyen társtulajdonos.
 
-Egy eszköz tulajdonosa, aki eltávolítja az őt vagy saját magát tulajdonosként több nem tudja felügyelni az eszközt. Ha az eszköz tulajdonosa eltávolítja számára, vagy saját magát tulajdonosként, és nincs más társtulajdonosok van, az eszköz visszaáll egy tulajdonos nélküli állapotot.
+Egy eszköz tulajdonosa, akik maguk tulajdonosként eltávolítja több nem tudja felügyelni az eszközt. Ha az eszköz tulajdonosa eltávolítja a maguk tulajdonosként, és nincs más társtulajdonosok van, az eszköz visszaáll egy tulajdonos nélküli állapotot.
 
 ## <a name="control-visibility"></a>Vezérlőelem látható-e
 Adatok-adatforrások tulajdonosai szabályozhatják a saját adategységek láthatóságát. Látható-e az alapértelmezett, ahol a Data Catalog minden felhasználó felderítése és megtekintheti az adategységhez, korlátozhatja az eszköz tulajdonosa válthat a láthatósági a **mindenki** való **tulajdonosok és ezek a felhasználók** a az objektum tulajdonságait. Tulajdonosok ezután hozzáadhatja a konkrét felhasználókat és biztonsági csoportokat.

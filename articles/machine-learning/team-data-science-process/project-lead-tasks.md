@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4415759530985710c8376709db9955ba98066160
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 00b1b58a39724951f2d5e4e688df8eb178654bbb
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61046161"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952838"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>A projekthez tartozó feladatok vezethet a a csoportos adatelemzési folyamat
 
-Ez az oktatóanyag ismerteti a feladatokat, amely a projektvezető marketingosztályhoz projektcsapat esetében várható. Együttműködő csapat környezet, amely szabványosítja az a célja a [csoportos adatelemzési folyamat](overview.md) (TDSP). A TDSP egy keretrendszer, amely hatékony felhőalapú, prediktív elemzési megoldások végrehajtásához tevékenységek strukturált sorrendje biztosít a Microsoft által kifejlesztett. Röviden ismerteti a személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat adatelemzési csapatával által végrehajtott ezt a folyamatot, a szabványosításával lásd [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md).
+Ez az oktatóanyag ismerteti a feladatokat, amely a projektvezető a projektcsapat esetében várható. Együttműködő csapat környezet, amely szabványosítja az a célja a [csoportos adatelemzési folyamat](overview.md) (TDSP). A TDSP egy keretrendszer, amely hatékony felhőalapú, prediktív elemzési megoldások végrehajtásához tevékenységek strukturált sorrendje biztosít a Microsoft által kifejlesztett. Röviden ismerteti a személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat adatelemzési csapatával által végrehajtott ezt a folyamatot, a szabványosításával lásd [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md).
 
 A **projekt vezető** kezeli a napi tevékenységek egyes adatszakértők, az egy adott adatelemzési projektjéhez. A projekt érdeklődők a környezet beállításához elvégzendő feladatok munkafolyamata az alábbi ábrán vannak kitaláltak:
 

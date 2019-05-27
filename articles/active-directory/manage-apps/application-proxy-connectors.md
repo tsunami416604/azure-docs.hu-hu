@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f337ea9d55a119c3aec6e94649cdbf049f99e9d6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 51ad6ea2abcc18b985e9c45fbfb1ffba98fb2c1f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783681"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113084"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy-összekötők ismertetése
 
@@ -87,7 +87,9 @@ Korábban kiadott verziók és milyen módosítások azok kapcsolatos informáci
 
 ## <a name="capacity-planning"></a>Kapacitástervezés 
 
-Fontos, hogy elegendő a kapacitása kezelni a várt forgalom mennyisége összekötők között megtervezése. Általános, annál több felhasználó rendelkezik, a nagyobb egy gépre lesz szüksége. Az alábbi, egy táblát, amely röviden ismerteti a kötetet a különböző gépek képes kezelni. Vegye figyelembe az összes-alapú a várt tranzakció egy második (TPS) helyett felhasználó óta használati minták eltérőek lehetnek, és terhelés előrejelzése nem használható. Is lesz a válaszok és a háttérrendszer alkalmazás válaszideje alapján különbségeket – válasz nagyobb méretek és a lassabb válaszidőket egy alacsonyabb maximális TPS eredményez. Azt javasoljuk, hogy további gépeket úgy, hogy a gépek között a elosztott terhelés körülbelül 50 %. A további kapacitást biztosítja, hogy magas rendelkezésre állás és rugalmasság.
+Fontos, hogy elegendő a kapacitása kezelni a várt forgalom mennyisége összekötők között megtervezése. Azt javasoljuk, hogy minden egyes összekötőcsoporthoz, magas rendelkezésre állást és méretezhetőséget biztosítanak, legalább két összekötőt. Három összekötő, akkor az optimális arra az esetre, szükség lehet a szolgáltatás bármikor egy gép. 
+
+Általános, annál több felhasználó rendelkezik, a nagyobb egy gépre lesz szüksége. Alább egy táblát, amely röviden ismerteti a mennyiségi és kezelhetik a különböző gépek várható késés. Vegye figyelembe az összes-alapú a várt tranzakció egy második (TPS) helyett felhasználó óta használati minták eltérőek lehetnek, és terhelés előrejelzése nem használható. Is lesz a válaszok és a háttérrendszer alkalmazás válaszideje alapján különbségeket – válasz nagyobb méretek és a lassabb válaszidőket egy alacsonyabb maximális TPS eredményez. Javasoljuk továbbá, további gépeket kellene, hogy a gépek között a elosztott terhelés mindig nyújt elegendő puffer. A további kapacitást biztosítja, hogy magas rendelkezésre állás és rugalmasság.
 
 |Magok|RAM|Várható késés (MS) – P99|Maximális TPS|
 | ----- | ----- | ----- | ----- |

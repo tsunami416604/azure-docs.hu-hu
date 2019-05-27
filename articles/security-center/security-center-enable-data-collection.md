@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 63ee603f83d0c2de3bc89b8792ada4a61edb7e00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: v-mohabe
+ms.openlocfilehash: 8fed3ce98b23c5ac1cc97b88a278c5946f06af8e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006736"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968741"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM), a virtual machine scale sets, IaaS-tárolók és nem Azure-beli (pl. helyszíni) számítógépek biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Microsoft Monitoring Agent ügynököt az összeomlási memóriaképeket is átmásolja a munkaterülethez.
@@ -87,7 +87,7 @@ A Security Center által létrehozott munkaterület kiválasztása:
 1. A Security Center automatikusan engedélyezi a a tarifacsomagot állítsa be az előfizetés-munkaterülethez a Security Center megoldást. 
 
 > [!NOTE]
-> A Security Center által létrehozott munkaterület tarifacsomagját a Log Analytics nincs hatással a Security Center a számlázás. A Security Center számlázási mindig alapján a Security Center biztonsági házirend és a megoldások a munkaterülethez telepítve. Az ingyenes, a Security Center lehetővé teszi a *SecurityCenterFree* megoldás az alapértelmezett munkaterületre. A Standard csomag esetében a Security Center lehetővé teszi a *biztonsági* megoldás az alapértelmezett munkaterületre.
+> A Security Center által létrehozott munkaterület tarifacsomagját a Log Analytics nincs hatással a Security Center a számlázás. A Security Center számlázási mindig alapján a Security Center biztonsági házirend és a megoldások a munkaterülethez telepítve. Az ingyenes, a Security Center lehetővé teszi a *SecurityCenterFree* megoldás az alapértelmezett munkaterületre. A Standard szinten a Security Center a *Security* megoldást teszi elérhetővé az alapértelmezett munkaterületen.
 > A Log Analytics adattárolási előfordulhat, hogy további díjak vonatkoznak az adattárolás, a díjszabási lapon talál további részleteket.
 
 További információ a díjszabásról lásd: [a Security Center díjszabási](https://azure.microsoft.com/pricing/details/security-center/).

@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/01/2019
+ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 6dfa84eff8dcc104ae6f9c16262f3b1c697df6c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561998"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952883"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid az üzenetek kézbesítését, és próbálkozzon újra
 
@@ -24,16 +24,18 @@ Jelenleg Event Grid küld minden esemény külön-külön előfizetők számára
 
 ## <a name="retry-schedule-and-duration"></a>Ismételje meg az ütemezés és időtartama
 
-Event Grid egy exponenciális leállítási újrapróbálkozási házirend eseménykézbesítés használ. A végpont nem válaszol, vagy esetén hibakódot ad vissza, ha az Event Grid újrapróbálkozik kézbesítési az elérhető legjobb lehetőség alapján a következő ütemezés:
+Event Grid egy üzenet kézbesítése után választ 30 másodpercet vár. 30 másodperc Ha a végpont nem válaszolt, az üzenetet a rendszer sorba állítja próbálkozzon újra. Event Grid egy exponenciális leállítási újrapróbálkozási házirend eseménykézbesítés használ. Event Grid újrapróbálkozik kézbesítési az elérhető legjobb lehetőség alapján a következő ütemezés szerint:
 
-1. 10 másodperc
-1. 30 másodperc
-1. 1 perc
-1. 5 perc
-1. 10 perc
-1. 30 perc
-1. 1 óra
-1. Akár 24 órát a óránként
+- 10 másodperc
+- 30 másodperc
+- 1 perc
+- 5 perc
+- 10 perc
+- 30 perc
+- 1 óra
+- Akár 24 órát a óránként
+
+Ha a végpont 3 percen belül válaszol, Event Grid megkísérli az esemény eltávolítása az újrapróbálkozási várólista az elérhető legjobb lehetőség alapján, de ismétlődő továbbra is lehetséges, hogy kapott.
 
 Event Grid egy kis véletlenszerű ad hozzá minden újrapróbálkozási lépést, és kulcsmodulonként hagyhat bizonyos újrapróbálkozásokat, ha a végpont konzisztens módon sérült, le hosszabb ideig, vagy úgy tűnik, hogy kihasznált.
 
@@ -72,7 +74,7 @@ A következő HTTP-válaszkódot adja meg, hogy az esemény kézbesítési kís�
 
 - 400 Hibás kérés
 - 401-es nem engedélyezett
-- 404 – Nem található
+- 404 Nem található
 - 408 kérés időtúllépése
 - 413 kérelem az entitás túl nagy
 - 414 URI túl hosszú

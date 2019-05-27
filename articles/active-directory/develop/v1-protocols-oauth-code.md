@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/5/2019
+ms.date: 03/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2e9177f91f016ffc64d542b9fad89d147b96f6d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: e05d79773cfd2ebae8047e75d41684de9101787a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545155"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962180"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Az OAuth 2.0 kód engedélyezési folyamatával használatával az Azure Active Directory webes alkalmazásokhoz való hozzáférés engedélyezése
 
@@ -209,7 +209,7 @@ Hiba történt egy mintaválasz nézhet ki:
 | hiba |Egy hibakód karakterláncát típusú előforduló hibák besorolására használható, és reagálhat a hibák használható. |
 | error_description |Egy adott hibaüzenet, amelyek segítségével a fejlesztők hitelesítési hiba kiváltó okának azonosításához. |
 | error_codes |A diagnosztikát segítő STS-specifikus hibakódok listáját. |
-| időbélyeg |Az idő, a hiba történt. |
+| timestamp |Az idő, a hiba történt. |
 | trace_id |A kérelem, amelyek segítik a diagnosztikai egyedi azonosítója. |
 | correlation_id |A különböző összetevők a diagnosztikát segítő kérelem egyedi azonosítója. |
 
@@ -341,7 +341,7 @@ Hiba történt egy mintaválasz nézhet ki:
 | hiba |Egy hibakód karakterláncát típusú előforduló hibák besorolására használható, és reagálhat a hibák használható. |
 | error_description |Egy adott hibaüzenet, amelyek segítségével a fejlesztők hitelesítési hiba kiváltó okának azonosításához. |
 | error_codes |A diagnosztikát segítő STS-specifikus hibakódok listáját. |
-| időbélyeg |Az idő, a hiba történt. |
+| timestamp |Az idő, a hiba történt. |
 | trace_id |A kérelem, amelyek segítik a diagnosztikai egyedi azonosítója. |
 | correlation_id |A különböző összetevők a diagnosztikát segítő kérelem egyedi azonosítója. |
 

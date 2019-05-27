@@ -5,18 +5,18 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 09/05/2018
+ms.date: 05/20/2019
 ms.author: lbosq
-ms.openlocfilehash: 36465c253996e4cecc665b2fd1d59c03adc78a2f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6f5d90f8b825b7076a1a5122dbef3c8b2990e216
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888648"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954255"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Bevezetés: az Azure Cosmos DB: Gremlin API
 
-Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása kritikus fontosságú alkalmazások számára. Többmodelles adatbázis, amely támogatja a dokumentumokat, a kulcs-érték párokat, a gráfokat és az oszlopos adatmodelleket. Az Azure Cosmos DB Gremlin API segítségével gráfadatokat lehet tárolni, és műveleteket lehet rajtuk végezni. A Gremlin API segítségével gráfadatok modellezhetők és járhatók be.
+[Az Azure Cosmos DB](introduction.md) alapvető fontosságú alkalmazásokhoz a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Egy többmodelles adatbázis, és támogatja a dokumentum, kulcs-érték, gráf és oszlopos adatmodelleket. Az Azure Cosmos DB Gremlin API segítségével gráfadatokat lehet tárolni, és műveleteket lehet rajtuk végezni. A Gremlin API segítségével gráfadatok modellezhetők és járhatók be.
 
 A cikk áttekintést nyújt az Azure Cosmos DB Gremlin API-járól, és elmagyarázza, hogyan használhatja a nagyméretű, több milliárd csúcsot és élet tartalmazó gráfok tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyen fejlesztheti a gráfok struktúráját és sémáját. Az Azure Cosmos DB lekérdezéséhez használhatja az [Apache TinkerPop](https://tinkerpop.apache.org) gráfbejárási nyelvet vagy a [Gremlint](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
 

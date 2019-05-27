@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: qianw211
-ms.openlocfilehash: 9f4ad704de83e5971b5bc10083aefeec5d28374b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c734461f1a57c100b4a00ab5c309659f8b0e903a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937852"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964021"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
 
@@ -84,7 +84,7 @@ Ha ezt még nem tette meg,
 
 - Regisztrálja a [Microsoft Partner Network](https://partner.microsoft.com/membership).
 - Hozzon létre egy [Microsoft Account](https://account.microsoft.com/account/) (szükséges az Azure Marketplace-en transact ajánlatok; mások számára ajánlott).
-- Küldje el a [Marketplace regisztrációs űrlap](https://azuremarketplace.microsoft.com/sell/signup).
+- Küldje el a [Marketplace regisztrációs űrlap](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv). Lásd: hogyan [Partnerközpont-fiókkal létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) további információt.
 
 Ha regisztrálva van és a egy új ajánlat létrehozása vagy egy meglévő, dolgozik
 

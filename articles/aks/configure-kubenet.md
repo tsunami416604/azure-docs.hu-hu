@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 4d2ab19fafc265d70028d5ee192efc60a5a8eaff
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a4ed3ec823982bf3977edf9939d98419e1c4b01f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073992"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956394"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Hálózatkezelés a saját IP-címtartományok Azure Kubernetes Service (AKS) kubenet használata
 
@@ -23,7 +23,10 @@ A [Azure tároló-hálózati adapter (CNI)][cni-networking], minden pod IP-címe
 
 Ez a cikk bemutatja, hogyan használható *kubenet* hálózatkezelés hozhat létre és használhat a virtuális hálózat alhálózatának az AKS-fürt. Hálózati lehetőségek és megfontolandó szempontok a további információkért lásd: [fogalmak hálózati Kubernetes, az AKS][aks-network-concepts].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+> [!WARNING]
+> A Windows Server csomópontkészletek (jelenleg előzetes verzióban érhető el az aks-ben) használatához Azure CNI kell használnia. A modellt kubenet használatát a Windows Server-tárolók nem érhető el.
+
+## <a name="before-you-begin"></a>Előkészületek
 
 Az Azure CLI 2.0.56 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
@@ -149,6 +152,8 @@ A következő IP-címtartományok is vannak meghatározva, a fürt létrehozása
     * Ez a címtartomány elég nagy csomópontok várhatóan fel kell lennie. Ez a címtartomány nem módosítható, ha több címet van szüksége további csomópontokat a fürt üzembe helyezése után.
     * A pod IP-címtartomány segítségével hozzárendelni egy */24* címtér a fürt egyes csomópontjaihoz. A következő példában a *--pod-cidr* , *192.168.0.0/16* rendeli hozzá az első fürtcsomópont *192.168.0.0/24*, a második csomópont *192.168.1.0/24*, és a harmadik csomópont *192.168.2.0/24*.
     * A fürt skálázását követve rugalmasan méretezhető, vagy frissítéseket az Azure platform egy pod IP-címtartományt rendelni minden új csomópont továbbra is.
+    
+* A *– docker-híd cím* lehetővé teszi, hogy az AKS-csomópontok és a mögöttes felügyeleti platform közötti kommunikációra. Az IP-címet nem lehet a virtuális hálózati IP-címtartomány a fürt, és ne használja a hálózaton található más címtartományok átfedésben.
 
 ```azurecli-interactive
 az aks create \

@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 22e58f31e2f891eb09c3d42a01763c68cdcd11a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae9db483e15197e6cdaaaa5981410630184cc6ca
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60577600"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957240"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Elosztott nyomkövetések gyűjtéséhez a Python (előzetes verzió)
 
@@ -78,10 +78,12 @@ Először meg kell létrehoznia az Application Insights-erőforrást egy kialak�
 
 ## <a name="opencensus-python-package"></a>OpenCensus Python-csomag
 
-1. Telepítse a nyílt népszámlálási csomagot a Python pip vagy a parancssorból pipenv:
+1. Telepítse a nyílt népszámlálási csomagot a Python és a pip vagy a parancssorból pipenv exportáló:
 
-    ```python
+    ```console
     python -m pip install opencensus
+    python -m pip install opencensus-ext-ocagent
+
     # pip env install opencensus
     ```
 
@@ -92,20 +94,20 @@ Először meg kell létrehoznia az Application Insights-erőforrást egy kialak�
 
     ```python
     from opencensus.trace.tracer import Tracer
-    
+
     def main():
         while True:
             valuePrompt()
-    
+
     def valuePrompt():
         tracer = Tracer()
         with tracer.span(name="test") as span:
             line = input("Enter a value: ")
             print(line)
-    
+
     if __name__ == "__main__":
         main()
-    
+
     ```
 
 3. A kód futtatása ismételten kérni fogja, adjon meg egy értéket. Minden bejegyzés az értéket nyomtatja a rendszerhéj, és a egy megfelelő részét **SpanData** generál a OpenCensus Python modulban. Meghatározza a OpenCensus projektet egy [ _álló átnyúlások nyomkövetési_](https://opencensus.io/core-concepts/tracing/).
@@ -127,32 +129,33 @@ Először meg kell létrehoznia az Application Insights-erőforrást egy kialak�
     ```python
     from opencensus.trace.tracer import Tracer
     from opencensus.trace import config_integration
-    from opencensus.trace.exporters.ocagent import trace_exporter
+    from opencensus.ext.ocagent.trace_exporter import TraceExporter
     from opencensus.trace import tracer as tracer_module
-    
+
     import os
-    
-    def main():        
+
+    def main():
         while True:
             valuePrompt()
-    
+
     def valuePrompt():
-        export_LocalForwarder = trace_exporter.TraceExporter(
+        export_LocalForwarder = TraceExporter(
         service_name=os.getenv('SERVICE_NAME', 'python-service'),
         endpoint=os.getenv('OCAGENT_TRACE_EXPORTER_ENDPOINT'))
-        
+
         tracer = Tracer(exporter=export_LocalForwarder)
         with tracer.span(name="test") as span:
             line = input("Enter a value: ")
             print(line)
-    
+
     if __name__ == "__main__":
         main()
+
     ```
 
 5. Ha menteni, és próbálja meg futtatni a fenti modul, előfordulhat, hogy kap egy `ModuleNotFoundError` a `grpc`. Ha ez történik, futtassa a következő telepítéséhez a [grpcio csomag](https://pypi.org/project/grpcio/) együtt:
 
-    ```
+    ```console
     python -m pip install grpcio
     ```
 

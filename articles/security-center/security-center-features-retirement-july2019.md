@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 5ac6603be087e887e3304f6a7e14aa063863e1dd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796467"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952139"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>A Security Center-szolgáltatásokat (július 2019) kivonása
 
@@ -160,9 +160,9 @@ Ha rendelkezik meglévő csatlakoztatott megoldások, javasoljuk, hogy Azure Sen
 
 ## Biztonsági szabályzatok biztonsági beállításokkal szerkesztése<a name="menu_securityconfigurations"></a>
 
-Az Azure Security Center biztonsági konfigurációk figyeli egy alkalmazásával [több mint 150 ajánlott szabályok](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). az operációs rendszer korlátozására. Ezek a szabályok vonatkoznak a tűzfal, naplózás, jelszóházirendek és egyéb. Ha egy gép sebezhető konfigurációval rendelkezik, a Security Center biztonsági javaslatot hoz létre. A [szerkesztési biztonsági konfigurációs képernyőjén](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) szabhatja testre az alapértelmezett operációs rendszer biztonsági konfigurációs a Security Center lehetővé teszi.
+Az Azure Security Center biztonsági konfigurációk figyeli egy alkalmazásával [több mint 150 ajánlott szabályok](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). az operációs rendszer korlátozására. Ezek a szabályok vonatkoznak a tűzfal, naplózás, jelszóházirendek és egyéb. Ha egy gép konfigurációját sebezhetőnek találja, a Security Center egy biztonsági javaslatot állít elő. A [szerkesztési biztonsági konfigurációs képernyőjén](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) szabhatja testre az alapértelmezett operációs rendszer biztonsági konfigurációs a Security Center lehetővé teszi.
 
-Az előzetes verziójú funkció mégy azt.
+Az előzetes verziójú funkció mégy azt. Ha a kivezetési dátum után szeretné visszaállítani a biztonsági konfigurációk az alapértelmezett értékeket, megteheti keresztül API-t vagy a Powershell használatával a [utasítások](https://aka.ms/ascresetsecurityconfigurations)
 
 ![Biztonsági beállítások szerkesztése][17]
 

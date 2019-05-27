@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d61f233b2eb901bcf1e6b5b4ff147893f918e8f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 94b35f0530dacfadb799f1d44d7a9eb666def6c9
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104857"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891956"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Adja hozzá a Google B2B vendégfelhasználó Identitásszolgáltatóként
 
@@ -87,7 +87,7 @@ Most, értékre állítjuk a Google-ügyfél-Azonosítót és a titkos kulcsot, 
 1. Telepítse a legújabb verziót az Azure AD PowerShell modul a Graph ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).
 2. Futtassa a következő parancsot: `Connect-AzureAD`.
 3. A bejelentkezési parancssorba jelentkezzen be a felügyelt globális rendszergazdai fiókkal.  
-4. Futtassa az alábbi parancsot: 
+4. Futtassa a következő parancsot: 
    
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  

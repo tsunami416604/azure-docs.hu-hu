@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1a2e75dcffe32c6f1aeaba8646b96bbc1500ffdf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aac0a3ab14cc2543fe3b60f4c52e14e3cb0ee743
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61438210"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991709"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Idő szinkronizálása a Windows virtuális gépek az Azure-ban
 
@@ -39,7 +39,7 @@ A számítógép órája pontosságának van kivett a hogyan zárja be a számí
 
 Azure gazdagép belső hierarchiabeli 1 Microsoft tulajdonú eszközökről, a GPS-antennák azok időt vesz igénybe a Microsoft idő kiszolgálók vannak szinkronizálva. Az Azure Virtual machines vagy függőségi viszonyban lehet átadni a pontos időt a gazdagép (*idő gazdagép*) be a virtuális gép vagy a virtuális gép közvetlenül lekérheti a idő egy kiszolgálót vagy mindkettőt. 
 
-A gazdagép virtuálisgép-interakció is befolyásolhatja az óra. Során [karbantartás megőrzése memória](maintenance-and-updates.md#maintenance-not-requiring-a-reboot), virtuális gépek vannak függesztve, akár 30 másodpercig. Például karbantartás megkezdése előtt a virtuális gép órája jeleníti meg a 10:00:00-kor és 28 másodperc tart. Után folytatja a virtuális Gépet, az óra, a virtuális gép továbbra is megjeleníti 10:00:00-kor, amelyek 28 másodperc ki. Ennek, a VMICTimeSync szolgáltatás figyeli a gazdagép és a módosítások utasításokat található a virtuális gépek esetében történő kompenzálás mi történik.
+A gazdagép virtuálisgép-interakció is befolyásolhatja az óra. Során [karbantartás megőrzése memória](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot), virtuális gépek vannak függesztve, akár 30 másodpercig. Például karbantartás megkezdése előtt a virtuális gép órája jeleníti meg a 10:00:00-kor és 28 másodperc tart. Után folytatja a virtuális Gépet, az óra, a virtuális gép továbbra is megjeleníti 10:00:00-kor, amelyek 28 másodperc ki. Ennek, a VMICTimeSync szolgáltatás figyeli a gazdagép és a módosítások utasításokat található a virtuális gépek esetében történő kompenzálás mi történik.
 
 A VMICTimeSync szolgáltatás minta vagy a szinkronizálás üzemmódban működik, és csak befolyásolják az óra előre. Minta módban, amelyhez szükség van a W32time futnia kell, a VMICTimeSync szolgáltatást a gazdagép 5 másodpercenként lekérdezi és W32time mintákat biztosít. Körülbelül 30 másodpercenként, a W32time szolgáltatás legújabb idő mintát vesz igénybe, és befolyásolhatja a Vendég óra használja. Szinkronizálási mód aktiválódik, ha Vendég folytatódik, vagy ha a Vendég óra drifts mögött a gazdagép óra több mint 5 másodperc. Azokban az esetekben, ahol a W32time szolgáltatás megfelelően fut az utóbbi esetben szabad bekövetkeznie.
 

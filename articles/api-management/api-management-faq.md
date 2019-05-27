@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 9c0c8adca9d99c00e32127e02a3d68ff668a235e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6a917b5e4586e9b2f54fee5816a9a0bcfcca2eee
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793305"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956252"
 ---
 # <a name="azure-api-management-faqs"></a>Az Azure API Management – gyakori kérdések
 Válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure API Management.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="contact-us"></a>Kapcsolat
+## <a name="contact-us"></a>Lépjen kapcsolatba velünk
 * [Hogyan tehetek fel a Microsoft Azure API Management csapata egy kérdést?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
@@ -39,7 +39,7 @@ Válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure API
 * [Hogyan állíthatok be egy egyetlen API több környezetet?](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [Használhatom-e a SOAP API Management?](#can-i-use-soap-with-api-management)
 * [Az API Management gateway IP cím állandó? Is használhatók a tűzfalszabályok?](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
-* Konfigurálhatok az OAuth 2.0 engedélyezési kiszolgáló az AD FS biztonsági?
+* [Konfigurálhatok az OAuth 2.0 engedélyezési kiszolgáló az AD FS biztonsági?](#can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security)
 * [Milyen útválasztási módszert használni a az API Management a több földrajzi helyen történő központi telepítések?](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [Az Azure Resource Manager-sablonok segítségével az API Management szolgáltatáspéldány létrehozása?](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
 * [Használhatok önaláírt SSL-tanúsítványt a háttérrendszerhez?](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)

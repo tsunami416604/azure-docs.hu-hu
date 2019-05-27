@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 2/25/2019
+ms.date: 05/20/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: c4998712d77771a5600c06183a76254548289372
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ebfe3db43de87e67ad05ed8cb9f5812b5ded04e0
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60365094"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965910"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Az ExpressRoute közvetlen konfigurálása az Azure CLI használatával
 
@@ -280,8 +280,9 @@ Alapértelmezés szerint 10 Kapcsolatcsoportok hozhat létre, amely tartalmazza 
 
 Segítségével további kapcsolatcsoport sávszélessége az ExpressRoute közvetlen csak az itt leírt forgatókönyveket támogatja. A sávszélességek olyan, 40 GB/s és 100 GB/s.
 
-Standard vagy prémium szintű Kapcsolatcsoportok hozhat létre. A szolgáltatás díja magában foglalja a standard Kapcsolatcsoportok vannak. A prémium szintű Kapcsolatcsoportok költségét, válassza ki a sávszélesség alapján történik. Kapcsolatcsoportok hozhat létre, csak a forgalmi díjas szerint. Korlátlan számú Kapcsolatcsoportok az ExpressRoute közvetlen nem támogatottak.
+**SkuTier** lehet helyi, Standard vagy Premium.
 
+**SkuFamily** MeteredData kell csak, korlátlan nem támogatott az ExpressRoute közvetlen.
 Kapcsolatcsoport létrehozása az ExpressRoute közvetlen erőforráson:
 
   ```azurecli

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 577f370c3be0f232be4e6628dd6754c4164ab93f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 13808871d67bb47dce82c5a3493fd89b0dfe1dcd
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785259"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952859"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mailben kapott egyszeri jelszót hitelesítés (előzetes verzió)
 
@@ -64,7 +64,7 @@ Megtekintheti a vendégfelhasználók számára az Azure Portalon egyszeri PIN-k
 > Ha egy felhasználó visszaváltja egy egyszeri jelszót, és később beszerzi az MSA, az Azure AD-fiókot vagy más összevont fiók, azok továbbra is hitelesíthető egy egyszeri jelszót. Ha meg szeretné frissíteni a hitelesítési módszert, a Vendég felhasználói fiókhoz törölheti, és újra meg kell hívnia, azokat.
 
 ### <a name="example"></a>Példa
-A vendégfelhasználók alexdoe@gmail.com felkérik, hogy a Fabrikam, amely nem rendelkezik a Google összevonási beállítása. Alex nem rendelkezik Microsoft-fiókkal. Akkor jelenik meg egy egyszeri jelszót a hitelesítéshez.
+A vendégfelhasználók alexdoe@gmail.com felkérik, hogy a Fabrikam, amely nem rendelkezik a Google összevonási beállítása. Alex nem rendelkezik Microsoft-fiókkal. Kap egy egyszeri jelszót a hitelesítéshez.
 
 ## <a name="opting-in-to-the-preview"></a>Az előzetes verzióra való engedélyezés 
 A választható művelet érvénybe léptetéséhez néhány percbe is telhet. Ezt követően csak újonnan meghívott felhasználók, akik megfelelnek a fenti feltételek hitelesítés egyszeri jelszót fogja használni. Vendég felhasználók, akik korábban már beváltott egy meghívást arra, hogy ugyanazt a hitelesítési módszert használja továbbra is.

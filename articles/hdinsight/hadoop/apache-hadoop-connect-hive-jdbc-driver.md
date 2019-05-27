@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: aaf54907ca0cf218b126fc9fc74080c02ef6cf6c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2e0c17b07f70d9b05ff9ea6c3af2e8dc26127cae
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721595"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65906519"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés az Apache Hive a HDInsight a JDBC-illesztőprogram segítségével
 
@@ -144,7 +144,7 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 **Ok**: Ez a hiba oka egy régebbi verziójú SQuirreL mellékelt commons-codec.jar fájl.
 
-**Megoldás**: Ez a hiba javításához használja a következő lépéseket:
+**Feloldási**: Ez a hiba javításához használja a következő lépéseket:
 
 1. SQuirreL kilép, és keresse fel a könyvtárba SQuirreL helyéül a rendszeren. A SquirreL címtárban alatt a `lib` könyvtár, cserélje le a egy meglévő commons-codec.jar letöltött a HDInsight-fürtből.
 
@@ -156,7 +156,7 @@ Most, hogy megtanulhatta, hogyan dolgozhat a Hive JDBC segítségével, egyéb m
 
 * [Az Apache Hive-adatok vizualizálása a Microsoft Power bi-ban az Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
 * [Power BI segítségével az Azure HDInsight adatok interaktív lekérdezéses Hive megjelenítése](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához](./../hdinsight-connect-hive-zeppelin.md).
+* [Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához](../interactive-query/hdinsight-connect-hive-zeppelin.md).
 * [Excel csatlakoztatása a Microsoft Hive ODBC illesztőprogram segítségével a HDInsight](apache-hadoop-connect-excel-hive-odbc-driver.md).
 * [Excel Power Query használatával csatlakozni az Apache Hadoop](apache-hadoop-connect-excel-power-query.md).
 * [Csatlakozás az Azure HDInsight és a Data Lake Tools for Visual Studio használatával, az Apache Hive-lekérdezések futtatása](apache-hadoop-visual-studio-tools-get-started.md).

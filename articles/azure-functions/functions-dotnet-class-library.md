@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 71ba1266c3a6a1f063f1af4ab37a5f29752c62f0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2a6d670ba9f2f496cc94d2790eb6f66d46305746
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107097"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872786"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# – fejlesztői referencia
 
@@ -29,16 +29,16 @@ Az Azure Functions C# és a C#-szkript programozási nyelveket támogatja. Ha a 
 Ez a cikk azt feltételezi, hogy már elolvasta a következő cikkeket:
 
 * [Az Azure Functions fejlesztői útmutatója](functions-reference.md)
-* [Az Azure Functions Visual Studio 2017-eszközök](functions-develop-vs.md)
+* [Az Azure Functions Visual Studio a 2019-eszközök](functions-develop-vs.md)
 
 ## <a name="functions-class-library-project"></a>Függvények hordozhatóosztálytár-projektjének
 
 A Visual Studióban a **Azure Functions** projektsablonnal hoz létre egy C# hordozhatóosztálytár-projektjének, amely a következő fájlokat tartalmazza:
 
 * [Host.JSON](functions-host-json.md) -tárolja a konfigurációs beállításokat, amelyek hatással vannak a projekt összes függvényt helyileg vagy az Azure-beli futtatásához.
-* [Local.Settings.JSON](functions-run-local.md#local-settings-file) -Alkalmazásbeállítások és a helyi futtatás során használt kapcsolati karakterláncokat tárolja. A fájl tartalmazza a titkos kulcsok és a függvényalkalmazáshoz az Azure-ban nyilvánosságra kerülését. Ehelyett kell [Alkalmazásbeállítások hozzáadása a függvényalkalmazáshoz](functions-develop-vs.md#function-app-settings).
+* [Local.Settings.JSON](functions-run-local.md#local-settings-file) -Alkalmazásbeállítások és a helyi futtatás során használt kapcsolati karakterláncokat tárolja. A fájl tartalmazza a titkos kulcsok és a függvényalkalmazáshoz az Azure-ban nyilvánosságra kerülését. Ehelyett [Alkalmazásbeállítások hozzáadása a függvényalkalmazáshoz](functions-develop-vs.md#function-app-settings).
 
-A projekt buildjének elkészítéséhez, ha úgy tűnik, a következő jön létre a buildek mappa struktúrát kimeneti könyvtár:
+A projekt buildjének elkészítéséhez, ha a mappastruktúrát, amely úgy tűnik, az alábbi példában létrejön a build kimeneti könyvtár:
 
 ```
 <framework.version>
@@ -50,7 +50,7 @@ A projekt buildjének elkészítéséhez, ha úgy tűnik, a következő jön lé
  | - host.json
 ```
 
-Ebben a könyvtárban, mire megtörténik a függvényalkalmazáshoz az Azure-ban. A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) , a Functions runtime a [hozzáadott a projekt NuGet-csomagok](./functions-bindings-register.md#c-class-library-with-visual-studio-2017).
+Ebben a könyvtárban, mire megtörténik a függvényalkalmazáshoz az Azure-ban. A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) , a Functions runtime a [hozzáadott a projekt NuGet-csomagok](./functions-bindings-register.md#c-class-library-with-visual-studio-2019).
 
 > [!IMPORTANT]
 > A létrehozási folyamat létrehoz egy *function.json* fájlban találhatók. Ez *function.json* fájl nem célja, hogy közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. Ismerje meg, hogyan tilthatja le a függvény, lásd: [funkciók letiltása](disable-function.md#functions-2x---c-class-libraries).
@@ -72,7 +72,7 @@ public static class SimpleExample
 } 
 ```
 
-A `FunctionName` attribútumot jelöli meg a metódus egy függvény belépési pontként. A névnek kell projekt egyedinek lennie, betűvel kezdődhet és csak betűket, számokat, `_` és `-`, legfeljebb 127 karakternél hosszabb. Projektsablonok gyakran létre kellett hozni egy metódust `Run`, de a metódus nevét is meg lehet bármely érvényes C# metódus nevét.
+A `FunctionName` attribútumot jelöli meg a metódus egy függvény belépési pontként. A névnek kell projekt egyedinek lennie, betűvel kezdődhet és csak betűket, számokat, `_`, és `-`, legfeljebb 127 karakternél hosszabb. Projektsablonok gyakran létre kellett hozni egy metódust `Run`, de a metódus nevét is meg lehet bármely érvényes C# metódus nevét.
 
 Az eseményindító attribútum határozza meg az eseményindító, és van kötve bemeneti adatokat egy metódus-paramétert. A példa függvény üzenetsori üzenetek által aktivált, és a metódus az átadott az üzenetsorban található üzenet a `myQueueItem` paraméter.
 
@@ -181,7 +181,7 @@ Ugyanaz a csomag mindkét verziójának szolgál az 1.x és a 2.x verzióját a 
 </ItemGroup>
 ```
 
-Többek között a `Sdk` csomagfüggőségek eseményindítók és kötések. Mivel azokat, a .NET-keretrendszer célként, miközben 2.x eseményindítók és kötések cél .NET Core egy 1.x jellegű parancsot a(z) projekt 1.x eseményindítók és kötések hivatkozik.
+Többek között a `Sdk` csomagfüggőségek eseményindítók és kötések. Egy 1.x jellegű parancsot a(z) projekt hivatkozik 1.x eseményindítók és kötések, mert ezek eseményindítók és kötések célként a .NET-keretrendszer 2.x eseményindítók és kötések .NET Core cél közben.
 
 A `Sdk` csomag is függ [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json), majd a közvetett módon [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage). A függőségek győződjön meg arról, hogy a projekt azokat a csomagokat, amelyek együttműködnek a Functions futtatókörnyezet verziójának verzióit használja, amely a projekt célokat. Ha például `Newtonsoft.Json` 11-es verzió a .NET-keretrendszer 4.6.1-es verziója, de a Functions futtatókörnyezete .NET-keretrendszer 4.6.1-es célzó csak kompatibilis `Newtonsoft.Json` 9.0.1. Ezért is rendelkezik a függvénykódot a projektben használandó `Newtonsoft.Json` 9.0.1.
 

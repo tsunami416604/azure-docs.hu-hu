@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdfd8fd642120f4e829de8fbb013f85aea2a9484
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: b0899a127566c4d06de7d42443a956c2660a7a6d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825566"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956908"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Átirányítási szoftveresen kötött mutató hivatkozásokat az Azure AD-alkalmazásproxyval közzétett alkalmazások
 
@@ -59,7 +59,7 @@ A MyApps böngésző kiterjesztésű belső URL-címekhez alkalmazásproxyval k�
 
 Ez a funkció használatához a felhasználónak van szüksége, töltse le a bővítményt, és bekerülhet. Nem tartozik a rendszergazdák vagy a felhasználó szükséges többi konfiguráció. 
 
-További információkért, hogyan konfigurálhatja ezt a beállítást, többek között tekintse át a [MyApps böngészőbővítmény](https://docs.microsoft.com/en-us/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension) dokumentációját.
+További információkért, hogyan konfigurálhatja ezt a beállítást, többek között tekintse át a [MyApps böngészőbővítmény](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension) dokumentációját.
 
 ### <a name="option-3-link-translation-setting"></a>3. lehetőség: Hivatkozás fordítási beállítás 
 

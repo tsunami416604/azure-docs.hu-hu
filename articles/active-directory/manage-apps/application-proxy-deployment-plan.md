@@ -15,16 +15,18 @@ ms.topic: conceptual
 ms.date: 04-04-2019
 ms.author: barbaraselden
 ms.reviewer: ''
-ms.openlocfilehash: 44393f80ab6ea01f0c2f52cb01dcd6241fab3d2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8686b9296c8b1d7c5232e2e46a0e66a9896656b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60442599"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113024"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Az Azure AD-alkalmazásproxy központi telepítésének megtervezése
 
-Azure Active Directory (Azure AD) alkalmazásproxy a helyszíni alkalmazások biztonságos és költséghatékony távoli hozzáférési megoldás is. Biztosít egy azonnali átmenet elérési út "Cloud First" szervezeteknek örökölt való hozzáférés kezelése a helyszíni alkalmazásokat, amelyek még nem képes a modern protokollok használatával. További bevezető jellegű információkért lásd: [Mi az Application Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) és [Application Proxy működése](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy).
+Azure Active Directory (Azure AD) alkalmazásproxy a helyszíni alkalmazások biztonságos és költséghatékony távoli hozzáférési megoldás is. Biztosít egy azonnali átmenet elérési út "Cloud First" szervezeteknek örökölt való hozzáférés kezelése a helyszíni alkalmazásokat, amelyek még nem képes a modern protokollok használatával. További bevezető jellegű információkért lásd: [Mi az Application Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy).
+
+A belső erőforrásokhoz hozzáférést ad a távoli felhasználók alkalmazásproxy használata ajánlott. Az alkalmazásproxy kell egy VPN-hez vagy a távoli elérés használati esetek fordított proxy váltja fel. Nem célja a felhasználók számára a vállalati hálózaton vannak. Ezek a felhasználók, akik alkalmazásproxy intranetes hozzáférés esetén nemkívánatos teljesítménye csökkenhet.
 
 Ez a cikk a szükséges tervezéséhez, üzemeltetése és kezelése az Azure AD Application Proxy erőforrásokat tartalmaz. 
 
@@ -41,25 +43,30 @@ Felel meg a következő előfeltételek vonatkoznak a megvalósítás megkezdés
    * Hipervizor megoldással-ban üzemeltetett virtuális gépek
    * Kimenő kapcsolat az alkalmazásproxy engedélyezése az Azure-ban üzemeltetett virtuális gépek.
 
-Lásd: [megismerheti az Azure AD alkalmazásproxy-összekötők](application-proxy-connectors.md) részletesebb áttekintése.
+* Lásd: [megismerheti az Azure AD alkalmazásproxy-összekötők](application-proxy-connectors.md) részletesebb áttekintése.
 
-   * Összekötő gazdagépek kell [engedélyezni kell a TLS 1.2](application-proxy-add-on-premises-application.md) az összekötők telepítése előtt.
+     * Összekötő gépek kell [engedélyezni kell a TLS 1.2](application-proxy-add-on-premises-application.md) az összekötők telepítése előtt.
 
-   * Ha lehetséges, üzembe helyezése az összekötők a [ugyanazon a hálózaton](application-proxy-network-topology.md) és a háttér-alkalmazáskiszolgálókat, szegmens. Célszerű az alkalmazások felderítés végeztével összekötő-gazdagépként használandó számítógépek telepítéséhez.
+     * Ha lehetséges, üzembe helyezése az összekötők a [ugyanazon a hálózaton](application-proxy-network-topology.md) és a háttér-alkalmazáskiszolgálókat, szegmens. Célszerű összekötők üzembe, az alkalmazások felderítés végrehajtása után.
+     * Azt javasoljuk, hogy minden egyes összekötőcsoporthoz, magas rendelkezésre állást és méretezhetőséget biztosítanak, legalább két összekötőt. Három összekötő, akkor az optimális arra az esetre, szükség lehet a szolgáltatás bármikor egy gép. Tekintse át a [összekötő kapacitás tábla](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning) annak eldöntésében, milyen típusú gép összekötők telepítése érdekében. Minél nagyobb a gép a további puffer és nagy teljesítményű lesz az összekötőt.
 
-* **Hálózati hozzáférés beállításai**: Az Azure AD-alkalmazásproxy összekötőit [megpróbál csatlakozni az Azure HTTPS (443-as TCP Port) és a HTTP (80-as TCP Port)](application-proxy-add-on-premises-application.md). 
+* **Hálózati hozzáférés beállításai**: Az Azure AD-alkalmazásproxy összekötőit [csatlakoztatása az Azure-n keresztül a HTTPS (443-as TCP Port) és a HTTP (80-as TCP Port)](application-proxy-add-on-premises-application.md). 
 
    * Megszakítást összekötő TLS-forgalom nem támogatott, és megakadályozza, hogy az összekötők a saját Azure App Proxy-végponttal rendelkező biztonságos csatornát létrehozó.
 
    * Ne használjon minden űrlap beágyazott ellenőrzési kimenő TLS kommunikáció összekötők és az Azure között. Belső hálózatfelügyeleti egy összekötő és a háttérkiszolgáló alkalmazások között lehetőség azonban ronthatja a felhasználói élmény, és mint ilyen, nem ajánlott.
 
-   * Az alkalmazásproxy-összekötők magukat a terheléselosztás akkor is nem támogatott, vagy még akkor is szükséges.
+   * Terheléselosztás maguk összekötőt akkor is nem támogatott, vagy még akkor is szükséges.
 
 ### <a name="important-considerations-before-configuring-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy konfigurálása előtt fontos szempontok
 
 Az alábbi alapvető követelményeknek teljesülniük kell ahhoz, hogy konfigurálnia és alkalmaznia az Azure AD-alkalmazásproxy.
 
 *  **Előkészítési**: Application proxy üzembe helyezése előtt felhasználói identitásokat a helyszíni címtárból szinkronizált vagy közvetlenül az Azure AD-bérlőt belül létrehozni. Identitásszinkronizálási lehetővé teszi, hogy az Azure ad-ben előre hitelesíti a felhasználókat, mielőtt őket hozzáférés engedélyezése az alkalmazásproxyval közzétett alkalmazások és az egyszeri bejelentkezés (SSO) végrehajtásához szükséges felhasználói információk.
+
+* **Feltételes hozzáférési követelmények**: Alkalmazásproxy segítségével intranetes hozzáférés esetén, mert ez hozzáadja a késés, amely negatív hatással lesz a felhasználók nem ajánlott. Azt javasoljuk, hogy előtti hitelesítés és feltételes hozzáférési szabályzatokat az alkalmazásproxy használatával távoli elérés az interneten.  Egy módszert biztosít a feltételes hozzáférés az intranethez használják, hogy alkalmazások korszerűsítése, így azokat is diretly hitelesítés az aad-ben. Tekintse meg [erőforrások áttelepítése az AAD-alkalmazások](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) további információt. 
+
+* **Szolgáltatási korlátozásaival**: Ellen védelmet biztosító overconsumption van az egyes bérlők által erőforrások minden alkalmazás és a bérlői szabályozási korlátok. Tekintse meg ezeket a korlátokat megtekintéséhez [az Azure AD szolgáltatási korlátozások](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Ezek a szabályozási határértékek sokkal jellemző használati kötet felett egy teljesítményteszt alapulnak, és központi telepítések többsége bőséges puffert biztosít.
 
 * **Nyilvános tanúsítvány**: Egyéni tartománynevek használatakor meg kell szerzik be a nyilvános tanúsítvány nem a Microsofttól megbízható hitelesítésszolgáltató által kibocsátott. Szervezeti követelményektől függően egy tanúsítvány eltarthat egy ideig, és azt javasoljuk, hogy a lehető leghamarabb folyamat. Az Azure Application Proxy támogatja a standard, [helyettesítő](application-proxy-wildcard.md), vagy SAN-alapú tanúsítványokat.
 
@@ -73,13 +80,11 @@ Az alábbi alapvető követelményeknek teljesülniük kell ahhoz, hogy konfigur
 
 * **Rendszergazdai jogosultságokkal, és szerepkörök**
 
-   * **Összekötő telepítési** megköveteli a Windows-kiszolgálóra, amely azt telepítése a helyi rendszergazdai jogosultságokkal. Legalább egy alkalmazás rendszergazdai szerepkör és az összekötő-példányt az Azure AD-bérlő regisztrálásához hitelesítéséhez is igényel. 
+   * **Összekötő telepítési** megköveteli a Windows-kiszolgálóra, amely azt telepítése a helyi rendszergazdai jogosultságokkal. Azt is szükséges legalább egy *alkalmazás-rendszergazda* szerepkör hitelesítéshez és az összekötő-példányt az Azure AD-bérlő regisztrálásához. 
 
    * **Alkalmazás közzététele és felügyeleti** megkövetelése a *alkalmazás-rendszergazda* szerepkör. Alkalmazás-rendszergazdák kezelhetik a címtárban, beleértve a regisztrációk, egyszeri bejelentkezési beállításainak, felhasználó és csoport-hozzárendelések és licencelési, alkalmazást proxybeállításokat és jóváhagyás minden alkalmazás. Nem adja meg azt a feltételes hozzáférés kezelését. A *Felhőalkalmazás-rendszergazda* szerepkör rendelkezik a képességek az alkalmazás-rendszergazda, azzal a különbséggel, hogy nem teszi lehetővé az alkalmazásproxy-beállítások kezelését.
 
-* **Licencelési**: Az alkalmazásproxy az alapszintű Azure AD-előfizetés keretében érhető el. Tekintse meg a [Azure Active Directory díjszabás oldala](https://azure.microsoft.com/pricing/details/active-directory/) licencelési, beállítások és funkciók teljes listáját. 
-
-* Szerezze be az alkalmazás-rendszergazda jogosultságokkal keresztül szükség lehet egy szerepkör jogosultságszint-emelési [Privileged Identity Manager](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) (PIM), ezért győződjön meg arról, hogy a fiók nem jogosult. 
+* **Licencelési**: Az alkalmazásproxy az alapszintű Azure AD-előfizetés keretében érhető el. Tekintse meg a [Azure Active Directory díjszabás oldala](https://azure.microsoft.com/pricing/details/active-directory/) licencelési, beállítások és funkciók teljes listáját.  
 
 ### <a name="application-discovery"></a>Alkalmazásdetektálás
 
@@ -107,9 +112,9 @@ Az alábbiakban a területek, amelyhez be kell állítania az a szervezet üzlet
 
  **Access (Hozzáférés)**
 
-* Tartomány és az Azure AD-felhasználók a Ha bármely tartományhoz csatlakoztatott és az Azure AD-hez csatlakoztatott eszközök hozzáférhetnek a közzétett alkalmazások biztonságos és zökkenőmentes egyszeri bejelentkezés (SSO).
+* A tartományhoz csatlakozó távoli felhasználók vagy az Azure AD-hez csatlakoztatott eszközök felhasználók hozzáférhetnek a közzétett alkalmazások biztonságos és zökkenőmentes egyszeri bejelentkezés (SSO).
 
-* A saját eszközt jóváhagyott felhasználók biztonságosan érhessék el a közzétett alkalmazások, az MFA-ban regisztrált, és a hitelesítési módszerként a Microsoft Authenticator alkalmazást a mobiltelefonon regisztrált.
+* Engedélyezett a saját eszközt távoli felhasználók biztonságosan érhessék el a közzétett alkalmazások, feltéve, hogy az MFA-ban regisztrált és a hitelesítési módszerként a Microsoft Authenticator alkalmazást a mobiltelefonon regisztrált.
 
 **Cégirányítási** 
 
@@ -121,7 +126,7 @@ Az alábbiakban a területek, amelyhez be kell állítania az a szervezet üzlet
 
 **Teljesítmény**
 
-* Nincs nem a belső hálózati alkalmazás elérése képest alkalmazásteljesítmény romlást okoz.
+* Nincs nem fér hozzá az alkalmazás a belső hálózatról képest alkalmazásteljesítmény teljesítménycsökkenése.
 
 **Felhasználói élmény**
 
@@ -164,7 +169,7 @@ Az alábbi tervezési elemek növelje a próbaüzem végrehajtását közvetlen�
 
 ### <a name="deploy-application-proxy"></a>Application Proxy üzembe helyezése
 
-A lépéseket az Application Proxy üzembe helyezése terjed ki a jelen [oktatóanyag távoli hozzáférés a helyszíni alkalmazás hozzáadására szolgáló](application-proxy-add-on-premises-application.md). Ha a telepítés nem sikeres, válassza ki a **alkalmazásproxy hibaelhárítása** a portálon, vagy használja a hibaelhárítási útmutató[az alkalmazásproxy-ügynök Összekötőjével telepítésével járó problémák](application-proxy-connector-installation-problem.md).
+A lépéseket az Application Proxy üzembe helyezése terjed ki a jelen [oktatóanyag távoli hozzáférés a helyszíni alkalmazás hozzáadására szolgáló](application-proxy-add-on-premises-application.md). Ha a telepítés nem sikeres, válassza ki a **alkalmazásproxy hibaelhárítása** a portálon, vagy használja a hibaelhárítási útmutató [az alkalmazásproxy-ügynök Összekötőjével telepítésével járó problémák](application-proxy-connector-installation-problem.md).
 
 ### <a name="publish-applications-via-application-proxy"></a>Tegye közzé az alkalmazásokat az alkalmazásproxy-n keresztül
 
@@ -174,7 +179,7 @@ Alkalmazások közzététele a [PowerShell](https://docs.microsoft.com/powershel
 
 Az alábbiakban néhány gyakorlati tanácsot, kövesse az alkalmazás közzététele:
 
-* **Összekötő-csoportok használata**: Rendeljen hozzá egy összekötőcsoporthoz, amely minden egyes alkalmazás-közzététel van kijelölve.
+* **Összekötő-csoportok használata**: Rendeljen hozzá egy összekötőcsoporthoz, amely minden egyes alkalmazás-közzététel van kijelölve. Azt javasoljuk, hogy minden egyes összekötőcsoporthoz, magas rendelkezésre állást és méretezhetőséget biztosítanak, legalább két összekötőt. Három összekötő, akkor az optimális arra az esetre, szükség lehet a szolgáltatás bármikor egy gép. Emellett tekintse meg [külön hálózatok és helyek összekötőcsoportok használatával az alkalmazások közzététele](application-proxy-connector-groups.md) is használatáról összekötőcsoportok az összekötőkhöz, hálózati vagy a hely szerint szegmentálhatja a megtekintéséhez.
 
 * **Állítsa be a háttéralkalmazás túllépte az időkorlátot**: Ez a beállítás akkor hasznos, forgatókönyvekben, ahol az alkalmazás egy ügyfél tranzakció feldolgozása több mint 75 másodperc lehet szükség. Például amikor egy ügyfél egy lekérdezést küld egy webalkalmazást, amely működik az előtér-adatbázishoz. Az előtér ezt a lekérdezést küld a háttérbeli adatbázis-kiszolgáló és a válaszra vár, de a ideje választ kap, a témakör az ügyféloldalon túllépi az időkorlátot. Az időtúllépés beállítás 180 másodperc hosszabb tranzakciók elvégzéséhez hosszú biztosít.
 
@@ -190,7 +195,7 @@ Az alábbiakban néhány gyakorlati tanácsot, kövesse az alkalmazás közzét�
 
 * **A kérelem törzsében URL-címek lefordítása**: Ha azt szeretné, hogy a hivatkozások az alkalmazásból, a válaszokat az ügyfélnek küldött lekérdezésekké, kapcsolja be a Alkalmazástörzs hivatkozás fordítási egy alkalmazáshoz. Ha engedélyezve van, ezt a funkciót biztosít a legjobb erőfeszítés kísérlet a alkalmazásproxy talál az ügyfelek számára visszaadott HTML és CSS-válaszok összes belső hivatkozások fordítása. Ez akkor hasznos, ha a szokott abszolút vagy NetBIOS shortname hivatkozásai a tartalmat tartalmazó alkalmazásokat, vagy a tartalom, amely más alkalmazások közzététele a helyszíni alkalmazásokat.
 
-Forgatókönyvek, ahol a egy közzétett alkalmazás hivatkozások más közzétett alkalmazásokat engedélyezze hivatkozás fordítási vagy egyes alkalmazásokhoz, hogy a felhasználói élmény felett az alkalmazásonkénti szintjén.
+Forgatókönyvek esetén, ahol a közzétett alkalmazás hivatkozásainak más közzétett alkalmazást engedélyezheti az hivatkozás fordítását minden alkalmazáshoz, hogy a felhasználói élmény felett az alkalmazásonkénti szintjén.
 
 Tegyük fel például, hogy három olyan alkalmazásokkal rendelkezik, hogy az összes hivatkozás egymáshoz alkalmazásproxyn keresztül közzétett: Előnyök, költségek, és utazási, valamint egy negyedik alkalmazást, visszajelzés, alkalmazásproxyn keresztül közzétett nem.
 
@@ -225,7 +230,7 @@ Az alkalmazás közzététele után kell elérhető írja be a külső URL-címe
 
 ### <a name="enable-pre-authentication"></a>Üzem előtti hitelesítés engedélyezése
 
-Ellenőrizze, hogy az alkalmazás az alkalmazásproxyn keresztül érhető el. 
+Ellenőrizze, hogy az alkalmazás elérhető-e a külső URL-CÍMEN keresztül fér hozzá alkalmazásproxyn keresztül. 
 
 1. Navigáljon a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** , és válassza ki a kezelni kívánt alkalmazást.
 
@@ -233,7 +238,7 @@ Ellenőrizze, hogy az alkalmazás az alkalmazásproxyn keresztül érhető el.
 
 3. Az a **előhitelesítés** mezőhöz, használja a legördülő listából válassza ki a **Azure Active Directory**, és válassza ki **mentése**.
 
-Az üzem előtti hitelesítés engedélyezve van az Azure AD fog mondd csak a hitelesítéshez, és majd a háttéralkalmazás kell is próbára teszi hitelesítést igényel, ha. Az Azure AD-csatlakoztatott előhitelesítéséhez korlátlanról is konfigurálja a külső URL-cím a HTTPS, így bármely kezdetben a HTTP-hez konfigurált alkalmazás már biztonságát a HTTPS.
+Előtti hitelesítés engedélyezve van, az Azure ad-ben először felhasználók fight a hitelesítéshez, és ha egyszeri bejelentkezést configued majd a háttéralkalmazás is ellenőrzi a felhasználó az alkalmazáshoz való hozzáférés megadása előtt. Az áteresztő előhitelesítés módjának megváltoztatása az Azure AD is konfigurálja a külső URL-cím, HTTPS, így bármely alkalmazás kezdetben konfigurált HTTP a HTTPS már biztonságát.
 
 ### <a name="enable-single-sign-on"></a>Egyszeri bejelentkezés engedélyezése
 
@@ -241,7 +246,7 @@ Egyszeri Bejelentkezést biztosít a legjobb lehetséges felhasználói élmény
 
 Választás a **csatlakoztatott** beállítás lehetővé teszi, hogy a felhasználók hozzáférhessenek a közzétett alkalmazást anélkül hogy az Azure AD-hitelesítést.
 
-Egyszeri bejelentkezés elvégzése csak akkor lehetséges, ha az Azure ad-ben a felhasználói hozzáférés kérése az erőforrás, így az alkalmazás konfigurálni kell, hogy előre a felhasználók hitelesítése után hozzáférést az egyszeri bejelentkezés függvény azonosíthatja, ellenkező esetben az egyszeri bejelentkezés beállításai le lesz tiltva.
+Egyszeri bejelentkezés elvégzése csak akkor lehetséges, ha az Azure ad-ben a felhasználói hozzáférés kérése az erőforrás, így az alkalmazás konfigurálni kell, hogy előre a felhasználók hitelesítése az Azure AD-hozzáférés esetén az egyszeri bejelentkezés függvény azonosíthatja, ellenkező esetben az egyszeri bejelentkezés beállításai le lesz tiltva.
 
 Olvasási [egyszeri bejelentkezés az Azure AD-alkalmazások](what-is-single-sign-on.md) segítségével válassza ki a legmegfelelőbb egyszeri bejelentkezési módszer, az alkalmazások konfigurálásakor.
 
@@ -265,7 +270,7 @@ Az alábbi képességeket támogatja az Azure AD-alkalmazásproxy használható:
 
 * Kockázatalapú feltételes hozzáférés: Megvédheti adatait a rosszindulatú támadók egy [kockázatalapú feltételes hozzáférési szabályzat](https://www.microsoft.com/cloud-platform/conditional-access) , amelyek alkalmazhatók minden alkalmazás és az összes felhasználóra, hogy a helyszíni vagy a felhőben.
 
-* Az Azure AD-alkalmazás panelen: Az alkalmazásproxy-szolgáltatás telepítve, és biztonságosan közzétett alkalmazások, az ajánlat a felhasználók egy egyszerű központ felderítése és érik el a alkalmazásokat. Önkiszolgáló képességek, például a kérhet hozzáférést az új alkalmazások és a csoportok vagy keresztül, mások nevében ezekhez az erőforrásokhoz való hozzáférés kezelése a termelékenység növelése a [hozzáférési Panel](https://aka.ms/AccessPanelDPDownload).
+* Azure AD Access Panel: Az alkalmazásproxy-szolgáltatás telepítve, és biztonságosan közzétett alkalmazások, az ajánlat a felhasználók egy egyszerű központ felderítése és érik el a alkalmazásokat. Önkiszolgáló képességek, például a kérhet hozzáférést az új alkalmazások és a csoportok vagy keresztül, mások nevében ezekhez az erőforrásokhoz való hozzáférés kezelése a termelékenység növelése a [hozzáférési Panel](https://aka.ms/AccessPanelDPDownload).
 
 ## <a name="manage-your-implementation"></a>A megvalósítás kezelése
 
@@ -290,7 +295,7 @@ Azure ad-ben megadhat további betekintést nyerjen a szervezet felhasználói k
 
 #### <a name="application-audit-logs"></a>Alkalmazások auditnaplói
 
-Ezek a naplók részletes információkat talál az alkalmazásproxyt, valamint az eszköz és a felhasználó az alkalmazás elérésének konfigurált alkalmazások a bejelentkezéseket. Azok az Azure Portalon, és a naplózási API-ban található.
+Ezek a naplók bejelentkezések Application Proxy és az eszköz és a felhasználó az alkalmazás elérésének konfigurált alkalmazások részletes adatainak megadása. Naplók találhatók az Azure Portalon, és a naplózási API az exportálás.
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows biztonságiesemény-naplóinak és teljesítményszámlálók
 
@@ -300,7 +305,7 @@ Ezek a naplók részletes információkat talál az alkalmazásproxyt, valamint 
 
 További információ a gyakori problémák és a problémák megoldásához útmutatónk bemutatja, hogyan [hibaelhárítási](application-proxy-troubleshoot.md) hibaüzenetek. 
 
-Ezek a cikkek gyakori forgatókönyveket fednek le, de a saját hibaelhárítási útmutatókat is létrehozhat támogatási szervezete számára. 
+A következő cikkek terjed ki a szokványos hibaelhárítási útmutatók a szervezet támogatási létrehozására is használható. 
 
 * [Probléma az alkalmazáslap megjelenítésekor](application-proxy-page-appearance-broken-problem.md)
 * [Az alkalmazás betöltési ideje túl hosszú](application-proxy-page-load-speed-problem.md)

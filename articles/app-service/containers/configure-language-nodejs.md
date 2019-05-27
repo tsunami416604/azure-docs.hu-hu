@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 3074048dd4426a10e706e37e6d375ea4995fcbbb
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 9422d543ad83f29d60fd7e1de51a79c3416e5b14
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919778"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956177"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Az Azure App Service Linux Node.js-alkalmazás konfigurálása
 
@@ -137,7 +137,7 @@ Miután befejeződött a hibakeresést, a hibakereső leállítása kiválasztá
 
 ## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
-Az App Service-ben is [állítsa be az alkalmazásbeállításokat](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) kívül a kódját. Ezután elérheti azokat a standard szintű Node.js-minta használatával. Például egy alkalmazás-beállítás eléréséhez nevű `NODE_ENV`, a következő kóddal:
+Az App Service-ben is [állítsa be az alkalmazásbeállításokat](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) kívül a kódját. Ezután elérheti azokat a standard szintű Node.js-minta használatával. Például egy alkalmazás-beállítás eléréséhez nevű `NODE_ENV`, a következő kóddal:
 
 ```javascript
 process.env.NODE_ENV
@@ -253,7 +253,7 @@ Amikor egy működő Node.js-alkalmazás működését eltérően az App Service
     - Attól függően, a *package.json*, különböző csomagokban megtalál mindent éles üzemmódhoz előfordulhat, hogy telepíteni (`dependencies` és `devDependencies`).
     - Bizonyos webes keretrendszerek statikus fájlok eltérően éles módban helyezheti üzembe.
     - Bizonyos webes keretrendszerek egyéni indítási parancsfájlok felhasználhatja az éles módban való futtatáskor.
-- Az alkalmazás futtatása az App Service-ben a fejlesztői módban. Például a [MEAN.js](https://meanjs.org/), fejlesztői mód által futtatókörnyezetben is beállíthatja az alkalmazás [beállítás a `NODE_ENV` Alkalmazásbeállítás](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Az alkalmazás futtatása az App Service-ben a fejlesztői módban. Például a [MEAN.js](https://meanjs.org/), fejlesztői mód által futtatókörnyezetben is beállíthatja az alkalmazás [beállítás a `NODE_ENV` Alkalmazásbeállítás](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
 ## <a name="next-steps"></a>További lépések
 

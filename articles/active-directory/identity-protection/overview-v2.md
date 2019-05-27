@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d533e6aac9ae1a486d018414a86a9dc3fe742c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 37c63e32f1ee9c404e8b84a6eb17bc6eec30a761
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294284"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956929"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Mi az Azure Active Directory Identity Protection (frissíthetők)?
 
@@ -147,44 +147,44 @@ Az Identity Protection kockázatészlelés alapkonfiguráció folyamat-bármely 
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek 
 
-Nézzük meg Sarah, a Contoso-alkalmazott példát. 
+A példában a Contoso-alkalmazott, nézzük meg. 
 
-1. Sarah próbál bejelentkezni az Exchange online-hoz a Tor böngészőből. Bejelentkezés időben az Azure AD észleli a valós idejű kockázati események. 
+1. Egy alkalmazott próbál bejelentkezni az Exchange online-hoz a Tor böngészőből. Bejelentkezés időben az Azure AD észleli a valós idejű kockázati események. 
 
-2. Az Azure AD észleli, hogy Sarah jelentkezik be egy névtelen IP-cím, egy közepes méretű bejelentkezési kockázati szint elindítása. 
+2. Az Azure AD észleli, hogy az alkalmazott jelentkezik be egy névtelen IP-cím, egy közepes méretű bejelentkezési kockázati szint elindítása. 
 
-3. Sarah van próbálnak futtatni rajta egy MFA rendszer, mert a Contoso informatikai rendszergazda a bejelentkezési kockázat Identity Protection feltételes hozzáférési szabályzat konfigurálva. A házirend többtényezős Hitelesítést követel meg a bejelentkezést a kockázata, közepes vagy nagyobb. 
+3. Az alkalmazott van próbálnak futtatni rajta egy MFA rendszer, mert a Contoso informatikai rendszergazda a bejelentkezési kockázat Identity Protection feltételes hozzáférési szabályzat konfigurálva. A házirend többtényezős Hitelesítést követel meg a bejelentkezést a kockázata, közepes vagy nagyobb. 
 
-4. Sarah továbbítja a többtényezős hitelesítés kérése fér hozzá az Exchange online-hoz és a Sarah a felhasználói kockázat szintje nem módosulnak. 
+4. Az alkalmazott továbbítja a többtényezős hitelesítés használatával, és fér hozzá az Exchange online-hoz, és azok felhasználói kockázati szint nem módosulnak. 
 
-Mi történt a háttérben? A bejelentkezési kísérlet a Tor böngészőből egy valós idejű bejelentkezési kockázat névtelen IP-cím az Azure AD-ben indul el. Az Azure AD dolgozza fel a kérelmet, alkalmazza a a bejelentkezési kockázati szabályzat konfigurálva az Identity Protection Sarah a bejelentkezési kockázati szint telepítve a küszöbérték (közepes). Sarah korábban regisztrálva volt az MFA-hoz, mivel ő volt képes válaszolni, és adja át az MFA-hitelesítést. Saját képes sikeresen átadni az az MFA-hitelesítést jelzést az Azure ad-hez, hogy ő volt a azonosságát törvényes tulajdonosa, és a saját felhasználói kockázati szint nem növekszik. 
+Mi történt a háttérben? A bejelentkezési kísérlet a Tor böngészőből egy valós idejű bejelentkezési kockázat névtelen IP-cím az Azure AD-ben indul el. Az Azure AD dolgozza fel a kérelmet, alkalmazza a a bejelentkezési kockázati szabályzat konfigurálva az Identity Protection az alkalmazott bejelentkezési kockázati szint telepítve a küszöbérték (közepes). Mivel az alkalmazott volt korábban regisztrálva az MFA-hoz, a felhasználók sikeresen válaszolni, és adja át az MFA-hitelesítést. Sikeresen adja át az MFA-hitelesítést képesek jelzést az Azure AD, hogy voltak valószínűleg azonosságát törvényes tulajdonosa, és azok felhasználói kockázati szint nem növekszik. 
 
 
-De mi történik, ha Sarah volt, egy megpróbál bejelentkezni? 
+De mi történik, ha az alkalmazott volt, egy megpróbál bejelentkezni? 
 
-1. Egy rosszindulatú aktor Sarah a hitelesítő adatokkal próbál bejelentkezni Sarah az Exchange Online-fiókot a Tor böngészőből, mivel IP-címüket elrejteni kívánt. 
+1. Jelentkezzen be az Exchange Online-fiókot a Tor böngészőből, mivel az IP-címüket elrejteni kívánt megkísérli egy rosszindulatú aktor az alkalmazott hitelesítő adatokkal. 
 
 2. Az Azure AD észleli, hogy a bejelentkezési kísérlet egy névtelen IP-címről, egy valós idejű bejelentkezési kockázat elindítása. 
 
 3. A rosszindulatú aktor van próbálnak futtatni rajta egy MFA rendszer, mivel a Contoso rendszergazda beállította az Identity Protection bejelentkezési kockázati feltételes hozzáférési szabályzatot az többtényezős hitelesítés esetén a bejelentkezési kockázat közepes vagy nagyobb. 
 
-4. A rosszindulatú aktor meghiúsul, az MFA-hitelesítést, és nem fér hozzá a Sarah az Exchange Online-fiókot. 
+4. A rosszindulatú aktor meghiúsul az MFA-hitelesítést, és nem tudja elérni az alkalmazott Exchange Online-fiókját. 
 
-5. A sikertelen többtényezős hitelesítés kérése által aktivált egy kockázati esemény rögzítését, a későbbi bejelentkezések Sarah a felhasználói kockázat előléptetése. 
+5. A sikertelen többtényezős hitelesítés kérése által aktivált egy kockázati esemény rögzítését, a felhasználói kockázat a későbbi bejelentkezések előléptetése. 
 
-Most, hogy egy rosszindulatú aktor próbált Sarah a fiókjába, lássuk, mi történik, amikor legközelebb Sarah megpróbál bejelentkezni. 
+Most, hogy egy rosszindulatú aktor próbált Sarah a fiókjába, lássuk, mi történik, a következő alkalommal, amikor az alkalmazott megpróbál bejelentkezni. 
 
-1. Sarah próbál bejelentkezni az Exchange online-hoz az Outlookban. Bejelentkezés időben az Azure AD észleli a valós idejű kockázati események, valamint bármely korábbi felhasználói kockázat. 
+1. Az alkalmazott próbál bejelentkezni az Exchange online-hoz az Outlookban. Bejelentkezés időben az Azure AD észleli a valós idejű kockázati események, valamint bármely korábbi felhasználói kockázat. 
 
 2. Az Azure AD nem észleli a bármely valós idejű bejelentkezési kockázat, de a felhasználó magas kockázati miatt a múltbeli kockázatos tevékenység észleli a korábbi helyzetekben.  
 
-3. Sarah merül fel a jelszó alaphelyzetbe állítására szerint, mert a Contoso a rendszergazda beállította az Identity Protection felhasználói kockázati házirend a jelszómódosítás megkövetelése, ha a magas kockázatú felhasználók. 
+3. Az alkalmazott merül fel a jelszó alaphelyzetbe állítására szerint, mert a Contoso a rendszergazda beállította az Identity Protection felhasználói kockázati házirend a jelszómódosítás megkövetelése, ha a magas kockázatú felhasználók. 
 
-4. Sarah SSPR és az MFA regisztrálva van, mivel ő sikeresen alaphelyzetbe állítja saját jelszót. 
+4. Az alkalmazott SSPR és az MFA regisztrálva van, mivel azok sikeresen alaphelyzetbe állítja a jelszavát. 
 
-5. Saját jelszó alaphelyzetbe állítása, Sarah a hitelesítő adatok már nem sérült a biztonsága és saját identitás biztonságos állapotba tér vissza. 
+5. Ehhez állítsa alaphelyzetbe a jelszavát, az alkalmazott hitelesítő adatok már nem sérült a biztonsága és -azonosítót fog kérni biztonságos állapotba tér vissza. 
 
-6. Sarah a korábbi kockázati események elhárulnak, és a saját felhasználói kockázat szintjének csökkentése a hitelesítő adatok biztonsági sérülés válaszul automatikusan alaphelyzetbe áll. 
+6. Az alkalmazott előző kockázati események elhárulnak, és a saját felhasználói kockázat szintjének csökkentése a hitelesítő adatok biztonsági sérülés válaszul automatikusan alaphelyzetbe áll. 
 
 ## <a name="how-do-i-configure-identity-protection"></a>Hogyan konfigurálhatom az Identity Protection? 
 
@@ -203,14 +203,14 @@ Identity Protection 3 szerepkört a felügyeleti tevékenységek, az üzemelő p
 További részletekért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
 
  
-## <a name="licensing"></a>Licencek
+## <a name="licensing"></a>Licencelés
 
 >[!NOTE]
 > Az Identity Protection (frissítés) a nyilvános előzetes verzióban csak a prémium szintű Azure AD P2-ügyfeleknek lesz hozzáférése a kockázatos felhasználók jelentéshez és a kockázatos bejelentkezések jelentés.
 
 
 
-| Képesség | Prémium szintű Azure AD P2 | Prémium szintű Azure AD P1 | Az Azure AD Basic vagy ingyenes |
+| Képesség | Azure AD Premium P2 | Azure AD Premium P1 | Az Azure AD Basic vagy ingyenes |
 | --- | --- | --- | --- |
 | Felhasználói kockázati házirend | Igen | Nem | Nem |
 | Bejelentkezési kockázati házirend | Igen | Nem | Nem |

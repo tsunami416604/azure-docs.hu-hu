@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 6cd5413d64be2117cc5f64202ecdaaf40f35db4b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 76bbcd6fa400111514ec3496005a28ec28ae6ab7
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205376"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977896"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -71,7 +71,7 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 
 * **Riasztási hely küszöbértéke**: Ajánlott legalább 3 vagy 5 helyeket. Az optimális riasztási hely küszöbértéke és tesztelési helyek közötti kapcsolat **riasztási hely küszöbértéke** = **teszthelyszín száma** – 2-ától legalább öt tesztelése helyek.
 
-## <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
+## <a name="multi-step-web-tests"></a>Többlépéses webtesztek
 Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából állnak. Ha például egy értékesítési webhelyet figyel, tesztelheti, hogy megfelelően működik-e a termékek kosárba helyezése.
 
 > [!NOTE]
@@ -175,8 +175,8 @@ Válassza ki **teszt részleteinek megtekintése** látható a pontdiagram és a
 
 Amikor karbantartást végez a szolgáltatáson, célszerű kikapcsolni a rendelkezésre állási teszteket és az azokhoz kapcsolódó riasztási szabályokat.
 
-![Tiltsa le a webes teszt](./media/monitor-web-app-availability/6disable.png)
-![teszt szerkesztése](./media/monitor-web-app-availability/8edittest.png)
+![Tiltsa le a webes teszt](./media/monitor-web-app-availability/6disable.png)  
+![Teszt szerkesztése](./media/monitor-web-app-availability/8edittest.png)
 
 ## <a name="failures"></a>Ha hibákat lát
 Kattintson egy piros pontra.

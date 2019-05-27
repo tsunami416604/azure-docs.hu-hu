@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: a6a2fb246e407d6ea240ff40f4d2fa2b1b780931
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7a0269ff22987648d134cb7f4fba8e28e29fd8b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61023738"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956291"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet használata az Azure Kubernetes Service (AKS)
 
@@ -26,13 +26,35 @@ A Virtual Kubelet-szolgáltató Azure Container Instances használatakor Linux- 
 >
 > Virtual Kubelet egy kísérleti nyílt forráskódú projekt, és így használható. Közre, fájl problémákat, és tanulmányozza részletesen virtual kubelet, tekintse meg a [Virtual Kubelet GitHub-projekt][vk-github].
 
-## <a name="prerequisite"></a>Előfeltétel
+## <a name="before-you-begin"></a>Előkészületek
 
 Jelen dokumentum céljából feltételezzük, hogy egy AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg a [Azure Kubernetes Service (AKS) rövid][aks-quick-start].
 
 Emellett az Azure CLI verziójának **2.0.33** vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 A Virtual Kubelet telepítéséhez [Helm](https://docs.helm.sh/using_helm/#installing-helm) is szükség.
+
+### <a name="register-container-instances-feature-provider"></a>Container Instances szolgáltatás-szolgáltató regisztrálása
+
+Ha korábban nem használta az Azure Container Instance (ACI) szolgáltatás, regisztrálja a szolgáltatót az előfizetés. Ellenőrizheti az állapotát az ACI-szolgáltatói regisztrációt, a [az provider list] [az-szolgáltató-list] paranccsal, az alábbi példában látható módon:
+
+```azurecli-interactive
+az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
+```
+
+A *Microsoft.ContainerInstance* szolgáltató kell jelentse *regisztrált*, ahogy az alábbi példa kimenetében látható:
+
+```
+Namespace                    RegistrationState
+---------------------------  -------------------
+Microsoft.ContainerInstance  Registered
+```
+
+Ha a szolgáltató állapota *NotRegistered*, regisztrálja a szolgáltatót, használja a [szolgáltató regisztrálása az] [az-szolgáltató-register], az alábbi példában látható módon:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerInstance
+```
 
 ### <a name="for-rbac-enabled-clusters"></a>A fürtök RBAC-kompatibilis
 
@@ -85,7 +107,7 @@ az aks install-connector --resource-group myAKSCluster --name myAKSCluster --con
 
 Ezek az argumentumok érhetők el a `aks install-connector` parancsot.
 
-| Argumentum: | Leírás | Kötelező |
+| Argumentum: | Leírás | Szükséges |
 |---|---|:---:|
 | `--connector-name` | ACI összekötő nevét.| Igen |
 | `--name` `-n` | A felügyelt fürt nevére. | Igen |

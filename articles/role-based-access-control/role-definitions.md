@@ -15,12 +15,12 @@ ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7855c2bd45ba35ecb0ede5c60268e6446f37ed5a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 5a08c2ae0b82841fd15aac4af06a8874cf64ba53
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121826"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949995"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Megismerheti az Azure-erőforrások szerepkör-definíciók
 
@@ -147,9 +147,9 @@ Storage-blobadatok közreműködője
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-Mivel Alice szerepel egy helyettesítő karakter (`*`) műveletet egy előfizetési hatókörben, saját engedélyek öröklése le engedélyezéséhez számára a kezelési műveletek végrehajtásához. Alice olvasási, írási és törölheti a tárolókat. Azonban az Ágnes nem tudja végrehajtani az Adatműveletek anélkül, hogy további lépéseket. Például alapértelmezés szerint Ágnes nem tudja olvasni a blobok tárolóban. Olvassa el a blobokat, hogy Ágnes kellene a tárelérési kulcsok lekéréséhez, és ezek segítségével érheti el a blobokat.
+Mivel Alice szerepel egy helyettesítő karakter (`*`) műveletet egy előfizetési hatókörben, rájuk vonatkozó engedélyek öröklése le, így az összes felügyeleti műveletet végrehajtani. Alice olvasási, írási és törölheti a tárolókat. Azonban az Ágnes nem tudja végrehajtani az Adatműveletek anélkül, hogy további lépéseket. Például alapértelmezés szerint Ágnes nem tudja olvasni a blobok tárolóban. Olvassa el a blobokat, hogy Ágnes kellene a tárelérési kulcsok lekéréséhez, és ezek segítségével érheti el a blobokat.
 
-Bob engedélyek korlátozódnak csupán a `Actions` és `DataActions` megadott a [Storage-Blobadatok Közreműködője](built-in-roles.md#storage-blob-data-contributor) szerepkör. A szerepkör alapján, Bob végrehajthat felügyeleti és az üzemeltetés is. Például Bálint olvasási, írási és törölheti a tárolókat a megadott tárfiók, és ő is olvasási, írási, és a blobok törlése.
+Bob engedélyek korlátozódnak csupán a `Actions` és `DataActions` megadott a [Storage-Blobadatok Közreműködője](built-in-roles.md#storage-blob-data-contributor) szerepkör. A szerepkör alapján, Bob végrehajthat felügyeleti és az üzemeltetés is. Például Bálint is olvasása ír, és törölheti a tárolókat a megadott tárfiók és is is olvashatja, írási és a blobok törlése.
 
 További információ a felügyeleti és az adatsík adatbiztonságot Storage: a [Azure Storage biztonsági útmutatóját](../storage/common/storage-security-guide.md).
 
@@ -162,7 +162,7 @@ Megtekintheti és az üzemeltetés, az eszközök és SDK-kkal megfelelő verzi�
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0-ás vagy újabb |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30-as vagy újabb |
 | [.NET-hez készült Azure](/dotnet/azure/) | 2.8.0-Preview vagy újabb |
-| [A Góhoz készült Azure SDK](/go/azure/azure-sdk-go-install) | 15.0.0-s vagy újabb |
+| [Góhoz készült Azure SDK](/go/azure/azure-sdk-go-install) | 15.0.0-s vagy újabb |
 | [A Javához készült Azure](/java/azure/) | 1.9.0-s és újabb verziók |
 | [Pythonhoz készült Azure](/python/azure) | 0.40.0 vagy újabb |
 | [Rubyhoz készült Azure SDK](https://rubygems.org/gems/azure_sdk) | 0.17.1 vagy újabb |

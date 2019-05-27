@@ -5,7 +5,6 @@ services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
@@ -14,15 +13,16 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/18/2019
-ms.author: dadobali
+ms.author: brandwe
+ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32cc373421e6b04737f40dc987b10c6ace858e17
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: b3802d8f92913e416cc6a80f899179fde80cec30
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937334"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962593"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Gyors útmutató: A felhasználók és a Microsoft Graph API meghívása iOS-alkalmazások
 
@@ -135,7 +135,7 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 >    ```
 > 1. Hozhat létre, és futtassa az alkalmazást! 
 
-## <a name="more-information"></a>További információ
+## <a name="more-information"></a>További információk
 
 Az erre a rövid útmutatóra vonatkozó további információért tekintse meg ezeket a szakaszokat.
 

@@ -8,12 +8,12 @@ editor: TomSh
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: barclayn
-ms.openlocfilehash: d0479b834f814616e44a1888ab8b958990610820
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbc3bba3d95526277da3487cb8670c1f1a88a925
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60611701"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951768"
 ---
 # <a name="enforce-multi-factor-authentication-mfa-for-subscription-administrators"></a>Többtényezős hitelesítés (MFA) az előfizetés adminisztrátorainak
 
@@ -22,7 +22,7 @@ A rendszergazdák, többek között a globális rendszergazdai fiók létrehozá
 Napi szintű felügyelete által meghatározott rendszergazdai szerepkörök hozzárendelése hajthat végre – például az Exchange-rendszergazda vagy a jelszókezelő – felhasználói fiókokhoz az informatikai részleg igény szerint.
 Ezenkívül engedélyezése [Azure multi-factor Authentication (MFA)](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) a rendszergazdáknak egy második biztonsági réteget ad a felhasználói bejelentkezéseket és tranzakciókat. Az Azure MFA is segít, informatikai így kevésbé valószínű, hogy egy sérült biztonságú hitelesítő adat rendelkezik-e a munkahelyi adatokhoz való hozzáférést.
 
-Például: az Azure MFA kényszerítéséhez a felhasználók számára, és konfigurálja úgy, hogy az ellenőrzés a telefonhívás vagy SMS-t használja. Ha a felhasználói hitelesítő adatok integritása sérül, a támadó nem fog tudni bármely erőforráshoz hozzáférhet, mivel ő nem fog tudni hozzáférni a felhasználó telefonjára. A szervezetek, ne vegyen fel több réteg az identity protection jobban ki a hitelesítő adatok ellopását alkalmazó támadásokkal, amely lehet a biztonsági adatokat.
+Példa: Az Azure MFA kényszerítéséhez a felhasználók számára, és konfigurálja úgy, hogy az ellenőrzés a telefonhívás vagy SMS-t használja. Ha a felhasználói hitelesítő adatok integritása sérül, a támadó nem fog tudni bármely erőforráshoz hozzáférhet, mivel a hozzáférést a felhasználó telefonja nem rendelkeznek. A szervezetek, ne vegyen fel több réteg az identity protection jobban ki a hitelesítő adatok ellopását alkalmazó támadásokkal, amely lehet a biztonsági adatokat.
 
 Olyan szervezeteknek, amelyek szeretné tartani a teljes hitelesítés vezérlőelem a helyszínen egy alternatív használatára [Azure multi-factor Authentication-kiszolgáló](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-server), más néven "MFA helyszíni". Ez a módszer segítségével, továbbra is képesek lesznek a multi-factor authentication, miközben a kiszolgáló helyszíni MFA kényszerítésére.
 

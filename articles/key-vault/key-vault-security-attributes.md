@@ -8,16 +8,16 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 652e6ecb9ef9506fd306942eae45b13b52ae1c24
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1c2265ff5f4c444121bf70c35145703f1b9fe981
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691832"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000181"
 ---
-# <a name="common-security-attributes-for-azure-key-vault"></a>Az Azure Key Vault közös biztonsági attribútumok
+# <a name="security-attributes-for-azure-key-vault"></a>Az Azure Key Vault biztonsági attribútumok
 
-Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a cikk a gyakori biztonsági attribútumok az Azure Key Vault beépített dokumentumok. 
+Ez a cikk az Azure Key Vault beépített biztonsági attribútumok dokumentumok. 
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -31,7 +31,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| – |  |
 | Titkosított API-hívások| Igen | HTTPS-en keresztül. |
 
-## <a name="network-segmentation"></a>Hálózati Szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálást
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|

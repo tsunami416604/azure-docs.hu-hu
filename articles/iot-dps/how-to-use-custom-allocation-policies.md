@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: f0eb2f7358e8fb1564275e1de510f302d2eef90b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 03d39ed01907a2ad61e089946673b96b8a2cc83e
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500940"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65916975"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Egyéni foglalási szabályzatok használata
 
@@ -46,7 +46,7 @@ Ebben a cikkben végre fogja hajtani a következő lépéseket:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Befejezése után a [IoT Hub Device Provisioning Service beállítása az Azure Portallal](./quick-setup-auto-provision.md) rövid.
-* Visual Studio 2015 vagy [Visual Studio 2017](https://www.visualstudio.com/vs/), amelyben engedélyezve van az [„Asztali fejlesztés C++ használatával”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladat.
+* [A Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 vagy újabb verzió a ["asztali fejlesztés C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladat engedélyezve van.
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -508,12 +508,12 @@ Az alábbi táblázat bemutatja a várt forgatókönyvek és az eredmények hiba
 
 | Forgatókönyv | Eszközkiépítési szolgáltatás regisztrációs eredménye | Kiépítési SDK eredmények |
 | -------- | --------------------------------------------- | ------------------------ |
-| A webhook ad vissza 200 OK értékre egy érvényes IoT hub-állomásnévvel iotHubHostName | Eredmény állapota: Kiosztva  | SDK-t PROV_DEVICE_RESULT_OK hub információk mellett adja vissza. |
-| A webhook ad vissza 200 OK "iotHubHostName" az a válaszban található, de egy NULL értékű vagy üres karakterlánc beállítása | Eredmény állapota: Meghiúsult<br><br> Hibakód: CustomAllocationIotHubNotSpecified (400208) | SDK returns PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
-| A webhook adja vissza a 401-es nem engedélyezett | Eredmény állapota: Meghiúsult<br><br>Hibakód: CustomAllocationUnauthorizedAccess (400209) | SDK-t PROV_DEVICE_RESULT_UNAUTHORIZED adja vissza. |
+| A webhook ad vissza 200 OK értékre egy érvényes IoT hub-állomásnévvel iotHubHostName | Eredmény állapota: Hozzárendelt  | SDK-t PROV_DEVICE_RESULT_OK hub információk mellett adja vissza. |
+| A webhook ad vissza 200 OK "iotHubHostName" az a válaszban található, de egy NULL értékű vagy üres karakterlánc beállítása | Eredmény állapota: Sikertelen<br><br> Hibakód: CustomAllocationIotHubNotSpecified (400208) | SDK returns PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
+| A webhook adja vissza a 401-es nem engedélyezett | Eredmény állapota: Sikertelen<br><br>Hibakód: CustomAllocationUnauthorizedAccess (400209) | SDK-t PROV_DEVICE_RESULT_UNAUTHORIZED adja vissza. |
 | Egyéni regisztrációt létrejött, az eszköz letiltása | Eredmény állapota: Letiltva | SDK-t PROV_DEVICE_RESULT_DISABLED adja vissza. |
 | A webhook függvény hibakód: > = 429-es | DPS' vezénylési számos alkalommal próbálkozik újra. Az újrapróbálkozási szabályzat jelenleg:<br><br>&nbsp;&nbsp;-Újrapróbálkozások száma: 10<br>&nbsp;&nbsp;-Kezdeti időköz: 1s<br>&nbsp;&nbsp;-Növekmény: 9s | SDK-t fog hiba figyelmen kívül, és a egy másik get állapotüzenet küldése a megadott időtartam alatt |
-| A webhook bármely más állapotkódot adja vissza. | Eredmény állapota: Meghiúsult<br><br>Hibakód: CustomAllocationFailed (400207) | SDK returns PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
+| A webhook bármely más állapotkódot adja vissza. | Eredmény állapota: Sikertelen<br><br>Hibakód: CustomAllocationFailed (400207) | SDK returns PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

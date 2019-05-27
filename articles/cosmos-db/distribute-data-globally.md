@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.openlocfilehash: b90e495e0901c0caa14d9451f365e17f6c075e2b
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/20/2019
+ms.openlocfilehash: e58a8cd286e4d416dd5f4e6d3fddedf1897fed1c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65070792"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954167"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globális terjesztés, az Azure Cosmos DB - áttekintés
 
@@ -21,7 +21,7 @@ Az Azure Cosmos DB egy globálisan elosztott adatbázis-szolgáltatás, amely k�
 
 Beállíthatja, hogy az adatbázisok, globálisan elosztott, és elérhető legyen bármelyik Azure-régiót. Csökkentheti a késést, helyezze el az adatok hol találhatók a felhasználók közel. A szükséges régiók kiválasztása attól függ, hogy a globális jelenlétét, az alkalmazás- és hol találhatók a felhasználók számára. A cosmos DB transzparensen replikálja az adatokat a Cosmos-fiókjához társított összes régióba. A globálisan elosztott Azure Cosmos-adatbázis és a tárolók, amelyek az alkalmazás olvashat és írhat a helyi egyetlen rendszerképet biztosít. 
 
-Az Azure Cosmos DB adja hozzá, vagy távolítsa el a bármikor a fiókjához társított régiók. Az alkalmazás szüneteltetve vagy újratelepítése hozzáadni vagy eltávolítani egy régió nem szükséges. Továbbra is magas rendelkezésre állású folyamatosan miatt, amely a szolgáltatást natív módon biztosít a többkiszolgálós képességekkel.
+Az Azure Cosmos DB adja hozzá, vagy távolítsa el a bármikor a fiókjához társított régiók. Régió hozzáadásához vagy eltávolításához nem kell sem felfüggeszteni, sem újra üzembe helyezni az alkalmazást. Továbbra is magas rendelkezésre állású folyamatosan miatt, amely a szolgáltatást natív módon biztosít a többkiszolgálós képességekkel.
 
 ![Magas rendelkezésre állású telepítés topológiája](./media/distribute-data-globally/deployment-topology.png)
 

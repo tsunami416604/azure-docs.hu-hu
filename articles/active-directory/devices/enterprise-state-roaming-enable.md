@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7e665f3124296392c8138f4f2bd3632b56e53de
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 88e825ebc08b4bfbd65f81b7b2480ead9be314b5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230929"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954953"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 Enterprise State Roaming egy prémium szintű Azure AD vagy Enterprise Mobility + Security (EMS) licenccel rendelkező minden szervezet számára érhető el. Az Azure AD-előfizetés beszerzése További információkért lásd: a [Azure ad-ben termékoldalán](https://azure.microsoft.com/services/active-directory).
@@ -84,7 +84,7 @@ Közvetlen törlése esetén az Azure-rendszergazdai törli egy felhasználó va
 Adatok, amelyet nem használtak egy évig ("a megőrzési időszak"), elavult lesznek kezelve, és törölheti a Microsoft-felhőből. A megőrzési időtartam változhat, de legalább 90 nappal nem. Az elavult adatokat lehet Windows-/ Alkalmazásbeállítások és az összes beállítás egy felhasználó egy adott készletét. Példa:
 
 * Ha eszközöket nem egy meghatározott beállítások gyűjtemény elérni (például egy alkalmazás törlődik az eszköz vagy egy csoport például a "Téma" le van tiltva, az összes felhasználó eszközeinek), majd a gyűjteménynek a megőrzési időszak után elavulttá válik, és előfordulhat, hogy törölhető . 
-* Ha a felhasználó kikapcsolta azt eszközökön szinkronizálását, majd a beállítások adatainak egyike fogják elérni, és az adott felhasználó összes beállítások adatainak elavulttá fog válni, és előfordulhat, hogy a megőrzési időszak után lehet törölni. 
+* Ha egy felhasználó ki van kapcsolva minden eszközükön beállítások szinkronizálása, majd a beállítások adatainak egyike fogják elérni, és az adott felhasználó összes beállítások adatainak elavulttá fog válni, és előfordulhat, hogy a megőrzési időszak után lehet törölni. 
 * Ha az Azure Active directory-rendszergazda kikapcsolja az Enterprise State Roaming a teljes címtárra, majd az összes felhasználó számára, hogy könyvtárat a beállítások szinkronizálása leáll, és az összes felhasználó összes beállítások adatainak elavulttá váltak, és előfordulhat, hogy a megőrzési időszak után lehet törölni. 
 
 ### <a name="deleted-data-recovery"></a>A törölt adatok helyreállítása

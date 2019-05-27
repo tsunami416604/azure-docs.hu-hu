@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.openlocfilehash: 8d024e0bc90724892bc53f8895b270716ad0cefc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ac29ef7f0599cc41924ba1a5a00e46b0292e7e9b
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61001088"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967744"
 ---
 # <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Régiók közötti vészhelyreállítása az Azure Logic Apps B2B-integrációs fiókok
 
@@ -62,7 +62,7 @@ A Logic Apps integrációs fiókban lévő üzletmenet-folytonossági támogatja
 
 Során vész-helyreállítási esemény, ha az elsődleges régióban nem érhető el az üzletmenet folytonosságának forgalmat a másodlagos régióba. A partnerek által teljesítésével egy másodlagos régióba segítséget nyújt egy üzleti függvények gyors felel meg az RPO/RTO történő helyreállításához. A minimálisra csökkenti a feladatátvételt egy másik régióban egy adott régióban található erőfeszítéseket is. 
 
-Nincs a várható késés ellenőrzőszámok másolása egy elsődleges régióról egy másodlagos régióba közben. Az ajánlás az ismétlődő létrehozott ellenőrzőszámok partnereknek küldenek egy vész-helyreállítási esemény elkerüléséhez, az ellenőrzőszámok növekszik a másodlagos régióba szerződés használatával [PowerShell-parancsmagok](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery).
+Nincs a várható késés ellenőrzőszámok másolása egy elsődleges régióról egy másodlagos régióba közben. Az ajánlás az ismétlődő létrehozott ellenőrzőszámok partnereknek küldenek egy vész-helyreállítási esemény elkerüléséhez, az ellenőrzőszámok növekszik a másodlagos régióba szerződés használatával [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Visszatérés egy elsődleges régióban utáni vész-helyreállítási esemény
 
@@ -70,7 +70,7 @@ Visszaállni egy elsődleges régióban elérhetővé válik, kövesse az alább
 
 1. A másodlagos régió partnerektől származó üzenetek fogadását.  
 
-2. Növelje a generált ellenőrzőszámok az elsődleges régió-megállapodásokat használatával [PowerShell-parancsmagok](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery).  
+2. Növelje a generált ellenőrzőszámok az elsődleges régió-megállapodásokat használatával [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).  
 
 3. Közvetlen forgalmat a másodlagos régióból az elsődleges régióba.
 

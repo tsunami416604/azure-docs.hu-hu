@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ac102f388c404bab98354b7bd131989abedd7e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 075fc48d4db4c4cfcc6f45f5fe93e8cfb38d5559
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418608"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991841"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Idő szinkronizálása az Azure-ban Linux rendszerű virtuális gépekhez
 
@@ -40,7 +40,7 @@ Azure gazdagép belső hierarchiabeli 1 Microsoft tulajdonú eszközökről, a G
 
 Önálló hardverre, a Linux operációs rendszer csak olvassa be a gazdagép hardverének mért rendszertöltés. Ezt követően az óra, kezelik a Linux kernel a megszakítási időzítő segítségével. Ebben a konfigurációban az óra lesz konfigurációsodródás idővel. Újabb Linux-disztribúciókon az Azure-ban a virtuális gépek használatával a VMICTimeSync szolgáltatója, a Linux integration services (LIS), a lekérdezési óra frissítések gyakran a gazdagépről.
 
-A gazdagép virtuálisgép-interakció is befolyásolhatja az óra. Során [karbantartás megőrzése memória](maintenance-and-updates.md#maintenance-not-requiring-a-reboot), virtuális gépek vannak függesztve, akár 30 másodpercig. Például karbantartás megkezdése előtt a virtuális gép órája jeleníti meg a 10:00:00-kor és 28 másodperc tart. Után folytatja a virtuális Gépet, az óra, a virtuális gép továbbra is megjeleníti 10:00:00-kor, amelyek 28 másodperc ki. Ennek, a VMICTimeSync szolgáltatás figyeli a gazdagép és a módosítások utasításokat található a virtuális gépek esetében történő kompenzálás mi történik.
+A gazdagép virtuálisgép-interakció is befolyásolhatja az óra. Során [karbantartás megőrzése memória](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot), virtuális gépek vannak függesztve, akár 30 másodpercig. Például karbantartás megkezdése előtt a virtuális gép órája jeleníti meg a 10:00:00-kor és 28 másodperc tart. Után folytatja a virtuális Gépet, az óra, a virtuális gép továbbra is megjeleníti 10:00:00-kor, amelyek 28 másodperc ki. Ennek, a VMICTimeSync szolgáltatás figyeli a gazdagép és a módosítások utasításokat található a virtuális gépek esetében történő kompenzálás mi történik.
 
 Nélkül idő szinkronizálási működő, a virtuális gép órája hibák lenne összeadódhatnak. Ha csak egy virtuális Gépet, a hatás nem jelentős, kivéve, ha a munkaterhelés rendkívül pontos időmérő igényel. De a legtöbb esetben azt kell több, összekapcsolt virtuális gépeket, amelyek idő segítségével nyomon követheti a tranzakciók és az időt kell lennie a teljes telepítés során. Ha más virtuális gépek között eltelt idő, sikerült jelenik meg a következő hatásai vannak:
 

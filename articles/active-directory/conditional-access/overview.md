@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23c88857c877440be724ddea0bdb239768621c8c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 32ad8c12834ee538e231b38f9098c741fdc17954
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764793"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65997247"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Mi az Azure Active Directory-beli feltételes hozzáférés?
 
@@ -86,9 +86,9 @@ Ha a konfigurált feltételes elérési szabályzat többtényezős hitelesíté
 
 Miután a felhasználó bejelentkezett az összevont hitelesítés szolgáltatásba, az Azure AD kezeli a további szabályzatkövetelményeket, például az eszközmegfelelőséget vagy a jóváhagyott alkalmazásokat.
 
-## <a name="license-requirements-for-using-conditional-access"></a>A feltételes hozzáférések használatához szükséges licencek
+## <a name="license-requirements"></a>Licenckövetelmények
 
-A feltételes hozzáférés használatához Azure AD Prémium szintű licenc szükséges. A követelményeinek leginkább megfelelő licenc kiválasztásáról lásd [az ingyenes, alapszintű és prémium kiadások általánosan elérhető szolgáltatásait összehasonlító cikket](https://azure.microsoft.com/pricing/details/active-directory/).
+[!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>További lépések
 

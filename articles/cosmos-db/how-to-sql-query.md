@@ -4,14 +4,14 @@ description: További információk az SQL-szintaxis, adatbázis-tervezésben é
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4d1ef650a3f12d8b97cbad3e9aecf31c8b81a038
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bbca0239053b8f3164055a07b376abc597b0348f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796149"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954129"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL lekérdezési példák
 
@@ -869,7 +869,7 @@ Az eredmények a következők:
     ]
 ```
 
-A következő SQL-lekérdezést egy másik példa a segédlekérdezésekben belül tömb használatára. A lekérdezés lekérdezi a distinct megadott nevek egy arrary gyermek.
+A következő SQL-lekérdezést egy másik példa a segédlekérdezésekben belül tömb használatára. A lekérdezés lekérdezi a distinct megadott nevek a gyermekek tömbben.
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames

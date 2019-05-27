@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.openlocfilehash: 62eb51e48ab688abcf39ba3c8d57aaccf6f47cb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3943332179a6d283a8ed3ca66ea559d5cea53a10
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61002408"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953194"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Az Azure Data Catalog bevezetésének módszere és folyamata
 
@@ -54,7 +54,7 @@ Néhány tipp a stratégiai célok meghatározásához:
 
 Íme egy példa egy Data Catalog-bevezetési terv stratégiai célkitűzésire egy fiktív cég, az Adventure Works esetében:
 
-**Az Azure Data Catalog** lehetővé teszi az Adventure Works pénzügyi csapata közösen dolgozzon a fő adatforrások, így minden csapattag könnyedén megkeresheti és használhatja az adatokat kell, és a csapat egészével Tudásbázis megoszthatja.
+**Az Azure Data Catalog** lehetővé teszi az Adventure Works pénzügyi csapata közösen dolgozzon a fő adatforrások, így minden csapattag könnyedén megkeresheti és használhatja az adatokat kell, és megoszthatja a csapat tudásukat.
 
 Ha kitűzte a pontos stratégiai célokat, azok alapján kiválaszthatja a megfelelő próbaprojektet a Data Catalog bevezetéséhez. Általánosságban a Data Catalog számos forgatókönyv esetén használható, így a következő szakaszban néhány tippet olvashat a releváns használati esetek azonosításához.
 

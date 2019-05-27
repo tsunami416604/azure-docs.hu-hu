@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 05/11/2019
-ms.openlocfilehash: 72552f6335f3ad6742679708a639634362c49c0b
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.date: 05/20/2019
+ms.openlocfilehash: 57f2c38ce0479f43d7f24de8d1feb554517bcc69
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823320"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951477"
 ---
 # <a name="sql-database-serverless-preview"></a>Az SQL Database kiszolgáló nélküli (előzetes verzió)
 
@@ -81,7 +81,22 @@ Kiszolgáló nélküli SQL-adatbázis jelenleg csak az általános célú csomag
 
 ### <a name="memory-management"></a>Memória-kezelés
 
-Memória a kiszolgáló nélküli adatbázisok felszabadul nagyobb gyakran kiépített adatbázisok számára. Ez a probléma fontos a kiszolgáló nélküli csökkenthetők a költségek. Memória az SQL-gyorsítótárból ellentétben a kiépített számítási felszabadul egy kiszolgáló nélküli adatbázis amikor a Processzor vagy a gyorsítótár-kihasználtság alacsony.
+Memória a kiszolgáló nélküli adatbázisok felszabadul nagyobb gyakran kiépített számítási adatbázisok számára. Ez a probléma fontos a kiszolgáló nélküli csökkenthetők a költségek, és befolyásolhatja a teljesítményt.
+
+#### <a name="cache-reclaiming"></a>Gyorsítótár VISSZAIGÉNYLÉSE
+
+Memória az SQL-gyorsítótárból ellentétben a kiépített számítási adatbázisokat, felszabadul a kiszolgáló nélküli adatbázis amikor a Processzor vagy a gyorsítótár-kihasználtság alacsony.
+
+- Gyorsítótár-kihasználtság alacsony minősül, amikor a legtöbb amelyek összméretén legutóbb használt gyorsítótár bejegyzések csökken a küszöbérték alá egy ideig.
+- Gyorsítótár visszaigénylését akkor aktiválódik, amikor a célként megadott gyorsítótár mérete fokozatosan csökken az előző méretre töredékéért, és ha használat alacsony marad címek újraigénylési funkcióját csak továbbra is.
+- Gyorsítótár visszaigénylését esetén a gyorsítótár-bejegyzéseket fürtből kiválasztásakor a szabályzat esetén ugyanaz a kiválasztási szabályzat meghajtóbetűjeleket kiépített számítási adatbázisok túl magas a rendelkezésre álló memória mennyisége.
+- A gyorsítótár méretét soha nem csökken a minimális memória alábbi szerint minimális virtuális maggal, amely konfigurálható.
+
+A kiszolgáló nélküli és a kiépített számítási adatbázisokat, gyorsítótár-bejegyzéseket az összes rendelkezésre álló memória használata esetén kiüríthetők.
+
+#### <a name="cache-hydration"></a>Gyorsítótár hidratálási
+
+Az SQL-gyorsítótár lemezről beolvasott adatok, ugyanúgy és ugyanazt a sebességet, mint a kiépített adatbázisok nő. Ha az adatbázis foglalt, a gyorsítótár engedélyezett növelje a memória maximális korlátig korlátozás.
 
 ## <a name="autopause-and-autoresume"></a>Autopause és autoresume
 
@@ -277,21 +292,21 @@ A számítási számlázzuk a következő metrika tesz elérhetővé:
 
 Ez a mennyiség másodpercenként kiszámítása és összesíti több mint 1 perce.
 
-Fontolja meg egy 1 perces vcore- és max 4 virtuális magot kapnak a konfigurált kiszolgáló nélküli adatbázis.  Ez körülbelül 3 GB-os minimális memória és a 12 GB maximális memória felel meg.  Tegyük fel, hogy az automatikus szüneteltetési késleltetés értéke 6 óra és az adatbázis-munkaterhelés egy 24 órás időszakban, az első 2 órában aktív és egyéb inaktív.    
+Fontolja meg egy 1 perces vCore- és max 4 virtuális magot kapnak a konfigurált kiszolgáló nélküli adatbázis.  Ez körülbelül 3 GB-os minimális memória és a 12 GB-os maximális memória felel meg.  Tegyük fel, hogy az automatikus szüneteltetési késleltetés értéke 6 óra és az adatbázis-munkaterhelés egy 24 órás időszak alatt az első 2 órában aktív és egyéb inaktív.    
 
-Ebben az esetben az adatbázisban történik számítási és tárolási első 8 órán belül.  Annak ellenére, hogy az adatbázis inaktív kezdődően a 2. óra elteltével, továbbra is számlázzuk számítási az ezt követő 6 órában alapján a minimális számítási kiépítve, miközben az adatbázis online állapotban.  Csak tárolási hátralevő részében az 24 órás időszakban van számlázzuk, míg az adatbázis fel van függesztve.
+Ebben az esetben az adatbázisban történik számítási és tárolási első 8 órán belül.  Annak ellenére, hogy az adatbázis követő második órában inaktív indítása, továbbra is számlázzuk számítási az ezt követő 6 órában alapján a minimális számítási kiépítve, miközben az adatbázis online állapotban.  Csak tárolási hátralevő részében az óra 24 órás időszak van számlázzuk, míg az adatbázis fel van függesztve.
 
 Pontosabban a számítási számla ebben a példában a következőképpen alakul:
 
 |Időtartam|a másodpercenként felhasznált virtuális magok|A másodpercenként felhasznált GB|A számlázás dimenzió COMPUTE|Számlázható idő alatt virtuális mag másodperc|
 |---|---|---|---|---|
 |0:00-1:00|4|9|felhasznált virtuális magok|4 vCores * 3600 seconds = 14400 vCore seconds|
-|1:00-2:00|1.|12|Használt memória|12Gb * 1/3 * 3600 seconds = 14400 vCore seconds|
-|2:00-8:00|0|0|Minimális memória kiosztása|3Gb * 1/3 * 21600 seconds = 21600 vCore seconds|
+|1:00-2:00|1.|12|Használt memória|12 Gb * 1/3 * 3600 seconds = 14400 vCore seconds|
+|2:00-8:00|0|0|Minimális memória kiosztása|3 Gb * 1/3 * 21600 seconds = 21600 vCore seconds|
 |8:00-24:00|0|0|Nincs számítás számlázzuk, míg fel van függesztve|0 virtuális mag másodperc|
 |A számlázás 24 órán át összes virtuális mag másodperc||||másodperc 50400 virtuális mag|
 
-Tegyük fel, hogy a szolgáltatás $0.000073/vCore/second számítási egység díja.  A 24 órás időszakban kell fizetnie a számítási válik a számítási egység ár és a virtuális mag másodpercben a számlázás a termék: $0.000073/vCore/second * 50400 virtuális mag másodperc $3.68 =
+Tegyük fel, hogy a szolgáltatás $0.000073/vCore/second számítási egység díja.  A számítási díjat számítunk fel a 24 órás időszak után válik a számítási egység ár és a virtuális mag másodpercben a számlázás a termék: $0.000073/vCore/second * 50400 virtuális mag másodperc $3.68 =
 
 ## <a name="available-regions"></a>Elérhető régiók
 

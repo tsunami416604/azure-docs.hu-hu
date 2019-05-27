@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 05/13/2019
+ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: dae280f86abce47bfcc029f4d81e4ca3a7b696f4
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: f3907cbc46bd226ef8e90d2061f2d36b2afabf8a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595432"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957153"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Az Azure monitorban támogatott mérőszámok
 
@@ -70,7 +70,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |ShortParsingBusyThreads|Szálak: Rövid elemzés a foglalt szálak|Count|Átlag|A rövid elemzési szálkészletben lévő foglalt szálak száma.|ServerResourceType|
 |ShortParsingIdleThreads|Szálak: Rövid elemzési üresjárati szálak|Count|Átlag|A rövid elemzési szálkészletben az üresjárati szálak száma.|ServerResourceType|
 |ShortParsingJobQueueLength|Szálak: Rövid elemzési feladat üzenetsorának hossza|Count|Átlag|A a rövid elemzési szálkészlet üzenetsorában található feladatok száma.|ServerResourceType|
-|memory_thrashing_metric|Memóriaakadozás|Százalék|Átlag|Átlagos memóriaakadozás.|ServerResourceType|
+|memory_thrashing_metric|Memóriaakadozás|Percent|Átlag|Átlagos memóriaakadozás.|ServerResourceType|
 |mashup_engine_qpu_metric|M motor qpu-ja|Count|Átlag|Az adategyesítési motor folyamatainak QPU használatáról|ServerResourceType|
 |mashup_engine_memory_metric|M motor memóriája|Bájt|Átlag|Az adategyesítési motor folyamatainak memóriafelhasználása|ServerResourceType|
 
@@ -84,7 +84,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |FailedRequests|Sikertelen Átjárókérések|Count|Összeg|Sikertelen átjárókérések a száma|Hely, gazdagépnév|
 |OtherRequests|Egyéb Átjárókérések|Count|Összeg|Egyéb átjárókérések száma|Hely, gazdagépnév|
 |Időtartam|Teljes időtartama Átjárókérések|Ezredmásodperc|Átlag|Teljes időtartam, Átjárókérések ezredmásodpercben|Hely, gazdagépnév|
-|Kapacitás|Kapacitás|Százalék|Átlag|Az ApiManagement szolgáltatás Utilization metrika|Location egység|
+|Kapacitás|Kapacitás|Percent|Átlag|Az ApiManagement szolgáltatás Utilization metrika|Location egység|
 |EventHubTotalEvents|Teljes EventHub-események|Count|Összeg|Az EventHub küldött események száma|Location egység|
 |EventHubSuccessfulEvents|A sikeres EventHub-események|Count|Összeg|A sikeres EventHub események száma|Location egység|
 |EventHubTotalFailedEvents|Nem sikerült az EventHub-események|Count|Összeg|Nem sikerült az EventHub-események száma|Location egység|
@@ -154,12 +154,12 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |totalkeys|Kulcsok összesen|Count|Maximum||ShardId|
 |expiredkeys|Lejárt kulcsok|Count|Összeg||ShardId|
 |usedmemory|Felhasznált memória|Bájt|Maximum||ShardId|
-|usedmemorypercentage|Használt memória százalékos aránya|Százalék|Maximum||ShardId|
+|usedmemorypercentage|Használt memória százalékos aránya|Percent|Maximum||ShardId|
 |usedmemoryRss|Használt memória RSS|Bájt|Maximum||ShardId|
-|serverLoad|Kiszolgáló-terhelés|Százalék|Maximum||ShardId|
+|serverLoad|Kiszolgáló-terhelés|Percent|Maximum||ShardId|
 |cacheWrite|Gyorsítótár-írás|Bájt/s|Maximum||ShardId|
 |cacheRead|Gyorsítótár-olvasás|Bájt/s|Maximum||ShardId|
-|percentProcessorTime|CPU|Százalék|Maximum||ShardId|
+|percentProcessorTime|CPU|Percent|Maximum||ShardId|
 |cacheLatency|Gyorsítótár késés mikroszekundum (előzetes verzió)|Count|Átlag||ShardId, SampleType|
 |hiba|Hibák|Count|Maximum||ShardId, ErrorType|
 |connectedclients0|Csatlakoztatott ügyfelek (horizontálisan Skálázáson 0)|Count|Maximum||Nincs dimenzió|
@@ -174,10 +174,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |expiredkeys0|Lejárt kulcsok (horizontálisan Skálázáson 0)|Count|Összeg||Nincs dimenzió|
 |usedmemory0|Használt memória (horizontálisan Skálázáson 0)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss0|Használt memória RSS (horizontálisan Skálázáson 0)|Bájt|Maximum||Nincs dimenzió|
-|serverLoad0|Kiszolgáló terhelése (horizontálisan Skálázáson 0)|Százalék|Maximum||Nincs dimenzió|
+|serverLoad0|Kiszolgáló terhelése (horizontálisan Skálázáson 0)|Percent|Maximum||Nincs dimenzió|
 |cacheWrite0|Gyorsítótár-írás (horizontálisan Skálázáson 0)|Bájt/s|Maximum||Nincs dimenzió|
 |cacheRead0|Gyorsítótár-olvasás (horizontálisan Skálázáson 0)|Bájt/s|Maximum||Nincs dimenzió|
-|percentProcessorTime0|Processzor (horizontálisan Skálázáson 0)|Százalék|Maximum||Nincs dimenzió|
+|percentProcessorTime0|Processzor (horizontálisan Skálázáson 0)|Percent|Maximum||Nincs dimenzió|
 |connectedclients1|Csatlakoztatott ügyfelek (horizontálisan Skálázáson 1)|Count|Maximum||Nincs dimenzió|
 |totalcommandsprocessed1|Műveletek összesen (horizontálisan Skálázáson 1)|Count|Összeg||Nincs dimenzió|
 |cachehits1|Cache Hits (Shard 1)|Count|Összeg||Nincs dimenzió|
@@ -190,10 +190,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |expiredkeys1|Lejárt kulcsok (horizontálisan Skálázáson 1)|Count|Összeg||Nincs dimenzió|
 |usedmemory1|Használt memória (horizontálisan Skálázáson 1)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss1|Használt memória RSS (horizontálisan Skálázáson 1)|Bájt|Maximum||Nincs dimenzió|
-|serverLoad1|Kiszolgáló terhelése (horizontálisan Skálázáson 1)|Százalék|Maximum||Nincs dimenzió|
+|serverLoad1|Kiszolgáló terhelése (horizontálisan Skálázáson 1)|Percent|Maximum||Nincs dimenzió|
 |cacheWrite1|Gyorsítótár-írás (horizontálisan Skálázáson 1)|Bájt/s|Maximum||Nincs dimenzió|
 |cacheRead1|Gyorsítótár-olvasás (horizontálisan Skálázáson 1)|Bájt/s|Maximum||Nincs dimenzió|
-|percentProcessorTime1|Processzor (horizontálisan Skálázáson 1)|Százalék|Maximum||Nincs dimenzió|
+|percentProcessorTime1|Processzor (horizontálisan Skálázáson 1)|Percent|Maximum||Nincs dimenzió|
 |connectedclients2|Csatlakoztatott ügyfelek (horizontálisan Skálázáson 2)|Count|Maximum||Nincs dimenzió|
 |totalcommandsprocessed2|Műveletek összesen (horizontálisan Skálázáson 2)|Count|Összeg||Nincs dimenzió|
 |cachehits2|Találatot eredményező gyorsítótárbeli kereséseinek (horizontálisan Skálázáson 2)|Count|Összeg||Nincs dimenzió|
@@ -206,10 +206,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |expiredkeys2|Lejárt kulcsok (horizontálisan Skálázáson 2)|Count|Összeg||Nincs dimenzió|
 |usedmemory2|Használt memória (horizontálisan Skálázáson 2)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss2|Használt memória RSS (horizontálisan Skálázáson 2)|Bájt|Maximum||Nincs dimenzió|
-|serverLoad2|Kiszolgáló terhelése (horizontálisan Skálázáson 2)|Százalék|Maximum||Nincs dimenzió|
+|serverLoad2|Kiszolgáló terhelése (horizontálisan Skálázáson 2)|Percent|Maximum||Nincs dimenzió|
 |cacheWrite2|Gyorsítótár-írás (horizontálisan Skálázáson 2)|Bájt/s|Maximum||Nincs dimenzió|
 |cacheRead2|Gyorsítótár-olvasás (horizontálisan Skálázáson 2)|Bájt/s|Maximum||Nincs dimenzió|
-|percentProcessorTime2|Processzor (horizontálisan Skálázáson 2)|Százalék|Maximum||Nincs dimenzió|
+|percentProcessorTime2|Processzor (horizontálisan Skálázáson 2)|Percent|Maximum||Nincs dimenzió|
 |connectedclients3|Csatlakoztatott ügyfelek (horizontálisan Skálázáson 3)|Count|Maximum||Nincs dimenzió|
 |totalcommandsprocessed3|Műveletek összesen (horizontálisan Skálázáson 3)|Count|Összeg||Nincs dimenzió|
 |cachehits3|Találatot eredményező gyorsítótárbeli kereséseinek (horizontálisan Skálázáson 3)|Count|Összeg||Nincs dimenzió|
@@ -222,10 +222,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |expiredkeys3|Lejárt kulcsok (horizontálisan Skálázáson 3)|Count|Összeg||Nincs dimenzió|
 |usedmemory3|Használt memória (horizontálisan Skálázáson 3)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss3|Használt memória RSS (horizontálisan Skálázáson 3)|Bájt|Maximum||Nincs dimenzió|
-|serverLoad3|Kiszolgáló terhelése (horizontálisan Skálázáson 3)|Százalék|Maximum||Nincs dimenzió|
+|serverLoad3|Kiszolgáló terhelése (horizontálisan Skálázáson 3)|Percent|Maximum||Nincs dimenzió|
 |cacheWrite3|Gyorsítótár-írás (horizontálisan Skálázáson 3)|Bájt/s|Maximum||Nincs dimenzió|
 |cacheRead3|Gyorsítótár-olvasás (horizontálisan Skálázáson 3)|Bájt/s|Maximum||Nincs dimenzió|
-|percentProcessorTime3|Processzor (horizontálisan Skálázáson 3)|Százalék|Maximum||Nincs dimenzió|
+|percentProcessorTime3|Processzor (horizontálisan Skálázáson 3)|Percent|Maximum||Nincs dimenzió|
 |connectedclients4|Csatlakoztatott ügyfelek (horizontálisan Skálázáson 4)|Count|Maximum||Nincs dimenzió|
 |totalcommandsprocessed4|Műveletek összesen (horizontálisan Skálázáson 4)|Count|Összeg||Nincs dimenzió|
 |cachehits4|Találatot eredményező gyorsítótárbeli kereséseinek (horizontálisan Skálázáson 4)|Count|Összeg||Nincs dimenzió|
@@ -238,10 +238,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |expiredkeys4|Lejárt kulcsok (horizontálisan Skálázáson 4)|Count|Összeg||Nincs dimenzió|
 |usedmemory4|Használt memória (horizontálisan Skálázáson 4)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss4|Használt memória RSS (horizontálisan Skálázáson 4)|Bájt|Maximum||Nincs dimenzió|
-|serverLoad4|Kiszolgáló terhelése (horizontálisan Skálázáson 4)|Százalék|Maximum||Nincs dimenzió|
+|serverLoad4|Kiszolgáló terhelése (horizontálisan Skálázáson 4)|Percent|Maximum||Nincs dimenzió|
 |cacheWrite4|Gyorsítótár-írás (horizontálisan Skálázáson 4)|Bájt/s|Maximum||Nincs dimenzió|
 |cacheRead4|Gyorsítótár-olvasás (horizontálisan Skálázáson 4)|Bájt/s|Maximum||Nincs dimenzió|
-|percentProcessorTime4|Processzor (horizontálisan Skálázáson 4)|Százalék|Maximum||Nincs dimenzió|
+|percentProcessorTime4|Processzor (horizontálisan Skálázáson 4)|Percent|Maximum||Nincs dimenzió|
 |connectedclients5|Csatlakoztatott ügyfelek (horizontálisan Skálázáson 5)|Count|Maximum||Nincs dimenzió|
 |totalcommandsprocessed5|Műveletek összesen (horizontálisan Skálázáson 5)|Count|Összeg||Nincs dimenzió|
 |cachehits5|Találatot eredményező gyorsítótárbeli kereséseinek (horizontálisan Skálázáson 5)|Count|Összeg||Nincs dimenzió|
@@ -254,10 +254,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |expiredkeys5|Lejárt kulcsok (horizontálisan Skálázáson 5)|Count|Összeg||Nincs dimenzió|
 |usedmemory5|Használt memória (horizontálisan Skálázáson 5)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss5|Használt memória RSS (horizontálisan Skálázáson 5)|Bájt|Maximum||Nincs dimenzió|
-|serverLoad5|Kiszolgáló terhelése (horizontálisan Skálázáson 5)|Százalék|Maximum||Nincs dimenzió|
+|serverLoad5|Kiszolgáló terhelése (horizontálisan Skálázáson 5)|Percent|Maximum||Nincs dimenzió|
 |cacheWrite5|Gyorsítótár-írás (horizontálisan Skálázáson 5)|Bájt/s|Maximum||Nincs dimenzió|
 |cacheRead5|Gyorsítótár-olvasás (horizontálisan Skálázáson 5)|Bájt/s|Maximum||Nincs dimenzió|
-|percentProcessorTime5|Processzor (horizontálisan Skálázáson 5)|Százalék|Maximum||Nincs dimenzió|
+|percentProcessorTime5|Processzor (horizontálisan Skálázáson 5)|Percent|Maximum||Nincs dimenzió|
 |connectedclients6|Csatlakoztatott ügyfelek (horizontálisan Skálázáson 6)|Count|Maximum||Nincs dimenzió|
 |totalcommandsprocessed6|Műveletek összesen (horizontálisan Skálázáson 6)|Count|Összeg||Nincs dimenzió|
 |cachehits6|Cache Hits (Shard 6)|Count|Összeg||Nincs dimenzió|
@@ -270,10 +270,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |expiredkeys6|Lejárt kulcsok (horizontálisan Skálázáson 6)|Count|Összeg||Nincs dimenzió|
 |usedmemory6|Használt memória (horizontálisan Skálázáson 6)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss6|Használt memória RSS (horizontálisan Skálázáson 6)|Bájt|Maximum||Nincs dimenzió|
-|serverLoad6|Kiszolgáló terhelése (horizontálisan Skálázáson 6)|Százalék|Maximum||Nincs dimenzió|
+|serverLoad6|Kiszolgáló terhelése (horizontálisan Skálázáson 6)|Percent|Maximum||Nincs dimenzió|
 |cacheWrite6|Gyorsítótár-írás (horizontálisan Skálázáson 6)|Bájt/s|Maximum||Nincs dimenzió|
 |cacheRead6|Gyorsítótár-olvasás (horizontálisan Skálázáson 6)|Bájt/s|Maximum||Nincs dimenzió|
-|percentProcessorTime6|Processzor (horizontálisan Skálázáson 6)|Százalék|Maximum||Nincs dimenzió|
+|percentProcessorTime6|Processzor (horizontálisan Skálázáson 6)|Percent|Maximum||Nincs dimenzió|
 |connectedclients7|Csatlakoztatott ügyfelek (horizontálisan Skálázáson 7)|Count|Maximum||Nincs dimenzió|
 |totalcommandsprocessed7|Műveletek összesen (horizontálisan Skálázáson 7)|Count|Összeg||Nincs dimenzió|
 |cachehits7|Találatot eredményező gyorsítótárbeli kereséseinek (horizontálisan Skálázáson 7)|Count|Összeg||Nincs dimenzió|
@@ -286,10 +286,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |expiredkeys7|Lejárt kulcsok (horizontálisan Skálázáson 7)|Count|Összeg||Nincs dimenzió|
 |usedmemory7|Használt memória (horizontálisan Skálázáson 7)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss7|Használt memória RSS (horizontálisan Skálázáson 7)|Bájt|Maximum||Nincs dimenzió|
-|serverLoad7|Kiszolgáló terhelése (horizontálisan Skálázáson 7)|Százalék|Maximum||Nincs dimenzió|
+|serverLoad7|Kiszolgáló terhelése (horizontálisan Skálázáson 7)|Percent|Maximum||Nincs dimenzió|
 |cacheWrite7|Gyorsítótár-írás (horizontálisan Skálázáson 7)|Bájt/s|Maximum||Nincs dimenzió|
 |cacheRead7|Gyorsítótár-olvasás (horizontálisan Skálázáson 7)|Bájt/s|Maximum||Nincs dimenzió|
-|percentProcessorTime7|Processzor (horizontálisan Skálázáson 7)|Százalék|Maximum||Nincs dimenzió|
+|percentProcessorTime7|Processzor (horizontálisan Skálázáson 7)|Percent|Maximum||Nincs dimenzió|
 |connectedclients8|Csatlakoztatott ügyfelek (horizontálisan Skálázáson 8)|Count|Maximum||Nincs dimenzió|
 |totalcommandsprocessed8|Műveletek összesen (horizontálisan Skálázáson 8)|Count|Összeg||Nincs dimenzió|
 |cachehits8|Cache Hits (Shard 8)|Count|Összeg||Nincs dimenzió|
@@ -302,10 +302,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |expiredkeys8|Lejárt kulcsok (horizontálisan Skálázáson 8)|Count|Összeg||Nincs dimenzió|
 |usedmemory8|Használt memória (horizontálisan Skálázáson 8)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss8|Használt memória RSS (horizontálisan Skálázáson 8)|Bájt|Maximum||Nincs dimenzió|
-|serverLoad8|Kiszolgáló terhelése (horizontálisan Skálázáson 8)|Százalék|Maximum||Nincs dimenzió|
+|serverLoad8|Kiszolgáló terhelése (horizontálisan Skálázáson 8)|Percent|Maximum||Nincs dimenzió|
 |cacheWrite8|Gyorsítótár-írás (horizontálisan Skálázáson 8)|Bájt/s|Maximum||Nincs dimenzió|
 |cacheRead8|Gyorsítótár-olvasás (horizontálisan Skálázáson 8)|Bájt/s|Maximum||Nincs dimenzió|
-|percentProcessorTime8|Processzor (horizontálisan Skálázáson 8)|Százalék|Maximum||Nincs dimenzió|
+|percentProcessorTime8|Processzor (horizontálisan Skálázáson 8)|Percent|Maximum||Nincs dimenzió|
 |connectedclients9|Csatlakoztatott ügyfelek (horizontálisan Skálázáson 9)|Count|Maximum||Nincs dimenzió|
 |totalcommandsprocessed9|Műveletek összesen (horizontálisan Skálázáson 9)|Count|Összeg||Nincs dimenzió|
 |cachehits9|Cache Hits (Shard 9)|Count|Összeg||Nincs dimenzió|
@@ -318,10 +318,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |expiredkeys9|Lejárt kulcsok (horizontálisan Skálázáson 9)|Count|Összeg||Nincs dimenzió|
 |usedmemory9|Használt memória (horizontálisan Skálázáson 9)|Bájt|Maximum||Nincs dimenzió|
 |usedmemoryRss9|Használt memória RSS (horizontálisan Skálázáson 9)|Bájt|Maximum||Nincs dimenzió|
-|serverLoad9|Kiszolgáló terhelése (horizontálisan Skálázáson 9)|Százalék|Maximum||Nincs dimenzió|
+|serverLoad9|Kiszolgáló terhelése (horizontálisan Skálázáson 9)|Percent|Maximum||Nincs dimenzió|
 |cacheWrite9|Gyorsítótár-írás (horizontálisan Skálázáson 9)|Bájt/s|Maximum||Nincs dimenzió|
 |cacheRead9|Gyorsítótár-olvasás (horizontálisan Skálázáson 9)|Bájt/s|Maximum||Nincs dimenzió|
-|percentProcessorTime9|Processzor (horizontálisan Skálázáson 9)|Százalék|Maximum||Nincs dimenzió|
+|percentProcessorTime9|Processzor (horizontálisan Skálázáson 9)|Percent|Maximum||Nincs dimenzió|
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
 
@@ -403,10 +403,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |Kimenő forgalomfolyamok|Kimenő forgalomfolyamok (előzetes verzió)|Count|Átlag|A kimenő forgalomfolyamok a virtuális gép kifelé irányuló aktuális forgalomfolyamainak számát jelzik|Nincs dimenzió|
 |Bejövő forgalomfolyamok maximális létrehozási gyakorisága|Bejövő forgalomfolyamok maximális létrehozási gyakorisága (előzetes verzió)|Egység/s|Átlag|A bejövő forgalomfolyamok (a virtuális gépre bemenő forgalom) maximális létrehozási gyakorisága|Nincs dimenzió|
 |Kimenő forgalomfolyamok maximális létrehozási gyakorisága|Kimenő forgalomfolyamok maximális létrehozási gyakorisága (előzetes verzió)|Egység/s|Átlag|A kimenő forgalomfolyamok (a virtuális gépről kimenő forgalom) maximális létrehozási gyakorisága|Nincs dimenzió|
-|Prémium szintű olvasható adatok lemez Taggyorsítótárának találati aránya|Prémium szintű adatok lemezolvasási gyorsítótár találati (előzetes verzió)|Százalék|Átlag|Prémium szintű olvasható adatok lemez Taggyorsítótárának találati aránya|LUN|
-|Prémium szintű lemez gyorsítótár olvasási tévesztési|Prémium szintű lemez gyorsítótár olvasási tévesztési (előzetes verzió)|Százalék|Átlag|Prémium szintű lemez gyorsítótár olvasási tévesztési|LUN|
-|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási találata|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási találata|Nincs dimenzió|
-|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási tévesztése|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási tévesztése (előzetes verzió)|Százalék|Átlag|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási tévesztése|Nincs dimenzió|
+|Prémium szintű olvasható adatok lemez Taggyorsítótárának találati aránya|Prémium szintű adatok lemezolvasási gyorsítótár találati (előzetes verzió)|Percent|Átlag|Prémium szintű olvasható adatok lemez Taggyorsítótárának találati aránya|LUN|
+|Prémium szintű lemez gyorsítótár olvasási tévesztési|Prémium szintű lemez gyorsítótár olvasási tévesztési (előzetes verzió)|Percent|Átlag|Prémium szintű lemez gyorsítótár olvasási tévesztési|LUN|
+|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási találata|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási találata (előzetes verzió)|Percent|Átlag|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási találata|Nincs dimenzió|
+|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási tévesztése|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási tévesztése (előzetes verzió)|Percent|Átlag|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási tévesztése|Nincs dimenzió|
 |Összes bejövő hálózati forgalom|Összes bejövő hálózati forgalom|Bájt|Összeg|A virtuális gép(ek) által az összes hálózati adapteren fogadott bájtok száma (bejövő forgalom)|Nincs dimenzió|
 |Összes kimenő hálózati forgalom|Összes kimenő hálózati forgalom|Bájt|Összeg|A virtuális gép(ek) által az összes hálózati adapteren elküldött bájtok száma (kimenő forgalom)|Nincs dimenzió|
 
@@ -447,10 +447,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |Kimenő forgalomfolyamok|Kimenő forgalomfolyamok (előzetes verzió)|Count|Átlag|A kimenő forgalomfolyamok a virtuális gép kifelé irányuló aktuális forgalomfolyamainak számát jelzik|VMName|
 |Bejövő forgalomfolyamok maximális létrehozási gyakorisága|Bejövő forgalomfolyamok maximális létrehozási gyakorisága (előzetes verzió)|Egység/s|Átlag|A bejövő forgalomfolyamok (a virtuális gépre bemenő forgalom) maximális létrehozási gyakorisága|VMName|
 |Kimenő forgalomfolyamok maximális létrehozási gyakorisága|Kimenő forgalomfolyamok maximális létrehozási gyakorisága (előzetes verzió)|Egység/s|Átlag|A kimenő forgalomfolyamok (a virtuális gépről kimenő forgalom) maximális létrehozási gyakorisága|VMName|
-|Prémium szintű olvasható adatok lemez Taggyorsítótárának találati aránya|Prémium szintű adatok lemezolvasási gyorsítótár találati (előzetes verzió)|Százalék|Átlag|Prémium szintű olvasható adatok lemez Taggyorsítótárának találati aránya|Logikai egység, VMName|
-|Prémium szintű lemez gyorsítótár olvasási tévesztési|Prémium szintű lemez gyorsítótár olvasási tévesztési (előzetes verzió)|Százalék|Átlag|Prémium szintű lemez gyorsítótár olvasási tévesztési|Logikai egység, VMName|
-|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási találata|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási találata|VMName|
-|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási tévesztése|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási tévesztése (előzetes verzió)|Százalék|Átlag|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási tévesztése|VMName|
+|Prémium szintű olvasható adatok lemez Taggyorsítótárának találati aránya|Prémium szintű adatok lemezolvasási gyorsítótár találati (előzetes verzió)|Percent|Átlag|Prémium szintű olvasható adatok lemez Taggyorsítótárának találati aránya|Logikai egység, VMName|
+|Prémium szintű lemez gyorsítótár olvasási tévesztési|Prémium szintű lemez gyorsítótár olvasási tévesztési (előzetes verzió)|Percent|Átlag|Prémium szintű lemez gyorsítótár olvasási tévesztési|Logikai egység, VMName|
+|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási találata|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási találata (előzetes verzió)|Percent|Átlag|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási találata|VMName|
+|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási tévesztése|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási tévesztése (előzetes verzió)|Percent|Átlag|Prémium szintű operációsrendszer-lemez gyorsítótár-olvasási tévesztése|VMName|
 |Összes bejövő hálózati forgalom|Összes bejövő hálózati forgalom|Bájt|Összeg|A virtuális gép(ek) által az összes hálózati adapteren fogadott bájtok száma (bejövő forgalom)|VMName|
 |Összes kimenő hálózati forgalom|Összes kimenő hálózati forgalom|Bájt|Összeg|A virtuális gép(ek) által az összes hálózati adapteren elküldött bájtok száma (kimenő forgalom)|VMName|
 
@@ -532,8 +532,8 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |CloudUploadThroughput|Felhő feltöltési átviteli sebessége|Bájt/s|Átlag|A felhő feltöltési sebesség az Azure-bA a jelentési időszak során.|Nincs dimenzió|
 |CloudReadThroughput|Felhőalapú letöltési átviteli sebesség|Bájt/s|Átlag|A felhő letöltési átviteli sebesség az Azure-bA a jelentési időszak során.|Nincs dimenzió|
 |BytesUploadedToCloud|Eszközről felhőbe feltöltött bájtok száma|Bájt|Átlag|A jelentéskészítési időszakban egy adott eszközről az Azure-ba feltöltött teljes adatmennyiség (bájt).|Nincs dimenzió|
-|HyperVVirtualProcessorUtilization|Peremhálózati számítás – processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Példánynév|
-|HyperVMemoryUtilization|Peremhálózati számítás – memóriahasználat|Százalék|Átlag|Felhasznált memória mennyisége|Példánynév|
+|HyperVVirtualProcessorUtilization|Peremhálózati számítás – processzorhasználat (%)|Percent|Átlag|Processzorhasználat (%)|Példánynév|
+|HyperVMemoryUtilization|Peremhálózati számítás – memóriahasználat|Percent|Átlag|Felhasznált memória mennyisége|Példánynév|
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
 
@@ -552,7 +552,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |ActivitySucceededRuns|Sikeres futtatások metrikák tevékenység|Count|Összeg||Tevékenységtípus, PipelineName, FailureType, neve|
 |TriggerFailedRuns|Nem sikerült az eseményindító-futtatások metrikák|Count|Összeg||Név, FailureType|
 |TriggerSucceededRuns|Eseményindító-futtatások metrikák sikerült|Count|Összeg||Név, FailureType|
-|IntegrationRuntimeCpuPercentage|Integrációs modul CPU-kihasználtság|Százalék|Átlag||IntegrationRuntimeName, csomópontnév|
+|IntegrationRuntimeCpuPercentage|Integrációs modul CPU-kihasználtság|Percent|Átlag||IntegrationRuntimeName, csomópontnév|
 |IntegrationRuntimeAvailableMemory|Integrációs modul rendelkezésre álló memória|Bájt|Átlag||IntegrationRuntimeName, csomópontnév|
 |MaxAllowedResourceCount|Maximális engedélyezett entitások száma|Count|Maximum||Nincs dimenzió|
 |MaxAllowedFactorySizeInGbUnits|Maximális engedélyezett feldolgozó mérete (GB-os egység)|Count|Maximum||Nincs dimenzió|
@@ -584,13 +584,13 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|cpu_percent|Százalékos Processzorhasználat|Százalék|Átlag|Százalékos Processzorhasználat|Nincs dimenzió|
-|memory_percent|Memória százalékos aránya|Százalék|Átlag|Memória százalékos aránya|Nincs dimenzió|
-|io_consumption_percent|I/o-százalék|Százalék|Átlag|I/o-százalék|Nincs dimenzió|
-|storage_percent|Tárolási százalék|Százalék|Átlag|Tárolási százalék|Nincs dimenzió|
+|cpu_percent|Százalékos Processzorhasználat|Percent|Átlag|Százalékos Processzorhasználat|Nincs dimenzió|
+|memory_percent|Memória százalékos aránya|Percent|Átlag|Memória százalékos aránya|Nincs dimenzió|
+|io_consumption_percent|I/o-százalék|Percent|Átlag|I/o-százalék|Nincs dimenzió|
+|storage_percent|Tárolási százalék|Percent|Átlag|Tárolási százalék|Nincs dimenzió|
 |storage_used|Felhasznált tároló|Bájt|Átlag|Felhasznált tároló|Nincs dimenzió|
 |storage_limit|Tárolási kapacitása|Bájt|Átlag|Tárolási kapacitása|Nincs dimenzió|
-|serverlog_storage_percent|Server Log storage százalékban|Százalék|Átlag|Server Log storage százalékban|Nincs dimenzió|
+|serverlog_storage_percent|Server Log storage százalékban|Percent|Átlag|Server Log storage százalékban|Nincs dimenzió|
 |serverlog_storage_usage|Kiszolgálói naplók tárolására használt|Bájt|Átlag|Kiszolgálói naplók tárolására használt|Nincs dimenzió|
 |serverlog_storage_limit|Log storage maximális|Bájt|Átlag|Log storage maximális|Nincs dimenzió|
 |active_connections|Az aktív kapcsolatok|Count|Átlag|Az aktív kapcsolatok|Nincs dimenzió|
@@ -604,13 +604,13 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|cpu_percent|Százalékos Processzorhasználat|Százalék|Átlag|Százalékos Processzorhasználat|Nincs dimenzió|
-|memory_percent|Memória százalékos aránya|Százalék|Átlag|Memória százalékos aránya|Nincs dimenzió|
-|io_consumption_percent|I/o-százalék|Százalék|Átlag|I/o-százalék|Nincs dimenzió|
-|storage_percent|Tárolási százalék|Százalék|Átlag|Tárolási százalék|Nincs dimenzió|
+|cpu_percent|Százalékos Processzorhasználat|Percent|Átlag|Százalékos Processzorhasználat|Nincs dimenzió|
+|memory_percent|Memória százalékos aránya|Percent|Átlag|Memória százalékos aránya|Nincs dimenzió|
+|io_consumption_percent|I/o-százalék|Percent|Átlag|I/o-százalék|Nincs dimenzió|
+|storage_percent|Tárolási százalék|Percent|Átlag|Tárolási százalék|Nincs dimenzió|
 |storage_used|Felhasznált tároló|Bájt|Átlag|Felhasznált tároló|Nincs dimenzió|
 |storage_limit|Tárolási kapacitása|Bájt|Átlag|Tárolási kapacitása|Nincs dimenzió|
-|serverlog_storage_percent|Server Log storage százalékban|Százalék|Átlag|Server Log storage százalékban|Nincs dimenzió|
+|serverlog_storage_percent|Server Log storage százalékban|Percent|Átlag|Server Log storage százalékban|Nincs dimenzió|
 |serverlog_storage_usage|Kiszolgálói naplók tárolására használt|Bájt|Átlag|Kiszolgálói naplók tárolására használt|Nincs dimenzió|
 |serverlog_storage_limit|Log storage maximális|Bájt|Átlag|Log storage maximális|Nincs dimenzió|
 |active_connections|Az aktív kapcsolatok|Count|Átlag|Az aktív kapcsolatok|Nincs dimenzió|
@@ -624,13 +624,13 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|cpu_percent|Százalékos Processzorhasználat|Százalék|Átlag|Százalékos Processzorhasználat|Nincs dimenzió|
-|memory_percent|Memória százalékos aránya|Százalék|Átlag|Memória százalékos aránya|Nincs dimenzió|
-|io_consumption_percent|I/o-százalék|Százalék|Átlag|I/o-százalék|Nincs dimenzió|
-|storage_percent|Tárolási százalék|Százalék|Átlag|Tárolási százalék|Nincs dimenzió|
+|cpu_percent|Százalékos Processzorhasználat|Percent|Átlag|Százalékos Processzorhasználat|Nincs dimenzió|
+|memory_percent|Memória százalékos aránya|Percent|Átlag|Memória százalékos aránya|Nincs dimenzió|
+|io_consumption_percent|I/o-százalék|Percent|Átlag|I/o-százalék|Nincs dimenzió|
+|storage_percent|Tárolási százalék|Percent|Átlag|Tárolási százalék|Nincs dimenzió|
 |storage_used|Felhasznált tároló|Bájt|Átlag|Felhasznált tároló|Nincs dimenzió|
 |storage_limit|Tárolási kapacitása|Bájt|Átlag|Tárolási kapacitása|Nincs dimenzió|
-|serverlog_storage_percent|Server Log storage százalékban|Százalék|Átlag|Server Log storage százalékban|Nincs dimenzió|
+|serverlog_storage_percent|Server Log storage százalékban|Percent|Átlag|Server Log storage százalékban|Nincs dimenzió|
 |serverlog_storage_usage|Kiszolgálói naplók tárolására használt|Bájt|Átlag|Kiszolgálói naplók tárolására használt|Nincs dimenzió|
 |serverlog_storage_limit|Log storage maximális|Bájt|Átlag|Log storage maximális|Nincs dimenzió|
 |active_connections|Az aktív kapcsolatok|Count|Átlag|Az aktív kapcsolatok|Nincs dimenzió|
@@ -645,10 +645,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|cpu_percent|Százalékos Processzorhasználat|Százalék|Átlag|Százalékos Processzorhasználat|Nincs dimenzió|
-|memory_percent|Memória százalékos aránya|Százalék|Átlag|Memória százalékos aránya|Nincs dimenzió|
+|cpu_percent|Százalékos Processzorhasználat|Percent|Átlag|Százalékos Processzorhasználat|Nincs dimenzió|
+|memory_percent|Memória százalékos aránya|Percent|Átlag|Memória százalékos aránya|Nincs dimenzió|
 |iops-érték|IOPS|Count|Átlag|I/o-műveletek száma másodpercenként|Nincs dimenzió|
-|storage_percent|Tárolási százalék|Százalék|Átlag|Tárolási százalék|Nincs dimenzió|
+|storage_percent|Tárolási százalék|Percent|Átlag|Tárolási százalék|Nincs dimenzió|
 |storage_used|Felhasznált tároló|Bájt|Átlag|Felhasznált tároló|Nincs dimenzió|
 |active_connections|Az aktív kapcsolatok|Count|Átlag|Az aktív kapcsolatok|Nincs dimenzió|
 |network_bytes_egress|Hálózat kimenő adatforgalma|Bájt|Összeg|Kimenő hálózati forgalom között az aktív kapcsolatok|Nincs dimenzió|
@@ -747,7 +747,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |MongoRequests|Mongo-kérelmek|Count|Count|Mongo-kérelmek száma|DatabaseName, CollectionName, Region, CommandName, ErrorCode|
 |ProvisionedThroughput|Kiosztott átviteli kapacitás|Count|Maximum|Kiosztott átviteli kapacitás|DatabaseName, CollectionName|
 |ReplicationLatency|P99 Replikáció késése|Ideje ezredmásodpercben|Átlag|Fiók geo-kompatibilis a forrás- és régiók közötti P99 replikáció késése|SourceRegion, TargetRegion|
-|ServiceAvailability|Szolgáltatás rendelkezésre állása|Százalék|Átlag|Fiók kérelmek óránként, napi vagy havi granularitási rendelkezésre állásáról|Nincs dimenzió|
+|ServiceAvailability|Szolgáltatás rendelkezésre állása|Percent|Átlag|Fiók kérelmek óránként, napi vagy havi granularitási rendelkezésre állásáról|Nincs dimenzió|
 |TotalRequestUnits|Teljes kérelemegység|Count|Összeg|Felhasznált egységek kérése|DatabaseName, CollectionName, Region, StatusCode, OperationType|
 |TotalRequests|Összes kérelem|Count|Count|Kérelmek száma|DatabaseName, CollectionName, Region, StatusCode, OperationType|
 
@@ -839,7 +839,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |CaptureBacklog|Hátralék rögzítése. (Előzetes verzió)|Count|Összeg|A Microsoft.EventHub hátralékának rögzítése. (Előzetes verzió)|Nincs dimenzió|
 |CapturedMessages|Rögzített üzenetek száma. (Előzetes verzió)|Count|Összeg|A Microsoft.EventHub rögzített üzeneteinek száma. (Előzetes verzió)|Nincs dimenzió|
 |CapturedBytes|Rögzített bájtok száma. (Előzetes verzió)|Bájt|Összeg|A Microsoft.EventHub rögzített bájtjainak száma. (Előzetes verzió)|Nincs dimenzió|
-|CPU|Processzor (előzetes verzió)|Százalék|Maximum|Az Event Hub-fürt CPU-kihasználtsága (%)|Szerepkör|
+|CPU|Processzor (előzetes verzió)|Percent|Maximum|Az Event Hub-fürt CPU-kihasználtsága (%)|Szerepkör|
 |AvailableMemory|Rendelkezésre álló memória (előzetes verzió)|Count|Maximum|Az Event Hub-fürt számára rendelkezésre álló memória (bájt)|Szerepkör|
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
@@ -848,12 +848,6 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |---|---|---|---|---|---|
 |GatewayRequests|Átjárókérések|Count|Összeg|Átjáró-kérelmek száma|ClusterDnsName, HttpStatus|
 |CategorizedGatewayRequests|Kategorizált Átjárókérések|Count|Összeg|Átjáró-kérelmek (1xx/2xx vagy 3xx/4xx vagy 5xx) kategóriák szerint|ClusterDnsName, HttpStatus|
-|Automatikus méretezés|Automatikus skálázási metrikák|Count|Maximum|Automatikus skálázási metrikák|ClusterDnsName, MetricName|
-|AllocatedMB|Lefoglalt MB|Count|Maximum|Lefoglalt MB|ClusterDnsName, MetricName|
-|AvailableMB|Rendelkezésre álló MB|Count|Maximum|Rendelkezésre álló MB|ClusterDnsName, MetricName|
-|AppsPending|Függőben lévő alkalmazások|Count|Maximum|Függőben lévő alkalmazások|ClusterDnsName, MetricName|
-|AppsRunning|Futó alkalmazások|Count|Maximum|Futó alkalmazások|ClusterDnsName, MetricName|
-|AppsSubmitted|Apps Submitted|Count|Maximum|Apps Submitted|ClusterDnsName, MetricName|
 |NumActiveWorkers|Aktív feldolgozók száma|Count|Maximum|Aktív feldolgozók száma|ClusterDnsName, MetricName|
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
@@ -889,8 +883,8 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |performanceCounters/requestsPerSecond|HTTP-kérések gyakorisága|Egység/s|Átlag|Az ASP.NET által az alkalmazásnak küldött összes kérelem száma másodpercenként.|cloud/roleInstance|
 |performanceCounters/exceptionsPerSecond|Kivételek gyakorisága|Egység/s|Átlag|A Windowsnak jelentett kezelt és nem kezelt kivételek száma, beleértve a .NET-kivételeket és a .NET-kivételekké konvertált nem kezelt kivételeket is.|cloud/roleInstance|
 |performanceCounters/processIOBytesPerSecond|Folyamat átviteli sebessége|Bájt/s|Átlag|Olvasási-írási műveletek fájlokon, hálózaton és eszközökön összesen (bájt/mp).|cloud/roleInstance|
-|performanceCounters/processCpuPercentage|Folyamat CPU|Százalék|Átlag|Az, hogy az összes folyamat szálak eltelt idő százalékában használták a processzort utasítások végrehajtásához. Ez 0 és 100 között változhat. Ez a metrika a w3wp folyamat teljesítményét jelzi.|cloud/roleInstance|
-|performanceCounters/processorCpuPercentage|Processzoridő|Százalék|Átlag|A processzor nem üresjárati szálak futtatásával töltött százalékos időhányada.|cloud/roleInstance|
+|performanceCounters/processCpuPercentage|Folyamat CPU|Percent|Átlag|Az, hogy az összes folyamat szálak eltelt idő százalékában használták a processzort utasítások végrehajtásához. Ez 0 és 100 között változhat. Ez a metrika a w3wp folyamat teljesítményét jelzi.|cloud/roleInstance|
+|performanceCounters/processorCpuPercentage|Processzoridő|Percent|Átlag|A processzor nem üresjárati szálak futtatásával töltött százalékos időhányada.|cloud/roleInstance|
 |performanceCounters/memoryAvailableBytes|Elérhető memória|Bájt|Átlag|Folyamatok vagy rendszerfeladatok számára azonnal kiosztható fizikai memória mennysége.|cloud/roleInstance|
 |performanceCounters/processPrivateBytes|Folyamat saját bájtjai|Bájt|Átlag|A kizárólag a megfigyelt alkalmazás folyamataihoz hozzárendelt memória mennyisége.|cloud/roleInstance|
 |kérések/időtartama|Kiszolgáló válaszideje|Ideje ezredmásodpercben|Átlag|Egy HTTP-kérelem fogadása és a válasz küldésének befejezése között eltelt idő.|request/performanceBucket, request/resultCode, operation/synthetic, cloud/roleInstance, request/success, cloud/roleName|
@@ -914,15 +908,15 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|ClusterDataCapacityFactor|Gyorsítótár-kihasználtság|Százalék|Átlag|A fürt hatókörében kihasználtsága|Nincs dimenzió|
+|ClusterDataCapacityFactor|Gyorsítótár-kihasználtság|Percent|Átlag|A fürt hatókörében kihasználtsága|Nincs dimenzió|
 |QueryDuration|Lekérdezések időtartama|Ezredmásodperc|Átlag|A lekérdezések időtartama másodpercben|QueryStatus|
-|IngestionsLoadFactor|Adatbetöltési kihasználtsága|Százalék|Átlag|A fürtben használt adatfeldolgozási pontok aránya|Nincs dimenzió|
+|IngestionsLoadFactor|Adatbetöltési kihasználtsága|Percent|Átlag|A fürtben használt adatfeldolgozási pontok aránya|Nincs dimenzió|
 |IsEngineAnsweringQuery|Életben tartási|Count|Átlag|Megerősítést jelölőnégyzet azt jelzi, hogy a fürt lekérdezéseire|Nincs dimenzió|
 |IngestCommandOriginalSizeInMb|Adatbetöltési kötet (megabájtban)|Count|Összeg|A fürthöz (megabájtban) a feldolgozott adatok teljes mennyisége|Nincs dimenzió|
 |IngestedEventAgeSeconds|Adatbetöltési késés (másodpercben)|Másodperc|Átlag|A betöltési idő másodpercben a fürthöz a forrás (pl. üzenet jelenik meg az EventHub)|Nincs dimenzió|
 |EventRecievedFromEventHub|(Az Event Hubs) feldolgozott események|Count|Összeg|Ha az Event Hubs fürtjét a fürt által feldolgozott események száma|Nincs dimenzió|
 |IngestionResult|Adatbetöltési eredménye|Count|Count|Az Adatbetöltési műveletek száma|IngestionResultDetails|
-|EngineCPU|CPU|Százalék|Átlag|CPU-kihasználtsága|Nincs dimenzió|
+|EngineCPU|CPU|Percent|Átlag|CPU-kihasználtsága|Nincs dimenzió|
 
 ## <a name="microsoftlocationbasedservicesaccounts"></a>Microsoft.LocationBasedServices/accounts
 
@@ -942,7 +936,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |RunLatency|Futtatások késése|Másodperc|Átlag|A befejezett munkafolyamat-futtatások késése.|Nincs dimenzió|
 |RunSuccessLatency|Sikeres futtatások késése|Másodperc|Átlag|A sikeres munkafolyamat-futtatások késése.|Nincs dimenzió|
 |RunThrottledEvents|Futtatások által elindított események|Count|Összeg|A munkafolyamat-műveletek vagy -triggerek által elindított események száma.|Nincs dimenzió|
-|RunFailurePercentage|Futtatási hibák százalékos értéke|Százalék|Összeg|Sikertelen munkafolyamat-futtatások százalékos értéke.|Nincs dimenzió|
+|RunFailurePercentage|Futtatási hibák százalékos értéke|Percent|Összeg|Sikertelen munkafolyamat-futtatások százalékos értéke.|Nincs dimenzió|
 |ActionsStarted|Elindított műveletek |Count|Összeg|Az elindított munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsCompleted|Befejezett műveletek |Count|Összeg|A befejezett munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsSucceeded|Sikeres műveletek |Count|Összeg|A sikeres munkafolyamat-műveletek száma.|Nincs dimenzió|
@@ -984,7 +978,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |RunSuccessLatency|Sikeres futtatások késése|Másodperc|Átlag|A sikeres munkafolyamat-futtatások késése.|Nincs dimenzió|
 |RunThrottledEvents|Futtatások által elindított események|Count|Összeg|A munkafolyamat-műveletek vagy -triggerek által elindított események száma.|Nincs dimenzió|
 |RunStartThrottledEvents|Futtatás indítása által szabályozott események|Count|Összeg|A munkafolyamat-futtatás indítása által szabályozott események száma.|Nincs dimenzió|
-|RunFailurePercentage|Futtatási hibák százalékos értéke|Százalék|Összeg|Sikertelen munkafolyamat-futtatások százalékos értéke.|Nincs dimenzió|
+|RunFailurePercentage|Futtatási hibák százalékos értéke|Percent|Összeg|Sikertelen munkafolyamat-futtatások százalékos értéke.|Nincs dimenzió|
 |ActionsStarted|Elindított műveletek |Count|Összeg|Az elindított munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsCompleted|Befejezett műveletek |Count|Összeg|A befejezett munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsSucceeded|Sikeres műveletek |Count|Összeg|A sikeres munkafolyamat-műveletek száma.|Nincs dimenzió|
@@ -1003,10 +997,10 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |TriggerFireLatency|Triggerek aktiválásának késése |Másodperc|Átlag|Az aktivált munkafolyamat-trigger késése.|Nincs dimenzió|
 |TriggerSuccessLatency|Sikeres triggerek késése |Másodperc|Átlag|A sikeres munkafolyamat-triggerek késése.|Nincs dimenzió|
 |TriggerThrottledEvents|Triggerek által elindított események|Count|Összeg|A munkafolyamat-triggerek által elindított események száma.|Nincs dimenzió|
-|IntegrationServiceEnvironmentWorkflowProcessorUsage|Integrációs szolgáltatási környezet munkafolyamatának processzorhasználata|Százalék|Átlag|Az integrációs szolgáltatási környezet munkafolyamatának processzorhasználata.|Nincs dimenzió|
-|IntegrationServiceEnvironmentWorkflowMemoryUsage|Integrációs szolgáltatási környezet munkafolyamatának memóriahasználata|Százalék|Átlag|Az integrációs szolgáltatási környezet munkafolyamatának memóriahasználata.|Nincs dimenzió|
-|IntegrationServiceEnvironmentConnectorProcessorUsage|Integrációs szolgáltatási környezet összekötőjének processzorhasználata|Százalék|Átlag|Az integrációs szolgáltatási környezet összekötőjének processzorhasználata.|Nincs dimenzió|
-|IntegrationServiceEnvironmentConnectorMemoryUsage|Integrációs szolgáltatási környezet összekötőjének memóriahasználata|Százalék|Átlag|Az integrációs szolgáltatási környezet összekötőjének memóriahasználata.|Nincs dimenzió|
+|IntegrationServiceEnvironmentWorkflowProcessorUsage|Integrációs szolgáltatási környezet munkafolyamatának processzorhasználata|Percent|Átlag|Az integrációs szolgáltatási környezet munkafolyamatának processzorhasználata.|Nincs dimenzió|
+|IntegrationServiceEnvironmentWorkflowMemoryUsage|Integrációs szolgáltatási környezet munkafolyamatának memóriahasználata|Percent|Átlag|Az integrációs szolgáltatási környezet munkafolyamatának memóriahasználata.|Nincs dimenzió|
+|IntegrationServiceEnvironmentConnectorProcessorUsage|Integrációs szolgáltatási környezet összekötőjének processzorhasználata|Percent|Átlag|Az integrációs szolgáltatási környezet összekötőjének processzorhasználata.|Nincs dimenzió|
+|IntegrationServiceEnvironmentConnectorMemoryUsage|Integrációs szolgáltatási környezet összekötőjének memóriahasználata|Percent|Átlag|Az integrációs szolgáltatási környezet összekötőjének memóriahasználata.|Nincs dimenzió|
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
@@ -1088,7 +1082,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |---|---|---|---|---|---|
 |QueryVolume|Lekérdezés kötet|Count|Összeg|A DNS-zónák kiszolgált lekérdezések száma|Nincs dimenzió|
 |RecordSetCount|Rekord beállítása száma|Count|Maximum|A DNS-zóna rekordhalmazok száma|Nincs dimenzió|
-|RecordSetCapacityUtilization|Record Set Capacity Utilization|Százalék|Maximum|DNS-zóna az egyes rekordhalmaz-kapacitás százaléka|Nincs dimenzió|
+|RecordSetCapacityUtilization|Record Set Capacity Utilization|Percent|Maximum|DNS-zóna az egyes rekordhalmaz-kapacitás százaléka|Nincs dimenzió|
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
@@ -1188,7 +1182,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|ProbesFailedPercent|Nem sikerült a(z) % mintavételek|Százalék|Átlag|a figyelés mintavételek kapcsolat % sikertelen|Nincs dimenzió|
+|ProbesFailedPercent|Nem sikerült a(z) % mintavételek|Percent|Átlag|a figyelés mintavételek kapcsolat % sikertelen|Nincs dimenzió|
 |AverageRoundtripMs|Átl. Üzenetváltási idő (ms)|Ideje ezredmásodpercben|Átlag|Átlagos hálózati üzenetváltási idő (ms) figyelési mintavételek elküldve a forrás és cél közötti kapcsolat|Nincs dimenzió|
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
@@ -1201,7 +1195,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |BackendRequestCount|Háttér-kérések száma|Count|Összeg|A HTTP-vagy Https-proxy háttérkomponenseinek küldött kérelmek száma|Válaszállapotok összege HTTP, HttpStatusGroup, háttér|
 |BackendRequestLatency|Háttérbeli késleltetése|Ideje ezredmásodpercben|Átlag|Amikor a kérést küld a HTTP-vagy Https-proxy által a háttérrendszer mindaddig, amíg a HTTP-vagy Https-proxy kapott válasz utolsó bájtját a háttérbeli számított idő|Háttérszolgáltatás|
 |TotalLatency|Teljes késés|Ideje ezredmásodpercben|Átlag|Ha az ügyfél kérést kapott a HTTP-vagy Https-proxy mindaddig, amíg az ügyfél arra vonatkozik, a HTTP-vagy Https-proxy a válasz utolsó bájtját számított idő|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
-|BackendHealthPercentage|Háttérkiszolgáló állapotadatainak százalékos aránya|Százalék|Átlag|Sikeres állapotjelentés aránya mintavételek a HTTP-vagy Https-proxy által háttérkomponenseinek|Háttér, Háttérkészletek|
+|BackendHealthPercentage|Háttérkiszolgáló állapotadatainak százalékos aránya|Percent|Átlag|Sikeres állapotjelentés aránya mintavételek a HTTP-vagy Https-proxy által háttérkomponenseinek|Háttér, Háttérkészletek|
 |WebApplicationFirewallRequestCount|Web Application Firewall kérések száma|Count|Összeg|A webalkalmazási tűzfal által feldolgozott ügyfél-kérelmek száma|PolicyName, RuleName, Action|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
@@ -1355,7 +1349,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |QueryPoolJobQueueLength|Szálak: Lekérdezési készlet feladat-várólistájának hossza|Count|Átlag|Az a lekérdezési szálkészlet üzenetsorában található feladatok száma.|Nincs dimenzió|
 |qpu_high_utilization_metric|QPU magas kihasználtság|Count|Összeg|QPU magas kihasználtság az elmúlt percben, 1 QPU magas kihasználtság, különben 0|Nincs dimenzió|
 |memory_metric|Memória|Bájt|Átlag|A memória. Tartomány 0 – 3 GB az a1-es, 0 – 5 GB az a2-es, 0 – 10 GB az A3, a4-es 0 – 25 GB, a5 0-50 GB-os és 0 – 100 GB-A6|Nincs dimenzió|
-|memory_thrashing_metric|Memóriaakadozás|Százalék|Átlag|Átlagos memóriaakadozás.|Nincs dimenzió|
+|memory_thrashing_metric|Memóriaakadozás|Percent|Átlag|Átlagos memóriaakadozás.|Nincs dimenzió|
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
@@ -1381,7 +1375,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |---|---|---|---|---|---|
 |SearchLatency|Keresési késés|Másodperc|Átlag|A keresési szolgáltatás átlagos keresési késés|Nincs dimenzió|
 |SearchQueriesPerSecond|Keresési lekérdezések másodpercenként|Egység/s|Átlag|Keresési lekérdezések másodpercenként a keresési szolgáltatás|Nincs dimenzió|
-|ThrottledSearchQueriesPercentage|Szabályozott lekérdezések százalékos aránya|Százalék|Átlag|A keresési szolgáltatás szabályozva lettek keresési lekérdezések aránya|Nincs dimenzió|
+|ThrottledSearchQueriesPercentage|Szabályozott lekérdezések százalékos aránya|Percent|Átlag|A keresési szolgáltatás szabályozva lettek keresési lekérdezések aránya|Nincs dimenzió|
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
@@ -1400,8 +1394,8 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |ActiveMessages|Az üzenetsor vagy témakör aktív üzeneteinek száma. (Előzetes verzió)|Count|Átlag|Az üzenetsor vagy témakör aktív üzeneteinek száma. (Előzetes verzió)|EntityName|
 |DeadletteredMessages|Az üzenetsor vagy témakör kézbesíthetetlen üzeneteinek száma. (Előzetes verzió)|Count|Átlag|Az üzenetsor vagy témakör kézbesíthetetlen üzeneteinek száma. (Előzetes verzió)|EntityName|
 |ScheduledMessages|Az üzenetsor vagy témakör ütemezett üzeneteinek száma. (Előzetes verzió)|Count|Átlag|Az üzenetsor vagy témakör ütemezett üzeneteinek száma. (Előzetes verzió)|EntityName|
-|CPUXNS|Processzorhasználat névterenként|Százalék|Maximum|Prémium szintű Service Bus-névtér CPU-használati metrikája|Nincs dimenzió|
-|WSXNS|Felhasznál memória mérete névterenként|Százalék|Maximum|Prémium szintű Service Bus-névtér memóriahasználati metrikája|Nincs dimenzió|
+|CPUXNS|Processzorhasználat névterenként|Percent|Maximum|Prémium szintű Service Bus-névtér CPU-használati metrikája|Nincs dimenzió|
+|WSXNS|Felhasznál memória mérete névterenként|Percent|Maximum|Prémium szintű Service Bus-névtér memóriahasználati metrikája|Nincs dimenzió|
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
 
@@ -1411,8 +1405,8 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |AllocatedMemory|AllocatedMemory|Bájt|Átlag|Ez a tároló (MB) számára lefoglalt memória|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
 |ActualCpu|ActualCpu|Count|Átlag|Tényleges processzorhasználat millicore-ban|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
 |ActualMemory|ActualMemory|Bájt|Átlag|Tényleges memóriahasználat (MB)|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|CpuUtilization|CpuUtilization|Százalék|Átlag|Ez a tároló AllocatedCpu százalékát CPU hasznosítása|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|MemoryUtilization|MemoryUtilization|Százalék|Átlag|Ez a tároló AllocatedCpu százalékát CPU hasznosítása|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
+|CpuUtilization|CpuUtilization|Percent|Átlag|Ez a tároló AllocatedCpu százalékát CPU hasznosítása|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
+|MemoryUtilization|MemoryUtilization|Percent|Átlag|Ez a tároló AllocatedCpu százalékát CPU hasznosítása|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
 |ApplicationStatus|ApplicationStatus|Count|Átlag|Service Fabric-háló alkalmazás állapota|ApplicationName, állapota|
 |ServiceStatus|ServiceStatus|Count|Átlag|Egy szolgáltatás a Service Fabric-háló alkalmazás állapotának megtekintése|ApplicationName, Status, ServiceName|
 |ServiceReplicaStatus|ServiceReplicaStatus|Count|Átlag|A Service Fabric-háló application szolgáltatás replika állapota|ApplicationName, Status, ServiceName, ServiceReplicaName|
@@ -1427,70 +1421,70 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |MessageCount|Üzenetek száma|Count|Összeg|Üzenetek teljes mennyisége.|Nincs dimenzió|
 |InboundTraffic|Bejövő forgalom|Bájt|Összeg|A szolgáltatás a bejövő adatforgalom|Nincs dimenzió|
 |OutboundTraffic|Kimenő forgalom|Bájt|Összeg|A kimenő adatforgalom a szolgáltatás|Nincs dimenzió|
-|UserErrors|Felhasználói hibák|Százalék|Maximum|A felhasználói hibáinak aránya|Nincs dimenzió|
-|SystemErrors|Rendszerhibák|Százalék|Maximum|A rendszer hibák százaléka|Nincs dimenzió|
+|UserErrors|Felhasználói hibák|Percent|Maximum|A felhasználói hibáinak aránya|Nincs dimenzió|
+|SystemErrors|Rendszerhibák|Percent|Maximum|A rendszer hibák százaléka|Nincs dimenzió|
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Nincs dimenzió|
-|physical_data_read_percent|Adat IO kihasználtsága (%)|Százalék|Átlag|Adat IO kihasználtsága (%)|Nincs dimenzió|
-|log_write_percent|Naplózási IO százalékos aránya|Százalék|Átlag|Naplózási IO százalékos aránya|Nincs dimenzió|
-|dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|Nincs dimenzió|
+|cpu_percent|Processzorhasználat (%)|Percent|Átlag|Processzorhasználat (%)|Nincs dimenzió|
+|physical_data_read_percent|Adat IO kihasználtsága (%)|Percent|Átlag|Adat IO kihasználtsága (%)|Nincs dimenzió|
+|log_write_percent|Naplózási IO százalékos aránya|Percent|Átlag|Naplózási IO százalékos aránya|Nincs dimenzió|
+|dtu_consumption_percent|DTU-kihasználtság (%)|Percent|Átlag|DTU-kihasználtság (%)|Nincs dimenzió|
 |storage|Használatban lévő adatterület|Bájt|Maximum|Adatbázis teljes mérete|Nincs dimenzió|
 |connection_successful|Sikeres kapcsolatok|Count|Összeg|Sikeres kapcsolatok|Nincs dimenzió|
 |connection_failed|Sikertelen kapcsolatok|Count|Összeg|Sikertelen kapcsolatok|Nincs dimenzió|
 |blocked_by_firewall|Tűzfal által blokkolva|Count|Összeg|Tűzfal által blokkolva|Nincs dimenzió|
 |Holtpont|Holtpontok|Count|Összeg|Holtpontok|Nincs dimenzió|
-|storage_percent|Adatok felhasznált lemezterület-százalék|Százalék|Maximum|Adatbázis méretének kihasználtsága|Nincs dimenzió|
-|xtp_storage_percent|Memóriabeli OLTP storage százalék|Százalék|Átlag|Memóriabeli OLTP storage százalék|Nincs dimenzió|
-|workers_percent|Feldolgozók százalékos aránya|Százalék|Átlag|Feldolgozók százalékos aránya|Nincs dimenzió|
-|sessions_percent|Munkamenetek százaléka|Százalék|Átlag|Munkamenetek százaléka|Nincs dimenzió|
+|storage_percent|Adatok felhasznált lemezterület-százalék|Percent|Maximum|Adatbázis méretének kihasználtsága|Nincs dimenzió|
+|xtp_storage_percent|Memóriabeli OLTP storage százalék|Percent|Átlag|Memóriabeli OLTP storage százalék|Nincs dimenzió|
+|workers_percent|Feldolgozók százalékos aránya|Percent|Átlag|Feldolgozók százalékos aránya|Nincs dimenzió|
+|sessions_percent|Munkamenetek százaléka|Percent|Átlag|Munkamenetek százaléka|Nincs dimenzió|
 |dtu_limit|DTU-korlát|Count|Átlag|DTU-korlát|Nincs dimenzió|
 |dtu_used|Használt dtu-k|Count|Átlag|Használt dtu-k|Nincs dimenzió|
 |cpu_limit|CPU-korlát|Count|Átlag|CPU-korlát|Nincs dimenzió|
 |cpu_used|CPU-kihasználtság|Count|Átlag|CPU-kihasználtság|Nincs dimenzió|
 |dwu_limit|DWU-korlát|Count|Maximum|DWU-korlát|Nincs dimenzió|
-|dwu_consumption_percent|Százalékos DWU|Százalék|Maximum|Százalékos DWU|Nincs dimenzió|
+|dwu_consumption_percent|Százalékos DWU|Percent|Maximum|Százalékos DWU|Nincs dimenzió|
 |dwu_used|Alkalmazott DWU|Count|Maximum|Alkalmazott DWU|Nincs dimenzió|
-|dw_cpu_percent|DW csomópont szintjén Processzorhasználat (%)|Százalék|Átlag|DW csomópont szintjén Processzorhasználat (%)|DwLogicalNodeId|
-|dw_physical_data_read_percent|DW csomópont adat IO százalékos értéke|Százalék|Átlag|DW csomópont adat IO százalékos értéke|DwLogicalNodeId|
-    |cache_hit_percent|Gyorsítótár találati százaléka|Százalék|Maximum|Gyorsítótár találati százaléka|Nincs dimenzió|
-|cache_used_percent|Felhasznált gyorsítótár százalékos aránya|Százalék|Maximum|Felhasznált gyorsítótár százalékos aránya|Nincs dimenzió|
-|local_tempdb_usage_percent|Helyi tempdb százalékos aránya|Százalék|Átlag|Helyi tempdb százalékos aránya|Nincs dimenzió|
+|dw_cpu_percent|DW csomópont szintjén Processzorhasználat (%)|Percent|Átlag|DW csomópont szintjén Processzorhasználat (%)|DwLogicalNodeId|
+|dw_physical_data_read_percent|DW csomópont adat IO százalékos értéke|Percent|Átlag|DW csomópont adat IO százalékos értéke|DwLogicalNodeId|
+    |cache_hit_percent|Gyorsítótár találati százaléka|Percent|Maximum|Gyorsítótár találati százaléka|Nincs dimenzió|
+|cache_used_percent|Felhasznált gyorsítótár százalékos aránya|Percent|Maximum|Felhasznált gyorsítótár százalékos aránya|Nincs dimenzió|
+|local_tempdb_usage_percent|Helyi tempdb százalékos aránya|Percent|Átlag|Helyi tempdb százalékos aránya|Nincs dimenzió|
 |app_cpu_billed|CPU alapján számlázott alkalmazás|Count|Összeg|CPU alapján számlázott alkalmazás|Nincs dimenzió|
-|app_cpu_percent|Alkalmazás CPU-százaléka|Százalék|Átlag|Alkalmazás CPU-százaléka|Nincs dimenzió|
-|app_memory_percent|Alkalmazás a használt memória százalékos aránya|Százalék|Átlag|Alkalmazás a használt memória százalékos aránya|Nincs dimenzió|
+|app_cpu_percent|Alkalmazás CPU-százaléka|Percent|Átlag|Alkalmazás CPU-százaléka|Nincs dimenzió|
+|app_memory_percent|Alkalmazás a használt memória százalékos aránya|Percent|Átlag|Alkalmazás a használt memória százalékos aránya|Nincs dimenzió|
 |allocated_data_storage|Lefoglalt adatterület|Bájt|Átlag|Lefoglalt adatterület|Nincs dimenzió|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Nincs dimenzió|
-|physical_data_read_percent|Adat IO kihasználtsága (%)|Százalék|Átlag|Adat IO kihasználtsága (%)|Nincs dimenzió|
-|log_write_percent|Naplózási IO százalékos aránya|Százalék|Átlag|Naplózási IO százalékos aránya|Nincs dimenzió|
-|dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|Nincs dimenzió|
-|storage_percent|Adatok felhasznált lemezterület-százalék||Százalék|Átlag|Tárolási százalékos aránya|Nincs dimenzió|
-|workers_percent|Feldolgozók százalékos aránya|Százalék|Átlag|Feldolgozók százalékos aránya|Nincs dimenzió|
-|sessions_percent|Munkamenetek százaléka|Százalék|Átlag|Munkamenetek százaléka|Nincs dimenzió|
+|cpu_percent|Processzorhasználat (%)|Percent|Átlag|Processzorhasználat (%)|Nincs dimenzió|
+|physical_data_read_percent|Adat IO kihasználtsága (%)|Percent|Átlag|Adat IO kihasználtsága (%)|Nincs dimenzió|
+|log_write_percent|Naplózási IO százalékos aránya|Percent|Átlag|Naplózási IO százalékos aránya|Nincs dimenzió|
+|dtu_consumption_percent|DTU-kihasználtság (%)|Percent|Átlag|DTU-kihasználtság (%)|Nincs dimenzió|
+|storage_percent|Adatok felhasznált lemezterület-százalék||Percent|Átlag|Tárolási százalékos aránya|Nincs dimenzió|
+|workers_percent|Feldolgozók százalékos aránya|Percent|Átlag|Feldolgozók százalékos aránya|Nincs dimenzió|
+|sessions_percent|Munkamenetek százaléka|Percent|Átlag|Munkamenetek százaléka|Nincs dimenzió|
 |eDTU_limit|az eDTU-korlát|Count|Átlag|az eDTU-korlát|Nincs dimenzió|
 |storage_limit|Adatok maximális mérete|Bájt|Átlag|Tárolási kapacitása|Nincs dimenzió|
 |eDTU_used|használt edtu-k|Count|Átlag|használt edtu-k|Nincs dimenzió|
 |storage_used|Használatban lévő adatterület|Bájt|Átlag|Felhasznált tároló|Nincs dimenzió|
-|xtp_storage_percent|Memóriabeli OLTP storage százalék|Százalék|Átlag|Memóriabeli OLTP storage százalék|Nincs dimenzió|
+|xtp_storage_percent|Memóriabeli OLTP storage százalék|Percent|Átlag|Memóriabeli OLTP storage százalék|Nincs dimenzió|
 |cpu_limit|CPU-korlát|Count|Átlag|CPU-korlát|Nincs dimenzió|
 |cpu_used|CPU-kihasználtság|Count|Átlag|CPU-kihasználtság|Nincs dimenzió|
 |allocated_data_storage|Lefoglalt adatterület|Bájt|Átlag|Lefoglalt adatterület|Nincs dimenzió|
-|allocated_data_storage_percent|Adatok lefoglalt terület százaléka|Százalék|Maximum|Adatok lefoglalt terület százaléka|Nincs dimenzió|
+|allocated_data_storage_percent|Adatok lefoglalt terület százaléka|Percent|Maximum|Adatok lefoglalt terület százaléka|Nincs dimenzió|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |virtual_core_count|Virtuális magok száma|Count|Átlag|Virtuális magok száma|Nincs dimenzió|
-|avg_cpu_percent|Átlagos Processzorhasználat (%)|Százalék|Átlag|Átlagos Processzorhasználat (%)|Nincs dimenzió|
+|avg_cpu_percent|Átlagos Processzorhasználat (%)|Percent|Átlag|Átlagos Processzorhasználat (%)|Nincs dimenzió|
 |reserved_storage_mb|Lefoglalt lemezterület|Count|Átlag|Lefoglalt lemezterület|Nincs dimenzió|
 |storage_space_used_mb|Felhasznált lemezterület|Count|Átlag|Felhasznált lemezterület|Nincs dimenzió|
 |io_requests|I/o-kérelmek száma|Count|Átlag|I/o-kérelmek száma|Nincs dimenzió|
@@ -1581,7 +1575,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|ResourceUtilization|SU százalékos kihasználtsága|Százalék|Maximum|SU százalékos kihasználtsága|LogicalName, PartitionId|
+|ResourceUtilization|SU százalékos kihasználtsága|Percent|Maximum|SU százalékos kihasználtsága|LogicalName, PartitionId|
 |InputEvents|Bemeneti események|Count|Összeg|Bemeneti események|LogicalName, PartitionId|
 |InputEventBytes|Bemeneti esemény bájtokban|Bájt|Összeg|Bemeneti esemény bájtokban|LogicalName, PartitionId|
 |LateInputEvents|Késedelmes bemeneti események|Count|Összeg|Késedelmes bemeneti események|LogicalName, PartitionId|
@@ -1654,8 +1648,8 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|CpuPercentage|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Példány|
-|MemoryPercentage|Memóriahasználat (%)|Százalék|Átlag|Memóriahasználat (%)|Példány|
+|CpuPercentage|Processzorhasználat (%)|Percent|Átlag|Processzorhasználat (%)|Példány|
+|MemoryPercentage|Memóriahasználat (%)|Percent|Átlag|Memóriahasználat (%)|Példány|
 |DiskQueueLength|Lemezvárólista hossza|Count|Átlag|Lemezvárólista hossza|Példány|
 |HttpQueueLength|HTTP-várólista hossza|Count|Átlag|HTTP-várólista hossza|Példány|
 |BytesReceived|Bejövő adatforgalom|Bájt|Összeg|Bejövő adatforgalom|Példány|
@@ -1782,8 +1776,8 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |Http4xx|Http 4xx|Count|Összeg|Http 4xx|Példány|
 |Http5xx|HTTP-kiszolgálói hibák|Count|Összeg|HTTP-kiszolgálói hibák|Példány|
 |AverageResponseTime|Átlagos válaszidő|Másodperc|Átlag|Átlagos válaszidő|Példány|
-|CpuPercentage|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Példány|
-|MemoryPercentage|Memóriahasználat (%)|Százalék|Átlag|Memóriahasználat (%)|Példány|
+|CpuPercentage|Processzorhasználat (%)|Percent|Átlag|Processzorhasználat (%)|Példány|
+|MemoryPercentage|Memóriahasználat (%)|Percent|Átlag|Memóriahasználat (%)|Példány|
 |DiskQueueLength|Lemezvárólista hossza|Count|Átlag|Lemezvárólista hossza|Példány|
 |HttpQueueLength|HTTP-várólista hossza|Count|Átlag|HTTP-várólista hossza|Példány|
 |ActiveRequests|Aktív kérelmek|Count|Összeg|Aktív kérelmek|Példány|
@@ -1799,8 +1793,8 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |Feldolgozók|Feldolgozók összesen|Count|Átlag|Feldolgozók összesen|Nincs dimenzió|
 |WorkersAvailable|Rendelkezésre álló feldolgozók|Count|Átlag|Rendelkezésre álló feldolgozók|Nincs dimenzió|
 |Napon használt|Használt feldolgozók|Count|Átlag|Használt feldolgozók|Nincs dimenzió|
-|CpuPercentage|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Példány|
-|MemoryPercentage|Memóriahasználat (%)|Százalék|Átlag|Memóriahasználat (%)|Példány|
+|CpuPercentage|Processzorhasználat (%)|Percent|Átlag|Processzorhasználat (%)|Példány|
+|MemoryPercentage|Memóriahasználat (%)|Percent|Átlag|Memóriahasználat (%)|Példány|
 
 ## <a name="next-steps"></a>További lépések
 * [További információ a metrikák az Azure monitorban](data-platform.md)

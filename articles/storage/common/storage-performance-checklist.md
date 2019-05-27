@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 904b9b8ba98be5e14b1d769a0e1d8c2d6084e24d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477293"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951172"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>A Microsoft Azure Storage teljesítmény- és méretezhetőségi ellenőrzőlistája
 ## <a name="overview"></a>Áttekintés
 A Microsoft Azure Storage szolgáltatások kiadása óta a Microsoft bevált módszereket, ezek a szolgáltatások olyan nagy teljesítményű módon számos fejlesztett ki, és ez a cikk ezek közül a legfontosabb kialakíthattunk ellenőrzőlista stílusú listáját szolgál. Ez a cikk a szándéka érdekében ellenőrizze a bevált gyakorlatokat használják az Azure Storage segítségével az alkalmazásfejlesztők és és egyéb bevált gyakorlatokat, akkor érdemes bevezetése jelzi. Ez a cikk nem kísérli meg, hogy biztosítsák a minden lehetséges teljesítményének és méretezhetőségének optimalizálás –, kivéve azokat, amelyek a hatásuk a kis- és üzemelő megoldásain alkalmazható. Az az alkalmazás viselkedésében előrejelezhető a tervezés során, hasznos már a legelején a terveket, amelyeket fog futni, a teljesítménybeli problémák elkerülése érdekében szem előtt kell tartani.  
 
-Minden alkalmazás fejlesztői Azure Storage használatával Ez a cikk ismerteti, és ellenőrizze, hogy saját alkalmazást követi az alábbi bevált gyakorlatokat mindegyike időt vesz igénybe.  
+Minden alkalmazás fejlesztői Azure Storage használatával Ez a cikk ismerteti, és ellenőrizze, hogy az alkalmazás követi az alábbi bevált gyakorlatokat mindegyike időt vesz igénybe.  
 
 ## <a name="checklist"></a>Ellenőrzőlista
 Ez a cikk a bevált eljárásokat az alábbi csoportokba rendezik. Bevált gyakorlatok a alkalmazni:  
@@ -27,7 +27,7 @@ Ez a cikk a bevált eljárásokat az alábbi csoportokba rendezik. Bevált gyako
 * Minden Azure Storage szolgáltatás (blobok, táblák, üzenetsorok és fájlok)
 * Blobok
 * Táblák
-* Üzenetsorok  
+* Várólisták  
 
 | Kész | Terület | Category | Kérdés |
 | --- | --- | --- | --- |
@@ -71,13 +71,13 @@ Ez a cikk a bevált eljárásokat az alábbi csoportokba rendezik. Bevált gyako
 | &nbsp; | Táblák |INSERT/frissítése/törlése |[Vannak, elkerülve a csak az entitások határozza meg, hogy a hívás, insert nebo update beolvasása?](#subheading36) |
 | &nbsp; | Táblák |INSERT/frissítése/törlése |[Tekintette tárolása gyakran letöltött adatok sorozatát együtt egyetlen entitás tulajdonságokként több entitás helyett?](#subheading37) |
 | &nbsp; | Táblák |INSERT/frissítése/törlése |[Mindig lekéri együtt, és kötegekben (például idősorozat-adatok) írható entitások rendelkezik meg minősül blobs használata helyett a táblák?](#subheading38) |
-| &nbsp; | Üzenetsorok |Skálázási célértékei |[Közeledik üzenetek / másodperc skálázási célértékei?](#subheading39) |
-| &nbsp; | Üzenetsorok |Konfiguráció |[Hogy ki van kapcsolva a Nagle kis méretű kérések teljesítményét?](#subheading40) |
-| &nbsp; | Üzenetsorok |Üzenet mérete |[Azok az üzenetek tömörítése a várólista teljesítményének javítása érdekében?](#subheading41) |
-| &nbsp; | Üzenetsorok |Tömeges beolvasása |[Több üzenetet egy "Get" művelettel beolvasása?](#subheading42) |
-| &nbsp; | Üzenetsorok |Lekérdezési gyakorisága |[Vannak, lekérdezési elég gyakran az alkalmazás észlelhető késleltetés csökkentése érdekében?](#subheading43) |
-| &nbsp; | Üzenetsorok |Üzenet frissítése |[Használ UpdateMessage tárolja a folyamat az üzenetek feldolgozásának elkerülése, nem kell újból feldolgozza a teljes üzenetet, ha hiba történik?](#subheading44) |
-| &nbsp; | Üzenetsorok |Architektúra |[Használ a teljes alkalmazás jobban skálázható hosszú ideig futó számítási feladatokat a kritikus útvonalat kívül tartja, és független méretezését, majd üzenetsorok?](#subheading45) |
+| &nbsp; | Várólisták |Skálázási célértékei |[Közeledik üzenetek / másodperc skálázási célértékei?](#subheading39) |
+| &nbsp; | Várólisták |Konfiguráció |[Hogy ki van kapcsolva a Nagle kis méretű kérések teljesítményét?](#subheading40) |
+| &nbsp; | Várólisták |Üzenet mérete |[Azok az üzenetek tömörítése a várólista teljesítményének javítása érdekében?](#subheading41) |
+| &nbsp; | Várólisták |Tömeges beolvasása |[Több üzenetet egy "Get" művelettel beolvasása?](#subheading42) |
+| &nbsp; | Várólisták |Lekérdezési gyakorisága |[Vannak, lekérdezési elég gyakran az alkalmazás észlelhető késleltetés csökkentése érdekében?](#subheading43) |
+| &nbsp; | Várólisták |Üzenet frissítése |[Használ UpdateMessage tárolja a folyamat az üzenetek feldolgozásának elkerülése, nem kell újból feldolgozza a teljes üzenetet, ha hiba történik?](#subheading44) |
+| &nbsp; | Várólisták |Architektúra |[Használ a teljes alkalmazás jobban skálázható hosszú ideig futó számítási feladatokat a kritikus útvonalat kívül tartja, és független méretezését, majd üzenetsorok?](#subheading45) |
 
 ## <a name="allservices"></a>All Services
 Ez a szakasz ismerteti az ajánlott eljárások az Azure Storage szolgáltatás (blobok, táblák, üzenetsorok vagy fájlok) bármelyikének a használatára érvényesek.  
@@ -376,7 +376,7 @@ Másik lehetőségként az alkalmazás tárolhatja a CPU-használat az egyetlen 
 ##### <a name="subheading38"></a>Strukturált adatok tárolása blobokban
 Néha tárolt részben strukturált adatokat úgy érzi, például táblákban, el kell, de a tartományok entitások mindig együtt lekéri és a kötegelt képes beszúrni.  Erre jó példa a naplófájl.  Ebben az esetben is batch-naplók néhány percig, szúrja be őket, és ezután mindig beolvassa a naplók, valamint egyszerre több percig.  Ebben az esetben a teljesítmény érdekében érdemes használata helyett táblák, blobok, mivel jelentősen csökkentheti a visszaadott objektumok száma írt /, és általában a kérelmek száma, amelyeket kell.  
 
-## <a name="queues"></a>Üzenetsorok
+## <a name="queues"></a>Várólisták
 A bevált gyakorlatokat mellett [minden szolgáltatás](#allservices) korábban leírt, a következő bevált eljárások alkalmazni az üzenetsor-szolgáltatáshoz.  
 
 ### <a name="subheading39"></a>Méretezhetőségi korlátok

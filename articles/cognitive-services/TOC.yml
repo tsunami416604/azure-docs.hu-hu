@@ -23,6 +23,8 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Videók
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
     - name: Szolgáltatási hírek
