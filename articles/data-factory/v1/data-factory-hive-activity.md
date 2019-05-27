@@ -75,15 +75,15 @@ A HDInsight Hive tevékenység, egy Data factoryben [folyamat](data-factory-crea
 ## <a name="syntax-details"></a>Szintaxis részletei
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| név |A tevékenység neve |Igen |
+| name |A tevékenység neve |Igen |
 | description |Mire használható a tevékenységet leíró szöveg |Nem |
 | type |HDinsightHive |Igen |
-| bemenetek |A Hive-tevékenység által felhasznált bemeneti |Nem |
-| kimenetek |A Hive-tevékenység által előállított kimeneti |Igen |
+| inputs |A Hive-tevékenység által felhasznált bemeneti |Nem |
+| outputs |A Hive-tevékenység által előállított kimeneti |Igen |
 | linkedServiceName |A HDInsight-fürt a Data Factory társított szolgáltatásként regisztrált mutató hivatkozás |Igen |
-| parancsfájl |Adja meg a Hive-parancsfájl beágyazott |Nem |
-| parancsprogram elérési útja |Store a Hive-szkript egy Azure blob Storage, és adja meg a fájl elérési útját. Használja a "script" vagy "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájlnév formátuma a kis-és nagybetűket. |Nem |
-| határozza meg |Adja meg a paramétereket a kulcs/érték párokként való belül a Hive-parancsfájl használatával "hiveconf: |Nem |
+| script |Adja meg a Hive-parancsfájl beágyazott |Nem |
+| scriptPath |Store a Hive-szkript egy Azure blob Storage, és adja meg a fájl elérési útját. Használja a "script" vagy "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájlnév formátuma a kis-és nagybetűket. |Nem |
+| defines |Adja meg a paramétereket a kulcs/érték párokként való belül a Hive-parancsfájl használatával "hiveconf: |Nem |
 
 ## <a name="example"></a>Példa
 Vegyünk egy példát, játék-naplók analytics, ahol szeretné azonosítani a játékok indítja el a vállalati felhasználók töltött időt. 
