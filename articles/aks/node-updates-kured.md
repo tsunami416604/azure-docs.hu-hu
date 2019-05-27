@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: b426399f73375618a2084eff82abba5d4934b914
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 1702d9558e27452006a2f015fd3312ac19362871
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074211"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849870"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Linux-csomópontok az Azure Kubernetes Service (AKS) biztonsági és a kernel-frissítések alkalmazása
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan használhatja a nyílt forráskódú [kured (démon 
 > [!NOTE]
 > `Kured` van egy nyílt forráskódú projekt Weaveworks szerint. Az aks-ben Ez a projekt támogatási szolgáltatását az egy képességeinkhez mérten biztosítjuk. További támogatási megtalálható a #weave közösségi slack-csatornára.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
@@ -57,14 +57,13 @@ Ha nem továbbra is ugyanazt a Kubernetes-verziót egy frissítési esemény sor
 Üzembe helyezéséhez a `kured` DaemonSet, a következő mintát, a saját GitHub projektoldalon manifest YAML a alkalmazni. A jegyzékfájl hoz létre egy szerepkört és fürtszerepkör, kötéseit és a szolgáltatásfiók, majd üzembe helyezi a DaemonSet használatával `kured` 1.1.0-s verzió, amely támogatja az AKS-fürtök 1.9 vagy újabb.
 
 ```console
-kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.1.0/kured-1.1.0.yaml
-```
+kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
 
-A további paramétereket is konfigurálhat `kured`, például az integráció az Prometheus és Slack. További konfigurációs paraméterekkel kapcsolatos további információkért lásd: a [kured telepítési docs][kured-install].
+You can also configure additional parameters for `kured`, such as integration with Prometheus or Slack. For more information about additional configuration parameters, see the [kured installation docs][kured-install].
 
-## <a name="update-cluster-nodes"></a>Frissítse a fürtcsomópontokat
+## Update cluster nodes
 
-Alapértelmezés szerint a Linux-csomópontokat az aks-ben keressen frissítéseket minden este. Ha nem szeretné megvárni, ellenőrizze, hogy a frissítés manuális módszerrel is elvégezheti `kured` megfelelően fut-e. Először kövesse a lépéseket a [az AKS-csomópontok egyikére SSH][aks-ssh]. Miután az SSH-kapcsolatot a Linux-csomópontra, keressen frissítéseket, és alkalmazhatja ezeket a következőképpen:
+By default, Linux nodes in AKS check for updates every evening. If you don't want to wait, you can manually perform an update to check that `kured` runs correctly. First, follow the steps to [SSH to one of your AKS nodes][aks-ssh]. Once you have an SSH connection to the Linux node, check for updates and apply them as follows:
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y

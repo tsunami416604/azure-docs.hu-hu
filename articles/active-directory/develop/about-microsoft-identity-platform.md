@@ -17,16 +17,16 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a4702ac0f70e3fc280501cd9524ccbfb528678
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 807045089f70e117d46754412d974be7fba5a77a
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546251"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65832497"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>A Microsoft identitásplatformjának fejlődése
 
-A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, amely a felhasználók, a jogkivonatok kiosztva azon hívja az API-k, például a Microsoft Graph, vagy az API-kat a fejlesztők számára készült alkalmazások. Folyamatautomatizálást olyan hitelesítési szolgáltatás, nyílt forráskódú könyvtáraink, alkalmazásregisztráció és konfigurációja (keresztül a fejlesztői portál és a kérelem API-t), teljes körű fejlesztői dokumentáció, a rövid útmutató minták, Kódminták, oktatóanyagok és útmutatók, és más fejlesztői tartalom. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet.
+A Microsoft identitásplatformja az Azure Active Directory (Azure AD) fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, amely a felhasználók, a jogkivonatok kiosztva azon hívja az API-k, például a Microsoft Graph, vagy az API-kat a fejlesztők számára készült alkalmazások. Folyamatautomatizálást olyan hitelesítési szolgáltatás, nyílt forráskódú könyvtáraink, alkalmazásregisztráció és konfigurációja (keresztül a fejlesztői portál és a kérelem API-t), teljes körű fejlesztői dokumentáció, a rövid útmutató minták, Kódminták, oktatóanyagok és útmutatók, és más fejlesztői tartalom. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet.
 
 Eddig nagyon a legtöbb fejlesztő dolgozott már az Azure ad-ben 1.0-s verziójú platform hitelesítéséhez a munkahelyi és iskolai fiókok (Azure AD által kiosztott) tokenek kér az Azure AD-1.0-s verziójú végpont által az Azure AD Authentication Library (ADAL), az Azure portal használatával alkalmazás regisztrálása és konfigurációs, és az Azure AD Graph API a programozott alkalmazás konfigurációja.
 

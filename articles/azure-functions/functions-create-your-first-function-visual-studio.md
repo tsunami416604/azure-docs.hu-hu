@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 51f6fb8c0dc1450a39173fafb0d71efc9a59a536
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c07da0121b8e350c55b139901d56cfe2133386d
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60431300"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864503"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Az első függvény létrehozása a Visual Studio használatával
 
 Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást.
 
-Ebből a cikkből megtudhatja, hogy az Azure Functions Visual Studio 2017-es eszközei használatával miként hozhat létre és tesztelhet helyileg egy „Helló világ!”-függvényt. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök a Visual Studio 2017 Azure-fejlesztési számítási feladatának részeként érhetők el.
+Ebből a cikkből megismerheti, hogyan helyi létrehozásához és a egy "hello world" függvény tesztelése az Azure Functions Visual Studio 2019 eszközei használatával. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök érhetők el a Visual Studio 2019 az Azure development workload munkafolyamatának részét képező.
 
 ![A függvény által visszaadott localhost válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -34,7 +34,7 @@ A témakör tartalmaz [egy videót](#watch-the-video) is, amely ugyanezeket az a
 
 Az oktatóanyag elvégzéséhez:
 
-* Telepítse a [Visual Studio 2017](https://azure.microsoft.com/downloads/)-et, és győződjön meg arról, hogy az **Azure-fejlesztési** számítási feladat is telepítve van.
+* Telepítés [Visual Studio 2019](https://azure.microsoft.com/downloads/) és ellenőrizze, hogy a **Azure-fejlesztési** számítási feladatot is telepítve van.
 
 * Győződjön meg arról, hogy rendelkezik a [legújabb Azure Functions-eszközökkel](functions-develop-vs.md#check-your-tools-version).
 

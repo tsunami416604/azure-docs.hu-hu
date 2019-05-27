@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 96e3a24b0c9f9ab21652ffcd1b29deeb512581e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 144fd11e9c1ee3e00412320840e864a3190ccdb0
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202616"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833988"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépes környezet és PaaS-erőforrások létrehozása Azure Resource Manager-sablonokkal
 
@@ -54,7 +54,7 @@ Van néhány a szabályok egy adattárból az Azure Resource Manager-sablonok re
     ![Kulcs Azure Resource Manager-sablonfájlokat](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
 - A paraméter-fájlban definiált paraméterértékek használni kívánt, ha az alkalmazásparaméter-fájlt névvel kell rendelkeznie `azuredeploy.parameters.json`.
-- A paraméterek használhatók `_artifactsLocation` és `_artifactsLocationSasToken` hozhatnak létre az parametersLink URI értéket, így a DevTest Labs automatikusan a beágyazott sablonok kezelése. További információkért lásd: [módját az Azure DevTest Labs megkönnyíti a beágyazott erőforrás-kezelő sablon-üzembehelyezések tesztelési környezetben](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/).
+- A paraméterek használhatók `_artifactsLocation` és `_artifactsLocationSasToken` hozhatnak létre az parametersLink URI értéket, így a DevTest Labs automatikusan a beágyazott sablonok kezelése. További információkért lásd: [tesztelési környezetben beágyazott Azure Resource Manager-sablonok üzembe helyezése](deploy-nested-template-environments.md).
 - Metaadatok, adja meg a sablon megjelenítendő neve és leírása lehet definiálni. A metaadatok nevű fájlba kell `metadata.json`. A következő példa metaadatfájl mutatja be a megjelenítendő név és leírás megadása: 
 
     ```json

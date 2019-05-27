@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 990b13d362b796f5e71f1bd41eb35fce9720fff4
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450329"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835149"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>OPC-tároló létrehozása az alapoktól
 
@@ -45,7 +45,7 @@ A konfigurációs fájlt a tárház néhány környezeti változókat, amelyek l
 
 A Visual Studio gyorsan nyissa meg az alkalmazás használata a parancssort. Ehhez semmit az IDE-en kívül a konfigurálás nélkül nélkül teszi lehetővé.
 
-A lépések a Visual Studio 2017 használatával:
+A futtatása az alkalmazás és hibakeresése a Visual Studio használatával:
 
 1. Nyissa meg a megoldás használatával a `iot-opc-gds-service.sln` fájlt.
 

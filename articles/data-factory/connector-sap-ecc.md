@@ -122,7 +122,7 @@ Adatok másolása az SAP ECC, állítsa be a forrás típusaként a másolási t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **SapEccSource** | Igen |
-| query | Adatok szűrése OData-lekérdezés beállításai. Example: "$select=Name,Description&$top=10".<br/><br/>SAP ECC összekötő adatokat másol a kombinált URL-cím: (a társított szolgáltatás megadott URL-címe) / (adatkészletben megadott elérési út)? (a másolási tevékenység forrásban megadott lekérdezést). Tekintse meg [OData URL-címe összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| lekérdezés | Adatok szűrése OData-lekérdezés beállításai. Example: "$select=Name,Description&$top=10".<br/><br/>SAP ECC összekötő adatokat másol a kombinált URL-cím: (a társított szolgáltatás megadott URL-címe) / (adatkészletben megadott elérési út)? (a másolási tevékenység forrásban megadott lekérdezést). Tekintse meg [OData URL-címe összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 **Példa**
 

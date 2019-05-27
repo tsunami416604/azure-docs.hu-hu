@@ -14,12 +14,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fc03751859160f2c234810dcb01e1579cb3e2a8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8f54e08e6c3b7b673541f124a90f32dbc860fa44
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782660"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859541"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Az alkalmazásproxy és Qlik Sense 
 Az Azure Active Directory alkalmazásproxy és Qlik Sense platformtechnológiát együtt, ellenőrizze, hogy könnyen tud alkalmazásproxy használatával a Qlik Sense-telepítés a távelérés biztosítása.  
@@ -60,7 +60,9 @@ Kövesse a lépéseket, mint az alkalmazás 1, a következő kivételekkel:
 Az alkalmazás teszteléséhez készen áll. A külső URL-cím, amellyel QlikSense közzététele az alkalmazás 1 és bejelentkezés egy felhasználó mindkét alkalmazáshoz rendelt eléréséhez.  
 
 ## <a name="additional-references"></a>További referenciák
-Közzétételi Qlik Sense a proxyval kapcsolatos további információkért tekintse meg a Qlik közösségi cikk: [Az Azure AD-integrált Windows-hitelesítés a Kerberos által korlátozott delegálás használata a Qlik Sense](https://community.qlik.com/docs/DOC-20183).
+Közzétételi Qlik Sense a proxyval kapcsolatos további információkért tekintse meg a következő a Qlik közösségi cikkeket: 
+- [A Kerberos által korlátozott delegálás használata a Qlik Sense integrált Windows-hitelesítés az Azure ad-ben](https://community.qlik.com/docs/DOC-20183)
+- [Az Azure AD-alkalmazásproxy Qlik Sense-integráció](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)
 
 ## <a name="next-steps"></a>További lépések
 

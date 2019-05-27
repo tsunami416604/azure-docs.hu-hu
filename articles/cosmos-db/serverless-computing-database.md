@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 4d259523d3f7fe7165d0ef4c8a5aac12bd7cd823
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54de2d2f9b5691a47ff56891185c7655661092dd
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61330784"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833604"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB és az Azure Functions használatával kiszolgáló nélküli adatbázis-használat
 
@@ -107,11 +107,11 @@ Ezek mindegyikét a használati esetek, a függvény rendelkezik leválasztott m
 
 ## <a name="tooling"></a>Eszköztámogatás
 
-Az Azure Portalon, és a Visual Studio 2017 Azure Cosmos DB és az Azure Functions közötti natív integrációnak érhető el.
+Azure Cosmos DB és az Azure Functions közötti natív integráció az Azure Portalon, és a Visual Studio 2019 érhető el.
 
 * Az Azure Functions portálon létrehozhat egy Azure Cosmos DB-eseményindítóval. Gyors útmutatásért lásd: [egy Azure Cosmos DB-eseményindító létrehozása az Azure Portalon](https://aka.ms/cosmosdbtriggerportalfunc).
 * Az Azure Cosmos DB-portálon egy Azure Cosmos DB-eseményindító adhat hozzá egy meglévő Azure-függvényalkalmazást ugyanabban az erőforráscsoportban.
-* A Visual Studio 2017 használatával is létrehozhat egy Azure Cosmos DB az eseményindító a [Azure Functions Tools for Visual Studio 2017](../azure-functions/functions-develop-vs.md):
+* A Visual Studio 2019, létrehozhat egy Azure Cosmos DB eseményindító használatával a [Azure Functions Tools](../azure-functions/functions-develop-vs.md):
 
     >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
 

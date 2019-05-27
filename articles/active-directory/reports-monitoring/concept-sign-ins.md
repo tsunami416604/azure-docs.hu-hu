@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac65a9ac81bca942f9fcbe802fdbf8a0aa3f8248
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b69dca5abddd56b29abf3e482e51b3d2a41612e7
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60287973"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864471"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -100,7 +100,7 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi alap
 - Alkalmazás
 - Bejelentkezési állapot
 - Feltételes hozzáférés
-- Dátum
+- Date
 
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/04.png "Sign-in activity")
 
@@ -110,19 +110,19 @@ Az **Alkalmazás** szűrővel egy konkrét alkalmazás nevét adhatja meg.
 
 A **Bejelentkezési állapot** szűrővel az alábbi lehetőségek közül választhat:
 
-- Összes
+- Az összes
 - Sikeres
 - Hiba
 
 A **feltételes hozzáférési** szűrő lehetővé teszi, hogy válassza ki a bejelentkezéshez hitelesítésszolgáltató szabályzat állapotát:
 
-- Összes
+- Az összes
 - Nem alkalmazott
-- Sikeres
+- Siker
 - Hiba
 
 A **Dátum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.  
-Lehetséges értékek:
+Lehetséges értékek a következők:
 
 - 1 hónap
 - 7 nap
@@ -131,21 +131,28 @@ Lehetséges értékek:
 
 Egyéni időkeret kiválasztásakor beállíthatja a kezdő és a záró időpontot.
 
-Ha további mezőket ad hozzá a bejelentkezési nézethez, a rendszer automatikusan hozzáadja a mezőket a szűrőlistához. Például az **Ügyfélalkalmazás** mező listához való hozzáadásával kap egy további szűrőlehetőséget, amellyel a következő szűrőket állíthatja be:
-
-- Böngésző      
-- Exchange ActiveSync (támogatott)               
-- Exchange ActiveSync (nem támogatott)
-- Más ügyfelek               
-    - IMAP
-    - MAPI
-    - Régebbi Office-ügyfelek
-    - POP
-    - SMTP
-
-
+Ha további mezőket ad hozzá a bejelentkezési nézethez, a rendszer automatikusan hozzáadja a mezőket a szűrőlistához. Például az **Ügyfélalkalmazás** mező listához való hozzáadásával kap egy további szűrőlehetőséget, amellyel a következő szűrőket állíthatja be:  
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/12.png "Sign-in activity")
 
+- **Böngésző**  
+    Ez a szűrő megjeleníti az összes eseményeket, ahol a bejelentkezési kísérletek böngésző folyamatok használatával lettek végrehajtva.
+- **Exchange ActiveSync (támogatott)**  
+    Ez a szűrő minden bejelentkezési kísérlet látható, ahol az Exchange ActiveSync (EAS) protokoll a támogatott platformokon, például az iOS, Android és Windows Phone próbálkoztak.
+- **Exchange ActiveSync (nem támogatott)**  
+    Ez a szűrő minden bejelentkezési kísérlet mutatja, ahol az EAS protokollt a nem támogatott platformok, Linux-disztribúciók például próbálkoztak.
+- **Mobilalkalmazások és asztali ügyfelek** ezt a szűrőt minden bejelentkezési kísérlet, amely nem az böngésző folyamatok jeleníti meg. Ez lehet bármely platform bármely protokoll használata vagy az asztali alkalmazások, például Windows vagy MacOS rendszeren Office mobilalkalmazások.
+  
+- **Más ügyfelek**
+    - **IMAP**  
+        Örökölt levelezőprogram IMAP protokollal, e-mailek lekérése.
+    - **MAPI**  
+        Office 2013, amelyben engedélyezve van-e az adal-t, és a MAPI használ.
+    - **Régebbi Office-ügyfelekhez**  
+        Az alapértelmezett konfigurációban, ha nincs engedélyezve az adal-t, és az Office 2013-at használ a MAPI, vagy az Office 2016, ahol ADAL le lett tiltva.
+    - **POP**  
+        Örökölt levelezőprogram POP3 használatával e-mailek lekérése.
+    - **SMTP**  
+        Örökölt levelezőprogram e-mail küldhető SMTP használatával.
 
 ## <a name="download-sign-in-activities"></a>Bejelentkezési tevékenységek letöltése
 
@@ -183,7 +190,7 @@ A bejelentkezési tevékenységek listájának minden sora a következőkről ad
 
 Az elemekre kattintva részletes információk érhetők el a bejelentkezési műveletről:
 
-- Felhasználóazonosító
+- Felhasználói azonosító
 - Felhasználó
 - Felhasználónév
 - Alkalmazásazonosító
@@ -191,8 +198,8 @@ Az elemekre kattintva részletes információk érhetők el a bejelentkezési m�
 - Ügyfél
 - Location egység
 - IP-cím
-- Dátum
-- Az MFA megadása kötelező
+- Date
+- MFA szükséges
 - Bejelentkezési állapot
 
 > [!NOTE]

@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 648dc462477570a692eff588c558a18a3121e4e7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1a690ea350ea98589e9134cd6f401c6ac3c58083
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025249"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851030"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga"></a>Mik azok a mező-programmable gate arrays (FPGA)
 
@@ -33,13 +33,13 @@ A következő ábra és táblázat bemutatják, hogyan FPGA-kban más feldolgoz�
 |Processzor||Leírás|
 |---|:-------:|------|
 |Alkalmazás-specifikus integrált Kapcsolatcsoportok|Az ASICs|Egyéni kapcsolatok, például a Google TensorFlow processzor egységek (TPU), adja meg a lehető legnagyobb hatékonysággal. A változó igényeknek megfelelő, nem állítható át.|
-|A mező-programmable gate arrays|FPGA-k|FPGA-kban, például az Azure-ban elérhető közeli ASICs teljesítményt nyújtanak. Szerepelnek rugalmas és újrakonfigurálható új a logikát alkalmazzák, az idő múlásával.|
+|A mező-programmable gate arrays|FPGA-kban|FPGA-kban, például az Azure-ban elérhető közeli ASICs teljesítményt nyújtanak. Szerepelnek rugalmas és újrakonfigurálható új a logikát alkalmazzák, az idő múlásával.|
 |Grafikai feldolgozóegységek|A GPU-k|AI-számítások népszerű választást. A GPU-k olyan funkciókat biztosítanak a párhuzamos feldolgozást, így gyorsabb processzorokat, mint a képrenderelés.|
 |Központi egység|CPU-k|Általános célú processzor, a teljesítmény, amelyek nem grafikus és Videofeldolgozás ideális.|
 
 FPGA-kban az Azure-ban Intel FPGA-eszközök, amely adatkutatóknak és fejlesztőknek használatával felgyorsíthatja a valós idejű mesterséges Intelligencia számítások alapulnak. Ez az architektúra FPGA-kompatibilis teljesítményt, rugalmasságot és méretezhetőséget biztosít, és az Azure-ban érhető el.
 
-FPGA-kban közel valós idejű következtetési kérelmek eléréséhez lehetővé teszik. Nem szükségesek a aszinkron kérelmet (kötegelés). Kötegelés késés, okozhat, mert több adatot kell feldolgozni. Neurális feldolgozóegység megvalósítása nem igénylik a kötegelés; ezért a késés lehet sokszor alacsonyabb Processzor és GPU processzorok képest.
+FPGA-kban koncepcióját érhet el közel valós idejű következtetésekhez (vagy a modell pontozása) kéréseket. Nem szükségesek a aszinkron kérelmet (kötegelés). Kötegelés késés, okozhat, mert több adatot kell feldolgozni. Neurális feldolgozóegység megvalósítása nem igénylik a kötegelés; ezért a késés lehet sokszor alacsonyabb Processzor és GPU processzorok képest.
 
 ### <a name="reconfigurable-power"></a>Újrakonfigurálható power
 A különböző típusú gépi tanulási modelleket FPGA-kban újra létrehozhatja. Ezt a rugalmasságot megkönnyíti az alkalmazások, a legtöbb optimális numerikus pontosság és a használt memória modell alapján gyorsabb. Mivel FPGA-kban újrakonfigurálható, akkor is és legyen naprakész a gyorsan változó az AI-algoritmusokat követelményeinek.

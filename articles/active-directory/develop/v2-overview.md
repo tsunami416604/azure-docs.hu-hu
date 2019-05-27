@@ -17,16 +17,16 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd3a1525d7b1f9c0a0b6516014ea83fb8abd0376
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 3d139efaa8e6de4861dc8e885bd22a426fde6c94
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544823"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833047"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>A Microsoft identity platform (2.0-s verzió) – áttekintés
 
-A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztőknek, hogy jelentkezzen be az összes Microsoft-identitások és a Microsoft APIs, például a Microsoft Graph vagy fejlesztők számára készült API-k hívásához jogkivonatok megkapásához alkalmazásokat hozhat létre. A Microsoft identity platform áll:
+A Microsoft identitásplatformja az Azure Active Directory (Azure AD) fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztőknek, hogy jelentkezzen be az összes Microsoft-identitások és a Microsoft APIs, például a Microsoft Graph vagy fejlesztők számára készült API-k hívásához jogkivonatok megkapásához alkalmazásokat hozhat létre. A Microsoft identity platform áll:
 
 - **OAuth 2.0 és OpenID Connect standard megfelelő hitelesítési szolgáltatás** , amely lehetővé teszi a fejlesztők számára a hitelesítés bármely Microsoft identity többek között:
   - Munkahelyi vagy iskolai fiókkal (Azure AD-n keresztül kiosztott)
@@ -79,4 +79,4 @@ Amikor készen áll, az alkalmazás indításához egy **éles környezetben**, 
 
 ## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
 
-Ha olyan ügyfelek által használt alkalmazás, amely a közösségi és a helyi identitások bejelentkezik tervezése során, vessen egy pillantást a [áttekintése az Azure AD B2C-vel](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).
+Ha egy ügyfél felé irányuló-alkalmazások, amelyeket a közösségi és a helyi identitások, bejelentkezik a [áttekintése az Azure AD B2C-vel](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).

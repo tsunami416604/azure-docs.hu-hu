@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 0f24f7378ceb9266acf8988835b77cef80bd6f13
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a468c2f3b1b3034c817ac19988420b68e18deb83
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192197"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849851"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások Fürtbiztonság és frissítése az Azure Kubernetes Service (AKS)
 
@@ -50,7 +50,7 @@ Az Azure AD-integrációs és RBAC kapcsolatos további információkért lásd:
 
 Ugyanolyan módon, hogy adja meg az felhasználókat és csoportokat a legalacsonyabb jogosultságok száma szükséges tárolókat is kell korlátozni, csak a műveletek és a szükséges folyamatokat. A támadás veszélyét minimalizálása érdekében ne konfiguráljon alkalmazásokat és tárolókat, amelyek eszkalált jogosultságokat igénylő, vagy a legfelső szintű hozzáférést. Ha például `allowPrivilegeEscalation: false` a pod-jegyzékfájlban. Ezek *pod biztonsági környezetben* beépített Kubernetes és a segítségével meghatározhatja, például a felhasználó vagy csoport futtathat, további engedélyeket, vagy milyen Linux funkciók elérhetővé. További információ az ajánlott eljárásokról,: [erőforrásokhoz való hozzáférés biztonságos pod][pod-security-contexts].
 
-Részletesebb vezérléshez tároló műveleteket, használhatja a beépített Linux biztonsági funkciók például *AppArmor* és *seccompot*. Ezeket a funkciókat a csomópont szintjén megadott, és ezután a pod jegyzékfájl keresztül megvalósított.
+Részletesebb vezérléshez tároló műveleteket, használhatja a beépített Linux biztonsági funkciók például *AppArmor* és *seccompot*. Ezeket a funkciókat a csomópont szintjén megadott, és ezután a pod jegyzékfájl keresztül megvalósított. Beépített Linux biztonsági funkciók a Linux-csomópontok és a podok csak érhetők el.
 
 > [!NOTE]
 > Kubernetes-környezetekből AKS vagy máshol, nem teljesen biztonságos megerősítve a rosszindulatú több-bérlős alkalmazásokhoz. További biztonsági szolgáltatások, például a *AppArmor*, *seccompot*, *Pod biztonsági házirendek*, vagy további részletes szerepköralapú hozzáférés-vezérlést (RBAC) csomópontok azokat kihasználó támadások ellen sokkal nehezebb. Igaz biztonsági megerősítve a rosszindulatú több-bérlős-alapú számítási feladatait, azonban a hipervizort, hogy bízzon meg biztonsági csak szintjét. A Kubernetes esetében a biztonsági tartományához lesz a teljes fürtöt, nem az egyes csomópontok. Az ilyen típusú megerősítve a rosszindulatú több-bérlős számítási feladatokhoz fizikailag elkülönített fürtök kell használnia.
@@ -193,13 +193,13 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 
 További információ a frissítések az aks-ben: [az aks-ben a Kubernetes támogatott verziók] [ aks-supported-versions] és [AKS-fürt frissítése][aks-upgrade].
 
-## <a name="process-node-updates-and-reboots-using-kured"></a>Folyamat csomópont frissíti, és újraindítja a kured használatával
+## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Folyamat Linux csomópont frissíti, és újraindítja a kured használatával
 
-**Ajánlott eljárásokkal kapcsolatos útmutatás** – AKS automatikusan letölti és telepíti biztonsági javításokat tartalmaz, mindegyik a feldolgozó csomópontok, de nem automatikusan indítja újra szükség esetén. Használat `kured` tekintse meg a függőben lévő újraindul, majd biztonságosan Ez a három csomópontunk, és, hogy újraindítja a csomópontot a csomópont kiürítési, alkalmazza a frissítéseket, és az operációs rendszer megállapodást lehető legbiztonságosabb lehet.
+**Ajánlott eljárásokkal kapcsolatos útmutatás** – AKS automatikusan letölti és telepíti biztonsági javításokat tartalmaz a minden egyes Linux-csomópontok, de nem automatikusan indítja újra szükség esetén. Használat `kured` tekintse meg a függőben lévő újraindul, majd biztonságosan Ez a három csomópontunk, és, hogy újraindítja a csomópontot a csomópont kiürítési, alkalmazza a frissítéseket, és az operációs rendszer megállapodást lehető legbiztonságosabb lehet. A Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben) rendszeresen hajt végre egy AKS-frissítési művelet biztonságosan Ez a három csomópontunk és kiürítési podok és frissített csomópontok üzembe helyezése.
 
-Minden este, az AKS-csomópontok lekérése a biztonsági javítások a disztribúció frissítés csatornán keresztül érhető el. Mivel a csomópontok az AKS-fürt üzembe helyezése a rendszer automatikusan konfigurálja ezt a viselkedést. Megszakítás és a számítási feladatok lehetséges hatás minimalizálása érdekében csomópontok nem automatikusan indulnak újra, ha egy biztonsági javítás, vagy kernelfrissítés írja elő.
+Minden este, Linux-csomópontokat az aks-ben lekérése a biztonsági javítások a disztribúció frissítés csatornán keresztül érhető el. Mivel a csomópontok az AKS-fürt üzembe helyezése a rendszer automatikusan konfigurálja ezt a viselkedést. Megszakítás és a számítási feladatok lehetséges hatás minimalizálása érdekében csomópontok nem automatikusan indulnak újra, ha egy biztonsági javítás, vagy kernelfrissítés írja elő.
 
-A nyílt forráskódú [kured (démon a KUbernetes újraindítás)] [ kured] Weaveworks projektet figyeli a csomópont újraindítása függőben van. Egy csomópont újraindítását igénylő frissítések vonatkozik, amikor a csomópont biztonságosan szigetelve, és helyezze át, és a fürt többi csomópontjára a podok ütemezésének ürítve. A csomópont újraindul, miután felvettük a fürt és a Kubernetes folytatja a podok ütemezés be újra. Egyszerre csak egy csomópont leskálázáskor, újra kell indítani a megengedett `kured`.
+A nyílt forráskódú [kured (démon a KUbernetes újraindítás)] [ kured] Weaveworks projektet figyeli a csomópont újraindítása függőben van. Egy Linux-csomópontot az újraindítást igénylő frissítések vonatkozik, amikor a csomópont biztonságosan szigetelve, és helyezze át, és a fürt többi csomópontjára a podok ütemezésének ürítve. A csomópont újraindul, miután felvettük a fürt és a Kubernetes folytatja a podok ütemezés be újra. Egyszerre csak egy csomópont leskálázáskor, újra kell indítani a megengedett `kured`.
 
 ![Az AKS csomópont újraindítási folyamatot kured használatával](media/operator-best-practices-cluster-security/node-reboot-process.png)
 

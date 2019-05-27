@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d02318db4deae6f0a6acdae9382ce47116c95110
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 416bebc070cfcad52c6180e65f0066c46c826cbe
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800872"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849644"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Kezelheti, telepítheti és figyelheti a modellek az Azure Machine Learning szolgáltatás
 
@@ -72,7 +72,7 @@ További információkért lásd: [modellek üzembe helyezése](how-to-deploy-an
 
 ### <a name="iot-edge-devices"></a>IoT Edge-eszközök
 
-Az IoT-eszközök segítségével is használhatja a modellek **Azure IoT Edge-modulok**. IoT Edge-modulok települnek hardvereszközök, amely lehetővé teszi, hogy következtetési az eszközön.
+Az IoT-eszközök segítségével is használhatja a modellek **Azure IoT Edge-modulok**. IoT Edge-modulok hardvereszközök, amely lehetővé teszi a következtetésekhez, vagy a modell pontozása, az eszközön telepített.
 
 További információkért lásd: [modellek üzembe helyezése](how-to-deploy-and-where.md).
 

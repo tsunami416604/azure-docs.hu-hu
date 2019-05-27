@@ -1,7 +1,7 @@
 ---
 title: Modell értelmezhetősége
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan annak magyarázata, hogy miért a modell lehetővé teszi az Azure Machine Learning SDK használatával készíthet előrejelzéseket. Használat során betanítási vagy következtetési tudni, hogy a modell előrejelzéseket tesz.
+description: Megtudhatja, hogyan annak magyarázata, hogy miért a modell lehetővé teszi az Azure Machine Learning SDK használatával készíthet előrejelzéseket. Használat során a tanuláshoz és következtetésekhez tudni, hogy a modell előrejelzéseket tesz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,25 +10,25 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 04/29/2019
-ms.openlocfilehash: 62d51a0075d8b6864e4b10fa6c1eb423a440d6d0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 4261e869fe17283886d7d8ea8101e03110d6dad4
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926428"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851989"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Modell-e az Azure Machine Learning szolgáltatással
 
 Ebben a cikkben, megtudhatja, hogyan annak magyarázata, hogy miért a modell készült-e az előrejelzés az e-csomaggal, az Azure Machine Learning Python SDK zavartalanul.
 
 Az osztályok és módszerek a csomag révén kaphat:
-+ E képzési idő vagy következtetési során a való életből vett adatkészleteken ipari méretekben. 
++ E nagy mennyiségű, való életből vett adatkészletek során tanuláshoz és következtetésekhez. 
 + Interaktív Vizualizációk, melyek a segítségére lehetnek a data- és magyarázatok minták felderítését a képzési időpontban
 + A szolgáltatás fontossági értékek: nyers és a visszafejtett funkciók
 
 A fejlesztési ciklus képzési fázisban modell tervezők és értékelők használatával ismertetik a kimenet egy modell érdekelt felek bizalmi kapcsolat létrehozásához.  Hibakeresési is felhasználják az elemzéseket a modellbe, eszközmodell viselkedésének érvényesítése megegyezik a célokat, és az eltérés kereséséhez.
 
-A következtetési fázis során az adatszakértők használatával e előrejelzéseket, akik a modell használatának ismertetik. Például, miért volt a modell a törlesztés kölcsön megtagadása, vagy előre jelezni, hogy egy befektetési portfólió sorozatéhoz nagyobb eséllyel?
+Következtetésekhez vagy a modell pontozása, nem a fázis, az üzembe helyezett modell előrejelzési leggyakrabban a termelési adatok szolgál. Ebben a fázisban az adatelemzők, akik a modellt az eredményül kapott előrejelzés ismertetik. Például, miért volt a modell a törlesztés kölcsön megtagadása, vagy előre jelezni, hogy egy befektetési portfólió sorozatéhoz nagyobb eséllyel?
 
 Ezekkel a ajánlat, machine learning-modellek is ismertetik **globálisan az összes adat**, vagy **helyileg, egy adott adatpontot** a legmodernebb technológiák használatával egy könnyen használható és méretezhető módon.
 
@@ -287,7 +287,7 @@ clf = Pipeline(steps=[('preprocessor', DataFrameMapper(transformations)),
 tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x_train, features=dataset_feature_names, classes=dataset_classes, transformations=transformations)
 ```
 
-## <a name="interpretability-in-inferencing"></a>A következtetési érinti
+## <a name="interpretability-in-inference"></a>A következtetésekhez érinti
 
 Az ismertető és az eredeti modellt telepíthetők, és kiértékelés időpontja, adja meg a helyi magyarázata adatokat használható. Pontozó ismertető üzembe helyezésének folyamata hasonló üzembe helyezéséhez, és a következő lépésekből áll:
 

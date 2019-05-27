@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/14/2018
+ms.date: 05/08/2019
 ms.author: alsin
-ms.openlocfilehash: ca2523a1101a21740a318a304f9bec491d4de2f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89cbf220c9ae32c7f63da4941ced1bdbfa1e5293
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307056"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835042"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Használja a soros konzol eléréséhez a grub-HIBÁT, és az egyfelhasználós módot
 Grub-HIBÁT a végösszeg egyesített Rendszerbetöltőt, ami valószínűleg a legfontosabb, láthatja, ha a gép. Megjeleníti az operációs rendszer megkezdése előtt, mert nem érhető el SSH-n keresztül. A grub-HIBÁT Ön tudja módosítani a rendszerindítási konfiguráció többek között a egyfelhasználós módban indul.

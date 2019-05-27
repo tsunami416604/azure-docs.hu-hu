@@ -5,18 +5,21 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/04/2018
-ms.author: pabutler
-ms.openlocfilehash: 8817c8aa7d5d589be5e03cdd04e3a505d7e2be21
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.date: 05/16/2019
+ms.author: pbutlerm
+ms.openlocfilehash: 2195c9a5e1f0d3683ea8cf6564d97cbabd072f81
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941667"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834198"
 ---
 # <a name="update-an-existing-saas-application-offer"></a>Egy SaaS-alkalmazás létező ajánlat frissítése
 
 Számos különböző típusú frissítések, amelyeket érdemes tennie az ajánlatra, már közzé van téve, és élő után. Az ajánlat új verziójának a módosítás kell menteni és újra közzé, hogy tükrözze a Marketplace-en. Ez a cikk végigvezeti a frissítése az SaaS-ajánlat a különböző aspektusait a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
+
+> [!IMPORTANT] 
+> SaaS-ajánlat funkció az áttelepítés alatt a [Microsoft Partner Centeren](https://partner.microsoft.com/dashboard/directory).  Minden új gyártó kell használnia a Partner Center új SaaS-ajánlatok létrehozására és kezelésére a meglévő ajánlatok.  Az SaaS-ajánlatok kiadók migrálása folyamatban van batchwise a Cloud Partner portálra, a Partner Center.  A Cloud Partner portálra azt jelzik, ha meghatározott meglévő ajánlatok áttelepítette állapotüzeneteket jelenít meg.
 
 Miért érdemes az ajánlatot, mint például frissítése több oka is van:
 

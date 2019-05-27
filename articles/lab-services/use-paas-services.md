@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 7cdd185cddbd2403b72ff0e06530913af0b031de
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 865ae0b3f7a7965698a67183a4c820ba71f49cd8
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233120"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833914"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Platform--szolgáltatásként (PaaS) szolgáltatások használata az Azure DevTest Labs szolgáltatásban
 A környezetek funkciójával PaaS DevTest Labs szolgáltatásban létrehozott használata támogatott. DevTest Labs szolgáltatásban létrehozott környezetek előre konfigurált Azure Resource Manager-sablonok a Git-tárházat támogatja. Környezetek PaaS és az IaaS-erőforrásokat is tartalmazhat. Hozhat létre komplex rendszerek, amelyek az Azure-erőforrások, például virtuális gépek, adatbázisok, virtuális hálózatok és a Web apps szolgáltatásban, amely testre szabott együttműködve lehetővé teszik. Ezek a sablonok lehetővé teszik, egységes üzembe helyezést és a továbbfejlesztett verziókövetési környezetek felügyelete. 
@@ -53,7 +53,7 @@ Van néhány egyéni tesztkörnyezetben információt, amely kívül esik az er�
 A [környezetek a labor virtuális hálózathoz csatlakozó](connect-environment-lab-virtual-network.md) cikk ismerteti, hogyan módosíthatja a Resource Manager-sablont szeretné használni a `$(LabSubnetId)` token. Környezet létrehozásakor a `$(LabSubnetId)` jogkivonat váltotta fel az első alhálózat be van jelölve, a **használja a virtuális gép létrehozása** beállítás **igaz**. Lehetővé teszi a környezetben használandó korábban létrehozott hálózatok. Ha ugyanazt a Resource Manager-sablonok a tesztelési környezetben átmeneti és éles környezetben használni szeretne, használja a `$(LabSubnetId)` egy Resource Manager-sablon paraméter alapértelmezett értékként. 
 
 #### <a name="environment-storage-account"></a>Környezet Storage-fiók
-DevTest Labs használatát támogatja [Resource Manager-sablonok beágyazott](../azure-resource-manager/resource-group-linked-templates.md). A [módját az Azure DevTest Labs megkönnyíti a beágyazott erőforrás-kezelő sablon-üzembehelyezések tesztelési környezetben](https://azure.microsoft.com/updates/azure-devtest-labs-streamlined-nested-arm-template-deployment-support-for-arm-template-based-environments) a cikk ismerteti, hogyan `_artifactsLocation` és `_artifactsLocationSasToken` tokenek egy URI-t egy Resource Manager-sablon létrehozása ugyanabban a mappában, vagy beágyazott mappa a fő sablon. Ezek a jogkivonatok két kapcsolatos további információkért lásd: a **üzembe helyezési összetevők** szakaszában [Azure Resource Manager – ajánlott eljárások útmutatója](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md).
+DevTest Labs használatát támogatja [Resource Manager-sablonok beágyazott](../azure-resource-manager/resource-group-linked-templates.md). A [[tesztelési környezetben beágyazott Azure Resource Manager-sablonok üzembe helyezése](deploy-nested-template-environments.md) a cikk ismerteti, hogyan `_artifactsLocation` és `_artifactsLocationSasToken` egy URI-t egy Resource Manager-sablon létrehozása ugyanabban a mappában vagy egy beágyazott tokenek a fő sablon mappája. Ezek a jogkivonatok két kapcsolatos további információkért lásd: a **üzembe helyezési összetevők** szakaszában [Azure Resource Manager – ajánlott eljárások útmutatója](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md).
 
 ## <a name="user-experience"></a>Felhasználói élmény
 

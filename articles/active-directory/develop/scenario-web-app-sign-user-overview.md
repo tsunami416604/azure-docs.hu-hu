@@ -15,14 +15,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b46df5e4ec8352b47f744a507fad702c37aa5fba
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6ce534c6eeecba220fd829be829caa679df52055
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075100"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833097"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Forgatókönyv: Webes alkalmazás, amely képes bejelentkeztetni a felhasználókat
+# <a name="scenario-web-app-that-signs-in-users"></a>Forgatókönyv: Felhasználót bejelentkeztető webalkalmazás
 
 Ismerje meg, hozhat létre egy webalkalmazást, hogy a Microsoft identity platform használatával jelentkezik be felhasználókat kell.
 
@@ -40,7 +40,7 @@ Ha azt szeretné, hozhat létre az első hordozható (az ASP.NET Core) webalkalm
 Ha inkább az ASP.NET-tel marad, próbálja ki a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: ASP.NET Core webes alkalmazást, hogy jelentkezik be felhasználókat](quickstart-v2-aspnet-webapp.md)
+> [Rövid útmutató: ASP.NET-WebApp jelentkezik be felhasználók](quickstart-v2-aspnet-webapp.md)
 
 ## <a name="overview"></a>Áttekintés
 

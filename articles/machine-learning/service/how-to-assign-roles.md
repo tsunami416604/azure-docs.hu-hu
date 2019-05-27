@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 02/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: f5cc86c40f56cee28ff6a6912acd67961285bffc
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2410787c3307136f827ea7fc34df9a545a59cbf4
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025310"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850910"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Az Azure Machine Learning-munkaterület-hozzáférés kezelése
 
@@ -67,7 +67,7 @@ Ha a beépített szerepkörök nem elegendő, létrehozhat egyéni szerepkörök
 
 Egyéni szerepkör létrehozása hozhatnak létre egy szerepkör definíciójának JSON-fájlt, amelyben megadja az engedélyt, a szerepkör hatóköre. Az alábbi példa meghatározza az egy adott munkaterület szintjén kötődő "adatelemzési szakértő" nevű egyéni szerepkört:
 
-`data_scientist_role.json` :
+`data_scientist_role.json`:
 ```json
 {
     "Name": "Data Scientist",
@@ -113,5 +113,5 @@ További információkért lásd: [egyéni szerepkörök az Azure-erőforrások]
 ## <a name="next-steps"></a>További lépések
 
 - [Vállalati biztonsági áttekintése](concept-enterprise-security.md)
-- [Biztonságos futtatására kísérletek vagy következtetési egy virtuális hálózaton belül](how-to-enable-virtual-network.md)
+- [Biztonságos futtatására, kísérletek és a egy virtuális hálózaton belül következtetésekhez/pontszám](how-to-enable-virtual-network.md)
 - [Oktatóanyag: Modellek](tutorial-train-models-with-aml.md)

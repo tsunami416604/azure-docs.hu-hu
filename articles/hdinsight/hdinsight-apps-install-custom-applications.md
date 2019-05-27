@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: ec2e53624ad48650f922439c5f16d1cf1f25c280
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0acac29ee49bc94c195d0e13e55fff3a735ad36b
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706374"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859817"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Egyéni Apache Hadoop-alkalmazások telepítése Azure HDInsight platformon
 
@@ -116,8 +116,8 @@ A portálon törölheti a fürtöt, vagy akár az alkalmazást tartalmazó erőf
 ### <a name="use-azure-powershell"></a>Azure PowerShell használatával
 Az Azure PowerShell használatával törölheti a fürtöt vagy az erőforráscsoportot. Lásd: [Fürtök törlése az Azure PowerShell használatával](hdinsight-administer-use-powershell.md#delete-clusters).
 
-### <a name="use-azure-classic-cli"></a>Az Azure klasszikus parancssori felület használata
-Klasszikus Azure CLI-vel, törölheti a fürtöt, vagy törölje az erőforráscsoportot. Lásd: [fürtök törlése a klasszikus Azure CLI-vel](hdinsight-administer-use-command-line.md#delete-clusters).
+### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
+Az Azure parancssori felület használatával törölheti a fürtöt vagy az erőforráscsoportot. Lásd: [Fürtök törlése az Azure parancssori felület használatával](hdinsight-administer-use-command-line.md#delete-clusters).
 
 ## <a name="next-steps"></a>További lépések
 * [MSDN: Egy HDInsight-alkalmazás telepítése](https://msdn.microsoft.com/library/mt706515.aspx): ismerje meg, hogyan fejleszthet Resource Manager-sablonokat HDInsight-alkalmazások üzembe helyezéséhez.

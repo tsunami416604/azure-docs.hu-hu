@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02463ba47a48f5e86055b9ecb4e0edbdf9608769
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 11819730e05e425066e1f060769e14d5290f877d
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024571"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851983"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>PyTorch modellek Azure Machine Learning szolgáltatással
 
@@ -105,7 +105,7 @@ run = exp.submit(pt_est)
 
 ## <a name="export-to-onnx"></a>ONNX exportálása
 
-Az optimalizált következtetési beolvasni a [ONNX-futtatókörnyezet](concept-onnx.md), átválthat a PyTorch betanított modell ONNX-formátumra. Tekintse meg a [oktatóanyag](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) példaként.
+Optimalizálhatja a következtetésekhez a [ONNX-futtatókörnyezet](concept-onnx.md), a PyTorch betanított modell ONNX-formátumra konvertálni. Következtetésekhez vagy a modell pontozása, nem a fázis, az üzembe helyezett modell előrejelzési leggyakrabban a termelési adatok szolgál. Tekintse meg a [oktatóanyag](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) példaként.
 
 ## <a name="examples"></a>Példák
 

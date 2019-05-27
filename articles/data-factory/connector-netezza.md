@@ -145,7 +145,7 @@ Adatok másolása Netezza, állítsa be a **forrás** írja be a másolási tev�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység forrás tulajdonság **NetezzaSource**. | Igen |
-| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"` | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"` | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
