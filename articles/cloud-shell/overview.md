@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
 ms.openlocfilehash: 5608b3e0f9b98db62d22245de5a864f757f48799
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/23/2019
 ms.locfileid: "60199667"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
@@ -34,7 +34,7 @@ Próbálja ki az Azure Portalról, a Cloud Shell ikon használatával.
 
 ![Portál indítása](media/overview/portal-launch-icon.png)
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 ### <a name="browser-based-shell-experience"></a>Böngészőalapú rendszerhéj-felület
 A cloud Shell lehetővé teszi a hozzáférést egy beépített szem előtt az Azure felügyeleti feladatainak parancssori böngészőalapú felület.

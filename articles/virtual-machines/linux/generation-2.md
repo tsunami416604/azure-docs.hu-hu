@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 05/16/2019
 ms.author: lahugh
-ms.openlocfilehash: 777486a64464c29e9014fdc3dbf94957b2e93aa5
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: e6bb947503371e379e4d4972ddfc3614e129174b
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596330"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835211"
 ---
 # <a name="generation-2-vms-preview-on-azure"></a>2. generációs virtuális gépek (előzetes verzió) az Azure-ban
 
@@ -72,7 +72,7 @@ Az Azure jelenleg nem támogatja, amelyek a helyszíni Hyper-V támogatja a 2. g
 
 | Szolgáltatás | Az 1. | 2. generációs |
 |---------|--------------|--------------|
-| Rendszerindító             | PCAT                      | UEFI                               |
+| Rendszerindítás             | PCAT                      | UEFI                               |
 | Lemez vezérlők | IDE                       | SCSI                               |
 | A virtuális gépek mérete         | Elérhető Virtuálisgép-méretek | A Premium storage virtuális gépek csak támogatott |
 

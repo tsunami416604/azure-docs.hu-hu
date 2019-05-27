@@ -9,18 +9,18 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: d16f57db6a3c39be34c13663db62d7be50749f57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0d83bdc3fd3f644013a2d2b80128839658524db9
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741120"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864449"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Üzenetküldés a felhőből az eszközre az IoT Hub (.NET)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Bemutatás
 
 Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel engedélyezheti a megbízható és biztonságos kétirányú kommunikációt több millió eszköz között, és megoldást biztosít a háttérrendszer. [Telemetria küldése egy eszközről IoT hubra... ](quickstart-send-telemetry-dotnet.md) bemutatja, hogyan hozzon létre egy IoT hubot, azt az eszközidentitás létrehozását és egy eszköz – felhő üzeneteket eszközalkalmazás code.
 
@@ -48,7 +48,7 @@ Ez az oktatóanyag végén két .NET-konzolalkalmazással fogja futtatni.
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Visual Studio 2017
+* Visual Studio
 
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 

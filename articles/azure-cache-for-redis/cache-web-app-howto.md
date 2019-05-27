@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0c267b2fbe639d08396d8773e077483b41b9747e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bac43ef17116dcb2d6a6bb3dd7c1617d91a010d9
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830463"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864822"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Gyors útmutató: ASP.NET-webapp létrehozása 
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Bemutatás
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre és helyezhet üzembe egy ASP.NET-webalkalmazást az Azure App Service szolgáltatásban a Visual Studio 2017 használatával. A mintaalkalmazás csatlakozik az Azure Cache redis tárolására és az adatok lekérése a gyorsítótárból. Miután elvégezte a rövid útmutató, rendelkezni fog egy olyan futó webalkalmazással, az Azure-ban üzemeltetett, Olvasás és írás Azure Cache a Redis.
+A rövid útmutató bemutatja, hogyan hozhat létre, és üzembe helyezése egy ASP.NET-alkalmazás Azure App Service-ben a Visual Studio 2019 használatával. A mintaalkalmazás csatlakozik az Azure Cache redis tárolására és az adatok lekérése a gyorsítótárból. Miután elvégezte a rövid útmutató, rendelkezni fog egy olyan futó webalkalmazással, az Azure-ban üzemeltetett, Olvasás és írás Azure Cache a Redis.
 
 ![Egyszerű teszt eredménye – Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
@@ -34,7 +34,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre és helyezhet üzembe egy
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez telepítenie kell a [Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő környezetekkel:
+Ez a rövid útmutató elvégzéséhez, telepítenie kell [Visual Studio 2019](https://www.visualstudio.com/downloads/) a következő környezeteket:
 * ASP.NET és webfejlesztés
 * Azure-fejlesztés
 

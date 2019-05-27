@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: faac0f02d1a1b8927fa0c651f44f8b120a583d9a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7b983535f862a452c900d0a0a12ae0d79b56f92f
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230150"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850536"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>A Kubernetes alapvető fogalmainak Azure Kubernetes Service (AKS)
 
@@ -70,9 +70,9 @@ Az alkalmazások és a támogató szolgáltatások futtatásához, szükség van
 
 Az Azure virtuális gép méretét a csomópontok határozza meg, hány processzort, mennyi memóriát és a méret és típus (például nagy teljesítményű SSD vagy HDD rendszeres) rendelkezésre álló tárhelyet. Ha várhatóan nagy mennyiségű Processzor és memória vagy nagy teljesítményű tárolást igénylő alkalmazásokhoz szükség, ennek megfelelően tervezze meg a csomópont méretét. Is méretezheti a csomópontok számát felfelé az AKS-fürt az igényeknek.
 
-Az aks-ben Ubuntu Linux esetében a fürtben található csomópontok a Virtuálisgép-lemezkép jelenleg alapján. AKS-fürt létrehozása vagy vertikális felskálázás a csomópontok számát, az Azure platform a kért számú virtuális gépeket hoz létre, és konfigurálja őket. Nem tartozik a végezhető el a manuális konfiguráció.
+Az aks-ben a Virtuálisgép-lemezkép a csomópontok a fürtben jelenleg alapul Ubuntu Linux vagy Windows Server 2019. AKS-fürt létrehozása vagy vertikális felskálázás a csomópontok számát, az Azure platform a kért számú virtuális gépeket hoz létre, és konfigurálja őket. Nem tartozik a végezhető el a manuális konfiguráció.
 
-Egyéni csomagok vagy egy másik gazdagép operációs Rendszeréhez, tároló-futtatókörnyezet, használni kell, ha a saját Kubernetes fürt használatával telepíthet [aks-motor][aks-engine]. A felsőbb rétegbeli `aks-engine` kiadott szolgáltatások és konfigurációs lehetőségeket talál, mielőtt hivatalosan támogatott AKS-fürtben. Például, ha szeretné használni a Windows-tárolók és a egy tároló-futtatókörnyezet Moby eltérő, használhatja `aks-engine` konfigurálásához és üzembe helyezéséhez a Kubernetes-fürt, amely az aktuális igényeinek.
+Egyéni csomagok vagy egy másik gazdagép operációs Rendszeréhez, tároló-futtatókörnyezet, használni kell, ha a saját Kubernetes fürt használatával telepíthet [aks-motor][aks-engine]. A felsőbb rétegbeli `aks-engine` kiadott szolgáltatások és konfigurációs lehetőségeket talál, mielőtt hivatalosan támogatott AKS-fürtben. Például ha egy tároló-futtatókörnyezet Moby eltérő használni kívánt, használhatja `aks-engine` konfigurálásához és üzembe helyezéséhez a Kubernetes-fürt, amely az aktuális igényeinek.
 
 ### <a name="resource-reservations"></a>Erőforrás-foglalások
 
@@ -104,6 +104,27 @@ Ugyanaz a konfiguráció csomópontján vannak besorolva *csomópontkészletek*.
 Méretezhető, vagy az AKS-fürt frissítése, a művelet végrehajtását az alapértelmezett csomópontkészletek ellen. Választhatja azt is, méretezhető, vagy egy adott csomópont készlet frissítése. A frissítési műveletek futó tárolók ütemezése a csomópont a készletben található többi csomóponton mindaddig, amíg az összes a csomópont frissítése sikeresen megtörtént.
 
 Az aks-ben több csomópontkészletek használatával kapcsolatos további információkért lásd: [létrehozása és kezelése az aks-ben a fürt több csomópontkészletei][use-multiple-node-pools].
+
+### <a name="node-selectors"></a>Csomópont választók
+
+Az AKS-fürtben több csomóponton készletet tartalmazó szükség lehet, hogy a Kubernetes-ütemező melyik csomópontkészletek egy adott erőforrás használata. Például bejövő tartományvezérlők ne futtassa a Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben). Csomópont választók segítségével meghatározhatja a különböző paraméterek, például a csomópont operációs rendszer, ahol podot az ütemezni kívánt vezérlőelemre.
+
+Ez a alapvető példa egy NGINX-példány egy Linux-csomóponton, a csomópont-választóval ütemezi *"beta.kubernetes.io/os": linux*:
+
+```yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx:1.15.12
+  nodeSelector:
+    "beta.kubernetes.io/os": linux
+```
+
+Hogyan szabályozható, ahol podok ütemezett további információkért lásd: [ajánlott eljárások az aks-ben a scheduler speciális funkciók][operator-best-practices-advanced-scheduler].
 
 ## <a name="pods"></a>Podok
 
@@ -248,3 +269,4 @@ Ez a cikk ismerteti az egyes a Kubernetes-alapösszetevők, és ezek hogyan vona
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md

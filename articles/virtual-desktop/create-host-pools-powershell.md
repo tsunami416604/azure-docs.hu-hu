@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: helohr
-ms.openlocfilehash: 8e6783bb56f55949824e4ce94c85145f53dd9f4b
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: a58e059e800b13d01ba8e50880bd75077d4418ae
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523957"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833974"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Gazdagépcsoport létrehozása a PowerShell-lel
 
@@ -78,6 +78,9 @@ Sikeresen tartományhoz való csatlakozás tegye az alábbiakat minden egyes vir
 3. Válassza ki **számítógépnév**válassza **beállításainak módosítása**, majd válassza ki **módosítása...**
 4. Válassza ki **tartomány** és írja be az Active Directory-tartomány a virtuális hálózaton.
 5. Hitelesítés a tartományhoz csatlakozó gépek jogosultságokkal rendelkező tartományi fiókkal.
+
+    >[!NOTE]
+    > Ha a virtuális gépek tartományhoz csatlakoztatja az Azure AD Domain Services-környezetben, győződjön meg arról, győződjön meg arról, hogy a tartományhoz való csatlakozás felhasználó is tagja, a [AAD DC rendszergazdák csoport](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group).
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>A virtuális gépek, a Windows virtuális asztal előzetes gazdagép készlethez regisztrálása
 

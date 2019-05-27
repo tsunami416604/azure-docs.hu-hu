@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 32537426b7b9b1a7015610fc0c3e2dd7c3efa49b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 30e547759cbafabf5f762f671b09b0cbeea3a44c
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806206"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851221"
 ---
 # <a name="create-a-new-saas-offer"></a>Hozzon létre egy új SaaS-ajánlat
 
@@ -386,7 +386,7 @@ A Microsoft eltávolíthatja a üzemeltetése és karbantartása, a szolgáltat�
 
 - **Max. egyidejű tesztverziók** (kötelező): Ügyfeleink számára, akik egy időben használhatja a test drive maximális számának megadása. Minden egyes. párhuzamos felhasználó fog felhasználni a Dynamics 365-licenc, amíg a test drive aktív, ezért gondoskodjon arról, hogy elegendő licenccel érhető el a beállított maximális korlátot támogatására kell. Ajánlott érték 3 – 5.
 
-- **Tesztverzió időtartama** (kötelező): Adja meg az, hogy mennyi ideig definiálásával órák száma, a Test Drive aktív marad. Ennyi óra után a munkamenet befejezése, és már nem igényelnek a licencei egyikét. Azt javasoljuk, hogy az ajánlat összetettségétől függően 2 – 24 óra értéket. Ennek az időtartamnak előfordulhat, hogy csak bízza beállítása egy egész órák száma alapján (például) "2" óra "1.5" nem érvényes).  A felhasználó kérheti egy új munkamenetet, ha azok ideje elfogyott és a test drive újból elérhető.
+- **Tesztverzió időtartama** (kötelező): Adja meg az, hogy mennyi ideig órák száma definiálásával a Test Drive aktív marad. Ennyi óra után a munkamenet befejezése, és már nem igényelnek a licencei egyikét. Azt javasoljuk, hogy az ajánlat összetettségétől függően 2 – 24 óra értéket. Ennek az időtartamnak előfordulhat, hogy csak bízza beállítása egy egész órák száma alapján (például) "2" óra "1.5" nem érvényes).  A felhasználó kérheti egy új munkamenetet, ha azok ideje elfogyott és a test drive újból elérhető.
 
 - **Példány URL-cím** (kötelező): Az URL-címe, ahol az ügyfél megkezdődik a tesztverziós. Általában a példány URL-címét a Dynamics 365 mintaadatok telepítve van az alkalmazás futtatásához (pl. https://testdrive.crm.dynamics.com).
 

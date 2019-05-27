@@ -13,32 +13,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a9e902a13071abefff71dc4db089380979c8d459
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6f743f7ea7fda368fc5895646145f553f3fb50fb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198614"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864837"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az eseményvezérelt háttérben történő feldolgozás az Azure WebJobs SDK használatának első lépései
 
-Ez a cikk bemutatja, hogyan használható a Visual Studio 2017 Azure WebJobs SDK-projekt létrehozása, helyileg futtatja az alkalmazást, és hogyan telepítheti azt [Azure App Service](overview.md). A projektet hoz létre egy .NET Core-konzolalkalmazást, amely verzióját használja, a WebJobs SDK 3.x. Ha érdekli a verzió 2.x, amely a .NET-keretrendszert használja, lásd: [fejlesztés és üzembe helyezése a Visual Studio használatával – az Azure App Service WebJobs](webjobs-dotnet-deploy-vs.md).
+Ez a cikk bemutatja, hogyan használható a Visual Studio 2019 hozzon létre egy Azure WebJobs SDK-projektet, helyileg futtatja az alkalmazást és hogyan telepítheti azt [Azure App Service](overview.md). A projektet hoz létre egy .NET Core-konzolalkalmazást, amely verzióját használja, a WebJobs SDK 3.x. Ha érdekli a verzió 2.x, amely a .NET-keretrendszert használja, lásd: [fejlesztés és üzembe helyezése a Visual Studio használatával – az Azure App Service WebJobs](webjobs-dotnet-deploy-vs.md).
 
 Használata a WebJobs SDK-val kapcsolatos további információkért lásd: [az Azure WebJobs SDK használata az eseményvezérelt háttérben történő feldolgozás](webjobs-sdk-how-to.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Visual Studio 2017 telepítése](/visualstudio/install/) együtt a **Azure-fejlesztési** számítási feladatot. Ha már rendelkezik a Visual Studióval, de nem rendelkezik az adott számítási feladat, vegye fel a számítási feladatok kiválasztásával **eszközök > első eszközeivel és szolgáltatásaival**.
+* [Telepítse a Visual Studio 2019](/visualstudio/install/) együtt a **Azure-fejlesztési** számítási feladatok. Ha már rendelkezik a Visual Studióval, de nem rendelkezik az adott számítási feladat, vegye fel a számítási feladatok kiválasztásával **eszközök > első eszközeivel és szolgáltatásaival**.
 
 * Rendelkeznie kell [az Azure-fiók](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a WebJobs SDK projekt közzététele az Azure-bA.
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
-1. A Visual Studióban válassza ki a **File > New > Project**.
+1. A Visual Studióban válassza ki a **hozzon létre egy új projektet**.
 
-2. Válassza ki **.NET Core > Console App (.NET Core)**.
+2. Válassza ki **Console App (.NET Core)**.
 
-3. Adja a projektnek *WebJobsSDKSample*, majd válassza ki **OK**.
+3. Adja a projektnek *WebJobsSDKSample*, majd válassza ki **létrehozás**.
 
    ![New Project (Új projekt) párbeszédpanel](./media/webjobs-sdk-get-started/new-project.png)
 

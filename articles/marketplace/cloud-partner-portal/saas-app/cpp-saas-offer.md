@@ -5,20 +5,24 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: pabutler
-ms.openlocfilehash: 81e33bf37750dd869c3b52be5b2bca49820f47d6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.date: 05/16/2019
+ms.author: pbutlerm
+ms.openlocfilehash: 08baf908d47cdc6a9bc1e97f88eb5ff509d6790e
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941897"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835051"
 ---
 # <a name="azure-saas-application-offer"></a>Azure SaaS-alkalmazásra vonatkozó ajánlat
 
 Ez a szakasz azt ismerteti, hogyan teheti közzé egy szoftvert, az saas-alkalmazás ajánlatunk a <a href="https://azuremarketplace.microsoft.com">Azure Marketplace-en</a>.
 
-Használja az SaaS-alkalmazásokat, ha a megoldás lesz telepítve, a saját Azure-előfizetés és az ügyfelek kezelőfelületén, tervezheti meg és kezelheti az alkalmazás teszteléséhez jelentkezzen be. <a href="https://azure.microsoft.com/services/active-directory">Az Azure Active Directory (AAD)</a> kihasználhatja a meglévő próbaverzió környezet szolgál.
+> [!IMPORTANT] 
+> SaaS-ajánlat funkció az áttelepítés alatt a [Microsoft Partner Centeren](https://partner.microsoft.com/dashboard/directory).  Minden új gyártó kell használnia a Partner Center új SaaS-ajánlatok létrehozására és kezelésére a meglévő ajánlatok.  Az SaaS-ajánlatok kiadók migrálása folyamatban van batchwise a Cloud Partner portálra, a Partner Center.  A Cloud Partner portálra azt jelzik, ha meghatározott meglévő ajánlatok áttelepítette állapotüzeneteket jelenít meg.
+
+
+Használja az SaaS-alkalmazásokat, ha a megoldás lesz telepítve, a saját Azure-előfizetés, és ügyfelek alá fogja írni kezelőfelületén, tervezheti meg és kezelheti az alkalmazás teszteléséhez. <a href="https://azure.microsoft.com/services/active-directory">Az Azure Active Directory (AAD)</a> kihasználhatja a meglévő próbaverzió környezet szolgál.
 
 ## <a name="benefits"></a>Előnyök
 

@@ -10,22 +10,22 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 802e177b6f3844abe4d24c26b7ea2d0d4fb1688c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 53eb5fc9389d913ecacec3729a06e47a1c2bf56b
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697013"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864553"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Az Azure Functions kötési bővítményeket regisztrálása
 
-Kezdődően az Azure Functions verzió 2.x [kötések](./functions-triggers-bindings.md) a functions futtatókörnyezetének a különálló csomagként érhető el. .NET-es függvényeket kötések keresztül NuGet-csomagok eléréséhez, amíg bővítmény csomagok hozzáférést egyéb funkciók keresztül a konfigurációs beállítások összes kötését.
+Az Azure Functions verzió 2.x [kötések](./functions-triggers-bindings.md) a functions futtatókörnyezetének a különálló csomagként érhető el. .NET-es függvényeket kötések keresztül NuGet-csomagok eléréséhez, amíg bővítmény csomagok hozzáférést egyéb funkciók keresztül a konfigurációs beállítások összes kötését.
 
-Vegye figyelembe a következő elemek kérelmekre vonatkozó kötési bővítményeket:
+Vegye figyelembe a következő elemek bővítmények kötéséhez kapcsolódó:
 
-- Kötési bővítményeket explicit módon aspektusnevek regisztrálva funkciók 1.x, kivéve, ha [létrehozása egy C# Visual Studio 2017 használatával osztálytár](#local-csharp).
+- Kötési bővítményeket explicit módon aspektusnevek regisztrálva funkciók 1.x, kivéve, ha [létrehozása egy C# osztálytár használatával a Visual Studio 2019](#local-csharp).
 
-- HTTP- és időzítő eseményindító alapértelmezés szerint támogatott, és nem kell egy bővítményt.
+- HTTP- és időzítő eseményindító alapértelmezés szerint támogatott, és nem igényel a kiterjesztése.
 
 Az alábbi táblázat azt jelzi, hogy mikor és hogyan regisztrálhatja a kötéseket.
 
@@ -33,7 +33,7 @@ Az alábbi táblázat azt jelzi, hogy mikor és hogyan regisztrálhatja a köté
 |-------------------------|------------------------------------|------------------------------------|
 |Azure Portal|Automatikus|Automatikus|
 |Nem – .NET-nyelveket vagy a helyi Azure Core Tools-fejlesztés|Automatikus|[Azure Functions Core Tools és bővítmény csomagok használata](#local-development-with-azure-functions-core-tools-and-extension-bundles)|
-|Visual Studio 2017 használatával C# osztálytár|[NuGet-eszközök](#c-class-library-with-visual-studio-2017)|[NuGet-eszközök](#c-class-library-with-visual-studio-2017)|
+|C#használatával a Visual Studio 2019 osztálytár|[NuGet-eszközök](#c-class-library-with-visual-studio-2019)|[NuGet-eszközök](#c-class-library-with-visual-studio-2019)|
 |A Visual Studio Code C# osztálytár|–|[A .NET Core parancssori felület használata](#c-class-library-with-visual-studio-code)|
 
 ## <a name="local-development-with-azure-functions-core-tools-and-extension-bundles"></a>Helyi fejlesztés és az Azure Functions Core Tools bővítmény csomagok
@@ -41,9 +41,9 @@ Az alábbi táblázat azt jelzi, hogy mikor és hogyan regisztrálhatja a köté
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
 <a name="local-csharp"></a>
-## <a name="c-class-library-with-visual-studio-2017"></a>C# osztálytár a Visual Studio 2017
+## <a name="c-class-library-with-visual-studio-2019"></a>C#a Visual Studio 2019 osztálytár
 
-A **Visual Studio 2017**, csomagokat a Package Manager konzol használatával lehet telepíteni a [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) parancsot, az alábbi példában látható módon:
+A **Visual Studio 2019**, csomagokat a Package Manager konzol használatával lehet telepíteni a [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) parancsot, az alábbi példában látható módon:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>

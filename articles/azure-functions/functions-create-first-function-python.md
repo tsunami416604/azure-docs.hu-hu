@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 7e2b3424c3d8edc931054dea062280ea7789dc44
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 88e8d543e8bc3c3ae07133ec333b33c4486c2684
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143060"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864517"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Egy HTTP által aktivált függvény létrehozása az Azure-ban
 
@@ -108,7 +108,7 @@ Egy almappát _HttpTrigger_ jön létre, amely a következő fájlokat tartalmaz
 
   Minden egyes kötés szükséges iránya, típusa és a egy egyedi nevet. A HTTP-eseményindítóval rendelkezik típusú bemeneti kötést [ `httpTrigger` ](functions-bindings-http-webhook.md#trigger) és a kimeneti kötés típusú [ `http` ](functions-bindings-http-webhook.md#output).
 
-* **__Init__.py**: parancsfájlt, amely a HTTP által aktivált függvény. Ezt a szkriptet, és megnézheti, hogy tartalmaz egy alapértelmezett `main()`. Ez a funkció használatával HTTP-adatok a trigger által átadott a `req` kötési paraméter neve. Function.json, meghatározott `req` példánya a [azure.functions.HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest). 
+* **\_\_Init\_\_.py**: parancsfájlt, amely a HTTP által aktivált függvény. Ezt a szkriptet, és megnézheti, hogy tartalmaz egy alapértelmezett `main()`. Ez a funkció használatával HTTP-adatok a trigger által átadott a `req` kötési paraméter neve. Function.json, meghatározott `req` példánya a [azure.functions.HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest). 
 
     A visszaadott objektum definiálva `$return` function.json, a rendszer egy példánya [azure.functions.HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse). További tudnivalókért lásd: [Azure Functions – HTTP-eseményindítók és kötések](functions-bindings-http-webhook.md).
 

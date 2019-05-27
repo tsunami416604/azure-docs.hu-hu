@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 05/17/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9da23b0c0b0b0c0bfc238b1504811a9c1c55a9ef
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2caedeb5cd4d0f920ffa49b33b0dca8bea9938cb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785383"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861547"
 ---
-# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Mik azok a feltételek az Azure Active Directory feltételes hozzáférés? 
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Mik azok a feltételek az Azure Active Directory feltételes hozzáférés?
 
-Szabályozhatja a felhasználók miként férhetnek hozzá a felhőalapú alkalmazások használatával [Azure Active Directory (Azure AD) feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). Egy feltételes hozzáférési szabályzatot határoz meg a választ ("majd ehhez"), az az oka a szabályzat elindítása ("e hiba megjelenésekor"). 
+Szabályozhatja a felhasználók miként férhetnek hozzá a felhőalapú alkalmazások használatával [Azure Active Directory (Azure AD) feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). Egy feltételes hozzáférési szabályzatot határoz meg a választ ("majd ehhez"), az az oka a szabályzat elindítása ("e hiba megjelenésekor").
 
 ![OK és válasz](./media/conditions/10.png)
 
@@ -37,7 +37,7 @@ Feltételes hozzáférés kontextusában **ebben az esetben** nevezzük egy **fe
 ![Feltételes hozzáférési szabályzat](./media/conditions/61.png)
 
 
-Még nem konfigurálta a feltételes hozzáférési szabályzat feltételek nem lesznek alkalmazva. Bizonyos feltételek [kötelező](best-practices.md) környezet feltételes hozzáférési szabályzat vonatkozik. 
+Még nem konfigurálta a feltételes hozzáférési szabályzat feltételek nem lesznek alkalmazva. Bizonyos feltételek [kötelező](best-practices.md) környezet feltételes hozzáférési szabályzat vonatkozik.
 
 Ez a cikk a feltételek és a használatuk a feltételes hozzáférési szabályzat nyújt áttekintést. 
 
@@ -73,7 +73,7 @@ Szervezetek számára az alábbiak közül választhat:
 > [!NOTE]
 > Konkrét alkalmazások kizárhat a szabályzat alól. Ezek az alkalmazások azonban továbbra is a alkalmazni szabályzatokat az elért szolgáltatások is.
 
-**Felhasználói műveletek** felhasználó által végrehajtott feladatokat. Csak a jelenleg támogatott művelet **regisztrálja biztonsági információit (előzetes verzió)**, amely lehetővé teszi, hogy a feltételes hozzáférési szabályzatot, ha a felhasználó regisztrálja az adataik biztonsági vonatkozóan.
+**Felhasználói műveletek** felhasználó által végrehajtott feladatokat. Csak a jelenleg támogatott művelet **regisztrálja biztonsági információit (előzetes verzió)**, amely lehetővé teszi, hogy a feltételes hozzáférési szabályzatot a felhasználók számára engedélyezettek a kombinált regisztrációs próbál meg regisztrálni a biztonsági állapotuk kikényszerítésére információk. További információ a cikkben található [engedélyezése biztonsági információk regisztrációs (előzetes verzió) együttes](../authentication/howto-registration-mfa-sspr-combined.md).
 
 ## <a name="sign-in-risk"></a>Bejelentkezési kockázat
 

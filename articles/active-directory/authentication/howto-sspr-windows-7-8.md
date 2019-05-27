@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d3e955059724756eb7102c1b9fbbf55ed203ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08794a7605ffbd3cd5d4b021b783f32afb190727
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414724"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861576"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Útmutató: A Windows 7, 8 és 8.1-es a jelszóátállítás engedélyezése
 
@@ -60,6 +60,8 @@ Regisztrálnia kell az SSPR előtt az "Elfelejtette jelszavát" hivatkozásra.
 ![További biztonsági információkat kelljen a jelszó szükséges](media/howto-sspr-windows-7-8/windows-7-sspr-need-security-info.png)
 
 A jelszó alaphelyzetbe állításához az értesítések és a kódokat a Microsoft Authenticator alkalmazás használatával az eredeti kiadásban nem működik. Felhasználók regisztrált, a szabályzat követelményeknek megfelelő alternatív módszerekkel kell rendelkeznie.
+
+Ha több mint egy 3. fél hitelesítőadat-szolgáltató engedélyezve van a gépén, felhasználók egynél több felhasználói profil megjelenik a bejelentkezési képernyőn.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

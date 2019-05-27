@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 05/17/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 214d984388869431453267ef18ebf6eb976bc496
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 545906af882be6e53297bf7a9ff2cd12e86d55f0
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783521"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859627"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba az alkalmazásproxy használatával
 
@@ -59,7 +59,8 @@ Az Active Directory konfigurálása az Application Proxy connector és az alkalm
 2. Válassza ki azt az összekötőt futtató kiszolgálón.
 3. Kattintson a jobb gombbal, és válassza ki **tulajdonságok** > **delegálás**.
 4. Válassza ki **számítógépen csak a megadott szolgáltatások delegálhatók**. 
-5. A **szolgáltatásokhoz, amelyhez ezt a fiókot használhat delegált hitelesítő adatokat** adjon meg az értéket a kiszolgáló egyszerű Szolgáltatásnevének identitását. Ez lehetővé teszi a felhasználók megszemélyesítésére az ad-ben az olyan alkalmazások, a listában megadott az alkalmazásproxy-összekötő.
+5. Válassza ki **bármely hitelesítési protokoll**.
+6. A **szolgáltatásokhoz, amelyhez ezt a fiókot használhat delegált hitelesítő adatokat** adjon meg az értéket a kiszolgáló egyszerű Szolgáltatásnevének identitását. Ez lehetővé teszi a felhasználók megszemélyesítésére az ad-ben az olyan alkalmazások, a listában megadott az alkalmazásproxy-összekötő.
 
    ![Összekötő – fenntartott példányok tulajdonságok ablak képernyőképe](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 

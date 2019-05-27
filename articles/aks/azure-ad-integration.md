@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 026c0eefc0c4fe31e72ecad91a4a7b558f367487
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a6ed8ec37a3b20ccdbd2b013ba308518d8e3b97c
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192107"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849886"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Az Azure Active Directory integrálása az Azure Kubernetes Service
 
@@ -23,7 +23,6 @@ Ez a cikk bemutatja, hogyan helyezhet üzembe az AKS és Azure AD előfeltétele
 Az alábbi korlátozások érvényesek:
 
 - Az Azure AD csak egy új, az RBAC-t a fürt létrehozásakor engedélyezhető. Az Azure AD egy meglévő AKS-fürt nem engedélyezhető.
-- *Vendég* felhasználók az Azure AD-ben például, ha egy másik címtárból egy összevont bejelentkezést használ nem támogatottak.
 
 ## <a name="authentication-details"></a>Hitelesítés részletei
 
@@ -114,6 +113,10 @@ A második Azure AD-alkalmazást használja történő bejelentkezéskor a Kuber
         Ha az engedélyek sikeresen kapott, a portálon a következő értesítés jelenik meg:
 
         ![Értesítés a sikeres jogosultságaitól](media/aad-integration/permissions-granted.png)
+
+1. Az Azure AD-alkalmazás bal oldali navigációs sávján válassza **hitelesítési**.
+
+    * Alatt **ügyféltípus alapértelmezett**válassza **Igen** való *kezeli az ügyfél nyilvános ügyfél*.
 
 1. A bal oldali navigációs az Azure AD-alkalmazás, jegyezze fel a **Alkalmazásazonosító**. Az Azure AD-kompatibilis AKS-fürt üzembe helyezésekor, ezt az értéket a neve a `Client application ID`.
 
@@ -242,13 +245,14 @@ aks-nodepool1-79590246-2   Ready     agent     1h        v1.13.5
 Amikor végzett, a rendszer gyorsítótárazza a hitelesítési jogkivonat. Csak reprompted bejelentkezni, amikor a jogkivonat lejárt vagy a Kubernetes konfigurációs fájl újból létrehozza.
 
 Ha látja az engedélyezési hibaüzenet Miután sikeresen bejelentkezett, ellenőrizze, hogy:
-1. A felhasználó bejelentkezik, az Azure AD-példányt (ebben a forgatókönyvben a helyzet gyakran egy másik címtárból pedig összevont fiók használatakor) nem a vendég nem.
-2. A felhasználó nincs több mint 200 csoport tagja.
-3. A kiszolgáló regisztrációja meghatározott titkos kulcs nem egyezik meg a konfigurált használatával – aad-server-Alkalmazáskulcs értéket
 
 ```console
 error: You must be logged in to the server (Unauthorized)
 ```
+
+1. A megfelelő Objektumazonosítóval vagy egyszerű felhasználónév, attól függően, ha a felhasználói fiók pedig az Azure AD-bérlőhöz vagy nem meghatározott.
+2. A felhasználó nincs több mint 200 csoport tagja.
+3. A kiszolgáló regisztrációja meghatározott titkos konfiguráltak értéke megegyezik. `--aad-server-app-secret`
 
 ## <a name="next-steps"></a>További lépések
 

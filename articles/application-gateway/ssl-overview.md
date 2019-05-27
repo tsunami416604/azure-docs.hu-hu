@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 92799019d13de71d911767d8e400598513587667
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1259e755642563a7baad5496bc84ed736d5499f8
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715222"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849813"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>SSL-lezárások és teljes körű SSL-Titkosítást az Application Gateway – áttekintés
 
@@ -36,7 +36,7 @@ SSL-tanúsítvány konfigurálása SSL-lezárást, a figyelőt, hogy engedélyez
 Az SSL-kapcsolathoz működik győződjön meg arról, hogy az SSL-tanúsítvány megfelel-e a következő feltételek kell:
 
 - A "Érvényesség kezdete" és "a" dátum közötti a tanúsítványon belül, amely az aktuális dátum és idő van.
-- Hogy a tanúsítvány "Common Name" (CN) megegyezik a kérelemben szereplő állomás fejlécével. Például, ha az ügyfelet, hogy így kérést `https://www.contoso.com/`, akkor a CN kell `www.contoso.com`.
+- A tanúsítvány „köznapi neve” (Common Name, CN) megegyezik a kérésben szereplő gazdafejlécével. Ha például az ügyfél böngészője a(z) `https://www.contoso.com/` címre küldi a kérést, a köznapi névnek is a(z) `www.contoso.com` címnek kell lennie.
 
 ### <a name="certificates-supported-for-ssl-termination"></a>SSL-lezárást támogatott tanúsítványok
 
@@ -48,6 +48,9 @@ Az Application gateway támogatja a következő típusú tanúsítványt:
 - Önaláírt tanúsítványok: Ügyfél böngészők nem bízik meg ezeket a tanúsítványokat, és figyelmezteti a felhasználót, hogy a virtuális service-tanúsítvány nem szerepel egy megbízhatósági láncában. Önaláírt tanúsítványok jók tesztelési vagy környezetekben, ahol a rendszergazdák az ügyfelek vezérlőelemet, és biztonságosan elkerülheti a böngésző biztonsági riasztásokat. Éles számítási feladatok soha ne használjon önaláírt tanúsítványokat.
 
 További információkért lásd: [az application gateway konfigurálása SSL-lezárást](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+
+### <a name="size-of-the-certificate"></a>A tanúsítvány mérete
+Az SSL-tanúsítvány adatait a személyes információcsere (PFX) fájlt nem lehet több mint 10 KB-os méretig.
 
 ## <a name="end-to-end-ssl-encryption"></a>A teljes körű SSL-titkosítás
 

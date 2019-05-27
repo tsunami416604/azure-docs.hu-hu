@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 12565d2b8004a5119add25473e5b088c9162035f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 33d86ab8c88b45c7787620773f0df6e7fe888cf3
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780498"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850416"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Telepítheti és használhatja Istio Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ebben a cikkben részletes lépései azt feltételezik, hogy létrehozott egy AKS-fürt (Kubernetes `1.11` és újabb, az RBAC engedélyezve), és kiépített egy `kubectl` kapcsolatot a fürttel. Ha ezek az elemek bármelyikét segítségre van szüksége, tekintse meg a [AKS gyors][aks-quickstart].
 
-Szüksége lesz [Helm] [ helm] kövesse ezeket az utasításokat, és Istio telepítéséhez. Javasoljuk, hogy a verzió `2.12.2` vagy később megfelelően telepítette és konfigurálta a fürtben. Ha a telepítése Helm segítségre van szüksége, tekintse meg a [AKS Helm telepítéssel kapcsolatos útmutató][helm-install].
+Szüksége lesz [Helm] [ helm] kövesse ezeket az utasításokat, és Istio telepítéséhez. Javasoljuk, hogy a verzió `2.12.2` vagy később megfelelően telepítette és konfigurálta a fürtben. Ha a telepítése Helm segítségre van szüksége, tekintse meg a [AKS Helm telepítéssel kapcsolatos útmutató][helm-install]. Az összes Istio podok is kell ütemezni Linux-csomópontokon való futtatáshoz.
 
 Ez a cikk elkülöníti a Istio telepítéssel kapcsolatos útmutató több különálló lépésekre. A végeredmény megegyezik a hivatalos Istio telepítése struktúra [útmutatást][istio-install-helm].
 
@@ -336,6 +336,9 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
 ```
 
 A `istio` Helm-diagramot helyez üzembe egy nagy számú objektumok. Láthatja, hogy a lista és a kimenetét a `helm install` a fenti parancsot. Az összetevők telepítési állapotát a Istio fürt a környezettől függően 4 – 5 percet is igénybe vehet.
+
+> [!NOTE]
+> Az összes Istio podok Linux-csomópontokon való futtatáshoz kell ütemezni. Ha a Windows Server csomópontkészletek mellett Linux csomópontkészleteit a fürtön, győződjön meg arról, hogy az összes Istio podok Linux-csomópontokon való futáshoz van ütemezve.
 
 Ezen a ponton Istio telepítette az AKS-fürt. Győződjön meg arról, hogy van-e Istio sikeres telepítéséhez, a továbbvezet a következő szakaszban [Istio telepítésének ellenőrzése](#validate-the-istio-installation).
 

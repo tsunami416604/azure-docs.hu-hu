@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: 71ac525e2af7473ca9ce0a8f60268e76eccd1a9a
-ms.sourcegitcommit: 111a7b3e19d5515ce7036287cea00a7204ca8b56
+ms.openlocfilehash: 46b1e5c99dd86fed6f87ac3b8f0ff6555187899b
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64530383"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833526"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Az Azure Functions PowerShell fejlesztői útmutatója
 
@@ -23,9 +23,9 @@ Ez a cikk ismerteti, hogyan írhat a PowerShell-lel az Azure Functions részlete
 
 [!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
-Egy PowerShell-függvény jelenik meg egy PowerShell-parancsprogram, amely végrehajtja a elindításakor. Minden függvény szkriptre egy kapcsolódó function.json, amely meghatározza a függvény működését, például hogyan aktiválódik és a bemeneti és kimeneti paramétereket. További tudnivalókért tekintse meg a [eseményindítók és kötési cikk](functions-triggers-bindings.md). 
+A PowerShell Azure-függvény (funkce) jelenik meg egy PowerShell-parancsprogram, amely végrehajtja a elindításakor. Minden függvény szkriptre egy kapcsolódó `function.json` fájlt, amely meghatározza a függvény működését, például hogyan aktiválódik és a bemeneti és kimeneti paramétereket. További tudnivalókért tekintse meg a [eseményindítók és kötési cikk](functions-triggers-bindings.md). 
 
-Egyéb típusú olyan funkciók, például a PowerShell-parancsfájlt a paraméterek, amelyek megfelelnek a bemeneti kötések function.json meghatározott nevei vesz igénybe. A `TriggerMetadata` paramétert is kapott, amely az eseményindító függvény elindított további információkat tartalmaz.
+Egyéb típusú olyan funkciók, például a PowerShell parancsfájl függvényeknek a paraméterek, amelyek megfelelnek a megadott bemeneti kötések nevei a `function.json` fájlt. A `TriggerMetadata` paramétert is kapott, amely az eseményindító függvény elindított további információkat tartalmaz.
 
 Ez a cikk feltételezi, hogy már elolvasta a [Azure Functions fejlesztői segédanyagai](functions-reference.md). Kell is befejezte a [funkciók rövid útmutató a Powershellhez](functions-create-first-function-powershell.md) az első PowerShell-függvény létrehozásához.
 
@@ -56,9 +56,9 @@ PSFunctionApp
  | - bin
 ```
 
-A projekt gyökerében van egy megosztott [host.json](functions-host-json.md) fájlt, amely a függvényalkalmazás konfigurálása használható. Minden függvény rendelkezik a saját kódfájl (.ps1) és a kötési konfigurációs fájl (function.json) nevű mappa. Nevére `function.json`a könyvtár (szülő) mindig a függvényalkalmazás nevére.
+A projekt gyökerében van egy megosztott [ `host.json` ](functions-host-json.md) fájlt, amely a függvényalkalmazás konfigurálása használható. Minden függvény rendelkezik a saját kódfájl (.ps1) és a kötési konfigurációs fájlt egy mappába (`function.json`). A function.json fájlt szülő könyvtár nevét, mindig a függvényalkalmazás nevére.
 
-Bizonyos kötések meglétének megkövetelése egy `extensions.csproj`. Kötési bővítményeket, a szükséges [verzió 2.x](functions-versions.md) , a Functions futtatókörnyezete vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
+Bizonyos kötések meglétének megkövetelése egy `extensions.csproj` fájlt. Kötési bővítményeket, a szükséges [verzió 2.x](functions-versions.md) , a Functions futtatókörnyezete vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
 
 A PowerShell a Függvényalkalmazások, szükség esetén előfordulhat, egy `profile.ps1` amely akkor fut, amikor a függvényalkalmazás futni kezd (más néven ismert egy  *[hidegindítási](#cold-start)*. További információkért lásd: [PowerShell profil](#powershell-profile).
 
@@ -81,7 +81,7 @@ A `TriggerMetadata` paraméter használható az eseményindító további inform
 $TriggerMetadata.sys
 ```
 
-| Tulajdonság   | Leírás                                     | Típus     |
+| Tulajdonság   | Description                                     | Típus     |
 |------------|-------------------------------------------------|----------|
 | utcNow     | Amikor UTC formátumban, a függvény lett elindítva        | DateTime |
 | Metódus neve | A függvény, amely aktiválva neve     | string   |
@@ -135,7 +135,7 @@ Az alábbiakban érvényes paramétereket a hívó `Push-OutputBinding`:
 
 | Name (Név) | Típus | Pozíció | Leírás |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | String | 1 | A kimeneti kötés neve szeretné beállítani. |
+| **`-Name`** | String | 1. | A kimeneti kötés neve szeretné beállítani. |
 | **`-Value`** | Object | 2 | A kimeneti kötés értékét szeretné beállítani, amely láncból a ByValue. |
 | **`-Clobber`** | SwitchParameter | nevű | (Nem kötelező) Megadása esetén kényszeríti az értéket a megadott kimeneti kötés állítható be. | 
 
@@ -242,9 +242,9 @@ Bejelentkezés a PowerShell-funkciók rendszeres PowerShell naplózási hasonló
 | ------------- | -------------- |
 | Hiba | **`Write-Error`** |
 | Figyelmeztetés | **`Write-Warning`**  | 
-| Információ | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Információ | Ír _információk_ webhelyszintű naplózás. |
+| Tájékoztatás | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Tájékoztatás | Ír _információk_ webhelyszintű naplózás. |
 | Hibakeresés | **`Write-Debug`** |
-| Nyomkövetés | **`Write-Progress`** <br /> **`Write-Verbose`** |
+| Híváslánc | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Ezek a parancsmagok mellett a folyamat számára írt semmit a rendszer átirányítja a `Information` naplózási szint és az alapértelmezett PowerShell formázással jelennek meg.
 
@@ -302,7 +302,7 @@ HTTP és a webhook eseményindítók és a HTTP-kimeneti kötések használata k
 
 A parancsprogramhoz átadott támogatásikérelem-objektum típusa nem `HttpRequestContext`, amely a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság  | Leírás                                                    | Típus                      |
+| Tulajdonság  | Description                                                    | Típus                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Egy objektum, amely tartalmazza a kérelem törzsében. `Body` az adatok alapján a legjobb típus szerializált. Például ha az adatok JSON, azt át egy kivonattáblát. Ha az adatok egy karakterlánc, azt átadott karakterlánc formájában. | objektum |
 | **`Headers`** | Egy szótár, amely tartalmazza a kérelem fejlécében.                | Dictionary < karakterlánc, karakterlánc ><sup>*</sup> |
@@ -317,7 +317,7 @@ A parancsprogramhoz átadott támogatásikérelem-objektum típusa nem `HttpRequ
 
 Vissza kell küldeni a választ objektum típusa nem `HttpResponseContext`, amely a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság      | Leírás                                                 | Típus                      |
+| Tulajdonság      | Description                                                 | Típus                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Egy objektum, amely a válasz törzse tartalmazza.           | objektum                    |
 | **`ContentType`** | Egy rövid aktuális állítja a tartalomtípus a válaszhoz. | string                    |

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 1f86690b97fc7d65afed650664a76200ef490f33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a17461a90a19d775b8c7cac86d0bc6e9a18856bd
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60891313"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860885"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Építhet teendőkezelő alkalmazást az Azure Cosmos DB SQL API-fiók használatával xamarinnal
 
@@ -37,7 +37,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure Portal
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha Windows rendszeren fejleszt, és nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure-fejlesztési** és a **mobilalkalmazások .NET rendszerrel való fejlesztése** számítási feladatot a Visual Studio telepítése során.
+Ha Windows rendszeren fejleszt, és még nincs telepítve a Visual Studio 2019, letöltheti és használhatja a **ingyenes** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure-fejlesztési** és a **mobilalkalmazások .NET rendszerrel való fejlesztése** számítási feladatot a Visual Studio telepítése során.
 
 Mac gépek esetében letöltheti az **ingyenes** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/) alkalmazást.
 
@@ -92,7 +92,7 @@ Lépjen vissza az Azure Portalra az API-kulccsal kapcsolatos adatokért, majd m�
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-sql-api-xamarin-dotnet/keys.png)
 
-2. A Visual Studio 2017 vagy a Visual Studio for Mac alkalmazásban nyissa meg az azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Helpers mappában található APIKeys.cs fájlt.
+2. A Visual Studio 2019 vagy a Visual Studio for Mac nyissa meg az azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Helpers mappában található APIKeys.cs fájlt.
 
 3. Másolja az URI értékét a portálon (a másolási gomb használatával), és adja meg a `CosmosEndpointUrl` változó értékeként az APIKeys.cs fájlban.
 

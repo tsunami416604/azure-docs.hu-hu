@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a0c677e25be86e0f82b821a7931bda0af2b35127
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c09cb0f93f05a9574543ebabb398148638092c73
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408659"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864787"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Gyors útmutató: Alkalmazások konfigurálása az Azure-függvény létrehozása
 
@@ -31,7 +31,7 @@ Bármely Kódszerkesztő segítségével ebben a rövid útmutatóban találhat�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visualstudio.microsoft.com/vs). Győződjön meg arról, hogy a **Azure-fejlesztési** számítási feladatot is telepítve van. Is telepítheti a [legújabb Azure Functions tools](../azure-functions/functions-develop-vs.md#check-your-tools-version).
+Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2019](https://visualstudio.microsoft.com/vs). Győződjön meg arról, hogy a **Azure-fejlesztési** számítási feladatot is telepítve van. Is telepítheti a [legújabb Azure Functions tools](../azure-functions/functions-develop-vs.md#check-your-tools-version).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

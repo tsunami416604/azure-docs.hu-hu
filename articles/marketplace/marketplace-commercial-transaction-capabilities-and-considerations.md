@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 5dc311538055d9ecb7aba21f95d819a914cd1db7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: bd8cdbec42ea7df34ceee3ab82a1c6cac60ab59e
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826558"
+ms.locfileid: "65849721"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Az Azure Marketplace-en kereskedelmi ügylet képességek és szempontok
 
@@ -144,7 +144,7 @@ Ezt a beállítást kell konfigurálni, hogy a Microsoft keresztül, és a egy �
 |A Microsoft fizet 80 %-licenc költségei <br> \* A Microsoft fizet, 90 %-licenc költségei minden minősített SaaS-alkalmazásokhoz   |   80,00 $ / hó <br> \* 90.00 $ / hó    |
 |A Microsoft tartja a 20 %-licenc költségei <br> \* A Microsoft biztosítja, hogy 10 %-a-licenc költségei minden minősített SaaS-alkalmazásokhoz.  |  20.00 $ / hó <br> \* $10.00     |
 
-* **Csökkentett Piactéri szolgáltatási díj:** Az egyes SaaS-termékek, a kereskedelmi Marketplace-en közzétett, a Microsoft csökkenti a Piactéri szolgáltatási díj a 20 %-os (a Microsoft kiadói szerződésében leírt) 10 %-os.  Ahhoz, hogy ahhoz, hogy a termék, a termékek közül legalább ki kell jelölni a Microsoft által szerint IP közös értékesítési készen áll, vagy közös értékesítési IP előnyt élvez. A csökkentett Piactéri szolgáltatási díj kap a hónap, jogosult-e legalább öt (5) munkanapon naptári hónap vége előtt kell teljesülnie. Csökkentett díj nem vonatkozik a virtuális gépek, felügyelt alkalmazásokban vagy a kereskedelmi piactéren keresztül elérhetővé tett bármilyen egyéb termékek, a Piactéri szolgáltatás.  A csökkentett Piactéri szolgáltatási díj minősített ajánlatokra-el 2019. május 31-ig és 2020. június 30. között a Microsoft által gyűjtött licenc díjak.  Ezt követően a Piactéri szolgáltatási díj visszatér a szokásos összeg.
+* **Csökkentett Piactéri szolgáltatási díj:** Az egyes SaaS-termékek, a kereskedelmi Marketplace-en közzétett, a Microsoft csökkenti a Piactéri szolgáltatási díj a 20 %-os (a Microsoft kiadói szerződésében leírt) 10 %-os.  Ahhoz, hogy ahhoz, hogy a termék, a termékek közül legalább ki kell jelölni a Microsoft által szerint IP közös értékesítési készen áll, vagy közös értékesítési IP előnyt élvez. A csökkentett Piactéri szolgáltatási díj kap a hónap, jogosult-e legalább öt (5) munkanapon naptári hónap vége előtt kell teljesülnie. Csökkentett díj nem vonatkozik a virtuális gépek, felügyelt alkalmazásokban vagy a kereskedelmi piactéren keresztül elérhetővé tett bármilyen egyéb termékek, a Piactéri szolgáltatás.  A csökkentett Piactéri szolgáltatási díj minősített ajánlatokra-el 2019. május 1. és 2020. június 30. között a Microsoft által gyűjtött licenc díjak.  Ezt követően a Piactéri szolgáltatási díj visszatér a szokásos összeg.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Ügyfélszámlázás, a fizetés, a számlázásra és a gyűjtemények
 

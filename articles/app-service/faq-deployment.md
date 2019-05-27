@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9d7fd41657394e006957392f37ec1a258b33c8c6
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: beee76bdc443b3a66b4500b83d228075b84eed1e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413867"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864767"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Üzembe helyezés – gyakori kérdések az Azure Web Apps esetében
 
@@ -38,7 +38,7 @@ Ez a cikk gyakori kérdések (GYIK) választ rendelkezik kapcsolatban felmerül�
 
 További információkért lásd: [telepítse az alkalmazást az App Service-ben](deploy-local-git.md).
 
-## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Egy hibaüzenet jelenik meg a Visual Studióból üzembe látható. Hogyan oldhatom fel ez?
+## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Egy hibaüzenet jelenik meg a Visual Studióból üzembe látható. Hogyan oldhatom fel ezt a hibát?
 
 Ha a következő üzenetet látja, akkor előfordulhat, hogy használja az SDK egy régebbi verziója: "Hiba"YourResourceName"erőforrás 'YourResourceGroup' erőforráscsoportban üzembe helyezés során: MissingRegistrationForLocation: Az előfizetés nincs regisztrálva az erőforrástípus "összetevő" a következő helyen: "USA középső RÉGIÓJA". Regisztrálja újra a szolgáltató annak érdekében, hogy ezen a helyen érheti el." 
 
@@ -59,7 +59,7 @@ Az App Service-alkalmazás fájl szerkezete kapcsolatos információkért lásd:
 
 ## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>Hogyan oldhatom fel a "FTP hiba – 550 itt nem elég hely a lemezen" FTP-fájlok meg?
 
-Ha ezt az üzenetet látja, valószínű, hogy futtatja, lemezkvóta a service-csomagban a webalkalmazás számára. Szüksége lehet a vertikális felskálázás a lemezterület-szükséglet alapján magasabb szolgáltatási szintre. Csomagok és erőforráskorlátok díjszabással kapcsolatos további információkért lásd: [App Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/).
+Ha ezt az üzenetet látja, akkor valószínű, hogy futtatja, lemezkvóta a service-csomagban a webalkalmazás számára. Szüksége lehet a vertikális felskálázás a lemezterület-szükséglet alapján magasabb szolgáltatási szintre. Csomagok és erőforráskorlátok díjszabással kapcsolatos további információkért lásd: [App Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/).
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Hogyan állíthatok be a folyamatos üzembe helyezés az App Service webalkalmazás?
 
@@ -69,11 +69,11 @@ Beállíthat folyamatos üzembe helyezést az több erőforrás, beleértve az A
 
 Segítségre van szüksége a GitHub vagy bitbucket-alapú folyamatos üzembe helyezéssel kapcsolatos problémák kivizsgálása, lásd: [vizsgálja a folyamatos üzembe helyezés](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment).
 
-## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this"></a>E nem FTP-ról saját helyre, és tegye közzé saját kód. Hogyan oldhatom fel ez?
+## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this-issue"></a>E nem FTP-ról saját helyre, és tegye közzé saját kód. Hogyan oldhatom fel probléma?
 
 FTP-problémák megoldása:
 
-1. Győződjön meg arról, hogy a helyes állomásnevet és hitelesítő adatok megadása. Különböző típusú hitelesítő adatok és a használatukkal kapcsolatos részletes információkért lásd: [üzembe helyezési hitelesítő adatok](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).
+1. Győződjön meg arról, hogy adjon meg a helyes állomásnevet és hitelesítő adatokat. Különböző típusú hitelesítő adatok és a használatukkal kapcsolatos részletes információkért lásd: [üzembe helyezési hitelesítő adatok](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).
 2. Győződjön meg arról, hogy az FTP-portok nem blokkolja tűzfal. A portok rendelkeznie kell ezeket a beállításokat:
     * FTP-vezérlőkapcsolati port: 21
     * FTP-adatkapcsolati port: 989, 10001-10300

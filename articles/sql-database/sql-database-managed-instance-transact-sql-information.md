@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 08920a25fc7213a773ef0d76a5daddbab3f765c2
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 17609212fcc7620dc0d6d617e7626d12c8bb0592
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866867"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65852145"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -75,7 +75,7 @@ Korlátozások:
 
 Biztonsági másolatok a T-SQL használatával kapcsolatos információkért lásd: [BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
 
-## <a name="security"></a>Biztonság
+## <a name="security"></a>Biztonsági
 
 ### <a name="auditing"></a>Naplózás
 
@@ -276,7 +276,7 @@ További információkért lásd: [ALTER DATABASE](https://docs.microsoft.com/sq
 ### <a name="sql-server-agent"></a>SQL Server Agent
 
 - Az SQL Server Agent-beállítások csak olvashatók. Az eljárás `sp_set_agent_properties` a felügyelt példány nem támogatott. 
-- Feladatok
+- Feladatok (job)
   - T-SQL-feladat lépései támogatottak.
   - A következő replikációs feladatok támogatottak:
     - Replikálásitranzakciónapló-olvasó
@@ -394,7 +394,7 @@ Műveletek
 
 Külső táblák a HDFS- vagy Azure Blob storage-ban a fájlok nem támogatottak a hivatkozás. A PolyBase kapcsolatos információkért lásd: [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
 
-### <a name="replication"></a>Replikáció
+### <a name="replication"></a>Replikálás
 
 Replikáció a felügyelt példány nyilvános előzetes verziója érhető el. A replikációval kapcsolatos további információkért lásd: [SQL Server-replikáció](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
 
@@ -409,7 +409,7 @@ Replikáció a felügyelt példány nyilvános előzetes verziója érhető el. 
 - Nem támogatott szintaxist:
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
-- Forrás: 
+- Adatforrás: 
   - `FROM URL` (Az azure Blob storage) az egyetlen támogatott lehetőség.
   - `FROM DISK`/`TAPE`/ biztonsági mentési eszköz nem támogatott.
   - Biztonságimásolat-készletek nem támogatottak.
@@ -471,7 +471,7 @@ A következő változók, functions és a nézetek különböző eredményeket a
 
 ### <a name="tempdb-size"></a>A TEMPDB mérete
 
-A fájl maximális mérete `tempdb` egy általános célú szintjén magonként 24 GB-nál nagyobb lehet. A maximális `tempdb` üzletileg kritikus szintet mérete korlátozott, a példány tárolási mérettel. A `tempdb` adatbázis mindig van felosztva, amelyek 12 adatfájlokat. A maximális méret fájlonként nem módosítható, és új fájlokat is hozzáadhatók `tempdb`. Néhány lekérdezés előfordulhat, hogy vissza hibát, ha szükségük van a magonként 24 GB-nál több `tempdb`.
+A fájl maximális mérete `tempdb` egy általános célú szintjén magonként 24 GB-nál nagyobb lehet. A maximális `tempdb` üzletileg kritikus szintet mérete korlátozott, a példány tárolási mérettel. A `tempdb` adatbázis mindig van felosztva, amelyek 12 adatfájlokat. A maximális méret fájlonként nem módosítható, és új fájlokat nem vehető fel `tempdb`. Néhány lekérdezés előfordulhat, hogy vissza hibát, ha szükségük van a magonként 24 GB-nál több `tempdb`. `tempdb` mindig újra létrejön egy üres adatbázis változásakor példány elindítása vagy a feladatátvételt, és bármely kezdeményezni a `tempdb` nem őrződnek meg. 
 
 ### <a name="cant-restore-contained-database"></a>Tartalmazott adatbázis nem állítható vissza.
 

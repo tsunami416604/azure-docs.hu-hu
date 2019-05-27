@@ -1,7 +1,7 @@
 ---
 title: FPGA-kban a modellek üzembe helyezése
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan futtat egy Azure Machine Learning szolgáltatásban a ultramagas közel valós idejű következtetési FPGA modell egy webszolgáltatás üzembe helyezéséhez.
+description: Megtudhatja, hogyan futtat egy Azure Machine Learning szolgáltatásban a ultramagas közel valós idejű következtetésekhez FPGA modell egy webszolgáltatás üzembe helyezéséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: tedway
 author: tedway
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 249a21bf9eeb3913826971fd1aae136197d264c4
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8d667d45e1831e0fcc939d302a16f63d4a282963
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149612"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65852051"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Modell üzembe helyezése az Azure Machine Learning szolgáltatás egy FPGA a webszolgáltatásként
 
-Telepíthet egy modellt webszolgáltatásként, amely a [programmable gate arrays (FPGA) mezőben](concept-accelerate-with-fpgas.md) az Azure Machine Learning hardver gyorsított modellek. FPGA-kban használatával biztosít ultramagas közel valós idejű következtetési egyetlen kötegméret mellett is.
+Telepíthet egy modellt webszolgáltatásként, amely a [programmable gate arrays (FPGA) mezőben](concept-accelerate-with-fpgas.md) az Azure Machine Learning hardver gyorsított modellek. FPGA-kban használatával biztosít ultramagas közel valós idejű következtetésekhez egyetlen kötegméret mellett is. Következtetésekhez vagy a modell pontozása, nem a fázis, az üzembe helyezett modell előrejelzési leggyakrabban a termelési adatok szolgál.
 
 Ezek a modellek jelenleg érhetők el:
   - ResNet 50
@@ -33,7 +33,7 @@ FPGA-kban ezen Azure-régiókban érhetők el:
   - USA keleti régiója
   - Délkelet-Ázsia
   - Nyugat-Európa
-  - USA nyugati régiója, 2.
+  - USA 2. nyugati régiója
 
 > [!IMPORTANT]
 > Optimalizálható a teljesítmény és a késés, adatok küldését az FPGA modell az ügyfél a fenti (helyezte üzembe a modellt egy) régiók egyikében kell lennie.
@@ -160,9 +160,9 @@ print(output_tensors)
 ```
 
 > [!IMPORTANT]
-> Mentse a bemeneti és kimeneti tensors, mert ezekre szükség lesz a modell átalakítási vagy következtetési kéréseket.
+> Mentse a bemeneti és kimeneti tensors, mert ezekre szükség lesz a modell átalakítás tanuláshoz és következtetésekhez kéréseket.
 
-Az elérhető modellek és a megfelelő alapértelmezett osztályozó kimeneti tensors az alábbiakban, azaz, hogy milyen használja következtetési során az alapértelmezett osztályozó használatakor.
+Az elérhető modellek és a megfelelő alapértelmezett osztályozó kimeneti tensors szolgálnak, azaz, hogy milyen használna következtetésekhez az alapértelmezett osztályozó használatakor.
 
 + Resnet50, QuantizedResnet50 ``
 output_tensors = "classifier_1/resnet_v1_50/predictions/Softmax:0"

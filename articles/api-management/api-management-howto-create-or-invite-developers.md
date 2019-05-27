@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 362df8cee163bcd2d1dac73c650e42ee4f0f7751
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3d50746324ddac21f222d4c743f4b7bf6ee9b773
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920107"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864808"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Az Azure API Management a felhasználói fiókok kezelése
 
@@ -69,7 +69,7 @@ Felhasználó blokkolása, kövesse az alábbi lépéseket.
 
 ## <a name="reset-a-user-password"></a>Felhasználói jelszó alaphelyzetbe állítása
 
-Felhasználói fiókok programozott módon dolgozni, tekintse meg a [felhasználó típusú entitás](https://docs.microsoft.com/rest/api/apimanagement/user) dokumentációjában találhatók a [API Management REST](/rest/api/apimanagement/) referencia. Egy adott értékre állítsa vissza egy felhasználói fiók jelszavát, használhatja a [frissíteni egy felhasználó](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) műveletet, és adja meg a kívánt jelszót.
+Felhasználói fiókok programozott módon dolgozni, tekintse meg a felhasználói entitás dokumentáció a [API Management REST API](/rest/api/apimanagement/) hivatkozást. Egy adott értékre állítsa vissza egy felhasználói fiók jelszavát, használhatja a [frissíteni egy felhasználó](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) műveletet, és adja meg a kívánt jelszót.
 
 ## <a name="next-steps"></a>Következő lépések
 Egy fejlesztői fiók létrehozása után társítsa a szerepkörök, és előfizetés-termékek és API-k. További információkért lásd: [csoportok létrehozása és használata annak][How to create and use groups].

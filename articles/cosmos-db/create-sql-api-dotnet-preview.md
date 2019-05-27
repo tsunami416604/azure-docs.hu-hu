@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 1589c938e635ccff02f94a176b7fc886dbccb779
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51494acaa393493e567e0fcbb359756bdab21503
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894561"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860893"
 ---
 # <a name="quickstart-build-an-aspnet-web-app-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Egy ASP.NET-webalkalmazás létrehozása az Azure Cosmos DB SQL API-fiók használatával
 
@@ -37,7 +37,7 @@ Ebben a rövid útmutatóban az Azure Cosmos DB .NET SDK 3.0-s + verzióját has
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Győződjön meg arról, hogy engedélyezze a **Azure-fejlesztési** számítási feladatot a Visual Studio telepítése során.
+Ha már nincs telepítve a Visual Studio 2019, letöltheti és használhatja a **ingyenes** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Győződjön meg arról, hogy engedélyezze a **Azure-fejlesztési** számítási feladatot a Visual Studio telepítése során.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
@@ -120,7 +120,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-sql-api-dotnet/keys.png)
 
-2. A Visual Studio 2017, nyissa meg a **web.config** fájlt. 
+2. A Visual Studióban nyissa meg a **web.config** fájlt. 
 
 3. Másolja az URI érteket a Portalról (a másolási gomb használatával), és adja meg az értékét a ``endpoint`` kulcs értékeként a web.config. 
 

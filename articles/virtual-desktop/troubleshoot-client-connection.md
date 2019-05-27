@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 99295fd4581cd81751f7d64b694c853efe51a106
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: f88dee579e44a01dc1a7404ef6a670de34063552
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522941"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833574"
 ---
 # <a name="remote-desktop-client-connections"></a>Távoli asztali ügyfélkapcsolatok
 
@@ -28,9 +28,9 @@ Ellenőrizze, hogy nincs megnyitva egy másik webhely; internetkapcsolat Ha pél
 
 Használat **nslookup** ellenőrizze a DNS képes feloldani a teljes Tartománynevet:
 
-    ```cmd
-    nslookup rdweb.wvd.microsoft.com
-    ```
+```cmd
+nslookup rdweb.wvd.microsoft.com
+```
 
 Próbáljon meg csatlakozni egy másik ügyfél, például a távoli asztali ügyfél Windows 7 vagy Windows 10 és az ellenőrzés tekintse meg, ha a webes ügyfél megnyitható.
 
@@ -54,7 +54,7 @@ Próbáljon meg csatlakozni egy másik ügyfél, például a távoli asztali üg
 
 1. Indítsa újra a böngészőt.
 2. Törölje a böngésző cookie-kat. Lásd: [törlése a cookie-fájlokat az Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-3. Törölje a böngésző gyorsítótárát. Lásd: [törölje a böngésző számára a böngésző gyorsítótárát](https://binged.it/2RKyfdU).
+3. Törölje a böngésző-gyorsítótár tartalmát. Lásd: [törölje a böngésző számára a böngésző gyorsítótárát](https://binged.it/2RKyfdU).
 4. Nyissa meg a böngészőt privát üzemmódban.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Webes ügyfél nem válaszol, vagy leválasztása
@@ -74,7 +74,7 @@ Ha a webes ügyfél tartja kéri a hitelesítő adatokat, kövesse az alábbi ut
 1. Ellenőrizze a webes ügyfél URL-címe.
 2. Győződjön meg arról, hogy hitelesítő adatokat a Windows virtuális asztali környezetben, az URL-címhez kötött.
 3. Törölje a böngésző cookie-kat. Lásd: [törlése a cookie-fájlokat az Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Törölje a böngésző gyorsítótárát. Lásd: [törölje a böngésző számára a böngésző gyorsítótárát](https://binged.it/2RKyfdU).
+4. Törölje a böngésző-gyorsítótár tartalmát. Lásd: [törölje a böngésző számára a böngésző gyorsítótárát](https://binged.it/2RKyfdU).
 5. Nyissa meg a böngészőt privát üzemmódban.
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Távoli asztali ügyfél Windows 7 vagy Windows 10-es nem válaszol, vagy nem nyitható meg
@@ -111,20 +111,20 @@ Kövesse az alábbi általános hibaelhárítási utasításokat az ügyfél csa
 4. Használatával **Get-RdsHostPool** és **Get-RdsSessionHost** parancsmagok, győződjön meg arról, hogy hibaelhárítási történik a megfelelő gazdagép készleten.
 5. Hajtsa végre az alábbi parancsot a megadott időtartomány típusú kapcsolat összes sikertelen tevékenységek listájának lekérése:
 
-    ```cmd
+    ```PowerShell
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
 6. Használatával a **ActivityId** az előző parancsmag kimenetében, futtassa az alábbi parancsot:
 
-    ```
+    ```PowerShell
     (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
     ```
 
 7. A parancs az alábbi kimeneti hasonló kimenetet eredményez. Használat **ErrorCodeSymbolic** és **ErrorMessage** hibaelhárítása a hiba okát.
 
-    ```
+    ```PowerShell
     ErrorSource       : <Source>
     ErrorOperation    : <Operation>
     ErrorCode         : <Error code>
@@ -159,7 +159,7 @@ A felhasználó megkezdheti a távoli asztali ügyfelek, és elvégezheti a hite
 
 Győződjön meg arról, hogy a felhasználó a hibáknak felelősként alkalmazáscsoportok Ez a parancssor használatával:
 
-```cmd
+```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 ```
 

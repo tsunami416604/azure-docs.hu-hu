@@ -1,6 +1,6 @@
 ---
 title: Fejlesztés az Azure Functions Visual Studio használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan fejlesztheti és tesztelheti az Azure Functions az Azure Functions Tools for Visual Studio 2017 használatával.
+description: Ismerje meg, hogyan fejlesztheti és tesztelheti az Azure Functions Azure Functions Tools for Visual Studio 2019 használatával.
 services: functions
 documentationcenter: .net
 author: ggailey777
@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4e67e91e93ef3a2e2acf88a87b97eaab56ca6479
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4366f09ccc9a3b2335e0aa84b7fb7398825cb87e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403659"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864527"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
-Az Azure Functions Tools for Visual Studio 2017, amely lehetővé teszi fejlesztése, tesztelése és üzembe helyezése a C#-függvények az Azure-bA a Visual Studio-bővítmény. Ha ez az első és az Azure Functions, többet is megtudhat a [Bevezetés az Azure Functions](functions-overview.md).
+Az Azure Functions Tools for Visual Studio 2019, amely lehetővé teszi fejlesztése, tesztelése és üzembe helyezése a Visual Studio-bővítmény C# funkciók az Azure-bA. Ha ez az első és az Azure Functions, többet is megtudhat a [Bevezetés az Azure Functions](functions-overview.md).
 
 Az Azure Functions Tools az alábbi előnyöket nyújtja: 
 
@@ -29,16 +29,16 @@ Az Azure Functions Tools az alábbi előnyöket nyújtja:
 * Fejlesztés és üzembe helyezése előre lefordított C#-függvények. Előre lefordított függvények egy jobban hidegindítási teljesítményt biztosítanak, mint a C# parancsfájlalapú funkciók. 
 * A függvények C#-kód során a Visual Studio fejlesztési előnyeit a teljes. 
 
-Ez a cikk részletesen ismerteti az Azure Functions Tools for Visual Studio 2017 használatával fejlesztése C# működik, és közzéteheti őket az Azure-bA. Mielőtt Ez a cikk el kell végeznie a [for Visual Studio Functions rövid](functions-create-your-first-function-visual-studio.md). 
+Ez a cikk részletesen ismerteti a fejlesztés az Azure Functions Tools for Visual Studio 2019 használatával C# működik, és közzéteheti őket az Azure-bA. Mielőtt Ez a cikk el kell végeznie a [for Visual Studio Functions rövid](functions-create-your-first-function-visual-studio.md). 
 
 > [!IMPORTANT]
 > Ne keverje a helyi fejlesztési ugyanaz a függvényalkalmazás a portál fejlesztési. Amikor közzétesz egy helyi projektből a függvényalkalmazáshoz, a telepítési folyamat felülírja a portálon fejlesztett funkciók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Functions Tools tartalmazza az Azure-fejlesztési számítási [Visual Studio 2017 15.5 verzió](https://www.visualstudio.com/vs/), vagy egy újabb verziója. Győződjön meg arról, hogy a **Azure-fejlesztési** számítási feladatot a Visual Studio 2017 telepítése:
+Az Azure Functions Tools tartalmazza az Azure-fejlesztési számítási [Visual Studio 2017](https://www.visualstudio.com/vs/), vagy egy újabb verziója. Győződjön meg arról, hogy a **Azure-fejlesztési** a Visual Studio a 2019-telepítés a számítási feladatok:
 
-![Az Azure-fejlesztési számítási feladatot is tartalmazó Visual Studio 2017 telepítése](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+![Az Azure-fejlesztési számítási feladatot a Visual Studio 2019 telepítése](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 Győződjön meg arról, hogy naprakész állapotban-e a Visual Studio és az, hogy használja a [legfrissebb](#check-your-tools-version) , az Azure Functions tools.
 
@@ -185,7 +185,7 @@ Az Azure Functions Core Tools használatával kapcsolatos további tudnivalóké
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="function-app-settings"></a>A függvényalkalmazás beállításai
+## <a name="function-app-settings"></a>Függvényalkalmazás beállításai
 
 A local.settings.json a hozzáadott minden beállítást is meg kell adni a függvényalkalmazáshoz az Azure-ban. Ezek a beállítások nem lesznek feltöltve automatikusan, a projekt közzétételekor.
 

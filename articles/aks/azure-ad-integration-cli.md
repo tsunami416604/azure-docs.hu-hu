@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
-ms.openlocfilehash: 0216a8c7d4e52e89098979223e9b792398e25038
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d80ad5abecc968a9fe3c82d62ddd8577856a3c54
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920168"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835182"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Az Azure Active Directory integrálása az Azure Kubernetes Service-ben az Azure CLI használatával
 
@@ -25,9 +25,8 @@ A teljes minta parancsfájl a cikk ezt használja, lásd: [Azure CLI-minták –
 Az alábbi korlátozások érvényesek:
 
 - Az Azure AD csak egy új, az RBAC-t a fürt létrehozásakor engedélyezhető. Az Azure AD egy meglévő AKS-fürt nem engedélyezhető.
-- *Vendég* felhasználók az Azure AD-ben például, ha egy összevont bejelentkezés egy másik címtárban nem támogatottak.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az Azure CLI 2.0.61 verziójára van szükség, vagy később telepített és konfigurált. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
@@ -237,8 +236,9 @@ Ha engedélyezési hibaüzenet jelenik meg, miután sikeresen bejelentkezett egy
 error: You must be logged in to the server (Unauthorized)
 ```
 
-* A nem a bejelentkezett felhasználó egy *vendég* (Ez gyakran a helyzet, ha egy másik címtárban való összevont bejelentkezést használ) az Azure AD-példányban.
+* A megfelelő Objektumazonosítóval vagy egyszerű felhasználónév, attól függően, ha a felhasználói fiók pedig az Azure AD-bérlőhöz vagy nem meghatározott.
 * A felhasználó nincs több mint 200 csoport tagja.
+* A kiszolgáló regisztrációja meghatározott titkos konfiguráltak értéke megegyezik. `--aad-server-app-secret`
 
 ## <a name="next-steps"></a>További lépések
 

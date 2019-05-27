@@ -110,7 +110,7 @@ Adatok másolása a ServiceNow, állítsa be a forrás típusaként a másolási
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **ServiceNowSource** | Igen |
-| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Actual.alm_asset"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Actual.alm_asset"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 Vegye figyelembe a következőket megadásakor a séma és az oszlopot a ServiceNow lekérdezést, és **tekintse meg [teljesítménnyel kapcsolatos tippek](#performance-tips) a másolási teljesítmény utalás**.
 
