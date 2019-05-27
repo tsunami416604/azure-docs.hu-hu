@@ -10,18 +10,18 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 19873256f8253fff75cfd42df7b876106a9e98e5
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 70f9c34957b977aff9fc6211bf79415ed9abe255
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464790"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016511"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>A Visual Studio Code az Azure Machine Learning használatának első lépései
 
-Ebből a cikkből elsajátíthatja lesz a bővítmény használata az Azure Machine Learning a Visual Studio Code betanítását és üzembe helyezése a gépi tanulási és deep learning-modellek a Visual Studio Code az Azure Machine Learning szolgáltatás használatával.
+Ebből a cikkből elsajátíthatja lesz a bővítmény használata az Azure Machine Learning a Visual Studio Code betanítására és gépi tanulási és deep learning-modellek üzembe helyezése.
 
-Az Azure Machine Learning szolgáltatás a helyi és távoli számítási célnak futtatott kísérletek támogatást nyújt. Minden egyes kísérlethez azt is nyomon követheti, több Futtatás gyakran különböző technikák, hiperparaméterek és egyéb iteratív próbálja szükség szerint. Az Azure Machine Learning segítségével nyomon követheti az egyéni metrikákat, és kísérletezzen a futtatásakor a data science megismételhetősége és auditability engedélyezése.
+A [Azure Machine Learning szolgáltatás](overview-what-is-azure-ml.md) támogatást nyújt, amely a helyi és távoli futtatása kísérletek számítási céljainak. Minden egyes kísérlethez azt is nyomon követheti, több Futtatás gyakran különböző technikák, hiperparaméterek és egyéb iteratív próbálja szükség szerint. Az Azure Machine Learning segítségével nyomon követheti az egyéni metrikákat, és kísérletezzen a futtatásakor a data science megismételhetősége és auditability engedélyezése.
 
 Ezek a modellek tesztelési és éles igényeknek is telepítheti.
 
@@ -69,13 +69,13 @@ Az Azure Machine Learning-bővítmény telepítése:
 
    ![Válassza ki a értelmezője számára készült](./media/vscode-tools-for-ai/python.png)
 
-1. Az ablak jobb alsó sarkában lévő megjelenik egy értesítés, amely azt jelzi, hogy az Azure Machine Learning SDK automatikusan telepíti. Az újonnan létrehozott Python-környezetet a helyi és a privát, és a Visual Studio Code használata az Azure Machine Learning szolgáltatás előfeltételei rendelkezik.
+1. Az ablak jobb alsó sarkában lévő megjelenik egy értesítés, amely jelzi, hogy a [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) automatikusan települ. Az újonnan létrehozott Python-környezetet a helyi és a privát, és a Visual Studio Code használata az Azure Machine Learning szolgáltatás előfeltételei rendelkezik.
 
    ![Telepítse az Azure Machine Learning SDK a Pythonhoz](./media/vscode-tools-for-ai/runtimedependencies.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>Ismerkedés az Azure Machine Learning szolgáltatással
 
-Mielőtt képzési megkezdése és üzembe helyezése a machine learning-modellek a Visual Studio Code, létre kell egy [az Azure Machine Learning szolgáltatás munkaterületén](concept-azure-machine-learning-architecture.md#workspace) a felhőben. Ez a munkaterület tartalmazza a modellek és -erőforrásokat. 
+Mielőtt képzési megkezdése és üzembe helyezése a machine learning-modellek a Visual Studio Code, létre kell egy [az Azure Machine Learning szolgáltatás munkaterületén](concept-workspace.md) a felhőben. Ez a munkaterület tartalmazza a modellek és -erőforrásokat. 
 
 Hozzon létre egy munkaterületet, és adja hozzá az első kísérlet:
 

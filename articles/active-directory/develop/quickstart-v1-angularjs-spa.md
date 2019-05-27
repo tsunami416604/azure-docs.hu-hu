@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f526ea3d1a53ef2ae80f36c863e7a19797e9142
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 1a1fdbcd04504181a20f5245b6f2378be5b9d405
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545994"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001211"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Gyors útmutató: Jelentkezzen be, és jelentkezzen ki az Azure Active Directoryval AngularJS egyoldalas alkalmazás készítése
 
@@ -63,20 +63,15 @@ Ha lehetővé szeretné tenni az alkalmazás számára a felhasználók hiteles�
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Ha több címtárba jelentkezett be, lehetséges, hogy ellenőriznie kell, hogy a megfelelő címtárat látja-e. Ehhez kattintson a fiókjára a felső sávon. A **Címtár** listában válassza ki azt az Azure AD-bérlőt, amelyben az alkalmazást regisztrálni kívánja.
 1. Kattintson a **Minden szolgáltatás** lehetőségre a bal oldali panelen, majd válassza az **Azure Active Directory** elemet.
-1. Kattintson az **Alkalmazásregisztrációk** elemre, majd válassza a **Hozzáadás** parancsot.
-1. Kövesse az utasításokat, és hozzon létre egy új webalkalmazást és/vagy webes API-t:
-
-    * A **név** az alkalmazást ismerteti a felhasználók számára.
-    * **Bejelentkezési URL** – az a hely, ahová az Azure AD visszaadja a jogkivonatokat. Ebben a példában az alapértelmezett hely a `https://localhost:44326/`.
-
-1. A regisztráció befejezését követően az Azure AD egy egyedi alkalmazásazonosítót rendel az alkalmazáshoz. Erre az értékre szüksége lesz a következő szakaszokban, ezért másolja ki az alkalmazás lapjáról.
-1. Az Adal.js az OAuth implicit folyamatát használja az Azure AD-vel folytatott kommunikációhoz. Engedélyeznie kell az implicit folyamatot az alkalmazás számára:
-
-    1. Kattintson az alkalmazásra, és válassza a **Jegyzékfájl** elemet a beépített jegyzékszerkesztő megnyitásához.
-    1. Keresse meg az `oauth2AllowImplicitFlow` tulajdonságot. Állítsa az értékét `true` értékűre.
-    1. Kattintson a **Mentés** gombra a jegyzék mentéséhez.
-
-1. Biztosítson engedélyeket a bérlőben az alkalmazás számára. Lépjen a **Beállítások > Szükséges engedélyek** részre, és kattintson a felső sáv **Engedélyek megadása** gombjára.
+1. Kattintson a **alkalmazásregisztrációk**, majd válassza ki **új regisztrációs**.
+1. Ha a **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
+1. A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
+1. Válassza ki a **webes** platform alapján a **átirányítási URI-t** szakaszt, és állítsa az értékét `https://localhost:44326/` (azt a helyet, amelyhez Azure ad-ben jogkivonatokat ad vissza).
+1. Miután végzett, válassza a **Regisztrálás** lehetőséget. Az alkalmazás **áttekintése** lapon, jegyezze fel a **Alkalmazásazonosítót (ügyfél)** értéket.
+1. Az Adal.js az OAuth implicit folyamatát használja az Azure AD-vel folytatott kommunikációhoz. Az alkalmazás engedélyeznie kell az implicit folyamatot. A regisztrált alkalmazás bal oldali navigációs panelén válassza **hitelesítési**.
+1. A **speciális beállítások**alatt **típusú Implicit engedélyezés**, mindkettő engedélyezéséhez **azonosító-jogkivonatokat** és **hozzáférési jogkivonatokat** jelölőnégyzeteket. Azonosító-jogkivonatokat és hozzáférési tokenek szükség, mivel ez az alkalmazás a felhasználók és a egy API-t kell.
+1. Kattintson a **Mentés** gombra.
+1. Biztosítson engedélyeket a bérlőben az alkalmazás számára. Lépjen a **API-engedélyek**, és válassza ki a **biztosítson rendszergazdai jóváhagyás** gomb alatt **hozzájárulását**.
 1. Válassza az **Igen** lehetőséget a megerősítéshez.
 
 ## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>2. lépés: Adal-t telepítse és konfigurálja az egyoldalas alkalmazás

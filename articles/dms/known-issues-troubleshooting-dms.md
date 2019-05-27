@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 05/14/2019
-ms.openlocfilehash: dc8ba315d08f3a130ff0adf91afc90f545baf4e4
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 05/22/2019
+ms.openlocfilehash: 5a7c6c4553f46e8a7308995e05d6c06c0eb10f27
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604435"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002213"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Gyakori Azure Database Migration Service-problémák és hibák elhárítása
 
@@ -28,7 +28,7 @@ Az Azure Database Migration Service-projekt létrehozásakor új tevékenységek
 
 | Ok         | Feloldás |
 | ------------- | ------------- |
-| Ez a hiba akkor fordul elő, amikor az Azure Database Migration Service-példány elérte a maximális kapacitás, a folyamatban lévő feladatok, amelyek egy időben futnak. Minden olyan új tevékenység várólistára van állítva, a kapacitás amíg elérhetővé nem válik. | Ellenőrizze a Data Migration Service példányhoz tartozik a tevékenységek futtatása a projektek között. Továbbra is hozhat létre új tevékenységeket, amelyek automatikusan hozzáadja a végrehajtási várólistára. Amint a meglévő futó tevékenységek bármelyike befejezéséhez, a következő sorban álló tevékenység elindul, és állapotra vált, automatikusan futó állapotban. Nincs szükségünk, indítsa el áttelepítési sorban álló tevékenységek további teendője.<br> |
+| Ez a hiba akkor fordul elő, amikor az Azure Database Migration Service-példány elérte a maximális kapacitás, a folyamatban lévő feladatok, amelyek egy időben futnak. Minden olyan új tevékenység várólistára van állítva, a kapacitás amíg elérhetővé nem válik. | Ellenőrizze a Data Migration Service példányhoz tartozik a tevékenységek futtatása a projektek között. Továbbra is hozhat létre új tevékenységeket, amelyek automatikusan hozzáadja a végrehajtási várólistára. Amint a meglévő futó tevékenységek bármelyike befejezéséhez, a következő sorban álló tevékenység elindul, és állapotra vált, automatikusan futó állapotban. Nincs szükségünk, indítsa el áttelepítési sorban álló tevékenységek további teendője.<br><br> |
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>Migrálásra kijelölt adatbázisok maximális száma
 
@@ -48,7 +48,7 @@ Telepít át MySQL az Azure Database for MySQL, Azure Database Migration Service
 
 | Ok         | Feloldás |
 | ------------- | ------------- |
-| Ez a hiba akkor fordulhat elő, ha a felhasználó elvégezni a migrálást hiányzik a ReplicationAdmin szerepkörrel és/vagy jogosultságokkal replikációs ügyfél, a REPLIKÁCIÓ REPLIKA és a SUPER (MySQL 5.6.6 rendszernél korábbi verzió esetén).<br> <br><br><br> <br> <br> <br> <br> <br> <br> | Győződjön meg arról, hogy a [előfeltételként jogosultságokkal](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) a felhasználóhoz tartozó fiókot kell konfigurálni, pontosan az Azure Database for MySQL-példányt. Például a következő lépések szükséges jogosultságokkal rendelkező "migrateuser" nevű felhasználó létrehozásához:<br>1. FELHASZNÁLÓ létrehozása migrateuser@'% "azonosított szerint"secret"; <br>2. A "secret"; által azonosított migrateuser'@'% db_name.* az összes jogosultságok engedélyezése Ismételje meg ezt a lépést hozzáférést biztosít a több adatbázis <br>3. A Grant replikációs alárendelt *.* a "secret"; által azonosított migrateuser'@'%<br>4. Engedélyezés replikációs ügyfél *.* a "secret"; által azonosított migrateuser'@'%<br>5. Jogosultságok; ürítése |
+| Ez a hiba akkor fordulhat elő, ha a felhasználó a migrálás hiányzik a ReplicationAdmin szerepkörrel és/vagy jogosultságokkal replikációs ügyfél, a REPLIKÁCIÓ REPLIKA és a SUPER (MySQL 5.6.6 rendszernél korábbi verzió esetén).<br><br><br><br><br><br><br><br><br><br><br><br><br> | Győződjön meg arról, hogy a [előfeltételként jogosultságokkal](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) a felhasználóhoz tartozó fiókot kell konfigurálni, pontosan az Azure Database for MySQL-példányt. Például a következő lépések szükséges jogosultságokkal rendelkező "migrateuser" nevű felhasználó létrehozásához:<br>1. FELHASZNÁLÓ létrehozása migrateuser@'% "azonosított szerint"secret"; <br>2. A "secret"; által azonosított migrateuser'@'% db_name.* az összes jogosultságok engedélyezése Ismételje meg ezt a lépést hozzáférést biztosít a több adatbázis <br>3. A Grant replikációs alárendelt *.* a "secret"; által azonosított migrateuser'@'%<br>4. Engedélyezés replikációs ügyfél *.* a "secret"; által azonosított migrateuser'@'%<br>5. Jogosultságok; ürítése |
 
 ## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Azure Database Migration Service leállítására tett kísérlet közben hiba
 
@@ -68,7 +68,7 @@ Amikor egy online migrálás SQL Serverről az Azure SQL Database felügyelt pé
 
 | Ok         | Feloldás    |
 | ------------- | ------------- |
-| Ez a hiba azt jelzi, hogy az alkalmazás egyszerű használt online migrálás SQL Serverről az Azure SQL Database felügyelt példánya nem közreműködés engedélye az előfizetésben. Bizonyos API-hívások a felügyelt példány jelenleg ezt az engedélyt az előfizetés szükséges, a visszaállítási művelethez. <br><br><br><br><br><br><br><br><br><br> | Használja a `Get-AzureADServicePrincipal` PowerShell-parancsmagot `-ObjectId` érhető el a hibaüzenetben használt azonosító megjelenítendő nevét.<br><br> Ellenőrizze az engedélyeket ehhez az alkalmazáshoz, és ellenőrizze, rendelkezik-e a [közreműködői szerepkört](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) az előfizetés szintjén. <br><br> Az Azure Database áttelepítési Service mérnöki csapata dolgozik azon, hogy korlátozza a szükséges hozzáférést a jelenlegi közreműködés szerepkör az előfizetésben. Ha rendelkezik egy üzleti követelményt, nem engedélyezi a használatát közreműködés szerepkör, további segítségért forduljon az Azure ügyfélszolgálatához. |
+| Ez a hiba azt jelzi, hogy az alkalmazás egyszerű használt online migrálás SQL Serverről az Azure SQL Database felügyelt példánya nem közreműködés engedélye az előfizetésben. Bizonyos API-hívások a felügyelt példány jelenleg ezt az engedélyt az előfizetés szükséges, a visszaállítási művelethez. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Használja a `Get-AzureADServicePrincipal` PowerShell-parancsmagot `-ObjectId` érhető el a hibaüzenetben használt azonosító megjelenítendő nevét.<br><br> Ellenőrizze az engedélyeket ehhez az alkalmazáshoz, és ellenőrizze, rendelkezik-e a [közreműködői szerepkört](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) az előfizetés szintjén. <br><br> Az Azure Database áttelepítési Service mérnöki csapata dolgozik azon, hogy korlátozza a szükséges hozzáférést a jelenlegi közreműködés szerepkör az előfizetésben. Ha rendelkezik egy üzleti követelményt, nem engedélyezi a használatát közreműködés szerepkör, további segítségért forduljon az Azure ügyfélszolgálatához. |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Hiba történt, amikor az Azure Database Migration Service társított hálózati adapter törlése
 
@@ -78,7 +78,7 @@ Ha egy hálózati kártyát, Azure Database Migration Service társított törö
 
 | Ok         | Feloldás    |
 | ------------- | ------------- |
-| A hiba akkor fordul elő, amikor az Azure Database Migration Service-példány azonban továbbra is megtalálhatók és a hálózati adaptert. <br><br><br><br><br><br> | A hálózati adapter törléséhez törölje a DMS szolgáltatás példánya, amely automatikusan törli a szolgáltatás által használt hálózati Adapterhez.<br><br> **Fontos**: Ellenőrizze, hogy az Azure Database Migration Service-példány törlése folyamatban nem tartoznak futó tevékenységek.<br><br> A projektek és az Azure Database Migration Service-példányhoz tartozó tevékenységek törlését követően törölheti a szolgáltatáspéldányt. A szolgáltatáspéldány által használt hálózati Adapterhez automatikusan törlődik a szolgáltatás törlése során. |
+| A hiba akkor fordul elő, amikor az Azure Database Migration Service-példány azonban továbbra is megtalálhatók és a hálózati adaptert. <br><br><br><br><br><br><br><br> | A hálózati adapter törléséhez törölje a DMS szolgáltatás példánya, amely automatikusan törli a szolgáltatás által használt hálózati Adapterhez.<br><br> **Fontos**: Ellenőrizze, hogy az Azure Database Migration Service-példány törlése folyamatban nem tartoznak futó tevékenységek.<br><br> A projektek és az Azure Database Migration Service-példányhoz tartozó tevékenységek törlését követően törölheti a szolgáltatáspéldányt. A szolgáltatáspéldány által használt hálózati Adapterhez automatikusan törlődik a szolgáltatás törlése során. |
 
 ## <a name="connection-error-when-using-expressroute"></a>Kapcsolódási hiba ExpressRoute használata során
 
@@ -86,7 +86,7 @@ Próbál csatlakozni, az Azure Database Migration service-projekt varázsló a f
 
 | Ok         | Feloldás    |
 | ------------- | ------------- |
-| Használata esetén [ExpressRoute](https://azure.microsoft.com/services/expressroute/), Azure Database Migration Service [igényel](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) három szolgáltatásvégpontokat a virtuális hálózat alhálózatához társított a szolgáltatás kiépítése:<br> --Service Bus-végpont<br> – Storage-végpont<br> --Cél adatbázis végpont (például SQL-végpont, Cosmos-DB végpont)<br><br><br><br> | [Engedélyezése](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) a szükséges Szolgáltatásvégpontok az ExpressRoute-kapcsolat forrás- és az Azure Database Migration Service között. <br><br><br><br><br><br><br><br> |
+| Használata esetén [ExpressRoute](https://azure.microsoft.com/services/expressroute/), Azure Database Migration Service [igényel](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) három szolgáltatásvégpontokat a virtuális hálózat alhálózatához társított a szolgáltatás kiépítése:<br> --Service Bus-végpont<br> – Storage-végpont<br> --Cél adatbázis végpont (például SQL-végpont, Cosmos-DB végpont)<br><br><br><br><br> | [Engedélyezése](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) a szükséges Szolgáltatásvégpontok az ExpressRoute-kapcsolat forrás- és az Azure Database Migration Service között. <br><br><br><br><br><br><br><br> |
 
 ## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>Ha a MySQL-adatbázis áttelepítése az Azure-beli MySQL időtúllépési hiba
 
@@ -96,7 +96,17 @@ Amikor egy MySQL-adatbázist telepít át egy Azure Database for MySQL-példány
 
 | Ok         | Feloldás    |
 | ------------- | ------------- |
-| Ez a hiba akkor fordul elő, amikor az áttelepítés meghiúsul, a zárolás várakozási időtúllépés miatt áttelepítés során.<br><br> | Érdemes növelni a kiszolgáló paraméterének értéke **"innodb_lock_wait_timeout"**. A legnagyobb megengedett értéke 1073741824. |
+| Ez a hiba akkor fordul elő, amikor az áttelepítés meghiúsul, a zárolás várakozási időtúllépés miatt áttelepítés során. | Érdemes növelni a kiszolgáló paraméterének értéke **"innodb_lock_wait_timeout"**. A legnagyobb megengedett értéke 1073741824. |
+
+## <a name="error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance"></a>Hiba történt a forrás SQL-kiszolgáló csatlakozik, a dinamikus port használata esetén, vagy a megnevezett példány
+
+Ha az SQL Server-forrás, amely megnevezett példányt vagy a dinamikus port futtat az Azure Database Migration Service csatlakozni próbál, a kapcsolat a hibaüzenettel meghiúsul:
+
+* **Hiba**: -1 – sikertelen SQL-kapcsolat. Hálózattal kapcsolatos vagy példányspecifikus hiba történt az SQL Serverhez való kapcsolódás során. A kiszolgáló nem található vagy nem érhető el. Győződjön meg arról, hogy a példány neve helyesen-e, és, hogy az SQL Server konfigurálva van-e távoli kapcsolatok lehetővé tételéhez. (szolgáltató: SQL hálózati adapterek, hiba: 26 - Server/példány a megadott megkeresése hiba)
+
+| Ok         | Feloldás    |
+| ------------- | ------------- |
+| A hiba akkor fordul elő, ha a forrás SQL Server-példány, Azure Database Migration Service megpróbál csatlakozni a dinamikus port van, vagy egy megnevezett példányt használ. Az SQL Server Browser szolgáltatás figyeli az 1434-es UDP-port bejövő kapcsolatokhoz egy megnevezett példányt, vagy amikor a dinamikus portot használ. A dinamikus port módosítható minden alkalommal, amikor az SQL Server szolgáltatás újraindul. A dinamikus port keresztül a hálózati konfigurációt az SQL Server Configuration Manager-példány rendelt ellenőrizheti.<br><br><br> |Győződjön meg arról, hogy az Azure Database Migration Service képes csatlakozni a forrás SQL Server Browser szolgáltatás az 1434-es UDP-portot és az SQL Server-példány megfelelő dinamikusan hozzárendelt TCP-porton keresztül. |
 
 ## <a name="additional-known-issues"></a>További ismert problémák
 

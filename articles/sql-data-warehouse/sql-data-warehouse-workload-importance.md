@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c26bca66b0f82ea58d01d0eb8358f521168a799
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 92990b68969e754ee126b6cd5a22ecfa700c0494
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154139"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002885"
 ---
 # <a name="sql-data-warehouse-workload-importance"></a>Az SQL Data Warehouse számítási feladatok fontossági
 
@@ -61,4 +61,8 @@ Mivel az 5. kérdés mediumrc, két egyidejű helyet foglalnak le van szükség.
 
 ## <a name="next-steps"></a>További lépések
 
-Első lépésként létrehozhat egy osztályozó, tekintse meg a [MUNKATERHELÉS OSZTÁLYOZÓ létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Az SQL Data Warehouse számítási feladatok besorolási kapcsolatos további információkért lásd: [SQL Warehouse számítási feladatok az Adatbesorolás](sql-data-warehouse-workload-classification.md).  Tekintse meg a rövid útmutatóban egy számítási feladat osztályozó létrehozása [hozzon létre egy számítási feladat osztályozó](quickstart-create-a-workload-classifier-tsql.md). Lásd: [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) a lekérdezések és a hozzárendelt fontosságát.
+- Besorolás létrehozásával kapcsolatos további információkért lásd: a [MUNKATERHELÉS OSZTÁLYOZÓ létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
+- Az SQL Data Warehouse számítási feladatok besorolási kapcsolatos további információkért lásd: [munkaterhelés besorolási](sql-data-warehouse-workload-classification.md).  
+- Tekintse meg a rövid útmutatóban [munkaterhelés-osztályozó létrehozása](quickstart-create-a-workload-classifier-tsql.md) a számítási feladatok besorolás létrehozása.
+- Tekintse meg az útmutatók a [konfigurálása számítási feladatok fontossági](sql-data-warehouse-how-to-configure-workload-importance.md) és annak [kezelése és megfigyelése számítási feladatok kezeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Lásd: [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) a lekérdezések és a hozzárendelt fontosságát.

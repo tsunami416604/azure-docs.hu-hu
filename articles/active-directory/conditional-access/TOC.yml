@@ -19,8 +19,8 @@
 - name: Alapelvek
   expanded: false
   items:
-    - name: Alapvető védelem
-      href: baseline-protection.md
+    - name: Alapvető védelmi szabályzatok
+      href: concept-baseline-protection.md
     - name: Feltételek
       href: conditions.md
     - name: Helyfeltételek
@@ -38,6 +38,16 @@
       href: plan-conditional-access.md
     - name: Ajánlott eljárások
       href: best-practices.md
+    - name: Alapvető szabályzatok
+      items:
+        - name: MFA megkövetelése rendszergazdáktól
+          href: howto-baseline-protect-administrators.md
+        - name: Végfelhasználók védelme
+          href: howto-baseline-protect-end-users.md
+        - name: Régi hitelesítési folyamat letiltása
+          href: howto-baseline-protect-legacy-auth.md
+        - name: MFA megkövetelése szolgáltatáskezeléshez
+          href: howto-baseline-protect-azure.md
     - name: Régi hitelesítési folyamat letiltása
       href: block-legacy-authentication.md
     - name: Klasszikus szabályzatok migrálása

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: absha
-ms.openlocfilehash: 89df3a981ba3710e848f834c303772e94e10b139
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: ebb14d97273851585e491e3bcd36f776ec9b61b4
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947179"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000975"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Az Application Gateway HTTP-fejlécek újraírása
 
@@ -69,7 +69,7 @@ Az Application gateway támogatja a kiszolgáló változókat:
 | client_port                | Az ügyfél-portot.                                                  |
 | client_tcp_rtt             | Információ arról, hogy az ügyfél a TCP-kapcsolat. A rendszer támogatja a TCP_INFO szoftvercsatorna-lehetőség érhető el. |
 | client_user                | HTTP-hitelesítés használata esetén a felhasználó nevét megadva, a hitelesítéshez. |
-| gazdagép                       | Ebben a sorrendben elsőbbségi: az állomás nevét a kérelem-sor, a kérelem fejléc Host mezője állomás nevét vagy a kiszolgáló neve egyezik a kérelem. |
+| host                       | Ebben a sorrendben elsőbbségi: az állomás nevét a kérelem-sor, a kérelem fejléc Host mezője állomás nevét vagy a kiszolgáló neve egyezik a kérelem. |
 | cookie_*name*              | A *neve* cookie-t.                                            |
 | http_method                | a módszer, hogy az URL-cím kérésére. Ha például beolvasása, vagy OSSZA meg. |
 | http_status                | A munkamenet-állapot. Ha például 200-as, 400-as vagy 403-as.                       |
@@ -157,9 +157,7 @@ Egy HTTP- kérés fejlécében vagy kiszolgálói változó meglétének fejléc
 
 - A fejlécnevek tartalmazhat bármilyen alfanumerikus karaktereket és az adott szimbólumok meghatározott [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Jelenleg nem támogatottak az aláhúzás (\_) fejléc neve speciális karaktert.
 
-## <a name="need-help"></a>Segítség
-
-Írjon nekünk az [ AGHeaderRewriteHelp@microsoft.com ](mailto:AGHeaderRewriteHelp@microsoft.com) Ha ezzel a funkcióval segítségre van szüksége.
+- Ha választ ugyanazzal a névvel több fejlécek, újraírásával ezeket a fejléceket egyik értékét eredményez a többi fejlécek elvetését a válaszban.
 
 ## <a name="next-steps"></a>További lépések
 

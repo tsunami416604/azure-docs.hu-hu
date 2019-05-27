@@ -185,7 +185,7 @@ Adatok másolása a Salesforce-ból, állítsa a forrás típusaként a másolá
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása típusa tulajdonságát állítsa **SalesforceSource**. | Igen |
-| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. Használhat [Salesforce objektum Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) vagy SQL-92 lekérdezés. Tekintse meg a további tippek [lekérdezési tippek](#query-tips) szakaszban. Lekérdezés nem ad meg, ha a rendszer lekéri az "objectApiName" adatkészletben megadott Salesforce-objektum az adatokat. | Nem (ha az adatkészlet "objectApiName" van megadva) |
+| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. Használhat [Salesforce objektum Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) vagy SQL-92 lekérdezés. Tekintse meg a további tippek [lekérdezési tippek](#query-tips) szakaszban. Lekérdezés nem ad meg, ha a rendszer lekéri az "objectApiName" adatkészletben megadott Salesforce-objektum az adatokat. | Nem (ha az adatkészlet "objectApiName" van megadva) |
 | readBehavior | Azt jelzi, hogy a meglévő rekordok lekérdezése, vagy lekérdezheti az összes rekord törölve azokat is beleértve. Ha nincs megadva, a korábbi az alapértelmezett viselkedést. <br>Megengedett értékek: **lekérdezés** (alapértelmezett), **queryAll**.  | Nem |
 
 > [!IMPORTANT]

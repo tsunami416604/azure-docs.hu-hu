@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b051f844b8c221e2e53c5fcf204878f80447cfe8
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 26935b53d8f852289513a5a7b5d31e3befe3e3b2
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596579"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002252"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Lucene lekérdezési szintaxis az Azure Search szolgáltatásban
 Azure Search-lekérdezéseket a gazdag alapján írhat [Lucene lekérdezéselemző](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) Forms speciális lekérdezési szintaxis: helyettesítő karakter, intelligens keresést, közelségi keresésre, reguláris kifejezések összefűzése néhány példa. Nagy része a Lucene lekérdezéselemző szintaxist [átvenni megvalósítása az Azure Search](search-lucene-query-architecture.md), kivéve a *keresések tartomány* az Azure Search révén kialakítani, amely `$filter` kifejezéseket. 
@@ -79,7 +79,7 @@ A fenti példában a hullámos vonallal (~), de ugyanaz az elv érvényes az min
  Speciális karaktereket a keresési szöveget részeként használandó kell megjelölni. A fordított perjel előtaggal azokat is formában (\\). Escape-karakterrel kell igénylő speciális karakterek a következők:  
 `+ - && || ! ( ) { } [ ] ^ " ~ * ? : \ /`  
 
- Például egy helyettesítő karaktert használja \\*.
+ Például egy helyettesítő karaktert használja \\ \*.
 
 ### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>Az URL-címek nem biztonságos és fenntartott karakterek kódolása
 

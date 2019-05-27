@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/22/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0cc00b4f2075ba77490d310080b9968bedb8dc1f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cc3307a4f32d77b9b8d259ac846c4db1c1ae4a99
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701762"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002514"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Egy Windows hibrid Runbook-feldolgozó üzembe helyezése
 
@@ -60,8 +60,10 @@ A következő lépésekkel automatizálhatja a telepítés és konfigurálás Wi
    * *SubscriptionID* (mandatory): Az Azure-előfizetés azonosítója, amely az Automation-fiókot.
    * *WorkspaceName* (nem kötelező): A Log Analytics-munkaterület nevét. Ha nem rendelkezik a Log Analytics-munkaterületen, a parancsfájl létrehozza, és konfigurál egyet.
 
-     > [!NOTE]
-     > Az integráció az Azure Monitor naplóira támogatott csak Automation régiók jelenleg **Délkelet-Ausztrália**, **USA keleti RÉGIÓJA 2**, **Délkelet-Ázsia**, és **Nyugat-Európa**. Ha az Automation-fiók nem ezen régiók egyikében, a parancsfájl egy Log Analytics-munkaterületet hoz létre, de figyelmeztetést jelenít meg, hogy azt nem kapcsolja őket össze.
+   > [!NOTE]
+   > A megoldások engedélyezésekor csak bizonyos régiók esetén lehet összekapcsolni egy Log Analytics-munkaterületet és egy Automation-fiókot.
+   >
+   > A támogatott leképezés párok listáját lásd: [régió hozzárendelése Automation-fiók és a Log Analytics-munkaterület](how-to/region-mappings.md).
 
 2. Nyissa meg a számítógépen, **Windows PowerShell** származó a **Start** képernyő rendszergazdai módban.
 3. A PowerShell parancssori rendszerhéjból keresse meg a letöltött szkript tartalmazó mappát. Módosítsa az értékeket a paraméterekhez *– AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, és *- WorkspaceName*. Ezután futtassa a szkriptet.

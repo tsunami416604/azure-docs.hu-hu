@@ -46,7 +46,7 @@ Oracle Eloqua társított szolgáltatás a következő tulajdonságok támogatot
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Eloqua** | Igen |
 | endpoint | A végpont a Eloqua kiszolgáló. Eloqua támogatja, több adatközpontot, határozza meg a végpont, jelentkezzen be a https://login.eloqua.com a hitelesítő adataival, majd másolja a **alap URL** részen található mintát követik az átirányított URL-CÍMÉT `xxx.xxx.eloqua.com`. | Igen |
-| username | A hely neve és a képernyőn a Eloqua fiók felhasználóneve: `SiteName\Username` például `Eloqua\Alice`.  | Igen |
+| felhasználónév | A hely neve és a képernyőn a Eloqua fiók felhasználóneve: `SiteName\Username` például `Eloqua\Alice`.  | Igen |
 | password | A felhasználónévhez tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Megadja a kiszolgálói tanúsítvány a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik az állomás neve kötelező legyen-e. Az alapértelmezett érték: igaz.  | Nem |
@@ -109,7 +109,7 @@ Oracle Eloqua adatmásolás, állítsa be a forrás típusaként a másolási te
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **EloquaSource** | Igen |
-| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Accounts"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Accounts"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
