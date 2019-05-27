@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62108293"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66166070"
 ---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>Sablonok virtuális gép címkézése
 Először is lássuk a sablonokban történő címkézése. [Ez a sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) címkék helyez el az alábbi forrásanyagokat: (Virtuális gép) számítási, tárolási (Tárfiók), és (nyilvános IP-cím, virtuális hálózatot és hálózati adapter). Ez a sablon egy Windows virtuális gép számára, de alkalmazható Linux rendszerű virtuális gépekhez.

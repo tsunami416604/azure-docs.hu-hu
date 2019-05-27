@@ -14,11 +14,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: 7287dc2fccf461cf23c45202336e3d92bc5a40aa
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259703"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66153020"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Futtassa a Azure Data Factory SSIS-csomag végrehajtása tevékenysége egy SSIS-csomag
 Ez a cikk ismerteti, hogyan futtathat egy SSIS-csomag az Azure Data Factory (ADF) folyamat az SSIS-csomag végrehajtása tevékenységek segítségével. 

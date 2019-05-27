@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 88b3ffa38eb42eef42c98920b2c3193661b1c0f5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 2c9682746201306f1b99a04462819618225caa11
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236168"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66164266"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Oktatóanyag: Bérlő létrehozása a Windows virtuális asztal előzetes verzióban érhető el
 
@@ -114,7 +114,7 @@ Ezt követően hozzon létre egy új Windows virtuális asztal bérlőhöz társ
 New-RdsTenant -Name <TenantName> -AadTenantId <DirectoryID> -AzureSubscriptionId <SubscriptionID>
 ```
 
-A zárójeles értékek le kell cserélni, a szervezet és a bérlői megfelelő értékeket. Például tegyük fel, Ön a Windows virtuális asztal TenantCreator a Contoso szervezet számára. A következő parancsot kellene futtatnia parancsmag kellene kinéznie:
+A zárójeles értékek le kell cserélni, a szervezet és a bérlői megfelelő értékeket. Új virtuális asztali Windows-bérlője számára választott névnek globálisan egyedinek kell lennie. Például tegyük fel, Ön a Windows virtuális asztal TenantCreator a Contoso szervezet számára. A következő parancsot kellene futtatnia parancsmag kellene kinéznie:
 
 ```powershell
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999

@@ -1,10 +1,15 @@
 ---
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: clemensv
 ms.openlocfilehash: 9d4f7faa18ee7fae158afb42b8c42287e61dd103
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553862"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150350"
 ---
 ### <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
 
@@ -15,6 +20,7 @@ Hozzon létre egy `sender.js` nevű JavaScript-fájlt.
 Futtassa az `npm install hyco-ws` parancsot a projektmappában lévő Csomópont parancssorból.
 
 ### <a name="write-some-code-to-send-messages"></a>Írjon egy kódrészletet üzenetek küldéséhez
+
 1. Adja hozzá a következő `constants` utasítást a `sender.js` fájl elejéhez.
    
     ```js

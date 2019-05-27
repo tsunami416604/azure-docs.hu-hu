@@ -2,21 +2,19 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: cosmos-db
-author: rockboyfor
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-origin.date: 04/13/2018
-ms.date: 03/18/2019
-ms.author: v-yeche
+ms.date: 04/13/2018
+ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 9800848b24523a0eb5992e64ce1580cc53b0e3a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60891516"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151457"
 ---
-<!--Verify sucessfully-->
 Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozására is használhatja. 
 
 1. Kattintson az **Adatkezelő** > **Új gráf** lehetőségre.
@@ -35,7 +33,3 @@ Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozás
     Teljesítmény|400 kérelemegység|Módosítsa a teljesítményt másodpercenként 400 kérelemegységre (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
 
 3. Miután kitöltötte az űrlapot, kattintson az **OK** elemre.
-
-<!--Verify sucessfully-->
-<!--Update_Description: new articles on  -->
-<!--ms.date: 03/18/2019-->

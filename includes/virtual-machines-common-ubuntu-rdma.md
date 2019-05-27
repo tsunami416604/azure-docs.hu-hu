@@ -1,10 +1,15 @@
 ---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
 ms.openlocfilehash: 9a5a2d92f70c411c46ebb4efb35e17e9b0c477ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542261"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66161597"
 ---
 1. Dapl, rdmacm, ibverbs és mlx4 telepítése
 
@@ -12,10 +17,11 @@ ms.locfileid: "60542261"
    sudo apt-get update
 
    sudo apt-get install libdapl2 libmlx4-1
+
    ```
 
 2. Az /etc/waagent.conf engedélyezéséhez rdma-t a következő konfigurációs sorok uncommenting. Ez a fájl szerkesztése a legfelső szintű hozzáférésre van szüksége.
-
+  
    ```
    OS.EnableRDMA=y
 
@@ -29,20 +35,19 @@ ms.locfileid: "60542261"
 
    <User or group name> soft    memlock <memory required for your application in KB>
    ```
-
+  
 4. Telepítse az Intel MPI-könyvtár. Bármelyik [vásárol, és töltse le](https://software.intel.com/intel-mpi-library/) Intel és a letöltés a kódtárat a [ingyenes próbaverzió](https://registrationcenter.intel.com/en/forms/?productid=1740).
 
    ```bash
    wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
    ```
-
+ 
    Csak az Intel MPI 5.x modulok támogatottak.
-
+ 
    A telepítés lépéseit, tekintse meg a [Intel MPI könyvtár telepítési útmutató](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html).
 
 5. Engedélyezze a ptrace nem gyökér nem hibakereső folyamatok (Intel MPI legújabb verziója szükséges).
-
+ 
    ```bash
    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
    ```
-   <!--ms.date: 07/30/2018-->

@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245949"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66167275"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Az Azure Logic Apps egyéni API-k biztonságos hívások
 
@@ -188,13 +188,13 @@ Nyissa meg a logikai alkalmazás definíciójának kódnézetben, nyissa meg a *
 
 `{"tenant": "{tenant-ID}", "audience": "{client-ID-from-Part-2-web-app-or-API app}", "clientId": "{client-ID-from-Part-1-logic-app}", "secret": "{key-from-Part-1-logic-app}", "type": "ActiveDirectoryOAuth" }`
 
-| Elem | Szükséges | Leírás | 
+| Elem | Kötelező | Leírás | 
 | ------- | -------- | ----------- | 
-| bérlő | Igen | Az Azure AD-bérlő GUID azonosítója | 
+| tenant | Igen | Az Azure AD-bérlő GUID azonosítója | 
 | Célközönség | Igen | A globálisan egyedi Azonosítót a célként megadott erőforrás, amely szeretné elérni, amely az alkalmazás azonosítóját a webalkalmazás vagy API-alkalmazás az ügyfél-azonosítója | 
 | clientId | Igen | A globálisan egyedi Azonosítót, az ügyfél hozzáférést igényelnek, ami az identitása a logikai alkalmazás az ügyfél-azonosítója | 
-| titkos kód | Igen | Kulcs vagy jelszó, az ügyfél, amely a hozzáférési jogkivonatot kér az alkalmazás azonosítója | 
-| type | Igen | A hitelesítési típus. A ActiveDirectoryOAuth hitelesítéshez, az értéke `ActiveDirectoryOAuth`. | 
+| titkos | Igen | Kulcs vagy jelszó, az ügyfél, amely a hozzáférési jogkivonatot kér az alkalmazás azonosítója | 
+| típus | Igen | A hitelesítési típus. A ActiveDirectoryOAuth hitelesítéshez, az értéke `ActiveDirectoryOAuth`. | 
 |||| 
 
 Példa:
@@ -236,8 +236,8 @@ Az a **engedélyezési** szakaszban, ezt a sort:
 
 | Elem | Szükséges | Leírás | 
 | ------- | -------- | ----------- | 
-| type | Igen | A hitelesítési típus. Az ügyfél SSL-tanúsítványok, az értéknek kell lennie `ClientCertificate`. | 
-| jelszó | Igen | A jelszót az ügyféltanúsítvány (PFX-fájl) eléréséhez | 
+| típus | Igen | A hitelesítési típus. Az ügyfél SSL-tanúsítványok, az értéknek kell lennie `ClientCertificate`. | 
+| password | Igen | A jelszót az ügyféltanúsítvány (PFX-fájl) eléréséhez | 
 | pfx | Igen | A base64-kódolású tartalmak az ügyféltanúsítvány (PFX-fájl) | 
 |||| 
 
@@ -251,11 +251,11 @@ Az a **engedélyezési** szakaszban, ezt a sort:
 
 `{"type": "basic", "username": "username", "password": "password"}`.
 
-| Elem | Szükséges | Leírás | 
+| Elem | Kötelező | Leírás | 
 | ------- | -------- | ----------- | 
-| type | Igen | A hitelesítési típus, amelyet használni szeretne. Az alapszintű hitelesítés, az értéknek kell lennie `Basic`. | 
-| felhasználónév | Igen | A hitelesítéshez használni kívánt felhasználónevet | 
-| jelszó | Igen | A hitelesítéshez használni kívánt jelszót | 
+| típus | Igen | A hitelesítési típus, amelyet használni szeretne. Az alapszintű hitelesítés, az értéknek kell lennie `Basic`. | 
+| username | Igen | A hitelesítéshez használni kívánt felhasználónevet | 
+| password | Igen | A hitelesítéshez használni kívánt jelszót | 
 |||| 
 
 <a name="azure-ad-code"></a>

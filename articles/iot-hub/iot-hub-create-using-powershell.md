@@ -8,18 +8,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
-ms.openlocfilehash: 6462673f6c3992aacbaee168eafc6bdb1b2fa944
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fd376728a1ebdf769c7f2ae76d61a60703e13711
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733470"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66146611"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>A New-AzIotHub parancsmaggal IoT hub létrehozása
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Bemutatás
 
 Azure PowerShell-parancsmagok segítségével létrehozása és kezelése az Azure IoT-központokat. Ez az oktatóanyag bemutatja, hogyan az IoT hub létrehozása a PowerShell használatával.
 

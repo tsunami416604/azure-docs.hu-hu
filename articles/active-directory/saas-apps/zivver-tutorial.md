@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 95cabef1705cf09f165c1e5ce4434d2c0be61abf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 51db52d5a5bfef6ef5a34fa9a0877516d5786236
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729025"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66143187"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ZIVVER
 
@@ -115,7 +115,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ZIVVER, hajtsa végr
 
     | Name (Név) | Névtér | Adatforrás-attribútum|
     | ---------------| --------------- |
-    | ZivverAccountKey | https://zivver.com/SAML/Attributes | user.objectid |
+    | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | user.objectid |
 
     >[!NOTE]
     >Ha egy hibrid telepítés használ a helyszíni Active Directory és az Azure AD Connect eszközzel, értéket kell állítani `user.objectGUID`
@@ -220,7 +220,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű ZIVVER hoz létre. Együttműködve [ZIVVER támogatási csoportjának](https://support.zivver.com/) a felhasználók hozzáadása az ZIVVER platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

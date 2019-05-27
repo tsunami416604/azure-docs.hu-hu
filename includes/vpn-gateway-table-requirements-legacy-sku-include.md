@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d8091fdade9cd417af58755d8245c2fb091b86b3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5b9e036816aa532d32b1b4305ef6ae646ae05bae
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197193"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159257"
 ---
-A következő táblázat PolicyBased és RouteBased VPN-átjáró rendszerkövetelményeit sorolja fel. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes. A Klasszikus modell PolicyBased VPN gatewayek ugyanazok, mint statikus átjárók, és útválasztó-alapú gatewayek ugyanazok, mint a dinamikus átjárók.
+A következő táblázat felsorolja a házirendalapú és Útvonalalapú VPN-átjárók követelményei. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes. A klasszikus modellt a házirendalapú VPN gatewayek ugyanazok, mint statikus átjárókhoz, és az útvonalalapú átjárók ugyanazok, mint a dinamikus átjárók.
 
-|  | **PolicyBased alapszintű VPN Gateway** | **RouteBased alapszintű VPN Gateway** | **RouteBased Standard VPN Gateway** | **RouteBased nagy teljesítményű VPN Gateway** |
+|  | **Házirendalapú alapszintű VPN Gateway** | **Alapszintű Útvonalalapú VPN-átjáró** | **Standard Útvonalalapú VPN-átjáró** | **Útvonalalapú nagy teljesítményű VPN Gateway** |
 | --- | --- | --- | --- | --- |
-| **Pont-pont kapcsolat (S2S)** |PolicyBased VPN-konfiguráció |RouteBased VPN-konfiguráció |RouteBased VPN-konfiguráció |RouteBased VPN-konfiguráció |
+| **Helyek közötti kapcsolat (S2S)** |Házirendalapú VPN-konfiguráció |Útvonalalapú VPN-konfiguráció |Útvonalalapú VPN-konfiguráció |Útvonalalapú VPN-konfiguráció |
 | **Pont–hely típusú kapcsolat (P2S**) |Nem támogatott |Támogatott (párhuzamosan használható az S2S mellett) |Támogatott (párhuzamosan használható az S2S mellett) |Támogatott (párhuzamosan használható az S2S mellett) |
 | **Hitelesítési módszer** |Előre megosztott kulcs |Előre megosztott kulcs S2S-kapcsolatokhoz, tanúsítvány P2S-kapcsolatokhoz |Előre megosztott kulcs S2S-kapcsolatokhoz, tanúsítvány P2S-kapcsolatokhoz |Előre megosztott kulcs S2S-kapcsolatokhoz, tanúsítvány P2S-kapcsolatokhoz |
-| **S2S-kapcsolatok maximális száma** |1 |10 |10 |30 |
+| **S2S-kapcsolatok maximális száma** |1. |10 |10 |30 |
 | **P2S-kapcsolatok maximális száma** |Nem támogatott |128 |128 |128 |
 | **Aktív útválasztás-támogatás (BGP)** |Nem támogatott |Nem támogatott |Támogatott |Támogatott |

@@ -2,19 +2,19 @@
 title: Oktatóanyag – Linux rendszerű virtuális gép és a egy Python-alkalmazás használatával az Azure Key Vaultban titkos kulcsok tárolására |} A Microsoft Docs
 description: Ebben az oktatóanyagban elsajátíthatja, hogyan konfigurálhatja egy Python-alkalmazást az Azure Key vault titkos olvasásához.
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: a5923c3d5ea7888a3737d7976caded8eef9c1661
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e5fbb4e6f6599d8f9560561fc219dbf57ac0cee1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702105"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "66147756"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: Linux rendszerű virtuális gép és a egy Python-alkalmazás titkos kulcsok tárolására az Azure Key Vault használatával
 
@@ -25,7 +25,7 @@ Ebben az oktatóanyagban beállította egy Azure-webalkalmazás Azure-Kulcstart�
 > [!div class="checklist"]
 > * Kulcstartó létrehozása
 > * A key vaultban lévő titkos Store
-> * Linuxos virtuális gép létrehozása
+> * Linux rendszerű virtuális gép létrehozása
 > * Engedélyezze a [identitás](../active-directory/managed-identities-azure-resources/overview.md) a virtuális gép
 > * A szükséges a Konzolalkalmazás adatokat olvasni a key vault-engedélyek megadására
 > * A key vault titkos kulcs lekérése
@@ -95,7 +95,7 @@ Egy titkos kulcs hozzáadásával mutatjuk be ennek működését. Érdemes tár
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
+## <a name="create-a-linux-virtual-machine"></a>Linux rendszerű virtuális gép létrehozása
 
 A virtuális gép létrehozása a `az vm create` parancsot.
 
@@ -148,7 +148,7 @@ Jegyezze fel a `systemAssignedIdentity`. Használhatja azt a következő lépés
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>A virtuális gép identitása engedélyt ad a Key Vault
 
-Most már engedélyt adhat a Key Vault létrehozott identitásra. Futtassa az alábbi parancsot:
+Most már engedélyt adhat a Key Vault létrehozott identitásra. Futtassa a következő parancsot:
 
 ```azurecli-interactive
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list

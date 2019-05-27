@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 19ad4e39ca4e402c37b2cfa69c7c306b6e5a2766
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60407677"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170088"
 ---
 1. Keresse meg, és nyissa meg a virtuális hálózati átjáró lapját. A panelt többféleképpen is megtalálhatja. A VNet1GW átjáróhoz a következő módon navigálhat: **TestVNet1 -> Áttekintés -> Csatlakoztatott eszközök -> VNet1GW**.
 2. A VNet1GW lapon kattintson a **Kapcsolatok** elemre. A Kapcsolatok lapon kattintson a **+Hozzáadás** elemre a **Kapcsolat hozzáadása** lap megnyitásához.

@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre és regisztrálja a munkaterület adatkészletek
+title: Az azureml-adatkészletek adatokhoz való hozzáférést-adatkészletek létrehozása
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan különböző forrásokból származó adatkészletek létrehozása, és regisztrálja a munkaterület adatkészletek
 services: machine-learning
@@ -10,34 +10,59 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/02/19
-ms.openlocfilehash: d3502219f03d4ad076a693ab990f2fadb0b5d558
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 05/21/2019
+ms.openlocfilehash: 949468dfe26b076b5c5cf5cab8bbdc2038c7bd2a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800827"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165883"
 ---
-# <a name="create-and-register-azure-machine-learning-datasets-preview"></a>Hozzon létre és regisztrálja az Azure Machine Learning-adatkészletek (előzetes verzió)
+# <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Hozzon létre, és az Azure Machine Learning (előzetes verzió) adatkészletek elérése
 
-Ez a cikk bemutatja az Azure Machine Learning a munkafolyamatok létrehozását és regisztrálását az adatkészleteket, és hogyan érheti el őket újból a helyi és távoli kísérletek között.
+Ebből a cikkből megismerheti, hogyan hozhat létre az Azure Machine Learning-adatkészletek (előzetes verzió) és az adatok elérése a helyi és távoli kísérletek.
 
-Az Azure Machine Learning-adatkészletek (előzetes verzió) egyszerűbbé eléréséhez, és dolgozhat az adatokkal. Az adatkészletek különböző alkalmazási helyzetekben, mint például a modellek tanítása és folyamat létrehozása adatok kezelésére. Használatával a [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), is adatok népszerű formátumok használata, alapul szolgáló tároló eléréséhez, ismerje meg, és előkészíti az adatokat, különböző adatkészlet-definíciókban életciklusának kezelése és hasonlítsa össze a használt adatkészletek között képzés és éles környezetben.
+A felügyelt adatkészletek segítségével: 
+* **Könnyen hozzáférhet az adatokhoz a modell betanítása közben** alapul szolgáló adattárak újracsatlakozás nélkül
+
+* **Győződjön meg arról, az adatkonzisztencia és megismételhetőség** kísérletek között ugyanazon mutató használatával: notebookok, automatizált ml, a folyamatok, vizuális felhasználói felületet
+
+* **Adatok megosztása és együttműködés** más felhasználókkal
+
+* **Adatok feltárása** & adatok pillanatképeinek és verziói életciklusának kezelése
+
+* **Hasonlítsa össze az adatokat** éles képzés
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Létrehozására és regisztrálására adatkészletek lesz szüksége:
+Hozhat létre és adatkészletekkel működnek együtt lesz szüksége:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Az Azure Machine Learning szolgáltatás munkaterületén. Lásd: [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
+* Egy [Azure Machine Learning szolgáltatás munkaterületet az Azure Machine Learning szolgáltatás munkaterület](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)
 
-* Az Azure Machine Learning SDK Pythonhoz készült. Telepíteni, vagy frissítsen az SDK legújabb verzióját, lásd: [telepítése vagy frissítése az SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* A [Azure Machine Learning SDK telepítve van a Pythonhoz készült](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), amely tartalmazza az azureml-adatkészletek csomagot.
 
 > [!Note]
 > Néhány adatkészlet osztályok (előzetes verzió) függőségekkel rendelkezik a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomag (elérhetővé tétel GA). A Linux-felhasználók ezeket az osztályokat csak a következő disztribúciók a támogatják:  Red Hat Enterprise Linux, Ubuntu, Fedora, and CentOS.
 
-## <a name="create-datasets-from-local-files"></a>A helyi fájlokból-adatkészletek létrehozása
+## <a name="data-formats"></a>Adatformátumok a célnyelven
+
+Az Azure Machine Learning-adatkészlet hozhat létre a következő adatokat:
++ [delimited](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-delimited-files-path--separator------header--promoteheadersbehavior-allfileshavesameheaders--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-norows--0---comment-none--include-path-false--archive-options-none-)
++ [Bináris](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-binary-files-path-)
++ [json](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-json-files-path--encoding--fileencoding-utf8--0---flatten-nested-arrays-false--include-path-false-)
++ [Excel](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-excel-files-path--sheet-name-none--use-column-headers-false--skip-rows-0--include-path-false--infer-column-types-true-)
++ [Parquet eszközökben](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-parquet-files-path--include-path-false-)
++ [Azure SQL Database](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
++ [Azure Data Lake gen. 1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
+
+## <a name="create-datasets"></a>Adatkészletek létrehozása 
+
+Az azureml-adatkészletek csomaggal, az adatkészletek kezelheti a [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) és kifejezetten [a `Dataset` osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py).
+
+### <a name="create-from-local-files"></a>A helyi fájlok létrehozása
 
 A helyi gépen a fájl vagy mappa elérési út megadásával betölteni a [ `auto_read_files()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#auto-read-files-path--include-path-false-) módszerrel a `Dataset` osztály.  Ez a módszer akkor adja meg a fájl típusa és elemzési argumentumok nélkül hajtja végre az alábbi lépéseket:
 
@@ -52,13 +77,14 @@ from azureml.core.dataset import Dataset
 dataset = Dataset.auto_read_files('./data/crime.csv')
 ```
 
-Másik lehetőségként a fájl-specifikus függvények használatával explicit módon vezérelheti a fájl elemzése. Jelenleg az adatkészletek SDK támogatja a [tagolt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-delimited-files-path--separator------header--promoteheadersbehavior-allfileshavesameheaders--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-norows--0---comment-none--include-path-false--archive-options-none-), [Excel](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-excel-files-path--sheet-name-none--use-column-headers-false--skip-rows-0--include-path-false--infer-column-types-true-), [Parquet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-parquet-files-path--include-path-false-), [bináris](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-binary-files-path-), és [json](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-json-files-path--encoding--fileencoding-utf8--0---flatten-nested-arrays-false--include-path-false-) fájlformátum.
+Másik lehetőségként a fájl-specifikus függvények használatával explicit módon vezérelheti a fájl elemzése. 
 
-## <a name="create-datasets-from-azure-datastores"></a>Az Azure adattárainak-adatkészletek létrehozása
 
-Egy Azure adattárolója adatkészleteket létrehozni, hogy ne felejtse el:
+### <a name="create-from-azure-datastores"></a>Az Azure adattárainak létrehozása
 
-* Ellenőrizze, hogy rendelkezik, közreműködő vagy tulajdonos, a regisztrált Azure adattárolója való hozzáférést.
+Adatkészletek létrehozása egy Azure-adattárhoz:
+
+* Győződjön meg arról, hogy `contributor` vagy `owner` a regisztrált Azure adattárolója való hozzáférést.
 
 * Importálás a [ `Workspace` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) és [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#definition) és `Dataset` az SDK-csomagot.
 
@@ -90,17 +116,11 @@ dataset = Dataset.from_delimited_files(datapath)
 dataset.head(5)
 ```
 
-||azonosító|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|Leírás|Leírás helye|Letartóztatás|Hazai|...|Ward|Közösségi terület|Az FBI kód|X koordinátáját|Y koordinátája|Év|Frissítés dátuma|Szélesség|Hosszúság|Hely|
-|--|--|---|---|---|---|----|------|-------|------|-----|---|----|----|-----|-----|------|----|-----|----|----|-----
-|0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|MEGTÉVESZTŐ ELJÁRÁS|PÉNZÜGYI ADATOKKAL VALÓ VISSZAÉLÉS KERESZTÜL 300 USD|EGYÉB|FALSE|FALSE|...|9|50|11|1183356|1831503|2016|5/11/2016 15:48|41.69283384|-87.60431945|(41.692833841, -87.60431945)|
-1.|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|890|LOPÁS| FROM BUILDING|RESIDENCE|FALSE|FALSE|...|21|71|6|1166776|1850053|2016|5/12/2016 15:48|41.74410697|-87.66449429|(41.744106973, -87.664494285)
-2|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTÓI ELENTÉS MENTÉSE|1154|MEGTÉVESZTŐ ELJÁRÁS|PÉNZÜGYI ADATOKKAL VALÓ VISSZAÉLÉS 300 USD MAJD A|RESIDENCE|FALSE|FALSE|...|19|74|11|||2016|5/12/2016 15:50
-3|10519591|HZ261534|4/15/2016 9:00|113XX S VALÓ MENTÉSE|1120|MEGTÉVESZTŐ ELJÁRÁS|FORGERY|RESIDENCE|FALSE|FALSE|...|9|49|10|||2016|5/13/2016 15:51
-4|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE ELENTÉS MENTÉSE|890|LOPÁS|FROM BUILDING|SCHOOL, PUBLIC, BUILDING|FALSE|FALSE|...|40|13|6|||2016|5/25/2016 15:59|
+## <a name="register-datasets"></a>Az adatkészletek regisztrálása
 
-## <a name="register-your-datasets-with-workspace"></a>Az adatkészletek regisztrálás munkaterület
+A létrehozási folyamat befejezéséhez regisztrálja az adatkészletekből munkaterület:
 
-Használja a [ `register()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) metódus adatkészletek regisztrálásához megosztása a munkaterülethez, és újra felhasználhatja a szervezeten belül, és különböző kísérletek között.
+Használja a [ `register()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) módszer regisztrálásához adatkészletek a munkaterülethez, így azok másokkal, és újra felhasználható különböző kísérletek között.
 
 ```Python
 dataset = dataset.register(workspace = workspace,
@@ -111,38 +131,19 @@ dataset = dataset.register(workspace = workspace,
 ```
 
 >[!NOTE]
-> Az alapértelmezett paraméter beállítása `register()` van `exist_ok = False`. Ha próbál meg regisztrálni egy adatkészlet ugyanazzal a névvel, ez a beállítás módosítása nélkül egy hibát eredményez.
+> Ha `exist_ok = False` (alapértelmezett), és a hiba akkor fordul elő, mint egy másik, azonos nevű adatkészlet regisztrálását kísérli. Állítsa be `True` felülírja a meglévő.
 
-A `register()` metódus visszaadja a már regisztrált adatkészletek a paraméter beállítása `exist_ok = True`.
-
-```Python
-dataset = dataset.register(workspace = workspace,
-                           name = 'dataset_crime',
-                           description = 'Training data',
-                           exist_ok = True
-                           )
-```
-
-Használat `list()` látható az összes, a regisztrált adatkészletek a munkaterületén.
-
-```Python
-Dataset.list(workspace_name)
-```
-
-A fenti kód a következőket eredményezi:
-
-```Python
-[Dataset(Name: dataset_crime,
-         Workspace: workspace_name)]
-```
-
-## <a name="access-datasets-in-workspace"></a>A munkaterület adatkészletek elérése
+## <a name="access-data-in-datasets"></a>Hozzáférés az adatokhoz a adatkészletek
 
 Helyileg, távolról és például az Azure Machine Learning compute számítási fürtök a regisztrált adatkészletek elérhető és értelmezhető. A regisztrált adatkészlet újbóli kísérletek között, és a számítási környezetek, az alábbi kód használatával név szerint a munkaterület és a regisztrált adatkészlet lekérése.
 
 ```Python
 workspace = Workspace.from_config()
 
+# See list of datasets registered in workspace.
+Dataset.list(workspace)
+
+# Get dataset by name
 dataset = workspace.datasets['dataset_crime']
 ```
 

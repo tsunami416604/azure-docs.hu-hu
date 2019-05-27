@@ -9,11 +9,11 @@ ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c232e1ce183c6935d625b5bc9987a4981865ae4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57908688"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159202"
 ---
 Ha a Resource Manager üzemi modellel dolgozik, módosíthatja az új átjáró SKU-k. Amikor a régi átjárók Termékváltozatainak módosítja az új Termékváltozatra, törölje a meglévő VPN-átjárót, és hozzon létre egy új VPN-átjárót.
 

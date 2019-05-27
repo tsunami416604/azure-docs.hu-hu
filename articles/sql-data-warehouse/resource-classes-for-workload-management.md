@@ -2,21 +2,20 @@
 title: Erőforrásosztályok számítási feladatok kezelése – Azure SQL Data Warehouse |} A Microsoft Docs
 description: Útmutató a erőforrásosztályok használata az egyidejűség kezelése és a számítási erőforrásokat az Azure SQL Data Warehouse lekérdezések.
 services: sql-data-warehouse
-author: WenJason
-manager: digimobile
+author: ronortloff
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-origin.date: 03/15/2019
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 05/22/2019
+ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ad8dad35013a28696e7c9cb5cc68464f3c4bf64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 75bd6e8071717ba755b71f51afcd884539049489
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475082"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165985"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Az Azure SQL Data warehouse erőforrásosztályok számítási feladatok kezelése
 
@@ -80,18 +79,19 @@ A dinamikus erőforrásosztályok vannak megvalósítva, ezek előre meghatároz
 
 Ha dinamikus erőforrásosztályt Gen1 a részletek digging, van néhány adatra, hogy azok viselkedésének megértése a további összetettséget hozzáadása:
 
-- A smallrc erőforrásosztály, például egy statikus erőforrásosztály rögzített méretű memória modell működik.  Smallrc lekérdezések nem dinamikusan beolvasni a több memória, ahogy nő, a szolgáltatási szint.
+**A Gen1**
+- A smallrc erőforrásosztály, például egy statikus erőforrásosztály rögzített méretű memória modell működik.  Smallrc lekérdezések nem dinamikusan beolvasni a több memória, ahogy nő, a szolgáltatási szint. 
 - Módosíthatja a szolgáltatási szintek, a rendelkezésre álló lekérdezés egyidejűségi felfelé vagy lefelé meg.
-- Szolgáltatások szintek méretezés nem biztosít arányos változást az erőforrás osztályai kiosztott memória.
+- Méretezés a szolgáltatási szint nem biztosít az erőforrás osztályai kiosztott memória arányos módosítása.
 
-A **Gen2 csak**, dinamikus erőforrásosztályokkal dinamikusak valóban címzés a fent említett pontokat.  Az új szabály 3-10-22-70 százalékos memórialefoglalások kis-Közepes-nagy-xlarge erőforrás osztályok, a rendszer **függetlenül a szolgáltatási szint**.  Az alábbi táblázat részletesen az összevont memória felosztási százalékok és futása, függetlenül a szolgáltatási szint egyidejű lekérdezések minimális száma.
+**Gen2**, dinamikus erőforrásosztályokkal dinamikusak valóban címzés a fent említett pontokat.  Az új szabály 3-10-22-70 százalékos memórialefoglalások kis-Közepes-nagy-xlarge erőforrás osztályok, a rendszer **függetlenül a szolgáltatási szint**.  Az alábbi táblázat részletesen az összevont memória felosztási százalékok és futása, függetlenül a szolgáltatási szint egyidejű lekérdezések minimális száma.
 
 | Erőforrásosztály | Memória százalékos aránya | Minimális egyidejű lekérdezések |
 |:--------------:|:-----------------:|:----------------------:|
 | smallrc        | 3%                | 32                     |
 | mediumrc       | 10%               | 10                     |
 | largerc        | 22%               | 4                      |
-| xlargerc       | 70%               | 1                      |
+| xlargerc       | 70%               | 1.                      |
 
 ### <a name="default-resource-class"></a>Alapértelmezett erőforrásosztály
 
@@ -116,7 +116,7 @@ Ezek a műveletek erőforrásosztályok vonatkoznak rájuk:
 - Válassza ki (Ha a felhasználó a táblákat kérdezi le)
 - Az ALTER INDEX - ÚJRAÉPÍTÉSI vagy REORGANIZE
 - ALTER TABLE REBUILD
-- INDEX LÉTREHOZÁSA
+- CREATE INDEX
 - FÜRTÖZÖTT OSZLOPCENTRIKUS INDEX LÉTREHOZÁSA
 - TABLE AS SELECT (CTAS) LÉTREHOZÁSA
 - Az adatok betöltése
@@ -134,7 +134,7 @@ A következő utasításokat mentesülnek az erőforrásosztályok, és a smallr
 - LÉTREHOZÁS vagy a DROP TABLE
 - AZ ALTER TABLE... KAPCSOLÓ, felosztása és EGYESÍTÉSE partíció
 - AZ ALTER INDEX LETILTÁSA
-- A DROP INDEX
+- DROP INDEX
 - LÉTREHOZÁS, frissítés és a DROP STATISTICS
 - TÁBLA CSONKOLÁSA
 - AZ ALTER ENGEDÉLYEZÉSI
@@ -942,7 +942,6 @@ Adatbázis-felhasználók és biztonsági kezelésével kapcsolatos további inf
 [Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 
 <!--MSDN references-->
-[Managing Databases and Logins in Azure SQL Database]:../sql-database/sql-database-manage-logins.md
+[Managing Databases and Logins in Azure SQL Database]:https://msdn.microsoft.com/library/azure/ee336235.aspx
 
 <!--Other Web references-->
-<!-- Update_Description: update link, wording update-->

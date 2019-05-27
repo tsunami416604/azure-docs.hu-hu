@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: c49b9d5fdc0c17f16f1c80471a00dd53625dc6e8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.openlocfilehash: 3edc1c2bd328cd6e7b7991ff2b5438b8899a0ce7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236949"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66160477"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak
+# <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak 
 
 Az Azure Machine Learning szolgáltatás a modell a különböző erőforrások vagy környezetek, együttesen a betaníthatja [ __számítási céljainak__](concept-azure-machine-learning-architecture.md#compute-target). Egy számítási célnak lehet egy helyi számítógépre vagy egy felhőalapú erőforrás, például az Azure Machine Learning COMPUTE számítási, az Azure HDInsight vagy egy távoli virtuális gépen.  Is létrehozhat a modell üzembe helyezése számítási célnak leírtak szerint [", és a modellek üzembe helyezése"](how-to-deploy-and-where.md).
 
@@ -38,7 +38,7 @@ Ebben a cikkben megismerheti, hogyan használható a különböző számítási 
 Az Azure Machine Learning szolgáltatás különböző támogatással rendelkezik a különböző számítási célnak között. Egy tipikus modell fejlesztési életciklus kisebb mennyiségű adatot a dev/Kísérletezési kezdődik. Ezen a ponton használatát javasoljuk a helyi környezetben. Például a helyi számítógépen vagy egy felhőalapú virtuális Gépen. Vertikális felskálázás a tanítási a nagyobb adatkészletek, vagy hajtsa végre az elosztott betanítás, egy vagy több node fürtöt létrehozni, hogy az automatikus skálázást alkalmat futtató minden elküldésekor a az Azure Machine Learning Compute használatát javasoljuk. Bár a különböző forgatókönyvekben eltérőek lehetnek az alábbiakban ismertetett támogatási is hozzáadhat a saját számítási erőforrás:
 
 
-|Számítási célt képzéshez| GPU-gyorsítás | Automatikus<br/> hiperparaméter finomhangolása | Automatikus</br> gépi tanulás | Az Azure Machine Learning-folyamatokat |
+|Számítási célt képzéshez| GPU-gyorsítás | Automatikus<br/> hiperparaméter finomhangolása | Automatikus<br/> gépi tanulás | Az Azure Machine Learning-folyamatokat |
 |----|:----:|:----:|:----:|:----:|
 |[Helyi számítógép](#local)| Talán | &nbsp; | ✓ | &nbsp; |
 |[Az Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
@@ -418,6 +418,10 @@ Vagy használhatja:
 
 * A kísérlet elküldése egy `Estimator` , ahogyan az objektum [estimators Train gépi Tanulási modelleket](how-to-train-ml-models.md). 
 * Egy kísérlet elküldésére [a CLI-bővítmény használata](reference-azure-machine-learning-cli.md#experiments).
+
+## <a name="github-tracking-and-integration"></a>GitHub nyomon követését és integráció
+
+Amikor egy futtassa, amelyben a forráskönyvtár helyi Git-tárház képzés, a tárház kapcsolatos információkat a futtatási előzmények tárolódik. Például a tárház aktuális véglegesítési Azonosítóját kerül az előzmények részeként.
 
 ## <a name="notebook-examples"></a>A jegyzetfüzet-példák
 

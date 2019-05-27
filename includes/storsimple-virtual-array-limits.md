@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 658fd9178495f14274c85eab2129c9dcd3be7693
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166404"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66143295"
 ---
 | **Korlátazonosító** | **Korlát** | **Megjegyzések** |
 | --- | --- | --- |
 | Teljes kapacitás (beleértve a felhő) |Akár 64 TB-os virtuális eszközönként |Is átadja a feladatokat egy teljes StorSimple Virtual Array egy másik üres tömb. Ha megpróbál visszaállítani ugyanarra az eszközre, győződjön meg arról, hogy rendelkezik-e elegendő hely a művelet végrehajtásához az eszközön. Miután 32 TB-os túllépte, nem állítható vissza ugyanazon az eszközön. |
-| Tárfiók hitelesítő adatainak eszközönként maximális száma |1 | |
+| Tárfiók hitelesítő adatainak eszközönként maximális száma |1. | |
 | Kötetek/megosztások maximális száma |16 | |
 | A rétegzett megosztás legkisebb mérete |500 GB | |
 | A rétegzett kötetek minimális mérete |500 GB | |
-| A rétegzett megosztás maximális mérete |20 TB-IG | |
+| A rétegzett megosztás maximális mérete |20 TB | |
 | A rétegzett kötetek maximális mérete |5 TB | |
 | Egy helyileg rögzített megosztási minimális mérete |50 GB | |
 | Helyileg rögzített kötet minimális mérete |50 GB | |

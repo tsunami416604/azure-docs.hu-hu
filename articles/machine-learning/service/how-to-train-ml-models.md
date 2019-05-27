@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b479556543c6a9dff88643fdc587dec3f832f39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 98f7dc2e295c0c994db9a0189814b0ef2a19b758
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60818494"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153599"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Az Azure Machine Learning használatával estimator modelleket taníthat be
 
@@ -26,7 +26,7 @@ Megkönnyítése érdekében deep learning-modell betanítása, az Azure Machine
 
 ## <a name="train-with-an-estimator"></a>Az egy estimator betanítása
 
-Létrehozása után a [munkaterület](concept-azure-machine-learning-architecture.md#workspace) , és állítsa be a [fejlesztési környezet](how-to-configure-environment.md), az Azure Machine Learning-modell tanítása az alábbi lépésekből áll:  
+Létrehozása után a [munkaterület](concept-workspace.md) , és állítsa be a [fejlesztési környezet](how-to-configure-environment.md), az Azure Machine Learning-modell tanítása az alábbi lépésekből áll:  
 1. Hozzon létre egy [távoli számítási célnak](how-to-set-up-training-targets.md) (használhatja a helyi számítógép számítási célként. megjegyzés)
 2. Töltse fel a [betanítási adatok](how-to-access-data.md) az adattároló (nem kötelező)
 3. Hozzon létre a [tanítási szkriptet](tutorial-train-models-with-aml.md#create-a-training-script)
@@ -119,6 +119,10 @@ Végül küldje el a betanítási feladatot:
 run = experiment.submit(estimator)
 print(run.get_portal_url())
 ```
+
+## <a name="github-tracking-and-integration"></a>GitHub nyomon követését és integráció
+
+Amikor egy futtassa, amelyben a forráskönyvtár helyi Git-tárház képzés, a tárház kapcsolatos információkat a futtatási előzmények tárolódik. Például a tárház aktuális véglegesítési Azonosítóját kerül az előzmények részeként.
 
 ## <a name="examples"></a>Példák
 Ez a jegyzetfüzet bemutatja az alapokat, estimator mintát lásd:

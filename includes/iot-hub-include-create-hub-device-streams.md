@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: rezas
 ms.custom: include file
-ms.openlocfilehash: d1cfe3d998c08aef2b845315a16d881dea1cd1f6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ede897054a6cbef254c06bd1d810b933ec09016a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124354"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158625"
 ---
 Ez a szakasz ismerteti, hogyan hozhat létre egy IoT hub használata a [az Azure portal](https://portal.azure.com).
 
@@ -23,7 +23,7 @@ Ez a szakasz ismerteti, hogyan hozhat létre egy IoT hub használata a [az Azure
 
 3. Kattintson a **az Iot Hub** a jobb oldali listából. Az IoT hub létrehozása az első képernyőn láthatja.
 
-   ![Képernyőfelvétel: a központ létrehozása az Azure Portalon](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-1.png)
+   ![Képernyőfelvétel: a központ létrehozása az Azure Portalon](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-01.png)
 
    Töltse ki a mezőket:
 
@@ -39,7 +39,7 @@ Ez a szakasz ismerteti, hogyan hozhat létre egy IoT hub használata a [az Azure
 
 4. Kattintson a **tovább: Mérete és méretezése** az IoT hub létrehozása a folytatáshoz.
 
-   ![Képernyőfelvétel: a beállítás mérete és méretezése egy új IoT hub, az Azure portal használatával](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-2-free.png)
+   ![Képernyőfelvétel: a beállítás mérete és méretezése egy új IoT hub, az Azure portal használatával](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-02.png)
 
    Ezen a képernyőn elvégezhető a szükséges az alapértelmezett beállításokat és egyszerűen kattintson **felülvizsgálat + létrehozása** alján.
 
@@ -51,6 +51,6 @@ Ez a szakasz ismerteti, hogyan hozhat létre egy IoT hub használata a [az Azure
 
 5. Kattintson a **tekintse át + létrehozása** , ellenőrizze a beállításokat. Hasonló ezen a képernyőn láthatja.
 
-   ![Képernyőfelvétel az új IoT hub létrehozásához információk áttekintése](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-3-free.png)
+   ![Képernyőfelvétel az új IoT hub létrehozásához információk áttekintése](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-03.png)
 
 6. Kattintson a **létrehozás** az új IoT hub létrehozása. A hub létrehozása eltarthat néhány percig.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b34d37fa79ccb8344fdacd99877403d61ba5f5c2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8d0f9866864ca4b02ca6238be2ac44537a586c2d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138903"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157949"
 ---
 ## <a name="update-resources"></a>Erőforrások frissítése
 
@@ -33,6 +33,8 @@ Lemezkép verziója:
 - Célrégiók
 - Legújabb kizárása
 - Élettartam dátum vége
+
+Ha azt tervezi, a replika régiók felvétele, ne törölje a forrás felügyelt rendszerképet. A felügyelt forráslemezkép a rendszerkép verziószámát további régióban való replikálásához szükséges. 
 
 Frissítse a katalógus használatával leírását ([az aláírás-frissítési](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-update). 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: asirveda
-ms.openlocfilehash: 2392d0ef9d6257b93b76f13a5354eeba57d78ddd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 60f4e410c7c4e3854235029acade550c9279c981
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800280"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158709"
 ---
 # <a name="migrate-java-enterprise-edition-ee-apps-to-azure"></a>A Java enterprise edition (EE) alkalmazások migrálása az Azure-bA
 Ez a cikk végigvezeti a folyamat áttelepítése meglévő Java EE-alapú számítási feladatok Azure-bA:
@@ -67,7 +67,7 @@ Az Azure-bA át fogjuk WildFly/JBoss mintaalkalmazások. Használja ezeket az al
 Az áttelepítés után az Azure Service Bus használatával alkalmazásokat fogja futtatni.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Egy Java webes alkalmazás üzembe helyezése az Azure-ba, az Azure-előfizetés szükséges. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/en-us/free/).
+Egy Java webes alkalmazás üzembe helyezése az Azure-ba, az Azure-előfizetés szükséges. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/).
 
 Emellett szüksége lesz a következő előfeltételek vonatkoznak:
 
@@ -1070,7 +1070,7 @@ Lásd az alábbi cikkeket:
 
 - [A linuxon futó App Service-ben Java Enterprise útmutató](../app-service/containers/app-service-java-enterprise.md)
 - [Maven beépülő modul az Azure App Service-hez](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable)
-- [A JBoss/WildFly általános JMS RA Adapter telepítése](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
+- [A JBoss/WildFly általános JMS RA Adapter telepítése](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
 - [WildFly/JBoss üzenetkezelési konfiguráció](https://docs.jboss.org/author/display/WFLY/Messaging+configuration)
 - [A JBoss/WildFly parancssori útmutatója](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface)
 - [Nyissa meg az SSH-kapcsolatot a fejlesztői gépről](../app-service/containers/app-service-linux-ssh-support.md#open-ssh-session-from-remote-shell)

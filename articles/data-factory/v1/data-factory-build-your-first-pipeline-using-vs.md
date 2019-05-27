@@ -15,11 +15,11 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 2d816ab2f14be8574f77491807d4dbd071487f42
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483065"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66164003"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Oktatóanyag: Adat-előállító létrehozása a Visual Studio használatával
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -173,7 +173,7 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
 
     Tulajdonság | Leírás |
     -------- | ----------- |
-    type |A tulajdonság beállítása **AzureBlob**, mert az adatok az Azure Blob Storage-tárban találhatók.
+    típus |A tulajdonság beállítása **AzureBlob**, mert az adatok az Azure Blob Storage-tárban találhatók.
     linkedServiceName | A korábban létrehozott AzureStorageLinkedService1 szolgáltatásra hivatkozik.
     fileName |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az esetben csak az input.log fájl lesz feldolgozva.
     type | A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. |

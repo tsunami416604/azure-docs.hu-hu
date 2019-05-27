@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 89d5483347f93cd3b57a02ced19b1e8b099a5ab0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60486862"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151603"
 ---
 ## <a name="specifying-formats"></a>Formátumok meghatározása
 Az Azure Data Factory a következő formátumtípusokat támogatja:
@@ -207,7 +207,7 @@ Ebben a példában egy JSON-gyökérobjektum képződik le egyetlen rekordba tá
 ```
 és az adatok objektumokból és tömbökből való kigyűjtésével szeretné átmásolni egy Azure SQL-táblába az alábbi formátumban:
 
-| id | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| azonosító | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 

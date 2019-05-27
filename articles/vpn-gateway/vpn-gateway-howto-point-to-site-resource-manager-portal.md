@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 5/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa406ac2f1e0b89a1161660a49f2a4cb6f6d6c32
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 6b66a9cf28faccf5ba22bc016297f1d53febe533
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105929"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157354"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Azure natív tanúsítványalapú hitelesítésének használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: Azure Portal
 
@@ -108,15 +108,15 @@ Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont�
 
 ## <a name="tunneltype"></a>7. Alagúttípus konfigurálása
 
-Kiválaszthatja az alagút típusát. Az SSTP és az IKEv2 közül választhat. Az Android- és Linux-alapú strongSwan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz. A Windows-ügyfél először az IKEv2-vel próbálkozik, majd ha azzal nem sikerült, visszavált SSTP-re. Engedélyezheti csak az egyiket, vagy egyszerre mindkettőt. Jelölje be a megoldáshoz szükséges jelölőnégyzeteket.
+Kiválaszthatja az alagút típusát. A közül OpenVPN, SSTP és IKEv2. Az Android- és Linux-alapú strongSwan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz. A Windows-ügyfél először az IKEv2-vel próbálkozik, majd ha azzal nem sikerült, visszavált SSTP-re. A OpenVPN ügyfele segítségével a OpenVPN alagúttípus csatlakozni.
 
-![Alagúttípus](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
+![Alagút típusa](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 
 ## <a name="authenticationtype"></a>8. Hitelesítés típusának konfigurálása
 
 Válassza ki az **Azure-tanúsítvány** lehetőséget.
 
-  ![Alagúttípus](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
+  ![Alagút típusa](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
 
 ## <a name="uploadfile"></a>9. A főtanúsítvány nyilvános tanúsítványadatainak feltöltése
 

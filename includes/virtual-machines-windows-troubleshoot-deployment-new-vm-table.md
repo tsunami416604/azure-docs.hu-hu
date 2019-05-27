@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 14abae6f6f72d724fffb1ccaa12f56fb6976f7a1
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226925"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66160197"
 ---
 A következő táblázat felsorolja a lehetséges feltöltés és a Windows rögzítési kombinációja (főkönyvi) általános, és speciális (specifikációja). Operációsrendszer-lemezképeket. Egy Y jelzi a, amely feldolgozza a hibák nélkül kombinációit, és a egy N. jelzi, amelyek a kivételt fogja kijelezni hibák Okaik és megoldásaik be fog futtatni különböző hibák a táblázat alatti kapnak.
 

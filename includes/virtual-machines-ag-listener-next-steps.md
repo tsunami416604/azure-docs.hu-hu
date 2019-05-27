@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 27b09ea9cc7ce3cf2559304a26d0c04f3ea30b54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262916"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165442"
 ---
 Mellett az ügyfelek automatikusan csatlakozik az elsődleges másodpéldány, egy figyelő használható átirányítása a csak olvasható számítási feladatokat a másodlagos példány hozható létre. Ez a használati javíthatja a teljesítmény és a teljes megoldás méretezhetőségét. További információkért lásd: [használata ReadIntent útválasztás az Azure Always On rendelkezésre állási csoport figyelőjének](https://go.microsoft.com/fwlink/?LinkId=522515).
 

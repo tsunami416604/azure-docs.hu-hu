@@ -17,18 +17,18 @@ ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: eac10cd735ae16cf1c7c6d6987a3b53060caa1cd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315827"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66155319"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: Az Azure-ban Linux rendszerű virtuális gépen a MongoDB, Express, AngularJS és Node.js (mean) készlet-verem létrehozása
 
 Ez az oktatóanyag bemutatja, hogyan valósítható meg MongoDB-, Express-, AngularJS- és Node.js- (MEAN-) verem Linux rendszerű virtuális gépen az Azure-ban. A létrehozott MEAN-készlet lehetővé teszi a könyvek hozzáadását, törlését és felsorolását egy adatbázison belül. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Linux rendszerű virtuális gép létrehozása
+> * Linux rendszerű virtuális gép készítése
 > * A Node.js telepítése
 > * A MongoDB telepítése és a kiszolgáló beállítása
 > * Az Express telepítése és útvonalak beállítása a kiszolgálóhoz
@@ -40,7 +40,7 @@ Ez az oktatóanyag bemutatja, hogyan valósítható meg MongoDB-, Express-, Angu
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 
-## <a name="create-a-linux-vm"></a>Linux rendszerű virtuális gép létrehozása
+## <a name="create-a-linux-vm"></a>Linux rendszerű virtuális gép készítése
 
 Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group), illetve egy Linux rendszerű virtuális gépet az [az vm create](https://docs.microsoft.com/cli/azure/vm) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -343,7 +343,7 @@ Az [AngularJS](https://angularjs.org) egy webes keretrendszert biztosít a dinam
 Ebben az oktatóanyagban létrehozott egy webalkalmazást, amely nyomon követi a könyvrekordokat egy MEAN-készlet használatával egy Linux rendszerű virtuális gépen. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Linux rendszerű virtuális gép létrehozása
+> * Linux rendszerű virtuális gép készítése
 > * A Node.js telepítése
 > * A MongoDB telepítése és a kiszolgáló beállítása
 > * Az Express telepítése és útvonalak beállítása a kiszolgálóhoz

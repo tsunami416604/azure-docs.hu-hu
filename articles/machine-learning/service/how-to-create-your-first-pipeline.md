@@ -1,7 +1,7 @@
 ---
 title: Nyomon követheti a gépi Tanulási folyamatok létrehozása & futtatása
 titleSuffix: Azure Machine Learning service
-description: Hozzon létre, és futtassa a machine learning-folyamat, az Azure Machine Learning-SDK Pythonhoz készült. A folyamatok létrehozásához és kezeléséhez a munkafolyamatok a varrva együtt machine learning (gépi tanulás) fázisok használhatja. Ezeket a fázisokat tartalmazza az adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetési.
+description: Hozzon létre, és futtassa a machine learning-folyamat, az Azure Machine Learning-SDK Pythonhoz készült. A folyamatok létrehozásához és kezeléséhez a munkafolyamatok a varrva együtt machine learning (gépi tanulás) fázisok használhatja. Ezeket a fázisokat tartalmazza az adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetésekhez/pontozási.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3ec3e915c26abf38653d1bddfe0a5ba44d5e6de1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 15fa9095b8169dc1545c796421be91e89652e1c1
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914896"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165878"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Hozzon létre, és a egy machine learning-folyamat futtatása az Azure Machine Learning-SDK használatával
 
@@ -251,6 +251,8 @@ trainStep = PythonScriptStep(
 )
 ```
 
+Előző eredmények újbóli (`allow_reuse`) kulcs akkor, ha a folyamatok használata együttműködési környezetben, mivel távolítsa el a felesleges újrafuttatásonként agilitást kínál. Ez akkor az alapértelmezett viselkedést, ha a a script_name, bemeneti és a paraméterek, a lépések ugyanazok maradnak. Ha a lépés kimenetéből újrahasznosított, a feladat nem elküldve a számítási, ehelyett az előző futtatásból származó eredmények azonnal hatással lesznek a következő lépésben futtassa. Ha az értéke HAMIS, egy új futtató folyamat-végrehajtás során mindig ehhez a lépéshez jön létre. 
+
 A lépéseket, meghatározása után hozhat létre a folyamat használatával, vagy azok egy részét az ezeket a lépéseket.
 
 > [!NOTE]
@@ -315,6 +317,10 @@ Ha először futtatja a folyamatot, az Azure Machine Learning:
 
 További információkért lásd: a [osztály kísérletezhet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) hivatkozást.
 
+## <a name="github-tracking-and-integration"></a>GitHub nyomon követését és integráció
+
+Amikor egy futtassa, amelyben a forráskönyvtár helyi Git-tárház képzés, a tárház kapcsolatos információkat a futtatási előzmények tárolódik. Például a tárház aktuális véglegesítési Azonosítóját kerül az előzmények részeként.
+
 ## <a name="publish-a-pipeline"></a>Folyamatok közzététele
 
 Egy folyamat később futtatni a különböző adatbevitelek teheti közzé. A REST-végpont egy már közzétett folyamat paraméterek elfogadásához meg kell parametrizálja a folyamat a közzététel előtt. 
@@ -373,11 +379,11 @@ A folyamatok minden és azok részleteinek listáját lásd:
 ## <a name="caching--reuse"></a>Gyorsítótárazás & újrafelhasználása  
 
 Annak érdekében, hogy optimalizálása és testre szabható a folyamatok köré gyorsítótárazás néhány dolgot tegye, és újra felhasználhatja a viselkedése. Például hogy választhat:
-+ **Kapcsolja ki a kimeneti futtatása lépés alapértelmezett ismételt** beállításával `allow_reuse=False` során [lépés definíciója](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)
++ **Kapcsolja ki a kimeneti futtatása lépés alapértelmezett ismételt** beállításával `allow_reuse=False` során [lépés definíciója](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Újbóli kulcs akkor, ha a folyamatok használata együttműködési környezetben, mivel távolítsa el a felesleges futtatások agilitást kínál. Azonban ez kívül kérheti.
 + **Kiterjesztheti a parancsfájl túli kivonatoláshoz**, hogy az abszolút elérési utat, vagy relatív elérési útjai a forráskönyvtár más fájlok és könyvtárak használatával is tartalmazza a `hash_paths=['<file or directory']` 
 + **Kimeneti újragenerálása az összes lépés futtatása kényszerítése** az `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-Alapértelmezés szerint engedélyezve van a lépés újbóli használata, és csak a fő parancsfájl kivonatolt. Ha a parancsfájl egy adott lépés változatlan marad (`script_name`, bemenetei között, valamint a paramétereket), a kimenet egy előző lépés futtatása újrahasznosított, a feladat nem elküldve a számítási és az előző futtatásból származó eredmények érhetők el közvetlenül a következő lépéssel inkább .  
+Alapértelmezés szerint `allow-reuse` lépéseket engedélyezve van, és csak a fő parancsfájl kivonatolt. Ha a parancsfájl egy adott lépés változatlan marad (`script_name`, bemenetei között, valamint a paramétereket), a kimenet egy előző lépés futtatása újrahasznosított, a feladat nem elküldve a számítási és az előző futtatásból származó eredmények érhetők el közvetlenül a következő lépéssel inkább .  
 
 ```python
 step = PythonScriptStep(name="Hello World", 

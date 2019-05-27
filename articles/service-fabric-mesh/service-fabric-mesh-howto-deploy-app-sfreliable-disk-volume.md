@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b5e4ad30a65b25140cfb2c80dd15d8cd28fb827b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f760e7e693334475fb61ba9e5d44df019e78604
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419220"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147479"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>A Service Fabric-háló alkalmazás magas rendelkezésre állású Service Fabric Reliable lemez alapú Kötet csatlakoztatásához 
 A tárolóalapú alkalmazások megőrzése állapot gyakori módja, hogy távoli tárolók, például az Azure File Storage vagy az adatbázis, mint például az Azure Cosmos DB. Ezt a szintre váltása költséggel jár, jelentős olvasási és írási késést, a távoli tároló.
@@ -73,7 +73,7 @@ Figyelje meg az átjáró-erőforrás, amely erőforrás típusa nevét `Microso
 
 Miután sikeresen üzembe helyezte az alkalmazást, az alkalmazás az IP-cím az átjáró erőforrás beolvasása. Az átjáró nevét, hogy észrevette használja a fenti szakaszt.
 ```azurecli-interactive
-az mesh gateway show --resource-group myResourceGroup --gateway-name counterGateway
+az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
 A kimenet tulajdonsággal kell rendelkeznie `ipAddress` Ez az a szolgáltatásvégpont nyilvános IP-címét. Egy böngészőben nyissa meg. A számláló értéke másodpercenként frissítése a weblap jelenik meg.

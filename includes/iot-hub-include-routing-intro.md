@@ -9,11 +9,11 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 400f12237ae8b8cbaf6d66bda1663ecb680136f3
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630916"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162743"
 ---
 [Üzenet-útválasztása](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) telemetriai adatok küldését az IoT-eszközökről származó beépített Event Hub-kompatibilis végpontokra vagy egyéni végpontok például lehetővé teszi, hogy a blob storage, Service Bus-üzenetsorok, Service Bus-témakörök és Eseményközpontok. Egyéni üzenet útválasztás konfigurálásához, hozzon létre [útválasztási lekérdezések](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) szabhatja testre az útvonalat, amely megfelel egy bizonyos feltételnek. A beállítás után az IoT Hub automatikusan a végpontokhoz irányítja át a bejövő adatokat. Ha az üzenet nem egyezik a megadott útválasztási lekérdezések bármelyikét, az alapértelmezett végpont lesz irányítva.
 
