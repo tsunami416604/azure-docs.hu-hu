@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: include file
-ms.openlocfilehash: fb296236fb73823690175b12f4e07c05b60cdbcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7f33312d0a5fbe383d438408d471dd9ae09d0332
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542600"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156244"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek régiók szerinti csoportosítása és rendelkezésre állása
 Az Azure világszerte számos adatközpontban működik. Ezek az adatközpontok földrajzi régiók szerint vannak csoportosítva, ami kellő mozgásteret biztosít az alkalmazások létrehozási helyének megválasztásához. Fontos átlátni, hogy a virtuális gépek hol és hogyan működnek az Azure-ban, illetve hogy a teljesítmény, a rendelkezésre állás és a redundancia maximalizálása terén milyen lehetőségek vannak. Ez a cikk az Azure rendelkezésre állással és redundanciával kapcsolatos szolgáltatásairól nyújt áttekintést.
@@ -95,6 +95,8 @@ A különböző tártípusokhoz és rendelkezésre állási lehetőségekhez tar
 Egy rendelkezésre állási csoportban, amely lehetővé teszi az Azure tudni, hogyan épül fel az alkalmazás a redundancia és rendelkezésre állás biztosításához adatközpontokon belüli virtuális gépek logikai csoportosítása. Azt javasoljuk, hogy két vagy több virtuális gépet hoz létre a rendszer egy rendelkezésre állási csoport nyújt a magas rendelkezésre állású alkalmazások, és megfelelnek a [99,95 %-os Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Van a rendelkezésre állási csoport számára ingyenesen magát, az Ön által létrehozott minden egyes Virtuálisgép-példány csak kell fizetnie. Ha egyetlen virtuális gép által használt [Azure prémium szintű SSD-k](../articles/virtual-machines/windows/disks-types.md#premium-ssd), az Azure SLA vonatkozik, nem tervezett karbantartási események esetében.
 
 Rendelkezésre állási csoport két további csoportosítást is tartalmaz, amelyek hardverhibák ellen, és lehetővé teszik a frissítések biztonságosan kell alkalmazni – a tartalék tartományok és frissítési tartományok (frissítési) áll. Tudjon meg többet a [Linux-alapú virtuális gépek](../articles/virtual-machines/linux/manage-availability.md), illetve a [Windows-alapú virtuális gépek](../articles/virtual-machines/windows/manage-availability.md) rendelkezésre állásának kezeléséről.
+
+Felosztásakor több számítási erőforrásokat, amelyek nem használnak tartalék tartományok a magas rendelkezésre állású szerkezeteket van egy nagy valószínűséggel az affinitást megakadályozó beállítása, azonban az affinitást megakadályozó beállítása nem garantált.
 
 ### <a name="fault-domains"></a>Tartalék tartományok
 A tartalék tartomány a mögöttes hardverelemek logikus csoportja, ahol az áramforrás és a hálózati kapcsoló közös, a helyszíni adatközpontok állványaihoz hasonlóan. Amikor rendelkezésre állási csoporton belül hoz létre virtuális gépeket, az Azure platform automatikusan elosztja ezeket a tartalék tartományok között. Ez a módszer korlátozza a potenciális hardvermeghibásodások, hálózatkimaradások vagy a tápellátás megszakadásának hatását.

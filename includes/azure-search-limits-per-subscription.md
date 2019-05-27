@@ -9,11 +9,11 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: 1e147e8bd9260cd1ece60b70641968a229995ec1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65211981"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66160516"
 ---
 Létrehozhat egy előfizetésen belül több szolgáltatást is. Egyenként is üzembe helyezve egy konkrét csomagot kiválasztani. Minden egyes rétegben engedélyezett szolgáltatások számának csak korlátot jelent. Például létrehozhat legfeljebb 12 szolgáltatások, az alapszintű csomag és az S1 szintet ugyanazon az előfizetésen belül egy másik 12 szolgáltatásokhoz. Rétegek kapcsolatos további információkért lásd: [-Termékváltozat vagy termékváltozat-csomag kiválasztása az Azure Search](../articles/search/search-sku-tier.md).
 
