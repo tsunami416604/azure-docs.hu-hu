@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: ae1f5f9148fa516c98d78afdd57887d4279f92dc
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
-ms.translationtype: MT
+ms.openlocfilehash: 2fba8b0056c80a62837682a6820b68f71fba9ea8
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827688"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952932"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -51,7 +51,7 @@ Kapcsolat létrehozása a következő lehetőségek egyikének használatával:
 
 - **Lehetővé teszi az Azure-adatközpont IP-címtartományok**. Ez a beállítás lehetővé teszi, hogy [IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653) letölthető. Szeretne hozzáférni a hálózati biztonsági csoport (NSG), a Set-AzureNetworkSecurityRule parancsmaggal. Ha Ön az egyetlen engedélyezési régióspecifikus IP-címek, meg fogjuk is kell az Azure Active Directory (Azure AD) engedélyezési listára szolgáltatáscímke hitelesítés engedélyezése.
 
-- **Engedélyezi a hozzáférést az NSG-címkék használatával**. NSG-k használatával korlátozza a kapcsolatot, ha ezt a beállítást ad hozzá egy szabályt az NSG-t, amely lehetővé teszi a kimenő hozzáférést az Azure Backup az AzureBackup címke használatával. Ez a címke mellett is kell megfelelő [szabályok](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags) az Azure ad és az Azure Storage, amely engedélyezi a csatlakozást a hitelesítés és az adatátvitelt. Az AzureBackup címkét csak a PowerShell jelenleg érhető el. Olyan szabály létrehozására AzureBackup címkével:
+- **Engedélyezi a hozzáférést az NSG-címkék használatával**. NSG-k használatával korlátozza a kapcsolatot, ha ezt a beállítást ad hozzá egy szabályt az NSG-t, amely lehetővé teszi a kimenő hozzáférést az Azure Backup az AzureBackup címke használatával. Ez a címke mellett is kell megfelelő [szabályok](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) az Azure ad és az Azure Storage, amely engedélyezi a csatlakozást a hitelesítés és az adatátvitelt. Az AzureBackup címkét csak a PowerShell jelenleg érhető el. Olyan szabály létrehozására AzureBackup címkével:
 
     - Adja hozzá az Azure-fiók hitelesítő adatait, és frissítse az országos felhők<br/>
     `Add-AzureRmAccount`
@@ -67,7 +67,7 @@ Kapcsolat létrehozása a következő lehetőségek egyikének használatával:
 
   - Mentse az NSG-hez<br/>
     `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
-- **Hozzáférés engedélyezése az Azure-tűzfal a címkék használatával**. Azure tűzfalat használ, ha egy alkalmazás szabály létrehozása az AzureBackup használatával [teljes tartománynév-címke](https://docs.microsoft.com/en-us/azure/firewall/fqdn-tags). Ez lehetővé teszi a kimenő hozzáférést az Azure Backup szolgáltatásban.
+- **Hozzáférés engedélyezése az Azure-tűzfal a címkék használatával**. Azure tűzfalat használ, ha egy alkalmazás szabály létrehozása az AzureBackup használatával [teljes tartománynév-címke](https://docs.microsoft.com/azure/firewall/fqdn-tags). Ez lehetővé teszi a kimenő hozzáférést az Azure Backup szolgáltatásban.
 - **HTTP-proxykiszolgáló üzembe forgalomirányítást**. Egy Azure virtuális gép egy SQL Server-adatbázis biztonsági mentésekor a biztonsági mentési bővítményt a virtuális gépen a HTTPS API-k segítségével felügyeleti parancsokat küldjön az Azure Backup és az Azure Storage-adatok. A biztonsági mentési bővítményt, az Azure AD is használ. A biztonsági mentési bővítményt forgalom irányítása a ezek három szolgáltatást, a HTTP-proxyn keresztül. A bővítmények olyan az egyetlen olyan összetevő, amely konfigurálva van a nyilvános internet-hozzáférés.
 
 Csatlakozási lehetőségek a következők: a következő előnyeit és hátrányait:

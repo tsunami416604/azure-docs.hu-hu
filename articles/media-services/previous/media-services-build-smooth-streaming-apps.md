@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 910c593c9277efeaf72dadc52740b1c918381e19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b8c1513838fb848388946e18698a0410aa7a0332
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466068"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949626"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming-Windows Store-alkalmazás létrehozása  
 
@@ -507,7 +507,7 @@ Ugyanazokat az eseményeket adaptív forrás Manager szinten is, amely az alkalm
    ```
 
    > [!NOTE]
-   > Módosíthatja a felhasználói felület szála nem UI-szálból CoreDispatcher szolgál. Esetén szűk keresztmetszet dispatcher szálon fejlesztői is választható hallgatója kíván frissíteni a felhasználói felületi elem által biztosított dispatcher.  Példa:
+   > Módosíthatja a felhasználói felület szála nem UI-szálból CoreDispatcher szolgál. Esetén szűk keresztmetszet dispatcher szálon fejlesztői közül, amelyeket frissíteni a felhasználói felületi elem által biztosított dispatcher.  Példa:
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
@@ -847,7 +847,7 @@ Smooth Streaming bemutató különböző minőségi szintet (átviteli sebesség
          </ListBox>
          </StackPanel>
    ```
-3. Nyomja meg **CTRL + S** he módosítások mentése
+3. Nyomja meg **CTRL + S** menti a módosításokat
 
 ### <a name="to-modify-the-code-behind-file"></a>Módosíthatja a fájl mögötti kódban
 
