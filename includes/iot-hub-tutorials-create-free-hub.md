@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e3110e4018e214e7e7aa591b811246369c029ecd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: a7a86c6a2661a8a1f30491391fc76f4dc5d71f54
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38944543"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66163558"
 ---
 IoT Hub létrehozása az Azure Portallal:
 
@@ -36,8 +36,8 @@ IoT Hub létrehozása az Azure Portallal:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Tarifacsomag és méret | F1 – Ingyenes. Egy előfizetésben csak egyetlen ingyenes szintű hubja lehet. |
-    | IoT Hub-egységek | 1 |
+    | Tarifa- és méretcsomag | F1 – Ingyenes. Egy előfizetésben csak egyetlen ingyenes szintű hubja lehet. |
+    | IoT Hub-egységek | 1. |
 
     ![Hub beállításai – 2](media/iot-hub-tutorials-create-free-hub/hubdefinition-2.png)
 

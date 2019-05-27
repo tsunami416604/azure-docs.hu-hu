@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2a366a9030104c885adb1a4f773de04cdc439044
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 420705ef6b2e38d147b7033d2fb3ad57bbc216ac
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480493"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159282"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data bemeneti Stream analyticsbe
 
@@ -131,6 +131,8 @@ Stream Analytics jelenleg nem támogatja Event Hubs capture vagy az IoT Hub az A
 > [!NOTE]
 > Stream Analytics nem támogatja a meglévő blob fájl hozzáadása a tartalom. Stream Analytics tekinthetik meg a fájlok csak egyszer, és minden elvégzett módosításokat a fájlban után a feladat rendelkezik-e olvasási az adatok feldolgozása nem. Ajánlott eljárás, hogy egy blob fájlra vonatkozó összes adatot feltölteni, és ezután további újabb események felvétele egy másik, az új blob fájlt.
 > 
+
+Nagyon nagy számú blobok feltöltése egyszerre, előfordulhat, hogy kihagyja a ritka esetben néhány BLOB olvasása a Stream Analytics. Javasoljuk, hogy legalább 2 másodpercnyi egymástól a Blob storage-blobok feltöltése. Ha ezt a beállítást nem megvalósítható, az Event Hubs segítségével stream nagy mennyiségű esemény. 
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>A bemeneti stream konfigurálása a Blob storage 
 

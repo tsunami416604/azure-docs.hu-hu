@@ -1,5 +1,5 @@
 ---
-title: Ismerje meg, és előkészíti az adatokat (adatkészlet osztály)
+title: Fedezze fel és alakíthat át adatokat (adatkészlet osztály)
 titleSuffix: Azure Machine Learning service
 description: Adatfeltárás segítségével az összefoglaló statisztikák és adatok törlését, átalakítási és funkciófejlesztési adatok előkészítése
 services: machine-learning
@@ -10,17 +10,17 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/02/19
-ms.openlocfilehash: 70712605cc97670b625d32052bb79b4a666e4281
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 05/23/2019
+ms.openlocfilehash: e692b0dc1089804b1d68b79c1a6f438f30554602
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603153"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146293"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Ismerje meg, és előkészíti az adatokat az adatkészlet osztályhoz (előzetes verzió)
 
-Ismerje meg, és adat-előkészítés a [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). A [adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) osztály (előzetes verzió) segítségével megvizsgálhatja és készítse elő adatait funkciók megadásával: mintavétel, összefoglaló statisztikák és intelligens átalakításokat. Adatátalakítási lépéseket mentett [az adatkészlet-definíciók](how-to-manage-dataset-definitions.md) az képes a más sémák több nagy fájlok nagy mértékben skálázható módon.
+Ismerje meg, és az azureml-adatkészletek csomaggal, az adatok előkészítése az [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). A [adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) osztály (előzetes verzió) segítségével megvizsgálhatja és készítse elő adatait funkciók megadásával: mintavétel, összefoglaló statisztikák és intelligens átalakításokat. Adatátalakítási lépéseket mentett [az adatkészlet-definíciók](how-to-manage-dataset-definitions.md) az képes a más sémák több nagy fájlok nagy mértékben skálázható módon.
 
 > [!Important]
 > Néhány adatkészlet osztályok (előzetes verzió) függőségekkel rendelkezik a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomag (elérhetővé tétel GA). Miközben átalakítási függvényeket közvetlenül a GA'ed elvégezhető [Data Prep funkciók](how-to-transform-data.md), azt javasoljuk, hogy az adatkészlet csomag burkolókat ebben a cikkben ismertetett, ha egy új megoldást épít. Az Azure Machine Learning-adatkészletek (előzetes verzió) lehetővé teszi nemcsak az adatátalakítás, hanem [-pillanatkép adatainak](how-to-create-dataset-snapshots.md) és tárolása [rendszerverzióval ellátott adatkészlet-definíciókban](how-to-manage-dataset-definitions.md). Az adatkészletek az adatkészleteket az AI-megoldások kezelésével kapcsolatos bővített funkciókat kínál a Data Prep SDK következő verziójában.
@@ -33,7 +33,7 @@ Ismerje meg, és az adatok előkészítéséhez, lesz szüksége:
 
 * Az Azure Machine Learning szolgáltatás munkaterületén. Lásd: [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
 
-* Az Azure Machine Learning SDK Pythonhoz készült (1.0.21 verzió vagy újabb). Telepíteni, vagy frissítsen az SDK legújabb verzióját, lásd: [telepítése vagy frissítése az SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* Az Azure Machine Learning SDK Pythonhoz készült (1.0.21 verzió vagy újabb), amely tartalmazza az azureml-adatkészletek csomagot. Telepíteni, vagy frissítsen az SDK legújabb verzióját, lásd: [telepítése vagy frissítése az SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
 * Az Azure Machine Learning Adatelőkészítéshez SDK-t. Telepítse vagy frissítse a legújabb verzióra, lásd: [telepíteni vagy frissíteni a Data Prep SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install).
 

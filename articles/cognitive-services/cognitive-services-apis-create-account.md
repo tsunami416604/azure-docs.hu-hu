@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: garye
-ms.openlocfilehash: b5adb5b8bddd0f379ac581f3268f0121791cf0bc
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 831f1d22c4da215bed3ed55b659332aa3b57472b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546368"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145943"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Gyors útmutató: Cognitive Services-fiók létrehozása az Azure Portalon
 
@@ -92,6 +92,8 @@ Miután létrehozta az erőforrást, hozzá tud férni az Azure irányítópultj
 A végponti URL-cím és a kulcsot is használhat a Cognitive Services-erőforrás belül a **áttekintése** szakasz API készítésének megkezdéséhez hívja az alkalmazásokban.
 
 ![Erőforrások képernyő](media/cognitive-services-apis-create-account/resourceScreen.png)
+
+Jegyezze fel a hely és a kulcsokat. Megtekintheti a kulcsok kiválasztásával **kulcsok** alatt **erőforrás-kezelés**.
 
 ## <a name="next-steps"></a>További lépések
 

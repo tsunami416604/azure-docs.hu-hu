@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.openlocfilehash: c5bd40741ec0fe047f98b4b4431819d90e188385
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268097"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128662"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Központi telepítési funkciók az Azure Resource Manager-sablonok 
 
@@ -33,7 +33,7 @@ Erőforrások, erőforráscsoportok vagy előfizetések lekérjük az értékeke
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="deployment"></a>üzembe helyezés
+## <a name="deployment"></a>üzemelő példány
 `deployment()`
 
 A jelenlegi üzembe helyezési művelet adatait adja vissza.
@@ -167,7 +167,7 @@ A paraméter értékét adja vissza. A megadott paraméternév a sablon a Param�
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| parameterName |Igen |sztring |A visszaadandó paraméter neve. |
+| parameterName |Igen |string |A visszaadandó paraméter neve. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -255,8 +255,8 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | stringOutput | String | 1. lehetőséget |
-| intOutput | Int | 1 |
-| objectOutput | Objektum | {"egy": "a", "2": "b"} |
+| intOutput | Int | 1. |
+| objectOutput | Object | {"egy": "a", "2": "b"} |
 | arrayOutput | Tömb | [1, 2, 3] |
 | crossOutput | String | 1. lehetőséget |
 
@@ -360,7 +360,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Tömb | [1, 2, 3, 4] |
 | exampleOutput3 | String | myVariable |
-| exampleOutput4 |  Objektum | {"Tulajdonság1": "érték1", "Tulajdonság2": "érték2"} |
+| exampleOutput4 |  Object | {"Tulajdonság1": "érték1", "Tulajdonság2": "érték2"} |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 

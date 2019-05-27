@@ -9,11 +9,11 @@ ms.date: 01/18/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f72ce02a8655ea97497098dc1412f69e07686861
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60320157"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147032"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hány VPN-ügyfélvégpont lehet a pont–hely konfigurációban?
 
@@ -76,7 +76,7 @@ A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
 
 1. Telepítse a frissítést.
 
-   | Operációs rendszer verziója | Dátum | Szám/hivatkozás |
+   | Operációs rendszer verziója | Date | Szám/hivatkozás |
    |---|---|---|
    | Windows Server 2016<br>Windows 10, 1607-es verzió | 2018. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10, 1703-as verzió | 2018. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |

@@ -15,11 +15,11 @@ ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 2b9d696ca896d0c8f0801f055000b9763d65d7ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298204"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121709"
 ---
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Bejelentkezési és kijelentkezési kérések kezelésére vezérlő hozzáadása
 
@@ -112,7 +112,7 @@ A Visual Studióban hozzon létre egy új nézetet a bejelentkezés gomb hozzáa
     ```
 
 <!--start-collapse-->
-> ### <a name="more-information"></a>További információ
+> ### <a name="more-information"></a>További információk
 > Ezen a lapon fekete háttérrel SVG-formátumban ad hozzá egy bejelentkezés gombot:<br/>![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> További bejelentkezési gombok, nyissa meg a [ezt oldal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "védjegyzési útmutató").
 <!--end-collapse-->
 
@@ -155,7 +155,7 @@ Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]`
     ```
 
 <!--start-collapse-->
-> ### <a name="more-information"></a>További információ
+> ### <a name="more-information"></a>További információk
 > Az `[Authorize]` attribútum használata miatt a vezérlő metódusait csak akkor lehet végrehajtani, ha a felhasználó hitelesítve van. Ha a felhasználó nincs hitelesítve, és megpróbál hozzáférni a vezérlő, OWIN kezdeményezzen egy hitelesítési kérdés, és hitelesíti a felhasználót. A fenti kód megvizsgálja az adott felhasználói attribútumok a felhasználói azonosító jogkivonat szerepel a jogcímek listája. Ilyen attribútum például a felhasználó teljes neve és felhasználóneve, valamint a globális felhasználóazonosító tárgya. Emellett tartalmazza a *bérlőazonosítót* is, amely a felhasználó szervezetének azonosítóját jelöli. 
 <!--end-collapse-->
 

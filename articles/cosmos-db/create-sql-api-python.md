@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 297f71cef41f91a2e9595a0ccca08e2803bd6201
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 033baa80eaa10581777061b40c64afe6331a2e92
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787310"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979070"
 ---
 # <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Az Azure Cosmos DB: Azure Cosmos DB SQL API-fiók használatával Python-alkalmazás létrehozása
 
@@ -26,7 +26,7 @@ ms.locfileid: "65787310"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Gyors létrehozása és lekérdezése a dokumentum, kulcs/érték és gráf típusú adatbázisokat. Mindezen műveleteket kihasználhatják a terjesztési és az Azure Cosmos DB méretezése.
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Gyors létrehozása és lekérdezése a dokumentum, kulcs-érték, széles oszlop és gráf típusú adatbázisokat. Mindezen műveleteket kihasználhatják a terjesztési és az Azure Cosmos DB méretezése.
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Cosmos DB [SQL API](sql-api-introduction.md)-fiókot, dokumentum-adatbázist és tárolót az Azure Portal segítségével. Ezután megtudhatja, hogyan hozhat létre és futtathat egy, a Python SDK for [SQL API](sql-api-sdk-python.md)-val létrehozott konzolalkalmazást. Ez a rövid útmutató 3.0-s verzióját használja, a [Python SDK](https://pypi.org/project/azure-cosmos).
 

@@ -6,14 +6,15 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/6/2018
-ms.author: victorh
+origin.date: 08/06/2018
+ms.date: 04/16/2019
+ms.author: v-junlch
 ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120550"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66135196"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway állapotfigyelés – áttekintés
 
@@ -57,7 +58,7 @@ Után az egyezési feltételek meg van adva, akkor lehet csatolni, mintavételi 
 | Mintavétel tulajdonság | Érték | Leírás |
 | --- | --- | --- |
 | Teszt URL-címe |http://127.0.0.1:\<port\>/ |URL-cím |
-| Intervallum |30 |Mennyi ideig várjon a következő állapotadat-mintavétel előtt zajlik.|
+| Interval |30 |Mennyi ideig várjon a következő állapotadat-mintavétel előtt zajlik.|
 | Időtúllépés |30 |Idő másodpercben az application gateway probe válaszra vár a mintavétel nem kifogástalanként való megjelölése előtt. Mintavétel kifogástalan állapotúként adja vissza, ha a megfelelő háttér azonnal van megjelölve kifogástalan.|
 | Nem kifogástalan állapot küszöbértéke |3 |Szabályozza, hogy hány mintavételek küldése abban az esetben az rendszeres állapotminta hiba történik. Ezek további állapotadat-mintavételek meghatározni a a háttérrendszer gyorsan egymás után gyorsan küldik, és nem várja meg a mintavételi időköz. A háttérkiszolgáló-van megjelölve, miután az egymást követő mintavételi hiba száma eléri a nem kifogástalan állapot küszöbértéke. |
 
@@ -83,10 +84,10 @@ Az alábbi táblázat biztosít jelentésdefiníciókat egyéni állapotmintát 
 | Mintavétel tulajdonság | Leírás |
 | --- | --- |
 | Name (Név) |A mintavétel neve. Ez a név segítségével tekintse meg a mintavétel a háttér-HTTP-beállítások. |
-| Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttér-HTTP-beállítások meghatározott protokollt használ. |
+| Protocol |A mintavétel küldéséhez használt protokoll. A mintavétel a háttér-HTTP-beállítások meghatározott protokollt használ. |
 | Gazdagép |Állomásnév küldeni a Hálózatfigyelő. Alkalmazható csak akkor, ha a többhelyes konfigurálva van az Application Gatewayen, ellenkező esetben használja a "127.0.0.1". Ez az érték eltér a virtuális gép állomásnevét. |
-| Útvonal |A mintavétel relatív elérési útja. Az érvényes elérési utat indul (/). |
-| Intervallum |Mintavétel gyakorisága másodpercben. Ez az érték két egymást követő mintavételek közötti időintervallum. |
+| `Path` |A mintavétel relatív elérési útja. Az érvényes elérési utat indul (/). |
+| Interval |Mintavétel gyakorisága másodpercben. Ez az érték két egymást követő mintavételek közötti időintervallum. |
 | Időtúllépés |Mintavétel időkorlátja másodpercben. Ha az időkorláton belül nem érkezik meg egy érvényes válasz, a mintavétel van megjelölve nem sikerült.  |
 | Nem kifogástalan állapot küszöbértéke |Mintavételi újrapróbálkozások számát. A háttérkiszolgáló-van megjelölve, miután az egymást követő mintavételi hiba száma eléri a nem kifogástalan állapot küszöbértéke. |
 
@@ -104,3 +105,5 @@ Ezenkívül nem blokkolja a kimenő internetkapcsolat, és engedélyezni kell az
 Miután megismerkedett az Application Gateway-állapotfigyelés, konfigurálhat egy [egyéni állapotadat-mintavétel](application-gateway-create-probe-portal.md) az Azure Portalon, vagy egy [egyéni állapotadat-mintavétel](application-gateway-create-probe-ps.md) PowerShell és az Azure Resource Manager használatával üzembe helyezési modell.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
+
+<!-- Update_Description: wording update -->

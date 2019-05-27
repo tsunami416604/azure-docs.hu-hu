@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e5b34171af53a72ef231bb8beb758b7ff97cf5d9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 41589dccae4e1259e4dc9368d5825ba770b4bdcc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576781"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146705"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Oktatóanyag: A Linux rendszerű eszközök IoT Edge-modulok fejlesztése
 
@@ -51,7 +51,7 @@ A következő táblázat felsorolja a támogatott fejlesztési forgatókönyvek 
 | **Linux rendszerű eszköz architektúra** | Linux-AMD64 <br> Linux ARM32 | Linux-AMD64 <br> Linux ARM32 |
 | **Azure-szolgáltatások** | Azure Functions <br> Azure Stream Analytics <br> Azure Machine Learning |   |
 | **Nyelvek** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
-| **További információ** | [A Visual Studio Code az Azure IoT Edge](https://marketplace.visualstudio.com/itemdetails?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
+| **További információ** | [A Visual Studio Code az Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
 
 Ebben az oktatóanyagban a fejlesztési lépések a Visual Studio Code azzal foglalkozunk. Ha szeretné inkább használja a Visual Studio 2017, tekintse meg a következő témakör utasításait [használja a Visual Studio 2017 fejlesztésről és hibakeresésről modulok az Azure IoT Edge](how-to-visual-studio-develop-module.md).
 
@@ -249,7 +249,7 @@ A Visual Studio Code most már hozzáfér a tárolóregisztrációs adatbázisba
 
 <!--Alternative steps: Use VS Code Docker tools to view ACR images with tags-->
 
-### <a name="troubleshoot"></a>Hibaelhárítás
+### <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
 
 Összeállításakor és a modul rendszerképének leküldése hibákat észlel, ha gyakran rendelkezik, hogy a fejlesztői gépen a Docker-konfigurációját. A következő ellenőrzések segítségével áttekintheti a konfigurációt: 
 

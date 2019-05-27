@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 05/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 3fca94a56f80ec520ac6777610a90bdddf1b8988
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
-ms.translationtype: MT
+ms.openlocfilehash: 2b021975983858386cd7c847ba11a26f4feb9562
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473265"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150459"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
 
@@ -70,12 +70,12 @@ A.  Az Azure Data Box beszerzéséhez jelentkezzen be az Azure Portalon, majd ho
 ### <a name="q-i-was-not-able-to-create-a-data-box-order-in-the-azure-portal-why-would-this-be"></a>K. Nem sikerült létrehoznom egy Data Box-megrendelést az Azure Portalon. Mi lehet ennek az oka?
 A. Ha nem sikerült létrehoznia egy Data Box-megrendelést, akkor a probléma az előfizetési típusában vagy a hozzáférésében keresendő. 
 
-Ellenőrizze az előfizetését. Data Box csak Nagyvállalati Szerződés (EA) és a Cloud solution provider (CSP) előfizetési ajánlatok érhető el. Ha az előfizetése nem az említett típusok egyikéhez tartozik, forduljon a Microsoft támogatási szolgálatához az előfizetése bővítése érdekében.
+Ellenőrizze az előfizetését. A Data Box csak Nagyvállalati Szerződés (EA) és Felhőszolgáltató (CSP) típusú előfizetés esetén érhető el. Ha az előfizetése nem az említett típusok egyikéhez tartozik, forduljon a Microsoft támogatási szolgálatához az előfizetése bővítése érdekében.
 
 Ha egy támogatott típusú előfizetéssel rendelkezik, ellenőrizze a hozzáférési szintjét. Megrendelés létrehozására csak az előfizetések közreműködői vagy tulajdonosai jogosultak.
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-am-not-able-to-create-any-additional-orders-why-would-this-be"></a>K. Rendeltem néhány Data Box-eszközt. Nem tudok további rendeléseket létrehozni. Mi lehet ennek az oka?
-A. Lehetővé tesszük legfeljebb öt aktív rendelések előfizetésenként és kereskedelmi határon belül (ország és a kiválasztott régióban kombinációjával). Ha további eszközökre van szüksége, forduljon a Microsoft támogatási szolgálatához az előfizetésére vonatkozó korlátozás bővítéséhez.
+A. Legfeljebb öt aktív megrendelés engedélyezett előfizetésenként és a kereskedelmi korlátokon belül (ez az ország és a kiválasztott régió kombinációjából áll össze). Ha további eszközökre van szüksége, forduljon a Microsoft támogatási szolgálatához az előfizetésére vonatkozó korlátozás bővítéséhez.
 
 ### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>K. Amikor megpróbálok létrehozni egy rendelést, arról kapok értesítést, hogy a Data Box szolgáltatás nem érhető el. Ez mit jelent?
 A. Ez azt jelenti, hogy a Data Box szolgáltatás nem érhető el az ország és régió kiválasztott kombinációja esetében. A kombináció módosításával valószínűleg elérhetővé válik a Data Box szolgáltatás. Azon régiók listáját, ahol a szolgáltatás elérhető, a [Data Box regionális elérhetőségét](data-box-overview.md#region-availability) ismertető témakörben találja.
@@ -182,6 +182,9 @@ A. Ha az eszköz sérülten érkezett, vagy a jelek illetéktelen hozzáférésr
 
 ### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>K. Használhatom a saját futáromat a Data Box szállításához?
 A. A Data Box szolgáltatás keretében a Microsoft intézi az Azure-adatközpontba és onnan történő szállítást. Ha saját futárt szeretne igénybe venni, használja az Azure Import/Export szolgáltatást. További információ [az Azure Import/Export szolgáltatásról](../storage/common/storage-import-export-service.md).
+
+### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>K. Data Box eszközök közötti ország szegélyek fog szállítási során?
+A. Minden Data Box-eszköz belül a rendeltetési országot postáztuk, és nem lesz adatbázisközi bármely nemzetközi határokon. Az egyetlen kivétel, az Európai Unió (EU), ahol eszközök szállíthat, és bármely EU országból rendeléseket.
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>K. Az E-ink-képernyőn nem jelenik meg a csomagvisszaküldési címke. Mit tegyek?
 A. Ha az E Ink-képernyőn nem jelenik meg a csomagvisszaküldési címke, hajtsa végre a következő lépéseket:

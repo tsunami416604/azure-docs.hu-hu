@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.openlocfilehash: 0942d5ba7b31ddb2c0dec5fe979f1331d1bf3bfd
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336031"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66136983"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata az App Service-ben és az Azure Functions
 
@@ -181,7 +181,7 @@ Először is szüksége egy felhasználó által hozzárendelt identitás-erőfo
 
 5. Belül a **felhasználóhoz (előzetes verzió)** lapra, majd **Hozzáadás**.
 
-6. Keresse meg a korábban létrehozott identitását, és válassza ki azt. Kattintson a **Hozzáadás** parancsra.
+6. Keresse meg a korábban létrehozott identitását, és válassza ki azt. Kattintson a **Hozzáadás**lehetőségre.
 
 ![Az App Service-ben felügyelt identitás](media/app-service-managed-service-identity/msi-blade-user.png)
 
@@ -285,11 +285,11 @@ Az alkalmazás felügyelt identitással rendelkezik definiált két környezeti 
 
 A **MSI_ENDPOINT** egy helyi URL-cím, amelyről az alkalmazás jogkivonatokat kérhetnek. Erőforrás egy token beszerzéséhez hajtsa végre egy HTTP GET kérés ehhez a végponthoz, többek között a következő paraméterekkel:
 
-> |Paraméter neve|Eleme ennek|Leírás|
+> |Paraméternév|Eleme ennek|Leírás|
 > |-----|-----|-----|
 > |erőforrás|Lekérdezés|Az AAD erőforrás URI-t az erőforrás számára, ami egy token beszerzése. Ez lehet egy a [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármely egyéb erőforrás URI-t.|
 > |API-verzió|Lekérdezés|A használt jogkivonat API-verzió. "2017-09-01" jelenleg az egyetlen támogatott verzió.|
-> |titkos kód|Fejléc|A MSI_SECRET környezeti változó értékét. Ez a fejléc segítségével mérsékelhetik a kiszolgálóoldali kérések hamisítása (SSRF) használatos.|
+> |titkos|Fejléc|A MSI_SECRET környezeti változó értékét. Ez a fejléc segítségével mérsékelhetik a kiszolgálóoldali kérések hamisítása (SSRF) használatos.|
 > |ClientID|Lekérdezés|(Nem kötelező) A felhasználó által hozzárendelt identitás használt azonosítója. Ha nincs megadva, a rendszer által hozzárendelt identitás szolgál.|
 
 Sikeres 200 OK válasz tartalmaz egy JSON-törzse a következő tulajdonságokkal:

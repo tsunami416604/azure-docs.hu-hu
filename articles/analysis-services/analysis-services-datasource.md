@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 05/22/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2505ab5a9445256bd592dfa7f58a6dea79d25043
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 7abd0ac3d95825594dffe385bccc1672d0f71c5f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506813"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66142564"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Services
 
@@ -34,7 +34,7 @@ Az adatforrások és összekötők jelennek meg adatok lekérése vagy a Visual 
 ||||
 
 <a name="tab1400a">1</a> – táblázatos 1400-as és újabb modellek csak.   
-<a name="azsqlmanaged">2</a> – azure SQL Database felügyelt példányába használata támogatott. Mivel a felügyelt példány az Azure virtuális hálózaton belüli magánhálózati IP-címmel, egy helyszíni Adatátjáróra szükség.   
+<a name="azsqlmanaged">2</a> – azure SQL Database felügyelt példányába használata támogatott. Mivel a felügyelt példány az Azure virtuális hálózaton belüli magánhálózati IP-címmel, egy helyszíni Adatátjáróra szükség. Az Azure SQL Database felügyelt példánya a nyilvános végpont jelenleg nem támogatott.   
 <a name="databricks">3</a> – azure Databricks használatával a Spark-összekötő jelenleg nem támogatott.   
 <a name="gen2">4</a> – ADLS Gen2 jelenleg nem támogatott.
 

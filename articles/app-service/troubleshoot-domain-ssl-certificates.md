@@ -16,11 +16,11 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525381"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66136174"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Tartomány és az Azure App Service SSL tanúsítvánnyal kapcsolatos problémák elhárítása
 
@@ -273,7 +273,7 @@ Ez a probléma akkor fordul elő, a következő okok valamelyike:
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 
 **Van webhelyem saját egyéni tartomány konfigurálása után azt díjcsomagot?**
 

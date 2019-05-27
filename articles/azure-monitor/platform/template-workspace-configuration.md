@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: magoedte
 ms.openlocfilehash: 0578b50952c12d4587f7a4751bc831d3134c64e7
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540771"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66129427"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával a Log Analytics-munkaterület kezelése
 
@@ -42,7 +42,7 @@ Ez a cikk a sablon a minták azt mutatják be az egyes konfigurációs sablonok 
 ## <a name="api-versions"></a>API-verziók
 Az alábbi táblázat az ebben a példában használt erőforrások API-verzió.
 
-| Erőforrás | Erőforrás típusa | API-verzió |
+| Resource | Erőforrás típusa | API-verzió |
 |:---|:---|:---|
 | Munkaterület   | munkaterületek    | 2017-03-15-preview |
 | Keresés      | savedSearches | 2015-03-20 |

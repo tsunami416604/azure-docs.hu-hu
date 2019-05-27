@@ -16,11 +16,11 @@ ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 0a5b8bdbcd5a05574d824e3f57cfc23967278e27
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487736"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66138700"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-ben
 
@@ -126,7 +126,7 @@ Kattintson a **Feltöltés** gombra.
 
 Amikor az App Service befejezi a tanúsítvány feltöltését, a tanúsítvány megjelenik az **SSL settings** (SSL-beállítások) lapon.
 
-![Feltöltött tanúsítvány](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
+![Tanúsítvány feltöltve](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
 ### <a name="bind-your-ssl-certificate"></a>Az SSL-tanúsítvány kötése
 

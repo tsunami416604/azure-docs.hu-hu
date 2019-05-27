@@ -14,11 +14,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: aed341c50332b424a1149c129629cd451a4e5133
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500083"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66146905"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Adatok importálására és az Azure Data Factory használatával az Azure-tábla
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -107,7 +107,7 @@ Ha az Azure Table oszlop dátum/idő típus:
 | azureTableRowKeyName |Adja meg az oszlop, amelynek oszlopértékek sor kulcsaként használt nevét. Ha nincs megadva, használjon egy GUID Azonosítót minden egyes sorára. |Egy oszlop neve. |Nem |
 | azureTableInsertType |Adatok beszúrása az Azure-tábla a módot.<br/><br/>Ez a tulajdonság szabja meg, hogy rendelkeznek-e létező sorok egyeztetésével partíció-és a kimeneti tábla cserélni vagy egyesített értékekre. <br/><br/>(Egyesítési és cserélje ki) ezen beállítások működésének kapcsolatos további információkért lásd: [vagy egyesítési entitás beszúrása](https://msdn.microsoft.com/library/azure/hh452241.aspx) és [entitás cseréje vagy beszúrása](https://msdn.microsoft.com/library/azure/hh452242.aspx) témaköröket. <br/><br> Ez a beállítás a sor szintjén, a tábla szintjén nem vonatkozik, és sem a lehetőség törli a kimeneti tábla sorait, amelyek a bemeneti adatok nem léteznek. |Egyesítés (alapértelmezett)<br/>cserélje le |Nem |
 | writeBatchSize |Szúr be az Azure-tábla adatait, ha elérte a writeBatchSize vagy writeBatchTimeout. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
-| writeBatchTimeout |Adatok beszúrása az Azure-tábla, ha elérte a writeBatchSize vagy writeBatchTimeout |Időtartam<br/><br/>Példa: "00: 20:00" (20 perc) |Nem (az alapértelmezett tároló ügyfél alapértelmezett időtúllépési érték 90 másodperc) |
+| writeBatchTimeout |Adatok beszúrása az Azure-tábla, ha elérte a writeBatchSize vagy writeBatchTimeout |TimeSpan<br/><br/>Példa: "00: 20:00" (20 perc) |Nem (az alapértelmezett tároló ügyfél alapértelmezett időtúllépési érték 90 másodperc) |
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
 Képezze le a forrásoszlop translatorral a JSON-tulajdonság előtt a céloszlop használhatja a azureTablePartitionKeyName céloszlop.
@@ -478,7 +478,7 @@ Amikor adatok áthelyezése Azure táblából, a következő & [Azure Table Stor
 | OData-adatok típusa | .NET Type | Részletek |
 | --- | --- | --- |
 | Edm.Binary |byte[] |Bájttömb legfeljebb 64 KB-os. |
-| Edm.Boolean |bool |Logikai érték. |
+| Edm.Boolean |logikai |Logikai érték. |
 | Edm.DateTime |DateTime |Egy 64 bites érték, egyezményes világidő (UTC) szerint kifejezett. A támogatott dátum és idő tartomány kezdődik 12:00 éjféltől. január 1, i 1601. (C.E.,) (UTC). A tartomány vége. December 31-9999. |
 | Edm.Double |double |Egy 64 bites lebegőpontos értéket. |
 | Edm.Guid |Guid |A 128 bites globálisan egyedi azonosítóját. |

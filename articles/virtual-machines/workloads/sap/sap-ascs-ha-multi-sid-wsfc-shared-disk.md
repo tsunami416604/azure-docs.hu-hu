@@ -18,11 +18,11 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: dbc21922be66c793e76882cbd145f19681684252
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786888"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66143272"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -255,7 +255,7 @@ A teljes fekvő két magas rendelkezésre állású SAP-rendszerek a következő
 
 Az infrastruktúra előkészítése, egy további SAP ASCS/SCS-példányt is telepíthet a következő paraméterekkel:
 
-| Paraméter neve | Érték |
+| Paraméternév | Érték |
 | --- | --- |
 | SAP ASCS/SCS SID |PR1-lb-ascs |
 | Az SAP DBMS belső load balancer | PR5 |

@@ -184,6 +184,8 @@
   items:
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjszabás és korlátok

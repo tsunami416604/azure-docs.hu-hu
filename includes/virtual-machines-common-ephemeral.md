@@ -9,13 +9,13 @@ ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65468373"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145923"
 ---
-A rövid élettartamú operációsrendszer-lemezek helyi virtuális gép (VM) tárolására létrehozni és a távoli Azure Storage nem megőrzött. A rövid élettartamú operációsrendszer-lemezek is állapot nélküli számítási feladatokhoz, ahol alkalmazások tűri az egyes virtuális gép hibáinak, de nagyobb méretű környezetek esetében szükséges idő- vagy időérték alaphelyzetbe állítja a Virtuálisgép-példányokhoz több ügyféladataikat működik. Emellett akkor is alkalmazásokhoz, a klasszikus üzemi modellel, helyezze át a Resource Manager-alapú üzemi modellbe való telepítése. A rövid élettartamú operációsrendszer-lemezzel megfigyelte lenne kisebb olvasási/írási késés az operációsrendszer-lemez és a gyorsabb, VM-rendszerképeit alaphelyzetbe állítani. Emellett a rövid élettartamú operációsrendszer-lemez szabad, díjak operációsrendszer-lemez tárolási költségek nélkül. 
+A rövid élettartamú operációsrendszer-lemezek helyi virtuális gép (VM) tárolására létrehozni és a távoli Azure Storage nem megőrzött. A rövid élettartamú operációsrendszer-lemezek is állapot nélküli számítási feladatokhoz, ahol alkalmazások tűri az egyes virtuális gép hibáinak, de nagyobb méretű környezetek esetében szükséges idő- vagy időérték alaphelyzetbe állítja a Virtuálisgép-példányokhoz több ügyféladataikat működik. Emellett akkor is alkalmazásokhoz, a klasszikus üzemi modellel, helyezze át a Resource Manager-alapú üzemi modellbe való telepítése. Rövid élettartamú operációsrendszer-lemezzel alacsonyabb olvasási/írási késés tapasztalható az operációsrendszer-lemezen, és a rendszerkép gyorsabban alaphelyzetbe állítható. Emellett a rövid élettartamú operációsrendszer-lemez szabad, díjak operációsrendszer-lemez tárolási költségek nélkül. 
  
 Ideiglenes lemezek a fő funkciói a következők: 
 - Marketplace-rendszerképek és egyéni rendszerképeket is használható.
@@ -30,7 +30,7 @@ Ideiglenes lemezek a fő funkciói a következők:
 |                             | Állandó operációsrendszer-lemez                          | Rövid élettartamú operációsrendszer-lemez                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | Maximális operációsrendszer-lemez mérete      | 2 TiB                                                                                        | Gyorsítótár mérete a Virtuálisgép-méretet vagy 2TiB, amelyik érték kisebb - [DS](../articles/virtual-machines/linux/sizes-general.md), [ES](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md), és [GS](../articles/virtual-machines/linux/sizes-memory.md)              |
-| Támogatott Virtuálisgép-méretek          | Az összes                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
+| Támogatott VM-méretek          | Az összes                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
 | Lemez típusa támogatása           | Felügyelt és nem felügyelt operációsrendszer-lemez                                                                | Felügyelt operációsrendszer-lemez csak                                                               |
 | Régió támogatása              | Minden régió                                                                                  | Minden régió                              |
 | Adatmegőrzés            | Az operációs rendszer lemez adatait, az operációs rendszer lemezre írt Azure Storage szolgáltatásban tárolódnak                                  | Operációsrendszer-lemezre írt adatok a helyi virtuális gép Storage tárolja, és az Azure Storage nincs megőrizve. |

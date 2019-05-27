@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 12/15/2018
+ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 8bcc72cf151b085c7f65b6c600a49642cd330bac
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 40e54daa60efedd84b32c72f29d1e2a8858c27da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248827"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66162284"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Oktatóanyag: Beállítása és IoT hub-metrikák és diagnosztikai naplók használata
 
@@ -274,7 +274,7 @@ Az IoT Hub nem lett migrálva az a [metrikák az Azure monitorban](/azure/azure-
 
 Korábban, a szkript telepítési szakaszában beállított egy eszközt az IoT-eszköz használatának szimulálására. Ebben a szakaszban egy .NET-konzolalkalmazást tölt le, amely egy, az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál.  
 
-Az [IoT-eszköz szimulációjára](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) szolgáló megoldás letöltése. Ez a hivatkozás letölti olyan adattárat, amelynek a; több alkalmazás a megoldást keres az iot-hub/oktatóprogramok/útválasztás/SimulatedDevice /.
+Az [IoT-eszköz szimulációjára](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) szolgáló megoldás letöltése. Ez a hivatkozás letölti olyan adattárat, amelynek a; több alkalmazás a keresett megoldást az iot-hub/oktatóprogramok/útválasztás /.
 
 Kattintson duplán a megoldásfájlra (SimulatedDevice.sln), a kód megnyitásához a Visual Studióban, majd nyissa meg a Program.cs fájlt. Az `{iot hub hostname}` értéket cserélje le az IoT Hub gazdagépnevére. Az IoT Hub gazdagépnevének formátuma: **{iot-hub-name}.azure-devices.net**. Ebben az oktatóanyagban a központ gazdagépneve: **ContosoTestHub.azure-devices.net**. Ezután a `{device key}` értéket cserélje le az eszközkulcsra, amelyet korábban, a szimulált eszköz beállítása során mentett. 
 
@@ -298,7 +298,7 @@ Futtassa a konzolalkalmazást. Várjon néhány percet (10 – 15). Láthatja, h
 
 ### <a name="see-the-metrics-in-the-portal"></a>A metrikák a portálon
 
-Nyissa meg a metrikákat az irányítópultról. Az idő értékek módosításához *elmúlt 30 percben* idő részletességét a *1 perces*. A telemetriai üzeneteket küldi, és használja a diagramra, a diagram alján a legutóbbi számokkal üzenetek teljes száma látható. 
+Nyissa meg a metrikákat az irányítópultról. Az idő értékek módosításához *elmúlt 30 percben* idő részletességét a *1 perces*. A telemetriai üzeneteket küldi, és használja a diagramra, a diagram alján a legutóbbi számokkal üzenetek teljes száma látható.
 
    ![Képernyőfelvétel: a metrikákat.](./media/tutorial-use-metrics-and-diags/13-metrics-populated.png)
 
@@ -385,4 +385,4 @@ Ebben az oktatóanyagban megtudhatta, hogyan használható a metrikák és diagn
 A következő oktatóanyag az IoT-eszközök állapotának kezelését mutatja be. 
 
 > [!div class="nextstepaction"]
-[Eszközök konfigurálása háttérszolgáltatásból](tutorial-device-twins.md)
+> [Eszközök konfigurálása háttérszolgáltatásból](tutorial-device-twins.md)

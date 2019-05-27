@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
 ms.openlocfilehash: 1c360d60a429f137c4b74ad4afe8ae9bba895b7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883411"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66130935"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Hozzon létre egy Application Insights-erőforrást PowerShell használatával
 
@@ -200,8 +200,8 @@ Az alkalmazás-erőforrás létrehozásához a vállalati ár csomaggal, a fenti
 
 |priceCode|csomag|
 |---|---|
-|1|Alapszintű|
-|2|Enterprise|
+|1.|Alapszintű|
+|2|Vállalat|
 
 * Ha csak szeretné használni az alapértelmezett alapszintű árképzési csomag, kihagyhatja a CurrentBillingFeatures erőforrás a sablonból.
 * Ha azt szeretné, a tarifacsomag módosítása az összetevő-erőforrás létrehozása után, használhatja a sablont, amely a "microsoft.insights/components" erőforrás az áttekinthetőség kedvéért kihagyja. Emellett nincs megadva a `dependsOn` csomópont számlázási erőforrásból. 

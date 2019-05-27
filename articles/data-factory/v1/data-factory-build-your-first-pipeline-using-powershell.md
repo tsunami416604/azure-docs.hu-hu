@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: eb546808951b2797044f3ba83b5a48c59fa48539
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9d273886b3add43818af80915e42b4aa7ca69a89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550465"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66146890"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Oktatóanyag: Az első Azure data factory létrehozása az Azure PowerShell használatával
 > [!div class="op_single_selector"]
@@ -58,17 +58,17 @@ Ebben a lépésben az Azure PowerShell használatával létrehozza a **FirstData
 
 1. Indítsa el az Azure PowerShellt, és futtassa az alábbi parancsot. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell ezeket a parancsokat.
    * Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
-    ```PowerShell
-    Connect-AzAccount
-    ```    
+     ```PowerShell
+     Connect-AzAccount
+     ```    
    * Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
-    ```PowerShell
-    Get-AzSubscription  
-    ```
+     ```PowerShell
+     Get-AzSubscription  
+     ```
    * Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Ennek az előfizetésnek egyeznie kell az Azure Portalon használt előfizetéssel.
-    ```PowerShell
-    Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
-    ```     
+     ```PowerShell
+     Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
+     ```     
 2. Hozzon létre egy Azure-erőforráscsoportot **ADFTutorialResourceGroup** néven a következő parancs futtatásával:
     
     ```PowerShell
@@ -80,7 +80,7 @@ Ebben a lépésben az Azure PowerShell használatával létrehozza a **FirstData
     ```PowerShell
     New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
     ```
-Vegye figyelembe a következő szempontokat:
+   Vegye figyelembe a következő szempontokat:
 
 * Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha a **Data factory name “FirstDataFactoryPSH” is not available** (A „FirstDataFactoryPSH” data factory-név nem érhető el) hibaüzenetet kapja, módosítsa a nevet (például: azÖnneveFirstDataFactoryPSH). Használja ezt az ADFTutorialFactoryPSH helyett az oktatóanyag lépéseinek végrehajtása során. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
 * Data Factory-példányok létrehozásához az Azure-előfizetés közreműködőjének/rendszergazdájának kell lennie.
@@ -218,7 +218,7 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
 
    | Tulajdonság | Leírás |
    |:--- |:--- |
-   | type |A tulajdonság beállítása AzureBlob, mert az adatok az Azure Blob Storage-tárban találhatók. |
+   | típus |A tulajdonság beállítása AzureBlob, mert az adatok az Azure Blob Storage-tárban találhatók. |
    | linkedServiceName |A korábban létrehozott StorageLinkedService szolgáltatásra hivatkozik. |
    | fileName |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az esetben csak az input.log fájl lesz feldolgozva. |
    | type |A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. |
@@ -416,6 +416,7 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, amely egy HDInsight
 Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely Hive-parancsfájlt futtat egy igény szerinti Azure HDInsight-fürtön. A másolási tevékenység adatokat másol egy Azure-Blobból az Azure SQL használatával, olvassa el [oktatóanyag: Adatok másolása az Azure-Blobból Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Lásd még:
+
 | Témakör | Leírás |
 |:--- |:--- |
 | [A Data Factory parancsmagjainak leírása](/powershell/module/az.datafactory) |A Data Factory-parancsmagokkal kapcsolatos átfogó dokumentáció. |

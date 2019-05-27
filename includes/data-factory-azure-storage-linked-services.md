@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: b8585b62b0728d1ba6e010e42b44840903c46833
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500865"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146916"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
 A **Azure Storage társított szolgáltatás** lehetővé teszi, hogy az Azure storage-fiók összekapcsolása az Azure data factory használatával az **fiókkulcs**, amely az adat-előállító globális hozzáférést biztosít az Azure Storage. Az alábbi táblázatban az adott Azure Storage társított szolgáltatás JSON-elemek leírását.
@@ -17,7 +17,7 @@ A **Azure Storage társított szolgáltatás** lehetővé teszi, hogy az Azure s
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type |A type tulajdonságot kell beállítani: **AzureStorage** |Igen |
-| kapcsolati Sztringje |Adja meg a connectionString tulajdonság az Azure storage való kapcsolódáshoz szükséges adatokat. |Igen |
+| connectionString |Adja meg a connectionString tulajdonság az Azure storage való kapcsolódáshoz szükséges adatokat. |Igen |
 
 Lépések megtekintése és másolása a fiókkulcs egy Azure Storage a következő szakaszban talál: [Hozzáférési kulcsok](../articles/storage/common/storage-account-manage.md#access-keys).
 

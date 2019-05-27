@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f5d1c66cb049ab9ec52db619d55a4bb3e485e4b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b8142551d9c20c18d83c256b3f07a0deb291577c
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60588418"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147658"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhő
-##  <a name="introduction"></a>Bevezetés
+##  <a name="introduction"></a>Bemutatás
 ### <a name="overview"></a>Áttekintés
 Segít a jelenlegi és jövőbeli Azure ügyfelek ismertetése, és felhasználja az elérhető különböző biztonsági funkciókat és körülvevő az Azure platform, Microsoft kifejlesztett egy sorozatát tanulmányok, biztonsági áttekintéseket, ajánlott eljárások és Ellenőrzőlistákat.
 A témakörök tartomány és teljes mértékű tekintetében, és rendszeresen frissül. Ez a dokumentum a sorozat része, a következő absztrakt szakaszban foglaltak szerint.
@@ -137,6 +137,7 @@ Kész üzletifolyamat-elkülönített mérete garantálja, hogy a virtuális gé
 * Standard G5
 * Standard_DS15_v2
 * Standard_D15_v2
+* Standard_F72s_v2
 
 További információ érhető el minden egyes elkülönített mérete [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
 

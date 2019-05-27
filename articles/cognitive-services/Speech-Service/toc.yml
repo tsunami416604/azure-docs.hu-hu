@@ -170,7 +170,7 @@
               href: how-to-custom-speech-train-model.md
             - name: Egyéni modell üzembe helyezése
               href: how-to-custom-speech-deploy-model.md
-            - name: 'Útmutató: Ember által címkézett átiratok létrehozása'
+            - name: Útmutató – Ember által címkézett átiratok létrehozása
               href: how-to-custom-speech-human-labeled-transcriptions.md
         - name: Szövegfelolvasás
           items:
@@ -195,14 +195,14 @@
           href: how-to-migrate-from-custom-speech-service.md
         - name: A Translator Speech API-ból
           href: how-to-migrate-from-translator-speech-api.md
-    - name: Helyszíni tárolók használata
+    - name: Tárolók használata
       items:
-        - name: Helyszíni tárolók telepítése és futtatása
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+        - name: Tárolók telepítése és futtatása
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
           href: speech-container-howto.md
         - name: Tárolók konfigurálása
           href: speech-container-configuration.md
-          displayName: 'docker, container, billing, apikey, pull, logging'
+          displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
 - name: Példák
   items:
     - name: Beszéd SDK
@@ -314,6 +314,8 @@
       href: support.md
     - name: Díjszabás és korlátok
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: Adatvédelem és cookie-k

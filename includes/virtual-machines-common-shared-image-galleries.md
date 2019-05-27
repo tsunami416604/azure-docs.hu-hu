@@ -9,11 +9,11 @@ ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 4063e79a9415ac35b09cc77d0110c04e191b49c7
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546784"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145873"
 ---
 Megosztott lemezkép-katalógus szolgáltatása segít kialakítani a struktúra és a szervezet a felügyelt VM-rendszerképeit körül. Megosztott kép katalógusok adja meg:
 
@@ -128,7 +128,7 @@ Azt javasoljuk, hogy a gyűjtemény szintjén, a legjobb élmény megosztása. R
 Képek is megoszthatók, ipari méretekben használatával egy több-bérlős alkalmazás regisztrációját a bérlők között. Bérlők között képek megosztásával kapcsolatos további információkért lásd: [katalógus Virtuálisgép-rendszerképek megosztása Azure bérlők](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 ## <a name="billing"></a>Számlázás
-Nem jár extra megosztott Képkatalógus szolgáltatásunkat. Meg kell fizetni az alábbi forrásanyagokat:
+A megosztott lemezkép-katalógus használata nem jár többletdíjakkal. Meg kell fizetni az alábbi forrásanyagokat:
 - Tárolási költségek, a megosztott kép verziók tárolásához. Költsége attól függ, a verzió a rendszer replikálja régiók számának és a rendszerkép verziószámát replikáin száma. Például ha mindkét replikálja a rendszer 3 régió 2 képek is vannak, majd, módosítani kell 6 felügyelt lemezek mérete alapján. További információkért lásd: [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks/).
 - A hálózati kimenő forgalom költségeit, az első rendszerkép verziója a forrásrégióban a replikált régiókban való replikálásra. További replikák kezeli a régión belül, így nem vonatkozik külön díj. 
 

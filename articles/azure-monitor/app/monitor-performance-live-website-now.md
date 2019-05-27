@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0587782cbfa31f7b397b950a752040cc678cf7d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0de4da5792553b8e61ce8116988dc0d0b2c55488
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576634"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131004"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Eszköz webalkalmazások az Application Insights Állapotfigyelőt futásidejű
 
@@ -149,6 +149,8 @@ Mi a probléma nyomon követ [Itt](https://github.com/Microsoft/ApplicationInsig
 * A kimenet részletes naplók, módosítsa a konfigurációs fájlban: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` , és adja hozzá `<add key="TraceLevel" value="All" />` , a `appsettings`.
 Ezután indítsa újra az állapotfigyelő.
 
+* Mivel Állapotfigyelőt .NET-alkalmazás is engedélyezheti [.net nyomkövetés a konfigurációs fájlban a megfelelő diagnosztikai hozzáadásával](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). Ha például bizonyos esetekben hasznos lehet megtekintéséhez, hogy mi történik, a hálózati szintű [hálózati nyomkövetés konfigurálása](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
+
 ### <a name="insufficient-permissions"></a>Nem megfelelő engedélyek
   
 * Ha a kiszolgálón „elégtelen engedélyekkel” kapcsolatos üzenet jelenik meg, próbálja meg a következőt:
@@ -184,7 +186,7 @@ Operációs rendszeri támogatás az Application Insights Állapotfigyelőhöz a
 * Windows Server 2012 R2
 * Windows Server 2016
 
-a legújabb szervizcsomaggal és a .NET-keretrendszer 4.5-ös verziójával
+a legújabb Szervizcsomaggal és a .NET-keretrendszer 4.5 (állapotfigyelő épül, ez a keretrendszer verziója)
 
 Az ügyféloldalon: Windows 7, 8, 8.1 és 10, szintén a .NET-keretrendszer 4.5
 
@@ -276,7 +278,9 @@ Ha kiválaszt egy webalkalmazást, amelyet az Állapotfigyelővel szeretne beál
 
 ### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Application Insights SDK melyik verzióját telepíti az állapotfigyelő?
 
-Jelen pillanatban állapotfigyelője csak az Application Insights SDK-verziók 2.3-as vagy 2.4 telepíthetők.
+Jelen pillanatban állapotfigyelője csak az Application Insights SDK-verziók 2.3-as vagy 2.4 telepíthetők. 
+
+Az Application Insights SDK 2.4 verzió van a [legfrissebb verziója a .NET 4.0-s támogatási](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1) lett [EOL 2016. január](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/). Jelen pillanatban ezért állapotot a figyelő a .NET 4.0-s alkalmazások szoftverfejlesztők használható. 
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>Az alkalmazás frissítésekor minden alkalommal futtatnom kell az Állapotfigyelőt?
 

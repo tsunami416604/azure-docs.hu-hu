@@ -7,14 +7,14 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 6e1ac5dfd1972e406a1bd8dcd26e6aef2c4ea6d1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6ffce339fe7b1a434c8f007b417ee81a42529dfc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919868"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66142495"
 ---
-# <a name="refresh-with-logic-apps"></a>Frissítse a Logic Apps használatával
+# <a name="refresh-with-logic-apps"></a>Frissítés a Logic Apps használatával
 
 A Logic Apps és a REST-hívások segítségével, az Azure Analysis táblázatos modellekhez, beleértve a lekérdezések kiterjesztése kibővítése csak olvasható replikák szinkronizálása az automatizált adatfrissítési műveletek is végezhet.
 
@@ -66,14 +66,14 @@ A HTTP-tevékenység a következőképpen konfigurálja:
 |Tulajdonság  |Érték  |
 |---------|---------|
 |**Metódus**     |POST         |
-|**URI-T**     | https://*a kiszolgáló régió*/servers/*aas kiszolgálónév*/models/*az adatbázis neve*/ <br /> <br /> Példa: https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/|
+|**URI-T**     | https://*a kiszolgáló régió*/servers/*aas kiszolgálónév*/models/*az adatbázis neve*/ <br /> <br /> Például: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/|
 |**Fejlécek**     |   Content-Type, application/json <br /> <br />  ![Fejlécek](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Törzs**     |   A kérelem törzsében képező kapcsolatos további információkért lásd: [aszinkron frissítése a REST API - bejegyzés /refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Hitelesítés**     |Active Directory OAuth         |
 |**bérlő**     |Töltse ki az Azure Active Directory-bérlő azonosítója         |
 |**Célközönség**     |https://*.asazure.windows.net         |
 |**Ügyfél-azonosító**     |Adja meg a szolgáltatásnév neve ClientID         |
-|**Hitelesítő adatok típusa**     |Titkos         |
+|**Hitelesítő adatok típusa**     |Secret         |
 |**Titkos kód**     |Adja meg a szolgáltatásnév neve titkos kód         |
 
 Példa:

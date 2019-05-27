@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c025cdeb-786c-4aab-abd1-132907007f7e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/24/2018
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49c5194f75ad973514a3ec015ef29c1d6f48330a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a13d2a62c64ea114e45b49e38eda0ddc686fe7cf
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60382862"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66143157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Workable
 
@@ -68,7 +69,7 @@ Az Azure AD integrálása a Workable konfigurálásához hozzá kell Workable a 
 
 4. A Keresés mezőbe írja be a **Workable**válassza **Workable** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Költségesebb a találatok listájában](common/search-new-app.png)
+    ![Költségesebb a találatok listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
@@ -80,8 +81,8 @@ Az Azure AD egyszeri bejelentkezés az Workable tesztelése és konfigurálása,
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Költségesebb egyszeri bejelentkezés konfigurálása](#configure-workable-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre költségesebb tesztfelhasználót](#create-workable-test-user)**  – egy megfelelője a Britta Simon Workable, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre költségesebb tesztfelhasználót](#create-workable-test-user)**  – egy megfelelője a Britta Simon Workable, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -127,7 +128,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Workable, hajtsa vé
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
@@ -141,7 +142,7 @@ Ahhoz, hogy az egyszeri bejelentkezés az Workable, támogatásért forduljon a 
 
 3. Kijelentkezési URL
 
-Egyszeri bejelentkezés engedélyezve van, a közös üzemeltetése fiókkezelővel értesíti, hogy, és a használható [Workable az egyszeri bejelentkezés lap](https://www.workable.com/sso/signin) a közös üzemeltetése fiók altartomány jelentkezzen be.
+Egyszeri bejelentkezés engedélyezve van, a közös üzemeltetése fiókkezelővel értesíti, hogy, és a használható [Workable az egyszeri bejelentkezés lap](https://id.workable.com/sso/signin) jelentkezzen be a közös üzemeltetése fiók altartományt.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -161,8 +162,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be `brittasimon\@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
@@ -198,7 +198,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó Workable jön létre. Költségesebb támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az Workable, egy új jön létre a hitelesítés után.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -9,12 +9,12 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 41f0607908cde94ca08a4c4dfce0a47032eefbb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a1bb5534d2f98a4e5143038ab1d5fbbcc76184fe
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739230"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133190"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Előkészítése az Update Management, Change Tracking és Inventory megoldásainak
 
@@ -32,27 +32,10 @@ Válassza ki a Log Analytics-munkaterületet és Automation-fiók, és kattintso
 
 ![Előkészítheti az Inventory megoldás](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-A megoldások engedélyezésekor csak bizonyos régiók esetén lehet összekapcsolni egy Log Analytics-munkaterületet és egy Automation-fiókot.
-
-Az alábbi táblázat bemutatja a támogatott leképezések:
-
-|**Log Analytics-munkaterület régiója**|**Az Azure Automation-régió**|
-|---|---|
-|Délkelet-Ausztrália|Délkelet-Ausztrália|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|USA keleti régiója<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|WestEurope|WestEurope|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP és az USA keleti régiója leképezések a Log Analytics-munkaterületek az Automation-fiókokhoz nem egy pontos régiók-hozzárendelést, de a megfelelő megfeleltetés.
-
-<sup>2</sup> kapacitás korlátozások miatt a régió nem érhető el új erőforrás létrehozásakor. Az Automation-fiókok és a Log Analytics-munkaterületekre is érvényes. A régió már létező kapcsolt erőforrások azonban továbbra is működik.
+> [!NOTE]
+> A megoldások engedélyezésekor csak bizonyos régiók esetén lehet összekapcsolni egy Log Analytics-munkaterületet és egy Automation-fiókot.
+>
+> A támogatott leképezés párok listáját lásd: [régió hozzárendelése Automation-fiók és a Log Analytics-munkaterület](how-to/region-mappings.md).
 
 A Change Tracking és az Inventory megoldással [változáskövetési](automation-vm-change-tracking.md) és [leltárkészítési](automation-vm-inventory.md) képességeket biztosíthat a virtuális gépek számára. Ebben a lépésben engedélyezzük a megoldást egy virtuális gépen.
 
@@ -82,7 +65,7 @@ A Frissítésfelügyeleti vagy a Change Tracking és Inventory megoldásainak sz
 
 Az Automation-fiókjában keresse meg és válassza **mentett keresések** alatt **általános**. A két mentett keresések, ezek a megoldások által használt az alábbi táblázatban láthatók:
 
-|Name (Név)     |Category  |Alias  |
+|Name (Név)     |Category  |Aliasnév  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Change Tracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |
@@ -161,6 +144,8 @@ Ha használta a kezdő és a virtuális gépek leállítása munkaidőn kívül 
 * Elindíthatja és leállíthatja a virtuális gép runbook ütemezése
 * Virtuális gép runbookok elindítása és leállítása
 * Változók
+
+Másik megoldásként is megszüntetheti a munkaterület az Automation-fiókjából a Log Analytics-munkaterület. Válassza ki a munkaterület **Automation-fiók** alatt **kapcsolódó erőforrások**. Az Automation-fiók oldalon válassza ki a **fiók leválasztása a**.
 
 ## <a name="next-steps"></a>További lépések
 

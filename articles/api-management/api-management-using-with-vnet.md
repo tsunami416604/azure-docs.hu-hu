@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
 ms.openlocfilehash: 532c1051522410c496fb3809c06c7e3a74340adb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66141431"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>A virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az adatok itt az Azure-beli virtuális hálózatok kezdő: [Az Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -55,11 +55,11 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
 
    * **Külső**: az API Management-átjáró és fejlesztői portálon keresztül egy külső terheléselosztó a nyilvános interneten keresztül érhetők el. Az átjáró a virtuális hálózatban lévő erőforrások eléréséhez.
 
-     ![Nyilvános társviszony-létesítés][api-management-vnet-public]
+     ![Nyilvános társviszony létesítése][api-management-vnet-public]
 
    * **Belső**: az API Management-átjáró és fejlesztői portálon érhetők el, csak a belső terheléselosztót a virtuális hálózaton belül. Az átjáró a virtuális hálózatban lévő erőforrások eléréséhez.
 
-     ![Magánhálózati társviszony-létesítés][api-management-vnet-private]
+     ![Magánhálózati társviszony][api-management-vnet-private]
 
      Megjelenik az összes olyan régióban, ahol az API Management szolgáltatás ki van építve listáját. Válasszon egy VNETET és alhálózatot minden régióhoz. A lista elkészült, a klasszikus és a Resource Manager virtuális hálózatot az Azure-előfizetésekre, amelyek a telepítő konfigurálja a régióban érhető el.
 

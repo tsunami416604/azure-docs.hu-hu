@@ -6,16 +6,16 @@ author: mhopkins-msft
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 06/13/2018
+ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 81bf178a97944d4110cf99a442163229a283bd25
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: 054369a7fd75663c75c99c6ee586843582a6b6f9
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797753"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965961"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -30,7 +30,7 @@ Ez az oktatóanyag bemutatja, hogyan írhat .NET-kódot néhány, az Azure Queue
 
 **Becsült időtartama:** 45 perc
 
-**Előfeltételek:**
+###<a name="prerequisites"></a>Előfeltételek:
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Az Azure Storage .NET-hez készült ügyféloldali kódtára](https://www.nuget.org/packages/WindowsAzure.Storage/)
@@ -58,7 +58,7 @@ A mintakódnak hitelesítenie kell a tárfiókhoz való hozzáférést. A hitele
 
 1. Lépjen az [Azure Portalra](https://portal.azure.com).
 2. Keresse meg a Storage-fiókját.
-3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet. Megjelennek a fiókhoz tartozó hozzáférési kulcsok, valamint az egyes kulcsokhoz tartozó kapcsolati sztringek.   
+3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet. Megjelennek a fiókhoz tartozó hozzáférési kulcsok, valamint az egyes kulcsokhoz tartozó kapcsolati sztringek.
 4. Keresse meg a **Kapcsolati sztring** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati sztring másolásához. A kapcsolati sztring értékét hozzáadja egy környezeti változóhoz a következő lépés során.
 
     ![A kapcsolati sztring az Azure Portalról történő másolását bemutató képernyőkép](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
@@ -67,7 +67,7 @@ A mintakódnak hitelesítenie kell a tárfiókhoz való hozzáférést. A hitele
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### <a name="create-the-queue-service-client"></a>A Queue szolgáltatásügyfél létrehozása
-A **CloudQueueClient** osztály segítségével lekérheti a Queue Storage-ban tárolt üzenetsorokat. A szolgáltatásügyfél létrehozásának egyik módja:
+A [CloudQueueClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet) osztály segítségével lekérheti a Queue Storage-ban tárolt üzenetsorokat. A szolgáltatásügyfél létrehozásának egyik módja:
 
 ```csharp
 CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
@@ -94,7 +94,7 @@ queue.CreateIfNotExists();
 ```
 
 ## <a name="insert-a-message-into-a-queue"></a>Üzenet beszúrása egy üzenetsorba
-Ha üzenetet szeretne beszúrni egy létező üzenetsorba, először hozzon létre egy **CloudQueueMessage** elemet. Ezután hívja meg az **AddMessage** módszert. A **CloudQueueMessage** egy sztringből (UTF-8 formátumban) vagy egy **bájttömbből** hozható létre. Az alábbi kód létrehoz egy üzenetsort (ha még nem létezik), és beszúrja a „Hello, World” üzenetet:
+Ha üzenetet szeretne beszúrni egy létező üzenetsorba, először hozzon létre egy [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet) elemet. Ezután hívja meg az [AddMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet) módszert. A **CloudQueueMessage** egy sztringből (UTF-8 formátumban) vagy egy **bájttömbből** hozható létre. Az alábbi kód létrehoz egy üzenetsort (ha még nem létezik), és beszúrja a „Hello, World” üzenetet:
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -116,7 +116,7 @@ queue.AddMessage(message);
 ```
 
 ## <a name="peek-at-the-next-message"></a>Betekintés a következő üzenetbe
-Egy üzenetsor elején található üzenetbe anélkül is bepillanthat, hogy eltávolítaná az üzenetsorból. Ehhez hívja meg a **PeekMessage** módszert.
+Egy üzenetsor elején található üzenetbe anélkül is bepillanthat, hogy eltávolítaná az üzenetsorból. Ehhez hívja meg a [PeekMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet) módszert.
 
 ```csharp
 // Retrieve storage account from connection string
@@ -159,7 +159,7 @@ queue.UpdateMessage(message,
 ```
 
 ## <a name="de-queue-the-next-message"></a>A következő üzenet kivétele az üzenetsorból
-A kód két lépésben távolít el egy üzenetet az üzenetsorból. A **GetMessage** meghívásával lekéri az üzenetsor következő üzenetét. A **GetMessage** módszerrel lekért üzenet láthatatlanná válik az adott üzenetsorban található üzeneteket olvasó többi kód számára. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Ha végleg el szeretné távolítani az üzenetet az üzenetsorból, meg kell hívnia a **DeleteMessage** módszert is. Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. A kód a **DeleteMessage** módszert rögtön az üzenet feldolgozása után hívja meg.
+A kód két lépésben távolít el egy üzenetet az üzenetsorból. A [GetMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet) meghívásával lekéri az üzenetsor következő üzenetét. A **GetMessage** módszerrel lekért üzenet láthatatlanná válik az adott üzenetsorban található üzeneteket olvasó többi kód számára. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Ha végleg el szeretné távolítani az üzenetet az üzenetsorból, meg kell hívnia a [DeleteMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet) módszert is. Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. A kód a **DeleteMessage** módszert rögtön az üzenet feldolgozása után hívja meg.
 
 ```csharp
 // Retrieve storage account from connection string
@@ -210,8 +210,7 @@ Console.WriteLine("Deleted message");
 ```
     
 ## <a name="leverage-additional-options-for-de-queuing-messages"></a>Egyéb lehetőségek az üzenetek eltávolításához az üzenetsorból
-Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból.
-Az első lehetőség az üzenetkötegek (legfeljebb 32) lekérése. A második lehetőség az, hogy beállít egy hosszabb vagy rövidebb láthatatlansági időkorlátot, így a kódnak lehetősége van hosszabb vagy rövidebb idő alatt teljesen feldolgozni az egyes üzeneteket. Az alábbi példakód a **GetMessages** módszer segítségével egyszerre 20 üzenetet kér le. Ezután minden üzenetet feldolgoz egy **foreach** hurok segítségével. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az 5 perc minden üzenetnél ugyanakkor kezdődik, tehát 5 perccel a **GetMessages** hívása után a nem törölt üzenetek újra láthatóvá válnak.
+Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból. Az első lehetőség az üzenetkötegek (legfeljebb 32) lekérése. A második lehetőség az, hogy beállít egy hosszabb vagy rövidebb láthatatlansági időkorlátot, így a kódnak lehetősége van hosszabb vagy rövidebb idő alatt teljesen feldolgozni az egyes üzeneteket. Az alábbi példakód a [GetMessages](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet) módszer segítségével egyszerre 20 üzenetet kér le. Ezután minden üzenetet feldolgoz egy **foreach** hurok segítségével. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az 5 perc minden üzenetnél ugyanakkor kezdődik, tehát 5 perccel a **GetMessages** hívása után a nem törölt üzenetek újra láthatóvá válnak.
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -232,7 +231,7 @@ foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes
 ```
 
 ## <a name="get-the-queue-length"></a>Az üzenetsor hosszának lekérése
-Megbecsülheti egy üzenetsorban található üzenetek számát. A **FetchAttributes** módszer lekéri a Queue szolgáltatásból az üzenetsorra vonatkozó attribútumokat, amelyek között megtalálható az üzenetek száma is. Az **ApproximateMessageCount** tulajdonság visszaadja a **FetchAttributes** módszer által lekért legutóbbi értéket a Queue szolgáltatás hívása nélkül.
+Megbecsülheti egy üzenetsorban található üzenetek számát. A [FetchAttributes](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet) módszer lekéri a Queue szolgáltatásból az üzenetsorra vonatkozó attribútumokat, amelyek között megtalálható az üzenetek száma is. Az [ApproximateMessageCount](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet) tulajdonság visszaadja a **FetchAttributes** módszer által lekért legutóbbi értéket a Queue szolgáltatás hívása nélkül.
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -256,7 +255,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
 ## <a name="delete-a-queue"></a>Üzenetsor törlése
-Egy üzenetsor és az összes benne foglalt üzenet törléséhez hívja meg a **Delete** módszert az üzenetsor-objektumhoz.
+Egy üzenetsor és az összes benne foglalt üzenet törléséhez hívja meg a [Delete](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet) módszert az üzenetsor-objektumhoz.
 
 ```csharp
 // Retrieve storage account from connection string.

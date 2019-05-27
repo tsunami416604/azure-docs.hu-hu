@@ -9,11 +9,11 @@ ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
 ms.openlocfilehash: a5d29e77f6ba10ed3069cb3f5a3c8089f49c237d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60423301"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140598"
 ---
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki **minden szolgáltatás** a bal oldali menüben, és válassza a **Notification Hubs** a a **Mobile** szakaszban. Válassza ki a csillag (`*`), adja hozzá a a szolgáltatás neve mellett a **Kedvencek** szakaszban a bal oldali menüben. Miután **Notification Hubs** adnak hozzá **Kedvencek**, jelölje ki azt a bal oldali menüben. 

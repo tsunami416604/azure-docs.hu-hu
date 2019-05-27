@@ -1,16 +1,15 @@
 ---
-author: rockboyfor
+author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 10/26/2018
-ms.date: 11/26/2018
-ms.author: v-yeche
+ms.date: 10/26/2018
+ms.author: cynthn
 ms.openlocfilehash: 394b242ab46da7821f77e8d008836753f4e358e2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097684"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165416"
 ---
 Ebben a lépésben, manuálisan hozzon létre a rendelkezésre állási csoport figyelőjének a Feladatátvevőfürt-kezelő és az SQL Server Management Studióval.
 
@@ -21,7 +20,7 @@ Ebben a lépésben, manuálisan hozzon létre a rendelkezésre állási csoport 
 3. Bontsa ki a fürt nevét, és kattintson **szerepkörök**.
 
 4. Az a **szerepkörök** panelen kattintson a jobb gombbal a rendelkezésre állási csoport nevét, majd válassza ki **erőforrás hozzáadása** > **ügyfél-hozzáférési pont**.
-
+   
     ![Adja hozzá az ügyfél-hozzáférési pont rendelkezésre állási csoport](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
 
 5. Az a **neve** mezőben hozzon létre egy nevet az új figyelőt, kattintson a **tovább** kétszer, és kattintson a **Befejezés**.  
@@ -31,17 +30,17 @@ Ebben a lépésben, manuálisan hozzon létre a rendelkezésre állási csoport 
     Az IP-cím erőforrás a fürtben lévő minden egyes fürt hálózati jelenik meg. Ha ez egy csak az Azure-megoldás, csak egy IP-cím erőforrás jelenik meg.
 
 7. A következő lehetőségek közül választhat:
-
+   
    * Hibrid megoldás konfigurálása:
-
+     
         a. Kattintson a jobb gombbal a helyszíni alhálózatnak megfelelő IP-cím erőforrás, és válassza **tulajdonságok**. Megjegyzés: az IP-cím neve és a hálózat nevét.
-
+   
         b. Válassza ki **statikus IP-cím**, fel nem használt IP-címet hozzárendelni, és kattintson **OK**.
-
+ 
    * Egy csak az Azure-megoldás konfigurálása:
 
         a. Kattintson a jobb gombbal az IP-cím erőforrás, amely megfelel az Azure-alhálózaton, és válassza **tulajdonságok**.
-
+       
        > [!NOTE]
        > Ha a figyelő később sikertelen egy ütköző IP-címet DHCP által kiválasztott miatt online állapotba, konfigurálhatja egy érvényes statikus IP-címet a Tulajdonságok ablakban.
        > 
@@ -49,5 +48,4 @@ Ebben a lépésben, manuálisan hozzon létre a rendelkezésre állási csoport 
 
        b. Az egyazon **IP-cím** tulajdonságok ablakban módosítsa a **IP-cím neve**.  
         Ezt a nevet használja a PowerShell-parancsfájl $IPResourceName változóban. Ha a megoldás több Azure virtuális hálózat is kiterjed, ismételje meg ezt a lépést minden IP-erőforráshoz.
-        
-<!-- Update_Description: update meta properties -->
+

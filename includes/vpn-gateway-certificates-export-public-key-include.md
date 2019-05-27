@@ -9,11 +9,11 @@ ms.date: 02/13/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: afd4836229c60ebef1536d4fa1ca4206a492e56d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60763881"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150322"
 ---
 Önaláírt főtanúsítvány létrehozása után exportálja a főtanúsítvány nyilvános kulcsú .cer fájlját (ne a titkos kulcsot). Később fogja feltölteni ezt a fájlt az Azure-bA. A következő lépések segítségével exportálhatja a az önaláírt főtanúsítványhoz tartozó .cer fájlt:
 
@@ -37,7 +37,7 @@ ms.locfileid: "60763881"
    ![Befejezés](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
 7. A tanúsítvány exportálása sikeresen megtörtént.
 
-   ![Sikeres](./media/vpn-gateway-certificates-export-public-key-include/success.png)
+   ![Siker](./media/vpn-gateway-certificates-export-public-key-include/success.png)
 8. Az exportált tanúsítványt ehhez hasonlóan néz ki:
 
    ![Exportálva](./media/vpn-gateway-certificates-export-public-key-include/exported.png)

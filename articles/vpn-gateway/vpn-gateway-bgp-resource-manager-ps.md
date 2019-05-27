@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
 ms.openlocfilehash: c65ea038fc39702affae93cb68b8cf644393c62e
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415612"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66150213"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>BGP konfigurálása Azure VPN Gateway PowerShell-lel
 Ez a cikk végigvezeti a BGP engedélyezéséhez a létesítmények közötti Site-to-Site (S2S) VPN-kapcsolat és VNet – VNet kapcsolat a Resource Manager üzemi modell és a PowerShell használatával.
@@ -28,7 +28,7 @@ Ez a cikk végigvezeti a BGP engedélyezéséhez a létesítmények közötti Si
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="about-bgp"></a>A BGP ismertetése
-A BGP az interneten gyakran használt szabványos útválasztási protokoll az útválasztási és elérhetőségi információcserére két vagy több hálózat között. A BGP lehetővé teszi, hogy az Azure VPN Gateway és a helyszíni VPN-eszközök, BGP-társak vagy -szomszédok, az "útvonalakat", amely tájékoztatja a rendelkezésre állási és útválasztókon keresztül az átjárók és az érintett útválasztók előtagok mindkét átjáró néven. A BGP lehetővé teszi a több hálózat közötti tranzit útválasztást azon útvonalak propagálásával az összes többi BGP-társ számára, amelyeket a BGP-átjáró az egyik BGP-társtól vesz át.
+A BGP az interneten gyakran használt szabványos útválasztási protokoll az útválasztási és elérhetőségi információcserére két vagy több hálózat között. A BGP lehetővé teszi az Azure VPN Gateway átjárók és a helyszíni VPN-eszközök (más néven BGP-társak vagy -szomszédok) számára az információcserét az „útvonalakat” illetően. Ezáltal mindkét átjáró ismerni fogja az érintett átjárókon és útválasztókon áthaladó előtagok rendelkezésre állási és elérhetőségi információit. A BGP lehetővé teszi a több hálózat közötti tranzit útválasztást azon útvonalak propagálásával az összes többi BGP-társ számára, amelyeket a BGP-átjáró az egyik BGP-társtól vesz át.
 
 Lásd: [BGP áttekintése az Azure VPN-átjárókkal](vpn-gateway-bgp-overview.md) további vitafórum a előnyeiről BGP és technikai követelményeket és szempontokat kell figyelembe vennie a BGP használatával.
 

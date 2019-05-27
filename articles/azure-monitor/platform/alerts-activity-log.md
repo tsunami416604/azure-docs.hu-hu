@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.openlocfilehash: 2b069e55d98da824363dc480c211cde0fcc2518c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090814"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66130053"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és használata az Azure Monitor tevékenységnapló-riasztások kezelése  
 
@@ -226,7 +226,7 @@ A tevékenységnapló-riasztások rendelkezhetnek dedikált elérhető PowerShel
 - [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0) : Letiltja a meglévő tevékenységnapló-riasztás, és beállítja a címkéket.
 - [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0)    : Eltávolítja a tevékenységnapló-riasztás.
 
-## <a name="cli"></a>parancssori felület
+## <a name="cli"></a>CLI
 
 Azure CLI-parancsok mellett a csoport dedikált [az monitor tevékenységnapló riasztás](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) érhetők el tevékenység napló a riasztási szabályok kezelése.
 

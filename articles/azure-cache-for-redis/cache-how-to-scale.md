@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
 ms.openlocfilehash: 495fc031150d04f253279606baebb5d64d52bce7
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313432"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66132911"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>A Redis az Azure Cache méretezése
 Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatások a kiválasztott biztosítanak. Gyorsítótár létrehozása után skálázhatja mérete és a gyorsítótár a tarifacsomagot, ha az alkalmazás a követelmények változnak. Ez a cikk bemutatja, hogyan méretezzünk át a gyorsítótár az Azure portal és az eszközök, például az Azure PowerShell-lel és az Azure CLI használatával.

@@ -1,5 +1,5 @@
 ---
-title: Adatkészlet-definícióban, és a verziókezelés
+title: Adatkészlet-definícióban, és verziókezelése az azureml-adatkészletek
 titleSuffix: Azure Machine Learning service
 description: Az adatkészlet-definíciók frissítése és a definíciók életciklusának kezelése
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: 7c861c8cdc9985caa42bd2beb5236a4f4e93e4c7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: MT
+ms.openlocfilehash: e58ce156deaaad259ea7b74521bcf9b79afbd183
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028680"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146201"
 ---
 # <a name="update-and-manage-the-lifecycle-of-dataset-definitions"></a>Frissítse és az adatkészlet-definíciók életciklusának kezelése
 
@@ -102,7 +102,7 @@ dataset.head(5)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>ID (Azonosító)</th>
+      <th>azonosító</th>
       <th>Letartóztatás</th>
       <th>Szélesség</th>
       <th>Hosszúság</th>
@@ -117,7 +117,7 @@ dataset.head(5)
       <td>-87.60431945</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>1.</th>
       <td>10516598</td>
       <td>FALSE</td>
       <td>41.74410697</td>
@@ -170,7 +170,7 @@ ds_def_old.head(5)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>ID (Azonosító)</th>
+      <th>azonosító</th>
       <th>Eset száma</th>
       <th>Dátum</th>
       <th>Letiltás</th>
@@ -219,7 +219,7 @@ ds_def_old.head(5)
       <td>(41.692833841, -87.60431945)</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>1.</th>
       <td>10516598</td>
       <td>HZ258664</td>
       <td>4/15/2016 17:00</td>
@@ -362,7 +362,7 @@ ds_def = dataset.get_definition(version_id = 1)
 ds_def.deprecate(deprecate_by_dataset_id=dataset.id, deprecated_by_definition_version=2)
 ```
 
-### <a name="archive"></a>Archívum
+### <a name="archive"></a>Archív
 
 Az adatkészlet-definíciók archiválhatók, ha a definíciók nem kellene használni (például a mögöttes adatok már nem érhető el) bármilyen okból. Archivált adatkészlet-definícióban machine learning-folyamatokat használja, ha végrehajtási hiba miatt blokkolva lesz.
 

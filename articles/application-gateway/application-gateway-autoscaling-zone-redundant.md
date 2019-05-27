@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/16/2019
+ms.date: 5/22/2019
 ms.author: victorh
-ms.openlocfilehash: 0da5d8a3eec0faa4001ccf229c6748c253f1b6e5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 8e17c5e34ec3e2397c3054b1d0e0d97dbf410db2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827423"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65986873"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatikus skálázás és zónaredundáns az Application Gateway 
 
@@ -93,8 +93,6 @@ Kapacitás egységár = 744(hours) * Max (számítási egység Max(25/50 for con
 
 Teljes ár = $267.84 + 85.71 $ $353.55 =
 
-A [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/application-gateway/) 2019. május 14. a regionális árakról megfelelően frissülnek. A számlázás a 2019. június 1. történő futásra van ütemezve.
-
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Az Application Gateway és a WAF v2 méretezése
 
 Az Application Gateway és a WAF konfigurálható a méretezési csoport két módban:
@@ -134,11 +132,11 @@ Az alábbi táblázat az egyes Termékváltozat szolgáltatásait hasonlítja ö
 |Különbség|Részletek|
 |--|--|
 |Hitelesítési tanúsítvány|Nem támogatott.<br>További információkért lásd: [az Application Gateway teljes körű SSL áttekintése](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
-|Standard_v2 és a Standard Application Gateway keverve ugyanazon az alhálózaton|Érvénytelen érték|
-|Felhasználó által megadott útvonal (UDR) az Application Gateway-alhálózat|Érvénytelen érték|
+|Standard_v2 és a Standard Application Gateway keverve ugyanazon az alhálózaton|Nem támogatott|
+|Felhasználó által megadott útvonal (UDR) az Application Gateway-alhálózat|Nem támogatott|
 |NSG bejövő port-tartomány| -65200 – 65535 Standard_v2 Termékváltozat<br>-65503 65534 Standard Termékváltozat esetében.<br>További információkért lásd: a [– gyakori kérdések](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Teljesítmény az Azure-beli diagnosztikai naplók|Nem támogatott.<br>Az Azure-metrikák kell használni.|
-|Számlázás|A számlázás a tervek szerint indítsa el a 2019. június 1.|
+|Számlázás|A számlázás a tervek szerint indítsa el a 2019. július 1.|
 |FIPS-módban|Ezek jelenleg nem támogatottak.|
 |ILB mód|Ez jelenleg nem támogatott. Nyilvános és ILB mód együtt használható.|
 |Netwatcher integráció|Nem támogatott.|

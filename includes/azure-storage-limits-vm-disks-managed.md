@@ -9,11 +9,11 @@ ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: dd5c0782e1132f8592d9c6381b541c6f1a7d84cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386320"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148209"
 ---
 **A standard szintű felügyelt HDD-lemezek**
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "60386320"
 
 **A felügyelt lemezek prémium szintű SSD: És a virtuális gépenkénti korlátok**
 
-| Erőforrás | Alapértelmezett korlát |
+| Resource | Alapértelmezett korlát |
 | --- | --- |
 | Virtuális gépenkénti maximális IOPS |80 000 IOPS GS5 virtuális géppel |
 | Virtuális gépenkénti maximális átviteli sebesség |2000 MB/s GS5 virtuális géppel |

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: fc8877ed23b408ea041de67018a71cc203c5e8c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182404"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66162037"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Közzététel egyéni témakörben az Azure Event Gridhez
 
@@ -100,10 +100,10 @@ A témakör végpontra könyvelés után kapott választ. A válasz egy normál 
 
 |Eredmény  |Válasz  |
 |---------|---------|
-|Sikeres  | 200 OK  |
+|Siker  | 200 OK  |
 |Eseményadatok formátuma helytelen | 400 Hibás kérés |
 |Érvénytelenek a hozzáférési kulcs | 401-es nem engedélyezett |
-|Nem megfelelő végpont | 404 – Nem található |
+|Nem megfelelő végpont | 404 Nem található |
 |Tömb vagy esemény meghaladja a méretbeli korlátokat | 413 adattartalom túl nagy |
 
 A hibákat az üzenet törzsének formátuma a következő:

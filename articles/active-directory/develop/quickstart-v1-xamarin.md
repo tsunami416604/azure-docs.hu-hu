@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdb3de88fde2fbc7ec2aaffdb7d82433845db34b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: e3470d9220ed471a05792ed5b3bb259e0dcbe0a6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545948"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121916"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Gyors útmutató: Integrálható a Microsoft bejelentkezési Xamarin-alkalmazás készítése
 
@@ -57,14 +57,14 @@ Ahhoz, hogy az alkalmazásnak, hogy a jogkivonatok lekérésére, akkor előszö
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A felső eszköztáron kattintson a fiók. Ezt követően a **Directory** listájához, válassza ki az Active Directory-bérlő kívánja az alkalmazás regisztrálásához.
 3. Kattintson a **Minden szolgáltatás** lehetőségre a bal oldali panelen, majd válassza az **Azure Active Directory** elemet.
-4. Kattintson az **Alkalmazásregisztrációk** elemre, majd válassza a **Hozzáadás** parancsot.
-5. Hozzon létre egy új **natív ügyfélalkalmazás**, kövesse az utasításokat.
+4. Kattintson a **alkalmazásregisztrációk**, majd válassza ki **új regisztrációs**.
+5. Hozzon létre egy új ügyfél alkalmazást, kövesse az utasításokat.
    * **Név** ismerteti az alkalmazást a felhasználók számára.
+   * A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
    * Az **Átirányítási URI** egy sémából és sztringből álló kombináció, amelyet az Azure AD jogkivonatválaszok visszaadására használ. Adjon meg egy értéket (például `http://DirectorySearcher`).
 6. Regisztráció befejezése után az Azure AD rendeli az alkalmazást egy alkalmazás egyedi azonosítója. Másolja az értéket a **alkalmazás** lapon, mert később szüksége.
-7. Az a **beállítások** lapon jelölje be **szükséges engedélyek**, majd válassza ki **Hozzáadás**.
-8. Válassza ki **Microsoft Graph** az API-ként. A **delegált engedélyek**, adja hozzá a **címtáradatok olvasása** engedéllyel. 
-   Ez a művelet lehetővé teszi az alkalmazásnak, hogy a felhasználók számára a Graph API lekérdezéséhez.
+7. Az a **API-engedélyek** lapon jelölje be **adjon hozzá egy engedélyt**. Belül **API kiválasztása** kiválasztása ***Microsoft Graph***.
+8. Alatt **delegált engedélyek**, válassza ki az engedély **User.Read**, majd kattintson a **Hozzáadás** mentéséhez. Ez az engedély lehetővé teszi az alkalmazás számára a felhasználók lekérdezését az Azure AD Graph API-n keresztül.
 
 ## <a name="step-3-install-and-configure-adal"></a>3. lépés: Telepítse és konfigurálja az adal-t
 

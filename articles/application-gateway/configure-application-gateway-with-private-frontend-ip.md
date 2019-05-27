@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
 ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905538"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66134616"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Application gateway konfigurálása egy belső terheléselosztó (ILB) végponthoz
 
@@ -70,7 +70,7 @@ A háttérkészlet irányíthatja a kérelmeket a háttérkiszolgálók, amely a
 3. Adja meg a következő értékeket a virtuális gép számára:
    - A virtuális gép neve *myVM*.
    - A rendszergazda felhasználóneve: *azureuser*.
-   - A jelszó *Azure123456!* .
+   - *Azure123456!* .
    - Válassza a **Meglévő használata**, majd a *myResourceGroupAG* lehetőséget.
 4. Kattintson az **OK** gombra.
 5. Válassza ki **DS1_V2** méretét, a virtuális gépet, majd kattintson **kiválasztása**.

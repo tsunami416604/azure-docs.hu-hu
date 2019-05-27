@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 03/29/2019
+ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 1c24bbb9433e4164d4b2f6ce1ac7bd726cc36356
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
-ms.translationtype: MT
+ms.openlocfilehash: 4086b73313d563afaecad9b6a9289905d7085004
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506912"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66142636"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – létrehozása és az Azure Kubernetes Service (AKS) fürt több csomópontja készletek kezelése
 
@@ -332,7 +332,7 @@ Csak a alkalmazni mellékíz rendelkező podok ütemezett csomópontján *gpunod
 
 Ebben a cikkben létrehozott egy AKS-fürtöt, amely tartalmazza a GPU-alapú csomópontokat. A felesleges költségek csökkentése érdekében előfordulhat, hogy törölni kívánja a *gpunodepool*, vagy az egész AKS-fürtöt.
 
-A GPU-alapú csomópontkészletek törléséhez használja a [az aks csomópontkészletek törlése] [ az-aks-nodepool-delete] parancsot az alábbi példában látható módon:
+A GPU-alapú csomópontkészletek törléséhez használja a [az aks nodepool törlése] [ az-aks-nodepool-delete] parancsot az alábbi példában látható módon:
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpunodepool
@@ -348,8 +348,10 @@ az group delete --name myResourceGroup --yes --no-wait
 
 Ebben a cikkben megtanulta, hogyan hozhat létre és kezelhet az AKS-fürtben több csomóponton készletet. Hogyan szabályozható a podok csomópontkészletek között kapcsolatos további információkért lásd: [ajánlott eljárások az aks-ben a scheduler speciális funkciók][operator-best-practices-advanced-scheduler].
 
+Hozzon létre, és a Windows Server-tároló csomópontkészletek használja, lásd: [hozzon létre egy Windows Server-tárolót az aks-ben][aks-windows].
+
 <!-- EXTERNAL LINKS -->
-[aks-github]: https://github.com/azure/aks/issues]
+[aks-github]: https://github.com/azure/aks/issues
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
@@ -376,3 +378,4 @@ Ebben a cikkben megtanulta, hogyan hozhat létre és kezelhet az AKS-fürtben t�
 [install-azure-cli]: /cli/azure/install-azure-cli
 [supported-versions]: supported-kubernetes-versions.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[aks-windows]: windows-container-cli.md

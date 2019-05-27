@@ -412,6 +412,8 @@
       displayName: 'FAQ, import'
     - name: Díjszabás és korlátok
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice

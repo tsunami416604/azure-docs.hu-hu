@@ -8,14 +8,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/13/2019
-ms.openlocfilehash: f244a67abab5c7f8cd14277f87f055ac6d48b8d2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: 44b6f099b5b17329976b9fec3c0ac38b5e394221
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762429"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978019"
 ---
-# <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters"></a>Kimenő hálózati forgalom korlátozása az Azure HDInsight-fürtök konfigurálása
+# <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters-preview"></a>Konfigurálja a kimenő hálózati forgalom korlátozása az Azure HDInsight-fürtök (előzetes verzió)
 
 Ez a cikk ismerteti, hogy biztonságos Azure tűzfal használata a HDInsight-fürtből származó kimenő forgalom. A következő lépések feltételezik, hogy konfigurál egy Azure-tűzfal egy meglévő fürthöz. Egy új fürtöt helyez üzembe, és egy tűzfal mögött található, a HDInsight-fürt és az alhálózati először hozza létre, és kövesse a jelen útmutató lépéseit.
 
@@ -27,7 +27,7 @@ Több függőségekkel szükséges bejövő forgalmat. A bejövő kezelési forg
 
 A HDInsight kimenő forgalom függőségek szinte teljesen teljes tartományneveket, amely nem rendelkezik statikus IP-címek mögöttük van definiálva. A statikus címek hiánya, az azt jelenti, hogy a hálózati biztonsági csoportok (NSG-kkel) való zárolását, így a fürthöz a kimenő forgalom nem használható. A címek elég gyakran, hogy az egyik nem szabályok alapján a jelenlegi névfeloldás beállítása és módosítása, amelyek segítségével az NSG-szabályok beállítása
 
-A megoldás a kimenő címek védelme érdekében, hogy egy tűzfal eszköz, amely a kimenő forgalmat a tartománynevek alapján szabályozhatja. Az Azure tűzfal korlátozhatja a kimenő HTTP és HTTPS-forgalom alapján a célkiszolgáló teljes Tartománynevét.
+A megoldás a kimenő címek védelme érdekében, hogy egy tűzfal eszköz, amely a kimenő forgalmat a tartománynevek alapján szabályozhatja. Azure-tűzfalon korlátozhatja a kimenő HTTP és HTTPS-forgalom alapján a teljes Tartománynevét a cél- vagy [FQDN címkék](https://docs.microsoft.com/azure/firewall/fqdn-tags).
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>HDInsight Azure tűzfal konfigurálása
 
@@ -80,7 +80,7 @@ Az a **adja hozzá az alkalmazás szabálygyűjtemény** képernyőn, a követke
         1. Adja meg `https:443` alatt **protokoll: Port** és `sqm.telemetry.microsoft.com` alatt **teljes TARTOMÁNYNEVEK cél**.
     1. Ha a fürt WASB alapját, és nem használja a fenti Szolgáltatásvégpontok, majd egy szabály hozzáadása a WASB:
         1. Az a **cél teljes tartománynevek** területén adjon meg egy **neve**, és állítsa be **címek forrás** való `*`.
-        1. Adja meg `wasb` alatt **protokoll: Port** és `*` alatt **teljes TARTOMÁNYNEVEK cél**.
+        1. Adja meg `http` vagy [https] attól függően, ha használja a wasb: / / vagy a wasbs: / / a **protokoll: Port** és a tárolási fiók URL-címét a **cél teljes TARTOMÁNYNEVEK**.
 1. Kattintson a **Hozzáadás**lehetőségre.
 
 ![Cím: Adja meg az alkalmazás szabály gyűjtemény részletei](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)

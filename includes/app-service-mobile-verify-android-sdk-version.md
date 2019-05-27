@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 46cfb27b8bde95990d13ec4bca4e96f25cfe9dc5
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134465"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141244"
 ---
 Miatt fejlesztést az Android Studióban telepített Android SDK-verzió nem egyeznek meg a verziót a kódban. Ebben az oktatóanyagban hivatkozott az Android SDK verziója 26., a legújabb írásának időpontjában. A verziószám növelhető, az SDK-t az új kiadásokkal jelenik meg, és a legújabb elérhető verzió használatát javasoljuk.
 

@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.openlocfilehash: 9afc2e2362721fd2905b2a241960507aec9b15a5
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310200"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66151091"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Gyors útmutató: Linux virtuálisgép-méretezési csoport létrehozása Azure-sablonnal
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hozunk létre, és üzembe helyezünk egy mintaalkalmazást egy Azure Resource Manager-sablon használatával.
@@ -42,9 +42,9 @@ Méretezési csoport sablon alapján való létrehozásához definiálnia kell a
 
 | Tulajdonság                     | A tulajdonság leírása                                  | Példa sablonérték                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
-| type                         | A létrehozandó Azure-erőforrástípus                            | Microsoft.Compute/virtualMachineScaleSets |
+| típus                         | A létrehozandó Azure-erőforrástípus                            | Microsoft.Compute/virtualMachineScaleSets |
 | név                         | A méretezési csoport neve                                       | myScaleSet                                |
-| location                     | A méretezési csoport létrehozásának helye                     | USA keleti régiója                                   |
+| hely                     | A méretezési csoport létrehozásának helye                     | USA keleti régiója                                   |
 | sku.name                     | A méretezési csoport egyes példányainak virtuálisgép-mérete                  | Standard_A1                               |
 | sku.capacity                 | Az először létrehozandó virtuálisgép-példányok száma           | 2                                         |
 | upgradePolicy.mode           | A virtuálisgép-példányok frissítésének módja módosítás esetén              | Automatikus                                 |

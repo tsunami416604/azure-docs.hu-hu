@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/05/2018
+ms.date: 05/22/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 555a8e3e92dc1d12cb7c6d6e06d2511f15a2c862
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 211935aac56dff8d6e524706c416c126b1a0c3b8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679370"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159401"
 ---
-|**Termékváltozat**   | **S2S/Virtuális hálózatok közötti kapcsolat<br>alagutak** | **P2S<br> SSTP-kapcsolatok** | **P2S<br> IKEv2-kapcsolatok** | **Összesített<br>átviteli sebesség tesztje** | **BGP** |
+|**Termékváltozat**   | **S2S/Virtuális hálózatok közötti kapcsolat<br>alagutak** | **P2S<br> SSTP-kapcsolatok** | **P2S<br> IKEv2/OpenVPN kapcsolatok** | **Összesített<br>átviteli sebesség tesztje** | **BGP** |
 |---       | ---        | ---       | ---            | ---       | --- |
 |**Basic** | Legfeljebb 10    | Legfeljebb 128  | Nem támogatott  | 100 Mbps  | Nem támogatott|
 |**VpnGw1**| Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 250       | 650 Mbps  | Támogatott |

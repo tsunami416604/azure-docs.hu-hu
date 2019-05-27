@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: e1d4ce355f34014d5099c4b46f4420d032363fce
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.openlocfilehash: b0a6c6feae11f8daeed54c5e763dbff3aa711652
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236673"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153500"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Data flow tevékenység végrehajtása az Azure Data Factoryban
 A végrehajtási adatok folyamat tevékenység használatával futtassa az ADF adatfolyama folyamatfuttatások hibakeresési (védőfal), és az aktivált folyamatfuttatások.
@@ -64,6 +64,10 @@ A Data Flow Debug használatával az adatfolyamok egy folyamat hibakeresési fut
 Ez a mező kitöltése kötelező, amely meghatározza, mely az adatfolyam tevékenység-végrehajtási használandó integrációs modul. Alapértelmezés szerint a Data Factory az alapértelmezett automatikus feloldása Azure integrációs modul fogja használni. A saját Azure integrációs modulok, amelyek adott régiók definiálása, típusát, a magszámot, és a TTL számítási az adatokat a folyamat tevékenységek végrehajtását a is létrehozhat.
 
 Az adatfolyam-végrehajtások alapértelmezett érték 60 perc TTL általános számítási 8 maggal.
+
+Az adatfolyam-tevékenységek a Spark-végrehajtási környezet felett van. Az a [Azure integrációs modul](concepts-integration-runtime.md) (általános célú, memóriahasználatra optimalizált és számításra optimalizált) számítási típus beállítása a feldolgozó magok száma, és a time-to-live megfelelően a végrehajtó motor az adatfolyam-számítási beállítások követelmények. Emellett TTL beállítása lehetővé teszi azonnal elérhetővé válik a feladatvégrehajtások meleg fürtben fenntartását.
+
+![Azure integrációs modul](media/data-flow/ir-new.png "Azure integrációs modul")
 
 ### <a name="staging-area"></a>Átmeneti terület
 

@@ -11,22 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: 450ebc621758363c5ea9ab6d631cd6c7df38794b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ac9910358cf19eac3f704f1bf3e259e9a1543dcc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657713"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141515"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Hogyan teheti biztonságossá az ügyfél API-k az API Management a Tanúsítványalapú hitelesítés
 
 Az API Management lehetővé teszi, hogy a biztonságos hozzáférés az API-k (azaz, és az API Management ügyfél) ügyféltanúsítványok használatát. Jelenleg egy kívánt értékkel ügyféltanúsítvány ujjlenyomata ellenőrizheti. Ellenőrizheti az ujjlenyomatot, és az API Management feltöltött meglévő tanúsítványok ellen is.  
 
 További információ a háttér-szolgáltatáshoz (azaz, API Management háttér-) ügyfél-tanúsítványok használata API-hozzáférés biztonságossá tétele: [ügyfél háttérszolgáltatások biztonságossá Tanúsítványalapú hitelesítés](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="checking-the-expiration-date"></a>A lejárati dátum ellenőrzése
 

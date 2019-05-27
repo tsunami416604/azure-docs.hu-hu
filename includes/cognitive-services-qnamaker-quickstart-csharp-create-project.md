@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 09/27/2018
 ms.author: diberry
 ms.openlocfilehash: e077373532ffdc409c3748e969c33a3b84b4f6c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404855"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145675"
 ---
 1. Nyissa meg a Visual Studio 2017 Community Editiont.
 1. Hozzon létre egy új **Console App (.NET Core)** projektre, és adja a projektnek `QnaMakerQuickstart`. Fogadja el az alapértelmezett értékeket a többi beállításnál.
