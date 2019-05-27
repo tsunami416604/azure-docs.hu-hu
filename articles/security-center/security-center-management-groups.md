@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
 ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045764"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66147951"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Összes bérlőre vonatkozó információk megjelenítése az Azure Security Centerben
 Ez a cikk használatának megkezdésébe vezeti be, amely az Azure Security Center biztosít előnyök maximalizálása és több művelet végrehajtásával. Ezek a műveletek végrehajtása lehetővé teszi, hogy nagyobb láthatóságot érhet el az összes Azure-előfizetések vannak kapcsolva, az Azure Active Directory-bérlőhöz, és hatékonyan kezelheti a szervezet biztonsági állapotáról, ipari méretekben több biztonsági házirendek alkalmazásával előfizetések aggregative módon.
@@ -27,7 +27,7 @@ Ez a cikk használatának megkezdésébe vezeti be, amely az Azure Security Cent
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="management-groups"></a>Felügyeleti csoportok
+## <a name="management-groups"></a>Felügyeleti csoport
 Az Azure felügyeleti csoportok lehetővé teszi, hogy hatékonyan kezelheti a hozzáférést, a házirendek és a csoportok előfizetések-jelentések, valamint hatékonyan kezelheti a teljes Azure hagyatéki műveletek végrehajtásával a legfelső szintű felügyeleti csoporton. Minden egyes Azure AD-bérlőt kap egy legfelső szintű felügyeleti csoport gyökérszintű felügyeleti csoport neve. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a csoport lehetővé teszi a globális szabályzatok és az RBAC-hozzárendeléseket a könyvtár szintjén alkalmazható. 
 
 A gyökérszintű felügyeleti csoport automatikusan létrejön, amikor ezt teszi, hogy az alábbi műveletek egyikét: 

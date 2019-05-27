@@ -8,11 +8,11 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: a86b755770dc59f196c57f1d86e7f29200ce25e3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56962060"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66171475"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Hozzon létre és kezelhető az Azure Database for MariaDB virtuális hálózati Szolgáltatásvégpontok az Azure CLI használatával
 

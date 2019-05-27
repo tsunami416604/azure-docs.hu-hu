@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 975bb5ee194e7bd9538660878cbed20c943fcf52
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53285956"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151483"
 ---
 1. Egy új böngészőablakban jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -23,7 +23,7 @@ ms.locfileid: "53285956"
 
 3. Az a **létrehozása az Azure Cosmos DB-fiók** lap, adja meg az új Azure Cosmos DB-fiók beállításait. 
 
-    Beállítás|Érték|Leírás
+    Beállítás|Value (Díj)|Leírás
     ---|---|---
     Előfizetés|Az Ön előfizetése|Válassza ki az Azure Cosmos DB-fiókhoz használni kívánt Azure-előfizetést. 
     Erőforráscsoport|Új létrehozása<br><br>A használt egyedi nevet majd adja meg a azonosítója|Válassza az **Új létrehozása** lehetőséget. Majd adja meg a fiók új erőforráscsoport nevét. Az egyszerűség kedvéért használja ugyanazt a nevet, az azonosítóját. 

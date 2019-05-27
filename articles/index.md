@@ -6,12 +6,12 @@ description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmaz
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: b36302e349327354e31ef4ea5adb9842d04ed4f1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c1c33cab46082d1d3b748b45b40a7928801b2e55
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149330"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151264"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -649,6 +649,12 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                     <h3>Azure Stack</h3>
                                     <ul>
                                         <li>
+                                            <a href="/azure-stack">
+                                                <img src="media/index/azure-stack.svg" alt="" />
+                                                <p>Azure Stack</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/azure-stack/">
                                                 <img src="media/index/azure-stack.svg" alt="" />
                                                 <p>Azure Stack – Operátor</p>
@@ -658,6 +664,11 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                             <a href="/azure/azure-stack/user">
                                                 <img src="media/index/azure-stack.svg" alt="" />
                                                 <p>Azure Stack-felhasználó</p>
+                                            </a>
+                                        </li>                                        <li>
+                                            <a href="/azure-stack/asdk/">
+                                                <img src="media/index/azure-stack.svg" alt="" />
+                                                <p>Azure Stack fejlesztői készlet (ASDK)</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -5959,6 +5970,25 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                         <a href="#stack">Azure Stack</a>
                         <ul id="stack" class="cardsA">
                             <li>
+                                <a href="/azure-stack">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-stack.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Stack</h3>
+                                                    <p>Kibővítheti az Azure helyszíni szolgáltatásait és képességeit, hogy hibrid felhőalapú és peremhálózati alkalmazásokat hozzon létre és helyezzen üzembe a felhők között.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/azure-stack/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -5970,7 +6000,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Stack – Operátor</h3>
-                                                    <p>Ezzel az új hibrid felhőplatformmal saját adatközpontjából biztosíthat Azure-szolgáltatásokat</p>
+                                                    <p>Megtudhatja, hogyan kezelheti az Azure Stack integrált rendszer-infrastruktúrát, és hogyan biztosíthat szolgáltatásokat</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5989,6 +6019,23 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                             <div class="cardText">
                                                 <h3>Azure Stack-felhasználó</h3>
                                                 <p>Szolgáltatások használata és alkalmazások kiépítése az Azure Stackhez</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure-stack/asdk/">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="media/index/azure-stack.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>Azure Stack fejlesztői készlet (ASDK)</h3>
+                                                <p>Értékelésre és tesztelésre szolgáló, nem éles környezet</p>
                                             </div>
                                         </div>
                                     </div>

@@ -9,11 +9,11 @@ ms.date: 03/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 90ffebf5f3375e94545f82a95f5c240ad845bd94
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60423329"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162179"
 ---
 1. Jelentkezzen be a [Firebase konzoljába](https://firebase.google.com/console/). Hozzon létre egy új Firebase-projektet, ha nem rendelkezik még ilyennel.
 2. A projekt létrehozása után válassza az **Add Firebase to your Android app** (A Firebase hozzáadása az Android-alkalmazáshoz) lehetőséget. 

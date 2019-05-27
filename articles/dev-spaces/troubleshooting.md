@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: d5b08a22aa3896fb7158ef3535b115e3e0189142
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
-ms.translationtype: MT
+ms.openlocfilehash: 39ef23d04dc1cf1b48297ecf8f0accfef4935cd2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596987"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158940"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -374,7 +374,7 @@ A tartományvezérlő újratelepítése után telepítse újra a podokat.
 Az Azure fejlesztési tárolóhelyek vezérlő hozzáférő felhasználó rendelkeznie kell olvasási engedélyt a rendszergazdának *kubeconfig* az AKS-fürtön. Például ez az engedély érhető el a [beépített Azure Kubernetes Service fürt rendszergazdai szerepkör](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Az Azure fejlesztési tárolóhelyek vezérlő hozzáférő felhasználó is rendelkeznie kell a *közreműködői* vagy *tulajdonosa* RBAC szerepkör a vezérlő.
 
 ### <a name="try"></a>Kipróbálás
-A felhasználók engedélyeit az AKS-fürt frissítésével kapcsolatos további részleteket [Itt](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user).
+A felhasználók engedélyeit az AKS-fürt frissítésével kapcsolatos további részleteket [Itt](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group).
 
 A felhasználó RBAC szerepkör a vezérlő frissítése:
 

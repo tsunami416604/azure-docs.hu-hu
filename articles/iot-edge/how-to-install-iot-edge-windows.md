@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e48ab075264423479e792848af522a890736a403
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8907ae61fb03b417a74eb32e1fd09aece75d5e2c
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152691"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151723"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Az Azure IoT Edge-futtatókörnyezet telepíthető Windows
 
@@ -76,6 +76,13 @@ Ez a példa bemutatja a manuális telepítés a Windows-tárolókkal:
 
 2. Futtassa a Powershellt rendszergazdaként.
 
+   >[!NOTE]
+   >PowerShell AMD64 munkamenet használata IoT Edge segítségével, nem (x86) PowerShell telepítéséhez. Ha nem biztos abban, hogy melyik munkamenet típusa használ, futtassa a következő parancsot:
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
+
 3. A **üzembe helyezés – IoTEdge** parancs ellenőrzi, hogy a Windows-gépen valamelyik támogatott verzióra, bekapcsolja a tárolók funkciót, és ezután letölti a moby-futtatókörnyezet és az IoT Edge-futtatókörnyezet. A parancs alapértelmezés szerint, a Windows-tárolók használatával. 
 
    ```powershell
@@ -111,12 +118,19 @@ A második lehetőség, a üzembe helyezi az eszközt az IoT Hub Device Provisio
 
 A következő példa bemutatja egy automatikus telepítése a Windows-tárolókkal:
 
-1. Kövesse a [létrehozásával és kiépítésével egy szimulált TPM-eszköz peremhálózati eszköz, a Windows](how-to-auto-provision-simulated-device-windows.md) a Device Provisioning Service beállítása és lekérése a **hatókör azonosítója**, TPM-eszköz szimulálása és lekérése a  **Regisztrációs azonosító**, majd hozzon létre egyéni regisztrációt. Miután az eszköz regisztrálva van az IoT hub, folytassa a telepítési lépéseket.  
+1. Kövesse a [létrehozásával és kiépítésével egy szimulált TPM-eszköz IoT Edge-eszközön a Windows](how-to-auto-provision-simulated-device-windows.md) a Device Provisioning Service beállítása és lekérése a **hatókör azonosítója**, TPM-eszköz szimulálása és lekérése a **Regisztrációs azonosító**, majd hozzon létre egyéni regisztrációt. Miután az eszköz regisztrálva van az IoT hub, folytassa a telepítési lépéseket.  
 
    >[!TIP]
    >Tartsa meg az ablak, amely a TPM-szimulátor fut, nyissa meg a telepítés során, és a tesztelés. 
 
 2. Futtassa a Powershellt rendszergazdaként.
+
+   >[!NOTE]
+   >PowerShell AMD64 munkamenet használata IoT Edge segítségével, nem (x86) PowerShell telepítéséhez. Ha nem biztos abban, hogy melyik munkamenet típusa használ, futtassa a következő parancsot:
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
 
 3. A **üzembe helyezés – IoTEdge** parancs ellenőrzi, hogy a Windows-gépen valamelyik támogatott verzióra, bekapcsolja a tárolók funkciót, és ezután letölti a moby-futtatókörnyezet és az IoT Edge-futtatókörnyezet. A parancs alapértelmezés szerint, a Windows-tárolók használatával. 
 
@@ -212,7 +226,7 @@ Tárolók és az eszközön futó rendszerképeket segítségével parancsokkal 
 
 ## <a name="update-an-existing-installation"></a>Meglévő telepítés frissítése
 
-Ha már már telepítve van az IoT Edge-futtatókörnyezet előtt egy eszközön, és kiépítette azt az IoT Hub-identitással, majd frissítheti a futtatókörnyezet írja be újra az eszköz adatai nélkül. 
+Ha már már telepítve van az IoT Edge-futtatókörnyezet előtt egy eszközön, és kiépítette azt az IoT Hub-identitással, majd frissítheti a modul nélkül adja meg újból az eszközadatokat. 
 
 További információkért lásd: [az IoT Edge biztonsági démon és a futtatókörnyezet frissítése](how-to-update-iot-edge.md).
 
@@ -262,12 +276,12 @@ Az üzembe helyezés – IoTEdge parancs letölti és telepíti az IoT Edge bizt
 
 ### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
-Az Initialize-IoTEdge parancsot az eszköz kapcsolati karakterláncát, és a műveleti adatokat az IoT Edge konfigurálja. Ez a parancs által létrehozott információk nagy részét majd a iotedge\config.yaml fájlban tárolja. Az inicializálás parancsot fogad el ezeket a gyakori paramétereket, többek között. A teljes listát használja a paracs `Get-Help Initialize-IoTEdge -full`. 
+Az Initialize-IoTEdge parancsot az eszköz kapcsolati karakterláncát, és a műveleti adatokat az IoT Edge konfigurálja. Ez a parancs által létrehozott információk nagy részét majd a iotedge\config.yaml fájlban tárolja. Az inicializálás parancsot fogad el ezeket a gyakori paramétereket, többek között. A teljes listát a parancs használata `Get-Help Initialize-IoTEdge -full`. 
 
 | Paraméter | Elfogadott értékek | Megjegyzések |
 | --------- | --------------- | -------- |
-| **Manuális** | None | **Váltson a paraméter**. Ha nincs kiépítési típus van megadva, manuális alapértelmezett értéke.<br><br>Deklarálja, hogy Ön biztosítja az eszköz kapcsolati karakterlánc manuálisan regisztrálhatja az eszközt |
-| **A DPS** | None | **Váltson a paraméter**. Ha nincs kiépítési típus van megadva, manuális alapértelmezett értéke.<br><br>Deklarálja, hogy Ön egy Device Provisioning szolgáltatás (DPS) hatókör-Azonosítót és az eszköz regisztrációs Azonosítót a DPS keresztül a rendelkezésre biztosítja.  |
+| **Manuális** | Egyik sem | **Váltson a paraméter**. Ha nincs kiépítési típus van megadva, manuális alapértelmezett értéke.<br><br>Deklarálja, hogy Ön biztosítja az eszköz kapcsolati karakterlánc manuálisan regisztrálhatja az eszközt |
+| **A DPS** | Egyik sem | **Váltson a paraméter**. Ha nincs kiépítési típus van megadva, manuális alapértelmezett értéke.<br><br>Deklarálja, hogy Ön egy Device Provisioning szolgáltatás (DPS) hatókör-Azonosítót és az eszköz regisztrációs Azonosítót a DPS keresztül a rendelkezésre biztosítja.  |
 | **DeviceConnectionString** | Az IoT Edge-eszköz regisztrálva az IoT Hub, szimpla idézőjelek között a kapcsolati karakterlánc | **Szükséges** manuális telepítésre. Ha nem ad meg egy kapcsolati karakterláncot a parancsprogram paramétereinek, a rendszer kéri, egy, a telepítés során. |
 | **ScopeId** | Hatókör azonosítója, a társított az IoT Hub Device Provisioning Service egy példányát. | **Szükséges** DPS-telepítéshez. Ha nem ad meg egy hatókör azonosítója a parancsfájl paramétereit, a rendszer kéri, egy, a telepítés során. |
 | **RegistrationId** | A regisztrációs azonosító, az eszköz által generált | **Szükséges** DPS-telepítéshez. Ha nem ad meg egy regisztrációs Azonosítót a parancsfájl paramétereit, a rendszer kéri, egy, a telepítés során. |

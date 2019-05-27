@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: 187906a912c999142d764de6ad5da3daccf63ba7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50132800"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146787"
 ---
-1. A keresőmezőbe írja be szűrőként "Outlook.com-os". Ebben a példában válassza ki a következő eseményindítót: **új e-mail érkezésekor**
+1. A keresőmezőbe írja be szűrőként "Outlook.com-os". Ebben a példában ez az eseményindító kiválasztása: **Új e-mail érkezésekor**
 
    ![Keresse meg az Outlook.com-os eseményindítók és műveletek](./media/connectors-create-api-outlook/select-outlook.png)
 

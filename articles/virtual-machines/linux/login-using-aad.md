@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
 ms.openlocfilehash: d1db228f4c73cc00cd32ca6ae5b86056db68f05b
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148951"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66155954"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux rendszerű virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -43,7 +43,7 @@ Nincsenek számos előnnyel jár, jelentkezzen be az Azure-beli, Linux rendszer�
 
 A következő Linux-disztribúció jelenleg a szolgáltatás az előzetes verzióban támogatja:
 
-| Disztribúció | Version |
+| Terjesztési | Version |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -64,7 +64,7 @@ A következő Azure-régiók jelenleg a szolgáltatás az előzetes verzióban t
 
 Ha a helyi telepítése és használata a parancssori felület választja, az oktatóanyaghoz, hogy futnak-e az Azure CLI 2.0.31-es verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
+## <a name="create-a-linux-virtual-machine"></a>Linux rendszerű virtuális gép létrehozása
 
 Hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az-group-create), majd hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az-vm-create) támogatott disztribúciójának használatával és a egy támogatott régióban. Az alábbi példa egy nevű virtuális Gépet helyez üzembe *myVM* használó *Ubuntu 16.04 LTS* helyezzen egy erőforráscsoportban nevű *myResourceGroup* a a *southcentralus*  régióban. A következő példákban megadhatja a saját erőforráscsoport és igény szerint egy virtuális gép neve.
 

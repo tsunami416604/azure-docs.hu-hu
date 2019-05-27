@@ -17,11 +17,11 @@ ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 270479061ad40fdda9db06571ad4ef24b00d6c4d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749142"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66171841"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel
 
@@ -155,7 +155,7 @@ A virtuális gép mérete a virtuális gép által elérhető számítási erőf
 
 Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.  
 
-| Typo                     | Méretek           |    Leírás       |
+| Típus                     | Méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
 | [Számításra optimalizált](sizes-compute.md)   | Fs, F             | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
@@ -281,7 +281,7 @@ ode                DisplayStatus    Level
 PowerState/running  VM running       Info
 ```
 
-## <a name="management-tasks"></a>Felügyeleti feladatok
+## <a name="management-tasks"></a>Kezelési feladatok
 
 A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok futtatására, például a virtuális gép indítására, leállítására vagy törlésére. Emellett előfordulhat, hogy szkripteket is szeretne létrehozni az ismétlődő vagy összetett feladatok automatizálására. Az Azure CLI használatával számos gyakori felügyeleti feladat futtatható a parancssorból vagy szkriptek segítségével. 
 

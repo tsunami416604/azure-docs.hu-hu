@@ -50,7 +50,7 @@
         - name: Storage
           href: storage-account-concept.md
           displayName: Storage side encryption
-        - name: Adategységek API
+        - name: Objektumok
           href: assets-concept.md
     - name: Encoding
       items:

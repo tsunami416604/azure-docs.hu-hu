@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/13/2019
+ms.date: 05/16/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 8cc13e9aec679a79d31d2724ba412efd2d58dfd1
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: 0b0e03b163d4de7a441bb7d2714be23b58c95028
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561276"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170361"
 ---
 Az optimalizált Virtuálisgép-méretek ajánlat egy magas memória – Processzor aránya, amelyek ideális választás relációs adatbázis-kiszolgálókhoz, közepes és nagy gyorsítótárakhoz és memóriabeli elemzésekhez. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélességet az ennél a csoportosításnál méreteire vonatkoztatva számát. 
 
@@ -98,15 +98,57 @@ Prémium szintű Storage gyorsítótárazást: Támogatott
 
 Írásgyorsító: [Támogatott](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
+A Mv2 sorozat funkciók nagy teljesítményű, kis késésű, közvetlenül hozzá van rendelve helyi NVMe-tároló egy hyper-threaded Intel® Xeon® Platinum 8180 M 2,5 GHz-es (Skylake) processzor verziójával futó az összes core alap gyakoriságát, 2,5 GHz-es és a egy 3,8 GHz-es maximális turbo gyakoriságát. Összes Mv2 sorozat virtuálisgép-méretek is támogatja a standard és prémium szintű, perzisztens lemezek használatát. Mv2 sorozat példányai memóriahasználatra optimalizált virtuális gépek mérete, így páratlan számítási teljesítménnyel támogatja a nagy memóriabeli adatbázisok és a egy magas memória – Processzor arány, amely ideális választás relációs adatbázis-kiszolgálókhoz, nagy gyorsítótárakhoz és memóriabeli számítási feladatok elemzés. 
+
 |Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS / MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| Standard_M208ms_v22<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16000 |
-| Standard_M208s_v22<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16000 |
+| Standard_M208ms_v2<sup>1, 2</sup> | 208 | 5700 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16000 |
+| Standard_M208s_v2<sup>1, 2</sup> | 208 | 2850 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16000 |
 
 Mv2-sorozatú virtuális gépek Intel® Hiperszálkezelési technológiát funkció  
 
-<sup>1</sup> ezek nagy vCPU esetében a támogatott vendég operációs rendszerek egyikét: A Windows Server 2016, Windows Server 2019, SLES 12 SP4, SLES 15 és RHEL 7.6
+<sup>1</sup> ezek nagy virtuális gépeknek szüksége van, a támogatott vendég operációs rendszerek egyikét: Windows Server 2016, Windows Server 2019, SLES 12 SP4, SLES 15.
 
+<sup>2</sup> Mv2-sorozat virtuális gépei csak a 2. generációs. Linux használata, a következő részben keresse meg és válassza ki a SUSE Linux-rendszerképen.
+
+#### <a name="find-a-suse-image"></a>A SUSE-lemezkép keresése
+
+Egy megfelelő SUSE Linux-rendszerképek kiválasztása az Azure Portalon: 
+
+1. Az Azure Portalon válassza ki a **erőforrás létrehozása** 
+1. Keressen "SUSE SAP" 
+1. Az SLES for SAP 2. generációs rendszerképek érhetők el, vagy használatalapú fizetéses, vagy saját előfizetésével (saját) használata. A keresési eredmények között bontsa ki a kívánt lemezkép kategóriát:
+
+    * SUSE Linux Enterprise Server (SLES) SAP-
+    * SUSE Linux Enterprise Server (SLES) SAP (saját)
+    
+1. Kompatibilis a Mv2-sorozat a SUSE-rendszerképek van fűzve előtagként a név `GEN2:`. Az alábbi SUSE lemezképek Mv2-sorozat virtuális gépei számára érhetők el:
+
+    * GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 az SAP-alkalmazások
+    * GEN2: SUSE Linux Enterprise Server (SLES) 15 az SAP-alkalmazások
+    * GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 (saját) SAP-alkalmazások
+    * GEN2: SUSE Linux Enterprise Server (SLES) 15 az SAP-alkalmazások (saját)
+
+#### <a name="select-a-suse-image-via-azure-cli"></a>Válassza ki a SUSE-lemezkép az Azure CLI-n keresztül
+
+Mv2-sorozat virtuális gépei a jelenleg elérhető SLES for SAP rendszerkép listájának megtekintéséhez használja a következő [ `az vm image list` ](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list) parancsot:
+
+```azurecli
+az vm image list --output table --publisher SUSE --sku gen2 --all
+```
+
+A parancs jelenít meg a jelenleg elérhető Generation 2 virtuális gépek elérhető SUSE Mv2-sorozat virtuális gépei számára. 
+
+Példa a kimenetre:
+
+```
+Offer          Publisher  Sku          Urn                                        Version
+-------------  ---------  -----------  -----------------------------------------  ----------
+SLES-SAP       SUSE       gen2-12-sp4  SUSE:SLES-SAP:gen2-12-sp4:2019.05.13       2019.05.13
+SLES-SAP       SUSE       gen2-15      SUSE:SLES-SAP:gen2-15:2019.05.13           2019.05.13
+SLES-SAP-BYOS  SUSE       gen2-12-sp4  SUSE:SLES-SAP-BYOS:gen2-12-sp4:2019.05.13  2019.05.13
+SLES-SAP-BYOS  SUSE       gen2-15      SUSE:SLES-SAP-BYOS:gen2-15:2019.05.13      2019.05.13
+```
 
 ## <a name="m-series"></a>M sorozat 
 

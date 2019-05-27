@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 7806599c1a2f1396ff4b07d6f0538057654029d7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738521"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66157131"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Az Azure DevTest Labs integrálása az Azure DevOps folyamatos integrációs és teljesítési folyamat
 Használhatja a *Azure DevTest Labs-feladatok* bővítmény, amely telepítve van az Azure DevOps-könnyedén integrálhatja a build és kiadás folyamatos üzembe helyezési folyamat az Azure DevTest Labs. A bővítmény telepítését három feladatot: 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
-ms.openlocfilehash: 7b80394fbad403be93413069b8f88be6041743d4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 41cb37eb9d96752d4732731d2a36d9bc892cbaa5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797735"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159820"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Gyors útmutató: Üzenetsor létrehozása az Azure Storage-ban a .NET használatával
 
@@ -259,7 +259,7 @@ Tekintse meg az alábbi további forrásanyagokat .NET-fejlesztés az Azure-üze
 
 - A NuGet-csomagok legújabb verzióját töltse le a [Azure Storage ügyféloldali kódtára a .NET-hez](/dotnet/api/overview/azure/storage/client)
     - [Common](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-    - [üzenetsorok](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queues/)
+    - [üzenetsorok](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - A [.NET ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-net) a GitHubon tekintheti meg.
 
 ### <a name="client-library-reference-and-samples"></a>Ügyféloldali kódtár – referencia és minták

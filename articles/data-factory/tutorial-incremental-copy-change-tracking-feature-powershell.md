@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
 ms.openlocfilehash: 52dee0ee60c111c56c42e0452f8f8750ea9ea4e6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436545"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66167460"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával 
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be a forrás Azure SQL-adatbázisban lévő **változáskövetési** adatok alapján egy Azure Blob Storage-be.  
@@ -235,7 +235,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása.
 Ebben a lépésben az Azure SQL-adatbázist az adat-előállítóhoz kapcsolja.
 
-1. Hozzon létre egy JSON-fájlt **AzureSQLDatabaseLinkedService.json** a **C:\ADFTutorials\IncCopyChangeTrackingTutorial** mappában az alábbi tartalommal: Mielőtt mentené a fájlt, a server, a database name **, a &lt;user id&gt; és a &lt;password&gt;** helyőrzőt cserélje le az Azure SQL Server nevére, az adatbázis nevére, a felhasználói azonosítóra és a jelszóra. 
+1. Hozzon létre egy JSON-fájlt **AzureSQLDatabaseLinkedService.json** a **C:\ADFTutorials\IncCopyChangeTrackingTutorial** mappában az alábbi tartalommal: Mielőtt mentené a fájlt, a **&lt;server&gt;, a &lt;database name&gt;, a &lt;user id&gt; és a &lt;password&gt;** helyőrzőt cserélje le az Azure SQL Server nevére, az adatbázis nevére, a felhasználói azonosítóra és a jelszóra. 
 
     ```json
     {

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: f60b5421f2bc66cf09ede4178ce18e2394030264
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 289912e1519a68ae607ace7766e35731af0016b9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64929397"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158270"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>A platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager
 Ez a cikk bemutatja az infrastruktúra áttelepítése egy szolgáltatás (IaaS) erőforrásokat a klasszikusból Resource Manager üzembe helyezési modellek és részleteivel kapcsolatban, a virtual network használatával az előfizetésében fennálló két üzemi modellekből származó erőforrások összekapcsolása helyek közötti átjárók. További információ [Azure Resource Manager-funkciók és előnyök](../articles/azure-resource-manager/resource-group-overview.md). 
@@ -131,5 +131,4 @@ A következő konfigurációk jelenleg nem támogatottak.
 | Azure HDInsight |Virtuális hálózatok, amelyek tartalmazzák a HDInsight-szolgáltatások |Ez jelenleg nem támogatott. |
 | A Microsoft Dynamics Lifecycle Services |Dynamics Lifecycle Services által felügyelt virtuális gépeket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
 | Azure AD Domain Services |Virtuális hálózatok, amelyek tartalmazzák az Azure AD tartományi szolgáltatások |Ez jelenleg nem támogatott. |
-| Azure RemoteApp |Virtuális hálózatok, amelyek tartalmazzák az Azure RemoteApp központi telepítések |Ez jelenleg nem támogatott. |
 | Azure API Management |Virtuális hálózatok, amelyek tartalmazzák az Azure API Management-telepítések |Ez jelenleg nem támogatott. Az IaaS virtuális hálózat migrálása, módosítsa a virtuális hálózat, az API Management központi telepítését, amely nincs állásidő művelet. |

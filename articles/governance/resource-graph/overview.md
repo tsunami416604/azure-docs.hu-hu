@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 45d5cf7c4235d10e136cc96364d52aa4319bbf79
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9d3385b688208065e5854b6358819b5afad8fe65
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137785"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162081"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Az Azure-erőforrás Graph szolgáltatás áttekintése
 
@@ -38,12 +38,12 @@ Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenként
 Az Azure Erőforrás-grafikon a következőket teheti:
 
 - Hozzáférés a anélkül, hogy az egyes hívásokat mindegyik erőforrás-szolgáltató erőforrás-szolgáltató által visszaadott tulajdonságait.
-- Az elmúlt 14 napban tulajdonságok változott az erőforrás végzett módosítási előzmények megtekintése és mikor. (előzetes verzió)
+- Az elmúlt 14 napban tulajdonságok változott az erőforrás végzett módosítási előzmények megtekintése és mikor. (előzetes)
 
 ## <a name="how-resource-graph-is-kept-current"></a>Hogyan tárolódik aktuális erőforrás-grafikon
 
 Egy Azure-erőforrás frissítésekor az Erőforrás-grafikon Resource Manager által a változás értesítést kap.
-Erőforrás-grafikon majd frissíti az adatbázist. Erőforrás-grafikon is elvégzi a szokványos _teljes vizsgálat_. Ez a vizsgálat biztosítja, hogy erőforrás gráfadatok aktuális kihagyott értesítések vagy erőforrás frissítésekor kívül a Resource Manager esetén.
+Erőforrás-grafikon majd frissíti az adatbázist. Erőforrás-grafikon is elvégzi a szokványos _teljes vizsgálat_. Ez a vizsgálat biztosítja, hogy erőforrás gráfadatok aktuális kihagyott értesítések esetén, vagy egy erőforrás-en kívül a Resource Manager frissítésekor.
 
 ## <a name="the-query-language"></a>A lekérdezőnyelv
 
@@ -63,9 +63,15 @@ A Resource Graph használatához megfelelő jogosultságokkal kell rendelkeznie 
 
 ## <a name="throttling"></a>Throttling
 
-Ingyenes szolgáltatás erőforrás-grafikon a lekérdezések szabályozott a legjobb felhasználói élményt és válasz ideje biztosít minden ügyfél számára. Ha a szervezet által támogatni kívánt nagy méretű és gyakori lekérdezések a erőforrás Graph API használatával, használja a portál "Visszajelzés" az Erőforrás-grafikon oldalról. Mindenképpen adja meg az üzleti esetekhez, és jelölje be a "Microsoft e-mail üzeneteket küldhet Önnek a Visszajelzésével kapcsolatban" jelölőnégyzetet ahhoz, hogy a csapat Önnel a kapcsolatot.
+Ingyenes szolgáltatás erőforrás-grafikon a lekérdezések szabályozott a legjobb felhasználói élményt és válasz ideje biztosít minden ügyfél számára. Ha a szervezet által támogatni kívánt nagy méretű és gyakori lekérdezések a erőforrás Graph API használatával, használja a portál "Visszajelzés" a [erőforrás Graph portáloldalán](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph).
+Adja meg az üzleti esetekhez, és jelölje be a "Microsoft e-mail üzeneteket küldhet Önnek a Visszajelzésével kapcsolatban" jelölőnégyzetet ahhoz, hogy a csapat Önnel a kapcsolatot.
 
-Erőforrás-grafikon bérlői szinten szabályozza. Felülbírálja a szolgáltatást, és beállítja a `x-ms-ratelimit-remaining-tenant-reads` válaszfejléc jelzi a hátralévő lekérdezi a felhasználó a bérlőn belül. Erőforrás-grafikon alaphelyzetbe állítja a kvóta 5 másodpercentként óránként helyett. További információkért lásd: [szabályozás Resource Manager-kérelmek](../../azure-resource-manager/resource-manager-request-limits.md).
+Erőforrás-grafikon felhasználói szinten lekérdezések szabályozza. A szolgáltatás válasza a következő HTTP-fejléceket tartalmazza:
+
+- `x-ms-user-quota-remaining` (int): A felhasználó többi erőforrás kvótáját. Ez az érték lekérdezés száma képezi le.
+- `x-ms-user-quota-resets-after` (ÓÓ:) Az időtartamot, amíg a felhasználó kvóta fogyasztás alaphelyzetbe állítása
+
+További információkért lásd: [szabályozás Resource Manager-kérelmek](../../azure-resource-manager/resource-manager-request-limits.md).
 
 ## <a name="running-your-first-query"></a>Az első lekérdezés futtatása
 

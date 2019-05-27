@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.topic: tutorial
 ms.date: 6/7/2017
 ms.openlocfilehash: 5728a9ab70c5b7db10a123d6964b498e70f96588
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546143"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66162213"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Üzembe helyezés az Azure App Service-ben a Jenkinsszel és az Azure CLI használatával
 Java-webalkalmazás Azure-beli üzembe helyezéséhez használhatja az Azure CLI-t egy [Jenkins-folyamatban](https://jenkins.io/doc/book/pipeline/). Ebben az oktatóanyagban létrehozhat egy CI/CD folyamatot egy Azure-beli virtuális gépen, továbbá megismerkedhet a következőkkel is:
@@ -152,7 +152,7 @@ Nyissa meg a Jenkinst egy webböngészőben, és kattintson a **New Item** (Új 
 * A **Definition (Definíció)** értékeként válassza a **Pipeline script from SCM (Folyamatszkript SCM-ből)** lehetőséget.
 * Az **SCM** értékeként válassza a **Git** lehetőséget.
 * Adja meg az elágaztatott adattár GitHub URL-címét: https:\<elágaztatott adattár\>.git
-* Kattintson a **Mentés** gombra.
+* Kattintson a **Save** (Mentés) gombra
 
 ## <a name="test-your-pipeline"></a>A folyamat tesztelése
 * Lépjen a létrehozott folyamatra, majd kattintson a **Build Now** (Buildelés most) lehetőségre.

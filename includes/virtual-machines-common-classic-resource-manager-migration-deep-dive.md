@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125362"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66167084"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>IaaS-erőforrások áttelepítése a klasszikus üzemi modellből Azure Resource Manager
 Először is fontos, az infrastruktúra-szolgáltatás (IaaS) erőforrásként adatsíkon és a felügyeleti sík műveleteket közötti különbségek megértése.
@@ -107,7 +107,7 @@ Nincs beállított ablak, amely előtt a migrálás véglegesítése szükséges
 
 Ha bármilyen problémát észlel, mindig megszakíthatja a migrálást, és visszatérhet a klasszikus üzemi modellhez. Miután visszatér, az Azure megnyitja a felügyeleti sík műveleteket az erőforráson, úgy, hogy folytathassa a normál üzemeltetést a virtuális gépek a klasszikus üzemi modellben.
 
-### <a name="abort"></a>Megszakítás
+### <a name="abort"></a>Megszakít
 Ez az egy választható lépés, ha azt szeretné, állítsa vissza a módosítást a klasszikus üzemi modellre és leállíthatja a migrálást. Ez a művelet törli a Resource Manager-metaadatokat (létrehozott az előkészítési lépés) az erőforrások. 
 
 ![Megszakítási lépés ábra](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
@@ -146,14 +146,14 @@ A klasszikus üzemi modell és az erőforrások Resource Manager alapú ábrázo
 | WinRM-konfiguráció |WinRM-konfiguráció osProfile alatt |A Rendszerfelügyeleti webszolgáltatások konfiguráció az áthelyezésekor változatlan marad a migrálás során. |
 | Rendelkezésre állási csoport tulajdonsága |Rendelkezésre állási csoport erőforrás | Rendelkezésre állási csoport specifikációja egy tulajdonság a virtuális gépen a klasszikus üzemi modellben. A rendelkezésre állási csoportok legfelső szintű erőforrásokká alakulnak a migrálás részeként. A következő konfigurációk nem támogatottak: több rendelkezésre állási csoport felhőszolgáltatásonként, illetve egy vagy több rendelkezésre állási csoport olyan virtuális gépekkel, amelyek nem tartoznak egy rendelkezésre állási csoporthoz sem egy felhőszolgáltatásban. |
 | Hálózati konfiguráció egy virtuális gépen |Elsődleges hálózati adapter |A hálózati konfiguráció egy virtuális gépen az elsődleges hálózati adapter erőforrásként jelenik meg a migrálás után. Azoknál a virtuális gépeknél, amelyek nem tagjai virtuális hálózatnak, a belső IP-cím módosul a migrálás során. |
-| Több hálózati adapter egy virtuális gépen |Hálózati illesztők |Ha egy virtuális gépen több hálózati adapter társítva, mindegyik hálózati interfész lesz az összes tulajdonsággal együtt az áttelepítés részeként legfelsőbb szintű erőforráshoz. |
+| Több hálózati adapter egy virtuális gépen |Hálózati adapterek |Ha egy virtuális gépen több hálózati adapter társítva, mindegyik hálózati interfész lesz az összes tulajdonsággal együtt az áttelepítés részeként legfelsőbb szintű erőforráshoz. |
 | Elosztott terhelésű végpont csoport |Terheléselosztó |A klasszikus üzemi modellben a platform egy implicit terheléselosztót rendel minden felhőszolgáltatáshoz. A migrálás során egy új terheléselosztó erőforrás jön létre, és a terheléselosztó végpont csoport terheléselosztó szabályokká alakul. |
 | Bejövő NAT-szabályok |Bejövő NAT-szabályok |A virtuális gépen meghatározott bemeneti végpontok a terheléselosztó hálózati címfordításra vonatkozó bejövő szabályaivá alakulnak a migrálás során. |
 | Virtuális IP-cím |Nyilvános IP-cím DNS-névvel |A virtuális IP-cím nyilvános IP-cím lesz, és a terheléselosztóhoz társított. A virtuális IP-cím csak akkor migrálható, ha társítva van hozzá egy bemeneti végpont. |
 | Virtuális hálózat |Virtuális hálózat |A virtuális hálózat az összes tulajdonságával a Resource Manager-alapú üzemi modellbe lesz migrálva. Létrejön egy új erőforráscsoport a következő névvel: `-migrated`. |
 | Fenntartott IP-címek |Nyilvános IP-cím statikus kiosztási módszerrel |A terheléselosztóhoz társított fenntartott IP-címek a felhőszolgáltatással vagy a virtuális géppel együtt migrálódnak. A nem társított fenntartott IP-címek migrálása jelenleg nem támogatott. |
 | Nyilvános IP-cím virtuális gépenként |Nyilvános IP-cím dinamikus kiosztási módszerrel |A virtuális géphez társított nyilvános IP-cím nyilvános IP-cím erőforrássá alakul, statikus kiosztási módszerrel beállítva. |
-| NSG-k |NSG-k |Az alhálózatokhoz társított hálózati biztonsági csoportokat a Resource Manager-alapú üzemi modellbe való migrálás részeként a rendszer klónozza. A hálózati biztonsági csoportok a klasszikus üzemi modellben nem törlődnek a migráláskor. A hálózati biztonsági csoportok felügyeletisík-műveletei azonban zárolva vannak, amíg a migrálás folyamatban van. |
+| NSG-k |NSG |Az alhálózatokhoz társított hálózati biztonsági csoportokat a Resource Manager-alapú üzemi modellbe való migrálás részeként a rendszer klónozza. A hálózati biztonsági csoportok a klasszikus üzemi modellben nem törlődnek a migráláskor. A hálózati biztonsági csoportok felügyeletisík-műveletei azonban zárolva vannak, amíg a migrálás folyamatban van. |
 | DNS-kiszolgálók |DNS-kiszolgálók |A virtuális hálózathoz vagy virtuális géphez társított DNS-kiszolgálók a megfelelő erőforrás-migrálás részeként migrálódnak az összes tulajdonsággal együtt. |
 | UDR-ek |UDR-ek |Az alhálózatokhoz társított felhasználó által megadott útvonalakat a Resource Manager-alapú üzemi modellbe való migrálás részeként a rendszer klónozza. A felhasználó által megadott útvonalak a klasszikus üzemi modellben nem törlődnek a migráláskor. A felhasználó által megadott útvonalak felügyeletisík-műveletei zárolva vannak, amíg a migrálás folyamatban van. |
 | IP-továbbítási tulajdonság a virtuális gép hálózati konfigurációjában |IP-továbbítási tulajdonság a hálózati adapteren |A virtuális gép IP-továbbítási tulajdonsága a hálózati adapter tulajdonságává alakul a migrálás közben. |

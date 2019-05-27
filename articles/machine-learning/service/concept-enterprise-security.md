@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/10/2019
-ms.openlocfilehash: b950e7d38235d089c6236c76136d8ec2fc7a1f74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9762b8cadde86a2e64f8fa74a4e794bdf1109ec4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821332"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151188"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás nagyvállalati szintű biztonság
 
@@ -83,7 +83,7 @@ Minden munkaterülethez társított alapértelmezett felügyelt identitás (a ne
 
 A felügyelt identitásokból további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-| Erőforrás | Engedélyek |
+| Resource | Engedélyek |
 | ----- | ----- |
 | Munkaterület | Közreműködő | 
 | Tárfiók | Storage-blobadatok közreműködője | 
@@ -101,7 +101,7 @@ Az Azure Machine Learning szolgáltatás egy további alkalmazás (nevének kezd
 
 Az Azure Machine Learning szolgáltatás más Azure-szolgáltatások számítási erőforrások is támaszkodik. A számítási erőforrások (számítási céljainak) segítségével betanítása és a modellek üzembe helyezése. Ezek a számítási céljainak egy virtuális hálózaton belül hozható létre. Például használhatja a Microsoft Data Science virtuális gép betanítja a modellt, és majd a modell üzembe helyezése az Azure Kubernetes Service (AKS).  
 
-További információkért lásd: [kísérletek vagy következtetési futtatása a virtuális hálózat](how-to-enable-virtual-network.md).
+További információkért lásd: [kísérletek tanuláshoz és következtetésekhez futtatása a virtuális hálózat](how-to-enable-virtual-network.md).
 
 ## <a name="data-encryption"></a>Adattitkosítás
 
@@ -154,7 +154,7 @@ Az alábbi ábrán látható, a létrehozás munkaterület munkafolyamat.
 Felhasználó Azure ad-ben egyetlen Azure Machine Learning szolgáltatás támogatott ügyfelek (parancssori felület, a Python SDK-t, az Azure portal) és a megfelelő Azure Resource Manager-tokent kér.  Felhasználó ekkor meghívja a munkaterület létrehozásához Azure Resource Manager.  Az Azure Resource Manager-ügyfelek az Azure Machine Learning szolgáltatás erőforrás-szolgáltató a munkaterület kiépítése.  További erőforrások jönnek létre a munkaterület létrehozása során az ügyfél előfizetését:
 * KeyVault (a titkos kulcsokat tárolhat)
 * Azure Storage-fiókba (beleértve a Blob & fájlmegosztás)
-* Az Azure Container Registry (a következtetési és kísérletezés docker-rendszerképek tárolásához)
+* Az Azure Container Registry (a következtetésekhez/pontozási és kísérletezés docker-rendszerképek tárolásához)
 * Az Application Insights (a telemetriai adatok tárolása)
 
 Más számítási erőforrások (Azure Kubernetes Service-ben, virtuális gépek stb.) egy munkaterülethez csatlakoztatott is bővítheti ügyfél igény szerint. 
@@ -172,7 +172,7 @@ Az alábbi ábrán látható, a képzési munkafolyamat.
 * Az Azure Machine Learning szolgáltatás menti a fenti kód elkészíteni a pillanatképet a pillanatkép-Azonosítóval rendelkező neve
 * Az Azure Machine Learning szolgáltatás hoz létre azonosítója (nem kötelező) és az Azure Machine Learning szolgáltatás jogkivonatot, amely később használják a számítási célokhoz, például a Machine Learning számítási/VM vissza kommunikáljon az Azure Machine Learning szolgáltatás futtatása
 * Választhat, vagy egy felügyelt számítási (például. A Machine Learning Compute) vagy a nem felügyelt számítási (például. Virtuális gép) való betanítási feladatok futtatása. Az adatfolyam kifejtett mindkét az alábbi esetekben:
-* (Virtuális gép vagy HDInsight/helyi – elért SSH hitelesítő adatok használata a Key Vaultban a Microsoft-előfizetés) Az Azure Machine Learning szolgáltatás felügyeleti kódot futtat a számítási célnak, amely:
+* (Virtuális gép vagy HDInsight – elért SSH hitelesítő adatok használata a Key Vaultban a Microsoft-előfizetés) Az Azure Machine Learning szolgáltatás felügyeleti kódot futtat a számítási célnak, amely:
     1.  A környezetet előkészíti (Megjegyzés: A docker egy virtuális gép/helyi beállítást is. Tekintse meg a lépéseket a Machine Learning Compute alábbi tudni, hogyan fut, a docker-tároló működéséről kísérlet)
     2.  A kód letöltése
     3.  Beállítja a környezeti változók/konfigurációk
@@ -189,7 +189,7 @@ Ezt a lépést jelenik meg a folyamatban, ahol a betanítási számítási írá
 ![Képernyőfelvétel: a munkaterület munkafolyamat létrehozása](./media/enterprise-readiness/training-and-metrics.png)
 
 ### <a name="creating-web-services"></a>Webes szolgáltatások létrehozása
-Az alábbi ábrán látható, amelyben a modell üzembe lett helyezve web szolgáltatásként következtetési munkafolyamat.
+Az alábbi ábrán látható a következtetésekhez munkafolyamat. Következtetésekhez vagy a modell pontozása, nem a fázis, az üzembe helyezett modell előrejelzési leggyakrabban a termelési adatok szolgál.
 A részleteket alább találja:
 * Felhasználó regisztrálja a modellt, például az Azure Machine Learning-SDK-ügyfél használatával
 * Felhasználó hoz létre a model, pontszám fájl és egyéb modell függőségek a képet

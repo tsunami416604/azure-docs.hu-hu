@@ -14,11 +14,11 @@ ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 5dcf31adc5e8bdf810d484f07ebeb6f23acbf452
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487804"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66146845"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Oktatóanyag: Az első adat-előállító létrehozása a Data Factory REST API használatával
 > [!div class="op_single_selector"]
@@ -125,8 +125,8 @@ Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságoka
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| clusterSize |A HDInsight-fürt mérete. |
-| timeToLive |Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer. |
+| ClusterSize |A HDInsight-fürt mérete. |
+| TimeToLive |Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer. |
 | linkedServiceName |Megadja a HDInsight által előállított naplók tárolására szolgáló tárfiókot. |
 
 Vegye figyelembe a következő szempontokat:
@@ -171,7 +171,7 @@ Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságoka
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| type |A tulajdonság beállítása AzureBlob, mert az adatok az Azure Blob Storage-tárban találhatók. |
+| típus |A tulajdonság beállítása AzureBlob, mert az adatok az Azure Blob Storage-tárban találhatók. |
 | linkedServiceName |A korábban létrehozott StorageLinkedService szolgáltatásra hivatkozik. |
 | fileName |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az esetben csak az input.log fájl lesz feldolgozva. |
 | type |A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. |

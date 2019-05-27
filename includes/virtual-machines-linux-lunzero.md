@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 87dd3680aae3e87f78ab2dbe70c44b2008706747
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188225"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66171991"
 ---
 Adatlemezek hozzáadása egy Linux rendszerű virtuális géphez, ha hibákat tapasztalhat, ha a lemez nem létezik a LUN 0. Ha egy lemezt manuálisan ad hozzá a `azure vm disk attach-new` parancsot, és adja meg a LUN-t (`--lun`) ahelyett, hogy lehetővé teszi az Azure-platform határozza meg a megfelelő logikai Egységet, körültekintően járjon el, hogy a lemez már létezik, illetve akkor léteznek a LUN 0. 
 

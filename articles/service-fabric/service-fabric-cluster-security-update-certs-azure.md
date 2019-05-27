@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
 ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050237"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66161817"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Adja hozzá, vagy távolítsa el a tanúsítványokat a Service Fabric-fürtön az Azure-ban
 Javasoljuk, hogy Ismerkedjen meg hogyan a Service Fabric X.509-tanúsítványokat használ, és ismernie kell a [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md). Ismernie kell a fürt tanúsítványt, és mire használható, mielőtt folytatná.

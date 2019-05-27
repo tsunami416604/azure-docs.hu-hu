@@ -8,11 +8,11 @@ ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: 5490149f199c2d7887716ceae3f035527ad33961
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280174"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66170036"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Állítsa be a VMware virtuális gépek vészhelyreállítása az Azure-ban a PowerShell-lel
 
@@ -348,7 +348,7 @@ Szüksége lesz a felderített virtuális gépek védelme érdekében a követke
 Most már az ebben a táblázatban megadott beállításokat használja a következő virtuális gépek replikálása
 
 
-|Virtuális gép  |Folyamatkiszolgáló        |Tárfiók              |Log Storage-fiók  |Szabályzat           |A fiók a mobilitási szolgáltatás telepítése|Célzott erőforráscsoport  | Cél virtuális hálózata  |Cél alhálózat  |
+|Virtuális gép  |Folyamatkiszolgáló        |Tárfiók              |Log Storage-fiók  |Házirend           |A fiók a mobilitási szolgáltatás telepítése|Célzott erőforráscsoport  | Cél virtuális hálózata  |Cél alhálózat  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
 |CentOSVM1       |ConfigurationServer   |replicationstdstorageaccount1| –                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   

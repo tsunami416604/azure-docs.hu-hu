@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 7fe46712d610d881c21653461d12e4f8efecb468
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: fa5a57afa379c6bbe027be80f400fc176800d289
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827875"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158501"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-cicd-npm-package"></a>Folyamatos integráció és a Stream Analytics CI/CD npm-csomag fejlesztése
 Ez a cikk ismerteti, hogyan állítsa be a folyamatos integráció és üzembe helyezési folyamat az Azure Stream Analytics CI/CD npm-csomag használatával.
@@ -22,10 +22,14 @@ Ez a cikk ismerteti, hogyan állítsa be a folyamatos integráció és üzembe h
 
 Folyamatos integráció és üzembe helyezés az Azure Stream Analytics-feladatok használatával engedélyezheti a **asa-streamanalytics-CI/CD** npm-csomag. Az npm-csomag biztosítja az eszközöket, az Azure Resource Manager-sablonok készítése [Stream Analytics Visual Studio Code-projektek](quick-create-vs-code.md). Használat Windows, macOS és Linux rendszereken a Visual Studio Code telepítése nélkül.
 
-Miután [letölti a csomagot](https://www.npmjs.com/package/azure-streamanalytics-cicd), használja az alábbi parancsot a kimenetben az Azure Resource Manager-sablonok. Ha a **outputPath** nincs megadva, a sablonok kerülnek a **telepítés** mappát a projekt **bin** mappát.
+Miután [letölti a csomagot](https://www.npmjs.com/package/azure-streamanalytics-cicd), használja az alábbi parancsot a kimenetben az Azure Resource Manager-sablonok. A **scriptPath** argumentum az abszolút elérési útját a **asaql** fájlt a projektben. Győződjön meg arról, hogy a asaproj.json és JobConfig.json fájlok ugyanabban a mappában, a parancsfájl-fájllal. Ha a **outputPath** nincs megadva, a sablonok kerülnek a **telepítés** mappát a projekt **bin** mappát.
 
 ```powershell
-asa-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
+azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
+```
+Példa (a macOS)
+```powershell
+azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/script.asaql" 
 ```
 
 Ha egy Stream Analytics Visual Studio Code-projektet sikeresen létrejött, a következő két Azure Resource Manager sablon fájlok mellett állít elő a **bin / [hibakeresési/kiskereskedelmi] és üzembe helyezése** mappa: 
@@ -38,7 +42,7 @@ Ha egy Stream Analytics Visual Studio Code-projektet sikeresen létrejött, a k�
 
        [ProjectName].JobTemplate.parameters.json   
 
-Az alapértelmezett paramétereket a parameters.json fájlban vannak a Visual Studio-projektben a beállításokat. Ha azt szeretné, egy másik környezetben való üzembe helyezéséhez, annak megfelelően cserélje le a paramétereket.
+Az alapértelmezett paramétereket a parameters.json fájlban vannak a Visual Studio Code-projektben a beállításokat. Ha azt szeretné, egy másik környezetben való üzembe helyezéséhez, annak megfelelően cserélje le a paramétereket.
 
 > [!NOTE]
 > Az összes a hitelesítő adatokat, az alapértelmezett értékek vannak beállítva a null. Ön **szükséges** értékeinek beállítását a felhő üzembe helyezése előtt.

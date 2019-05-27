@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541383"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159746"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
     There is one for Azure Table Storage and one for Azure Cosmos DB Table API -->
@@ -70,9 +70,9 @@ Get-AzTableRow -table $cloudTable | ft
 
 Ez a parancs az alábbi táblázat hasonló eredményeket eredményez:
 
-| felhasználói azonosító | felhasználónév | partíció | rowkey tulajdonságok esetén |
+| userid | username | partíció | rowkey tulajdonságok esetén |
 |----|---------|---------------|----|
-| 1 | Chris | partition1 | CA |
+| 1. | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
 | 2 | Jessie | partition2 | NM |
 | 4 | Steven | partition2 | TX |
@@ -85,9 +85,9 @@ Get-AzTableRow -table $cloudTable -partitionKey $partitionKey1 | ft
 
 Az alábbi táblázat az eredmények kinéznie:
 
-| felhasználói azonosító | felhasználónév | partíció | rowkey tulajdonságok esetén |
+| userid | username | partíció | rowkey tulajdonságok esetén |
 |----|---------|---------------|----|
-| 1 | Chris | partition1 | CA |
+| 1. | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
 
 #### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Kérje le az entitásokat egy megadott értéket egy adott oszlopban
@@ -101,10 +101,10 @@ Get-AzTableRow -table $cloudTable `
 
 Ez a lekérdezés lekéri egy rekord.
 
-|A mező|érték|
+|A mező|value|
 |----|----|
-| felhasználói azonosító | 1 |
-| felhasználónév | Chris |
+| userid | 1. |
+| username | Chris |
 | PartitionKey | partition1 |
 | RowKey      | CA |
 
@@ -118,10 +118,10 @@ Get-AzTableRow `
 
 Ez a lekérdezés lekéri egy rekord.
 
-|A mező|érték|
+|A mező|value|
 |----|----|
-| felhasználói azonosító | 1 |
-| felhasználónév | Chris |
+| userid | 1. |
+| username | Chris |
 | PartitionKey | partition1 |
 | RowKey      | CA |
 
@@ -153,10 +153,10 @@ Get-AzTableRow -table $cloudTable `
 
 Az eredmények megjelenítése a Jessie2 rekord.
 
-|A mező|érték|
+|A mező|value|
 |----|----|
-| felhasználói azonosító | 2 |
-| felhasználónév | Jessie2 |
+| userid | 2 |
+| username | Jessie2 |
 | PartitionKey | partition2 |
 | RowKey      | NM |
 

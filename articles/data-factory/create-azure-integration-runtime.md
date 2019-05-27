@@ -12,11 +12,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 4b166ded3dcef4a89951eb81f7f1b321f89a0e67
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576038"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66153400"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Hogyan hozhat létre, és az Azure integrációs modul konfigurálása
 Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos további információkért lásd: [integrációs modul](concepts-integration-runtime.md).

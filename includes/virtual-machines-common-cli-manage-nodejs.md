@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: a4c9ec133b3686a92cec7e7c8d4552c1302e3074
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474274"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158530"
 ---
 Mielőtt az Azure CLI-t Resource Manager-parancsokkal és -sablonokkal használhatná az Azure-erőforrások és számítási feladatok erőforráscsoportokkal való üzembe helyezéséhez, szüksége lesz egy Azure-fiókra. Ha nem rendelkezik fiókkal, [itt feliratkozhat az ingyenes Azure-próbaidőszakra](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -30,7 +30,7 @@ Ez a cikk ismerteti az alapszintű parancsokat, amelyeket a klasszikus Azure CLI
 > 
 > 
 
-| Tevékenység | Resource Manager |
+| Feladat | Resource Manager |
 | --- | --- |
 | Legalapvetőbb virtuális gép létrehozása |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(Az `image-urn` az `azure vm image list` parancs használatával szerezhető be. Példákért tekintse meg [ezt a cikket](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).) |
 | Linux rendszerű virtuális gép létrehozása |`azure  vm create [options] <resource-group> <name> <location> -y "Linux"` |

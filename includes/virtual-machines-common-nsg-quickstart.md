@@ -2,19 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines-windows
-author: rockboyfor
+author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-origin.date: 09/12/2018
-ms.date: 11/12/2018
-ms.author: v-yeche
+ms.date: 09/12/2018
+ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405393"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66154779"
 ---
 Nyisson meg egy portot, vagy hozzon létre egy végpontot a virtuális géphez (VM) az Azure-ban egy alhálózatot vagy egy virtuális hálózati adapter hálózati szűrő létrehozásával. Ezeket a szűrőket, amely a bejövő és kimenő adatforgalom vezérlésére, helyezze el az erőforrás a forgalmat fogadó csatolt hálózati biztonsági csoport.
 
@@ -34,4 +33,8 @@ Miután létrehozott egy virtuális Gépet, amely a szabványos 80-as TCP-portot
 
 3. A hálózati biztonsági csoport társítása a virtuális hálózati adapter vagy alhálózatot.
 
-    Bár ebben a példában egy egyszerű szabályt, hogy a HTTP-forgalmat használ, használhatja a hálózati biztonsági csoportok és a szabályok összetettebb hálózati konfigurációk létrehozásához.
+Bár ebben a példában egy egyszerű szabályt, hogy a HTTP-forgalmat használ, használhatja a hálózati biztonsági csoportok és a szabályok összetettebb hálózati konfigurációk létrehozásához. 
+
+
+
+
