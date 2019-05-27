@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 29a639142395c43fea06c1d6d18909b3c9f33b86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6660aa4e21aa36dc94c4ed9201fecb5637dddb3a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769420"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955963"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Automatikus skálázás és az App Service Environment-környezet v1
 
@@ -63,7 +63,7 @@ Az automatikus méretezés App Service Environment-környezetek a legjobban, aj�
 Ez a cikk leírja a szükséges szempontok, automatikus méretezés beállítása során. A cikk végigvezeti Önt, ha a Ön figyelembe vennie az automatikus skálázás App Service-környezetek, amelyek az App Service-környezetben üzemeltetett interakciókat.
 
 ### <a name="scenario-introduction"></a>A forgatókönyv bemutatása
-Frank a sysadmin (rendszergazda), aki a számítási feladatok, amelyek kezel egy része lett migrálva az App Service-környezet a vállalati.
+Frank a sysadmin (rendszergazda), akik az általuk felügyelt számítási feladatok egy része lett migrálva az App Service-környezet a vállalati.
 
 Az App Service-környezet konfigurációja manuális skálázás, a következő:
 
@@ -76,7 +76,7 @@ Feldolgozókészlet 1 használatos a termelési számítási feladatokhoz, míg 
 
 Az App Service-csomagok QA és fejlesztési manuális skálázás vannak konfigurálva. Az App Service-csomag éles terhelés és forgalom kezelésére van beállítva az automatikus méretezés.
 
-Frank tisztában van az alkalmazás. Tudja, hogy a terhelés csúcsidőszakon 9:00 és 18:00:00 között van, mivel ez egy – üzletági (LOB) alkalmazás, amely az alkalmazottak használata során az office. Ezt követően használati csökken, amikor a felhasználók az adott napra történik. Csúcsidőn kívül van még néhány terhelést, mert a felhasználók férhetnek hozzá az alkalmazás távolról a mobil eszközök és az otthoni számítógépeket használ. Az üzemi App Service-csomag már konfigurálva van a következő szabályokat a processzorhasználat alapján automatikus skálázást:
+Frank tisztában van az alkalmazás. Akkor tudja, hogy a terhelés csúcsidőszakon 9:00 és 18:00:00 között van, mivel ez egy – üzletági (LOB) alkalmazás, amely az alkalmazottak használata során az office. Ezt követően használati csökken, amikor a felhasználók az adott napra történik. Csúcsidőn kívül van még néhány terhelést, mert a felhasználók férhetnek hozzá az alkalmazás távolról a mobil eszközök és az otthoni számítógépeket használ. Az üzemi App Service-csomag már konfigurálva van a következő szabályokat a processzorhasználat alapján automatikus skálázást:
 
 ![LOB-alkalmazás vonatkozó beállításokat.][asp-scale]
 

@@ -8,21 +8,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: f8803a498e62958a5488f2ac8830137c37533e54
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 6ec981164de0ff61b0e83d54255d046a1418ed96
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413699"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000107"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatikus skálázása az Azure HDInsight-fürtök (előnézet)
+
+> [!Important]
+> Az automatikus skálázási funkció csak május 8. 2019 után létrehozott Spark, Hive és a MapReduce fürtök esetében működik. 
 
 Az Azure HDInsight-fürt automatikus méretezési funkciója automatikusan méretezi magát a munkavégző csomópontok számát a fürtben található felfelé és lefelé. A fürtben található csomópontok más típusú jelenleg nem lehet méretezni.  Egy új HDInsight-fürt létrehozásakor a feldolgozó csomópontok minimális és maximális száma megadható. Automatikus skálázási ezután figyeli a analytics terhelés erőforrásigényeinek és méretezi a munkavégző csomópontok számát felfelé vagy lefelé. Nem jár további költségekkel ennek a funkciónak.
 
 ## <a name="cluster-compatibility"></a>Fürt-kompatibilitás
-
-> [!Important]
-> Az automatikus skálázási funkció csak a nyilvános rendelkezésre állás a funkció a 2019. május után létrehozott fürtök esetében működik. Mindez nem működik a már meglévő fürtök esetében.
 
 A következő táblázat ismerteti a fürt típusát és verziókat, amelyek kompatibilisek az automatikus méretezési funkciója.
 
@@ -189,6 +189,25 @@ Létrehozhat egy HDInsight-fürt és az ütemezés alapú automatikus skálázá
 Egy futó fürt automatikus skálázás engedélyezéséhez jelölje be **fürtméret** alatt **beállítások**. Kattintson a **automatikus skálázás engedélyezése**. Válassza ki az automatikus méretezés, hogy szeretné, és adja meg a terhelés alapján vagy ütemezés-alapú méretezésének lehetőségeiről. Végül kattintson **mentése**.
 
 ![Munkavégző csomópont ütemezésalapú automatikus skálázási beállítás engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+
+## <a name="best-practices"></a>Ajánlott eljárások
+
+### <a name="choosing-load-based-or-schedule-based-scaling"></a>Terhelés alapján vagy ütemezés-alapú méretezés kiválasztása
+
+Mielőtt az válassza ki, milyen módban, vegye figyelembe a következő tényezőket:
+
+* Eltérés betöltése: nem a fürt a terhelés konzisztens mintát követi az adott nap adott időpontokban. Ha nem, nem jobb megoldás-alapú betöltés ütemezése.
+* SLA-követelmények: Automatikus skálázás helyett prediktív reaktív. Lesz-e elegendő késleltetés növelését, és amikor a fürt kell lennie a cél méretét, a terhelés indításakor? Nincsenek a szigorú követelményeket állít fel SLA-t és a terhelés egy ismert rögzített mintát, ha a "ütemezésalapú" nem jobb megoldás.
+
+### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Vegye figyelembe a skála késései be- vagy leskálázás műveletek
+
+A skálázási művelet elvégzéséhez 10 – 20 percig is eltarthat. Állítson be egy egyéni ütemezést, tervezze meg ezt a késést. Például ha a fürt méretét 20, 9:00 Órakor, állítsa az ütemezési eseményindító egy korábbi időpontra, például 8:30-kor, hogy a skálázási művelet befejeződött, 9:00-kor szerint.
+
+### <a name="preparation-for-scaling-down"></a>Skálázás lefelé előkészítése
+
+Fürt vertikális leskálázást a folyamat során az automatikus méretezés lejártakor a csomópontok megfelelnek a cél méretét. A csomópontokon futó vannak feladatok, ha az automatikus méretezés megvárja, amíg a feladat befejeződött. Mivel az egyes munkavégző csomópont is szolgál a szerepkör HDFS-ben, az ideiglenes adatokat megjelenítjük a többi csomópont. Ezért győződjön meg arról, hogy van elég hely a többi csomóponton üzemeltetni az ideiglenes adatokat. 
+
+A futó feladatok továbbra is futtatásához és befejezéséhez. A függőben lévő feladatokat ütemezni kevesebb rendelkezésre álló munkavégző csomópontok a szokásos módon várakozik.
 
 ## <a name="monitoring"></a>Figyelés
 

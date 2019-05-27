@@ -8,40 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: bf3af8f5d1d2f063199a8275c2f49c70140e8732
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: 46bd1bdd55725878bc7b1bd55d5e24b78d82aada
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588771"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124546"
 ---
 # <a name="get-face-detection-data"></a>Face észlelési adatok lekérése
 
-Ez az útmutató mutatják be, hogyan használja az arcfelismerés nemét, korra és testtartás-attribútumok kibontani a megadott lemezkép. Ebben az útmutatóban foglalt kódrészletek nyelven írták C# használatával, a Face API ügyféloldali kódtár, de ugyanezeket a funkciókat is elérhetővé válnak a [REST API-t](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+Ez az útmutató bemutatja, hogyan használja az arcfelismerés nemét, korra és testtartás-attribútumok kibontani a megadott lemezkép. Ebben az útmutatóban foglalt kódrészletek nyelven írták C# az Azure Cognitive Services Face API ügyféloldali kódtár használatával. Ugyanazokat a funkciókat keresztül érhető el a [REST API-val](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 Ez az útmutató bemutatja, hogyan való:
 
 - Kérje le a helyek és az arcok méretei képet.
-- Helyeinek különböző arcrészek (tanulók, orrot, szájához beszéd és így tovább) a képet kaphat.
-- Kitalálni a nemek, kor, és érzelmeket és a egy felismert arc egyéb attribútumai.
+- A helyek, a különböző arcrészek, például a tanulók, orrot és szájához beszéd, a képet kaphat.
+- Kitalálni a nemek, kor, érzelem és egy felismert arc egyéb attribútumai.
 
-## <a name="setup"></a>Beállítás
+## <a name="setup"></a>Telepítés
 
-Ez az útmutató feltételezi, hogy Ön rendelkezik már meglévő, egy **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** nevű objektum `faceClient`, Arcfelismerési előfizetési kulcs és a végpont URL-címet. Itt használhatja a face észlelés funkció hívása, vagy **[DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)** (ebben az útmutatóban használt) vagy **[DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)**. Tekintse meg a [arcokat észleli a rövid útmutatóban a C# ](../quickstarts/csharp-detect-sdk.md) beállítására vonatkozó útmutatást.
+Ez az útmutató feltételezi, hogy Ön már felépített egy [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) nevű objektum `faceClient`, Arcfelismerési előfizetési kulcs és a végpont URL-címet. Itt használhatja a face észlelés funkció hívása, vagy [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), ebben az útmutatóban használt vagy [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Ez a szolgáltatás beállítása az utasításokért lásd: a [hibakeresés gyors útmutató: arcokat C# ](../quickstarts/csharp-detect-sdk.md).
 
-Ez az útmutató a hibakeresés hívás tulajdonságairól összpontosítanak&mdash;milyen argumentumokat adhat át, és mit tehet a visszaadott adatokkal. Azt javasoljuk, hogy csak a kérdezi le van szüksége, szolgáltatások, az egyes műveletek végrehajtásához további időt igényel.
+Ez az útmutató elsősorban a hibakeresés hívás tulajdonságairól, például milyen argumentumokat adhat át, és mit tehet a visszaadott adatok. Azt javasoljuk, hogy lekérdezése a szükséges funkciót. Minden művelet befejezéséhez további időt vesz igénybe.
 
 ## <a name="get-basic-face-data"></a>Alapszintű face adatok lekérése
 
-Arcok keresése és a egy képet a helyüket, a metódust hívja a _returnFaceId_ paraméter beállítása **igaz** (alapértelmezett).
+Arcok keresése és a egy képet a helyüket, a metódust hívja a _returnFaceId_ paraméter beállítása **igaz**. Ez az alapértelmezett beállítás.
 
 ```csharp
 IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, false, null);
 ```
 
-A visszaadott **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** objektumok egyedi azonosítók és a egy téglalapot, amely lehetővé teszi a face képpontos koordinátáit lehet lekérdezni.
+A visszaadott lekérdezheti [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) objektumokat a saját egyedi azonosítóját és a egy téglalapot, amely lehetővé teszi a face képpontos koordinátáit.
 
 ```csharp
 foreach (var face in faces)
@@ -51,21 +51,17 @@ foreach (var face in faces)
 }
 ```
 
-Lásd: **[FaceRectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet)** elemezni a hely és a face méretei olvashat. Általában a téglalap a szemet, szemöldök, orrot és szájához beszéd; tartalmaz-e a fő füleken és chin tetején nem feltétlenül szerepelnek. Ha szeretne használni a négyszög meghatározása egy teljes átjáró- vagy közepes képernyőkép-készítés álló (egy fénykép azonosító típusa image) levágni, érdemes bontsa ki a téglalap által egy bizonyos árrése az összes csatlakozás minden irányában.
+A hely és a face méretei elemezni információkért lásd: [FaceRectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet). Adott téglalapban általában a szemet, szemöldök, orrot és szájához beszéd tartalmazza. A fő füleken és chin tetején nem feltétlenül tartalmazzák. Használja a négyszög meghatározása vágja körül, egy teljes head, vagy szerezze be a képernyőkép-készítés közben álló talán egy fénykép-típusa képre vonatkozóan, bontsa ki a négyszög minden irányban.
 
 ## <a name="get-face-landmarks"></a>Arcrészek beolvasása
 
-Arcrészek egy könnyen megtalálható halmaza, például a tanulók a óraszámlapján vagy orrot csúcsa. Beállításával face tereptárgyak adatokat kaphat a _returnFaceLandmarks_ paramétert **igaz**.
+[Nyomtatandó oldallal arcrész](../concepts/face-detection.md#face-landmarks) könnyen megtalálható pontok a egy oldallal, például a tanulók vagy az én csúcsa gyűjteménye. Face tereptárgyak adatokat kíván, állítsa be a _returnFaceLandmarks_ paramétert **igaz**.
 
 ```csharp
 IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, null);
 ```
 
-Alapértelmezés szerint 27 előre meghatározott arcpont van. A következő ábrán látható összes 27 pont:
-
-![Face ábra. Ez az összes 27 arcrész címkével](../Images/landmarks.1.jpg)
-
-A visszaadott pontok képpont, csakúgy, mint a face téglalap keret egysége. A következő kód bemutatja, hogyan lehet, hogy kérheti le a orrot és a tanulók a helyek:
+A következő kód bemutatja, hogyan lehet, hogy kérheti le a orrot és a tanulók a helyek:
 
 ```csharp
 foreach (var face in faces)
@@ -83,7 +79,7 @@ foreach (var face in faces)
 }
 ```
 
-Face arcrész adatokat is a face irányának pontos kiszámításához használható. Ha például a szemet közepén a szájához beszéd, a központ egy vektor, elforgatási szögét a face is meghatározzuk. Az alábbi kódot a vektoros számítja ki:
+Face arcrész adatok pontos kiszámításához a face irányának is használhatja. Elforgatási szögét a face megadhatja például, mint a szemet közepére a szájához beszéd, a központ egy vektoros. A következő kódot a vektoros számítja ki:
 
 ```csharp
 var upperLipBottom = landmarks.UpperLipBottom;
@@ -105,25 +101,13 @@ Vector faceDirection = new Vector(
     centerOfTwoEyes.Y - centerOfMouth.Y);
 ```
 
-A face irányának ismerete, forgatható a téglalap alakú face keret több megfelelően igazítjuk azt. Ha azt szeretné, az arcokat a kép levágása, programozott módon elfordításával a képet úgy, hogy az mindig jelzése idővonalon függőleges.
+Ha tudja, hogy a face irányát, több megfelelően igazítjuk azt a téglalap alakú face keret elfordításával. Arcok a képen levágni, programozott módon elfordításával a képet úgy, hogy az mindig jelzése idővonalon függőleges.
 
 ## <a name="get-face-attributes"></a>Face-attribútumainak lekérése
 
-Arcjelző négyszögek és tereptárgyak felismerése, mellett az arcfelismerés API fogalmi attribútumai a face is elemezhet. Ezek a következők:
+Arcjelző négyszögek és tereptárgyak felismerése, mellett az arcfelismerés API fogalmi attribútumai a face is elemezhet. A teljes listát lásd: a [attribútumok arc](../concepts/face-detection.md#attributes) fogalmi szakaszban.
 
-- Kor
-- Nem
-- Mosoly intenzitása
-- Arcszőrzet
-- Szemüveg
-- 3D fő testtartás
-- Érzelemfelismerés
-
-> [!IMPORTANT]
-> Ezek az attribútumok vannak előre meghatározott statisztikai algoritmusokkal, és előfordulhat, hogy nem pontos. Körültekintően járjon el, ha az attribútum adatokon alapuló döntéseket.
->
-
-Arctulajdonságok elemzéséhez, állítsa be a _returnFaceAttributes_ paraméter listájára **[FaceAttributeType Enum](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** értékeket.
+Arctulajdonságok elemzéséhez, állítsa be a _returnFaceAttributes_ paraméter listájára [FaceAttributeType Enum](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) értékeket.
 
 ```csharp
 var requiredFaceAttributes = new FaceAttributeType[] {
@@ -138,7 +122,7 @@ var requiredFaceAttributes = new FaceAttributeType[] {
 var faces = await faceClient.DetectWithUrlAsync(imageUrl, true, false, requiredFaceAttributes);
 ```
 
-Ezt követően a visszaadott adatokhoz való hivatkozás, és végezze el a további az igényeinek megfelelően.
+Ezután a visszaadott adatok referenciák beszerzése és szükség szerint további műveleteket.
 
 ```csharp
 foreach (var face in faces)
@@ -154,11 +138,14 @@ foreach (var face in faces)
 }
 ```
 
-Az attribútumok mindegyike kapcsolatos további információkért tekintse meg a [szószedet](../Glossary.md).
+Attribútumait kapcsolatos további információkért tekintse meg a [Arcfelismerés és attribútumok](../concepts/face-detection.md) fogalmi útmutató.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban megtanulta, hogyan használhatja a különféle funkciók biztosításához az arcfelismerés. Ezután tekintse meg a [szószedet](../Glossary.md) a részletesebb tekintse meg a már lekért arcfelismerési adatokat.
+Ebben az útmutatóban megtanulta, hogyan használhatja a különféle funkciók biztosításához az arcfelismerés. Ezután integrálja ezeket a funkciókat az alkalmazás egy részletes oktatóanyag utasításait követve.
+
+- [Oktatóanyag: Face adatok megjelenítéséhez a képet a WPF-alkalmazás létrehozása](../Tutorials/FaceAPIinCSharpTutorial.md)
+- [Oktatóanyag: Keret arcok a képet, és Android-alkalmazás létrehozása](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc4ff596cdafd348288187b0cd9b32f7b4c2d275
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: cafe81a1b5ab6d26e71eff05e355d2ed79c4d5e7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823375"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119385"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Kombinált engedélyezése biztonsági információk regisztrációs (előzetes verzió)
 
@@ -43,7 +43,7 @@ Hajtsa végre ezeket a lépéseket, kombinált regisztrációs engedélyezése:
 > A március a 2019-től kezdődően a telefonhívási beállítások nem lesznek elérhetők a multi-factor Authentication és az ingyenes vagy próbaverziója az Azure AD-bérlő felhasználóinak az SSPR. Ez a változás nem érinti az SMS-üzenetek. A telefonhívási beállítások továbbra is elérhető lesz a felhasználók számára a fizetős Azure AD-bérlőt.
 
 > [!NOTE]
-> Miután engedélyezte a kombinált regisztrációs, felhasználók, akik regisztrálni, illetve erősítse meg a telefonszámát vagy mobilalkalmazás segítségével az új funkció a segítségükkel a multi-factor Authentication és az SSPR, ha azokat a módszereket engedélyezve vannak a multi-factor Authentication és az SSPR házirendek. Ezután tiltsa le a felhasználói élményt, ha felhasználók, akik nyissa meg az előző SSPR regisztrációs oldalon található `https:/aka.ms/ssprsetup` multi-factor authentication végrehajtása a lap eléréséhez szükséges.
+> Miután engedélyezte a kombinált regisztrációs, felhasználók, akik regisztrálni, illetve erősítse meg a telefonszámát vagy mobilalkalmazás segítségével az új funkció a segítségükkel a multi-factor Authentication és az SSPR, ha azokat a módszereket engedélyezve vannak a multi-factor Authentication és az SSPR házirendek. Ezután tiltsa le a felhasználói élményt, ha felhasználók, akik nyissa meg az előző SSPR regisztrációs oldalon található `https://aka.ms/ssprsetup` multi-factor authentication végrehajtása a lap eléréséhez szükséges.
 
 Ha konfigurálta a zónákhoz való társításának listája a hely az Internet Explorer, a következő helyek kell lennie az ugyanabban a zónában:
 

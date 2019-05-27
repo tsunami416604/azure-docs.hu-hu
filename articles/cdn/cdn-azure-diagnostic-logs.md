@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
 ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881129"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66125894"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -195,9 +195,9 @@ Alapvető elemzési naplók óránként jönnek létre, és az adatokat gyűjt, 
 |Erőforráscsoport neve |Az erőforrás nevét, amely a CDN-erőforrások tartoznak.|
 |Profilnév |A CDN-profil neve|
 |Végpont neve |A CDN-végpont neve|
-|Év|  Az év, például 2017 négyjegyű ábrázolása|
-|Hónap| A hónapok sorszáma kétjegyű ábrázolása. 01 január =... 12. December =|
-|Nap|   A hónap napját kétjegyű ábrázolása|
+|év|  Az év, például 2017 négyjegyű ábrázolása|
+|hónap| A hónapok sorszáma kétjegyű ábrázolása. 01 január =... 12. December =|
+|nap|   A hónap napját kétjegyű ábrázolása|
 |PT1H.json| Tényleges JSON-fájlt az elemzési adatok tárolására|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>A core analytics-adatok exportálása CSV-fájlba
@@ -238,59 +238,59 @@ Kövesse az alábbi lépéseket az Azure Monitor figyelési megoldás hozzáadá
 
 2. Az a **új** lap **Marketplace**válassza **figyelés + felügyelet**.
 
-    ![Piactér](./media/cdn-diagnostics-log/14_Marketplace.png)
+    ![Marketplace](./media/cdn-diagnostics-log/14_Marketplace.png)
 
 3. Az a **figyelés + felügyelet** lapon jelölje be **összes**.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/15_See-all.png)
+    ![Összes megjelenítése](./media/cdn-diagnostics-log/15_See-all.png)
 
 4. Keresse meg a CDN a keresőmezőbe.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/16_Search-for.png)
+    ![Összes megjelenítése](./media/cdn-diagnostics-log/16_Search-for.png)
 
 5. Válassza ki **az Azure CDN – egyszerűsített analitika**. 
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/17_Core-analytics.png)
+    ![Összes megjelenítése](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
 6. Miután kiválasztotta **létrehozás**, a rendszer felkéri hozzon létre egy új Log Analytics-munkaterületet, vagy használjon egy meglévőt. 
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/18_Adding-solution.png)
+    ![Összes megjelenítése](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
 7. Válassza ki a előtt létrehozott munkaterülethez. Majd hozzá kell egy automation-fiókot.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/19_Add-automation.png)
+    ![Összes megjelenítése](./media/cdn-diagnostics-log/19_Add-automation.png)
 
 8. A következő képernyőn látható az automation-fiók ki kell töltenie űrlap. 
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/20_Automation.png)
+    ![Összes megjelenítése](./media/cdn-diagnostics-log/20_Automation.png)
 
 9. Az automation-fiók létrehozását követően készen áll a megoldás hozzáadása. Válassza a **Létrehozás** gombot.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/21_Ready.png)
+    ![Összes megjelenítése](./media/cdn-diagnostics-log/21_Ready.png)
 
 10. A megoldás már hozzá van adva a munkaterülethez. Térjen vissza az Azure portal Irányítópultjára.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/22_Dashboard.png)
+    ![Összes megjelenítése](./media/cdn-diagnostics-log/22_Dashboard.png)
 
     Válassza ki a létrehozott nyissa meg a munkaterületet a Log Analytics-munkaterületet. 
 
 11. Válassza ki a **OMS-portálon** csempére kattintva tekintse meg az új megoldásokat.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/23_workspace.png)
+    ![Összes megjelenítése](./media/cdn-diagnostics-log/23_workspace.png)
 
 12. A portál a következő képernyőhöz hasonlóan kell kinéznie:
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/24_OMS-solution.png)
+    ![Összes megjelenítése](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
     Válassza ki az egyik csempét az adatok számos nézet megtekintéséhez.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/25_Interior-view.png)
+    ![Összes megjelenítése](./media/cdn-diagnostics-log/25_Interior-view.png)
 
     További csempék jelölő egyéni nézeteket az adatokban, hogy jobbra vagy balra görgetve. 
 
     Válassza ki az egyik csempét az adatokkal kapcsolatos további részletek megtekintéséhez.
 
-     ![Az összes megtekintése](./media/cdn-diagnostics-log/26_Further-detail.png)
+     ![Összes megjelenítése](./media/cdn-diagnostics-log/26_Further-detail.png)
 
 ### <a name="offers-and-pricing-tiers"></a>Az ajánlatok és tarifacsomagok
 

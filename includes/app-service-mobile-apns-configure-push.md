@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 25bb5cfb0073f7533faddec43b38fb5031b82a43
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 852a3b00e8513f9ce68c5aae54c974505d0c9af6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811637"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140087"
 ---
 1. A Mac számítógépén indítsa el a **Keychain Access**. A bal oldali navigációs sávon a **kategória**, nyissa meg **saját tanúsítványok**. Keresse meg az SSL-tanúsítványt, amelyet az előző szakaszban töltött le, és majd kiadni a tartalmát. Válassza ki a tanúsítványt csak (ne válassza a titkos kulcsot). Ezután [exportálja](https://support.apple.com/kb/PH20122?locale=en_US).
 2. Az a [az Azure portal](https://portal.azure.com/)válassza **összes tallózása** > **App Services**. Ezután válassza ki a Mobile Apps háttérrendszerre. 

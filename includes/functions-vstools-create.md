@@ -5,16 +5,15 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-origin.date: 03/05/2019
-ms.date: 03/25/2019
-ms.author: v-junlch
+ms.date: 03/05/2019
+ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 6c430f22a9d4fa0fad95bcaa41675545fffd91ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403646"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131834"
 ---
 A Visual Studio Azure Functions projektsablonja egy olyan projektet hoz létre, amely közzétehető egy Azure-függvényalkalmazásban. Csoport funkciók függvényalkalmazás felügyeleti, üzembe helyezéséhez és erőforrás-megosztás használhatja egy logikai egységet.
 
@@ -31,7 +30,7 @@ A Visual Studio Azure Functions projektsablonja egy olyan projektet hoz létre, 
     | Beállítás      | Ajánlott érték  | Leírás                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Verzió** | Azure Functions 2.x <br />(.NET Core) | Ez a beállítás a verzió 2.x verziójú futtatókörnyezet, az Azure Functions, amely támogatja a .NET Core használó Functions-projektet hoz létre. Az Azure Functions 1.x támogatja a .NET-keretrendszert. További információkért lásd: [cél Azure Functions futtatókörnyezet-verzió](../articles/azure-functions/functions-versions.md).   |
-    | **Sablon** | HTTP eseményindító | Ezzel a beállítással létrehoz egy HTTP-kérelem által aktivált függvény. |
+    | **Sablon** | HTTP-eseményindító | Ezzel a beállítással létrehoz egy HTTP-kérelem által aktivált függvény. |
     | **Storage-fiók**  | Storage emulator | HTTP-trigger nem használja az Azure-Tárfiók kapcsolata. A többi triggernek érvényes Storage-fiókhoz tartozó kapcsolati sztringre van szüksége. |
     | **Hozzáférési jogosultságok** | Névtelen | A létrehozott függvényt bármely ügyfél elindíthatja, kulcs megadása nélkül. Ez az engedélyezési beállítás megkönnyíti az új függvény tesztelését. A kulcsokról és az engedélyezésről a [HTTP- és webhookkötések](../articles/azure-functions/functions-bindings-http-webhook.md) című témakör [Engedélyezési kulcsok](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys) szakaszában talál további információt. |
     
@@ -39,4 +38,3 @@ A Visual Studio Azure Functions projektsablonja egy olyan projektet hoz létre, 
     > Mindenképpen állítsa be a **hozzáférési jogosultságok** való `Anonymous`. Ha úgy dönt, hogy az alapértelmezett szint, `Function`, módosítania kell mutatnia a [függvénykulcs](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys) a kérések a függvény-végpontot.
     
 4. Válassza ki **OK** a Functions-projektet és a HTTP által aktivált függvény létrehozásához.
-

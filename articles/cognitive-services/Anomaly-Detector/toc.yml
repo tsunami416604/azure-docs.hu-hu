@@ -60,6 +60,8 @@
       href: 'https://aka.ms/adregion'
     - name: Referencia megoldásarchitektúra
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
 - name: Támogatás
   items:
     - name: Támogatás kérése

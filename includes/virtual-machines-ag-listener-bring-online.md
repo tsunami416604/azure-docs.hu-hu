@@ -1,16 +1,15 @@
 ---
-author: rockboyfor
+author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 10/26/2018
-ms.date: 11/26/2018
-ms.author: v-yeche
+ms.date: 10/26/2018
+ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097694"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165408"
 ---
 1. A Feladatátvevőfürt-kezelőben bontsa ki a **szerepkörök**, és jelölje ki a rendelkezésre állási csoport.  
 
@@ -23,11 +22,11 @@ ms.locfileid: "62097694"
 5. Kattintson a jobb gombbal a figyelő nevét, és kattintson **online állapotba hozás**.
 
 6. Miután a figyelő online, a **erőforrások** fülre, kattintson a jobb gombbal a rendelkezésre állási csoportot, majd **tulajdonságai**.
-
+   
     ![A rendelkezésre állási csoport erőforrása konfigurálása](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678772.gif)
 
 7. Függőség létrehozása a figyelő neve erőforráson (nem az IP-cím erőforrás neve), és kattintson a **OK**.
-
+   
     ![Adja hozzá a függőségi figyelő neve](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678773.gif)
 
 8. Indítsa el az SQL Server Management Studiót, és kapcsolódjon az elsődleges replika.
@@ -39,4 +38,3 @@ ms.locfileid: "62097694"
 
 11. Az a **Port** mezőt, a korábban már használt $EndpointPort használatával adja meg a port számát a rendelkezésre állási csoport figyelőjét (ebben az oktatóanyagban a 1433-as volt az alapértelmezett), és kattintson a **OK**.
 
-<!-- Update_Description: update meta properties -->

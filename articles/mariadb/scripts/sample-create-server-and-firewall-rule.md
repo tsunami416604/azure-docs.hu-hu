@@ -9,11 +9,11 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
 ms.openlocfilehash: a7e8a4c8f8572cfdd236b1752e89b3a1b4e7b758
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66171367"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Hozzon létre egy MariaDB-kiszolgálót, és konfiguráljon egy tűzfalszabályt az Azure CLI használatával
 A CLI-példaszkript létrehoz egy Azure Database for MariaDB-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt. Miután a szkript sikeresen lefutott, az összes Azure-szolgáltatások és a konfigurált IP-címet a MariaDB-kiszolgáló érhető el.

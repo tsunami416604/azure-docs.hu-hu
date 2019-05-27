@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 1957fa4310a22a162ee2a621d1e0349e253badb3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 421e0db48f045c5cbce52a0641902e6d2a11276e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456567"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132460"
 ---
 ## <a name="trigger"></a>Eseményindító
 
@@ -449,6 +449,26 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
+A következő minta bemutatja, hogyan használhatja a `IAsyncCollector` felület kötegelt üzenetek küldéséhez. Ebben a forgatókönyvben a közös üzeneteket egy eseményközpontból érkező és az eredmény küld egy másik Event Hub feldolgozásakor.
+
+```csharp
+[FunctionName("EH2EH")]
+public static async Task Run(
+    [EventHubTrigger("source", Connection = "EventHubConnectionAppSetting")] EventData[] events,
+    [EventHub("dest", Connection = "EventHubConnectionAppSetting")]IAsyncCollector<string> outputEvents,
+    ILogger log)
+{
+    foreach (EventData eventData in events)
+    {
+        // do some processing:
+        var myProcessedEvent = DoSomething(eventData);
+
+        // then send the message
+        await outputEvents.AddAsync(JsonConvert.SerializeObject(myProcessedEvent));
+    }
+}
+```
+
 ### <a name="output---c-script-example"></a>Kimenet – C#-szkript példa
 
 Az alábbi példa bemutatja egy eseményközpont-eseményindító a kötés egy *function.json* fájl és a egy [C#-szkriptfüggvény](../articles/azure-functions/functions-reference-csharp.md) , amely a kötés használja. A függvény üzenetet ír egy eseményközpontba.
@@ -703,4 +723,4 @@ Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshe
 |---------|---------|---------|
 |maxBatchSize|64|A ciklust a fogadás egy fogadott események maximális száma.|
 |prefetchCount|n/a|Az alapértelmezett PrefetchCount, amely az alapul szolgáló EventProcessorHost használni fog.|
-|batchCheckpointFrequency|1|Az EventHub kurzor ellenőrzőpont létrehozása előtt feldolgozható kötegek esemény száma.|
+|batchCheckpointFrequency|1.|Az EventHub kurzor ellenőrzőpont létrehozása előtt feldolgozható kötegek esemény száma.|

@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 96abef29c5290770d296fb5053007e36d1eaf537
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035448"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990142"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Hozzon létre, és Fedezze fel az automatikus machine learning-kísérletek az Azure Portalon (előzetes verzió)
 
@@ -40,7 +40,7 @@ Keresse meg a munkaterület a bal oldali panelen. A szerzői műveletek (előzet
 
 ![Az Azure portal kísérlet kezdőlapja](media/how-to-create-portal-experiments/landing-page.png)
 
-Ellenkező esetben látni fogja az alkalmazások automatikus machine learning irányítópulton áttekinthetők az automatizált machine learning-példakísérleteket, beleértve a futtassa az SDK-val. Itt szűrhet és Fedezze fel a futtatások dátum szerint, kísérletezhet a nevét, és a futtatási állapota.
+Ellenkező esetben az alkalmazások automatikus machine learning irányítópult áttekintést az automatizált machine learning-példakísérleteket, beleértve azokat az SDK-val létrehozott összes megjelenik. Itt szűrhet és Fedezze fel a futtatások dátum szerint, kísérletezhet a nevét, és a futtatási állapota.
 
 ![Az Azure portal kísérlet irányítópult](media/how-to-create-portal-experiments/dashboard.png)
 
@@ -105,7 +105,7 @@ Válassza ki a kísérlet létrehozása gombra való feltöltéséhez a követke
     Elsődleges metrika| A modell pontozása használt fő metrikát. [További információk a metrikákról modell](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#explore-model-metrics).
     Kilépési feltételek| Ha ezek a feltételek bármelyike teljesül, a betanítási feladat befejeződik, teljes befejezése előtt. <br> *Betanítási feladat idő (percekben)*: Mennyi ideig, hogy a betanítási feladat futtatásához.  <br> *Az ismétlések maximális száma*: (Az ismétlések) folyamatok tesztelése a betanítási feladat az a maximális számát. A feladat nem fut. több, mint a megadott számú ismétlését. <br> *A metrika pontszám küszöbérték*:  Minimális metrika pontszám összes folyamatokhoz. Ez biztosítja, hogy ha egy meghatározott célhoz metrika szeretne elérni, akkor nem több időt az szükséges, mint a betanítási feladat.
     Előfeldolgozása| Válassza ki az engedélyezni vagy letiltani az előfeldolgozási automatizált gépi tanulás által végzett. Előfeldolgozási tartalmaz Adattisztítás automatikus, előkészítése és átalakítási szintetikus szolgáltatások létrehozásához. [Tudjon meg többet az előfeldolgozási](#preprocess).
-    Ellenőrzés| Válassza ki a keresztellenőrzési beállítások használata a betanítási feladat. [Tudjon meg többet közötti érvényesítési](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
+    Érvényesítés| Válassza ki a keresztellenőrzési beállítások használata a betanítási feladat. [Tudjon meg többet közötti érvényesítési](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
     Egyidejűség| Válassza ki a Többmagos számítási használatakor szeretne Többmagos korlátokat.
     Letiltott algoritmus| Válassza ki a betanítási feladat a kizárni kívánt algoritmusokat.
 
@@ -184,6 +184,63 @@ Részletezés bármely, a kimeneti modellek betanítása futtatási adatok, pél
 
 ![Iteráció részletei](media/how-to-create-portal-experiments/iteration-details.png)
 
+## <a name="deploy-model"></a>Modell üzembe helyezése
+
+Miután megírja a legoptimálisabb modellt, üzembe kell helyeznie az új adatok előrejelzésére webszolgáltatásként.
+
+Automatizált ML nyújtanak segítséget a modell üzembe helyezésével kódírás nélkül:
+
+1. Van néhány lehetőség a telepítés. 
+    1. Ha szeretné központilag telepíteni a legjobb modellt a metrikai feltétel alapján állítsa be a kísérlethez válassza **ajánlott modell üzembe helyezése** származó a **Futtatás részletei** lap.
+
+        ![Modell üzembe helyezése](media/how-to-create-portal-experiments/deploy-model-button.png)
+
+    1. Nyissa meg az adott Futtatás részletei lapot, és válassza ki a modell részletezés számára egy adott modell iteráció telepíteni kívánja, ha **modell üzembe helyezése**.
+
+        ![Modell üzembe helyezése](media/how-to-create-portal-experiments/deploy-model-button2.png)
+
+1. Első lépéseként regisztrálja a modellt a szolgáltatásba. Válassza a "Regisztrálja a modellt", és várja meg a regisztrációs folyamat befejezéséhez.
+
+    ![Panel modell üzembe helyezése](media/how-to-create-portal-experiments/deploy-model-blade.png)
+
+1. A modell regisztrálása után fogja tudni letölteni a pontozó szkript (scoring.py) és a környezet parancsfájl (condaEnv.yml) üzembe helyezése során használt.
+
+1. A pontozó szkript és a környezet parancsfájl sharepointról, nyissa meg a **eszközök** panelen, a bal oldali navigációs panelen, és válasszon **modellek**.
+
+    ![Navigációs ablaktábla modellek](media/how-to-create-portal-experiments/nav-pane-models.png)
+
+1. Válassza ki a regisztrált modell, és válassza a "Lemezkép létrehozása".
+
+    A modell azonosíthatja a leírását, amely magában foglalja a futtatási azonosító, az iteráció száma, a következő formátumban: *< Run_ID > _ < Iteration_number > _Model*
+
+    ![Modellek: Lemezkép létrehozása](media/how-to-create-portal-experiments/model-create-image.png)
+
+1. Adja meg a lemezkép nevét. 
+1. Válassza ki a **Tallózás** feltölteni a korábban letöltött pontozófájl (scoring.py) "Pontozási File" mező melletti gombra.
+
+1. Válassza ki a **Tallózás** feltölteni a környezet fájlt (condaEnv.yml) korábban letöltött "Conda-fájl" mező melletti gombra.
+
+    Akkor is használja a saját pontozó szkript és a conda-fájlt, valamint kiegészítő fájlok feltöltése. [További tudnivalók a pontozó szkript](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#script).
+
+      >[!Important]
+      > Fájlnevek kell lennie a 32 karakter hosszú lehet és kell és végén alfanumerikus karaktereket. Tartalmazhat kötőjeleket, aláhúzásjeleket, pontokat és számok és betűk között. Nem tartalmazhat szóközöket.
+
+    ![Lemezkép létrehozása](media/how-to-create-portal-experiments/create-image.png)
+
+1. Válassza ki a lemezkép létrehozásának elindításához a "Létrehozás" gombra. Ez eltarthat néhány percig, miután befejezte, egy üzenet jelenik meg a felső sávon található.
+1. Nyissa meg a "Rendszerképek" lapot, a lemezkép számára telepíteni kívánja melletti jelölőnégyzetet, és válassza a "Központi telepítés létrehozása". [További információ a központi telepítések](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
+
+    Központi telepítés 2 lehetőség van.
+     + Az Azure Container instance-példány (aci) Szolgáltatásban – ez tesztelési célú nagy mennyiségű operatív központi telepítés helyett több szolgál. Ügyeljen arra, hogy adja meg az értékeket a legalább egy Core _Processzor Tartalékkapacitása_, és a egy gigabájtot (GB) a _memória Tartalékkapacitása_
+     + Az Azure Kubernetes Service (AKS)) – Ez a beállítás akkor ipari méretekben üzembe helyezéshez. Szüksége lesz egy AKS-alapú számítási készen van.
+
+     ![Képek: Üzemelő példány létrehozása](media/how-to-create-portal-experiments/images-create-deployment.png)
+
+1. Ha elkészült, válassza a **Létrehozás** lehetőséget. A modell üzembe helyezésével futása befejeződik, minden egyes folyamat esetében több percet is igénybe vehet.
+
+1. Ennyi az egész! Az operatív webszolgáltatás létrehozásához előrejelzéseket rendelkezik.
+
 ## <a name="next-steps"></a>További lépések
 
 * [További információ az automatikus gépi tanulási](concept-automated-ml.md) és az Azure Machine Learning alkalmazásával.
+* [Ismerje meg, hogyan webszolgáltatás felhasználása](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service).

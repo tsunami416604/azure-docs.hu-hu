@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 7b5df31c3e1d07cc9ac93f73362e853fab728fa9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 0c1efa0e5cfa4bf31e58be64b3fe78075b79b515
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793798"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141683"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás szolgáltatás biztonsági mentése és visszaállítása az Azure API Management szolgáltatásban
 
@@ -63,7 +63,7 @@ Minden olyan feladat hivatkozása, amelyeket Ön az erőforrások az Azure Resou
 6. Adja meg például egy helyőrző URL-címet `http://resources` számára a **átirányítási URI-t**szerint kötelező kitölteni, de az értéket később nem használható. Jelölje be a jelölőnégyzetet az alkalmazás mentéséhez.
 7. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="add-an-application"></a>Alkalmazás hozzáadása
+### <a name="add-an-application"></a>Alkalmazás felvétele
 
 1. Az alkalmazás létrehozása után kattintson a **beállítások**.
 2. Kattintson a **szükséges engedélyek**.
@@ -117,7 +117,7 @@ Cserélje le `{tenant id}`, `{application id}`, és `{redirect uri}` az alábbi 
 
     Ha az érték meg van adva, a példakód kell visszaadnia egy tokent az alábbi példához hasonló:
 
-    ![Jogkivonat][api-management-arm-token]
+    ![Token][api-management-arm-token]
 
     > [!NOTE]
     > A jogkivonat a előfordulhat, hogy bizonyos idő elteltével lejár. Hajtsa végre újra az új token létrehozása a kódmintát.
@@ -223,7 +223,7 @@ Tekintse meg a biztonsági mentési vagy visszaállítási folyamat különböz�
 [Backup an API Management service]: #step1
 [Restore an API Management service]: #step2
 
-[Azure API Management REST API]: https://msdn.microsoft.com/library/azure/dn781421.aspx
+[Azure API Management REST API]: https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest
 
 [api-management-add-aad-application]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-add-aad-application.png
 

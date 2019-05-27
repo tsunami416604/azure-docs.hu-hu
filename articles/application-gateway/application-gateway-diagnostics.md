@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 3/28/2019
 ms.author: amitsriva
 ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620876"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66135486"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway számára
 
@@ -210,7 +210,7 @@ A teljesítmény napló jön létre, csak akkor, ha engedélyezte, az összes Ap
 |requestCount     | Kiszolgált kérések száma.        |
 |késés | Átlagos késése (ezredmásodpercben), amely a kérések szolgál a háttér a példány érkező kérelmeket. |
 |failedRequestCount| Sikertelen kérelmek száma.|
-|Átviteli sebesség| Átlagos átviteli bájt / másodpercben mért utolsó naplóban óta.|
+|throughput| Átlagos átviteli bájt / másodpercben mért utolsó naplóban óta.|
 
 ```json
 {
@@ -248,8 +248,8 @@ A tűzfal napló jön létre, csak akkor, ha engedélyezte az összes applicatio
 |ruleSetType     | A szabály típusának beállítása. Elérhető érték OWASP.        |
 |ruleSetVersion     | A szabálykészlet használt verziója. Elérhető értékek a következők: 2.2.9-es és 3.0 verziót.     |
 |ruleId     | A riasztást kiváltó esemény szabály azonosítója.        |
-|message     | A riasztást kiváltó esemény felhasználóbarát üzenet. További részletek találhatók a Részletek területen.        |
-|action     |  A kérésre végrehajtott műveletet. Elérhető értékek a következők: letiltott és engedélyezett.      |
+|üzenet     | A riasztást kiváltó esemény felhasználóbarát üzenet. További részletek találhatók a Részletek területen.        |
+|művelet     |  A kérésre végrehajtott műveletet. Elérhető értékek a következők: letiltott és engedélyezett.      |
 |hely     | A hely, amelyhez a napló jött létre. Jelenleg csak globális szabályokat mivel globális szerepel.|
 |részletek     | A riasztást kiváltó esemény részletei.        |
 |details.message     | A szabály leírását.        |

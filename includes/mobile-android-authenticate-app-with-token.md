@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: deb94cab97bd9a402676cdc5c0239da8d07ed8b2
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440191"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141013"
 ---
 Az előző példa bemutatta, szabványos bejelentkezési, ami megköveteli, hogy az ügyfél kapcsolatba az identitásszolgáltató és a háttér Azure-szolgáltatás, az alkalmazás minden indításakor. Ez a módszer nem hatékony, és a használattal kapcsolatos problémák is rendelkezik, ha sok ügyfél próbál indítsa el az alkalmazást egyszerre. Jobb módszer, hogy az engedélyezési jogkivonatra, az Azure-szolgáltatás által visszaadott gyorsítótárazza, és próbálja használni az első olyan szolgáltató alapú bejelentkezés használata előtt.
 

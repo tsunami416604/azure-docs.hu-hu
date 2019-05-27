@@ -9,11 +9,11 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 7f03072c2b7ee1f08fc5fa306da6c5b8368742ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554491"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133083"
 ---
 Ha nem rögzítette a gyorsítótárat az irányítópultra, az [Azure Portal](https://portal.azure.com) **Minden szolgáltatás** részén találhatja meg.
 

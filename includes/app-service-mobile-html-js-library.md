@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: ff7ba04271c150018f2c55b62e40542a686608cf
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55905056"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140878"
 ---
 ## <a name="create-client"></a>Ügyfélkapcsolat létrehozása
 Hozzon létre egy ügyfélkapcsolatot egy `WindowsAzure.MobileServiceClient` objektum létrehozásával.  Az `appUrl` helyére írja be mobilalkalmazása URL-címét.
@@ -168,7 +168,7 @@ table
     }, failure);
 ```
 
-### <a name="deleting"></a>kézikönyv: Adat törlése
+### <a name="deleting"></a>kézikönyv: Adatok törlése
 Egy rekord törléséhez hívja meg a `.del()` metódust.  Adja át az azonosítót egy objektumhivatkozásban:
 
 ```javascript

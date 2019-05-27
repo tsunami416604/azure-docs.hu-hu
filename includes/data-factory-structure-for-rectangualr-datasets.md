@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309166"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66122526"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Struktúrameghatározások négyszögletes adatkészletek esetén
 A struktúra szakasza az adatkészletek JSON- **választható** téglalap alakú táblák (a sorok és oszlopok) szakaszt, és a tábla oszlopait gyűjteményét tartalmazza. A struktúra szakasz vagy biztosító informace o typu típuskonverziók vagy az oszlop-hozzárendelések során fogja használni. A következő szakaszok ismertetik részletesebben ezeket a funkciókat. 
@@ -19,9 +19,9 @@ Minden oszlop a következő tulajdonságokat tartalmazza:
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | név |Az oszlop neve. |Igen |
-| type |Az oszlop adattípusát. Tekintse meg a típus átalakítások kapcsolatos alábbi szakasz további részletek kapcsolatban, hogy mikor kell hogy típussal kapcsolatos információk megadása |Nem |
-| kulturális környezet |.NET-alapú kulturális környezet esetén a típus van megadva, és jelenleg .NET Datetime vagy Datetimeoffset használandó. Alapértelmezett érték "en-us". |Nem |
-| Formátum |Formázó karakterlánc típus van megadva, és .NET használandó Datetime vagy Datetimeoffset írja be. |Nem |
+| típus |Az oszlop adattípusát. Tekintse meg a típus átalakítások kapcsolatos alábbi szakasz további részletek kapcsolatban, hogy mikor kell hogy típussal kapcsolatos információk megadása |Nem |
+| culture |.NET-alapú kulturális környezet esetén a típus van megadva, és jelenleg .NET Datetime vagy Datetimeoffset használandó. Alapértelmezett érték "en-us". |Nem |
+| format |Formázó karakterlánc típus van megadva, és .NET használandó Datetime vagy Datetimeoffset írja be. |Nem |
 
 A következő minta bemutatja a struktúra részben JSON három oszlopot felhasználói azonosítóját, nevét és lastlogindate tartalmazó tábla.
 
@@ -56,9 +56,9 @@ A Data factory a következő CLS megfelelő .NET-alapú típusú értékeket tá
 * Bool
 * String 
 * Guid
-* DateTime
+* Datetime
 * Datetimeoffset
-* Időtartomány 
+* Timespan 
 
 A dátum és idő & Datetimeoffset is megadhat az egyéni dátum/idő karakterlánc-elemzés elősegítése érdekében a "kulturális környezet" és "formátum" karakterlánc. Tekintse meg a minta az alábbi típusa átalakításához.
 

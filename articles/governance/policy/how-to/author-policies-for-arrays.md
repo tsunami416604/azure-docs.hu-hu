@@ -7,12 +7,12 @@ ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 38cf6decb8e61768faa9680058f6366e1550ba40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 479f77791a0b035f2d1de6085dfb12f5196288ee
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498763"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979331"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tárolótömb tulajdonságainak Szerző házirendek
 
@@ -185,7 +185,7 @@ Minden egyes feltétel az alábbi példában cserélje `<field>` a `"field": "Mi
 
 Az alábbi eredmények a következők a feltétel és a példa szabály és a meglévő a fenti értékek tömbje kombinációja eredménye:
 
-|Állapot |Eredmény |Magyarázat |
+|Feltétel |Eredmény |Magyarázat |
 |-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |Semmi |Egy tömbelem hamisnak (127.0.0.1! = 127.0.0.1) és a egy igaz (127.0.0.1! = 192.168.1.1), így a **notEquals** feltétel _false (hamis)_ és nem indul el attól a hatást. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Szabályzat hatása |Mindkét tömbelemek rekordsémáját kiértékelése igaz (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1), így a **notEquals** feltétel _igaz_ és akkor indul el, a hatás. |
@@ -207,9 +207,9 @@ További információkért lásd: a [példák hozzáfűzése](../concepts/effect
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a következő példák [Azure Policy-minták](../samples/index.md)
-- Tekintse át a [szabályzatdefiníciók struktúrája](../concepts/definition-structure.md)
-- Felülvizsgálat [házirend hatások ismertetése](../concepts/effects.md)
-- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](programmatically-create.md)
-- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](remediate-resources.md)
-- A felügyeleti csoportok áttekintéséért lásd [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](../../management-groups/overview.md) ismertető részt.
+- Tekintse át a következő példák [Azure Policy minták](../samples/index.md).
+- Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
+- A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
+- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](programmatically-create.md).
+- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](remediate-resources.md).
+- Tekintse át a felügyeleti csoport van [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/overview.md).

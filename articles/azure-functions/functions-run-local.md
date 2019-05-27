@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 7c6e7d8bb407b0ffeb320ebfe9e2639feb303800
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
-ms.translationtype: MT
+ms.openlocfilehash: fe483f00c5711c2b2b62add32e951d26f732de2f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603413"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131444"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -52,51 +52,51 @@ Ha másként nincs jelezve, az ebben a cikkben szereplő példák verziójára v
 
 ### <a name="v2"></a>Verzió 2.x
 
-Verzió 2.x-es eszközök használja az Azure Functions runtime 2.x verziója a .NET Core-alapú. Ez a verzió a platformfüggetlen .NET Core 2.x támogatja, beleértve a támogatott [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux). Először telepítenie kell a .NET Core 2.x SDK.
+Verzió 2.x-es eszközök használja az Azure Functions runtime 2.x verziója a .NET Core-alapú. Ez a verzió a platformfüggetlen .NET Core 2.x támogatja, beleértve a támogatott [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux). 
+
+> [!IMPORTANT]
+> Elkerülheti a követelmény telepítéséhez a .NET Core SDK 2.x használatával [bővítmény csomagjaiból].
 
 #### <a name="windows-npm"></a>Windows
 
 Az alábbi lépéseket a Core Tools telepítése Windows npm-et használja. Is [helyezés a Chocolatey](https://chocolatey.org/). További információkért lásd: a [Core Tools információs](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. Telepítés [.NET Core SDK-t 2.x verziója a Windows](https://www.microsoft.com/net/download/windows).
+1. Telepítés [Node.js], amely tartalmazza az npm-et. Verzió 2.x verzióját az eszközök csak Node.js 8.5 és újabb verziói támogatottak.
 
-2. Telepítés [Node.js], amely tartalmazza az npm-et. Verzió 2.x verzióját az eszközök csak Node.js 8.5 és újabb verziói támogatottak.
-
-3. A Core Tools csomag telepítéséhez:
+1. A Core Tools csomag telepítéséhez:
 
     ```bash
     npm install -g azure-functions-core-tools
     ```
+1. Ha nem tervezi használni [bővítmény csomagjaiból], telepítése a [.NET Core 2.x SDK for Windows](https://www.microsoft.com/net/download/windows).
 
 #### <a name="brew"></a>A homebrew-val MacOS
 
 Az alábbi lépéseket a Homebrew használatával a Core Tools telepítése macOS rendszeren.
 
-1. Telepítés [.NET Core SDK 2.x macOS-hez készült](https://www.microsoft.com/net/download/macos).
+1. Telepítés [Homebrew](https://brew.sh/), ha az még nem telepítette.
 
-2. Telepítés [Homebrew](https://brew.sh/), ha az még nem telepítette.
-
-3. A Core Tools csomag telepítéséhez:
+1. A Core Tools csomag telepítéséhez:
 
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
+1. Ha nem tervezi használni [bővítmény csomagjaiból], telepítse [.NET Core macOS-hez készült SDK 2.x](https://www.microsoft.com/net/download/macos).
+
 
 #### <a name="linux"></a> Linux (Ubuntu/Debian) az APT
 
 Az alábbi lépések az [APT](https://wiki.debian.org/Apt) Core Tools telepítése az Ubuntu vagy a Debian Linux-disztribúció. Más Linux-disztribúciók, lásd: a [Core Tools információs](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Telepítés [.NET Core SDK-t 2.x linuxos](https://www.microsoft.com/net/download/linux).
-
-2. Megbízható Microsoft-termékkulcs regisztrálásához:
+1. Megbízható Microsoft-termékkulcs regisztrálásához:
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-3. Ellenőrizze az Ubuntu server fut-e a megfelelő verziók egyikével az alábbi táblázatot. Az apt-forrás hozzáadása, futtassa:
+1. Ellenőrizze az Ubuntu server fut-e a megfelelő verziók egyikével az alábbi táblázatot. Az apt-forrás hozzáadása, futtassa:
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -110,11 +110,12 @@ Az alábbi lépések az [APT](https://wiki.debian.org/Apt) Core Tools telepíté
     | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04-/ Linux Mentaízű 18-ra    | `xenial`  |
 
-4. A Core Tools csomag telepítéséhez:
+1. A Core Tools csomag telepítéséhez:
 
     ```bash
     sudo apt-get install azure-functions-core-tools
     ```
+1. Ha nem szeretne használni [bővítmény csomagjaiból], telepítse [.NET Core 2.x-es SDK linuxhoz](https://www.microsoft.com/net/download/linux).
 
 ## <a name="create-a-local-functions-project"></a>Egy helyi Functions-projekt létrehozása
 
@@ -186,6 +187,7 @@ A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterlán
   "Host": {
     "LocalHttpPort": 7071,
     "CORS": "*"
+    "CORSCredentials": true
   },
   "ConnectionStrings": {
     "SQLConnectionString": "<sqlclient-connection-string>"
@@ -200,6 +202,7 @@ A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterlán
 | **`Host`** | Ebben a szakaszban beállítások testre szabhatja a Functions gazdafolyamat helyi futtatás során. |
 | **`LocalHttpPort`** | Beállítja az alapértelmezett portot használja, amikor a függvények helyi állomás (`func host start` és `func run`). A `--port` parancssori kapcsoló elsőbbséget élvez ezt az értéket. |
 | **`CORS`** | Meghatározza az engedélyezett eredetek [eltérő eredetű erőforrások megosztása (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Források szóközök nélküli szövegláncként egy vesszővel tagolt lista formájában vannak megadva. A helyettesítő karaktert tartalmazó értéket (\*) támogatott, amely lehetővé teszi a kérelmek bármilyen forrásból. |
+| **`CORSCredentials`** |  Ha true értékre állítsa `withCredentials` kérelmek |
 | **`ConnectionStrings`** | Ne használja a gyűjtemény a kapcsolati karakterláncokat a függvénykötésnek használják. Ez a gyűjtemény csak használják, amely általában a kapcsolati karakterláncok keretrendszereket a `ConnectionStrings` szakaszában egy konfigurációs fájlba, például [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Kapcsolati karakterláncok ezt az objektumot a rendszer felveszi a környezetbe, a szolgáltató típusát [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Ebben a gyűjteményben lévő elemek az Azure-ban nincs közzétéve a többi alkalmazás beállításokkal. Ezekre az értékekre, explicit módon kell hozzáadnia a `Connection strings` gyűjteménye, a függvényalkalmazás-beállításokat. Létrehozásakor egy [ `SqlConnection` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) a függvénykódban, tárolja a kapcsolati karakterlánc értékét a **Alkalmazásbeállítások** a portálon a kapcsolatokkal. |
 
 A függvény alkalmazás beállítások értékeit is elolvashatja a kódban környezeti változókként. További információkért tekintse meg a környezeti változók szakaszban az alábbi nyelvspecifikus referencia-témakörök:
@@ -500,3 +503,4 @@ A fájl egy programhiba vagy szolgáltatás kérelmet [nyisson meg egy GitHub-pr
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 ["FUNCTIONS_WORKER_RUNTIME"]: functions-app-settings.md#functions_worker_runtime
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
+[bővítmény csomagjaiból]: functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles

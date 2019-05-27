@@ -9,11 +9,11 @@ ms.date: 04/06/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b6cafcfe6c892cd43f056458fe3586da834c2fd1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403656"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131443"
 ---
 Funkciók egyszerűvé teszi a függvényalkalmazás hozzáadása az Application Insights-integráció a [Azure Portal].
 
@@ -30,7 +30,7 @@ Funkciók egyszerűvé teszi a függvényalkalmazás hozzáadása az Application
     | **Name (Név)** | Egyedi nevet az alkalmazáshoz | A legegyszerűbb használja ugyanazt a nevet a függvényalkalmazás, amelyek az előfizetésében egyedinek kell lennie. | 
     | **Hely** | Nyugat-Európa | Ha lehetséges, használjon azonos [régió](https://azure.microsoft.com/regions/) a függvényalkalmazás, vagy a függvényalkalmazáshoz. |
 
-1. Kattintson az **OK** gombra. Az Application Insights-erőforrást az ugyanabban az erőforráscsoportban és előfizetésben, a függvényalkalmazás jön létre. Létrehozás befejezése után zárja be az Application Insights ablakot.
+1. Válassza az **OK** gombot. Az Application Insights-erőforrást az ugyanabban az erőforráscsoportban és előfizetésben, a függvényalkalmazás jön létre. Létrehozás befejezése után zárja be az Application Insights ablakot.
 
 1. Vissza a függvényalkalmazásban, jelölje be a **Alkalmazásbeállítások**, és görgessen le a **Alkalmazásbeállítások**. Amikor megjelenik egy beállítás nevű `APPINSIGHTS_INSTRUMENTATIONKEY`, az azt jelenti, hogy az Application Insights integrációja az Azure-ban futó függvényalkalmazást a engedélyezve van-e.
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/26/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: cc910359b5519d2cf1bd8a8bf019924dff660362
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73caa57fe7e721d69091bfb6ee74f7d88baf1ba3
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60891125"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979090"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Egy .NET-webalkalmazás létrehozása Azure Cosmos DB API használatával a mongodb-hez 
 
@@ -34,7 +34,7 @@ Ez a rövid útmutató azt ismerteti, hogyan hozzon létre egy Cosmos-fiókot [A
 
 A minta futtatásához szüksége [Visual Studio](https://www.visualstudio.com/downloads/) és a egy érvényes Azure Cosmos DB-fiókot.
 
-Ha még nem rendelkezik a Visual Studio alkalmazással, töltse le a [Visual Studio 2017 Community Edition kiadását](https://www.visualstudio.com/downloads/) az **ASP.NET és webfejlesztési** számítási feladattal együtt.
+Ha még nem rendelkezik a Visual Studio, töltse le a [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) együtt a **ASP.NET és webfejlesztési** számítási feladattal együtt.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 

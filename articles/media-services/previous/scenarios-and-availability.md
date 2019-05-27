@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0cae2befad1b0cd2d6a093387c41aac8ccdfff7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719233"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991427"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Forgatókönyvek és a Media Services-szolgáltatások rendelkezésre állása az egyes adatközpontokban
 
@@ -177,10 +177,10 @@ A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Name (Név)|status|Adatközpontok
+|Name (Név)|Állapot|Adatközpontok
 |---|---|---|
-|Standard|FE|Összes|
-|Prémium|FE|Összes|
+|Standard|FE|Az összes|
+|Prémium|FE|Az összes|
 
 ### <a name="live-encoding"></a>Live Encoding
 
@@ -194,9 +194,9 @@ Az AMS két igény szerinti kódolót nyújt: a **Media Encoder Standard** kódo
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Médiafeldolgozó neve|status|Adatközpontok
+|Médiafeldolgozó neve|Állapot|Adatközpontok
 |---|---|---|
-|Media Encoder Standard|FE|Összes|
+|Media Encoder Standard|FE|Az összes|
 |Media Encoder Premium-munkafolyamat|FE|Kína kivételével|
 
 ### <a name="analytics-media-processors"></a>Elemzési médiafeldolgozók
@@ -205,17 +205,16 @@ A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egysze
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Médiafeldolgozó neve|status|Adatközpontok
+|Médiafeldolgozó neve|Állapot|Adatközpontok
 |---|---|---|
-|Azure Media Face Detector|Előzetes verzió|Összes|
-|Azure Media Hyperlapse|Előzetes verzió|Összes|
-|Azure Media Indexer|FE|Összes|
-|Azure Media Motion Detector|Előzetes verzió|Összes|
-|Azure Media OCR|Előzetes verzió|Összes|
-|Azure Media Redactor|Előzetes verzió|Összes|
-|Azure Media Stabilizer|Előzetes verzió|Összes|
-|Azure Media Video Thumbnails|Előzetes verzió|Összes|
-|Azure Media Indexer 2|Előzetes verzió|Kína és a szövetségi kormányzati régió kivételével|
+|Azure Media Face Detector|Előnézet|Az összes|
+|Azure Media Indexer|FE|Az összes|
+|Azure Media Motion Detector|Előnézet|Az összes|
+|Azure Media OCR|Előnézet|Az összes|
+|Azure Media Redactor|Előnézet|Az összes|
+|Azure Media Stabilizer|Előnézet|Az összes|
+|Azure Media Video Thumbnails|Előnézet|Az összes|
+|Azure Media Indexer 2|Előnézet|Kína és a szövetségi kormányzati régió kivételével|
 
 ### <a name="protection"></a>Védelem
 
@@ -223,12 +222,12 @@ A Microsoft Azure Media Services lehetővé teszi a médiatartalmak védelmét a
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Titkosítás|status|Adatközpontok|
+|Titkosítás|Állapot|Adatközpontok|
 |---|---|---| 
-|Storage|FE|Összes|
-|AES-128-kulcsok|FE|Összes|
-|FairPlay|FE|Összes|
-|PlayReady|FE|Összes|
+|Storage|FE|Az összes|
+|AES-128-kulcsok|FE|Az összes|
+|FairPlay|FE|Az összes|
+|PlayReady|FE|Az összes|
 |Widevine|FE|Mindenhol, kivéve Németországot, a szövetségi kormányzati régiót és Kínát.
 
 ### <a name="reserved-units-rus"></a>Fenntartott egységek (RU-k)
@@ -249,9 +248,9 @@ További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|RU típusának neve|status|Adatközpontok
+|RU típusának neve|Állapot|Adatközpontok
 |---|---|---|
-|S1|FE|Összes|
+|S1|FE|Az összes|
 |S2|FE|Mindenhol, kivéve Dél-Brazíliát és Nyugat-Indiát|
 |S3|FE|Mindenhol, kivéve Nyugat-Indiát|
 

@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 4/18/2019
 ms.author: victorh
 ms.openlocfilehash: 5307f7674635fd33241e1faba9bb0b7c0432d10b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001031"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66134771"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Oktatóanyag: Hozzon létre egy application gateway-alapú útválasztási szabályok az Azure portal használatával
 
@@ -84,7 +84,7 @@ Ebben a példában az application gateway használható háttérkiszolgálóiké
 
     - A virtuális gép neve: *myVM1*.
     - A rendszergazda felhasználóneve: *azureuser*.
-    - A jelszó *Azure123456!* .
+    - *Azure123456!* .
     - Válassza a **Meglévő használata**, majd a *myResourceGroupAG* lehetőséget.
 
 4. Kattintson az **OK** gombra.

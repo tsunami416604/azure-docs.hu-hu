@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 88123cc24359daaf1c6fc7e3ceeed8f77f717c9a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f4f2b93316c87a5e8ba572ca2b584dbd13f6536c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228019"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956948"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói hozzáférés felügyelete
 
@@ -38,7 +38,7 @@ Ha egy felhasználó egy kisebb azonosítottak, állíthatja be a felhasználói
 
 - **Az előjel nélküli JSON-jogkivonat küldhet az alkalmazáshoz**: Az Azure AD B2C az alkalmazás értesítést küld az, hogy a felhasználó egy kisebb, és biztosítja a szülői jóváhagyás a felhasználó állapotát. Az alkalmazás ezután folytatja az üzleti szabályok alkalmazásával. A JSON-jogkivonat nem fejeződik be az alkalmazás a sikeres hitelesítés. Az alkalmazás fel kell dolgoznia a jogcím szerepel a jogkivonatban JSON, amely szerint a nem hitelesített felhasználó **neve**, **e-mail**, **korcsoport**, és **consentProvidedForMinor**.
 
-- **Felhasználó letiltása**: Ha egy felhasználó egy kisebb, és nem lett megadva a szülői hozzájárulást kér, az Azure AD B2C-vel is értesíti a felhasználót, hogy ő blokkolva van. Nem jogkivonat kiadott, hozzáférés le lesz tiltva, és a felhasználói fiók nem jön létre egy regisztrációs utazás közben. Alkalmazza ezt az értesítést, adjon meg egy megfelelő HTML/CSS tartalomlap tájékoztatja a felhasználó és a jelen a megfelelő beállításokat. Az alkalmazás új regisztrációs semmilyen további műveletet van szüksége.
+- **Felhasználó letiltása**: Ha egy felhasználó egy kisebb, és nem lett megadva a szülői hozzájárulást kér, az Azure AD B2C-vel is értesíti a felhasználót, hogy monitorán. Nem jogkivonat kiadott, hozzáférés le lesz tiltva, és a felhasználói fiók nem jön létre egy regisztrációs utazás közben. Alkalmazza ezt az értesítést, adjon meg egy megfelelő HTML/CSS tartalomlap tájékoztatja a felhasználó és a jelen a megfelelő beállításokat. Az alkalmazás új regisztrációs semmilyen további műveletet van szüksége.
 
 ## <a name="get-parental-consent"></a>Szülői beleegyezési beolvasása
 
@@ -48,7 +48,7 @@ A következő egy felhasználói folyamat szülői beleegyezési ötvözve egy p
 
 1. Egy [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog) művelet a felhasználó egy kisebb azonosítja, és a felhasználói adatokat ad vissza az alkalmazás egy előjel nélküli JSON-jogkivonat formájában.
 
-2. Az alkalmazás dolgozza fel a JSON-jogkivonatot, és a képernyő látható, a kisebb értesíteni az őt szülői hozzájárulásra szükség, és a hozzájárulás kérése egy szülő online. 
+2. Az alkalmazás dolgozza fel a JSON-token, és a kisebb értesíti őket, hogy a szülői hozzájárulásra szükség, és a egy szülő online beleegyezése igénylése a képernyő látható. 
 
 3. Az Azure AD B2C mutatja be az út, hogy a felhasználó bejelentkezhet általában és kiad egy jogkivonatot, amely tartalmazza az alkalmazáshoz **legalAgeGroupClassification = "minorWithParentalConsent"**. Az alkalmazás gyűjti a szülő e-mail-címét, és ellenőrzi, hogy a szülő felnőtt. Ehhez egy megbízható forrásból, például egy nemzeti azonosító office, licencellenőrzési vagy megvalósíthatósági példában hitelkártya használ. Ha az ellenőrzés sikeres, az alkalmazás kéri, jelentkezzen be az Azure AD B2C felhasználói folyamat használatával a kisebb. Ha a rendszer megtagadja a hozzájárulási (például, ha **legalAgeGroupClassification = "minorWithoutParentalConsent"**), Azure AD B2C visszaadja egy JSON-token (nem a bejelentkezési) az alkalmazást, hogy indítsa újra a jóváhagyási folyamatot. Úgy is igény szerint testre szabhatja a felhasználói folyamatot, hogy egy kisebb vagy a felnőtt újra hozzáférést kaphatnak egy kisebb fiók regisztrációs kód küld a másodlagos e-mail cím vagy a felnőtt e-mail-címét a rekordot.
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 252d5e551dad56108ad952eb0c7c3b39df0585d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855299"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66169275"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>A Media Services-eszközök kezelése több tárfiókban  
 
@@ -35,7 +35,7 @@ Ez a cikk bemutatja a Media Services fiók használatával több tárfiók csatl
 
 Több tárfiók csatolásához a Media Services-fiók, a következő szempontokat kell figyelembe venni:
 
-* A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez kell lennie. Javasoljuk, hogy a Media Services-fiók ugyanazon a helyen a storage-fiókok használatához.
+* A Media Services-fióknak és az összes kapcsolódó tárfióknak azonos Azure-előfizetésben kell lennie. Javasoljuk, hogy a Media Services-fiók ugyanazon a helyen a storage-fiókok használatához.
 * Miután a tárfiók a megadott Media Services-fiók van csatlakoztatva, nem lehet leválasztani.
 * Elsődleges tárfiók során a Media Services-fiók létrehozáskor megadott. Jelenleg nem módosítható az alapértelmezett tárfiók. 
 * Ha azt szeretné, a ritkán használt adatok tárolási fiók hozzáadása az AMS-fiók, kell lennie a Blob típusú az a tárfiók, és állítsa nem elsődleges.

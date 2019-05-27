@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268704"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128683"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Összehasonlító függvények az Azure Resource Manager-sablonok
 
@@ -250,7 +250,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| checkInts | Bool | False (Hamis) |
+| checkInts | Bool | Hamis |
 | checkStrings | Bool | True (Igaz) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
@@ -326,7 +326,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| checkInts | Bool | False (Hamis) |
+| checkInts | Bool | Hamis |
 | checkStrings | Bool | True (Igaz) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
@@ -403,7 +403,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | Bool | True (Igaz) |
-| checkStrings | Bool | False (Hamis) |
+| checkStrings | Bool | Hamis |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -479,7 +479,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | Bool | True (Igaz) |
-| checkStrings | Bool | False (Hamis) |
+| checkStrings | Bool | Hamis |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 

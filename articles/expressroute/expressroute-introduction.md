@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 10/18/2018
+ms.date: 05/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 56baabb95a7873b48a27943a58b8e26c56efb6b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b13c57728c43e02f7ebf9d7730d82d681f5fc1f
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364346"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965876"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute – áttekintés
 Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure, az Office 365 és a Dynamics 365.
@@ -34,7 +34,7 @@ A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok kö
 
 További információ: [ExpressRoute GYIK](expressroute-faqs.md).
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 ### <a name="layer-3-connectivity"></a>3. rétegbeli kapcsolatok
 A Microsoft egy iparági szabványnak megfelelő dinamikus útválasztási protokollt, a BGP-t alkalmazza az útvonalak cseréjéhez a helyszíni hálózat, az Azure-ban lévő példányai és a Microsoft nyilvános címek között. Több BGP-munkamenetet létesítünk a hálózattal, különböző forgalomprofilokkal. További részletek az [ExpressRoute circuit and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-kapcsolatcsoportok és útválasztási tartományok) című cikkben találhatók.
@@ -59,8 +59,11 @@ Csatlakozhat a Microsofthoz a [társviszony-létesítési helyszínek](expressro
 
 Ha például Amszterdamban csatlakozik a Microsofthoz az ExpressRoute-on keresztül, az Észak- és Nyugat-Európában üzemeltetett összes Microsoft-felhőszolgáltatáshoz hozzáférhet. A geopolitikai régiók, a hozzájuk rendelt Microsoft-felhőrégiók és a megfelelő ExpressRoute-társviszonylétesítési helyszínek áttekintését az [ExpressRoute-partnerek és -társviszonylétesítési helyszínek](expressroute-locations.md) oldalán találja.
 
-### <a name="global-connectivity-with-expressroute-premium-add-on"></a>Globális kapcsolódás az ExpressRoute prémium bővítmény használatával
-Az ExpressRoute prémium bővítménnyel kiterjesztheti a kapcsolódási lehetőségeket a geopolitikai határokon túl. Ha például Amszterdamban csatlakozik a Microsofthoz az ExpressRoute-on keresztül, a világszerte az összes régióban (az országos felhők kivételével) üzemeltetett összes Microsoft-felhőszolgáltatáshoz hozzáférhet. A Dél-Amerikában vagy Ausztráliában üzemeltetett szolgáltatásokat ugyanúgy eléri majd, mint az észak- vagy nyugat-európai régióban lévőket.
+### <a name="global-connectivity-with-expressroute-premium"></a>Globális kapcsolódás az ExpressRoute Premium
+Engedélyezheti a [ExpressRoute Premium](expressroute-faqs.md) kiterjesztheti a kapcsolódási geopolitikai határokon túl. Ha például Amszterdamban csatlakozik a Microsofthoz az ExpressRoute-on keresztül, a világszerte az összes régióban (az országos felhők kivételével) üzemeltetett összes Microsoft-felhőszolgáltatáshoz hozzáférhet. A Dél-Amerikában vagy Ausztráliában üzemeltetett szolgáltatásokat ugyanúgy eléri majd, mint az észak- vagy nyugat-európai régióban lévőket.
+
+### <a name="local-connectivity-with-expressroute-local"></a>Helyi kapcsolat ExpressRoute helyi
+Ön adatátviteli költséghatékonyan engedélyezésével a [helyi Termékváltozat](expressroute-faqs.md) Ha is tenné az adatok ExpressRoute-egységekhez közelében a kívánt Azure-régióban. A helyi az adatátviteli az ExpressRoute-port díja szerepel. 
 
 ### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>Helyszínek közötti csatlakozási lehetőségek az ExpressRoute Global Reach segítségével
 Az ExpressRoute Global Reach használatával adatokat cserélhet a helyszíni helyek között az ExpressRoute-kapcsolatcsoportok csatlakoztatása révén. Ha például van egy privát adatközpontja Kaliforniában, amellyel a Szilícium-völgyben lévő ExpressRoute-hoz csatlakozik, és egy másik Texasban, amellyel a Dallasban lévő ExpressRoute-hoz, akkor az ExpressRoute Global Reach használatával csatlakoztathatja ezeket a privát adatközpontokat két ExpressRoute-kapcsolatcsoporton keresztül. Az adatközpontok közötti forgalom a Microsoft hálózatán fog áthaladni.
@@ -108,7 +111,7 @@ Kiválaszthatja az Ön számára optimális számlázási modellt. Az alábbi sz
   * Globális kapcsolódás a szolgáltatásokhoz. A bármely régióban (az országos felhők kivételével) létrehozott ExpressRoute-kapcsolatcsoportok a világ bármely más régiójában elérik az erőforrásokat. Egy Nyugat-Európában létrehozott virtuális hálózat például elérhető egy, a Szilícium-völgyben kiosztott ExpressRoute-kapcsolatcsoportról is.
   * A VNet-hivatkozások száma ExpressRoute-kapcsolatcsoportonként 10-ről egy magasabb korlátra nő a kör sávszélességének függvényében.
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 Az ExpressRoute-ra vonatkozó gyakori kérdésekért lásd az [ExpressRoute gyakori kérdéseit](expressroute-faqs.md).
 
 ## <a name="next-steps"></a>További lépések

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
 ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481791"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66130983"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>A PowerShell használata riasztások beállításához az Application Insights szolgáltatásban
 
@@ -119,7 +119,7 @@ A metrika használata által jelentett ugyanaz a szabály használható a [mér�
 | `remoteDependencyFailed.durationMetric.count` |Függőségi hibák |A kiszolgálói alkalmazás által külső erőforrások indított sikertelen hívások száma. |
 | `request.duration` |Kiszolgáló válaszideje |Egy HTTP-kérelem fogadása és a válasz küldésének befejezése között eltelt idő. |
 | `request.rate` |Kérelmek száma |Az alkalmazás másodpercenként küldött összes kérelem száma. |
-| `requestFailed.count` |Sikertelen kérelmek |HTTP-kérelmek száma, amelyek válaszkódot eredményezett > = 400 |
+| `requestFailed.count` |Sikertelen kérések |HTTP-kérelmek száma, amelyek válaszkódot eredményezett > = 400 |
 | `view.count` |Lapmegtekintések |Egy weblap kéréseinek száma. Szintetikus forgalom ki van szűrve. |
 | {az egyéni metrika neve} |{A metrika neve} |A metrikaérték által jelentett [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) vagy a [követési hívás mérések paraméterében](../../azure-monitor/app/api-custom-events-metrics.md#properties). |
 
