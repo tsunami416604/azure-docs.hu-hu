@@ -57,7 +57,7 @@ A következő táblázat ismerteti a HTTP-beli társított szolgáltatás adott 
 | url | Az alap URL-cím a webkiszolgálóhoz. | Igen |
 | authenticationType | A hitelesítési típust határoz meg. Engedélyezett értékek a következők **névtelen**, **alapszintű**, **kivonatoló**, **Windows**, és **ClientCertificate**. <br><br> Ez a cikk további tulajdonságokat, és ezeket a hitelesítési típusokat JSON-minták későbbi részeiben hivatkoznak. | Igen |
 | enableServerCertificateValidation | Megadja, hogy a kiszolgálói SSL-tanúsítvány hitelesítése engedélyezése, ha a forrás egy HTTPS-webkiszolgálón. Ha a HTTPS-kiszolgáló egy önaláírt tanúsítványt használ, állítsa ezt a beállítást **hamis**. | Nem<br /> (az alapértelmezett érték **igaz**) |
-| átjáró neve | Csatlakozhat egy helyszíni HTTP-forrás a Data Management Gateway-példány neve. | Igen, ha adatokat másol egy helyszíni HTTP-forrásból |
+| gatewayName | Csatlakozhat egy helyszíni HTTP-forrás a Data Management Gateway-példány neve. | Igen, ha adatokat másol egy helyszíni HTTP-forrásból |
 | encryptedCredential | A titkosított hitelesítő adatokat a HTTP-végpont elérésére. Az érték automatikusan létrehozott kell, ha a hitelesítési adatokat a másolás varázsló vagy a használatával a **ClickOnce** párbeszédpanel bezárásához. | Nem<br /> (érvényes csak akkor, amikor adatokat másol egy helyszíni HTTP-kiszolgáló) |
 
 HTTP összekötőt a helyszíni adatforrások hitelesítő adatok beállításával kapcsolatos részletekért lásd: [adatok áthelyezése egy helyszíni forrásra, és a felhő között az adatkezelési átjáró segítségével](data-factory-move-data-between-onprem-and-cloud.md).
@@ -68,7 +68,7 @@ HTTP összekötőt a helyszíni adatforrások hitelesítő adatok beállításá
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| felhasználónév | A felhasználónév, a HTTP-végpont elérésére használhat. | Igen |
+| userName | A felhasználónév, a HTTP-végpont elérésére használhat. | Igen |
 | password | A felhasználó jelszava (**felhasználónév**). | Igen |
 
 **Példa: Alapszintű, kivonatoló vagy Windows-hitelesítés használatával**
@@ -164,9 +164,9 @@ A **typeProperties** szakasz eltér az egyes adatkészlet. A **typeProperties** 
 | relativeUrl | Az erőforrás, amely tartalmazza az adatok relatív URL-CÍMÉT. Az elérési út nincs megadva, csak az URL-cím a társított szolgáltatás definíciójában megadott használ. <br><br> Egy dinamikus URL-cím létrehozásához, használhatja a [Data Factory-függvények és rendszerváltozók](data-factory-functions-variables.md). Példa: **relativeurl tulajdonságok közül**: **$$Text.Format ("/ saját/jelentés? hónap = {0: yyyy}-{0:MM} & fmt = csv", SliceStart)**. | Nem |
 | requestMethod | A HTTP-metódust. Engedélyezett értékek a következők **első** és **POST**. | Nem <br />(alapértelmezett érték a **első**) |
 | additionalHeaders | További HTTP-kérelemfejlécek. | Nem |
-| RequestBody | A HTTP-kérelem törzsét. | Nem |
-| Formátum | Ha azt szeretné, hogy *lekérik az adatokat egy HTTP-végpontot,-van* nélkül, elemzés, hagyja ki a **formátum** beállítás. <br><br> Ha meg szeretné elemezni a HTTP-válasz tartalma másolása során, a következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és **ParquetFormat**. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquetformátum](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nem |
-| A tömörítés | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok: **A GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek: **Optimális** és **leggyorsabb**. További információkért lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
+| requestBody | A HTTP-kérelem törzsét. | Nem |
+| format | Ha azt szeretné, hogy *lekérik az adatokat egy HTTP-végpontot,-van* nélkül, elemzés, hagyja ki a **formátum** beállítás. <br><br> Ha meg szeretné elemezni a HTTP-válasz tartalma másolása során, a következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és **ParquetFormat**. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquetformátum](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nem |
+| compression | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok: **A GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek: **Optimális** és **leggyorsabb**. További információkért lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 
 **Példa: A GET (alapértelmezett) metódus használatával**
 
