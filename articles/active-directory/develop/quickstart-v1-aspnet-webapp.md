@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c99125d1d17f85e9767dca6d108005e598561cc
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 17aaff1a6da2c18e9b1d915f61844635b1ad130b
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545677"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001438"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Gyors útmutató: Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -199,14 +199,15 @@ A Visual Studióban hozzon létre egy új nézetet a felhasználói jogcímek we
 
 ### <a name="register-your-application-in-the-azure-portal-then-add-its-information-to-webconfig"></a>Az alkalmazás regisztrálása az Azure Portalon, majd adja meg a saját adatait *web.config*
 
-1. Az alkalmazás regisztrálásához lépjen a [Microsoft Azure Portal – Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) elemre.
-2. Válassza az **Új alkalmazás regisztrálása** elemet.
-3. Adja meg az alkalmazás nevét.
-4. Illessze be a Visual Studio-projekt *SSL URL-címét* a **Bejelentkezési URL** mezőbe. Az URL-címet is automatikusan hozzáadja az Ön regisztrálja az alkalmazás válasz URL-címek listájához.
-5. Válassza a **Létrehozás** lehetőséget az alkalmazás regisztrálásához. Ez a művelet vissza fogja irányítani az alkalmazások listájára.
-6. Ezután keresse meg és/vagy válassza ki az imént létrehozott alkalmazást, és nyissa meg a tulajdonságait.
-7. Másolja az **alkalmazásazonosító** alatti GUID-azonosítót a vágólapra.
-8. Lépjen vissza a Visual Studióba, és a `web.config`, cserélje le `Enter_the_Application_Id_here` regisztrálta az alkalmazást, az alkalmazás azonosítójával.
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com/).
+2. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
+3. Keresse meg a fejlesztők a Microsoft identity platform [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapot.
+4. Válassza ki **új regisztrációs**.
+5. Ha a **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
+6. A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
+7. Válassza ki a **webes** platform alapján a **átirányítási URI-t** szakaszt, és állítsa az értékét a Visual Studio-projekt *SSL URL-cím* (azt a helyet, amelyhez Azure ad-ben jogkivonatokat ad vissza).
+78. Miután végzett, válassza a **Regisztrálás** lehetőséget. Az alkalmazás **áttekintése** lapon, másolja a **Alkalmazásazonosítót (ügyfél)** érték.
+9. Lépjen vissza a Visual Studióba, és a `web.config`, cserélje le `Enter_the_Application_Id_here` regisztrálta az alkalmazást, az alkalmazás azonosítójával.
 
 > [!TIP]
 > Ha a fiók több címtárhoz is hozzáfér, győződjön meg arról, hogy a megfelelő címtárat választotta ki ahhoz a szervezethez, amelyhez regisztrálni szeretné az alkalmazást. Ehhez kattintson az Azure Portal jobb felső sarkában található fióknévre, majd ellenőrizze a kiválasztott címtárat az ábrán látható módon:<br/>![A megfelelő címtár kiválasztása](./media/quickstart-v1-aspnet-webapp/tenantselector.png)

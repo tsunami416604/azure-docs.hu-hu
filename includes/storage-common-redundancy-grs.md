@@ -9,11 +9,11 @@ ms.date: 03/26/2018
 ms.author: jeking
 ms.custom: include file
 ms.openlocfilehash: efa593d0ff0043d81574b67192deed30933e1e40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516277"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66114868"
 ---
 Georedundáns tárolás (GRS) célja, hogy 99,99999999999999 %-ában (16 9-es) tartós objektumok egy adott évben által az adatok replikálása egy másodlagos régióba, amely több száz mérföld a forrásadatok elsődleges. Ha a tárfiók GRS engedélyezve van, az adatok a tartós még esetén teljes regionális kimaradás vagy vészhelyzet, amelyben az elsődleges régió nem állítható helyre.
 

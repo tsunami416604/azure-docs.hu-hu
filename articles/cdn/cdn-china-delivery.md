@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: ce136a341809b1a485e86337f428b4685eba22f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: da59e9bb5cfffea734cb1dc4725cef9ea6296aa2
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60681508"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872935"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>Kína az Azure CDN tartalomkézbesítési
 
@@ -63,7 +63,7 @@ Az Azure CDN China kapcsolatos további információkért lásd:
 
 - [Az Azure Content Delivery Network használata](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [Az Azure szolgáltatásainak elérhetősége Kínában](https://docs.microsoft.com/azure/china/china-get-started-service-availability)
+- [Az Azure szolgáltatásainak elérhetősége Kínában](https://docs.microsoft.com/azure/china/concepts-service-availability)
 
 
 

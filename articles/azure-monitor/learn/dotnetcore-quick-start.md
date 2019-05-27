@@ -5,23 +5,23 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 03/29/2019
+ms.date: 05/21/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 7700efb7bfdb60c8f8f82b442cf01aae691f2fc3
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
-ms.translationtype: MT
+ms.openlocfilehash: e6afd342a27fa13ae79e037e6e42e582dd9856cc
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595577"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015292"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
 Az Azure Application Insights segítségével egyszerűen monitorozhatja webalkalmazása rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. 
 
-Ez a rövid útmutató végigvezeti az Application Insights SDK hozzáadása egy meglévő ASP.NET Core-webalkalmazás. Konfigurálásáról további információt az Application Insights a Visual Studio kivétel nélkül ez [cikk](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core-no-visualstudio).
+Ez a rövid útmutató végigvezeti az Application Insights SDK hozzáadása egy meglévő ASP.NET Core-webalkalmazás. Konfigurálásáról további információt az Application Insights a Visual Studio kivétel nélkül ez [cikk](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,7 +51,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
     Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
-    | Beállítások        |  Value           | Leírás  |
+    | Beállítások        |  Érték           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Alkalmazás típusa** | ASP.NET-es webalkalmazás | A figyelt alkalmazás típusa |
@@ -98,6 +98,10 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 5. Kattintson a bal oldali **metrikák**. A metrikaböngésző használatával állapotának és az Erőforrás kihasználtsága vizsgálata. Az **Új diagram hozzáadása** gombra kattintva további egyéni nézeteket adhat hozzá, a **Szerkesztés** gombra kattintva pedig módosíthatja a meglévő diagramok típusát, magasságát, színpalettáját, csoportosításait és metrikáit. Például hogy megjelenítő diagram az átlagos böngészőlap-betöltési ideje kiválasztásával a "Böngésző lapbetöltési idő" a metrikák legördülő lista és a "Átlagos", összesítési. További információ az Azure Metrikaböngésző látogasson el [Ismerkedés az Azure Metrikaböngésző](../../azure-monitor/platform/metrics-getting-started.md).
 
      ![Metrikák lap: Diagram átlagos böngésző oldal betöltése](./media/dotnetcore-quick-start/8metrics.png)
+
+## <a name="video"></a>Videó
+
+- Külső részletes videó [Application Insights konfigurálása a .NET Core és a Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) sablon nélkül.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Amikor végzett tesztelése, törölheti az erőforráscsoportot, és az összes kapcsolódó erőforrás. Ezért kövesse az alábbi lépéseket.

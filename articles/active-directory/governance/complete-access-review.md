@@ -12,55 +12,83 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/02/2018
+ms.date: 05/22/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4265a7e08eab079e55ce91b27142ec3e55b3f3e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bae204ec1789f227150adc560d4a292404d23b7e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60246472"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113317"
 ---
 # <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>A csoportok a hozzáférési felülvizsgálat befejezése vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal
 
-A rendszergazdák az Azure Active Directory (Azure AD) használatával [hozzáférési felülvizsgálatokat](create-access-review.md) hozhatnak létre a csoporttagok vagy alkalmazáshoz rendelt felhasználók számára. Az Azure AD automatikusan elküldi felülvizsgálók nekik hozzáférést kérő e-mailt. Ha a felhasználó nem tudták beszerezni egy e-mailt, küldhet nekik az utasításokat [csoportokhoz vagy alkalmazásokhoz való hozzáférés felülvizsgálata](perform-access-review.md). (Vegye figyelembe, hogy ki, a felülvizsgálók hozzá vannak rendelve, de nem fogadták el a meghívást vendégek nem kap egy e-mailt a hozzáférési felülvizsgálatok, mivel először el kell fogadniuk előtt tekintse át a meghívót.) A hozzáférési felülvizsgálati időszak után, vagy ha egy rendszergazda leállítja a hozzáférési felülvizsgálatot, kövesse a cikk megtekintéséhez és a alkalmazni az eredményeket.
+Rendszergazdaként Ön [csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat létrehozása](create-access-review.md) és véleményezők [elvégezhetik a hozzáférési felülvizsgálatot](perform-access-review.md). Ez a cikk ismerteti a hozzáférési felülvizsgálatok eredményeinek megtekintéséhez és a alkalmazni az eredményeket.
 
-## <a name="view-an-access-review-in-the-azure-portal"></a>Hozzáférési felülvizsgálat megtekintéséhez az Azure Portalon
+[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-1. Nyissa meg a [hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), jelölje be **programok**, és válassza ki a programot, amely tartalmazza a hozzáférési felülvizsgálat vezérlő.
+## <a name="prerequisites"></a>Előfeltételek
 
-2. Válassza ki **kezelés**, és jelölje ki a hozzáférési felülvizsgálat. Ha a programban sok vezérlő van, szűrhet adott típusú vagy állapotú vezérlőkre. A hozzáférési felülvizsgálati vezérlő neve vagy az azt létrehozó tulajdonos megjelenített neve alapján is kereshet. 
+- Azure AD Premium P2
+- Globális rendszergazda, felhasználó rendszergazdai, biztonsági rendszergazdai vagy biztonsági olvasó
 
-## <a name="stop-a-review-that-hasnt-finished"></a>Állítsa le a felülvizsgálatot, amely nem fejeződött be
+További információkért lásd: [mely felhasználók rendelkeznie kell licencekkel?](access-reviews-overview.md#which-users-must-have-licenses).
 
-Ha a felülvizsgálat még nem érte az ütemezett befejezési dátum, a rendszergazda választhat **leállítása** korai befejezi. Miután leállította a felülvizsgálatot, felhasználók már nem tekinthető meg. Felülvizsgálat nem indítható újra, miután leállt.
+## <a name="view-an-access-review"></a>Hozzáférési felülvizsgálat megtekintéséhez
 
-## <a name="apply-the-changes"></a>A módosítások alkalmazása 
+Nyomon követheti a folyamat állapotát, a felülvizsgálatot, végezze el az ellenőrzéseket.
 
-Hozzáférési felülvizsgálat befejezése után akár, mert elérte a záró dátum, vagy egy rendszergazda manuálisan leállítását, és automatikus alkalmazása nem lett konfigurálva a felülvizsgálatra kiválaszthatja **alkalmaz** manuálisan a módosítások életbe léptetéséhez. A felülvizsgálat eredményének frissítése a csoport vagy alkalmazás valósít meg. Ha egy felhasználó hozzáférés megtagadva a felülvizsgálati, amikor a rendszergazda ezt a beállítást választja, az Azure AD eltávolítja a tagsági és alkalmazás-hozzárendelés. 
+1. Jelentkezzen be az Azure Portalon, és nyissa meg a [hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-Hozzáférési felülvizsgálat befejezése, és automatikus alkalmazása után lett konfigurálva, akkor állapotát, a felülvizsgálat befejezve köztes állapota változik, és alkalmazott állapotra változik. Letiltott felhasználók megtekintéséhez számíthat, ha bármely, az erőforrást az eltávolítani kívánt csoport néhány perc múlva a tagsági és alkalmazás-hozzárendelés.
+1. A bal oldali menüben kattintson a **hozzáférési felülvizsgálatokkal**.
+
+1. A listában kattintson a hozzáférési felülvizsgálat.
+
+    Hozzáférés sorozatát megtekintéséhez értékelések, keresse meg a hozzáférési felülvizsgálatot, és az ütemezett ellenőrzések megtalálja a közelgő események.
+
+    Az a **áttekintése** lapon láthatja a folyamat állapotát. Nincs hozzáférési jogosultsága a címtárban módosulnak a felülvizsgálat befejezése.
+
+    ![A hozzáférési felülvizsgálatok folyamatban](./media/complete-access-review/overview-progress.png)
+
+1. Ha meg szeretné szüntetni a hozzáférési felülvizsgálat korábban elérte az ütemezett befejezési dátum, kattintson a **leállítása** gombra.
+
+    Ha a felülvizsgálat leállítása, felülvizsgálók többé nem tud a visszajelzést adni. Felülvizsgálat nem indítható újra, miután leállt.
+
+1. Ha már nem érdekli a hozzáférési felülvizsgálatot, törölheti azt kattintva a **törlése** gombra.
+
+## <a name="apply-the-changes"></a>A módosítások alkalmazása
+
+Ha **eredmények automatikus alkalmazása az erőforrás** engedélyezve volt és a beállításokat az alapján **befejezést követő művelet beállításai**, automatikus – a alkalmazni fogja a felülvizsgálat záró dátuma, vagy ha manuálisan leállítja a felülvizsgálatot követően hajtható végre.
+
+Ha **eredmények automatikus alkalmazása az erőforrás** nem volt engedélyezve a felülvizsgálatot, kattintson a **alkalmaz** manuálisan a módosítások életbe léptetéséhez. Ha a felhasználó hozzáférése meg lett tagadva a felülvizsgálatot, kattintva **alkalmaz**, Azure ad-ben a tagsági és alkalmazás-hozzárendelés eltávolítása.
+
+![Hozzáférési felülvizsgálat módosítások alkalmazása](./media/complete-access-review/apply-changes.png)
+
+A felülvizsgálat állapota változik **befejezve** keresztül például köztes állapotok **alkalmazása** és végül állapotba **eredmények alkalmazva**. Tekintse meg a letiltott felhasználók, ha bármely, a csoport tagsági és alkalmazás-hozzárendelés néhány perc múlva távolít el kell látnia.
 
 Egy konfigurált automatikus felülvizsgálat alkalmazása, vagy válassza **alkalmaz** nincs hatással a egy csoportot, amely egy helyszíni címtár származik, vagy a dinamikus csoportot. Ha szeretné módosítani egy csoportot, amely a helyszíni származik, töltse le az eredményeket, és ezeket a módosításokat alkalmazni a csoport ebben a könyvtárban reprezentációja.
 
-## <a name="download-the-results-of-the-review"></a>A felülvizsgálat eredményeinek letöltése
+## <a name="retrieve-the-results"></a>Az eredmény lekérése
 
-A felülvizsgálat eredményeinek lekéréséhez válassza **jóváhagyások** majd **letöltése**. Az eredményül kapott CSV-fájl tekinthet meg, az Excelben vagy más programok telepítése és törlése, nyissa meg az UTF-8 kódolású CSV-fájlok.
+Egy egyszeri hozzáférési felülvizsgálati eredmények megtekintéséhez kattintson a **eredmények** lapot. Csak a felhasználó hozzáférését, megtekintéséhez kifejezést a keresőmezőbe írja be a megjelenítendő név vagy egyszerű felhasználónév egy felhasználó, akinek hozzáférést felülvizsgálták.
 
-## <a name="optional-delete-a-review"></a>Nem kötelező: Felülvizsgálat törlése
-Ha már nem szeretné használni a felülvizsgálati, törölheti azt. Válassza ki **törlése** eltávolítása a felülvizsgálat Azure AD-ből.
+![Hozzáférési felülvizsgálat eredményeinek beolvasása](./media/complete-access-review/retrieve-results.png)
 
-> [!IMPORTANT]
-> Nincs figyelmeztetés törlése bekövetkezte előtt van, ezért ügyeljen arra, hogy szeretné-e a felülvizsgálat törlése.
-> 
-> 
+Aktív hozzáférési felülvizsgálatok, amely ismétlődő folyamat előrehaladásának megtekintéséhez kattintson a a **eredmények** lapot.
+
+Ismétlődő hozzáférési felülvizsgálat befejeződött példányához eredményeinek megtekintéséhez kattintson **előzmények megtekintése**, majd válassza ki a listából, befejezett hozzáférési felülvizsgálati példány, meghatározott példányának a példány kezdő és záró dátum alapján. Ez a példány eredményeit szerezhető be a **eredmények** lapot.
+
+Hozzáférési felülvizsgálat eredményeinek lekéréséhez kattintson a **letöltése** gombra. Az eredményül kapott CSV-fájl tekinthet meg, az Excelben vagy más programok telepítése és törlése, nyissa meg az UTF-8 kódolású CSV-fájlok.
+
+## <a name="remove-users-from-an-access-review"></a>Távolítsa el a felhasználókat a hozzáférési felülvizsgálat
+
+ Alapértelmezés szerint a törölt felhasználók 30 napig töröltek maradnak az Azure AD-ban, amely idő alatt szükség esetén egy rendszergazda visszaállíthatja őket.  A felhasználók 30 nap után véglegesen törlődnek.  Ezenkívül egy globális rendszergazda az Azure Active Directory portálon explicit módon [véglegesen törölhet egy közelmúltban törölt felhasználót](../fundamentals/active-directory-users-restore.md) az időszak lejárta előtt.  Egy felhasználó végleges törlése után a felhasználó későbbi adatai el lesznek távolítva az aktív hozzáférési felülvizsgálatokból.  A törölt felhasználókkal kapcsolatos naplózási információk az auditnaplóban maradnak.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal](manage-user-access-with-access-reviews.md)
 - [Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal](manage-guest-access-with-access-reviews.md)
-- [Programok és vezérlők felügyelete az Azure AD hozzáférési felülvizsgálatokkal](manage-programs-controls.md)
 - [Csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat létrehozása](create-access-review.md)
 - [Hozzáférési felülvizsgálat létrehozása Azure AD rendszergazdai szerepkörrel rendelkező felhasználókhoz](../privileged-identity-management/pim-how-to-start-security-review.md)

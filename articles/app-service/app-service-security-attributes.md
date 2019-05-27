@@ -9,12 +9,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d22fca27943be7ac7db8b8edd5882b9fa4ab3ab9
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 1d7ab8008e8fbdb5f851f158d14f62bdea803f11
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65607258"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001701"
 ---
 # <a name="security-attributes-for-azure-app-service"></a>Az Azure App Service biztonsági attribútumok
 
@@ -36,10 +36,10 @@ Ez a cikk a gyakori biztonsági attribútumok az Azure App Service beépített d
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatásvégpont-támogatás| Igen | Jelenleg az App Service előzetes verzióban érhető el. Lásd: [korlátozza a hozzáférést az Azure App Service](app-service-ip-restrictions.md). |
-| vNET-injektálási támogatás| Igen | App Service Environment-környezetek megvalósításai privát kártevő program férkőzik be egy ügyfél virtuális hálózatán egyetlen ügyfél számára dedikált App Service-ben. Lásd: [az App Service Environment bemutatása](environment/intro.md). |
+| Szolgáltatási végpont támogatás| Igen | Jelenleg az App Service előzetes verzióban érhető el. Lásd: [korlátozza a hozzáférést az Azure App Service](app-service-ip-restrictions.md). |
+| VNet-injektálási támogatás| Igen | App Service Environment-környezetek megvalósításai privát kártevő program férkőzik be egy ügyfél virtuális hálózatán egyetlen ügyfél számára dedikált App Service-ben. Lásd: [az App Service Environment bemutatása](environment/intro.md). |
 | Hálózatelkülönítés és Firewalling támogatása| Igen | Az App Service-ben nyilvános több-bérlős változata a felhasználók beállíthatják a hálózati hozzáférés-vezérlési listák (IP-korlátozások) való zárolását, így az engedélyezett bejövő forgalom.  Lásd: [korlátozza a hozzáférést az Azure App Service](app-service-ip-restrictions.md).  App Service Environment-környezetek közvetlenül virtuális hálózatokra vannak telepítve, és ezáltal védve legyenek az NSG-ket. |
-| Kényszerített bújtatás támogatása | Igen | App Service Environment-környezetek is telepíthető, ahol kényszerített bújtatás konfigurálása az ügyfél virtuális hálózatban. Kövesse az utasításokat kell [az App Service Environment konfigurálása kényszerített bújtatással](environment/forced-tunnel-support.md). |
+| Kényszerített bújtatás támogatása| Igen | App Service Environment-környezetek is telepíthető, ahol kényszerített bújtatás konfigurálása az ügyfél virtuális hálózatban. Kövesse az utasításokat kell [az App Service Environment konfigurálása kényszerített bújtatással](environment/forced-tunnel-support.md). |
 
 ## <a name="detection"></a>Észlelés
 
@@ -59,8 +59,8 @@ Ez a cikk a gyakori biztonsági attribútumok az Azure App Service beépített d
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő/felügyeleti naplózás és a naplózási tervezése| Igen | App Service-ben az objektumokon végrehajtott összes felügyeleti műveletet keresztül történnek [Azure Resource Manager](../azure-resource-manager/index.yml). Korábbi műveletek érhetők el naplók a portálon és a parancssori felületén; Lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftweb) és [az monitor tevékenységnapló](/cli/azure/monitor/activity-log). |
-| Adatok naplózása és naplózási adatsík | Nem | Az adatsík az App Service-ügyfél üzembe helyezett webhely tartalmát tartalmazó távoli fájlmegosztásban.  Nincs nem kerülnek naplózásra a távoli fájlmegosztásban. |
+| Vezérlő és a felügyeleti sík naplózási és naplózása| Igen | App Service-ben az objektumokon végrehajtott összes felügyeleti műveletet keresztül történnek [Azure Resource Manager](../azure-resource-manager/index.yml). Korábbi műveletek érhetők el naplók a portálon és a parancssori felületén; Lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftweb) és [az monitor tevékenységnapló](/cli/azure/monitor/activity-log). |
+| Adatsík naplózása és naplózása | Nem | Az adatsík az App Service-ügyfél üzembe helyezett webhely tartalmát tartalmazó távoli fájlmegosztásban.  Nincs nem kerülnek naplózásra a távoli fájlmegosztásban. |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 

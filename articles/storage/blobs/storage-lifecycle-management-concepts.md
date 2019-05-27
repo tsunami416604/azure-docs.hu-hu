@@ -5,16 +5,16 @@ services: storage
 author: mhopkins-msft
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 26ff592ea0d0a57049ae11a981fe8d8e77ca876f
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: ce2559f62d29c7b062cfd1ad1dcb61146adfd91c
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606942"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001752"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob storage életciklus kezelése
 
@@ -197,7 +197,7 @@ A házirend szabályok gyűjteménye:
 
 A házirend minden egyes szabály több paraméterekkel rendelkezik:
 
-| Paraméternév | Paraméter típusa | Megjegyzések | Szükséges |
+| Paraméternév | Paraméter típusa | Megjegyzések | Kötelező |
 |----------------|----------------|-------|----------|
 | `name`         | String |A szabály neve legfeljebb 256 alfanumerikus karaktereket tartalmazhat. Szabály neve a kis-és nagybetűket.  Egy házirend egyedinek kell lennie. | True (Igaz) |
 | `enabled`      | Boolean | Egy nem kötelező logikai érték beolvasása, hogy ideiglenes szabály le van tiltva. Alapértelmezett érték: igaz, ha nincs beállítva. | Hamis | 
@@ -264,8 +264,8 @@ A futtatási feltétel teljesülése esetén a szűrt blobok műveletek lépnek.
 
 | Műveletek        | Alap Blob                                   | Pillanatkép      |
 |---------------|---------------------------------------------|---------------|
-| tierToCool    | Támogatja a gyakori elérésű szint jelenleg a blobokhoz         | Érvénytelen érték |
-| tierToArchive | Támogatja a gyors vagy lassú elérésű szint jelenleg a blobokhoz | Érvénytelen érték |
+| tierToCool    | Támogatja a gyakori elérésű szint jelenleg a blobokhoz         | Nem támogatott |
+| tierToArchive | Támogatja a gyors vagy lassú elérésű szint jelenleg a blobokhoz | Nem támogatott |
 | törlés        | Támogatott                                   | Támogatott     |
 
 >[!NOTE]
@@ -393,8 +393,12 @@ Módosítva, és rendszeresen élettartama során elért adatok esetén pillanat
 
 ## <a name="faq"></a>gyakori kérdésekben
 
-**Létrehozott egy új házirendet, miért van a műveleteket nem azonnali futtatása?**  
+**Létrehozott egy új házirendet, miért érdemes a műveleteket nem azonnali futtatása?**  
 A platform naponta egyszer fut, az életciklus-szabályzat. Után konfigurálhat egy szabályzatot, az egyes műveletek futtatása az első alkalommal akár 24 órát is igénybe vehet.  
+
+**Az archivált blob manuálisan rehydrated, hogyan lehet megakadályozni, hogy azt az éppen visszahelyezi az archív szinten ideiglenesen?**  
+Amikor egy blob egy hozzáférési szint a helyezik át egy másik hozzáférési szint, az utolsó módosítás időpontja nem változik. Manuálisan rehidratálási olyan archivált blobot a gyakori elérésű szintre, ha azt szeretné vissza kell helyezni az archív szint lifecycle management motor. A szabályt, amely hatással van a blob ideiglenes letiltásával megakadályozhatja. A blob egy másik helyre másolhatja, ha a gyors elérési szint véglegesen maradjon. Ha a blob is biztonságosan vissza kell helyezni az archív szint újra engedélyezheti a szabályt. 
+
 
 ## <a name="next-steps"></a>További lépések
 

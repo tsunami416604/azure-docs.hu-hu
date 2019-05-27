@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 21fb2b84fd58fb7cca7551ee1cef0c79179cfa40
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: ac440be4444ca0d62f7ffde2b8b65e41dcba6683
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467127"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002451"
 ---
 # <a name="dynamic-manifests"></a>Dinamikus jegyzékek
 
@@ -31,7 +31,7 @@ Az alábbi táblázatban néhány példa az URL-címek szűrőket jeleníti meg:
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
-
+ 
 > [!NOTE]
 > A dinamikus jegyzékek nem változtatja az eszköz és az eszköz alapértelmezett jegyzék. Az ügyfél kérése egy streamet, vagy a szűrők nélkül választhatja. 
 > 
@@ -124,7 +124,7 @@ További információkért lásd: [ez](https://azure.microsoft.com/blog/azure-me
 
 ## <a name="associate-filters-with-streaming-locator"></a>Streamelési lokátor szűrők társítása
 
-Megadhatja, hogy az eszköz vagy a fiók szűrők, a Streamelési lokátor is érvényesek listáját. A [dinamikus packager](dynamic-packaging-overview.md) vonatkozik ez a lista azokat az URL-címet adja meg az ügyfél és-szűrők. Állít elő, ez a kombináció egy [dinamikus jegyzékfájl](filters-dynamic-manifest-overview.md), amely alapján az URL-címben szűrők + szűrők megad a Streamelési lokátor. Azt javasoljuk, hogy a szolgáltatás használata, ha alkalmazza a szűrőket, de nem szeretné elérhetővé tenni az URL-szűrő nevét.
+Lásd: [szűrők: társíthat a Streamelési Lokátorok](filters-concept.md#associate-filters-with-streaming-locator).
 
 ## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 
@@ -136,7 +136,6 @@ Megadhatja, hogy az eszköz vagy a fiók szűrők, a Streamelési lokátor is é
     
     - A számok az adategység tulajdonságainak meghatározásához [lekérése, és vizsgálja meg a jegyzékfájl](#get-and-examine-manifest-files).
     - Az eszközintelligencia-szűrő időbélyeg tulajdonságainak beállítása a képletet: <br/>startTimestamp = &lt;kezdő időpont a jegyzékfájlban&gt; +  &lt;szűrő kezdési idő másodpercben várt&gt;* időskálára
-
 
 ## <a name="next-steps"></a>További lépések
 

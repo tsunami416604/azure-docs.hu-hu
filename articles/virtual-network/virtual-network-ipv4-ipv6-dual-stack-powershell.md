@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: f26391e36e3208996160fffad01e39ec2f182318
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a9f8066896134072665c3f5b325e033b638bf094
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130895"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000997"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>Alkalmazás üzembe helyezése IPv6 kettős verem az Azure-ban – PowerShell (előzetes verzió)
 
@@ -151,7 +151,7 @@ $lbrule_v6 = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-load-balancer"></a>Terheléselosztó létrehozása
 
-Az alapszintű Load Balancer-létrehozása [új AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). A következő példában létrehozunk egy alapszintű nyilvános Load Balancer nevű *myLoadBalancer* használatával az IPv4 és IPv6-előtérbeli IP-konfigurációk, háttérkészletek, állapot-mintavételei, terheléselosztási szabályok és NAT-szabályok létrehozott a előző lépések:
+Az alapszintű Load Balancer-létrehozása [új AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). A következő példában létrehozunk egy alapszintű nyilvános Load Balancer nevű *myLoadBalancer* az IPv4 és IPv6-előtérbeli IP-címet használó konfigurációk háttérkészletek és az előző lépésekben létrehozott terheléselosztási szabályok:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `

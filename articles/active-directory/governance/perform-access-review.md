@@ -11,22 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/01/2019
+ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d42fe972b79ecd9bcee65d0664c5d13da02d2238
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6cd5bbba681acaa0c32e681f7cb4809142fe11f9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60384615"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113244"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Tekintse át a hozzáférési csoportokhoz vagy alkalmazásokhoz az Azure AD hozzáférési felülvizsgálatokkal
 
 Az Azure Active Directory (Azure AD) egyszerűbbé teszi a vállalatok csoportokhoz és alkalmazásokhoz való hozzáférés kezelése az Azure AD és más Microsoft Online Services szolgáltatás az Azure AD hozzáférési felülvizsgálatok.
 
 Ez a cikk bemutatja, hogyan kijelölt felülvizsgálót elvégzi a hozzáférési felülvizsgálat egy csoporthoz vagy alkalmazáshoz való hozzáféréssel rendelkező felhasználók tagjai.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- Azure AD Premium P2
+
+További információkért lásd: [mely felhasználók rendelkeznie kell licencekkel?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="open-the-access-review"></a>Nyissa meg a hozzáférési felülvizsgálatba
 
@@ -64,16 +70,16 @@ Ha a kérés a saját hozzáférés felülvizsgálata, az oldal fog kinézni. To
 
 Két módon, hogy jóváhagyja vagy megtagadja a hozzáférést:
 
-- Jóváhagyhatja vagy minden kérést külön-külön, megtagadása vagy
+- Hagyja jóvá, vagy megtagadja a hozzáférést egy vagy több felhasználónál, vagy
 - Elfogadhatja a rendszer javaslatok, amelyek a legkönnyebb és leggyorsabb módja.
 
-### <a name="approve-or-deny-access-for-each-request"></a>Jóváhagyja vagy megtagadja a hozzáférést az egyes kérések
+### <a name="approve-or-deny-access-for-one-or-more-users"></a>Hagyja jóvá vagy nem engedélyezi a hozzáférést egy vagy több felhasználó számára
 
 1. Tekintse át a felhasználók számára a jóvá vagy utasítsa el a folyamatos hozzáférési kell-e.
 
-1. Jóváhagyása, vagy minden egyes kérés elutasítása, kattintson a sor megnyílik egy ablak, adja meg az elvégzendő műveletet.
+1. Jóváhagyása, vagy megtagadja a hozzáférést egy-egy felhasználóhoz, kattintson a sor megnyílik egy ablak, adja meg az elvégzendő műveletet. Hagyja jóvá, vagy megtagadja a hozzáférést a több felhasználó számára, adja hozzá a felhasználók melletti pipákkal, majd kattintson a **felülvizsgálati X felhasználó** gombra kattintva adja meg az elvégzendő műveletet szolgáló ablak megnyitásához.
 
-1. Kattintson a **jóváhagyása** vagy **megtagadása**. Ha bizonytalan, rákattinthat **nem tudjuk**. Ez a felhasználó azt a hozzáférés fenntartása azt eredményezi, de a kijelölt fog szerepelni a vizsgálati naplók.
+1. Kattintson a **jóváhagyása** vagy **megtagadása**. Ha bizonytalan, rákattinthat **nem tudjuk**. Ez a felhasználó a hozzáférés fenntartása azt eredményezi, de a kijelölt fog szerepelni a vizsgálati naplók.
 
     ![Hozzáférési felülvizsgálat végrehajtása](./media/perform-access-review/approve-deny.png)
 

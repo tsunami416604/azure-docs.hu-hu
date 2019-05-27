@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 459758142c94ddfd244df1427dd5632186efc0de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05fb277564f72e62a4cdacc12a16cce229b2befc
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61045832"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872744"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
@@ -165,3 +165,9 @@ A Használatalapú díjcsomag részletes leírása a számlázás a [Az Azure Fu
 Hasznos lekérdezések és a számlázással kapcsolatos használati információk találhatók [a számlázási rendszerre – gyakori kérdések](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
 
 [Az Azure Functions díjszabását ismertető lapon]: https://azure.microsoft.com/pricing/details/functions
+
+## <a name="service-limits"></a>Szolgáltatási korlátozások
+
+Az alábbi táblázat azt jelzi, hogy a vonatkozó korlátokat tartalmazza a függvényalkalmazásokat a különböző szolgáltatási csomagok való futtatáskor:
+
+[!INCLUDE [functions-limits](../../includes/functions-limits.md)]

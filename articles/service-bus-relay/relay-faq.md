@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
 ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045577"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66111472"
 ---
 # <a name="azure-relay-faqs"></a>Az Azure Relay – gyakori kérdések
 
@@ -80,10 +80,10 @@ Egy üzenetet küld egy Service Bus relay-egységnek számít a relay-figyelő, 
 Továbbítók használatával megnyitott a **netTCPRelay** WCF kötés üzenetek kezelni, nem az egyes üzenetek, hanem egy adatfolyam áthaladnak a rendszeren. Ha ezt a kötést használja, csak a küldő és a figyelőt, hogy az egyes üzenetek küldése és fogadása a keretező. A továbbítókat használó a **netTCPRelay** kötés esetén minden adat számít egy stream kiszámításához a számlázandó üzenetek. Ebben az esetben a Service Bus számítja ki a teljes adatmennyiség küldött vagy fogadott keresztül minden egyes relay 5 perces időközönként. Ezt követően, elosztja a teljes adatmennyiség 64 KB-os meghatározni, hogy a továbbító esetében a számlázandó üzenetek száma időszak során.
 
 ## <a name="quotas"></a>Kvóták
-| Kvóta neve | Hatókör |  Megjegyzések | Érték |
+| Kvóta neve | Scope |  Megjegyzések | Érték |
 | --- | --- | --- | --- |
 | A továbbítási egyidejű figyelők |Entitás |További kapcsolatok későbbi kérelmeket a rendszer elutasítja, és a hívó kód által fogadott kivétel. |25 |
-| Egyidejű kapcsolatok egy szolgáltatási névtér összes továbbítási végpontok száma |Névtér |- |5000 |
+| Egyidejű kapcsolatok egy szolgáltatási névtér összes továbbítási végpontok száma |Névtér |- |5,000 |
 | Szolgáltatásnévtér továbbítási végpontra |Névtér |- |10,000 |
 | Üzenet mérete a [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) és [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) továbbítókat |Névtér |Ezek a kvóták túllépéséből bejövő üzenetek a rendszer elutasítja, és a hívó kód által fogadott kivétel. |64 KB |
 | Üzenet mérete a [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) és [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) továbbítókat |Névtér |Üzenet mérete nincs korlátozva. |Korlátlan |

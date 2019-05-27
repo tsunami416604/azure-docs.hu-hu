@@ -8,24 +8,25 @@ ms.subservice: core
 ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/02/2019
+ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4c15b9aa0bde704ad3665375d1c1a5bb8a1d32cf
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
-ms.translationtype: HT
+ms.openlocfilehash: 3e360b019a0c275c5ce0f9986fabd5dfc847f130
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604126"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "66015279"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Ismerkedés az Azure Machine Learning felhőalapú notebook server használatával
 
-Hozzon létre egy felhőalapú notebook kiszolgálót, majd használja azt.  Ez a rövid útmutatóban értékek jelentkezik be a Python-kód futtatása a [Azure Machine Learning szolgáltatás munkaterület](concept-azure-machine-learning-architecture.md). A munkaterület az eligazodást blokk, amellyel kísérletezhet, betanítását és a Machine Learning gépi tanulási modellek üzembe helyezése a felhőben. 
+Nincs szükség szoftverek telepítésére.  Ismerkedés az Azure Machine Learning szolgáltatás a felhőben felügyelt notebook kiszolgálót használ. Ha szeretné inkább saját Python-környezetbe az SDK telepítése, lásd: [a rövid útmutató: A saját notebook server használata az Azure Machine Learning használatának első lépései](quickstart-run-local-notebook.md).
 
-Ez a rövid útmutató bemutatja, hogyan felhőalapú erőforrás létrehozása az Azure Machine Learning-munkaterületet, a konfigurált az Azure Machine Learning futtatásához szükséges Python-környezetet. A saját környezetben használja, lásd: [a rövid útmutató: A saját notebook server használata az Azure Machine Learning használatának első lépései](quickstart-run-local-notebook.md).  
+Ez a rövid útmutató bemutatja, hogyan használhatja a [az Azure Machine Learning szolgáltatás munkaterületén](concept-azure-machine-learning-architecture.md) a machine learning-példakísérleteket nyomon követéséhez.  Létrehozhat egy [notebook VM (előzetes verzió)](how-to-configure-environment.md#notebookvm), biztonságos, felhőalapú Azure munkaállomás, amely biztosítja a Jupyter notebook server, a JupyterLab és a egy teljes körűen előkészített ML környezetben. Ezután futtassa a virtuális gépen, amely értékek jelentkezzen be a munkaterület egy Python-jegyzetfüzetet.
 
 Ebben a rövid útmutatóban tegye a következőket:
 
-* Hozzon létre egy új felhőalapú notebook kiszolgálót a munkaterületén.
+* Munkaterület létrehozása
+* Virtuális gép notebook létrehozása a munkaterületen.
 * A Jupyter webes felületének megnyitásához.
 * Nyisson meg egy jegyzetfüzetet, pi, és a naplók a hibákat, minden egyes ismétléskor becslésbe kódot tartalmaz.
 * A jegyzetfüzet futtatásához.
@@ -35,11 +36,11 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot meg
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-Ha rendelkezik egy Azure Machine Learning szolgáltatás munkaterületén, ugorjon a [következő szakasz](#create-a-cloud-based-notebook-server). Ellenkező esetben hozzon létre egyet most.
+Ha rendelkezik egy Azure Machine Learning szolgáltatás munkaterületén, ugorjon a [következő szakasz](#create-notebook). Ellenkező esetben hozzon létre egyet most.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-a-cloud-based-notebook-server"></a>Hozzon létre egy felhőalapú notebook kiszolgálót
+## <a name="create-notebook"></a>Hozzon létre egy jegyzetfüzetet VM
 
  A munkaterület hozzon létre egy felhőalapú erőforrás Jupyter notebookok használatának megkezdéséhez. Ehhez az erőforráshoz biztosít egy felhőalapú platform, minden, amit az Azure Machine Learning szolgáltatás futtatására előre konfigurált.
 
@@ -59,6 +60,7 @@ Ha rendelkezik egy Azure Machine Learning szolgáltatás munkaterületén, ugorj
     ![Új virtuális gép létrehozása](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. Várjon körülbelül 4 – 5 percig, amíg a állapota **futó**.
+
 
 ## <a name="launch-jupyter-web-interface"></a>Indítsa el a Jupyter webes felület
 
@@ -143,6 +145,7 @@ Tartsa meg az erőforráscsoportot is, de egyetlen munkaterület törlése. A mu
 
 Ebben a rövid útmutatóban elvégezte ezeket a feladatokat:
 
+* Munkaterület létrehozása
 * Hozzon létre egy notebookot virtuális Gépet.
 * A Jupyter webes felületének megnyitásához.
 * Nyisson meg egy jegyzetfüzetet, pi, és a naplók a hibákat, minden egyes ismétléskor becslésbe kódot tartalmaz.

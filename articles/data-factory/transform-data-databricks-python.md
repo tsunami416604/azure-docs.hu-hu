@@ -3,21 +3,21 @@ title: Adatok átalakítása a Databricks Pythonnal – Azure |} A Microsoft Doc
 description: Ismerje meg a feldolgozása vagy átalakíthatja azokat egy Databricks Python futtatásával.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: douglasl
-ms.openlocfilehash: 60aafd983d1c21777276683a8685376a247d11f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+author: gauravmalhot
+ms.author: gamal
+ms.reviewer: maghan
+manager: craigg
+ms.openlocfilehash: 3ab3ec5380fbc90dffd4f258073ad8b477e2318a
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589209"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002834"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Adatok átalakítása egy Python-tevékenység fut az Azure Databricksben
 
@@ -66,7 +66,7 @@ A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulaj
 |---|---|---|
 |név|A folyamat a tevékenység neve.|Igen|
 |description|A tevékenység leírása leíró szöveg.|Nem|
-|type|Databricks Python tevékenységhez a tevékenység esetében DatabricksSparkPython.|Igen|
+|típus|Databricks Python tevékenységhez a tevékenység esetében DatabricksSparkPython.|Igen|
 |linkedServiceName|A Python-tevékenység fut, amelyen a Databricks társított szolgáltatás neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.|Igen|
 |pythonFile|URI-ját a Python-fájlt kell végrehajtani. Csak a DBFS elérési utak támogatottak.|Igen|
 |paraméterek|Parancssori paraméterek, amelyek a rendszer átad a Python-fájlt. Ez a karakterláncok tömbje.|Nem|

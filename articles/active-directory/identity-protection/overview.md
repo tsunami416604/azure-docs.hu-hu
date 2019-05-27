@@ -17,23 +17,16 @@ ms.date: 01/29/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304e23ec76a2f79d0ab3852efe2a483cf86c51b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d9b0c80522a988447b2753953c0c51b058fdd43
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60453021"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "66015212"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Mi az Azure Active Directory Identity Protection?
 
-Az Azure Active Directory Identity Protection az Azure AD Premium P2 kiadás egyik szolgáltatása, amely lehetővé teszi a következőket:
-
-- A szervezet identitásait érintő esetleges biztonsági rések észlelése
-
-- Automatikus válaszok észlelt gyanús tevékenységeket, a szervezet identitásait kapcsolódó konfigurálása  
-
-- Gyanús incidensek kivizsgálása, és a szükséges intézkedések megtétele azok megoldásához   
-
+Az Azure Active Directory Identity Protection lehetővé teszi a szervezetek számára, hogy a kapcsolódó felhasználói identitások észlelt gyanús tevékenységek automatikus válaszok beállítása.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -51,47 +44,38 @@ Feltört identitásokat felderítése nem könnyű feladat. Az Azure Active Dire
 
 Az Azure Active Directory Identity Protection több mint egy olyan figyelési és jelentéskészítési eszköz. Védelme érdekében a szervezet identitásait, konfigurálhatja a kockázatalapú szabályzatok, amelyek az automatikusan észlelt problémák reagálnak adott kockázati szint elérésekor. Ezek a szabályzatok mellett más feltételes hozzáférés-vezérlés az Azure Active Directory által biztosított és [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS), automatikusan letiltja, vagy kezdeményezzen adaptív szervizelési műveletek, beleértve a Új jelszó kérésekor és a többtényezős hitelesítés kényszerítése.
 
-
-#### <a name="identity-protection-capabilities"></a>Identitásvédelmi képességeket
+### <a name="identity-protection-capabilities"></a>Identitásvédelmi képességeket
 
 **Biztonsági rések és a kockázatos fiókok észlelése:**  
 
-* Így egyéni kapcsolatos ajánlásokat átfogó biztonsági rendszer kialakításához biztonsági rések kiemelésével
-* Bejelentkezési kockázati szintek kiszámítása
-* Felhasználói kockázati szintek kiszámítása
-
+- Így egyéni kapcsolatos ajánlásokat átfogó biztonsági rendszer kialakításához biztonsági rések kiemelésével
+- Bejelentkezési kockázati szintek kiszámítása
+- Felhasználói kockázati szintek kiszámítása
 
 **Kockázati események vizsgálata:**
 
-* Kockázati események értesítések küldése
-* Megfelelő és környezetfüggő adatok felhasználásával kockázati események vizsgálata
-* Biztosít a vizsgálatokhoz nyomon követéséhez alapvető munkafolyamatok
-* Szervizelési műveleteket hajthat végre, például a jelszó-visszaállítás könnyű hozzáférést biztosít
+- Kockázati események értesítések küldése
+- Megfelelő és környezetfüggő adatok felhasználásával kockázati események vizsgálata
+- Biztosít a vizsgálatokhoz nyomon követéséhez alapvető munkafolyamatok
+- Szervizelési műveleteket hajthat végre, például a jelszó-visszaállítás könnyű hozzáférést biztosít
 
 **Kockázatalapú feltételes hozzáférési szabályzatok:**
 
-* Szabályzat blokkolja a bejelentkezéseket, vagy a multi-factor authentication kihívások igénylő csökkentése érdekében a kockázatos bejelentkezések
-* Szabályzat letiltása vagy biztonságos kockázatos felhasználói fiókok
-* Felhasználók regisztráljanak a multi-factor Authentication hitelesítést megkövetelő szabályzata
-
-
+- Szabályzat blokkolja a bejelentkezéseket, vagy a multi-factor authentication kihívások igénylő csökkentése érdekében a kockázatos bejelentkezések
+- Szabályzat letiltása vagy biztonságos kockázatos felhasználói fiókok
+- Felhasználók regisztráljanak a multi-factor Authentication hitelesítést megkövetelő szabályzata
 
 ## <a name="identity-protection-roles"></a>Identity Protection szerepkörök
 
 Terheléselosztás a felügyeleti tevékenységek körül az Identity Protection implementáció számos szerepköröket rendelhet. Az Azure AD Identity Protection 3 címtárszerepkört támogat:
 
-| Szerepkör                         | Teheti meg                          | Nem hajtható végre
-| :--                          | ---                                |  ---   |
-| Globális rendszergazda         | Teljes hozzáférés az Identity Protection előkészítése Identity Protection| |
-| Biztonsági rendszergazda       | Teljes hozzáférés az Identity Protection | Identity Protection előkészítése, a felhasználó a jelszavak alaphelyzetbe állítása |
-| Biztonsági olvasó              | Csak olvasási hozzáférés az Identity Protection | Identity Protection előkészítése, felhasználók szervizelése, a szabályzatok konfigurálására, jelszavak alaphelyzetbe állítása |
-
-
-
+| Szerepkör | Teheti meg | Nem hajtható végre |
+| :-- | --- | --- |
+| Globális rendszergazda | Teljes hozzáférés az Identity Protection előkészítése Identity Protection| |
+| Biztonsági rendszergazda | Teljes hozzáférés az Identity Protection | Identity Protection előkészítése, a felhasználó a jelszavak alaphelyzetbe állítása |
+| Biztonsági olvasó | Csak olvasási hozzáférés az Identity Protection | Identity Protection előkészítése, felhasználók szervizelése, a szabályzatok konfigurálására, jelszavak alaphelyzetbe állítása |
 
 További részletekért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
-
-
 
 ## <a name="detection"></a>Észlelés
 
@@ -104,7 +88,6 @@ Az Azure Active Directory Identity Protection elemzi a konfigurációt, és ész
 Az Azure Active Directory adaptív gépi tanulási algoritmusok és heurisztika segítségével észleli a felhasználói identitások kapcsolódó gyanús tevékenységeket. A rendszer létrehoz egy rekordot észlelt gyanús műveletek. Ezeket a rekordokat kockázati események is ismertek.  
 További részletek: [Az Azure Active Directory kockázati eseményei](../active-directory-identity-protection-risk-events.md).
 
-
 ## <a name="investigation"></a>Vizsgálat
 
 Identity Protection örömét általában az Identity Protection irányítópultjának kezdődik.
@@ -113,29 +96,26 @@ Identity Protection örömét általában az Identity Protection irányítópult
 
 Az irányítópult hozzáférést biztosít a következőkhöz:
 
-* Például a jelentések **kockázatosként megjelölt felhasználók**, **kockázati események** és **biztonsági rések**
-* Beállítások, például konfigurációját a **biztonsági házirendek**, **értesítések** és **többtényezős hitelesítési regisztráció**
+- Például a jelentések **kockázatosként megjelölt felhasználók**, **kockázati események** és **biztonsági rések**
+- Beállítások, például konfigurációját a **biztonsági házirendek**, **értesítések** és **többtényezős hitelesítési regisztráció**
 
 Általában célszerű a vizsgálat, amely azt a folyamatot, tekintse át a tevékenységeket, naplók és egyéb releváns információkkal kapcsolatos egy kockázati esemény eldönteni, hogy szervizelési vagy kockázatcsökkentési lépések szükségesek, és milyen a identitása volt a kiindulási pont biztonsága sérült, és megismerheti, hogyan lett megadva a feltört identitását.
 
 A vizsgálat tevékenységek köthet a [értesítések](notifications.md) Azure Active Directory Protection küld egy e-mailt.
-
-
 
 ## <a name="policies"></a>Házirendek
 
 Automatikus válaszok implementálásához az Azure Active Directory Identity Protection nyújt három olyan szabályzatot:
 
 - [A multi-factor authentication regisztrációs szabályzat](howto-mfa-policy.md)
-
 - [Felhasználói kockázati házirend](howto-user-risk-policy.md)
-
 - [Bejelentkezési kockázati házirend](howto-sign-in-risk-policy.md)
 
+## <a name="license-requirements"></a>Licenckövetelmények
+
+[!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
 ## <a name="next-steps"></a>További lépések
 
 - [Channel 9-on: Az Azure AD és az identitás megjelenítése: Identity Protection előzetes verziója](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
-
 - [Az Azure Active Directory Identity Protection engedélyezése](enable.md)
-

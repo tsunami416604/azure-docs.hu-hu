@@ -13,14 +13,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 3a562f98635d581aa320fdbd59d05a0382f09606
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: bfe4bbae7953479f9b5b5ce9653fb3b8d4b2d092
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465528"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002388"
 ---
-# <a name="define-account-filters-and-asset-filters"></a>Adja meg a fiók és eszköz szűrőket  
+# <a name="filters"></a>Szűrők
 
 Az ügyfelek számára (események élő vagy igény szerinti Videószolgáltatás) tartalomtovábbításkor az ügyfél az alapértelmezett eszköz jegyzékfájl leírtnál rugalmasabb előfordulhat, hogy kell. Az Azure Media Services lehetővé teszi, hogy meghatározza a fiók és a tartalom eszköz szűrőket. 
 
@@ -88,11 +88,9 @@ Szűrő nyomon követése Tulajdonságfeltételek követési típusok, értékek
 |**Name (Név)**|A track nevét használja a szűréshez.|
 |**Típus**|A szám típust használják a szűréshez.<br/><br/>A következő értékek használata engedélyezett: "videó", "hang" vagy "szöveg".|
 
-## <a name="associate-filters-with-streaming-locator"></a>Streamelési lokátor szűrők társítása
+### <a name="example"></a>Példa
 
-Megadhatja, hogy az eszköz vagy a fiók szűrők, a Streamelési lokátor is érvényesek listáját. A [dinamikus packager](dynamic-packaging-overview.md) vonatkozik ez a lista azokat az URL-címet adja meg az ügyfél és-szűrők. Állít elő, ez a kombináció egy [dinamikus jegyzékfájl](filters-dynamic-manifest-overview.md), amely alapján az URL-címben szűrők + szűrők megad a Streamelési lokátor. Azt javasoljuk, hogy a szolgáltatás használata, ha alkalmazza a szűrőket, de nem szeretné elérhetővé tenni az URL-szűrő nevét.
-
-## <a name="definition-example"></a>Definíció példa
+Az alábbi példa egy élő adatfolyam-szűrő határozza meg: 
 
 ```json
 {
@@ -146,6 +144,15 @@ Megadhatja, hogy az eszköz vagy a fiók szűrők, a Streamelési lokátor is é
   }
 }
 ```
+
+## <a name="associate-filters-with-streaming-locator"></a>Streamelési lokátor szűrők társítása
+
+Egy listában megadhatja [eszköz vagy a fiók szűrők](filters-concept.md), amely a alkalmazni szeretné a [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). A [dinamikus Packager](dynamic-packaging-overview.md) vonatkozik ez a lista azokat az URL-címet adja meg az ügyfél és-szűrők. Állít elő, ez a kombináció egy [dinamikus Manifest](filters-dynamic-manifest-overview.md), amely alapján az URL-címben szűrők + szűrők megad a Streamelési lokátor. Azt javasoljuk, hogy a szolgáltatás használata, ha alkalmazza a szűrőket, de nem szeretné elérhetővé tenni az URL-szűrő nevét.
+
+Lásd az alábbi példákat:
+
+* [Szűrők társítása Streamelési lokátor – .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
+* [Szűrők társítása Streamelési lokátor – CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
 
 ## <a name="next-steps"></a>További lépések
 

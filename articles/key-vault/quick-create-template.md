@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/04/2019
+ms.date: 05/22/2019
 ms.author: jgao
-ms.openlocfilehash: b1b50858286e3a174de254ae16c64b04abc00936
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 802c0409fe3ac88f73c383958d2337be09ef7992
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716000"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016467"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault Resource Manager-sablon használatával
 
@@ -61,10 +61,10 @@ A rendszer a rövid útmutatóban használt sablon [Azure gyorsindítási sablon
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
     * **Erőforráscsoport**: válasszon **új létrehozása**, adjon meg egy egyedi nevet az erőforráscsoport, és kattintson **OK**. 
     * **Hely**: válasszon ki egy helyet.  Ha például **USA középső RÉGIÓJA**.
-    * **A kulcstartó nevét**: Adjon meg egy egyedi nevet a key vaultban.  
-    * **Bérlőazonosító**: a sablonfüggvény automatikusan lekéri a bérlőazonosítót.  Ne módosítsa az alapértelmezett értéket.
+    * **A kulcstartó nevét**: Adjon meg egy nevet a kulcstartóhoz, amely globálisan egyedinek kell lennie a. vault.azure.net névtér.  
+    * **Bérlőazonosító**: a sablonfüggvény automatikusan lekéri a bérlőazonosítót.  Ne módosítsa az alapértelmezett érték.
     * **Ad-felhasználói azonosító**: Adja meg az Azure AD felhasználói objektum azonosítója, amely a lekért [Előfeltételek](#prerequisites).
-    * **Název tajného kódu**: Adja meg a titkos kulcsot a kulcstartóban tárolt nevét.  Ha például **adminpassword**
+    * **Název tajného kódu**: Adja meg a titkos kulcsot a kulcstartóban tárolt nevét.  Ha például **adminpassword**.
     * **Titkos érték**: Adja meg a titkos érték.  Ha tárolja a jelszót, ajánlott az Előfeltételek szakaszban létrehozott a generált jelszót.
     * **Elfogadom a fenti feltételek és kikötések állapot**: Kiválasztás.
 3. Válassza a **Beszerzés** lehetőséget.

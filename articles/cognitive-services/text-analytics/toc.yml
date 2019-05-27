@@ -103,6 +103,8 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
     - name: Előfizetői azonosító

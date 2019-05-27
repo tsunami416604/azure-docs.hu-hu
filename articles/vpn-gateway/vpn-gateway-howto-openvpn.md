@@ -5,47 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/16/2019
+ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8cc2a6d4ad06bf4a55d4ef078970823df1e0d910
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 609c2ef91fafe0ae955252a594292d861e772f87
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281964"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002963"
 ---
-# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway-preview"></a>OpenVPN konfigurálása az Azure pont – hely VPN Gateway (előzetes verzió)
+# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Az Azure pont – hely VPN Gateway OpenVPN konfigurálása
 
 Ez a cikk segít beállítani **OpenVPN® protokoll** Azure VPN gatewayen. A cikk feltételezi, hogy már a pont – hely munkakörnyezet. Ha nem, kövesse az utasításokat az 1. lépésben a pont – hely VPN létrehozása.
 
-> [!IMPORTANT]
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="register"></a>A funkció regisztrálása
-
-Kattintson a **TryIt** az ezeket a lépéseket Azure Cloud Shell használatával könnyedén Ez a funkció regisztrálása.
-
->[!NOTE]
->Ha ez a funkció nem regisztrál, nem kell tudni használni azt.
->
-
-Miután a **Kipróbálás** gombra kattintva megnyílik az Azure Cloud Shell, másolja és illessze be a következő parancsokat:
-
-```azurepowershell-interactive
-Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
-```
- 
-```azurepowershell-interactive
-Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
-```
-
-Amikor a funkció már regisztráltként jelenik meg, regisztrálja újra az előfizetést a Microsoft.Network névtérben.
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
 
 ## <a name="vnet"></a>1. Pont – hely VPN létrehozása
 

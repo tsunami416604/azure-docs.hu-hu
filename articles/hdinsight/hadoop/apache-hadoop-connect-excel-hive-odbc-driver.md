@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 37fed781629351475b384ac843a588bdaf7b5b66
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 100482496df2db1bff07a070bb82c6811208cfd4
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718162"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891327"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Excel csatlakoztatása az Azure HDInsight az Apache Hadoop és a Microsoft Hive ODBC-illesztő
 
@@ -54,7 +54,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy Hive ODBC-adatforr
    |  Host(s) |Adja meg &lt;HDInsightClusterName&gt;. azurehdinsight.NET formátumban van. Például: sajatHDICluster.azurehdinsight.net |
    |  Port |Használja a <strong>443</strong> számú portot. (Ez a port megváltozott a 563-ról 443-ra.) |
    |  Adatbázis |Használat <strong>alapértelmezett</strong>. |
-   |  Mechanizmus |Válassza ki az <strong>Azure HDInsight szolgáltatást</strong> |
+   |  Eljárás |Válassza ki az <strong>Azure HDInsight szolgáltatást</strong> |
    |  Felhasználónév |Adja meg a HDInsight fürt HTTP-felhasználó felhasználóneve. Az alapértelmezett felhasználónév az <strong>admin</strong>. |
    |  Jelszó |Adja meg a HDInsight-fürt felhasználói jelszót. |
 
@@ -99,7 +99,7 @@ Ebben a cikkben megismerkedett a HDInsight szolgáltatás az Excel-adatokat lek�
 
 * [Az Apache Hive-adatok vizualizálása a Microsoft Power bi-ban az Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
 * [Power BI segítségével az Azure HDInsight adatok interaktív lekérdezéses Hive megjelenítése](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához](./../hdinsight-connect-hive-zeppelin.md).
+* [Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához](../interactive-query/hdinsight-connect-hive-zeppelin.md).
 * [Excel Power Query használatával csatlakozni az Apache Hadoop](apache-hadoop-connect-excel-power-query.md).
 * [Csatlakozás az Azure HDInsight és a Data Lake Tools for Visual Studio használatával, az Apache Hive-lekérdezések futtatása](apache-hadoop-visual-studio-tools-get-started.md).
 * [Az Azure HDInsight-eszköz használata a Visual Studio Code](../hdinsight-for-vscode.md).

@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78d251d637d12f35968c2b897a2a8cfd6496b7e0
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 5e2eca253bc5d1495d26506e0e6f8a83762e8bc5
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545929"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001109"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Gyors útmutató: .NET webes API-t, amely az Azure AD-hitelesítési és engedélyezési szolgáltatásainak készítése
 
@@ -58,12 +58,12 @@ Hogy biztonságossá tegye alkalmazását, először létre kell hoznia egy alka
     * Ezt a lépést kihagyhatja, ha fiókjában csak egy Azure AD-bérlővel rendelkezik, vagy ha már kiválasztotta a megfelelő Azure AD-bérlőt.
 
 3. Válassza ki az **Azure Active Directory** elemet a bal oldali navigációs panelen.
-4. Válassza az **Alkalmazásregisztrációk**, majd a **Hozzáadás** elemet.
-5. Kövesse az utasításokat, és hozzon létre egy új **webalkalmazást és/vagy webes API-t**.
-    * A **név** az alkalmazást ismerteti a felhasználók számára. Adja meg a **Teendőlista szolgáltatás** nevet.
-    * Az **Átirányítási URI** séma- és sztringkombinációt az Azure AD az alkalmazás által kért jogkivonatok visszaadására használja. Adja meg ehhez a következő értéket: `https://localhost:44321/`.
-
-6. Frissítse az alkalmazásazonosító URI-ját az alkalmazás **Beállítások > Tulajdonságok** lapján. Adjon meg egy bérlőspecifikus azonosítót. Adja meg például a következőt: `https://contoso.onmicrosoft.com/TodoListService`.
+4. Válassza ki **alkalmazásregisztrációk**, majd válassza ki **új regisztrációs**.
+5. Ha a **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
+A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
+6. Válassza ki a **webes** platform alapján a **átirányítási URI-t** szakaszt, és állítsa az értékét `https://localhost:44321/` (azt a helyet, amelyhez Azure ad-ben jogkivonatokat ad vissza).
+7. Miután végzett, válassza a **Regisztrálás** lehetőséget. Az alkalmazás **áttekintése** lapon, jegyezze fel a **Alkalmazásazonosítót (ügyfél)** értéket.
+6. Válassza ki **közzé API-k**, majd frissítse az Alkalmazásazonosító URI-ja kattintva **beállítása**. Adjon meg egy bérlőspecifikus azonosítót. Adja meg például a következőt: `https://contoso.onmicrosoft.com/TodoListService`.
 7. Mentse a konfigurációt. Hagyja megnyitva a portált, mert rövidesen az ügyfélalkalmazást is regisztrálnia kell.
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>2. lépés: Az OWIN-hitelesítési folyamat használata az alkalmazás beállítása
@@ -148,12 +148,9 @@ A bejövő kérések és jogkivonatok ellenőrzése érdekében be kell állíta
 Mielőtt működésbe hozná a Teendőlista szolgáltatást, konfigurálnia kell a Teendőlista ügyfelet, hogy az jogkivonatokat kaphasson az Azure AD-ből, és hívásokat kezdeményezhessen a szolgáltatás felé.
 
 1. Lépjen vissza az [Azure Portalra](https://portal.azure.com).
-1. Hozzon létre egy új alkalmazást az Azure AD-bérlőben, és válassza a **Natív ügyfélalkalmazás** lehetőséget a megnyíló ablakban.
-    * A **név** az alkalmazást ismerteti a felhasználók számára.
-    * Az **Átirányítási URI** értékéhez írja be a következőt: `http://TodoListClient/`.
-
+1. Hozzon létre egy új alkalmazás regisztrálása az Azure AD-bérlővel.  Adjon meg egy **neve** írja be, amely leírja, hogy a felhasználók számára az alkalmazás `http://TodoListClient/` a a **átirányítási URI-t** értéket, és válassza ki **nyilvános ügyfél (asztali és mobil)** a a a legördülő listából.
 1. A regisztráció befejezését követően az Azure AD egy egyedi alkalmazásazonosítót rendel az alkalmazáshoz. Erre az értékre szükség lesz a következő lépések során, ezért másolja ki az alkalmazás oldaláról.
-1. A **Beállítások** lapon válassza a **Szükséges engedélyek**, majd a **Hozzáadás** lehetőséget. Keresse meg és válassza ki a Teendőlista szolgáltatást, adja hozzá a **TeendolistaSzolgaltatas hozzáféréséhez szükséges** engedélyt a **Delegált engedélyek** alatt, majd válassza a **Kész** lehetőséget.
+1. Válassza ki **API-engedélyek**, majd **adjon hozzá egy engedélyt**.  Keresse meg és válassza ki az való tegye listában, adja hozzá a **user_impersonation hozzáférés TodoListService** engedélyt a **delegált engedélyek**, majd válassza ki **engedélyekhozzáadása**.
 1. Nyissa meg a TeendolistaUgyfel projektben található `App.config` fájlt a Visual Studióban, és adja meg konfigurációs értékeit az `<appSettings>` részben.
 
     * Az `ida:Tenant` az Azure AD-bérlő neve, például contoso.onmicrosoft.com.

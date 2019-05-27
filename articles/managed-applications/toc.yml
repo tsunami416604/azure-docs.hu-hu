@@ -45,6 +45,8 @@
           href: publish-portal.md
         - name: Key Vaultból származó titkos kulcs használata
           href: key-vault-access.md
+        - name: Üzembe helyezés felügyelt identitással
+          href: publish-managed-identity.md
     - name: Fogyasztók
       items:
         - name: Felügyelt alkalmazások monitorozása

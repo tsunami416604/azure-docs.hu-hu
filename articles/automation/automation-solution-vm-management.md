@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/08/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 017c2fd934f35a64f26687f4a58634dda9a821a3
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.openlocfilehash: 2269eac0790e61dbf0ce893bbb737cb22d58d497
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65501962"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002476"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -49,7 +49,7 @@ Javasoljuk, hogy egy önálló Automation-fiókot használja a VM indítása és
 
 ### <a name="permissions-needed-to-deploy"></a>Üzembe helyezéséhez szükséges engedélyek
 
-Vannak bizonyos engedélyeket, amelyek a felhasználó a indítása és leállítása a virtuális gépek üzembe helyezése során óra solution ki kell rendelkeznie. Ezekre az engedélyekre eltérő, ha egy előre létrehozott Automation-fiók és a Log Analytics-munkaterületet használja, vagy üzembe helyezés során újakat hozna létre.
+Vannak bizonyos engedélyeket, amelyek a felhasználó a indítása és leállítása a virtuális gépek üzembe helyezése során óra solution ki kell rendelkeznie. Ezekre az engedélyekre eltérő, ha egy előre létrehozott Automation-fiók és a Log Analytics-munkaterületet használja, vagy üzembe helyezés során újakat hozna létre. Ha az előfizetés közreműködő és a egy globális rendszergazda az Azure Active Directory-bérlőben, nem kell az alábbi engedélyek beállításához. Ha nem rendelkezik, ezeket a jogokat, vagy egy egyéni szerepkör konfigurálnia kell, lásd az alábbi szükséges engedélyek.
 
 #### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Már meglévő Automation-fiók és a Log Analytics-fiók
 
@@ -79,41 +79,21 @@ A gépek indítása/leállítása közben óra solution ki egy Automation-fiók 
 
 A indítása és leállítása a virtuális gépek üzembe helyezése során csúcsidőn kívüli órákra, egy új Automation-fiók és a Log Analytics-munkaterületet a megoldás üzembe helyezése a felhasználó megoldást engedélyre van szüksége a meghatározott az előző szakaszban, valamint a következő engedélyekkel:
 
-- Társ-rendszergazdaként az előfizetés - Erre azért van szükség a klasszikus futtató fiók létrehozása
-- Része lehet a **alkalmazásfejlesztő** szerepkör. Futtató fiókok konfigurálásával kapcsolatos további részletekért lásd: [engedélyek konfigurálása a futtató fiókok](manage-runas-account.md#permissions).
+- Társadminisztrátor előfizetéshez – ezt csak akkor van szükség a klasszikus futtató fiók létrehozása
+- Része lehet a [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **alkalmazásfejlesztő** szerepkör. Futtató fiókok konfigurálásával kapcsolatos további részletekért lásd: [engedélyek konfigurálása a futtató fiókok](manage-runas-account.md#permissions).
+- Az előfizetés vagy a következő engedélyeket a közreműködő.
 
 | Engedély |Scope|
 | --- | --- |
+| Microsoft.Authorization/Operations/read | Előfizetés|
+| Microsoft.Authorization/permissions/read |Előfizetés|
 | Microsoft.Authorization/roleAssignments/read | Előfizetés |
 | Microsoft.Authorization/roleAssignments/write | Előfizetés |
+| Microsoft.Authorization/roleAssignments/delete | Előfizetés |
 | Microsoft.Automation/automationAccounts/connections/read | Erőforráscsoport |
 | Microsoft.Automation/automationAccounts/certificates/read | Erőforráscsoport |
 | Microsoft.Automation/automationAccounts/write | Erőforráscsoport |
 | Microsoft.OperationalInsights/workspaces/write | Erőforráscsoport |
-
-### <a name="region-mappings"></a>A régióban leképezések
-
-Ha engedélyezi a virtuális gépek indítása/leállítása munkaidőn kívül, csak bizonyos régiókban támogatottak összekapcsolása a Log Analytics-munkaterületet és Automation-fiók.
-
-Az alábbi táblázat bemutatja a támogatott leképezések:
-
-|**Log Analytics-munkaterület régiója**|**Az Azure Automation-régió**|
-|---|---|
-|Délkelet-Ausztrália|Délkelet-Ausztrália|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|USA keleti régiója<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|WestEurope|WestEurope|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP és az USA keleti régiója leképezések a Log Analytics-munkaterületek az Automation-fiókokhoz nem egy pontos régiók-hozzárendelést, de a megfelelő megfeleltetés.
-
-<sup>2</sup> kapacitás korlátozások miatt a régió nem érhető el új erőforrás létrehozásakor. Az Automation-fiókok és a Log Analytics-munkaterületekre is érvényes. A régió már létező kapcsolt erőforrások azonban továbbra is működik.
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
@@ -140,6 +120,11 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
    - A **erőforráscsoport**, hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.
    - Válasszon ki egy **helyet**. Csak a következő helyek elérhető jelenleg **Délkelet-Ausztrália**, **közép-Kanada**, **közép-India**, **USA keleti Régiójában**, **Kelet-japán**, **Délkelet-Ázsia**, **Egyesült Királyság déli régiója**, **Nyugat-Európa**, és **USA 2. nyugati**.
    - Válasszon egy tarifacsomagot a **Tarifacsomag** területen. Válassza ki a **Gigabájtonkénti (különálló)** lehetőséget. Az Azure Monitor naplóira frissített [díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/) , és a GB szinten az egyetlen lehetőség.
+
+   > [!NOTE]
+   > A megoldások engedélyezésekor csak bizonyos régiók esetén lehet összekapcsolni egy Log Analytics-munkaterületet és egy Automation-fiókot.
+   >
+   > A támogatott leképezés párok listáját lásd: [régió hozzárendelése Automation-fiók és a Log Analytics-munkaterület](how-to/region-mappings.md).
 
 5. Miután megadta a szükséges adatokat a **Log Analytics-munkaterület** kattintson **létrehozás**. Nyomon követheti a folyamat állapotát **értesítések** a menüben, amely adja vissza, hogy a **megoldás hozzáadása** lapon, ha ezzel elkészült.
 6. Az a **megoldás hozzáadása** lapon jelölje be **Automation-fiók**. Egy új Log Analytics-munkaterületet hoz létre, hozzon létre egy új Automation-fiókot társítja, vagy válasszon egy meglévő Automation-fiókot, amely nem már kapcsolódik egy Log Analytics-munkaterületet. Válassza ki a meglévő Automation-fiókot, vagy kattintson a **Automation-fiók létrehozása**, majd a a **Automation-fiók hozzáadása** lap, adja meg a következő információkat:
@@ -433,7 +418,9 @@ Ha úgy dönt, hogy a megoldás használatához már nincs szüksége, törölhe
 
 Törölje a megoldást, hajtsa végre az alábbi lépéseket:
 
-1. Válassza ki az Automation-fiók **munkaterület** a bal oldalon.
+1. Az Automation-fiók alatt **kapcsolódó erőforrások**válassza **csatolt munkaterület**.
+1. Válassza ki **munkaterületen**.
+1. A **általános**válassza **megoldások**. 
 1. Az a **megoldások** lapon, válassza ki a megoldás **Start – virtuális gépek leállítása [munkaterület]**. Az a **VMManagementSolution [munkaterület]** a menüből válassza a lap **törlése**.<br><br> ![Virtuálisgép-felügyeleti megoldás törlése](media/automation-solution-vm-management/vm-management-solution-delete.png)
 1. Az a **megoldás törlése** ablakában győződjön meg arról, hogy szeretné-e törölni a megoldást.
 1. Bár az adatokat a rendszer ellenőrzi, és a megoldás törlése, nyomon követheti a folyamat állapotát **értesítések** a menüből. A rendszer visszairányítja az **megoldások** lapon távolítsa el a megoldás a folyamat elindulása után.

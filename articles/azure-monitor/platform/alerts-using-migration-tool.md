@@ -7,16 +7,19 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 55e6b515328df635a423e0ecf736b03e17a90b8f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 00229cca1d7fb238b330ec98cd35d0bb59bc821a
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698424"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015620"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Az önkéntes áttelepítési eszköz használata a klasszikus riasztási szabályok áttelepítése
 
-Mint [azt korábban bejelentettük](monitoring-classic-retirement.md), klasszikus riasztások az Azure monitorban vannak vezetve a július 2019. A migrálási eszköz érhető el az ügyfelek számára, akik klasszikus riasztási szabályok és ki szeretne aktiválása áttelepítési magukat az Azure Portalon. Ez a cikk bemutatja, hogyan használható az áttelepítési eszköz önkéntesen áttelepíteni a klasszikus riasztási szabályok, az automatikus áttelepítése a július 2019 megkezdése előtt.
+Mint [azt korábban bejelentettük](monitoring-classic-retirement.md), klasszikus riasztások az Azure monitorban vannak vezetve az szeptember 2019 (eredetileg július 2019 volt). A migrálási eszköz érhető el az ügyfelek számára, akik klasszikus riasztási szabályok és ki szeretne aktiválása áttelepítési magukat az Azure Portalon. Ez a cikk ismerteti az áttelepítési eszköz használata a klasszikus riasztási szabályok önkéntesen áttelepítéséhez, szeptember 2019 elindul az automatikus áttelepítése előtt.
+
+> [!NOTE]
+> Bevezetés az áttelepítési eszköz késéssel, klasszikus riasztások az áttelepítéshez a kivezetési dátum lett [2019. augusztus 31-edik terjeszteni](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) eredetileg közzétett dátumától számítva 2019. június 30.
 
 ## <a name="benefits-of-new-alerts"></a>Új riasztások előnyei
 
@@ -78,7 +81,7 @@ Az áttelepítés az Azure Portalon a klasszikus riasztási szabályok aktivál�
 
 ### <a name="why-is-my-subscription-listed-as-not-ready-for-migration"></a>Miért jelenik meg nem áll készen a migrálás előfizetésemet?
 
-Az áttelepítési eszköz bevezetéséről ügyfeleknek fázisban történik. A korai szakaszában, a legtöbb vagy az összes előfizetés jelöléssel **nem áll készen a migrálás**. Mid – április azonban az összes előfizetés kell tenni, migrálásra kész.
+Az áttelepítési eszköz bevezetéséről ügyfeleknek fázisban történik. A korai szakaszában, a legtöbb vagy az összes előfizetés jelöléssel **nem áll készen a migrálás**. 
 
 Előfizetés válik, migrálásra kész, az előfizetés tulajdonosa kap egy e-mail üzenet szerint, hogy az eszköz érhető el. Tartsa szemmel ehhez az üzenethez.
 

@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: c4339aa8548ef66c862200ad61b6aaca90332ad0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232477"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66110632"
 ---
 A figyelő létrehozása után a `AnchorLocated` esemény esetében minden kért forráshorgony aktiválódnak. Ez az esemény akkor következik be, található horgonyra esetén, vagy ha a horgony nem található. Ez a helyzet akkor fordul elő, ha az OK állapotát ismerteti. Miután a figyelő minden horgonyok lesz feldolgozva, található, vagy nem található, akkor a `LocateAnchorsCompleted` események aktiválódnak.

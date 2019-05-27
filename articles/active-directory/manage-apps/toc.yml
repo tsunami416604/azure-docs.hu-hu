@@ -111,8 +111,6 @@
           href: application-proxy-remove-personal-data.md
         - name: Egyéni tartomány konfigurálása
           href: application-proxy-configure-custom-domain.md
-        - name: Konfigurálási hibák
-          href: application-proxy-troubleshoot.md
         - name: Közzétételi útmutatók
           items:
             - name: Integrálás a Cloud App Security alkalmazással
@@ -129,6 +127,12 @@
               href: application-proxy-qlik.md
         - name: Alkalmazásproxy hibaelhárítása
           items:
+            - name: Összekötő hibaelhárítási folyamatábrája
+              href: application-proxy-debug-connectors.md
+            - name: Alkalmazás hibaelhárítási folyamatábrája
+              href: application-proxy-debug-apps.md
+            - name: Konfigurálási hibák
+              href: application-proxy-troubleshoot.md
             - name: Probléma az alkalmazáslap megjelenítésekor
               href: application-proxy-page-appearance-broken-problem.md
             - name: Az alkalmazás betöltési ideje túl hosszú

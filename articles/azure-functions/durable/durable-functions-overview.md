@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: 4c7b4733d05f18d3c30e45fd08c3cf9c50354ebc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2228f3fe05e1021d0f87ce0b0d33a8287f048a8c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730599"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872812"
 ---
 # <a name="what-are-durable-functions"></a>Mik a Durable Functions?
 
@@ -49,7 +49,7 @@ Durable Functions jelenleg a következő nyelveket támogatja:
 
 Durable Functions rendelkezik az összes igazoló cél [Azure Functions nyelvek](../supported-languages.md). Tekintse meg a [Durable Functions problémák listája](https://github.com/Azure/azure-functions-durable-extension/issues) munkák további nyelveket támogatja a legújabb állapot.
 
-Például az Azure Functions, vannak olyan sablonok segítenek tartós függvények használatával [Visual Studio 2017](durable-functions-create-first-csharp.md), [Visual Studio Code](quickstart-js-vscode.md), és a [az Azure portal](durable-functions-create-portal.md).
+Például az Azure Functions, vannak olyan sablonok segítenek tartós függvények használatával [Visual Studio 2019](durable-functions-create-first-csharp.md), [Visual Studio Code](quickstart-js-vscode.md), és a [az Azure portal](durable-functions-create-portal.md).
 
 ## <a name="billing"></a>Számlázás
 
@@ -59,12 +59,12 @@ Durable Functions számlázása ugyanaz, mint az Azure Functions. További infor
 
 Akkor is Functions használatának első lépései tartós 10 percen belül ezeket a nyelvspecifikus rövid útmutatókat egyikének végrehajtásával:
 
-* [C#Visual Studio 2017 használatával](durable-functions-create-first-csharp.md)
+* [C#a Visual Studio 2019 használatával](durable-functions-create-first-csharp.md)
 * [JavaScript a Visual Studio Code használatával](quickstart-js-vscode.md)
 
 Mindkét gyors útmutatók és helyileg létrehozhat, és egy "hello world" tartós függvény teszteléséhez. Ezután közzéteheti a függvénykódot az Azure-ban. A függvény létrehozása hangolja össze, és kapcsolódik egymáshoz hívások egyéb funkciók.
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
 
 Az alábbi videó kiemeli Durable Functions előnyei:
 

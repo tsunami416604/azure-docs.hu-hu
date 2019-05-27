@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 18f76ea4acc99038939a2653bb66875154529126
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232551"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66110669"
 ---
 Hajtsa végre a kezelőt aszinkron van szüksége, ha a jogkivonat beállítása igénylésével kiadásuktól egy `deferral` objektum, és azt, majd elvégzi az alábbi példában látható módon.

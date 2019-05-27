@@ -257,6 +257,10 @@
       items:
         - name: A számítási feladatok elemzése
           href: analyze-your-workload.md
+        - name: A számítási feladat fontosságának kezelése és figyelése
+          href: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+        - name: Számítási feladat fontosságának konfigurálása
+          href: sql-data-warehouse-how-to-configure-workload-importance.md
     - name: Kezelés és monitorozás
       items:
         - name: Frissítés 2. generációs verzióra

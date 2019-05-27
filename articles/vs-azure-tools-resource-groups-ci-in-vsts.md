@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 692c075b55efd138f6d731ffae43608f141abfdc
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60458801"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66019767"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Az Azure DevOps szolgáltatás használatával Azure erőforráscsoport-telepítési projektek folyamatos integráció
 Azure-sablon üzembe helyezéséhez, feladatokat különböző szakaszaiban: Buildelési, tesztelési, másolása az Azure-ba (más néven "Átmeneti"), és a sablon üzembe helyezése. Sablonok üzembe helyezése az Azure DevOps-szolgáltatásokkal való két különböző módja van. Mindkét módszer ugyanazt az eredményt adja meg, tehát azt, amelyik leginkább megfelel a munkafolyamatot.
@@ -93,7 +93,7 @@ Az alábbi eljárások végigvezetik a folyamatos üzembe helyezés konfigurál�
       
       Azure CLI esetén használja az alábbi parancsot:
       
-      `azure account show`
+      `az account show`
    8. Úgy szerezheti be egy egyszerű szolgáltatás azonosítója, szolgáltatásnév kulcsa és bérlő azonosítója, kövesse az eljárást a [hozzon létre egy Active Directory-alkalmazás és -portál használatával szolgáltatásnév](active-directory/develop/howto-create-service-principal-portal.md) vagy [hitelesítése egy egyszerű szolgáltatást az Azure-ral Erőforrás-kezelő](active-directory/develop/howto-authenticate-service-principal-powershell.md).
    9. Adja meg a szolgáltatásnév Azonosítóját, szolgáltatásnév kulcsa és bérlői azonosító értéket, a **Azure-előfizetés hozzáadása** párbeszédpanel mezőbe, és válassza ki a **OK** gombra.
       

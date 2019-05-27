@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: dfb76a14f7e177211e5e8891005544e20f19d3f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed7bfca6095dbb03042efd14456f34556f74a843
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483645"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66115660"
 ---
 Azure Storage, a storage-fiók használat alapján számlázzuk ki. A tárfiókban lévő összes objektum számlázása együtt, csoportosan történik. 
 
@@ -25,7 +25,7 @@ Tárolási költségek kiszámítása a következő tényezőktől: régió/hely
 * Tárolási **kapacitás** vonatkozik, hogy tárfiókja mekkora mennyi áll használata az adatok tárolására.
 * **Replikációs** határozza meg, hány példányban az adatok egy időben, és hol tárolja.
 * **Tranzakciók** tekintse meg az összes olvasási és írási műveletek az Azure Storage.
-* **Kimenő adatforgalom** bármilyen egy Azure-régión kívül átvitt adatok értendők. Amikor a tárfiókban lévő adatokat egy olyan alkalmazás használja, amely nem ugyanabban a régióban fut, a kimenő adatforgalom díjköteles. További információ az erőforráscsoportok segítségével adatait és szolgáltatások korlátozhatja a kimenő forgalom költségeit ugyanabban a régióban: [Mi az Azure-erőforráscsoport?](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group). 
+* **Kimenő adatforgalom** bármilyen egy Azure-régión kívül átvitt adatok értendők. Amikor a tárfiókban lévő adatokat egy olyan alkalmazás használja, amely nem ugyanabban a régióban fut, a kimenő adatforgalom díjköteles. További információ az erőforráscsoportok segítségével adatait és szolgáltatások korlátozhatja a kimenő forgalom költségeit ugyanabban a régióban: [Mi az Azure-erőforráscsoport?](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group). 
 
 Az [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/) lap részletes információkat biztosít a fióktípussal, a tárolási kapacitással, a replikálással és a tranzakciókkal kapcsolatban. Az [Adatforgalmi díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) tartalmazza a kimenő adatforgalommal kapcsolatos részletes díjszabási információkat. Az [Azure Storage-díjkalkulátor](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) használatával megbecsülheti költségeit.
 

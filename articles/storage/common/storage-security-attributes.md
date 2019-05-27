@@ -9,16 +9,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7868b52fee991d4b9323fa0b7969aeca4dc83cdb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 922273e3805004f6af068ea748c16f5675810144
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711956"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001458"
 ---
-# <a name="common-security-attributes-for-azure-storage"></a>Az Azure Storage közös biztonsági attribútumok
+# <a name="security-attributes-for-azure-storage"></a>Az Azure Storage biztonsági attribútumok
 
-Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a cikk a gyakori biztonsági attribútumok az Azure Storage-bA épített dokumentumok. 
+Ez a cikk az Azure Storage-bA épített biztonsági attribútumok dokumentumok. 
 
 [!INCLUDE [Security Attributes Header](../../../includes/security-attributes-header.md)]
 
@@ -32,7 +32,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| – |  |
 | Titkosított API-hívások| Igen |  |
 
-## <a name="network-segmentation"></a>Hálózati Szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálást
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|

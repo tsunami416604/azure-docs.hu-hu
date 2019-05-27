@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a6ebfc86a2489910d23faa96550f34cc979c0435
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b6323e02225be3d954e4ee91ea06952bb3ce396
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203431"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001766"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Az Event Hubs üzenetküldési kivételei
 
@@ -91,6 +91,12 @@ Ez a hiba akkor fordulhat elő, egy vagy két oka:
 
 Ez a hiba a kell ritkán fordul elő. Ez történik, ha a tároló futtatását névteréhez kód processzor alacsony – az Event Hubs terheléselosztó nem több, mint néhány másodpercet kezdődik.
 
+### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>A GetRuntimeInformation metódus hívása a korlátot
+Azure Event hubs szolgáltatás támogatja a GetRuntimeInfo másodpercenként legfeljebb 50 hívások / másodperc. A korlát elérésekor a következőhöz hasonló kivételhiba jelenhet meg:
+
+```
+ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
+```
 
 ## <a name="next-steps"></a>További lépések
 

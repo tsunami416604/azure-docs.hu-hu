@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2074ea1028f6a5e8a0251c6d0c9519361db6ba8d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1c84bf84f8ba28a98937b02a463003a900aefaa0
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150383"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002911"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Gyors útmutató: Hozzon létre egy számítási feladat osztályozó T-SQL használatával
 
@@ -107,6 +107,6 @@ Kövesse az alábbi lépéseket az erőforrások törlése.
 
 ## <a name="next-steps"></a>További lépések
 
-Sikeresen létrehozott egy számítási feladat osztályozó által igénybe vett. Néhány lekérdezést futtató TheCEO megtekintéséhez, hogyan működnek. Lásd: [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) a lekérdezések és a hozzárendelt fontosságát.
-
-Az SQL Data Warehouse számítási feladatok kezelésével kapcsolatos további információkért lásd: [SQL Data Warehouse számítási feladatok fontossági](sql-data-warehouse-workload-importance.md) és [SQL Warehouse számítási feladatok az Adatbesorolás](sql-data-warehouse-workload-classification.md).
+- Sikeresen létrehozott egy számítási feladat osztályozó által igénybe vett. Néhány lekérdezést futtató TheCEO megtekintéséhez, hogyan működnek. Lásd: [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) a lekérdezések és a hozzárendelt fontosságát.
+- Azure SQL Data Warehouse számítási feladatok kezelésével kapcsolatos további információkért lásd: [számítási feladatok fontossági](sql-data-warehouse-workload-importance.md) és [munkaterhelés besorolási](sql-data-warehouse-workload-classification.md).
+- Tekintse meg az útmutatók a [konfigurálása számítási feladatok fontossági](sql-data-warehouse-how-to-configure-workload-importance.md) és annak [kezelése és megfigyelése számítási feladatok kezeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

@@ -2,23 +2,22 @@
 title: Gyakori biztonsági attribútumok az Azure Backuphoz
 description: Az Azure Backup értékelésére közös biztonsági attribútumok ellenőrzőlista
 services: backup
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7bc4fd42f64bba09fd20fedf5e06dc30c3b2cc49
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 86b8ab96a94a6ffc44c304d8a0a689301560a989
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64680803"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002803"
 ---
-# <a name="common-security-attributes-for-azure-backup"></a>Gyakori biztonsági attribútumok az Azure Backuphoz
+# <a name="security-attributes-for-azure-backup"></a>Az Azure Backup biztonsági attribútumok
 
-Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a cikk a gyakori biztonsági attribútumok az Azure Backup beépített dokumentumok. 
+Ez a cikk az Azure Backup beépített biztonsági attribútumok dokumentumok. 
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -32,7 +31,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| Nem |  |
 | Titkosított API-hívások| Igen |  |
 
-## <a name="network-segmentation"></a>Hálózati Szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálást
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|

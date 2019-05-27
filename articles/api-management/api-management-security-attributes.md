@@ -1,24 +1,23 @@
 ---
-title: Gyakori biztonsági attribútumok az Azure API Management
+title: Az Azure API Management biztonsági attribútumok
 description: A gyakori biztonsági attribútumok értékeléséhez az API Management ellenőrzőlista
 services: api-management
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 040d628f9fe89f68a1c5ab91a1522c6a3cb724d9
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
+ms.openlocfilehash: 3b5826d472b80179c5eb76e0e3a6b1c7ee282487
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64508137"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001093"
 ---
-# <a name="common-security-attributes-for-api-management"></a>Gyakori biztonsági attribútumok az API Management szolgáltatáshoz
+# <a name="security-attributes-for-api-management"></a>Az API Management biztonsági attribútumok
 
-Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a cikk a gyakori biztonsági attribútumok az API Management épített dokumentumok.
+Ez a cikk az API Management beépített biztonsági attribútumok dokumentumok.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -30,7 +29,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | [Express Route](../expressroute/index.yml) és a virtuális hálózat a titkosítást [az Azure-hálózatok](../virtual-network/index.yml). |
 | Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Nem | Az összes titkosítási kulcs szolgáltatás példányonként és -szolgáltatások által. |
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| – | |
-| Titkosított API-hívások| Igen | Felügyeleti sík hívások használatával jönnek létre [Azure Resource Manager](../azure-resource-manager/index.yml) TLS protokollon keresztüli. Egy érvényes JSON webes jogkivonat (JWT) megadása kötelező.  Adatsík-hívások adatok védve legyenek a TLS és a egy támogatott hitelesítési mechanizmusok (pl. ügyféltanúsítványt vagy JWT).
+| Titkosított API-hívások| Igen | Felügyeleti sík hívások használatával jönnek létre [Azure Resource Manager](../azure-resource-manager/index.yml) TLS protokollon keresztüli. Egy érvényes JSON webes jogkivonat (JWT) megadása kötelező.  Adatsík-hívások adatok védve legyenek a TLS és a egy támogatott hitelesítési mechanizmusok (például ügyféltanúsítványt vagy JWT).
  |
 
 ## <a name="network-segmentation"></a>Hálózati szegmentálást
@@ -75,4 +74,4 @@ Ez a szakasz gyakori biztonsági rések, amely nem befolyásolja az Azure API Ma
 
 | Biztonsági rés               | Leírás                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Ticketbleed (CVE – 2016-9244) | Ticketbleed a sebezhetőség a TLS SessionTicket kiterjesztés található az egyes F5 termékek végrehajtása során. Lehetővé teszi a ("elvéreztetés") akár 31 bájt nem inicializált memória származó adatok kiszivárgását. Ennek oka a TLS-verem a munkamenet-azonosító, az ügyfél az adatokkal, győződjön meg arról, hogy 32 bites átadott padding hosszú. |
+| Ticketbleed (CVE – 2016-9244) | Ticketbleed a sebezhetőség a TLS SessionTicket kiterjesztés található az egyes F5 termékek végrehajtása során. Lehetővé teszi a ("elvéreztetés") akár 31 bájt nem inicializált memória származó adatok kiszivárgását. A TLS-verem a munkamenet-azonosító, az ügyfél az adatokkal, győződjön meg arról, hogy 32 bites kimenettel átadott padding okozza. |

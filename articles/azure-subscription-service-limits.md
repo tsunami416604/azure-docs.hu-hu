@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 05/17/2019
 ms.author: byvinyal
-ms.openlocfilehash: c8f1eaba726efe72e2b6845beaf1465d047c90d2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3f01e15e4ac39127263c8c68590b6c50be04847d
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787585"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "66023219"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fogja kibontva és a frissített magában foglalja a szolgáltatások további.
@@ -54,6 +54,7 @@ A korlátok a következők közül egy új táblát korlátok a különbségeket
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure DNS](#azure-dns-limits)
 * [Az Azure-tűzfal](#azure-firewall-limits)
+* [Azure Functions](#functions-limits)
 * [Azure Kubernetes Service](#azure-kubernetes-service-limits)
 * [Azure Machine Learning Service](#azure-machine-learning-service-limits)
 * [Azure Maps](#azure-maps-limits)
@@ -234,6 +235,9 @@ A következő App Service – korlátok korlátok Web Apps, Mobile Apps és API-
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
+### <a name="functions-limits"></a>Functions-korlátok
+[!INCLUDE [functions-limits](../includes/functions-limits.md)]
+
 ### <a name="scheduler-limits"></a>Scheduler – korlátozások
 [!INCLUDE [scheduler-limits-table](../includes/scheduler-limits-table.md)]
 
@@ -246,7 +250,7 @@ Az alábbi táblázat a korlátokat az Azure BizTalk Services.
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="azure-cosmos-db-limits"></a>Az Azure Cosmos DB-korlátok
-Az Azure Cosmos DB egy globális szintű adatbázist, amelyben átviteli sebesség és tárterület skálázhatók kezelésére, függetlenül az alkalmazás által kért. Ha az Azure Cosmos DB biztosítja a skála kapcsolatos kérdése van, küldjön e-mailek askcosmosdb@microsoft.com.
+Azure Cosmos DB-korlátok, lásd: [korlátozások az Azure Cosmos DB](cosmos-db/concepts-limits.md).
 
 ### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 Az Azure Database for MySQL-korlátok, lásd: [korlátozások az Azure Database for MySQL-hez](mysql/concepts-limits.md).

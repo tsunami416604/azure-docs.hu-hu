@@ -1,47 +1,50 @@
 ---
-title: Megismerheti, hogyan önkéntes riasztások áttelepítési eszköz az Azure Monitor működése
-description: A riasztási áttelepítési eszköz működésének megismerése, és ha a felmerülő hibák elhárítása.
+title: Az Azure Monitor riasztások az önkéntes áttelepítési eszköz működésének megismerése
+description: A riasztások áttelepítési eszköz működésének megismerése, és a problémák elhárításához.
 author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: a45a0cff606bc854924d5da0841b26e1cb9031bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b5a13254fc9dfd58db83a1bc8b9dd071cfbbdab2
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60347600"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015590"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Az áttelepítési eszköz működésének megismerése
 
-Mint [azt korábban bejelentettük](monitoring-classic-retirement.md), klasszikus riasztások az Azure monitorban vannak vezetve a július 2019. Az áttelepítési eszköz való áttelepítés önkéntesen érhető el az Azure Portalon, és ügyfeleink, akik klasszikus riasztási szabályok jelennek meg.
+Mint [azt korábban bejelentettük](monitoring-classic-retirement.md), klasszikus riasztások az Azure monitorban vannak vezetve az szeptember 2019 (eredetileg július 2019 volt). A migrálási eszköz érhető el az ügyfelek számára, akik klasszikus riasztási szabályok és ki szeretne aktiválása áttelepítési magukat az Azure Portalon.
 
-Ez a cikk végigvezeti az önkéntes migrálást eszköz működését. Szervizelés a gyakori problémákat is ismerteti.
+Ez a cikk ismerteti, hogyan az önkéntes áttelepítési eszköz. Kártérítése a néhány gyakori problémákat is ismerteti.
+
+> [!NOTE]
+> Bevezetés az áttelepítési eszköz késéssel, klasszikus riasztások az áttelepítéshez a kivezetési dátum lett [2019. augusztus 31-edik terjeszteni](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) eredetileg közzétett dátumától számítva 2019. június 30.
 
 ## <a name="which-classic-alert-rules-can-be-migrated"></a>Melyik klasszikus riasztási szabályok áttelepíthetők?
 
-Szinte összes klasszikus riasztási szabályt az eszköz használatával telepíthetők át, bár vannak kivételek. A következő riasztási szabályok nem lesznek áttelepítve az eszközzel (vagy a július 2019 automatikus áttelepítése során)
+Az eszköz szinte az összes klasszikus riasztási szabályok áttelepíthetők, bár vannak kivételek. A következő riasztási szabályok nem lesznek áttelepítve, az eszköz használatával (vagy a szeptember 2019 automatikus áttelepítése során):
 
-- Klasszikus riasztási szabályok a virtuális gép vendég mérőszámok (Windows és Linux). [Hozza létre újra a e riasztási szabályok az új metrikákhoz kapcsolódó riasztások útmutatást talál](#guest-metrics-on-virtual-machines)
-- Klasszikus riasztási szabályok klasszikus tárnak metrikákra vonatkozóan. [Útmutatást talál a monitorozása a klasszikus tárfiókok](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/)
-- Klasszikus riasztási szabályok az egyes tárfiókok mérőszámai. [Alább a részletekre](#storage-account-metrics)
+- Klasszikus riasztási szabályok (Windows és Linux) Vendég virtuális gépen metrikákra vonatkozóan. Tekintse meg a [útmutatást az ilyen riasztási szabályok az új metrikákhoz kapcsolódó riasztások könyvnyomtatásban](#guest-metrics-on-virtual-machines) a cikk későbbi részében.
+- Klasszikus riasztási szabályok klasszikus tárnak metrikákra vonatkozóan. Tekintse meg a [útmutatást a klasszikus tárfiókok figyeléséhez](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
+- Klasszikus riasztási szabályok az egyes tárfiókok mérőszámai. Lásd: [részletek](#storage-account-metrics) a cikk későbbi részében.
 
-Ha az előfizetés bármely ilyen klasszikus szabályok, a szabályok rest át lesz telepítve, de ezeket a szabályokat kell manuálisan kell áttelepíteni. Mivel a Microsoft nem biztosít automatikus áttelepítése, bármely ilyen meglévő klasszikus metrikariasztásokat továbbra is dolgozunk azon, hogy június 2020-ra, hogy új riasztások átvitele időt adjon. Azonban nincsenek új klasszikus riasztások hozható létre post június 2019.
+Ha az előfizetés bármely ilyen klasszikus szabályok, át kell őket manuálisan. Mivel a Microsoft nem biztosít automatikus áttelepítése, bármely meglévő, a klasszikus metrikariasztásokat az ilyen jellegű továbbra is működni fog június 2020-ig. Ez a bővítmény új riasztások átvitele időt biztosít. Nincsenek új klasszikus riasztások azonban augusztus 2019 után hozható létre.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>A virtuális gépek Vendég mérőszámok
 
-A Vendég mérőszámok új metrikákhoz kapcsolódó riasztások létrehozására, a Vendég mérőszámok kell kell küldeni az Azure Monitor egyéni metrikákat tároló. Kövesse az alábbi utasításokat az Azure Monitor-fogadó a diagnosztikai beállítások engedélyezése.
+A Vendég mérőszámok új metrikákhoz kapcsolódó riasztások létrehozásához, a Vendég mérőszámok az Azure Monitor egyéni metrikákat tároló el kell küldeni. Kövesse ezeket az utasításokat az Azure Monitor-fogadó a diagnosztikai beállítások engedélyezése:
 
 - [Windows virtuális gépek Vendég mérőszámainak engedélyezése](collect-custom-metrics-guestos-resource-manager-vm.md)
-- [Linux rendszerű virtuális gépek Vendég mérőszámainak engedélyezése](https://docs.microsoft.com/azure/azure-monitor/platform/collect-custom-metrics-linux-telegraf)
+- [Linux rendszerű virtuális gépek Vendég mérőszámainak engedélyezése](collect-custom-metrics-linux-telegraf.md)
 
-Miután a fenti lépéseket kell elvégezni, a Vendég mérőszámok hozható létre új metrikákhoz kapcsolódó riasztások. Új metrikákhoz kapcsolódó riasztások kell újból, klasszikus riasztások törölhetők.
+Ezeket a lépéseket kell elvégezni, miután a Vendég mérőszámok új metrikariasztásokat is létrehozhat. És Miután létrehozta az új metrikákhoz kapcsolódó riasztások, törölheti a klasszikus riasztások.
 
 ### <a name="storage-account-metrics"></a>Tárfiókok mérőszámai
 
-A storage-fiókok összes klasszikus riasztások ezeket a riasztásokat, a következő metrikákra vonatkozóan kivételével telepíthető át:
+A storage-fiókok összes klasszikus riasztások riasztások a metrikák kivételével telepíthető át:
 
 - PercentAuthorizationError
 - PercentClientOtherError
@@ -53,18 +56,18 @@ A storage-fiókok összes klasszikus riasztások ezeket a riasztásokat, a köve
 - AnonymousThrottlingError
 - SASThrottlingError
 
-A százalékos metrikák klasszikus riasztási szabályok kell áttelepíteni kívánt alapján [korábbi és új storage-mérőszámok közötti leképezést](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Küszöbértékek megfelelően módosítható, mert a rendelkezésre álló új metrika egy abszolút kell.
+A szabályok százalékban kifejezett metrikákra vonatkozóan kell áttelepíteni a klasszikus riasztás alapján [korábbi és új storage-mérőszámok közötti leképezést](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Küszöbértékek megfelelően módosítható, mert a rendelkezésre álló új metrika egy abszolút kell.
 
-Két új riasztásokat is vannak felosztva kell AnonymousThrottlingError és SASThrottlingError klasszikus riasztási szabályok nincs kombinált metrika, amely ugyanazokat a funkciókat biztosít. Küszöbértékek kell megfelelően adaptálhassa.
+Klasszikus riasztási szabályok AnonymousThrottlingError és SASThrottlingError kell osztani két új riasztásokat, mert nincs kombinált metrika, amely ugyanazokat a funkciókat biztosít. Küszöbértékek kell megfelelően adaptálhassa.
 
-## <a name="roll-out-phases"></a>Bevezetési fázisok
+## <a name="rollout-phases"></a>Bevezetési fázisok
 
-Az áttelepítési eszköz bevezetéséről szakaszában, az ügyfelek számára, amely a klasszikus riasztási szabályok használata. **Az előfizetés-tulajdonosokat** egy e-mailt fog kapni, ha az előfizetés rendelkezésre áll az eszközzel kell áttelepíteni.
+Az áttelepítési eszköz bevezetéséről szakaszában, az ügyfelek számára, amely a klasszikus riasztási szabályok használata. Az előfizetés-tulajdonosokat egy e-mailt fog kapni, ha az előfizetés rendelkezésre áll a eszközzel kell áttelepíteni.
 
 > [!NOTE]
-> Az eszköz fázisban történik, a korai fázisban tesszük elérhetővé, láthatja, hogy az előfizetések többsége még nem állnak készen kell áttelepíteni.
+> Mivel az eszköz fázisban tesszük elérhetővé, láthatja, hogy az előfizetések többsége még nem állnak készen a korai fázisban kell áttelepíteni.
 
-Jelenleg egy **részhalmazát** -előfizetést, amely **csak** klasszikus riasztási szabályok típus szerint készen áll az áttelepítéshez vannak megjelölve az alábbi erőforrás rendelkezik. További erőforrástípusok fogja támogatni a későbbi fázisokban.
+Előfizetések egy részét jelenleg meg van jelölve, migrálásra kész. A következő részhalmazt tartalmazza, amelyeken az klasszikus riasztási szabályok csak a következő erőforrástípusok ezen előfizetések. További erőforrástípusok fogja támogatni a későbbi fázisokban.
 
 - Microsoft.apimanagement/service
 - Microsoft.Batch/batchaccounts
@@ -92,24 +95,24 @@ Jelenleg egy **részhalmazát** -előfizetést, amely **csak** klasszikus riaszt
 
 ## <a name="who-can-trigger-the-migration"></a>Ki is aktiválhatja a migrálás?
 
-Minden olyan felhasználó, aki a beépített szerepkör rendelkezik a **közreműködő figyelése** az előfizetés szintű fogja tudni elindítani a migrálás. Egy egyéni biztonsági szerepkört a következő engedélyekkel rendelkező felhasználók is kiválthatják az áttelepítés:
+Bármely felhasználó, aki közreműködői figyelés, a beépített szerepkör rendelkezik az előfizetés szintjén is aktiválhatja az áttelepítés. Egy egyéni biztonsági szerepkört a következő engedélyekkel rendelkező felhasználók is kiválthatják az áttelepítés:
 
 - */read
 - Microsoft.Insights/actiongroups/*
 - Microsoft.Insights/AlertRules/*
 - Microsoft.Insights/metricAlerts/*
 
-## <a name="common-issues-and-remediations"></a>Gyakori problémák és szervizelések
+## <a name="common-problems-and-remedies"></a>Gyakori problémák és kártérítése
 
-Egyszer, [aktiválása az áttelepítés](alerts-using-migration-tool.md), használjuk fel Önt a migrálás befejezése után a megadott e-mail-címeit, vagy ha nincs szükség művelet. Az alábbi szakasz néhány olyan gyakori problémát és azok javítása
+Miután [aktiválása az áttelepítés](alerts-using-migration-tool.md), úgy, hogy az áttelepítés akkor fejeződött be, vagy ha semmilyen teendője, a megadott címre e-mailt fog kapni. Ez a szakasz néhány gyakori problémát és azok kezelésére ismerteti.
 
 ### <a name="validation-failed"></a>Az érvényesítés nem sikerült
 
-Néhány legutóbbi módosításainak klasszikus riasztási szabályok az előfizetésében, mert az előfizetés nem telepíthetők át. Ez az ideiglenes probléma. Az áttelepítés után a migrálás állapota Visszalépés újraindíthatja **migrálásra kész** néhány nap alatt.
+Néhány legutóbbi módosításainak klasszikus riasztási szabályok az előfizetésében, mert az előfizetés nem telepíthetők át. Ez a probléma csak átmenetileg létezik. Az áttelepítés után a migrálás állapota Visszalépés újraindíthatja **migrálásra kész** néhány nap alatt.
 
-### <a name="policyscope-lock-preventing-us-from-migrating-your-rules"></a>A szabályok áttelepítés megakadályozza szabályzathatókörnek/zárolása
+### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>A szabályok áttelepítés megakadályozza a házirend vagy -hatókörön zárolása
 
-Az áttelepítés részeként jön létre új metrikákhoz kapcsolódó riasztások és Műveletcsoportok új és klasszikus riasztási szabályok (új szabályok létrehozása) után törlődnek. Van azonban egy házirend vagy a hatókör zárolása megakadályozza-erőforrások létrehozását. A szabályzat vagy a hatókör zárolást függően néhány vagy összes szabályt meghajtóprogram nem telepíthető át. A probléma megoldásához a hatókör-zárolási és házirend ideiglenesen eltávolításával, és aktiválja újra a migrálás.
+Az áttelepítés részeként jön létre új metrikákhoz kapcsolódó riasztások és Műveletcsoportok új, és majd a klasszikus riasztási szabály törölve lesz. Van azonban egy házirend vagy a hatókör zárolása megakadályozza-erőforrások létrehozását. A szabályzat vagy a hatókör zárolást függően néhány vagy összes szabályt meghajtóprogram nem telepíthető át. Ez a probléma megoldható a hatókör zárolása vagy a házirend eltávolítása ideiglenesen és aktiválása megismételni az áttelepítést.
 
 ## <a name="next-steps"></a>További lépések
 

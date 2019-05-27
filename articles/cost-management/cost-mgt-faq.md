@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/21/2019
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0516c954bd23d5a2e339c5df447a923528e09d93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02a03adb128c140343032075ec334cbd6d88729b
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61430630"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002031"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>A Cloudyn kapcsolatos gyakori kérdések
 
@@ -74,9 +74,9 @@ Miután elvégezte az előző lépéseket, megtekintheti a optimalizáló javasl
 
 Először tekintsük át azokat a leggyakoribb forgatókönyvet, amelynek hatására a felhasználói fiókok beolvasásához *initiallySuspended*.
 
-> Rendszergazda1 a Microsoft Cloud Solution Provider és a nagyvállalati szerződés felhasználó lehet. A szervezet készen áll a Cloudyn használatának megkezdéséhez.  Ő regisztrálja az Azure Portalon keresztül, és bejelentkezik a Cloudyn portálon. Regisztrálja a Cloudyn szolgáltatás és a jelentkezik be a Cloudyn portálra személynek, ő válik a *elsődleges rendszergazdai*. Rendszergazda1 nem hoz létre az összes felhasználói fiókot. Azonban a Cloudyn portált használja, akkor létrehozása az Azure-fiókok és állít be egy entitáshierarchiára. Rendszergazda1 Admin2, egy Bérlői rendszergazda, amely regisztrálja a Cloudyn, és jelentkezzen be a Cloudyn portálon kell figyelmeztet.
-> 
-> Admin2 regisztrálja az Azure Portalon keresztül. Azonban ha ő próbál bejelentkezni a Cloudyn portálon, kapjuk fiókját próbálnak hiba **felfüggesztve**. Az elsődleges rendszergazdai rendszergazda1, értesítést kap, a fiók felfüggesztését. Rendszergazda1 kell aktiválni Admin2 a fiókot, és biztosítson számára *rendszergazdai entitás hozzáférés* a megfelelő entitások, és lehetővé teszi a felhasználói hozzáférés-kezelési és aktív felhasználói fiók.
+> Rendszergazda1 a Microsoft Cloud Solution Provider és a nagyvállalati szerződés felhasználó lehet. A vállalat készen áll a Cloudyn használatának megkezdéséhez.  Ő regisztrálja az Azure Portalon keresztül, és bejelentkezik a Cloudyn portálon. A személy, aki a Cloudyn szolgáltatás és a tünetek regisztrálja a Cloudyn portált, mint rendszergazda1 válik a *elsődleges rendszergazdai*. Rendszergazda1 nem hoz létre az összes felhasználói fiókot. Azonban a Cloudyn portál használata esetén azokat az Azure-fiókok létrehozásához, és egy entitáshierarchiára beállítása. Rendszergazda1 Admin2, egy Bérlői rendszergazda, a regisztrálja a Cloudyn, és jelentkezzen be a Cloudyn portál tájékoztatja.
+>
+> Admin2 regisztrálja az Azure Portalon keresztül. Azonban a Cloudyn portál bejelentkezni próbál, ha azok hibaüzenet fiókjuk próbálnak **felfüggesztve**. Az elsődleges rendszergazdai rendszergazda1, értesítést kap, a fiók felfüggesztését. Rendszergazda1 kell aktiválni Admin2 a fiókot, és biztosítson számára *rendszergazdai entitás hozzáférés* a megfelelő entitások, és lehetővé teszi a felhasználói hozzáférés-kezelési és aktív felhasználói fiók.
 
 
 Riasztás, hozzáférés engedélyezése egy felhasználó kérést kap, ha a felhasználói fiók aktiválásához szüksége.

@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: df1ffa07c9b813ee3da4952bbcc394f43c69b7ac
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6c495456a5a3295abe5460ff6b5586e41fab2d95
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204241"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001038"
 ---
 # <a name="security-attributes-for-azure-sql-database"></a>Az Azure SQL Database biztonsági attribútumok
 
@@ -28,7 +28,7 @@ Az Azure SQL Database szolgáltatás is [önálló adatbázis](sql-database-sing
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
 | Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen | A továbbiakban "titkosítási-használatban", a cikkben leírtak szerint [Always Encrypted](sql-database-always-encrypted.md). Szolgáltatásoldali titkosítás [transzparens adattitkosítás](transparent-data-encryption-azure-sql.md) (TDE).|
-| Titkosítás az átvitel során:<ul><li>Az ExpressRoute-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | HTTPS-en keresztül. |
+| Titkosítás az átvitel során:<ul><li>Az ExpressRoute-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | HTTPS-en keresztül. |
 | Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Igen | Szolgáltatás által kezelt, mind az ügyfél által felügyelt kulcs kezelése érhetők el (az utóbbi keresztül [Azure Key Vault](../key-vault/index.yml). |
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| Igen | Keresztül [Always Encrypted](sql-database-always-encrypted.md). |
 | Titkosított API-hívások| Igen | HTTPS-/ SSL segítségével. |
@@ -37,10 +37,10 @@ Az Azure SQL Database szolgáltatás is [önálló adatbázis](sql-database-sing
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatásvégpont-támogatás| Igen | Érvényes [önálló adatbázis](sql-database-single-index.yml) csak. |
-| vNET-injektálási támogatás| Igen | Érvényes [felügyelt példány](sql-database-managed-instance.md) csak. |
-| Hálózatelkülönítés / tűzfalas támogatása| Igen | A tűzfal, mindkét adatbázis - és kiszolgálói szintű; a hálózatelkülönítés [felügyelt példány](sql-database-managed-instance.md) csak |
-| Kényszerített bújtatás támogatása | Igen | [felügyelt példány](sql-database-managed-instance.md) keresztül [Azure ExpressRoute](../expressroute/index.yml) VPN |
+| Szolgáltatási végpont támogatás| Igen | Érvényes [önálló adatbázis](sql-database-single-index.yml) csak. |
+| VNet-injektálási támogatás| Igen | Érvényes [felügyelt példány](sql-database-managed-instance.md) csak. |
+| Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | A tűzfal, mindkét adatbázis - és kiszolgálói szintű; a hálózatelkülönítés [felügyelt példány](sql-database-managed-instance.md) csak |
+| Kényszerített bújtatás támogatása| Igen | [felügyelt példány](sql-database-managed-instance.md) keresztül [Azure ExpressRoute](../expressroute/index.yml) VPN |
 
 ## <a name="detection"></a>Észlelés
 
@@ -52,16 +52,16 @@ Az Azure SQL Database szolgáltatás is [önálló adatbázis](sql-database-sing
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hozzáférés-kezelés – hitelesítés| Igen | Azure Active Directory. |
-| Hozzáférés-kezelés – engedélyezés| Igen |  |
+| Hitelesítés| Igen | Azure Active Directory. |
+| Engedélyezés| Igen |  |
 
 
 ## <a name="audit-trail"></a>Auditnapló
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő/felügyeleti naplózás és a naplózási tervezése| Igen | Igen, csak bizonyos események. |
-| Adatok naplózása és naplózási adatsík | Igen | Keresztül [SQL audit](sql-database-auditing.md). |
+| Vezérlő és a felügyeleti sík naplózási és naplózása| Igen | Igen, csak bizonyos események. |
+| Adatsík naplózása és naplózása | Igen | Keresztül [SQL audit](sql-database-auditing.md). |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 05/21/2019
 ms.author: aschhab
-ms.openlocfilehash: 0364304a203e03faf69868174a45cb41850ce112
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af67b27dacf3bb86c2dd5c878a2751e027a53acb
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713962"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66003125"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>A Service Bus kézbesíthetetlen levelek sorai áttekintése
 
@@ -43,7 +43,7 @@ Az üzenet a közvetítő által lekérdezi áthelyezték, két tulajdonságokka
 
 Alkalmazások a saját kódokat adhat meg a `DeadLetterReason` tulajdonság, de a rendszer beállítja a következő értékeket.
 
-| Állapot | DeadLetterReason | DeadLetterErrorDescription |
+| Feltétel | DeadLetterReason | DeadLetterErrorDescription |
 | --- | --- | --- |
 | Mindig |HeaderSizeExceeded |Ez az adatfolyam méretének kvótája túl lett lépve. |
 | ! TopicDescription.<br />EnableFilteringMessagesBeforePublishing és SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
@@ -102,6 +102,17 @@ while(true)
     }
 }
 ```
+
+## <a name="path-to-the-dead-letter-queue"></a>A kézbesíthetetlen levelek várólista elérési útja
+A kézbesítetlen levelek várólistájára férhetnek hozzá a következő szintaxis használatával:
+
+```
+<queue path>/$deadletterqueue
+<topic path>/Subscription/<subscription path>/$deadletterqueue
+```
+
+Ha a .NET SDK-t használ, a SubscriptionClient.FormatDeadLetterPath() módszer használatával beszerezheti az elérési útját a kézbesítetlen levelek várólistájára. Ezt a módszert a témakör neve /-előfizetéséből a nevet veszi át, és az utótagok **/$DeadLetterQueue**.
+
 
 ## <a name="next-steps"></a>További lépések
 

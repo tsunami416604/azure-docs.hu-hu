@@ -9,16 +9,16 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f12d11cecbf682ae82f9c432804b1d611ee3e39f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7c1718298c3f7c3fea28fa0b18569085f071696f
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719403"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66003061"
 ---
-# <a name="common-security-attributes-for-azure-service-fabric"></a>Az Azure Service Fabric általános biztonsági attribútumok
+# <a name="security-attributes-for-azure-service-fabric"></a>Az Azure Service Fabric biztonsági attribútumok
 
-Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a cikk a gyakori biztonsági attribútumok az Azure Service Fabric beépített dokumentumok. 
+Ez a cikk az Azure Service Fabric beépített biztonsági attribútumok dokumentumok. 
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -32,7 +32,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| – |  |
 | Titkosított API-hívások| Igen | Service Fabric API-hívások Azure Resource Manageren keresztül történik. Egy érvényes JSON webes jogkivonat (JWT) megadása kötelező. |
 
-## <a name="network-segmentation"></a>Hálózati Szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálást
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|

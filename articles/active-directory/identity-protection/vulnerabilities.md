@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80faf1899da0f16d25b9b7c68cb0edcbc1276632
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e792551f4cac857f56454c67d527e01cb9c4281
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294233"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113123"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Az Azure Active Directory Identity Protection által észlelt biztonsági rések
 
@@ -30,20 +30,18 @@ A következő szakaszok a biztonsági rések jelentette az Identity Protection �
 
 A biztonsági rés segítségével felmérheti a szervezet Azure multi-factor Authentication szolgáltatás telepítését.
 
-Megtekintéséhez a száma, a felhasználók, amelyek nem a multi-factor Authentication, kattintson a, és a biztonsági rés irányítja át statisztika identitás biztonságos pontszám belül.
-
 Az Azure multi-factor Authentication a második biztonsági szintként, felhasználói hitelesítés biztosít. Ez segít iránt támasztott felhasználói igényeknek egy egyszerű bejelentkezési folyamat adatokhoz és alkalmazásokhoz való hozzáférés védelme érdekében. Az Azure multi-factor Authentication nyújt egyszerű ellenőrzési lehetőség, például:
 
 * Telefonhívás
 * Szöveges üzenet
-* Mobilalkalmazás-értesítés
+* Mobilalkalmazásbeli értesítés
 * Egyszeri Jelszavas ellenőrző kód
 
 Azt javasoljuk, hogy a felhasználói bejelentkezéseket az Azure multi-factor Authentication szükséges. A multi-factor authentication kulcsfontosságú szerepet játszik a kockázatalapú feltételes hozzáférési szabályzatok Identity Protection keresztül érhető el.
 
 További információt [az Azure Multi-Factor Authentication](../authentication/multi-factor-authentication.md) ismertetőjében talál.
 
-## <a name="unmanaged-cloud-apps"></a>Nem felügyelt felhőalkalmazások
+## <a name="unmanaged-cloud-apps"></a>Nem kezelt felhőalkalmazások
 
 A biztonsági rés segítségével azonosíthatja a nem kezelt felhőalkalmazások a szervezetben.
 
@@ -53,7 +51,7 @@ Javasoljuk, hogy a Cloud Discovery nem kezelt felhőalkalmazások felderítése,
 
 További információkért lásd: [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 
-## <a name="security-alerts-from-privileged-identity-management"></a>A Privileged Identity Management szolgáltatástól származó biztonsági riasztások
+## <a name="security-alerts-from-privileged-identity-management"></a>A Privileged Identity Management biztonsági riasztásai
 
 A biztonsági rés segít felderíteni, és oldja meg a szervezet emelt szintű identitások kapcsolatos riasztásokat.  
 

@@ -13,12 +13,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4832055bffa72732991cb766ce88cc48c07530e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2e277f31dcf2627959b88d58f325fb4dad024a00
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301416"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001191"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>kézikönyv: Az Azure Active Directoryban a feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -81,7 +81,7 @@ Ezen a ponton, egy jó ideje vonatkozó olyan elnevezési konvenciót-szabályza
  
 ![Standard elnevezése](./media/plan-conditional-access/11.png)
 
-Egy leíró nevet segít a feltételes hozzáférés megvalósításának áttekintést tartani, amíg a sorszám akkor hasznos, ha egy házirendet a beszélgetés hivatkoznia kell. Például ha megosztana rendszergazda beszélgetés a telefonon, megkérheti számára, hogy nyissa meg a probléma megoldásához EM063 szabályzatot.
+Egy leíró nevet segít a feltételes hozzáférés megvalósításának áttekintést tartani, amíg a sorszám akkor hasznos, ha egy házirendet a beszélgetés hivatkoznia kell. Például ha megosztana rendszergazda beszélgetés a telefonon, megkérheti nyissák meg házirend EM063 egy probléma megoldásához.
 
 
 
@@ -131,7 +131,7 @@ A felhasználók bejelentkezési élmény egyszerűsítése, érdemes, hogy jele
 
 MFA igénylése gyakori alkalmazási helyzetek hozzáférés:
 
-- [Rendszergazdák](baseline-protection.md#require-mfa-for-admins)
+- [Rendszergazdák](howto-baseline-protect-administrators.md)
 - [Adott alkalmazásokra](app-based-mfa.md) 
 - [A hálózati helyről, nem megbízható](untrusted-networks.md).
 
@@ -193,7 +193,7 @@ Egyes szervezetek teszt bérlővel rendelkezik erre a célra. Azonban nehézkes 
 
 A tesztelési terv esetében lényeges, hogy a várt eredményt és a tényleges eredmények összehasonlítását. Mindig rendelkeznie kell egy valami teszteléshez formálisság. Az alábbi táblázat ismerteti a tesztelési példák. Módosítsa a forgatókönyveket és a várt eredményt miként vannak konfigurálva a feltételes hozzáférési szabályzatok alapján.
 
-|Szabályzat |Forgatókönyv |Várt eredmény | Eredmény |
+|Házirend |Forgatókönyv |Várt eredmény | Eredmény |
 |---|---|---|---|
 |[Többtényezős hitelesítés munkahelyen kívül](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Engedélyezett a felhasználók bejelentkeznek *alkalmazás* során megbízható helyen lévő / működik|A többtényezős hitelesítés nem kéri a felhasználót| |
 |[Többtényezős hitelesítés munkahelyen kívül](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Engedélyezett a felhasználók bejelentkeznek *alkalmazás* során nem megbízható helyen lévő / működik|Felhasználói MFA a rendszer kéri, és sikeresen bejelentkezhet| |
@@ -245,7 +245,7 @@ A takarítási eljárás a következő lépésekből áll:
 
 
 
-## <a name="move-to-production"></a>Helyezze át az éles környezetbe
+## <a name="move-to-production"></a>Átállás éles üzemre
 
 Amikor új házirendeket a környezet készen áll, telepíteni kell őket fázisok::
 

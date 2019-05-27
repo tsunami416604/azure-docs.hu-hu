@@ -10,15 +10,15 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/25/2019
-ms.openlocfilehash: 6d7d065f45bca38cedd2c276bdd9b98dfd9675df
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.date: 05/22/2019
+ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866951"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016392"
 ---
-# <a name="time-zones-in-azure-sql-database-managed-instance-preview"></a>Idő zónák az Azure SQL Database felügyelt példány (előzetes verzió)
+# <a name="time-zones-in-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példányába időzónák
 
 Egyezményes világidő (UTC) a felhőalapú megoldások adatrétegének ajánlott időzónáját. Az Azure SQL Database felügyelt példánya is kínál időzónák többféle dátum és idő értékét tárolja, és a egy adott időzóna implicit kontextusában a date és time függvények hívása már meglévő alkalmazások igényeinek.
 
@@ -100,27 +100,27 @@ Ugyanabban az időzónában használatával között egy elsődleges és másodl
 
 | **Időzóna-Azonosítóhoz** | **Időzóna megjelenített neve** |
 | --- | --- |
-| Dátumvonali téli idő | (UTC-12:00) Nemzetközi dátumválasztó vonal - nyugat |
+| Dátumvonali téli idő | (UTC-12:00) Nemzetközi dátumválasztó vonal – nyugat |
 | UTC-11 | (UTC-11:00) Egyezményes világidő-11 |
 | Aleuti téli idő | (UTC-10:00) Aleut-szigetek |
 | Hawaii téli idő | (UTC-10:00) Hawaii |
-| Marquises-szigeteki téli idő | (UTC-09:30) Marquesas-szigetek |
+| Marquises-szigeteki téli idő | (UTC-09:30) Marquises-szigetek |
 | Alaszkai téli idő | (UTC-09:00) Alaszka |
 | UTC-09 | (UTC-09:00) Egyezményes világidő-09 |
 | Csendes-óceáni téli idő (Mexikó) | (UTC-08:00) Baja California |
 | UTC-08 | (UTC-08:00) Egyezményes világidő-08 |
-| Csendes-óceáni téli idő | (UTC-08:00) Csendes-óceáni idő (Egyesült Államok és Kanada) |
+| Csendes-óceáni téli idő | (UTC-08:00) Csendes-óceáni idő (Amerikai Egyesült Államok és Kanada) |
 | Amerikai hegyi téli idő | (UTC-07:00) Arizona |
 | Hegyi téli idő (Mexikó) | (UTC-07:00) Chihuahua, La Paz, Mazatlan |
-| Hegyi téli idő | (UTC-07:00) Hegyi idő (Egyesült Államok és Kanada) |
+| Hegyi téli idő | (UTC-07:00) Hegyi idő (Amerikai Egyesült Államok és Kanada) |
 | Közép-amerikai téli idő | (UTC-06:00) Közép-Amerika |
-| Amerikai középső téli idő | (UTC-06:00) Amerikai középidő (Egyesült Államok és Kanada) |
+| Amerikai középső téli idő | (UTC-06:00) Amerikai középidő (Amerikai Egyesült Államok és Kanada) |
 | Húsvét-szigeti téli idő | (UTC-06:00) Húsvét-sziget |
 | Téli középidő (Mexikó) | (UTC-06:00) Guadalajara, Mexikóváros, Monterrey |
 | Kanadai téli középidő | (UTC-06:00) Saskatchewan |
 | Dél-amerikai csendes-óceáni téli idő | (UTC-05:00) Bogota, Lima, Quito, Rio Branco |
 | Keleti téli idő (Mexikó) | (UTC-05:00) Chetumal |
-| Keleti téli idő | (UTC-05:00) Keleti idő (Egyesült Államok és Kanada) |
+| Keleti téli idő | (UTC-05:00) Keleti idő (Amerikai Egyesült Államok és Kanada) |
 | Haiti téli idő | (UTC-05:00) Haiti |
 | Kubai téli idő | (UTC-05:00) Havanna |
 | Amerikai keleti téli idő | (UTC-05:00) Indiana (kelet) |
@@ -131,11 +131,11 @@ Ugyanabban az időzónában használatával között egy elsődleges és másodl
 | Közép-brazíliai idő | (UTC-04:00) Cuiaba |
 | Dél-amerikai nyugati téli idő | (UTC-04:00) Georgetown, La Paz, Manaus, San Juan |
 | Csendes-óceáni dél-amerikai téli idő | (UTC-04:00) Santiago |
-| Új-foundlandi téli idő | (UTC-03:30) Newfoundland |
+| Új-foundlandi téli idő | (UTC-03:30) Új-Fundland |
 | Tocantinsi nyári idő | (UTC-03:00) Araguaina |
-| E. Dél-amerikai téli idő | (UTC-03:00) Brasilia |
+| E. Dél-amerikai téli idő | (UTC-03:00) Brazíliaváros |
 | Dél-amerikai keleti téli idő | (UTC-03:00) Cayenne, Fortaleza |
-| Argentin téli idő | (UTC-03:00) Buenos Aires város |
+| Argentin téli idő | (UTC-03:00) Buenos Aires |
 | Grönlandi téli idő | (UTC-03:00) Grönland |
 | Montevideoi téli idő | (UTC-03:00) Montevideo |
 | Magallanesi téli idő | (UTC-03:00) Punta Arenas |
@@ -171,12 +171,12 @@ Ugyanabban az időzónában használatával között egy elsődleges és másodl
 | Namíbiai téli idő | (UTC+02:00) Windhoek |
 | Bagdadi téli idő | (UTC+03:00) Bagdad |
 | Törökországi téli idő | (UTC+03:00) Isztambul |
-| Arab téli idő | (UTC+03:00) Kuvait, Riyadh |
+| Arab téli idő | (UTC+03:00) Kuvait, Rijád |
 | Belarusz téli idő | (UTC+03:00) Minszk |
 | Orosz téli idő | (UTC+03:00) Moszkva, Szentpétervár |
 | E. Afrikai téli idő | (UTC+03:00) Nairobi |
 | Iráni téli idő | (UTC+03:30) Teherán |
-| Arábiai téli idő | (UTC+04:00) Abu Dhabi, Muscat |
+| Arábiai téli idő | (UTC+04:00) Abu-Dzabi, Maszkat |
 | Asztraháni téli idő | (UTC+04:00) Asztrahán, Uljanovszk |
 | Azerbajdzsáni téli időszámítás | (UTC+04:00) Baku |
 | Russia Time Zone 3 | (UTC+04:00) Izsevszk, Szamara |
@@ -188,29 +188,29 @@ Ugyanabban az időzónában használatával között egy elsődleges és másodl
 | Afganisztáni téli idő | (UTC+04:30) Kabul |
 | Nyugat-ázsiai téli idő | (UTC+05:00) Asgabat, Taskent |
 | Jekatyerinburgi téli idő | (UTC+05:00) Jekatyerinburg |
-| Pakisztáni téli idő | (UTC+05:00) Iszlámábád, Karachi |
-| Indiai téli idő | (UTC+05:30) Chennai, Kolkata, Mumbai, Új-Delhi |
+| Pakisztáni téli idő | (UTC+05:00) Iszlámábád, Karacsi |
+| Indiai téli idő | (UTC+05:30) Csennai, Kalkutta, Mumbai, Új-Delhi |
 | Srí Lanka-i téli idő | (UTC+05:30) Sri Jayawardenepura |
 | Nepáli téli idő | (UTC+05:45) Katmandu |
 | Közép-ázsiai téli idő | (UTC+06:00) Asztana |
-| Bangladesi téli idő | (UTC+06:00) Dhaka |
+| Bangladesi téli idő | (UTC+06:00) Dakka |
 | Omszki téli idő | (UTC+06:00) Omszk |
 | Myanmari téli idő | (UTC+06:30) Yangon (Rangun) |
-| Délkelet-ázsiai téli idő | (UTC+07:00) Bangkok, Hanoi, Jakarta |
+| Délkelet-ázsiai téli idő | (UTC+07:00) Bangkok, Hanoi, Dzsakarta |
 | Altaji téli idő | (UTC+07:00) Barnaul, Gorno-Altajszk |
 | W. Mongolia Standard Time | (UTC+07:00) Hovd |
 | North Asia Standard Time | (UTC+07:00) Krasznojarszk |
 | N. Közép-ázsiai téli idő | (UTC+07:00) Novoszibirszk |
 | Tomszki téli idő | (UTC+07:00) Tomszk |
-| Kínai téli idő | (UTC+08:00) Peking, Chongqing, Hongkong (KKT), Urumqi |
+| Kínai téli idő | (UTC+08:00) Peking, Csungking, Hongkong, Urumcsi |
 | Észak-ázsiai keleti téli idő | (UTC+08:00) Irkutszk |
 | Szingapúri téli idő | (UTC+08:00) Kuala Lumpur, Szingapúr |
 | W. Ausztráliai téli idő | (UTC+08:00) Perth |
-| Tajpeji téli idő | (UTC+08:00) Taipei |
+| Tajpeji téli idő | (UTC+08:00) Tajpej |
 | Ulánbátori téli idő | (UTC+08:00) Ulánbátor |
 | Ausztrál középnyugati téli idő | (UTC+08:45) Eucla |
 | Transzbajkáli téli idő | (UTC+09:00) Csita |
-| Tokiói téli idő | (UTC+09:00) Oszaka, Szapporo, Tokió |
+| Tokiói téli idő | (UTC+09:00) Oszaka, Szapporó, Tokió |
 | Észak-koreai téli idő | (UTC+09:00) Phenjan |
 | Koreai téli idő | (UTC+09:00) Szöul |
 | Jakutszki téli idő | (UTC+09:00) Jakutszk |
@@ -222,22 +222,22 @@ Ugyanabban az időzónában használatával között egy elsődleges és másodl
 | Tasmániai téli idő | (UTC+10:00) Hobart |
 | Vlagyivosztoki téli idő | (UTC+10:00) Vlagyivosztok |
 | Lord Howe-szigeti téli idő | (UTC+10:30) Lord Howe-sziget |
-| Bougainville-szigeti téli idő | (UTC+11:00) Bougainville sziget |
+| Bougainville-szigeti téli idő | (UTC+11:00) Bougainville-sziget |
 | Russia Time Zone 10 | (UTC+11:00) Csokurdah |
-| Magadáni téli idő | (UTC+11:00) Magadan |
+| Magadáni téli idő | (UTC+11:00) Magadán |
 | Norfolk-szigeti téli idő | (UTC+11:00) Norfolk-sziget |
 | Szahalini téli idő | (UTC+11:00) Szahalin |
 | Közép-csendes-óceáni téli idő | (UTC+11:00) Salamon-szigetek, Új-Kaledónia |
 | 11. orosz időzóna | (UTC+12:00) Anadir, Petropavlovszk-Kamcsatszkij |
 | Új-zélandi téli idő | (UTC+12:00) Auckland, Wellington |
 | UTC+12 | (UTC+12:00) Egyezményes világidő+12 |
-| Fidzsi-szigeteki téli idő | (UTC+12:00) Fidzsi |
-| Kamcsatkai téli idő | (UTC+12:00) Petropavlovszk-Kamcsatszkij - régi |
+| Fidzsi-szigeteki téli idő | (UTC+12:00) Fidzsi-szigetek |
+| Kamcsatkai téli idő | (UTC+12:00) Petropavlovszk-Kamcsatszkij – régi |
 | Chatham-szigeteki téli idő | (UTC+12:45) Chatham-szigetek |
 | UTC+13 | (UTC+13:00) Egyezményes világidő+13 |
 | Tongai téli idő | (UTC+13:00) Nuku'alofa |
 | Szamoai téli idő | (UTC+13:00) Szamoa |
-| Line-szigetek téli idő | (UTC+14:00) Kiritimati-sziget |
+| Line-szigetek téli idő | (UTC+14:00) Karácsony-sziget |
 
 ## <a name="see-also"></a>Lásd még 
 

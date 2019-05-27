@@ -9,18 +9,20 @@ ms.date: 01/18/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7006e19616be51d79dc3e1319064d19024400bcc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 078c62913b903eafe9e0fcfcef4189f5ca735d0f
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789981"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002818"
 ---
 # <a name="azure-storage-redundancy"></a>Az Azure Storage-redundancia
 
 A Microsoft Azure tárfiók tartalmát mindig replikáljuk, így biztosítva az adatok tartósságát és magas rendelkezésre állását. Az Azure Storage készít másolatot az adatokról, így a tervezett és nem tervezett események, például átmeneti hardverhibák, hálózati vagy áramkimaradások és hatalmas természeti katasztrófák védve van. Ha szeretné, ugyanabban az adatközpontban, az adatok replikálása a zónaszintű adatközpontokon ugyanazon a régión belül, vagy földrajzilag különálló régiók között elosztva.
 
 A replikáció biztosítja, hogy a tárfiók még hibák esetén is teljesíti a [Storage szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) feltételeit. Tekintse át az Azure Storage tartóssági és rendelkezésre állási garanciáit a szolgáltatói szerződésben .
+
+Az Azure Storage rendszeresen, ciklikus redundancia-ellenőrzést (CRC segítségével) használatával tárolt adatok sértetlenségét ellenőrzi. Ha adatok sérülésével észlel, kijavítva redundáns adatok használatával. Az Azure Storage emellett kiértékeli az ellenőrzőösszegek a hálózati forgalom adatcsomagok tárolására, vagy az adatok beolvasása a sérülés észlelését.
 
 ## <a name="choosing-a-redundancy-option"></a>Egy adatredundáns tárolási mód kiválasztása
 

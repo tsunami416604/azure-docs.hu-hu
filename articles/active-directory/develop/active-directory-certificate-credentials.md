@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34a499ac12bcf6f4aee671eb209b709390ca6139
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: ed4e7559ff6c3b76bbdf49b538ffebf3ad09cc58
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545122"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001217"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Alkalmazás-hitelesítési tanúsítvány hitelesítő adatai
 
@@ -98,11 +98,10 @@ A tanúsítványalapú hitelesítő adatot is társíthat az ügyfélalkalmazás
 ### <a name="uploading-the-certificate-file"></a>A tanúsítvány-fájl feltöltése
 
 Az Azure-alkalmazás regisztrációja az ügyfélalkalmazás:
-1. Válassza ki **beállítások > kulcsok** majd **nyilvános kulcs feltöltése**. 
-2. Válassza ki a feltöltendő tanúsítványfájlt.
-3. Kattintson a **Mentés** gombra. 
-   
-   Miután menti, a tanúsítvány feltöltése, és az ujjlenyomat, a kezdő dátum és a lejárati értékek jelennek meg. 
+1. Válassza ki **tanúsítványok és titkos kulcsok**. 
+2. Kattintson a **tanúsítvány feltöltése** , és válassza ki a feltöltendő tanúsítványfájlt.
+3. Kattintson a **Hozzáadás**lehetőségre.
+  Miután feltöltötte a tanúsítványt, az ujjlenyomat, a kezdő dátum és a lejárati értékek jelennek meg. 
 
 ### <a name="updating-the-application-manifest"></a>Az alkalmazásjegyzék frissítése
 
@@ -114,7 +113,7 @@ Tanúsítvány céllal rendelkező, kell számítási:
 Emellett meg kell adnia az alkalmazásjegyzékben-kulcs azonosításához, egy GUID Azonosítót (`$keyId`).
 
 Az Azure-alkalmazás regisztrációja az ügyfélalkalmazás:
-1. Nyissa meg az alkalmazásjegyzékben.
+1. Válassza ki **Manifest** megnyitásához az alkalmazásjegyzékben.
 2. Cserélje le a *keyCredentials* tulajdonság, amely az új tanúsítvány adatait a következő séma használatával.
 
    ```

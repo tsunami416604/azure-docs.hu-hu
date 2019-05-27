@@ -8,16 +8,16 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ebc39dcd9fe921c794add48cc677a799841cbb78
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: a771d4c2ae22b7bf149c13c80fe5286ef52a4545
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943623"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002260"
 ---
-# <a name="common-security-attributes-for-azure-resource-manager"></a>Gyakori biztonsági attribútumok az Azure Resource Manager
+# <a name="security-attributes-for-azure-resource-manager"></a>Az Azure Resource Manager biztonsági attribútumok
 
-Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a cikk a gyakori biztonsági attribútumok létrehozott Azure Resource Manager-dokumentumok.
+Ez a cikk az Azure Resource Manager beépített biztonsági attribútumok dokumentumok.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,7 +26,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
 | Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen |  |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | HTTPS/TLS. |
+| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | HTTPS/TLS. |
 | Titkosítási kulcs kezelése (CMK, BYOK, stb.)| – | Az Azure Resource Manager nincs ügyfél tartalom, csak a vezérlő adatokat tárolja. |
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| Igen | |
 | Titkosított API-hívások| Igen | |

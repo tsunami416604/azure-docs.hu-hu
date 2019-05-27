@@ -3,20 +3,21 @@ title: A folyamatos integrációt és teljesítést az Azure Data Factoryban |} 
 description: Ismerje meg, hogyan lehet folyamatos integrációt és teljesítést segítségével helyezze át a Data Factory-folyamatok (fejlesztési, tesztelési és éles környezetben) egyik környezetből a másikba.
 services: data-factory
 documentationcenter: ''
-author: gauravmalhot
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2019
+author: gauravmalhot
 ms.author: gamal
+ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 2edd4e28a0dd67be3c06159bce2e968d681b7f70
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 76962975705ff53a292f41a0a54e42c5f2991a2c
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905256"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002568"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
 
@@ -937,7 +938,7 @@ Ezen feltételek mellett felülbírálhatja az alapértelmezett paraméterezés 
 
 ### <a name="explanation"></a>Leírás:
 
-#### <a name="pipelines"></a>Folyamatok
+#### <a name="pipelines"></a>Adatcsatornák
     
 * A tevékenységek/typeProperties/waitTimeInSeconds elérési út minden tulajdonság van paraméterezni. Ez azt jelenti, hogy minden tevékenység egy folyamatot, amely rendelkezik a kód szintű vlastnost s `waitTimeInSeconds` (például a `Wait` tevékenység) egy számot, egy alapértelmezett névvel rendelkező paraméteres van. De azt a Resource Manager-sablon nem rendelkezik alapértelmezett értékkel. Egy kötelező bemeneti csak a Resource Manager üzembe helyezése során.
 * Hasonlóképpen, egy nevű `headers` (például egy `Web` tevékenység) típussal van paraméterezve `object` (JObject). Alapértelmezett érték, amely ugyanazt az értéket, mint a forrás gyári rendelkezik.
