@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 967fbf460175dee303d26074426a1f90e4353407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6fc5bcdbbe821008f74e85a91889044c8975ce93
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350966"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113261"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -31,16 +31,13 @@ Az Azure Active Directory (Azure AD), akkor egyszerűen együttműködési hatá
 Is könnyedén biztosíthatja, hogy vendég felhasználók rendelkeznek-e megfelelő hozzáféréssel. Megkérheti a vendégek maguk vagy egy döntéshozót, hogy a vendégek hozzáférési a hozzáférési felülvizsgálatban és hitelesítsék újból (vagy tanúsít) részt. A felülvizsgálatot végzők az Azure AD-ből származó javaslatok alapján dönthetnek arról, hogy az egyes felhasználóknak szükségük van-e folyamatos hozzáférésre. Hozzáférési felülvizsgálat befejezésekor módosításokat és hozzáférés letiltása a Vendégek, akiknek többé nincs rá szükségük.
 
 > [!NOTE]
-> Ez a dokumentum a vendégfelhasználók hozzáférés felülvizsgálata összpontosít. Ha meg szeretné tekinteni az összes felhasználói hozzáférés, nem csak vendégek [felhasználói hozzáférés felügyelete a hozzáférési felülvizsgálatok az](manage-user-access-with-access-reviews.md). Ha meg szeretné tekinteni a rendszergazdai szerepköröket, például a globális rendszergazdai felhasználói csoporttagság [hozzáférési felülvizsgálat indítása az Azure AD Privileged Identity Management](../privileged-identity-management/pim-how-to-start-security-review.md). 
->
->
+> Ez a dokumentum a vendégfelhasználók hozzáférés felülvizsgálata összpontosít. Ha meg szeretné tekinteni az összes felhasználói hozzáférés, nem csak vendégek [felhasználói hozzáférés felügyelete a hozzáférési felülvizsgálatok az](manage-user-access-with-access-reviews.md). Ha meg szeretné tekinteni a rendszergazdai szerepköröket, például a globális rendszergazdai felhasználói csoporttagság [hozzáférési felülvizsgálat indítása az Azure AD Privileged Identity Management](../privileged-identity-management/pim-how-to-start-security-review.md).
 
-## <a name="prerequisites"></a>Előfeltételek 
+## <a name="prerequisites"></a>Előfeltételek
 
+- Azure AD Premium P2
 
-A hozzáférési felülvizsgálatok az Azure AD Premium P2 kiadásában érhetők el, a Microsoft nagyvállalati mobilitási + biztonsági E5 csomagban. További információk: [Azure Active Directory editions](../fundamentals/active-directory-whatis.md) (Azure Active Directory-kiadások). Az ezt a funkciót használó összes felhasználónak, beleértve a felülvizsgálatot létrehozó, a felülvizsgálatot kitöltő és a hozzáférését megerősítő felhasználóknak is licencre van szükségük. 
-
-Vendégfelhasználók tekintse át a saját hozzáférését is kérhet. Minden fizetős Azure AD Premium P2-licenc, amely a saját szervezet felhasználói egyik rendel B2B használatával a külső felhasználó keretet alatt legfeljebb öt vendégfelhasználók meghívása. Ezek a vendég felhasználók is az Azure AD Premium P2-funkciók is használhatók. További információkért lásd: [Azure AD B2B-együttműködés licencelése](../b2b/licensing-guidance.md).
+További információkért lásd: [mely felhasználók rendelkeznie kell licencekkel?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Hozzon létre, és a vendégek hozzáférési felülvizsgálat végrehajtása
 

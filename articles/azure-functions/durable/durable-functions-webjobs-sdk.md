@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: df12639aaafaf3df7ae2b755d635d4fba83d846e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39a757900b4307d702a0ce0ce1c20694418aa8dd
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648652"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872824"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Webjobs-feladatok, Durable Functions futtatása
 
@@ -37,7 +37,7 @@ Ez a cikk feltételezi, hogy ismeri a WebJobs SDK-C# osztály könyvtárfejleszt
 
 A jelen cikkben ismertetett lépések végrehajtásához:
 
-* [Telepítse a Visual Studio 2017 15.6 vagy újabb verzió](https://docs.microsoft.com/visualstudio/install/) együtt a **Azure-fejlesztési** számítási feladatok.
+* [Telepítse a Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/) együtt a **Azure-fejlesztési** számítási feladatok.
 
   Ha már rendelkezik a Visual Studióval, de nem rendelkezik az adott számítási feladatot, adja hozzá a számítási feladatok kiválasztásával **eszközök** > **első eszközeivel és szolgáltatásaival**.
 
@@ -125,7 +125,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkciók
 
 Durable Functions a webjobs-feladatok kontextusában Durable Functions némileg eltér az Azure Functions kontextusában. Fontos tisztában lenni a különbségek a kód írása.
 
@@ -139,7 +139,7 @@ A WebJobs SDK nem támogatja a következő Azure Functions-szolgáltatásairól:
 
 A WebJobs SDK-projektben egy függvény metódusnév a függvény nevét. A `FunctionName` attribútuma csak az Azure Functions szolgál.
 
-### <a name="http-trigger"></a>HTTP eseményindító
+### <a name="http-trigger"></a>HTTP-eseményindító
 
 A WebJobs SDK-val nem rendelkezik egy HTTP-eseményindítóval. A mintaprojekt vezénylési ügyfél egy időzítő indítófeltételt használja:
 
