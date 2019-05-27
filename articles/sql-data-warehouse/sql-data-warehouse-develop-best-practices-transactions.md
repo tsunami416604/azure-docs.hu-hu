@@ -2,20 +2,20 @@
 title: Az Azure SQL Data Warehouse tranzakciók optimalizálása |} A Microsoft Docs
 description: Útmutató kockázatát a hosszú visszaállítások minimalizálhatók a tranzakciós kód az Azure SQL Data Warehouse a teljesítmény optimalizálása érdekében.
 services: sql-data-warehouse
-author: ckarst
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 04/19/2018
-ms.author: cakarst
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f5e0b2b75ac111f3221108936f84e5883aebfc1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ab1da9fce74359448311591986d57abbbcef066
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478827"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873646"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse tranzakciók optimalizálása
 Útmutató kockázatát a hosszú visszaállítások minimalizálhatók a tranzakciós kód az Azure SQL Data Warehouse a teljesítmény optimalizálása érdekében.
@@ -44,9 +44,9 @@ A következő műveletek legalább a naplózott képesek:
 
 * HOZZON LÉTRE TABLE AS SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
 * INSERT..SELECT
-* INDEX LÉTREHOZÁSA
+* CREATE INDEX
 * ALTER INDEX REBUILD
-* A DROP INDEX
+* DROP INDEX
 * TÁBLA CSONKOLÁSA
 * DROP TABLE
 * ALTER TABLE SWITCH PARTITION
@@ -67,12 +67,12 @@ A CTAS és INSERT... Válassza ki mindkét tömeges betöltési műveletek. Azon
 
 | Elsődleges Index | Betöltés forgatókönyv | Naplózási mód |
 | --- | --- | --- |
-| Halommemória |Bármelyik |**Minimal** |
+| Halommemória |Bármely |**Minimal** |
 | Fürtözött Index |Üres céltábla |**Minimal** |
 | Fürtözött Index |A betöltött sorok ne legyenek átfedésben a meglévő lapokon a célhelyen |**Minimal** |
-| Fürtözött Index |A betöltött sorok átfedésben a meglévő lapokon a célhelyen |Korlátlan |
+| Fürtözött Index |A betöltött sorok átfedésben a meglévő lapokon a célhelyen |Teljes |
 | Fürtözött Oszlopcentrikus Index |Kötegméret > 102,400 igazítva partíció terjesztési száma = |**Minimal** |
-| Fürtözött Oszlopcentrikus Index |Batch-méret < 102,400 igazítva partíció terjesztési kiszolgálónként |Korlátlan |
+| Fürtözött Oszlopcentrikus Index |Batch-méret < 102,400 igazítva partíció terjesztési kiszolgálónként |Teljes |
 
 Fontos megjegyezni, hogy a másodlagos vagy nem fürtözött index frissítéséhez írási mindig lesz teljes mértékben naplózott műveleteknek.
 

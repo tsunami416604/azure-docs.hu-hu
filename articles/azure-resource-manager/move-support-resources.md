@@ -4,14 +4,14 @@ description: Az Azure-erőforrástípus, amely egy új erőforráscsoportot vagy
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 5/16/2019
+ms.date: 5/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: d662607eaaabb8ccfad89f625165c542af81b0fa
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dcac557f29a987ea732744c1b82f90f858623ec5
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794519"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872560"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet támogatási erőforrások áthelyezése
 Ez a cikk felsorolja egy Azure-erőforrás az áthelyezési művelet támogatja-e. Bár egy erőforrás támogatja az áthelyezési művelet, előfordulhat, hogy feltételeket, amelyek megakadályozhatja, hogy az erőforrás áthelyezett lehet. Feltételeket, amelyek hatással vannak az áthelyezési műveleteket kapcsolatos részletekért lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).
@@ -848,7 +848,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
-| deviceservices | Igen | Igen |
+| deviceservices | Nem | Nem |
 
 ## <a name="microsoftwindowsvirtualdesktop"></a>Microsoft.WindowsVirtualDesktop
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |

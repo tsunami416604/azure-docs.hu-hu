@@ -2,20 +2,20 @@
 title: Az Azure SQL Data Warehouse kibocsátási megjegyzések 2018 szeptember |} A Microsoft Docs
 description: Kibocsátási megjegyzések az Azure SQL Data warehouse-hoz.
 services: sql-data-warehouse
-author: twounder
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 10/08/2018
-ms.author: mausher
-ms.reviewer: twounder
-ms.openlocfilehash: bc559a1224aace2ee599c24c8dce07a6d55173fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: anjangsh
+ms.reviewer: jrasnick
+ms.openlocfilehash: 5041458fdc3c6a49c59f2c4c476db71098531419
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474971"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912158"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Mi az új Azure SQL Data warehouse? 2018. szeptember
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 szeptember.
@@ -99,7 +99,7 @@ Végül javítása csökkenti az utasításokat, amelyek a széles táblák - t�
 
 ## <a name="bug-fixes"></a>Hibajavítások
 
-| Cím | Leírás |
+| Beosztás | Leírás |
 |:---|:---|
 | **Javítsa ki az egyedi korlátozások disztribúciókon statisztika létrehozásakor** | Ez a javítás címek felhasználók előforduló futó UPDATE STATISTICS csak a tábla megadása esetén ha a tábla volt-e definiálva egyedi korlátozás hiba. |
 | **Javítsa ki a külső táblákon végrehajtott lekérdezések összeállítása során** | A javítás, amely fordítási idő lekérdezések külső táblák használata esetén az érintett hibának címeket.|

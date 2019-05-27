@@ -14,12 +14,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ede7e2fe3a2ab4c0dfd4efaea5ec789924968194
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d375b559019529bdc170ce6bab535481e0569e0
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60832298"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873011"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Fejlesztés és üzembe helyezés a Visual Studio használatával – az Azure App Service webjobs-feladatok
 
@@ -92,7 +92,7 @@ Projekt telepítése Webjobs-feladatként önmagában, vagy hivatkozás egy web 
 
 Ha a Visual Studio 2015-öt használ, telepítse a [Azure SDK for .NET (Visual Studio 2015)](https://azure.microsoft.com/downloads/).
 
-Ha a Visual Studio 2017-et használ, telepítse a [Azure development workload munkafolyamatának](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads).
+Ha a Visual Studio 2019 használ, telepítse a [Azure development workload munkafolyamatának](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads).
 
 ### <a id="convert"></a> WebJobs üzembe helyezése meglévő Konzolalkalmazás-projektet engedélyezése
 
@@ -238,10 +238,10 @@ Webjobs-feladatok az alábbi beállításokat támogatja:
 
 | **Beállítás** | **Típus**  | **Leírás** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Összes | Lehetővé teszi, hogy a feladat futtatása helyben anélkül, hogy először egy ideiglenes mappába másolni. További tudnivalókért lásd: [WebJobs munkakönyvtár](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | Az összes | Lehetővé teszi, hogy a feladat futtatása helyben anélkül, hogy először egy ideiglenes mappába másolni. További tudnivalókért lásd: [WebJobs munkakönyvtár](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Folyamatos | A webjobs-feladatok csak egy példányban, ha horizontálisan felskálázott futtatható. További tudnivalókért lásd: [állítsa be a folyamatos feladat egypéldányosnak](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
 | `schedule` | Triggerrel indított | A webjobs-feladat CRON-alapú ütemezett futtatását. További TUDNIVALÓKÉRT tekintse meg a [időzítő eseményindító áttekintésével foglalkozó cikkben](../azure-functions/functions-bindings-timer.md#cron-expressions). |
-| `stopping_wait_time`| Összes | A leállítási viselkedése irányítását teszi lehetővé. További tudnivalókért lásd: [szabályos leállítást](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| Az összes | A leállítási viselkedése irányítását teszi lehetővé. További tudnivalókért lásd: [szabályos leállítást](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,16 +7,19 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 347c89991cbb4d28b46eafff0a783148793ad2f7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bdbd45c2b10dec8f1c0a85110747a470e818dbf9
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727487"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015614"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>A logic apps és a runbookok előkészítése a klasszikus riasztási szabályok az áttelepítéshez
 
-Mint [azt korábban bejelentettük](monitoring-classic-retirement.md), klasszikus riasztások az Azure monitorban vannak vezetve a július 2019. A migrálási eszköz érhető el az ügyfelek számára, akik klasszikus riasztási szabályok és ki szeretne aktiválása áttelepítési magukat az Azure Portalon.
+Mint [azt korábban bejelentettük](monitoring-classic-retirement.md), klasszikus riasztások az Azure monitorban vannak vezetve az szeptember 2019 (eredetileg július 2019 volt). A migrálási eszköz érhető el az ügyfelek számára, akik klasszikus riasztási szabályok és ki szeretne aktiválása áttelepítési magukat az Azure Portalon.
+
+> [!NOTE]
+> Bevezetés az áttelepítési eszköz késéssel klasszikus riasztások az áttelepítéshez a kivezetési dátum most már elérhető 2019. augusztus 31-edik eredetileg közzétett dátumától számítva 2019. június 30.
 
 Ha a klasszikus riasztási szabályok önkéntesen át Új riasztási szabályok mellett dönt, vegye figyelembe, hogy nincsenek-e a két rendszer közötti különbségeket. Ez a cikk ismerteti azokat a különbségeket, és hogyan készítheti elő a módosítás.
 
@@ -30,7 +33,7 @@ Az alábbi táblázat eszköztáblára mutató hivatkozás a klasszikus és az �
 |---------|---------|---------|
 |REST API     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [az a figyelő riasztást](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az a figyelő metrika-riasztás](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Referencia](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |      |
+|PowerShell      | [Referencia](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referencia](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager-sablon | [Klasszikus riasztások](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Az új metrikákhoz kapcsolódó riasztások](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
 ## <a name="notification-payload-changes"></a>Értesítési hasznos módosítások
@@ -41,7 +44,7 @@ Használja az alábbi táblázat a webhook hasznos mezők, a klasszikus formátu
 
 |  |Klasszikus riasztások  |Új metrikákhoz kapcsolódó riasztások |
 |---------|---------|---------|
-|A riasztás aktív vagy megoldott?    | **Állapot**       | **data.status** |
+|A riasztás aktív vagy megoldott?    | **status**       | **data.status** |
 |A riasztásra vonatkozó környezeti információk     | **context**        | **data.context**        |
 |Időbélyeg, amelyen a riasztás aktív vagy megoldott     | **context.timestamp**       | **data.context.timestamp**        |
 | Riasztási szabály azonosítója | **context.id** | **data.context.id** |

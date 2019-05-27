@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: 551f3be2ca23bc18224d28faeea6a6df80eba1db
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 4efd9556e255709204654cf0acbf1b08fa2c1fc0
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823536"
+ms.locfileid: "65872140"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS teljesítése API-k 2-es verzió 
 
-Ez a cikk ismerteti az API-t, amely lehetővé teszi a független szoftvergyártók (ISV), hogy az SaaS-alkalmazásokat az appsource-ban és az Azure Marketplace-en. Az API-t a SaaS listázásához követelmény kínál az appsource-ban és az Azure Marketplace-en.
+Ez a cikk ismerteti az API-t, amely lehetővé teszi a független szoftvergyártók (ISV), hogy az SaaS-alkalmazásokat az appsource-ban és az Azure Marketplace-en. Ez az API-ját transactable SaaS követelmény kínál az appsource-ban és az Azure Marketplace-en.
 
 ## <a name="managing-the-saas-subscription-lifecycle"></a>Az SaaS-előfizetési életciklus kezelése
 

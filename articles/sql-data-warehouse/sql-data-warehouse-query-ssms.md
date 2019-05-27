@@ -2,20 +2,20 @@
 title: Az Azure SQL Data Warehouse – ssms-t kapcsolódás |} A Microsoft Docs
 description: Az SQL Server Management Studio (SSMS) használatával csatlakozik, és az Azure SQL Data Warehouse lekérdezéséhez.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: kavithaj
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 809802bc34a6cdc45f4b018d35895939e4b8f667
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 64ea7c175b733f974eba6c081ee2c98814cbcda2
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61476505"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873703"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Csatlakozás az SQL Data Warehouse az SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -67,7 +67,7 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
     ```
 4. Futtassa a lekérdezést. Ehhez kattintson `Execute` vagy használja a következő billentyűparancsot: `F5`.
    
-    ![A lekérdezés futtatása][5]
+    ![Lekérdezés futtatása][5]
 5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a FactInternetSales táblának 60 398 sora van.
    
     ![Lekérdezés eredményei][6]

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: 9ca1c4a1ed1841f82bc386cff48315dd15ef91bb
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f8c57b9e1fabbd04a7d9c92484b0f52f074c2577
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730409"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872405"
 ---
 # <a name="test-your-app-in-azure"></a>Alkalmazás tesztelése az Azure-ban 
-Ez a cikk ismerteti az Azure-ban az alkalmazás tesztelése a DevTest Labs használatával. Először egy fájlmegosztást a tesztkörnyezet beállításához, és csatlakoztassa meghajtóként helyi fejlesztői gépen és a egy laborban lévő virtuális Gépet. Ezután használja a Visual Studio 2017 helyezze üzembe az alkalmazást a fájlmegosztáshoz, hogy a lab-ben a virtuális gépen futtathatja az alkalmazást.  
+Ez a cikk ismerteti az Azure-ban az alkalmazás tesztelése a DevTest Labs használatával. Először egy fájlmegosztást a tesztkörnyezet beállításához, és csatlakoztassa meghajtóként helyi fejlesztői gépen és a egy laborban lévő virtuális Gépet. Ezután használja a Visual Studio 2019 helyezze üzembe az alkalmazást a fájlmegosztáshoz, hogy a lab-ben a virtuális gépen futtathatja az alkalmazást.  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ Ez a cikk ismerteti az Azure-ban az alkalmazás tesztelése a DevTest Labs haszn
 ## <a name="publish-your-app-from-visual-studio"></a>Tegye közzé az alkalmazást a Visual Studióból
 Ebben a szakaszban az alkalmazást a közzététel a Visual Studióból a tesztelési virtuális gép a felhőben.
 
-1. Asztali/webalkalmazás létrehozása a Visual Studio 2017 használatával.
+1. Asztali/webalkalmazás létrehozása a Visual Studio 2019 használatával.
 2. Az alkalmazás elkészítésére.
 3. Az alkalmazás közzétételéhez kattintson a jobb gombbal a projektre a **Megoldáskezelőben**, és válassza ki **közzététel**. 
 4. Az a **közzétételi varázsló**, adja meg a **meghajtó** , hogy a fájlmegosztás van leképezve.

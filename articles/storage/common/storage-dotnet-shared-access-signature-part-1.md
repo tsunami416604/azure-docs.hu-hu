@@ -9,12 +9,12 @@ ms.date: 04/18/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 25c562e144b635cb66c5df9b5b7bd6237ce3122c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8bee0426f171b0fdb7793d18c352649928fdb2e8
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154434"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65907196"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkódok (SAS) használata
 
@@ -89,7 +89,7 @@ SAS-tokeneket és a fiók SAS tartalmazza néhány gyakori paramétereket, és i
 * **Storage-erőforrások.** Tárolási erőforrások, amelynek is adhat hozzáférést egy olyan SAS a következők:
   * Tárolók és blobok
   * Fájlmegosztásokat és fájlokat
-  * Üzenetsorok
+  * Várólisták
   * Táblák és táblaentitások tartományát.
 
 ### <a name="parameters-for-an-account-sas-token"></a>Egy fiók SAS-token paraméterek
@@ -232,7 +232,7 @@ Az alábbiakban néhány példa a közös hozzáférésű jogosultságkódok, a 
 Ezekben a példákban a C# futtatásához kell hivatkoznia a projektben a következő NuGet-csomagok:
 
 * [Az Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage), verzió 6.x vagy újabb (használja a fiók SAS).
-* [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
+* [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager)
 
 További példák azt mutatják be, hogyan hozhat létre és tesztelhet egy SAS [Azure Storage-Kódminták](https://azure.microsoft.com/documentation/samples/?service=storage).
 
@@ -422,7 +422,6 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 Közös hozzáférésű jogosultságkódok hasznosak, amelyeknek nem indokolt a fiókkulcs-ügyfelek, amelyek biztosítják az korlátozott engedélyekkel a tárfiókhoz. Mint ilyen a biztonsági modell az Azure Storage használata alkalmazások fontos részei legyenek. Ha követi az itt felsorolt ajánlott eljárásokat, a SAS használatával erőforrásokhoz való hozzáférés nagyobb rugalmasságot biztosítanak a tárfiókban található az alkalmazás biztonságának veszélyeztetése nélkül.
 
 ## <a name="next-steps"></a>További lépések
-* [A közös hozzáférésű Jogosultságkódot, 2. rész: Hozzon létre, és használhatja az SAS-Blob-tárolóval](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [Tárolók és blobok névtelen olvasási hozzáférésének kezelése](../blobs/storage-manage-access-to-resources.md)
 * [Hozzáférés delegálása közös hozzáférésű jogosultságkód használatával](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [Tábla és üzenetsor SAS bemutatása](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

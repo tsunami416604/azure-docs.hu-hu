@@ -2,19 +2,19 @@
 title: 'Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault használatával a .NET-webalkalmazás – Azure Key Vault |} A Microsoft Docs'
 description: Ezt a gyorsútmutatót követve állítsa be, és titkos kulcs lekérése az Azure Key Vault használatával a .NET-webalkalmazás
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 manager: sumedhb
 ms.service: key-vault
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 0d2b3f16086bc3dc653124ecfa9e7116f71bc585
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 132711249ffde4a9c49bc997d8c4ebe4d9c74948
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925428"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872544"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault használatával a .NET-webalkalmazás
 
@@ -39,7 +39,7 @@ Mielőtt továbbmennénk, kérjük, olvassa el a [alapvető fogalmait a Key vaul
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Windows rendszeren:
-  * A [Visual Studio 2017 szoftver 15.7.3-as vagy újabb verziója](https://www.microsoft.com/net/download/windows) a következő számítási feladatokkal:
+  * [A Visual Studio 2019](https://www.microsoft.com/net/download/windows) a következő számítási feladatokkal:
     * ASP.NET és webfejlesztés
     * .NET Core platformfüggetlen fejlesztés
   * [.NET Core 2.1 SDK vagy újabb](https://www.microsoft.com/net/download/windows)
@@ -108,7 +108,7 @@ Ez a parancs megjeleníti a titkos információkat, beleértve az URI-t is. A fe
 
 ## <a name="clone-the-repo"></a>Az adattár klónozása
 
-A forrás szerkesztéséhez szükséges helyi másolat létrehozásához klónozza az adattárat. Futtassa az alábbi parancsot:
+A forrás szerkesztéséhez szükséges helyi másolat létrehozásához klónozza az adattárat. Futtassa a következő parancsot:
 
 ```
 git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
@@ -119,14 +119,14 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
 Módosítsa a program.cs fájlt, hogy a minta az adott kulcstartó nevével fusson:
 
 1. Lépjen a key-vault-dotnet-core-quickstart mappára.
-2. Nyissa meg a key-vault-dotnet-core-quickstart.sln fájlt a Visual Studio 2017-ben.
+2. Nyissa meg a key-vault-dotnet-core-quickstart.sln fájlra fájlt a Visual Studio 2019.
 3. Nyissa meg a Program.cs fájlt, és frissítse a helyőrző *YourKeyVaultName* a kulcstartóhoz, amely a korábban létrehozott nevét.
 
 Ez a megoldás [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-kódtárakat használ.
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-A Visual Studio 2017 főmenüjében válassza a **Debug** > **Start** without Debugging (Hibakeresés > Indítás hibakeresés nélkül) elemet. Amikor megjelenik a böngésző, lépjen az **About** (Névjegy) oldalra. Megjelenik az **AppSecret** értéke.
+A Visual Studio 2019 főmenü, válassza ki a **Debug** > **Indítás hibakeresés nélkül**. Amikor megjelenik a böngésző, lépjen az **About** (Névjegy) oldalra. Megjelenik az **AppSecret** értéke.
 
 ## <a name="publish-the-web-application-to-azure"></a>A webalkalmazás közzététele az Azure-ban
 

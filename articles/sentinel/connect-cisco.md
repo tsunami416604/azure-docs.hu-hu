@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 05/19/2019
 ms.author: rkarlin
-ms.openlocfilehash: 965fef42a398180475050a7273a0142a45a32305
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a0ece3007e1eadf6cb2901941b771f0ff3243f02
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204429"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921955"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Csatlakozás a Cisco ASA-berendezés 
 
@@ -99,24 +99,56 @@ Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel 
  
 ## <a name="step-2-forward-cisco-asa-logs-to-the-syslog-agent"></a>2. lépés: A Syslog-ügynök továbbítja a Cisco ASA-naplók
 
-Syslog-üzeneteket az Azure-munkaterülethez a Syslog-ügynökön keresztül továbbítsa a Cisco ASA konfigurálása:
+Cisco ASA nem támogatja a CEF, ezért a naplók küldése történik, a Syslog- és az Azure Sentinel-ügynök tudja, hogyan kell értelmezni őket, mintha azok a CEF-naplók. Syslog-üzeneteket az Azure-munkaterülethez a Syslog-ügynökön keresztül továbbítsa a Cisco ASA konfigurálása:
 
 Lépjen a [külső Syslog-kiszolgálónak küldjön Syslog üzeneteket](https://aka.ms/asi-syslog-cisco-forwarding), és kövesse az utasításokat a kapcsolat beállításához. Használja ezeket a paramétereket, amikor a rendszer kéri:
 - Állítsa be **port** 514-es vagy az ügynök beállított port.
 - Állítsa be **syslog_ip** az ügynök IP-címet.
 - Állítsa be **naplózást** a állás állítsa be az ügynököt. Alapértelmezés szerint az ügynököt a létesítmény 4 állítja be.
 
+A Cisco események Log Analytics használja a megfelelő sémát, keresse meg `CommonSecurityLog`.
 
 ## <a name="step-3-validate-connectivity"></a>3. lépés: Kapcsolat ellenőrzése
 
 Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 percig is eltarthat. 
 
-1. Győződjön meg arról, hogy a naplók a Syslog-ügynök a megfelelő porthoz van első. Futtassa ezt a parancsot a Syslog-ügynök gépen: `tcpdump -A -ni any  port 514 -vv` Ez a parancs megjeleníti a naplókat, amely az eszközről a Syslog-géphez streameli. Ez a parancs megjeleníti az eszközről a Syslog-géphez vannak streamelési naplók. Győződjön meg arról, hogy a forrás-berendezés a megfelelő port és a megfelelő létesítmény naplók érkeznek.
-2. Ellenőrizze, hogy nincs-e a Syslog-démont és az ügynök közötti kommunikációhoz. Futtassa ezt a parancsot a Syslog-ügynök gépen: `tcpdump -A -ni any  port 25226 -vv` Ez a parancs megjeleníti a naplókat, amely az eszközről a Syslog-géphez streameli. Győződjön meg arról, hogy a naplók is fogadja az ügynökön.
-3. Ha sikeres eredményt adott mindkét azokat a parancsokat, ellenőrizze a Log Analyticsben, hogy tekintse meg, ha a naplók érkezési. Ezek a készülékek a streamelt minden eseményt a Log Analytics a nyers formában jelennek meg `CommonSecurityLog` típusa.
-1. Ha nincsenek hibák, vagy ha a naplók nem érkező ellenőrzéséhez tekintse meg `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
-4. Győződjön meg arról, hogy a Syslog-üzenet alapértelmezett mérete legfeljebb 2048 bájtok száma (2KB). Ha naplók túl hosszú, frissítse a security_events.conf ezzel a paranccsal: `message_length_limit 4096`
-6. A Cisco események Log Analytics használja a megfelelő sémát, keresse meg **CommonSecurityLog**.
+1. Ellenőrizze, hogy a megfelelő funkcióval. A létesítmény meg kell egyeznie a berendezés és az Azure-Sentinel. Az Azure-Sentinel használja, és módosítsa a fájl melyik létesítmény fájlban `security-config-omsagent.conf`. 
+
+2. Győződjön meg arról, hogy a naplók a Syslog-ügynök a megfelelő porthoz van első. Futtassa ezt a parancsot a Syslog-ügynök gépen: `tcpdump -A -ni any  port 514 -vv` Ez a parancs megjeleníti a naplókat, amely az eszközről a Syslog-géphez streameli. Győződjön meg arról, hogy a forrás-berendezés a megfelelő port és a megfelelő létesítmény naplók érkeznek.
+
+3. Győződjön meg arról, hogy megfelelnek-e a naplókat küld a [RFC 5424](https://tools.ietf.org/html/rfc542).
+
+4. A Syslog-ügynököt futtató számítógépen ellenőrizze, hogy ezeket a portokat 514-es, a 25226 nyílt forráskódú és figyel-e, a parancs `netstat -a -n:`. Ez a parancs használatával kapcsolatos további információk: [netstat(8) – Linux man lap](https://linux.die.netman/8/netstat). Ha megfelelően figyel, láthatja a:
+
+   ![Az Azure Sentinel-portok](./media/connect-cef/ports.png) 
+
+5. Ellenőrizze a démont értéke 514-es, porton figyelnek, amelyen a naplók küldése folyamatban van.
+    - Rsyslog:<br>Győződjön meg arról, hogy a fájl `/etc/rsyslog.conf` ezt a konfigurációt tartalmazza:
+
+           # provides UDP syslog reception
+           module(load="imudp")
+           input(type="imudp" port="514")
+        
+           # provides TCP syslog reception
+           module(load="imtcp")
+           input(type="imtcp" port="514")
+
+      További információkért lásd: [imudp: UDP Syslog bemeneti modul](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module) és [imtcp: TCP, Syslog bemeneti modul](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module)
+
+   - A syslog-ng esetén:<br>Győződjön meg arról, hogy a fájl `/etc/syslog-ng/syslog-ng.conf` ezt a konfigurációt tartalmazza:
+
+           # source s_network {
+            network( transport(UDP) port(514));
+             };
+     További információkért lásd: [imudp: UDP Syslog bemeneti modul] (további információkért lásd: a [syslog-ng az adatforrás-Edition 3.16 nyílt - felügyeleti útmutató](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455).
+
+1. Ellenőrizze, hogy nincs-e a Syslog-démont és az ügynök közötti kommunikációhoz. Futtassa ezt a parancsot a Syslog-ügynök gépen: `tcpdump -A -ni any  port 25226 -vv` Ez a parancs megjeleníti a naplókat, amely az eszközről a Syslog-géphez streameli. Győződjön meg arról, hogy a naplók is fogadja az ügynökön.
+
+6. Ha sikeres eredményt adott mindkét azokat a parancsokat, ellenőrizze a Log Analyticsben, hogy tekintse meg, ha a naplók érkezési. Ezek a készülékek a streamelt minden eseményt a Log Analytics a nyers formában jelennek meg `CommonSecurityLog` típusa.
+
+7. Ellenőrizze, hogy vannak-e hibák, vagy ha a naplók nem érkező, nézze meg `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`. Allocated a napló formátuma eltérés hibák, Ugrás `/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` , és keresse meg a fájlban `security_events.conf`, és győződjön meg arról, hogy a naplók a regex formátumban jelenik meg ez a fájl megfelel-e.
+
+8. Győződjön meg arról, hogy a Syslog-üzenet alapértelmezett mérete legfeljebb 2048 bájtok száma (2KB). Ha naplók túl hosszú, frissítse a security_events.conf ezzel a paranccsal: `message_length_limit 4096`
 
 
 

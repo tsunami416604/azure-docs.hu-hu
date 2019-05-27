@@ -9,11 +9,11 @@ ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 888f4dedf2fda0f54297d42a5f813abf73ded748
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121519"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66117906"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
 Ez a cikk segítséget nyújt a ellenőrizze-e, és az ExpressRoute-kapcsolat hibaelhárítása. Az ExpressRoute, amely kiterjeszti a helyszíni hálózatot a Microsoft-felhőbe, hogy a kapcsolatszolgáltató megkönnyíthető privát kapcsolaton keresztül, a következő három különböző hálózati zónák foglalja magában:
@@ -157,7 +157,7 @@ Van egy mintaválasz:
     Sku                              : Standard
     Status                           : Enabled
 
-Annak ellenőrzéséhez, ha az ExpressRoute-kapcsolatcsoport működik, különös figyelmet fordítani a következő mezőket: ServiceProviderProvisioningState : Üzembe helyezett állapot: Engedélyezve
+Annak ellenőrzéséhez, ha az ExpressRoute-kapcsolatcsoport működik, különös figyelmet fordítani a következő mezőket: ServiceProviderProvisioningState : Üzembe helyezett állapot: Enabled
 
 > [!NOTE]
 > Ha a *állapot* van nincs engedélyezve, lépjen kapcsolatba [Support][Support]. Ha a *ServiceProviderProvisioningState* van nincs kiépítve, forduljon a szolgáltatójához.

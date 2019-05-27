@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
 ms.openlocfilehash: 4471c9d5b6c09bcf4d9100cccfa725f36cf9a3f8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045082"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66111244"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Hozzon létre egy Azure Resource Manager-sablon használatával a Service Bus-névtér
 Ebben a rövid útmutatóban létrehozhat egy Azure Resource Manager-sablon, amely létrehozza a Service Bus-névtér, típus **üzenetkezelés** együtt egy **Standard** Termékváltozat. A cikk azt is meghatározza, a megadott paraméterek, a telepítés végrehajtására. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. A sablonok létrehozásáról további információkat az [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Azure Resource Manager-sablonok készítése) című témakörben talál. A teljes sablont, tekintse meg a [a Service Bus-névtér sablon] [ Service Bus namespace template] a Githubon.

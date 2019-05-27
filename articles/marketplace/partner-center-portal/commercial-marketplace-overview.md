@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 85e162773f95272ac2af36469480f1786b260e26
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ebf371c45868d8e620413f8f54b3531b1a17f817
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806251"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949590"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>A kereskedelmi Marketplace Partnerközpont portál áttekintése
 
@@ -36,7 +36,7 @@ Meglévő Marketplace-en a kiadók a jól ismert, de jobb felhasználói élmén
 
 ### <a name="improvements-on-user-experience-and-billing"></a>A felhasználói élmény és a számlázással kapcsolatos fejlesztések
 
-Az áttérést a Partnerközpont új funkciókat fejlesztéseket a felhasználói környezetet biztosít a kiadók számára érhető el. SaaS-ajánlatok is számlázzuk, havonta vagy évente, amely támogatja a felhasználónkénti (munkaállomás-alapú) licencelési helyenként (átalánydíjas) mellett. Az új bevételszerzési modell az üzleti szoftverek ideális. SaaS-felhasználónkénti licencek bevezetésével igazítja az új funkciók lehetővé tevő ügyfelekkel az appsource-ban, a Microsoft kereskedelmi piactér üzleti és iparági megoldásokat beszerzés befejezéséhez. 
+Az áttérést a Partnerközpont új funkciókat fejlesztéseket a felhasználói környezetet biztosít a kiadók számára érhető el. SaaS-ajánlatok is számlázzuk, havonta vagy évente, felhasználónkénti (munkaállomás-alapú) licencelési helyenként licencelési (átalánydíjas) mellett támogatja. Az új bevételszerzési modell az üzleti szoftverek ideális. SaaS-felhasználónkénti licencek bevezetésével, amely lehetővé teszi az ügyfelek számára teljes körű vásárlások az appsource-ban, a Microsoft kereskedelmi piactéren üzleti és iparági megoldások az új funkciókkal igazítja. 
 
 ### <a name="account-and-user-management-updates"></a>Fiók és felhasználó management frissítések
 
@@ -58,3 +58,4 @@ Tudjon meg többet a legutóbbi és a jövőbeli kiadásokban meglátogatják a 
 
 - Vadonatúj Microsoft partnerek szeretnének közzétenni, SaaS, a piactér kínálnak, lásd: [kereskedelmi Marketplace-fiók létrehozása a Partner Center](./create-account.md).
 - Meglévő partnereinknek, akik korábban már közzétett ajánlatok a Cloud Partner portálra, a [a Partner Center piactér kereskedelmi fiók kezelése](./manage-account.md). 
+- További információ a felhőbeli piactér felügyeleti áthelyezése a partnerközpont a jelen [Partnerközösségéhez blogbejegyzés](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293), beleértve egy bemutató videót.

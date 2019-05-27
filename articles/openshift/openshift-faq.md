@@ -8,16 +8,26 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 06051eff73a83ff97a733d1863580885c5d0e174
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 4f11eac106fe984aa06e41083c2d4f66c7d0e62c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551726"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872917"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Az Azure Red Hat OpenShift – gyakori kérdések
 
 Ez a cikk foglalkozik – gyakori kérdések (GYIK) a Microsoft Azure Red Hat OpenShift.
+
+## <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
+
+Az Azure Red Hat OpenShift használata előtt kell vásárolni egy legalább 4 Azure Red Hat OpenShift fenntartott alkalmazás csomópontból.
+
+Ha Ön Azure-ügyfélnek,[Azure Red Hat OpenShift fenntartott példányok megvásárlása](https://aka.ms/openshift/buy) az Azure Portalon keresztül. Vásárlás, után az előfizetés 24 órán belül, amely után is elérheti a fürtök létrehozása aktiválódik.
+
+Ha nem Azure-ügyfélnek, [kapcsolatfelvétel az értékesítési részleggel](https://aka.ms/openshift/contact-sales) és a folyamat elindításához az oldal alján az értékesítési űrlap kitöltésekor.
+
+Tekintse meg a [Azure Red Hat OpenShift díjszabását ismertető lapon](https://aka.ms/openshift/pricing) további információt.
 
 ## <a name="which-azure-regions-are-supported"></a>Mely Azure-régiók támogatottak?
 

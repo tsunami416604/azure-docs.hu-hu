@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 69b8e1c533747d1bade69949911ea43f299f49e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794235"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66117323"
 ---
 # <a name="manage-mobility-agent-on-protected-machines"></a>Mobilitási szolgáltatást a védett számítógépek kezelése
 
@@ -54,7 +54,7 @@ A mobilitási szolgáltatás leküldéses telepítésének engedélyezése a Sit
 Távolítsa el a felhasználói felületen vagy a parancssorból.
 
 - **A felhasználói felületről**: A Vezérlőpult a gép, jelölje be a **programok**. Válassza ki **a Microsoft Azure Site Recovery mobilitási szolgáltatás vagy fő célkiszolgálóként kiszolgáló** > **Eltávolítás**.
-- **Egy parancssorból**: Nyisson meg egy parancssori ablakot rendszergazdaként azon a gépen. Futtassa az alábbi parancsot: 
+- **Egy parancssorból**: Nyisson meg egy parancssori ablakot rendszergazdaként azon a gépen. Futtassa a következő parancsot: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
     ```
@@ -62,7 +62,7 @@ Távolítsa el a felhasználói felületen vagy a parancssorból.
 ### <a name="on-a-linux-machine"></a>Linux rendszerű gépen
 1. A Linux rendszerű gépen jelentkezzen be egy **legfelső szintű** felhasználói.
 2. A terminálban keresse /user/local/ASR.
-3. Futtassa az alábbi parancsot:
+3. Futtassa a következő parancsot:
     ```
     uninstall.sh -Y
 

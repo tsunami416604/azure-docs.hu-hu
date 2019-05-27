@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0ab01187b03b3d658b171029003667588382bd7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15118535578419f9e1230c5b2fcfd0d7c42257ea
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60820292"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908999"
 ---
 # <a name="access-data-from-your-datastores"></a>Az adattárolók érheti el adatait
 
@@ -30,7 +30,7 @@ Ebben az útmutatóban példát a következő feladatok közül:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Adattárolók használatához szüksége lesz egy [munkaterület](concept-azure-machine-learning-architecture.md#workspace).
+Adattárolók használatához szüksége lesz egy [munkaterület](concept-workspace.md).
 
 Első lépésként vagy [új munkaterület létrehozása](setup-create-workspace.md#sdk) vagy egy meglévő beolvasása:
 
@@ -115,7 +115,7 @@ ws.set_default_datastore('your datastore name')
 ## <a name="upload--download-data"></a>Töltse fel & adatok letöltése
 A [ `upload()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) és [ `download()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) a következő példákban leírt módszerek jellemző, és az azonos módon működik a [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) és [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) osztályokat.
 
-### <a name="upload"></a>Feltöltés
+### <a name="upload"></a>Töltsön fel
 
  Töltse fel az adattárhoz, a Python SDK-val vagy a könyvtár, vagy az egyes fájlok.
 
@@ -157,7 +157,7 @@ Módja|Módszer|Leírás|
 ----|-----|--------
 Csatlakoztatás| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Az adattár csatlakoztatása a számítási cél használatával.
 Letöltés|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|Töltse le az adattár tartalmának a megadott helyen `path_on_compute`. <br> A betanítási Futtatás a környezetben a letöltés a Futtatás előtt történik.
-Feltöltés|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Tölthet fel egy fájlt a megadott helyen `path_on_compute` , az adattárhoz. <br> Betanítási Futtatás környezetre a feltöltési történik, a Futtatás után.
+Töltsön fel|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Tölthet fel egy fájlt a megadott helyen `path_on_compute` , az adattárhoz. <br> Betanítási Futtatás környezetre a feltöltési történik, a Futtatás után.
 
  ```Python
 import azureml.data

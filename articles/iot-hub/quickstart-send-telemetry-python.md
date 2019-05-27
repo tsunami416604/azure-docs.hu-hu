@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: fc303a0ab53c80c91bb29c36a1a7e0f04c4a89e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 03c7da3e17e8e606b46c5c5e104a1271e8fbfd33
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006874"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873104"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Gyors útmutató: Telemetria küldése egy eszközről IoT hubra és a egy háttér-alkalmazással (Python), annak olvasása
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A mintaalkalmazás futtatása ebben a rövid útmutatóban a Pythonban megírt. Jelenleg a Microsoft Azure IoT SDK Pythonhoz készült Python csak bizonyos verziójának minden egyes platformhoz támogatja. További tudnivalókért tekintse meg a [Python SDK információs](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
 
-Ez a rövid útmutató feltételezi, hogy egy Windows fejlesztési számítógépet használ. A Windows rendszerek esetében csak [Python 3.6.x](https://www.python.org/downloads/release/python-368/) támogatott. Válassza az Ön által használt rendszer architektúrájának megfelelő Python-telepítőt. Ha a rendszer CPU-architektúrához 32 bites, akkor a telepítő letöltési a x86; a 64 bites architektúra töltse le az x86-64. Emellett győződjön meg arról, hogy a [Microsoft Visual C++ újraterjeszthető csomag a Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) architektúra (x86 vagy x64) telepítve van.
+Ez a rövid útmutató feltételezi, hogy egy Windows fejlesztési számítógépet használ. A Windows rendszerek esetében csak [Python 3.6.x](https://www.python.org/downloads/release/python-368/) támogatott. Válassza az Ön által használt rendszer architektúrájának megfelelő Python-telepítőt. Ha a rendszer CPU-architektúrához 32 bites, akkor a telepítő letöltési a x86; a 64 bites architektúra töltse le az x86-64. Emellett győződjön meg arról, hogy a [Microsoft Visual C++ terjeszthető változatát, a Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) architektúra (x86 vagy x64) telepítve van.
 
 Python tölthető le a más platformok [Python.org](https://www.python.org/downloads/).
 
@@ -65,17 +65,17 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa a következő parancsot az Azure Cloud Shellben, hozza létre az eszközidentitást.
 
-    **YourIoTHubName** : Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
+    **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
 
-    **MyPythonDevice** : Ez az eszköz a megadott név. A MyPythonDevice nevet használja a bemutatott módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
+    **MyPythonDevice**: Ez az eszköz a megadott név. A MyPythonDevice nevet használja a bemutatott módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
     ```
 
-1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
+1. Futtassa az alábbi parancsokat az Azure Cloud Shellben beolvasni a _eszköz kapcsolati karakterláncának_ az eszköz regisztrálása:
 
-    **YourIoTHubName** : Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
+    **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table

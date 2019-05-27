@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 02091f1b650e3e9932f9924bf36a5841861d3b1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0771c9c5311e264fb996bbac1c540f9ed11873cb
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60878851"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908072"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Fájlrendszerműveletek az Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Ebből a cikkből megismerheti, hogyan hajthat végre fájlrendszerműveleteket 
 Fiókkezelési műveletek végrehajtása a Data Lake Storage Gen1 .NET SDK-val kapcsolatos utasításokért lásd: [fiókkezelési műveletek a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-get-started-net-sdk.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Visual Studio 2013, 2015 vagy 2017** Az alábbi utasítások a Visual Studio 2017-et használják.
+* **A Visual Studio 2013 vagy újabb**. Az alábbi utasítások a Visual Studio 2019 használják.
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -41,19 +41,11 @@ Fiókkezelési műveletek végrehajtása a Data Lake Storage Gen1 .NET SDK-val k
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
 A [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) elérhető kódminta végigvezeti a fájlok tárolóban való létrehozásának, a fájlok összetűzésének, a fájlok letöltésének és az egyes fájlok tárolóból való törlésének folyamatán. A cikk ezen szakasza a kód fő részeit mutatja be.
 
-1. Nyissa meg a Visual Studiót, és hozzon létre egy konzolalkalmazást.
-2. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
-3. Az **Új projekt** területen írja be vagy válassza ki az alábbi értékeket:
+1. A Visual Studióban válassza ki a **fájl** menüben **új**, majd **projekt**.
+2. Válasszon **Console App (.NET Framework)**, majd válassza ki **tovább**.
+3. A **projektnév**, adja meg `CreateADLApplication`, majd válassza ki **létrehozás**.
 
-   | Tulajdonság | Érték |
-   | --- | --- |
-   | Category |Sablonok/Visual C#/Windows |
-   | Sablon |Konzolalkalmazás |
-   | Name (Név) |CreateADLApplication |
-
-4. A projekt létrehozásához kattintson az **OK** gombra.
-
-5. Adja hozzá a NuGet-csomagokat a projekthez.
+4. Adja hozzá a NuGet-csomagokat a projekthez.
 
    1. Kattintson a jobb gombbal a projekt nevére a Megoldáskezelőben, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) elemre.
    2. Győződjön meg arról, hogy a **NuGet Package Manager** (NuGet-csomagkezelő) lapon a **Package source** (Csomag forrása) értéke **nuget.org**, és az **Include prerelease** (Előzetes verzió belefoglalása) jelölőnégyzet be van jelölve.
@@ -64,7 +56,7 @@ A [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-s
     
       Zárja be a **NuGet-csomagkezelőt**.
 
-6. Nyissa meg a **Program.cs** fájlt, törölje a meglévő kódot, majd illessze be az alábbi utasításokat, hogy hivatkozásokat a névterekre való hivatkozásokat tudjon felvenni.
+5. Nyissa meg a **Program.cs** fájlt, törölje a meglévő kódot, majd illessze be az alábbi utasításokat, hogy hivatkozásokat a névterekre való hivatkozásokat tudjon felvenni.
 
         using System;
         using System.IO;using System.Threading;
@@ -78,7 +70,7 @@ A [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-s
         using Microsoft.Azure.DataLake.Store;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-7. Deklarálja a változókat az alább látható módon, majd adja meg a helyőrzők értékét. Arról is győződjön meg, hogy az itt megadott helyi elérési út és fájlnév létezik a számítógépen.
+6. Deklarálja a változókat az alább látható módon, majd adja meg a helyőrzők értékét. Arról is győződjön meg, hogy az itt megadott helyi elérési út és fájlnév létezik a számítógépen.
 
         namespace SdkSample
         {
@@ -139,7 +131,7 @@ Az alábbi kódrészlet egy Data Lake Storage Gen1 fájl tartalmát olvassa be.
         }
     }
 
-## <a name="get-file-properties"></a>Fájltulajdonságok lekérdezése
+## <a name="get-file-properties"></a>Fájl tulajdonságainak beolvasása
 Az alábbi kódrészlet egy fájlhoz vagy könyvtárhoz társított tulajdonságokat adja vissza.
 
     // Get file properties
@@ -172,7 +164,7 @@ Az alábbi kódrészlet rekurzív módon töröl egy könyvtárat és annak öss
     // Delete a directory and all its subdirectories and files
     client.DeleteRecursive("/Test");
 
-## <a name="samples"></a>Példák
+## <a name="samples"></a>Minták
 Az alábbiakban néhány példa a Data Lake Storage Gen1 fájlrendszer SDK használatával.
 * [Alapszintű példa a Githubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
 * [Speciális példa a Githubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)

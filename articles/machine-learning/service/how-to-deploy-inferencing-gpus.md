@@ -1,7 +1,7 @@
 ---
-title: A GPU-következtetési modell üzembe helyezése
+title: Modell üzembe helyezése következtetésekhez grafikus processzort tartalmaz
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan szeretné üzembe helyezni a deep learning-modell, egy webszolgáltatás, amelyet egy GPU következtetési használ. Ebben a cikkben egy Tensorflow modell üzembe lett helyezve az Azure Kubernetes Service-fürthöz. A fürt a gazdagép a webszolgáltatás és a pontszám következtetési érkező GPU-kompatibilis virtuális gép használ.
+description: Megtudhatja, hogyan szeretné üzembe helyezni a deep learning-modell, egy webszolgáltatás, amelyet használ egy GPU következtetésekhez. Ebben a cikkben egy Tensorflow modell üzembe lett helyezve az Azure Kubernetes Service-fürthöz. A fürt a gazdagép a webszolgáltatás és a pontszám következtetésekhez érkező GPU-kompatibilis virtuális gép használ.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,35 +10,39 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: 7796e8dc07889c9816e4227f3b38904d91a24da3
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 64d42b9082895e372bb780d2db023294c1a0a380
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595679"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65884737"
 ---
-# <a name="deploy-a-deep-learning-model-for-inferencing-with-gpu"></a>Modell üzembe helyezése deep learning GPU-következtetési
+# <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Modell üzembe helyezése deep learning GPU-következtetésekhez
 
-Ismerje meg, egy gépi tanulási modellt webszolgáltatásként üzembe helyezett GPU következtetési használata. Ebből a cikkből elsajátíthatja példát Tensorflow deep learning-modell üzembe helyezése az Azure Machine Learning szolgáltatás használatával. A modell üzembe lett helyezve, GPU-kompatibilis virtuális gépek üzemeltetéséhez a szolgáltatást használó Azure Kubernetes Service (AKS)-fürthöz. Amikor kérések érkeznek a szolgáltatáshoz, a modellt használ a GPU következtetési végrehajtásához.
+Ismerje meg, hogyan használja egy gépi tanulási modellt webszolgáltatásként üzembe helyezett GPU következtetésekhez. Következtetésekhez vagy a modell pontozása, nem a fázis, az üzembe helyezett modell előrejelzési leggyakrabban a termelési adatok szolgál.
 
-Gpu-kat kínálnak processzorokat a magas párhuzamosítható számítási teljesítményt nyújtanak. Betanítási vagy következtetési deep learning-modellek (különösen a nagy váró kérelmek) is a GPU-k a kiváló példák.  
+Ez a cikk bemutatja, hogyan például Tensorflow deep learning-modell segítségével GPU-kompatibilis virtuális gépen (VM) az Azure Kubernetes Service (AKS)-fürt üzembe helyezése az Azure Machine Learning szolgáltatás használatával. Amikor kérések érkeznek a szolgáltatáshoz, a modellt használ a GPU a következtetésekhez számítási feladatok futtatásához.
 
-Ez a példa bemutatja, hogyan modell üzembe helyezése mentett tensorflow-hoz az Azure Machine Learning szerint:
-* GPU-kompatibilis az AKS-fürt létrehozása
-* Tensorflow-GPU modell üzembe helyezése
+Gpu-kat kínálnak processzorokat a magas párhuzamosítható számítási teljesítményt nyújtanak. A GPU-kompatibilis virtuális gépek kiváló használati esetek tartalmaznak deep learning eszköz tanuláshoz és következtetésekhez, különösen nagyméretű váró kérelmek a modell.
+
+Ez a példa bemutatja, hogyan helyezhet üzembe egy modell mentése az Azure Machine Learning tensorflow-hoz. Tegye a következőket:
+
+* A GPU-kompatibilis AKS-fürt létrehozása
+* Modell üzembe helyezése GPU tensorflow-hoz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az Azure Machine Learning-szolgáltatások munkaterület
-* Python
-* Tensorflow SavedModel regisztrálva. Megtudhatja, hogyan regisztrálhat modellek lásd [modellek üzembe helyezése](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#registermodel)
+* Egy Python-disztribúció
+* Modell mentése regisztrált Tensorflow. Modellek regisztrálása kapcsolatban lásd: [modellek üzembe helyezése](../service/how-to-deploy-and-where.md#registermodel).
 
-Ez a cikk alapján Jupyter notebookot, [Tensorflow-modellek üzembe helyezése az aks](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/production-deploy-to-aks-gpu/production-deploy-to-aks-gpu.ipynb), TensorFlow mentett használó modellek és a egy AKS-fürtöt helyezünk üzembe a. Azonban a kis változtatások a pontozófájl és a környezet fájl bármilyen machine learning-keretrendszerek gpu-kat támogató alkalmazható.  
+Ez a cikk a Jupyter notebook alapján [Tensorflow-modellek üzembe helyezése az aks](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/production-deploy-to-aks-gpu/production-deploy-to-aks-gpu.ipynb). A Jupyter notebook modellek mentett TensorFlow használ, és telepíti őket egy AKS-fürtöt. A notebook bármely machine learning-keretrendszer, amely támogatja a GPU-k végezhet kisebb változtatásokat, így a pontozófájl és a környezet fájlt is alkalmazhat.  
 
-## <a name="provision-aks-cluster-with-gpus"></a>AKS-fürt üzembe helyezése gpu-kkal
-Az Azure rendelkezik több GPU lehetőség, amelyek mindegyike következtetési is használható. Lásd: [a lista N-sorozat](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series) a képességeit és a költségek teljes áttekintését. 
+## <a name="provision-an-aks-cluster-with-gpus"></a>A GPU-k az AKS-fürt kiépítése
 
-Az AKS használata az Azure Machine Learning szolgáltatás további információkért lásd: a [hogyan helyezheti üzembe, és ahol című cikket.](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#create-a-new-cluster)
+Az Azure számos különböző GPU lehetőség van. Bármelyiket használhatja a következtetési. Lásd: [N-sorozatú virtuális gépek listáját](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series) a képességeit és a költségek teljes áttekintését.
+
+Az AKS használata az Azure Machine Learning szolgáltatás további információkért lásd: [üzembe helyezése és hol](../service/how-to-deploy-and-where.md#deploy-aks).
 
 ```python
 # Provision AKS cluster with GPU machine
@@ -53,13 +57,11 @@ aks_target.wait_for_deployment()
 ```
 
 > [!IMPORTANT]
-> Azure számolunk fel díjat, amíg az AKS-fürt kiépítése. Ügyeljen arra, hogy az AKS-fürt törlése, ha minden kész használja azt.
+> Azure számolunk fel díjat, amíg az AKS-fürt kiépítése. Ellenőrizze, hogy az AKS-fürt törlése, ha elkészült, az azt.
 
+## <a name="write-the-entry-script"></a>A bejegyzés parancsfájl írásához
 
-## <a name="write-entry-script"></a>Bejegyzés a parancsprogram írásához
-
-Mentse a következő a munkakönyvtárban `score.py`. Ez a fájl pontszámot rendelni a lemezképek, a szolgáltatásnak küldött használható. Ez a fájl betölti a modell mentett tensorflow-hoz, és ezután az egyes bejegyzések kérés átadja a bemeneti kép, a TensorFlow-munkamenethez, és az eredményül kapott értékeket ad vissza.
-Más következtetési keretrendszerek különböző pontozófájlt lesz szükség.
+Mentse a következő kódot a munkakönyvtárban `score.py`. Ez a fájl pontszámmodell a képeket, akkor a rendszer a szolgáltatás. Betölti a mentett TensorFlow-modell, minden POST-kérelmet továbbítja a bemeneti kép, a TensorFlow-munkamenethez, és az eredményül kapott pontszámok adja vissza. Más következtetési keretrendszerek különböző pontozófájlt van szükség.
 
 ```python
 import tensorflow as tf
@@ -107,8 +109,10 @@ if __name__ == "__main__":
 
 ```
 
-## <a name="define-conda-environment"></a>Conda környezet létrehozása
-Hozzon létre egy conda-környezet fájlt `myenv.yml` , a függőségek megadása a szolgáltatás. Fontos, hogy adja meg, hogy használja `tensorflow-gpu` nagyobb teljesítmény elérése érdekében.
+## <a name="define-the-conda-environment"></a>Adja meg a conda-környezet
+
+Hozzon létre egy conda-környezet fájlt `myenv.yml` , a függőségek megadása a szolgáltatás. Fontos, hogy adja meg, hogy használ `tensorflow-gpu` nagyobb teljesítmény elérése érdekében.
+
 ```yaml
 name: aml-accel-perf
 channels:
@@ -122,9 +126,9 @@ dependencies:
     - azureml-contrib-services
 ```
 
-## <a name="define-gpu-inferenceconfig"></a>GPU-InferenceConfig definiálása
+## <a name="define-the-gpu-inferenceconfig-class"></a>A GPU InferenceConfig osztály meghatározása
 
-Hozzon létre egy [ `InferenceConfig` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) amely megadja, hogy engedélyezi a grafikus Processzor. Ez biztosítja, hogy CUDA telepítve van-e a rendszerképpel.
+Hozzon létre egy `InferenceConfig` objektum, amely lehetővé teszi a GPU-kat, és biztosítja, hogy a CUDA telepítve van a Docker-rendszerképet a.
 
 ```python
 from azureml.core.model import Model
@@ -143,7 +147,11 @@ inference_config = InferenceConfig(runtime= "python",
                                    gpu_enabled=True)
 ```
 
-További információkért lásd: [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) és [AksServiceDeploymentConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py).
+További információkért lásd:
+
+- [InferenceConfig osztályban](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)
+- [AksServiceDeploymentConfiguration osztályban](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
+
 ## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
 Az AKS-fürt üzembe helyezése a modellt, és várjon, amíg a szolgáltatás létrehozásához.
@@ -161,13 +169,13 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> Az Azure Machine Learning szolgáltatás egy modell nem telepít egy `InferenceConfig` GPU, amely vár egy fürthöz GPU nélkül.
+> Az Azure Machine Learning szolgáltatás nem telepíthető, modell- `InferenceConfig` objektum, amely egy fürtöt, amely nem rendelkezik egy GPU engedélyezni GPU vár.
 
-További információkért lásd: [modell](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
+További információkért lásd: [Model class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 
-## <a name="issue-sample-query-to-deployed-model"></a>Probléma-mintalekérdezés az üzembe helyezett modell
+## <a name="issue-a-sample-query-to-your-deployed-model"></a>Mintalekérdezés kiadni az üzembe helyezett modell
 
-Mintalekérdezés kiadni az üzembe helyezett modellt. Ez a modell pontozása fog bármely JPEG típusú kép azt egy post kérést küld. 
+Egy teszt lekérdezést küldenek az üzembe helyezett modellt. Jpeg-képek küld a modell, amikor a lemezkép pontszámmodell azt.
 
 ```python
 scoring_url = aks_service.scoring_uri
@@ -180,14 +188,14 @@ r = requests.post(scoring_url, data = img_data, headers=headers)
 ```
 
 > [!IMPORTANT]
-> Optimalizálható a teljesítmény és a késés, az ügyfél és a végpontot Azure ugyanabban a régióban kell lennie.  Jelenleg az API-k jönnek létre az East US Azure-régióban.
+> A késés minimalizálása és a teljesítmény optimalizálása, ellenőrizze, hogy az ügyfél ugyanabban a régióban az Azure és a végpontnak. Ebben a példában az API-k jönnek létre az East US Azure-régióban.
 
-## <a name="cleaning-up-the-resources"></a>Az erőforrások törlése
+## <a name="clean-up-the-resources"></a>Az erőforrások törlése
 
-Miután végzett a bemutató, törölje az erőforrásokat.
+Miután végzett az ebben a példában az erőforrások törlése
 
 > [!IMPORTANT]
-> Az Azure a számlát, mennyi ideig az AKS-fürt üzembe lesz helyezve alapján. Ellenőrizze, hogy törölni, azt elvégzése után.
+> Az Azure számlák alapján mennyi az AKS-fürt üzembe lesz helyezve. Ellenőrizze, hogy törölni, azt elvégzése után.
 
 ```python
 aks_service.delete()
@@ -196,6 +204,6 @@ aks_target.delete()
 
 ## <a name="next-steps"></a>További lépések
 
-* [FPGA a modell üzembe helyezése](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service)
-* [Az ONNX-modell üzembe helyezése](https://docs.microsoft.com/azure/machine-learning/service/how-to-build-deploy-onnx#deploy)
-* [Tensorflow DNN-modellek betanításához](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow)
+* [FPGA a modell üzembe helyezése](../service/how-to-deploy-fpga-web-service.md)
+* [Az ONNX-modell üzembe helyezése](../service/concept-onnx.md#deploy-onnx-models-in-azure)
+* [Tensorflow DNN-modellek betanításához](../service/how-to-train-tensorflow.md)

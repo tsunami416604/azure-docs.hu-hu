@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 67a195932ad1afc3c93a94dfcbda8ab8a47760b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498814"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116205"
 ---
 # <a name="understand-azure-policy-effects"></a>Az Azure Policy hatások ismertetése
 
@@ -30,7 +30,7 @@ Jelenleg a szabályzat-definíció által támogatott hat hatások:
 
 ## <a name="order-of-evaluation"></a>Kiértékelési sorrend
 
-Kérelmek létrehozni vagy frissíteni egy erőforrást az Azure Resource Manager először házirend szerint értékeli. A szabályzat létrehoz egy listát az összes, az erőforrásra alkalmazni kívánt és összeveti az erőforrás minden definíció ellen. Házirend dolgozza fel a hatások számos előtt a kérés átadja a megfelelő erőforrás-szolgáltatónál. Ami felesleges feldolgozási erőforrás-szolgáltató által ezzel megakadályozza, ha egy erőforrás nem felel meg a házirend tervezett cégirányítási vezérlőket.
+Kérelem létrehozása vagy frissítése egy erőforrást az Azure Resource Manageren keresztül értékeli ki az Azure Policy először. Az Azure Policy létrehoz egy listát az összes, az erőforrásra alkalmazni kívánt és összeveti az erőforrás minden definíció ellen. Az Azure Policy dolgozza fel a hatások számos előtt a kérés átadja a megfelelő erőforrás-szolgáltatónál. Ami felesleges feldolgozási erőforrás-szolgáltató által ezzel megakadályozza, ha egy erőforrás nem felel meg az Azure Policy megtervezett cégirányítási vezérlők.
 
 - **Letiltott** határozza meg, ha a szabály kell kiértékelni, először be van jelölve.
 - **Hozzáfűzés** Ezután kiértékeli. Azóta hozzáfűzése módosíthatta a kérést, módosítását, a hozzáfűző megelőzhetik a naplózási vagy a hatás megtagadása elindítása.
@@ -88,8 +88,7 @@ Csak akkor Hozzáfűzés hatással van egy **részletek** tömb, amely szükség
 }
 ```
 
-3. példa: Egyetlen **mező/érték** párosítsa a használatával egy nem -**[\*]**
-[alias](definition-structure.md#aliases) -tömbbel rendelkező **érték** segítségével az IP-szabályokat állíthat be egy Storage-fiók. Ha a nem -**[\*]** alias van egy tömb, a hatás hozzáfűzi a **érték** a teljes tömb. Ha a tömb már létezik, a Megtagadás esemény következik be, az ütköző.
+3. példa: Egyetlen **mező/érték** párosítsa a használatával egy nem -**[\*]** [alias](definition-structure.md#aliases) -tömbbel rendelkező **érték** IP-szabályok beállítása a storage-fiók. Ha a nem -**[\*]** alias van egy tömb, a hatás hozzáfűzi a **érték** a teljes tömb. Ha a tömb már létezik, a Megtagadás esemény következik be, az ütköző.
 
 ```json
 "then": {
@@ -149,7 +148,7 @@ Naplózási figyelmeztetési esemény létrehozása a tevékenységnaplóban a n
 
 ### <a name="audit-evaluation"></a>Értékelés naplózása
 
-Naplózási házirend a létrehozás vagy frissítés egy adott erőforrás alatt be van jelölve utolsó hatása. A házirend ezután elküldi az erőforrás az erőforrás-szolgáltató. Naplózási egy erőforrás-kérés és a egy kiértékelési ciklusa ugyanúgy működik. Szabályzat hozzáadása egy `Microsoft.Authorization/policies/audit/action` a tevékenységnaplóban a művelet és az erőforrás nem megfelelőként jelöli meg.
+Naplózási a létrehozás vagy frissítés egy adott erőforrás alatt az Azure Policy által ellenőrzött utolsó hatással. Az Azure Policy ezután elküldi az erőforrás az erőforrás-szolgáltató. Naplózási egy erőforrás-kérés és a egy kiértékelési ciklusa ugyanúgy működik. Az Azure Policy hozzáad egy `Microsoft.Authorization/policies/audit/action` a tevékenységnaplóban a művelet és az erőforrás nem megfelelőként jelöli meg.
 
 ### <a name="audit-properties"></a>Naplózási tulajdonságok
 
@@ -171,7 +170,7 @@ AuditIfNotExists lehetővé teszi a naplózást az erőforrásokat, amelyek megf
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists kiértékelése
 
-AuditIfNotExists futtatása után egy erőforrás-szolgáltató rendelkezik kezelt létrehozásának vagy frissítésének erőforrás kérelmet, és sikeres állapotkódot adott vissza. Az ellenőrzés akkor fordul elő, ha nincsenek kapcsolódó erőforrások, vagy ha az erőforrások által meghatározott **ExistenceCondition** nem igaz értéked. Szabályzat hozzáadása egy `Microsoft.Authorization/policies/audit/action` művelet a tevékenységnek jelentkezzen ugyanúgy, mint a naplózási hatást. Adatvezérelt, az erőforrást, amely elégedett az eredménnyel a **Ha** feltétel, hogy az erőforrás, amely a nem megfelelő van megjelölve.
+AuditIfNotExists futtatása után egy erőforrás-szolgáltató rendelkezik kezelt létrehozásának vagy frissítésének erőforrás kérelmet, és sikeres állapotkódot adott vissza. Az ellenőrzés akkor fordul elő, ha nincsenek kapcsolódó erőforrások, vagy ha az erőforrások által meghatározott **ExistenceCondition** nem igaz értéked. Az Azure Policy hozzáad egy `Microsoft.Authorization/policies/audit/action` művelet a tevékenységnek jelentkezzen ugyanúgy, mint a naplózási hatást. Adatvezérelt, az erőforrást, amely elégedett az eredménnyel a **Ha** feltétel, hogy az erőforrás, amely a nem megfelelő van megjelölve.
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists tulajdonságai
 
@@ -300,7 +299,7 @@ Példa: SQL Server-adatbázisok, hogy ha engedélyezve van-e a transparentDataEn
         "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
         "name": "current",
         "roleDefinitionIds": [
-            "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+            "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
             "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
         ],
         "existenceCondition": {
@@ -369,9 +368,9 @@ Minden hozzárendelés egyenként értékeli ki. Mint ilyen nem erőforrás lehe
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a következő példák [Azure Policy-minták](../samples/index.md)
-- Tekintse át a [szabályzatdefiníciók struktúrája](definition-structure.md)
-- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](../how-to/programmatically-create.md)
-- Ismerje meg, hogyan [megfelelőségi adatok lekérése](../how-to/getting-compliance-data.md)
-- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](../how-to/remediate-resources.md)
-- A felügyeleti csoportok áttekintéséért lásd [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](../../management-groups/overview.md) ismertető részt.
+- Tekintse át a következő példák [Azure Policy minták](../samples/index.md).
+- Tekintse meg az [Azure szabályzatdefiníciók struktúrája](definition-structure.md) szakaszt.
+- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](../how-to/programmatically-create.md).
+- Ismerje meg, hogyan [megfelelőségi adatok](../how-to/getting-compliance-data.md).
+- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](../how-to/remediate-resources.md).
+- Tekintse át a felügyeleti csoport van [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/overview.md).

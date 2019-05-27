@@ -9,18 +9,18 @@ ms.date: 10/20/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d8ef24bfec541ec65c74f77a90aa9476a8b298b2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 93386bd1fa3be88cbcdfab3d59ae07d3eb2b046d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153270"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65911922"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>A Microsoft Azure Storage ügyféloldali titkosítása és az Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Áttekintés
-A [Azure Storage ügyféloldali kódtára a .NET Nuget-csomag](https://www.nuget.org/packages/WindowsAzure.Storage) támogatja a titkosított belüli előtt feltöltése az Azure Storage, az adatok visszafejtése során az ügyfélre történő letöltéskor. A kódtár emellett támogatja az integrációt [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) a tárfiókkulcs-kezelés.
+A [Azure Storage ügyféloldali kódtára a .NET-hez](/dotnet/api/overview/azure/storage/client) támogatja a titkosított belüli előtt feltöltése az Azure Storage, az adatok visszafejtése során az ügyfélre történő letöltéskor. A kódtár emellett támogatja az integrációt [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) a tárfiókkulcs-kezelés.
 
 Részletes útmutató, amely végigvezeti a blobok ügyféloldali titkosítás és az Azure Key Vault használatával titkosított, lásd: [titkosítása és visszafejtése az Azure Key Vault használatával a Microsoft Azure Storage blobok](../blobs/storage-encrypt-decrypt-blobs-key-vault.md).
 
@@ -67,7 +67,7 @@ Egy tetszőleges címtartományt letöltése (**DownloadRange** módszerek) a ti
 
 Minden blob-típusok (blokkblobok, lapblobok és hozzáfűző blobok) is titkosítva/fejthetők vissza a séma használatával.
 
-### <a name="queues"></a>Üzenetsorok
+### <a name="queues"></a>Várólisták
 Üzenetsorbeli üzenetek esetén minden olyan a formátuma lehet, mivel az ügyféloldali kódtár, amely tartalmazza az inicializálási vektor (IV) és a titkosított tartalom titkosítási kulcs (CEK) az üzenet szövege az egyéni formátum határozza meg.
 
 Titkosítás során az ügyféloldali kódtár egy véletlenszerű IV 16 bájtos együtt egy véletlenszerű CEK 32 bájtot állít elő, és az üzenetsor üzenetszöveg ezen információk alapján boríték-titkosítást végzi. A burkolt CEK és néhány további titkosítási metaadatok ezután hozzáadódnak a titkosított üzenetsorban található üzenet. A szolgáltatás tárolja a módosított üzenet (lásd alább).

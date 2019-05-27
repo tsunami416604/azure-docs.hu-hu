@@ -8,15 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-origin.date: 10/23/2018
-ms.date: 03/25/2019
-ms.author: v-junlch
-ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/23/2018
+ms.author: azfuncdf, glenga
+ms.openlocfilehash: 705a43f1ef35f953d1b87c7c44bbc45fcb4334be
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710860"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872867"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Hozzon létre Durable Functions az Azure portal használatával
 
@@ -24,7 +23,7 @@ A [Durable Functions](durable-functions-overview.md) kiterjesztése az Azure Fun
 
 > [!NOTE]
 > 
-> * Ha a tartós függvények fejleszt C#, Ehelyett érdemes [Visual Studio 2017 fejlesztői](durable-functions-create-first-csharp.md).
+> * Ha a tartós függvények fejleszt C#, Ehelyett érdemes [Visual Studio 2019 fejlesztési](durable-functions-create-first-csharp.md).
 > * Tartós függvények használata Javascriptben fejleszt, Ehelyett érdemes [Visual Studio Code fejlesztési](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
@@ -92,7 +91,7 @@ Tartós JavaScript-függvények létrehozásakor, akkor telepítenie kell a [ `d
 1. Egy HTTP-eszköz, például a Postman vagy a cURL használatával küldünk egy POST kérést másolt URL-CÍMÉT. Az alábbi példa a cURL-parancsot, amely egy POST kérést küld a tartós függvény:
 
     ```bash
-    curl -X POST https://{your-function-app-name}.chinacloudsites.cn/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
     Ebben a példában `{your-function-app-name}` az a tartomány, a függvényalkalmazás neve. A válaszüzenet tartalmaz URI végpontok, amelyek segítségével figyelheti és kezelheti a végrehajtási, amely a következő példához hasonlóan néz ki:
@@ -141,5 +140,3 @@ Az első tartós függvény működik-e már az Azure-ban.
 
 > [!div class="nextstepaction"]
 > [Tartós függvény előforduló általános minták megismeréséhez](durable-functions-concepts.md)
-
-<!-- Update_Description: wording update -->

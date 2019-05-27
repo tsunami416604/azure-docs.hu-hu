@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 883042e7c8abb43338c55a76bba3d64844ce1c56
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 3361013d8421cd859c834c07018356318d5e2989
+ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604344"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66179814"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>A Linuxos Java-alkalmazás konfigurálása az Azure App Service-ben
 
@@ -65,7 +65,7 @@ A beépített Java-rendszerképeket alapulnak a [Alpine Linux](https://alpine-li
 
 Az Azure App Service Linux rendszeren a box finomhangolásához és testreszabása az Azure portal és CLI keresztül támogatja. Tekintse át a nem a Java-specifikus webalkalmazás konfigurációjának az alábbi cikkeket:
 
-- [App Service szolgáltatás beállításainak konfigurálása](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Alkalmazásbeállítások konfigurálása](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
 - [Egyéni tartomány beállítása](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Enable SSL](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [CDN hozzáadása](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
@@ -73,7 +73,7 @@ Az Azure App Service Linux rendszeren a box finomhangolásához és testreszabá
 
 ### <a name="set-java-runtime-options"></a>Java-futtatókörnyezet beállításainak megadása
 
-A Tomcat és a Java használata környezetben állítsa a lefoglalt memória vagy más JVM futásidejű beállításokat, hozzon létre egy [Alkalmazásbeállítás](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) nevű `JAVA_OPTS` a beállításokkal. Az App Service Linux továbbítja ezt a beállítást környezeti változóban a Java-futtatókörnyezet indításakor.
+A Tomcat és a Java használata környezetben állítsa a lefoglalt memória vagy más JVM futásidejű beállításokat, hozzon létre egy [Alkalmazásbeállítás](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) nevű `JAVA_OPTS` a beállításokkal. Az App Service Linux továbbítja ezt a beállítást környezeti változóban a Java-futtatókörnyezet indításakor.
 
 Az Azure Portalon alatt **Alkalmazásbeállítások** a webalkalmazást, hozzon létre egy új alkalmazásbeállítást nevű `JAVA_OPTS` , amely tartalmazza a további beállításokat, például `-Xms512m -Xmx1204m`.
 
@@ -140,11 +140,45 @@ Az App Service Linux rendszeren futó Java-alkalmazások rendelkeznek ugyanazoka
 
 ### <a name="authenticate-users"></a>Felhasználók hitelesítése
 
-Az Azure Portalon, az alkalmazás-hitelesítés beállítása a **hitelesítési és engedélyezési** lehetőséget. Itt engedélyezheti a hitelesítés az Azure Active Directory vagy a közösségi bejelentkezések például Facebook, Google vagy a GitHub használatával. Az Azure portál beállításai csak akkor működik, egy egyetlen hitelesítési szolgáltatót konfigurálásakor. További információkért lásd: [konfigurálása az App Service-alkalmazás Azure Active Directory-bejelentkezés használatához](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) és az egyéb identitás-szolgáltatóktól kapcsolódó cikkeket.
+Az Azure Portalon, az alkalmazás-hitelesítés beállítása a **hitelesítési és engedélyezési** lehetőséget. Itt engedélyezheti a hitelesítés az Azure Active Directory vagy a közösségi bejelentkezések például Facebook, Google vagy a GitHub használatával. Az Azure portál beállításai csak akkor működik, egy egyetlen hitelesítési szolgáltatót konfigurálásakor. További információkért lásd: [konfigurálása az App Service-alkalmazás Azure Active Directory-bejelentkezés használatához](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) és az egyéb identitás-szolgáltatóktól kapcsolódó cikkeket. Ha több bejelentkezési szolgáltatók engedélyeznie kell, kövesse az utasításokat a a [testre szabhatja az App Service-hitelesítés](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) cikk.
 
-Ha több bejelentkezési szolgáltatók engedélyeznie kell, kövesse az utasításokat a a [testre szabhatja az App Service-hitelesítés](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) cikk.
+#### <a name="tomcat"></a>Tomcat
 
- Spring Boot fejlesztők használhatják a [Azure Active Directory Spring Boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) ismerős Spring biztonsági jegyzetek és API-kat használó alkalmazások biztonságossá tételéhez. Ügyeljen arra, hogy növelje a fejléc maximális méretét a a `application.properties` fájlt. Javasoljuk, hogy a egy értéke `16384`.
+A Tomcat-alkalmazások hozzáférhetnek a felhasználói jogcímek közvetlenül a Tomcat servlet szerint használja az egyszerű, az objektum egy térkép-objektumot. A térkép objektum minden egyes jogcím típusa lesz leképezve a jogcímek, az adott típusú gyűjteménye. Az alábbi kódban `request` példánya `HttpServletRequest`.
+
+```java
+Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
+```
+
+Most ellenőrizheti a `Map` bármely adott jogcím objektum. Az alábbi kódrészlet például végighalad a összes jogcímtípust, és megjeleníti az egyes gyűjtemények tartalma.
+
+```java
+for (Object key : map.keySet()) {
+        Object value = map.get(key);
+        if (value != null && value instanceof Collection {
+            Collection claims = (Collection) value;
+            for (Object claim : claims) {
+                System.out.println(claims);
+            }
+        }
+    }
+```
+
+Felhasználók jelentkezzen ki, és egyéb műveleteket hajthat végre, a dokumentáció a [App Service-hitelesítés és engedélyezés használati](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to). Nincs a Tomcat meg hivatalos dokumentáció [HttpServletRequest felület](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) és annak a metódusaival. A következő servlet módszereket is vannak hidratált az App Service-ben konfigurációja alapján:
+
+```java
+public boolean isSecure()
+public String getRemoteAddr()
+public String getRemoteHost()
+public String getScheme()
+public int getServerPort()
+```
+
+Ez a funkció letiltásához hozzon létre egy nevű Alkalmazásbeállítás `WEBSITE_AUTH_SKIP_PRINCIPAL` értékkel `1`. Az App Service által hozzáadott összes servlet szűrők letiltásához hozzon létre egy beállítás nevű `WEBSITE_SKIP_FILTERS` értékkel `1`.
+
+#### <a name="spring-boot"></a>Spring Boot
+
+Spring Boot fejlesztők használhatják a [Azure Active Directory Spring Boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) ismerős Spring biztonsági jegyzetek és API-kat használó alkalmazások biztonságossá tételéhez. Ügyeljen arra, hogy növelje a fejléc maximális méretét a a `application.properties` fájlt. Javasoljuk, hogy a egy értéke `16384`.
 
 ### <a name="configure-tlsssl"></a>A TLS/SSL konfigurálása
 
@@ -232,7 +266,7 @@ Tomcat a Java adatbázis-kapcsolat (JDBC) vagy a Java adatmegőrzés API (JPA) h
 </appSettings>
 ```
 
-Vagy állítsa be a környezeti változókat az Azure Portalon az "Alkalmazás beállítások" panelen.
+Vagy állítsa be a környezeti változókat az a **konfigurációs** > **Alkalmazásbeállítások** oldal az Azure Portalon.
 
 Következő lépésként határozza meg, ha az adatforrás elérhető, több alkalmazást vagy a Tomcat servlet futó összes alkalmazás kell lennie.
 
@@ -327,10 +361,7 @@ Végül a Tomcat osztályútvonal helyezze az illesztőprogram JAR-fájlok kivé
 
 Csatlakozás adatforrásokhoz a Spring Boot-alkalmazások, javasoljuk, hogy kapcsolati karakterláncainak létrehozása és betöltése őket a `application.properties` fájlt.
 
-1. Az "Alkalmazás beállítások" szakaszban az App Service panel állítsa be a karakterlánc nevét, az érték mezőbe illessze be a JDBC kapcsolati karakterlánc, és állítsa be az "Egyéni" típusát. Tárhelybeállítás, igény szerint állíthatja be ezt a kapcsolati karakterláncot.
-
-    ! [Egy kapcsolati karakterlánc létrehozása a portálon.]
-    
+1. Az App Service-oldal a "Konfiguráció" területen állítsa be a karakterlánc nevét, az érték mezőbe illessze be a JDBC kapcsolati karakterlánc és állítsa be az "Egyéni" típusát. Tárhelybeállítás, igény szerint állíthatja be ezt a kapcsolati karakterláncot.
 
     Ez a kapcsolati karakterlánc érhető el az alkalmazás nevű környezeti változóban `CUSTOMCONNSTR_<your-string-name>`. A fentiekben létrehozott kapcsolati karakterlánc neve például `CUSTOMCONNSTR_exampledb`.
 
@@ -383,13 +414,13 @@ Töltse fel az indítási parancsfájl `/home/site/deployments/tools` App Servic
 
 Állítsa be a **indítási parancsfájl** mezőben az Azure Portalon, az indítási parancsfájl helyét például `/home/site/deployments/tools/your-startup-script.sh`.
 
-Adja meg [Alkalmazásbeállítások](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) átadandó környezeti változók a parancsfájl az alkalmazás konfigurációjában. Alkalmazásbeállítások tartsa meg a kapcsolati karakterláncok és egyéb titkok verziókövetés kívül az alkalmazás konfigurálásához szükséges.
+Adja meg [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) átadandó környezeti változók a parancsfájl az alkalmazás konfigurációjában. Alkalmazásbeállítások tartsa meg a kapcsolati karakterláncok és egyéb titkok verziókövetés kívül az alkalmazás konfigurálásához szükséges.
 
 ### <a name="modules-and-dependencies"></a>Modulok és a függőségek
 
 Modulok és azok függőségeit a Wildfly osztályútvonal JBoss parancssori felületén történő telepítéséhez szüksége lesz a következő fájlok létrehozása a saját címtárban. Egyes modulok és a függőségek előfordulhat, hogy kell az például JNDI elnevezési további konfigurációs vagy más API-specifikus konfigurációs, így ez a lista a következőkre lesz szüksége a legtöbb esetben egy függőségi konfigurálása minimális készletét.
 
-- Egy [XML modul leíró](https://jboss-modules.github.io/jboss-modules/manual/#descriptors). Az XML-fájl nevét, attribútumokat és függőségeit, a modul határozza meg. Ez [module.xml példafájl](https://access.redhat.com/documentation/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource) Postgres modul, a JAR-fájl JDBC függőség és egyéb szükséges modul függőségek meghatározása.
+- Egy [XML modul leíró](https://jboss-modules.github.io/jboss-modules/manual/#descriptors). Az XML-fájl nevét, attribútumokat és függőségeit, a modul határozza meg. Ez [module.xml példafájl](https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource) Postgres modul, a JAR-fájl JDBC függőség és egyéb szükséges modul függőségek meghatározása.
 - Minden szükséges JAR csomagfájlfüggőségekről a modul.
 - A JBoss CLI-parancsokkal, az új modul konfigurálása parancsprogram. Ez a fájl tartalmazza a parancsok a JBoss parancssori felület beállítása a függőségi használni kívánt kiszolgálót. A parancs használatával adja hozzá a modulok, az adatforrások és a üzenetkezelési szolgáltatók dokumentációért lásd [ebben a dokumentumban](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
 - A Bash indítási szkript meghívása a JBoss parancssori Felületet, és hajtsa végre a parancsfájlt az előző lépésben. Ez a fájl lesz hajtható végre, ha az App Service-példány újraindítása, vagy ha új példányok horizontális felskálázás során felhasznált. Az indítási szkript, ahol hajthatja végre minden egyéb konfigurációt az alkalmazáshoz, a JBoss parancsokat a rendszer átadja a JBoss CLI. Legalább Ez a fájl lehet az JBoss CLI parancshoz készített parancsfájl átadása a JBoss CLI egyetlen paranccsal:
@@ -401,7 +432,7 @@ Modulok és azok függőségeit a Wildfly osztályútvonal JBoss parancssori fel
 Ha a fájlok és tartalmak a modul, az alábbi lépésekkel, a modul hozzáadása a Wildfly kiszolgáló.
 
 1. FTP-fájlok `/home/site/deployments/tools` App Service-példányában. Ez a dokumentum útmutatást talál első FTP hitelesítő adatait.
-2. Az alkalmazás beállítások paneljén látható az Azure Portalon, a "Indítási parancsfájl" mezőt állítsa az indítási parancsfájl helyét például `/home/site/deployments/tools/your-startup-script.sh` .
+2. Az a **konfigurációs** > **általános beállítások** oldal az Azure portal, állítsa be a "indítási parancsfájl" mező helyére az indítási héjparancsfájlt, például `/home/site/deployments/tools/your-startup-script.sh` .
 3. Az App Service-példány újraindítása billentyűkombináció lenyomásával a **indítsa újra a** gombra a **áttekintése** szakaszában a portálon vagy az Azure CLI használatával.
 
 ### <a name="configure-data-source-connections"></a>Adatforrás-kapcsolatok konfigurálása

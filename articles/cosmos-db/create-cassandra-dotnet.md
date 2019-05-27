@@ -8,12 +8,12 @@ ms.author: sngun
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e43b2d6f5a127f7f0f81c2dfc2fd3737c9ee787
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1afdc0319ae26fcd6c8cb3ada0b4aa8c31fe1fbb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894151"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861308"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Gyors útmutató: A .NET SDK-t és az Azure Cosmos DB Cassandra alkalmazás felépítése
 
@@ -33,7 +33,7 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternatív lehetőségként [kipróbálhatja ingyenesen az Azure Cosmos DB-t](https://azure.microsoft.com/try/cosmosdb/) Azure-előfizetés, díjfizetés és elköteleződés nélkül.
 
 Emellett szüksége lesz a következőkre: 
-* Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+* Ha már nincs telepítve a Visual Studio 2019, letöltheti és használhatja a **ingyenes** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 * Telepítse a [Git szoftvert](https://www.git-scm.com/) a példa klónozásához.
 
 <a id="create-account"></a>
@@ -122,7 +122,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kapcsolati sztring oldalán](./media/create-cassandra-dotnet/keys.png)
 
-2. Nyissa meg a Program.cs fájlt a Visual Studio 2017 alkalmazásban. 
+2. A Visual Studióban nyissa meg a Program.cs fájlt. 
 
 3. Illessze be a USERNAME értéket a Portalból a `<FILLME>` helyére a 13. sorban.
 

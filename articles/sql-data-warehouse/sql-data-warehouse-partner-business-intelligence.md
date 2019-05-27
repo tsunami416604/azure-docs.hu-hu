@@ -2,20 +2,20 @@
 title: Az SQL Data Warehouse üzletiintelligencia-partnerek |} A Microsoft Docs
 description: A külső üzleti intelligencia partnerek megoldásokat, amelyek támogatják az SQL Data Warehouse-listákat.
 services: sql-data-warehouse
-author: jrowlandjones
+author: mabasile-MSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
 ms.date: 03/27/2019
-ms.author: jrj
+ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 6860746a1b20fe06de2dafa6035ae560bde24a29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87379631cc7f7b9e31def157ba38336e41b693d8
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477010"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873814"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Az SQL Data warehouse-bA üzleti intelligencia partnerek
 A teljes körű adattárház-megoldást létrehozni, számos különböző iparágvezető eszközök közül választhat.  Ez a cikk a Microsoft partnervállalatokban hivatalos üzleti intelligenciára épülő (BI) megoldások támogatása az Azure SQL Data Warehouse emeli ki.
@@ -34,7 +34,7 @@ A teljes körű adattárház-megoldást létrehozni, számos különböző ipar�
 | ![Microstrategy][14] |**MicroStrategy**<br>A MicroStrategy platform üzleti intelligenciát és elemzési képességeket, amelyek lehetővé teszik a szervezetek számára, hogy kihasználhatók a vállalati adataikat teljes készletét kínálja. Hatékony elemzési motorjára a MicroStrategy, átfogó eszközkészletek, számos különböző adatösszekötők és méretezhető, nyílt architektúra győződjön meg arról, hogy mindent analyticshez való hozzáférés kiterjesztése az összes csoport és az üzleti függvény |[Termék oldalát][microstrategy_website]<br> [Az Azure Marketplace-en][microstrategy_marketplace]<br> |
 | ![Qlik][8] |**Vállalati Qlik Sense**<br>Meghajtó insight felderítés bárki adatokat Vizualizáció alkalmazással. A Qlik Sense a szervezetben mindenki könnyen rugalmas, interaktív vizualizációkat hozhat létre és megalapozott döntéseket. |[Termék oldalát][qlik_website]<br> |
 | ![SiSense][9] |**SiSense**<br>SiSense egy teljes körű, Élesítés üzleti intelligencia szoftvert az eszközök, amelyet egy üzleti adatok elemzése és megjelenítése: nagy teljesítményű analitikai adatbázis, valamint a több forrásból, egyszerű adatkinyerés (ETL) és az adatok webes csatlakozni Vizualizáció. Kezdje el elemzése és megjelenítése a nagy adatkészletek SiSense üzleti Intelligencia és elemzés használata még ma. |[Termék oldalát][sisense_website]<br> |
-| ![Tableau][10] |**Tableau**<br>A tableau, önkiszolgáló analitikai mindenki számára látható és értelmezhető, hogy az adatok között számos különböző típusú adatbázisok egybesimított fájlok adatainak segítségével. A tableau natív, optimalizált összekötő a Microsoft Azure SQL Data warehouse, amely támogatja az élő adatokat és elemzéseket is rendelkezik. |[Termék oldalát][tableau_website]<br> [Az Azure Marketplace-en][tableau_marketplace]<br>|
+| ![A tableau][10] |**Tableau**<br>A tableau, önkiszolgáló analitikai mindenki számára látható és értelmezhető, hogy az adatok között számos különböző típusú adatbázisok egybesimított fájlok adatainak segítségével. A tableau natív, optimalizált összekötő a Microsoft Azure SQL Data warehouse, amely támogatja az élő adatokat és elemzéseket is rendelkezik. |[Termék oldalát][tableau_website]<br> [Az Azure Marketplace-en][tableau_marketplace]<br>|
 | ![Targit][11] |**Targit (döntési csomag)**<br>Targit döntési Suite programcsomag pedig biztosítja BI és az Analytics platform, amely egyetlen, egységes megoldás a valós idejű irányítópultok, önkiszolgáló analitikai, felhasználóbarát reporting, lenyűgöző mobileszközös lehetőségek és egyszerű adatfelderítés technológia biztosít. Targit lehetővé teszi a cégek sokan való működésre. |[Termék oldalát][targit_website]<br> [Az Azure Marketplace-en][targit_marketplace]<br> |
 | ![Yellowfin][12] |**Yellowfin**<br>Yellowfin egy felső ad hoc jelentéskészítés és az irányítópultok a felhőalapú BI szállítói minősíthetik BARC; A BI felmérés. Csatlakozhat az Azure SQL Data Warehouse, majd hozzon létre, és lenyűgöző jelentéseket és irányítópultokat megoszthatja a winning együttműködésen alapuló BI és a hely intelligens funkciók díjra. |[Termék oldalát][yellowfin_website]<br> [Az Azure Marketplace-en][yellowfin_marketplace] |
 

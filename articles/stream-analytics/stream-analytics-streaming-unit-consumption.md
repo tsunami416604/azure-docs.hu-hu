@@ -8,13 +8,13 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2018
-ms.openlocfilehash: 5f85f0a6b1869571a8db29586e5fe113e0f47433
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/17/2019
+ms.openlocfilehash: 60cddf15ee8a93aa01a72fdc124fa27e68184e04
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761669"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65916037"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Ismertetése és módosítása a folyamatos átviteli egységek
 
@@ -51,7 +51,7 @@ Az ajánlott eljárás szerint általában a lekérdezések, amelyek nem haszná
 SUS-t a megfelelő számú kiválasztásával kapcsolatban további információkért tekintse meg ezen a lapon: [Átviteli sebesség növelése érdekében az Azure Stream Analytics-feladatok méretezése](stream-analytics-scale-jobs.md)
 
 > [!Note]
-> Partíciókonfigurációjától szükség, az egy adott feladat a bemeneti partíció konfigurációját és a feladathoz meghatározott lekérdezéstől függ. Kiválaszthatja, SUS-t a kvóta egy feladat legfeljebb. Alapértelmezés szerint minden Azure-előfizetés az analytics-feladatok akár 200 SUs kvótával rendelkezik egy adott régióban. SUS-t az előfizetések mellett ez a kvóta növeléséhez forduljon [Support](https://support.microsoft.com). Feladatonként SUs érvényes értékei a következők 1, 3, 6, és legfeljebb 6-os léptékben.
+> Partíciókonfigurációjától szükség, az egy adott feladat a bemeneti partíció konfigurációját és a feladathoz meghatározott lekérdezéstől függ. Kiválaszthatja, SUS-t a kvóta egy feladat legfeljebb. Alapértelmezés szerint minden Azure-előfizetés az analytics-feladatok legfeljebb 500 SUs kvótával rendelkezik egy adott régióban. SUS-t az előfizetések mellett ez a kvóta növeléséhez forduljon [Support](https://support.microsoft.com). Feladatonként SUs érvényes értékei a következők 1, 3, 6, és legfeljebb 6-os léptékben.
 
 ## <a name="factors-that-increase-su-utilization"></a>Tényezőket, amelyek növelik a SU százalékos kihasználtsága 
 

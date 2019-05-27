@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1bcbaf5ec3b15a36b28aa7d4b3346b85e1a7cc24
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 18b5f3877538d26e55bf0550a995ca0c50699de5
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785796"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914130"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -40,7 +40,7 @@ Az Azure Machine Learning szolgáltatás legújabb kiadása a következő szolg�
 + Egy új, szélesebb körű Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>.
 + Az új kibontva [Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) a machine Learning szolgáltatáshoz.
 
-A [architektúra](concept-azure-machine-learning-architecture.md) át lett alakítva a könnyű használhatóság. Több Azure-erőforrás és -fiók helyett csak egy [Azure Machine Learning-munkaterület](concept-azure-machine-learning-architecture.md#workspace) szükséges. Munkaterületek gyorsan hozhat létre, az [Azure portal]\((setup-create-workspace.md#portal). Munkaterület használatával több felhasználó tud tárolni a képzés és számítási célokat, modell kísérletek, Docker-rendszerképek, üzembe helyezett modellnél és így tovább.
+A [architektúra](concept-azure-machine-learning-architecture.md) át lett alakítva a könnyű használhatóság. Több Azure-erőforrás és -fiók helyett csak egy [Azure Machine Learning-munkaterület](concept-workspace.md) szükséges. Munkaterületek gyorsan hozhat létre, az [Azure portal]\((setup-create-workspace.md#portal). Munkaterület használatával több felhasználó tud tárolni a képzés és számítási célokat, modell kísérletek, Docker-rendszerképek, üzembe helyezett modellnél és így tovább.
 
 Bár a jelenlegi kiadásban új továbbfejlesztett CLI és az SDK ügyfelek, a workbench asztali alkalmazás maga visszavontuk. Kísérletek kezelhetők a [munkaterület irányítópultot az Azure Portalon](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal). Használja az irányítópultot a kísérlet előzményeinek beolvasására, a munkaterülethez rendelt számítási célok, a modellek és a Docker-rendszerképek kezelésére, vagy akár webszolgáltatások üzembe helyezésére.
 

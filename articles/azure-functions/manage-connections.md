@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: e15d6ad445c3fdde0632c3ad468eee7da836a394
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 69425129d5f049254a60032283ddc6ca2ab84d5c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785963"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872693"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Az Azure Functions kapcsolatok kezelése
 
@@ -21,9 +21,9 @@ A függvényalkalmazás függvénye ossza meg erőforrásait. Megosztott erőfor
 
 ## <a name="connection-limit"></a>Kapcsolathoz megadott korlátot
 
-A rendelkezésre álló kapcsolatok száma korlátozva, részben mivel a függvényalkalmazás egy [próbakörnyezetben](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). A korlátozásokat, amelyek a tesztkörnyezet a kódot ír elő egyik, a korlát (jelenleg a 600 aktív kapcsolatok és 1200 kapcsolatainak száma összesen) kapcsolatok száma példányonként. Ha eléri a korlátot, a functions futtatókörnyezete létrehoz egy naplófájlt a következő üzenettel: `Host thresholds exceeded: Connections`.
+A rendelkezésre álló kapcsolatok száma korlátozva, részben mivel a függvényalkalmazás egy [próbakörnyezetben](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). A korlátozásokat, amelyek a tesztkörnyezet a kódot ír elő egyik, a kimenő kapcsolatok száma korlátlan amelyre jelenleg példányonként 600 aktív (összesen 1200) kapcsolatokat. Ha eléri a korlátot, a functions futtatókörnyezetének a következő üzenetet írja a naplókba: `Host thresholds exceeded: Connections`. További információkért lásd: a [funkciók szolgáltatási korlátozásaival](functions-scale.md#service-limits).
 
-Ezt a határt egy példány van.  Ha a [méretezési vezérlő hozzáad függvény alkalmazáspéldány](functions-scale.md#how-the-consumption-and-premium-plans-work) további kérések kezelésére, mindegyik példány rendelkezik egy független kapcsolathoz megadott korlátot. Azt jelenti, hogy a nem globális kapcsolat korlátozott, és sokkal több mint 600 aktív kapcsolatok is rendelkezik az összes aktív példányok között.
+Ezt a határt egy példány van. Ha a [méretezési vezérlő hozzáad függvény alkalmazáspéldány](functions-scale.md#how-the-consumption-and-premium-plans-work) további kérések kezelésére, mindegyik példány rendelkezik egy független kapcsolathoz megadott korlátot. Azt jelenti, hogy a nem globális kapcsolat korlátozott, és sokkal több mint 600 aktív kapcsolatok is rendelkezik az összes aktív példányok között.
 
 Amikor hibaelhárítás, győződjön meg arról, hogy a függvényalkalmazás számára engedélyezte az Application Insights. Az Application Insights lehetővé teszi a funkció alkalmazásokhoz, például végrehajtások metrikákat tekinthet meg. További információkért lásd: [telemetriai adatok megtekintése az Application Insights](functions-monitoring.md#view-telemetry-in-application-insights).  
 

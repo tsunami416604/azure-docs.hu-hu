@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 1299b627c70b23714ea48dbc62af36ca1f27290e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 92575f2fc8e6dbcfc5767a179ddf60df1bce0c83
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59499903"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872614"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Gyors útmutató: Telemetriát küldjön az eszközről az IoT hub és a egy háttér-alkalmazással (C), annak olvasása
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a [Visual Studio 2017](https://www.visualstudio.com/vs/)-et, amelyben engedélyezve van az [„Asztali fejlesztés C++ használatával”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) tevékenységprofil.
+* Telepítse [Visual Studio 2019](https://www.visualstudio.com/vs/) az a ["asztali fejlesztés C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladat engedélyezve van.
 * Telepítse a [Git](https://git-scm.com/download/) legújabb verzióját.
 * Futtassa a következő parancsot a Microsoft Azure IoT-bővítmény hozzáadása a Cloud Shell-példány Azure CLI-hez. Az IOT-bővítmény hozzáadása Azure CLI-vel az IoT Hub, IoT Edge és IoT Device Provisioning Service (DPS) parancsok.
 
@@ -43,23 +43,23 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
-A rövid útmutató céljaira a [C nyelvhez készült Azure IoT eszközoldali SDK-t](iot-hub-device-sdk-c-intro.md) fogjuk használni. 
+Ez a rövid útmutatóban fogja használni a [Azure IoT eszközoldali SDK-t a c nyelvhez készült](iot-hub-device-sdk-c-intro.md). 
 
 Az SDK használatához a következő környezetekhez tartozó csomagok és könyvtárak telepítése szükséges:
 
-* **Linux**: apt-get-csomagok állnak rendelkezésre az Ubuntu 16.04 és 18.04 verzióhoz a következő CPU-architektúrákhoz: amd64, arm64, armhf és i386. További információkért lásd: [Az apt-get használata C eszköz ügyfél-projekt létrehozására az Ubuntu rendszeren](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/ubuntu_apt-get_sample_setup.md).
+* **Linux**: apt-get-csomagok állnak rendelkezésre az Ubuntu 16.04 és a következő CPU-architektúrák segítségével 18.04: amd64 arm64, armhf, és i386. További információkért lásd: [Az apt-get használata C eszköz ügyfél-projekt létrehozására az Ubuntu rendszeren](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/ubuntu_apt-get_sample_setup.md).
 
-* **mbed**: Mbed-platformon eszköz alkalmazásokat létrehozó fejlesztők, a Microsoft közzétette egy könyvtárat és a minták azt az első lépéseit az Azure IoT Hub szolgáltatással percek alatt. További információk: [Az mbed könyvtár használata](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed).
+* **mbed**: Mbed-platformon eszköz alkalmazásokat létrehozó fejlesztők a szalagtár és a minták azt az első lépéseit az Azure IoT Hub szolgáltatással percek alatt tettük közzé. További információk: [Az mbed könyvtár használata](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed).
 
-* **Arduino**: Az Arduino fejleszt, kihasználhatja az Azure IoT a szalagtár az Arduino IDE könyvtár Manager érhető el. Bővebb információk: [Az Azure IoT Hub könyvtár – Arduino](https://github.com/azure/azure-iot-arduino).
+* **Arduino**: Az Arduino fejleszt, ha kihasználhatja az Azure IoT a szalagtár az Arduino IDE könyvtár Manager érhető el. Bővebb információk: [Az Azure IoT Hub könyvtár – Arduino](https://github.com/azure/azure-iot-arduino).
 
 * **iOS**: Az IoT Hub eszközoldali SDK érhető el a CocoaPods, Mac és IOS rendszerű eszköz fejlesztéséhez. További információ: [iOS példák Microsoft Azure IoT számára](https://cocoapods.org/pods/AzureIoTHubClient).
 
-Ebben a rövid útmutatóban azonban az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) fordítására és klónolására szolgáló fejlesztőkörnyezetet készítjük elő a GitHubról. A rövid útmutató mintakódokat az SDK tartalmazza a GitHubon. 
+Azonban ez a rövid útmutatóban, lesz egy fejlesztési környezet előkészítését klónozhat és hozhat létre a [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) a Githubról. A rövid útmutató mintakódokat az SDK tartalmazza a GitHubon. 
 
 1. Töltse le a [CMake buildelési rendszert](https://cmake.org/download/).
 
-    Fontos, hogy a Visual Studio előfeltételei (Visual Studio és az „Asztali fejlesztés C++ használatával” számítási feladat) telepítve legyenek a gépen, **mielőtt** megkezdené a `CMake` telepítését. Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
+    Fontos, amely a Visual Studio Előfeltételek (Visual Studio és az "asztali fejlesztés C++" számítási feladat) vannak telepítve a gépén, **előtt** indítása a `CMake` telepítési. Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
 
 2. Nyisson meg egy parancssort vagy a Git Bash-felületet. A következő parancs végrehajtásával klónozza az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-adattárat:
     
@@ -83,7 +83,7 @@ Ebben a rövid útmutatóban azonban az [Azure IoT C SDK](https://github.com/Azu
     cmake ..
     ```
     
-    Ha a `cmake` nem találja a C++ fordítóprogramot, a fenti parancs futtatása esetlegesen fordítási hibákat adhat vissza. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Ha `cmake` nem találja a C++ fordító, kaphat fordítási hibákat a fenti parancs futtatása közben. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     A sikeres létrehozást követően a kimenet utolsó sorai a következőhöz hasonlóan néznek majd ki:
 
@@ -108,21 +108,21 @@ Ebben a rövid útmutatóban azonban az [Azure IoT C SDK](https://github.com/Azu
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban az Azure Cloud Shellt fogja használni az [IoT-bővítménnyel](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) a szimulált eszköz regisztrálásához.
+Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban az Azure Cloud Shell-fogja használni a [IoT-bővítmény](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) regisztrálni egy szimulált eszközt.
 
 1. Futtassa a következő parancsot az Azure Cloud Shellben, hozza létre az eszközidentitást.
 
-   **YourIoTHubName** : Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
+   **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
 
-   **MyCDevice** : Ez az eszköz a megadott név. A MyCDevice eszközt használja a bemutatott módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
+   **MyCDevice**: Ez az eszköz a megadott név. A MyCDevice eszközt használja a bemutatott módon. Ha úgy dönt, hogy az eszköz egy másik nevet, akkor is kell során ez a cikk ezt a nevet, és frissíti az eszköz nevére a mintaalkalmazások őket futtatása előtt a.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyCDevice
     ```
 
-2. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
+2. Futtassa az alábbi parancsokat az Azure Cloud Shellben beolvasni a _eszköz kapcsolati karakterláncának_ az eszköz regisztrálása:
 
-   **YourIoTHubName** : Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
+   **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyCDevice --output table
@@ -177,11 +177,11 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
 
 
-Ebben a szakaszban az Azure Cloud Shellt fogja használni az [IoT-bővítménnyel](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) a szimulált eszköz által küldött üzeneteket monitorozásához.
+Ebben a szakaszban az Azure Cloud Shell-fogja használni a [IoT-bővítmény](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) az eszköz a szimulált eszköz által küldött üzenetek figyeléséhez.
 
 1. Az Azure Cloud Shell használatával futtassa a következő parancsot az IoT Hubhoz történő csatlakozáshoz és az üzenetek olvasásához:
 
-   **YourIoTHubName** : Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
+   **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
 
     ```azurecli-interactive
     az iot hub monitor-events --hub-name YourIoTHubName --output table

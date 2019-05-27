@@ -16,12 +16,12 @@ ms.date: 04/27/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3abe2f7deef2a1dbe82f4702fd3477303891ab2e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 0b9baa48c13e317ba3fb54d998ee8f125d2093c7
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873581"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921071"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Mi az Azure ad-ben tagjogosultság-kezelés? (Előzetes verzió)
 
@@ -80,7 +80,7 @@ Az alábbiakban a típusú erőforrásokat tagjogosultság-kezelés való hozzá
 
 Az Azure AD tagjogosultság-kezelés (előzetes verzió) használatához kell rendelkeznie a következő licencek egyikét:
 
-- Prémium szintű Azure AD P2
+- Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5 licenc
 
 További információkért lásd: [regisztrálhat az Azure Active Directory Premium kiadások](../fundamentals/active-directory-get-started-premium.md) vagy [Enterprise Mobility + Security E5 próba](https://aka.ms/emse5trial).
@@ -114,7 +114,7 @@ Az alábbi ábrán látható egy példa a különböző elemekhez az tagjogosult
 
 Használatakor a [az Azure AD--vállalatközi (B2B)](../b2b/what-is-b2b.md) meghívása a tapasztalatok már ismernie kell a külső vendégfelhasználóknak az erőforrás-könyvtár állapotba, és dolgozhat e-mail címét. Ez a rövid távú vagy kisebb projekten dolgozik, és résztvevők már jól ismert, de ez jóval nehezebb kezelése, ha a használni kívánt felhasználók számos lehetősége van, vagy ha az idő előrehaladtával változik a résztvevők nagyszerű működik.  Például, előfordulhat, hogy lehet egy másik szervezet használata és az adott szervezet kapcsolatba lépnek egy pont, de idővel további felhasználókat a szervezetben lévő is kell hozzáférést.
 
-Tagjogosultság-kezelés definiálhat egy szabályzatot, amely lehetővé teszi, hogy adja meg, az igénylést egy hozzáférés-csomagot az Azure AD-ben is használó szervezetek. Megadhatja, hogy e jóváhagyásra szükség, és a hozzáférés a lejárati dátumot. Jóváhagyásra szükség, ha akkor is kijelölhet egy jóváhagyó egy vagy több felhasználót a külső szervezet, amely korábban meghívót – mivel valószínű, hogy tudja, melyik külső felhasználók a szervezet hozzáférésre van szükségük. Miután konfigurálta a hozzáférés-csomag, küldhet egy hivatkozást a hozzáférés csomaghoz, a kapcsolattartó személy a szervezetnél, külső. Adott ügyfélhez másokkal is megoszthat a külső szervezet felhasználói, és használhatják erre a hivatkozásra a hozzáférés csomag kéréséhez.  A címtárba már meghívást kaptak az, hogy a szervezeti felhasználók hivatkozás is használhatja.
+Tagjogosultság-kezelés definiálhat egy szabályzatot, amely lehetővé teszi, hogy adja meg, az igénylést egy hozzáférés-csomagot az Azure AD-ben is használó szervezetek. Megadhatja, hogy e jóváhagyásra szükség, és a hozzáférés a lejárati dátumot. Jóváhagyásra szükség, ha akkor is kijelölhet egy jóváhagyó egy vagy több felhasználót a külső szervezet, amely korábban meghívót – mivel valószínű, hogy tudja, melyik külső felhasználók a szervezet hozzáférésre van szükségük. Miután konfigurálta a hozzáférés-csomag, küldhet egy hivatkozást a hozzáférés csomaghoz, a kapcsolattartó személy a szervezetnél, külső. Azt a külső szervezet más felhasználókkal megoszthatja, és használhatják erre a hivatkozásra a hozzáférés csomag kéréséhez.  A címtárba már meghívott szervezetben lévő felhasználók hivatkozás is használhatja.
 
 Amikor jóváhagyják a kérését, tagjogosultság-kezelés is üzembe helyezi a felhasználót a szükséges hozzáférést, amelyek magukban foglalhatják bejelentkezésre kéri a felhasználót, ha még nincsenek a címtárban. Az Azure AD automatikusan létrehoz egy B2B-fiókot a számukra.  Vegye figyelembe, hogy a rendszergazda korábban áramellátásuk beállításával melyik szervezetek engedélyezettek az együttműködéshez, a [B2B engedélyezik vagy megtagadják a lista](../b2b/allow-deny-list.md) engedélyezésére vagy letiltására meghívót küld a más szervezetek számára.  Ha a felhasználó nem engedélyezett az engedélyezési vagy letiltási listát, amelyet ezután nem lehet meghívni.
 
@@ -129,8 +129,8 @@ Tagjogosultság-kezelés és a hozzá tartozó dokumentáció jobb megértéséh
 | tagjogosultság-kezelés | Egy szolgáltatás, amely hozzárendeli, visszavonja, és felügyeli a hozzáférési csomagok. |
 | Access-csomag | Engedélyeket és szabályzatokat olyan felhasználók kérhetik gyűjteménye. Egy hozzáférés-csomag mindig szerepel egy katalógust. |
 | hozzáférési kérelem | Egy olyan hozzáférési csomagot elérésére irányuló kérelmet. Egy kérelem általában halad végig egy munkafolyamatot. |
-| szabályzat | Szabályok készletét, amely meghatározza az access-életciklus, például hogyan felhasználók is hozzáférhetnek, akik jóváhagyhatja és mennyi ideig a felhasználók hozzáférhetnek. A házirendek például alkalmazottak hozzáférését és külső hozzáférés tartalmazza. |
-| katalógus | Egy kapcsolódó erőforrások és a hozzáférési csomagok tároló. |
+| házirend | Szabályok készletét, amely meghatározza az access-életciklus, például hogyan felhasználók is hozzáférhetnek, akik jóváhagyhatja és mennyi ideig a felhasználók hozzáférhetnek. A házirendek például alkalmazottak hozzáférését és külső hozzáférés tartalmazza. |
+| catalog | Egy kapcsolódó erőforrások és a hozzáférési csomagok tároló. |
 | Általános katalógus | A beépített katalógus, amely mindig elérhető. Az általános katalógus erőforrások felvétele a bizonyos engedélyek szükségesek. |
 | erőforrás | Egy eszköz vagy szolgáltatás (például egy csoport, alkalmazás vagy webhely), amely egy felhasználó kaphat engedélyeket. |
 | erőforrástípus | Típusú erőforrások, például a csoportokat, alkalmazásokat és a SharePoint Online-webhelyhez. |
@@ -154,7 +154,7 @@ Tagjogosultság-kezelés a feladat függvény alapján különböző szerepkörr
 
 Az alábbi táblázat ezek a szerepkörök engedélyeit.
 
-| Tevékenység | Felhasználói rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | Hozzáférés a Csomagkezelő | Jóváhagyó |
+| Feladat | Felhasználói rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | Hozzáférés a Csomagkezelő | Jóváhagyó |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Hozzon létre egy új hozzáférési csomagot az általános-katalógusban](entitlement-management-access-package-create.md) | :heavy_check_mark: |  :heavy_check_mark: |  |  |  |
 | [Hozzon létre egy új hozzáférési csomagot a katalógusban található](entitlement-management-access-package-create.md) | :heavy_check_mark: |   | :heavy_check_mark: |  |  |

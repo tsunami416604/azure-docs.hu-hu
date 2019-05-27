@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/15/2019
+ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 84df04a6d3fbd634524d3819657860c6a3448d65
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7317b634ee4c8886ce5c99bb2b3395d7d1f646d5
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60499806"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65913856"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Kezelése előtti és utáni szkriptek
 
@@ -30,9 +30,7 @@ A előtti használja, és vagy post frissítéstelepítés szkriptet, először 
 
 ![Jelölje be a parancsfájlok](./media/pre-post-scripts/select-scripts.png)
 
-Válassza ki a parancsprogramot használja, ebben a példában szeretne, akkor használja a **UpdateManagement-TurnOnVms** runbook. Amikor kiválasztja a runbook a **parancsfájl konfigurálása** lap megnyitásakor, a paraméterek értékének megadására és kiválasztására **az előkészítő parancsprogram**. Kattintson a **OK** végeztével.
-
-![Szkript konfigurálása](./media/pre-post-scripts/configure-script.png)
+Válassza ki a parancsprogramot használja, ebben a példában szeretne, akkor használja a **UpdateManagement-TurnOnVms** runbook. Amikor kiválasztja a runbook a **konfigurálása parancsfájl** lapon megnyílik a **az előkészítő parancsprogram**. Kattintson a **OK** végeztével.
 
 Ismételje meg ezt a folyamatot a a **UpdateManagement-TurnOffVms** parancsfájlt. De amikor kiválasztja a **parancsprogram típusa**, válassza a **az utólagos parancsprogram**.
 
@@ -136,7 +134,7 @@ Az összes tulajdonság egy teljes példát tekinthet meg: [Frissítés szoftver
 > [!NOTE]
 > A `SoftwareUpdateConfigurationRunContext` objektum gépekhez duplikált bejegyzéseket is tartalmazhat. Emiatt előtti és utáni parancsfájlok futtatását több alkalommal ugyanazon a gépen. A megoldás ezt a viselkedést, használja `Sort-Object -Unique` ki csak a virtuális gép egyedi nevek a szkriptet.
 
-## <a name="samples"></a>Példák
+## <a name="samples"></a>Minták
 
 Minták előtti és utáni parancsfájlokat a találja a [Script Center-galéria](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell), vagy importált az Azure Portalon keresztül. Importálhatja őket a portálon keresztül, az Automation-fiók alatt **Folyamatautomatizálás**válassza **Runbookkatalógus**. Használat **az Update Management** a szűrőhöz.
 

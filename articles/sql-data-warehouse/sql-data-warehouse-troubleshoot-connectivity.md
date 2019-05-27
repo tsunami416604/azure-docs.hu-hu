@@ -2,20 +2,20 @@
 title: Hibaelhárítás az Azure SQL Data warehouse-bA |} A Microsoft Docs
 description: Hibaelhárítás az Azure SQL Data warehouse-bA.
 services: sql-data-warehouse
-author: mlee3gsd
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.component: supportability
 ms.date: 03/27/2019
-ms.author: martinle
+ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 5115ffbc3568c87c37bae4a3e65c37f8504f1fb8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ddae39b7a2c76b5bb3f7caff1c0d5a8165c9d93a
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475321"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873833"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Csatlakozási problémák elhárítása
 
@@ -65,7 +65,7 @@ Ha hibákat 40914 és 40615 azért küldtük, [hiba leírása és a megoldás It
 
 ## <a name="check-for-the-latest-drivers"></a>A legújabb illesztőprogramokkal keresése
 
-### <a name="software"></a>Szoftver
+### <a name="software"></a>Szoftverek
 
 Ellenőrizze, hogy a legújabb eszközök használatával csatlakozhat az SQL data warehouse:
 

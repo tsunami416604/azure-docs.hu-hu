@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/06/2019
+ms.date: 05/18/2019
 ms.author: magoedte
-ms.openlocfilehash: ed387f7038c5dee1a1685c918abcae49942cd55d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 531e51fbddb99ebba11284d5291b4cca26559bc1
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148849"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65906771"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése 
 Az Azure monitorral tárolók segítségével a teljesítmény diagramokat és az állapot az Azure Kubernetes Service (AKS)-fürtök két perspektíva adatai, közvetlenül az AKS-fürt vagy az Azure-ból összes AKS-fürt az előfizetéshez, a számítási feladat figyeléséhez Ez a figyelő. Megtekintése az Azure Container Instances (ACI) esetén is lehetséges egy adott AKS-fürt monitorozására.
@@ -26,10 +26,6 @@ Az Azure monitorral tárolók segítségével a teljesítmény diagramokat és a
 A cikknek a segítségével megismerheti, hogyan segít gyorsan felmérheti, kivizsgálásán és elhárításán észlelt problémák, és a két perspektíva adatai között a felhasználói élményt.
 
 A tárolók az Azure Monitor engedélyezésével kapcsolatos információkért lásd: [előkészítése az Azure Monitor-tárolókhoz](container-insights-onboard.md).
-
-> [!IMPORTANT]
-> AKS-fürt fut a Windows Server 2019 figyelése a tárolók támogatása az Azure Monitor jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure Monitor az összes figyelt AKS-fürt futtató, Linux és Windows Server 2019 az előfizetéseken lévő erőforráscsoportok telepített állapotát megjelenítő több fürt nézetet biztosít.  AKS-fürtök észlelt, amely nem a megoldás által figyelt jeleníti meg. Azonnal képes megérteni a fürt állapotát, és innen lefúrhat a csomópont és a tartományvezérlő teljesítmény lapján, vagy keresse meg a fürt teljesítménydiagramok megtekintéséhez.  AKS fürtök felderített és a nem figyelt azonosította engedélyezheti a tetszőleges időpontban, hogy a fürt figyelése.  
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: c6f947ad6f2f8dba2df17132243eb6d918539c14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5dda2eafe86d037faab6284c2af0d8026c194d11
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344427"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921142"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Az RBAC hibaelhárítása az Azure-erőforrásokhoz
 
@@ -36,7 +36,7 @@ Ez a cikk szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforráso
 - Ha ismertetik, hogyan hozhat létre egy egyéni szerepkört van szüksége, tekintse meg az egyéni szerepkör oktatóanyagok segítségével [Azure PowerShell-lel](tutorial-custom-role-powershell.md) vagy [Azure CLI-vel](tutorial-custom-role-cli.md).
 - Ha Ön nem lehet frissíteni egy meglévő egyéni szerepkört, ellenőrizze, hogy jelenleg jelentkezett be, amely hozzá van rendelve egy szerepkör, amely rendelkezik egy felhasználó a `Microsoft.Authorization/roleDefinition/write` engedély például [tulajdonosa](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator).
 - Ha nem sikerül törölni egy egyéni szerepkört, és a „There are existing role assignments referencing role (code: RoleDefinitionHasAssignments” (Szerepkör-hozzárendelések hivatkoznak a szerepkörre (kód: RoleDefinitionHasAssignments)) hibaüzenet jelenik meg, akkor vannak olyan szerepkör-hozzárendelések, amelyek továbbra is az adott egyéni szerepkört használják. Távolítsa el a szóban forgó szerepkör-hozzárendeléseket, majd próbálja meg ismét törölni az egyéni szerepkört.
-- Ha egy új egyéni szerepkör létrehozásakor a „Role definition limit exceeded. Nincsenek további szerepkör-definíciók hozhatók létre (hibakód: RoleDefinitionLimitExceeded) "Amikor megpróbál létrehozni egy új egyéni biztonsági szerepkört, törölje a nem használt egyéni szerepköröket. Az Azure támogatja az akár **2000** egyéni szerepkörök a bérlőben.
+- Ha egy új egyéni szerepkör létrehozásakor a „Role definition limit exceeded. Nincsenek további szerepkör-definíciók hozhatók létre (hibakód: RoleDefinitionLimitExceeded) "Amikor megpróbál létrehozni egy új egyéni biztonsági szerepkört, törölje a nem használt egyéni szerepköröket. Az Azure támogatja az akár **5000** egyéni szerepkörök a bérlőben. (A speciális felhőkben, mint például az Azure Government, Azure Germany és Azure China 21Vianet, a korlát a 2000 egyéni szerepkörök.)
 - Ha hibaüzenetet kap hasonló "az ügyfél jogosult végrehajtani a műveletet"Microsoft.Authorization/roleDefinitions/write"hatókör"/ subscriptions / {subscriptionid}", azonban a társított előfizetés nem található" Amikor egy egyéni szerepkör frissítése meg, ellenőrizze hogy egy vagy több [hozzárendelhető hatókörökkel](role-definitions.md#assignablescopes) törölve lett, a bérlőben. Ha a hatókör törölve lett, hozzon létre egy támogatási jegyet, mivel jelenleg nem áll rendelkezésre önkiszolgáló megoldás.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Az RBAC helyreállítása az előfizetések bérlők közötti áthelyezésekor
@@ -108,7 +108,7 @@ Ezeket az elemeket szükség **írási** való hozzáférést a **virtuális gé
 * Végpontok  
 * IP-címek  
 * Lemezek  
-* Bővítmények  
+* Kiterjesztések  
 
 Ilyen esetekben **írási** elérését a **virtuális gép**, és a **erőforráscsoport** (valamint a tartomány nevét), hogy az informatikai van:  
 
