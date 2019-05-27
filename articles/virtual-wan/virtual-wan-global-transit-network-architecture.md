@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 8cda617ca60a17fceaaa818480ff9bbaef46c3fd
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 114d11f98c6181a03f5ce52527b5e2efea468c42
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65414052"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965985"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális tranzit hálózati architektúra és a virtuális WAN
 
@@ -48,7 +48,7 @@ Ebben a modellben egy adott küllőre is lehet:
 
 ## <a name="crossregion"></a>Régiók közötti kapcsolat
 
-A vállalati a felhőbeli erőforrás-igényű általában a fizikai jelenlét követi. A legtöbb vállalat a fizikai hely és a felhasználók legközelebb eső régióból hozzáférés a felhőhöz. A fő résztvevők globális hálózati architektúra egyik hálózati entitásokat és a végpontok közötti régiók közötti kapcsolat. A felhőbeli tárhely több régióban is kiterjedhetnek. Ez azt jelenti, hogy egy ágat, amely csatlakozik egy adott régióban a felhőbe érkező forgalom elérje egy másik ágban vagy egy másik régióban lévő virtuális hálózathoz.
+A vállalati a felhőbeli erőforrás-igényű általában a fizikai jelenlét követi. A legtöbb vállalat a fizikai hely és a felhasználók legközelebb eső régióból hozzáférés a felhőhöz. A fő résztvevők globális hálózati architektúra egyik hálózati entitásokat és a végpontok közötti régiók közötti kapcsolat. A felhőbeli tárhely több régióban is kiterjedhetnek. Ez azt jelenti, hogy egy adott régióban a felhőhöz csatlakoztatott ág érkező forgalom elérje egy másik ágban vagy egy másik régióba eseményközpont-hub kapcsolat, amely jelenleg előzetes verzióban érhető el a virtuális hálózathoz.
 
 ## <a name="any"></a>Bármely kapcsolat
 
@@ -89,7 +89,7 @@ A távoli felhasználó ág útvonal lehetővé teszi a távoli felhasználók �
 
 ### <a name="vnetvnet"></a>Használatával a virtuális hálózatok közötti társviszony-létesítés virtuális hálózatok közötti átvitel
 
-Egymáshoz virtuális hálózatok összekapcsolása annak érdekében, hogy támogatja a többrétegű alkalmazások, amelyek több virtuális, virtuális hálózatok közötti társviszony használja. Azure virtuális WAN keresztül a VNet – VNet átviteli forgatókönyv jelenleg nem támogatott, de az Azure tervbe van véve. Az ajánlott megoldás, csatlakoznia kell egymáshoz virtuális hálózatok virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony-Létesítésen keresztül is. További információ a virtuális hálózatok közötti társviszony-létesítés: [virtuális hálózatok közötti társviszony-létesítés áttekintésével](../virtual-network/virtual-network-peering-overview.md).
+Egymáshoz virtuális hálózatok összekapcsolása annak érdekében, hogy támogatja a többrétegű alkalmazások, amelyek több virtuális, virtuális hálózatok közötti társviszony használja. Azure virtuális WAN keresztül a VNet – VNet átviteli forgatókönyv jelenleg nem támogatott, de az Azure tervbe van véve. Az ajánlott megoldás, csatlakoznia kell egymáshoz virtuális hálózatok virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony-Létesítésen keresztül is. [Átjárói átvitel](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) (a gyorsjavítások gyökérmappájában lévő virtuális hálózatok közötti társviszony) nem kötelező a virtuális WAN, mert a virtuális WAN automatikusan lehetővé teszi, hogy átjárói átvitel.
 
 ### <a name="globalreach"></a>Az ExpressRoute globális elérhetőséggel
 

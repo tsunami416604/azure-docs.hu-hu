@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 4424e53689714625ebc791df250956463452c3cb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e13907e96bba338648bddcc102e3b4f51887d0ea
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791498"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949917"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database-ben az egyetlen vagy készletezett adatbázisok kezelése
 
@@ -160,7 +160,7 @@ Az átvitel alatt bizalmas adatok védelmére és a tárolt SQL Database által 
 
 ### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>Hogyan lehet korlátozni a saját adatbázis bizalmas adatokhoz való hozzáférést
 
-Minden alkalmazás rendelkezik egy bizonyos bit a bizalmas adatok az adatbázisban, amelyek nem látható a mindenki számára kell védeni. Egyes munkatársak, a szervezeten belül kell, hogy az adatok megtekintésére, azonban mások nem szabadna az adatok megtekintésére. Ez egy alkalmazott bér. Egy alkalmazott felettesétől az azonban azt közvetlen beosztottak bérének hozzáférést kell, egyéni hozzáférése nem szabad a társaknak bérének. Egy másik helyzet lehet adatokat fejlesztőknek szól, akik bizalmas adatok használata a fejlesztési szakaszban, illetve tesztelési, például az ügyfelek taj számok esetében. Ezt az információt újra ki vannak téve a fejlesztő nem szükséges. Ezekben az esetekben a bizalmas adatok vagy maszkolva vagy kell nem lesz elérhető. SQL Database által nyújtott két az ilyen megközelítés képes arra, hogy az érzékeny adatokat a jogosulatlan felhasználók megakadályozása:
+Minden alkalmazás rendelkezik egy bizonyos bit a bizalmas adatok az adatbázisban, amelyek nem látható a mindenki számára kell védeni. Egyes munkatársak, a szervezeten belül kell, hogy az adatok megtekintésére, azonban mások nem szabadna az adatok megtekintésére. Ez egy alkalmazott bér. Egy alkalmazott felettesétől az kellene bér információkhoz való hozzáférés a közvetlen beosztottak esetében azonban, egyéni hozzáférése nem szabad a társaknak bérének. Egy másik helyzet lehet adatokat fejlesztőknek szól, akik bizalmas adatok használata a fejlesztési szakaszban, illetve tesztelési, például az ügyfelek taj számok esetében. Ezt az információt újra ki vannak téve a fejlesztő nem szükséges. Ezekben az esetekben a bizalmas adatok vagy maszkolva vagy kell nem lesz elérhető. SQL Database által nyújtott két az ilyen megközelítés képes arra, hogy az érzékeny adatokat a jogosulatlan felhasználók megakadályozása:
 
 [A dinamikus Adatmaszkolás](sql-database-dynamic-data-masking-get-started.md) adatok maszkolási szolgáltatása, amely lehetővé teszi, hogy a bizalmas adatok elérésének korlátozását azáltal, hogy adatmaszkolás segít Önnek az alkalmazásrétegre nem kiemelt jogosultságú felhasználók. Megadhat egy maszkolási szabályra, amely egy maszkolási mintát hozhat létre (például a csak az utolsó négy számjegye egy nemzeti azonosító SSN: XXX-xx-0000, és jelölje meg a legtöbb, Xs) és azonosítása, hogy mely felhasználók tartoznak a maszkolási szabály alól. A maszkolás történik, a működés közbeni és érhetők el különböző maszkolási különböző adatkategóriák. Dinamikus adatmaszkolás automatikusan észleli a bizalmas adatokat az adatbázisban, és maszkolási vonatkozik teszi lehetővé.
 

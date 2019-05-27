@@ -1,16 +1,15 @@
 ---
 author: diberry
-ms.author: v-junlch
+ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 04/02/2019
-ms.date: 04/23/2019
+ms.date: 04/02/2019
 ms.openlocfilehash: d1c880ddc90ae3ce18dfde7e1983b45ac239de85
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599426"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116699"
 ---
 A `Logging` beállítások kezelése a tároló az ASP.NET Core-naplózás támogatása. A tárolót használja az ASP.NET Core alkalmazás használhatja az ugyanazon konfigurációs beállításokat és értékeket. 
 
@@ -57,5 +56,4 @@ A `Disk` naplózási szolgáltató támogatja-e a következő beállításokat:
 | `MaxFileSize` | Egész szám | A maximális méretét megabájtban (MB), a naplófájlok. Ha az aktuális naplófájl méretét megfelel-e vagy meghaladja ezt az értéket, egy új naplófájl indítja el a naplózás szolgáltató. Ha meg van adva a -1, a naplófájl méretét csak korlátozza a maximális méretet, ha bármely, a kimeneti csatlakoztatási. Az alapértelmezett érték az 1. |
 
 ASP.NET Core-naplózás támogatást konfigurálásával kapcsolatos további információkért lásd: [fájl konfigurációs beállítások](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1).
-
 

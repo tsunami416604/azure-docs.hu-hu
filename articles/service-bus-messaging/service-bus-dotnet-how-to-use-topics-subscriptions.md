@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 892d485fb5cdaa08107870e9ab5b2b7ad9bcba5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ca8f0e34b63802453c8876f878b531e78e66d76
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60714251"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991771"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Bevezetés a Service Bus-üzenettémák használatába
 
@@ -390,9 +390,12 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzol
     ```
 9. Futtassa a programot, majd ellenőrizze ismét a portálon. Figyelje meg, hogy a **Üzenetek száma** és a **Jelenlegi** értéke most **0**.
    
-    ![A témakör hossza][topic-message-receive]
+    ![Témakör hossza][topic-message-receive]
 
 Gratulálunk! A .NET Standard kódtár használatával létrehozott egy üzenettémát és egy előfizetést, elküldött 10 üzenetet, és fogadta is azokat.
+
+> [!NOTE]
+> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
 
 ## <a name="next-steps"></a>További lépések
 

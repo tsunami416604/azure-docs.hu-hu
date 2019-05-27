@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: b3192d848e77c59d0ff6950e647d1faf172484b5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 820c89ce352db772f629a99a438ed86448af02fe
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606407"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965715"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows virtuális asztal előzetes verziója? 
 
@@ -54,11 +54,6 @@ Rendelje hozzá is, és csatlakoztatja a felhasználókat a virtuális asztali k
 
 Néhány dolgot végre kell Windows virtuális asztal beállítását, és sikeresen csatlakozott-e a Windows asztali számítógépek és az alkalmazások a felhasználók számára.
 
-Windows virtuális asztal jelenleg csak támogatja a következő két OSE-kre:
-
-* Windows 10 Enterprise több munkamenet
-* Windows Server 2016
-
 A következő OSE-kre támogatása, ezért ügyeljen arra, hogy tervezzük a [a megfelelő licencek](https://azure.microsoft.com/pricing/details/virtual-desktop/) az asztal és alkalmazások telepítését tervezi alapján a felhasználók számára:
 
 |Operációs rendszer|Licenc szükséges|
@@ -78,9 +73,7 @@ Az infrastruktúra Windows virtuális asztal támogatásához a következőkre v
 Az Azure virtuális gépeket hoz létre a Windows virtuális asztal kell lennie:
 
 * [Tartományhoz csatlakoztatott standard](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) vagy [Hybrid AD-hez csatlakoztatott](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtuális gépek az Azure AD-hez csatlakoztatott nem lehet.
-* A következő támogatott operációsrendszer-lemezképek egyikét futtató:
-  * Windows 10 Enterprise több munkamenet
-  * Windows Server 2016
+* Az alábbi futtató [támogatott operációsrendszer-lemezképek](#supported-virtual-machine-os-image).
 
 >[!NOTE]
 >Ha egy Azure-előfizetésre van szüksége, akkor az [iratkozzon fel az egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). Használata az Azure ingyenes próbaverzióját, Azure AD tartományi szolgáltatásokat az Azure Active Directory szinkronizálva legyenek a Windows Server Active Directory kell használnia.
@@ -92,6 +85,21 @@ Az optimális teljesítmény érdekében győződjön meg arról, hogy a hálóz
 * Az Azure-régióba gazdagép készletek alkalmazott ahol üzenetváltási (Ezredmásodperc) az ügyfél hálózati késést a kevesebb mint 150 ms kell lennie.
 * Hálózati forgalom előfordulhat, hogy flow határokon kívül ország/régió, ha asztali környezet és alkalmazások üzemeltető virtuális gépek csatlakozni a felügyeleti szolgáltatáshoz.
 * A hálózati teljesítmény optimalizálása érdekében azt javasoljuk, hogy az a munkamenetgazda virtuális gépek közös elhelyezésű a rendszer a felügyeleti szolgáltatás és az Azure ugyanabban a régióban.
+
+## <a name="supported-remote-desktop-clients"></a>Támogatott a távoli asztali ügyfelek
+
+A következő távoli asztali ügyfelek támogatják a Windows virtuális asztal:
+
+* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
+* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+
+
+## <a name="supported-virtual-machine-os-image"></a>Támogatott a virtuális gép operációsrendszer-lemezkép
+
+Windows virtuális asztal támogatja a következő operációsrendszer-lemezképek:
+
+* Windows 10 Enterprise több munkamenet
+* Windows Server 2016
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 

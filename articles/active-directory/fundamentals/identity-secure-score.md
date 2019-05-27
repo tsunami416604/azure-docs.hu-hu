@@ -1,113 +1,70 @@
 ---
-title: Mi a biztonságos identitás-pontszám? – Az azure Active Directory (nyilvános előzetes verzió) |} A Microsoft Docs
-description: Leírja, hogyan használhatja az identitáskezelési biztonságos pontszám javítása az Azure AD-bérlő biztonsági állapotát.
+title: Mi a biztonságos identitás-pontszám? – Az azure Active Directory
+description: Hogyan használhatja a biztonságos identitás-pontszám a könyvtár biztonsági irányelvei, tiltják javítása érdekében
 services: active-directory
-keywords: identitásbiztonsági pontszám, Azure AD, biztonságos hozzáférés vállalati erőforrásokhoz
-documentationcenter: ''
-author: MarkusVi
-manager: daveba
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: fundamentals
-ms.topic: overview
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 09/19/2018
-ms.author: markvi
-ms.reviewer: nigu
-ms.custom: it-pro
+ms.topic: conceptual
+ms.date: 05/20/2019
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8617442c811dc2fe8f961038f35ebcf218a58302
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6cdff2305914ca6e4144f7784d1a60026a1d27c0
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60247367"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988690"
 ---
-# <a name="what-is-the-identity-secure-score-in-azure-active-directory-public-preview"></a>Mi az az identitás biztonságos pontszám, az Azure Active Directoryban? (Nyilvános előzetes verzió)
+# <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Mi az az identitás biztonságos pontszám, az Azure Active Directoryban?
 
-Mennyire biztonságos az Ön Azure AD-bérlője? Ha nem tudja a választ erre a kérdésre, a cikket elolvasva megismerheti, hogyan segítheti az identitásbiztonsági pontszám az identitásvédelem felügyeletében és javításában. 
+Mennyire biztonságos az Ön Azure AD-bérlője? Ha nem ismeri ezt a legkönnyebben, ez a cikk bemutatja, hogyan a biztonságos identitás-pontszám segítségével megfigyelheti és javíthatja biztonsági helyzetét identitás.
 
 ## <a name="what-is-an-identity-secure-score"></a>Mi az az identitásbiztonsági pontszám?
 
-Az identitásbiztonsági pontszám egy 1 és 248 közötti szám, amely azt tükrözi, biztonsági megoldása mennyire felel meg a Microsoft ajánlott eljárásainak.
+Az identitás biztonságos pontszám: 1 és 223, mely hogyan igazított a van a Microsoft kapcsolatos bevált gyakorlatokat biztonsági mutatója közötti számot. Minden egyes fokozása művelethez biztonságos identitás-pontszám a konkrét konfigurációs személyre szabott.  
 
-
-![Biztonsági pontszám](./media/identity-secure-score/01.png)
-
-
+![Biztonsági pontszám](./media/identity-secure-score/identity-secure-score-overview.png)
 
 A pontszám az alábbiakban nyújt segítséget:
 
 - Az identitásbiztonsági rendszer objektív felmérése
-
 - Identitásbiztonsági fejlesztések tervezése
-
-- A fejlesztések hatásának felmérése 
-
+- A fejlesztések hatásának felmérése
 
 A pontszámot és a kapcsolódó információkat az identitásbiztonsági pontszám irányítópultján találhatja meg. Ezen az irányítópulton a következők találhatók:
 
-- Az Ön pontszáma
-
-    ![Biztonsági pontszám](./media/identity-secure-score/02.png)
-
-- Egy összehasonlító grafikon
-
-    ![Biztonsági pontszám](./media/identity-secure-score/03.png)
-
-- Egy trendgrafikon
-
-    ![Biztonsági pontszám](./media/identity-secure-score/04.png)
-
-- Ajánlott identitásbiztonsági eljárások listája. 
-
-    ![Biztonsági pontszám](./media/identity-secure-score/05.png)
-
+- A biztonságos identitás-pontszám
+- Összehasonlítás grafikont hogyan hasonlítja össze a biztonságos identitás-pontszám a más bérlők számára az azonos iparágba és hasonló mérete
+- Trend grafikont hogyan változott meg a biztonságos identitás-pontszám időbeli alakulása
+- Fejlesztési lehetőségek listája
 
 A fejlesztési műveletek végrehajtásával a következőket érheti el:
 
-- A biztonsági rendszer és a pontszám javítása.
- 
-- A Microsoft identitáskezelési funkcióinak jobb kihasználása. 
-
-
+- Javíthatja biztonsági helyzetét és a pontszám
+- Kihasználhatja a szervezet identitás befektetéseit részeként elérhető funkciók
 
 ## <a name="how-do-i-get-my-secure-score"></a>Hogyan tekinthetem meg a saját biztonsági pontszámomat?
 
-Az identitásbiztonsági pontszám az Azure AD összes kiadásában elérhető.
-
-Pontszámát az [Azure AD áttekintési irányítópultján](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/IdentitySecureScore) érheti el.
-
-
+A biztonságos identitás-pontszám az Azure AD minden változatban érhető el. Pontszámát az [Azure AD áttekintési irányítópultján](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/IdentitySecureScore) érheti el.
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
-Az Azure 48 óránként áttekinti az Ön biztonsági beállításait, és összehasonlítja azokat az ajánlott eljárásokkal. A kiértékelés eredményétől függően a bérlőhöz a rendszer új pontszámot rendel. Ennek értelmében ha Ön módosítja a biztonsági beállításait, akár 48 órába is telhet, mire ezt a pontszáma tükrözni fogja. 
+Az Azure 48 óránként áttekinti az Ön biztonsági beállításait, és összehasonlítja azokat az ajánlott eljárásokkal. Az értékelés eredménye alapján a új pontszámának számítják ki a címtár számára. Akkor lehet, hogy a biztonsági beállítások nem teljesen felel az ajánlott eljárásokkal kapcsolatos útmutatás és a javító műveleteket csak részlegesen teljesülnek. Ezekben az esetekben, fog csak oda a vezérlő elérhető maximális pontszám egy részét.
 
-A rendszer az Ön Azure AD-konfigurációjától függően tesz javaslatokat. Ha külső termékek használatával tesz eleget egy ajánlott eljárásnak, azt az adott fejlesztési művelet beállításaiban jelezheti.
+A rendszer az Ön Azure AD-konfigurációjától függően tesz javaslatokat. Ajánlott eljárás ajánlás engedélyezése harmadik féltől származó termékekre használ, ha ezt a konfigurációt a beállítások egy fokozása művelet adhatja meg. Akkor is állíthatja be a javaslatok a rendszer figyelmen kívül hagyja, ha a környezet nem vonatkoznak. A figyelmen kívül hagyott javaslatok nincsenek hatással a pontszám kiszámítására.
 
-![Biztonsági pontszám](./media/identity-secure-score/07.png)
-
-
-Emellett lehetősége van arra is, hogy egyes javaslatokat figyelmen kívül hagyjon, ha azok nem érvényesek az Ön által használt környezetre. A figyelmen kívül hagyott javaslatok nincsenek hatással a pontszám kiszámítására. 
- 
-![Biztonsági pontszám](./media/identity-secure-score/06.png)
-
-
+![Hagyja figyelmen kívül vagy harmadik fél által biztosított művelet megjelölése](./media/identity-secure-score/identity-secure-score-ignore-or-third-party-reccomendations.png)
 
 ## <a name="how-does-it-help-me"></a>Miben nyújt segítséget?
 
 A biztonsági pontszám az alábbiakban nyújt segítséget:
 
 - Az identitásbiztonsági rendszer objektív felmérése
-
 - Identitásbiztonsági fejlesztések tervezése
-
 - A fejlesztések hatásának felmérése
-
-
 
 ## <a name="what-you-should-know"></a>Alapismeretek
 
@@ -116,8 +73,12 @@ A biztonsági pontszám az alábbiakban nyújt segítséget:
 Az identitásbiztonság pontszámot a következő szerepkörök használhatják:
 
 - Globális rendszergazda
-- Biztonsági rendszergazda 
-- Biztonsági olvasók 
+- Biztonsági rendszergazda
+- Biztonsági olvasók
+
+### <a name="how-are-controls-scored"></a>Hogyan kell kiértékelni vezérlők?
+
+Vezérlők kétféle módon lehet pontozandó. Néhány bináris módon kell kiértékelni, – 100 %-a pontszámot kap, ha a szolgáltatás vagy az ajánlott megoldás a konfigurált beállítás alapján. Más pontszámok kiszámítása a teljes konfiguráció százalékában. Például ha 30 pontok fog kapni, ha a felhasználókat az MFA az összes védett, és csak 5 védett 100 teljes felhasználói állapotokat a fokozása javaslat, volna adni egy részleges pontszám körülbelül 2 pont (védett 5 / 100 teljes * 30 maximális pt = 2, PT részleges pontszám) .
 
 ### <a name="what-does-not-scored-mean"></a>Mit jelent a [Not Scored]?
 
@@ -127,40 +88,32 @@ A [Not Scored] jelzéssel ellátott műveletek olyan műveletek, amelyeket elvé
 
 A pontszámot a rendszer naponta számítja újra (PST idő szerint kb. 01:00-kor). Ha változtatást eszközöl valamelyik mért műveleten, a pontszám a következő napon automatikusan frissül. Ahhoz, hogy egy változás megjelenjen a pontszámban is, akár 48 órának is el kell telnie.
 
-
 ### <a name="my-score-changed-how-do-i-figure-out-why"></a>Megváltozott a pontszámom. Hogyan tudhatom meg, mi ennek az oka?
 
-A [biztonsági pontszám portáljának](https://securescore.microsoft.com/#!/score) pontszámelemzési oldalán kattintson egy adott nap adatpontjára, és görgessen lejjebb az adott nap befejezett és befejezetlen műveletei között, ahol megtekintheti, mi változott.
+Látogasson el a [a security center a Microsoft 365](https://security.microsoft.com/), a teljes Microsoft biztonságos pontszám találja. Egyszerűen megtekintheti összes módosítást a biztonságos pontszámot a részletes módosításokat az Előzmények lapon áttekintésével.
 
-### <a name="does-the-secure-score-measure-my-risk-of-getting-breached"></a>Méri-e biztonsági pontszám az illetéktelen behatolások kockázatát?
+### <a name="does-the-secure-score-measure-my-risk-of-getting-breached"></a>Nem a biztonságos pontszám saját első megsértették kockázatát mérik?
 
-Röviden: nem. A biztonsági pontszám nem egy átfogó mérőszám, amely az illetéktelen behatolások kockázatát fejezi ki. Ez a számérték inkább azt mutatja, milyen mértékben tett lépéseket azért, hogy az illetéktelen behatolást megakadályozó funkciókat bevezessen. Semmilyen szolgáltatás nem garantálja, hogy a rendszerébe nem tudnak behatolni, és a biztonsági pontszám semmilyen módon nem tekinthető ilyen garanciának.
+Röviden: nem. A biztonságos pontszám nem express egy abszolút mérték hogy mennyire valószínű, hogy szeretné-e get-megszegést kiváltó. Ez a számérték inkább azt mutatja, milyen mértékben tett lépéseket azért, hogy az illetéktelen behatolást megakadályozó funkciókat bevezessen. Nincs szolgáltatás tud garantálni, hogy Ön nem fog megsértették, és a biztonságos pontszám annak garantálására semmilyen módon nem kell értelmezni.
 
 ### <a name="how-should-i-interpret-my-score"></a>Hogyan értelmezendő a pontszám?
 
-Akkor kap pontokat, ha a javasolt módon konfigurálja a biztonsági funkciókat, vagy a biztonsághoz kötődő műveleteket végez (például jelentéseket olvas). Egyes műveletek részleges végrehajtása is pontot ér – ilyen például a többtényezős hitelesítés (MFA) engedélyezése a felhasználók számára. A biztonsági pontszám közvetlenül azt mutatja meg, hogy a Microsoft mely biztonsági szolgáltatásait használja. Ne feledje, hogy a biztonságnak egyensúlyban kell lennie a használhatósággal. Minden biztonsági vezérlő hatással van a felhasználókra is. A kis felhasználói hatású vezérlők elenyésző hatással vannak a felhasználók mindennapi műveleteire.
+Akkor kap pontokat, ha a javasolt módon konfigurálja a biztonsági funkciókat, vagy a biztonsághoz kötődő műveleteket végez (például jelentéseket olvas). Egyes műveletek részleges végrehajtása is pontot ér – ilyen például a többtényezős hitelesítés (MFA) engedélyezése a felhasználók számára. A biztonságos pontszám közvetlenül is használhatja a Microsoft biztonsági szolgáltatások reprezentatív. Ne feledje, hogy a biztonságot a használhatósági kell meghatározni. Minden biztonsági vezérlő hatással van a felhasználókra is. A kis felhasználói hatású vezérlők elenyésző hatással vannak a felhasználók mindennapi műveleteire.
 
-Pontszáma előzményeit a [biztonsági pontszám portáljának](https://securescore.microsoft.com/#!/score) pontszámelemzési oldalán tekintheti meg. Egy adott dátumot kiválasztva megtekintheti, mely vezérlők voltak engedélyezve az adott napon, és hány pontot kapott ezekre.
+A pontszám előzmények megtekintéséhez látogasson el a [a security center a Microsoft 365](https://security.microsoft.com/) és a teljes Microsoft biztonságos pontszámát. Áttekintheti a módosításokat, a teljes biztonságos pontszám kattintva lehet előzményeinek megtekintése. Egy adott dátumot kiválasztva megtekintheti, mely vezérlők voltak engedélyezve az adott napon, és hány pontot kapott ezekre.
 
+### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>Hogyan kapcsolódik az identitásbiztonsági pontszám az Office 365 biztonsági pontszámhoz?
 
-### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>Hogyan kapcsolódik az identitásbiztonsági pontszám az Office 365 biztonsági pontszámhoz? 
+A [Microsoft biztonságos pontszám](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score) tartalmaz öt különböző vezérlő és pontszám kategóriák:
 
-Az [Office 365 biztonsági pontszám](https://docs.microsoft.com/office365/securitycompliance/office-365-secure-score) hamarosan öt különböző pontszám összesítésébe lesz migrálva:
-
-- Identitás
-
+- Azonosító
 - Adatok
-
 - Eszközök
-
 - Infrastruktúra
-
 - Alkalmazások
 
-Az identitásbiztonsági pontszám az Office 365 biztonsági pontszám identitásra vonatkozó részét jelöli. Ez azt jelenti, hogy az identitásbiztonsági pontszámra és az Office 365 biztonsági pontszámra vonatkozó javaslatok megegyeznek. 
-
+A biztonságos identitás-pontszám a Microsoft biztonságos pontszám identitás részét jelöli. Az átfedés azt jelenti, hogy az identitás a javaslatok biztonságos pontszám a Microsoft identity pontszám megegyeznek.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Office 365 biztonsági pontszámmal kapcsolatos videó megtekintéséhez kattintson [ide](https://www.youtube.com/watch?v=jzfpDJ9Kg-A).
- 
+[Tudjon meg többet a Microsoft biztonságos pontszám](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)

@@ -5,15 +5,15 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 05/16/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: ef8155cda6c31a63204af80ca091a13bb16a687d
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6711506c1e489dcbd50aedd36241affc3bbed80b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866450"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113392"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Szabályzat: A címtárban lévő felhasználók számára
 
@@ -34,6 +34,9 @@ Kövesse az alábbi lépéseket, ha azt szeretné, hogy a felhasználók és cso
 ### <a name="policy-for-users-not-in-your-directory"></a>Szabályzat: Nem a címtárban található felhasználók számára
 
 Ha azt szeretné, hogy a házirend nem található a könyvtár kérhet hozzáférést csomag felhasználók számára, kövesse az alábbi lépéseket. Könyvtárak engedélyezettek kell állítani a **szervezeti kapcsolatok együttműködési korlátozások** beállításait.
+
+> [!NOTE]
+> A Vendég felhasználói fiókhoz létrejön egy felhasználó még nem található a címtárban, amelynek a kérés jóváhagyása vagy automatikusan elfogadja. A Vendég meghívjuk, de nem a meghívó e-mailt fog kapni. Ehelyett azokat a rendszer küld egy e-mailt a hozzáférési csomagok hozzárendelésével kézbesíti a rendszer. Alapértelmezés szerint újabb, ha a Vendég felhasználó nem rendelkezik minden olyan hozzáférési csomag hozzárendelések azok utolsó hozzárendelés lejárt, vagy meg lett szakítva, mert, hogy Vendég felhasználói fiókhoz bejelentkezés blokkolva lesznek, és törölni. Ha szeretné a könyvtárban határozatlan ideig maradnak vendég felhasználók rendelkeznek, még akkor is, ha nincsenek hozzáférési csomag hozzárendelések rendelkeznek, módosíthatja a beállításokat a jogosultság felügyeleti konfiguráció.
 
 1. Az a **felhasználók, akik hozzáférést** szakaszban jelölje be **nem a címtárban található felhasználók**.
 
@@ -66,7 +69,7 @@ Kövesse az alábbi lépéseket, ha azt szeretné, hogy a szabályzat megkerülj
 
 1. Ugorjon le a [házirend: Lejárati](#policy-expiration) szakaszban.
 
-### <a name="policy-request"></a>Szabályzat: Kérés
+### <a name="policy-request"></a>Szabályzat: Lekérés
 
 A kérelem a szakaszban megadhatja jóváhagyási beállítások, amikor a felhasználók a hozzáférés csomagban kérik.
 

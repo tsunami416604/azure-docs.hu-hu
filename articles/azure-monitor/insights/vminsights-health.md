@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2019
+ms.date: 05/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 45c9a8da8344aa6aaaa19b534451a7276e96911a
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 9fa76c9637a6dcdca48bf45e8ee2aa9305a4f64f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522193"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66130458"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Az Azure-beli virtuális gépek állapotának ismertetése
 
@@ -85,7 +85,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 Mielőtt belevágna az állapotfigyelő szolgáltatás használata egyetlen virtuális gépet vagy virtuális gépek csoportján történő, fontos, röviden bemutatja, hogyan jelennek meg az adatokat, és a Vizualizációk képviselik tisztában kínálunk.  
 
-## <a name="view-health-directly-from-a-virtual-machine"></a>Közvetlenül a virtuális gép állapotának megtekintése 
+### <a name="view-health-directly-from-a-virtual-machine"></a>Közvetlenül a virtuális gép állapotának megtekintése 
 
 Egy Azure virtuális gép állapotának megtekintéséhez válassza **Insights (előzetes verzió)** a bal oldali panelen, a virtuális gép. A virtuális gép insights oldalon **egészségügyi** alapértelmezés szerint meg nyitva, és a virtuális gép állapot nézetét mutatja be.  
 
@@ -96,11 +96,21 @@ Az a **egészségügyi** lapon, a szakasz a **Vendég virtuális gép állapota*
 A virtuális gép meghatározott állapotokat az alábbi táblázat ismerteti: 
 
 |Ikon |Állapot |Jelentés |
-|-----|-------------|------------|
+|-----|-------------|---------------|
 | |Kifogástalan |Állapot állapota kifogástalan, ha meghatározott egészségügyi feltételek, a virtuális gép észlelt problémákat nem jelző belül, és szükség szerint működik-e. Egy szülő összesítő figyelő esetén, az egészségügyi tekercsben felfelé és a legkedvezőbb vagy legrosszabb állapota a gyermek tükrözi.|
 | |Kritikus |Állapot, kritikus fontosságú, ha nem található a meghatározott egészségügyi feltételt, amely azt jelzi, hogy legalább egy kritikus fontosságú problémák, amelyek kell oldani annak érdekében, hogy a normál működés visszaállítása. Egy szülő összesítő figyelő esetén, az egészségügyi tekercsben felfelé és a legkedvezőbb vagy legrosszabb állapota a gyermek tükrözi.|
 | |Figyelmeztetés |Állapota figyelmet igényel, hogy meghatározott egészségügyi feltétel, ahol egy azt jelzi, hogy két küszöbérték közötti egy *figyelmeztetés* állapota és a egy másik jelzi egy *kritikus* (három állapot állapot küszöbértékeket is állapota konfigurálható), vagy ha egy nem kritikus problémát észlel, amelyek kritikus fontosságú problémákat okozhat, ha nem szűnik meg. Egy szülő összesítő figyelő esetén, ha egy vagy több gyermek van figyelmeztetési állapotban, akkor jelenik meg a szülő *figyelmeztetés* állapota. Ha van, amely a gyermek egy *kritikus* és a egy másik alárendelt egy *figyelmeztetés* állapot, a fölérendelt összegző megjelenik egy állapotát *kritikus*.|
-| |Ismeretlen |Állapot szerepel egy *ismeretlen* állapot, amikor az objektum állapota nem számítható ki több okból, például nem tudja majd gyűjteni az adatokat, a szolgáltatás nem inicializált, stb. A health állapota nem konfigurálható.| 
+| |Ismeretlen |Állapota *ismeretlen* Ha azt nem számítható ki több okból. Lásd a következő <sup>1</sup> további részletekért és a lehetséges megoldásokat nyújthatnak. |
+
+<sup>1</sup> az ismeretlen állapot a következő problémák okozta:
+
+- Ügynök beállításai megváltoztak, és már nem a munkaterület jelentések megadott, ha a virtuális gépek az Azure Monitor engedélyezve lett. Konfigurálja az ügynököt, hogy a munkaterület lásd a [hozzáadása vagy eltávolítása a munkaterület](../platform/agent-manage.md#adding-or-removing-a-workspace).
+- Virtuális gép törölve lett.
+- Az Azure Monitor szolgáltatással a virtuális gépekhez tartozó munkaterület törlődik. A munkaterület helyreállításához, ha rendelkezik Premier szintű támogatási kedvezményekre megnyithatja a támogatási kérelmet [Premier](https://premier.microsoft.com/).
+- Megoldás függőségek törölve lett. A Log Analytics-munkaterület ServiceMap és InfrastructureInsights-megoldások engedélyezéséhez telepítse újra a használatával egy [Azure Resource Manager-sablon](vminsights-enable-at-scale-powershell.md#install-the-servicemap-and-infrastructureinsights-solutions) , amelyek a megadott vagy a munkaterület konfigurálása lehetőség használatával megtalálható a Első lépések lap.
+- Virtuális gép le lett állítva.
+- Az Azure virtuális gép szolgáltatás nem érhető el vagy karbantartás végrehajtása folyamatban van.
+- Munkaterület [napi adatok és adatmegőrzés korlát](../platform/manage-cost-storage.md) teljesül.
 
 Kiválasztásával **diagnosztikai állapot megtekintése** kattint, megnyílik egy oldal, a virtuális gép, kapcsolódó állapotára vonatkozó feltételek, állapotváltozások és más jelentős problémák, a virtuális géphez kapcsolódó összetevők-figyelési szolgáltatás által észlelt összes összetevőjét bemutató. További információkért lásd: [egészségügyi diagnosztikai](#health-diagnostics). 
 
@@ -108,7 +118,7 @@ Alatt a **összetevő állapota** szakaszban, a táblázat egy összesítő áll
 
 Health a Windows operációs rendszert futtató Azure virtuális gépből elérésekor állapotát, az első öt alapvető Windows szolgáltatások a szakaszában látható **Core állapotfigyelő szolgáltatások**.  A szolgáltatások bármelyike kiválasztása az adott összetevő és az állapot figyelése állapotára vonatkozó feltételek ajánlati oldal megnyitása.  A tulajdonság panelen a állapotára vonatkozó feltételek nevére kattintva megnyílik, és itt tekintse át a konfigurációs részleteket, beleértve, ha a állapotára vonatkozó feltételek rendelkezik egy megfelelő Azure Monitor alert definiálva. További tudnivalókért lásd: [egészségügyi diagnosztikai és állapotára vonatkozó feltételek használatának](#health-diagnostics).  
 
-## <a name="aggregate-virtual-machine-perspective"></a>Összesített virtuálisgép-perspektíva
+### <a name="aggregate-virtual-machine-perspective"></a>Összesített virtuálisgép-perspektíva
 
 Állapotadat-gyűjtés az összes, a virtuális gépek megtekintése egy erőforráscsoportot a portálon, a navigációs listából válassza ki a **Azure Monitor** majd **(előzetes verzió) virtuális gépek**.  
 
@@ -154,7 +164,7 @@ Kiválasztásával **megtekintheti az összes állapotára vonatkozó feltétele
 
 ## <a name="health-diagnostics"></a>Diagnosztikai állapot
 
-Thge **egészségügyi diagnosztikai** lap lehetővé teszi, hogy ábrázolhatja a virtuális gépek, listázás, a virtuális gép összes összetevőjét az Állapotközpontú modellről kapcsolódó állapotára vonatkozó feltételek, állapotváltozások, és más jelentős problémák által azonosított figyelt kapcsolódó összetevők a virtuális géphez.
+A **egészségügyi diagnosztikai** lap lehetővé teszi, hogy ábrázolhatja a virtuális gépek, listázás, a virtuális gép összes összetevőjét az Állapotközpontú modellről kapcsolódó állapotára vonatkozó feltételek, állapotváltozások, és más jelentős problémák által azonosított figyelt kapcsolódó összetevők a virtuális géphez.
 
 ![Példa egy virtuális gép állapotának diagnosztikája lap](./media/vminsights-health/health-diagnostics-page-01.png)
 
@@ -343,7 +353,7 @@ Engedélyezheti vagy tilthatja le a riasztást egy adott állapotára vonatkozó
 Amikor riasztások jönnek létre a virtuális gépek állapotát az Azure Monitor támogatja az SMS- és e-mail-értesítések mikor állapotára vonatkozó feltételek akkor kerül sérült. Értesítések konfigurálása, jegyezze fel az SMS-EK vagy e-mail értesítések küldéséhez konfigurált műveleti csoport nevét kell. 
 
 >[!NOTE]
->Ez a művelet kell megfigyelt egyes virtuális gépekre végre a rendszer, hogy szeretne értesítést kapni.
+>Ez a művelet kell megfigyelt egyes virtuális gépekre hajtható végre, hogy szeretne értesítést kapni, ez nem vonatkozik az erőforráscsoportban lévő összes virtuális gépet.  
 
 1. Egy terminálablakban, írja be a **armclient.exe bejelentkezési**. Ezt kéri, hogy jelentkezzen be az Azure-bA.
 

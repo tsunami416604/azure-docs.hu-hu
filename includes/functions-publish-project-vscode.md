@@ -10,11 +10,11 @@ ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: ec0425ff2188ecf1816d5f5841394c8e32f301d2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64744235"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132225"
 ---
 ## <a name="publish-the-project-to-azure"></a>A projekt közzététele az Azure-ban
 
@@ -27,7 +27,7 @@ A cikk azt feltételezi, hogy Ön új függvényalkalmazást hoz létre.
 
 1. Az a **Azure: Függvények** területen válassza ki az üzembe helyezés, a Függvényalkalmazás ikon.
 
-    ![A függvényalkalmazás beállításai](./media/functions-publish-project-vscode/function-app-publish-project.png)
+    ![Függvényalkalmazás beállításai](./media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. Ha nincs bejelentkezve, kéri **jelentkezzen be Azure**. Emellett **hozzon létre egy ingyenes Azure-fiókkal**. Sikeres bejelentkezés után a böngészőből lépjen vissza a Visual Studio Code-ot. 
 

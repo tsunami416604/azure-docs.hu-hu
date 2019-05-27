@@ -10,11 +10,11 @@ ms.date: 10/18/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: 74fe531c07aa871b06b5d0773f7e8fb0ade80be4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850634"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66127691"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 Recovery Services-tároló olyan entitás, amely a biztonsági másolatok és az idők során létrehozott helyreállítási pontokat tárolja. A Recovery Services-tárolót is tartalmaz, amely a védett virtuális gépek társítva vannak a biztonsági mentési szabályzatok.

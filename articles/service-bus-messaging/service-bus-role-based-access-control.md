@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: aschhab
-ms.openlocfilehash: 7ef152b130e77e833e19c51ff97d0cea577216c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4571a8918b7877b728b54129e47ffcf4af9b46a
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472250"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979627"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktív Directory Role-Based hozzáférés-vezérlés (előzetes verzió)
 
@@ -31,7 +31,14 @@ Azure AD RBAC használó alkalmazások nem kell kezelni a SAS-szabályok és a k
 
 ## <a name="service-bus-roles-and-permissions"></a>A Service Bus-szerepkörök és engedélyek
 
-A kezdeti nyilvános előzetes verzió csak adhat az Azure AD-fiókok és az egyszerű szolgáltatások a Service Bus Messaging-névteret a "Tulajdonos" vagy "Közreműködő" szerepköröket. Ez a művelet az identitás a névtérben lévő összes entitáshoz teljes hozzáférést biztosít. Felügyeleti műveleteket, amelyek a névtér topológia módosítása rendszer kezdetben csak támogatott, ha az Azure erőforrás-kezelést, és nem a natív Service Bus REST-felügyeleti felületén keresztül. Ez a támogatás is azt jelenti, hogy a .NET-keretrendszer ügyfél [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objektum nem használható az Azure AD-fiókot.
+Az Azure biztosít a beépített RBAC-szerepkörök, amelyek engedélyezik a hozzáférést egy Service Bus-névtér alatt:
+
+* [Service Bus adatok tulajdonosa (előzetes verzió)](../role-based-access-control/built-in-roles.md#service-bus-data-owner): Lehetővé teszi, hogy a data access Service Bus-névtér és az entitások (üzenetsorok, témakörök, előfizetések és szűrők)
+
+>[!IMPORTANT]
+> Korábban támogatva a felügyelt identitás hozzáadása a **"Owner"** vagy **"Közreműködő"** szerepkör.
+>
+> Azonban, adat-hozzáférési jogosultságokat a **"Owner"** és **"Közreműködő"** szerepkör már nem lesz érvényes. Ha használta a **"Owner"** vagy **"Közreműködő"** szerepkört, majd azokat felhasználja módosítani kell a kell a **"Service Bus adatok tulajdonosa"** szerepkör.
 
 ## <a name="use-service-bus-with-an-azure-ad-domain-user-account"></a>A Service Bus használata egy Azure AD tartományi felhasználói fiók
 
@@ -47,7 +54,7 @@ Ha továbbra is szeretne létrehozni ebben a forgatókönyvben egy külön fiók
 
 ### <a name="create-a-service-bus-namespace"></a>Service Bus-névtér létrehozása
 
-Ezután [hozzon létre egy Service Bus üzenetkezelési névteret](service-bus-create-namespace-portal.md) RBAC előzetes támogató Azure-régiók egyikében: **USA keleti régiója**, **USA keleti régiója 2**, vagy **Nyugat-Európa**.
+Ezután [hozzon létre egy Service Bus üzenetkezelési névteret](service-bus-create-namespace-portal.md).
 
 Miután létrejött a névteret, lépjen a **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **szerepkör-hozzárendelés hozzáadása** az Azure AD felhasználói fiók hozzáadása a tulajdonosi szerepkör. Saját felhasználói fiókját használja, és létrehozta a névteret, ha Ön már a tulajdonosi szerepkör. Egy másik fiókot ad hozzá a szerepkört, keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra.
 
@@ -67,7 +74,7 @@ A minta futtatása előtt szerkessze az App.config fájlt, és a forgatókönyvt
 
 - `tenantId`: Állítsa be **TenantId** értéket.
 - `clientId`: Állítsa be **ApplicationId** értéket.
-- `clientSecret`: Ha szeretne bejelentkezni az ügyfél titkos kulcsát, hozza létre az Azure ad-ben. Egy webalkalmazás vagy API-t is, használja a natív alkalmazás helyett. Adja hozzá az alkalmazás alatt **hozzáférés-vezérlés (IAM)** a korábban létrehozott névtér.
+- `clientSecret`: Ha azt szeretné, jelentkezzen be az ügyfél titkos kulcsát, hozza létre az Azure ad-ben. Egy webalkalmazás vagy API-t is, használja a natív alkalmazás helyett. Adja hozzá az alkalmazás alatt **hozzáférés-vezérlés (IAM)** a korábban létrehozott névtér.
 - `serviceBusNamespaceFQDN`: Az újonnan létrehozott Service Bus-névtér; teljes DNS-nevének beállítása Ha például `example.servicebus.windows.net`.
 - `queueName`: Állítsa a létrehozott üzenetsor neve.
 - Az átirányítási URI-t az alkalmazásba az előző lépésben megadott.

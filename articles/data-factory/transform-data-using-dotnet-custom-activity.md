@@ -12,11 +12,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904576"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66165967"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 
@@ -103,10 +103,10 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 | Tulajdonság              | Leírás                              | Szükséges |
 | :-------------------- | :--------------------------------------- | :------- |
 | név                  | A folyamat a tevékenység neve     | Igen      |
-| leírás           | A tevékenység leírása leíró szöveg.  | Nem       |
-| type                  | Egyéni tevékenység, a tevékenység típusa van **egyéni**. | Igen      |
+| description           | A tevékenység leírása leíró szöveg.  | Nem       |
+| típus                  | Egyéni tevékenység, a tevékenység típusa van **egyéni**. | Igen      |
 | linkedServiceName     | Társított szolgáltatás az Azure Batch szolgáltatásban. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.  | Igen      |
-| command               | Az egyéni alkalmazás futtatandó parancsot. Ha az alkalmazás már az Azure Batch-készlet csomópont elérhető, a resourceLinkedService és a folderPath lehet hagyni. Például megadhatja a parancsot kell `cmd /c dir`, amelyeket a Batch-készlet Windows csomópont natív módon támogat. | Igen      |
+| A parancs               | Az egyéni alkalmazás futtatandó parancsot. Ha az alkalmazás már az Azure Batch-készlet csomópont elérhető, a resourceLinkedService és a folderPath lehet hagyni. Például megadhatja a parancsot kell `cmd /c dir`, amelyeket a Batch-készlet Windows csomópont natív módon támogat. | Igen      |
 | resourceLinkedService | Az Azure Storage társított szolgáltatás az egyéni alkalmazást tároló Storage-fiókhoz | nem&#42;       |
 | folderPath            | Az egyéni alkalmazást és annak összes függőségét a mappa elérési útja<br/><br/>Ha rendelkezik egy hierarchikus mapparendszert almappák – azaz tárolt függőségek *folderPath* – a gyökérmappa-szerkezetében jelenleg lett simítva, amikor a rendszer átmásolja a fájlokat az Azure Batch. Azt jelenti minden fájl átkerülnek egy mappát az almappák nélkül. Ez a probléma megkerüléséhez, fontolja meg a fájlok tömörítése, a tömörített fájl másolása és majd kicsomagolta egyéni kódot a kívánt helyre. | nem&#42;       |
 | referenceObjects      | Meglévő társított szolgáltatásokat és adatkészleteket tömbje. A hivatkozott társított szolgáltatásokat és adatkészleteket lesznek átadva a egyéni alkalmazás JSON formátumban, az egyéni kódot is lehet hivatkozni az adat-előállító erőforrások | Nem       |
@@ -342,7 +342,7 @@ A következő táblázat ismerteti a Data Factory V2 egyéni tevékenységei és
 |Hogyan egyéni logikát van definiálva.      |Azáltal, hogy egy végrehajtható fájl      |Egy .NET-DLL-fájl végrehajtása      |
 |Az egyéni logikát végrehajtási környezetbe      |Windows vagy Linux rendszeren      |Windows (.NET-keretrendszer 4.5.2-es verziója)      |
 |Szkriptek végrehajtása      |Parancsfájlok közvetlenül (például "cmd /c echo hello world" Windows virtuális gépeken) végrehajtása támogatja      |Szükséges végrehajtása a .NET-DLL-ben      |
-|Adatkészlet szükséges      |Optional      |Összekapcsolja a tevékenységek információkezelési és -átadási szükséges      |
+|Adatkészlet szükséges      |Választható      |Összekapcsolja a tevékenységek információkezelési és -átadási szükséges      |
 |A tevékenység át adatokat egyéni logikát      |ReferenceObjects (LinkedServices és adatkészletek) és ExtendedProperties (egyéni tulajdonságok)      |ExtendedProperties (egyéni tulajdonságokat), bemeneti és kimeneti adatkészletek      |
 |Az egyéni logikát információk lekéréséhez      |Elemzi a activity.json linkedServices.json és a végrehajtható fájl ugyanabban a mappában tárolt datasets.json      |.NET SDK-val (a .NET 4.5.2-es. képkocka) keresztül      |
 |Naplózás      |Az STDOUT közvetlenül ír      |Végrehajtási naplózó dll .NET-ben      |

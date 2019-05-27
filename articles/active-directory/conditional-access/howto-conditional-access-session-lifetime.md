@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45ea34a673b46dda2ec9606952c707a13d1b72d9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b8897de5ee86d20e52b948f21afaef4acf196539
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65766867"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988576"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Hitelesítési munkamenet-kezelés konfigurálása a feltételes hozzáférés
 
@@ -50,7 +50,7 @@ Az Azure ad-ben alapértelmezett böngésző-munkamenet megőrzését lehetővé
 
 ## <a name="configuring-authentication-session-controls"></a>Munkamenet-vezérlők hitelesítés konfigurálása
 
-Feltételes hozzáférés egy prémium szintű Azure AD-képesség, és a prémium licencre van szükség. Ha szeretne további információ a feltételes hozzáférésről, lásd: [Mi az az Azure Active Directory feltételes hozzáférés?](overview.md#license-requirements-for-using-conditional-access)
+Feltételes hozzáférés egy prémium szintű Azure AD-képesség, és a prémium licencre van szükség. Ha szeretne további információ a feltételes hozzáférésről, lásd: [Mi az az Azure Active Directory feltételes hozzáférés?](overview.md#license-requirements)
 
 > [!WARNING]
 > Ha használja a [konfigurálható jogkivonat élettartama](../develop/active-directory-configurable-token-lifetimes.md) funkció jelenleg nyilvános előzetes verzióban érhető el, vegye figyelembe, hogy nem támogatjuk a ugyanazon felhasználó vagy alkalmazás kombináció két különböző szabályzatokat hoznak létre: egy ezt a szolgáltatást és a egy másik a szolgáltatás konfigurálható jogkivonat élettartama. A Microsoft tervezi a konfigurálható jogkivonat élettartama szolgáltatás kivonása. október 15-én, és cserélje le a feltételes hozzáférés hitelesítési munkamenet felügyeleti funkció.  
@@ -66,7 +66,7 @@ Feltételes hozzáférés egy prémium szintű Azure AD-képesség, és a prémi
 1. Lépjen a **hozzáférés-vezérlés** > **munkamenet** kattintson **bejelentkezési gyakoriság**
 1. Az első mezőben adja meg a szükséges érték nap és óra
 1. Válasszon ki egy értéket a **óra** vagy **nap** legördülő listából
-1. Házirend mentése
+1. A szabályzat mentése
 
 ![Bejelentkezési gyakoriság az konfigurált feltételes hozzáférési szabályzat](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 

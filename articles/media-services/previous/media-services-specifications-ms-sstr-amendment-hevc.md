@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: johndeu;
-ms.openlocfilehash: b26252ddda7997bebd730bb4c1007f76b3e645a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b9756920d25891dbe6b71fa24c06ed8f0c8eabb0
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60650709"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65963250"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Zökkenőmentes Streamelési protokoll (MS-SSTR) kiegészítés HEVC számára 
 
@@ -40,11 +40,11 @@ Az alábbi feltételek vannak definiálva *[MS-GLOS]*:
 
 Ez a dokumentum az alábbi feltételek vonatkoznak:
 
->  **összeállítás idő:** Az idő minta egyike jelenik meg az ügyfél a [[ISO/IEC-14496 – 12].](https://go.microsoft.com/fwlink/?LinkId=183695)
+>  **összeállítás idő:** Az idő minta egyike jelenik meg az ügyfél a [[ISO/IEC-14496 – 12]](https://go.microsoft.com/fwlink/?LinkId=183695).
 > 
 >   **CENC**: Common Encryption, meghatározva [ISO/IEC 23001-7] második kiadás.
 > 
->   **Dekódolási idő:** Az idő minta nem kell Nedal dekódovat az ügyfélen, ahogyan az az [[ISO/IEC https://go.microsoft.com/fwlink/?LinkId=18369514496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
+>   **Dekódolási idő:** Az idő minta nem kell Nedal dekódovat az ügyfélen, ahogyan az az [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695).
 
 **töredék:** Egy külön letölthető egysége **media** , amely magában foglalja egy vagy több **minták**.
 
@@ -52,11 +52,11 @@ Ez a dokumentum az alábbi feltételek vonatkoznak:
 > 
 >   **jegyzékfájl:** Kapcsolatos metaadatokat a **bemutató** , amely lehetővé teszi, hogy a kéréseket ügyfél **media**. **adathordozó:** Az ügyfél használják lejátszása hang, videó és szöveges adatok tömörített egy **bemutató**. **médiaformátum:** A hang- vagy jelölő olyan tömörített, jól definiált formátumú **minta**.
 > 
->   **bemutató:** A készlet összes **Streamek** és a egy egyetlen movie lejátszásához szükséges kapcsolódó metaadatokat. **A kérelem:** Az ügyfélről a kiszolgálónak küldött, ahogyan az a HTTP üzenet [[RFC2616].](https://go.microsoft.com/fwlink/?LinkId=90372) **Válasz:** A kiszolgálóról az ügyfélnek küldött, ahogyan az a HTTP üzenet [[RFC2616].](https://go.microsoft.com/fwlink/?LinkId=90372)
+>   **bemutató:** A készlet összes **Streamek** és a egy egyetlen movie lejátszásához szükséges kapcsolódó metaadatokat. **A kérelem:** Az ügyfélről a kiszolgálónak küldött, ahogyan az a HTTP üzenet [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **választ:** A kiszolgálóról az ügyfélnek küldött, ahogyan az a HTTP üzenet [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)
 > 
 >   **Minta:** A legkisebb elosztásnak (például egy keretben), amelyben **media** tárolt és feldolgozott.
 > 
->   **MÁJUS, ÉRDEMES, KELL, NEM KELL, NEM KELL:** Ezeket a feltételeket (a nagybetűs) leírtak szerint használt [[RFC2119].](https://go.microsoft.com/fwlink/?LinkId=90317) Választható működés feltételeit összes utasítást vagy előfordulhat, hogy, SHOULD, vagy nem kell.
+>   **MÁJUS, ÉRDEMES, KELL, NEM KELL, NEM KELL:** Ezeket a feltételeket (a nagybetűs) leírtak szerint használt [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) választható működés feltételeit összes utasítást vagy lehet, SHOULD, vagy nem kell.
 
 ## <a name="12-references"></a>1.2 referenciák
 

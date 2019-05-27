@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 09898ac7dd4a6f3ee9cf0ea26ded607a8673b9f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06b3a5110bfdea2a2067979c806701011dc16f3d
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61438244"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987706"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files-problémák hibaelhárítása
 
@@ -144,13 +144,15 @@ Ellenőrizze, hogy gyorsítótárazás le van tiltva, keresse meg a **gyorsító
 
 **Gyorsítótár = none** azt jelzi, hogy gyorsítótárazás le van tiltva. Az alapértelmezett csatlakoztatási parancs használatával, vagy explicit módon hozzáadásával, csatlakoztassa újra a megosztást a **gyorsítótár = szigorú** a mount parancs használatával győződjön meg arról, hogy alapértelmezett gyorsítótárazási vagy a "szigorú" gyorsítótárazási mód engedélyezve van.
 
-Bizonyos esetekben a **serverino** csatlakoztatási beállítás hatására a **ls** parancs futtatása stat minden könyvtárbejegyzés ellen. Ezt a viselkedést eredményezi teljesítménycsökkenés big Data típusú könyvtár listázásakor használ. A csatlakoztatási lehetőségeket ellenőrizheti a **/etc/fstab** bejegyzés:
+Bizonyos esetekben a **serverino** csatlakoztatási beállítás hatására a **ls** parancs futtatása stat minden könyvtárbejegyzés ellen. Ezt a viselkedést eredményezi teljesítménycsökkenés, van egy nagy könyvtár listázása során. A csatlakoztatási lehetőségeket ellenőrizheti a **/etc/fstab** bejegyzés:
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
 Ellenőrizheti azt is, hogy a megfelelő beállításokat használ futtatásával a **sudo mount |} grep cifs** parancs, és a kimenetét ellenőrzése. A következő egy példa a kimenetre:
 
-`//azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+```
+//azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)
+```
 
 Ha a **gyorsítótár = szigorú** vagy **serverino** lehetőség jelen, válassza le és csatlakoztassa az Azure Files újra a csatlakoztatási parancsot futtatja a [dokumentáció](../storage-how-to-use-files-linux.md). Ezt követően újbóli ellenőrzése ennyi idő, amely a **/etc/fstab** bejegyzés rendelkezik a megfelelő beállításokat.
 
@@ -246,6 +248,8 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 
 Ezután symlinks hozhat létre a gyakran a [wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers).
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+[!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
+
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Forduljon a támogatási szolgálathoz.
 
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) beolvasni a probléma gyors megoldása érdekében.

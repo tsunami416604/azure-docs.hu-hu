@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c1f8640918d433956935e9428e23aac59e36334
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 622525705979cd6a7a088c606ac167d28f8f6482
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764663"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950998"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: Vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása
 
@@ -47,7 +47,7 @@ Előfordulhat, hogy miért a SAML-jogkivonatban kiadott jogcímek szerkesztése 
 A NameID (név azonosító érték) szerkesztése:
 
 1. Nyissa meg a **azonosító értékét nevet** lapot.
-1. Válassza ki az attribútum vagy az attribútum a alkalmazni kívánt átalakítást. Szükség esetén a kívánt azt szeretné, hogy a NameID jogcím formátumot is megadhat.
+1. Válassza ki az attribútum vagy az attribútum a alkalmazni kívánt átalakítást. Szükség esetén a NameID jogcím, hogy a kívánt formátumban is megadhat.
 
    ![A NameID (névazonosító) értékének szerkesztése](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
 
@@ -75,7 +75,7 @@ Válassza ki a kívánt forrása a `NameIdentifier` (vagy NameID) jogcím. Az al
 
 | Name (Név) | Leírás |
 |------|-------------|
-| E-mail-cím | A felhasználó e-mail címe |
+| Email | A felhasználó e-mail címe |
 | userprincipalName | Egyszerű felhasználónév (UPN) a felhasználó |
 | onpremisessamaccount | SAM-fiók neve, amely a helyszínről az Azure AD szinkronizálása megtörtént |
 | objektumazonosító | az Azure ad-ben a felhasználó objektumazonosítója |

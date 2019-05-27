@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: rezas
-ms.openlocfilehash: 703e2c842fb42bad8aa112d84c516a29c2327378
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: f39f184bdc09677e347a2691351309dd6483f467
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473506"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965389"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-amqp-protocol"></a>Az IoT hub, az AMQP protokoll használatával kommunikálnak.
 
@@ -65,7 +65,7 @@ A felhőből az eszközre irányuló üzenetek exchange és az IoT Hub között,
 | Létrehozta | Hivatkozás típusa | Elérési útja | Leírás |
 |------------|-----------|-----------|-------------|
 | Szolgáltatás | Küldő hivatkozás | `/messages/devicebound` | Az eszközök felé irányuló C2D üzenetek a szolgáltatás által küldött ezen a hivatkozáson. Ezen a kapcsolaton keresztül küldött üzenetek azok `To` tulajdonság beállítása a céleszköz fogadó elérési útja: például `/devices/<deviceID>/messages/devicebound`. |
-| Szolgáltatás | Fogadó-hivatkozás | `/messages/serviceBound/feedback` | Befejezési, elutasítás és lemondás visszajelzési üzenetek erre a hivatkozásra a szolgáltatás által fogadott eszközökről. Lásd: [Itt](./iot-hub-devguide-messages-c2d.md#message-feedback) visszajelzési üzenetek további információt. |
+| Szolgáltatás | Fogadó-hivatkozás | `/messages/serviceBound/feedback` | Befejezési, elutasítás és lemondás visszajelzési üzenetek erre a hivatkozásra a szolgáltatás által fogadott eszközökről. Visszajelzési üzenetek kapcsolatos további információkért lásd: [Itt](./iot-hub-devguide-messages-c2d.md#message-feedback). |
 
 Az alábbi kódrészlet bemutatja, hogyan hozzon létre egy C2D üzenetet, majd azokat elküldi a olyan eszköz használatával [uAMQP kódtárat a Python](https://github.com/Azure/azure-uamqp-python).
 
@@ -127,11 +127,76 @@ A fentiek C2D visszajelzés üzenet oszlopának tartalomtípusa `application/vnd
 * Kulcs `originalMessageId` visszajelzés a szervezet rendelkezik a szolgáltatás által küldött eredeti C2D üzenet azonosítója. Ez a visszajelzési C2D üzenetek korrelációját használható.
 
 ### <a name="receive-telemetry-messages-service-client"></a>(Ügyfél-szolgáltatás) telemetriaüzenetek fogadásához
+Alapértelmezés szerint az IoT Hub egy beépített eseményközpont betöltött eszköz telemetriai üzeneteket tárolja. A szolgáltatásügyfél az AMQP protokollt használhatja a tárolt események fogadására.
+
+Erre a célra a szolgáltatási ügyfél először meg kell csatlakozni az IoT Hub-végponton, és a egy átirányítási-cím a beépített az Event Hubs fogadására. Adatszolgáltatási ügyfél ezután használja a megadott cím a beépített Event hubhoz való csatlakozáshoz.
+
+Az ügyfél minden egyes lépésének nyújtjuk át az alábbi adatokra van szüksége:
+* Érvényes hitelesítő adatokat (szolgáltatás SAS-token).
+* A fogyasztói csoportot partíció szándékában olvasni az üzeneteket a helyes formátumú elérési útját. Egy adott felhasználói csoport és a partíció azonosítóhoz, az elérési út formátuma a következő: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (az alapértelmezett felhasználói csoport `$Default`).
+* Egy nem kötelező szűrési predikátum szabálytulajdonságok kiindulási pont, a partíció (Ez lehet egy feladatütemezési számát, offset vagy a várólistán lévő időbélyeg formájában).
+
+Az alábbi kódrészlet [uAMQP kódtárat a Python](https://github.com/Azure/azure-uamqp-python) a fenti lépések bemutatása.
+
+```python
+import json
+import uamqp
+import urllib
+import time
+
+# Use generate_sas_token implementation available here: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#security-token-structure
+from helper import generate_sas_token
+
+iot_hub_name = '<iot-hub-name>'
+hostname = '{iot_hub_name}.azure-devices.net'.format(iot_hub_name=iot_hub_name)
+policy_name = 'service'
+access_key = '<primary-or-secondary-key>'
+operation = '/messages/events/ConsumerGroups/{consumer_group}/Partitions/{p_id}'.format(consumer_group='$Default', p_id=0)
+
+username = '{policy_name}@sas.root.{iot_hub_name}'.format(policy_name=policy_name, iot_hub_name=iot_hub_name)
+sas_token = generate_sas_token(hostname, access_key, policy_name)
+uri = 'amqps://{}:{}@{}{}'.format(urllib.quote_plus(username), urllib.quote_plus(sas_token), hostname, operation)
+
+# Optional filtering predicates can be specified using endpiont_filter
+# Valid predicates include:
+# - amqp.annotation.x-opt-sequence-number
+# - amqp.annotation.x-opt-offset
+# - amqp.annotation.x-opt-enqueued-time
+# Set endpoint_filter variable to None if no filter is needed
+endpoint_filter = b'amqp.annotation.x-opt-sequence-number > 2995'
+
+# Helper function to set the filtering predicate on the source URI
+def set_endpoint_filter(uri, endpoint_filter=''):
+  source_uri = uamqp.address.Source(uri)
+  source_uri.set_filter(endpoint_filter)
+  return source_uri
+
+receive_client = uamqp.ReceiveClient(set_endpoint_filter(uri, endpoint_filter), debug=True)
+try:
+  batch = receive_client.receive_message_batch(max_batch_size=5)
+except uamqp.errors.LinkRedirect as redirect:
+  # Once a redirect error is received, close the original client and recreate a new one to the re-directed address
+  receive_client.close()
+
+  sas_auth = uamqp.authentication.SASTokenAuth.from_shared_access_key(redirect.address, policy_name, access_key)
+  receive_client = uamqp.ReceiveClient(set_endpoint_filter(redirect.address, endpoint_filter), auth=sas_auth, debug=True)
+
+# Start receiving messages in batches
+batch = receive_client.receive_message_batch(max_batch_size=5)
+for msg in batch:
+  print('*** received a message ***')
+  print(''.join(msg.get_data()))
+  print('\t: ' + str(msg.annotations['x-opt-sequence-number']))
+  print('\t: ' + str(msg.annotations['x-opt-offset']))
+  print('\t: ' + str(msg.annotations['x-opt-enqueued-time']))
+```
+
+Egy adott eszköz azonosítója az IoT Hub használja az Eszközazonosító kivonatát meghatározásához melyik partíción tárolja az üzeneteket a. A fenti kódrészletben az események fogadását az egyetlen mutatja be ilyen partíció. Vegye figyelembe azonban, hogy egy tipikus alkalmazás gyakran kell az összes event hub-partíció tárolt események beolvasása.
 
 
 ### <a name="additional-notes"></a>További megjegyzések
 * Az AMQP-kapcsolatok a hálózati problémáról, illetve a hitelesítési jogkivonat (létrehozva a kódban) lejárta miatt előfordulhat, hogy tartománnyá. A szolgáltatásügyfél kell kezelni az ilyen körülmények között, és újra létrehozza a kapcsolatot és a hivatkozásokat, ha szükséges. A hitelesítési jogkivonat lejárati esetben az ügyfél is proaktívan megújíthatják meg a kapcsolat legördülő elkerülése érdekében a lejárat előtt a jogkivonatot.
-* Néhány esetben az ügyfél képes megfelelően kezeli a hivatkozás átirányítások kell lennie. Tekintse meg az ehhez a AMQP-ügyfél dokumentációját.
+* Néhány esetben az ügyfél képes megfelelően kezeli a hivatkozás átirányítások kell lennie. Ez a művelet kezelése az AMQP ügyfél dokumentációban tájékozódhat.
 
 ### <a name="receive-cloud-to-device-messages-device-and-module-client"></a>Felhőből az eszközre irányuló üzenetek (eszköz- és modul-ügyfél)
 Az eszközoldalon használt AMQP-kapcsolatok a következők:

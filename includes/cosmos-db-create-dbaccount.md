@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: rimman
 ms.custom: include file
 ms.openlocfilehash: 5d57d7e18befba175a5a8a825494ce512644b5a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553037"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131778"
 ---
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Kattintson az **Erőforrás létrehozása** > **Adatbázisok** > **Azure Cosmos DB** elemre.
@@ -26,7 +26,7 @@ ms.locfileid: "60553037"
     |---|---|---|
     |Előfizetés|Előfizetés neve|Válassza ki, hogy az Azure Cosmos-fiókhoz használni kívánt Azure-előfizetést. |
     |Erőforráscsoport|Erőforráscsoport neve|Válasszon ki egy erőforráscsoportot, vagy válasszon **új létrehozása**, majd adja meg egy egyedi nevet az új erőforráscsoportnak. |
-    | Fiók neve|Adjon meg egy egyedi nevet|Adjon meg egy nevet az Azure Cosmos-fiók azonosításához. A rendszer a *documents.azure.com* utótaggal egészíti ki a megadott azonosítót az URI létrehozásához, ezért válasszon egyedi azonosítót.<br><br>Az azonosító csak kisbetűket, számokat és kötőjelet (-) tartalmazhat. 3-31 karakter hosszúságúnak kell lennie.|
+    | Fióknév|Adjon meg egy egyedi nevet|Adjon meg egy nevet az Azure Cosmos-fiók azonosításához. A rendszer a *documents.azure.com* utótaggal egészíti ki a megadott azonosítót az URI létrehozásához, ezért válasszon egyedi azonosítót.<br><br>Az azonosító csak kisbetűket, számokat és kötőjelet (-) tartalmazhat. 3-31 karakter hosszúságúnak kell lennie.|
     | API|Mag (SQL)|A létrehozni kívánt fiók típusát az API határozza meg. Az Azure Cosmos DB öt API-kat biztosít: Core (SQL) és a dokumentum adatok esetében a Gremlin graph adatváltozásainak, az Azure Table és a Cassandra a mongodb-hez. Jelenleg minden API egy külön fiókot kell létrehoznia. <br><br>Válassza ki **Core (SQL)** egy dokumentum-adatbázis és a lekérdezés létrehozása SQL-szintaxis használatával. <br><br>[További információ az SQL API](../articles/cosmos-db/documentdb-introduction.md).|
     | Hely|Válassza ki a felhasználóihoz legközelebb eső régiót|Válassza ki az Azure Cosmos DB-fiókot üzemeltetéséhez használni kívánt földrajzi helyet. Tegye lehetővé számukra a lehető leggyorsabb hozzáférést biztosítsa az adatokhoz a felhasználók legközelebb eső helyet használja.|
    

@@ -1,5 +1,5 @@
 ---
-title: A Service Bus-üzenetsorok használata Node.js-ben |} A Microsoft Docs
+title: Azure Service Bus-üzenetsorok használata Node.js-ben |} A Microsoft Docs
 description: Megtudhatja, hogyan használhatja a Service Bus-üzenetsorok az Azure Node.js-alkalmazásból.
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -14,22 +14,25 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 6159609f894f967e8ee372a0ee316eb900537aba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1426b3d31159280ad9aac2dd240a5f083c40752d
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60590016"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988306"
 ---
-# <a name="how-to-use-service-bus-queues-with-nodejs"></a>Service Bus-üzenetsorok használata a node.js használatával
+# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azure-sb-package"></a>Service Bus-üzenetsorok használata a Node.js és az azure-sb csomag
+> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> - [(Node.js |} azure-sb)](service-bus-nodejs-how-to-use-queues.md)
+> - [(Node.js |} @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
 
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
+Ebben az oktatóanyagban megismerheti, hogyan hozhat létre a Node.js-alkalmazások üzeneteket küld és fogad üzeneteket egy Service Bus üzenetsor használatával a [azure-sb](https://www.npmjs.com/package/azure-sb) csomagot. A minták JavaScript nyelven íródtak, és a Node.js használata [Azure-modul](https://www.npmjs.com/package/azure) melyik belső használ a `azure-sb` csomagot.
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre a Node.js-alkalmazások üzeneteket küldeni, illetve üzeneteket fogadhat a Service Bus-üzenetsorba. A Kódminták JavaScript nyelven íródtak, és használja az Node.js Azure-modul. 
+A [azure-sb](https://www.npmjs.com/package/azure-sb) használ csomag [Service Bus REST futásidejű API-k](/rest/api/servicebus/service-bus-runtime-rest). Kérheti, hogy egy gyorsabb, az új felület [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) csomag, amely használja a gyorsabb [AMQP 1.0 protokoll](service-bus-amqp-overview.md). Az új csomag kapcsolatos további információkért lásd: [Service Bus-üzenetsorok használata a Node.js és @azure/service-bus csomag](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package), ellenkező esetben kihívásokra, hogyan használhatja a [azure](https://www.npmjs.com/package/azure) csomagot.
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Ha nem rendelkezik egy üzenetsorba való együttműködéshez, kövesse lépéseket a [egy Service Bus-üzenetsor létrehozása az Azure portal](service-bus-quickstart-portal.md) várólista létrehozásához a cikkben.
+- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Ha nem rendelkezik egy üzenetsorba való együttműködéshez, kövesse lépéseket a [egy Service Bus-üzenetsor létrehozása az Azure portal](service-bus-quickstart-portal.md) várólista létrehozásához a cikkben.
     1. Olvassa el a gyors **áttekintése** Service Bus **üzenetsorok**. 
     2. Hozzon létre egy Service Bus **névtér**. 
     3. Első a **kapcsolati karakterlánc**. 
@@ -46,7 +49,7 @@ Az Azure Service Bus, töltse le, és használhatja az Node.js Azure-csomagot. E
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Használja a Node Package Manager (NPM) a csomag beszerzése
 1. Használja a **node.js-hez készült Windows PowerShell** parancssori ablakban, keresse meg a **c:\\csomópont\\sbqueues\\WebRole1** mappa, amelyben létrehozta a minta az alkalmazás.
-2. Típus **npm telepítése azure** a parancssori ablakba, amely kell eredményeznie, a következőhöz hasonló kimenetet:
+2. Típus **npm telepítése azure** a parancssori ablakba, amely kell eredményeznie, az alábbi példához hasonló kimenetet:
 
     ```
     azure@0.7.5 node_modules\azure
@@ -71,7 +74,7 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-an-azure-service-bus-connection"></a>Egy Azure Service Bus-kapcsolat beállítása
-Az Azure-modul olvassa be a környezeti változó `AZURE_SERVICEBUS_CONNECTION_STRING` a Service Bus a csatlakozáshoz szükséges információk beszerzéséhez. Ha nincs beállítva ehhez a környezeti változóhoz, meg kell adnia a fiókadatok hívásakor `createServiceBusService`.
+Az Azure-modul olvassa be a környezeti változó `AZURE_SERVICEBUS_CONNECTION_STRING` a Service Bus a csatlakozáshoz szükséges információk beszerzéséhez. Ha ez a környezeti változó értéke nincs beállítva, meg kell adnia a fiókadatok hívásakor `createServiceBusService`.
 
 A környezeti változók beállítása példa a [az Azure portal] [ Azure portal] egy Azure-webhelyen talál [a Storage Node.js-webalkalmazás] [ Node.js Web Application with Storage].
 
@@ -147,12 +150,12 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 });
 ```
 
-A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. Az üzenetsorban tárolt üzenetek száma korlátlan, az üzenetsor által tárolt üzenetek teljes mérete azonban korlátozva van. Az üzenetsor ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB. Kvóták kapcsolatos további információkért lásd: [Service Bus-kvóták][Service Bus quotas].
+A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. Nem egy üzenetsorban tárolt üzenetek száma korlátozott, de korlátozva van az üzenetsor által tárolt üzenetek teljes mérete. Az üzenetsor ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB. Kvóták kapcsolatos további információkért lásd: [Service Bus-kvóták][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy üzenetsorból
 Egy üzenetsor használatával fogadása a `receiveQueueMessage` metódust a **ServiceBusService** objektum. Alapértelmezés szerint az üzenetek törlődnek az üzenetsorból, az olvasott; azonban olvasása (betekintési), és az üzenet zárolása törlése az üzenetsorból által a nem kötelező paraméter nélkül `isPeekLock` való **igaz**.
 
-Az alapértelmezett viselkedést, beolvasása, illetve a fogadás művelet részeként az üzenet törlése a legegyszerűbb modell, és forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet egy hiba esetén a legjobban. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, jelölte, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
+Az alapértelmezett viselkedést, beolvasása, illetve a fogadás művelet részeként az üzenet törlése a legegyszerűbb modell, és a leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet, ha hiba történik. Ez a viselkedés megismeréséhez, fontolja meg egy forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, jelölte, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
 
 Ha a `isPeekLock` paraméter értéke **igaz**, a receive két szakaszból álló művelet lesz, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek működését zavarják a hiányzó üzenetek. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. A fogadási folyamat második fázisa meghívásával befejezése után az alkalmazás befejezi az üzenet feldolgozását (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), `deleteMessage` metódust, és a paramétert a törlendő üzenet megadása. A `deleteMessage` módszer jelöli meg az üzenetet, és eltávolítja az üzenetsorból.
 
@@ -177,11 +180,14 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Az alkalmazás-összeomlások és nem olvasható üzenetek kezelése
-A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból az üzenet feldolgozása nem sikerült, akkor meghívhatja az `unlockMessage` metódust a **ServiceBusService** objektum. Ennek hatására a Service Bus feloldja az az üzenetsorban lévő üzenet zárolását, és tegye elérhetővé számára az azonos fogyasztó alkalmazás általi vagy egy másik fogyasztó alkalmazás általi ismételt fogadását.
+A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból az üzenet feldolgozása nem sikerült, akkor meghívhatja az `unlockMessage` metódust a **ServiceBusService** objektum. Service Bus feloldja az az üzenetsorban lévő üzenet zárolását, és tegye elérhetővé számára az azonos fogyasztó alkalmazás általi vagy egy másik fogyasztó alkalmazás általi ismételt fogadását fog okozni.
 
-Emellett van egy zárolva van, az üzenetsorban lévő üzenethez társított időtúllépés, és ha az alkalmazás nem tudja feldolgozni az üzenetet, mielőtt a zárolás időkorlát lejárta (például, ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet zárolását lesz, és adja meg elérhető az újbóli fogadását.
+Emellett van egy zárolva van, az üzenetsorban lévő üzenethez társított időtúllépés, és az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időtúllépés előtt lejár (például, ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet zárolását lesz, és adja meg elérhető az újbóli fogadását.
 
-Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a `deleteMessage` módszert hívja meg, akkor az üzenet újból kézbesítve lesz az alkalmazás amikor újraindul. Ezt gyakran nevezik *legalább egyszeri feldolgozásnak*, vagyis minden üzenetet legalább egyszer dolgozza, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran az üzenet **MessageId** tulajdonságával érhető el, amely állandó marad a kézbesítési kísérletek során.
+Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a `deleteMessage` módszert hívja meg, akkor az üzenet újból kézbesítve lesz az alkalmazás amikor újraindul. Ezt a módszert gyakran nevezik *legalább egyszeri feldolgozásnak*, vagyis minden üzenetet legalább egyszer dolgozza, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek, az alkalmazásfejlesztők hozzá kell adnia további logikát az alkalmazásuk kezelésére a duplikált üzenetek kézbesítését. Gyakran elért használatával a **üzenetazonosító** tulajdonság az üzenet, amely állandó marad a kézbesítési kísérletek során.
+
+> [!NOTE]
+> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
 
 ## <a name="next-steps"></a>További lépések
 Üzenetsorokkal kapcsolatos további tudnivalókért lásd a következőket.

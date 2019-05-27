@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: bbcf38ab54632144920b729f433c222f426d96dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419904"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111546"
 ---
 1. Jelentkezzen be az [Azure Portalra][Azure portal].
 2. A bal oldali menüben válassza az **+ Erőforrás létrehozása** elemet. Ezt követően válassza az **Integration** > **Relay** lehetőséget. Ha nem látja a **Relay** elemet a listában, válassza az **Összes megjelenítése** lehetőséget a jobb felső sarokban. 

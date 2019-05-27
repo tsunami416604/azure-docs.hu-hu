@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 05/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: d9c607114d6c6c56c25303a88dcc11f4ab804eb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 18615cf737eedcd188fd59d2aa98482210b9333a
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60367988"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991589"
 ---
-# <a name="about-virtual-network-gateways-for-expressroute"></a>Az ExpressRoute virtuális hálózati átjáróinak ismertetése
-A virtuális hálózati átjáró Azure virtuális hálózatok közötti hálózati adatforgalom elküldésére használatosak, és a helyszínek. A virtuális hálózati átjáró használható a forgalom az ExpressRoute vagy VPN-forgalmat. Ez a cikk az ExpressRoute virtuális hálózati átjárók összpontosít, és tartalmazza a termékváltozatok kapcsolatos információkat, a Termékváltozat és átjárótípusok becsült teljesítmény.
+# <a name="expressroute-virtual-network-gateway-and-fastpath"></a>ExpressRoute virtuális hálózati átjáró és FastPath
+Csatlakozás az Azure virtuális hálózat és a helyszíni hálózat expressroute-on keresztül, először egy virtuális hálózati átjárót kell létrehoznia. A virtuális hálózati átjáró két célra szolgál: exchange IP-útvonalakat a hálózatok és a hálózati forgalom továbbítása között. Ez a cikk ismerteti az átjárótípusokról, az átjáró-termékváltozatok és a Termékváltozat által becsült teljesítmény. Ez a cikk emellett ismerteti az ExpressRoute [FastPath](#fastpath), lehetővé teszi a hálózati forgalmat a Mellőzés a teljesítmény javítása érdekében a virtuális hálózati átjáró a helyszíni hálózatból.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -59,6 +59,15 @@ ExpressRoute-átjárók az Azure-beli rendelkezésre állási zónák is telepí
 
 Az új átjáró-termékváltozatok támogatják az igényeinek leginkább megfelelő egyéb telepítési lehetőségekért is. Az új átjáró SKU-k használatával virtuális hálózati átjáró létrehozásakor, akkor is telepíteni az átjárót a megadott zónában. Ez a zónaszintű átjáró nevezzük. Zónaszintű az átjáró telepítésekor az átjáró összes példánya ugyanabban a rendelkezésre állási zónában üzemelnek.
 
+## <a name="fastpath"></a>FastPath
+Az ExpressRoute virtuális hálózati átjáró célja hálózati útvonalakat cserél, és a hálózati forgalom irányítását. A helyszíni hálózat és a virtuális hálózat között az adatok elérési útja a teljesítmény javítása FastPath tervezték. Ha engedélyezve van, FastPath küld hálózati forgalom közvetlenül a virtuális hálózaton lévő virtuális gépek megkerüli az átjáró. 
+
+FastPath érhető el az [ExpressRoute közvetlen](expressroute-erdirect-about.md) csak. Más szóval ez a funkció csak akkor, ha engedélyezheti, [csatlakozzon a virtuális hálózat](expressroute-howto-linkvnet-arm.md) az ExpressRoute-kapcsolatcsoport létrehozása az ExpressRoute közvetlen portra. FastPath továbbra is létrehozni, virtuális hálózat és helyszíni hálózat között útvonalakat cserél virtuális hálózati átjáróra van szükség. A virtuális hálózati átjáró Ultranagy teljesítményű vagy ErGw3AZ kell lennie.
+
+FastPath nem támogatja a következő funkciókat:
+* Átjáró alhálózatán található UDR: Ha az átjáró-alhálózatot a virtuális hálózat, a hálózati forgalmat a helyszíni hálózatból továbbra is a virtuális hálózati átjárót kell küldeni egy UDR alkalmaz.
+* Virtuális hálózatok közötti társviszony-létesítés: Ha más virtuális hálózatok társviszonyban, amely kapcsolódik a hálózati forgalmat a helyszíni hálózatból a más virtuális hálózatokkal (azaz az úgynevezett "Küllő" virtuális hálózatok) továbbra is kell küldeni a virtuális hálózat ExpressRoute átjáró. A megoldás, hogy a virtuális hálózatok csatlakoztatása ExpressRoute-kapcsolatcsoporthoz közvetlenül.
+
 ## <a name="resources"></a>REST API-k és PowerShell-parancsmagok
 További technikai erőforrások és a megadott szintaxissal kapcsolatos követelményeket REST API-k és PowerShell-parancsmagok használata a virtuális hálózati átjáró-konfigurációk tekintse meg a következő lapokon:
 
@@ -73,3 +82,5 @@ Lásd: [ExpressRoute áttekintése](expressroute-introduction.md) elérhető kap
 Lásd: [az ExpressRoute virtuális hálózati átjáró létrehozása](expressroute-howto-add-gateway-resource-manager.md) további információ az ExpressRoute-átjáró létrehozásához.
 
 Lásd: [zónaredundáns virtuális hálózati átjáró létrehozása](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md) átjárók zónaredundáns konfigurálásáról további információt.
+
+Lásd: [virtuális hálózati kapcsolat expressroute](expressroute-howto-linkvnet-arm.md) FastPath engedélyezésével kapcsolatos további információt. 

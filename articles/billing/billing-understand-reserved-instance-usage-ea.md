@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/07/2019
 ms.author: banders
-ms.openlocfilehash: 09242eaa6058229226062801f5f71f2bf4c7a9e8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b2452580eaecc0ab922f8e7db48676f70831a8ca
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789394"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66126843"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Nagyvállalati Szerződés fenntartási költségeket és használat beszerzése
 
@@ -42,9 +42,9 @@ Két adatkészletet összehasonlítása:
 
 | Adatok | Tényleges költség-adatkészlet | Amortizált költség-adatkészlet |
 | --- | --- | --- |
-| Foglalás beszerzések | Ebben a nézetben érhető el.<br>  Úgy szerezheti be az adatok szűrése ChargeType = &quot;beszerzési&quot;. <br> Tekintse meg reservationid értékhez vagy ReservationName tudni, hogy melyik foglalás a díjat.  | Ez a nézet nem alkalmazható. <br> Beszerzési költségek amortizált adatok nincsenek megadva. |
+| Foglalás beszerzések | Ebben a nézetben érhető el.<br><br>  Úgy szerezheti be az adatok szűrése ChargeType = &quot;beszerzési&quot;. <br><br> Tekintse meg reservationid értékhez vagy ReservationName tudni, hogy melyik foglalás a díjat.  | Ez a nézet nem alkalmazható. <br><br> Beszerzési költségek amortizált adatok nincsenek megadva. |
 | effectivePrice | A tulajdonság értéke nulla, amely lekérdezi a foglalási kedvezményt használatra. | Óraalapú elszámolással költsége a foglalást, amely rendelkezik a foglalási kedvezményt használat értéke. |
-| A fel nem használt foglalás (biztosít a foglalás nem használható egy nap alatt órák számát és a veszteség részének pénzügyi értékét) | Ebben a nézetben nem alkalmazható. | Ebben a nézetben érhető el.<br> Ezen adatok beolvasásához, szűrjön az ChargeType = &quot;UnusedReservation&quot;.<br>  Tekintse meg reservationid értékhez vagy ReservationName tudni, hogy melyik foglalás volt eredményeztek. Ez az, hogy mekkora a Foglalás volt adattisztítást a napon.  |
+| A fel nem használt foglalás (biztosít a foglalás nem használható egy nap alatt órák számát és a veszteség részének pénzügyi értékét) | Ebben a nézetben nem alkalmazható. | Ebben a nézetben érhető el.<br><br> Ezen adatok beolvasásához, szűrjön az ChargeType = &quot;UnusedReservation&quot;.<br><br>  Tekintse meg reservationid értékhez vagy ReservationName tudni, hogy melyik foglalás volt eredményeztek. Ez az, hogy mekkora a Foglalás volt adattisztítást a napon.  |
 | Egységár (az árlista erőforrás díj) | Szabad | Szabad |
 
 Más Azure-használati adatok elérhető információk megváltozott:
@@ -77,12 +77,12 @@ Információk az alábbi táblázatban kapcsolatos metrika- és a szűrő segít
 | **Az API-adatok típusa** | API-hívás művelet |
 | --- | --- |
 | **Minden költséget (használati és vásárlások)** | Cserélje le ActualCost {metrika} |
-| **Itt van a foglalási kedvezményt használat** | Cserélje le ActualCost {metrika}<br>Helyettesítse be {szűrő} a: properties/reservationId%20ne%20 |
-| **Használat, amelyek nem tudták beszerezni a foglalási kedvezményt** | Cserélje le ActualCost {metrika}<br>Helyettesítse be {szűrő} a: properties/reservationId%20eq%20 |
+| **Itt van a foglalási kedvezményt használat** | Cserélje le ActualCost {metrika}<br><br>Helyettesítse be {szűrő} a: properties/reservationId%20ne%20 |
+| **Kapta a foglalási kedvezményt használat** | Cserélje le ActualCost {metrika}<br><br>Helyettesítse be {szűrő} a: properties/reservationId%20eq%20 |
 | **Amortizált költségek (használati és vásárlások)** | Cserélje le AmortizedCost {metrika} |
-| **A fel nem használt foglalás jelentés** | Cserélje le AmortizedCost {metrika}<br>Helyettesítse be {szűrő} a: properties/ChargeType%20eq%20'UnusedReservation " |
-| **Foglalás beszerzések** | A ActualCostReplace {szűrő} {metrika} cserélje le: properties/ChargeType%20eq%20'Purchase "  |
-| **A befizetett** | Cserélje le ActualCost {metrika}<br>Helyettesítse be {szűrő} a: properties/ChargeType%20eq%20'Refund " |
+| **A fel nem használt foglalás jelentés** | Cserélje le AmortizedCost {metrika}<br><br>Helyettesítse be {szűrő} a: properties/ChargeType%20eq%20'UnusedReservation " |
+| **Foglalás beszerzések** | Cserélje le ActualCost {metrika}<br><br>Helyettesítse be {szűrő} a: properties/ChargeType%20eq%20'Purchase "  |
+| **A befizetett** | Cserélje le ActualCost {metrika}<br><br>Helyettesítse be {szűrő} a: properties/ChargeType%20eq%20'Refund " |
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Az új adatokat a használati CSV-fájl letöltése
 

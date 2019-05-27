@@ -4,24 +4,24 @@ description: Használja az Azure Resource Manager-sablonok létrehozása és kon
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: bcf9e0492e58de79efbb16f9ee13adbd0f27b572
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 99f1e41107c277c8b3f1b21f81952d5d5cadaa29
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077770"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968868"
 ---
-# <a name="create-azure-cosmos-db-api-for-mongodb-resources-from-a-resource-manager-template"></a>Azure Cosmos DB API létrehozása a MongoDB-erőforrások egy Resource Manager-sablonból
+# <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok használata az Azure Cosmos DB MongoDB API-erőforrások kezelése
 
-Ismerje meg, hogyan hozhat létre egy Azure Cosmos DB API a MongoDB-erőforrások egy Azure Resource Manager-sablon használatával. Az alábbi példa az Azure Cosmos DB-fiókot hoz létre a MongoDB API- [Azure gyorsindítási sablon](https://aka.ms/mongodb-arm-qs). Ezzel a sablonnal hoz létre egy Azure Cosmos-fiók MongoDB API-hoz két a gyűjteményeket, amelyek megosztása a 400 RU/s átviteli sebesség, az adatbázis szintjén.
+## Azure Cosmos DB API létrehozása a MongoDB-fiókot, adatbázist és gyűjteményt <a id="create-resource"></a>
 
-Itt látható a sablon egy példányát:
+Hozzon létre egy Azure Resource Manager-sablon használatával az Azure Cosmos DB-erőforrásokat. Ezzel a sablonnal hoz létre egy Azure Cosmos-fiók MongoDB API-hoz két a gyűjteményeket, amelyek megosztása a 400 RU/s átviteli sebesség, az adatbázis szintjén. Másolja ki a sablont, és üzembe helyezése a lent látható módon, vagy keresse fel [Azure gyorsindítási galéria](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb/) és üzembe helyezése az Azure Portalról. Is a sablon letöltése a helyi számítógépen, vagy hozzon létre egy új sablont és a helyi elérési útját adja meg a `--template-file` paraméter.
 
 [!code-json[create-cosmos-mongo](~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json)]
 
-## <a name="deploy-via-azure-cli"></a>Üzembe helyezés az Azure CLI
+### <a name="deploy-via-azure-cli"></a>Üzembe helyezés az Azure CLI
 
 Az Azure CLI használatával a Resource Manager-sablon üzembe helyezéséhez **másolási** a parancsfájlt, és válasszon **kipróbálás** az Azure Cloud shell megnyitásához. Illessze be a parancsfájlt, kattintson a jobb gombbal a rendszerhéjat, és válassza **illessze be**:
 
@@ -47,7 +47,48 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 A `az cosmosdb show` parancs megjeleníti az újonnan létrehozott Azure Cosmos-fiók után van kiépítve. Ha úgy dönt, hogy a cloud Shell használata helyett használhatja az Azure CLI helyileg telepített verzióját, [Azure parancssori felület (CLI)](/cli/azure/) cikk.
 
-Az előző példában a githubon tárolt sablonból rendelkezik hivatkozott. Is a sablon letöltése a helyi számítógépen, vagy hozzon létre egy új sablont és a helyi elérési útját adja meg a `--template-file` paraméter.
+## Átviteli sebesség (RU/s) az adatbázis frissítése <a id="database-ru-update"></a>
+
+Az alábbi sablont frissíteni fogja az adatbázis átviteli sebességet. Másolja ki a sablont, és üzembe helyezése a lent látható módon, vagy keresse fel [Azure gyorsindítási galéria](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb-database-ru-update/) és üzembe helyezése az Azure Portalról. Is a sablon letöltése a helyi számítógépen, vagy hozzon létre egy új sablont és a helyi elérési útját adja meg a `--template-file` paraméter.
+
+[!code-json[cosmosdb-mongodb-database-ru-update](~/quickstart-templates/101-cosmosdb-mongodb-database-ru-update/azuredeploy.json)]
+
+### <a name="deploy-database-template-via-azure-cli"></a>Azure CLI-n keresztül az adatbázis-sablon üzembe helyezése
+
+Azure CLI használatával a Resource Manager-sablon üzembe helyezéséhez válassza **kipróbálás** az Azure Cloud shell megnyitásához. Illessze be a parancsfájlt, kattintson a jobb gombbal a rendszerhéjat, és válassza **illessze be**:
+
+```azurecli-interactive
+read -p 'Enter the Resource Group name: ' resourceGroupName
+read -p 'Enter the account name: ' accountName
+read -p 'Enter the database name: ' databaseName
+read -p 'Enter the new throughput: ' throughput
+
+az group deployment create --resource-group $resourceGroupName \
+   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-mongodb-database-ru-update/azuredeploy.json \
+   --parameters accountName=$accountName databaseName=$databaseName throughput=$throughput
+```
+
+## Átviteli sebesség (RU/s), a gyűjtemény frissítése <a id="collection-ru-update"></a>
+
+Az alábbi sablont frissíti a gyűjtemény átviteli sebességének. Másolja ki a sablont, és üzembe helyezése a lent látható módon, vagy keresse fel [Azure gyorsindítási galéria](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb-collection-ru-update/) és üzembe helyezése az Azure Portalról. Is a sablon letöltése a helyi számítógépen, vagy hozzon létre egy új sablont és a helyi elérési útját adja meg a `--template-file` paraméter.
+
+[!code-json[cosmosdb-mongodb-collection-ru-update](~/quickstart-templates/101-cosmosdb-mongodb-collection-ru-update/azuredeploy.json)]
+
+### <a name="deploy-collection-template-via-azure-cli"></a>Azure CLI-n keresztül gyűjtemény sablon üzembe helyezése
+
+Azure CLI használatával a Resource Manager-sablon üzembe helyezéséhez válassza **kipróbálás** az Azure Cloud shell megnyitásához. Illessze be a parancsfájlt, kattintson a jobb gombbal a rendszerhéjat, és válassza **illessze be**:
+
+```azurecli-interactive
+read -p 'Enter the Resource Group name: ' resourceGroupName
+read -p 'Enter the account name: ' accountName
+read -p 'Enter the database name: ' databaseName
+read -p 'Enter the collection name: ' collectionName
+read -p 'Enter the new throughput: ' throughput
+
+az group deployment create --resource-group $resourceGroupName \
+   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-mongodb-collection-ru-update/azuredeploy.json \
+   --parameters accountName=$accountName databaseName=$databaseName collectionName=$collectionName throughput=$throughput
+```
 
 ## <a name="next-steps"></a>További lépések
 

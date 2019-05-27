@@ -11,22 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fe2013ff84dd0451fed7d108539606520cb9403
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b38422b22885ad96c6681abe58b897155809521
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60384514"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113188"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Hozzáférés felülvizsgálata maga a csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal
 
 Az Azure Active Directory (Azure AD) egyszerűbbé teszi a vállalatok csoportokhoz vagy alkalmazásokhoz való hozzáférés kezelése az Azure AD és más Microsoft Online Services szolgáltatás az Azure AD hozzáférési felülvizsgálatok.
 
 Ez a cikk a saját egy csoporthoz vagy alkalmazáshoz való hozzáférés felülvizsgálata ismerteti.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- Azure AD Premium P2
+
+További információkért lásd: [mely felhasználók rendelkeznie kell licencekkel?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="open-the-access-review"></a>Nyissa meg a hozzáférési felülvizsgálatba
 

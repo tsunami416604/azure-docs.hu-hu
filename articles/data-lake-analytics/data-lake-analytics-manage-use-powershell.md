@@ -10,11 +10,11 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233582"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66156430"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -243,9 +243,9 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 Használja a `-Result` észleli, hogy befejeződött a feladat sikeresen befejeződött-e a paraméter. Ezekkel az értékekkel rendelkezik:
 
 * Megszakítva
-* Meghiúsult
-* None
-* Sikeres
+* Sikertelen
+* Egyik sem
+* Sikeres művelet
 
 ``` powershell
 # List Successful jobs.

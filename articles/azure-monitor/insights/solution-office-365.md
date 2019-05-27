@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
 ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58794019"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66130630"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -530,9 +530,9 @@ A Log Analytics-munkaterületet az Azure monitorban az Office 365-megoldás ált
 
 A következő tulajdonságok megegyeznek az összes Office 365-rekord.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
-| Typo | *OfficeActivity* |
+| Típus | *OfficeActivity* |
 | ClientIP | A tevékenység naplózásakor használt eszköz IP-címét. Az IP-cím IPv4 vagy IPv6 cím formátumban jelenik meg. |
 | OfficeWorkload | Az Office 365 szolgáltatás, amely a rekord hivatkozik.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Művelet | A felhasználói vagy rendszergazdai tevékenység neve.  |
@@ -541,7 +541,7 @@ A következő tulajdonságok megegyeznek az összes Office 365-rekord.
 | ResultStatus | Azt jelzi, hogy a (művelet tulajdonságban megadott) művelet sikeres volt-e vagy sem. Lehetséges értékek: Succeeded, részben vagy sikertelen. Az Exchange-rendszergazdai tevékenységhez, értéke pedig IGAZ vagy hamis. |
 | Felhasználói azonosító | A rekordnaplózást eredményező naplózott; műveletet végrehajtó felhasználó egyszerű Felhasználóneve (egyszerű felhasználónév) Ha például my_name@my_domain_name. Vegye figyelembe, hogy a Rendszerfiókok (például a SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végrehajtott tevékenységek rekordjai is szerepelnek. | 
 | UserKey | Egy alternatív Azonosítót a felhasználó a UserId tulajdonság azonosítja.  Például ez a tulajdonság megjelenik a passport egyedi azonosító (PUID), és az Exchange a SharePoint, a onedrive-on a felhasználók által végrehajtott eseményeket. Ez a tulajdonság is megadható ugyanazt az értéket a UserID tulajdonság számára a más szolgáltatások és a rendszer fiókok által végrehajtott eseményeket bekövetkező események|
-| UserType | A műveletet végrehajtó felhasználó típusa.<br><br>Adminisztratív körzet<br>Alkalmazás<br>DcAdmin<br>Normál<br>Foglalt<br>ServicePrincipal<br>Rendszer |
+| UserType | A műveletet végrehajtó felhasználó típusa.<br><br>Adminisztratív körzet<br>Alkalmazás<br>DcAdmin<br>Normál<br>Fenntartott<br>ServicePrincipal<br>Rendszer |
 
 
 ### <a name="azure-active-directory-base"></a>Az Azure Active Directory alap

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
 ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266976"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128653"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok numerikus függvények
 
@@ -40,7 +40,7 @@ A Resource Manager az alábbi funkciókat biztosít az egész számok használat
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="add"></a>add
+## <a name="add"></a>hozzáadás
 `add(operand1, operand2)`
 
 A két megadott egész számoknak az összegét adja vissza.
@@ -120,7 +120,7 @@ Egy iteráció hurok indexét adja vissza.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| loopName | Nem | sztring | Neve a ciklus ismétléseinek beolvasása. |
+| loopName | Nem | string | Neve a ciklus ismétléseinek beolvasása. |
 | offset |Nem |int |A szám a nulláról induló iteráció értékhez hozzá kíván adni. |
 
 ### <a name="remarks"></a>Megjegyzések
@@ -504,7 +504,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| modResult | Int | 1 |
+| modResult | Int | 1. |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 

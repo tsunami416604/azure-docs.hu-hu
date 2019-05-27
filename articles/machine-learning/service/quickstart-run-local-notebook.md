@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3afea20fe02eafbf14b5162eef3a198d27140b9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60753012"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864382"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: A saját notebook server használata az Azure Machine Learning használatának első lépései
 
-Futtassa a kódot, amely bejelentkezik az értékeket a saját notebook server segítségével a [Azure Machine Learning szolgáltatás munkaterület](concept-azure-machine-learning-architecture.md). A munkaterület az eligazodást blokk, amellyel kísérletezhet, betanítását és a Machine Learning gépi tanulási modellek üzembe helyezése a felhőben.
+Saját Python-környezetet és a Jupyter Notebook Server használatával Azure Machine Learning szolgáltatás használatának első lépései.  Ehhez a rövid útmutatóhoz az SDK-telepítés nélkül, tekintse meg a [a rövid útmutató: Ismerkedés az Azure Machine Learning felhőalapú notebook server használatával](quickstart-run-cloud-notebook.md).
 
-Ez a rövid útmutató a saját Python-környezetet és a Jupyter Notebook Server használ. Ehhez a rövid útmutatóhoz az SDK-telepítés nélkül, tekintse meg a [a rövid útmutató: Ismerkedés az Azure Machine Learning felhőalapú notebook server használatával](quickstart-run-cloud-notebook.md) 
+Ez a rövid útmutató bemutatja, hogyan használhatja a [az Azure Machine Learning szolgáltatás munkaterületén](concept-azure-machine-learning-architecture.md) a machine learning-példakísérleteket nyomon követéséhez. Python-kód, amely fog futtatni értékek jelentkezzen be a munkaterület.
 
 Ebben a rövid videó verziójának megtekintése:
 

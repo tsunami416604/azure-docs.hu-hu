@@ -9,17 +9,17 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
 ms.openlocfilehash: cf1cba6f6d26d66fc560c86ea42459fa276cc880
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310846"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66114909"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Az Azure-tárterület-áttelepítés – gyakran ismételt kérdések
 
 Ez a cikk az Azure-tárterület-áttelepítés kapcsolatos általános kérdéseket válaszol. 
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 
 **Hogyan hozhatok létre egy parancsfájlt, hogy fájlokat másoljon egy tárolót a másikba?**
 
@@ -297,6 +297,6 @@ Ha azt szeretné, csak az adatok letöltése a Storage Explorerben vagy más has
 
  Ehhez használja a [áttelepítési parancsfájl Blob](../scripts/storage-common-transfer-between-storage-accounts.md).
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Forduljon a támogatási szolgálathoz.
 
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

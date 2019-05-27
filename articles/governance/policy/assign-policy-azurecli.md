@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e30308ac2cda643cc0157f5e718157f6599751d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76f457b7d577fb2a08bbcc386328ce4d8e59f902
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60501007"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979619"
 ---
-# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Hozzon létre egy szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához az Azure CLI-vel
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Gyors útmutató: Hozzon létre egy szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához az Azure CLI-vel
 
 Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása.
 Ez a rövid útmutató végigvezeti Önt a folyamaton, amellyel létrehozhat egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést.
@@ -32,7 +32,7 @@ Ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Regisztrálja a Policy Insights erőforrás-szolgáltatót az Azure CLI használatával. Az erőforrás-szolgáltató regisztrálásával biztosítja, hogy az előfizetése működni fog vele. Erőforrás-szolgáltató regisztrálásához rendelkeznie kell engedéllyel az erőforrás-szolgáltató regisztrálása művelet. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
+Az Azure CLI-vel az Azure Policy Insights erőforrás-szolgáltató regisztrálásához. Az erőforrás-szolgáltató regisztrálásával biztosítja, hogy az előfizetése működni fog vele. Erőforrás-szolgáltató regisztrálásához rendelkeznie kell engedéllyel az erőforrás-szolgáltató regisztrálása művelet. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
 
 ```azurecli-interactive
 az provider register --namespace 'Microsoft.PolicyInsights'
@@ -54,7 +54,7 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 
 Az előző parancs a következő információkat használja:
 
-- **Name** – A hozzárendelés tényleges neve.  A fenti példában az *audit-vm-manageddisks* nevet használtuk.
+- **Name** – A hozzárendelés tényleges neve. A fenti példában az *audit-vm-manageddisks* nevet használtuk.
 - **DisplayName** – A szabályzat-hozzárendelés megjelenített neve. Ebben az esetben használ *hozzárendelés felügyelt lemezek nélküli virtuális gépek naplózása*.
 - **Szabályzat** – A szabályzatdefiníció azonosítója, amely alapján létre fogja hozni a hozzárendelést. Ebben az esetben a szabályzatdefiníció azonosítója *felügyelt lemezeket nem használó virtuális gépek naplózása*. A szabályzatdefiníció azonosítójának lekéréséhez futtassa ezt a parancsot: `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
 - **Hatókör** – A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet. Győződjön meg arról, hogy a &lt;scope&gt; helyett az erőforráscsoport neve szerepel.

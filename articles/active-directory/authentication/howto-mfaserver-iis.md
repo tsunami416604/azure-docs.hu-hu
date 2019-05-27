@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6404356edca606d78656011b9dec654e9f29edd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a019aaec270fe1beb3914e7ab388fce9a701bcc
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415029"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988607"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Az Azure Multi-Factor Authentication-kiszolgáló konfigurálása IIS-webalkalmazásokhoz
 
@@ -30,7 +30,7 @@ Az Azure MFA-kiszolgáló IIS-hitelesítés szakaszában engedélyezheti és kon
 
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a bal oldali menüben lévő IIS-hitelesítés ikonra.
 2. Kattintson az **Űrlapalapú fülre**.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 4. A felhasználónév, jelszó és tartomány változók automatikus észleléséhez adja meg a bejelentkezési URL-címe (például `https://localhost/contoso/auth/login.aspx`) az űrlapalapú webhely automatikus konfigurálása párbeszédpanelen, és kattintson **OK**.
 5. Jelölje be a **Multi-Factor Authentication felhasználói egyeztetés megkövetelése** jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és többtényezős hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a többtényezős hitelesítés alól, ne jelölje be a jelölőnégyzetet.
 6. Ha az oldal változóit nem lehet automatikusan észlelni, kattintson a **Megadás manuálisan** lehetőségre az Űrlapalapú webhely automatikus konfigurálása párbeszédpanelen.
@@ -54,7 +54,7 @@ Integrált Windows HTTP-hitelesítést használó IIS-webalkalmazás védelméhe
 
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a bal oldali menüben lévő IIS-hitelesítés ikonra.
 2. Kattintson a **HTTP** fülre.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 4. Az alap URL-cím hozzáadása párbeszédpanelen adja meg az URL-címet a webhelyhez, ahol a HTTP-hitelesítést végez (például <http://localhost/owa>), és adjon meg egy alkalmazásnevet (nem kötelező). Az alkalmazásnév az Azure Multi-Factor Authentication-jelentésekben jelenik meg, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
 5. Módosítja az Üresjárati időkorlát és a Munkamenetek maximális időtartama értékét, ha az alapértelmezett értékek nem elégségesek.
 6. Jelölje be a **Multi-Factor Authentication felhasználói egyeztetés megkövetelése** jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és többtényezős hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a többtényezős hitelesítés alól, ne jelölje be a jelölőnégyzetet.
@@ -74,6 +74,6 @@ Miután konfigurálta az űrlapalapú hitelesítés vagy a HTTP-hitelesítés UR
 A Megbízható IP-címek segítségével a felhasználók adott IP-címekről vagy alhálózatokról származó webhelykérések esetén kihagyhatják az Azure Multi-Factor Authenticationt. Például mentesítheti a felhasználókat az Azure Multi-Factor Authentication alól, ha az irodából jelentkeznek be. Ehhez az irodai alhálózatot Megbízható IP-címek bejegyzésként kell megadni. A Megbízható IP-címek konfigurálásához kövesse az alábbi eljárást:
 
 1. Az IIS-hitelesítés szakaszban kattintson a **Megbízható IP-címek** fülre.
-2. Kattintson a **Hozzáadás** parancsra.
+2. Kattintson a **Hozzáadás**lehetőségre.
 3. A Megbízható IP-címek hozzáadása párbeszédpanel megjelenésekor válassza az **Egyetlen IP-cím**, az **IP-címtartomány** vagy az **Alhálózat** választógombot.
-4. Adja meg az engedélyezési listához hozzáadni kívánt IP-címet, IP-címtartományt vagy alhálózatot. Ha alhálózatot ad meg, válassza ki a megfelelő hálózati maszkot, és kattintson az **OK** gombra. Ezzel az engedélyezési lista hozzáadása megtörtént.
+4. Adja meg az IP-címet, IP-címtartományt vagy alhálózatot, amelyet engedélyezni kell. Ha alhálózatot ad meg, válassza ki a megfelelő hálózati maszkot, és kattintson az **OK** gombra.

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3e40e72a4cbb154a7ccef153959e81f7054ea003
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 9658ed46e1a46aa3fc2c7fe251fd73b2ef0a13dd
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926387"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991365"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files-problémák hibaelhárítása
 
@@ -285,5 +285,7 @@ AadDsTenantNotFound hiba akkor fordul elő, amikor megpróbálja [engedélyezés
 
 AAD tartományi szolgáltatások engedélyezése az AAD-bérlő az előfizetés üzembe helyezett storage-fiókjában található. Az AAD-bérlő létrehozása egy felügyelt tartomány rendszergazdai jogosultságok szükségesek. Ha nem az Azure AD-bérlő rendszergazdája, forduljon a rendszergazdához, és kövesse a részletes útmutatónkat [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+[!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
+
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Forduljon a támogatási szolgálathoz.
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) beolvasni a probléma gyors megoldása érdekében.

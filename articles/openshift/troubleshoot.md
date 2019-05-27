@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: 9ef32273c007e7319b7f6df99f3d904f805c31f2
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 82678091c1d0b71e6209f6d03e9d1a0ca60fe03e
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550912"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992174"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Az Azure Red Hat OpenShift hibaelhárítása
 
@@ -23,10 +23,6 @@ Ez a cikk részletesen létrehozása vagy a Microsoft Azure Red Hat OpenShift f�
 
 Ha az Azure Red Hat OpenShift létrehozása a fürt használatával a `az` CLI-parancs meghiúsul, a létrehozás újrapróbálkozás továbbra is sikertelen lesz.
 Használat `az openshift delete` törölje a sikertelen fürtöt, majd hozzon létre egy teljesen új fürtöt.
-
-## <a name="untrusted-azure-red-hat-openshift-server-certificate"></a>Az Azure Red Hat OpenShift nem megbízható tanúsítvány
-
-Az OpenShift konzol egy önaláírt tanúsítványt használ. Amikor a rendszer kéri a böngészőben, a figyelmeztetés mellőzése, és fogadja el a "nem megbízható" tanúsítványt.
 
 ## <a name="hidden-azure-red-hat-openshift-cluster-resource-group"></a>Rejtett Azure Red Hat OpenShift fürterőforrás-csoportban
 

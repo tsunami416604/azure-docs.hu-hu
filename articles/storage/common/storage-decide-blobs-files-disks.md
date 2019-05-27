@@ -8,17 +8,19 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f66a2699b6d29f10633b4853801240f0590ff918
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 30c7c1c50e59162817d7cfab0d852d8e034457d0
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147640"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969419"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Annak eldöntése, mikor érdemes használni az Azure-Blobok, az Azure Files és az Azure-lemezek
+
 A Microsoft Azure tárolásához és eléréséhez, az adatok a felhőben az Azure Storage számos funkciót biztosít. Ez a cikk ismerteti az Azure-fájlok, Blobok és lemezek, és célja, hogy ezek a szolgáltatások közötti választás érdekében.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
+
 Az alábbi táblázat összehasonlítja a fájlok, Blobok és lemezek, és minden egyes megfelelő példa eseteit mutatja be.
 
 | Szolgáltatás | Leírás | A következő esetekben használja |
@@ -28,6 +30,7 @@ Az alábbi táblázat összehasonlítja a fájlok, Blobok és lemezek, és minde
 | **Azure-lemezek** | Ügyfélkódtárak biztosít és a egy [REST-felület](/rest/api/compute/manageddisks/disks/disks-rest-api) , amely lehetővé teszi az adatok állandó tárolása és elérése a csatlakoztatott virtuális merevlemezről. | Olvasási és írási adatok állandó lemezt natív fájlrendszer API-kat használó alkalmazások átemelése szeretné.<br/><br/>Ez nem szükséges a virtuális gép, amelyhez a lemez csatlakozik kívülről adatokat tárolni szeretné. |
 
 ## <a name="comparison-files-and-blobs"></a>Összehasonlítás: Fájl és BLOB
+
 Az alábbi táblázat hasonlítja össze az Azure Files az Azure Blobszolgáltatása révén.  
   
 ||||  
@@ -35,7 +38,7 @@ Az alábbi táblázat hasonlítja össze az Azure Files az Azure Blobszolgáltat
 |**Attribútum**|**Azure Blobs**|**Az Azure Files**|  
 |Tartóssági beállításai|LRS, ZRS, GRS, RA-GRS|LRS, ZRS, GRS|  
 |Kisegítő lehetőségek|REST API-k|REST API-k<br /><br /> Az SMB 2.1 és az SMB 3.0-s (standard fájlrendszer API-k)|  
-|Kapcsolatok|REST API-k – világszerte|REST API-k – világszerte<br /><br /> SMB 2.1--régión belüli<br /><br /> Az SMB 3.0-s – világszerte|  
+|Hálózati kapcsolat|REST API-k – világszerte|REST API-k – világszerte<br /><br /> SMB 2.1--régión belüli<br /><br /> Az SMB 3.0-s – világszerte|  
 |Végpontok|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |Könyvtárak|Névtere strukturálatlan|Igaz címtárobjektumok|  
 |Kis-és nagybetűk nevek|Kis- és nagybetűk megkülönböztetése|Kis-és nagybetű nincs megkülönböztetve, de a kis megőrzése|  
@@ -46,10 +49,11 @@ Az alábbi táblázat hasonlítja össze az Azure Files az Azure Blobszolgáltat
 |Ügyfélkódtárak|Több nyelv|Több nyelv|  
   
 ## <a name="comparison-files-and-disks"></a>Összehasonlítás: Fájlok és lemezek
+
 Az Azure Files Azure-lemezek egészítenek ki. Egy lemezt csak lehet csatolni, egy Azure virtuális gép egyszerre. Lemezek rögzített formátumú VHD-k tárolt és az Azure Storage-ban, és a virtuális gép által hosszú élettartamú adatok tárolására szolgálnak. Fájlmegosztások az Azure Files ugyanúgy elérni is, mivel a helyi lemez (fájlrendszer API-k használatával) érhető el, és több virtuális gép között megoszthatók.  
- 
+
 Az alábbi táblázat hasonlítja össze az Azure Files Azure-lemezek.  
- 
+
 ||||  
 |-|-|-|  
 |**Attribútum**|**Azure-lemezek**|**Az Azure Files**|  
@@ -58,11 +62,12 @@ Az alábbi táblázat hasonlítja össze az Azure Files Azure-lemezek.
 |Konfiguráció|A virtuális gép indításakor csatlakoztatva|Miután elindult a virtuális gép csatlakoztatva|  
 |Hitelesítés|Beépített|Net use beállítása|  
 |Adatelérési REST használatával|A virtuális merevlemez található fájl nem érhető el|Olyan megosztáson tárolt fájlok elérhetők|  
-|Max. méret|4 TiB-lemez|5 TiB fájlmegosztás és a megosztáson belüli 1 TiB-fájl|  
-|Maximális iops-érték|500 IOps|1000 IOps|  
-|Teljesítmény|Akár 60 MiB/s lemezenként|Cél értéke 60 MiB/s fájlmegosztásonként (beszerezheti a nagyobb, magasabb i/o-méretek esetében)|  
+|Max. méret|32 TiB-lemez|5 TiB fájlmegosztás és a megosztáson belüli 1 TiB-fájl|  
+|Maximális iops-érték|20 000 iops-érték|1000 IOps|  
+|Teljesítmény|Lemezenként legfeljebb 900 MiB/s|Cél értéke 60 MiB/s fájlmegosztásonként (beszerezheti a nagyobb, magasabb i/o-méretek esetében)|  
 
 ## <a name="next-steps"></a>További lépések
+
 Vonatkozó döntések meghozatalát hogyan adatait tárolják és érik el, ha akkor is figyelembe kell venni a költségek érint. További információkért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
   
 Egyes SMB-funkciók nem használhatók a felhőben. További információkért lásd: [az Azure File Storage-szolgáltatás által nem támogatott funkciók](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).

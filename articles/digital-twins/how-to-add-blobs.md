@@ -7,14 +7,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: adgera
+ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: ffd7d71c33b569b396b9f8babf8105968ee525b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b77960961a7c032faad7000f7a2ce297802a1497
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926428"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967049"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Blobok hozzáadása az Azure digitális Twins objektumok
 
@@ -56,9 +56,9 @@ JSON-blob metaadatainak megfelel a következő modellhez:
 | **parentId** | String | A szülőentitás a blob társítandó (szóköz, eszközök vagy felhasználók) |
 | **name** |String | A blob emberi mobilbarát nevét |
 | **type** | String | Blob - típusa nem használható *típus* és *typeId*  |
-| **typeId** | Egész szám | A blob azonosítója – nem használható *típus* és *typeId* |
+| **typeId** | Integer | A blob azonosítója – nem használható *típus* és *typeId* |
 | **Altípus** | String | A blob - altípusa nem használható *altípus* és *subtypeId* |
-| **subtypeId** | Egész szám | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
+| **subtypeId** | Integer | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
 | **description** | String | A blob testre szabott leírása |
 | **megosztás** | String | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
 
@@ -114,9 +114,9 @@ Külön-külön visszaadott blobok felelnek meg a következő JSON-séma:
 | **name** |String | A blob emberi mobilbarát nevét |
 | **parentId** | String | A szülőentitás a blob társítandó (szóköz, eszközök vagy felhasználók) |
 | **type** | String | Blob - típusa nem használható *típus* és *typeId*  |
-| **typeId** | Egész szám | A blob azonosítója – nem használható *típus* és *typeId* |
+| **typeId** | Integer | A blob azonosítója – nem használható *típus* és *typeId* |
 | **Altípus** | String | A blob - altípusa nem használható *altípus* és *subtypeId* |
-| **subtypeId** | Egész szám | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
+| **subtypeId** | Integer | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
 | **megosztás** | String | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
 | **description** | String | A blob testre szabott leírása |
 | **contentInfos** | Tömb | Adja meg a strukturálatlan metaadat-információkat, beleértve a verzió |

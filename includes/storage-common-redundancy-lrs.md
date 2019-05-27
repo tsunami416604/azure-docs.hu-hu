@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 32032f729283cb3f2a786412b563fdee88ba4c8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 124f5c01b7718f729094de1c02391946ff50cef4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729626"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113762"
 ---
 Helyileg redundáns tárolás (LRS) biztosít legalább 99,999999999 %-os (11 nines) tárolt objektumok számára egy adott évben. LRS ezen objektum tartósságot biztosít az adatok replikálásával tárolóskálázási egységben. Egy adatközpontban, ahol létrehozta a tárfiókot, a régióban a storage skálázási egység üzemelteti. LRS tárfiók írási kérelem sikeresen visszaadja, csak azt követően az adatok írása az összes replika. Minden egyes replikának külön tartalék tartományokban és frissítési tartományokba, tárolóskálázási egységben belül található.
 
@@ -22,4 +22,4 @@ Tárolóskálázási egységben tárolási csomópontok rackszekrények gyűjtem
 LRS a legalacsonyabb költségű replikációs beállítást, és az egyéb lehetőségek képest legalább tartósságot biztosít. (Például fire vagy -elárasztás) adatközpont-szintű katasztrófa történik, ha az összes replika lehet elveszett vagy helyreállíthatatlan. A kockázat csökkentése érdekében a Microsoft azt javasolja, a zónaredundáns tárolás (ZRS) vagy georedundáns tárolást (GRS) használatával.
 
 * Ha az alkalmazás, amely egyszerűen rekonstruálható, adatvesztés esetén adatokat tárolja, az lrs esetén is választhat.
-* Az adatreplikálás adatok cégirányítási követelmények miatt országon belül csak bizonyos alkalmazások korlátozódnak. Bizonyos esetekben a párosított régiók között, amelyek a rendszer replikálja az adatokat GRS-fiók esetén lehet egy másik országban. A párosított régiók további információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
+* Egyes alkalmazások korlátozva replikál adatokat, csak az adatok cégirányítási követelmények miatt országot/régiót belül. Bizonyos esetekben a párosított régiók között, amelyek a rendszer replikálja az adatokat GRS-fiók esetén lehet egy másik országban/régióban. A párosított régiók további információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).

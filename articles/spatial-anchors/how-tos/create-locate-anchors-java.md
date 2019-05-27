@@ -4,16 +4,16 @@ description: Magyarázatra van szüksége, hogy hogyan hozhat létre, és keress
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 09736396342505c8ec44cc83bf66f7c0ef893f80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9a0a65ae1406e4c197370c7b11373603dc40c8ee
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60333611"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964936"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>Hogyan hozhat létre, és keresse meg a központi jellegűek Azure térbeli horgonyok a Java használatával
 

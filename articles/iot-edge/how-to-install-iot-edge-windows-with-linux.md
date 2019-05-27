@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: bb47a1b828084673961a6d2c5657793b4437f294
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b7386cbbe18d7e05c2fbffb96f6214b468956192
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160575"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151700"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Windows, Linux-tárolókat futtathat IoT Edge használata
 
@@ -64,6 +64,13 @@ További információ a különböző telepítési lehetőségei és a paraméte
    * [Visual Studio Code](how-to-register-device-vscode.md)
 
 2. Futtassa a Powershellt rendszergazdaként.
+
+   >[!NOTE]
+   >PowerShell AMD64 munkamenet használata IoT Edge segítségével, nem (x86) PowerShell telepítéséhez. Ha nem biztos abban, hogy melyik munkamenet típusa használ, futtassa a következő parancsot:
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
 
 3. A **üzembe helyezés – IoTEdge** parancs ellenőrzi, hogy a Windows-gépen valamelyik támogatott verzióra, bekapcsolja a tárolók funkciót, és ezután letölti az moby modul (amely nem használható Linux-tárolók) és az IoT Edge-futtatókörnyezet. Windows-tárolók, a parancs alapértelmezés szerint Linux így deklarálható mint a kívánt operációs rendszer. 
 

@@ -17,11 +17,11 @@ ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: fba54fa1d2ca6675b41728b460a07515b05758f8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531589"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66169492"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: Figyelheti és frissítheti a Linux rendszerű virtuális gép az Azure-ban
 

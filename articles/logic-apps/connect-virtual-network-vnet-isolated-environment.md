@@ -7,14 +7,14 @@ ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: b452485ccf235d1f245989e40840f2f0b3b2ae45
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.topic: conceptual
+ms.date: 05/20/2019
+ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544533"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65961447"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás az Azure virtuális hálózatok az Azure Logic Apps integrációs service-környezet (ISE) használatával
 
@@ -24,7 +24,7 @@ Forgatókönyvek, ahol a logic apps és az integrációs fiókok kell a hozzáf�
 
 Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
 
-* Állítsa be az Azure virtuális hálózat található portokat Forgalom utazhat az integrációs service-környezet (ISE) keresztül, a virtuális hálózat alhálózatai között.
+* Ellenőrizze, hogy a virtuális hálózat minden szükséges portok nyitva, úgy, hogy a forgalom utazhat az integrációs service-környezet (ISE) keresztül az alhálózatok közötti a kiválasztott virtuális hálózatban.
 
 * Az integrációs service-környezet (ISE) létrehozása.
 
@@ -60,11 +60,13 @@ Integrációs service Environment-környezetekkel kapcsolatos további informác
 
 <a name="ports"></a>
 
-## <a name="set-up-network-ports"></a>Állítsa be a hálózati portok
+## <a name="check-network-ports"></a>Ellenőrizze a hálózati portok
 
-Megfelelően működjön, és elérhető-e, az integráció service-környezet (ISE) kell rendelkeznie az adott portokon a virtuális hálózaton rendelkezésre álló. Ezeket a portokat bármelyike nem érhető el, előfordulhat, hogy az ISE-ben, amelyek működése leáll, ellenkező esetben férhet hozzá. Az ISE-ben a virtuális hálózatban való használatakor gyakori telepítési problémát tapasztalja egy vagy több letiltott portot. Az ISE-ben és a cél rendszer közötti kapcsolatok esetén használja az összekötő is szükség lehet a saját port követelményei. Például ha az FTP-összekötő használatával kommunikálnak az FTP-rendszerek, győződjön meg arról, a portot használja, hogy elérhető legyen-e az FTP-rendszer 21-es porton, a Parancsküldés, például.
+Egy integrációs service-környezet (ISE) és a virtuális hálózat használatakor telepítő gyakran okoz problémát tapasztalja egy vagy több letiltott portot. Az összekötők, használhat olyan kapcsolatokat hozhat létre az ISE-ben és a cél rendszer között is szükség lehet a saját port követelmények. Például ha az FTP-összekötő használatával kommunikálnak az FTP-rendszerek, győződjön meg arról, a portot használja, hogy elérhető legyen-e az FTP-rendszer 21-es porton, a Parancsküldés, például.
 
-A forgalom szabályozása, amelyen központi telepítését az ISE-ben a virtuális hálózat alhálózatainak között, beállíthatja [hálózati biztonsági csoportok](../virtual-network/security-overview.md) ezekhez az alhálózatokhoz tartozó [alhálózatok közötti hálózati forgalom szűrése](../virtual-network/tutorial-filter-network-traffic.md). Ezek a táblázatok ismertetik a portokat a virtuális hálózat, amely az ISE-ben, és ahol azokat a portokat használja beolvasása. A [Resource Manager-szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags) IP-címelőtagokat, amelyek segítenek a minimálisra összetettségét, amikor a biztonsági szabályok létrehozása egy csoportját jelöli.
+A forgalom szabályozása, amelyen központi telepítését ISE-ben a virtuális hálózat alhálózatok között, beállíthatja [hálózati biztonsági csoportok](../virtual-network/security-overview.md) által [alhálózatok közötti hálózati forgalom szűrése](../virtual-network/tutorial-filter-network-traffic.md). Az ISE-ben azonban bizonyos portokat nyissa meg a hálózati biztonsági csoportokat használ a virtuális hálózaton kell rendelkeznie. Ezzel a módszerrel az ISE-ben elérhető marad, és megfelelően tudnak működni úgy, hogy ne veszítse el a hozzáférést, az ISE-ben. Ellenkező esetben ha minden szükséges portok elérhetők, az ISE-ben nem működik.
+
+Ezek a táblázatok ismertetik a portokat a virtuális hálózat, amely az ISE-ben, és ahol azokat a portokat használja beolvasása. A [Resource Manager-szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags) IP-címelőtagokat, amelyek segítenek a minimálisra összetettségét, amikor a biztonsági szabályok létrehozása egy csoportját jelöli.
 
 > [!IMPORTANT]
 > A belső kommunikáció belül az alhálózatokra az ISE-ben szükséges ezekhez az alhálózatokhoz belül minden portok megnyitását.

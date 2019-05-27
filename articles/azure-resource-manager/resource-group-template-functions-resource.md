@@ -1,23 +1,17 @@
 ---
 title: Az Azure Resource Manager sablonfüggvényei - erőforrások |} A Microsoft Docs
 description: A funkciók az Azure Resource Manager-sablon használatával lekérheti az erőforrásokra vonatkozó értékeket ismerteti.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/09/2019
+ms.date: 05/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4d5e6d20cb93c339d75c12ca1c0f56eaa5cc8cdd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dcad4b988f37d46a0b843fbf905e18011bc4e313
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60783007"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990765"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Erőforrás-funkciók az Azure Resource Manager-sablonok
 
@@ -175,7 +169,7 @@ Más lista függvények, különböző visszaadott formátumokat. Szeretné megt
 
 Az erőforrás neve használatával adja meg az erőforrás vagy a [resourceId függvény](#resourceid). Ha ugyanazt a sablont, amely üzembe helyezi a hivatkozott erőforrás egy lista függvényt használ, használja az erőforrás neve.
 
-Ha egy **lista** függvény olyan erőforrást, amely feltételesen üzembe lett helyezve, a függvény a abban az esetben akkor is, ha az erőforrás nincs telepítve. Ha hibaüzenetet kap a **lista** függvény egy nem létező erőforrás hivatkozik. Használja a **Ha** függvényt, hogy ellenőrizze, hogy a függvény csak akkor értékeli ki, ha az erőforrás létezik. Tekintse meg a [Ha függvény](resource-group-template-functions-logical.md#if) a mintasablon, amely használja, ha és a egy feltételesen üzembe helyezett erőforrás listában.
+Ha egy **lista** függvény olyan erőforrást, amely feltételesen üzembe lett helyezve, a függvény a abban az esetben akkor is, ha az erőforrás nincs telepítve. Ha hibaüzenetet kap a **lista** függvény egy nem létező erőforrás hivatkozik. Használja a **Ha** függvényt, hogy ellenőrizze, hogy a függvény csak akkor történik meg az erőforrás telepítésekor. Tekintse meg a [Ha függvény](resource-group-template-functions-logical.md#if) a mintasablon, amely használja, ha és a egy feltételesen üzembe helyezett erőforrás listában.
 
 ### <a name="example"></a>Példa
 
@@ -343,11 +337,11 @@ Minden erőforrástípus a referencia-függvény különböző tulajdonságait a
 
 A referencia-függvényt a korábban üzembe helyezett erőforrás vagy a jelenlegi sablon üzembe helyezett erőforrás futási állapotát olvassa be. Ez a cikk bemutatja a példák mindkét forgatókönyvet támogatja. Amikor egy erőforrást az aktuális sablon hivatkozik, adja meg az erőforrásnév csak paraméterként. Amikor egy korábban telepített erőforrásra hivatkozik, adja meg az erőforrás-azonosító és API-verziót az erőforrás. Az erőforrás érvényes API-verziók segítségével meghatározhatja a [sablonreferenciája](/azure/templates/).
 
-A referencia-függvény csak egy erőforrás-definíció tulajdonságainak és a kimeneti szakasz egy sablon vagy telepítési használható.
+A referencia-függvény csak egy erőforrás-definíció tulajdonságainak és a kimeneti szakasz egy sablon vagy telepítési használható. Együtt használva [tulajdonság iteráció](resource-group-create-multiple.md#property-iteration), használhatja a referencia-függvény `input` , mert a kifejezés hozzá van rendelve az erőforrás-tulajdonsághoz. Nem használhatja a `count` mert száma meg kell határozni, mielőtt a hivatkozás függvény megoldották.
 
 A referencia-függvény használatával akkor implicit módon deklarálja, hogy egy erőforrás függ-e egy másik erőforrás, ha a hivatkozott erőforrás kiosztása belül ugyanazt a sablont, és a nevét (nem erőforrás-azonosító) az erőforrás hivatkozik. Emellett a dependsOn tulajdonság használatához nincs szükség. A függvény nem kerül kiértékelésre, a hivatkozott erőforrás üzembe helyezési befejeződéséig.
 
-Ha használja a **referencia** függvény olyan erőforrást, amely feltételesen üzembe lett helyezve, a függvény a abban az esetben akkor is, ha az erőforrás nincs telepítve.  Ha hibaüzenetet kap a **referencia** függvény egy nem létező erőforrás hivatkozik. Használja a **Ha** függvényt, hogy ellenőrizze, hogy a függvény csak akkor értékeli ki, ha az erőforrás létezik. Tekintse meg a [Ha függvény](resource-group-template-functions-logical.md#if) használja, ha a minta-sablon és a egy feltételesen üzembe helyezett erőforrás-hivatkozás.
+Ha használja a **referencia** függvény olyan erőforrást, amely feltételesen üzembe lett helyezve, a függvény a abban az esetben akkor is, ha az erőforrás nincs telepítve.  Ha hibaüzenetet kap a **referencia** függvény egy nem létező erőforrás hivatkozik. Használja a **Ha** függvényt, hogy ellenőrizze, hogy a függvény csak akkor történik meg az erőforrás telepítésekor. Tekintse meg a [Ha függvény](resource-group-template-functions-logical.md#if) használja, ha a minta-sablon és a egy feltételesen üzembe helyezett erőforrás-hivatkozás.
 
 Tekintse meg a nevét és a egy erőforrástípushoz értékeit, hozzon létre egy sablont, amely az objektumot ad vissza, a kimeneti szakaszban. Ha az adott típusú erőforrással rendelkezik, a sablon bármely új erőforrások üzembe helyezése nélkül adja vissza az objektumot. 
 
@@ -725,7 +719,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | differentSubOutput | Karakterlánc | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | nestedResourceOutput | Karakterlánc | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
-## <a name="subscription"></a>előfizetést
+## <a name="subscription"></a>előfizetés
 
 `subscription()`
 

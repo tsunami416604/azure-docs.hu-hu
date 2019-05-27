@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: aac9719f8d74c4b7bc283745ee2b8e01365a81f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ceaf4d3db71d99c3e87157f9847312fdf4000026
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61245259"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991789"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>A Media Services platformon Médiaelemzés 
 
@@ -58,7 +58,6 @@ Media Analytics megkönnyíti a szervezetek számára, és vállalatok glean új
 
 * **Hívás központok**. Közösségi média bevezetése mellett is ügyfél telefonos ügyfélszolgálatok továbbra is az ügyfélszolgálati tranzakciók álló megkönnyítése. Nagy mennyiségű ügyfél-információkat, amelyek magasabb szintű ügyfél-elégedettség érdekében elemezheti a hívásaiból kódolva van. A Media Indexer segítségével szervezetek szöveg kinyerése és keresési indexek és irányítópultokat hozhat létre. Bontsa ki a azok is intelligencia közös panaszok, panaszok forrásai és más vonatkozó adatokat.
 * **Felhasználó által létrehozott tartalom moderálása**. A news médiaorgánumok rendőrségi részlegekhez számos vállalat rendelkezik olyan nyilvános portálok, amely fogadja el a felhasználók által létrehozott adathordózóról, például a képek és videók. A tartalom mennyisége miatt nem várt események is lefoglalását. Ezekben a forgatókönyvekben meglehetősen nehéz indították tartalmának manuális felülvizsgálatai hatékony elvégzésére. Ügyfelek a tartalom-jóváhagyás szolgáltatás összpontosíthat a megfelelő tartalom is támaszkodik.
-* **Felügyeleti**. Használatban lévő IP-kamerák növekedést is tartalmaz egy egyre bővülő felügyeleti készlet videó. Manuális megtekintésével felügyeleti videó az idő nagy számításigényű és az emberi hibák hibalehetőség. Media Analytics például mozgásérzékelés, arcfelismerés és annak áttekintése, kezelése és származékaik egyszerűbb létrehozása Hyperlapse szolgáltatásokat biztosít.
 
 ## <a name="media-analytics-media-processors"></a>A médiaelemzés médiafeldolgozói
 Ez a szakasz felsorolja a médiaelemzés médiafeldolgozói, és bemutatja a .NET vagy a REST használata a media (MP) processzor-objektum.
@@ -66,7 +65,6 @@ Ez a szakasz felsorolja a médiaelemzés médiafeldolgozói, és bemutatja a .NE
 ### <a name="mp-names"></a>Felügyeleti csomag neve
 * Az Azure Media Indexer 2 előzetes verzió
 * Azure Media Indexer
-* Azure Media Hyperlapse
 * Azure Media Face Detector
 * Azure Media Motion Detector
 * Azure Media Video Thumbnails

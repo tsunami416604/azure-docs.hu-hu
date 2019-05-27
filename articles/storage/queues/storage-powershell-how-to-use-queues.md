@@ -5,22 +5,23 @@ services: storage
 author: mhopkins-msft
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/14/2017
+ms.date: 05/15/2019
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: fdb05adaf6a4b039ef288ac8b4464f62930e3f9c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6e8640b136c52f500de010f842ab73678acdce4f
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797777"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991354"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Az Azure Queue storage műveleteket az Azure PowerShell használatával
 
 Az Azure Queue storage szolgáltatás üzeneteket, amelyek elérhetők bárhol a világon, HTTP vagy HTTPS használatával nagy számú tárolásához. Részletes információkért lásd: [Azure-üzenetsorok bemutatása](storage-queues-introduction.md). A cikkben található útmutató ismerteti a közös Queue storage műveletek. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
+>
 > * Üzenetsor létrehozása
 > * Egy üzenetsor beolvasása
 > * Üzenet hozzáadása
@@ -53,7 +54,7 @@ $location = "eastus"
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot. 
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot.
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoport nevének Store későbbi használat céljából egy változóban. Ebben a példában egy erőforráscsoportot nevű *howtoqueuesrg* jön létre a *eastus* régióban.
 
@@ -114,7 +115,7 @@ $queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMe
 # Add a new message to the queue
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
-# Add two more messages to the queue 
+# Add two more messages to the queue
 $queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
   -ArgumentList "This is message 2"
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
@@ -123,15 +124,15 @@ $queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMe
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
 
-Ha használja a [Azure Storage Explorer](https://storageexplorer.com), csatlakozhat az Azure-fiókjával, és az üzenetsorok megtekintheti a storage-fiókban, és részletesebb adatainak megtekintése az üzeneteket az üzenetsor egy üzenetsorba. 
+Ha használja a [Azure Storage Explorer](https://storageexplorer.com), csatlakozhat az Azure-fiókjával, és az üzenetsorok megtekintheti a storage-fiókban, és részletesebb adatainak megtekintése az üzeneteket az üzenetsor egy üzenetsorba.
 
 ## <a name="read-a-message-from-the-queue-then-delete-it"></a>Olvassa el egy üzenetet az üzenetsorból, majd törlése
 
 Üzenetek legjobb – próbálkozzon első-first out sorrendben olvasható. Nem garantált. Ha elolvasta az üzenetet az üzenetsorból, hogy láthatóvá váljon a minden más folyamatok megnézzük a várólista. Ez biztosítja, hogy a kód nem tudja feldolgozni az üzenetet, hardver-vagy szoftverhiba miatt, ha a kódot egy másik példánya is megkaphassa ugyanazt az üzenetet, és próbálkozzon újra.  
 
-Ez **láthatatlansági időtúllépési** határozza meg, mennyi ideig az üzenet marad láthatatlan mielőtt ismét használható a feldolgozásra. Az alapértelmezett érték 30 másodperc. 
+Ez **láthatatlansági időtúllépési** határozza meg, mennyi ideig az üzenet marad láthatatlan mielőtt ismét használható a feldolgozásra. Az alapértelmezett érték 30 másodperc.
 
-A kód egy üzenetet az üzenetsorból, két lépésben beolvasása. Meghívásakor a [Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) metódus, a következő üzenetet kap a várólistán. A **GetMessage** módszerrel lekért üzenet láthatatlanná válik az adott üzenetsorban található üzeneteket olvasó többi kód számára. A befejezéshez, az üzenet eltávolítása a sorból, hívja a [Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) metódust. 
+A kód egy üzenetet az üzenetsorból, két lépésben beolvasása. Meghívásakor a [Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) metódus, a következő üzenetet kap a várólistán. A **GetMessage** módszerrel lekért üzenet láthatatlanná válik az adott üzenetsorban található üzeneteket olvasó többi kód számára. A befejezéshez, az üzenet eltávolítása a sorból, hívja a [Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) metódust.
 
 A következő példában, olvassa el a három üzenetsorbeli üzenetek, majd várjon 10 másodpercet (az láthatatlansági időkorlátot). Ezután ismét a három üzenetek olvasásához az üzenetek törlése meghívásával elolvasásával **DeleteMessage**. Olvassa el az üzenetsor, az üzenetek törlését követően meg, ha $queueMessage küldi vissza a rendszer null értékű.
 
@@ -148,7 +149,7 @@ $queueMessage.Result
 $queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
 $queueMessage.Result
 
-# After 10 seconds, these messages reappear on the queue. 
+# After 10 seconds, these messages reappear on the queue.
 # Read them again, but delete each one after reading it.
 # Delete the message.
 $queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
@@ -167,7 +168,7 @@ $queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Resul
 Egy üzenetsor és a benne tárolt összes üzenet törléséhez hívja meg a Remove-AzStorageQueue parancsmagot. Az alábbi példa bemutatja, hogyan használja a Remove-AzStorageQueue parancsmag gyakorlathoz használt az adott üzenetsor törlése.
 
 ```powershell
-# Delete the queue 
+# Delete the queue
 Remove-AzStorageQueue –Name $queueName –Context $ctx
 ```
 
@@ -184,11 +185,12 @@ Remove-AzResourceGroup -Name $resourceGroup
 Az útmutató a cikkben megismerkedett a alapvető üzenetsor tárolók kezelése a PowerShell-lel, beleértve a:
 
 > [!div class="checklist"]
+>
 > * Üzenetsor létrehozása
 > * Egy üzenetsor beolvasása
 > * Üzenet hozzáadása
 > * Olvassa el a következő üzenetet
-> * Üzenet törlése 
+> * Üzenet törlése
 > * Üzenetsor törlése
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>A Microsoft Azure PowerShell tárolási parancsmagjainak

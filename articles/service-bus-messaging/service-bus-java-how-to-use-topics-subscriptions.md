@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 46891a60e6fd36ec0bc19d4b52de87d18e2b6793
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 578fd0caa8986c48b3fd50a7890bb66b14bee2f4
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510299"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991728"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Service Bus-üzenettémák és előfizetések használata javával
 
@@ -454,6 +454,8 @@ Message sending: Id = 9
                         Content: [ firstName = Werner, name = Heisenberg ]
 ```
 
+> [!NOTE]
+> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
 
 ## <a name="next-steps"></a>További lépések
 További információkért lásd: [Service Bus-üzenetsorok, témakörök és előfizetések][Service Bus queues, topics, and subscriptions].

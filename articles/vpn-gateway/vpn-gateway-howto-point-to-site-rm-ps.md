@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: f3c02e80016e43bdd83218851de5ceb72be7f268
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 822cbc7401de90d63f9079561ced0dfbb911fa2c
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60320160"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989439"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Azure natív tanúsítványalapú hitelesítésének használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: PowerShell
 
@@ -29,7 +29,7 @@ A natív Azure-tanúsítvánnyal hitelesített pont–hely kapcsolatok a követk
 * A főtanúsítványból létrejött ügyféltanúsítvány, amely a virtuális hálózathoz csatlakozó egyes ügyfélszámítógépekre telepített ügyféltanúsítvány. A rendszer ezt a tanúsítványt használja ügyfélhitelesítéshez.
 * A VPN-ügyfél konfigurációja. A VPN-ügyfélkonfigurációs fájlok azokat az adatokat tartalmazzák, amelyekre az ügyfélnek szüksége van a virtuális hálózathoz való csatlakozáshoz. A csomag konfigurálja az operációs rendszer meglévő, natív VPN-ügyfelét. Minden csatlakozó ügyfelet a konfigurációs fájlokban szereplő beállításokkal kell konfigurálni.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -55,7 +55,7 @@ A példaértékek használatával létrehozhat egy tesztkörnyezetet, vagy a seg
 * **Előfizetés:** Ha több előfizetéssel rendelkezik, győződjön meg arról, hogy a megfelelőt használja-e.
 * **Erőforráscsoport: TestRG**
 * **Hely: USA keleti RÉGIÓJA**
-* **DNS-kiszolgáló: IP-cím** a névfeloldáshoz használni kívánt DNS-kiszolgáló. (nem kötelező)
+* **DNS-kiszolgáló: IP-cím** a névfeloldáshoz használni kívánt DNS-kiszolgáló. (választható)
 * **Átjáró neve: Vnet1GW**
 * **Nyilvános IP-név: VNet1GWPIP**
 * **VpnType: Útvonalalapú** 
@@ -131,8 +131,8 @@ Deklarálja a használni kívánt változókat. Használja a következő példá
 Konfigurálja és hozza létre a virtuális hálózati átjárót a virtuális hálózat számára.
 
 * A -GatewayType csak **Vpn** lehet, a -VpnType pedig csak **RouteBased** lehet.
-* A -VpnClientProtocol paraméterrel adhatja meg az engedélyezni kívánt alagutak típusát. Alagutak esetén **SSTP** és **IKEv2** közül választhat. Engedélyezheti csak az egyiket, vagy egyszerre mindkettőt. Ha mindkettőt engedélyezni szeretné, akkor adja meg mindkét nevet, vesszővel elválasztva. Az Android- és Linux-alapú strongSwan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz. A Windows-ügyfél először az IKEv2-vel próbálkozik, majd ha azzal nem sikerült, visszavált SSTP-re.
-* A virtuális hálózati átjáró "Alapszintű" Termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítés. Ha azt tervezi, hogy a Mac ügyfelek csatlakoznak a virtuális hálózat, ne használja az alapszintű Termékváltozat.
+* A -VpnClientProtocol paraméterrel adhatja meg az engedélyezni kívánt alagutak típusát. Az alagút lehetőségek **OpenVPN, SSTP** és **IKEv2**. Ha szeretné, engedélyezze az egyiket, vagy bármely támogatott kombinációkat. Ha szeretné engedélyezni, több típust, majd adja meg a neveket vesszővel elválasztva. OpenVPN és az SSTP együtt nem engedélyezhető. Az Android- és Linux-alapú strongSwan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz. A Windows-ügyfél először az IKEv2-vel próbálkozik, majd ha azzal nem sikerült, visszavált SSTP-re. Használhatja a OpenVPN ügyfél OpenVPN alagúttípus csatlakozni.
+* A virtuális hálózati átjáró "Alapszintű" Termékváltozat nem támogatja az IKEv2, OpenVPN vagy RADIUS-hitelesítés. Ha azt tervezi, hogy a Mac ügyfelek csatlakoznak a virtuális hálózat, ne használja az alapszintű Termékváltozat.
 * Egy VPN-átjáró létrehozása akár 45 percet is igénybe vehet a kiválasztott [átjáró termékváltozatától](vpn-gateway-about-vpn-gateway-settings.md) függően. Ez a példa az IKEv2-t használja.
 
 ```azurepowershell-interactive

@@ -2,19 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines-windows, virtual-machines-linux
-author: rockboyfor
+author: dlepow
 ms.service: multiple
 ms.topic: include
-origin.date: 10/09/2018
-ms.date: 04/01/2019
-ms.author: v-yeche
+ms.date: 10/09/2018
+ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 50d71a3967e61e5d531f4bfeae3582b56230a0d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880551"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66117299"
 ---
 ## <a name="terminology"></a>Terminológia
 
@@ -28,5 +27,3 @@ Piactéri lemezképet az Azure-ban az alábbi attribútumok tartoznak:
 Piactéri lemezképet azonosítására programozott módon üzembe helyezése egy virtuális Gépet, adja meg ezeket az értékeket egyesével paraméterekként. Egyes eszközök fogadja el a kép *URN*, amely kombinálja ezeket az értékeket, a kettőspont (:) elválasztva: *Közzétevő*:*ajánlat*:*termékváltozat*:*verzió*. Az URN lecserélheti a verziószámot a "legújabb", amely a rendszerkép legújabb verzióját választja ki. 
 
 Ha a kép közzétevőjének biztosít további licenc és a vásárlási feltételeket, majd kell fogadniuk a feltételeket és programozott üzembe helyezés engedélyezése. Is kell adnia *megvásárlása* paramétereket a programozott módon üzembe helyezése egy virtuális Gépet. Lásd: [rendszerkép üzembe helyezése a Marketplace használati feltételei](#deploy-an-image-with-marketplace-terms).
-
-<!-- Update_Description: wording update -->

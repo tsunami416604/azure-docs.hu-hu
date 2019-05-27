@@ -105,6 +105,8 @@
       href: language-support.md
     - name: Bing Web Search API – elemzés
       href: bing-web-stats.md
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Támogatás
       items:
         - name: User Voice fórum

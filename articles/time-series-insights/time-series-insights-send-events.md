@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2842a365cdf25a6b19f655f6397d62ecb9a723b0
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 48524020940149f6c67f4859f23c03eea140454b
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406872"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991480"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Események küldése Time Series Insights-környezetbe az event hubs használatával
 
@@ -28,27 +28,27 @@ Ez a cikk azt ismerteti, hogyan hozhat létre, és az Azure Event Hubs az esemé
 1. Ismerje meg, hogyan hozhat létre egy event hubot, tekintse meg a [Event Hubs – dokumentáció](https://docs.microsoft.com/azure/event-hubs/).
 1. A keresőmezőbe keresése **az Event Hubs**. Jelölje ki a visszaadott listában **az Event Hubs**.
 1. Az event hubs kiválasztása.
-1. Amikor létrehoz egy eseményközpontot, valóban létrehoz egy eseményközpont-névteret. Ha Ön még nem hozta létre egy eseményközpont a névtéren belül, a menü alatt **entitások**, létrehoz egy eseményközpontot.  
+1. Amikor létrehoz egy eseményközpontot, az eseményközpont-névteret hoz létre. Ha Ön még nem hozta létre egy eseményközpont a névtéren belül, a menü alatt **entitások**, létrehoz egy eseményközpontot.  
 
     [![Az event hubs listája](media/send-events/updated.png)](media/send-events/updated.png#lightbox)
 
 1. Miután létrehozott egy eseményközpontba, válassza ki a listából az event hubs.
-1. A menü alatt **entitások**válassza **az Event Hubs**.
+1. Kattintson a menü alatt **entitások**válassza **az Event Hubs**.
 1. Válassza ki az event hubs konfigurálásához nevét.
 1. Alatt **entitások**válassza **fogyasztói csoportok**, majd válassza ki **fogyasztói csoportot**.
 
     [![Hozzon létre egy fogyasztói csoportot](media/send-events/consumer-group.png)](media/send-events/consumer-group.png#lightbox)
 
-1. Olyan fogyasztói csoportot hozzon létre, amelyet csak a Time Series Insights-eseményforrás használ.
+1. Ellenőrizze, hogy kizárólag a Time Series Insights-eseményforrás által használt fogyasztói csoportot hoz létre.
 
     > [!IMPORTANT]
-    > Ellenőrizze, hogy nem használja ezt a fogyasztói csoportot (például az Azure Stream Analytics-feladat vagy másik Time Series Insights-környezet) bármely más szolgáltatást. Ha a fogyasztói csoportot használ a másik szolgáltatások, az olvasási műveletek negatívan érinti, ebben a környezetben, és más szolgáltatásokhoz. Ha **$Default** fogyasztói csoportot más olvasók előfordulhat, hogy potenciálisan újból felhasználhatja a fogyasztói csoportot.
+    > Ellenőrizze, hogy ezt a fogyasztói csoportot nem használja másik szolgáltatás, például az Azure Stream Analytics-feladat vagy másik Time Series Insights-környezetbe. Ha a fogyasztói csoportot használ a másik szolgáltatások, az olvasási műveletek negatívan érinti, ebben a környezetben, és más szolgáltatásokhoz. Ha **$Default** fogyasztói csoportot más olvasók előfordulhat, hogy potenciálisan újból felhasználhatja a fogyasztói csoportot.
 
-1. A menü alatt **beállítások**, jelölje be **megosztott elérési házirendek**, majd válassza ki **Hozzáadás**.
+1. A menü alatt **beállítások**, jelölje be **megosztott elérési házirendek**, majd válassza ki **hozzáadása**.
 
     [![Megosztott elérési házirendek kiválasztása, és válassza a Hozzáadás gombra.](media/send-events/shared-access-policy.png)](media/send-events/shared-access-policy.png#lightbox)
 
-1. Az a **új megosztott elérési házirend hozzáadása** panelen hozzon létre egy megosztott hozzáférés – nevesített **MySendPolicy**. A megosztott hozzáférési szabályzat segítségével események küldése az C# később a cikkben szereplő példákat.
+1. Az a **új megosztott elérési házirend hozzáadása** panelen hozzon létre egy megosztott hozzáférés – nevesített **MySendPolicy**. A megosztott elérési szabályzat használatával az események küldése az C# később a cikkben szereplő példákat.
 
     [![(A szabályzat neve) mezőben adja meg a MySendPolicy](media/send-events/shared-access-policy-2.png)](media/send-events/shared-access-policy-2.png#lightbox)
 
@@ -81,7 +81,7 @@ A Time Series Insights frissítés példányok környezetfüggő adatok hozzáad
 
 1. Válassza ki **elindításához kattintson**. A szimulátor állít elő, példány JSON-t közvetlenül is használhatja.
 
-1. Lépjen vissza az event hubs az Azure Portalon. Az a **áttekintése** lapon kell megjelennie az új események az event hub által fogadott.
+1. Lépjen vissza az event hubs az Azure Portalon. Az a **áttekintése** lapon megjelenik az új események az event hub által fogadott.
 
     [![Event hub áttekintő oldala, amely bemutatja az event hubs-mérőszámai](media/send-events/telemetry.png)](media/send-events/telemetry.png#lightbox)
 

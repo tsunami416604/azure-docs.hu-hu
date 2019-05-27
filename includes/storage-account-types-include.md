@@ -9,11 +9,11 @@ ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: d4f57eca89cbb68d61546c6d5ce5bcd04f9256e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477993"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66114935"
 ---
 Az Azure Storage számos különböző típusú tárfiókok kínál. Egyes támogatja a különböző funkciókat, és rendelkezik a saját díjszabási modell. Milyen típusú fiókot, amely a legjobb alkalmazásait a tárfiók létrehozása előtt, fontolja meg a különbségeket. A tárfiókok típusai a következők:
 
@@ -27,11 +27,11 @@ A következő táblázat a tárfiókok típusait és azok képességeinek:
 
 | Tárfiók típusa | Támogatott szolgáltatások                       | Támogatott teljesítményszintek      | Támogatott elérési szint         | Replikációs beállítások               | Üzemi modell<sup>1</sup> | Encryption<sup>2</sup> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------|-----------------------------------|------------------------------|------------------------|
-| Általános célú V2   | BLOB, fájl, várólista, tábla és lemez       | Standard, Premium<sup>5</sup> | Gyakori és ritka elérésű, archív<sup>3</sup> | LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Resource Manager             | Titkosított              |
-| Általános célú V1   | BLOB, fájl, várólista, tábla és lemez       | Standard, Premium<sup>5</sup> | –                            | LRS, GRS, RA-GRS                  | Resource Manager, klasszikus    | Titkosított              |
-| Blokkblob-tárolás   | BLOB (blokkblobok és hozzáfűző blobok csak) | Prémium                       | –                            | LRS                               | Resource Manager             | Titkosított              |
-| FileStorage (előzetes verzió)   | Csak a fájlok | Prémium                       | –                            | LRS                               | Resource Manager             | Titkosított              |
-| Blob Storage         | BLOB (blokkblobok és hozzáfűző blobok csak) | Standard                      | Gyakori és ritka elérésű, archív<sup>3</sup> | LRS, GRS, RA-GRS                  | Resource Manager             | Titkosított              |
+| Általános célú V2   | BLOB, fájl, várólista, tábla és lemez       | Standard, Premium<sup>5</sup> | Gyakori és ritka elérésű, archív<sup>3</sup> | LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Resource Manager             | Titkosítva              |
+| Általános célú V1   | BLOB, fájl, várólista, tábla és lemez       | Standard, Premium<sup>5</sup> | –                            | LRS, GRS, RA-GRS                  | Resource Manager, klasszikus    | Titkosítva              |
+| Blokkblob-tárolás   | BLOB (blokkblobok és hozzáfűző blobok csak) | Prémium                       | –                            | LRS                               | Resource Manager             | Titkosítva              |
+| FileStorage (előzetes verzió)   | Csak a fájlok | Prémium                       | –                            | LRS                               | Resource Manager             | Titkosítva              |
+| Blob Storage         | BLOB (blokkblobok és hozzáfűző blobok csak) | Standard                      | Gyakori és ritka elérésű, archív<sup>3</sup> | LRS, GRS, RA-GRS                  | Resource Manager             | Titkosítva              |
 
 <sup>1</sup>ajánlott az Azure Resource Manager üzemi modell használatával. Storage-fiókok a klasszikus üzemi modell használatával továbbra is hozhatja létre az egyes helyeken, és a létező klasszikus fiók továbbra is támogatottak. További információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési: Üzembe helyezési modellek és az erőforrások állapotának ismertetése](../articles/azure-resource-manager/resource-manager-deployment-model.md).
 

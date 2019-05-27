@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bfae3b3be7812ff50ed90a61d495877141bbc7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b8ac0497b13dad6795e8dc7ffaf761fe887a9953
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414902"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988627"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Speciális konfigurációs beállításait a multi-factor Authentication NPS bővítményével
 
@@ -30,25 +30,25 @@ Az NPS-bővítményének belül az Azure multi-factor Authentication az egyszer�
 
 Másodlagos felhasználói azonosítók konfigurálásához lépjen a `HKLM\SOFTWARE\Microsoft\AzureMfa` , és szerkessze a következő beállításazonosítókat:
 
-| Name (Név) | Typo | Alapértelmezett érték | Leírás |
+| Name (Név) | Típus | Alapértelmezett érték | Leírás |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Üres | Active Directory-attribútumot használja az egyszerű felhasználónév helyett kívánt nevének megadására. Ezt az attribútumot használja AlternateLoginId attribútumként. Ha ez a beállításazonosító értéke egy [érvényes Active Directory-attribútum](https://msdn.microsoft.com/library/ms675090.aspx) (az például e-mail vagy displayName), majd az attribútumérték szerepel helyett a felhasználó egyszerű Felhasználónevét a hitelesítéshez. Ha ez a beállításazonosító nem üres, vagy nincs konfigurálva, majd AlternateLoginId le van tiltva, és a felhasználó egyszerű Felhasználónevét ezt használja hitelesítéshez. |
-| LDAP_FORCE_GLOBAL_CATALOG | logikai | False (Hamis) | Ez a jelző használatával LDAP-keresések globális katalógus használatának kényszerítéséhez AlternateLoginId keresésekor. Konfiguráljon egy tartományvezérlőt globális katalógusként, adja hozzá a AlternateLoginId attribútumot a globális katalógusba, és engedélyeznie kell ezt a jelzőt. <br><br> Ha LDAP_LOOKUP_FORESTS van konfigurálva (nem üres) **ezt a jelzőt TRUE kényszerítve**, függetlenül attól, a beállításjegyzék-beállítás értékét. Ebben az esetben az NPS-bővítményt kell a globális katalógus az egyes erdőkhöz AlternateLoginId attribútummal kell konfigurálni. |
+| LDAP_FORCE_GLOBAL_CATALOG | logikai | Hamis | Ez a jelző használatával LDAP-keresések globális katalógus használatának kényszerítéséhez AlternateLoginId keresésekor. Konfiguráljon egy tartományvezérlőt globális katalógusként, adja hozzá a AlternateLoginId attribútumot a globális katalógusba, és engedélyeznie kell ezt a jelzőt. <br><br> Ha LDAP_LOOKUP_FORESTS van konfigurálva (nem üres) **ezt a jelzőt TRUE kényszerítve**, függetlenül attól, a beállításjegyzék-beállítás értékét. Ebben az esetben az NPS-bővítményt kell a globális katalógus az egyes erdőkhöz AlternateLoginId attribútummal kell konfigurálni. |
 | LDAP_LOOKUP_FORESTS | string | Üres | Adjon meg egy pontosvesszővel elválasztott listáját az erdők keresésére. Ha például *contoso.com;foobar.com*. Ha ez a beállításazonosító van beállítva, az NPS-bővítményének iteratív keres az összes olyan erdőben, amelyben felsorolt és az első sikeres AlternateLoginId értéket adja vissza. Ez a beállításazonosító nem történik meg, ha az AlternateLoginId keresés az aktuális tartomány korlátozódik.|
 
 Alternatív bejelentkezési azonosítók kapcsolatos problémák megoldásához, használja az alábbiak [alternatív bejelentkezési azonosító hibák](howto-mfa-nps-extension-errors.md#alternate-login-id-errors).
 
 ## <a name="ip-exceptions"></a>IP-kivételek
 
-Ha szeretné figyelni a kiszolgáló rendelkezésre állása, például ha terheléselosztók ellenőrizze, fut mely számítási feladatok elküldése előtt nem szeretné ezeket az ellenőrzéseket ellenőrzési kérések le van tiltva. Ehelyett hozzon létre egy ismeri a szolgáltatásfiókok által használt IP-címek, és tiltsa le a lista a multi-factor Authentication követelményeinek. 
+Ha szeretné figyelni a kiszolgáló rendelkezésre állása, például ha terheléselosztók ellenőrizze, fut mely számítási feladatok elküldése előtt nem szeretné ezeket az ellenőrzéseket ellenőrzési kérések le van tiltva. Ehelyett hozzon létre egy ismeri a szolgáltatásfiókok által használt IP-címek, és tiltsa le a lista a multi-factor Authentication követelményeinek.
 
-Adja meg egy IP-engedélyezési lista, lépjen a `HKLM\SOFTWARE\Microsoft\AzureMfa` és konfigurálja a következő beállításazonosítót: 
+Adja meg egy IP-cím engedélyezettek listájához, lépjen a `HKLM\SOFTWARE\Microsoft\AzureMfa` és konfigurálja a következő beállításazonosítót:
 
-| Name (Név) | Typo | Alapértelmezett érték | Leírás |
+| Name (Név) | Típus | Alapértelmezett érték | Leírás |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | string | Üres | Adja meg az IP-címek pontosvesszővel elválasztott listáját. Gépek, ahol a szolgáltatáskérések származnak, például a NAS-/ VPN-kiszolgáló IP-címét tartalmazza. IP-címtartományok és alhálózatok nem támogatottak. <br><br> Ha például *10.0.0.1;10.0.0.2;10.0.0.3*.
 
-Amikor kérelem érkezik IP-címről, amely szerepel az engedélyezési listán, a kétlépéses ellenőrzés kimarad. Az IP-címek engedélyezési listája megtalálható az IP-címet a rendszer összehasonlítja a *ratNASIPAddress* attribútuma a RADIUS-kérést. Ha a RADIUS-kérést a ratNASIPAddress attribútum nélkül érhető el, a rendszer naplózza a következő figyelmeztetés: "P_WHITE_LIST_WARNING::IP engedélyezési lista van folyamatban figyelmen kívül hagyja, a forrás IP-cím nincs megadva a RADIUS-kérést NasIpAddress attribútumban."
+Amikor kérelem érkezik IP-címről, amely megtalálható a `IP_WHITELIST`, a kétlépéses ellenőrzés kimarad. Az IP-címlistáját az IP-címet, amely megtalálható a rendszer összehasonlítja a *ratNASIPAddress* attribútuma a RADIUS-kérést. Ha a RADIUS-kérést a ratNASIPAddress attribútum nélkül érhető el, a rendszer naplózza a következő figyelmeztetés: "P_WHITE_LIST_WARNING::IP engedélyezési lista van folyamatban figyelmen kívül hagyja, a forrás IP-cím nincs megadva a RADIUS-kérést NasIpAddress attribútumban."
 
 ## <a name="next-steps"></a>További lépések
 

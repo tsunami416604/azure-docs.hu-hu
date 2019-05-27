@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 7c3b93db18cb8e2660118927da47ffe95abb900f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: 59308cdadb1eda9e73b373e72112b83d93629683
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073006"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124269"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A LUIS-tároló futtatásához az alábbiakkal kell rendelkeznie: 
 
-|Szükséges|Cél|
+|Kötelező|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
@@ -109,8 +109,8 @@ A bemeneti csatlakoztatási könyvtár is tartalmaz a **éles**, **átmeneti**, 
 |Csomag típusa|Lekérdezési API-végpont|Lekérdezés rendelkezésre állása|Alkalmazáscsomag fájlnév formátuma|
 |--|--|--|--|
 |Betanítva|GET, Post|Csak a tároló|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Előkészítés|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_STAGING.gz`|
-|Production|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_PRODUCTION.gz`|
+|Fájlok másolása folyamatban|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_STAGING.gz`|
+|Üzemi|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
 > Nem átnevezése, alter, felülírása és a LUIS-csomag fájlok kibontása.
@@ -255,6 +255,10 @@ További [példák](luis-container-configuration.md#example-docker-run-commands)
 > Apikey tulajdonsággal végzett tesztelése értéke a **kulcs** a kulcsok és a végpontok lapon a LUIS-portálon, és is elérhető az Azure a `Cognitive Services` erőforráslapján kulcsok.  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
+
+## <a name="endpoint-apis-supported-by-the-container"></a>A tároló által támogatott API-k végpont
+
+Mindkét V2 és [V3 (előzetes verzió)](luis-migration-api-v3.md) API-verziók érhetők el a tárolót. 
 
 ## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontja lekérdezése
 

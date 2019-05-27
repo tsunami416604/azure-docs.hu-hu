@@ -2,19 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-network
-author: rockboyfor
+author: genlin
 ms.service: virtual-network
 ms.topic: include
-origin.date: 04/13/2018
-ms.date: 06/11/2018
-ms.author: v-yeche
+ms.date: 04/13/2018
+ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: 588aa260f2ece543445bfd4da7ef4682dab8334c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309931"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170292"
 ---
 ## <a name="scenario"></a>Forgatókönyv
 Ez a dokumentum jobban bemutatják, hogyan hozhat létre NSG-ket, használja az alábbi forgatókönyvet:
@@ -31,3 +30,4 @@ Ebben a forgatókönyvben minden alhálózathoz, az NSG-t hoz létre a **TestVNe
   * **webalkalmazás-szabály**. Az összes internetre irányuló forgalmat a megtagadja a *háttérrendszer* alhálózat.
 
 Ezek a szabályok kombinációját, hozzon létre egy DMZ-hez hasonló forgatókönyv, ahol a háttérbeli alhálózat is csak bejövő forgalom fogadásához meg SQL esetén az előtéri alhálózatról érkező, és nem fér hozzá az internethez, miközben az előtérbeli alhálózat kommunikáljon az internettel, és fogadása a bejövő HTTP-kérések csak.
+

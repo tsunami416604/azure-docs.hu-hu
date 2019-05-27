@@ -5,22 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 1/15/2019
+ms.date: 5/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: d1e57e623e3e95f3d71e895c49c928f00aa0ad46
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fdfabf328ddfa6b5e4b578be5a1b329cb3219a18
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274672"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989081"
 ---
-# <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Azure VPN Gateway (előzetes verzió) OpenVPN ügyfelek konfigurálása
+# <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Azure VPN Gateway OpenVPN ügyfelek konfigurálása
 
 Ez a cikk segít konfigurálása **OpenVPN® protokoll** ügyfelek.
-
-> [!IMPORTANT]
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -138,6 +134,6 @@ Győződjön meg arról, hogy végrehajtotta a OpenVPN konfigurálása a VPN-át
 
 ## <a name="next-steps"></a>További lépések
 
-Ha azt szeretné, hogy a VPN-ügyfél egy másik virtuális hálózatban (éles) található erőforrások hozzáférhet, majd kövesse a [VNet – VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) cikk egy vnet – vnet kapcsolat beállításához. Ügyeljen arra, hogy a BGP engedélyezéséhez az átjárók és a kapcsolatokat, ellenkező esetben nem forgalom.
+Ha azt szeretné, hogy a VPN-ügyfél egy másik virtuális hálózatban található erőforrások hozzáférhet, majd kövesse a [VNet – VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) cikk egy vnet – vnet kapcsolat beállításához. Ügyeljen arra, hogy a BGP engedélyezéséhez az átjárók és a kapcsolatokat, ellenkező esetben nem forgalom.
 
 **"OpenVPN" a OpenVPN Inc. védjegye.**

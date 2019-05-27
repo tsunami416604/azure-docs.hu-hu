@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 1ab6bb069f60f4d2dbb4cfaecda54c3c2ef20adc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a79a5fe1632eeabee670274ebbb19c4c34bd84d2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806431"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66117337"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>Gyors útmutató: Jupyter Python notebookok használatával egy Azure Search-index létrehozása
 > [!div class="op_single_selector"]
@@ -26,17 +26,17 @@ ms.locfileid: "65806431"
 > * [Portál](search-create-index-portal.md)
 > 
 
-Hozhat létre, amely hoz létre, betöltése és lekérdezése az Azure Search Jupyter notebook [index](search-what-is-an-index.md) pythonnal és a [Azure Search szolgáltatás REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Ez a cikk azt ismerteti, hogyan hozhat létre saját notebook lépésről lépésre. Igény szerint futtathatja egy befejezett notebookot. Ha szeretné letölteni, nyissa meg [Azure-Search-python-samples-tárház](https://github.com/Azure-Samples/azure-search-python-samples).
+Létrehozó, betöltődik, és Python használatával Azure Search-index lekérdezése Jupyter notebook létrehozása és a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Ez a cikk azt ismerteti, hogyan hozhat létre egy notebookot lépésről lépésre, vág bele. Másik lehetőségként egy befejezett notebook futtatható. Ha szeretné letölteni, nyissa meg [Azure-Search-python-samples-tárház](https://github.com/Azure-Samples/azure-search-python-samples).
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a munka megkezdése előtt, majd [regisztrálhat az Azure Searchre](search-create-service-portal.md).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a rövid útmutató a következő szolgáltatásokat és eszközöket használatosak. 
 
-+ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja. 
-
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section), így a Python 3.x és Jupyter-Notebookjait.
+
++ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja. 
 
 ## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
 
@@ -67,9 +67,9 @@ Jupyter notebook megnyitásához, és ellenőrizze a helyi munkaállomáson val�
 1. A második cellába adjon meg a kérelem elemek állandók halasztása minden kérelemnél meg. Cserélje le az érvényes értékek a keresési szolgáltatás nevének (a SEARCH-szolgáltatás neve) és a rendszergazdai API-kulcs (a-ADMIN-API-kulcs). 
 
    ```python
-    endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
-    api_version = '?api-version=2019-05-06'
-    headers = {'Content-Type': 'application/json',
+   endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
+   api_version = '?api-version=2019-05-06'
+   headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
@@ -98,7 +98,6 @@ A portál használata, az index léteznie kell a szolgáltatás adatok betölté
 A mezők gyűjteménye határozza meg a szerkezete egy *dokumentum*. Az index szükséges elemek közé tartozik, egy nevet és egy mezőt. Minden mező rendelkezik egy név, típus és attribútumokat, amelyek meghatározzák, hogyan használja fel azokat (például, hogy-e teljes szöveges kereshető, szűrhető vagy lekérhető a keresési eredmények között). Index, egyes típusú mezők belül `Edm.String` kijelölt a *kulcs* dokumentum identitás.
 
 Ez az index neve "hotels-py" és a Meződefiníciók lentebb látható. A nagyobb része ["Hotels" index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) használt egyéb forgatókönyvek. Hogy vágott ebben a rövid útmutatóban kihagytuk.
-
 
 1. A következő cellába illessze be az alábbi példa a sémát adjon meg egy cellában. 
 
@@ -152,7 +151,7 @@ Ez az index neve "hotels-py" és a Meződefiníciók lentebb látható. A nagyob
 
 Küldje le a dokumentumokat, használja a HTTP POST-kérelmet az index URL-cím végponthoz. A REST API [hozzáadása, frissítése vagy törlése dokumentumok](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Dokumentumok származik [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) a Githubon.
 
-1. Egy új cellába adja meg, amelyek megfelelnek az indexséma három dokumentumokat. Adja meg az egyes dokumentumok feltöltési művelet.
+1. Egy új cellába adja meg, amelyek megfelelnek az indexséma négy dokumentumokat. Adja meg az egyes dokumentumok feltöltési művelet.
 
     ```python
     documents = {
@@ -212,7 +211,25 @@ Küldje le a dokumentumokat, használja a HTTP POST-kérelmet az index URL-cím 
             "StateProvince": "GA",
             "PostalCode": "30326",
             "Country": "USA"
-        }
+        },
+        {
+        "@search.action": "upload",
+        "HotelId": "4",
+        "HotelName": "Sublime Cliff Hotel",
+        "Description": "Sublime Cliff Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 1800 palace.",
+        "Description_fr": "Le sublime Cliff Hotel est situé au coeur du centre historique de sublime dans un quartier extrêmement animé et vivant, à courte distance de marche des sites et monuments de la ville et est entouré par l'extraordinaire beauté des églises, des bâtiments, des commerces et Monuments. Sublime Cliff fait partie d'un Palace 1800 restauré avec amour.",
+        "Category": "Boutique",
+        "Tags": [ "concierge", "view", "24-hour front desk service" ],
+        "ParkingIncluded": "true",
+        "LastRenovationDate": "1960-02-06T00:00:00Z",
+        "Rating": 4.60,
+        "Address": {
+            "StreetAddress": "7400 San Pedro Ave",
+            "City": "San Antonio",
+            "StateProvince": "TX",
+            "PostalCode": "78216",
+            "Country": "USA"
+       }
       }
      ]
     }
@@ -242,6 +259,10 @@ Küldje le a dokumentumokat, használja a HTTP POST-kérelmet az index URL-cím 
            {'errorMessage': None,
             'key': '3',
             'status': True,
+            'statusCode': 201}]},
+           {'errorMessage': None,
+            'key': '4',
+            'status': True,
             'statusCode': 201}]}
      ```
 
@@ -266,7 +287,7 @@ Ez a lépés bemutatja, hogyan kérdezhet le egy index használatával a [Search
    pprint(query)
    ```
 
-   Eredmények a következő kimenet hasonlóan kell kinéznie.
+   Eredmények a következő kimenet hasonlóan kell kinéznie. Az eredmény nem unranked (search.score = 1.0), mert nem biztosítunk semmilyen feltételt az egyeztetés.
 
    ```
    {'@odata.context': "https://mydemo.search.windows.net/indexes('hotels-py')/$metadata#docs(*)",
@@ -279,14 +300,17 @@ Ez a lépés bemutatja, hogyan kérdezhet le egy index használatával a [Search
                'HotelName': 'Twin Dome Motel'},
               {'@search.score': 1.0,
                'HotelId': '3',
-               'HotelName': 'Triple Landscape Hotel'}]}
+               'HotelName': 'Triple Landscape Hotel'},
+              {'@search.score': 1.0,
+               'HotelId': '4',
+               'HotelName': 'Sublime Cliff Hotel'}]}
    ```
 
-3. Próbálja meg néhány további lekérdezést példák betekintést nyerhet a szintaxis. Szűrő alkalmazása, az első két találatot is magával egy adott mezőben rendezés vagy 
+3. Próbálja meg néhány további lekérdezést példák betekintést nyerhet a szintaxis. Szűrő alkalmazása, igénybe az első két találatot, vagy egy adott mezőben rendezés.
 
    + `searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'`
 
-   + `searchstring = '&search=hotel&$top=2&$select=HotelId,HotelName,Description'`
+   + `searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'`
 
    + `searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'`
 
@@ -311,7 +335,7 @@ pprint(index_list)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a lekérdezés szintaxisa és forgatókönyvek.
+Egyszerűsítését, mint az ebben a rövid útmutatóban a "Hotels" index rövidített verzióját használja. A teljes verzió érdekesebb lekérdezések kipróbálására is létrehozhat. A teljes verzió és minden 50 dokumentum lekéréséhez futtassa a **adatimportálás** varázslót, és válassza *hotels-sample* beépített minta adatforrásokból.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy egyszerű lekérdezést](search-query-overview.md)
+> [Rövid útmutató: Index létrehozása az Azure Portalon](search-get-started-portal.md)

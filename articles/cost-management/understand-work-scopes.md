@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 4e7956e8873b552fcd73c51a51f51d99f21af324
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61003010"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991387"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
@@ -60,14 +60,14 @@ A Cost Management a következő beépített szerepkörök támogatja a következ
 - [**Tulajdonos** ](../role-based-access-control/built-in-roles.md#owner) – megtekintheti a költségek és mindent felügyelhetnek, beleértve költség.
 - [**Közreműködői** ](../role-based-access-control/built-in-roles.md#contributor) – megtekintheti a költségek és mindent felügyelhetnek, beleértve költség, de a hozzáférés-vezérlés kivételével.
 - [**Olvasó** ](../role-based-access-control/built-in-roles.md#reader) –, aki mindent megtekinthet, többek között a költségadatok és a konfigurációt, de nem módosíthatja.
-- [**Cost Management közreműködői** ](../role-based-access-control/built-in-roles.md#cost-management-contributor) – költségek megtekintheti és kezelheti a költségek konfigurálása.
-- [**Cost Management olvasó** ](../role-based-access-control/built-in-roles.md#cost-management-reader) – költségadatok és konfigurációs megtekintését teszi lehetővé.
+- [**Cost Management közreműködői** ](../role-based-access-control/built-in-roles.md#cost-management-contributor) – is költségeit, költség konfigurációjának kezelése és megtekintése javaslatok.
+- [**Cost Management olvasó** ](../role-based-access-control/built-in-roles.md#cost-management-reader) – költségadatok költség konfigurációs, megtekintheti és javaslatok megtekintése.
 
 A Cost Management közreműködői olyan ajánlott minimális jogosultságon alapuló szerepkör. Személyek hozhat létre és kezelhet költségvetése hozzáférést tesz lehetővé, és exportálja az további hatékony figyelése és jelentések, a költségek. Cost Management közreműködők is szükség lehet további szerepkörök teljes körű cost management helyzetek feltételeinek megteremtésére. Vegye figyelembe a következő esetekben:
 
 - **Intézkedjen költségvetése túllépése esetén** – felügyeleti közreműködőkkel is hozzáférhetnek a létrehozása és/vagy Műveletcsoportok túlhasználattal automatikusan reagálni kezelése. Fontolja meg a jegykiadó [közreműködő figyelése](../role-based-access-control/built-in-roles.md#monitoring-contributor) egy erőforráscsoportot, amely tartalmazza a műveletcsoport szeretne használni, amikor a költségvetés küszöbérték túllépése. Bizonyos műveletek automatizálásához szükséges további szerepkörök használja, mint például az Automation és az Azure Functions megadott konkrét szolgáltatások esetében.
 - **Adatok exportálása költség ütemezés** – felügyeleti közreműködőkkel is kell ütemezni másolhat adatokat egy tárfiókba történő exportálását a storage-fiókok kezelése a hozzáférést. Fontolja meg a jegykiadó [Tárfiók-közreműködő](../role-based-access-control/built-in-roles.md#storage-account-contributor) egy erőforráscsoportba, amely tartalmazza a tárolási fiók, ahol a költségadatok van exportálva.
-- **Megtekintés, költségtakarékos javaslatok** – Cost Management olvasó és közreműködő nincs hozzáférése javaslatok alapértelmezés szerint. Javaslatok a hozzáférést az egyes erőforrások olvasási hozzáférésre van szüksége. Fontolja meg a jegykiadó [olvasó](../role-based-access-control/built-in-roles.md#reader) vagy egy [szolgáltatásspecifikus szerepkör](../role-based-access-control/built-in-roles.md#built-in-role-descriptions).
+- **Megtekintés, költségtakarékos javaslatok** – Cost Management olvasók és a Cost Management közreműködők férhetnek hozzá *nézet* javaslatok alapértelmezés szerinti költségek. Hozzáférés a költségek ajánlásoknak azonban egyes erőforrásokhoz való hozzáférés szükséges. Fontolja meg a jegykiadó egy [szolgáltatásspecifikus szerepkör](../role-based-access-control/built-in-roles.md#built-in-role-descriptions) Ha el szeretné végezni a költség-alapú javaslatot.
 
 ## <a name="enterprise-agreement-scopes"></a>Nagyvállalati Szerződés hatókörök
 
