@@ -66,12 +66,12 @@ A következő táblázat ismerteti a JSON-elemeket egy társított FTP-szolgált
 | Tulajdonság | Leírás | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- |
 | type |Állítsa az FTP-kiszolgáló. |Igen |&nbsp; |
-| gazdagép |Adja meg a nevét vagy az FTP-kiszolgáló IP-címét. |Igen |&nbsp; |
+| host |Adja meg a nevét vagy az FTP-kiszolgáló IP-címét. |Igen |&nbsp; |
 | authenticationType |Adja meg a hitelesítés típusát. |Igen |Alapszintű, a névtelen |
-| felhasználónév |Adja meg a felhasználót, ki férhet hozzá az FTP-kiszolgáló. |Nem |&nbsp; |
+| username |Adja meg a felhasználót, ki férhet hozzá az FTP-kiszolgáló. |Nem |&nbsp; |
 | password |Adja meg a jelszót a felhasználó (felhasználónév). |Nem |&nbsp; |
 | encryptedCredential |Adja meg a titkosított hitelesítő adatokat, az FTP-kiszolgáló eléréséhez. |Nem |&nbsp; |
-| átjáró neve |Az adatkezelési átjáró egy helyszíni FTP-kiszolgálóhoz való csatlakozáshoz adja meg az átjárója nevére. |Nem |&nbsp; |
+| gatewayName |Az adatkezelési átjáró egy helyszíni FTP-kiszolgálóhoz való csatlakozáshoz adja meg az átjárója nevére. |Nem |&nbsp; |
 | port |Adja meg a portot, amelyet az FTP-kiszolgáló figyel. |Nem |21 |
 | enableSsl |Adja meg, hogy az FTP használja az SSL/TLS-csatorna-en keresztül. |Nem |true |
 | enableServerCertificateValidation |Adja meg, hogy engedélyezze a kiszolgálói SSL-tanúsítvány hitelesítése a TLS/SSL csatornán keresztül FTP használata esetén. |Nem |true |
@@ -159,8 +159,8 @@ A **typeProperties** szakasz eltér az egyes adatkészlet. Az adatkészlet-típu
 | fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg semmilyen értéket ehhez a tulajdonsághoz, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet esetén a létrehozott fájl neve a következő formátumban van: <br/><br/>`Data.<Guid>.txt` (Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nem |
 | fileFilter |Adja meg a fájlok egy adott sorkészletét jelölik ki használandó szűrő a **folderPath**, ahelyett, hogy minden fájl.<br/><br/>Engedélyezett értékek a következők: `*` (több karakter) és `?` (egyetlen karakter).<br/><br/>1. példa: `"fileFilter": "*.log"`<br/>2. példa: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** a fájlmegosztás a bemeneti adatkészletek vonatkozik. Ez a tulajdonság nem támogatott a Hadoop elosztott fájlrendszer (HDFS). |Nem |
 | partitionedBy |Adjon meg egy dinamikus használt **folderPath** és **fileName** az idősorozat-adatok. Meghatározhatja például, hogy egy **folderPath** , amely paraméteres van az adatok minden óra. |Nem |
-| Formátum | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum ](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszokat. <br><br> Ha másolja a fájlokat, mivel ezek közötti fájlalapú tárolók (bináris másolat) szeretné használni, hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
-| A tömörítés | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok a következők **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**, és a támogatott szintek a következők **Optimal** és **leggyorsabb**. További információkért lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
+| format | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum ](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszokat. <br><br> Ha másolja a fájlokat, mivel ezek közötti fájlalapú tárolók (bináris másolat) szeretné használni, hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
+| compression | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok a következők **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**, és a támogatott szintek a következők **Optimal** és **leggyorsabb**. További információkért lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 | useBinaryTransfer |Adja meg, hogy a bináris átviteli üzemmódot használja-e. Az értékek a következők igaz a bináris mód (Ez az alapértelmezett érték), és hamis értéket az ASCII. Ez a tulajdonság csak akkor használható, ha a kapcsolódó társított szolgáltatás típusa típusa: FTP-kiszolgáló. |Nem |
 
 > [!NOTE]
@@ -206,7 +206,7 @@ A másolási tevékenység, ha a forrás típusa **FileSystemSource**, a követk
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| a rekurzív |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákat, vagy csak a megadott mappába. |TRUE, False (alapértelmezett) |Nem |
+| recursive |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákat, vagy csak a megadott mappába. |TRUE, False (alapértelmezett) |Nem |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON-példa: Adatok másolása az FTP-kiszolgálóhoz az Azure Blob
 Ez a példa bemutatja, hogyan másolhat adatokat egy FTP-kiszolgálóról az Azure Blob storage. Azonban az adatok közvetlenül a megadott fogadóként bármelyikét a átmásolhatók a [támogatott adattárak és formátumok](data-factory-data-movement-activities.md#supported-data-stores-and-formats), a másolási tevékenység használatával a Data Factoryban.
