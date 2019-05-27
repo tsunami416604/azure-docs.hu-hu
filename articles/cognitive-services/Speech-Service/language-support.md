@@ -12,17 +12,17 @@ ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 9b8e12220f220bd8183675d13e25bdcab02707fd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "65020843"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>A beszédfelismerési szolgáltatás nyelvéhez és régiójához támogatása
 
 Beszédszolgáltatások különböző funkciók különböző nyelvekhez támogatottak. A következő táblázat összefoglalja a nyelvi támogatás.
 
-## <a name="speech-to-text"></a>Diktálás
+## <a name="speech-to-text"></a>Speech-to-text
 
 A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egyes nyelvekhez testreszabás szinteken érhetők el.
 
@@ -60,7 +60,7 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egy
  cs-EDIK | thai (Thaiföld) | Nem | Nem | Nem
 
 
-## <a name="text-to-speech"></a>Szövegfelolvasás
+## <a name="text-to-speech"></a>Text-to-speech
 
 A szöveg-hang transzformációs REST API támogatja ezeket beszédhangot, amelyek mindegyike támogatja egy adott nyelvhez és dialect, területi beállítás azonosítjuk.
 
@@ -186,7 +186,7 @@ Hangalapú testreszabási érhető el a de-DE, en-GB, en-IN, en-US, es-MX, fr-FR
 > [!NOTE]
 > Bi-nyelv modell betanítása az egyéni beszédfelismerési, kivéve a bi-nyelv az angol nyelvű kínai nem támogatott. Válassza a "Angol nyelvű kínai kétnyelvű", ha szeretne betanításához az egy kínai hang, amelyek képesek megszólalni angol is. Hangalapú képzési az összes területi beállítások egy be, mint 2000 utterances, kivéve az en-US és zh-CN, elkezdheti az bármilyen méretű betanítási adatok kezdődik.
 
-## <a name="speech-translation"></a>Beszédfordítás
+## <a name="speech-translation"></a>Tolmácsolás
 
 A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig a hang-szöveg transzformációs nyelvi táblából kell származnia. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget. Bejövő speech be, előfordulhat, hogy fordítása több mint [60 nyelvet](https://www.microsoft.com/translator/business/languages/). Ezek egy részét érhetők el a [beszédszintézishez](language-support.md#text-languages).
 

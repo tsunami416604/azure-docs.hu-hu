@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 04/02/2019
+ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a4f14a1e68042704ca8e8c49f1bd76b722c90d4d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: aa58d0405176a63ff9d1cc25b572f3f3754dbbdc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466300"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238854"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Oktatóanyag: Az Azure Deployment Manager használata a Resource Manager-sablonok (nyilvános előzetes verzió)
 
@@ -55,7 +55,6 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 * Némi gyakorlat az [Azure Resource Manager-sablonok](./resource-group-overview.md) kialakításában.
-* Az Azure Deployment Manager privát előzetes verzióban érhető el. Az Azure Deployment Manager használatára való regisztrációhoz töltse ki a [regisztrációs űrlapot](https://aka.ms/admsignup). 
 * Azure PowerShell. További információért lásd [az Azure PowerShell használatának első lépéseit](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Deployment Manager-parancsmagok. Az előzetes verziójú parancsmagok telepítéséhez a PowerShellGet legújabb verziójára lesz szüksége. A legújabb verzió beszerzéséről lásd [a PowerShellGet telepítését](/powershell/gallery/installing-psget) ismertető cikket. A PowerShellGet telepítése után zárja be a PowerShell-ablakot. Nyisson meg egy új emelt szintű PowerShell-ablakot, és használja a következő parancsot:
 
@@ -106,18 +105,18 @@ A letöltés ArtifactStore mappája két mappát tartalmaz:
 
 A két verzió (1.0.0.0 és 1.0.0.1) a [változatok üzembe helyezését](#deploy-the-revision) szolgálja. Bár a sablonösszetevőknek és a bináris összetevőknek is két-két verziója van, csak a bináris összetevőknek térnek el a verziói. A gyakorlatban a bináris összetevők gyakrabban frissülnek, mint a sablonösszetevők.
 
-1. Nyissa meg a következő fájlt egy szövegszerkesztőben: **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateStorageAccount.json**. Ez egy egyszerű sablon egy tárfiók létrehozásához.  
-2. Nyissa meg a következő fájlt: **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplication.json**. 
+1. Nyissa meg a következő fájlt egy szövegszerkesztőben: **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateStorageAccount.json**. Ez egy egyszerű sablon egy tárfiók létrehozásához.
+2. Nyissa meg a következő fájlt: **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplication.json**.
 
     ![Azure Deployment Manager oktatóanyag – webalkalmazás-létrehozási sablon](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-packageuri.png)
 
     A sablon egy telepítőcsomagot hív meg, amely a webalkalmazás fájljait tartalmazza. Ebben az oktatóanyagban a tömörített csomag csak index.html fájlt tartalmaz.
-3. Nyissa meg a következő fájlt: **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**. 
+3. Nyissa meg a következő fájlt: **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**.
 
     ![Azure Deployment Manager-oktatóanyag – webalkalmazás-létrehozási sablon paraméterei, containerRoot](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-parameters-deploypackageuri.png)
 
     A deployPackageUri értéke a telepítőcsomag elérési útja. A paraméter tartalmaz egy **$containerRoot** változót. A $containerRoot értékét a [bevezetési sablon](#create-the-rollout-template) adja meg az összetevőforrás SAS-helye, az összetevő gyökere és a deployPackageUri azonosító összefűzésével.
-4. Nyissa meg a következő fájlt: **\ArtifactStore\binaries\1.0.0.0\helloWorldWebAppWUS.zip\index.html**.  
+4. Nyissa meg a következő fájlt: **\ArtifactStore\binaries\1.0.0.0\helloWorldWebAppWUS.zip\index.html**.
 
     ```html
     <html>
@@ -159,7 +158,7 @@ Létre kell hoznia egy felhasználó által hozzárendelt felügyelt identitást
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Hozzon létre egy [felhasználó által hozzárendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. A portál bal oldali menüjében válassza az **Előfizetések** lehetőséget, majd válassza ki az előfizetést.
-4. Válassza ki **hozzáférés-vezérlés (IAM)**, majd válassza ki **szerepkör-hozzárendelés hozzáadása**.
+4. Válassza ki **hozzáférés-vezérlés (IAM)** , majd válassza ki **szerepkör-hozzárendelés hozzáadása**.
 5. Adja meg vagy válassza ki a következő értékeket:
 
     ![Azure Deployment Manager-oktatóanyag – felhasználó által hozzárendelt felügyelt identitás hozzáférés-vezérlése](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-access-control.png)
@@ -257,7 +256,7 @@ Az alábbi képernyőképen a várakozási lépcső definíciója látható:
 
 ![Azure Deployment Manager-oktatóanyag – bevezetési sablon erőforrásainak várakozási lépcsője](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-resources-wait-step.png)
 
-Az időtartam az [ISO 8601 szabványt](https://en.wikipedia.org/wiki/ISO_8601#Durations) követi. A **PT1M** (nagybetűkkel kell megadni) például 1 perces várakozást jelöl. 
+Az időtartam az [ISO 8601 szabványt](https://en.wikipedia.org/wiki/ISO_8601#Durations) követi. A **PT1M** (nagybetűkkel kell megadni) például 1 perces várakozást jelöl.
 
 Az alábbi képernyőképen a bevezetés definíciójának csak egyes részei láthatók:
 
@@ -292,13 +291,13 @@ Hozzon létre egy paraméterfájlt, amely a bevezetési sablonnal használható.
 
 ## <a name="deploy-the-templates"></a>A sablonok üzembe helyezése
 
-A sablonok az Azure PowerShell használatával telepíthetők. 
+A sablonok az Azure PowerShell használatával telepíthetők.
 
 1. Futtassa a szkriptet a szolgáltatástopológia üzembe helyezéséhez.
 
     ```azurepowershell
     $resourceGroupName = "<Enter a Resource Group Name>"
-    $location = "Central US"  
+    $location = "Central US"
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
 
     # Create a resource group
@@ -429,7 +428,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
     * **&lt;namePrefix>ServiceWUSrg**: A ServiceWUS által definiált erőforrásokat tartalmazza.
     * **&lt;namePrefix>ServiceEUSrg**: A ServiceEUS által definiált erőforrásokat tartalmazza.
     * A felhasználó által meghatározott felügyelt identitás erőforráscsoportja.
-3. Válassza ki az erőforráscsoport nevét.  
+3. Válassza ki az erőforráscsoport nevét.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 5. Ennek a két lépésnek az ismétlésével törölje az oktatóanyagban létrehozott több erőforráscsoportot is.
 

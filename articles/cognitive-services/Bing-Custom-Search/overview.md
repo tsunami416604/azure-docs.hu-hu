@@ -11,17 +11,17 @@ ms.topic: overview
 ms.date: 03/4/2019
 ms.author: aahi
 ms.openlocfilehash: e788da047cb0567fc00f27130621a2f21e575dc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "61335527"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Mi az a Bing Custom Search API?
 
 A Bing Custom Search API lehetővé teszi, hogy a témakörök, amelyek az Ön számára személyre szabott ingyenes keresési funkciókkal. Megadhatja, hogy a tartományok és weblapjait a Bing keresés, valamint a PIN-kód, növelheti, vagy adott tartalmat, a webes egyéni nézet létrehozása, és segítségével gyorsan megtalálhatja a releváns keresési eredmények a felhasználók lefokozása. 
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 |Szolgáltatás  |Leírás  |
 |---------|---------|

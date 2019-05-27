@@ -12,15 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-origin.date: 08/10/2018
-ms.date: 12/03/2018
+ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 0f2b45685d2976c567c16666e2ca89d334914b63
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: eff827937adbae7cfdfdd86392593df8d698053c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62112533"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241783"
 ---
 # <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele  
 
@@ -51,7 +50,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     | Name (Név)                     | Leírás                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Megjelenített név             | A név, ahogyan a **fejlesztői portálon** meg szeretné jeleníteni.                                                                                                                                                                                                                                                        |
+    | Display name             | A név, ahogyan a **fejlesztői portálon** meg szeretné jeleníteni.                                                                                                                                                                                                                                                        |
     | Name (Név)                     | A termék leíró neve.                                                                                                                                                                                                                                                                                      |
     | Leírás              | A **Leírás** mezőben részletes információkat adhat meg a termékről, például a funkcióját vagy az API-kat, amelyekhez hozzáférést nyújt.                                                                                                                                               |
     | Állapot                    | Kattintson a **Közzétett** elemre, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a **Rendszergazdák** csoport tagjai számára láthatók.                                                                                      |
@@ -87,7 +86,7 @@ A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor
 4. Válasszon egy API-t, és kattintson a **Kiválasztás** gombra.
 
 > [!TIP]
-> [REST API-n keresztül](https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate) vagy PowerShell-paranccsal, egyéni előfizetési azonosítók használatával hozhatja létre és frissítheti egy felhasználó *Termékre* vonatkozó előfizetését.
+> [REST API-n keresztül](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate) vagy PowerShell-paranccsal, egyéni előfizetési azonosítók használatával hozhatja létre és frissítheti egy felhasználó *Termékre* vonatkozó előfizetését.
 
 ## <a name="next-steps"></a>További lépések
 

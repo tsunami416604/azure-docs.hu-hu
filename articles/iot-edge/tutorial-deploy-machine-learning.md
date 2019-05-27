@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6f85b0088fac97f4b9f2dd2835e3052cb598a987
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6c48aaf404803c45122ed3fad0d6af1345406f7b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142766"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239671"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Azure Machine Learning, az IoT Edge-modul (előzetes verzió) üzembe helyezése
 
@@ -139,13 +139,13 @@ A következő lépések azt mutatják be, hogyan állítható be a Visual Studio
 
 1. A Visual Studio Code-ban válassza az **IoT Hub-eszközök** elemet.
 
-2. Ezt követően válassza a **...**, majd az **IoT Hub kapcsolati sztring beállítása** lehetőséget a menüben.
+2. Ezt követően válassza a **...** , majd az **IoT Hub kapcsolati sztring beállítása** lehetőséget a menüben.
 
    ![Az IoT Hub kapcsolati karakterlánc beállítása](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. Az oldal tetején megnyíló szövegmezőben adja meg a saját IoT Hubjához tartozó iothubowner kapcsolati sztringet. IoT Edge-eszközének ekkor meg kell jelennie az IoT Hub-eszközök listájában.
 
-4. Ezt követően ismét válassza a **...**, majd a **D2C üzenet monitorozásának megkezdése** lehetőséget.
+4. Válassza ki **...**  újra, majd válassza ki **Start beépített esemény végpont**.
 
 5. Figyelje meg a tempSensor felől öt másodpercenként érkező üzeneteket. Az üzenettörzs nevű tulajdonságot tartalmaz **anomáliadetektálási**, amely a machinelearningmodule biztosít egy igaz vagy hamis értéket. Az **AzureMLResponse** tulajdonság „OK” értéket tartalmaz, ha a modell sikeresen lefutott.
 

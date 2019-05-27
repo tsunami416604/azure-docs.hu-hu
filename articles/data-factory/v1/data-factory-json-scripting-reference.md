@@ -49,7 +49,7 @@ Következő táblázat ismerteti a tulajdonságokat a folyamat JSON-definíciót
 
 | Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
-| name | A folyamat neve. Adjon meg egy műveletet jelölő nevet, hogy a tevékenység vagy a folyamat erre van konfigurálva<br/><ul><li>Karakterek maximális száma: 260</li><li>Betűvel, számmal vagy aláhúzásjellel kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Igen |
+| név | A folyamat neve. Adjon meg egy műveletet jelölő nevet, hogy a tevékenység vagy a folyamat erre van konfigurálva<br/><ul><li>Karakterek maximális száma: 260</li><li>Betűvel, számmal vagy aláhúzásjellel kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Igen |
 | description |Mi az a tevékenység vagy a folyamat használatos leíró szöveg | Nem |
 | activities | A tevékenységek listáját tartalmazza. | Igen |
 | start |Kezdő dátum-idő a folyamat. Kell [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601). Példa: 2014-10-14T16:32:41. <br/><br/>Adja meg a helyi időt, például egy becsült idő, lehetőség. Íme egy példa: `2016-02-27T06:00:00**-05:00`, azaz 6 Órakor becsült<br/><br/>A kezdő és záró tulajdonságok együtt a a folyamat aktív időszakát határozzák meg. Kimeneti szeleteket csak előállítása az aktív ebben az időszakban. |Nem<br/><br/>Ha megad egy záró tulajdonság értéke, kezdő tulajdonság értékének kell megadnia.<br/><br/>A kezdési és befejezési idejének is lehet üres folyamat létrehozása. A folyamat futtatásához egy aktív időszak beállítása mindkét értéket meg kell adnia. Ha nem adja meg a kezdő és befejező időpontok egy folyamat létrehozásakor beállíthatja azokat később a Set-AzDataFactoryPipelineActivePeriod parancsmaggal. |
@@ -87,7 +87,7 @@ Az alábbi táblázat belül a tevékenység JSON-definíció tulajdonságainak 
 
 | Címke | Leírás | Szükséges |
 | --- | --- | --- |
-| name |A tevékenység neve. Adjon meg egy műveletet jelölő nevet, amely a tevékenység van konfigurálva<br/><ul><li>Karakterek maximális száma: 260</li><li>Betűvel, számmal vagy aláhúzásjellel kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Igen |
+| név |A tevékenység neve. Adjon meg egy műveletet jelölő nevet, amely a tevékenység van konfigurálva<br/><ul><li>Karakterek maximális száma: 260</li><li>Betűvel, számmal vagy aláhúzásjellel kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Igen |
 | description |Mire használható a tevékenységet leíró szöveg. |Nem |
 | type |Megadja a tevékenység típusát. Tekintse meg a [ADATTÁRAK](#data-stores) és [adat-ÁTALAKÍTÁSI tevékenységeket](#data-transformation-activities) tevékenységek a különböző tevékenységtípusokkal kapcsolatban. |Igen |
 | inputs |A tevékenység által használt bemeneti táblák<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |A HDInsightStreaming és SqlServerStoredProcedure tevékenységek nem <br/> <br/> Minden egyéb esetében: Igen |
@@ -95,7 +95,7 @@ Az alábbi táblázat belül a tevékenység JSON-definíció tulajdonságainak 
 | linkedServiceName |A tevékenység által használt társított szolgáltatás neve. <br/><br/>Egy adott tevékenység megkövetelheti annak a társított szolgáltatásnak a megadását, amely a szükséges számítási környezethez kapcsolódik. |Igen, a HDInsight-tevékenységek, Azure Machine Learning-tevékenységek és tárolt eljárási tevékenység. <br/><br/>Minden egyéb esetében: nem |
 | typeProperties |A typeProperties szakasz tulajdonságai a tevékenység-típustól függnek. |Nem |
 | policy |Olyan szabályzatok, amelyek az adott tevékenység futásidejű viselkedését befolyásolják. Ha nincs megadva, az alapértelmezett házirendek használhatók. |Nem |
-| scheduler |"a scheduler" tulajdonság a tevékenység kívánt ütemezés meghatározására szolgál. A altulajdonságok ugyanazok, mint az a [rendelkezésre állási tulajdonságot egy adatkészlet](data-factory-create-datasets.md#dataset-availability). |Nem |
+| a Scheduler |"a scheduler" tulajdonság a tevékenység kívánt ütemezés meghatározására szolgál. A altulajdonságok ugyanazok, mint az a [rendelkezésre állási tulajdonságot egy adatkészlet](data-factory-create-datasets.md#dataset-availability). |Nem |
 
 ### <a name="policies"></a>Házirendek
 Házirendek egy tevékenység futásidejű viselkedését befolyásolják, kifejezetten egy tábla a szelet feldolgozása során. Az alábbi táblázatban a részleteket.
@@ -287,19 +287,19 @@ A következő táblázat ismerteti a fenti JSON-tulajdonságok:
 | Tulajdonság | Leírás | Kötelező | Alapértelmezett |
 | --- | --- | --- | --- |
 | név | Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](data-factory-naming-rules.md) elnevezési szabályait. |Igen |n/a |
-| típus | Az adatkészlet típusa. Adjon meg egy Azure Data Factory által támogatott fájltípusok (például: AzureBlob, AzureSqlTable). Lásd: [ADATTÁRAK](#data-stores) az adattárak és a Data Factory által támogatott típus a következő szakaszban. |
+| type | Az adatkészlet típusa. Adjon meg egy Azure Data Factory által támogatott fájltípusok (például: AzureBlob, AzureSqlTable). Lásd: [ADATTÁRAK](#data-stores) az adattárak és a Data Factory által támogatott típus a következő szakaszban. |
 | struktúra | Az adatkészlet sémája. Tartalmaz oszlopokat, azok típusok, stb. | Nem |n/a |
 | typeProperties | A kijelölt típushoz tartozó tulajdonságok. Lásd: [ADATTÁRAK](#data-stores) támogatott típusok és azok tulajdonságait a következő szakaszban. |Igen |n/a |
 | external | Adja meg, hogy data factory-folyamatok explicit módon előállított adatkészlet vagy nem a logikai jelzőt. |Nem |false |
 | rendelkezésre állás | A feldolgozási ablakban vagy a slicing az adatkészlet üzemi modell határoz meg. További információ az adatkészlet felosztási modelljét: [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) cikk. |Igen |n/a |
-| házirend |Határozza meg a feltételeket és a feltétellel, hogy az adatkészlet szeleteit meg kell felelniük. <br/><br/>További információkért lásd: az adatkészlet házirend szakaszban. |Nem |n/a |
+| policy |Határozza meg a feltételeket és a feltétellel, hogy az adatkészlet szeleteit meg kell felelniük. <br/><br/>További információkért lásd: az adatkészlet házirend szakaszban. |Nem |n/a |
 
 Minden egyes oszlopának a **struktúra** szakaszban a következő tulajdonságokat tartalmazza:
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | név |Az oszlop neve. |Igen |
-| típus |Az oszlop adattípusát.  |Nem |
+| type |Az oszlop adattípusát.  |Nem |
 | culture |.NET-alapú kulturális környezet esetén a típus van megadva, és a .NET-típus használandó `Datetime` vagy `Datetimeoffset`. Az alapértelmezett szint a `en-us`. |Nem |
 | format |Formázó karakterlánc típus van megadva, és a .NET-típus esetén használandó `Datetime` vagy `Datetimeoffset`. |Nem |
 
@@ -1313,7 +1313,7 @@ További információkért lásd: [Azure Search-összekötő](data-factory-azure
 
 | Tulajdonság | Leírás | Szükséges |
 | -------- | ----------- | -------- |
-| típus | A type tulajdonságot állítsa **AzureSearchIndex**.| Igen |
+| type | A type tulajdonságot állítsa **AzureSearchIndex**.| Igen |
 | indexName | Az Azure Search-index neve. Adat-előállító nem hoz létre az indexet. Az index léteznie kell az Azure Search szolgáltatásban. | Igen |
 
 #### <a name="example"></a>Példa
@@ -2454,7 +2454,7 @@ Az alábbi táblázatban az adott SQL Server-alapú társított szolgáltatás J
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| típus |A type tulajdonságot kell beállítani: **OnPremisesSqlServer**. |Igen |
+| type |A type tulajdonságot kell beállítani: **OnPremisesSqlServer**. |Igen |
 | connectionString |Adja meg a connectionString adatokat a helyszíni SQL Server-adatbázis SQL-hitelesítés vagy a Windows-hitelesítés használatával való kapcsolódáshoz szükséges. |Igen |
 | átjáró neve |Az átjáró által a Data Factory szolgáltatás a helyszíni SQL Server adatbázishoz való csatlakozáshoz használandó neve. |Igen |
 | username |Ha Windows-hitelesítést használ, adja meg a felhasználónevet. Példa: **domainname\\felhasználónév**. |Nem |
@@ -3317,7 +3317,7 @@ Az Azure data factory egy helyszíni fájlrendszer kapcsolat a **helyi fájlkisz
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| típus |Győződjön meg arról, hogy a type tulajdonság értéke **OnPremisesFileServer**. |Igen |
+| type |Győződjön meg arról, hogy a type tulajdonság értéke **OnPremisesFileServer**. |Igen |
 | host |Megadja a gyökér elérési útja a másolni kívánt mappa. Használja az escape-karaktert "\" a speciális karakterek a karakterláncban. Tekintse meg a minta a társított szolgáltatás és adatkészlet-definíciók példákat. |Igen |
 | userid |Adja meg a felhasználó, aki hozzáfér a server azonosítója. |Nem (Ha úgy dönt, hogy encryptedCredential) |
 | password |Adja meg a jelszót a felhasználó (felhasználóazonosító). |Nem (Ha úgy dönt, hogy encryptedCredential |
@@ -4745,7 +4745,7 @@ Webes adatkészletet adja meg, állítsa a **típusa** a az adatkészlet **Webt�
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| típus |Az adatkészlet típusa. meg kell **Webtábla** |Igen |
+| type |Az adatkészlet típusa. meg kell **Webtábla** |Igen |
 | path |Az erőforrás, amely tartalmazza a tábla relatív URL-CÍMÉT. |Nem. Ha nincs megadva elérési út, csak az URL-címet a társított szolgáltatás definíciójában megadott szolgál. |
 | index |Az erőforrás a tábla indexe. Tekintse meg a Get index egy tábla egy HTML lapszakaszt egy HTML-oldalt az indexet a tábla első lépéseit. |Igen |
 
@@ -4838,7 +4838,7 @@ Az alábbi táblázat ismerteti az Azure JSON egy igény szerinti HDInsight tár
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| típus |A type tulajdonságot kell megadni **HDInsightOnDemand**. |Igen |
+| type |A type tulajdonságot kell megadni **HDInsightOnDemand**. |Igen |
 | clusterSize |A fürt feldolgozó-és adatcsomópontok száma. A HDInsight-fürt 2 fő csomóponttal, ez a tulajdonság adja meg a munkavégző csomópontok számával együtt jön létre. A csomópontok mérete 4 mag, így egy 4 feldolgozó csomópontot tartalmazó fürtben 24 mag szükséges rendelkező Standard_D3 vannak (4\*4 = 16 mag, a feldolgozó csomópontokat, valamint 2\*4 = 8 mag fő csomópontok esetében). Lásd: [Linux-alapú Hadoop-fürtök a HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) a D3 csomag részleteit. |Igen |
 | az élettartam |A megengedett üresjárati idő az igény szerinti HDInsight-fürt számára. Itt adhatja meg, mennyi ideig az igény szerinti HDInsight-fürt aktív marad egy tevékenység fut, ha nincsenek a fürt más aktív feladatok befejezése után.<br/><br/>Például ha egy tevékenység futtatása 6 percig tart, és az élettartam értéke 5 perc, a fürt marad, a figyelő életben 5 perc, a 6 percnek feldolgozása a tevékenység futtatása után. Ha egy másik tevékenység-végrehajtásonként 6 percig időkeretet, dolgoz fel ugyanazon a fürtön.<br/><br/>Egy igény szerinti HDInsight-fürt létrehozása egy (eltarthat egy ideig) drága művelet, így használja ezt a beállítást a szükséges adat-előállító egy igény szerinti HDInsight-fürt újrafelhasználásával teljesítményét.<br/><br/>Ha timetolive az érték 0, a fürt, amint az a tevékenység futtatása a feldolgozott törlődik. Másrészről Ha a magas érték, a fürt felfüggesztheti üresjárati feleslegesen magas költségeket eredményez. Ezért fontos, hogy beállította-e a megfelelő értéket a saját igényei szerint.<br/><br/>Több folyamatot is megosztása a az igény szerinti HDInsight-fürt ugyanazon a timetolive tulajdonság értéke megfelelően van beállítva. |Igen |
 | version |A HDInsight-fürt verzióját. További információkért lásd: [támogatott a HDInsight-verziók az Azure Data Factoryban](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory). |Nem |
@@ -4876,7 +4876,7 @@ Az alábbi táblázat ismerteti az Azure JSON-definíciót egy Azure HDInsight t
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| típus |A type tulajdonságot kell megadni **HDInsight**. |Igen |
+| type |A type tulajdonságot kell megadni **HDInsight**. |Igen |
 | clusterUri |A HDInsight-fürt URI azonosítója. |Igen |
 | username |Adja meg a felhasználó egy meglévő HDInsight-fürthöz való kapcsolódáshoz használt nevét. |Igen |
 | password |Adja meg a felhasználói fiókhoz tartozó jelszót. |Igen |
@@ -4909,7 +4909,7 @@ Az alábbi táblázat ismerteti az Azure JSON-definícióját egy társított Az
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| típus |A type tulajdonságot kell megadni **AzureBatch**. |Igen |
+| type |A type tulajdonságot kell megadni **AzureBatch**. |Igen |
 | fióknév |Az Azure Batch-fiók nevére. |Igen |
 | accessKey |Az Azure Batch-fiók hozzáférési kulcsa. |Igen |
 | poolName |A virtuálisgép-készlet neve. |Igen |
@@ -5060,7 +5060,7 @@ Az alábbi táblázatban az adott SQL Server-alapú társított szolgáltatás J
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| típus |A type tulajdonságot kell beállítani: **OnPremisesSqlServer**. |Igen |
+| type |A type tulajdonságot kell beállítani: **OnPremisesSqlServer**. |Igen |
 | connectionString |Adja meg a connectionString adatokat a helyszíni SQL Server-adatbázis SQL-hitelesítés vagy a Windows-hitelesítés használatával való kapcsolódáshoz szükséges. |Igen |
 | átjáró neve |Az átjáró által a Data Factory szolgáltatás a helyszíni SQL Server adatbázishoz való csatlakozáshoz használandó neve. |Igen |
 | username |Ha Windows-hitelesítést használ, adja meg a felhasználónevet. Példa: **domainname\\felhasználónév**. |Nem |

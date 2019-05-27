@@ -12,10 +12,10 @@ ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: b6e546130efd52312fca62ab4e6a22626778a19e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "60648140"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Mi az a Bing Web Search API?
@@ -26,7 +26,7 @@ Ez az API optimális az olyan alkalmazásokhoz, amelyek hozzáférést biztosít
 
 Szeretné látni működés közben? Próbálja ki a [Bing Web Search API bemutatóanyagát](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/).
 
-## <a name="features"></a>Szolgáltatások  
+## <a name="features"></a>Funkciók  
 
 Bing – internetes keresés csak nem ad hozzáférést, azonnali választ. További szolgáltatások és funkciók, amelyek segítségével testre szabhatja a keresési eredmények a felhasználók számára is biztosít.
 

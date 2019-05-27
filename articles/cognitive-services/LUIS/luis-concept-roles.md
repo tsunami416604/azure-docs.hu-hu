@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 5fa922cb91d34483256faf4dcf70569aa2f17b97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 318e71b68bbabeeef34c75a412f9fdd5b6db754a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60813826"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073011"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>Környezetfüggő altípus entitás szerepkörei
 
@@ -48,7 +48,7 @@ Az utterance (kifejezés) az "Ütemezés az értekezlet 8-9", mind a számok jel
 Schedule the meeting from 8 to 9
 ```
 
-|Entitástípus|Szerepkörnév|Érték|
+|Entitástípus|Szerepkör neve|Érték|
 |--|--|--|
 |Előre összeállított datetimeV2|Kezdés időpontja|8|
 |Előre összeállított datetimeV2|Befejezés időpontja:|9|
@@ -79,12 +79,6 @@ A következő példa utterances entitásokat és szerepköröket használja:
 |--|--|
 |Tanulási további információ az érdekes vagyok **Seattle**|A(z) {Location} helyre vonatkozó többet vagyok|
 |Egy a jegy vásárolnak, New York, Seattle|{Helye: Destination} forrásból {helye:} egy jegyet vásárolni|
-
-## <a name="how-are-roles-related-to-hierarchical-entities"></a>Hogyan kapcsolódnak a szerepkörök hierarchikus entitásokhoz?
-
-Szerepkörök számára érhető el összes entitásának példa utterances, valamint a korábbi minták használatát. Mert elérhetők mindenhol, azok szükségtelenné az hierarchikus entitásokat. Új entitások szerepkörök helyett hierarchikus entitások használatával kell létrehozni. 
-
-Hierarchikus entitások idővel elavulttá válik.
 
 ## <a name="how-are-roles-used-in-patterns"></a>Hogyan használhatók a szerepkörök a minták?
 A minta sablon utterance (kifejezés), a szerepkörök az utterance (kifejezés) használunk: 

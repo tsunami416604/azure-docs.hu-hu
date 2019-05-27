@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: eebe3ed15d21b08b208667a571bd59eac98a674d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a31921e229a4bbfccd6fdd871666aad1eeef3232
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190281"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243869"
 ---
 # <a name="what-is-conversation-transcription"></a>Mit jelent a beszélgetés Beszédátírási?
 
@@ -67,6 +67,11 @@ Beszélgetés Beszédátírási többcsatornás audiostreamek lejátszásával, 
 > Specifikáció és tervezési tudnivalókat tartalmaz [Microsoft Speech eszköz SDK mikrofon](https://aka.ms/cts/microphone). További információkért, vagy vásároljon egy fejlesztői készletet, lásd: [beolvasása a Microsoft beszédfelismerési eszközoldali SDK](https://aka.ms/cts/getsdk).
 
 Beszélgetés Beszédátírási használata a Speech Devices SDK-val kapcsolatban lásd: [beszélgetés beszédátírási használata](https://aka.ms/cts/howto).
+
+
+## <a name="quick-start-with-a-sample-app"></a>– Első lépések a mintaalkalmazás
+
+Microsoft Speech eszközoldali SDK tartalmaz egy gyors üzembe helyezési mintaalkalmazást az összes eszköz kapcsolódó minták. Beszélgetés Beszédátírási az egyik közülük. Annak a [Speech eszközoldali SDK android rövid](https://aka.ms/sdsdk-quickstart) mintaalkalmazás és a forráskód referenciaként.
 
 ## <a name="next-steps"></a>További lépések
 

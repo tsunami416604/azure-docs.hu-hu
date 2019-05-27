@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41589dccae4e1259e4dc9368d5825ba770b4bdcc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 4ee3c0bf344520afee6b3a00eb49759ae1432949
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146705"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239772"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Oktatóanyag: A Linux rendszerű eszközök IoT Edge-modulok fejlesztése
 
@@ -190,7 +190,7 @@ Minden modul rendelkezhet több *bemeneti* és *kimeneti* üzenetsorok deklarál
 
 7. A fájl alján keresse meg a kívánt tulajdonságainak a **$edgeHub** modul. 
 
-   A functions az IoT Edge hubot modul egyik, a központi telepítés összes moduljai közötti üzenetek továbbítását. Tekintse át az értékeket a **útvonalak** tulajdonság. Az első útvonal **SampleModuleToIoTHub**, használja a helyettesítő karaktert (**\***) a SampleModule modul kimeneti üzenetsorokkal részéről érkező üzenetáradat jelzi. Ezeket az üzeneteket lépnek *felső $*, amely, amely azt jelzi, hogy az IoT Hub foglalt név. A második útvonal sensorToSampleModule, vesz igénybe a tempSensor modulból érkező üzeneteket, és továbbítja őket a *input1* látott inicializálása a SampleModule kódot a bemeneti várólistát. 
+   A functions az IoT Edge hubot modul egyik, a központi telepítés összes moduljai közötti üzenetek továbbítását. Tekintse át az értékeket a **útvonalak** tulajdonság. Az első útvonal **SampleModuleToIoTHub**, használja a helyettesítő karaktert ( **\*** ) a SampleModule modul kimeneti üzenetsorokkal részéről érkező üzenetáradat jelzi. Ezeket az üzeneteket lépnek *felső $* , amely, amely azt jelzi, hogy az IoT Hub foglalt név. A második útvonal sensorToSampleModule, vesz igénybe a tempSensor modulból érkező üzeneteket, és továbbítja őket a *input1* látott inicializálása a SampleModule kódot a bemeneti várólistát. 
 
    ![Tekintse át a deployment.template.json útvonalak](./media/tutorial-develop-for-linux/deployment-routes.png)
 
@@ -284,7 +284,7 @@ Ellenőrizte, hogy a beépített tárolórendszerképek tárolása a tárolóreg
 
 A SampleModule kód keresztül a bemeneti várólista-üzeneteket fogadja, és áthalad mentén őket a kimeneti várólista. Manifest nasazení deklarálva útvonalakat, amely átadott üzenetek SampleModule tempSensor származó, majd SampleModule üzeneteket az IoT Hub továbbítja. Az Azure IoT-eszközök a Visual Studio Code-lehetővé teszi üzenetek az IoT Hub, az egyes eszközökről származó beérkezéskor. 
 
-1. A Visual Studio Code Explorerben kattintson a jobb gombbal az IoT Edge-eszköz figyelése, majd válassza a kívánt **figyelési D2C üzenet Start**. 
+1. A Visual Studio Code Explorerben kattintson a jobb gombbal az IoT Edge-eszköz figyelése, majd válassza a kívánt **Start beépített esemény végpont**. 
 
 2. Tekintse meg a kimeneti ablak a Visual Studio Code az IoT hub érkező üzenetek megtekintéséhez. 
 

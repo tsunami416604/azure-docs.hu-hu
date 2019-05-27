@@ -11,17 +11,17 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 22f75efb3cb4baa645030e7ad64072674de662ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "60593211"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Mi a Bing Spell Check API?
 
 A Bing Spell Check API lehetővé teszi a környezetfüggő szintaxis és a helyesírás-ellenőrzést a szöveg is végezhet. A legtöbb helyesírás-Pepita szótár-alapú szabálykészletek támaszkodnak, amíg a Bing helyesírás-ellenőrző kihasználja a gépi tanulás és statisztikai gépi fordítási biztosít pontos és környezetfüggő javításokat. 
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 
 |  |  |

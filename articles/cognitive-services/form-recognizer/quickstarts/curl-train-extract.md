@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: bd68e2803b3b538011cfa37378890f2cc7b22223
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 942f84723bc207c200b36a63ca7f65cb9d7dab59
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906991"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235612"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API-val a curl használatával
 
@@ -108,7 +108,7 @@ Ezután fog dokumentum elemzése és bontsa ki a kulcs-érték párok és tábl�
 
 1. Cserélje le `<Endpoint>` az űrlap felismerő előfizetési kulcs beszerzett a végponttal. Az űrlap felismerő erőforráson található **áttekintése** fülre.
 1. Cserélje le `<modelID>` , hogy az az előző szakaszban azonosítójú modell.
-1. Cserélje le `<path to your form>` való az űrlapot a fájl elérési útja.
+1. Cserélje le `<path to your form>` való az űrlapot a fájl elérési útja. Például c:\temp\file.pdf. 
 1. Cserélje le `<file type>` az a fájl típusa. Támogatott típusok: pdf-, kép/jpeg, kép-vagy png.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 

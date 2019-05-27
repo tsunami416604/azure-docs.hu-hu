@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: b73249a9f72e4616f6d36e16f110913278f04590
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 05/24/2019
+ms.openlocfilehash: 0b3af3d29e6e938f0301d751a79170c7c1964b45
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415605"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243798"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Oktatóanyag: Oracle migrálása az Azure Database for PostgreSQL használatával online DMS (előzetes verzió)
 
@@ -24,6 +24,7 @@ Azure Database Migration Service segítségével az adatbázisok migrálása, Or
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
+>
 > * Felmérheti a migrálás sikeresebbé az ora2pg eszközzel.
 > * A minta séma ora2pg eszközével migrálhatja.
 > * Hozzon létre egy Azure Database Migration Service példányát.
@@ -411,5 +412,5 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 ## <a name="next-steps"></a>További lépések
 
 * Az Azure Database for PostgreSQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for PostgreSQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-postgresql-online.md).
-* Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
+* Az Azure Database Migration Service kapcsolatos információkért tekintse meg a cikket [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
 * Azure Database for postgresql-hez információt lásd: a cikk [Mi az Azure Database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).

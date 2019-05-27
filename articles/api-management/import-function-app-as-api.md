@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: fe6a008a6cbd2ca4e8aedeeca6d96cc00f6b29d1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: e5e8ffc18db902eeaa8484122e3844f35046191f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101404"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243145"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure-függvényalkalmazás importálása API-ként az Azure API Management használatával
 
@@ -107,7 +107,7 @@ Kövesse az alábbi lépéseket, hogy egy Azure-függvényalkalmazást hozzáfű
 
     ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-05.png)
 
-8. Kattintson az **Importálás** gombra.
+8. Kattintson az **Importálás** elemre.
 
     ![Hozzáfűzés függvényalkalmazásból](./media/import-function-app-as-api/append-04.png)
 
@@ -118,7 +118,7 @@ Az Azure-függvényalkalmazás importáláskor automatikusan létrehozza a köve
 * a függvény alkalmazásban, az a név az apim - állomás kulcsát {*az Azure API Management szolgáltatás példánynév*},
 * megnevezett érték belül az Azure API Management-példány nevét {*az Azure-Függvényalkalmazás példánynév*}-kulcs, amely tartalmazza a létrehozott állomás kulcsát.
 
-Április 4. 2019 után létrehozott API-t a-állomás kulcsát kerül átadásra a HTTP-kérések az API Management egy fejléc a Függvényalkalmazást. Régebbi API-k adja át a gazdagép kulcsot [egy lekérdezési paraméter](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization). Ez a viselkedés keresztül lehet módosítani a `PATCH Backend` [REST API-hívás](https://docs.microsoft.com/rest/api/apimanagement/backend/update#backendcredentialscontract) a a *háttérrendszer* a Függvényalkalmazás társított entitás.
+Április 4. 2019 után létrehozott API-t a-állomás kulcsát kerül átadásra a HTTP-kérések az API Management egy fejléc a Függvényalkalmazást. Régebbi API-k adja át a gazdagép kulcsot [egy lekérdezési paraméter](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization). Ez a viselkedés keresztül lehet módosítani a `PATCH Backend` [REST API-hívás](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) a a *háttérrendszer* a Függvényalkalmazás társított entitás.
 
 > [!WARNING]
 > Az új Azure-függvényalkalmazás gazdagépkulcsának vagy az Azure API Management névvel ellátott értékének eltávolítása vagy megváltoztatása megszakítja a szolgáltatások közti kommunikációt. Az értékek nem szinkronizálódnak automatikusan.

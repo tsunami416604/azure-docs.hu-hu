@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ThirdLight |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és ThirdLight között.
+description: Ebben az oktatóanyagban elsajátíthatja fog konfigurálása egyszeri bejelentkezéshez ThirdLight és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,218 +15,219 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: caee6bad1b944b6d1396ea2e26f163629b3c444f
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 67c8dcfffd78d4c0114a96622235d6548627fa92
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65888834"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ThirdLight
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan ThirdLight integrálása az Azure Active Directory (Azure AD).
-ThirdLight integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja a ThirdLight integrálása az Azure Active Directory (Azure AD) lesz. Ez az integráció ezeket az előnyöket biztosítja:
 
-* Szabályozhatja, ki férhet hozzá ThirdLight Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve ThirdLight (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD, hogy ki férhet hozzá ThirdLight is használhatja.
+* Engedélyezheti a felhasználók számára, hogy automatikusan jelentkezzenek be ThirdLight (egyszeri bejelentkezés), az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha szeretne további SaaS alkalmazás integrálása az Azure ad-vel, tekintse meg [egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-ThirdLight az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció konfigurálása ThirdLight, szüksége lesz:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* ThirdLight egyszeri bejelentkezés engedélyezve van az előfizetés
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókot](https://azure.microsoft.com/free/).
+* ThirdLight előfizetés, amely egyszeri bejelentkezés engedélyezve van.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban fogja konfigurálni, és egy tesztelési környezetben az Azure AD egyszeri bejelentkezés tesztelése.
 
-* Támogatja a ThirdLight **SP** által kezdeményezett egyszeri bejelentkezés
+* ThirdLight SP által kezdeményezett egyszeri Bejelentkezést támogatja.
 
-## <a name="adding-thirdlight-from-the-gallery"></a>ThirdLight hozzáadása a katalógusból
+## <a name="add-thirdlight-from-the-gallery"></a>ThirdLight hozzáadása a katalógusból
 
-Az Azure AD integrálása a ThirdLight konfigurálásához hozzá kell ThirdLight a katalógusból a felügyelt SaaS-alkalmazások listájára.
+ThirdLight integrálása az Azure AD beállításához, hozzá kell ThirdLight a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**ThirdLight hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**:
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+    ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+3. Egy alkalmazás hozzáadásához válassza **új alkalmazás** az ablak tetején:
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![Válassza ki az új alkalmazás](common/add-new-app.png)
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+4. A Keresés mezőbe írja be a **ThirdLight**. Válassza ki **ThirdLight** a keresési eredmények, és válassza ki a **Hozzáadás**.
 
-4. A Keresés mezőbe írja be a **ThirdLight**válassza **ThirdLight** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
-
-     ![Az eredmények listájában ThirdLight](common/search-new-app.png)
+     ![Keresési eredmények](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az ThirdLight nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó ThirdLight hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban fog konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés az ThirdLight Britta Simon nevű tesztfelhasználó használatával.
+Egyszeri bejelentkezés engedélyezéséhez szüksége ThirdLight az Azure AD-felhasználót és a megfelelő felhasználó közötti kapcsolat létrehozásához.
 
-Az Azure AD egyszeri bejelentkezés az ThirdLight tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés az ThirdLight tesztelése és konfigurálása, szüksége a lépések elvégzéséhez:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[ThirdLight egyszeri bejelentkezés konfigurálása](#configure-thirdlight-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre ThirdLight tesztfelhasználót](#create-thirdlight-test-user)**  – egy megfelelője a Britta Simon ThirdLight, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  a felhasználók számára a funkció engedélyezéséhez.
+2. **[ThirdLight egyszeri bejelentkezés konfigurálása](#configure-thirdlight-single-sign-on)**  az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  ahhoz, hogy az Azure AD egyszeri bejelentkezés a felhasználó számára.
+5. **[Hozzon létre egy ThirdLight tesztfelhasználót](#create-a-thirdlight-test-user)**  , amely kapcsolódik a felhasználó Azure ad-ben ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  , hogy működik-e a konfiguráció ellenőrzéséhez.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ThirdLight, hajtsa végre az alábbi lépéseket:
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ThirdLight, ezeket a lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **ThirdLight** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az a [az Azure portal](https://portal.azure.com/), az alkalmazás integrációs ThirdLight oldalán válassza **egyszeri bejelentkezési**:
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Válassza ki az egyszeri bejelentkezés](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Szerkesztés ikon](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az a **alapszintű SAML-konfigurációja** párbeszédpanelen töltse ki az alábbi lépéseket.
 
-    ![ThirdLight tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+    ![Alapszintű SAML-konfigurációja párbeszédpanel](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.thirdlight.com/`
+    1. Az a **bejelentkezési URL-cím** mezőbe írjon be egy URL-címe ebben a mintában:
+    
+          `https://<subdomain>.thirdlight.com/`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.thirdlight.com/saml/sp`
+    1. Az a **azonosító (entityid)** mezőbe írjon be egy URL-címe ebben a mintában:
 
-    > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [ThirdLight ügyfél-támogatási csapatának](https://www.thirdlight.com/support) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+       `https://<subdomain>.thirdlight.com/saml/sp`
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+       > [!NOTE]
+       > Ezeket az értékeket a helyőrzők. Szeretné használni, a tényleges bejelentkezési URL-cím és azonosító. Forduljon a [ThirdLight támogatási csapatának](https://www.thirdlight.com/support) értékének lekéréséhez. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** párbeszédpanel az Azure Portalon.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be a **letöltése** mellett kapcsolni **összevonási metaadatainak XML** , a igényeknek, és mentse a fájlt a számítógépen:
 
-6. Az a **ThirdLight beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+    ![Tanúsítvány letöltésére szolgáló hivatkozásra.](common/metadataxml.png)
+
+6. Az a **ThirdLight beállítása** területén másolja a megfelelő URL-címeket, a követelmények alapján:
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    1. **Bejelentkezési URL-cím**.
 
-    b. Azure AD-azonosító
+    1. **Az Azure AD-azonosító**.
 
-    c. Kijelentkezési URL
+    1. **Kijelentkezési URL-címe**.
 
 ### <a name="configure-thirdlight-single-sign-on"></a>ThirdLight egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a ThirdLight vállalati hely rendszergazdaként.
+1. Egy új böngészőablakban jelentkezzen be a ThirdLight vállalati hely rendszergazdaként.
 
-1. Lépjen a **konfigurációs \> rendszerfelügyelet**, és kattintson a **egy SAML2**.
+1. Lépjen a **konfigurációs** > **rendszerfelügyelet** > **egy SAML2**:
 
     ![Rendszerfelügyelet](./media/thirdlight-tutorial/ic805843.png "rendszerfelügyelet")
 
-1. Az egy SAML2 konfigurációs szakaszban hajtsa végre az alábbi lépéseket:
+1. Az egy SAML2 konfigurációs szakaszban az alábbi lépéseket.
   
-    ![SAML egyszeri bejelentkezés](./media/thirdlight-tutorial/ic805844.png "SAML egyszeri bejelentkezés")
+    ![Egy SAML2 konfigurációs szakasz](./media/thirdlight-tutorial/ic805844.png "egy SAML2 konfigurációs szakasz")
 
-    a. Válassza ki **egy SAML2 egyszeri bejelentkezés engedélyezése**.
+    1. Válassza ki **egy SAML2 egyszeri bejelentkezés engedélyezése**.
 
-    b. Mint **IdP-metaadatok forrás**, jelölje be **terhelés identitásszolgáltató metaadatainak XML-ről**.
+    1. Alatt **IdP-metaadatok forrás**válassza **terhelés identitásszolgáltató metaadatainak XML-ről**.
 
-    c. Nyissa meg a letöltött metaadatait tartalmazó fájl az Azure Portalról, másolja a tartalmat, és illessze be azt a **identitásszolgáltató metaadatainak XML** szövegmezőbe.
+    1. Nyissa meg a metaadatait tartalmazó fájl, amelyet az Azure Portalról az előző szakaszban töltött le. Másolja a fájlt, és illessze be azt a **identitásszolgáltató metaadatainak XML** mezőbe.
 
-    d. Kattintson a **menteni egy SAML2 beállítások**.
+    1. Válassza ki **menteni egy SAML2 beállítások**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon válassza ki a **Azure Active Directory** a bal oldali panelen válassza ki a **felhasználók**, majd válassza ki **minden felhasználó**:
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![Válassza ki az összes felhasználó](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza ki **új felhasználó** az ablak tetején:
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![Válassza ki az új felhasználó](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![Felhasználói párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    1. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
+    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon @\<vállalati_tartomány >.\< bővítmény >** . (Például BrittaSimon@contoso.com.)
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    1. Válassza ki **jelszó megjelenítése**, és jegyezze fel az értéket, amely szerepel a **jelszó** mezőbe.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés ThirdLight Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban Britta Simon számára a hozzáférés biztosításával a ThirdLight Azure egyszeri bejelentkezés használatához engedélyeznie kell.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **ThirdLight**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**, majd válassza ki **ThirdLight**.
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 2. Az alkalmazások listájában jelölje ki a **ThirdLight**.
 
-    ![Az alkalmazások listáját a ThirdLight hivatkozásra](common/all-applications.png)
+    ![Alkalmazások listája](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali panelen válassza ki a **felhasználók és csoportok**:
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Válassza ki **felhasználó hozzáadása**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a felhasználók listában, és kattintson a **válassza** gombra az ablak alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha a SAML-előfeltétel szerepkör értéket a várt a **Szerepkörválasztás** párbeszédpanelen jelölje ki a megfelelő szerepkört a felhasználóhoz a listából. Kattintson a **kiválasztása** gombra az ablak alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
 
-### <a name="create-thirdlight-test-user"></a>ThirdLight tesztfelhasználó létrehozása
+### <a name="create-a-thirdlight-test-user"></a>ThirdLight tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók ThirdLight bejelentkezni, akkor ki kell építeni ThirdLight be.  
-ThirdLight, esetén kiépítése a manuális feladat.
+Ahhoz, hogy az Azure AD-felhasználók ThirdLight bejelentkezni, azokat hozzá ThirdLight kell. Adja hozzá manuálisan kell.
 
-**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
+Hozzon létre egy felhasználói fiókot, az alábbi lépéseket kell végrehajtani:
 
-1. Jelentkezzen be a **ThirdLight** rendszergazdaként a vállalati webhely.
+1. A ThirdLight vállalati hely jelentkezzen be rendszergazdaként.
 
-1. Lépjen a **felhasználók** fülre.
+1. Nyissa meg a **felhasználók** fülre.
 
 1. Válassza ki **felhasználók és csoportok**.
 
-1. Kattintson a **új felhasználó hozzáadása** gombra.
+1. Válassza ki **új felhasználó hozzáadása**.
 
-1. Adja meg **a felhasználónév, a neve vagy a leírást, e-mailben, válasszon egy készletet, vagy új csoporttagok** kiépítendő érvényes AAD-fiókok.
+1. Adja meg a felhasználónevet, egy név vagy leírás és e-mail-címe érvényes Azure AD-fiók kíván üzembe helyezni. Válasszon egy készletet vagy új tagokat.
 
-1. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** gombra.
 
 > [!NOTE]
-> Bármely más Thirdlight felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Thirdlight által biztosított API-k.
+> Bármely felhasználói fiók létrehozása az eszközzel, vagy az Azure AD-felhasználói fiókok kiépítése ThirdLight által biztosított API-t.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
 
-Ha a hozzáférési panelen a ThirdLight csempére kattint, meg kell lehet automatikusan bejelentkezett a ThirdLight, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+A ThirdLight csempe kiválasztásakor a hozzáférési panelen azt kell automatikusan megtörténik a a ThirdLight példányhoz, amelyhez beállítani az egyszeri bejelentkezés Konfigurálásához. A hozzáférési panelen kapcsolatos további információkért lásd: [alkalmazások használatának és elérésének a saját alkalmazások portál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

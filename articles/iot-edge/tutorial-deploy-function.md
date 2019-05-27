@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2694d0f22acfb34c07220ad0145b933457961931
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5b7d903c8be74e4c0561bb4a857619c9c62f95a9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575933"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239655"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Oktatóanyag: Üzembe helyezni az Azure IoT Edge-modulok működik
 
@@ -63,7 +63,7 @@ Hozzon létre egy C# függvény megoldássablon, amelyek testre is szabhatja a s
 
 1. Nyissa meg a Visual Studio Code-ot a fejlesztői gépen.
 
-2. A **View (Nézet)** > **Command Palette (Parancskatalógus)** elem kiválasztásával nyissa meg a VS Code parancskatalógusát.
+2. A **View (Nézet)**  > **Command Palette (Parancskatalógus)** elem kiválasztásával nyissa meg a VS Code parancskatalógusát.
 
 3. A parancskatalógus, adja meg, és futtassa a parancsot **Azure IoT Edge: Új IoT Edge-megoldás**. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
@@ -222,12 +222,11 @@ A függvények modulját a gyors útmutatókban bemutatott módon az Azure Porta
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
-Láthatja az összes üzenetet az IoT hub kiszolgálófarmban futtatásával **Azure IoT hubbal: Indítsa el a figyelési D2C üzenet** a parancskatalógus.
+Láthatja az összes üzenetet az IoT hub kiszolgálófarmban futtatásával **Azure IoT hubbal: Indítsa el a beépített esemény végpont** a parancskatalógus.
 
-A nézetet szűrheti is, hogy csak a megjelölt eszközről az IoT Hub-központra érkező üzenetek jelenjenek meg. Kattintson a jobb gombbal a kívánt eszközre az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) területen, és válassza a **Start Monitoring D2C Messages** (D2C üzenetek monitorozásának elindítása) parancsot.
+A nézetet szűrheti is, hogy csak a megjelölt eszközről az IoT Hub-központra érkező üzenetek jelenjenek meg. Kattintson a jobb gombbal az eszközre a **Azure IoT Hub-eszközök** szakaszt, és válassza **Start beépített esemény végpont**.
 
-Üzenetek figyelés leállításához futtassa a parancsot **Azure IoT hubbal: D2C üzenet monitorozásának leállítása** a parancskatalógus. 
-
+Üzenetek figyelés leállításához futtassa a parancsot **Azure IoT hubbal: Állítsa le a beépített esemény végpont** a parancskatalógus. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -245,4 +244,3 @@ Továbbléphet a következő oktatóanyagokra, és megtudhatja, milyen más mód
 
 > [!div class="nextstepaction"]
 > [Átlagértékek keresése lebegő Azure Stream Analytics-ablakban](tutorial-deploy-stream-analytics.md)
-

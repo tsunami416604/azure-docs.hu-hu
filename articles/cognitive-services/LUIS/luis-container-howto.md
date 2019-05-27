@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 05/23/2019
 ms.author: diberry
-ms.openlocfilehash: 59308cdadb1eda9e73b373e72112b83d93629683
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: b379ebeeec7d9309cdf150b8b90ddd006e3bcd9a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124269"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240213"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A LUIS-tároló futtatásához az alábbiakkal kell rendelkeznie: 
 
-|Kötelező|Cél|
+|Szükséges|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
@@ -223,20 +223,24 @@ Használja a [futtatása docker](https://docs.docker.com/engine/reference/comman
 |{ENDPOINT_KEY} | Ez a kulcs segítségével a tárolót. Ne használja a kezdő szintű kulcs. |
 |{BILLING_ENDPOINT} | Az Azure Portalon érhető el a számlázási végpontértéknek `Cognitive Services` – áttekintés oldalra. Hozzá kell adnia a `luis/v2.0` útválasztás, a végpont URI-t, az alábbi példában látható módon: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.|
 
-Cserélje le ezeket a paramétereket a következő példában a saját értékeire `docker run` parancsot.
+Cserélje le ezeket a paramétereket a következő példában a saját értékeire `docker run` parancsot. Futtassa a parancsot a Windows-konzolon.
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
+```console
+docker run --rm -it -p 5000:5000 ^
+--memory 4g ^
+--cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output\,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis ^
+Eula=accept ^
+Billing={BILLING_ENDPOINT} ^
 ApiKey={ENDPOINT_KEY}
 ```
 
-> [!Note] 
-> Az előző parancs a könyvtárat használja ki a `c:` meghajtón a Windows-engedély ütközések elkerülése érdekében. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel. Az előző docker parancsot használja a fordított perjel `\`, egy sor folytatási karaktert. Cserélje le, vagy távolítsa el ezt a alapján a [gazdaszámítógép](#the-host-computer) operációs rendszerre vonatkozó követelmények. Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
+* Ez a példa a könyvtárat használja ki a `c:` meghajtón a Windows-engedély ütközések elkerülése érdekében. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel. 
+* Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
+* Ha eltérő operációs rendszert használ, használja a megfelelő konzol/terminálon, a mappa szintaxis csatlakoztatása és a rendszer a folytatási jelző karakter. Ezek a példák feltételezik, egy Windows-konzol sor folytatási karakterrel `^`. A tároló egy olyan Linux operációs rendszer, mert a célként megadott csatlakoztatási szintaxissal egy Linux-stílusú mappát.
+
 
 
 Ezzel a paranccsal:

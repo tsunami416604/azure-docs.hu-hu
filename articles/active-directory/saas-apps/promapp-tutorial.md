@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Promapp |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Promapp között.
+description: Ebben az oktatóanyagban elsajátíthatja fog konfigurálása egyszeri bejelentkezéshez Promapp és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,225 +15,227 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 18ee967d421eb2a170955a4b75939e5f084a65fb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: e91351d4571eaa084865c5a179ed05e6c773b952
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111406"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240410"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Promapp
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Promapp integrálása az Azure Active Directory (Azure AD).
-Promapp integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja a Promapp integrálása az Azure Active Directory (Azure AD) lesz.
+Ez az integráció ezeket az előnyöket biztosítja:
 
-* Szabályozhatja, ki férhet hozzá Promapp Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Promapp (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD, hogy ki férhet hozzá Promapp is használhatja.
+* Engedélyezheti a felhasználók számára, hogy automatikusan jelentkezzenek be Promapp (egyszeri bejelentkezés), az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Promapp az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció konfigurálása Promapp, szüksége lesz:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Promapp egyszeri bejelentkezés engedélyezve van az előfizetés
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, akkor regisztráljon egy [egy havi próbalehetőség](https://azure.microsoft.com/pricing/free-trial/).
+* Promapp előfizetés, amely egyszeri bejelentkezés engedélyezve van.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban fogja konfigurálni, és egy tesztelési környezetben az Azure AD egyszeri bejelentkezés tesztelése.
 
-* Támogatja a Promapp **SP** és **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* Promapp SP által kezdeményezett, és az identitásszolgáltató által kezdeményezett egyszeri Bejelentkezést támogatja.
 
-* Támogatja a Promapp **igény szerinti** felhasználók átadása
+* Promapp támogatja a felhasználókiépítés just-in-time.
 
-## <a name="adding-promapp-from-the-gallery"></a>Promapp hozzáadása a katalógusból
+## <a name="add-promapp-from-the-gallery"></a>Promapp hozzáadása a katalógusból
 
-Az Azure AD integrálása a Promapp konfigurálásához hozzá kell Promapp a katalógusból a felügyelt SaaS-alkalmazások listájára.
+Promapp integrálása az Azure AD beállításához, hozzá kell Promapp a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Promapp hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**:
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+    ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+3. Egy alkalmazás hozzáadásához válassza **új alkalmazás** az ablak tetején:
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![Válassza ki az új alkalmazás](common/add-new-app.png)
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+4. A Keresés mezőbe írja be a **Promapp**. Válassza ki **Promapp** a keresési eredmények, és válassza ki a **Hozzáadás**.
 
-4. A Keresés mezőbe írja be a **Promapp**válassza **Promapp** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
-
-     ![Az eredmények listájában Promapp](common/search-new-app.png)
+     ![Keresési eredmények](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Promapp nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Promapp hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban fog konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés az Promapp Britta Simon nevű tesztfelhasználó használatával.
+Egyszeri bejelentkezés engedélyezéséhez szüksége Promapp az Azure AD-felhasználót és a megfelelő felhasználó közötti kapcsolat létrehozásához.
 
-Az Azure AD egyszeri bejelentkezés az Promapp tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés az Promapp tesztelése és konfigurálása, szüksége a lépések elvégzéséhez:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Promapp egyszeri bejelentkezés konfigurálása](#configure-promapp-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Promapp tesztfelhasználót](#create-promapp-test-user)**  – egy megfelelője a Britta Simon Promapp, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  a felhasználók számára a funkció engedélyezéséhez.
+2. **[Promapp egyszeri bejelentkezés konfigurálása](#configure-promapp-single-sign-on)**  az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  ahhoz, hogy az Azure AD egyszeri bejelentkezés a felhasználó számára.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  , hogy működik-e a konfiguráció ellenőrzéséhez.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Promapp, hajtsa végre az alábbi lépéseket:
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Promapp, ezeket a lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Promapp** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az a [az Azure portal](https://portal.azure.com/), az alkalmazás integrációs Promapp oldalán válassza **egyszeri bejelentkezési**:
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Válassza ki az egyszeri bejelentkezés](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Szerkesztés ikon](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+4. Az a **alapszintű SAML-konfigurációja** párbeszédpanel, ha azt szeretné, konfigurálja az alkalmazás identitásszolgáltató által kezdeményezett módban, a következő lépéseket.
 
-    ![Promapp tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
+    ![Alapszintű SAML-konfigurációja párbeszédpanel](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím:
+    1. Az a **azonosító** mezőbe írjon be egy URL-címe ebben a mintában:
 
-    | |
-    |--|
-    | `https://go.promapp.com/TENANTNAME/`|
-    | `https://au.promapp.com/TENANTNAME/`|
-    | `https://us.promapp.com/TENANTNAME/`|
-    | `https://eu.promapp.com/TENANTNAME/`|
-    | `https://ca.promapp.com/TENANTNAME/`|
-    | |
+       | |
+        |--|
+        | `https://go.promapp.com/TENANTNAME/`|
+        | `https://au.promapp.com/TENANTNAME/`|
+        | `https://us.promapp.com/TENANTNAME/`|
+        | `https://eu.promapp.com/TENANTNAME/`|
+        | `https://ca.promapp.com/TENANTNAME/`|
+        |   |
 
-    > [!NOTE] 
-    > Jelenleg az Azure AD-integráció Promapp csak lett konfigurálva a szolgáltatás kezdeményezett hitelesítési Promapp URL-címe például fog a hitelesítési folyamatot kezdeményez. Azonban a válasz URL-cím mező kitöltése kötelező.
+       > [!NOTE]
+       > Az Azure AD integrációja az Promapp jelenleg csak a hitelesítési szolgáltatás által van konfigurálva. (Azt jelenti, egy Promapp URL-címet is lesz a hitelesítési folyamatot kezdeményez.) De a **válasz URL-cím** mező megadása kötelező.
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate.aspx`
+    1. Az a **válasz URL-cím** mezőbe írjon be egy URL-címe ebben a mintában:
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+       `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate.aspx`
+
+5. Ha az alkalmazás konfigurálása a Szolgáltató által kezdeményezett módban szeretne, válassza ki a **további URL-címet beállítani**. Az a **bejelentkezési URL-cím** mezőbe írjon be egy URL-címe ebben a mintában:
+
+      `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate`
 
     ![Promapp tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate`
+   
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [Promapp ügyfél-támogatási csapatának](https://www.promapp.com/about-us/contact-us/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezeket az értékeket a helyőrzők. Tényleges azonosítóját használja, válasz URL-cím és a sign-on URL-címet kell. Forduljon a [Promapp támogatási csapatának](https://www.promapp.com/about-us/contact-us/) értékének lekéréséhez. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** párbeszédpanel az Azure Portalon.
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be a **letöltése** mellett kapcsolni **tanúsítvány (Base64)** , a igényeknek, és mentse el a tanúsítványt a számítógépen:
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![Tanúsítvány letöltésére szolgáló hivatkozásra.](common/certificatebase64.png)
 
-7. Az a **Promapp beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+7. Az a **Promapp beállítása** területén másolja a megfelelő URL-címeket, a követelmények alapján:
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    1. **Bejelentkezési URL-cím**.
 
-    b. Azure AD-azonosító
+    1. **Az Azure AD-azonosító**.
 
-    c. Kijelentkezési URL
+    1. **Kijelentkezési URL-címe**.
 
 ### <a name="configure-promapp-single-sign-on"></a>Promapp egyszeri bejelentkezés konfigurálása
 
-1. Jelentkezzen be rendszergazdaként a Promapp vállalati webhely. 
+1. A Promapp vállalati hely jelentkezzen be rendszergazdaként.
 
-2. A felső menüben kattintson **rendszergazdai**. 
+2. Válassza az ablak tetején lévő menüben **rendszergazdai**:
    
-    ![Az Azure AD egyszeri bejelentkezés][12]
+    ![Válassza ki a rendszergazda][12]
 
-3. Kattintson a **Configure** (Konfigurálás) elemre. 
+3. Válassza ki **konfigurálása**:
    
-    ![Az Azure AD egyszeri bejelentkezés][13]
+    ![Válassza ki a konfigurálása][13]
 
-4. Az a **biztonsági** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+4. Az a **biztonsági** párbeszédpanel mezőbe az alábbi lépéseket.
    
-    ![Az Azure AD egyszeri bejelentkezés][14]
+    ![Rendszerbiztonság párbeszédpanel][14]
     
-    a. Beillesztés **bejelentkezési URL-cím**, azokat az Azure Portalról másolt a **SSO-bejelentkezési URL-cím** szövegmezőbe.
+    1. Illessze be a **bejelentkezési URL-cím** be az Azure Portalról másolt a **SSO-bejelentkezési URL-cím** mezőbe.
     
-    b. Mint **SSO - egyszeri bejelentkezési mód**válassza **nem kötelező**, és kattintson a **mentése**.
+    1. Az a **SSO - egyszeri bejelentkezési mód** listáról válassza ki **nem kötelező**. Kattintson a **Mentés** gombra.
 
-    > [!NOTE]
-    > **Nem kötelező** módban van, kizárólag tesztelési célokból. Ha már elégedett a konfigurációt, válassza ki **szükséges** módot az Azure AD használatával történő hitelesítéshez minden felhasználó kényszerítése.
+       > [!NOTE]
+       > Nem kötelező módja csak teszteléshez. Amikor elégedett a konfigurációt, válassza a **szükséges** a a **SSO - egyszeri bejelentkezési mód** lista kényszerítése minden felhasználó számára az Azure AD-hitelesítést.
 
-    c. Nyissa meg a Jegyzettömbben, a letöltött tanúsítvány tartalmának másolása a tanúsítvány nélkül az első sort (---**MEGKEZDÉSÉHEZ tanúsítvány**---) és az utolsó sort (---**END CERTIFICATE**---), illessze be a  **Egyszeri bejelentkezés – x.509-tanúsítvány** szövegmezőbe, és kattintson a **mentése**.
+    1. A Jegyzettömbben nyissa meg a tanúsítványt, amelyet az előző szakaszban töltött le. Másolja a tartalmat a tanúsítvány nélkül az első sort ( **---BEGIN CERTIFICATE---** ) vagy az utolsó sort ( **---END CERTIFICATE---** ). Illessze be a tartalmakat a tanúsítványt a **egyszeri bejelentkezés – x.509-tanúsítvány** mezőbe, majd válassza ki **mentése**.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon válassza ki a **Azure Active Directory** a bal oldali panelen válassza ki a **felhasználók**, majd válassza ki **minden felhasználó**:
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![Válassza ki az összes felhasználó](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza ki **új felhasználó** a képernyő tetején:
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![Válassza ki az új felhasználó](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![Felhasználói párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    1. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon @\<vállalati_tartomány >.\< bővítmény >** . (Például BrittaSimon@contoso.com.)
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    1. Válassza ki **jelszó megjelenítése**, és jegyezze fel az értéket, amely szerepel a **jelszó** mezőbe.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Promapp Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban Britta Simon számára a hozzáférés biztosításával a Promapp Azure egyszeri bejelentkezés használatához engedélyeznie kell.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Promapp**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**, majd válassza ki **Promapp**.
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 2. Az alkalmazások listájában jelölje ki a **Promapp**.
 
-    ![Az alkalmazások listáját a Promapp hivatkozásra](common/all-applications.png)
+    ![Alkalmazások listája](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali panelen válassza ki a **felhasználók és csoportok**:
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Válassza ki **felhasználó hozzáadása**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza ki **Britta Simon** a felhasználók listában, és kattintson a **válassza** gombra a képernyő alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha a SAML-előfeltétel szerepkör értéket a várt a **Szerepkörválasztás** párbeszédpanelen jelölje ki a megfelelő szerepkört a felhasználóhoz a listából. Kattintson a **kiválasztása** gombra a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
 
-### <a name="create-promapp-test-user"></a>Promapp tesztfelhasználó létrehozása
+### <a name="just-in-time-user-provisioning"></a>Felhasználókiépítés igény
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó Promapp jön létre. Promapp támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az Promapp, egy új jön létre a hitelesítés után.
+Promapp támogatja a felhasználókiépítés just-in-time. Ez a funkció alapértelmezés szerint engedélyezve van. Ha a felhasználó már nem létezik az Promapp, egy új jön létre a hitelesítés után.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
 
-Ha a hozzáférési panelen a Promapp csempére kattint, meg kell lehet automatikusan bejelentkezett a Promapp, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+A Promapp csempe kiválasztásakor a hozzáférési panelen azt kell automatikusan megtörténik a a Promapp példányhoz, amelyhez beállítani az egyszeri bejelentkezés Konfigurálásához. A hozzáférési panelen kapcsolatos további információkért lásd: [alkalmazások használatának és elérésének a saját alkalmazások portál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

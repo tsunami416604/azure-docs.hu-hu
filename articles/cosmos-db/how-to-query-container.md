@@ -4,14 +4,14 @@ description: Megismerheti, hogyan kérdezhet le tárolókat az Azure Cosmos DB-b
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 11/06/2018
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 2ea228a1db204170f947b5fe71f1865a4620b0f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf14e005de3710f26bfdbab7cc0dac87e0cf000e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61053952"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243752"
 ---
 # <a name="query-an-azure-cosmos-container"></a>A lekérdezés egy Azure Cosmos-tárolóhoz
 

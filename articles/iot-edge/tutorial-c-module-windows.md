@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 93910fd0baeace9da474073960dbdb83251a1a63
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ee64e5a49bf2825c83c74167d7eb75aa3dc59387
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576557"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239823"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: Windows-eszközökhöz a C IoT Edge-modul fejlesztése
 
@@ -326,7 +326,7 @@ Használhatja az IoT Edge Tools bővítmény üzenetek megtekintéséhez, hogy a
 
 1. A Visual Studio cloud explorer válassza ki az IoT Edge-eszköz nevét. 
 
-2. Az a **műveletek** listáról válassza ki **figyelési D2C üzenet Start**. 
+2. Az a **műveletek** listáról válassza ki **Start beépített esemény végpont**. 
 
 3. Az IoT Hub érkező üzenetek megjelenítése. Az üzenetek kimarad, míg igénybe vehet, mert az IoT Edge-eszköz kapni az új központi telepítést, és indítsa el a modult. Azt a CModule kóddal végzett módosításokat, majd várjon, amíg a gép hőmérséklet 25 fok eléri üzenetek elküldése előtt. Hozzáadja az üzenettípus **riasztási** , az üzenetek, eléri a hőmérséklet-küszöbérték. 
 

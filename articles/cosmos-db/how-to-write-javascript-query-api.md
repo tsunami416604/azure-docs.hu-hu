@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan írhat a tárolt eljárások és eseményindít
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 12/11/2018
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 94f72b716e149b2fa5c31deabf92a8a443eb0bef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f465ac91936b766d2c19ea8efd67b3acc8df6d75
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61052373"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243928"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Hogyan írhat tárolt eljárások és eseményindítók az Azure Cosmos DB a JavaScript query API használatával
 

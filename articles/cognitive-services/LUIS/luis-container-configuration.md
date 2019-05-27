@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/23/2019
 ms.author: diberry
-ms.openlocfilehash: e05998f74223ead6bb4e94b86469e51791e0263f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: afd29c1689d6d467a42a7c3c60f9a1dccd1a66f0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599374"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242618"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker-tárolók konfigurálása 
 
@@ -67,7 +67,7 @@ Ez a beállítás a következő helyen található:
 Ne felejtse el bevenni a `luis/v2.0` útválasztási az URL-cím, az alábbi táblázatban látható módon:
 
 
-|Kötelező| Name (Név) | Adattípus | Leírás |
+|Szükséges| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
@@ -108,9 +108,9 @@ A következő táblázat ismerteti a támogatott beállítások.
 
 Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs beállítások segítségével `docker run` parancsokat.  Ha fut, a tároló továbbra is fut, amíg ki nem [leállítása](luis-container-howto.md#stop-the-container) azt.
 
-
-* **Vonal-folytatási karakter**: Az alábbi szakaszok a docker-parancsokat használhatja a fordított perjel `\`, egy sor folytatási karaktert. Cserélje le, vagy távolítsa el ezt a gazdagép operációs rendszerre vonatkozó követelmények alapján. 
-* **Argument sorrend**: Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
+* Ezekben a példákban a könyvtárat használja ki a `c:` meghajtón a Windows-engedély ütközések elkerülése érdekében. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel. 
+* Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
+* Ha eltérő operációs rendszert használ, használja a megfelelő konzol/terminálon, a mappa szintaxis csatlakoztatása és a rendszer a folytatási jelző karakter. Ezek a példák feltételezik, egy Windows-konzol sor folytatási karakterrel `^`. A tároló egy olyan Linux operációs rendszer, mert a célként megadott csatlakoztatási szintaxissal egy Linux-stílusú mappát.
 
 Ne felejtse el bevenni a `luis/v2.0` útválasztási az URL-cím, az alábbi táblázatban látható módon.
 
@@ -129,32 +129,28 @@ Cserélje le a(z)_argument_name_} a saját értékeire:
 
 Az alábbi példa a legkevesebb argumentumokat is futtathatók, a tároló rendelkezik:
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis:latest \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
+```console
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis:latest ^
+Eula=accept ^
+Billing={BILLING_ENDPOINT} ^
 ApiKey={ENDPOINT_KEY}
 ```
-
-> [!Note] 
-> Az előző parancs a könyvtárat használja ki a `c:` meghajtón a Windows-engedély ütközések elkerülése érdekében. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel. Az előző docker parancsot használja a fordított perjel `\`, egy sor folytatási karaktert. Cserélje le, vagy távolítsa el ezt a alapján a [gazdaszámítógép](luis-container-howto.md#the-host-computer) operációs rendszerre vonatkozó követelmények. Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
-
 
 ### <a name="applicationinsights-example"></a>Applicationinsights – példa
 
 Az alábbi példa telemetriát küldjön az Application Insightsba, amíg a tároló fut-e ApplicationInsights argumentumának állítja be:
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis:latest \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
-ApiKey={ENDPOINT_KEY}
+```console
+docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis:latest ^
+Eula=accept ^
+Billing={BILLING_ENDPOINT} ^
+ApiKey={ENDPOINT_KEY} ^
 InstrumentationKey={INSTRUMENTATION_KEY}
 ```
 
@@ -162,14 +158,14 @@ InstrumentationKey={INSTRUMENTATION_KEY}
 
 A következő parancs beállítja a naplózási szint `Logging:Console:LogLevel`, konfigurálhatja a naplózási szint [ `Information` ](https://msdn.microsoft.com). 
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis:latest \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
-ApiKey={ENDPOINT_KEY} \
+```console
+docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis:latest ^
+Eula=accept ^
+Billing={BILLING_ENDPOINT} ^
+ApiKey={ENDPOINT_KEY} ^
 Logging:Console:LogLevel:Default=Information
 ```
 

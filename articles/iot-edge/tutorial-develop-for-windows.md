@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 631338c0217eb61f4f98cd06ffa16cb2500f246b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 1f2e9bc93b8bea70a58f2e6a544e2088505935a9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146728"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239761"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Oktatóanyag: Fejlesztés az IoT Edge-modulok Windows-eszközökhöz
 
@@ -298,7 +298,7 @@ A IotEdgeModule1 kód keresztül a bemeneti várólista-üzeneteket fogadja, és
 
 1. A Visual Studio cloud explorer válassza ki az IoT Edge-eszköz központilag nevét. 
 
-2. Az a **műveletek** menüjében válassza **figyelési D2C üzenet Start**.
+2. Az a **műveletek** menüjében válassza **Start beépített esemény végpont**.
 
 3. Tekintse meg a **kimeneti** szakasz az IoT hub érkező üzenetek megtekintéséhez a Visual studióban. 
 

@@ -8,19 +8,18 @@ ms.author: raynew
 ms.date: 01/31/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 5ee0eccced5757c91fca1ba7f77750839bc017f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eec30ec8ff85f2d9a2ba78da2872b081e90c9e33
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60722439"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240165"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztások biztonsági mentésével kapcsolatos problémák elhárítása
 Az alábbi táblázatokban szereplő információk segítségével elháríthatja az Azure-fájlmegosztások biztonsági mentése közben fellépő problémákat és hibákat.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Az Azure-fájlmegosztás biztonsági mentésének korlátozásai az előzetes verzióban
 Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban érhető el. Azure-fájlmegosztások az általános célú v1 és az általános célú v2-tárfiókok támogatottak. Az Azure-fájlmegosztások nem támogatják az alábbi biztonsági mentési forgatókönyveket:
-- A tárfiókokban lévő Azure-fájlmegosztások védelme nem biztosítható [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikációval*.
 - Nem biztosítható az Azure-fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok vagy a tűzfal.
 - Nincs a CLI nem érhető el az Azure Backup használatával az Azure Files védelméhez.
 - Az ütemezett biztonsági mentések maximális száma naponta egy.
@@ -28,8 +27,6 @@ Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban é
 - Használjon [erőforrászárat](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) a tárfiókon, hogy megelőzze a helyreállítási tárban lévő biztonsági másolatok véletlen törlését.
 - Ne törölje az Azure Backuppal létrehozott pillanatképeket. A pillanatképek törlése helyreállítási pontok elvesztését és/vagy visszaállítási hibákat eredményezhet.
 - Ne törölje az Azure Backup által védett fájlmegosztások. Az aktuális megoldáshoz fog törölni a fájlmegosztás törlése után az Azure Backup által készített minden pillanatkép, és ezért elveszíti az összes visszaállítási pont
-
-\*A tárfiókokban lévő Azure-fájlmegosztások [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikáció esetén GRS-ként működnek és GRS-díjszabás szerint lesznek számlázva.
 
 A Storage-fiókok az Azure-fájlmegosztások biztonsági mentési [zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md) (ZRS) replikációs érhető el jelenleg csak központi velünk a Kapcsolatot (CUS), East US (EUS), USA keleti RÉGIÓJA 2 (EUS2), északi Európa (NE), Ausztrália Ázsia (SEA), Nyugat-Európa (WE) és az USA nyugati RÉGIÓJA 2 (WUS2).
 

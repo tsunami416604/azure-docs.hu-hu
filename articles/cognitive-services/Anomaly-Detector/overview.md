@@ -1,5 +1,5 @@
 ---
-title: Mi az az Anomáliadetektálási detector használatával API-t? | Microsoft Docs
+title: Mi az az Anomaly Detector API? | Microsoft Docs
 titleSuffix: Azure Cognitive Services
 description: Az Anomáliadetektálási detector használatával API korszerű algoritmusokat segítségével azonosíthatja a rendellenességeket az idősoros adatokat.
 services: cognitive-services
@@ -10,13 +10,13 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 48dffb8853d3def590e434c1683ecf038e2a194e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473199"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "64415829"
 ---
-# <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomáliadetektálási detector használatával API-t?
+# <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomaly Detector API?
 
 A Anomáliadetektálási detector használatával API segítségével figyelheti, és az idősoros adatokat a machine learning észlelheti a rendellenességeket. Az Anomáliadetektálási detector használatával API alkalmazkodik automatikusan azonosításával és a záró titkunkat modellek alkalmazása az adatokhoz, iparági, a forgatókönyv és adatok mennyiségétől függetlenül. Használja az idősoros adatokat, az API határozza meg a határokat a rendellenességek észlelése, a várt értékek, és mely adatpontok rendellenességeket.
 
@@ -24,7 +24,7 @@ A Anomáliadetektálási detector használatával API segítségével figyelheti
 
 Az Anomáliadetektálási érzékelő használata nem szükséges minden korábbi tapasztalata az a Machine learning, és a RESTful API lehetővé teszi, hogy könnyedén integrálhatja a szolgáltatást az alkalmazások és folyamatok.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az Anomáliadetektálási detector használatával automatikusan észlelheti a rendellenességeket során az idősoros adatokat, vagy a valós idejű előforduló. 
 
@@ -35,7 +35,7 @@ Az Anomáliadetektálási detector használatával automatikusan észlelheti a r
 | Az adatokkal kapcsolatos további információkat kaphat. | Az adatok és minden megfigyelt rendellenességeket, beleértve a várt értékek, anomáliadetektálási határokat és pozíciók hasznos adatainak beolvasása. |
 | Módosítsa a rendellenességek észlelése határokat. | Az Anomáliadetektálási detector használatával API automatikusan létrehozza az anomáliadetektálást szolgáló határokat. Ezek a hatókörök növelése vagy csökkentése érdekében az API-k bizalmas adatok rendellenességekre módosíthatja, és jobban illeszkednek az adatok. |
 
-## <a name="demo"></a>Bemutató
+## <a name="demo"></a>Demó
 
 Gyorsan megkezdheti az Anomáliadetektálási detector használatával API-val, próbálja meg egy [bemutatóra](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) , amely a böngészőben futtatható. Ez a bemutató webalkalmazás által üzemeltetett Jupyter notebook fut, és bemutatja, hogyan küldhet egy API-kérelem, és az eredmény megjelenítése.
 

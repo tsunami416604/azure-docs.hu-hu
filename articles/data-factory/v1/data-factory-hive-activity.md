@@ -82,8 +82,8 @@ A HDInsight Hive tevékenység, egy Data factoryben [folyamat](data-factory-crea
 | outputs |A Hive-tevékenység által előállított kimeneti |Igen |
 | linkedServiceName |A HDInsight-fürt a Data Factory társított szolgáltatásként regisztrált mutató hivatkozás |Igen |
 | script |Adja meg a Hive-parancsfájl beágyazott |Nem |
-| scriptPath |Store a Hive-szkript egy Azure blob Storage, és adja meg a fájl elérési útját. Használja a "script" vagy "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájlnév formátuma a kis-és nagybetűket. |Nem |
-| defines |Adja meg a paramétereket a kulcs/érték párokként való belül a Hive-parancsfájl használatával "hiveconf: |Nem |
+| parancsprogram elérési útja |Store a Hive-szkript egy Azure blob Storage, és adja meg a fájl elérési útját. Használja a "script" vagy "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájlnév formátuma a kis-és nagybetűket. |Nem |
+| határozza meg |Adja meg a paramétereket a kulcs/érték párokként való belül a Hive-parancsfájl használatával "hiveconf: |Nem |
 
 ## <a name="example"></a>Példa
 Vegyünk egy példát, játék-naplók analytics, ahol szeretné azonosítani a játékok indítja el a vállalati felhasználók töltött időt. 
@@ -216,7 +216,7 @@ A paraméteres Hive-szkript használatához tegye a következőket
       }
     }
     ```
-* A Hive-parancsfájl, tekintse meg a paraméter használatával **${hiveconf:parameterName}**. 
+* A Hive-parancsfájl, tekintse meg a paraméter használatával **${hiveconf:parameterName}** . 
   
     ```
     DROP TABLE IF EXISTS HiveSampleIn; 

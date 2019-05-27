@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 28ba4397ca5a5fd3c281555238fc7eec8a82943d
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: f712cc34a3d41ea9472bf9428606cb378eef8c18
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413668"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244267"
 ---
 # <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>Oktatóanyag: Funkciójelölők használata .NET Core-alkalmazásokban
 
@@ -66,7 +66,7 @@ public class Startup
 }
 ```
 
-Ha a szolgáltatás jelzők szűrőt használ, kell egy további tár tartalmazza, és regisztrálja. Az alábbi példa bemutatja, hogyan használható egy beépített funkciót nevű szűrőt **PercentageFilter "**.
+Ha a szolgáltatás jelzők szűrőt használ, kell egy további tár tartalmazza, és regisztrálja. Az alábbi példa bemutatja, hogyan használható egy beépített funkciót nevű szűrőt **PercentageFilter "** .
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -165,7 +165,7 @@ if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
 }
 ```
 
-## <a name="dependency-injection"></a>Függőségi beszúrást
+## <a name="dependency-injection"></a>Függőséginjektálás
 
 Az ASP.NET Core MVC, a szolgáltatás-kezelő `IFeatureManager` függőségi beszúrást keresztül érhetők el.
 
@@ -262,6 +262,6 @@ app.UseForFeature(featureName, appBuilder => {
 
 Ebben az oktatóanyagban megtudhatta, hogyan funkció jelzők megvalósításához az ASP.NET Core-alkalmazást a felügyelniük a `Microsoft.FeatureManagement` kódtárakat. Az alábbi cikkekben talál további információt felügyeleti támogatásáról az ASP.NET Core és az alkalmazás konfigurációját.
 
-* [ASP.NET Core funkció jelölője mintakód]()
-* [Microsoft.FeatureManagement dokumentációja]()
+* [ASP.NET Core funkció jelölője mintakód](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
+* [Microsoft.FeatureManagement dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
 * [Funkciójelölők kezelése](./manage-feature-flags.md)

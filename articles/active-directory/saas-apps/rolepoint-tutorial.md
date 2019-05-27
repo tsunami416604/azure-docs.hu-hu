@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RolePoint |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és RolePoint között.
+description: Ebben az oktatóanyagban elsajátíthatja fog konfigurálása egyszeri bejelentkezéshez RolePoint és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,184 +15,188 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 96b33b8d7a52f836a5950a28b4f1f035619f185f
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: d2f854c869ead8016a5437a4e40339d9455c9ad7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65889968"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226417"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RolePoint
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan RolePoint integrálása az Azure Active Directory (Azure AD).
-RolePoint integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja a RolePoint integrálása az Azure Active Directory (Azure AD) lesz.
+Ez az integráció ezeket az előnyöket biztosítja:
 
-* Szabályozhatja, ki férhet hozzá RolePoint Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve RolePoint (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD, hogy ki férhet hozzá RolePoint is használhatja.
+* Engedélyezheti a felhasználók számára, hogy automatikusan jelentkezzenek be RolePoint (egyszeri bejelentkezés), az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-RolePoint az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció konfigurálása RolePoint, szüksége lesz:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* RolePoint egyszeri bejelentkezés engedélyezve van az előfizetés
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókot](https://azure.microsoft.com/free/).
+* Az egyszeri bejelentkezés engedélyezve RolePoint előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban fogja konfigurálni, és egy tesztelési környezetben az Azure AD egyszeri bejelentkezés tesztelése.
 
-* Támogatja a RolePoint **SP** által kezdeményezett egyszeri bejelentkezés
+* RolePoint SP által kezdeményezett egyszeri Bejelentkezést támogatja.
 
-## <a name="adding-rolepoint-from-the-gallery"></a>RolePoint hozzáadása a katalógusból
+## <a name="add-rolepoint-from-the-gallery"></a>RolePoint hozzáadása a katalógusból
 
-Az Azure AD integrálása a RolePoint konfigurálásához hozzá kell RolePoint a katalógusból a felügyelt SaaS-alkalmazások listájára.
+RolePoint integrálása az Azure AD beállításához, hozzá kell RolePoint a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**RolePoint hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**:
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+    ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+3. Egy alkalmazás hozzáadásához válassza **új alkalmazás** az ablak tetején:
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![Válassza ki az új alkalmazás](common/add-new-app.png)
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+4. A Keresés mezőbe írja be a **RolePoint**. Válassza ki **RolePoint** a keresési eredmények, és válassza ki a **Hozzáadás**.
 
-4. A Keresés mezőbe írja be a **RolePoint**válassza **RolePoint** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
-
-     ![Az eredmények listájában RolePoint](common/search-new-app.png)
+     ![Keresési eredmények](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az RolePoint nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó RolePoint hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban fog konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés az RolePoint Britta Simon nevű tesztfelhasználó használatával.
+Egyszeri bejelentkezés engedélyezéséhez szüksége RolePoint az Azure AD-felhasználót és a megfelelő felhasználó közötti kapcsolat létrehozásához.
 
-Az Azure AD egyszeri bejelentkezés az RolePoint tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés az RolePoint tesztelése és konfigurálása, szüksége a lépések elvégzéséhez:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[RolePoint egyszeri bejelentkezés konfigurálása](#configure-rolepoint-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre RolePoint tesztfelhasználót](#create-rolepoint-test-user)**  – egy megfelelője a Britta Simon RolePoint, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  a felhasználók számára a funkció engedélyezéséhez.
+2. **[RolePoint egyszeri bejelentkezés konfigurálása](#configure-rolepoint-single-sign-on)**  az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  ahhoz, hogy az Azure AD egyszeri bejelentkezés a felhasználó számára.
+5. **[Hozzon létre egy RolePoint tesztfelhasználót](#create-a-rolepoint-test-user)**  , amely kapcsolódik a felhasználó Azure ad-ben ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  , hogy működik-e a konfiguráció ellenőrzéséhez.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés RolePoint, hajtsa végre az alábbi lépéseket:
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés RolePoint, ezeket a lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **RolePoint** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az a [az Azure portal](https://portal.azure.com/), az alkalmazás integrációs RolePoint oldalán válassza **egyszeri bejelentkezési**:
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Válassza ki az egyszeri bejelentkezés](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Szerkesztés ikon](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az a **alapszintű SAML-konfigurációja** párbeszédpanel mezőbe az alábbi lépéseket.
 
-    ![RolePoint tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+    ![Alapszintű SAML-konfigurációja párbeszédpanel](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.rolepoint.com/login`
+    1. Az a **bejelentkezési URL-cím** mezőbe írjon be egy URL-címe ebben a mintában:
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://app.rolepoint.com/<instancename>`
+       `https://<subdomain>.rolepoint.com/login`
+
+    1. Az a **azonosító (entityid)** mezőbe írjon be egy URL-címe ebben a mintában:
+
+       `https://app.rolepoint.com/<instancename>`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Itt javasoljuk, hogy az azonosító egyedi karakterlánc értékét használhatja. Kapcsolattartó [RolePoint ügyfél-támogatási csapatának](mailto:info@rolepoint.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezeket az értékeket a helyőrzők. Szeretné használni, a tényleges bejelentkezési URL-cím és azonosító. Javasoljuk, hogy az azonosító egyedi karakterlánc értéket használ. Forduljon a [RolePoint támogatási csapatának](mailto:info@rolepoint.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** párbeszédpanel az Azure Portalon.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be a **letöltése** mellett kapcsolni **összevonási metaadatainak XML** , a igényeknek, és mentse a fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![Tanúsítvány letöltésére szolgáló hivatkozásra.](common/metadataxml.png)
 
-6. Az a **RolePoint beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. Az a **RolePoint beállítása** területén másolja a megfelelő URL-címeket, a követelmények alapján:
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    1. **Bejelentkezési URL-cím**.
 
-    b. Azure AD-azonosító
+    1. **Az Azure AD-azonosító**.
 
-    c. Kijelentkezési URL
+    1. **Kijelentkezési URL-címe**.
+
 
 ### <a name="configure-rolepoint-single-sign-on"></a>RolePoint egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **RolePoint** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [RolePoint támogatási csapatának](mailto:info@rolepoint.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Állítsa be az egyszeri bejelentkezés RolePoint oldalán, együttműködve kell a [RolePoint támogatási csapatának](mailto:info@rolepoint.com). Ez a csapat az összevonási metaadatainak XML-fájlt, és az URL-címeket, amelyek az Azure Portalról kapott küldése Annak érdekében, hogy a SAML SSO-kapcsolat megfelelően van-e állítva mindkét oldalon RolePoint azok konfigurálását.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon válassza ki a **Azure Active Directory** a bal oldali panelen válassza ki a **felhasználók**, majd válassza ki **minden felhasználó**:
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![Válassza ki az összes felhasználó](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza ki **új felhasználó** az ablak tetején:
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![Válassza ki az új felhasználó](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![Felhasználói párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    1. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
+    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon @\<vállalati_tartomány >.\< bővítmény >** . (Például BrittaSimon@contoso.com.)
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    1. Válassza ki **jelszó megjelenítése**, és jegyezze fel az értéket, amely szerepel a **jelszó** mezőbe.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés RolePoint Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban Britta Simon számára a hozzáférés biztosításával a RolePoint Azure egyszeri bejelentkezés használatához engedélyeznie kell.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **RolePoint**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**, majd válassza ki **RolePoint**.
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 2. Az alkalmazások listájában jelölje ki a **RolePoint**.
 
-    ![Az alkalmazások listáját a RolePoint hivatkozásra](common/all-applications.png)
+    ![Alkalmazások listája](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali panelen válassza ki a **felhasználók és csoportok**:
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Válassza ki **felhasználó hozzáadása**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a felhasználók listában, és kattintson a **válassza** gombra az ablak alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha a SAML-előfeltétel szerepkör értéket a várt a **Szerepkörválasztás** párbeszédpanelen jelölje ki a megfelelő szerepkört a felhasználóhoz a listából. Kattintson a **kiválasztása** gombra az ablak alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
 
-### <a name="create-rolepoint-test-user"></a>RolePoint tesztfelhasználó létrehozása
+### <a name="create-a-rolepoint-test-user"></a>RolePoint tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű RolePoint hoz létre. Együttműködve [RolePoint támogatási csapatának](mailto:info@rolepoint.com) a felhasználók hozzáadása az RolePoint platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ezután szüksége a RolePoint Britta Simon nevű felhasználó létrehozásához. Együttműködik a [RolePoint támogatási csapatának](mailto:info@rolepoint.com) RolePoint vehet fel felhasználókat. Felhasználók létrehozása és egyszeri bejelentkezés használata előtt aktiválni kell.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
 
-Ha a hozzáférési panelen a RolePoint csempére kattint, meg kell lehet automatikusan bejelentkezett a RolePoint, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+A RolePoint csempe kiválasztásakor a hozzáférési panelen azt kell automatikusan megtörténik a a RolePoint példányhoz, amelyhez beállítani az egyszeri bejelentkezés Konfigurálásához. A hozzáférési panelen kapcsolatos további információkért lásd: [alkalmazások használatának és elérésének a saját alkalmazások portál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

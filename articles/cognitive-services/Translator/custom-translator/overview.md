@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: overview
 ms.openlocfilehash: d9b253afa7414ada4db58f98cd346e223f8282b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "60511461"
 ---
 # <a name="what-is-custom-translator"></a>Mi a Custom Translator?
@@ -24,7 +24,7 @@ A használatával létrehozott fordítási rendszerek [egyéni a fordítót](htt
 
 Egyéni Translator több mint három tucat nyelveket támogatja, és a NMT közvetlenül elérhető nyelvek rendeli. Teljes listáját lásd: [Microsoft Translator nyelvek](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Egyéni a fordítót hozhat létre egyéni fordítási rendszer, és később elérhető-e a különböző funkciókat biztosít.
 

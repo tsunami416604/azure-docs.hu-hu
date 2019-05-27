@@ -1,19 +1,19 @@
 ---
-title: Oktatóanyag az Azure Database for PostgreSQL monitoringjához és finomhangolásához
-description: Ez az oktatóanyag végigvezeti az Azure Database for PostgreSQL monitoringján és finomhangolásán.
+title: Az oktatóanyag figyelése és finomhangolása az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez az oktatóanyag végigvezeti azon figyelése és finomhangolása az Azure Database for PostgreSQL – egyetlen kiszolgáló.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.openlocfilehash: f05e0eef7680b08ce116cc0243d944f6a1db597c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: dcd8363db33809e2a33885f43e570c53807505fd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61091754"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073090"
 ---
-# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>Oktatóanyag: Monitorozásakor és finomhangolásakor Azure Database for postgresql-hez
+# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Oktatóanyag: Figyelése és finomhangolása az Azure Database for PostgreSQL - kiszolgáló egyetlen
 
 Az Azure Database for PostgreSQL olyan funkciókkal rendelkezik, amelyek segítenek megérteni és javítani a kiszolgálója teljesítményét. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > [!div class="checklist"]
@@ -23,7 +23,7 @@ Az Azure Database for PostgreSQL olyan funkciókkal rendelkezik, amelyek segíte
 > * Adatbázis-elemzés a teljesítménnyel kapcsolatos javaslatokért
 > * Teljesítménnyel kapcsolatos javaslatok alkalmazása
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 Szükség van egy 9.6-os vagy 10-es verziójú PostgreSQL-t futtató Azure Database for PostgreSQL kiszolgálóra. A kiszolgáló létrehozásához kövesse a [Létrehozási oktatóanyagban](tutorial-design-database-using-azure-portal.md) megadott lépéseket.
 
 > [!IMPORTANT]

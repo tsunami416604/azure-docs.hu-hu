@@ -4,14 +4,14 @@ description: Tudnivalók az adatbázisszinten kiosztható átviteli sebességrő
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/15/2019
+ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: da56c06e215e02ee3eefe3d0552c962a8c59011e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d73dd5ffe8cc8ed00288209b628d7175b795b335
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61054334"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243774"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Az Azure Cosmos DB-adatbázis kiépítése átviteli sebességet
 

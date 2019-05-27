@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: d5af2bb61eeb986f02a31d45ff9236ecc0c8427e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 073166a594088bca04d81883247a5880fcbd1cb7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026195"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234497"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Gyors útmutató: A beszédfelismerés Devices SDK-val mintaalkalmazás futtatásának androidon
 
-Ez a rövid útmutatóban megismerheti, hogyan használható a Speech eszközök SDK for Android egy beszédfeldolgozó termék létrehozásához lesz.
+Ezt a gyorsútmutatót követve elsajátíthatja a beszédfeldolgozó termék, illetve használja, mint a beszédfelismerés eszközök Androidhoz készült SDK használata egy [beszélgetés Beszédátírási](conversation-transcription-service.md) eszköz.
 
 Ehhez az Útmutatóhoz egy [Azure Cognitive Services](get-started.md) beszédszolgáltatások erőforrás rendelkező fiókot. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
@@ -33,9 +33,11 @@ A beszédfelismerés eszközök SDK használata előtt kell:
 
 * Töltse le a legújabb verzióját a [Speech Devices SDK-val](https://aka.ms/sdsdk-download), és bontsa ki a .zip lépjen a munkakönyvtárba.
    > [!NOTE]
-   > A zip-fájlt a minta Android-alkalmazást tartalmazza.
+   > Az Android-minta-Release.zip fájlbeágyazások mintaalkalmazás Android, és ez a rövid útmutató azt feltételezi, hogy az alkalmazás C:\SDSDK\Android-Sample-Release kicsomagolta
 
 * Az első egy [beszédszolgáltatások Azure-előfizetés kulcsa](get-started.md)
+
+* Ha szeretné használni a beszélgetés Beszédátírási kell használnia egy [. kör alakú mikrofon eszköz](get-speech-devices-sdk.md) és a szolgáltatás jelenleg csak az "en-US" és "zh-CN" régiókban, "centralus" és "eastasia" érhető el. Ezen beszélgetés Beszédátírási használandó régiók egyikében speech kulccsal kell rendelkeznie.
 
 * Ha azt tervezi, használja a beszédszolgáltatások azonosítása céljából leképezések (műveletek) a felhasználó utterances, szüksége lesz egy [intelligens hangfelismerési szolgáltatás (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) előfizetés. A LUIS és szándékfelismerés kapcsolatos további tudnivalókért lásd: [ismeri fel a LUIS, beszédfelismerés leképezések C# ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
@@ -82,16 +84,23 @@ Az development kit konfigurációjának ellenőrzése, hozza létre és telepít
 
 1. A beszédfelismerés előfizetési kulcs hozzáadása a forráskódban. Ha azt szeretné, próbálkozhat szándékának felismerése, is hozzáadhat a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcs és az alkalmazás azonosítóját.
 
-   A kulcsok és az alkalmazásadatok nyissa meg a következő sorokat a forrásfájl MainActivity.java:
+   A beszéd- és LUIS adatait MainActivity.java hiányzóra:
 
    ```java
-   // Subscription
-   private static final String SpeechSubscriptionKey = "[your speech key]";
-   private static final String SpeechRegion = "westus";
-   private static final String LuisSubscriptionKey = "[your LUIS key]";
-   private static final String LuisRegion = "westus2.api.cognitive.microsoft.com";
-   private static final String LuisAppId = "[your LUIS app ID]"
+    // Subscription
+    private static String SpeechSubscriptionKey = "<enter your subscription info here>";
+    private static String SpeechRegion = "westus"; // You can change this if your speech region is different.
+    private static String LuisSubscriptionKey = "<enter your subscription info here>";
+    private static String LuisRegion = "westus2"; // you can change this, if you want to test the intent, and your LUIS region is different.
+    private static String LuisAppId = "<enter your LUIS AppId>";
    ```
+
+    Beszélgetés beszédátírási használatakor a speech kulcs és a régió adatait conversation.java is szükséges:
+
+   ```java
+    private static final String CTSKey = "<Conversation Transcription Service Key>";
+    private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
+    ```
 
 1. Az alapértelmezett ébresztési szó (kulcsszó) az "Számítógép". Megpróbálhatja egy másik megadott ébresztési szavakat, például "Gép" vagy "Assistant". Az erőforrásfájlokat, az alternatív ébresztési szavak szerepelnek, a beszéd Devices SDK-val, a kulcsszó mappában. Ha például C:\SDSDK\Android-Sample-Release\keyword\Computer ébresztési "Számítógép" szót használt fájlokat tartalmazza.
 
@@ -135,6 +144,10 @@ Az development kit konfigurációjának ellenőrzése, hozza létre és telepít
 1. A Speech Devices SDK-val példa alkalmazás elindul, és megjeleníti a következő beállításokat:
 
    ![Beszéd Devices SDK-val példa mintaalkalmazás és beállítások](media/speech-devices-sdk/qsg-8.png)
+
+1. A beszélgetés Beszédátírási bemutatót az újonnan hozzáadott van. Indítsa el a munkamenet indítása átírás. Alapértelmezés szerint mindenki a Vendég, azonban ha résztvevő hangalapú aláírások akkor állítható. Ebben az eszközön a fájl /video/participants.properties. A beszédfelismerési aláírás pillantást létrehozásához [beszélgetések (SDK) alapuló átírás](how-to-use-conversation-transcription-service.md).
+
+   ![Beszélgetés Beszédátírási bemutatóalkalmazást](media/speech-devices-sdk/qsg-15.png)
 
 1. Kísérlet!
 

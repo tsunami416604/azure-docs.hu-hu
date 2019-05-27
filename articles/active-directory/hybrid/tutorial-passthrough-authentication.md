@@ -11,12 +11,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b951cc81d2f957214eb4c78125bde36b61ff64b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1d848202840d49dde18d358769519329141c2b35
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60456303"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233912"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Oktatóanyag:  Egyetlen AD-erdő integrálása átmenő hitelesítéssel (PTA)
 
@@ -143,6 +143,7 @@ $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
 $featureLogPath = "c:\poshlog\featurelog.txt" 
 $Password = "Pass1w0rd"
+$SecureString = ConvertTo-SecureString $Password -AsPlainText -Force
 
 #Install AD DS, DNS and GPMC 
 start-job -Name addFeature -ScriptBlock { 
@@ -153,7 +154,7 @@ Wait-Job -Name addFeature
 Get-WindowsFeature | Where installed >>$featureLogPath
 
 #Create New AD Forest
-Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -DomainMode $DomainMode -DomainName $DomainName -SafeModeAdministratorPassword $Password -DomainNetbiosName $DomainNetBIOSName -ForestMode $ForestMode -InstallDns:$true -LogPath $LogPath -NoRebootOnCompletion:$false -SysvolPath $SysVolPath -Force:$true
+Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -DomainMode $DomainMode -DomainName $DomainName -SafeModeAdministratorPassword $SecureString -DomainNetbiosName $DomainNetBIOSName -ForestMode $ForestMode -InstallDns:$true -LogPath $LogPath -NoRebootOnCompletion:$false -SysvolPath $SysVolPath -Force:$true
 ```
 
 ## <a name="create-a-windows-server-ad-user"></a>A Windows Server AD-felhasználó létrehozása
@@ -180,7 +181,7 @@ New-ADUser -Name $Name -GivenName $Givenname -Surname $Surname -DisplayName $Dis
 Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogon $false -Enabled $true
 ```
 
-## <a name="create-an-azure-ad-tenant"></a>Az Azure AD-bérlő létrehozása
+## <a name="create-an-azure-ad-tenant"></a>Azure AD-bérlő létrehozása
 Most meg kell, hogy azt is szinkronizálhatja a felhőbe felhasználóink Azure AD-bérlő létrehozásához.  Hozhat létre egy új Azure AD-bérlőhöz, tegye a következőket.
 
 1. Keresse meg a [az Azure portal](https://portal.azure.com) és a egy Azure-előfizetéssel rendelkező fiókkal jelentkezzen be.

@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae8b9709e7294e8cb7819afe3ec9f6eb5a06427
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 31992a08c1b6c4fda4053032458879661fe2b740
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015430"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233767"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 
@@ -51,9 +51,9 @@ Magas rendelkezésre álláshoz az éles környezetben javasoljuk, hogy egynél 
 
 2. Az összekötő és a webes alkalmazások kiszolgáló kell az Active Directory-tartományhoz tartozik, vagy span megbízó tartományokban. A kiszolgálókat kellene ugyanabban a tartományban vagy megbízható tartományok esetében az integrált Windows-hitelesítés (IWA) és a Kerberos által korlátozott delegálás (KCD) egyszeri bejelentkezéses (SSO) használatára vonatkozó követelmény. Ha az összekötő kiszolgáló és a webalkalmazás-kiszolgálón is eltérő Active Directory-tartományok, delegálási erőforrás-alapú egyszeri bejelentkezést használni szeretne. További információkért lásd: [KCD az egyszeri bejelentkezés alkalmazásproxyval való](application-proxy-configure-single-sign-on-with-kcd.md).
 
-#### <a name="software-requirements"></a>Szoftverkövetelmények
+#### <a name="tls-requirements"></a>TLS-követelményeknek
 
-A TLS 1.2 engedélyezve van az alkalmazásproxy-összekötő telepítése előtt rendelkeznie kell a Windows összekötő kiszolgáló. 1.5.612.0 régebbi verziót a meglévő összekötők továbbra is a korábbi verziói a TLS további értesítésig működni fog. 
+A TLS 1.2 engedélyezve van az alkalmazásproxy-összekötő telepítése előtt rendelkeznie kell a Windows összekötő kiszolgáló.
 
 A TLS 1.2 engedélyezése:
 
@@ -67,6 +67,9 @@ A TLS 1.2 engedélyezése:
     ```
 
 2. Indítsa újra a kiszolgálót.
+
+>[!Important] 
+> Ügyfeleink kategóriaelső a titkosítás megadásához igyekszünk frissítések az alkalmazásproxy-szolgáltatás csak a TLS 1.2 protokoll való hozzáférés korlátozására. A változások fokozatosan bevezetjük az ügyfelek számára, akik csak a TLS 1.2 protokoll használata, és nem jelenik meg semmilyen hatással a változás ügyfél készültségi alapján. 2019. augusztus 31-ig befejezi a TLS 1.0 és 1.1 elavult, és ügyfelek fel a változásra előzetes értesítést fog kapni. Előkészítése e változás ügyeljen arra, hogy minden ügyfél-kiszolgáló és a böngésző-kiszolgáló kombinációját frissítve lett, hogy a TLS 1.2 használatával alkalmazásproxy-szolgáltatás kapcsolat fenntartását. Ezek közé tartozik az ügyfelek használják a felhasználók az alkalmazásproxyn keresztül közzétett alkalmazások eléréséhez. Tekintse meg a előkészítése [TLS 1.2-es Office 365-ben](https://docs.microsoft.com/en-us/office365/troubleshoot/prepare-tls-1.2-in-office-365) hasznos hivatkozások és erőforrások.
 
 ## <a name="prepare-your-on-premises-environment"></a>A helyszíni környezet előkészítése
 

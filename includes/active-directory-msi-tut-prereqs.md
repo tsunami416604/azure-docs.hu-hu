@@ -9,11 +9,11 @@ ms.date: 11/13/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: 5e4181c8b88b7321e525846ee60fd6916d796503
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307498"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66226476"
 ---
 - Ha még nem ismeri az Azure-erőforrások felügyelt identitására vonatkozó funkciót, tekintse meg ezt az [áttekintést](../articles/active-directory/msi-overview.md). Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - A szükséges erőforrás-létrehozás és szerepkör-felügyelet végrehajtásához a fiókjának „Tulajdonos” jogosultságokkal kell rendelkeznie a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban) Ha segítségre van szüksége a szerepkör-hozzárendeléssel kapcsolatban, tekintse meg [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](../articles/role-based-access-control/role-assignments-portal.md) részben leírtakat.

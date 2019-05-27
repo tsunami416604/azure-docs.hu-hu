@@ -9,12 +9,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 194ebcc1f1779c927503e09e9c42a96afddb12c9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a0530739428e18d01209f94345ae53dfb743d80b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575809"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239684"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Hajtsa végre a képek besorolása a Custom Vision Service a peremhálózaton
 
@@ -147,7 +147,7 @@ Egy megoldás logikus módját jelenti több modul fejlesztésének és megszerv
    >[!Note]
    >Győződjön meg, hogy a cookiecutter telepítési könyvtára a környezet `Path` útvonalán legyen, hogy egy parancssorból meg lehessen hívni.
 
-3. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)** > **Command Palette (Parancskatalógus)** elemet. 
+3. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)**  > **Command Palette (Parancskatalógus)** elemet. 
 
 4. A parancskatalógus, adja meg, és futtassa a parancsot **Azure IoT Edge: Új IoT Edge-megoldás**. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
 
@@ -437,7 +437,7 @@ Ha az eszközön tekinti meg az eredményeket, tekintse meg a cameraCapture modu
    iotedge logs cameraCapture
    ```
 
-Ha a Visual Studio Code-ban tekinti meg az eredményeket, kattintson a jobb gombbal az IoT Edge-eszköz nevére, majd válassza a **Start monitoring D2C message** (D2C-üzenetek monitorozásának megkezdése) parancsot. 
+A Visual Studio Code-ban kattintson a jobb gombbal az IoT Edge-eszköz nevére, és válassza **Start beépített esemény végpont**. 
 
 A Custom Vision-modul eredményei, amelyek a cameraCapture modulból üzenetekként lettek elküldve, rendelkeznek azzal a valószínűséggel, hogy a kép egy hemlokfenyőt vagy egy cseresznyefát ábrázol. Mivel a kép egy hemlokfenyőt ábrázol, a valószínűségnek 1,0 értéket kell mutatnia. 
 

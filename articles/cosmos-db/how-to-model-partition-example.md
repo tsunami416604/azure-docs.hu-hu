@@ -1,18 +1,17 @@
 ---
 title: Modell és a partíció adatainak az Azure Cosmos DB használatával egy való életből vett példa
 description: Ismerje meg, hogyan modellezheti, és a egy való életből vett példa az Azure Cosmos DB Core API használatával a partíció
-author: rockboyfor
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-origin.date: 03/27/2019
-ms.date: 04/15/2019
-ms.author: v-yeche
-ms.openlocfilehash: ac1b94de4b439aab202d53b23b0d0da616a9f851
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/23/2019
+ms.author: thweiss
+ms.openlocfilehash: c98a8187c0365abc8fdb2bedacc5216266cc5cad
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61057485"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240999"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modell és a partíció adatainak az Azure Cosmos DB használatával egy való életből vett példa
 
@@ -141,7 +140,7 @@ Felhasználó beolvasása végzi el a megfelelő elemet az olvasó a `users` tá
 
 ### <a name="c2-createedit-a-post"></a>[C2] Bejegyzés létrehozása/szerkesztése
 
-Hasonlóan **[C1]**, csak rá kell írni a `posts` tároló.
+Hasonlóan **[C1]** , csak rá kell írni a `posts` tároló.
 
 ![A bejegyzések tárolót egyetlen elem írása](./media/how-to-model-partition-example/V1-C2.png)
 
@@ -200,7 +199,7 @@ Bár a fő lekérdezés szűrése a partíciókulcs a tárolót, külön-külön
 
 ### <a name="c4-like-a-post"></a>[C4] Például egy post
 
-Akárcsak a **[C3]**, hozunk létre a megfelelő elemet a `posts` tároló.
+Akárcsak a **[C3]** , hozunk létre a megfelelő elemet a `posts` tároló.
 
 ![A bejegyzések tárolót egyetlen elem írása](./media/how-to-model-partition-example/V1-C2.png)
 
@@ -210,7 +209,7 @@ Akárcsak a **[C3]**, hozunk létre a megfelelő elemet a `posts` tároló.
 
 ### <a name="q5-list-a-posts-likes"></a>[5. KÉRDÉS] A post kedvelések listázása
 
-Akárcsak a **[4]**, azt, hogy a post esetében a kedvelések lekérdezése, majd összesíti a felhasználónevek egyeztetéséhez.
+Akárcsak a **[4]** , azt, hogy a post esetében a kedvelések lekérdezése, majd összesíti a felhasználónevek egyeztetéséhez.
 
 ![Lekéri az összes kedveli a hozzászólás, és a további adatok összevonása](./media/how-to-model-partition-example/V1-Q5.png)
 
@@ -283,7 +282,7 @@ Azt is módosíthatja a megjegyzést, és elemek hozzáadása az őket létrehoz
 
 Mit szeretnénk eléréséhez, hogy minden alkalommal, amikor hozzáadjuk a megjegyzést, vagy egy hasonló, mi is történik a `commentCount` vagy a `likeCount` a megfelelő bejegyzésben található. Mint a `posts` particionált tároló által `postId`, az új elem (tegye megjegyzésbe, vagy mint) és a megfelelő post ugyanazon logikai partíció található. Ennek eredményeképpen használhatjuk egy [tárolt eljárás](stored-procedures-triggers-udfs.md) végrehajtani a műveletet.
 
-Most már Megjegyzés létrehozásakor (**[C3]**), helyett csak az egy új elem hozzáadása a `posts` tároló nevezzük a következő tárolt eljárást a tárolóban:
+Most már Megjegyzés létrehozásakor ( **[C3]** ), helyett csak az egy új elem hozzáadása a `posts` tároló nevezzük a következő tárolt eljárást a tárolóban:
 
 ```javascript
 function createComment(postId, comment) {
@@ -334,7 +333,7 @@ Ebben a példában a módosítási hírcsatorna a használjuk a `users` , amikor
 ```javascript
 function updateUsernames(userId, username) {
   var collection = getContext().getCollection();
-
+  
   collection.queryDocuments(
     collection.getSelfLink(),
     `SELECT * FROM p WHERE p.userId = '${userId}'`,
@@ -397,7 +396,7 @@ Pontos ugyanez a helyzet a kedvelések listázása során.
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: Gondoskodik róla, hogy minden kérelmet is méretezhető
 
-Az általános, teljesítménnyel kapcsolatos fejlesztések megnézzük, továbbra is vannak két kérelmet, hogy még nem teljes mértékben optimalizált: **[3. negyedévi]** és **[6. kérdés]**. Azok a kérelmeket, a tárolók céloznak partíciókulcsa a szűrő nem lekérdezéseket is.
+Az általános, teljesítménnyel kapcsolatos fejlesztések megnézzük, továbbra is vannak két kérelmet, hogy még nem teljes mértékben optimalizált: **[3. negyedévi]** és **[6. kérdés]** . Azok a kérelmeket, a tárolók céloznak partíciókulcsa a szűrő nem lekérdezéseket is.
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>[3. NEGYEDÉVI] Rövid képernyőn a felhasználó bejegyzések listája
 
@@ -543,7 +542,7 @@ Az utolsó lépés az, hogy átirányítsa a lekérdezést az új `feed` tárol�
 
 Nézzük meg, az általános teljesítmény és méretezhetőségi fejlesztései. bevezettük a tervezési különböző verzióihoz képest.
 
-| | 1. verzió | 2. verzió | V3 |
+| | 1-es verzió | V2 | V3 |
 | --- | --- | --- | --- |
 | **[C1]** | 7 ms / 5.71 RU | 7 ms / 5.71 RU | 7 ms / 5.71 RU |
 | **[Q1]** | 2 ms / 1 RU | 2 ms / 1 RU | 2 ms / 1 RU |
@@ -577,6 +576,3 @@ Után ez a bevezető gyakorlati adatok modellezése és particionálás érdemes
 - [Adatbázisok, tárolók és elemek használata](databases-containers-items.md)
 - [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 - [Az Azure Cosmos DB csatorna módosítása](change-feed.md)
-
-<!--Update_Description: new articles on how to model partition example -->
-<!--ms.date: 04/15/2019-->

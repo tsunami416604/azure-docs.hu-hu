@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Segítségével az Azure Database Migration Service áttelepítheti a MongoDB az Azure Cosmos DB API a mongodb-hez offline |} A Microsoft Docs'
-description: Ismerje meg, ha át helyszíni mongodb-hez az Azure Cosmos DB API a mongodb-hez offline az Azure Database Migration Service használatával.
+title: 'Oktatóanyag: Azure Database Migration Service segítségével át mongodb-hez az Azure Cosmos DB API a mongodb-hez offline |} A Microsoft Docs'
+description: Megtanulhatja, hogyan át helyszíni mongodb-hez az Azure Cosmos DB API offline mongodb-hez készült Azure Database Migration Service használatával.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -10,22 +10,22 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/16/2019
-ms.openlocfilehash: 3260ffaba2ab91ee561a0430310883bda8f65269
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 05/24/2019
+ms.openlocfilehash: d0b0c7dec8ad29b65695289f97f5a9317feb2798
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794081"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243810"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Oktatóanyag: MongoDB át az Azure Cosmos DB API a mongodb-hez offline a DMS használatával
 
-Az Azure Database Migration Service használatával történő offline áttelepítéshez (egyszeri) az adatbázisok egy helyszíni vagy felhőbeli Azure Cosmos DB API a MongoDB-példány a mongodb-hez.
+Azure Database Migration Service használatával történő offline áttelepítéshez (egyszeri) az adatbázisok egy helyszíni vagy felhőbeli Azure Cosmos DB API a MongoDB-példány a mongodb-hez.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 >
-> * Egy Azure Database Migration Service-példány létrehozása.
+> * Hozzon létre egy Azure Database Migration Service példányát.
 > * Migrálási projekt létrehozása az Azure Database Migration Service használatával.
 > * A migrálás futtatása.
 > * A migrálás monitorozása.
@@ -38,7 +38,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * [Hajtsa végre az áttelepítés előtti](../cosmos-db/mongodb-pre-migration.md) lépéseket, például az átviteli sebesség, egy partíciókulcsot és az indexelési házirendet válassza becslése.
 * [Hozzon létre egy Azure Cosmos DB API a MongoDB-fiókhoz](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
-* Hozzon létre egy Azure virtuális hálózaton (VNet) használatával az Azure Resource Manager üzembe helyezési modell, amely lehetővé teszi a helyek közötti kapcsolatot a helyszíni adatforrás-kiszolgálók használatával vagy az Azure Database Migration Service [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). A virtuális hálózatok létrehozásával kapcsolatos további információkért lásd: a [Virtual Network-dokumentáció](https://docs.microsoft.com/azure/virtual-network/), és különösen a témakör részletesen a rövid útmutató cikkek.
+* Az Azure Resource Manager üzembe helyezési modell, amely biztosítja, hogy a helyek közötti kapcsolatot a helyszíni adatforrás-kiszolgálók használatával hozzon létre egy Azure virtuális hálózaton (VNet) az Azure Database Migration Service [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). A virtuális hálózatok létrehozásával kapcsolatos további információkért lásd: a [Virtual Network-dokumentáció](https://docs.microsoft.com/azure/virtual-network/), és különösen a témakör részletesen a rövid útmutató cikkek.
 
     > [!NOTE]
     > Virtuális hálózathoz a telepítés során, ha az ExpressRoute hálózati a Microsoft társviszony-létesítés használja, hozzá a következő szolgáltatás [végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) az alhálózathoz, amelyben üzembe fogja helyezni a szolgáltatást:
@@ -51,7 +51,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Győződjön meg arról, hogy a virtuális hálózatok közötti hálózati biztonsági csoport szabályai nem blokkolják a következő bejövő kommunikációs portokat, Azure Database Migration Service: 443-as, 53-as és 9354-es, 445-ös, valamint a 12000. Az Azure VNet NSG-forgalom szűrése további részletekért tekintse meg a cikket [hálózati biztonsági csoportokkal a hálózati forgalom szűrése](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Nyissa meg a Windows tűzfalat az Azure Database Migration Service a forrás MongoDB-kiszolgáló, amely alapértelmezés szerint a TCP-port 27017 eléréséhez.
-* Ha tűzfalkészüléket használ a forrásadatbázis(ok) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia annak engedélyezéséhez, hogy az Azure Database Migration Service a migrálás céljából hozzáférhessen a forrásadatbázis(ok)hoz.
+* A forrásadatbázis (ok) elé egy tűzfalkészülék használata esetén előfordulhat, hogy hozzá kell tűzfalszabályokban, Azure Database Migration Service az áttelepítéshez a forrásadatbázis (ok) eléréséhez.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 
@@ -79,7 +79,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
   
 3. **A migrálási szolgáltatás létrehozása** képernyőn adja meg a szolgáltatás, az előfizetés és egy új vagy meglévő erőforráscsoport nevét.
 
-4. Válassza ki azt a helyet, amelyen az Azure Database Migration Service példányát létre szeretné hozni. 
+4. Válassza ki a helyet, ahol az Azure Database Migration Service példányát létre szeretné. 
 
 5. Válasszon ki egy meglévő Vnetet, vagy hozzon létre egy újat.
 
@@ -101,13 +101,13 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás** lehetőséget, keresse meg az Azure Database Migration Service-t, majd válassza ki az **Azure Database Migration Servicest**.
 
-      ![Az Azure Database Migration Service minden példányának megkeresése](media/tutorial-mongodb-to-cosmosdb/dms-search.png)
+      ![Keresse meg az Azure Database Migration Service összes példánya](media/tutorial-mongodb-to-cosmosdb/dms-search.png)
 
-2. Az **Azure Database Migration Services** képernyőn keresse meg a létrehozott Azure Database Migration Service-példány nevét, és válassza ki ezt a példányt.
+2. Az a **Azure Database Migration Service** képernyőn, keresse meg a nevet, Azure Database Migration Service-példány létrehozott, majd válassza ki a példányt.
 
 3. Válassza a + **Új migrálási projekt** lehetőséget.
 
-4. Az a **új migrálási projekt** lapon adjon meg egy nevet a projektnek a **forráskiszolgáló típusa** szövegbeviteli mezőben válasszon ki **MongoDB**, a a **célkiszolgáló típusa**  szövegbeviteli mezőben válasszon ki **CosmosDB (MongoDB API-t)**, majd **válassza ki a tevékenység típusát**válassza **Offline adatok migrálása**. 
+4. Az a **új migrálási projekt** lapon adjon meg egy nevet a projektnek a **forráskiszolgáló típusa** szövegbeviteli mezőben válasszon ki **MongoDB**, a a **célkiszolgáló típusa**  szövegbeviteli mezőben válasszon ki **CosmosDB (MongoDB API-t)** , majd **válassza ki a tevékenység típusát**válassza **Offline adatok migrálása**. 
 
     ![Database Migration Service-projekt létrehozása](media/tutorial-mongodb-to-cosmosdb/dms-create-project.png)
 
@@ -152,9 +152,9 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 1. Az a **leképezés céladatbázisokra** képernyőn, és leképezheti a forrás- és a céladatbázis az áttelepítéshez.
 
-    Ha a céladatbázis neve megegyezik a forrásadatbázis nevével, az Azure Database Migration Service alapértelmezés szerint a céladatbázist választja ki.
+    Ha a céladatbázis adatbázis neve megegyezik a forrás-adatbázis, Azure Database Migration Service alapértelmezés szerint választja ki a céladatbázisban.
 
-    Ha a karakterlánc **létrehozás** jelenik meg az adatbázis neve mellett azt jelzi, hogy az Azure Database Migration Service nem találta meg a céladatbázist, és a szolgáltatás az adatbázist hozza létre az Ön számára.
+    Ha a karakterlánc **létrehozás** jelenik meg az adatbázis neve mellett azt jelzi, hogy az Azure Database Migration Service nem találta meg a céladatbázist, és a szolgáltatás az adatbázist hozza létre.
 
     Ezen a ponton a migrálás lehetősége [kiépítése átviteli](https://docs.microsoft.com/azure/cosmos-db/set-throughput). A Cosmos DB az adatbázis szintjén vagy külön-külön az egyes gyűjtemények átviteli telepíthet. Átviteli sebesség mérése a [kérelemegység](https://docs.microsoft.com/azure/cosmos-db/request-units) (RU-k). Tudjon meg többet [Azure Cosmos DB díjszabása](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
@@ -163,9 +163,12 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 2. Kattintson a **Mentés** gombra.
 3. Az a **gyűjteménybeállítás** képernyőn, majd tekintse át a gyűjteményeket, amelyek áttelepíthetők, bontsa ki a gyűjtemények listázása.
 
-    Vegye figyelembe, hogy az Azure Database Migration Service automatikusan kiválasztja az összes gyűjteményt, amely a MongoDB forráspéldányon létezik, amely még nem léteznek a cél Azure Cosmos DB-fiókot. Ha szeretné a gyűjteményeket, amelyek már tartalmazzák az adatok áttelepítéséhez, explicit módon jelölje ki ezt a panelt a gyűjteményeket szeretne.
+    Azure Database Migration Service automatikus összes gyűjteményt, amely a MongoDB forráspéldányon létezik, amely még nem léteznek a cél Azure Cosmos DB-fiókot választja ki. Ha szeretné a gyűjteményeket, amelyek már tartalmazzák az adatok áttelepítéséhez, explicit módon jelölje ki ezt a panelt a gyűjteményeket szeretne.
 
-    A gyűjtemények használni kívánt RUs mennyisége is megadhat. Az Azure Database Migration Service intelligens alapértelmezett beállítások a gyűjtemény mérete alapján javasol.
+    A gyűjtemények használni kívánt RUs mennyisége is megadhat. Azure Database Migration Service intelligens alapértelmezett beállítások a gyűjtemény mérete alapján javasol.
+
+    > [!NOTE]
+    > Hajtsa végre az adatbázis-migrálás és -gyűjteményt párhuzamosan több példány, Azure Database Migration Service használata, ha szükséges, a Futtatás felgyorsítására.
 
     Azt is megadhatja a szegmenskulcs kihasználásához [az Azure Cosmos DB particionálási](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview) optimális méretezhetőségre. Ne feledje el áttekinteni a [ajánlott eljárások a szilánkleképezés-/ partíciókulcs kiválasztása](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey).
 
@@ -202,7 +205,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 ## <a name="post-migration-optimization"></a>Áttelepítés utáni optimalizálása
 
-A mongodb-hez készült Azure Cosmos DB API a MongoDB-adatbázisban tárolt adatok, az áttelepítés után csatlakozhat az Azure Cosmos DB, és az adatok kezeléséhez. Más áttelepítés után is elvégezheti optimalizálási például lépések – optimalizálása az indexelési házirendet, az alapértelmezett konzisztenciaszint frissítése, vagy az Azure Cosmos DB-fiókot a globális terjesztés konfigurálása. További részletekért tekintse meg a [áttelepítés utáni optimalizálási](../cosmos-db/mongodb-post-migration.md) cikk. 
+A mongodb-hez készült Azure Cosmos DB API a MongoDB-adatbázisban tárolt adatok, az áttelepítés után csatlakozhat az Azure Cosmos DB, és az adatok kezeléséhez. Mint az indexelési házirendet optimalizálása további optimalizálás az áttelepítést követő lépések végrehajtását kérhetik, frissítse az alapértelmezett konzisztenciaszint, vagy globális terjesztés konfigurálása az Azure Cosmos DB-fiók. További információkért lásd: a [áttelepítés utáni optimalizálási](../cosmos-db/mongodb-post-migration.md) cikk.
 
 ## <a name="additional-resources"></a>További források
 

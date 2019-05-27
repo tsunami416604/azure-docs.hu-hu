@@ -1,7 +1,7 @@
 ---
 title: Hálózati forgalom szűrésére - oktatóanyag – Azure Portal
 titlesuffix: Azure Virtual Network
-description: Ebben az oktatóanyagban megismerheti, hogyan szűrheti a hálózati forgalmat alhálózatokra egy hálózati biztonsági csoport és az Azure Portal használatával.
+description: Ebben az oktatóanyagban elsajátíthatja, hogyan szűrheti a hálózati forgalmat alhálózatokra egy hálózati biztonsági csoportot, az Azure portal használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: ad34c6a876ca21bc7ef32cce638240e0d23b3177
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4097d4fc46aac88cd44d21a4cdcf0d7d5093feea
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723906"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242726"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom szűrése hálózati biztonsági csoport az Azure Portal használatával
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom szűrése hálózati biztonsági csoport az Azure portal használatával
 
 A virtuális hálózatok alhálózatainak bejövő vagy kimenő hálózati forgalmát hálózati biztonsági csoport segítségével szűrheti. A hálózati biztonsági csoportok biztonsági szabályokat tartalmaznak, amelyek IP-cím, port és protokoll szerint szűrik a hálózati forgalmat. A biztonsági szabályok az egyes alhálózatokban üzembe helyezett erőforrásokra vonatkoznak. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -111,7 +111,7 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
 
     | Beállítás                 | Érték                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Cél             | Válassza az **Alkalmazásbiztonsági csoport** lehetőséget, majd válassza a **myAsgWebServers** elemet az **Alkalmazásbiztonsági csoport** számára.  |
+    | Célhely             | Válassza az **Alkalmazásbiztonsági csoport** lehetőséget, majd válassza a **myAsgWebServers** elemet az **Alkalmazásbiztonsági csoport** számára.  |
     | Célporttartományok | Írja be a 80,443 értéket.                                                                                                    |
     | Protocol                | Válassza a TCP lehetőséget.                                                                                                      |
     | Name (Név)                    | Allow-Web-All                                                                                                   |
@@ -120,7 +120,7 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
 
     | Beállítás                 | Érték                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Cél             | Válassza az **Alkalmazásbiztonsági csoport** lehetőséget, majd válassza a **myAsgMgmtServers** elemet az **Alkalmazásbiztonsági csoport** számára. |
+    | Célhely             | Válassza az **Alkalmazásbiztonsági csoport** lehetőséget, majd válassza a **myAsgMgmtServers** elemet az **Alkalmazásbiztonsági csoport** számára. |
     | Célporttartományok | Írja be a 3389 értéket.                                                                                                      |
     | Protocol                | Válassza a TCP lehetőséget.                                                                                                      |
     | Prioritás                | Írja be a 110 értéket.                                                                                                       |

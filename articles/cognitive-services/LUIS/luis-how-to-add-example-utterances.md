@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 0d3123b1e0238a1907b5ad3d487b92a7919ff181
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: badf351f8336e501b3ee1c035fcb389a570750c0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60197965"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072853"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Entitás hozzáadása a példa kimondott szöveg 
 
@@ -89,25 +89,6 @@ Az utterance (kifejezés), feltéve, hogy `Does John Smith work in Seattle?`, eg
 
     ![Képernyőkép a leképezések Részletek lap, az összetett entitás](./media/luis-how-to-add-example-utterances/hr-create-composite-4.png)
 
-## <a name="add-hierarchical-entity"></a>Hierarchikus entitás hozzáadása
-
-**Hierarchikus entitások idővel elavulttá válik. Használat [entitás szerepkörök](luis-concept-roles.md) meghatározására, entitás altípus hierarchikus entitások helyett.**
-
-Egy hierarchikus entitás, de megismert és elméletben kapcsolódó entitások egy kategóriát. A következő példában az entitás tartalmazza a forrás-és célhelynek. 
-
-Az utterance (kifejezés) a `Move John Smith from Seattle to Cairo`, Seattle a feladás helyét pedig Cairo a célhelyen. Minden egyes helye kontextusban különböző és megismert szórendjét és a word választott az utterance (kifejezés).
-
-1. Az utterance (kifejezés), a szándék oldalán válassza `Seattle`, írja be az entitás nevét `Location`, majd válassza ki az Enter billentyűt.
-
-1. Az a **milyen típusú entitást szeretne létrehozni?** előugró jelölje ki _hierarchikus_ a **entitástípus**, majd adja hozzá `Origin` és `Destination` gyermekként, majd **kész**.
-
-    ![Képernyőkép a leképezések részletei oldala, amelyen kiemelve ToLocation entitás](./media/luis-how-to-add-example-utterances/create-location-hierarchical-entity.png)
-
-1. A word, az utterance (kifejezés) a következő címkét kapta a szülő hierarchikus entitással. A word hozzárendelése egy gyermek entitásnak kell. Térjen vissza az utterance (kifejezés) a szándék részletek lapon. Válassza ki a word-, majd a legördülő listából válassza ki a létrehozott entitás nevét, és hajtsa végre a menüben válassza ki a megfelelő gyermek entitásnak jobb.
-
-    >[!CAUTION]
-    >Gyermek entitásnévnek egyedinek kell lennie minden entitás egyetlen alkalmazásban. Két különböző hierarchikus entitások nem tartalmazhat gyermekentitások ugyanazzal a névvel. 
-
 ## <a name="add-entitys-role-to-utterance"></a>Entitás az szerepkör hozzáadása az utterance (kifejezés)
 
 A szerepkör az elnevezett altípus az entitások határozzák meg az utterance (kifejezés) kontextusában. Megjelölés belül az utterance (kifejezés), mint az entitás egy entitás, vagy válasszon egy szerepkört az entitáson belül. Minden entitás rendelkezhet szerepköröket, beleértve az egyéni entitások, amelyek a gép megtanult (egyszerű entitások és összetett entitások), nem gép megtanult (előre összeállított entitások, reguláris kifejezés entitásokat, lista entitások). 
@@ -143,9 +124,6 @@ A következő megoldásokkal oldhatja meg az entitás előrejelzés eltérés:
 |Címke nélküli szöveg|piros aláhúzás|Helytelen előrejelzése|Az helytelen entitást használó aktuális megcímkézzen kell vizsgálni a összes leképezések között. Az aktuális utterances mistaught rendelkezik LUIS, hogy ez a szöveg-e az előre jelzett entitás.
 |Megfelelően címkével ellátott szöveg|kék entitás kiemelése, piros aláhúzás|Helytelen előrejelzése|Adja meg a különböző helyeken a tanúsítványalgoritmusok és használatuk megfelelően címkézett entitással további kimondott szöveg. Az aktuális kimondott szöveg, hogy ez a LUIS, akik nem elegendő az entitás vagy hasonló entitások jelennek meg, ugyanabban a környezetben. Hasonló entitás kell kombinálni egyetlen entitást, LUIS nem összetéveszteni őket. Egy másik megoldás, hogy a szavakat vételének növelése érdekében kifejezés lista hozzáadása. |
 |Helytelenül címkével ellátott szöveg|kék entitás kiemelése, piros aláhúzás|Megfelelő előrejelzése| Adja meg a különböző helyeken a tanúsítványalgoritmusok és használatuk megfelelően címkézett entitással további kimondott szöveg. 
-
-> [!Note]
-> Ha egy piros mező körül a címkézett szándékát sorában a példa utterance (kifejezés), egy [szándék előrejelzési hiba](luis-how-to-add-intents.md#intent-prediction-discrepancy-errors) történt. Javítsa ki kell. 
 
 ## <a name="other-actions"></a>Egyéb műveletek
 

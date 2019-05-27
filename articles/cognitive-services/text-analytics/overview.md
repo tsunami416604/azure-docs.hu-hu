@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 04/03/2019
 ms.author: aahi
 ms.openlocfilehash: ae1d8f18705b1058c10d4720c64f624ed0ef4a3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "60829531"
 ---
 # <a name="what-is-text-analytics-api"></a>Mit jelent a szövegelemzési API-t?
@@ -27,10 +27,10 @@ Az API-t egy része [Azure Cognitive Services](https://docs.microsoft.com/azure/
 
 Szövegelemzés különböző dolgok jelenti, de a Cognitive Services, a szövegelemzési API elemzési az alábbiakban leírtak négyféle biztosít.
 
-## <a name="sentiment-analysis"></a>Véleményelemzés
+## <a name="sentiment-analysis"></a>Hangulatelemzés
 Használat [hangulatelemzés](how-tos/text-analytics-how-to-sentiment-analysis.md) alkotott ügyfélvéleményeket a márkájáról vagy a témakör a keresőmotorok pozitív vagy negatív véleményeket kapcsolatos nyers szöveg elemzésével megállapítása. Az API minden dokumentumhoz visszaad egy 0 és 1 közötti hangulati pontszámot, ahol az 1 a legpozitívabb pontszám.<br /> Az elemzési modellek előzetes betanítása a Microsoft széles körű szövegtörzs-technológiái és természetes nyelvi technológiái segítségével történik. [Bizonyos nyelvek](text-analytics-supported-languages.md) esetében az API képes a megadott szöveg elemzéséből kiszámított pontszámot közvetlenül visszaadni a hívó alkalmazásnak. Használhatja a [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c9) API vagy a [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK-t.
 
-## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
+## <a name="key-phrase-extraction"></a>Kulcsszókeresés
 Automatikusan [kinyerheti a kulcskifejezéseket](how-tos/text-analytics-how-to-keyword-extraction.md) gyorsan azonosíthatja a fő pontokat. Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”. Használhatja a [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) itt az API-t vagy a [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK-t.
 
 ## <a name="language-detection"></a>Nyelvfelismerés

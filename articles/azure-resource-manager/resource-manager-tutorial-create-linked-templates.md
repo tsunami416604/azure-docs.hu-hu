@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e811d1f7fb84e2539ba9daea3eea13f5e028f997
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de2e848bd587f3b9bf2efe3fa8df3710e24243e4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389559"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241383"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Oktatóanyag: A csatolt Azure Resource Manager-sablonok létrehozása
 
@@ -89,7 +89,7 @@ Az összekapcsolt sablon létrehoz egy tárfiókot. Hozzon létre egy tárfióko
 2. Hajtsa végre a következő módosításokat:
 
     * Más, távolítsa el az összes paramétert **hely**.
-    * Vegyen fel egy **storageAccountName** (tárFiókNeve) nevű paramétert. 
+    * Vegyen fel egy **storageAccountName** (tárFiókNeve) nevű paramétert.
         ```json
         "storageAccountName":{
           "type": "string",
@@ -99,7 +99,7 @@ Az összekapcsolt sablon létrehoz egy tárfiókot. Hozzon létre egy tárfióko
         },
         ```
         A tárfiók nevét és helyét paraméterként a fő sablonból a társított sablont.
-        
+
     * Távolítsa el a **változók** elemet, és a változó definíciókat.
     * Távolítsa el a storage-fiókon kívül az összes erőforrást. Összesen négy erőforrást fog eltávolítani.
     * Frissítse az értéket, a **neve** elem, hogy a tárfiók típusú erőforrást:
@@ -109,7 +109,7 @@ Az összekapcsolt sablon létrehoz egy tárfiókot. Hozzon létre egy tárfióko
         ```
 
     * Módosítsa az **outputs** (kimenetek) elemet, hogy a következőképpen nézzen ki:
-    
+
         ```json
         "outputs": {
           "storageUri": {
@@ -272,7 +272,7 @@ A fő sablon egy azuredeploy.json nevű fájl.
     Ügyeljen ezekre a részletekre:
 
     * A fő sablon `Microsoft.Resources/deployments` erőforrása kapcsolja őt össze egy másik sablonnal.
-    * A `deployments` erőforrásban található egy `linkedTemplate` név. Ezzel a névvel történik a [függőség konfigurálása](#configure-dependency).  
+    * A `deployments` erőforrásban található egy `linkedTemplate` név. Ezzel a névvel történik a [függőség konfigurálása](#configure-dependency).
     * Összekapcsolt sablonok meghívásakor csak [Incremental](./deployment-modes.md) (Növekményes) üzembe helyezési mód használható.
     * A `templateLink/uri` tartalmazza az összekapcsolt sablon URI-azonosítóját. Frissítse az értéket, ha a hivatkozott sablonnak (a SAS-jogkivonat használatával egyet) feltölti az URI-t.
     * A `parameters` használatával adhat át értékeket a fő sablonból az összekapcsolt sablonba.
@@ -305,7 +305,7 @@ Mivel a tárfiók jelenleg az összekapcsolt sablonban van definiálva, módosí
 
     ![Az összekapcsolt Azure Resource Manager-sablonok függőségi konfigurációja](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
 
-    A *linkedTemplate* az üzembehelyezési erőforrás neve.  
+    A *linkedTemplate* az üzembehelyezési erőforrás neve.
 3. frissítés **storageUri tulajdonságok/diagnosticsProfile/bootDiagnostics** az előző képernyőképen látható módon.
 4. A módosított sablon mentéséhez.
 
@@ -334,4 +334,4 @@ A projekt javítása érdekében hajtsa végre a következő további módosít�
 Ebben az oktatóanyagban, modularized egy sablont egy fő sablont és a egy hivatkozott sablonnak. További virtuálisgép-bővítmények használata utáni telepítési feladatok végrehajtásához, tekintse meg:
 
 > [!div class="nextstepaction"]
-> [Virtuális gépi bővítmények üzembe helyezése](./deployment-manager-tutorial.md)
+> [Virtuális gépi bővítmények üzembe helyezése](./resource-manager-tutorial-deploy-vm-extensions.md)

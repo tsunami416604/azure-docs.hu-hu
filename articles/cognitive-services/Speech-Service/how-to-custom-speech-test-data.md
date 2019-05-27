@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: af801600eebed7c0d4ff01dd1edf01fa595840eb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: de2f1009c574d9768330d4e6a38a219ba1f81daa
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785769"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237956"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése az egyéni beszéd
 
@@ -52,7 +52,7 @@ Hang adata optimális a Microsoft baseline hang-szöveg transzformációs modell
 
 Ez a táblázat segítségével győződjön meg arról, hogy a hangfájlok a segítségével egyéni beszédfelismerési megfelelően formázott:
 
-| Tulajdonság | Value |
+| Tulajdonság | Érték |
 |----------|-------|
 | Fájlformátum | RIFF (WAV) |
 | Mintavételi frekvencia | 8000 Hz vagy 16 000 Hz |
@@ -66,14 +66,14 @@ Ha a hang nem elégíti ki ezeket a tulajdonságokat, vagy ellenőrizze, hogy ha
 
 | Tevékenység | Leírás | SOx parancs |
 |----------|-------------|-------------|
-| Formát zvuku ellenőrzése | Ez a parancs használatával ellenőrizze a hangfájl formátuma. | `soxi <filename>.wav` |
-| Formát zvuku konvertálása | Használja ezt a parancsot a hangfájl átalakítása egy csatornát, 16 bites, 48 KHz. | `sox <filename>.wav -b 16 -3 signed-integer -c l -r 48k -t wav <filename>.wav` |
+| Formát zvuku ellenőrzése | Ez a parancs használatával ellenőrizze a hangfájl formátuma. | `sox --i <filename>` |
+| Formát zvuku konvertálása | Használja ezt a parancsot egy csatornát, 16 bites, a hangfájl átalakítása 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>Hang + emberi címkével szöveges adatok tesztelés/képzés
 
 Azoknak a Microsoft hang-szöveg transzformációs pontossága pontosságának, a zenei fájlok feldolgozása során, meg kell adnia az emberi címkével beszédátírás (a word-szavanként) az összehasonlítása. Noha az emberi címkével beszédátírási gyakran időigényes, szükség kiértékelni a pontosság és a használati esetek a modell betanításához. Tartsa szem előtt, felismerés fejlesztések csak akkor olyan jól, mint a megadott adatokat. Éppen ezért fontos, hogy csak a magas színvonalú szövegekben lesznek feltöltve.  
 
-| Tulajdonság | Value |
+| Tulajdonság | Érték |
 |----------|-------|
 | Fájlformátum | RIFF (WAV) |
 | Mintavételi frekvencia | 8000 Hz vagy 16 000 Hz |

@@ -4,14 +4,14 @@ description: Megismerheti, hogyan kezelhető a konzisztencia az Azure Cosmos DB-
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/17/2019
+ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: 4a444631de4bc26881ab195333b1b798a7ee6719
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 68a1a757b5c5e4ce63d7f12a8502d57942d4ec42
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925333"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240931"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB konzisztenciaszintjeinek kezelése
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan kezelheti az Azure Cosmos DB-ben konzisztenciaszinte
 
 A [alapértelmezett konzisztenciaszint](consistency-levels.md) a konzisztenciaszint használó ügyfelek alapértelmezés szerint. Az ügyfelek mindig felülírhatja azt.
 
-### <a name="cli"></a>parancssori felület
+### <a name="cli"></a>CLI
 
 ```bash
 # create with a default consistency
@@ -61,7 +61,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Megtekintheti, vagy módosíthatja az alapértelmezett konzisztenciaszint, jelentkezzen be az Azure Portalon. Keresse meg az Azure Cosmos-fiók, és nyissa meg a **alapértelmezett konzisztencia** ablaktáblán. Válassza ki az új alapértelmezett szeretne, majd válassza ki a konzisztencia szintjét **mentése**.
+Megtekintheti, vagy módosíthatja az alapértelmezett konzisztenciaszint, jelentkezzen be az Azure Portalon. Keresse meg az Azure Cosmos-fiók, és nyissa meg a **alapértelmezett konzisztencia** ablaktáblán. Válassza ki az új alapértelmezett szeretne, majd válassza ki a konzisztencia szintjét **mentése**. Az Azure Portalon is biztosít egy vizualizációt, a music megjegyzésekkel különböző konzisztenciaszintet. 
 
 ![Az Azure Portalon konzisztencia menü](./media/how-to-manage-consistency/consistency-settings.png)
 
@@ -211,7 +211,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>A valószínűség alapján korlátozott frissesség (PBS) metrika monitorozása
 
-Hogyan végleges konzisztenciát van? Az átlagos esetben is biztosítunk frissesség korlátok korábbi verziók és az időt. A [ **Probabilistically korlátozott frissesség (PBS)** ](https://pbs.cs.berkeley.edu/) metrika próbál számszerűsítik a valószínűsége annak, frissesség, és a egy metrika csomagként jelenik meg. A PBS metrika megtekintéséhez nyissa meg az Azure Cosmos-fiók az Azure Portalon. Nyissa meg a **metrikák** panelre, és válassza a **konzisztencia** fülre. Tekintse meg a gráf nevű **erősen konzisztens olvasás valószínűségét a számítási feladatok alapján (lásd a PBS)**.
+Hogyan végleges konzisztenciát van? Az átlagos esetben is biztosítunk frissesség korlátok korábbi verziók és az időt. A [ **Probabilistically korlátozott frissesség (PBS)** ](https://pbs.cs.berkeley.edu/) metrika próbál számszerűsítik a valószínűsége annak, frissesség, és a egy metrika csomagként jelenik meg. A PBS metrika megtekintéséhez nyissa meg az Azure Cosmos-fiók az Azure Portalon. Nyissa meg a **metrikák** panelre, és válassza a **konzisztencia** fülre. Tekintse meg a gráf nevű **erősen konzisztens olvasás valószínűségét a számítási feladatok alapján (lásd a PBS)** .
 
 ![Az Azure Portalon PBS graph](./media/how-to-manage-consistency/pbs-metric.png)
 

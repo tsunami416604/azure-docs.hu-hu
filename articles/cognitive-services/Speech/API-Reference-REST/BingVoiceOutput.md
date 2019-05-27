@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: priyar
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "60515421"
 ---
 # <a name="bing-text-to-speech-api"></a>A Bing szöveg-beszéd átalakítás API
@@ -60,13 +60,13 @@ Az ügyfelek a szöveg-hang transzformációs szolgáltatás eléréséhez a kö
 
 Az alábbi táblázat az összefoglaló hangutasítások használt HTTP-fejléceket.
 
-Fejléc |Value |Megjegyzések
+Fejléc |Érték |Megjegyzések
 ----|----|----
 Content-Type | application/ssml+xml | A bemeneti tartalom típusa.
 X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bites-mono-Szövegfelolvasás <br> **2.** nyers – 16 khz – 16 bites-mono-pcm <br>**3.** hang-16 khz – 16 KB/s-mono-siren <br> **4.** riff – 16 khz – 16 KB/s-mono-siren <br> **5.** riff – 16 khz – 16 bites-mono-pcm <br> **6.** hang-16 khz-128kbitrate-mono-mp3 <br> **7.** hang-16 khz-64kbitrate-mono-mp3 <br> **8.** hang-16 khz-32kbitrate-mono-mp3 | A kimeneti audio formátum.
 X-Search-AppId | Egy GUID Azonosítót (csak hexadecimális, nincs szaggatott vonal) | Egy azonosító, amely egyedileg azonosítja az ügyfélalkalmazás. Ez lehet az alkalmazások a tároló azonosítója. Egy nem áll rendelkezésre, ha az azonosító lehet felhasználó által az alkalmazáshoz.
 X-Search-ClientID | Egy GUID Azonosítót (csak hexadecimális, nincs szaggatott vonal) | Egy azonosító, amely egyedileg azonosítja az alkalmazáspéldány minden telepítésnél.
-User-Agent | Alkalmazásnév | Az alkalmazásnév megadása kötelező, és legfeljebb 255 karakterből állhat.
+User-Agent | Alkalmazás neve | Az alkalmazásnév megadása kötelező, és legfeljebb 255 karakterből állhat.
 Engedélyezés | Engedélyezési jogkivonat |  Tekintse meg a <a href="#Subscription">engedélyezési jogkivonat</a> szakaszban.
 
 ### <a name="InputParam"></a>Bemeneti paraméterek

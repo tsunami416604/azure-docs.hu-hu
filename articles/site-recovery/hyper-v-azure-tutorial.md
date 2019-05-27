@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7a27aa0a6e91347db3aab560157e2cba6c43d584
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 96a1a91f49754386de7127cb981d38acd1852e94
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966584"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241430"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vészhelyreállítás beállítása a helyszíni Hyper-V virtuális gépekhez az Azure-ba
 
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Engedélyezze egy virtuális gép replikációját.
 
 > [!NOTE]
-> Az oktatóanyagok bemutatják a legegyszerűbb telepítési út esetén. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes útmutatásért tekintse át a cikkek a **útmutatók** szakaszában a [Site Recovery dokumentációja](https://docs.microsoft.com/en-us/azure/site-recovery).
+> Az oktatóanyagok bemutatják a legegyszerűbb telepítési út esetén. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes útmutatásért tekintse át a cikkek a **útmutatók** szakaszában a [Site Recovery dokumentációja](https://docs.microsoft.com/azure/site-recovery).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -121,7 +121,7 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
 
 ## <a name="set-up-a-replication-policy"></a>Replikációs szabályzat beállítása
 
-1. Válassza ki **infrastruktúra előkészítése** > **replikációs beállítások** > **+ létrehozás és társítás**.
+1. Válassza ki **infrastruktúra előkészítése** > **replikációs beállítások** >  **+ létrehozás és társítás**.
 2. A **Házirend létrehozása és társítása** beállításnál adja meg a szabályzat nevét. Használunk **ContosoReplicationPolicy**.
 3. Ebben az oktatóanyagban hagyjuk az alapértelmezett beállításokat:
     - **Másolás gyakorisága** azt jelzi, hogy milyen gyakran replikálja a különbözeti adatok (kezdeti replikációt követően). Az alapértelmezett gyakoriság 5 percenként van.

@@ -4,14 +4,14 @@ description: Ismerje meg, IP hozzáférés-vezérlési házirendeket a tűzfalt�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: cdf2da745cc418190f6546fffc03e2ac2c330e0e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 24ebc7eb4c9abc72a89419611e4b4b3fa2db88b4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068723"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241961"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>IP-tűzfal konfigurálása az Azure Cosmos DB-ben
 
@@ -40,7 +40,7 @@ Ha programozott módon engedélyezi egy IP-hozzáférés-vezérlési házirend, 
 |------|----------|
 |Németország|51.4.229.218|
 |Kína|139.217.8.252|
-|USA-beli államigazgatás|52.244.48.71|
+|US Gov|52.244.48.71|
 |Minden más régiókban|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
 Kiválasztásával engedélyezheti a hozzáférést az Azure Portalra a **engedélyezze a hozzáférést az Azure portal** beállítás, az alábbi képernyőképen látható módon: 

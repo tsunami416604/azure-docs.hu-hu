@@ -10,22 +10,22 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/04/2019
+ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: c147023635f337e203f02779ef6df3d0a0f0088c
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 0d78e6eaca708073c3a216507b320fe8783a25b6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015550"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239243"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Oktatóanyag: Integrálhatja az Azure Key Vault Resource Manager-sablon telepítése
 
 Ismerje meg, hogyan lehet beolvasni a titkos kulcsok Azure Key vault és a titkos kulcsok paraméterként átadni a Resource Manager üzembe helyezése során. Az érték sosem hagyja el, mert csak hivatkozhat a key vault azonosítója. További információért lásd azt a cikket, amely azzal foglalkozik, hogyan lehet [használni az Azure Key Vaultot biztonságos paraméterértékek megadásához az üzembe helyezés során](./resource-manager-keyvault-parameter.md).
 
-Az [erőforrások üzembehelyezési sorrendjének beállítását](./resource-manager-tutorial-create-templates-with-dependent-resources.md) ismertető oktatóanyagban egy virtuális gépet, egy virtuális hálózatot és egyéb függő erőforrásokat fog létrehozni. Ebben az oktatóanyagban testre szabhatja a sablont a virtuális gép rendszergazdai jelszavának lekérése egy kulcstartót.
+Az a [erőforrás telepítési sorrendet,](./resource-manager-tutorial-create-templates-with-dependent-resources.md) az oktatóanyagban egy virtuális gépet hoz létre. Meg kell adnia a virtuális gép rendszergazdai felhasználónevét és jelszavát. A jelszó megadása helyett a jelszót az Azure Key Vault előre tárolhatja, és ezután testre szabhatja a sablont a jelszó lekérése a kulcstartóból a telepítés során.
 
 ![Resource Manager sablon Key Vault integration diagramja](./media/resource-manager-tutorial-use-key-vault/resource-manager-template-key-vault-diagram.png)
 
@@ -57,80 +57,52 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="prepare-a-key-vault"></a>Key vault előkészítése
 
-Ebben a szakaszban egy Resource Manager-sablon létrehozásához a key vault és a egy titkos kulcsot használja. Ez a sablon:
+Ebben a szakaszban hozzon létre egy kulcstartót és a titkos kód hozzáadása a kulcstartóhoz, hogy a sablon telepítésekor lehet lekérdezni a titkos kulcsot. Számos módon hozzon létre egy kulcstartót. Ebben az oktatóanyagban az Azure PowerShell használatával üzembe helyezése egy [Resource Manager-sablon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json). Ez a sablon:
 
 * A key vault létrehozása a `enabledForTemplateDeployment` tulajdonság lehetővé teszi. Ez a tulajdonság igaznak kell lennie, a sablon üzembe helyezési folyamat férjenek hozzá a meghatározott a kulcstartó titkos kulcsait.
 * Titkos kód hozzáadása a kulcstartóhoz.  Ez a titkos kód tárolja a virtuális gép rendszergazdájának jelszavát.
 
-Ha (mint a felhasználót, hogy a virtuálisgép-sablon üzembe helyezése) nem a tulajdonos vagy a közreműködői a key vault, a tulajdonos vagy közreműködő a key vault hozzáférést kell biztosítania, az a Microsoft.KeyVault/vaults/deploy/action engedéllyel a kulcstartó. További információért lásd azt a cikket, amely azzal foglalkozik, hogyan lehet [használni az Azure Key Vaultot biztonságos paraméterértékek megadásához az üzembe helyezés során](./resource-manager-keyvault-parameter.md).
+> [!NOTE]
+> Ha (mint a felhasználót, hogy a virtuálisgép-sablon üzembe helyezése) nem a tulajdonos vagy a közreműködői a key vault, a tulajdonos vagy közreműködő a key vault hozzáférést kell biztosítania, az a Microsoft.KeyVault/vaults/deploy/action engedéllyel a kulcstartó. További információért lásd azt a cikket, amely azzal foglalkozik, hogyan lehet [használni az Azure Key Vaultot biztonságos paraméterértékek megadásához az üzembe helyezés során](./resource-manager-keyvault-parameter.md).
 
-A sablonnak szüksége van az ÖN Azure AD-felhasználói objektumazonosítójára az engedélyek konfigurálásához. Az alábbi eljárást az objektum Azonosítóját (GUID) beolvasása.
+A következő PowerShell-szkript futtatásához válassza **kipróbálás** megnyitása a Cloud shellben. Illessze be a parancsfájlt, kattintson a jobb gombbal a rendszerhéj ablaktáblán, és válassza **illessze be**.
 
-1. Futtassa az alábbi Azure PowerShell- vagy Azure CLI-parancsot.  
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$upn = Read-Host -Prompt "Enter your user principal name (email address) used to sign in to Azure"
+$secretValue = Read-Host -Prompt "Enter the virtual machine administrator password" -AsSecureString
 
-    # <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
-    ```azurecli-interactive
-    echo "Enter your email address that is associated with your Azure subscription):" &&
-    read upn &&
-    az ad user show --upn-or-object-id $upn --query "objectId" &&
-    ```   
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
-    ```azurepowershell-interactive
-    $upn = Read-Host -Prompt "Enter your user principal name (email address) used to sign in to Azure"
-    (Get-AzADUser -UserPrincipalName $upn).Id
-    ```
-    vagy
-    ```azurepowershell-interactive
-    $displayName = Read-Host -Prompt "Enter your user display name (i.e. John Dole, see the upper right corner of the Azure portal)"
-    (Get-AzADUser -DisplayName $displayName).Id
-    ```
-    ---
-2. Jegyezze fel az objektumazonosítót. Az oktatóanyag későbbi részében szüksége lesz.
+$resourceGroupName = "${projectName}rg"
+$keyVaultName = $projectName
+$adUserId = (Get-AzADUser -UserPrincipalName $upn).Id
+$templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json"
 
-A key vault létrehozása:
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -keyVaultName $keyVaultName -adUserId $adUserId -secretValue $secretValue
+```
 
-1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy kulcstartót és a egy titkos kulcsot.
+Kódrészletek néhány fontos információkat:
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Farmtutorials.blob.core.windows.net%2Fcreatekeyvault%2FCreateKeyVault.json"><img src="./media/resource-manager-tutorial-use-key-vault/deploy-to-azure.png" alt="deploy to azure"/></a>
+* Az erőforráscsoport neve a projekt nevére a **rg** hozzáfűzve. A könnyebb [távolítsa el az ebben az oktatóanyagban létrehozott erőforrásokat](#clean-up-resources), projekt nevét és az erőforrás-csoport neve, mikor használja, [a következő sablon üzembe helyezéséhez](#deploy-the-template).
+* Az alapértelmezett név a titkos kód neve **vmAdminPassword**. Szoftveresen kötött a sablonban.
+* Ahhoz, a sablon beolvasni a titkos kulcsot, engedélyeznie kell a hozzáférési házirend nevű **engedélyezze a hozzáférést az Azure Resource Manager-sablon telepítése** a kulcstartó. Ez a szabályzat engedélyezve van a sablonban. A hozzáférési házirenddel kapcsolatos további információkért lásd: [kulcstartók és titkos kódok üzembe helyezése](./resource-manager-keyvault-parameter.md#deploy-key-vaults-and-secrets).
 
-2. Válassza ki vagy adja meg a következő értékeket.  Az értékek megadása után ne válassza a **Vásárlás** lehetőséget.
+A sablon tartalmaz egy kimeneti értéket nevű **keyVaultId**. Jegyezze fel az értéket. Erre az azonosítóra szüksége lesz a virtuális gép üzembe helyezésekor. Az erőforrás azonosítójának formátuma:
 
-    ![Resource Manager-sablon Key Vault-integrációjának üzembe helyezési portálja](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-key-vault-portal.png)
+```json
+/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
+```
 
-    * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: adjon megy egyedi nevet. Jegyezze fel ezt a nevet, mivel ugyanezt az erőforráscsoportot fogja használni a virtuális gép üzembe helyezéséhez a következő szakaszban. Ugyanabban az erőforráscsoportban helyezi el a key vaulttal és a virtuális gép is megkönnyíti az oktatóanyag végén található az erőforrás megtisztítása.
-    * **Hely**: válasszon ki egy helyet.  Az alapértelmezett hely az **USA középső régiója**.
-    * **Key Vault neve**: adjon megy egyedi nevet. 
-    * **Bérlőazonosító**: a sablonfüggvény automatikusan lekéri a bérlőazonosítót.  Ne módosítsa az alapértelmezett értéket.
-    * **AD felhasználói azonosító**: adja meg Azure AD-felhasználói objektumazonosítóját, amelyet az előző eljárásban kért le.
-    * **Název tajného kódu**: Alapértelmezés szerint ez **vmAdminPassword**. Ha itt módosítja a titkos kód nevét, a virtuális gép üzembe helyezésekor is frissítenie kell.
-    * **Titkos érték**: Adja meg a titkos kód.  A titkos kód a virtuális gépbe való bejelentkezéshez használt jelszó. Javasolt az előző eljárásban létrehozott jelszót használni.
-    * **Elfogadom a fenti feltételek és kikötések állapot**: Kiválasztás.
-3. Válassza a **Paraméterek szerkesztése** lehetőséget a képernyő felső részén a sablon megtekintéséhez.
-4. Lépjen a JSON-fájl 28. sorához. Ez a key vault erőforrás-definícióban.
-5. Lépjen a 35. sorhoz:
+Másolja és illessze be az Azonosítót, amikor azonosítója előfordulhat, hogy több sorba tördelhető. A sorok egyesíteni kell, és a felesleges szóközöket.
 
-    ```json
-    "enabledForTemplateDeployment": true,
-    ```
-    Az `enabledForTemplateDeployment` egy Key Vault-tulajdonság. Ez a tulajdonság true kell, mielőtt lehet lekérdezni a titkos kulcsok a key vault üzembe helyezése során.
-6. Lépjen a 89. sorhoz. Ez a Key Vault titkos kódjának definíciója.
-7. Válassza az **Elvetés** lehetőséget a lap alján. Nem hajtott végre módosításokat.
-8. Ellenőrizze, hogy megadott-e az előző képernyőképen látható minden értéket, majd kattintson a **Vásárlás** elemre a lap alján.
-9. Válassza a harang ikont (értesítés) a lap tetején az **Értesítések** panel megnyitásához. Várjon, amíg az erőforrás üzembe helyezése sikeresen befejeződik.
-10. Válassza az **Ugrás az erőforráscsoportra** lehetőséget az **Értesítések** panelen. 
-11. Válassza ki a kulcstartó nevét a megnyitásához.
-12. Válassza ki **titkok** a bal oldali ablaktáblán. **vmAdminPassword** ott szerepelnie.
-13. A bal oldali panelen válassza a **Hozzáférési szabályzatok** lehetőséget. A neve (Active Directory) meg kell, hogy jelenjen a listán, különben nem rendelkezik a Key Vault-tároló eléréséhez szükséges engedéllyel.
-14. Válassza a **Kattintson a speciális hozzáférési szabályzatok megtekintéséhez** lehetőséget. Figyelje meg, hogy ki van választva az a beállítás, amely **engedélyezi a hozzáférést az Azure Resource Managerhez a sablon üzembe helyezése során**. Ez a beállítás akkor egy másik feltétel, hogy a Key Vault-integráció működjön.
+Az üzembe helyezés ellenőrzéséhez futtassa a következő PowerShell-parancsot a azonos rendszerhéj panelen beolvasni a titkos kulcsot szövegként. A parancs csak akkor működik ugyanabban a rendszerhéj-munkamenetben, mert egy változót az előző PowerShell-parancsprogram meghatározott $keyVaultName használ.
 
-    ![Resource Manager-sablon Key Vault-integrációjának hozzáférési szabályzatai](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-key-vault-access-policies.png)
-15. A bal oldali panelen válassza a **Tulajdonságok** lehetőséget.
-16. Készítsen másolatot az **erőforrás azonosítójáról**. Erre az azonosítóra szüksége lesz a virtuális gép üzembe helyezésekor.  Az erőforrás azonosítójának formátuma:
+```azurepowershell
+(Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
+```
 
-    ```json
-    /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
-    ```
+Most már előkészítette a key vault és a egy titkos kulcsot, a következő szakaszok bemutatják, hogyan szabhatja testre a meglévő sablont, és a titkos kód beolvasása az üzembe helyezés során.
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
@@ -142,6 +114,7 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
+
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt. Ez ugyanaz a forgatókönyv, amelyet az [Oktatóanyag: Függő erőforrásokkal ellátott Azure Resource Manager-sablonok létrehozása](./resource-manager-tutorial-create-templates-with-dependent-resources.md) részben használt.
 4. A sablon öt erőforrást határoz meg:
 
@@ -177,24 +150,28 @@ A sablonfájlt nem kell módosítania.
     },
     ```
 
-    Cserélje le a **azonosító** az utolsó eljárás során létrehozott a key vault erőforrás-azonosító.  
+    > [!IMPORTANT]
+    > Cserélje le a értékét **azonosító** az utolsó eljárás során létrehozott a key vault erőforrás-azonosító.
 
     ![A Key Vault és a Resource Manager-sablon integrációja, a virtuális gép üzembehelyezési paraméterfájljai](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 3. Adja meg a következők értékét:
 
     * **adminUsername**: a virtuális gép rendszergazdai fiókjának neve.
     * **dnsLabelPrefix**: a dnsLabelPrefix neve.
+
+    Látható egy példa az előző képernyőképen látható.
+
 4. Mentse a módosításokat.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Kövesse [a sablon üzembe helyezését](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) ismertető témakörben található utasításokat a sablon üzembe helyezéséhez. Az **azuredeploy.json** és az **azuredeploy.parameters.json** fájlt is fel kell töltenie a Cloud Shellbe, majd a következő PowerShell-szkripttel helyezze üzembe a sablont:
+Kövesse [a sablon üzembe helyezését](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) ismertető témakörben található utasításokat a sablon üzembe helyezéséhez. Fel kell tölteni a mindkét **azuredeploy.json** és **azuredeploy.parameters.json** a Cloud shellt, és majd használja a következő PowerShell-parancsfájlt a sablon üzembe helyezéséhez:
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
+$location = Read-Host -Prompt "Enter the same location that is used for creating the key vault (i.e. centralus)"
+$resourceGroupName = "${projectName}rg"
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile "$HOME/azuredeploy.json" `
@@ -208,7 +185,7 @@ A sablon központi telepítése esetén használja a key vault ugyanabban az er�
 Miután sikeresen telepítette a virtuális gép, tesztelje a bejelentkezést, a key vaultban tárolt jelszó segítségével.
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Válassza az **Erőforráscsoportok**/**SajátErőforráscsoportNeve>**/**simpleWinVM** lehetőséget.
+2. Válassza az **Erőforráscsoportok**/**SajátErőforráscsoportNeve>** /**simpleWinVM** lehetőséget.
 3. Válassza a **csatlakozás** lehetőséget a lap tetején.
 4. Válassza ki **RDP-fájl letöltése** és kövesse az utasításokat követve jelentkezzen be a virtuális géppel a key vaultban tárolt jelszó segítségével.
 
@@ -216,10 +193,12 @@ Miután sikeresen telepítette a virtuális gép, tesztelje a bejelentkezést, a
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
-1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
-2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
-3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
-4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
+$resourceGroupName = "${projectName}rg"
+
+Remove-AzResourceGroup -Name $resourceGroupName
+```
 
 ## <a name="next-steps"></a>További lépések
 

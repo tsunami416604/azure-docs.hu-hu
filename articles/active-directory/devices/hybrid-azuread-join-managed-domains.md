@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fbcc1c29c1860642dda0afab6a1f10e719a05a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: e45b3b19821644142176c5c0cc7646c4643fe17c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962201"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235212"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: Hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása
 
@@ -178,7 +178,7 @@ Emellett engedélyezni kell **az állapotsor szkriptekkel való frissítését**
 
 ### <a name="configure-seamless-sso"></a>Közvetlen egyszeri bejelentkezés konfigurálása
 
-Sikeresen befejeződött a hibrid Azure AD join a Windows, a régebbi verziójú eszközök, az Azure AD átmenő hitelesítés (ESP) vagy a jelszó Jelszókivonat szinkronizálása (nál) segítségével felügyelt tartományban felhőalapú hitelesítési mód, ezenkívül meg kell adnia [konfigurálása Közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). Ha gondjai vannak közvetlen egyszeri bejelentkezés konfigurálása, tekintse meg a cikket [hibaelhárítása az Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/tshoot-connect-sso).
+Sikeresen befejeződött a hibrid Azure AD join a Windows, a régebbi verziójú eszközök, az Azure AD átmenő hitelesítés (ESP) vagy a jelszó Jelszókivonat szinkronizálása (nál) segítségével felügyelt tartományban felhőalapú hitelesítési mód, ezenkívül meg kell adnia [konfigurálása Közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). Ha gondjai vannak közvetlen egyszeri bejelentkezés konfigurálása, tekintse meg a cikket [hibaelhárítása az Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso).
 
 
 ### <a name="control-windows-down-level-devices"></a>A korábbi verziójú Windows-eszközök vezérlése 
@@ -188,7 +188,7 @@ A korábbi verziójú Windows-eszközök regisztrálásához a Letöltőközpont
 
 ## <a name="verify-the-registration"></a>A regisztráció ellenőrzése
 
-Az eszköznek az Azure-bérlőbeli regisztrációs állapotát a **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** parancsmaggal lehet ellenőrizni az **[Azure Active Directory PowerShell-modulban](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
+Az eszköznek az Azure-bérlőbeli regisztrációs állapotát a **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** parancsmaggal lehet ellenőrizni az **[Azure Active Directory PowerShell-modulban](/powershell/azure/install-msonlinev1?view=azureadps-2.0)** .
 
 A **Get-MSolDevice** parancsmag használatához a következők szükségesek:
 

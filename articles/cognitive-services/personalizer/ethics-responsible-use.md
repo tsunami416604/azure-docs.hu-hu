@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 7b1e972b5516aa79d1754e32e487e17c9e68ac1d
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: 437dc1fba2502602109483aa9d6f25b4265af26f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035420"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239898"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Útmutató a Personalizer felelős megvalósítása
 
@@ -128,17 +128,13 @@ Az alábbiakban a mesterséges Intelligencia felelős megvalósítását kialak�
 * Információk és eszközök – például a modellek, tanulás házirendeket és egyéb adatok – Personalizer használó működik, amelyek sikerült reprodukálnia eredmények archiválhatja.
 
 ### <a name="transparency"></a>Átláthatóság
-*AI-rendszerek kell lennie a Understandable*. A Personalizer
+*AI-rendszerek kell lennie a Understandable*. A Personalizer:
 
-• Hogyan lett a tartalom személyre szabott információkat biztosít a felhasználóknak. A felhasználók megjelenítheti például nevű gomb "Miért ezek a javaslatok?" a felhasználó és a műveletek felső szolgáltatásaitól szerepet játszott Personalizer eredményei jeleníti meg.
-• Ellenőrizze, hogy a feltételek használata győződjön megemlíteni, hogy használandó felhasználók és a felhasználók viselkedését a környezetének testreszabása.
-
-
-* *Hogyan lett a tartalom személyre szabott információkat biztosít a felhasználóknak.* A felhasználók megjelenítheti például nevű gomb `Why These Suggestions?` megjelenítése a legnépszerűbb szolgáltatásokat a felhasználó és a műveletek a személyre szabás a szerepet játszott.
-* Győződjön meg arról, hogy a használati feltételeket tartalmazó fájl megemlíteni, hogy információk segítségével személyre szabhatja a felhasználói élményt.
+* *Hogyan lett a tartalom személyre szabott információkat biztosít a felhasználóknak.* A felhasználók megjelenítheti például nevű gomb `Why These Suggestions?` legnépszerűbb szolgáltatásokat a felhasználó és a műveletek szerepet játszott Personalizer eredményeinek megjelenítése.
+* Ellenőrizze, hogy a feltételek használata győződjön megemlíteni, hogy használandó felhasználók és a felhasználók viselkedését a környezetének testreszabása.
 
 ### <a name="fairness"></a>Igazságos
-* AI rendszerek minden munkatársát viszonylag kell kezelnie.
+*AI-rendszerek viszonylag kell kezelnie minden munkatársát*.
 
 * Használati esetek, ahol az eredményekkel hosszú távú, KÖVETKEZMÉNYES, vagy olyan valós kihagyása kárt Personalizer ne használja.
 * Ne használja a szolgáltatások, amelyek nem megfelelő, a tartalom személyre szabásához, és megkönnyíthetik propagálása nemkívánatos milyen előítéletek befolyásolják. Például a pénzügyi termékek azonos személyre szabott javaslatok megjelennie bárki hasonló pénzügyi körülmények között.

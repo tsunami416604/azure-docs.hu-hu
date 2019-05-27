@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 05/22/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: fe15cafceea8128735f7241fa5e4187d4d9c47a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce6c5f3059041d8dbb097470cf4a415e73d9156b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60518978"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237252"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>A QnA Maker Tudásbázis korlátok és határok
 A QnA Maker között korlátok átfogó listáját.
@@ -51,19 +51,19 @@ A QnA Maker között korlátok átfogó listáját.
 * Támogatott karakterek metaadataihoz megadott érték: Mindenhol, kivéve: és |} 
 * Fájlnév hossza: 200
 * Támogatott fájlformátumok: ".tsv", ".pdf", "txt", ".docx", ".xlsx".
-* Alternatív kérdések maximális száma: 100
+* Alternatív kérdések maximális száma: 300
 * Kérdés-válasz párt maximális száma: Attól függ, a [Azure Search szolgáltatásréteg](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits) választott. Az Azure Search-index dokumentum leképezésére egy kérdés-válasz párt. 
 
 ## <a name="create-knowledge-base-call-limits"></a>Hozza létre a Tudásbázis hívás korlátai:
 Ezen felelnek a minden korlátokat Tudásbázis művelet; létrehozása azt jelenti, kattintson a *létrehozása KB* vagy a CreateKnowledgeBase API-t hívná.
-* Alternatív kérdésnek válasz maximális száma: 100
+* Alternatív kérdésnek válasz maximális száma: 300
 * URL-címek maximális száma: 10
 * Fájlok maximális száma: 10
 
 ## <a name="update-knowledge-base-call-limits"></a>Tudásbázis hívás vonatkozó korlátok módosítása
 Ezek képviselik a frissítési műveletek; korlátai azt jelenti, kattintson a *mentéséhez és betanítunk* vagy a UpdateKnowledgeBase API-t hívná.
 * Minden adatforrás nevének hossza: 300
-* Alternatív kérdések felvett vagy törölt maximális száma: 100
+* Alternatív kérdések felvett vagy törölt maximális száma: 300
 * Metaadatokat tartalmazó mezőket felvett vagy törölt maximális száma: 10
 * Frissíthető URL-címek maximális száma: 5
 

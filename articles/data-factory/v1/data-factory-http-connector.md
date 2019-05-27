@@ -161,7 +161,7 @@ A **typeProperties** szakasz eltér az egyes adatkészlet. A **typeProperties** 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** az adatkészlet értékre kell állítani **Http**. | Igen |
-| relativeUrl | Az erőforrás, amely tartalmazza az adatok relatív URL-CÍMÉT. Az elérési út nincs megadva, csak az URL-cím a társított szolgáltatás definíciójában megadott használ. <br><br> Egy dinamikus URL-cím létrehozásához, használhatja a [Data Factory-függvények és rendszerváltozók](data-factory-functions-variables.md). Példa: **relativeurl tulajdonságok közül**: **$$Text.Format ("/ saját/jelentés? hónap = {0: yyyy}-{0:MM} & fmt = csv", SliceStart)**. | Nem |
+| relativeUrl | Az erőforrás, amely tartalmazza az adatok relatív URL-CÍMÉT. Az elérési út nincs megadva, csak az URL-cím a társított szolgáltatás definíciójában megadott használ. <br><br> Egy dinamikus URL-cím létrehozásához, használhatja a [Data Factory-függvények és rendszerváltozók](data-factory-functions-variables.md). Példa: **relativeurl tulajdonságok közül**: **$$Text.Format ("/ saját/jelentés? hónap = {0: yyyy}-{0:MM} & fmt = csv", SliceStart)** . | Nem |
 | requestMethod | A HTTP-metódust. Engedélyezett értékek a következők **első** és **POST**. | Nem <br />(alapértelmezett érték a **első**) |
 | additionalHeaders | További HTTP-kérelemfejlécek. | Nem |
 | requestBody | A HTTP-kérelem törzsét. | Nem |

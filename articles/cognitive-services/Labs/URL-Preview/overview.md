@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 03/16/2018
 ms.author: rosh
 ms.openlocfilehash: 7022c3b2d2f3618d55b0a70d2690abf1497ec6a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "61473179"
 ---
 # <a name="what-is-project-url-preview"></a>Mi az URL-cím előnézete projekt?
@@ -45,7 +45,7 @@ X-MSEdge-Ref: Ref A: 3CC74C94769440C0851D9DF0869FCE7F Ref B: CO1EDGE0315 Ref C: 
 }
 
 ```
-## <a name="scenarios"></a>Forgatókönyvek 
+## <a name="scenarios"></a>Alkalmazási helyzetek 
 
 Az URL Preview API támogatja a webes erőforrások rövid leírásait. A fejlesztők információban gazdag előnézeti élmények megalkotásához használják.  A felhasználók megoszthatnak vagy könyvjelzővel jelölhetnek meg webhelyeket, híreket, blogokat, fórumokat stb. Ez az API használható tartalommoderáláshoz is.    
 

@@ -125,8 +125,8 @@ Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságoka
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| ClusterSize |A HDInsight-fürt mérete. |
-| TimeToLive |Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer. |
+| clusterSize |A HDInsight-fürt mérete. |
+| timeToLive |Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer. |
 | linkedServiceName |Megadja a HDInsight által előállított naplók tárolására szolgáló tárfiókot. |
 
 Vegye figyelembe a következő szempontokat:
@@ -317,7 +317,7 @@ Ebben a lépésben egy **FirstDataFactoryREST** nevű Azure-adatelőállítót f
 
 Vegye figyelembe a következő szempontokat:
 
-* Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha a hiba az eredmény jelenik meg: **Nem érhető el a Data factory name "FirstDataFactoryREST"**, tegye a következőket:
+* Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha a hiba az eredmény jelenik meg: **Nem érhető el a Data factory name "FirstDataFactoryREST"** , tegye a következőket:
   1. Módosítsa a nevet (például yournameFirstDataFactoryREST) a **datafactory.json** fájlban. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
   2. Az első parancsnál, amikor a **$cmd** változóhoz értéket rendel, cserélje le a FirstDataFactoryREST értéket az új névre, és futtassa le így a parancsot.
   3. A következő két parancs lefuttatásával hívja meg a REST API-t, amely létrehozza az adat-előállítót, és kiírja a művelet eredményeit.

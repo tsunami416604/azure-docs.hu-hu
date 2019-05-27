@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: diberry
-ms.openlocfilehash: b4c1de8edf04e15b540adeac01bcbf0cb1d1b8af
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b114b1c3b1c421c6e6944666e3fd928d2aced966
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65766934"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225875"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – gyakori kérdések (GYIK)
 
@@ -49,7 +49,7 @@ Tekintse meg a [a Bing Spell ellenőrzés API 7-es](luis-tutorial-bing-spellchec
 A LUIS-alkalmazás programozott módon szerkesztéséhez használja a [szerzői API](https://go.microsoft.com/fwlink/?linkid=2092087). Lásd: [szerzői API hívása LUIS](./luis-quickstart-node-add-utterance.md) és [programozott módon a Node.js használatával a LUIS-alkalmazások felépítése](./luis-tutorial-node-import-utterances-csv.md) példákat arra, hogyan hívhat meg a jelentéskészítési API-t. A jelentéskészítési API használatát igényli egy [kulcs létrehozási](luis-concept-keys.md#authoring-key) egy végponti kulcs helyett. Programozott szerzői lehetővé teszi, hogy legfeljebb 1 000 000 hívást, havi és öt tranzakció / másodperc. További információ a kulcsokról, az intelligens hangfelismerési szolgáltatással használja, lásd: [kulcsok kezelése](./luis-concept-keys.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Hol van a minta-szolgáltatás, amely a megadott reguláris kifejezéssel egyező?
-Az előző **minta funkció** jelenleg elavult, lecserélve  **[minták](luis-concept-patterns.md)**.
+Az előző **minta funkció** jelenleg elavult, lecserélve  **[minták](luis-concept-patterns.md)** .
 
 ### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>Hogyan használhatom egy entitás is, a helyes adatokat?
 Lásd: [entitások](luis-concept-entity-types.md) és [adatkinyerés](luis-concept-data-extraction.md).
@@ -297,6 +297,10 @@ A következő funkciók jelentek meg a Build 2019 konferencián:
 * [Továbbfejlesztett előre összeállított tartományok](luis-reference-prebuilt-domains.md) 
 * [Dinamikus entitások](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Külső entitások](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
+
+Videók:
+
+* [A következő generációs az üzleti folyamatok skálázásával Azure természetes nyelvi mesterséges Intelligencia használatával](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="next-steps"></a>További lépések
 
