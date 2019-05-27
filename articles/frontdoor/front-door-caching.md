@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: fb00c09680c6a80bc093c6f02ccd8d7269b8748c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42ee1dea8c9735592f6d6c9e0542ca094a6be383
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306138"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962912"
 ---
 # <a name="caching-with-azure-front-door-service"></a>Az Azure bejárati ajtajának szolgáltatással gyorsítótárazás
 A következő dokumentumban az útválasztási szabályokat, amelyeken engedélyezve gyorsítótárazási viselkedés határozza bejárati ajtajának.
@@ -101,7 +101,7 @@ Kezdettől fogva a gyorsítótár pon és nagybetűk nincsenek megkülönböztet
 ## <a name="cache-expiration"></a>Gyorsítótár elévülési ideje
 A következő sorrendben fejlécek használt érdekében, hogy mennyi ideig lesz egy elemet a gyorsítótárban tárolt:</br>
 1. Cache-Control: s-maxage=\<seconds>
-2. Cache-Control: maxage=\<seconds>
+2. Cache-Control: max-age=\<seconds>
 3. Lejárat: \<http-időpontja >
 
 A Cache-Control válaszfejlécek, amelyek jelzik, hogy a válasz nem gyorsítótárazható, például a Cache-Control: magán, Cache-Control: no-cache és a gyorsítótár-vezérlés: no-store összes régió megfelel. Ha több kérés átvitel közben a jelenléti pontra Irányíthatja az azonos URL-címen, azonban előfordulhat, hogy a válasz közös. Cache-Control nem található az alapértelmezett viselkedés-e, hogy AFD gyorsítótárazzák az erőforrás X idő ahol X véletlenszerűen ki 1 – 3 nap között.

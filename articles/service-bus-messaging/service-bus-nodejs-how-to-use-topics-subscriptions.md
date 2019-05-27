@@ -14,18 +14,23 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: d3f71382a3f2b15ec0f9764b9913a95c0d32b21d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b805a80330dd44ac4a65db88950393d3d4d60b7
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591807"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992095"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Hogyan használható a Service Bus-üzenettémák és előfizetések a node.js használatával
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Hogyan használható a Service Bus-üzenettémák és előfizetések a Node.js és az azure-sb csomag
+> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> - [(Node.js |} azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
+> - [(Node.js |} @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
+Ebben az oktatóanyagban megismerheti, hogyan hozhat létre a Node.js-alkalmazások üzeneteket küldeni a Service Bus-témakörbe, és fogad üzeneteket egy Service Bus-előfizetésébe a [azure-sb](https://www.npmjs.com/package/azure-sb) csomagot. A minták JavaScript nyelven íródtak, és a Node.js használata [Azure-modul](https://www.npmjs.com/package/azure) melyik belső használ a `azure-sb` csomagot.
 
-Ez az útmutató azt ismerteti, hogyan használható a Service Bus-üzenettémák és előfizetések Node.js-alkalmazásokból. Az ismertetett forgatókönyvek a következők:
+A [azure-sb](https://www.npmjs.com/package/azure-sb) használ csomag [Service Bus REST futásidejű API-k](/rest/api/servicebus/service-bus-runtime-rest). Kérheti, hogy egy gyorsabb, az új felület [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) csomag, amely használja a gyorsabb [AMQP 1.0 protokoll](service-bus-amqp-overview.md). Az új csomag kapcsolatos további információkért lásd: [Service Bus-üzenettémák és előfizetések használata a Node.js és @azure/service-bus csomag](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package), ellenkező esetben kihívásokra, hogyan használhatja a [azure](https://www.npmjs.com/package/azure) csomag.
+
+Az itt ismertetett forgatókönyvek között megtalálható:
 
 - Üzenettémák és előfizetések létrehozása 
 - Előfizetés-szűrők létrehozása 
@@ -36,8 +41,8 @@ Ez az útmutató azt ismerteti, hogyan használható a Service Bus-üzenettémá
 Üzenettémakörökkel és előfizetésekkel kapcsolatos további információkért lásd: [további lépések](#next-steps) szakaszban.
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [Visual Studio vagy az MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Kövesse lépéseket a [a rövid útmutató: Az Azure portal használatával hozzon létre egy Service Bus-témakörbe, és a témakörbe az előfizetések](service-bus-quickstart-topics-subscriptions-portal.md) hozhat létre egy Service Bus **névtér** , és a **kapcsolati karakterlánc**.
+- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [Visual Studio vagy az MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Kövesse lépéseket a [a rövid útmutató: Az Azure portal használatával hozzon létre egy Service Bus-témakörbe, és a témakörbe az előfizetések](service-bus-quickstart-topics-subscriptions-portal.md) hozhat létre egy Service Bus **névtér** , és a **kapcsolati karakterlánc**.
 
     > [!NOTE]
     > Létrehozhat egy **témakör** és a egy **előfizetés** használatával a témakörbe **Node.js** ebben a rövid útmutatóban. 
@@ -330,6 +335,9 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 });
 ```
 
+> [!NOTE]
+> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
+
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a Service Bus-üzenettémakörök alapjait, kövesse az alábbi hivatkozások további.
 
@@ -343,6 +351,6 @@ Most, hogy megismerte a Service Bus-üzenettémakörök alapjait, kövesse az al
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre]: ./app-service/app-service-web-get-started-nodejs.md
+[Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 

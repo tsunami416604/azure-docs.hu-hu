@@ -4,15 +4,15 @@ description: Ez a cikk bemutatja, hogyan lehet néhány példa az Azure Cosmos D
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d3bfe1b54409fd57f7535bac2362dc7040975061
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a097539e51aa2a2130dead236d553d60f2ebb89d
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62115537"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965635"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB-elszámolások ismertetése
 
@@ -80,7 +80,7 @@ Ha, 9:30-tól 100-K RU/s a 200-K RU/s és alacsonyabb, majd kiosztott átviteli 
 
 * Ha az átviteli sebességet módosítania kell, és növeli a minden egyes adatbázis kiosztott átviteli sebesség 10 K RU/s minden egyes adatbázishoz, és ad hozzá egy új tárolót az első adatbázis a dedikált átviteli mód 15-K RU/s a megosztott átviteli-adatbázissal a teljes kihasznált kapacitás lenne 155-K RU/s (60 K RU/s + 80 K RU/s + 15 K RU/s).  
 
-* A számla a következőre módosul: 1,550 * $0.008 = $12.40 / óra.  
+* Így a számlázott díj a következőre módosul: 1,550 * $0.008 = $12.40 / óra.  
 
 * Az adott hónapban 720 óra Ha 300 órát a kiosztott átviteli sebesség 120-K RU/s volt, és a fennmaradó 420 órán keresztül kiosztott átviteli sebesség 155-K RU/s volt a havi számlán: 300 x $9.60 / óra + 420 x $12.40 / óra = $2,880 + $5,208 = $8,088 / hó. 
 
@@ -202,7 +202,7 @@ Vegyünk például egy másik példa, ahol szeretné a proaktív módon megbecs�
 
 |**Tárolási költségek** | |
 |----|----|
-|Rekord átlagos mérete (KB) |1 |
+|Rekord átlagos mérete (KB) |1. |
 |Rekordok száma  |100,000,000  |
 |Teljes tárterület (GB)  |100 |
 |GB-onkénti havi költség  |$0.25  |
@@ -212,9 +212,9 @@ Vegyünk például egy másik példa, ahol szeretné a proaktív módon megbecs�
 
 |**Átviteli sebesség költség** | | | |
 |----|----|----|----|
-|Művelettípus| Requests/sec| Átl. RU/kérelem| Kérelemegység szükséges|
+|Művelet típusa| Requests/sec| Átl. RU/kérelem| Kérelemegység szükséges|
 |Írás| 100 | 5 | 500|
-|Olvasás| 400| 1| 400|
+|Olvasás| 400| 1.| 400|
 
 Összes RU/mp: 500-as + 400 = 900 óránkénti költség: 900/100 * 0.008 $ $0.072 várható havi díj (31 napos feltételezve) átviteli sebességet =: $0.072 * 24 * 31 = $53.57
 
@@ -238,7 +238,7 @@ A teljes számlája (fenntartott kapacitás) nélküli lenne (feltételezve 30 n
 |----|----|----|----|----|
 |USA keleti régiója|$0.008 |50 K|$4|$2,880 |
 |Kelet-Japán|$0.009 |50 K| $4.50 |$3,240 |
-|Összes|||$8.50|$6,120 |
+|Összeg|||$8.50|$6,120 |
 
 Vegyünk például, hogy, hogy inkább is tartalékkapacitást vásárolt. Fenntartott kapacitás 100-K RU/s (20 %-os kedvezménnyel) egy évig 56,064 $ vagy 6.40 $ / óra díjért vásárolhat. Lefoglalt kapacitás a díjszabási a [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/cosmos-db/)).  
 
