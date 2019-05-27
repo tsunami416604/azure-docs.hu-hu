@@ -5,7 +5,6 @@ services: active-directory
 documentationcenter: android
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
 ms.service: active-directory
 ms.subservice: develop
@@ -13,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: ryanwi
-ms.reviewer: dadobali
+ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 288581ed3ca339ad9126336556e7b0b565fbbafa
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 6a05d8b9182451fc52dd1860dac1dcce57ba2c55
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545685"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121997"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Gyors útmutató: A felhasználók és a Microsoft Graph API hívása Androidos alkalmazásokból
 
@@ -86,18 +85,17 @@ Szüksége lesz egy natív ügyfélalkalmazásra, amely az [Azure Portalon](http
     - Válassza az ***Azure Active Directory*** > ***Appok regisztrálása*** elemet.
 
 2. Az alkalmazás létrehozása
-    - Válassza az **Új alkalmazás regisztrálása** elemet.
+    - Válassza ki **új regisztrációs**.
     - A **Név** mezőbe írja be az alkalmazás nevét.
-    - Az **Alkalmazás típusa** elemnél válassza a **Natív** lehetőséget.
-    - Az **Átirányítási URI** elemnél írja be a következőt: `http://localhost`.
+    - A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
+    - A **átirányítási URI-t**válassza **(asztali és mobil) nyilvános ügyfél** a legördülő listából, és adja meg `http://localhost`.
+    - Kattintson a **regisztrálása**.
 
 3. A Microsoft Graph konfigurálása
-    - Válassza a **Beállítások > Szükséges engedélyek** elemet.
-    - Válassza a **Hozzáadás** elemet, majd az **API kiválasztása** elemen belül válassza a ***Microsoft Graph*** lehetőséget.
-    - Válassza ki a **Beléptetés és felhasználói profil olvasása** elemet, majd kattintson a **Kiválasztás** gombra a mentéshez.
-        - Ez az engedély a következő hatókörre lesz leképezve: `User.Read`.
-    - Nem kötelező: Belül **szükséges engedélyek > Windows Azure Active Directory**, távolítsa el a kiválasztott engedélyt **jelentkezzen be a felhasználói profil olvasása és**. Így elkerülhető, hogy a felhasználói hozzájárulások oldala kétszer listázza az engedélyt.
-
+    - Válassza ki **API-engedélyek**.
+    - Válassza ki **adjon hozzá egy engedélyt**, belső **API kiválasztása** kiválasztása ***Microsoft Graph***.
+    - Alatt **delegált engedélyek**, válassza ki az engedély **User.Read**, majd kattintson a **Hozzáadás** mentéséhez.        
+    
 4. Gratulálunk! Az alkalmazás konfigurálása kész. A következő szakaszban a következőre lesz szüksége:
     - `Application ID`
     - `Redirect URI`

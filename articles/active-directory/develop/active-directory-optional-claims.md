@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2019
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 593289e64c0f9cd13251a0f7b47b860158100b36
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8c0e5035331cbe4f54926f0ae60ae0c5c31f6a9a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544567"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119726"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás
 
@@ -125,6 +125,9 @@ Ez OptionalClaims objektum okoz az azonosító jogkivonat, az ügyfél egy mási
 ## <a name="configuring-optional-claims"></a>Nem kötelező jogcím konfigurálása
 
 Az alkalmazás nem kötelező jogcímek az alkalmazásjegyzéknek (lásd például alább) módosításával konfigurálhatja. További információ: a [ismertetése az Azure AD application manifest cikk](reference-app-manifest.md).
+
+> [!IMPORTANT]
+> Hozzáférési jogkivonatok olyan **mindig** az erőforrás nem az ügyfél a jegyzék használatával létrehozott.  Igen, a kérelem `...scope=https://graph.microsoft.com/user.read...` az Erőforrás grafikon.  Így a hozzáférési jogkivonat jön létre a Graph-jegyzékfájl, nem az ügyfél jegyzék használatával.  A jegyzékfájl az alkalmazás módosítása máshogy néznek ki a gráf jogkivonatok sosem okozza.  Annak érdekében, hogy ellenőrizze, hogy a `accessToken` módosítások vannak érvényben, kérjen az alkalmazás, nem egy másik alkalmazás tokent.  
 
 **Minta séma:**
 
@@ -247,7 +250,7 @@ Ez a szakasz ismerteti a konfigurációs beállítások módosítása a csoport 
    }
    ```
 
-   | Nem kötelező jogcímek séma | Value |
+   | Nem kötelező jogcímek séma | Érték |
    |----------|-------------|
    | **név:** | "Csoportok" kell lennie. |
    | **Forrás:** | Nincs használatban. Nincs megadva vagy null értéket adjon meg |

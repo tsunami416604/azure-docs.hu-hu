@@ -17,12 +17,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72da1130efc288c03229d990b75bc96c941265d7
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 10b5169d3f06e265b3effa3ec18ad8e4f69959d3
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544291"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121958"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Az MSAL JS és ADAL JS közötti különbségek
 
@@ -63,7 +63,7 @@ A 2.0-s verziójú használja a `https://login.microsoftonline.com/common` szolg
 
     2.0-s verzió: hatókör = https://graph.microsoft.com/User.Read
 
-    Kérheti, hogy valamelyik erőforrás URI-ját az API-t használja a következő formátumban API hatóköreinek: appidURI/hatókörben, például: https://mytenant.onmicrosoft.com/myapi/api.read
+    Kérheti, hogy valamelyik erőforrás URI-ját az API-t használja a következő formátumban API hatóköreinek: appidURI/hatókörben, például: https:\//mytenant.onmicrosoft.com/myapi/api.read
 
     Az MS Graph API, a hatókör értéke csak a `user.read` képez le https://graph.microsoft.com/User.Read és felcserélhetők.
 

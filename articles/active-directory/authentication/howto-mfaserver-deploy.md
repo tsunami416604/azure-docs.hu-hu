@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 05/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae1db992984e8bb1dca71afed9fadd6b411b3dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa3d7d22ed032379f452eb4648c9a1cf87293df9
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415219"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956581"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
@@ -27,6 +27,9 @@ ms.locfileid: "60415219"
 Most, hogy a helyszíni Multi-Factor Authentication-kiszolgáló használata mellett döntöttünk, lássunk neki. Ezen a lapon a kiszolgáló új telepítését és helyszíni Active Directoryval való beállítását ismertetjük. Ha már telepített MFA-kiszolgálót és frissíteni szeretné, tekintse meg [a legújabb Azure Multi-Factor Authentication-kiszolgálóra való frissítéssel kapcsolatos](howto-mfaserver-deploy-upgrade.md) témakört. Ha csak a webszolgáltatás telepítésével kapcsolatban keres információt, tekintse meg [Az Azure Multi-Factor Authentication-kiszolgáló Mobile App Web Service szolgáltatásának telepítése](howto-mfaserver-deploy-mobileapp.md) című témakört.
 
 ## <a name="plan-your-deployment"></a>Az üzembe helyezés megtervezése
+
+> [!WARNING]
+> 2019 MFA-kiszolgáló márciusi indítása letöltések csak akkor fizetős bérlők számára elérhető. Az ingyenes vagy próbaverziója bérlők számára már nem tud letölteni, vagy hozzon létre és aktiváló hitelesítő adatok használata.
 
 Az Azure Multi-Factor Authentication-kiszolgáló letöltése előtt fontolja meg, milyen terhelési és magas rendelkezésre állási követelményekkel rendelkezik. Ezen információ alapján döntse el, hogyan és hol szeretné üzembe helyezni.
 
@@ -51,7 +54,7 @@ Győződjön meg róla, hogy az Azure Multi-Factor Authenticationhöz használt 
 | Az Azure Multi-Factor Authentication-kiszolgáló követelményei | Leírás |
 |:--- |:--- |
 | Hardver |<li>200 MB merevlemez-terület</li><li>x32-es vagy x64-es verzió futtatására képes processzor</li><li>Legalább 1 GB RAM</li> |
-| Szoftver |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, minden kiadás</li><li>Windows 8, minden kiadás</li><li>Windows 7, minden kiadás</li><li>Windows Vista, minden kiadás, SP1, SP2</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li> |
+| Szoftverek |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, minden kiadás</li><li>Windows 8, minden kiadás</li><li>Windows 7, minden kiadás</li><li>Windows Vista, minden kiadás, SP1, SP2</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li> |
 | Engedélyek | Regisztrálhat az Active Directory tartományi rendszergazdaként vagy vállalati rendszergazdai fiók |
 
 ### <a name="azure-mfa-server-components"></a>Az Azure MFA-kiszolgáló összetevői
@@ -90,6 +93,9 @@ Ha nem használja az eseménymegerősítési szolgáltatást, a felhasználók p
 
 ## <a name="download-the-mfa-server"></a>Az MFA-kiszolgáló letöltése
 
+> [!WARNING]
+> 2019 MFA-kiszolgáló márciusi indítása letöltések csak akkor fizetős bérlők számára elérhető. Az ingyenes vagy próbaverziója bérlők számára már nem tud letölteni, vagy hozzon létre és aktiváló hitelesítő adatok használata.
+
 Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-kiszolgálót az Azure Portalról:
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
@@ -102,9 +108,6 @@ Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-
 5. Hagyja megnyitva ezt az oldalt, mivel a telepítő futtatása után még hivatkozni fogunk rá.
 
 ## <a name="install-and-configure-the-mfa-server"></a>Az MFA-kiszolgáló telepítése és konfigurálása
-
-> [!WARNING]
-> 2019 MFA-kiszolgáló márciusi indítása letöltések csak akkor fizetős bérlők számára elérhető. Az ingyenes vagy próbaverziója bérlők számára már nem tud letölteni, vagy hozzon létre és aktiváló hitelesítő adatok használata.
 
 Most, hogy letöltötte a kiszolgálót, telepítse és konfigurálja azt. Győződjön meg róla, hogy az a kiszolgáló, amelyikre telepíti, megfelel-e a tervezési szakaszban felsorolt követelményeknek.
 

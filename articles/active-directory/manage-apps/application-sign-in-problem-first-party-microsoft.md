@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26acb32828ae4829b3da5c3a1181dbde19b23d05
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 504c1bdeb05ecb6372be0edf023c480acac8a8a7
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825216"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956844"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Egy Microsoft-alkalmazásba történő bejelentkezésnél
 
@@ -87,7 +87,7 @@ Az alábbiakban néhány gyakori probléma, azok számára be futtassa, amikor a
 
 - A **Microsoft** **alkalmazások, amelyeknek nincs szükségük licencre**, néhány további tevékenység következik, ellenőrizheti:
 
-  * Ha az alkalmazás által kért **felhasználói szintű engedélyek** (például "hozzáférni a felhasználó postaládájához"), győződjön meg arról, hogy a felhasználó bejelentkezett az alkalmazás- és hajtott végre egy **felhasználóiszintűengedéllyelaművelet** ahhoz, hogy az alkalmazás számára az adatok eléréséhez.
+  * Ha az alkalmazás által kért **felhasználói szintű engedélyek** (például "hozzáférni a felhasználó postaládájához"), győződjön meg arról, hogy a felhasználó bejelentkezett az alkalmazás- és hajtott végre egy **felhasználóiszintűengedéllyelaművelet** ahhoz, hogy az alkalmazás hozzáférhetnek az adataikhoz.
 
   * Ha az alkalmazás által kért **rendszergazdai szintű engedélyekkel a** (például "hozzáférés az összes felhasználói postaládákhoz"), győződjön meg arról, hogy elvégezte-e globális rendszergazda egy **rendszergazdai jóváhagyás művelet az összes olyan felhasználó nevében** a szervezetben.
 

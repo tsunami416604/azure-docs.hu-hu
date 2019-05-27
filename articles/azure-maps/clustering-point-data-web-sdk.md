@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: d4dc6f0c8fd2dff74a1997c9dca5a31abc70c03a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6dbd4461e7b8382ec3c4075b9688de59678f98f5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795931"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957330"
 ---
 # <a name="clustering-point-data"></a>Fürtszolgáltatás pont adatait
 
@@ -33,7 +33,7 @@ var datasource = new atlas.source.DataSource(null, {
     //The radius in pixels to cluster points together.
     clusterRadius: 45,
 
-    //The maximium zoom level in which clustering occurs.
+    //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
     clusterMaxZoom: 15 
 });
@@ -46,9 +46,9 @@ A `DataSource` osztálya is rendelkezik az alábbi módszerek a fürtözött kap
 
 | Módszer | Visszatérési típusa | Leírás |
 |--------|-------------|-------------|
-| getClusterChildren(clusterId: number) | Promise&lt;funkció&lt;Geometry, bármely&gt; \| alakzat&gt; | Olvassa be a következő nagyítási szintjét az adott fürt gyermekei. Ezek a gyermekek alakzatokat és subclusters kombinációja lehet. A subclusters lesz ClusteredProperties megfelelő tulajdonságok a funkciókat. |
+| getClusterChildren(clusterId: number) | Promise&lt;tömb&lt;funkció&lt;Geometry, bármely&gt; \| alakzat&gt;&gt; | Olvassa be a következő nagyítási szintjét az adott fürt gyermekei. Ezek a gyermekek alakzatokat és subclusters kombinációja lehet. A subclusters lesz ClusteredProperties megfelelő tulajdonságok a funkciókat. |
 | getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | A nagyítási szint, amelyen a fürt indítása kibontása vagy újratervezéssel fog számítja ki. |
-| getClusterLeaves (clusterId: szám, korlát: number, eltolás: száma) | Promise&lt;funkció&lt;Geometry, bármely&gt; \| alakzat&gt; | Minden pont egy fürtben kérdezi le. Állítsa be a `limit` a pontok egy részének visszaadása, és a `offset` oldalra a ponton keresztül. |
+| getClusterLeaves (clusterId: szám, korlát: number, eltolás: száma) | Promise&lt;tömb&lt;funkció&lt;Geometry, bármely&gt; \| alakzat&gt;&gt; | Minden pont egy fürtben kérdezi le. Állítsa be a `limit` a pontok egy részének visszaadása, és a `offset` oldalra a ponton keresztül. |
 
 ## <a name="display-clusters-using-a-bubble-layer"></a>Megjeleníti a fürtöket egy buborék réteg használatával
 
@@ -89,7 +89,7 @@ Egér-események előfordulásakor egy rétegen fürtözött adatok pontokat tar
 | fürt | logikai | Azt jelzi, ha a szolgáltatás egy fürt jelöli. |
 | cluster_id | string | Egy egyedi Azonosítót a fürt, amely használható a DataSource `getClusterExpansionZoom`, `getClusterChildren`, és `getClusterLeaves` módszereket. |
 | point_count | szám | A fürt tartalmaz pontok száma. |
-| point_count_abbreviated | string | Egy karakterlánc, amely lerövidíti a point_count értéket, ha hosszú. (például 4000 lesz 4 KB-os) |
+| point_count_abbreviated | string | Egy karakterlánc, amely lerövidíti a `point_count` értékét, ha hosszú. (például 4000 lesz 4 KB-os) |
 
 Ebben a példában egy buborék réteg jelenik meg a fürt pontok, és hozzáad egy kattintással eseményt vesz igénybe, amely bárkinek, kiszámítása, és a térkép zoom nagyítás szintre, ahol a fürt közötti használatával megszakítja a `getClusterExpansionZoom` módszere a `DataSource` osztály és a `cluster_id` tulajdonsága az való kattintás fürtözött adatpont. 
 
