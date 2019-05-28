@@ -185,7 +185,7 @@ Ebben a példában szereplő folyamat egyetlen tevékenységgel rendelkezik, ame
 | Tulajdonság | Megjegyzések |
 |:--- |:--- |
 | type |A típus értékre kell állítani **HDInsightMapReduce**. |
-| Osztálynév |Az osztály neve van: **wordcount** |
+| className |Az osztály neve van: **wordcount** |
 | jarFilePath |Az osztály tartalmazó jar-fájlt elérési útja. Ha, másolja és illessze be a következő kódot, ne felejtse el módosítani a fürt nevét. |
 | jarLinkedService |Az Azure Storage társított szolgáltatás, amely tartalmazza a jar-fájlt. Ezt a társított szolgáltatást a tárolót a HDInsight-fürthöz társított hivatkozik. |
 | argumentumok |A wordcount program két argumentumot, -bemenet és kimenet vesz igénybe. A bemeneti fájl nem a davinci.txt fájlt. |
