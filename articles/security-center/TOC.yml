@@ -6,6 +6,8 @@
       href: security-center-intro.md
     - name: A Security Center által támogatott platformok és funkciók
       href: security-center-os-coverage.md
+    - name: Végpontvédelmi értékelés és javaslatok
+      href: security-center-endpoint-protection.md
 - name: Gyors útmutatók
   expanded: true
   items:

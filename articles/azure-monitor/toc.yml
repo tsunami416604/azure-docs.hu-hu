@@ -63,28 +63,24 @@
       href: azure-management.md
     - name: Folyamatos monitorozás
       href: continuous-monitoring.md
+    - name: Adatforrások
+      href: platform/data-sources.md
     - name: Adatplatform
       items:
         - name: Áttekintés
           href: platform/data-platform.md
+        - name: Adatok helye
+          href: platform/data-locations.md
         - name: Mérőszámok
           href: platform/data-platform-metrics.md
         - name: Naplók
           href: platform/data-platform-logs.md
-    - name: Adatforrások
-      items:
-        - name: Adatforrások – összefoglalás
-          href: platform/data-sources.md
-        - name: Azure-beli adatforrások
-          href: platform/data-sources-reference.md
-        - name: Tevékenységnapló
-          href: platform/activity-logs-overview.md
-        - name: Diagnosztikai naplók
-          href: platform/diagnostic-logs-overview.md
         - name: Naplóadatok feldolgozási ideje
           href: platform/data-ingestion-time.md
-        - name: Egyéni metrikák a metrikatárba
-          href: platform/metrics-custom-overview.md
+    - name: Insights
+      href: insights/insights-overview.md
+    - name: Monitorozási megoldások
+      href: insights/solutions-inventory.md
     - name: Adatbiztonság
       items:
         - name: Naplóadatok
@@ -93,24 +89,6 @@
           href: platform/personal-data-mgmt.md
         - name: 'Alkalmazásadatok gyűjtése, megőrzése és tárolása'
           href: app/data-retention-privacy.md
-    - name: Insights
-      items:
-        - name: Application Insights
-          items:
-            - name: Áttekintés
-              href: app/app-insights-overview.md
-            - name: DevOps
-              href: app/detect-triage-diagnose.md
-            - name: Elosztott nyomkövetés
-              href: app/distributed-tracing.md
-            - name: Naplóalapú és előre összesített metrikák
-              href: app/pre-aggregated-metrics-log-metrics.md
-        - name: Containers
-          href: insights/container-insights-overview.md
-        - name: Virtuális gépek
-          href: insights/vminsights-overview.md
-        - name: Monitorozási megoldások
-          href: insights/solutions-inventory.md
     - name: Reagálás incidensekre
       items:
         - name: Riasztások
@@ -189,6 +167,42 @@
               href: platform/service-providers.md
     - name: Adatok gyűjtése
       items:
+        - name: Azure-erőforrások
+          items:
+            - name: Tevékenységnapló
+              items:
+                - name: Áttekintés
+                  href: platform/activity-logs-overview.md
+                - name: Megtekintés és lekérés
+                  href: platform/activity-log-view.md
+                - name: Összegyűjtés és elemzés
+                  href: platform/activity-log-collect.md
+                - name: Gyűjtés több bérlőből
+                  href: platform/activity-log-collect-tenants.md
+                - name: Exportálás
+                  href: platform/activity-log-export.md
+                - name: Séma
+                  href: platform/activity-log-schema.md
+            - name: Diagnosztikai naplók
+              items:
+                - name: Áttekintés
+                  href: platform/diagnostic-logs-overview.md
+                - name: Gyűjtés naplókban
+                  href: platform/diagnostic-logs-stream-log-store.md
+                - name: Gyűjtés az Azure Storage-ból
+                  href: platform/collect-azure-metrics-logs.md
+                - name: Archiválás a tárolóba
+                  href: platform/archive-diagnostic-logs.md
+                - name: Adatok streamelése az Event Hubsra
+                  href: platform/diagnostic-logs-stream-event-hubs.md
+                - name: Engedélyezés Resource Manager-sablonokkal
+                  href: platform/diagnostic-logs-stream-template.md
+                - name: Szolgáltatásnaplók és -metrikák
+                  href: platform/azure-storage-iis-table.md
+            - name: Streamelés az Event Hubsra
+              href: platform/stream-monitoring-data-event-hubs.md
+            - name: Egyéni adatforrások egyeztetése
+              href: app/custom-data-correlation.md
         - name: Ügynökök telepítése és konfigurálása
           items:
             - name: Monitorozási ügynökök áttekintése
@@ -221,17 +235,15 @@
                   href: platform/diagnostics-extension-stream-event-hubs.md
                 - name: Hibaelhárítás
                   href: platform/diagnostics-extension-troubleshooting.md
-                - name: Diagnosztikai beállítások engedélyezése Resource Manager-sablonokkal
-                  href: platform/diagnostic-logs-stream-template.md
                 - name: A JSON-sorok diagnosztikainapló-formátum használatára való felkészülés
                   href: platform/diagnostic-logs-append-blobs.md
-                - name: Virtuálisgép-vendég küldése a metrikatárba
+                - name: Virtuálisgép-vendég a metrikák közé
                   href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                - name: Virtuálisgép-méretezési csoport vendégének küldése a metrikatárba
+                - name: Virtuálisgép-méretezési csoport vendégének küldése a metrikák közé
                   href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                - name: Klasszikus virtuálisgép-vendég küldése a metrikatárba
+                - name: Klasszikus virtuálisgép-vendég küldése a metrikák közé
                   href: platform/collect-custom-metrics-guestos-vm-classic.md
-                - name: Felhőszolgáltatás-vendég küldése a metrikatárba
+                - name: Felhőszolgáltatás-vendég küldése a metrikák közé
                   href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
             - name: Hibaelhárítás
               items:
@@ -341,8 +353,6 @@
                       href: app/status-monitor-v2-api-get-status.md
                     - name: API Set-ApplicationInsightsMonitoringConfig
                       href: app/status-monitor-v2-api-set-config.md
-                - name: Windows-szolgáltatások
-                  href: app/windows-services.md
                 - name: Asztali Windows
                   href: app/windows-desktop.md
                 - name: Konzol
@@ -432,83 +442,46 @@
                   href: app/proactive-email-notification.md
             - name: Erőforrás létrehozása
               href: app/create-new-resource.md
-            - name: Hibaelhárítás
+            - name: Alkalmazásadatok küldése a Log Analyticsbe
+              href: platform/app-insights-connector.md
+            - name: Alkalmazásadatok exportálása
               items:
                 - name: Nincs adat a .NET-hez
                   href: app/asp-net-troubleshoot-no-data.md
                 - name: Pillanatkép-hibakereső
                   href: ../application-insights/app-insights-troubleshoot-snapshot-debugger.md
-                - name: Elemzés
-                  href: app/analytics-troubleshooting.md
                 - name: Java
                   href: app/java-troubleshoot.md
                 - name: Használatelemzés
                   href: app/usage-troubleshoot.md
-        - name: Azure-erőforrások
-          items:
-            - name: Azure-tevékenységnaplók
-              items:
-                - name: Elemzés
-                  href: platform/collect-activity-logs.md
-                - name: Gyűjtés több előfizetésben
-                  href: platform/collect-activity-logs-subscriptions.md
-            - name: Szolgáltatásnaplók és -metrikák
-              href: platform/collect-azure-metrics-logs.md
-            - name: Diagnosztikai vagy naplóadatok az Azure Storage-ból
-              href: platform/azure-storage-iis-table.md
-            - name: Azure PaaS-erőforrások
-              href: platform/collect-azurepass-posh.md
-            - name: Egyéni adatforrások egyeztetése
-              href: app/custom-data-correlation.md
         - name: Egyéni adatok gyűjtése
           items:
+            - name: Egyéni metrikák
+              href: platform/metrics-custom-overview.md
             - name: Log Analytics Data Collector API
               href: platform/data-collector-api.md
             - name: Példa Log Analytics Data Collector API-folyamatra
               href: platform/create-pipeline-datacollector-api.md
-            - name: A metrikatár REST API-ja
+            - name: Metrikák REST API-ja
               href: platform/metrics-store-custom-rest-api.md
-            - name: GuestOS küldése a metrikatárba – Linux rendszerű virtuális gép (Telegraf)
+            - name: GuestOS küldése a metrikák közé – Linux rendszerű virtuális gép (Telegraf)
               href: platform/collect-custom-metrics-linux-telegraf.md
         - name: System Center
           items:
             - name: Configuration Manager
               href: platform/collect-sccm.md
-            - name: Alkalmazásteljesítmény-monitorozás az SCOM használatával
-              href: app/scom.md
-        - name: Adatok útválasztása
-          items:
-            - name: Tevékenységnapló archiválása
-              href: platform/archive-activity-log.md
-            - name: Diagnosztikai naplók archiválása
-              href: platform/archive-diagnostic-logs.md
-            - name: Diagnosztikai naplók tárolása
-              href: platform/diagnostic-logs-stream-log-store.md
-            - name: Tevékenységnapló streamelése az Event Hubs szolgáltatásba
-              href: platform/activity-logs-stream-event-hubs.md
-            - name: Naplók és metrikák küldése az Event Hubsba
-              href: platform/stream-monitoring-data-event-hubs.md
-            - name: Diagnosztikai naplók küldése az Event Hubsba
-              href: platform/diagnostic-logs-stream-event-hubs.md
-            - name: Alkalmazásadatok küldése a Log Analyticsbe
-              href: platform/app-insights-connector.md
-            - name: Alkalmazásadatok exportálása
-              items:
-                - name: Folyamatos exportálás
-                  href: app/export-telemetry.md
-                  items:
-                    - name: Kódminták
-                      items:
-                        - name: SQL-exportálás a Stream Analytics használatával
-                          href: app/code-sample-export-sql-stream-analytics.md
-                        - name: Stream Analytics-exportálás
-                          href: app/export-stream-analytics.md
-                - name: Adatmodell exportálása
-                  href: app/export-data-model.md
     - name: Következtetések levonása
       items:
         - name: Alkalmazások figyelése
           items:
+            - name: Az Application Insights áttekintése
+              items:
+                - name: Áttekintés
+                  href: app/app-insights-overview.md
+                - name: Elosztott nyomkövetés
+                  href: app/distributed-tracing.md
+                - name: Naplóalapú és előre összesített metrikák
+                  href: app/pre-aggregated-metrics-log-metrics.md
             - name: Az Application Insights portál
               items:
                 - name: Keresés
@@ -982,6 +955,8 @@
               href: app/api-filtering-sampling.md
             - name: Mintavételezés
               href: app/sampling.md
+            - name: TelemetryChannels
+              href: app/telemetry-channels.md
         - name: Monitorozási megoldások
           items:
             - name: Tervezés és felépítés
@@ -1060,8 +1035,6 @@
       items:
         - name: 'Diagnosztikai naplókkal kapcsolatos szolgáltatások, kategóriák és sémák'
           href: platform/diagnostic-logs-schema.md
-        - name: Tevékenységnapló eseménysémája
-          href: platform/activity-log-schema.md
         - name: Azure Diagnostics-bővítményséma
           href: platform/diagnostics-extension-schema.md
           items:

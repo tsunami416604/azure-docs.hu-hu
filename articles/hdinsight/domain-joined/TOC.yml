@@ -8,6 +8,8 @@
   items:
     - name: ESP-fürtök tervezése
       href: apache-domain-joined-architecture.md
+    - name: ESP-fürtök létrehozása és szinkronizálás a helyszíni rendszerrel
+      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
     - name: ESP-fürtök konfigurálása az Azure AD DS-sel
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Azure AD-felhasználók szinkronizálása HDInsight-fürttel

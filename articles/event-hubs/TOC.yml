@@ -51,8 +51,6 @@
           href: event-hubs-capture-python.md
     - name: Streamelés az Apache Kafkához készült Event Hubsba
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
-    - name: Dedikált Event Hubs-fürt létrehozása
-      href: event-hubs-dedicated-cluster-create-portal.md
 - name: Oktatóanyagok
   items:
     - name: Event Hubs-adatstreamek anomáliáinak vizualizációja
@@ -86,14 +84,18 @@
       href: event-hubs-event-processor-host.md
     - name: Programozási útmutató
       href: event-hubs-programming-guide.md
-    - name: Az Azure-erőforrásokhoz készült felügyelt identitások
-      href: event-hubs-managed-service-identity.md
-    - name: Szerepköralapú hozzáférés-vezérlés (előzetes verzió)
-      href: event-hubs-role-based-access-control.md
-    - name: Georeplikációs vészhelyreállítás és georeplikáció
-      href: event-hubs-geo-dr.md
-    - name: A hitelesítési és biztonsági modell áttekintése
-      href: event-hubs-authentication-and-security-model-overview.md
+    - name: Biztonság
+      items:
+        - name: Az Azure-erőforrásokhoz készült felügyelt identitások
+          href: event-hubs-managed-service-identity.md
+        - name: Szerepköralapú hozzáférés-vezérlés (előzetes verzió)
+          href: event-hubs-role-based-access-control.md
+        - name: Georeplikációs vészhelyreállítás és georeplikáció
+          href: event-hubs-geo-dr.md
+        - name: A hitelesítési és biztonsági modell áttekintése
+          href: event-hubs-authentication-and-security-model-overview.md
+        - name: Biztonsági attribútumok
+          href: event-hubs-security-attributes.md
     - name: Rendelkezésre állás és konzisztencia
       href: event-hubs-availability-and-consistency.md
     - name: AMQP 1.0 protokoll – útmutató

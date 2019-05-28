@@ -364,13 +364,17 @@
           href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Adatátvitel
           items:
-            - name: AzCopy (10-es verzió)
-              href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: AzCopy Windowson (8-as verzió)
-              href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: AzCopy Linuxon (8-as verzió)
-              href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Az Azure Data Factory használata
+            - name: AzCopy
+              items:
+                - name: Bevezetés
+                  href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Használat a Blobs szolgáltatással
+                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Használat Amazon S3-gyűjtőkkel
+                  href: ../common/storage-use-azcopy-s3.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Konfigurálás, optimalizálás, hibaelhárítás'
+                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Azure Data Factory
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Blob-tároló csatlakoztatása fájlrendszerként Linux rendszeren
               href: storage-how-to-mount-container-linux.md
@@ -571,6 +575,14 @@
       items:
         - name: Adatok betöltése
           items:
+            - name: AzCopy
+              items:
+                - name: Bevezetés
+                  href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Használat a Data Lake Storage 2. generációjával
+                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Konfigurálás, optimalizálás, hibaelhárítás'
+                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: A Distcp használata
               href: ../blobs/data-lake-storage-use-distcp.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Az Azure Data Factory használata
