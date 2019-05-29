@@ -10,22 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: aahi
-ms.openlocfilehash: 2e9e26243511972c7d05dc55c8e041d83efcbc7d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: b319abf22f9aa4cdd9a5fef91be0628672d47bd4
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546586"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297783"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>Gyors útmutató: Meghívja a Text Analytics szolgáltatást, a Python SDK használatával 
 <a name="HOLTop"></a>
 
-Ez a rövid útmutató segítségével megkezdheti a Text Analytics SDK-val nyelvi elemzése a Pythonhoz készült. Bár a Text Analytics REST API kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba anélkül szerializálásához és deszerializálásához JSON.
-
-
-> [!Note]
-> * Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
-> * Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py).  
+Ez a rövid útmutató segítségével megkezdheti a Text Analytics SDK-val nyelvi elemzése a Pythonhoz készült. Bár a Text Analytics REST API kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba anélkül szerializálásához és deszerializálásához JSON. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

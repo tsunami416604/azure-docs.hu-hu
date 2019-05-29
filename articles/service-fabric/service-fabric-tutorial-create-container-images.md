@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c081a6296e1fae89f24a2c3ddb1ae66f7a3f94aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fe01d55b17c0f6f6dd6a621fbac0cf4d3a268ee3
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60865289"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306778"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Oktatóanyag: Tárolórendszerképek létrehozása Linux-alapú Service Fabric-fürtön
 
@@ -88,7 +88,7 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry üzembe helyezése
 
-Először futtassa az **az login** parancsot, hogy bejelentkezzen az Azure-fiókjába.
+Először futtassa a **az bejelentkezési** paranccsal jelentkezzen be az Azure-fiókjával.
 
 ```bash
 az login
@@ -116,7 +116,7 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 Az oktatóanyag hátralevő részében az „acrName” kifejezés helyettesíti a tárolóregisztrációs adatbázis választott nevét. Jegyezze fel ezt az értéket.
 
-## <a name="log-in-to-your-container-registry"></a>Bejelentkezés a tárolóregisztrációs adatbázisba
+## <a name="sign-in-to-your-container-registry"></a>Jelentkezzen be a tárolóregisztrációs adatbázis
 
 Jelentkezzen be az ACR-példányba, mielőtt rendszerképeket próbálna leküldeni rá. Használja az **az acr login** parancsot a művelet befejezéséhez. Adja meg a tárolóregisztrációs adatbázis egyedi nevét, amelyet a létrehozásakor adott meg.
 

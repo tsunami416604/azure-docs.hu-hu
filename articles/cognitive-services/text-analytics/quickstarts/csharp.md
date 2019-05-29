@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/24/2019
+ms.date: 05/28/2019
 ms.author: assafi
-ms.openlocfilehash: 4b0f4c4768c68e2fa58fb0577d0586095c6fb716
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
-ms.translationtype: HT
+ms.openlocfilehash: a8b41f6853e9c91e64de903960b880e44f22ed55
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66256341"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297798"
 ---
 # <a name="quickstart-use-the-net-sdk-and-c-to-call-the-text-analytics-service"></a>Gyors útmutató: A .NET SDK használata és C# a Text Analytics szolgáltatás hívásához
 <a name="HOLTop"></a>
@@ -29,16 +29,11 @@ A technikai részletekért tekintse meg az SDK a .NET-hez [Szövegelemzés hivat
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+* Bármely kiadása [visual studio 2017-es vagy újabb]
+* A Text Analytics [SDK for .NET csomaggal](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 Emellett a [végpontját és hozzáférési kulcsát](../How-tos/text-analytics-how-to-access-key.md) létrehozott az Ön számára a regisztrációhoz.
-
-> [!Tip]
->  Bár a [HTTP-végpontokat](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) közvetlenül C#, a Microsoft.Azure.CognitiveServices.Language SDK megkönnyíti a szolgáltatás hívásához szerializálható és deszerializálható JSON nélkül.
->
-> Néhány fontos hivatkozás:
-> - [SDK NuGet-oldalon](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
-> - [SDK-kód](https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
 ## <a name="create-the-visual-studio-solution-and-install-the-sdk"></a>A Visual Studio-megoldás létrehozása és az SDK telepítése
 

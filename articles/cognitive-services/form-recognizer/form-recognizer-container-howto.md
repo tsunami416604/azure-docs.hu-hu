@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 05/28/2019
 ms.author: pafarley
-ms.openlocfilehash: a7159fccc9c4ef232cfca08b173e712e268343ea
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f65375bfd826660f8583068875a1fddc545a86d7
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507817"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306534"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Telepítse és futtassa az űrlap felismerő tárolók
 Űrlap felismerő gépi tanulási technológia azonosíthatja és kulcs-érték párok és táblák kinyerése űrlapok vonatkozik. Ez értékeket és hozzájuk táblabejegyzéseket társítja, és majd megjeleníti a strukturált adatok, amely tartalmazza a kapcsolatokat az eredeti fájl. Az egyéni űrlap felismerő modell annak érdekében, hogy csökkenthető, és könnyedén integrálhatja a munkafolyamat automation vagy más alkalmazásban egy egyszerű REST API használatával hívható meg. Csak öt dokumentumok (vagy egy üres képernyő) szükséges, így gyorsan, pontos eredményeket kaphat és fenntarthatja az adott tartalomra, nehéz kézi beavatkozás vagy kiterjedt data science szakértelem nélkül. Adatok címkézési vagy adatok jegyzet nem igényel.
@@ -101,7 +101,7 @@ Ha a tároló a [gazdaszámítógép](#the-host-computer), a következő eljár�
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancs futtatása bármely három tárolóra. A parancs paraméterei a következők:
 
-| Helyőrző | Value |
+| Helyőrző | Érték |
 |-------------|-------|
 |{BILLING_KEY} | Ezt a kulcsot szolgál a tárolót, és az Azure Portalon űrlap felismerő kulcsok lapján található.  |
 |{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját az Azure Portalon az űrlap felismerő áttekintése oldalon érhető el.|
@@ -283,7 +283,11 @@ A tároló futtatásakor használ-e a tároló **stdout** és **stderr** a kimen
 
 Ezek a beállítások kapcsolatos további információkért lásd: [tárolók konfigurálása](form-recognizer-container-configuration.md).
 
-## <a name="summary"></a>Összegzés
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
+
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és a futó tárolók űrlap felismerő munkafolyamat. Összegezve:
 

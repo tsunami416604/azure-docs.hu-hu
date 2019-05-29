@@ -7,14 +7,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: anomaly-detection
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/28/2019
 ms.author: aahi
-ms.openlocfilehash: cc82e091ae4c033bda7f1d91c9aed36bb081de88
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ec32d5de9e3af14abbf14f79f37ab00f3346b1c1
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233611"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306980"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Telepítse és futtassa a tárolók Anomáliadetektálási detector használatával
 
@@ -22,7 +22,7 @@ Az Anomáliadetektálási detector használatával a következő tárolórendsze
 
 |Függvény|Funkciók|
 |-|-|
-|Anomáliadetektálási detector használatával| <li> A valós idejű előforduló észleli a rendellenességeket. <li> Észleli a rendellenességeket a készlet egész kötegként. <li> Kikövetkezteti a várt normál tartományon az adatokat. <li> Támogatja anomáliadetektálási észlelés érzékenysége korrekciós jobban illeszkednek az adatok. |
+|Anomáliadetektor| <li> A valós idejű előforduló észleli a rendellenességeket. <li> Észleli a rendellenességeket a készlet egész kötegként. <li> Kikövetkezteti a várt normál tartományon az adatokat. <li> Támogatja anomáliadetektálási észlelés érzékenysége korrekciós jobban illeszkednek az adatok. |
 
 Az API-k kapcsolatos részletes információkért tekintse meg:
 * [További tudnivalók a Anomáliadetektálási detector használatával API-szolgáltatás](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -177,7 +177,11 @@ Anomáliadetektálási detector használatával tárolók Küldés a számlázá
 
 Ezek a beállítások kapcsolatos további információkért lásd: [tárolók konfigurálása](anomaly-detector-container-configuration.md).
 
-## <a name="summary"></a>Összegzés
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
+
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta, fogalmak és a munkafolyamat letöltése, telepítése és a futó tárolók Anomáliadetektálási detector használatával. Összegezve:
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: e0e8b9f767376db8028a3ac4a2d8659bab69268b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9f68b74c09bf0122ba856680a60bdb14ffa868f
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829956"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306530"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Telepítse és futtassa a Text Analytics tárolók
 
@@ -48,9 +48,9 @@ A következő táblázat ismerteti a minimális és ajánlott, processzormagot l
 
 | Tároló | Minimális | Ajánlott | TPS<br>(Minimum, Maximum)|
 |-----------|---------|-------------|--|
-|Kulcskifejezések kinyerése | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
+|Kulcsszókeresés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
 |Nyelvfelismerés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
-|Véleményelemzés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
+|Hangulatelemzés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
 
 * Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
 * TPS - tranzakció / másodperc
@@ -65,7 +65,7 @@ Tárolórendszerképek szövegelemzési Microsoft Tárolóregisztrációs adatb�
 |-----------|------------|
 |Kulcskifejezések kinyerése | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 |Nyelvfelismerés | `mcr.microsoft.com/azure-cognitive-services/language` |
-|Véleményelemzés | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+|Hangulatelemzés | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
 Használja a [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal töltse le a tárolórendszerkép Microsoft Tárolóregisztrációs adatbázisból.
 
@@ -166,6 +166,10 @@ A Text Analytics tárolók küldés számlázási adatokat az Azure-ba, a haszn�
 [!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Ezek a beállítások kapcsolatos további információkért lásd: [tárolók konfigurálása](../text-analytics-resource-container-config.md).
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Összegzés
 

@@ -10,12 +10,12 @@ ms.author: genemi
 ms.reviewer: carlrab
 manager: craigg-msft
 ms.date: 02/08/2019
-ms.openlocfilehash: ce46a6b8d4e2bc57625f9202349718dfbaedc660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 31246f44be5645715c5c7041d0cf9bcff9c0fa52
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553207"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303288"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Oktatóanyag: Az Azure SQL Database C belül egy önálló adatbázis relációs adatbázis tervezése&#x23; és az ADO.NET
 
@@ -33,7 +33,7 @@ Ha a nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy telepített [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+Egy telepített [Visual Studio 2019](https://www.visualstudio.com/downloads/) vagy újabb.
 
 ## <a name="create-a-blank-single-database"></a>Üres önálló adatbázis létrehozása
 
@@ -117,7 +117,7 @@ Ebben az oktatóanyagban megismerte az alapvető adatbázis-feladatok például 
 > * Adatbázis létrehozása
 > * Tűzfalszabály beállítása
 > * Csatlakozás az adatbázishoz a [Visual Studio és a C#](sql-database-connect-query-dotnet-visual-studio.md) használatával
-> * Táblázatok létrehozása
+> * Táblák létrehozása
 > * INSERT, update, delete és adatokat kérdezhet le
 
 Folytassa a következő oktatóanyaggal adatok migrálása.

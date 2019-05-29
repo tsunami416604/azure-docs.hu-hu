@@ -55,6 +55,8 @@
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: Alapelvek
   items:
+    - name: Hitelesítés
+      href: concepts/authentication.md
     - name: Kapcsolatok horgonyzása
       href: concepts/anchor-relationships-way-finding.md
     - name: Útmutatók

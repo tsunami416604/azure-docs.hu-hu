@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: aa50cbe640c928c4113fb64c1b503548a95ee0a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60718290"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302478"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt üzemeltetéséhez az AWS-infrastruktúra létrehozása
 
@@ -33,7 +33,7 @@ A sorozat első részében a következőkkel ismerkedhet meg:
 > [!div class="checklist"]
 > * EC2-példányok készletének létrehozása
 > * A biztonsági csoport módosítása
-> * Bejelentkezés az egyik példányba
+> * Jelentkezzen be egy példányt
 > * A példány előkészítése a Service Fabrichez
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -42,7 +42,7 @@ Az oktatóanyag elvégzéséhez egy AWS-fiókra lesz szüksége.  Ha még nem re
 
 ## <a name="create-ec2-instances"></a>EC2-példányok létrehozása
 
-Jelentkezzen be az AWS-konzolra > Írja be az **EC2** kifejezést a keresőmezőbe > **EC2 virtuális kiszolgálók a felhőben**
+Jelentkezzen be az AWS konzol > Enter **EC2** kifejezést a keresőmezőbe > **EC2 virtuális kiszolgálók a felhőben**
 
 ![Keresés az AWS-konzolon][aws-console]
 
@@ -151,7 +151,7 @@ A sorozat első részében megismerte, hogyan indíthat el három EC2-példányt
 > [!div class="checklist"]
 > * EC2-példányok készletének létrehozása
 > * A biztonsági csoport módosítása
-> * Bejelentkezés az egyik példányba
+> * Jelentkezzen be egy példányt
 > * A példány előkészítése a Service Fabrichez
 
 A sorozat második részében konfigurálni fogja a Service Fabricet a fürtben.

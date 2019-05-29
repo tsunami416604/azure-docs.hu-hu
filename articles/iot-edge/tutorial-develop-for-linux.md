@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4ee3c0bf344520afee6b3a00eb49759ae1432949
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 11fa72f5853350c76b2a8d0aa4fd7b96b598b670
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239772"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303846"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Oktatóanyag: A Linux rendszerű eszközök IoT Edge-modulok fejlesztése
 
@@ -42,18 +42,18 @@ Ez az oktatóanyag végigvezeti egy IoT Edge-modul fejlesztését. Egy *IoT Edge
 
 IoT Edge-modulok fejlesztésekor fontos a fejlesztői gépen, és a cél, ahol a modul végül telepíti az IoT Edge-eszköz közötti különbségek megértése. A tároló, amely hoz létre, amely tárolja a modul kódja meg kell egyeznie az operációs rendszer (OS), a *céleszköz*. Ha például a leggyakoribb eset olyan személy, szándékos volt, amelyekre az IoT Edge-es Linux rendszerű eszközök a Windows számítógépen modul fejlesztése. Ebben az esetben az operációs rendszer lenne Linux. Ez az oktatóanyag lépéseinek követése közben tartsa szem előtt a különbség a *fejlesztői gépen az operációs rendszer* és a *tároló OS*.
 
-Ez az oktatóanyag az IoT Edge futtató Linux rendszerű eszközök célozza. Használhatja az előnyben részesített fejlesztési gép operációs rendszerének mindaddig, amíg a fejlesztői gépén Linux-tárolókat futtathat. Azt javasoljuk, hogy az milyen ebben az oktatóanyagban használja a Linux rendszerű eszközök esetében fejleszthet a Visual Studio Code használatával. Használhatja a Visual Studio 2017, bár a támogatás a két eszköz közötti különbségek vannak.
+Ez az oktatóanyag az IoT Edge futtató Linux rendszerű eszközök célozza. Használhatja az előnyben részesített fejlesztési gép operációs rendszerének mindaddig, amíg a fejlesztői gépén Linux-tárolókat futtathat. Azt javasoljuk, hogy az milyen ebben az oktatóanyagban használja a Linux rendszerű eszközök esetében fejleszthet a Visual Studio Code használatával. Használhatja a Visual Studio, bár a támogatás a két eszköz közötti különbségek vannak.
 
-A következő táblázat felsorolja a támogatott fejlesztési forgatókönyvek **Linux-tárolók** a Visual Studio Code és a Visual Studio 2017-ben.
+A következő táblázat felsorolja a támogatott fejlesztési forgatókönyvek **Linux-tárolók** a Visual Studio Code és a Visual Studióban.
 
-|   | Visual Studio Code | Visual Studio 2017 |
+|   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Linux rendszerű eszköz architektúra** | Linux-AMD64 <br> Linux ARM32 | Linux-AMD64 <br> Linux ARM32 |
 | **Azure-szolgáltatások** | Azure Functions <br> Azure Stream Analytics <br> Azure Machine Learning |   |
 | **Nyelvek** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
-| **További információ** | [A Visual Studio Code az Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
+| **További információ** | [A Visual Studio Code az Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools), [Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
-Ebben az oktatóanyagban a fejlesztési lépések a Visual Studio Code azzal foglalkozunk. Ha szeretné inkább használja a Visual Studio 2017, tekintse meg a következő témakör utasításait [használja a Visual Studio 2017 fejlesztésről és hibakeresésről modulok az Azure IoT Edge](how-to-visual-studio-develop-module.md).
+Ebben az oktatóanyagban a fejlesztési lépések a Visual Studio Code azzal foglalkozunk. Ha szeretné inkább használja a Visual Studio, tekintse meg a következő témakör utasításait [használja a Visual Studio 2019 fejlesztésről és hibakeresésről modulok az Azure IoT Edge](how-to-visual-studio-develop-module.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

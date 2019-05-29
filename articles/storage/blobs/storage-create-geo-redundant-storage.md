@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 24869981595cd68eb833f7b176e17a2683127945
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: cbf6409efa2fbb56500c6919edc6c741c4a2c45a
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787912"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306762"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Oktatóanyag: A Blob storage magas rendelkezésre állású alkalmazás létrehozása
 
@@ -40,7 +40,7 @@ Az oktatóanyag elvégzéséhez:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* Telepítse a [Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
+* Telepítés [Visual Studio 2019](https://www.visualstudio.com/downloads/) a következő számítási feladatokkal:
   - **Azure-fejlesztés**
 
   ![Azure-fejlesztés (a Web és felhőszolgáltatások alatt)](media/storage-create-geo-redundant-storage/workloads.png)
@@ -82,6 +82,8 @@ Kövesse az alábbi lépéseket egy írásvédett georedundáns tárfiók létre
    | **Üzemi modell** | Resource Manager  | A Resource Manager a legújabb funkciókat kínálja.|
    | **Fióktípus** | StorageV2 | A fiókok típusaival kapcsolatos információkért lásd [a tárfiókok típusait](../common/storage-introduction.md#types-of-storage-accounts) |
    | **Teljesítmény** | Standard | A példaforgatókönyvhöz a standard teljesítmény elegendő. |
+   | **Replikáció**| Georedundáns írásvédett tárolás (RA-GRS) | Ez a beállítás a minta működéséhez szükség. |
+   |**Előfizetés** | az Ön előfizetése |Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
    | **Replikáció**| Georedundáns írásvédett tárolás (RA-GRS) | Ez szükséges a minta működéséhez. |
    |**Előfizetés** | az Ön előfizetése |Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |
    |**ResourceGroup** | myResourceGroup |Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
@@ -167,7 +169,7 @@ setx accountkey "<youraccountkey>"
 
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
-Ez a minta szükséges, hogy biztonságosan tárolja a nevét és a tárfiók kulcsára. A környezeti változókat a géphez, amely a minta futtatása lesz helyi Store őket. A környezeti változók létrehozásához használja a Linux- vagy a Windows például az operációs rendszerének megfelelően. A Windows, a környezeti változó nem érhető el addig, amíg újból betölti a **parancssor** vagy rendszerhéj használ.
+Ez a minta szükséges, hogy biztonságosan tárolja a nevét és a tárfiók kulcsára. A környezeti változókat a géphez, amely a minta futtatása lesz helyi Store őket. A környezeti változók létrehozásához használja a Linux- vagy a Windows például az operációs rendszerének megfelelően. A Windows, a környezeti változó nem érhető el addig, amíg újból betölti a **parancssor** vagy shell használata esetén.
 
 ### <a name="linux-example"></a>Linuxos példa
 
@@ -194,7 +196,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 Annak ezeket az adatokat az Azure Portalon lépjen a tárfiókhoz, majd válasszon **hozzáférési kulcsok** a a **beállítások** szakaszban.
 
-Emellett telepítenie kell a szükséges függőségeknek. Ehhez nyisson meg egy parancssort, lépjen a mappába, majd adja meg `npm install`.
+Telepítse a szükséges függőségeknek. Ehhez nyisson meg egy parancssort, lépjen a mappába, majd adja meg `npm install`.
 
 ---
 
@@ -220,7 +222,7 @@ A mintakód a `circuitbreaker.py` fájlban található `run_circuit_breaker` met
 
 A Storage-objektum újrapróbálkozási függvénye lineáris újrapróbálkozási szabályzatra van beállítva. Az újrapróbálkozási függvény határozza meg, hogy egy kérelmet újra kell-e próbálni, valamint megadja, hogy hány másodpercnyi várakozás után történjen az újrapróbálkozás. A **retry\_to\_secondary** paramétert állítsa true (igaz) értékre, ha a kérelmet a másodlagos végponton kell újra megkísérelni, amennyiben az elsődleges végpontra irányuló első kérelem sikertelen lenne. A mintaalkalmazásban az egyéni újrapróbálkozási szabályzat a Storage-objektum `retry_callback` függvényében van definiálva.
 
-A letöltés előtt meg kell határozni a Service objektum [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) és [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) függvényét. Ezek a függvények határozzák meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.
+A Service objektum a letöltés előtt [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) és [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) függvény van definiálva. Ezek a függvények határozzák meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.
 
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
@@ -231,11 +233,11 @@ A minta futtatásához a Maven használata a parancssorban.
 
 Ez a minta egy tesztfájlt hoz létre az alapértelmezett címtárban. A Windows-felhasználók számára, a könyvtár a megadott **AppData\Local\Temp**. A minta ezután jeleníti meg a parancsok, amelyeket megadhat a következő beállításokat:
 
-- Adja meg **P** egy put blob művelet végrehajtásához a feltölt egy ideiglenes fájlt a tárfiókhoz.
-- Adja meg **L** blob list művelet végrehajtása, a lista a jelenleg a tárolóban lévő blobokat.
-- Adja meg **G** get blob művelet végrehajtására, ez letölti egy fájlt a tárfiókból a helyi gépen.
-- Adja meg **D** blob delete műveletet végrehajtani, ez a művelet törli a blobot a tárfiókból.
-- Adja meg **E** gombra kattintva zárja be a mintát, ez is összes erőforrást törli a létrehozott minta.
+- Adja meg **P** egy put blob művelet végrehajtása ezzel a paranccsal a storage-fiók feltölt egy ideiglenes fájlt.
+- Adja meg **L** blob list művelet végrehajtása, ezzel a paranccsal a jelenleg a tárolóban lévő blobok listázása.
+- Adja meg **G** get blob művelet végrehajtására, ez a parancs letölti egy fájlt a tárfiókból a helyi gépen.
+- Adja meg **D** blob delete műveletet végrehajtani, ez a parancs törli a blob storage-fiókjában.
+- Adja meg **E** gombra kattintva zárja be a mintát, ezzel a paranccsal is összes erőforrást törli a létrehozott minta.
 
 A következő példa az alkalmazás Windows rendszeren végzett futtatásakor látható kimenetet mutatja.
 

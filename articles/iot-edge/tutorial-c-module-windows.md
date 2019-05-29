@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 04/23/2019
+ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ee64e5a49bf2825c83c74167d7eb75aa3dc59387
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 79f3b125a4cb88b3555cf13aa4d4bc5c430df166
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239823"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303881"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: Windows-eszközökhöz a C IoT Edge-modul fejlesztése
 
@@ -23,7 +23,7 @@ A Visual Studio használatával C kódjának fejlesztése és üzembe helyezése
 Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
 
 > [!div class="checklist"]
-> * A Visual Studio használatával hozzon létre egy IoT Edge-modul, amely a .NET Core SDK 2.1-es alapul.
+> * A Visual Studio használatával hozzon létre egy IoT Edge-modul, amely azon alapul, a C SDK-val.
 > * A Visual Studio és a Docker használatával egy Docker-rendszerkép létrehozása és közzététele a beállításjegyzékbe.
 > * A modul üzembe helyezése az IoT Edge-eszközön.
 > * A létrejött adatok megtekintése.
@@ -34,11 +34,11 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 ## <a name="solution-scope"></a>Megoldás hatókör
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre egy moduljában lévő **C** használatával **Visual Studio 2017**, és hogyan helyezhet üzembe, hogy egy **Windows eszköz**. Ha a Linux rendszerű eszközök modulok fejleszt, lépjen a [fejlesztése a C IoT Edge-modul a Linux rendszerű eszközök](tutorial-c-module.md) helyette. 
+Ez az oktatóanyag bemutatja, hogyan hozhat létre egy moduljában lévő **C** használatával **Visual Studio 2019**, és hogyan helyezhet üzembe, hogy egy **Windows eszköz**. Ha a Linux rendszerű eszközök modulok fejleszt, lépjen a [fejlesztése a C IoT Edge-modul a Linux rendszerű eszközök](tutorial-c-module.md) helyette. 
 
 A következő táblázat segítségével fejleszteni és üzembe helyezni a C-modulok Windows-eszközökre a lehetőségek megismerése: 
 
-| C | Visual Studio Code | Visual Studio 2017 | 
+| C | Visual Studio Code | Visual Studio 2017/2019 | 
 | -- | ------------------ | ------------------ |
 | **Windows-AMD64** |  | ![A Visual Studióban WinAMD64 C modulok fejlesztése](./media/tutorial-c-module/green-check.png) |
 
@@ -49,31 +49,35 @@ Ez az oktatóanyag elkezdéséhez kell elvégezte az előző oktatóanyagban Win
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * A [Windows-eszközök Azure IoT Edge futtatásakor](quickstart.md).
 * Egy tároló-beállításjegyzéket, pl. [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
-* [A Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio?view=vs-2017), konfigurált 15.7 vagy újabb verzió, a [Azure IoT Edge-eszközök](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) bővítmény.
+* [A Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) konfigurálva a [Azure IoT Edge-eszközök](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) bővítmény.
 * [A docker CE](https://docs.docker.com/install/) konfigurált Windows-tárolók futtatásához.
 * C-hez készült Azure IoT SDK 
 
+> [!TIP]
+> Ha Visual Studio 2017 (15.7 vagy újabb verzió) használja, töltse le és telepítse [Azure IoT Edge-eszközök (előzetes verzió)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) VS 2017 a Visual Studio marketplace-ről
+
 ## <a name="create-a-module-project"></a>A modul projekt létrehozása
 
-Az alábbi lépéseket az IoT Edge modul projekt a Visual Studio és az Azure IoT Edge Tools bővítmény használatával a .NET Core 2.0 SDK alapján hozzon létre. Miután létrehozott projektsablon, adjon hozzá új kódot úgy, hogy a modul üzeneteket a jelentett tulajdonságok alapján kiszűri. 
+Az alábbi lépéseket, amelyek alapján az C SDK-t a Visual Studio és az Azure IoT Edge Tools bővítmény használatával IoT Edge modul projekt létrehozása. Miután létrehozott projektsablon, adjon hozzá új kódot úgy, hogy a modul üzeneteket a jelentett tulajdonságok alapján kiszűri. 
 
 ### <a name="create-a-new-project"></a>Új projekt létrehozása
 
 Létrehozhat egy C-megoldást, amelyet a saját kódjával testreszabhat.
 
-1. Futtassa a Visual Studiót rendszergazdaként.
+1. Indítsa el a Visual Studio 2019, és válassza ki **új projekt létrehozása**.
 
-2. Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget. 
-
-3. Az új projekt ablakról, válassza ki a **Azure IoT** típus projektre, és válassza ki a **Azure IoT Edge** projekt. Nevezze át a projekt és a megoldás leíró valami hasonló **CTutorialApp**. A projekt létrehozásához válassza az **OK** lehetőséget. 
+2. Az új projekt ablakról, keressen **IoT Edge** projektre, és válassza ki a **Azure IoT Edge (Windows-amd64)** projekt. Kattintson a **tovább**. 
 
    ![Új Azure IoT Edge-projekt létrehozása](./media/tutorial-c-module-windows/new-project.png)
+
+3. Konfigurálása az új projekt ablakról, nevezze át a projekt és a megoldás leíró valami hasonló **CTutorialApp**. Kattintson a **létrehozás** a projekt létrehozásához. 
+
+   ![Egy új Azure IoT Edge-projekt konfigurálása](./media/tutorial-c-module-windows/configure-project.png)
 
 4. Az IoT Edge-alkalmazás és a modul ablakban, a projekt konfigurálásához a következő értékeket: 
 
    | Mező | Érték |
    | ----- | ----- |
-   | Alkalmazásplatform | Törölje a jelet **Linux Amd64**, és ellenőrizze **WindowsAmd64**. |
    | Sablonválasztás | Válassza ki **C modul**. | 
    | A modul projekt neve | A modulnak adja a **CModule** nevet. | 
    | Docker-rendszerkép tárház | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló rendszerképének előre van töltve, a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> Néz ki a végső lemezképtárban \<beállításjegyzék neve\>.azurecr.io/cmodule. |

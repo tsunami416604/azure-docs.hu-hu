@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: tasharm
-ms.openlocfilehash: 7def77c0b1cf99fcc2cee77a28782dddaf2ac45d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 688887826fa803b616ca737bc8558aa17ed80e37
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65994544"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297771"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>Gyors útmutató: Meghívja a Text Analytics szolgáltatást, a Ruby SDK-val
 
@@ -28,18 +28,12 @@ Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.micro
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+* [Ruby 2.5.5 vagy újabb](https://www.ruby-lang.org/)
+* A Text analytics [SDK a Rubyhoz](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
+ 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell. 
-
-Töltse le és telepítse a Rubyt 2.5.5 verzió alapján a rendszer-architektúra a [Itt](https://rubyinstaller.org/downloads/).
-
-> [!Tip]
->  Bár a [REST API-végpontokon](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) közvetlenül a Ruby, a `Microsoft.Azure.CognitiveServices.TextAnalytics` SDK megkönnyíti a szolgáltatás meghívása nélkül szerializálásához és deszerializálásához JSON.
->
-> Néhány fontos hivatkozás:
-> - [Ruby gem lap](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
-> - [SDK-kódját a Githubon](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics/lib/v2.1/generated/azure_cognitiveservices_textanalytics)
 
 <a name="RubyProject"></a>
 

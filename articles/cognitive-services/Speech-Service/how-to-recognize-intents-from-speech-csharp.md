@@ -10,16 +10,14 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e24f66369cf990f6b271b894a31dc8395068e17
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699933"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257331"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Oktatóanyag: Ismeri fel a beszéd, a beszéd SDK-t a szándékC#
-
-[!INCLUDE [Article selector](../../../includes/cognitive-services-speech-service-how-to-recognize-intents-from-speech-selector.md)]
 
 A Cognitive Services [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)-ja integrálható a [Language Understanding szolgáltatással (LUIS)](https://www.luis.ai/home) **szándékfelismerés** céljából. A szándék az, amit a felhasználó tenni szeretne: például repülőutat foglalni, megnézni az időjárást vagy telefonhívást indítani. A felhasználó bármilyen kifejezést használhat, amely számára természetes. A gépi tanulással a LUIS az Ön által meghatározott szándékokhoz rendeli a felhasználói kéréseket.
 
@@ -49,7 +47,7 @@ A LUIS integrálható a beszédszolgáltatások felismerni a speech leképezése
 
 A LUIS kétféle kulcsot kezel:
 
-|Kulcs típusa|Cél|
+|Kulcstípus|Cél|
 |--------|-------|
 |létrehozás|LUIS-appok programozott létrehozása és módosítása|
 |endpoint |engedélyezi a hozzáférést egy adott LUIS-apphoz|

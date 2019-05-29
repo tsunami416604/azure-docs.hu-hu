@@ -159,7 +159,7 @@ Ha a forrás típusa van **RelationalSource** (amely tartalmazza az OData) typeP
 
 | Tulajdonság | Leírás | Példa | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |"?$select=Name, Description&$top=5" |Nem |
+| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. |"?$select=Name, Description&$top=5" |Nem |
 
 ## <a name="type-mapping-for-odata"></a>OData-leképezés típusa
 Ahogy korábban már említettük, az a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) a cikkben a másolási tevékenység végzi az automatikus típuskonverziók a fogadó-típusokat az alábbi kétlépéses módszer a forrás-típusok közül.

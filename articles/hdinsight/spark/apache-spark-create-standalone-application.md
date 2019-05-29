@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 01/30/2019
-ms.openlocfilehash: 2d431659e46465bf16f6e597f3a49f7008432bb5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/28/2019
+ms.openlocfilehash: 212a2ca89b91de518f07d097b00b31e785216cb0
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722853"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304009"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Oktatóanyag: A Scala Maven-alkalmazást létrehozni az Apache Spark on HDInsight az IntelliJ-vel
 
@@ -80,7 +80,7 @@ Hajtsa végre a Scala beépülő modul telepítéséhez az alábbi lépéseket:
   	|Projektnév| Adjon meg egy nevet.|  
   	|Projekt&nbsp;helye| Adja meg a kívánt helyre szeretné menteni a projektet.|
   	|Project SDK| Ez az első használatkor hasznos üres lesz.  Válassza ki **új...**  , és keresse meg a JDK.|
-  	|Spark-verzió|A létrehozása varázsló együttműködik a megfelelő verziójú Spark SDK és a Scala SDK-val. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa **Spark 2.3.0-át (Scala 2.11.8)**.|
+  	|Spark-verzió|A létrehozása varázsló együttműködik a megfelelő verziójú Spark SDK és a Scala SDK-val. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa **Spark 2.3.0-át (Scala 2.11.8)** .|
 
     ![A Spark SDK kiválasztása](./media/apache-spark-create-standalone-application/hdi-new-project.png)
 
@@ -175,7 +175,7 @@ Hajtsa végre a Scala beépülő modul telepítéséhez az alábbi lépéseket:
     
     1. Az a **fájl** menüjében válassza **Projektstruktúra...** .
 
-    2. Az a **Projektstruktúra** ablakában navigáljon a **összetevők** > **a plusz +** > **JAR**  >  **a függőségekkel rendelkező modulok...** .
+    2. Az a **Projektstruktúra** ablakában navigáljon a **összetevők** > **a plusz +**  > **JAR**  >  **a függőségekkel rendelkező modulok...** .
        
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/create-jar-1.png)
 
@@ -189,7 +189,7 @@ Hajtsa végre a Scala beépülő modul telepítéséhez az alábbi lépéseket:
        
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/create-jar-3.png)
 
-    6. A **kimeneti elrendezés** lap felsorolja az összes a JAR-fájlok kivételével, amelyek tartalmazzák a Maven-projektet. Itt kijelölheti és törölheti azokat, amelyek nincsenek közvetlen függőségi viszonyban a Scala-alkalmazással. Az itt létrehozott alkalmazás esetében az utolsó (**SparkSimpleApp compile output**) kivételével az összes fájlt törölheti. Válassza ki a JAR-fájlok kivételével törli, és jelölje ki a negatív szimbólum **-**.
+    6. A **kimeneti elrendezés** lap felsorolja az összes a JAR-fájlok kivételével, amelyek tartalmazzák a Maven-projektet. Itt kijelölheti és törölheti azokat, amelyek nincsenek közvetlen függőségi viszonyban a Scala-alkalmazással. Az itt létrehozott alkalmazás esetében az utolsó (**SparkSimpleApp compile output**) kivételével az összes fájlt törölheti. Válassza ki a JAR-fájlok kivételével törli, és jelölje ki a negatív szimbólum **-** .
        
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/delete-output-jars.png)
        

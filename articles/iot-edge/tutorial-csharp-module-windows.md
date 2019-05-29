@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ca321b8a073f709b55093fde6ff32ae876f3ef12
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7678415b7ce505da7678a00a4bcf2d933e260530
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66238067"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303978"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: Fejlesztés a C# IoT Edge-modul a Windows-eszközök
 
@@ -34,11 +34,11 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 ## <a name="solution-scope"></a>Megoldás hatókör
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre egy moduljában lévő **C#** használatával **Visual Studio 2017**, és hogyan helyezhet üzembe, hogy egy **Windows eszköz**. Ha a Linux rendszerű eszközök modulok fejleszt, lépjen a [Develop egy C# IoT Edge-modul a Linux rendszerű eszközök](tutorial-csharp-module.md) helyette. 
+Ez az oktatóanyag bemutatja, hogyan hozhat létre egy moduljában lévő **C#** használatával **Visual Studio 2019**, és hogyan helyezhet üzembe, hogy egy **Windows eszköz**. Ha a Linux rendszerű eszközök modulok fejleszt, lépjen a [Develop egy C# IoT Edge-modul a Linux rendszerű eszközök](tutorial-csharp-module.md) helyette. 
 
 A következő táblázat segítségével fejleszteni és üzembe helyezni a C-modulok Windows-eszközökre a lehetőségek megismerése: 
 
-| C# | Visual Studio Code | Visual Studio 2017 | 
+| C# | Visual Studio Code | Visual Studio 2017/2019 | 
 | -- | ------------------ | ------------------ |
 | **Windows-AMD64 fejlesztése** | ![Fejlesztés C# WinAMD64 a VS Code-ban a modulok](./media/tutorial-c-module/green-check.png) | ![Fejlesztés C# modulok az WinAMD64 a Visual Studióban](./media/tutorial-c-module/green-check.png) |
 | **Windows-AMD64 hibakeresési** |   | ![Hibakeresési C# modulok az WinAMD64 a Visual Studióban](./media/tutorial-c-module/green-check.png) |
@@ -50,8 +50,11 @@ Ez az oktatóanyag elkezdéséhez kell elvégezte az előző oktatóanyagban a f
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * A [Windows-eszközök Azure IoT Edge futtatásakor](quickstart.md).
 * Egy tároló-beállításjegyzéket, pl. [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
-* [A Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio?view=vs-2017), konfigurált 15.7 vagy újabb verzió, a [Azure IoT Edge-eszközök](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) bővítmény.
+* [A Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) konfigurálva a [Azure IoT Edge-eszközök](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) bővítmény.
 * [A docker CE](https://docs.docker.com/install/) konfigurált Windows-tárolók futtatásához.
+
+> [!TIP]
+> Ha a Visual Studio 2017 (15.7 vagy újabb verzió) használ, plrease töltse le és telepítse [Azure IoT Edge-eszközök (előzetes verzió)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) VS 2017 a Visual Studio marketplace-ről
 
 ## <a name="create-a-module-project"></a>A modul projekt létrehozása
 
@@ -59,21 +62,22 @@ Az alábbi lépéseket az IoT Edge-modul projekt létrehozása a Visual Studio �
 
 ### <a name="create-a-new-project"></a>Új projekt létrehozása
 
-Az Azure IoT Tools bővítmény biztosít projektsablonok az összes támogatott IoT Edge modul nyelveken a Visual Studio 2017-ben. Ezek a sablonok rendelkezik a fájlok és a kódot, amely üzembe kell helyeznie egy működő modul tesztelheti az IoT Edge, vagy a saját üzleti logikája a sablon testreszabásához kiindulási pontot biztosítanak. 
+Az Azure IoT Edge-eszközöket biztosít a projektsablonok az összes támogatott IoT Edge modul nyelveken a Visual Studióban. Ezek a sablonok rendelkezik a fájlok és a kódot, amely üzembe kell helyeznie egy működő modul tesztelheti az IoT Edge, vagy a saját üzleti logikája a sablon testreszabásához kiindulási pontot biztosítanak. 
 
-1. Futtassa a Visual Studiót rendszergazdaként.
+1. Indítsa el a Visual Studio 2019, és válassza ki **új projekt létrehozása**.
 
-2. Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget. 
-
-3. Az új projekt ablakról, válassza ki a **Azure IoT** típus projektre, és válassza ki a **Azure IoT Edge** projekt. Nevezze át a projekt és a megoldás leíró valami hasonló **CSharpTutorialApp**. A projekt létrehozásához válassza az **OK** lehetőséget. 
+2. Az új projekt ablakról, keressen **IoT Edge** projektre, és válassza ki a **Azure IoT Edge (Windows-amd64)** projekt. Kattintson a **tovább**. 
 
    ![Új Azure IoT Edge-projekt létrehozása](./media/tutorial-csharp-module-windows/new-project.png)
+
+3. Konfigurálása az új projekt ablakról, nevezze át a projekt és a megoldás leíró valami hasonló **CSharpTutorialApp**. Kattintson a **létrehozás** a projekt létrehozásához. 
+
+   ![Egy új Azure IoT Edge-projekt konfigurálása](./media/tutorial-csharp-module-windows/configure-project.png)
 
 4. Az IoT Edge-alkalmazás és a modul ablakban, a projekt konfigurálásához a következő értékeket: 
 
    | Mező | Érték |
    | ----- | ----- |
-   | Alkalmazásplatform | Törölje a jelet **Linux Amd64**, és ellenőrizze **WindowsAmd64**. |
    | Sablonválasztás | Válassza ki  **C# modul**. | 
    | A modul projekt neve | A modulnak adja a **CSharpModule** nevet. | 
    | Docker-rendszerkép tárház | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló rendszerképének előre van töltve, a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> Néz ki a végső lemezképtárban \<beállításjegyzék neve\>.azurecr.io/csharpmodule. |

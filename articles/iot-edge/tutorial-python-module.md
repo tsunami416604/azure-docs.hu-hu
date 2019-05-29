@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 09a3ff744e5e3d4a8c62bf8337179b9d8699c3c8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6ec429bc7c1598e947b798c30e7992e3d357d00c
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244556"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303817"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Fejleszthet és helyezhet üzembe egy Linux rendszerű eszközök Python IoT Edge-modul
 
@@ -40,7 +40,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre egy moduljában lévő **Pyth
 
 A következő táblázat segítségével fejleszteni és üzembe helyezni a Python-modulok linuxra a lehetőségek megismerése: 
 
-| Python | Visual Studio Code | Visual Studio 2017 | 
+| Python | Visual Studio Code | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
 | **Linux-AMD64** | ![A VS Code használata a Linux-AMD64 Python-modulok](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![A VS Code használata a Linux ARM32 Python-modulok](./media/tutorial-c-module/green-check.png) |  |

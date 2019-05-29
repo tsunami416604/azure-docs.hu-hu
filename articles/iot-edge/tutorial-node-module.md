@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5147a0d164f1fac67a1c70429fc2e9b1caa00685
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6c94ca3a82095736ef7d242987d1fbf66a825950
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244840"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306500"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Fejleszthet és helyezhet üzembe egy Node.js IoT Edge-modul a Linux rendszerű eszközök
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre egy moduljában lévő **Node
 
 A következő táblázat segítségével fejleszteni és üzembe helyezni a Node.js modulok a lehetőségek megismerése: 
 
-| Node.js | Visual Studio Code | Visual Studio 2017 | 
+| Node.js | Visual Studio Code | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
 | **Linux-AMD64** | ![A VS Code használata a Linux-AMD64 Node.js modulok](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![A VS Code használata a Linux ARM32 Node.js modulok](./media/tutorial-c-module/green-check.png) |  |

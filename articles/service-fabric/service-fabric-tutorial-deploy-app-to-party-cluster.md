@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: aljo,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 451cfde133955b987b97bc2447724d2e00010892
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b3922ea97391a83d729bcf8b25c489a45119046
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61391352"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302435"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Oktatóanyag: Egy fürtöt az Azure Service Fabric-alkalmazás üzembe helyezése
 
@@ -44,7 +44,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Telepítse a Visual Studio 2017-et](https://www.visualstudio.com/) az **Azure-fejlesztési**, valamint az **ASP.NET- és webfejlesztési** számítási feladatokkal.
+* [Telepítse a Visual Studio 2019](https://www.visualstudio.com/), és telepítse a **Azure-fejlesztési** és **ASP.NET és webfejlesztési** számítási feladatokhoz.
 * [A Service Fabric SDK telepítése](service-fabric-get-started.md).
 
 ## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése
@@ -75,18 +75,18 @@ Egy adott porton figyeli a szavazóalkalmazás webes előtér-szolgáltatás (Ha
 <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
 ```
 
-Jegyezze fel a szolgáltatási végpont, amelyet egy későbbi lépésben szükség lesz.  Helyez üzembe egy meglévő fürthöz, nyissa meg ezt a portot a terheléselosztási szabályok és mintavétel létrehozása az Azure load balancer használatával egy [PowerShell-parancsprogram](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) vagy a fürt számára a terheléselosztó a [Azure Portalon ](https://portal.azure.com).
+Jegyezze fel a szolgáltatási végpont, amelyet egy későbbi lépésben szükség lesz.  Ha telepít egy meglévő fürthöz, nyissa meg ezt a portot a terheléselosztási szabályok és mintavétel létrehozása az Azure load balancer használatával egy [PowerShell-parancsprogram](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) vagy a fürt számára a terheléselosztó a [Azure Portalon ](https://portal.azure.com).
 
 ### <a name="create-a-test-cluster-in-azure"></a>Egy tesztfürt létrehozása az Azure-ban
 A Megoldáskezelőben kattintson a jobb gombbal a **Szavazás** elemre, majd válassza a **Közzététel** lehetőséget.
 
-A **kapcsolati végpont**válassza **új fürt létrehozása**.  Helyez üzembe egy meglévő fürthöz, a listából válassza ki a fürt azon végpontján.  A Service Fabric-fürt létrehozása párbeszédpanel nyílik meg.
+A **kapcsolati végpont**válassza **új fürt létrehozása**.  Ha telepít egy meglévő fürthöz, a listából válassza ki a fürt azon végpontján.  A Service Fabric-fürt létrehozása párbeszédpanel nyílik meg.
 
 Az a **fürt** lapra, adja meg a **fürtnév** (például "mytestcluster"), válassza ki az előfizetését, válassza ki a régiót, a fürt (például az USA déli középső Régiója), adja meg a fürt csomópontjai (a Microsoft számát három csomópont esetén ajánlott), és adjon meg egy erőforráscsoportot (például "mytestclustergroup"). Kattintson a **tovább**.
 
 ![Fürt létrehozása](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-Az a **tanúsítvány** lapra, adja meg a jelszót és a kimeneti elérési utat a fürttanúsítvány. Egy önaláírt tanúsítványt, a PFX-fájlok létrehozása és mentése a megadott kimeneti elérési utat.  A tanúsítvány-csomópontok és az ügyfél és a csomópont közötti biztonsághoz használható.  Önaláírt tanúsítványok nem használandó éles fürtök esetén.  Ezt a tanúsítványt használják a Visual Studio a fürtön a hitelesítéshez és az alkalmazás üzembe helyezését. Válassza ki **tanúsítvány importálása** , telepítse a PFX a CurrentUser\My a számítógép tanúsítványtárolójában.  Kattintson a **tovább**.
+Az a **tanúsítvány** lapra, adja meg a jelszót és a kimeneti elérési utat a fürttanúsítvány. Egy önaláírt tanúsítványt, a PFX-fájlok létrehozása és mentése a megadott kimeneti elérési utat.  A tanúsítvány-csomópontok és az ügyfél és a csomópont közötti biztonsághoz használható.  Ne használjon önaláírt tanúsítványt éles fürtök esetén.  Ezt a tanúsítványt használják a Visual Studio a fürtön a hitelesítéshez és az alkalmazás üzembe helyezését. Válassza ki **tanúsítvány importálása** , telepítse a PFX a CurrentUser\My a számítógép tanúsítványtárolójában.  Kattintson a **tovább**.
 
 ![Fürt létrehozása](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 

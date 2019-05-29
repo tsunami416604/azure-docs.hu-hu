@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Alkalmazás telepítése a különálló Service Fabric-fürtre – Azure Service Fabric | Microsoft Docs'
-description: Ebből az oktatóanyagból megismerheti, hogyan telepíthet egy alkalmazást a különálló Service Fabric-fürtön.
+description: Ebben az oktatóanyagban megismerheti, hogyan telepíthet alkalmazásokat, az önálló Service Fabric-fürt.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 17bb5f5d8fe7ee407caf0ea5c34dc5380dbd79b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5bc326bbc16ef93d484425f26b6f8226150c77c6
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60717942"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302427"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Oktatóanyag: Önálló Service Fabric-fürtben az alkalmazás üzembe helyezése
 
-Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric „bármely operációs rendszer, bármilyen felhő” módszerével hozzon létre egy fürtöt. Ebben az oktatóanyag-sorozatban AWS-en futtatott különálló fürtöt hoz létre, és egy alkalmazást helyez üzembe azon.
+Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric „bármely operációs rendszer, bármilyen felhő” módszerével hozzon létre egy fürtöt. Oktatóanyag-sorozat AWS lévő üzemeltetett önálló fürt létrehozása, és bele egy alkalmazás központi telepítését.
 
-Ez az oktatóanyag egy sorozat harmadik része.  A különálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric használatával a „bármely operációs rendszeren vagy felhőben” megközelítésünk részeként hozzon létre egy fürtöt. Ez az oktatóanyag bemutatja, hogyan hozhatja létre az önálló fürt futtatásához szükséges AWS-infrastruktúrát.
+Ez az oktatóanyag egy sorozat harmadik része.  Önálló Service Fabric-fürtök felkínálja, válassza ki a saját környezetet, és hozzon létre egy fürtöt a "Bármely operációs rendszeren, a felhőben" megközelítést, a Service Fabric részeként. Ez az oktatóanyag bemutatja, hogyan hozhatja létre az önálló fürt futtatásához szükséges AWS-infrastruktúrát.
 
 A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
@@ -38,7 +38,7 @@ A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elkezdése előtt:
 
-* [Telepítse a Visual Studio 2017-et](https://www.visualstudio.com/) az **Azure-fejlesztési**, valamint az **ASP.NET- és webfejlesztési** számítási feladatokkal.
+* [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) , és telepítse a **Azure-fejlesztési** és **ASP.NET és webfejlesztési** számítási feladatokhoz.
 * [A Service Fabric SDK telepítése](service-fabric-get-started.md)
 
 ## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése

@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: f712cc34a3d41ea9472bf9428606cb378eef8c18
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b0e48a0db63eded9e9c4921d33b03af39656ce0d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244267"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299264"
 ---
 # <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>Oktatóanyag: Funkciójelölők használata .NET Core-alkalmazásokban
 
-A .NET Core szolgáltatás kezelési kódtárakat bármilyen-támogatást nyújt a szolgáltatás jelzők megvalósítása a .NET- vagy ASP.NET Core alkalmazás. Lehetővé teszik, hogy a szolgáltatás megőrzendő tartalomként jelöli meg a programkód több deklaratív, hogy az összes nem rendelkezik a `if` utasítás a őket manuálisan. Szolgáltatás jelző életciklusának (például frissítési és gyorsítótára államok jelző, a kérelem-hívás közben nem módosítható kell egy jelző állapot garancia) bennük a jelenet mögött. Emellett az ASP.NET Core library biztosít többek között az MVC-vezérlő műveletek, nézetek, útvonalak és közbenső szoftver-a-beépített Integrációk.
+A .NET Core szolgáltatás kezelési kódtárakat bármilyen-támogatást nyújt a szolgáltatás jelzők megvalósítása a .NET- vagy ASP.NET Core alkalmazás. Lehetővé teszik, hogy a szolgáltatás megőrzendő tartalomként jelöli meg a programkód több deklaratív, hogy az összes nem rendelkezik a `if` utasítás a őket manuálisan. Szolgáltatás jelző életciklusának (például frissítési és gyorsítótára államok jelző, a kérelem-hívás közben nem módosítható kell egy jelző állapot garancia) bennük a háttérben. Emellett az ASP.NET Core library biztosít többek között az MVC-vezérlő műveletek, nézetek, útvonalak és közbenső szoftver-a-beépített Integrációk.
 
 A [funkció jelzők hozzáadása ASP.NET Core-alkalmazás](./quickstart-feature-flag-aspnet-core.md) a rövid útmutató bemutatja a szolgáltatás jelzők hozzáadása egy ASP.NET Core-alkalmazást a többféleképpen. Ez az oktatóanyag azt ismerteti, ezeket a további részleteket. Tekintse meg a [ASP.NET Core szolgáltatás management dokumentációja](https://go.microsoft.com/fwlink/?linkid=2091410) teljes.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag során a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
 > * Adja hozzá a szolgáltatás jelzők funkció rendelkezésre állásának szabályozhatja az alkalmazás legfontosabb részeit.
@@ -66,7 +66,7 @@ public class Startup
 }
 ```
 
-Ha a szolgáltatás jelzők szűrőt használ, kell egy további tár tartalmazza, és regisztrálja. Az alábbi példa bemutatja, hogyan használható egy beépített funkciót nevű szűrőt **PercentageFilter "** .
+Ha a szolgáltatás jelzők szűrőket használ, kell egy további tár tartalmazza, és regisztrálja. Az alábbi példa bemutatja, hogyan használható egy beépített funkciót nevű szűrőt **PercentageFilter "** .
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -82,7 +82,7 @@ public class Startup
 }
 ```
 
-Hatékonyan működjön, kell tartani a szolgáltatás jelzők mimo aplikaci, és külön-külön kezelhető. Ha így tesz, bármikor módosíthatja a jelző állapotok, és ezek a módosítások az alkalmazás azonnal életbe. Alkalmazáskonfiguráció egy központi helyen rendszerezéséhez és az összes a szolgáltatás szabályozásával megőrzendő tartalomként jelöli meg egy dedikált portál felhasználói felületén keresztül, és kézbesíti a jelzők az alkalmazást közvetlenül a .NET Core-ügyfél kódtárakat biztosít. Az alkalmazások konfigurálása az ASP.NET Core-alkalmazás csatlakoztatása a legegyszerűbben a konfigurációszolgáltató `Microsoft.Extensions.Configuration.AzureAppConfiguration`. Adja hozzá a következő kódban a NuGet-csomagot is használhatja a *Program.cs* fájlt:
+Hatékonyan működjön, kell tartani a szolgáltatás jelzők mimo aplikaci, és külön-külön kezelhető. Ha így tesz, bármikor módosíthatja a jelző állapotok, és ezek a módosítások hatállyal az alkalmazásban. Alkalmazáskonfiguráció egy központi helyen rendszerezéséhez és az összes a szolgáltatás szabályozásával megőrzendő tartalomként jelöli meg egy dedikált portál felhasználói felületén keresztül, és kézbesíti a jelzők az alkalmazást közvetlenül a .NET Core-ügyfél kódtárakat biztosít. Az alkalmazások konfigurálása az ASP.NET Core-alkalmazás csatlakoztatása a legegyszerűbben a konfigurációszolgáltató `Microsoft.Extensions.Configuration.AzureAppConfiguration`. Adja hozzá a következő kódban a NuGet-csomagot is használhatja a *Program.cs* fájlt:
 
 ```csharp
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;

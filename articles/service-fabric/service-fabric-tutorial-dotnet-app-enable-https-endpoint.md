@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/17/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: a8f4e89adec0a6be001f3e6d6df1a252677c5916
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48dd09bf70e99adc250027df872266bea39a786b
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158147"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302407"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása egy ASP.NET Core Web API kezelőfelületi szolgáltatás a Kestrel használatával
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Telepítse a Visual Studio 2017](https://www.visualstudio.com/) 15.5-ös vagy újabb verzióját az **Azure-fejlesztési** és az **ASP.NET- és webfejlesztési** számítási feladattal.
+* [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) 15.5-ös vagy újabb verzióját a **Azure-fejlesztési** és **ASP.NET és webfejlesztési** számítási feladatokhoz.
 * [A Service Fabric SDK telepítése](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Tanúsítvány beszerzése vagy egy önaláírt fejlesztési tanúsítvány létrehozása
@@ -185,7 +185,7 @@ private X509Certificate2 GetCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>Hálózatiszolgáltatás-hozzáférés hozzáadása a tanúsítvány titkos kulcsához
 
-Előzőleg importálta a tanúsítványt a fejlesztői számítógép `Cert:\LocalMachine\My` tárolójába.  Explicit módon biztosítania kell a hozzáférést a szolgáltatást futtató fióknak (HÁLÓZATI SZOLGÁLTATÁS, alapértelmezés szerint) a tanúsítvány titkos kulcsához. Ezt megteheti manuálisan is (a certlm.msc eszköz használatával), de javasolt inkább automatikusan futtatni egy PowerShell-szkriptet. Ehhez [konfiguráljon egy indítási szkriptet](service-fabric-run-script-at-service-startup.md) a szolgáltatásjegyzék **SetupEntryPoint** pontjában.
+Előzőleg importálta a tanúsítványt a fejlesztői számítógép `Cert:\LocalMachine\My` tárolójába.  Most explicit módon biztosítanak a szolgáltatás (alapértelmezés szerint a hálózati szolgáltatás) futtató fiók a tanúsítvány titkos kulcsához való hozzáférés. Ezt a lépést manuálisan teheti (a certlm.msc eszköz használatával), de automatikusan futtatni egy PowerShell-parancsfájl által [konfiguráljon egy indítási szkriptet](service-fabric-run-script-at-service-startup.md) a a **SetupEntryPoint** Szolgáltatásjegyzék.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Szolgáltatásbeállítás belépési pontjának konfigurálása
 
