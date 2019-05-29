@@ -8,15 +8,6 @@
     - name: Azure Marketplace és AppSource – áttekintés és előnyök
       href: ./marketplace-publishers-guide.md
       items:
-        - name: Hogyan válhat közzétevővé a Marketplace-en
-          href: ./become-publisher.md
-          items:
-            - name: Microsoft-fiók létrehozása
-              href: ./guidelines.md
-            - name: Regisztrálás a fejlesztői központban
-              href: ./register-dev-center.md
-            - name: Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
-              href: ./azure-partner-customer-usage-attribution.md
         - name: 'Két áruház, közös Marketplace'
           href: ./comparing-appsource-azure-marketplace.md
         - name: Közzétételi lehetőségek és szempontok
@@ -30,6 +21,8 @@
               href: ./private-offers.md
             - name: Standard szerződés
               href: ./standard-contract.md
+            - name: Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
+              href: ./azure-partner-customer-usage-attribution.md
         - name: Közzétételi útmutató ajánlattípusok szerint
           href: ./publisher-guide-by-offer-type.md
           items:
@@ -481,6 +474,15 @@
       items:
         - name: SaaS-ajánlat létrehozása
           href: ./partner-center-portal/create-new-saas-offer.md
+        - name: SaaS Fulfillment API-k
+          href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+          items:
+            - name: SaaS-alkalmazás regisztrálása
+              href: ./partner-center-portal/pc-saas-registration.md
+            - name: 'SaaS Fulfillment API-k, 2-es verzió'
+              href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+            - name: 'SaaS Fulfillment API-k, 1-es verzió (elavult)'
+              href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
     - name: Közzététel állapota
       href: ./partner-center-portal/publishing-status.md
     - name: Létező ajánlatok frissítése

@@ -29,6 +29,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: Az európai ügyfelek identitásadatainak tárolása
       href: active-directory-data-storage-eu.md
+    - name: Újdonságok a Microsoft 365 Kormányzati verzióban
+      href: whats-new-microsoft-365-government.md
 - name: Útmutatók
   expanded: true
   items:
