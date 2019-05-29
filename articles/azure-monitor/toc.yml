@@ -685,8 +685,6 @@
               href: platform/powerbi.md
             - name: Alkalmazásadatok exportálása
               href: app/export-power-bi.md
-        - name: Irányítópultok
-          href: app/app-insights-dashboards.md
         - name: Adatok küldése a Grafana számára
           href: platform/grafana-plugin.md
     - name: Adatok elemzése
@@ -1072,8 +1070,6 @@
           href: 'https://azure.microsoft.com/updates/?product=log-analytics'
         - name: SDK kibocsátási megjegyzései
           href: app/release-notes.md
-        - name: Developer Analytics Tools kibocsátási megjegyzései
-          href: app/release-notes-vsix.md
     - name: Windows Analytics
       href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
     - name: Régiónkénti rendelkezésre állás

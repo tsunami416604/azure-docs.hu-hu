@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd100ccc3aafc2de1f2c7970ff9437c92156b17
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ea65120a2a735477d048b9012e160e0cdafe8835
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861536"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253070"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban engedélyezi, hogy a felhasználók új jelszót kérje
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Meg kell fut legalább Windows 10, a rendszer 2018 április frissítés, és az eszközök vagy kell lennie:
+* Meg kell fut legalább Windows 10, a rendszer 2018 április frissítés (v1803), és az eszközök vagy kell lennie:
    * [Az Azure AD-hez csatlakoztatott](../device-management-azure-portal.md) vagy
    * [Hibrid Azure AD-hez csatlakoztatott](../device-management-hybrid-azuread-joined-devices-setup.md), a hálózati kapcsolat egy tartományvezérlőhöz.
 * Engedélyeznie kell az Azure AD önkiszolgáló jelszó-visszaállítás.
@@ -122,7 +122,7 @@ Ez a funkció a távoli asztal vagy egy virtuális gép bővített munkamenet te
 
 * A Távoli asztalokról jelenleg nem támogatott a jelszó-visszaállítás.
 
-Ha a Ctrl + Alt + Del 1809, mielőtt a házirend a Windows 10-es verziói által igényelt **jelszó alaphelyzetbe állítása** nem fog működni.
+Ha a Ctrl + Alt + Del v1809, mielőtt a Windows 10-es verzióiban házirend által igényelt **jelszó alaphelyzetbe állítása** nem fog működni.
 
 Ha a zárolási képernyő értesítések be vannak kapcsolva, **jelszó alaphelyzetbe állítása** nem fog működni.
 
