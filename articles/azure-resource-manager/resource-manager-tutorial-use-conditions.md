@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a03707246f27bcba9cc46168ec04893b7bbc4c3
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0d27eef8ee2c70449bacaced0de89bdc5e6989ff
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990791"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357808"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Oktatóanyag: Feltétel használatához az Azure Resource Manager-sablonokban
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 Ebben az oktatóanyagban csak egy foglalkozik alapvető feltételek használatával. További információkért lásd:
 
 * [Sablon fájlstruktúra: A feltétel](./resource-group-authoring-templates.md#condition).
-* [Erőforrás feltételes üzembe helyezése az Azure Resource Manager-sablon](/azure/architecture/building-blocks/extending-templates/conditional-deploy.md).
+* [Erőforrás feltételes üzembe helyezése az Azure Resource Manager-sablon](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
 * [Sablon függvény: Ha](./resource-group-template-functions-logical.md#if).
 * [Összehasonlító függvények az Azure Resource Manager-sablonok](./resource-group-template-functions-comparison.md)
 

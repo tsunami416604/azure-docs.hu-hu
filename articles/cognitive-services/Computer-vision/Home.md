@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 87c5d24f0e9077acf66bacd97097cfc32bd49ead
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3a307c32d15aa8c7809d728d98220b0819e91c7c
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901102"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357395"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -46,7 +46,7 @@ Elemezheti a képek észlelése és azok vizuális jellemzőinek és jellemzők 
 
 Computer Vision segítségével képet be egy géppel feldolgozható formátumra alakítja a stream a szöveg kinyerése [optikai karakterfelismerés (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api). Ha szükséges, optikai Karakterfelismerés kijavítja a elforgatási szögét a felismert szöveget, és biztosítja a keret koordináták minden szó. Az optikai Karakterfelismeréssel 25 nyelveket támogatja, és automatikusan észleli a nyelvet a felismert szöveget.
 
-Is használhatja a [elolvashatják az API](concept-recognizing-text.md#read-api) nyomtatott és a kézzel írt szöveg kinyerésére képeket és szöveges adatokat használó dokumentumokat. Az olvasási API a frissített modelleket és működik a különböző objektumok, a különféle felületekkel és hátterek, például a visszaigazolások, poszterek, névjegyek, betűket és hátterekkel használja. Jelenleg a elolvashatják az API előzetes verzióban érhető el, pedig angol nyelven az egyetlen támogatott nyelv.
+Is használhatja a [elolvashatják az API](concept-recognizing-text.md#read-api) nyomtatott és a kézzel írt szöveg kinyerésére képeket és szöveges adatokat használó dokumentumokat. Az olvasási API a frissített modelleket és működik a különböző objektumok, a különféle felületekkel és hátterek, például a visszaigazolások, poszterek, névjegyek, betűket és hátterekkel használja. Angol nyelvű jelenleg az egyetlen támogatott nyelv.
 
 ## <a name="moderate-content-in-images"></a>Mérsékelt tartalmú képeket
 

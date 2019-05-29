@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7a2d793a1fbd68d6a71f48b556a77ddcaaaf111
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 93a1ad1f9fbc01cd06b3aaffc8a718634e8454d6
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66112147"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357034"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Oktatóanyag: Displayr integrálása az Azure Active Directoryval
 
@@ -91,11 +91,11 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-1. Displayr alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a felhasználói attribútumok párbeszédpanel.
+1. Displayr alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a felhasználói attribútumok párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 
-1. Emellett a fentiekben Displayr alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. Az a **felhasználói attribútumok & jogcímek** szakaszában a **csoportjogcímek (előzetes verzió)** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Emellett a fentiekben Displayr alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. Az a **felhasználói attribútumok & jogcímek** szakaszában a **csoportjogcímek (előzetes verzió)** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     a. Kattintson a **toll** melletti **csoportok visszaküldött jogcímek**.
 
@@ -133,7 +133,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
     ![Konfiguráció](./media/displayr-tutorial/config01.png)
 
-5. Váltson **beállítások** a felső menüben, és görgessen lefelé az oldalon kattintson a **konfigurálása egyszeri bejelentkezéshez a (SAML)**.
+5. Váltson **beállítások** a felső menüben, és görgessen lefelé az oldalon kattintson a **konfigurálása egyszeri bejelentkezéshez a (SAML)** .
 
     ![Konfiguráció](./media/displayr-tutorial/config02.png)
 

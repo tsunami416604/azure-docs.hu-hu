@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e994150f68c0f274c97c27fccc89f226bc8236cd
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: c0c326525f5a551ddb00a709ed0a36a68a1343db
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000500"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356469"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező HRworks egyszeri bejelentkezés
 
@@ -53,7 +53,7 @@ Az integráció az Azure AD-be, HRworks egyszeri bejelentkezés konfigurálásá
 
 **Adhat hozzá HRworks egyszeri bejelentkezést a katalógusban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -130,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az HRworks egyszeri bejelent
 
 2. Kattintson a **rendszergazda** > **alapjai** > **biztonsági** > **egyszeri bejelentkezési** a a bal oldali menü sávot, és hajtsa végre az alábbi lépéseket:
 
-       ![Configure Single Sign-On](./media/hrworks-single-sign-on-tutorial/configure01.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/hrworks-single-sign-on-tutorial/configure01.png)
 
     a. Ellenőrizze a **használata egyszeri bejelentkezéshez** mezőbe.
 

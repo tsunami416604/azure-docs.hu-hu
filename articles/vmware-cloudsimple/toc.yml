@@ -6,7 +6,7 @@
         - name: Mi az a CloudSimple VMware-megoldása?
           href: cloudsimple-vmware-solutions-overview.md
         - name: A legfontosabb felügyeleti alapelvek
-          href: 'https://docs.azure.cloudsimple.com/key-concepts/'
+          href: key-concepts.md
     - name: Első lépések
       expanded: true
       items:
@@ -21,7 +21,7 @@
     - name: Alapelvek
       items:
         - name: Szolgáltatás
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-service/'
+          href: cloudsimple-service.md
         - name: Csomópontok
           href: cloudsimple-node.md
         - name: Magánfelhő
@@ -45,13 +45,13 @@
         - name: VMware a magánfelhőben
           href: vmware-components.md
         - name: Biztonsági áttekintés
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-security/'
+          href: cloudsimple-security.md
         - name: Csomópontkvóta
           href: node-quota.md
         - name: Karbantartás és frissítések
           href: cloudsimple-maintenance-updates.md
         - name: GYIK
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-faq/'
+          href: cloudsimple-faq.md
     - name: Oktatóanyagok
       items:
         - name: Erőforrás-szolgáltató engedélyezése

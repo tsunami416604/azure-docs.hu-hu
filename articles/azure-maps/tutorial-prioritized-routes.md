@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3e33eef430db627a82bb82e8c22ddc861d08982b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e0d201baec253abee9ad8a998dd36968927a25a6
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60692073"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357587"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Útvonalak keresése különböző utazási módokhoz az Azure Maps használatával
 
@@ -216,7 +216,7 @@ Ez a szakasz bemutatja, hogyan keresse meg a végpontot az utazás módja alapj�
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` az előfizetési kulcsot az Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` veszi a `SubscriptionKeyCredential` házirend, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) példány. A `routeURL` egy URL-címet jelöli az Azure Maps [útvonal](https://docs.microsoft.com/rest/api/maps/route) műveleteket.
+   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` az előfizetési kulcsot az Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` veszi a `SubscriptionKeyCredential` házirend, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) példány. A `routeURL` egy URL-címet jelöli az Azure Maps [útvonal](https://docs.microsoft.com/rest/api/maps/route) műveleteket.
 
 2. Beállítása után hitelesítő adatok és az URL-címet, adja hozzá a következő JavaScript kódot létrehozni egy útvonalat a teherautó USHazmatClass2 végző célpont kezdetektől osztályba sorolt rakományt, és megjeleníti az eredményeket.
 
@@ -245,7 +245,7 @@ Ez a szakasz bemutatja, hogyan keresse meg a végpontot az utazás módja alapj�
     });
     ```
 
-    A fenti kódrészletben keresztül az Azure Maps útválasztási szolgáltatás lekérdezi a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) metódust. Az útvonal sor majd ki kell olvasni a GeoJSON funkció gyűjteményből, ki kell olvasni használatával a válaszból a `geojson.getFeatures()` metódust. Az útvonal sor kerül az adatforráshoz. Hozzáadja a 0 – Győződjön meg arról, hogy így jelenik meg az adatforrás minden olyan sort előtt index is. Ez azért hasznos, mert a teherautós útvonalakat a rendszer általában lassabban számítja ki, mint a személyautókét, és ha egy teherautós útvonal egy személyautós után adódik hozzá az adatforráshoz, akkor fölötte fog megjelenni. Két tulajdonság kerülnek a teherautó útvonala sor, egy kék szép és a egy vonás vastagsága képpontban kilenc körvonal színe.
+    A fenti kódrészletben keresztül az Azure Maps útválasztási szolgáltatás lekérdezi a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) metódust. Az útvonal sor majd ki kell olvasni a GeoJSON funkció gyűjteményből, ki kell olvasni használatával a válaszból a `geojson.getFeatures()` metódust. Az útvonal sor kerül az adatforráshoz. Hozzáadja a 0 – Győződjön meg arról, hogy így jelenik meg az adatforrás minden olyan sort előtt index is. Ez azért hasznos, mert a teherautós útvonalakat a rendszer általában lassabban számítja ki, mint a személyautókét, és ha egy teherautós útvonal egy személyautós után adódik hozzá az adatforráshoz, akkor fölötte fog megjelenni. Két tulajdonság kerülnek a teherautó útvonala sor, egy kék szép és a egy vonás vastagsága képpontban kilenc körvonal színe.
 
 3. Adja hozzá a következő JavaScript-kódot egy autós útvonal létrehozni, és megjeleníti az eredményeket.
 
@@ -265,7 +265,7 @@ Ez a szakasz bemutatja, hogyan keresse meg a végpontot az utazás módja alapj�
     });
     ```
 
-    A fenti kódrészletben keresztül az Azure Maps útválasztási szolgáltatás lekérdezi a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) metódust. Az útvonal sor majd ki kell olvasni a GeoJSON funkció gyűjteményből, ki kell olvasni használatával a válaszból a `geojson.getFeatures()` metódust. Az útvonal sor kerül az adatforráshoz. Két tulajdonság autós útvonal sorban, egy körvonal színe, amelynek oszlopai lila, és a egy vonás vastagsága képpontban öt kerülnek.  
+    A fenti kódrészletben keresztül az Azure Maps útválasztási szolgáltatás lekérdezi a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) metódust. Az útvonal sor majd ki kell olvasni a GeoJSON funkció gyűjteményből, ki kell olvasni használatával a válaszból a `geojson.getFeatures()` metódust. Az útvonal sor kerül az adatforráshoz. Két tulajdonság autós útvonal sorban, egy körvonal színe, amelynek oszlopai lila, és a egy vonás vastagsága képpontban öt kerülnek.  
 
 4. Mentse a **MapTruckRoute.html** fájlt, és frissítse a böngészőt az eredmény megtekintéséhez. A Maps API-jaival való sikeres kapcsolat esetén a következőhöz hasonló térkép jelenik meg.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f7fd13b0b6df0b07543216e3c612520e528c1176
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bcaa990cc2186a5f1eecdbbca91804c92370277c
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60368007"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357186"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg felismerése
 
@@ -24,12 +24,12 @@ Számítógépes Látástechnológia számos olyan szolgáltatások észlelésé
 
 ## <a name="read-api"></a>Elolvashatják az API
 
-A elolvashatják az API segítségével azonosíthatja a legújabb modelleket a szöveges tartalom észleli és karaktersorozattá alakítja át a meghatározott szöveget. Szöveges adatot használó rendszerképek (például a digitális a beolvasott dokumentumokat) és a képek vizuális zaj rengeteg optimalizálva. Mert adja vissza az eredményt több percet is igénybe vehet a nagyobb dokumentumok aszinkron módon végrehajtja.
+A elolvashatják az API segítségével azonosíthatja a legújabb modelleket a szöveges tartalom észleli és karaktersorozattá alakítja át a meghatározott szöveget. Szöveges adatot használó rendszerképek (például a digitális a beolvasott dokumentumokat) és a képek vizuális zaj rengeteg optimalizálva. Megállapítja, hogy melyik felismerés modellt használja, az egyes sorok, nyomtatott és a kézzel írt szöveg lemezképek támogatása. A elolvashatják az API aszinkron módon végrehajtja, mert adja vissza az eredményt több percet is igénybe vehet a nagyobb dokumentumokat.
 
 Az olvasási művelet fenntartja a felismerhető szavak kimenetét eredeti sor csoportosítását. A soron belül minden szó a saját koordináták is rendelkezik, és az egyes sorok határolókeret koordinátái tartalmaz. Egy szó alacsony magabiztosan ismerhető fel, ha ezt az információt, valamint továbbítani. Tekintse meg a [elolvashatják az API-referenciadokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) további.
 
 > [!NOTE]
-> Ez a funkció jelenleg előzetes verzióban és csak angol nyelvre érhető el.
+> Ez a funkció csak az angol nyelvű szövegekre érhető el.
 
 ### <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 
@@ -80,7 +80,7 @@ A felismerni API együttműködik a lemezképek, amelyek megfelelnek a következ
 - A kép mérete 50 x 50 és 4200 x 4200 képpont között kell lennie.
 - A lemezkép mérete kisebb, mint 4 megabájt (MB) kell lennie.
 
-## <a name="improve-results"></a>Hatékonyabb keresés
+## <a name="limitations"></a>Korlátozások
 
 A szöveg felismerése műveletek pontosságát a képek minőségét függ. Az alábbi tényezők okozhatják egy pontatlan olvasása:
 
