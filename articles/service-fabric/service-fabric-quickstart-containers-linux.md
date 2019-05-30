@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/30/2019
 ms.author: aljo,suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 183f27d752b99c04a711d8141db512c77b9848f9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 1487c9e3e57a2fe4dcdcab04aa81cd81315decfd
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122353"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302320"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Gyors útmutató: Linux-tárolók üzembe helyezése a Service Fabric szolgáltatásban
 
@@ -179,7 +179,7 @@ Használja a sablonban megadott eltávolítási szkriptet (uninstall.sh) az alka
 
 A fürt és az összes általa használt erőforrás törlésének legegyszerűbb módja az erőforráscsoport törlése.
 
-Jelentkezzen be az Azure-ba, és válassza ki azon előfizetés azonosítóját, amelyikkel el szeretné távolítani a fürtöt. Az Azure Portalra jelentkezik be az előfizetés-Azonosítóját is megtalálhatja. Törölje az erőforráscsoportot és a fürt erőforrásai használatával az [az group delete parancs](/cli/azure/group?view=azure-cli-latest).
+Jelentkezzen be az Azure-ba, és válassza ki az előfizetés-azonosító, amellyel el szeretné távolítani a fürtöt. Az Azure Portalra jelentkezik be az előfizetés-Azonosítóját is megtalálhatja. Törölje az erőforráscsoportot és a fürt erőforrásai használatával az [az group delete parancs](/cli/azure/group?view=azure-cli-latest).
 
 ```azurecli
 az login

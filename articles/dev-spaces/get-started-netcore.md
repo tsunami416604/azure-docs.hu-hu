@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
-ms.openlocfilehash: efeb37baed3bb57234996938683e0cc230cc82dc
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 323308b52874064658f65cf34abe18cc5ef208ff
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861765"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393449"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Bevezetés az Azure fejlesztési tárolóhelyek .NET Core használatával
 
@@ -55,7 +55,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaceshez engedélyezett Kubernetes-fürt létrehozása
 
-A parancssorban hozzon létre az erőforráscsoportot egy [régióban, amely támogatja az Azure fejlesztési tárolóhelyek](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
+A parancssorban hozzon létre az erőforráscsoportot egy [régióban, amely támogatja az Azure fejlesztési tárolóhelyek][supported-regions].
 
 ```cmd
 az group create --name MyResourceGroup --location <region>
@@ -232,3 +232,6 @@ Frissítse a webalkalmazást a böngészőben, és lépjen az Információ oldal
 
 > [!div class="nextstepaction"]
 > [További tudnivalók több szolgáltatást fejlesztési](multi-service-netcore.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

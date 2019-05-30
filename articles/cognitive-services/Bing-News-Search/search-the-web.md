@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 01/10/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: a28445199c47c666fb2323a70317f81f3302c765
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e02f81ef6bdf8bf4dc39b70cb7a2d9330660d1d6
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539162"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390296"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Mi az a Bing News Search API?
 
@@ -28,7 +28,7 @@ Vegye figyelembe, hogy a Bing News Search API hírkeresési eredményeket csak b
 
 Bár a Bing News Search API elsősorban talál, és adja vissza a kapcsolódó hírek, számos funkciót biztosít a intelligens és összpontosítás hírek lekéréséhez a weben.
 
-|Szolgáltatás  |Leírás  |
+|Funkció  |Leírás  |
 |---------|---------|
 |[Javasolhat, és a keresési feltételek használata](concepts/search-for-news.md#suggest-and-use-search-terms)     | A keresési élmény javításához használatával a [a Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) a javasolt keresési kifejezéseket, éppen gépelt megjelenítéséhez.         |
 |[Általános hírek](concepts/search-for-news.md#get-general-news)     | Hírek keresése egy keresési lekérdezést küld a Bing News Search API, és visszaállítani híreket cikkek listáját.           |
@@ -54,6 +54,6 @@ Gyorsan elsajátíthatja az első API-kérelem, próbálja meg a gyors útmutat�
 
 ## <a name="see-also"></a>Lásd még
 
-* A [Bing News Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) referenciaszakasz tartalmaz definíciókat és a végpontok, a fejlécek, az API-válaszok és a lekérdezési paraméterek segítségével kérelem lemezkép-alapú keresési eredmények információkat.
+* A [Bing News Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) referenciaszakasz tartalmaz definíciókat és a végpontok, a fejlécek, az API-válaszok és a lekérdezési paraméterek segítségével kérelem lemezkép-alapú keresési eredmények információkat.
 
 * A [Bing használati és megjelenítési követelményei](./useanddisplayrequirements.md) a Bing Search API-k használatával kapott tartalmak és információk elfogadható használatát határozzák meg.

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 03/26/2019
-ms.openlocfilehash: 0b3343a9635fe4120f03e56c41797591d2f25815
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e972dfdd7694a1a43302fa5879ea22f2ecd051ad
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793696"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298856"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?
 
@@ -50,7 +50,7 @@ A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthat�
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.2 |2.3.0, 2.2.0, 2.1.0 |1.6.2, 2.0 |1.6.0 |1.5.2 |1.3.1 (csak Windows) |-|-|
 | Apache Livy |0,5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
-| Apache Kafka | 1.1.1 |1.1.1.0 * (lásd az alábbi megjegyzést) | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1.1 |1.1, 1.0-s * (lásd az alábbi megjegyzést) | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
@@ -78,7 +78,7 @@ Az alábbi táblázatok sorolják fel a HDInsight verzióit. Az egyes HDInsight 
 
 Az alábbi táblázat az Azure Portalon, valamint egyéb telepítési módszerek, például a PowerShell és a .NET SDK-val a HDInsight verziói.
 
-| HDInsight-verzió | HDP verzió | VM OS | Kiadás dátuma | Támogatás lejárati dátuma | Visszavonás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás az Azure Portalon | 
+| HDInsight-verzió | HDP verzió | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Visszavonás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás az Azure Portalon | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |2018. szeptember 24. | | |Igen |Igen |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017. április 4. | | |Igen |Igen |
@@ -92,7 +92,7 @@ Az alábbi táblázat az Azure Portalon, valamint egyéb telepítési módszerek
 
 A következő táblázat felsorolja a verziókat HDInsight **nem** elérhető az Azure Portalon.
 
-| HDInsight-verzió | HDP verzió | VM OS | Kiadás dátuma | Támogatás lejárati dátuma | Visszavonás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás az Azure Portalon | 
+| HDInsight-verzió | HDP verzió | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Visszavonás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás az Azure Portalon | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.5-ös verzióját. <br> (Nem Spark) |HDP 2.5 |Ubuntu 16.0.4 LTS |2016. szeptember 30. |2017. szeptember 5. |2018. június 28. |Igen |Nem |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016. március 29-én |2016. december 29-én |2018. január 9. |Igen |Nem |
@@ -149,7 +149,7 @@ A vállalati biztonsági csomag támogatja az Azure Data Lake Storage használat
 
 A vállalati biztonsági csomag díjszabással és a szolgáltatásiszint-szerződés kapcsolatos információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="hdinsight-windows-retirement"></a>A windowsos HDInsight kivonása
+## <a name="hdinsight-windows-retirement"></a>HDInsight Windows kivonása
 
 A Microsoft Azure HDInsight 3.3-as verziója lett a HDInsight, a Windows előző verzióját. A kivezetési dátum, a HDInsight, a Windows rendszer 2018. július 31-ig. Ha minden HDInsight-fürtök a Windows 3.3-as vagy korábbi, át kell telepítenie a Linux (HDInsight 3.5-ös vagy újabb verziójú) HDInsight előtt 2018. július 31-ig. A Linux OS-ba való migrálás lehetővé teszi lehetővé a létrehozása vagy a HDInsight-fürtök méretezése megőrzése. A HDInsight 3.3-as, a Windows verzió támogatása 2016. június 27-én lejárt.
 
@@ -243,7 +243,7 @@ Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapért
 
 * Az összes támogatott, kivéve Dél-Brazíliát és Nyugat-japán régióban:
 
-|Fürt típusa|Hadoop|HBase|Interaktív lekérdezés|Storm|Spark|Machine Learning-kiszolgáló|Kafka|
+|Fürttípus|Hadoop|HBase|Interaktív lekérdezés|Storm|Spark|Machine Learning-kiszolgáló|Kafka|
 |---|---|---|---|---|---|---|---|
 |A fő: virtuális gépek alapértelmezett mérete|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
 |A fő: javasolt Virtuálisgép-méretek|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
@@ -275,7 +275,7 @@ Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapért
 
 * Dél-Brazíliát és Nyugat-Japánban csak (nincs v2 méretű):
 
-  | Fürt típusa | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | ML-szolgáltatások |
+  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | ML-szolgáltatások |
   | --- | --- | --- | --- | --- | --- | --- |
   | A fő: virtuális gépek alapértelmezett mérete |D12 |D12  | D13 |A3 |D12 |D12 |
   | A fő: javasolt Virtuálisgép-méretek |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3,<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |

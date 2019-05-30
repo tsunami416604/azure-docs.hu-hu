@@ -4,19 +4,19 @@ description: Ismerje meg az Azure Time Series Insights – előzetes bemutató k
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 04/22/2019
-ms.openlocfilehash: dbdbfc797d37ed38936d6cfd354383d412c6b52d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e35d46607e0a186c8a3a38669c68a6ea52711b51
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205822"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242091"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Gyors útmutató: Ismerkedés az Azure Time Series Insights – előzetes bemutató környezetben
 
@@ -40,14 +40,14 @@ A Time Series Insights előzetes verziója explorer korábbi adatok alapján mut
 
 1. Tekintse meg szélturbina sürgősségi **W7** a **Contoso üzem 1**.  
 
-    * Frissítse a tartomány a **1/1/17 20:00 – 3/10/17 20:00 (UTC)**.
+    * Frissítse a tartomány a **1/1/17 20:00 – 3/10/17 20:00 (UTC)** .
     * Válassza ki a **Contoso üzem 1** > **W7** > **generátor rendszer** > **GeneratorSpeed** érzékelő. Tekintse át az eredményül kapott értékeket.
 
       [![Contoso üzemben 1 W7](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
 1. Nemrég Contoso található egy szélturbina sürgősségi **W7**. Vélemények arról, hogy mi volt a fire fájlküldésre okának eltérőek lehetnek. Közelebbi vizsgálat után láthatjuk, hogy a riasztás aktiválásának-érzékelő a fire során lett aktiválva.
 
-    * Frissítse a tartomány a **3/9/17 20:00 – 3/10/17 20:00 (UTC)**.
+    * Frissítse a tartomány a **3/9/17 20:00 – 3/10/17 20:00 (UTC)** .
     * Válassza ki a **biztonsági rendszer** > **FireAlert** érzékelő.
 
       [![A Contoso egy szélturbina sürgősségi W7 található](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
@@ -61,7 +61,7 @@ A Time Series Insights előzetes verziója explorer korábbi adatok alapján mut
 
 1. Az olaj nyomás és aktív figyelmeztetés érzékelők számolt közvetlenül a fire előtt. Bontsa ki a megjelenített idősorozatban egyéb jelzéseket jelen vezető a aktiválásának megjelenítéséhez. Mindkét érzékelők ingadozott egységesen egy állandó és aggasztó minta jelző idővel.
 
-    * Frissítse a tartomány a **2/24/17 20:00 – 3/10/17 20:00 (UTC)**.
+    * Frissítse a tartomány a **2/24/17 20:00 – 3/10/17 20:00 (UTC)** .
 
       [![Olaj nyomás és aktív figyelmeztetés érzékelők is számolt](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
 
@@ -82,7 +82,7 @@ Azure Time Series Insights és az érzékelő telemetriai adatok segítségével
 
 1. Bizonyos forgatókönyvek finom keresőmotorok adatok elemzése révén kifinomult elemzést igényelnek. Válassza ki a Szélmalom **W6** dátumon **6/25-ös**
 
-    * Frissítse a tartomány a **6/1/17 20:00-7/1/17 20:00 (UTC)**.
+    * Frissítse a tartomány a **6/1/17 20:00-7/1/17 20:00 (UTC)** .
     * Válassza ki a **Contoso üzem 1** > **W6** > **biztonsági rendszer** > **VoltageActuatorSwitchWarning**  érzékelő.
 
       [![A tartomány frissítése, és válassza ki a W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)

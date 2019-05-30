@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: fe26417c6e3a9f159e884c19d7bd7c9dc7569229
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8512ca2fe01c772d7e4c21a5cb09303b9804899c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787835"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389206"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Oktatóanyag: Machine learning-modell vizuális felhasználói felülettel üzembe helyezése
 
@@ -95,7 +95,7 @@ Felhasználó által bevitt adatok kerül, az üzembe helyezett modellt a **beme
 
 Webszolgáltatás tesztelheti a vizuális felhasználói felületet a web service lapján.
 
-1. Nyissa meg a web Service szolgáltatásról szóló szakasz. Látni fogja a webszolgáltatás üzembe helyezett nevű **oktatóanyag – Automobile Price előrejelzése [prediktív Exp]**.
+1. Nyissa meg a web Service szolgáltatásról szóló szakasz. Látni fogja a webszolgáltatás üzembe helyezett nevű **oktatóanyag – Automobile Price előrejelzése [prediktív Exp]** .
 
      ![Képernyőfelvétel: a web service lapon a legutóbb létrehozott webes szolgáltatással kiemelésével](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
@@ -107,7 +107,7 @@ Webszolgáltatás tesztelheti a vizuális felhasználói felületet a web servic
 
     ![A web service a tesztelési lapot ábrázoló képernyőfelvétel](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
 
-1. Bemeneti adatok tesztelés vagy autofilled mintaadatok használatával, és válassza a **teszt** alján. A tesztelési kérelem elküldésekor a web Service, és az eredmények lapon látható.
+1. Bemeneti adatok tesztelés vagy autofilled mintaadatok használatával, és válassza a **teszt** alján. A tesztelési kérelem elküldésekor a web Service, és az eredmények lapon látható. Bár az ár értékét a bemeneti adatok jön létre, nem használatos az előrejelzési érték létrehozásához.
 
 ## <a name="manage-the-web-service"></a>A webszolgáltatás kezelése
 

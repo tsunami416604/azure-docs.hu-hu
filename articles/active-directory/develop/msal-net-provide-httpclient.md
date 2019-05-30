@@ -17,15 +17,15 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 234c9d0724021017ec8c411d637420b05284ea52
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 72ab8a85ecc5649352382469e09d7dfd83a5ddfa
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544172"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305729"
 ---
 # <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>A saját HttpClient és a proxy MSAL.NET használatával
-Egy nyilvános ügyfélalkalmazás inicializálásakor használhatja a `.WithHttpClientFactory method` saját HttpClient biztosít.  Biztosítása a saját HttpClient lehetővé teszi a speciális forgatókönyvek ilyen egy HTTP proxy, a felhasználói ügynök fejlécek testreszabása, vagy egy adott HttpClient használata (például az ASP.NET Core web apps és API-k) MSAL kényszerítése.
+Amikor [inicializálása egy nyilvános ügyfélalkalmazás](msal-net-initializing-client-applications.md), használhatja a `.WithHttpClientFactory method` saját HttpClient biztosít.  Biztosítása a saját HttpClient lehetővé teszi a speciális forgatókönyvek ilyen egy HTTP proxy, a felhasználói ügynök fejlécek testreszabása, vagy egy adott HttpClient használata (például az ASP.NET Core web apps és API-k) MSAL kényszerítése.
 
 ## <a name="initialize-with-httpclientfactory"></a>A HttpClientFactory inicializálása
 Az alábbi példa bemutatja, hozzon létre egy `HttpClientFactory` majd inicializálása egy nyilvános ügyfélalkalmazás vele:

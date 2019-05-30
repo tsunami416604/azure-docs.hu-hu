@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: c7ba0fd34c789735cd92c25a728aec346dc88fcc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56ad71d9a746f61e724c1f3b5c5c6be0a3318452
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309405"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390374"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Gyors útmutató: Keresési lekérdezések a Bing Autosuggest REST API és a Ruby-javaslat
 
@@ -38,7 +38,7 @@ Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-
     require 'json'
     ```
 
-2. Változók létrehozása az API-gazdát és elérési útja, [kód piaci](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes), részleges keresési lekérdezést.
+2. Változók létrehozása az API-gazdát és elérési útja, [kód piaci](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), részleges keresési lekérdezést.
 
     ```ruby
     subscriptionKey = 'enter your key here'
@@ -154,4 +154,4 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="see-also"></a>Lásd még
 
 - [Mi az a Bing Autosuggest?](../get-suggested-search-terms.md)
-- [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

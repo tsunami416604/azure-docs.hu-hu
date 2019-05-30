@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf7aaa0de87ffa8280a6db34c5497779a5ded41c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4bd3e7d47b6e3083af6f388a5cd750da240a76b6
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545879"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392880"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>A Microsoft-hitelesítési tár (MSAL) áttekintése
 A Microsoft-hitelesítési tár (MSAL) lehetővé teszi a fejlesztők beszerezni [jogkivonatok](developer-glossary.md#security-token) a Microsoft identity platform végpont eléréséhez a védett webes API-k. Webes API-k a Microsoft Graph, más Microsoft APIS, külső webes API-k vagy saját webes API-t is lehet. Az MSAL érhető el .NET, JavaScript, Android és iOS-, amely számos különböző architektúrák és platformokat támogatja.
@@ -52,10 +52,10 @@ Az MSAL használható számos alkalmazás-forgatókönyvek, beleértve a követk
 
 ## <a name="languages-and-frameworks"></a>Nyelvek és keretrendszerek
 
-| Szalagtár | Támogatott platformok és keretrendszerek|
+| Erőforrástár | Támogatott platformok és keretrendszerek|
 | --- | --- | 
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/>[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET-keretrendszer, a .NET Core, Xamarin Android, Xamarin iOS-, univerzális Windows-Platform|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/>[MSAL.js (előzetes verzió)](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/TypeScript keretrendszerek, például az AngularJS, az Ember.js vagy Durandal.js|
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/>[MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/TypeScript keretrendszerek, például az AngularJS, az Ember.js vagy Durandal.js|
 | ![Android az MSAL](media/sample-v2-code/logo_Android.png) <br/>[Az MSAL az Androidhoz (előzetes verzió)](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | ![Az MSAL iOS-hez](media/sample-v2-code/logo_iOS.png) <br/>[MSAL.Objective-C (preview)](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS|
 

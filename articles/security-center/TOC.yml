@@ -45,6 +45,8 @@
       href: security-center-onboarding.md
     - name: Kiszolgálóvédelem a Windows Defender ATP-vel
       href: security-center-wdatp.md
+    - name: Advanced Data Security az IaaS-hez
+      href: security-center-iaas-advanced-data.md
     - name: Az App Service védelme
       href: security-center-app-services.md
     - name: Biztonsági szabályzatok használata
@@ -62,8 +64,6 @@
       items:
         - name: Adatgyűjtés
           href: security-center-enable-data-collection.md
-        - name: Advanced Data Security az IaaS-hez
-          href: security-center-iaas-advanced-data.md
         - name: Beépített biztonsági szabályzatok
           href: security-center-policy-definitions.md
         - name: E-mail-értesítések

@@ -1,66 +1,63 @@
 ---
 title: Az Azure Database for PostgreSQL relációsadatbázis-szolgáltatás áttekintése
 description: Az Azure Database for PostgreSQL relációsadatbázis-szolgáltatás áttekintését nyújtja.
-author: rachel-msft
-ms.author: raagyema
+author: jonels-msft
+ms.author: jonels
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 11/14/2018
-ms.openlocfilehash: 318778a83c82b0ddb88f8bbd852442ab389fedb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/06/2019
+ms.openlocfilehash: f4023fa84215a0319669de0d812d8306b62278e3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60680318"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073266"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Mi az Azure Database for PostgreSQL?
+Azure Database for PostgreSQL relációsadatbázis-szolgáltatás a fejlesztők számára készült Microsoft-felhőben. Nyílt forráskódú közösségi verzióján alapul [PostgreSQL](https://www.postgresql.org/) adatbázismotor, és két üzembe helyezési lehetőség érhető el: Egyetlen kiszolgáló és a nagy kapacitású (Citus) (előzetes verzió).
 
-Azure Database for PostgreSQL relációsadatbázis-szolgáltatás a Microsoft-felhőben a nyílt forráskódú közösségi verzióján alapuló fejlesztők számára készült [PostgreSQL](https://www.postgresql.org/) adatbázismotor, 9,5 9.6 és 10-es verziói. Az Azure Database for PostgreSQL a következőket nyújtja:
+## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló
+Az egykiszolgálós telepítési lehetőséget kínál:
 
-- Beépített magas rendelkezésre állás további költség nélkül
+- Beépített magas rendelkezésre állás további költség nélkül (99,99 %-os SLA-t)
 - Kiszámítható teljesítmény, használatalapú díjszabással
-- Méretezés igény szerint másodpercek alatt
+- Függőleges méretezés igény, néhány másodperc alatt
+- Monitorozási és riasztási segítségével mérheti fel gyorsan hatásainak
 - Az inaktív és átvitel alatt álló bizalmas adatok védelme
 - Automatikus biztonsági mentések és időponthoz kötött visszaállítás akár 35 napig
 - Vállalati szintű biztonság és megfelelőség
 
-Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Ezen képességek birtokában az alkalmazások gyors fejlesztésére és piacra juttatására összpontosíthat ahelyett, hogy értékes időt és erőforrásokat kellene lefoglalnia a virtuális gépek és infrastruktúra kezeléséhez. Ezenkívül folytathatja az alkalmazás fejlesztését a kívánt nyílt forráskódú eszközökkel és platformmal, és ezeket az üzletvitel által igényelt sebességgel és hatékonysággal készítheti el, új készségek elsajátításának szükségessége nélkül. 
+Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Lehetővé teszik, hogy arra koncentrálhasson, az alkalmazások gyors fejlesztésére és felgyorsítja a piacra ahelyett, hogy értékes időt és erőforrásokat a virtuális gépek és infrastruktúra kezeléséhez. Továbbra is a nyílt forráskódú eszközök és a választott platformnak az alkalmazás fejlesztését, új készségek nélkül.
 
-Jelen cikkünk bemutatja az Azure Database for PostgreSQL teljesítménnyel, skálázhatósággal és kezelhetőséggel kapcsolatos alapfogalmait és jellemzőit. Tekintse meg ezeket a rövid útmutatókat a kezdéshez:
+Egykiszolgálós telepítési beállítást három tarifacsomagot kínál: Alapszintű, általános célú és memóriahasználatra optimalizált. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. Lásd: [Tarifacsomagok](concepts-pricing-tiers.md) részleteiről.
 
-- [Azure Database for PostgreSQL létrehozása az Azure Portal használatával](quickstart-create-server-database-portal.md)
-- [Azure Database for PostgreSQL létrehozása az Azure CLI használatával](quickstart-create-server-database-azure-cli.md)
+## <a name="azure-database-for-postgresql---hyperscale-citus-preview"></a>Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió)
+A nagy kapacitású (Citus) beállítás vízszintesen méretezhető lekérdezések horizontális particionálás segítségével több gép között. A lekérdezési motor parallelizes bejövő SQL-lekérdezések gyorsabb válaszok nagy méretű adatkészletek esetén ezek a kiszolgálók között. Nagyobb méretezést és teljesítményt igénylő alkalmazások, általában a számítási feladatok hamarosan eléri –, vagy már meghaladja – 100 GB adatot szolgál.
 
-Több Azure CLI-mintát talál itt:
+A nagy kapacitású (Citus) telepítési lehetőséget kínál:
 
-- [Azure CLI-minták az Azure Database for PostgreSQL szolgáltatáshoz](./sample-scripts-azure-cli.md)
+- Vízszintes méretezés horizontális particionálás segítségével több gép között
+- Lekérdezés ezerszer gyorsabb válaszok nagy méretű adatkészletek esetén ezek a kiszolgálók között
+- Több-bérlős alkalmazások, a valós idejű működési elemzések és a nagy teljesítményű tranzakciós munkaterhelések magas szintű támogatást
 
-## <a name="adjust-performance-and-scale-within-seconds"></a>Teljesítmény módosítása és skálázása másodperceken belül
-Azure Database for PostgreSQL szolgáltatás három tarifacsomagot kínál: Alapszintű, általános célú és memóriahasználatra optimalizált. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. Lásd: [Tarifacsomagok](concepts-pricing-tiers.md) részleteiről.
+A PostgreSQL futtathatja az elosztott lekérdezések nagy kapacitású (Citus) standard-val készített alkalmazások [adatkapcsolattárak](./concepts-connection-libraries.md) és minimális módosításait.
 
-## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
-Hogyan lehet megállapítani, hogy mikor van szükség fel- vagy leskálázásra? Használja az Azure beépített monitorozó és riasztási eszközeit. Ezek az eszközök lehetővé teszik az aktuális vagy becsült teljesítményigényeken vagy tárolási szükségleteken alapuló fel- vagy leskálázás hatásainak gyors kiértékelését. A részleteket a [riasztások](howto-alert-on-metric.md) leírása tartalmazza.
+Vegye figyelembe, hogy nagy kapacitású (Citus) nyilvános előzetes verzióban érhető el, és így még nem vonatkozik szolgáltatásiszint-szerződés.
 
-## <a name="keep-your-app-and-business-running"></a>Biztosítsa alkalmazása és vállalkozása folyamatos működését
-Az Azure szolgáltatói szerződésében (SLA) az ágazatban élenjáró módon 99,99 százalékos rendelkezésre állást biztosítunk – a Microsoft által kezelt adatbázisok globális hálózata teszi lehetővé, hogy alkalmazása a hét mind a 7 napján, napi 24 órában fusson. Az összes Azure Database for PostgreSQL kiszolgáló használatakor élvezheti a beépített biztonság, hibatűrés és adatvédelem előnyeit, amelyeket egyébként külön kellene megvásárolnia vagy megterveznie, kiépítenie és kezelnie. Az Azure Database for PostgreSQL minden egyes tarifacsomagja az üzletmenet folytonosságát biztosító szolgáltatások és lehetőségek átfogó készletét kínálja, amelyeket tetszés szerint futtathat és helyezhet üzembe. Az [időponthoz kötött visszaállítás](howto-restore-server-portal.md) segítségével az adatbázist visszaállíthatja egy legfeljebb 35 nappal korábbi állapotba. Továbbá, ha az adatbázisokat üzemeltető adatközpontban szolgáltatáskimaradás következik be, visszaállíthatja az adatbázisokat a legújabb biztonsági mentések georedundáns példányaiból.
+## <a name="data-security"></a>Adatbiztonság
+Azure Database for postgresql-hez az Azure adatbázis-szolgáltatások hagyomány adatbiztonsági garantálják. Az funkciók, amelyek korlátozzák a hozzáférést, inaktív adatok és a mozgásban lévő védheti meg és monitorozhatja a tevékenység rendelkezik. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/overview/trusted-cloud/) talál információkat.
 
-## <a name="secure-your-data"></a>Az adatok védelme
-Az Azure adatbázis-szolgáltatások megbízható adatbiztonságát az Azure Database for PostgreSQL olyan funkciói garantálják, amelyek korlátozzák a hozzáférést, védik a helyi és mozgó adatokat és hozzájárulnak a tevékenységek monitorozásához. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/overview/trusted-cloud/) talál információkat.
-
-Az Azure Database for PostgreSQL szolgáltatás tárolási titkosítást használ az inaktív adatok, és megfelel a FIPS 140-2 szabványnak. Az adatok a biztonsági másolatokkal együtt titkosítva kerülnek a lemezekre (a motor által lekérdezések futtatásakor létrehozott ideiglenes fájlok kivételével). A szolgáltatás AES 256 bites titkosítást használ, amely az Azure tárolási titkosításban szerepel, és a kulcsokat a rendszer felügyeli. A tárolási titkosítás mindig be van kapcsolva és nem tiltható le.
-
-Alapértelmezés szerint az Azure Database for PostgreSQL szolgáltatás úgy van konfigurálva, hogy [SSL-kapcsolatbiztonságot](./concepts-ssl-connection-security.md) igényeljen a hálózatok között mozgó adatokhoz. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket. Választhatja az SSL megkövetelésének letiltását az adatbázis-szolgáltatáshoz való kapcsolódáshoz, ha az ügyfélalkalmazás nem támogatja az SSL-kapcsolatokat.
+Az Azure Database for PostgreSQL szolgáltatás tárolási titkosítást használ az inaktív adatok, és megfelel a FIPS 140-2 szabványnak. Adatok biztonsági másolatokkal együtt titkosítva kerülnek a lemezekre. A szolgáltatás használ a 256 bites AES-titkosítás az Azure tárolási tartalmazza, és a kulcsokat a rendszer felügyeli. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le. Alapértelmezés szerint az Azure Database for PostgreSQL szolgáltatás szükséges biztonságos kapcsolatok adatokat a mozgásban lévő a hálózati és az adatbázis és az ügyfél alkalmazás között is.
 
 ## <a name="contacts"></a>Kapcsolatok
-Ha kérdései vagy javaslatai vannak az Azure Database for PostgreSQL használatával kapcsolatban, írjon egy e-mailt az Azure Database for PostgreSQL csapatának ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Ne feledje, hogy ez nem műszaki támogatás.
+Esetleges kérdéseivel és javaslatok használatáról az Azure Database for postgresql-hez, az e-mail küldése az Azure database for PostgreSQL csapata ([ @Ask PostgreSQL-hez készült Azure DB](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Ez a cím a támogatási jegyeket, hanem általános kérdések.
 
-Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
-- Ha az Azure-támogatással szeretne kapcsolatba lépni, [nyújtson be igénylést az Azure Portalon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
+Ezenkívül fontolja meg a következőket kapcsolódási szükség szerint:
+- Forduljon az Azure ügyfélszolgálatához, vagy megoldani a problémát a fiókjával [jegyet az Azure Portalról](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
 ## <a name="next-steps"></a>További lépések
 - Tekintse meg az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/postgresql/) a költségek összehasonlításáért és árkalkulációjáért.
-- Első lépésként [hozza létre első Azure Database for PostgreSQL adatbázist](./quickstart-create-server-database-portal.md).
+- Első lépésként hozza létre az első Azure Database for postgresql-hez [egykiszolgálós](./quickstart-create-server-database-portal.md) vagy [nagy kapacitású (Citus) (előzetes verzió)](./quickstart-create-hyperscale-portal.md)
 - Hozza létre első alkalmazását Python, PHP, Ruby, C, a\#, Java, node.js nyelven: [Csatlakozási kódtárak](./concepts-connection-libraries.md)

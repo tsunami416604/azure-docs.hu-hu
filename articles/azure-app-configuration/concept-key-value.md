@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 4c741bb86242abfb03d01c902dbaa84d83491dd9
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: b25cc8c04aed8cd333ff4de5b12db6674323787d
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408738"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393601"
 ---
 # <a name="keys-and-values"></a>Kulcsok és értékek
 
@@ -27,7 +27,7 @@ Az Azure App konfigurációs kulcs-érték párok konfigurációs adatokat táro
 
 Kulcsok számára a kulcs-érték párok szolgál, és tárolására és beolvasására a megfelelő értékeket használják. Egy általános gyakorlat a hierarchikus névtér a határolójel, például a kulcsok szervezheti `/` vagy `:`. Az alkalmazás, amely a leginkább megfelelő megoldást szabályt használ. Alkalmazás konfigurálása kulcsok teljes kezeli. Döntse el, hogyan nevük struktúrája vagy kényszerítése minden szabály azokat a kulcsokat, nem elemezni.
 
-A konfigurációs adattároló belüli alkalmazás-keretrendszerek használata függhet, adott elnevezési sémát kulcs értékeit. Tegyük fel, a Java Spring Cloud keretrendszerben meghatározása `Environment` megadhatja azokat a beállításokat tartalmazó változókat lehet paraméterezni a Spring-alkalmazás az erőforrások *alkalmazásnév* és *profil*. Kulcsok Spring Cloud kapcsolatos konfigurációs adatok általában indítsa el a két elem egy elválasztó karakter választja el.
+Konfigurációs adatok belüli alkalmazás-keretrendszerek használata függhet, adott elnevezési sémát kulcs értékeit. Tegyük fel, a Java Spring Cloud keretrendszerben meghatározása `Environment` megadhatja azokat a beállításokat tartalmazó változókat lehet paraméterezni a Spring-alkalmazás az erőforrások *alkalmazásnév* és *profil*. Kulcsok Spring Cloud kapcsolatos konfigurációs adatok általában indítsa el a két elem egy elválasztó karakter választja el.
 
 Alkalmazáskonfiguráció tárolt kulcsok olyan kis-és nagybetűket, unicode-alapú karakterláncok. A kulcsok *app1* és *App1* nem azonos egy alkalmazás a konfigurációs adattárolónál a. Ne feledje az alkalmazáson belül a konfigurációs beállítások használatakor, mivel bizonyos keretrendszerek konfigurációs kulcsok case-insensitively kezeli. Például az ASP.NET Core konfigurációs kezeli a rendszer kulcsok nem betűérzékeny karakterláncként. Alkalmazások konfigurálása az ASP.NET Core-alkalmazáson belül lekérdezheti, kiszámíthatatlan viselkedés elkerülése érdekében, ne használjon, amelyet csak a kis-és nagybetűhasználatának eltérő kulcsok.
 
@@ -86,7 +86,7 @@ Minden kulcsérték egyedileg azonosítja a kulcsok és a egy címke, amely lehe
 
 A következő címke minták is lehetnek:
 
-| Felirat | |
+| Címke | |
 |---|---|
 | `label` Nincs megadva, vagy `label=*` | Bármely címke, amely tartalmazza a megfelelő `null` |
 | `label=%00` | Egyezések `null` felirat |

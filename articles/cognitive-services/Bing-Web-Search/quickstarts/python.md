@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c00b805a8a702828f6d6402478ed8d2a79d3966e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2f26392bdac34dd831e04c772e5357f5e41fc746
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60646986"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390213"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Gyors útmutató: A Python használatával a Bing Web Search API meghívása  
 
@@ -55,7 +55,7 @@ search_term = "Azure Cognitive Services"
 
 ## <a name="make-a-request"></a>Kérés indítása
 
-Ez a blokk a `requests` kódtárat használja a Bing Web Search API meghívásához, és JSON-objektumként adja vissza az eredményeket. Az API-kulcs a `headers` szótárban lesz átadva, a keresési kifejezést és a lekérdezés paramétereit pedig a `params` szótárban. A beállítások és paraméterek teljes listáját a [Bing Web Search API 7-es verziójának](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) dokumentációjában találja meg.
+Ez a blokk a `requests` kódtárat használja a Bing Web Search API meghívásához, és JSON-objektumként adja vissza az eredményeket. Az API-kulcs a `headers` szótárban lesz átadva, a keresési kifejezést és a lekérdezés paramétereit pedig a `params` szótárban. A beállítások és paraméterek teljes listáját a [Bing Web Search API 7-es verziójának](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) dokumentációjában találja meg.
 
 ```python
 import requests

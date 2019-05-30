@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: 960b8145e5f53c6c37820604fd634ccf5fd77c6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "60876239"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Az Azure-tervek szolgáltatás áttekintése
@@ -52,7 +52,7 @@ Egy házirend is meg lehet adni egy számos _összetevők_ tervezet-definíciób
 
 A tervek _tervelemekből_ állnak. A tervek jelenleg a következő erőforrások használatát támogatják tervelemekként:
 
-|Erőforrás  | Hierarchialehetőségek| Leírás  |
+|Resource  | Hierarchialehetőségek| Leírás  |
 |---------|---------|---------|
 |Erőforráscsoportok | Előfizetés | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezekkel a helyőrző erőforráscsoportokkal az erőforrások a kívánt módon rendezhetők el, és kijelölhetők a tervbe foglalt szabályzat- és szerepkör-hozzárendelési tervelemek, valamint az Azure Resource Manager-sablonok hatókörkorlátai. |
 |Azure Resource Manager-sablon | Előfizetés, erőforráscsoport | A sablonokkal összetett környezetek állíthatók össze. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |

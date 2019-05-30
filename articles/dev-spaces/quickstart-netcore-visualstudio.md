@@ -1,5 +1,5 @@
 ---
-title: Fejlesztés a .NET Core, az aks-en az Azure fejlesztői, szóközök és a Visual Studio 2017 használatával
+title: Fejlesztés a .NET Core, az aks-en az Azure fejlesztői, szóközök és a Visual Studio használatával
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
@@ -13,30 +13,29 @@ keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárol
 manager: jeconnoc
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 7a85afd3c0a00260112ef2a945b0f5c5a538194e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 110962c03f0236ebb26c9ed586981b51f36c635f
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765300"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399224"
 ---
-# <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>Gyors útmutató: Fejlesztés a .NET Core Kubernetes az Azure fejlesztési szóközöket (a Visual Studio 2017)
+# <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio"></a>Gyors útmutató: Fejlesztés a .NET Core Kubernetes az Azure fejlesztési szóközöket (a Visual Studio)
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
 - Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
-- Iteratív fejlesztés kód a Visual Studio 2017 használatával.
-- Hibakeresés a Visual Studio 2017 használatával fürtön futó kódot.
+- Iteratív kódfejlesztés tárolókban a Visual Studio használatával.
+- Hibakeresés a Visual Studiót használó fürtön futó kódot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha még nincs fiókja, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
-- Visual Studio 2017-et a Windows a webalkalmazás-fejlesztési számítási feladattal együtt. Ha nincs telepítve, [innen](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) letöltheti.
-- [A Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) telepítve.
+- A Windows telepítve van, az Azure-fejlesztési számítási feladatot a Visual Studio 2019. Használhatja a Visual Studio 2017-et a Windows a webalkalmazás-fejlesztési számítási feladatok és [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) telepítve. Ha nincs telepítve a Visual Studio, töltse le [Itt](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Az Azure Kubernetes Service-fürt létrehozása
 
-Az AKS-fürt létre kell hoznia egy [támogatott régió](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams). Fürt létrehozása:
+Az AKS-fürt létre kell hoznia egy [támogatott régió][supported-regions]. Fürt létrehozása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 1. Válassza ki *+ erőforrás létrehozása > Kubernetes-szolgáltatást*. 
@@ -55,7 +54,7 @@ Az AKS-fürt az Azure Portalon keresse meg és kattintson *fejlesztési tároló
 
 ## <a name="create-a-new-aspnet-web-app"></a>Egy új ASP.NET-webalkalmazás létrehozása
 
-1. Nyissa meg a Visual Studio 2017-et.
+1. Nyissa meg a Visual Studiót.
 1. Új projekt létrehozása.
 1. Válasszon *ASP.NET Core-webalkalmazás* és nevezze el a projektet *webfrontend*.
 1. Kattintson az *OK* gombra.
@@ -101,7 +100,7 @@ Ez a folyamat a szolgáltatáshoz való nyilvános hozzáférés letiltotta. A n
 
 ## <a name="update-code"></a>Kód frissítése
 
-Ha a Visual Studio 2017 fejlesztői tárhely továbbra is össze van kapcsolva, kattintson a Leállítás gombra. Változtassa meg a 20 sort `Controllers/HomeController.cs` való:
+Ha a Visual Studio dev tárhely továbbra is össze van kapcsolva, kattintson a Leállítás gombra. Változtassa meg a 20 sort `Controllers/HomeController.cs` való:
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
@@ -113,9 +112,9 @@ A módosítások mentéséhez és a szolgáltatás használatának megkezdéséh
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Beállítás és hibakeresési töréspontok használatával
 
-Ha a Visual Studio 2017 fejlesztői tárhely továbbra is össze van kapcsolva, kattintson a Leállítás gombra. Nyissa meg `Controllers/HomeController.cs` valahol kattintson a sor létezik helyezze a kurzort a 20. Állítson be egy töréspontot, nyomja le az *F9* , vagy kattintson *Debug* majd *töréspont*. Indítsa el a szolgáltatást a fejlesztési tárhelyre hibakeresési módban, kattintson a *F5* , vagy kattintson *Debug* majd *Start Debugging*.
+Ha a Visual Studio dev tárhely továbbra is össze van kapcsolva, kattintson a Leállítás gombra. Nyissa meg `Controllers/HomeController.cs` valahol kattintson a sor létezik helyezze a kurzort a 20. Állítson be egy töréspontot, nyomja le az *F9* , vagy kattintson *Debug* majd *töréspont*. Indítsa el a szolgáltatást a fejlesztési tárhelyre hibakeresési módban, kattintson a *F5* , vagy kattintson *Debug* majd *Start Debugging*.
 
-Egy böngészőben nyissa meg a szolgáltatást, és figyelje meg, hogy nem jelenik meg. Térjen vissza a Visual Studio 2017-et, és vizsgálja meg, 20 sor van kijelölve. A töréspont beállított sor 20 a szolgáltatás szünetel. A szolgáltatás folytatásához nyomja le az *F5* , vagy kattintson *Debug* majd *Folytatás*. Térjen vissza a böngészőben, és figyelje meg, hogy az üzenet jelenik meg.
+Egy böngészőben nyissa meg a szolgáltatást, és figyelje meg, hogy nem jelenik meg. Térjen vissza a Visual Studio, és vizsgálja meg, 20 sor van kijelölve. A töréspont beállított sor 20 a szolgáltatás szünetel. A szolgáltatás folytatásához nyomja le az *F5* , vagy kattintson *Debug* majd *Folytatás*. Térjen vissza a böngészőben, és figyelje meg, hogy az üzenet jelenik meg.
 
 Miközben fut a szolgáltatás a Kubernetes egy hibakeresővel, akkor a hibakeresési információkat, például a hívási verem, a helyi változókat és a kivétel adatai teljes hozzáféréssel rendelkezik.
 
@@ -135,3 +134,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [Több tároló használata és fejlesztés csapatban](multi-service-netcore-visualstudio.md)
 
 [ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured
+[supported-regions]: about.md#supported-regions-and-configurations

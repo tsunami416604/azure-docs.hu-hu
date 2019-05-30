@@ -5,23 +5,25 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 08/20/2018
+ms.date: 05/06/2019
 ms.author: danlep
-ms.openlocfilehash: 6db5bb4ee1995e08bd00588203db1fdba87a3db5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca9ef32a830f56edb471256b3b9175ba0fbec51d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60431272"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65069234"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>A tartalmak megbízhatósága az Azure Container Registryben
 
-A biztonsági szempontok mentén kialakított elosztott rendszerek esetében rendkívül fontos a rendszerbe belépő adatok *forrásának* és *integritásának* ellenőrzése. Elengedhetetlen, hogy az adatok felhasználói képesek legyenek ellenőrizni az adatok közzétevőjét (forrás), valamint azt is, hogy az adatok a közzétételük után nem lettek-e módosítva (integritás). Az Azure Container Registry mindkét célt támogatja a Docker [tartalommegbízhatósági][docker-content-trust] modelljének megvalósításával. Ez a cikk ennek bevezetőjéül szolgál.
+Az Azure Container Registry valósítja meg a Docker [megbízhatósági tartalom] [ docker-content-trust] aláírt rendszerképek mozgatásához engedélyezése a modellben. Ez a cikk lépéseit a tároló-beállításjegyzékek a tartalom megbízható engedélyezése beolvasása.
 
-> [!IMPORTANT]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> [!NOTE]
+> Tartalom megbízhatósági az egyik szolgáltatása a [prémium szintű Termékváltozat](container-registry-skus.md) az Azure Container Registrybe.
 
 ## <a name="how-content-trust-works"></a>A tartalommegbízhatóság működése
+
+A biztonsági szempontok mentén kialakított elosztott rendszerek esetében rendkívül fontos a rendszerbe belépő adatok *forrásának* és *integritásának* ellenőrzése. Elengedhetetlen, hogy az adatok felhasználói képesek legyenek ellenőrizni az adatok közzétevőjét (forrás), valamint azt is, hogy az adatok a közzétételük után nem lettek-e módosítva (integritás). 
 
 A rendszerképek közzétevőjeként a tartalommegbízhatóság alkalmazásával **aláírhatja** a regisztrációs adatbázisba leküldött rendszerképeket. A rendszerképek felhasználói (az azokat a regisztrációs adatbázisból lehívó személyek vagy rendszerek) konfigurálhatják az ügyfeleket, hogy azok *csak* aláírt rendszerképeket kérjenek le. Amikor valamely rendszerkép-felhasználó lekér egy aláírt rendszerképet, a Docker-ügyfél ellenőrzi a rendszerkép integritását. Ebben a modellben a felhasználók biztosak lehetnek benne, hogy az adatbázisban található aláírt rendszerképeket valóban Ön tette közzé, és azok a közzétételüket követően nem lettek módosítva.
 
@@ -40,7 +42,7 @@ A tartalommegbízhatóság titkosítási aláírókulcsok használatával valós
 
 Első lépésként az adatbázis szintjén kell engedélyezni a tartalommegbízhatóságot. Miután engedélyezte a tartalommegbízhatóságot, az ügyfelek (felhasználók és szolgáltatások) aláírt rendszerképeket a küldhetnek az adatbázisba. Ha a tartalommegbízhatóság engedélyezve van az adatbázisban, az nem korlátozza az adatbázis használatát azokra a felhasználókra, akiknél az szintén engedélyezve van. Azok a felhasználók, akiknél nincs engedélyezve, továbbra is a szokott módon használhatják az adatbázist. Azok a felhasználók azonban, akik engedélyezték a tartalommegbízhatóságot az ügyfeleiken, *kizárólag* az aláírt rendszerképeket látják majd az adatbázisban.
 
-A tartalommegbízhatóság az adatbázisban való engedélyezéséhez először lépjen az adatbázishoz az Azure Portalon. A **SZABÁLYZATOK** területen válassza a **Tartalommegbízhatóság (előzetes verzió)** > **Engedélyezve** > **Mentés** lehetőséget.
+A tartalommegbízhatóság az adatbázisban való engedélyezéséhez először lépjen az adatbázishoz az Azure Portalon. Alatt **házirendek**válassza **tartalom megbízható** > **engedélyezve** > **mentése**.
 
 ![Tartalommegbízhatóság engedélyezése egy adatbázishoz az Azure Portalon][content-trust-01-portal]
 
@@ -71,13 +73,13 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 
 ## <a name="grant-image-signing-permissions"></a>Rendszerkép-aláírási engedélyek kiosztása
 
-Csak azok a felhasználók és rendszerek küldhetnek le megbízható rendszerképeket az adatbázisba, amelyeknek engedélyezte ezt. Ha egy felhasználónak (vagy egy szolgáltatásnevet használó rendszernek) engedélyezni szeretné a megbízható rendszerképek leküldését, ossza ki a felhasználó Azure Active Directory-identitásának az `AcrImageSigner` szerepkört. Ez a rendszerképek az adatbázisba való leküldését engedélyező `Contributor` (vagy `Owner`) szerepkörön felül szükséges.
+Csak azok a felhasználók és rendszerek küldhetnek le megbízható rendszerképeket az adatbázisba, amelyeknek engedélyezte ezt. Ha egy felhasználónak (vagy egy szolgáltatásnevet használó rendszernek) engedélyezni szeretné a megbízható rendszerképek leküldését, ossza ki a felhasználó Azure Active Directory-identitásának az `AcrImageSigner` szerepkört. Ez kiegészítésként szolgál a `AcrPush` (vagy egyenértékű) szerepkör rendszerképeket próbálna leküldeni a rendszerleíró adatbázis szükséges. További információkért lásd: [Azure Container Registry-szerepkörökről és engedélyekről](container-registry-roles.md).
 
 Az alábbiakban ismertetjük az `AcrImageSigner` szerepkör az Azure Portalon és az Azure CLI felületen való kiosztásának részleteit.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Navigáljon a beállításjegyzékhez, az Azure Portalon, majd válassza ki **hozzáférés-vezérlés (IAM)** > **szerepkör-hozzárendelés hozzáadása**. Alatt **szerepkör-hozzárendelés hozzáadása**válassza `AcrImageSigner` alatt **szerepkör**, majd **válassza** több felhasználóval vagy szolgáltatásnevek, majd **mentése**.
+Navigáljon a beállításjegyzékhez, az Azure Portalon, majd válassza ki **hozzáférés-vezérlés (IAM)**  > **szerepkör-hozzárendelés hozzáadása**. Alatt **szerepkör-hozzárendelés hozzáadása**válassza `AcrImageSigner` alatt **szerepkör**, majd **válassza** több felhasználóval vagy szolgáltatásnevek, majd **mentése**.
 
 Ebben a példában két entitásnak osztottuk ki az `AcrImageSigner` szerepkört: egy „service-principal” nevű szolgáltatásnévnek és egy „Azure User” nevű felhasználónak.
 
@@ -110,6 +112,8 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 
 A `<service principal ID>` lehet a szolgáltatásnév **appId** vagy **objectId** azonosítója, illetve valamely hozzá tartozó **servicePrincipalName**. A szolgáltatásnevek és az Azure Container Registry használatával kapcsolatos további információért tekintse meg [a szolgáltatásnevek az Azure Container Registryben való hitelesítését ismertető cikket](container-registry-auth-service-principal.md).
 
+Szerepkör módosításokat, futtatása után `az acr login` a helyi azonosító jogkivonat frissítése az Azure CLI, hogy az új szerepkörök is érvénybe léptetéséhez.
+
 ## <a name="push-a-trusted-image"></a>Megbízható rendszerképek leküldése
 
 A megbízható rendszerkép címkéinek a tárolóregisztrációs adatbázisba való leküldéséhez engedélyezze a tartalommegbízhatóságot, és küldje le a rendszerképet a `docker push` paranccsal. Amikor első alkalommal küld le egy aláírt címkét, a rendszer arra kéri, hogy hozzon létre egy jelszót a legfelső szintű aláírókulcshoz és az adattár aláírókulcsához egyaránt. A legfelső szintű és az adattárkulcs létrehozása és tárolása egyaránt a helyi gépen történik.
@@ -138,7 +142,7 @@ Miután létrejött az első olyan `docker push`, amelyhez engedélyezve van a t
 
 ## <a name="pull-a-trusted-image"></a>Megbízható rendszerképek lekérése
 
-Megbízható rendszerkép lekéréséhez engedélyezze a tartalommegbízhatóságot, és futtassa a `docker pull` parancsot a szokásos módon. A tartalommegbízhatóságot engedélyezett felhasználók csak az aláírt címkékkel rendelkező rendszerképet kérhetik le. Íme egy példa egy aláírt címke lekérésére:
+Megbízható rendszerkép lekéréséhez engedélyezze a tartalommegbízhatóságot, és futtassa a `docker pull` parancsot a szokásos módon. Hogy megbízható rendszerképeket a `AcrPull` szerepkör is elegendő, a normál felhasználók számára. Nincsenek további szerepköröket, például egy `AcrImageSigner` szerepkör szükség. A tartalommegbízhatóságot engedélyezett felhasználók csak az aláírt címkékkel rendelkező rendszerképet kérhetik le. Íme egy példa egy aláírt címke lekérésére:
 
 ```console
 $ docker pull myregistry.azurecr.io/myimage:signed
@@ -184,15 +188,13 @@ Ha nem fér hozzá a legfelső szintű kulcshoz, az adott kulccsal aláírt cím
 > [!WARNING]
 > Az adatbázis tartalommegbízhatóságának letiltása és ismételt engedélyezése **az adatbázis összes adattárában törli az összes aláírt címke megbízhatósági adatait**. Ez a művelet nem vonható vissza – az Azure Container Registry nem képes visszaállítani a törölt megbízhatósági adatokat. A tartalommegbízhatóság letiltásával maguk a rendszerképek nem lesznek törölve.
 
-A tartalommegbízhatóság az adatbázisban való letiltásához lépjen az adatbázishoz az Azure Portalon. A **SZABÁLYZATOK** területen válassza a **Tartalommegbízhatóság (előzetes verzió)** > **Letiltva** > **Mentés** lehetőséget. A rendszer figyelmezteti, hogy az adatbázisban lévő összes aláírás elvész. Az adatbázis összes aláírásának végleges törléséhez kattintson az **OK** gombra.
+A tartalommegbízhatóság az adatbázisban való letiltásához lépjen az adatbázishoz az Azure Portalon. Alatt **házirendek**válassza **tartalom megbízható** > **letiltott** > **mentése**. A rendszer figyelmezteti, hogy az adatbázisban lévő összes aláírás elvész. Az adatbázis összes aláírásának végleges törléséhez kattintson az **OK** gombra.
 
 ![Tartalommegbízhatóság letiltása egy adatbázisban az Azure Portalon][content-trust-03-portal]
 
 ## <a name="next-steps"></a>További lépések
 
-A tartalommegbízhatósággal kapcsolatos további információért tekintse meg a Docker dokumentációját. Bár több lényeges pontot is érintettünk ebben a cikkben, a tartalommegbízhatóság egy kiterjedtebb téma, amellyel részletesebben a Docker dokumentációja foglalkozik.
-
-[Tartalommegbízhatóság a Dockerben][docker-content-trust]
+Lásd: [megbízhatónak a Docker tartalom] [ docker-content-trust] tartalom megbízhatósági további információt. Bár több lényeges pontot is érintettünk ebben a cikkben, a tartalommegbízhatóság egy kiterjedtebb téma, amellyel részletesebben a Docker dokumentációja foglalkozik.
 
 <!-- IMAGES> -->
 [content-trust-01-portal]: ./media/container-registry-content-trust/content-trust-01-portal.png

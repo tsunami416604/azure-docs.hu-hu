@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 1cf46fd5ec55f0b240f6bb4adbe49c1344a4663b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e74cc01d9104ed4f26d857f3a99eb21e312a7f59
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61384874"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389733"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a Python használatával
 
@@ -133,4 +133,4 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [Hozzon létre egy egyoldalas webalkalmazást](../tutorials/spellcheck.md)
 
 - [Mi az a Bing Spell Check API?](../overview.md)
-- [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+- [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

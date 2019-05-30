@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: 9137262ffc7c172e6a99920a7abb31459a8703fe
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: a91c61edd773b5742b092f5d72a5a22f1d90e63b
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408563"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393546"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Gyors útmutató: Egy Java Spring-alkalmazás létrehozása az alkalmazás konfigurációja
 
@@ -29,7 +29,7 @@ Bármely Kódszerkesztő segítségével ebben a rövid útmutatóban találhat�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató elvégzéséhez telepítse egy támogatott [Java fejlesztői készlet (JDK)](https://aka.ms/azure-jdks) 8-verzióval és [Apache Maven](https://maven.apache.org/) a 3.0-s verzió vagy újabb.
+Ez a rövid útmutató elvégzéséhez telepítse egy támogatott [Java fejlesztői készlet (JDK)](https://docs.microsoft.com/java/azure/jdk) 8-verzióval és [Apache Maven](https://maven.apache.org/) a 3.0-s verzió vagy újabb.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,7 +37,7 @@ Ez a rövid útmutató elvégzéséhez telepítse egy támogatott [Java fejleszt
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza ki **konfigurációs Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
+6. Válassza ki **konfigurációs Explorer** >  **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
 
     | Kulcs | Érték |
     |---|---|

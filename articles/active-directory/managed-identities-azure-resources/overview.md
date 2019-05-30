@@ -16,10 +16,10 @@ ms.date: 10/23/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "60290756"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Mit kell tudni az Azure-erőforrások felügyelt identitásairól?
@@ -58,7 +58,7 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 
 ![Felügyeltszolgáltatás-identitások és Azure-beli virtuális gépek](media/overview/msi-vm-vmextension-imds-example.png)
 
-|  Tulajdonság    | Rendszer által hozzárendelt felügyelt identitás | Felhasználó által hozzárendelt felügyelt identitás |
+|  Tulajdonság    | Rendszer által hozzárendelt felügyelt identitás | felhasználó által hozzárendelt felügyelt identitás |
 |------|----------------------------------|--------------------------------|
 | Létrehozás |  Létrehozott egy Azure-erőforrás (például az Azure virtuális gépként vagy Azure App Service-ben) | Létrehozott egy önálló Azure-erőforrás |
 | Életciklus | Életciklus megosztva a felügyelt identitás létrehozása az Azure-erőforrást. <br/> A szülőerőforrás törlése esetén a felügyelt identitást is törlődik. | Független-életciklusának. <br/> Kifejezetten törölni kell. |

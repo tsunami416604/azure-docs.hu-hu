@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f588115e38ded07b79568c91b8d166949b34a886
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83e172e61411c7c1c098706b5ff4566f565d6bf1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294933"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253860"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Mi az Azure AD-vel a Jelszókivonat-szinkronizálás?
 A Jelszókivonat-szinkronizálás a hibrid identitás elvégzéséhez szükséges bejelentkezési módszerek egyike. Az Azure AD Connect szinkronizálja a kivonat, a kivonat, a jelszó egy helyszíni Active Directory-példányból egy felhőalapú Azure AD-példányt.
@@ -47,7 +47,7 @@ További információkért lásd: [Mi a hibrid identitás?](whatis-hybrid-identi
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi az a hibrid identitás?](whatis-phs.md)
+- [Mi az a hibrid identitás?](whatis-hybrid-identity.md)
 - [Mi az Azure AD Connect és a Connect Health?](whatis-azure-ad-connect.md)
 - [Mi az átmenő hitelesítés (ESP)?](how-to-connect-pta.md)
 - [Mi az összevonás?](whatis-fed.md)

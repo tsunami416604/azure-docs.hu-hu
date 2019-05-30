@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
-ms.translationtype: HT
+ms.openlocfilehash: c814f4bb0cc24350e45400d141c97d1b2eb4998d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864382"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237798"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: A saját notebook server használata az Azure Machine Learning használatának első lépései
 
@@ -33,14 +33,29 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot meg
 
 * A Python 3.6-os notebook server, az Azure Machine Learning SDK
 * Az Azure Machine Learning szolgáltatás munkaterület
-* A munkaterület konfigurációs fájl (**.azureml/config.json** ).
+* A munkaterület konfigurációs fájl ( **.azureml/config.json**).
 
-Ezek az összes előfeltétel beolvasása [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](setup-create-workspace.md#portal).
+Ezek az összes előfeltétel beolvasása [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](setup-create-workspace.md#sdk).
+
 
 
 ## <a name="use-the-workspace"></a>A munkaterület használata
 
-Hozzon létre egy parancsfájlt, vagy indítsa el a jegyzetfüzet a munkaterület konfigurációs fájl ugyanabban a címtárban. Futtassa ezt a kódot, amely az alapszintű SDK API-k segítségével nyomon követheti a Kísérletezési futtatások.
+Hozzon létre egy parancsfájlt vagy indíthat egy notebookot a munkaterület konfigurációs fájl ugyanabban a címtárban ( **.azureml/config.json**).
+
+### <a name="attach-to-workspace"></a>Munkaterület csatolása
+
+Ez a kód információkat olvas a konfigurációs fájlt a munkaterülethez csatolja.
+
+```
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+### <a name="log-values"></a>Napló értékek
+
+Futtassa ezt a kódot, amely az alapszintű SDK API-k segítségével nyomon követheti a Kísérletezési futtatások.
 
 1. Egy kísérlet létrehozása a munkaterületen.
 1. Egyetlen érték jelentkezzen be a kísérletet.

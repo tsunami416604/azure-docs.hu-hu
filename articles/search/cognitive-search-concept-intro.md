@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 05/28/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 24c6df6a06d08249f236fc36d64b4204b0103b3c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8af927bee11d66c473707b603951fa693f6840e3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540901"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299027"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Mi az Azure Search "cognitive search"?
 
@@ -86,7 +86,7 @@ Indexek jönnek létre az index sémájából, amely meghatározza a mezők és 
 | Természetes nyelvek feldolgozása | Elemzések és a bemeneti szöveg információinak szövegfeldolgozást. Kulcsszókeresés, nyelvfelismerés és hangulatelemzés olyan képességek, amelyek a természetes nyelvi feldolgozás alá tartozik.  | [Key kifejezés kinyerése szakértelem](cognitive-search-skill-keyphrases.md), [nyelv észlelése szakértelem](cognitive-search-skill-language-detection.md), [Sentiment Analysis szakértelem](cognitive-search-skill-sentiment.md) |
 | Dokumentumleképezési | A folyamat kibontása vagy szöveges tartalom létrehozása nem szöveges forrásokból származó indexelés során. Optikai karakterfelismerés (OCR) példaként, de általában hivatkozik az alapfunkciókra indexelő, az indexelő tartalmat bontja az alkalmazás fájljait. Forrásfájljainak helyét, és az indexelő definíciója, mező-leképezések biztosítása az adatforrás azok mind a dokumentumleképezési. | Lásd: [indexelők](search-indexer-overview.md) |
 | Alakításra | Szövegtöredékei kialakíthattunk egy nagyobb struktúra, vagy fordítva felosztania nagyobb szöveges tömbökben be további alárendelt feldolgozáshoz kezelhető mérettel. | [Shaper szakértelem](cognitive-search-skill-shaper.md), [szöveg egyesülés szakértelem](cognitive-search-skill-textmerger.md), [szöveg felosztása szakértelem](cognitive-search-skill-textsplit.md) |
-| Továbbfejlesztett dokumentumok | Egy átmeneti belső szerkezetét, nem közvetlenül elérhető, a kódban. Továbbfejlesztett dokumentumok feldolgozása során jönnek létre, de csak végső kimenetek megmaradnak a search-index. Mezőleképezések határozza meg, melyik adatelem hozzáadódnak az index. | Lásd: [képi elemekben gazdag dokumentumok elérése](cognitive-search-tutorial-blob.md#access-enriched-document). |
+| Továbbfejlesztett dokumentumok | Egy átmeneti belső szerkezetét, megjelennek a keresési index végső kimenetet a feldolgozás során generált. A képességek alkalmazási lehetőségét meghatározza, hogy melyik végrehajtott információbeolvasás el kell végezni. Mezőleképezések határozza meg, melyik adatelem hozzáadódnak az index. Igény szerint hozhat létre egy Tudásbázis tároló megőrzése, és Fedezze fel az eszközök, mint például a Storage Explorer, a Power bi-ban vagy más eszköz, amely csatlakozik az Azure Blob storage-videószolgáltatás dokumentumok. | Lásd: [Tudásbázis store (előzetes verzió)](knowledge-store-concept-intro.md). |
 | Indexelő |  A webbejáró, amely kinyeri a kereshető adatok és metaadatok egy külső adatforrásból, és a egy index, az index és az adatforrás dokumentumfeltörést közötti mező mező leképezések alapján tölti fel. A kognitív keresés végrehajtott információbeolvasás az indexelő hívja meg a képességek alkalmazási lehetőségét, és tartalmazza a mezőmegfeleltetéseket Adatbővítés kimeneti cél mezőkre az indexben való társítása. Az indexelő definíciója tartalmaz minden utasításokat és hivatkozásokat folyamat műveletekhez, és az indexelő futtatása a folyamat hív meg. | [Indexelők](search-indexer-overview.md) |
 | Adatforrás  | Az Azure-ban támogatott típusú külső adatforráshoz való kapcsolódáshoz az indexelő által használt objektum. | Lásd: [indexelők](search-indexer-overview.md) |
 | Index | Megőrzött keresési indexet az Azure Search szolgáltatásban az indexsémát, amely meghatározza a mező struktúra és használat alapján készült. | [Indexek az Azure Search szolgáltatásban](search-what-is-an-index.md) | 

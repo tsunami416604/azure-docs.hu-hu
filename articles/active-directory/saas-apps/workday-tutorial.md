@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9c8d1fb234efd5df297082cfc1001f28ca1656
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 2b9e4f5208eb1f6abb0d6fd786630c183a04ce50
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990399"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388870"
 ---
 # <a name="tutorial-integrate-workday-with-azure-active-directory"></a>Oktatóanyag: Workday integrálása az Azure Active Directoryval
 
@@ -88,7 +88,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
     > [!NOTE]
     > Ezek az értékek nem a valós. Ezek az értékek frissítse a tényleges bejelentkezési URL-cím és a válasz URL-cím. A válasz URL-cím rendelkeznie kell egy altartomány például: www, wd2, wd3, wd3-impl, wd5, wd5-impl).
-    > Vagy hasonló `http://www.myworkday.com` működik, de `http://myworkday.com` nem létezik. Kapcsolattartó [Workday ügyfél-támogatási csapatának](https://www.workday.com/partners-services/services/support.html) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Vagy hasonló `http://www.myworkday.com` működik, de `http://myworkday.com` nem létezik. Kapcsolattartó [Workday ügyfél-támogatási csapatának](https://www.workday.com/en-us/partners-services/services/support.html) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 6. A Workday-alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. Munkanapi alkalmazás vár **nameidentifier** a leképezendő **user.mail**, **UPN**stb., így a attribútumleképezés szerkesztéséhez kattintson a szükséges  **Szerkesztés** ikonra, és módosítsa a attribútumleképezés.
 
@@ -138,7 +138,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
    > [!NOTE]
    > A környezet attribútum vannak kötve, a bérlői URL-cím értékét:  
    > -Ha a tartomány neve a Workday-bérlői URL-cím kezdődik impl például: *https:\//impl.workday.com/\<bérlői\>/login-saml2.flex*), a **környezet**attribútum megvalósítási értékre kell állítani.  
-   > -Ha a tartománynév valami mást kezdődik, lépjen kapcsolatba kell [Workday ügyfél-támogatási csapatának](https://www.workday.com/partners-services/services/support.html) beolvasni a megfelelő **környezet** érték.
+   > -Ha a tartománynév valami mást kezdődik, lépjen kapcsolatba kell [Workday ügyfél-támogatási csapatának](https://www.workday.com/en-us/partners-services/services/support.html) beolvasni a megfelelő **környezet** érték.
 
 4. Az a **SAML-telepítő** szakaszban, hajtsa végre az alábbi lépéseket:
 
@@ -197,7 +197,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
     ![Egyszeri bejelentkezés konfigurációja](./media/workday-tutorial/WorkdaySSOConfiguratio.png "egyszeri bejelentkezés konfigurálása")
 
-    a.  Az a **szolgáltatás Szolgáltatóazonosító** szövegmezőbe írja be **https://www.workday.com**.
+    a.  Az a **szolgáltatás Szolgáltatóazonosító** szövegmezőbe írja be **https://www.workday.com** .
 
     b. Válassza ki **nem Deflate hitelesítési Szolgáltató által kezdeményezett kérelem**.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 1534bc65a369254802973d6c3b91ed8b76ed44e0
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: bb04d6c8b16a6b9bdbbb95b0b4f577cf4cc3ed86
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596554"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235084"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>A Linux és Windows rendszerre készült Azure Data Science Virtual Machine (DSVM, adatelemző virtuális gép) bemutatása
 
@@ -48,7 +48,7 @@ Az adatelemzési ötletbörzékhez/versenyekhez és a nagytömegű adatok elemz�
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>Egyéni számítási teljesítményt az Azure-notebookokhoz
 
-[Az Azure notebookok](/azure/notebooks/azure-notebooks-overview.md) fejlesztést, futtatása és megosztása telepítés nélkül Jupyter notebookok a felhőben üzemeltetett szolgáltatás ingyenes. Az ingyenes szolgáltatási rétegben, azonban csak 4GB memóriát és 1GB adat. Minden korlátokat kiadni, majd egy adatelemző virtuális gép vagy bármely más virtuális gép futtatása a Jupyter-kiszolgáló is csatlakoztatható notebookok projekt. Ha bejelentkezik az Azure-jegyzetfüzetek egy olyan fiókkal, az Azure Active Directoryval (például egy vállalati fiók), notebookok adatelemzési virtuális gépek automatikusan a fiókhoz társított előfizetésekkel mutatja. További információkért lásd: [kezelése és konfigurálása a projektek - számítási kapacitás](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+[Az Azure notebookok](/azure/notebooks/azure-notebooks-overview) fejlesztést, futtatása és megosztása telepítés nélkül Jupyter notebookok a felhőben üzemeltetett szolgáltatás ingyenes. Az ingyenes szolgáltatási rétegben, azonban csak 4GB memóriát és 1GB adat. Minden korlátokat kiadni, majd egy adatelemző virtuális gép vagy bármely más virtuális gép futtatása a Jupyter-kiszolgáló is csatlakoztatható notebookok projekt. Ha bejelentkezik az Azure-jegyzetfüzetek egy olyan fiókkal, az Azure Active Directoryval (például egy vállalati fiók), notebookok adatelemzési virtuális gépek automatikusan a fiókhoz társított előfizetésekkel mutatja. További információkért lásd: [kezelése és konfigurálása a projektek - számítási kapacitás](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Rövidtávú kísérletezés és kiértékelés
 Az adatelemző virtuális gép minimális előkészítéssel felhasználható olyan eszközök felmérésére és megismerésére, mint a Microsoft ML Server, az SQL Server, a Visual Studio eszközei, a Jupyter, a deep learning / ML eszközkészletek és a közösségben népszerű új eszközök. Mivel a Data Science VM gyorsan beállítható, olyan egyéb rövidtávú alkalmazási helyzetekben is felhasználható, mint a közzétett kísérletek replikálása, bemutatók futtatása, online foglalkozások útmutatásainak követése vagy konferenciaképzések megtartása.

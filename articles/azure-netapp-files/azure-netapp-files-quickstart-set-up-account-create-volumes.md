@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 4/16/2019
 ms.author: b-juche
-ms.openlocfilehash: 2bcd8163cb3c6071812d4d247b5b333edcfc89e5
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 4ea511bec75557bc6f7d37b1724b4b0db65ba9cc
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523024"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299423"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Az Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
@@ -57,7 +57,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 
-1. Az Azure Portalon a keresőmezőbe írja be a **Azure NetApp fájlok** majd **Azure NetApp fájlok (előzetes verzió)** a listából, amely akkor jelenik meg.
+1. Az Azure Portalon a keresőmezőbe írja be a **Azure NetApp fájlok** majd **Azure NetApp fájlok** a listából, amely akkor jelenik meg.
 
       ![Válassza ki a Azure NetApp-fájlok](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 

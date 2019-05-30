@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2019
+ms.date: 05/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0ad1d12a4a2ca3a293546f2bac85210bb9152269
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b6d84a07de408cedb0e21181c70e5c1481ac62bc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589347"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225900"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 
@@ -55,7 +55,7 @@ A Resource Manager számos előnyt kínál:
 
 Az Azure biztosít a felügyeleti hatókör négy szint: [felügyeleti csoportok](../governance/management-groups/index.md), előfizetések, [erőforráscsoportok](#resource-groups), és erőforrásokat. Az alábbi ábra ezekre a rétegekre mutat egy példát.
 
-![Hatókör](./media/resource-group-overview/scope-levels.png)
+![Scope](./media/resource-group-overview/scope-levels.png)
 
 Felügyeleti beállításokat a hatókörszintek bármelyikéhez megadhat. A kiválasztott szint határozza meg, milyen széles körben lesz alkalmazva a beállítás. Az alacsonyabb szintek öröklik a magasabb szintek beállításait. Például, amikor alkalmaz egy [házirend](../governance/policy/overview.md) az előfizetéséhez, a szabályzat érvényes az összes erőforráscsoportra és az előfizetése. A szabályzat alkalmazásakor az erőforráscsoport, amely a házirend alkalmazva az erőforráscsoportot és az ahhoz tartozó összes erőforrást. Egy másik erőforráscsoportot azonban nem rendelkezik a szabályzat-hozzárendelést.
 
@@ -91,7 +91,7 @@ Ha az erőforráscsoport átmenetileg nem érhető el, mert a metaadatok nem ér
 
 Mindegyik erőforrás-szolgáltató műveletek ezen erőforrások használata és az erőforrások készletét kínálja. Ha például kulcsokat és titkos kulcsokat szeretne tárolni, a **Microsoft.KeyVault** erőforrás-szolgáltatót fogja használni. Ez az erőforrás-szolgáltató egy **vaults** nevű erőforrástípust biztosít a kulcstároló létrehozásához.
 
-Az erőforrástípus nevének formátuma: **{erőforrás-szolgáltató}/{erőforrástípus}**. A kulcstartó erőforrástípus **Microsoft.KeyVault/vaults**.
+Az erőforrástípus nevének formátuma: **{erőforrás-szolgáltató}/{erőforrástípus}** . A kulcstartó erőforrástípus **Microsoft.KeyVault/vaults**.
 
 Mielőtt elkezdi erőforrásai üzembe helyezését, ismerje meg az elérhető erőforrás-szolgáltatókat. Az erőforrások és az erőforrás-szolgáltatók nevének ismerete segíthet az Azure-ban üzembe helyezni kívánt erőforrások meghatározásában. Emellett ismernie kell az egyes erőforrástípusok érvényes helyeit és API-verzióit. További információkért lásd az [erőforrás-szolgáltatókat és a típusaikat](resource-manager-supported-services.md) ismertető cikket.
 
@@ -174,7 +174,21 @@ A sablon meghatározása után készen áll, hogy üzembe helyezze az erőforrá
 
 Összetett szolgáltatások Azure-ban való üzembe helyezésekor előfordulhat, hogy több régióban üzembe kell helyeznie a szolgáltatást, a következő lépés előtt pedig ellenőriznie kell annak állapotát. A [Azure Deployment Managerrel](deployment-manager-overview.md) koordinálhatja a szolgáltatás előkészített kibocsátását. A szolgáltatás kibocsátásának előkészítésével a régiókban történő üzembe helyezés előtt azonosíthat potenciális problémákat. Ha nem szeretné megtenni ezeket az óvintézkedéseket, válassza az előző szakasz üzembe helyezési műveleteit.
 
-A Deployment Manager jelenleg privát előzetes verzióban érhető el.
+A Deployment Manager jelenleg nyilvános előzetes verzióban érhető el.
+
+## <a name="resiliency-of-azure-resource-manager"></a>Rugalmasság az Azure Resource Manager
+
+Az Azure Resource Manager szolgáltatás célja a rugalmasság és a folyamatos rendelkezésre állást. Erőforrás-kezelő és vezérlősík-műveletnél (management.azure.com küldött kérelmek) a REST API-t a következők:
+
+* Régiók között elosztva. Egyes szolgáltatások olyan regionális.
+
+* Elosztott rendelkezésre állási zónák (a jól régió) helyeken, amelyek több rendelkezésre állási zónák között.
+
+* Egyetlen logikai adatközpontba nem függ.
+
+* Soha nem foglalt karbantartási tevékenységek miatt.
+
+Ez rugalmasságot, amely a Resource Manageren keresztül kérések fogadására szolgáltatások vonatkozik. Ha például a Key Vault számos előnyt biztosít az a rugalmasság.
 
 [!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 

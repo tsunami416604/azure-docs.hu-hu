@@ -216,7 +216,7 @@
           href: online-backup-and-restore.md
         - name: Megfelelőség
           href: compliance.md
-    - name: Korlátok
+    - name: Erőforráskorlátok
       href: concepts-limits.md
 - name: 'Cassandra, MongoDB és egyéb API-k'
   expanded: true

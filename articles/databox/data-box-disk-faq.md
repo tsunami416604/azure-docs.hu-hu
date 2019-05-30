@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 05/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69068304a6bc72f503ed85edf05229f10e4a8bc0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729273"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236353"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
@@ -55,6 +55,9 @@ A.  Ahol a Data Box-lemezek elérhetők jelenleg megtekintéséhez nyissa meg a 
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>K. Mely régiókban tárolhatok adatokat a Data Box Disk-lemezekkel?
 A. Data Box-lemezek NEKÜNK, Kanadában, Ausztráliában, Nyugat-Európa és Észak-Európa, koreai és japán belül minden régió esetében támogatott. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
+
+### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>K. A Data Box-lemezek közötti ország szegélyek fog szállítási során?
+A. Data Box-lemezek belül a rendeltetési országot postáztuk, és nem lesz adatbázisközi bármely nemzetközi határokon. Az egyetlen kivétel, az Európai Unió (EU), ahol lemezek is, és szállíthat bármilyen EU országából rendeléseket.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>K. Kihez fordulhatok, ha probléma merülne fel a Data Box Disk-lemezekkel kapcsolatban?
 A. Ha problémába ütközik a Data Box-lemezeit, [forduljon a Microsoft Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -164,9 +167,9 @@ A. Lehetősége van klónozni az előző megrendelését. A klónozással létre
 
 ### <a name="q-i-copied-data-to-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-and-how-can-i-locate-it"></a>K. ManagedDisk mappába másolt adatokat. A felügyelt lemezek a megadott erőforráscsoport nem látható a felügyelt lemezeket. Adatok feltöltése az Azure-ba, és hogyan kikereshetők?
 A. Igen. Az adatok feltöltése az Azure-ba, de ha nem látja a felügyelt lemezeket a megadott erőforrás-csoportokat, valószínű, mert nem volt érvényes az adatok. A lapblobok blokkblobokat, az Azure Files, és a felügyelt lemezeket nem érvényes, ha ezek akkor lépjen a következő mappák:
- - Lapblobok block blob-tárolóba kezdődően lép majd *databoxdisk – érvénytelen-pb -*.
- - Az Azure Files helyezkedik el kezdve block blob-tárolóba *databoxdisk – érvénytelen-af -*.
- - A felügyelt lemezek helyezkedik el kezdve block blob-tárolóba *databoxdisk – érvénytelen-md -*.
+ - Lapblobok block blob-tárolóba kezdődően lép majd *databoxdisk – érvénytelen-pb -* .
+ - Az Azure Files helyezkedik el kezdve block blob-tárolóba *databoxdisk – érvénytelen-af -* .
+ - A felügyelt lemezek helyezkedik el kezdve block blob-tárolóba *databoxdisk – érvénytelen-md -* .
 
 ## <a name="next-steps"></a>További lépések
 

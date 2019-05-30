@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Tárolók és mikroszolgáltatások az Azure-csapat a Kubernetes-fejlesztés
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: jeconnoc
-ms.openlocfilehash: 94083639ca769d12b04c4dc316a9f9867e4209b1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 74ed1981ba6bf62413d7d7bfd51282eb04afd403
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765246"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393405"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: A Kubernetes Azure-fejlesztési szóközzel csoportos fejlesztése
 
@@ -35,7 +35,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Az Azure Kubernetes Service-fürt létrehozása
 
-Az AKS-fürt létre kell hoznia egy [támogatott régió](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams). Az alábbi parancsokkal nevű erőforráscsoport létrehozása *MyResourceGroup* és a egy AKS-fürt nevű *MyAKS*.
+Az AKS-fürt létre kell hoznia egy [támogatott régió][supported-regions]. Az alábbi parancsokkal nevű erőforráscsoport létrehozása *MyResourceGroup* és a egy AKS-fürt nevű *MyAKS*.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
@@ -232,3 +232,6 @@ Megtudhatja, hogyan segít az Azure Dev Spaces az összetettebb alkalmazások fe
 
 > [!div class="nextstepaction"]
 > [Több tároló használata és fejlesztés csapatban](multi-service-nodejs.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

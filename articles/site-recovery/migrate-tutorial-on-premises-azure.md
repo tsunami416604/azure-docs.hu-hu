@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df4f89bd1b2e3c0423f5d758cfa637e4da9e04d0
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60193889"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66396542"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
@@ -118,7 +118,7 @@ Futtasson egy feladatátvételt a migrálni kívánt gépen.
 > [!WARNING]
 > **Ne szakítsa meg a folyamatban lévő feladatátvételt**: Virtuális gép replikációja leáll a feladatátvétel indítása előtt. Ha megszakítja a folyamatban lévő feladatátvételt, az leáll, a virtuális gép replikációja azonban nem folytatódik.
 
-Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szükséges, ami körülbelül nyolc-tíz percet vesz igénybe. Bizonyára észrevette, hogy hosszabb a feladatátvételi teszt ideje a fizikai kiszolgálókon, a VMware Linux gépeken, a nem DHCP-vel kiosztott IP-című VMware virtuális gépeken, valamint a következő rendszerindító illesztőprogramokkal nem rendelkező VMware virtuális gépeken: storvsc, vmbus, storflt, intelide, atapi.
+Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szükséges, ami körülbelül nyolc-tíz percet vesz igénybe. Előfordulhat, hogy láthatja, hogy már feladatátvételi teszt ideje a fizikai kiszolgálók, VMware Linux gépeken, VMware virtuális gépek, amelyek nem rendelkeznek a DHCP-szolgáltatás engedélyezve van és a következő rendszerindító illesztőprogramokkal nem rendelkező VMware virtuális gépeken: storvsc, vmbus, storflt, intelide, atapi.
 
 ## <a name="after-migration"></a>Áttelepítés után
 
@@ -159,7 +159,7 @@ Egyes lépések automatikusan is végrehajthatók az áttelepítési folyamat r�
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban helyszíni virtuális gépeket migrált Azure-beli virtuális gépekbe. Most
+Ebben az oktatóanyagban helyszíni virtuális gépeket migrált Azure-beli virtuális gépekbe. most
 
 > [!div class="nextstepaction"]
 > [Vészhelyreállítás beállítása](azure-to-azure-replicate-after-migration.md) egy másodlagos Azure-régióba az Azure-beli virtuális gépek.

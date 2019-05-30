@@ -7,14 +7,14 @@ manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: v-pawal
 ms.topic: overview
-ms.openlocfilehash: d9b253afa7414ada4db58f98cd346e223f8282b6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5ce73e28d25f0e517da08895764adc5a31740a7e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60511461"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389658"
 ---
 # <a name="what-is-custom-translator"></a>Mi a Custom Translator?
 
@@ -24,11 +24,11 @@ A használatával létrehozott fordítási rendszerek [egyéni a fordítót](htt
 
 Egyéni Translator több mint három tucat nyelveket támogatja, és a NMT közvetlenül elérhető nyelvek rendeli. Teljes listáját lásd: [Microsoft Translator nyelvek](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 Egyéni a fordítót hozhat létre egyéni fordítási rendszer, és később elérhető-e a különböző funkciókat biztosít.
 
-|Szolgáltatás  |Leírás  |
+|Funkció  |Leírás  |
 |---------|---------|
 |[Neurális gépi fordítás technológia hajtják végre](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  A fordítás javítása egyéni a fordítót által biztosított Neurális gépi fordítás (NMT) kihasználásával.       |
 |[Hozhat létre rendszereket, hogy ismeri az üzleti terminológiája](what-are-parallel-documents.md)     |  Testre szabhatja, és a párhuzamos dokumentumok, megismerheti a saját üzleti és az iparágban használt terminológiát használ fordítási rendszerek készítése.       |

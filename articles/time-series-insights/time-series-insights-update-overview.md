@@ -4,30 +4,30 @@ description: Az Azure Time Series Insights előzetes verziója áttekintése.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: anshan
 ms.workload: big-data
 ms.topic: overview
 ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: a742e9f235812cdbdafdcb0a39581e0779fcd040
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6bcf0155be87a5b36c6b850fa889e23a340ac7ec
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572927"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237512"
 ---
-# <a name="the-azure-time-series-insights-preview"></a>Az Azure Time Series Insights-előzetes verzió
+# <a name="azure-time-series-insights-preview"></a>Az Azure Time Series Insights előzetes verziója
 
-Az Azure Time Series Insights előzetes verziója olyan teljes körű platform--szolgáltatásként ajánlat. Gyűjtése, feldolgozásához, tárolásához, elemzéséhez és lekérdezése rendkívül contextualized, a time series-optimalizált IoT-méretű adatokra szolgál. A Time Series Insights alkalmi adatfeltárás és működési elemzés ideális. A Time Series Insights egy olyan ajánlat, hogy megfelel-e a széles körű kell ipari IoT központi telepítések egyedileg bővíthető és testre szabott szolgáltatás.
+Az Azure Time Series Insights előzetes verziója olyan teljes körű platform--szolgáltatásként (PaaS) ajánlat. Gyűjtése, feldolgozásához, tárolásához, elemzéséhez és lekérdezése rendkívül contextualized, a time series-optimalizált IoT-méretű adatokra szolgál. A Time Series Insights alkalmi adatfeltárás és működési elemzés ideális. A Time Series Insights egy olyan ajánlat, hogy megfelel-e a széles körű kell ipari IoT központi telepítések egyedileg bővíthető és testre szabott szolgáltatás.
 
 > [!TIP]
-> Szolgáltatások általános rendelkezésre állását, olvassa el a [Azure Time Series Insights GA áttekintése](time-series-insights-overview.md).
+> Szolgáltatások általános elérhetőségét, olvassa el a [Azure Time Series Insights GA áttekintése](time-series-insights-overview.md).
 
 ## <a name="video"></a>Videó
 
-### <a name="learn-more-about-the-azure-time-series-insights-preview-br"></a>További információ az Azure Time Series Insights előzetes verziója. </br>
+### <a name="learn-more-about-azure-time-series-insights-preview-br"></a>További információ az Azure Time Series Insights előzetes verziója. </br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics/player]
 
@@ -55,14 +55,14 @@ Az aktuális IoT fekvő változatos. Ügyfeleink a gyártási, a gépjárműipar
 - Évtizednyi alatt az idősorozat-adatok tárolásának képessége.
 - Lehetővé teszi az explicit módon modellezheti és az operatív adatelemzési eszköz-alapú lekérdezések optimalizálása.
 
-A Time Series Insights egy átfogó, teljes körű platform--szolgáltatásként IoT-adatok feltárása és az operational insights szánt. A Time Series Insights egy teljes körűen felügyelt felhőszolgáltatás, IoT-méretű idősoros adatainak elemzésére kínál.
+A Time Series Insights egy átfogó, teljes körű PaaS, IoT-adatok feltárása és az operational insights szánt. A Time Series Insights egy teljes körűen felügyelt felhőszolgáltatás, IoT-méretű idősoros adatainak elemzésére kínál.
 
 Nyers adatok egy séma nélküli, memórián belüli tárolóban tárolhatja. Ezután elvégezheti, interaktív ad hoc lekérdezéseket egy elosztott lekérdezési motor és az API segítségével. Ellenőrizze a gazdag felhasználói élmény használatával jeleníthet meg több milliárd eseményt másodpercek alatt. Tudjon meg többet a [adatok feltárása képességek](./time-series-insights-overview.md).
 
 A Time Series Insights jelenleg előzetes verzióban az operational insights-képességeket is kínál. Interaktív adatáttekintés és operatív adatelemzési használhatja a Time Series Insights származtassa tovább kamatoztatását IoT-eszközök begyűjtött adatokat. Az előzetes ajánlat támogatja:
 
-* Egy skálázható, teljesítmény és költség optimalizált idősorozat-adatok tárolására. A felhőalapú IoT-megoldás is trend évnyi idősorozat-adatok másodpercek alatt.
-* A szemantikai modell támogatása, amely leírja a tartomány és a származtatott, és nem származtatott jelekkel, eszközök és eszközökről érkező társított metaadatokat.
+* Egy skálázható, és a teljesítmény és költség optimalizált idő idősorozat-adatok tárolására. A felhőalapú IoT-megoldás is trend évnyi idősorozat-adatok másodpercek alatt.
+* A szemantikai modell támogatása, amely leírja a tartomány és a származtatott és nonderived jeleket, eszközök és eszközökről érkező társított metaadatokat.
 * Továbbfejlesztett felhasználói felületet nyújt, amely az eszközintelligencia-alapú adatelemzési információk ötvözi a gazdag, ad-hoc adatelemzést. Ez a kombináció meghajtók, üzleti és működési intelligenciával.
 * Fejlett gépi tanulási és elemzési eszközök integrációja. Eszközök közé tartozik az Azure Databricks, az Apache Spark, Azure Machine Learning, a Jupyter notebookok és Power bi-ban. Ezek az eszközök segítségével idősorozat-adatok ügyfélfeladatainak idő kiszolgálókon és a működési hatékonyságot.
 
@@ -76,16 +76,16 @@ A Time Series Insights főbb ipari IoT funkcióját bevezetésével fő előnyei
 
 | | |
 | ---| ---|
-| **Az IoT-méretű idősoros adatainak többrétegű tárolás** | Egy közös adatfeldolgozási folyamat adatok, és adatokat tárolhatja az interaktív lekérdezések meleg storage-ban. Akkor is adatot tárolhat nagy mennyiségű adatot a ritka elérésű tárolási. Nagy teljesítményű eszköz-alapú előnyeit [lekérdezések](./time-series-insights-update-tsq.md). |
-| **Nyers telemetriát contextualize és elemzéseket az eszközintelligencia-alapú Idősorozat-modell** | A leíró a nyers telemetriaadatok contextualize [Idősorozat-modell](./time-series-insights-update-tsm.md). Az eszköz alapú lekérdezések magas teljesítmény és költség optimalizált gazdag operatív adatelemzési származik. |
-| **Más megoldások zökkenőmentes és folyamatos integráció** |  A Time Series Insights adatai [tárolt](./time-series-insights-update-storage-ingress.md) a nyílt forráskódú Apache Parquet-fájlokat. Ez az integráció az adatok megoldásait, első vagy harmadik féltől származó,-e egyszerű végpontok közötti forgatókönyvek esetén. Ilyen például, amikor üzleti intelligencia, a fejlett gépi tanulási és a prediktív elemzések. |
-| **Közel valós idejű adatok feltárása** | A [Azure Time Series Insights – előzetes explorer](./time-series-insights-update-explorer.md) felhasználói élményt biztosít a betöltési folyamat révén minden adatstreamelési vizualizációját. Hamarosan az eseményforrás a csatlakozás után megtekintheti, ismerje meg, és események adatainak lekérdezéséhez. Így ellenőrizheti, hogy e eszköz elvárt bocsát ki adatokat. Egy IoT-eszköz állapotát, hatékonyságot és általános hatékonyságát is figyelheti. |
-| **Kiváltó elemzések és rendellenességészlelés észlelése** | A [Azure Time Series Insights – előzetes explorer](./time-series-insights-update-explorer.md) tartson, és mentse a többlépéses, alapvető okok elemzése nézeteket és szempontjából egyaránt támogatja. Az Azure Stream Analytics együttesen a Time Series Insights segítségével közel valós időben észlelheti a riasztások és a rendellenességeket. |
-| **A Time Series Insights-platformra épülő egyéni alkalmazásokat** | Time Series Insights támogatja a [JavaScript SDK](./tutorial-explore-js-client-lib.md). Az SDK-t biztosít a gazdag vezérlők és egyszerűen hozzáférhet a lekérdezéseket. Az SDK használatával egyéni IoT alkalmazásokat a Time Series Insights a saját üzleti igényeinek. Emellett használhatja a Time Series Insights [lekérdezési API-k](./time-series-insights-update-tsq.md) közvetlenül az egyéni IoT-alkalmazások meghajtó adatokat. |
+| Az IoT-méretű idősoros adatainak többrétegű tárolás | Egy közös adatfeldolgozási folyamat adatok, és adatokat tárolhatja az interaktív lekérdezések meleg storage-ban. Akkor is adatot tárolhat nagy mennyiségű adatot a ritka elérésű tárolási. Nagy teljesítményű eszköz-alapú előnyeit [lekérdezések](./time-series-insights-update-tsq.md). |
+| Nyers telemetriát contextualize és elemzéseket az eszközintelligencia-alapú Idősorozat-modell | A leíró a nyers telemetriaadatok contextualize [Idősorozat-modell](./time-series-insights-update-tsm.md). Az eszköz alapú lekérdezések magas teljesítmény és költség optimalizált gazdag operatív adatelemzési származik. |
+| Más megoldások zökkenőmentes és folyamatos integráció | A Time Series Insights adatai [tárolt](./time-series-insights-update-storage-ingress.md) a nyílt forráskódú Apache Parquet-fájlokat. Ez az integráció az adatok megoldásait, első vagy harmadik féltől származó,-e egyszerű végpontok közötti forgatókönyvek esetén. Ilyen például, amikor üzleti intelligencia, a fejlett gépi tanulási és a prediktív elemzések. |
+| Közel valós idejű adatok feltárása | A [Azure Time Series Insights – előzetes explorer](./time-series-insights-update-explorer.md) felhasználói élményt biztosít a betöltési folyamat révén minden adatstreamelési vizualizációját. Hamarosan az eseményforrás a csatlakozás után megtekintheti, ismerje meg, és események adatainak lekérdezéséhez. Így ellenőrizheti, hogy e eszköz elvárt bocsát ki adatokat. Egy IoT-eszköz állapotát, hatékonyságot és általános hatékonyságát is figyelheti. |
+| Kiváltó elemzések és rendellenességészlelés észlelése | A [Azure Time Series Insights – előzetes explorer](./time-series-insights-update-explorer.md) tartson, és mentse a többlépéses, alapvető okok elemzése nézeteket és szempontjából egyaránt támogatja. Az Azure Stream Analytics együttesen a Time Series Insights segítségével közel valós időben észlelheti a riasztások és a rendellenességeket. |
+| A Time Series Insights-platformra épülő egyéni alkalmazásokat | Time Series Insights támogatja a [JavaScript SDK](./tutorial-explore-js-client-lib.md). Az SDK-t biztosít a gazdag vezérlők és egyszerűen hozzáférhet a lekérdezéseket. Az SDK használatával egyéni IoT alkalmazásokat a Time Series Insights a saját üzleti igényeinek. Emellett használhatja a Time Series Insights [lekérdezési API-k](./time-series-insights-update-tsq.md) közvetlenül az egyéni IoT-alkalmazások meghajtó adatokat. |
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedés az Azure Time Series Insights előzetes verziója:
+Ismerkedés az Azure Time Series Insights – előzetes:
 
 > [!div class="nextstepaction"]
 > [A rövid útmutató elolvasása](./time-series-insights-update-quickstart.md)

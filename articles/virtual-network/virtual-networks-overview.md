@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2018
 ms.author: kumud
-ms.openlocfilehash: 44094a38fff17908fd5ea851209130f89a49c988
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 23093cd8bcb5793b9e5b9abc835f64233e666ce1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707029"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241751"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
-Az Azure Virtual Network számos Azure-erőforrástípus (pl. Azure-beli virtuális gépek) számára teszi lehetővé, hogy biztonságosan kommunikálhassanak egymással, az internettel és a helyszíni hálózatokkal. Virtuális hálózat hatókörét egy adott régióban; azonban különféle régiókból származó több virtuális hálózat csatlakozhatnak egymáshoz a virtuális hálózatok közötti Társviszony segítségével.
+Az Azure Virtual Network számos Azure-erőforrástípus (pl. Azure-beli virtuális gépek) számára teszi lehetővé, hogy biztonságosan kommunikálhassanak egymással, az internettel és a helyszíni hálózatokkal. Virtuális hálózat hatókörét egy adott Azure-régióban. Azure-beli [régió](https://azure.microsoft.com/global-infrastructure/regions/) adatközpontok késési értékkel definiált szegélyhálózat-alapú belül vannak üzembe helyezve és a egy dedikált regionális alacsony késleltetésű hálózaton keresztül csatlakozó készlete. 
+
+Virtuális hálózatok alhálózatokat épülnek fel. Egy alhálózat egy IP-címtartományt a virtuális hálózaton belül. Például a virtuális hálózatok, alhálózatok hatóköre egyetlen Azure-régióban. 
+
+Különféle régiókból származó több virtuális hálózatok egymáshoz a virtuális hálózatok közötti Társviszony segítségével csatlakoztathatók.
 
 Az Azure Virtual Network az alábbi fő lehetőségeket nyújtja:
 

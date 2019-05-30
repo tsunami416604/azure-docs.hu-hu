@@ -219,18 +219,18 @@
           href: backup-azure-restore-windows-server.md
         - name: A Windows Server rendszerállapotának visszaállítása
           href: backup-azure-restore-system-state.md
-        - name: Recovery Services-tárolók figyelése és kezelése
-          href: backup-azure-manage-windows-server.md
     - name: Recovery Services-tároló
       items:
         - name: A Recovery Services-tárolók áttekintése
           href: backup-azure-recovery-services-vault-overview.md
-        - name: Backup-tároló frissítése Recovery Services-tárolóra
-          href: backup-azure-upgrade-backup-to-recovery-services.md
+        - name: Helyreállítási tár létrehozása
+          href: backup-create-rs-vault.md
         - name: Recovery Services-tároló törlése
           href: backup-azure-delete-vault.md
         - name: Recovery Services-tároló áthelyezése
           href: backup-azure-move-recovery-services-vault.md
+        - name: Recovery Services-tárolók figyelése és kezelése
+          href: backup-azure-manage-windows-server.md
     - name: Hibaelhárítás
       items:
         - name: Azure VM

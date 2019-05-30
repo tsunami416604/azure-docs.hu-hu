@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 01/03/2019
+ms.date: 05/24/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 498dd3be75cb27263c811d9db541b2e040599156
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e8a68ca87307e1265c200f2e05464ff87983c1e6
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788022"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258408"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Az Azure Blob Storage bemutatása
 
@@ -68,8 +68,8 @@ Számos megoldás létezik, a meglévő adatok áttelepítése a Blob storage:
 - A **Azure Storage Adatáthelyezés könyvtár** egy .NET-kódtár adatok áthelyezése az Azure Storage szolgáltatás között. Az AzCopy segédprogram épül, és az adatok áthelyezését. További információkért lásd: a [referenciadokumentációt](/dotnet/api/microsoft.azure.storage.datamovement) a Adatáthelyezés szalagtár. 
 - **Az Azure Data Factory** támogatja az adatok másolása Blob storage szolgáltatásba vagy onnan a fiókkulcs, közös hozzáférésű jogosultságkódok, a szolgáltatás egyszerű, vagy a felügyelt identitások a Azure-erőforrások hitelesítéséről. További információkért lásd: [másolhat az Azure Blob storage-ból az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
 - **Blobfuse** van a virtuális fájlrendszer illesztőprogramja az Azure Blob storage. Blobfuse használhatja a meglévő blokkblobok adataival eléréséhez a Linux fájlrendszeren keresztül a Storage-fiókban. További információkért lásd: [Blob-tároló csatlakoztatása fájlrendszerként való blobfuse hogyan](storage-how-to-mount-container-linux.md).
-- **Az Azure Data Box-lemezek** átviteléhez a helyszíni adatok Blob storage nagy méretű adatkészletek és a hálózati korlátok, hogy a kvótán túli adatfeltöltés szempontjából a hálózaton keresztül sokfélesége szolgáltatás. Az [Azure Data Box Disk](../../databox/data-box-disk-overview.md) használatával SSD-meghajtókat kérhet a Microsofttól. Ezután az adatokat a meghajtókra másolhatja, azokat pedig visszaküldheti, hogy a Microsoft feltöltse az adatokat a Blob Storage-ba.
-- A **Azure Import/Export szolgáltatás** lehetővé teszi a nagy mennyiségű adat exportálása merevlemez-meghajtókat, amelyek adnia és vissza a adatait, majd mobilplatform, hogy a Microsoft a tárfiókból. További információkért lásd: [a Microsoft Azure Import/Export szolgáltatás használata az adatok átviteléhez a Blob storage](../common/storage-import-export-service.md).
+- **Az Azure Data Box** szolgáltatás a helyszíni adatok átviteléhez a Blob Storage nagy méretű adatkészletek és a hálózati korlátok, hogy a kvótán túli adatfeltöltés szempontjából a hálózaton keresztül sokfélesége érhető el. Az adatok méretétől függően kérhet [Azure Data Box-lemezek](../../databox/data-box-disk-overview.md), [Azure Data Box](../../databox/data-box-overview.md), vagy [Azure Data Box nehéz](../../databox/data-box-heavy-overview.md) eszközökhöz a Microsoft. Ezután az adatok másolása az eszközök és szállíthat őket a Microsoftnak kell feltölteni a Blob storage-bA.
+- A **Azure Import/Export szolgáltatás** lehetővé teszi a importálása és exportálása a nagy mennyiségű adatot, és az Ön tárfiókjából, Ön által megadott merevlemezek használatával. További információkért lásd: [a Microsoft Azure Import/Export szolgáltatás használata az adatok átviteléhez a Blob storage](../common/storage-import-export-service.md).
 
 ## <a name="next-steps"></a>További lépések
 

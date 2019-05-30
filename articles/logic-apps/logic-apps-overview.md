@@ -1,26 +1,26 @@
 ---
-title: Az Azure Logic Apps vállalati integrációja | Microsoft Docs
-description: Ez az áttekintés azt ismerteti, hogyan hozhat létre vállalati integrációs megoldásokat az alkalmazások, adatok, szolgáltatások és rendszerek vállalatokkal és szervezetekkel való integrálását elvégző feladatok, munkafolyamatok és üzleti folyamatok automatizálásával. Adatintegrációs, rendszer-integrációs és vállalati alkalmazásintegrációs (EAI) megoldásokat vagy vezénylési forgatókönyveket is létrehozhat.
+title: Az Azure Logic Apps vállalati integrációja
+description: Vállalati integrációs megoldások létrehozása automatizálása, valamint a feladatok, a munkafolyamatok és üzleti folyamatok, alkalmazások, adatok, szolgáltatások és rendszerek integrálásához vállalaton vagy intézményen belül replikálásával segít a vállalatnak áttekintését. Adatintegrációs, rendszer-integrációs és vállalati alkalmazásintegrációs (EAI) megoldásokat vagy vezénylési forgatókönyveket is létrehozhat.
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+manager: carmonm
+ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 6/29/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d9f3bb33ab0638fddfcf64e61642c236a03d6293
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2892dc3b8f25624e7925c9b4aa86110c167ad616
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61318525"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299111"
 ---
 # <a name="what-is-azure-logic-apps"></a>Mi az Azure Logic Apps?
 
-Az [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) egy olyan felhőszolgáltatás, amely segít a feladatok, üzleti folyamatok és [munkafolyamatok](#logic-app-concepts) automatizálásában és összehangolásában, amikor integrálja az alkalmazásokat, adatokat, rendszereket és szolgáltatásokat a vállalatokkal és szervezetekkel. A Logic Apps egyszerűvé, hogyan tervezhet és alkalmazás méretezhető megoldásokat hozhat létre [integrációs](https://azure.microsoft.com/product-categories/integration/), Adatintegráció, rendszerintegráció, Vállalati alkalmazásintegráció (EAI) és vállalatközi (B2B) kommunikáció, hogy található-e a felhőben, a helyszínen egyaránt.
+[Az Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) egy felhőalapú szolgáltatás, amely segítséget nyújt ütemezése, és automatizálása, feladatok, üzleti folyamatokat, és [munkafolyamatok](#logic-app-concepts) számíthat alkalmazások, adatok, rendszerek és szolgáltatások integrálni lehet a vállalatok számára, vagy a szervezetek számára. A Logic Apps egyszerűvé, hogyan tervezhet és alkalmazás méretezhető megoldásokat hozhat létre [integrációs](https://azure.microsoft.com/product-categories/integration/), Adatintegráció, rendszerintegráció, Vállalati alkalmazásintegráció (EAI) és vállalatközi (B2B) kommunikáció, hogy található-e a felhőben, a helyszínen egyaránt.
 
 A logikai alkalmazásokkal többek között a következő munkafolyamatok automatizálhatók:
 
@@ -35,7 +35,7 @@ Ha az Azure Logic Apps segítségével szeretne vállalati integrációs megold�
 
 ## <a name="how-does-logic-apps-work"></a>A Logic Apps működése 
 
-Minden logikai alkalmazás munkafolyamata egy eseményindítóval indul, amely akkor aktiválódik, ha egy adott esemény bekövetkezik, vagy egy adott feltételnek megfelelő új adatok válnak elérhetővé. Számos eseményindító tartalmaz alapszintű ütemezési funkciókat is, amelyekkel megadható, hogy a számítási feladatok milyen gyakran fussanak. További egyéni ütemezési forgatókönyvekért indítsa munkafolyamatait az Ütemezés eseményindítóval. További információk az [ütemezésalapú munkafolyamatok létrehozásáról](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md).
+Minden logikai alkalmazás munkafolyamata egy eseményindítóval indul, amely akkor aktiválódik, ha egy adott esemény bekövetkezik, vagy egy adott feltételnek megfelelő új adatok válnak elérhetővé. Az összekötők a Logic Apps által kínált számos eseményindító tartalmaz alapszintű ütemezési funkciókat, így állíthat be, hogy milyen gyakran a számítási feladatok futnak. Összetett ütemezés vagy speciális ismétlődések használhatja egy ismétlődési eseményindítót minden munkafolyamat első lépéseként. Tudjon meg többet [ütemezésalapú munkafolyamatok](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 A Logic Apps-motor a trigger minden elindulásakor létrehoz egy logikaialkalmazás-példányt, amely futtatja a munkafolyamatban található műveleteket. Ezek a műveletek tartalmazhatnak még adatátalakítókat és folyamatvezérlőket is, például feltételes utasításokat, switch utasításokat, hurkokat és elágaztatásokat. Például a következő logikai alkalmazást egy Dynamics 365-eseményindító aktiválja, amely a beépített „Amikor egy rekord frissül” feltételt tartalmazza. Ha az eseményindító egy olyan eseményt észlel, amely megfelel ennek a feltételnek, akkor aktiválódik, majd elindítja a munkafolyamat műveleteit. Esetünkben e műveletek közé tartoznak az XML-átalakítások, az adatfrissítések, a döntések elágaztatása és ez e-mailes értesítések.
 
@@ -132,14 +132,9 @@ Ezen szolgáltatások mindegyike a különböző rendszerek csatlakoztatásában
 
 ## <a name="get-started"></a>Bevezetés 
 
-A Logic Apps a Microsoft Azure-ban üzemeltetett számos szolgáltatás egyike. Éppen ezért a használatához rendelkeznie kell Azure-előfizetéssel. Ha még nincs előfizetése, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+A Logic Apps a Microsoft Azure-ban üzemeltetett számos szolgáltatás egyike. Éppen ezért a használatához rendelkeznie kell Azure-előfizetéssel. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
 Ha már van Azure-előfizetése, próbálja ki ezt a rövid útmutatót [az első logikai alkalmazása létrehozásához](../logic-apps/quickstart-create-first-logic-app-workflow.md), amely egy RSS-hírfolyamon keresztül monitoroz egy adott weboldalt, és az új tartalmak megjelenésekor e-mailes értesítést küld.
-
-## <a name="support-and-feedback"></a>Támogatás és visszajelzés
-
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
 

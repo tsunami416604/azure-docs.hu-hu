@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: kumud
-ms.openlocfilehash: a947b5983f4a7d58878fc15785cfbcbcbba7f226
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 698714990b9b34567d918d3b8c536bc3e39d66b8
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66156201"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257693"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Gyors útmutató: Azure CLI használatával virtuális gépek terhelésének elosztásához load balancer létrehozása
 
@@ -146,7 +146,7 @@ Hozzon létre biztonságicsoport-szabályt a 80-as porton keresztül érkező be
 ```
 ### <a name="create-nics"></a>Hálózati adapterek létrehozása
 
-Hozzon létre három hálózati adaptert az [az network nic create](/cli/azure/network/nic#az-network-nic-create) paranccsal, és rendelje azokat a nyilvános IP-címhez és a hálózati biztonsági csoporthoz. 
+Hozzon létre két hálózati adaptert az [az network nic létrehozása](/cli/azure/network/nic#az-network-nic-create) , és rendelje azokat a nyilvános IP-cím és a hálózati biztonsági csoport. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -164,7 +164,7 @@ done
 
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
-Ebben a példában három virtuális gépet hoz létre, amelyeket a terheléselosztó háttérkiszolgálóiként fog használni. A terheléselosztó sikeres létrehozásának ellenőrzéséhez az NGINX-et is telepíti a virtuális gépekre.
+Ebben a példában két virtuális gépet hoz létre, amelyeket a terheléselosztó háttérkiszolgálóiként fog használni. A terheléselosztó sikeres létrehozásának ellenőrzéséhez az NGINX-et is telepíti a virtuális gépekre.
 
 ### <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
 

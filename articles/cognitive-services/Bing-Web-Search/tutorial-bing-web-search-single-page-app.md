@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 668c380f38f410083ffe7d2cd6690be447f614dc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1203947efadf4fed328655c9cfb839f666a80b0c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798335"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390047"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Hozzon létre egy egyoldalas alkalmazást, a Bing Web Search API használatával
 
@@ -80,7 +80,7 @@ Az `index.html` tartalmaz egy űrlapot, amelyen a felhasználók keresést vége
 
 ## <a name="query-options"></a>Lekérdezés beállításai
 
-A HTML-űrlap lekérdezési beállításokat tartalmaz, amelyek a [Bing Web Search API 7-es verziójában](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters) lekérdezési paraméterekre lesznek leképezve. Az alábbi táblázat részletesen bemutatja, hogyan szűrhetik a felhasználók a keresési eredményeket a mintaalkalmazással:
+A HTML-űrlap lekérdezési beállításokat tartalmaz, amelyek a [Bing Web Search API 7-es verziójában](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) lekérdezési paraméterekre lesznek leképezve. Az alábbi táblázat részletesen bemutatja, hogyan szűrhetik a felhasználók a keresési eredményeket a mintaalkalmazással:
 
 | Paraméter | Leírás |
 |-----------|-------------|
@@ -93,7 +93,7 @@ A HTML-űrlap lekérdezési beállításokat tartalmaz, amelyek a [Bing Web Sear
 | `offset` | Rejtett mező. Az első keresési eredmény eltolása a kérésben a lapozás elősegítéséhez. Minden új kérésnél `0` értékre van visszaállítva. |
 
 > [!NOTE]
-> A Bing Web Search API további lekérdezési paraméterekkel támogatja a keresési eredmények finomítását. Ez a minta csak néhányat használ. Az elérhető paraméterek teljes listáját a [Bing Web Search API 7-es verzió – referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters) című dokumentumban találja meg.
+> A Bing Web Search API további lekérdezési paraméterekkel támogatja a keresési eredmények finomítását. Ez a minta csak néhányat használ. Az elérhető paraméterek teljes listáját a [Bing Web Search API 7-es verzió – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) című dokumentumban találja meg.
 
 Ezeket a beállításokat a `bingSearchOptions()` függvény konvertálja át a Bing Search API által megkövetelt formátumra.
 
@@ -287,7 +287,7 @@ function handleBingResponse() {
 
 Az előző két függvény kódjainak nagy része a hibakezelésért felel. A következő fázisoknál léphetnek fel hibák:
 
-| Szakasz | Lehetséges hiba vagy hibák | Kezelő |
+| Fázis | Lehetséges hiba vagy hibák | Kezelő |
 |-------|--------------------|------------|
 | A kérésobjektum elkészítése | Érvénytelen URL-cím | `try` / `catch` blokk |
 | Kérés végrehajtása | Hálózati hibák, megszakított kapcsolatok | `error` és `abort` eseménykezelők |

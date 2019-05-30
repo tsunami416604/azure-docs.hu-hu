@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 3959eb789102cd3d54fc7bab32e585b3c09d897b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7870322746d8cb647547e5c85036579611ac3292
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792152"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303311"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Gyors útmutató: A .NET használata és C# csatlakozhat, és a egy Azure SQL database lekérdezése a Visual studióban
 
@@ -31,7 +31,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolat egy virtuális gépről](sql-database-managed-instance-configure-vm.md)|
@@ -43,7 +43,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
   > [!IMPORTANT]
   > Ebben a cikkben a parancsfájlok az Adventure Works adatbázisa használatához készültek. Felügyelt példánnyal Ha az Adventure Works adatbázisa importálása-példány adatbázis, vagy módosítsa a parancsfájlokat ebben a cikkben a Wide World Importers-adatbázis használatára.
 
-- [A Visual Studio 2017](https://www.visualstudio.com/downloads/) közösségi, Professional vagy Enterprise edition.
+- [A Visual Studio 2019](https://www.visualstudio.com/downloads/) közösségi, Professional vagy Enterprise edition.
 
 ## <a name="get-sql-server-connection-information"></a>Az SQL server-kapcsolati adatok lekéréséhez
 
@@ -59,7 +59,7 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
 
 1. A Visual Studióban válassza ki a **fájl** > **új** > **projekt**. 
    
-1. Az a **új projekt** párbeszédablakban válassza **Visual C#** , majd válassza ki **Console App (.NET Framework)**.
+1. Az a **új projekt** párbeszédablakban válassza **Visual C#** , majd válassza ki **Console App (.NET Framework)** .
    
 1. Adja meg *sqltest* a projekt nevét, és válassza ki a **OK**. Az új projekt jön létre. 
    
@@ -73,7 +73,7 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
    
 1. Ha a telepítés befejeződött, bezárhatja **NuGet-Csomagkezelő**. 
    
-1. A code szerkesztőben cserélje le a **Program.cs** tartalmát az alábbira. Helyettesítse be a saját értékeit `<server>`, `<username>`, `<password>`, és `<database>`.
+1. A code szerkesztőben cserélje le a **Program.cs** tartalmát az alábbira. Cserélje le a saját értékeit `<server>`, `<username>`, `<password>`, és `<database>`.
    
    >[!IMPORTANT]
    >Ebben a példában a kódot az AdventureWorksLT mintaadatokat, amely forrásként is választja, az adatbázis létrehozásakor használ. Ha az adatbázis különböző adatokat, használja a saját adatbázis tábláinak a SELECT-lekérdezésben. 

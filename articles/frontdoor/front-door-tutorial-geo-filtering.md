@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: c04a9dff55794a3e48146e8effc3627452b3db14
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: f2b5a2bc3248c9f2ee0eb49e993fd55c7714367a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950163"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389154"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Számára a bejárati ajtó a földrajzi szűrés WAF szabályzat beállítása
 Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy egyszerű geoszűrési szabályzatot, és társíthatja azt a meglévő előtérbeli Front Door-gazdagéphez az Azure PowerShell-lel. A minta a földrajzi szűrés házirend letiltja a minden más országokban és régiókban Egyesült Államok kivételével érkező kérelmeket.
@@ -110,6 +110,5 @@ Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 > Csak egyszer WebApplicationFirewallPolicyLink tulajdonság beállítása mutató hivatkozást a WAF-házirend bejárati ajtajának előtérbeli gazdagépre kell. További frissítései a rendszer automatikusan alkalmazza az előtér-gazdagépre.
 
 ## <a name="next-steps"></a>További lépések
-
-- További információ az [Azure Front Door alkalmazási rétegbeli biztonságáról](front-door-application-security.md).
+- Ismerje meg [Azure webalkalmazási tűzfal](waf-overview.md).
 - [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.

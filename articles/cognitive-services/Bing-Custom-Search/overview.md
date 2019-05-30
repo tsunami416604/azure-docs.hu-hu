@@ -10,20 +10,20 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 03/4/2019
 ms.author: aahi
-ms.openlocfilehash: e788da047cb0567fc00f27130621a2f21e575dc4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 93af1cce37c69691fb39f62270f4de6c9c73cf32
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "61335527"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388605"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Mi az a Bing Custom Search API?
 
 A Bing Custom Search API lehetővé teszi, hogy a témakörök, amelyek az Ön számára személyre szabott ingyenes keresési funkciókkal. Megadhatja, hogy a tartományok és weblapjait a Bing keresés, valamint a PIN-kód, növelheti, vagy adott tartalmat, a webes egyéni nézet létrehozása, és segítségével gyorsan megtalálhatja a releváns keresési eredmények a felhasználók lefokozása. 
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
-|Szolgáltatás  |Leírás  |
+|Funkció  |Leírás  |
 |---------|---------|
 |[Valós idejű egyéni keresési javaslatok](define-custom-suggestions.md)     | Adja meg a keresési javaslatok, mint egy legördülő lista a felhasználók által beírt jelenhet meg.       | 
 |[Egyéni rendszerkép keresési funkciókkal](get-images-from-instance.md)     | Engedélyezze a felhasználókat, hogy a tartományok és az egyéni keresőpéldányok megadott webhelyek Képkeresés.        |        
@@ -49,8 +49,8 @@ Olvassa el [követelmények Bing használata és megjelenítése](./use-and-disp
 
 Tekintse át az egyéni keresési végpontokra vonatkozó referenciákat. A referencia olyan végpontokat, fejléceket és lekérdezési paramétereket tartalmaz, amelyekkel keresési eredményeket kérhet le, és a válaszobjektumok definícióit is megtalálja benne.
 
-- [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference)
-- [Custom Image API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference)
-- [Custom Video API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference)
-- [Custom Autosuggest API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference)
+- [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
+- [Custom Image API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference)
+- [Custom Video API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)
+- [Custom Autosuggest API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference)
 

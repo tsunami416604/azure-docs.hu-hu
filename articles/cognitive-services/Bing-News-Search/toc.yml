@@ -67,9 +67,9 @@
 - name: Referencia
   items:
     - name: Bing News Search API 7-es verzió
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference'
     - name: Bing News Search API 5-ös verzió
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference'
     - name: SDK-k
       items:
         - name: .NET

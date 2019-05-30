@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: b8f7fbe386400babac033de0efbaaabbe8832397
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8782951baccd63d3087ef0628a8fca31b9a4bc1
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60240686"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390410"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Gyors útmutató: Keresési lekérdezések a Bing Autosuggest REST API és a Node.js-javaslat
 
@@ -37,7 +37,7 @@ Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-
     let https = require ('https');
     ```
 
-2. Változók létrehozása az API-végpont gazdát és elérési útját, az előfizetési kulcs [kód piaci](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes), és a egy keresési kifejezést.
+2. Változók létrehozása az API-végpont gazdát és elérési útját, az előfizetési kulcs [kód piaci](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), és a egy keresési kifejezést.
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -191,4 +191,4 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/autosuggest.md)
 
 - [Mi az a Bing Autosuggest?](../get-suggested-search-terms.md)
-- [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

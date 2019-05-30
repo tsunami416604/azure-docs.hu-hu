@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 05/29/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 51775c5534a13fb2515fafa182658beafd38c1eb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 357dc47027582d5c638bb3c7344c839f37f93dc5
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026892"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399129"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-using-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy Azure Blockchain-szolgáltatás az Azure portal használatával
 
@@ -40,11 +40,12 @@ Az Azure Blockchain-szolgáltatás számítási és tárolási erőforrások egy
     Előfizetés | Válassza ki a szolgáltatáshoz használni kívánt Azure-előfizetést. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amely részeként fizet az erőforrásért.
     Erőforráscsoport | Egy új erőforráscsoport neve vagy egy meglévő az előfizetéséből.
     Régió | Hely legyen ugyanaz a consortium összes tagja számára.
-    Tag fiók jelszava | Adjon meg egy új jelszót a tagsági fiók. A tag fiók jelszavát az alapszintű hitelesítést használ, a blockchain tag nyilvános végpont hitelesítéséhez használatos.
+    Tag fiók jelszava | A tag fiók jelszavát a Ethereum-fiókot, amely a tag jön létre a titkos kulcsfájl titkosítására szolgál. A tagsági fiók, és a tag fiók jelszavának használata consortium felügyeleti.
     Consortium neve | Egy új consortium adja meg egy egyedi nevet. Egy consortium meghívót keresztül csatlakozik, ha az értéke a consortium, amelyhez csatlakozik.
     Leírás | A consortium leírása.
     Protocol |  Előzetes verziója támogatja a kvórum protokollt.
     Díjszabás | A csomópont-konfigurációt az új szolgáltatáshoz. Válassza ki **Standard**. 2 érvényesítő csomópont és 1 tranzakció csomópont az alapértelmezett beállítása.
+    Tranzakció csomópont jelszó | A tag alapértelmezett tranzakció csomópont jelszava. Használja az egyszerű hitelesítést a jelszót, blockchain-tagok alapértelmezett tranzakció csomópont nyilvános végponthoz való csatlakozáskor.
 
 1. Válassza ki **létrehozás** a szolgáltatás telepítéséhez. Üzembe helyezési idő szükséges nagyjából 10 percet.
 1. Válassza ki **értesítések** az eszköztáron az üzembehelyezési folyamat megfigyeléséhez.

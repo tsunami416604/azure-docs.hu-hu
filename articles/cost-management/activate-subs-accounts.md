@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: efc012e496045d3d5d12d6fe756b62e4ae19cc2a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 9999518b81d264cb1e46f3c03ec65379d35aa603
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002146"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242441"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure-előfizetések és -fiókok aktiválása a Cloudynnel
 
@@ -64,7 +64,7 @@ Fiókok hozzáadásakor vagy előfizetések frissítésekor hozzáférést bizto
     2. Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
     3. A bérlőazonosító lekéréséhez válassza ki az Azure AD-bérlőjéhez tartozó **Tulajdonságok** elemet.
     4. Másolja ki a Címtár GUID azonosítóját. Ez az érték a bérlőazonosítója.
-    További információ: [A bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+    További információ: [A bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 3. Ha szükséges, válassza ki a díj azonosítóját. Ha nem ismeri a díj azonosítóját, az alábbi lépésekkel kiderítheti.
     1. Az Azure Portal jobb felső sarkában kattintson a felhasználói adataira, majd a **Számla megtekintése** lehetőségre.
     2. A **Számlázási fiók** területen kattintson az **Előfizetések** lehetőségre.

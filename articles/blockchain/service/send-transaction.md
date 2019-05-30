@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 05/29/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 0b5e39e9cf2fc3ffe91db6587bc1ed1bab079e93
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 80fabccb8a59bcd472812698f624d49dc26c24fa
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65777325"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399115"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Oktatóanyag: Az Azure Blockchain-szolgáltatás használatával tranzakciók küldése
 
@@ -35,10 +35,8 @@ A következőket fogja megtanulni:
 
 * Teljes [az Azure portal használatával a blockchain-tag létrehozása](create-member.md)
 * Teljes [a rövid útmutató: Csatlakozhat egy consortium network Truffle használatával](connect-truffle.md)
-* Truffle igényel a telepítendő eszközöket is beleértve [Node.js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), és [Truffle](https://github.com/trufflesuite/truffle).
-
-    Gyorsan beállíthatja a Windows 10-es, telepítse a [Ubuntu on Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6) egy terminál Unix Bash-rendszerhéjból telepítse [Truffle](https://github.com/trufflesuite/truffle). Az Ubuntu on Windows terjesztési tartalmazza a Node.js és Git.
-
+* Telepítés [Truffle](https://github.com/trufflesuite/truffle). Truffle igényel a telepítendő eszközöket is beleértve [Node.js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* Telepítés [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python weben 3 van szükség.
 * Telepítés [Visual Studio Code-ot](https://code.visualstudio.com/Download)
 * Telepítés [Visual Studio Code Solidity bővítmény](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)
 
@@ -65,9 +63,9 @@ Alapértelmezés szerint egy tranzakció csomópontja rendelkezik. Adjon hozzá 
 
 Folytathatja az oktatóanyag során a csomópontok lettek létrehozva. Amikor a kiépítés befejeződött, akkor három tranzakció-csomópont.
 
-## <a name="open-truffle-project"></a>Truffle projekt megnyitása
+## <a name="open-truffle-console"></a>Truffle konzol megnyitása
 
-1. Nyisson meg egy Bash rendszerhéj terminált.
+1. Nyissa meg a Node.js parancssort vagy a rendszerhéjat.
 1. Az elérési utat módosítsa Truffle projektkönyvtárára az előfeltételként felsorolt [a rövid útmutató: Truffle segítségével csatlakoztathatók a consortium](connect-truffle.md). Például:
 
     ```bash
@@ -82,9 +80,9 @@ Folytathatja az oktatóanyag során a csomópontok lettek létrehozva. Amikor a 
 
     Truffle létrehoz egy helyi fejlesztési blockchain, és a egy interaktív konzolt kínál.
 
-## <a name="connect-to-transaction-node"></a>Csatlakozás tranzakciós csomóponthoz
+## <a name="create-ethereum-account"></a>Ethereum-fiók létrehozása
 
-Az alapértelmezett tranzakció csomópont csatlakozhat, és hozzon létre egy fiókot használja a weben 3. Megtekintheti a weben 3 kapcsolati karakterláncot az Azure Portalról.
+Weben 3 segítségével az alapértelmezett tranzakció a csomóponthoz csatlakozás és a egy Ethereum-fiók létrehozása. Megtekintheti a weben 3 kapcsolati karakterláncot az Azure Portalról.
 
 1. Az Azure Portalon keresse meg az alapértelmezett tranzakció csomópont, és válassza ki **tranzakció csomópontok > mintakód > weben 3**.
 1. Másolja a JavaScript a **HTTPS (hozzáférési kulcs: 1)** ![weben 3 mintakód](./media/send-transaction/web3-code.png)
@@ -105,7 +103,7 @@ Az alapértelmezett tranzakció csomópont csatlakozhat, és hozzon létre egy f
     web3.eth.personal.newAccount("1@myStrongPassword");
     ```
 
-    Győződjön meg arról, jegyezze fel, hogy a fiók címét adja vissza, és a következő szakaszban használt jelszót.
+    Győződjön meg arról, jegyezze fel, hogy a visszaadott fiók címét és jelszavát. Az Ethereum-fiók címét és jelszavát a következő szakaszban van szüksége.
 
 1. Lépjen ki a Truffle fejlesztési környezethez.
 
@@ -138,101 +136,99 @@ A nyilvános kulcsot beszerezheti a tranzakció csomópont listából. Másolja 
 1. Nyissa meg a Truffle konfigurációs fájlt `truffle-config.js`.
 1. Cserélje le a fájl tartalmát a következő konfigurációs adatokat. Adja hozzá a végpontok címek és a fiók adatait tartalmazó változókat. A korábbi szakaszokban összegyűjtött értékeket cserélje le a csúcsos zárójel szakaszok.
 
-``` javascript
-var defaultnode = "<default transaction node connection string>";
-var alpha = "<alpha transaction node connection string>";
-var beta = "<beta transaction node connection string>";
-
-var myAccount = "<account address>";
-var myPassword = "<account password>";
-
-var Web3 = require("web3");
-```
-
-Adja hozzá a konfigurációs kódot a **module.exports** a konfiguráció szakasza.
-
-```javascript
-module.exports = {
-  networks: {
-    defaultnode: {
-      provider:(() =>  {
-      const AzureBlockchainProvider = new Web3.providers.HttpProvider(defaultnode);
-
-      const web3 = new Web3(AzureBlockchainProvider);
-      web3.eth.personal.unlockAccount(myAccount, myPassword);
-
-      return AzureBlockchainProvider;
-      })(),
-
-      network_id: "*",
-      gas: 0,
-      gasPrice: 0,
-      from: myAccount
-    },
-    alpha: {
-      provider: new Web3.providers.HttpProvider(alpha),
-      network_id: "*",
-      gas: 0,
-      gasPrice: 0
-    },
-    beta: {
-      provider: new Web3.providers.HttpProvider(beta),
-      network_id: "*",
-      gas: 0,
-      gasPrice: 0
+    ``` javascript
+    var defaultnode = "<default transaction node connection string>";
+    var alpha = "<alpha transaction node connection string>";
+    var beta = "<beta transaction node connection string>";
+    
+    var myAccount = "<Ethereum account address>";
+    var myPassword = "<Ethereum account password>";
+    
+    var Web3 = require("web3");
+    
+    module.exports = {
+      networks: {
+        defaultnode: {
+          provider:(() =>  {
+          const AzureBlockchainProvider = new Web3.providers.HttpProvider(defaultnode);
+    
+          const web3 = new Web3(AzureBlockchainProvider);
+          web3.eth.personal.unlockAccount(myAccount, myPassword);
+    
+          return AzureBlockchainProvider;
+          })(),
+    
+          network_id: "*",
+          gas: 0,
+          gasPrice: 0,
+          from: myAccount
+        },
+        alpha: {
+          provider: new Web3.providers.HttpProvider(alpha),
+          network_id: "*",
+          gas: 0,
+          gasPrice: 0
+        },
+        beta: {
+          provider: new Web3.providers.HttpProvider(beta),
+          network_id: "*",
+          gas: 0,
+          gasPrice: 0
+        }
+      }
     }
-  }
-}
-```
+    ```
+
+1. A módosítások mentése `truffle-config.js`.
 
 ## <a name="create-smart-contract"></a>Az intelligens szerződés létrehozása
 
-A mappa **szerződések**, hozzon létre egy új fájlt `SimpleStorage.sol`. Adja hozzá a következő kódot.
+1. A mappa **szerződések**, hozzon létre egy új fájlt `SimpleStorage.sol`. Adja hozzá a következő kódot.
 
-```solidity
-pragma solidity >=0.4.21 <0.6.0;
-
-contract SimpleStorage {
-    string public storedData;
-
-    constructor(string memory initVal) public {
-        storedData = initVal;
+    ```solidity
+    pragma solidity >=0.4.21 <0.6.0;
+    
+    contract SimpleStorage {
+        string public storedData;
+    
+        constructor(string memory initVal) public {
+            storedData = initVal;
+        }
+    
+        function set(string memory x) public {
+            storedData = x;
+        }
+    
+        function get() view public returns (string memory retVal) {
+            return storedData;
+        }
     }
+    ```
+    
+1. A mappa **áttelepítések**, hozzon létre egy új fájlt `2_deploy_simplestorage.js`. Adja hozzá a következő kódot.
 
-    function set(string memory x) public {
-        storedData = x;
-    }
+    ```solidity
+    var SimpleStorage = artifacts.require("SimpleStorage.sol");
+    
+    module.exports = function(deployer) {
+    
+      // Pass 42 to the contract as the first constructor parameter
+      deployer.deploy(SimpleStorage, "42", {privateFor: ["<alpha node public key>"], from:"<Ethereum account address>"})  
+    };
+    ```
 
-    function get() view public returns (string memory retVal) {
-        return storedData;
-    }
-}
-```
+1. Cserélje le a csúcsos zárójeleket értékeit.
 
-A mappa **áttelepítések**, hozzon létre egy új fájlt `2_deploy_simplestorage.js`. Adja hozzá a következő kódot.
+    | Érték | Leírás
+    |-------|-------------
+    | \<az alfa csomópont nyilvános kulcs\> | Az alfa csomópont nyilvános kulcs
+    | \<Ethereum fiók címe\> | Az alapértelmezett tranzakció csomópontjában létrehozott Ethereum fiók címe
+    
+    Ebben a példában a kezdeti értéke, a **storeData** 42 értékre van állítva.
 
-```solidity
-var SimpleStorage = artifacts.require("SimpleStorage.sol");
+    **privateFor** határozza meg a csomópontok, amelyhez a szerződést érhető el. Ebben a példában a fiók az alapértelmezett tranzakció csomópont leadott is privát tranzakciók a **alpha** csomópont. Az összes titkos tranzakció résztvevők nyilvános kulcsok hozzá kell. Ha nem adja meg **privateFor:** és **származó:** , az intelligens szerződés tranzakciók nyilvános, és minden consortium tag számára láthatók.
 
-module.exports = function(deployer) {
-
-  // Pass 42 to the contract as the first constructor parameter
-  deployer.deploy(SimpleStorage, "42", {privateFor: ["<alpha node public key>"], from:"<Account address>"})  
-};
-```
-
-Cserélje le a csúcsos zárójeleket értékeit.
-
-| Value | Leírás
-|-------|-------------
-| \<az alfa csomópont nyilvános kulcs\> | Az alfa csomópont nyilvános kulcs
-| \<Fiók címe\> | Az alapértelmezett tranzakció csomópontjában létrehozott fiók címét.
-
-Ebben a példában a kezdeti értéke, a **storeData** 42 értékre van állítva.
-
-**privateFor** határozza meg a csomópontok, amelyhez a szerződést érhető el. Ebben a példában a fiók az alapértelmezett tranzakció csomópont leadott is privát tranzakciók a **alpha** csomópont. Az összes titkos tranzakció résztvevők nyilvános kulcsok hozzá kell. Ha nem adja meg **privateFor:** és **származó:**, az intelligens szerződés tranzakciók nyilvános, és minden consortium tag számára láthatók.
-
-Mentse a fájlokat kiválasztásával **fájl > Mentés összes**.
+1. Mentse a fájlokat kiválasztásával **fájl > Mentés összes**.
 
 ## <a name="deploy-smart-contract"></a>Az intelligens szerződés üzembe helyezése
 
@@ -247,7 +243,7 @@ Truffle először összeállítja és majd üzembe helyezi a **SimpleStorage** i
 Példa a kimenetre:
 
 ```
-pat@DESKTOP:/mnt/c/truffledemo$ truffle migrate --network defaultnode
+admin@desktop:/mnt/c/truffledemo$ truffle migrate --network defaultnode
 
 2_deploy_simplestorage.js
 =========================
@@ -279,190 +275,185 @@ Summary
 
 ## <a name="validate-contract-privacy"></a>Szerződéses adatvédelmi ellenőrzése
 
-Szerződéses adatvédelmi, mert szerződés értéke csak kérdezhetők le azt a deklarált csomópontjáról **privateFor**. Ebben a példában azt is lekérdezni az alapértelmezett tranzakció csomópont, mert a fiók létezik csomópontban. Az alapértelmezett tranzakció a csomóponthoz csatlakozás az Truffle konzol használatával.
+Szerződéses adatvédelmi, mert szerződés értéke csak kérdezhetők le azt a deklarált csomópontjáról **privateFor**. Ebben a példában azt is lekérdezni az alapértelmezett tranzakció csomópont, mert a fiók létezik csomópontban. 
 
-```bash
-truffle console --network defaultnode
-```
+1. Az alapértelmezett tranzakció a csomóponthoz csatlakozás az Truffle konzol használatával.
 
-Hajtsa végre a parancsot, amely a szerződés példány értékét adja vissza.
+    ```bash
+    truffle console --network defaultnode
+    ```
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+1. A Truffle konzolon végrehajtható egy programkód, amely a szerződés példány értékét adja vissza.
 
-Ha az alapértelmezett tranzakció csomópont lekérdezése sikeres volt, a 42 értéket adja vissza.
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
 
-Példa a kimenetre:
+    Ha az alapértelmezett tranzakció csomópont lekérdezése sikeres volt, a 42 értéket adja vissza. Példa:
 
-```
-pat@DESKTOP-J41EP5S:/mnt/c/truffledemo$ truffle console --network defaultnode
-truffle(defaultnode)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-'42'
-```
+    ```
+    admin@desktop:/mnt/c/truffledemo$ truffle console --network defaultnode
+    truffle(defaultnode)> SimpleStorage.deployed().then(function(instance){return instance.get();})
+    '42'
+    ```
 
-Lépjen ki a konzolon.
+1. Lépjen ki a Truffle konzol.
 
-```bash
-.exit
-```
+    ```bash
+    .exit
+    ```
 
-Mivel hogy **alpha** csomópont található nyilvános kulcs **privateFor**, lekérdezheti, hogy a **alpha** csomópont. A Truffle konzol használatával csatlakozni a **alpha** csomópont.
+Mivel hogy **alpha** csomópont található nyilvános kulcs **privateFor**, lekérdezheti, hogy a **alpha** csomópont.
 
-```bash
-truffle console --network alpha
-```
+1. A Truffle konzol használatával csatlakozni a **alpha** csomópont.
 
-Hajtsa végre a parancsot, amely a szerződés példány értékét adja vissza.
+    ```bash
+    truffle console --network alpha
+    ```
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+1. A Truffle konzolon végrehajtható egy programkód, amely a szerződés példány értékét adja vissza.
 
-Ha a lekérdezés a **alpha** csomópont művelet sikeres, a 42 értéket adja vissza.
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
 
-Példa a kimenetre:
+    Ha a lekérdezés a **alpha** csomópont művelet sikeres, a 42 értéket adja vissza. Példa:
 
-```
-pat@DESKTOP-J41EP5S:/mnt/c/truffledemo$ truffle console --network alpha
-truffle(alpha)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-'42'
-```
+    ```
+    admin@desktop:/mnt/c/truffledemo$ truffle console --network alpha
+    truffle(alpha)> SimpleStorage.deployed().then(function(instance){return instance.get();})
+    '42'
+    ```
 
-Lépjen ki a konzolon.
+1. Lépjen ki a Truffle konzol.
 
-```bash
-.exit
-```
+    ```bash
+    .exit
+    ```
 
-Mivel mi nem deklarálható **béta** csomópont található nyilvános kulcs **privateFor**, nem fogjuk tudni lekérdezni a **béta** csomópont szerződéses adatvédelmi miatt. A Truffle konzol használatával csatlakozni a **béta** csomópont.
+Mivel mi nem deklarálható **béta** csomópont található nyilvános kulcs **privateFor**, nem fogjuk tudni lekérdezni a **béta** csomópont szerződéses adatvédelmi miatt.
 
-```bash
-truffle console --network beta
-```
+1. A Truffle konzol használatával csatlakozni a **béta** csomópont.
 
-Hajtsa végre a parancsot, amely a szerződés példány értékét adja vissza.
+    ```bash
+    truffle console --network beta
+    ```
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+1. Hajtsa végre a kódot, amely a szerződés példány értékét adja vissza.
 
-Lekérdezés a **béta** csomópont meghibásodik, mivel a szerződés nem nyilvános.
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
 
-Példa a kimenetre:
+1. Lekérdezés a **béta** csomópont meghibásodik, mivel a szerződés nem nyilvános. Példa:
 
-```
-pat@DESKTOP-J41EP5S:/mnt/c/truffledemo$ truffle console --network beta
-truffle(beta)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-Thrown:
-Error: Returned values aren't valid, did it run Out of Gas?
-    at XMLHttpRequest._onHttpResponseEnd (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:345:8)
-    at XMLHttpRequest._setReadyState (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:219:8)
-    at XMLHttpRequestEventTarget.dispatchEvent (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request-event-target.ts:44:13)
-    at XMLHttpRequest.request.onreadystatechange (/mnt/c/truffledemo/node_modules/web3-providers-http/src/index.js:96:13)
-```
+    ```
+    admin@desktop:/mnt/c/truffledemo$ truffle console --network beta
+    truffle(beta)> SimpleStorage.deployed().then(function(instance){return instance.get();})
+    Thrown:
+    Error: Returned values aren't valid, did it run Out of Gas?
+        at XMLHttpRequest._onHttpResponseEnd (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:345:8)
+        at XMLHttpRequest._setReadyState (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:219:8)
+        at XMLHttpRequestEventTarget.dispatchEvent (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request-event-target.ts:44:13)
+        at XMLHttpRequest.request.onreadystatechange (/mnt/c/truffledemo/node_modules/web3-providers-http/src/index.js:96:13)
+    ```
 
-Lépjen ki a konzolon.
+1. Lépjen ki a Truffle konzol.
 
-```bash
-.exit
-```
-
+    ```bash
+    .exit
+    ```
+    
 ## <a name="send-a-transaction"></a>Egy tranzakció küldése
 
-Hozzon létre egy fájlt nevű `sampletx.js`. Mentse a projekt gyökérkönyvtárában található.
+1. Hozzon létre egy fájlt nevű `sampletx.js`. Mentse a projekt gyökérkönyvtárában található.
+1. A következő szkript állítja be a szerződés **storedData** 65 változó értékét. Adja hozzá a kódot az új fájlt.
 
-Ez a szkript állítja be a szerződés **storedData** 65 változó értékét. Adja hozzá a kódot az új fájlt.
+    ```javascript
+    var SimpleStorage = artifacts.require("SimpleStorage");
+    
+    module.exports = function(done) {
+      console.log("Getting deployed version of SimpleStorage...")
+      SimpleStorage.deployed().then(function(instance) {
+        console.log("Setting value to 65...");
+        return instance.set("65", {privateFor: ["<alpha node public key>"], from:"<Ethereum account address>"});
+      }).then(function(result) {
+        console.log("Transaction:", result.tx);
+        console.log("Finished!");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
 
-```javascript
-var SimpleStorage = artifacts.require("SimpleStorage");
+    Cserélje le a csúcsos zárójeleket értékeit, majd mentse a fájlt.
 
-module.exports = function(done) {
-  console.log("Getting deployed version of SimpleStorage...")
-  SimpleStorage.deployed().then(function(instance) {
-    console.log("Setting value to 65...");
-    return instance.set("65", {privateFor: ["<alpha node public key>"], from:"<Account address>"});
-  }).then(function(result) {
-    console.log("Transaction:", result.tx);
-    console.log("Finished!");
-    done();
-  }).catch(function(e) {
-    console.log(e);
-    done();
-  });
-};
-```
+    | Érték | Leírás
+    |-------|-------------
+    | \<az alfa csomópont nyilvános kulcs\> | Az alfa csomópont nyilvános kulcs
+    | \<Ethereum fiók címe\> | Ethereum-fiók cím alapértelmezett tranzakció csomópontjában létrehozott.
 
-Cserélje le a csúcsos zárójeleket értékeit, majd mentse a fájlt.
+    **privateFor** határozza meg a csomópontok, amelyhez a tranzakció áll rendelkezésre. Ebben a példában a fiók az alapértelmezett tranzakció csomópont leadott is privát tranzakciók a **alpha** csomópont. Az összes titkos tranzakció résztvevők nyilvános kulcsok hozzá kell.
 
-| Value | Leírás
-|-------|-------------
-| \<az alfa csomópont nyilvános kulcs\> | Az alfa csomópont nyilvános kulcs
-| \<Fiók címe\> | Az alapértelmezett tranzakció csomópontjában létrehozott fiók címét.
+1. A szkript az alapértelmezett tranzakció csomóponthoz Truffle használja.
 
-**privateFor** határozza meg a csomópontok, amelyhez a tranzakció áll rendelkezésre. Ebben a példában a fiók az alapértelmezett tranzakció csomópont leadott is privát tranzakciók a **alpha** csomópont. Az összes titkos tranzakció résztvevők nyilvános kulcsok hozzá kell.
+    ```bash
+    truffle exec sampletx.js --network defaultnode
+    ```
 
-A szkript az alapértelmezett tranzakció csomóponthoz Truffle használja.
+1. A Truffle konzolon végrehajtható egy programkód, amely a szerződés példány értékét adja vissza.
 
-```bash
-truffle exec sampletx.js --network defaultnode
-```
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
 
-Hajtsa végre a parancsot, amely a szerződés példány értékét adja vissza.
+    Ha a tranzakció sikeres volt, a 65 értéket adja vissza. Példa:
+    
+    ```
+    Getting deployed version of SimpleStorage...
+    Setting value to 65...
+    Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
+    Finished!
+    ```
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+1. Lépjen ki a Truffle konzol.
 
-Ha a tranzakció sikeres volt, a 65 értéket adja vissza.
-
-Példa a kimenetre:
-
-```
-Getting deployed version of SimpleStorage...
-Setting value to 65...
-Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-Finished!
-```
-
-Lépjen ki a konzolon.
-
-```bash
-.exit
-```
-
+    ```bash
+    .exit
+    ```
+    
 ## <a name="validate-transaction-privacy"></a>Tranzakció adatvédelmi ellenőrzése
 
-Miatt adatvédelmi tranzakció, tranzakciók csak végezhető azt deklarálva a csomópontokon **privateFor**. Ebben a példában is végrehajthatjuk tranzakciók óta hogy **alpha** csomópont található nyilvános kulcs **privateFor**. Hajtsa végre a tranzakció Truffle használatával a **alpha** csomópont.
+Miatt adatvédelmi tranzakció, tranzakciók csak végezhető azt deklarálva a csomópontokon **privateFor**. Ebben a példában is végrehajthatjuk tranzakciók óta hogy **alpha** csomópont található nyilvános kulcs **privateFor**. 
 
-```bash
-truffle exec sampletx.js --network alpha
-```
+1. Hajtsa végre a tranzakció Truffle használatával a **alpha** csomópont.
 
-Hajtsa végre a parancsot, amely a szerződés példány értékét adja vissza.
+    ```bash
+    truffle exec sampletx.js --network alpha
+    ```
+    
+1. Hajtsa végre a kódot, amely a szerződés példány értékét adja vissza.
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
+    
+    Ha a tranzakció sikeres volt, a 65 értéket adja vissza. Példa:
 
-Ha a tranzakció sikeres volt, a 65 értéket adja vissza.
+    ```
+    Getting deployed version of SimpleStorage...
+    Setting value to 65...
+    Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
+    Finished!
+    ```
+    
+1. Lépjen ki a Truffle konzol.
 
-Példa a kimenetre:
-
-```
-Getting deployed version of SimpleStorage...
-Setting value to 65...
-Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-Finished!
-```
-
-Lépjen ki a konzolon.
-
-```bash
-.exit
-```
-
-Ebben az oktatóanyagban a szerződés és a tranzakciós adatvédelmi bemutatása kettőre tranzakciók hozzá. Az alapértelmezett csomópont egy privát intelligens szerződés üzembe helyezéséhez használt. Adatvédelmi lekérdezését szerződés értékek és a blockchain teljesítő tranzakciók által tesztelt.
+    ```bash
+    .exit
+    ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -474,6 +465,8 @@ Az erőforráscsoport törléséhez:
 1. Válassza az **Erőforráscsoport törlése** elemet. Az erőforráscsoport nevének megadásával erősítse meg a törlést, és válassza ki **törlése**.
 
 ## <a name="next-steps"></a>További lépések
+
+Ebben az oktatóanyagban a szerződés és a tranzakciós adatvédelmi bemutatása kettőre tranzakciók hozzá. Az alapértelmezett csomópont egy privát intelligens szerződés üzembe helyezéséhez használt. Adatvédelmi lekérdezését szerződés értékek és a blockchain teljesítő tranzakciók által tesztelt.
 
 > [!div class="nextstepaction"]
 > [Blockchain-alkalmazások fejlesztéséhez az Azure Blockchain-szolgáltatás használatával](develop.md)

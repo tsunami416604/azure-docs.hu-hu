@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b2ff67e207f8a3a2b79635b080c78021162f0ac6
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 6d2b9c8dd8fb89e201cff5155b1dec0857204752
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519234"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400049"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 
@@ -111,7 +111,7 @@ A **Védelmi cél** oldalon válassza a következő értékeket:
 |---------|-----------|
 | Hol találhatók a gépek? |Válassza a **Helyszíni** lehetőséget.|
 | Hová szeretné replikálni a gépeket? |Válassza **Az Azure-ba** lehetőséget.|
-| Virtualizáltak a gépek? |Válassza a **Nincsenek virtualizálva / Egyéb** lehetőséget.|
+| Virtualizálva vannak a gépek? |Válassza a **Nincsenek virtualizálva / Egyéb** lehetőséget.|
 
 Ha végzett, válassza az **OK** gombot a következő szakaszra való továbblépéshez.
 
@@ -163,7 +163,7 @@ A replikáció engedélyezése előtt létre kell hoznia egy replikációs szab�
 
 Ha az **Infrastruktúra előkészítése** szakasz mind az öt lépését elvégezte, válassza az **OK** lehetőséget.
 
-## <a name="enable-replication"></a>Replikáció engedélyezése
+## <a name="enable-replication"></a>A replikáció engedélyezése
 
 Engedélyezze a replikálást mindegyik migrálni kívánt virtuális gép esetében. Ha a replikáció engedélyezve van, a Site Recovery automatikusan telepíti a mobilitási szolgáltatást.
 
@@ -174,7 +174,7 @@ Engedélyezze a replikálást mindegyik migrálni kívánt virtuális gép eset�
 
      |  |  |
      |-----|-----|
-     | Adatforrás: | Válassza a **Helyszíni** lehetőséget.|
+     | Forrás: | Válassza a **Helyszíni** lehetőséget.|
      | Forrás helye:| Adja meg a konfigurációs kiszolgáló EC2-példányának nevét.|
      |Gép típusa: | Válassza a **Fizikai gépek** lehetőséget.|
      | Folyamatkiszolgáló: | Válassza ki a konfigurációs kiszolgálót a legördülő listában.|
@@ -234,7 +234,7 @@ A portálon futtassa a feladatátvételi tesztet:
 
 Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szükséges. A feldolgozás befejezése 8–10 percet is igénybe vehet.
 
-## <a name="migrate-to-azure"></a>Migrálás az Azure-ba
+## <a name="migrate-to-azure"></a>Áttelepítés az Azure-ba
 
 Futtasson egy tényleges feladatátvételt az EC2-példányokon az Azure-beli virtuális gépekre való migrálásukhoz:
 
@@ -246,7 +246,7 @@ Futtasson egy tényleges feladatátvételt az EC2-példányokon az Azure-beli vi
    - Ez befejezi az áttelepítési folyamatot, valamint leállítja az AWS virtuális gép replikálását és a gép Site Recovery-számlázását.
    - Ezzel a lépéssel törli azokat a replikációs adatokat. Azzal nem törli az áttelepített virtuális gépeket. 
 
-     ![Migrálás befejezése](./media/migrate-tutorial-aws-azure/complete-migration.png)
+     ![Az áttelepítés befejezése](./media/migrate-tutorial-aws-azure/complete-migration.png)
 
 > [!WARNING]
 > *Ne szakítsa meg a folyamatban lévő feladatátvételt*. A feladatátvétel indítása előtt a virtuális gép replikációja leáll. Ha megszakítja a folyamatban lévő feladatátvételt, az leáll, a virtuális gép replikációja azonban nem folytatódik.  

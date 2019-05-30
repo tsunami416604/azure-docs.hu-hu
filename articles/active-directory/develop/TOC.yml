@@ -297,6 +297,8 @@
           items:
             - name: Alkalmazások és szolgáltatásnevek
               href: app-objects-and-service-principals.md
+            - name: Hogyan és miért adhatók hozzá az alkalmazások az Azure AD szolgáltatáshoz
+              href: active-directory-how-applications-are-added.md
             - name: Egybérlős és több-bérlős alkalmazások
               href: single-and-multi-tenant-apps.md
         - name: Engedélyek és jóváhagyás

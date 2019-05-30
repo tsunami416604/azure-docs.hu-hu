@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a8513344c35c14ebf06f3693da618ed20047d07b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f1eac83f2b5460bf56ddff1bf15d9180adb49a48
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792052"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382281"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Gyorsútmutatók: Az Azure SQL Database kapcsolódás és lekérdezés
 
@@ -39,6 +39,7 @@ A következő dokumentum az Azure SQL-adatbázisok csatlakozásával és lekérd
 |[PHP](sql-database-connect-query-php.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a PHP egy olyan program létrehozásához, amely egy Azure SQL-adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni.|
 |[Python](sql-database-connect-query-python.md)|Ez a rövid útmutató azt ismerteti, hogyan lehet a Python használatával Azure SQL-adatbázishoz csatlakozni, valamint a Transact-SQL-utasítások használatával adatokat lekérdezni. |
 |[Ruby](sql-database-connect-query-ruby.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Ruby egy olyan program létrehozásához, amely egy Azure SQL-adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni.|
+|[R](sql-database-connect-query-r.md)|Ez a rövid útmutató bemutatja, hogyan az R használata Azure SQL Database Machine Learning-szolgáltatások olyan program létrehozásához, egy Azure SQL Database-adatbázishoz csatlakozhat, és Transact-SQL-utasítások használatával adatokat lekérdezni.|
 |||
 
 ## <a name="tls-considerations-for-sql-database-connectivity"></a>TLS-megfontolások az SQL Database-kapcsolatokhoz

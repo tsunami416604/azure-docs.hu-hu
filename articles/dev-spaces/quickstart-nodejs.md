@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Gyors fejlesztés a tárolók, mikroszolgáltatások és Node.js az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: jeconnoc
-ms.openlocfilehash: 7507b6741a373f28e0e780af08d076235e377839
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 5efacc38ab6b30a1a4ae45772f2b81030e76eb83
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873153"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393930"
 ---
 # <a name="quickstart-develop-with-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Fejlesztés node.js nyelven, a Kubernetes Azure fejlesztési tárolóhelyek használatával
 
@@ -35,7 +35,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Az Azure Kubernetes Service-fürt létrehozása
 
-Az AKS-fürt létrehozásához szükséges egy [támogatott régió](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams). Az alábbi parancsokkal nevű erőforráscsoport létrehozása *MyResourceGroup* és a egy AKS-fürt nevű *MyAKS*.
+Az AKS-fürt létrehozásához szükséges egy [támogatott régió][supported-regions]. Az alábbi parancsokkal nevű erőforráscsoport létrehozása *MyResourceGroup* és a egy AKS-fürt nevű *MyAKS*.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
@@ -111,7 +111,7 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-Láthatja, hogy a szolgáltatás fut, nyissa meg a nyilvános URL-CÍMÉT, amely kimenetében megjelennek a `azds up` parancsot. Ebben a példában a nyilvános URL-je *http://webfrontend.1234567890abcdef1234.eus.azds.io/*.
+Láthatja, hogy a szolgáltatás fut, nyissa meg a nyilvános URL-CÍMÉT, amely kimenetében megjelennek a `azds up` parancsot. Ebben a példában a nyilvános URL-je *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
 
 Ha leállítja a `azds up` parancsának használatával *Ctrl + c*, a szolgáltatás továbbra is futtassa az aks-ben és a nyilvános URL-cím használható marad.
 
@@ -168,7 +168,7 @@ Kattintson a *Debug* majd *hibakeresés leállításához* a hibakereső leáll�
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Beállítás és hibakeresési töréspontok használatával
 
-A szolgáltatás használatának megkezdéséhez *indítsa el a kiszolgáló (AZDS)*.
+A szolgáltatás használatának megkezdéséhez *indítsa el a kiszolgáló (AZDS)* .
 
 Lépjen vissza a *Explorer* nézet kattintva *nézet* majd *Explorer*. Nyissa meg `server.js` valahol kattintson a sor létezik helyezze a kurzort a 10. Állítson be egy töréspontot, nyomja le az *F9* , vagy kattintson *Debug* majd *töréspont*.
 
@@ -211,3 +211,6 @@ Ismerje meg, Azure fejlesztési tárolóhelyek segítségével miként több tá
 
 > [!div class="nextstepaction"]
 > [Több tároló használata és fejlesztés csapatban](multi-service-nodejs.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations
