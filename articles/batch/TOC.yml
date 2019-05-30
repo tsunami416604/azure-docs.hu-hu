@@ -65,7 +65,7 @@
           href: batch-aad-auth.md
         - name: Azure AD a Batch Managementtel
           href: batch-aad-auth-management.md
-    - name: Alkalmazáscsomagok létrehozása
+    - name: Alkalmazáscsomagok használata
       href: batch-application-packages.md
     - name: Készletek létrehozása és kezelése
       items:

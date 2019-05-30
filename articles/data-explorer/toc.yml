@@ -41,14 +41,6 @@
           href: web-query-data.md
         - name: Python
           href: python-query-data.md
-    - name: Adatok vizualizációja
-      items:
-        - name: Power BI – összekötő
-          href: power-bi-connector.md
-        - name: Power BI – importált lekérdezés
-          href: power-bi-imported-query.md
-        - name: Power BI – SQL-lekérdezés
-          href: power-bi-sql-query.md
 - name: Oktatóanyagok
   items:
     - name: Adatok betöltése kód használata nélkül
@@ -80,6 +72,20 @@
           href: anomaly-detection.md
         - name: Gépi tanulás
           href: machine-learning-clustering.md
+    - name: Adatok vizualizációja
+      items:
+        - name: Power BI
+          items:
+            - name: összekötő
+              href: power-bi-connector.md
+            - name: importált lekérdezés
+              href: power-bi-imported-query.md
+            - name: SQL-lekérdezés
+              href: power-bi-sql-query.md
+        - name: Sisense
+          href: sisense.md
+        - name: Grafana
+          href: grafana.md
     - name: Kezelés
       items:
         - name: Adatbázis-engedélyek kezelése
@@ -108,8 +114,6 @@
           href: kqlmagic.md
         - name: Adatok másolása az Azure Data Factoryval
           href: data-factory-load-data.md
-        - name: Adatok vizualizációja a Grafanában
-          href: grafana.md
         - name: Kapcsolódás ODBC-vel
           href: connect-odbc.md
     - name: Hibaelhárítás

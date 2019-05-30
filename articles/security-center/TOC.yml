@@ -57,6 +57,8 @@
       href: security-center-powershell-onboarding.md
     - name: A Security Center beállításai
       href: security-center-policies-overview.md
+    - name: Alapértékek összehasonlítása fájlintegritási monitorozással
+      href: security-center-file-integrity-monitoring-baselines.md
       items:
         - name: Adatgyűjtés
           href: security-center-enable-data-collection.md

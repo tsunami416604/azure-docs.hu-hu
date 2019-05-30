@@ -229,16 +229,20 @@
                   href: msal-js-initializing-client-applications.md
             - name: Hibák és kivételek kezelése
               href: msal-handling-exceptions.md
+            - name: MSAL-alkalmazások tesztelése
+              href: msal-testing.md
             - name: Naplózás
               href: msal-logging.md
             - name: Egyszeri bejelentkezés (JS)
               href: msal-js-sso.md
             - name: Kérési viselkedés (JS)
               href: msal-js-prompt-behavior.md
-            - name: Adja meg a saját HttpClient objektumát (.NET)
-              href: msal-net-provide-httpclient.md
             - name: Integrálás az Azure AD B2C szolgáltatással
-              href: msal-b2c-overview.md
+              items:
+                - name: JavaScript
+                  href: msal-b2c-overview.md
+                - name: .NET
+                  href: msal-net-aad-b2c-considerations.md
             - name: Megfontolandó szempontok és ismert problémák
               items:
                 - name: MSAL.NET
@@ -253,8 +257,6 @@
                       href: msal-net-xamarin-ios-considerations.md
                     - name: Univerzális Windows-platform
                       href: msal-net-uwp-considerations.md
-                    - name: AAD B2C-szabályzat alkalmazása
-                      href: msal-net-aad-b2c-considerations.md
                 - name: MSAL.js
                   items:
                     - name: Megfontolandó szempontok az IE használata esetén
@@ -360,6 +362,8 @@
                   href: msal-net-instantiate-confidential-client-config-options.md
                 - name: Jóváhagyás beszerzése több erőforrásra
                   href: msal-net-user-gets-consent-for-multiple-resources.md
+                - name: Adja meg a saját HttpClient objektumát
+                  href: msal-net-provide-httpclient.md
         - name: A Visual Studio használata
           items:
             - name: Az Active Directory csatlakoztatott szolgáltatás használata

@@ -66,6 +66,8 @@
               href: tutorial-routing-config-message-routing-PowerShell.md
         - name: 2. rész – Üzenet-útválasztási eredmények megtekintése
           href: tutorial-routing-view-message-routing-results.md
+    - name: Üzenetbővítések
+      href: tutorial-message-enrichments.md
     - name: Metrikák és diagnosztikai naplók használata
       href: tutorial-use-metrics-and-diags.md
     - name: Manuális feladatátvétel végrehajtása
@@ -78,6 +80,8 @@
       href: tutorial-connectivity.md
 - name: Alapelvek
   items:
+    - name: Az üzenetbővítések áttekintése
+      href: iot-hub-message-enrichments-overview.md
     - name: Az eszközfelügyelet áttekintése
       href: iot-hub-device-management-overview.md
     - name: Az IoT Hub és az Event Hubs összehasonlítása

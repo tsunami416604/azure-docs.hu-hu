@@ -223,6 +223,14 @@
               href: virtual-machine-scale-sets-manage-cli.md
             - name: Azure PowerShell használatával
               href: virtual-machine-scale-sets-manage-powershell.md
+        - name: Méretezési csoportok módosítása
+          href: virtual-machine-scale-sets-upgrade-scale-set.md
+        - name: Méretezési csoportok hálózatkezelése
+          href: virtual-machine-scale-sets-networking.md
+        - name: Operációs rendszer automatikus frissítései
+          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Példányvédelem (előzetes verzió)
+          href: virtual-machine-scale-sets-instance-protection.md
         - name: Megosztott lemezkép-katalógusok
           items:
             - name: Áttekintés
@@ -237,14 +245,8 @@
               href: troubleshooting-shared-images.md
         - name: Függőleges méretezés méretezési csoportban
           href: virtual-machine-scale-sets-vertical-scale-reprovision.md
-        - name: Operációs rendszer automatikus frissítései
-          href: virtual-machine-scale-sets-automatic-upgrade.md
-        - name: Méretezési csoportok módosítása
-          href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: DSC és méretezési csoportok használata
           href: virtual-machine-scale-sets-dsc.md
-        - name: Méretezési csoportok hálózatkezelése
-          href: virtual-machine-scale-sets-networking.md
         - name: Sablon konvertálása felügyelt lemezhez
           href: virtual-machine-scale-sets-convert-template-to-md.md
         - name: Tervezett karbantartás

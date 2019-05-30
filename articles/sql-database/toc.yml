@@ -296,6 +296,8 @@
               href: transparent-data-encryption-byok-azure-sql.md
         - name: Biztonsági attribútumok
           href: sql-database-security-attributes.md
+        - name: Szolgáltatásokra vonatkozó korlátozások
+          href: sql-database-feature-restrictions.md
     - name: Méretezhetőség
       items:
         - name: Méretezhetőség áttekintése
@@ -368,12 +370,20 @@
           href: sql-database-temporal-tables.md
         - name: Feladat automatizálása
           href: sql-database-job-automation-overview.md
+        - name: Társított kiszolgálók
+          href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/sql-database/toc.json'
+        - name: Szolgáltatásközvetítő
+          href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/sql-database/toc.json'
+        - name: Adatbázisbeli levelezés
+          href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/sql-database/toc.json'
         - name: Machine Learning Services
           items:
             - name: Áttekintés
               href: sql-database-machine-learning-services-overview.md
             - name: Fő eltérések
               href: sql-database-machine-learning-services-differences.md
+        - name: Kiszolgálóoldali CLR-/.NET-integráció
+          href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/sql-database/toc.json'
 - name: Útmutatók
   items:
     - name: Áttekintés

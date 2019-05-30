@@ -101,6 +101,8 @@
       href: event-sources.md
     - name: Eseménykezelők
       href: event-handlers.md
+    - name: Földrajzi vészhelyreállítás
+      href: geo-disaster-recovery.md
 - name: Útmutatók
   items:
     - name: Közzététel egyéni témakörben

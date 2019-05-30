@@ -23,6 +23,8 @@
       href: fhir-oss-cli-quickstart.md
     - name: A CORS konfigurálása
       href: configure-cross-origin-resource-sharing.md
+    - name: A Cosmos DB konfigurálása
+      href: configure-cosmos-db.md
 - name: Oktatóanyagok
   expanded: false
   items:

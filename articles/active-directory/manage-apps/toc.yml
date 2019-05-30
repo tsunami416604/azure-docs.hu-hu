@@ -13,6 +13,8 @@
       href: view-applications-portal.md
 - name: Oktatóanyagok
   items:
+    - name: Az SaaS-alkalmazás oktatóanyagai
+      href: 'https://docs.microsoft.com/azure/active-directory/saas-apps/'
     - name: Egyszeri bejelentkezés konfigurálása – portál
       href: configure-single-sign-on-portal.md
     - name: Helyszíni alkalmazás hozzáadása – portál
@@ -77,19 +79,13 @@
       href: end-user-experiences.md
 - name: Útmutatók
   items:
-    - name: Felhőalkalmazás-integráció
+    - name: Felhőalkalmazás hozzáadása
       items:
-        - name: Alkalmazás hozzáadása
-          items:
-            - name: Alkalmazás típusának kiválasztása
-              href: choose-application-type.md
-            - name: Gyakori problémák – katalógusbeli alkalmazások
-              href: adding-gallery-app-common-problems.md
-            - name: Gyakori problémák – nem katalógusbeli alkalmazások
-              href: adding-non-gallery-app-common-problems.md
+        - name: Alkalmazás típusának kiválasztása
+          href: choose-application-type.md
         - name: Név vagy embléma módosítása
           href: change-name-or-logo-portal.md
-    - name: Helyszíni alkalmazásintegráció
+    - name: Helyszíni alkalmazás integrálása
       items:
         - name: Összekötők konfigurálása
           href: application-proxy-configure-connectors-with-proxy-servers.md
@@ -125,7 +121,139 @@
               href: application-proxy-integrate-with-tableau.md
             - name: Integrálás a Qlikkel
               href: application-proxy-qlik.md
-        - name: Alkalmazásproxy hibaelhárítása
+    - name: Egyszeri bejelentkezés konfigurálása
+      items:
+        - name: Nem katalógusbeli alkalmazások konfigurálása
+          href: configure-single-sign-on-non-gallery-applications.md
+        - name: Összevontak konfigurálása – katalógusbeli alkalmazások
+          href: configure-federated-single-sign-on-gallery-applications.md
+        - name: Összevontak konfigurálása – nem katalógusbeli alkalmazások
+          href: configure-federated-single-sign-on-non-gallery-applications.md
+        - name: Jelszó konfigurálása – katalógusbeli alkalmazások
+          href: configure-password-single-sign-on-gallery-applications.md
+        - name: Jelszó konfigurálása – nem katalógusbeli alkalmazások
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: Egyszeri bejelentkezés alkalmazásproxyval
+          items:
+            - name: Kerberos általi korlátozott delegálás (KCD)
+              href: application-proxy-configure-single-sign-on-with-kcd.md
+            - name: Jelszótárolás
+              href: application-proxy-configure-single-sign-on-password-vaulting.md
+            - name: Fejlécek
+              href: application-proxy-configure-single-sign-on-with-ping-access.md
+            - name: SAML SSO
+              href: application-proxy-configure-single-sign-on-on-premises-apps.md
+    - name: Felhasználók átadásának konfigurálása
+      items:
+        - name: Mennyi időt vesz igénybe az átadás?
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: Felhasználók átadásának konfigurálása – katalógusbeli alkalmazás
+          href: application-provisioning-config-how-to.md
+        - name: Attribútum szinkronizálása leképezéshez – katalógusbeli alkalmazás
+          href: user-provisioning-sync-attributes-for-mapping.md
+    - name: Felhasználók hozzárendelése és alkalmazások hozzáférésének kezelése
+      items:
+        - name: Felhasználói beleegyezés konfigurálása
+          href: configure-user-consent.md
+        - name: Módszerek felhasználók és csoportok alkalmazáshoz való hozzárendelésére
+          href: methods-for-assigning-users-and-groups.md
+        - name: Felhasználó hozzárendelése egy alkalmazáshoz
+          href: assign-user-or-group-access-portal.md
+        - name: Az önkiszolgáló alkalmazás-hozzáférés használata
+          href: access-panel-manage-self-service-access.md
+        - name: Módszerek egy felhasználó alkalmazás-hozzáférésének eltávolítására
+          href: methods-for-removing-user-access.md
+        - name: Felhasználó vagy csoport hozzáférésének eltávolítása
+          href: remove-user-or-group-access-portal.md
+        - name: Alkalmazás elrejtése egy felhasználó elől
+          href: hide-application-from-user-portal.md
+        - name: Felhasználói bejelentkezések letiltása
+          href: disable-user-sign-in-portal.md
+        - name: Új önkiszolgáló alkalmazás-hozzárendelés konfigurálása
+          href: manage-self-service-access.md
+        - name: Kezdőtartomány felderítése
+          href: configure-authentication-for-federated-users-portal.md
+    - name: Alkalmazások migrálása az Azure AD-be
+      items:
+        - name: Migrálási erőforrások
+          href: migration-resources.md
+        - name: Egy ADFS-alkalmazás migrálása az Azure-ba
+          href: migrate-adfs-apps-to-azure.md
+    - name: Hibaelhárítás
+      items:
+        - name: Alkalmazások hozzáadásával kapcsolatos hibaelhárítás
+          items:
+            - name: Gyakori problémák – katalógusbeli alkalmazások
+              href: adding-gallery-app-common-problems.md
+            - name: Gyakori problémák – nem katalógusbeli alkalmazások
+              href: adding-non-gallery-app-common-problems.md
+        - name: Felhasználói bejelentkezés hibaelhárítása
+          items:
+            - name: Váratlan hozzájárulási kérés
+              href: application-sign-in-unexpected-user-consent-prompt.md
+            - name: Hiba a felhasználói hozzájárulással
+              href: application-sign-in-unexpected-user-consent-error.md
+            - name: Probléma egyéni portálról való bejelentkezésnél
+              href: application-sign-in-other-problem-deeplink.md
+            - name: Probléma a hozzáférési panelről való bejelentkezésnél
+              href: application-sign-in-other-problem-access-panel.md
+            - name: Hiba az alkalmazás bejelentkezési oldalán
+              href: application-sign-in-problem-application-error.md
+            - name: Hiba az egyszeri bejelentkezési jelszóval – nem katalógusbeli alkalmazás
+              href: application-sign-in-problem-password-sso-non-gallery.md
+            - name: Hiba az egyszeri bejelentkezési jelszóval – katalógusbeli alkalmazás
+              href: application-sign-in-problem-password-sso-gallery.md
+            - name: Probléma egy Microsoft-alkalmazásba való bejelentkezéskor
+              href: application-sign-in-problem-first-party-microsoft.md
+            - name: Probléma az összevont egyszeri bejelentkezéskor – nem katalógusbeli alkalmazás
+              href: application-sign-in-problem-federated-sso-non-gallery.md
+            - name: Probléma az összevont egyszeri bejelentkezéskor – katalógusbeli alkalmazás
+              href: application-sign-in-problem-federated-sso-gallery.md
+            - name: Probléma egy egyénileg fejlesztett alkalmazásban
+              href: application-sign-in-problem-custom-dev.md
+        - name: Egyszeri bejelentkezéssel kapcsolatos hibaelhárítás
+          items:
+            - name: Gyakori problémák az összevontak konfigurálásakor – katalógusbeli alkalmazások
+              href: configure-federated-single-sign-on-gallery-applications-problems.md
+            - name: Gyakori problémák az összevontak konfigurálásakor – nem katalógusbeli alkalmazások
+              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
+            - name: Gyakori problémák jelszó konfigurálásakor – katalógusbeli alkalmazások
+              href: configure-password-single-sign-on-gallery-applications-problems.md
+            - name: Gyakori problémák jelszó konfigurálásakor – nem katalógusbeli alkalmazások
+              href: configure-password-single-sign-on-non-gallery-applications-problems.md
+        - name: A felhasználók átadásának hibaelhárítása
+          items:
+            - name: Órákat vesz igénybe – katalógusbeli alkalmazás
+              href: application-provisioning-when-will-provisioning-finish.md
+            - name: Probléma a felhasználók átadásának konfigurálásakor – katalógusbeli alkalmazás
+              href: application-provisioning-config-problem.md
+            - name: Probléma a rendszergazdai hitelesítő adatok mentésekor a felhasználók átadását végző katalógusbeli alkalmazás konfigurálása közben
+              href: application-provisioning-config-problem-storage-limit.md
+            - name: A felhasználók átadása nem történik meg – katalógusbeli alkalmazás
+              href: application-provisioning-config-problem-no-users-provisioned.md
+            - name: Nem a megfelelő felhasználók lettek átadva – katalógusbeli alkalmazás
+              href: application-provisioning-config-problem-wrong-users-provisioned.md
+        - name: Alkalmazáslistával és -hozzárendeléssel kapcsolatos hibaelhárítás
+          items:
+            - name: Bérlői alkalmazáslista kezelése
+              href: application-types.md
+            - name: Váratlan felhasználó lett hozzárendelve
+              href: ways-users-get-assigned-to-applications.md
+        - name: A Hozzáférés panellel kapcsolatos hibaelhárítás
+          items:
+            - name: Böngészőbővítmény kezelése
+              href: manage-access-panel-browser-extension.md
+            - name: Az alkalmazás nem jelenik meg
+              href: access-panel-troubleshoot-application-not-appearing.md
+            - name: Váratlan alkalmazás jelenik meg
+              href: access-panel-troubleshoot-unexpected-application.md
+            - name: Nem lehet bejelentkezni
+              href: access-panel-troubleshoot-web-sign-in-problem.md
+            - name: Hiba a böngészőbővítmény telepítése közben
+              href: access-panel-extension-problem-installing.md
+            - name: Hiba történt az önkiszolgáló alkalmazás-hozzáférés használata közben
+              href: access-panel-troubleshoot-self-service-access.md
+        - name: Alkalmazásproxyval kapcsolatos hibaelhárítás
           items:
             - name: Összekötő hibaelhárítási folyamatábrája
               href: application-proxy-debug-connectors.md
@@ -159,124 +287,6 @@
               href: application-proxy-connector-installation-problem.md
             - name: Bejelentkezéssel kapcsolatos probléma
               href: application-sign-in-problem-on-premises-application-proxy.md
-    - name: Felhasználók átadása
-      items:
-        - name: Mennyi időt vesz igénybe?
-          href: application-provisioning-when-will-provisioning-finish-specific-user.md
-        - name: Órákat vesz igénybe – katalógusbeli alkalmazás
-          href: application-provisioning-when-will-provisioning-finish.md
-        - name: Felhasználók átadásának konfigurálása – katalógusbeli alkalmazás
-          href: application-provisioning-config-how-to.md
-        - name: Probléma a felhasználók átadásának konfigurálásakor – katalógusbeli alkalmazás
-          href: application-provisioning-config-problem.md
-        - name: Probléma a rendszergazdai hitelesítő adatok mentésekor a felhasználók átadását végző katalógusbeli alkalmazás konfigurálása közben
-          href: application-provisioning-config-problem-storage-limit.md
-        - name: Attribútum szinkronizálása leképezéshez – katalógusbeli alkalmazás
-          href: user-provisioning-sync-attributes-for-mapping.md
-        - name: A felhasználók átadása nem történik meg – katalógusbeli alkalmazás
-          href: application-provisioning-config-problem-no-users-provisioned.md
-        - name: Nem a megfelelő felhasználók lettek átadva – katalógusbeli alkalmazás
-          href: application-provisioning-config-problem-wrong-users-provisioned.md
-    - name: Alkalmazás-hozzáférés
-      items:
-        - name: Alkalmazástípusok
-          href: application-types.md
-        - name: Felhasználói beleegyezés konfigurálása
-          href: configure-user-consent.md
-        - name: Módszerek felhasználók és csoportok alkalmazáshoz való hozzárendelésére
-          href: methods-for-assigning-users-and-groups.md
-        - name: Felhasználó hozzárendelése egy alkalmazáshoz
-          href: assign-user-or-group-access-portal.md
-        - name: Módszerek egy felhasználó alkalmazás-hozzáférésének eltávolítására
-          href: methods-for-removing-user-access.md
-        - name: Váratlan felhasználó lett hozzárendelve
-          href: ways-users-get-assigned-to-applications.md
-        - name: Felhasználó vagy csoport hozzáférésének eltávolítása
-          href: remove-user-or-group-access-portal.md
-        - name: Alkalmazás elrejtése egy felhasználó elől
-          href: hide-application-from-user-portal.md
-        - name: Felhasználói bejelentkezések letiltása
-          href: disable-user-sign-in-portal.md
-        - name: Új önkiszolgáló alkalmazás-hozzárendelés konfigurálása
-          href: manage-self-service-access.md
-        - name: Kezdőtartomány felderítése
-          href: configure-authentication-for-federated-users-portal.md
-    - name: Egyszeri bejelentkezés
-      items:
-        - name: Nem katalógusbeli alkalmazások konfigurálása
-          href: configure-single-sign-on-non-gallery-applications.md
-        - name: Összevontak konfigurálása – katalógusbeli alkalmazások
-          href: configure-federated-single-sign-on-gallery-applications.md
-        - name: Gyakori problémák az összevontak konfigurálásakor – katalógusbeli alkalmazások
-          href: configure-federated-single-sign-on-gallery-applications-problems.md
-        - name: Összevontak konfigurálása – nem katalógusbeli alkalmazások
-          href: configure-federated-single-sign-on-non-gallery-applications.md
-        - name: Gyakori problémák az összevontak konfigurálásakor – nem katalógusbeli alkalmazások
-          href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-        - name: Jelszó konfigurálása – katalógusbeli alkalmazások
-          href: configure-password-single-sign-on-gallery-applications.md
-        - name: Gyakori problémák jelszó konfigurálásakor – katalógusbeli alkalmazások
-          href: configure-password-single-sign-on-gallery-applications-problems.md
-        - name: Jelszó konfigurálása – nem katalógusbeli alkalmazások
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: Gyakori problémák jelszó konfigurálásakor – nem katalógusbeli alkalmazások
-          href: configure-password-single-sign-on-non-gallery-applications-problems.md
-        - name: Alkalmazásproxy
-          items:
-            - name: Kerberos általi korlátozott delegálás (KCD)
-              href: application-proxy-configure-single-sign-on-with-kcd.md
-            - name: Jelszótárolás
-              href: application-proxy-configure-single-sign-on-password-vaulting.md
-            - name: Fejlécek
-              href: application-proxy-configure-single-sign-on-with-ping-access.md
-            - name: SAML SSO
-              href: application-proxy-configure-single-sign-on-on-premises-apps.md
-    - name: Hozzáférési panel
-      items:
-        - name: Böngészőbővítmény kezelése
-          href: manage-access-panel-browser-extension.md
-        - name: Az alkalmazás nem jelenik meg
-          href: access-panel-troubleshoot-application-not-appearing.md
-        - name: Váratlan alkalmazás jelenik meg
-          href: access-panel-troubleshoot-unexpected-application.md
-        - name: Nem lehet bejelentkezni
-          href: access-panel-troubleshoot-web-sign-in-problem.md
-        - name: Hiba a böngészőbővítmény telepítése közben
-          href: access-panel-extension-problem-installing.md
-        - name: Az önkiszolgáló alkalmazás-hozzáférés használata
-          href: access-panel-manage-self-service-access.md
-        - name: Hiba történt az önkiszolgáló alkalmazás-hozzáférés használata közben
-          href: access-panel-troubleshoot-self-service-access.md
-    - name: Migrálás
-      items:
-        - name: Migrálási erőforrások
-          href: migration-resources.md
-        - name: Egy ADFS-alkalmazás migrálása az Azure-ba
-          href: migrate-adfs-apps-to-azure.md
-    - name: Felhasználói bejelentkezés hibaelhárítása
-      items:
-        - name: Váratlan hozzájárulási kérés
-          href: application-sign-in-unexpected-user-consent-prompt.md
-        - name: Hiba a felhasználói hozzájárulással
-          href: application-sign-in-unexpected-user-consent-error.md
-        - name: Probléma egyéni portálról való bejelentkezésnél
-          href: application-sign-in-other-problem-deeplink.md
-        - name: Probléma a hozzáférési panelről való bejelentkezésnél
-          href: application-sign-in-other-problem-access-panel.md
-        - name: Hiba az alkalmazás bejelentkezési oldalán
-          href: application-sign-in-problem-application-error.md
-        - name: Hiba az egyszeri bejelentkezési jelszóval – nem katalógusbeli alkalmazás
-          href: application-sign-in-problem-password-sso-non-gallery.md
-        - name: Hiba az egyszeri bejelentkezési jelszóval – katalógusbeli alkalmazás
-          href: application-sign-in-problem-password-sso-gallery.md
-        - name: Probléma egy Microsoft-alkalmazásba való bejelentkezéskor
-          href: application-sign-in-problem-first-party-microsoft.md
-        - name: Probléma az összevont egyszeri bejelentkezéskor – nem katalógusbeli alkalmazás
-          href: application-sign-in-problem-federated-sso-non-gallery.md
-        - name: Probléma az összevont egyszeri bejelentkezéskor – katalógusbeli alkalmazás
-          href: application-sign-in-problem-federated-sso-gallery.md
-        - name: Probléma egy egyénileg fejlesztett alkalmazásban
-          href: application-sign-in-problem-custom-dev.md
 - name: Referencia
   items:
     - name: Alkalmazásproxy verzióelőzményei

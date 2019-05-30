@@ -48,6 +48,8 @@
       href: delegated-access-virtual-desktop.md
     - name: Gazdagépcsoport terheléselosztási módszerei
       href: host-pool-load-balancing.md
+    - name: FSLogix-profiltárolók és Azure Files
+      href: fslogix-containers-azure-files.md
 - name: Hibaelhárítás
   items:
     - name: 'Hibaelhárítási áttekintés, visszajelzés és támogatás'

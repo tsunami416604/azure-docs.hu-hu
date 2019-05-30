@@ -78,6 +78,9 @@
         - name: Forgalom előrejelzése
           displayName: 'Basic Sample, training, classification, sample 5'
           href: ui-sample-classification-predict-churn.md
+    - name: Azure Open Datasets
+      href: 'https://docs.microsoft.com/azure/open-datasets/samples'
+      maintainContext: true
 - name: Alapelvek
   items:
     - name: Munkaterület
@@ -130,6 +133,9 @@
         - name: Naplózás engedélyezése
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
+        - name: Bemeneti és kimeneti könyvtárak beállítása
+          displayName: 'large data, write, experiment files, size limit'
+          href: how-to-save-write-experiment-files.md
         - name: A VS Code-bővítmény használata
           displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
           href: how-to-vscode-tools.md
