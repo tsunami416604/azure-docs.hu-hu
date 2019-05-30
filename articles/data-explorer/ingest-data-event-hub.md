@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 05/17/2019
-ms.openlocfilehash: d5bd291758d6bb445b757b93fd91a4c2321b97db
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.date: 05/29/2019
+ms.openlocfilehash: 18ce5e9d7cff0d32021e97cd85f1e18c0309f00b
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898938"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357687"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Gyors útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer
 
@@ -112,21 +112,24 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
     |---|---|---|
     | Adatkapcsolat neve | *test-hub-connection* | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.|
     | Eseményközpont-névtér | A névtér egyedi neve | A korábban a névtér azonosításához választott név. |
-    | Event Hubs | *test-hub* | A létrehozott eseményközpont. |
+    | Eseményközpont | *test-hub* | A létrehozott eseményközpont. |
     | Fogyasztói csoport | *test-group* | A létrehozott eseményközponton definiált fogyasztói csoport. |
     | | |
 
     Céloldali tábla:
 
-    Az útvonalválasztás esetében két lehetőség érhető el: a *statikus* és a *dinamikus*. Ebben a rövid útmutatóban statikus útválasztást alkalmazunk (ez az alapértelmezett), amelyben megadjuk a táblanevet, a fájlformátumot és a leképezést. Ezért hagyja **adataimat magában foglalja az útválasztási információ** nincs bejelölve.
-    Dinamikus útválasztás is alkalmazható, ha a saját adatok tartalmazzák a szükséges útválasztási információkat.
+    A feldolgozott adatok útválasztáshoz két lehetőség van: *statikus* és *dinamikus*. 
+    Ebben a cikkben használhatja a statikus útválasztás, amelyben meghatározhatja azokat a táblázat neve, az adatok formátuma és hozzárendelésének. Ezért hagyja **adataimat magában foglalja az útválasztási információ** nincs bejelölve.
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
     | Tábla | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
     | Adatformátum | *JSON* | Támogatott formátumok a következők: Avro, CSV, JSON, TÖBBSOROS JSON, PSV, Rendszerállapot, SCSV, TSV és TXT. |
-    | Oszlopleképezés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra.|
+    | Oszlopleképezés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra. A JSON, TÖBBSOROS JSON vagy AVRO szükséges, és más formátumú esetén nem kötelező.|
     | | |
+
+    > [!NOTE]
+    > Válassza ki **adataimat magában foglalja az útválasztási információ** dinamikus útválasztást használnak, ahol az adatok tartalmaz a szükséges információkat látható módon a [mintaalkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) megjegyzéseket. Ha statikus és dinamikus tulajdonságai, a dinamikus tulajdonságokkal felülbírálása statikus azokat. 
 
 ## <a name="copy-the-connection-string"></a>A kapcsolati sztring másolása
 
@@ -134,7 +137,7 @@ Amikor elindítja az Előfeltételek között szereplő [mintaalkalmazást](http
 
 1. A létrehozott eseményközpont-névtér alatt válassza a **Megosztott elérési szabályzatok**, majd a **RootManageSharedAccessKey** lehetőséget.
 
-    ![Megosztott elérési szabályzatok](media/ingest-data-event-hub/shared-access-policies.png)
+    ![Megosztott elérési házirendek](media/ingest-data-event-hub/shared-access-policies.png)
 
 1. Másolja ki a **kapcsolati sztring elsődleges kulcsát**. A következő szakaszban kell beillesztenie.
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/22/2019
+ms.date: 05/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b021975983858386cd7c847ba11a26f4feb9562
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 18c6175ede1e8459d3a9ca60f7890cc43d75e5ba
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150459"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236279"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
 
@@ -24,7 +24,7 @@ A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosított
 - Tudnivalók a szolgáltatásról
 - Eszköz rendelése
 - Konfigurálás és csatlakoztatás 
-- Állapotkövetés
+- Állapot nyomon követése
 - Adatok másolása 
 - Eszköz kiszállítása
 - Adatok ellenőrzése és feltöltése 
@@ -124,7 +124,7 @@ A. Ha nem fér hozzá a Data Box zárolásfeloldási jelszavához az Azure Porta
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>K. Port csatorna konfigurációja támogatott a Data Box? Mi a helyzet MPIO-t?
 A. A Data Box csatorna Portkonfiguráció, többutas I/O (MPIO) konfigurációs vagy vLAN-konfiguráció nem támogatott.
 
-## <a name="track-status"></a>Állapotkövetés
+## <a name="track-status"></a>Állapot nyomon követése
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>K. Hogyan tudom nyomon követni a Data Boxot a megrendelésem feladásától kezdve egészen az eszköz visszaküldéséig? 
 A.  A Data Box-megrendelésének állapotát az Azure Portalon követheti nyomon. A megrendelés létrehozásakor a rendszer egy értesítési e-mail-cím megadását is kéri. Ha adott meg ilyen e-mail-címet, akkor a megrendelés állapotváltozásairól e-mailben is értesíteni fogjuk. További információ az [Értesítési e-mailek beállítása](data-box-portal-ui-admin.md#edit-notification-details) témában.
@@ -135,7 +135,7 @@ A.  A Microsoft megjelenít egy fuvarlevélcímkét az E-ink-megjelenítőn. Ha 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>K. Kaptam egy e-mail-értesítést, hogy az eszközöm elért az Azure-adatközpontba. Hogyan deríthetem ki, hogy az adatok felöltése folyamatban van-e?
 A. Nyissa meg az Azure Portalon a Data Box-megrendelését, majd az **Áttekintést**. Ha az adatok feltöltése már megkezdődött, a jobb oldali panelen látható a másolás folyamatának előrehaladása. 
 
-## <a name="migrate-data"></a>Adatok migrálása
+## <a name="migrate-data"></a>Adatok áttelepítése
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box"></a>K. Legfeljebb mekkora mennyiségű adat esetén használható a Data Box?  
 A.  A Data Box hasznos tárolókapacitása 80 TB. Egyetlen Data Box-eszközön 40 TB és 80 TB közti mennyiségű adatot tárolhat. A nagyobb adathalmazokat akár 500 TB méretű rendezheti több Data Box-eszközre. Az 500 TB-ot meghaladó adatmennyiségek esetén regisztráljon a Data Box Heavy szolgáltatásba.  
@@ -184,7 +184,7 @@ A. Ha az eszköz sérülten érkezett, vagy a jelek illetéktelen hozzáférésr
 A. A Data Box szolgáltatás keretében a Microsoft intézi az Azure-adatközpontba és onnan történő szállítást. Ha saját futárt szeretne igénybe venni, használja az Azure Import/Export szolgáltatást. További információ [az Azure Import/Export szolgáltatásról](../storage/common/storage-import-export-service.md).
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>K. Data Box eszközök közötti ország szegélyek fog szállítási során?
-A. Minden Data Box-eszköz belül a rendeltetési országot postáztuk, és nem lesz adatbázisközi bármely nemzetközi határokon. Az egyetlen kivétel, az Európai Unió (EU), ahol eszközök szállíthat, és bármely EU országból rendeléseket.
+A. Minden Data Box-eszköz belül a rendeltetési országot postáztuk, és nem lesz adatbázisközi bármely nemzetközi határokon. Az egyetlen kivétel, az Európai Unió (EU), ahol eszközök szállíthat, és bármely EU országból rendeléseket. Ez vonatkozik a Data Box és a Data Box nehéz eszközökön is.
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>K. Az E-ink-képernyőn nem jelenik meg a csomagvisszaküldési címke. Mit tegyek?
 A. Ha az E Ink-képernyőn nem jelenik meg a csomagvisszaküldési címke, hajtsa végre a következő lépéseket:

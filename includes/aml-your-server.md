@@ -9,36 +9,27 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: 8d21e41ad487ad17598f2320fab5eebae02309e8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ce8b117a3cbe0e3a5c4265729ccf5c0264241013
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66123232"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391780"
 ---
-1. Kövesse az utasításokat, [hozzon létre egy Azure Machine Learning szolgáltatás munkaterületet](../articles/machine-learning/service/setup-create-workspace.md#portal) való:
+1. Kövesse az utasításokat, [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](../articles/machine-learning/service/setup-create-workspace.md#portal) , tegye a következőket:
     * A Miniconda-környezet létrehozása
     * Telepítse az Azure Machine Learning SDK a Pythonhoz
     * Munkaterület létrehozása
     * Munkaterület konfigurációs fájl írása (**aml_config/config.json**).
-    
+
 1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
 
-    ```
+    ```CLI
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
-1. Ezen módszerek bármelyikével munkaterület konfigurációs fájl hozzáadása:
-    * Másolás a **aml_config/config.json** a klónozott könyvtárra 1. lépésben létrehozott fájlt.
-
-    * Az a [az Azure portal](https://ms.portal.azure.com)válassza **config.json letöltése** a a **áttekintése** szakasz a munkaterület. 
-
-    ![Töltse le a config.json](./media/aml-dsvm-server/download-config.png)
-
-    * Hozzon létre egy új munkaterületet, a kód használatával a [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb).
-
 1. Indítsa el a notebook-kiszolgálót a klónozott könyvtárból.
-    
+
     ```shell
     jupyter notebook
     ```

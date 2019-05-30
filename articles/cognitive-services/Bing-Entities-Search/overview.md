@@ -10,18 +10,18 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: scottwhi
-ms.openlocfilehash: 0755688d1cc2f00ffef253b7695d9cb504f9e169
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 679a3d9efbeeb75e0aa8e3986fa85b7ecf0d77bd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "64866838"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388501"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Mi az a Bing Entity Search API?
 
 A Bing Entity Search API egy keresési lekérdezést küld a Bingnek, majd entitásokat és helyeket tartalmazó találatokat kap vissza. A helytalálatok lehetnek éttermek, szállodák vagy egyéb helyi vállalkozások. A Bing helyeket ad vissza, ha a lekérdezés a helyi vállalkozás nevét adja meg, vagy egy vállalkozástípus iránt érdeklődik (például „éttermek a közelben”). A Bing entitásokat ad vissza, ha a lekérdezés a jól ismert személyek, helyek (idegenforgalmi létesítmények, állapotok, országok/régiók, stb.) vagy dolgot határoz meg.
 
-|Szolgáltatás  |Leírás  |
+|Funkció  |Leírás  |
 |---------|---------|
 |[Valós idejű keresési javaslatok](concepts/search-for-entities.md#suggest-search-terms-with-the-bing-autosuggest-api)     | Adja meg a keresési javaslatok, mint egy legördülő lista a felhasználók által beírt jelenhet meg.       | 
 | [Entitás Egyértelműsítő](concepts/search-for-entities.md#the-bing-entity-search-api-response)  | Több entitás több lehetséges jelentését lekérdezések beolvasása. |
@@ -39,5 +39,5 @@ A Bing Entity Search API egy olyan webes RESTful szolgáltatás, így könnyen h
 
 * Próbálja ki a [interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) a Bing Entity Search API számára. 
 * Gyors használatbavétele az első kérelem, próbálkozzon egy [rövid](quickstarts/csharp.md).
-* A [Bing Entity Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) szakasz hivatkozhat.
+* A [Bing Entity Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) szakasz hivatkozhat.
 * A [Bing használati és megjelenítési követelményei](./use-display-requirements.md) a Bing Search API-k használatával kapott tartalmak és információk elfogadható használatát határozzák meg.

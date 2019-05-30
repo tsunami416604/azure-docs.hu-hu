@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 96a1a91f49754386de7127cb981d38acd1852e94
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9d45e0f0c759685f9d35285ee7718585d5961333
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241430"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399414"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vészhelyreállítás beállítása a helyszíni Hyper-V virtuális gépekhez az Azure-ba
 
@@ -56,7 +56,7 @@ Ez az oktatóanyag egy sorozat harmadik része. Feltételezi, hogy már végreha
 1. A **üzembe helyezésének tervezése**, ha egy nagyobb méretű központi telepítések, töltse le a Deployment Planner a Hyper-V a hivatkozásból az oldalon. [További](hyper-v-deployment-planner-overview.md) Hyper-V központi telepítési tervezésével kapcsolatban.
 2. Ebben az oktatóanyagban a Deployment Planner nincs szükségünk. A **végzett az üzembe helyezés megtervezése?** válassza **végzem el később**, majd válassza ki **OK**.
 
-    ![Üzembe helyezés tervezése](./media/hyper-v-azure-tutorial/deployment-planning.png)
+    ![Az üzembe helyezés megtervezése](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
@@ -130,9 +130,9 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
     - **Kezdeti replikáció kezdési ideje** azt jelzi, hogy a kezdeti replikáció azonnal megkezdődik.
 4. Miután létrehozta a szabályzatot, válassza ki a **OK**. Amikor létrehoz egy új szabályzatot, akkor automatikusan a megadott Hyper-V hely társítva. A jelen oktatóanyagban hogy **ContosoHyperVSite**.
 
-    ![Replikációs házirend](./media/hyper-v-azure-tutorial/replication-policy.png)
+    ![Replikációs szabályzat](./media/hyper-v-azure-tutorial/replication-policy.png)
 
-## <a name="enable-replication"></a>Replikáció engedélyezése
+## <a name="enable-replication"></a>A replikáció engedélyezése
 
 1. A **alkalmazás replikálása**válassza **forrás**.
 2. A **Forrás** területen, válassza ki a **ContosoHyperVSite** helyet. Ezután válassza az **OK** lehetőséget.

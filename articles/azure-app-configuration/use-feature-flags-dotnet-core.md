@@ -1,6 +1,6 @@
 ---
 title: A szolgáltatás jelzők egy .NET Core-alkalmazást az oktatóanyag |} A Microsoft Docs
-description: Ebben az oktatóanyagban elsajátíthatja, hogyan funkció jelzők megvalósítása a .NET Core-alkalmazások
+description: Ebben az oktatóanyagban elsajátíthatja, hogyan funkció jelzők bevezetése a .NET Core alkalmazásokat.
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,28 +14,30 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: b0e48a0db63eded9e9c4921d33b03af39656ce0d
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: fc5215f71af45d3273da437fc796bf0d396ba3f9
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299264"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393515"
 ---
 # <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>Oktatóanyag: Funkciójelölők használata .NET Core-alkalmazásokban
 
-A .NET Core szolgáltatás kezelési kódtárakat bármilyen-támogatást nyújt a szolgáltatás jelzők megvalósítása a .NET- vagy ASP.NET Core alkalmazás. Lehetővé teszik, hogy a szolgáltatás megőrzendő tartalomként jelöli meg a programkód több deklaratív, hogy az összes nem rendelkezik a `if` utasítás a őket manuálisan. Szolgáltatás jelző életciklusának (például frissítési és gyorsítótára államok jelző, a kérelem-hívás közben nem módosítható kell egy jelző állapot garancia) bennük a háttérben. Emellett az ASP.NET Core library biztosít többek között az MVC-vezérlő műveletek, nézetek, útvonalak és közbenső szoftver-a-beépített Integrációk.
+A .NET Core szolgáltatás kezelési kódtárakat bármilyen támogatást nyújt a szolgáltatás jelzők megvalósítása az egy .NET- vagy ASP.NET Core-alkalmazás. Ezek a könyvtárak engedélyezése funkció jelzők deklaratív hozzáadását a kódhoz, hogy az összes nem kell a `if` utasítás a őket manuálisan.
 
-A [funkció jelzők hozzáadása ASP.NET Core-alkalmazás](./quickstart-feature-flag-aspnet-core.md) a rövid útmutató bemutatja a szolgáltatás jelzők hozzáadása egy ASP.NET Core-alkalmazást a többféleképpen. Ez az oktatóanyag azt ismerteti, ezeket a további részleteket. Tekintse meg a [ASP.NET Core szolgáltatás management dokumentációja](https://go.microsoft.com/fwlink/?linkid=2091410) teljes.
+A szolgáltatás felügyeleti könyvtárak funkció jelző életciklusának a háttérben is kezelheti. Például a könyvtárak frissítése és a gyorsítótár jelző állapotok vagy garantálja a kérelem-hívás közben nem módosítható kell egy jelző állapot. Az ASP.NET Core-kódtár emellett-a-beépített Integrációk, beleértve az MVC-vezérlő műveletek, nézetek, útvonalak és közbenső biztosít.
+
+A [funkció jelzők hozzáadása ASP.NET Core-alkalmazás rövid](./quickstart-feature-flag-aspnet-core.md) funkció jelzők. beépülő ASP.NET Core alkalmazás különböző módszert mutat be. Ez az oktatóanyag ezen módszerek részletesebben ismerteti. Egy teljes körű referenciáért lásd: a [ASP.NET Core szolgáltatás management dokumentációja](https://go.microsoft.com/fwlink/?linkid=2091410).
 
 Az oktatóanyag során a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
 > * Adja hozzá a szolgáltatás jelzők funkció rendelkezésre állásának szabályozhatja az alkalmazás legfontosabb részeit.
-> * Alkalmazáskonfiguráció integrálható, ha a szolgáltatás jelölők kezelése segítségével.
+> * Alkalmazáskonfiguráció integrálható, ha a szolgáltatás jelölők kezelése használ.
 
-## <a name="setup"></a>Telepítés
+## <a name="set-up-feature-management"></a>A szolgáltatás felügyeletének beállítása
 
-A .NET Core-szolgáltatás kezelő `IFeatureManager` funkció jelzők olvas be a keretrendszer natív konfigurációs rendszer. Ennek eredményeképpen meghatározhatja az alkalmazás funkció jelzők segítségével bármely konfigurációs forrás, amely támogatja a .NET Core, beleértve a helyi *appsettings.json* fájlban vagy környezeti változót. A szolgáltatás manager a .NET Core függőségi beszúrást támaszkodik. A szolgáltatás management szolgáltatásokat standard konvenciókat is regisztrálhat.
+A .NET Core-szolgáltatás kezelő `IFeatureManager` funkció jelzők olvas be a keretrendszer natív konfigurációs rendszer. Ennek eredményeképpen bármely konfigurációs forrás, amely támogatja a .NET Core, beleértve a helyi használatával meghatározhatja az alkalmazás által a szolgáltatás jelzők *appsettings.json* fájlban vagy környezeti változót. `IFeatureManager` .NET Core függőségi beszúrást támaszkodik. A szolgáltatás felügyeleti szolgáltatások standard szintű konvenciók használatával regisztrálhatja:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -49,7 +51,7 @@ public class Startup
 }
 ```
 
-A szolgáltatás-kezelő szolgáltatás jelzők kikeresi alapértelmezés szerint a a .NET Core-konfigurációs adatokat a "FeatureManagement" című szakaszát. Az alábbi példa utasítja, hogy inkább a "MyFeatureFlags" nevű másik szakaszban olvasni.
+Alapértelmezés szerint a szolgáltatás-kezelő szolgáltatás jelzőket a lekéri a `"FeatureManagement"` szakaszában a .NET Core-konfigurációs adatokat. Az alábbi példa arra utasítja a szolgáltatás-kezelő nevű másik szakaszban olvasható `"MyFeatureFlags"` helyette:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -66,7 +68,7 @@ public class Startup
 }
 ```
 
-Ha a szolgáltatás jelzők szűrőket használ, kell egy további tár tartalmazza, és regisztrálja. Az alábbi példa bemutatja, hogyan használható egy beépített funkciót nevű szűrőt **PercentageFilter "** .
+Ha a szolgáltatás jelzők szűrőket használ, kell egy további tár tartalmazza, és regisztrálja. Az alábbi példa bemutatja, hogyan használható egy beépített funkciót nevű szűrőt `PercentageFilter`:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -82,7 +84,9 @@ public class Startup
 }
 ```
 
-Hatékonyan működjön, kell tartani a szolgáltatás jelzők mimo aplikaci, és külön-külön kezelhető. Ha így tesz, bármikor módosíthatja a jelző állapotok, és ezek a módosítások hatállyal az alkalmazásban. Alkalmazáskonfiguráció egy központi helyen rendszerezéséhez és az összes a szolgáltatás szabályozásával megőrzendő tartalomként jelöli meg egy dedikált portál felhasználói felületén keresztül, és kézbesíti a jelzők az alkalmazást közvetlenül a .NET Core-ügyfél kódtárakat biztosít. Az alkalmazások konfigurálása az ASP.NET Core-alkalmazás csatlakoztatása a legegyszerűbben a konfigurációszolgáltató `Microsoft.Extensions.Configuration.AzureAppConfiguration`. Adja hozzá a következő kódban a NuGet-csomagot is használhatja a *Program.cs* fájlt:
+Azt javasoljuk, hogy funkció jelzők az alkalmazáson kívül tartani, és külön-külön kezelhető. Ha így tesz, bármikor módosíthatja a jelző állapotok, és ezek a módosítások érvénybe léptetéséhez azonnal az alkalmazásban. Alkalmazáskonfiguráció biztosít egy központi helyen rendszerezéséhez és a egy dedikált portál felhasználói felületén keresztül az összes funkció jelző szabályozása. Alkalmazáskonfiguráció is kézbesíti a jelzők az alkalmazást közvetlenül a .NET Core-ügyfél kódtárakat.
+
+Az alkalmazások konfigurálása az ASP.NET Core-alkalmazás csatlakoztatása a legegyszerűbben a konfigurációszolgáltató `Microsoft.Extensions.Configuration.AzureAppConfiguration`. A NuGet-csomagot használ, adja hozzá a következő kódot a *Program.cs* fájlt:
 
 ```csharp
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -99,7 +103,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
            .UseStartup<Startup>();
 ```
 
-A szolgáltatás jelző értéket vár az idő előrehaladtával változik. A szolgáltatás manager alapértelmezés szerint frissíti a szolgáltatás jelző értéke 30 másodpercenként. Használhat egy másik lekérdezési időközét az `options.UseFeatureFlags()` fenti hívás.
+A szolgáltatás jelző értéket vár az idő előrehaladtával változik. Alapértelmezés szerint a szolgáltatás-kezelő 30 másodpercenként frissíti a szolgáltatás jelző értékét. A következő kód bemutatja, hogyan módosíthatja lekérdezési időközét az 5 másodperc a `options.UseFeatureFlags()` hívása:
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
@@ -112,14 +116,16 @@ config.AddAzureAppConfiguration(options => {
 
 ## <a name="feature-flag-declaration"></a>A szolgáltatás jelző deklarace
 
-Minden funkció jelölője két részből áll: egy nevet és a egy vagy több szűrő, amely segítségével kiértékelheti a funkció állapota listáját *a* (azt jelenti, amikor annak értéke `True`). A szűrő meghatározza a használati eset, amelynek levélszolgáltatásnak kell bekapcsolni. Ha a szolgáltatás azt a jelzőt több szűrőt, a lista pontja ahhoz, amíg egy szűrőt határozza meg, hogy a funkciót engedélyezni kell. Ezen a ponton a funkció jelölője minősül *a* és a többi szűrő eredményt a rendszer kihagyja. Ha nincs szűrő azt jelzi, hogy a funkciót engedélyezni kell, a szolgáltatás jelző van *ki*.
+Minden funkció jelölője két részből áll: egy nevet és a egy vagy több szűrő, amely segítségével kiértékelheti a funkció állapota listáját *a* (azt jelenti, amikor annak értéke `True`). Egy szűrőt a használati esetek határozza meg, amikor egy szolgáltatást be kell kapcsolni.
 
-A szolgáltatás manager által támogatott *appsettings.json* funkció jelzők konfigurációs forrásaként. Az alábbi példa bemutatja, hogyan állíthatja be a szolgáltatás jelzők json-fájlban.
+Amikor a szolgáltatás azt a jelzőt több szűrő, a lista pontja ahhoz, amíg egy szűrőt meghatározza, hogy a funkciót engedélyezni kell. Ezen a ponton a funkció jelölője van *a*, és a többi szűrő eredményt a rendszer kihagyja. Nincs szűrő azt jelzi, hogy a funkciót engedélyezni kell, ha van-e a funkció jelölője *ki*.
+
+A szolgáltatás manager által támogatott *appsettings.json* funkció jelzők konfigurációs forrásaként. Az alábbi példa bemutatja, hogyan állíthatja be a szolgáltatás jelzők JSON-fájlban:
 
 ```JSON
 "FeatureManagement": {
-    "FeatureX": true, // Feature flag set to on
-    "FeatureY": false, // Feature flag set to off
+    "FeatureA": true, // Feature flag set to on
+    "FeatureB": false, // Feature flag set to off
     "FeatureC": {
         "EnabledFor": [
             {
@@ -133,15 +139,15 @@ A szolgáltatás manager által támogatott *appsettings.json* funkció jelzők 
 }
 ```
 
-Szabályok szerint a `FeatureManagement` jelző eszközfunkció-beállítások szakasz a json-dokumentum szolgál. A fenti példában a meghatározott szűrőket jeleníti meg a szolgáltatás három jelölőt a *EnabledFor* tulajdonság:
+Szabályok szerint a `FeatureManagement` jelző eszközfunkció-beállítások szakasz a JSON-dokumentum szolgál. Az előző példában a meghatározott szűrőket jeleníti meg a szolgáltatás három jelölőt a `EnabledFor` tulajdonság:
 
-* **FeatureA** van *a*.
-* **FeatureB** van *ki*.
-* **FeatureC** nevű szűrőt adja *százalékos* együtt egy *paraméterek* tulajdonság. *Százalékos* konfigurálható szűrő egy példát, és meghatározza a valószínűség 50 %-a a **FeatureC** kell jelző *a*.
+* `FeatureA` van *a*.
+* `FeatureB` van *ki*.
+* `FeatureC` Meghatározza egy szűrőt nevű `Percentage` együtt egy `Parameters` tulajdonság. `Percentage` konfigurálható szűrő van. Ebben a példában `Percentage` 50 %-os valószínűségét adja meg a `FeatureC` kell jelző *a*.
 
-## <a name="referencing"></a>Hivatkozó
+## <a name="feature-flag-references"></a>A szolgáltatás jelző referenciák
 
-Bár nem kötelező, a szolgáltatás jelzők definiálható mint `enum` változókat, hogy azok könnyen lehet hivatkozni a kódban.
+Így könnyen hivatkozhat funkció jelzőket a code-ban, be kell állítania az őket `enum` változókat:
 
 ```csharp
 public enum MyFeatureFlags
@@ -152,9 +158,9 @@ public enum MyFeatureFlags
 }
 ```
 
-## <a name="feature-flag-check"></a>A szolgáltatás jelző ellenőrzése
+## <a name="feature-flag-checks"></a>A szolgáltatás jelző ellenőrzések
 
-A szolgáltatás felügyeleti alapvető mintája, hogy először ellenőrizze, ha egy szolgáltatás a jelzővel állítható be *a* , és hajtsa végre a karakterláncon belül lévő műveleteket, ha ebben az esetben.
+A szolgáltatás felügyeleti alapvető mintája, hogy először ellenőrizze, ha egy szolgáltatás a jelzővel állítható be *a*. Ha tehát a szolgáltatás-kezelő majd futtatja a műveleteket, amely tartalmazza a szolgáltatás. Példa:
 
 ```csharp
 IFeatureManager featureManager;
@@ -167,7 +173,7 @@ if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
 
 ## <a name="dependency-injection"></a>Függőséginjektálás
 
-Az ASP.NET Core MVC, a szolgáltatás-kezelő `IFeatureManager` függőségi beszúrást keresztül érhetők el.
+Az ASP.NET Core mvc-ben, a szolgáltatás-kezelő érhető `IFeatureManager` függőségi beszúrást keresztül:
 
 ```csharp
 public class HomeController : Controller
@@ -181,9 +187,9 @@ public class HomeController : Controller
 }
 ```
 
-## <a name="controller-action"></a>Vezérlő művelet
+## <a name="controller-actions"></a>Vezérlő műveletek
 
-Az MVC-vezérlők egy `Feature` attribútum vezérlőelemhez használható, teljes vezérlőosztály vagy egy bizonyos művelet engedélyezve van-e. A következő `HomeController` tartományvezérlő szükséges *FeatureA* kell *a* mielőtt bármilyen műveletet tartalmaz hajtható végre.
+MVC-vezérlők, használja a `Feature` vezérlő attribútumot teljes vezérlőosztály vagy egy bizonyos művelet engedélyezve van-e. A következő `HomeController` tartományvezérlő szükséges `FeatureA` kell *a* mielőtt bármilyen műveletet tartalmazza a vezérlőosztály hajtható végre:
 
 ```csharp
 [Feature(MyFeatureFlags.FeatureA)]
@@ -193,7 +199,7 @@ public class HomeController : Controller
 }
 ```
 
-A következő `Index` fenti művelethez szükséges *FeatureA* kell *a* ahhoz, hogy futtatható.
+A következő `Index` művelethez szükséges `FeatureA` kell *a* ahhoz, hogy futtatható:
 
 ```csharp
 [Feature(MyFeatureFlags.FeatureA)]
@@ -203,11 +209,11 @@ public IActionResult Index()
 }
 ```
 
-Ha egy MVC-vezérlő vagy a művelet le van tiltva, mert a szolgáltatás szabályozásával való jelző *ki*, egy regisztrált `IDisabledFeatureHandler` nevezzük. Az alapértelmezett `IDisabledFeatureHandler` 404-es állapotkódot ad vissza, választörzs nélkül az ügyfélnek.
+Ha egy MVC-vezérlő vagy a művelet le van tiltva, mert a szolgáltatás szabályozásával való jelző *ki*, egy regisztrált `IDisabledFeaturesHandler` felület nevezzük. Az alapértelmezett `IDisabledFeaturesHandler` felület 404-es állapotkódot ad vissza az ügyfélnek, választörzs nélkül.
 
-## <a name="view"></a>Nézet
+## <a name="mvc-views"></a>MVC-nézetek
 
-Az MVC-nézetekben egy `<feature>` címke segítségével a tartalmak egy funkció jelző engedélyezve van-e vagy sem jelennek meg.
+Az MVC-nézetekben használható egy `<feature>` tartalom megjelenítése címke alapján hogy engedélyezve van-e a szolgáltatás azt a jelzőt:
 
 ```html
 <feature name="FeatureA">
@@ -215,9 +221,9 @@ Az MVC-nézetekben egy `<feature>` címke segítségével a tartalmak egy funkci
 </feature>
 ```
 
-## <a name="mvc-filter"></a>MVC-szűrő
+## <a name="mvc-filters"></a>MVC-szűrők
 
-MVC-szűrők beállíthatja úgy, hogy a rendszer aktiválja a funkciót azt a jelzőt állapota alapján. A következő hozzáadása az MVC-szűrő nevű `SomeMvcFilter`. Ez a szűrő aktiválódik az MVC folyamat csak akkor, ha belül *FeatureA* engedélyezve van.
+MVC-szűrőket állíthatja, hogy az aktivált egy funkció jelölője állapota alapján. A következő kódot egy MVC-szűrőt, nevű ad `SomeMvcFilter`. Ez a szűrő aktiválódik az MVC folyamat csak akkor, ha belül `FeatureA` engedélyezve van.
 
 ```csharp
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -232,9 +238,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="route"></a>Útválasztás
+## <a name="routes"></a>Útvonalak
 
-Útvonalak funkció jelzők alapján dinamikusan is kommunikálhatnak. A következő hozzáad egy útvonalat, amely beállítja a `Beta` , az alapértelmezett vezérlő csak akkor, ha *FeatureA* engedélyezve van.
+A szolgáltatás jelzők segítségével dinamikusan elérhetővé az útvonalak. Az alábbi kód hozzáad egy útvonalat, amely beállítja a `Beta` , az alapértelmezett vezérlő csak akkor, ha `FeatureA` engedélyezve van:
 
 ```csharp
 app.UseMvc(routes => {
@@ -244,13 +250,13 @@ app.UseMvc(routes => {
 
 ## <a name="middleware"></a>Közbenső szoftver
 
-A szolgáltatás jelzők használható alkalmazás elágazások és közbenső feltételesen hozzáadása. A következő beszúrásokat egy közbenső összetevő a kérelemben szereplő folyamat csak akkor, ha *FeatureA* engedélyezve van.
+A szolgáltatás jelzők segítségével feltételesen adja hozzá az alkalmazás-ágak és köztes szoftverek. A következő kód beszúrása egy közbenső összetevő a kérelemben szereplő folyamat csak akkor, ha `FeatureA` engedélyezve van:
 
 ```csharp
 app.UseMiddlewareForFeature<ThirdPartyMiddleware>(nameof(MyFeatureFlags.FeatureA));
 ```
 
-Ez felépíti ki több általános teszi, hogy egy funkció jelölője alapján a teljes alkalmazás ágban.
+Ez a kód épít ki további általános teszi, hogy egy funkció jelölője alapján a teljes alkalmazás ág:
 
 ```csharp
 app.UseForFeature(featureName, appBuilder => {
@@ -260,7 +266,7 @@ app.UseForFeature(featureName, appBuilder => {
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan funkció jelzők megvalósításához az ASP.NET Core-alkalmazást a felügyelniük a `Microsoft.FeatureManagement` kódtárakat. Az alábbi cikkekben talál további információt felügyeleti támogatásáról az ASP.NET Core és az alkalmazás konfigurációját.
+Ebben az oktatóanyagban megtudhatta, hogyan funkció jelzők megvalósításához az ASP.NET Core-alkalmazás használatával az `Microsoft.FeatureManagement` kódtárakat. ASP.NET Core és az alkalmazás konfigurációját a szolgáltatás felügyeleti támogatásával kapcsolatos további információkért lásd a következőket:
 
 * [ASP.NET Core funkció jelölője mintakód](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
 * [Microsoft.FeatureManagement dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)

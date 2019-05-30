@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 04/04/2019
+ms.date: 05/25/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 8ceb3d2d97c63bd19333336314beb6c7444288e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bfc8b62c61e2b9d01ffa0c582468b6236c92cccc
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60823615"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257930"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -22,7 +22,7 @@ Az Azure Event Griddel könnyen létrehozhat eseményalapú architektúrával re
 
 Szűrők segítségével adott eseményeket irányíthat át különböző végpontokra, csoportos küldést végezhet több végpontra, és meggyőződhet róla, hogy az események megbízhatóan célba érnek.
 
-Az Azure Event Grid jelenleg minden nyilvános régióban elérhető. Még nem érhető el az Azure Germany, Azure China 21Vianet vagy az Azure Government felhőben.
+Az Azure Event Grid telepítve van a rendelkezésre állás maximalizálása érdekében minden régióban több tartalék tartomány között, és a rendelkezésre állási zónában (az azokat támogató régiók) natív módon végződtetett. Az Azure Event Grid jelenleg minden nyilvános régióban elérhető. Még nem érhető el az Azure Germany, Azure China 21Vianet vagy az Azure Government felhőben.
 
 Ez a cikk az Azure Event Gridről nyújt áttekintést. Az Event Grid használatának első lépései: [Egyéni események létrehozása és átirányítása az Azure Event Griddel](custom-event-quickstart.md). 
 

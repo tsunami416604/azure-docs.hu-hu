@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 179b67306803437ccad085cccfb1b5fd40888261
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 05fd369cfebba03c814507f82755fa6cb6a89400
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240859"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386799"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatok kezelése
 
@@ -167,7 +167,7 @@ Az alábbiakban néhány példa látható a JSON formátumban, azaz, hogy hogyan
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Az elutasítás házirendet külön-külön az egyes tulajdonság elérési utak kizárása
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/*",
@@ -201,7 +201,7 @@ Az alábbiakban néhány példa látható a JSON formátumban, azaz, hogy hogyan
 ### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Jóváhagyás házirendet külön-külön néhány tulajdonság elérési utak
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/path/to/included/property/?",
@@ -235,7 +235,7 @@ Megjegyzés: Általában javasolt használni egy **lemond** indexelési szabály
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>A térbeli index használatával csak egy adott tulajdonságra elérési úton
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/*",
@@ -280,7 +280,7 @@ Ez a szabályzat helyzetekben használható, a [idő-az-élettartam (TTL) funkci
 ### <a name="no-indexing"></a>Nincs indexelése
 ```
     {
-        "indexingPolicy": "none"
+        "indexingMode": "none"
     }
 ```
 
