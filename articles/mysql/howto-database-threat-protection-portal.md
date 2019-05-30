@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.openlocfilehash: 76f6c15fc1e186e254c4edbb53a2a0ccf7050b3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "61458944"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Komplex veszélyforrások elleni védelem az Azure Database for MySQL-hez
@@ -28,7 +28,7 @@ Komplex veszélyforrások elleni védelem a speciális adatbiztonság ajánlat, 
 
 ## <a name="set-up-threat-detection"></a>Állítsa be a fenyegetések észlelése
 1. Indítsa el az Azure Portalra a [ https://portal.azure.com ](https://portal.azure.com).
-2. Keresse meg az Azure Database for MySQL-kiszolgáló védeni kívánt konfiguráció lapján. Válassza ki a biztonsági beállítások **komplex veszélyforrások elleni védelem (előzetes verzió)**.
+2. Keresse meg az Azure Database for MySQL-kiszolgáló védeni kívánt konfiguráció lapján. Válassza ki a biztonsági beállítások **komplex veszélyforrások elleni védelem (előzetes verzió)** .
 3. Az a **komplex veszélyforrások elleni védelem (előzetes verzió)** konfigurációs lapon:
 
    - Komplex veszélyforrások elleni védelem engedélyezése a kiszolgálón.
@@ -46,7 +46,7 @@ Rendellenes adatbázis-tevékenységek észlelésekor e-mail-értesítést kap. 
 
     Aktív fenyegetések megtekintése:
 
-    ![Aktív fenyegetések](./media/howto-database-threat-protection-portal/active-threats.png)
+    ![aktív fenyegetések](./media/howto-database-threat-protection-portal/active-threats.png)
 
 2. Kattintson egy adott riasztás kivizsgálása a fenyegetés és a jövőbeli fenyegetésekkel szembeni szervizelését további részletek és műveletek beolvasásához.
     
