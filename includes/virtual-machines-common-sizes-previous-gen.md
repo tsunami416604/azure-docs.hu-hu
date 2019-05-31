@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 40857879826963f9a82cb5864b6980305c522679
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 464c7bcb510a2f6ab80fb11d722c241ec51a1b16
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145727"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391322"
 ---
 Ez a szakasz előző generációs szoftvereknél jobban virtuálisgép-méretek információkat biztosít. Ezeket a méreteket továbbra is használható, de nincsenek elérhető újabb generáció esetében. 
 
@@ -29,9 +29,9 @@ Prémium szintű Storage:  Nem támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
-| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IO | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_F1  | 1.         | 2           | 16             | 3000 / 46 / 23                                           | 4 / 4x500                         | 2 / 750                 |
+| Standard_F1  | 1         | 2           | 16             | 3000 / 46 / 23                                           | 4 / 4x500                         | 2 / 750                 |
 | Standard_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1500                     |
 | Standard_F4  | 4         | 8           | 64             | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 3000                     |
 | Standard_F8  | 8         | 16          | 128            | 24000 / 375 / 187                                        | 32 / 32x500                       | 8 / 6000                     |
@@ -49,11 +49,11 @@ Prémium szintű Storage gyorsítótárazást:  Támogatott
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS / MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_F1s |1. |2 |4 |4 |4,000 / 32 (12) |3,200 / 48 |2 / 750 |
-| Standard_F2s |2 |4 |8 |8 |8,000 / 64 (24) |6,400 / 96 |2 / 1500 |
-| Standard_F4s |4 |8 |16 |16 |16,000 / 128 (48) |12,800 / 192 |4 / 3000 |
-| Standard_F8s |8 |16 |32 |32 |32,000 / 256 (96) |25,600 / 384 |8 / 6000 |
-| Standard_F16s |16 |32 |64 |64 |64,000 / 512 (192) |51,200 / 768 |8 / 12000 |
+| Standard_F1s |1 |2 |4 |4 |4000 / 32 (12) |3200 / 48 |2 / 750 |
+| Standard_F2s |2 |4 |8 |8 |8000 / 64 (24) |6400 / 96 |2 / 1500 |
+| Standard_F4s |4 |8 |16 |16 |16000 / 128 (48) |12800 / 192 |4 / 3000 |
+| Standard_F8s |8 |16 |32 |32 |32000 / 256 (96) |25600 / 384 |8 / 6000 |
+| Standard_F16s |16 |32 |64 |64 |64000 / 512 (192) |51200 / 768 |8 / 12000 |
 
 MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 
@@ -73,10 +73,10 @@ Prémium szintű Storage gyorsítótárazást:  Nem támogatott
  
 | Méret          | vCPU | Memória (GiB) | Ideiglenes tárhely (GB) | Adatlemezek max. száma | Ideiglenes tárterület maximális teljesítménye (IOPS vagy MBps) | Maximális lemezteljesítmény (IOPS vagy MBps) | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) | 
 |----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
-| Standard_L4s   | 4  | 32  | 678   | 16 | 20,000 / 200 | 5,000 / 125  | 2 / 4,000  | 
-| Standard_L8s   | 8  | 64  | 1,388 | 32 | 40,000 / 400 | 10,000 / 250 | 4 / 8,000  | 
-| Standard_L16s  | 16 | 128 | 2,807 | 64 | 80,000 / 800 | 20,000 / 500 | 8 / 16,000 | 
-| Standard_L32s&nbsp;<sup>1</sup> | 32   | 256  | 5,630 | 64   | 160,000 / 1,600   | 40,000 / 1,000     | 8 / 20,000 | 
+| Standard_L4s   | 4  | 32  | 678   | 16 | 20000 / 200 | 5000 / 125  | 2 / 4000  | 
+| Standard_L8s   | 8  | 64  | 1388 | 32 | 40000 / 400 | 10000 / 250 | 4 / 8000  | 
+| Standard_L16s  | 16 | 128 | 2807 | 64 | 80000 / 800 | 20000 / 500 | 8 / 16000 | 
+| Standard_L32s&nbsp;<sup>1</sup> | 32   | 256  | 5630 | 64   | 160000 / 1600   | 40000 / 1000     | 8 / 20000 | 
 
 Az Ls-sorozat virtuális gépei lehetséges maximális lemezteljesítményét lehet, hogy korlátozzák a száma, mérete és szétosztottsága csatlakoztatott lemezeket. További információkért lásd: [magas teljesítmény-központú tervezés](../articles/virtual-machines/windows/premium-storage-performance.md).
 
@@ -92,7 +92,7 @@ Minden egyes GPU NVv2 esetekben rács licencet tartalmaz. Ez a licenc rugalmass�
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma | Virtuális munkaállomásait | A virtuális alkalmazások | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV6s_v2 |6 |112 |320 | 1. | 8 | 12 | 4 | 1. | 25 |
+| Standard_NV6s_v2 |6 |112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
 | Standard_NV12s_v2 |12 |224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
 | Standard_NV24s_v2 |24 |448 |1280 | 4 | 32 | 32 | 8 | 4 | 100 |
 

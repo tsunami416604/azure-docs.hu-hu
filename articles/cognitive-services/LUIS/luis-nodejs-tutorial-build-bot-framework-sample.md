@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 27ebe827e97c8361c7f93a125f09aa9e339a6a14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8bd6a9df9518cb1b2312b525e8876629a2189bd2
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196990"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399617"
 ---
 # <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>A Bot keretrendszer Node.js-ben a LUIS-robot 3.x és az Azure Web app bot
 
 A Node.js használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). Ez csevegőrobot az előre összeállított HomeAutomation tartomány segítségével rövid idő alatt kiépíthet egy robot megoldás. A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot.
+
+A [Bot keretrendszer 4.x LUIS oktatóanyag](luis-nodejs-tutorial-bf-v4.md) is rendelkezésre áll.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
@@ -98,7 +100,7 @@ Nyissa meg **Alkalmazásbeállítások** az első böngészőablakot és szerkes
 
   ![Frissítés az Azure-ban a LUIS alkalmazás azonosítója](./media/luis-tutorial-node-bot/bot-service-app-id.png)
 
-Ha nem rendelkezik a LUIS-alkalmazás azonosítója, jelentkezzen be a [LUIS](luis-reference-regions.md) webhelyen, amellyel belép Azure-bA ugyanazzal a fiókkal. Válassza ki a **saját alkalmazások**. 
+Ha nem rendelkezik a LUIS-alkalmazás azonosítója, jelentkezzen be a [LUIS](luis-reference-regions.md) webhely ugyanazzal a fiókkal jelentkezzen be az Azure használatával. Válassza ki a **saját alkalmazások**. 
 
 1. Keresse meg a korábban létrehozott, LUIS alkalmazást, amely tartalmazza a szándékok és entitások HomeAutomation tartományból.
 

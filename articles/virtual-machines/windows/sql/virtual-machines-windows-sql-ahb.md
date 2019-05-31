@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3f62557d024f56b7014784b6956f15a950f8cca7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1fb67600ea01629e7bf3ab4c7c470e4727b0e923
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926248"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393169"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Az Azure-beli SQL Server virtuális gép licencelési modelljét módosítása
 Ez a cikk bemutatja, hogyan módosíthatja az Azure-ban az új SQL Server virtuális gép licencelési modelljét SQL virtuális gép erőforrás-szolgáltató – **Microsoft.SqlVirtualMachine**. Kettő licencelési üzemeltető SQL Server – használatalapú fizetés, egy virtuális gépet (VM) modellt és a hozott licences (BYOL). És most az Azure portal, az Azure parancssori felület vagy PowerShell használatával módosíthatja licencelési modellt az SQL Server virtuális gép használja. 
@@ -34,7 +34,7 @@ Váltás a két licenc modell között felmerülő **állásidő nélkül**, nem
 ## <a name="remarks"></a>Megjegyzések
 
 
- - CSP-ügyfeleknek a AHB juttatás képes használni, először a használatalapú fizetést biztosító virtuális gépek telepítése, majd a bring-your-saját licenc által. 
+ - Az Azure Cloud Solution Partner (CSP)-ügyfelek először a használatalapú fizetést biztosító virtuális gépek telepítése, majd a bring-your-saját licenc által képes használni az Azure Hybrid Benefit. 
  - Az erőforrás-szolgáltató az SQL Server rendszerű virtuális gép egyéni rendszerkép regisztráció során adja meg a licenc típusa = "AHUB". Hagyja a licenc adja meg, üres, vagy adja meg a "Használatalapú" okoz a regisztráció sikertelen lesz. 
  - Törölte-e az SQL Server VM-erőforrás, állítja vissza a kódolt licenc beállításait, a kép. 
  - Egy SQL Server rendszerű virtuális gép hozzáadása egy rendelkezésre állási csoportban van szükség a virtuális gép újbóli létrehozását. Mint ilyen, minden olyan virtuális gépeket hozzáadni egy funkciónként set kattintva visszatérhet az alapértelmezett használatalapú licenctípus és AHB újra engedélyezni kell. 

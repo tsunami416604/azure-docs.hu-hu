@@ -7,13 +7,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
-ms.date: 05/13/2019
-ms.openlocfilehash: 44b6f099b5b17329976b9fec3c0ac38b5e394221
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
-ms.translationtype: HT
+ms.date: 05/24/2019
+ms.openlocfilehash: c40bae6ac1af2489e4e77d2c280b95cccf8b5603
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978019"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257834"
 ---
 # <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters-preview"></a>Konfigurálja a kimenő hálózati forgalom korlátozása az Azure HDInsight-fürtök (előzetes verzió)
 
@@ -32,38 +32,23 @@ A megoldás a kimenő címek védelme érdekében, hogy egy tűzfal eszköz, ame
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>HDInsight Azure tűzfal konfigurálása
 
 A lépéseket annak zárolását, így a meglévő HDInsight az Azure-tűzfalon a kimenő forgalom összegzését a következők:
-1. Engedélyezze a szolgáltatásvégpontokat.
 1. Hozzon létre egy tűzfalat.
 1. Alkalmazás szabályokat a tűzfal hozzáadása
 1. Adja hozzá a hálózati szabályok a tűzfalon.
 1. Útválasztási táblázat létrehozása.
 
-### <a name="enable-service-endpoints"></a>Engedélyezze a szolgáltatásvégpontokat
-
-Ha meg szeretné kerülni a tűzfal (pl. csökkenthetők a költségek az adatátvitel), majd engedélyezheti a szolgáltatásvégpontokat az SQL és a storage a HDInsight-alhálózat. Ha engedélyezve van az Azure SQL-szolgáltatásvégpontokat, minden olyan Azure SQL-függőségek, amely a fürt rendelkezik a Szolgáltatásvégpontok is kell konfigurálni.
-
-Ahhoz, hogy a megfelelő Szolgáltatásvégpontok, kövesse az alábbi lépéseket:
-
-1. Jelentkezzen be az Azure Portalon, és válassza ki a virtuális hálózatot, amely a HDInsight-fürtöt helyezünk üzembe a.
-1. Válassza ki **alhálózatok** alatt **beállítások**.
-1. Válassza ki az alhálózatot, ahol a fürt üzembe lesz helyezve.
-1. Alhálózat beállításait szeretné módosítani a képernyőn kattintson a **Microsoft.SQL** és/vagy **Microsoft.Storage** származó a **Szolgáltatásvégpontokat**  >   **Szolgáltatások** legördülő menüből.
-1. Ha egy ESP fürtöt használ, akkor is ki kell a **Microsoft.AzureActiveDirectory** szolgáltatásvégpontot.
-1. Kattintson a **Save** (Mentés) gombra.
-
 ### <a name="create-a-new-firewall-for-your-cluster"></a>Hozzon létre egy új tűzfalszabályt a fürt
 
 1. Hozzon létre egy alhálózatot nevű **AzureFirewallSubnet** a virtuális hálózatban, ahol a fürt található. 
 1. Hozzon létre egy új tűzfal **Test-FW01** használata a lépések [oktatóanyag: Telepítse és konfigurálja az Azure portal segítségével Azure tűzfal](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall).
-1. Válassza ki az új tűzfal az Azure Portalról. Kattintson a **szabályok** alatt **beállítások** > **alkalmazás szabálygyűjtemény** > **adja hozzá az alkalmazás szabálygyűjtemény**.
-
-    ![Cím: Alkalmazásszabály-gyűjtemény hozzáadása](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 ### <a name="configure-the-firewall-with-application-rules"></a>A tűzfal konfigurálása application szabályokkal
 
 Az alkalmazás-szabálygyűjtemény, amely lehetővé teszi, hogy küldeni és fogadni a fontos kommunikáció a fürt létrehozásához.
 
 Válassza ki az új tűzfal **Test-FW01** az Azure Portalról. Kattintson a **szabályok** alatt **beállítások** > **alkalmazás szabálygyűjtemény** > **adja hozzá az alkalmazás szabálygyűjtemény**.
+
+![Cím: Alkalmazás szabály gyűjtemény hozzáadása](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 Az a **adja hozzá az alkalmazás szabálygyűjtemény** képernyőn, a következő lépéseket:
 
@@ -75,12 +60,9 @@ Az a **adja hozzá az alkalmazás szabálygyűjtemény** képernyőn, a követke
     1. Egy szabály, amely engedélyezi a Windows bejelentkezési tevékenység:
         1. Az a **cél teljes tartománynevek** területén adjon meg egy **neve**, és állítsa be **címek forrás** való `*`.
         1. Adja meg `https:443` alatt **protokoll: Port** és `login.windows.net` alatt **teljes TARTOMÁNYNEVEK cél**.
-    1. Egy szabályt, amely az SQM-telemetria engedélyezése:
-        1. Az a **cél teljes tartománynevek** területén adjon meg egy **neve**, és állítsa be **címek forrás** való `*`.
-        1. Adja meg `https:443` alatt **protokoll: Port** és `sqm.telemetry.microsoft.com` alatt **teljes TARTOMÁNYNEVEK cél**.
     1. Ha a fürt WASB alapját, és nem használja a fenti Szolgáltatásvégpontok, majd egy szabály hozzáadása a WASB:
         1. Az a **cél teljes tartománynevek** területén adjon meg egy **neve**, és állítsa be **címek forrás** való `*`.
-        1. Adja meg `http` vagy [https] attól függően, ha használja a wasb: / / vagy a wasbs: / / a **protokoll: Port** és a tárolási fiók URL-címét a **cél teljes TARTOMÁNYNEVEK**.
+        1. Adja meg `http` vagy `https` attól függően, hogy használja wasb: / / vagy wasbs: / / a **protokoll: Port** és a tárolási fiók URL-címét a **cél teljes TARTOMÁNYNEVEK**.
 1. Kattintson a **Hozzáadás**lehetőségre.
 
 ![Cím: Adja meg az alkalmazás szabály gyűjtemény részletei](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
@@ -88,9 +70,6 @@ Az a **adja hozzá az alkalmazás szabálygyűjtemény** képernyőn, a követke
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurálja a tűzfalat a hálózati szabályok
 
 A hálózati szabályok megfelelően konfigurálja a HDInsight-fürt létrehozásához.
-
-> [!Important]
-> Választhat a tűzfalon a hálózati szabályok használata ebben a szakaszban leírtak szerint az SQL szolgáltatás címkék használatával, vagy egy SQL szolgáltatást végpont egy leírt [Szolgáltatásvégpontok szakaszát](#enable-service-endpoints). Ha hálózati szabályokat használjon az SQL-címkéket, log, és SQL-forgalom naplózása. Egy végpontot használja az SQL-forgalmat a tűzfal megkerülését fog rendelkezni.
 
 1. Válassza ki az új tűzfal **Test-FW01** az Azure Portalról.
 1. Kattintson a **szabályok** alatt **beállítások** > **szabálygyűjtemény hálózati** > **adja hozzá a hálózati szabálygyűjtemény**.
@@ -112,12 +91,7 @@ A hálózati szabályok megfelelően konfigurálja a HDInsight-fürt létrehozá
         1. Állítsa be **címek forrás** `*`.
         1. Adja meg az IP-címet a tárfiókja **célcímek**.
         1. Állítsa be **Célportok** való `*`.
-    1. Egy hálózati szabályt, amely a Key Management szolgáltatás a Windows aktiválási való kommunikáció engedélyezése.
-        1. A következő sorban található a **szabályok** területén adjon meg egy **neve** , és válassza ki **bármely** a a **protokoll** legördülő listából.
-        1. Állítsa be **címek forrás** `*`.
-        1. Állítsa be **célcímek** való `*`.
-        1. Állítsa be **Célportok** való `1688`.
-    1. Ha a Log Analytics használ, hozzon létre egy hálózati szabályt, amely a Log Analytics-munkaterülethez való kommunikáció engedélyezése.
+    1. (Nem kötelező) Ha a Log Analytics használ, hozzon létre egy hálózati szabályt, amely a Log Analytics-munkaterülethez való kommunikáció engedélyezése.
         1. A következő sorban található a **szabályok** területén adjon meg egy **neve** , és válassza ki **bármely** a a **protokoll** legördülő listából.
         1. Állítsa be **címek forrás** `*`.
         1. Állítsa be **célcímek** való `*`.
@@ -150,7 +124,7 @@ Például az útvonaltáblát az "USA középső Régiója", az Egyesült Állam
 1. Kattintson a **útvonalak** alatt **beállítások**.
 1. Kattintson a **Hozzáadás** útvonalakat az IP-cím létrehozása az alábbi táblázat a.
 
-| Útvonalnév | Címelőtag | Következő ugrási típus | Következő ugrási cím |
+| Útvonal neve | Címelőtag | A következő ugrás típusa | A következő ugrás címe |
 |---|---|---|---|
 | 168.61.49.99 | 168.61.49.99/32 | Internet | n/a |
 | 23.99.5.239 | 23.99.5.239/32 | Internet | n/a |

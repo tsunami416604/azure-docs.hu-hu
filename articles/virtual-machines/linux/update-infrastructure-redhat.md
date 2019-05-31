@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 5/7/2019
+ms.date: 5/28/2019
 ms.author: borisb
-ms.openlocfilehash: 7909ee1dc3980a5a4ff2418d4d6790361a66a65e
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e950a92925e77fa05708d2af3e04e7991243f613
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410713"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357748"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Az igény szerinti Red Hat Enterprise Linux virtuális gépek az Azure-beli Red Hat frissítési infrastruktúrája
  [Red Hat frissítési infrastruktúrához](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi a felhőszolgáltatók, például az Azure Red Hat-ban üzemeltetett tárház tartalmának tükrözik, az Azure-ra vonatkozó egyéni adattárak tartalom létrehozása és végfelhasználói virtuális gépek számára elérhető legyen.
@@ -102,7 +102,7 @@ Ha a hozzáférés további korlátozását RHEL Használatalapú virtuális gé
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Frissítés a virtuális gép RHUI ügyféltanúsítvány lejárt
 
-Ha egy régebbi RHEL Virtuálisgép-rendszerképet, például az RHEL-7.4 használja (a kép URN: `RedHat:RHEL:7.4:7.4.2018010506`), kapcsolódási problémák miatt lejárt SSL-ügyféltanúsítvány RHUI fog tapasztalni. A hibát látja nézhet _"SSL társ visszautasította a tanúsítvány lejárt,"_ vagy _"hiba: Nem sikerült beolvasni a tárház metaadatok (repomd.xml) tárház:... Ellenőrizze az elérési útját, és próbálkozzon újra"_. A probléma megoldásához frissítse az RHUI ügyfélcsomag, a virtuális gépen a következő paranccsal:
+Ha egy régebbi RHEL Virtuálisgép-rendszerképet, például az RHEL-7.4 használja (a kép URN: `RedHat:RHEL:7.4:7.4.2018010506`), kapcsolódási problémák miatt lejárt SSL-ügyféltanúsítvány RHUI fog tapasztalni. A hibát látja nézhet _"SSL társ visszautasította a tanúsítvány lejárt,"_ vagy _"hiba: Nem sikerült beolvasni a tárház metaadatok (repomd.xml) tárház:... Ellenőrizze az elérési útját, és próbálkozzon újra"_ . A probléma megoldásához frissítse az RHUI ügyfélcsomag, a virtuális gépen a következő paranccsal:
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
@@ -138,89 +138,15 @@ Az új Azure RHUI kiszolgálókra telepítik [Azure Traffic Manager](https://azu
 ### <a name="manual-update-procedure-to-use-the-azure-rhui-servers"></a>Manuális frissítés eljárást használja az Azure RHUI kiszolgálók
 Ez az eljárás csak referenciaként van megadva. RHEL Használatalapú lemezképek már rendelkezik a megfelelő konfigurációt szeretne csatlakozni az Azure RHUI. Manuálisan frissítse a konfigurációt az Azure RHUI kiszolgálókat használ, hajtsa végre az alábbi lépéseket:
 
-1. Töltse le a curl-n keresztül a nyilvános kulcs aláírását.
-
-   ```bash
-   curl -o RPM-GPG-KEY-microsoft-azure-release https://download.microsoft.com/download/9/D/9/9d945f05-541d-494f-9977-289b3ce8e774/microsoft-sign-public.asc
-   ```
-
-1. A letöltött kulcs érvényességének ellenőrzése.
-
-   ```bash
-   gpg --list-packets --verbose < RPM-GPG-KEY-microsoft-azure-release
-   ```
-
-1. Ellenőrizze a kimenetet, és ellenőrizze a `keyid` és a `user ID packet`.
-
-   ```bash
-   Version: GnuPG v1.4.7 (GNU/Linux)
-   :public key packet:
-           version 4, algo 1, created 1446074508, expires 0
-           pkey[0]: [2048 bits]
-           pkey[1]: [17 bits]
-           keyid: EB3E94ADBE1229CF
-   :user ID packet: "Microsoft (Release signing) <gpgsecurity@microsoft.com>"
-   :signature packet: algo 1, keyid EB3E94ADBE1229CF
-           version 4, created 1446074508, md5len 0, sigclass 0x13
-           digest algo 2, begin of digest 1a 9b
-           hashed subpkt 2 len 4 (sig created 2015-10-28)
-           hashed subpkt 27 len 1 (key flags: 03)
-           hashed subpkt 11 len 5 (pref-sym-algos: 9 8 7 3 2)
-           hashed subpkt 21 len 3 (pref-hash-algos: 2 8 3)
-           hashed subpkt 22 len 2 (pref-zip-algos: 2 1)
-           hashed subpkt 30 len 1 (features: 01)
-           hashed subpkt 23 len 1 (key server preferences: 80)
-           subpkt 16 len 8 (issuer key ID EB3E94ADBE1229CF)
-           data: [2047 bits]
-   ```
-
-1. Telepítse a nyilvános kulcsot.
-
-   ```bash
-   sudo install -o root -g root -m 644 RPM-GPG-KEY-microsoft-azure-release /etc/pki/rpm-gpg
-   sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release
-   ```
-
-1. Töltse le, győződjön meg arról, és telepítse az RPM Package Manager (RPM) ügyfél.
-
-    >[!NOTE]
-    >Alkalmazáscsomag-verziók módosíthatja. Azure RHUI manuálisan csatlakozik, megkeresni az ügyfél-csomag legújabb verziójának minden egyes RHEL-család a galériából a legújabb rendszerképet kiépítésével.
-
-   a. Töltse le.
-
-    - Az RHEL 6:
-        ```bash
-        curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel6/Packages/r/rhui-azure-rhel6-2.2-74.noarch.rpm
-        ```
-
-    - Az RHEL 7:
-        ```bash
-        curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel7/Packages/r/rhui-azure-rhel7-2.2-74.noarch.rpm
-        ```
-
-   b. Ellenőrizze-e.
-
-   ```bash
-   rpm -Kv azureclient.rpm
-   ```
-
-   c. Ellenőrizze a kimeneti annak biztosításához, hogy a csomag aláírása OK.
-
-   ```bash
-   azureclient.rpm:
-       Header V3 RSA/SHA256 Signature, key ID be1229cf: OK
-       Header SHA1 digest: OK (927a3b548146c95a3f6c1a5d5ae52258a8859ab3)
-       V3 RSA/SHA256 Signature, key ID be1229cf: OK
-       MD5 digest: OK (c04ff605f82f4be8c96020bf5c23b86c)
-   ```
-
-   d. Telepítse az RPM.
-
-    ```bash
-    sudo rpm -U azureclient.rpm
-    ```
-
-1. Miután végzett, győződjön meg arról, hogy a virtuális gépről az Azure RHUI elérhető.
+- Az RHEL 6:
+  ```bash
+  yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel6.config' install 'rhui-azure-rhel6'
+  ```
+        
+- Az RHEL 7:
+  ```bash
+  yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
+  ```
 
 ## <a name="next-steps"></a>További lépések
 * Red Hat Enterprise Linux virtuális gép létrehozása az Azure Marketplace-en PAYG rendszerképből, és használata az Azure-ban üzemeltetett RHUI, nyissa meg a [Azure Marketplace-en](https://azure.microsoft.com/marketplace/partners/redhat/).

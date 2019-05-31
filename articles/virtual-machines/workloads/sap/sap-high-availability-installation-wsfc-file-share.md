@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a20299887de827f25e4c3306f5e78c188c9a8a7f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 95cde28bc4789346aabd58b5f7b543e1bbc989c1
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969401"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357697"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>SAP NetWeaver magas rendelkezésre állású telepítése a Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASCS/SCS-példányok az Azure-ban
 
@@ -291,7 +291,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>Hozzon létre egy virtuális nevet a fürtözött SAP ASCS/SCS példányhoz
 
-Hozzon létre egy SAP ASCS/SCS fürthálózat nevének (például **pr1 – ascs [10.0.6.7]**) leírtak szerint [hozzon létre egy virtuális nevet a fürtözött SAP ASCS/SCS példányhoz] [ sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host] .
+Hozzon létre egy SAP ASCS/SCS fürthálózat nevének (például **pr1 – ascs [10.0.6.7]** ) leírtak szerint [hozzon létre egy virtuális nevet a fürtözött SAP ASCS/SCS példányhoz] [ sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host] .
 
 
 ## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>A fürt egy ASCS/SCS és SSZON példányok telepítése
@@ -300,7 +300,7 @@ Hozzon létre egy SAP ASCS/SCS fürthálózat nevének (például **pr1 – ascs
 
 Telepítse az SAP ASCS/SCS példányhoz az első fürtcsomópontra. A példány, az SAP SWPM telepítési eszközben telepítéséhez nyissa meg:
 
-**\<A termék >** > **\<DBMS >** > **telepítési** > **alkalmazáskiszolgáló ABAP** () vagy **Java**) > **magas rendelkezésre állású System** > **ASCS/SCS példányhoz** > **elsőfürtcsomópontra**.
+**\<A termék >**  >  **\<DBMS >**  > **telepítési** > **alkalmazáskiszolgáló ABAP** () vagy **Java**) > **magas rendelkezésre állású System** > **ASCS/SCS példányhoz** > **elsőfürtcsomópontra**.
 
 ### <a name="add-a-probe-port"></a>Adja hozzá a mintavételi port
 
@@ -310,21 +310,21 @@ Egy SAP-erőforrás, a SAP-SID-IP-mintavételi port konfigurálása a PowerShell
 
 Telepítse az SAP ASCS/SCS példányhoz a második fürtcsomópontra. A példány, az SAP SWPM telepítési eszközben telepítéséhez nyissa meg:
 
-**\<A termék >** > **\<DBMS >** > **telepítési** > **alkalmazáskiszolgáló ABAP** () vagy **Java**) > **magas rendelkezésre állású System** > **ASCS/SCS példányhoz** > **további fürtcsomópontra** .
+**\<A termék >**  >  **\<DBMS >**  > **telepítési** > **alkalmazáskiszolgáló ABAP** () vagy **Java**) > **magas rendelkezésre állású System** > **ASCS/SCS példányhoz** > **további fürtcsomópontra** .
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>Az SAP ASCS/SCS példányhoz profil frissítése
 
-Frissítse az SAP ASCS/SCS példányhoz profil paramétereket \<SID >_ASCS/SCS\<Nr >_\<gazdagép >.
+Frissítse az SAP ASCS/SCS példányhoz profil paramétereket \<SID >_ASCS/SCS\<Nr >_ \<gazdagép >.
 
 
-| Paraméternév | Paraméter értéke |
+| Paraméter neve | Hodnota parametru |
 | --- | --- |
 | az átjáró/netstat_once | **0** |
 | enque/encni/set_so_keepalive  | **true** |
 | service/ha_check_node | **1** |
 
-Indítsa újra az SAP ASCS/SCS példányhoz. Állítsa be `KeepAlive` mindkét SAP ASCS/SCS fürtcsomópontokon paraméterek kövesse az utasításokat [állítsa be a beállításjegyzék-bejegyzések a fürtcsomópontokon, az SAP ASCS/SCS példányhoz]([high-availability-guide]:high-availability-guide.md). 
+Indítsa újra az SAP ASCS/SCS példányhoz. Állítsa be `KeepAlive` mindkét SAP ASCS/SCS fürtcsomópontokon paraméterek kövesse az utasításokat [állítsa be a beállításjegyzék-bejegyzések a fürtcsomópontokon, az SAP ASCS/SCS példányhoz][high-availability-guide]. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Egy adatbázis-kezelő-példány és az SAP-alkalmazáskiszolgálókhoz telepítése
 

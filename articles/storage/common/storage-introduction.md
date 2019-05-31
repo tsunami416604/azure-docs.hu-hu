@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b03197fb0d4d97756e5a3fe88de78c11a816b5ec
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 4a6a6249f3edca30ab3d3f9a213b4282b4323d15
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951267"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258339"
 ---
 # <a name="introduction-to-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -77,7 +77,7 @@ Tegyük fel például, hogy biztosítani szeretné az ügyfelei számára, hogy 
 
 További információ az Azure Queuesról: [Bevezetés az Azure Queues használatába](../queues/storage-queues-introduction.md).
 
-## <a name="table-storage"></a>Táblatároló
+## <a name="table-storage"></a>Table Storage
 
 Az Azure Table Storage mostantól az Azure Cosmos DB része. Az Azure Table Storage dokumentációját lásd: [Az Azure Table Storage áttekintése](../tables/table-storage-overview.md). A meglévő Azure Table Storage-szolgáltatáson kívül elérhető egy új Azure Cosmos DB Table API-ajánlat, amely teljesítményoptimalizált táblákat, globális elosztást és automatikus másodlagos indexeket is biztosít. Ha további információra van szüksége, vagy szeretné kipróbálni az új prémium ajánlatot, tekintse meg az [Azure Cosmos DB Table API](https://aka.ms/premiumtables)-t ismertető cikket.
 
@@ -85,7 +85,9 @@ További információ a Table Storage-ról: [Az Azure Table Storage áttekintés
 
 ## <a name="disk-storage"></a>Lemezes tárolás
 
-Az Azure Storage emellett a virtuális gépek által használt felügyelt és nem felügyelt lemez képességeket is tartalmazza. További információkért ezekkel a szolgáltatásokkal kapcsolatban lásd a [Számítási szolgáltatások dokumentációját](https://docs.microsoft.com/azure/#pivot=products&panel=Compute).
+Egy Azure által felügyelt lemez egy virtuális merevlemezt (VHD). Felfoghatók úgy, mint egy helyszíni kiszolgálón, de, virtualizált fizikai lemezt. Azure managed disksbe tárolódnak, a lapblobokhoz, amelyek a rendszer egy véletlenszerű i/o-tárolóobjektum az Azure-ban. Felügyelt lemez "felügyelt" absztrakciós, mert a lapblobok, blobtárolók és az Azure storage-fiókok nevezzük. Felügyelt lemezekkel rendelkező mindössze meg kell rendelkezni a lemez, és az Azure gondoskodik a többiről.
+
+A felügyelt lemezekkel kapcsolatos további információkért lásd: [Bevezetés az Azure-ba, felügyelt lemezek](../../virtual-machines/windows/managed-disks-overview.md).
 
 ## <a name="types-of-storage-accounts"></a>A tárfiókok típusai
 
@@ -103,7 +105,7 @@ Az Azure Storage minden kérelmet kell engedélyezni. Az Azure Storage a követk
 - **A közös hozzáférésű jogosultságkódot (SAS) engedély használatával.** Közös hozzáférésű jogosultságkód (SAS) egy olyan tárolási erőforrás URI-ra hozzáfűzhető egy biztonsági jogkivonatot tartalmazó karakterlánc. A biztonsági jogkivonat például engedélyek vagy a időköz hozzáférési korlátozásokat foglalja magában. További információkért tekintse meg [használata közös hozzáférésű Jogosultságkódok (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 - **Tárolókhoz és blobokhoz való névtelen hozzáférés.** A blobok és a egy tároló lehet nyilvánosan elérhető. Ha megadja, hogy egy tárolót vagy blobot nyilvános, bárki névtelenül, a hitelesítés nem kötelező. További információk: [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Tárolók és blobok névtelen olvasási hozzáférésének kezelése).
 
-## <a name="encryption"></a>Titkosítás
+## <a name="encryption"></a>Encryption
 
 A Storage-szolgáltatásokban két alapszintű titkosítási módszer áll rendelkezésre. A biztonsággal és a titkosítással kapcsolatos további információkért lásd az [Azure Storage biztonsági útmutatóját](storage-security-guide.md).
 

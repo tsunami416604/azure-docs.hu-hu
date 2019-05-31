@@ -14,12 +14,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 4d375b559019529bdc170ce6bab535481e0569e0
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: b8cc628ef7db198c5068bb3917cf41113ba1687a
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873011"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417099"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Fejlesztés és üzembe helyezés a Visual Studio használatával – az Azure App Service webjobs-feladatok
 
@@ -27,7 +27,7 @@ Ez a cikk ismerteti a Visual Studióval egy Console Application-projektet egy we
 
 Egyetlen webalkalmazásban; több WebJobs közzéteheti. Győződjön meg arról, hogy minden egyes webjobs-feladat egy web app alkalmazásban egy egyedi nevet.
 
-Verzió 3.x, a [Azure WebJobs SDK](webjobs-sdk-how-to.md) lehetővé teszi a .NET Core alkalmazásokat, futtató webjobs-feladatok fejlesztése során 2.x verziója támogatja a .NET-keretrendszer verzióját. Az, hogy a webjobs-feladatok projekt telepítése módja különböző .NET Core-projektek és a .NET-keretrendszer azokat.
+Verzió-3.x a [Azure WebJobs SDK](webjobs-sdk-how-to.md) teszi lehetővé, amely alkalmazások, miközben verzió 2.x verziója támogatja-e a .NET-keretrendszer vagy a .NET Core alkalmazásokat, vagy a .NET-keretrendszer futtatása webjobs-feladatok fejlesztése. A lehetőség, hogy a webjobs-feladatok projekt telepítése, .NET Core-projektek és a .NET-keretrendszer eszközök különböző.
 
 ## <a name="webjobs-as-net-core-console-apps"></a>Webjobs-feladatok, mint a .NET Core-konzolalkalmazások
 
@@ -144,7 +144,7 @@ WebJobs-kompatibilis az új projekt létrehozásához használja a Konzolalkalma
 > 
 
 #### <a id="createnolink"></a> A webjobs-feladatok – új projekt sablont használ egy független webjobs-feladat
-1. Kattintson a **fájl** > **új projekt**, majd a **új projekt** párbeszédpanelen kattintson **felhőalapú**  >   **Az Azure WebJob (.NET-keretrendszer)**.
+1. Kattintson a **fájl** > **új projekt**, majd a **új projekt** párbeszédpanelen kattintson **felhőalapú**  >   **Az Azure WebJob (.NET-keretrendszer)** .
    
     ![Új projekt párbeszédpanel a webjobs-feladat sablon megjelenítése](./media/webjobs-dotnet-deploy-vs/np.png)
 2. Kövesse a fentebb látható [győződjön meg arról, a Konzolalkalmazás egy független a WebJobs-projektet a project](#convertnolink).
@@ -238,10 +238,10 @@ Webjobs-feladatok az alábbi beállításokat támogatja:
 
 | **Beállítás** | **Típus**  | **Leírás** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Az összes | Lehetővé teszi, hogy a feladat futtatása helyben anélkül, hogy először egy ideiglenes mappába másolni. További tudnivalókért lásd: [WebJobs munkakönyvtár](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | Összes | Lehetővé teszi, hogy a feladat futtatása helyben anélkül, hogy először egy ideiglenes mappába másolni. További tudnivalókért lásd: [WebJobs munkakönyvtár](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Folyamatos | A webjobs-feladatok csak egy példányban, ha horizontálisan felskálázott futtatható. További tudnivalókért lásd: [állítsa be a folyamatos feladat egypéldányosnak](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
-| `schedule` | Triggerrel indított | A webjobs-feladat CRON-alapú ütemezett futtatását. További TUDNIVALÓKÉRT tekintse meg a [időzítő eseményindító áttekintésével foglalkozó cikkben](../azure-functions/functions-bindings-timer.md#cron-expressions). |
-| `stopping_wait_time`| Az összes | A leállítási viselkedése irányítását teszi lehetővé. További tudnivalókért lásd: [szabályos leállítást](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `schedule` | Aktivált | A webjobs-feladat CRON-alapú ütemezett futtatását. További TUDNIVALÓKÉRT tekintse meg a [időzítő eseményindító áttekintésével foglalkozó cikkben](../azure-functions/functions-bindings-timer.md#cron-expressions). |
+| `stopping_wait_time`| Összes | A leállítási viselkedése irányítását teszi lehetővé. További tudnivalókért lásd: [szabályos leállítást](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>További lépések
 

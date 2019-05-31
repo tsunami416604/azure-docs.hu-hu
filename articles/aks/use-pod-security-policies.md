@@ -7,23 +7,24 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 7ce311ab9c554481f64c6c9be40e2018893a0966
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 881a16501574dc7309eede6b58e270a97bed977a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61027375"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235745"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Előzetes verzió – a pod biztonsági házirendeket használó Azure Kubernetes Service (AKS)-fürt biztonságossá tétele
 
 Az AKS-fürt, a biztonság növelése érdekében korlátozhatja a podok lehet ütemezni. Az AKS-fürtöt, amely nem engedélyezi a erőforrás-kérelmek podok nem futtatható. Ezt a hozzáférést pod biztonsági házirendeket definiálhat. Ez a cikk bemutatja, hogyan használandó pod biztonsági szabályzatok központi telepítését az aks-ben podok korlátozza.
 
 > [!IMPORTANT]
-> Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
+> Az AKS előzetes verziójú funkciók önkiszolgáló, a rendszer. A biztosított gyűjthet visszajelzéseket és a hibák kapcsolódóan a Közösség részéről. Előzetes verzióban elérhető ezeket a funkciókat nem üzemi használat céljára. Nyilvános előzetes verzióban érhető el "ajánlott beavatkozást" támogatás keretében tartoznak. Az AKS technikai támogatási csapat segítségét munkaidőben csendes-óceáni időzóna (PST) csak alatt érhető el. További információkért tekintse meg a következő cikkek támogatja:
 >
-> Ha az előzetes verziójú szolgáltatásaihoz is problémák merülnek fel [nyisson egy problémát a AKS GitHub-adattárat a] [ aks-github] az előzetes verziójú funkció a bejelentett hiba címét nevére.
+> * [Az AKS támogatási házirendek][aks-support-policies]
+> * [Az Azure-támogatás – gyakori kérdések][aks-faq]
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
@@ -510,7 +511,6 @@ Ezzel a pod hálózati forgalom kapcsolatos további információkért lásd: [k
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubernetes-policy-reference]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#policy-reference
-[aks-github]: https://github.com/azure/aks/issues
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
@@ -523,3 +523,5 @@ Ezzel a pod hálózati forgalom kapcsolatos további információkért lásd: [k
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
 [az-extension-add]: /cli/azure/extension#az-extension-add
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

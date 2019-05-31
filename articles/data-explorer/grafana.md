@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
-ms.openlocfilehash: 188cb310cfc13fe2fc41ba3e01deb01068c0184d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 135f8f1c9c352f9d2307a8bf9ad1bec892aac179
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60447001"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399912"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>A Grafana az Azure Data Explorer adatainak megjelenítése
 
@@ -153,8 +153,8 @@ A szolgáltatásnévhez hozzárendelt együtt a *megtekintők* szerepkör, most 
 
     | Grafana UI | Azure Portal | Azure CLI |
     | --- | --- | --- |
-    | Előfizetési azonosító | ELŐFIZETÉS AZONOSÍTÓJA | SubscriptionId |
-    | Bérlő azonosítója | Címtár azonosítója | tenant |
+    | Előfizetési azonosító | ELŐFIZETÉS-AZONOSÍTÓ | SubscriptionId |
+    | Bérlő azonosítója | Címtár-azonosító | tenant |
     | Ügyfél-azonosító | Alkalmazásazonosító | appId |
     | Titkos ügyfélkulcs | Jelszó | password |
     | | | |
@@ -208,6 +208,6 @@ Most már végzett konfigurálása az Azure Data Explorer adatforrásként a Gra
 
 ## <a name="next-steps"></a>További lépések
 
-[Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
+* [Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
 
-[Oktatóanyag: A Power bi-ban az Azure Data Explorer adatainak megjelenítése](visualize-power-bi.md)
+* [Oktatóanyag: A Power bi-ban az Azure Data Explorer adatainak megjelenítése](visualize-power-bi.md)

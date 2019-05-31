@@ -11,18 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: ebded5d1d58baf501ee5106d622162edc62d46ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75a02abb6cce332daad12e1feb25fb425f89f7f4
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60656672"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393383"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Felügyelt identitások használata az Azure API Management
 
 Ez a cikk bemutatja, hogyan hozhat létre egy felügyelt identitás létre API Management szolgáltatáspéldányt, és hogyan egyéb erőforrásainak elérésére. Azure Active Directory (Azure AD) által létrehozott egy felügyelt identitás lehetővé teszi, hogy az API Management-példány egyszerűen és biztonságosan más Azure AD által védett erőforrások, például az Azure Key Vault eléréséhez. Ezt az identitást az Azure által felügyelt és nem igényli, üzembe helyezése és titkos kulcsok elforgatása. Felügyelt identitások kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md).
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="create-a-managed-identity-for-an-api-management-instance"></a>Hozzon létre egy felügyelt identitás, az API Management-példány
 
@@ -242,3 +240,4 @@ További információ az Azure-erőforrások felügyelt identitások:
 
 * [Mi az Azure-erőforrások felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md)
 * [Az Azure Resource Manager-sablonok](https://github.com/Azure/azure-quickstart-templates)
+* [A házirend a felügyelt identitás a hitelesítéshez](./api-management-authentication-policies.md#ManagedIdentity)

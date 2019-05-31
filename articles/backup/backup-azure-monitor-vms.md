@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: c5c3f498f62d6399534333f8166a514a10f044c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 350e13a4b1c01329bef1ec270af5ba007cd788aa
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464345"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399749"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure-beli virtuális gépek biztonsági mentésével kapcsolatos riasztások figyelése
 
@@ -40,7 +40,7 @@ A biztonsági riasztások panel megnyitásához a riasztások és események sza
     ![Biztonsági riasztások csempe](./media/backup-azure-monitor-vms/backup-alerts-critical.png)
 4. Egy adott, az események, a riasztás részletes adatainak megtekintéséhez kattintson a riasztásra nyissa meg a **részletek** szakaszban.
 
-    ![Eseményadat](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
+    ![Esemény részletei](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
 
     Testre szabhatja az attribútumokat, megjelennek a listában, lásd: [további esemény attribútumok megtekintése](backup-azure-monitor-vms.md)
 
@@ -70,7 +70,7 @@ Riasztásokhoz kapcsolódó e-mail értesítések beállítása
    | Riasztási szint | Elküldött riasztások |
    | --- | --- |
    | Kritikus | biztonsági mentés sikertelen, a sikertelen helyreállítás |
-   | Figyelmeztetés | a biztonsági mentési feladatok sikeres volt, figyelmeztetésekkel fejeződött be (például: néhány írók nem sikerült a pillanatkép létrehozása közben) |
+   | Figyelmeztetés | jelenleg nincsenek figyelmeztető riasztások érhetők el az Azure virtuális gép biztonsági mentéseinek (például: néhány írók nem sikerült a pillanatkép létrehozása közben) |
    | Tájékoztató | jelenleg nincsenek tájékoztató riasztások érhetők el az Azure virtuális gép biztonsági mentése |
 
 ### <a name="situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>Olyan helyzetekben, ahol nem érkezik e-mail, még akkor is, ha az értesítések beállítása

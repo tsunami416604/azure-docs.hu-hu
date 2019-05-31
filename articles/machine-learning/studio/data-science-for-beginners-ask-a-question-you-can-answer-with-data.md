@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 815aeb9ae6036f08fc87e41980a623e2be8414e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7343692e8484e50a02963b4528889a35cc1fcaa6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751257"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239080"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Adatokkal megválaszolható kérdések megfogalmazása
 ## <a name="video-3-data-science-for-beginners-series"></a>3. Videó: Adatelemzés kezdőknek sorozat
@@ -48,7 +48,7 @@ Beszéltünk hogyan adatelemzés során a rendszer egy kérdésre adott válasz 
 
 Országról kérdés nem rendelkezik egy vagy több vet fel. Éles kérdést kell.
 
-Tegyük fel, hogy megtalálta, egy-egy genie, akik bármely tegye fel kérdését valósághűen mutathatja be válaszolni fog magic lamp. De mischievous genie, és ő lesz próbál győződjön meg arról, a válasz országról és zavarosnak, ahogy azt a nyelvet a lenti listában kaphat. Szeretne egy kérdést, hogy ő nem segít, de állapítható meg, hogy meg szeretné tudni, hogy így záródó rögzíteni neki.
+Tegyük fel, hogy megtalálta, egy-egy genie, akik bármely tegye fel kérdését valósághűen mutathatja be válaszolni fog magic lamp. De mischievous genie, akik megpróbálja győződjön meg arról, a válasz országról és zavarosnak, akkor értesítést kaphatnak azonnal a. Szeretne egy kérdést, hogy azok nem segít, de állapítható meg, hogy meg szeretné tudni, hogy így záródó rögzítheti őket.
 
 Ha a kérdés feltevése országról, például a "Mi történik meg a készlet?", a genie előfordulhat, hogy választ, "az árat fog módosítása". Ez egy truthful választ, de az nem nagyon hasznos.
 

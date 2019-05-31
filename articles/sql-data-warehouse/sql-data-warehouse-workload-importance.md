@@ -1,5 +1,5 @@
 ---
-title: Számítási feladatok fontossági |} A Microsoft Docs
+title: Az Azure SQL Data Warehouse számítási feladatok fontossági |} A Microsoft Docs
 description: Útmutató az Azure SQL Data Warehouse számára a lekérdezések beállításához.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,14 +10,14 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 92990b68969e754ee126b6cd5a22ecfa700c0494
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 0147977307ec22134777d6c3e8242a4191362ada
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002885"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233841"
 ---
-# <a name="sql-data-warehouse-workload-importance"></a>Az SQL Data Warehouse számítási feladatok fontossági
+# <a name="azure-sql-data-warehouse-workload-importance"></a>Az Azure SQL Data Warehouse számítási feladatok fontossági
 
 Ez a cikk bemutatja, hogyan befolyásolhatja a számítási feladatok fontossági a SQL Data Warehouse-kérelmek esetén a végrehajtás sorrendje.
 

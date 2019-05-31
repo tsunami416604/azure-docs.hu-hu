@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0de4da5792553b8e61ce8116988dc0d0b2c55488
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3f4ef7f333525d7408d0345b917102cddb295386
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131004"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255470"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Eszköz webalkalmazások az Application Insights Állapotfigyelőt futásidejű
 
@@ -321,7 +321,6 @@ A telemetriai adatok megtekintése:
 * [A metrikák áttekintése](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez
 * [Események és naplók keresése][diagnostic] a problémák diagnosztizálásához
 * [Elemzések](../../azure-monitor/app/analytics.md) az összetettebb lekérdezésekhez
-* [Irányítópultok létrehozása](../../azure-monitor/app/app-insights-dashboards.md)
 
 További telemetriai funkciók hozzáadása:
 

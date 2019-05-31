@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 7d607b4370d51ea2605fae6543bd3336853b0806
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 574dd9fd6189b6d0f1e5d455146d6d083ad7ff77
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954218"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389463"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Adatbázisok, tárolók és elemek az Azure Cosmos DB használata
 
@@ -55,6 +55,9 @@ Amikor létrehoz egy Azure Cosmos-tárolóhoz, átviteli sebesség konfigurálja
 
 * **Megosztott kiosztott átviteli mód**: Ezek a tárolók a kiosztott átviteli sebesség megoszthatja a más tárolók ugyanabban az adatbázisban (kivéve a tárolók, amelyek dedikált kiosztott átviteli sebesség lettek konfigurálva). Más szóval a kiosztott átviteli sebességét az adatbázis összes "megosztott átviteli" tároló között megosztott. További tudnivalókért lásd: [kioszthatja az átviteli sebességet egy Azure Cosmos database hogyan](how-to-provision-database-throughput.md).
 
+> [!NOTE]
+> Konfigurálhatja a közös vagy dedikált átviteli sebességet, csak akkor, ha az adatbázis és a tároló létrehozása. Ha váltani szeretne a dedikált átviteli mód megosztott átviteli mód (és fordítva), a tároló létrehozása után, akkor hozzon létre egy új tárolót, és az adatok áttelepítését az új tároló. Az adatok áttelepíthetők az Azure Cosmos DB-változáscsatorna funkció használatával.
+
 Az Azure Cosmos-tárolókat rugalmasan, méretezhető e tárolók dedikált vagy megosztott kiosztott átviteli mód használatával hoz létre.
 
 Az Azure Cosmos-tárolókat az elemek sémafüggetlen tárolója. Tárolóban lévő elemek is tetszőleges sémákkal rendelkeznek. Például egy személyt jelölő elem és a egy autó jelölő elem nem helyezhető a *ugyanabban a tárolóban*. Alapértelmezés szerint adja hozzá a tároló az összes elem automatikusan indexelt explicit index vagy séma kezelése nélkül. Az indexelés viselkedésének konfigurálásával testre szabhatja a [indexelési szabályzat](index-overview.md) egy tárolón. 
@@ -83,9 +86,9 @@ Egy Azure Cosmos-tárolóhoz egy rendszer által definiált tulajdonsággal rend
 |\_Az ETag | System-generated | Az optimista egyidejűség-vezérlési entitáscímkéje | Igen | Nem | Nem | Nem | Nem |
 |\_TS | System-generated | A tároló utolsó frissítés időbélyege | Igen | Nem | Nem | Nem | Nem |
 |\_self | System-generated | A tároló címezhető URI | Igen | Nem | Nem | Nem | Nem |
-|azonosító | User-configurable | Felhasználó által megadott egyedi a tároló nevét. | Igen | Igen | Igen | Igen | Igen |
+|id | User-configurable | Felhasználó által megadott egyedi a tároló nevét. | Igen | Igen | Igen | Igen | Igen |
 |indexingPolicy | User-configurable | Lehetővé teszi az index elérési útja, index típusa és index mód módosítása | Igen | Nem | Nem | Nem | Igen |
-|TimeToLive | User-configurable | Lehetővé teszi elemek után automatikusan törölje a tároló egy időkorlát. További információkért lásd: [élettartama](time-to-live.md). | Igen | Nem | Nem | Nem | Igen |
+|timeToLive | User-configurable | Lehetővé teszi elemek után automatikusan törölje a tároló egy időkorlát. További információkért lásd: [élettartama](time-to-live.md). | Igen | Nem | Nem | Nem | Igen |
 |changeFeedPolicy | User-configurable | Olvassa el a tárolóban lévő elemek segítségével. További információkért lásd: [Módosításcsatornáját](change-feed.md). | Igen | Nem | Nem | Nem | Igen |
 |uniqueKeyPolicy | User-configurable | Használja az egy vagy több értéket egy logikai partíció egyediségének biztosítása érdekében. További információkért lásd: [egyedi kulcsra vonatkozó megkötések](unique-keys.md). | Igen | Nem | Nem | Nem | Igen |
 
@@ -97,7 +100,7 @@ Az Azure Cosmos-tárolókat a következő műveleteket támogatja, az Azure Cosm
 | --- | --- | --- | --- | --- | --- | --- |
 | A tárolók egy adatbázis számbavétele | Igen | Igen | Igen | Igen | NA | NA |
 | Egy tároló olvasása | Igen | Igen | Igen | Igen | NA | n/a |
-| Új tároló létrehozása | Igen | Igen | Igen | Igen | NA | n/a |
+| Hozzon létre egy új tárolót | Igen | Igen | Igen | Igen | NA | n/a |
 | Egy tároló frissítése | Igen | Igen | Igen | Igen | NA | n/a |
 | Tároló törlése | Igen | Igen | Igen | Igen | NA | NA |
 
@@ -120,7 +123,7 @@ Minden Azure-Cosmos elemnek a következő, rendszer által definiált tulajdons�
 |\_TS | System-generated | A cikk az utolsó frissítés időbélyege | Igen | Nem | Nem | Nem | Nem |
 |\_self | System-generated | Az elemek címezhető URI azonosítója | Igen | Nem | Nem | Nem | Nem |
 |id | Vagy | Felhasználó által megadott egyedi nevek a logikai partíció. Ha a felhasználó nem ad meg az azonosító, a rendszer automatikusan létrehoz egy. | Igen | Igen | Igen | Igen | Igen |
-|Tetszőleges, felhasználó által definiált tulajdonságai | Felhasználó által meghatározott | API natív ábrázolás (beleértve a JSON, BSON és CQL) jelölt felhasználó által definiált tulajdonságai | Igen | Igen | Igen | Igen | Igen |
+|Tetszőleges, felhasználó által definiált tulajdonságai | Felhasználó által megadott | API natív ábrázolás (beleértve a JSON, BSON és CQL) jelölt felhasználó által definiált tulajdonságai | Igen | Igen | Igen | Igen | Igen |
 
 ### <a name="operations-on-items"></a>Műveleti elemek
 

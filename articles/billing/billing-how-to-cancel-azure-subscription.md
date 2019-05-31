@@ -1,11 +1,8 @@
 ---
 title: Az Azure-előfizetés megszüntetése |} A Microsoft Docs
 description: Ismerteti, hogyan lehet megszüntetni az Azure-előfizetéssel, mint például az ingyenes próba-előfizetéssel
-services: ''
-documentationcenter: ''
-author: genlin
-manager: adpick
-editor: ''
+author: bandersmsft
+manager: amberb
 tags: billing
 ms.assetid: 3051d6b0-179f-4e3a-bda4-3fee7135eac5
 ms.service: billing
@@ -13,24 +10,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 1/23/2019
+ms.date: 5/30/2019
 ms.author: banders
-ms.openlocfilehash: 374224663323e75a1d1413c47490bd3aacd00267
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 235d93de56289bb2daaa661ee9806732da3b6d6a
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60918859"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417613"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Az Azure-előfizetés megszüntetése
 
-Az Azure-előfizetéshez megszakíthatja a [felhasználóifiók-adminisztrátor](billing-subscription-transfer.md#whoisaa). Ha lemondja az előfizetést, az Azure-szolgáltatásokhoz és erőforrásokhoz való hozzáférés véget ér.
+Csak Azure-előfizetés [felhasználóifiók-adminisztrátor](billing-subscription-transfer.md#whoisaa) lemondhatja a szolgáltatásokat egy Azure-előfizetést. Azure-előfizetési rendszergazda is [rendelje hozzá az előfizetés-rendszergazdaként egy másik felhasználó](billing-add-change-azure-subscription-administrator.md#assign-a-user-as-an-administrator-of-a-subscription) úgy, hogy azok megszüntethet egy előfizetést. Ha lemondja az előfizetést, az Azure-szolgáltatásokhoz és erőforrásokhoz való hozzáférés véget ér.
 
 Mielőtt az előfizetés megszüntetése:
 
 * Készítsen biztonsági másolatot az adatairól. Ha az Azure storage vagy az SQL data tárolja, például egy másolatának letöltése. Ha egy virtuális gépet, mentse a rendszerkép helyi.
 * Állítsa le a szolgáltatásokat. Nyissa meg a [erőforrások lapon, a felügyeleti portálon](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), és **leállítása** bármely futó virtuális gépek, alkalmazások és más szolgáltatásokat.
 * Vegye figyelembe, hogy az adatok migrálását. Lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
+* Törölnie kell az összes erőforrásra és erőforráscsoportra minden. Azok törlése előtt el kell azt megszüntethet egy előfizetést. Minden erőforráscsoport külön-külön kell törölni. Erőforrás-csoport törlése, során meg kell erősítenie törlését az erőforráscsoport nevének beírásával.
 
 Ha megszakítja egy fizetős Azure-támogatási csomagra, meg kell fizetni az előfizetési időszak a többi. További információkért lásd: [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/).
 
@@ -49,7 +47,7 @@ Ha megszakítja a műveletet, a számlázás megáll azonnal. Azonban a megszün
 
 Ezt követően a szolgáltatások le vannak tiltva. Ez azt jelenti, hogy a virtuális gépek felszabadítva, ideiglenes IP-címek felszabadítását, és tároló csak olvasható.
 
-Ha megszakítja egy számlázási időszak közepén, számla küldünk a tipikus invoice Date a lejárta után. 
+Ha megszakítja egy számlázási időszak közepén, számla küldünk a tipikus invoice Date a lejárta után.
 
 Hogy Várjon, amíg a 90 nappal korábbinak véglegesen törli az adatokat, abban az esetben kell-e férni, vagy megváltoztatja döntését. A Microsoft nem számítunk fel díjat, az adatok megőrzése. További tudnivalókért lásd: [Microsoft Trust Center – hogyan kezeljük adatait](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 

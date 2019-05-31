@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f21b592f31790daa9cc4eeb217ea6e2987fc38
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: db627359b75aa0ea19e30a8d22bcacaa3409cb4a
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920511"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418221"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory bejelentkezési lapok hitelesítőtartomány
 
@@ -32,19 +32,19 @@ Hitelesítő adatok szélesebb körének támogatására, és a használhatósá
 
 További előnye ennek, javult a hibajelentések üzenetkezelés. Szívesen adunk néhány ötletet a üzenetküldési bejelentkezés egy alkalmazásba, amely támogatja a csak az Azure Active Directory-felhasználók továbbfejlesztett hiba.
 
-1. A felhasználónév rosszul van, vagy a felhasználónév már nem szinkronizált Azure ad-hez:
+- A felhasználónév rosszul van, vagy a felhasználónév már nem szinkronizált Azure ad-hez:
   
     ![a felhasználónév rosszul adott meg, vagy nem található](./media/signin-realm-discovery/typo-username.png)
   
-2. A tartománynév rosszul van:
+- A tartománynév rosszul van:
   
     ![a tartománynév rosszul adott meg, vagy nem található](./media/signin-realm-discovery/typo-domain.png)
   
-3. Felhasználó megpróbál bejelentkezni egy ismert fogyasztói tartománynak:
+- Felhasználó megpróbál bejelentkezni egy ismert fogyasztói tartománynak:
   
     ![Jelentkezzen be egy ismert fogyasztói tartománynak](./media/signin-realm-discovery/consumer-domain.png)
   
-4. A jelszó rosszul van, de a felhasználónév pontos:  
+- A jelszó rosszul van, de a felhasználónév pontos:  
   
     ![jelszava hibásan írta be a helyes felhasználónévvel](./media/signin-realm-discovery/incorrect-password.png)
   

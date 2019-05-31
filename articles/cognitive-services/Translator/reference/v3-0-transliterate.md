@@ -3,25 +3,25 @@ title: Translator Text API Átbetűzés metódus
 titlesuffix: Azure Cognitive Services
 description: A Translator Text API Átbetűzés módszert használja.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: cd7fee34f020f16d1511bc57b4ad86dbd5eb168d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 138a04cca1bbbaf7b59f628f491a5f13d73fb6f7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796958"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387395"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
 
 Egy nyelvű szöveget egy parancsfájlból származó alakítja egy másik szkriptet.
 
-## <a name="request-url"></a>Lekérdezés URL-címe
+## <a name="request-url"></a>Kérés URL-címe
 
 Küldjön egy `POST` kérelmet:
 
@@ -77,7 +77,7 @@ Kérelemfejlécek a következők:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Kérelem törzse
+## <a name="request-body"></a>A kérés törzse
 
 A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken nevű karakterlánc tulajdonsággal rendelkező JSON-objektum `Text`, amelyek az átalakítandó sztring jelöli.
 
@@ -131,7 +131,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   <th>Leírás</th>
   <tr>
     <td>200</td>
-    <td>Sikeres művelet.</td>
+    <td>Siker.</td>
   </tr>
   <tr>
     <td>400</td>

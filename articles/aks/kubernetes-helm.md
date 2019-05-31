@@ -5,14 +5,14 @@ services: container-service
 author: zr-msft
 ms.service: container-service
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: 2fcdb72fa2717659e78e6f767bdc73b0d7be0886
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76a5391cbe142851d9b1f60ea9346af2e7a35d6a
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465036"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392144"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Alkalmazások telepítése a Helm használatával az Azure Kubernetes Service (AKS)
 
@@ -20,11 +20,14 @@ ms.locfileid: "60465036"
 
 Ez a cikk bemutatja, hogyan konfigurálhatja és használhatja a Helm a Kubernetes-fürtben az aks-en.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
-A Helm CLI telepítve van, az ügyfél, amely a fejlesztői rendszeren fut, és lehetővé teszi, hogy indítása, leállítása és felügyelje alkalmazásait, a Helm használatával is szükséges. Ha az Azure Cloud Shellt használja, a Helm CLI már telepítve van. A témakör a telepítési utasításokat a helyi platformon, [telepítése Helm][helm-install].
+A Helm parancssori felület telepítve van, a fejlesztői rendszeren futtató ügyfél is szükséges. Lehetővé teszi, hogy indítása, leállítása és felügyelje alkalmazásait, a Helm használatával. Ha az Azure Cloud Shellt használja, a Helm CLI már telepítve van. A témakör a telepítési utasításokat a helyi platformon, [telepítése Helm][helm-install].
+
+> [!IMPORTANT]
+> Helm célja a Linux-csomópontokon való futtatáshoz. Ha a Windows Server-csomópontok a fürtben, biztosítania kell, hogy a Helm podok csak ütemezett Linux-csomópontokon való futtatáshoz. Ön Emellett győződjön meg arról, hogy bármely telepítése Helm-diagramok is ütemezve a megfelelő csomópontokon való futtatáshoz. A parancsok a jelen cikk használata [csomópont-választók] [ k8s-node-selector] , hogy a megfelelő csomópontok podok van ütemezve, de nem minden Helm-diagramok tehetik közzé egy csomópont-választó. Használjon, például a fürtben, más lehetőségek is érdemes [taints][taints].
 
 ## <a name="create-a-service-account"></a>Szolgáltatásfiók létrehozása
 
@@ -70,7 +73,7 @@ Az RBAC-kompatibilis Kubernetes-fürttel szabályozhatja a tiller valóban rende
 Egy alapszintű tiller valóban az AKS-fürt üzembe helyezéséhez használja a [helm init] [ helm-init] parancsot. Ha a fürt nem RBAC engedélyezve, távolítsa el a `--service-account` argumentum és értékét. Ha konfigurálta a TLS/SSL a tiller valóban és a Helm, ez a alapvető alkalmazásinicializálási lépéshez ugorjon, és Ehelyett adja meg a szükséges `--tiller-tls-` a következő példában látható módon.
 
 ```console
-helm init --service-account tiller
+helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
 ```
 
 Ha konfigurálta a TLS/SSL Helm és a tiller valóban között adja meg a `--tiller-tls-*` paramétereket és a saját tanúsítványok, az alábbi példában látható módon nevei:
@@ -82,7 +85,8 @@ helm init \
     --tiller-tls-key tiller.key.pem \
     --tiller-tls-verify \
     --tls-ca-cert ca.cert.pem \
-    --service-account tiller
+    --service-account tiller \
+    --node-selectors "beta.kubernetes.io/os"="linux"
 ```
 
 ## <a name="find-helm-charts"></a>Keresse meg a Helm-diagramok
@@ -141,78 +145,62 @@ Update Complete. ⎈ Happy Helming!⎈
 
 ## <a name="run-helm-charts"></a>Futtassa a Helm-diagramok
 
-Helm-diagramok telepítéséhez használja a [helm install] [ helm-install] parancsot, majd adja meg a nevét, a diagram telepítéséhez. Ez a művelet látható, hozzunk telepítse egy Helm-diagram használatával alapszintű Wordpress üzembe helyezéséhez. Ha a TLS/SSL konfigurálta, vegye fel a `--tls` paraméter a Helm ügyféltanúsítvány használatára.
+Helm-diagramok telepítéséhez használja a [helm install] [ helm-install] parancsot, majd adja meg a nevét, a diagram telepítéséhez. Szeretné látni működés közben egy Helm-diagram telepítésével, most egy alapszintű nginx-et a központi telepítés egy Helm-diagram használatával telepítse. Ha a TLS/SSL konfigurálta, vegye fel a `--tls` paraméter a Helm ügyféltanúsítvány használatára.
 
 ```console
-helm install stable/wordpress
+helm install stable/nginx-ingress \
+    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 A következő sűrített példához kimenet a Kubernetes-erőforrást a Helm-diagram által létrehozott központi telepítési állapotát jeleníti meg:
 
 ```
-$ helm install stable/wordpress
+$ helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 
-NAME:   wishful-mastiff
-LAST DEPLOYED: Wed Mar  6 19:11:38 2019
+NAME:   flailing-alpaca
+LAST DEPLOYED: Thu May 23 12:55:21 2019
 NAMESPACE: default
 STATUS: DEPLOYED
 
 RESOURCES:
-==> v1beta1/Deployment
-NAME                       DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
-wishful-mastiff-wordpress  1        1        1           0          1s
-
-==> v1beta1/StatefulSet
-NAME                     DESIRED  CURRENT  AGE
-wishful-mastiff-mariadb  1        1        1s
+==> v1/ConfigMap
+NAME                                      DATA  AGE
+flailing-alpaca-nginx-ingress-controller  1     0s
 
 ==> v1/Pod(related)
-NAME                                        READY  STATUS   RESTARTS  AGE
-wishful-mastiff-wordpress-6f96f8fdf9-q84sz  0/1    Pending  0         1s
-wishful-mastiff-mariadb-0                   0/1    Pending  0         1s
-
-==> v1/Secret
-NAME                       TYPE    DATA  AGE
-wishful-mastiff-mariadb    Opaque  2     2s
-wishful-mastiff-wordpress  Opaque  2     2s
-
-==> v1/ConfigMap
-NAME                           DATA  AGE
-wishful-mastiff-mariadb        1     2s
-wishful-mastiff-mariadb-tests  1     2s
-
-==> v1/PersistentVolumeClaim
-NAME                       STATUS   VOLUME   CAPACITY  ACCESS MODES  STORAGECLASS  AGE
-wishful-mastiff-wordpress  Pending  default  2s
+NAME                                                            READY  STATUS             RESTARTS  AGE
+flailing-alpaca-nginx-ingress-controller-56666dfd9f-bq4cl       0/1    ContainerCreating  0         0s
+flailing-alpaca-nginx-ingress-default-backend-66bc89dc44-m87bp  0/1    ContainerCreating  0         0s
 
 ==> v1/Service
-NAME                       TYPE          CLUSTER-IP   EXTERNAL-IP  PORT(S)                     AGE
-wishful-mastiff-mariadb    ClusterIP     10.1.116.54  <none>       3306/TCP                    2s
-wishful-mastiff-wordpress  LoadBalancer  10.1.217.64  <pending>    80:31751/TCP,443:31264/TCP  2s
+NAME                                           TYPE          CLUSTER-IP  EXTERNAL-IP  PORT(S)                     AGE
+flailing-alpaca-nginx-ingress-controller       LoadBalancer  10.0.109.7  <pending>    80:31219/TCP,443:32421/TCP  0s
+flailing-alpaca-nginx-ingress-default-backend  ClusterIP     10.0.44.97  <none>       80/TCP                      0s
 ...
 ```
 
-Egy-a két percet vesz igénybe a *EXTERNAL-IP* kitöltődnek, és lehetővé teszi, hogy egy webböngészővel rendelkező férni a Wordpress szolgáltatás-címét.
+Egy-a két percet vesz igénybe a *EXTERNAL-IP* kitöltődnek, és lehetővé teszi, hogy egy webböngészővel rendelkező férni az nginx-belépő-vezérlő szolgáltatás címét.
 
 ## <a name="list-helm-releases"></a>A Helm List-kiadások
 
-Kiadásokban a fürtön telepíteni listájának megtekintéséhez használja a [helm list] [ helm-list] parancsot. Az alábbi példa bemutatja az előző lépésben üzembe helyezett Wordpress kiadását. Ha a TLS/SSL konfigurálta, vegye fel a `--tls` paraméter a Helm ügyféltanúsítvány használatára.
+Kiadásokban a fürtön telepíteni listájának megtekintéséhez használja a [helm list] [ helm-list] parancsot. A következő példában az nginx-belépő kiadás az előző lépésben üzembe helyezett. Ha a TLS/SSL konfigurálta, vegye fel a `--tls` paraméter a Helm ügyféltanúsítvány használatára.
 
 ```console
 $ helm list
 
-NAME                REVISION    UPDATED                     STATUS      CHART            APP VERSION    NAMESPACE
-wishful-mastiff   1         Wed Mar  6 19:11:38 2019    DEPLOYED    wordpress-2.1.3  4.9.7          default
+NAME                REVISION    UPDATED                     STATUS      CHART                 APP VERSION   NAMESPACE
+flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingress-1.6.13    0.24.1      default
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Amikor telepít egy Helm-diagram, egy Kubernetes-erőforrások száma jönnek létre. Ezeket az erőforrásokat podok, központi telepítések és szolgáltatásokat tartalmazza. Ezek az erőforrások törléséhez használja a `helm delete` parancsot, majd írja be a kiadás nevét, az előző következőbeli `helm list` parancsot. Az alábbi példával törölhet a kiadás nevű *wishful mastiff*:
+Amikor telepít egy Helm-diagram, egy Kubernetes-erőforrások száma jönnek létre. Ilyen erőforrások többek között a podok, központi telepítések és szolgáltatásokat. Ezek az erőforrások törléséhez használja a `helm delete` parancsot, majd írja be a kiadás nevét, az előző következőbeli `helm list` parancsot. Az alábbi példával törölhet a kiadás nevű *flailing alpaka*:
 
 ```console
-$ helm delete wishful-mastiff
+$ helm delete flailing-alpaca
 
-release "wishful-mastiff" deleted
+release "flailing-alpaca" deleted
 ```
 
 ## <a name="next-steps"></a>További lépések
@@ -239,3 +227,5 @@ Alkalmazástelepítések Kubernetes Helm-kezelésével kapcsolatos további info
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors
+[taints]: operator-best-practices-advanced-scheduler.md

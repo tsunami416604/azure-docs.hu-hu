@@ -6,16 +6,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 96873b5fdefc74893929f8150230118a162f195b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 25cf3914274e73e0789aa87e9288649d1b0cb1eb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60791154"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399577"
 ---
-# <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure-bA vész-helyreállítási architektúra
+# <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
 
 Ez a cikk ismerteti az architektúra, összetevők és vészhelyreállítás Azure virtuális gépek (VM-EK) használatával telepítéséhez használt folyamatok a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás. Állítsa be a vészhelyreállítás, az Azure virtuális gépek folyamatosan-bA replikálni egy másik célrégióban. Egy kimaradás során, virtuális gépek feladatainak átadása a másodlagos régióba, és ahonnan érheti el őket. Ha minden megfelelően fut újra, feladat-visszavételt, és továbbra is működik az elsődleges helyen.
@@ -95,13 +95,13 @@ A Site Recovery következő pillanatképeket készít:
 
 A következő táblázat ismerteti a különböző típusú konzisztencia.
 
-### <a name="crash-consistent"></a>Összeomlás-konzisztens
+### <a name="crash-consistent"></a>Crash-consistent
 
 **Leírás** | **Részletek** | **Az ajánlás**
 --- | --- | ---
 Összeomlási alkalmazáskonzisztens pillanatkép készítésének volt a lemezen, ha a pillanatkép adatokat rögzíti. Ez nem foglalhatnak magukban a memóriában.<br/><br/> A lemezen lévő adatokat, amely jelen lehet, ha a virtuális gép leállt, vagy a tápkábel felhasználásával lett létrehozva a kiszolgálóról, a pillanatkép azonnali egyenértékű tartalmazza.<br/><br/> Egy összeomlás-konzisztens nem garantálja az adatkonzisztencia az operációs rendszerhez, vagy a virtuális gép található alkalmazásokhoz. | A Site Recovery összeomlás-konzisztens helyreállítási pontokat hoz létre öt percenként alapértelmezés szerint. Ez a beállítás nem módosítható.<br/><br/>  | A legtöbb alkalmazás még ma, összeomlás-konzisztens pontokról is helyreállíthatja.<br/><br/> Összeomlás-konzisztens helyreállítási pontok általában elegendő az operációs rendszerek és alkalmazások, például a DHCP-kiszolgáló és a nyomtatókiszolgálók a replikációhoz.
 
-### <a name="app-consistent"></a>Alkalmazáskonzisztens
+### <a name="app-consistent"></a>App-consistent
 
 **Leírás** | **Részletek** | **Az ajánlás**
 --- | --- | ---

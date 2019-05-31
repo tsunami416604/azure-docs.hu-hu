@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: e69158a6ee4d8415f52cf458c028cab56f481d8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a33c6f6621e7fc7944bc116b27e5f26de88f77d9
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60235139"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389565"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Hogyan összetett műveletek indítása az Azure Monitor riasztások
 
@@ -26,7 +26,7 @@ Az Azure Monitor riasztás aktiválásakor meghívja egy [műveletcsoport](../..
 
 -   Hozzon létre a logikai alkalmazás a megfelelő típusú.
 
--   A logikai alkalmazás importálja a megfelelő riasztás sémáját.
+-   A logikai alkalmazás egy hasznosadat-minta a megfelelő riasztástípus importálja.
 
 -   Logikai alkalmazás viselkedésének megadása.
 
@@ -58,7 +58,7 @@ A folyamat hasonlít, ha azt szeretné, hogy a logikai alkalmazás egy másik m�
 
     ![Hasznosadat-minta használata](media/action-groups-logic-app/use-sample-payload-button.png "hasznosadat-minta használata")
 
-8.  Másolja és illessze be az alábbi minta-sémát a párbeszédpanelen:
+8.  Másolja és illessze be a párbeszédpanelt a következő hasznosadat-minta:
 
     ```json
         {
@@ -140,7 +140,7 @@ A következő alkalommal, amikor egy riasztást a műveletcsoport meghívja a lo
 Az Azure Service Health-bejegyzések a tevékenységnapló részét képezik. A riasztás létrehozása a folyamat hasonlít a [tevékenységnapló-riasztás létrehozása](#create-an-activity-log-alert-administrative), de néhány módosítással:
 
 - 1 – 7. lépései megegyeznek.
-- 8. lépés használja az alábbi minta-sémát a HTTP-kérés eseményindító:
+- 8. lépés használja a következő hasznosadat-minta a HTTP-kérés eseményindító:
 
     ```json
     {
@@ -228,7 +228,7 @@ Az Azure Service Health-bejegyzések a tevékenységnapló részét képezik. A 
 A metrikariasztás létrehozása a folyamat hasonlít a [tevékenységnapló-riasztás létrehozása](#create-an-activity-log-alert-administrative), de néhány módosítással:
 
 - 1 – 7. lépései megegyeznek.
-- 8. lépés használja az alábbi minta-sémát a HTTP-kérés eseményindító:
+- 8. lépés használja a következő hasznosadat-minta a HTTP-kérés eseményindító:
 
     ```json
     {
@@ -281,11 +281,11 @@ A metrikariasztás létrehozása a folyamat hasonlít a [tevékenységnapló-ria
        
        !["A metrikaalapú riasztási hasznos feltétel"](media/action-groups-logic-app/metric-alert-payload-condition.png "Metrikaalapú riasztási hasznos feltétel")
 
-  2. Az a **ha igaz** feltételt, adjon hozzá egy **minden** hurok és a Microsoft Teams-művelet. Adja meg az üzenet HTML és a dinamikus tartalom együttes használatával.
+  1. Az a **ha igaz** feltételt, adjon hozzá egy **minden** hurok és a Microsoft Teams-művelet. Adja meg az üzenet HTML és a dinamikus tartalom együttes használatával.
 
       !["A metrikaalapú riasztási igaz post művelet"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Metrikaalapú riasztási igaz post művelet")
 
-  3. Az a **ha hamis** feltételt, való kommunikációhoz, hogy a metrikaalapú riasztás nem felel meg az elvárásainak, a logikai alkalmazás egy Microsoft Teams műveletet definiálhat. Például a JSON-adattartalmat. Figyelje meg, hogy miként lehet hivatkozni a `triggerBody` a dinamikus tartalom a `json()` kifejezés.
+  1. Az a **ha hamis** feltételt, való kommunikációhoz, hogy a metrikaalapú riasztás nem felel meg az elvárásainak, a logikai alkalmazás egy Microsoft Teams műveletet definiálhat. Például a JSON-adattartalmat. Figyelje meg, hogy miként lehet hivatkozni a `triggerBody` a dinamikus tartalom a `json()` kifejezés.
 
       !["Riasztás false (hamis) metrikai feltétel post művelet"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Metrikaalapú riasztási hamis feltétel post művelet")
 
@@ -298,3 +298,4 @@ A Logic Apps rendelkezik, amelyekkel az eseményindító műveletek számos az a
 * Get- [Azure tevékenységnapló-riasztások áttekintése](../../azure-monitor/platform/alerts-overview.md) és riasztások fogadása.  
 * Ismerje meg, hogyan [riasztások konfigurálása az Azure Service Health értesítési közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 * Tudjon meg többet [Műveletcsoportok](../../azure-monitor/platform/action-groups.md).
+

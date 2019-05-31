@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 57a96648e480c89d1112f069676edb1abcc7cfc3
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6f4c354c89fa00d5fc65c635f5f6315761be2f01
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869851"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384143"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>A Bing Image Search API nyelvéhez és régiójához támogatása
 
@@ -49,7 +49,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Németország|DE|
 |Hongkong (KKT)|HK|
 |India|IN|
-|Indonézia|ID (Azonosító)|
+|Indonézia|ID|
 |Olaszország|IT|
 |Japán|JP|
 |Korea|KR|
@@ -119,4 +119,4 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Egyesült Államok|spanyol|es-US|
 
 ## <a name="next-steps"></a>További lépések
-A Bing News Search végpontok kapcsolatos további információkért lásd: [hírek Image Search API 7-es referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).
+A Bing News Search végpontok kapcsolatos további információkért lásd: [hírek Image Search API 7-es referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

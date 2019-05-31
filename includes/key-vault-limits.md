@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 0b9d87fd7929607da8407ae5bbfb2f6dd6d69dab
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65211983"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238666"
 ---
 #### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Kulcs tranzakció (10 másodpercen belül a engedélyezett tranzakciók maximális száma régiónként tároló<sup>1</sup>):
 
-|Kulcstípus|HSM-kulcsig<br>Kulcs létrehozása|HSM-kulcsig<br>Minden egyéb tranzakció|Szoftverkulcs<br>Kulcs létrehozása|Szoftverkulcs<br>Minden egyéb tranzakció|
+|Kulcs típusa|HSM-kulcsig<br>Kulcs létrehozása|HSM-kulcsig<br>Minden egyéb tranzakció|Szoftverkulcs<br>Kulcs létrehozása|Szoftverkulcs<br>Minden egyéb tranzakció|
 |:---|---:|---:|---:|---:|
 |RSA 2,048-bit|5|1,000|10|2,000|
 |3072-bites RSA|5|250|10|500|
@@ -37,7 +37,7 @@ ms.locfileid: "65211983"
 #### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Titkos kódok, a felügyelt tárfiókok hozzáférési kulcsainak és a tároló tranzakció:
 | Tranzakció típusa | Engedélyezett 10 másodpercen belül a tranzakciók maximális száma régiónként tároló<sup>1</sup> |
 | --- | --- |
-| Minden tranzakció |2,000 |
+| Összes tranzakció |2,000 |
 
 Hogyan kezelheti a szabályozást a korlátok túllépése esetén további információkért lásd: [Azure Key Vault szabályozási útmutatójában](../articles/key-vault/key-vault-ovw-throttling.md).
 

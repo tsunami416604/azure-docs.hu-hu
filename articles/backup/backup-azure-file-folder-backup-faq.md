@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 05/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5dbd4fefd5c5e1acd7e12ace547ddb8866b7f081
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1ac3cdecc79cafb9ea2697cca3c87b2ebe083d40
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148595"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254853"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések 
 
@@ -101,7 +101,7 @@ Ez a figyelmeztetés annak ellenére, hogy konfigurálta a biztonsági mentési 
 A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről biztonsági másolatot készít.
 - A gyorsítótár-mappa kötetek kell rendelkeznie, amely egyenlő a biztonsági mentési adatok teljes mérete legalább 5 – 10 % szabad terület.
 - Ha a kötet kisebb, mint 5 % szabad terület, növelje a kötet méretét, vagy helyezze át a gyorsítótármappa egy elegendő lemezterülettel rendelkező kötetre.
-- 
+- Ha Windows rendszerállapotának biztonsági mentését, kell egy további 30 – 35 GB szabad hely a kötet a gyorsítótár mappáját tartalmazó
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Hogyan változtatható meg a MARS-ügynök a gyorsítótár helyét?
 
 

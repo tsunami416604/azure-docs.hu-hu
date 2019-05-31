@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: dcab4d24ca948980f28483fd09f29588e0329b63
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 09ce4cdc6ab4556f0ba68507bb23d09e02ae0357
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800976"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66296812"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
 
@@ -208,7 +208,7 @@ Miután a GUID azonosító hozzáadása a sablonhoz, vagy a felhasználói ügyn
 
 Után módosítja a sablont, és üzembe helyezési teszt futtatása, a következő PowerShell-parancsfájl használatával telepített, és a címkézett erőforrásokat lekérni.
 
-A parancsfájl segítségével győződjön meg arról, hogy a globálisan egyedi Azonosítót sikerült felvenni a Resource Manager-sablon. A parancsfájl nem vonatkozik a Resource Manager API-telepítés.
+A parancsfájl segítségével győződjön meg arról, hogy a globálisan egyedi Azonosítót sikerült felvenni a Resource Manager-sablon. A parancsfájl nem vonatkozik a Resource Manager API-t vagy a Terraform használatával végzett központi telepítésekhez.
 
 Jelentkezzen be az Azure-ba. Válassza ki az előfizetést, a parancsfájl futtatása előtt ellenőrizni szeretné a központi telepítésére. Futtassa a szkriptet az üzembe helyezés előfizetés keretén belül.
 
@@ -316,7 +316,7 @@ Képernyőképeket, részletes útmutató megtekintéséhez [ https://aka.ms/Tec
 
 Akkor lesz felveszi Önnel a kapcsolatot egy Microsoft Partner technikai tanácsadó állíthat be egy hívás hatókörének beállításához az igényeinek.
 
-## <a name="faq"></a>gyakori kérdésekben
+## <a name="faq"></a>GYIK
 
 **Mi az az előnye, hogy a GUID azonosító hozzáadása a sablonhoz?**
 

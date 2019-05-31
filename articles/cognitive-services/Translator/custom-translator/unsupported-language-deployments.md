@@ -3,21 +3,21 @@ title: Nem támogatott nyelvet központi telepítések – egyéni fordító
 titleSuffix: Azure Cognitive Services
 description: Nem támogatott nyelvet párok egyéni a fordítót a telepítésének módjáról.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: v-pawal
-ms.openlocfilehash: 09fbd771d945646fe385508779d38e4abb2ee293
-ms.sourcegitcommit: daf6538427ea6effef898f2ee3d857e5fa2dccbc
+ms.openlocfilehash: 0938ba2e839be603c557cc2a87dd0c5aa1dfe1e3
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64476506"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390605"
 ---
-# <a name="unsupported-language-deployments"></a>Nem támogatott nyelvet központi telepítések
+# <a name="unsupported-language-deployments"></a>Nem támogatott nyelvű környezetek
 
 <!--Custom Translator provides the highest-quality translations possible using the latest techniques in neural machine learning. While Microsoft intends to make neural training available in all languages, there are some limitations that prevent us from being able to offer neural machine translation in all language pairs.-->  
 
@@ -32,7 +32,7 @@ Ahhoz, hogy a modellek jelöltek a központi telepítés rendszer a következő 
 * A modell az üzembe helyezett állapotban kell lennie, ha az áttelepítés történik.  
 * A modell nyelvi a két egyéni a fordítót a nem támogatott nyelvet párjának kell lennie.  Nyelvi párok, amelyben, vagy az angol nyelv támogatott, de maga a pár nem tartalmazza a angol nyelven, nem támogatott nyelvet központi telepítések a deduplikációra.  Például egy Eseményközpont modell egy francia, német nyelvű pár nem támogatott nyelvet pár még akkor is, azonban francia angol és német vannak az angol nyelvű támogatott nyelvi párjának tekinthető.
 
-## <a name="process"></a>Feldolgozás
+## <a name="process"></a>Process
 A központi menü, amely alkalmas jelöltek az üzembe helyezési modellek áttelepítette, ha megtalálja a a **beállítások** a munkaterülethez, majd legörget az oldal, ahol láthatja az utolsó oldalán egy **nem támogatott Translator Hub Betanítások** szakaszban.  Ez a szakasz csak akkor jelenik meg, ha rendelkezik, amely megfelel a fenti előfeltételeknek projektek.
 
 ![A Hub áttelepítése](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)

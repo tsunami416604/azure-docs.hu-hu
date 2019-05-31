@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 796e9c17a457bfb1a79b600b178d2c733e10f91e
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 1d4b17cf1e0349bf877c676cb4e591fc20ad4113
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382406"
+ms.locfileid: "66416363"
 ---
 # <a name="quickstart-use-r-to-query-an-azure-sql-database-preview"></a>Gyors útmutató: Az R használata Azure SQL Database-adatbázis (előzetes verzió) lekérdezéséhez
 
@@ -85,6 +85,9 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
 1. Adja át a teljes R-szkriptet a [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárást.
 
    A parancsfájl keresztülmegy a `@script` argumentum. Minden belül a `@script` argumentum érvényes R-kódot kell lennie.
+   
+   >[!IMPORTANT]
+   >Ebben a példában a kódot az AdventureWorksLT mintaadatokat, amely forrásként is választja, az adatbázis létrehozásakor használ. Ha az adatbázis különböző adatokat, használja a saját adatbázis tábláinak a SELECT-lekérdezésben. 
 
     ```sql
     EXECUTE sp_execute_external_script

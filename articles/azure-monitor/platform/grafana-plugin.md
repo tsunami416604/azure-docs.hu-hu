@@ -3,18 +3,18 @@ title: Azure-szolgáltatások és alkalmazások grafanával figyelése
 description: Útvonal az Azure Monitor és az Application Insights-adatok így meg tudja őket tekinteni a Grafana.
 services: azure-monitor
 keywords: ''
-author: lingliw
-ms.author: v-lingwu
-ms.date: 04/12/19
+author: rboucher
+ms.author: robb
+ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 6ea8f4e591399e23b103871da115dbb937227ca9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9a20aba84e79e87f84d63e4bdae3ba1aac062f5
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60396026"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387197"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>A Grafana az Azure-szolgáltatások figyelése
 Figyelheti az Azure szolgáltatásainak és alkalmazásainak [Grafana](https://grafana.com/) használatával a [Azure Monitor adatforrás-beépülő modul](https://grafana.com/plugins/grafana-azure-monitor-datasource). A beépülő modul az Azure Monitor, beleértve a különböző naplókat és mérőszámokat által gyűjtött alkalmazásteljesítmény-adatokat gyűjt. Ezután a Grafana irányítópulton jeleníti meg ezeket az adatokat.
@@ -103,7 +103,7 @@ Miután sikeresen bejelentkezett, láthatja, hogy az Azure Monitor adatforrás b
      > [!NOTE]
      >
      > A beépülő modul használatával a megadott alapértelmezett lekérdezés két makrók használja: "$__timeFilter() és $__interval. 
-     > Ezek a makrók engedélyezése a Grafana dinamikusan alapján számítja ki az időtartományt és időfelbontási szint, ha ráközelít a diagram része. Ezek a makrók eltávolíthatja, és használjon például egy téli idő szűrővel *TimeGenerated > ago(1h)*, de ez azt jelenti, hogy a graph lenne támogatja a nagyítási funkció.
+     > Ezek a makrók engedélyezése a Grafana dinamikusan alapján számítja ki az időtartományt és időfelbontási szint, ha ráközelít a diagram része. Ezek a makrók eltávolíthatja, és használjon például egy téli idő szűrővel *TimeGenerated > ago(1h)* , de ez azt jelenti, hogy a graph lenne támogatja a nagyítási funkció.
     
      ![Az Azure Log Analytics Grafana graph-konfiguráció](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
 
@@ -119,8 +119,6 @@ Ez a Prometheus kiszolgálóról metrikákkal egészítheti ki beállítása is 
 
 Az alábbiakban útmutatással cikkek Telegraf, InfluxDB, Prometheus és a Docker használatával
  - [Az OSZTÁSJELEK Stack ubuntu 16.04 rendszer metrikák figyelése](https://www.digitalocean.com/community/tutorials/how-to-monitor-system-metrics-with-the-tick-stack-on-ubuntu-16-04)
-
- - [A Grafana, InfluxDB és Telegraf Docker erőforrás-metrikák figyelése](https://blog.vpetkov.net/2016/08/04/monitor-docker-resource-metrics-with-grafana-influxdb-and-telegraf/)
 
  - [Docker-gazdagépek, a tárolók és a tárolóalapú szolgáltatásokat figyelési megoldást](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 
@@ -168,3 +166,4 @@ Ha a telepítő a Grafana környezet az Azure-ban, amikor a virtuális gépek fu
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Monitor-metrikák áttekintése](data-platform.md)
+

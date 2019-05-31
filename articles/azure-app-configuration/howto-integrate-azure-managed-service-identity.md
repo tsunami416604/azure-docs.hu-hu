@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: ff098ebd23d2ce5a8c9c39f154375be1dae6a262
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3977991386dbcd07e92f21d1ac541f486b4f7f0a
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408868"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393653"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrálása az Azure által felügyelt identitások
 
@@ -49,7 +49,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 A portálon egy felügyelt identitás beállításához először hozzon létre egy alkalmazás a szokásos módon, és ezután engedélyezze a szolgáltatást.
 
-1. Az alkalmazás létrehozása a [az Azure portal](https://aka.ms/azconfig/portal) szokásos módon. Nyissa meg azt a portálon.
+1. Az alkalmazás létrehozása a [az Azure portal](https://portal.azure.com) szokásos módon. Nyissa meg azt a portálon.
 
 2. Görgessen le a **beállítások** csoportot a bal oldali panelen, és válassza **identitás**.
 
@@ -59,9 +59,9 @@ A portálon egy felügyelt identitás beállításához először hozzon létre 
 
 ## <a name="grant-access-to-app-configuration"></a>Hozzáférést biztosít alkalmazások konfigurálása
 
-1. Az a [az Azure portal](https://aka.ms/azconfig/portal)válassza **összes erőforrás** , és válassza ki az alkalmazás a konfigurációs adattárolónál a rövid útmutatóban létrehozott.
+1. Az a [az Azure portal](https://portal.azure.com)válassza **összes erőforrás** , és válassza ki az alkalmazás a konfigurációs adattárolónál a rövid útmutatóban létrehozott.
 
-2. Válassza ki **hozzáférés-vezérlés (IAM)**.
+2. Válassza ki **hozzáférés-vezérlés (IAM)** .
 
 3. Az a **hozzáférés ellenőrzése** lapon jelölje be **Hozzáadás** a a **szerepkör-hozzárendelés hozzáadása** felhasználói felület kártya.
 
@@ -75,7 +75,7 @@ A portálon egy felügyelt identitás beállításához először hozzon létre 
 
 ## <a name="use-a-managed-identity"></a>Felügyelt identitás használata
 
-1. Nyissa meg *appsettings.json*, és adja hozzá a következő szkriptet. Cserélje le  *\<service_endpoint >*, beleértve a zárójeleket, az alkalmazás a konfigurációs adattároló URL-címét:
+1. Nyissa meg *appsettings.json*, és adja hozzá a következő szkriptet. Cserélje le  *\<service_endpoint >* , beleértve a zárójeleket, az alkalmazás a konfigurációs adattároló URL-címét:
 
     ```json
     "AppConfig": {

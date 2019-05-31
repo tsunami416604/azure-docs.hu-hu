@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/01/2019
+ms.date: 05/29/2019
 ms.author: juliako
-ms.openlocfilehash: 8f50188480b963d13460c79175ea6972d3e68f6a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a5ce6467a547b9fded03b3b5a6f40f84d29d3618
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153064"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66385145"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -36,7 +36,21 @@ További információkért lásd: [Migrálási útmutató segítséget nyújt a 
 
 ## <a name="may-2019"></a>2019. május
 
+### <a name="hls-v4-and-above-support-in-dynamic-packaging"></a>HLS v4 vagy újabb támogatása a dinamikus csomagolás 
+
+Hozzáadott HLS (4-es vagy újabb) támogatja a dinamikus csomagolás, eszközök, amelyek több hangsávval rendelkező több kodekeket és nyelvek.
+
+További információkért lásd: [dinamikus csomagolási](dynamic-packaging-overview.md).
+
+### <a name="korea-regional-pair-is-open-for-media-services"></a>Koreai régiópárt meg nyitva, a Media Services 
+
+A Media Services már elérhető az Korea középső régiója és Korea déli régiója. 
+
+További információkért lásd: [felhők és melyik Media Services v3 létezik régiók](azure-clouds-regions.md).
+
 ### <a name="performance-improvements"></a>Teljesítménnyel kapcsolatos fejlesztések
+
+Új frissítések, amelyek tartalmazzák a Media Services teljesítménnyel kapcsolatos fejlesztések.
 
 * A támogatott maximális fájlméretet frissítve lett. Látható, [kvóták és korlátozások](limits-quotas-constraints.md).
 * [Kódolás sebességének fejlesztései](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
@@ -52,7 +66,7 @@ További információkért lásd: [Migrálási útmutató segítséget nyújt a 
 
 A dinamikus csomagolás mostantól támogatja a Dolby Atmos. További információkért lásd: [dinamikus becsomagolás által támogatott hang kodekek](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
 
-Most már megadhatja az eszköz vagy a fiók szűrők, a Streamelési lokátor alkalmazandó listáját. További információkért lásd: [szűrők társítása Streamelési lokátor](filters-concept.md#associate-filters-with-streaming-locator).
+Most már megadhatja az eszköz vagy a fiók szűrők, a Streamelési lokátor alkalmazandó listáját. További információkért lásd: [szűrők társítása Streamelési lokátor](filters-concept.md#associating-filters-with-streaming-locator).
 
 ## <a name="february-2019"></a>2019. február
 

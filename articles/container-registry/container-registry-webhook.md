@@ -5,18 +5,18 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 05/24/2019
 ms.author: danlep
-ms.openlocfilehash: 0a3d2d0e858dc052095c0a58287970d10c06f0ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 18ac3fcb2797b24c9d5e5f05968eed4bf8732af7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787268"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389454"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhookok használata
 
-Egy Azure container registry tárolja és kezeli a privát Docker-tárolók lemezképeit, Docker Hub nyilvános Docker-rendszerképeket tárol hasonló. Azt is üzemeltethetnek tárolóhelyekkel [Helm-diagramok](container-registry-helm-repos.md) (előzetes verzió) üzembe helyezéséhez a Kubernetes-alkalmazások csomagolási formázása. Amikor az egyes műveletekre kerül sor egy, a beállításjegyzék-tárházak kiváltó események webhookok is használhatja. Webhookok reagálhat az eseményekre a beállításjegyzék szintjén, vagy azok leszűkítheti egy adott adattárra címkét.
+Egy Azure container registry tárolja és kezeli a privát Docker-tárolók lemezképeit, Docker Hub nyilvános Docker-rendszerképeket tárol hasonló. Azt is üzemeltethetnek tárolóhelyekkel [Helm-diagramok](container-registry-helm-repos.md) (előzetes verzió) üzembe helyezéséhez a Kubernetes-alkalmazások csomagolási formázása. Amikor az egyes műveletekre kerül sor egy, a beállításjegyzék-tárházak kiváltó események webhookok is használhatja. Webhookok reagálhat az eseményekre a beállításjegyzék szintjén, vagy azok leszűkítheti egy adott adattárra címkét. Az egy [georeplikált](container-registry-geo-replication.md) beállításjegyzék konfigurálása egy adott területi replika válaszadására egyes webhookok.
 
 További információ a webhook-kérelem: [Azure Container Registry webhookok sémaleírás](container-registry-webhook-reference.md).
 
@@ -35,12 +35,13 @@ További információ a webhook-kérelem: [Azure Container Registry webhookok s�
 
 | Érték | Leírás |
 |---|---|
-| Name (Név) | Kíván adni a webhook nevét. Csak betűket és számokat tartalmazhat, és 5 – 50 karakter hosszúságúnak kell lennie. |
-| Szolgáltatás URI-ja | Az URI-t, a webhook POST értesítéseket küldjön-e. |
+| Webhook neve | Kíván adni a webhook nevét. Csak betűket és számokat tartalmazhat, és 5 – 50 karakter hosszúságúnak kell lennie. |
+| Location egység | Az egy [georeplikált](container-registry-geo-replication.md) beállításjegyzék, adja meg a rendszerleíró adatbázis-replika Azure-régió. 
+| Szolgáltatás-URI | Az URI-t, a webhook POST értesítéseket küldjön-e. |
 | Egyéni fejlécek | A POST-kérés továbbítása a kívánt fejléceket. Lehetnek a "kulcs: érték" formátumban. |
 | Műveletek indítása | A webhook kiváltó műveletek. Műveletek közé tartozik kép leküldéses, lemezkép törlése, Helm-diagram leküldéses, Helm-diagram törlése, és képet karanténba. Választhat egy vagy több műveletet a webhook aktiválásához. |
-| status | A webhook létrehozása után az állapotát. Ez alapértelmezés szerint engedélyezve van. |
-| Hatókör | A hatókör, amelyen a webhook működik. Nincs megadva, a hatókör-e az összes esemény a beállításjegyzékben. Azt adható meg a tárház vagy egy címkét a következő formátumban: "tárházat: címke" vagy "tárház: *" az összes olyan címkével. |
+| Állapot | A webhook létrehozása után az állapotát. Ez alapértelmezés szerint engedélyezve van. |
+| Scope | A hatókör, amelyen a webhook működik. Nincs megadva, a hatókör-e az összes esemény a beállításjegyzékben. Azt adható meg a tárház vagy egy címkét a következő formátumban: "tárházat: címke" vagy "tárház: *" az összes olyan címkével. |
 
 Példa webhook-űrlapon:
 
@@ -80,7 +81,7 @@ Az eredmények megtekintéséhez használja a [az acr webhook-lista-eseményei](
 az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook01
 ```
 
-## <a name="delete-webhook"></a>Webhook törlése
+## <a name="delete-webhook"></a>Delete webhook
 
 ### <a name="azure-portal"></a>Azure Portal
 

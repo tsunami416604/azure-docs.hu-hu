@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 51fd1195942a7bae86bb4cc0af9df3146d6e45c2
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 8e711c0586ce63d4293e2fb0914bbe884b55971f
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921908"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389963"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A Common Event formattal külső megoldás csatlakoztatása
 
@@ -32,7 +32,7 @@ Az Azure-Sentinel egy külső megoldás, amely lehetővé teszi, hogy mentse a n
 > [!NOTE] 
 > Adatok tárolódnak a munkaterületet, amely futtatja az Azure-Sentinel földrajzi helye.
 
-## <a name="how-it-works"></a>A szolgáltatás működése
+## <a name="how-it-works"></a>Működés
 
 Az Azure Sentinel- és a CEF-berendezés közötti kapcsolatot három lépésben történik:
 
@@ -44,6 +44,8 @@ Az Azure Sentinel- és a CEF-berendezés közötti kapcsolatot három lépésben
 2. A Syslog-ügynök gyűjti az adatokat, és biztonságosan küld a Log Analyticsbe, ahol, elemzi és bővített.
 3. Az ügynök a az adatokat a Log Analytics-munkaterületen tárolja, így szükség esetén analytics, a korrelációs szabályok és az irányítópultok használatával lekérdezhetők legyenek.
 
+> [!NOTE]
+> Az ügynök képes gyűjteni a több forrásból, de proxy dedikált gépre kell telepíteni.
 
 ## <a name="step-1-connect-to-your-cef-appliance-via-dedicated-azure-vm"></a>1. lépés: A CEF-berendezés dedikált Azure-beli Virtuálisgép-n keresztül kapcsolódni
 
@@ -61,7 +63,7 @@ Azt is megteheti telepítheti az ügynököt manuálisan a meglévő Azure virtu
 1. Az Azure-Sentinel-portálon kattintson a **adatösszekötők** válassza ki a készüléket. 
 
 1. A **Linux Syslog-ügynök konfigurációjának**:
-   - Válasszon **automatikus központi telepítési** szeretné-e a fent leírtak szerint, hozzon létre egy új gépet, amely előre telepítve van az Azure Sentinel-ügynökkel, és tartalmazza a konfiguráció szükséges. Válassza ki **automatikus központi telepítési** kattintson **automatikus ügynöktelepítés**. Ekkor megjelenik a Vásárlás lapján dedikált Linux virtuális gép, amely automatikusan csatlakozik a munkaterülethez, a rendszer. A virtuális gép egy **D2s v3-as standard (2 vcpu-k, 8 GB memória)** és a egy nyilvános IP-címmel rendelkezik.
+   - Válasszon **automatikus központi telepítési** szeretné-e a fent leírtak szerint, hozzon létre egy új gépet, amely előre telepítve van az Azure Sentinel-ügynökkel, és tartalmazza a konfiguráció szükséges. Válassza ki **automatikus központi telepítési** kattintson **automatikus ügynöktelepítés**. Ekkor megjelenik a Vásárlás lapján dedikált Linux virtuális gép, amely automatikusan csatlakozik a munkaterülethez. A virtuális gép egy **D2s v3-as standard (2 vcpu-k, 8 GB memória)** és a egy nyilvános IP-címmel rendelkezik.
       1. Az a **egyéni üzembe helyezés** lapon, adja meg az adatokat, és válassza ki a felhasználónevet és jelszót és elfogadja a feltételeket és kikötéseket, a virtuális gép vásárolhat.
       1. Konfigurálja a berendezést, a lapon szereplő beállításokkal, mint a naplókat. Az általános Common Event Format-összekötőhöz használja ezeket a beállításokat:
          - Protokoll = UDP
@@ -118,6 +120,13 @@ Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel 
   
  A megfelelő sémát használ a Log Analytics a CEF-események, keresse meg `CommonSecurityLog`.
 
+## <a name="step-2-forward-common-event-format-cef-logs-to-syslog-agent"></a>2. lépés: Common Event Format (CEF) naplókat továbbítani a Syslog-ügynök
+
+Állítsa be a Syslog-üzeneteket küldjön a CEF formátumot a Syslog-ügynök biztonsági megoldását. Ellenőrizze, hogy az ügynök konfigurációs használja ugyanazokat a paramétereket, amelyek jelennek meg. Általában az alábbiak:
+
+- 514-es port
+- Létesítmény local4
+
 ## <a name="step-3-validate-connectivity"></a>3. lépés: Kapcsolat ellenőrzése
 
 Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 percig is eltarthat. 
@@ -128,7 +137,7 @@ Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 
 
 3. Győződjön meg arról, hogy megfelelnek-e a naplókat küld a [RFC 5424](https://tools.ietf.org/html/rfc542).
 
-4. A Syslog-ügynököt futtató számítógépen ellenőrizze, hogy ezeket a portokat 514-es, a 25226 nyílt forráskódú és figyel-e, a parancs `netstat -a -n:`. Ez a parancs használatával kapcsolatos további információk: [netstat(8) – Linux man lap](https://linux.die.netman/8/netstat). Ha megfelelően figyel, láthatja a:
+4. A Syslog-ügynököt futtató számítógépen ellenőrizze, hogy ezeket a portokat 514-es, a 25226 nyílt forráskódú és figyel-e, a parancs `netstat -a -n:`. Ez a parancs használatával kapcsolatos további információk: [netstat(8) – Linux man lap](https://linux.die.net/man/8/netstat). Ha megfelelően figyel, láthatja a:
 
    ![Az Azure Sentinel-portok](./media/connect-cef/ports.png) 
 

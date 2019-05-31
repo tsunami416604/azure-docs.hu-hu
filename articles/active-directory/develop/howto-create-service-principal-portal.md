@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/14/2019
+ms.date: 05/17/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0208d25e4583672ad2110d959f8e255affbf3e0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8b5a16e2d5e3ac723675ebdb536a51d20412681f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764921"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235409"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az Azure AD-alkalmazás és -erőforrások elérésére képes egyszerű szolgáltatás létrehozása a portál használatával
 
@@ -40,11 +40,11 @@ Nyissa meg közvetlenül az identitás létrehozása. Ha problémát tapasztal, 
 
    ![alkalmazásregisztrációk kiválasztása](./media/howto-create-service-principal-portal/select-app-registrations.png)
 
-1. Válassza az **Új alkalmazás regisztrálása** elemet.
+1. Válassza ki **új regisztrációs**.
 
-   ![Alkalmazás felvétele](./media/howto-create-service-principal-portal/select-add-app.png)
+   ![alkalmazás hozzáadása](./media/howto-create-service-principal-portal/select-add-app.png)
 
-1. Adja meg az alkalmazás nevét és URL-címét. Válassza a **Webalkalmazás/API** lehetőséget a létrehozni kívánt alkalmazás típusaként. Hitelesítő adatok nem hozható létre egy [natív alkalmazás](../manage-apps/application-proxy-configure-native-client-application.md). Egy automatikus alkalmazásnak típus nem használható. Miután beállította az értékeket, válassza ki a **létrehozás**.
+1. Adjon meg egy nevet az alkalmazásnak. Válasszon ki egy támogatott fiókot írja be, amely meghatározza, hogy ki használhatja az alkalmazást. Alatt **átirányítási URI-t**válassza **webes** szeretne létrehozni az alkalmazás számára. Adja meg az URI-t, ha a hozzáférési jogkivonatot a érkezik.  Hitelesítő adatok nem hozható létre egy [natív alkalmazás](../manage-apps/application-proxy-configure-native-client-application.md). Egy automatikus alkalmazásnak típus nem használható. Miután beállította az értékeket, válassza ki a **regisztrálása**.
 
    ![alkalmazás elnevezése](./media/howto-create-service-principal-portal/create-app.png)
 
@@ -66,7 +66,7 @@ Beállíthatja a hatókör szintjén is az előfizetés, erőforráscsoport vagy
 
    Ha nem látja a keresett előfizetéshez, válasszon **globális előfizetés-szűrő**. Ellenőrizze, hogy az előfizetés ki van jelölve a portálon. 
 
-1. Válassza ki **hozzáférés-vezérlés (IAM)**.
+1. Válassza ki **hozzáférés-vezérlés (IAM)** .
 1. Válassza ki **szerepkör-hozzárendelés hozzáadása**.
 
    ![Válassza ki a szerepkör-hozzárendelés hozzáadása](./media/howto-create-service-principal-portal/select-add.png)
@@ -81,31 +81,41 @@ Az egyszerű szolgáltatás be van állítva. Akkor megkezdheti a parancsfájlok
 
 ## <a name="get-values-for-signing-in"></a>Bejelentkezés értékek beolvasása
 
-### <a name="get-tenant-id"></a>A bérlőazonosító beszerzése
-
-Ha programozott módon jelentkezik be, kell átadni a bérlő Azonosítóját, a hitelesítési kérelemmel együtt.
+Ha programozott módon jelentkezik be, kell átadni a bérlő Azonosítóját, a hitelesítési kérelemmel együtt. Az alkalmazás és a hitelesítési kulcs Azonosítóját is szükséges. Az értékek beszerzéséhez kövesse az alábbi lépéseket:
 
 1. Válassza az **Azure Active Directory** elemet.
-1. Válassza ki **tulajdonságok**.
-
-   ![az Azure AD tulajdonságok kiválasztása](./media/howto-create-service-principal-portal/select-ad-properties.png)
-
-1. Másolás a **címtár-azonosító** lekérni a bérlő azonosítója.
-
-   ![Bérlőazonosító](./media/howto-create-service-principal-portal/copy-directory-id.png)
-
-### <a name="get-application-id-and-authentication-key"></a>Alkalmazásazonosító és hitelesítési kulcs beszerzése
-
-Az alkalmazás és a hitelesítési kulcs Azonosítóját is szükséges. Az értékek beszerzéséhez kövesse az alábbi lépéseket:
 
 1. A **alkalmazásregisztrációk** az Azure AD-ben válassza ki az alkalmazását.
 
-   ![Alkalmazás kijelölése](./media/howto-create-service-principal-portal/select-app.png)
+   ![alkalmazás kijelölése](./media/howto-create-service-principal-portal/select-app.png)
+
+1. A könyvtár (bérlő) azonosítóját, és tárolja az alkalmazás kódjában.
+
+    ![Bérlőazonosító](./media/howto-create-service-principal-portal/copy-tenant-id.png)
 
 1. Másolja ki az **Alkalmazásazonosítót**, és tárolja az alkalmazás kódjában.
 
-   ![Ügyfélazonosító](./media/howto-create-service-principal-portal/copy-app-id.png)
+   ![Ügyfél-azonosító](./media/howto-create-service-principal-portal/copy-app-id.png)
 
+## <a name="certificates-and-secrets"></a>Tanúsítványok és titkos kulcsok
+Deamon alkalmazások használhatják a kétféle hitelesítő adatot az Azure AD-hitelesítést: tanúsítványok és titkos alkalmazáskulcsok.  Javasoljuk, hogy olyan tanúsítványt használ, de is létrehozhat egy új Alkalmazáskulcs.
+
+### <a name="upload-a-certificate"></a>Tanúsítvány feltöltése
+
+Egy létező tanúsítványt is használhatja, ha rendelkezik ilyennel.  Igény szerint hozhat létre egy önaláírt tanúsítványt tesztelési célokra. Nyissa meg a Powershellt, és futtassa [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) önaláírt tanúsítvány létrehozása a felhasználó tanúsítványtárolójában a számítógépen a következő paraméterekkel: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  A tanúsítvány használatával történő exportálás a [felhasználói tanúsítvány kezelése](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC beépülő modul a Windows Vezérlőpult érhető el.
+
+A tanúsítvány feltöltéséhez:
+1. Válassza ki **tanúsítványok és titkos kulcsok**.
+
+   ![beállítások kiválasztása](./media/howto-create-service-principal-portal/select-certs-secrets.png)
+1. Kattintson a **tanúsítvány feltöltése** , és válassza ki a tanúsítványt (meglévő tanúsítványt vagy önaláírt tanúsítványt, az exportált).
+    ![Tanúsítvány feltöltése](./media/howto-create-service-principal-portal/upload-cert.png)
+1. Kattintson a **Hozzáadás**lehetőségre.
+
+Miután felvette a tanúsítványt az alkalmazásregisztrációs portálon az alkalmazását, a tanúsítvány használatára az ügyfél alkalmazáskód engedélyeznie kell.
+
+### <a name="create-a-new-application-secret"></a>Hozzon létre egy új Alkalmazáskulcs
+Ha nem kíván használni egy tanúsítványt, létrehozhat egy új Alkalmazáskulcs.
 1. Válassza ki **tanúsítványok és titkos kulcsok**.
 
    ![beállítások kiválasztása](./media/howto-create-service-principal-portal/select-certs-secrets.png)

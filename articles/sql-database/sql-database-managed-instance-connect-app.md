@@ -12,14 +12,14 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 52a9cfa52cd63715addadcbfb367510ded56fd76
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6cbfdc9e595ebdf682356990ec975dbd0514035d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142727"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297088"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Csatlakoztassa az alkalmazását az Azure SQL Database felügyelt példányához
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példánya a alkalmazás csatlakoztatása
 
 A mai több lehetőség közül választhat annak eldöntése, hogyan és hol üzemelteti az alkalmazást során.
 
@@ -56,7 +56,7 @@ Két lehetőség van a helyszíni csatlakozás Azure vnethez:
 - Site-to-Site VPN-kapcsolat ([az Azure portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI-vel](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
 - [Az ExpressRoute](../expressroute/expressroute-introduction.md) kapcsolat  
 
-Sikeresen létrehozta az Azure-kapcsolat helyszíni, és nem létesít kapcsolatot egy felügyelt példányra, ellenőrzi, hogy a tűzfal tartalmazza-e kimenő kapcsolat megnyitása az 1433-as port SQL, valamint a 11000-12000 átirányítás portok tartománya.
+Sikeresen létrehozta az Azure-kapcsolat helyszíni, és nem létesít kapcsolatot egy felügyelt példányra, ellenőrzi, hogy a tűzfal tartalmazza-e kimenő kapcsolat megnyitása az 1433-as port SQL, valamint a 11000-11999 átirányítás portok tartománya.
 
 ## <a name="connect-an-application-on-the-developers-box"></a>A fejlesztők Box alkalmazások csatlakoztatása
 
@@ -96,7 +96,7 @@ Ebben a forgatókönyvben a következő ábra mutatja be:
 
 Csatlakozási problémák elhárítása, tekintse át a következőket:
 
-- Ha Ön nem lehet csatlakozni egy Azure virtuális gépen belül a ugyanazon a Vneten, de különböző alhálózati felügyelt példányra, ellenőrizze, hogy van-e állítva a Virtuálisgép-alhálózatot, amelyek esetleg blokkolják a hozzáférést a hálózati biztonsági csoport. Továbbá vegye figyelembe, hogy meg kell nyitnia az 1433-as port SQL, valamint a portokat a kimenő kapcsolatot 11000-12000 tartományban, mivel azok szükségesek, például az Azure határain belül létesít átirányítás használatával csatlakozik.
+- Ha Ön nem lehet csatlakozni egy Azure virtuális gépen belül a ugyanazon a Vneten, de különböző alhálózati felügyelt példányra, ellenőrizze, hogy van-e állítva a Virtuálisgép-alhálózatot, amelyek esetleg blokkolják a hozzáférést a hálózati biztonsági csoport. Továbbá vegye figyelembe, hogy meg kell nyitnia az 1433-as port SQL, valamint a portokat a kimenő kapcsolatot 11000-11999 tartományban, mivel azok szükségesek, például az Azure határain belül létesít átirányítás használatával csatlakozik.
 - Győződjön meg arról, hogy a BGP-Útvonalpropagálás értékre van állítva **engedélyezve** a Vnethez társított útvonaltáblához.
 - Ha a P2S típusú VPN-kapcsolattal, ellenőrizze a konfigurációt, ha láthatja, hogy az Azure Portalon **bejövő/kimenő forgalom** számokat. Nem nulla értékű számok azt jelzi, hogy az Azure és-tárolókról a helyszíni irányítaná a forgalmat.
 

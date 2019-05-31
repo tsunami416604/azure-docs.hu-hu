@@ -4,15 +4,15 @@ description: Ez a cikk ismerteti az Azure Cosmos DB-megfelelőségi ajánlatok m
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: bbfc31e5eab2c2beb232a9ec2e0d5e11e4107be5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: af1b3dba0ac73ef30a4be20cab795ce6de595970
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606285"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239703"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Az Azure Cosmos DB megfelelőség 
 
@@ -20,7 +20,7 @@ Az Azure Cosmos DB az összes Azure-régióban érhető el. A Microsoft elérhet
 
 * **Azure nyilvános** felhő, amely globálisan elérhető.
 
-* **Az Azure China** a Microsoft és az egyik a legnagyobb internetszolgáltatója, a 21Vianet közötti partneri együttműködésnek köszönhetően érhető el.
+* **Az Azure China 21Vianet** a Microsoft és az egyik a legnagyobb internetszolgáltatója, a 21Vianet közötti partneri együttműködésnek köszönhetően érhető el.
 
 * **Az Azure Germany** alatt egy megbízott adatkezelői modell, amely biztosítja, hogy a vásárlói adatok marad Németországban a T-Systems International GmbH, a Deutsche távközlési, leányvállalata vezérlése alatt a német megbízott adatkezelő átjáróként szolgáltatásokat biztosít.
 
@@ -36,15 +36,32 @@ Az Azure Cosmos DB folyamatosan bővíti a minősítési támogatását. Jelenle
 
 | **Globálisan érvényes** | **USA-beli államigazgatás** | **Adott iparági** | **Régió vagy adott ország** |
 | --- | --- | --- | --- |
-| CSA STAR-minősítés<br/><br/>CSA STAR-igazolás<br/><br/>ISO 20000-1:2011<br/><br/>ISO 22301:2012<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3| DoD SRG Level 2<br/><br/>FedRAMP mérsékelt<br/><br/>GxP (FDA 21 CFR Part 11)<br/><br/>| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Ausztrál IRAP nem besorolt<br/><br/>A Németországi C5 csomag<br/><br/>Szingapúri MTCS a 3. szintre<br/><br/>Spanyolország ENS magas|
+| CSA STAR-minősítés | DoD SRG Level 2 | HIPAA BAA | Ausztrál IRAP nem besorolt |
+| CSA STAR-igazolás | FedRAMP mérsékelt | HITRUST | A Németországi C5 csomag|
+| ISO 20000-1:2011 | GxP (FDA 21 CFR Part 11) | PCI DSS | Szingapúri MTCS a 3. szintre |
+| ISO 22301:2012 | | | Spanyolország ENS magas|
+| ISO 27001:2013| | | |
+| ISO 27017:2015 | | | |
+| ISO 27018:2014 | | | |
+| ISO 9001:2015 | | | |
+| SOC 1, 2, 3 | | | |
 
 Minden egyes ezek megfelelőségi ajánlattal, és hogyan azok előnyeit kapcsolatos további információkért lásd: [áttekintése a Microsoft Azure-megfelelőségi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) lapot.
 
 Az alábbi táblázat a tanúsítvánnyal, ezáltal az Azure Cosmos DB az Azure Government támogatja:
 
-| **Globálisan érvényes** | **USA-beli államigazgatás** | **Adott iparági** | **Régió vagy adott ország** |
+| **Globálisan érvényes** | **USA-beli államigazgatás** | **Adott iparági** | 
 | --- | --- | --- | --- |
-| CSA STAR-minősítés<br/><br/>CSA STAR-igazolás<br/><br/>ISO 20000-1:2011<br/><br/>ISO 9001:2015<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3 | DoD SRG Level 2<br/><br/>DoD SRG Level 5<br/><br/>CJIS<br/><br/>FedRAMP magas<br/><br/>IRS 1075<br/><br/>NIST CSF<br/><br/>NIST SP 800-171| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Ausztrál IRAP nem besorolt<br/><br/>A Németországi C5 csomag<br/><br/>Szingapúri MTCS a 3. szintre<br/><br/>Spanyolország ENS magas|
+| CSA STAR-minősítés | CJIS| HIPAA BAA | 
+| CSA STAR-igazolás| DoD SRG Level 2| HITRUST  | 
+| ISO 20000-1:2011 | DoD SRG Level 4 | PCI DSS | 
+| ISO 9001:2012 | DoD SRG Level 5 | | 
+| ISO 27001:2013 | FedRAMP magas | |
+| ISO 9001:2015 | IRS 1075|  |
+| ISO 27017:2014 | NIST CSF | |
+| ISO 27018:2015 | NIST SP 800-171 | |
+| SOC 1, 2, 3 | | |
+
 
 ## <a name="next-steps"></a>További lépések
 

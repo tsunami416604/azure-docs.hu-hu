@@ -10,16 +10,16 @@ ms.subservice: load data
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6bc1431ace55538c489d73e0a62d18f274c06d57
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a8bca6c1e56595e4a7d64f9f388c9daca0b166ac
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873765"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242908"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Adatok betöltése az Azure SQL Data warehouse-bA
 
-Ez az oktatóanyag a PolyBase segítségével tölti be a WideWorldImportersDW adattárházat az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
+Ez az oktatóanyag a PolyBase segítségével tölti be a WideWorldImportersDW adattárházat az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz:
 
 > [!div class="checklist"]
 > * Adattárház létrehozása az Azure Portalon
@@ -37,7 +37,6 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 ## <a name="before-you-begin"></a>Előkészületek
 
 Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
-
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
@@ -1121,7 +1120,7 @@ A következőket hajtotta végre:
 > * Az adatok állapotának megtekintése betöltés közben
 > * Statisztikák készítése az újonnan betöltött adatokról
 
-Folytassa az áttelepítés áttekintésével, amelyből megtudhatja, hogyan telepíthet át egy meglévő adatbázist az SQL Data Warehouse-ba.
+Folytassa a megtudhatja, hogyan telepíthet át egy meglévő adatbázist az SQL Data Warehouse fejlesztői áttekintés.
 
 > [!div class="nextstepaction"]
->[Ismerje meg, hogyan telepíthet át egy meglévő adatbázist az SQL Data Warehouse-ba](sql-data-warehouse-overview-migrate.md)
+>[Tervezési döntéseket telepíthet át egy meglévő adatbázist az SQL Data Warehouse](sql-data-warehouse-overview-develop.md)

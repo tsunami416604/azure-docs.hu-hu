@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bb18c858a17e290a8ce2cc88dc1e7d88d21afe0f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f10ac45266eefac41f3ba9ac442c3be3f5106ef3
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021908"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388407"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Kép elemzése cognitive szakértelem
 
@@ -39,12 +39,12 @@ A paraméterei a kis-és nagybetűket.
 |--------------------|-------------|
 | defaultLanguageCode   |  A visszaadandó nyelv jelző karakterlánc. A szolgáltatás megadott nyelvre a felismerési eredményeket adja vissza. Ha ez a paraméter nincs megadva, alapértelmezett értéke "en". <br/><br/>Támogatott nyelvek a következők: <br/>*en* – angol (alapértelmezett) <br/> *zh* – egyszerűsített kínai|
 |visualFeatures |   Jelző vizuális szolgáltatást való visszatéréshez karakterláncok tömbje. Érvényes visual funkció típusok a következők:  <ul><li> *kategóriák* -kép tartalmához a besorolás, a Cognitive Services meghatározott szerint kategorizálja [dokumentáció](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy).</li><li> *a címkék* -megjelöli a lemezképet a szavakat a képen tartalommal kapcsolatos részletes listáját.</li><li>*Leírás* – ismerteti a tartalmat a teljes angol nyelvű mondatot kép.</li><li>*Arcok* -észleli, hogy megtalálhatók-e a arcokat. Ha jelen van, akkor állít elő, koordináták, nem és életkor.</li><li> *ImageType* -azt észleli, ha a kép ClipArt vagy vonalrajz.</li><li>  *Szín* – a gombszöveg színét, színig, határozza meg, és hogy egy kép fekete-fehér.</li><li>*Felnőtt* -azt észleli, ha a kép pornográf jellegű (ábrázolja meztelenség vagy egy nemek act). Nyíltan kétértelmű tartalmat is észlelhető.</li></ul> Vizuális jellemzőket nevei és nagybetűk.|
-| részletek   | Egy karakterlánctömb, jelezve, hogy mely tartomány-specifikus részletek való visszatéréshez. Érvényes visual funkció típusok a következők: <ul><li>*Hírességek* – hírességek azonosítja a kép észlelésekor.</li><li>*Arcrész* -arcrész azonosítja a kép észlelésekor.</li></ul>
+| Részletek   | Egy karakterlánctömb, jelezve, hogy mely tartomány-specifikus részletek való visszatéréshez. Érvényes visual funkció típusok a következők: <ul><li>*Hírességek* – hírességek azonosítja a kép észlelésekor.</li><li>*Arcrész* -arcrész azonosítja a kép észlelésekor.</li></ul>
  |
 
 ## <a name="skill-inputs"></a>Ismeretek bemenetek
 
-| Bemenet neve      | Leírás                                          |
+| Bemeneti név      | Leírás                                          |
 |---------------|------------------------------------------------------|
 | image         | Komplex típus. Az Azure Blob indexelőjével által előállított jelenleg csak akkor működik a "/ dokumentum/normalized_images" mezőt, amikor ```imageAction``` értékre van állítva egy eltérő ```none```. Tekintse meg a [minta](#sample-output) további információt.|
 
@@ -52,56 +52,270 @@ A paraméterei a kis-és nagybetűket.
 
 ##  <a name="sample-definition"></a>Minta-definíció
 ```json
-{
-    "@odata.type": "#Microsoft.Skills.Vision.ImageAnalysisSkill",
-    "context": "/document/normalized_images/*",
-    "visualFeatures": [
-        "Tags",
-        "Faces",
-        "Categories",
-        "Adult",
-        "Description",
-        "ImageType",
-        "Color"
-    ],
-    "defaultLanguageCode": "en",
-    "inputs": [
         {
-            "name": "image",
-            "source": "/document/normalized_images/*"
+            "description": "Extract image analysis.",
+            "@odata.type": "#Microsoft.Skills.Vision.ImageAnalysisSkill",
+            "context": "/document/normalized_images/*",
+            "defaultLanguageCode": "en",
+            "visualFeatures": [
+                "Tags",
+                "Categories",
+                "Description",
+                "Faces"
+            ],
+            "inputs": [
+                {
+                    "name": "image",
+                    "source": "/document/normalized_images/*"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "categories"
+                },
+                {
+                    "name": "tags"
+                },
+                {
+                    "name": "description"
+                },
+                {
+                    "name": "faces"
+                }
+            ]
         }
-    ],
-    "outputs": [
+```
+### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>Mintakód-index (a csak a kategóriákat, leírás, arcokat és címkék mezők)
+```json
+{
+    "fields": [
         {
-            "name": "categories",
-            "targetName": "myCategories"
+            "name": "id",
+            "type": "Edm.String",
+            "key": true,
+            "searchable": true,
+            "filterable": false,
+            "facetable": false,
+            "sortable": true
         },
         {
-            "name": "tags",
-            "targetName": "myTags"
+            "name": "blob_uri",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "facetable": false,
+            "sortable": true
+        },
+        {
+            "name": "content",
+            "type": "Edm.String",
+            "sortable": false,
+            "searchable": true,
+            "filterable": false,
+            "facetable": false
+        },
+        {
+            "name": "categories",
+            "type": "Collection(Edm.ComplexType)",
+            "fields": [
+                {
+                    "name": "name",
+                    "type": "Edm.String",
+                    "searchable": true,
+                    "filterable": false,
+                    "facetable": false
+                },
+                {
+                    "name": "score",
+                    "type": "Edm.Double",
+                    "searchable": false,
+                    "filterable": false,
+                    "facetable": false
+                },
+                {
+                    "name": "detail",
+                    "type": "Edm.ComplexType",
+                    "fields": [
+                        {
+                            "name": "celebrities",
+                            "type": "Collection(Edm.ComplexType)",
+                            "fields": [
+                                {
+                                    "name": "name",
+                                    "type": "Edm.String",
+                                    "searchable": true,
+                                    "filterable": false,
+                                    "facetable": false
+                                },
+                                {
+                                    "name": "faceBoundingBox",
+                                    "type": "Collection(Edm.ComplexType)",
+                                    "fields": [
+                                        {
+                                            "name": "x",
+                                            "type": "Edm.Int32",
+                                            "searchable": false,
+                                            "filterable": false,
+                                            "facetable": false
+                                        },
+                                        {
+                                            "name": "y",
+                                            "type": "Edm.Int32",
+                                            "searchable": false,
+                                            "filterable": false,
+                                            "facetable": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "confidence",
+                                    "type": "Edm.Double",
+                                    "searchable": false,
+                                    "filterable": false,
+                                    "facetable": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "landmarks",
+                            "type": "Collection(Edm.ComplexType)",
+                            "fields": [
+                                {
+                                    "name": "name",
+                                    "type": "Edm.String",
+                                    "searchable": true,
+                                    "filterable": false,
+                                    "facetable": false
+                                },
+                                {
+                                    "name": "confidence",
+                                    "type": "Edm.Double",
+                                    "searchable": false,
+                                    "filterable": false,
+                                    "facetable": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "name": "description",
-            "targetName": "myDescription"
+            "type": "Collection(Edm.ComplexType)",
+            "fields": [
+                {
+                    "name": "tags",
+                    "type": "Collection(Edm.String)",
+                    "searchable": true,
+                    "filterable": false,
+                    "facetable": false
+                },
+                {
+                    "name": "captions",
+                    "type": "Collection(Edm.ComplexType)",
+                    "fields": [
+                        {
+                            "name": "text",
+                            "type": "Edm.String",
+                            "searchable": true,
+                            "filterable": false,
+                            "facetable": false
+                        },
+                        {
+                            "name": "confidence",
+                            "type": "Edm.Double",
+                            "searchable": false,
+                            "filterable": false,
+                            "facetable": false
+                        }
+                    ]
+                }
+            ]
         },
         {
             "name": "faces",
-            "targetName": "myFaces"
+            "type": "Collection(Edm.ComplexType)",
+            "fields": [
+                {
+                    "name": "age",
+                    "type": "Edm.Int32",
+                    "searchable": false,
+                    "filterable": false,
+                    "facetable": false
+                },
+                {
+                    "name": "gender",
+                    "type": "Edm.String",
+                    "searchable": false,
+                    "filterable": false,
+                    "facetable": false
+                },
+                {
+                    "name": "faceBoundingBox",
+                    "type": "Collection(Edm.ComplexType)",
+                    "fields": [
+                        {
+                            "name": "x",
+                            "type": "Edm.Int32",
+                            "searchable": false,
+                            "filterable": false,
+                            "facetable": false
+                        },
+                        {
+                            "name": "y",
+                            "type": "Edm.Int32",
+                            "searchable": false,
+                            "filterable": false,
+                            "facetable": false
+                        }
+                    ]
+                }
+            ]
         },
         {
-            "name": "imageType",
-            "targetName": "myImageType"
-        },
-        {
-            "name": "color",
-            "targetName": "myColor"
-        },
-        {
-            "name": "adult",
-            "targetName": "myAdultCategory"
+            "name": "tags",
+            "type": "Collection(Edm.ComplexType)",
+            "fields": [
+                {
+                    "name": "name",
+                    "type": "Edm.String",
+                    "searchable": true,
+                    "filterable": false,
+                    "facetable": false
+                },
+                {
+                    "name": "confidence",
+                    "type": "Edm.Double",
+                    "searchable": false,
+                    "filterable": false,
+                    "facetable": false
+                }
+            ]
         }
     ]
 }
+
+```
+### <a name="sample-output-field-mapping-for-the-above-index"></a>Minta kimeneti mezőleképezés (a fenti index)
+```json
+    "outputFieldMappings": [
+        {
+            "sourceFieldName": "/document/normalized_images/*/categories/*",
+            "targetFieldName": "categories"
+        },
+        {
+            "sourceFieldName": "/document/normalized_images/*/tags/*",
+            "targetFieldName": "tags"
+        },
+        {
+            "sourceFieldName": "/document/normalized_images/*/description",
+            "targetFieldName": "description"
+        },
+        {
+            "sourceFieldName": "/document/normalized_images/*/faces/*",
+            "targetFieldName": "faces"
+        }
 ```
 
 ##  <a name="sample-input"></a>Minta beviteli
@@ -127,7 +341,6 @@ A paraméterei a kis-és nagybetűket.
 }
 ```
 
-
 ##  <a name="sample-output"></a>Példa kimenet
 
 ```json
@@ -148,12 +361,24 @@ A paraméterei a kis-és nagybetűket.
                             "celebrities": [
                                 {
                                     "name": "Satya Nadella",
-                                    "faceBoundingBox": {
-                                        "left": 597,
-                                        "top": 162,
-                                        "width": 248,
-                                        "height": 248
-                                    },
+                                    "faceBoundingBox": [
+                                        {
+                                            "x": 273,
+                                            "y": 309
+                                        },
+                                        {
+                                            "x": 395,
+                                            "y": 309
+                                        },
+                                        {
+                                            "x": 395,
+                                            "y": 431
+                                        },
+                                        {
+                                            "x": 273,
+                                            "y": 431
+                                        }
+                                    ],
                                     "confidence": 0.999028444
                                 }
                             ],
@@ -215,12 +440,24 @@ A paraméterei a kis-és nagybetűket.
                     {
                         "age": 44,
                         "gender": "Male",
-                        "faceBoundingBox": {
-                            "left": 593,
-                            "top": 160,
-                            "width": 250,
-                            "height": 250
-                        }
+                        "faceBoundingBox": [
+                            {
+                                "x": 1601,
+                                "y": 395
+                            },
+                            {
+                                "x": 1653,
+                                "y": 395
+                            },
+                            {
+                                "x": 1653,
+                                "y": 447
+                            },
+                            {
+                                "x": 1601,
+                                "y": 447
+                            }
+                        ]
                     }
                 ],
                 "color": {

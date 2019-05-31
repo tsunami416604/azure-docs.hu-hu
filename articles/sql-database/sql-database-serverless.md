@@ -12,16 +12,16 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/20/2019
-ms.openlocfilehash: 57f2c38ce0479f43d7f24de8d1feb554517bcc69
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a9f883a9776f68a7ece471caca5dc1d7af2aec32
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951477"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393526"
 ---
 # <a name="sql-database-serverless-preview"></a>Az SQL Database kiszolgáló nélküli (előzetes verzió)
 
-## <a name="what-is-the-serverless-compute-tier"></a>Mi az a kiszolgáló nélküli számítási kapacitás
+## <a name="serverless-compute-tier"></a>Kiszolgáló nélküli számítási szint
 
 Az SQL Database kiszolgáló nélküli (előzetes verzió) egy számítási kapacitás, amely a számlák összeg számítási másodpercalapú az önálló adatbázis által használt. Kiszolgáló nélküli ár – teljesítmény arányt időszakos, előre nem látható használati minták, hogy megengedhet számítási bemelegítési némi késedelem után inaktív időszakai önálló adatbázisokat optimalizálva.
 
@@ -41,7 +41,7 @@ Számítási erőforrások alapján számoljuk el a használt virtuális maggal 
 - A számlázás a minimális számítási minimális virtuális maggal és a minimális memória alapul.
 - Az adatbázis fel van függesztve, amíg csak díjszabása vonatkozik.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 Kiszolgáló nélküli ár – teljesítmény arányt időszakos, előre nem látható használati minták, hogy megengedhet számítási bemelegítési némi késedelem után inaktív időszakai önálló adatbázisokat optimalizálva. A kiépített számítási szintje ezzel szemben az olyan önálló vagy készletezett adatbázisok esetén, amely folyamatos internetkapcsolatot igénylő számítási bemelegítési az késleltetések magasabb átlagos kihasználtsága optimalizált ár – teljesítmény arányt.
 
@@ -64,8 +64,8 @@ A következő táblázat összefoglalja a kiszolgáló nélküli számítási ka
 | | **Kiszolgáló nélküli számítási** | **Kiépített számítási** |
 |:---|:---|:---|
 |**Tipikus használati eset**| Az inaktív időszakokat jelentésekkel összekeveredett időszakos, előre nem látható használati adatbázisok. | Adatbázisokat vagy rugalmas készletek több szokásainak.|
-| **Teljesítmény energiabefektetést igénylő felügyelet** |Alacsonyabb|Jobb|
-|**Számítás méretezése**|Automatikus|Manuális|
+| **Teljesítmény energiabefektetést igénylő felügyelet** |Alacsonyabb|Magasabb szintű|
+|**Számítás méretezése**|Automatikus|Kézi|
 |**COMPUTE válaszideje**|Alacsonyabb inaktív időszakokat követően|Azonnali|
 |**A számlázás részletessége**|Másodpercenként|/ óra|
 
@@ -73,7 +73,7 @@ A következő táblázat összefoglalja a kiszolgáló nélküli számítási ka
 
 Kiszolgáló nélküli SQL-adatbázis jelenleg csak az általános célú csomagban a virtuális mag modell megvásárlása az 5. generáció hardveren támogatott.
 
-## <a name="autoscaling"></a>Automatikus skálázás
+## <a name="autoscale"></a>Automatikus méretezés
 
 ### <a name="scaling-responsiveness"></a>Méretezési válaszideje
 
@@ -83,7 +83,7 @@ Kiszolgáló nélküli SQL-adatbázis jelenleg csak az általános célú csomag
 
 Memória a kiszolgáló nélküli adatbázisok felszabadul nagyobb gyakran kiépített számítási adatbázisok számára. Ez a probléma fontos a kiszolgáló nélküli csökkenthetők a költségek, és befolyásolhatja a teljesítményt.
 
-#### <a name="cache-reclaiming"></a>Gyorsítótár VISSZAIGÉNYLÉSE
+#### <a name="cache-reclamation"></a>Gyorsítótár visszaigénylését
 
 Memória az SQL-gyorsítótárból ellentétben a kiépített számítási adatbázisokat, felszabadul a kiszolgáló nélküli adatbázis amikor a Processzor vagy a gyorsítótár-kihasználtság alacsony.
 
@@ -113,10 +113,10 @@ Lehetőség van autopause letiltása, ha szükséges.
 
 Autoresume akkor aktiválódik, ha az alábbi feltételek bármelyike igaz bármikor:
 
-|Szolgáltatás|Autoresume eseményindító|
+|Funkció|Autoresume eseményindító|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
-|Veszélyforrások detektálása|Az adatbázis vagy a kiszolgáló szintjén fenyegetésészlelési beállításokat engedélyezése vagy letiltása<br>Az adatbázis vagy a kiszolgáló szintjén fenyegetésészlelési beállításokat módosítása|
+|Fenyegetések észlelése|Az adatbázis vagy a kiszolgáló szintjén fenyegetésészlelési beállításokat engedélyezése vagy letiltása<br>Az adatbázis vagy a kiszolgáló szintjén fenyegetésészlelési beállításokat módosítása|
 |Adatfelderítés és besorolás|Hozzáadása, módosítása, törlése vagy bizalmassági címke megtekintése|
 |Naplózás|Naplózási bejegyzések megtekintésére.<br>Frissítés és a naplózási házirend megtekintése|
 |Adatmaszkolás|Hozzáadása, módosítása, törlése vagy adatmaszkolási szabályok megtekintése|
@@ -128,7 +128,7 @@ Autoresume akkor aktiválódik, ha az alábbi feltételek bármelyike igaz bárm
 |Egyes adatbázis metaadatainak módosítása|Új adatbázis-címkék hozzáadása<br>Változó maximális virtuális maggal, min virtuális maggal, autopause késleltetés|
 |SQL Server Management Studio (SSMS)|18-as verzió SSMS használatával, és nyissa meg egy új lekérdezési ablak bármilyen adatbázishoz a kiszolgáló ugyanazon a kiszolgálón található automatikus szüneteltetve adatbázisokat folytatódik. Ez a viselkedés nem jelentkezik, ha a verzió 17.9.1 SSMS használatával az IntelliSense használatával – kikapcsolva.|
 
-### <a name="connectivity"></a>Hálózati kapcsolat
+### <a name="connectivity"></a>Kapcsolat
 
 Ha egy kiszolgáló nélküli adatbázis fel van függesztve, majd az első bejelentkezés fog folytatni az adatbázis és arról, hogy az adatbázis nem érhető el, hibakód: 40613 hibát adhat vissza. Az adatbázis folytatása után a bejelentkezési kapcsolat létrehozásához meg kell ismételni. Adatbázis-kapcsolat újrapróbálkozási logikát ügyfelek nem kell módosítani.
 
@@ -145,17 +145,17 @@ A következő szolgáltatások nem támogatják a autopausing és autoresuming. 
 - A sync-adatbázis az SQL data sync használt.
 
 
-## <a name="on-boarding-into-the-serverless-compute-tier"></a>Az előkészítési be a kiszolgáló nélküli számítási kapacitás
+## <a name="onboarding-into-serverless-compute-tier"></a>Kiszolgáló nélküli számítási kapacitás az előkészítés
 
 Új adatbázis létrehozása és áthelyezése egy meglévő adatbázist, egy kiszolgáló nélküli számítási kapacitás, az új adatbázis létrehozása ugyanazon mintát követi, számítási kapacitás kiosztása, és a következő két lépésből áll:
 
 1. Adja meg a szolgáltatási célkitűzésének neve. A szolgáltatási cél írja elő a szolgáltatási rétegben, hardver generációja és maximális virtuális maggal. Az alábbi táblázat a szolgáltatási cél beállításai láthatók:
 
-   |Szolgáltatási célkitűzésének neve|Szolgáltatásszint|Hardver generációja|Virtuális magok max. száma|
+   |Szolgáltatási célkitűzésének neve|Szolgáltatásszint|Hardver generációja|Max. virtuális magok|
    |---|---|---|---|
-   |GP_S_Gen5_1|Általános célú|Gen5|1.|
-   |GP_S_Gen5_2|Általános célú|Gen5|2|
-   |GP_S_Gen5_4|Általános célú|Gen5|4|
+   |GP_S_Gen5_1|Általános rendeltetés|Gen5|1|
+   |GP_S_Gen5_2|Általános rendeltetés|Gen5|2|
+   |GP_S_Gen5_4|Általános rendeltetés|Gen5|4|
 
 2. Szükség esetén adja meg a minimális virtuális maggal és autopause késleltetési módosíthatja az alapértelmezett értékeket. Az alábbi táblázat az elérhető értékeket a paraméterekhez.
 
@@ -167,11 +167,11 @@ A következő szolgáltatások nem támogatják a autopausing és autoresuming. 
 > [!NOTE]
 > T-SQL használatával helyezze át a létező adatbázis, kiszolgáló nélküli, vagy a számítási méret módosítása jelenleg nem támogatott, de az Azure Portalon vagy a Powershellen keresztül teheti meg.
 
-### <a name="create-new-database-using-the-azure-portal"></a>Hozzon létre új adatbázist az Azure portal használatával
+### <a name="create-new-serverless-database-using-azure-portal"></a>Hozzon létre új, kiszolgáló nélküli adatbázis az Azure portal használatával
 
 Lásd: [a rövid útmutató: Önálló adatbázis létrehozása az Azure SQL Database az Azure portal használatával](sql-database-single-database-get-started.md).
 
-### <a name="create-new-database-using-powershell"></a>Hozzon létre új adatbázist a PowerShell használatával
+### <a name="create-new-serverless-database-using-powershell"></a>Hozzon létre új, kiszolgáló nélküli adatbázis PowerShell-lel
 
 Az alábbi példa létrehoz egy új adatbázist a kiszolgáló nélküli számítási rétegben határozzák meg az alapértelmezett értékekkel, a min virtuális maggal és autopause késedelem nevű GP_S_Gen5_4 szolgáltatási célt.
 
@@ -190,7 +190,7 @@ New-AzSqlDatabase `
   -AutoPauseDelay 720
 ```
 
-### <a name="move-existing-database-into-the-serverless-compute-tier"></a>A kiszolgáló nélküli számítási kapacitás helyezhetik át meglévő adatbázis
+### <a name="move-provisioned-compute-database-into-serverless-compute-tier"></a>Helyezze át a kiépített számítási adatbázis, kiszolgáló nélküli számítási kapacitás
 
 Az alábbi példa áthelyez egy meglévő önálló adatbázis a kiépített számítási kapacitás az a kiszolgáló nélküli számítási kapacitás. Ebben a példában explicit módon megadja a minimális virtuális magok maximális virtuális maggal és autopause késleltetés.
 
@@ -207,11 +207,11 @@ Set-AzSqlDatabase
   -AutoPauseDelay 1440
 ```
 
-### <a name="move-a-database-out-of-the-serverless-compute-tier"></a>Ki a kiszolgáló nélküli számítási kapacitás-adatbázis áthelyezése
+### <a name="move-serverless-database-into-provisioned-compute-tier"></a>Kiszolgáló nélküli adatbázis helyezhetik üzembe helyezett számítási kapacitás
 
 Egy kiszolgáló nélküli adatbázis ugyanúgy, mint a kiépített számítási adatbázis áthelyezése egy kiszolgáló nélküli számítási kapacitás, a mozgathatók a kiépített számítási kapacitás.
 
-## <a name="modify-serverless-configuration-parameters"></a>Kiszolgáló nélküli konfigurációs paraméterek módosítása
+## <a name="modifying-serverless-configuration"></a>Kiszolgáló nélküli konfigurációjának módosítása
 
 ### <a name="maximum-vcores"></a>Virtuális magok maximális száma
 
@@ -225,7 +225,7 @@ A minimális virtuális magok módosítása használatával történik a [Set-Az
 
 Autopause késleltetési idő módosítása használatával történik a [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) parancsot a PowerShell használatával a `AutoPauseDelay` argumentum.
 
-## <a name="monitor-serverless-database"></a>Kiszolgáló nélküli adatbázis figyelése
+## <a name="monitoring"></a>Figyelés
 
 ### <a name="resources-used-and-billed"></a>Erőforrások használják, és a számlázás
 
@@ -237,20 +237,20 @@ Az alkalmazáscsomag a külső a legtöbb erőforrást felügyeleti határ egy a
 
 #### <a name="user-resource-pool"></a>Felhasználói erőforráskészlethez
 
-A felhasználói erőforráskészlethez van a belső egy adatbázist, függetlenül attól, hogy az adatbázis a kiszolgáló nélküli vagy kiépített számítási szinten a legtöbb erőforrást felügyeleti határt. A felhasználói erőforráskészlethez hatókörök Processzor- és i/o DDL-lekérdezések (például CREATE, ALTER, stb.) és a DML-lekérdezések (például, SELECT, INSERT, UPDATE, DELETE, stb.) által létrehozott felhasználó számítási feladatokhoz. Ezek a lekérdezések általában kihasználtsági belül az alkalmazáscsomag legtöbb jelentős hányadát képviselik.
+A felhasználói erőforráskészlethez van a belső egy adatbázist, függetlenül attól, hogy az adatbázis a kiszolgáló nélküli vagy kiépített számítási szinten a legtöbb erőforrást felügyeleti határt. A felhasználói erőforrás készlet hatókörök Processzor- és IO: felhasználómennyiség kiszolgálására alkalmasak például a létrehozás és ALTER és DML lekérdezések DDL-lekérdezések által generált például válassza ki, BESZÚRÁSA, frissítése és törlése. Ezek a lekérdezések általában kihasználtsági belül az alkalmazáscsomag legtöbb jelentős hányadát képviselik.
 
 ### <a name="metrics"></a>Mérőszámok
 
-|Entitás|Metrika|Leírás|Mértékegységek|
+|Entitás|Metrika|Leírás|Egység|
 |---|---|---|---|
-|Alkalmazáscsomag|app_cpu_percent|Virtuális magra jogosult, használja az alkalmazás az alkalmazás számára engedélyezett maximális virtuális magok viszonyított aránya.|Százalék|
+|Alkalmazáscsomag|app_cpu_percent|Virtuális magra jogosult, használja az alkalmazás az alkalmazás számára engedélyezett maximális virtuális magok viszonyított aránya.|Százalékos aránya|
 |Alkalmazáscsomag|app_cpu_billed|A compute használatáért kell az alkalmazást a jelentési időszak során mennyisége. Ebben az időszakban fizetett összeg, amely az Ez a mérőszám és a virtuális mag egységár. <br><br>Ez a metrika az értékeket határozza meg a CPU maximális használt idővel összesíti, és a másodpercenként felhasznált memória. Ha a felhasznált mennyiség kisebb, mint a beállított kiépítette a min virtuális maggal és a minimális memória minimális mérete, kiépített minimálisan történik. Annak érdekében, hogy a számlázási célból memória összehasonlítás CPU, memória van normalizált egységekbe a virtuális magok által a memória mennyiségét rescaling 3 GB-tal GB / virtuális mag.|virtuális mag másodperc|
-|Alkalmazáscsomag|app_memory_percent|Az alkalmazás számára engedélyezett maximális memória képest relatív az alkalmazás által használt memória aránya.|Százalék|
-|Felhasználó-készlet|cpu_percent|Felhasználói számítási feladatok számára engedélyezett maximális virtuális magok viszonyított felhasználómennyiség kiszolgálására alkalmasak által használt virtuális magok százalékos értéke.|Százalék|
-|Felhasználó-készlet|data_IO_percent|Százalékos adatok felhasználómennyiség kiszolgálására alkalmasak viszonyított IOPS maximális adatok által használt IOPS engedélyezett felhasználómennyiség kiszolgálására alkalmasak.|Százalék|
-|Felhasználó-készlet|log_IO_percent|Napló százaléka MB/s felhasználómennyiség kiszolgálására alkalmasak viszonyított maximális log MB/s által használt engedélyezett felhasználómennyiség kiszolgálására alkalmasak.|Százalék|
-|Felhasználó-készlet|workers_percent|Felhasználómennyiség kiszolgálására alkalmasak viszonyított felhasználói számítási feladatok számára engedélyezett maximális dolgozók által használt feldolgozók százalékos értéke.|Százalék|
-|Felhasználó-készlet|sessions_percent|Felhasználómennyiség kiszolgálására alkalmasak viszonyított felhasználói munkaterhelés számára engedélyezett maximális munkamenetek által használt munkamenetek százaléka.|Százalék|
+|Alkalmazáscsomag|app_memory_percent|Az alkalmazás számára engedélyezett maximális memória képest relatív az alkalmazás által használt memória aránya.|Százalékos aránya|
+|Felhasználó-készlet|cpu_percent|Felhasználói számítási feladatok számára engedélyezett maximális virtuális magok viszonyított felhasználómennyiség kiszolgálására alkalmasak által használt virtuális magok százalékos értéke.|Százalékos aránya|
+|Felhasználó-készlet|data_IO_percent|Százalékos adatok felhasználómennyiség kiszolgálására alkalmasak viszonyított IOPS maximális adatok által használt IOPS engedélyezett felhasználómennyiség kiszolgálására alkalmasak.|Százalékos aránya|
+|Felhasználó-készlet|log_IO_percent|Napló százaléka MB/s felhasználómennyiség kiszolgálására alkalmasak viszonyított maximális log MB/s által használt engedélyezett felhasználómennyiség kiszolgálására alkalmasak.|Százalékos aránya|
+|Felhasználó-készlet|workers_percent|Felhasználómennyiség kiszolgálására alkalmasak viszonyított felhasználói számítási feladatok számára engedélyezett maximális dolgozók által használt feldolgozók százalékos értéke.|Százalékos aránya|
+|Felhasználó-készlet|sessions_percent|Felhasználómennyiség kiszolgálására alkalmasak viszonyított felhasználói munkaterhelés számára engedélyezett maximális munkamenetek által használt munkamenetek százaléka.|Százalékos aránya|
 ____
 
 > [!NOTE]
@@ -278,7 +278,7 @@ Erőforráskorlátok, lásd: [kiszolgáló nélküli számítási kapacitás](sq
 
 A számlázás a számítási CPU-kihasználtság és a másodpercenként felhasznált memória. Használt memória a kisebb, mint az egyes üzembe helyezett minimálisan és a Processzor mennyisége használják, majd a kiépített összeg számoljuk fel. Annak érdekében, hogy a számlázási célból memória összehasonlítás CPU, memória van normalizált egységekbe a virtuális magok által a memória mennyiségét rescaling 3 GB-tal GB / virtuális mag.
 
-- **Számlázható erőforrás**: CPU és memória
+- **Számlázható erőforrás**: Processzor és memória
 - **Összeg ($) díjszabása**: virtuális mag egységár * maximális (min virtuális magok, a használt virtuális magok, a minimális memória GB * 1/3 memória GB felhasználva * 1/3) 
 - **A Számlázás gyakorisága**: Másodpercenként
 
@@ -298,10 +298,10 @@ Ebben az esetben az adatbázisban történik számítási és tárolási első 8
 
 Pontosabban a számítási számla ebben a példában a következőképpen alakul:
 
-|Időtartam|a másodpercenként felhasznált virtuális magok|A másodpercenként felhasznált GB|A számlázás dimenzió COMPUTE|Számlázható idő alatt virtuális mag másodperc|
+|Időintervallum|a másodpercenként felhasznált virtuális magok|A másodpercenként felhasznált GB|A számlázás dimenzió COMPUTE|Számlázható idő alatt virtuális mag másodperc|
 |---|---|---|---|---|
 |0:00-1:00|4|9|felhasznált virtuális magok|4 vCores * 3600 seconds = 14400 vCore seconds|
-|1:00-2:00|1.|12|Használt memória|12 Gb * 1/3 * 3600 seconds = 14400 vCore seconds|
+|1:00-2:00|1|12|Használt memória|12 Gb * 1/3 * 3600 seconds = 14400 vCore seconds|
 |2:00-8:00|0|0|Minimális memória kiosztása|3 Gb * 1/3 * 21600 seconds = 21600 vCore seconds|
 |8:00-24:00|0|0|Nincs számítás számlázzuk, míg fel van függesztve|0 virtuális mag másodperc|
 |A számlázás 24 órán át összes virtuális mag másodperc||||másodperc 50400 virtuális mag|
@@ -310,7 +310,7 @@ Tegyük fel, hogy a szolgáltatás $0.000073/vCore/second számítási egység d
 
 ## <a name="available-regions"></a>Elérhető régiók
 
-A kiszolgáló nélküli számítási kapacitás régiót kivéve az alábbi régiókban érhető el: Kelet-ausztráliai közép-India, Kína, Észak-Kína, Dél-Franciaország, közép-India, Németország északkelet-Németország, Nyugat-Indiát, Korea déli régiója, Dél-Afrika nyugati régiója, Egyesült Királyság északi régiója, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója és USA nyugati középső RÉGIÓJA
+A kiszolgáló nélküli számítási kapacitás régiót kivéve az alábbi régiókban érhető el: Kelet-ausztráliai közép-India, Kína, Észak-Kína, Dél-Franciaország, közép-India, Németország északkelet-Németország, Nyugat-Indiát, Korea déli régiója, Dél-Afrika nyugati régiója, Egyesült Királyság északi régiója, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója és USA nyugati középső RÉGIÓJA.
 
 ## <a name="next-steps"></a>További lépések
 

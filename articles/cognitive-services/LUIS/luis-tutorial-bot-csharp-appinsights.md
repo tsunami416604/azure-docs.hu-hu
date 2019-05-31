@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: d546951cf283cf15874b1b6d95da75549a8a93ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56ceb48be9d5cc9d1cdceed7505e2e3e918a7286
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60496768"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399660"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>A LUIS-eredményeket ad hozzá egy robottal az Application InsightsC#
 
-Ez az oktatóanyag hozzáad a LUIS válasz információkat [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv, vagy elemezheti, összesítése, a Power bi és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
+Ez az oktatóanyag hozzáad a LUIS válasz információkat [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv vagy a Power BI segítségével elemezheti, összesítése, és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
 
-A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot.
+A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot. A [Bot keretrendszer 4.x LUIS oktatóanyag](luis-csharp-tutorial-bf-v4.md) is rendelkezésre áll.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -221,7 +221,7 @@ Nyissa meg az Application Insights a LUIS-bejegyzések megtekintéséhez.
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Lekérdezés az Application Insights szándékot, pontszám és utterance (kifejezés)
 
-Az Application Insights lehetővé teszi az adatok lekérdezéséhez a [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) nyelven, valamint exportálási, hogy [Power bi](https://powerbi.microsoft.com).
+Az Application Insights lehetővé teszi az adatok lekérdezéséhez a [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) nyelven, valamint exportálási, hogy [Power BI](https://powerbi.microsoft.com).
 
 1. Kattintson a **Analytics** felső részén a függőség, listázása, fent a Szűrő mezőbe.
 
@@ -243,7 +243,7 @@ Az Application Insights lehetővé teszi az adatok lekérdezéséhez a [Kusto](h
 
     ![Egyéni elemzési jelentés](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
 
-Tudjon meg többet a [Kusto-lekérdezés nyelvi](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) vagy [az adatok exportálása Power bi-bA](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi).
+Tudjon meg többet a [Kusto-lekérdezés nyelvi](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) vagy [exportálja az adatokat a Power bi-bA](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi).
 
 ## <a name="learn-more-about-bot-framework"></a>További tudnivalók a Bot Frameworkről
 

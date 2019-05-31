@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: manayar
-ms.openlocfilehash: 6c271c2c9feb1520951b2a8e301da4878970d60a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
-ms.translationtype: HT
+ms.openlocfilehash: 61430f5a43a04fa0e5b2f0c79ff03419c73aaf28
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66259422"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416548"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Az Azure virtuálisgép-méretezési csoport példány védelmének beállítása instances (előzetes verzió)
 Az Azure virtuális gép méretezési csoportok lehetővé teszik a keresztül a számítási feladatok esetében jobb rugalmasság [automatikus skálázási](virtual-machine-scale-sets-autoscale-overview.md), így megadhatja, ha az infrastruktúra horizontális felskálázást, és mikor skálázását követve rugalmasan méretezhető –. A méretezési csoportok lehetővé teszi, hogy központilag kezelése, konfigurálása és frissíteni a virtuális gépek nagy számú különböző keresztül [frissítési szabályzatának](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) beállításait. Frissítés a méretezési csoport modelljéből lehet konfigurálni, és az új konfigurációt a program automatikusan alkalmazza minden egyes scale set-példány, ha beállította a frissítési szabályzat automatikus vagy működés közbeni.
@@ -30,7 +30,7 @@ Mivel az alkalmazás feldolgozza a forgalmat, előfordulhat olyan helyzetben, am
 Ez a cikk bemutatja, hogyan lehet alkalmazni, és a másik példány védelmi képességek használata a méretezési csoport példányaihoz.
 
 > [!NOTE]
->Példányok védelmének jelenleg nyilvános előzetes verzióban érhető el. Nem vehetnek részt eljárás az alább ismertetett előzetes funkciók használatához szükséges. Példány protection előzetes verziója csak az API-verzió a 2019-03-01-es és újabb esetén támogatott.
+>Példányok védelmének jelenleg nyilvános előzetes verzióban érhető el. Nem vehetnek részt eljárás az alább ismertetett előzetes funkciók használatához szükséges. Példány protection előzetes verziója csak a 2019-03-01-es verziójú API-val és a felügyelt lemezek használata a méretezési csoportok esetén támogatott.
 
 ## <a name="types-of-instance-protection"></a>Példányok védelmének típusai
 Méretezési csoportokhoz kétféle típusú példány védelmi funkciókat biztosítják:

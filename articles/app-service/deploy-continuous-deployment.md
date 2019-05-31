@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: fcb2c270b36d5efbe7b799787cf2a123b51bea5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 384f709bb32f973efec39518eaa895e25136fe23
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765704"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390638"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Folyamatos üzembe helyezés az Azure App Service-ben
 Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos üzembe helyezés [Azure App Service](overview.md). Az App Service lehetővé teszi, hogy a BitBucket, GitHub, a folyamatos üzembe helyezés és [Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/team-services/) kiindulásként a a legújabb frissítéseket a meglévő adattárból az egyik szolgáltatásba.
@@ -130,7 +130,7 @@ Az a **konfigurálása** lap a **összeállítása** területén adja meg a nyel
 
 Az a **teszt** lapon, döntse el, hogy engedélyezze a terhelési teszteket, majd kattintson a **Folytatás**.
 
-Attól függően, a [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/plans/) az App Service-csomag is megjelenhetnek egy **üzembe helyezés átmeneti környezetbe** lapot. Válassza ki, hogy e [üzembe helyezési pontok engedélyezése](deploy-staging-slots.md), majd kattintson **Folytatás**. 
+Attól függően, a [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/plans/) az App Service-csomag is megjelenhetnek egy **üzembe helyezés átmeneti környezetbe** lapot. Válassza ki, hogy e [üzembe helyezési pontok engedélyezése](deploy-staging-slots.md), majd kattintson **Folytatás**. Fejlesztési és üzemeltetési nem teszi lehetővé a folyamatos készregyártás az éles webalkalmazásra. Ez a rendszer kialakításából fakad, véletlen központi telepítése éles környezetbe. Kell egy előkészítési ponton történő folyamatos készregyártás beállítása, ott a módosítások ellenőrzéséhez és a pontok cseréje, amikor készen áll.
 
 ### <a name="finish-configuration"></a>Konfiguráció befejezéséhez
 

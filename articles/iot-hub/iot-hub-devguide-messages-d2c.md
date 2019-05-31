@@ -6,14 +6,14 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: fddea12d4c6b7d09d87174d29c645ef6da54af6f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 094641baaa1472b481140072cd5d3d35d27d5ed7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917427"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390524"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Használja az IoT Hub üzenet-útválasztása eszköz – felhő üzeneteket küldeni a különböző végpontok
 
@@ -39,7 +39,7 @@ Használhat standard [Event Hubs-integráción és SDK-k](iot-hub-devguide-messa
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-IoT Hub által támogatott írja az adatokat az Azure Blob Storage-ban a [Apache Avro](https://avro.apache.org/) és JSON-formátumban. A szolgáltatás JSON formátumban kódolása előzetes verzióként érhető minden IoT Hub érhető el, kivéve az USA keleti RÉGIÓJA, USA nyugati Régiójában és Nyugat-európai régióban. Az alapértelmezett érték az avro-hoz. A kódolási formátum csak állítható, ha a blob storage-végpont konfigurálva van. A formátum nem szerkeszthető egy meglévő végpontot. JSON-kódolás használatakor be kell a contentType JSON-ra, az üzenetben UTF-8 contentEncoding [Rendszertulajdonságok](iot-hub-devguide-routing-query-syntax.md#system-properties). A kódolási formátum használatával az IoT Hub létrehozása vagy frissítése – REST API-t, kifejezetten választhatja a [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), az Azure Portal [Azure CLI-vel](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest) vagy a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). A következő ábra bemutatja az Azure Portalon válassza ki a kódolási formátum.
+IoT Hub által támogatott írja az adatokat az Azure Blob Storage-ban a [Apache Avro](https://avro.apache.org/) formátumban is hasonlóan JSON formátumban. A funkció kódolása a JSON-formátumban szolgáltatás általánosan elérhető az összes olyan régióban, ahol az IoT Hub érhető el. Az alapértelmezett érték az avro-hoz. A kódolási formátum csak állítható, ha a blob storage-végpont konfigurálva van. A formátum nem szerkeszthető egy meglévő végpontot. JSON-kódolás használatakor be kell a contentType JSON-ra, az üzenetben UTF-8 contentEncoding [Rendszertulajdonságok](iot-hub-devguide-routing-query-syntax.md#system-properties). Ha nincs beállítva, majd az IoT Hub ír üzeneteket base 64 kódolású formátumban. A kódolási formátum használatával az IoT Hub létrehozása vagy frissítése – REST API-t, kifejezetten választhatja a [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), az Azure Portalon [Azure CLI-vel](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest), vagy a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). A következő ábra bemutatja az Azure Portalon válassza ki a kódolási formátum.
 
 ![A BLOB storage endpoint kódolás](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -95,9 +95,9 @@ Az alábbi oktatóanyagok segítségével megismerheti, hogyan végpontról val�
 
 ## <a name="fallback-route"></a>Tartalék útvonal
 
-A tartalék útvonal az üzeneteket, amelyek nem felelnek meg a meglévő útvonalakat a beépített Event Hubs valamelyik lekérdezési feltételek küldi (**üzenetek/események**), azaz kompatibilis [az Event Hubs](/azure/event-hubs/). Üzenet-útválasztása be van kapcsolva, ha a tartalék útvonal funkció engedélyezheti. Útvonal létrehozása után adatok leállítja halad a beépített-az-végpont, kivéve, ha az adott végpontra hozzon létre egy útvonalat. Ha nem léteznek útvonalak a beépített-az-végponthoz, és a egy tartalék útvonalat engedélyezve van, csak az útvonalakra lekérdezési feltételek nem egyező üzeneteket küld a beépített-az-végpontra. Ezenkívül az összes meglévő útvonal törlése, ha tartalék útvonal engedélyezni kell a beépített-az-végpont összes adatok fogadására. 
+A tartalék útvonal az üzeneteket, amelyek nem felelnek meg a meglévő útvonalakat a beépített Event Hubs valamelyik lekérdezési feltételek küldi (**üzenetek/események**), azaz kompatibilis [az Event Hubs](/azure/event-hubs/). Üzenet-útválasztása be van kapcsolva, ha a tartalék útvonal funkció engedélyezheti. Útvonal létrehozása után adatok leállítja halad a beépített-az-végpont, kivéve, ha az adott végpontra hozzon létre egy útvonalat. Ha nem léteznek útvonalak a beépített-az-végponthoz, és a egy tartalék útvonalat engedélyezve van, csak az útvonalakra lekérdezési feltételek nem egyező üzeneteket küld a beépített-az-végpontra. Ezenkívül az összes meglévő útvonal törlése, ha tartalék útvonal engedélyezni kell a beépített-az-végpont összes adatok fogadására.
 
-Engedélyezheti vagy letilthatja a tartalék útvonal az Azure Portal -> üzenet-útválasztása panelen. Használhatja az Azure Resource Manager- [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) tartalék útvonalak egyéni végpontok használata.
+Engedélyezi/letiltja a tartalék útvonal az Azure Portalon is üzenet-útválasztása blade ->. Használhatja az Azure Resource Manager- [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) tartalék útvonalak egyéni végpontok használata.
 
 ## <a name="non-telemetry-events"></a>Nem-telemetria-eseményeinek
 
@@ -107,7 +107,7 @@ Eszköztelemetria, mellett üzenet-útválasztással is lehetővé teszi a küld
 
 ## <a name="testing-routes"></a>Útvonal tesztelése
 
-Hozzon létre egy új útvonalat, vagy szerkesztheti a meglévő útvonalat, amikor az útválasztási lekérdezés minta üzenetet kell tesztelni. Egyéni útvonalak tesztelése, vagy egyszerre az összes útvonal tesztelése, és nincsenek üzenetek a végpontok legyenek átirányítva a vizsgálat során. Az Azure Portal, Azure Resource Manager, az Azure PowerShell és Azure parancssori felület teszteléséhez használható. Eredmények érdekében adja meg, hogy a minta üzenet egyezik a lekérdezés, üzenet nem egyezik meg a lekérdezés vagy teszt nem sikerült futtatni, mert a minta üzenet vagy a lekérdezés szintaxisa helytelen. További tudnivalókért lásd: [vizsgálati útvonal](/rest/api/iothub/iothubresource/testroute) és [összes útvonal tesztelése](/rest/api/iothub/iothubresource/testallroutes).
+Hozzon létre egy új útvonalat, vagy szerkesztheti a meglévő útvonalat, amikor az útválasztási lekérdezés minta üzenetet kell tesztelni. Egyéni útvonalak tesztelése, vagy egyszerre az összes útvonal tesztelése, és nincsenek üzenetek a végpontok legyenek átirányítva a vizsgálat során. Az Azure portal, Azure Resource Manager, az Azure PowerShell és Azure parancssori felület teszteléséhez használható. Eredmények érdekében adja meg, hogy a minta üzenet egyezik a lekérdezés, üzenet nem egyezik meg a lekérdezés vagy teszt nem sikerült futtatni, mert a minta üzenet vagy a lekérdezés szintaxisa helytelen. További tudnivalókért lásd: [vizsgálati útvonal](/rest/api/iothub/iothubresource/testroute) és [összes útvonal tesztelése](/rest/api/iothub/iothubresource/testallroutes).
 
 ## <a name="latency"></a>Késés
 
@@ -117,11 +117,11 @@ A legtöbb esetben az átlagos késés növekedése kevesebb, mint 500 ms. Figye
 
 ## <a name="monitoring-and-troubleshooting"></a>Megfigyelés és hibaelhárítás
 
-IoT Hub által biztosított több útválasztási, és a végpont kapcsolódó metrikák, hogy a hub és elküldött üzenetek állapotának áttekintése. Több metrika azonosíthatja a problémák kiváltó információkat kombinálhatók. Például használja a metrikát **útválasztás: eldobott telemetriai üzeneteket** vagy **d2c.telemetry.egress.dropped** azonosításához, amelyek el lettek dobva, amikor azok az útvonalak valamelyik lekérdezések nem egyeztek üzenetek száma és a tartalék útvonal le lett tiltva. [Az IoT Hub-metrikák](iot-hub-metrics.md) felsorolja az összes metrikát, amely az IoT hub alapértelmezés szerint engedélyezve vannak.
+IoT Hub által biztosított számos, az Útválasztás és a végpontok, hogy a hub és az elküldött üzenetek áttekintést kapcsolatos metrikákat. Több metrika azonosíthatja a problémák kiváltó információkat kombinálhatók. Például használja a metrikát **útválasztás: eldobott telemetriai üzeneteket** vagy **d2c.telemetry.egress.dropped** azonosításához, amelyek el lettek dobva, amikor azok az útvonalak valamelyik lekérdezések nem egyeztek üzenetek száma és a tartalék útvonal le lett tiltva. [Az IoT Hub-metrikák](iot-hub-metrics.md) felsorolja az összes metrikát, amely az IoT hub alapértelmezés szerint engedélyezve vannak.
 
 A REST API-hoz [végpont állapotának lekérése](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) beolvasni [állapot](iot-hub-devguide-endpoints.md#custom-endpoints) a végpontok. Javasoljuk, hogy használja a [az IoT Hub-metrikák](iot-hub-metrics.md) útválasztási üzenet késése alapján azonosíthatja és elháríthatja a hibákat, amikor végpontonkénti állapotot kézbesíthetetlen vagy nem megfelelő állapotú kapcsolódó. Ha például az Event Hubs típusú végpont, figyelheti **d2c.endpoints.latency.eventHubs**. Nem megfelelő állapotú végpont állapota kifogástalanra frissül, az IoT Hub állapotának egy végül konzisztens állapotba létrejöttekor.
 
-Használatával a **útvonalak** diagnosztikai naplók az Azure Monitor [diagnosztikai beállítások](../iot-hub/iot-hub-monitor-resource-health.md), akkor is, például az IoT Hub, által érzékelt egy útválasztási lekérdezés és a végpont állapotának kiértékelése során felmerülő hibák nyomon követi Ha a végpont nem működik. Ezek a diagnosztikai naplók küldhetők az Azure Monitor naplók, az Event Hubs vagy Azure Storage egyéni feldolgozáshoz.
+Használatával a **útvonalak** diagnosztikai naplók az Azure Monitor [diagnosztikai beállítások](../iot-hub/iot-hub-monitor-resource-health.md), nyomon követheti, által érzékelt IoT hubot, például amikor egy útválasztási lekérdezés és a végpont állapotának kiértékelése során felmerülő hibák a végpont nem működik. Ezek a diagnosztikai naplók küldhetők az Azure Monitor naplók, az Event Hubs vagy Azure Storage egyéni feldolgozáshoz.
 
 ## <a name="next-steps"></a>További lépések
 

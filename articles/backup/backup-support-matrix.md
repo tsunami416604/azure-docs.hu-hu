@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 51bd4b935b32bea20d3f5de0b8cda62dfdbf07b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99dd3c0b07307f2d0bf97dbff697e32e648705ae
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60236626"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400177"
 ---
 # <a name="azure-backup-support-matrix"></a>Az Azure Backup támogatási mátrixa
 
@@ -27,7 +27,7 @@ Egyéb támogatási mátrixok érhetők el:
 
 ## <a name="vault-support"></a>Tároló támogatása
 
-Az Azure Backup Recovery Services-tárolók vezényléséhez és a biztonsági másolatok kezelése a használ. Tárolók mentett adatok tárolására is használ. 
+Az Azure Backup Recovery Services-tárolók vezényléséhez és a biztonsági másolatok kezelése a használ. Tárolók mentett adatok tárolására is használ.
 
 A következő táblázat ismerteti a Recovery Services-tárolók jellemzői:
 
@@ -36,8 +36,8 @@ A következő táblázat ismerteti a Recovery Services-tárolók jellemzői:
 **Tárolók az előfizetés** | Legfeljebb 500 Recovery Services-tárolók egyetlen előfizetéssel.
 **Egy tároló gépek** | Legfeljebb 1000 Azure virtuális gépek Ezenkívül egyetlen tárban.<br/><br/> Legfeljebb 50 MABS kiszolgálók Ezenkívül egyetlen tárban lehet regisztrálni.
 **Adatforrások tároló storage-ban** | Maximális 54,400 GB. Az Azure virtuális gép biztonsági mentéseinek nincs korlátozva van.
-**Biztonsági másolatok a tárba** | **Az Azure virtuális gépek:** Naponta egyszer.<br/><br/>**A DPM/MABS által védett gépek:** Naponta kétszer.<br/><br/> **A MARS-ügynök használatával közvetlenül a gépek biztonsági mentése:** Napi három alkalomnál. 
-**Biztonsági másolatok tárolók között** | Biztonsági mentés van egy adott régión belül.<br/><br/> Minden Azure-régióban, amely tartalmazza a készíteni kívánt virtuális gépeket tároló van szüksége. Nem készíthet biztonsági másolatot egy másik régióba. 
+**Biztonsági másolatok a tárba** | **Az Azure virtuális gépek:** Naponta egyszer.<br/><br/>**A DPM/MABS által védett gépek:** Naponta kétszer.<br/><br/> **A MARS-ügynök használatával közvetlenül a gépek biztonsági mentése:** Napi három alkalomnál.
+**Biztonsági másolatok tárolók között** | Biztonsági mentés van egy adott régión belül.<br/><br/> Minden Azure-régióban, amely tartalmazza a készíteni kívánt virtuális gépeket tároló van szüksége. Nem készíthet biztonsági másolatot egy másik régióba.
 **Helyezze át a tárolók** | Is [helyezze át a tárolók](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) előfizetések között, vagy ugyanabban az előfizetésben erőforráscsoportok között.
 **Tárolók közötti adatáthelyezés** | Adatok biztonsági tárolók közötti áthelyezése nem támogatott.
 **Tároló tárolási típus módosítása** | Módosíthatja a tárolóreplikáció típusa (helyileg redundáns tárolás vagy georedundáns tárolást) tároló, mielőtt biztonsági másolatai. Miután a biztonsági mentések fordulnak a tárolóban, a replikáció típusa nem módosítható.
@@ -69,7 +69,7 @@ A következő táblázat ismerteti a Recovery Services-tárolók jellemzői:
 **Gép** | **Milyen biztonsági mentése** | **Hely** | **Szolgáltatások**
 --- | --- | --- | ---
 **Az Azure VM backup Virtuálisgép-bővítmény használatával** | Teljes virtuális gép | Készítsen biztonsági másolatot a tárba. | A bővítmény telepítve van a virtuális gép biztonsági mentésének engedélyezésekor.<br/><br/> Biztonsági mentést naponta egyszer.<br/><br/> App-t támogató biztonsági mentési Windows virtuális gépek; Linux rendszerű virtuális gépek fájlkonzisztens biztonsági mentésre. Alkalmazás-konzisztencia a Linux rendszerű gépek egyéni parancsfájlok segítségével konfigurálhatja.<br/><br/> Virtuális gép vagy lemez visszaállítása.<br/><br/> Nem lehet biztonsági másolatot egy Azure virtuális gép egy helyszíni helyhez.
-**Az Azure VM backup MARS-ügynök használatával** | Fájlok és mappák | Készítsen biztonsági másolatot a tárba. | Napi három alkalomnál készíteni.<br/><br/> Ha szeretne biztonsági másolatot készíteni a teljes virtuális gép helyett meghatározott fájlokat vagy mappákat, a MARS-ügynök futtathatja a Virtuálisgép-bővítmény mellett.
+**Az Azure VM backup MARS-ügynök használatával** | Fájlok, mappák, a rendszer állapota | Készítsen biztonsági másolatot a tárba. | Napi három alkalomnál készíteni.<br/><br/> Ha szeretne biztonsági másolatot készíteni a teljes virtuális gép helyett meghatározott fájlokat vagy mappákat, a MARS-ügynök futtathatja a Virtuálisgép-bővítmény mellett.
 **A DPM Azure virtuális Gépen** | Fájlok, mappák, kötetek, rendszerállapot, az alkalmazásadatok | Készítsen biztonsági másolatot a DPM rendszert futtató Azure virtuális gépek helyi tárba. A DPM majd biztonsági mentést készít a tárba. | Alkalmazás-alkalmazásfüggő pillanatképek.<br/><br/> Biztonsági mentési és helyreállítási teljes részletességgel.<br/><br/> Linux rendszerű virtuális gépek (a Hyper-V vagy VMware) esetében támogatott.<br/><br/> Oracle nem támogatott.
 **Az Azure virtuális Gépet, a MABS** | Fájlok, mappák, kötetek, rendszerállapot, az alkalmazásadatok | Készítsen biztonsági másolatot a MABS futtató Azure virtuális gépek helyi tárba. MABS majd biztonsági mentést készít a tárolóba. | Alkalmazás-alkalmazásfüggő pillanatképek.<br/><br/> Biztonsági mentési és helyreállítási teljes részletességgel.<br/><br/> Linux rendszerű virtuális gépek (a Hyper-V vagy VMware) esetében támogatott.<br/><br/> Oracle nem támogatott.
 
@@ -131,8 +131,8 @@ Backup támogatja a tömörítést, a biztonsági mentési forgalom, a következ
 
 **Gép** | **Tömörítse a MABS és DPM (TCP)** | **A tároló (HTTPS) tömörítése**
 --- | --- | ---
-**Közvetlen biztonsági mentést, a helyi Windows-számítógépek** | NA | ![Igen][green]
-**Virtuálisgép-bővítmény használatával Azure virtuális gépek biztonsági mentése** | NA | NA
+**Közvetlen biztonsági mentést, a helyi Windows-számítógépek** | n/a | ![Igen][green]
+**Virtuálisgép-bővítmény használatával Azure virtuális gépek biztonsági mentése** | n/a | n/a
 **Helyszíni/Azure gépeken MABS/DPM használatával biztonsági mentést** | ![Igen][green] | ![Igen][green]
 
 ## <a name="retention-limits"></a>Adatmegőrzési korlátok

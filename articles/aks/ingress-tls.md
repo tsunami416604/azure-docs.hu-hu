@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/24/2019
 ms.author: iainfou
-ms.openlocfilehash: ae1ef2c51fba9186eb75bfec421fbbb05baa4582
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: ad73b9d84a041f42cfdc3c7f5513bd0d32adf2a0
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956457"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392185"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Hozzon létre egy HTTPS bejövőforgalom-vezérlőt az Azure Kubernetes Service (AKS)
 
@@ -34,7 +34,7 @@ Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre 
 
 Ez a cikk a Helm használatával az NGINX bejövőforgalom-vezérlőt, a tanúsítvány-kezelő és a egy mintául szolgáló webalkalmazás telepítése. Szüksége lesz a Helm belül az AKS-fürt inicializálva, és a tiller valóban szolgáltatásfiók használatával. Győződjön meg arról, hogy a Helm legújabb kiadását használja. Frissítési utasításokért lásd: a [Helm telepítése docs][helm-install]. Konfigurálása és a Helm használatával további információkért lásd: [telepíthet alkalmazásokat a Helm használatával az Azure Kubernetes Service (AKS)][use-helm].
 
-Ez a cikk is szükséges, hogy futnak-e az Azure CLI 2.0.59 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ez a cikk is szükséges, hogy futnak-e az Azure CLI 2.0.64 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="create-an-ingress-controller"></a>Hozzon létre egy bejövőforgalom-vezérlőt
 
@@ -53,7 +53,8 @@ kubectl create namespace ingress-basic
 helm install stable/nginx-ingress \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
-    --set nodeSelector."beta.kubernetes.io/os"=linux
+    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 A telepítés során az Azure nyilvános IP-cím a bejövőforgalom-vezérlőjéhez jön létre. A nyilvános IP-cím statikus-élettartamát a bejövőforgalom-vezérlőjéhez tartozó. Ha törli a bejövőforgalom-vezérlőt, a nyilvános IP-cím hozzárendelése elvész. Ezután hozzon létre egy további bejövőforgalom-vezérlőt, ha egy új nyilvános IP-cím van hozzárendelve. Ha szeretné megőrizni a nyilvános IP-cím használatát, akkor ehelyett [hozzon létre egy statikus nyilvános IP-cím bejövőforgalom-vezérlőjéhez][aks-ingress-static-tls].
@@ -103,7 +104,7 @@ Az RBAC-t fürtben a tanúsítvány-kezelő tartományvezérlő telepítéséhez
 
 ```console
 # Install the CustomResourceDefinition resources separately
-kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.7/deploy/manifests/00-crds.yaml
+kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.8/deploy/manifests/00-crds.yaml
 
 # Create the namespace for cert-manager
 kubectl create namespace cert-manager
@@ -121,7 +122,7 @@ helm repo update
 helm install \
   --name cert-manager \
   --namespace cert-manager \
-  --version v0.7.0 \
+  --version v0.8.0 \
   jetstack/cert-manager
 ```
 
@@ -198,7 +199,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     certmanager.k8s.io/cluster-issuer: letsencrypt-staging
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   tls:
   - hosts:
@@ -208,14 +209,14 @@ spec:
   - host: demo-aks-ingress.eastus.cloudapp.azure.com
     http:
       paths:
-      - path: /
-        backend:
+      - backend:
           serviceName: aks-helloworld
           servicePort: 80
-      - path: /hello-world-two
-        backend:
+        path: /(.*)
+      - backend:
           serviceName: ingress-demo
           servicePort: 80
+        path: /hello-world-two(/|$)(.*)
 ```
 
 Létrehozhatja a bejövő forgalom erőforrás a `kubectl apply -f hello-world-ingress.yaml` parancsot.
@@ -278,7 +279,7 @@ certificate.certmanager.k8s.io/tls-secret-staging created
 
 ## <a name="test-the-ingress-configuration"></a>A konfiguráció teszteléséhez a bejövő forgalom
 
-Például a Kubernetes bejövő tartományvezérlő teljes Tartománynevét egy webböngészőben nyissa meg *https://demo-aks-ingress.eastus.cloudapp.azure.com*.
+Például a Kubernetes bejövő tartományvezérlő teljes Tartománynevét egy webböngészőben nyissa meg *https://demo-aks-ingress.eastus.cloudapp.azure.com* .
 
 Mivel ezek a példák a `letsencrypt-staging`, a böngésző által kiállított SSL-tanúsítvány nem megbízható. Fogadja el a figyelmeztetést, az alkalmazás továbbra is. Ez a tanúsítvány adatait jeleníti meg *hamis LE köztes X1* tanúsítványt most titkosítása. Ez a tanúsítvány hamis azt jelzi, hogy `cert-manager` képesek megfelelően feldolgozni a kérelmet, és a egy tanúsítványt kapott a szolgáltató:
 
@@ -292,7 +293,7 @@ A webböngésző a bemutató alkalmazás látható:
 
 ![Egy példa az alkalmazások](media/ingress/app-one.png)
 
-Most adja hozzá a */hello-world-two* elérési útját a teljes Tartománynevét, például *https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two*. A második bemutató alkalmazás és az egyéni cím jelenik meg:
+Most adja hozzá a */hello-world-two* elérési útját a teljes Tartománynevét, például *https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two* . A második bemutató alkalmazás és az egyéni cím jelenik meg:
 
 ![Példa az alkalmazások két](media/ingress/app-two.png)
 

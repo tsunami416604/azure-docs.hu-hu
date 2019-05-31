@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 6d2ed8ba13fac03a60d9a0730776bc8348876b62
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 5ce838897370430c388d74c3d356497f16efdc8d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153568"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245059"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -146,7 +146,7 @@ Szolgáltatás egyszerűszolgáltatás-alapú Azure AD alkalmazástoken-hiteles�
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Adja meg a szükséges engedélyekkel a szolgáltatásnév** szokásos módon SQL-felhasználók vagy mások számára. Futtassa a következő kódot, vagy a további beállítások [Itt](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
+4. **Adja meg a szükséges engedélyekkel a szolgáltatásnév** szokásos módon SQL-felhasználók vagy mások számára. Futtassa a következő kódot, vagy a további beállítások [Itt](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017). Ha szeretné-e az adatok betöltéséhez, ismerje meg, a PolyBase használatával a [adatbázis engedély szükséges](#required-database-permission).
 
     ```sql
     EXEC sp_addrolemember db_owner, [your application name];
@@ -196,7 +196,7 @@ Felügyelt identitás-hitelesítést használ, kövesse az alábbi lépéseket:
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. **Adja meg a szükséges engedélyekkel a Data Factory a felügyelt identitást** szokásos módon SQL-felhasználók és mások. Futtassa a következő kódot, vagy a további beállítások [Itt](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
+3. **Adja meg a szükséges engedélyekkel a Data Factory a felügyelt identitást** szokásos módon SQL-felhasználók és mások. Futtassa a következő kódot, vagy a további beállítások [Itt](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017). Ha szeretné-e az adatok betöltéséhez, ismerje meg, a PolyBase használatával a [adatbázis engedély szükséges](#required-database-permission).
 
     ```sql
     EXEC sp_addrolemember db_owner, [your Data Factory name];
@@ -227,7 +227,7 @@ Felügyelt identitás-hitelesítést használ, kövesse az alábbi lépéseket:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) cikk. Ez a szakasz az Azure SQL Data Warehouse adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz az Azure SQL Data Warehouse adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
 Másolja az adatokat, vagy az Azure SQL Data Warehouse, hogy a következő tulajdonságok támogatottak:
 
@@ -400,9 +400,9 @@ További információ a PolyBase használatával hatékonyan betöltése az SQL 
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Adatok betöltése az Azure SQL Data Warehouse a PolyBase használatával
 
-Használatával [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) betöltés nagy mennyiségű adat Azure SQL Data Warehouse-ba, a nagy átviteli sebességű hatékony módja. Átviteli sebesség nagyobb nyereség láthatja az alapértelmezett BULKINSERT mechanizmus helyett a PolyBase használatával. Lásd: [teljesítményfigyelési](copy-activity-performance.md#performance-reference) részletes összehasonlítását. A használati esetek, olvassa [1 TB adat betöltése az Azure SQL Data Warehouse-bA](https://docs.microsoft.com/azure/data-factory/v1/data-factory-load-sql-data-warehouse).
+Használatával [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) betöltés nagy mennyiségű adat Azure SQL Data Warehouse-ba, a nagy átviteli sebességű hatékony módja. Átviteli sebesség nagyobb nyereség láthatja az alapértelmezett BULKINSERT mechanizmus helyett a PolyBase használatával. Lásd: [teljesítményfigyelési](copy-activity-performance.md#performance-reference) részletes összehasonlítását. A használati esetek, olvassa [1 TB adat betöltése az Azure SQL Data Warehouse-bA](v1/data-factory-load-sql-data-warehouse.md).
 
-* Ha a forrásadatok **Azure Blob, az Azure Data Lake Storage Gen1 vagy az Azure Data Lake Storage Gen2**, és a **formátuma kompatibilis a PolyBase**, a másolási tevékenység használatával közvetlenül a PolyBase, hogy az Azure meghívása Az SQL Data Warehouse lekérheti az adatokat a forrásból. További információkért lásd:  **[közvetlen másolása a PolyBase használatával](#direct-copy-by-using-polybase)**.
+* Ha a forrásadatok **Azure Blob, az Azure Data Lake Storage Gen1 vagy az Azure Data Lake Storage Gen2**, és a **formátuma kompatibilis a PolyBase**, a másolási tevékenység használatával közvetlenül a PolyBase, hogy az Azure meghívása Az SQL Data Warehouse lekérheti az adatokat a forrásból. További információkért lásd:  **[közvetlen másolása a PolyBase használatával](#direct-copy-by-using-polybase)** .
 * A forrásadattár és formátum a PolyBase által eredetileg nem támogatott, ha a **[szakaszos Másolás a PolyBase használatával](#staged-copy-by-using-polybase)** inkább funkciót. A szakaszos másolás funkciót is, nagyobb átviteli sebességet biztosít. A PolyBase-kompatibilis formátumra alakítja az adatokat automatikusan átalakítja. És az Azure Blob storage-ban tárolja az adatokat. Majd betölti az adatokat az SQL Data Warehouse-bA.
 
 >[!TIP]
@@ -426,7 +426,7 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Fiók kulcsos hitelesítést, felügyelt identitás-hitelesítés |
 
     >[!IMPORTANT]
-    >Ha az Azure Storage-szolgáltatásvégpont van konfigurálva, felügyelt identitás hitelesítést kell használnia. Tekintse meg [hatását a virtuális hálózati Szolgáltatásvégpontok használatával és az Azure storage](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)
+    >Ha az Azure Storage-szolgáltatásvégpont van konfigurálva, felügyelt identitás hitelesítést kell használnia. Tekintse meg [hatását a virtuális hálózati Szolgáltatásvégpontok használatával és az Azure storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)
 
 2. A **Forrás-adatformátum** azonban **Parquet**, **ORC**, vagy **tagolt szöveg**, az alábbi konfigurációkkal:
 

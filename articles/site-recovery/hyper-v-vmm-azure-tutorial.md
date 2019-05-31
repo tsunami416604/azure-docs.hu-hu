@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8c3c9347a027cccfaef6def84bfdc4c83555e98a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 653db1497fcce5981bba7416f073b0330ca2861f
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966487"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66398149"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>A helyszíni Hyper-V virtuális gépek vészhelyreállítása beállítása a VMM-felhőkben az Azure-bA
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Engedélyezze egy virtuális gép replikációját.
 
 > [!NOTE]
-> Az oktatóanyagok bemutatják a legegyszerűbb telepítési út esetén. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes útmutatásért tekintse át a cikkek a **útmutatók** szakaszában a [Site Recovery dokumentációja](https://docs.microsoft.com/en-us/azure/site-recovery).
+> Az oktatóanyagok bemutatják a legegyszerűbb telepítési út esetén. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes útmutatásért tekintse át a cikkek a **útmutatók** szakaszában a [Site Recovery dokumentációja](https://docs.microsoft.com/azure/site-recovery).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -112,7 +112,7 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
 
 ## <a name="set-up-a-replication-policy"></a>Replikációs szabályzat beállítása
 
-1. Válassza ki **infrastruktúra előkészítése** > **replikációs beállítások** > **+ létrehozás és társítás**.
+1. Válassza ki **infrastruktúra előkészítése** > **replikációs beállítások** >  **+ létrehozás és társítás**.
 2. A **Házirend létrehozása és társítása** beállításnál adja meg a szabályzat nevét. Használunk **ContosoReplicationPolicy**.
 3. Hagyja bejelölve az alapértelmezett beállításokat, és válassza ki **OK**.
     - **Másolás gyakorisága** azt jelzi, hogy a kezdeti replikációt követően a különbözeti adatokat fog ötpercenként replikálódnak.
@@ -122,7 +122,7 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
     - **Az Azure-ban tárolt adatok titkosítása** az alapértelmezett értékre van állítva (**ki**), és azt jelzi, hogy inaktív adatok az Azure-ban nem titkosított.
 4. Miután létrehozta a szabályzatot, válassza ki a **OK**. Amikor létrehoz egy új szabályzatot, akkor automatikusan a VMM-felhő társítva.
 
-## <a name="enable-replication"></a>Replikáció engedélyezése
+## <a name="enable-replication"></a>A replikáció engedélyezése
 
 1. A **alkalmazás replikálása**válassza **forrás**.
 2. A **forrás**, válassza ki a VMM-felhőben. Ezután válassza az **OK** lehetőséget.

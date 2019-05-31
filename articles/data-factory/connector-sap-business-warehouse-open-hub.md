@@ -3,22 +3,21 @@ title: Adatok másolása az Azure Data Factory használatával nyissa meg közpo
 description: Megtudhatja, hogyan másolhat adatokat az SAP Business Warehouse (BW) megnyitott központon keresztül támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 03/08/2019
-ms.date: 04/22/2019
-ms.author: v-jay
-ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/08/2019
+ms.author: jingwang
+ms.openlocfilehash: 6fb989632d3165ac5e54e540aae4385fc2258c85
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60848894"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256908"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Adatok másolása az SAP Business warehouse-hoz az Azure Data Factory használatával nyissa meg központon keresztül
 
@@ -30,7 +29,7 @@ SAP Business Warehouse nyílt központon keresztül érkező adatokat másolhatj
 
 Pontosabban az SAP Business Warehouse nyílt Hub összekötő támogatja:
 
-- SAP Business Warehouse **7.01 vagy újabb verzió (a legutóbbi SAP támogatási csomag veremben lévő a 2015 évi. után kiadott)**.
+- SAP Business Warehouse **7.01 vagy újabb verzió (a legutóbbi SAP támogatási csomag veremben lévő a 2015 évi. után kiadott)** .
 - Adatmásolás keresztül nyitva Hub cél helyi táblában, amely alá lehet DSO, InfoCube, MultiProvider, adatforrás, stb.
 - Alapszintű hitelesítés használata az adatok másolását.
 - Csatlakozás az alkalmazáskiszolgáló.
@@ -135,7 +134,7 @@ SAP Business Warehouse nyissa meg Hub társított szolgáltatás a következő t
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Salesforce-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz az SAP BW Open Hub adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
 Adatok másolása a, és az SAP BW Open Hub, állítsa be a type tulajdonság, az adatkészlet **SapOpenHubTable**. A következő tulajdonságok támogatottak.
 
@@ -173,7 +172,7 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="sap-bw-open-hub-as-source"></a>Az SAP BW Open Hub forrásként
 
-Adatok másolása az SAP BW Open Hub, állítsa be a forrás típusaként a másolási tevékenység **SapOpenHubSource**. Noha nem szükséges a másolási tevékenység a további típusspecifikus tulajdonságok **forrás** szakaszban.
+Adatok másolása az SAP BW Open Hub, állítsa be a forrás típusaként a másolási tevékenység **SapOpenHubSource**. Nincsenek további típusspecifikus tulajdonságai, a másolási tevékenység a szükséges **forrás** szakaszban.
 
 **Példa**
 

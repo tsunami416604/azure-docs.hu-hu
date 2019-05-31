@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 6557f3a4129076c1e8708208e5d4e0d4f53dcec3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 377c5088d39821e87412c517540b3190b0a14a00
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741755"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393273"
 ---
 # <a name="import-or-export-configuration-data"></a>Konfigurációs adatok importálása vagy exportálása
 
@@ -29,7 +29,7 @@ Ez a cikk egy útmutatót biztosít az alkalmazás konfigurációs adatok import
 
 Importálása biztosítható konfigurációs egy alkalmazás-konfigurációs adatokat tárolni egy meglévő forrásból, azt manuálisan megadása helyett. Az importálás funkció segítségével az alkalmazás a konfigurációs adattároló vagy összesített adatokat a különböző forrásokból származó adatokat áttelepíteni. Alkalmazás a konfiguráció támogatja a JSON, YAML vagy tulajdonságok fájlból.
 
-Adatok importálása a használatával a [az Azure portal](https://aka.ms/azconfig/portal) vagy a [Azure CLI-vel](./scripts/cli-import.md). Az Azure Portalról kövesse az alábbi lépéseket:
+Adatok importálása a használatával a [az Azure portal](https://portal.azure.com) vagy a [Azure CLI-vel](./scripts/cli-import.md). Az Azure Portalról kövesse az alábbi lépéseket:
 
 1. Keresse meg az alkalmazás a konfigurációs adattároló, és válassza ki **Import/Export**.
 
@@ -53,7 +53,7 @@ Adatok importálása a használatával a [az Azure portal](https://aka.ms/azconf
 
 Exportálás ír egy másik célhelyre Alkalmazáskonfiguráció tárolt konfigurációs adatait. Exportálás funkció segítségével, például egy alkalmazás a konfigurációs adattároló egy fájlba, az üzembe helyezés során az alkalmazás kódjában beágyazott adatok mentéséhez.
 
-Adatok exportálása akár a [az Azure portal](https://aka.ms/azconfig/portal) vagy a [Azure CLI-vel](./scripts/cli-export.md). Az Azure Portalról kövesse az alábbi lépéseket:
+Adatok exportálása akár a [az Azure portal](https://portal.azure.com) vagy a [Azure CLI-vel](./scripts/cli-export.md). Az Azure Portalról kövesse az alábbi lépéseket:
 
 1. Keresse meg az alkalmazás a konfigurációs adattároló, és válassza ki **Import/Export**.
 

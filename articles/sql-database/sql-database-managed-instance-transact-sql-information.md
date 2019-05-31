@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 17609212fcc7620dc0d6d617e7626d12c8bb0592
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 5c8a15aa5198983a56a0238c1bb56f9345d07acc
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65852145"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258594"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -27,6 +27,7 @@ Ez a cikk összefoglalja, és ismerteti a különbségeket a szintaxist és a vi
 - [Biztonsági](#security) tartalmazza a különbségeket [naplózás](#auditing), [tanúsítványok](#certificates), [hitelesítő adatok](#credential), [kriptográfiai szolgáltatókat](#cryptographic-providers), [bejelentkezések és felhasználók](#logins-and-users), és a [Szolgáltatáskulcs és a szolgáltatás főkulcsának](#service-key-and-service-master-key).
 - [Konfigurációs](#configuration) tartalmazza a különbségeket [kiterjesztés puffer](#buffer-pool-extension), [rendezést](#collation), [kompatibilitási szinteken](#compatibility-levels), [adatbázis-tükrözés ](#database-mirroring), [adatbázis-beállítások](#database-options), [SQL Server Agent](#sql-server-agent), és [lehetőségek tábla](#tables).
 - [Funkciók](#functionalities) tartalmaz [TÖMEGES beszúrási vagy OPENROWSET](#bulk-insert--openrowset), [CLR-beli](#clr), [DBCC](#dbcc), [elosztott tranzakciók](#distributed-transactions), [bővített események](#extended-events), [külső kódtáraiban](#external-libraries), [filestream- és FileTable](#filestream-and-filetable), [szemantikai teljes szöveges keresés](#full-text-semantic-search), [csatolt kiszolgálók](#linked-servers), [PolyBase](#polybase), [replikációs](#replication), [VISSZAÁLLÍTÁSA](#restore-statement), [Service Broker](#service-broker), [tárolt eljárások, függvények és eseményindítók](#stored-procedures-functions-and-triggers).
+- [Környezeti beállítások](#Environment) például a virtuális hálózatok és az alhálózati konfigurációt.
 - [Az funkciók eltérő viselkedéssel rendelkező felügyelt példányok](#Changes).
 - [Ideiglenes korlátozásai és ismert problémák](#Issues).
 
@@ -75,7 +76,7 @@ Korlátozások:
 
 Biztonsági másolatok a T-SQL használatával kapcsolatos információkért lásd: [BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
 
-## <a name="security"></a>Biztonsági
+## <a name="security"></a>Biztonság
 
 ### <a name="auditing"></a>Naplózás
 
@@ -276,7 +277,7 @@ További információkért lásd: [ALTER DATABASE](https://docs.microsoft.com/sq
 ### <a name="sql-server-agent"></a>SQL Server Agent
 
 - Az SQL Server Agent-beállítások csak olvashatók. Az eljárás `sp_set_agent_properties` a felügyelt példány nem támogatott. 
-- Feladatok (job)
+- Feladatok
   - T-SQL-feladat lépései támogatottak.
   - A következő replikációs feladatok támogatottak:
     - Replikálásitranzakciónapló-olvasó
@@ -394,7 +395,7 @@ Műveletek
 
 Külső táblák a HDFS- vagy Azure Blob storage-ban a fájlok nem támogatottak a hivatkozás. A PolyBase kapcsolatos információkért lásd: [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
 
-### <a name="replication"></a>Replikálás
+### <a name="replication"></a>Replikáció
 
 Replikáció a felügyelt példány nyilvános előzetes verziója érhető el. A replikációval kapcsolatos további információkért lásd: [SQL Server-replikáció](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
 
@@ -409,7 +410,7 @@ Replikáció a felügyelt példány nyilvános előzetes verziója érhető el. 
 - Nem támogatott szintaxist:
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
-- Adatforrás: 
+- Forrás: 
   - `FROM URL` (Az azure Blob storage) az egyetlen támogatott lehetőség.
   - `FROM DISK`/`TAPE`/ biztonsági mentési eszköz nem támogatott.
   - Biztonságimásolat-készletek nem támogatottak.
@@ -454,6 +455,19 @@ Kereszt-példány service broker nem támogatott:
 - `xp_cmdshell` nem támogatott. Lásd: [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
 - `Extended stored procedures` nem támogatott, mert az tartalmazza `sp_addextendedproc`  és `sp_dropextendedproc`. Lásd: [bővített tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db`, és `sp_detach_db` nem támogatottak. Lásd: [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), és [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
+
+## <a name="Environment"></a>Environmet megkötései
+
+### <a name="subnet"></a>Alhálózat
+- Az alhálózat, a felügyelt példány számára lefoglalt erőforrásokat (például virtuális gépek) nem helyezhető el. Helyezze el ezeket az erőforrásokat más alhálózatokat.
+- Alhálózatot kell rendelkeznie a rendelkezésre álló elegendő számú [IP-címek](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Minimális érték 16, bár javasoljuk, hogy az alhálózat legalább 32 IP-címekkel rendelkeznek.
+- [A Szolgáltatásvégpontok nem rendelhető hozzá a felügyelt példány alhálózatára](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Győződjön meg arról, hogy a szolgáltatás-végpontok lehetőség le van tiltva a virtuális hálózat létrehozásakor.
+- A számát és típusát, amelyek alhálózati elhelyezheti rendelkezik néhány [korlátok és korlátozások](sql-database-managed-instance-resource-limits.md#strategies-for-deploying-mixed-general-purpose-and-business-critical-instances)
+- Van azonban néhány [biztonsági szabályt, amelyek a alkalmazni kell az alhálózaton](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+
+### <a name="vnet"></a>VNET
+- Virtuális hálózatok közötti erőforrás-modellje helyezhető – a virtuális hálózathoz a Klasszikus modell nem támogatott.
+- Egyes szolgáltatások, például az App Service Environment-környezetek, a Logic apps és a felügyelt példány (a georeplikációhoz, tranzakciós replikáció, vagy csatolt kiszolgálók használt) nem érhető felügyelt példányok különböző régiókban, ha az kapcsolják össze, használatával[globális társviszony-létesítés](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Ezen erőforrás ExpressRoute- vagy VNet – VNet virtuális hálózati átjárók keresztül csatlakozhat.
 
 ## <a name="Changes"></a> Viselkedésbeli változások
 

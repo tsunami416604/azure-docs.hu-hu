@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: pvrk
-ms.openlocfilehash: 6280ca55023fc604e70b62cabdc30cca6409d9e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eac7f6ec7ec41d257317d9d2a62f0bacc046dbab
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127802"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400183"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 
@@ -86,7 +86,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 Az Azure Backup ügynök telepítése előtt kell a telepítő letöltött és a jelen van a Windows Server rendszeren. Kérheti, hogy a telepítőt a legújabb verzióját a [Microsoft Download Center](https://aka.ms/azurebackup_agent) vagy a Recovery Services-tároló irányítópult-oldalon. A telepítő például könnyen elérhető helyre mentse * C:\Downloads\*.
 
 Másik megoldásként a PowerShell használatával a letöltési segédprogramja lekérése:
- 
+
  ```powershell
  $MarsAURL = 'https://aka.ms/Azurebackup_Agent'
  $WC = New-Object System.Net.WebClient
@@ -104,7 +104,7 @@ Ez telepíti az ügynököt az összes alapértelmezett beállítást. A telepí
 
 A telepített programok listájának megtekintéséhez, keresse fel a **Vezérlőpult** > **programok** > **programok és szolgáltatások**.
 
-![Ügynök telepítve](./media/backup-client-automation/installed-agent-listing.png)
+![Az ügynök telepítve van](./media/backup-client-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Telepítési beállítások
 
@@ -123,7 +123,7 @@ Az elérhető lehetőségek a következők:
 | / "hely" s: |Az Azure Backup ügynököt a gyorsítótár mappájának elérési útja. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |Jóváhagyja a Microsoft Update |- |
 | /nu |Nem keres frissítéseket telepítésének befejezése után |- |
-| /nap |A Microsoft Azure Recovery Services Agent eltávolítása |- |
+| /d |A Microsoft Azure Recovery Services Agent eltávolítása |- |
 | /pH |Proxy Host Address |- |
 | /po |Gazdagép proxyport száma |- |
 | /pu |Proxy állomás felhasználónév |- |
@@ -139,7 +139,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 
 ```
 
 A Windows Server vagy Windows-ügyfélgép, futtassa a [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) parancsmag regisztrálni a gépet a tárolóval.
-Ez, és más parancsmagok, a biztonsági, az MSONLINE modul, amely a telepítési folyamat részeként hozzáadja a Mars AgentInstaller származnak. 
+Ez, és más parancsmagok, a biztonsági, az MSONLINE modul, amely a telepítési folyamat részeként hozzáadja a Mars AgentInstaller származnak.
 
 Az ügynök telepítőjének nem frissíti a $Env: PSModulePath változó. Ez azt jelenti, hogy modul automatikus – betöltése sikertelen. A probléma megoldásához a következőket teheti:
 
@@ -391,6 +391,32 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
+## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>Rendszerállapotának biztonsági mentése a Windows Server a MABS-ügynök
+
+Ez a szakasz ismerteti a PowerShell-parancsot a MABS ügynök rendszerállapot beállítása
+
+### <a name="schedule"></a>Ütemezés
+```powershell
+$sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
+```
+
+### <a name="retention"></a>Megőrzés
+
+```powershell
+$rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
+```
+
+### <a name="configuring-schedule-and-retention"></a>Ütemezés és megőrzés konfigurálása
+
+```powershell
+New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
+ ```
+
+### <a name="verifying-the-policy"></a>A szabályzat ellenőrzése
+
+```powershell
+Get-OBSystemStatePolicy
+ ```
 
 ### <a name="applying-the-policy"></a>A házirend alkalmazása
 

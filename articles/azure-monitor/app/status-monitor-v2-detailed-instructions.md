@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 3aca64c7b0f1ad04967782cb3349da302db557a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6eca2b47c2362f34415db8b4f335f3089babc58b
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145088"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255881"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>Állapot figyelő v2 részletes utasítások
 
@@ -224,7 +224,7 @@ Amikor tekintse át a fenti utasítások a telepítési szkriptek.
 Az Application Insights SDK-t kell az alkalmazás telemetriai adatokat küldeni a Microsoftnak. Azt javasoljuk, hogy az alkalmazás Proxybeállítások konfigurálása a web.config fájlban. Lásd: [az Application Insights – gyakori kérdések: Proxy csatlakoztatott](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough) további információt.
 
 
-## <a name="enable-monitoring"></a>Figyelés engedélyezése 
+## <a name="enable-monitoring"></a>Monitorozás engedélyezése 
 
 Cmd: `Enable-ApplicationInsightsMonitoring`
 
@@ -239,7 +239,7 @@ Tekintse át a [API-referencia](status-monitor-v2-api-enable-monitoring.md) Ez a
 - [A metrikák áttekintése](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez
 - [Eseményeket és naplókat kereshet](../../azure-monitor/app/diagnostic-search.md) problémák diagnosztizálásához
 - [Elemzések](../../azure-monitor/app/analytics.md) az összetettebb lekérdezésekhez
-- [Irányítópultok létrehozása](../../azure-monitor/app/app-insights-dashboards.md)
+- [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md)
 
  További telemetriai funkciók hozzáadása:
 

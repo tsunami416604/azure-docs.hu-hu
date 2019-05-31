@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: b8205383c25ba04212126e0e6ca1bd44e4efad1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 31403a11e8989cee6a1c166879a0b2f594892704
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768903"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357632"
 ---
 # <a name="show-directions-from-a-to-b"></a>Útvonal megjelenítése A-ból B-be
 
@@ -29,7 +29,7 @@ Ehhez két módja van. Az első lehetőség lekérdezés a [Azure Maps útvonal 
 
 A fenti kód az első kódblokkot egy térkép-objektumot hoz létre, és beállítja a hitelesítési mechanizmus az előfizetési kulcs használatára. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A második kódblokkot létrehoz egy `SubscriptionKeyCredentialPolicy` az előfizetési kulcsot az Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` veszi a `SubscriptionKeyCredential` házirend, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) példány. A `routeURL` egy URL-címet jelöli az Azure Maps [útvonal](https://docs.microsoft.com/rest/api/maps/route) műveleteket.
+A második kódblokkot létrehoz egy `SubscriptionKeyCredentialPolicy` az előfizetési kulcsot az Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` veszi a `SubscriptionKeyCredential` házirend, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) példány. A `routeURL` egy URL-címet jelöli az Azure Maps [útvonal](https://docs.microsoft.com/rest/api/maps/route) műveleteket.
 
 A harmadik kódblokkot hoz létre, és hozzáad egy [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) objektum, melyet a térképen.
 

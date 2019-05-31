@@ -3,25 +3,25 @@ title: Translator Text API BreakSentence metódus
 titlesuffix: Azure Cognitive Services
 description: A Translator Text API BreakSentence módszert használja.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: b2c0fbbfbcd2e3cf71ef85b9d06f2f805698bfd0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 0ecb620757bc58b109747f69eb3b5afe0c56bac4
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797438"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387561"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 
 Azonosítja a jelentésvásznon való elhelyezését egy adott szöveg határokon mondat helyett szerepel.
 
-## <a name="request-url"></a>Lekérdezés URL-címe
+## <a name="request-url"></a>Kérés URL-címe
 
 Küldjön egy `POST` kérelmet:
 
@@ -73,7 +73,7 @@ Kérelemfejlécek a következők:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Kérelem törzse
+## <a name="request-body"></a>A kérés törzse
 
 A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken nevű karakterlánc tulajdonsággal rendelkező JSON-objektum `Text`. Mondat határok az értékét számítja ki a `Text` tulajdonság. A minta egy adott szöveg kérelem törzséhez hasonlóan néz ki:
 
@@ -138,7 +138,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   <th>Leírás</th>
   <tr>
     <td>200</td>
-    <td>Sikeres művelet.</td>
+    <td>Siker.</td>
   </tr>
   <tr>
     <td>400</td>

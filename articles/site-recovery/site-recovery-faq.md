@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 74ccc76ff139cae21e3583b0fea11596f5fd6b62
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: f2d64e0a081ff483be84053c442f48e7d145ca50
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413928"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66396503"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
 Ez a cikk összefoglalja az Azure Site Recovery – gyakori kérdések.</br>
@@ -92,7 +92,7 @@ Nincs a Vészhelyreállítás részletezési külön költség nélkül. Kell d�
 
 
 
-## <a name="security"></a>Biztonsági
+## <a name="security"></a>Biztonság
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>A replikációs adatok el lesznek küldve a Site Recovery szolgáltatáshoz?
 Nem, a Site Recovery nem replikált adatok intercept, de nem rendelkezik a virtuális gépek vagy fizikai kiszolgálókon futó bármilyen információ.
@@ -143,7 +143,7 @@ Vegye figyelembe, hogy fizikai kiszolgálók virtuális gépként fognak futni a
 
 
 
-## <a name="replication"></a>Replikálás
+## <a name="replication"></a>Replikáció
 
 ### <a name="can-i-replicate-over-a-site-to-site-vpn-to-azure"></a>Replikálhatok, az Azure-bA a site-to-site VPN-kapcsolaton keresztül?
 Az Azure Site Recovery replikálja az adatokat egy Azure storage-fiók vagy a felügyelt lemezek, egy nyilvános végpontot keresztül. Replikáció a site-to-site VPN-kapcsolaton keresztül nem. 

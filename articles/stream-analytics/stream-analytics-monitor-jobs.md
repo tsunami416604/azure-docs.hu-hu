@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: eaeb2b4decc7da4caa75cb2af68829b4bf7ce64d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7be57733f9bb5936747c77aa06bde3397eb84fa1
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478895"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302900"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programozott módon létrehozhat egy Stream Analytics-feladat figyelése
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan engedélyezze a monitorozást az egy Stream Analytic
 
 Ez a folyamat megkezdése előtt kell rendelkeznie a következő előfeltételek vonatkoznak:
 
-* A Visual Studio 2017 vagy 2015
+* A Visual Studio 2019 vagy 2015
 * [Az Azure .NET SDK](https://azure.microsoft.com/downloads/) letöltése és telepítése
 * Egy meglévő Stream Analytics-feladat engedélyezve van a figyelést igénylő
 

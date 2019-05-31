@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 30e547759cbafabf5f762f671b09b0cbeea3a44c
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 9750aa924ba4b6e4e5f3a51e5b34531d3fab0a6e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851221"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243299"
 ---
 # <a name="create-a-new-saas-offer"></a>Hozzon létre egy új SaaS-ajánlat
 
@@ -89,11 +89,11 @@ Szoftver-licencelési díjat a havi, ismétlődő hely alapú előfizetés átal
 - Partnereinkről, akik rendelkeznek a a **Piactéri szolgáltatási díj csökkentett** május 2019 június 2020-ig kínál a SaaS-csökkentett tranzakciós díj fog megjelenni. Ebben a forgatókönyvben a Microsoft keresztül számláz az adott 100,00 dollár a szoftver licencét, és a közzétevőhöz $90.00 ki fizet.
 
 > [!NOTE]
-> **Piactéri szolgáltatási díj csökkentett**: Az egyes SaaS kínál, hogy a kereskedelmi Marketplace-en közzétett, Microsoft csökkenti a Piactéri szolgáltatási díj a 20 %-os (a Microsoft kiadói szerződésében leírt) 10 %-át. Ahhoz, hogy az ajánlat ahhoz az ajánlatok legalább egyikének kell jelölt Microsoft IP közös értékesítési kész vagy a közös értékesítési IP előnyt élvez.  Jogosult-e hónapban a csökkentett Piactéri szolgáltatási díj fogadásához legalább öt (5) üzleti nappal minden naptári hónap vége előtt kell teljesülnie.  A csökkentett Piactéri szolgáltatási díj nem vonatkozik a virtuális gépekhez, felügyelt alkalmazásokban vagy a kereskedelmi piactéren keresztül elérhetővé tett bármilyen más termékekkel.  A csökkentett Piactéri szolgáltatási díj csak akkor érhető el licenc eredő díjakat kiszámlázzuk 2019. május 31-ig és 2020. június 30. között a Microsoft által gyűjtött minősített ajánlatokra.  Ezt követően a Piactéri szolgáltatási díj visszatér a szokásos összeg. 
+> **Piactéri szolgáltatási díj csökkentett**: Az egyes SaaS kínál, hogy a kereskedelmi Marketplace-en közzétett, Microsoft csökkenti a Piactéri szolgáltatási díj a 20 %-os (a Microsoft kiadói szerződésében leírt) 10 %-át. Ahhoz, hogy az ajánlat ahhoz az ajánlatok legalább egyikének kell jelölt Microsoft IP közös értékesítési kész vagy a közös értékesítési IP előnyt élvez.  Jogosult-e hónapban a csökkentett Piactéri szolgáltatási díj fogadásához legalább öt (5) üzleti nappal minden naptári hónap vége előtt kell teljesülnie.  A csökkentett Piactéri szolgáltatási díj nem vonatkozik a virtuális gépekhez, felügyelt alkalmazásokban vagy a kereskedelmi piactéren keresztül elérhetővé tett bármilyen más termékekkel.  A csökkentett Piactéri szolgáltatási díj csak akkor érhető el licenc eredő díjakat kiszámlázzuk 2019. május 1. és 2020. június 30. között a Microsoft által gyűjtött minősített ajánlatokra.  Ezt követően a Piactéri szolgáltatási díj visszatér a szokásos összeg. 
 
 |**A Microsoft számlák**|**havonta 100 USD**|
 |:---|:---|
-|A Microsoft fizet 80 %-licenc költségei <br>**Minősített SaaS-alkalmazások Microsoft fizet 90 %-licenc költségei*|80,00 $ / hó <br>*$*/ hónap * 90.00|
+|A Microsoft fizet 80 %-licenc költségei <br>**Minősített SaaS-alkalmazások Microsoft fizet 90 %-licenc költségei*|80,00 $ / hó <br>*$* / hónap * 90.00|
 
 
 #### <a name="csp-program-opt-in"></a>CSP Program vehetnek részt
@@ -112,11 +112,15 @@ Léptesse elő a Microsoft üzleti hozzon létre egy marketplace piactéren. Kiv
 ##### <a name="get-it-now-free"></a>Letöltés most (ingyenes)
 Listázza az ügyfeleknek az ajánlat ingyenes azáltal, hogy egy érvényes URL-CÍMÉT (http vagy https előtaggal kezdődő) ahol elérhetik az alkalmazást.  Például:`https://contoso.com/saas-app`
 
-##### <a name="free-trial"></a>Ingyenes próba
+##### <a name="free-trial"></a>Ingyenes próbaidőszak
 Az ajánlat az ingyenes próbaverziós alapon ügyfelek listázása azáltal, hogy egy érvényes URL-CÍMÉT (http vagy https előtaggal kezdődő) ahol elérhetik az alkalmazást.  Például:`https://contoso.com/trial/saas-app`
 
-##### <a name="contact-me"></a>Kapcsolatfelvétel
+##### <a name="contact-me"></a>Megkeresést kérek
 Csatlakozás a felhasználói kapcsolat felügyeleti (CRM) rendszer összegyűjtéséhez megszerzett elérhetőségi adatait. Az ügyfél az információk megosztása engedélyt kell adnia. Ezen ügyfél adatok az ajánlat neve, azonosító és az ajánlatot, találhatók marketplace forrás küld a CRM-rendszerrel, hogy megfelelően konfigurálta. A CRM konfigurálásával kapcsolatos további információkért lásd: [Connect lead felügyelet](#connect-lead-management). 
+
+## <a name="example-marketplace-offer-listing"></a>Példa Piactéri ajánlat listázása
+
+![Példa a Piactéri ajánlat a megjegyzésekkel listázása](./media/marketplace-offer.svg)
 
 ## <a name="enable-a-test-drive"></a>Egy teszt meghajtó engedélyezése
 
@@ -128,12 +132,12 @@ Tesztverzió engedélyezésével kell adnia egy bemutató környezetben, próbá
 
 ### <a name="type-of-test-drive"></a>Tesztverzió típusa
 
-- **[Az Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)**: A központi telepítési sablont, amely tartalmazza az összes Azure-erőforrást a megoldást alkotó. Ebben a forgatókönyvben igazodó termékek csak Azure-erőforrások használatához.
-- **[Dynamics 365 for Business központi](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)**: A Microsoft üzemelteti, és a meghajtó Tesztszolgáltatás (beleértve a kiépítési és telepítési) fenntart egy központi üzleti vállalatierőforrás-Tervező a rendszer a (pénzügyi, a művelet, ellátási lánc, CRM, stb.).  
-- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)**: A Microsoft üzemelteti, és fenntartja a meghajtó Tesztszolgáltatás (beleértve a kiépítési és telepítési) Customer Engagement rendszerhez (sales, service, projekt szolgáltatás, helyszíni szolgáltatás, stb.).  
-- **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)**: A Microsoft üzemelteti, és fenntartja a meghajtó Tesztszolgáltatás (beleértve a kiépítési és telepítési) a Finance and Operations vállalatierőforrás-tervezési (pénzügyi, műveletek, gyártási, ellátási lánc, stb.), a rendszer a. 
-- **[Logikai alkalmazás](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)**: A központi telepítési sablont, amely magában foglalja az összes összetett megoldások létrehozására szolgáló architektúrák. Egyéni termékek Test Drive az ilyen típusú kell használnia.
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)**: A személyre szabott irányítópult beágyazott hivatkozást. Egy interaktív Power BI vizuális kell használnia a Test Drive az ilyen típusú bemutatásához kívánt termékeket. Fel kell töltenie az itt csak a Power BI embedded URL-CÍMÉT.
+- **[Az Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : A központi telepítési sablont, amely tartalmazza az összes Azure-erőforrást a megoldást alkotó. Ebben a forgatókönyvben igazodó termékek csak Azure-erőforrások használatához.
+- **[Dynamics 365 for Business központi](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : A Microsoft üzemelteti, és a meghajtó Tesztszolgáltatás (beleértve a kiépítési és telepítési) fenntart egy központi üzleti vállalatierőforrás-Tervező a rendszer a (pénzügyi, a művelet, ellátási lánc, CRM, stb.).  
+- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : A Microsoft üzemelteti, és fenntartja a meghajtó Tesztszolgáltatás (beleértve a kiépítési és telepítési) Customer Engagement rendszerhez (sales, service, projekt szolgáltatás, helyszíni szolgáltatás, stb.).  
+- **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : A Microsoft üzemelteti, és fenntartja a meghajtó Tesztszolgáltatás (beleértve a kiépítési és telepítési) a Finance and Operations vállalatierőforrás-tervezési (pénzügyi, műveletek, gyártási, ellátási lánc, stb.), a rendszer a. 
+- **[Logikai alkalmazás](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : A központi telepítési sablont, amely magában foglalja az összes összetett megoldások létrehozására szolgáló architektúrák. Egyéni termékek Test Drive az ilyen típusú kell használnia.
+- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : A személyre szabott irányítópult beágyazott hivatkozást. Egy interaktív Power BI vizuális kell használnia a Test Drive az ilyen típusú bemutatásához kívánt termékeket. Fel kell töltenie az itt csak a Power BI embedded URL-CÍMÉT.
 
 #### <a name="additional-test-drive-resources"></a>További vizsgálat meghajtó-erőforrások
 - [Test Drive műszaki ajánlott eljárások](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
@@ -177,7 +181,8 @@ Válassza ki a megfelelő marketplace keresési területre az ajánlat csoportos
 Ez az az AppSource-piactéren a verziószám az előfizetési csomag azonosításához használt választható mező. 
 
 ### <a name="standard-contract"></a>Standard szerződés
-- **Általános szerződési használni?** 
+
+- **Általános szerződési használni?**
 
 Ügyfelei a Beszerzéselemzési megkönnyítik és szoftvergyártók jogi csökkenthető, a Microsoft kínál a szabványos szerződés sablon annak érdekében, hogy egy tranzakciónak a Marketplace-en megkönnyítése érdekében. 
 
@@ -185,7 +190,8 @@ Ahelyett, hogy elvégezte az egyéni használati feltételeket, Azure Marketplac
 
 A standard szintű szerződés itt található: https://go.microsoft.com/fwlink/?linkid=2041178.
 
-##### <a name="terms-of-use"></a>Használati feltételek
+#### <a name="terms-of-use"></a>Használati feltételek
+
 Ha a licencfeltételek különbözik a standard szintű szerződést, választhatja a saját jogi feltételeit itt adja meg. Ez a mező is megadhat a szöveg legfeljebb 10 000 karakternél. Ha a használati feltételek hosszabb leírást, adjon meg egy egyetlen URL-Címhivatkozás ebbe a mezőbe, ahol a további licencfeltételek található. Az ügyfelek számára egy aktív hivatkozásként jelenik meg.
 
 Fogadja el ezeket a feltételeket, mielőtt az alkalmazás próbálkozhatnak ügyfelek szükségesek. 
@@ -193,9 +199,11 @@ Fogadja el ezeket a feltételeket, mielőtt az alkalmazás próbálkozhatnak üg
 Ne felejtse el **mentése** mielőtt a következő szakaszban!
 
 ## <a name="offer-listing"></a>Az ajánlat listázása
+
 Az ajánlati információs lap megjeleníti a nyelv (és piacok) hol érhető el az ajánlatot, angol (Egyesült Államok) jelenleg az egyetlen rendelkezésre álló hely. Ezen a lapon emellett a nyelvspecifikus listázása és a dátum/idő adták állapotát jeleníti meg. Szüksége lesz a piactér-beli részleteit (ajánlat nevét, leírását, keresési kifejezéseket, stb.) meghatározására az egyes nyelvekhez / a piacra jutási időt.
 
 ### <a name="offer-listings"></a>Ajánlati információk
+
 Adja meg a Marketplace-en, beleértve az ajánlat leírásának és marketing-eszközök megjeleníteni kívánt adatokat.
 
 - **Név** (kötelező): Az itt megadott név a kiválasztott marketplace(s) az ajánlati címeként jelenik meg. A név előre feltöltve az előző alapján **új ajánlat** bejegyzés.  Ez előfordulhat, hogy trademarked.  Ez nem tartalmazhat szóközt, hangulatjelek (kivéve, ha azok a védjegy és szerzői jogi szimbólumok), és legfeljebb 50 karakter lehet.
@@ -235,8 +243,7 @@ Ne felejtse el **mentése** mielőtt a következő szakaszban!
 - [Ajánlott eljárások a Piactéri ajánlat listaelemek](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 
-
-## <a name="preview"></a>Előnézet
+## <a name="preview"></a>Előzetes verzió
 
 A **előzetes** lap lehetővé teszi egy korlátozott definiálása **előzetes célközönség** kiadása az ajánlatot a piactéren szélesebb közönség számára az élő ajánlat közzététele előtt.
 
@@ -256,7 +263,7 @@ A **műszaki konfigurációs** lapon határozza meg a technikai részleteket (UR
 
 - **Kezdőlap URL-címe** (kötelező): Adja meg a webhely URL-címet, az ügyfelek felé irányuló az ajánlatot a piactérről beszerzése után megjelenni. Az URL-cím is a végpontot, amely fog kapni a kapcsolat API-k a Microsoft kereskedelmi megkönnyítése érdekében.
 
-- **Kapcsolat webhook** (kötelező): Az összes aszinkron esemény, amelyet a Microsoft küld Önnek a vásárló nevében (például: Azure-előfizetés felment érvénytelen), kérjük, adjon meg egy kapcsolati webhook. Ha még nem rendelkezik egy webhook rendszer helyben, a legegyszerűbb konfiguráció kell egy HTTP végpont logikai alkalmazást, amely minden, az csökkentheti a közzétett események figyelésére és majd kezelni őket megfelelően-e (pl. https://prod-1westus.logic.azure.com:443/work). További információkért lásd: [hívása, eseményindító, vagy HTTP-végpontokat, a logic apps-munkafolyamatok beágyazása](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Kapcsolat webhook** (kötelező): Az összes aszinkron esemény, amelyet a Microsoft küld Önnek a vásárló nevében (például: Azure-előfizetés felment érvénytelen), kérjük, adjon meg egy kapcsolati webhook. Ha még nem rendelkezik egy webhook rendszer helyben, a legegyszerűbb konfiguráció kell egy HTTP végpont logikai alkalmazást, amely minden, az csökkentheti a közzétett események figyelésére és majd kezelni őket megfelelően-e (pl. https:\//prod-1westus.logic.azure.com:443/work). További információkért lásd: [hívása, eseményindító, vagy HTTP-végpontokat, a logic apps-munkafolyamatok beágyazása](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **Azure AD-bérlő azonosítója** (kötelező): Az Azure-portálon belül kérjük, [hozzon létre egy Azure Active Directory (AD) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) egy hitelesített kommunikáció mögött van, hogy a Microsoft ellenőrizheti a kapcsolatot a két szolgáltatás között. Található a [bérlőazonosító](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id), nyissa meg az Azure Active Directoryban, és válassza **tulajdonságok**, majd keresse meg a **címtár-azonosító** száma szerepel (például) 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -270,9 +277,10 @@ A **csomag áttekintése** lap lehetővé teszi számos belül az azonos ajánla
 
 Létrehozása után láthatja a csomag nevével, azonosítók, díjszabási modellekhez, rendelkezésre állás (nyilvános vagy privát) aktuális állapotát, és minden rendelkezésre álló műveletek közzététele.
 
--   **Műveletek** érhető el a **csomag áttekintése** a csomag aktuális állapotától függően eltérőek lehetnek, és előfordulhat, hogy tartalmazzák:
-  - Ha a csomag állapota **Draft** – tervezet törlése
-  - Ha a csomag állapota **élő** – Stop értékesítése a szolgáltatáscsomag vagy a szinkronizálási privát célközönség
+**Műveletek** érhető el a **csomag áttekintése** a csomag aktuális állapotától függően eltérőek lehetnek, és előfordulhat, hogy tartalmazzák:
+
+- Ha a csomag állapota **Draft** – tervezet törlése
+- Ha a csomag állapota **élő** – Stop értékesítése a szolgáltatáscsomag vagy a szinkronizálási privát célközönség
 
 **Hozzon létre új csomagot** (minimális azok számára, akik válassza ki a Microsofttal, hogy egy csomag)
 
@@ -334,7 +342,7 @@ Az árak a közzététel előtt gondosan tekintse meg, a mi egy csomag közzét�
 
 Lehetősége van konfigurálása minden előfizetéssel mindenki számára elérhető, illetve megszakíthatja csak egy adott célközönséget számára láthatóvá tenni. Tagság a korlátozott célközönség Azure AD-bérlő azonosítók használatával rendelhet hozzá.
 
-#### <a name="privacy"></a>Adatvédelem
+#### <a name="privacy"></a>Személyes adatok védelme
 
 - **Ez a privát csomag** (nem kötelező jelölőnégyzet)
 
@@ -351,6 +359,9 @@ SaaS-ajánlatok bérlőazonosítók egy privát célközönség meghatározásá
 > [!NOTE]
 > A privát célközönség (vagy korlátozott közönség) eltér a egy előzetes közönség számára. Az a **[előzetes](#preview)** lapon megadhat egy előzetes közönség számára. Egy előzetes célközönség hozzáférhessen-e az ajánlat *előzetes* élő közzétételét a piactéren az ajánlatra. A privát célközönség megjelölés csak a megadott terven vonatkozik, miközben az előzetes verzió célközönség tekintheti meg minden csomag (privát vagy nem), de csak a korlátozott előzetes verzió időszakában, amíg a terv tesztelve és érvényesítve.
 
+## <a name="example-list-of-plans-within-a-marketplace-offer"></a>A Piactéri ajánlat belül tervek példa listája
+
+![Példa marketplace terv a megjegyzésekkel listázása](./media/marketplace-plan.svg)
 
 ## <a name="test-drive"></a>Próbaüzem
 
@@ -390,7 +401,7 @@ A Microsoft eltávolíthatja a üzemeltetése és karbantartása, a szolgáltat�
 
 - **Példány URL-cím** (kötelező): Az URL-címe, ahol az ügyfél megkezdődik a tesztverziós. Általában a példány URL-címét a Dynamics 365 mintaadatok telepítve van az alkalmazás futtatásához (pl. https://testdrive.crm.dynamics.com).
 
-- **Webes API URL-Címének példány** (kötelező): A Microsoft 365-fiókjába, és ellenőrizheti, hogy a webes API URL-címe, a Dynamics 365-példány beolvasása **beállítások** \&gt; **Testreszabási** \&gt; **Fejlesztői erőforrások** \&gt; **Példány webes API-t (szolgáltatási gyökerének URL)**, másolja az itt található URL-CÍMÉT (pl. https://testdrive.crm.dynamics.com/api/data/v9.0).
+- **Webes API URL-Címének példány** (kötelező): A Microsoft 365-fiókjába, és ellenőrizheti, hogy a webes API URL-címe, a Dynamics 365-példány beolvasása **beállítások** \&gt; **Testreszabási** \&gt; **Fejlesztői erőforrások** \&gt; **Példány webes API-t (szolgáltatási gyökerének URL)** , másolja az itt található URL-CÍMÉT (pl. https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Szerepkör neve** (kötelező): Adja meg a Dynamics 365 egyéni Tesztverzió meghatározott biztonsági szerepkör nevét. Ez rendeli hozzá a felhasználót a tesztverziós (pl. test-drive-szerepkör) alatt.
 
@@ -443,7 +454,7 @@ A **Test Drive listaelemek** lehetőség alatt található a **kipróbálása** 
 - **Videók: Videók hozzáadása** (nem kötelező): Videók feltöltött YouTube vagy Vimeo, és itt hivatkozást és a miniatűr kép (533 x 324 képpont) hivatkozott, hogy az ügyfelek tekintheti meg egy útmutató információkat, amelyekkel jobban megismerheti a test drive, beleértve az a funkciók használatához a kínálnak, így megismerheti a forgatókönyvek, amelyek kiemelnek előnyeiket.
   - **Név** (kötelező)
   - **URL-címe (YouTube vagy Vimeo csak)** (kötelező)
-  - **Miniatűr (533 x 324px)**: Képfájl PNG formátumúnak kell lennie.
+  - **Miniatűr (533 x 324px)** : Képfájl PNG formátumúnak kell lennie.
 
 Válassza ki **mentése** ezek a mezők befejezése után.
 

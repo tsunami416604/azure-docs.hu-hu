@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan állíthatja be a kiosztott átviteli sebesség
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 05/28/2019
 ms.author: rimman
-ms.openlocfilehash: 598a1562127a67c78f67cdd02b00d83d4a606739
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: f30155c0fbdbdd93ab4ffc3ae85ef2ad62b188c9
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953555"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389249"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Átviteli sebesség kiosztása tárolókra és adatbázisokra
 
@@ -71,8 +71,7 @@ A következő kép bemutatja, hogyan fizikai partíciók egy vagy több logikai 
 A két modell kombinálhatók. Az adatbázis és a tároló üzembe helyezési átviteli használata engedélyezett. Az alábbi példa bemutatja, hogyan helyezhet üzembe egy Azure Cosmos database és a egy tárolót az átviteli sebesség:
 
 * Létrehozhat egy Azure Cosmos database nevű *Z* az átviteli sebesség *"K"* RUs. 
-* Ezután hozzon létre öt tárolók nevű *A*, *B*, *C*, *D*, és *E* az adatbázison belül.
-* Explicit módon konfigurálható *"P"* nevű tárolót a kiosztott átviteli sebesség a RUs *B*.
+* Ezután hozzon létre öt tárolók nevű *A*, *B*, *C*, *D*, és *E* az adatbázison belül. B tároló létrehozásakor ügyeljen arra, hogy engedélyezze **a tároló üzembe helyezése a dedikált átviteli** lehetőséget, és konkrétan konfigurálniuk *"P"* RUs az ebben a tárolóban kiosztott átviteli sebességet. Vegye figyelembe, hogy közös vagy dedikált átviteli sebességet konfigurálhatja, csak akkor, ha az adatbázis és a tároló létrehozása. 
 * A *"K"* fenntartott átviteli sebesség közösen használja a négy tárolók *A*, *C*, *D*, és *E*. Az elérhető átviteli sebesség pontos mennyisége *A*, *C*, *D*, vagy *E* változik. Nincsenek nem SLA-k minden egyes tároló átviteli sebességet.
 * A tároló nevű *B* első garantáltan a *"P"* fenntartott átviteli sebesség folyamatosan. SLA-k alapját.
 

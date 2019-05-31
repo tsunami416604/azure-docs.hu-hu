@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 10af40a1f671d5871204ff465395c8c3619671f7
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 4df65819256e6a81a07927d463d130fbfdf9317a
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232485"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255009"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Biztonsági mentése és helyreállítása Azure virtuális gépeken a PowerShell-lel
 
@@ -159,7 +159,7 @@ Set-AzRecoveryServicesBackupProperty -Vault $vault -BackupStorageRedundancy GeoR
 
 Helyreállítási tár létrehozásakor a tár alapértelmezett védelmi és megőrzési szabályzatokkal rendelkezik. Az alapértelmezett védelmi szabályzat naponta egyszer, adott időben aktivál egy biztonsági mentési feladatot. Az alapértelmezett megőrzési szabályzat 30 napig őrzi meg a napi helyreállítási pontokat. Az alapértelmezett házirend segítségével gyorsan biztosíthatja virtuális GÉPE védelmét, és később eltérő adatokkal a szabályzat szerkesztéséhez.
 
-Használata **[Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) a tárolóban elérhető az alkalmazásvédelmi szabályzatok megtekintéséhez. Használhatja ezt a parancsmagot egy adott szabályzatot, vagy egy számításifeladat-típust rendelt házirendek megtekintéséhez. Az alábbi példa lekéri a számításifeladat-típust, AzureVM szabályzatokat.
+Használat **[Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy)** a tárolóban elérhető az alkalmazásvédelmi szabályzatok megtekintéséhez. Használhatja ezt a parancsmagot egy adott szabályzatot, vagy egy számításifeladat-típust rendelt házirendek megtekintéséhez. Az alábbi példa lekéri a számításifeladat-típust, AzureVM szabályzatokat.
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
@@ -230,7 +230,7 @@ $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"
 ```
 
-A védelem engedélyezése a **titkosított virtuális gépek (rendelkeznek BEk-KEL csak használatával titkosított)**, meg kell adni az Azure Backup szolgáltatás engedély a kulcstartóban található titkos kódok olvasását.
+A védelem engedélyezése a **titkosított virtuális gépek (rendelkeznek BEk-KEL csak használatával titkosított)** , meg kell adni az Azure Backup szolgáltatás engedély a kulcstartóban található titkos kódok olvasását.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName "KeyVaultName" -ResourceGroupName "RGNameOfKeyVault" -PermissionsToSecrets backup,get,list -ServicePrincipalName 262044b1-e2ce-469f-a196-69ab7ada62d3
@@ -361,7 +361,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -Workl
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>biztonsági mentési adatok törlése
+#### <a name="delete-backup-data"></a>Biztonsági mentési adatok törlése
 
 Annak érdekében, hogy teljesen eltávolítja a tárolt biztonsági mentési adatok a tárolóban, adja hozzá a "-jelző RemoveRecoveryPoints' kapcsolót, a ["letiltása"alkalmazásvédelmi parancs](#retain-data).
 
@@ -400,7 +400,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
 ```
 
-### <a name="choose-a-recovery-point"></a>Válasszon helyreállítási pontot
+### <a name="choose-a-recovery-point"></a>Válassza ki a helyreállítási pont létrehozása
 
 Használja a [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) parancsmag használatával listázhatja a biztonságimásolat-elem tartozó összes helyreállítási pontot. Ezután válassza ki a helyreállítási pontot a visszaállításhoz. Ha biztos abban, hogy melyik helyreállítási pontot, tanácsos válassza ki a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
 
@@ -726,7 +726,7 @@ A lemezek visszaállítását, valamint egy Azure virtuális gépek biztonsági 
 A fájl biztonsági másolatból történő visszaállítását egy Azure virtuális gép alapvető lépések a következők:
 
 * Válassza ki a virtuális Gépet
-* Válasszon helyreállítási pontot
+* Válassza ki a helyreállítási pont létrehozása
 * Helyreállítási pont található lemezeket
 * Másolja a szükséges fájlokat
 * A lemez leválasztása
@@ -740,7 +740,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
 ```
 
-### <a name="choose-a-recovery-point"></a>Válasszon helyreállítási pontot
+### <a name="choose-a-recovery-point"></a>Válassza ki a helyreállítási pont létrehozása
 
 Használja a [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) parancsmag használatával listázhatja a biztonságimásolat-elem tartozó összes helyreállítási pontot. Ezután válassza ki a helyreállítási pontot a visszaállításhoz. Ha biztos abban, hogy melyik helyreállítási pontot, tanácsos válassza ki a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
 

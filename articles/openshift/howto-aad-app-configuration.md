@@ -1,20 +1,20 @@
 ---
 title: Az Azure Red Hat OpenShift az Azure Active Directory-integráció |} A Microsoft Docs
 description: Ismerje meg, hogyan hozhat létre egy Azure AD biztonsági csoport és a felhasználó a Microsoft Azure Red Hat OpenShift fürtön lévő alkalmazások teszteléséhez.
-author: tylermsft
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 ms.service: openshift
 manager: jeconnoc
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: f6b87748c33c1afd047ae25dfb7df3670a73e7c8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: adc5a601a04936a376d7c69b26c2429940ebdf6e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779683"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306472"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Az Azure Red Hat OpenShift az Azure Active Directory-integráció
 
@@ -69,7 +69,7 @@ Ha a szervezete még nem rendelkezik egy Azure Active Directory (Azure AD) alkal
 2. Az a **alkalmazás regisztrálása** panelen adjon meg egy nevet az alkalmazás regisztrációja.
 3. Ügyeljen arra, hogy a **támogatott fióktípusok** , amely **fiókok csak a szervezeti könyvtárban található** van kiválasztva. Ez a legbiztonságosabb lehetőség.
 4. Hozzáadjuk átirányítási URI-t később, miután tudjuk, hogy a fürt URI azonosítója. Kattintson a **regisztrálása** gombra az Azure AD-alkalmazás regisztrációjának létrehozásához.
-5. A megjelenő lapon másolja le a **Alkalmazásazonosítót (ügyfél)**. Ezt az értéket hivatkozni fogunk `APPID` a a [hozzon létre egy Azure Red Hat OpenShift fürtöt](tutorial-create-cluster.md) oktatóanyag.
+5. A megjelenő lapon másolja le a **Alkalmazásazonosítót (ügyfél)** . Ezt az értéket hivatkozni fogunk `APPID` a a [hozzon létre egy Azure Red Hat OpenShift fürtöt](tutorial-create-cluster.md) oktatóanyag.
 
 ![Alkalmazás objektum oldalát bemutató képernyőkép](./media/howto-create-tenant/get-app-id.png)
 

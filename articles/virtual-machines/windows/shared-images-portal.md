@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: d46c545db9e1950988b49cdb577d074b6d04380c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f63b705f7967eeddaf522941d6db9be5d9f2719d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236597"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244983"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Hozzon létre egy megosztott lemezkép-katalógus az Azure portal használatával
 
@@ -67,6 +67,7 @@ Ez a példa létrehoz egy virtuális gép nevű *myVMfromImage*, a a *myResource
 1. Ha szeretne távoli hozzáférés lehetővé tételéhez a virtuális gép a **nyilvános bejövő portok**, válassza a **lehetővé teszi a kiválasztott portok** , majd **RDP (3389-es)** a legördülő listából. Ha nem szeretné a távoli hozzáférés lehetővé tételéhez a virtuális Gépet, ne **nincs** számára kiválasztott **nyilvános bejövő portok**.
 1. Amikor elkészült, válassza ki a **felülvizsgálat + létrehozása** gombra a lap alján.
 1. Miután a virtuális gép ellenőrzése sikeres, válassza ki **létrehozás** az üzembe helyezés indítása az oldal alján.
+
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

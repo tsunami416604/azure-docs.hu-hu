@@ -3,18 +3,18 @@ title: Az Azure Red Hat OpenShift fejlesztési környezet beállítása |} A Mic
 description: Az alábbiakban a Microsoft Azure Red Hat OpenShift használatának előfeltételei.
 services: openshift
 keywords: Red hat openshift telepítés beállítása
-author: TylerMSFT
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: 6ba7e67620ebfd7ff98c1ba81c7cecb133288be7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f0ef421d7954aa33cf69e7de2f4902a86ed8b580
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962137"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306409"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Az Azure Red Hat OpenShift fejlesztői környezetének beállítása
 
@@ -65,31 +65,43 @@ A szolgáltatók és a szolgáltatások manuálisan kell regisztrálnia, haszná
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
-2. A Microsoft.ContainerService openshiftmanagedcluster funkció regisztrálása:
+1. A Microsoft.ContainerService openshiftmanagedcluster funkció regisztrálása:
 
     ```bash
     az feature register --namespace Microsoft.ContainerService -n openshiftmanagedcluster
     ```
 
-3. A Microsoft.Solutions-szolgáltató regisztrálásához:
+1. A Microsoft.Storage szolgáltató regisztrálásához:
+
+    ```bash
+    az provider register -n Microsoft.Storage --wait
+    ```
+    
+1. A Microsoft.Compute szolgáltató regisztrálásához:
+
+    ```bash
+    az provider register -n Microsoft.Compute --wait
+    ```
+
+1. A Microsoft.Solutions-szolgáltató regisztrálásához:
 
     ```bash
     az provider register -n Microsoft.Solutions --wait
     ```
 
-4. A Microsoft.Network szolgáltató regisztrálásához:
+1. A Microsoft.Network szolgáltató regisztrálásához:
 
     ```bash
     az provider register -n Microsoft.Network --wait
     ```
 
-5. A Microsoft.KeyVault-szolgáltató regisztrálásához:
+1. A Microsoft.KeyVault-szolgáltató regisztrálásához:
 
     ```bash
     az provider register -n Microsoft.KeyVault --wait
     ```
 
-6. A Microsoft.ContainerService erőforrás-szolgáltató regisztrációjának frissítése:
+1. A Microsoft.ContainerService erőforrás-szolgáltató regisztrációjának frissítése:
 
     ```bash
     az provider register -n Microsoft.ContainerService --wait

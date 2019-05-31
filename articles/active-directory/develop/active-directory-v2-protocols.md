@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 05/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 536210922d13f66aaa5a09bd87bd2d92da8d416c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: cfc9c027806cb1a3f65e67eda771894a7250ee67
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546116"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417654"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>A Microsoft identity platform protokollok
 
@@ -48,7 +48,7 @@ A gyakorlatilag az összes OAuth 2.0 és OpenID Connect folyamatok találhatók 
 Minden alkalmazás, amely fogadja el a személyes és munkahelyi vagy iskolai fiókkal szeretne regisztrálni kell keresztül a **alkalmazásregisztrációk** során szerzett tapasztalatok a [az Azure portal](https://aka.ms/appregistrations) előtt, be tud ezek a felhasználók, az OAuth 2.0-val vagy OpenID Connect hitelesítést. Az alkalmazásregisztrációs művelet során összegyűjti, és néhány értéket rendelni az alkalmazást:
 
 * Egy **Alkalmazásazonosító** , amely egyedileg azonosítja az alkalmazást
-* A **átirányítási URI-t** vagy **csomagazonosítót** , amely közvetlen válaszokhoz az alkalmazáshoz használható
+* A **átirányítási URI-t** (nem kötelező), amely használható közvetlen válaszokhoz az alkalmazáshoz
 * Néhány más forgatókönyv-specifikus értékeket.
 
 További részletekért ismerkedjen meg az [alkalmazások regisztrálásának folyamatával](quickstart-register-app.md).
@@ -64,7 +64,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 Ha a `{tenant}` négy különböző értékek valamelyikét hajthatja végre:
 
-| Value | Leírás |
+| Érték | Leírás |
 | --- | --- |
 | `common` | Lehetővé teszi, hogy a személyes Microsoft-fiókok és a munkahelyi vagy iskolai fiókokkal rendelkező felhasználók jelentkezhetnek be az alkalmazás Azure AD-ből. |
 | `organizations` | Lehetővé teszi, hogy csak a munkahelyi vagy iskolai fiókkal rendelkező felhasználók jelentkezhetnek be az alkalmazás Azure AD-ből. |

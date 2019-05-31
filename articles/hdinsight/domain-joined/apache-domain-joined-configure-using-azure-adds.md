@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: b084790bf5a4edfed74dd95a40c11eec26d34dbe
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e1bc99cdc089050fbfa931bbbc7b9a6a316a3a75
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415464"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240175"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>HDInsight-fürt konfigurálása Enterprise Security Package-dzsel az Azure Active Directory Domain Services használatával
 
@@ -31,13 +31,13 @@ Ebből a cikkből elsajátíthatja egy HDInsight-fürt konfigurálása ESP az Az
 >
 > Ha a fürt tároló Azure Blob Storage (WASB), ne tiltsa le az MFA.
 
-Azure ad-Tartományi engedélyezése előfeltétele az ESP használata egy HDInsight-fürt létrehozása előtt. További információkért lásd: [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
+Azure ad-Tartományi engedélyezése előfeltétele az ESP használata egy HDInsight-fürt létrehozása előtt. További információkért lásd: [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](../../active-directory-domain-services/create-instance.md). 
 
 Az Azure AD-Tartományi engedélyezve van, minden felhasználó és objektumok indítsa el az alapértelmezés szerint az Azure AD-Tartományi szinkronizálása az Azure Active Directory (AAD). Az objektumok száma az Azure ad-ben a szinkronizálási műveletet hossza függ. A szinkronizálás eltarthat pár nappal a több száz, több ezer objektumot tartalmaz. 
 
-Kiválaszthatja a szinkronizálni csak azokat a csoportokat, amelyek a HDInsight-fürtökbe való hozzáférésre van szükségük. Ez a beállítás csak bizonyos csoportokat a szinkronizálás nevezzük *szinkronizálás hatóköre*. Lásd: [konfigurálása hatókörrel rendelkező Azure AD-ből a felügyelt tartományhoz való szinkronizálás](../../active-directory-domain-services/active-directory-ds-scoped-synchronization.md) útmutatást.
+Kiválaszthatja a szinkronizálni csak azokat a csoportokat, amelyek a HDInsight-fürtökbe való hozzáférésre van szükségük. Ez a beállítás csak bizonyos csoportokat a szinkronizálás nevezzük *szinkronizálás hatóköre*. Lásd: [konfigurálása hatókörrel rendelkező Azure AD-ből a felügyelt tartományhoz való szinkronizálás](../../active-directory-domain-services/scoped-synchronization.md) útmutatást.
 
-Secure LDAP engedélyezése, ha a tanúsítvány helyezni a tartománynév a tulajdonos neve és a tulajdonos alternatív neveként. Például, ha a tartománynév *contoso100.onmicrosoft.com*, győződjön meg arról, hogy pontos neve létezik a tanúsítvány tulajdonos neve és a tulajdonos alternatív neveként. További információkért lásd: [a felügyelt tartomány secure LDAP konfigurálása az Azure AD-DS a](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md). Az alábbiakban egy példát egy önaláírt tanúsítvány létrehozása, és rendelkezik a tartomány nevét (*contoso100.onmicrosoft.com*) a tulajdonos neve és a DnsName (tulajdonos alternatív neve):
+Secure LDAP engedélyezése, ha a tanúsítvány helyezni a tartománynév a tulajdonos neve és a tulajdonos alternatív neveként. Például, ha a tartománynév *contoso100.onmicrosoft.com*, győződjön meg arról, hogy pontos neve létezik a tanúsítvány tulajdonos neve és a tulajdonos alternatív neveként. További információkért lásd: [a felügyelt tartomány secure LDAP konfigurálása az Azure AD-DS a](../../active-directory-domain-services/configure-ldaps.md). Az alábbiakban egy példát egy önaláírt tanúsítvány létrehozása, és rendelkezik a tartomány nevét (*contoso100.onmicrosoft.com*) a tulajdonos neve és a DnsName (tulajdonos alternatív neve):
 
 ```powershell
 $lifetime=Get-Date

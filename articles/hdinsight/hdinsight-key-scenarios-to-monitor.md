@@ -1,19 +1,19 @@
 ---
 title: Fürtteljesítmény monitorozása – Azure HDInsight
 description: Hogyan lehet a kapacitás és teljesítmény érdekében egy HDInsight-fürt monitorozására.
-author: maxluk
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: arindamc
-ms.openlocfilehash: 9a6a63748ef36bbbceb00bc815616f2cb12692a7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 05/29/2019
+ms.author: hrasheed
+ms.openlocfilehash: 3fcd1e54a8993b2693b169a2c8b4c6e9bca57119
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799791"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393413"
 ---
 # <a name="monitor-cluster-performance"></a>Fürtteljesítmény monitorozása
 
@@ -29,7 +29,7 @@ A csomópontok a fürt és a betöltés áttekintése kapni, jelentkezzen be a [
 
 | Szín | Leírás |
 | --- | --- |
-| Vörös | A gazdagépen legalább egy fő összetevője leállt. Listák összetevőhöz elemleírásokban megtekintéséhez mutasson. |
+| Piros | A gazdagépen legalább egy fő összetevője leállt. Listák összetevőhöz elemleírásokban megtekintéséhez mutasson. |
 | Narancssárga | A gazdagépen legalább egy másodlagos összetevő nem működik. Listák összetevőhöz elemleírásokban megtekintéséhez mutasson. |
 | Sárga | Az Ambari kiszolgáló nem kapott szívverést a gazdagépről a több mint 3 perc alatt. |
 | Zöld | A normál futó állapotban. |

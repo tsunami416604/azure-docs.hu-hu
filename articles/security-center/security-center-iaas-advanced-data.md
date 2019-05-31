@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2019
-ms.author: v-mohabe
-ms.openlocfilehash: cfe633c5251842257a0bef5237ea6b80aeaf05e9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 05/29/2019
+ms.author: monhaber
+ms.openlocfilehash: e7420adfe1608df39ef72124817f1d6dadf07db8
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968582"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400133"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-iaas"></a>Speciális biztonsági IaaS-on SQL-kiszolgálók
-Az IaaS SQL-kiszolgálók speciális biztonsági egységes csomag egy tapasztalt SQL biztonsági funkciók. Felszínre hozza a és az adatbázis biztonsági réseinek csökkentése és az adatbázis fenyegetést jelezhet rendellenes tevékenységeket észleli a funkció jelenleg tartalmazza.
+Azure virtuális gépeken futó SQL-kiszolgálók speciális biztonsági egységes csomag egy tapasztalt SQL biztonsági funkciók. Felszínre hozza a és az adatbázis biztonsági réseinek csökkentése és az adatbázis fenyegetést jelezhet rendellenes tevékenységeket észleli a funkció jelenleg tartalmazza. 
 
-A szánt IaaS SQL Server-kiszolgálók biztonsági alapul használt ugyanazon alapvető technológia a [Azure SQL Database speciális adatok biztonsági csomag](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
+Az ajánlat az Azure virtuális gépek SQL-kiszolgálók biztonsági alapul használt ugyanazon alapvető technológia a [Azure SQL Database speciális adatok biztonsági csomag](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
 
 
 ## <a name="overview"></a>Áttekintés
 
-Speciális biztonsági (ADS) biztosít egy speciális SQL biztonsági funkciókat, biztonsági rések felmérése és a komplex veszélyforrások elleni védelem.
+Speciális biztonsági egy tapasztalt SQL biztonsági funkciókat, sebezhetőségi felmérés és a komplex veszélyforrások elleni védelem kínál.
 
 * [A biztonságirés-értékelési](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) egy könnyen konfigurálható szolgáltatás, amely a felderítése, nyomon követheti, és segít javítani az adatbázis biztonsági réseinek. A biztonsági állapot rálátást biztosít, és a lépéseket, a biztonsági problémák megoldása és az adatbázis fortifications tartalmazza.
 * [Komplex veszélyforrások elleni védelem](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) elérni vagy kiaknázni az SQL server szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek észleli. Folyamatosan figyeli a gyanús tevékenységek esetén az adatbázis és műveletorientált biztonsági riasztásokat biztosít a rendellenes adatbázis-hozzáférési mintákról. Ezek a riasztások adja meg a gyanús tevékenység részleteit, és javasolt műveletek vizsgálata és enyhítése érdekében a fenyegetés.
 
-## <a name="get-started-with-ads-for-iaas"></a>IaaS ADS használatának első lépései
+## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Az Azure virtuális gépeken SQL speciális Data Security használatának első lépései
 
-Az alábbi lépéseket az első lépéseket az ADS iaas.
+Az alábbi lépéseket az első lépéseket biztonságú adatokat az SQL Azure virtuális gépeken.
 
-### <a name="set-up-ads-for-iaas"></a>Az IaaS ADS beállítása
+### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Azure virtuális gépeken az SQL Data biztonságú beállítása
 
 **Mielőtt elkezdené**: Szüksége van egy Log Analytics-munkaterületen tárolja a biztonsági naplók elemzése folyamatban. Ha nem rendelkezik egy, akkor a leírtak szerint könnyedén létrehozhat egyet [Log Analytics-munkaterület létrehozása az Azure Portalon](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
@@ -72,7 +72,7 @@ Megtekintheti és kezelheti a jelenlegi biztonsági riasztásokat.
 
 1. Riasztás részleteinek és az aktuális fenyegetések vizsgálata és a jövőbeli fenyegetésekkel szembeni címkezelés műveleteinek megtekintéséhez görgessen le a **általános információkat** lapot, majd a a **javítási lépések** területén kattintson a a **VIZSGÁLATI lépések** hivatkozásra.
 
-    ![Eltávolítási lépések](./media/security-center-advanced-iaas-data/remediation-steps.png)
+    ![Javítási lépések](./media/security-center-advanced-iaas-data/remediation-steps.png)
 
 1. A riasztás aktiválása társított a naplók megtekintéséhez lépjen a **Log analytics-munkaterületek** , és kövesse az alábbi lépéseket:
 
@@ -95,14 +95,14 @@ Megtekintheti és kezelheti a jelenlegi biztonsági riasztásokat.
 
 Beállíthatja a címzettek felkérése az e-mailben értesítést küld az ASC miatti riasztások olyankor jönnek listáját. Az e-mail tartalmazza a riasztás az Azure Security Center az összes releváns részlet közvetlen hivatkozás. 
 
-1. Lépjen a **a Security Center** > **biztonsági házirend** , és kattintson a megfelelő előfizetés sorában **beállítások szerkesztése >**.
+1. Lépjen a **a Security Center** > **biztonsági házirend** , és kattintson a megfelelő előfizetés sorában **beállítások szerkesztése >** .
 
     ![Előfizetési beállítások](./media/security-center-advanced-iaas-data/subscription-settings.png)
 
 1. Az a **beállítások** menüben kattintson **E-mail-értesítések**. 
 1. Az a **E-mail-cím** szöveget adja meg az e-mail-címeket, értesítések fogadására. Az e-mail-címeket vesszővel (,) elválasztva adhat meg egynél több e-mail címet.  Például admin1@mycompany.com,admin2@mycompany.com,admin3@mycompany.com
 
-      ![E-mail beállítások](./media/security-center-advanced-iaas-data/email-settings.png)
+      ![E-mail-beállítások](./media/security-center-advanced-iaas-data/email-settings.png)
 
 1. Az a **e-mailes értesítés** beállításait, adja meg a következő beállításokat:
   
@@ -120,7 +120,7 @@ A biztonságirés-értékelési irányítópult az értékelés eredményeinek �
 
 Megtekintheti a sebezhetőségi felmérés eredmények és a jelentéseket közvetlenül a Log Analytics.
 
-1. Keresse meg az ADS megoldás a Log Analytics-munkaterületet.
+1. Keresse meg a Log Analytics-munkaterületet a speciális adatok biztonsági megoldással.
 1. Navigáljon a **megoldások** , és válassza ki a **SQL-sebezhetőségi felmérés** megoldás.
 1. Az a **összefoglalás** ablaktáblán kattintson a **összegzésének megtekintése** , és válassza ki a **SQL biztonsági réseket felmérő jelentés**.
 
@@ -142,7 +142,7 @@ Megtekintheti a sebezhetőségi felmérés eredmények és a jelentéseket közv
 
 1. A biztonságirés-értékelési eredmények adatokon, az adatok igények szerinti szeleteléséhez és bármely Log Analytics-lekérdezéseket is futtathat.
 
-## <a name="advanced-threat-protection-for-sql-servers-on-iaas-alerts"></a>Komplex veszélyforrások elleni védelem SQL-kiszolgálók az IaaS-riasztások
+## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Komplex veszélyforrások elleni védelem SQL-kiszolgálók az Azure virtuális gépek riasztások
 Szokatlan és vélhetően kárt okozó kísérleteket elérni vagy kiaknázni az SQL Server-kiszolgálók által előállított riasztások. Ezeket az eseményeket is aktiválhatja a következő riasztásokat:
 
 ### <a name="anomalous-access-pattern-alerts"></a>Rendellenes hozzáférési minta riasztások

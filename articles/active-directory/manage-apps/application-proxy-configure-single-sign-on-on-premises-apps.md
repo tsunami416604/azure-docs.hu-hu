@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5524576ef21830ae13526dad2d8ac8a1d0864cf1
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 907cb598d708bfa26f53d2e43fef5456258c21b1
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956887"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393043"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML egyszeri bejelentkezést az alkalmazásproxy (előzetes verzió) használatával a helyszíni alkalmazások
 
@@ -50,14 +50,14 @@ Vegye figyelembe a következő fog az oktatóanyag során:
 1. Válassza ki **SAML** egyszeri bejelentkezési módszert.
 1. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a Szerkesztés a **alapszintű SAML-konfigurációja** adatokat, és kövesse a [Enter alapszintű SAML-konfigurációja](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on) SAML-alapú konfigurálása az alkalmazás hitelesítést.
 
-   * Győződjön meg arról, hogy a **válasz URL-cím** mellett egy elérési utat, vagy megegyezik a **külső URL-cím** az alkalmazásproxyn keresztül közzétett helyszíni alkalmazás. 
-   * Ha az alkalmazás egy másik **válasz URL-cím** adja hozzá a SAML-konfigurációja ezt egy **további** URL-cím a listában, és be van jelölve a jelölőnégyzetét, az elsődleges kijelölni kívánt  **Válasz URL-cím** az Identitásszolgáltató által kezdeményezett SAML-válaszok.
-   * Az SP által kezdeményezett flow gondoskodjon arról, hogy az alkalmazás is határozza meg a megfelelő **válasz URL-cím** vagy helyességi feltétel fogyasztói szolgáltatás URL-cím a hitelesítési jogkivonat fogadására használni.
+   * Győződjön meg arról, hogy a **válasz URL-cím** megegyezik a **külső URL-cím** alkalmazásproxyn keresztül közzétett, vagy egy útvonal a helyszíni alkalmazás a **külső URL-cím**.
+   * Az Identitásszolgáltató által kezdeményezett flow, ahol az alkalmazás által kért egy másik **válasz URL-cím** adja hozzá a SAML-konfigurációja ezt egy **további** URL-címet a listában, és jelölje be a jelölőnégyzetet, mellette kijelölésére, mint a elsődleges **válasz URL-cím**.
+   * Az SP által kezdeményezett flow biztosítása érdekében, hogy a háttéralkalmazás határozza meg a megfelelő **válasz URL-cím** vagy helyességi feltétel fogyasztói szolgáltatás URL-cím a hitelesítési jogkivonat fogadására használni.
 
      ![Alapszintű SAML-konfigurációs adatok megadása](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
     > [!NOTE]
-    > Ha a háttéralkalmazás vár a **válasz URL-cím** a saját alkalmazások biztonságos bejelentkezési bővítménye telepítéséhez a felhasználók eszközeire kell lennie a belső URL-cím,. Ezzel a bővítménnyel automatikusan átirányítja a megfelelő Application Proxy szolgáltatáshoz. A bővítmény telepítése: [saját alkalmazások biztonságos bejelentkezési bővítménye](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
+    > Ha a háttéralkalmazás vár a **válasz URL-cím** ahhoz, hogy a belső URL-cím, vagy használja kell [egyéni tartományok](application-proxy-configure-custom-domain.md) áll rendelkezésre olyan egyező belső és külső URL-CÍMEK, vagy telepítse a saját alkalmazások biztonságos bejelentkezési bővítménye a felhasználók eszközeire. Ezzel a bővítménnyel automatikusan átirányítja a megfelelő Application Proxy szolgáltatáshoz. A bővítmény telepítése: [saját alkalmazások biztonságos bejelentkezési bővítménye](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
 

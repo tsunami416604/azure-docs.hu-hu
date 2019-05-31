@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 49a28c120ae71224195edcdb3809335aeea1fa3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e80fb136220330ddc53d513b22ebcfa19a35117b
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61364306"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252802"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
 
@@ -42,6 +42,8 @@ Eszköz-felhő üzenetkezelést biztosít az IoT Hub a következő jellemzőkkel
 * Az IoT Hub nem teszi lehetővé tetszőleges particionálás. Eszköz – felhő üzenetek vannak particionálva, azok származó alapján **deviceId**.
 
 * A [férhet hozzá az IoT Hub](iot-hub-devguide-security.md), IoT Hub lehetővé teszi az eszközönkénti hitelesítés és a hozzáférés-vezérlés.
+
+* Üzenetek alkalmazás tulajdonságainak hiányzóra adatokkal is időbélyegző. További információkért tekintse meg [végrehajtott információbeolvasás üzenet](iot-hub-message-enrichments-overview.md).
 
 Kódolhat és dekódolhat különböző protokollok használatával küldött üzenetek kapcsolatos további információkért lásd: [Azure IoT SDK-k](iot-hub-devguide-sdks.md).
 

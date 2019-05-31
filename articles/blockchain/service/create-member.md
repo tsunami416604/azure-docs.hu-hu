@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 357dc47027582d5c638bb3c7344c839f37f93dc5
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 5cb236dc38ae41b202004b7e4806d8129378cfdb
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399129"
+ms.locfileid: "66417506"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-using-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy Azure Blockchain-szolgáltatás az Azure portal használatával
 
@@ -44,7 +44,7 @@ Az Azure Blockchain-szolgáltatás számítási és tárolási erőforrások egy
     Consortium neve | Egy új consortium adja meg egy egyedi nevet. Egy consortium meghívót keresztül csatlakozik, ha az értéke a consortium, amelyhez csatlakozik.
     Leírás | A consortium leírása.
     Protocol |  Előzetes verziója támogatja a kvórum protokollt.
-    Díjszabás | A csomópont-konfigurációt az új szolgáltatáshoz. Válassza ki **Standard**. 2 érvényesítő csomópont és 1 tranzakció csomópont az alapértelmezett beállítása.
+    Díjszabás | A csomópont-konfigurációt az új szolgáltatáshoz. Válassza ki **Standard**. 2 érvényesítő csomópontok és 1 tranzakció csomópont az alapértelmezett beállításokat.
     Tranzakció csomópont jelszó | A tag alapértelmezett tranzakció csomópont jelszava. Használja az egyszerű hitelesítést a jelszót, blockchain-tagok alapértelmezett tranzakció csomópont nyilvános végponthoz való csatlakozáskor.
 
 1. Válassza ki **létrehozás** a szolgáltatás telepítéséhez. Üzembe helyezési idő szükséges nagyjából 10 percet.

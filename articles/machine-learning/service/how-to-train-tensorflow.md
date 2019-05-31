@@ -10,18 +10,20 @@ ms.author: minxia
 author: mx-iao
 ms.date: 05/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: f3d675d0eac1255974995fd7717192ec6a21bac1
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
-ms.translationtype: HT
+ms.openlocfilehash: 314917ce91407206d786b191df118893696ac82c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400228"
+ms.locfileid: "66417122"
 ---
-# <a name="use-azure-machine-learning-service-to-train-and-register-tensorflow-models"></a>Az Azure Machine Learning szolgáltatás segítségével betanítása és TensorFlow modellek regisztrálása
+# <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Betanítása és ipari méretekben TensorFlow-modellek regisztrálása az Azure Machine Learning szolgáltatás
 
 Ez a cikk bemutatja, hogyan betanítása és regisztrálnia kell egy TensorFlow modell Azure Machine Learning szolgáltatás használatával. Fogjuk használni a népszerű [MNIST adatkészlet](http://yann.lecun.com/exdb/mnist/) besorolására kézírásos számjegy, a tensorflow-hoz készült Neurális hálózat használatával.
 
-Az Azure Machine Learning szolgáltatással, képes lesz gyors horizontális felskálázása a nyílt forráskódú betanítási feladatok rugalmas felhőalapú számítási erőforrások használatával. Azt is nyomon követheti a betanítási futtatás, a verzió modellek, modelleket és még sok más központi telepítése. Akár az alapoktól a TensorFlow modell fejleszt, vagy már meglévő modell üzembe a felhőben, Azure Machine Learning szolgáltatás készségesen segít Önnek, éles használatra kész modelleket.
+Az Azure Machine Learning szolgáltatással, képes lesz gyors horizontális felskálázása a nyílt forráskódú betanítási feladatok rugalmas felhőalapú számítási erőforrások használatával. Azt is nyomon követheti a betanítási futtatás, a verzió modellek, modelleket és még sok más központi telepítése. 
+
+Akár az alapoktól a TensorFlow modell fejleszt, vagy már meglévő modell üzembe a felhőben, éles használatra kész modellek Azure Machine Learning szolgáltatásban hozhat létre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

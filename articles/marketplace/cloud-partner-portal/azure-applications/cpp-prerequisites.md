@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 296f843f9d09b57e12e867700f456126eca128b3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 64039234a3863332ca19b915fb59a5271625d695
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942883"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258185"
 ---
 # <a name="azure-application-prerequisites"></a>Az Azure application Előfeltételek
 
@@ -38,7 +38,8 @@ További információkért lásd: [létrehozása az Azure portal felhasználói 
 
 Az üzleti követelmények a következők a következő eljárási, és a jogi szerződéses kötelezettségek:
 
-* Regisztrált Felhőbeli piactér kiadói kell lennie. Ha nem regisztrált, kövesse a cikkben található lépéseket [válnak a Felhőbeli piactér kiadói](../../become-publisher.md).
+* Regisztrált Felhőbeli piactér kiadói kell lennie. Ha nem regisztrált, kövesse a cikkben található lépéseket [válnak a Felhőbeli piactér kiadói](https://docs.microsoft.com/azure/marketplace/become-publisher
+).
 
 >[!NOTE]
 >A Cloud Partner portálra való bejelentkezéshez ugyanazt a Microsoft Developer Center regisztrációs fiókot kell használnia. Az Azure piactér-i ajánlatainak közzétételéhez egyetlen Microsoft-fiókkal kell rendelkeznie. Ez a fiók nem lehet adott egyes szolgáltatásokat vagy ajánlatokat.

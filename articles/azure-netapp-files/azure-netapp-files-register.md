@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: b-juche
-ms.openlocfilehash: fbe0b82008d7b15332c4e2cd62c49c611f20fe89
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794698"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299217"
 ---
 # <a name="register-for-azure-netapp-files"></a>Regisztrálás az Azure NetApp Filesra
 
@@ -60,12 +60,12 @@ A szolgáltatás használatához regisztrálnia kell az Azure erőforrás-szolg�
 
    A parancs kimenete a következőképpen jelenik meg:
    
-       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/publicPreviewADC",  
-       "name": "Microsoft.NetApp/publicPreviewADC" 
+       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
+       "name": "Microsoft.NetApp/ANFGA" 
        
    `<SubID>` az előfizetés-azonosítója.
 
-    Ha nem látja a szolgáltatásnév `Microsoft.NetApp/publicPreviewADC`, nem rendelkezik a szolgáltatáshoz való hozzáférést. Ebben a lépésben állni. Kövesse az utasításokat [igényelnie nagyságától a szolgáltatás elérésével](#waitlist) szolgáltatás hozzáférés kéréséhez a folytatás előtt. 
+    Ha nem látja a szolgáltatásnév `Microsoft.NetApp/ANFGA`, nem rendelkezik a szolgáltatáshoz való hozzáférést. Ebben a lépésben állni. Kövesse az utasításokat [igényelnie nagyságától a szolgáltatás elérésével](#waitlist) szolgáltatás hozzáférés kéréséhez a folytatás előtt. 
 
 4. Az Azure Cloud Shell-konzolon adja meg az Azure erőforrás-szolgáltató regisztrálásához a következő parancsot: 
     

@@ -8,15 +8,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 56ec4d867abd5f2767c64b0800eeb017c0fb9923
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2a4d636ccb03e36f7c495f3c10c90033d7c3c93c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793002"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417918"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET-módosítási hírcsatorna SDK processzor: Töltse le és kibocsátási megjegyzések
+
 > [!div class="op_single_selector"]
+>
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
@@ -156,8 +158,8 @@ ms.locfileid: "65793002"
 * GA SDK
 * Kompatibilis [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.14.1 verziók és az alábbi.
 
-
 ## <a name="release--retirement-dates"></a>Állapot tárolá & kivezetési dátum
+
 A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
 
 Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzá az aktuális SDK-hoz, ezért javasoljuk, hogy mindig a legújabb SDK verzióra frissít leghamarabb lehető. 
@@ -183,10 +185,10 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 | [1.1.0](#1.1.0) |2017. augusztus 13. |--- |
 | [1.0.0](#1.0.0) |2017. július 07. |--- |
 
+## <a name="faq"></a>GYIK
 
-## <a name="faq"></a>gyakori kérdésekben
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még
-Cosmos DB kapcsolatos további információkért lásd: [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján. 
 
+Cosmos DB kapcsolatos további információkért lásd: [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján.

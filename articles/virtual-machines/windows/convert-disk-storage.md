@@ -16,16 +16,18 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: abd893c68f2e9cac713e09dd0bdafb7f277ae889
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5687e6d0094083a9ee58455cc72b0b2e4da32d65
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707531"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417145"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>A tárolótípus felügyelt lemez frissítése
 
-Az Azure négy lehetőség van a felügyelt lemezek: Ultranagy az Azure Disk Storage, a prémium szintű SSD, a Standard SSD és a Standard HDD. A minimális állásidővel teljesítmény igények alapján tárolási típusok között válthat. Ez a funkció nem támogatott a nem felügyelt lemezek esetén. De könnyen [egy nem felügyelt lemez konvertálása felügyelt lemez](convert-unmanaged-to-managed-disks.md) tudni váltani a lemeztípusok.
+Négy lemeztípusok az Azure felügyelt lemezek: Az Azure ultranagy SSD-k (előzetes verzió), a prémium szintű SSD, standard SSD és standard HDD. Válthat a végleges verzió három lemeztípusok között (prémium szintű SSD, a standard szintű SSD és a standard HDD) a teljesítmény igények alapján. Ön még nem tud az vagy egy ultra SSD-re váltani, telepítenie kell egy új.
+
+Ez a funkció nem támogatott a nem felügyelt lemezek esetén. De könnyen [egy nem felügyelt lemez konvertálása felügyelt lemez](convert-unmanaged-to-managed-disks.md) tudni váltani a lemeztípusok.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 

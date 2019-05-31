@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: d0a4180a3ea28427b8d82c6f5cf86ef9fa51d580
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6e20aef77625fe426526884c3fcee83019afd0c0
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785900"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299249"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikák
 
@@ -53,7 +53,7 @@ Ha a hivatkozás még nem rendelkezik az Application Insights SDK:
   * [Java project](../../azure-monitor/app/java-get-started.md)
   * [NODE.js-projektet](../../azure-monitor/app/nodejs.md)
   * [Az egyes weblap JavaScript](../../azure-monitor/app/javascript.md) 
-* Az eszköz vagy a webkiszolgáló kódjába illessze be a következőt:
+* Az eszköz vagy a webkiszolgáló kódjába, a következők:
 
     *C#:* `using Microsoft.ApplicationInsights;`
 
@@ -712,7 +712,7 @@ dependencies
 
 ## <a name="flushing-data"></a>Könyvelési adatok
 
-Normális esetben az SDK elküldi az adatokat esetenként választotta, a felhasználó gyakorolt hatás minimalizálása érdekében. Azonban bizonyos esetekben előfordulhat, hogy szeretné kiüríteni a puffer – például ha az SDK-t használja egy alkalmazásban, hogy leállítja.
+Normális esetben az SDK-t küld adatokat rögzített időközönként (általában 30 másodperc), vagy amikor puffer nem teljes (általában 500 elemek). Azonban bizonyos esetekben előfordulhat, hogy szeretné kiüríteni a puffer – például ha az SDK-t használja egy alkalmazásban, hogy leállítja.
 
 *C#*
 
@@ -740,7 +740,7 @@ A függvény az aszinkron a [kiszolgáló telemetriai csatorna](https://www.nuge
 
 Ideális esetben az alkalmazás leállítása tevékenység flush() metódus használandó.
 
-## <a name="authenticated-users"></a>Hitelesített felhasználók
+## <a name="authenticated-users"></a>A hitelesített felhasználók
 
 A web app alkalmazásban felhasználók (alapértelmezés szerint) azonosítja a cookie-k. A felhasználó számítanak előfordulhat, hogy egynél többször férnek hozzá az alkalmazás egy másik gépen vagy a böngészőben, vagy ha ezek a cookie-k törléséhez.
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/18/2019
-ms.author: mayg
-ms.openlocfilehash: 8f76d4e54133e4e899e707e666703a67310e8702
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/30/2019
+ms.author: raynew
+ms.openlocfilehash: a02a2be7fb3ed942b1359949e18ba7d3dee824ae
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61280485"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399975"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Virtuális gépek és fizikai kiszolgálók feladatátvételét 
 
@@ -80,7 +80,7 @@ A feladatátvétel elindításakor, magában foglalja a következő lépéseket:
 
 1. Előfeltételek ellenőrzése: Ez a lépés biztosítja, hogy a feladatátvételhez szükséges feltételek közül mind teljesül-e
 1. Feladatátvétel: Ebben a lépésben feldolgozza az adatokat, így készen áll, hogy kihozni az Azure virtuális gépek hozhatók létre. Ha úgy döntött, **legújabb** a helyreállítási ponttal, ebben a lépésben létrehoz egy helyreállítási pontot a szolgáltatásnak küldött adatokból.
-1. Kezdés: Ez a lépés létrehoz egy Azure virtuális gépen az előző lépésben feldolgozott adatok használatával.
+1. Indítás: Ez a lépés létrehoz egy Azure virtuális gépen az előző lépésben feldolgozott adatok használatával.
 
 > [!WARNING]
 > **Ne szakítsa egy folyamatban lévő feladatátvételi**: Feladatátvétel indítása előtt a virtuális gép replikációja le van állítva. Ha Ön **Mégse** egy feladat a folyamatban, a feladatátvételt, az leáll, de a virtuális gép nem indul el replikálni. Nem lehet újból elindítani a replikációt.

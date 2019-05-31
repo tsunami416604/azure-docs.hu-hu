@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: 39ef23d04dc1cf1b48297ecf8f0accfef4935cd2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 693abccd7e54a1dfef92cd57a715ac96bfd56a8c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158940"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234005"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -242,7 +242,7 @@ A build-környezet van alapértelmezés szerint a projekt/szolgáltatási szinte
 ### <a name="try"></a>Próbálja ki:
 Mit kell tenni:
 1. Módosítsa a _azds.yaml_ fájlt a build-környezet beállítása a megoldás szintre.
-2. Módosítsa a _Dockerfile_ és _Dockerfile.develop_ tekintse meg a projekt-fájlok (_.csproj_) fájlok megfelelően képest az új hozhat létre környezetet.
+2. Módosítsa a _Dockerfile_ és _Dockerfile.develop_ tekintse meg a projekt-fájlok ( _.csproj_) fájlok megfelelően képest az új hozhat létre környezetet.
 3. Hely egy _.dockerignore_ fájlt mellett az .sln-fájlt, és szükség szerint módosítsa.
 
 Talál példát: https://github.com/sgreenmsft/buildcontextsample
@@ -404,3 +404,8 @@ Hozzon létre egy vezérlőt másik nevet:
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
 ```
+
+## <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>Fejlesztői, szóközök sikertelen, ha Windows csomópontkészletek adnak hozzá egy AKS-fürt engedélyezése
+
+### <a name="reason"></a>Reason
+Jelenleg az Azure fejlesztési tárolóhelyek célja, hogy Linux-podok és csak a csomópontok futnak. Jelenleg nem engedélyezhető Windows csomópontkészletek egy AKS-fürtöt az Azure fejlesztési szóközöket.

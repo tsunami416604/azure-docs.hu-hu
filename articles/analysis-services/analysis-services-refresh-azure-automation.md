@@ -7,12 +7,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: abbad97e29f60e5f135017cd43f9d30eba1805ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4cae93cff594ad561973f8029ea7335dc4c60263
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66142781"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357005"
 ---
 # <a name="refresh-with-azure-automation"></a>Frissítés az Azure Automationnel
 
@@ -26,7 +26,7 @@ A cikk későbbi részében egy minta PowerShell-forgatókönyvet, amely bemutat
 
 Összes hívás érvényes Azure Active Directory (OAuth 2) tokennel kell hitelesíteni.  Ebben a cikkben a példában egy egyszerű szolgáltatásnév (SPN) használatával hitelesíti az Azure Analysis Services.
 
-Egyszerű szolgáltatás létrehozása kapcsolatos további információkért lásd:]
+Egyszerű szolgáltatás létrehozása kapcsolatos további információkért lásd: [egyszerű szolgáltatás létrehozása az Azure portal használatával](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -149,7 +149,7 @@ A **törzs** JSON-dokumentumok, amelynek tartalmaznia kell a következő tulajdo
 |---------|---------|
 |**AnalysisServicesDatabase**     |Az Azure Analysis Services-adatbázis neve <br/> Példa: AdventureWorksDB         |
 |**AnalysisServicesServer**     |Az Azure Analysis Services-kiszolgáló neve. <br/> Például: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
-|**DatabaseRefreshType**     |A frissítés végrehajtásához típusát. <br/> Példa: Teljes         |
+|**DatabaseRefreshType**     |A frissítés végrehajtásához típusát. <br/> Példa: Korlátlan         |
 
 Példa JSON-törzse:
 

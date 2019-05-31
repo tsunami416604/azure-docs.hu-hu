@@ -3,19 +3,19 @@ title: Beszélgetéstanuló robot – a Microsoft Cognitive Services üzembe hel
 titleSuffix: Azure
 description: Ismerje meg, hogyan helyezhet üzembe egy Beszélgetéstanuló robot.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: ae984cc2e0f43b81b8aa2f08b3944886733c9054
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 5522f762f3893f1d67cd3755b1e022f0118cc004
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60848265"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66385321"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Beszélgetéstanuló robotprogramok üzembe helyezése
 
@@ -115,7 +115,7 @@ Az alábbiakban lépésről lépésre ismerteti, hogyan telepíthető egy beszé
 
        Környezeti változó | value
        --- | --- 
-       CONVERSATION_LEARNER_SERVICE_URI | „https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/”
+       CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
        CONVERSATION_LEARNER_MODEL_ID      | Alkalmazás-azonosító GUID, a beszélgetés Learner felhasználói felületen a "beállítások" modell szerzett >
        LUIS_AUTHORING_KEY               | Ehhez a modellhez kulcs létrehozási LUIS
        LUIS_SUBSCRIPTION_KEY            | Nem kötelező, de a közzétett robotok kerülje a szerzői műveletek kvótájának ajánlott.

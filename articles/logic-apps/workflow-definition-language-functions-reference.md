@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: b42d376be0d26c8ced60344793dbc8f7dd4a3d53
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
-ms.translationtype: HT
+ms.openlocfilehash: 24e0a0ae2a6af964d3ed87d1817de6e5f403c9b1
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303760"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416348"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Az Azure Logic Apps és Microsoft Flow munkafolyamat-definíciós nyelv-funkciók dokumentációja
 
@@ -246,7 +246,8 @@ Kapcsolatos minden funkció teljes körű referenciáért lásd: a [betűrend sz
 | [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Hozzon létre egy tömb azokra az értékekre, amelyek megfelelnek a kulcs nevét *űrlapadatokból* vagy *űrlapként* műveleti kimenetek. |
 | [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Ad vissza, amely megfelel egy műveletet a kulcs nevét egyetlen értéket *űrlapadatokból* vagy *űrlapként kimeneti*. |
 | [Elem](../logic-apps/workflow-definition-language-functions-reference.md#item) | Ismétlődő műveletet keresztül egy tömb, belül vissza az aktuális elem a tömbben a művelet aktuális iteráció során. |
-| [elemek](../logic-apps/workflow-definition-language-functions-reference.md#items) | Belül a for-each vagy do-until-hurok, lépjen vissza az aktuális elemet a megadott ciklus a.|
+| [elemek](../logic-apps/workflow-definition-language-functions-reference.md#items) | Egy Foreach belül vagy Until ciklus, az aktuális elem visszaadása a megadott ciklus.|
+| [iterationIndexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Belül egy Until ciklus aktuális ismétléseinek index értékének visszaadása. Ez a függvény belül beágyazott hurkok amíg használható. |
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | A "visszahívási URL-címe", amely meghívja az eseményindítók vagy műveletek visszaadása. |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Egy adott rész törzsét visszaadása egy művelet kimenete, amely több részből áll. |
 | [paraméterek](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | A munkafolyamat-definíció leírt paraméter értékének visszaadása. |
@@ -2278,6 +2279,96 @@ Ebben a példában az aktuális elem olvas be a megadott for-each ciklus:
 
 ```
 items('myForEachLoopName')
+```
+
+<a name="iterationIndexes"></a>
+
+### <a name="iterationindexes"></a>iterationIndexes
+
+Aktuális belül egy Until ciklus ismétléseinek index értékét adja vissza. Ez a függvény belül beágyazott hurkok amíg használható. 
+
+```
+iterationIndexes('<loopName>')
+```
+
+| Paraméter | Szükséges | Típus | Leírás | 
+| --------- | -------- | ---- | ----------- | 
+| <*loopName*> | Igen | String | Az Until ciklus neve | 
+||||| 
+
+| Vrácená hodnota | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| <*index*> | Integer | Az aktuális iteráció belsejében a megadott index értéke Until ciklus | 
+|||| 
+
+*Példa* 
+
+Ez a példa létrehoz egy számláló változó és lépésekben a változó-Until ciklus az egyes iteráció során egy másik mindaddig, amíg a számláló értéke eléri az öt. A példában egy változó, amely nyomon követi az aktuális index minden egyes ismétléskor számára is létrehoz. Az az Until ciklus során minden egyes ismétléskor példa növeli a számlálót, és majd hozzárendeli a számláló értéke az aktuális értéket, és majd növeli a számlálót. Bármikor megadhatja, hogy az aktuális száma az iteráció lekéri az aktuális index értéke.
+
+```
+{
+   "actions": {
+      "Create_counter_variable": {
+         "type": "InitializeVariable",
+         "inputs": {
+            "variables": [ 
+               {
+                  "name": "myCounter",
+                  "type": "Integer",
+                  "value": 0
+               }
+            ]
+         },
+         "runAfter": {}
+      },
+      "Create_current_index_variable": {
+         "type": "InitializeVariable",
+         "inputs": {
+            "variables": [
+               {
+                  "name": "myCurrentLoopIndex",
+                  "type": "Integer",
+                  "value": 0
+               }
+            ]
+         },
+         "runAfter": {
+            "Create_counter_variable": [ "Succeeded" ]
+         }
+      },
+      "Until": {
+         "type": "Until",
+         "actions": {
+            "Assign_current_index_to_counter": {
+               "type": "SetVariable",
+               "inputs": {
+                  "name": "myCurrentLoopIndex",
+                  "value": "@variables('myCounter')"
+               },
+               "runAfter": {
+                  "Increment_variable": [ "Succeeded" ]
+               }
+            },
+            "Increment_variable": {
+               "type": "IncrementVariable",
+               "inputs": {
+                  "name": "myCounter",
+                  "value": 1
+               },
+               "runAfter": {}
+            }
+         },
+         "expression": "@equals(variables('myCounter'), 5),
+         "limit": {
+            "count": 60,
+            "timeout": "PT1H"
+         },
+         "runAfter": {
+            "Create_current_index_variable": [ "Succeeded" ]
+         }
+      }
+   }
+}
 ```
 
 <a name="json"></a>

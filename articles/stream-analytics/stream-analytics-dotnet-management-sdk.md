@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4fa4a9a8d01d499dc431c8b182401226aa72bf1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b2da78f5c750dbc694085bb46a6ed43e74884d45
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480000"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303042"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: Állítsa be, és futtassa az analytics-feladatok az Azure Stream Analytics API használatával a .NET-hez
 Megtudhatja, hogyan állíthatja be, és a Stream Analytics API használatával a felügyeleti .NET SDK-val .NET-keretrendszerhez készült elemzési feladatok futtatásához. Projekt beállítása, hozzon létre bemeneti és kimeneti források átalakítások és kezdő, és állítsa le a feladatok. Az analytics-feladatokhoz streamelheti a Blob storage-ból, vagy az eseményközpontok adatait.
@@ -27,11 +27,11 @@ Az Azure Stream Analytics egy teljes körűen felügyelt szolgáltatást, amely 
 > Ebben a cikkben szereplő mintakódban frissítettük az Azure Stream Analytics felügyeleti .NET SDK 2.x verziójával. A mintakód a felhasználási lagecy (1.x) SDK-verzió használatával, tekintse meg [használja a felügyeleti .NET SDK-val v1.x a Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
 
 ## <a name="prerequisites"></a>Előfeltételek
-A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
+Ez a cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-* Telepítse a Visual Studio 2017 vagy 2015-öt.
+* Telepítse a Visual Studio 2019 vagy 2015-öt.
 * Töltse le és telepítse [Azure .NET SDK](https://azure.microsoft.com/downloads/).
-* Hozzon létre egy Azure-erőforráscsoportot az előfizetésében. Az alábbiakban látható egy minta Azure PowerShell-parancsfájlt. Azure PowerShell-információkért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview);  
+* Hozzon létre egy Azure-erőforráscsoportot az előfizetésében. Az alábbi példa egy Azure PowerShell-példaszkript. Azure PowerShell-információkért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview);  
 
    ```powershell
    # Log in to your Azure account
@@ -50,7 +50,7 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 * Állítsa be egy bemeneti forrás- és kimeneti szeretne csatlakozni a feladathoz.
 
 ## <a name="set-up-a-project"></a>Projekt beállítása
-Segítségével hozhat létre egy analytics-feladatban a Stream Analytics API a .NET-hez, először állítsa be a projekthez.
+Analytics-feladat létrehozásához használja a Stream Analytics API a .NET-hez, először állítsa be a projekthez.
 
 1. Hozzon létre egy Visual Studio C# nyelvet használó .NET-konzolalkalmazást.
 2. A Package Manager konzol futtassa a következő parancsokat a NuGet-csomagok telepítéséhez. Az első rekordon az Azure Stream Analytics felügyeleti .NET SDK. A második érték van, az Azure ügyfél-hitelesítéshez.
@@ -211,7 +211,7 @@ A **TestConnection** metódus teszteli, hogy tud csatlakozni a bemeneti forrás,
    ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>Hozzon létre egy Stream Analytics kimeneti célpontjává
-Egy kimeneti célpontjává létrehozása nagyon hasonlít egy Stream Analytics bemeneti forrás létrehozása. A bemeneti források, például egy adott feladat kimeneti tárolók vannak társítva. Az azonos kimeneti célpontjává használ a különböző feladatok, hívja meg ismét a metódust, és adjon meg egy másik feladatnévvel.
+Egy kimeneti célpontjává létrehozása nagyon hasonlít egy Stream Analytics bemeneti forrás. A bemeneti források, például egy adott feladat kimeneti tárolók vannak társítva. Az azonos kimeneti célpontjává használ a különböző feladatok, hívja meg ismét a metódust, és adjon meg egy másik feladatnévvel.
 
 Az alábbi kód létrehoz egy kimeneti tárolóhoz (az Azure SQL database). Testre szabhatja a kimeneti célpontjává adattípus és/vagy szerializálási típushoz.
 
@@ -289,7 +289,7 @@ A **törlése** metódus törli a feladatot, valamint az alapul szolgáló alár
 További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések
-Bemutattuk, hozhat létre, és az analytics-feladatok futtatása a .NET SDK használatával kapcsolatos alapfogalmakat. További információ:
+Bemutattuk, hozhat létre, és az analytics-feladatok futtatása a .NET SDK használatával kapcsolatos alapfogalmakat. További tudnivalókért tekintse meg a következő cikkeket:
 
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

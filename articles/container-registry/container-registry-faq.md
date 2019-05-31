@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: sajaya
-ms.openlocfilehash: 86efb6b655405500f994a5a5ec7acbd18c645004
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 1400c023e43179a9c8490334e262711486c75a2d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957850"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417923"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry kapcsolatos gyakori kérdések
 
@@ -253,10 +253,11 @@ Kép karantén jelenleg előzetes verziójú funkció az ACR. A beállításjegy
 - [Új felhasználói engedélyeket nem lehet érvényes frissítése után azonnal](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Hitelesítési adatok nem adja meg a megfelelő formátumban a közvetlen REST API-hívások](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Miért nem az Azure Portalon található összes tárházak vagy címkék?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
+- [Hogyan összegyűjtése a Windows http-nyomkövetések?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull hibaüzenettel meghiúsul: net/http: kérelem megszakadt a kapcsolat (fejlécek várakozás közben túllépte Client.Timeout) való várakozás közben
 
- - Ha ez a hiba átmeneti jellegű probléma, majd próbálkozzon újra lesz sikeres. 
+ - Ha ez a hiba átmeneti jellegű probléma, majd próbálkozzon újra lesz sikeres.
  - Ha `docker pull` folyamatosan, sikertelen, akkor lehetséges, hogy a docker-démon problémájára. A probléma általában enyhíthetők a docker-démon újraindítása. 
  - Docker-démon újraindítása után jelenik meg a probléma továbbra is, ha a probléma néhány hálózati kapcsolati problémák a gép lehet. Ellenőrizze, hogy kifogástalan állapotban-e a gépen általános hálózati, próbálkozzon egy parancs például `ping www.bing.com`.
  - Az összes docker-Ügyfélműveletek mindig kell egy újrapróbálkozási mechanizmust.
@@ -388,7 +389,29 @@ curl $redirect_url
 
 Ha a Microsoft Edge böngészőt használ, legfeljebb 100 tárházak vagy felsorolt címkék láthatja. Ha a tárolójegyzék több mint 100 tárházak vagy címkék, azt javasoljuk, hogy a Firefox vagy a Chrome böngészőben közzéteheti az összes használja.
 
-## <a name="tasks"></a>Tevékenységek
+### <a name="how-do-i-collect-http-traces-on-windows"></a>Hogyan összegyűjtése a Windows http-nyomkövetések?
+
+#### <a name="prerequisites"></a>Előfeltételek
+
+- A fiddlerben visszafejtésekor https engedélyezése:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- Docker a Docker felhasználói felületen a proxy használatát engedélyezi: <https://docs.docker.com/docker-for-windows/#proxies>
+- Győződjön meg arról, a visszaállítás végeztével.  Docker engedélyezve van ez nem fog működni, és nem fut a fiddler.
+
+#### <a name="windows-containers"></a>Windows-tárolók
+
+Docker proxy 127.0.0.1:8888 konfigurálása
+
+#### <a name="linux-containers"></a>Linux-tárolók
+
+Keresse meg az ip-címét a Docker vm virtuális kapcsoló:
+
+```powershell
+(Get-NetIPAddress -InterfaceAlias "*Docker*" -AddressFamily IPv4).IPAddress
+```
+
+A kimenetben az előző parancs és a portot (például 10.0.75.1:8888) 8888 Docker-proxy konfigurálása
+
+## <a name="tasks"></a>Feladatok
 
 - [Hogyan kötegelhetek Mégse futtatások?](#how-do-i-batch-cancel-runs)
 - [Hogyan a .git mappában szerepeljen az acr-összeállító parancs?](#how-do-i-include-the-git-folder-in-az-acr-build-command)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mayg
-ms.openlocfilehash: a1fbc8a42492b4a9c2254ccea2ddc2909219ad23
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
-ms.translationtype: HT
+ms.openlocfilehash: 42ef6087663c48cad965be768f14920efa777a62
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969348"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244332"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Tudnivalók az Azure Site Recovery Deployment Planner VMware – Azure
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -121,7 +121,7 @@ Ha a Deployment Planner korábbi verziójával rendelkezik, tegye az alábbiak e
 
 ## <a name="version-history"></a>Verzióelőzmények
 A legutóbbi Site Recovery Deployment Planner eszköz verziószáma 2.4.
-Az egyes frissítésekben hozzáadott javításokról a [Site Recovery Deployment Planner verzióelőzményeinek oldalán](https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-deployment-planner-history) lehet tájékozódni.
+Az egyes frissítésekben hozzáadott javításokról a [Site Recovery Deployment Planner verzióelőzményeinek oldalán](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history) lehet tájékozódni.
 
 ## <a name="next-steps"></a>További lépések
 [A Site Recovery Deployment Planner futtatása](site-recovery-vmware-deployment-planner-run.md)

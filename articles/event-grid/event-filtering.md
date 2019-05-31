@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 9f284fea701220906a994cf108ed58cb6998aef9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187659"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305054"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Az események szűrésének az Event Grid-előfizetések ismertetése
 
@@ -107,7 +107,7 @@ Az összes karakterlánc-összehasonlítások megkülönböztetik a kis-insensit
 
 Az eseményeket az Event Grid-sémát használja a kulcs a következő értékeket:
 
-* Azonosító
+* Id
 * Témakör
 * Subject
 * EventType
@@ -117,7 +117,7 @@ Az eseményeket az Event Grid-sémát használja a kulcs a következő értékek
 A felhő események sémája események a kulcs a következő értékeket használja:
 
 * EventId
-* Forrás
+* Source
 * EventType
 * EventTypeVersion
 * Eseményadatok (például Data.key1)
@@ -140,8 +140,6 @@ Speciális szűrés a következő korlátozások vonatkoznak:
 * Event grid előfizetésenként öt speciális szűrők
 * 512 karakter / karakterlánc értéke
 * Az öt értékei **a** és **nem** operátorok
-* A kulcs legfeljebb egy beágyazott szintet tartalmazó (például data.key1)
-* Egyéni Eseménysémák szűrni lehet a csak a legfelső szintű mezők
 
 Ugyanazzal a kulccsal egynél több szűrőt is használható.
 

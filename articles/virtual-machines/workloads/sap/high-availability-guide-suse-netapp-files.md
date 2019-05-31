@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: 3bd8600d0839c31a17221bb5421dc36165deb434
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b3b5a89b43eaa5c0851962aef414ec9c9b7440da
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142982"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357733"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure NetApp Files SAP alkalmazások az Azure virtuális gépeken
 
@@ -58,7 +58,7 @@ ms.locfileid: "65142982"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Ez a cikk ismerteti a virtuális gépek üzembe helyezése, konfigurálja a virtuális gépek, telepítse a fürt keretrendszert és egy magas rendelkezésre állású SAP NetWeaver 7.50 rendszert, használatával [Azure NetApp fájlokat (a nyilvános előzetes verzió)](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).
+Ez a cikk ismerteti a virtuális gépek üzembe helyezése, konfigurálja a virtuális gépek, telepítse a fürt keretrendszert és egy magas rendelkezésre állású SAP NetWeaver 7.50 rendszert, használatával [Azure NetApp fájlok](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).
 A példa konfiguráció, telepítési parancsokat stb., a ASCS példány szám 02 00, a SSZON példányszámának 01, az elsődleges alkalmazáspéldány (szolgáltatói CÍMEI) pedig az alkalmazáspéldány (AAS) 03. Az SAP-rendszer azonosító QAS szolgál. 
 
 Ez a cikk azt ismerteti, hogyan érhető el magas rendelkezésre állás az SAP NetWeaver alkalmazást az Azure Files-NetApp. Az adatbázis réteg nem ez a cikk részletesen ismertetett.
@@ -139,13 +139,13 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA datab
 
 SAP NetWeaver az átvitel és a profil Directory megosztott tároló szükséges hozzá.  A Azure NetApp files-infrastruktúra telepítése előtt, ismerje meg az a [Azure NetApp fájlok dokumentáció][anf-azure-doc]. Ellenőrizze, hogy ha a kiválasztott Azure-régiót kínál Azure NetApp fájlokat. Az alábbi hivatkozásra a NetApp Azure fájlok az Azure-régióban rendelkezésre állását jeleníti meg: [Azure NetApp rendelkezésre állási fájlok az Azure-régió szerint][anf-avail-matrix].
 
-Az Azure NetApp fájlok szolgáltatás jelenleg nyilvános előzetes verzióban több Azure-régióban. Azure NetApp fájlok üzembe helyezése előtt regisztráljon az Azure Files-NetApp előzetes verziójára, a következő a [regisztrálni Azure NetApp fájlok útmutatás][anf-register]. 
+NetApp az Azure files érhető el több [Azure-régiók](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Azure NetApp fájlok üzembe helyezése előtt kérése a NetApp Azure Files, a következő megoldás előkészítése az [regisztrálni Azure NetApp fájlok útmutatás][anf-register]. 
 
 ### <a name="deploy-azure-netapp-files-resources"></a>NetApp fájlokat az Azure-erőforrások üzembe helyezése  
 
-A lépések azt feltételezik, hogy korábban már telepítettek [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Ne feledje, hogy a NetApp fájlokat az Azure-erőforrások és a virtuális gépek, ahol a NetApp fájlokat az Azure-erőforrások lesz csatlakoztatva kell telepíteni az azonos Azure virtuális hálózatban.  
+A lépések azt feltételezik, hogy korábban már telepítettek [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Az Azure Files-NetApp erőforrásokat és a virtuális gépek, ahol a NetApp fájlokat az Azure-erőforrások lesz csatlakoztatva kell telepíteni az azonos Azure virtuális hálózatban vagy Azure virtuális Társhálózaton belüli.  
 
-1. A kérelem nem tette meg már, ha [regisztrálása a Azure NetApp Preview](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
+1. Ha nem tette meg már, [bevezetése az Azure Files-NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
 
 2. A NetApp fiók létrehozása a kiválasztott Azure-régióban, a következő a [NetApp fiók létrehozására vonatkozó utasításokat](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
 3. Állítsa be a következő Azure NetApp fájlok kapacitás-készletben a [való beállítása az Azure Files-NetApp kapacitás készlet](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
@@ -153,7 +153,7 @@ Az SAP Netweaver-architektúra ebben a cikkben bemutatott egyetlen Azure NetApp 
 
 4. Azure NetApp files alhálózat delegálása leírtak szerint a [utasításokat delegálása az Azure Files-NetApp alhálózat](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
-5. Az Azure Files-NetApp köteteket, a következő üzembe helyezheti a [kötet létrehozása a NetApp Azure-fájlok útmutatás](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). A köteteket a kijelölt NetApp Azure Files szolgáltatásban üzembe helyezheti [alhálózati](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Ne feledje, hogy a NetApp fájlokat az Azure-erőforrások és az Azure virtuális gépek azonos Azure virtuális hálózatban kell lennie. Például sapmnt<b>QAS</b>, usrsap<b>QAS</b>használatához és így tovább a kötetnevek és sapmnt<b>qas</b>, usrsap<b>qas</b>használatához és így tovább a filepaths vannak az Azure-beli használatra NetApp fájlok kötetek.  
+5. Az Azure Files-NetApp köteteket, a következő üzembe helyezheti a [kötet létrehozása a NetApp Azure-fájlok útmutatás](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). A köteteket a kijelölt NetApp Azure Files szolgáltatásban üzembe helyezheti [alhálózati](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Ne feledje, hogy a NetApp fájlokat az Azure-erőforrások és az Azure virtuális gépek azonos Azure virtuális hálózatban vagy Azure virtuális Társhálózaton belüli kell lennie. Például sapmnt<b>QAS</b>, usrsap<b>QAS</b>használatához és így tovább a kötetnevek és sapmnt<b>qas</b>, usrsap<b>qas</b>használatához és így tovább a filepaths vannak az Azure-beli használatra NetApp fájlok kötetek.  
 
    1. kötet sapmnt<b>QAS</b> (nfs://10.1.0.4/sapmnt<b>qas</b>)
    2. kötet usrsap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>)
@@ -364,7 +364,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    > [!NOTE]
    > Azure NetApp Files jelenleg csak NFSv3 támogatja. Ne hagyja ki a nfsvers = 3 kapcsoló.
    
-   Indítsa újra az új megosztások csatlakoztatására autofs
+   Indítsa újra a `autofs` segítségével csatlakoztassa az új megosztások
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
@@ -734,7 +734,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – szolgáltatói CÍ
    /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/ursap<b>qas</b>pas
    </code></pre>
 
-   Indítsa újra az új megosztások csatlakoztatására autofs
+   Indítsa újra a `autofs` segítségével csatlakoztassa az új megosztások
 
    <pre><code>
    sudo systemctl enable autofs
@@ -759,7 +759,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – szolgáltatói CÍ
    /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
    </code></pre>
 
-   Indítsa újra az új megosztások csatlakoztatására autofs
+   Indítsa újra a `autofs` segítségével csatlakoztassa az új megosztások
 
    <pre><code>
    sudo systemctl enable autofs
@@ -1230,7 +1230,7 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
    <pre><code>anftstsapcl1:~ # pgrep er.sapQAS | xargs kill -9
    </code></pre>
 
-   Csak a parancs futtatása után, sapstart újraindítja a folyamatot. Kell futtatnia, ha gyakran elegendő sapstart lesz indítsa újra a folyamatot, és az erőforrás egy leállított állapotba kerül. Futtassa az alábbi parancsokat rendszergazdaként a vizsgálat után az erőforrás állapotának SSZON példány karbantartása.
+   Ha csak a parancs futtatása után, `sapstart` újraindítja a folyamatot. Ha kell futtatnia, elég, gyakran `sapstart` nem indítja újra a folyamatot, és az erőforrás egy leállított állapotba kerül. Futtassa az alábbi parancsokat rendszergazdaként a vizsgálat után az erőforrás állapotának SSZON példány karbantartása.
 
    <pre><code>anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>

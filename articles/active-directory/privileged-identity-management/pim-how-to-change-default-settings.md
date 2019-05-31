@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 05/31/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cb8944578caf00fac5ca430e411f044a875f6af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2bc7d3ffcb56251825bf5f6d760de647938f1ead
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60288714"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417874"
 ---
 # <a name="configure-azure-ad-role-settings-in-pim"></a>A PIM az Azure AD szerepkör-beállítások konfigurálása
 
@@ -55,7 +55,7 @@ Használja a **értesítések** kapcsolót, hogy adja meg, hogy a rendszergazdá
 
 Ha a beállítása **engedélyezése**, értesítést kap:
 
-- Kiemelt szerepkörű rendszergazda
+- A kiemelt szerepkörű rendszergazda
 - Biztonsági rendszergazda
 - Globális rendszergazda
 
@@ -72,23 +72,23 @@ Használja a **multi-factor Authentication** kapcsolót, hogy adja meg a felhasz
 * Az e-mail címüket a Microsoft-fiókkal rendelkező felhasználók (általában @outlook.com, de nem mindig) nem sikerült regisztrálni az Azure MFA-hoz. Szerepkörök hozzárendelése a Microsoft-fiókkal rendelkező felhasználók szeretne, ha kell tenni őket a állandó rendszergazdák vagy ahhoz a szerepkörhöz tartozó többtényezős hitelesítés letiltása.
 * Nem lehet letiltani az MFA magas szintű jogosultsággal rendelkező szerepkörök az Azure ad és az Office 365-öt. Ez a biztonsági funkció, mert ezek a szerepkörök gondosan kell védeni:  
   
+  * Azure Information Protection Administrator
   * Számlázási adminisztrátor
   * Felhőalkalmazás-rendszergazda
   * Szabályozási ügyintéző
-  * Feltételes hozzáférési rendszergazda
-  * CRM-szolgáltatásgazda
-  * Ügyfélszéf-hozzáférési jóváhagyó
+  * Feltételes hozzáférésű rendszergazda
+  * CRM-Szolgáltatásadminisztrátor
+  * Ügyfélszéf hozzáférés-jóváhagyója
   * Címtárírók
   * Exchange-rendszergazda
   * Globális rendszergazda
-  * Information Protection-rendszergazda
   * Intune szolgáltatás rendszergazdája
-  * Power BI-szolgáltatásgazda
-  * Kiemelt szerepkörű rendszergazda
+  * A Power BI-Szolgáltatásadminisztrátor
+  * A kiemelt szerepkörű rendszergazda
   * Biztonsági rendszergazda
-  * SharePoint szolgáltatás-rendszergazda
-  * Skype Vállalati verzió rendszergazdája
-  * Felhasználói rendszergazda
+  * A SharePoint szolgáltatás-rendszergazda
+  * Skype for Business rendszergazda
+  * Felhasználói adminisztrátor
 
 További információkért lásd: [multi-factor authentication (MFA) és a PIM](pim-how-to-require-mfa.md).
 

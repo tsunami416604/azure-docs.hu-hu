@@ -10,16 +10,16 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: b024d61c3542293202f0b409b8b3e520a75168c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c5f3a43a6c48714566b5c53b33fe541b50d61589
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431803"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383897"
 ---
 # <a name="get-insights-about-a-video"></a>Videó kapcsolatos elemzések lekérése
 
-Minden videó, a Bing Video Search API által visszaadott tartalmaz egy videó azonosítója, amely részletes tájékoztatást nyújt, mint a kapcsolódó videók segítségével. Kaphat elemzési információkat egy videót, kérje le annak [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid) az API-válasz tokent. 
+Minden videó, a Bing Video Search API által visszaadott tartalmaz egy videó azonosítója, amely részletes tájékoztatást nyújt, mint a kapcsolódó videók segítségével. Kaphat elemzési információkat egy videót, kérje le annak [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) az API-válasz tokent. 
 
 ```json
     "value" : [
@@ -34,7 +34,7 @@ Minden videó, a Bing Video Search API által visszaadott tartalmaz egy videó a
     ],
 ```
 
-Ezt követően egy GET kérelmet küld a Video részleteit végpont azonosítóval. Állítsa be a [azonosító](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#id) lekérdezési paraméter, a `videoId` token. Adja meg az elemzéseket szeretne kapni, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) lekérdezési paraméter. Az összes elemzések lekérése, állítsa `modules` minden. A válasz tartalmazza az Ön által kért, elemzések, ha elérhető.
+Ezt követően egy GET kérelmet küld a Video részleteit végpont azonosítóval. Állítsa be a [azonosító](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) lekérdezési paraméter, a `videoId` token. Adja meg az elemzéseket szeretne kapni, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) lekérdezési paraméter. Az összes elemzések lekérése, állítsa `modules` minden. A válasz tartalmazza az Ön által kért, elemzések, ha elérhető.
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -48,7 +48,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-videos-insights"></a>Kapcsolódó videók elemzések lekérése  
 
-A megadott videó kapcsolatos videók kapni, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) lekérdezési paramétert `RelatedVideos`.
+A megadott videó kapcsolatos videók kapni, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) lekérdezési paramétert `RelatedVideos`.
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-A válasz a kérésre egy legfelső szintű lesz [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails) objektumazonosító helyett egy [videók](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) objektum.  
+A válasz a kérésre egy legfelső szintű lesz [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) objektumazonosító helyett egy [videók](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) objektum.  
   
 ```json
 {

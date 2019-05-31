@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 9/25/2018
+ms.date: 05/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8d8df9935e935ac8d5a1194cfab103a006cf5546
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: b0a9d04fccce7ccbacb700f7af5126c6ae05140a
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791341"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357761"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Ellenőrizze a készletet és a csomópont hibákat
 
@@ -84,18 +84,27 @@ Megadhat egy vagy több alkalmazáscsomagot az egy készletben. A Batch letölti
 
 A csomópont [hibák](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) tulajdonság letöltéséhez, és bontsa ki az alkalmazáscsomag hibát jelez. A Batch állítja a csomópont állapota **használhatatlan**.
 
+### <a name="container-download-failure"></a>Tároló letöltési hiba
+
+Egy készlet egy vagy több tároló hivatkozást is megadhat. A Batch a megadott tárolók minden csomóponton tölti le. A csomópont [hibák](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) tulajdonság egy tároló letöltése sikertelen, és beállítja a csomópont állapota **használhatatlan**.
+
 ### <a name="node-in-unusable-state"></a>Csomópont használhatatlan állapotban
 
 Az Azure Batch előfordulhat, hogy állítsa be a [csomópont állapota](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) való **használhatatlan** ennek számos oka lehet. A csomópont állapota értékre **használhatatlan**, a feladatok nem lehet ütemezni a csomópontra, de továbbra is tekintetében számítunk fel díjat.
 
-A Batch minden esetben megpróbálja helyreállítani a használhatatlan csomópontok, de helyreállítási is, vagy nem lehetséges okától függően.
+A csomópontok egy **unsuable**, de [hibák](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) állapot azt jelenti, hogy a Batch nem lehet kommunikálni a virtuális Gépet. Ebben az esetben a Batch minden esetben megpróbálja helyreállítani a virtuális Gépet. A Batch nem automatikusan próbálja meg helyreállítani a virtuális gépek, amelyek nem sikerült telepíteni az alkalmazáscsomagokat, vagy a tárolók, annak ellenére, hogy az állapot **használhatatlan**.
 
 Ha a Batch megadhatja, hogy az okot, a csomópont [hibák](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) tulajdonság jelzi azt.
 
 Okairól további példái **használhatatlan** csomópontokat tartalmazza:
 
 - Egyéni Virtuálisgép-rendszerkép nem érvényes. Ha például olyan lemezképet, amely nem megfelelően van-e előkészítve.
+
 - Virtuális gép átkerül az infrastruktúra meghibásodása vagy egy alacsony szintű frissítése miatt. A Batch a csomóponton állítja helyre.
+
+- Hardver, amely nem támogatja a Virtuálisgép-rendszerkép lett telepítve. Például egy "HPC" Virtuálisgép-lemezkép nem HPC-hardveren. Például próbál egy CentOS HPC-rendszerképet futtat egy [standard D1 v2](../virtual-machines/linux/sizes-general.md#dv2-series) virtuális Gépet.
+
+- A virtuális gépek egy [az Azure virtual network](batch-virtual-network.md), és a forgalom a fontosabb port le van tiltva.
 
 ### <a name="node-agent-log-files"></a>Csomópont-ügynök naplófájljainak
 

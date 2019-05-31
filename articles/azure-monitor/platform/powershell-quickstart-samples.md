@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 59cb14c86963d956b0bd63f65b10776dff4aa97f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ada62fbfa51604a6b3188c27d5c14da40c8ac116
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60452721"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400208"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Az Azure Monitor PowerShell gyors üzembe helyezési minták
 Ez a cikk mutatja, a minta PowerShell-parancsok segítségével elérheti az Azure Monitor-funkciók.
@@ -42,6 +42,11 @@ Megjelenik egy bejelentkezési képernyő. Egyszer, jelentkezzen be a fiók a b�
 Get-AzSubscription
 ```
 
+Megtekintheti a működő környezet (mely a parancsok futtatása ellen előfizetés), használja a következő parancsot:
+
+```powershell
+Get-AzContext
+```
 A működő környezet másik előfizetésbe való módosításához használja a következő parancsot:
 
 ```powershell
@@ -50,18 +55,23 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log-for-a-subscription"></a>Tevékenységnapló-előfizetéshez tartozó beolvasása
-Használja a `Get-AzLog` parancsmagot.  Az alábbiakban néhány gyakori példa.
+Használja a [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) parancsmagot.  Az alábbiakban néhány gyakori példa. A tevékenységnapló tárolja a műveletek az elmúlt 90 napban. Ez idő eredmények előtt dátumok használata az hibaüzenetet.  
+
+Tekintse meg az aktuális dátumot és időpontot is győződjön meg arról, mit kattintson kétszer az alábbi parancsokat használja:
+```powershell
+Get-Date
+```
 
 Naplóbejegyzés kérhet az időpontot vagy dátumot, hogy:
 
 ```powershell
-Get-AzLog -StartTime 2016-03-01T10:30
+Get-AzLog -StartTime 2019-03-01T10:30
 ```
 
 Kérje le a naplóbejegyzések között egy dátum/idő tartomány:
 
 ```powershell
-Get-AzLog -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
+Get-AzLog -StartTime 2019-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
 Naplózási bejegyzések beolvasása egy adott erőforráscsoporthoz:
@@ -85,13 +95,13 @@ Get-AzLog -Caller 'myname@company.com'
 Az alábbi parancs beolvassa a tevékenységnaplóban a legutóbbi 1000 esemény:
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 10
 ```
 
 `Get-AzLog` sok más paramétereket támogatja. Tekintse meg a `Get-AzLog` további információt.
 
 > [!NOTE]
-> `Get-AzLog` Előzmények 15 napos csak biztosít. Használatával a **– a MaxEvents** paraméter lehetővé teszi, hogy az utolsó N események 15 napos időszak letelte után. Hozzáférési események régebbi, mint 15 napon keresztül használja a REST API vagy SDK-t (C# minta az SDK-val). Ha nem adja meg az **StartTime**, akkor az alapértelmezett érték **EndTime** mínusz egy óra. Ha nem adja meg az **EndTime**, akkor az alapértelmezett érték az aktuális idő. Minden esetben vannak (UTC).
+> `Get-AzLog` Előzmények 15 napos csak biztosít. Használatával a **- MaxRecords** paraméter lehetővé teszi, hogy az utolsó N események 15 napos időszak letelte után. Hozzáférési események régebbi, mint 15 napon keresztül használja a REST API vagy SDK-t (C# minta az SDK-val). Ha nem adja meg az **StartTime**, akkor az alapértelmezett érték **EndTime** mínusz egy óra. Ha nem adja meg az **EndTime**, akkor az alapértelmezett érték az aktuális idő. Minden esetben vannak (UTC).
 > 
 > 
 
@@ -140,7 +150,7 @@ E-mailt és webhookot tulajdonságok használatával hozhat létre `New-AzAlertR
 
 A következő táblázat ismerteti a használt paraméterek és értékek metrikával riasztás létrehozásához.
 
-| paraméter | value |
+| A paraméter | value |
 | --- | --- |
 | Name (Név) |simpletestdiskwrite |
 | Ez a riasztási szabály helye |USA keleti régiója |

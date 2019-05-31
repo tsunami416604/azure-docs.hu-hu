@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 12/27/2018
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: a84cbba968baf50563a2c2b0e2843d64f17bb34a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 11d409f904c43c0df4bbbd44fdb24531f2f989f6
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62124713"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399599"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Az Azure Stack-alapú virtuális gépek replikálása az Azure-bA
 
@@ -173,7 +173,7 @@ A konfigurációs kiszolgáló gép, regisztrálja a tárolóban, és a repliká
 
 3. A **-kiszolgáló hozzáadása**, ellenőrizze, hogy **konfigurációs kiszolgáló** megjelenik **kiszolgálótípus**.
 5. A Site Recovery egyesített telepítőjének telepítőfájl letöltéséhez.
-6. Töltse le a tároló regisztrációs kulcsát. A regisztrációs kulcs egyesített telepítő futtatásakor kell. A kulcs a generálásától számított öt napig érvényes.
+6. Töltse le a tárolóregisztrációs kulcsot. A regisztrációs kulcs egyesített telepítő futtatásakor kell. A kulcs a generálásától számított öt napig érvényes.
 
     ![A forrás beállítása](./media/azure-stack-site-recovery/set-source2.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 08ea0081c84ea31b2b71d03679b1b527cf94c075
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e5b5876fa6277d1bad0989c543de667f75a066c
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60556780"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258728"
 ---
 # <a name="sfctl-node"></a>sfctl-csomópont
 A csomópontok, amely egy fürt kezelése.
@@ -28,10 +28,10 @@ A csomópontok, amely egy fürt kezelése.
 
 |Parancs|Leírás|
 | --- | --- |
-| letiltása | Egy Service Fabric-fürt csomópontja megadott inaktiválási készítésében inaktiválása. |
-| engedélyezése | Aktiválja egy Service Fabric-fürt csomópontja, amely jelenleg inaktivált állapotban van. |
+| Letiltása | Egy Service Fabric-fürt csomópontja megadott inaktiválási készítésében inaktiválása. |
+| Engedélyezése | Aktiválja egy Service Fabric-fürt csomópontja, amely jelenleg inaktivált állapotban van. |
 | egészségügy | Lekérdezi egy Service Fabric-csomópont állapotát. |
-| információ | Egy adott csomópont a adatainak beolvasása a Service Fabric-fürtben. |
+| Adatai | Egy adott csomópont a adatainak beolvasása a Service Fabric-fürtben. |
 | lista | A Service Fabric-fürtben található csomópontok listájának beolvasása. |
 | betöltés | A Service Fabric-csomópont a terhelés információkat kér le. |
 | állapot eltávolítása | Értesítést küld a Service Fabric, hogy a csomópont a megőrzött állapot véglegesen eltávolították vagy elveszett. |
@@ -180,6 +180,8 @@ A Service Fabric csomópont esetében a betöltés vagy meghatározott kapacitá
 Értesítést küld a Service Fabric, hogy a csomópont a megőrzött állapot véglegesen eltávolították vagy elveszett.
 
 Ez azt jelenti, hogy azt ne legyen az adott csomópont a megőrzött állapot helyreállításához. Ez általában akkor történik, a merevlemez már megtörténhetett tiszta, vagy ha összeomlik, egy merevlemezt. A csomópont rendelkezik, a művelet sikeres legyen. Ez a művelet lehetővé teszi, hogy a Service Fabric tudja, hogy a replikákat a csomóponton már nem létezik, és a Service Fabric le kell állnia, e replikák térjen vissza vár. Ne futtassa ezt a parancsmagot, ha a csomópont állapotát nem el lett távolítva, és a csomópont is kapja vissza meg állapotában nem sérültek.
+
+Service Fabric 6.5, kezdve a magcsomópontok, a parancsmag használatához módosítsa a magcsomópontok normál (nem kezdőérték) csomóponton, és ezután meghívja a parancsmag eltávolítja a csomópont állapota. A fürt az Azure-ban fut, miután a kezdőérték csomópont leáll, ha a Service Fabric megpróbálja automatikusan módosítani, amely nem kezdőérték csomópontra. Ez történik, győződjön meg arról, hogy meg arról, hogy az elsődleges csomóponttípushoz nem kezdőérték csomópontok száma nem lesz kisebb, mint a a magcsomópontok le. Ha szükséges, adja hozzá több csomópontot az elsődleges csomóponttípushoz, ennek érdekében. Önálló fürt, a régebbi kezdőérték csomópont várhatóan nem vissza kapja meg az ép állapotba, ha. Távolítsa el a csomópontot a fürtről, lásd: [távolít el csomópontokat önálló Service Fabric-fürt](/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes) 
 
 ### <a name="arguments"></a>Argumentumok
 

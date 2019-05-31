@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f93f6c8891ba9f7407310a8f09387e97f5c1f578
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65de80004dd05e3eb29f3313bc17405c40450d7a
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401782"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397124"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -305,6 +305,8 @@ Ez a hiba akkor fordul elő, az alábbi problémák egyike miatt:
 
 4. A runbook meghívása egy végrehajtható fájl vagy egy runbook, amely egy Azure védőfal subprocess történt kísérlet. Ez a forgatókönyv nem támogatott az Azure próbakörnyezetbe lefordítja a.
 
+5. A runbook próbált meg túl sok kivétel adatokat írni a kimeneti adatfolyamba.
+
 #### <a name="resolution"></a>Megoldás:
 
 A probléma elhárításához a következő megoldások valamelyikét:
@@ -316,6 +318,8 @@ A probléma elhárításához a következő megoldások valamelyikét:
 * Egy másik megoldás, ha a runbook futtatása egy [hibrid Runbook-feldolgozó](../automation-hrw-run-runbooks.md). Hibrid feldolgozók nem korlátozza, amelyek az Azure próbakörnyezetbe lefordítja a memória és a hálózati korlátok.
 
 * A runbook egy folyamat (például .exe vagy subprocess.call) meghívásához szükséges, ha szüksége lesz a runbook futtatását egy [hibrid Runbook-feldolgozó](../automation-hrw-run-runbooks.md).
+
+* A feladat kimeneti adatfolyamba nincs a 1 Megabájtos korlátot. Győződjön meg arról, hogy egy végrehajtható fájlt vagy részfolyamathoz hívások formázandó szöveget zárja dupla egy try/catch blokkban. A kivételt, ha írási az üzenet az adott kivétel egy Automation-változóban. Ez meggátolja, a feladat kimeneti adatfolyamba való írása közben.
 
 ### <a name="fails-deserialized-object"></a>Forgatókönyv: Runbook deszerializált objektum miatt meghiúsul
 

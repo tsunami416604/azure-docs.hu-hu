@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8d31f04c355b47720a1c9b0334042ba2f6654768
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1f40c62fce61ba16dfdf289d54cd19c3739ce21
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477348"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393769"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Teljesítmény-irányelvek az SQL Server Azure Virtual Machines szolgáltatásban
 
@@ -41,7 +41,7 @@ A következő lista egy gyors ellenőrzés az optimális teljesítmény érdeké
 | Terület | Optimalizálási lehetőségek |
 | --- | --- |
 | [Virtuális gép mérete](#vm-size-guidance) | - [DS3_v2](../sizes-general.md) vagy újabb verziója az SQL Enterprise Edition.<br/><br/> - [DS2_v2](../sizes-general.md) vagy újabb SQL Standard és Web kiadások. |
-| [Tárolás](#storage-guidance) | – Használja [prémium szintű SSD-k](../disks-types.md). Fejlesztési-tesztelési csak standard szintű storage ajánlott.<br/><br/> – Folyamatosan a [tárfiók](../../../storage/common/storage-create-storage-account.md) és az SQL Server rendszerű virtuális gép ugyanabban a régióban.<br/><br/> * Tiltsa le az Azure [georedundáns tárolás](../../../storage/common/storage-redundancy.md) (georeplikáció) a tárfiókban. |
+| [Storage](#storage-guidance) | – Használja [prémium szintű SSD-k](../disks-types.md). Fejlesztési-tesztelési csak standard szintű storage ajánlott.<br/><br/> – Folyamatosan a [tárfiók](../../../storage/common/storage-create-storage-account.md) és az SQL Server rendszerű virtuális gép ugyanabban a régióban.<br/><br/> * Tiltsa le az Azure [georedundáns tárolás](../../../storage/common/storage-redundancy.md) (georeplikáció) a tárfiókban. |
 | [Lemezek](#disks-guidance) | – Használja legalább 2 [P30 lemez](../disks-types.md#premium-ssd) (1. a naplófájlok és 1-adatfájlok többek között a TempDB). Körülbelül 50 000 iops-t igénylő számítási feladatokhoz érdemes lehet egy Ultra SSD. <br/><br/> -Elkerülése érdekében használja az operációs rendszer vagy az ideiglenes lemezek adatbázistár vagy a naplózás.<br/><br/> -Enable olvasási gyorsítótárat üzemeltető, az adatok és a TempDB-adatfájlok (eke) t a.<br/><br/> – Ne engedélyezze a gyorsítótárazás üzemeltetési a naplófájl (eke) t.  **Fontos**: Állítsa le az SQL Server szolgáltatást, ha egy Azure-beli Virtuálisgép-lemez gyorsítótár beállításainak módosítása.<br/><br/> -Stripe-több Azure-adatlemezek a jobb i/o-átviteli sebesség lekérdezése.<br/><br/> -Formátumban, dokumentált foglalási mérettel. <br/><br/> -A kritikus fontosságú az SQL Server számítási feladatokhoz (Miután kiválasztotta a megfelelő virtuális gép mérete) helyi SSD hely a TempDB. |
 | [I/O](#io-guidance) |-Adatbázis oldal tömörítésének engedélyezéséhez.<br/><br/> -Adatfájlok azonnali fájl inicializálása engedélyezése.<br/><br/> – Az adatbázis ejtésével korlátozza.<br/><br/> – Tiltsa le az adatbázis többletterheléshez.<br/><br/> -Összes adatbázis áthelyezése az adatlemezeket, beleértve a rendszeradatbázisokban.<br/><br/> – Helyezze át az SQL Server hiba napló- és nyomkövetési fájl könyvtárak adatlemezeket.<br/><br/> -Telepítés az alapértelmezett biztonsági mentés és adatbázis-fájlok helye.<br/><br/> -Engedélyezése zárolt lapok vannak.<br/><br/> -Érvényes SQL Server teljesítményének javításait. |
 | [A szolgáltatás-specifikus](#feature-specific-guidance) | – Biztonsági másolat készítése közvetlenül a blob storage-bA. |
@@ -179,11 +179,22 @@ Ez a javaslat egyetlen kivétel van: _írási-igényes a TempDB használat eset�
 
 Egyes központi telepítések további teljesítménybeli előnyök speciális konfigurációs technikákkal elérése érdekében. Az alábbi listában néhány SQL Server-szolgáltatások, amelyek segítségével jobb teljesítményt érhet el emeli ki:
 
-* **Az Azure storage biztonsági mentési**: Ha a biztonsági mentések végrehajtásához Azure-beli virtuális gépeken futó SQL Server, [URL-címét az SQL Server biztonsági másolat](https://msdn.microsoft.com/library/dn435916.aspx). Ez a funkció az SQL Server 2012 SP1 CU2 kezdődően elérhető, és a biztonsági mentés a csatlakoztatott adatlemezekkel ajánlott. Ha Ön biztonsági mentési és visszaállítási és- tárolókról az Azure storage, kövesse az adja meg a javaslatok [SQL Server biztonsági másolat URL-cím ajánlott eljárások és hibaelhárítási és visszaállítása az Azure Storage-ban tárolt biztonsági másolatok](https://msdn.microsoft.com/library/jj919149.aspx). Ezeket a biztonsági másolatokat használatával is automatizálható [automatikus biztonsági mentés az SQL Server az Azure Virtual machines gépeken](virtual-machines-windows-sql-automated-backup.md).
+### <a name="backup-to-azure-storage"></a>Az Azure Storage biztonsági mentés
+Ha a biztonsági mentések végrehajtásához Azure-beli virtuális gépeken futó SQL Server, [URL-címét az SQL Server biztonsági másolat](https://msdn.microsoft.com/library/dn435916.aspx). Ez a funkció az SQL Server 2012 SP1 CU2 kezdődően elérhető, és a biztonsági mentés a csatlakoztatott adatlemezekkel ajánlott. Ha Ön biztonsági mentési és visszaállítási és- tárolókról az Azure storage, kövesse az adja meg a javaslatok [SQL Server biztonsági másolat URL-cím ajánlott eljárások és hibaelhárítási és visszaállítása az Azure Storage-ban tárolt biztonsági másolatok](https://msdn.microsoft.com/library/jj919149.aspx). Ezeket a biztonsági másolatokat használatával is automatizálható [automatikus biztonsági mentés az SQL Server az Azure Virtual machines gépeken](virtual-machines-windows-sql-automated-backup.md).
 
-    Az SQL Server 2012 megjelenése előtt használható [SQL Server Backup to Azure eszköz](https://www.microsoft.com/download/details.aspx?id=40740). Ez az eszköz segítségével növeléséhez a biztonsági mentési több biztonsági mentési stripe-cél használatával.
+Az SQL Server 2012 megjelenése előtt használható [SQL Server Backup to Azure eszköz](https://www.microsoft.com/download/details.aspx?id=40740). Ez az eszköz segítségével növeléséhez a biztonsági mentési több biztonsági mentési stripe-cél használatával.
 
-* **Az SQL Server-adatfájlok az Azure-ban**: Ez az új funkció, [SQL Server-adatfájlok az Azure-ban](https://msdn.microsoft.com/library/dn385720.aspx), az SQL Server 2014 kezdve érhető el. Hasonló teljesítményt nyújt, mint Azure-adatlemezek használata az adatfájlokat az Azure-ban az SQL Server rendszert futtató mutatja be.
+### <a name="sql-server-data-files-in-azure"></a>Az SQL Server-adatok fájlokat az Azure-ban
+
+Ez az új funkció, [SQL Server-adatfájlok az Azure-ban](https://msdn.microsoft.com/library/dn385720.aspx), az SQL Server 2014 kezdve érhető el. Hasonló teljesítményt nyújt, mint Azure-adatlemezek használata az adatfájlokat az Azure-ban az SQL Server rendszert futtató mutatja be.
+
+### <a name="failover-cluster-instance-and-storage-spaces"></a>Feladatátvevőfürt-példány és a tárolóhelyek
+
+Ha használ, a tárolóhelyek a fürtben lévő csomópontok hozzáadása a **megerősítő** lapon, törölje a jelet a jelölőnégyzetből, címkéjű **minden megfelelő tároló felvétele a fürtbe**. 
+
+![Törölje a megfelelő tárolót](media/virtual-machines-windows-sql-performance/uncheck-eligible-cluster-storage.png)
+
+Ha a tárolóhelyeket használja, és nem törölje a jelet **minden megfelelő tároló felvétele a fürtbe**, Windows leválasztja a virtuális lemezek a csoportosítási eljárás során. Ennek eredményeképpen nem jelennek meg a logikailemez-kezelő vagy Explorer mindaddig, amíg a tárolóhelyek el lesznek távolítva a fürtöt, és csatolni a PowerShell használatával. A tárolóhelyek több lemezek a tárolókészletekhez csoportosítja. További információkért lásd: [tárolóhelyek](/windows-server/storage/storage-spaces/overview).
 
 ## <a name="next-steps"></a>További lépések
 

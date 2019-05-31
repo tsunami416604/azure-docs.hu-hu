@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7cb8d494d32f2a9c192418bfab2d5ca9b679c5fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5517bb59d168ffa8d9339d9e765c385cef6db4ce
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60704928"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389479"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés az Azure Security Centerben (előzetes verzió) figyelése
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
+
+> [!NOTE]
+> A "nézet *klasszikus* identitás és hozzáférés" hivatkozást a 2019. július 31-én kivezetjük. Kattintson a [Itt](security-center-features-retirement-july2019.md#menu_classicidentity) alternatív szolgáltatások további.
 
 > [!NOTE]
 > Identitás és hozzáférés figyelése az előzetes verzióban és csak a Security Center Standard szinten érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
@@ -115,11 +118,11 @@ Referenciaként az alábbi táblázat segítségével segítenek megérteni a re
 |Előfizetés|30|Tulajdonosi engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből|Tulajdonosi engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából. |
 |Előfizetés|30|Az MFA engedélyezése az előfizetés olvasási jogosultsággal rendelkező fiókok Azure kezelési alkalmazás|A multi-factor Authentication (MFA) engedélyezéséhez a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése olvasási jogosultságokkal rendelkező összes előfizetési fiókban.|
 |Előfizetés|25|Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből|Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából. |
-|Előfizetés|20|Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetésből|Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetések közül.|
-|Előfizetés|5|Elavult fiókok eltávolítása az előfizetésből|Elavult fiókok eltávolítása az csak az aktuális felhasználó hozzáférésének engedélyezése az előfizetések közül. |
+|Előfizetés|20|Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetésből|Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetések közül. Elavult fiókok azok a fiókok, amelyekre bejelentkezési le van tiltva az Azure ad-ben.|
+|Előfizetés|5|Elavult fiókok eltávolítása az előfizetésből|Elavult fiókok eltávolítása az csak az aktuális felhasználó hozzáférésének engedélyezése az előfizetések közül. Elavult fiókok azok a fiókok, amelyekre bejelentkezési le van tiltva az Azure ad-ben.|
 |Előfizetés|5|Az előfizetéshez legalább egy tulajdonos kijelölése|Több mint egy előfizetés-tulajdonost kijelölni a rendszergazdai hozzáférés redundanciájának biztosításához.|
-|Előfizetés|5|Legfeljebb 3 előfizetéstulajdonos kijelölése|Kevesebb mint 3 előfizetés-tulajdonost kijelölni az esetleges illetéktelen behatolás feltört tulajdonosa.|
-|Key Vault|5|Diagnosztikainapló-használat engedélyezése a Key Vaultban|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Előfizetés|5|Az előfizetés legfeljebb 3 tulajdonos kijelölése|Kevesebb mint 3 előfizetés-tulajdonost kijelölni az esetleges illetéktelen behatolás feltört tulajdonosa.|
+|Key Vault|5|A Key Vault-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
 |Előfizetés|15|Olvasási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből|Az olvasási jogosultsággal rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.|
 |Előfizetés|1|Biztonsági kapcsolattartói adatok megadása|Biztonsági kapcsolattartó adatainak megadása minden egyes előfizetésnél. Kapcsolattartási adatok, e-mail címét és telefonszámát szám. Az adatok kapcsolatba lépni Önnel, ha a biztonsági csoportunk, hogy az erőforrások kerülnek veszélybe|
 

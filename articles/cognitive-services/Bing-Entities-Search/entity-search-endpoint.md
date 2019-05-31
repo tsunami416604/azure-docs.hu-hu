@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: b29e568d6b3b1382b5be434500014f10740b58f8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 43bca65810d09c87f7f473b3bbac71ca6a7f9bc2
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788540"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389012"
 ---
 # <a name="bing-entity-search-api-endpoint"></a>A Bing Entity Search API-végpont
 
@@ -24,7 +24,7 @@ A Bing Entity Search API tartalmaz egy végpontot, amely entitásokat ad vissza,
 
 ## <a name="get-entity-results-from-the-endpoint"></a>A végpontról entitás eredményeinek beolvasása
 
-Használatával eredmények lekérése entitás a **Bing-API**, küldjön egy `GET` kérelem a következő végpont. Használat [fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers) és [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query-parameters) szabhatja testre a keresési kérelmet. Keresési kérelmek használatával küldhető a `?q=` paraméter.
+Használatával eredmények lekérése entitás a **Bing-API**, küldjön egy `GET` kérelem a következő végpont. Használat [fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) és [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) szabhatja testre a keresési kérelmet. Keresési kérelmek használatával küldhető a `?q=` paraméter.
 
 ```cURL
  GET https://api.cognitive.microsoft.com/bing/v7.0/entities
@@ -37,4 +37,4 @@ Használatával eredmények lekérése entitás a **Bing-API**, küldjön egy `G
 
 ## <a name="see-also"></a>Lásd még 
 
-A fejlécek, paraméterek, piaci kódok, válaszobjektumok, hibák és további kapcsolatos további információkért lásd: a [Bing Entity Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) áttekintésével foglalkozó cikkben.
+A fejlécek, paraméterek, piaci kódok, válaszobjektumok, hibák és további kapcsolatos további információkért lásd: a [Bing Entity Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) áttekintésével foglalkozó cikkben.

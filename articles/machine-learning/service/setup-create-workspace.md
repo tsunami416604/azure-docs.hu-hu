@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: c6c32265e6fc2fc2bb0d6b00d89862e200731a2a
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 36f3d421ee0b41a0ff71b549a4d4b5646188c3fa
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "66016450"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417353"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Az Azure Machine Learning szolgáltatás munkaterület létrehozása
 
@@ -168,7 +168,7 @@ A munkaterület konfigurációs fájl egyszerűen később betöltése ugyanazon
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
 
-Ez `write_config()` API-hívás létrehoz a konfigurációs fájlt az aktuális könyvtárban található. A *config.json* fájl tartalmazza a következőket:
+Ez `write_config()` API-hívás létrehoz a konfigurációs fájlt az aktuális könyvtárban található. A *.azureml/config.json* fájl tartalmazza a következőket:
 
 ```json
 {

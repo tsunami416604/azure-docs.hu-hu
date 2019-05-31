@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: b4744201f506730303e190783acc60bfaa383720
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 9cd02172af5246c60b93a6e4696988268abed506
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409810"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258683"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure database ajánlott biztonsági eljárások
 Ez a cikk ismerteti az adatbázis-biztonság ajánlott eljárásai.
@@ -165,6 +165,10 @@ Engedélyezi ezeket a képességeket nyújt segítséget:
 - Észleli, és reagáljon a lehetséges veszélyforrásokra.
 
 Emellett a Fenyegetésészlelés integrálódik a riasztások az Azure Security Center egy helyen jeleníti meg az összes az Azure-erőforrások biztonsági állapotát.
+
+## <a name="enable-feature-restrictions"></a>A szolgáltatás korlátozásainak engedélyezése
+
+A-adatbázisokban tárolt adatok törvényes eszközök segítségével, az adatbázis-hibák és lekérdezés-végrehajtási időpontok támadási vektorok lehetnek kitéve. Az Azure SQL Database számos olyan funkciót korlátozás mechanizmusokat, az adatbázis védelmét. További tudnivalókért lásd: [SQL Database szolgáltatás korlátozásai](../sql-database/sql-database-feature-restrictions.md).
 
 ## <a name="next-steps"></a>További lépések
 Lásd: [Azure ajánlott biztonsági eljárások és minták](security-best-practices-and-patterns.md) további ajánlott biztonsági eljárások szeretne használni, amikor a tervezése, telepítése, és a felhőalapú megoldások kezelése az Azure használatával.

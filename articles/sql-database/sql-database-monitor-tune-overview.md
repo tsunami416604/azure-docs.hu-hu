@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: cae0fbd450e6b392e1689d4642181f6e5279752b
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
-ms.translationtype: HT
+ms.openlocfilehash: 2fa43fcd48736a3d044deb07ed690af580c3b987
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393212"
+ms.locfileid: "66416275"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorozás és teljesítmény-finomhangolás
 
@@ -143,6 +143,24 @@ WHERE
 GROUP BY q.query_hash
 ORDER BY count (distinct p.query_id) DESC
 ```
+### <a name="factors-influencing-query-plan-changes"></a>Lekérdezésterv változásait befolyásoló tényezők
+
+A lekérdezés végrehajtási terv jelölője eredményezhet a létrehozott lekérdezési terv, amely eltér a mi eredetileg gyorsítótárazva lett. Nincsenek miért egy meglévő eredeti csomagot előfordulhat, hogy automatikusan fordítani a különböző okok miatt:
+- A séma, a lekérdezés által hivatkozott változásai
+- A lekérdezés által hivatkozott táblák adatok módosításait 
+- Lekérdezés környezeti beállítások módosítása 
+
+Lefordított csomag számos okból, beleértve a példány újraindul a gyorsítótárból lehet kiadni, az adatbázishoz kötődő konfigurációs módosítások, rendelkezésre álló memória mennyisége és a gyorsítótár explicit kérelmeket. Ezenkívül a RECOMPILE mutató használatával azt jelenti, hogy a terv nem gyorsítótárazható.
+
+A jelölője (vagy a gyorsítótár-kiürítés után friss fordítás) továbbra is eredményezhet egy azonos lekérdezés végrehajtási tervét a több eredetileg megfigyelt generációja.  Ha, azonban a terv a korábbi vagy az eredeti csomaggal képest módosul, az alábbiakban a leggyakoribb magyarázatok miért módosult a végrehajtás lekérdezésterv:
+
+- **Módosított fizikai tervezési**. Például az új index jön létre, hogy több optimális kihasználhatja, hogy új index, mint használ az adatok struktúrája eredetileg kijelölt első verziója-e hatékonyabban cover egy lekérdezés követelményeinek lehet használni az új fordítás, ha a lekérdezésoptimalizáló úgy dönt, hogy a lekérdezés végrehajtását.  Fizikai módosítania a hivatkozott objektumokat eredményezhet a fordítási során új csomag közül választhat.
+
+- **Kiszolgáló-erőforrás különbségek**. Egy olyan forgatókönyvet, ahol a csomag a "rendszer" és "B rendszer" – rendelkezésre álló erőforrások, például a rendelkezésre álló processzorok száma eltér a befolyásolhatja a milyen csomagot generált beolvasása.  Például ha egy rendszer megnövelt számú processzorral rendelkezik, párhuzamos tervekben lehet kiválasztani. 
+
+- **Különböző statisztika**. A statisztikák, a hivatkozott objektumokat társított megváltozott, vagy a Microsoft eltérnek az eredeti system statisztikák.  A statisztika módosítja, és a recompile akkor fordul elő, ha a lekérdezésoptimalizáló idő kezdődően a megadott pillanattól statisztika fogja használni. Előfordulhat, hogy a módosított statisztikák jelentősen eltérő disztribúcióiról, valamint a gyakoriságot, amelyek nem az eredeti összeállításakor eset.  Ezeket a módosításokat segítségével megbecsülheti a számosság becslése (a logikai lekérdezés fa funkción keresztül elvárt sorok száma).  Számosság becslések módosításai számunkra, hogy válassza ki a különböző fizikai operátorok és a társított sorrend-az-műveletek vezethet.  A statisztikák még kisebb módosításokat egy módosított lekérdezés végrehajtási terv eredményezhet.
+
+- **Megváltozott adatbázis kompatibilitási szintje vagy cardinality estimator verzió**.  Az adatbázis-kompatibilitási szint módosítása engedélyezheti új stratégiákat és szolgáltatásokat, amelyek egy másik lekérdezés végrehajtási terv eredményezhet.  Az adatbázis kompatibilitási szintje túl letiltása vagy engedélyezése követési jelző 4199-es vagy a hatókörrel rendelkező adatbázis-konfiguráció, QUERY_OPTIMIZER_HOTFIXES is befolyásolhatja állapotát lekérdezés végrehajtási terv lehetőségek a fordítási során.  Nyomkövetési jelzők 9481 (kényszerített örökölt CE) és 2312 (kényszerítése az alapértelmezett CE) is érintő vannak megtervezése. 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>A probléma lekérdezéseket, vagy adjon meg további erőforrások
 

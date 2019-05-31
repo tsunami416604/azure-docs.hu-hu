@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 05/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e65f7ca0a01e0ceee6448ea49e1d6d6da696cf6
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60468317"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417074"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök az Azure Active Directory felügyeleti feladat
 
@@ -57,7 +57,7 @@ Létrehozása, olvasása, frissítése és törlése a felhasználók | Globáli
 Az összes konfiguráció olvasása | Globális rendszergazda | 
 Olvassa el a B2C-naplók | Globális rendszergazda ([dokumentációjában](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
-## <a name="company-branding"></a>Vállalati védjegyezés
+## <a name="company-branding"></a>Vállalati arculat megjelenítése
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
@@ -115,8 +115,8 @@ Az összes konfiguráció olvasása | A rendszer Active Directory Tartományi sz
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Eszköz letiltása | Felhőeszköz-rendszergazda | 
-Eszköz engedélyezése | Felhőeszköz-rendszergazda | 
+Eszköz letiltása | Felhőbeli eszközrendszergazda | 
+Eszköz engedélyezése | Felhőbeli eszközrendszergazda | 
 Alapszintű konfiguráció olvasása | Felhasználói szerepkör alapértelmezés ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Olvassa el a BitLocker-kulcsok | Biztonsági olvasó | Jelszókezelő, a biztonsági rendszergazda
 
@@ -152,7 +152,7 @@ Csoportbeállítások kezelése | Globális rendszergazda |
 Olvassa el az összes konfigurációs (kivéve a rejtett tagsági) | Címtárolvasók | Felhasználói szerepkör alapértelmezés ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Rejtett olvasási tagság | A csoporttag | Csoporttulajdonos, jelszókezelő, Exchange-rendszergazda, SharePoint-rendszergazda, csapatok rendszergazda, a felhasználó rendszergazda
 Olvassa el a rejtett tagsággal rendelkező csoportok tagsága | Ügyfélszolgálati adminisztrátor | Felhasználói rendszergazda, a Teams-rendszergazda
-Licenc visszavonása | Licencadminisztrátor | Felhasználói adminisztrátor
+Licenc visszavonása | Licencek adminisztrátora | Felhasználói adminisztrátor
 Frissíteni a csoporttagságot | Csoporttulajdonos ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználói adminisztrátor
 Csoporttulajdonosok frissítése | Csoporttulajdonos ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználói adminisztrátor
 Frissítési csoport tulajdonságai | Csoporttulajdonos ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználói adminisztrátor
@@ -176,9 +176,9 @@ Olvassa el a biztonsági rések | Biztonsági olvasó |
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Licenc hozzárendelése | Licencadminisztrátor | Felhasználói adminisztrátor
+Licenc hozzárendelése | Licencek adminisztrátora | Felhasználói adminisztrátor
 Az összes konfiguráció olvasása | Címtárolvasók | Felhasználói szerepkör alapértelmezés ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Licenc visszavonása | Licencadminisztrátor | Felhasználói adminisztrátor
+Licenc visszavonása | Licencek adminisztrátora | Felhasználói adminisztrátor
 Próbálja ki, vagy előfizetés vásárlása | Számlázási rendszergazda | 
 
 
@@ -198,18 +198,18 @@ Olvassa el a bejelentkezési naplók | Jelentésolvasó | Biztonsági olvasó, a
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Minden, a kiválasztott felhasználók által létrehozott alkalmazásjelszó törlése | Globális rendszergazda | 
+A kiválasztott felhasználók által létrehozott összes meglévő alkalmazásjelszavak törlése | Globális rendszergazda | 
 Többtényezős hitelesítés letiltása | Globális rendszergazda | 
 MFA engedélyezése | Globális rendszergazda | 
 Az MFA Szolgáltatásbeállítások kezelése | Globális rendszergazda | 
-A kapcsolattartási mód újbóli megadásának kérése a kiválasztott felhasználóktól | Hitelesítési rendszergazda | 
-A többtényezős hitelesítés visszaállítása az összes megjegyzett eszközön  | Hitelesítési rendszergazda | 
+Kiválasztott felhasználók a kapcsolattartási mód újbóli megadásának megkövetelése | Hitelesítési rendszergazda | 
+Többtényezős hitelesítés az összes korábban megjegyzett eszközök visszaállítása  | Hitelesítési rendszergazda | 
 
 ## <a name="mfa-server"></a>MFA-kiszolgáló
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Felhasználók blokkolása/feloldása | Globális rendszergazda | 
+Felhasználó blokkolása/feloldása | Globális rendszergazda | 
 Fiókzárolás konfigurálása | Globális rendszergazda | 
 Gyorsítótárazási szabályok konfigurálása | Globális rendszergazda | 
 Visszaélési riasztás konfigurálása | Globális rendszergazda
@@ -226,7 +226,7 @@ Olvassa el a kiszolgáló állapota | Globális rendszergazda |
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Identitásszolgáltatók kezelése | Globális rendszergazda | 
+Identitásszolgáltató kezelése | Globális rendszergazda | 
 Beállítások kezelése | Globális rendszergazda | 
 Használati feltételek kezelése | Globális rendszergazda | 
 Az összes konfiguráció olvasása | Globális rendszergazda | 
@@ -239,16 +239,16 @@ Hitelesítési módszerek konfigurálása | Globális rendszergazda |
 Testreszabás konfigurálása | Globális rendszergazda |
 Értesítések konfigurálása | Globális rendszergazda |
 Helyszíni integráció beállítása | Globális rendszergazda |
-Jelszó alaphelyzetbe állítása tulajdonságainak konfigurálása | Felhasználói rendszergazda | Globális rendszergazda
+Jelszó alaphelyzetbe állítása tulajdonságainak konfigurálása | Felhasználói adminisztrátor | Globális rendszergazda
 Regisztráció beállítása | Globális rendszergazda |
-Az összes konfiguráció olvasása | Biztonsági rendszergazda | Felhasználói rendszergazda |
+Az összes konfiguráció olvasása | Biztonsági rendszergazda | Felhasználói adminisztrátor |
 
 ## <a name="privileged-identity-management"></a>Privileged identity management
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Felhasználók szerepkörökhöz rendelése | Kiemelt szerepkörgazda | 
-Szerepkör-beállítások konfigurálása | Kiemelt szerepkörgazda | 
+Felhasználók szerepkörökhöz rendelése | Kiemelt szerepkörű rendszergazda | 
+Szerepkör-beállítások konfigurálása | Kiemelt szerepkörű rendszergazda | 
 Naplózási tevékenység megtekintése | Biztonsági olvasó | 
 Nézet szerepkörtagságai | Biztonsági olvasó | 
 
@@ -256,7 +256,7 @@ Nézet szerepkörtagságai | Biztonsági olvasó |
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Szerepkör-hozzárendelések kezelése | Kiemelt szerepkörgazda | 
+Szerepkör-hozzárendelések kezelése | Kiemelt szerepkörű rendszergazda | 
 Azure AD-szerepkörhöz olvasási hozzáférési felülvizsgálata  | Biztonsági olvasó | Biztonsági rendszergazda, a kiemelt szerepkörű rendszergazda
 Az összes konfiguráció olvasása | Felhasználói szerepkör alapértelmezés ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 
@@ -314,9 +314,9 @@ Olvassa el a kockázatosként megjelölt felhasználók | Biztonsági olvasó |
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Felhasználó hozzáadása a címtárbeli szerepkört | Kiemelt szerepkörgazda | 
-Tag hozzáadása a csoporthoz | Felhasználói adminisztrátor | 
-Licenc hozzárendelése | Licencadminisztrátor | Felhasználói adminisztrátor
+Felhasználó hozzáadása a címtárbeli szerepkört | Kiemelt szerepkörű rendszergazda | 
+Felhasználó hozzáadása csoporthoz | Felhasználói adminisztrátor | 
+Licenc hozzárendelése | Licencek adminisztrátora | Felhasználói adminisztrátor
 Vendég-felhasználó létrehozása | Vendég meghívója | Felhasználói adminisztrátor
 Felhasználó létrehozása | Felhasználói adminisztrátor | 
 Felhasználók törlése | Felhasználói adminisztrátor | 
@@ -327,7 +327,7 @@ Alapszintű konfiguráció olvasása | Felhasználói szerepkör alapértelmezé
 (Lásd a dokumentációt) korlátozott rendszergazdák jelszavának alaphelyzetbe állítása | Felhasználói adminisztrátor | 
 Jelszó alaphelyzetbe állítása, nem rendszergazda (lásd a dokumentációt) | Jelszókezelő | Felhasználói adminisztrátor
 Jelszó alaphelyzetbe állítása az emelt szintű rendszergazdák száma | Globális rendszergazda | 
-Licenc visszavonása | Licencadminisztrátor | Felhasználói adminisztrátor
+Licenc visszavonása | Licencek adminisztrátora | Felhasználói adminisztrátor
 Egyszerű felhasználónév kivételével az összes tulajdonságainak frissítése | Felhasználói adminisztrátor | 
 Egyszerű felhasználónév (lásd a dokumentációt) korlátozott rendszergazdák frissítése | Felhasználói adminisztrátor | 
 Egyszerű felhasználónév tulajdonság frissítése az emelt szintű rendszergazdák (lásd a dokumentációt) | Globális rendszergazda | 
@@ -338,7 +338,7 @@ Felhasználói beállítások frissítése | Globális rendszergazda |
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Támogatási jegy küldése | Szolgáltatás-rendszergazda | Alkalmazás-rendszergazda, számlázási rendszergazda, a Felhőalkalmazás-rendszergazda, a megfelelőségi rendszergazda, a Dynamics 365-rendszergazda, asztali Analytics rendszergazdája, Exchange-rendszergazda, jelszókezelő, az Information Protection Rendszergazda, az Intune-rendszergazda, a rendszergazda, a Power BI rendszergazdai, kiemelt hitelesítést rendszergazda, SharePoint-rendszergazda, Teams kommunikációs rendszergazda, csapatok rendszergazda, a rendszergazda felhasználó, Skype Workplace Analytics rendszergazdája
+Támogatási jegy küldése | Szolgáltatás-rendszergazda | Alkalmazás-rendszergazda, az Azure Information Protection-rendszergazda, számlázási rendszergazda, Felhőalkalmazás-rendszergazda, megfelelőségi rendszergazda, a Dynamics 365-rendszergazda, asztali Analytics rendszergazda, Exchange-rendszergazda jelszó Rendszergazda, az Intune-rendszergazda, a rendszergazda, a Power BI rendszergazdai, kiemelt hitelesítést rendszergazda, SharePoint-rendszergazda, Teams kommunikációs rendszergazda, csapatok rendszergazda, a rendszergazda felhasználó, Skype Workplace Analytics rendszergazdája
 
 ## <a name="next-steps"></a>További lépések
 

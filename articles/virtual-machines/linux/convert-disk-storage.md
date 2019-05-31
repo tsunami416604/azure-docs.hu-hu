@@ -16,20 +16,22 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 2e7eb455a53abbe2df6ff72f091a599665732429
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bc42bcbf7149f88eb895317a411c7acd5913d63d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724900"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417692"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure konvertálása felügyelt lemezes tárhely standardról prémium vagy standard
 
-Négy [lemeztípus](disks-types.md) az Azure-ban felügyelt lemezek: Ultranagy az Azure Disk Storage, a prémium szintű SSD, a Standard SSD és a Standard HDD. Prémium szintű SSD, a Standard SSD és a standard szintű HDD, minimális állásidővel teljesítményét szükség szerint között könnyen válthat. Ez a funkció nem támogatott a nem felügyelt lemezek vagy Ultranagy lemezes tárolás. De könnyen [felügyelt lemezek konvertálása felügyelt](convert-unmanaged-to-managed-disks.md) tudni váltani a lemeztípusok.
+Négy lemeztípusok az Azure felügyelt lemezek: Az Azure ultranagy SSD-k (előzetes verzió), a prémium szintű SSD, standard SSD és standard HDD. Válthat a végleges verzió három lemeztípusok között (prémium szintű SSD, a standard szintű SSD és a standard HDD) a teljesítmény igények alapján. Ön még nem tud az vagy egy ultra SSD-re váltani, telepítenie kell egy új.
+
+Ez a funkció nem támogatott a nem felügyelt lemezek esetén. De könnyen [egy nem felügyelt lemez konvertálása felügyelt lemez](convert-unmanaged-to-managed-disks.md) tudni váltani a lemeztípusok.
 
 Ez a cikk bemutatja, hogyan átalakítása felügyelt lemezek standardról prémium vagy standard az Azure parancssori felület használatával. Telepítse vagy frissítse az eszközt, tekintse meg [Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 * Lemez konvertálása újra kell indítani a virtuális gép (VM), így megfelelően időzítse a lemezes tárolás áttelepítése során egy már létező karbantartási időszakra.
 * Nem felügyelt lemezek első [konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md) úgy válthat a tárolási lehetőségek között.

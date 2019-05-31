@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Ismerteti a folyamatok, a power Azure fejlesztési területek, és azok miként vannak konfigurálva a azds.yaml konfigurációs fájlban
 keywords: azds.yaml, az Azure fejlesztési tárolóhelyek, fejlesztői, szóközök, Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók
-ms.openlocfilehash: f7cf5ae875fa0fb87322052df036d35e8e5e89a4
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: e437a53d640bbdad3cdeeba8fd73e1f9ffef4023
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605410"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399831"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Hogyan Azure fejlesztési tárolóhelyek működik, és van konfigurálva
 
@@ -80,7 +80,7 @@ Ismertetjük, hogy az egyes Azure-fejlesztési tárolóhelyek működéséről t
 ## <a name="prepare-your-aks-cluster"></a>Az AKS-fürt előkészítése
 
 Az AKS-fürt előkészítése foglalja magában:
-* Az AKS ellenőrzése fürt régióban van [támogatott Azure-fejlesztési szóközökkel](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
+* Az AKS ellenőrzése fürt régióban van [támogatott Azure-fejlesztési szóközökkel][supported-regions].
 * Kubernetes 1.10.3 futtatja ellenőrzése vagy újabb.
 * Azure fejlesztői tárolóhelyek engedélyezésével a fürt használatával `az aks use-dev-spaces`
 
@@ -278,7 +278,7 @@ Amikor egy szolgáltatást a fürtön kívülről HTTP-kérelemmel történik, a
 
 HTTP-kérést a szolgáltatás egy olyan másik szolgáltatás a fürtön belül történik, amikor a kérést először végighalad a hívó service devspaces-proxy-tárolóban. A devspaces proxy tároló megvizsgálja a HTTP-kérés és ellenőrzi a `azds-route-as` fejléc. A fejléc alapján, a devspaces proxy tárolót fog keresni a fejléc értéke társított szolgáltatás IP-címét. Ha IP-cím található, a devspaces proxy tároló reroutes a kérés IP-címre. Ha IP-cím nem található, a devspaces proxy tároló a kérelmet a szülőtároló irányítja.
 
-Ha például az alkalmazások *serviceA* és *serviceB* nevű szülő fejlesztési szóközzel vannak telepítve *alapértelmezett*. *serviceA* támaszkodik *serviceB* és azt a HTTP-hívást hajt végre. Azure-felhasználó egy gyermek fejlesztési hely alapján hoz létre a *alapértelmezett* nevű terület *azureuser*. Azure-felhasználó is üzembe helyezi a saját verzióját *serviceA* a gyermek területre. Amikor egy kérés érkezik *http://azureuser.s.default.serviceA.fedcba09...azds.io*:
+Ha például az alkalmazások *serviceA* és *serviceB* nevű szülő fejlesztési szóközzel vannak telepítve *alapértelmezett*. *serviceA* támaszkodik *serviceB* és azt a HTTP-hívást hajt végre. Azure-felhasználó egy gyermek fejlesztési hely alapján hoz létre a *alapértelmezett* nevű terület *azureuser*. Azure-felhasználó is üzembe helyezi a saját verzióját *serviceA* a gyermek területre. Amikor egy kérés érkezik *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
 ![Az Azure fejlesztési tárolóhelyek Útválasztás](media/how-dev-spaces-works/routing.svg)
 
@@ -337,13 +337,13 @@ A *install.set* tulajdonság lehetővé teszi, hogy egy vagy több értéket sze
 
 A fenti példában a *install.set.replicaCount* tulajdonság arra utasítja a vezérlő hány példányt az alkalmazás futtatása a fejlesztési tárhelyre. A forgatókönyvtől függően megnövelheti ezt az értéket, de azt a hibakeresést az alkalmazáspodot hatással lesz. További információkért lásd: a [hibaelhárításról szóló cikk](troubleshooting.md).
 
-A létrehozott Helm-diagramot a tárolórendszerkép értéke *{{. Values.Image.Repository}} :{{. Values.Image.tag}}*. A `azds.yaml` fájl határozza meg *install.set.image.tag* tulajdonság *$(tag)* alapértelmezés szerint, amely használatos értékeként *{{. Values.Image.tag}}*. Beállításával a *install.set.image.tag* tulajdonság ezzel a módszerrel, lehetővé teszi, hogy az alkalmazás kell futtatásakor az Azure fejlesztési tárolóhelyek címkézett eltérő módon a tároló rendszerképét. Ebben az esetben, a lemezkép címkével  *\<image.repository értéket >: $(tag)*. Kell használnia a *$(tag)* változó értékeként *install.set.image.tag* ahhoz, hogy a fejlesztői, szóközök ismeri fel, és keresse meg a tároló az AKS-fürtöt.
+A létrehozott Helm-diagramot a tárolórendszerkép értéke *{{. Values.Image.Repository}} :{{. Values.Image.tag}}* . A `azds.yaml` fájl határozza meg *install.set.image.tag* tulajdonság *$(tag)* alapértelmezés szerint, amely használatos értékeként *{{. Values.Image.tag}}* . Beállításával a *install.set.image.tag* tulajdonság ezzel a módszerrel, lehetővé teszi, hogy az alkalmazás kell futtatásakor az Azure fejlesztési tárolóhelyek címkézett eltérő módon a tároló rendszerképét. Ebben az esetben, a lemezkép címkével  *\<image.repository értéket >: $(tag)* . Kell használnia a *$(tag)* változó értékeként *install.set.image.tag* ahhoz, hogy a fejlesztői, szóközök ismeri fel, és keresse meg a tároló az AKS-fürtöt.
 
-A fenti példában `azds.yaml` meghatározása *install.set.ingress.hosts*. A *install.set.ingress.hosts* tulajdonság határozza meg a gazdagép nevének formátumát a nyilvános végpontokat. Ez a tulajdonság is használ *$(spacePrefix)*, *$(rootSpacePrefix)*, és *$(hostSuffix)*, melyek a vezérlő által megadott értékek. 
+A fenti példában `azds.yaml` meghatározása *install.set.ingress.hosts*. A *install.set.ingress.hosts* tulajdonság határozza meg a gazdagép nevének formátumát a nyilvános végpontokat. Ez a tulajdonság is használ *$(spacePrefix)* , *$(rootSpacePrefix)* , és *$(hostSuffix)* , melyek a vezérlő által megadott értékek. 
 
 A *$(spacePrefix)* neve, a gyermek fejlesztési területet, amely formájában *SPACENAME.s*. A *$(rootSpacePrefix)* a szülő hely neve. Például ha *azureuser* olyan az alárendelt hely *alapértelmezett*, értéke *$(rootSpacePrefix)* van *alapértelmezett* és értékét *$(spacePrefix)* van *azureuser.s*. Ha a hely nem egy alárendelt hely *$(spacePrefix)* üres. Például ha a *alapértelmezett* terület nem rendelkezik szülő lemezterülettel, értéke *$(rootSpacePrefix)* van *alapértelmezett* és értékének *$(spacePrefix)* üres. A *$(hostSuffix)* mutat, az Azure fejlesztési tárolóhelyek Bejövőforgalom-vezérlőt az AKS-fürt futtató DNS-utótag van. Ez a DNS-utótag felel meg egy helyettesítő karaktert tartalmazó DNS-bejegyzést, például  *\*. RANDOM_VALUE.eus.azds.IO*, amely hozott létre az Azure fejlesztési tárolóhelyek vezérlő az AKS-fürt hozzá lett adva.
 
-A fenti `azds.yaml` fájlt sikerült is frissítenie *install.set.ingress.hosts* az alkalmazás gazdagép nevének módosításához. Például, ha az alkalmazás állomásnevét leegyszerűsítése érdekében a *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* való *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)*.
+A fenti `azds.yaml` fájlt sikerült is frissítenie *install.set.ingress.hosts* az alkalmazás gazdagép nevének módosításához. Például, ha az alkalmazás állomásnevét leegyszerűsítése érdekében a *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* való *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* .
 
 Az alkalmazás a tároló létrehozásához, a vezérlő használja az alábbi szakaszait a `azds.yaml` konfigurációs fájlban:
 
@@ -408,7 +408,7 @@ Java, .NET és Node.js alkalmazások hibakeresése is közvetlenül a Visual Stu
 
 ![A kód hibakeresése](media/get-started-node/debug-configuration-nodejs2.png)
 
-Ha elindítja az alkalmazás hibakeresés a Visual Studio Code-ot vagy a Visual Studio használatával, kezelni nyisson meg, és ugyanúgy fut, a fejlesztői tárhely csatlakozik `azds up`. Az ügyféloldali eszközök a Visual Studio Code és a Visual Studio hibakeresési információkat egy kiegészítő paraméterrel is biztosítanak. A paraméter tartalmazza a hibakeresőt lemezkép, a hibakereső belül ladicího programu lemezkép helyét, és a célhelyen, az alkalmazás tárolóban csatlakoztatása a hibakeresőt mappa nevét. 
+Ha elindítja az alkalmazás hibakeresés a Visual Studio Code-ot vagy a Visual Studio használatával, kezelni nyisson meg, és ugyanúgy fut, a fejlesztői tárhely csatlakozik `azds up`. Az ügyféloldali eszközök a Visual Studio Code és a Visual Studio hibakeresési információkat egy kiegészítő paraméterrel is biztosítanak. A paraméter tartalmazza a hibakeresőt lemezkép, a hibakereső belül ladicího programu lemezkép helyét, és a célhelyen, az alkalmazás tárolóban csatlakoztatása a hibakeresőt mappa nevét.
 
 A hibakereső kép automatikusan határozza meg az ügyféloldali eszközök. Hasonló a docker-fájlban során használt módszert használ, és a Helm-diagramot hoz létre, futtatásakor `azds prep`. A hibakereső van csatlakoztatva, az alkalmazás-lemezkép, miután használatával fut `azds exec`.
 
@@ -442,3 +442,7 @@ Első lépések a fejlesztési csapat, tekintse meg az alábbi útmutatók:
 * [Csoportos fejlesztése – .NET Core és a CLI és Visual Studio Code-ot](team-development-netcore.md)
 * [Csoportos fejlesztése – .NET Core Visual studióval](team-development-netcore-visualstudio.md)
 * [Csoportos fejlesztése – Node.js és a CLI és Visual Studio Code-ot](team-development-nodejs.md)
+
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

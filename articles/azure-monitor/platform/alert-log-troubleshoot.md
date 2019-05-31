@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 1c7712fc2ce55a3d22995bb119a9ee485a064903
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8b1a9b3dee999a35950559a049230f7fdbbc47b6
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683390"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399192"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Az Azure Monitor riasztások hibaelhárítása  
 
@@ -38,7 +38,7 @@ Késések csökkentése érdekében, a rendszer megvárja, és újrapróbálkozi
 
 A cikkben leírtak szerint [naplóriasztások terminológiája](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types), az adott időszakban, a konfigurációban megadott meghatározza az időtartományt a lekérdezés. A lekérdezés csak ezen tartományában jöttek létre rekordokat adja vissza. 
 
-Az adott időszakban korlátozza a visszaélések megelőzése érdekében egy napló lekérdezés beolvasni az adatokat, és azt minden olyan alkalommal parancs megkerüli (például **ezelőtt**) a napló lekérdezésben használt. Például ha az adott időszakban 60 percre van beállítva, és a lekérdezés futtatásakor: 1:15-kor, csak a rekordok között 12:15-kor és 1:15-kor létrehozott szolgálnak a napló lekérdezés. Ha a napló-lekérdezést használ hasonló idő parancsot **ezelőtt (1d)**, a lekérdezés még mindig csak használja a 12:15-kor és 1:15-kor adatait, mert az időszak hibagyakorisága értékre van állítva.
+Az adott időszakban korlátozza a visszaélések megelőzése érdekében egy napló lekérdezés beolvasni az adatokat, és azt minden olyan alkalommal parancs megkerüli (például **ezelőtt**) a napló lekérdezésben használt. Például ha az adott időszakban 60 percre van beállítva, és a lekérdezés futtatásakor: 1:15-kor, csak a rekordok között 12:15-kor és 1:15-kor létrehozott szolgálnak a napló lekérdezés. Ha a napló-lekérdezést használ hasonló idő parancsot **ezelőtt (1d)** , a lekérdezés még mindig csak használja a 12:15-kor és 1:15-kor adatait, mert az időszak hibagyakorisága értékre van állítva.
 
 Ellenőrizze, hogy az adott időszakban, a konfiguráció megfelel-e a lekérdezést. A példához korábban Ha a napló lekérdezés **ezelőtt (1d)** a Zöld jelölő, az időszakot kell megadni 24 órás vagy 1440 perc (vörös jelzi). Ez a beállítás biztosítja, hogy a lekérdezés megfelelően fut-e.
 
@@ -48,7 +48,7 @@ Ellenőrizze, hogy az adott időszakban, a konfiguráció megfelel-e a lekérdez
 
 A 8. lépés a cikkben leírtak szerint [egy riasztási szabály létrehozása az Azure Portalon](../platform/alerts-log.md#managing-log-alerts-from-the-azure-portal), riasztások adjon meg egy **riasztások mellőzése** elindítása és az értesítési műveletek elrejtését konfigurálva összeget idő. Ennek eredményeképpen előfordulhat, hogy úgy gondolja, hogy a riasztás nem aktiválódik. Valójában a fejeződött aktiválódik, de a rendszer mellőzte az.  
 
-![Riasztások felfüggesztése](media/alert-log-troubleshoot/LogAlertSuppress.png)
+![Riasztások mellőzése](media/alert-log-troubleshoot/LogAlertSuppress.png)
 
 ### <a name="metric-measurement-alert-rule-is-incorrect"></a>Helytelen metrikamérési riasztási szabályt
 
@@ -181,6 +181,7 @@ A következő minta esemény az Azure-tevékenységnapló-riasztási szabály, a
 Minden egyes létrehozott a konfigurálás részeként az Azure Monitor riasztási szabály analytics-lekérdezések, amelyek a riasztási szolgáltatás rendszeres időközönként fut, adjon meg. Az elemzési lekérdezés helytelen szintaxisú előfordulhat szabály létrehozása vagy frissítése során. De egyes esetekben egy időszakon belül, a riasztási szabály a megadott lekérdezés fejlesztheti szintaxishibát és hatására a szabály végrehajtása sikertelen. Néhány miért analytics-lekérdezések egy riasztási szabály megadott nyelven fejleszthet hibák leggyakoribb okai a következők:
 
 - A lekérdezés írt [több erőforrást futtathatja](../log-query/cross-workspace-query.md). És a egy vagy több megadott erőforrás már nem létezik.
+- [metrikus egység típusú riasztás](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) konfigurálva van riasztás lekérdezési szintaxis szabványokkal nem kompatibilis
 - Nincs az adatfolyam az analytics platform lett. A [lekérdezés-végrehajtás olyan hibaüzenetet ad](https://dev.loganalytics.io/documentation/Using-the-API/Errors) , mert nem szerepel megjeleníthető adat a megadott lekérdezés.
 - Változások a [lekérdezési nyelvet](https://docs.microsoft.com/azure/kusto/query/) egy parancsok és a funkciók módosított formában tartalmazza. Ezért egy riasztási szabályt a korábban megadott lekérdezés már nem érvényes.
 

@@ -8,22 +8,22 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: 33d0baf10df1882baf212c3e2c2683c8ca072fcc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45d6f8606c665d78783f987c2f2b49a77801639c
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61487625"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304611"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Micro fókusz Enterprise Server 4.0-s és 4.0-s vállalati fejlesztői telepítése Azure-ban
 
 Ez a cikk bemutatja, hogyan állítható be [Micro fókusz Enterprise Server 4.0](https://www.microfocus.com/documentation/enterprise-developer/es30/) és [Micro fókusz vállalati fejlesztői 4.0](https://www.microfocus.com/documentation/enterprise-developer/ed_30/) az Azure-ban.
 
-Gyakori számítási feladatok Azure-beli fejlesztési és tesztelési környezet, azért, mert így költséghatékony, könnyen üzembe vagy üzemen kívül. Vállalati kiszolgáló, a Micro fókusz hozott létre a legnagyobb nagyszámítógépes rehosting platformokra érhető el. Egy kevésbé költséges x86 z/OS számítási feladatokat futtathat az Azure-ban Windows vagy Linux rendszerű virtuális gépeken (VM) platform.
+Gyakori számítási feladatok Azure-on olyan fejlesztési és tesztelési környezet. Ez a forgatókönyv használata közös, mert így költséghatékony, könnyen üzembe vagy üzemen kívül. Vállalati kiszolgáló, a Micro fókusz hozott létre a legnagyobb nagyszámítógépes rehosting platformokra érhető el. Egy kevésbé költséges x86 z/OS számítási feladatokat futtathat az Azure-ban Windows vagy Linux rendszerű virtuális gépeken (VM) platform.
 
 Ezt a beállítást használja a Microsoft SQL Server 2017 már telepítve van az Azure Marketplace-ről a Windows Server 2016 rendszerképet futtató Azure virtuális gépeken. A telepítő az Azure Stackben is vonatkozik.
 
-Vállalati kiszolgáló megfelelő fejlesztői környezetben nagyvállalati fejlesztő, amely vagy a Microsoft Visual Studio 2017, a Visual Studio Community (ingyenes letöltése) fut, vagy az eclipse-ben. Ez a cikk bemutatja, hogyan telepítheti a Windows Server 2016 virtuális gép mellékelt telepítve a Visual Studio 2017 használatával.
+Vállalati kiszolgáló megfelelő fejlesztői környezetben nagyvállalati fejlesztő, amely vagy a Microsoft Visual Studio 2017 vagy újabb, a Visual Studio Community (ingyenes letöltése) fut, vagy az eclipse-ben. Ez a cikk bemutatja, hogyan telepítheti, amely együttműködik a Visual Studio 2017-et vagy újabb verziója telepítve van a Windows Server 2016 virtuális gép használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ Az első lépések előtt, tekintse meg az Előfeltételek:
 
 - Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
-- A Micro fókusz szoftvert és a egy érvényes licenccel (vagy próbaidőszakos díjcsomaghoz tartozó licenccel). Ha már Micro fókusz ügyfél, lépjen kapcsolatba a Micro fókusz képviselőjével. Ellenkező esetben [próbaverziója](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/).
+- A Micro fókusz szoftvert és a egy érvényes licenccel (vagy próbaidőszakos díjcsomaghoz tartozó licenccel). Ha már fókusz Micro ügyfél, lépjen kapcsolatba a Micro fókusz képviselőjével. Ellenkező esetben [próbaverziója](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/).
 
 - Az a dokumentáció eléréséhez [Enterprise Server és a vállalati fejlesztői](https://www.microfocus.com/documentation/enterprise-developer/#").
 
@@ -40,7 +40,7 @@ Az első lépések előtt, tekintse meg az Előfeltételek:
 
 ## <a name="install-enterprise-server"></a>Az Enterprise Server telepítése
 
-1. Nagyobb biztonság és kezelhetőség, fontolja meg, és a projektet az új erőforráscsoport létrehozása – például **RGMicroFocusEntServer**. Az Azure-ban a név első része segítségével könnyebben észrevehetővé listáját az erőforrás típusának megadására.
+1. Nagyobb biztonság és kezelhetőség, fontolja meg, és a projektet az új erőforráscsoport létrehozása – például **RGMicroFocusEntServer**. Az Azure-ban a név első része segítségével válassza ki az erőforrást, hogy könnyebben észrevehető a listában.
 
 2. Virtuális gépet hoz létre. Az Azure piactéren válassza ki a virtuális gép és a kívánt operációs rendszer. Íme a javasolt beállítás:
 
@@ -48,7 +48,7 @@ Az első lépések előtt, tekintse meg az Előfeltételek:
 
     - **Vállalati fejlesztői**: Válassza ki a B2ms virtuális gép (a 2 vcpu-k és 8 GB memória) a Windows 10-es és a Visual Studio telepítése. Ez a rendszerkép az Azure piactéren érhető el.
 
-3. Az a **alapjai** panelen adja meg a felhasználónevét és jelszavát. Válassza ki a **előfizetés** és **hely vagy régió** szeretné a virtuális gépekhez való használatra. Válassza ki **RGMicroFocusEntServer** az erőforráscsoportnak.
+3. Az a **alapjai** területén adja meg a felhasználónevét és jelszavát. Válassza ki a **előfizetés** és **hely vagy régió** szeretné a virtuális gépekhez való használatra. Válassza ki **RGMicroFocusEntServer** az erőforráscsoportnak.
 
 4. Mindkét virtuális gép helyezze az azonos virtuális hálózatban, amelyekkel kommunikálhatnak egymással.
 
@@ -56,9 +56,9 @@ Az első lépések előtt, tekintse meg az Előfeltételek:
 
 6. A virtuális gépek létrehozása után nyissa meg a bejövő portokat 9003, 86 és a 80-as HTTP-hez és a vállalati kiszolgáló gépen RDP a 3389-es és a 3389-es, a fejlesztői gépen.
 
-7. Jelentkezzen be a vállalati kiszolgáló virtuális géphez, az Azure Portalon, válassza ki a ES2 v3-as virtuális gép. Nyissa meg a **áttekintése** panelhez, és válassza **Connect** egy RDP-munkamenet elindításához. Jelentkezzen be a virtuális géphez létrehozott hitelesítő adatok használatával.
+7. Jelentkezzen be a vállalati kiszolgáló virtuális gép az Azure Portalon, válassza ki a ES2 v3-as virtuális gép. Nyissa meg a **áttekintése** szakaszt, és válassza **Connect** egy RDP-munkamenet elindításához. Jelentkezzen be a virtuális géphez létrehozott hitelesítő adatok használatával.
 
-8. Az RDP-munkamenetből a következő két fájlt betölteni. Mivel Windows, így Ön húzással rendezheti át a fájlokat az RDP-munkamenetbe:
+8. Az RDP-munkamenetből a következő két fájlt betölteni. Windows használata esetén, húzza és dobja el a fájlokat az RDP-munkamenetbe:
 
     - **es\_40. exe**, a vállalati kiszolgáló telepítőfájlt.
 
@@ -72,7 +72,7 @@ Az első lépések előtt, tekintse meg az Előfeltételek:
 
      ![Micro fókusz vállalati kiszolgáló beállítása képernyő](media/02-enterprise-server.png)
 
-### <a name="check-for-updates"></a>Frissítések ellenőrzése
+### <a name="check-for-updates"></a>Frissítések keresése
 
 A telepítés után mindenképpen óta előfeltételnek, mint például a Microsoft C++ újraterjeszthető csomag- és .NET-keretrendszer telepített vállalati kiszolgálóval együtt más frissítések keresése.
 
@@ -92,7 +92,7 @@ A telepítés után mindenképpen óta előfeltételnek, mint például a Micros
 
 1. Válassza ki a korábban létrehozott erőforráscsoportot (például **RGMicroFocusEntServer**), majd válassza ki a fejlesztői lemezképet.
 
-2. Jelentkezzen be a virtuális géphez, nyissa meg a **áttekintése** panelhez, és válassza **Connect**. Ezzel elindítja egy RDP-munkamenetet. Jelentkezzen be a virtuális géphez létrehozott hitelesítő adatok használatával.
+2. Jelentkezzen be a virtuális géphez, nyissa meg a **áttekintése** szakaszt, és válassza **Connect**. A bejelentkezés egy RDP-munkamenetet indít. Jelentkezzen be a virtuális géphez létrehozott hitelesítő adatok használatával.
 
 3. Az RDP-munkamenetből betöltése a következő két fájlt (fogd és vidd tetszés szerint):
 
@@ -100,7 +100,7 @@ A telepítés után mindenképpen óta előfeltételnek, mint például a Micros
 
     - **mflic**, a megfelelő licenc-fájlt (nagyvállalati fejlesztő fog betöltődni, e nélkül).
 
-4. Kattintson duplán a **edvs2017.exe** fájlt, hogy elindítsa a telepítést. Az első ablakban a telepítés helyének kiválasztása, és fogadja el a végfelhasználói licencszerződést. Ha azt szeretné, válassza ki a **telepítése Rumba 9,5** telepítéséhez a terminálemulátorral, amely valószínűleg szüksége lesz.
+4. Kattintson duplán a **edvs2017.exe** fájlt, hogy elindítsa a telepítést. Az első ablakban a telepítés helyének kiválasztása, és fogadja el a végfelhasználói licencszerződést. Ha azt szeretné, válassza ki a **Rumba 9,5 telepítése** ez terminálemulátorral, amely valószínűleg testre kell telepíteni.
 
      ![A Visual Studio 2017 telepítése párbeszédpanelen Micro fókusz nagyvállalati fejlesztő](media/04-enterprise-server.png)
 
@@ -112,7 +112,7 @@ A telepítés után mindenképpen óta előfeltételnek, mint például a Micros
 
 7. Válassza ki a feltölteni a licenc-formátum: licencfájl vagy egy 16 karakterből álló licenckód. Például egy fájl a **licencfájl**, keresse meg a **mflic** a virtuális Gépet, majd válassza a korábban feltöltött fájl **licencek telepítése**.
 
-     ![Micro fókusz licenc felügyeleti párbeszédpanel](/edia/07-enterprise-server.png)
+     ![Micro fókusz licenc felügyeleti párbeszédpanel](media/07-enterprise-server.png)
 
 Vállalati fejlesztői betöltésekor Micro fókusz fejlesztési és tesztelési környezet az Azure-ban az üzembe helyezés befejeződött!
 

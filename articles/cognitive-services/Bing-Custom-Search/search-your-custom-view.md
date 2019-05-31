@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: maheshb
-ms.openlocfilehash: 7a60ea934c6bb9008889992726ddca5dad21a640
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 9c0c4fc21f6f4b23b14c8020ecd7e95c63dedcbf
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595613"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388553"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>A Bing Custom Search példány meghívása a portálról
 
@@ -26,7 +26,7 @@ Miután konfigurálta az egyéni keresési funkciót, tesztelheti, a Bing Custom
 
 Miután bejelentkezett, a Bing Custom Search [portál](https://customsearch.ai), válassza ki a keresési példányát, és kattintson a **éles** lapon. A **végpontok**, válasszon ki egy API-végpontot (például a webes API). Az előfizetés határozza meg, milyen végpontokat jelennek meg.
 
-Hozzon létre egy keresési lekérdezést, adja meg a paraméterértékeket a végponthoz. Vegye figyelembe, hogy a paraméterek megjelennek a portálon, válassza ki a végpont függően változhat. Tekintse meg a [Custom Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) további információt. Az előfizetést, a keresési példányát használja, adja hozzá a megfelelő előfizetést kulcsot, és frissítse a megfelelő piaci és/vagy nyelvi paramétereket.
+Hozzon létre egy keresési lekérdezést, adja meg a paraméterértékeket a végponthoz. Vegye figyelembe, hogy a paraméterek megjelennek a portálon, válassza ki a végpont függően változhat. Tekintse meg a [Custom Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) további információt. Az előfizetést, a keresési példányát használja, adja hozzá a megfelelő előfizetést kulcsot, és frissítse a megfelelő piaci és/vagy nyelvi paramétereket.
 
 Néhány fontos paraméter alatt van:
 

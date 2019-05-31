@@ -15,12 +15,12 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c15e4080308c3e7e2ff54312cd91fa1f3d68668a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 827c42763eee39c717cedc90469ae765cc331272
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602423"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253840"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az PIM-ben
 Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) riasztásokat állít elő, ha bármi gyanúsat vagy nem biztonságos tevékenységre van a környezetben. Riasztást vált ki, amikor megjelenik a riasztások lapon. 
@@ -35,9 +35,9 @@ Válasszon ki egy riasztást, a felhasználók vagy szerepkör, amely kiváltott
 ## <a name="alerts"></a>Riasztások
 | Riasztás | Severity | Eseményindító | Ajánlás |
 | --- | --- | --- | --- |
-| **Túl sok tulajdonos van hozzárendelve egy erőforráshoz** |Közepesen súlyos |Túl sok felhasználót a tulajdonosi szerepkörrel rendelkezik. |Tekintse át a felhasználókat a listában, és néhány kisebb a kiemelt szerepkörökhöz való átrendelése. |
-| **Túl sok állandó tulajdonos van hozzárendelve egy erőforráshoz** |Közepesen súlyos |Túl sok felhasználó véglegesen egy szerepkörhöz vannak hozzárendelve. |Tekintse át a felhasználókat a listában, és rendelje hozzá néhányat a aktiválni kell szerepkört használni. |
-| **Ismétlődő szerepkör létrehozása** |Közepesen súlyos |Több szerepkör rendelkezik ugyanezeket a feltételeket. |Ezek a szerepkörök egyikét használhatja. |
+| **Túl sok tulajdonos van hozzárendelve egy erőforráshoz** |Közepes |Túl sok felhasználót a tulajdonosi szerepkörrel rendelkezik. |Tekintse át a felhasználókat a listában, és néhány kisebb a kiemelt szerepkörökhöz való átrendelése. |
+| **Túl sok állandó tulajdonos van hozzárendelve egy erőforráshoz** |Közepes |Túl sok felhasználó véglegesen egy szerepkörhöz vannak hozzárendelve. |Tekintse át a felhasználókat a listában, és rendelje hozzá néhányat a aktiválni kell szerepkört használni. |
+| **Ismétlődő szerepkör létrehozása** |Közepes |Több szerepkör rendelkezik ugyanezeket a feltételeket. |Ezek a szerepkörök egyikét használhatja. |
 
 
 ### <a name="severity"></a>Severity
@@ -54,4 +54,4 @@ A különböző riasztások beállításai a környezetet és biztonsági célok
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az PIM-ben](pim-resource-roles-configure-alerts.md)
+- [A PIM Azure szerepkör-beállítások konfigurálása](pim-resource-roles-configure-role-settings.md)

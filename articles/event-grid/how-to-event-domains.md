@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/17/2019
-ms.openlocfilehash: c49044d8bd96efb7e86cf54509c32033900be305
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73c837897f4a104fabb4143d4b49fa3fbc258bb4
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561751"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305034"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Témakörök kezelése és az esemény tartományok használatával közzé az eseményeket
 
@@ -27,10 +27,6 @@ Esemény tartományok kapcsolatos további információkért lásd: [esemény ta
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-## <a name="install-preview-feature"></a>Előzetes verziójú funkció telepítése
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
-
 ## <a name="create-an-event-domain"></a>Hozzon létre egy esemény-tartomány
 
 Témakörök nagy készleteinek kezelése, hozzon létre egy esemény-tartományhoz.
@@ -38,10 +34,6 @@ Témakörök nagy készleteinek kezelése, hozzon létre egy esemény-tartomány
 Azure CLI esetén használja az alábbi parancsot:
 
 ```azurecli-interactive
-# If you haven't already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid domain create \
   -g <my-resource-group> \
   --name <my-domain-name> \
@@ -51,10 +43,6 @@ az eventgrid domain create \
 PowerShell esetén használja az alábbi parancsot:
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
 New-AzureRmEventGridDomain `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain-name> `
@@ -203,6 +191,23 @@ Get-AzureRmEventGridDomainKey `
 ```
 
 Majd a kedvenc módszer az, hogy egy HTTP POST-közzé az eseményeket az Event Grid-tartomány.
+
+## <a name="search-lists-of-topics-or-subscriptions"></a>Keresés a témakörök vagy előfizetések listája
+
+Annak érdekében, hogy a Keresés és a nagy számú, témakörök vagy előfizetések kezelésével, az Event Grid API támogatja a lista egy tördelés.
+
+### <a name="using-cli"></a>A parancssori felület használata
+
+Használni, győződjön meg arról, hogy használja az Azure CLI Event Grid-bővítmény verziója 0.4.1 vagy újabb.
+
+```azurecli-interactive
+# If you haven't already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
+az eventgrid topic list \
+    --odata-query "contains(name, 'my-test-filter')"
+```
 
 ## <a name="next-steps"></a>További lépések
 

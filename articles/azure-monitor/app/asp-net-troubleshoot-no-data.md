@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 467586fd23332469338dabd2feb6a42ce4b17af5
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: cf818756f583974a8a9b53a9a0cce31dd93d042b
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471847"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299299"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -25,6 +25,16 @@ ms.locfileid: "65471847"
 
 * Az azonos töredék következetesen jelennek meg, esetén valószínűleg miatt adaptív [mintavételi](../../azure-monitor/app/sampling.md). Ennek ellenőrzéséhez nyissa meg a keresési (az Áttekintés panelről), és tekintse meg a kérelem vagy más esemény egy példányát. A Tulajdonságok szakaszának alján kattintson a "...", teljes tulajdonság részletes. Ha a Count > 1 kérelem, majd a mintavétel van folyamatban.
 * Ellenkező esetben lehetséges, hogy állt egy [sávszélesség-korlátjának](../../azure-monitor/app/pricing.md#limits-summary) a díjcsomagra. Ezek a korlátok percenkénti érvényesek.
+
+*Véletlenszerűen adódtak az adatvesztést.*
+
+* Ellenőrizze, hogy ha késést tapasztal az adatvesztést, [Telemetriai csatorna](telemetry-channels.md#does-applicationinsights-channel-offer-guaranteed-telemetry-delivery-or-what-are-the-scenarios-where-telemetry-can-be-lost)
+
+* Keressen Telemetriai csatorna esetleges ismert problémáiról [Github-adattár](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)
+
+*Konzolalkalmazás vagy a webalkalmazás adatvesztés adódtak, amikor az alkalmazás arra készül, hogy állítsa le.*
+
+* SDK csatorna telemetriai tartja a pufferben lévő, és elküldi őket, és kötegekben. Ha az alkalmazás bezáródott, szükség lehet explicit módon hívja [Flush()](api-custom-events-metrics.md#flushing-data). Viselkedését `Flush()` attól függ, a tényleges [csatorna](telemetry-channels.md#built-in-telemetrychannels) használt.
 
 ## <a name="no-data-from-my-server"></a>Nincsenek a kiszolgálón lévő adatok
 *Az alkalmazás telepítése a webkiszolgálón, és be van kapcsolva, nem látható semmilyen telemetriai adatot belőle. A fejlesztői gépen, dolgoztam OK.*
@@ -58,7 +68,6 @@ Javítás:
 * Ellenőrizze, hogy a megfelelő Azure-fiókot a megadott bejelentkezési hitelesítő adataival.
 * A böngészőben, ellenőrizze, hogy van-e a hozzáférést a [az Azure portal](https://portal.azure.com). Nyissa meg a beállításokat, majd e korlátozás.
 * [Application Insights hozzáadása a meglévő projekt](../../azure-monitor/app/asp-net.md): A Megoldáskezelőben kattintson a jobb gombbal a projekt, és válassza az "Add Application Insights."
-* Ha ez még mindig nem működik, kövesse a [manuális eljárást](../../azure-monitor/app/windows-services.md) , adjon hozzá egy erőforrást a portálon, majd adja hozzá az SDK-t a projekthez.
 
 ## <a name="emptykey"></a>"Kialakítási kulcsot nem lehet üres" hibaüzenetet kapok
 Úgy tűnik, probléma merült fel, míg az Application Insights vagy talán egy naplózási adapter telepíti.

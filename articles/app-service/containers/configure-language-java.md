@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 3361013d8421cd859c834c07018356318d5e2989
-ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
+ms.openlocfilehash: cf9356c2792781558c4403608ff5de0e3aaddb6a
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66179814"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254472"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>A Linuxos Java-alkalmazás konfigurálása az Azure App Service-ben
 
@@ -134,7 +134,7 @@ Másik lehetőségként konfigurálnia az alkalmazásbeállítást, az App Servi
 
 Ha a Java-alkalmazás különösen nagy, növelje az indítási időkorlátot. Ehhez hozzon létre egy Alkalmazásbeállítás `WEBSITES_CONTAINER_START_TIME_LIMIT` , és állítsa be az App Service-ben várnia kell, hogy másodpercek számát. A maximális érték pedig `1800` másodperc.
 
-## <a name="secure-applications"></a>Alkalmazások védelme
+## <a name="secure-applications"></a>Biztonságos alkalmazások
 
 Az App Service Linux rendszeren futó Java-alkalmazások rendelkeznek ugyanazokat a [ajánlott biztonsági eljárások](/azure/security/security-paas-applications-using-app-services) más alkalmazásokként. 
 
@@ -164,7 +164,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-Felhasználók jelentkezzen ki, és egyéb műveleteket hajthat végre, a dokumentáció a [App Service-hitelesítés és engedélyezés használati](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to). Nincs a Tomcat meg hivatalos dokumentáció [HttpServletRequest felület](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) és annak a metódusaival. A következő servlet módszereket is vannak hidratált az App Service-ben konfigurációja alapján:
+Felhasználók jelentkezzen ki, és egyéb műveleteket hajthat végre, a dokumentáció a [App Service-hitelesítés és engedélyezés használati](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to). Nincs a Tomcat meg hivatalos dokumentáció [HttpServletRequest felület](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) és annak a metódusaival. A következő servlet módszereket is vannak hidratált az App Service-ben konfigurációja alapján:
 
 ```java
 public boolean isSecure()

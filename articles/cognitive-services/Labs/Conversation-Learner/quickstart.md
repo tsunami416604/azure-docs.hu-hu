@@ -3,19 +3,19 @@ title: Hogyan hozhat létre egy Node.js - a Microsoft Cognitive Services haszná
 titleSuffix: Azure
 description: Ismerje meg, hogyan hozhat létre a Node.js használatával Beszélgetéstanuló modell.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 743b4d4888738579a023e879dc7b6e95cd23ccc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: cc071d59a387c8ae4982eacbce6812526f447788
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708362"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388772"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Node.js használatával Beszélgetéstanuló modell létrehozása
 
@@ -61,7 +61,7 @@ Projekt Beszélgetéstanuló egy SDK-t ad hozzá a robot és a egy felhőalapú 
     > [!NOTE]
     > Során `npm install`, figyelmen kívül hagyhatja ezt a hibát, akkor fordul elő, ha: `gyp ERR! stack Error: Can't find Python executable`
 
-2. Konfigurálás:
+2. Adja meg:
 
    Hozzon létre egy fájlt nevű `.env` a címtárban `cl-bot-01`.  A fájl tartalmának kell lennie:
 

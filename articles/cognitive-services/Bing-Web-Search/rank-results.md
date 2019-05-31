@@ -11,18 +11,18 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9a49c4af474d7f0618bf0cff1a093e5cbb62fe2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648822"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390122"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Használata a Bing Web Search API-eredmények rangsorolása  
 
-Minden keresés válasz tartalmazza a [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) választ, amely meghatározza, hogyan kell a keresési eredmények megjelenítéséhez. A rangsorolás válasz csoportosítja az eredményeket a mainline tartalmat és oldalsáv tartalmat egy hagyományos keresési eredményeket megjelenítő lap esetében. Ha nem jelennek meg az eredményeket egy hagyományos által és a oldalsáv formátum, meg kell adnia által tartalom magasabb látható-e, mint az oldalsáv tartalmat.  
+Minden keresés válasz tartalmazza a [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) választ, amely meghatározza, hogyan kell a keresési eredmények megjelenítéséhez. A rangsorolás válasz csoportosítja az eredményeket a mainline tartalmat és oldalsáv tartalmat egy hagyományos keresési eredményeket megjelenítő lap esetében. Ha nem jelennek meg az eredményeket egy hagyományos által és a oldalsáv formátum, meg kell adnia által tartalom magasabb látható-e, mint az oldalsáv tartalmat.  
 
-Minden csoportban (mainline vagy oldalsáv), a [elemek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) tömb azonosítja a rendelést, szerepelnie kell a tartalmat. Minden elem azonosítására belül választ az eredmény a következő két módon biztosít.  
+Minden csoportban (mainline vagy oldalsáv), a [elemek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) tömb azonosítja a rendelést, szerepelnie kell a tartalmat. Minden elem azonosítására belül választ az eredmény a következő két módon biztosít.  
 
 -   `answerType` és `resultIndex` – a `answerType` mező az eredmény (például weblapot vagy hírek) azonosítja és `resultIndex` azonosítja egy eredményt a válasz (például hír) belül. Az index nulla alapú.  
 
@@ -30,11 +30,11 @@ Minden csoportban (mainline vagy oldalsáv), a [elemek](https://docs.microsoft.c
 
 Az azonosító használata egyszerűbb használni, mert csak egyeznie kell a rangsorolás azonosító azonosítójú, válasz vagy az eredmények közül. Ha egy válasz objektum tartalmaz egy `id` mezőben együtt a válasz eredmények megjelenítéséhez. Például ha a `News` objektum tartalmazza a `id` mezőt, és megjelenítheti az összes hírek cikk együtt. Ha a `News` objektum nem tartalmaz a `id` mezőben, majd minden egyes hír tartalmaz egy `id` mező, és a rangsorolás válasz eredményét a hírek egyéb válaszokat eredményeivel.  
 
-Használatával a `answerType` és `resultIndex` egy kicsit bonyolultabb. Használhat `answerType` azonosíthatja a választ, amely tartalmazza az eredmények megjelenítéséhez. Ezután `resultIndex` indexbe az eredmény megjelenítéséhez a válasz eredmények keresztül. (A `answerType` a neve, a mező a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) objektum.) Ön kellene együtt a válasz eredményeket megjeleníteni, ha a rangsorolás válasz elem nem tartalmazza a `resultIndex` mező.  
+Használatával a `answerType` és `resultIndex` egy kicsit bonyolultabb. Használhat `answerType` azonosíthatja a választ, amely tartalmazza az eredmények megjelenítéséhez. Ezután `resultIndex` indexbe az eredmény megjelenítéséhez a válasz eredmények keresztül. (A `answerType` a neve, a mező a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) objektum.) Ön kellene együtt a válasz eredményeket megjeleníteni, ha a rangsorolás válasz elem nem tartalmazza a `resultIndex` mező.  
 
 ## <a name="ranking-response-example"></a>Példa a válasz rangsorolása
 
-Az alábbi példán látható [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse). A Webes válasz nem tartalmazza egy `id` mező, akkor jeleníti meg, az összes weboldalt, külön-külön alapján a rangsorolás (minden egyes weblap tartalmaz egy `id` mezőben). És a képeket, videókat és kapcsolódó keresések válaszokat tartalmazza a `id` mező, akkor jeleníti meg, ezek a válaszok együtt alapján a rangsorolás eredményeit.
+Az alábbi példán látható [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse). A Webes válasz nem tartalmazza egy `id` mező, akkor jeleníti meg, az összes weboldalt, külön-külön alapján a rangsorolás (minden egyes weblap tartalmaz egy `id` mezőben). És a képeket, videókat és kapcsolódó keresések válaszokat tartalmazza a `id` mező, akkor jeleníti meg, ezek a válaszok együtt alapján a rangsorolás eredményeit.
 
 ```json
 {  

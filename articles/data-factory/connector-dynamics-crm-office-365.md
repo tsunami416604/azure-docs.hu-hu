@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 6a52749c78cd0f090e66220fe51e3d04985f96e7
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 481b19d0121e93c84d123579e91bcbfb9fb50815
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869534"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356961"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása (Common Data Service) Dynamics 365 vagy Dynamics CRM-hez és az Azure Data Factory használatával
 
@@ -205,7 +205,7 @@ Adatok másolása a Dynamics, állítsa be a forrás típusaként a másolási t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása típusa tulajdonságát állítsa **DynamicsSource**. | Igen |
-| query | FetchXML egy saját fejlesztésű lekérdezési nyelvet használ, a Dynamics (online és helyszíni). Tekintse meg a következő példát. További tudnivalókért lásd: [FeachXML lekérdezéseket hozhat létre](https://msdn.microsoft.com/library/gg328332.aspx). | Nem (ha az adatkészlet "entityName" van megadva) |
+| query | FetchXML egy saját fejlesztésű lekérdezési nyelvet használ, a Dynamics (online és helyszíni). Tekintse meg a következő példát. További tudnivalókért lásd: [összeállítása FetchXML lekérdezések](https://msdn.microsoft.com/library/gg328332.aspx). | Nem (ha az adatkészlet "entityName" van megadva) |
 
 >[!NOTE]
 >Az oszlophoz a rendszer mindig másolja akkor is, ha az oszlop leképezése, konfigurálja a FetchXML-lekérdezés nem tartalmazza azt.
@@ -269,12 +269,12 @@ Adatok másolása a Dynamics, állítsa a fogadó típusa a másolási tevékeny
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó típusa tulajdonságát állítsa **DynamicsSink**. | Igen |
-| writeBehavior | A művelet írási viselkedését.<br/>Az érték engedélyezett **"Upsert"**. | Igen |
+| writeBehavior | A művelet írási viselkedését.<br/>Az érték engedélyezett **"Upsert"** . | Igen |
 | writeBatchSize | A sorok száma az egyes kötegekben lévő Dynamics írt adatok. | Nem (az alapértelmezett érték 10) |
-| ignoreNullValues | Azt jelzi, hogy a bemeneti adatok (kivéve a kulcsmezők) null értéket figyelmen kívül a írási művelet során.<br/>Engedélyezett értékek a következők **igaz** és **hamis**.<br>- **Igaz**: Hagyja meg az adatokat a rendeltetési objektum változatlan marad, ha így tesz, upsert/frissítés művelet. Helyezze be egy meghatározott alapértelmezett értéket, amikor ezt teszi, hogy egy insert művelet.<br/>- **FALSE (hamis)**: Frissítse az adatokat a rendeltetési objektumban NULL upsert/frissítés művelet végrehajtásakor. NULL érték szúrható, amikor ezt teszi, hogy egy insert művelet. | Nem (az alapértelmezett érték FALSE (hamis)) |
+| ignoreNullValues | Azt jelzi, hogy a bemeneti adatok (kivéve a kulcsmezők) null értéket figyelmen kívül a írási művelet során.<br/>Engedélyezett értékek a következők **igaz** és **hamis**.<br>- **Igaz**: Hagyja meg az adatokat a rendeltetési objektum változatlan marad, ha így tesz, upsert/frissítés művelet. Helyezze be egy meghatározott alapértelmezett értéket, amikor ezt teszi, hogy egy insert művelet.<br/>- **FALSE (hamis)** : Frissítse az adatokat a rendeltetési objektumban NULL upsert/frissítés művelet végrehajtásakor. NULL érték szúrható, amikor ezt teszi, hogy egy insert művelet. | Nem (az alapértelmezett érték FALSE (hamis)) |
 
 >[!NOTE]
->Az alapértelmezett érték a fogadó "**writeBatchSize**"és a másolási tevékenység"**[parallelCopies](copy-activity-performance.md#parallel-copy)**", a Dynamics-fogadó le mindkét 10. Tehát 100 rekordig elküldi Dynamics egyidejűleg.
+>Az alapértelmezett érték a fogadó "**writeBatchSize**"és a másolási tevékenység" **[parallelCopies](copy-activity-performance.md#parallel-copy)** ", a Dynamics-fogadó le mindkét 10. Tehát 100 rekordig elküldi Dynamics egyidejűleg.
 
 A Dynamics 365 online, nincs korlát [2 egyidejű batch hívások szervezetenként](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). Ha túllépi ezt a korlátot, az első kérelem minden eddiginél végrehajtása előtt egy "Foglalt kiszolgáló" hiba lépett fel. "WriteBatchSize" tartja, legfeljebb 10 ne volna az ilyen egyidejű hívás szabályozás.
 

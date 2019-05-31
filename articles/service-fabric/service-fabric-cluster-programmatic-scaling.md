@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 552c9820cca4380c00e1bf435fdb3d068c0690fb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 128f28d2a8b97feb3d20c34b7468b60c446a78a6
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111301"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306931"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>A Service Fabric-fürt programozott skálázása 
 
@@ -29,7 +29,7 @@ Azure-ban futó Service Fabric-fürtök a virtual machine scale sets épülnek. 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Hitelesítő adatok kezelése
-Méretezés kezelésére való írásával szolgáltatás az egyik kihívás, hogy a szolgáltatás hozzáférjen a virtuális gép méretezési csoport erőforrásainak nélkül egy interaktív bejelentkezést kell lennie. A Service Fabric-fürt eléréséhez akkor egyszerűen, ha a méretezési szolgáltatás módosítja a saját Service Fabric-alkalmazás, de a méretezési eléréséhez szükséges hitelesítő adatokat. Jelentkezzen be, használhatja a [szolgáltatásnév](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) hoztak létre a [Azure CLI-vel](https://github.com/azure/azure-cli).
+Méretezés kezelésére való írásával szolgáltatás az egyik kihívás, hogy a szolgáltatás hozzáférjen a virtuális gép méretezési csoport erőforrásainak nélkül egy interaktív bejelentkezést kell lennie. A Service Fabric-fürt eléréséhez akkor egyszerűen, ha a méretezési szolgáltatás módosítja a saját Service Fabric-alkalmazás, de a méretezési eléréséhez szükséges hitelesítő adatokat. Jelentkezzen be, használhatja a [egyszerű szolgáltatás](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) hoztak létre a [Azure CLI-vel](https://github.com/azure/azure-cli).
 
 Egy egyszerű szolgáltatást az alábbi lépéseket követve hozható létre:
 
@@ -38,7 +38,7 @@ Egy egyszerű szolgáltatást az alábbi lépéseket követve hozható létre:
     1. Jegyezze fel az appId-(ügyfél-azonosító néven máshol), a neve, a jelszót és a bérlői későbbi használatra.
     2. Emellett az előfizetés-azonosítója, amelyet a tekinthet meg `az account list`
 
-A fluent számítási kódtár használatával ezeket a hitelesítő adatokat az alábbiak szerint lehet bejelentkezni (vegye figyelembe, hogy alapvető fluent Azure típusok, például `IAzure` szerepelnek a [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) csomag):
+A fluent számítási kódtár használatával ezeket a hitelesítő adatokat az alábbiak szerint bejelentkezhet (vegye figyelembe, hogy alapvető fluent Azure típusok, például `IAzure` szerepelnek a [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) csomag):
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {

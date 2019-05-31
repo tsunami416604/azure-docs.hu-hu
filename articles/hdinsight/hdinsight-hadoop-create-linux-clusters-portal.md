@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9da9c6c438aac2c160a9ec7bc658e5d7b4ea207e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cf1a6ffa61b41af5abd20dac13b85024001d2ed2
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715192"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393999"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>HDInsight Linux-alapú fürtök létrehozása az Azure portal használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -42,7 +42,7 @@ Az Azure Portalon a tulajdonságait a legtöbb tesz elérhetővé. Az Azure Reso
    
     ![Hozzon létre egy új fürtöt az Azure Portalon](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "új fürt létrehozása az Azure Portalon")
 
-1. Az a **HDInsight** lapon jelölje be **egyéni (méret, beállítások, alkalmazások)**.
+1. Az a **HDInsight** lapon jelölje be **egyéni (méret, beállítások, alkalmazások)** .
 
 1. Válassza ki **1 alapjai**. Majd adja meg a következő információkat.
 
@@ -92,7 +92,7 @@ Az Azure Portalon a tulajdonságait a legtöbb tesz elérhetővé. Az Azure Reso
      Válassza ki **tovább** áthelyezése a következő lapra.
 
 
-6. A **4 alkalmazások (opcionális)**, válassza ki a kívánt alkalmazásokat. A Microsoft, független szoftverszállítók (ISV), vagy ezeket az alkalmazásokat fejleszthet. További információkért lásd: [alkalmazások telepítése fürtlétrehozás során](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
+6. A **4 alkalmazások (opcionális)** , válassza ki a kívánt alkalmazásokat. A Microsoft, független szoftverszállítók (ISV), vagy ezeket az alkalmazásokat fejleszthet. További információkért lásd: [alkalmazások telepítése fürtlétrehozás során](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
 
     Válassza ki **tovább** áthelyezése a következő lapra.
 

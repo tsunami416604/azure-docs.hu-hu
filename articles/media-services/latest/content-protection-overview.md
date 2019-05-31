@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e13bcb7d4eeded691669277b64aba9048f3bbefa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 99aea38ec877074075eaec8cf9ab8da077901acf
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150415"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393109"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>A Content protection, a dinamikus titkosítás segítségével
 
@@ -39,14 +39,13 @@ Fejezze be a "content protection" rendszer vagy alkalmazás-tervezés, teljes is
 
 1. Az Azure Media Services-kódot
   
-   A [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) minta bemutatja, hogyan multi-DRM-rendszer a Media Services v3 megvalósítása, és a Media Services/licenckulcs-továbbítási szolgáltatást is használhatja. Minden objektumot több titkosítási típussal titkosíthat (AES-128, PlayReady, Widevine, FairPlay). A [streamelési protokollokkal és a titkosítási típusokkal](#streaming-protocols-and-encryption-types) kapcsolatos szakaszban megtekintheti, hogy mit mivel érdemes kombinálni.
+   A [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) minta bemutatja, hogyan multi-DRM-rendszer a Media Services v3 .NET használatával. Azt is bemutatja, hogyan használja a Media Services licenckulcs/kézbesítési szolgáltatás. Minden objektumot több titkosítási típussal titkosíthat (AES-128, PlayReady, Widevine, FairPlay). A [streamelési protokollokkal és a titkosítási típusokkal](#streaming-protocols-and-encryption-types) kapcsolatos szakaszban megtekintheti, hogy mit mivel érdemes kombinálni.
   
    A példa bemutatja, hogyan:
 
-   1. Létrehozhat és konfigurálhat [Tartalomszabályzat kulcs](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
+   1. Létrehozhat és konfigurálhat egy [Tartalomszabályzat kulcs](content-key-policy-concept.md). Létrehoz egy **tartalom kulcs házirend** konfigurálása a tartalomkulcs (amelyek biztonságos hozzáférést biztosít az eszközök) a rendszer hogyan továbbítja az ügyfelek közötti.    
 
       * Adja meg a licenc kézbesítési engedélyezési, adja meg a JWT jogcímszolgáltatói alapján jogosultsági ellenőrzés logikáját.
-      * DRM-titkosítás konfigurálja a tartalomkulcs megadásával.
       * Konfigurálása [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md), és/vagy [FairPlay](fairplay-license-overview.md) licenceket. A sablonok segítségével beállíthatja, hogy jogosultságai és engedélyei a használt DRMs mindegyikéhez.
 
         ```
@@ -54,11 +53,11 @@ Fejezze be a "content protection" rendszer vagy alkalmazás-tervezés, teljes is
         ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
         ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
         ```
-   2. Hozzon létre egy [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators) megfelelően van konfigurálva, a titkosított adategység továbbításához. 
+   2. Hozzon létre egy [Streamelési lokátor](streaming-locators-concept.md) megfelelően van konfigurálva, a titkosított adategység továbbításához. 
   
-      A **Streamelési lokátor** társítva van egy [Streamelési házirend](https://docs.microsoft.com/rest/api/media/streamingpolicies). A példában a StreamingLocator.StreamingPolicyName állítjuk a "Predefined_MultiDrmCencStreaming" szabályzat. Ez a szabályzat azt jelzi, hogy használni kívánt két tartalomkulcs (boríték és CENC) jön létre, és állítsa be a lokátor. Így az envelope, a PlayReady és a Widevine titkosítások lesznek alkalmazva (a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszást végző ügyfelének). Ha CBCS (FairPlay) licenccel is titkosítani szeretné a streamet, használja a következőt: „Predefined_MultiDrmStreaming”.
-    
-      Titkosíthatja a videót, mivel a **tartalom kulcs házirend** , hogy korábban beállított is van társítva, a **Streamelési lokátor**. 
+      A **Streamelési lokátor** társítva van egy [Streamelési házirend](streaming-policy-concept.md). A példában a StreamingLocator.StreamingPolicyName állítjuk a "Predefined_MultiDrmCencStreaming" szabályzat. A PlayReady és Widevine titkosítások használatára vonatkoznak, a rendszer továbbítja a kulcsot a lejátszás ügyfél a beállított DRM-licencek alapján. Ha CBCS (FairPlay) licenccel is titkosítani szeretné a streamet, használja a következőt: „Predefined_MultiDrmStreaming”.
+      
+      A Streamelési lokátor is társítva van a **tartalom kulcs házirend** , amelyek definiálva lett.
     
    3. A test-token létrehozásához.
 
@@ -102,11 +101,11 @@ A HLS-protokoll támogatja a következő tároló formátumok és a titkosítás
 
 |Tároló-formátum|Titkosítási sémával|Példa URL-címe|
 |---|---|---|
-|Összes|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
-|MPG2 – TS |CBCS (FairPlay) ||
-|CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
-|MPG2 – TS |CENC (PlayReady) ||
-|CMAF(fmp4) |CENC (PlayReady) ||
+|Összes|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|MPG2 – TS |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
+|CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
+|MPG2 – TS |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
+|CMAF(fmp4) |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cenc)`|
 
 Fairplay HLS/CMAF (beleértve a HEVC / H.265) a következő eszközökön támogatott:
 
@@ -120,9 +119,9 @@ Az MPEG-DASH-protokoll támogatja a következő tároló formátumok és a titko
 
 |Tároló-formátum|Titkosítási sémával|URL-cím-példák
 |---|---|---|
-|Összes|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
-|CSF(fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
-|CMAF(fmp4)|CENC (Widevine + PlayReady)||
+|Összes|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|CSF(fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
+|CMAF(fmp4)|CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
 
 ### <a name="smooth-streaming"></a>Smooth Streaming
 
@@ -130,14 +129,14 @@ A Smooth Streaming protokoll támogatja a következő tároló formátumok és a
 
 |Protocol|Tároló-formátum|Titkosítási sémával|
 |---|---|---|
-|fMP4|AES||
-|fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(encryption=cenc)`|
+|fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
+|fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
 
 ### <a name="browsers"></a>Böngészők
 
 Közös böngésző támogatja a következő DRM-ügyfelek:
 
-|Böngésző|Titkosítás|
+|Böngésző|Encryption|
 |---|---|
 |Chrome|Widevine|
 |Edge, IE 11|PlayReady|

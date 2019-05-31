@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f3d1fb393138aeb590bc0645d6abe93652a52a5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6fc2af0cbe770ee787da757966bbc1647717e5a
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61247548"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302687"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>A fejlesztési és tesztelési környezet előkészítése az IoT Edge-hez
 
@@ -62,11 +62,11 @@ Az egyes nyelvekhez és a szolgáltatások modul sablonok rendelkezik a projekt 
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Az Azure IoT Edge Node.js modult generator](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Cookiecutteru](https://cookiecutter.readthedocs.io/en/latest/installation.html) <li> [Git](https://git-scm.com/) </ul> |
 
-### <a name="visual-studio-2017-extension"></a>Visual Studio 2017 extension
+### <a name="visual-studio-20172019-extension"></a>Visual Studio 2017/2019 extension
 
-A Azure IoT Edge-eszközök Visual Studióhoz készült adja meg az IoT Edge, a modul sablon épülő C#. 
+A Azure IoT Edge-eszközök Visual Studióhoz készült adja meg az IoT Edge, a modul sablon épülő C# és c jelöli. 
 
-További információ és letöltése: [Azure IoT Edge-eszközök Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools).
+További információ és letöltése: [Azure IoT Edge-eszközök Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) vagy [Azure IoT Edge-eszközök Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools).
 
 ### <a name="iot-edge-dev-tool"></a>IoT Edge fejlesztési eszközt
 
@@ -109,7 +109,7 @@ További információkért lásd: [Azure IoT Edge-tárolóban futó](https://git
 
 ### <a name="iot-edge-device-container"></a>IoT Edge-eszköz tároló
 
-Az IoT Edge-eszköz tároló egy teljes körű IoT Edge-eszköz, készen áll a tároló motorral bármely gépen indítható. Az eszköz tároló tartalmaz az IoT Edge-futtatókörnyezet és a egy tároló-motor magát. A tároló minden példánya egy teljes körűen használható önálló kiépítési IoT Edge-eszköz. Az eszköz tároló támogatja a modulok, a távoli hibakeresés mindaddig, amíg a hálózati útvonal a modulnak van. Az eszköz tároló jó nagy számú IoT Edge-eszközök ipari méretekben forgatókönyvek vagy a fejlesztési és üzemeltetési folyamatok tesztelése gyors létrehozásakor. Ezen kívül támogatja az üzembe helyezés a kubernetesszel helm-n keresztül. 
+Az IoT Edge-eszköz tároló egy teljes körű IoT Edge-eszköz, készen áll a tároló motorral bármely gépen indítható. Az eszköz tároló tartalmaz az IoT Edge-futtatókörnyezet és a egy tároló-motor magát. A tároló minden példánya egy teljes körűen használható önálló kiépítési IoT Edge-eszköz. Az eszköz tároló támogatja a modulok, a távoli hibakeresés mindaddig, amíg a hálózati útvonal a modulnak van. Az eszköz tároló jó ipari méretekben forgatókönyvek vagy Azure folyamatok tesztelése eszközök nagy mennyiségű IoT Edge gyors létrehozásakor. Ezen kívül támogatja az üzembe helyezés a kubernetesszel helm-n keresztül. 
 
 További információkért lásd: [Azure IoT Edge-eszköz tároló](https://github.com/toolboc/azure-iot-edge-device-container).
 

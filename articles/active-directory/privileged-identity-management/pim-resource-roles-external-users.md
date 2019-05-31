@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5846d2bd85a382b8e2aee539af405518e9fb221
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0afec1d6eded25a2d9b2389c950e2e21e06e0d54
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60288905"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66307061"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>Vendégfelhasználók meghívása és az Azure-erőforrás szerepköröket a PIM
 
@@ -125,7 +125,7 @@ Külső felhasználóként akkor először fogadja az Azure AD-szervezet, valós
 
 1. Az engedélyek áttekintése után kattintson **elfogadás**.
 
-    ![Engedélyek felülvizsgálata](./media/pim-resource-roles-external-users/invite-accept.png)
+    ![Tekintse át az engedélyek](./media/pim-resource-roles-external-users/invite-accept.png)
 
 1. Előfordulhat, hogy megkérdezi, hogy fogadja el a használati feltételeket, és adja meg, hogy szeretné-e bejelentkezve marad.
 
@@ -145,7 +145,7 @@ Külső felhasználóként akkor először fogadja az Azure AD-szervezet, valós
 
 1. Miután megadta a beállításokat a szerepkörhöz, kattintson a **aktiválás** a szerepkör aktiválását.
 
-    ![Szerepkör aktiválása](./media/pim-resource-roles-external-users/activate-role.png)
+    ![A szerepkör aktiválása](./media/pim-resource-roles-external-users/activate-role.png)
 
     A rendszergazdának kell jóváhagynia a kérést, hacsak kell erőforrásokhoz való hozzáférést.
 

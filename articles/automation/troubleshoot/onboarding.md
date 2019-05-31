@@ -4,16 +4,16 @@ description: Ismerje meg, az Update Management, Change Tracking és Inventory me
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/20/2019
+ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 16a03840f6bbf44853cf01e50189a194672d153e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8867912d98897a695c1e59ebd4177301230281bb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145152"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399758"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Hibák elhárítása során megoldások bevezetése
 
@@ -42,6 +42,24 @@ Ez a hiba oka helytelenek vagy hiányoznak a virtuális gépen, a munkaterülete
 #### <a name="resolution"></a>Megoldás:
 
 Győződjön meg arról, hogy megfelelő engedélyekkel ahhoz, előkészítheti a virtuális gép. Tekintse át a [előkészítheti a gépeket szükséges engedélyeket](../automation-role-based-access-control.md#onboarding) , és ismételje üzembe helyezni a megoldást. Ha a hibaüzenet `The solution cannot be enabled on this VM because the permission to read the workspace is missing`, ellenőrizze, hogy a `Microsoft.OperationalInsights/workspaces/read` tudja megtalálni, ha a virtuális gép-e előkészítve a munkaterület számára.
+
+### <a name="diagnostic-logging"></a>Forgatókönyv: Előkészítés sikertelen lesz, és az üzenet - nem sikerült beállítani a diagnosztikai naplózás Automation-fiók
+
+#### <a name="issue"></a>Probléma
+
+Amikor megpróbálja felvétele egy megoldást a virtuális gép a következő üzenetet kapja:
+
+```error
+Failed to configure automation account for diagnostic logging
+```
+
+#### <a name="cause"></a>Ok
+
+Ezt a hibát is okozhat, ha a tarifacsomag nem felel meg az előfizetés számlázási modellt. További információkért lásd: [figyelési használat és becsült költségek az Azure monitorban](http://aka.ms/PricingTierWarning).
+
+#### <a name="resolution"></a>Megoldás:
+
+Hozza létre manuálisan a Log Analytics-munkaterületet, és ismételje meg a bevezetési folyamat válassza ki a létrehozott munkaterületet.
 
 ### <a name="computer-group-query-format-error"></a>Forgatókönyv: ComputerGroupQueryFormatError
 

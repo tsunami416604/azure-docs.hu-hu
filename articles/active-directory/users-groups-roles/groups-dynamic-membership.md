@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eebb68218fd6f9cbda229aae3d9e544e87441562
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5a0e0508babdd9ae703e38d58b079ab5fa16f68c
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192433"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397876"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -124,10 +124,10 @@ Az alábbi táblázat a támogatott operátorok és azok egyetlen kifejezés szi
 | Nem ezzel kezdődik |-notStartsWith |
 | Ezzel kezdődik |-startsWith |
 | Nem tartalmazza |-notContains |
-| Contains |-tartalmaz |
+| tartalmaz |-tartalmaz |
 | Nem egyezik |-notMatch |
 | Egyezés |-felel meg |
-| Eleme ennek | -a |
+| A | -a |
 | Nem található | -notIn |
 
 ### <a name="using-the--in-and--notin-operators"></a>Használja a - az - notIn operátorok és
@@ -353,7 +353,6 @@ A következő eszköz attribútumokat is használható.
  deviceManufacturer | bármilyen karakterlánc típusú értéket | (device.deviceManufacturer - eq "Samsung")
  deviceModel | bármilyen karakterlánc típusú értéket | (device.deviceModel - eq "iPad Air")
  deviceOwnership | Személyes, munkahelyi, ismeretlen | (device.deviceOwnership - eq "Vállalati")
- Tartománynév | bármilyen karakterlánc típusú értéket | (device.domainName -eq "contoso.com")
  enrollmentProfileName | Az Apple Eszközregisztrációs profilt, vagy a Windows Autopilot-profil neve | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | IGAZ, hamis | (device.isRooted - eq true)
  managementType | Mobileszköz-kezelési (mobileszközök)<br>PC (az Intune PC-ügynökkel kezelt számítógépekhez) | (device.managementType - eq "MDM")
@@ -372,4 +371,4 @@ E cikkekben további információk az Azure Active Directory-csoportokon.
 * [Új csoport létrehozása és tagok hozzáadása](../fundamentals/active-directory-groups-create-azure-portal.md)
 * [Csoportbeállítások kezelése](../fundamentals/active-directory-groups-settings-azure-portal.md)
 * [Csoporttagságok kezelése](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [A csoportban lévő felhasználók dinamikus szabályainak kezelése](groups-dynamic-membership.md)
+* [A csoportban lévő felhasználók dinamikus szabályainak kezelése](groups-create-rule.md)

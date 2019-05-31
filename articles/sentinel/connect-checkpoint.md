@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: c487856c7fb959f684700dee1d463783954b1a53
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: cad1f84f611ac3214b8823bb11817ffceb3e2017
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921966"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388701"
 ---
 # <a name="connect-your-check-point-appliance"></a>A Check Point berendezés csatlakoztatása
 
@@ -123,7 +123,7 @@ Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 
 
 3. Győződjön meg arról, hogy megfelelnek-e a naplókat küld a [RFC 5424](https://tools.ietf.org/html/rfc542).
 
-4. A Syslog-ügynököt futtató számítógépen ellenőrizze, hogy ezeket a portokat 514-es, a 25226 nyílt forráskódú és figyel-e, a parancs `netstat -a -n:`. Ez a parancs használatával kapcsolatos további információk: [netstat(8) – Linux man lap](https://linux.die.netman/8/netstat). Ha megfelelően figyel, láthatja a:
+4. A Syslog-ügynököt futtató számítógépen ellenőrizze, hogy ezeket a portokat 514-es, a 25226 nyílt forráskódú és figyel-e, a parancs `netstat -a -n:`. Ez a parancs használatával kapcsolatos további információk: [netstat(8) – Linux man lap](https://linux.die.net/man/8/netstat). Ha megfelelően figyel, láthatja a:
 
    ![Az Azure Sentinel-portok](./media/connect-cef/ports.png) 
 

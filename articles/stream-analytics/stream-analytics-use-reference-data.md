@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 2400f80c67527027aee3a98baaa869c5c66d46ee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 93c65429ef7581f4a7d2e268034e4056d6f000c8
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573639"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393123"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics keresések referenciaadatok használata
 Referenciaadatok (más néven egy keresési táblázat) egy véges adatkészlet, amely statikus vagy lassan változó természetű, használja a keresés végrehajtásához vagy korrelációját, ha az adatfolyamban. Például egy IoT-forgatókönyvet, sikerült (amelyek nem változnak gyakran) vonatkozó metaadatokat tárolnak a referenciaadatok és csatlakozik azt a valós idejű IoT-adatfolyamaiból. Az Azure Stream Analytics közel valós idejű adatfolyam-feldolgozás eléréséhez a memóriában referenciaadatok tölti be. Győződjön meg arról, hogy az Azure Stream Analytics-feladat a referenciaadatok, az általában használhat egy [referencia-adatok csatlakozzon](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. 
@@ -34,11 +34,11 @@ A referenciaadatok konfigurálásához először hozzon létre egy bemeneti típ
 |Input Alias (Bemeneti alias)   | A bemeneti hivatkozhat a feladat lekérdezésben használt rövid név.   |
 |Tárfiók   | Hol találhatók a BLOB storage-fiók neve. Ha a Stream Analytics-feladatot az azonos előfizetésben, kiválaszthatja a legördülő listából.   |
 |Tárfiók kulcsa   | A storage-fiókhoz társított titkos kulcs. Ez automatikusan tölti fel a rendszer-e a tárfiók ugyanahhoz az előfizetéshez tartozik, mint a Stream Analytics-feladatot.   |
-|Tároló   | Tárolók biztosítják a Microsoft Azure Blob service-ben tárolt blobok logikai jellegű csoportosítását. A Blob szolgáltatáshoz feltölt egy blobot, ha meg kell adnia egy adott blob-tárolót.   |
+|Storage-tároló   | Tárolók biztosítják a Microsoft Azure Blob service-ben tárolt blobok logikai jellegű csoportosítását. A Blob szolgáltatáshoz feltölt egy blobot, ha meg kell adnia egy adott blob-tárolót.   |
 |Path Pattern (Elérésiút-minta)   | A megadott tárolóban található blobok helyének azonosításához használt elérési útja. Az elérési útban dönthet úgy, hogy a következő 2 változó egy vagy több példányát adhatja meg:<BR>{date}, {time}<BR>1. példa: products/{date}/{time}/product-list.csv<BR>2. példa: products/{date}/product-list.csv<BR>3. példa: product-list.csv<BR><br> Ha a blob nem létezik a megadott elérési úton, a Stream Analytics-feladat elérhető legyen, a BLOB határozatlan ideig vár.   |
 |Dátumformátum: [opcionális]   | Ha a megadott elérési út mintája belül használta {a(z) date}, majd kiválaszthatja a dátumformátum, amelyben a blobok vannak rendszerezve a támogatott formátumok a legördülő listából.<BR>Példa: ÉÉÉÉ/hh/nn, hh/nn/éééé, stb.   |
 |[Opcionális] időformátum   | Ha a megadott elérési út mintája belül használt {time}, majd kiválaszthatja az időformátum, amelyben a blobok vannak rendszerezve a támogatott formátumok a legördülő listából.<BR>Példa: HH, ÓÓ/pp vagy HH: mm-es.  |
-|Eseményszerializációs formátum   | Annak érdekében, hogy a lekérdezések a várt módon működjenek, a Stream Analyticsnek tudnia kell, melyik szerializálási formátumot használja a bejövő adatfolyamokhoz. A Referenciaadatoknál, a támogatott formátumok a következők CSV és JSON-ban.  |
+|Eseményszerializációs formátum   | Annak biztosításához, hogy a lekérdezések dolgozhat várható, Stream Analytics tudnia kell, melyik szerializálási formátumot használja a bejövő adatfolyamokhoz. A Referenciaadatoknál, a támogatott formátumok a következők CSV és JSON-ban.  |
 |Encoding   | Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.  |
 
 ### <a name="static-reference-data"></a>Statikus referenciaadatok
@@ -72,7 +72,7 @@ Az Azure Stream Analytics automatikus vizsgálatokat végez a frissített a refe
 3. A referenciaadat blobok vannak **nem** a blob "Utolsó módosítás" idő szerint, de kizárólag a rendezett dátumát és időpontját, a blob a megadott nevet használja a {date} és {time} helyettesítések.
 3. Ne kelljen lista nagyszámú blobbal, fontolja meg, amelynek feldolgozása már nem történik nagyon régen blobok törlése. Vegye figyelembe, hogy ASA mehet kockapartíció újbóli például újraindítás bizonyos esetekben kis mértékben rendelkezik.
 
-## <a name="azure-sql-database-preview"></a>Az Azure SQL Database (előzetes verzió)
+## <a name="azure-sql-database"></a>Azure SQL Database
 
 Az Azure SQL Database referenciaadatok a Stream Analytics-feladat által beolvasott és pillanatképet készít a memóriában feldolgozáshoz tárolja. A referenciaadatok pillanatképe is egy tároló, amely a konfigurációs beállításaiban megadott tárfiókban tárolja. A tároló az automatikusan létrehozott a feladat indításakor. Ha a feladat leállt, vagy sikertelen állapotba kerül, az automatikusan létrehozott tárolókat a feladat újraindításakor törli.  
 
@@ -93,9 +93,9 @@ Az SQL Database referenciaadatok konfigurálásához először létrehozásához
 |Adatbázis|Az Azure SQL-adatbázis, amely a referencia-adatokat tartalmaz.|
 |Felhasználónév|Az Azure SQL Database társított felhasználónév.|
 |Jelszó|Az Azure SQL Database társított jelszót.|
-|Rendszeres frissítés|Ezzel a beállítással kiválaszthat egy frissítési gyakoriság. "A" kiválasztása lehetővé teszi, hogy adja meg a frissítési gyakoriság DD:HH:MM.|
+|Rendszeres időközönként frissítése|Ezzel a beállítással kiválaszthat egy frissítési gyakoriság. "A" kiválasztása lehetővé teszi, hogy adja meg a frissítési gyakoriság DD:HH:MM.|
 |Pillanatkép-lekérdezés|Ez a beállítás az alapértelmezett lekérdezés, amely a referenciaadatok lekéri az SQL Database-ből.|
-|Változáslekérdezés|Frissítési időköz speciális forgatókönyvek a nagy méretű adatkészleteket és a egy rövid, felvehet egy különbözeti lekérdezés.|
+|Különbözeti lekérdezés|Frissítési időköz speciális forgatókönyvek a nagy méretű adatkészleteket és a egy rövid, felvehet egy különbözeti lekérdezés.|
 
 ## <a name="size-limitation"></a>Korlátozás
 

@@ -8,12 +8,12 @@ manager: barbkess
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: d003e851dcfa77b18a67450946a71e4a13ce495c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 00274f8e15006f6f58a7c5f153bf0bbc0d26afb9
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700972"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416438"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati Szolgáltatásvégpontok az Azure Key Vault
 
@@ -53,7 +53,7 @@ További információkért lásd: [konfigurálása az Azure Key Vault-tűzfalak 
 > Vegye figyelembe a következő konfigurációs korlátozások vonatkoznak:
 > * Legfeljebb 127 virtuális hálózati szabályok és 127 IPv4-szabályok használata engedélyezett. 
 > * Kis-címtartományok, használja a "/ 31" vagy "/ 32" előtag méretei nem támogatottak. Konfigurálja a tartományok egyedi IP-cím szabályok használatával.
-> * IP-hálózati szabályok csak a nyilvános IP-címek engedélyezettek. Magánhálózatok számára fenntartott (RFC 1918-ban meghatározott) IP-címtartományok az IP-szabályok nem engedélyezettek. Magánhálózatokat közé tartozik a címek kezdődő **10.**, **172.16-31**, és **192.168.**. 
+> * IP-hálózati szabályok csak a nyilvános IP-címek engedélyezettek. Magánhálózatok számára fenntartott (RFC 1918-ban meghatározott) IP-címtartományok az IP-szabályok nem engedélyezettek. Magánhálózatokat közé tartozik a címek kezdődő **10.** , **172.16-31**, és **192.168.** . 
 > * Jelenleg csak az IPv4-cím támogatott.
 
 ## <a name="trusted-services"></a>Megbízható szolgáltatások
@@ -62,13 +62,13 @@ A megbízható szolgáltatások, amelyek jogosultak egy kulcstartó eléréséhe
 
 |Megbízható szolgáltatás|Felhasználási területek|
 | --- | --- |
-|Az Azure Virtual Machines üzembe helyezési szolgáltatása|[Tanúsítványok telepítése a virtuális gépek ügyfél által felügyelt Key vaultból](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
-|Az Azure Resource Manager sablontelepítési szolgáltatása|[Biztonságos értékek továbbítása üzembe helyezés során](../azure-resource-manager/resource-manager-keyvault-parameter.md).|
+|Az Azure Virtual Machines üzembe helyezési szolgáltatás|[Tanúsítványok telepítése a virtuális gépek ügyfél által felügyelt Key vaultból](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
+|Az Azure Resource Manager Sablontelepítési szolgáltatása|[Biztonságos értékek továbbítása üzembe helyezés során](../azure-resource-manager/resource-manager-keyvault-parameter.md).|
 |Az Azure Disk Encryption kötettitkosítási szolgáltatása|BitLocker-kulcs (VM-Windows) vagy a DM jelszót (a Linux rendszerű virtuális gép), a Kulcsalapú titkosítás kulcsa, való hozzáférés engedélyezése a virtuális gép üzembe helyezése során. Ez lehetővé teszi a [az Azure Disk Encryption](../security/azure-security-disk-encryption.md).|
 |Azure Backup|Lehetővé teszi a biztonsági mentéséhez és visszaállításához kapcsolódó kulcsok és titkos kulcsok Azure Virtual Machines biztonsági mentés során, a [Azure Backup](../backup/backup-introduction-to-azure-backup.md).|
 |Az Exchange Online és SharePoint Online|Ügyfélkulcs való hozzáférés engedélyezése az Azure Storage Service Encryption az [Ügyfélkulcs](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697).|
 |Azure Information Protection|A bérlői kulcs való hozzáférés engedélyezése [Azure Information Protection.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
-|Azure App Service|[Üzembe helyezése az Azure webalkalmazás-tanúsítvány Key Vault segítségével](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/).|
+|Azure App Service|[Üzembe helyezése az Azure webalkalmazás-tanúsítvány Key Vault segítségével](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
 |Azure SQL Database|[Transzparens adattitkosítás Bring Your Own Key-támogatással az Azure SQL Database és a Data Warehouse](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Felhasználó által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](../storage/common/storage-service-encryption-customer-managed-keys.md).|
 |Azure Data Lake Store|[Az Azure Data Lake Store az adatok titkosítása az](../data-lake-store/data-lake-store-encryption.md) ügyfél által felügyelt kulccsal.|

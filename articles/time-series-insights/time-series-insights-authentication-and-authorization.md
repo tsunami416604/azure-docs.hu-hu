@@ -4,7 +4,7 @@ description: Ez a cikk ismerteti a hitelesítés és a egy egyéni alkalmazásho
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5fb2802bfe9cc0a4d3297e6fa749e5b94008c616
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 9b6cd993e9f6c6dbf173c161de638c6c4a8b18d3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472598"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237048"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a hitelesítési és engedélyezés
 > [!TIP]
 > További információ [adathozzáférés biztosítása](./time-series-insights-data-access.md) a Time Series Insights-környezetbe az Azure Active Directoryban.
 
-## <a name="service-principal"></a>Szolgáltatásnév
+## <a name="service-principal"></a>Egyszerű szolgáltatás
 
 Ez, és a következő szakaszok azt ismertetik, hogyan konfigurálhatja a Time Series Insights API elérése az alkalmazás nevében egy alkalmazás. Az alkalmazás akkor kérdezheti le vagy referenciaadatok közzététele a felhasználói hitelesítő adatok helyett az alkalmazás hitelesítő adatait a Time Series Insights-környezetet.
 
@@ -59,7 +59,7 @@ A beállítási folyamat három lépésből áll:
 
    [![Új alkalmazás regisztrálása az Azure Active Directoryban](media/authentication-and-authorization/active-directory-new-application-registration.png)](media/authentication-and-authorization/active-directory-new-application-registration.png#lightbox)
 
-1. Adja meg az alkalmazás nevét, válassza ki a kívánt **webalkalmazás / API**, bármely érvényes URI-JÁNAK kiválasztása **bejelentkezési URL-**, és kattintson a **létrehozás**.
+1. Adja meg az alkalmazás nevét, válassza ki a kívánt **webalkalmazás / API**, bármely érvényes URI-JÁNAK kiválasztása **bejelentkezési URL-** , és kattintson a **létrehozás**.
 
    [![Az Azure Active Directory-alkalmazás létrehozása](media/authentication-and-authorization/active-directory-create-web-api-application.png)](media/authentication-and-authorization/active-directory-create-web-api-application.png#lightbox)
 

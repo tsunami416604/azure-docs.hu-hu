@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: e8a7f6d20ed36c4b3e900602fb52e31dceefae88
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799326"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384983"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>A Bing News Search API nyelvéhez és régiójához támogatása
 
@@ -37,20 +37,20 @@ Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `
 |Ausztria|német|Németország-AT|
 |Svájc|német|Németország – CH|
 |Németország|német|de-DE|
-|Ausztrália|angol|en-Ausztrália|
-|Kanada|angol|en-hitelesítésszolgáltató|
-|Egyesült Királyság|angol|en-GB|
-|Indonézia|angol|en-azonosító|
-|Írország|angol|en-IE|
-|India|angol|en-IN|
-|Malajzia|angol|en-MY|
-|Új-Zéland|angol|en-NZ|
-|Fülöp-szigeteki Köztársaság|angol|en-PH|
-|Szingapúr|angol|en-SG|
-|Egyesült Államok|angol|en-US|
-|angol|Általános|en-WW|
-|angol|Általános|en-XA|
-|Dél-Afrika|angol|en-ZA|
+|Ausztrália|Angol|en-Ausztrália|
+|Kanada|Angol|en-hitelesítésszolgáltató|
+|Egyesült Királyság|Angol|en-GB|
+|Indonézia|Angol|en-azonosító|
+|Írország|Angol|en-IE|
+|India|Angol|en-IN|
+|Malajzia|Angol|en-MY|
+|Új-Zéland|Angol|en-NZ|
+|Fülöp-szigeteki Köztársaság|Angol|en-PH|
+|Szingapúr|Angol|en-SG|
+|Egyesült Államok|Angol|en-US|
+|Angol|Általános|en-WW|
+|Angol|Általános|en-XA|
+|Dél-Afrika|Angol|en-ZA|
 |Argentína|spanyol|es-AR|
 |Chile|spanyol|es-CL|
 |Spanyolország|spanyol|es-ES|
@@ -84,10 +84,10 @@ Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `
 |---------------------|--------------|-----------------|
 |Dánia|dán|da-DK|
 |Németország|német|de-DE|
-|Ausztrália|angol|en-Ausztrália|
-|Egyesült Királyság|angol|en-GB|
-|Egyesült Államok|angol|en-US|
-|angol|Általános|en-WW|
+|Ausztrália|Angol|en-Ausztrália|
+|Egyesült Királyság|Angol|en-GB|
+|Egyesült Államok|Angol|en-US|
+|Angol|Általános|en-WW|
 |Chile|spanyol|es-CL|
 |Mexikó|spanyol|es-MX|
 |Egyesült Államok|spanyol|es-US|
@@ -106,11 +106,11 @@ Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `
 |Ország/régió|Nyelv|Piaci kód|  
 |---------------------|--------------|-----------------|
 |Németország|német|de-DE|
-|Ausztrália|angol|en-Ausztrália|
-|Egyesült Királyság|angol|en-GB|
-|Egyesült Államok|angol|en-US|
-|Kanada|angol|en-hitelesítésszolgáltató|
-|India|angol|en-IN|
+|Ausztrália|Angol|en-Ausztrália|
+|Egyesült Királyság|Angol|en-GB|
+|Egyesült Államok|Angol|en-US|
+|Kanada|Angol|en-hitelesítésszolgáltató|
+|India|Angol|en-IN|
 |Franciaország|francia|FR-FR|
 |Kanada|francia|FR-hitelesítésszolgáltató|
 |Brazília|portugál|pt-BR|
@@ -137,7 +137,7 @@ Az alábbiakban a ország/régió kódokat, amelyeket lehet, hogy a `cc` lekérd
 |Németország|DE|  
 |Hongkong (KKT)|HK|  
 |India|IN|  
-|Indonézia|azonosító|  
+|Indonézia|ID|  
 |Olaszország|IT|  
 |Japán|JP|  
 |Korea|KR|  
@@ -145,7 +145,7 @@ Az alábbiakban a ország/régió kódokat, amelyeket lehet, hogy a `cc` lekérd
 |Mexikó|MX|  
 |Hollandia|NL|  
 |Új-Zéland|NZ|  
-|Norvégia|NEM|  
+|Norvégia|NO|  
 |Kínai Népköztársaság|CN|  
 |Lengyelország|PL|  
 |Portugália|PT|  
@@ -162,4 +162,4 @@ Az alábbiakban a ország/régió kódokat, amelyeket lehet, hogy a `cc` lekérd
 |Egyesült Államok|USA|
 
 ## <a name="next-steps"></a>További lépések
-A Bing News Search végpontok kapcsolatos további információkért lásd: [News Search API 7-es referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference).
+A Bing News Search végpontok kapcsolatos további információkért lásd: [News Search API 7-es referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

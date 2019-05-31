@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3368be291770133cdfa10158f6e30540e17b8223
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0e62c27885e2f6d5097194e1b9d869e167c4a4c
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61363534"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304973"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Egy SQL Database-ből a referenciaadatok használata az Azure Stream Analytics-feladat (előzetes verzió)
 
@@ -59,16 +59,14 @@ A következő lépések segítségével adja hozzá az Azure SQL Database mint e
 
 ### <a name="visual-studio-prerequisites"></a>A Visual Studio-Előfeltételek
 
-1. Ha a Visual Studio 2017-et használ, frissítse a 15.8.2 vagy újabb. Vegye figyelembe, hogy 16,0 és újabb használata nem támogatott ezen a ponton.
-
-2. [A Stream Analytics tools for Visual Studio telepítése](stream-analytics-tools-for-visual-studio-install.md). A Visual Studio következő verziói támogatottak:
+1. [A Stream Analytics tools for Visual Studio telepítése](stream-analytics-tools-for-visual-studio-install.md). A Visual Studio következő verziói támogatottak:
 
    * Visual Studio 2015
-   * Visual Studio 2017
+   * Visual Studio 2019
 
-3. A megismerése a [Stream Analytics tools for Visual Studio](stream-analytics-quick-create-vs.md) rövid.
+2. A megismerése a [Stream Analytics tools for Visual Studio](stream-analytics-quick-create-vs.md) rövid.
 
-4. Tárfiók létrehozása.
+3. Tárfiók létrehozása.
 
 ### <a name="create-a-sql-database-table"></a>Hozzon létre egy SQL-adatbázistáblába
 
@@ -118,7 +116,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 4. Nyissa meg az SQL-fájlt a szerkesztőben, és az SQL-lekérdezés írása.
 
-5. Ha a Visual Studio 2017-et használ, és az SQL Server Data tools telepítése, tesztelheti kattintva a lekérdezés **Execute**. Egy varázsló ablak jelenik meg, segítséget nyújtanak az SQL-adatbázishoz csatlakozik, és a lekérdezés eredménye megjelenik az ablak alján.
+5. Ha a Visual Studio 2019 használ, és az SQL Server Data tools telepítése, tesztelheti kattintva a lekérdezés **Execute**. Egy varázsló ablak jelenik meg, segítséget nyújtanak az SQL-adatbázishoz csatlakozik, és a lekérdezés eredménye megjelenik az ablak alján.
 
 ### <a name="specify-storage-account"></a>Storage-fiók megadása
 
@@ -130,7 +128,7 @@ Nyissa meg **JobConfig.json** , a hivatkozás az SQL-pillanatképek tárolásár
 
 A feladat üzembe helyezése az Azure-bA előtt tesztelheti a lekérdezés logikája helyileg élő bemeneti adatok alapján. Ez a szolgáltatás további információkért lásd: [tesztelése helyileg az Azure Stream Analytics tools for Visual Studio (előzetes verzió) használatával élő adatok](stream-analytics-live-data-local-testing.md). Ha végzett tesztelést, kattintson a **elküldése az Azure-bA**. Referencia a [létrehoz egy Stream Analytics az Azure Stream Analytics tools for Visual Studio használatával](stream-analytics-quick-create-vs.md) gyors útmutató: ismerje meg, hogyan indítsa el a feladatot.
 
-## <a name="delta-query"></a>Változáslekérdezés
+## <a name="delta-query"></a>Különbözeti lekérdezés
 
 A különbözeti lekérdezés használatakor [az Azure SQL Database időbeli verziózású táblák](../sql-database/sql-database-temporal-tables.md) használata ajánlott.
 
@@ -159,7 +157,7 @@ A különbözeti lekérdezés használatakor [az Azure SQL Database időbeli ver
  
 2. A különbözeti lekérdezés létrehozásához. 
    
-   Ez a lekérdezés lekéri az összes sort az SQL-adatbázisban beszúrt vagy törölt belül a kezdési időt  **\@deltaStartTime**, és a záró időpontot  **\@deltaEndTime**. A különbözeti lekérdezés kell visszaadnia, mint a pillanatkép-lekérdezés ugyanazokat az oszlopokat, valamint az oszlop  **_művelet_**. Ez az oszlop határozza meg, ha a sor beszúrt vagy törölt közötti  **\@deltaStartTime** és  **\@deltaEndTime**. Az eredményül kapott sorokat a rendszer megjelölt **1** a rekordok beszúrt, ha vagy **2** Ha törölve. 
+   Ez a lekérdezés lekéri az összes sort az SQL-adatbázisban beszúrt vagy törölt belül a kezdési időt  **\@deltaStartTime**, és a záró időpontot  **\@deltaEndTime**. A különbözeti lekérdezés kell visszaadnia, mint a pillanatkép-lekérdezés ugyanazokat az oszlopokat, valamint az oszlop  **_művelet_** . Ez az oszlop határozza meg, ha a sor beszúrt vagy törölt közötti  **\@deltaStartTime** és  **\@deltaEndTime**. Az eredményül kapott sorokat a rendszer megjelölt **1** a rekordok beszúrt, ha vagy **2** Ha törölve. 
 
    A frissített rekordok a historikus tábla hajtja végre könyvelés beszúrási és törlési művelet rögzítésével. A Stream Analytics modul ezután alkalmazza a különbözeti lekérdezés eredményeit az előző pillanatképet a referenciaadatok naprakészen tartani. Különbözeti lekérdezés például a lenti megjelenítése:
 
@@ -174,6 +172,9 @@ A különbözeti lekérdezés használatakor [az Azure SQL Database időbeli ver
    ```
  
    Vegye figyelembe, hogy a Stream Analytics modul rendszeres időközönként előfordulhat, hogy futtassa a pillanatkép lekérdezést mellett a különbözeti lekérdezés ellenőrzőpontok tárolásához.
+
+## <a name="test-your-query"></a>A lekérdezés tesztelése
+   Fontos győződjön meg arról, hogy a lekérdezés adja vissza a várt adatkészletet, amely a Stream Analytics-feladat referenciaadatok fog használni. A lekérdezés teszteléséhez nyissa meg bemeneti Feladattopológia szakasz alatt a portálon. Ezután kiválaszthatja az SQL Database-referencia bemeneti mintaadatokat. Miután elérhetővé válik a mintát, töltse le a fájlt, és ellenőrizze, hogy van-e a visszaadott adatok a várt. Ha szeretne egy optimalizálása a fejlesztési és tesztelési ismétlések, javasoljuk, hogy használja a [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install). Emellett egy másik eszközre, először győződjön meg arról, a lekérdezés a megfelelő eredményeket adja vissza az Azure SQL Database, és használja a Stream Analytics-feladatot a beállításokat is. 
 
 ## <a name="faqs"></a>Gyakori kérdések
 
@@ -193,10 +194,6 @@ Ezek a metrikák kombinációja használható következtetnek ki, ha a feladat b
 **Kell egy speciális típusa az Azure SQL Database?**
 
 Az Azure Stream Analytics az Azure SQL Database bármilyen típusú fog működni. Fontos azonban megérteni, hogy a referenciaadat-bemenetek megadása frissítési gyakorisága hatással lehet a lekérdezés terhelését. A különbözeti lekérdezési beállítás használatához az Azure SQL Database időbeli verziózású táblák használata ajánlott.
-
-**Példa a bemenetet adjon meg az SQL Database referenciaadatok is?**
-
-Ez a funkció nem érhető el.
 
 **Miért nem tárolja az Azure Stream Analytics pillanatképek Azure Storage-fiókban?**
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/02/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 910e9acaea5c8f95dd344bc8e5454cd2bd3b7a25
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 5/27/2019
+ms.author: monhaber
+ms.openlocfilehash: 807bde76bb6bb50490ee599768273a59c49d5e45
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968329"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258693"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformok és az Azure Security Center által támogatott funkciók
 
@@ -27,7 +27,6 @@ Biztonsági állapot monitorozása és javaslatok érhetők el a virtuális gép
 
 > [!NOTE]
 > Tudjon meg többet a [klasszikus és Resource Manager üzembe helyezési modellek](../azure-classic-rm.md) az Azure-erőforrásokhoz.
->
 >
 
 ## <a name="platforms-that-support-the-data-collection-agent"></a>Az adatgyűjtési ügynökét támogató platformok 
@@ -46,20 +45,29 @@ Az alábbi Windows operációs rendszerek támogatottak:
 
 > [!NOTE]
 > A Windows Defender ATP-integráció csak a Windows Server 2012 R2 és Windows Server 2016 támogatja.
->
->
 
 ### <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux rendszerű számítógépek és virtuális gépek által támogatott platformok
+
 A következő Linux operációs rendszerek támogatottak:
 
-* Ubuntu 12.04 LTS, 14.04 LTS és 16.04 LTS verzió.
-* Debian verziók 6, 7, 8 és 9.
-* CentOS 5, 6 és 7.
-* Red Hat Enterprise Linux (RHEL) verziójú 5, 6 és 7.
-* SUSE Linux Enterprise Server (SLES) verziók 11 – 12.
-* Oracle Linux-verziók 5, 6 és 7.
-* Amazon Linux 2012.09 2017-ig.
-* OpenSSL 1.1.0-s csak támogatott platformokon x86_64, 64 bites.
+> [!NOTE]
+> Mivel a támogatott Linux operációs rendszerek listája folyamatosan változik, ha szeretné, kattintson a [Itt](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) a támogatott verziók a legfrissebb lista megtekintéséhez, abban az esetben, ha módosítás történt, mivel ez a témakör legutóbbi közzétételének.
+
+64 bites
+* CentOS 6 és 7
+* Amazon Linux 2017.09
+* Oracle Linux 6 és 7
+* Red Hat Enterprise Linux Server 6 és 7
+* Debian GNU/Linux 8. és 9
+* Ubuntu Linux 14.04 LTS, 16.04 LTS és 18.04 LTS
+* SUSE Linux Enterprise Server 12
+
+32 bites
+* CentOS 6
+* Oracle Linux 6
+* Red Hat Enterprise Linux Server 6
+* Debian GNU/Linux 8. és 9
+* Ubuntu Linux 14.04 LTS és 16.04 LTS
 
 ## <a name="vms-and-cloud-services"></a>Virtuális gépek és Cloud Services
 A felhőalapú szolgáltatásként futtató virtuális gépeket is támogatottak. Csak cloud services webes és feldolgozói szerepkörök üzemelési pont felcserélése futtató figyeli a program. A cloud services kapcsolatos további információkért lásd: [áttekintése az Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
@@ -70,25 +78,27 @@ A felhőalapú szolgáltatásként futtató virtuális gépeket is támogatottak
 > [!div class="mx-tableFixed"]
 > 
 
-|Kiszolgáló|Windows||Linux||
-|----|----|----|----|----|
-|Környezet|Azure|Nem Azure|Azure|Nem Azure|
-|VMBA fenyegetésészlelési riasztások|✔|✔|✔ (a támogatott verziók)|✔|
-|Hálózati fenyegetésészlelés riasztásai|✔|X|✔|X|
-|A Windows Defender ATP-integráció|✔ (a támogatott verziók)|✔|X|X|
-|Hiányzó javítások|✔|✔|✔|✔|
-|Biztonsági konfigurációk|✔|✔|✔|✔|
-|Endpoint Protection|✔|✔|X|X|
-|Virtuális gépek igény szerinti elérése|✔|X|✔|X|
-|Adaptív alkalmazásvezérlés|✔|✔|✔|✔|
-|FIM|✔|✔|✔|✔|
-|Lemeztitkosítás|✔|X|✔|X|
-|Külső üzembe helyezés|✔|X|✔|X|
-|NSG|✔|X|✔|X|
-|Fileless fenyegetésészlelés|✔|✔|X|X|
-|Hálózati térkép|✔|X|✔|X|
-|Az adaptív hálózati vezérlők|✔|X|✔|X|
-
+|Kiszolgáló|Windows||Linux||||Díjszabás|
+|----|----|----|----|----|----|----|----|
+|**Környezet**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
+||**Virtuális gép**|**Virtuálisgép-méretezési csoportot**||**Virtuális gép**|**Virtuálisgép-méretezési csoportot**|
+|VMBA fenyegetésészlelési riasztások|✔|✔|✔|✔ (a támogatott verziók)|✔ (a támogatott verziók)|✔|Javaslatok (ingyenes) Fenyegetésészlelés (szokásos)|
+|Hálózati fenyegetésészlelés riasztásai|✔|✔|X|✔|✔|X|Standard|
+|A Windows Defender ATP-integráció|✔ (a támogatott verziók)|✔ (a támogatott verziók)|✔|X|X|X|Standard|
+|Hiányzó javítások|✔|✔|✔|✔|✔|✔|Ingyenes|
+|Biztonsági konfigurációk|✔|✔|✔|✔|✔|✔|Ingyenes|
+|Endpoint protection-értékelés|✔|✔|✔|X|X|X|Ingyenes|
+|Virtuális gépek igény szerinti hozzáférés|✔|X|X|✔|X|X|Standard|
+|Adaptív alkalmazásvezérlők|✔|X|✔|✔|X|✔|Standard|
+|FIM|✔|✔|✔|✔|✔|✔|Standard|
+|Lemez titkosítási vizsgálata|✔|✔|X|✔|✔|X|Ingyenes|
+|Külső üzembe helyezés|✔|X|X|✔|X|X|Ingyenes|
+|Az NSG-k értékelése|✔|✔|X|✔|✔|X|Ingyenes|
+|Fileless fenyegetésészlelés|✔|✔|✔|X|X|X|Standard|
+|Hálózati térkép létrehozásához|✔|✔|X|✔|✔|X|Standard|
+|Az adaptív hálózati vezérlők|✔|✔|X|✔|✔|X|Standard|
+|Szabályozási megfelelőségi irányítópult és jelentések|✔|✔|✔|✔|✔|✔|Standard|
+|Javaslatok és a fenyegetésészlelés az IaaS-ban üzemeltetett Docker-tárolókon|X|X|X|✔|✔|✔|Standard|
 
 ### <a name="supported-endpoint-protection-solutions"></a>Támogatott végpontvédelmi megoldások
 
@@ -96,7 +106,9 @@ Az alábbi táblázat foglalja össze:
  - Az Azure Security Center segítségével akár telepítheti Önnek az egyes megoldások.
  - Melyik endpoint protection megoldásokat a Security Center képes felderíteni. Endpoint protection megoldást egyet felismernek, ha a Security Center nem ajánlott telepítését.
 
-| Endpoint Protection| Platformok | Security Center telepítése | Security Center felderítése |
+Ezek a védelmi módszerek mindegyike javaslatok létrehozásának kapcsolatos információkért lásd: [Endpoint Protection-értékelés és javaslatok](security-center-endpoint-protection.md).
+
+| Endpoint Protection (Végpontok védelme)| Platformok | Security Center telepítése | Security Center felderítése |
 |------|------|-----|-----|
 | Windows Defender (Microsoft-kártevőirtó)| Windows Server 2016| Nincs, az operációs rendszerbe van beépítve| Igen |
 | System Center Endpoint Protection (Microsoft-kártevőirtó) | A Windows Server 2012 R2, 2012, 2008 R2 (lásd az alábbi megjegyzést) | Bővítmény útján | Igen |
@@ -108,27 +120,49 @@ Az alábbi táblázat foglalja össze:
 
 > [!NOTE]
 > - System Center Endpoint Protection (SCEP) észlelése a Windows Server 2008 R2 virtuális gépeken szükséges SCEP után a PowerShell 3.0 (vagy egy felső verzió) kell telepíteni.
->
->
 
-## <a name="supported-paas-features"></a>Támogatott PaaS-szolgáltatások 
+## <a name="supported-paas-features"></a>Támogatott PaaS-szolgáltatások
 
 
-|Szolgáltatás|Javaslatok|Veszélyforrások detektálása|
+|Szolgáltatás|A javaslatok (ingyenes)|Fenyegetésészlelés (szokásos)|
 |----|----|----|
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
 |Az Azure Blob storage fiókok *|✔| ✔|
-|Alkalmazásszolgáltatások|✔| ✔|
+|App Services|✔| ✔|
 |Cloud Services|✔| X|
 |Virtuális hálózatok|✔| n/a|
 |Alhálózatok|✔| n/a|
-|Hálózati adapterek|✔| ✔|
-|NSG|✔| n/a|
-|Előfizetés|✔| ✔|
+|Hálózati adapterek (NIC-k)|✔| n/a|
+|NSG-k|✔| n/a|
+|Előfizetés|✔ **| ✔|
+|App Service-ben|✔| n/a|
+|Batch|✔| n/a|
+|Service Fabric|✔| n/a|
+|Automation-fiók|✔| n/a|
+|Terheléselosztó|✔| n/a|
+|Keresés|✔| n/a|
+|Service Bus|✔| n/a|
+|Stream Analytics|✔| n/a|
+|Eseményközpont|✔| n/a|
+|Logikai alkalmazások|✔| n/a|
+|Alhálózat|✔| n/a|
+|Virtuális hálózat|✔| n/a|
+|Tárfiók|✔| n/a|
+|Redis|✔| n/a|
+|SQL|✔| n/a|
+|A Data lake analytics|✔| n/a|
+|Tárfiók|✔| n/a|
+|Előfizetés|✔| n/a|
+|Key Vault|✔| n/a|
 
-\* Nyilvános előzetes verziója jelenleg támogatja ezeket a szolgáltatásokat. 
+
+
+
+\* Nyilvános előzetes verziója jelenleg támogatja ezeket a szolgáltatásokat.
+
+\*\* Aad-ben csak a standard szintű előfizetésekhez érhető el az ajánlások
 
 
 

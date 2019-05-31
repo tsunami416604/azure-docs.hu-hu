@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 9730faf3191ef2e2bd0b6c3caddefa0492b33fc5
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.date: 05/28/2019
+ms.openlocfilehash: 9a6a1a744a8441d2f082d4d14a3aba8aa1cfc09e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510236"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306022"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Hozzon létre, és olvasási replikák kezelése az Azure parancssori felületen
 
 Ebből a cikkből megismerheti, hogyan hozhat létre és kezelheti a olvasható replikák az Azure Database for postgresql-hez az Azure parancssori felületen. Olvasási replikák kapcsolatos további információkért tekintse meg a [áttekintése](concepts-read-replicas.md).
 
-> [!NOTE]
-> Az Azure parancssori felület még nem támogatja a replikák létrehozása a fő kiszolgálóról egy másik régióban. A régiók közötti replika létrehozásához használja a [az Azure portal](howto-read-replicas-portal.md).
+> [!IMPORTANT]
+> Olvasási replikát hozhat létre, mint a fölérendelt kiszolgáló ugyanabban a régióban, vagy bármely más Azure-régióban a választott. Régiók közötti replikáció jelenleg nyilvános előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Egy [, Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-up-azure-cli.md) kell a fölérendelt kiszolgáló.
@@ -52,11 +52,19 @@ A [az postgres server replika létrehozása](/cli/azure/postgres/server/replica?
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | resource-group | myResourceGroup |  Az erőforráscsoport, ahol a replikakiszolgálón létrejön.  |
-| név | mydemoserver-replica | A létrehozott új replikakiszolgáló neve. |
+| name | mydemoserver-replica | A létrehozott új replikakiszolgáló neve. |
 | source-server | mydemoserver | Név vagy az erőforrás azonosítója a meglévő fölérendelt kiszolgáló a replikáláshoz. |
+
+A CLI az alábbi példában a replika jön létre a fő ugyanabban a régióban.
 
 ```azurecli-interactive
 az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup
+```
+
+Hozhat létre egy eltérő régióban replika olvasni, használja a `--location` paraméter. A CLI az alábbi példában az USA nyugati RÉGIÓJA hoz létre a replikát.
+
+```azurecli-interactive
+az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup --location westus
 ```
 
 Ha nem állított be a `azure.replication_support` paramétert **REPLIKA** az általános célú vagy Memóriaoptimalizált kiszolgáló fő és a kiszolgáló újraindul, hibaüzenetet kap. Hajtsa végre ezeket a lépéseket két, a replika létrehozása előtt.

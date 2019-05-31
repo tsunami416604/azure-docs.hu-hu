@@ -3,19 +3,19 @@ title: Bemutató Beszélgetéstanuló modell, jelszó-visszaállítási – a Mi
 titleSuffix: Azure
 description: Megtudhatja, hogyan hozhat létre egy bemutató Beszélgetéstanuló modell.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 6436193dadb5933074fdce861a31672a0f4849de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 15aa3a8346087908cf77f1f68db916cc2c184448
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60313153"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389876"
 ---
 # <a name="demo-password-reset"></a>Bemutató: Új jelszó létrehozása
 Ez az oktatóanyag bemutatja egy egyszerű technikai támogatás robot, amelyek segíthetnek a jelszó-visszaállítási Beszélgetéstanuló működteti. A robot modell további folyamatok nem triviális párbeszédpanel, és több kapcsolja többek között az out-a-domain osztályok feladatütemezések. A feladat kód vagy entitások nélkül is elvégezhető.

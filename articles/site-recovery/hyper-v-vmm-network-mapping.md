@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: cefde79cf8c544a6900b1efa5dbcefbc43638d40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2f7f83654f397cc6b93adbbebc25193155bcedb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679329"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399375"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Az Azure-bA Hyper-V virtuális gép vész-helyreállítási hálózatleképezés előkészítése
 
@@ -57,9 +57,9 @@ A hálózatleképezés a következőképpen történik:
 **Hely** | **VMM-kiszolgáló** | **Virtuálisgép-hálózatok** | **Hozzárendelve**
 ---|---|---|---
 New York | VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicago leképezve
- |  | VMNetwork2-NewYork | Nincs leképezve
+ |  | VMNetwork2-NewYork | Nincs hozzárendelve
 Chicago | VMM-Chicago| VMNetwork1-Chicago | VMNetwork1-NewYork leképezve
- | | VMNetwork2-Chicago | Nincs leképezve
+ | | VMNetwork2-Chicago | Nincs hozzárendelve
 
 Ebben a példában:
 
@@ -74,8 +74,8 @@ Itt látható, hogyan VMM-felhőkben található példa szervezet számára, és
 ---|---|---
 GoldCloud1 | GoldCloud2 |
 SilverCloud1| SilverCloud2 |
-GoldCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
-SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+GoldCloud2 | <p>n/a</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+SilverCloud2 | <p>n/a</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
 
 ### <a name="logical-and-vm-network-settings"></a>Logikai és a virtuális gép hálózati beállításai
 
@@ -89,7 +89,7 @@ Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
 
 Ezek a beállítások alapján, a céloldali VM-hálózat kiválasztásakor, az alábbi táblázat az elérhető lehetőségek.
 
-**Kiválasztás** | **Védett felhőhöz** | **Felhőalapú védelem** | **A célhálózat érhető el**
+**Select** | **Védett felhőhöz** | **Felhőalapú védelem** | **A célhálózat érhető el**
 ---|---|---|---
 VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | Elérhető
  | GoldCloud1 | GoldCloud2 | Elérhető

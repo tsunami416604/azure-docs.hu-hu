@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: aljo
-ms.openlocfilehash: b4d3699c0327bb2771a358d3e3c2921bdc39ee5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb0f750f4049a1ce652c829f43928a95f30e6973
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621555"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302242"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric-alkalmazás és szolgáltatás biztonsága
 A mikroszolgáltatási architektúra is átviheti [számos előnnyel jár](service-fabric-overview-microservices.md). Viszont, mikroszolgáltatások, a biztonság kezelése, a kérdés, és eltér a hagyományos monolitikus alkalmazások biztonság kezelése. 
@@ -36,7 +36,7 @@ Az első lépés az API-szintű megbízhatóság döntéseket hitelesítésre. H
 
 Szolgáltatások közvetlenül is elérhetők, ha olyan hitelesítési szolgáltatás, például az Azure Active Directory vagy egy dedikált hitelesítési mikroszolgáltatások és a egy biztonsági jogkivonat-szolgáltatás (STS) segítségével hitelesítheti a felhasználókat. Megbízható döntéseket hozhat a biztonsági jogkivonatok vagy cookie-k szolgáltatások között vannak megosztva. 
 
-Az ASP.NET Core, az elsődleges mechanizmusa [felhasználók hitelesítéséhez](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) az ASP.NET Core identitás tagsági rendszer. ASP.NET Core-identitását egy adattárba, a fejlesztő által konfigurált felhasználói információk (beleértve a bejelentkezési adatait, a szerepkörök és a jogcímek) tárolja. ASP.NET Core-identitás kéttényezős hitelesítést támogatja.  Külső hitelesítésszolgáltatók is támogatja, így a felhasználók bejelentkezhetnek meglévő hitelesítési folyamatokat, például a Microsoft, a Google, Facebook vagy a Twitter segítségével. 
+Az ASP.NET Core, az elsődleges mechanizmusa [felhasználók hitelesítéséhez](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) az ASP.NET Core identitás tagsági rendszer. ASP.NET Core-identitását egy adattárba, a fejlesztő által konfigurált felhasználói információk (beleértve a bejelentkezési adatait, a szerepkörök és a jogcímek) tárolja. ASP.NET Core-identitás kéttényezős hitelesítést támogatja.  Külső hitelesítésszolgáltatók is támogatja, így a felhasználók bejelentkezhetnek meglévő hitelesítési folyamatokat, például a Microsoft, a Google, Facebook vagy a Twitter segítségével.
 
 ### <a name="authorization"></a>Engedélyezés
 A hitelesítés után szolgáltatásokat kell felhasználói hozzáférés engedélyezéséhez, vagy felfedheti, mely egy felhasználó tagja tudja megtenni. Ez a folyamat lehetővé teszi, hogy a szolgáltatás API-k néhány hitelesített felhasználók számára elérhető, de nem minden. Engedélyezési merőleges és független a hitelesítést, amely a folyamat a felhasználók, akik megismerjük. Hitelesítés az aktuális felhasználó egy vagy több identitást hozhat létre.

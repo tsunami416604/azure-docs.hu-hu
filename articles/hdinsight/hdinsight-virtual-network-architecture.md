@@ -5,15 +5,14 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 03/26/2019
-ms.date: 04/29/2019
-ms.author: v-yiso
-ms.openlocfilehash: 6d92273298c0448d7377acab6f3b8ea1cc1ed908
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/26/2019
+ms.author: hrasheed
+ms.openlocfilehash: 41420497bffd0abdc598e4c86b2dbda1466b2ce1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60484878"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252852"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Az Azure HDInsight virtuális hálózat architektúrája
 
@@ -23,10 +22,10 @@ Ez a cikk ismerteti az erőforrást, amely jelenik meg, ha telepít egy HDInsigh
 
 Az Azure HDInsight-fürtök különböző típusú virtuális gépeket, vagy a csomópontok rendelkeznek. Mindegyik csomóponttípus szerepet játszik a rendszer a műveletet. Az alábbi táblázat foglalja össze, ezeket csomóponttípusok és a fürt szerepkörökhöz.
 
-| Typo | Leírás |
+| Típus | Leírás |
 | --- | --- |
 | Átjárócsomópont |  Az Apache Storm kivételével minden fürt esetében az átjárócsomópontok a folyamatok, amelyek az elosztott alkalmazás végrehajtását a kezelése. A fő csomópontot az is a csomópont, az ssh-n, és hajtsa végre az alkalmazásokat, amelyek majd koordinálja a fürterőforrások közötti futtatása. Fő csomópontok száma az összes fürt esetében két meghatározott. |
-| ZooKeeper-csomópont | Zookeeper koordinálja feladatokat végeznek adatokat feldolgozó csomópontok között. Azt is nem vezetőválasztási a fő csomópont, és nyomon követi, hogy melyik fő csomópontot futtat egy adott fő szolgáltatást. Két meghatározott ZooKeeper-csomópontok száma. |
+| ZooKeeper-csomópont | Zookeeper koordinálja feladatokat végeznek adatokat feldolgozó csomópontok között. Azt is nem vezetőválasztási a fő csomópont, és nyomon követi, hogy melyik fő csomópontot futtat egy adott fő szolgáltatást. Három ZooKeeper-csomópontok száma meghatározott. |
 | Munkavégző csomópont | A csomópontok adatfeldolgozási funkciókat támogató jelöli. Munkavégző csomópontok hozzáadására vagy a fürt méretezése a számítástechnikai képességek és a költségek kezelése távolítva. |
 | Az R Server élcsomóponthoz | Az R Server élcsomóponthoz jelöli az ssh-n be csomópontot, és hajtsa végre az alkalmazásokat, amelyek majd koordinálja a fürt erőforrásai között futtatásához. Élcsomópont adatok elemzése a fürtön belül nem részt. Ebben a csomópontban is futtatja az R Studio Server, lehetővé téve a böngésző használata az R-alkalmazás futtatásához. |
 | Régió csomópont | A HBase-fürt típusa a régió csomópont (más néven egy adatcsomópont) futtatható: a régió kiszolgáló. Régiókiszolgálók szolgál, és kezelheti a HBase által kezelt adatok egy részét. Régió csomópontok hozzáadására vagy eltávolítja a fürt méretezése a számítástechnikai képességek és a költségek kezelése.|

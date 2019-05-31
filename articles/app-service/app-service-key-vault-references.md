@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f086850ecc2f15c41ab89db34b16d6d2e4a229cb
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 9b7bc043c748000f03a98a28f856299527015388
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956220"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397822"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>A Key Vault hivatkozások használata az App Service és az Azure Functions (előzetes verzió)
 
@@ -37,7 +37,7 @@ Olvassa el a titkos kulcsok a Key Vaultból, kell rendelkeznie egy létrehozott 
    > [!NOTE] 
    > A Key Vault jelenleg csak a támogatási rendszer hozzárendelt felügyelt identitások hivatkozik. Felhasználó által hozzárendelt identitások nem használható.
 
-1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott identita aplikace. Engedélyezze ezt a házirendet a "Get" titkos engedélyt. Ne konfigurálja a "engedélyezett alkalmazás" vagy `appliationId` beállításai, mivel ezt, nem kompatibilis egy felügyelt identitás.
+1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott identita aplikace. Engedélyezze ezt a házirendet a "Get" titkos engedélyt. Ne konfigurálja a "engedélyezett alkalmazás" vagy `applicationId` beállításai, mivel ezt, nem kompatibilis egy felügyelt identitás.
 
 ## <a name="reference-syntax"></a>Hivatkozási szintaxisa
 

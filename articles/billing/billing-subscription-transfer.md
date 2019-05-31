@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 05/24/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3f070cafa026679eb9322ac7ba2eafe4c7e233d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 33d0e5f92d5de104530882b204b1f196360511b2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826745"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236461"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés tulajdonjogának átruházása másik fiókra
 
@@ -59,7 +59,7 @@ Az előfizetés egy másik felhasználó módosíthatja a Fiókadminisztrátor �
    ![Első előfizetési átadás weblapot](./media/billing-subscription-transfer/image4.png)
 
    ![Második előfizetés-átadási weblap](./media/billing-subscription-transfer/image5.png)
-1. Siker! Az előfizetések átvitele esetén.
+1. Sikerült! Az előfizetések átvitele esetén.
 
 <a id="EA"></a>
 
@@ -82,7 +82,7 @@ A vállalati adminisztrátor átadhatja az előfizetések tulajdonjogát egy ado
 
 Önkiszolgáló előfizetés átadása az ajánlatok és az alábbi táblázatban szereplő előfizetés-típusok érhető el. Jelenleg nem tudja áthelyezni egy ingyenes próbaverzióra vagy [Azure a nyílt (aio-ra)](https://azure.microsoft.com/offers/ms-azr-0111p/) előfizetések. Megkerülő megoldásért tekintse meg a [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md). Át más előfizetésekre, például az [szponzorálási](https://azure.microsoft.com/offers/ms-azr-0036p/) vagy támogatási csomagok, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-| Ajánlat neve                                                                             | Csomag száma |
+| Csomag neve                                                                             | Csomag száma |
 |----------------------------------------------------------------------------------------|--------------|
 | [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR-0017P        |
 | [A Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
@@ -102,7 +102,9 @@ A vállalati adminisztrátor átadhatja az előfizetések tulajdonjogát egy ado
 
 ### <a name="whoisaa"></a> Az előfizetés Fiókadminisztrátori fiókjával az számára?
 
-A fiók rendszergazdája az a személy, aki regisztrált vagy az Azure-előfizetést vásárolt. Engedélyezett-e hozzáférni a [Account Center](https://account.azure.com/Subscriptions) és -előfizetések létrehozása, előfizetések megszakítja, módosítsa az előfizetéshez tartozó számlázási vagy a szolgáltatás-rendszergazda módosíthatja, különböző felügyeleti feladatok elvégzésére. Ha nem biztos benne, hogy az adott előfizetésnek ki a fiókadminisztrátora, az alábbi lépésekkel kiderítheti.
+A fiók rendszergazdája az a személy, aki regisztrált vagy az Azure-előfizetést vásárolt. Engedélyezett-e hozzáférni a [Account Center](https://account.azure.com/Subscriptions) és -előfizetések létrehozása, előfizetések megszakítja, módosítsa az előfizetéshez tartozó számlázási vagy a szolgáltatás-rendszergazda módosíthatja, különböző felügyeleti feladatok elvégzésére. Tudnivalók a rendszergazdai szerepkörökről és engedélyekről kapcsolatos további információkért lásd: [az Azure Active Directory rendszergazdája szerepkör engedélyei](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+
+Ha nem biztos benne, hogy az adott előfizetésnek ki a fiókadminisztrátora, az alábbi lépésekkel kiderítheti.
 
 1. Nyissa meg [az Azure Portal Előfizetések oldalát](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Válassza ki az előfizetést, gombra, majd keresse meg a kívánt **beállítások**.
@@ -172,7 +174,7 @@ Egy előfizetés-átadás elfogadásához hitelkártya vagy hasonló fizetési m
 
 Ha az előfizetés tulajdonjogának nem lehet manuálisan áttelepítheti az erőforrások. Lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
 
-## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 

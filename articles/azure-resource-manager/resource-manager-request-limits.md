@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: fc731b1abec9c101356a0fa57eef498b58612ab9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b382b9ae35d492b4c779b8f7ee360fb378d54e08
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791361"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399717"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager-kérelmek szabályozása
 
 Minden Azure-előfizetés és bérlő erőforrás-kezelő lehetővé teszi, hogy legfeljebb 12 000 olvasási kérelmek száma óránként és 1200 írási kérelmek száma óránként. Ezek a korlátok a kérelmet benyújtó résztvevő-Azonosítót és az előfizetés-azonosító hatóköre, vagy a bérlői azonosító. Ha a kérések érkeznek, az egynél több résztvevő-azonosító, a korlátot, az előfizetés vagy a bérlő között nagyobb, mint 12 000 és 1200 óránként.
 
-Az előfizetés vagy a bérlő kérelmek lépnek. Feliratkozási kérelmeket azok az előfizetés átadása a involve ID, például az erőforráscsoportok az előfizetésében beolvasása. Bérlő kérelmek nem tartalmaznak, például lekér érvényes Azure-helyen az előfizetés-Azonosítóját.
+Az előfizetés vagy a bérlő kérelmek lépnek. Feliratkozási kérelmeket, amelyekről magában foglalja az előfizetés-Azonosítóját, például lekér az erőforráscsoportok az előfizetés átadása. Bérlő kérelmek nem tartalmaznak, például lekér érvényes Azure-helyen az előfizetés-Azonosítóját.
 
 Ezek a korlátok vonatkoznak minden Azure Resource Manager-példány. Több példány minden Azure-régióban, és Azure Resource Manager az összes Azure-régióban üzemel.  Így a gyakorlatban korlátai hatékonyan sokkal nagyobb ezeket a korlátokat, felhasználói kérések általában által kiszolgált számos különböző példányait.
 
@@ -45,7 +45,7 @@ Megadhatja, hogy a fennmaradó kérések száma válaszfejlécek megvizsgálás�
 ## <a name="retrieving-the-header-values"></a>A fejléc értékek beolvasása
 Ezek a kódot vagy szkriptet fejléc az értékek beolvasása semmiben nem különbözik minden fejléc értékének beolvasása. 
 
-Például a **C#**, kérheti le a Fejlécérték egy **HttpWebResponse** nevű objektum **válasz** a következő kóddal:
+Például a **C#** , kérheti le a Fejlécérték egy **HttpWebResponse** nevű objektum **válasz** a következő kóddal:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)

@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 12/11/2017
+ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 15152196e45265985c8abb409523982bd4c5d427
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2cb99cfe765e1d3444f362e591812f5088c78c0e
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697421"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393138"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Az Apache Hadoop-tesztkörnyezet, egy-egy virtuális gépen emulátoron használatának első lépései
 
@@ -24,19 +24,16 @@ Ismerje meg, hogyan lehet telepíteni az Apache Hadoop-tesztkörnyezet Hortonwor
 * [Oracle VirtualBox](https://www.virtualbox.org/). Töltse le és telepítse azt a [Itt](https://www.virtualbox.org/wiki/Downloads).
 
 
-
 ## <a name="download-and-install-the-virtual-machine"></a>Töltse le és telepítse a virtuális gép
-1. Keresse meg a [Hortonworks letölti](https://hortonworks.com/downloads/#sandbox).
+1. Keresse meg a [Cloudera letölti](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
 
-2. Kattintson a **töltse le a VIRTUALBOX** töltheti le a legújabb hortonworks – tesztkörnyezet egy virtuális gépen. Azure a Hortonworks közreműködésével regisztrálni a letöltés megkezdése előtt kéri. Töltse le a hálózat sebességétől függően egy-két órát vesz igénybe.
+2. Kattintson a **VIRTUALBOX** alatt **telepítés típusának kiválasztása** töltheti le a legújabb hortonworks – tesztkörnyezet egy virtuális gépen. Jelentkezzen be, vagy fejezze be a termék érdeklődés űrlap.
 
-    ![Hivatkozás képe, töltse le a VirtualBox hortonworks – tesztkörnyezet](./media/apache-hadoop-emulator-get-started/download-sandbox.png)
-3. Az azonos weblapon kattintson a **virtuális Box importálás** hivatkozásra a telepítési utasításokat a virtuális gépet tartalmazó PDF-fájl letöltéséhez.
+1. A gombra kattintva **HDP VÉDŐFAL (LEGÚJABB)** a letöltés megkezdéséhez.
 
-Töltse le egy régebbi HDP verzió védőfal, bontsa ki az archívum:
+A védőfal beállításával kapcsolatos utasításokért lásd: [védőfal üzembe helyezési és telepítési útmutatóját](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/).
 
-![Archív hortonworks – tesztkörnyezet](./media/apache-hadoop-emulator-get-started/hortonworks-sandbox-archive.png)
-
+Egy régebbi HDP verzió védőfal letöltéséhez lásd: alatt található hivatkozásokat **régebbi verziók**.
 
 ## <a name="start-the-virtual-machine"></a>A virtuális gép elindítása
 
@@ -52,7 +49,7 @@ Töltse le egy régebbi HDP verzió védőfal, bontsa ki az archívum:
 1. Az a **Ismerkedés** . lépés a Hortonworks Sandbox oldala, válassza a **nézet speciális beállítások**. Ezen az oldalon az információk segítségével jelentkezzen be az SSH-val tesztkörnyezetben. Használja a megadott felhasználónévvel és jelszóval.
 
    > [!NOTE]
-   > Ha nem rendelkezik egy SSH-ügyfél telepítve van, a webes az SSH-val, a virtuális gép által megadott **http://localhost:4200/**.
+   > Ha nem rendelkezik egy SSH-ügyfél telepítve van, a webes az SSH-val, a virtuális gép által megadott **http://localhost:4200/** .
 
     Az első csatlakozáskor SSH,-val kéri a rendszergazdai fiók jelszavának módosítása. Adjon meg egy új jelszót, amelyet használhat az SSH-bejelentkezéskor.
 

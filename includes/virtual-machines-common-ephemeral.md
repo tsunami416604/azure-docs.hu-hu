@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3e9885466d422a0428311ed3013e2ab34341cd25
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145923"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391448"
 ---
 A rövid élettartamú operációsrendszer-lemezek helyi virtuális gép (VM) tárolására létrehozni és a távoli Azure Storage nem megőrzött. A rövid élettartamú operációsrendszer-lemezek is állapot nélküli számítási feladatokhoz, ahol alkalmazások tűri az egyes virtuális gép hibáinak, de nagyobb méretű környezetek esetében szükséges idő- vagy időérték alaphelyzetbe állítja a Virtuálisgép-példányokhoz több ügyféladataikat működik. Emellett akkor is alkalmazásokhoz, a klasszikus üzemi modellel, helyezze át a Resource Manager-alapú üzemi modellbe való telepítése. Rövid élettartamú operációsrendszer-lemezzel alacsonyabb olvasási/írási késés tapasztalható az operációsrendszer-lemezen, és a rendszerkép gyorsabban alaphelyzetbe állítható. Emellett a rövid élettartamú operációsrendszer-lemez szabad, díjak operációsrendszer-lemez tárolási költségek nélkül. 
  
@@ -30,7 +30,7 @@ Ideiglenes lemezek a fő funkciói a következők:
 |                             | Állandó operációsrendszer-lemez                          | Rövid élettartamú operációsrendszer-lemez                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | Maximális operációsrendszer-lemez mérete      | 2 TiB                                                                                        | Gyorsítótár mérete a Virtuálisgép-méretet vagy 2TiB, amelyik érték kisebb - [DS](../articles/virtual-machines/linux/sizes-general.md), [ES](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md), és [GS](../articles/virtual-machines/linux/sizes-memory.md)              |
-| Támogatott VM-méretek          | Az összes                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
+| Támogatott VM-méretek          | Összes                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
 | Lemez típusa támogatása           | Felügyelt és nem felügyelt operációsrendszer-lemez                                                                | Felügyelt operációsrendszer-lemez csak                                                               |
 | Régió támogatása              | Minden régió                                                                                  | Minden régió                              |
 | Adatmegőrzés            | Az operációs rendszer lemez adatait, az operációs rendszer lemezre írt Azure Storage szolgáltatásban tárolódnak                                  | Operációsrendszer-lemezre írt adatok a helyi virtuális gép Storage tárolja, és az Azure Storage nincs megőrizve. |
@@ -38,38 +38,6 @@ Ideiglenes lemezek a fő funkciói a következők:
 | Specializált operációsrendszer-lemezek ügyfélszolgálatához | Igen                                                                                          | Nem                                                                                 |
 | Operációsrendszer-lemez átméretezése              | Támogatott virtuális gépek létrehozása során, és miután virtuális gép felszabadítva                                | Csak a virtuális gépek létrehozása során támogatott                                                  |
 | Az új Virtuálisgép-méret átméretezése   | Operációsrendszer-lemez adatok megőrződnek                                                                    | Az operációsrendszer-lemez az adatok törlődnek, az operációs rendszer újratelepítés                                      |
-
-## <a name="register-for-the-preview"></a>Regisztráljon az előzetes verzió
-
-
-Önálló regisztráljon az előzetes verziója a rövid élettartamú operációsrendszer-lemezek az Azure CLI-vel vagy az Azure PowerShell legújabb verzióját használja.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-Register-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
-```
-
-Annak ellenőrzése, ha regisztrálva van az előzetes verzió:
-
-```azurepowershell-interactive
-Get-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="cli"></a>CLI
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-az feature register --namespace Microsoft.Compute --name LocalDiffDiskPreview
-```
-
-Annak ellenőrzése, ha regisztrálva van az előzetes verzió:
- 
-```azurecli-interactive
-az provider show --namespace Microsoft.Compute
-```
-
 
 ## <a name="scale-set-deployment"></a>Méretezési csoport üzembe helyezés  
 A folyamat egy rövid élettartamú operációsrendszer-lemezt használó méretezési csoport létrehozása az, hogy adja hozzá a `diffDiskSettings` tulajdonságot a `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` erőforrástípust a sablonban. Emellett a gyorsítótárazási házirend értékre kell állítani `ReadOnly` a rövid élettartamú operációsrendszer-lemez. 

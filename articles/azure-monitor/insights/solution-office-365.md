@@ -10,18 +10,26 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 05/29/2019
 ms.author: bwren
-ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4c7e1225a8da1e20bc90986d1530b781f7f2c11a
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130630"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357583"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
 ![Office 365-embléma](media/solution-office-365/icon.png)
+
+
+> [!NOTE]
+> Az ajánlott módszer, telepítése és konfigurálása az Office 365-megoldás az engedélyezése a [Office 365-összekötő](../../sentinel/connect-office-365.md) a [Azure Sentinel-](../../sentinel/overview.md) helyett ebben a cikkben ismertetett lépések. Ez az az Office 365-megoldás egy továbbfejlesztett konfigurációs felület a frissített verzióját. Naplók az Azure AD connect, használja a [Azure Sentinel az Azure AD-összekötő](../../sentinel/connect-azure-active-directory.md), amely biztosítja, mint az Office 365 felügyeleti naplók gazdagabb naplóadatokat. 
+>
+> Ha Ön [előkészítése Azure-Sentinel](../../sentinel/quickstart-onboard.md), adja meg a Log Analytics-munkaterületet, amely a telepített Office 365-megoldást. Miután engedélyezte az összekötőt, a megoldás a munkaterületen elérhető lesz, és telepítette a megfelelő figyelési megoldások használt teljesen megegyezik.
+>
+> Az Azure government cloud-felhasználók telepíteni kell az Office 365-be a lépéseket ebben a cikkben, mivel az Azure-Sentinel még nem áll rendelkezésre a government cloud.
 
 Az Office 365 felügyeleti megoldás az Office 365-környezethez az Azure Monitor figyelését teszi lehetővé.
 
@@ -30,6 +38,7 @@ Az Office 365 felügyeleti megoldás az Office 365-környezethez az Azure Monito
 - Észlelése és vizsgálata a nem kívánt felhasználói viselkedés, amely a szervezet igényeinek megfelelően testre szabható.
 - Naplózási és megfelelőségi bemutatása. Figyelheti például fájl bizalmas fájlokat, amelyek segítségére lehet a naplózást és megfelelőségi folyamat a hozzáférési műveleteket.
 - Az operatív hibaelhárítás elvégzése érdekében [lekérdezések naplózását](../log-query/log-query-overview.md) a szervezet az Office 365 adatok felett.
+
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -77,7 +86,7 @@ Alkalmazás létrehozása az Azure Active Directoryban, amely a felügyeleti meg
 1. Kattintson az **Új alkalmazásregisztráció** elemre.
 
     ![Alkalmazásregisztráció hozzáadása](media/solution-office-365/add-app-registration.png)
-1. Adja meg az alkalmazás **neve** és **bejelentkezési URL-**.  A név legyen leíró.  Használat `http://localhost` URL-címet, és tarthatja _webalkalmazás / API_ a a **alkalmazástípus**
+1. Adja meg az alkalmazás **neve** és **bejelentkezési URL-** .  A név legyen leíró.  Használat `http://localhost` URL-címet, és tarthatja _webalkalmazás / API_ a a **alkalmazástípus**
     
     ![Alkalmazás létrehozása](media/solution-office-365/create-application.png)
 1. Kattintson a **létrehozás** , és ellenőrizze az alkalmazás adatait.
@@ -97,9 +106,9 @@ Alkalmazás létrehozása az Azure Active Directoryban, amely a felügyeleti meg
     ![API kiválasztása](media/solution-office-365/select-api.png)
 
 1. A **engedélyek kiválasztása** válassza ki a következő beállításokat is **Alkalmazásengedélyek** és **delegált engedélyek**:
-   - A munkahelyhez tartozó szolgáltatásállapot-adatok olvasása
-   - A munkahelyi tevékenységadatok olvasása
-   - A munkahelyre vonatkozó tevékenységjelentések olvasása
+   - Szolgáltatásállapot-adatokat a szervezet számára
+   - Tevékenység-adatok olvasása a szervezet számára
+   - A szervezet vonatkozó Tevékenységjelentések olvasása
 
      ![API kiválasztása](media/solution-office-365/select-permissions.png)
 
@@ -541,7 +550,7 @@ A következő tulajdonságok megegyeznek az összes Office 365-rekord.
 | ResultStatus | Azt jelzi, hogy a (művelet tulajdonságban megadott) művelet sikeres volt-e vagy sem. Lehetséges értékek: Succeeded, részben vagy sikertelen. Az Exchange-rendszergazdai tevékenységhez, értéke pedig IGAZ vagy hamis. |
 | Felhasználói azonosító | A rekordnaplózást eredményező naplózott; műveletet végrehajtó felhasználó egyszerű Felhasználóneve (egyszerű felhasználónév) Ha például my_name@my_domain_name. Vegye figyelembe, hogy a Rendszerfiókok (például a SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végrehajtott tevékenységek rekordjai is szerepelnek. | 
 | UserKey | Egy alternatív Azonosítót a felhasználó a UserId tulajdonság azonosítja.  Például ez a tulajdonság megjelenik a passport egyedi azonosító (PUID), és az Exchange a SharePoint, a onedrive-on a felhasználók által végrehajtott eseményeket. Ez a tulajdonság is megadható ugyanazt az értéket a UserID tulajdonság számára a más szolgáltatások és a rendszer fiókok által végrehajtott eseményeket bekövetkező események|
-| UserType | A műveletet végrehajtó felhasználó típusa.<br><br>Adminisztratív körzet<br>Alkalmazás<br>DcAdmin<br>Normál<br>Fenntartott<br>ServicePrincipal<br>Rendszer |
+| UserType | A műveletet végrehajtó felhasználó típusa.<br><br>rendszergazda<br>Alkalmazás<br>DcAdmin<br>Rendszeres<br>Fenntartva<br>ServicePrincipal<br>Rendszer |
 
 
 ### <a name="azure-active-directory-base"></a>Az Azure Active Directory alap
@@ -579,7 +588,7 @@ Ezek a rekordok módosítása vagy hozzáadása az Azure Active Directory-objekt
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
 | AADTarget | A felhasználó, amely a (művelet tulajdonság által azonosított) műveletet hajtott végre. |
-| Szereplő | A felhasználó vagy szolgáltatás, amely a műveletet. |
+| aktor | A felhasználó vagy szolgáltatás, amely a műveletet. |
 | ActorContextId | A szervezet, amely tagja az aktor GUID Azonosítóját. |
 | ActorIpAddress | Az aktor IP-cím IPV4 vagy IPv6-cím formátumú. |
 | InterSystemsId | A GUID, a műveletek nyomon követése a különböző összetevők az Office 365 szolgáltatásban. |

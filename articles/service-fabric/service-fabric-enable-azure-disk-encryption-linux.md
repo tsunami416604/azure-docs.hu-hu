@@ -1,6 +1,6 @@
 ---
 title: Lemeztitkosítás engedélyezve, az Azure Service Fabric Linux-fürtök |} A Microsoft Docs
-description: Ez a cikk ismerteti a Service Fabric-fürt méretezési beállítása az Azure-ban Azure Resource Manager, az Azure Key Vault használatával a lemeztitkosítás engedélyezve.
+description: Ez a cikk ismerteti a Linux Azure Service Fabric-fürtcsomópont lemeztitkosítás engedélyezése az Azure Resource Manager és az Azure Key Vault használatával.
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -13,27 +13,27 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/22/2019
 ms.author: aljo
-ms.openlocfilehash: f580bf02b222f01a3d5aad1254f208791ea22b38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 47b07188d1757708fb494c6a66e93379657e806a
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161788"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258759"
 ---
-# <a name="enable-disk-encryption-for-service-fabric-linux-cluster-nodes"></a>A service fabric Linux-fürtcsomópontokon lemeztitkosítás engedélyezve 
+# <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>A Linux Azure Service Fabric-fürtcsomópont lemeztitkosítás engedélyezve 
 > [!div class="op_single_selector"]
 > * [Lemeztitkosítás linuxhoz](service-fabric-enable-azure-disk-encryption-linux.md)
 > * [Disk Encryption Windows-szolgáltatás](service-fabric-enable-azure-disk-encryption-windows.md)
 >
 >
 
-A Service Fabric Linux-fürtcsomópontokon lemeztitkosítás engedélyezve az alábbi lépésekkel. Az egyes típusok/virtuális gép méretezési csoportok a csomópont nem kell. A csomópontok titkosításához, használja azt az Azure Disk Encryption funkció, virtuálisgép-méretezési csoportokon.
+Ebben az oktatóanyagban elsajátíthatja lesz a Linux Azure Service Fabric-fürtcsomópontok lemeztitkosítással engedélyezése. Kövesse az alábbi lépéseket az egyes csomóponttípusok és virtuálisgép-méretezési csoportok kell. A csomópontok titkosításához, a virtual machine scale sets fogjuk használni az Azure Disk Encryption képesség.
 
-Az útmutató a következő eljárásokat ismerteti:
+Az útmutató témakörei a következők:
 
-* Főbb fogalmak, amely a lemeztitkosítást a virtuálisgép-méretezési csoport Service Fabric Linux-fürt engedélyezése ki figyelembe kell beállítani.
-* Előfeltételek lépéseket kell követni a Service Fabric-fürt Linux virtuális gép méretezési csoporthoz lemeztitkosítással engedélyezése előtt.
-* Állítsa be a lemeztitkosítást a virtuálisgép-méretezési csoport Service Fabric Linux-fürt engedélyezése követendő lépéseket.
+* Érdemes figyelembe vennie, amikor beállítja a lehetővé teszi a lemeztitkosítást, a Service Fabric-fürt virtuálisgép-méretezési Linux alapfogalmakat.
+* Mielőtt engedélyezi a lemeztitkosítást a Service Fabric követendő lépések a Linux fürtcsomópont.
+* A Linux Service Fabric-fürtcsomópont lemez titkosításának követendő lépéseket.
 
 
 
@@ -41,22 +41,29 @@ Az útmutató a következő eljárásokat ismerteti:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Regisztrációs** – használatához a virtuális gép méretezési készlet lemez titkosítási előzetes regisztrációs igényel
-* Önálló regisztrálhatja előfizetését futtassa az alábbi lépéseket: 
-```powershell
-Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
-```
-* Várjon, amíg az állapot körülbelül 10 percet, "Regisztrálva". Az állapot a következő parancs futtatásával ellenőrizheti: 
-```powershell
-Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-* **Az Azure Key Vault** – hozzon létre egy KeyVault azonos előfizetésben és régióban, a virtuálisgép-méretezési csoport állítsa be, és állítsa be a hozzáférési házirend "EnabledForDiskEncryption" a fiókidentitás a PS-parancsmag segítségével. A szabályzat a KeyVault felhasználói felület segítségével az Azure Portalon is állíthatja be: 
-```powershell
-Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
-```
-* Telepítse a legújabb [Azure CLI-vel](/cli/azure/install-azure-cli) , amely rendelkezik az új titkosítási parancsait.
-* Telepítse a legújabb verzióját, [Azure SDK-t az Azure PowerShell](https://github.com/Azure/azure-powershell/releases) kiadás. Az alábbiakban a virtuális gép méretezési ADE parancsmagjaival engedélyezhetik ([beállítása](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) titkosítási, lekérése ([első](/powershell/module/az.compute/get-azvmssvmdiskencryption)) titkosítási állapotát, és távolítsa el ([letiltása](/powershell/module/az.compute/disable-azvmssdiskencryption)) méretezési titkosításának set-példány. 
+ **Önkiszolgáló regisztráció**
+
+A virtuálisgép-méretezési csoportot a lemez titkosítási előzetes regisztrációs van szükség. Ehhez a következő lépések szükségesek:
+
+1. Futtassa a következő parancsot: 
+    ```powershell
+    Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
+    ```
+2. Várjon körülbelül 10 percet, amíg az állapot *regisztrált*. Az állapot a következő parancs futtatásával ellenőrizheti:
+    ```powershell
+    Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
+    Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
+    ```
+**Azure Key Vault**
+
+1. Hozzon létre egy kulcstartót azonos előfizetésben és régióban a méretezési csoportban. Válassza ki a **EnabledForDiskEncryption** házirendet a key vault eléréséhez a PowerShell-parancsmag használatával. A Key Vault felhasználói felület az Azure Portalon a következő parancs használatával is beállíthatja a szabályzatot:
+    ```powershell
+    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
+    ```
+2. Telepítse a legújabb verzióját a [Azure CLI-vel](/cli/azure/install-azure-cli), amely rendelkezik az új titkosítási parancsait.
+
+3. Telepítse a legújabb verzióját a [Azure SDK-t az Azure PowerShell](https://github.com/Azure/azure-powershell/releases) kiadás. A virtuális gép méretezési csoport engedélyezése az Azure Disk Encryption parancsmagok a következők ([beállítása](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) titkosítási, lekérése ([első](/powershell/module/az.compute/get-azvmssvmdiskencryption)) titkosítási állapotát, és távolítsa el ([letiltása](/powershell/module/az.compute/disable-azvmssdiskencryption)) a méretezési csoport titkosításának példány beállítása.
+
 
 | Parancs | Version |  Source  |
 | ------------- |-------------| ------------|
@@ -69,16 +76,18 @@ Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
 
 
 ## <a name="supported-scenarios-for-disk-encryption"></a>Lemeztitkosítás támogatott helyzetek
-* Virtual machine scale set titkosítási csak a managed disks szolgáltatással létrehozott, és nem támogatott natív (vagy nem felügyelt) lemezek méretezési csoportok a méretezési csoportok esetében támogatott.
-* Virtual machine scale set titkosítási adatmennyiség Linux virtuálisgép-méretezési csoport esetében támogatott. Az operációs rendszer lemeztitkosítás nem támogatott Linux rendszeren az aktuális előzetes verzióban érhető el.
-* Virtuálisgép-méretezési VM-rendszerképeit alaphelyzetbe állítani, és a frissítési műveletek nem támogatottak az aktuális előzetes verzióban érhető el.
+* Virtuálisgép-méretezési csoportokhoz tartozó titkosítási csak a létrehozott felügyelt lemezekkel rendelkező méretezési csoportok esetében támogatott. Natív (vagy nem felügyelt) lemezek méretezési csoportok esetében nem támogatott.
+* Titkosítás és a titkosítás letiltása a virtuálisgép-méretezési csoportok az Linux operációsrendszer- és kötetek esetében támogatottak. 
+* Virtuális gép (VM) rendszerképeit alaphelyzetbe állítani, és a frissítési műveletek virtuálisgép-méretezési csoportokhoz tartozó nem támogatottak az aktuális előzetes verzióban érhető el.
 
 
-### <a name="create-new-linux-cluster-and-enable-disk-encryption"></a>Új Linux-fürt létrehozása és a lemeztitkosítás engedélyezve
+## <a name="create-a-new-cluster-and-enable-disk-encryption"></a>Hozzon létre egy új fürtöt, és a lemeztitkosítás engedélyezve
 
-Az alábbi parancsokkal hozható létre fürt és az Azure Resource Manager-sablon & önaláírt tanúsítvány használatával lemeztitkosítás engedélyezve.
+A következő parancsok használatával hozzon létre egy fürtöt, és a egy Azure Resource Manager-sablon és a egy önaláírt tanúsítvány használatával lemeztitkosítás engedélyezve.
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba  
+
+Jelentkezzen be a következő parancsokat:
 
 ```powershell
 
@@ -94,11 +103,11 @@ az account set --subscription $subscriptionId
 
 ```
 
-#### <a name="use-the-custom-template-that-you-already-have"></a>Használja az egyéni sablont, amely már rendelkezik 
+### <a name="use-the-custom-template-that-you-already-have"></a>Használja az egyéni sablont, amely már rendelkezik 
 
-Ha hozzon létre egy egyéni sablont, hogy illeszkedjen az igényeihez van szüksége, azt javasoljuk, hogy az egyik elérhető sablont megkezdése a [az azure service fabric-sablonminták](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master) Linux-fürt számára. 
+Hozzon létre egy egyéni sablon van szüksége, ha kifejezetten ajánljuk, hogy használhatja a sablonok egyikét a [Azure Service Fabric-fürt létrehozása sablonminták](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master) lapot. 
 
-Ha már rendelkezik egy egyéni sablont, majd győződjön meg arról, hogy ellenőrizze, hogy minden a három tanúsítvánnyal kapcsolatos paramétereket a sablon és a paraméterfájl elnevezése a következő és értékek a következők null értékű.
+Ha már rendelkezik egy egyéni sablont, és ellenőrizze, hogy minden három tanúsítvánnyal kapcsolatos paraméterekkel a sablon és a alkalmazásparaméter-fájlt a következő nevesített. Emellett ellenőrizze, hogy az értékek a következők null értékű:
 
 ```Json
    "certificateThumbprint": {
@@ -112,7 +121,7 @@ Ha már rendelkezik egy egyéni sablont, majd győződjön meg arról, hogy elle
     },
 ```
 
-Óta Linux virtuálisgép-méretezési csoport – csak adatokat lemeztitkosítás támogatott, adatlemez az Azure Resource Manager-sablon használatával hozzá kell adnunk a. Az adatszolgáltatás lemez az alábbi, a sablon frissítésére:
+Csak adatok lemeztitkosítás a Linux virtuális gép méretezési csoportok esetében támogatott, mert hozzá kell adnia egy adatlemezt a Resource Manager-sablon használatával. Az adatok lemez üzembe helyezése sablon a következő frissítés:
 
 ```Json
    
@@ -154,7 +163,7 @@ New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOut
 
 ```
 
-Íme az előbbiek az egyenértékű CLI-paranccsal. Módosítsa az értékeket a declare utasítást a megfelelő értékekre. Parancssori felület támogatja a többi paramétert, amely támogatja a fenti powershell-parancsot.
+Íme az egyenértékű CLI-paranccsal. Módosítsa az értékeket a declare utasítást a megfelelő értékekre. A parancssori felület támogatja a többi paramétert, amely támogatja az előző PowerShell-parancsot.
 
 ```azurecli
 declare certPassword=""
@@ -173,15 +182,16 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ```
 
-#### <a name="linux-data-disk-mounting"></a>Linux-adatok lemez csatlakoztatása
-Linux virtuálisgép-méretezési csoport a titkosítást a folytatás előtt ellenőrizze, hogy a hozzáadott adatlemez megfelelően van csatlakoztatva, vagy nem kell. Jelentkezzen be a Linux-fürt virtuális Gépet, és futtassa LSBLK parancsot. A kimeneti meg kell jelennie a hozzáadott adatlemez csatlakoztatási pont oszlop alapján.
+### <a name="mount-a-data-disk-to-a-linux-instance"></a>Linux-példányra adatlemez csatlakoztatása
+Egy virtuálisgép-méretezési csoportot a titkosítást a folytatás előtt győződjön meg arról, az új adatok lemez megfelelően csatlakoztatva van. Jelentkezzen be a Linux-fürt virtuális Gépet, és futtassa a **LSBLK** parancsot. A kimenet meg kell jelennie a hozzáadott adatlemez a **csatlakoztatási pont** oszlop.
 
 
-#### <a name="deploy-application-to-linux-service-fabric-cluster"></a>A Linux Service Fabric-fürt üzembe helyezése
-Kövesse a lépéseket és útmutatás [alkalmazás üzembe helyezése a fürtön](service-fabric-quickstart-containers-linux.md)
+### <a name="deploy-application-to-a-service-fabric-cluster-in-linux"></a>A Linux Service Fabric-fürtön történő üzembe helyezése
+Egy alkalmazást a fürtön üzembe helyezéséhez kövesse a lépéseket és útmutatójában [a rövid útmutató: Linux-tárolók üzembe helyezése a Service Fabric](service-fabric-quickstart-containers-linux.md).
 
 
-#### <a name="enable-disk-encryption-for-service-fabric-linux-cluster-virtual-machine-scale-set-created-above"></a>A fentiekben létrehozott Service Fabric Linux-fürt virtuális gép méretezési lemeztitkosítás engedélyezve
+### <a name="enable-disk-encryption-for-the-virtual-machine-scale-sets-created-previously"></a>A korábban létrehozott virtuálisgép-méretezési csoportok a lemeztitkosítás engedélyezve
+Ahhoz, hogy a virtuálisgép-méretezési csoport lemeztitkosítás állítja be az előző lépések során a következő parancsok futtatásával keresztül létrehozott:
  
 ```powershell
 $VmssName = "nt1vm"
@@ -201,9 +211,9 @@ az vmss encryption enable -g <resourceGroupName> -n <VMSS name> --disk-encryptio
 
 ```
 
-#### <a name="validate-if-disk-encryption-enabled-for-linux-virtual-machine-scale-set"></a>Ha a lemeztitkosítás engedélyezve a Linuxos virtuálisgép-méretezési csoport érvényesítése.
-Egy teljes virtuálisgép-méretezési csoportot, vagy a méretezési csoportban lévő bármely példány virtuális gép állapotának lekéréséhez. Tekintse meg az alábbi parancsokat.
-Emellett felhasználó jelentkezzen be a Linux-fürt virtuális gép és LSBLK parancs futtatásához. A kimeneti meg kell jelennie a hozzáadott adatlemez a csatlakoztatási pont és típusú oszlop, a titkosítási hozzáadott adatlemez.
+### <a name="validate-if-disk-encryption-is-enabled-for-a-virtual-machine-scale-set-in-linux"></a>Ha a lemeztitkosítás engedélyezve van a Linux virtuális gép méretezési csoportokhoz tartozó ellenőrzése
+Egy méretezési csoportban lévő egy teljes virtuálisgép-méretezési csoportot, vagy minden olyan példány állapotának lekéréséhez futtassa a következő parancsokat.
+Emellett, jelentkezzen be a Linux-fürt virtuális Gépet, és futtassa a **LSBLK** parancsot. A kimenet meg kell jelennie a hozzáadott adatlemez a **csatlakoztatási pont** oszlopot, és a **típus** oszlop olvassa el *Crypt*.
 
 ```powershell
 
@@ -220,8 +230,8 @@ az vmss encryption show -g <resourceGroupName> -n <VMSS name>
 
 ```
 
-#### <a name="disable-disk-encryption-for-service-fabric-cluster-virtual-machine-scale-set"></a>Tiltsa le a Service Fabric-fürt virtuálisgép-méretezési lemeztitkosítás 
-Tiltsa le lemeztitkosítás vonatkozik, és a példány nem a teljes virtuálisgép-méretezési csoporthoz 
+### <a name="disable-disk-encryption-for-a-virtual-machine-scale-set-in-a-service-fabric-cluster"></a>Tiltsa le a Service Fabric-fürt virtuális gép méretezési lemeztitkosítás
+Tiltsa le a lemeztitkosítás állítsa a következő parancsok futtatásával virtuálisgép-méretezési csoportot. Vegye figyelembe, hogy a teljes virtuálisgép-méretezési csoportot és a egy egyéni példány nem érvényes lemeztitkosítás letiltása.
 
 ```powershell
 $VmssName = "nt1vm"
@@ -237,4 +247,4 @@ az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 
 
 ## <a name="next-steps"></a>További lépések
-Ezen a ponton rendelkezik egy biztonságos fürthöz Service Fabric-fürt Linux virtuálisgép-méretezési lemeztitkosítás engedélyezését vagy letiltását annak. Ezután [Windows a lemeztitkosítás](service-fabric-enable-azure-disk-encryption-windows.md) 
+Ezen a ponton kell egy biztonságos fürt, és tudja, hogyan engedélyezheti és tilthatja le a Service Fabric-fürtcsomópontok és a virtual machine scale sets lemeztitkosítás. A Linux Service Fabric-fürtcsomópont hasonló útmutatásért lásd: [Disk Encryption Windows](service-fabric-enable-azure-disk-encryption-windows.md). 
