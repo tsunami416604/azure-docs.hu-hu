@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 2fba8b0056c80a62837682a6820b68f71fba9ea8
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
-ms.translationtype: HT
+ms.openlocfilehash: 0307dc5c83782119f6c10279563b8b9f0a999d28
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65952932"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236886"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -49,7 +49,7 @@ Minden művelet, az SQL Server virtuális gép kapcsolódnia kell az Azure nyilv
 
 Kapcsolat létrehozása a következő lehetőségek egyikének használatával:
 
-- **Lehetővé teszi az Azure-adatközpont IP-címtartományok**. Ez a beállítás lehetővé teszi, hogy [IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653) letölthető. Szeretne hozzáférni a hálózati biztonsági csoport (NSG), a Set-AzureNetworkSecurityRule parancsmaggal. Ha Ön az egyetlen engedélyezési régióspecifikus IP-címek, meg fogjuk is kell az Azure Active Directory (Azure AD) engedélyezési listára szolgáltatáscímke hitelesítés engedélyezése.
+- **Lehetővé teszi az Azure-adatközpont IP-címtartományok**. Ez a beállítás lehetővé teszi, hogy [IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653) letölthető. Szeretne hozzáférni a hálózati biztonsági csoport (NSG), a Set-AzureNetworkSecurityRule parancsmaggal. Ha Ön biztonságos címzettek listája csak régióspecifikus IP-címek, is kell frissíteni a megbízható címzettek listáját az Azure Active Directory (Azure AD) szolgáltatáscímke hitelesítés engedélyezéséhez.
 
 - **Engedélyezi a hozzáférést az NSG-címkék használatával**. NSG-k használatával korlátozza a kapcsolatot, ha ezt a beállítást ad hozzá egy szabályt az NSG-t, amely lehetővé teszi a kimenő hozzáférést az Azure Backup az AzureBackup címke használatával. Ez a címke mellett is kell megfelelő [szabályok](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) az Azure ad és az Azure Storage, amely engedélyezi a csatlakozást a hitelesítés és az adatátvitelt. Az AzureBackup címkét csak a PowerShell jelenleg érhető el. Olyan szabály létrehozására AzureBackup címkével:
 
@@ -96,7 +96,8 @@ Kerülje a következő elemeket az adatbázis neve:
   * Záró és a szóközöket
   * Záró felkiáltójel jelzések (!)
   * A záró szögletes zárójelek (])
-  * Az F:\ indítása
+  * Pontosvesszővel (;)
+  * Forward slash '/'
 
 Aliasképző érhető el a nem támogatott karaktereket, de azokat nem ajánlott. További információt a [Table Service adatmodelljét ismertető](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN) témakörben talál.
 
@@ -162,7 +163,7 @@ Hogyan derítheti fel a virtuális gépeken futó adatbázisok:
 
      * Több mint 50 adatbázisok védelméhez, több biztonsági mentések konfigurálása.
      * Ahhoz, hogy [ ](#enable-auto-protection) az egész példány vagy az Always On rendelkezésre állási csoport. Az a **AUTOPROTECT** legördülő listában válassza **ON**, majd válassza ki **OK**.
-     
+
     > [!NOTE]
     > A [automatikus védelem](#enable-auto-protection) funkció csak nem engedélyezi az összes meglévő adatbázis védelmi egyszerre, de automatikusan is védi az adott példány vagy a rendelkezésre állási csoporthoz hozzáadott új adatbázisokat.  
 
