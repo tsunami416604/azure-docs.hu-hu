@@ -69,13 +69,13 @@ Az alábbi táblázatban a JSON-elemeket társított MySQL szolgáltatás leír�
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A type tulajdonságot kell beállítani: **OnPremisesMySql** |Igen |
-| kiszolgáló |A MySQL-kiszolgáló neve. |Igen |
-| adatbázis |A MySQL-adatbázis neve. |Igen |
-| séma |A séma az adatbázis neve. |Nem |
+| server |A MySQL-kiszolgáló neve. |Igen |
+| database |A MySQL-adatbázis neve. |Igen |
+| schema |A séma az adatbázis neve. |Nem |
 | authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: `Basic`. |Igen |
-| felhasználónév |Adja meg a felhasználónevet, a MySQL-adatbázishoz való csatlakozáshoz. |Igen |
+| userName |Adja meg a felhasználónevet, a MySQL-adatbázishoz való csatlakozáshoz. |Igen |
 | password |Adja meg a megadott felhasználói fiókhoz tartozó jelszót. |Igen |
-| átjáró neve |Az átjáró által a Data Factory szolgáltatás a helyi MySQL-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
+| gatewayName |Az átjáró által a Data Factory szolgáltatás a helyi MySQL-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (az Azure SQL, az Azure blob-, az Azure table-, stb.).
@@ -95,7 +95,7 @@ Ha a másolási tevékenység forrása típusa **RelationalSource** (amely tarta
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
+| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON-példa: Adatok másolása az MySQL az Azure Blob
