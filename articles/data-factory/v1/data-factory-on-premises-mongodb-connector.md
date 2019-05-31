@@ -67,14 +67,14 @@ A következő táblázat tartalmazza a megadott JSON-elemek leírását **OnPrem
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A type tulajdonságot kell beállítani: **OnPremisesMongoDb** |Igen |
-| kiszolgáló |IP-cím vagy a gazdagép neve a MongoDB-kiszolgáló. |Igen |
+| server |IP-cím vagy a gazdagép neve a MongoDB-kiszolgáló. |Igen |
 | port |A MongoDB-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem kötelező, csak az alapértelmezett érték: 27017 |
 | authenticationType |Alapszintű vagy névtelen. |Igen |
-| felhasználónév |Felhasználói fiók MongoDB eléréséhez. |Igen (alapszintű hitelesítés használata esetén). |
+| username |Felhasználói fiók MongoDB eléréséhez. |Igen (alapszintű hitelesítés használata esetén). |
 | password |A felhasználó jelszava. |Igen (alapszintű hitelesítés használata esetén). |
 | authSource |A MongoDB-adatbázis, amely a hitelesítéshez a hitelesítő adatok ellenőrzésére használni kívánt nevét. |Nem kötelező, (ha az alapszintű hitelesítés használata). alapértelmezett: a rendszergazdai fiókkal és -databaseName tulajdonsággal megadott adatbázis használja. |
 | databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Igen |
-| átjáró neve |Az átjáró, amely hozzáfér az adattár neve. |Igen |
+| gatewayName |Az átjáró, amely hozzáfér az adattár neve. |Igen |
 | encryptedCredential |A hitelesítőadat-átjáró által titkosított. |Optional |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
@@ -95,7 +95,7 @@ Ha a forrása típusa **MongoDbSource** typeProperties szakasz érhető el az al
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-92 lekérdezési karakterláncot. Például: válassza ki * from tábla. |Nem (Ha **collectionName** , **adatkészlet** van megadva) |
+| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-92 lekérdezési karakterláncot. Például: válassza ki * from tábla. |Nem (Ha **collectionName** , **adatkészlet** van megadva) |
 
 
 
