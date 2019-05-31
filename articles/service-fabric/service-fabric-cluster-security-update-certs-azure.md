@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f1998ec2fe82b9fd52547fbccb208542b22bc949
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161817"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306919"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Adja hozzá, vagy távolítsa el a tanúsítványokat a Service Fabric-fürtön az Azure-ban
 Javasoljuk, hogy Ismerkedjen meg hogyan a Service Fabric X.509-tanúsítványokat használ, és ismernie kell a [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md). Ismernie kell a fürt tanúsítványt, és mire használható, mielőtt folytatná.
@@ -48,7 +48,7 @@ Ha a leképezés eltávolítani a tanúsítványt, amely elsődleges van megjel�
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Resource Manager Powershell-lel másodlagos tanúsítvány hozzáadása
 > [!TIP]
-> Most már jobb és egyszerűbb a módon hozzáadni egy másodlagos tanúsítvány használatával a [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) parancsmagot. Nem kell követhesse a jelen szakaszban ismertetett lépéseket.  Emellett nem kell létrehozni és üzembe helyezni a fürt használatakor eredetileg használt sablon a [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) parancsmagot.
+> Van már jobb és egyszerűbb mód használatával egy másodlagos tanúsítvány hozzáadása a [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) parancsmagot. Nem kell követhesse a jelen szakaszban ismertetett lépéseket.  Emellett nem kell létrehozni és üzembe helyezni a fürt használatakor eredetileg használt sablon a [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) parancsmagot.
 
 A lépések feltételezik, hogy ismeri a Resource Manager működését, és legalább egy Service Fabric-fürtöt egy Resource Manager-sablon használatával telepített, és rendelkezik a sablont, amely hasznos a fürt beállításához használt. Azt is feltételezzük, hogy járatos JSON.
 
@@ -195,7 +195,7 @@ A Resource Manager-sablon paraméter fájl szerkesztése, a két új paramétere
 ### <a name="deploy-the-template-to-azure"></a>A sablon üzembe helyezéséhez az Azure-bA
 
 - Most már készen áll a sablon üzembe helyezéséhez az Azure-bA. Nyisson meg egy Azure PS 1 vagy újabb parancssort.
-- Jelentkezzen be az Azure-fiókot, és válassza ki az adott azure-előfizetés. Ez a fontos lépés a azok számára, akik hozzáférhetnek a több mint egy azure-előfizetéssel.
+- Jelentkezzen be az Azure-fiókot, és válassza ki az adott azure-előfizetést. Ez a fontos lépés a azok számára, akik hozzáférhetnek a több mint egy azure-előfizetéssel.
 
 ```powershell
 Connect-AzAccount

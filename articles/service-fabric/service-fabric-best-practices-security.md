@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 3349abfb1b7cf85247b1bb5de8eb53fa09299b74
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 449dbb04d58fe7980c845b8c5bc8d837b643c1be
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136487"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386732"
 ---
 # <a name="azure-service-fabric-security"></a>Az Azure Service Fabric biztonsága 
 
@@ -201,6 +201,14 @@ Az alábbi példa bemutatja, hogyan teheti ezt a Cosmos DB-erőforráshoz:
 ```bash
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
+## <a name="windows-security-baselines"></a>Windows biztonsági előírások
+[Azt javasoljuk, hogy végrehajtja-e egy iparági szabványnak megfelelő konfigurációt, amely széles körben ismert és tesztelt, például a biztonsági előírások alapterv létrehozása saját maga helyett](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); ezek a virtuális gép kiépítési beállítás Méretezési csoportokat, hogy Azure Desired State Configuration (DSC) bővítmény kezelő, a virtuális gépek konfigurálni, mivel azok online állapotba kerül, így az üzemi célú szoftverek futnak.
+
+## <a name="azure-firewall"></a>Azure Firewall
+[Az Azure tűzfal az egy felügyelt, felhőalapú és hálózati biztonsági szolgáltatás, amely védelmet nyújt az Azure Virtual Network-erőforrások. Teljes állapot-nyilvántartó tűzfal beépített magas rendelkezésre állás és méretezhetőség korlátlan felhőalapú szolgáltatásként is. ](https://docs.microsoft.com/azure/firewall/overview); Ez lehetővé teszi a kimenő HTTP-vagy Https forgalmat egy megadott listán szereplő teljes tartománynevek (FQDN) például a helyettesítő karakterek használata korlátozza. Ehhez a szolgáltatáshoz nem szükséges SSL-lezárás. A javasolt, hogy kihasználhatja [Azure tűzfal FQDN címkék](https://docs.microsoft.com/azure/firewall/fqdn-tags) Windows-frissítések, és a Microsoft Windows Update hálózati forgalom engedélyezéséhez végpontjait a tűzfal is áthaladhat. [Üzembe helyezése sablon használatával Azure tűzfal](https://docs.microsoft.com/azure/firewall/deploy-template) Microsoft.Network/azureFirewalls erőforrás Sablondefiníció egy minta biztosít.
+
+## <a name="tls-12"></a>A TLS 1.2
+[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 
 

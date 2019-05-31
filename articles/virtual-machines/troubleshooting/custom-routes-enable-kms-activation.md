@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: b121996530ea0618fc757f1ae12dfafde10ed7bb
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6557649eb1b97ad4d88876906737f8249e18b958
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979377"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399803"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Windows-aktiválás sikertelen, a kényszerített bújtatás forgatókönyvben
 
@@ -51,7 +51,7 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
 ### <a name="for-resource-manager-vms"></a>Resource Manager-beli virtuális gépek
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 1. Nyissa meg az Azure Powershellt, majd [jelentkezzen be az Azure-előfizetés](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Futtassa az alábbi parancsot:
@@ -68,6 +68,12 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
     Add-AzRouteConfig -Name "DirectRouteToKMS" -AddressPrefix 23.102.135.246/32 -NextHopType Internet -RouteTable $RouteTable
 
     Set-AzRouteTable -RouteTable $RouteTable
+
+    # Next, attach the route table to the subnet that hosts the VMs
+
+    Set-AzVirtualNetworkSubnetConfig -Name "Subnet01" -VirtualNetwork $vnet -AddressPrefix "10.0.0.0/24" -RouteTable $RouteTable
+
+    Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
 3. Nyissa meg a virtuális gép, amely rendelkezik az aktiválással kapcsolatos problémák. Használat [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) azt is eléri a KMS-kiszolgáló teszteléséhez:
 

@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: 33dfbe70d75335eca79d32807407b97e32c2dbbf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8521566087690523359b753b800268e75437a257
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60918141"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384273"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>A Bing Image Search API-lemezkép elemzések lekérése
 
@@ -26,7 +26,7 @@ ms.locfileid: "60918141"
 
 Minden egyes képe egy insights jogkivonatot, amellyel a rendszerkép adatainak lekérése is tartalmaz. Például kaphat kapcsolódó képeket, a képet tartalmazó weblapokra, vagy a kereskedők listája ahol vásárolhat a termék a képen látható.  
 
-Kaphat elemzési információkat egy képet, a lemezkép rögzítése [imageInsightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image-imageinsightstoken) jogkivonat a válaszban.
+Kaphat elemzési információkat egy képet, a lemezkép rögzítése [imageInsightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image-imageinsightstoken) jogkivonat a válaszban.
 
 ```json
 "value" : [{
@@ -41,9 +41,9 @@ Kaphat elemzési információkat egy képet, a lemezkép rögzítése [imageInsi
 }],
 ```
 
-Ezután hívja a lemezkép adatait végpont, és állítsa be a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) lekérdezési paraméter token `imageInsightsToken`.  
+Ezután hívja a lemezkép adatait végpont, és állítsa be a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) lekérdezési paraméter token `imageInsightsToken`.  
 
-Adja meg az elemzéseket szeretne kapni, állítsa be a `modules` lekérdezési paraméter. Az összes elemzések lekérése, állítsa `modules` való `All`. Állítsa be, hogy csak a feliratot, és a gyűjtemény elemzéseket `modules` való `Caption%2CCollection`. Lehetséges elemzéseket teljes listáját lásd: [modulok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested). Nem minden insights az összes rendszerkép érhetők el. A válasz tartalmazza a kért, az elemzés, ha elérhető.
+Adja meg az elemzéseket szeretne kapni, állítsa be a `modules` lekérdezési paraméter. Az összes elemzések lekérése, állítsa `modules` való `All`. Állítsa be, hogy csak a feliratot, és a gyűjtemény elemzéseket `modules` való `Caption%2CCollection`. Lehetséges elemzéseket teljes listáját lásd: [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested). Nem minden insights az összes rendszerkép érhetők el. A válasz tartalmazza a kért, az elemzés, ha elérhető.
 
 Az alábbi példa az előző képen az összes rendelkezésre álló insights kérelmeket.
 
@@ -59,7 +59,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-insights-of-a-known-image"></a>Egy ismert lemezkép elemzések lekérése
 
-Ha a kép URL-címe, amelyet szeretne az elemzéseket, használja a [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl) lekérdezési paraméter helyett a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) paramétert adja meg a lemezképet. Vagy, ha a bináris fájl rendelkezik, a rendszerkép a bináris küldhet egy POST-kérés törzse. Ha egy POST-kérés esetén használja a `Content-Type` fejlécet állítsa `multipart/data-form`. Bármelyik lehetőséget választja a lemezkép mérete nem haladhatja meg az 1 MB.  
+Ha a kép URL-címe, amelyet szeretne az elemzéseket, használja a [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl) lekérdezési paraméter helyett a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) paramétert adja meg a lemezképet. Vagy, ha a bináris fájl rendelkezik, a rendszerkép a bináris küldhet egy POST-kérés törzse. Ha egy POST-kérés esetén használja a `Content-Type` fejlécet állítsa `multipart/data-form`. Bármelyik lehetőséget választja a lemezkép mérete nem haladhatja meg az 1 MB.  
 
 Ha a kép URL-CÍMÉT, az alábbi példa bemutatja, hogyan kérhet egy kép insights.
 
@@ -75,7 +75,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-all-image-insights"></a>Az összes rendszerkép elemzések lekérése  
 
-Kérelem az elemzés egy kép, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) lekérdezési paramétert `All`. Kapcsolódó keresések lekéréséhez a kérelem tartalmaznia kell a felhasználói lekérdezési karakterláncot. Ez a példa bemutatja, hogy használatával a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) , adja meg a lemezképet.  
+Kérelem az elemzés egy kép, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) lekérdezési paramétert `All`. Kapcsolódó keresések lekéréséhez a kérelem tartalmaznia kell a felhasználói lekérdezési karakterláncot. Ez a példa bemutatja, hogy használatával a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) , adja meg a lemezképet.  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=sailing+dinghy&insightsToken=mid_68364D764J...&modules=All&mkt=en-us HTTP/1.1  
@@ -87,7 +87,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-A legfelső szintű objektum egy [ImageInsightsResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse) objektumazonosító helyett egy [lemezképek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) objektum.  
+A legfelső szintű objektum egy [ImageInsightsResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) objektumazonosító helyett egy [lemezképek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) objektum.  
 
 ```json
 {
@@ -174,12 +174,12 @@ A legfelső szintű objektum egy [ImageInsightsResponse](https://docs.microsoft.
 
 ## <a name="recognizing-entities-in-an-image"></a>FELISMERVE a képet entitások  
 
-Az entitás szolgáltatás azonosítja az entitásokat a képet, jelenleg csak a felhasználók. A kép entitások azonosítása, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) lekérdezési paramétert `RecognizedEntities`.  
+Az entitás szolgáltatás azonosítja az entitásokat a képet, jelenleg csak a felhasználók. A kép entitások azonosítása, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) lekérdezési paramétert `RecognizedEntities`.  
 
 > [!NOTE]
 > Ez a modul nem határozhat meg bármely egyéb modult. Ha ez a modul más modulokkal adja meg, a válasz nem tartalmaz felismert entitásokat.  
 
-A következő használatával adja meg a kép mutatja a [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl) paraméter. URL-CÍMÉT a vágólapra a lekérdezési paraméterek kódolása.  
+A következő használatával adja meg a kép mutatja a [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl) paraméter. URL-CÍMÉT a vágólapra a lekérdezési paraméterek kódolása.  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=faith+hill&insightsToken=mid_68364D764J...&modules=RecognizedEntities&mkt=en-us HTTP/1.1  
@@ -223,16 +223,16 @@ Az értékeket a téglalap képest relatív szélességét és magasságát az e
 
 Használhatja a régiót, amelyben a Bing, az ezt követő insights hívások adja vissza. Ha például vizuálisan hasonló képek a felismert entitás beolvasásához. További információkért lásd: vágása rendszerképek vizuálisan hasonló és entitások felismerése modulok. Az alábbiakban látható a régió mezőt és a lekérdezési paraméterek közötti lemezképek levágni használható.  
 
--   Balra képez [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  
--   Az első lesz leképezve a [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat)  
--   Jobb képez [autó](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#car)  
--   A maps alsó [cab-fájl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)  
+-   Balra képez [cal](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)  
+-   Az első lesz leképezve a [cat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)  
+-   Jobb képez [autó](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car)  
+-   A maps alsó [cab-fájl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab)  
 
 ## <a name="finding-visually-similar-images"></a>Vizuálisan hasonló képek keresése  
 
-Keresse meg az eredeti rendszerkép vizuálisan hasonló képek, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) lekérdezése SimilarImages paramétert.  
+Keresse meg az eredeti rendszerkép vizuálisan hasonló képek, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) lekérdezése SimilarImages paramétert.  
 
-A következő kérelmet vizuálisan hasonló képek bekérése mutatja be. A kérelem a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) lekérdezési paraméter az eredeti rendszerkép azonosításához. Találati pontosság javítása érdekében a felhasználói lekérdezési karakterláncot tartalmaznia kell.  
+A következő kérelmet vizuálisan hasonló képek bekérése mutatja be. A kérelem a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) lekérdezési paraméter az eredeti rendszerkép azonosításához. Találati pontosság javítása érdekében a felhasználói lekérdezési karakterláncot tartalmaznia kell.  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?insightsToken=mid_68364D764J...&modules=SimilarImages&mkt=en-us HTTP/1.1  
@@ -265,7 +265,7 @@ Az alábbiakban az előző kérelemre adott válasz látható.
 
 ## <a name="cropping-images-to-use-with-visually-similar-and-entity-recognition-modules"></a>A rendszerképek vágása vizuálisan hasonló és entitások felismerése modulok  
 
-A régió, amely a Bing vizuálisan hasonló képek megállapításához vagy entitások felismerése végrehajtásához használja a kép megadásához használja a [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal), [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat), [cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab), és [autó](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#car) lekérdezési paramétereket. Alapértelmezés szerint a Bing használja a teljes kép.  
+A régió, amely a Bing vizuálisan hasonló képek megállapításához vagy entitások felismerése végrehajtásához használja a kép megadásához használja a [cal](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal), [cat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat), [cab](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab), és [autó](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car) lekérdezési paramétereket. Alapértelmezés szerint a Bing használja a teljes kép.  
 
 A paramétereket adja meg a felső és alsó, bal felső sarokban a régióban, az összehasonlítást használó Bing jobb felső sarkában. Adja meg az értékeket az eredeti kép szélessége és magassága részeként. Kezdje a kitalálva (0.0, 0.0) felül, bal felső sarokban található és a végén (1.0-s, 1.0-s), a jobb alsó sarokban. Adja meg, hogy a felső, a bal oldali sarokban indul módja negyedéves le elejére, és módon bal oldalán, negyedév, például állítsa be a `cal` 0,25, és `cat` 0,25.  
 
@@ -374,9 +374,9 @@ A válasz egy felismert entitás jeleníti meg.
 
 ## <a name="finding-visually-similar-products"></a>Vizuálisan hasonló termékek keresése  
 
-Keresse meg, amelyek tartalmazzák a termékhez, melyek a termékek található az eredeti képet a vizuálisan hasonló képek, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) lekérdezési paraméter, SimilarProducts.  
+Keresse meg, amelyek tartalmazzák a termékhez, melyek a termékek található az eredeti képet a vizuálisan hasonló képek, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) lekérdezési paraméter, SimilarProducts.  
 
-A következő kérelmet termékek vizuálisan hasonló képek bekérése mutatja be. A kérelem a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) lekérdezési paraméterrel meghatározhatja az eredeti rendszerkép, amely a korábbi kérelmekre adott vissza. Találati pontosság javítása érdekében a felhasználói lekérdezési karakterláncot tartalmaznia kell.  
+A következő kérelmet termékek vizuálisan hasonló képek bekérése mutatja be. A kérelem a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) lekérdezési paraméterrel meghatározhatja az eredeti rendszerkép, amely a korábbi kérelmekre adott vissza. Találati pontosság javítása érdekében a felhasználói lekérdezési karakterláncot tartalmaznia kell.  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=anne+klein+dresses&modules=SimilarProducts&insightsToken=ccid_WOeyfoSp*mid_4B0A357&mkt=en-us HTTP/1.1    
@@ -408,7 +408,7 @@ Az alábbiakban az előző kérelemre adott válasz látható. A válasz egy has
 }
 ```
 
-A kereskedők, a termék online kínáló listáját (lásd a [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) mező), az API-t hívja meg újra, és állítsa be `modules` ShoppingSources való. Ezután adja meg a `insightsToken` lekérdezési paraméter a token található a termék összefoglaló kép.  
+A kereskedők, a termék online kínáló listáját (lásd a [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) mező), az API-t hívja meg újra, és állítsa be `modules` ShoppingSources való. Ezután adja meg a `insightsToken` lekérdezési paraméter a token található a termék összefoglaló kép.  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?modules=ShoppingSources&insightsToken=ccid_hb3uRvUk*mid_BF5C252A47F2C765...&mkt=en-us HTTP/1.1    

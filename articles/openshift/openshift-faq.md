@@ -2,18 +2,18 @@
 title: Gyakori kérdések az Azure Red Hat OpenShift |} A Microsoft Docs
 description: Válaszok a Microsoft Azure Red Hat OpenShift kapcsolatos gyakori kérdésekre
 services: container-service
-author: tylermsft
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 4f11eac106fe984aa06e41083c2d4f66c7d0e62c
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 2001b849e9c43d552889475ca237c52b141f3f04
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872917"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306267"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Az Azure Red Hat OpenShift – gyakori kérdések
 

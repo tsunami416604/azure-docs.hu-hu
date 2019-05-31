@@ -1,30 +1,30 @@
 ---
-title: 'Gyors útmutató: Az importált lekérdezést a Power bi-ban az Azure Data Explorer adatainak megjelenítése '
-description: 'Ebben a rövid útmutató az adatok a Power bi-ban a három lehetőség közül az: lekérdezés importálását az Azure Data Explorer.'
+title: 'Az importált lekérdezést a Power bi-ban az Azure Data Explorer adatainak megjelenítése '
+description: 'Ebből a cikkből elsajátíthatja, hogyan használja a következő három lehetőség közül használatával megjelenítheti az adatokat a Power bi-ban: a lekérdezés importálását az Azure Data Explorer.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 11/14/2018
-ms.openlocfilehash: d14de1f25cc432cb2a9fed2149bd0870aa3ce16a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 05/30/2019
+ms.openlocfilehash: ae632f7df34ca342a3dcc12bf5f011df0eb61973
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828995"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399317"
 ---
-# <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>Gyors útmutató: Adatok megjelenítése Power BI-ba importált lekérdezés használatával
+# <a name="visualize-data-using-a-query-imported-into-power-bi"></a>Adatok megjelenítése Power BI-ba importált lekérdezés használatával
 
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A Power BI egy üzleti elemzési megoldás, amellyel megjelenítheti adatait, és a teljes szervezettel megoszthatja az eredményeket.
 
-A Power BI-adatokhoz való csatlakozásról három lehetőséget kínál a Azure Data Explorer: használja a beépített összekötő, importálhat egy lekérdezést az Azure Data Explorer vagy egy SQL-lekérdezést. Ez a rövid útmutató bemutatja, hogyan importálhat egy lekérdezést, hogy az adatok lekérése, és megjelenítheti a Power BI-jelentésekben.
+A Power BI-adatokhoz való csatlakozásról három lehetőséget kínál a Azure Data Explorer: használja a beépített összekötő, importálhat egy lekérdezést az Azure Data Explorer vagy egy SQL-lekérdezést. Ez a cikk bemutatja, hogyan importálhat egy lekérdezést, hogy az adatok lekérése, és megjelenítheti a Power BI-jelentésekben.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a rövid útmutatóban a következőkre lesz szüksége:
+Ez a cikk a következőkre lesz szüksége:
 
 * Szervezeti e-mail-fiókkal, amely tagja az Azure Active directory, így kapcsolódhat a [Azure adatkezelő súgófürtben](https://dataexplorer.azure.com/clusters/help/databases/samples).
 
@@ -78,9 +78,8 @@ Először hozzon létre egy lekérdezést az Azure Data Explorer asztali alkalma
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a létrehozott jelentés ebben a rövid, törölje a Power BI Desktop (.pbix) fájlt.
+Ha már nincs szüksége a létrehozott jelentés ebben a cikkben, törölje a Power BI Desktop (.pbix) fájlt.
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Rövid útmutató: Adatok megjelenítése Power BI-ban az importált lekérdezés használatával](power-bi-sql-query.md)
+[Adatok megjelenítése Power BI-ban az importált lekérdezés használatával](power-bi-sql-query.md)

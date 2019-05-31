@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 0c1efa0e5cfa4bf31e58be64b3fe78075b79b515
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: e0c02829a2fef6e281794fdba6c9fb5d9b8a736b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66141683"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241706"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás szolgáltatás biztonsági mentése és visszaállítása az Azure API Management szolgáltatásban
 
@@ -63,7 +63,7 @@ Minden olyan feladat hivatkozása, amelyeket Ön az erőforrások az Azure Resou
 6. Adja meg például egy helyőrző URL-címet `http://resources` számára a **átirányítási URI-t**szerint kötelező kitölteni, de az értéket később nem használható. Jelölje be a jelölőnégyzetet az alkalmazás mentéséhez.
 7. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="add-an-application"></a>Alkalmazás felvétele
+### <a name="add-an-application"></a>Alkalmazás hozzáadása
 
 1. Az alkalmazás létrehozása után kattintson a **beállítások**.
 2. Kattintson a **szükséges engedélyek**.
@@ -74,7 +74,7 @@ Minden olyan feladat hivatkozása, amelyeket Ön az erőforrások az Azure Resou
 
     ![Engedélyek hozzáadása](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
-7. Kattintson a **delegált engedélyek** az újonnan hozzáadott alkalmazás mellett jelölje be a **hozzáférés az Azure Service Management (előzetes verzió)**.
+7. Kattintson a **delegált engedélyek** az újonnan hozzáadott alkalmazás mellett jelölje be a **hozzáférés az Azure Service Management (előzetes verzió)** .
 8. Nyomja meg **kiválasztása**.
 9. Kattintson a **engedélyeket**.
 
@@ -117,14 +117,14 @@ Cserélje le `{tenant id}`, `{application id}`, és `{redirect uri}` az alábbi 
 
     Ha az érték meg van adva, a példakód kell visszaadnia egy tokent az alábbi példához hasonló:
 
-    ![Token][api-management-arm-token]
+    ![Jogkivonat][api-management-arm-token]
 
     > [!NOTE]
     > A jogkivonat a előfordulhat, hogy bizonyos idő elteltével lejár. Hajtsa végre újra az új token létrehozása a kódmintát.
 
 ## <a name="calling-the-backup-and-restore-operations"></a>A biztonsági mentési és visszaállítási műveletek meghívása
 
-A REST API-k [Api Management szolgáltatás – biztonsági mentés](/rest/api/apimanagement/apimanagementservice/backup) és [Api Management szolgáltatás - visszaállítási](/rest/api/apimanagement/apimanagementservice/restore).
+A REST API-k [Api Management szolgáltatás – biztonsági mentés](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) és [Api Management szolgáltatás - visszaállítási](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore).
 
 Előtt hívja meg a következő szakaszok ismertetik a "biztonsági mentés és visszaállítás" műveletek, állítsa be a engedélyezési kérés fejlécében a REST-hívás.
 

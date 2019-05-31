@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: 0832010707fc9b5d5f435aac29940db6905d18d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 057810fa8030321f9a94085f66bc1ea93dbc3830
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330006"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238942"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Végpontok felvétele, letiltása, engedélyezése és törlése
 
@@ -52,7 +52,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
 3. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok** elemre. 
-4. Kattintson a letiltani kívánt végpontra, majd a megjelenő **Végpont** panelen a **Szerkesztés** gombra.
+4. Kattintson a letiltani kívánt végpontra.
 5. A **Végpont** panelen állítsa a végpontot **Letiltva** állapotba, majd kattintson a **Mentés** gombra.
 6. Az ügyfelek az élettartam (TTL) végéig továbbítják az adatforgalmat a végpont felé. Az élettartamot a Traffic Manager profil konfigurációs panelén módosíthatja.
 
@@ -61,7 +61,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
 3. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok** elemre. 
-4. Kattintson a letiltani kívánt végpontra, majd a megjelenő **Végpont** panelen a **Szerkesztés** gombra.
+4. Kattintson a végpontra, amelyet engedélyezni szeretne.
 5. A **Végpont** panelen állítsa a végpontot **Engedélyezve** állapotba, majd kattintson a **Mentés** gombra.
 6. Az ügyfelek az élettartam (TTL) végéig továbbítják az adatforgalmat a végpont felé. Az élettartamot a Traffic Manager profil konfigurációs panelén módosíthatja.
 
@@ -70,8 +70,8 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
 3. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok** elemre. 
-4. Kattintson a letiltani kívánt végpontra, majd a megjelenő **Végpont** panelen a **Szerkesztés** gombra.
-5. A **Végpont** panelen állítsa a végpontot **Engedélyezve** állapotba, majd kattintson a **Mentés** gombra.
+4. Kattintson a törölni kívánt végpontot.
+5. Az a **végpont** panelen kattintson a **törlése**
 
 
 ## <a name="next-steps"></a>További lépések

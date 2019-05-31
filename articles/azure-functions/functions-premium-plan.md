@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 75987e7cba9f373af5a434de9f273948c3c9ae75
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: de1915c7efb4bd8634228f341df2c57c443dd28e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544769"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242305"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Az Azure Functions prémium szintű csomag (előzetes verzió)
 
@@ -34,7 +34,7 @@ Prémium szintű csomagot is létrehozhat az Azure parancssori felületen
 az functionapp plan create -g <resource-group> -n <plan-name> -l <region> --number-of-workers 1 --sku EP1
 ```
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 A következő funkciók érhetők el a függvényalkalmazásokat üzembe helyezett egy prémium szintű csomag.
 
@@ -91,11 +91,11 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 ### <a name="available-instance-skus"></a>Elérhető példányhoz termékváltozatok
 
-Amikor hoz létre, a méretezés a tervet, választhat a három példányméretek.  Díjköteles a magok és a másodpercenként felhasznált memória teljes száma.  Az alkalmazás is automatikusan horizontális felskálázás több példányra igény szerint.  
+Létrehozásakor, vagy a csomag méretezés, választhat, három példány méretének között.  Díjköteles a magok és a másodpercenként felhasznált memória teljes száma.  Az alkalmazás is automatikusan horizontális felskálázás több példányra igény szerint.  
 
-|Termékváltozat|Magok|Memória|Storage|
+|SKU|Processzormagok|Memory (Memória)|Storage|
 |--|--|--|--|
-|EP1|1.|3,5 GB|250 GB|
+|EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
 |EP3|4|14GB|250 GB|
 
@@ -119,7 +119,7 @@ Az alábbiakban a jelenleg támogatott régiókat a nyilvános előzetes verzió
 |USA déli középső régiója|
 |Dél-India|
 |Délkelet-Ázsia|
-|Egyesült Királyság nyugati régiója|
+|Az Egyesült Királyság nyugati régiója|
 |Nyugat-Európa|
 |Nyugat-India|
 |USA nyugati régiója|

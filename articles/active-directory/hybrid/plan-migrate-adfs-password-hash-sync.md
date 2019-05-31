@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d522b0740b144c39da81a9838f9d6e259fe62d22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 180464e22b34c7b378643e738ea0c30ee5a4b11e
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60455510"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298894"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>A Jelszókivonat-szinkronizálás az Azure Active Directory összevonási áttelepítésére
 
@@ -54,7 +54,7 @@ Most már van ideje, hogy ezeket az engedélyeket az erdőben lévő összes tar
 
 A Jelszókivonat-szinkronizálás és a zökkenőmentes egyszeri bejelentkezés (SSO) összevont identitáskezelési át két módszer közül választhat. A használt módszer attól függ, hogyan eredetileg konfigurálták az AD FS-példányhoz.
 
-* **Az Azure AD Connect**. Ha az eredetileg konfigurálták az AD FS az Azure AD Connect használatával, *kell* módosítása a Jelszókivonat-szinkronizálás az Azure AD Connect varázsló használatával.
+* **Azure AD Connect**. Ha az eredetileg konfigurálták az AD FS az Azure AD Connect használatával, *kell* módosítása a Jelszókivonat-szinkronizálás az Azure AD Connect varázsló használatával.
 
    Az Azure AD Connect automatikusan futtatja a **Set-MsolDomainAuthentication** parancsmagot, ha a felhasználó bejelentkezési módszert. Az Azure AD Connect automatikusan unfederates ellenőrzött összevont tartományok az Azure AD-bérlőben.
 
@@ -86,7 +86,7 @@ Annak ellenőrzése, a jelenlegi felhasználói bejelentkezési beállításai:
 
    * Ha **Jelszókivonat-szinkronizálás** értékre van állítva **letiltott**, hajtsa végre a lépéseket ebben a cikkben az engedélyezéshez.
    * Ha **Jelszókivonat-szinkronizálás** értékre van állítva **engedélyezve**, a szakaszt kihagyhatja **1. lépés: Jelszókivonat-szinkronizálás engedélyezése** ebben a cikkben.
-4. Az a **a megoldás áttekintése** területén görgessen **Active Directory összevonási szolgáltatások (AD FS)**.<br />
+4. Az a **a megoldás áttekintése** területén görgessen **Active Directory összevonási szolgáltatások (AD FS)** .<br />
 
    * Ha ez a szakasz jelenik meg az AD FS konfigurációt, biztonságosan feltételezzük, hogy az AD FS eredetileg konfigurálták az Azure AD Connect használatával. Átalakíthatja a tartományok összevont identitás felügyelt identitás, az Azure AD Connect használatával **felhasználói bejelentkezés módosítása** lehetőséget. A folyamat részleteit a szakasz a **beállítás v: Váltás a összevonási a Jelszókivonat-szinkronizálás az Azure AD Connect használatával**.
    * Ha az AD FS nem szerepel az aktuális beállítások, meg kell manuálisan átalakítása a tartományok összevont identitás felügyelt identitás PowerShell használatával. Ez a folyamat kapcsolatos további információkért lásd: a szakasz **b lehetőség Váltás a összevonási a Jelszókivonat-szinkronizálás az Azure AD Connect és a PowerShell használatával**.
@@ -113,7 +113,7 @@ További információval a következő cikkek szolgálnak:
 * [Set-MsolDomainAuthentication](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
-> Ha **SupportsMfa** értékre van állítva **igaz**, egy a helyszíni többtényezős hitelesítési megoldás használatával a felhasználó hitelesítési folyamat második tényezős kihívást behelyezése. Ez a beállítás már nem működik az Azure AD hitelesítési forgatókönyvei. 
+> Ha **SupportsMfa** értékre van állítva **igaz**, egy a helyszíni többtényezős hitelesítési megoldás használatával a felhasználó hitelesítési folyamat második tényezős kihívást behelyezése. Ez a beállítás már nem működik a tartomány átalakítása után az Azure AD-hitelesítési forgatókönyvek az összevont hitelesítés kezeli. Miután letiltja az összevonási, a kapcsolat, a helyszíni összevonási kiszolgálóhoz, és ez magában foglalja a helyszíni MFA-adapterek. 
 >
 > Ehelyett a felhőalapú Azure multi-factor Authentication szolgáltatás használatával hajtsa végre ugyanezt a funkciót. A folytatás előtt gondosan mérlegelje a multi-factor authentication követelményeinek. Mielőtt megkezdené a tartományok, győződjön meg arról, hogy ismeri az Azure multi-factor Authentication, a licencelési szempontokat, és a felhasználói regisztrációs folyamat használata.
 
@@ -167,7 +167,7 @@ Windows 8 és Windows 7-fiókok hibrid csatlakozás zökkenőmentes egyszeri Bej
 
 További információkért lásd: [konfigurálása hibrid Azure AD-hez csatlakoztatott eszközök](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
 
-#### <a name="branding"></a>Védjegyezés
+#### <a name="branding"></a>Védjegyzési
 
 Ha a szervezet [testre szabott az AD FS bejelentkezési oldalainak](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) szeretné megjeleníteni a szervezet több profiljával kapcsolatos információkat, fontolja meg, így hasonló [az Azure AD bejelentkezési oldal testreszabása](https://docs.microsoft.com/azure/active-directory/customize-branding).
 

@@ -5,12 +5,12 @@ author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: be94cf0367f93f14249239fce5e09c8635a01136
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 7afe29cb98a294b2a30020ad48f8b27264386746
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125474"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304761"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Állítsa be Micro fókusz CICS BankDemo Micro fókusz vállalati fejlesztői 4.0 az Azure-ban
 
@@ -20,13 +20,13 @@ CICs a vásárlói adatokat verziókövetési rendszert, a tranzakciós platform
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A virtuális gép [nagyvállalati fejlesztő](set-up-micro-focus-azure.md). Ne feledje, hogy rendelkezik-e nagyvállalati fejlesztő egy teljes példánya vállalati kiszolgáló, fejlesztési és tesztelési célokat szolgálnak. Ez a bemutató használt Enterprise Server-példány.
+- A virtuális gép [nagyvállalati fejlesztő](set-up-micro-focus-azure.md). Ne feledje, hogy rendelkezik-e nagyvállalati fejlesztő egy teljes példánya vállalati kiszolgáló, fejlesztési és tesztelési célokat szolgálnak. Ez a példány a bemutatóhoz használt Enterprise Server-példány.
 
 - [Az SQL Server 2017 Express edition](https://www.microsoft.com/sql-server/sql-server-editions-express). Töltse le és telepítse a vállalati fejlesztői gépen. Enterprise Server egy adatbázis szükséges CICS régiók felügyeletéhez, és a BankDemo alkalmazás BANKDEMO nevű SQL Server adatbázist is használ. Ez a bemutató feltételezi, hogy mindkét adatbázisok SQL Server Expresst használ. Telepítése esetén válassza ki az Alapszintű telepítés.
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). SSMS az adatbázis-kezelés és a egy T-SQL-parancsprogram futtatása szolgál. Töltse le és telepítse a vállalati fejlesztői gépen.
 
-- [A Visual Studio 2017](https://azure.microsoft.com/downloads/) a legújabb szervizcsomaggal, vagy [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), amely innen tölthető le az ingyenes.
+- [A Visual Studio 2019](https://azure.microsoft.com/downloads/) a legújabb szervizcsomaggal vagy [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), amely innen tölthető le az ingyenes.
 
 - Asztali vagy egy másik Rumba 3270 emulátort.
 
@@ -38,7 +38,7 @@ Miután telepítette a vállalati fejlesztői 4.0-s verzióját a virtuális gé
 
 2. Kattintson a **keresési** melletti ikon a **Start** gombra, és írja be **Windows szolgáltatások**. A Kiszolgálókezelő Hozzáadás szerepkörök és szolgáltatások varázsló megnyílik.
 
-3. Válassza ki **webkiszolgáló (IIS) szerepkör**, majd ellenőrizze a következőket:
+3. Válassza ki **webkiszolgáló (IIS) szerepkör**, majd ellenőrizze a következő beállításokat:
 
     - Webkezelési eszközök
     - Kompatibilitás az IIS 6 kezelésével (válassza ki az összes elérhető szolgáltatásokat)
@@ -46,7 +46,7 @@ Miután telepítette a vállalati fejlesztői 4.0-s verzióját a virtuális gé
     - Az IIS-kezelés parancsfájljai és eszközei
     - IIS-kezelő szolgáltatás
 
-4. Válassza ki **webszolgáltatások**, majd ellenőrizze a következőket:
+4. Válassza ki **webszolgáltatások**, és ellenőrizze a következő beállításokat:
 
      Alkalmazásfejlesztési szolgáltatások:
     - .NET-bővíthetőség
@@ -59,12 +59,12 @@ Miután telepítette a vállalati fejlesztői 4.0-s verzióját a virtuális gé
 
 5. Válassza ki **Windows folyamataktivációs szolgáltatás** és minden gyermekét.
 
-6. A **funkciók**, ellenőrizze **a Microsoft .NET-keretrendszer 3.5.1**, majd ellenőrizze a következőket:
+6. A **funkciók**, ellenőrizze **a Microsoft .NET-keretrendszer 3.5.1**, és ellenőrizze a következő beállításokat:
 
     - Windows Communication Foundation HTTP Activation
     - Windows Communication Foundation Non-HTTP Activation
 
-7. A **funkciók**, ellenőrizze **a Microsoft .NET-keretrendszer 4.6**, majd ellenőrizze a következőket:
+7. A **funkciók**, ellenőrizze **a Microsoft .NET-keretrendszer 4.6**, és ellenőrizze a következő beállításokat:
 
    - Nevesített cső aktiválása
    - TCP-aktiválás
@@ -88,7 +88,7 @@ Miután telepítette a vállalati fejlesztői 4.0-s verzióját a virtuális gé
 
 ## <a name="configure-the-local-system-account-for-sql-server"></a>Az SQL Server a helyi rendszer fiók konfigurálása
 
-Egyes vállalati kiszolgáló folyamatok képeseknek kell lenniük, jelentkezzen be az SQL Server és adatbázisok és egyéb objektumok létrehozásához. Ezeket a folyamatokat a helyi rendszer fiókot használ, így a sysadmin (rendszergazda) szolgáltatót kell megadnia a fiókhoz.
+Egyes vállalati kiszolgáló folyamatok kell tudni jelentkezzen be az SQL Server és adatbázisok és egyéb objektumok létrehozásához. Ezeket a folyamatokat a helyi rendszer fiókot használ, így a sysadmin (rendszergazda) szolgáltatót kell megadnia a fiókhoz.
 
 1. Indítsa el a **SSMS** kattintson **Connect** a helyi Windows-hitelesítés használatával SQLEXPRESS kiszolgálóhoz való csatlakozáshoz. Elérhető legyen a **kiszolgálónév** listája.
 
@@ -96,7 +96,7 @@ Egyes vállalati kiszolgáló folyamatok képeseknek kell lenniük, jelentkezzen
 
 3. Válassza ki **NT AUTHORITY\\rendszer** válassza **tulajdonságok**.
 
-4. Válassza ki **kiszolgálói szerepkörök** , és ellenőrizze **SysAdmin (rendszergazda)**.
+4. Válassza ki **kiszolgálói szerepkörök** , és ellenőrizze **SysAdmin (rendszergazda)** .
 
      ![SSMS Object Explorer ablak: Bejelentkezési tulajdonságok](media/02-demo-explorer.png)
 
@@ -181,7 +181,7 @@ Hiba nélkül kell futtatni a lekérdezést. Ha elkészült, a mintaadatbázis a
 
      ![Adja meg a régió - régió neve: BANKDEMO](media/08-demo-cics.png)
 
-7. Kattintson a **Befejezés** gombra.
+7. Kattintson a **Befejezés**gombra.
 
 ## <a name="create-xa-resource-definitions"></a>XA erőforrás-definíciók létrehozása
 
@@ -197,18 +197,18 @@ Hiba nélkül kell futtatni a lekérdezést. Ha elkészült, a mintaadatbázis a
 
      ![Új adatbázis XA erőforrás-definíció képernyő](media/09-demo-xa.png)
 
-6. Kattintson a három pontra (**...** ) viszi, megjelenik a kapcsolati karakterlánc varázsló. A **kiszolgálónév**, típus **(helyi)\\SQLEXPRESS**. A **bejelentkezési**válassza **Windows-hitelesítés**. Az adatbázis nevét, írja be a **BANKDEMO**
+6. Kattintson a három pontra ( **...** ) viszi, megjelenik a kapcsolati karakterlánc varázsló. A **kiszolgálónév**, típus **(helyi)\\SQLEXPRESS**. A **bejelentkezési**válassza **Windows-hitelesítés**. Az adatbázis nevét, írja be a **BANKDEMO**
 
      ![A Szerkesztés képernyő kapcsolati karakterlánc](media/10-demo-string.png)
 
-7. A kapcsolat tesztelése.
+7. A kapcsolat teszteléséhez.
 
 ## <a name="start-the-bankdemo-region"></a>Indítsa el a BANKDEMO régió
 
 > [!NOTE]
 > Fontos, az első lépés: A régió az imént létrehozott XA erőforrás-definíció használatához be kell állítani.
 
-1. Keresse meg a **BANDEMO CICS régió** alatt a **régiók tároló**, majd válassza ki **régió indítási fájl szerkesztése** származó a **műveletek** panel. Görgessen le az SQL-tulajdonságokat, és adja meg **bankdemo** számára a **XA erőforrásnév** , vagy jelölje ki azt a három pontra.
+1. Keresse meg a **BANDEMO CICS régió** alatt a **régiók tároló**, majd válassza ki **régió indítási fájl szerkesztése** származó a **műveletek** panel. Görgessen le az SQL-tulajdonságokat, és adja meg **bankdemo** számára a **XA erőforrásnév**, vagy jelölje ki azt a három pontra.
 
 2. Kattintson a **mentése** ikonra a módosítások mentéséhez.
 
@@ -216,13 +216,13 @@ Hiba nélkül kell futtatni a lekérdezést. Ha elkészült, a mintaadatbázis a
 
 4. Alsó részén a **indítása és leállítása régió** a középső ablaktáblán, válassza a megjelenő mezőben **Start**. Néhány másodperc elteltével indítja el a régióban.
 
-     ![SQL Start/Stop box](/media/11-demo-sql.png)
+     ![SQL Start/Stop box](media/11-demo-sql.png)
 
      ![CICS régió BANKDEMO - lépések képernyő](media/12-demo-cics.png)
 
 ## <a name="create-a-listener"></a>Figyelő létrehozása
 
-Hozzon létre egy figyelőt a TN3270-munkamenetet, amely a BankDemo-alkalmazás elérésére van szüksége.
+Hozzon létre egy figyelőt a TN3270-munkamenetet, amely a BankDemo alkalmazás eléréséhez.
 
 1. A bal oldali ablaktáblán bontsa ki a **konfigurációs szerkesztők** válassza **figyelő**.
 
@@ -236,7 +236,7 @@ Hozzon létre egy figyelőt a TN3270-munkamenetet, amely a BankDemo-alkalmazás 
 
 6. Egy TN3270 csatorna hozzáadásához kattintson a jobb gombbal **BANKDEMO régió** és kiválasztásával **Hozzáadás csatorna**.
 
-7. A **neve**, adja meg **TN3270**. A **Port**, adja meg **9024**. (Vegye figyelembe, hogy a ESDEMO alkalmazás 9230-portot használja, ezért egy másik port használatára kell.)
+7. A **neve**, adja meg **TN3270**. A **Port**, adja meg **9024**. A ESDEMO alkalmazás 9230-es portot használja, ezért egy másik port használatára kell.
 
 8. Mentse a fájlt, kattintson a **mentése** ikonra, vagy válasszon **fájl** \> **mentése**.
 
@@ -247,13 +247,13 @@ Hozzon létre egy figyelőt a TN3270-munkamenetet, amely a BankDemo-alkalmazás 
 
 ## <a name="configure-rumba-to-access-the-bankdemo-application"></a>Rumba az BankDemo alkalmazáshoz való hozzáférés konfigurálása
 
-Az utolsó lépésben kell tennie az Rumba, egy 3270 emulator használatával 3270 munkamenet konfigurálása. Ez a lépés lehetővé teszi az imént létrehozott figyelő keresztül hozzáférjen az BankDemo alkalmazáshoz.
+Az utolsó lépésben kell tennie az Rumba, egy 3270 emulator használatával 3270 munkamenet konfigurálása. Ez a lépés lehetővé teszi a BankDemo alkalmazás hozzáférnie a létrehozott figyelőt.
 
 1. A Windows a **Start** menüben Rumba asztal elindításához.
 
 2. Alatt a **kapcsolatok** menü eleméhez válassza **TN3270**.
 
-3. Kattintson a **beszúrása** , és írja be **127.0.0.1** az IP-cím és **9024** a felhasználó által definiált port.
+3. Kattintson a **beszúrása** , és írja be **127.0.0.1** az IP-cím és **9024** a felhasználó által meghatározott port.
 
 4. Kattintson a párbeszédpanel alján **Connect**. Egy fekete CICS képernyő jelenik meg.
 
@@ -271,5 +271,5 @@ Gratulálunk! Most egy CICS alkalmazást futtat az Azure-ban Micro fókusz váll
 - [A Docker-tárolók, Azure-on futtatott vállalati kiszolgáló](run-enterprise-server-container.md)
 - [Nagyszámítógépek Migrálása – portál](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [Virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [hibaelhárítással](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Hibaelhárítás](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [Az Azure-migrálás nagyszámítógépes nyelvszakértőinkből](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

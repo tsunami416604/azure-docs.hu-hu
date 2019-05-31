@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 069b3fe89183d7897cea39e2a8a1fe1bbed80bb0
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.date: 05/29/2019
+ms.openlocfilehash: 168a73ced039b9bced9a6aae6a138468b345b19d
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65556333"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391687"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>A HDInsight vállalati biztonsági csomag használata
 
@@ -21,7 +21,7 @@ A standard szintű Azure HDInsight-fürtöt, egy egyfelhasználós fürt. Ideál
 
 Sok vállalat olyan modellre, amelyben az informatikai csapatok-fürtök kezelése erőforrásfájljait áthelyezték, és több alkalmazásfejlesztő csapat ugyanazokon a fürtökön. Ezek a nagyobb cégek minden egyes fürt az Azure HDInsight többfelhasználós hozzá kell férniük.
 
-HDInsight a legnépszerűbb identitásszolgáltatóra, az Active Directory – az olyan felügyelt módon támaszkodik. A HDInsight integrálásával [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/active-directory-ds-overview.md), a fürtök a tartományi hitelesítő adataival érheti. 
+HDInsight a legnépszerűbb identitásszolgáltatóra, az Active Directory – az olyan felügyelt módon támaszkodik. A HDInsight integrálásával [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/overview.md), a fürtök a tartományi hitelesítő adataival érheti. 
 
 A virtuális gépek (VM) a HDInsight tartományhoz csatlakoztatva, a megadott tartományban. Így a HDInsight (az Apache Ambari, Apache Hive-kiszolgáló, az Apache Ranger, Apache Spark thrift-kiszolgáló és mások) futó összes szolgáltatás zökkenőmentesen működik a hitelesített felhasználó számára. A rendszergazdák majd erős engedélyezési házirendek használatával létrehozhatja az Apache Ranger szerepköralapú hozzáférés-vezérlést biztosít a fürtben lévő erőforrásokat.
 
@@ -45,7 +45,7 @@ Automatikusan jönnek létre a következő műveleteket:
 HDInsight jelenleg csak az Azure AD DS támogatja a fő tartományvezérlő, a fürt által használt a Kerberos-kommunikációhoz. Azonban más összetett az Active Directory-beállításokat is lehetséges, mindaddig, amíg egy ilyen beállítás vezet, a HDInsight hozzáférést az Azure Active Directory tartományi szolgáltatások engedélyezése.
 
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory tartományi szolgáltatások
-[Az Azure Active Directory tartományi szolgáltatások](../../active-directory-domain-services/active-directory-ds-overview.md) biztosít, amely teljesen kompatibilis a Windows Server Active Directoryval felügyelt tartományhoz. A Microsoft gondoskodik kezelése, javításokat és a tartomány egy magas rendelkezésre állású (HA) beállítás figyelése. Telepítheti a fürt nem kell bajlódnunk a tartományvezérlők karbantartásához. 
+[Az Azure Active Directory tartományi szolgáltatások](../../active-directory-domain-services/overview.md) biztosít, amely teljesen kompatibilis a Windows Server Active Directoryval felügyelt tartományhoz. A Microsoft gondoskodik kezelése, javításokat és a tartomány egy magas rendelkezésre állású (HA) beállítás figyelése. Telepítheti a fürt nem kell bajlódnunk a tartományvezérlők karbantartásához. 
 
 Felhasználók, csoportok és jelszavak szinkronizálódnak, az Azure ad-ből. Az Azure Active Directory tartományi szolgáltatások az Azure AD-példányt a egyirányú szinkronizálás lehetővé teszi, hogy a felhasználók által a vállalati hitelesítő adatokkal jelentkezhetnek be a fürt. 
 

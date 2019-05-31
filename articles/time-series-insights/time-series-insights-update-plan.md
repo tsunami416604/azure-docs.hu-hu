@@ -2,7 +2,7 @@
 title: Az Azure Time Series Insights – előzetes környezet megtervezése |} A Microsoft Docs
 description: Az Azure Time Series Insights – előzetes környezet megtervezése.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3fab86b2b2f0ad892e02cd089dbd7c45ce601d6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 435e5f2163270672ac5f1f5695ca2fe9be22ee6b
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205774"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388728"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Az Azure Time Series Insights – előzetes környezet megtervezése
 
-Ez a cikk ismerteti az ajánlott eljárásokat és az Azure Time Series Insights előzetes verziója gyorsan használatának első lépései.
+Ez a cikk ismerteti az ajánlott eljárásokat és az Azure Time Series Insights előzetes verziója használatával gyorsan használatba.
 
 > [!NOTE]
-> Lásd: [az Azure Time Series Insights általánosan elérhető környezet megtervezése](time-series-insights-environment-planning.md), az ajánlott eljárásokat, és a egy általánosan elérhető a TSI-példány megtervezése.
+> Ajánlott eljárásokat, és egy általánosan elérhető a Time Series Insights-példány megtervezése, lásd: [az Azure Time Series Insights általánosan elérhető környezet megtervezése](time-series-insights-environment-planning.md).
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Ajánlott eljárások tervezése és előkészítése
 
@@ -45,29 +45,29 @@ A Time Series Insights előzetes környezet üzembe helyezésekor, hozzon létre
 
 Indítsa el, három további elemek szükségesek:
 
-* A [Time Series modell](./time-series-insights-update-tsm.md).
-* Egy [eseményforrás csatlakozik a Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md).
-* [Az eseményforrás beérkeznek események](./time-series-insights-send-events.md) , amely mindkét képeződik a modellt, és érvényes JSON formátumban vannak.
+* A [Time Series-modell](./time-series-insights-update-tsm.md)
+* Egy [eseményforrás csatlakozik a Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md)
+* [Az eseményforrás beérkeznek események](./time-series-insights-send-events.md) , amely mindkét képeződik a modellt, és érvényes JSON formátumban vannak
 
 ## <a name="configure-time-series-ids-and-timestamp-properties"></a>Time Series azonosítók és időbélyegzés tulajdonságainak konfigurálása
 
-Új Time Series Insights-környezet létrehozásához jelöljön ki egy **Time Series azonosító**. Ez tehát az adatok logikai partíció funkcionál. Feljegyzett, győződjön meg arról, hogy az a Time Series azonosítók készen áll.
+Hozzon létre egy új Time Series Insights-környezetet, válassza a Time Series azonosítóját. Ez tehát az adatok logikai partíció funkcionál. Feljegyzett, győződjön meg arról, hogy az a Time Series azonosítók készen áll.
 
 > [!IMPORTANT]
 > Time Series-azonosítók *nem módosítható* és *később már nem módosítható*. Minden egyes végső kiválasztása előtt ellenőrizze, és először használja.
 
-Kiválaszthatja, hogy az erőforrások egyedi megkülönböztetéséhez a kulcsok legfeljebb három (3). További információkért olvassa el [ajánlott eljárások a Time Series ID kiválasztására vonatkozó](./time-series-insights-update-how-to-id.md) és [tárolási a bejövő és kimenő](./time-series-insights-update-storage-ingress.md).
+Kiválaszthatja, hogy legfeljebb három kulcsok egyedileg megkülönböztetni azokat az erőforrásokat. További információkért olvassa el [ajánlott eljárások a Time Series ID kiválasztására vonatkozó](./time-series-insights-update-how-to-id.md) és [tárolási a bejövő és kimenő](./time-series-insights-update-storage-ingress.md).
 
 Az időbélyeg-tulajdonság is fontos. Ez a tulajdonság is kijelölhet, eseményforrások hozzáadásakor. Minden egyes esemény forrása egy nem kötelező időbélyeg-tulajdonság, amely nyomon követése eseményforrások használta idővel rendelkezik. Időbélyegző értékeit a rendszer megkülönbözteti a kis-és nagybetűket, és formátumban kell lenniük az egyes eseményforrás egyes specifikációjának.
 
 > [!TIP]
 > Ellenőrizze a eseményforrások formázás és elemzés követelményei.
 
-Ha üresen hagyja, az Eseménynapló Timestamp lesz eseményforrás eseményt sorba idején. Előzményadatok vagy kötegelt eseményeket küld, ha az időbélyeg-tulajdonság testreszabása hasznos több, mint az alapértelmezett esemény sorba időpontja. További információkért olvassa el [eseményforrások hozzáadása az IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
+Ha üresen hagyja, az Eseménynapló Timestamp lesz eseményforrás eseményt sorba idején. Előzményadatok vagy kötegelt eseményeket küld, ha az időbélyeg-tulajdonság testreszabása hasznos több, mint az alapértelmezett esemény sorba időpontja. További információkért olvassa el, hogyan [eseményforrások hozzáadása az Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
 
 ## <a name="understand-the-time-series-model"></a>Megismerheti a Time Series modell
 
-Most már beállíthatja a Time Series Insights-környezet Idősorozat-modellben. Az új modell egyszerűen keresése és elemzése IoT-adatot. Ez lehetővé teszi, hogy a válogatott, a karbantartással és a felderítési bővítést az idősorozat-adatok, és segít fogyasztói használatra kész adatkészleteket előkészítése. A modell **Time Series azonosítók**, amelyek leképezése egy példányt, amely összekapcsolja az egyedi erőforráscsoport változók, típusok és a hierarchiák néven. Olvassa el az új [Idősorozat-modell](./time-series-insights-update-tsm.md).
+Most már beállíthatja a Time Series Insights-környezet Idősorozat-modellben. Az új modell egyszerűen keresése és elemzése IoT-adatot. Ez lehetővé teszi, hogy a válogatott, a karbantartással és a felderítési bővítést az idősorozat-adatok, és segít fogyasztói használatra kész adatkészleteket előkészítése. A modell egy példányt, amely összekapcsolja az egyedi erőforráscsoport változók, típusok és a hierarchiák néven ismert leképezése idő sorozat azonosítók használ. Olvassa el az új [Idősorozat-modell](./time-series-insights-update-tsm.md).
 
 A modell le dinamikus, így bármikor építhetők fel. Gyorsan és egyszerűen hozhat létre, és töltse fel be a Time Series Insights adatok elküldése előtt. A modell létrehozásához, lásd: [használja az Idősorozat-modell](./time-series-insights-update-how-to-tsm.md).
 
@@ -79,8 +79,8 @@ A Time Series Insights eseményeket küldeni módon ellenőrizheti. Ideális ese
 
 Jó tapasztalatok:
 
-* Az Idősorozat-modellben levő Store metaadatok
-* Time Series mód, a szolgáltatáspéldány-mezők és az események tartalmazzák csak a szükséges információkat, például egy **Time Series azonosító** vagy **időbélyeg**.
+* Az Idősorozat-modellben levő Store a metaadatokat.
+* Time Series mód, a szolgáltatáspéldány-mezők és az események tartalmazzák az csak a szükséges információkat, például egy Time Series-azonosító és az időbélyegző.
 
 További információkért lásd: [alakzat-események](./time-series-insights-send-events.md#json).
 
@@ -89,5 +89,4 @@ További információkért lásd: [alakzat-események](./time-series-insights-se
 ## <a name="next-steps"></a>További lépések
 
 - Tudjon meg többet [tárolási a bejövő és kimenő](./time-series-insights-update-storage-ingress.md) a Time Series Insights előzetes verziója.
-
 - Ismerje meg [adatmodellezés](./time-series-insights-update-tsm.md) a Time Series Insights előzetes verziója.

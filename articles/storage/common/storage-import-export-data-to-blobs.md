@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 05/29/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 82672136d6f9af50a3d91da2044f6e0ced4b44a6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ddaead7a0e616b3138dca0b18a58d64e38a46f9e
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409367"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356416"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure Blob Storage-adatok importálása az Azure Import/Export szolgáltatás használata
 
@@ -58,7 +58,7 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
 6.  Készítse elő a lemezen, futtassa a következő parancsot. **Az adatok méretétől függően ez eltarthat néhány órát napra.** 
 
     ```
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /sk:<Storage account key> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite 
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite /enablecontentmd5 
     ```
     Egy journal-fájl jön létre ugyanabban a mappában, ahol az eszközt futtatta. Két más fájlok is létrejönnek - egy *.xml* fájlt (a mappa, ahol futtatja az eszközt) és a egy *meghajtó-manifest.xml* fájlt (adatokat tartalmazó mappát).
     
@@ -68,12 +68,12 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
     |---------|---------|
     |/j:     |A napló .jrn kiterjesztésű fájl neve. A naplófájl meghajtónkénti jön létre. Azt javasoljuk, hogy a lemez sorozatszáma használjon a napló-fájl neve.         |
     |/ ID:     |A munkamenet-azonosítót. A parancs minden példánya esetében egyedi munkamenet több használ.      |
-    |/sk:     |Az Azure Storage-fiókkulcs.         |
     |/t:     |A meghajtóbetűjel, a lemez szállításra. Ha például meghajtó `D`.         |
     |/bk:     |A meghajtó BitLocker-kulcsa. A numerikus jelszó kimenetéből: `manage-bde -protectors -get D:`      |
     |/srcdir:     |A lemez szállításra meghajtóbetűjelének követ `:\`. Például: `D:\`.         |
     |/dstdir:     |Az Azure Storage-ban a cél tároló neve.         |
     |/skipwrite:     |A beállítást, amely megadja, hogy nem szükséges átmásolni új adatokat és a lemezen található meglévő adatokat, hogy elő kell készíteni.          |
+    |/enablecontentmd5:     |A beállítást, ha engedélyezve van, biztosítja, hogy MD5 számított blokkblobok az Azure-bA a feltöltésekor.          |
 7. Ismételje meg minden egyes szállításra lemezt az előző lépésben. A megadott nevű napló fájl jön létre minden egyes futtatáskor a parancssor.
     
     > [!IMPORTANT]
@@ -98,7 +98,7 @@ A következő lépésekkel importálási feladat létrehozása az Azure Portalon
    - Adjon meg egy leíró nevet az importálási feladatot. A név használatával a feladatok előrehaladását úgy követheti nyomon.
        - A név csak kisbetűket, számokat és kötőjeleket tartalmazhat.
        - A névnek betűvel kell kezdődnie, és nem tartalmazhat szóközt.
-   - Válasszon előfizetést.
+   - Válasszon egy előfizetést.
    - Adja meg, vagy válasszon ki egy erőforráscsoportot.  
 
      ![Importálási feladat létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob3.png)

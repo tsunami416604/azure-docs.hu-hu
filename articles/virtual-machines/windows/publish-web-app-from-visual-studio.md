@@ -13,16 +13,16 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: 5298721b7f60cec677c22faf1b35011aab02defb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b8e3ddf1cf5d61f730ce01a35ee0813b47ad2d2
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60204418"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305933"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>ASP.NET-webalkalmazás közzététele az Azure virtuális géphez a Visual Studióból
 
-Ez a dokumentum ismerteti, hogyan tehet közzé egy ASP.NET-alkalmazás egy Azure virtuális gép (VM) használatával a **Microsoft Azure Virtual Machines** közzétételi szolgáltatás Visual Studio 2017-ben.  
+Ez a dokumentum ismerteti, hogyan tehet közzé egy ASP.NET-alkalmazás egy Azure virtuális gép (VM) használatával a **Microsoft Azure Virtual Machines** közzétételi szolgáltatás a Visual Studio 2019.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 ASP.NET-projekt közzététele egy Azure virtuális Gépen a Visual Studio használatához a virtuális Gépet kell megfelelően be kell állítania.
@@ -34,7 +34,7 @@ ASP.NET-projekt közzététele egy Azure virtuális Gépen a Visual Studio haszn
 ## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Az ASP.NET-webalkalmazás közzététele az Azure virtuális géphez, a Visual Studio használatával
 A következő szakasz egy meglévő ASP.NET-alkalmazás egy Azure virtuális gépen való közzétételét ismerteti.
 
-1. Nyissa meg a webes alkalmazás megoldást a Visual Studio 2017-ben.
+1. Nyissa meg a webes alkalmazás megoldást a Visual Studio 2019.
 2. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza a **Publish...**
 3. A lap jobb oldalán a nyílra használatával Görgessen végig a közzétételi beállítások, amíg meg nem találja **Microsoft Azure Virtual Machines**.  
 
@@ -58,7 +58,7 @@ A következő szakasz egy meglévő ASP.NET-alkalmazás egy Azure virtuális gé
 
 7. Kattintson az OK gombra a közzététel megkezdéséhez.
 
-8. Amikor a rendszer kéri a hitelesítő adatokat, adja meg a felhasználónevet és jelszót egy felhasználói fiók a cél virtuális Gépre, amelyet a közzétételi rights (általában a rendszergazdai felhasználónevét és jelszavát, a virtuális gép létrehozásakor használt) van konfigurálva.  
+8. Amikor a rendszer kéri a hitelesítő adatokat, adja meg a felhasználónevet és jelszót a célként megadott jogokat közzétételi konfigurált virtuális gép felhasználói fiók. Ezeket a hitelesítő adatokat rendszerint a rendszergazdai felhasználónevet és jelszót a virtuális gép létrehozásakor használt.  
 
    ![WebDeploy-bejelentkezés]
 
@@ -99,12 +99,12 @@ A beállítások a következőhöz hasonlóan kell kinéznie:
 ![Közzétételi beállítások – kapcsolat lap]
 
 #### <a name="save-user-name-and-password"></a>Felhasználónév és jelszó mentése
-- Elkerülheti, hogy megadta a hitelesítési adatokat, minden alkalommal, amikor közzéteszi, feltölti a **felhasználónév** és **jelszó** mezőket, és válassza a **jelszó mentése** mezőbe.
+- Kerülje a hitelesítési adatok biztosítása, minden alkalommal, amikor közzéteszi. Ehhez töltse fel a **felhasználónév** és **jelszó** mezőket, és válassza ki a **jelszó mentése** mezőbe.
 - Használja a **kapcsolat ellenőrzése** gombra annak megerősítéséhez, hogy megadta a megfelelő adatokat.
 
 #### <a name="deploy-to-clean-web-server"></a>Web server tiszta telepítése
 
-- Szeretné-e, ügyeljen arra, hogy a webkiszolgáló egyes feltöltése után a webes alkalmazás tiszta (és más fájlokat egy korábbi telepítésből függő van hátra), ellenőrizheti a **célhelyen további fájlok eltávolítása** a jelölőnégyzet a **beállítások** fülre.
+- Ha azt szeretné, hogy a webalkalmazás-kiszolgáló rendelkezik-e az egyes feltöltése után a webes alkalmazás tiszta, valamint, hogy nincs-e más fájlokat egy korábbi telepítésből van hátra, ellenőrizheti a **célhelyen további fájlok eltávolítása** a jelölőnégyzetet **Beállítások** fülre.
 
 - Figyelmeztetés: Ezzel a beállítással közzététel törli az összes fájlt, amely létezik a webkiszolgálón (wwwroot könyvtára). Győződjön meg arról, hogy ez a beállítás engedélyezve van a közzététel előtt a gép állapotát tudja. 
 

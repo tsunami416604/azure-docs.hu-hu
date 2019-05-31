@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 17c0d19ad0c4a846d5f75905fe9072f2fe0e0f78
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127548"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386768"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>A központi felhasználói felület konfigurálása
 
@@ -78,7 +78,7 @@ A központi felhasználói felületén, vagy használhat:
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Az URL-cím, igény szerint adja hozzá a következő lekérdezési paraméterek. Ezek a paraméterekkel kapcsolatos további információkért lásd: [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) hivatkozást.
+  > Az URL-cím, igény szerint adja hozzá a következő lekérdezési paraméterek. Ezek a paraméterekkel kapcsolatos további információkért lásd: [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) hivatkozást.
   >
   > - válaszok
   > - mkt
@@ -143,7 +143,7 @@ A következő konfiguráció látható, ha rákattint **speciális konfiguráci�
 
 | |  |
 |---------|---------|
-|Lap címe   | (Nem a pop-over elrendezés), a keresési eredmények oldalának címe területén megjelenő szöveg.        |
+|Oldalcím   | (Nem a pop-over elrendezés), a keresési eredmények oldalának címe területén megjelenő szöveg.        |
 |Eszköztár téma    | Meghatározza, hogy a keresési eredmények oldalának címterülete hátterének színét. |
 
 A következő konfigurációk láthatók, ha rákattint **speciális konfigurációk megjelenítése**.  
@@ -157,7 +157,7 @@ A következő konfigurációk láthatók, ha rákattint **speciális konfigurác
 
 Az alábbi konfigurációk lehetségesek, csak ha a tárolt felhasználói felület (ezek a JavaScript-kódrészletet használatakor nem alkalmazhatók) HTML-végponton keresztül.
 
-- Lap címe
+- Oldalcím
 - Eszköztár téma
 - Cím hivatkozás URL-címe
 - Logo URL

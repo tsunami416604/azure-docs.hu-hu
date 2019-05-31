@@ -2,17 +2,17 @@
 title: Előzetes verzió – hozzon létre egy Windows Server-tárolót az Azure Kubernetes Service (AKS)-fürtön
 description: Megtudhatja, hogyan hozzon létre egy Kubernetes-fürtöt, egy Windows Server-tárolót az Azure Kubernetes Service (AKS) az Azure CLI használatával az alkalmazások üzembe helyezése.
 services: container-service
-author: zr-msft
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: zarhoads
-ms.openlocfilehash: 328fb9707c7151b8696cfb55e13567db90e45b7f
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.author: twhitney
+ms.openlocfilehash: 5f727cb5c56c31e769edcb365f6d571253174567
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991139"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305301"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Előzetes verzió – hozzon létre egy Windows Server-tárolót az Azure Kubernetes Service (AKS)-fürtön az Azure CLI használatával
 
@@ -35,9 +35,10 @@ Ha helyi telepítése és használata a parancssori felület, ez a cikk van szü
 A fürt, amely képes futtatni a Windows Server-tárolók létrehozása után hozzá kell adnia egy további fürtcsomópontra készletet. Egy további fürtcsomópontra készlet hozzáadása egy későbbi lépésben tárgyalunk, de először engedélyeznie kell néhány előzetes verziójú funkciók.
 
 > [!IMPORTANT]
-> Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
+> Az AKS előzetes verziójú funkciók önkiszolgáló, a rendszer. A biztosított gyűjthet visszajelzéseket és a hibák kapcsolódóan a Közösség részéről. Előzetes verzióban elérhető ezeket a funkciókat nem üzemi használat céljára. Nyilvános előzetes verzióban érhető el "ajánlott beavatkozást" támogatás keretében tartoznak. Az AKS technikai támogatási csapat segítségét munkaidőben csendes-óceáni időzóna (PST) csak alatt érhető el. További információkért tekintse meg a következő cikkek támogatja:
 >
-> Ha az előzetes verziójú szolgáltatásaihoz is problémák merülnek fel [nyisson egy problémát a AKS GitHub-adattárat a] [ aks-github] az előzetes verziójú funkció a bejelentett hiba címét nevére.
+> * [Az AKS támogatási házirendek][aks-support-policies]
+> * [Az Azure-támogatás – gyakori kérdések][aks-faq]
 
 ### <a name="install-aks-preview-cli-extension"></a>Az aks előzetes CLI-bővítmény telepítése
     
@@ -276,7 +277,7 @@ A mintaalkalmazás a működés megtekintéséhez nyissa meg a szolgáltatás k�
 
 ![ASP.NET-mintaalkalmazás keresését ábrázoló kép](media/windows-container/asp-net-sample-app.png)
 
-## <a name="delete-cluster"></a>Fürt törlése
+## <a name="delete-cluster"></a>A fürt törlése
 
 Ha a fürtre már nincs szükség, az [az group delete][az-group-delete] paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
@@ -302,7 +303,6 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [node-selector]: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [dotnet-samples]: https://hub.docker.com/_/microsoft-dotnet-framework-samples/
-[aks-github]: https://github.com/azure/aks/issues
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
@@ -328,3 +328,5 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [restricted-vm-sizes]: quotas-skus-regions.md#restricted-vm-sizes
 [use-advanced-networking]: configure-advanced-networking.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

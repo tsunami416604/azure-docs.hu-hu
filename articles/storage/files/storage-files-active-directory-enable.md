@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: rogarana
-ms.openlocfilehash: d5e2f9dba3afee953d296316e990b58c536cbdae
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 26251ebd3c83f6cd44203e1d3cc5f1b523a0d8d9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602023"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237779"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Az Azure Active Directory-hitelesítés engedélyezése az SMB-n keresztül az Azure Files (előzetes verzió)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -47,13 +47,13 @@ Mielőtt az Azure Files SMB-n keresztül engedélyezi az Azure AD, győződjön 
 
 2.  **Az Azure AD-bérlőre az Azure AD tartományi szolgáltatások engedélyezése.**
 
-    Támogatja a hitelesítés az Azure AD hitelesítő adatait, engedélyeznie kell az Azure AD-bérlő Azure AD tartományi szolgáltatásokat. Ha nem az Azure AD-bérlő rendszergazdája, forduljon a rendszergazdához, és kövesse a részletes útmutatónkat [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](../../active-directory-domain-services/active-directory-ds-getting-started.md).
+    Támogatja a hitelesítés az Azure AD hitelesítő adatait, engedélyeznie kell az Azure AD-bérlő Azure AD tartományi szolgáltatásokat. Ha nem az Azure AD-bérlő rendszergazdája, forduljon a rendszergazdához, és kövesse a részletes útmutatónkat [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](../../active-directory-domain-services/create-instance.md).
 
     Általában végrehajtásához az Azure AD Domain Services telepítését bemutató nagyjából 15 percet vesz igénybe. Győződjön meg arról, hogy az Azure AD tartományi szolgáltatások állapotát jeleníti meg **futó**, engedélyezve van a Jelszókivonat-szinkronizálás, a korábban a Folytatás a következő lépéssel.
 
 3.  **Tartományhoz való csatlakozás egy Azure virtuális Gépen az Azure AD tartományi szolgáltatásokat.**
 
-    Hozzáférhessenek egy adatmegosztáshoz, egy virtuális Gépet az Azure AD hitelesítő adataival, hogy a virtuális Gépnek kell lennie, az Azure AD Domain Services tartományhoz. Tartományhoz való csatlakozás a virtuális gép kapcsolatos további információkért lásd: [egy Windows Servert futtató virtuális gép csatlakoztatása felügyelt tartományokhoz](../../active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal.md).
+    Hozzáférhessenek egy adatmegosztáshoz, egy virtuális Gépet az Azure AD hitelesítő adataival, hogy a virtuális Gépnek kell lennie, az Azure AD Domain Services tartományhoz. Tartományhoz való csatlakozás a virtuális gép kapcsolatos további információkért lásd: [egy Windows Servert futtató virtuális gép csatlakoztatása felügyelt tartományokhoz](../../active-directory-domain-services/join-windows-vm.md).
 
     > [!NOTE]
     > Az Azure AD-hitelesítés az Azure Files SMB-n keresztül csak az operációsrendszer-verziók, Windows 7 vagy Windows Server 2008 R2 rendszert futtató Azure virtuális gépeken támogatott.
@@ -79,7 +79,7 @@ Az Azure AD-hitelesítés engedélyezéséhez az SMB használatához képest a [
 
 1. Az Azure Portalon keresse meg a meglévő tárfiókot, vagy [hozzon létre egy tárfiókot](../common/storage-quickstart-create-account.md).
 2. Az a **beállítások** szakaszban jelölje be **konfigurációs**.
-3. Engedélyezése **Azure Active Directory-hitelesítést az Azure Files (előzetes verzió)**.
+3. Engedélyezése **Azure Active Directory-hitelesítést az Azure Files (előzetes verzió)** .
 
 Az alábbi képen látható az Azure AD-hitelesítés engedélyezése az SMB-n keresztül a tárfiók számára.
 
@@ -193,7 +193,7 @@ A következő PowerShell-parancs létrehoz egy egyéni biztonsági szerepkört a
 New-AzRoleDefinition -InputFile "<custom-role-def-json-path>"
 ```
 
-#### <a name="cli"></a>CLI 
+#### <a name="cli"></a>parancssori felület 
 
 Az Azure CLI-parancsot egy egyéni biztonsági szerepkört a mintasablonokat egyike alapján hoz létre.
 
@@ -221,7 +221,7 @@ $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/provi
 New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
-#### <a name="cli"></a>CLI
+#### <a name="cli"></a>parancssori felület
   
 A következő CLI 2.0-parancs bemutatja, hogyan egyéni szerepkörök listázása és a egy egyéni biztonsági szerepkört hozzárendelheti az Azure AD identitás, a bejelentkezési neve alapján. Az Azure CLI-vel RBAC-szerepkörök hozzárendelése kapcsolatos további információkért lásd: [RBAC és az Azure CLI-hozzáférés kezelése](../../role-based-access-control/role-assignments-cli.md). 
 

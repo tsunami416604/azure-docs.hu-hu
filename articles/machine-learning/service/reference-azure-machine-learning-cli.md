@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 163b8e1f68b8d5a102465022c67f7d0da57a7215
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 541ffe70ae5198e631568584a58d02ac283e89d3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596964"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298245"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>A CLI-bővítmény használata az Azure Machine Learning szolgáltatáshoz
 
@@ -40,7 +40,7 @@ A CLI nem helyettesíti a az Azure Machine Learning SDK-t. Egy kiegészítő esz
 
 Keresse meg a [referenciadokumentumok az azure-cli-ml-bővítmény az Azure CLI teljes](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest).
 
-## <a name="install-the-extension"></a>Bővítmény telepítése
+## <a name="install-the-extension"></a>A bővítmény telepítése
 
 A Machine Learning CLI-bővítmény telepítéséhez használja a következő parancsot:
 
@@ -165,13 +165,11 @@ A következő parancsok bemutatják, hogyan lehet regisztrálni egy betanított 
     További információkért lásd: [az gépi tanulási modell profil](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
 
 + Az aks-ben a modell üzembe helyezése
-
     ```azurecli-interactive
-    az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
+    az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget
     ```
-
+    
     Az alábbiakban egy példa a `inferenceconfig.json` dokumentum:
-
     ```json
     {
     "entryScript": "score.py",
@@ -182,6 +180,13 @@ A következő parancsok bemutatják, hogyan lehet regisztrálni egy betanított 
     "enableGpu": false,
     "baseImage": null,
     "baseImageRegistry": null
+    }
+    ```
+    A következő példázza dokumentum "deploymentconfig.json":
+    ```json
+    {
+    "computeType": "aks",
+    "ComputeTarget": "akscomputetarget"
     }
     ```
 

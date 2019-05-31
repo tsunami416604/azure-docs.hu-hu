@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27309c08fe4419197faa17dcceb3645b00387e93
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 98588e0c25439fd4988fe39e06e7042cfa9113cb
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65227919"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305685"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Mi a helyfeltétel az Azure Active Directory feltételes hozzáférés? 
 
@@ -25,7 +25,7 @@ A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-direct
 
 Ez a cikk a helyfeltétel konfigurálásához szükséges információkat biztosít.
 
-## <a name="locations"></a>Helyszínek
+## <a name="locations"></a>Helyek
 
 Az Azure AD lehetővé teszi, hogy egyszeri bejelentkezést az eszközöket, alkalmazásokat és szolgáltatásokhoz bárhonnan a nyilvános interneten. A hely a feltétellel a felhőalkalmazásokhoz, a felhasználó hálózati helye alapján szabályozhatja a hozzáférést. A hely feltétel gyakori alkalmazási helyzetek a következők:
 
@@ -34,7 +34,7 @@ Az Azure AD lehetővé teszi, hogy egyszeri bejelentkezést az eszközöket, alk
 
 Egy hely egy címkét egy hálózati helyre, vagy az elnevezett hely vagy a multi-factor authentication megbízható IP-címek jelöli.
 
-## <a name="named-locations"></a>Névvel ellátott helyek
+## <a name="named-locations"></a>Nevesített helyek
 
 Nevesített helyek, az IP-címtartományok vagy más országokból és régiókból logikai csoportosításán hozhat létre.
 
@@ -56,7 +56,7 @@ Egy elnevezett helye a következő összetevőket tartalmazza:
 - **Országok/régiók** – Ez a beállítás lehetővé teszi egy vagy több országban vagy régióban, adjon meg egy nevesített.
 - **Ismeretlen területek belefoglalása** -néhány IP-címek nincsenek leképezve egy adott ország vagy régió. Ezzel a beállítással kiválaszthatja, ha az IP-címeket kell szerepelnie a nevű helyen. Használja ezt a beállítást, ha ismeretlen helyekről alkalmazni kell a házirendet, a nevesített hely használatával.
 
-Az Azure ad-ben a kapcsolódó objektum mérete konfigurálható nevesített helyek száma korlátozza. Szervezetek is 90 nevesített helyek konfigurálása, akár 12000 IP-címtartományok egyes konfigurálva.
+Az Azure ad-ben a kapcsolódó objektum mérete konfigurálható nevesített helyek száma korlátozza. Szervezetek is 90 nevesített helyek konfigurálása, akár 1200-as IP-címtartományok egyes konfigurálva.
 
 Feltételes hozzáférési szabályzat vonatkozik az IPv4 és IPv6-forgalmat. Jelenleg nevesített helyek nem teszik lehetővé az IPv6-tartományok konfigurálását. Ez a korlátozás hatására a következő helyzetekben:
 
@@ -88,13 +88,13 @@ Ha mindkét lépés sikertelen, a felhasználó már nem kell a megbízható IP-
 
 Amikor konfigurálja a hely feltétel, lehetősége van között:
 
-- Bármely hely
+- Bármilyen olyan helyre
 - Minden megbízható hely
 - Kijelölt helyek
 
 ![A feltétel a tartalomhely konfigurációját](./media/location-condition/01.png)
 
-### <a name="any-location"></a>Bármely hely
+### <a name="any-location"></a>Bármilyen olyan helyre
 
 Alapértelmezés szerint kiválasztja **bármely helyre** alkalmazható összes IP-címet egy szabályzatot, amely azt jelenti, hogy az interneten bármely cím okoz. Ez a beállítás nem korlátozott elnevezett helyként konfigurált IP-címeket. Ha bejelöli **bármely helyre**, adott helyeken továbbra is kizárhat a szabályzat alól. Például egy házirendet alkalmazhatja a hatókör beállítása mindenhol, kivéve a vállalati hálózathoz való megbízható helyek kivételével az összes hely.
 

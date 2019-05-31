@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0ad006ca966cfcc2c817ae4e8bfd3dc2d477259e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 0e361edfea6365c3d3fe072e12bb303e71bb8d63
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145912"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66249081"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
 Ebben a cikkben megválaszolunk néhány gyakori kérdés az Azure Managed Disks és az Azure prémium szintű SSD-lemezeket.
 
-## <a name="managed-disks"></a>Managed Disks
+## <a name="managed-disks"></a>Felügyelt lemezek
 
 **Mi az Azure Managed Disks?**
 
@@ -141,19 +141,9 @@ Felügyelt lemezek nem nevezhető át őket. Azonban nem felügyelt lemez is át
 
 A GPT particionálás csak az adatlemezeket, nem az operációsrendszer-lemezek használható. Operációsrendszer-lemezek a fő rendszertöltő rekord partíció stílusa kell használnia.
 
-## <a name="uploading-to-a-managed-disk"></a>Felügyelt lemez feltöltése
+**Milyen lemeztípusok támogatja a pillanatképeket?**
 
-**Adatok feltölthetek olyan meglévő felügyelt lemezről való?**
-
-Nem, feltöltése csak akkor használható az új üres lemez létrehozása során a **ReadyToUpload** állapota.
-
-**Hozzácsatlakoztathatok egy lemezt egy virtuális géphez amíg feltöltési állapotban van?**
-
-Nem.
-
-**Használhatom-e egy manged lemez pillanatképének feltöltés állapotban?**
-
-Nem.
+Prémium szintű SSD, a standard SSD és a standard szintű SSD támogatja a pillanatképek mérete korlátozott nélkül. Így pillanatkép nagy méretű lemezek (legfeljebb 32 TiB) is. Ultranagy SSD-k nem támogatják a pillanatképeket.
 
 ## <a name="standard-ssd-disks"></a>Standard SSD-lemez
 
@@ -201,7 +191,7 @@ Standard SSD-lemez nem felügyelt lemezként csak érhetők el.
 **Standard SSD-lemez támogatják a "egypéldányos virtuális gép SLA"?**
 Standard SSD-k nem, nem kell egypéldányos virtuális gép SLA-t. Prémium szintű SSD-lemezeket egypéldányos virtuális gép SLA-t használja.
 
-## <a name="migrate-to-managed-disks"></a>Migrálás a Managed Disks szolgáltatásba
+## <a name="migrate-to-managed-disks"></a>Migrálás felügyelt lemezekre
 
 **A migrálás a Managed Disks teljesítményére hatással van?**
 
@@ -353,7 +343,7 @@ Igen.
 
 **Mik az Azure Backup és az Azure Site Recovery szolgáltatás által támogatott legnagyobb lemezméret?**
 
-A legnagyobb lemez méretét, az Azure Backup és az Azure Site Recovery szolgáltatás által támogatott 4 Tib-ra. A nagyobb méretű lemezek akár 32 Tib-ra támogatása hamarosan bekerül.
+A legnagyobb lemez méretét, az Azure Backup és az Azure Site Recovery szolgáltatás által támogatott 4 Tib-ra. A nagyobb méretű lemezek akár 32 Tib-ra támogatási még nem érhető el.
 
 **Mik azok a virtuális gép ajánlott mérete a nagyobb lemezméretek (> 4 Tib-ra) optimalizált Standard SSD és HDD standard szintű lemezek elérése érdekében a lemez IOPS és sávszélesség?**
 

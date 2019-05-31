@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f72ce02a8655ea97497098dc1412f69e07686861
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 42c94188c0c38448660998bcfc122ae626285566
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147032"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66248941"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hány VPN-ügyfélvégpont lehet a pont–hely konfigurációban?
 
@@ -38,9 +38,11 @@ A következő ügyféloldali operációs rendszerek támogatottak:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Lehetővé teszi-e a pont–hely kapcsolat a proxykon és tűzfalakon való áthaladást?
 
-Az Azure kétféle pont-hely típusú VPN-lehetőséget támogat:
+Az Azure pont – hely VPN-beállítások három típusát támogatja:
 
 * Secure Socket Tunneling Protocol (SSTP). Az SSTP a Microsoft jogvédett, SSL-alapú megoldása, amely képes átjutni a tűzfalakon, mivel a legtöbb tűzfal nyitva hagyja az SSL által használt 443-as TCP-portot.
+
+* OpenVPN. OpenVPN SSL-alapú megoldás, amely behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva a 443-as SSL által használt TCP-portot is.
 
 * IKEv2 VPN. Az IKEv2 VPN egy szabványalapú IPsec VPN-megoldás, amely az 500-as és 4500-as UDP-portokat, valamint a következő IP-protokollt használja: 50. A tűzfalak ezeket a portokat nem mindig nyitják meg, ezért elképzelhető, hogy az IKEv2 VPN nem képes átjutni egyes proxykon és tűzfalakon.
 
@@ -66,7 +68,7 @@ Az átviteli sebesség fenntartása nehéz a VPN-alagutakban. Az IPsec és az SS
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Használhatok szoftveres VPN-ügyfelet az SSTP-t és/vagy IKEv2-t támogató pont–hely kapcsolatokhoz?
 
-Nem. Az SSTP esetében csak a Windows natív VPN-ügyfele, az IKEv2 esetében pedig csak a Mac natív VPN-ügyfele használható. Tekintse át a támogatott ügyfél operációs rendszerek listáját.
+Nem. Az SSTP esetében csak a Windows natív VPN-ügyfele, az IKEv2 esetében pedig csak a Mac natív VPN-ügyfele használható. Azonban használhatja az OpenVPN ügyfél az összes platformon OpenVPN protokollon keresztül csatlakozni. Tekintse át a támogatott ügyfél operációs rendszerek listáját.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Támogatja az Azure az IKEv2 VPN használatát Windows rendszeren?
 

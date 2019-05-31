@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 7fca586083f70e0b0f7e593d5203392260cd2136
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 90c7e4653b879c2432f08506cea08646e84bb69a
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66172340"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297705"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Leképezési adatok folyamatok teljesítmény és finomhangolás – útmutató
 
@@ -29,7 +29,7 @@ Az Azure Data Factory leképezési adatfolyamok adja meg egy böngészőben kód
 
 ![Hibakeresési gomb](media/data-flow/debugb1.png "hibakeresése")
 
-## <a name="optimizing-for-azure-sql-database"></a>Az Azure SQL Database-Optimalizálás
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Az Azure SQL Database és az Azure SQL Data warehouse-bA optimalizálása
 
 ![Forrás-rész](media/data-flow/sourcepart2.png "rész forrás")
 
@@ -65,6 +65,13 @@ Az Azure Data Factory leképezési adatfolyamok adja meg egy böngészőben kód
 * Növelje a magok számát, amely növeli a csomópontok számát, és nyújt további feldolgozási teljesítmény, lekérdezéséhez és az Azure SQL DB-hez.
 * Próbálja ki a "Compute-optimalizált" és "Memóriahasználatra optimalizált" további erőforrásokat a számítási csomópontok vonatkozó beállításokat.
 
+### <a name="unit-test-and-performance-test-with-debug"></a>Test jednotky és hibakeresési a teljesítményteszt
+
+* Ha egység tesztelési adatfolyam-gyűjteményre, a "Data Flow Debug" gomb beállítása ON.
+* Az adatfolyam-tervezőben belül az átalakítások a Adatelőnézet lap segítségével az Adatátalakítási logikát eredményeinek megtekintése.
+* Az adatáramlás a folyamattervezőben helyez el egy adatfolyam-tevékenységet a folyamat tervezési egységtesztet vászonalapú, és a "Debug" gomb segítségével tesztelheti.
+* Hibakeresési módban tesztelése egy élő fűtéssel fürt környezetre, várjon, amíg egy just-in-time-fürt léptetéses mentése nélkül fog működni.
+
 ### <a name="disable-indexes-on-write"></a>Tiltsa le az indexeket írás
 * Az ADF folyamat tárolt eljárási tevékenység előtt az adatfolyam-tevékenység, amely letiltja a célként megadott táblákhoz, a fogadó az éppen írt indexei használja.
 * Az adatfolyam tevékenység után adjon hozzá egy másik tárolt eljárás tevékenység, amely ezeket az indexeket engedélyezve van.
@@ -72,6 +79,34 @@ Az Azure Data Factory leképezési adatfolyamok adja meg egy böngészőben kód
 ### <a name="increase-the-size-of-your-azure-sql-db"></a>Az Azure SQL Database méretének növelése
 * Ütemezhet egy átméretezése a forrás és fogadó Azure SQL Database a folyamatban, hogy az átviteli sebesség növelése és a minimalizálása érdekében, ha dtu-k Azure szabályozás korlátozza a futtatása előtt.
 * A folyamat-végrehajtás befejezése után az adatbázisokat, térjen vissza a normál futtatási díjszabás méretezheti.
+
+## <a name="optimizing-for-azure-sql-data-warehouse"></a>Az Azure SQL Data warehouse optimalizálása
+
+### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>A polybase tömeges adatok betöltése az átmeneti segítségével
+
+* Annak érdekében, hogy az adatok floes sor soronként feldolgozását, megadva a "Tesztelés" lehetőséget az fogadó között, így a ADF kihasználhatják a Polybase elkerülése érdekében a sor-sor beszúrása a DW-be. Ez fel fog szólítania a polybase szolgáltatást akkor használja, hogy az adatok tömeges tölthetők az ADF.
+* Az adatokat a folyamat tevékenységet végrehajtása esetén egy folyamatot, az átmeneti tárolás engedélyezve van, válassza ki az átmeneti adatok tömeges betöltése a Blob tároló helyét kell.
+
+### <a name="increase-the-size-of-your-azure-sql-dw"></a>Az Azure SQL DW méretének növelése
+
+* Ütemezhet egy átméretezése a forrás és fogadó Azure SQL dw-vel, a folyamatban, hogy az átviteli sebesség növelése és a minimalizálása érdekében az Azure szabályozás, ha DWU korlátok futtatása előtt.
+
+* A folyamat-végrehajtás befejezése után az adatbázisokat, térjen vissza a normál futtatási díjszabás méretezheti.
+
+## <a name="optimize-for-files"></a>A fájlok optimalizálása
+
+* Szabályozhatja, hogy hány ADF-t használó partíciókat. Minden forrás és fogadó átalakítás, valamint minden egyes átalakítás beállíthatja a particionálási séma kidolgozásához. A kisebb fájlok azt tapasztalhatja, "Egypartíciós" is néha működik jobb és gyorsabb, mint a Spark a kisméretű fájlok particionálásához kéri.
+* Ha a forrásadatok nem rendelkezik elegendő információt, válassza a "Ciklikus időszeletelés" particionálás és állítsa be a partíciók számát.
+* Ha feltárhatja az adatait, és hogy rendelkezik-e, hogy megfelelő kivonatoló kulcsok oszlopokat, használja a kivonatot particionálás lehetőséget.
+
+### <a name="file-naming-options"></a>Fájlelnevezési beállításai
+
+* Az átalakított adatok írása az ADF-leképezés adatfolyamok alapértelmezett jellege, hogy egy adatkészletet, amely egy Blob vagy ADLS társított szolgáltatás rendelkezik írni. Az adatkészlet egy mappa vagy a tároló, nem egy megnevezett fájljának átirányítása kell beállítania.
+* Data flow használata az Azure Databricks Spark végrehajtásra, ami azt jelenti, hogy a kimeneti osztani több fájl alapján vagy a Spark, a particionálás alapértelmezett vagy a particionálási séma, amikor explicit módon választotta.
+* Egy nagyon gyakori művelet az ADF adatfolyamok, hogy válassza a "Kimeneti egyetlen fájl a" úgy, hogy az összes kimeneti rész fájl egy egyetlen kimeneti fájl egyesített együtt.
+* Ez a művelet azonban megköveteli, hogy a kimenet egy adott partíció egy egyetlen fürtcsomóponton csökkenti.
+* Ne feledje, ha a népszerű ezt a lehetőséget választja. Ha sok nagy forrásfájlok összefűzhet vannak egy kimeneti fájl partíció csomópont fürterőforrások kívül futtathatja.
+* Elkerülése érdekében számítási csomópont erőforrásokat, ne az alapértelmezett vagy explicit particionálási sémát ADF, amely optimalizálja a teljesítmény, és vegye fel a kimeneti mappa fájljainak egy későbbi másolási tevékenység, amely egyesíti az összes, a rész a folyamat új egyetlen a fájl. Ezzel a technikával alapvetően elkülöníti a művelet a fájl egyesítése átalakítás, és csak "kimenet egyetlen fájl a" ugyanazt az eredményt éri el.
 
 ## <a name="next-steps"></a>További lépések
 Az adatfolyam cikkekben talál:

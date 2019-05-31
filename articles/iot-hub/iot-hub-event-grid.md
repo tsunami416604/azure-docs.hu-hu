@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: a2c49a6ba269321d1903565ace3ebaae3f3b917e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eb521ed0951999fadbfae5e0eac1f0ea275e0d48
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60779412"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391692"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub-események reagálnak a műveletek indítása Event Grid használatával
 
@@ -25,7 +25,7 @@ Az Azure IoT Hub integrálható az Azure Event Griddel, hogy eseményértesíté
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Az Event Grid-integrációt a régiókban, ahol az Event Grid támogatott található IoT-központok érhető el. Régiók legfrissebb listáját lásd: [Azure Event Grid bemutatása](../event-grid/overview.md). 
+Az Event Grid-integrációt a régiókban, ahol az Event Grid támogatott található IoT-központok érhető el. Eszköz telemetriai események kivételével minden eszköz események általánosan elérhetők. Eszköz telemetriai esemény nyilvános előzetes verzióban érhető el, és érhető el minden régióban, kivéve az USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Nyugat-Európa, [Azure Government](/azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome.md), és [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/). Régiók legfrissebb listáját lásd: [Azure Event Grid bemutatása](../event-grid/overview.md). 
 
 ## <a name="event-types"></a>Eseménytípusok
 
@@ -37,6 +37,7 @@ Az IoT Hub közzéteszi a következő esemény típusa:
 | Microsoft.Devices.DeviceDeleted | Ha egy eszköz IoT hubról törlik közzé. |
 | Microsoft.Devices.DeviceConnected | Ha egy eszköz csatlakozik az IoT hub közzé. |
 | Microsoft.Devices.DeviceDisconnected | Ha egy eszköz nem kapcsolódik az IoT hub közzé. |
+| Microsoft.Devices.DeviceTelemetry | Ha egy eszköz telemetriai üzenetet küld az IoT hub közzétett |
 
 Az Azure Portalon vagy az Azure CLI használatával konfigurálása események közzététele az egyes IoT hubról. Tegyük fel, próbálja meg az oktatóanyag [Logic Apps használata az Azure IoT Hub-események küldése e-mailes értesítést](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
@@ -66,6 +67,42 @@ Az alábbi példa bemutatja a séma csatlakoztatott eszköz esemény:
   }, 
   "dataVersion": "1", 
   "metadataVersion": "1" 
+}]
+```
+
+### <a name="device-telemetry-schema"></a>Eszköz Telemetriai séma
+
+Eszköz telemetriai üzenetet egy érvényes JSON formátumban kell lennie a contentType JSON értékre és az üzenetben UTF-8 beállítása contentEncoding [Rendszertulajdonságok](iot-hub-devguide-routing-query-syntax.md#system-properties). Ha nincs beállítva, majd az IoT Hub ír üzeneteket base 64 kódolású formátumban. Az alábbi példa bemutatja egy eszköz telemetriai esemény sémája: 
+
+```json
+[{  
+  "id": "9af86784-8d40-fe2g-8b2a-bab65e106785",
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
+  "subject": "devices/LogicAppTestDevice", 
+  "eventType": "Microsoft.Devices.DeviceTelemetry",
+  "eventTime": "2019-01-07T20:58:30.48Z",
+  "data": {        
+      "body": {            
+          "Weather": {                
+              "Temperature": 900            
+            },
+            "Location": "USA"        
+        },
+        "properties": {            
+            "Status": "Active"        
+        },
+        "systemProperties": {            
+          "iothub-content-type": "application/json",
+          "iothub-content-encoding": "utf-8",
+          "iothub-connection-device-id": "d1",
+          "iothub-connection-auth-method": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+          "iothub-connection-auth-generation-id": "123455432199234570",
+          "iothub-enqueuedtime": "2019-01-07T20:58:30.48Z",
+          "iothub-message-source": "Telemetry"        
+        }    
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -123,13 +160,21 @@ Minden egyes tulajdonság egy részletes ismertetését lásd: [az IoT Hub az Az
 
 ## <a name="filter-events"></a>Események szűrése
 
-Az IoT Hub eseményelőfizetések események esemény típusa és az eszköz neve alapján szűrhetők. Az Event Grid során tárgy szűrőket alapján **megkezdi a** (előtag) és **ér véget a** (utótag) megegyezik. A szűrő egy `AND` operátor szerinti szűrése, így az előfizető kézbesíti az eseményeket egy témát, amelyek megfelelnek az előtagot és utótagot. 
+Az IoT Hub event előfizetések szűrhetők az események, eseménytípus, a tartalmát és a tulajdonos, amely az eszköz neve alapján.
+
+Event Grid lehetővé teszi [szűrés](../event-grid/event-filtering.md) esemény típusa, a tulajdonosok és az adatok a tartalomhoz. Az Event Grid-előfizetés létrehozásakor kiválaszthatja a kijelölt IoT-események előfizetni. Az Event Grid során tárgy szűrőket alapján **megkezdi a** (előtag) és **ér véget a** (utótag) megegyezik. A szűrő egy `AND` operátor szerinti szűrése, így az előfizető kézbesíti az eseményeket egy témát, amelyek megfelelnek az előtagot és utótagot. 
 
 IoT-események tárgya a formátumot használja:
 
 ```json
 devices/{deviceId}
 ```
+
+Event Grid lehetővé teszi az egyes eseményeket, többek között az adatok tartalmának attribútumok szűréshez is. Ez lehetővé teszi, hogy válassza ki, milyen események kézbesítése a telemetriai adatok üzenet tartalma alapján. Lásd: [Speciális szűrés](../event-grid/event-filtering.md#advanced-filtering) példákat. 
+
+Nem telemetriai események DeviceConnected, DeviceDisconnected, DeviceCreated és DeviceDeleted hasonlóan az Event Grid-szűrés használható az előfizetés létrehozásakor. Telemetriai események mellett az Event Gridben, Szűrés felhasználók is szűrheti az ikereszközök, az üzenet tulajdonságait és a törzs útválasztási állapotüzenet-lekérdezés keresztül. Létrehozunk egy alapértelmezett [útvonal](iot-hub-devguide-messages-d2c.md) az IoT Hub, az eszköz telemetriai Event Grid-előfizetés alapján. Ez az egyetlen útvonal az Event Grid-előfizetések mindegyikét képes kezelni. A telemetriai adatok elküldése előtt szűrik az üzeneteket, frissítheti a [útválasztási lekérdezés](iot-hub-devguide-routing-query-syntax.md). Vegye figyelembe, hogy útválasztási lekérdezés az üzenettörzs alkalmazhatók, csak ha a törzs JSON.
+
+
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Korlátozások a csatlakoztatott eszközök és az eszköz leválasztott események
 
 Csatlakoztatott eszközök és az eszköz választva eseményeinek kapni, meg kell nyitnia a D2C hivatkozás vagy C2D hivatkozásra az eszközhöz. Ha az eszköz MQTT protokoll használ, az IoT Hub a hivatkozás megnyitásához C2D fogja megőrizni. Az AMQP és megnyithatja a C2D hivatkozás meghívásával a [aszinkron API fogadása](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet). 
@@ -144,7 +189,7 @@ Alkalmazások, amelyek kezelik az IoT Hub-események követendő ajánlott eljá
 
 * Nem érdemes feltételezni, hogy az összes esemény jelenhet meg-e a várt típusok. Mindig ellenőrizze az esemény típusa, az üzenet feldolgozása előtt.
 
-* Üzenetek érkezésekor is, üzemen kívüli vagy késleltetéssel. Az etag mező segítségével tisztában azzal, ha az adatok és objektumok naprakész.
+* Üzenetek érkezésekor is, üzemen kívüli vagy késleltetéssel. Az etag mező segítségével megismerheti az adatok és objektumok naprakész-e az eszköz létrehozva és törölt eszközök eseményeket.
 
 ## <a name="next-steps"></a>További lépések
 

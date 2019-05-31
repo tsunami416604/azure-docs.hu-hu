@@ -7,14 +7,18 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: pabutler
-ms.openlocfilehash: ec206c2d637f9fb2727d72cf17087050a765672c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e7a01af1eba865b0a088b0fa7226273527abd70e
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941968"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257407"
 ---
 # <a name="saas-fulfillment-apis"></a>SaaS Fulfillment API-k
+
+> [!IMPORTANT] 
+> SaaS kínálnak a funkciót migrált a [Microsoft Partner Centeren](https://partner.microsoft.com/dashboard/directory).  Minden új gyártó kell használnia a Partner Center új SaaS-ajánlatok létrehozására és kezelésére a meglévő ajánlatok.  Az SaaS-ajánlatok kiadók migrálása folyamatban van batchwise a Cloud Partner portálra, a Partner Center.  A Cloud Partner portálra azt jelzik, ha meghatározott meglévő ajánlatok áttelepítette állapotüzeneteket jelenít meg.
+> További információkért lásd: [hozzon létre egy új SaaS-ajánlatot](../../partner-center-portal/create-new-saas-offer.md).
 
 Az SaaS teljesítése API-kkal a független szoftvergyártók (ISV), a SaaS-alkalmazások integrálása az Azure piactéren. Ezen API-k engedélyezése minden engedélyezett kereskedelmi csatornán részt ISV-alkalmazások: a közvetlen partner által irányított (viszonteladói) és a mező által vezetett.  Azok az Azure Marketplace-en transactable SaaS-ajánlatok listázása előfeltétele.
 

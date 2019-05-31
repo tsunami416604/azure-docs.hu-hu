@@ -4,15 +4,15 @@ description: Ez a cikk az Azure Cosmos DB globális terjesztési vonatkozó tech
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 8c916a2fcff606a99e5c567318c1818ff7d5d273
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: c490657eb67a34e79c8dbaea31cb59b49cc6448e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071949"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241097"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globális adatok terjesztési az Azure Cosmos DB – technikai részletek
 
@@ -68,7 +68,7 @@ A kódolt vektor órák (régió azonosítója és a megfelelő konszenzus a rep
 
 A konfigurált több írási régióval rendelkező Cosmos-adatbázisok, a rendszer rugalmas automatikus ütközés számos megoldás olyan szabályzatot kínál a fejlesztőknek, választhat, többek között: 
 
-- **Wins-utolsó-írási (LWW)**, amely alapértelmezés szerint a rendszer által meghatározott időbélyeg-tulajdonság (amely az idő-szinkronizálási órája protokollon alapul) használja. A cosmos DB lehetővé teszi bármely más egyéni numerikus tulajdonság használandó ütközésfeloldás megadása.  
+- **Wins-utolsó-írási (LWW)** , amely alapértelmezés szerint a rendszer által meghatározott időbélyeg-tulajdonság (amely az idő-szinkronizálási órája protokollon alapul) használja. A cosmos DB lehetővé teszi bármely más egyéni numerikus tulajdonság használandó ütközésfeloldás megadása.  
 - **Alkalmazás által meghatározott (egyéni) ütközik a névfeloldási házirend** (egyesítési eljárások kifejezve), amely készült alkalmazás által meghatározott szemantika egyeztetés az ütközések. Ezek az eljárások az írás-írás ütközés a kiszolgálói oldalon az adatbázis-tranzakciók felügyelete alatt észlelésekor első meghívni. A rendszer biztosít pontosan egyszer garantálja a kötelezettségvállalás protokoll részeként egy merge eljárás végrehajtására. Nincsenek [több ütköző feloldási minták](how-to-manage-conflicts.md) is kísérletezhet.  
 
 ## <a name="consistency-models"></a>Konzisztenciamodell

@@ -3,19 +3,19 @@ title: Vissza a legjobb N fordítások – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Legjobb N fordítás a Microsoft Translator Text API használatával adja vissza.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-jansko
-ms.openlocfilehash: 62992122dc16003078bb80ecd87c2bd3692586dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-pawal
+ms.openlocfilehash: 27138fc82515983bb07df845e1204fe04dff915a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610593"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389677"
 ---
 # <a name="how-to-return-n-best-translations"></a>Legjobb N fordítások visszaállítása
 
@@ -38,11 +38,11 @@ Az aláírás az:
 | Paraméter | Leírás |
 |:---|:---|
 | appId | **Szükséges** az engedélyezési fejléc használata esetén a appid mezőt üresen hagyja más esetben adja meg egy karakterlánc, amely tartalmazza a "Tulajdonos" + "" + a hozzáférési jogkivonatot.|
-| szöveg | **Szükséges** egy karakterlánc, amely a fordítandó szöveg. A szöveg mérete nem haladhatja meg a 10000 karakternél.|
-| forrás: | **Szükséges** egy karakterlánc, amely a fordítandó szöveg nyelvkódja. |
+| text | **Szükséges** egy karakterlánc, amely a fordítandó szöveg. A szöveg mérete nem haladhatja meg a 10000 karakternél.|
+| from | **Szükséges** egy karakterlánc, amely a fordítandó szöveg nyelvkódja. |
 | erre: | **Szükséges** karakterláncként lefordítani a szöveget a nyelvi kódot. |
 | maxTranslations | **Szükséges** egy int való visszatéréshez fordítások maximális számát jelöli. |
-| beállítások | **Nem kötelező** TranslateOptions egy objektum, amely tartalmazza az alább felsorolt értékeket. Minden nem kötelező, és alapértelmezés szerint a leggyakrabban használt beállításait.
+| Beállítások | **Nem kötelező** TranslateOptions egy objektum, amely tartalmazza az alább felsorolt értékeket. Minden nem kötelező, és alapértelmezés szerint a leggyakrabban használt beállításait.
 
 * Kategória: Az egyetlen támogatott, és az alapértelmezett beállítás "általános".
 * ContentType: Az egyetlen támogatott, és az alapértelmezett beállítás "text/plain".

@@ -9,12 +9,12 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: Ismerje meg, hogyan hozhat létre gyorsan egy Kubernetes-fürtöt az Azure fejlesztési tárolóhelyek engedélyezve közvetlenül a böngészőből bármit telepítése nélkül.
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
-ms.openlocfilehash: c9dabc13e85295b88483f43b26ccf0b15406ad9b
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 532a094f96817f3c525384694b6fa60a292aa948
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861612"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391657"
 ---
 # <a name="create-a-kubernetes-cluster-using-azure-cloud-shell"></a>Kubernetes-fürt létrehozása az Azure Cloud Shell-lel
 
@@ -22,7 +22,7 @@ Használhat [Azure Cloud Shell](/azure/cloud-shell) fürt létrehozása az Azure
 
 ## <a name="create-the-cluster"></a>A fürt létrehozása
 
-Először hozza létre az erőforráscsoportot egy [régióban, amely támogatja az Azure fejlesztési tárolóhelyek](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
+Először hozza létre az erőforráscsoportot egy [régióban, amely támogatja az Azure fejlesztési tárolóhelyek][supported-regions].
 
 ```azurecli-interactive
 az group create --name MyResourceGroup --location <region>
@@ -39,3 +39,6 @@ A fürt létrehozása néhány percet vesz igénybe.  Amikor végzett, a kimenet
 ## <a name="next-steps"></a>További lépések
 
 Lásd: [Azure fejlesztési tárolóhelyek](/azure/dev-spaces/) teljes oktatóanyagok mutató hivatkozásokat.
+
+
+[supported-regions]: ../about.md#supported-regions-and-configurations

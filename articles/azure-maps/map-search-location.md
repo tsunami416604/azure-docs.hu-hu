@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: be01c9d96386804b8bc074d81041104cbf592df6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85e15b756d2ea241296e11ebfcb5bf3029143de7
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768920"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357788"
 ---
 # <a name="show-search-results-on-the-map"></a>A térképen a keresési eredmények megjelenítése
 
@@ -29,7 +29,7 @@ Két módon hely hasznos helyek keresése. Egyik módja egy modul segítségéve
 
 A fenti kód az első kódblokkot egy térkép-objektumot hoz létre, és beállítja a hitelesítési mechanizmust, az előfizetési kulcsot használják. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A második kódblokkot létrehoz egy `SubscriptionKeyCredentialPolicy` az előfizetési kulcsot az Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` fogadja a a `SubscriptionKeyCredential` házirendet, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) példány. A `searchURL` egy URL-címet jelöli az Azure Maps [keresési](https://docs.microsoft.com/rest/api/maps/search) műveleteket.
+A második kódblokkot létrehoz egy `SubscriptionKeyCredentialPolicy` az előfizetési kulcsot az Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` fogadja a a `SubscriptionKeyCredential` házirendet, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) példány. A `searchURL` egy URL-címet jelöli az Azure Maps [keresési](https://docs.microsoft.com/rest/api/maps/search) műveleteket.
 
 A harmadik kódblokkot létrehoz egy objektum használhatja a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) osztályt, és a keresési eredmények hozzá. A [szimbólum réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) használja a szöveges vagy ikonjai csomagolni szoftverfrissítésipont-alapú adatok megjelenítése a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) szimbólumra a térképen.  Egy szimbólum réteg majd jön létre, és az adatforrás hozzáadásakor a szimbólum réteghez, majd a térkép felvett.
 

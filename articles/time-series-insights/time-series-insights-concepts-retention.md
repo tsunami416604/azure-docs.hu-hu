@@ -4,19 +4,19 @@ description: Ez a cikk ismerteti az adatok megőrzése az Azure Time Series Insi
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 443599e1b2876012bcbdf720bef7762a24e1ff90
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e3336df30873b40d2b8a464d1f866b524f76776d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790431"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236996"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Az Azure Time Series Insightsban az adatmegőrzés ismertetése
 
@@ -42,7 +42,7 @@ A Váltás megőrzési viselkedések további információért tekintse át [meg
 
 Hasonlítsa össze az adatok megőrzési viselkedés:
 
-## <a name="purge-old-data"></a>Régi adatok végleges törlése
+## <a name="purge-old-data"></a>Régi adatok törlése
 
 - Ez a viselkedés a Time Series Insights-környezetek esetében az alapértelmezett viselkedést.  
 - Ez a viselkedés részesíti előnyben, amikor a felhasználók meg szeretnék bármikor megtekintheti azok *legfrissebb adatok* a Time Series Insights környezetben.
@@ -63,7 +63,7 @@ Vegye figyelembe a környezet is konfigurált megőrzési viselkedés **továbbr
 
 Amikor ez a környezet napi bejövő forgalom 0.166 GB meghaladja a napi, adatokat nem lehet tárolni 180 napig, mivel bizonyos adatok kiürítése beolvasása. Fontolja meg az ugyanabban a környezetben egy foglalt időszakban. Tegyük fel, hogy egy átlagos 0.189 GB / nap növelhető a környezet bejövő forgalom. A foglalt időkereten belül az adatok körülbelül 158 napos megmaradnak (30GB/0.189 = 158,73 nap). Ezúttal nem éri el a kívánt adatok megőrzési időtartammal.
 
-## <a name="pause-ingress"></a>Bejövő forgalom szüneteltetése
+## <a name="pause-ingress"></a>Felfüggesztés bejövő forgalom
 
 - A **bejövő szüneteltetése** beállítás célja annak biztosítása érdekében az adatok nem törlődnek, ha a mérete és száma korlátok elérésekor a megőrzési időszak előtt.  
 - **Bejövő forgalom szüneteltetése** biztosít a felhasználóknak, hogy a környezetükben kapacitásának növelése előtt az adatok akkor törlődnek a megőrzési idő megsértése miatt további időt

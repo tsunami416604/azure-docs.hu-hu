@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 3c45c8587e3ca19b32ccd8dc66575333622b3cf1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9cbee4f9f4f694510e852fe3790c8242ef346576
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796584"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416078"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows virtuális gép átalakítása nem felügyeltről felügyelt a managed Disks szolgáltatásba
 
@@ -37,7 +37,7 @@ Ha rendelkezik meglévő Windows virtuális gépek (VM), amely a nem felügyelt 
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
-
+* A virtuális gép által az átalakítás előtt használt eredeti virtuális merevlemezeket és a tárfiókot nem törli a rendszer. A futtatásuk továbbra is költségekkel jár. Annak érdekében, hogy ezekért az összetevőkért a továbbiakban ne fizessen, törölje az eredeti virtuálismerevlemez-blobokat, miután meggyőződött arról, hogy az átalakítás befejeződött. Ha kell ahhoz, hogy törölje azokat a nem csatlakozó lemezek megkeresése, tekintse meg a cikket [megkeressék és töröljék a nem csatlakoztatott Azure felügyelt és nem felügyelt lemezek](find-unattached-disks.md).
 
 
 ## <a name="convert-single-instance-vms"></a>Egypéldányos virtuális gépek konvertálása

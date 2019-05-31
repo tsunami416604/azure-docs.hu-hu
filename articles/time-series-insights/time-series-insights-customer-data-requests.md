@@ -2,19 +2,19 @@
 title: Vásárlói adatok kérése funkciók az Azure Time Series Insightsban |} A Microsoft Docs
 description: Az Azure Time Series Insights vásárlói adatok funkciók összefoglalása.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.date: 05/08/2019
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 67aea6b3d535eeb0838da4ac6990c50e607617bf
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: f99a54f5623100e057e0c02249f5886f46656a21
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546389"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66355928"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Vásárlói adatok funkciók összefoglalása
 
@@ -36,7 +36,7 @@ Bérlői rendszergazda törölheti a vásárlói adatokat az Azure portal haszn�
 
 Azonban mielőtt törli a portálon keresztül a vásárlói adatokat, el kell távolítania a felhasználó hozzáférési szabályzatok a Time Series Insights-környezetből az Azure Portalon. További információkért lásd: [adathozzáférés biztosítása egy Time Series Insights-környezet az Azure portal használatával](time-series-insights-data-access.md).
 
-Törlési műveletek a hozzáférési szabályzatok a REST API használatával is elvégezheti. További információkért lásd: [hozzáférési házirendek – Törlés](https://docs.microsoft.com/rest/api/time-series-insights-management/accesspolicies/delete).
+Törlési műveletek a hozzáférési szabályzatok a REST API használatával is elvégezheti. További információkért lásd: [hozzáférési házirendek – Törlés](/rest/api/time-series-insights/management/accesspolicies/delete).
 
 A Time Series Insights integrálva van a szabályzat paneljén, az Azure Portalon. A Time Series Insights és a szabályzat paneljén is lehetővé teszi megtekintése, exportálása és a szolgáltatásban tárolt felhasználói adatok törlése. Bármely törölje a szabályzat panelen a Time Series Insights felhasználói adatok törlése az Azure portál eredmények végrehajtott műveletet. Például ha egy felhasználó egy korábban mentett személyes lekérdezés, ez a lekérdezés véglegesen törlődik a Time Series Insights explorer. Ha a felhasználó egy korábban mentett megosztott lekérdezés, a lekérdezés továbbra is fennáll, de az véglegesen törlődni fog a felhasználói adatokat. Az alábbi megjegyzésben való elvégezni ezeket a feladatokat tartalmazza.
 
@@ -48,7 +48,7 @@ Ugyanígy az adatok törlése egy Bérlői rendszergazda megtekintheti és az Az
 
 Ha a bérlő rendszergazdája, megtekintheti az adathozzáférési házirendek a Time Series Insights-környezetből az Azure Portalon. További információkért lásd: [adathozzáférés biztosítása egy Time Series Insights-környezet az Azure portal használatával](time-series-insights-data-access.md).
 
-Akkor is exportálási műveletek végrehajtása a hozzáférési szabályzatokkal a "környezet által list" művelet a megadott REST API-ban. További információkért lásd: [hozzáférési szabályzatok - lista alapján környezet](https://docs.microsoft.com/rest/api/time-series-insights-management/accesspolicies/listbyenvironment).
+Akkor is exportálási műveletek végrehajtása a hozzáférési szabályzatokkal a "környezet által list" művelet a megadott REST API-ban. További információkért lásd: [hozzáférési szabályzatok - lista alapján környezet](/rest/api/time-series-insights/management/accesspolicies/listbyenvironment).
 
 ## <a name="to-delete-data-stored-within-time-series-insights"></a>A Time Series Insights tárolt adatok törlése
 

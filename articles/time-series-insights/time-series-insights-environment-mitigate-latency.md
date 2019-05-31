@@ -4,7 +4,7 @@ description: Ez a cikk bemutatja, hogyan figyelheti, diagnosztizálhatja és kez
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4b2f73013b399dd2ca3d549e2ac2ec4ffba65b81
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 6151af941b89198812f2a33a522b30ff0a8796a0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471738"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242060"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Figyelheti, és az Azure Time Series Insightsban késés csökkentése érdekében a szabályozás csökkentése
 

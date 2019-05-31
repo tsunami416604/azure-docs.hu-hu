@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3167f60cca9997c9713efad0fbb8a51b20def76b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: e57133a750e282484271261d8e4ddb9a12de2a0e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151177"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242425"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -37,6 +37,7 @@ A machine learning munkafolyamat általában ez a sorozat a következőképpen:
 Ezek az az alábbi lépéseket fogja végrehajtani:
 + [Az Azure Machine Learning SDK a Pythonhoz](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + [Az Azure Machine Learning parancssori felület](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
++ [Az Azure Machine Learning a VS Code-bővítmény](how-to-vscode-tools.md)
 +  A [vizuális felhasználói felületet (előzetes verzió) az Azure Machine Learning szolgáltatás](ui-concept-visual-interface.md)
 
 > [!NOTE]
@@ -141,7 +142,7 @@ A modell betanítását, meg kell adni a tanítási szkriptet és a kapcsolódó
 
 Egy vonatkozó példáért lásd: [oktatóanyag: Egy rendszerkép osztályozási modell Azure Machine Learning szolgáltatással betanításához](tutorial-train-models-with-aml.md).
 
-## <a name="run"></a>Futtatás
+## <a name="run"></a>Futtassa a következőt:
 
 Futtatás a következő egy rekordot, amely a következő információkat tartalmazza:
 

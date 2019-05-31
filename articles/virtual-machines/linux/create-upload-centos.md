@@ -15,19 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 4e32d2357636cb488d3a58b78b025860da3f74c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89dbdeb02e603602155b3b8b04294aaa757b6b11
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327983"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241450"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>CentOS-alapú virtuális gép előkészítése Azure-beli használatra
+
+Ismerje meg, hozhat létre és töltse fel az Azure virtuális merevlemez (VHD), amely egy Linux CentOS-alapú operációs rendszert tartalmazza.
 
 * [CentOS 6.x virtuális gép előkészítése Azure-beli használatra](#centos-6x)
 * [CentOS 7.0 + virtuális gép előkészítése Azure-beli használatra](#centos-70)
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,95 +52,113 @@ Ez a cikk feltételezi, hogy a CentOS már telepítve van (vagy hasonló szárma
 
 3. CentOS 6 NetworkManager zavarhatja az Azure Linux-ügynök. Távolítsa el ezt a csomagot a következő parancs futtatásával:
 
-        # sudo rpm -e --nodeps NetworkManager
+    ```bash
+    sudo rpm -e --nodeps NetworkManager
+    ```
 
 4. Hozzon létre vagy szerkessze a fájlt `/etc/sysconfig/network` , és adja hozzá a következő szöveget:
 
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+    ```console
+    NETWORKING=yes
+    HOSTNAME=localhost.localdomain
+    ```
 
 5. Hozzon létre vagy szerkessze a fájlt `/etc/sysconfig/network-scripts/ifcfg-eth0` , és adja hozzá a következő szöveget:
 
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
+    ```console
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    ```
 
 6. Az Ethernet-adaptert statikus szabályainak elkerülése érdekében, udev szabályok módosítása. Ezek a szabályok problémákat okozhat, ha a Microsoft Azure vagy Hyper-v virtuális gépek klónozásának
 
-        # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
-        # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+    ```bash
+    sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+    sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+    ```
 
 7. Ellenőrizze, hogy a hálózati szolgáltatás elkezdi rendszerindítás, a következő parancs futtatásával:
 
-        # sudo chkconfig network on
+    ```bash
+    sudo chkconfig network on
+    ```
 
 8. Ha szeretné használni az OpenLogic tükör, amely az Azure-adatközpontokban üzemelteti, majd cserélje le a `/etc/yum.repos.d/CentOS-Base.repo` fájlt a következő tárházakban.  A művelet továbbá felvesz a **[openlogic]** , például az Azure Linux-ügynök további csomagokat tartalmazó tárházban:
 
-        [openlogic]
-        name=CentOS-$releasever - openlogic packages for $basearch
-        baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
-        enabled=1
-        gpgcheck=0
+    ```console
+    [openlogic]
+    name=CentOS-$releasever - openlogic packages for $basearch
+    baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
+    enabled=1
+    gpgcheck=0
 
-        [base]
-        name=CentOS-$releasever - Base
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+    [base]
+    name=CentOS-$releasever - Base
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-        #released updates
-        [updates]
-        name=CentOS-$releasever - Updates
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+    #released updates
+    [updates]
+    name=CentOS-$releasever - Updates
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-        #additional packages that may be useful
-        [extras]
-        name=CentOS-$releasever - Extras
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+    #additional packages that may be useful
+    [extras]
+    name=CentOS-$releasever - Extras
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-        #additional packages that extend functionality of existing packages
-        [centosplus]
-        name=CentOS-$releasever - Plus
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
-        gpgcheck=1
-        enabled=0
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+    #additional packages that extend functionality of existing packages
+    [centosplus]
+    name=CentOS-$releasever - Plus
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
+    gpgcheck=1
+    enabled=0
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-        #contrib - packages by Centos Users
-        [contrib]
-        name=CentOS-$releasever - Contrib
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=contrib&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
-        gpgcheck=1
-        enabled=0
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+    #contrib - packages by Centos Users
+    [contrib]
+    name=CentOS-$releasever - Contrib
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=contrib&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
+    gpgcheck=1
+    enabled=0
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+    ```
 
     > [!Note]
     > Ez az útmutató többi használandó használja legalább az `[openlogic]` adattár, az alábbi Azure Linux-ügynök telepítéséhez használandó.
 
 9. Adja hozzá a következő sort a /etc/yum.conf:
 
-        http_caching=packages
+    ```console
+    http_caching=packages
+    ```
 
 10. Futtassa a következő parancsot az aktuális yum metaadatokat törléséhez, és frissítse a rendszer a legújabb csomagok:
 
-        # yum clean all
+    ```bash
+    yum clean all
+    ```
 
     Hacsak nem hoz létre a CentOS egy régebbi verzióját egy kép, javasoljuk, hogy minden a csomagok frissítése a legújabb verzióra:
 
-        # sudo yum -y update
+    ```bash
+    sudo yum -y update
+    ```
 
     A parancs futtatása után újraindítás lehet szükséges.
 
@@ -148,26 +167,34 @@ Ez a cikk feltételezi, hogy a CentOS már telepítve van (vagy hasonló szárma
     > [!IMPORTANT]
     > A lépés **szükséges** a CentOS 6.3 és a korábbi és újabb verziók esetén nem kötelező.
 
-        # sudo rpm -e hypervkvpd  ## (may return error if not installed, that's OK)
-        # sudo yum install microsoft-hyper-v
+    ```bash
+    sudo rpm -e hypervkvpd  ## (may return error if not installed, that's OK)
+    sudo yum install microsoft-hyper-v
+    ```
 
     Másik lehetőségként kövesse a manuális telepítési utasításait a [LIS letöltési oldalát](https://go.microsoft.com/fwlink/?linkid=403033) az RPM alakzatot a virtuális gép telepítéséhez.
 
 12. Az Azure Linux-ügynök és a függőségek telepítése:
 
-        # sudo yum install python-pyasn1 WALinuxAgent
+    ```bash
+    sudo yum install python-pyasn1 WALinuxAgent
+    ```
 
     A WALinuxAgent csomag eltávolítja a NetworkManager és NetworkManager-gnome csomagokat, ha azok nem lettek már eltávolítva leírt módon a 3. lépés.
 
 13. Módosítsa a rendszermag rendszerindítási sorához további kernel paramétereket tartalmazza az Azure-hoz a grub-hibát konfigurációjában. Ehhez nyissa meg a `/boot/grub/menu.lst` egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel tartalmazza a következő paraméterekkel:
 
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
+    ```console
+    console=ttyS0 earlyprintk=ttyS0 rootdelay=300
+    ```
 
     Ez biztosítja az összes konzol üzenetet küld az első soros port, amely segítheti az Azure támogatási problémák hibakeresésében.
 
     A fentiek mellett javasoljuk, hogy *eltávolítása* a következő paraméterekkel:
 
-        rhgb quiet crashkernel=auto
+    ```console
+    rhgb quiet crashkernel=auto
+    ```
 
     Grafikus és a csendes rendszerindító, amelyek nem hasznos, ha egy felhőalapú környezetben, ahol szeretnénk a soros port kell küldeni a naplókat.  A `crashkernel` beállítás lehet bal konfigurálva, ha szükséges, de vegye figyelembe, hogy ez a paraméter csökken a rendelkezésre álló memória a virtuális gépen legalább 128 MB, amely a kisebb Virtuálisgép-méretek problémás lehet.
 
@@ -180,21 +207,25 @@ Ez a cikk feltételezi, hogy a CentOS már telepítve van (vagy hasonló szárma
 
     Az Azure Linux-ügynök automatikusan konfigurálhatják a lapozóterület használata a helyi erőforrás-lemez, amely az Azure-ban üzembe helyezés után a virtuális Géphez van csatlakoztatva. Vegye figyelembe, hogy a helyi erőforrás-lemez egy *ideiglenes* lemezre, és előfordulhat, hogy ki kell üríteni, ha a virtuális gép. Az Azure Linux-ügynök telepítése után (lásd az előző lépésben), módosítsa a következő paramétereket lévő `/etc/waagent.conf` megfelelően:
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```console
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048 ## NOTE: set this to whatever you need it to be.
+    ```
 
 16. Futtassa az alábbi parancsokat a virtuális gép megszüntetése és kiépítése az Azure előkészítése:
 
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
+    ```bash
+    sudo waagent -force -deprovision
+    export HISTSIZE=0
+    logout
+    ```
 
 17. Kattintson a **művelet le -> Leállítás** a Hyper-V kezelőjében. A Linux rendszerű VHD-t most már készen áll a tölthető fel az Azure-bA.
 
-- - -
+
 
 ## <a name="centos-70"></a>CentOS 7.0+
 
@@ -214,121 +245,149 @@ A CentOS 7 virtuális gép előkészítése Azure-hasonlít a CentOS 6, azonban 
 
 3. Hozzon létre vagy szerkessze a fájlt `/etc/sysconfig/network` , és adja hozzá a következő szöveget:
 
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+    ```console
+    NETWORKING=yes
+    HOSTNAME=localhost.localdomain
+    ```
 
 4. Hozzon létre vagy szerkessze a fájlt `/etc/sysconfig/network-scripts/ifcfg-eth0` , és adja hozzá a következő szöveget:
 
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
-        NM_CONTROLLED=no
+    ```console
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    NM_CONTROLLED=no
+    ```
 
 5. Az Ethernet-adaptert statikus szabályainak elkerülése érdekében, udev szabályok módosítása. Ezek a szabályok problémákat okozhat, ha a Microsoft Azure vagy Hyper-v virtuális gépek klónozásának
 
-        # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+    ```bash
+    sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+    ```
 
 6. Ha szeretné használni az OpenLogic tükör, amely az Azure-adatközpontokban üzemelteti, majd cserélje le a `/etc/yum.repos.d/CentOS-Base.repo` fájlt a következő tárházakban.  A művelet továbbá felvesz a **[openlogic]** , az Azure Linux ügynök-csomagokat tartalmazó tárházban:
 
-        [openlogic]
-        name=CentOS-$releasever - openlogic packages for $basearch
-        baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
-        enabled=1
-        gpgcheck=0
-
-        [base]
-        name=CentOS-$releasever - Base
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-        #released updates
-        [updates]
-        name=CentOS-$releasever - Updates
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-        #additional packages that may be useful
-        [extras]
-        name=CentOS-$releasever - Extras
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-        #additional packages that extend functionality of existing packages
-        [centosplus]
-        name=CentOS-$releasever - Plus
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
-        gpgcheck=1
-        enabled=0
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
+    ```console
+    [openlogic]
+    name=CentOS-$releasever - openlogic packages for $basearch
+    baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
+    enabled=1
+    gpgcheck=0
+    
+    [base]
+    name=CentOS-$releasever - Base
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+    
+    #released updates
+    [updates]
+    name=CentOS-$releasever - Updates
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+    
+    #additional packages that may be useful
+    [extras]
+    name=CentOS-$releasever - Extras
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+    
+    #additional packages that extend functionality of existing packages
+    [centosplus]
+    name=CentOS-$releasever - Plus
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
+    gpgcheck=1
+    enabled=0
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+    ```
+    
     > [!Note]
     > Ez az útmutató többi használandó használja legalább az `[openlogic]` adattár, az alábbi Azure Linux-ügynök telepítéséhez használandó.
 
 7. Futtassa a következő parancsot az aktuális yum metaadatokat törléséhez, és telepítse a frissítéseket:
 
-        # sudo yum clean all
+    ```bash
+    sudo yum clean all
+    ```
 
     Hacsak nem hoz létre a CentOS egy régebbi verzióját egy kép, javasoljuk, hogy minden a csomagok frissítése a legújabb verzióra:
 
-        # sudo yum -y update
+    ```bash
+    sudo yum -y update
+    ```
 
     A parancs futtatása után esetleg szükséges újraindítás.
 
 8. Módosítsa a rendszermag rendszerindítási sorához további kernel paramétereket tartalmazza az Azure-hoz a grub-hibát konfigurációjában. Ehhez nyissa meg a `/etc/default/grub` egy szövegszerkesztőben, és a Szerkesztés a `GRUB_CMDLINE_LINUX` paramétert, például:
 
-        GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    ```console
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    ```
 
    Ez biztosítja az összes konzol üzenetet küld az első soros port, amely segítheti az Azure támogatási problémák hibakeresésében. Azt is kikapcsolja az új CentOS 7 elnevezési konvencióinak hálózati adapterek. A fentiek mellett javasoljuk, hogy *eltávolítása* a következő paraméterekkel:
 
-        rhgb quiet crashkernel=auto
+    ```console
+    rhgb quiet crashkernel=auto
+    ```
 
     Grafikus és a csendes rendszerindító, amelyek nem hasznos, ha egy felhőalapú környezetben, ahol szeretnénk a soros port kell küldeni a naplókat. A `crashkernel` beállítás lehet bal konfigurálva, ha szükséges, de vegye figyelembe, hogy ez a paraméter csökken a rendelkezésre álló memória a virtuális gépen legalább 128 MB, amely a kisebb Virtuálisgép-méretek problémás lehet.
 
 9. Ha elkészült szerkesztési `/etc/default/grub` kiszolgálónként felett, a következő parancsot a grub konfigurációs újraépítése:
 
-        # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```bash
+    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
 
 10. Ha az a rendszerkép összeállítására **VMware, VirtualBox vagy KVM:** Ellenőrizze, hogy a Hyper-V illesztőprogramok a initramfs szerepelnek:
 
     Szerkesztés `/etc/dracut.conf`, adja hozzá a tartalmat:
 
-        add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
+    ```console
+    add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
+    ```
 
     Építse újra a initramfs:
 
-        # sudo dracut -f -v
+    ```bash
+    sudo dracut -f -v
+    ```
 
 11. Az Azure Linux-ügynök és a függőségek telepítése:
 
-        # sudo yum install python-pyasn1 WALinuxAgent
-        # sudo systemctl enable waagent
+    ```bash
+    sudo yum install python-pyasn1 WALinuxAgent
+    sudo systemctl enable waagent
+    ```
 
 12. Nem hozható létre lapozófájl-kapacitás az operációsrendszer-lemez.
 
     Az Azure Linux-ügynök automatikusan konfigurálhatják a lapozóterület használata a helyi erőforrás-lemez, amely az Azure-ban üzembe helyezés után a virtuális Géphez van csatlakoztatva. Vegye figyelembe, hogy a helyi erőforrás-lemez egy *ideiglenes* lemezre, és előfordulhat, hogy ki kell üríteni, ha a virtuális gép. Az Azure Linux-ügynök telepítése után (lásd az előző lépésben), módosítsa a következő paramétereket lévő `/etc/waagent.conf` megfelelően:
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```console
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```
 
 13. Futtassa az alábbi parancsokat a virtuális gép megszüntetése és kiépítése az Azure előkészítése:
 
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
+    ```bash
+    sudo waagent -force -deprovision
+    export HISTSIZE=0
+    logout
+    ```
 
 14. Kattintson a **művelet le -> Leállítás** a Hyper-V kezelőjében. A Linux rendszerű VHD-t most már készen áll a tölthető fel az Azure-bA.
 

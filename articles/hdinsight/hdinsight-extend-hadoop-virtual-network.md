@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/29/2019
-ms.openlocfilehash: e586ab1bdcca9d6109cf42b6341c333fabb02993
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 05/28/2019
+ms.openlocfilehash: 9316ca0dfaa2d550ea9a2b89d2c93e0e37230f62
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601683"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388340"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -77,7 +77,7 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
     
     A meglévő biztonsági konfiguráció, használja a következő Azure PowerShell vagy az Azure CLI-parancsokat:
 
-    * Hálózati biztonsági csoportok
+    * Network security groups (Hálózati biztonsági csoportok)
 
         Cserélje le `RESOURCEGROUP` , amely tartalmazza a virtuális hálózathoz, és írja be a parancsot az erőforráscsoport nevét:
     
@@ -211,41 +211,39 @@ Az Apache Ambari és a más weblapok, a virtuális hálózaton keresztül csatla
 
 ## <a id="networktraffic"></a> Hálózati forgalom szabályozása
 
+### <a name="controlling-inbound-traffic-to-hdinsight-clusters"></a>HDInsight-fürtök a bejövő forgalom szabályozása
+
 Egy Azure-beli virtuális hálózatok hálózati forgalmához szabályozhatja a következő módszerekkel:
 
 * **Hálózati biztonsági csoportok** (NSG) lehetővé teszi a hálózati bejövő és kimenő forgalom szűrését. További információkért lásd: a [hálózati biztonsági csoportokkal a hálózati forgalom szűrése](../virtual-network/security-overview.md) dokumentumot.
 
-    > [!WARNING]  
-    > HDInsight nem támogatja a kimenő forgalom korlátozása. Az összes kimenő forgalmat engedélyezni kell.
-
-* **Felhasználó által megadott útvonalak** (UDR) definiálhatja a forgalom adatfolyamait a hálózaton lévő erőforrások között. További információkért lásd: a [felhasználó által megadott útvonalak és IP-továbbítás](../virtual-network/virtual-networks-udr-overview.md) dokumentumot.
-
 * **Hálózati virtuális berendezések** replikálni, például a tűzfalak és az útválasztók eszközök működésével. További információkért lásd: a [hálózati berendezések](https://azure.microsoft.com/solutions/network-appliances) dokumentumot.
 
-Felügyelt szolgáltatásként HDInsight a HDInsight állapota nem korlátozott hozzáférésre van szüksége, és felügyeleti szolgáltatásokat, mind a bejövő és kimenő forgalmat a virtuális hálózatról. Az NSG-k és az udr-EK használata esetén győződjön meg róla, hogy ezek a szolgáltatások továbbra is kommunikál HDInsight-fürt.
+Felügyelt szolgáltatásként HDInsight a HDInsight állapota nem korlátozott hozzáférésre van szüksége, és felügyeleti szolgáltatásokat, mind a bejövő és kimenő forgalmat a virtuális hálózatról. Az NSG-k használata esetén győződjön meg róla, hogy ezek a szolgáltatások továbbra is kommunikál HDInsight-fürt.
 
-### <a id="hdinsight-ip"></a> A hálózati biztonsági csoportok és a felhasználó által megadott útvonalak HDInsight
+![Az Azure egyéni virtuális hálózatban létrehozott HDInsight entitásokat ábrája](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
 
-Ha azt tervezi, hogy használatával **hálózati biztonsági csoportok** vagy **felhasználó által megadott útvonalak** szabályozhatja a hálózati forgalom, a HDInsight telepítése előtt a következő műveletek végrehajtásához:
+### <a id="hdinsight-ip"></a> HDInsight hálózati biztonsági csoportokkal
+
+Ha azt tervezi, hogy használatával **hálózati biztonsági csoportok** szabályozhatja a hálózati forgalom, a HDInsight telepítése előtt a következő műveletek végrehajtásához:
 
 1. Azonosítsa az Azure-régióban, amely a HDInsight használatát tervezi.
 
 2. Azonosíthatja a HDInsight által igényelt IP-címeket. További információkért lásd: a [HDInsight által igényelt IP-címek](#hdinsight-ip) szakaszban.
 
-3. Hozzon létre vagy módosítsa a hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalakat az alhálózatot, amelyet a HDInsight azokat telepíteni szeretné a.
+3. Hozzon létre vagy módosítsa a hálózati biztonsági csoportot az alhálózathoz, amelyhez be HDInsight telepíteni szeretné.
 
-    * __Hálózati biztonsági csoportok__: engedélyezése __bejövő__ port forgalmát __443-as__ IP-címek. Ez biztosítja, hogy HDI-felügyeleti szolgáltatásokat a fürt elérje a külső virtuális hálózaton.
-    * __Felhasználó által megadott útvonalak__: Ha azt tervezi, használja az udr-EK, hozzon létre egy útvonalat, minden IP-címhez, és állítsa be a __következő ugrás típusa__ való __Internet__. Minden kimenő forgalmat is engedélyezni a virtuális hálózatról korlátozás nélkül. Például az összes többi forgalom átirányítása az Azure tűzfal vagy a hálózati virtuális berendezés (az Azure-ban üzemeltetett) figyelési célból, de nem lesznek letiltva a kimenő forgalmat.
+    * __Hálózati biztonsági csoportok__: engedélyezése __bejövő__ port forgalmát __443-as__ IP-címek. Ez biztosítja, hogy a HDInsight szolgáltatásokat elérheti a fürt a virtuális hálózaton kívülről.
 
-További információ a hálózati biztonsági csoportok vagy felhasználó által megadott útvonalakat a következő dokumentációban tekintheti meg:
+Hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: a [hálózati biztonsági csoportok áttekintése](../virtual-network/security-overview.md).
 
-* [Hálózati biztonsági csoport](../virtual-network/security-overview.md)
+### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>HDInsight-fürtök kimenő forgalom szabályozása
 
-* [Felhasználó által megadott útvonalak](../virtual-network/virtual-networks-udr-overview.md)
+HDInsight-fürtök kimenő forgalom szabályozásával kapcsolatban további információkért lásd: [kimenő hálózati forgalom korlátozása konfigurálása az Azure HDInsight-fürtök](hdinsight-restrict-outbound-traffic.md).
 
 #### <a name="forced-tunneling-to-on-premise"></a>Kényszerített bújtatás helyszíni
 
-Kényszerített bújtatás egy felhasználó által meghatározott útválasztási konfigurációja ahol alhálózatból származó összes forgalom kényszerített egy adott hálózaton vagy a helyen, például a helyszíni hálózathoz. HDInsight does __nem__ támogatási kényszerített bújtatás a helyszíni hálózatokhoz. Ha Azure tűzfal vagy egy Azure-ban üzemeltetett hálózati virtuális készüléket használ, udr-EK segítségével rá, ellenőrzési célból átirányítja a forgalmat, és lehetővé teszi minden kimenő forgalmat.
+Kényszerített bújtatás egy felhasználó által meghatározott útválasztási konfigurációja ahol alhálózatból származó összes forgalom kényszerített egy adott hálózaton vagy a helyen, például a helyszíni hálózathoz. HDInsight does __nem__ támogatási kényszerített bújtatás a forgalom a helyszíni hálózathoz. 
 
 ## <a id="hdinsight-ip"></a> Szükséges IP-címek
 
@@ -258,7 +256,7 @@ Ha hálózati biztonsági csoportokat használ, engedélyeznie kell az Azure ál
 
 1. Mindig engedélyeznie kell a következő IP-címekről érkező forgalmat:
 
-    | Forrás IP-címe | Célhely  | Direction |
+    | Forrás IP-címe | Cél  | Direction |
     | ---- | ----- | ----- |
     | 168.61.49.99 | \*:443 | Bejövő |
     | 23.99.5.239 | \*:443 | Bejövő |
@@ -294,14 +292,14 @@ Ha hálózati biztonsági csoportokat használ, engedélyeznie kell az Azure ál
     | &nbsp; | Nyugat-Japán | 40.74.125.69</br>138.91.29.150 | \*:443 | Bejövő |
     | Korea | Korea középső régiója | 52.231.39.142</br>52.231.36.209 | \*:433 | Bejövő |
     | &nbsp; | Korea déli régiója | 52.231.203.16</br>52.231.205.214 | \*:443 | Bejövő
-    | Egyesült Királyság | Egyesült Királyság nyugati régiója | 51.141.13.110</br>51.141.7.20 | \*:443 | Bejövő |
-    | &nbsp; | Egyesült Királyság déli régiója | 51.140.47.39</br>51.140.52.16 | \*:443 | Bejövő |
+    | Egyesült Királyság | Az Egyesült Királyság nyugati régiója | 51.141.13.110</br>51.141.7.20 | \*:443 | Bejövő |
+    | &nbsp; | Az Egyesült Királyság déli régiója | 51.140.47.39</br>51.140.52.16 | \*:443 | Bejövő |
     | Egyesült Államok | USA középső régiója | 13.67.223.215</br>40.86.83.253 | \*:443 | Bejövő |
     | &nbsp; | USA keleti régiója | 13.82.225.233</br>40.71.175.99 | \*:443 | Bejövő |
     | &nbsp; | USA északi középső régiója | 157.56.8.38</br>157.55.213.99 | \*:443 | Bejövő |
     | &nbsp; | USA nyugati középső régiója | 52.161.23.15</br>52.161.10.167 | \*:443 | Bejövő |
     | &nbsp; | USA nyugati régiója | 13.64.254.98</br>23.101.196.19 | \*:443 | Bejövő |
-    | &nbsp; | USA 2. nyugati régiója | 52.175.211.210</br>52.175.222.222 | \*:443 | Bejövő |
+    | &nbsp; | USA nyugati régiója, 2. | 52.175.211.210</br>52.175.222.222 | \*:443 | Bejövő |
 
     Az IP-címek az Azure Government használatára vonatkozó információért lásd: a [Azure Government intelligencia és elemzés](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentumot.
 

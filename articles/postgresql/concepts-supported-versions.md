@@ -1,20 +1,20 @@
 ---
-title: Azure Database for postgresql-hez a támogatott verziók
-description: Ismerteti a támogatott verziók az Azure Database for postgresql-hez.
+title: Az Azure Database for PostgreSQL - kiszolgáló egyetlen támogatott verzió
+description: Ismerteti a támogatott verziók az Azure Database for PostgreSQL – egyetlen kiszolgáló.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.openlocfilehash: 16064d662c5b101e30f8d2fbb64b39db0848f49f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 5/6/2019
+ms.openlocfilehash: 4dcbaf159fce6b5f5495a6a25a2a3420cad9e5e8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702309"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067261"
 ---
 # <a name="supported-postgresql-database-versions"></a>PostgreSQL-adatbázis támogatott verziók
-A Microsoft célja, hogy az Azure Database for PostgreSQL szolgáltatás a PostgreSQL-motor n-2 verzióit támogatja. A verziók lenne, az aktuális főbb verzióhoz az Azure-ban (n) és a két előző főbb verzió (-2).
+A Microsoft célja, hogy támogatja a PostgreSQL-motor n-2 verzióit az Azure Database for PostgreSQL – egyetlen kiszolgáló. A verziók lenne, az aktuális főbb verzióhoz az Azure-ban (n) és a két előző főbb verzió (-2).
 
 Azure Database for postgresql-hez jelenleg az alábbi verzióit támogatja:
 

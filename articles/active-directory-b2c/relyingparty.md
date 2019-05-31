@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ca78e7a9ce44b492dafcc00c1663d54718ca7fac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9e8718d9216bb2f4a83f8e0373b4788210015b75
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705078"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253775"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -74,7 +74,7 @@ A következő példa bemutatja egy **RelyingParty** eleme a *B2C_1A_signup_signi
 
 A választható **RelyingParty** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Az RP-alkalmazás alapértelmezett felhasználói interakciósorozat. |
 | UserJourneyBehaviors | 0:1 | A felhasználói interakciósorozat viselkedés hatókörét. |
@@ -102,7 +102,7 @@ A `DefaultUserJourney` elem azt határozza meg egy hivatkozást, amely általáb
 
 A **DefaultUserJourney** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A házirend a felhasználói út azonosítója. További információkért lásd: [felhasználói utak](userjourneys.md) |
 
@@ -110,7 +110,7 @@ A **DefaultUserJourney** elem tartalmazza a következő attribútumot:
 
 A **UserJourneyBehaviors** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Egyszeri bejelentkezés (SSO) munkamenet viselkedését egy felhasználói interakciósorozat hatókörét. |
 | SessionExpiryType |0:1 | A hitelesítési viselkedést, a munkamenet. A lehetséges értékek: `Rolling` vagy `Absolute`. A `Rolling` érték (alapértelmezett) azt jelzi, hogy a felhasználó bejelentkezve marad-e, amíg a felhasználó az alkalmazásban folyamatosan aktív. A `Absolute` érték azt jelzi, hogy hitelesítse magát újra, az alkalmazás munkamenet által megadott időszak után a felhasználónak kötelező élettartamát. |
@@ -122,16 +122,16 @@ A **UserJourneyBehaviors** elem a következő elemeket tartalmazza:
 
 A **SingleSignOn** elem tartalmazza a következő attribútum:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Hatókör | Igen | Egyszeri bejelentkezés viselkedésének hatókörét. A lehetséges értékek: `Suppressed`, `Tenant`, `Application`, vagy `Policy`. A `Suppressed` érték azt jelzi, hogy a viselkedés nem jelenik meg. Például egy egyszeri bejelentkezés munkamenet, a felhasználó nem munkamenet változatlan marad, és a felhasználó mindig a rendszer egy identitás-szolgáltató kiválasztása. A `TrustFramework` érték azt jelzi, hogy a lesz alkalmazva a bizalmi keretrendszer minden szabályzat. Például egy felhasználó a bizalmi keretrendszer két szabályzat teljesített végiglépkedhet nem kell megadnia az identitás szolgáltató kiválasztása. A `Tenant` érték azt jelzi, hogy a viselkedés a bérlő összes szabályzat van hozzárendelve. Ha például két szabályzat Journey végiglépkedhet a bérlőhöz tartozó felhasználó nem kell megadnia egy identitás-szolgáltató kiválasztása. A `Application` érték azt jelzi, hogy a lesz alkalmazva a kérést az alkalmazás minden házirendben. Például egy felhasználó az alkalmazás két szabályzat Journey végiglépkedhet nem kell megadnia az identitás szolgáltató kiválasztása. A `Policy` érték azt jelzi, hogy a csak történnek egy házirend. Például egy felhasználó a bizalmi keretrendszer két szabályzat teljesített végiglépkedhet a rendszer egy identitás-szolgáltató kiválasztása házirendek közötti váltáskor. |
+| Scope | Igen | Egyszeri bejelentkezés viselkedésének hatókörét. A lehetséges értékek: `Suppressed`, `Tenant`, `Application`, vagy `Policy`. A `Suppressed` érték azt jelzi, hogy a viselkedés nem jelenik meg. Például egy egyszeri bejelentkezés munkamenet, a felhasználó nem munkamenet változatlan marad, és a felhasználó mindig a rendszer egy identitás-szolgáltató kiválasztása. A `TrustFramework` érték azt jelzi, hogy a lesz alkalmazva a bizalmi keretrendszer minden szabályzat. Például egy felhasználó a bizalmi keretrendszer két szabályzat teljesített végiglépkedhet nem kell megadnia az identitás szolgáltató kiválasztása. A `Tenant` érték azt jelzi, hogy a viselkedés a bérlő összes szabályzat van hozzárendelve. Ha például két szabályzat Journey végiglépkedhet a bérlőhöz tartozó felhasználó nem kell megadnia egy identitás-szolgáltató kiválasztása. A `Application` érték azt jelzi, hogy a lesz alkalmazva a kérést az alkalmazás minden házirendben. Például egy felhasználó az alkalmazás két szabályzat Journey végiglépkedhet nem kell megadnia az identitás szolgáltató kiválasztása. A `Policy` érték azt jelzi, hogy a csak történnek egy házirend. Például egy felhasználó a bizalmi keretrendszer két szabályzat teljesített végiglépkedhet a rendszer egy identitás-szolgáltató kiválasztása házirendek közötti váltáskor. |
 | KeepAliveInDays | Igen | azt szabályozza, hogy mennyi ideig a felhasználó bejelentkezve marad. Az érték 0 kikapcsolja az KMSI funkciót. További információkért lásd: [bejelentkezve szeretnék maradni](active-directory-b2c-reference-kmsi-custom.md). |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
 A **JourneyInsights** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | TelemetryEngine | Igen | Az értéknek kell lennie `ApplicationInsights`. | 
 | InstrumentationKey | Igen | A karakterlánc, amely tartalmazza a kialakítási kulcsot az application insights elemhez. |
@@ -152,13 +152,13 @@ Az alábbi példa továbbítja nevű paraméter `campaignId` értékkel `hawaii`
 
 A **ContentDefinitionParameters** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0:n | A kulcs-érték pár, amelyek számára a lekérdezési karakterlánc egy tartalomdefiníció terhelés URI-t tartalmazó karakterlánc. |
 
 A **ContentDefinitionParameter** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Name (Név) | Igen | A kulcs-érték pár neve. |
 
@@ -168,15 +168,15 @@ További információkért lásd: [konfigurálása a felhasználói felület din
 
 A **TechnicalProfile** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- | 
-| Azonosító | Igen | Az értéknek kell lennie `PolicyProfile`. |
+| Id | Igen | Az értéknek kell lennie `PolicyProfile`. |
 
 A **TechnicalProfile** a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
-| Megjelenítendő név | 0:1 | A technikai profil felhasználók számára megjelenő nevét tartalmazó karakterlánc. |
+| displayName | 0:1 | A technikai profil felhasználók számára megjelenő nevét tartalmazó karakterlánc. |
 | Leírás | 0:1 | A karakterlánc, amely tartalmazza a felhasználók számára megjelenő technikai profil leírása. |
 | Protocol | 1:1 | Az összevonási használt protokollt. |
 | Metaadatok | 0:1 | Gyűjteményét *elem* kulcs/érték párok képviselőinkkel egy tranzakciónak a végponttal való kommunikációhoz a protokoll által használt fel, a függő entitáshoz, és egyéb közösségi résztvevők közötti interakciók konfigurálása. |
@@ -185,7 +185,7 @@ A **TechnicalProfile** a következő elemeket tartalmazza:
 
 A **protokoll** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Name (Név) | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. A lehetséges értékek: `OpenIdConnect` vagy `SAML2`. A `OpenIdConnect` értékét jelöli az OpenID Connect 1.0 protokoll standard OpenID foundation specifikációnak megfelelően. A `SAML2` OASIS specifikációnak megfelelően a SAML 2.0 protokoll standard jelöli. Éles környezetben ne használja a SAML-jogkivonat. |
 
@@ -193,13 +193,13 @@ A **protokoll** elem tartalmazza a következő attribútumot:
 
 A **OutputClaims** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | A támogatott listán egy várt jogcímtípus, amelyhez a függő entitás feliratkozik a szabályzat neve. Ezt az igényt a kimenetként a technikai profil szolgálja ki. |
 
 A **kimeneti jogcím** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Igen | Egy hivatkozást egy **takar** már definiálva a **ClaimsSchema** szakaszt a házirend-fájlban. |
 | DefaultValue érték | Nem | Alapértelmezett érték is használható, ha a jogcím értéke üres. |
@@ -208,12 +208,12 @@ A **kimeneti jogcím** elem tartalmazza a következő attribútumokat:
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 Az a **SubjectNameingInfo** elemben meghatározhatja, hogy a jogkivonat tárgyában értékét:
-- **JTW jogkivonat** – a `sub` jogcím. Ez a arról, hogy mely a token használjon esetleg imperatív állításokat információkat, például egy alkalmazás a felhasználó rendszerbiztonsági tag. Ez az érték nem módosítható és nem hozzárendelni és újra felhasználható. Használható például az erőforrások eléréséhez a token használatakor a biztonságos hitelesítési ellenőrzések elvégzéséhez. Alapértelmezés szerint megjelenik a tulajdonos jogcímet a felhasználó Objektumazonosítóját. További információkért lásd: [jogkivonat, munkamenet és egyszeri bejelentkezés beállításainak](active-directory-b2c-token-session-sso.md).
+- **JWT jogkivonat** – a `sub` jogcím. Ez a arról, hogy mely a token használjon esetleg imperatív állításokat információkat, például egy alkalmazás a felhasználó rendszerbiztonsági tag. Ez az érték nem módosítható és nem hozzárendelni és újra felhasználható. Használható például az erőforrások eléréséhez a token használatakor a biztonságos hitelesítési ellenőrzések elvégzéséhez. Alapértelmezés szerint megjelenik a tulajdonos jogcímet a felhasználó Objektumazonosítóját. További információkért lásd: [jogkivonat, munkamenet és egyszeri bejelentkezés beállításainak](active-directory-b2c-token-session-sso.md).
 - **SAML-jogkivonat** – a `<Subject><NameID>` elem, amely azonosítja a tulajdonos elemben.
 
 A **SubjectNamingInfo** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ClaimType | Igen | Egy hivatkozást egy kimenő jogcímet **PartnerClaimType**. A kimeneti jogcímek definiálni kell a függő entitás házirend **OutputClaims** gyűjtemény. |
 

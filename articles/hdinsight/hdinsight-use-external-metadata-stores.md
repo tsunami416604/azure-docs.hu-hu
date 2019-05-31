@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 0a6bcb3fb94df56caf4d095097572dd8a704f856
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/27/2019
+ms.openlocfilehash: 705ced82ad4edad0bb4adc057414f6b20b80d8d3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701200"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298871"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Az Azure HDInsight külső metaadat-tárolók használata
 
@@ -50,7 +50,7 @@ HDInsight emellett támogatja az egyéni metaadattárakat, javasolt az éles fü
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Egy egyéni metaadattár válassza ki a fürt létrehozása során
 
-Egy korábban létrehozott Azure SQL Database a fürt a fürt létrehozása során mutathat, vagy konfigurálhatja az SQL Database, a fürt létrehozása után. Ez a beállítás meg van adva a tároló > Metaadattár beállításai létrehozásakor egy új Hadoop, Spark vagy interaktív Hive-fürt Azure Portal használatával.
+Egy korábban létrehozott Azure SQL Database a fürt a fürt létrehozása során mutathat, vagy konfigurálhatja az SQL Database, a fürt létrehozása után. Ez a beállítás meg van adva a **tárolás > Metaadattár beállításai** egy új Hadoop, Spark vagy interaktív Hive-fürt létrehozásakor az Azure Portalról.
 
 ![HDInsight Hive-metaadatok Store az Azure Portalon](./media/hdinsight-use-external-metadata-stores/metadata-store-azure-portal.png)
 
@@ -79,4 +79,4 @@ Az Azure SQL Database-Oozie-metaadattár létrehozásával kapcsolatos útmutat�
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Apache Hadoop, az Apache Spark, az Apache Kafka és több HDInsight-fürtök beállítása](./hdinsight-hadoop-provision-linux-clusters.md)
+- [Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával](./hdinsight-hadoop-provision-linux-clusters.md)

@@ -3,19 +3,19 @@ title: Nyelvi támogatás – Translator Text API
 titleSuffix: Azure Cognitive Services
 description: A Translator Text API által támogatott természetes nyelvek listáját.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: 8de9d7e6aac052ca24f1eef5f99c3146029bddbb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: v-pawal
+ms.openlocfilehash: 153fd5a8202ca0d919a2254449d846f8798bd10d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690148"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382498"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
@@ -57,7 +57,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 |holland| `nl`    |Neurális érhető el|  Neurális|
 |Angol|   `en`    |Neurális érhető el|  Neurális|
 |észt|  `et`    |Neurális érhető el|  Neurális|
-|fidzsi|    `fj`    |Csak statisztikai|  Statisztikai|
+|Fijian|    `fj`    |Csak statisztikai|  Statisztikai|
 |filippínó|  `fil`   |Csak statisztikai|  Statisztikai|
 |finn|   `fi`    |Neurális érhető el|  Neurális|
 |francia|    `fr`    |Neurális érhető el|  Neurális|
@@ -78,7 +78,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 |koreai |`ko`   |Neurális érhető el|  Neurális|
 |lett|   `lv`    |Neurális érhető el|  Neurális|
 |litván|    `lt`    |Neurális érhető el|  Neurális|
-|malgas|  `mg`    |Csak statisztikai|  Statisztikai|
+|Madagaszkári|  `mg`    |Csak statisztikai|  Statisztikai|
 |maláj| `ms`    |Csak statisztikai   |Statisztikai|
 |máltai|   `mt`    |Csak statisztikai|  Statisztikai|
 |norvég| `nb`    |Neurális érhető el|  Neurális|
@@ -88,7 +88,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 |Queretaro Otomi|   `otq`   |Csak statisztikai|  Statisztikai|
 |román|  `ro`    |Neurális érhető el|  Neurális|
 |orosz|   `ru`    |Neurális érhető el|  Neurális|
-|szamoai|    `sm`    |Csak statisztikai|  Statisztikai|
+|Samoa|    `sm`    |Csak statisztikai|  Statisztikai|
 |szerb (cirill betűs)|    `sr-Cyrl`   |Csak statisztikai|  Statisztikai|
 |szerb (latin betűs)|   `sr-Latn`   |Csak statisztikai   |Statisztikai|
 |szlovák|    `sk`    |Neurális érhető el|  Neurális|
@@ -99,7 +99,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 |tamil| `ta`    |Csak statisztikai|  Statisztikai|
 |telugu|    `te`    |Csak Neurális|   Neurális|
 |thai|  `th`    |Neurális érhető el|  Neurális|
-|tonga|    `to`    |Csak statisztikai|  Statisztikai|
+|Tongan|    `to`    |Csak statisztikai|  Statisztikai|
 |török|   `tr`    |Neurális érhető el   |Neurális|
 |ukrán| `uk`    |Neurális érhető el|  Neurális|
 |urdu|  `ur`    |Csak statisztikai|  Statisztikai|
@@ -125,8 +125,8 @@ A Transliterate módszer a következő nyelveket támogatja. A "/", a "<> –" a
 | japán | `ja` | japán `Jpan` | <--> | Latin `Latn` |
 | kannada | `kn` | Kannada `Knda` | --> | Latin `Latn` |
 | malajálam | `ml` | malajálam `Mlym` | --> | Latin `Latn` |
-| maráthi | `mr` | Devanagári `Deva` | --> | Latin `Latn` |
-| orija | `or` | Orija `Orya` | <--> | Latin `Latn` |
+| marathi | `mr` | Devanagári `Deva` | --> | Latin `Latn` |
+| Orija | `or` | Orija `Orya` | <--> | Latin `Latn` |
 | pandzsábi | `pa` | Gurmukhi `Guru`  | <--> | Latin `Latn`  |
 | szerb (cirill betűs) | `sr-Cyrl` | Cyrilice `Cyrl`  | --> | Latin `Latn` |
 | szerb (latin betűs) | `sr-Latn` | Latin `Latn` | --> | Cyrilice `Cyrl`|
@@ -234,13 +234,13 @@ Az alábbi nyelveken érhetők el, vagy az angol nyelvű testreszabási [egyéni
 | koreai      | `ko`          |
 | lett      | `lv`          |
 | litván      | `lt`          |
-|malgas|  `mg`    |
+|Madagaszkári|  `mg`    |
 | norvég      | `nb`          |
 | lengyel      | `pl`          |
 | portugál      | `pt`          |
 | román      | `ro`          |
 | orosz      | `ru`          |
-|szamoai|    `sm`    |
+|Samoa|    `sm`    |
 | szerb (latin betűs)      | `sr-Latn`          |
 | szlovák     | `sk`          |
 | szlovén      | `sl`          |

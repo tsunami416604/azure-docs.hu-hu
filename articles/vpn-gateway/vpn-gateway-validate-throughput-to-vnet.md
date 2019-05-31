@@ -2,31 +2,24 @@
 title: A Microsoft Azure Virtual Network VPN teljesítményének érvényesítése |} A Microsoft Docs
 description: Ez a dokumentum az a célja, hogy segítséget nyújtson a felhasználó, ellenőrizze a hálózati átviteli sebesség a helyszíni erőforrások Azure virtuális gépeken.
 services: vpn-gateway
-documentationcenter: na
-author: chadmath
+author: cherylmc
 manager: jasmc
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/15/2018
+ms.date: 05/29/2019
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 819415712d8e605825957aa602fc99dcf6902d82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1117afcf6254c32ebe0a4e72ad5619606098253
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457527"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388615"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Hogyan lehet egy virtuális hálózati VPN teljesítményének érvényesítése
 
 VPN gateway-kapcsolat lehetővé teszi biztonságos kapcsolat, létesítmények közötti kapcsolatokat a virtuális hálózat Azure-ban és a helyszíni informatikai infrastruktúrát.
 
-Ez a cikk bemutatja, hogyan érvényesítheti a hálózati átviteli sebesség a helyszíni erőforrások Azure virtuális gépeken (VM). Azt is nyújt hibaelhárítási útmutatót.
+Ez a cikk bemutatja, hogyan érvényesítheti a hálózati átviteli sebesség a helyszíni erőforrások Azure virtuális gépeken (VM). Azt is nyújt hibaelhárítási útmutatót. 
 
 >[!NOTE]
 >Ebből a cikkből gyakori hibák azonosítása és kijavítása érdekében. Ha nem sikerül a probléma megoldásához az alábbi információk alapján [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
@@ -127,7 +120,7 @@ Lassú fájl kiugrások, amikor a Windows Explorer használatával vagy áthúz�
 - Nincs elegendő VM lemez olvasási/írási sebessége. További információkért lásd: [Azure Storage hibaelhárítási](../storage/common/storage-e2e-troubleshooting.md).
 
 ## <a name="on-premises-device-external-facing-interface"></a>Helyszíni eszköz külső irányuló felületén
-Ha a helyszíni VPN-eszköznek az Internet felé néző IP-cím szerepel a [helyi hálózati](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) definíciót az Azure-ban, tapasztalhat meggátoló ahhoz, hogy meg bontja a kapcsolatot a VPN-, időnként fel, vagy a teljesítménnyel kapcsolatos problémák.
+Ha a helyszíni VPN-eszköznek az Internet felé néző IP-cím szerepel a [helyi hálózati](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) cím terület definícióját az Azure-ban, tapasztalhat meggátoló ahhoz, hogy meg bontja a kapcsolatot a VPN-, időnként fel, vagy a teljesítménnyel kapcsolatos problémák.
 
 ## <a name="checking-latency"></a>Késés ellenőrzése
 A Microsoft Azure Edge-eszközön nyomkövetési tracert használatával határozza meg, hogy vannak-e bármilyen meghaladja a 100 ms közötti útválasztók ugrásainak késések.

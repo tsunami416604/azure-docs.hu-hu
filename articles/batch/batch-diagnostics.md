@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 349896a7114fba83d852b8bc066f4f7eb0a070ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1fc405951789305b0df86fd0f7b91890fb45c06
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60550290"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242620"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez
 
@@ -109,7 +109,7 @@ A diagnosztikai naplók számára más választható célok:
 
     ![Batch-diagnosztika](media/batch-diagnostics/diagnostics-portal.png)
 
-Az Erőforrásnapló-gyűjtés engedélyezése más lehetőségek a következők: a portálon az Azure Monitor használatával diagnosztikai beállítások konfigurálása, használja a [Resource Manager-sablon](../azure-monitor/platform/diagnostic-logs-stream-template.md), vagy az Azure PowerShell vagy az Azure parancssori felület. Lásd: [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../azure-monitor/platform/diagnostic-logs-overview.md#how-to-enable-collection-of-diagnostic-logs).
+Az Erőforrásnapló-gyűjtés engedélyezése más lehetőségek a következők: a portálon az Azure Monitor használatával diagnosztikai beállítások konfigurálása, használja a [Resource Manager-sablon](../azure-monitor/platform/diagnostic-logs-stream-template.md), vagy az Azure PowerShell vagy az Azure parancssori felület. Lásd: [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Hozzáférés diagnosztikai naplók storage-ban

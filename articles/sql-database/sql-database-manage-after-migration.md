@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: e13907e96bba338648bddcc102e3b4f51887d0ea
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 73bc2d9889727a1633986e12642bd06cf2714632
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949917"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357330"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database-ben az egyetlen vagy készletezett adatbázisok kezelése
 
@@ -29,6 +29,7 @@ Való áttérés a hagyományos önállóan felügyelt, önálló ellenőrzött 
 
 Ez a cikk ismerteti az alapvető előrejelzéséhez, az Azure SQL Database platform, amely könnyen kihasználhatja használatakor az önálló adatbázisok és rugalmas készletek a készletezett adatbázisok. Ezek a következők:
 
+- Az Azure portal használatával adatbázis figyelése
 - Üzleti folytonosság és vészhelyreállítás helyreállítási (BCDR)
 - Biztonság és megfelelőség
 - Intelligens adatbázis figyelése és karbantartása
@@ -36,6 +37,25 @@ Ez a cikk ismerteti az alapvető előrejelzéséhez, az Azure SQL Database platf
 
 > [!NOTE]
 > Ez a cikk vonatkozik az Azure SQL Database az alábbi üzembe helyezési lehetőségek: önálló adatbázisok és rugalmas készletek. Az SQL Database felügyelt példány üzembe helyezési beállítás nem vonatkozik.
+
+## <a name="monitor-databases-using-the-azure-portal"></a>Adatbázisok figyelése Azure Portal használatával
+
+Az a [az Azure portal](https://portal.azure.com/), figyelheti egy önálló adatbázis s kihasználtság az adatbázis kiválasztásával, kattintson a **figyelés** diagram. Ekkor megjelenik a **Metrika** ablak, amelyet a **Diagram szerkesztése** gombra kattintva módosíthat. Adja hozzá a következő metrikákat:
+
+- Processzorhasználat (%)
+- DTU-kihasználtság (%)
+- Adat IO kihasználtsága (%)
+- Adatbázis méretének kihasználtsága
+
+Ezek a metrikák hozzáadása után továbbra is megtekintheti őket a a **figyelés** további információt a diagramon az **metrika** ablak. A négy metrika az átlagos kihasználtság százalékos arányát jeleníti meg az adatbázis **DTU-jához** viszonyítva. Tekintse meg a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) cikkekben további információt a szolgáltatási szintekről.  
+
+![Adatbázis-teljesítményének szolgáltatásszint-figyelése.](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
+
+A metrikákhoz riasztásokat is lehet konfigurálni. Kattintson a **Riasztás hozzáadása** gombra a **Metrika** ablakban. A riasztás konfigurálásához kövesse a Varázslót. Lehetőség van riasztást kérni, ha a metrikák túllépnek egy bizonyos küszöböt, vagy egy bizonyos küszöb alá esnek.
+
+Például ha az adatbázisban munkaterhelés-növekedésére számít, beállíthatja, hogy riasztást kapjon elektronikus üzenet formájában abban az esetben, ha az adatbázisra vonatkozó bármelyik metrika eléri a 80 százalékot. Segítségével ez korai figyelmeztetésként szolgálhat döntse el, ha lehetséges, hogy váltson át a következő legnagyobb számítási méret.
+
+A teljesítmény-mérőszámok is segítségével meghatározhatja, hogy ha Ön tudni számítási kisebb méretre. Tegyük fel, hogy Standard S2 adatbázist használ, és a metrikák azt mutatják, hogy az adatbázis átlagos kihasználtsága egy adott időpontban nem több, mint 10 százalék. Ebben az esetben valószínű, hogy az adatbázis Standard S1 teljesítményszinten is megfelelően fog működni. Vegye figyelembe az esetlegesen hirtelen, vagy ingadozó munkaterheléseket a kisebb számítási méretre elvégzése előtt.
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Üzleti folytonosság és vészhelyreállítás helyreállítási (BCDR)
 
@@ -135,7 +155,7 @@ Port 1433. Az SQL Database ezen a porton keresztül kommunikál. Csatlakozhat a 
 
 Az SQL Database bekapcsolhatja a naplózást az adatbázissal kapcsolatos események nyomon követéséhez. [Az SQL Database naplózási szolgáltatásával](sql-database-auditing.md) rögzíti az adatbázisok eseményeit, és az Azure Storage-fiók egy naplózási naplófájlba írja őket. Naplózás funkció különösen akkor hasznos, ha azt tervezi, hogy betekintést nyerhet a potenciális biztonsági és a szabályzat megsértése miatt, szabályozásoknak való megfelelőség stb. Lehetővé teszi, hogy meghatározása és konfigurálása az egyes kategóriák eseményeket, amelyek úgy gondolja, hogy kell a naplózást és az alapján, hogy előre konfigurált jelentéseket és a egy irányítópultot, hogy az adatbázisban előforduló eseményeket áttekintést kaphat. Ezek a kiszolgálószintű vagy adatbázisszintű naplózási házirendek is alkalmazhat. A server/database Auditing szolgáltatása bekapcsolása útmutató, lásd: [Engedélyezze az SQL Database naplózási](sql-database-security-tutorial.md#enable-security-features).
 
-#### <a name="threat-detection"></a>Veszélyforrások detektálása
+#### <a name="threat-detection"></a>Fenyegetések észlelése
 
 A [fenyegetésészlelés](sql-database-threat-detection.md), lehetővé teszi számára, hogy nagyon egyszerűen naplózás által észlelt biztonsági vagy házirend megsértésének kap. Nem kell lenniük egy biztonsági szakértői, a rendszer potenciális fenyegetések vagy szabálysértések megoldása érdekében. A fenyegetésészlelés is rendelkezik néhány beépített képességek, mint az SQL-injektálás felderítése. SQL-injektálás alter vagy veszélyeztetheti az adatokat és a egy adatbázis-alkalmazás intézményt általában elég általános módja. A fenyegetésészlelés algoritmusokban, ami észleli a potenciális biztonsági réseket és SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról (például hozzáférés szokatlan helyről vagy résztvevő részéről) több példányban fut. Biztonsági tisztviselők, vagy más kijelölt rendszergazdák e-mailben értesítést kapni, fenyegetés észlelésekor az adatbázison. Minden értesítést a gyanús tevékenységeket és ajánlások részleteit tartalmazza a vonatkozó további vizsgálata és a fenyegetés. Ismerje meg, hogyan kapcsolja be a fenyegetésészlelés, tekintse meg: [Fenyegetésészlelés engedélyezése](sql-database-security-tutorial.md#enable-security-features).
 

@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: dc208f3231882a0726733c897e70557c657cddf3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6e627de5b22a67051961e70bab56b2d931129281
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024520"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244803"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Hogyan használható a keresési eredmények az Azure Search szolgáltatásban
 Ez a cikk útmutatást nyújt a-keresési eredmények, például a teljes száma, a dokumentum lekéréséhez, a rendezési sorrend és navigációs oldal szokásos megoldások szabványos elemeit megvalósításához. Keresztül megadott oldal kapcsolatos beállításokat, adatokat vagy a keresési eredmények információkat közreműködik a [dokumentum keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) az Azure Search szolgáltatás küldött kérelmeket. 
 
-A REST API-kérések közé tartozik egy GET parancs, elérési út, és tájékoztatja a szolgáltatást milyen kérelem lekérdezési paraméterek és hogyan határozhatja meg a választ. A .NET SDK-ban, az egyenértékű API van [DocumentSearchResult osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult?view=azure-dotnet).
+A REST API-kérések közé tartozik egy GET parancs, elérési út, és tájékoztatja a szolgáltatást milyen kérelem lekérdezési paraméterek és hogyan határozhatja meg a választ. A .NET SDK-ban, az egyenértékű API van [DocumentSearchResult osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
 
 Számos mintakódot közé tartozik az előtérbeli webes felületet, amely itt található: [New York City feladatok bemutatóalkalmazást](https://azjobsdemo.azurewebsites.net/) és [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 

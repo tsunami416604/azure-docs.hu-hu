@@ -4,14 +4,14 @@ description: További információk az SQL-szintaxis, adatbázis-tervezésben é
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 05/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: bbca0239053b8f3164055a07b376abc597b0348f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 943ed63aed0f64ae6cbd62c52731c6ec73ddd0bd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954129"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388485"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL lekérdezési példák
 
@@ -756,7 +756,7 @@ Ez a lekérdezés lekéri a család `id` növekvő sorrendben az városa nevét�
 
 ## <a id="OffsetLimitClause"></a>ELTOLÁS korlát záradék
 
-ELTOLÁS határértéke egy nem kötelező záradék, hagyja ki, majd vennie néhány a lekérdezésből származó értékek száma. Az ELTOLÁS száma és a korlát a korlát ELTOLÁS záradékban szükségesek.
+ELTOLÁS határértéke egy nem kötelező záradék, hagyja ki, majd vennie néhány a lekérdezésből származó értékek száma. Az ELTOLÁS száma és a korlát a korlát ELTOLÁS záradékban szükségesek. Jelenleg ez a záradék támogatott lekérdezések csak egyetlen partíción belül, partícióra kiterjedő lekérdezések még nem támogatják ezt. 
 
 ELTOLÁS KORLÁTOT egy ORDER BY záradékkal együtt kell használni, amikor az eredményhalmaz kihagyása végrehajtásával előállítása, és igénybe vehet a rendezett értékekhez. Nincs ORDER BY záradék használata esetén azt eredményezi értékek determinisztikus sorrendjét.
 
@@ -2039,7 +2039,7 @@ A LINQ szolgáltató az SQL .NET SDK-val tartalmazza az alábbi műveleteket tá
 
 Az alábbi példák bemutatják, hogyan a standard szintű LINQ lekérdezés operátorok némelyike lefordítja a Cosmos DB-lekérdezésekre.
 
-#### <a name="select-operator"></a>Művelet kiválasztása
+#### <a name="select-operator"></a>Válasszon operátort
 
 A szintaxis `input.Select(x => f(x))`, ahol `f` egy skaláris kifejezés.
 

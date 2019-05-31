@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: da594ca5793bbf61f393fb1380309403fd808cef
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 8c32043d9bf3ca68563ae01d415bdc0e1f6993f7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942217"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258133"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>A Cloud Partner portálra a fiókok használatának előfeltételei 
 
@@ -23,12 +23,13 @@ Mielőtt használhatná a [Cloud Partner Portalon](https://cloudpartner.azure.co
 
 A jogosultságok és a feladatkörökkel javasolt gondosan áttekinteni a [Microsoft szolgáltatási szerződését](https://www.microsoft.com/servicesagreement) és a [Microsoft Terms](https://www.microsoft.com/legal/intellectualproperty/copyright) -fiók létrehozása előtt.  
 
-Gondosan válassza ki a fiók neve.  A szervezet azt jelöli, így nem kell tartalmaznia a szerzői jogvédelem alatt álló vagy vitatott szavakat.  Például a Microsoft tiltja a szerzői jogvédelem alatt álló kifejezések használatát, például az "Azure" és "Microsoft", a fiók nevében.  További információkért lásd: [útmutató az Azure Marketplace-en](../../guidelines.md)
+Gondosan válassza ki a fiók neve.  A szervezet azt jelöli, így nem kell tartalmaznia a szerzői jogvédelem alatt álló vagy vitatott szavakat.  Például a Microsoft tiltja a szerzői jogvédelem alatt álló kifejezések használatát, például az "Azure" és "Microsoft", a fiók nevében.  További információkért lásd: [útmutató az Azure Marketplace-en](https://docs.microsoft.com/azure/marketplace/guidelines)
 
 
 ## <a name="registration-steps"></a>Regisztráció lépései
 
-A következő táblázat felsorolja a teljes mértékben a Microsoft cloud közzétevőként regisztrálásához szükséges lépéseket.  Teljes útmutatás: [válnak a Felhőbeli piactér kiadói](../../become-publisher.md). 
+A következő táblázat felsorolja a teljes mértékben a Microsoft cloud közzétevőként regisztrálásához szükséges lépéseket.  Teljes útmutatás: [válnak a Felhőbeli piactér kiadói](https://docs.microsoft.com/azure/marketplace/become-publisher
+). 
 
 
 |                   Lépés                   |  Eredményül kapott regisztrációs vagy erőforrás                     |

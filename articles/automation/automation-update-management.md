@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/29/2019
+ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b92083b78971ab00f87e073ba7f4944a6f828daf
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 885c5266e80114b54007d05d2220fbf5ea5ab84e
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991641"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397642"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -229,7 +229,7 @@ Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések közp
 | Tulajdonság | Leírás |
 | --- | --- |
 | Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
-|Operációs rendszer:| Linux vagy Windows|
+|Operációs rendszer| Linux vagy Windows|
 | Csoport frissítése |Azure-beli gépek előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezés definiálása. </br></br>A nem Azure-gépek esetében válassza ki a meglévő mentett keresést jelöljön ki egy csoportot a nem Azure-beli gépek tartalmazza a központi telepítésben lévő. </br></br>További tudnivalókért lásd: [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)|
 | Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> Számítógépcsoportok létrehozását az Azure Monitor naplóira különböző módszereivel kapcsolatos további információkért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md) |
 |Frissítési besorolások|Válassza ki az összes szükséges|
@@ -262,7 +262,7 @@ Válassza ki **hiányzó frissítések** , amely a gépekről hiányoznak friss�
 
 ## <a name="view-update-deployments"></a>Frissítéstelepítések megtekintése
 
-Válassza ki a **Frissítéstelepítések** fülre kattintva megtekintheti a frissítéstelepítések listáját. Válassza ki a központi telepítések valamelyik megnyitásához a táblázatban a **központi telepítés futtatása frissítés** adott frissítéstelepítés panelje.
+Válassza ki a **Frissítéstelepítések** fülre kattintva megtekintheti a frissítéstelepítések listáját. Válassza ki a központi telepítések valamelyik megnyitásához a táblázatban a **központi telepítés futtatása frissítés** adott frissítéstelepítés panelje. 30 nap legfeljebb feladatnaplóit tárolódnak.
 
 ![Frissítéstelepítési eredmények áttekintése](./media/automation-update-management/update-deployment-run.png)
 
@@ -281,7 +281,7 @@ Az alábbi táblázatok sorolják fel a frissítési besorolások az Update Mana
 |Kumulatív frissítések     | Az egyszerű telepítés együtt csomagolt gyorsjavítások összesített csoportja.        |
 |Funkciócsomagok     | Termékkiadáson kívül terjesztett új termékfunkciók.        |
 |Szervizcsomagok     | Gyorsjavítások alkalmazáshoz összesített csoportja.        |
-|A definíciók frissítései     | Vírus vagy egyéb definíciós fájlok frissítése.        |
+|Definíciófrissítések     | Vírus vagy egyéb definíciós fájlok frissítése.        |
 |Eszközök     | Segédprogramok vagy funkciók teljes egy vagy több feladatot.        |
 |Frissítések     | Egy alkalmazás vagy a jelenleg telepített fájl frissítése.        |
 
@@ -583,10 +583,10 @@ Ezek a csoportok lekérdezéshez, amikor megkezdődik egy központi telepítést
 
 * Előfizetés
 * Erőforráscsoportok
-* Helyszínek
+* Helyek
 * Tags
 
-![Csoportok kiválasztása](./media/automation-update-management/select-groups.png)
+![Válassza ki a csoportokat](./media/automation-update-management/select-groups.png)
 
 Egy dinamikus csoport az eredmények előnézetének megtekintéséhez kattintson a **előzetes** gombra. Ebben az előzetes verzióban jeleníti meg a csoport tagságát ekkor az ebben a példában a címkével ellátott gépek keresésével **szerepkör** egyenlő **BackendServer**. Ha több gépet hozzáadja ezt a címkét, azok hozzáadódik a jövőbeli telepítések a csoporton.
 
@@ -596,7 +596,7 @@ Egy dinamikus csoport az eredmények előnézetének megtekintéséhez kattintso
 
 Nem Azure-gépek, a mentett keresések is lehet hivatkozni, a számítógép-csoportok használata a dinamikus csoport létrehozásához. Mentett keresés létrehozása kapcsolatban lásd: [hozzon létre olyan számítógépcsoportot](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). A csoport létrehozása után válassza ki, mentett keresések listájából. Kattintson a **előzetes** az előzetes verzióra az adott időpontban mentett keresés számítógépeire.
 
-![Csoportok kiválasztása](./media/automation-update-management/select-groups-2.png)
+![Válassza ki a csoportokat](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrálás a System Center Configuration Managerrel
 

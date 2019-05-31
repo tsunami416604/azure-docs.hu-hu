@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f9a1e82cb60bf0ec32165294e7f4af3e93d042b0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 44f16b3334b991e071fa85ca4cffbc0837f0a6ec
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158545"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244432"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Az Azure Search-képességek alkalmazási lehetőségét a Cognitive Services-erőforrás csatolása 
 
 AI-algoritmusokat meghajtó a [indexelés kognitív folyamatok](cognitive-search-concept-intro.md) dokumentum-felderítési bővítést az Azure Search szolgáltatásban használt. Ezek az algoritmusok Azure Cognitive Services-erőforrások, például a alapuló [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) képelemzés és optikai karakterfelismerés (OCR) és [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) az entitások felismerése, kulcskifejezések kinyerése és más végrehajtott információbeolvasás. Adatbővítés célra az Azure Search által használt, az algoritmusokat burkolja belül egy *szakértelem*eszközcsoportba helyezik, egy *indexmezők*, és által hivatkozott egy *indexelő* során az indexelő.
 
-Dokumentumok korlátozott számú ingyenes bővítheti, vagy csatolhat a Cognitive Services-számlázható erőforrás, nagyobb és gyakoribb számítási feladatokhoz. Ebből a cikkből megtudhatja, hogyan során dokumentumok feldúsítani a cognitive indexmezők számlázható Cognitive Services erőforrás csatolása [Azure Search-indexelő](search-what-is-an-index.md).
+Dokumentumok korlátozott számú ingyenes gazdagabbá teheti. Vagy, a Cognitive Services számlázható erőforrás csatolhat egy *indexmezők* gyakoribb és a nagyobb számítási feladatokhoz. Ebből a cikkből megtudhatja, hogyan dokumentumok feldúsítani során az Azure Search egy számlázható Cognitive Services-erőforrás csatolása [indexelő](search-what-is-an-index.md).
 
 > [!NOTE]
 > Üzenetnek a Cognitive Services API-k és a lemezkép kinyerése a dokumentumfeltörést fázis részeként függvényhívásokat tartalmazzák, az Azure Search szolgáltatásban. Nem jár költségekkel szövegkinyerés dokumentumok közül, vagy nem meghívja a Cognitive Servicest képességeit.
@@ -30,7 +30,9 @@ Dokumentumok korlátozott számú ingyenes bővítheti, vagy csatolhat a Cogniti
 
 ## <a name="same-region-requirement"></a>Ugyanabban a régióban követelmény
 
-Kérjük, hogy az Azure Search és az Azure Cognitive Services ugyanazon a régión belül léteznek. Ellenkező esetben ezt az üzenetet fog kapni futási időben: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` Nincs lehetőség a régiók közötti áthelyezése a szolgáltatás. Ha megjelenik a hibaüzenet, hozzon létre egy új szolgáltatást ugyanabban a régióban, és tegye közzé újra az indexek ennek megfelelően.
+Kérjük, hogy az Azure Search és az Azure Cognitive Services ugyanazon a régión belül léteznek. Ellenkező esetben ezt az üzenetet fog kapni futási időben: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+
+Nincs lehetőség a régiók közötti áthelyezése a szolgáltatás. Ha ez a hiba, hozzunk létre egy új Cognitive Services-erőforrás Azure Search ugyanabban a régióban.
 
 ## <a name="use-free-resources"></a>Ingyenes erőforrások használata
 
@@ -42,7 +44,7 @@ Ingyenes (korlátozott végrehajtott információbeolvasás) erőforrások / nap
 
    ![Nyissa meg az adatok importálása varázsló](media/search-get-started-portal/import-data-cmd2.png "nyissa meg az adatok importálása varázsló")
 
-1. Válasszon egy adatforrást, és továbbra is **hozzáadása a kognitív keresés (nem kötelező)**. Ezzel a varázslóval részletes bemutatóért lásd: [importálása index és a portál eszközei használatával lekérdezés](search-get-started-portal.md).
+1. Válasszon egy adatforrást, és továbbra is **hozzáadása a kognitív keresés (nem kötelező)** . Ezzel a varázslóval részletes bemutatóért lásd: [importálása index és a portál eszközei használatával lekérdezés](search-get-started-portal.md).
 
 1. Bontsa ki a **csatolása a Cognitive Services** majd **(korlátozott végrehajtott információbeolvasás) ingyenes**:
 
@@ -56,7 +58,7 @@ Számítási feladatok, amely naponta több mint 20 végrehajtott információbe
 
 Csak a képességek, amelyek a Cognitive Services API-k hívása díjkötelesek. Nem díjköteles [egyéni képesség](cognitive-search-create-custom-skill-example.md), vagy képességek, például [szövegegyesítő](cognitive-search-skill-textmerger.md), [szöveg felosztó](cognitive-search-skill-textsplit.md), és [shaper](cognitive-search-skill-shaper.md), amely nem az API-alapú.
 
-1. Adatok importálása varázsló megnyitása, válasszon egy adatforrást, és továbbra is **hozzáadása a kognitív keresés (nem kötelező)**.
+1. Adatok importálása varázsló megnyitása, válasszon egy adatforrást, és továbbra is **hozzáadása a kognitív keresés (nem kötelező)** .
 
 1. Bontsa ki a **csatolása a Cognitive Services** majd **új Cognitive Services-erőforrás létrehozása**. Egy új lapon nyílik meg, hogy az erőforrás hozhat létre:
 

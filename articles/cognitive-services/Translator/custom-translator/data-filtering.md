@@ -2,19 +2,19 @@
 title: Adatok szűrése – egyéni a fordítót
 titleSuffix: Azure Cognitive Services
 description: Egy egyéni rendszer betanításához használandó dokumentumok elküldésekor a dokumentumok feldolgozása és -szűrési lépéseket képzési előkészítése sorozatát mennek keresztül.
-author: v-pawal
+author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-jansko
+ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: 0871cb7e4dcbe8cf71f35f174137396bde607c54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ba6d1ed5bc26f121f32fad548e7a17c1f4998851
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60513391"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389352"
 ---
 # <a name="data-filtering"></a>Adatszűrés
 
@@ -53,7 +53,7 @@ Szűrés átalakítások unescaped címkék escape-karakterrel megjelölt címk�
 * `&gt;` válik `&amp;gt;`
 * `&amp;` válik `&amp;amp;`
 
-## <a name="invalid-characters"></a>Érvénytelen karakterek
+## <a name="invalid-characters"></a>Érvénytelen karakter
 Egyéni a fordítót eltávolítja a mondatokat, amelyek U + FFFD Unicode-karaktert tartalmazhat. A következő karaktert: U + FFFD sikertelen kódolási konverzió jelzi.
 
 ## <a name="next-steps"></a>További lépések

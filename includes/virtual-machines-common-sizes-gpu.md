@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: c0d73b2e37046f75a1cea700d9099c5bbb5f6e0c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: c849aadcd0fdc8f8ba071e3db5572e9e4c590e92
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170418"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391396"
 ---
 GPU-optimalizált virtuális gépek méretek a következők specializált virtuális gépek egy vagy több NVIDIA gpu-k használatával érhető el. Ezeket a méreteket képi megjelenítés, nagy számítási igényű és magas grafikai igényű számítási feladatokhoz tervezték. Ez a cikk ismerteti a száma, és a GPU-k, vcpu-k, az adatlemezeket és a hálózati adapter típusa. Tároló átviteli sebesség és a hálózati sávszélesség is szerepelnek az ennél a csoportosításnál méreteire vonatkoztatva. 
 
@@ -37,7 +37,7 @@ NC sorozat virtuális gépei működteti a [NVIDIA Tesla K80](https://www.nvidia
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | ---- |
-| Standard_NC6 |6 |56 | 340 | 1. | 12 | 24 | 1. |
+| Standard_NC6 |6 |56 | 340 | 1 | 12 | 24 | 1 |
 | Standard_NC12 |12 |112 | 680 | 2 | 24 | 48 | 2 |
 | Standard_NC24 |24 |224 | 1440 | 4 | 48 | 64 | 4 |
 | Standard_NC24r* |24 |224 | 1440 | 4 | 48 | 64 | 4 |
@@ -60,7 +60,7 @@ NCv2 sorozatú virtuális gépek működteti [NVIDIA Tesla P100](https://www.nvi
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | ---  | --- |
-| Standard_NC6s_v2 |6 |112 | 736 | 1. | 16 | 12 | 4 |
+| Standard_NC6s_v2 |6 |112 | 736 | 1 | 16 | 12 | 4 |
 | Standard_NC12s_v2 |12 |224 | 1474 | 2 | 32 | 24 | 8 |
 | Standard_NC24s_v2 |24 |448 | 2948 | 4 | 64 | 32 | 8 |
 | Standard_NC24rs_v2* |24 |448 | 2948 | 4 | 64 | 32 | 8 |
@@ -83,7 +83,7 @@ Az NCv3 sorozatú virtuális gépek működteti [NVIDIA Tesla V100](https://www.
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC6s_v3 |6 |112 | 736 | 1. | 16 | 12 | 4 |
+| Standard_NC6s_v3 |6 |112 | 736 | 1 | 16 | 12 | 4 |
 | Standard_NC12s_v3 |12 |224 | 1474 | 2 | 32 | 24 | 8 |
 | Standard_NC24s_v3 |24 |448 | 2948 | 4 | 64 | 32 | 8 | 
 | Standard_NC24rs_v3* |24 |448 | 2948 | 4 | 64 | 32 | 8 |
@@ -108,9 +108,9 @@ NDv2 sorozatú virtuális gép egy újdonága a HPC, mesterséges Intelligencia 
 <br>
 
 
-| Méret              | vCPU | GPU              | Memória  | Hálózati adapterek (max) | Legfeljebb Lemezméret           | Legfeljebb az adatlemezeket (egyenként 1023 GB) | Maximális sávszélesség | 
+| Méret              | vCPU | GPU              | Memory (Memória)  | Hálózati adapterek (max) | Legfeljebb Lemezméret           | Legfeljebb az adatlemezeket (egyenként 1023 GB) | Maximális sávszélesség | 
 |-------------------|------|------------------|---------|------------|--------------------------|--------------------------------|-----------------------|
-| Standard_ND40s_v2 | 40   | 8 V100 (NVLink) | 672 GiB | 8          | Ideiglenes 1344 / 2948XIO | 32                             | 24,000 MB/s           |
+| Standard_ND40s_v2 | 40   | 8 V100 (NVLink) | 672 GiB | 8          | Ideiglenes 1344 / 2948XIO | 32                             | 24000 Mbps           |
 
 ## <a name="nd-series"></a>ND sorozat
 
@@ -126,7 +126,7 @@ Az ND sorozatú virtuális gépek, és a mesterséges Intelligencia, Deep Learni
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_ND6s |6 |112 | 736 | 1. | 24 | 12 | 4 |
+| Standard_ND6s |6 |112 | 736 | 1 | 24 | 12 | 4 |
 | Standard_ND12s |12 |224 | 1474 | 2 | 48 | 24 | 8 | 
 | Standard_ND24s |24 |448 | 2948 | 4 | 96 | 32 | 8 |
 | Standard_ND24rs* |24 |448 | 2948 | 4 | 96 | 32 | 8 |
@@ -147,7 +147,7 @@ NV-példányokat az egyes GPU rács licenccel rendelkezik. Ez a licenc rugalmass
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma | Virtuális munkaállomásait | A virtuális alkalmazások | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
-| Standard_NV6 |6 |56 |340 | 1. | 8 | 24 | 1. | 1. | 25 |
+| Standard_NV6 |6 |56 |340 | 1 | 8 | 24 | 1 | 1 | 25 |
 | Standard_NV12 |12 |112 |680 | 2 | 16 | 48 | 2 | 2 | 50 |
 | Standard_NV24 |24 |224 |1440 | 4 | 32 | 64 | 4 | 4 | 100 |
 
@@ -165,9 +165,9 @@ Minden egyes GPU NVv3 esetekben rács licencet tartalmaz. Ez a licenc rugalmass�
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma | Virtuális munkaállomásait | A virtuális alkalmazások | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV6s_v3 | 12 | 112 |320 | 1. | 8 | 12 | 4 | 1. | 25 |
-| Standard_NV12s_v3 | 24 | 224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
-| Standard_NV24s_v3 | 48 | 448 |1280 | 4 | 32 | 32 | 8 | 4 | 100 |
+| Standard_NV12s_v3 | 12 | 112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
+| Standard_NV24s_v3 | 24 | 224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
+| Standard_NV48s_v3 | 48 | 448 |1280 | 4 | 32 | 32 | 8 | 4 | 100 |
 
 1 GPU = fél M60 kártya.
 

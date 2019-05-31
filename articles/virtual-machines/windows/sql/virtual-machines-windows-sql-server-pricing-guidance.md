@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 19ba6896d9186cae32249fc8eb51319f9b37a6ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce07c6c19c19f134cc322309bb338b94ef11ea85
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477249"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393861"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Az SQL Server Azure virtuális gépek díjszabási útmutatóját
 
@@ -59,9 +59,9 @@ Ha egy nem egyszerűsített éles környezetbeli számítási feladatokra, haszn
 |-----|-----|
 | Web | Kis webhelyek |
 | Standard | Kis és közepes méretű számítási feladatok |
-| Enterprise | Nagy méretű vagy üzleti szempontból alapvető fontosságú számítási feladatokhoz|
+| Vállalati | Nagy méretű vagy üzleti szempontból alapvető fontosságú számítási feladatokhoz|
 
-SQL Server-licenc ezeknél a kiadásoknál fizetnie két lehetősége van: *azért kell fizetnie, felhasználásonként* vagy *hozott licences (BYOL)*.
+SQL Server-licenc ezeknél a kiadásoknál fizetnie két lehetősége van: *azért kell fizetnie, felhasználásonként* vagy *hozott licences (BYOL)* .
 
 ## <a name="pay-per-usage"></a>Fizessen a használat
 
@@ -99,7 +99,7 @@ SQL Server 2017 Azure virtuális gép létrehozása egy használatalapú / haszn
 **Saját SQL Server licence keretében**, más néven **BYOL**, az azt jelenti, hogy egy Azure virtuális Gépen a frissítési garanciával rendelkező SQL Server egy meglévő mennyiségi licenc használatával. SQL Server virtuális gép használatával BYOL csak díjak a virtuális gép futtatásával járó költségeket, a nem SQL Server-licenc, tekintve, hogy már vásárolt licencek és a frissítési garanciával rendelkező mennyiségi licencelési program keretében.
 
 > [!IMPORTANT]
-> BYOL-lemezképeknek a frissítési garanciával rendelkező nagyvállalati szerződés szükséges. Ezek nem érhető el az Azure Cloud Solution Partner (CSP) részeként most.
+> BYOL-lemezképeknek a frissítési garanciával rendelkező nagyvállalati szerződés szükséges. Ezek nem érhető el az Azure Cloud Solution Partner (CSP) részeként most. CSP-ügyfeleknek a használatalapú fizetéses rendszerkép üzembe helyezése, és ezután engedélyezésével a saját licenc használata is a [Azure Hybrid Benefit](virtual-machines-windows-sql-ahb.md).
 
 > [!NOTE]
 > A BYOL-lemezképeknek jelenleg csak Windows virtuális gépek számára elérhető. A csak Linux rendszerű virtuális gép azonban az SQL Server manuálisan telepítheti. Tekintse meg a az irányelveket a [Linux rendszerű SQL virtuális gép – gyakori kérdések](../../linux/sql/sql-server-linux-faq.md).
@@ -141,7 +141,7 @@ Az SQL Server licencelési díját közvetlenül kapcsolódik a vcpu-k számát.
 
 Nincsenek új gépméretek, amelyek bizonyos típusú SQL Server számítási feladatok jól működnek. Ezek a gépek méretek karbantartása magas szintű memória, tárolási és i/o-sávszélességet, de vannak egy alacsonyabb virtuális magok száma. Vegyük példaként az alábbi példában:
 
-| Virtuális gép mérete | Virtuális magok | Memory (Memória) | A lemezek maximális száma | Max. i/o-teljesítménye | SQL-licencelési költségei | Összköltség (számítási és licencelés) |
+| Virtuális gép mérete | vCPUs | Memory (Memória) | A lemezek maximális száma | Max. i/o-teljesítménye | SQL-licencelési költségei | Összköltség (számítási és licencelés) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51,200 iops-érték vagy 768 MB/s | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51,200 iops-érték vagy 768 MB/s | 75 %-kal alacsonyabb | 57 %-kal alacsonyabb |

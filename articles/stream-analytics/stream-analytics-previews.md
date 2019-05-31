@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/07/2019
-ms.openlocfilehash: f3838bf6b9f7daa24c0cdb5b0c5a08d41d164530
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.date: 05/29/2019
+ms.openlocfilehash: e63937cedf44b1642e091a4744d898a26422be10
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561137"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393691"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Az Azure Stream Analytics előzetes verziójú funkciók
 
@@ -30,10 +30,6 @@ A Visual Studio Code az Azure Stream Analytics-feladatok hozhatóak létre. Teki
 ### <a name="anomaly-detection"></a>Anomáliadetektálás
 
 Az Azure Stream Analytics bevezeti az új machine learning-modellek támogatása *kiugrás* és *süllyedések* észlelési mellett kétirányú, lassú pozitív, és a lassú negatív trendek észlelését. További információért látogasson el [anomáliadetektálás az Azure Stream Analyticsben](stream-analytics-machine-learning-anomaly-detection.md).
-
-### <a name="sql-database-reference-data"></a>Az SQL Database referenciaadatok
-
-Az Azure Stream Analytics támogatja az Azure SQL Database bemenete referenciaadatokat forrásaként. Használhatja az SQL Database referenciaadatok a Stream Analytics-feladatot az Azure Portalon, és a Visual Studióban a Stream Analytics tools for. További információkért látogasson el, [referenciaadatok használata az Azure Stream Analytics-feladat egy SQL Database-ből](sql-reference-data.md).
 
 ### <a name="integration-with-azure-machine-learning"></a>Az Azure Machine Learning-integráció
 

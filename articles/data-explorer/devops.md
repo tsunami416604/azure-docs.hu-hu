@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: a70a887ccb19d9c1cbdb5f8ebf6aa8d4b25a0dfd
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0628d5c07d7258cc4d68727c364e65bd81c78e8e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65161070"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388998"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>Az Azure Data Explorer az Azure DevOps-feladat
 
@@ -49,11 +49,11 @@ Hozza létre a következő minta mappákat (*funkciók*, *házirendek*, *táblá
 1. Jelentkezzen be a [Azure DevOps-szervezet](https://dev.azure.com/).
 1. Válassza ki **folyamatok** > **kiadásokban** bal oldali menüben, majd válassza **új adatcsatorna**.
 
-    ![Új adatcsatorna](media/devops/new-pipeline.png)
+    ![Új folyamat](media/devops/new-pipeline.png)
 
 1. A **új kibocsátásában** ablak nyílik meg. Az a **folyamatok** lap a **válasszon ki egy sablont** ablaktáblán válassza ki az **üres feladat**.
 
-     ![Sablonválasztás](media/devops/select-template.png)
+     ![Válasszon ki egy sablont](media/devops/select-template.png)
 
 1. Válassza ki **fázis** gombra. A **fázis** ablaktáblán adja hozzá a **fázis neve**. Válassza ki **mentése** a folyamat mentéséhez.
 
@@ -67,7 +67,7 @@ Hozza létre a következő minta mappákat (*funkciók*, *házirendek*, *táblá
 
     ![Változó létrehozása](media/devops/create-variable.png)
 
-    A Endpoint_URL áttekintés oldalán található a **Azure Data Explorer fürtje** az Azure Portalon az Azure Data Explorer fürt URI-ja tartalmaz. Az URI-t a következő formátumban hozza létre `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  Például: https://kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB
+    A Endpoint_URL áttekintés oldalán található a **Azure Data Explorer fürtje** az Azure Portalon az Azure Data Explorer fürt URI-ja tartalmaz. Az URI-t a következő formátumban hozza létre `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  Ha például https:\//kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB
 
     ![Az Azure Data Explorer fürt URI-ja](media/devops/adx-cluster-uri.png)
 
@@ -85,7 +85,7 @@ Hozza létre a következő minta mappákat (*funkciók*, *házirendek*, *táblá
 
 1. Kattintson a **Kusto parancs** bal és a frissítés a feladat a következő információkat:
     * **Megjelenített név**: A feladat neve
-    * **Fájl elérési útja**: Az a **táblák** feladat, adja meg */Tables/*.csl, mert a tábla-létrehozási fájlok a *tábla* mappát.
+    * **Fájl elérési útja**: Az a **táblák** feladat, adja meg */Tables/* .csl, mert a tábla-létrehozási fájlok a *tábla* mappát.
     * **Végponti URL-cím**: Adja meg a `EndPoint URL`az előző lépésben létrehozott változó.
     * Válassza ki **használata szolgáltatásvégpont** válassza **+ új**.
 

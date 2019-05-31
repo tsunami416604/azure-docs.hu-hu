@@ -3,25 +3,25 @@ title: Translator Text API nyelvek metódus
 titlesuffix: Azure Cognitive Services
 description: A Translator Text API nyelvek módszert használja.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 6e0342d876db424454526637322d67d55c0432a8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 415093610bfbc314e569eeeb658508bdfb021d9c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797297"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389719"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
 A készlet más műveletek, a Translator Text API által jelenleg támogatott nyelvek beolvasása. 
 
-## <a name="request-url"></a>Lekérdezés URL-címe
+## <a name="request-url"></a>Kérés URL-címe
 
 Küldjön egy `GET` kérelmet:
 ```HTTP
@@ -40,7 +40,7 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
     <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API-verzió. Az érték lehet `3.0`.</td>
   </tr>
   <tr>
-    <td>hatókör</td>
+    <td>scope</td>
     <td>*Nem kötelező paraméter*.<br/>Meghatározása a csoporthoz való visszatéréshez nyelveken neveket vesszővel tagolt listája. Engedélyezett a csoport neve: `translation`, `transliteration` és `dictionary`. Ha nincs hatóköre van megadva, akkor az összes csoport ad vissza, amely 03T00 megadásának `scope=translation,transliteration,dictionary`. Annak eldöntéséhez, hogy a támogatott nyelvek körét az adott forgatókönyvnek megfelelő, tekintse meg a leírását az [Válaszobjektum](#response-body).</td>
   </tr>
 </table> 
@@ -232,7 +232,7 @@ A támogatott nyelvek listája nem változik gyakran. Spórolhat a sávszéless�
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>ETag</td>
+    <td>az eTag</td>
     <td>A támogatott nyelvek a kért csoportok entitáscímkéje aktuális értéke. Ahhoz, hogy hatékonyabb szeretnének hozzáférni, az ügyfél küldhet a `ETag` értékét egy `If-None-Match` fejlécmezőt.
     </td>
   </tr>
@@ -251,7 +251,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   <th>Leírás</th>
   <tr>
     <td>200</td>
-    <td>Sikeres művelet.</td>
+    <td>Siker.</td>
   </tr>
   <tr>
     <td>304</td>

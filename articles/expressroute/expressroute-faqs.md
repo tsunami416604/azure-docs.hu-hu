@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 75c0deaa8bca94349091e3317e4ca70129bb4426
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 1a6f3fbc0160a78fb76f810257d3285725445eba
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991608"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257962"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -71,7 +71,7 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 * Dynamics 365 for Finance and Operations (korábbi nevén Dynamics AX Online-hoz)
 * Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>
   **A következő szolgáltatások nem támogatottak**:
-    * CDN
+    * Tartalomkézbesítési hálózat (CDN)
     * Az Azure bejárati ajtajának
     * Multi-Factor Authentication
     * Traffic Manager
@@ -84,7 +84,7 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 * Azure Active Directory
 * [Az Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (globális Azure-szolgáltatások közösségi)
 * Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>**A következő szolgáltatások nem támogatottak**:
-    * CDN
+    * Tartalomkézbesítési hálózat (CDN)
     * Az Azure bejárati ajtajának
     * Multi-Factor Authentication
     * Traffic Manager
@@ -288,7 +288,7 @@ Igen. Az ExpressRoute prémium szintű díjak vonatkoznak, és az ExpressRoute k
 
 ## <a name="expressroute-local"></a>ExpressRoute Local
 ### <a name="what-is-expressroute-local"></a>Mit jelent a helyi ExpressRoute?
-Az ExpressRoute helyi egy Termékváltozat az ExpressRoute-kapcsolatcsoportot. A rendszer helyi egyik legfőbb jellemzője, hogy egy helyi circit egy ExpressRoute-társviszony-létesítési helyszínen biztosítja a hozzáférést csak egy vagy két Azure-régiókban lévő vagy a azonos metro. Ezzel szemben a standard szintű kapcsolatcsoportot hozzáférést biztosít minden Azure-régióban egy geopolitikai területen és a egy prémium szintű Azure-régiók mindegyikében kapcsolatcsoport globálisan. 
+Az ExpressRoute helyi egy Termékváltozat az ExpressRoute-kapcsolatcsoportot. A rendszer helyi egyik legfőbb jellemzője, hogy egy ExpressRoute-társviszony-létesítési helyszínen biztosítja a helyi expressroute-kapcsolatcsoporthoz a hozzáférést csak egy vagy két Azure-régiókban lévő vagy a azonos metro. Ezzel szemben a standard szintű kapcsolatcsoportot hozzáférést biztosít minden Azure-régióban egy geopolitikai területen és a egy prémium szintű Azure-régiók mindegyikében kapcsolatcsoport globálisan. 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Milyen előnyökkel jár az ExpressRoute helyi?
 Míg a Standard vagy prémium szintű ExpressRoute-kapcsolatcsoport kimenő adatforgalom díjköteles van szüksége, nem kell fizetnie kimenő adatátvitel külön-külön helyi ExpressRoute-kapcsolatcsoporthoz. Más szóval az ára az ExpressRoute helyi adatok átviteli díján tartalmazza. Az ExpressRoute helyi a leggazdaságosabb megoldás, ha nagy mennyiségű adat átvitelét és a kívánt Azure-régiók közel társviszony-létesítési ExpressRoute-egységekhez egy privát kapcsolaton keresztül az adatok is tenné. 

@@ -3,19 +3,19 @@ title: Translator Text API 3.0-referencia
 titlesuffix: Azure Cognitive Services
 description: A Translator Text API 3.0 dokumentációja.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: b59e4d574264f82a5875edad65e99bfb57150197
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796866"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387516"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API 3.0-s verzió
 
@@ -41,7 +41,7 @@ A Microsoft Translator Text API kérelmek vannak a legtöbb esetben az adatközp
 
 Kényszeríti a kérelem egy adott adatközpont kell kezelnie, módosítsa a kívánt területi végpont a globális végpont az API-kérelem:
 
-|Leírás|Régió|Alap URL-cím|
+|Leírás|Régió|Alap URL-címe|
 |:--|:--|:--|
 |Azure|Globális|  api.cognitive.microsofttranslator.com|
 |Azure|Észak-Amerika|   api-nam.cognitive.microsofttranslator.com|
@@ -61,7 +61,7 @@ Három fejlécek előfizetését hitelesítés használatával. A táblázat az 
 |Engedélyezés|*Cognitive Services-előfizetés használata egy hitelesítési tokent átadásakor.*<br/>A tulajdonosi jogkivonat értéke: `Bearer <token>`.|
 |Ocp-Apim-Subscription-Region|*Használat a Cognitive Services több szolgáltatásos előfizetéssel egy több szolgáltatást a titkos kulcs átadásakor.*<br/>A régió, több szolgáltatásos előfizetés értéke. Ezt az értéket nem kötelező, ha nem használ egy több szolgáltatásos előfizetést.|
 
-###  <a name="secret-key"></a>Titkos kulcs
+###  <a name="secret-key"></a>A titkos kulcs
 Az első lehetőség az, hogy hitelesítést végezni a `Ocp-Apim-Subscription-Key` fejléc. Egyszerűen adja meg a `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` fejlécet a kérelemhez.
 
 ### <a name="authorization-token"></a>Engedélyezési jogkivonat
@@ -144,7 +144,7 @@ A hibakód egy 6 jegyű számot csoportba foglalása 3 számjegyből HTTP-állap
 | 400036| A célként megadott nyelv ("" mező) nem található vagy érvénytelen.|
 | 400042| A beállítások megadott ("Beállítások" mező) egyike nem érvényes.|
 | 400043| Az ügyfél-nyomkövetési Azonosítót (ClientTraceId mező vagy X-ClientTranceId fejléc) nem található vagy érvénytelen.|
-| 400050| A bemeneti szöveg neve túl hosszú.|
+| 400050| A bemeneti szöveg neve túl hosszú. Nézet [kérelmekre vonatkozó korlátok](../request-limits.md).|
 | 400064| A "fordítási" paramétere hiányzik vagy érvénytelen.|
 | 400070| A célként megadott parancsprogramok (ToScript paraméter) száma nem egyezik meg a cél nyelvek (, paraméterben) száma.|
 | 400071| Az érték érvénytelen TextType.|
@@ -152,14 +152,15 @@ A hibakód egy 6 jegyű számot csoportba foglalása 3 számjegyből HTTP-állap
 | 400073| A parancsfájl paraméter nem érvényes.|
 | 400074| A kérelem törzse nem érvényes JSON.|
 | 400075| A nyelvi pár és kategória kombináció nem lesz érvényes.|
-| 400077| Kérelem maximális mérete túl lett lépve.|
+| 400077| Kérelem maximális mérete túl lett lépve. Nézet [kérelmekre vonatkozó korlátok](../request-limits.md).|
 | 400079| Az egyéni rendszer közötti fordítás és nyelv közül a kért nem létezik.|
 | 401000| A kérelem nem engedélyezett, mert hitelesítő adatok hiányoznak vagy érvénytelen.|
 | 401015| "A megadott hitelesítő adatok vannak a beszédfelismerő API-hoz. A kérelem hitelesítő adatok szükségesek a szöveges API-hoz. Használja a Translator Text API-előfizetés."|
 | 403000| A művelet nem engedélyezett.|
 | 403001| A művelet nem engedélyezett, mert az előfizetés túllépte az ingyenes kvótát.|
 | 405000| Kérelmi metódus nem támogatott a kért erőforrás.|
-| 408001| A kért egyéni fordítási rendszer még nem érhető el. Próbálkozzon újra néhány perc múlva.|
+| 408001| A kért fordítási rendszer előkészítésére. Próbálkozzon újra néhány perc múlva.|
+| 408002| A kérelem túllépte az időkorlátot a beérkező streamben vár. Az ügyfél nem küldött kérés a kiszolgáló előkészített várakozási idő alatt. Az ügyfél újabb bármikor előfordulhat, hogy ismételje meg a kérelem módosítások nélkül.|
 | 415000| A Content-Type fejléc nem található vagy érvénytelen.|
 | 429000, 429001, 429002| A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmekre vonatkozó korlátok.|
 | 500000| Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse be a dátum/idő hiba, kérjen azonosító X-RequestId: válaszfejléc, és a kérelem fejlécében X-ClientTraceId ügyfél-azonosítója.|

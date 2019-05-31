@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 4/30/2019
+ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 78dd4b31991a15d3d946c47c5394f64bb3afea95
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e2e29bf0068fae5d6f4987ec5c3f2a52b883e4bd
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "64947270"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418115"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -29,9 +29,9 @@ Ezt a fajta útválasztást alkalmazásrétegbeli (OSI 7. réteg) terheléselosz
 
 Az Azure Application Gateway a következő funkciókkal rendelkezik:
 
-## <a name="secure-sockets-layer-ssl-termination"></a>Secure Sockets Layer- (SSL-) lezárás
+## <a name="secure-sockets-layer-ssltls-termination"></a>Secure Sockets Layer (SSL/TLS) megszüntetése
 
-Az Application Gateway támogatja az SSL-lezárást az átjárónál, ami után a forgalom rendszerint titkosítatlanul áramlik a háttérkiszolgálókhoz. Ez a funkció lehetővé teszi, hogy a webkiszolgálók megszabaduljanak a magas titkosítási és visszafejtési üzemeltetési költségektől. Azonban a kiszolgálókhoz néha titkosítatlan kommunikáció nem elfogadható megoldás. Ez lehet miatt a biztonsági követelmények, megfelelőségi előírások, vagy az alkalmazás csak biztonságos kapcsolatot fogad el. Ezekhez az alkalmazásokhoz az application gateway támogatja a teljes körű SSL-titkosítást.
+Az Application gateway támogatja az SSL/TLS-lezárást az átjárónál, mely a forgalom rendszerint titkosítatlanul áramlik a háttérkiszolgálókhoz után. Ez a funkció lehetővé teszi, hogy a webkiszolgálók megszabaduljanak a magas titkosítási és visszafejtési üzemeltetési költségektől. Azonban a kiszolgálókhoz néha titkosítatlan kommunikáció nem elfogadható megoldás. Ez lehet miatt a biztonsági követelmények, megfelelőségi előírások, vagy az alkalmazás csak biztonságos kapcsolatot fogad el. Ezekhez az alkalmazásokhoz az application gateway támogatja a teljes körű SSL/TLS-titkosítást.
 
 ## <a name="autoscaling"></a>Automatikus skálázás
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 358ebfa601ff8e4d2fb6ae91e51516cb0a933af7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cbeb0a8944b35af2a68080a2b2f1bb4436c6e58d
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60716521"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306696"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
 
@@ -61,7 +61,7 @@ A Service Fabric-fürthöz csatlakozik, szüksége van a fürt felügyeleti vég
 ### <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
 A Service Fabric-fürthöz, tanúsítványok vagy Azure Active Directory (AAD) használatával való ügyfél-hozzáférési szabályozhatja.
 
-Ha megpróbálja egy biztonságos fürthöz való csatlakozáshoz, majd a fürt konfigurációjától függően kell adnia ügyféltanúsítvány jelen, vagy jelentkezzen be aad-ben való.
+Ha megpróbálja egy biztonságos fürthöz való csatlakozáshoz, majd függően a fürt konfigurációját kell adnia egy ügyfél állapottanúsítványt vagy jelentkezzen be AAD.
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>A Service Fabric Explorer elrendezésének ismertetése
 A fa használatával a bal oldali navigációs sávja a Service Fabric Explorer. A fa gyökérmappájában a fürt irányítópultja áttekintést a fürtről, beleértve az alkalmazás és a csomópontok állapotának összefoglalását.

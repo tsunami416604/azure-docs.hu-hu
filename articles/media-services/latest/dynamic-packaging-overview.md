@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2019
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: 78e3897ec653326bcd88a538a6ea7d33938659b9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 25c0fe7a179db484f18c1aca16471e39a739052c
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65761952"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299187"
 ---
 # <a name="dynamic-packaging"></a>A dinamikus csomagolás
 
@@ -31,6 +31,9 @@ Kihasználásához **dinamikus csomagolási**, szüksége lesz egy **eszköz** a
 Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ. 
 
 A Media Services szolgáltatásban a dinamikus csomagolás e élő vagy igény szerinti folyamatos átvitel szolgál. 
+
+> [!NOTE]
+> Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).
 
 ## <a name="common-on-demand-workflow"></a>Igény szerinti általános munkafolyamat
 
@@ -92,10 +95,32 @@ Támogatja a dinamikus csomagolás MP4-fájlokat, amelyek tartalmazzák a videó
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>A dinamikus becsomagolás által támogatott hangkodekek
 
-A dinamikus csomagolás támogatja az MP4-fájlokat, amelyek tartalmazzák a hang a kódolt [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1, v2 az AAC-HE), [Dolby digitális Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)(Enhanced AC-3 vagy E-AC3), Dolby Atmos, vagy [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29) (A DTS Express, DTS LBR, DTS HD, veszteségmentes DTS HD). Dolby Atmos tartalom Streamelési szabványok, például az MPEG-DASH protokollal gyakori Streamelési formátum (CSF) vagy a közös Media alkalmazás formátum (CMAF) töredékes MP4 vagy via HTTP Live Streaming (HLS) rendelkező CMAF támogatott.
+### <a name="mp4-files-support"></a>MP4-fájlokat támogatja.
 
-> [!NOTE]
-> A dinamikus csomagolás nepodporuje tartalmazó fájlokat [Dolby digitális](https://en.wikipedia.org/wiki/Dolby_Digital) (nem örökölt kodekkel) (AC3) hang.
+A dinamikus csomagolás MP4-fájlokat, amelyek tartalmazzák a hang a kódolt támogatja 
+
+* [Az AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1, v2 az AAC-HE)
+* [Dolby digitális plusz](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)(továbbfejlesztett AC-3-as vagy E-AC3)
+* Dolby Atmos
+   
+   Dolby Atmos tartalom Streamelési szabványok, például az MPEG-DASH protokollal gyakori Streamelési formátum (CSF) vagy a közös Media alkalmazás formátum (CMAF) töredékes MP4 vagy via HTTP Live Streaming (HLS) rendelkező CMAF támogatott.
+
+* [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)
+
+    DTS kodekek DASH-CSF, a DASH-CMAF, a HLS-M2TS és a HLS-CMAF csomagolási formátumot támogatja a következők:  
+
+    * DTS digitális legyen (dtsc)
+    * DTS-HD nagy felbontású és DTS-HD fő hang (dtsh)
+    * DTS Express (dtse)
+    * DTS-HD veszteségmentes (nincs mag) (dtsl)
+
+### <a name="hls-support"></a>HLS-támogatás
+
+Támogatja a dinamikus csomagolás HLS (4-es vagy újabb) eszközök, amelyek több hangsávval rendelkező több kodekeket és nyelveket.
+
+### <a name="not-supported"></a>Nem támogatott
+
+A dinamikus csomagolás nepodporuje tartalmazó fájlokat [Dolby digitális](https://en.wikipedia.org/wiki/Dolby_Digital) (nem örökölt kodekkel) (AC3) hang.
 
 ## <a name="dynamic-encryption"></a>A dinamikus titkosítás
 
@@ -193,10 +218,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ## <a name="dynamic-manifest"></a>A dinamikus Manifest
 
-Dinamikus szűrés segítségével nyomon követi, formátum, bitsebességre való átkódolása és bemutató idő windows a játékosok megismerése által küldött számát. További információkért lásd: [szűrők és dinamikus jegyzékek](filters-dynamic-manifest-overview.md).
-
-> [!NOTE]
-> Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).
+Dinamikus szűrés segítségével nyomon követi, formátum, bitsebességre való átkódolása és bemutató idő windows a játékosok megismerése által küldött számát. További információkért lásd: [dinamikus Packager az alkalmazásjegyzékeket előre szűrés](filters-dynamic-manifest-overview.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Tegyen fel kérdéseket, küldje el visszajelzését, frissítések beszerzése
 

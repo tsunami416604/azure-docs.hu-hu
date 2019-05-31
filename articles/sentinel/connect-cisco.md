@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/19/2019
 ms.author: rkarlin
-ms.openlocfilehash: a0ece3007e1eadf6cb2901941b771f0ff3243f02
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: fd04e380b0b5732db1e39ffc9b5aa6047c7ef777
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921955"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382983"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Csatlakozás a Cisco ASA-berendezés 
 
@@ -118,7 +118,7 @@ Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 
 
 3. Győződjön meg arról, hogy megfelelnek-e a naplókat küld a [RFC 5424](https://tools.ietf.org/html/rfc542).
 
-4. A Syslog-ügynököt futtató számítógépen ellenőrizze, hogy ezeket a portokat 514-es, a 25226 nyílt forráskódú és figyel-e, a parancs `netstat -a -n:`. Ez a parancs használatával kapcsolatos további információk: [netstat(8) – Linux man lap](https://linux.die.netman/8/netstat). Ha megfelelően figyel, láthatja a:
+4. A Syslog-ügynököt futtató számítógépen ellenőrizze, hogy ezeket a portokat 514-es, a 25226 nyílt forráskódú és figyel-e, a parancs `netstat -a -n:`. Ez a parancs használatával kapcsolatos további információk: [netstat(8) – Linux man lap](https://linux.die.net/man/8/netstat). Ha megfelelően figyel, láthatja a:
 
    ![Az Azure Sentinel-portok](./media/connect-cef/ports.png) 
 

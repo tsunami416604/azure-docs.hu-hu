@@ -3,7 +3,7 @@ title: A Windows Defender komplex veszélyforrások elleni védelem az Azure Sec
 description: Ez a dokumentum bemutatja az integráció az Azure Security Center és a Windows Defender komplex veszélyforrások elleni védelem között.
 services: security-center
 documentationcenter: na
-author: barclayn
+author: monhaber
 manager: barbkess
 editor: ''
 ms.service: security-center
@@ -11,21 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2018
-ms.author: barclayn
-ms.openlocfilehash: 75ca1401f72e00454dc3355d31c8b8ea64669a72
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 05/27/2018
+ms.author: monhaber
+ms.openlocfilehash: 8511f8987368d5746373f71e9f553013e385e0ee
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129127"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258496"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>A Windows Defender komplex veszélyforrások elleni védelem az Azure Security Centerrel
 
-Az Azure Security Center integrálásával kiterjeszti a Felhőbeli számítási feladatok védelmét platformok nyújthassa [Windows Defender komplex veszélyforrások elleni védelem](https://www.microsoft.com/en-us/WindowsForBusiness/windows-atp) (ATP).
-Ez a változás végpont észlelés és válasz (EDR) funkciókészletet biztosít. A Windows Defender ATP-integráció felismerése rendellenességeket. Is észleli, és az Azure Security Center által figyelt kiszolgálói végpontot a speciális támadások válaszolni.
+Az Azure Security Center kiterjeszti a Cloud Workload Protection Platforms ajánlatát a [Windows Defender Advanced Threat Protection](https://www.microsoft.com/en-us/WindowsForBusiness/windows-atp) (ATP) integrálásával.
+Ez a változás átfogó végpontészlelési és -válaszolási (EDR) képességeket tesz lehetővé. A Windows Defender ATP-integráció felismerése rendellenességeket. Is észleli, és az Azure Security Center által figyelt kiszolgálói végpontot a speciális támadások válaszolni.
 
-Az Azure Security Center-ügyfelek már az funkcióit a Windows Defender ATP-ben:
+## <a name="windows-defender-atp-features-in-security-center"></a>A Windows Defender ATP-funkciók a Security Centerben
+
+A Windows Defender ATP használata esetén kap:
 
 - **Következő generációs utáni incidensek észlelési érzékelők**: Windows-kiszolgálók a Windows Defender ATP-érzékelő gyűjtsön viselkedési jelek hatalmas választékát.
 
@@ -33,7 +35,7 @@ Az Azure Security Center-ügyfelek már az funkcióit a Windows Defender ATP-ben
 
 - **Fenyegetések felderítése**: A Windows Defender ATP azonosítja a támadó eszközök technikák és eljárásokat. Ha ezek észlel, riasztásokat állít elő. Microsoft threat vadászok által létrehozott adatokat és biztonsági csapatok, partnerek által biztosított kiegészítve használ.
 
-Ezek a képességek, mostantól elérhetők az Azure Security Center:
+Ezek a funkciók mostantól elérhetők az Azure Security Centerben:
 
 - **Bevezetési automatikus**: A Windows Defender ATP-érzékelő Windows kiszolgálók előkészítve az Azure Security Center automatikusan engedélyezve lesz.
 
@@ -53,9 +55,10 @@ A riasztás további megvizsgálhatja a Windows Defender ATP alapján történő
 
 ## <a name="platform-support"></a>Platformtámogatás
 
-Ez a funkció a Windows Server 2012 R2 és Windows Server 2016 észlelési támogatja.
+A Windows Defender ATP-ben a Security Center észlelési egy standard szintű service-előfizetések alá tartozó Windows Server 2012 R2 és Windows Server 2016 operációs rendszerek használatát támogatja.
 
-Csak azokat a kiszolgálókat, az előfizetések esetében a standard szolgáltatásszinten támogatottak.
+> [!NOTE]
+> Kiszolgálók figyelése az Azure Security Center, ha a Windows Defender ATP-bérlő automatikusan létrejön, és a Windows Defender ATP-adatok Európában tárolt alapértelmezés szerint. Ha az adatok áthelyezése egy másik helyre van szüksége, forduljon a Microsoft Support alaphelyzetbe állítja a bérlő szeretné.
 
 ## <a name="onboarding-servers-to-security-center"></a>A Security Center bevezetése-kiszolgálók 
 
@@ -69,7 +72,6 @@ A kiszolgálók felvétele a Security centerhez, kattintson a **nyissa meg az Az
 4. Az előkészítés, után figyelemmel kísérheti a gépek **számítási és az alkalmazások**.
 
    ![Számítógépek felvétele](media/security-center-wdatp/onboard-computers.png)
-
 
 ## <a name="enable-windows-defender-atp-integration"></a>A Windows Defender ATP-integráció engedélyezése
 

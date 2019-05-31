@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: rezas
-ms.openlocfilehash: f39f184bdc09677e347a2691351309dd6483f467
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d256faa42161e276e165f95c944b9f58ac4a8927
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965389"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297421"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-amqp-protocol"></a>Az IoT hub, az AMQP protokoll használatával kommunikálnak.
 
@@ -26,10 +26,10 @@ Az IoT hubhoz AMQP használatával csatlakozni egy ügyfél használhatja a [jog
 
 A következő információkat megadása kötelező a szolgáltatás-ügyfél:
 
-| Tájékoztatás | Érték | 
+| Információ | Érték | 
 |-------------|--------------|
-| IoT Hub-eszköznév | `<iot-hub-name>.azure-devices.net` |
-| Kulcs neve | `service` |
+| IoT Hub Hostname | `<iot-hub-name>.azure-devices.net` |
+| Kulcsnév | `service` |
 | Hozzáférési kulcs | A szolgáltatáshoz társított elsődleges vagy másodlagos kulcsot |
 | Közös hozzáférésű Jogosultságkód | Rövid élettartamú SAS a következő formátumban: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}` (az aláírás létrehozásához a kód található [Itt](./iot-hub-devguide-security.md#security-token-structure)).
 
@@ -194,20 +194,142 @@ for msg in batch:
 Egy adott eszköz azonosítója az IoT Hub használja az Eszközazonosító kivonatát meghatározásához melyik partíción tárolja az üzeneteket a. A fenti kódrészletben az események fogadását az egyetlen mutatja be ilyen partíció. Vegye figyelembe azonban, hogy egy tipikus alkalmazás gyakran kell az összes event hub-partíció tárolt események beolvasása.
 
 
-### <a name="additional-notes"></a>További megjegyzések
-* Az AMQP-kapcsolatok a hálózati problémáról, illetve a hitelesítési jogkivonat (létrehozva a kódban) lejárta miatt előfordulhat, hogy tartománnyá. A szolgáltatásügyfél kell kezelni az ilyen körülmények között, és újra létrehozza a kapcsolatot és a hivatkozásokat, ha szükséges. A hitelesítési jogkivonat lejárati esetben az ügyfél is proaktívan megújíthatják meg a kapcsolat legördülő elkerülése érdekében a lejárat előtt a jogkivonatot.
-* Néhány esetben az ügyfél képes megfelelően kezeli a hivatkozás átirányítások kell lennie. Ez a művelet kezelése az AMQP ügyfél dokumentációban tájékozódhat.
+## <a name="device-client"></a>Eszközügyfél
 
-### <a name="receive-cloud-to-device-messages-device-and-module-client"></a>Felhőből az eszközre irányuló üzenetek (eszköz- és modul-ügyfél)
-Az eszközoldalon használt AMQP-kapcsolatok a következők:
+### <a name="connection-and-authenticating-to-iot-hub-device-client"></a>Kapcsolat és az IoT Hub (ügyfél) való hitelesítése
+Az IoT hubhoz AMQP használatával csatlakozni egy eszköz használható a [jogcím-alapú biztonság (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) vagy [egyszerű hitelesítési és biztonsági réteg (SASL) hitelesítési](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer).
+
+A következő információkra szükség az eszközügyfél:
+
+| Információ | Érték | 
+|-------------|--------------|
+| IoT Hub Hostname | `<iot-hub-name>.azure-devices.net` |
+| Hozzáférési kulcs | Az eszközhöz társított elsődleges vagy másodlagos kulcsot |
+| Közös hozzáférésű Jogosultságkód | Rövid élettartamú SAS a következő formátumban: `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}` (az aláírás létrehozásához a kód található [Itt](./iot-hub-devguide-security.md#security-token-structure)).
+
+
+Az alábbi kódrészlet [uAMQP kódtárat a Python](https://github.com/Azure/azure-uamqp-python) csatlakozni az IoT hubra küldő hivatkozás segítségével.
+
+```python
+import uamqp
+import urllib
+import uuid
+
+# Use generate_sas_token implementation available here: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#security-token-structure
+from helper import generate_sas_token
+
+iot_hub_name = '<iot-hub-name>'
+hostname = '{iot_hub_name}.azure-devices.net'.format(iot_hub_name=iot_hub_name)
+device_id = '<device-id>'
+access_key = '<primary-or-secondary-key>'
+username = '{device_id}@sas.{iot_hub_name}'.format(device_id=device_id, iot_hub_name=iot_hub_name)
+sas_token = generate_sas_token('{hostname}/devices/{device_id}'.format(hostname=hostname, device_id=device_id), access_key, None)
+
+operation = '<operation-link-name>' # e.g., '/devices/{device_id}/messages/devicebound'
+uri = 'amqps://{}:{}@{}{}'.format(urllib.quote_plus(username), urllib.quote_plus(sas_token), hostname, operation)
+
+receive_client = uamqp.ReceiveClient(uri, debug=True)
+send_client = uamqp.SendClient(uri, debug=True)
+```
+
+A következő hivatkozás útvonalak eszközművelet támogatottak:
 
 | Létrehozta | Hivatkozás típusa | Elérési útja | Leírás |
 |------------|-----------|-----------|-------------|
 | Eszközök | Fogadó-hivatkozás | `/devices/<deviceID>/messages/devicebound` | Az eszközök felé irányuló C2D üzenetek érkezik erre a hivatkozásra minden cél eszközre. |
+| Eszközök | Küldő hivatkozás | `/devices/<deviceID>messages/events` | Egy eszközről küldött D2C üzeneteket küld a kapcsolaton. |
 | Eszközök | Küldő hivatkozás | `/messages/serviceBound/feedback` | C2D üzenet visszajelzés Service kapcsolaton keresztül küldi el az eszközök által. |
-| Modulok | Fogadó-hivatkozás | `/devices/<deviceID>/modules/<moduleID>/messages/devicebound` | C2D modulok felé irányuló fogadása erre a hivatkozásra minden cél modul. |
-| Modulok | Küldő hivatkozás | `/messages/serviceBound/feedback` | C2D üzenet visszajelzés Service kapcsolaton keresztül küldi el a modulok által. |
 
+
+### <a name="receive-c2d-commands-device-client"></a>C2D parancsok (ügyfél)
+Eszközökre küldött parancsok C2D az ügyfélszámítógépekre érkeznek `/devices/<deviceID>/messages/devicebound` hivatkozásra. Eszközök kötegekben ezeket az üzeneteket fogadni, és használja az üzenet hasznos adatforgalmat, üzenet tulajdonságait, jegyzetek vagy alkalmazás tulajdonságai üzenetben igény szerint.
+
+Az alábbi kódrészlet [uAMQP kódtárat a Python](https://github.com/Azure/azure-uamqp-python) C2D üzenetek fogadása egy eszközre.
+
+```python
+# ... 
+# Create a receive client for the C2D receive link on the device
+operation = '/devices/{device_id}/messages/devicebound'.format(device_id=device_id)
+uri = 'amqps://{}:{}@{}{}'.format(urllib.quote_plus(username), urllib.quote_plus(sas_token), hostname, operation)
+
+receive_client = uamqp.ReceiveClient(uri, debug=True)
+while True:
+  batch = receive_client.receive_message_batch(max_batch_size=5)
+  for msg in batch:
+    print('*** received a message ***')
+    print(''.join(msg.get_data()))
+
+    # Property 'to' is set to: '/devices/device1/messages/devicebound',
+    print('\tto:                     ' + str(msg.properties.to))
+
+    # Property 'message_id' is set to value provided by the service
+    print('\tmessage_id:             ' + str(msg.properties.message_id))
+
+    # Other properties are present if they were provided by the service
+    print('\tcreation_time:          ' + str(msg.properties.creation_time))
+    print('\tcorrelation_id:         ' + str(msg.properties.correlation_id))
+    print('\tcontent_type:           ' + str(msg.properties.content_type))
+    print('\treply_to_group_id:      ' + str(msg.properties.reply_to_group_id))
+    print('\tsubject:                ' + str(msg.properties.subject))
+    print('\tuser_id:                ' + str(msg.properties.user_id))
+    print('\tgroup_sequence:         ' + str(msg.properties.group_sequence))
+    print('\tcontent_encoding:       ' + str(msg.properties.content_encoding))
+    print('\treply_to:               ' + str(msg.properties.reply_to))
+    print('\tabsolute_expiry_time:   ' + str(msg.properties.absolute_expiry_time))
+    print('\tgroup_id:               ' + str(msg.properties.group_id))
+
+    # Message sequence number in the built-in Event hub
+    print('\tx-opt-sequence-number:  ' + str(msg.annotations['x-opt-sequence-number']))
+```
+
+### <a name="send-telemetry-messages-device-client"></a>Telemetria üzenetküldés (ügyfél)
+Telemetriai üzeneteket is lehet amqp-n keresztül eszközök által küldött. Az eszköz is megadhat alkalmazástulajdonságokat tartalmazó, illetve különböző üzenet tulajdonságai, például az állapotüzenet-azonosító.
+
+Az alábbi kódrészlet [uAMQP kódtárat a Python](https://github.com/Azure/azure-uamqp-python) D2C üzenet küldése egy eszközről.
+
+
+```python
+# ... 
+# Create a send client for the D2C send link on the device
+operation = '/devices/{device_id}/messages/events'.format(device_id=device_id)
+uri = 'amqps://{}:{}@{}{}'.format(urllib.quote_plus(username), urllib.quote_plus(sas_token), hostname, operation)
+
+send_client = uamqp.SendClient(uri, debug=True)
+
+# Set any of the applicable message properties
+msg_props = uamqp.message.MessageProperties()
+msg_props.message_id = str(uuid.uuid4())
+msg_props.creation_time = None
+msg_props.correlation_id = None
+msg_props.content_type = None
+msg_props.reply_to_group_id = None
+msg_props.subject = None
+msg_props.user_id = None
+msg_props.group_sequence = None
+msg_props.to = None
+msg_props.content_encoding = None
+msg_props.reply_to = None
+msg_props.absolute_expiry_time = None
+msg_props.group_id = None
+
+# Application properties in the message (if any)
+application_properties = { "app_property_key": "app_property_value" }
+
+# Create message
+msg_data = b"Your message payload goes here"
+message = uamqp.Message(msg_data, properties=msg_props, application_properties=application_properties)
+
+send_client.queue_message(message)
+results = send_client.send_all_messages()
+
+for result in results:
+    if result == uamqp.constants.MessageState.SendFailed:
+        print result
+```
+
+## <a name="additional-notes"></a>További megjegyzések
+* Az AMQP-kapcsolatok a hálózati problémáról, illetve a hitelesítési jogkivonat (létrehozva a kódban) lejárta miatt előfordulhat, hogy tartománnyá. A szolgáltatásügyfél kell kezelni az ilyen körülmények között, és újra létrehozza a kapcsolatot és a hivatkozásokat, ha szükséges. A hitelesítési jogkivonat lejárati esetben az ügyfél is proaktívan megújíthatják meg a kapcsolat legördülő elkerülése érdekében a lejárat előtt a jogkivonatot.
+* Néhány esetben az ügyfél képes megfelelően kezeli a hivatkozás átirányítások kell lennie. Ez a művelet kezelése az AMQP ügyfél dokumentációban tájékozódhat.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -2,7 +2,7 @@
 title: Az Azure Time Series Insights előzetes verziója használati esetek |} A Microsoft Docs
 description: Ismerje meg az Azure Time Series Insights előzetes verziója használati eseteket.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27c79155a4630f49faf49f30b2d46bf1e0dffd90
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 787445d5186a173b2cba674b36cd95879cc863e5
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508312"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389994"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Az Azure Time Series Insights előzetes verzió használati esetek
 
@@ -28,11 +28,11 @@ Pontosabban Ez a cikk az alábbi kérdéseket:
 * Mik azok a Time Series Insights használatával járó előnyöket [működési elemzés és a folyamatok hatékonyságát](#operational-analysis-and-driving-process-efficiency)?
 * Mik azok a Time Series Insights használatával járó előnyöket [advanced analytics](#advanced-analytics)?
 
-Ezek áttekintése esetek használatakor az alábbiakban szerepel.
+Ezek áttekintése forgatókönyvekhez használja a következő szakaszokban ismertetett.
 
-## <a name="introduction"></a>Bemutatás
+## <a name="introduction"></a>Bevezetés
 
-Az Azure Time Series Insights egy teljes körű platform--szolgáltatásként ajánlat. Gyűjtése, feldolgozásához, tárolásához, elemzéséhez és lekérdezése rendkívül contextualized, a time series-optimalizált IoT-méretű adatokra szolgál. A Time Series Insights alkalmi adatfeltárás és működési elemzés ideális. A Time Series Insights egy olyan ajánlat, hogy megfelel-e a széles körű kell ipari IoT központi telepítések egyedileg bővíthető, testre szabott, szolgáltatás.
+Az Azure Time Series Insights egy teljes körű platform--szolgáltatásként ajánlat. Gyűjtése, feldolgozásához, tárolásához, elemzéséhez és lekérdezése rendkívül contextualized, a time series-optimalizált IoT-méretű adatokra szolgál. A Time Series Insights alkalmi adatfeltárás és működési elemzés ideális. A Time Series Insights egy olyan ajánlat, hogy megfelel-e a széles körű kell ipari IoT központi telepítések egyedileg bővíthető, testre szabott szolgáltatás.
 
 ## <a name="data-exploration-and-visual-anomaly-detection"></a>Adatfeltárás és vizuális anomáliadetektálás
 
@@ -54,7 +54,7 @@ A Time Series Insights-ban tárolt adatok interakcióba három elsődleges módj
 
     * Olvassa el a [Time Series Insights JS ügyféloldali kódtár](tutorial-explore-js-client-lib.md) és a [Time Series Insights-ügyfél](https://github.com/Microsoft/tsiclient) további információ a JavaScript SDK dokumentációját.
 
-    * További információ az URL-címek és az új felhasználói felület megosztása áttekintésével [megjelenítheti az Intéző előzetes adatait](time-series-insights-update-explorer.md).
+    * További információ az URL-címek és az új felhasználói felület megosztása áttekintésével [adatok megjelenítése az az Azure Time Series Insights – előzetes explorer](time-series-insights-update-explorer.md).
 
 - Indítsa el a harmadik módszer, hogy a hatékony API-k a Time Series Insights lekérdezési adataihoz. A Time Series Insights tartozik például az ideiglenes operátorok `from`, `to`, `first`, és `last`. Rendelkezik összesítések és átalakításokat például `average`, `min`, `max`, `split by`, `order by`, és `DateHistogram`. Azt is rendelkezik, mint szűrési operátorok `has`, `in`, `and`, `or`, `greater than`, és `REGEX`. Minden operátor lehetővé teszik az alárendelt alkalmazások érdekes trendek és mintázatok gyorsan megtalálhatja az adatokban. Ezek segítségével azonosíthatja a rendellenességeket a saját készítésű Vizualizációk feltöltéséhez.
 
@@ -97,7 +97,5 @@ A Time Series Insights közötti szakadék IoT-adatok és fejlett analitikai ké
 ## <a name="next-steps"></a>További lépések
 
 - Tudjon meg többet a [Time Series Insights előzetes verziója explorer](./time-series-insights-update-explorer.md).
-
-- Tervezze meg a környezetben, olvassa el [Time Series Insights előzetes verziója tervezési](./time-series-insights-update-plan.md).
-
+- Olvasási [Time Series Insights előzetes verziója tervezési](./time-series-insights-update-plan.md) , tervezze meg a környezetben.
 - Olvassa el a [Time Series Insights ügyfél](https://github.com/Microsoft/tsiclient) dokumentációját.

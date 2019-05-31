@@ -1,54 +1,36 @@
 ---
-title: Az Azure Data Box-problémák elhárítása |} A Microsoft Docs
-description: Az Azure Data Box problémáinak, amikor az adatok feltöltése az Azure-bA elhárítását ismerteti.
+title: Az Azure Data Box, az Azure Data Box nehéz problémák elhárítása |} A Microsoft Docs
+description: Az Azure Data Box és az Azure Data Box nehéz problémáinak, ha másol adatokat, ezekre az eszközökre elhárítását ismerteti.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 05/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 1126002a93419371be3216c55114385c9c600419
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 0c454c5f19ebefc7f91df62511448dbedb93dfc4
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65593996"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257288"
 ---
-# <a name="troubleshoot-issues-related-to-azure-data-box"></a>Azure Data Box kapcsolatos problémák elhárítása
+# <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és az Azure Data Box nehéz kapcsolatos problémák elhárítása
 
-Ez a cikk részletesen láthatja, amikor az Azure Data Box használatával kapcsolatos problémák elhárítása információkat.
+Ez a cikk részletesen hibáinak elhárítása az Azure Data Boxn vagy az Azure Data Box nehéz használatakor jelenhet információkat.
 
 ## <a name="errors-during-data-copy"></a>Adatok másolása során hibák
 
 Az alábbiakban láthatók az adatmásolás során hibákat foglalja össze.
 
-### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH 
-
-**Hiba leírása:** A tároló vagy a megosztás neve csak 3 és 63 karakter közötti hosszúságú lehet.
-
-**Javasolt megoldás:** A mappa a Data Box (SMB és NFS) megosztásban, amelyhez adatokat másolta a tárfiókja egy Azure container válik. 
-
-- Az a **csatlakozás és másolás** a Data Box helyi webes felületén, letöltése és tekintse át a hiba-fájlokat a mappa neve problémákkal rendelkező lapján.
-- Módosítsa a Data Box-megosztásban győződjön meg arról, hogy a mappa neve:
-
-    - A név 3 és 63 karakter közötti hosszúságú rendelkezik.
-    - A nevek csak betűket, számokat és kötőjeleket tartalmazhat rendelkezhet.
-    - A nevek nem kezdődhet és végződhet kötőjellel.
-    - A neve nem tartalmazhat egymást követő kötőjelet.
-    - Példák az érvényes nevek: `my-folder-1`, `my-really-extra-long-folder-111`.
-    - Példák a nevét, amely nem érvényes: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
-
-    További információkért tekintse meg az Azure elnevezési szabályai [a tároló nevének](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) és [megosztási név](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
-
 ### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
 **Hiba leírása:** A tároló vagy a megosztás neve csak 3 és 63 karakter közötti hosszúságú lehet. 
 
-**Javasolt megoldás:** A mappa a Data Box (SMB és NFS) megosztásban, amelyhez adatokat másolta a tárfiókja egy Azure container válik. 
+**Javasolt megoldás:** A mappát a Data Box vagy a Data Box nehéz share(SMB/NFS), amelyhez adatokat másolta a tárfiókja egy Azure container válik. 
 
-- Az a **csatlakozás és másolás** a Data Box helyi webes felületén, letöltése és tekintse át a hiba-fájlokat a mappa neve problémákkal rendelkező lapján.
-- Módosítsa a Data Box-megosztásban győződjön meg arról, hogy a mappa neve:
+- Az a **csatlakozás és másolás** az eszköz helyi webes felületén, letöltése és tekintse át a hiba-fájlokat a mappa neve problémákkal rendelkező lapján.
+- Módosítsa a Data Box vagy a Data Box nehéz megosztásban győződjön meg arról, hogy a mappa neve:
 
     - A név 3 és 63 karakter közötti hosszúságú rendelkezik.
     - A nevek csak betűket, számokat és kötőjeleket tartalmazhat rendelkezhet.
@@ -64,10 +46,10 @@ Az alábbiakban láthatók az adatmásolás során hibákat foglalja össze.
 
 **Hiba leírása:** A tároló vagy a megosztás neve csak betűket, számokat és kötőjeleket tartalmazhat.
 
-**Javasolt megoldás:** A mappa a Data Box (SMB és NFS) megosztásban, amelyhez adatokat másolta a tárfiókja egy Azure container válik. 
+**Javasolt megoldás:** A mappát a Data Box vagy a Data Box nehéz share(SMB/NFS), amelyhez adatokat másolta a tárfiókja egy Azure container válik. 
 
-- Az a **csatlakozás és másolás** a Data Box helyi webes felületén, letöltése és tekintse át a hiba-fájlokat a mappa neve problémákkal rendelkező lapján.
-- Módosítsa a Data Box-megosztásban győződjön meg arról, hogy a mappa neve:
+- Az a **csatlakozás és másolás** az eszköz helyi webes felületén, letöltése és tekintse át a hiba-fájlokat a mappa neve problémákkal rendelkező lapján.
+- Módosítsa a Data Box vagy a Data Box nehéz megosztásban győződjön meg arról, hogy a mappa neve:
 
     - A név 3 és 63 karakter közötti hosszúságú rendelkezik.
     - A nevek csak betűket, számokat és kötőjeleket tartalmazhat rendelkezhet.
@@ -82,10 +64,10 @@ Az alábbiakban láthatók az adatmásolás során hibákat foglalja össze.
 
 **Hiba leírása:** A tároló nevének és a fájlmegosztások neve nem lehet elindítani vagy végződhet kötőjellel, és nem lehetnek egymást követő kötőjelet.
 
-**Javasolt megoldás:** A mappa a Data Box (SMB és NFS) megosztásban, amelyhez adatokat másolta a tárfiókja egy Azure container válik. 
+**Javasolt megoldás:** A mappát a Data Box vagy a Data Box nehéz share(SMB/NFS), amelyhez adatokat másolta a tárfiókja egy Azure container válik. 
 
-- Az a **csatlakozás és másolás** a Data Box helyi webes felületén, letöltése és tekintse át a hiba-fájlokat a mappa neve problémákkal rendelkező lapján.
-- Módosítsa a Data Box-megosztásban győződjön meg arról, hogy a mappa neve:
+- Az a **csatlakozás és másolás** az eszköz helyi webes felületén, letöltése és tekintse át a hiba-fájlokat a mappa neve problémákkal rendelkező lapján.
+- Módosítsa a Data Box vagy a Data Box nehéz megosztásban győződjön meg arról, hogy a mappa neve:
 
     - A név 3 és 63 karakter közötti hosszúságú rendelkezik.
     - A nevek csak betűket, számokat és kötőjeleket tartalmazhat rendelkezhet.
@@ -112,7 +94,7 @@ További információkért lásd: [a felügyelt lemezek másolása](data-box-dep
 
 **Hiba leírása:** Azure-fájlmegosztás korlátozza egy 5 TB-nyi adatot-megosztást. Ezt a korlátot processzorhasználata túllépte a megosztások.
 
-**Javasolt megoldás:** Az a **csatlakozás és másolás** oldalon, a Data Box helyi webes felületén, töltse le és tekintse át a hiba fájlt.
+**Javasolt megoldás:** Az a **csatlakozás és másolás** oldalon, a helyi webes felhasználói felületen, töltse le és tekintse át a hiba fájlt.
 
 Azonosítsa a mappákat, amelyek a probléma a hibanaplókat, és ügyeljen arra, hogy a fájlok abban a mappában található 5 TB-os.
 
@@ -194,7 +176,7 @@ További információkért tekintse meg a blob és fájl nevét az Azure elnevez
 
 **Hiba leírása:** A blob vagy a fájl nincs megfelelően igazítva.
 
-**Javasolt megoldás:** A Data Box csak támogatja fájlok 512 bájt lap blob megosztás igazított (például VHD/VHDX). A lap blob megosztáshoz másolt adatokat az Azure-bA feltöltött lapblobként.
+**Javasolt megoldás:** A Data Box vagy a Data Box nehéz csak támogatja fájlok 512 bájt lap blob megosztás igazított (például VHD/VHDX). A lap blob megosztáshoz másolt adatokat az Azure-bA feltöltött lapblobként.
 
 Távolítsa el a nem VHD/VHDX adatokat a lap blob megosztásból. Blokkblob vagy általános adatok az Azure files megosztások is használhatja.
 
