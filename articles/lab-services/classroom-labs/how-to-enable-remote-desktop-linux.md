@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/24/2019
 ms.author: spelluru
-ms.openlocfilehash: 9ad6f82d7b9bd7c4957df1dd37d0f2ddf7462e9e
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 389d467bd9672743d4a086e8a1c505fb0366dba7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410956"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237121"
 ---
 # <a name="enable-and-use-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Engedélyezze, és a távoli asztal használata Linux rendszerű virtuális gépek az Azure Lab Services szolgáltatásban létrehozott tesztkörnyezet
 Ez a cikk bemutatja, hogyan lehet a következő feladatokat végezheti el:
@@ -31,6 +31,10 @@ Ez a cikk bemutatja, hogyan lehet a következő feladatokat végezheti el:
 Labor létrehozása során, engedélyezheti a tanárok **távoli asztali kapcsolat** a **Linux** lemezképek. A **távoli asztali kapcsolat engedélyezése** beállítás jelenik meg, ha a sablon egy Linux-rendszerképek van kiválasztva. Ha ez a beállítás engedélyezve van, az oktatók csatlakozhat sablon virtuális gép és a diákok virtuális gépek (távoli asztali verzió) RDP-n keresztül. 
 
 ![Egy Linux-rendszerképek a távoli asztali kapcsolat engedélyezése](../media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+
+Az a **távoli asztali kapcsolat engedélyezése** üzenet jelölje ki **a távoli asztal**. 
+
+![Egy Linux-rendszerképek a távoli asztali kapcsolat engedélyezése](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
 
 > [!IMPORTANT] 
 > Engedélyezése **távoli asztali kapcsolat** csak megnyílik a **RDP** portot Linux rendszerű gépeken. Ön, mint a tanári a Linux-gép először SSH használatával csatlakozhat, és az RDP és a grafikus felhasználói Felülettel csomagok telepítése, úgy, hogy a Linux-gép később RDP használatával csatlakozhat. Ezután az **közzététele** a lemezképet, hogy a diákok a tanulói Linux rendszerű virtuális gépekhez az RDP is. 
@@ -54,27 +58,32 @@ Megjelenik a **a távoli asztal** lehetőséget, a labor kezdőlapja a labor lé
 
 ![A labor létrehozása után a sablon RDP-n keresztül kapcsolódni](../media/how-to-enable-remote-desktop-linux/rdp-after-lab-creation.png) 
 
-Amikor kiválasztja a **RDP** lehetőség, letölt egy RDP-fájlt. Megnyitás a Linux rendszerű géphez való csatlakozásra. 
+A virtuális gép SSH vagy RDP használatával való csatlakozással kapcsolatban további információkért lásd: [Csatlakozás SSH-vagy RDP]((#connect-using-ssh-or-rdp). 
 
 ## <a name="teachers-connecting-to-a-student-vm-using-rdp"></a>Csatlakozhat a virtuális gép tanuló tanárok RDP-vel
-A labor tulajdonosa (oktatói/professzor) tud csatlakozni egy diák virtuális gép átvált a a **virtuális gépek** megtekintéséhez, majd válassza ki a **csatlakozás** ikonra. Az oktatók kell **közzététele** RDP és a grafikus felhasználói Felülettel csomagokkal telepítve van a sablon lemezképe. 
+Egy oktató/professzor csatlakozhat a virtuális gép tanuló átvált a **virtuális gépek** megtekintéséhez, majd válassza ki a **csatlakozás** ikonra. Az oktatók kell **közzététele** RDP és a grafikus felhasználói Felülettel csomagokkal telepítve van a sablon lemezképe. 
 
 ![Az oktatók a tanulói virtuális gép csatlakoztatása](../media/how-to-enable-remote-desktop-linux/teacher-connect-to-student-vm.png)
+
+A virtuális gép SSH vagy RDP használatával való csatlakozással kapcsolatban további információkért lásd: [Csatlakozás SSH-vagy RDP]((#connect-using-ssh-or-rdp). 
 
 ## <a name="students-connecting-to-the-student-vm"></a>Csatlakozás a virtuális gép tanulói diákoknak
 Tanulói is a Linux rendszerű virtuális gépekhez az RDP a labor tulajdonosa (oktatói/professzor) után **közzéteszi** a sablon csomagok RDP és a grafikus felhasználói Felülettel rendelkező virtuális gép telepítve van a gépen. A lépések a következők: 
 
 1. Amikor egy tanuló jelentkezik be a Labs portálon közvetlenül (`https://labs.azure.com`) vagy egy regisztrációs hivatkozással (`https://labs.azure.com/register/<registrationCode>`), egy csempe hozzáfér minden labor a tanulói számára jelenik meg. 
 2. A csempére, válassza ki a **Start** Ha a virtuális gép le van állítva. 
-3. Kattintson a **Csatlakozás** gombra. Ez a művelet a gép be RDP-fájljának letöltése. Mentse, és nyissa meg a Linux-gép RDP-n keresztül kapcsolódni. 
+3. Kattintson a **Csatlakozás** gombra. A virtuális Géphez való csatlakozáshoz két lehetőség jelenik meg: **SSH** és **a távoli asztal**.
 
-    ![VM - tanulói RDP letöltése](../media/how-to-enable-remote-desktop-linux/student-rdp-download.png)
+    ![Tanulói Virtuálisgép - kapcsolat beállításai](../media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
 
-    Továbbra is csatlakozhat a Linux rendszerű virtuális gép SSH használatával. Válassza ki **... három (pont)**  az SSH-beállítás megtekintéséhez. 
-    
-    ![Tanulói VM - SSH](../media/how-to-enable-remote-desktop-linux/student-ssh.png)
+## <a name="connect-using-ssh-or-rdp"></a>Csatlakozás SSH vagy RDP használatával
+Ha a **SSH** beállítást, megjelenik a következő **csatlakozhat a virtuális gép** párbeszédpanel:  
 
-    Másolja ki és mentse az SSH-kapcsolati karakterlánc található a **csatlakozhat a virtuális gép** párbeszédpanel bezárásához. Használja ezt a kapcsolati karakterláncot egy SSH-terminálból (például [Putty](https://www.putty.org/)) a virtuális gép csatlakozni. 
+![SSH-kapcsolati karakterlánc](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
+
+Válassza ki a **másolási** melletti szövegmezőbe a másolja a vágólapra. Mentse az SSH-kapcsolati karakterláncot. Használja ezt a kapcsolati karakterláncot egy SSH-terminálból (például [Putty](https://www.putty.org/)) a virtuális gép csatlakozni.
+
+Ha a **RDP** beállítás, egy RDP-fájl töltődik le a gép be. Mentse, és nyissa meg a géphez való csatlakozásra. 
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
