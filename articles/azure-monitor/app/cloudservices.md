@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: d27c0e9570959e01267d83a768ead45b48b7cea1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1520b01826de2a80d8baeccf4913fa180d385644
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60903270"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256301"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights az Azure cloud services
 [Az Application Insights] [ start] figyelheti [Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állási, teljesítmény, hibák és használati adatok az Application Insights SDK-k egyesül [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) a cloud Services szolgáltatások adatait. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -41,7 +41,7 @@ Ez a beállítás futásidőben, így kell figyelnie a kérések, kivételek és
 
 Ha ezt a beállítást kell, akkor végzett. 
 
-A következő lépések [az alkalmazás mérőszámainak megtekintése](../../azure-monitor/app/metrics-explorer.md), [az adatok lekérdezése az Analytics](../../azure-monitor/app/analytics.md), és talán állítson be egy [irányítópult](../../azure-monitor/app/app-insights-dashboards.md). 
+A következő lépések [az alkalmazás mérőszámainak megtekintése](../../azure-monitor/app/metrics-explorer.md), [az adatok lekérdezése az Analytics](../../azure-monitor/app/analytics.md). 
 
 A böngészőben teljesítményének monitorozásához is érdemes beállítása [rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) és [adja hozzá a kódot weboldalaihoz](../../azure-monitor/app/javascript.md).
 
@@ -61,7 +61,7 @@ Az alkalmazásból származó telemetria tárolása, elemzése és Application I
 Mindegyik erőforrás egy erőforráscsoportba tartozik. Az erőforráscsoportokkal költségek, hozzáférés biztosítása a csapattagok számára, és egyetlen koordinált tranzakció-frissítések központi telepítésének kezeléséhez. Ha például sikerült [írható olyan szkript, üzembe helyezéséhez](../../azure-resource-manager/resource-group-template-deploy.md) egy Azure-felhőszolgáltatásban és a egy műveletet az erőforrások figyelése az Application Insights.
 
 ### <a name="resources-for-components"></a>Az összetevők erőforrásai
-Azt javasoljuk, hogy az alkalmazás minden egyes összetevője külön erőforrás létrehozása. Azt jelenti hozzon létre egy erőforrás mindegyik webes és feldolgozói szerepkör. Mindegyik összetevő külön elemezhető, de létrehozhat egy [irányítópult](../../azure-monitor/app/app-insights-dashboards.md) , amely egyesíti a fő diagramok az összes összetevőből, így Ön figyelheti és összevetheti azokat együtt egyetlen nézetben. 
+Azt javasoljuk, hogy az alkalmazás minden egyes összetevője külön erőforrás létrehozása. Azt jelenti hozzon létre egy erőforrás mindegyik webes és feldolgozói szerepkör. Mindegyik összetevő külön elemezhető, de létrehozhat egy [irányítópult](../../azure-monitor/app/overview-dashboard.md) , amely egyesíti a fő diagramok az összes összetevőből, így Ön figyelheti és összevetheti azokat együtt egyetlen nézetben. 
 
 Egy alternatív módszer is a telemetria küldhető több szerepkörből ugyanarra az erőforrásra, de [adjon hozzá egy dimenzió tulajdonságot mindegyik telemetriaelemhez](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) , amely azonosítja annak forrásszerepkörét. Ez a megközelítés a mérőszám-diagramok, például a kivételeket, összesített mennyiségeit mutatják, a számát, a különféle szerepkörök, de a diagram szegmentáljon a szerepkör-azonosító, szükség szerint. A keresések ugyanezen dimenziók mentén is végezhet. A szerepkörök között is vezethet egyértelműek, de ez a megoldás könnyebb, aki mindent megtekinthet egy időben lesz.
 
@@ -91,7 +91,7 @@ Ha minden szerepkör egy külön erőforrás létrehozása döntött, és esetle
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Azure Diagnostics beállítása az egyes szerepkörökhöz
 Ezzel a beállítással figyelheti az alkalmazást az Application Insightsszal. Webes szerepkörök esetében ez a beállítás alkalmazásteljesítmény-figyelés, riasztások, diagnosztikai és használati elemzés biztosít. Más szerepkörök esetében, keresheti és figyelheti az Azure Diagnostics például újraindítás, a teljesítményszámlálókat és a System.Diagnostics.Trace meghívásait. 
 
-1. A Visual Studio Megoldáskezelőjében alatt  **\<YourCloudService >** > **szerepkörök**, nyissa meg az egyes szerepkörök tulajdonságait.
+1. A Visual Studio Megoldáskezelőjében alatt  **\<YourCloudService >**  > **szerepkörök**, nyissa meg az egyes szerepkörök tulajdonságait.
 
 1. A **konfigurációs**, jelölje be a **Posílat diagnostická data do Application Insights** jelölőnégyzetet, majd válassza ki a korábban létrehozott Application Insights-erőforrást.
 
@@ -229,7 +229,7 @@ Böngészőalapú telemetriát gyűjthet, például az oldal nézet számát, la
 Győződjön meg arról, hogy az alkalmazás mindig elérhető és válaszkész legyen, hogy [Webtesztekkel][availability].
 
 ## <a name="display-everything-together"></a>Az összes elem együttes megjelenítése
-Az átfogó képet, a rendszer, megjelenítheti a figyelési diagramokat összegyűjtheti egy kulcs [irányítópult](../../azure-monitor/app/app-insights-dashboards.md). Például hozzáadhatja az egyes szerepkörök kérés- és hibaszámait. 
+Az átfogó képet, a rendszer, megjelenítheti a figyelési diagramokat összegyűjtheti egy kulcs [irányítópult](../../azure-monitor/app/overview-dashboard.md). Például hozzáadhatja az egyes szerepkörök kérés- és hibaszámait. 
 
 Ha a rendszer más Azure-szolgáltatásokkal, például a Stream Analytics, a figyelési diagramjait is tartalmazzák. 
 
