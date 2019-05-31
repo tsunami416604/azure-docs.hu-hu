@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1d8c8fcf84cd008957fcdb7cd14c4a07d9f3643
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 59af4e20c7fe838f7c725b47e45968941fa85cb7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074905"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254060"
 ---
 # <a name="protected-web-api---app-registration"></a>Védett webes API - alkalmazás regisztrációja
 
@@ -33,13 +33,13 @@ Lásd: [a rövid útmutató: Alkalmazás regisztrálása a Microsoft identity pl
 
 A Microsoft identity platform végpont kiadhatnak kétféle jogkivonatokat: 1.0-s verziójú jogkivonatok és 2.0-s verziójú jogkivonatok. Ezek a jogkivonatok többet tudhat [hozzáférési jogkivonatokat](access-tokens.md). Az elfogadott token verzió attól függ, a **támogatott fióktípusok** választotta, hogy az alkalmazás létrehozásakor:
 
-- Ha értékét **támogatott fióktípusok** van **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok (például a Skype, Xbox, Outlook.com)**, az elfogadott token verzió v2.0 lesz.
-- Ellenkező esetben az elfogadott jogkivonat-verzió lesz a 2.0-s verzió.
+- Ha értékét **támogatott fióktípusok** van **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok (például a Skype, Xbox, Outlook.com)** , az elfogadott token verzió v2.0 lesz.
+- Ellenkező esetben az elfogadott jogkivonat-verzió lesz az 1.0-s verziója.
 
 Az alkalmazás létrehozása után módosíthatja az elfogadott token verzió az alábbi lépéseket:
 
 1. Az Azure Portalon válassza ki az alkalmazást, és válassza ki a **Manifest** az alkalmazáshoz.
-2. A jegyzékfájlban, keressen **"accessTokenAcceptedVersion"**, és láthatja, hogy a kulcs értéke **2**. Ez a tulajdonság lehetővé teszi, hogy az Azure ad-ben tudja, hogy a webes API 2.0-s verziójú jogkivonatokat fogad. Ha **null**, az elfogadott jogkivonat-verzió lesz 1.0-s verziója.
+2. A jegyzékfájlban, keressen **"accessTokenAcceptedVersion"** , és láthatja, hogy a kulcs értéke **2**. Ez a tulajdonság lehetővé teszi, hogy az Azure ad-ben tudja, hogy a webes API 2.0-s verziójú jogkivonatokat fogad. Ha **null**, az elfogadott jogkivonat-verzió lesz 1.0-s verziója.
 3. Kattintson a **Mentés** gombra.
 
 > [!NOTE]
@@ -49,7 +49,7 @@ Az alkalmazás létrehozása után módosíthatja az elfogadott token verzió az
 
 Webes API-k nem kell semmilyen felhasználó nem bejelentkezett interaktív módon való regisztrálása átirányítási URI-t.
 
-## <a name="expose-an-api"></a>API közzététele
+## <a name="expose-an-api"></a>Tegye elérhetővé az API-k
 
 Egy másik webes API-kat az adott érték a közzétett API-t és a közzétett hatókörök.
 

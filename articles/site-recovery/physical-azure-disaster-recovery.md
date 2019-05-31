@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/31/2018
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: a6be2fbbf946f13213f95b8876cfdddfa2ffbe67
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c3b9aa6fcf5cf96e3ef1f3bdd76e9f1d19be5c5c
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098152"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400106"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Vészhelyreállítás az Azure-bA a helyszíni fizikai kiszolgálók beállítása
 
@@ -110,7 +110,7 @@ Válassza ki, milyen replikálni, és replikálja azt.
 2. Ha nem rendelkezik a konfigurációs kiszolgáló, kattintson a **+ konfigurációs kiszolgáló**.
 3. A **-kiszolgáló hozzáadása**, ellenőrizze, hogy **konfigurációs kiszolgáló** megjelenik **kiszolgálótípus**.
 4. A Site Recovery egyesített telepítőjének telepítőfájl letöltéséhez.
-5. Töltse le a tároló regisztrációs kulcsát. Ez szükséges az egységes telepítő futtatása során. A kulcs a generálásától számított öt napig érvényes.
+5. Töltse le a tárolóregisztrációs kulcsot. Ez szükséges az egységes telepítő futtatása során. A kulcs a generálásától számított öt napig érvényes.
 
    ![A forrás beállítása](./media/physical-azure-disaster-recovery/source-environment.png)
 
@@ -147,12 +147,12 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 2. Adja meg a cél üzembehelyezési modellje.
 3. A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-tárfiókkal és -hálózattal.
 
-   ![Cél](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Target](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
-1. Új replikációs szabályzat létrehozásához kattintson a **Site Recovery-infrastruktúra** > **Replikációs szabályzatok** > **+Replikációs szabályzat** elemre.
+1. Új replikációs szabályzat létrehozásához kattintson a **Site Recovery-infrastruktúra** > **Replikációs szabályzatok** >  **+Replikációs szabályzat** elemre.
 2. A **Replikációs szabályzat létrehozása** beállításnál adja meg a szabályzat nevét.
 3. Az **RPO küszöbértéke** beállításnál adja meg a helyreállítási időkorlátot (RPO). Ez az érték határozza meg, milyen gyakran jönnek létre adat-helyreállítási pontok. A rendszer riasztást ad, ha a folyamatos replikáció túllépi ezt a korlátot.
 4. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú (hány órás) legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók. A rendszer a prémium tárolóra replikált gépek esetében 24 órás, a standard tárolóra replikált gépek esetében 72 órás megőrzést támogat.
@@ -184,7 +184,7 @@ Engedélyezze a replikálást, minden olyan kiszolgáló esetén.
 12. Kattintson a **Replikáció engedélyezése** elemre. A **Védelem engedélyezése** feladat előrehaladását a **Beállítások** > **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 
 
-Figyeléséhez ad hozzá kiszolgálókat, ellenőrizheti azok esetében a legutolsó felderítésének időpontját **konfigurációs kiszolgálók** > **utolsó forduljon,**. Gépek felvétele egy ütemezett felderítés idejének várakozás nélkül, jelölje ki a konfigurációs kiszolgálót (ne kattintson rá), és kattintson a **frissítése**.
+Figyeléséhez ad hozzá kiszolgálókat, ellenőrizheti azok esetében a legutolsó felderítésének időpontját **konfigurációs kiszolgálók** > **utolsó forduljon,** . Gépek felvétele egy ütemezett felderítés idejének várakozás nélkül, jelölje ki a konfigurációs kiszolgálót (ne kattintson rá), és kattintson a **frissítése**.
 
 ## <a name="next-steps"></a>További lépések
 

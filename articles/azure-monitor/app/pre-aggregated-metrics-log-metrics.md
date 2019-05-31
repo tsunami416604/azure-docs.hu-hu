@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 96d4c2c8d6c2dd7722b7377dd7a0ffd42acd3126
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9520cbb9973071bf1c52266d7718837607c1d10f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572511"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256133"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Napló-alapú és előre összesített mérőszámok az Application insights szolgáltatásban
 
@@ -34,7 +34,7 @@ Egy időben, események teljes készletének összegyűjtése pedig praktikus (v
 
 ## <a name="pre-aggregated-metrics"></a>Előre összesített mérőszámok
 
-Napló alapú metrikák mellett Fall 2018, az Application Insights csapata szállítva nyilvános előzetes verziója a time series-hoz optimalizált speciális adattárban tárolt metrikák. Az új mérőszámok már nem őrzi meg a Tulajdonságok sok egyes eseménynek számít. Ehelyett azok tárolódnak, előre összesített idősorozat, és csak a kulcsfontosságú dimenziókat. Ez lehetővé teszi az új mérőszámok kiváló lekérdezéskor: adatok beolvasása közben történik, sokkal gyorsabban és kevesebb számítási teljesítményt igényel. Ennek következtében ezáltal új forgatókönyvek például [közel valós idejű riasztások a metrikák dimenziókon történő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts), dinamikusabb [irányítópultok](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards), stb.
+Napló alapú metrikák mellett Fall 2018, az Application Insights csapata szállítva nyilvános előzetes verziója a time series-hoz optimalizált speciális adattárban tárolt metrikák. Az új mérőszámok már nem őrzi meg a Tulajdonságok sok egyes eseménynek számít. Ehelyett azok tárolódnak, előre összesített idősorozat, és csak a kulcsfontosságú dimenziókat. Ez lehetővé teszi az új mérőszámok kiváló lekérdezéskor: adatok beolvasása közben történik, sokkal gyorsabban és kevesebb számítási teljesítményt igényel. Ennek következtében ezáltal új forgatókönyvek például [közel valós idejű riasztások a metrikák dimenziókon történő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts), dinamikusabb [irányítópultok](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard), stb.
 
 > [!IMPORTANT]
 > Az Application Insights, log-alapú mind előre összesített mérőszámok szerepelhet egyszerre. Az Application Insights UX az előre összesített mérőszámok most nevezzük "Standard metrikák (előzetes verzió)", míg az eseményeket a hagyományos metrikáit is nevet kapott: "Log-alapú metrikák" a kettő megkülönböztetéséhez.

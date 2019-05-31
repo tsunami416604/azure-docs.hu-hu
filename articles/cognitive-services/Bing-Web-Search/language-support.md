@@ -10,18 +10,18 @@ ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: e657c4678c76e8ff667c1a3f30409fc157f52d16
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 18b124ca7f6f270488fa8e010d2b1c0404f8e9e2
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798240"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384778"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>A Bing Web Search API nyelvéhez és régiójához támogatása
 
 A Bing Web Search API több mint három tucat országokban vagy régiókban, számos, az egynél több nyelvet támogat. Adjon meg egy ország vagy régió lekérdezéssel adott ország vagy régió kimutatott érdeklődések alapján találatok szűkítése segítségével. Az eredmények tartalmazhatják a Bing mutató hivatkozásokat, és ezeket a hivatkozásokat is honosítani a Bing felhasználói élmény az adott ország/régió vagy nyelv szerint.
 
-Ország vagy régió használatával megadhatja a `cc` lekérdezési paraméter. Ha egy ország vagy régió van megadva, meg kell adnia egy vagy több, a nyelvi kódot a [ `Accept-Language` fejléc](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers). Használja a [piacok tábla](#markets) az adott piacon támogatott nyelvek listáját.
+Ország vagy régió használatával megadhatja a `cc` lekérdezési paraméter. Ha egy ország vagy régió van megadva, meg kell adnia egy vagy több, a nyelvi kódot a [ `Accept-Language` fejléc](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers). Használja a [piacok tábla](#markets) az adott piacon támogatott nyelvek listáját.
 
 Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és a egy kódot a **piacok** tábla. Adja meg a piacon egyidejűleg megadja egy ország vagy régió és a egy előnyben részesített nyelvi. Explicit módon beállíthat a nyelvet, de a `setLang` lekérdezési paraméter.
 
@@ -42,7 +42,7 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Németország|DE|
 |Hongkong (KKT)|HK|
 |India|IN|
-|Indonézia|azonosító|
+|Indonézia|ID|
 |Olaszország|IT|
 |Japán|JP|
 |Korea|KR|
@@ -50,7 +50,7 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Mexikó|MX|
 |Hollandia|NL|
 |Új-Zéland|NZ|
-|Norvégia|NEM|
+|Norvégia|NO|
 |Kína|CN|
 |Lengyelország|PL|
 |Portugália|PT|
@@ -71,12 +71,12 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Ország/régió|Nyelv|Piaci kód|
 |-------|--------|-----------|
 |Argentína|spanyol|es-AR|
-|Ausztrália|angol|en-Ausztrália|
+|Ausztrália|Angol|en-Ausztrália|
 |Ausztria|német|Németország-AT|
 |Belgium|holland|nl-BE|
 |Belgium|francia|FR-lehet|
 |Brazília|portugál|pt-BR|
-|Kanada|angol|en-hitelesítésszolgáltató|
+|Kanada|Angol|en-hitelesítésszolgáltató|
 |Kanada|francia|FR-hitelesítésszolgáltató|
 |Chile|spanyol|es-CL|
 |Dánia|dán|da-DK|
@@ -84,31 +84,31 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Franciaország|francia|FR-FR|
 |Németország|német|de-DE|
 |Hongkong (KKT)|Kínai (hagyományos)|zh-HK|
-|India|angol|en-IN|
-|Indonézia|angol|en-azonosító|
+|India|Angol|en-IN|
+|Indonézia|Angol|en-azonosító|
 |Olaszország|olasz|it-IT|
 |Japán|japán|ja-JP|
 |Korea|koreai|ko-KR|
-|Malajzia|angol|en-MY|
+|Malajzia|Angol|en-MY|
 |Mexikó|spanyol|es-MX|
 |Hollandia|holland|NL-NL|
-|Új-Zéland|angol|en-NZ|
+|Új-Zéland|Angol|en-NZ|
 |Norvégia|norvég|no-NO|
 |Kína|kínai|zh-CN|
 |Lengyelország|lengyel|pl-PL|
 |Portugália|portugál|PT-PT|
-|Fülöp-szigetek|angol|en-PH|
+|Fülöp-szigetek|Angol|en-PH|
 |Oroszország|orosz|ru-RU|
-|Szaúd-Arábia|Arab|ar-SA|
-|Dél-Afrika|angol|en-ZA|
+|Szaúd-Arábia|arab|ar-SA|
+|Dél-Afrika|Angol|en-ZA|
 |Spanyolország|spanyol|es-ES|
 |Svédország|svéd|SV-SE|
 |Svájc|francia|FR-CH|
 |Svájc|német|Németország – CH|
 |Tajvan|Kínai (hagyományos)|zh-TW|
 |Törökország|török|tr-TR|
-|Egyesült Királyság|angol|en-GB|
-|Egyesült Államok|angol|en-US|
+|Egyesült Királyság|Angol|en-GB|
+|Egyesült Államok|Angol|en-US|
 |Egyesült Államok|spanyol|es-US|
 
 ## <a name="next-steps"></a>További lépések

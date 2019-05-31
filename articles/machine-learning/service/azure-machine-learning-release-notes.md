@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3acaf86123f2cab871bc2f99cc873a73015875e2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 2dd397e879dd76cabd119a3cbedff34041be2d13
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989846"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298484"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -24,6 +24,21 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 + Az Azure Machine Learning [ **adat-előkészítési SDK**](https://aka.ms/data-prep-sdk)
 
 Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismert hibák és a lehetséges megoldások megismeréséhez.
+
+## <a name="2019-05-28"></a>2019-05-28
+
+### <a name="azure-machine-learning-data-prep-sdk-v114"></a>Az Azure Machine Learning adat-előkészítési SDK v1.1.4
+
++ **Új funkciók**
+  + Mostantól használhatja az alábbi kifejezés nyelvi funkciókat való kibontása és elemzése a dátum/idő értékek új oszlopba.
+    + `RegEx.extract_record()` kibontja a dátum és idő, elem egy új oszlopba.
+    + `create_datetime()` dátum és idő objektumok külön dátum és idő elemeket hoz létre.
+  + Hívásakor `get_profile()`, most már megtekintheti, hogy ki osztóérték oszlopok van jelölve (becsült) egyértelműen jelzi, hogy az értékek a következők becsült dátumokkal.
+  + Mostantól használhat ** helyettesítés olvasása az Azure Blob Storage-ból.
+    + Például: `dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
+
++ **Hibajavítások**
+  + Kijavítva a hiba, a Parquet-fájlokba olvasásakor távoli forrásból (Azure Blob) kapcsolatos.
 
 ## <a name="2019-05-14"></a>2019-05-14
 
@@ -332,7 +347,7 @@ Megjegyzés: Data Prep Python SDK már nem telepíti a `numpy` és `pandas` csom
     - Hisztogram
     - Halmozott sáv diagram
     - Box-diagram
-    - Pontdiagram
+    - Pont
     - Buborék diagram
 + A portál dinamikusan hoz létre a kísérletek a jelentésekre. Amikor egy felhasználó beküld egy futtatásra annak kísérlet, egy jelentés automatikusan jön létre, a naplózott mérőszámok és gráfok különböző frissítési kísérletei összehasonlító engedélyezéséhez. 
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 5/3/2019
+ms.date: 5/30/2019
 ms.author: victorh
-ms.openlocfilehash: 84b42654ec472ea2c7c81bed545f56b647158c95
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 75b1131f2853cb444481b9c7a6c96e28f8537538
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016020"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384674"
 ---
 # <a name="azure-firewall-faq"></a>Azure-tűzfalon – gyakori kérdések
 
@@ -34,7 +34,7 @@ Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltat�
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Mi az az Azure tűzfal a tipikus telepítési modell?
 
-Azure tűzfal telepíthet minden olyan virtuális hálózaton, de az ügyfelek általában üzembe helyezni a központi virtuális hálózaton, és a Központ-küllő modellek hozzá más virtuális hálózatokat. Ezután beállíthatja az alapértelmezett útvonal, a társviszonyban álló virtuális hálózatba, mutasson a tűzfal központi virtuális hálózaton. Globális virtuális társhálózatok létesítésének támogatott, de nem ajánlott lehetséges teljesítményének és késési problémák miatt régiók között elosztva. A legjobb teljesítmény érdekében üzembe helyezése egy tűzfal régiónként.
+Azure tűzfal telepíthet minden olyan virtuális hálózaton, de az ügyfelek általában üzembe helyezni a központi virtuális hálózaton, és a Központ-küllő modellek hozzá más virtuális hálózatokat. Ezután beállíthatja az alapértelmezett útvonal, a társviszonyban álló virtuális hálózatba, mutasson a tűzfal központi virtuális hálózaton. Globális virtuális társhálózatok létesítésének támogatott, de ez nem ajánlott lehetséges teljesítményének és késési problémák miatt régiók között elosztva. A legjobb teljesítmény érdekében üzembe helyezése egy tűzfal régiónként.
 
 Ez a modell előnye képesek központilag több küllő virtuális hálózatok különböző előfizetésekben vezérlőelem. Is találhatók költséget takaríthat meg, nem kell az egyes virtuális hálózatok tűzfal külön-külön telepíteni. A költségek csökkentését és a társítás társviszony-létesítési költséget, az ügyfél forgalmi minták alapján kell mérni.
 
@@ -62,7 +62,7 @@ Azure-tűzfalon megtekintésére és elemzésére tűzfalnaplók integrálva van
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Azure-tűzfal működése eltér a meglévő szolgáltatások, például a piactéren az nva-k
 
-Az Azure tűzfal egyszerű tűzfal szolgáltatása kezelheti az egyes felhasználói forgatókönyv. Valószínű, hogy külső nva-k és az Azure-tűzfal lesz. Jobban működnek együtt az alapvető prioritást.
+Az Azure tűzfal egyszerű tűzfal szolgáltatása kezelheti az egyes felhasználói forgatókönyv. Várható, hogy meg kell külső nva-k és az Azure-tűzfal. Jobban működnek együtt az alapvető prioritást.
 
 ## <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Mi a különbség az Application Gateway WAF és az Azure-tűzfal?
 
@@ -71,6 +71,11 @@ A webalkalmazási tűzfal (WAF) az Application Gateway, amelyek a webalkalmazás
 ## <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Mi a különbség a hálózati biztonsági csoportok (NSG-k) és a tűzfal az Azure között?
 
 Az Azure-tűzfal szolgáltatás egészíti ki a hálózati biztonsági csoport funkciót. Együtt biztosítanak a nagyobb "defense jellegű" hálózati biztonság. Hálózati biztonsági csoportok adja meg a hálózati réteg elosztott forgalom szűrése belül minden előfizetésben található virtuális hálózatok erőforrásokra irányuló forgalom korlátozásához. Az Azure tűzfal egy teljes mértékben állapotalapú, a központi hálózati tűzfal-szolgáltatásként, amely hálózati és az alkalmazás-szintű védelmet biztosít a különböző előfizetésekben találhatóak, és a virtuális hálózatok között.
+
+## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>Az Azure-tűzfal alhálózat támogatott hálózati biztonsági csoportok (NSG)?
+
+Azure-tűzfalon egy olyan felügyelt szolgáltatás több védelmi rétegeket, beleértve a platform-védelem és a hálózati szintű NSG-k (nem látható).  Alhálózat-szintű NSG-k az Azure-tűzfal alhálózat nem szükséges, és le vannak tiltva, a szolgáltatás megszakítás nélküli fenntartása érdekében.
+
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Hogyan állíthatok be Azure-tűzfal saját szolgáltatásvégpontokkal?
 
@@ -121,11 +126,11 @@ Igen. Azonban ugyanazon virtuális Hálózatban lévő alhálózatok közötti f
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Kényszerítetten tunneling/láncolási egy hálózati virtuális berendezésre támogatott?
 
-Kényszerített bújtatás nem támogatott alapértelmezés szerint, de engedélyezhető támogatási segítségével.
+Alapértelmezés szerint kényszerített bújtatás nem támogatott, de engedélyezhető támogatási segítségével.
 
 Az Azure tűzfal közvetlen internetkapcsolattal kell rendelkeznie. A AzureFirewallSubnet megtanulja az alapértelmezett útvonalat a BGP-n keresztül a helyszíni hálózathoz, ha meg kell felülbírálja ezt az egy 0.0.0.0/0 UDR-a **NextHopType** értéket állítja be **Internet** közvetlen fenntartása Internetkapcsolat. Alapértelmezés szerint az Azure-tűzfal nem támogatja a kényszerített bújtatás a helyszíni hálózathoz.
 
-Azonban ha a konfigurációt igényel a helyszíni hálózathoz a kényszerített bújtatás, a Microsoft támogatja eseti alapon. Úgy, hogy az eset, forduljon az ügyfélszolgálathoz. Ha elfogadja, hogy lesz engedélyezett az előfizetés, és biztosítják a szükséges internetkapcsolattal.
+Azonban ha a konfigurációt igényel a helyszíni hálózathoz a kényszerített bújtatás, a Microsoft támogatja eseti alapon. Úgy, hogy az eset, forduljon az ügyfélszolgálathoz. Ha elfogadja, hogy fog az előfizetést, és biztosítják a szükséges internetkapcsolattal.
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Vannak-e minden olyan tűzfal erőforrás-korlátozások csoportban?
 
@@ -137,7 +142,7 @@ Nem. NAT-szabályok implicit módon adja hozzá a lefordított forgalmat engedé
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Hogyan működnek a helyettesítő karakterek egy alkalmazás a szabály TARGET FQDN?
 
-Ha konfigurálja ***. contoso.com**, lehetővé teszi *anyvalue*. contoso.com, de nem a contoso.com (domain pontjánál). Ha szeretné engedélyezni a domain pontjánál, explicit módon konfigurálnia kell azt FQDN célként.
+Ha konfigurálja * **. contoso.com**, lehetővé teszi *anyvalue*. contoso.com, de nem a contoso.com (domain pontjánál). Ha szeretné engedélyezni a domain pontjánál, explicit módon konfigurálnia kell azt FQDN célként.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>Mire *kiépítési állapota: Nem sikerült* mean?
 

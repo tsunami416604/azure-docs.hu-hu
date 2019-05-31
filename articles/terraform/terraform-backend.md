@@ -7,12 +7,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: tarcher
-ms.openlocfilehash: 7145a50bc53fd28afafd3de9c724b5e5f71624fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89108f02957990ad1c7eb736f39de89537f06db5
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60905896"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297926"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>A Terraform állapot Store az Azure Storage-ban
 
@@ -79,7 +79,7 @@ export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --v
 
 A háttéralkalmazás használatára a Terraform konfigurálása, adjon meg egy *háttérrendszer* típusú konfigurációs *azurerm* belül a Terraform konfigurálása. Adja hozzá a *tárfiók_neve*, *container_name*, és *kulcs* a konfigurációs blokk értékeket.
 
-Az alábbi példa a háttérrendszernek a Terraform konfigurálása és hoz létre, és Azure-erőforráscsoportot. Az értékeket cserélje le a környezetből értékeket.
+Az alábbi példa egy Terraform háttérrendszer konfigurálja, és létrehoz egy Azure-erőforráscsoportot. Az értékeket cserélje le a környezetből értékeket.
 
 ```json
 terraform {

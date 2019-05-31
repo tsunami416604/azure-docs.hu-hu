@@ -13,12 +13,12 @@ caps.latest.revision: 42
 author: jpconnock
 ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 4e018af7df64c9ed8050a3c618cf2645d5509cdd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea373c7b35ef82496690f213b92cc97f3536c57a
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60613253"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356152"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Az Azure Cloud Services – definíciós séma (.csdef fájl)
 A szolgáltatásdefiníciós fájl határozza meg, hogy a modell egy alkalmazáshoz. A fájl a felhőszolgáltatás számára elérhető szerepköröket definícióit tartalmazza, meghatározza a szolgáltatásvégpontokat, és hozza létre a szolgáltatás konfigurációs beállításait. Konfigurációs beállítás értéke a konfigurációs fájlban, leírtak szerint a [Felhőszolgáltatás (klasszikus) konfigurációs séma](/previous-versions/azure/reference/ee758710(v=azure.100)).
@@ -69,7 +69,7 @@ A következő táblázat ismerteti az attribútumai a `ServiceDefinition` elemet
 
 | Attribútum               | Leírás |
 | ----------------------- | ----------- |
-| név                    |Kötelező. A szolgáltatás neve. A név a szolgáltatás fiókja egyedinek kell lennie.|
-| topologyChangeDiscovery | Választható. Határozza meg topológia módosítási értesítést. Lehetséges értékek:<br /><br /> -   `Blast` -Küld a frissítést minél hamarabb összes szerepkörpéldányra. Ha a beállítást választja, a szerepkör tudja kezelni a topológia a frissítés újraindítás nélkül kell lennie.<br />-   `UpgradeDomainWalk` – A frissítést küld minden szerepkörpéldány soros módon a korábbi példánya sikeresen fogadta el a frissítés után.|
+| name                    |Kötelező. A szolgáltatás neve. A név a szolgáltatás fiókja egyedinek kell lennie.|
+| topologyChangeDiscovery | Választható. Határozza meg topológia módosítási értesítést. Lehetséges értékek a következők:<br /><br /> -   `Blast` -Küld a frissítést minél hamarabb összes szerepkörpéldányra. Ha a beállítást választja, a szerepkör tudja kezelni a topológia a frissítés újraindítás nélkül kell lennie.<br />-   `UpgradeDomainWalk` – A frissítést küld minden szerepkörpéldány soros módon a korábbi példánya sikeresen fogadta el a frissítés után.|
 | sémaverzióval           | Választható. Határozza meg a szolgáltatásdefiníciós sémában verzióját. A séma verziója lehetővé teszi, hogy válassza ki a megfelelő SDK-eszközök séma érvényesítése használandó, ha az SDK egynél több verziója van telepítve a Visual Studio egymás mellett.|
-| upgradeDomainCount      | Választható. A frissítési tartományok között, amelyek a szolgáltatás szerepkörök lefoglalásának számát adja meg. Szerepkör példányai vannak lefoglalva a frissítési tartományokhoz, a szolgáltatás telepítésekor. További információkért lásd: [felhőszolgáltatási szerepkör vagy telepítés frissítése](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment).<br /><br /> Akár 20 frissítési tartományt is megadhat. Ha nincs megadva, az alapértelmezett frissítési tartományok száma az 5.|
+| upgradeDomainCount      | Választható. A frissítési tartományok között, amelyek a szolgáltatás szerepkörök lefoglalásának számát adja meg. Szerepkör példányai vannak lefoglalva a frissítési tartományokhoz, a szolgáltatás telepítésekor. További információkért lásd: [felhőszolgáltatási szerepkör vagy telepítés frissítése](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment), [kezelheti a virtuális gépek availabilty](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) és [mi egy Felhőszolgáltatási modellnek](https://docs.microsoft.com/azure/cloud-services/cloud-services-model-and-package).<br /><br /> Akár 20 frissítési tartományt is megadhat. Ha nincs megadva, az alapértelmezett frissítési tartományok száma az 5.|

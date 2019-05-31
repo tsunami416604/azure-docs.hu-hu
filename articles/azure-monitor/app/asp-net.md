@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: c69e925913d4dcb3a8bec34cbf25dac184ea65c5
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 5b719566ce42639c0c435a8d631e12541d0a0e9d
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595538"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256622"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -99,12 +99,10 @@ A portál az alkalmazásából származó telemetriai adatok nézetével nyílik
 
 A portálon az egyik csempére vagy diagramra kattintva további részleteket tekinthet meg.
 
-[További tudnivalók az Application Insights használatáról az Azure Portalon](../../azure-monitor/app/app-insights-dashboards.md).
-
-## <a name="step-4-publish-your-app"></a>4. lépés: Alkalmazás közzététele
+## <a name="step-4-publish-your-app"></a>4. lépés: Az alkalmazás közzététele
 Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) ellenőrizheti, hogy minden rendben működik-e.
 
-A telemetria az Application Insights portálon épül fel, ahol figyelheti a mérőszámokat, kereshet a telemetriára és [irányítópultokat](../../azure-monitor/app/app-insights-dashboards.md) állíthat be. Is használhatja a nagy teljesítményű [Kusto-lekérdezés nyelvi](/azure/kusto/query/) a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához.
+A telemetriai adatok buildek fel az Application Insights portálon, ahol figyelheti a mérőszámokat, kereshet a telemetriára. Is használhatja a nagy teljesítményű [Kusto-lekérdezés nyelvi](/azure/kusto/query/) a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához.
 
 Folytathatja a telemetria elemzését a [Visual Studióban](../../azure-monitor/app/visual-studio.md) olyan eszközökkel, mint például a diagnosztikai keresés és a [trendek](../../azure-monitor/app/visual-studio-trends.md).
 
@@ -146,7 +144,6 @@ További témaköröket is elolvashat, ha a következők érdeklik:
 ### <a name="analysis"></a>Elemzés
 
 * **[Az Application Insights használata a Visual Studióban](../../azure-monitor/app/visual-studio.md)**<br/>A telemetriával végzett hibakereséssel, diagnosztikai kereséssel és a kódig való részletezés lefúrással kapcsolatos információkat tartalmaz.
-* **[Az Application Insights-portál használata](../../azure-monitor/app/app-insights-dashboards.md)**<br/> Az irányítópultokkal, a hatékony diagnosztikai és elemzési eszközökkel, riasztásokkal, az alkalmazás élő függőségi térképével, valamint a telemetria exportálásával kapcsolatos információkat tartalmaz.
 * **[Elemzés](../../azure-monitor/log-query/get-started-portal.md)** – Erőteljes lekérdezési nyelv.
 
 ### <a name="alerts"></a>Riasztások

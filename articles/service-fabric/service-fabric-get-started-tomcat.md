@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 5ae2ca352c6d3cbe02b659a97fe3147c1a31128f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df3156688f018aee4717271557220396827dd9e2
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60947431"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306831"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Az Apache Tomcat kiszolgálót a linuxon futó Service Fabric-tároló létrehozása
 Az Apache Tomcat a Java Servlet és a Java-kiszolgáló technológiák egy népszerű, nyílt forráskódú megvalósítását. Ez a cikk bemutatja, hogyan hozhat létre egy tárolót az Apache Tomcat és a egy egyszerű webalkalmazást, a tároló üzembe Linux operációs rendszert futtató Service Fabric-fürt és a webes alkalmazásba való csatlakozáshoz.  
@@ -111,9 +111,9 @@ Kövesse az ebben a szakaszban egy Docker-rendszerkép alapján az Apache Tomcat
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>A Tomcat rendszerkép leküldése a tárolójegyzékbe
 Most, hogy már ellenőrizte, hogy a Tomcat kép tárolóban fut, a fejlesztői számítógépen való, leküldése egy tároló-beállításjegyzék-tárház. Ez a cikk az Azure Container Registryt használjuk a lemezkép tárolására, de néhány módosítással lépéseket használhatja bármely tárolóregisztrációs adatbázis választott. Ebben a cikkben a beállításjegyzék neve azt feltételezi, hogy *myregistry* myregistry.azurecr.io pedig a teljes adatbázis nevét. Ezek a forgatókönyvnek megfelelően a módosítása 
 
-1. Futtassa a(z) `docker login` parancsot a tároló-beállításjegyzékbe való bejelentkezéshez a [beállításjegyzékhez tartozó hitelesítő adataival](../container-registry/container-registry-authentication.md).
+1. Futtatás `docker login` a tároló-beállításjegyzékbe való bejelentkezéshez a [a tárolójegyzék hitelesítő adatainak](../container-registry/container-registry-authentication.md).
 
-   Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz. Vagy bejelentkezhet a beállításjegyzékhez tartozó felhasználónevével és jelszavával.
+   Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz. Vagy nem sikerült bejelentkezni az a beállításjegyzékhez tartozó felhasználónevével és jelszavával.
 
    ```bash
    docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -144,7 +144,7 @@ Most, hogy a Tomcat rendszerkép már leküldött továbbíthat egy tárolóregi
    * Adjon nevet az alkalmazásnak: ServiceFabricTomcat
    * Az alkalmazás-szolgáltatás neve: TomcatService
    * Adjon meg a lemezkép neve: Adja meg az URL-címet a tárolórendszerképet a tárolóregisztrációs adatbázis található Ha például myregistry.azurecr.io/samples/tomcattest.
-   * Parancsok: Hagyja üresen. Mivel ez a rendszerkép meghatározott számításifeladat-belépési ponttal rendelkezik, így nem kell explicit módon megadni a bemeneti parancsokat (tárolón belül futó parancsok, amelyek az indítás után biztosítják a tároló futtatását).
+   * Parancsok: Hagyja üresen a mezőt. Mivel ez a rendszerkép meghatározott számításifeladat-belépési ponttal rendelkezik, így nem kell explicit módon megadni a bemeneti parancsokat (tárolón belül futó parancsok, amelyek az indítás után biztosítják a tároló futtatását).
    * Vendég-tárolóalkalmazás példányainak számát: 1
 
    ![Tárolókhoz készült Service Fabric Yeoman-generátor](./media/service-fabric-get-started-tomcat/yo-generator.png)
@@ -162,7 +162,7 @@ Most, hogy a Tomcat rendszerkép már leküldött továbbíthat egy tárolóregi
    </Resources>
    ```
 
-11. Az alkalmazásjegyzékben (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml*) alatt a **ServiceManifestImport** címke, adja hozzá a következő XML-kódot. Cserélje le a **AccountName** és **jelszó** a a **RepositoryCredentials** címke nevét a tárolóregisztrációs adatbázisba, és jelentkezzen be, szükséges jelszó.
+11. Az alkalmazásjegyzékben (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml*) alatt a **ServiceManifestImport** címke, adja hozzá a következő XML-kódot. Cserélje le a **AccountName** és **jelszó** a a **RepositoryCredentials** megjelölés nevét a tárolóregisztrációs adatbázis és a jelszót kell bejelentkezni.
 
    ```xml
    <Policies>

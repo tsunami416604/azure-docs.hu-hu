@@ -11,16 +11,16 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: fa02c0913329ec740e3066b05b2e44a36ad379ce
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a038dc2706c7cb128751630f8997851409886290
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797810"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384812"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>A Bing Web Search API az eredmények között
 
-A Web Search API hívásakor a Bing-eredmények listáját adja vissza. A lista egy teljes száma, amely fontos lehet a lekérdezési eredmények egy részét. Az első rendelkezésre álló válaszokat becsült teljes száma, a válasz-objektum eléréséhez [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) mező.  
+A Web Search API hívásakor a Bing-eredmények listáját adja vissza. A lista egy teljes száma, amely fontos lehet a lekérdezési eredmények egy részét. Az első rendelkezésre álló válaszokat becsült teljes száma, a válasz-objektum eléréséhez [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) mező.  
 
 A következő példa bemutatja a `totalEstimatedMatches` mező, amely egy webes válasz tartalmazza.  
 
@@ -35,7 +35,7 @@ A következő példa bemutatja a `totalEstimatedMatches` mező, amely egy webes 
 }  
 ```
 
-Oldalon keresztül a rendelkezésre álló weboldalakat, használja a [száma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#count) és [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#offset) lekérdezési paramétereket.  
+Oldalon keresztül a rendelkezésre álló weboldalakat, használja a [száma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#count) és [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#offset) lekérdezési paramétereket.  
 
 A `count` paraméter adja meg a válaszban visszaadott eredmények száma. Az eredmények, amelyek a válaszban vonatkozó kérések maximális száma érték az 50. Az alapértelmezett érték 10. A tényleges szám i lehet kisebb, mint a kért.
 
@@ -59,7 +59,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-A Web Search API, amelyek közé tartozik a weblapok és képek, videók és hírek tartalmazhatnak eredményt adja vissza. Ha a keresési eredmények oldalon lapozás a [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) válasz és nem a többi válaszok például képeket vagy híreket. Például, ha a beállított `count` 50, vissza 50 weblap eredményeket kap, de a válasz tartalmazhat további válaszokat is az eredményeket. A válasz tartalmazhat például 15 képek és 4 híreket. Is lehetőség, hogy előfordulhat, hogy az eredmények tartalmazzák a híreket az első oldal, de nem a második oldal, vagy fordítva.   
+A Web Search API, amelyek közé tartozik a weblapok és képek, videók és hírek tartalmazhatnak eredményt adja vissza. Ha a keresési eredmények oldalon lapozás a [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) válasz és nem a többi válaszok például képeket vagy híreket. Például, ha a beállított `count` 50, vissza 50 weblap eredményeket kap, de a válasz tartalmazhat további válaszokat is az eredményeket. A válasz tartalmazhat például 15 képek és 4 híreket. Is lehetőség, hogy előfordulhat, hogy az eredmények tartalmazzák a híreket az első oldal, de nem a második oldal, vagy fordítva.   
 
 Ha megad a `responseFilter` lekérdezési paraméter, és nem szerepel a lista weblapok, ne használja a `count` és `offset` paramétereket. 
 

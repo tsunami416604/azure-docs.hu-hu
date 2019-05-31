@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: d8c2c69a81597c2702d608ccac8dceed1e832aff
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bc33d65972e12591130389e0c3cb8697898d1da9
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790228"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390345"
 ---
 # <a name="custom-search"></a>Egyéni keresés
 A Bing Custom Search szolgáltatással személyre szabott keresési funkciókat hozhat létre olyan témakörökhöz kapcsolódóan, amelyek jelentőséggel bírnak az Ön számára. A felhasználók az érdeklődési körükhöz igazított keresési eredményeket látnak ahelyett, hogy több oldalnyi irreleváns találatot kellene átnézniük.
@@ -28,12 +28,12 @@ Végpont: Értéket ad vissza JSON eredményként, amely a felhasználói bevite
  GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search  
 ```
 
-Ismerteti, hogyan állíthat be egyéni keresés források példákért lásd a [oktatóanyag](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page). További információk a fejlécek, paraméterek, piaci kódok, válaszobjektumok, hibák stb, tekintse meg a [Bing Custom Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference) hivatkozás.
+Ismerteti, hogyan állíthat be egyéni keresés források példákért lásd a [oktatóanyag](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page). További információk a fejlécek, paraméterek, piaci kódok, válaszobjektumok, hibák stb, tekintse meg a [Bing Custom Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference) hivatkozás.
 
 ## <a name="custom-search-response-json"></a>Egyéni keresési válasz JSON
-Egyéni keresési kérelem JSON-objektumként eredményeket ad vissza, lásd: [válaszobjektumok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#response-objects). 
+Egyéni keresési kérelem JSON-objektumként eredményeket ad vissza, lásd: [válaszobjektumok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#response-objects). 
 
-## <a name="custom-autosuggest"></a>Custom Autosuggest
+## <a name="custom-autosuggest"></a>Egyéni automatikus kiegészítés
 Az egyéni automatikus kiegészítés API lehetővé teszi egy részleges keresési lekérdezés kifejezés küldeni a Bing, majd az konfigurálható javasolt lekérdezések listája. Az egyéni automatikus kiegészítés adja hozzá az API által visszaadott javaslatokat, és szükség esetén adja meg, hogy tartalmazza a Bing által létrehozott javaslatok.
 
 ## <a name="custom-autosuggest-endpoint"></a>Custom Autosuggest végpontja

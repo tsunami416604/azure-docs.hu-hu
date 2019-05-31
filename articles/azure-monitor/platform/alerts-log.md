@@ -5,15 +5,15 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 05/30/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: d893fb1023188498260813642678397a39bb2442
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: b7240b38e595fdcf9f9d4f995f71643154ee0f9b
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872372"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399178"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások
 
@@ -39,7 +39,7 @@ Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felület
 
 1. Válassza ki a **Új riasztási szabály** gombra kattintva hozzon létre egy új értesítés az Azure-ban.
 
-    ![Riasztás beállítása](media/alerts-log/AlertsPreviewOption.png)
+    ![Riasztás hozzáadása](media/alerts-log/AlertsPreviewOption.png)
 
 1. A riasztás létrehozása szakaszt a három részből álló mellett látható: *Riasztási feltétel megadása*, *riasztás részleteinek megadása*, és *definiálása műveletcsoport*.
 
@@ -58,7 +58,7 @@ Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felület
 
    > [!NOTE]
    > 
-   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)**, a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [Azure Monitor log-lekérdezéssel](../log-query/log-query-overview.md) vagy [megosztott application insights-elemzési lekérdezés ](../log-query/log-query-overview.md).
+   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)** , a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [Azure Monitor log-lekérdezéssel](../log-query/log-query-overview.md) vagy [megosztott application insights-elemzési lekérdezés ](../log-query/log-query-overview.md).
 
 1. *Naplóriasztások*: A kijelölt riasztási lekérdezés is fel kell tüntetni **keresési lekérdezés** mező; Ha a lekérdezés szintaxisa helytelen a mezőben az hiba vörös színnel jelenik meg. Ha a lekérdezés szintaxisa helyes - referenciaként előzményadatok a megadott lekérdezés látható gráfként kapcsolóval, hogy a Teljesítménybeállítások az időtartomány utolsó 6 óra múlt héten.
 
@@ -308,23 +308,36 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
 
 A fenti json-mintaadatok menthető, ez az útmutató céljából (például:) sampleScheduledQueryRule.json és telepíthetők [Azure Resource Manager az Azure Portalon](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
-## <a name="managing-log-alerts-using-powershell-cli-or-api"></a>A PowerShell, a parancssori felület vagy az API riasztások kezelése
+## <a name="managing-log-alerts-using-powershell"></a>PowerShell-lel riasztások kezelése
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Az Azure Monitor - [ütemezett lekérdezési szabály API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager egy parancsmagjához, valamint az Azure CLI-n keresztül.
+Az Azure Monitor - [ütemezett lekérdezési szabály API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. És az alábbi PowerShell-parancsmagok érhetők el kihasználhatja a [ütemezett lekérdezési szabály API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
+
+1. [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) : PowerShell-parancsmaggal hozzon létre egy új riasztási szabály.
+1. [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) : PowerShell-parancsmagot egy meglévő riasztási szabály frissítése.
+1. [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) : PowerShell-parancsmag létrehozni vagy frissíteni az objektumot, egy riasztás forrása paramétereinek megadása. Használja majd bemenetként a [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) és [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) parancsmagot.
+1. [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule): PowerShell-parancsmag létrehozni vagy frissíteni az objektumot ütemezés paraméterek megadását egy riasztás. Használja majd bemenetként a [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) és [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) parancsmagot.
+1. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) : PowerShell-parancsmag létrehozni vagy frissíteni az objektumot, egy riasztás művelet paramétereinek megadása. Használja majd bemenetként a [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) és [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) parancsmagot.
+1. [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : PowerShell-parancsmag használatával létrehozni vagy frissíteni az objektumot adja meg a műveletet egy riasztás paraméterek csoportosítja. Használja majd bemenetként a [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) parancsmagot.
+1. [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : PowerShell-parancsmag létrehozni vagy frissíteni az objektumot eseményindítót feltétel paraméterek megadását riasztás. Használja majd bemenetként a [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) parancsmagot.
+1. [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : PowerShell-parancsmag használatával létrehozni vagy frissíteni az objektumot a metrikaindító metrikanevét feltétel paramétereinek megadása [metrikamérési típusú riasztás](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules). Használja majd bemenetként a [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) parancsmagot.
+1. [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) : PowerShell-parancsmag meglévő lista jelentkezzen riasztási szabályok vagy egy konkrét riasztási szabály
+1. [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) : PowerShell-parancsmag használatával engedélyezni vagy letiltani a riasztási szabály
+1. [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell-parancsmagot egy meglévő riasztási szabály törlése
+
+> [!NOTE]
+> ScheduledQueryRules PowerShell-parancsmagok csak maga a létrehozott szabályok parancsmag felügyelheti az Azure Monitor - vagy [ütemezett lekérdezési szabály API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Örökölt használatával létrehozott naplóriasztási szabályok [Log Analytics-riasztás API](api-alerts.md) és az örökölt sablonok [Log Analytics mentett keresések és a riasztások](../insights/solutions-resources-searches-alerts.md) ScheduledQueryRules PowerShell-parancsmagokkal kezelhetők csak azután felhasználói [vált, amennyiben a Log Analytics-riasztásokkal API szabályozó](alerts-log-api-switch.md).
+
+## <a name="managing-log-alerts-using-cli-or-api"></a>Parancssori felület vagy API használatával riasztások kezelése
+
+Az Azure Monitor - [ütemezett lekérdezési szabály API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager-parancsok Azure CLI-n keresztül.
 
 
 > [!NOTE]
 > Riasztások a Log Analytics használatával az örökölt is kezelhetők [Log Analytics Alert API](api-alerts.md) és az örökölt sablonok [Log Analytics mentett keresések és a riasztások](../insights/solutions-resources-searches-alerts.md) is. Az új alapértelmezés szerint itt részletes ScheduledQueryRules API segítségével további információkért lásd: [átkapcsolni új API-t a Log Analytics-riasztásokkal](alerts-log-api-switch.md).
 
-Riasztások jelenleg nem rendelkezik dedikált PowerShell vagy parancssori felület parancsai jelenleg; azonban az alábbi képen szemléltetett módon használható az Azure Resource Manager PowerShell-parancsmag használatával a minta a korábban bemutatott erőforrás sablon (sampleScheduledQueryRule.json) az erőforrás-sablon szakaszban:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
-```
-
-Az alábbi ábra szemlélteti a használati minta erőforrás sablon korábban bemutatott (sampleScheduledQueryRule.json) az Azure CLI Azure Resource Manager parancs-n keresztül az erőforrás-sablon szakaszban:
+Riasztások jelenleg nem rendelkezik dedikált parancssori felületének parancsai jelenleg; azonban az alábbi képen szemléltetett módon használható keresztül az Azure Resource Manager parancssori felületi parancsot a minta a korábban bemutatott erőforrás sablon (sampleScheduledQueryRule.json) az erőforrás-sablon szakaszban:
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json

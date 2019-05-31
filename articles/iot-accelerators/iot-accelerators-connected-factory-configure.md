@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e059762cbbf5de2ac03a8a74397e59c9b3bdb97e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450023"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387104"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Az Okosgyár-megoldásgyorsító konfigurálása
 
@@ -282,7 +282,7 @@ A csatlakoztatott gyár szimuláció OEE/KPI adatok paraméterezni vannak:
 * OPC UA csomópont értékek kiszámítása szerepelnek.
 * Hogyan ábra számított a telemetriai adatok értékek közül.
 
-Csatlakoztatott gyár használja az oee-mutatója Túllépte a képletek által közzétett a https://www.oeefoundation.org.
+Csatlakoztatott gyár használja az oee-mutatója Túllépte a képletek által közzétett a [ http://www.oeefoundation.org ](http://www.oeefoundation.org).
 
 Az állomás OPC UA objektumok engedélyezze a használat az OEE/KPI számítási címkézést. A **relevancia alapján végzett** a tulajdonság azt jelzi, hogy mely OEE/KPI. ábra az OPC UA-csomópont értéket kell használni. A **Feladatkategóriát** tulajdonság határozza meg, hogyan a számítás értékét tartalmazza.
 
