@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a1d2cc50b405df2c71d94e74973b3291a4e908cb
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
-ms.translationtype: HT
+ms.openlocfilehash: 04808dda193a3a472813cda852a1a2f24d00e112
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393488"
+ms.locfileid: "66418002"
 ---
 # <a name="content-key-policies"></a>Tartalomkulcsszabályok
 
@@ -25,7 +25,7 @@ A Media Services élő és igény szerinti tartalmait az Advanced Encryption Sta
 
 A stream a titkosítási beállítások megadásához szeretne létrehozni egy [Streamelési házirend](streaming-policy-concept.md) társítsa a [Streamelési lokátor](streaming-locators-concept.md). Hoz létre a [tartalom kulcs házirend](https://docs.microsoft.com/rest/api/media/contentkeypolicies) konfigurálása hogyan a tartalomkulcs (biztonságos hozzáférést biztosít, amely a [eszközök](assets-concept.md)) végfelhasználók kézbesíti a rendszer. A tartalom kulcs házirend, amelyeknek teljesülniük kell ahhoz, hogy a kulcsokat a megadott konfiguráció az ügyfelek felé kell beállítani a követelményeknek (korlátozások). A tartalom kulcs házirend nem egyértelmű streamelési vagy letöltése szükséges. 
 
-Általában, társítsa a **tartalom kulcs házirend** az a **Streamelési lokátor**. Megadhatja azt is megteheti, a tartalom kulcs szabályzat egy Streamelési házirend belül (a speciális alkalmazási egyéni Streamelési szabályzat létrehozásakor). 
+Általában, társítsa a **tartalom kulcs házirend** az a [Streamelési lokátor](streaming-locators-concept.md). Azt is megteheti, megadhatja a tartalom kulcs házirend belül egy [Streamelési házirend](streaming-policy-concept.md) (Ha egyéni Streamelési házirend létrehozása speciális forgatókönyvek). 
 
 Javasoljuk, hogy a Media Services content kulcsok automatikus létrehozása. Általában akkor hosszú élettartamú van szükség, és ellenőrizze a szabályzatok megléte **első**. A kulcs lekéréséhez kell beolvasni a titkos kódok vagy hitelesítő adatokat, tekintse meg a következő példában egy külön művelet metódust hívja.
 

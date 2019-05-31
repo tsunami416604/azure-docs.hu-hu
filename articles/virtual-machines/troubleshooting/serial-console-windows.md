@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 6fd7f36510bdc7ed56ede6a5743a5f131149472e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 32d385416c83f81553e734d9471d0b502a458b07
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834751"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390507"
 ---
 # <a name="azure-serial-console-for-windows"></a>A Windows Azure soros konzol
 
@@ -122,7 +122,7 @@ Ha a Windows rendszertöltő betöltő utasításokat a soros konzolon megjelen�
 
 ### <a name="use-cmd-or-powershell-in-serial-console"></a>A soros konzol CMD vagy a PowerShell használata
 
-1. Csatlakozás soros konzolon. Sikeresen csatlakozott, a rendszer kéri-e **SAC >**:
+1. Csatlakozás soros konzolon. Sikeresen csatlakozott, a rendszer kéri-e **SAC >** :
 
     ![SAC csatlakozni](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
@@ -170,7 +170,9 @@ A soros konzol egy adott virtuális gép vagy virtuálisgép-méretezési csopor
 > Engedélyezi vagy letiltja a soros konzol-előfizetéssel, az előfizetés írási engedélyekkel rendelkeznie. Ezek az engedélyek közé tartozik, de nem kizárólagosan, a rendszergazda vagy tulajdonos szerepkörök. Egyéni szerepkörök is lehet írási engedéllyel.
 
 ### <a name="subscription-level-disable"></a>Előfizetés-szintű letiltása
-A soros konzolon keresztül egy teljes előfizetésre letiltható a [tiltsa le a konzolon REST API-hívás](/rest/api/serialconsole/console/disableconsole). Használhatja a **Kipróbálom** funkció letiltása és engedélyezése a soros konzol egy előfizetés az API dokumentációja oldalon érhető el. Adja meg az előfizetés-azonosítója **subscriptionId**, adja meg "alapértelmezett" **alapértelmezett**, majd válassza ki **futtatása**. Az Azure CLI-parancsok még nem érhetők el.
+A soros konzolon keresztül egy teljes előfizetésre letiltható a [tiltsa le a konzolon REST API-hívás](/rest/api/serialconsole/console/disableconsole). Ez a művelet közreműködője szintű hozzáférésre van szüksége, vagy a fenti az előfizetéshez. Használhatja a **Kipróbálom** funkció letiltása és engedélyezése a soros konzol egy előfizetés az API dokumentációja oldalon érhető el. Adja meg az előfizetés-azonosítója **subscriptionId**, adja meg "alapértelmezett" **alapértelmezett**, majd válassza ki **futtatása**. Az Azure CLI-parancsok még nem érhetők el.
+
+Soros konzol egy előfizetés újbóli engedélyezéséhez használja a [engedélyezése konzol REST API-hívás](/rest/api/serialconsole/console/enableconsole).
 
 ![REST API-t próbálja ki](../media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
@@ -246,10 +248,10 @@ Mivel a legtöbb hiba átmeneti, a kapcsolat újrapróbálása milyen gyakran ol
 
 Hiba                            |   Kezelés
 :---------------------------------|:--------------------------------------------|
-Nem sikerült beolvasni a rendszerindítási diagnosztikai beállításait  *&lt;VMNAME&gt;*. A soros konzol használatához győződjön meg arról, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális gép. | Győződjön meg arról, hogy rendelkezik-e a virtuális gép [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve van.
+Nem sikerült beolvasni a rendszerindítási diagnosztikai beállításait  *&lt;VMNAME&gt;* . A soros konzol használatához győződjön meg arról, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális gép. | Győződjön meg arról, hogy rendelkezik-e a virtuális gép [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve van.
 A virtuális gép leállított felszabadított állapotban van. Indítsa el a virtuális Gépet, és ismételje meg a soros konzol kapcsolat. | Virtuális gépnek kell lennie a soros konzol eléréséhez a elindított állapotú
 Nem rendelkezik a virtuális gép soros konzol használatához a szükséges engedélyekkel. Győződjön meg arról, hogy a virtuális gépek Közreműködője szerepkör engedélyei.| Soros hozzáférés bizonyos engedélyekre van szüksége. További információkért lásd: [Előfeltételek](#prerequisites).
-Nem sikerült meghatározni a rendszerindítási diagnosztika tárfiókja erőforráscsoportjának  *&lt;STORAGEACCOUNTNAME&gt;*. Győződjön meg arról, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális gép, és rendelkezik a tárfiókhoz való hozzáférést. | Soros hozzáférés bizonyos engedélyekre van szüksége. További információkért lásd: [Előfeltételek](#prerequisites).
+Nem sikerült meghatározni a rendszerindítási diagnosztika tárfiókja erőforráscsoportjának  *&lt;STORAGEACCOUNTNAME&gt;* . Győződjön meg arról, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális gép, és rendelkezik a tárfiókhoz való hozzáférést. | Soros hozzáférés bizonyos engedélyekre van szüksége. További információkért lásd: [Előfeltételek](#prerequisites).
 Egy "Tiltott" válasz fordult elő a virtuális gép rendszerindítás-diagnosztikai tárfiók elérésekor. | Győződjön meg arról, hogy a rendszerindítási diagnosztika nincs egy fiók tűzfal. Egy elérhető rendszerindítás-diagnosztikai tárfiók a soros konzol működéséhez szükséges.
 Web socket le van zárva, vagy nem nyitható meg. | Szükség lehet az engedélyezési listára `*.console.azure.com`. Egy részletesebb, de hosszabb megközelítés az engedélyezési listára a [a Microsoft Azure adatközpont IP-tartományai](https://www.microsoft.com/download/details.aspx?id=41653), amelyek viszonylag sűrűn változnak.
 Csak az egészségügyi információk Windows virtuális Géphez való csatlakozáskor jelenik meg| Ez a hiba akkor fordul elő, ha a speciális felügyeleti konzol nincs engedélyezve a Windows-lemezkép. Lásd: [engedélyezése a soros konzol egyéni vagy régebbi képeken](#enable-the-serial-console-in-custom-or-older-images) manuálisan engedélyezni a virtuális Gépen Windows SAC létrehozásával kapcsolatos útmutatást. További információkért lásd: [Windows egészségügyi jelek](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
@@ -262,9 +264,10 @@ Probléma                             |   Kezelés
 Billentyű **Enter** után a kapcsolaton transzparens, nem váltják ki a bejelentkezési kérések jelenhetnek megjeleníteni. | További információkért lásd: [Hitting adja meg a hatástalan](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ez a hiba akkor fordulhat elő, ha egy egyéni virtuális Gépet, megerősített készülék vagy rendszerindítási konfiguráció, amelynek hatására a Windows a soros port megfelelően csatlakozni sikertelen futtatja. Ez a hiba fog is előfordulhat, ha futtatja a Windows 10-es ügyfél virtuális Géphez, mert engedélyezve van az EMS csak a Windows Server virtuális gépek vannak konfigurálva.
 Írja be a SAC kérdezzen rá Ha engedélyezve van a kernel hibakeresés nem. | A virtuális gép, és futtassa az RDP `bcdedit /debug {current} off` egy rendszergazda jogú parancssorból. Ha nem használhatja az RDP, akkor ehelyett az operációsrendszer-lemez csatolása egy másik Azure virtuális géphez és módosítsa, amíg a futó adatlemezként csatlakoztatott `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, majd felcserélése vissza a lemezt.
 Beillesztése PowerShell rendszerbe SAC eredményez olyan harmadik karaktert, ha az eredeti rendelkezett ismétlődő karaktert. | A probléma megoldásához futtassa `Remove-Module PSReadLine` való eltávolítása a PSReadLine modul az aktuális munkamenet. Ez a művelet nem törli vagy eltávolítja a modult.
-Bizonyos billentyűzetet bemenetek furcsa SAC kimeneti előállításához (például **[A**, **[3 ~**). | [VT100](https://aka.ms/vtsequences) escape-karaktersorozatokat a SAC használatával által nem támogatott.
+Bizonyos billentyűzetet bemenetek furcsa SAC kimeneti előállításához (például **[A**, **[3 ~** ). | [VT100](https://aka.ms/vtsequences) escape-karaktersorozatokat a SAC használatával által nem támogatott.
 Illessze be a hosszú karakterláncok nem működik. | A soros konzol illeszthetők be a terminál 2048 karakter hosszúságú lehet, megelőzve a soros port sávszélesség sztring hossza korlátozza.
 Soros konzol nem működik egy storage-fiók tűzfal. | Soros konzol szándékosan nem képes együttműködni az engedélyezve a rendszerindítás-diagnosztikai tárfiók a storage-fiók tűzfalak.
+Soros konzol nem működik a storage-fiók az Azure Data Lake Storage Gen2 a hierarchikus névterek. | Ez a hierarchikus névterek egy ismert hibája. Megoldásához, győződjön meg arról, hogy a virtuális gép rendszerindítási diagnosztika tárfiókja nem jön létre az Azure Data Lake Storage Gen2 használatával. Ez a beállítás csak akkor állítható tárfiók létrehozása után. Előfordulhat, hogy egy külön a rendszerindítási diagnosztika tárfiók létrehozása az Azure Data Lake Storage Gen2 engedélyezve van probléma megoldásához nélkül.
 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések

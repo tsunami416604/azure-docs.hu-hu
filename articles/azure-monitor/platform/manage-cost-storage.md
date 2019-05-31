@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 05/30/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: e0b9faeb796653abb4c061884ab2fbb78e867e71
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ead3122d2040a544c6f09e434f27b7970f0d5840
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918983"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417864"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Használat és költségek az Azure Monitor naplóira kezelése
 
@@ -83,7 +83,7 @@ Az első lépésekhez, az alábbiakban a riasztás az ajánlott beállításokat
 - Feltételek: 
    - Jel neve: Egyéni naplók keresése
    - Keresési lekérdezés: A művelet |} Ha részletes rendelkezik-e "termékváltozatként használja:
-   - Alapján: Eredmények száma
+   - Alapján: Az eredmények száma
    - Feltétel: Nagyobb, mint
    - Küszöbérték: 0
    - Időszak: 5 (perc)
@@ -151,13 +151,13 @@ A magasabb szintű használatot a következők okozhatják:
 
 ## <a name="understanding-nodes-sending-data"></a>Adatokat küldő csomópontok ismertetése
 
-Szeretné megtudni, minden nap az utolsó hónapban adatokat küldő számítógépek (csomópontok) számát, használata
+Szeretné megtudni, a szívverések naponta az elmúlt hónapban jelentő számítógépek számát, használata
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-A küldő számítógépek listájának lekérése **adattípusok számlázzuk** (egyes adattípusok olyan ingyenes), használhatja a `_IsBillable` [tulajdonság](log-standard-properties.md#_isbillable):
+Szeretne kapni, számlázunk ki, csomópontok, ha a munkaterület megtalálható az örökölt Csomópontonkénti tarifacsomag, amely számítógépek listáját, keressen a továbbító csomópontok **adattípusok számlázzuk** (az egyes adattípusok ingyenes). Ehhez használja a `_IsBillable` [tulajdonság](log-standard-properties.md#_isbillable) és a bal oldali mezőt, teljesen minősített tartománynév használata. Ez a számlázott adatok rendelkező számítógépek listáját adja vissza:
 
 `union withsource = tt * 
 | where _IsBillable == true 
@@ -165,15 +165,24 @@ A küldő számítógépek listájának lekérése **adattípusok számlázzuk**
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
 
-E `union withsource = tt *` , különböző adattípusok keresésekre végrehajtása költséges takarékosan kérdezi le. Ez a lekérdezés a használati adatok típusa számítógép információk lekérdezése a régi módja váltja fel.  
-
-Ez is kiterjeszthető való visszatéréshez, a küldő számítógépek óránkénti száma számlázzuk adattípusok (amely a hogyan Log Analytics számítja ki a számlázható csomópontok számára az örökölt Csomópontonkénti tarifacsomag):
+Látható számlázható csomópontjainak száma szerint becsülhető meg: 
 
 `union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+| billableNodes=dcount(computerName)`
+
+> [!NOTE]
+> E `union withsource = tt *` , különböző adattípusok keresésekre végrehajtása költséges takarékosan kérdezi le. Ez a lekérdezés a használati adatok típusa számítógép információk lekérdezése a régi módja váltja fel.  
+
+Egy több pontos kiszámításához mi ténylegesen számítjuk fel, hogy a számítógépek óránként küldő számlázott adattípusok száma kap. (Örökölt Csomópontonkénti tarifacsomag kiválasztása a munkaterületekhez, a Log Analytics kiszámítja a csomópontok, amely óránként számlázunk kell.) 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
 
 ## <a name="understanding-ingested-data-volume"></a>Understanding betöltött adatmennyiség
 
@@ -197,24 +206,19 @@ Megtekintéséhez a **mérete** számlázható események betöltött számító
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
 A `_IsBillable` [tulajdonság](log-standard-properties.md#_isbillable) Megadja, hogy a betöltött adatok díjat számolunk.
 
-Megtekintheti a **száma** számítógép betöltött események használata
-
-```kusto
-union withsource = tt *
-| summarize count() by Computer | sort by count_ nulls last
-```
-
-A számítógép betöltött számlázható események száma használja 
+A száma, hogy **számlázható** számítógépenként, betöltött események használata 
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
-| summarize count() by Computer  | sort by count_ nulls last
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| summarize eventCount=count() by computerName  | sort by count_ nulls last
 ```
 
 Ha meg szeretné tekinteni a számlázható adattípusok darabszáma adatot küldenek, adott számítógéphez, használja:
