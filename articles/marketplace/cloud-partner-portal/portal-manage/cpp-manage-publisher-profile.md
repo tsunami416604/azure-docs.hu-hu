@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: pabutler
-ms.openlocfilehash: 6ca0eb23dad218262eff5d80543628df273022c9
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c97bf10daa8f062cc833c7d7c5f7b0ca4835ca6f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942236"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257534"
 ---
 # <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Az Azure Marketplace és AppSource közzétevő profil kezelése
 
@@ -49,7 +49,7 @@ A közzétevő profil, a Cloud Partner portálra szóló is hozzárendelhet a me
 > [!NOTE]
 > Fejlesztői központ-fiókot regisztrálni a fizetős termékváltozatok piactér közzétételre megadása kötelező.
 
-Ha nem rendelkezik egy fejlesztői központ-fiókot, leírtak szerint hozhat létre egy fiókot [a fejlesztői központban regisztrálása](../../register-dev-center.md).  Majd adja hozzá a regisztrált e-mail címre a Cloud Partner portálra, az ajánlat a tulajdonosai. Tulajdonos csak adhat hozzá a regisztrált e-mail címre a közzétételi profilt a **felhasználói** szakaszban. Ezután jelentkezzen be a portálra ugyanazt az e-mail címet, és a fejlesztői központ-fiókot.
+Ha nem rendelkezik egy fejlesztői központ-fiókot, leírtak szerint hozhat létre egy fiókot [a fejlesztői központban regisztrálása](https://docs.microsoft.com/azure/marketplace/register-dev-center).  Majd adja hozzá a regisztrált e-mail címre a Cloud Partner portálra, az ajánlat a tulajdonosai. Tulajdonos csak adhat hozzá a regisztrált e-mail címre a közzétételi profilt a **felhasználói** szakaszban. Ezután jelentkezzen be a portálra ugyanazt az e-mail címet, és a fejlesztői központ-fiókot.
 
 ![Közzétevő profil adatai - közzétevő profil leírása](./media/publisherprofiledescription.png)
 

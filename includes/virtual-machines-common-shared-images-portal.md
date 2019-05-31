@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 66ec923f12c59d606056d48c09f1ba346e9a4d32
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 291ec651061b7a8a3ea3c0645a6bd6581d529ef6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170389"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245010"
 ---
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
@@ -56,7 +56,6 @@ A katalógus rendszerkép definíciójában alapjait az a gyűjtemény létrehoz
 1. Ha a telepítés befejeződött, válassza ki a **erőforrás megnyitása**.
 
 
-
 ## <a name="create-an-image-version"></a>Hozzon létre egy lemezkép verziója
 
 Egy lemezkép-verzió létrehozása felügyelt rendszerképből. Ebben a példában a rendszerkép verziószáma *1.0.0-s* , és mindkét replikálás *USA nyugati középső Régiója* és *USA déli középső Régiójában* adatközpontokban. Replikáció célrégiók kiválasztásakor ne feledje, hogy is kell tartalmaznia a *forrás* régió a replikációs cél.
@@ -75,3 +74,20 @@ Lemezkép-verzió engedélyezett karakterek:, számokat és pontokat. Számok be
 1. Ha a telepítés befejeződött, válassza ki a **erőforrás megnyitása**.
 
 A kép replikálása a célrégiók mindegyikét egy ideig is eltarthat.
+
+## <a name="share-the-gallery"></a>A katalógus megosztása
+
+Azt javasoljuk, hogy megosztott hozzáférés a lemezkép katalógus szintjén. A következő lépésről az imént létrehozott gyűjtemény megosztása.
+
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. A bal oldali menüben válassza **erőforráscsoportok**. 
+1. Az erőforráscsoportok listájából válassza ki **myGalleryRG**. Ekkor megnyílik a panel az erőforráscsoport.
+1. A, a bal oldali menüben a **myGalleryRG** lapon jelölje be **hozzáférés-vezérlés (IAM)** . 
+1. A **egy szerepkör-hozzárendelés hozzáadása**válassza **Hozzáadás**. A **egy szerepkör-hozzárendelés hozzáadása** panel nyílik meg. 
+1. A **szerepkör**válassza **olvasó**.
+1. A **rendelhet hozzáféréseket**, hagyja bejelölve az alapértelmezett **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
+1. A **kiválasztása**, írja be azt, amelyet szeretne meghívni, aki az e-mail-cím.
+1. Ha a felhasználó a szervezeten kívül, üzenet jelenik-e **a felhasználó kapni fog egy e-mailt, amely lehetővé teszi, hogy együttműködjön a Microsofttal.** Válassza ki az e-mail-címmel rendelkező felhasználót, és kattintson a **mentése**.
+
+Ha a felhasználó a szervezeten kívül, kap egy e-mailes meghívót a szervezethez való csatlakozásról. A felhasználónak a meghívás elfogadásához, majd a gyűjtemény és az összes lemezképet meghatározásai és verziók az erőforrások listájában látni fogják.
+

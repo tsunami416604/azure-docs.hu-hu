@@ -12,23 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: d75544a30a441b5178a1e9dd368f1ce41cd4d321
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f5819194e7967b5921f34223cad299752460de30
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574259"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255640"
 ---
 # <a name="analytics-in-application-insights"></a>Az Application Insights Analytics
 Analytics olyan hatékony keresést és lekérdezéseket eszközben [Application Insights](app-insights-overview.md). Analytics egy olyan webes eszköz, ezért semmilyen beállítást nem szükséges.
-Ha már konfigurálta az Application Insights egy, az alkalmazások, akkor az alkalmazás adatait elemezheti az alkalmazásából származó Analytics megnyitásával [áttekintő paneljén](app-insights-dashboards.md).
+Ha már konfigurálta az Application Insights egy, az alkalmazások Analytics megnyitása az alkalmazás áttekintése panelen elemezheti az alkalmazás adatait.
 
 ![Portal.Azure.com címen nyissa meg, nyissa meg az Application Insights-erőforrást, és kattintson az Analytics.](./media/analytics/001.png)
 
 Is használhatja a [Analytics playground](https://go.microsoft.com/fwlink/?linkid=859557) amely mintaadatokat rengeteg ingyenes bemutató környezetben.
-<br>
-<br>
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 ## <a name="relation-to-azure-monitor-logs"></a>Kapcsolat az Azure Monitor naplóira
 Application Insights-elemzési alapján [Azure adatkezelő](/azure/data-explorer) , az Azure Monitor naplózza, és használja is a [Kusto-lekérdezés nyelvi](/azure/kusto/query). Használja ugyanazt [log analytics-portál](../log-query/get-started-portal.md) , az Azure Monitor naplózza, bár az adatok egy külön partíció tárolja.

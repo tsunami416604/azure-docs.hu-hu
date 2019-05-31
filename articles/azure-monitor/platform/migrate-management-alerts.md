@@ -1,26 +1,26 @@
 ---
 title: Az Azure felügyeleti eseményriasztások át a tevékenységnapló-riasztások
 description: Felügyeleti eseményekkel kapcsolatos riasztásokat a rendszer eltávolítja. október 1-jén. Készítsünk áttelepítése meglévő riasztást.
-author: lingliw
+author: rboucher
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/12/19
-ms.author: v-lingwu
+ms.date: 08/14/2017
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: fb54e11c9da6bec2a1e0354317df6343140cbf09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78519dad85739b6e4d760bc34719837956638f48
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60255916"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388712"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Az Azure felügyeleti eseményriasztások át a tevékenységnapló-riasztások
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!WARNING]
-> Felügyeleti eseményriasztások ki lesz kapcsolva napon vagy azután. október 1. Az alábbi utasításokat követve segítségével azonosíthatja, ha ezek a riasztások, és telepítheti át őket, ha igen.
+> Felügyeleti eseményriasztások ki lesz kapcsolva napon vagy azután. október 1,2017. Az alábbi utasításokat követve segítségével azonosíthatja, ha ezek a riasztások, és telepítheti át őket, ha igen.
 
 ## <a name="what-is-changing"></a>Mi változik
 
@@ -32,7 +32,7 @@ Az Azure Monitor (korábbi nevén Azure Insights) egy olyan képességet, hogy m
 A következő PowerShell-parancsfájlt, amely rendelkezik az előfizetés, valamint az egyes riasztásokról a feltételek a felügyeleti események minden riasztás listáját adja vissza.
 
 ```powershell
-Connect-AzAccount -Environment AzureChinaCloud
+Connect-AzAccount
 $alerts = $null
 foreach ($rg in Get-AzResourceGroup ) {
   $alerts += Get-AzAlertRule -ResourceGroup $rg.ResourceGroupName
@@ -115,3 +115,4 @@ Riasztások a korábban létrehozott felügyeleti események nem lesz automatiku
 * Tekintse át a [tevékenység log riasztási webhook sémáról](../../azure-monitor/platform/activity-log-alerts-webhook.md)
 * Tudjon meg többet [szolgáltatási értesítések](../../azure-monitor/platform/service-notifications.md)
 * Tudjon meg többet [Műveletcsoportok](../../azure-monitor/platform/action-groups.md)
+

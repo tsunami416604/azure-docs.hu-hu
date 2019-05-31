@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 05/09/2019
 tags: connectors
-ms.openlocfilehash: 3fb39103fc9cb0f38bca56dcaeea4837ff4dfabe
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: bccefec80ef3afd6d312bb1048d3be5d8e708728
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65541496"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258154"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás az Azure Logic Apps a SAP-rendszerek
 
@@ -119,6 +119,8 @@ Az Azure Logic Apps- [művelet](../logic-apps/logic-apps-overview.md#logic-app-c
       Ha a **bejelentkezési típus** tulajdonsága **csoport**, ezeket a tulajdonságokat, amelyben a általában nem kötelező, szükségesek:
 
       ![SAP üzenet kiszolgálói kapcsolat létrehozása](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+
+      Alapértelmezés szerint erős beírni használatos érvénytelen értékeket a sémának XML-érvényesítés elvégzésével ellenőrizheti. Ez a viselkedés segítséget nyújt a korábbi hibák észlelése. A **biztonságos beírni** lehetőség a visszamenőleges kompatibilitás érdekében érhető el, és csak az a karakterlánc hosszának ellenőrzi. Tudjon meg többet a [ **biztonságos beírni** beállítás](#safe-typing).
 
    1. Ha elkészült, kattintson a **Létrehozás** gombra.
 
@@ -225,6 +227,8 @@ Ez a példa egy logikai alkalmazást, amely, amikor egy üzenet fogadása az SAP
 
       ![SAP üzenet kiszolgálói kapcsolat létrehozása](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
+      Alapértelmezés szerint erős beírni használatos érvénytelen értékeket a sémának XML-érvényesítés elvégzésével ellenőrizheti. Ez a viselkedés segítséget nyújt a korábbi hibák észlelése. A **biztonságos beírni** lehetőség a visszamenőleges kompatibilitás érdekében érhető el, és csak az a karakterlánc hosszának ellenőrzi. Tudjon meg többet a [ **biztonságos beírni** beállítás](#safe-typing).
+
 1. Adja meg a szükséges paramétereket, az SAP-rendszer konfigurációja alapján.
 
    Opcionálisan megadhat egy vagy több SAP műveletet. Ezen a listán szereplő műveletek által az eseményindító az SAP-kiszolgáló az data gatewayen keresztül fogadott üzeneteket adja meg. Üres lista megadja, hogy az eseményindító minden üzenetet megkap. A lista egynél több üzenet rendelkezik, az eseményindító csak a listában megadott üzeneteket kap. Bármely más, az SAP-kiszolgáló küldött üzeneteket a rendszer elutasítja az átjáró.
@@ -306,7 +310,11 @@ A tervező eszköztárán válassza a **Mentés** parancsot.
 
       ![SAP üzenet kiszolgálói kapcsolat létrehozása](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
-   1. Ha elkészült, kattintson a **Létrehozás** gombra. A Logic Apps állít be, és gondoskodik róla, hogy a kapcsolat megfelelően működik, a kapcsolat tesztelése.
+      Alapértelmezés szerint erős beírni használatos érvénytelen értékeket a sémának XML-érvényesítés elvégzésével ellenőrizheti. Ez a viselkedés segítséget nyújt a korábbi hibák észlelése. A **biztonságos beírni** lehetőség a visszamenőleges kompatibilitás érdekében érhető el, és csak az a karakterlánc hosszának ellenőrzi. Tudjon meg többet a [ **biztonságos beírni** beállítás](#safe-typing).
+
+   1. Ha elkészült, kattintson a **Létrehozás** gombra. 
+   
+      A Logic Apps állít be, és gondoskodik róla, hogy a kapcsolat megfelelően működik, a kapcsolat tesztelése.
 
 1. Adja meg az elérési útját, amelyhez hozzá szeretné létrehozni a sémát az összetevőben.
 
@@ -402,6 +410,53 @@ A kérelmek, illetve a SAP-rendszerhez SNC engedélyezéséhez jelölje be a **h
 
    > [!NOTE]
    > SNC_LIB és SNC_LIB_64 környezeti változók nem állítható a gépen adatátjáró és SNC-könyvtár esetében. Ha beállítása, azok lenne elsőbbséget élveznek az SNC-könyvtár érték az összekötőn keresztül.
+
+<a name="safe-typing"></a>
+
+## <a name="safe-typing"></a>Biztonságos beírása
+
+Alapértelmezés szerint az SAP-kapcsolat létrehozásakor erős beírni szolgál érvénytelen értékeket a sémának XML-érvényesítés elvégzésével ellenőrizheti. Ez a viselkedés segítséget nyújt a korábbi hibák észlelése. A **biztonságos beírni** lehetőség a visszamenőleges kompatibilitás érdekében érhető el, és csak az a karakterlánc hosszának ellenőrzi. Ha úgy dönt, **biztonságos beírni**, DATS típusát és az SAP TIMS típus kezeli az karakterláncok helyett a XML megfelelőjükre `xs:date` és `xs:time` ahol `xmlns:xs="http://www.w3.org/2001/XMLSchema"`. Biztonságos beírni befolyásolja az összes séma létrehozásához, a "lett elküldve" hasznos és a "megkaptuk" választ, és az eseményindító az üzenetküldés viselkedését. 
+
+Erős beírni használatakor (**biztonságos beírni** nincs engedélyezve), a sémát a DATS és TIMS típusú képez le egyszerűbb XML-típusok:
+
+```xml
+<xs:element minOccurs="0" maxOccurs="1" name="UPDDAT" nillable="true" type="xs:date"/>
+<xs:element minOccurs="0" maxOccurs="1" name="UPDTIM" nillable="true" type="xs:time"/>
+```
+
+Erős beírni üzenetek küldésekor a DATS és TIMS válasz megfelel-e a megfelelő XML típusú formátumnak:
+
+```xml
+<DATE>9999-12-31</DATE>
+<TIME>23:59:59</TIME>
+```
+
+Amikor **biztonságos beírni** van engedélyezve, a séma leképezi a DATS és TIMS típusok az XML-karakterlánc-mezők hossza korlátozások csak, például:
+
+```xml
+<xs:element minOccurs="0" maxOccurs="1" name="UPDDAT" nillable="true">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="8" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" maxOccurs="1" name="UPDTIM" nillable="true">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+```
+
+Az üzenetek küldésekor **biztonságos beírni** engedélyezve van, a DATS és TIMS válasz a következőhöz hasonlít:
+
+```xml
+<DATE>99991231</DATE>
+<TIME>235959</TIME>
+```
+
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 

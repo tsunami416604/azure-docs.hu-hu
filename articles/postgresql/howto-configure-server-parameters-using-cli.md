@@ -1,20 +1,20 @@
 ---
-title: A szolgáltatás paramétereinek konfigurálása az Azure Database for postgresql-hez
-description: Ez a cikk ismerteti a szolgáltatás paramétereinek konfigurálása az Azure Database for postgresql-hez az Azure CLI parancssori használatával.
+title: A szolgáltatás paramétereinek konfigurálása az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk ismerteti a szolgáltatás paramétereinek konfigurálása az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure CLI-vel parancssor használatával.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: c88518749129abed1cf43a70b9165035626a780f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 9a9312d347f896047a5f8606b2518b63830c4d76
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421209"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067167"
 ---
-# <a name="customize-server-configuration-parameters-using-azure-cli"></a>Azure CLI-vel a kiszolgáló konfigurációs paramétereinek testreszabása
+# <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Kiszolgáló konfigurációs paramétereinek testreszabása az Azure Database for postgresql-hez - Azure CLI használatával egyetlen kiszolgáló
 Lista, megjelenítése és a parancssori felület (Azure CLI) használatával egy Azure PostgreSQL-kiszolgáló konfigurációs paramétereinek frissítése. Egy részhalmazát motor konfigurációk kiszolgálói szinten érhető el, és módosíthatók. 
 
 ## <a name="prerequisites"></a>Előfeltételek

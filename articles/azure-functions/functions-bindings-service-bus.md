@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: e1cd7d9e135f5e3196f02237076c5c8069048fb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 199ce2fe24d76595493dc2128cebb3fcb642fcab
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61442732"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241151"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Szolgáltatásbusz-kötések az Azure Functions szolgáltatáshoz
 
@@ -330,7 +330,7 @@ A Service Bus-trigger biztosít több [metaadat-tulajdonságot](./functions-bind
 |`CorrelationId`|`string`|A korrelációs azonosítót.|
 
 > [!NOTE]
-> Az eseményindító jelenleg csak működik az üzenetsorok és -előfizetések, amelyek nem használják a munkamenetek. Adjon nyomon [funkció elem](https://github.com/Azure/azure-functions-host/issues/563) ábrával további frissítéseit. 
+> Service bus-trigger, amely együttműködik a munkamenet engedélyezve üzenetsorok és -előfizetések jelenleg előzetes verzióban érhető el. Adjon nyomon [ezt az elemet](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) felvegye további frissítéseit. 
 
 Lásd: [kódpéldák](#trigger---example) , használja ezeket a tulajdonságokat a cikk korábbi részében.
 

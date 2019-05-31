@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 91c598bde0912cffb8aa1dd7ba022c86a9084faa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a46d816c04d9f5629c2ee9538016d42c53f9a331
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713013"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244390"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Az Azure DevTest Labs kapcsolatos leggyakoribb kérdésekre adott válaszok.
@@ -50,7 +50,7 @@ Ha a kérdés nem szerepel a listán, tudassa velünk, így segítségére vála
 - Szélesebb elérni, új kérdést tenne fel a a [Azure DevTest Labs MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Az Azure DevTest Labs-csapat és a Közösség más tagjai érhet el.
 - Szolgáltatással kapcsolatos kéréseit, küldje el a kérelmek és ötlet segíthet megtenni [Azure DevTest Labs User Voice](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
-### <a name="what-is-a-microsoft-account"></a>Mi a Microsoft-fiók?
+### <a name="what-is-a-microsoft-account"></a>Mi a Microsoft-fiókkal?
 Microsoft-fiókot egy olyan fiók, szinte mindenben a Microsoft eszközeit és szolgáltatásait használja. Egy e-mail címet és a Skype, Outlook.com, onedrive vállalati verzió, Windows phone, Azure és az Xbox Live-ba való bejelentkezéshez használt jelszó. Egy olyan fiók, az azt jelenti, hogy a fájlokat, fényképeket, névjegyek és beállítások követheti, bármilyen eszközön.
  
 > [!NOTE]
@@ -280,7 +280,7 @@ Részletesebb magyarázatra van szüksége, lásd: [egyéni rendszerképek és k
 
 Automatizálás létrehozása egyéni rendszerképek VHD fájlokat tölthet fel, két lehetősége van:
 
-- Használat [AzCopy](../storage/common/storage-use-azcopy.md#upload-blobs-to-blob-storage) másolása vagy VHD-fájlok feltöltése a storage-fiók a tesztkörnyezetben társított.
+- Használat [AzCopy](../storage/common/storage-use-azcopy-v10.md) másolása vagy VHD-fájlok feltöltése a storage-fiók a tesztkörnyezetben társított.
 - Használat [az Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md). Storage Explorer egy önálló alkalmazás, amely Windows, OS X és Linux rendszereken.
 
 A cél tárfiók a labor társított megkeresése:

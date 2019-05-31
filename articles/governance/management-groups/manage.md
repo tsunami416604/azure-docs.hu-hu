@@ -2,16 +2,16 @@
 title: Módosítása, törlése és a felügyeleti csoportok – Azure Cégirányítási kezelése
 description: Útmutató megtekintése, kezelése, frissítése és a felügyeleti csoport hierarchia törlése.
 author: rthorn17
-ms.service: azure-resource-manager
-ms.date: 04/04/2019
+ms.service: governance
+ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: b3798ec7578530e04ec9e00086fffaec9a58a7cd
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 028b4cbf62bf9ed0b3b38f54d3b787a8c1368da0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950244"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242952"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Az erőforrások kezelése a felügyeleti csoportokkal
 
@@ -128,7 +128,7 @@ Közvetlen vagy az örökölt RBAC szerepkör rendelkezik a felügyeleti csoport
 
 1. A felügyeleti csoport a részletek megtekintéséhez válasszon a **(részletek)** hivatkozást a felügyeleti csoport címe mellett. Ez a hivatkozás nem érhető el, ha nincs a felügyeleti csoport megtekintéséhez szükséges engedélyekkel.
 
-   ![Elsődleges](./media/main.png)
+   ![Fő](./media/main.png)
 
 ### <a name="view-in-powershell"></a>Megtekintése a PowerShellben
 
@@ -206,10 +206,12 @@ Hozzon létre egy felügyeleti csoportot akkor előfizetések kötegeléséhez e
 Helyezze át az előfizetést, a következő RBAC-engedélyek mindegyikének birtokában kell teljesülniük:
 
 - A gyermek előfizetés "Owner" szerepkört.
-- A cél szülő felügyeleti group.* a "Tulajdonos", "Közreműködő" vagy "Felügyeleti csoport közreműködő" szerepkör
-- A meglévő szülő felügyeleti group.* a "Tulajdonos", "Közreműködő" vagy "Felügyeleti csoport közreműködő" szerepkör
+- A cél felügyeleti szülőcsoport "Owner", "Közreműködő" vagy "Felügyeleti csoport közreműködő" szerepkör.
+- A meglévő szülő felügyeleti csoport "Owner", "Közreműködő" vagy "Felügyeleti csoport közreműködő" szerepkör.
 
-*: Kivéve, ha a cél- vagy a meglévő szülő felügyeleti csoport gyökérszintű felügyeleti csoport. Mivel a legfelső szintű felügyeleti csoport alapértelmezés szerint az összes felügyeleti csoportokat és az előfizetések helyszíni üzenetsorokra, a felhasználóknak nincs szükségük engedélyekre, az elem áthelyezése.
+Ha a cél- vagy a meglévő szülő felügyeleti csoport gyökérszintű felügyeleti csoport, az engedélyek követelmények nem érvényesek. Mivel a legfelső szintű felügyeleti csoport alapértelmezés szerint az összes felügyeleti csoportokat és az előfizetések helyszíni üzenetsorokra, nem szükséges engedélyekkel, az elem áthelyezése.
+
+Ha a tulajdonos szerepkör az előfizetésben a jelenlegi felügyeleti csoportból örökölt, a move-cél korlátozva. Csak áthelyezheti az előfizetés egy másik felügyeleti csoporthoz a tulajdonos szerepkör esetében. Nem helyezhető egy felügyeleti csoportot, ha Ön közre, mert Ön az előfizetés tulajdonjogának elveszítik. Ha közvetlenül az előfizetés (a felügyeleti csoportból nem örökölt) tulajdonosi szerepkört, áthelyezheti azt minden olyan felügyeleti csoporthoz ahol Ön közre.
 
 Milyen engedélyekkel rendelkezik az Azure Portalon, válassza a felügyeleti csoportot, majd válasszon **IAM**. RBAC-szerepkörökkel kapcsolatos további tudnivalókért lásd: [hozzáférést és engedélyeket az RBAC kezelése](../../role-based-access-control/overview.md).
 
@@ -325,7 +327,7 @@ A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../a
 
 ![Tevékenységnaplók felügyeleti csoportokkal](media/al-mg.png)
 
-Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
+Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"** .
 
 ## <a name="referencing-management-groups-from-other-resource-providers"></a>Felügyeleti csoportok hivatkozó más erőforrás-szolgáltatók
 

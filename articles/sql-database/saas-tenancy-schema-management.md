@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: b2aa3eb6a117bbbdcf9c4aa44161dc25ddea2f1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eb461367d58f7cadeccd434c0e4ab452b7fc640e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61484377"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241914"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>A bérlőnkénti adatbázis minta használatával az Azure SQL Database SaaS-alkalmazásokban séma kezelése
  
 Egy adatbázis-alkalmazások fejlődésének elkerülhetetlenül módosításokat kell az adatbázis-séma vagy a hivatkozás adatai számára kell tenni.  Adatbázis-karbantartási feladatok is szükségesek a rendszeres időközönként. Bérlői mintában az adatbázist használó alkalmazás kezelése igényel a alkalmazni ezeket megváltozik, vagy a karbantartási feladatok között egy valószínűleg nagyszámú bérlői adatbázison.
 
-Ez az oktatóanyag bemutatja, két forgatókönyv - frissítések telepítése az összes bérlőhöz, és a referenciaadatokat tartalmazó táblázathoz az index újraépítése. A [rugalmas feladatok](sql-database-elastic-jobs-overview.md) funkció hajthatók végre ezeket a műveleteket, az összes bérlői adatbázison és az új bérlői adatbázisok létrehozására használt sablon adatbázis.
+Ez az oktatóanyag bemutatja, két forgatókönyv - frissítések telepítése az összes bérlőhöz, és a referenciaadatokat tartalmazó táblázathoz az index újraépítése. A [rugalmas feladatok](elastic-jobs-overview.md) funkció hajthatók végre ezeket a műveleteket, az összes bérlői adatbázison és az új bérlői adatbázisok létrehozására használt sablon adatbázis.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -46,7 +46,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS-séma kezelése minták bemutatása
 
-Bérlő mintában az adatbázis elkülöníti a bérlői adatok hatékony, de növeljük a számot, az adatbázisok kezelésére és karbantartására. [Rugalmas feladatok](sql-database-elastic-jobs-overview.md) elősegíti a felügyeletét és SQL Database-adatbázisok kezelését. A feladatok lehetővé teszik, hogy biztonságosan és megbízhatóan, futtassa a feladatok (T-SQL-parancsfájlok) adatbázisok csoportjain. Feladatok üzembe sémát és a közös referenciaadat-változások az alkalmazások összes bérlői adatbázison. Rugalmas feladatok is használható fenntartani egy *sablon* új bérlők számára, hogy mindig létrehozására használt adatbázis rendelkezik a legújabb sémával és referenciaadatokkal.
+Bérlő mintában az adatbázis elkülöníti a bérlői adatok hatékony, de növeljük a számot, az adatbázisok kezelésére és karbantartására. [Rugalmas feladatok](elastic-jobs-overview.md) elősegíti a felügyeletét és SQL Database-adatbázisok kezelését. A feladatok lehetővé teszik, hogy biztonságosan és megbízhatóan, futtassa a feladatok (T-SQL-parancsfájlok) adatbázisok csoportjain. Feladatok üzembe sémát és a közös referenciaadat-változások az alkalmazások összes bérlői adatbázison. Rugalmas feladatok is használható fenntartani egy *sablon* új bérlők számára, hogy mindig létrehozására használt adatbázis rendelkezik a legújabb sémával és referenciaadatokkal.
 
 ![képernyő](media/saas-tenancy-schema-management/schema-management-dpt.png)
 
@@ -133,5 +133,4 @@ Ezt követően próbálja meg a [Ad hoc jelentéskészítés oktatóanyag](saas-
 ## <a name="additional-resources"></a>További források
 
 * [A Wingtip Tickets SaaS adatbázis Per bérlői alkalmazástelepítés útmutatóra további oktatóanyagok](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Kiterjesztett felhőalapú adatbázisok kezelése](sql-database-elastic-jobs-overview.md)
-* [Horizontálisan felskálázott felhőalapú adatbázisok létrehozása és kezelése](sql-database-elastic-jobs-create-and-manage.md)
+* [Kiterjesztett felhőalapú adatbázisok kezelése](elastic-jobs-overview.md)

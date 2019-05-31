@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e9ee0d6fab96c84eee8a520d01d97faddab49f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b0844030d069fba40bfd2fdf55252d8b9e3b1c2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249709"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235131"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Az Azure Active Directory szolgáltatás üzembe helyezési útmutató
 
@@ -41,7 +41,7 @@ Licenceléssel kapcsolatos további információ található a következő lapok
 
 Ebben a fázisban a rendszergazdák alapkonfiguráció biztonsági funkciók az Azure AD, hogy importálni, vagy normál felhasználói fiókok létrehozása előtt hozzon létre egy biztonságos, és könnyen használható foundation engedélyezése. Ez a alapvető fázis, a kezdetektől biztonságosabb állapotban van, és, hogy a végfelhasználók csak kell bevezetni új fogalmakat egyszer biztosítja.
 
-| Tevékenység | Részlet | Licenc szükséges |
+| Tevékenység | Részletek | Licenc szükséges |
 | ---- | ------ | ---------------- |
 | [Egynél több globális rendszergazda kijelölése](../users-groups-roles/directory-emergency-access.md) | Rendelje hozzá legalább két állandó csak felhőalapú globális rendszergazdai fiókok, vészhelyzet esetén. Ezek a fiókok nincsenek napi használható, és rendelkeznie kell a hosszú és összetett jelszavak. | Azure AD Free |
 | [Használja a nem globális rendszergazdai szerepkört, ahol lehetséges](../users-groups-roles/directory-assign-admin-roles.md) | A rendszergazdák csak a szükséges hozzáférést biztosít csak azokat a területeket, szükségük van a hozzáférést. Nem minden rendszergazdának kell lennie a globális rendszergazdák. | Azure AD Free |
@@ -62,10 +62,10 @@ Ebben a fázisban a rendszergazdák alapkonfiguráció biztonsági funkciók az 
 
 Ezután hozzáadjuk az alapítvány meghatározni 1. fázis importálása, hogy a felhasználók és engedélyezésével a szinkronizálás vendéghozzáférés tervezése és előkészítése további funkciók támogatásához.
 
-| Tevékenység | Részlet | Licenc szükséges |
+| Tevékenység | Részletek | Licenc szükséges |
 | ---- | ------ | ---------------- |
 | [Az Azure AD Connect telepítése](../connect/active-directory-aadconnect-select-installation.md) | Készítse elő a felhőbe meglévő helyszíni címtárából felhasználókat szinkronizálja. | Azure AD Free |
-| [Jelszókivonat-szinkronizálás megvalósítása](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Replikálni a jelszó módosítására, a helytelen jelszó észlelési és a szervizelés és a kiszivárgott hitelesítő adatokat a jelentéskészítés engedélyezéséhez a jelszókivonatok szinkronizálása. | Prémium szintű Azure AD P1 |
+| [Jelszókivonat-szinkronizálás megvalósítása](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Replikálni a jelszó módosítására, a helytelen jelszó észlelési és a szervizelés és a kiszivárgott hitelesítő adatokat a jelentéskészítés engedélyezéséhez a jelszókivonatok szinkronizálása. | Azure AD Free |
 | [A Jelszóvisszaíró megvalósítása](../authentication/howto-sspr-writeback.md) | Lehetővé teszi a felhőben is visszaírását a helyszíni Windows Server Active Directory-környezeten a jelszó módosítására. | Prémium szintű Azure AD P1 |
 | [Megvalósítása az Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md) | Az Azure AD Connect-kiszolgálók, az AD FS-kiszolgálók és tartományvezérlők kulcs egészségügyi statisztika figyelés engedélyezése. | Prémium szintű Azure AD P1 |
 | [Licencek hozzárendelése a felhasználók által az Azure Active Directory biztonságicsoport-tagság](../users-groups-roles/licensing-groups-assign.md) | Időt és fáradságot takarít csoport beállítással felhasználónként helyett szolgáltatások engedélyezése és letiltása licencelési csoportok létrehozásával. | |
@@ -77,7 +77,7 @@ Ezután hozzáadjuk az alapítvány meghatározni 1. fázis importálása, hogy 
 
 Továbbra is az előző fázisok épülnek, mint hogy áttelepítését és integrálását az Azure ad-vel jelölt alkalmazások azonosítása, és ezeknek az alkalmazásoknak a telepítés befejezéséhez.
 
-| Tevékenység | Részlet | Licenc szükséges |
+| Tevékenység | Részletek | Licenc szükséges |
 | ---- | ------ | ---------------- |
 | Az alkalmazások azonosítása | A szervezetben használt alkalmazások meghatározása: a helyszíni, felhőalapú SaaS-alkalmazások és más üzleti alkalmazások. Határozza meg, ha ezek az alkalmazások és az Azure ad-vel kell kezelni. | Nincs licenc szükséges |
 | [A katalógus támogatott SaaS-alkalmazások integrálása](../manage-apps/add-application-portal.md) | Az Azure AD egy katalógus, amely több ezer előre integrált alkalmazások rendelkezik. A szervezete az alkalmazások néhány valószínűleg a katalógusban elérhető közvetlenül az Azure Portalról. | Azure AD Free |
@@ -87,7 +87,7 @@ Továbbra is az előző fázisok épülnek, mint hogy áttelepítését és inte
 
 4. fázis rendszergazdák kényszerítése a legalacsonyabb jogosultsági elveket, felügyeleti, az első a hozzáférési felülvizsgálatok elvégzése, illetve engedélyezni kívánja gyakori felhasználói életciklus-feladatok automatizálása megkeresheti.
 
-| Tevékenység | Részlet | Licenc szükséges |
+| Tevékenység | Részletek | Licenc szükséges |
 | ---- | ------ | ---------------- |
 | [Privileged Identity Management használatának kényszerítése](../privileged-identity-management/pim-security-wizard.md) | Rendszergazdai szerepkörök eltávolítása átlagos napi felhasználói fiókokat. Jogosulttá a rendszergazda felhasználók a szerepkör használatához egy multi-factor authentication szolgáltatás-ellenőrzés sikeres, egy üzleti indoklás megadása vagy jóváhagyás kérése a kijelölt jóváhagyókat után. | Prémium szintű Azure AD P2 |
 | [A PIM az Azure AD-címtárbeli szerepkörökhöz tartozó hozzáférési felülvizsgálat befejezése](../privileged-identity-management/pim-how-to-start-security-review.md) | Működik a biztonság és a vezetőség esetlegesen csapataival, tekintse át a szervezet szabályzatait alapuló felügyeleti hozzáférés hozzáférési felülvizsgálati házirend létrehozásához. | Prémium szintű Azure AD P2 |

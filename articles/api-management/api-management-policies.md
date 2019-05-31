@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: ad57f86e221a98461fcd1dc11b92f5665d6128d0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e27829fe5ebf57552ef4e97a2bfc7b6aefd81dc8
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786445"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254400"
 ---
 # <a name="api-management-policies"></a>API Management házirendek
 Ebben a szakaszban egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](api-management-howto-policies.md).  
@@ -39,12 +39,15 @@ Ebben a szakaszban egy hivatkozást kínál a következő az API Management ház
     -   [Ellenőrizze a JWT](api-management-access-restriction-policies.md#ValidateJWT) -kényszerít létezését és a jwt-t, vagy egy adott HTTP-fejléc, vagy egy megadott lekérdezési paraméter kinyert érvényességét.  
 -   [Speciális házirendek](api-management-advanced-policies.md#AdvancedPolicies)  
     -   [Átvitelvezérlés](api-management-advanced-policies.md#choose) – feltételesen kiértékelésének eredménye logikai kifejezésen alapuló házirend-utasítások vonatkozik.  
-    -   [Kérés továbbítása](api-management-advanced-policies.md#ForwardRequest) -továbbítja a kérést a háttérszolgáltatáshoz.  
-    -   [Naplózás az Eseményközpontba](api-management-advanced-policies.md#log-to-eventhub) -üzeneteket küld egy naplózó entitás által meghatározott üzenetet célként a megadott formátumban.  
+    -   [Kérés továbbítása](api-management-advanced-policies.md#ForwardRequest) -továbbítja a kérést a háttérszolgáltatáshoz.
+    -   [Korlátozza az egyidejűség](api-management-advanced-policies.md#LimitConcurrency) -megakadályozza, hogy egyszerre több, mint a megadott számú kérelem által végrehajtása az szabályzatok idézőjelek között.
+    -   [Naplózás az Eseményközpontba](api-management-advanced-policies.md#log-to-eventhub) -üzeneteket küld egy naplózó entitás által meghatározott üzenetet célként a megadott formátumban.
+    -   [Válaszok utánzása](api-management-advanced-policies.md#mock-response) -megszakításainak folyamat-végrehajtás és közvetlenül a hívó számára utánzott válaszokat adjanak vissza.
     -   [Ismételje meg](api-management-advanced-policies.md#Retry) -újrapróbálkozik a mellékelt házirend-utasítások végrehajtása, ha, és amíg a feltétel nem teljesül. Végrehajtási fog a megadott időközönként ismételje meg, és legfeljebb a megadott újrapróbálkozások száma.  
     -   [Választ adja vissza](api-management-advanced-policies.md#ReturnResponse) -megszakításainak folyamat-végrehajtás és a közvetlenül a hívó adott választ adja vissza.  
     -   [Az egyirányú kérést küldhet](api-management-advanced-policies.md#SendOneWayRequest) -kérést küld a megadott URL-cím válaszra való várakozás nélkül.  
-    -   [Kérés küldése a](api-management-advanced-policies.md#SendRequest) -kérést küld a megadott URL-cím.  
+    -   [Kérés küldése a](api-management-advanced-policies.md#SendRequest) -kérést küld a megadott URL-cím.
+    -   [Állítsa be a HTTP-proxy](api-management-advanced-policies.md#SetHttpProxy) – lehetővé teszi, hogy a HTTP-proxyn keresztül továbbított átirányíthatja a kéréseket.
     -   [Változó beállítása](api-management-advanced-policies.md#set-variable) – megőrzéséhez a későbbi eléréshez nevű környezeti változót egy értéket.  
     -   [Állítsa be a kérelmi metódust](api-management-advanced-policies.md#SetRequestMethod) -kérelem HTTP-metódus módosíthatja.  
     -   [Állítsa be az állapotkód](api-management-advanced-policies.md#SetStatus) – HTTP-állapotkód módosítja a megadott érték.  

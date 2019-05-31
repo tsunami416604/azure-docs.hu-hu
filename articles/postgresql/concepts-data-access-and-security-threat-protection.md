@@ -1,19 +1,19 @@
 ---
-title: Komplex veszélyforrások elleni védelem – Azure Database for postgresql-hez
+title: A komplex veszélyforrások elleni védelem – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Komplex veszélyforrások elleni védelem észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések az adatbázishoz.
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 0521283f917d05a56d26503dc6f0af349f1ac1e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 81f42183276f95ddfb24fbdc388fef59acbe680e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560036"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073524"
 ---
-# <a name="azure-database-for-postgresql-advanced-threat-protection"></a>Azure Database for PostgreSQL komplex veszélyforrások elleni védelem
+# <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Komplex veszélyforrások elleni védelem az Azure Database for PostgreSQL – egyetlen kiszolgáló
 
 Az Azure Database for PostgreSQL-hez készült Komplex veszélyforrások elleni védelem észleli az adatbázisok hozzáférésére és az adatbázisok biztonságának megsértésére tett szokatlan és potenciálisan kártevő szándékú kísérleteket.
 
@@ -31,7 +31,7 @@ Komplex veszélyforrások elleni védelem az Azure Database for PostgreSQL bizto
 
 ![A komplex veszélyforrások elleni védelem fogalma](media/concepts-data-access-and-security-threat-protection/advanced-threat-protection-concept.png)
 
-## <a name="advanced-threat-protection-alerts"></a>Advanced Threat Protection-riasztások 
+## <a name="advanced-threat-protection-alerts"></a>A speciális veszélyforrások elleni védelem riasztások 
 Komplex veszélyforrások elleni védelem az Azure Database for PostgreSQL észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek, és azt is aktiválhatja a következő riasztásokat:
 - **Hozzáférés szokatlan helyről**: Ez a riasztás akkor aktiválódik, ha a hozzáférési mintájában, az Azure Database for PostgreSQL-kiszolgálóhoz, amikor valaki jelentkezett be az Azure database for PostgreSQL-kiszolgáló egy szokatlan földrajzi helyről változik. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).
 - **Hozzáférés szokatlan Azure-beli adat központból**: Ez a riasztás akkor aktiválódik, ha a hozzáférési mintájában, az Azure Database for PostgreSQL-kiszolgálóhoz, amikor valaki jelentkezett be a kiszolgálóra egy szokatlan Azure-beli adat központból ezen a kiszolgálón a legutóbbi időszakban látott változik. Bizonyos esetekben a riasztás jogszerű műveleteket (az Azure-ban, a Power bi-ban, Azure Database for PostgreSQL Lekérdezésszerkesztő új alkalmazás) észlel. Más esetekben a riasztás kártékony műveleteket észlel egy Azure-erőforrás vagy -szolgáltatás felől (egy korábbi alkalmazott vagy egy külső támadó részéről).

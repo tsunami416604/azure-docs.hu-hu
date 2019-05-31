@@ -11,32 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: ac440be4444ca0d62f7ffde2b8b65e41dcba6683
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 041a73cd2840e0b6a1840e15629d9c0e284e9890
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002451"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225523"
 ---
-# <a name="dynamic-manifests"></a>Dinamikus jegyzékek
+# <a name="pre-filtering-manifests-with-dynamic-packager"></a>Előre a jegyzékek dinamikus Packager-szűrés
 
-Media Services által **dinamikus jegyzékfájlok** előre definiált szűrők alapján. Ha szűrőket (lásd: [olyan szűrőket határozhat meg](filters-concept.md)), az ügyfelek egy adott megjelenítés a klipek alárendelt a videó továbbításához használhatja őket. A streamelési URL-CÍMBEN szereplő azokat megadni szűrő(k) alapján. Az adaptív sávszélességű streamelési protokollok szűrőket is lehet alkalmazni: Apple HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming. 
+Adaptív sávszélességű streamelés eszközök a tartalom továbbítása, amikor gyakran kell jegyzék több verziójának közzététele a célként megadott eszközképességek vagy a rendelkezésre álló hálózati sávszélességet. A [dinamikus Packager](dynamic-packaging-overview.md) lehetővé teszi, hogy adja meg a szűrőket, amely képes szűrni az adott kodekek ki megoldások bitsebességre való átkódolása és hang nyomon kombinációk a működés közbeni szükségtelenné több példány létrehozásához. Egyszerűen szeretne közzétenni egy meghatározott készletének a Céleszközök (iOS, Android, Okostelevízió vagy böngészők) és a hálózati képességekkel (nagy sávszélességű, mobil és alacsony sávszélességű forgatókönyv) a beállított szűrőknek egy új URL-CÍMÉT. Ebben az esetben az ügyfelek is módosíthatja a lekérdezési karakterlánc a tartalom adatfolyamként (elérhető megadásával [eszköz szűrők vagy a fiók szűrők](filters-concept.md)) és a szűrők segítségével konkrét szakaszokra stream datového proudu.
 
-Az alábbi táblázatban néhány példa az URL-címek szűrőket jeleníti meg:
+Néhány kézbesítési forgatókönyvek igényelnek, győződjön meg arról, hogy az ügyfél nem tudja elérni az adott nyomon követi. Például előfordulhat, hogy nem szeretné közzétenni a jegyzékfájl, amely tartalmazza a HD nyomon követi egy adott előfizetői szintre. Vagy előfordulhat, hogy el kívánja távolítani adott adaptív sávszélességű (ABR) nyomon követi a szállítási egy adott eszközhöz, amely nem kiaknázhatják a további nyomon követi a költségek csökkentése érdekében. Ebben az esetben az előre létrehozott szűrők listájának társíthatott a [Streamelési lokátor](streaming-locators-concept.md) létrehozáskor. Ebben az esetben az ügyfelek a tartalom adatfolyamként hogyan nem módosíthatja, azt határozza meg a **Streamelési lokátor**.
 
-|Protocol|Példa|
-|---|---|
-|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
-|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
- 
+Kombinálhatja megadása szűrésével [szűrők a Streamelési lokátor](filters-concept.md#associating-filters-with-streaming-locator) + konkrét szűrők további eszköz, amely az ügyfél az URL-címet adja meg. Ez lehet hasznos, ha szeretné korlátozni a további nyomon követi, például metaadatokat vagy esemény streamet, hang nyelvek vagy leíró hangsáv. 
+
+A különböző szűrők megadása a streamben biztosít egy hatékony **dinamikus Manifest** adatkezelési megoldás, amelyekre több használatieset-forgatókönyvek a célként megadott eszközökhöz. Ez a témakör ismerteti a kapcsolódó fogalmak **dinamikus jegyzékfájlok** és a példákat mutat be, amely használja ezt a szolgáltatást érdemes forgatókönyvek.
+
 > [!NOTE]
-> A dinamikus jegyzékek nem változtatja az eszköz és az eszköz alapértelmezett jegyzék. Az ügyfél kérése egy streamet, vagy a szűrők nélkül választhatja. 
+> A dinamikus jegyzékek nem változtatja az eszköz és az eszköz alapértelmezett jegyzék. 
 > 
-
-Ez a témakör ismerteti a kapcsolódó fogalmak **dinamikus jegyzékfájlok** és a példákat mutat be, amely használja ezt a szolgáltatást érdemes forgatókönyvek.
 
 ## <a name="manifests-overview"></a>Jegyzékek áttekintése
 
@@ -55,6 +51,16 @@ A REST-példa: [feltöltése, kódolása és streamelése a fájlokat a REST seg
 Használhatja a [Azure Media Player demó lap](https://aka.ms/amp) figyelése az átviteli sebesség, video-adatfolyamot. A bemutató lap megjeleníti a diagnosztikai információ a **diagnosztikai** lapon:
 
 ![Az Azure Media Player diagnostics][amp_diagnostics]
+ 
+### <a name="examples-urls-with-filters-in-query-string"></a>Példák: URL-címet a lekérdezési karakterlánc-szűrők
+
+Az adaptív sávszélességű streamelési protokollok szűrőket is lehet alkalmazni: HLS, MPEG-DASH és Smooth Streaming. Az alábbi táblázatban néhány példa az URL-címek szűrőket jeleníti meg:
+
+|Protocol|Példa|
+|---|---|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="rendition-filtering"></a>Megjelenítés szűrése
 
@@ -121,10 +127,6 @@ A szűrők kombinálásával, állítsa be a szűrő nevét a jegyzékfájl list
 Legfeljebb három szűrők kombinálásával. 
 
 További információkért lásd: [ez](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) blog.
-
-## <a name="associate-filters-with-streaming-locator"></a>Streamelési lokátor szűrők társítása
-
-Lásd: [szűrők: társíthat a Streamelési Lokátorok](filters-concept.md#associate-filters-with-streaming-locator).
 
 ## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 

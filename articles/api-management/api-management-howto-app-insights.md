@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 69f36773b702d9f0059e0cd27dbb864ccd7f7b2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3bbab82831fba389cd4bf172e7ea762d5971579b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60527584"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241842"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Hogyan integrálható az Azure API Management az Azure Application insights segítségével
 
@@ -51,7 +51,7 @@ Az Azure Application Insights használata előtt először a szolgáltatás egy 
     ![App Insights naplózót](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> A helyszín mögött egy [naplózó](https://docs.microsoft.com/rest/api/apimanagement/logger/createorupdate) entitás jön létre az API Management példánya, amely tartalmazza a kialakítási kulcsot az Application Insights-példány.
+> A helyszín mögött egy [naplózó](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate) entitás jön létre az API Management példánya, amely tartalmazza a kialakítási kulcsot az Application Insights-példány.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>Az API-hoz az Application Insights-naplózás engedélyezése
 
@@ -70,11 +70,11 @@ Az Azure Application Insights használata előtt először a szolgáltatás egy 
 > Az alapértelmezett érték felülírva **0** a a **szervezet első bájtok** mező jelentősen csökkentheti az API-k teljesítményét.
 
 > [!NOTE]
-> A helyszín mögött egy [diagnosztikai](https://docs.microsoft.com/rest/api/apimanagement/diagnostic/createorupdate) "applicationinsights" nevű entitás jön létre az API szintjén.
+> A helyszín mögött egy [diagnosztikai](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/diagnostic/createorupdate) "applicationinsights" nevű entitás jön létre az API szintjén.
 
 | Beállítás neve                        | Érték típusa                        | Leírás                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Bekapcsolás                              | logikai                           | Meghatározza, hogy engedélyezett-e az API-t a naplózását.                                                                                                                                                                                                                                                                                                |
+| Engedélyezés                              | logikai                           | Meghatározza, hogy engedélyezett-e az API-t a naplózását.                                                                                                                                                                                                                                                                                                |
 | Cél                         | Az Azure Application Insights-naplózót | Adja meg a használandó Azure Application Insights naplózót                                                                                                                                                                                                                                                                                           |
 | Mintavételi (%)                        | tizedes tört                           | Értékek 0 és 100 (százalék). <br/> Itt adhatja meg, hány százaléka kéréseket az Azure Application Insights lesz naplózva. 0 %-os mintavételi azt jelenti, hogy a nulla kérelmeket naplózza, amíg a 100 %-os mintavételi azt jelenti, hogy naplózott összes kérelem. <br/> Ezzel a beállítással csökkenthető a teljesítményre gyakorolt hatása naplózási kérések az Azure Application Insights (lásd az alábbi szakaszt). |
 | Mindig naplózni a hibákat                   | logikai                           | Ha ez a beállítás be van jelölve, az összes sikertelen lesz naplózva az Azure Application insights szolgáltatásba, függetlenül attól, hogy a **mintavételi** beállítás.                                                                                                                                                                                                                  |

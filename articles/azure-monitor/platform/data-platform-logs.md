@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: ec037b16840afe669ac3934beaa832f850cdcfb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 897f2eef0a52838d6190cb85a6a7f4492250935b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60809191"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244856"
 ---
 # <a name="logs-in-azure-monitor"></a>Naplók az Azure Monitorban
 
@@ -46,7 +46,7 @@ Az alábbi táblázat a különböző módon, hogy használhatja az Azure monito
 | Elemzés | Használat [Log Analytics](../log-query/get-started-portal.md) írni az Azure Portalon [lekérdezések naplózását](../log-query/log-query-overview.md) és interaktív módon elemezheti a naplófájlok adatait az adatkezelő hatékony elemzési motor használatával.<br>Használja a [Application Insights analytics konzoljának](../app/analytics.md) log lekérdezéseket írni, és interaktív módon elemezheti a naplófájlok adatait az Application Insights az Azure Portalon. |
 | Vizualizáció | Lekérdezési eredmények jelenik meg a táblázatokat vagy diagramokat való rögzítése egy [Azure irányítópultján](../../azure-portal/azure-portal-dashboards.md).<br>Hozzon létre egy [munkafüzet](../app/usage-workbooks.md) egy interaktív jelentésben szereplő adatok több példányban egyesítenie. <br>A lekérdezés eredményeinek exportálására [Power BI](powerbi.md) különböző Vizualizációk használata és megosztása Azure-on kívüli felhasználókkal.<br>A lekérdezés eredményeinek exportálására [Grafana](grafana-plugin.md) annak dashboarding használatát, és más adatforrásokkal együtt.|
 | Riasztás | Konfigurálja egy [riasztási szabály](alerts-log.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](action-groups.md) mikor a a lekérdezés eredménye megfelel-e egy adott eredményt.<br>Konfigurálja a [a metrikaalapú riasztási szabály](alerts-metric-logs.md) az egyes log adatnaplók mérőszámokként ki kell olvasni. |
-| Lekérés | A parancssor használatával a lekérdezés eredményeihez elérését [Azure CLI-vel](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>A parancssor használatával a lekérdezés eredményeihez elérését [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Egy egyéni alkalmazást a lekérdezés eredményeihez elérését [REST API-val](https://dev.loganalytics.io/). |
+| Beolvasása | A parancssor használatával a lekérdezés eredményeihez elérését [Azure CLI-vel](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>A parancssor használatával a lekérdezés eredményeihez elérését [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Egy egyéni alkalmazást a lekérdezés eredményeihez elérését [REST API-val](https://dev.loganalytics.io/). |
 | Exportálás | Naplóadatok lekérése, és másolja azt egy külső helyre a munkafolyamat létrehozása [Logic Apps](~/articles/logic-apps/index.yml). |
 
 
@@ -79,7 +79,7 @@ Az Azure Monitor naplóadatokat gyűjthet, különböző forrásokból is Azure-
 | Adatok | Leírás |
 |:---|:---|
 | Az Azure Active Directory-naplók | Minden könyvtár diagnosztikai beállítások segítségével konfigurálható. Lásd: [integrálás az Azure AD-naplók az Azure Monitor naplóira](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).  |
-| Tevékenységnaplók | Alapértelmezés szerint külön-külön tárolja, és közel valós idejű riasztásokhoz használható. Telepítse az Activity Log Analytics megoldás írni a Log Analytics-munkaterületet. Lásd: [összegyűjteni és elemezni az Azure-Tevékenységnaplók Log Analytics](collect-activity-logs.md). |
+| Tevékenységnaplók | Alapértelmezés szerint külön-külön tárolja, és közel valós idejű riasztásokhoz használható. Telepítse az Activity log Analytics megoldás írni a Log Analytics-munkaterületet. Lásd: [összegyűjteni és elemezni az Azure-Tevékenységnaplók Log Analytics](activity-log-collect.md). |
 
 ### <a name="azure-resources"></a>Azure-erőforrások
 

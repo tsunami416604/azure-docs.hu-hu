@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 86ad6fce34f323d94f7b9c318ba81f547360d4df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61038521"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237329"
 ---
 # <a name="networking"></a>Hálózat
 
@@ -71,6 +71,8 @@ Infrastruktúra kiterjesztése szükség a gyorsított hálózatkezelés engedé
 * Windows-tárolókhoz kapcsolódó számítási feladatok futtatásához használja [hálózati mód megnyitásához](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) szolgáltatások közötti kommunikáció megkönnyítése.
 
 * Fordított proxyt használ, például [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) vagy a [Service Fabric fordított proxyja](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) , például a 80-as vagy 443-as közös alkalmazás-portokat tesz elérhetővé.
+
+* Esetében, amely nem lehet lekéréses alap rétegeket szüntethet meg az Azure felhőalapú tárolást, légi gapped gépeken üzemeltetett Windows-tárolók használatával bírálja felül a külső réteg viselkedését a [--engedélyezése nondistributable-összetevők](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) jelzőt a Docker-démon a.
 
 ## <a name="next-steps"></a>További lépések
 

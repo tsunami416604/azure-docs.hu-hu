@@ -9,15 +9,15 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531285"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238251"
 ---
 Az alábbi táblázat ismerteti a fő kvóták, korlátozások, alapértékek és az Azure Schedulerben szabályozások.
 
-| Erőforrás | Korlát leírása |
+| Resource | Korlát leírása |
 | -------- | ----------------- |
 | **Feladat mérete** | A feladat maximális mérete 16000. Ha egy PUT vagy PATCH művelet eredménye egy feladat ennél nagyobb méretű, 400 Hibás kérés állapotkódot adott vissza. | 
 | **Feladatgyűjtemények** | Feladatgyűjtemények Azure-előfizetésenként legfeljebb 200 000. | 

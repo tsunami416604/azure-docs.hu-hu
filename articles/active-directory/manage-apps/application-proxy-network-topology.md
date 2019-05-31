@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9ee8800d84d1090f97fb72980123f59d5aa0375
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: cf8e7fed30a9b25b2960e3321eca5c4398911f35
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783483"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236247"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Hálózati topológia szempontjai Azure Active Directory Application Proxy használatával
 
@@ -102,7 +102,7 @@ Késés nem sérült, mert adatforgalommal egy dedikált kapcsolaton keresztül.
 
 Bár ez a cikk a fókuszt összekötő elhelyezése, módosíthatja az alkalmazások jobb késési jellemzői elhelyezését is.
 
-Szervezetek egyre, költöznek hálózataikat üzemeltetett környezetekben. Ez lehetővé teszi számukra, hogy alkalmazásaikat elhelyezni, amely része is vállalati hálózatában üzemeltetett környezetben, és továbbra is a tartományon belül kell. Ebben az esetben a minták a fenti szakaszokban ismertetett is alkalmazható az új alkalmazás helyét. Ha az Ön által választandó ezt a beállítást, [Azure AD tartományi szolgáltatások](../../active-directory-domain-services/active-directory-ds-overview.md).
+Szervezetek egyre, költöznek hálózataikat üzemeltetett környezetekben. Ez lehetővé teszi számukra, hogy alkalmazásaikat elhelyezni, amely része is vállalati hálózatában üzemeltetett környezetben, és továbbra is a tartományon belül kell. Ebben az esetben a minták a fenti szakaszokban ismertetett is alkalmazható az új alkalmazás helyét. Ha az Ön által választandó ezt a beállítást, [Azure AD tartományi szolgáltatások](../../active-directory-domain-services/overview.md).
 
 Ezenkívül szervezhet az összekötőkkel [összekötőcsoportok](application-proxy-connector-groups.md) , a különböző helyeken és a hálózatok megcélzása az alkalmazásokkal. 
 

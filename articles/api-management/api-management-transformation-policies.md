@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: b3f86147eb91e874d5317204ca05fb45628414d3
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 28720098206c7afdefacbd47de283b2ef8d5a606
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833416"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243243"
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management átalakítási szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -78,7 +78,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|alkalmaz|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -mindig - mindig érvényes átalakítás.<br />csak akkor, ha a válasz Content-Type fejléce azt jelzi, hogy jelenléte JSON - tartalom típusa, json - convert.|Igen|–|
+|Alkalmazása|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -mindig - mindig érvényes átalakítás.<br />csak akkor, ha a válasz Content-Type fejléce azt jelzi, hogy jelenléte JSON - tartalom típusa, json - convert.|Igen|–|
 |consider-accept-header|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás – igaz - vonatkoznak, ha JSON Accept fejléc kérelem van szükség.<br />-false - mindig érvényes átalakítás.|Nem|true|
 |Parse-dátuma|Ha a beállítása `false` dátumértékeket egyszerűen másolja átalakítás során|Nem|true|
 
@@ -123,7 +123,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |típusa|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -javascript-barát – az átalakított JSON a JavaScript-fejlesztőinek rövid űrlapot befogadó.<br />a konvertált JSON - közvetlen – jeleníti meg az eredeti XML-dokumentum szerkezete.|Igen|–|
-|alkalmaz|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -mindig - mindig konvertálni.<br />csak akkor, ha a válasz Content-Type fejléce azt jelzi, hogy jelenléte XML - tartalom típusa, xml - convert.|Igen|–|
+|Alkalmazása|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -mindig - mindig konvertálni.<br />csak akkor, ha a válasz Content-Type fejléce azt jelzi, hogy jelenléte XML - tartalom típusa, xml - convert.|Igen|–|
 |consider-accept-header|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás – igaz - alkalmazni, ha XML van szükség a kérelem Accept fejlécet.<br />-false - mindig érvényes átalakítás.|Nem|true|
 
 ### <a name="usage"></a>Használat
@@ -156,7 +156,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name (Név)|Leírás|Szükséges|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |from|A keresendő karakterlánc.|Igen|–|
 |erre:|A behelyettesítendő karakterlánc. Adja meg a nulla hosszúságú helyettesítő karakterláncok eltávolítása a keresési karakterláncot.|Igen|–|
@@ -188,7 +188,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |redirect-content-urls|A gyökérelem.|Igen|
 
@@ -215,7 +215,7 @@ vagy
 ```
 
 > [!NOTE]
-> Háttér-entitások felügyeleti keresztül kezelhetők [API](https://docs.microsoft.com/rest/api/apimanagement/backend) és [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
+> Háttér-entitások felügyeleti keresztül kezelhetők [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) és [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
 
 ### <a name="example"></a>Példa
 
@@ -270,7 +270,7 @@ Ebben a példában a házirend továbbítja a kérést egy service fabric hátt�
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |alap URL-címet|Új háttérrendszer szolgáltatás kiindulási URL-címe.|Egyik `base-url` vagy `backend-id` jelen kell lennie.|–|
-|backend-id|A háttérrendszer irányíthatja a azonosítója. (Háttérrendszer entitások keresztül felügyelt [API](https://docs.microsoft.com/rest/api/apimanagement/backend) és [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Egyik `base-url` vagy `backend-id` jelen kell lennie.|–|
+|backend-id|A háttérrendszer irányíthatja a azonosítója. (Háttérrendszer entitások keresztül felügyelt [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) és [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Egyik `base-url` vagy `backend-id` jelen kell lennie.|–|
 |sf-partition-key|Csak akkor alkalmazható, ha a háttérrendszer egy Service Fabric-szolgáltatás, és meghatározott backend-id használatával. A névfeloldási szolgáltatás egy adott partícióra feloldásához használt.|Nem|–|
 |sf-replica-type|Csak akkor alkalmazható, ha a háttérrendszer egy Service Fabric-szolgáltatás, és meghatározott backend-id használatával. Ha a kérelem el kell küldeni az elsődleges vagy másodlagos replika partíció szabályozza. |Nem|–|
 |sf-resolve-condition|Csak akkor alkalmazható, ha a háttérrendszer a Service Fabric-szolgáltatás. A feltétel azonosítása kell-e a hívás a Service Fabric háttérrendszeréhez új megoldás meg kell ismételni.|Nem|–|
@@ -403,7 +403,7 @@ A `set-body` házirend használatára konfigurálható a [Liquid](https://shopif
 
 ### <a name="properties"></a>Tulajdonságok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name (Név)|Leírás|Szükséges|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |sablon|Használja a sablonalapú mód, amely a készlet törzs szabályzat módosítása. Jelenleg az egyetlen támogatott érték van:<br /><br />-liquid - törzs-szabály beállítása fogja használni a liquid sablonalapú motor |Nem||
 
@@ -514,7 +514,7 @@ OriginalUrl.
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |létezik-művelet|Itt adható meg, milyen műveleteket, ha a fejléc már meg van adva. Ez az attribútum a következő értékek egyikét kell rendelkeznie.<br /><br /> -felülbírálás - lecseréli a meglévő fejléc értékét.<br />-skip – nem helyettesíti a meglévő fejléc értéke.<br />-hozzáfűzése - az érték hozzáfűzi a meglévő fejléc értéke.<br />a kérelem - delete - eltávolítja a fejléc.<br /><br /> Ha a beállítása `override` felvétel ugyanazzal a névvel több bejegyzést eredményez az összes bejegyzés (amely lesz látható többször) megfelelően beállítása fejléc; csak a felsorolt értékek jelennek meg az eredményt.|Nem|felülbírálás|
-|név|Kell beállítani a fejléc nevét adja meg.|Igen|–|
+|name|Kell beállítani a fejléc nevét adja meg.|Igen|–|
 
 ### <a name="usage"></a>Használat
  Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -574,7 +574,7 @@ OriginalUrl.
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |létezik-művelet|Itt adható meg, milyen műveleteket, ha a lekérdezési paraméter már meg van adva. Ez az attribútum a következő értékek egyikét kell rendelkeznie.<br /><br /> -felülbírálás - lecseréli a meglévő paraméter értékét.<br />-skip – nem helyettesíti a meglévő lekérdezési paraméter értéke.<br />-hozzáfűzése - az érték hozzáfűzése a meglévő lekérdezési paraméter értéke.<br />-delete - eltávolítja a lekérdezési paraméter a kérelemből.<br /><br /> Ha a beállítása `override` felvétel ugyanazzal a névvel több bejegyzést eredményez a lekérdezési paramétert (amely lesz látható többször) összes bejegyzés megfelelően beállítása; csak a felsorolt értékek jelennek meg az eredményt.|Nem|felülbírálás|
-|név|Itt adható meg kell beállítani a lekérdezési paraméter neve.|Igen|–|
+|name|Itt adható meg kell beállítani a lekérdezési paraméter neve.|Igen|–|
 
 ### <a name="usage"></a>Használat
  Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -643,7 +643,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |újraírási – uri|A gyökérelem.|Igen|
 
@@ -715,7 +715,7 @@ OriginalUrl.
 |Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |xsl-transform|A gyökérelem.|Igen|
-|paraméter|Az átalakítás használt változókat határozhat meg segítségével|Nem|
+|A paraméter|Az átalakítás használt változókat határozhat meg segítségével|Nem|
 |XSL: stylesheet|Stíluslap gyökérelem. Minden elemek és attribútumok meghatározott hajtsa végre a standard [XSLT-specifikáció](https://www.w3.org/TR/xslt)|Igen|
 
 ### <a name="usage"></a>Használat

@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: c0a03b70c6e5e4742e03d4892b2b5f97c908ab9c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: c50271e28db104522c0e8811508fa882dc316eab
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467983"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235808"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Hozzon létre munkafolyamatokat az IoT Central-összekötő a Microsoft Flow
 
@@ -41,7 +41,7 @@ Ez a szakasz bemutatja, hogy miként indítható el a Flow mobilalkalmazásnak, 
 
     ![Hozzon létre egy új Microsoft Flow-művelet](media/howto-add-microsoft-flow/createflowaction.png)
 
-1. A munkafolyamatok tha férhetnek hozzá, és a csatlakoztatott IoT-központ szabály listáját láthatja. Kattintson a **sablonok böngészése** vagy **új > Létrehozás sablonból** és bármely, a rendelkezésre álló sablonok közül választhat. 
+1. Látni fogja, amely rendelkezik hozzáféréssel, és a csatlakoztatott IoT-központ szabály munkafolyamatok listáját. Kattintson a **sablonok böngészése** vagy **új > Létrehozás sablonból** és bármely, a rendelkezésre álló sablonok közül választhat. 
 
     ![Elérhető a Microsoft Flow sablonok](media/howto-add-microsoft-flow/flowtemplates1.png)
 

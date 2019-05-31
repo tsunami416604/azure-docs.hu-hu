@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b562214d4bf8fd83f740e114a6d77200b4611649
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: e7eebc68ae8a55d636f3bc85e179bd7d6813be8d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003221"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235557"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Alapvető házirendet: Az örökölt hitelesítés letiltása (előzetes verzió)
 
 A felhasználók egyszerűen hozzáférhetnek számára a felhőalapú alkalmazások, Azure Active Directory (Azure AD) széles hitelesítési protokollok, beleértve az örökölt hitelesítési támogatja. Az örökölt hitelesítési olyan hitelesítési kérelmet által végzett hivatkozik:
 
 * Régebbi Office-ügyfelek, amelyek a modern hitelesítés nélküli (például az Office 2010-ügyfél)
-* Örökölt levelezési protokollok, mint például a IMAP/SMPT/POP3 használó ügyfelek
+* Örökölt levelezési protokollok, mint például a IMAP/SMTP/POP3 használó ügyfelek
 
 Minden megalkuvás bejelentkezési kísérletek többsége még ma, régebbi hitelesítési származnak. Az örökölt hitelesítés nem támogatja a többtényezős hitelesítés (MFA). Ha már rendelkezik egy többtényezős hitelesítési szabályzat engedélyezve van a címtárban, kiderítsék hitelesítés örökölt protokoll használatával, és többtényezős hitelesítés kihagyása.
 
@@ -74,13 +74,13 @@ Ha MacOS használ, javasoljuk, Office for Mac 2016 vagy újabb verzióra. A nat�
 
 Windows-alapú Outlook-felhasználók számára a modern hitelesítést használnak, az Exchange online-hoz kell lennie a modern hitelesítés engedélyezése is. Ha a modern hitelesítés le van tiltva, az Exchange Online, Outlook Windows-alapú ügyfelek támogató modern authentication (Outlook 2013-as vagy újabb) alapszintű hitelesítés fogja használni az Exchange Online-postaládákhoz való kapcsolódáshoz.
 
-A SharePoint Online engedélyezve van a modern hitelesítés alapértelmezett. 2017. augusztus 1. után létrehozott címtárakat a modern hitelesítés alapértelmezés szerint engedélyezve van az Exchange online-ban. Azonban ha korábban rendelkezett letiltott modern hitelesítést, vagy ez a dátum előtt létrehozott egy könyvtárat használja, kövesse az alábbi cikkben leírtak [modern hitelesítés engedélyezése az Exchange Online-ban](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+A SharePoint Online engedélyezve van a modern hitelesítés alapértelmezett. 2017. augusztus 1. után létrehozott címtárakat a modern hitelesítés alapértelmezés szerint engedélyezve van az Exchange online-ban. Azonban ha korábban rendelkezett letiltott modern hitelesítést, vagy ez a dátum előtt létrehozott egy könyvtárat használja, kövesse az alábbi cikkben leírtak [modern hitelesítés engedélyezése az Exchange Online-ban](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
 
 ### <a name="step-4-skype-for-business"></a>4. lépés: Skype Vállalati verzió
 
 Skype vállalati verzió által az örökölt hitelesítési kérelmek megelőzése érdekében elengedhetetlen a Skype vállalati online a modern hitelesítés engedélyezése. 2017. augusztus 1. után létrehozott címtárakat modern hitelesítést a Skype vállalati verzió alapértelmezés szerint engedélyezve van.
 
-Ahhoz, hogy a modern hitelesítést a Skype vállalati verzió, javasoljuk, hogy Microsoft Teams, amely támogatja a modern hitelesítést alapértelmezés szerint való áttérés. Azonban ha nem tudja tr jelenleg, meg fog engedélyeznie kell a modern hitelesítést a Skype vállalati Online úgy, hogy a Skype vállalati ügyfelek számára a modern hitelesítést használó. Kövesse az alábbi lépéseket a cikk [Skype for Business topológiákat támogatja a Modern hitelesítést használó](https://docs.microsoft.com/en-us/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), a Modern hitelesítés engedélyezése a Skype for Business lépéseket.
+Ahhoz, hogy a modern hitelesítést a Skype vállalati verzió, javasoljuk, hogy Microsoft Teams, amely támogatja a modern hitelesítést alapértelmezés szerint való áttérés. Azonban ha nem tudja tr jelenleg, meg fog engedélyeznie kell a modern hitelesítést a Skype vállalati Online úgy, hogy a Skype vállalati ügyfelek számára a modern hitelesítést használó. Kövesse az alábbi lépéseket a cikk [Skype for Business topológiákat támogatja a Modern hitelesítést használó](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), a Modern hitelesítés engedélyezése a Skype for Business lépéseket.
 
 Egyrészt a modern hitelesítést a Skype vállalati Online, javasoljuk, hogy a modern hitelesítési engedélyezhető az Exchange online-hoz, modern hitelesítést a Skype vállalati verzió engedélyezésekor. Ez a folyamat segít szinkronizálása a modern hitelesítés a Exchange Online és Skype vállalati online állapotát, és megakadályozza, hogy több bejelentkezési kérések a Skype vállalati ügyfelek számára.
 
@@ -105,11 +105,11 @@ Modern hitelesítés nélküli engedélyezésének lépései a következő cikke
 
 A szabályzat **alapvető házirendet: Az örökölt hitelesítés letiltása (előzetes verzió)** előre konfigurálva, és jelennek meg az oldal tetején a feltételes hozzáférés paneljén, az Azure Portalon lépve.
 
-A szabályzat engedélyezéséhez, és a rendszergazdák védelmére:
+A szabályzat engedélyezéséhez és a szervezet védelme érdekében:
 
 1. Jelentkezzen be a **az Azure portal** globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférésű rendszergazda.
 1. Keresse meg a **az Azure Active Directory** > **feltételes hozzáférési**.
-1. A házirendek listájából válassza ki **alapvető házirendet: Az örökölt hitelesítés letiltása (előzetes verzió)**.
+1. A házirendek listájából válassza ki **alapvető házirendet: Az örökölt hitelesítés letiltása (előzetes verzió)** .
 1. Állítsa be **házirend engedélyezése** való **a házirend azonnal használható**.
 1. Bármely felhasználó kizárások hozzáadása kattintva **felhasználók** > **kizárt felhasználók kiválasztása** majd ki kell zárni a felhasználóknak. Kattintson a **kiválasztása** majd **kész**.
 1. Kattintson a **mentése**.

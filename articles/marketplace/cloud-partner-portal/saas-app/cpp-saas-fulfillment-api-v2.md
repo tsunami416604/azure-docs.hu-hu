@@ -7,16 +7,20 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: 4efd9556e255709204654cf0acbf1b08fa2c1fc0
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
-ms.translationtype: MT
+ms.openlocfilehash: d240fd7097f0dc284377063df72efd888c09adb6
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872140"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258096"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS teljesítése API-k 2-es verzió 
 
 Ez a cikk ismerteti az API-t, amely lehetővé teszi a független szoftvergyártók (ISV), hogy az SaaS-alkalmazásokat az appsource-ban és az Azure Marketplace-en. Ez az API-ját transactable SaaS követelmény kínál az appsource-ban és az Azure Marketplace-en.
+
+> [!IMPORTANT] 
+> SaaS kínálnak a funkciót migrált a [Microsoft Partner Centeren](https://partner.microsoft.com/dashboard/directory).  Minden új gyártó kell használnia a Partner Center új SaaS-ajánlatok létrehozására és kezelésére a meglévő ajánlatok.  Az SaaS-ajánlatok kiadók migrálása folyamatban van batchwise a Cloud Partner portálra, a Partner Center.  A Cloud Partner portálra azt jelzik, ha meghatározott meglévő ajánlatok áttelepítette állapotüzeneteket jelenít meg.
+> További információkért lásd: [hozzon létre egy új SaaS-ajánlatot](../../partner-center-portal/create-new-saas-offer.md).
 
 ## <a name="managing-the-saas-subscription-lifecycle"></a>Az SaaS-előfizetési életciklus kezelése
 
@@ -29,7 +33,7 @@ Microsoft SaaS Service egy SaaS-előfizetés megvásárlása teljes életciklus�
 
 A következő táblázat felsorolja a kiépítési állapotok SaaS-előfizetéssel, többek között a leírása és sorrendje diagram egyes (ha van). 
 
-#### <a name="provisioning"></a>Kiépítés folyamatban
+#### <a name="provisioning"></a>Kiépítés
 
 Ha egy ügyfél kezdeményezi a beszerzés, a független Szoftvergyártók ezt az információt a vásárlói interaktív weblap URL-cím paraméter használatával egy hitelesítési kód fogadása. Például: `https://contoso.com/signup?token=..`, ahol a partner center alkotóelemeit oldal URL-címet szolgáltató `https://contoso.com/signup`. A hitelesítési kódot érvényesítése és a részletes mit ki kell építeni a megoldásához API meghívásával kell cserélni.  Végeztével a SaaS-szolgáltatás kiépítése, küld egy aktiválás hívás, hogy jelezze, hogy a teljesítése befejeződött, és az ügyfél is számlázzuk.  Az alábbi ábrán látható az üzembe helyezési forgatókönyv esetén az API-hívások sorrendjét.  
 
@@ -61,7 +65,7 @@ Ez az állapot azt jelzi, hogy a felhasználó fizetési még nem érkeztek. Sza
 - Az előfizetés, amely képes a beállítások és adatok adatveszteség nélküli összes funkciójának helyreállításához helyreállítható állapotban kell tartani. 
 - A türelmi időszak végén érvényességének visszaállítása kérelem ehhez az előfizetéshez a teljesítése API-n keresztül, vagy egy megszüntetéséhez kiépítési kérést beolvasásához várható. 
 
-#### <a name="unsubscribed"></a>Leiratkozva 
+#### <a name="unsubscribed"></a>Leiratkozott 
 
 Előfizetések ebben az állapotban egy explicit ügyfélkérés vagy adott válaszként díjak megfizetése nem érhető el. A független Szoftvergyártók az elvárás, hogy az ügyfél adatainak őrizzük meg helyreállítási X napnál minimum kérésre és majd törli. 
 
@@ -152,7 +156,7 @@ Belső kiszolgálóhiba
 Az előfizetés API a következő HTTPS műveleteket támogatja: **Első**, **Post**, **javítás**, és **törlése**.
 
 
-#### <a name="list-subscriptions"></a>Előfizetések listázása
+#### <a name="list-subscriptions"></a>Az előfizetések listája
 
 A közzétevő SaaS-előfizetések listája.
 
@@ -528,7 +532,7 @@ Belső kiszolgálóhiba
 }
 ```
 
-#### <a name="delete-a-subscription"></a>Előfizetés törlése
+#### <a name="delete-a-subscription"></a>Töröl egy előfizetést
 
 Előfizetés lemondása, és törölje a megadott előfizetéshez.
 

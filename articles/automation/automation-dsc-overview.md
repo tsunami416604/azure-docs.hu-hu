@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 926629660c9593c59362bd1bc49c5115ac5e3187
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: b486c30827ee67b58cbdc0027c8221cceed02e51
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441067"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235944"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation konfiguráló áttekintése
 
@@ -62,14 +62,14 @@ A Linux operációs rendszert futtató csomópontok esetében a következő disz
 
 A DSC Linux-bővítmény támogatja a Linux-disztribúciók [által támogatott Azure-beli](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) kivételével:
 
-Terjesztési | Version
+Disztribúció | Version
 -|-
 Debian  | Az összes verzió
 Ubuntu  | 18.04
 
 ### <a name="dsc-requirements"></a>DSC-követelmények
 
-Az Azure-ban futó összes Windows csomópont [a WMF 5.1](https://docs.microsoft.com/powershell/wmf/5.1/install-configure) előkészítés során telepítve lesz.  A Windows Server 2012 és Windows 7 rendszert futtató csomópontot [a Rendszerfelügyeleti webszolgáltatások engedélyezve lesz](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
+Az Azure-ban futó összes Windows csomópont [a WMF 5.1](https://docs.microsoft.com/powershell/wmf/setup/install-configure) előkészítés során telepítve lesz.  A Windows Server 2012 és Windows 7 rendszert futtató csomópontot [a Rendszerfelügyeleti webszolgáltatások engedélyezve lesz](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
 
 Az összes Azure-ban futó Linux-csomópontok [PowerShell DSC Linux-](https://github.com/Microsoft/PowerShell-DSC-for-Linux) előkészítés során telepítve lesz.
 
@@ -108,8 +108,8 @@ Ha egy Automation-fiókot, amely egy adott régióban van definiálva, korlátoz
 | Közép-India |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Kelet-Japán |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Délkelet-Ausztrália |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Egyesült Királyság déli régiója | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| US Gov Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| Az Egyesült Királyság déli régiója | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| USA-beli államigazgatás – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Régió IP-címek helyett régiónevek listáját, töltse le a [Azure Datacenter IP-cím](https://www.microsoft.com/download/details.aspx?id=41653) tartalmazó XML-fájlt a Microsoft Download Center.
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: e6c7d682d9b16266208baeeff14168b3da157251
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a62ec95c715c08a8fddc09f0c8e5f5bba368556
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60584879"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241757"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Az Elastic Database ügyfélkódtár eléréséhez használt hitelesítő adatokat
 
@@ -46,7 +46,7 @@ A változó **smmAdminConnectionString** egy kapcsolati karakterlánc, amely tar
 
 Ne használjon értékek formájában "username@server" – Ehelyett használja a "username" értéket.  Ennek az az oka a hitelesítő adatokat kell működniük a szegmenstérkép-kezelő adatbázis és a különböző kiszolgálókon, akkor az egyes szegmensek szemben.
 
-## <a name="access-credentials"></a>Elérési hitelesítő adatok
+## <a name="access-credentials"></a>Hozzáférési hitelesítő adatok
 
 Szilánk kezelő az létrehozásakor olyan alkalmazás, amely nem felügyelheti a szegmenstérképet, használja a hitelesítő adatokat, amelyeket a csak olvasási engedéllyel rendelkezik a globális szegmenstérkép. A globális szegmenstérkép ezeket a hitelesítő adatokat a lekért adatokat használja, a [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md) és az ügyfélen lévő szegmensek térkép gyorsítótár adatokkal való feltöltése. A hitelesítő adatok megadását, a hívás minta keresztül **GetSqlShardMapManager**:
 
@@ -79,6 +79,6 @@ Mivel a rendszergazdai hitelesítő adataival, ne használjon értékek formáj�
 
 [Az SQL Database-adatbázis védelme](sql-database-security-overview.md)
 
-[Ismerkedés a rugalmas adatbázis-feladatok](sql-database-elastic-jobs-getting-started.md)
+[Elastic Database-feladatok](elastic-jobs-overview.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

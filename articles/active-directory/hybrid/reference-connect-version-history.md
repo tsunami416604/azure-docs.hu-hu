@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/14/2019
+ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60453c320a66a8eebd7460b3930241f9e81b8a1b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 235877ac8f84e695e5f81770d33b6fed89a5f241
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784325"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298793"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -44,10 +44,20 @@ Miközben a a folyamat során, hogy a kiadás verziószáma jelenik meg a kisebb
 Az Azure AD Connect nem minden verziókban lesz elérhető az automatikus frissítés. A kiadási állapota e kiadás legyen elérhető, az automatikus frissítés, vagy csak le fogja jelezni. Ha az automatikus frissítés engedélyezése az Azure AD Connect-kiszolgálón majd, hogy a kiszolgáló automatikusan frissíti az Azure AD Connect automatikus frissítéshez kiadott a legújabb verzióra. Ne feledje, hogy az Azure AD Connect-konfigurációk nem mindegyike automatikus frissítésre jogosult. Kövesse ezt a hivatkozást tudjon meg többet az [automatikus frissítés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
 ## <a name="13210"></a>1.3.21.0
+>[!IMPORTANT]
+>Nincs olyan ismert probléma, amely az Azure AD Connect egy korábbi verzióra 1.3.21.0, ahol az O365-portálon a frissített verzió nem tükrözi a annak ellenére, hogy az Azure AD Connect frissítése sikerült.
+>
+> A probléma megoldásához importálnia kell a **AdSync** modult, majd futtassa a`Set-ADSyncDirSyncConfiguration` az Azure AD Connect-kiszolgáló a powershell-parancsmagot.  Használhatja az alábbi lépéseket:
+>
+>1. Rendszergazdaként módban megnyitott Powershell
+>2. Futtassa a `Import-Module "ADSync"` parancsot.
+>3. Futtassa a `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` parancsot.
+ 
+
 
 ### <a name="release-status"></a>Kiadási állapot 
 
-05/14/2019: TBD
+05/14/2019: Kiadás dátuma: letöltés
 
 
 ### <a name="fixed-issues"></a>Hibák kijavítva: 
@@ -398,18 +408,18 @@ Az AD DS-fiókot a következő engedélyeinek módosítása a helyszíni alkalma
 *   Távolítsa el az adott objektumra, kivéve az adott ÖNKISZOLGÁLÓ hozzáférés-vezérlési bejegyzés vonatkozó összes ACE. Szeretnénk az alapértelmezett engedélyek ép esetén, a saját MAGA.
 *   Ezek az engedélyek hozzárendelése:
 
-Típus     | Name (Név)                          | Hozzáférés               | Erre vonatkozik
+Típus     | Name (Név)                          | Access               | Vonatkozik
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Domain Admins                 | Teljes hozzáférés         | Ez az objektum  |
-Engedélyezés    | Rendszergazdák                | Teljes hozzáférés         | Ez az objektum  |
+Engedélyezés    | A rendszergazdák                | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Tartalom listázása        | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Az összes tulajdonság olvasása  | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Olvasási engedélyek     | Ez az objektum  |
-Engedélyezés    | Hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
-Engedélyezés    | Hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
-Engedélyezés    | Hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
+Engedélyezés    | A hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
+Engedélyezés    | A hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
+Engedélyezés    | A hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
 
 A beállítások a az AD DS-fiók megerősítéséhez futtathatja [a PowerShell-szkript](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). A PowerShell-szkriptet fogja hozzárendelni az engedélyeket, az AD DS-fiókot a fent említett.
 
@@ -417,13 +427,13 @@ A beállítások a az AD DS-fiók megerősítéséhez futtathatja [a PowerShell-
 
 A PowerShell-parancsprogram használatával alkalmazni ezeket a beállításokat egy már meglévő AD DS-fiókot (a szervezet biztosítja nekik vagy az Azure AD Connect egy előző telepítés által létrehozott távolítsuk töltse le a parancsfájlt a fenti hivatkozásra.
 
-##### <a name="usage"></a>Használat:
+##### <a name="usage"></a>Használat
 
 ```powershell
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-Ahol (a(z) 
+Ahol 
 
 **$ObjectDN** = az Active Directory-fiók, amelynek engedélyeket kell megfeszíteni kell.
 
@@ -741,9 +751,9 @@ CBool(
     |CertFriendlyName|certThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Kiválasztás|
-    |CertKeyAlgorithmParams|CertHashString|Ahol (a(z)|
-    |||A következővel: |
+    |CertVersion|CertSignatureAlgorithmOid|Válassza ezt:|
+    |CertKeyAlgorithmParams|CertHashString|Ahol|
+    |||A következővel:|
 
 * Lehetővé teszi ügyfeleink számára hozzon létre egyéni szinkronizálási szabályok sAMAccountName domainNetBios és csoport objektumainak domainFQDN, valamint a felhasználói objektumok distinguishedName folyamat következő sémaváltozások vezettek be:
 
@@ -797,7 +807,7 @@ Az Azure AD Connect szinkronizálása
 * Kijavítva, amely hatására az automatikus frissítése az Azure AD Connect-kiszolgáló még akkor is, ha az ügyfél letiltotta a funkciót, a Set-ADSyncAutoUpgrade parancsmag használatával történik. Az automatikus frissítési folyamat a kiszolgálón a frissítés továbbra is rendszeres időközönként ellenőrzi a javítás, de a letöltött telepítőt az automatikus frissítési konfiguráció figyelembe veszi.
 * A DirSync a helyben frissítés során az Azure AD Connect létrehoz egy Azure AD-szolgáltatásfiók és az Azure AD szinkronizálása az Azure AD-összekötő által használandó. A fiók létrehozása után az Azure AD Connect végzi a hitelesítést az Azure AD-fiókkal. Egyes esetekben hitelesítés nem sikerül átmeneti problémák miatt viszont emiatt DirSync helyszíni frissítését hiba miatt sikertelen *"hiba történt az AAD-Szinkronizáló beállítása a feladat végrehajtása: AADSTS50034: Jelentkezzen be az alkalmazást, hogy a fiókot hozzá kell adni a xxx.onmicrosoft.com könyvtárba."* A DirSync frissítése rugalmasságát javítása érdekében az Azure AD Connect mostantól a hitelesítési lépés újbóli végrehajtása.
 * Hiba történt a 443-as buildelési, amelynek hatására a DirSync helyi frissítés sikeres, de nem jöttek létre futtatási profilokat a címtár-szinkronizálás szükséges. Az Azure AD Connect a build logikai javítási tartalmazza. A build ügyfél rendszerre frissül, amikor az Azure AD Connect észleli a hiányzó futtatási profilok, és létrehozza őket.
-* Kijavítva a jelszó-szinkronizálás folyamata nem indulnak el az Event ID 6900 és a hiba kiváltó *"ugyanazzal a kulccsal rendelkező elemet már hozzáadták"*. Ez a probléma akkor fordul elő, frissít OU konfigurációs szűrés AD konfigurációs partíció tartalmazza. A probléma megoldásához, jelszó-szinkronizálás folyamata most csak tartománypartíciókban AD jelszó-módosítások szinkronizálása. Például a konfigurációs partíción tartományon kívüli partíciókat a rendszer kihagyja.
+* Kijavítva a jelszó-szinkronizálás folyamata nem indulnak el az Event ID 6900 és a hiba kiváltó *"ugyanazzal a kulccsal rendelkező elemet már hozzáadták"* . Ez a probléma akkor fordul elő, frissít OU konfigurációs szűrés AD konfigurációs partíció tartalmazza. A probléma megoldásához, jelszó-szinkronizálás folyamata most csak tartománypartíciókban AD jelszó-módosítások szinkronizálása. Például a konfigurációs partíción tartományon kívüli partíciókat a rendszer kihagyja.
 * Expressz telepítés során az Azure AD Connect létrehoz egy helyi az AD-összekötővel folytatott kommunikációhoz használt AD DS-fiókot a helyszíni AD. Korábban a PASSWD_NOTREQD jelölővel állítsa be a felhasználó-fiók-ellenőrzési attribútum a fiók létrejön, és a véletlenszerű jelszót a fiók be van állítva. Most az Azure AD Connect explicit módon a PASSWD_NOTREQD jelző után eltávolítja a jelszót a fiók be van állítva.
 * Kijavítva a hiba a DirSync frissítése sikertelen okozó *"holtpontot történt az sql server melyik egy alkalmazás zárolást"* mikor a mailNickname attribútum található a helyszíni AD-sémát, azonban nem korlátozza a az AD User objektum osztálya.
 * Kijavítva, amely hatására az eszköz a jelszóvisszaíró szolgáltatás automatikusan le kell tiltani, ha a rendszergazda frissítése folyamatban van az Azure AD Connect szinkronizálási konfigurációjában, az Azure AD Connect varázsló használatával. A probléma okozza a varázsló egy előfeltételként-ellenőrzés elvégzése a meglévő eszközök a jelszóvisszaíró konfigurálása a helyszíni AD és az ellenőrzés sikertelen lesz. A javítás, hogy az ellenőrzés kihagyása, ha az eszközvisszaírás korábban már engedélyezve van.
@@ -905,7 +915,7 @@ AD FS-kezelőben
 * Kijavítva egy probléma, amely a meghiúsuljon, ha haladnak keresztül hitelesítés van beállítva, de az összekötő regisztrálása meghiúsul az Azure AD Connect varázsló okoz.
 * Kijavítva egy probléma milyen okok Ha asztali egyszeri bejelentkezés szolgáltatás engedélyezve van a kijelölt bejelentkezési módszert ellenőrzésének kihagyását az Azure AD Connect varázslót.
 
-Jelszó visszaállítása
+Új jelszó kérése
 * Kijavítva egy probléma miatt előfordulhat, hogy a Azure AAD Connect-kiszolgáló kísérelje meg ismét csatlakozni, ha a kapcsolat egy tűzfal vagy proxy lett állítva.
 
 **Új funkciók és fejlesztések:**
@@ -920,7 +930,7 @@ AD FS-kezelőben
 * Mostantól megadhatja meglévő csoportosan felügyelt szolgáltatásfiókok (csoportosan felügyelt szolgáltatásfiók) az AD FS telepítése során.
 * A aláírás-kivonatoló algoritmus az Azure AD függő entitás megbízhatóságaként, mostantól konfigurálhatja az SHA-256.
 
-Jelszó visszaállítása
+Új jelszó kérése
 * Lehetővé teszi a funkció a termék szigorúbb tűzfalszabályokkal környezetekben fejlesztései bevezetésre.
 * Továbbfejlesztett kapcsolat megbízhatóságát, az Azure Service Bus.
 
@@ -1018,7 +1028,7 @@ Kiadás dátuma: 2016. május
 
 * Figyelmezteti, és segít a tartományok ellenőrzését, ellenkező esetben azt az Azure AD Connect futtatása előtt.
 * Támogatás hozzáadva az [Microsoft Cloud németországi adatközpontjában](reference-connect-instances.md#microsoft-cloud-germany).
-* A legújabb támogatása [Microsoft Azure Government felhőben](reference-connect-instances.md#microsoft-azure-government-cloud) infrastruktúra az új URL-követelményeknek.
+* A legújabb támogatása [Microsoft Azure Government felhőben](reference-connect-instances.md#microsoft-azure-government) infrastruktúra az új URL-követelményeknek.
 
 **Rögzített problémák és fejlesztések:**
 

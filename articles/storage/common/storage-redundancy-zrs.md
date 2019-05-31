@@ -9,12 +9,12 @@ ms.date: 10/24/2018
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3d4c40e172352fc2d92ea5523cad2aebe5468e1e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 111167584fb2e0e2ee5977e0e24b3ebf07b170c1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65961441"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238004"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zónaredundáns tárolás (ZRS): Azure Storage magas rendelkezésre állású alkalmazások
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -31,7 +31,7 @@ A ZRS az alábbi régiókban általában érhető el:
 - Észak-Európa
 - Közép-Franciaország
 - Kelet-Japán
-- Egyesült Királyság déli régiója
+- Az Egyesült Királyság déli régiója
 - USA középső régiója
 - USA keleti régiója
 - USA 2. keleti régiója
@@ -49,7 +49,7 @@ A ZRS előfordulhat, hogy nem védelem érdekében a regionális katasztrófa, a
 ## <a name="converting-to-zrs-replication"></a>A ZRS-replikációval alakítása
 Áttelepítés vagy onnan LRS, GRS és RA-GRS rendkívül egyszerű. Az Azure portal vagy a Storage Resource Provider API használatával módosíthatja a fiók a redundancia típusát. Az Azure ezután replikálja az adatokat annak megfelelően. 
 
-Adatok áttelepítése, illetve a zrs-t egy másik stratégia van szükség. A ZRS áttelepítésébe tartozik egy adott régión belül több stamp egyetlen tárolóblokk az adatok tényleges mozgatását.
+Adatok áttelepítése a zrs-t egy másik stratégiát igényel. A ZRS áttelepítésébe tartozik egy adott régión belül több stamp egyetlen tárolóblokk az adatok tényleges mozgatását.
 
 A ZRS való migrálásának két elsődleges lehetőség van: 
 

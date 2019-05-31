@@ -10,12 +10,12 @@ ms.subservice: load data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8ca3b52d181578e6b35090489b7133a94b55cbd
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: ac0f8cb4d9069d2ef7ce48939ad2dd1c92732d1a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65852072"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242964"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: New York-i taxik adatait az Azure SQL Data Warehouse betöltése
 
@@ -583,14 +583,14 @@ Betöltése a PolyBase, és a felügyelt identitásokból hitelesítéshez a leg
    > [!NOTE]
    > - Ha rendelkezik egy általános célú v1- vagy blob storage-fiók, meg kell **először frissítse a v2** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
     
-1. Lépjen a storage-fiók alatt **hozzáférés-vezérlés (IAM)**, és kattintson a **szerepkör-hozzárendelés hozzáadása**. Rendelje hozzá **Storage-Blobadatok Közreműködője** RBAC szerepkör az SQL Database-kiszolgálóhoz.
+1. Lépjen a storage-fiók alatt **hozzáférés-vezérlés (IAM)** , és kattintson a **szerepkör-hozzárendelés hozzáadása**. Rendelje hozzá **Storage-Blobadatok Közreműködője** RBAC szerepkör az SQL Database-kiszolgálóhoz.
 
    > [!NOTE] 
    > Csak a tulajdonosa a jogosultsággal rendelkező tagok ebben a lépésben hajthat végre. A különféle beépített szerepkörök az Azure-erőforrásokhoz, tekintse meg a [útmutató](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
 1. **A Polybase-kapcsolat az Azure Storage-fiókba:**
     
-   1. Az adatbázishoz kötődő hitelesítő adat létrehozása **azonosító = "Felügyeltszolgáltatás-identitást"**:
+   1. Az adatbázishoz kötődő hitelesítő adat létrehozása **azonosító = "Felügyeltszolgáltatás-identitást"** :
 
        ```SQL
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
@@ -640,7 +640,7 @@ A következőket hajtotta végre:
 > * Az adatok állapotának megtekintése betöltés közben
 > * Statisztikák készítése az újonnan betöltött adatokról
 
-Folytassa az áttelepítés áttekintésével, amelyből megtudhatja, hogyan telepíthet át egy meglévő adatbázist az SQL Data Warehouse-ba.
+Folytassa a megtudhatja, hogyan telepíthet át egy meglévő adatbázist az SQL Data Warehouse fejlesztői áttekintés.
 
 > [!div class="nextstepaction"]
->[Ismerje meg, hogyan telepíthet át egy meglévő adatbázist az SQL Data Warehouse-ba](sql-data-warehouse-overview-migrate.md)
+>[Tervezési döntéseket telepíthet át egy meglévő adatbázist az SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)

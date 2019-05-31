@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: cb8a97a29a14ecd5601495048bcbe1aff748d892
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03f7f050e158ba30d2f89e79ffcc9e8723eb5268
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626774"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298690"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Java SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -198,7 +198,7 @@ Az SQL API-t a Java SDK támogatja a szinkron műveletek. Aszinkron támogatást
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Támogatja a térinformatikai Index
-* Ellenőrzi az összes erőforrás id tulajdonsága. Az erőforrások azonosítóit nem tartalmazhat?, /, #, \, karaktereket vagy záró szóközzel.
+* Ellenőrzi az összes erőforrás ID tulajdonsága. Az erőforrások azonosítóit nem tartalmazhat?, /, #, \, karaktereket vagy záró szóközzel.
 * ResourceResponse ad hozzá új fejléc "index átalakítási folyamat".
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
@@ -215,6 +215,11 @@ A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-
 Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer elutasítja a szolgáltatás által.
 
 > [!WARNING]
+> Az összes verzió **1.x** az SQL SDK for Java-jén kivonjuk a forgalomból **2020 május 30-as**.
+> 
+>
+
+> [!WARNING]
 > Összes verzióját az SQL SDK a Javához készült verzió előtt **1.0.0-s** án visszavontuk **2016. február 29-én**.
 > 
 > 
@@ -228,37 +233,37 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 | [2.1.1](#2.1.1) |2018. december 13. |--- |
 | [2.1.0](#2.1.0) |2018. november 20. |--- |
 | [2.0.0](#2.0.0) |2018. Szeptembertől 21. |--- |
-| [1.16.4](#1.16.4) |2018. Szeptembertől 10. |--- |
-| [1.16.3](#1.16.3) |2018. Szeptembertől 09. |--- |
-| [1.16.2](#1.16.2) |2018. június 29. |--- |
-| [1.16.1](#1.16.1) |2018. május 16. |--- |
-| [1.16.0](#1.16.0) |2018. március 15. |--- |
-| [1.15.0](#1.15.0) |2017. november 14. |--- |
-| [1.14.0](#1.14.0) |2017. október 28. |--- |
-| [1.13.0](#1.13.0) |2017. augusztus 25-én |--- |
-| [1.12.0](#1.12.0) |2017. július 11. |--- |
-| [1.11.0](#1.11.0) |2017. május 10. |--- |
-| [1.10.0](#1.10.0) |2017. március 11. |--- |
-| [1.9.6](#1.9.6) |2017. február 21. |--- |
-| [1.9.5](#1.9.5) |2017. január 31-ig. |--- |
-| [1.9.4](#1.9.4) |2016. november 24-én |--- |
-| [1.9.3](#1.9.3) |2016. október 30. |--- |
-| [1.9.2](#1.9.2) |2016. október 28. |--- |
-| [1.9.1](#1.9.1) |2016. október 26. |--- |
-| [1.9.0](#1.9.0) |2016. október 03. |--- |
-| [1.8.1](#1.8.1) |2016. június 30. |--- |
-| [1.8.0](#1.8.0) |2016. június 14-én |--- |
-| [1.7.1](#1.7.1) |2016. április 30. |--- |
-| [1.7.0](#1.7.0) |2016. április 27-én |--- |
-| [1.6.0](#1.6.0) |2016. március 29-én |--- |
-| [1.5.1](#1.5.1) |2015. december 31-ig. |--- |
-| [1.5.0](#1.5.0) |2015. december 04. |--- |
-| [1.4.0](#1.4.0) |2015. október 05 |--- |
-| [1.3.0](#1.3.0) |2015. október 05 |--- |
-| [1.2.0](#1.2.0) |2015. augusztus 05 |--- |
-| [1.1.0](#1.1.0) |2015. július 09. |--- |
-| 1.0.1 |2015. május 12. |--- |
-| [1.0.0](#1.0.0) |2015. április 07. |--- |
+| [1.16.4](#1.16.4) |2018. Szeptembertől 10. |2020. május 30. |
+| [1.16.3](#1.16.3) |2018. Szeptembertől 09. |2020. május 30. |
+| [1.16.2](#1.16.2) |2018. június 29. |2020. május 30. |
+| [1.16.1](#1.16.1) |2018. május 16. |2020. május 30. |
+| [1.16.0](#1.16.0) |2018. március 15. |2020. május 30. |
+| [1.15.0](#1.15.0) |2017. november 14. |2020. május 30. |
+| [1.14.0](#1.14.0) |2017. október 28. |2020. május 30. |
+| [1.13.0](#1.13.0) |2017. augusztus 25-én |2020. május 30. |
+| [1.12.0](#1.12.0) |2017. július 11. |2020. május 30. |
+| [1.11.0](#1.11.0) |2017. május 10. |2020. május 30. |
+| [1.10.0](#1.10.0) |2017. március 11. |2020. május 30. |
+| [1.9.6](#1.9.6) |2017. február 21. |2020. május 30. |
+| [1.9.5](#1.9.5) |2017. január 31-ig. |2020. május 30. |
+| [1.9.4](#1.9.4) |2016. november 24-én |2020. május 30. |
+| [1.9.3](#1.9.3) |2016. október 30. |2020. május 30. |
+| [1.9.2](#1.9.2) |2016. október 28. |2020. május 30. |
+| [1.9.1](#1.9.1) |2016. október 26. |2020. május 30. |
+| [1.9.0](#1.9.0) |2016. október 03. |2020. május 30. |
+| [1.8.1](#1.8.1) |2016. június 30. |2020. május 30. |
+| [1.8.0](#1.8.0) |2016. június 14-én |2020. május 30. |
+| [1.7.1](#1.7.1) |2016. április 30. |2020. május 30. |
+| [1.7.0](#1.7.0) |2016. április 27-én |2020. május 30. |
+| [1.6.0](#1.6.0) |2016. március 29-én |2020. május 30. |
+| [1.5.1](#1.5.1) |2015. december 31-ig. |2020. május 30. |
+| [1.5.0](#1.5.0) |2015. december 04. |2020. május 30. |
+| [1.4.0](#1.4.0) |2015. október 05 |2020. május 30. |
+| [1.3.0](#1.3.0) |2015. október 05 |2020. május 30. |
+| [1.2.0](#1.2.0) |2015. augusztus 05 |2020. május 30. |
+| [1.1.0](#1.1.0) |2015. július 09. |2020. május 30. |
+| 1.0.1 |2015. május 12. |2020. május 30. |
+| [1.0.0](#1.0.0) |2015. április 07. |2020. május 30. |
 | 0.9.5-prelease |2015. március 09. |2016. február 29-én |
 | 0.9.4-prelease |2015. február 17. |2016. február 29-én |
 | 0.9.3-prelease |2015. január 13. |2016. február 29-én |

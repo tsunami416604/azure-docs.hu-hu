@@ -1,5 +1,5 @@
 ---
-title: Erőforrásosztályok számítási feladatok kezelése – Azure SQL Data Warehouse |} A Microsoft Docs
+title: Erőforrásosztályok számítási feladatok kezeléséhez az Azure SQL Data Warehouse |} A Microsoft Docs
 description: Útmutató a erőforrásosztályok használata az egyidejűség kezelése és a számítási erőforrásokat az Azure SQL Data Warehouse lekérdezések.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 05/22/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 75bd6e8071717ba755b71f51afcd884539049489
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 1c15778eb2ce38efb65e777578008b61e7066d67
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165985"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244511"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Az Azure SQL Data warehouse erőforrásosztályok számítási feladatok kezelése
 
@@ -91,7 +91,7 @@ Ha dinamikus erőforrásosztályt Gen1 a részletek digging, van néhány adatra
 | smallrc        | 3%                | 32                     |
 | mediumrc       | 10%               | 10                     |
 | largerc        | 22%               | 4                      |
-| xlargerc       | 70%               | 1.                      |
+| xlargerc       | 70%               | 1                      |
 
 ### <a name="default-resource-class"></a>Alapértelmezett erőforrásosztály
 

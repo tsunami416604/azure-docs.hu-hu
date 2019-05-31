@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: ce05d097aa69aa1aadb8450e40722448bc5a7de0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55b73f5f4e6998eb1eb8c5ebc873fa20f8722a3e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61402041"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304589"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Létrehozása és kezelése Windows virtuális gépek az Azure-ban C# használatával #
 
@@ -40,8 +40,8 @@ Körülbelül 20 perc alatt elvégezheti ezeket a lépéseket vesz igénybe.
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
 1. Ha még nem tette, telepítse a [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Válassza ki **.NET asztali fejlesztés** a számítási feladatok lapján, és kattintson a **telepítése**. A fentieket összegezve láthatja, hogy **.NET-keretrendszer 4-4.6 Fejlesztőeszközök** automatikusan ki van jelölve az Ön számára. Ha már telepítette a Visual Studio, a .NET-munkaterhelés használatával a Visual Studio indítója is hozzáadhat.
-2. A Visual Studióban kattintson a **File (Fájl)** > **New (Új)** > **Project (Projekt)** parancsra.
-3. A **sablonok** > **Visual C#** válassza **Console App (.NET Framework)**, adja meg *myDotnetProject* neve a projektre, válassza ki a projekt helyét, majd kattintson **OK**.
+2. A Visual Studióban kattintson a **File (Fájl)**  > **New (Új)**  > **Project (Projekt)** parancsra.
+3. A **sablonok** > **Visual C#** válassza **Console App (.NET Framework)** , adja meg *myDotnetProject* neve a projektre, válassza ki a projekt helyét, majd kattintson **OK**.
 
 ## <a name="install-the-package"></a>A csomag telepítése
 
@@ -80,12 +80,12 @@ Ebben a lépésben a Kezdés előtt győződjön meg arról, hogy rendelkezik-e 
 4. A Windows engedélyezési létrehozott fájl teljes elérési útja AZURE_AUTH_LOCATION nevű környezeti változó értéke. Ha például a következő PowerShell-parancs használható:
 
     ```
-    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
+    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
 ### <a name="create-the-management-client"></a>A felügyeleti ügyfél létrehozása
 
-1. Nyissa meg a létrehozott projekt a Program.cs fájlt, és adja hozzá ezek using utasításokat a meglévő utasításokat a fájl felül:
+1. Nyissa meg a Program.cs fájlt, a létrehozott projekt. Adja hozzá ezek using utasításokat a meglévő utasításokat a, a fájl elejéhez:
 
     ```
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -365,7 +365,7 @@ Console.ReadLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Adatlemez hozzáadása a virtuális Géphez
 
-Szeretne hozzáadni egy adatlemezt a virtuális gépet, adja hozzá ezt a kódot a Main metódushoz, amely 2 GB-os méretig, a LUN 0 és a egy olvasási és írási gyorsítótárazás típusú han adatlemez hozzáadása:
+Szeretne hozzáadni egy adatlemezt a virtuális gépet, adja hozzá ezt a kódot a Main metódushoz. Ebben a példában, amely 2 GB-os méretig, a LUN 0 és a egy olvasási és írási gyorsítótárazás típusú han adatlemezt ad hozzá:
 
 ```
 Console.WriteLine("Adding data disk to vm...");

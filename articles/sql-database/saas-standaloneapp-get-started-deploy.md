@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 4dbf53df4d3f34e80757f9575981b4b053587d97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1b281c7beac6b6cb48834e636edff818f89bf12
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61485151"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304139"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Üzembe helyezése és megismerése az Azure SQL-adatbázist használó önálló egybérlős alkalmazás
 
@@ -25,9 +25,9 @@ Ebben az oktatóanyagban üzembe helyezése, és a Wingtip Tickets SaaS-mintaalk
 
 Az önálló alkalmazás vagy alkalmazás bérlőnkénti minta üzembe helyez egy alkalmazáspéldány az egyes bérlők számára.  Minden alkalmazás egy adott bérlő konfigurálva, és a egy külön Azure-erőforráscsoport üzembe helyezve. Több-bérlős megoldást kínál az alkalmazás több példánya érvénybe lépnek. Ez a minta akkor kisebb számokat, a bérlők, ahol a bérlők elkülönítését prioritást jelent a legmegfelelőbb. Azure-partner programok, amelyek lehetővé teszik az erőforrások egy bérlő-előfizetésben helyezi üzembe helyezni és felügyelt egy szolgáltató által a bérlő nevében megtalálható. 
 
-Ebben az oktatóanyagban három különálló alkalmazás három bérlők számára telepíti az Azure-előfizetésben helyezi.  Fedezze fel és az egyes alkalmazás-összetevők teljes hozzáféréssel rendelkezik.
+Ebben az oktatóanyagban az Azure-előfizetéshez, három különálló alkalmazás három bérlők számára elérhetővé telepítésre.  Fedezze fel és az egyes alkalmazás-összetevők teljes hozzáféréssel rendelkezik.
 
-Az alkalmazás forrás-kód és a felügyeleti parancsprogramokat érhetők el a [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub-adattárban. Az alkalmazás a Visual Studio 2015-ben lett létrehozva, és nem sikerült nyissa meg és fordítsa le a Visual Studio 2017 frissítése nélkül.
+Az alkalmazás forrás-kód és a felügyeleti parancsprogramokat érhetők el a [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub-adattárban. Az alkalmazás a Visual Studio 2015-ben lett létrehozva, és nem sikeresen nyissa meg és fordítsa le a Visual Studio 2019 frissítése nélkül.
 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az alkalmazás forráskódjának és felügyeleti parancsfájlokat helyét.
 > * A kiszolgálók és adatbázisok az alkalmazás alkotó.
 
-További oktatóanyagok elérhető lesz. Ezek lehetővé teszi, hogy ismerje meg, ezen alkalmazás mintán alapuló felügyeleti forgatókönyvek széles.   
+További oktatóanyagok elérhető lesz. Fogja lehetővé teszik, hogy ismerje meg, ezen alkalmazás mintán alapuló felügyeleti forgatókönyvek széles.   
 
 ## <a name="deploy-the-wingtip-tickets-saas-standalone-application"></a>A Wingtip Tickets SaaS önálló alkalmazás üzembe helyezése
 
@@ -56,7 +56,7 @@ Az alkalmazás üzembe helyezése a három megadott bérlők esetén:
     > Bizonyos hitelesítési és kiszolgálói tűzfalak szándékosan nem biztonságos, bemutatási céllal. **Hozzon létre egy új erőforráscsoportot** minden egyes alkalmazás üzembe helyezéshez.  Ne használjon egy meglévő erőforráscsoportot. Ne használja az alkalmazást vagy az azzal létrehozott erőforrásokat éles környezetben. Törölje az erőforráscsoportok, amikor befejezte az alkalmazásokat a kapcsolódó számlázások leállításához.
 
     A legcélszerűbb használata az erőforrás neve csak kisbetűket, számokat és kötőjeleket tartalmazhat.
-    * A **erőforráscsoport**, hozzon létre új és a egy kis az erőforráscsoport nevét adja meg. **a Wingtip-sa -\<venueName\>-\<felhasználói\>**  a javasolt minta.  A \<venueName\>, helyettesítse be a helyszín neve nem tartalmazhat szóközt. A \<felhasználói\>, illessze be az alábbi a felhasználó értéket.  Ezzel a mintával az erőforráscsoportok nevei lehet *wingtip-sa-contosoconcerthall-af1*, *wingtip-sa-dogwooddojo-af1*, *wingtip-sa-fabrikamjazzclub-af1*.
+    * A **erőforráscsoport**, hozzon létre új és a egy kis az erőforráscsoport nevét adja meg. **a Wingtip-sa -\<venueName\>-\<felhasználói\>**  a javasolt minta.  A \<venueName\>, cserélje le a helyszín neve nem tartalmazhat szóközöket. A \<felhasználói\>, cserélje le a felhasználói értékét az alábbi.  Ezzel a mintával az erőforráscsoportok nevei lehet *wingtip-sa-contosoconcerthall-af1*, *wingtip-sa-dogwooddojo-af1*, *wingtip-sa-fabrikamjazzclub-af1*.
     * Válassza ki a **hely** a legördülő listából.
 
     * A **felhasználói** – javasoljuk, hogy egy felhasználó rövid értéket a monogramját és egy számjegyet: például *af1*.
@@ -107,7 +107,7 @@ Minden bérlői adatbázis egy 50 DTU *önálló* adatbázis.
 <!--
 * Additional [tutorials that build on the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * To learn about elastic pools, see [*What is an Azure SQL elastic pool*](sql-database-elastic-pool.md)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](sql-database-elastic-jobs-overview.md)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](elastic-jobs-overview.md)
 -->
 
 - Több-bérlős SaaS-alkalmazások kapcsolatos további információkért lásd: [tervezési minták több-bérlős SaaS-alkalmazások](saas-tenancy-app-design-patterns.md).
@@ -126,6 +126,6 @@ Ez az oktatóanyag bemutatta az alábbiakat:
 > * A kiszolgálók és adatbázisok az alkalmazás alkotó.
 > * Hogyan törlése a kapcsolódó számlázások leállításához.
 
-Ezt követően próbálja meg a [kiépítéssel és Katalogizálással](saas-standaloneapp-provision-and-catalog.md) oktatóanyag, amelyben felderíti a bérlők egy katalógus, amely lehetővé teszi a több-bérlős forgatókönyvek, például a séma felügyeletet és a bérlői analitikai számos használatát.
+Ezt követően próbálja meg a [kiépítéssel és Katalogizálással](saas-standaloneapp-provision-and-catalog.md) oktatóanyag, amelyben azt vizsgáljuk meg, a bérlők egy katalógus, amely lehetővé teszi a több-bérlős forgatókönyvek, például a séma felügyeletet és a bérlői analitikai számos használatát.
  
 

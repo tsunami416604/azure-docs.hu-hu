@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/21/2019
+ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3afe27bf71d112b53c31ab696f71d4e1a0cf6b79
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 140b1263047849e13a44441c368e6357078574d8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002496"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240806"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -45,7 +45,7 @@ Futtató fiókok két típusa van:
 
 Hozzon létre, vagy frissíteni egy futtató fiókot, jogosultságokkal és engedélyekkel kell rendelkeznie. Az Azure Active Directory globális rendszergazdája és a egy adott előfizetés tulajdonosa összes feladatot elvégezheti. A feladatkörök esetében olyan helyzet az alábbi táblázat mutatja a feladatok, a varázsló használatával egyenértékű parancsmagot és a szükséges engedélyek listája:
 
-|Feladat|Parancsmag  |Minimális engedélyek  |Ha az engedélyek beállítása|
+|Tevékenység|Parancsmag  |Minimális engedélyek  |Ha az engedélyek beállítása|
 |---|---------|---------|---|
 |Az Azure AD-alkalmazás létrehozása|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Alkalmazás-fejlesztői szerepkör<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Kezdőlap > az Azure Active Directory > Alkalmazásregisztrációk |
 |A hitelesítő adatok hozzáadása az alkalmazáshoz.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Alkalmazás-rendszergazda vagy globális RENDSZERGAZDAKÉNT<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Kezdőlap > az Azure Active Directory > Alkalmazásregisztrációk|
@@ -54,7 +54,7 @@ Hozzon létre, vagy frissíteni egy futtató fiókot, jogosultságokkal és enge
 |Hozzon létre, vagy távolítsa el az Automation-tanúsítvány|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Az erőforráscsoporthoz közreműködő         |Automation-fiók erőforrás-csoport|
 |Hozzon létre vagy egy Automation-kapcsolat eltávolítása|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Az erőforráscsoporthoz közreműködő |Automation-fiók erőforrás-csoport|
 
-<sup>1</sup> az Azure AD-bérlő nem rendszergazda jogosultságú felhasználói is [AD-alkalmazások regisztrálását](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) Ha az Azure AD-bérlő **felhasználók regisztrálhatnak alkalmazásokat** beállítást **felhasználói beállítások**oldal legyen **Igen**. Ha az alkalmazásregisztrációk beállítás értéke **nem**, a művelet végrehajtása a felhasználónak kell lennie egy **globális rendszergazdai** az Azure ad-ben.
+<sup>1</sup> az Azure AD-bérlő nem rendszergazda jogosultságú felhasználói is [AD-alkalmazások regisztrálását](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) Ha az Azure AD-bérlő **felhasználók regisztrálhatnak alkalmazásokat** beállítást **felhasználói beállítások**oldal legyen **Igen**. Ha az alkalmazásregisztrációk beállítás értéke **nem**, a művelet végrehajtása a felhasználó határozzák meg az előző táblázatban szereplő kell lennie.
 
 Ha még nem tagja az előfizetéshez tartozó Active Directory-példánynak, mielőtt hozzáadják őket a a **globális rendszergazdai** szerepkört az előfizetés már hozzáadott vendégként. Ebben a helyzetben kap egy `You do not have permissions to create…` szóló figyelmeztetés a **Automation-fiók hozzáadása** lap. A hozzáadott felhasználók a **globális rendszergazdai** szerepkör először is távolítani az előfizetéshez tartozó Active Directory-példányból, majd újra hozzáadhatók, így az Active Directory teljes jogú felhasználók. Ez a helyzet úgy ellenőrizhető, ha az Azure Portal **Azure Active Directory** panelén a **Felhasználók és csoportok** és a **Minden felhasználó** elemre kattint, majd a konkrét felhasználó kiválasztása után a **Profil** elemet választja. A felhasználók profilja alatti **Felhasználó típusa** attribútum értéke ne legyen **Guest** (vendég).
 
@@ -376,7 +376,7 @@ Az Azure Portalon válassza ki a **előfizetések** , és válassza ki az előfi
 
 ![Előfizetés közreműködő](media/manage-runas-account/automation-account-remove-subscription.png)
 
-Az egyszerű szolgáltatás hozzáadása egy erőforráscsoportot, válassza ki az erőforráscsoportot az Azure Portalon, és válassza a **hozzáférés-vezérlés (IAM)**. Válassza ki **szerepkör-hozzárendelés hozzáadása**, ekkor megnyílik a **szerepkör-hozzárendelés hozzáadása** lapot. A **szerepkör**válassza **közreműködői**. Az a **kiválasztása** szöveg mezőbe írja be az egyszerű szolgáltatás a Futtatás mint fiók nevét, majd válassza ki a listából. Kattintson a **Mentés** gombra a módosítások mentéséhez. Hajtsa végre ezeket a lépéseket az erőforráscsoportoknál, szeretne adni az Azure Automation futtató szolgáltatásnév hozzáférhessen a.
+Az egyszerű szolgáltatás hozzáadása egy erőforráscsoportot, válassza ki az erőforráscsoportot az Azure Portalon, és válassza a **hozzáférés-vezérlés (IAM)** . Válassza ki **szerepkör-hozzárendelés hozzáadása**, ekkor megnyílik a **szerepkör-hozzárendelés hozzáadása** lapot. A **szerepkör**válassza **közreműködői**. Az a **kiválasztása** szöveg mezőbe írja be az egyszerű szolgáltatás a Futtatás mint fiók nevét, majd válassza ki a listából. Kattintson a **Mentés** gombra a módosítások mentéséhez. Hajtsa végre ezeket a lépéseket az erőforráscsoportoknál, szeretne adni az Azure Automation futtató szolgáltatásnév hozzáférhessen a.
 
 ## <a name="misconfiguration"></a>Hibás konfiguráció
 

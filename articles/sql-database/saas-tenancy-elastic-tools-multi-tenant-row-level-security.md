@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 71d2d542d71977f9d8dfe07370dffd7fe508bc92
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4834688496330210b273f40f1d6f11230a6ae1c8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61485403"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234124"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Az elastic database-eszközökkel és a sorszintű biztonság több-bérlős alkalmazások
 
@@ -228,7 +228,7 @@ Rls-t a Transact-SQL-ben van megvalósítva. Egy felhasználó által definiált
     - A blokkpredikátumok megakadályozza, hogy a sorokat, amelyek a szűrő beszúrt vagy frissített legyenek sikertelenek.
     - Ha a munkamenet\_környezet nincs beállítva, a függvény NULL értéket ad vissza, és nincsenek sorai nem látható vagy képes lehet beszúrni.
 
-Ahhoz, hogy minden szegmensre az rls-t, hajtsa végre a következő T-SQL Visual Studio (SSDT), az SSMS vagy az projekt tartalmazza a PowerShell-parancsfájl használatával. Vagy ha használ [Elastic Database-feladatok](sql-database-elastic-jobs-overview.md), automatizálhatja a T-SQL az összes szegmensek végrehajtását.
+Ahhoz, hogy minden szegmensre az rls-t, hajtsa végre a következő T-SQL Visual Studio (SSDT), az SSMS vagy az projekt tartalmazza a PowerShell-parancsfájl használatával. Vagy ha használ [Elastic Database-feladatok](elastic-jobs-overview.md), automatizálhatja a T-SQL az összes szegmensek végrehajtását.
 
 ```sql
 CREATE SCHEMA rls; -- Separate schema to organize RLS objects.
@@ -344,7 +344,7 @@ GO
 - **Hozzáadás, új szegmensekre**: Hajtsa végre a T-SQL parancsfájlt engedélyezése bármely új szegmensekre az rls-t, ellenkező esetben ezekben a szegmensekben lévő lekérdezések nem vannak szűrve.
 - **Új táblázatok hozzáadása**: Adja hozzá egy SZŰRŐT, és letiltja a predikátum a biztonsági házirendet minden szegmensben, amikor létrejön egy új tábla. Ellenkező esetben az új tábla-lekérdezéseket is nem lesznek szűrve. A Hozzáadás automatizálható a DDL-triggerek használatával leírtak szerint [sorszintű biztonság alkalmazása automatikusan az újonnan létrehozott táblák (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Elastic database-eszközökkel és a sorszintű biztonság együtt használandó horizontális felskálázási adatrétegbeli alkalmazás-mindkét több-bérlős támogatással és egybérlős szegmensek lehet. Több-bérlős szilánkok hatékonyabban adatok tárolására használható. Ez a hatékonyság ejtsd van, ahol a bérlők nagy számú csak néhány sornyi adatot rendelkezik. Egybérlős szegmensek szigorúbb teljesítmény és az elkülönítési követelmények prémium szintű bérlők esetén is támogatja. További információkért lásd: [sorszintű biztonság referencia][rls].
 

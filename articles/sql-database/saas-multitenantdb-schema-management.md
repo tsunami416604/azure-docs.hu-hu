@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: c7c10608d90f7659b108d2d8c80038f59396de2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 07e8fce5fd8db5d2070b8e382a0eba2ae7187b0d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61485210"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242776"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Egy több-bérlős SQL szilánkokra osztott adatbázisok használó SaaS-alkalmazásban séma kezelése
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag bemutatja, a következő két esetben:
 - Frissítések telepítése egyetlen bérlő számára.
 - A tábla a referenciaadatokat tartalmazó index újraépítése.
 
-A [Elastic Jobs](sql-database-elastic-jobs-overview.md) az Azure SQL Database szolgáltatás hajthatók végre ezeket a műveleteket a több bérlős adatbázisban. A feladatok is működnek a "sablon" bérlői adatbázis. A Wingtip Tickets mintaalkalmazás Ez a sablon az adatbázis új bérlői adatbázis kiépítése másolja.
+A [Elastic Jobs](elastic-jobs-overview.md) az Azure SQL Database szolgáltatás hajthatók végre ezeket a műveleteket a több bérlős adatbázisban. A feladatok is működnek a "sablon" bérlői adatbázis. A Wingtip Tickets mintaalkalmazás Ez a sablon az adatbázis új bérlői adatbázis kiépítése másolja.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -57,7 +57,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS-séma kezelése minták bemutatása
 
-A több-bérlős szilánkokra osztott adatbázis modellt a jelen példában használt lehetővé teszi a bérlők számára az adatbázis tartalmaz egy vagy több tenant. Ez a minta bemutatja a használatára egy több-bérlős és a egy-bérlői adatbázissal, amely lehetővé teszi a lehetséges egy *hibrid* bérlő felügyeleti modellt. Módosítások és az ilyen adatbázisok kezelése bonyolult feladatnak bizonyulhat. [Rugalmas feladatok](sql-database-elastic-jobs-overview.md) elősegíti a felügyeletét és kezelését nagy számú adatbázis. A feladatok lehetővé teszik, hogy biztonságosan és megbízhatóan Transact-SQL-parancsprogramokat futtató tevékenységek bérlői adatbázisok csoportjain. A feladatok olyan felhasználói interakciótól vagy beviteltől független. Ez a módszer a séma vagy a közös referenciaadatokkal, az alkalmazások az összes bérlőre kiterjedő módosítások üzembe helyezéséhez használható. Rugalmas feladatok is használható az adatbázis hamisított Kerberos-sablon másolatának fenntartásához. A sablon új bérlők számára, mindig biztosítva a legújabb séma létrehozására szolgál, és a referenciaadatok használatban vannak.
+A több-bérlős szilánkokra osztott adatbázis modellt a jelen példában használt lehetővé teszi a bérlők számára az adatbázis tartalmaz egy vagy több tenant. Ez a minta bemutatja a használatára egy több-bérlős és a egy-bérlői adatbázissal, amely lehetővé teszi a lehetséges egy *hibrid* bérlő felügyeleti modellt. Módosítások és az ilyen adatbázisok kezelése bonyolult feladatnak bizonyulhat. [Rugalmas feladatok](elastic-jobs-overview.md) elősegíti a felügyeletét és kezelését nagy számú adatbázis. A feladatok lehetővé teszik, hogy biztonságosan és megbízhatóan Transact-SQL-parancsprogramokat futtató tevékenységek bérlői adatbázisok csoportjain. A feladatok olyan felhasználói interakciótól vagy beviteltől független. Ez a módszer a séma vagy a közös referenciaadatokkal, az alkalmazások az összes bérlőre kiterjedő módosítások üzembe helyezéséhez használható. Rugalmas feladatok is használható az adatbázis hamisított Kerberos-sablon másolatának fenntartásához. A sablon új bérlők számára, mindig biztosítva a legújabb séma létrehozására szolgál, és a referenciaadatok használatban vannak.
 
 ![képernyő](media/saas-multitenantdb-schema-management/schema-management.png)
 
@@ -115,7 +115,7 @@ Hozzon létre egy új feladatot, az alkalmazásban létrehozott feladatok rendsz
 
 8. A szkriptek futtatásához nyomja le az **F5** billentyűt.
 
-#### <a name="observe"></a>Megfigyelés
+#### <a name="observe"></a>Figyelje meg
 
 Figyelje meg a következő elemeket az *DeployReferenceData.sql* parancsfájlt:
 
@@ -146,7 +146,7 @@ Ebben a gyakorlatban létrehoz egy feladatot a referenciatábla elsődleges kulc
 
 3. A szkriptek futtatásához nyomja le az **F5** billentyűt.
 
-#### <a name="observe"></a>Megfigyelés
+#### <a name="observe"></a>Figyelje meg
 
 Figyelje meg a következő elemeket az *.SQL* parancsfájlt:
 
@@ -161,8 +161,7 @@ Figyelje meg a következő elemeket az *.SQL* parancsfájlt:
 <!-- TODO: Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment (*Tutorial link to come*)
 (saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 -->
-* [Kiterjesztett felhőalapú adatbázisok kezelése](sql-database-elastic-jobs-overview.md)
-* [Horizontálisan felskálázott felhőalapú adatbázisok létrehozása és kezelése](sql-database-elastic-jobs-create-and-manage.md)
+* [Kiterjesztett felhőalapú adatbázisok kezelése](elastic-jobs-overview.md)
 
 ## <a name="next-steps"></a>További lépések
 

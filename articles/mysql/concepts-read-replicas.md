@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.openlocfilehash: be592cb6bb7c041fab0a2f96a338f4f4bb0ff00a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 2d70e1b5434b2fb263d1f4587888d4758fac2828
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510926"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225360"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvassa el a replikákat az Azure Database for MySQL-hez
 
@@ -42,8 +42,7 @@ Ha a fő kiszolgálón nem meglévő replika kiszolgálók, a fő először újr
 
 Amikor a létrehozás replika munkafolyamat, egy üres, Azure Database for MySQL-kiszolgáló jön létre. Az új kiszolgáló ki van töltve az adatokkal, amelyek a fő kiszolgálón volt. A létrehozás ideje függ a master és a múlt heti teljes biztonsági mentés óta eltelt idő adatok mennyisége. Az idő pár percet vagy akár több óráig terjedhet.
 
-> [!NOTE]
-> A tárolási riasztási csoport nem rendelkezik a kiszolgálókon, azt javasoljuk, hogy lehetősége. A riasztás figyelmeztet, ha a kiszolgáló már majdnem elérte a tárolási kapacitását, amely hatással van a replikáció.
+Minden replika engedélyezve van a storage [automatikus növekedést](concepts-pricing-tiers.md#storage-auto-grow). A auto-grow funkció lehetővé teszi, hogy naprakész maradhat, replikálja az adatokat, és megakadályozza a tartományon kívül a tárolási hibák által okozott replikációban szünet a replikát.
 
 Ismerje meg, hogyan [olvasható replika létrehozásához az Azure Portalon](howto-read-replicas-portal.md).
 

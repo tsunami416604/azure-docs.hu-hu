@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9e1b1953520c5502668fbbae70a37a140253b035
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60658002"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241694"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Megnevezett értékek használata az Azure API Management házirendek
 Az API Management-házirendek olyan egy hatékony képesség, a rendszer, amelyek lehetővé teszik az Azure Portalon keresztül konfigurációs API-változtathatja meg. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. Házirend-utasítások szövegkonstans érték, a házirend-kifejezések, és az értékek nevű lehet létrehozni. 
@@ -27,10 +27,10 @@ Minden API Management-szolgáltatáspéldány tulajdonságok gyűjteménye, kulc
 
 | Attribútum | Típus | Leírás |
 | --- | --- | --- |
-| Display name |string |Alfanumerikus sztring, amellyel hivatkozni lehet a tulajdonságra a szabályzatokban. |
-| Value |string |A tulajdonság értéke. Nem lehet üres vagy állhatnak csak térközökből. |
-|Secret|logikai|Meghatározza, hogy az érték egy titkos kulcs-e, és a rendszer titkosítsa-e.|
-| Tags |sztringek tömbje |Nem kötelező, címkék, akkor használható a tulakdonságlista szűréséhez. |
+| `Display name` |string |Alfanumerikus karakterlánc, amellyel hivatkozni lehet a tulajdonságra a szabályzatokban. |
+| `Value`        |string |A tulajdonság értéke. Nem lehet üres vagy állhatnak csak térközökből. |
+| `Secret`       |logikai|Meghatározza, hogy az érték egy titkos kulcs-e, és a rendszer titkosítsa-e.|
+| `Tags`         |sztringek tömbje |Nem kötelező, címkék, akkor használható a tulakdonságlista szűréséhez. |
 
 ![Névvel ellátott értékek](./media/api-management-howto-properties/named-values.png)
 
@@ -55,7 +55,7 @@ Tulajdonságértékek tartalmazhat szövegkonstansok és [házirend-kifejezések
 
 A tulajdonság létrehozása után szerkesztheti a tulajdonság kattintva. Ha módosítja a tulajdonság nevét, minden olyan szabályzatokat, hogy a tulajdonság automatikusan frissülnek az új nevét.
 
-A REST API-val tulajdonság szerkesztési információkért lásd: [a REST API-val tulajdonság módosítása](/rest/api/apimanagement/property?Patch).
+A REST API-val tulajdonság szerkesztési információkért lásd: [a REST API-val tulajdonság módosítása](/rest/api/apimanagement/2019-01-01/property?patch).
 
 ## <a name="to-delete-a-property"></a>Egy tulajdonság
 
@@ -66,7 +66,7 @@ Vlastnost törléséhez kattintson **törlése** törli a tulajdonság mellett.
 > 
 > 
 
-A törölni egy tulajdonságot a REST API-val további információkért lásd: [törölni egy tulajdonságot a REST API-val](/rest/api/apimanagement/property?Delete).
+A törölni egy tulajdonságot a REST API-val további információkért lásd: [törölni egy tulajdonságot a REST API-val](/rest/api/apimanagement/2019-01-01/property/delete).
 
 ## <a name="to-search-and-filter-named-values"></a>Keresés és nevű értékeinek szűrése
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: b7464e5cc052ecade4a10102de947d37a63c962a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60615014"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257578"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Eszközhitelesítés X.509 Hitelesítésszolgáltatói tanúsítványok használatával
 
@@ -40,7 +40,7 @@ Az x.509-es Hitelesítésszolgáltatói tanúsítvány van, minden eszközhöz t
 
 A lezárt IoT-hálózatok is létrehozhat egy önaláírt x.509-es Hitelesítésszolgáltatói Kísérletezési vagy használatra.
 
-Függetlenül attól, hogy, hogyan szerezze be az x.509-es Hitelesítésszolgáltatói tanúsítvány, győződjön meg arról, hogy azt a megfelelő titkos kulcs titkos kulcsot, és védett mindig legyen.  Ez a megbízhatósági kapcsolatban az x.509-es Hitelesítésszolgáltatói hitelesítést a megbízhatósági kapcsolat létrehozásához szükséges.
+Függetlenül attól, hogy, hogyan szerezze be az x.509-es Hitelesítésszolgáltatói tanúsítvány, győződjön meg arról, hogy a megfelelő titkos kulcs titkos kulcsot, és védett mindig legyen.  Ez a megbízhatósági kapcsolatban az x.509-es Hitelesítésszolgáltatói hitelesítést a megbízhatósági kapcsolat létrehozásához szükséges.
 
 Ismerje meg, hogyan [hozzon létre egy önaláírt tanúsítványa](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), amellyel kísérletezéssel során ez a funkció leírása.
 

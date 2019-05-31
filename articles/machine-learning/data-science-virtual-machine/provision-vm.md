@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 03bf0833bdc1bda24b9d435dafe329e9a3c8e4b2
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 64642da88850e9a0a17173bc50ae9e750cab55a2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596500"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235102"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>A Windows adatelemző virtuális gép Azure-beli üzembe helyezése
 
@@ -106,7 +106,7 @@ A DSVM-példány létrehozása:
 
 Miután a virtuális gép létrehozása és üzembe helyezett, segítségével a távoli asztal bele a rendszergazdai fiók hitelesítő adatait, amely az előző konfigurált **alapjai** szakaszban. Készen áll az eszközöket, amelyek telepítése és konfigurálása történik meg a virtuális gép használatának megkezdéséhez. Számos olyan eszközzel start menü csempék és asztali ikonok keresztül érhetők el.
 
-Adatelemző virtuális gép is csatlakoztathat Azure-jegyzetfüzet futtatása a Jupyter notebookok a virtuális gépen, és az ingyenes szolgáltatási rétegben vonatkozó korlátozások megkerülésére. További információkért lásd: [kezelése és konfigurálása a notebookok projektek - számítási kapacitás](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+Adatelemző virtuális gép is csatlakoztathat Azure-jegyzetfüzet futtatása a Jupyter notebookok a virtuális gépen, és az ingyenes szolgáltatási rétegben vonatkozó korlátozások megkerülésére. További információkért lásd: [kezelése és konfigurálása a notebookok projektek - számítási kapacitás](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>A Microsoft Data Science virtuális gépen telepített eszközök
 
@@ -139,12 +139,12 @@ Mi a Python és az r segítségével számos mintafüzetek csomag Jupyter éri e
 * Az SQL Server Machine Learning szolgáltatás adatbázison belüli elemzések
 * Python
 * Microsoft Cognitive Toolkittel
-* Tensorflow
+* Tensorflow-hoz
 * Más Azure-technológiák
 
 Annak a minták mutató hivatkozást a jegyzetfüzet kezdőlap után a korábbi lépésben létrehozott jelszó használatával hitelesítést a Jupyter Notebookot.
 
-### <a name="visual-studio-community-2017"></a>Visual Studio Community 2017
+### <a name="visual-studio-community-2017"></a>A Visual Studio Community 2017.
 
 A dsvm-hez a Visual Studio Community tartalmazza. Ez az olyan díjmentes verziója, a népszerű IDE, amelynek tesztelési célra használja, és a csapatok is használhat. Tekintse meg a [licencfeltételek](https://www.visualstudio.com/support/legal/mt171547).
 

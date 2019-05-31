@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c0fe63e395ee08cb65e9bbbadc4ce1f03032ce95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60878248"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234059"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával
 > [!div class="op_single_selector"]
@@ -45,12 +45,12 @@ Ez a cikk ismerteti hogyan hozhat létre egy **végfelhasználói hitelesítés 
   
     ![Első AAD-tartomány](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Az Azure-bérlő azonosítóját. A Bérlőazonosító lekéréséhez kapcsolatos utasításokért lásd: [a Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+* Az Azure-bérlő azonosítóját. A Bérlőazonosító lekéréséhez kapcsolatos utasításokért lásd: [a Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
-Ez a hitelesítési mechanizmus használata az ajánlott módszer, ha azt szeretné, hogy a végfelhasználó jelentkezzen be az alkalmazás Azure AD-n keresztül. Az alkalmazás ezután is képes az ugyanazt a hozzáférési szintet, a felhasználó bejelentkezett az Azure-erőforrások eléréséhez. A végfelhasználó adja meg a hitelesítő adatokat rendszeres időközönként, hogy az alkalmazás megtartásához sorrendben kell.
+Ez a hitelesítési mechanizmus használata az ajánlott módszer, ha azt szeretné, hogy a végfelhasználó jelentkezzen be az Azure AD-n keresztül az alkalmazás számára. Az alkalmazás ezután is képes az ugyanazt a hozzáférési szintet, a felhasználó bejelentkezett az Azure-erőforrások eléréséhez. A végfelhasználó adja meg a hitelesítő adatokat rendszeres időközönként, hogy az alkalmazás megtartásához sorrendben kell.
 
-A végfelhasználói bejelentkezési kellene eredménye, hogy az alkalmazás egy hozzáférési jogkivonatot, és a egy frissítési jogkivonat van-e megadva. Data Lake Storage Gen1 vagy a Data Lake Analytics felé irányuló kérések kapcsolódik a hozzáférési jogkivonatot, és alapértelmezés szerint egy órán keresztül érvényes legyen. A frissítési jogkivonat segítségével szerezzen be egy új hozzáférési jogkivonatot, és alapértelmezés szerint legfeljebb két hétig érvényes legyen. A végfelhasználói bejelentkezési két különböző megközelítést használhat.
+A végfelhasználó jelentkezzen be kellene eredménye, hogy az alkalmazás egy hozzáférési jogkivonatot, és a egy frissítési jogkivonat van-e megadva. Data Lake Storage Gen1 vagy a Data Lake Analytics felé irányuló kérések kapcsolódik a hozzáférési jogkivonatot, és alapértelmezés szerint egy órán keresztül érvényes legyen. A frissítési jogkivonat segítségével szerezzen be egy új hozzáférési jogkivonatot, és alapértelmezés szerint legfeljebb két hétig érvényes legyen. A végfelhasználói bejelentkezési két különböző megközelítést használhat.
 
 ### <a name="using-the-oauth-20-pop-up"></a>Az OAuth 2.0 előugró ablak használatával
 Az alkalmazás is indíthat egy OAuth 2.0 engedélyezési előugró, amelyben a felhasználó megadhatja a hitelesítő adatait. Ez az előugró ablak az Azure AD-kétfaktoros hitelesítés (2FA) folyamattal is működik, ha szükséges. 
@@ -82,7 +82,7 @@ A hivatkozás utasításait, miközben mindenképpen jelölje ki **natív** alka
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>2. lépés: Alkalmazás Azonosítójának lekéréséhez és átirányítási URI
 
-Lásd: [alkalmazás Azonosítójának lekéréséhez](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key) lekérni az alkalmazás azonosítója.
+Lásd: [alkalmazás Azonosítójának lekéréséhez](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) lekérni az alkalmazás azonosítója.
 
 Az átirányítási URI azonosító lekéréséhez kövesse az alábbi lépéseket.
 

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2019
+ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0741dda0aa087f21625cabe79e51d0b9e344f7ef
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962656"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235341"
 ---
 # <a name="support-and-help-options-for-developers"></a>Fejlesztői támogatás és súgó lehetőségei
 
@@ -81,10 +81,10 @@ A Stack overflow-n a következő bejegyzések kérdéseket tehet fel és hozzáa
 
 Ha egy hiba vagy probléma a könyvtárakhoz kapcsolódó talál, növelje a problémát a GitHub-tárházakban. Mivel a könyvtárak nyílt forráskódú, elküldheti a lekéréses kérelem is.
 
-A szalagtárak és a GitHub-adattárak listájának megtekintéséhez, a következő cikkekben talál:
+Szalagtárak és a GitHub-adattárak listáját lásd:
 
 * [ADAL](active-directory-authentication-libraries.md) , valamint a GitHub-adattárak
-* [Az MSAL](reference-v2-libraries.md) , valamint a GitHub-adattárak
+* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL. Android](https://github.com/AzureAD/microsoft-authentication-library-for-android), és [MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) , valamint a GitHub-adattárak
 
 ## <a name="open-a-support-request"></a>Hozzon létre egy támogatási kérést
 

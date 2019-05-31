@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: b620cbb8e51fbe41defb6bdbdc66ba4a7e539aa0
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 7a4153dd382a901db21752dd3d55a01803431791
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306559"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388689"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Telepítse és futtassa a Speech Service-tárolók
 
-Beszédfelismerési tárolókhoz ügyfeleink hozhat létre egy beszéd architektúra, amely hatékony felhő képességeit és a peremhálózati helye előnyeinek kihasználása érdekében optimalizáltuk. Mostantól támogatjuk a két speech-tárolók **hang-szöveg transzformációs** és **szöveg-hang transzformációs**. 
+Beszédfelismerési tárolókhoz ügyfeleink hozhat létre egy beszéd architektúra, amely hatékony felhő képességeit és a peremhálózati helye előnyeinek kihasználása érdekében optimalizáltuk. 
 
 A két speech tárolók **hang-szöveg transzformációs** és **szöveg-hang transzformációs**. 
 
-|Függvény|Funkciók|Legújabb|
+|Függvény|Szolgáltatások|Legújabb|
 |-|-|--|
-|Speech-to-text| <li>Folyamatos, valós idejű beszédet szöveggé alakít.<li>A hangfelvételekről képes egyszerre több beszédforrást is szöveggé alakítani. <li>Támogatja a köztes eredményeket, a beszéd végének észlelését, az automatikus szövegformázást és a profanitás kitakarását. <li>A [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) szolgáltatásra támaszkodva a szöveggé alakított beszédből képes kikövetkeztetni a felhasználói szándékot.\*|1.1.1|
-|Szövegfelolvasás| <li>Az írott szöveget természetesnek hangzó beszéddé alakítja. <li>Számos támogatott nyelvhez elérhető több különféle nem és/vagy nyelvjárás. <li>Támogatja az egyszerű szöveges bevitelt és az SSML-t (Speech Synthesis Markup Language). |1.1.0|
+|Speech-to-text| <li>Transcribes folyamatos valós idejű beszéd vagy kötegelt hangfelvételeket szöveggé a köztes eredményeket.|1.1.1|
+|Szövegfelolvasás| <li>Az írott szöveget természetesnek hangzó beszéddé alakítja. az egyszerű szöveges beviteli vagy beszéd összefoglaló Markup Language (SSML). |1.1.0|
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -80,7 +80,7 @@ Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek 
 
 A beszédfelismerés tárolórendszerképek érhetők el. 
 
-| Tároló | Adattár |
+| Tároló | Tárház |
 |-----------|------------|
 | cognitive-services-speech-to-text | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 | cognitive-services-text-to-speech | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
@@ -110,7 +110,7 @@ A következő táblázat sorolja fel az támogatott nyelveit **hang-szöveg tran
 |Nyelvi kódot|Tags|
 |--|--|
 |kínai|`zh-cn`|
-|angol |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
+|Angol |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
 |francia |`fr-ca`<br>`fr-fr`|
 |német|`de-de`|
 |olasz|`it-it`|
@@ -139,10 +139,10 @@ A következő táblázat sorolja fel az támogatott nyelveit **szöveg-hang tran
 |Nyelvi kódot|Tags|Támogatott beszédhangot|
 |--|--|--|
 |kínai|`zh-cn`|huihuirus<br>kangkang-apollo<br>yaoyao-apollo|
-|angol |`en-au`|catherine<br>hayleyrus|
-|angol |`en-gb`|george-apollo<br>hazelrus<br>susan-apollo|
-|angol |`en-in`|heera-apollo<br>priyarus<br>ravi-apollo<br>|
-|angol |`en-us`|jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus|
+|Angol |`en-au`|catherine<br>hayleyrus|
+|Angol |`en-gb`|george-apollo<br>hazelrus<br>susan-apollo|
+|Angol |`en-in`|heera-apollo<br>priyarus<br>ravi-apollo<br>|
+|Angol |`en-us`|jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus|
 |francia|`fr-ca`|Caroline<br>harmonierus|
 |francia|`fr-fr`|hortenserus<br>Ágnes-apollo<br>paul-apollo|
 |német|`de-de`|hedda<br>heddarus<br>stefan-apollo|
@@ -161,7 +161,7 @@ A következő táblázat sorolja fel az támogatott nyelveit **szöveg-hang tran
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest
 ```
 
-#### <a name="text-to-speech"></a>Text-to-speech
+#### <a name="text-to-speech"></a>Szövegfelolvasás
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest
@@ -187,7 +187,7 @@ Használja a [futtatása docker](https://docs.docker.com/engine/reference/comman
 
 Cserélje le ezeket a paramétereket a következő példában a saját értékeire `docker run` parancsot.
 
-### <a name="text-to-speech"></a>Text-to-speech
+### <a name="text-to-speech"></a>Szövegfelolvasás
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -222,7 +222,7 @@ Ezzel a paranccsal:
 |Tároló|Végpont|
 |--|--|
 |Speech-to-text|ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1|
-|Text-to-speech|http://localhost:5000/speech/synthesize/cognitiveservices/v1|
+|Szövegfelolvasás|http://localhost:5000/speech/synthesize/cognitiveservices/v1|
 
 ### <a name="speech-to-text"></a>Speech-to-text
 
@@ -258,7 +258,7 @@ a tároló végpontja használatával metódust:
 speech_config = speechsdk.SpeechConfig(subscription=speech_key, endpoint="ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1")
 ```
 
-### <a name="text-to-speech"></a>Text-to-speech
+### <a name="text-to-speech"></a>Szövegfelolvasás
 
 A tároló található API-k REST-végpontot biztosít [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) és -példákat [Itt](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/).
 

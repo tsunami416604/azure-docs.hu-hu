@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 8f5c1755462d2bbd28dd7f8db427cda141817588
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a14e03c21de0b5388040943fbe5e9434271b567f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472224"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258822"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>A Service Bus hozzáférés-vezérlés közös hozzáférésű jogosultságkódokkal
 
@@ -86,7 +86,9 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 A jogkivonat nem kivonatolt értékeket tartalmazza, úgy, hogy a címzett be is újraszámítható egy ugyanazokkal a paraméterekkel, a kivonatoló ellenőrzése, hogy a kibocsátó érvényes aláíró kulcs birtokában van.
 
-Az erőforrás URI azonosítója a teljes erőforrás URI-ját a Service Bus, amelyhez hozzáférést igényelnek. Ha például `http://<namespace>.servicebus.windows.net/<entityPath>` vagy `sb://<namespace>.servicebus.windows.net/<entityPath>`fiókerdőből, azaz `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. Az URI-t kell [kódolt](https://msdn.microsoft.com/library/4fkewx0t.aspx).
+Az erőforrás URI azonosítója a teljes erőforrás URI-ját a Service Bus, amelyhez hozzáférést igényelnek. Ha például `http://<namespace>.servicebus.windows.net/<entityPath>` vagy `sb://<namespace>.servicebus.windows.net/<entityPath>`fiókerdőből, azaz `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. 
+
+**Az URI-t kell [kódolt](https://msdn.microsoft.com/library/4fkewx0t.aspx).**
 
 A megosztott hozzáférés-engedélyezési szabály, az aláíráshoz használt ezt az URI, vagy egy a hierarchikus szülők megadott entitást kell konfigurálni. Ha például `http://contoso.servicebus.windows.net/contosoTopics/T1` vagy `http://contoso.servicebus.windows.net` az előző példában.
 

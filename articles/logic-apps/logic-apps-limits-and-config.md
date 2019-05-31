@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 05/10/2019
-ms.openlocfilehash: 53f9f67397e1484559ee8243a52ad8339df930bc
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.date: 05/23/2019
+ms.openlocfilehash: e824ac81f1336644fa70cc24539284feacee3199
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990200"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244530"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -135,15 +135,15 @@ Néhány összekötő műveleteket aszinkron hívásokat, illetve figyeljen a we
 | Name (Név) | Több-bérlős korlát | Integrációs környezet korlátjának | Megjegyzések |
 |------|--------------------|---------------------------------------|-------|
 | Üzenet mérete | 100 MB | 200 MB | Kerülheti meg ezt a korlátot, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. |
-| Darabolás az üzenet mérete | 1 GB | 5 GB | Ez a korlátozás vonatkozik, műveletek, natív módon támogatja a darabolás, és lehetővé teszik a futtatókörnyezet konfigurálásukban darabolás engedélyezése. <p>Az integrációs service-környezetben, a Logic Apps-motor támogatja ezt a korlátot, de az összekötőket a motor korlátig, például a saját tömbösítési korlátokkal rendelkeznek, lásd: [Azure Blob Storage-összekötő](/connectors/azureblob/). További információk darabolás, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). |
+| Darabolás az üzenet mérete | 1 GB | 5 GB | Ez a korlátozás vonatkozik, műveletek, natív módon támogatja a darabolás, és lehetővé teszik a futtatókörnyezet konfigurálásukban darabolás engedélyezése. <p>Az integrációs service-környezetben, a Logic Apps-motor támogatja ezt a korlátot, de az összekötőket a motor korlátig, például a saját tömbösítési korlátokkal rendelkeznek, lásd: [Azure Blob Storage-összekötő](/connectors/azureblob/). További információk darabolás, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). |
 | Kifejezések kiértékelési korlátja | 131 072 karakter | 131 072 karakter | A `@concat()`, `@base64()`, `@string()` kifejezések nem haladhatja meg ezt a korlátot. |
 |||||
 
-#### <a name="retry-policy"></a>Újrapróbálkozási házirend
+#### <a name="retry-policy"></a>Újrapróbálkozási szabályzat
 
 | Name (Név) | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
-| Újrapróbálkozások száma | 90 | Az alapértelmezett érték a 4. Az alapértelmezett módosításához használja a [ismételje meg a szabályzatparaméter](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+| Újrapróbálkozási kísérletek | 90 | Az alapértelmezett érték a 4. Az alapértelmezett módosításához használja a [ismételje meg a szabályzatparaméter](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 | Maximális késleltetése | 1 nap | Az alapértelmezett módosításához használja a [ismételje meg a szabályzatparaméter](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 | Ismételje meg a minimális késleltetés | 5 másodperc | Az alapértelmezett módosításához használja a [ismételje meg a szabályzatparaméter](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 ||||
@@ -184,13 +184,13 @@ Az alábbiakban az összetevők az egyes integrációs fiókok számára vonatko
 
 | Összetevő | Ingyenes | Alapszintű | Standard |
 |----------|------|-------|----------|
-| Kereskedelmi EDI-szerződést | 10 | 1. | 500 |
-| Kereskedelmi EDI-partnerek | 25 | 2 | 500 |
-| Térképek | 25 | 500 | 1,000 |
+| Kereskedelmi EDI-szerződést | 10 | 1 | 1,000 |
+| Kereskedelmi EDI-partnerek | 25 | 2 | 1,000 |
+| Maps | 25 | 500 | 1,000 |
 | Sémák | 25 | 500 | 1,000 |
-| Szerelvények | 10 | 25 | 50 |
+| Szerelvények | 10 | 25 | 1,000 |
 | Tanúsítványok | 25 | 2 | 500 |
-| Kötegkonfigurációk | 5 | 1. | 50 |
+| Kötegkonfigurációk | 5 | 1 | 50 |
 ||||
 
 <a name="artifact-capacity-limits"></a>
@@ -280,9 +280,9 @@ A Logic Apps nem támogatja az Azure storage-fiókok tűzfalon keresztül közve
 | Nyugat-Európa | 13.95.155.53, 51.144.176.185, 52.174.49.6, 52.174.54.218 |
 | Nyugat-India | 104.211.157.237, 104.211.164.25, 104.211.164.112, 104.211.165.81 |
 | USA nyugati régiója | 13.91.252.184, 52.160.90.237, 138.91.188.137, 157.56.160.212 |
-| USA 2. nyugati régiója | 13.66.128.68, 13.66.224.169, 52.183.30.10, 52.183.39.67 |
-| Egyesült Királyság déli régiója | 51.140.78.71, 51.140.79.109, 51.140.84.39, 51.140.155.81 |
-| Egyesült Királyság nyugati régiója | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
+| USA nyugati régiója, 2. | 13.66.128.68, 13.66.224.169, 52.183.30.10, 52.183.39.67 |
+| Az Egyesült Királyság déli régiója | 51.140.78.71, 51.140.79.109, 51.140.84.39, 51.140.155.81 |
+| Az Egyesült Királyság nyugati régiója | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
 | | |
 
 <a name="outbound"></a>
@@ -312,9 +312,9 @@ A Logic Apps nem támogatja az Azure storage-fiókok tűzfalon keresztül közve
 | Nyugat-Európa | 13.95.147.65, 23.97.210.126, 23.97.211.179, 23.97.218.130, 40.68.209.23, 40.68.222.65, 51.144.182.201, 104.45.9.52 | 13.69.64.208 - 13.69.64.223, 40.115.50.13, 52.174.88.118 |
 | Nyugat-India | 104.211.154.7, 104.211.154.59, 104.211.156.153, 104.211.158.123, 104.211.158.127, 104.211.162.205, 104.211.164.80, 104.211.164.136 | 104.211.146.224 - 104.211.146.239, 104.211.161.203, 104.211.189.218 |
 | USA nyugati régiója | 40.83.164.80, 40.118.244.241, 40.118.241.243, 52.160.92.112, 104.42.38.32, 104.42.49.145, 157.56.162.53, 157.56.167.147 |40.112.243.160 - 40.112.243.175, 104.40.51.248, 104.42.122.49 |
-| USA 2. nyugati régiója | 13.66.201.169, 13.66.210.167, 13.66.246.219, 13.77.149.159, 52.175.198.132, 52.183.29.132, 52.183.30.169 | 13.66.140.128 - 13.66.140.143, 13.66.218.78, 13.66.219.14, 13.66.220.135, 13.66.221.19, 13.66.225.219, 52.183.78.157 |
-| Egyesült Királyság déli régiója | 51.140.28.225, 51.140.73.85, 51.140.74.14, 51.140.78.44, 51.140.137.190, 51.140.142.28, 51.140.153.135, 51.140.158.24 | 51.140.80.51, 51.140.148.0 - 51.140.148.15 |
-| Egyesült Királyság nyugati régiója | 51.141.45.238, 51.141.47.136, 51.141.54.185, 51.141.112.112, 51.141.113.36, 51.141.114.77, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15, 51.141.47.105 |
+| USA nyugati régiója, 2. | 13.66.201.169, 13.66.210.167, 13.66.246.219, 13.77.149.159, 52.175.198.132, 52.183.29.132, 52.183.30.169 | 13.66.140.128 - 13.66.140.143, 13.66.218.78, 13.66.219.14, 13.66.220.135, 13.66.221.19, 13.66.225.219, 52.183.78.157 |
+| Az Egyesült Királyság déli régiója | 51.140.28.225, 51.140.73.85, 51.140.74.14, 51.140.78.44, 51.140.137.190, 51.140.142.28, 51.140.153.135, 51.140.158.24 | 51.140.80.51, 51.140.148.0 - 51.140.148.15 |
+| Az Egyesült Királyság nyugati régiója | 51.141.45.238, 51.141.47.136, 51.141.54.185, 51.141.112.112, 51.141.113.36, 51.141.114.77, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15, 51.141.47.105 |
 ||||
 
 ## <a name="next-steps"></a>További lépések  

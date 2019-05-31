@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: barclayn
-ms.openlocfilehash: 13183282e5e607f0052194a474203f97e0160adb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c100bd6815e003d49efcdca65b16d7efa35ac34
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610918"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234243"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Biztonsági szolgáltatások és technológiák elérhető az Azure-ban
 
@@ -69,7 +69,7 @@ Ez a lista idővel módosítja, és növekszik, ugyanúgy, mint az Azure elvégz
 | [Azure&nbsp;szerepkör&nbsp;alapú&nbsp;hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md)|Egy hozzáférés-vezérlési funkciója tervezték, hogy a felhasználók csak a hozzáférést a szervezeten belül szerepkörökhöz alapján kell az erőforrások eléréséhez.  |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)|A felhőalapú hitelesítés adattár, amely támogatja a több-bérlős, felhőalapú címtár, és több identity management szolgáltatás Azure-ban.  |
 | [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)|Egy identitáskezelő szolgáltatás, amely lehetővé teszi a módjának regisztrációs, bejelentkezési, ügyfelek és a profiljuk kezelését az Azure-alapú alkalmazások használatakor.   |
-| [Az Azure Active Directory Domain Servicesben](../active-directory-domain-services/active-directory-ds-overview.md)| A felhőalapú és a felügyelt verziója Active Directory Domain Servicesben. |
+| [Az Azure Active Directory Domain Servicesben](../active-directory-domain-services/overview.md)| A felhőalapú és a felügyelt verziója Active Directory Domain Servicesben. |
 | [Az Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md)| Egy biztonsági rendelkezni, amely számos különböző űrlapos hitelesítés és az ellenőrzés, mielőtt hozzáférést alkalmaz a védett adatok. |
 
 ## <a name="backup-and-disaster-recovery"></a>Biztonsági mentés és vészhelyreállítás

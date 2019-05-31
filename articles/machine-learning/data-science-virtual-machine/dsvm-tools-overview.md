@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 1defaea3743ebb8ddb688cef28efb7eee8ecb07c
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 0a503b82c07da62b5c5c768d8e1c92cb19e75aee
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597099"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236478"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>Ismerje meg az adatelemző virtuális gép
 
@@ -30,7 +30,7 @@ Az adatelemzési virtuális gép (DSVM) az adatplatformok, népszerű adatelemz�
 A dsvm-hez is több Kódminták és útmutatók Jupyter notebookok helyileg végrehajtható formájában. Ezeket a mintákat, ezzel elősegítve a szövegértést dokumentációját is van. 
 
 > [!NOTE]
-> Használhat [Azure notebookok](/azure/notebooks/azure-notebooks-overview.md) létrehozása, futtatása és megosztása a Jupyter notebookok a felhőben. Is [egy adatelemző virtuális gép csatlakoztatása Azure-jegyzetfüzetek](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) bontsa ki a rendelkezésre álló számítási teljesítmény.
+> Használhat [Azure notebookok](/azure/notebooks/azure-notebooks-overview) létrehozása, futtatása és megosztása a Jupyter notebookok a felhőben. Is [egy adatelemző virtuális gép csatlakoztatása Azure-jegyzetfüzetek](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier) bontsa ki a rendelkezésre álló számítási teljesítmény.
 
 Az eszközöket, platformokat, segédprogramok és mintákat, amelyek szerepelnek az adatelemző virtuális gép a következő szakaszokra vannak rendszerezve:
 

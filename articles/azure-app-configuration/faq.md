@@ -12,32 +12,39 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3181609bf34a04de4e31b73429f9bc5fa3fe3408
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e321c0b473b110597b5b87a6e67666737116daa2
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65411896"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393351"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure-alkalmazás konfigurációja – gyakori kérdések
 
-Ez a cikk címek gyakran használják az Azure App konfigurációjával kapcsolatos kérdésekre.
+Ez a cikk foglalkozik az Azure-alkalmazások konfigurálása – gyakori kérdések.
 
-## <a name="how-is-app-configuration-different-from-key-vault"></a>Miben különbözik konfigurálása a Key Vault?
+## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Miben tér el az App Configuration az Azure Key Vaulttól?
 
-Használati esetek külön készlete készült alkalmazások konfigurálása: segít a fejlesztőknek Alkalmazásbeállítások felügyelheti és ellenőrizheti a szolgáltatás rendelkezésre állási. A cél egyszerűsítése érdekében számos feladata az összetett konfigurációs adatok használatát. Támogatja a hierarchikus névtér, a címkézés, kiterjedt lekérdezések, kötegelt lekéréséhez, és a speciális felügyeleti műveletek és kezelőfelületet. Alkalmazáskonfiguráció kiegészíti a Key Vault, a két egymás mellett kell használható a legtöbb központi alkalmazástelepítéshez.
+Használati esetek külön készlete készült alkalmazások konfigurálása: segít a fejlesztőknek Alkalmazásbeállítások felügyelheti és ellenőrizheti a szolgáltatás rendelkezésre állási. A cél egyszerűsítése érdekében számos feladata az összetett konfigurációs adatok használatát.
+
+Alkalmazáskonfiguráció támogatja:
+
+- Hierarchikus névtér
+- Címkézés
+- Széles körű lekérdezések
+- A Batch lekéréséhez
+- Speciális felügyeleti műveleteket
+- A szolgáltatás-felügyelet felhasználói felületét
+
+Alkalmazáskonfiguráció kiegészíti a Key Vaultban, és a két egymás mellett a legtöbb központi alkalmazástelepítéshez használandó.
 
 ## <a name="should-i-store-secrets-in-app-configuration"></a>Ezért titkos kulcsokat is tárolja az Alkalmazáskonfigurációt?
 
-Alkalmazáskonfiguráció megerősített biztonságot nyújt, míg a Key Vault még mindig a legjobb hely az alkalmazás titkainak tárolásához. Hardver-titkosítást, a részletes hozzáférés-házirendek és a felügyeleti műveleteket, például a tanúsítvány rotációja biztosít.
+Alkalmazáskonfiguráció megerősített biztonságot nyújt, bár a Key Vault még mindig a legjobb hely az alkalmazás titkainak tárolásához. Key Vault lehetővé teszi a hardver-titkosítást, részletes hozzáférés-házirendek és felügyeleti műveletek, például a tanúsítvány rotációja.
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>Alkalmazáskonfiguráció titkosítja az adataimat?
 
-Igen. Alkalmazások konfigurálása az összes kulcsérték tartalmazza, és a hálózati kommunikáció titkosítja. A kulcsnevek indexek, konfigurációs adatainak beolvasása céljából használja, és nem titkosítottak.
-
-## <a name="does-app-configuration-support-azure-virtual-network-vnet"></a>Támogatja az Alkalmazáskonfigurációt az Azure Virtual Network (VNET)?
-
-még nem. VNET-támogatás általánosan elérhető tervezünk.
+Igen. Alkalmazáskonfiguráció tart fenn minden kulcsérték titkosítja, és hogy titkosítja a hálózati kommunikáció. A kulcsnevek indexeket, konfigurációs adatainak beolvasása céljából használja, és nem titkosított.
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Hogyan kell tárolni a konfiguráció több környezethez (tesztelési, átmeneti, éles és így tovább)?
 

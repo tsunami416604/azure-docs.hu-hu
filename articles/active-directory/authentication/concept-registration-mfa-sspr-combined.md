@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf8d5cb13b39d58920555ff9d99a4949e1bfc20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 572f8694d31728a3ca570f6ddb60475e13d71e80
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415759"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235590"
 ---
 # <a name="combined-security-information-registration-preview"></a>Egyesített biztonsági információk regisztrációs (előzetes verzió)
 
@@ -24,7 +24,7 @@ Mielőtt kombinált regisztrációs regisztrált felhasználók hitelesítési m
 
 ![Saját profil ábrázoló regisztrálva a felhasználó biztonsági adatai](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-Mielőtt engedélyezné az új felhasználói felületre, tekintse át a rendszergazda témájú dokumentáció és a felhasználó témájú dokumentációját, hogy biztosan megismerje az a funkciók és a hatását, hogy ez a funkció. A felhasználói dokumentációra készítheti elő a felhasználók az új felhasználói felületre, és annak biztosítása érdekében a sikeres bevezetése érdekében a képzési alapjául.
+Mielőtt engedélyezné az új felhasználói felületre, tekintse át a rendszergazda témájú dokumentáció és a felhasználó témájú dokumentációját, hogy biztosan megismerje az a funkciók és a hatását, hogy ez a funkció. A képzési alapja a [felhasználói dokumentáció](../user-help/user-help-security-info-overview.md) előkészítése a felhasználók számára az új környezetet, és annak biztosítása érdekében a sikeres bevezetése érdekében.
 
 Az Azure AD biztonsági információk regisztrációs jelenleg nem áll rendelkezésre az országos felhők, mint például az Azure US Government, Azure Germany és Azure China 21Vianet együtt.
 
@@ -49,10 +49,10 @@ Kombinált regisztrációs támogatja a következő hitelesítési módszerek é
 | Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
 | Más hitelesítő alkalmazást | Igen (legfeljebb 5) | Nem | Igen |
 | Hardvertoken | Nem | Nem | Igen |
-| Telefonszám | Igen | Igen | Igen |
-| Másodlagos telefon | Igen | Igen | Igen |
+| Phone | Igen | Igen | Igen |
+| Másodlagos telefonszám | Igen | Igen | Igen |
 | Irodai telefon | Nem | Nem | Nem |
-| E-mail | Igen | Igen | Igen |
+| Email | Igen | Igen | Igen |
 | Biztonsági kérdések | Igen | Nem | Igen |
 | Alkalmazásjelszók | Igen | Nem | Igen |
 
@@ -84,20 +84,20 @@ Egyesített regisztrációs figyelembe veszi a multi-factor Authentication és a
 
 Az alábbiakban számos forgatókönyv, ahol előfordulhat, hogy a rendszer kérni fogja regisztrálni vagy frissíteni a biztonsági adatok:
 
-* A multi-factor Authentication regisztrációs Identity Protection segítségével kényszeríthető ki: Regisztrálja a bejelentkezés során rendszer kéri a felhasználóktól. (Ha a felhasználó engedélyezve van az SSPR) multi-factor Authentication és az SSPR módszereket regisztrálják.
-* A multi-factor Authentication regisztrációs felhasználónkénti multi-factor Authentication segítségével kényszeríthető ki: Regisztrálja a bejelentkezés során rendszer kéri a felhasználóktól. (Ha a felhasználó engedélyezve van az SSPR) multi-factor Authentication és az SSPR módszereket regisztrálják.
-* A multi-factor Authentication regisztrációs feltételes hozzáférési vagy egyéb házirendek segítségével kényszeríthető ki: Felhasználók regisztrálása egy erőforrás, amely megköveteli a multi-factor Authentication szolgáltatás használatakor a rendszer felkéri. (Ha a felhasználó engedélyezve van az SSPR) multi-factor Authentication és az SSPR módszereket regisztrálják.
-* SSPR regisztrációs kényszerítése: Regisztrálja a bejelentkezés során rendszer kéri a felhasználóktól. Csak az SSPR módszerek regisztrálják.
-* SSPR-frissítés kényszerítése: Tekintse át a biztonsági adataikat a rendszergazda által beállított egy intervallumot, a felhasználóknak kell Felhasználók jelennek meg az adatokat, és erősítse meg a jelenlegi adatait vagy szükség esetén végezze el a módosításokat.
+- A multi-factor Authentication regisztrációs Identity Protection segítségével kényszeríthető ki: Regisztrálja a bejelentkezés során rendszer kéri a felhasználóktól. (Ha a felhasználó engedélyezve van az SSPR) multi-factor Authentication és az SSPR módszereket regisztrálják.
+- A multi-factor Authentication regisztrációs felhasználónkénti multi-factor Authentication segítségével kényszeríthető ki: Regisztrálja a bejelentkezés során rendszer kéri a felhasználóktól. (Ha a felhasználó engedélyezve van az SSPR) multi-factor Authentication és az SSPR módszereket regisztrálják.
+- A multi-factor Authentication regisztrációs feltételes hozzáférési vagy egyéb házirendek segítségével kényszeríthető ki: Felhasználók regisztrálása egy erőforrás, amely megköveteli a multi-factor Authentication szolgáltatás használatakor a rendszer felkéri. (Ha a felhasználó engedélyezve van az SSPR) multi-factor Authentication és az SSPR módszereket regisztrálják.
+- SSPR regisztrációs kényszerítése: Regisztrálja a bejelentkezés során rendszer kéri a felhasználóktól. Csak az SSPR módszerek regisztrálják.
+- SSPR-frissítés kényszerítése: Tekintse át a biztonsági adataikat a rendszergazda által beállított egy intervallumot, a felhasználóknak kell Felhasználók jelennek meg az adatokat, és erősítse meg a jelenlegi adatait vagy szükség esetén végezze el a módosításokat.
 
 Regisztrációs van érvényben, amikor a felhasználók meg kell felelnie a multi-factor Authentication és az SSPR-házirendek a legkevésbé biztonságos leginkább szükséges minimális többféle jelennek meg.
 
 Példa:
 
-* A felhasználó az SSPR engedélyezve van. Az SSPR-szabályzat két módszer alaphelyzetbe állítása szükséges, és engedélyezte a mobilalkalmazás-kód, e-mailben és telefonon.
-   * Ez a felhasználó két módszer regisztrálásához szükséges.
-      * A felhasználó alapértelmezés szerint authenticator alkalmazás és a telefon látható.
-      * A felhasználó kiválaszthatja a hitelesítő alkalmazás vagy a telefon helyett e-mail regisztrálni.
+- A felhasználó az SSPR engedélyezve van. Az SSPR-szabályzat két módszer alaphelyzetbe állítása szükséges, és engedélyezte a mobilalkalmazás-kód, e-mailben és telefonon.
+   - Ez a felhasználó két módszer regisztrálásához szükséges.
+      - A felhasználó alapértelmezés szerint authenticator alkalmazás és a telefon látható.
+      - A felhasználó kiválaszthatja a hitelesítő alkalmazás vagy a telefon helyett e-mail regisztrálni.
 
 Ez a folyamatábra ismerteti, milyen módszerek regisztrálása a bejelentkezés során egy felhasználónak, amikor megszakad látható:
 

@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan nyújt az Azure Cosmos DB a inaktív adatok tit
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 49fe9c0921579802b726e02a074bb0a911d88231
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b88b32b3ae2d4939d26fc268e25c87b1fb70eee5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204196"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237227"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Adatok titkosítása az Azure Cosmos DB-ben 
 

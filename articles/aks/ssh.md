@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 05/24/2019
 ms.author: iainfou
-ms.openlocfilehash: a85c39fbfbf629e6ba9e668d55dd905c1ce0800c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 57eacca75d711c5125a2856a7b6219cd2ec5306b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956351"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242029"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Csatlakozzon SSH-n keresztül az Azure Kubernetes Service (AKS) karbantartási és hibaelhárítási fürtcsomópontok
 
@@ -33,18 +33,25 @@ Alapértelmezés szerint az SSH-kulcsok kapott, vagy a generált, akkor hozzá c
 > [!NOTE]
 > SSH-kulcsokat is jelenleg csak lehet hozzáadni az Azure parancssori felületével Linux-csomópontokat. Ha a Windows Server-csomópontok használata esetén az AKS-fürt létrehozásakor megadott SSH-kulcsok használata, és ugorjon a [beszerzése az AKS címe](#get-the-aks-node-address). Másik lehetőségként [kapcsolódni a távoli asztali protokoll (RDP) kapcsolatokat használt Windows Server-csomópontok][aks-windows-rdp].
 
+A lépéseket a az AKS-csomópontok a magánhálózati IP-címe eltér futtatása AKS-fürt típusa alapján:
+
+* A legtöbb AKS-fürtök esetén kövesse a lépéseket a [IP-címének lekéréséhez rendszeres AKS-fürtök](#add-ssh-keys-to-regular-aks-clusters).
+* Az aks-ben, amely használhatja a virtuális gép méretezési csoportokat, például több csomópontkészletek vagy Windows Server-tároló támogatása, minden előzetes verziójú funkciók használatakor [kövesse a lépéseket, a virtuális gép scale set-alapú AKS fürtök](#add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters).
+
+### <a name="add-ssh-keys-to-regular-aks-clusters"></a>Adja hozzá az SSH-kulcsok rendszeres AKS-fürtök
+
 Adjon hozzá az SSH-kulcsot a Linux AKS csomóponthoz, hajtsa végre az alábbi lépéseket:
 
-1. Az erőforráscsoport nevét az AKS-fürt használatával erőforrások beolvasása [az aks show][az-aks-show]. Adja meg a saját alapvető erőforrás-csoport és az AKS-fürt nevét:
+1. Az erőforráscsoport nevét az AKS-fürt használatával erőforrások beolvasása [az aks show][az-aks-show]. Adja meg a saját core erőforráscsoportot és az AKS-fürt nevét. A következő változót hozzá van rendelve a fürt neve *CLUSTER_RESOURCE_GROUP*:
 
     ```azurecli-interactive
-    az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
     ```
 
 1. Az AKS fürt erőforrás csoport használatával listázni a [az virtuálisgép-lista] [ az-vm-list] parancsot. Ezek a virtuális gépek az AKS-csomópontok:
 
     ```azurecli-interactive
-    az vm list --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
+    az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
     ```
 
     Az alábbi példa kimenetében látható, az AKS-csomópontok:
@@ -59,25 +66,61 @@ Adjon hozzá az SSH-kulcsot a Linux AKS csomóponthoz, hajtsa végre az alábbi 
 
     ```azurecli-interactive
     az vm user update \
-      --resource-group MC_myResourceGroup_myAKSCluster_eastus \
+      --resource-group $CLUSTER_RESOURCE_GROUP \
       --name aks-nodepool1-79590246-0 \
       --username azureuser \
       --ssh-key-value ~/.ssh/id_rsa.pub
+    ```
+
+### <a name="add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters"></a>Adja hozzá az SSH-kulcsok a virtual machine scale set-alapú AKS fürtök
+
+Az SSH-kulcs ad hozzá egy Linux-AKS csomópont, amely része egy virtuálisgép-méretezési csoportot, hajtsa végre az alábbi lépéseket:
+
+1. Az erőforráscsoport nevét az AKS-fürt használatával erőforrások beolvasása [az aks show][az-aks-show]. Adja meg a saját core erőforráscsoportot és az AKS-fürt nevét. A következő változót hozzá van rendelve a fürt neve *CLUSTER_RESOURCE_GROUP*:
+
+    ```azurecli-interactive
+    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+    ```
+
+1. Ezután kérdezze le az AKS fürt a virtuális gép méretezési a [az vmss list] [ az-vmss-list] parancsot. A következő változót hozzá van rendelve a virtuális gép méretezési csoport neve *SCALE_SET_NAME*:
+
+    ```azurecli-interactive
+    SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
+    ```
+
+1. Az SSH-kulcsokat a virtuálisgép-méretezési csoportban lévő csomópontok hozzáadásához használja a [az vmss-bővítmény beállítása] [ az-vmss-extension-set] parancsot. Az az előző parancsokban elérhető az erőforráscsoportot és a virtuálisgép-méretezési csoport nevének beállítása. Alapértelmezés szerint az AKS-csomópontok tartozó felhasználónév a *azureuser*. Ha szükséges, frissítse a saját SSH nyilvános kulcs helyét, helyét például *~/.ssh/id_rsa.pub*:
+
+    ```azurecli-interactive
+    az vmss extension set  \
+        --resource-group $CLUSTER_RESOURCE_GROUP \
+        --vmss-name $SCALE_SET_NAME \
+        --name VMAccessForLinux \
+        --publisher Microsoft.OSTCExtensions \
+        --version 1.4 \
+        --protected-settings "{\"username\":\"azureuser\", \"ssh_key\":\"$(cat ~/.ssh/id_rsa.pub)\"}"
+    ```
+
+1. Az SSH-kulcsot használ a csomópontok alkalmazni a [az vmss update-instances] [ az-vmss-update-instances] parancsot:
+
+    ```azurecli-interactive
+    az vmss update-instances --instance-ids '*' \
+        --resource-group $CLUSTER_RESOURCE_GROUP \
+        --name $SCALE_SET_NAME
     ```
 
 ## <a name="get-the-aks-node-address"></a>Az AKS címe beolvasása
 
 Az AKS-csomópontok nyilvánosan nem jelennek meg a az interneten. Az AKS-csomópontok ssh-n használhatja a magánhálózati IP-címet. A következő lépésben létrehozott segítő podot az AKS-fürt, amely lehetővé teszi az SSH a csomópont a magánhálózati IP-címe. A lépéseket a az AKS-csomópontok a magánhálózati IP-címe eltér futtatása AKS-fürt típusa alapján:
 
-* A legtöbb AKS-fürtök esetén kövesse a lépéseket a [IP-címének lekéréséhez rendszeres AKS-fürtök](#regular-aks-clusters).
-* Az aks-ben, amely használhatja a virtuális gép méretezési csoportokat, például több csomópontkészletek vagy Windows Server-tároló támogatása, minden előzetes verziójú funkciók használatakor [kövesse a lépéseket, a virtuális gép scale set-alapú AKS fürtök](#virtual-machine-scale-set-based-aks-clusters).
+* A legtöbb AKS-fürtök esetén kövesse a lépéseket a [IP-címének lekéréséhez rendszeres AKS-fürtök](#ssh-to-regular-aks-clusters).
+* Az aks-ben, amely használhatja a virtuális gép méretezési csoportokat, például több csomópontkészletek vagy Windows Server-tároló támogatása, minden előzetes verziójú funkciók használatakor [kövesse a lépéseket, a virtuális gép scale set-alapú AKS fürtök](#ssh-to-virtual-machine-scale-set-based-aks-clusters).
 
-### <a name="regular-aks-clusters"></a>Rendszeres AKS-fürtök
+### <a name="ssh-to-regular-aks-clusters"></a>Ssh-n rendszeres AKS-fürtök
 
 A magánhálózati IP-címe egy AKS fürt csomópont használatával megtekintheti a [az vm list-ip-addresses] [ az-vm-list-ip-addresses] parancsot. Adja meg a saját AKS-fürt erőforrás csoport nevét egy korábbi kapott [az-aks-show] [ az-aks-show] . lépés:
 
 ```azurecli-interactive
-az vm list-ip-addresses --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
+az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
 Az alábbi példa kimenetében látható, az AKS-csomópontok magánhálózati IP-címei:
@@ -88,7 +131,7 @@ VirtualMachine            PrivateIPAddresses
 aks-nodepool1-79590246-0  10.240.0.4
 ```
 
-### <a name="virtual-machine-scale-set-based-aks-clusters"></a>Virtual machine scale set-alapú AKS fürtök
+### <a name="ssh-to-virtual-machine-scale-set-based-aks-clusters"></a>Ssh-KAPCSOLATOT a virtuális gép set-alapú AKS fürtök méretezése
 
 A belső IP-cím használatával csomópont listában a [kubectl get parancs][kubectl-get]:
 
@@ -199,3 +242,6 @@ Ha további hibaelhárítási adatokat van szüksége, akkor az [kubelet-naplók
 [aks-windows-rdp]: rdp.md
 [ssh-nix]: ../virtual-machines/linux/mac-create-ssh-keys.md
 [ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md
+[az-vmss-list]: /cli/azure/vmss#az-vmss-list
+[az-vmss-extension-set]: /cli/azure/vmss/extension#az-vmss-extension-set
+[az-vmss-update-instances]: /cli/azure/vmss#az-vmss-update-instances

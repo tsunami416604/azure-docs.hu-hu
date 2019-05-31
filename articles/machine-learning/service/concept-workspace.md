@@ -1,7 +1,7 @@
 ---
 title: Mi az, hogy egy munkaterületet
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, milyen egy munkaterületet, és miért van szükség, egy az Azure Machine Learning szolgáltatáshoz.
+description: A munkaterületet, hogy az Azure Machine Learning szolgáltatás legfelső szintű erőforrás. Ez minden betanítási futtatás, például naplók, metrikák, kimeneti és a parancsfájlok pillanatképét előzményeket. Ez az információ segítségével állapítja meg, melyik betanítási Futtatás a legjobb modellt hoz létre.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,18 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 5785bf8f6538f1d91e7a23178e29487ebee14f29
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 3ecdf62cfed7d70873f3dc752bfacd134e367a90
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989832"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388957"
 ---
-# <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az Azure Machine Learning-munkaterület?
+# <a name="what-is-an-azure-machine-learning-service-workspace"></a>Mi az az Azure Machine Learning szolgáltatás munkaterület?
 
-A munkaterületet, hogy az Azure Machine Learning szolgáltatás legfelső szintű erőforrás. Biztosít egy központi helyen hoz létre az Azure Machine Learning szolgáltatás használatakor minden összetevő dolgozhat.
+A munkaterület az Azure Machine Learning szolgáltatáshoz biztosít egy központi helyen hoz létre az Azure Machine Learning szolgáltatás használatakor minden összetevő dolgozhat a legfelső szintű erőforrás.  A munkaterület összes a betanítási futtatás, beleértve a naplók, metrikák, kimeneti és a parancsfájlok pillanatképét előzményeket. Ez az információ segítségével meghatározhatja, melyik betanítási Futtatás a legjobb modellt hoz létre.  
 
-A munkaterület előzményeket a betanítási futtatás, beleértve a naplók, metrikák, kimeneti és a parancsfájlok pillanatképét. Ez az információ segítségével meghatározhatja, melyik betanítási Futtatás a legjobb modellt hoz létre.  
-
-Miután egy modellt szeretné, hogy regisztrálja az a munkaterület. Az Azure Container Instances Azure Kubernetes Service-ben vagy egy mező-programmable gate array (FPGA) REST-alapú HTTP-végpontként történő üzembe helyezéséhez használhatja a regisztrált modell és a pontozó szkripteket. A modell az Azure IoT Edge-eszköz modulként is telepítheti.
+Miután egy modellt szeretné, hogy regisztrálja az a munkaterület. Ezt követően használhatja a regisztrált modell és a pontozó szkripteket az Azure Container Instances Azure Kubernetes Service-ben vagy egy mező-programmable gate array (FPGA) REST-alapú HTTP-végpontként történő üzembe helyezéséhez. A modell az Azure IoT Edge-eszköz modulként is telepítheti.
 
 ## <a name="taxonomy"></a>Besorolás 
 
@@ -50,7 +48,7 @@ Az ábrán egy munkaterület a következő összetevők:
 A munkaterület a következő módokon kezelheti:
 
 + A webes:
-    + Az [Azure Portal](https://azure.portal.com)
+    + Az [Azure Portal](https://portal.azure.com)
     + A [vizuális felhasználói felületet (előzetes verzió)](ui-concept-visual-interface.md)
 + A Python használatával Azure Machine Learning [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + A parancssorban, az Azure Machine Learning segítségével [CLI-bővítmény](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
@@ -71,7 +69,7 @@ Gépi tanulási feladatokat az olvasási és/vagy összetevők írni a munkater�
 
 A következő munkaterület felügyeleti feladatokat is elvégezheti:
 
-| Munkaterület felügyeleti feladat   | Portál              | SDK        | CLI        |
+| Munkaterület felügyeleti feladat   | Portál              | SDK        | parancssori felület        |
 |---------------------------|------------------|------------|------------|
 | Munkaterület létrehozása        | **&check;**     | **&check;** | **&check;** |
 | Számítási erőforrások létrehozása és felügyelete    | **&check;**   | **&check;** |  **&check;**   |

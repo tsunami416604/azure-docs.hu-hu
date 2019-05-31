@@ -2,7 +2,7 @@
 title: Az Azure Time Series Insightsban az Idősorozat-modell előzetes verzió |} A Microsoft Docs
 description: Ismertetése az Azure Time Series Insights Time Series modellben.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9de28c96c2833033a3811835f57cffcccdf4619
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 3e6e8ae76c0ae6f688dd4a039b34c52af16b6e0f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190336"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244023"
 ---
 # <a name="time-series-model"></a>Time Series-modell
 
@@ -126,7 +126,7 @@ Vegye figyelembe az alábbi példában, ahol a H1 hierarchia már *létrehozás�
 
 Attól függően, a *mezők példány*, a hierarchia attribútumai és értékei jelennek meg az alábbi táblázatban látható módon:
 
-| Idősorozat azonosítója | Szolgáltatáspéldány-mezők |
+| Time Series-azonosító | Szolgáltatáspéldány-mezők |
 | --- | --- |
 | ID1 | "elkészítése" = "1000", "emelet" = "10", "hely" = "55."  |
 | ID2 | "elkészítése" = "1000", "hely" = "55." |

@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: b680f476345bde61797fd1cc137cad6e5653d0a5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6ea218da23d65696c76008cb15e183fcc4bbda10
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798213"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383229"
 ---
 # <a name="bing-news-search-api-endpoints"></a>A Bing News Search API-végpontok
 
@@ -39,7 +39,7 @@ Keresési lekérdezés alapján hírek elemeket adja vissza. Ha a keresési lek�
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-Kategória szerint a híreket elemeket adja vissza. Kifejezetten kérheti a legfontosabb üzleti, sport vagy értéket használó cikkeket Szórakozás `category=business`, `category=sports`, vagy `category=entertainment`.  A `category` paraméter csak akkor használható együtt a `/news` URL-CÍMÉT. Néhány hivatalos követelmények megadása a kategóriák; Tekintse meg `category` a a [lekérdezési paraméter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters) dokumentációját. Kódolás a keresési kifejezést, és való hozzáfűzésével URL-cím alapján egy lekérdezés küldése a`q=""` paraméter. Tekintse meg a rendelkezésre állás érdekében [támogatott országok/régiók és piacok](language-support.md#supported-markets-for-news-endpoint).
+Kategória szerint a híreket elemeket adja vissza. Kifejezetten kérheti a legfontosabb üzleti, sport vagy értéket használó cikkeket Szórakozás `category=business`, `category=sports`, vagy `category=entertainment`.  A `category` paraméter csak akkor használható együtt a `/news` URL-CÍMÉT. Néhány hivatalos követelmények megadása a kategóriák; Tekintse meg `category` a a [lekérdezési paraméter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) dokumentációját. Kódolás a keresési kifejezést, és való hozzáfűzésével URL-cím alapján egy lekérdezés küldése a`q=""` paraméter. Tekintse meg a rendelkezésre állás érdekében [támogatott országok/régiók és piacok](language-support.md#supported-markets-for-news-endpoint).
 
 ### <a name="trending-news-topics"></a>Népszerű hírek témakörök 
 
@@ -51,7 +51,7 @@ Hírtémakörök, hogy a rendszer jelenleg népszerű lett a közösségi háló
 
 ## <a name="next-steps"></a>További lépések
 
-További információk a fejlécek, paraméterek, piaci kódok, válaszobjektumok, hibák stb, tekintse meg a [Bing News search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) referencia.
+További információk a fejlécek, paraméterek, piaci kódok, válaszobjektumok, hibák stb, tekintse meg a [Bing News search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) referencia.
 
 Minden végpont által támogatott paraméterekkel kapcsolatos részletes információkért tekintse meg az egyes referenciaoldalait.
 A News search API-alapszintű kérések példákért lásd [Bing News Search használatának első lépései](https://docs.microsoft.com/azure/cognitive-services/bing-news-search).

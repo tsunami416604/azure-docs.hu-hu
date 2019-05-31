@@ -12,18 +12,18 @@ ms.author: joke
 ms.reviewer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: f71fe4ff14e5a6f5fd6b91713970a097e4e56fb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 627b29018afff2adb57b3b8b5c816bea9c421f68
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475796"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236862"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Az új rugalmas adatbázis-feladatok áttelepítése
 
 Frissített verziójú [Elastic Database-feladatok](elastic-jobs-overview.md) érhető el.
 
-Ha rendelkezik meglévő üzemeltetett ügyfél verziója, [Elastic Database-feladatok](sql-database-elastic-jobs-overview.md), áttelepítési parancsmagokkal és parancsfájlokkal biztosított egyszerűen áttelepítéséhez a legújabb verzióra.
+Ha már ügyfél futtatott verziójának Elastic Database-feladatok, áttelepítési parancsmagok és parancsfájlok biztosított egyszerűen áttelepítéséhez a legújabb verzióra.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -32,7 +32,7 @@ A frissített rugalmas adatbázis-feladatok használata PowerShell-parancsmagok 
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>A legújabb Elastic Jobs-parancsmagjainak telepítése
 
-Ha még nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladat megkezdése előtt.
+Ha még nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
 
 Telepítse a **Az.Sql** 1.1.1-preview modult a legújabb rugalmas feladat parancsmagok beolvasása. Futtassa az alábbi parancsokat a PowerShellben rendszergazdai jogosultsággal.
 

@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 3459ef4caa99a2147144354165bef7d2852e87cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5d0819f71405b1bf1d4bef57a8b93d57bc879087
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60777814"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244966"
 ---
 # <a name="alerts-on-activity-log"></a>Riasztások a tevékenységnaplóban 
 
 ## <a name="overview"></a>Áttekintés
-A tevékenységnapló-riasztások aktiválása, ha egy új tevékenységnapló eseményéhez akkor fordul elő a riasztást a megadott feltételeknek megfelelő riasztásokat is. Azure-erőforrások, így azok az Azure Resource Manager-sablon segítségével hozható létre. Akkor is képes lehet létrehozott, frissített vagy törölt az Azure Portalon. Ez a cikk bemutatja a tevékenységnapló-riasztások mögött. Majd bemutatja, hogyan állítsa be a riasztást a tevékenységnapló-események az Azure portal használatával. Használati további információkért lásd: [létrehozása és kezelése a tevékenységnapló-riasztások](../../azure-monitor/platform/alerts-activity-log.md).
+A tevékenységnapló-riasztások aktiválása, ha egy új tevékenységnapló eseményéhez akkor fordul elő a riasztást a megadott feltételeknek megfelelő riasztásokat is. Azure-erőforrások, így azok az Azure Resource Manager-sablon segítségével hozható létre. Akkor is képes lehet létrehozott, frissített vagy törölt az Azure Portalon. Ez a cikk bemutatja a tevékenységnapló-riasztások mögött. Majd bemutatja, hogyan állítsa be a riasztást a tevékenységnapló-események az Azure portal használatával. Használati további információkért lásd: [létrehozása és kezelése a tevékenységnapló-riasztások](alerts-activity-log.md).
 
 > [!NOTE]
-> Riasztások **nem** események hozhatók létre a tevékenységnapló-riasztási kategória
+> Riasztások **nem** tevékenységnapló-riasztási kategória hozhatók létre eseményeket.
 
 Általában akkor tevékenységnapló-riasztások létrehozása az értesítések fogadása során:
 
 * Konkrét műveletek az erőforrásokat az Azure-előfizetésben, az adott erőforrás-csoportok vagy az erőforrások gyakran hatóköre fordulhat elő. Például érdemes értesíti, ha bármelyik virtuális gépre myProductionResourceGroup törlődik. Vagy előfordulhat, hogy szeretne értesítést kapjon, ha egyetlen új szerepkör hozzá van rendelve egy felhasználó az előfizetésében.
 * A service health esemény következik be. A Szolgáltatásállapot-események értesítési incidensek és a karbantartási események, amelyek érvényesek az előfizetése tartalmazza.
 
-Egy egyszerű analógia ismertetése feltételeket, amelyen riasztási szabályok hozható létre a tevékenységnapló-, és felfedezni vagy szűrheti az eseményeket a rendszer [tevékenységnapló az Azure Portalon](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). Az Azure Monitor - tevékenységnapló-, egy is szűrheti vagy keresse meg szükséges esemény és majd a használatával hozzon létre egy riasztást a **tevékenységnapló-riasztás hozzáadása** gombra.
+Egy egyszerű analógia ismertetése feltételeket, amelyen riasztási szabályok hozható létre a tevékenységnapló-, és felfedezni vagy szűrheti az eseményeket a rendszer [tevékenységnapló az Azure Portalon](activity-log-view.md#azure-portal). Az Azure Monitor - tevékenységnapló-, egy is szűrheti vagy keresse meg szükséges esemény és majd a használatával hozzon létre egy riasztást a **tevékenységnapló-riasztás hozzáadása** gombra.
 
 Mindkét esetben a tevékenységnapló-riasztás csak az az előfizetés, amelyben a riasztás létrejött eseményeket figyeli.
 
-Egy tevékenységnapló-riasztás alapján a JSON-objektumokat egy tevékenységnapló eseményéhez szereplő összes legfelső szintű tulajdonsággal is beállíthatja. További információkért lásd: [áttekintése az Azure-tevékenységnapló](./../../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log). A Szolgáltatásállapot-események kapcsolatos további információkért lásd: [szolgáltatási értesítésekhez tevékenységnapló-riasztások fogadása](./../../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+Egy tevékenységnapló-riasztás alapján a JSON-objektumokat egy tevékenységnapló eseményéhez szereplő összes legfelső szintű tulajdonsággal is beállíthatja. További információkért lásd: [áttekintése az Azure-tevékenységnapló](./activity-logs-overview.md#categories-in-the-activity-log). A Szolgáltatásállapot-események kapcsolatos további információkért lásd: [szolgáltatási értesítésekhez tevékenységnapló-riasztások fogadása](./alerts-activity-log-service-notifications.md). 
 
 A tevékenységnapló-riasztások néhány gyakori közül választhat:
 
@@ -57,12 +57,13 @@ Tevékenységnapló-riasztás aktiválódik, ha a műveletek vagy értesítések
 * Használja meglévő műveletcsoport a tevékenységnapló-riasztás.
 * Hozzon létre egy új műveletcsoportot.
 
-További információ a műveletcsoportokról, lásd: [létrehozása és kezelése az Azure Portalon Műveletcsoportok](../../azure-monitor/platform/action-groups.md).
+További információ a műveletcsoportokról, lásd: [létrehozása és kezelése az Azure Portalon Műveletcsoportok](action-groups.md).
 
 
 ## <a name="next-steps"></a>További lépések
-- Get- [riasztások áttekintése](../../azure-monitor/platform/alerts-overview.md).
-- Ismerje meg [létrehozása és módosítása a tevékenységnapló-riasztások](../../azure-monitor/platform/alerts-activity-log.md).
+- Get- [riasztások áttekintése](alerts-overview.md).
+- Ismerje meg [létrehozása és módosítása a tevékenységnapló-riasztások](alerts-activity-log.md).
 - Tekintse át a [tevékenység log riasztási webhookséma](activity-log-alerts-webhook.md).
-- Ismerje meg [szolgáltatás állapotára vonatkozó értesítések](../../azure-monitor/platform/service-notifications.md).
+- Ismerje meg [szolgáltatás állapotára vonatkozó értesítések](service-notifications.md).
+
 

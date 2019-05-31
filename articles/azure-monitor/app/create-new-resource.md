@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5daf0944212dc4b8040a39e6efbf5bb25f7f39f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 712004a1ae8a2a72854b7b2332449a019c0820c3
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901797"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256247"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 Az Azure Application Insights a Microsoft Azure-ban jeleníti meg az alkalmazással kapcsolatos adatok *erőforrás*. Ezért részét képezi egy új erőforrás létrehozását [Application Insights beállítása egy új alkalmazás figyelésére][start]. Sok esetben egy erőforrás létrehozását teheti meg automatikusan az ide. De bizonyos esetekben egy erőforrást manuálisan létrehozott – például számára elkülönített erőforrások fejlesztési és éles környezetben hoz létre az alkalmazás.
@@ -69,7 +69,6 @@ Ha több adatot vár, kattintson a **frissítése** néhány másodperc múlva.
 Írhat egy [PowerShell-parancsprogram](../../azure-monitor/app/powershell.md) erőforrás automatikus létrehozásához.
 
 ## <a name="next-steps"></a>További lépések
-* [Irányítópult létrehozása](../../azure-monitor/app/app-insights-dashboards.md)
 * [Diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md)
 * [Metrikák böngészése](../../azure-monitor/app/metrics-explorer.md)
 * [Analytics-lekérdezések](../../azure-monitor/app/analytics.md)

@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 146fdc3ca2af708a96e6b9a604493eb63c2e6530
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 66ff1cb57bb3317adc7ab6208ebf5029361b7c54
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348331"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235142"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása
 A cikk ismerteti, hogy az egy felhőalapú Azure Active Directory (Azure AD) példány egy helyszíni Active Directory-példányból származó felhasználói jelszavakat szinkronizálja szükséges információkat.
@@ -64,7 +64,7 @@ Az alábbi szakasz ismerteti, részletes, az Active Directory és az Azure AD k�
 >Az eredeti MD4 kivonatoló az Azure AD nem lesznek továbbítva. Ehelyett továbbítása az eredeti MD4 kivonatoló SHA256-kivonatát. Ennek eredményeképpen az Azure AD-ben tárolt hash nyerik, ha azt nem használható a helyszínen a pass-the-hash típusú támadás.
 
 ### <a name="how-password-hash-synchronization-works-with-azure-active-directory-domain-services"></a>Az Azure Active Directory Domain Services Jelszókivonat-szinkronizálás működése
-A jelszó Jelszókivonat-szinkronizálási szolgáltatás is használhatja a helyszíni jelszavak szinkronizálása [Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). Ebben a forgatókönyvben az Azure Active Directory Domain Services-példány hitelesíti a felhasználókat a felhőben a helyszíni Active Directory-példányában elérhető összes módszer. Ebben a forgatókönyvben élménye hasonlít az Active Directory áttelepítési eszköz (ADMT) használatával a helyszíni környezetben.
+A jelszó Jelszókivonat-szinkronizálási szolgáltatás is használhatja a helyszíni jelszavak szinkronizálása [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). Ebben a forgatókönyvben az Azure Active Directory Domain Services-példány hitelesíti a felhasználókat a felhőben a helyszíni Active Directory-példányában elérhető összes módszer. Ebben a forgatókönyvben élménye hasonlít az Active Directory áttelepítési eszköz (ADMT) használatával a helyszíni környezetben.
 
 ### <a name="security-considerations"></a>Biztonsági szempontok
 Amikor jelszó-szinkronizálás, a jelszót egyszerű szöveges verziójában nem lesz közzétéve a jelszó kivonatoló szinkronizálási szolgáltatás az Azure AD vagy bármely olyan társított szolgáltatásokat.

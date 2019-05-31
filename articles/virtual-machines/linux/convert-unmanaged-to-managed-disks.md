@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7c1167a6170cdc0b897c57a51c417a9312b6f41a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: eb6a5ed74073a1a31fc9bb1972266e76c7bc2782
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794150"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418469"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linux rendszerű virtuális gép átalakítása nem felügyeltről felügyelt a managed Disks szolgáltatásba
 
@@ -34,6 +34,7 @@ Ez a cikk bemutatja, hogyan átalakítása a virtuális gépek az Azure parancss
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
+* A virtuális gép által az átalakítás előtt használt eredeti virtuális merevlemezeket és a tárfiókot nem törli a rendszer. A futtatásuk továbbra is költségekkel jár. Annak érdekében, hogy ezekért az összetevőkért a továbbiakban ne fizessen, törölje az eredeti virtuálismerevlemez-blobokat, miután meggyőződött arról, hogy az átalakítás befejeződött. Ha kell ahhoz, hogy törölje azokat a nem csatlakozó lemezek megkeresése, tekintse meg a cikket [megkeressék és töröljék a nem csatlakoztatott Azure felügyelt és nem felügyelt lemezek](find-unattached-disks.md).
 
 ## <a name="convert-single-instance-vms"></a>Egypéldányos virtuális gépek konvertálása
 Ez a szakasz bemutatja, hogyan átalakítása nem felügyeltről felügyelt egypéldányos Azure virtuális gépek felügyelt lemezeket. (Ha a virtuális gépek rendelkezésre állási csoportban, lásd a következő szakaszban.) Ez a folyamat segítségével a virtuális gépek konvertálása a standard szintű felügyelt lemezek nem felügyelt prémium (SSD) nem felügyelt lemezek prémium szintű felügyelt lemezek, illetve a standard szintű (HDD) lemezek.

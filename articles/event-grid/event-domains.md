@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 131a55d130e7ebf619ee283e943c0b0a7b45edfd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 61821caa2450096bdbdde3461316ad21a82f6f18
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60562023"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304302"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid-témakörök kezelésére szolgáló esemény tartományok ismertetése
 
@@ -22,8 +22,6 @@ Ez a cikk ismerteti az esemény tartományok használata kezelheti a különböz
 * Az engedélyezés és hitelesítés kezeléséhez.
 * A témakörök partíció mindegyike külön-külön kezelése nélkül.
 * Kerülje el a témakör végpontok mindegyike külön-külön közzététele.
-
-Ez a funkció előzetes verzióban érhető el. A használatához telepítenie kell egy minta-kiterjesztés vagy a modul. Útmutatásért lásd: [témakörök kezelése és az esemény tartományok használatával közzé az eseményeket](how-to-event-domains.md).
 
 ## <a name="event-domain-overview"></a>Esemény tartományi áttekintése
 
@@ -49,7 +47,7 @@ Esemény tartományokban RBAC ugyanúgy működik [hozzáférés-vezérlés ált
 
 ### <a name="built-in-roles"></a>Beépített szerepkörök
 
-Event Grid két beépített szerepkör-definíciók, hogy könnyebben esemény tartományok használata az RBAC rendelkezik. Ezek a szerepkörök felelnek **EventGrid EventSubscription Közreműködője (minta)** és **EventGrid EventSubscription olvasója (minta)**. Ezek a szerepkörök hozzárendelése az esemény tartományban témákra iratkozhat fel felhasználóknak. Csak a felhasználók igénylő előfizetni a témakör a szerepkör-hozzárendelés hatókörét.
+Event Grid két beépített szerepkör-definíciók, hogy könnyebben esemény tartományok használata az RBAC rendelkezik. Ezek a szerepkörök felelnek **EventGrid EventSubscription Közreműködője (minta)** és **EventGrid EventSubscription olvasója (minta)** . Ezek a szerepkörök hozzárendelése az esemény tartományban témákra iratkozhat fel felhasználóknak. Csak a felhasználók előfizetni a témakör a szerepkör-hozzárendelés hatókörét.
 
 Ezek a szerepkörök kapcsolatos információkért lásd: [beépített szerepkörök az Event Gridhez](security-authentication.md#built-in-roles).
 
@@ -99,18 +97,18 @@ Például az alábbi tömböt események közzététele küld el esemény `"id":
 Esemény tartományok kezeléséhez, témakörökre való közzététel. Minden egyes külön-külön kezelt témakörhöz közzétételi események helyett közzétehet minden, a tartomány-végpontra. Event Grid biztosítja, hogy minden a rendszer a megfelelő témakört.
 
 ## <a name="limits-and-quotas"></a>Korlátok és kvóták
+Az alábbiakban a korlátok és kvóták kapcsolatos esemény tartományok:
 
-### <a name="control-plane"></a>Vezérlősík
+- esemény száma 100 000 kapcsolatos témakörök 
+- Azure-előfizetésenként 100 esemény tartományok 
+- a témakör egy esemény tartományban 500 eseményfeliratkozások
+- 50 tartományi hatókör előfizetések 
+- összesen 5 000 esemény második feldolgozási sebességét (tartományba)
 
-Az előzetes verzióban event tartományokban korlátozva, 1000 témakörök egy tartományon belül, és a egy tartományon belüli témakör 50 eseményfeliratkozások. Tartományi hatókör eseményelőfizetések 50 is korlátozódnak.
-
-### <a name="data-plane"></a>Adatsík
-
-Az előzetes verzióban event tartomány sebességű korlátozódik második betöltési arány, amely az egyéni témakörök korlátozottak száma összesen 5 000 ugyanazokat az eseményeket.
+Ha ezek a korlátok nem felelnek meg, keresse fel a termékért felelős csoport egy támogatási jegy megnyitásával vagy egy e-mailek küldése [ askgrid@microsoft.com ](mailto:askgrid.microsoft.com). 
 
 ## <a name="pricing"></a>Díjszabás
-
-Az előzetes verzióban event tartományok használata azonos [díjszabás operations](https://azure.microsoft.com/pricing/details/event-grid/) , amely az Event Grid összes többi funkció használata.
+Esemény tartományok használata az azonos [díjszabás operations](https://azure.microsoft.com/pricing/details/event-grid/) , amely az Event Grid összes többi funkció használata.
 
 Műveletek azonos esemény tartományokban működik, mint az egyéni témaköröket is. Minden belépő esemény tartományhoz egy esemény-művelet, és minden egyes kézbesítési kísérlet egy esemény egy művelet.
 

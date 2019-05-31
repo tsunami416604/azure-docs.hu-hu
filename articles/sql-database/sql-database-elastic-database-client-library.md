@@ -12,16 +12,16 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: c0d50f3a66d940618f2bc421537b113120a2eaca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c6e77f3afc90a8c018296db80253d8b9a22159e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475864"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234112"
 ---
 # <a name="building-scalable-cloud-databases"></a>Skálázható felhőalapú adatbázisok készítése
 
-Horizontális felskálázás adatbázisok egyszerűen elvégezhető méretezhető eszközök és funkciók használata az Azure SQL Database. Különösen is használhatja a **Elastic Database-ügyfélkódtár** , horizontálisan felskálázott adatbázisok létrehozása és kezelése. Ez a funkció lehetővé teszi, hogy Ön könnyen hozhat létre több száz használatával horizontálisan particionált alkalmazásokat – vagy akár több ezer – Azure SQL Database-adatbázisok. [Rugalmas feladatok](sql-database-elastic-jobs-powershell.md) ezután felhasználhatók ezeknek az adatbázisoknak a könnyű kezelés érdekében.
+Horizontális felskálázás adatbázisok egyszerűen elvégezhető méretezhető eszközök és funkciók használata az Azure SQL Database. Különösen is használhatja a **Elastic Database-ügyfélkódtár** , horizontálisan felskálázott adatbázisok létrehozása és kezelése. Ez a funkció lehetővé teszi, hogy Ön könnyen hozhat létre több száz használatával horizontálisan particionált alkalmazásokat – vagy akár több ezer – Azure SQL Database-adatbázisok.
 
 Letöltése:
 
@@ -54,7 +54,7 @@ Horizontális felskálázás használó alkalmazások *horizontális skálázás
 - **Szilánkleképezés-kezelés**: A "szilánkleképezés-kezelő" nevű speciális adatbázis jön létre. Szilánkleképezés-kezelés arra, hogy az alkalmazás kezelheti a szegmenseket metaadatait. Fejlesztők használhatják ezt a funkciót szegmensek adatbázisok regisztrálásához, ismertetik a horizontális skálázás egyedi kulcsok vagy kulcstartományokkal ezeket az adatbázisokat a leképezések és karbantartása a számot a metaadatok és az adatbázisok összeállítás haladásával kapacitás változásainak. Az elastic database-ügyfélkódtár nélkül kellene fordítania rengeteg időt a felügyeleti kódírás, amikor a horizontális skálázás megvalósításáról. További információkért lásd: [Szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md).
 
 - **Adatfüggő útválasztás**: Képzelje el, az alkalmazás érkező kérelmet. A horizontális skálázási kulcs értékét a kérelem alapján, az alkalmazásnak kell meghatározni a megfelelő adatbázist, a kulcs értéke alapján. Majd megnyitja a kapcsolatot az adatbázis feldolgozni a kérelmet. Adatfüggő útválasztás lehetővé teszi az alkalmazás horizontális skálázási térképet be egyetlen egyszerű hívásával nyissa meg a kapcsolatok. Adatfüggő útválasztás volt az infrastruktúra kód, amelyet az elastic database-ügyfélkódtár funkcióit mostantól jelez egy másik területéhez. További információkért lásd: [Adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md).
-- **Több horizontális partíciós lekérdezések (MSQ)**: Többszegmenses lekérdezés működik, ha a kérés magában foglalja a szegmensek több (vagy az összes). Többszegmenses lekérdezés végrehajtja ugyanazt a T-SQL-kódot minden szegmensre vagy készletekbe. Az eredményeket a programban részt vevő szegmensből egyesítve az összesített eredmény UNION ALL szemantika használatával. A funkciókat, mint az ügyféloldali kódtár keresztül közzétett kezeli számos feladat, többek között: kapcsolat kezelése, a szál felügyeleti, a hibák kezelése és a köztes eredményeket feldolgozása. MSQ lekérdezheti a szegmensek akár több száz. További információkért lásd: [több szegmensre vonatkozó lekérdezésekkel](sql-database-elastic-scale-multishard-querying.md).
+- **Több horizontális partíciós lekérdezések (MSQ)** : Többszegmenses lekérdezés működik, ha a kérés magában foglalja a szegmensek több (vagy az összes). Többszegmenses lekérdezés végrehajtja ugyanazt a T-SQL-kódot minden szegmensre vagy készletekbe. Az eredményeket a programban részt vevő szegmensből egyesítve az összesített eredmény UNION ALL szemantika használatával. A funkciókat, mint az ügyféloldali kódtár keresztül közzétett kezeli számos feladat, többek között: kapcsolat kezelése, a szál felügyeleti, a hibák kezelése és a köztes eredményeket feldolgozása. MSQ lekérdezheti a szegmensek akár több száz. További információkért lásd: [több szegmensre vonatkozó lekérdezésekkel](sql-database-elastic-scale-multishard-querying.md).
 
 Általánosságban véve a rugalmas Adatbáziseszközök használatáról vezetjük teljes T-SQL-funkciók megszerezni a szilánkleképezés-helyi operations helyett a saját szemantikával rendelkező szegmensek közötti műveletek elküldésekor.
 

@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan csatlakozhat az Azure Cosmos DB és az erőforr
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: 8700d0988927b221ace82a492e9902f1f36a562b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6c3c8aee51a4484013126a5959d3d275a88aa1cc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60951261"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242642"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Adatok kezelése az Azure Storage Explorerrel
 
@@ -223,7 +223,7 @@ Amikor a Storage Explorer egy ilyen „önaláírt tanúsítványt” észlel, o
      - [Windows:](https://slproweb.com/products/Win32OpenSSL.html) (bármelyik egyszerűsített verzió megfelel)
      - Mac és Linux: Elvileg eleve mellékelve van az operációs rendszer
 2. Futtassa az Open SSL-t.
-    - Windows: Nyissa meg a telepítési könyvtárba, majd **/bin/**, majd kattintson duplán az **openssl.exe**.
+    - Windows: Nyissa meg a telepítési könyvtárba, majd **/bin/** , majd kattintson duplán az **openssl.exe**.
     - Mac és Linux: futtassa az **openssl** parancsot egy terminálról.
 3. Hajtsa végre az `s_client -showcerts -connect microsoft.com:443` parancsot.
 4. Keresse meg az önaláírt tanúsítványokat. Ha nem tudja biztosan, melyik tanúsítvány önaláírt, akkor figyeljen arra, hogy melyiknél azonos a tárgy („s:”) és a kiállító („i:”).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cd52fb82e5e4cce759be5dfdd8872f64802459
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 104665774eee885cc2f562e9813cffcf23aa943e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003161"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235505"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Alapvető házirendet: Végfelhasználói protection (előzetes verzió)
 
@@ -75,11 +75,11 @@ Ez a alapvető házirend kizárhat felhasználókat lehetőséget biztosít. Mie
 
 A szabályzat **alapvető házirendet: Végfelhasználói protection (előzetes verzió)** előre konfigurálva, és jelennek meg az oldal tetején a feltételes hozzáférés paneljén, az Azure Portalon lépve.
 
-A szabályzat engedélyezéséhez, és a rendszergazdák védelmére:
+A szabályzat engedélyezéséhez és a felhasználók védelmét:
 
 1. Jelentkezzen be a **az Azure portal** globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférésű rendszergazda.
 1. Keresse meg a **az Azure Active Directory** > **feltételes hozzáférési**.
-1. A házirendek listájából válassza ki **alapvető házirendet: Végfelhasználói protection (előzetes verzió)**.
+1. A házirendek listájából válassza ki **alapvető házirendet: Végfelhasználói protection (előzetes verzió)** .
 1. Állítsa be **házirend engedélyezése** való **a házirend azonnal használható**.
 1. Bármely felhasználó kizárások hozzáadása kattintva **felhasználók** > **kizárt felhasználók kiválasztása** majd ki kell zárni a felhasználóknak. Kattintson a **kiválasztása** majd **kész**.
 1. Kattintson a **mentése**.

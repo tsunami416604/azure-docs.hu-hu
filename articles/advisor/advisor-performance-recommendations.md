@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 5850b683189136eac70451075933b0c57ecc37cd
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 8fdae1e12e56dcbcb56941726b0c089ad59b8fc8
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920446"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254646"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Az Azure Advisorral az Azure-alkalmazások teljesítményének növelése
 
@@ -25,7 +25,7 @@ Az Azure Advisor-teljesítményajánlások sebesség és az üzleti szempontból
 
 Az Azure Advisor azonosítja a Traffic Manager-profilok konfigurált hosszabb TTL és 20 másodperc és 60 másodperc, attól függően, hogy az élettartam konfigurálása javasolja a profilhoz van beállítva [gyors feladatátvétel](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/).
 
-## <a name="improve-database-performance-with-sql-db-advisor"></a>Adatbázis-teljesítmény javítása az SQL DB Advisor szolgáltatással
+## <a name="improve-database-performance-with-sql-db-advisor"></a>Az SQL DB Advisor adatbázis-teljesítmény javítása
 
 Az Advisor-javaslatok az Azure-erőforrások egységes, összevont nézetének biztosít. Integrálható az SQL Database Advisor viszi, az SQL Azure adatbázis teljesítményének javítására vonatkozó javaslatokat. Az SQL Database Advisor az SQL Azure-adatbázisok teljesítményét értékeli a használati előzmények elemzésével. Javaslatok, amelyek a leginkább kihasználni az adatbázis jellemző számítási feladatot futtat majd kínál.
 
@@ -93,6 +93,22 @@ Az Azure Advisor például olvasási és írási a kiszolgálón az elmúlt hét
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Egy magasabb szintű termékváltozatra, hogy a kapcsolati korlátozások az Azure-beli MySQL, Azure PostgreSQL vagy Azure MariaDB kiszolgáló méretezése
 Minden egyes új kapcsolatot az adatbázis-kiszolgáló által elfoglalt memória. Az adatbázis-kiszolgáló teljesítményét csökkenti, ha a kiszolgáló felé irányuló kapcsolatot miatt nem működik egy [felső korlátja](https://docs.microsoft.com/azure/postgresql/concepts-limits) a memóriában. Az Azure Advisor azonosítja azokat a számos csatlakozási hibák és futtató kiszolgálók, és frissíti a kiszolgálói kapcsolatok korlátok a kiszolgálóhoz több memóriát biztosít számítási vertikális felskálázásával, vagy a memória optimalizált SKU-k, amelyek magonként további számítási használatával javasoljuk.
+
+## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>A gyorsítótár más méretre és a Termékváltozat gyorsítótár javítása és az alkalmazások teljesítményét
+
+Cache-példányok akkor teljesítenek a legjobban, ha nem fut a nagy memóriaterhelés, magas kiszolgáló terhelését vagy nagy hálózati sávszélesség, ami miatt nem válaszol, adatvesztés vagy elérhetetlenné válik. Advisor azonosítja azokat a ezeket a feltételeket a Cache-példány és a rendelkezésre álló memória mennyisége, a kiszolgáló terhelését, vagy a hálózati sávszélesség csökkentése érdekében ajánlott eljárások alkalmazásával vagy nagyobb kapacitással rendelkező méretezési lehetőségek érhetők el egy másik méretét vagy a Termékváltozatot javasoljuk.
+
+## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>Régió, a forgalom az Azure Cosmos DB-fiók hozzáadása
+
+Az Advisor felismeri, hogy a forgalom egy régióban, amely jelenleg nem történik az Azure Cosmos DB-fiókok és javasoljuk, hogy a régió hozzáadása. Ez javítja az adott régióban érkező kérések késése, és biztosítja a rendelkezésre állási régió leállások esetén. [További információ az Azure Cosmos DB globális terjesztési](https://aka.ms/cosmos/globaldistribution)
+
+## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>Konfigurálja az Azure Cosmos DB indexelési szabályzat az ügyfél tartalmazza, vagy elérési utak kizárva
+
+Az Azure Advisor azonosítja, használja az alapértelmezett indexelési szabályzat, de hasznos lenne a számítási feladatok mintájának alapuló egyéni indexelési házirendet az, Cosmos DB-tárolók. Az alapértelmezett indexelési szabályzat indexeli az összes tulajdonság, de explicit befoglalt, sem a kizárt elérési utak lekérdezési szűrőben használt egyéni indexelési szabályzat használata csökkentheti a fenntartott egységek és az indexelés felhasznált tárterület. [További információ a házirendek index módosítása](https://aka.ms/cosmosdb/modify-index-policy)
+
+## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Az Azure Cosmos DB lekérdezés lapmérete (MaxItemCount) mínusz 1-nek konfigurálása 
+
+Az Azure Advisor azonosítja az Azure Cosmos DB-tárolók, amelyek a lekérdezés méretének 100 használ, és gyorsabban vizsgálatok egy oldalméret-1 javasoljuk. [További tudnivalók a maximális elemek száma](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Az Advisor teljesítményajánlásainak elérése
 

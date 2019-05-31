@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 9bce408215cef540604a72109bc5b29ebc3359e7
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e81cc1b3d80afd39a74c3046b1f8020e0a524ae4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413806"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237376"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabricben 
 > [!div class="op_single_selector"]
@@ -185,9 +185,6 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ```
 
-> [!IMPORTANT]
-> A futtatókörnyezet hibája miatt győződjön meg arról, hogy a megőrzési időtartamát a megtartási házirend van beállítva 24 napnál kisebb különbségnek kell, különben szolgáltatás biztonsági mentése és helyreállítása kvórum elvesztése replika feladatátvétel után lép eredményez.
-
 ### <a name="enable-periodic-backup"></a>Rendszeres biztonsági mentés engedélyezése
 Után az alkalmazás adatvédelmi követelmények teljesítéséhez biztonsági mentési házirend meghatározása, a biztonsági mentési szabályzat az alkalmazás társítva kell lennie. Követelmény, függően a biztonsági mentési szabályzathoz társított egy alkalmazást, a szolgáltatás és a partíció is lehet.
 
@@ -286,10 +283,6 @@ FailureError            :
 ## <a name="limitation-caveats"></a>Korlátozás / kikötések
 - A Service Fabric PowerShell-parancsmagok jelenleg előzetes módban van.
 - Nem támogatja a Service Fabric-fürtök Linux rendszeren.
-
-## <a name="known-issues"></a>Ismert problémák
-- Győződjön meg arról, hogy a megőrzési időtartam 24 napnál kisebb különbségnek kell van konfigurálva. 
-
 
 ## <a name="next-steps"></a>További lépések
 - [Rendszeres biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 50d0d78e9dc0c7f51fcd82dd16eab5a180eae073
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 80c2a1f4b9b724058b8b573f265a3cb2a99302a0
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61402183"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305962"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>C# és a egy Resource Manager-sablon használatával, egy Azure virtuális gép üzembe helyezése
 
@@ -35,8 +35,8 @@ Nagyjából 10 percet elvégezheti ezeket a lépéseket vesz igénybe.
 Ebben a lépésben, győződjön meg arról, hogy telepítve van a Visual Studio és a sablon üzembe helyezéséhez használt Konzolalkalmazás létrehozása.
 
 1. Ha még nem tette, telepítse a [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Válassza ki **.NET asztali fejlesztés** a számítási feladatok lapján, és kattintson a **telepítése**. A fentieket összegezve láthatja, hogy **.NET-keretrendszer 4-4.6 Fejlesztőeszközök** automatikusan ki van jelölve az Ön számára. Ha már telepítette a Visual Studio, a .NET-munkaterhelés használatával a Visual Studio indítója is hozzáadhat.
-2. A Visual Studióban kattintson a **File (Fájl)** > **New (Új)** > **Project (Projekt)** parancsra.
-3. A **sablonok** > **Visual C#** válassza **Console App (.NET Framework)**, adja meg *myDotnetProject* neve a projektre, válassza ki a projekt helyét, majd kattintson **OK**.
+2. A Visual Studióban kattintson a **File (Fájl)**  > **New (Új)**  > **Project (Projekt)** parancsra.
+3. A **sablonok** > **Visual C#** válassza **Console App (.NET Framework)** , adja meg *myDotnetProject* neve a projektre, válassza ki a projekt helyét, majd kattintson **OK**.
 
 ## <a name="install-the-packages"></a>A csomagok telepítése
 
@@ -166,7 +166,7 @@ Ebben a lépésben hozzon létre egy sablon fájlt, amely üzembe helyezi az er�
 
 ### <a name="create-the-parameters-file"></a>A paraméterfájl létrehozása
 
-Adja meg a sablonban definiált erőforrás-paraméterek értékeit, hozzon létre egy paramétereket tartalmazó fájlt, az értékek.
+A sablonban, adja meg az erőforrás-paraméterek értékeit, hozzon létre egy paramétereket tartalmazó fájlt, az értékek.
 
 1. A Megoldáskezelőben kattintson a jobb gombbal *myDotnetProject* > **Hozzáadás** > **új elem**, majd válassza ki **szövegfájl** a *Visual C#-elemek*. A fájl neve *Parameters.json*, és kattintson a **Hozzáadás**.
 2. A JSON-kód hozzáadása a létrehozott fájlt:
@@ -205,17 +205,17 @@ Sablon központi telepítése, győződjön meg arról, hogy hozzáféréssel re
     Cserélje le **&lt;előfizetés-azonosító&gt;** az előfizetés-azonosítójú **&lt;alkalmazásazonosító&gt;** az Active Directory-alkalmazással azonosító, **&lt;hitelesítési kulcs&gt;** az alkalmazás kulccsal és **&lt;bérlőazonosító&gt;** a bérlői azonosító.
 
 3. Mentse a azureauth.properties fájlt.
-4. A fájl teljes elérési útja engedélyezési létrehozott, például a következő parancs használható PowerShell AZURE_AUTH_LOCATION nevű Windows környezeti változóban állíthatja be:
+4. Egy környezeti változót a Windows engedélyezési létrehozott fájl teljes elérési útja AZURE_AUTH_LOCATION nevű csoportba, például használhatja a következő PowerShell-parancsot:
 
     ```powershell
-    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
+    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
     
 
 ## <a name="create-the-management-client"></a>A felügyeleti ügyfél létrehozása
 
-1. Nyissa meg a létrehozott projekt a Program.cs fájlt, és adja hozzá ezek using utasításokat a meglévő utasításokat a fájl felül:
+1. Nyissa meg a Program.cs fájlt, a létrehozott projekt. Adja hozzá ezek using utasításokat a meglévő utasításokat a, a fájl elejéhez:
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 398b7a78c9bc13631e15c8725efb8cc0fba3f127
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 62261e46dc4744597acd10c32f0a835f4a597d4d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806476"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243975"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>SQL Server 2008 és az SQL Server 2008 R2 with Azure támogatás kiterjesztése
 
@@ -29,7 +29,7 @@ Ellentétben a felügyelt példány, egy Azure-beli Virtuálisgép-ba való migr
 
 Ez a cikk többi része az SQL Server-példányhoz egy Azure virtuális Gépen történő áttelepítésre vonatkozó szempontokat ismerteti. 
 
-## <a name="provisioning"></a>Kiépítés folyamatban 
+## <a name="provisioning"></a>Kiépítés 
 
 Az utólagos elszámolású csomagokra van `SQL Server 2008 R2 on Windows Server 2008 R2` az Azure piactéren elérhető rendszerképet. 
 
@@ -40,7 +40,7 @@ A piactéren keresztüli üzembe helyezett rendszerképeket kapható előre tele
   > [!NOTE]
   > Miközben az SQL Server `Create` és `Manage` paneleket az Azure Portalon az SQL Server 2008R2-lemezképet fog dolgozni, a következő funkciók vannak _nem támogatott_: Automatikus biztonsági mentést, az Azure Key Vault-integráció, R Services és a tárolókonfigurációt.
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 Használatalapú fizetés SQL Server 2008R2-telepítéseket konvertálhatja [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Utólagos elszámolású előfizetésre átváltani egy frissítési garanciával (SA) alapú licenccel, ügyfelek regisztrálni kell az SQL virtuális gép [erőforrás-szolgáltató](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider). Az SQL virtuális gép erőforrás-szolgáltató regisztrálása után az SQL-licenctípus felcserélhetők AHB és az utólagos elszámolású között lesz. 
@@ -58,7 +58,7 @@ Az SQL Server Azure Site Recovery-alkalmazáskonzisztens pillanatképeket rögz�
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-A [Database Migration Service](/dms/dms-overview) esetén lehetőség az ügyfelek áttelepítése a helyszínről az Azure-beli virtuális gép által az SQL Server frissítése az SQL Server 2012 és újabb.
+A [Database Migration Service](/azure/dms/dms-overview) esetén lehetőség az ügyfelek áttelepítése a helyszínről az Azure-beli virtuális gép által az SQL Server frissítése az SQL Server 2012 és újabb.
 
 ## <a name="disaster-recovery"></a>Vészhelyreállítás
 

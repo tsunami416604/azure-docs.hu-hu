@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 81be4d5809fe8a3f36f7364b15e19d0046a8b5cd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c910ed9f1160d30e1d4bda2e85b029eb2ad85b02
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714007"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237154"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitástervezése
 
@@ -104,9 +104,9 @@ Helyi egycsomópontos fürtre a probléma azonosításához futtassa újra a sik
 
 Után, amely meghatározza, hogy a fürt virtuális célgép méretét, a méretezési csoport és a típus, ellenőrizze az előfizetés az aktuális kvóta kapacitásának korlátjáig. Ha egyenlege eléri a kvótát, nem lehet új fürtök üzembe helyezése, vagy a meglévő fürtök horizontális további munkavégző csomópontok hozzáadásával. A csak kvótahatár: a Processzormagok kvóta, amely létezik a régió szintjén minden egyes előfizetés esetén. Ha például az előfizetés lehet magkorlátja 30 az USA keleti régiójában. Ha a kvóta növelésére van szüksége, kövesse az alábbi lépéseket:
 
-1. Az Azure Portal megnyitása
-1. Kattintson a **Súgó és támogatás** az oldal bal alsó részén.
-1. Kattintson a **új támogatási kérelem**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Válassza ki **súgó + támogatás** az oldal bal alsó részén.
+1. Válassza ki a **új támogatási kérelem**.
 1. Az a **új támogatási kérelem** lap **alapjai** lapra, válassza ki a következő beállításokat:
    - **Probléma típusa**: **Szolgáltatás és az előfizetések korlátai (kvóták)**
    - **Előfizetés**: a módosítani kívánt előfizetés
@@ -114,10 +114,10 @@ Után, amely meghatározza, hogy a fürt virtuális célgép méretét, a méret
     
      ![Hozzon létre egy támogatási kérést a HDInsight magkvóta növeléséhez](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
-1. Kattintson a **tovább**.
-1. Az a **részletek** lapon adja meg a probléma leírását, válassza ki a probléma súlyosságát, és válassza ki a kívánt kapcsolattartási formát.
-1. Kattintson a **tovább: Felülvizsgálat + létrehozás**.
-1. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.
+1. Válassza ki **tovább: Megoldások >>** .
+1. Az a **részletek** lapon adja meg a probléma leírását, válassza ki a súlyossági szintje a probléma, a kívánt kapcsolattartási formát, és a többi szükséges mezőt.
+1. Válassza ki **tovább: Felülvizsgálat + létrehozás >>** .
+1. Az a **felülvizsgálat + létrehozása** lapon jelölje be **létrehozás**.
 
 > [!NOTE]  
 > Ha szeretne egy privát régióban a HDInsight magkvóta növeléséhez [be egy engedélyezési kérést](https://aka.ms/canaryintwhitelist).

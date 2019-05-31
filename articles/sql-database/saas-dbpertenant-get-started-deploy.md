@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 14f76a716447e09299cfa18d6758245706c7b481
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bbb67845922dd9a3b2a78f76bf25d73bace98a82
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60556534"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240125"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Üzembe helyezése és megismerése a több-bérlős SaaS-alkalmazás a bérlőnkénti adatbázis mintát használ, az SQL Database szolgáltatással
 
@@ -75,7 +75,7 @@ Most válassza ki a nevét, és írja le.
 
 1. Válassza ki a központi telepítési állapotának figyelése, **értesítések** (a harang ikonra a jobb oldalon, a keresőmező). A Wingtip Tickets SaaS-alkalmazás üzembe helyezése körülbelül öt percet vesz igénybe.
 
-   ![A telepítés sikerült](media/saas-dbpertenant-get-started-deploy/succeeded.png)
+   ![Üzembe helyezés sikeres](media/saas-dbpertenant-get-started-deploy/succeeded.png)
 
 ## <a name="download-and-unblock-the-wingtip-tickets-management-scripts"></a>Töltse le és a felügyeleti Wingtip Tickets szkriptjei feloldása
 
@@ -129,8 +129,8 @@ A Wingtip alkalmazás használ [*Azure Traffic Manager* ](../traffic-manager/tr
 
     | URL-cím része        | Leírás       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | A Wingtip alkalmazás események részeit.<br /><br /> *-dpt* megkülönbözteti a *bérlőnkénti adatbázis* más esetében a Wingtip Tickets megvalósítását. Példa a *egyetlen* alkalmazás bérlőnkénti (*-sa*) vagy *több-bérlős adatbázis* (*- mt*) hitelesítés megvalósításához. |
-    | .*&lt;user&gt;* | *af1* példában. |
+    | http://events.wingtip-dpt | A Wingtip alkalmazás események részeit.<br /><br /> *-dpt* megkülönbözteti a *bérlőnkénti adatbázis* más esetében a Wingtip Tickets megvalósítását. Példa a *egyetlen* alkalmazás bérlőnkénti ( *-sa*) vagy *több-bérlős adatbázis* ( *- mt*) hitelesítés megvalósításához. |
+    | . *&lt;user&gt;* | *af1* példában. |
     | .trafficmanager.net/ | A TRAFFIC Manager, a kiinduló URL-címe. |
     | fabrikamjazzclub | Azonosítja a Fabrikam Jazz Club nevű bérlőben. |
     | &nbsp; | &nbsp; |
@@ -182,7 +182,7 @@ Ha azt szeretné, vezérlése és figyelése a háttérben futó feladatok, hasz
     - Alapértelmezés szerint a háttérben futó feladatok 120 percig futtat.
     - Minden egyes feladat a CPU-alapú terheléselosztást hatására egy bérlői adatbázis végrehajtásával *sp_CpuLoadGenerator*. Attól függően változik a fényerő és a terhelés időtartamát `$DemoScenario`.
     - *sp_CpuLoadGenerator* hurkok körül, amely magas processzorterhelést okoz tartalmazó SQL SELECT utasításhoz. A kiválasztott problémák közötti időintervallum paraméterértékek vezérelhető CPU-terhelés létrehozása függően változik. Terhelésszintek és időközök vannak kiválasztással realisztikusabb terhelés szimulálásához.
-    - Ez .sql fájlt tárolja a *WingtipTenantDB\\dbo\\StoredProcedures\\*.
+    - Ez .sql fájlt tárolja a *WingtipTenantDB\\dbo\\StoredProcedures\\* .
 
 4. Ha `$OneTime = $false`, a terhelésgenerátor a háttérben futó feladatok elindul, és ezután továbbra is fusson. Minden olyan új bérlők üzembe helyezett figyeli 10 másodpercenként. Ha `$OneTime = $true`, a LoadGenerator a háttérben futó feladatok elindul, és akkor az az előtérben futó lejár. Ebben az oktatóanyagban hagyja `$OneTime = $false`.
 
@@ -221,14 +221,14 @@ Frissítse az Eseményközpontot, hogy az új bérlő szerepel a listában.
 
 Most, hogy Ön már elkezdte a bérlők ellen, nézzük meg egyes üzembe helyezett erőforrások.
 
-1. Az a [az Azure portal](https://portal.azure.com), tallózással keresse meg az SQL Server-kiszolgálók listája. Nyissa meg a **katalógus-dpt -&lt;felhasználói&gt;** kiszolgáló.
+1. Az a [az Azure portal](https://portal.azure.com), tallózással keresse meg az SQL Server-kiszolgálók listája. Nyissa meg a **katalógus-dpt -&lt;felhasználói&gt;**  kiszolgáló.
     - A katalóguskiszolgáló két adatbázist tartalmaz **tenantcatalog** és **basetenantdb** (a sablon adatbázis létrehozása az új bérlők másolt).
 
    ![Adatbázisok](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. Lépjen vissza az SQL Server-kiszolgálók listája.
 
-3. Nyissa meg a **tenants1-dpt -&lt;felhasználói&gt;** kiszolgálót, amely a bérlői adatbázisokat tartalmazza.
+3. Nyissa meg a **tenants1-dpt -&lt;felhasználói&gt;**  kiszolgálót, amely a bérlői adatbázisokat tartalmazza.
 
 4. Tekintse meg a következő elemek:
 
@@ -241,7 +241,7 @@ Most, hogy Ön már elkezdte a bérlők ellen, nézzük meg egyes üzembe helyez
 
 Miután *LoadGenerator.ps1* fut néhány percig, elegendő adat elérhetőnek kell lennie bizonyos figyelési funkciók megtekintésére. Ezek a képességek beépített készletek és adatbázisok.
 
-Tallózással keresse meg a kiszolgáló **tenants1-dpt -&lt;felhasználói&gt;**, és válassza ki **Pool1** a készlet erőforrás-használat megtekintéséhez. A következő diagramok a a terhelésgenerátor egy óráig futott.
+Tallózással keresse meg a kiszolgáló **tenants1-dpt -&lt;felhasználói&gt;** , és válassza ki **Pool1** a készlet erőforrás-használat megtekintéséhez. A következő diagramok a a terhelésgenerátor egy óráig futott.
 
    ![Készlet figyelése](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
@@ -254,7 +254,7 @@ A két diagram mutatja be, hogy a rugalmas készletek és az SQL Database kivál
 
 - További információkért lásd: további [a Wingtip Tickets SaaS bérlőnkénti adatbázis alkalmazására készíthet oktatóanyagok](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - Rugalmas készletek kapcsolatos további információkért lásd: [Mi az Azure SQL rugalmas készlet?](sql-database-elastic-pool.md).
-- Rugalmas feladatokkal kapcsolatos további információkért lásd: [horizontálisan felskálázott felhőalapú adatbázisok kezelése](sql-database-elastic-jobs-overview.md).
+- Rugalmas feladatokkal kapcsolatos további információkért lásd: [horizontálisan felskálázott felhőalapú adatbázisok kezelése](elastic-jobs-overview.md).
 - Több-bérlős SaaS-alkalmazásokkal kapcsolatos tudnivalókért lásd: [tervezési minták több-bérlős SaaS-alkalmazások](saas-tenancy-app-design-patterns.md).
 
 ## <a name="next-steps"></a>További lépések

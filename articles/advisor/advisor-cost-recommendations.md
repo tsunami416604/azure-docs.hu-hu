@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 188a79df99a174436808acd3d964abf9357cf4c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fef7b82e6969de16d1815250d2373c99021b0e86
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467936"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254726"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Az Azure Advisor használatával szolgáltatás költségek csökkentése
 
@@ -44,6 +44,13 @@ Az Advisor is értesíti Önt a fenntartott példányok, amely rendelkezik a kö
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Társítatlan nyilvános IP-címet törölni pénzt takaríthat meg
 
 Az Advisor azonosítja a nyilvános IP-címek, amelyek nem jelenleg tartoznak, mint például a Terheléselosztókról és a virtuális gépek Azure-erőforrásokhoz. A nyilvános IP-cím egy névleges díj címek jár. Ha nem tervezi használni őket, költségmegtakarítást törléssel eredményezhet.
+
+## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>Az Azure Data Factory-folyamatok, amelyek nem törlése
+
+Az Azure Advisor észlelni fogja az Azure Data Factory-folyamatok, amelyek többször is sikertelen, és javasolja, hogy a problémák megoldásához, vagy törölje a sikertelen folyamatok, ha már nincs szükség. Akkor kell fizetnie adatcsatornák akkor is, ha azonban ezek nem szolgálnak ki, amíg azok nem működik. 
+
+## <a name="use-standard-snapshots-for-managed-disks"></a>Standard pillanatfelvételeket kíván használni a felügyelt lemezek
+Szeretné menteni a 60 %-a költségek, javasoljuk, a pillanatképek tárolja a standard szintű Storage, a szülőlemez tárolási típusától függetlenül. Ez a lehetőség alapértelmezett Managed Disks pillanatképekhez. Az Azure Advisor azonosítja, amelyek tárolása a Premium Storage és a pillanatkép áttelepítés prémium szintű a standard szintű Storage ajánlott pillanatképeket. [További tudnivalók a felügyelt lemezek díjszabása](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Az Azure Advisor díjakkal kapcsolatos ajánlások elérése
 

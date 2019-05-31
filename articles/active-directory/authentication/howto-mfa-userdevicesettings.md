@@ -1,6 +1,6 @@
 ---
 title: Rendszergazdák kezelése a felhasználók és eszközök – az Azure MFA - Azure Active Directory
-description: Ez ismerteti, hogyan lehet például a felhasználók számára a proof-up folyamatot újra el kényszerítése a felhasználói beállítások módosítása.
+description: Hogyan módosíthatja a rendszergazdák felhasználói beállítások, például a felhasználók számára a proof-up folyamatot újra el kényszerítése.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c78d6d901c050f6d1df8b53b34f0088d3ad8b0f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 04d4848a00fd645bcf23342f27fe820ccf034a8b
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415090"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298842"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Az Azure multi-factor Authentication a felhőben a felhasználói beállítások kezelése
 
@@ -35,12 +35,20 @@ Ez a beállítás kényszeríti a felhasználót, hogy újra végrehajtania a re
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldalon válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
 3. A jobb oldalon válassza ki a **multi-factor Authentication** az eszköztáron. A többtényezős hitelesítés lap nyílik meg.
-4. Ellenőrizze a felhasználókat, hogy a kezelni kívánt melletti mezőbe. Gyors lépés beállítások listáját a jobb oldalon jelennek meg.
+4. Ellenőrizze a felhasználókat, hogy a kezelni kívánt melletti mezőbe. Gyors lépés beállítások listáját a jobb oldalon jelenik meg.
 5. Válassza ki **felhasználói beállítások kezelése**.
 6. Jelölje be a **kérése a kiválasztott felhasználóktól a kapcsolattartási mód újbóli megadásának**.
    ![Felhasználók számára a kapcsolattartási mód újbóli megadásának megkövetelése](./media/howto-mfa-userdevicesettings/reproofup.png)
 7. Kattintson a **mentés** gombra.
 8. Kattintson a **bezárásához**.
+
+Szervezetek elvégezheti ezeket a lépéseket a PowerShell használatával a következő segítségképp, törölje a `StrongAuthenticationMethods` attribútum:
+
+```PowerShell
+$Upn = "theuser@domain.com"
+$noMfaConfig = @()
+Set-MsolUser -UserPrincipalName $Upn -StrongAuthenticationMethods $noMfaConfig
+```
 
 ## <a name="delete-users-existing-app-passwords"></a>Törölje a meglévő alkalmazásjelszavak felhasználók
 
@@ -51,7 +59,7 @@ Ez a beállítás minden, a felhasználó által létrehozott alkalmazásjelszó
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldalon válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
 3. A jobb oldalon válassza ki a **multi-factor Authentication** az eszköztáron. A többtényezős hitelesítés lap nyílik meg.
-4. Ellenőrizze a felhasználókat, hogy a kezelni kívánt melletti mezőbe. Gyors lépés beállítások listáját a jobb oldalon jelennek meg.
+4. Ellenőrizze a felhasználókat, hogy a kezelni kívánt melletti mezőbe. Gyors lépés beállítások listáját a jobb oldalon jelenik meg.
 5. Válassza ki **felhasználói beállítások kezelése**.
 6. Jelölje be a **törli a kiválasztott felhasználók által létrehozott összes meglévő alkalmazásjelszavak**.
    ![Az összes alkalmazásjelszó törlése](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
@@ -64,14 +72,14 @@ Az Azure multi-factor Authentication szolgáltatás konfigurálható funkcióina
 
 Felhasználók választhatják a kétlépéses ellenőrzés egy konfigurálható számú napig az rendszeres eszközökön kívül. Ha egy fiók biztonsága sérül, vagy egy megbízható eszköz elveszik, meg kell lenniük megbízható állapotát eltávolíthatja, és szükséges a kétlépéses ellenőrzés visszakapcsolásához.
 
-A **visszaállítási multi-factor authentication szolgáltatás az összes korábban megjegyzett eszközön** beállítás azt jelenti, hogy a felhasználó merül fel, amikor legközelebb bejelentkeznek, függetlenül attól, hogy úgy is, eszköz megjelölése kétlépéses ellenőrzés végrehajtására megbízható.
+Ha be van jelölve, **visszaállítási multi-factor authentication szolgáltatás az összes korábban megjegyzett eszközön** felhasználók kétlépéses ellenőrzést, amikor legközelebb bejelentkeznek, még akkor is, ha azok megjelölve megbízhatóként eszköz végrehajtásához szükségesek.
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>Többtényezős hitelesítés visszaállítása egy felhasználó az összes felfüggesztett eszközökön
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldalon válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
 3. A jobb oldalon válassza ki a **multi-factor Authentication** az eszköztáron. A többtényezős hitelesítés lap nyílik meg.
-4. Ellenőrizze a felhasználókat, hogy a kezelni kívánt melletti mezőbe. Gyors lépés beállítások listáját a jobb oldalon jelennek meg.
+4. Ellenőrizze a felhasználókat, hogy a kezelni kívánt melletti mezőbe. Gyors lépés beállítások listáját a jobb oldalon jelenik meg.
 5. Válassza ki **felhasználói beállítások kezelése**.
 6. Jelölje be a **visszaállítási multi-factor authentication szolgáltatás az összes korábban megjegyzett eszközön**
    ![visszaállítási multi-factor authentication szolgáltatás az összes korábban megjegyzett eszközön](./media/howto-mfa-userdevicesettings/rememberdevices.png)

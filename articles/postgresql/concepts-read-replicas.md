@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: ce99e03cbd767b5e25871397ea9ae9a301132ab6
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 13580289144d798a57e636f15ab5bce629ff3572
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510974"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242281"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - kiszolgáló egyetlen olvasható replika
 
@@ -40,10 +40,9 @@ Rendelkeznie kell a fölérendelt kiszolgáló a `azure.replication_support` par
 
 Amikor a létrehozás replika munkafolyamat, egy üres, Azure Database for PostgreSQL-kiszolgáló jön létre. Az új kiszolgáló ki van töltve az adatokkal, amelyek a fő kiszolgálón volt. A létrehozás ideje függ a master és a múlt heti teljes biztonsági mentés óta eltelt idő adatok mennyisége. Az idő pár percet vagy akár több óráig terjedhet.
 
-Az olvasási replika szolgáltatás PostgreSQL fizikai replikációt, nem logikai replikációt használ. Az alapértelmezett működési mód replikációs adatfolyam-replikáció tárhelyek használatával. Ha szükséges, a naplóküldés olvasásra szolgál.
+Minden replika engedélyezve van a storage [automatikus növekedést](concepts-pricing-tiers.md#storage-auto-grow). A auto-grow funkció lehetővé teszi, hogy naprakész maradhat, replikálja az adatokat, és megakadályozza a tartományon kívül a tárolási hibák által okozott replikációban szünet a replikát.
 
-> [!NOTE]
-> A tárolási riasztási csoport nem rendelkezik a kiszolgálókon, azt javasoljuk, hogy lehetősége. A riasztás figyelmeztet, ha a kiszolgáló már majdnem elérte a tárolási kapacitását, amely hatással van a replikáció.
+Az olvasási replika szolgáltatás PostgreSQL fizikai replikációt, nem logikai replikációt használ. Az alapértelmezett működési mód replikációs adatfolyam-replikáció tárhelyek használatával. Ha szükséges, a naplóküldés olvasásra szolgál.
 
 Ismerje meg, hogyan [olvasható replika létrehozásához az Azure Portalon](howto-read-replicas-portal.md).
 

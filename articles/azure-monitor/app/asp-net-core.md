@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8522b1d0a8f8466870966d3f11ce66f7bf15672b
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: cb7ace20fd0a59dafff3d7f8240f54c3c8e12492
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016367"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226400"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights az ASP.NET Core-alkalmazások
 
@@ -111,7 +111,7 @@ A [Application Insights SDK (Software Development Kitet) az ASP.NET Core](https:
     > [!NOTE]
     > Egy környezeti változó keresztül kód wins-ben megadott kialakítási kulcs `APPINSIGHTS_INSTRUMENTATIONKEY`, amely wins-más lehetőségekhez képest.
 
-## <a name="run-your-application"></a>Alkalmazás futtatása
+## <a name="run-your-application"></a>Az alkalmazás futtatása
 
  Futtassa az alkalmazást, és hozzá kérelmeket. Telemetria most el kell Application Insights halad. A következő telemetriát az Application Insights SDK automatikusan gyűjti.
 
@@ -383,6 +383,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 ## <a name="video"></a>Videó
 
 - Külső részletes videó [Application Insights konfigurálása a .NET Core és a Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) sablon nélkül.
+- Külső részletes videó [Application Insights konfigurálása a .NET Core és a Visual Studio Code](https://youtu.be/ygGt84GDync) sablon nélkül.
 
 ## <a name="next-steps"></a>További lépések
 * [Ismerje meg a felhasználói folyamatok](../../azure-monitor/app/usage-flows.md) tudni, hogy a felhasználók hogyan navigálnak az alkalmazáson keresztül.

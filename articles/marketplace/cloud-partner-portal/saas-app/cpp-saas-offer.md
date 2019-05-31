@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 08baf908d47cdc6a9bc1e97f88eb5ff509d6790e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 813cfb25ebcd3dd15314d7aa05933d0bf1167917
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835051"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258058"
 ---
 # <a name="azure-saas-application-offer"></a>Azure SaaS-alkalmazásra vonatkozó ajánlat
 
@@ -20,6 +20,7 @@ Ez a szakasz azt ismerteti, hogyan teheti közzé egy szoftvert, az saas-alkalma
 
 > [!IMPORTANT] 
 > SaaS-ajánlat funkció az áttelepítés alatt a [Microsoft Partner Centeren](https://partner.microsoft.com/dashboard/directory).  Minden új gyártó kell használnia a Partner Center új SaaS-ajánlatok létrehozására és kezelésére a meglévő ajánlatok.  Az SaaS-ajánlatok kiadók migrálása folyamatban van batchwise a Cloud Partner portálra, a Partner Center.  A Cloud Partner portálra azt jelzik, ha meghatározott meglévő ajánlatok áttelepítette állapotüzeneteket jelenít meg.
+> További információkért lásd: [hozzon létre egy új SaaS-ajánlatot](../../partner-center-portal/create-new-saas-offer.md).
 
 
 Használja az SaaS-alkalmazásokat, ha a megoldás lesz telepítve, a saját Azure-előfizetés, és ügyfelek alá fogja írni kezelőfelületén, tervezheti meg és kezelheti az alkalmazás teszteléséhez. <a href="https://azure.microsoft.com/services/active-directory">Az Azure Active Directory (AAD)</a> kihasználhatja a meglévő próbaverzió környezet szolgál.

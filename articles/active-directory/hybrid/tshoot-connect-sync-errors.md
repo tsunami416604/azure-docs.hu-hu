@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ba74961eb549afd2fcf7c10f2d8b981e389a2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f63aebb9a9bbefe84ac36b92cd69e0d93de0ab76
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381688"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298759"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Szinkronizálási hibák elhárítása
 Hibák fordulhatnak elő, amikor a azonosító adatok szinkronizálása a Windows Server Active Directory (AD DS) az Azure Active Directory (Azure AD). Ez a cikk szinkronizálási hibák, a lehetséges forgatókönyvek ezeket a hibákat és lehetséges módon javítsa a hibákat okozó némelyike különböző típusainak áttekintése. Ez a cikk a gyakori alkalmazáshiba-típusok tartalmazza, és a lehetséges hibák terjedhet ki.
@@ -221,7 +221,7 @@ Amikor egy attribútum túllép az engedélyezett méretkorlátot, maximális ho
 ### <a name="how-to-fix"></a>Hogyan háríthatja el a
 1. Győződjön meg arról, hogy az attribútum okozza a hibát az engedélyezett korlát belül van-e.
 
-## <a name="existing-admin-role-conflict"></a>Meglévő rendszergazdai szerepkör-ütközés
+## <a name="existing-admin-role-conflict"></a>Meglévő felügyeleti szerepkör-ütközés
 
 ### <a name="description"></a>Leírás
 Egy **meglévő rendszergazdai szerepkör ütközés** történjen a user objektum a szinkronizálás során a felhasználói objektum rendelkezik:

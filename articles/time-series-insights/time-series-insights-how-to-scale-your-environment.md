@@ -4,7 +4,7 @@ description: Ez a cikk ismerteti, hogyan skálázható az Azure Time Series Insi
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7d9827b11136370bcb401073a4d9cc4871c1cc9
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: be06fd5a6f05d750e6ca9801a6004f7180a12d5c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472792"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238994"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>A Time Series Insights-környezet méretezése
 
@@ -31,14 +31,14 @@ Azonban a tarifacsomag módosítása Termékváltozat nem engedélyezett. Péld�
 
 | S1 Termékváltozat kapacitása | Bejövő forgalom | Maximális tárolási kapacitás
 | --- | --- | --- |
-| 1. | 1 GB (1 millió esemény) | 30 GB (30 millió esemény) / hó |
+| 1 | 1 GB (1 millió esemény) | 30 GB (30 millió esemény) / hó |
 | 10 | 10 GB-os (10 millió esemény) | 300 GB (300 millió esemény) / hó |
 
 ## <a name="s2-sku-ingress-rates-and-capacities"></a>S2 Termékváltozat telemetriabevitelt régiójának és kapacitás
 
 | S2 Termékváltozat kapacitása | Bejövő forgalom | Maximális tárolási kapacitás
 | --- | --- | --- |
-| 1. | 10 GB-os (10 millió esemény) | 300 GB (300 millió esemény) / hó |
+| 1 | 10 GB-os (10 millió esemény) | 300 GB (300 millió esemény) / hó |
 | 10 | 100 GB (100 millió esemény) | 3 TB (3 milliárd eseményig) / hó |
 
 Kapacitások költségráfordításokkal egyenes arányban, méretezhető, így egy S1 Termékváltozat kapacitása 2 támogatja a 2 GB (2 millió) esemény napi bejövő forgalom és 60 GB (60 millió esemény) / hó.

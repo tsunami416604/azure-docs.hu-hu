@@ -2,18 +2,17 @@
 title: Operátor ajánlott eljárások – alapszintű ütemezési funkciókat az Azure Kubernetes-szolgáltatások (AKS)
 description: Ismerje meg a fürt operátor használatának ajánlott eljárásai erőforráskvóták alapszintű ütemezési funkciókat és megszakítás költségvetése Azure Kubernetes Service (AKS) pod
 services: container-service
-author: rockboyfor
+author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-origin.date: 11/26/2018
-ms.date: 04/08/2019
-ms.author: v-yeche
-ms.openlocfilehash: 8233330973946e552e36a85a11bdbbfb06c739f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 11/26/2018
+ms.author: iainfou
+ms.openlocfilehash: f6e370442c9c359a38025762fb90269119ec0ea6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60463880"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65074127"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az alapszintű ütemezési funkciókat az Azure Kubernetes Service (AKS)
 
@@ -127,6 +126,8 @@ Pod megszakítás költségvetése használatával kapcsolatos további informá
 
 A [kube-advisor] [ kube-advisor] eszköz egy társított AKS nyílt forráskódú projekt, amely megvizsgálja egy Kubernetes-fürtöt, és jelentést készít a talált problémákat. Egy hasznos, ellenőrizze, hogy azonosítsa a podok nem rendelkező erőforrás-kérelmek és korlátozások érvényben.
 
+A kube-advisor eszköz jelentései erőforrás kérelem és a hiányzó PodSpecs a Windows-alkalmazások, valamint a Linuxos alkalmazások korlátai, de a kube-advisor eszköz magát egy Linux-pod ütemezése. Egy adott operációs rendszer használatával egy csomópont készleten való futtatáshoz podot ütemezhet egy [csomópont választó] [ k8s-node-selector] a pod-konfigurációban.
+
 Az AKS-fürt, amelyen több fejlesztői csapatok és alkalmazásokat azok visszakövetését, hogy podok nélkül ezeket az erőforrás-kérelmek, és korlátozza a készlet. Ajánlott eljárásként rendszeresen futtassa `kube-advisor` a AKS-fürtökön, különösen akkor, ha nem rendel hozzá erőforráskvóták névtér használatára korlátozzuk.
 
 ## <a name="next-steps"></a>További lépések
@@ -148,3 +149,4 @@ Ez a cikk a Kubernetes-ütemezési alapszintű funkcióit összpontosít. Az AKS
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

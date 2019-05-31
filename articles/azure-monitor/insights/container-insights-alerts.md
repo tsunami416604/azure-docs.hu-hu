@@ -11,26 +11,27 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 04/26/2019
 ms.author: magoedte
-ms.openlocfilehash: bbd7c733c7c089328d2fbe016426fe9de3a6b5ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 46ac6794272728069d50479f8cd097185bfeeb1a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60494626"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072389"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Teljesítményproblémák-tárolókhoz az Azure Monitor riasztásainak beállítása
 Az Azure Monitor for containers szolgáltatásban felügyelt Kubernetes-fürtöket üzemeltetett Azure Kubernetes Service (AKS) vagy az Azure Container Instances üzembe helyezett tárolók számítási feladatainak teljesítményét figyeli.
 
 Ez a cikk ismerteti, hogyan engedélyezheti a riasztások a következő helyzetekben:
 
-* Ha a fürtcsomópontok CPU és memória-felhasználás meghaladja a meghatározott küszöbértéket
-* Ha egy vezérlő belül egyetlen tárolója sem CPU és memória-felhasználás meghaladja-e a meghatározott küszöbértéket, szemben a kapcsolódó erőforrás a beállított korlát
-* *NotReady* állapot csomópontjánál száma
-*  *Nem sikerült*, *függőben lévő*, *ismeretlen*, *futó*, vagy *sikeres* pod-fázis száma
+- Ha a fürtcsomópontok CPU és memória-felhasználás meghaladja a küszöbértéket
+- Ha egy vezérlő belül egyetlen tárolója sem CPU és memória-felhasználás eléri az szemben a kapcsolódó erőforrás a beállított korlát
+- *NotReady* állapot csomópontjánál száma
+- *Nem sikerült*, *függőben lévő*, *ismeretlen*, *futó*, vagy *sikeres* pod-fázis száma
+- Ha a szabad lemezterület a fürtcsomópontok meghaladja a küszöbértéket 
 
-Riasztás magas CPU-vagy memóriahasználat a fürtcsomópontokon, használja a lekérdezéseket, amelyet metrikariasztás vagy egy metrikamérési riasztási létrehozása. Metrikákhoz kapcsolódó riasztások, mint a riasztások alacsonyabb késéssel rendelkeznek. De riasztások speciális lekérdezés és a nagyobb kifinomultabbak. Naplóriasztások lekérdezések használatával összehasonlíthatja az eredményeket egy az aktuális dátuma és ideje a *most* operátor és a folyamatos biztonsági másolatot egy óra. (A tárolók az azure Monitor tárolja az összes dátum egyezményes világidő (UTC) formátumban.)
+Riasztás magas CPU vagy a memóriahasználat vagy a kevés szabad lemezterület a fürtcsomópontokon, használja a lekérdezéseket, amelyet metrikariasztás vagy egy metrikamérési riasztási létrehozása. Metrikákhoz kapcsolódó riasztások, mint a riasztások alacsonyabb késéssel rendelkeznek. De riasztások speciális lekérdezés és a nagyobb kifinomultabbak. Naplóriasztások lekérdezések használatával összehasonlíthatja az eredményeket egy az aktuális dátuma és ideje a *most* operátor és a folyamatos biztonsági másolatot egy óra. (A tárolók az azure Monitor tárolja az összes dátum egyezményes világidő (UTC) formátumban.)
 
 Ha még nem ismeri az Azure Monitor riasztások, tekintse meg [áttekintése a Microsoft Azure-ban riasztások](../platform/alerts-overview.md) megkezdése előtt. A riasztásokat, amelyek log lekérdezésekkel kapcsolatos további információkért lásd: [Naplóriasztások az Azure Monitor](../platform/alerts-unified-log.md). Metrikákhoz kapcsolódó riasztások kapcsolatos további információkért lásd: [metrikákhoz kapcsolódó riasztások az Azure monitorban](../platform/alerts-metric-overview.md).
 
@@ -255,6 +256,33 @@ let endDateTime = now();
 >[!NOTE]
 >Például bizonyos pod fázisok értesítenek *függőben lévő*, *sikertelen*, vagy *ismeretlen*, módosíthatja a lekérdezés utolsó sora. Például, hogy a riasztás *FailedCount* használja: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
+A következő lekérdezést a fürt csomópontjai lemezek, amelyek meghaladja a 90 % szabad terület használt adja vissza. A fürt azonosító lekéréséhez először futtassa a következő lekérdezést, és másolja az értéket a `ClusterId` tulajdonság:
+
+```kusto
+InsightsMetrics
+| extend Tags = todynamic(Tags)            
+| project ClusterId = Tags['container.azm.ms/clusterId']   
+| distinct tostring(ClusterId)   
+``` 
+
+```kusto
+let clusterId = '<cluster-id>';
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+InsightsMetrics
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| where Origin == 'container.azm.ms/telegraf'            
+| where Namespace == 'disk'            
+| extend Tags = todynamic(Tags)            
+| project TimeGenerated, ClusterId = Tags['container.azm.ms/clusterId'], Computer = tostring(Tags.hostName), Device = tostring(Tags.device), Path = tostring(Tags.path), DiskMetricName = Name, DiskMetricValue = Val   
+| where ClusterId =~ clusterId       
+| where DiskMetricName == 'used_percent'
+| summarize AggregatedValue = max(DiskMetricValue) by bin(TimeGenerated, trendBinSize)
+| where AggregatedValue >= 90
+```
+
 ## <a name="create-an-alert-rule"></a>Riasztási szabály létrehozása
 Kövesse az alábbi lépéseket egy riasztás létrehozása az Azure monitorban a korábban megadott log search szabályok egyikének használatával.  
 
@@ -272,9 +300,9 @@ Kövesse az alábbi lépéseket egy riasztás létrehozása az Azure monitorban 
 8. A riasztás a következőképpen konfigurálja:
 
     1. A **Riasztás alapja** legördülő menüből válassza a **Metrikamérés** elemet. Egy metrikamérési minden objektum esetén riasztást hoz létre a lekérdezést, amely egy értéket a megadott küszöbérték felett van.
-    1. A **feltétel**, jelölje be **nagyobb, mint**, és adja meg **75** egy kezdeti alaptervként **küszöbérték**. Vagy adjon meg egy másik értéket, amely megfelel a feltételeknek.
+    1. A **feltétel**, jelölje be **nagyobb, mint**, és adja meg **75** , egy alapszintű **küszöbérték** a Processzor és a memória kihasználtsági riasztások . Adja meg a kevés a szabad terület riasztás **90**. Vagy adjon meg egy másik értéket, amely megfelel a feltételeknek.
     1. Az a **eseményindító riasztás alapja** szakaszban jelölje be **egymás utáni incidensek**. A legördülő listából válassza ki a **nagyobb**, és adja meg **2**.
-    1. Tároló CPU vagy a memóriahasználat, a riasztás konfigurálásához a **az összesített**válassza **ContainerName**. 
+    1. Tároló CPU vagy a memóriahasználat, a riasztás konfigurálásához a **az összesített**válassza **ContainerName**. Fürt csomópont kevés a szabad riasztás konfigurálásához válasszon **ClusterId**.
     1. Az a **alapján Evaluated** szakaszában a **időszak** értéket a következőre **60 perc**. A szabály lesz 5 percenként futtassa, és az aktuális időpont az elmúlt órában belül létrehozott rekordot ad vissza. A lehetséges adatkésleltetést széles ablak fiókok beállítást az adott időszakban. Emellett biztosítja, hogy a lekérdezés visszaadja az adatot, hogy elkerülje a téves negatív, amelyben a riasztás soha nem aktiválódik.
 
 9. Válassza ki **kész** befejezéséhez a riasztási szabályt.

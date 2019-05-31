@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: ec6f3884504c94b7669df21882aeb2a1eb9d7220
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af01ebdc72df096b45c4ca4e755b2ed3880bab65
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60520629"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255267"
 ---
 # <a name="get-started-with-azure-monitor-log-analytics"></a>Az Azure Monitor Log Analytics használatának első lépései
 
@@ -46,7 +46,7 @@ Event | search "error"
 
 Ez a lekérdezés átvizsgálja a _esemény_ rekordok bármely vlastnost "error" kifejezést tartalmazó tábla.
 
-Lekérdezések megkezdheti a következők egyikével táblanév vagy egy **keresési** parancsot. A fenti példában a táblanév előtaggal kezdődik _esemény_, amely megadja, hogy a lekérdezés hatókörét. A függőleges vonal (|) karakterrel elválasztó parancsok, így az elsőt a bemenetben a következő parancs kimenetét. Tetszőleges számú parancsokat adhat hozzá egyetlen lekérdezést.
+Lekérdezések megkezdheti a következők egyikével táblanév vagy egy **keresési** parancsot. A fenti példában a táblanév előtaggal kezdődik _esemény_, amely megadja, hogy a lekérdezés hatókörét. A függőleges vonal (|) karakterrel elkülöníti a parancsok, így az elsőt a kimenete a következő parancs a bemeneti szolgál. Tetszőleges számú parancsokat adhat hozzá egyetlen lekérdezést.
 
 Egy másik módja, hogy ugyanabból a lekérdezés írása a következő lesz:
 
@@ -115,7 +115,7 @@ Eredmények táblázatában gyakran sok oszlopot tartalmaz. Előfordulhat, hogy 
 ![Oszlopok kiválasztása](media/get-started-portal/select-columns.png)
 
 
-## <a name="select-a-time-range"></a>Időtartomány megadása
+## <a name="select-a-time-range"></a>Jelöljön ki egy időtartományt
 Alapértelmezés szerint a Log Analytics alkalmazza a _elmúlt 24 órában_ időtartomány. Egy másik tartományt használja, válasszon ki egy másik értéket a időválasztó keresztül, és kattintson a **futtatása**. Az előre definiált értékek mellett használhatja a _egyéni időtartomány_ választhatja a lekérdezés egy abszolút címtartományt.
 
 ![Időpontválasztó](media/get-started-portal/time-picker.png)
@@ -137,7 +137,7 @@ Event
 
 Alapértelmezés szerint egy táblázatban eredmények jelennek meg. Kattintson a _diagram_ kattintva megjelenítjük az eredményeket egy grafikus nézetben:
 
-![Oszlopdiagram](media/get-started-portal/bar-chart.png)
+![Sávdiagram](media/get-started-portal/bar-chart.png)
 
 Az eredményeket egy halmozott sávdiagram látható. Kattintson a _-ig halmozott oszlop_ válassza _torta_ az eredményeket egy másik nézetének megjelenítése:
 

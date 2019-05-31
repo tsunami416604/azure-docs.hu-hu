@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08e915354df4f4aa1d9a183e78cbad47460b8d37
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394829"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356213"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 
@@ -35,7 +35,7 @@ V: Azok a ugyanaz. [A log Analytics az Azure Monitor szolgáltatásban integrác
 
 ### <a name="q-can-i-still-use-log-search"></a>K: Továbbra is használható a naplóbeli keresés? 
 
-V: Naplóbeli keresés jelenleg továbbra is elérhető, az OMS-portálon, és a név alatt az Azure Portalon **naplók (klasszikus)**. Az OMS-portálon a 2019. január 15 hivatalosan megszűnik. Az Azure Portalon a klasszikus naplók élményt fokozatosan megszűnik, és az új naplók felület helyett. 
+V: Naplóbeli keresés jelenleg továbbra is elérhető, az OMS-portálon, és a név alatt az Azure Portalon **naplók (klasszikus)** . Az OMS-portálon a 2019. január 15 hivatalosan megszűnik. Az Azure Portalon a klasszikus naplók élményt fokozatosan megszűnik, és az új naplók felület helyett. 
 
 ### <a name="q-can-i-still-use-advanced-analytics-portal"></a>K. Továbbra is használható a speciális analitika portálon? 
 Az új naplók az Azure Portal felhasználói felület a speciális analitikai portálon alapul, de továbbra is elérhető az Azure Portalon kívül. Az ütemterv kivonása a külső portál hamarosan fogjuk bejelenteni.
@@ -84,7 +84,7 @@ V: A nézetek és a telepített megoldások listáját az Azure Portalon érhet�
 
 ### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>K. Miért nem tudok létrehozni munkaterületek az USA nyugati középső régiójában? 
 
-V: Ennek a régiónak a kapacitása átmenetileg korlátozva van. A korlátozást 2019 első felében tervezzük megváltoztatni.
+V: Ennek a régiónak a kapacitása átmenetileg korlátozva van. Ez a korlátozás tervezett elhárítandó 2019. szeptember végéig.
 
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>K. A Log Analytics használata ugyanaz az ügynök, az Azure Security Center?
@@ -195,7 +195,7 @@ Egy sárga figyelmeztető ikon azt jelenti, hogy az ügynök a Log Analytics-sze
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>K: Hogyan állítsam le egy ügynök kommunikáljon a Log Analytics?
 
 V: A System Center Operations Manager távolítsa el a számítógépet az OMS a felügyelt számítógépek listája. Az Operations Manager már nem a jelentés a Log Analytics frissíti az ügynök konfigurációját. Közvetlenül csatlakozik a Log Analytics-ügynökök leállíthatja őket keresztül: Szabályozhatja a panelen, a biztonság és a beállítások, **a Microsoft Monitoring Agent**.
-A **Azure Log Analytics (OMS)**, felsorolva minden munkaterület eltávolítása.
+A **Azure Log Analytics (OMS)** , felsorolva minden munkaterület eltávolítása.
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>K: Miért jelenik meg hibaüzenet jelenik meg a saját munkaterület áthelyezése egy Azure-előfizetés között?
 

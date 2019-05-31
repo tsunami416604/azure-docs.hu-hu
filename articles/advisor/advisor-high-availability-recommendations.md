@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 793c881d08e8feb038cc6e7ac82b7e95384e1b55
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdba3f135f852312af1692f77643095d865f1d06
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467727"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254674"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Az Azure Advisorral az alkalmazás rendelkezésre állásának javítása
 
@@ -30,7 +30,7 @@ Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a v
 
 Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Az Advisor egy egyetlen virtuális gépet tartalmazó rendelkezésre állási csoportok azonosítja, és javasolja, hogy egy vagy több virtuális gép hozzáadása. Ez a konfiguráció biztosítja, hogy vagy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép elérhető, és megfelel-e az Azure-beli virtuálisgép-SLA. Kiválaszthatja a virtuális gép létrehozása vagy meglévő virtuális gép hozzáadása a rendelkezésre állási csoporthoz.  
 
-## <a name="use-managed-disks-to-improve-data-reliability"></a>Felügyelt lemezek használata az adatok megbízhatóságának javítása érdekében
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Felügyelt lemezek használata az adatok megbízhatóságának javítása
 
 A rendelkezésre állási csoport tárfiókokat vagy tárolási skálázási egységeket használó lemezekkel rendelkező virtuális gépek esetén nem hibatűrőek az egyetlen skálázási egységek hibáival leállások idején. Az Advisor azonosítja azokat a ezeket a rendelkezésre állási csoportok és javasoljuk, hogy az Azure Managed Disks-ba való migrálás. Ez biztosítja, hogy a rendelkezésre állási csoportban a különböző virtuális gépek lemezei hibapontok elkerülése érdekében a hibaérzékeny pont. 
 
@@ -69,6 +69,30 @@ Aktív-aktív konfigurációban a VPN-átjáró mindkét példányát meghatáro
 ## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Az éles számítási feladatok futtatása termelési VPN-átjárók használatával
 
 Az Azure Advisor minden VPN-átjárók, amelyek az alapszintű Termékváltozat keressen, és a egy éles Termékváltozat inkább használatát javasoljuk. Az alapszintű Termékváltozat fejlesztési és tesztelési célokra tervezték. Éles termékváltozatok alagút, BGP-támogatás, aktív-aktív konfigurációban lehetőségeket, egyéni Ipsec/IKE-házirendet, és magasabb stabilitását és rendelkezésre állási megnövelt számú kínálnak.
+
+## <a name="repair-invalid-log-alert-rules"></a>Érvénytelen naplóriasztási szabály javítása
+
+Az Azure Advisor észlelni fogja, hogy a feltétel szakaszban megadott érvénytelen lekérdezéseket riasztási szabályok. Naplóriasztási szabály jönnek létre az Azure Monitor és elemzési lekérdezések futtatása a megadott időközönként szolgálnak. A lekérdezés eredményeit, határozza meg, ha egy riasztást kell aktiválását. Analytics-lekérdezések a hivatkozott erőforrások, a táblák vagy a parancsok változtatások miatt érvénytelen túlóra válhat. Az Advisor javasolni fogja, hogy, javítsa ki a riasztási szabály akadályoznia, hogy első automatikus – letiltva, és az Azure-erőforrások figyelési lefedettség biztosítja a lekérdezés. [További tudnivalók a riasztási szabályok](https://aka.ms/aa_logalerts_queryrepair)
+
+## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>A Cosmos DB-gyűjtemények a konzisztens az indexelő módjának konfigurálása
+
+A lusta indexelési mód konfigurálva az Azure Cosmos DB-tárolók hatással lehet a lekérdezési eredmények frissessége. Az Advisor tárolók beállítható úgy érzékeli, és egységes üzemmódra váltás javasoljuk. [További információ a házirendek a Cosmos DB indexelése](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+
+## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Az Azure Cosmos DB-tárolók konfigurálása partíciós kulccsal
+
+Azure Cosmos DB nem particionált gyűjteményeket, amelyek a kiépített tárolási kvótája hamarosan eléri az Azure Advisor azonosítja. Ez azt javasolja, hogy ezekhez a gyűjteményekhez-ba való migrálás új gyűjtemények olyan partíció-definícióval, hogy azok automatikusan kiterjeszthető a szolgáltatás által. [További tudnivalók a partíciókulcs választása](https://aka.ms/cosmosdb/choose-partitionkey)
+
+## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Az Azure Cosmos DB .NET SDK frissítése a legújabb verzióra a Nugetről
+
+Az Azure Advisor azonosítja, amely a .NET SDK korábbi verzióját használja, és javasolja a nugetről a legújabb verzióra való frissítést a legújabb javításokat, teljesítménnyel kapcsolatos fejlesztések és új funkciók az Azure Cosmos DB-fiókokhoz. [További tudnivalók a Cosmos DB .NET SDK-val](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+
+## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Az Azure Cosmos DB Java SDK frissítése a legújabb verzióra a Mavenből
+
+Az Azure Advisor azonosítja, amely a Java SDK korábbi verzióját használja, és javasolja a Mavenből a legújabb verzióra való frissítést a legújabb javításokat, teljesítménnyel kapcsolatos fejlesztések és új funkciók az Azure Cosmos DB-fiókokhoz. [További tudnivalók a Cosmos DB Java SDK-val](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+
+## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Az Azure Cosmos DB Spark-összekötő frissítése a legújabb verzióra a Mavenből
+
+Az Azure Advisor azonosítja a Cosmos DB Spark-összekötő régi verzióját használja, javasoljuk, hogy a legújabb verzióra való frissítést a Mavenből a legújabb javításokat, teljesítménnyel kapcsolatos fejlesztések és új funkciók az Azure Cosmos DB-fiókokhoz. [További tudnivalók a Cosmos DB Spark-összekötő](https://aka.ms/cosmosdb/spark-connector)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állás – javaslatok az Advisor elérése
 

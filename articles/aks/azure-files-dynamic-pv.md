@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 43f3a55bc820a232ccebc3a940faa86f9eb730f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9771c110e277d67bee329fe62434b18a01189476
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467374"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072225"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dinamikusan létrehozása, és a egy tartós kötet használata az Azure Files Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Tartós kötet egy Kubernetes-podok való használatra vett tárolási részét 
 
 A Kubernetes-köteteken további információkért lásd: [tárolási lehetőségek az aks-ben alkalmazásokhoz][concepts-storage].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
@@ -136,7 +136,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 ## <a name="use-the-persistent-volume"></a>Használja a tartós kötet
 
-A következő yaml-kódot hoz létre, amely a tartós kötet jogcím podot *azurefile* , az Azure-fájlmegosztást, csatlakoztathatja a */mnt/azure* elérési útja.
+A következő yaml-kódot hoz létre, amely a tartós kötet jogcím podot *azurefile* , az Azure-fájlmegosztást, csatlakoztathatja a */mnt/azure* elérési útja. A Windows Server tárolók (jelenleg előzetes verzióban az aks-ben), adja meg egy *mountPath* használjon, például a Windows-elérési út egyezmény *"D:"* .
 
 Hozzon létre egy fájlt `azure-pvc-files.yaml`, és másolja be a következő yaml-kódot. Győződjön meg arról, hogy a *claimName* megegyezik a virtuális az előző lépésben létrehozott kapcsolat.
 

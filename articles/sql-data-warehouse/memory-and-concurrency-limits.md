@@ -1,5 +1,5 @@
 ---
-title: Memória- és egyidejűségi korlátok – Azure SQL Data Warehouse |} A Microsoft Docs
+title: Az Azure SQL Data Warehouse a memória- és egyidejűségi korlátok |} A Microsoft Docs
 description: Tekintse meg a különböző teljesítményszintek és az Azure SQL Data Warehouse erőforrásosztályok számára lefoglalt memória- és egyidejűségi korlátok.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 024b3f9c6d1fdd0d4bcb1126e4577387a6415a59
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 3bc1fef1842911e9b2cfb65b3c8cc72e4b615010
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873470"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241265"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse a memória- és egyidejűségi korlátok
 Tekintse meg a különböző teljesítményszintek és az Azure SQL Data Warehouse erőforrásosztályok számára lefoglalt memória- és egyidejűségi korlátok. További információt, és a alkalmazni ezeket a képességeket a számítási feladat felügyeleti csomag: [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). 
@@ -31,11 +31,11 @@ Gen2 2,5 x a Gen1 lekérdezésenként több memóriát biztosít. Az extra memó
 
 | Teljesítményszint | Számítási csomópontok | Számítási csomópontok disztribúciók | Adatraktár (GB) memória |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
-| DW100c            | 1.             | 60                             |    60                          |
-| DW200c            | 1.             | 60                             |   120                          |
-| DW300c            | 1.             | 60                             |   180                          |
-| DW400c            | 1.             | 60                             |   240                          |
-| DW500c            | 1.             | 60                             |   300                          |
+| DW100c            | 1             | 60                             |    60                          |
+| DW200c            | 1             | 60                             |   120                          |
+| DW300c            | 1             | 60                             |   180                          |
+| DW400c            | 1             | 60                             |   240                          |
+| DW500c            | 1             | 60                             |   300                          |
 | DW1000c           | 2             | 30                             |   600                          |
 | DW1500c           | 3             | 20                             |   900                          |
 | DW2000c           | 4             | 15                             |  1200                          |
@@ -46,7 +46,7 @@ Gen2 2,5 x a Gen1 lekérdezésenként több memóriát biztosít. Az extra memó
 | DW7500c           | 15            | 4                              |  4500                          |
 | DW10000c          | 20            | 3                              |  6000                          |
 | DW15000c          | 30            | 2                              |  9000                          |
-| DW30000c          | 60            | 1.                              | 18000                          |
+| DW30000c          | 60            | 1                              | 18000                          |
 
 A maximális Gen2 DWU DW30000c, amely rendelkezik 60 számítási csomópontok és a számítási csomópontok egy terjesztési. Például DW30000c, 600 TB-os adattárház dolgozza fel a számítási csomópontok nagyjából 10 TB.
 
@@ -56,7 +56,7 @@ A szolgáltatási szintek a Gen1 és DW6000 DW100 eső.
 
 | Teljesítményszint | Számítási csomópontok | Számítási csomópontok disztribúciók | Adatraktár (GB) memória |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
-| DW100             | 1.             | 60                             |  24                            |
+| DW100             | 1             | 60                             |  24                            |
 | DW200             | 2             | 30                             |  48                            |
 | DW300             | 3             | 20                             |  72                            |
 | DW400             | 4             | 15                             |  96                            |
@@ -67,7 +67,7 @@ A szolgáltatási szintek a Gen1 és DW6000 DW100 eső.
 | DW1500            | 15            | 4                              | 360                            |
 | DW2000            | 20            | 3                              | 480                            |
 | DW3000            | 30            | 2                              | 720                            |
-| DW6000            | 60            | 1.                              | 1440                           |
+| DW6000            | 60            | 1                              | 1440                           |
 
 ## <a name="concurrency-maximums"></a>Párhuzamosság maximális értékei
 Annak érdekében, hogy minden egyes lekérdezés hatékonyan végrehajtásához erőforrásokkal rendelkezik, az SQL Data Warehouse egyidejű helyet foglalnak le rendel az egyes lekérdezések erőforrás-használat nyomon követi. A rendszer lekérdezések alapján, fontosság és egyidejű helyet foglalnak le egy várólistába helyezi. Lekérdezések várakozhasson a várólistán addig, amíg elegendő egyidejű helyet foglalnak le nem érhető el. [Fontosság](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) és egyidejű helyet foglalnak le a CPU-rangsorolás határozza meg. További információkért lásd: [a számítási feladatok elemzése](analyze-your-workload.md)
@@ -80,22 +80,22 @@ Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű
 
 | Szolgáltatásszint | Maximális párhuzamos lekérdezések | Párhuzamos időszeletek érhető el | A tárolóhelyek staticrc10 által használt | A tárolóhelyek staticrc20 által használt | A tárolóhelyek staticrc30 által használt | A tárolóhelyek staticrc40 által használt | A tárolóhelyek staticrc50 által használt | A tárolóhelyek staticrc60 által használt | A tárolóhelyek staticrc70 által használt | A tárolóhelyek staticrc80 által használt |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
-| DW100c        |  4                         |    4                        | 1.         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
-| DW200c        |  8                         |    8                        | 1.         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
-| DW300c        | 12                         |   12                        | 1.         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
-| DW400c        | 16                         |   16                        | 1.         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW500c        | 20                         |   20                        | 1.         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW1000c       | 32                         |   40                        | 1.         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW1500c       | 32                         |   60                        | 1.         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW2000c       | 48                         |   80                        | 1.         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW2500c       | 48                         |  100                        | 1.         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW3000c       | 64                         |  120                        | 1.         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW5000c       | 64                         |  200                        | 1.         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW6000c       | 128                        |  240                        | 1.         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW7500c       | 128                        |  300                        | 1.         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW10000c      | 128                        |  400                        | 1.         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW15000c      | 128                        |  600                        | 1.         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW30000c      | 128                        | 1200                        | 1.         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
+| DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
+| DW300c        | 12                         |   12                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
+| DW400c        | 16                         |   16                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
+| DW500c        | 20                         |   20                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
+| DW1000c       | 32                         |   40                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
+| DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
+| DW2000c       | 48                         |   80                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
+| DW2500c       | 48                         |  100                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
+| DW3000c       | 64                         |  120                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
+| DW5000c       | 64                         |  200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW6000c       | 128                        |  240                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW7500c       | 128                        |  300                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW10000c      | 128                        |  400                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW15000c      | 128                        |  600                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW30000c      | 128                        | 1200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 
 **Dinamikus erőforrás-osztályok**
 
@@ -108,13 +108,13 @@ Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű
 
 | Szolgáltatásszint | Maximális párhuzamos lekérdezések | Párhuzamos időszeletek érhető el | A tárolóhelyek smallrc által használt | A tárolóhelyek mediumrc által használt | Largerc által használt tárolóhely | A tárolóhelyek xlargerc által használt |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
-| DW100c        |  4                         |    4                        | 1.                     |  1                     |  1                    |   2                    |
-| DW200c        |  8                         |    8                        | 1.                     |  1                     |  1                    |   5                    |
-| DW300c        | 12                         |   12                        | 1.                     |  1                     |  2                    |   8                    |
-| DW400c        | 16                         |   16                        | 1.                     |  1.                     |  3                    |  11                    |
-| DW500c        | 20                         |   20                        | 1.                     |  2                     |  4                    |  14                    |
-| DW1000c       | 32                         |   40                        | 1.                     |  4                     |  8                    |  28                    |
-| DW1500c       | 32                         |   60                        | 1.                     |  6                     |  13                   |  42                    |
+| DW100c        |  4                         |    4                        | 1                     |  1                     |  1                    |   2                    |
+| DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |
+| DW300c        | 12                         |   12                        | 1                     |  1                     |  2                    |   8                    |
+| DW400c        | 16                         |   16                        | 1                     |  1                     |  3                    |  11                    |
+| DW500c        | 20                         |   20                        | 1                     |  2                     |  4                    |  14                    |
+| DW1000c       | 32                         |   40                        | 1                     |  4                     |  8                    |  28                    |
+| DW1500c       | 32                         |   60                        | 1                     |  6                     |  13                   |  42                    |
 | DW2000c       | 32                         |   80                        | 2                     |  8                     |  17                   |  56                    |
 | DW2500c       | 32                         |  100                        | 3                     | 10                     |  22                   |  70                    |
 | DW3000c       | 32                         |  120                        | 3                     | 12                     |  26                   |  84                    |
@@ -133,20 +133,20 @@ Statikus erőforrásosztályok
 
 Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű helyet foglalnak le minden [statikus erőforrásosztály](resource-classes-for-workload-management.md) a **Gen1**.
 
-| Szolgáltatásszint | Maximális párhuzamos lekérdezések | Maximális párhuzamos időszeletek | A tárolóhelyek staticrc10 által használt | A tárolóhelyek staticrc20 által használt | A tárolóhelyek staticrc30 által használt | A tárolóhelyek staticrc40 által használt | A tárolóhelyek staticrc50 által használt | A tárolóhelyek staticrc60 által használt | A tárolóhelyek staticrc70 által használt | A tárolóhelyek staticrc80 által használt |
+| Szolgáltatási szint | Maximális párhuzamos lekérdezések | Maximális párhuzamos időszeletek | A tárolóhelyek staticrc10 által használt | A tárolóhelyek staticrc20 által használt | A tárolóhelyek staticrc30 által használt | A tárolóhelyek staticrc40 által használt | A tárolóhelyek staticrc50 által használt | A tárolóhelyek staticrc60 által használt | A tárolóhelyek staticrc70 által használt | A tárolóhelyek staticrc80 által használt |
 |:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
-| DW100         | 4                          |   4                       | 1.         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
-| DW200         | 8                          |   8                       | 1.         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
-| DW300         | 12                         |  12                       | 1.         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
-| DW400         | 16                         |  16                       | 1.         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW500         | 20                         |  20                       | 1.         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW600         | 24                         |  24                       | 1.         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW1000        | 32                         |  40                       | 1.         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW1200        | 32                         |  48                       | 1.         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW1500        | 32                         |  60                       | 1.         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW2000        | 48                         |  80                       | 1.         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW3000        | 64                         | 120                       | 1.         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW6000        | 128                        | 240                       | 1.         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
+| DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
+| DW300         | 12                         |  12                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
+| DW400         | 16                         |  16                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
+| DW500         | 20                         |  20                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
+| DW600         | 24                         |  24                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
+| DW1000        | 32                         |  40                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
+| DW1200        | 32                         |  48                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
+| DW1500        | 32                         |  60                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
+| DW2000        | 48                         |  80                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
+| DW3000        | 64                         | 120                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
+| DW6000        | 128                        | 240                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 
 Dinamikus erőforrás-osztályok
 > [!NOTE]
@@ -156,20 +156,20 @@ Dinamikus erőforrás-osztályok
 
 Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű helyet foglalnak le minden [dinamikus erőforrásosztályt](resource-classes-for-workload-management.md) a **Gen1**.
 
-| Szolgáltatásszint | Maximális párhuzamos lekérdezések | Párhuzamos időszeletek érhető el | A tárolóhelyek smallrc által használt | A tárolóhelyek mediumrc által használt | Largerc által használt tárolóhely | A tárolóhelyek xlargerc által használt |
+| Szolgáltatási szint | Maximális párhuzamos lekérdezések | Párhuzamos időszeletek érhető el | A tárolóhelyek smallrc által használt | A tárolóhelyek mediumrc által használt | Largerc által használt tárolóhely | A tárolóhelyek xlargerc által használt |
 |:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
-| DW100         |  4                         |   4                         | 1.       |  1       |  2      |   4      |
-| DW200         |  8                         |   8                         | 1.       |  2       |  4      |   8      |
-| DW300         | 12                         |  12                         | 1.       |  2       |  4      |   8      |
-| DW400         | 16                         |  16                         | 1.       |  4       |  8      |  16      |
-| DW500         | 20                         |  20                         | 1.       |  4       |  8      |  16      |
-| DW600         | 24                         |  24                         | 1.       |  4       |  8      |  16      |
-| DW1000        | 32                         |  40                         | 1.       |  8       | 16      |  32      |
-| DW1200        | 32                         |  48                         | 1.       |  8       | 16      |  32      |
-| DW1500        | 32                         |  60                         | 1.       |  8       | 16      |  32      |
-| DW2000        | 48                         |  80                         | 1.       | 16       | 32      |  64      |
-| DW3000        | 64                         | 120                         | 1.       | 16       | 32      |  64      |
-| DW6000        | 128                        | 240                         | 1.       | 32       | 64      | 128      |
+| DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
+| DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |
+| DW300         | 12                         |  12                         | 1       |  2       |  4      |   8      |
+| DW400         | 16                         |  16                         | 1       |  4       |  8      |  16      |
+| DW500         | 20                         |  20                         | 1       |  4       |  8      |  16      |
+| DW600         | 24                         |  24                         | 1       |  4       |  8      |  16      |
+| DW1000        | 32                         |  40                         | 1       |  8       | 16      |  32      |
+| DW1200        | 32                         |  48                         | 1       |  8       | 16      |  32      |
+| DW1500        | 32                         |  60                         | 1       |  8       | 16      |  32      |
+| DW2000        | 48                         |  80                         | 1       | 16       | 32      |  64      |
+| DW3000        | 64                         | 120                         | 1       | 16       | 32      |  64      |
+| DW6000        | 128                        | 240                         | 1       | 32       | 64      | 128      |
 
 
 Ha ezeket a küszöbértékeket egyik feltétele teljesül, új lekérdezések várólistára, és egy első-érkezési hajtja végre.  A lekérdezések befejeződik, és lekérdezéseket és tárhelyek száma a korlátok alá esnek, az SQL Data Warehouse felszabadítja a várólistán lévő lekérdezések. 

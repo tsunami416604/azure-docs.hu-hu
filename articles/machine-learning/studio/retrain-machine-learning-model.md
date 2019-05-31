@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 395a231fcf43378a51e22427254abb196a46081e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a3f441a0dd7f7b9f402390e853bd1c28f282f653
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709017"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245091"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Újratanítás PowerShell és a egy gépi tanulási modell üzembe helyezése
 
@@ -59,7 +59,7 @@ Ebben a példában használunk a C# megőrzési-alkalmazás létrehozása. Haszn
 
 Használja az alábbi lépéseket a megőrzési API-k meghívásához:
 
-1. Hozzon létre egy C# a Visual Studio-Konzolalkalmazás: **Új** > **projekt** > **Visual C#**   >  **Windows klasszikus Asztalialkalmazás**  >   **Console App (.NET Framework)**.
+1. Hozzon létre egy C# a Visual Studio-Konzolalkalmazás: **Új** > **projekt** > **Visual C#**   >  **Windows klasszikus Asztalialkalmazás**  >   **Console App (.NET Framework)** .
 1. Jelentkezzen be a Machine Learning webszolgáltatások portálján.
 1. Kattintson a webszolgáltatás, amelyet dolgozik.
 1. Kattintson a **felhasználása**.
@@ -89,7 +89,7 @@ A BES-mintakód feltölt egy fájlt egy helyi meghajtóról (például "C:\temp\
 1. Storage-fiókok listájából válassza ki a retrained modell tárolásához.
 1. A bal oldali navigációs oszlopban kattintson **hozzáférési kulcsok**.
 1. Másolja ki és mentse a **elsődleges elérési kulcs**.
-1. A bal oldali navigációs oszlopban kattintson **tárolók**.
+1. A bal oldali navigációs oszlopban kattintson **Blobok**.
 1. Válassza ki egy meglévő tárolót, vagy hozzon létre egy új, és mentse a nevét.
 
 Keresse meg a *StorageAccountName*, *StorageAccountKey*, és *StorageContainerName* nyilatkozatok, és frissítse az értékeket a Portalról mentett.

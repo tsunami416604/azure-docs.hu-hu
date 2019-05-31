@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d02642b0c069124ddcfbef1ea655438c906739a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: d369891624256e98ba8d46168cc9c10c41d37b8d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545650"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235238"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Az Azure Active Directory-manifest aplikace
 
@@ -50,7 +50,7 @@ Az alkalmazásjegyzék konfigurálása:
 
 | Kulcs  | Érték típusa | Leírás  | Példaérték |
 |---------|---------|---------|---------|
-| `accessTokenAcceptedVersion` | Nullázható Int32 | Adja meg a hozzáférési jogkivonat verziót az erőforrás által várt. A verzió változik, és a JWT formátumát előállítása független a végpontot, illetve a hozzáférési jogkivonat kéréséhez használt ügyfél.<br/><br/>A használt végpont, 1.0-s verzió vagy 2.0-s verziójú, az ügyfél által van kiválasztva, és csak hatással van a id_tokens verzióját. Erőforrásokhoz kell explicit módon konfigurálása `accesstokenAcceptedVersion` jelzi a támogatott hozzáférési jogkivonat formátuma.<br/><br/>Lehetséges értékei `accesstokenAcceptedVersion` : 1, 2 vagy null értékű. Ha az érték null, ez alapértelmezett értéke 1, amely megfelel az 1.0-s verziójú végpont. | `2` |
+| `accessTokenAcceptedVersion` | Nullázható Int32 | Adja meg a hozzáférési jogkivonat verziót az erőforrás által várt. A verzió változik, és a JWT formátumát előállítása független a végpontot, illetve a hozzáférési jogkivonat kéréséhez használt ügyfél.<br/><br/>A használt végpont, 1.0-s verzió vagy 2.0-s verziójú, az ügyfél által van kiválasztva, és csak hatással van a id_tokens verzióját. Erőforrásokhoz kell explicit módon konfigurálása `accesstokenAcceptedVersion` jelzi a támogatott hozzáférési jogkivonat formátuma.<br/><br/>Lehetséges értékei `accesstokenAcceptedVersion` : 1, 2 vagy null értékű. Ha az érték null, ez alapértelmezett értéke 1, amely megfelel az 1.0-s verziójú végpont. <br/><br/>Ha `signInAudience` van `AzureADandPersonalMicrosoftAccount`, az értéknek kell lennie `2`  | `2` |
 | `addIns` | Gyűjtemény | Határozza meg, amellyel a felhasználó szolgáltatás hívása egy alkalmazás adott környezetben egyéni viselkedését. Például fájl streameket is megjelenítő alkalmazások esetében a bővítmények tulajdonsága "FileHandler" termékfunkciókat állíthatja be. Ez lehetővé teszi a szolgáltatások, például az Office 365-hívás az alkalmazás a dokumentumban a felhasználó dolgozik. | <code>{<br>&nbsp;&nbsp;&nbsp;"id":"968A844F-7A47-430C-9163-07AE7C31D407"<br>&nbsp;&nbsp;&nbsp;"type": "FileHandler",<br>&nbsp;&nbsp;&nbsp;"properties": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"key": "version", "value": "2" }<br>&nbsp;&nbsp;&nbsp;]<br>}</code>|
 | `allowPublicClient` | Boolean | A tartalék alkalmazás típusát határozza meg. Az Azure AD alapértelmezés szerint az alkalmazás típusát, a replyUrlsWithType kikövetkezteti. Vannak bizonyos helyzetekben, ahol az Azure AD nem tudja megállapítani az ügyféloldali alkalmazás típusa (pl. [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) HTTP-kérelem egy URL-átirányítás nélkül történik, ahol a folyamat). Ezekben az esetekben az Azure AD fog értelmezni az alkalmazás típusát, ez a tulajdonság értéke alapján. Ha ezt az értéket a tartalék alkalmazástípus igaz értékre van beállítva, például mobileszközön futó telepített alkalmazás nyilvános ügyfél van beállítva. Az alapértelmezett érték: false ami azt jelenti, hogy a tartalék alkalmazástípus bizalmas ügyfél, például webes alkalmazás. | `false` |
 | `availableToOtherTenants` | Boolean | IGAZ, ha az alkalmazás más bérlők; van megosztva. esetén pedig FALSE érték. <br><br> _Megjegyzés: Ez a lehetőség csak az alkalmazás regisztrációk (örökölt) felhasználói felülete. Lecserélve `signInAudience` a a [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) tapasztalható._ | |
@@ -59,7 +59,7 @@ Az alkalmazásjegyzék konfigurálása:
 | `displayName` | String | Az alkalmazás megjelenített neve. <br><br> _Megjegyzés: Ez a lehetőség csak az alkalmazás regisztrációk (örökölt) felhasználói felülete. Lecserélve `name` a a [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) tapasztalható._ | `"MyRegisteredApp"` |
 | `errorUrl` | String | nem támogatott. | |
 | `groupMembershipClaims` | String | Konfigurálja a `groups` egy felhasználó vagy az OAuth 2.0 hozzáférési jogkivonatban, amelyeket az alkalmazás vár a kiállított jogcímet. Állítsa be ezt az attribútumot, használja a következő érvényes karakterlánc-értékek egyikét:<br/><br/>- `"None"`<br/>- `"SecurityGroup"` (a biztonsági csoportok és az Azure AD-szerepkörök)<br/>- `"All"` (ez fog kapni minden a biztonsági csoportok, terjesztési csoportok és az Azure AD-címtárbeli szerepkörök, amelyek a bejelentkezett felhasználó tagja. | `"SecurityGroup"` |
-| `homepage` | String | Az alkalmazás kezdőlapjára mutató URL-cím. <br><br> _Megjegyzés: Ez a lehetőség csak az alkalmazás regisztrációk (örökölt) felhasználói felülete. Lecserélve `signInUrl` a a [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) tapasztalható._ | `"https://MyRegisteredApp"` |
+| `homepage` | String | Az alkalmazás kezdőlapjára mutató URL-címe. <br><br> _Megjegyzés: Ez a lehetőség csak az alkalmazás regisztrációk (örökölt) felhasználói felülete. Lecserélve `signInUrl` a a [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) tapasztalható._ | `"https://MyRegisteredApp"` |
 | `objectId` | String | A címtárban lévő alkalmazás egyedi azonosítója. <br><br> _Megjegyzés: Ez a lehetőség csak az alkalmazás regisztrációk (örökölt) felhasználói felülete. Lecserélve `id` a a [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) tapasztalható._ | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
 | `optionalClaims` | String | A választható jogcímeket adja vissza a jogkivonat a biztonsági jogkivonat szolgáltatás az adott alkalmazás.<br>Jelenleg a személyes fiókok és az Azure ad-ben (az alkalmazás regisztrációs portálon keresztül regisztrált) támogató alkalmazások választható jogcímek nem használható. Azonban csak az Azure ad v2.0-végpont használatával regisztrált alkalmazás kérheti le a nem kötelező jogcímeket a kért a jegyzékfájlban. További információ: [választható jogcímek](active-directory-optional-claims.md). | `null` |
 | `id` | String | A címtárban lévő alkalmazás egyedi azonosítója. Ez az azonosító nem áll az alkalmazás bármely protokoll tranzakció azonosításához használt azonosító. A hivatkozik az objektumra a címtárlekérdezés használatos. | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
@@ -119,7 +119,7 @@ A korábban letöltött jegyzék feltöltése közben hibák a következők egyi
 - "**Xxxxxx alkalmazás frissítése sikertelen. A hiba részletei: Érvénytelenek a megadott egy vagy több tulajdonság értéke. [].** "
 - "**Xxxxxx alkalmazás frissítése sikertelen. A hiba részletei: Az api-verzió frissítése a availableToOtherTenants beállítása nem engedélyezett. [].** "
 - "**Xxxxxx alkalmazás frissítése sikertelen. A hiba részletei: Frissítések "replyUrls" tulajdonsághoz nem engedélyezett ehhez az alkalmazáshoz. Használja helyette az "replyUrlsWithType" tulajdonság. [].** "
-- "**Xxxxxx alkalmazás frissítése sikertelen. A hiba részletei: Název typu nélkül érték található, és nem a várt típus nem érhető el. Ha a modell meg van adva, az adattartalomban szereplő minden egyes érték vagy a hívó által kifejezetten a hasznos adatokban megadott vagy a szülő értékből implicit módon következtetni típussal kell rendelkeznie. []**"
+- "**Xxxxxx alkalmazás frissítése sikertelen. A hiba részletei: Název typu nélkül érték található, és nem a várt típus nem érhető el. Ha a modell meg van adva, az adattartalomban szereplő minden egyes érték vagy a hívó által kifejezetten a hasznos adatokban megadott vagy a szülő értékből implicit módon következtetni típussal kell rendelkeznie. []** "
 
 Ha ezek a hibák valamelyikét látja, a következőket javasoljuk:
 

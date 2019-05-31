@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/15/2018
-ms.openlocfilehash: 84946083146517146ad9aeb48693230aaaaf7943
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/21/2019
+ms.openlocfilehash: 3812cf55a26a12ef110b8acf14edd0e8bfd36851
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701179"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236521"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark-fürt használatával olvasása és írása az adatok Azure SQL Database-adatbázishoz
 
-Útmutató Apache Spark-fürt az Azure HDInsight összekapcsolása egy Azure SQL database és olvasni, írni és streamelhet adatokat az SQL database-be. Az utasításokat a jelen cikk használatát egy [Jupyter Notebook](https://jupyter.org/) Scala kódrészletek végrehajtásához. Azonban önálló alkalmazás létrehozása a Scala-vagy Python, és hajtsa végre a feladatot. 
+Útmutató Apache Spark-fürt az Azure HDInsight összekapcsolása egy Azure SQL database és olvasni, írni és streamelhet adatokat az SQL database-be. Az utasításokat a jelen cikk használatát egy [Jupyter Notebook](https://jupyter.org/) Scala kódrészletek végrehajtásához. Azonban önálló alkalmazás létrehozása a Scala-vagy Python, és hajtsa végre a feladatot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +36,7 @@ ms.locfileid: "64701179"
 Először hozzon létre egy [Jupyter Notebook](https://jupyter.org/) a Spark-fürthöz társított. Az ebben a cikkben használt kódrészleteket futtatni a notebookot fog használni. 
 
 1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a fürtöt.
-1. Válassza ki **Jupyter notebook** alá **fürt irányítópultjai** jobb oldalán.  Ha nem lát **fürt irányítópultjai**, kattintson a **áttekintése** a panelen a bal oldali menüből. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
+1. Válassza ki **Jupyter notebook** alá **fürt irányítópultjai** jobb oldalán.  Ha nem lát **fürt irányítópultjai**válassza **áttekintése** a bal oldali menüből. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
     ![A Jupyter notebook Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark a Jupyter notebook")
    
@@ -164,7 +164,7 @@ Ebben a szakaszban azt streamelése adattárházba a **hvactable** , hogy már l
 
 1. Első lépésként ellenőrizze, hogy nincsenek a rekordok a **hvactable**. SSMS használatával futtassa a következő lekérdezést a tábla.
 
-       DELETE FROM [dbo].[hvactable]
+       TRUNCATE TABLE [dbo].[hvactable]
 
 1. Új Jupyter notebook létrehozása a HDInsight Spark-fürtön. Kódcellába, illessze be az alábbi kódrészletet, és nyomja le az **SHIFT + ENTER**:
 
@@ -174,7 +174,7 @@ Ebben a szakaszban azt streamelése adattárházba a **hvactable** , hogy már l
        import org.apache.spark.sql.streaming._
        import java.sql.{Connection,DriverManager,ResultSet}
 
-1. Hogy az adatok streamelése a **HVAC.csv** a hvactable be. HVAC.csv fájl érhető el, a fürt */HdiSamples/HdiSamples/SensorSampleDataHVAC/*. Az alábbi kódrészletben először lekérjük az adatséma is streamelhetők. Ezután létrehozunk egy streamelési dataframe, hogy a séma használatával. Illessze be a kódtöredéket a kódcellába, majd nyomja le **SHIFT + ENTER** futtatásához.
+1. Hogy az adatok streamelése a **HVAC.csv** a hvactable be. HVAC.csv fájl érhető el, a fürt `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`. Az alábbi kódrészletben először lekérjük az adatséma is streamelhetők. Ezután létrehozunk egy streamelési dataframe, hogy a séma használatával. Illessze be a kódtöredéket a kódcellába, majd nyomja le **SHIFT + ENTER** futtatásához.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 

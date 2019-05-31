@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6138a9ff6bb6d34b09c49fa7b5dbb67cbf5eb1b6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712865"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244910"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Megismerheti, hogyan riasztást küld a metrika a munkát az Azure monitorban
 
@@ -29,7 +29,7 @@ Tegyük fel, létrehozott egy egyszerű statikus küszöbérték a metrikaalapú
 - Célerőforrásnál (az Azure-erőforrás figyelni kívánt): myVM
 - Metrika: Százalékos processzorhasználat
 - Feltétel típusa: Statikus
-- Idő összesítése (nyers metrikaértékek keresztül futtató statisztika. Támogatott idő összesítések Min, Max, Avg, összesen): Átlag
+- Idő összesítése (nyers metrikaértékek keresztül futtató statisztika. Támogatott idő összesítések min., max., Avg, összesen és száma): Átlag
 - Időszak (a hely vissza ablak keresztül melyik mérőszám a rendszer ellenőrzi a értékek): Az utolsó 5 perc alatt
 - Gyakoriság (a gyakoriság, amellyel a metrikariasztás ellenőrzi, ha a feltételek teljesülnek-e): 1 perc
 - Operátor: Nagyobb, mint
@@ -44,7 +44,7 @@ Tegyük fel, létrehozott egy egyszerű dinamikus küszöbértékeket a metrikaa
 - Célerőforrásnál (az Azure-erőforrás figyelni kívánt): myVM
 - Metrika: Százalékos processzorhasználat
 - Feltétel típusa: Dinamikus
-- Idő összesítése (nyers metrikaértékek keresztül futtató statisztika. Támogatott idő összesítések Min, Max, Avg, összesen): Átlag
+- Idő összesítése (nyers metrikaértékek keresztül futtató statisztika. Támogatott idő összesítések min., max., Avg, összesen és száma): Átlag
 - Időszak (a hely vissza ablak keresztül melyik mérőszám a rendszer ellenőrzi a értékek): Az utolsó 5 perc alatt
 - Gyakoriság (a gyakoriság, amellyel a metrikariasztás ellenőrzi, ha a feltételek teljesülnek-e): 1 perc
 - Operátor: Nagyobb, mint

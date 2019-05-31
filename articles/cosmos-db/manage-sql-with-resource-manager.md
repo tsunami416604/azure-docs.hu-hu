@@ -4,20 +4,23 @@ description: Az Azure Resource Manager-sablonok létrehozása és konfigurálás
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 05/24/2019
 ms.author: mjbrown
-ms.openlocfilehash: a3798ac0c73c7bc6c4012dbb089275254f4c3504
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 5683fd072961c7793d8f4bbeb9ecc16a93dd7373
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968839"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242589"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok segítségével Azure Cosmos DB SQL (mag) API-erőforrások kezelése
 
 ## Hozzon létre egy Azure Cosmos fiókot, adatbázist és egy tároló <a id="create-resource"></a>
 
 Hozzon létre egy Azure Resource Manager-sablon használatával az Azure Cosmos DB-erőforrásokat. Ezzel a sablonnal hoz létre egy Azure Cosmos-fiók két tárolót használó 400 RU/s átviteli sebesség, az adatbázis szintjén. Másolja ki a sablont, és üzembe helyezése a lent látható módon, vagy keresse fel [Azure gyorsindítási galéria](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) és üzembe helyezése az Azure Portalról. Is a sablon letöltése a helyi számítógépen, vagy hozzon létre egy új sablont és a helyi elérési útját adja meg a `--template-file` paraméter.
+
+> [!NOTE]
+> Jelenleg definiált Functions(UDFs) felhasználói tárolt eljárások és eseményindítók nem telepíthet Resource Manager-sablonok használatával. 
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 

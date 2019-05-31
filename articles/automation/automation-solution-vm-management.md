@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2269eac0790e61dbf0ce893bbb737cb22d58d497
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: d4e1ad106b928c41bd6940d7c3713b5fb34afe3a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002476"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389110"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -71,7 +71,8 @@ A gépek indítása/leállítása közben óra solution ki egy Automation-fiók 
 | Microsoft.OperationsManagement/solutions/write | Erőforráscsoport |
 | Microsoft.OperationalInsights/workspaces/* | Erőforráscsoport |
 | Microsoft.Insights/diagnosticSettings/write | Erőforráscsoport |
-| Microsoft.Insights/ActionGroups/WriteMicrosoft.Insights/ActionGroups/read | Erőforráscsoport |
+| Microsoft.Insights/ActionGroups/Write | Erőforráscsoport |
+| Microsoft.Insights/ActionGroups/read | Erőforráscsoport |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoport |
 | Microsoft.Resources/deployments/* | Erőforráscsoport |
 
@@ -138,7 +139,7 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
 
    Itt kéri:
    - Adja meg a **cél erőforráscsoport nevét**. Ezek az értékek az erőforráscsoportok nevei, amelyek a megoldás által felügyelendő virtuális gépeket tartalmazzák. Adjon meg egynél több nevet, és külön az egyes egy vesszőt (értékek nem számítanak különbözőnek) használatával. Helyettesítő karaktert is használhat, ha az előfizetés összes erőforráscsoportjában lévő virtuális gépeket szeretné megadni. Ez az érték a tárolódik a **External_Start_ResourceGroupNames** és **External_Stop_ResourceGroupNames** változókat.
-   - Adja meg a **VM kizárási lista (karakterlánc)**. Ez az érték egy vagy több virtuális gépet a célként megadott erőforráscsoportja nevét. Adjon meg egynél több nevet, és külön az egyes egy vesszőt (értékek nem számítanak különbözőnek) használatával. Helyettesítő karakterek használatával támogatott. Ez az érték a tárolódik a **External_ExcludeVMNames** változó.
+   - Adja meg a **VM kizárási lista (karakterlánc)** . Ez az érték egy vagy több virtuális gépet a célként megadott erőforráscsoportja nevét. Adjon meg egynél több nevet, és külön az egyes egy vesszőt (értékek nem számítanak különbözőnek) használatával. Helyettesítő karakterek használatával támogatott. Ez az érték a tárolódik a **External_ExcludeVMNames** változó.
    - Válassza ki a **ütemezés**. Ismétlődő dátum és idő és a célként megadott erőforráscsoport a virtuális gépek leállítási értéke. Alapértelmezés szerint az ütemezés van konfigurálva 30 perc múlva. Egy másik régió kiválasztásával nem érhető el. Az ütemezést, hogy az adott időzóna beállítása után a megoldás konfigurálásáról: [az indítási és leállítási ütemezés módosítása](#modify-the-startup-and-shutdown-schedules).
    - Fogadásához **E-mail-értesítések** a műveletcsoport, fogadja el alapértékként a **Igen** , és adjon meg egy érvényes e-mail címet. Ha **nem** egy későbbi időpontban döntse el, hogy szeretne email értesítéseket kapni, frissítheti, de a [műveletcsoport](../azure-monitor/platform/action-groups.md) létrehozott az érvényes e-mail címeket vesszővel elválasztva. Akkor is engedélyeznie kell a következő riasztási szabályok:
 
@@ -147,14 +148,14 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
      - Sequenced_StartStop_Parent
 
      > [!IMPORTANT]
-     > Az alapértelmezett érték a **cél erőforráscsoport nevét** van egy **&ast;**. Ez egy adott előfizetés összes virtuális gép célozza meg. Ha nem szeretné, hogy a megoldás az előfizetésében lévő összes virtuális gép cél ezt az értéket kell frissíteni, hogy az ütemezések engedélyezése előtt az erőforráscsoportok nevei listáját.
+     > Az alapértelmezett érték a **cél erőforráscsoport nevét** van egy **&ast;** . Ez egy adott előfizetés összes virtuális gép célozza meg. Ha nem szeretné, hogy a megoldás az előfizetésében lévő összes virtuális gép cél ezt az értéket kell frissíteni, hogy az ütemezések engedélyezése előtt az erőforráscsoportok nevei listáját.
 
 8. A megoldás kezdeti beállításainak konfigurálását követően kattintson **OK** gombra kattintva zárja be a **paraméterek** lapon, és válassza **létrehozás**. Miután a rendszer érvényesíti az összes beállítást, a megoldást már telepítették az előfizetéshez. A folyamat eltarthat néhány másodpercig befejeződik, és nyomon követheti a folyamat állapotát **értesítések** a menüből.
 
 > [!NOTE]
 > Ha a központi telepítés befejezése után, az Automation-fiókját az Azure Cloud Solution Provider (az Azure CSP) előfizetéssel rendelkezik, lépjen a **változók** alatt **megosztott erőforrások** és állítsa be a [ **External_EnableClassicVMs** ](#variables) változó **hamis**. Ezzel leállítja a megoldást keres a klasszikus virtuális gép erőforrásait.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 A megoldás három különböző forgatókönyveket tartalmaz. Ezek a forgatókönyvek a következők:
 
@@ -246,13 +247,13 @@ Az alábbi táblázat a megoldás által telepített az Automation-fiók runbook
 
 Minden szülő runbook közé tartozik a _WhatIf_ paraméter. Ha beállítása **igaz**, _WhatIf_ pontos viselkedésének részletező támogatja a runbook futtatása nélkül; a _WhatIf_ paraméter és érvényesíti a megfelelő folyamatban van a virtuális gépek megcélzott. A runbook csak a meghatározott műveleteket hajtja végre során a _WhatIf_ paraméter értéke **hamis**.
 
-|Runbook | Paraméterek | Leírás|
+|Forgatókönyv | Paraméterek | Leírás|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | A szülő runbook meghívva. Ez a runbook a Remote-forgatókönyvhöz erőforrás alapon hoz létre riasztásokat.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: TRUE vagy FALSE (hamis)  | Létrehozza vagy frissíti az Azure a riasztási szabályai virtuális gépeken vagy erőforráscsoportonként célzott csoportok. <br> VMList: Virtuális gépek vesszővel tagolt listája. Ha például _vm1, vm2, vm3_.<br> *WhatIf* érvényesíti a runbook logikája végrehajtása nélkül.|
-|AutoStop_Disable | nincs | Letiltja a Remote-riasztások és az alapértelmezett ütemezés szerint.|
+|AutoStop_Disable | Egyik sem | Letiltja a Remote-riasztások és az alapértelmezett ütemezés szerint.|
 |AutoStop_StopVM_Child | WebHookData | A szülő runbook meghívva. Riasztási szabályok hívja meg a runbookot, hogy a virtuális gép leállítása.|
-|Bootstrap_Main | nincs | Egyszer például webhookURI, rendszer-indításkori-konfigurációk, amelyek általában nem érhetők el az Azure Resource Manager beállításához használt. Ez a forgatókönyv a sikeres telepítés automatikusan törlődnek.|
+|Bootstrap_Main | Egyik sem | Egyszer például webhookURI, rendszer-indításkori-konfigurációk, amelyek általában nem érhetők el az Azure Resource Manager beállításához használt. Ez a forgatókönyv a sikeres telepítés automatikusan törlődnek.|
 |ScheduledStartStop_Child | VMName <br> Művelet: Indítása vagy leállítása <br> ResourceGroupName | A szülő runbook meghívva. Egy ütemezett leállítását elindítása vagy leállítása műveletet hajt végre.|
 |ScheduledStartStop_Parent | Művelet: Indítása vagy leállítása <br>VMList <br> WhatIf: TRUE vagy FALSE (hamis) | Ez a beállítás hatással van az előfizetésben található összes virtuális gépet. Szerkessze a **External_Start_ResourceGroupNames** és **External_Stop_ResourceGroupNames** csak végre ezeket a megcélzott csoportok. Szintén kizárhatja az adott virtuális gépek frissítésével a **External_ExcludeVMNames** változó.<br> VMList: Virtuális gépek vesszővel tagolt listája. Ha például _vm1, vm2, vm3_.<br> _WhatIf_ érvényesíti a runbook logikája végrehajtása nélkül.|
 |SequencedStartStop_Parent | Művelet: Indítása vagy leállítása <br> WhatIf: TRUE vagy FALSE (hamis)<br>VMList| Nevű címkék létrehozása **sequencestart** és **sequencestop** az egyes virtuális Gépeken, amelyekhez feladatütemezési indítása/leállítása tevékenységhez. Ezek a címkenevek és nagybetűk. A címke értékének pozitív egész szám (1, 2, 3), amely annak a sorrendnek, amelyben meg szeretné elindítani vagy leállítani kell lennie. <br> VMList: Virtuális gépek vesszővel tagolt listája. Ha például _vm1, vm2, vm3_. <br> _WhatIf_ érvényesíti a runbook logikája végrehajtása nélkül. <br> **Megjegyzés**: Virtuális gépek az Azure Automation változó External_Start_ResourceGroupNames External_Stop_ResourceGroupNames és External_ExcludeVMNames részlete erőforráscsoportokon belül kell lennie. A megfelelő címkék műveletek érvénybe kell rendelkezniük.|
@@ -327,7 +328,7 @@ Automation két rekordtípust hoz létre a Log Analytics-munkaterület: feladat-
 |Category | Az adattípus besorolása. Az Automation esetében az érték JobStreams.|
 |JobId | GUID, a runbook-feladat azonosítója.|
 |operationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat.|
-|Erőforráscsoport | Meghatározza a runbook-feladat erőforráscsoportjának nevét.|
+|ResourceGroup | Meghatározza a runbook-feladat erőforráscsoportjának nevét.|
 |resourceId | Adja meg az erőforrás-azonosító az Azure-ban. Az Automation esetében az érték a runbookhoz társított Automation-fiók.|
 |ResourceProvider | Meghatározza, hogy melyik Azure-szolgáltatás biztosítja az üzembe helyezhető és kezelhető erőforrásokat. Az Automation esetében az érték Azure Automation.|
 |ResourceType | Meghatározza az Azure-ban szereplő erőforrás típusát. Az Automation esetében az érték a runbookhoz társított Automation-fiók.|
@@ -421,7 +422,7 @@ Törölje a megoldást, hajtsa végre az alábbi lépéseket:
 1. Az Automation-fiók alatt **kapcsolódó erőforrások**válassza **csatolt munkaterület**.
 1. Válassza ki **munkaterületen**.
 1. A **általános**válassza **megoldások**. 
-1. Az a **megoldások** lapon, válassza ki a megoldás **Start – virtuális gépek leállítása [munkaterület]**. Az a **VMManagementSolution [munkaterület]** a menüből válassza a lap **törlése**.<br><br> ![Virtuálisgép-felügyeleti megoldás törlése](media/automation-solution-vm-management/vm-management-solution-delete.png)
+1. Az a **megoldások** lapon, válassza ki a megoldás **Start – virtuális gépek leállítása [munkaterület]** . Az a **VMManagementSolution [munkaterület]** a menüből válassza a lap **törlése**.<br><br> ![Virtuálisgép-felügyeleti megoldás törlése](media/automation-solution-vm-management/vm-management-solution-delete.png)
 1. Az a **megoldás törlése** ablakában győződjön meg arról, hogy szeretné-e törölni a megoldást.
 1. Bár az adatokat a rendszer ellenőrzi, és a megoldás törlése, nyomon követheti a folyamat állapotát **értesítések** a menüből. A rendszer visszairányítja az **megoldások** lapon távolítsa el a megoldás a folyamat elindulása után.
 

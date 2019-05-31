@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c95eb45d75a54af75fdc8004316bc8bfeeddbd7e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0cfaea53156b78fad024046bb6f55229f8ad6536
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783936"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236273"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>A Kerberos általi korlátozott delegálás konfigurációi alkalmazásproxy hibaelhárítása
 
@@ -182,4 +182,4 @@ Ha még nem lehet a folyamatban, a Microsoft ügyfélszolgálatához a segítsé
 - Többugrásos hitelesítési gyakran olyan forgatókönyvekben használatos, a alkalmazás rétegzett, háttér és kezelőfelület, ahol mindkettő hitelesítő adatokat kér, például az SQL Server Reporting Services. A teszi a többszörös ugrásos forgatókönyvet, lásd: támogatási cikk [Kerberos által korlátozott delegálás lehet szükséges Protokollátmenet Többugrásos forgatókönyvekben](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
 ## <a name="next-steps"></a>További lépések
-[Konfigurálja a Kerberos egy felügyelt tartományon](../../active-directory-domain-services/active-directory-ds-enable-kcd.md).
+[Konfigurálja a Kerberos egy felügyelt tartományon](../../active-directory-domain-services/deploy-kcd.md).

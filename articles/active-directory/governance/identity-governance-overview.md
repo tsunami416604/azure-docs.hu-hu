@@ -16,12 +16,12 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d30bbddd044d1aea70e43825035c94b69a46f1f8
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 1be6fc2b7d6da85778524cb8986f399c341370c1
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935830"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66307049"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure AD Identitáskezelést?
 
@@ -84,6 +84,6 @@ Az első lépéseket ismertető lapján is megtekinthet **Identitáskezelést** 
 ## <a name="next-steps"></a>További lépések
 
 - [Mi az Azure ad-ben tagjogosultság-kezelés? előzetes verziója?](entitlement-management-overview.md)
-- [Mik az Azure AD hozzáférési felülvizsgálatok?](access-reviews-overview.md)
+- [Mik azok az Azure AD-hozzáférési felülvizsgálatok?](access-reviews-overview.md)
 - [Mi az Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
 - [Mire használhatom a Használati feltételek funkciót?](active-directory-tou.md)

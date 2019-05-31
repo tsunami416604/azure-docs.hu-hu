@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/30/2018
+ms.date: 04/15/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0a1e3c2facc10b68fe4b33d4cd0531f181b1e813
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df9c3ecbec6dccd9ba8db2b375cfab3276005098
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581120"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072991"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Az Azure Container Instances és tárolóvezénylőt
 
@@ -56,7 +56,7 @@ Ahelyett, hogy a horizontális felskálázás a fürtben lévő virtuális gépe
 
 ## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>Példa: virtuális csomópontok számára az Azure Kubernetes Service (AKS)
 
-Az alkalmazások és szolgáltatások gyors méretezése egy [Azure Kubernetes Service](../aks/intro-kubernetes.md) -(AKS)-fürt, használhatja *virtuális csomópontok* dinamikusan létrehozott, az Azure Container Instances szolgáltatásban. Jelenleg előzetes verzióban elérhető virtuális csomópontok ACI futtató podok és az AKS-fürt közötti hálózati kommunikáció engedélyezéséhez. 
+Az alkalmazások és szolgáltatások gyors méretezése egy [Azure Kubernetes Service](../aks/intro-kubernetes.md) -(AKS)-fürt, használhatja *virtuális csomópontok* dinamikusan létrehozott, az Azure Container Instances szolgáltatásban. Virtuális csomópontok ACI futtató podok és az AKS-fürt közötti hálózati kommunikáció engedélyezéséhez. 
 
 Virtuális csomópontok jelenleg támogatja a Linux container Instances szolgáltatásban. Virtuális csomópontok használatával – első lépések a [Azure CLI-vel](https://go.microsoft.com/fwlink/?linkid=2047538) vagy [az Azure portal](https://go.microsoft.com/fwlink/?linkid=2047545).
 

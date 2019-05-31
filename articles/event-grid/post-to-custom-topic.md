@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: fc8877ed23b408ea041de67018a71cc203c5e8c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 14ae5f2a0b6a950889d8587cd4d03ff4fc9a171b
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162037"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304215"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Közzététel egyéni témakörben az Azure Event Gridhez
 
@@ -76,7 +76,10 @@ Egyéni témakörök a legfelső szintű adatok tartalmazzák a standard szintű
 ]
 ```
 
-Ezek a tulajdonságok leírását lásd: [Azure Event Grid-esemény séma](event-schema.md). Az eseményeket egy event grid-témakör az üzenetküldés, ha a tömb rendelkezhet egy teljes mérete legfeljebb 1 MB. A tömbben szereplő minden esemény 64 KB-os korlátozódik.
+Ezek a tulajdonságok leírását lásd: [Azure Event Grid-esemény séma](event-schema.md). Az eseményeket egy event grid-témakör az üzenetküldés, ha a tömb rendelkezhet egy teljes mérete legfeljebb 1 MB. A tömbben szereplő minden esemény korlátozódik 64 KB-os (nyilvánosan elérhetők) vagy 1 MB (előzetes verzió).
+
+> [!NOTE]
+> Egy esemény mérete legfeljebb 64 KB-os által általánosan elérhető (GA) szolgáltatói szerződés (SLA) vonatkozik. Támogatást biztosít az esemény mérete legfeljebb 1 MB jelenleg előzetes verzióban érhető el. Események több mint 64 KB-os 64 KB-os egységekben számoljuk. 
 
 Például egy érvényes adatok eseménysémája van:
 
@@ -103,7 +106,7 @@ A témakör végpontra könyvelés után kapott választ. A válasz egy normál 
 |Siker  | 200 OK  |
 |Eseményadatok formátuma helytelen | 400 Hibás kérés |
 |Érvénytelenek a hozzáférési kulcs | 401-es nem engedélyezett |
-|Nem megfelelő végpont | 404 Nem található |
+|Nem megfelelő végpont | 404 – Nem található |
 |Tömb vagy esemény meghaladja a méretbeli korlátokat | 413 adattartalom túl nagy |
 
 A hibákat az üzenet törzsének formátuma a következő:

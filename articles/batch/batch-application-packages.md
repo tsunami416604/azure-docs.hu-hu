@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/05/2019
+ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee54d37050991763e60a6feb96c75d80384a42ac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c17835a4155e97395e8ae1b8e9ba6d2a42433f71
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726667"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298745"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások-Batch-alkalmazáscsomagokkal számítási csomópontokra üzembe helyezése
 
@@ -176,7 +176,7 @@ Egy alkalmazás-csomag verziója egy meglévő alkalmazás hozzáadásához vál
 
 ![Adja hozzá az application package panel az Azure Portalon][8]
 
-Amint láthatja, a mezők szabályainak megfelelően a **új alkalmazás** ablakában, de a **alkalmazásazonosító** box le van tiltva. Mint az új alkalmazást, adja meg a **verzió** az új csomag, keresse meg a **Virtuálisalkalmazás-csomag** .zip fájlt, majd kattintson a **OK** a csomag feltöltése.
+Amint láthatja, a mezők szabályainak megfelelően a **új alkalmazás** ablakában, de a **Alkalmazásazonosító** box le van tiltva. Mint az új alkalmazást, adja meg a **verzió** az új csomag, keresse meg a **Virtuálisalkalmazás-csomag** .zip fájlt, majd kattintson a **OK** a csomag feltöltése.
 
 ### <a name="update-or-delete-an-application-package"></a>Update vagy delete alkalmazáscsomaggal
 Frissítéséhez, vagy törölje a meglévő alkalmazáscsomag, nyissa meg az alkalmazás részleteit, kattintson **csomagok**, kattintson a **három** , amelyet szeretne módosítani, és válassza ki az alkalmazáscsomag sorába a művelet végrehajtására vonatkozó szándékát.

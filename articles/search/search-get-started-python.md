@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: Python és a REST API-k – Azure Search szolgáltatásban'
 description: Hozzon létre, betöltését és a Python, a Jupyter notebookok és az Azure Search REST API-index lekérdezése.
-ms.date: 05/15/2019
+ms.date: 05/23/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: a79a5fe1632eeabee670274ebbb19c4c34bd84d2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 99b4ec0be8e9fa631c5081edd42474ea89dc5dc3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66117337"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244790"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>Gyors útmutató: Jupyter Python notebookok használatával egy Azure Search-index létrehozása
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Ez a rövid útmutató a következő szolgáltatásokat és eszközöket haszná
 
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section), így a Python 3.x és Jupyter-Notebookjait.
 
-+ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja. 
++ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ez a rövid útmutató az ingyenes szint is használhat. 
 
 ## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
 
@@ -52,7 +52,7 @@ Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásn
 
 ## <a name="connect-to-azure-search"></a>Kapcsolódás az Azure Search
 
-Jupyter notebook megnyitásához, és ellenőrizze a helyi munkaállomáson való kapcsolat által a szolgáltatás indexei lista lekérése. Windows-Anaconda3 Anaconda-kezelő segítségével indítsa el a notebookot.
+Ebben a feladatban indíthat egy Jupyter notebookot, és győződjön meg arról, hogy képes-e csatlakozni az Azure Search. Lesz ehhez az indexek listájának lekérésekor a szolgáltatásból. Windows-Anaconda3 Anaconda-kezelő segítségével indítsa el a notebookot.
 
 1. Hozzon létre egy új Python3 notebookot.
 
@@ -73,7 +73,7 @@ Jupyter notebook megnyitásához, és ellenőrizze a helyi munkaállomáson val�
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
-1. A harmadik cellába állítson össze a kérelmet. A GET-kérés a keresési szolgáltatás indexek gyűjtésére irányul, és kiválasztja a name tulajdonság.
+1. A harmadik cellába állítson össze a kérelmet. A GET-kérés célozza meg a keresési szolgáltatás indexek gyűjteményét, és kiválasztja a létező indexek a name tulajdonság.
 
    ```python
    url = endpoint + "indexes" + api_version + "&$select=name"
@@ -82,20 +82,20 @@ Jupyter notebook megnyitásához, és ellenőrizze a helyi munkaállomáson val�
    pprint(index_list)
    ```
 
-1. Minden lépés futtatásához. Ha létezik indexek, a válasz indexek listáját tartalmazza. Az alábbi képernyőképen a szolgáltatás része az Azure BLOB-index és a egy realestate-us-sample-index.
+1. Minden lépés futtatásához. Ha létezik indexek, a válasz tartalmaz index nevének listáját. Az alábbi képernyőképen a szolgáltatás már az azureblob-index és a egy realestate-us-sample-index.
 
    ![Python-szkriptet a Jupyter notebook HTTP-kérelmek Azure Search](media/search-get-started-python/connect-azure-search.png "Python-szkriptet a Jupyter notebook HTTP-kérelmek Azure Search")
 
-   Az index üres gyűjteményt adja vissza ezt a választ: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   Ellentétben az index üres gyűjteményt adja vissza ezt a választ: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 > [!Tip]
 > Egy ingyenes szolgáltatás, az Ön legfeljebb három indexek, indexelők és adatforrások. Ez a rövid útmutató létrehoz egy. Győződjön meg arról, hogy a hely az új objektumokat hozhat létre, mielőtt továbblép bármely.
 
 ## <a name="1---create-an-index"></a>1 – Index létrehozása
 
-A portál használata, az index léteznie kell a szolgáltatás adatok betöltése előtt. Ebben a lépésben használja a [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) paranccsal küldje le a szolgáltatás létrehozása
+A portál használata, az index léteznie kell a szolgáltatás adatok betöltése előtt. Ebben a lépésben használja a [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) paranccsal küldje le a szolgáltatást az indexsémát.
 
-A mezők gyűjteménye határozza meg a szerkezete egy *dokumentum*. Az index szükséges elemek közé tartozik, egy nevet és egy mezőt. Minden mező rendelkezik egy név, típus és attribútumokat, amelyek meghatározzák, hogyan használja fel azokat (például, hogy-e teljes szöveges kereshető, szűrhető vagy lekérhető a keresési eredmények között). Index, egyes típusú mezők belül `Edm.String` kijelölt a *kulcs* dokumentum identitás.
+Az index szükséges elemek közé tartozik a nevét, a mezők gyűjteményét és a egy kulcsot. A mezők gyűjteménye határozza meg a szerkezete egy *dokumentum*. Minden mező rendelkezik egy név, típus és attribútumok, amelyek meghatározzák, hogyan használja a mezőt (például, hogy-e teljes szöveges kereshető, szűrhető vagy lekérhető a keresési eredmények között). Index, egyes típusú mezők belül `Edm.String` kijelölt a *kulcs* dokumentum identitás.
 
 Ez az index neve "hotels-py" és a Meződefiníciók lentebb látható. A nagyobb része ["Hotels" index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) használt egyéb forgatókönyvek. Hogy vágott ebben a rövid útmutatóban kihagytuk.
 
@@ -127,7 +127,7 @@ Ez az index neve "hotels-py" és a Meződefiníciók lentebb látható. A nagyob
     }
     ```
 
-2. Egy másik cellába állítson össze a kérelmet. A PUT kérés célozza meg a keresési szolgáltatás indexek gyűjteményét, és létrehoz egy indexet az indexsémát az előző lépésben megadott alapján.
+2. Egy másik cellába állítson össze a kérelmet. A PUT kérés célozza meg a keresési szolgáltatás indexek gyűjteményét, és létrehoz egy indexet az indexsémát az előző cella megadott alapján.
 
    ```python
    url = endpoint + "indexes" + api_version
@@ -138,12 +138,12 @@ Ez az index neve "hotels-py" és a Meződefiníciók lentebb látható. A nagyob
 
 3. Minden lépés futtatásához.
 
-   A válasz tartalmazza a sémát a JSON-ábrázolását. Az alábbi képernyőképen az indexséma részeit levágja, láthatják többet a választ.
+   A válasz tartalmazza a sémát a JSON-ábrázolását. Az alábbi képernyőképen látható a válasz egy részét.
 
     ![Az index létrehozására vonatkozó kérelem](media/search-get-started-python/create-index.png "index létrehozására vonatkozó kérelem")
 
 > [!Tip]
-> Az ellenőrzéshez sikerült is a portálon az indexek listában, vagy a szolgáltatáskérés kapcsolat megtekintéséhez futtassa újból a *hotels-py* az indexek gyűjteményben felsorolt index.
+> Index létrehozásának ellenőrzéséhez más úgy, hogy ellenőrizze a portálon az indexek listáját.
 
 <a name="load-documents"></a>
 
@@ -211,6 +211,7 @@ Küldje le a dokumentumokat, használja a HTTP POST-kérelmet az index URL-cím 
             "StateProvince": "GA",
             "PostalCode": "30326",
             "Country": "USA"
+            }
         },
         {
         "@search.action": "upload",
@@ -229,11 +230,11 @@ Küldje le a dokumentumokat, használja a HTTP POST-kérelmet az index URL-cím 
             "StateProvince": "TX",
             "PostalCode": "78216",
             "Country": "USA"
-       }
-      }
-     ]
+            }
+        }
+    ]
     }
-    ```
+    ```   
 
 2. Egy másik cellába állítson össze a kérelmet. A POST-kérelemhez célozza meg, a szállodák-py index docs gyűjteményét, majd leküldi az előző lépésben meghatározott dokumentumok.
 
@@ -246,26 +247,7 @@ Küldje le a dokumentumokat, használja a HTTP POST-kérelmet az index URL-cím 
 
 3. Futtassa az egyes lépések a dokumentum elküldése egy indexbe a search szolgáltatás. Eredmények az alábbi példához hasonlóan kell kinéznie. 
 
-   ```
-   {'@odata.context': "https://mydemo.search.windows.net/indexes('hotels-py')/$metadata#Collection(Microsoft.Azure.Search.V2019_05_06.IndexResult)",
-    'value': [{'errorMessage': None,
-            'key': '1',
-            'status': True,
-            'statusCode': 201},
-           {'errorMessage': None,
-            'key': '2',
-            'status': True,
-            'statusCode': 201},
-           {'errorMessage': None,
-            'key': '3',
-            'status': True,
-            'statusCode': 201}]},
-           {'errorMessage': None,
-            'key': '4',
-            'status': True,
-            'statusCode': 201}]}
-     ```
-
+    ![Dokumentumok elküldése egy indexbe](media/search-get-started-python/load-index.png "dokumentumokat küldeni egy indexbe")
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
@@ -278,7 +260,7 @@ Ez a lépés bemutatja, hogyan kérdezhet le egy index használatával a [Search
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-2. Állítson össze egy kérelmet. A GET kérelem a docs-gyűjteményt a szállodák-py index célozza, és csatolja az előző lépésben megadott lekérdezés.
+2. Egy másik cellába állítson össze egy kérelmet. A GET kérelem a docs-gyűjteményt a szállodák-py index célozza, és csatolja az előző lépésben megadott lekérdezés.
 
    ```python
    url = endpoint + "indexes/hotels-py/docs" + api_version + searchstring
@@ -287,32 +269,29 @@ Ez a lépés bemutatja, hogyan kérdezhet le egy index használatával a [Search
    pprint(query)
    ```
 
-   Eredmények a következő kimenet hasonlóan kell kinéznie. Az eredmény nem unranked (search.score = 1.0), mert nem biztosítunk semmilyen feltételt az egyeztetés.
+3. Minden lépés futtatásához. Eredmények a következő kimenet hasonlóan kell kinéznie. 
 
-   ```
-   {'@odata.context': "https://mydemo.search.windows.net/indexes('hotels-py')/$metadata#docs(*)",
-    '@odata.count': 3,
-    'value': [{'@search.score': 1.0,
-               'HotelId': '1',
-               'HotelName': 'Secret Point Motel'},
-              {'@search.score': 1.0,
-               'HotelId': '2',
-               'HotelName': 'Twin Dome Motel'},
-              {'@search.score': 1.0,
-               'HotelId': '3',
-               'HotelName': 'Triple Landscape Hotel'},
-              {'@search.score': 1.0,
-               'HotelId': '4',
-               'HotelName': 'Sublime Cliff Hotel'}]}
+    ![Keresés az indexekben](media/search-get-started-python/search-index.png "keresés az indexekben")
+
+4. Próbálja meg néhány további lekérdezést példák betekintést nyerhet a szintaxis. A következő példákban cserélje le a keresési karakterlánc, és futtassa újból a keresési kérelmet. 
+
+   Szűrő alkalmazásához: 
+
+   ```python
+   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'
    ```
 
-3. Próbálja meg néhány további lekérdezést példák betekintést nyerhet a szintaxis. Szűrő alkalmazása, igénybe az első két találatot, vagy egy adott mezőben rendezés.
+   Végezze el a felső két eredmény:
 
-   + `searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'`
+   ```python
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+   ```
 
-   + `searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'`
+    Egy adott mezőben Rendezés:
 
-   + `searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'`
+   ```python
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+   ```
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása 
 

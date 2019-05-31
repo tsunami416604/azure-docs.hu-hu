@@ -7,14 +7,14 @@ keywords: apache storm használati esetek,storm-fürt,mi az apache storm
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/27/2018
+ms.date: 05/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5688056bc0d371c780bce02254769792e9a95696
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 42aaa91906319133fd2864cd836447fcf3ca3a07
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696111"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257783"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Mi az Azure HDInsight alatt futó Apache Storm?
 
@@ -47,7 +47,7 @@ A HDInsight alatt futó Storm a következő szolgáltatásokat biztosítja:
 
 A valós idejű elemzési megoldásaikhoz Apache Stormot használó vállalatok listája itt található: [Az Apache Stormot használó vállalatok](https://storm.apache.org/documentation/Powered-By.html).
 
-A Storm használatának megkezdéséhez lásd [Apache Storm on HDInsight – első lépések][gettingstarted].
+A Storm használatának megkezdéséhez lásd [Apache Storm on HDInsight – első lépések](apache-storm-tutorial-get-started-linux.md).
 
 ## <a name="how-does-apache-storm-work"></a>Hogyan működik az Apache Storm
 
@@ -177,10 +177,5 @@ A naplózás konfigurálását bemutató példatopológiát a HDInsight alatt fu
 
 További információ a HDInsight Apache Storm valós idejű elemzési megoldásairól:
 
-* [Bevezetés a HDInsight-alapú Apache Storm használatába][gettingstarted]
+* [A HDInsight Apache Storm használatának első lépései](apache-storm-tutorial-get-started-linux.md)
 * [HDInsight alatt futó Apache Storm példatopológiái](apache-storm-example-topology.md)
-
-[stormtrident]: https://storm.apache.org/documentation/Trident-API-Overview.html
-[samoa]: https://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
-[apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
-[gettingstarted]: apache-storm-tutorial-get-started-linux.md

@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 05/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2d0b8aba95787f179733dd596e783f097cba4299
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 16041d2b7a971c9ba479c133261930b38d130792
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692125"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252781"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight az Apache Hadoop-szolgáltatások által használt portok
 
@@ -27,7 +27,6 @@ Belső használatra a HDInsight van megvalósítva több Azure Virtual Machines 
 
 > [!IMPORTANT]  
 > Ha nem ad meg az Azure Virtual Network konfigurációs beállítás, a HDInsight, az egyik automatikusan létrejön. Más gépeken (például más Azure virtuális gépek vagy az ügyfél fejlesztői gépen) azonban nem tud csatlakozni a virtuális hálózaton.
-
 
 További gépeket csatlakoztatni a virtuális hálózat, először hozza létre a virtuális hálózathoz, és adja meg azt a HDInsight-fürt létrehozása során. További információkért lásd: [HDInsight kiterjesztése képességek az Azure Virtual Network használatával](hdinsight-extend-hadoop-virtual-network.md)
 
@@ -104,7 +103,7 @@ Példák:
 | Erőforrás-kezelő scheduler |Fő csomópontok |8030 |HTTP |Rendszergazdai felület |
 | Erőforrás-kezelő alkalmazás felületen |Fő csomópontok |8050 |HTTP |Az alkalmazások manager adapter címére |
 | NodeManager |Összes munkavégző csomóponton |30050 |&nbsp; |A tároló-kezelő címe |
-| NodeManager webes felhasználói felületen |Összes munkavégző csomóponton |30060 |HTTP |Resource manager felületéről |
+| NodeManager webes felhasználói felületen |Összes munkavégző csomóponton |30060 |HTTP |Resource Manager felületéről |
 | Idősor-cím |Átjárócsomópontok |10200 |RPC |Az ütemterv RPC szolgáltatás. |
 | Timeline web UI |Átjárócsomópontok |8181 |HTTP |Az ütemterv szolgáltatás webes felhasználói felületen |
 
@@ -156,7 +155,7 @@ Példák:
 
 | Szolgáltatás | Csomópontok | Port | Protocol | Leírás |
 | --- | --- | --- | --- | --- |
-| Munkamenet-átvitelszervező |Feldolgozó-csomópontok |9092 |[A Kafka átviteli protokoll](https://kafka.apache.org/protocol.html) |Az ügyfél-kommunikációhoz használt |
+| Munkamenet-átvitelszervező |Munkavégző csomópontok |9092 |[A Kafka átviteli protokoll](https://kafka.apache.org/protocol.html) |Az ügyfél-kommunikációhoz használt |
 | &nbsp; |Zookeeper-csomópontok |2181 |&nbsp; |A port, amelyet az ügyfelek használatával kapcsolódhat a Zookeeper |
 
 ### <a name="spark-ports"></a>Spark-portok

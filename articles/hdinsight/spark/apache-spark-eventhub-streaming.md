@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
-ms.date: 12/28/2018
-ms.openlocfilehash: 02f7bbca127ba33fcfdd15d6f00d1660bf72970c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/24/2019
+ms.openlocfilehash: 0bdcc253a57fb55d610d67acd9b6a50182a699e3
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704940"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257850"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Oktatóanyag: Tweetek feldolgozása a HDInsight az Azure Event Hubs és az Apache Spark használatával
 
@@ -28,7 +28,11 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Végezze el a cikk [oktatóanyag: Adatok betöltése, és lekérdezéseket futtathat az Azure HDInsight az Apache Spark-fürt](./apache-spark-load-data-run-query.md)**.
+* Apache Spark-fürt megléte a HDInsightban. Lásd: [hozzon létre egy Apache Spark-fürt](./apache-spark-jupyter-spark-sql-use-portal.md).
+
+* A Jupyter-notebookok és a HDInsighton futó Spark használatának ismerete. További információkért lásd: [betölteni az adatokat, és a lekérdezések futtatása HDInsight az Apache Spark](./apache-spark-load-data-run-query.md).
+
+* A [Twitter-fiókunkat](https://twitter.com/i/flow/signup).
 
 ## <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
 
@@ -40,10 +44,12 @@ A valós idejű tweetstream fogadásához létre kell hoznia egy alkalmazást a 
 
 1. Adja meg a következő értékeket:
 
-    - Name: Adja meg az alkalmazás nevét. Az ebben az oktatóanyagban használt érték **HDISparkStreamApp0423**. Ez a név nem lehet egy egyedi nevet.
-    - Leírás: Adja meg az alkalmazás rövid leírását. Az ebben az oktatóanyagban használt érték **egy egyszerű HDInsight Spark streaming-alkalmazás**.
-    - Webhely: az alkalmazás webhelyének adja meg. Nem kell lennie egy érvényes webhely.  Az ebben az oktatóanyagban használt érték **http://www.contoso.com**.
-    - Visszahívási URL-címe:, üresen is hagyhatja.
+    |Tulajdonság |Érték |
+    |---|---|
+    |Name (Név)|Adja meg az alkalmazás nevét. Az ebben az oktatóanyagban használt érték **HDISparkStreamApp0423**. Ez a név nem lehet egy egyedi nevet.|
+    |Leírás|Adja meg az alkalmazás rövid leírását. Az ebben az oktatóanyagban használt érték **egy egyszerű HDInsight Spark streaming-alkalmazás**.|
+    |Webhely|Adja meg az alkalmazás webhelyén. Nem kell lennie egy érvényes webhely.  Az ebben az oktatóanyagban használt érték **http://www.contoso.com** .|
+    |Visszahívási URL-címe|Akkor is üresen hagyhatja.|
 
 1. Válassza ki **Igen, elolvastam és a Twitter-fejlesztői feltételeinek elfogadása**, majd válassza ki **Twitter-alkalmazás létrehozása**.
 
@@ -64,30 +70,28 @@ Az eseményközpont használatával tárolja a tweeteket.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
-1. A bal oldali menüben válassza ki a **minden szolgáltatás**.  
+2. A bal oldali menüben válassza ki a **minden szolgáltatás**.  
 
-1. A **IOT-** válassza **az Event Hubs**. 
+3. A **IOT-** válassza **az Event Hubs**. 
 
     ![Az eseményközpont létrehozása Spark streamelési példa](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Create event hubs Spark streamelési példa")
 
 4. Válassza a **+ Hozzáadás** lehetőséget.
+
 5. Adja meg az új Event Hubs-névtér a következő értékeket:
 
-    - **Név**: Adjon meg egy nevet az eseményközpontnak.  Az ebben az oktatóanyagban használt érték **myeventhubns20180403**.
+    |Tulajdonság |Érték |
+    |---|---|
+    |Name (Név)|Adjon meg egy nevet az eseményközpontnak.  Az ebben az oktatóanyagban használt érték **myeventhubns20180403**.|
+    |Tarifacsomag|Válassza ki **Standard**.|
+    |Előfizetés|Válassza ki a megfelelő előfizetést.|
+    |Erőforráscsoport|A legördülő listából válasszon ki egy meglévő erőforráscsoportot, vagy válasszon **új létrehozása** egy új erőforráscsoport létrehozásához.|
+    |Location egység|Válassza ki ugyanazt **hely** , a késés és a költségek csökkentése érdekében a HDInsight az Apache Spark-fürt.|
+    |Engedélyezze az automatikus feltöltési (nem kötelező) |Automatikus feltöltés az Event Hubs-Namespace rendelt, ha az adatforgalom túllépi a hozzárendelt átviteli egységek kapacitását átviteli egységek számát automatikusan skálázza a kapacitást.  |
+    |Az automatikus feltöltési maximális átviteli egység (nem kötelező)|Ez a csúszka csak akkor jelenik meg, ellenőrizze, hogy ha **engedélyezze az automatikus feltöltési**.  |
 
-    - **A tarifacsomag**: Válassza ki **Standard**.
+    ![Adjon meg egy eseményközpont neve Spark streamelési példa](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "adja meg a Spark streamelési példa egy eseményközpont neve")
 
-    - **Előfizetés**: Válassza ki a megfelelő előfizetést.
-
-    - **Erőforráscsoport**: A legördülő listából válasszon ki egy meglévő erőforráscsoportot, vagy válasszon **új létrehozása** egy új erőforráscsoport létrehozásához.
-
-    - **Hely**: Válassza ki ugyanazt **hely** , a késés és a költségek csökkentése érdekében a HDInsight az Apache Spark-fürt.
-
-    - **Engedélyezze az automatikus feltöltési**: (Nem kötelező)  Automatikus feltöltés az Event Hubs-Namespace rendelt, ha az adatforgalom túllépi a hozzárendelt átviteli egységek kapacitását átviteli egységek számát automatikusan skálázza a kapacitást.  
-
-    - **Az automatikus feltöltési kapacitásegységek maximális**: (Nem kötelező)  Ez a csúszka csak akkor jelenik meg, ellenőrizze, hogy ha **engedélyezze az automatikus feltöltési**.  
-
-      ![Adjon meg egy eseményközpont neve Spark streamelési példa](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "adja meg a Spark streamelési példa egy eseményközpont neve")
 6. Válassza ki **létrehozás** a névteret létre kívánja hozni.  Az üzembe helyezés néhány perc múlva fog befejeződni.
 
 ## <a name="create-an-azure-event-hub"></a>Az Azure event hub létrehozása
@@ -134,9 +138,9 @@ Jupyter notebook létrehozása, és adja neki **SendTweetsToEventHub**.
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
-2. Futtassa a következő kódot a tweetek küldése az eseményközpont:
+2. Az alábbi kódot szerkesztése lecserélésével `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>`, és `<TOKEN SECRET>` megfelelő értékeivel. Futtassa a tweetek küldése az event hub-szerkesztett kódot:
 
-    ```
+    ```scala
     import java.util._
     import scala.collection.JavaConverters._
     import java.util.concurrent._
@@ -215,15 +219,16 @@ Hozzon létre egy másik Jupyter notebookot, és adja neki **ReadTweetsFromEvent
     %%configure -f
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0"}}
     ```
-2. Futtassa a tweetek olvasásához az event hubs az alábbi kódot:
 
-    ```
+2. Az alábbi kódot szerkesztése lecserélésével `<Event hub name>`, és `<Event hub namespace connection string>` megfelelő értékeivel. Futtassa a tweetek olvasásához az event hub szerkesztett kódot:
+
+    ```scala
     import org.apache.spark.eventhubs._
     // Event hub configurations
     // Replace values below with yours        
     val eventHubName = "<Event hub name>"
     val eventHubNSConnStr = "<Event hub namespace connection string>"
-    val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build 
+    val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build
     
     val customEventhubParameters = EventHubsConf(connStr).setMaxEventsPerTrigger(5)
     val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
@@ -253,12 +258,7 @@ Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport ol
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-* Olvassa el az üzenetet egy adott eseményközpontból.
-Folytassa a következő cikkben létrehozhat egy machine learning-alkalmazás megtekintéséhez. 
+Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre egy Apache Spark streaming-alkalmazás a tweetek küldése az Azure event hub, és létrehozott tweetek beolvasására az event hubs egy másik alkalmazás.  Folytassa a következő cikkben létrehozhat egy machine learning-alkalmazás megtekintéséhez.
 
 > [!div class="nextstepaction"]
 > [Machine learning-alkalmazás létrehozása](./apache-spark-ipython-notebook-machine-learning.md)
-
-

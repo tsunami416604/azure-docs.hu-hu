@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 05/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0061fb7946e4c35f855d1a409cb9bc210c73641a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 891f9fbd26b53b392ac84ed9d420b58558cd20c2
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228308"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258421"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>A helyi Azure Sentinel előzetes verzió
 
@@ -41,7 +41,7 @@ Miután csatlakozott az adatforrásokat, egy katalógus, amely az adatok alapjá
 - Log Analytics-munkaterületet. Ismerje meg, hogyan [Log Analytics-munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md)
 
 -  Engedélyezi az Azure-Sentinel, az előfizetés, amelyben az Azure Sentinel-munkaterület található közreműködői engedélyre van szükségük. 
-- Azure Sentinel használatához a munkaterületet tartalmazó erőforráscsoporthoz közreműködő vagy megjelenítő engedélyek szükségesek
+- Azure Sentinel használatához arra az erőforráscsoportra, amely a munkaterületet tartalmazó közreműködői vagy olvasói engedélyek szükségesek
 - További engedélyeket is szükséges, az adott adatforrások csatlakoztatása
  
 ## Az Azure Sentinel engedélyezése <a name="enable"></a>
@@ -54,7 +54,7 @@ Miután csatlakozott az adatforrásokat, egy katalógus, amely az adatok alapjá
 1. Kattintson a **+ Hozzáadás**.
 1. Válassza ki szeretné használni, vagy hozzon létre egy új munkaterületet. Egynél több munkaterület Azure Sentinel-futtatható, de az adatok el különítve egy munkaterülethez.
 
-   ![keresés](./media/quickstart-onboard/choose-workspace.png)
+   ![Keresés](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - **Munkaterület helye** fontos megérteni, hogy a kiválasztott munkaterület a földrajzi helyen tárolt, az Azure Sentinel-adatfolyam minden adat.  

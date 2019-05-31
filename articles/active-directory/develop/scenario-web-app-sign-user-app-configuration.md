@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2204fe3e08b3c4b909ddc8b7ade4cec219d34fb
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 82e6cbcd01c87ddffb7eac8d0ea0faef85f41a13
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406634"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254004"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Webes alkalmazás, hogy jelentkezik be felhasználókat - kód-konfiguráció
 
@@ -31,7 +31,7 @@ Ismerje meg, hogy a webalkalmazás kódját, hogy bejelentkezik felhasználók k
 <!-- This section can be in an include for Web App and Web APIs -->
 A Web App (és a egy webes API-t) védelmére használt kódtárak a következők:
 
-| Platform | Szalagtár | Leírás |
+| Platform | Erőforrástár | Leírás |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identitás modellbővítményeket a .NET-hez](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Közvetlenül az ASP.NET és az ASP.NET Core, .NET-hez készült Microsoft identitás-bővítmények javaslatot tesz fut, mind a .NET-keretrendszer és a .NET Core dll-fájlok készlete. Egy ASP.NET/ASP.NET Core-webalkalmazást, a szabályozhatja jogkivonat érvényesítésére használatával a **TokenValidationParameters** osztály (különösen egyes Szoftverszállítói forgatókönyvekben) |
 
@@ -110,6 +110,9 @@ Ugyanúgy, kijelentkezési URI-t kellene állítani `https://localhost:44321/sig
 
 Az ASP.NET Core Web Apps (és a webes API-k) az alkalmazás inicializálása során a kód található a `Startup.cs` fájlt, és adja hozzá a következő kódot a kell a Microsoft Identity platform (korábbi nevén az Azure AD) 2.0-s hitelesítés hozzáadásához. A Megjegyzések a kódban magától értetődő.
 
+  > [!NOTE]
+  > Ha először a projekt alapértelmezett ASP.NET core webes projekt a Visual studio vagy a használatával a `dotnet new mvc` módszer `AddAzureAD` állnak rendelkezésre, alapértelmezés szerint, mert a kapcsolódó csomagok automatikusan töltődnek be. Azonban ha egy teljesen új projekt buildjének elkészítéséhez, és használni kívánó az alábbi kód javasoljuk, hogy a NuGet-csomag hozzáadása **"Microsoft.AspNetCore.Authentication.AzureAD.UI"** a projekthez, hogy a `AddAzureAD` módszer érhető el.
+  
 ```CSharp
  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
          .AddAzureAD(options => configuration.Bind("AzureAd", options));

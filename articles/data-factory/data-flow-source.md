@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: dc0a6e008c7a1f4fb414f6d8adad3a94abc7a6b2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 51c1ea7b554178f7fb3f264bf731ffd5872ceea2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792330"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234548"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Forrás átalakításában adatfolyam-leképezés 
 
@@ -92,7 +92,7 @@ Válassza ki a beállítások a forrás található fájlok kezeléséhez.
 
 Ha a forrás SQL-adatbázis vagy az SQL Data Warehouse, a forrás Fájlkezelés további lehetősége van.
 
-* **Lekérdezés**: Adja meg a forrás SQL-lekérdezést. Ez a beállítás felülbírál bármely táblázat, úgy döntött, az adatkészlet. Vegye figyelembe, hogy **Order By** záradékok itt nem támogatottak. De itt beállíthatja egy teljes válassza ki az utasítást.
+* **Lekérdezés**: Adja meg a forrás SQL-lekérdezést. Ez a beállítás felülbírál bármely táblázat, amely a kiválasztott adatkészlet. Vegye figyelembe, hogy **Order By** záradékok itt nem támogatottak, de beállíthatja, hogy egy teljes válassza ki az utasítást. Felhasználó által definiált táblafüggvények is használható. **Válassza ki * a udfGetData()** van egy SQL-táblát visszaadó UDF. Ezt a lekérdezést, amelyet használhat az adatfolyam a forrástábla állítja elő.
 * **Kötegméret**: Adja meg a Köteg mérete nagy mennyiségű adat álló olvasott be.
 
 > [!NOTE]

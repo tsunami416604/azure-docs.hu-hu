@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 050f301b55c718e80c1b4157639bd9dce506f6ba
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 428a1614889409300064420e1d3d4fbc0423a0ec
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979503"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237533"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi adatok lekérése
 
@@ -416,7 +416,8 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-Ha rendelkezik egy [Log Analytics-munkaterület](../../../log-analytics/log-analytics-overview.md) a `AzureActivity` származó a [Activity Log Analytics megoldás](../../../azure-monitor/platform/collect-activity-logs.md) vannak kötve, az előfizetéséhez, megtekintheti az értékelési ciklus használatával meg nem felelés eredményeinek egyszerű Kusto-lekérdezés és a `AzureActivity` tábla. A részleteket a naplókban az Azure Monitor riasztások beállítható úgy, hogy tekintse meg a meg nem felelés esetén.
+Ha rendelkezik egy [Log Analytics-munkaterület](../../../log-analytics/log-analytics-overview.md) a `AzureActivity` származó a [Activity Log Analytics megoldás](../../../azure-monitor/platform/activity-log-collect.md) vannak kötve, az előfizetéséhez, megtekintheti az értékelési ciklus használatával meg nem felelés eredményeinek egyszerű Kusto-lekérdezés és a `AzureActivity` tábla. A részleteket a naplókban az Azure Monitor riasztások beállítható úgy, hogy tekintse meg a meg nem felelés esetén.
+
 
 ![Az Azure szabályzati megfelelőség az Azure Monitor-naplók használatával](../media/getting-compliance-data/compliance-loganalytics.png)
 

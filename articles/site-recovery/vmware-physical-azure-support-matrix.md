@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: raynew
-ms.openlocfilehash: 2d1999077f6315658dbfd69473ddf5561bd76e0b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 514aaaf7a274e60a17bbae62b3c62e7cf3668e7a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540584"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237301"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-támogatási mátrixa
 
@@ -46,14 +46,14 @@ RAM | 16 GB
 Lemezek száma | 3 lemezzel<br/><br/> Lemezek tartalmazza az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez.
 Lemez – szabad terület | Szükséges folyamatkiszolgálói gyorsítótár-terület 600 GB.
 Lemez – szabad terület | 600 GB lemezterület az adatmegőrzési meghajtó szükséges.
-Operációs rendszer  | A Windows Server 2012 R2 vagy Windows Server 2016-ban |
+Operációs rendszer  | A Windows Server 2012 R2 vagy Windows Server 2016 asztali kezelőfelülettel |
 Operációs rendszer területi beállítása | Angol (en-us)
 PowerCLI | [A PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") verziót a konfigurációs kiszolgáló nem kötelező [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery).
 Windows Server-szerepkörök | Ne legyen engedélyezve: <br/> - Active Directory tartományi szolgáltatások <br/>– Internet Information Services <br/> - Hyper-V |
 Csoportházirendek| Ne legyen engedélyezve: <br/> -Hozzáférés megakadályozása a parancssorba. <br/> -A beállításjegyzék szerkesztőeszközeihez való hozzáférés letiltása. <br/> -Megbízhatósági logika fájlmellékletekhez. <br/> – Kapcsolja be a parancsfájl végrehajtása. <br/> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Győződjön meg arról, hogy:<br/><br/> -Nem rendelkezik egy korábban létező alapértelmezett webhelye <br/> -Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br/> -Nem rendelkezik a már létező webhely vagy alkalmazás 443-as porton<br/>
 Hálózati adapter típusa | VMXNET3 (Ha a VMware virtuális gépként telepített)
-IP-cím típusa | Statikus tartalom
+IP-cím típusa | Statikus
 Portok | 443-as használt vezérlőcsatorna-vezénylés)<br/>a 9443-as használt átviteli adatok
 
 ## <a name="replicated-machines"></a>Replikált gépek
@@ -229,14 +229,14 @@ Az Azure-bA replikált helyszíni virtuális gépek meg kell felelnie az Azure v
 Vendég operációs rendszer | Győződjön meg arról [támogatott operációs rendszerek](#replicated-machines) a replikált gépek. | Az ellenőrzés sikertelen, ha nem támogatott.
 Vendég operációs rendszer architektúrája | 64 bites. | Az ellenőrzés sikertelen, ha nem támogatott.
 Operációsrendszer-lemez mérete | Legfeljebb 2048 GB-ig. | Az ellenőrzés sikertelen, ha nem támogatott.
-Operációsrendszer-lemezek száma | 1. | Az ellenőrzés sikertelen, ha nem támogatott.
+Operációsrendszer-lemezek száma | 1 | Az ellenőrzés sikertelen, ha nem támogatott.
 Adatlemezek száma | 64 vagy kevesebb. | Az ellenőrzés sikertelen, ha nem támogatott.
 Adatlemez mérete | Legfeljebb 4095 GB-ig | Az ellenőrzés sikertelen, ha nem támogatott.
 Hálózati adapterek | Több adapter támogatott. |
 Megosztott VHD | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 FC-lemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 BitLocker | Nem támogatott. | A BitLocker az adott gép replikálását engedélyezése előtt le kell tiltani. |
-Virtuális gép neve | 1 és 63 karakternél.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A gép nevét kell kezdődnie, és betűvel vagy számmal végződhet. |  Frissítse az értéket a Site Recovery virtuálisgép-tulajdonságokat.
+a virtuális gép neve | 1 és 63 karakternél.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A gép nevét kell kezdődnie, és betűvel vagy számmal végződhet. |  Frissítse az értéket a Site Recovery virtuálisgép-tulajdonságokat.
 
 ## <a name="azure-site-recovery-churn-limits"></a>Az Azure Site Recovery vásárlói lemorzsolódás korlátok
 

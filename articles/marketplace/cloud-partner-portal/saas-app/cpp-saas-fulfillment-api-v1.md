@@ -8,16 +8,20 @@ ms.topic: reference
 ms.date: 03/28/2019
 ms.author: pabutler
 ROBOTS: NOINDEX
-ms.openlocfilehash: 816bdc61f85fdf171870a5b552661b816ec65e2f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 9b80f0fd36545de94e7128080dba5e516344c107
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943142"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257502"
 ---
 # <a name="saas-fulfillment-apis-version-1--deprecated"></a>SaaS teljesítése API-k (elavult) 1-es verzió
 
 Ez a cikk bemutatja, hogyan hozhat létre egy SaaS-ajánlatok API-kkal. Az API-k, a REST-módszerek és a végpontok, ha a kiválasztott Azure-on keresztül kell árul, amely lehetővé teszi, hogy az SaaS-ajánlat előfizetéseinek szükségesek.  
+
+> [!IMPORTANT] 
+> SaaS kínálnak a funkciót migrált a [Microsoft Partner Centeren](https://partner.microsoft.com/dashboard/directory).  Minden új gyártó kell használnia a Partner Center új SaaS-ajánlatok létrehozására és kezelésére a meglévő ajánlatok.  Az SaaS-ajánlatok kiadók migrálása folyamatban van batchwise a Cloud Partner portálra, a Partner Center.  A Cloud Partner portálra azt jelzik, ha meghatározott meglévő ajánlatok áttelepítette állapotüzeneteket jelenít meg.
+> További információkért lásd: [hozzon létre egy új SaaS-ajánlatot](../../partner-center-portal/create-new-saas-offer.md).
 
 > [!WARNING]
 > A kezdeti SaaS teljesítése API-verzió elavult; Ehelyett használjon [SaaS teljesítése API V2](./cpp-saas-fulfillment-api-v2.md).  Ez az API jelenleg tartják fenn csak a létező gyártók kiszolgálása érdekében. 
@@ -27,7 +31,7 @@ A következő API-kat a SaaS-szolgáltatás integrációját az Azure-ral áll r
 -   Feloldás
 -   Feliratkozás
 -   Konvertálás
--   Leiratkozás
+-   előfizetés lemondása
 
 
 ## <a name="api-methods-and-endpoints"></a>API-metódusai és végpontok
@@ -87,7 +91,7 @@ Független Szoftverszállító webhelyre a rendszer átirányítja a felhasznál
 |--------------------|---------------|---------------------------------------|
 | id                 | String        | Az SaaS-előfizetés azonosítója.          |
 | subscriptionName| String| Az SaaS-előfizetés beállítása az Azure-ban a felhasználó a SaaS-szolgáltatásra előfizető neve.|
-| Ajánlat azonosítója            | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. |
+| OfferId            | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. |
 | planId             | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.  |
 |  |  |  |
 
@@ -121,7 +125,7 @@ Az előfizetési végpont lehetővé teszi, hogy a felhasználók számára egy 
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
@@ -186,7 +190,7 @@ A módosítás végpont lehetővé teszi, hogy a felhasználó az aktuálisan el
 
 **PATCH**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
@@ -250,7 +254,7 @@ Az előfizetési végpont a törlési művelet lehetővé teszi, hogy a felhaszn
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
@@ -300,7 +304,7 @@ Ez a végpont lehetővé teszi a felhasználó egy aktivált aszinkron művelet 
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ?api-version=2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
@@ -334,7 +338,7 @@ Ez a végpont lehetővé teszi a felhasználó egy aktivált aszinkron művelet 
 | id                 | String        | A művelet azonosítója.                                                                      |
 | status             | Enum          | A művelet állapotát, a következők egyikét: `In Progress`, `Succeeded`, vagy `Failed`.          |
 | resourceLocation   | String        | Az előfizetést, amelyhez a létrehozott vagy módosított mutató hivatkozás. Ez segít az ügyfél megszerezni a frissítve állapotot post műveletet. Ez az érték nincs beállítva `Unsubscribe` műveleteket. |
-| létrehozva            | DateTime      | A művelet létrehozásának időpontja (UTC).                                                           |
+| Létrehozva            | DateTime      | A művelet létrehozásának időpontja (UTC).                                                           |
 | módosítás dátuma       | DateTime      | Utolsó frissítése (UTC), a műveletet.                                                      |
 |  |  |  |
 
@@ -368,7 +372,7 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
@@ -402,11 +406,11 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | String        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| ajánlatazonosító                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
+| offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
 | planId                 | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
 | saasSubscriptionName   | String        | Az SaaS-előfizetés neve.                |
 | saasSubscriptionStatus | Enum          | A művelet állapotát.  A következők egyikét:  <br/> - `Subscribed`: Előfizetés az aktív.  <br/> - `Pending`: Felhasználó létrehozása az erőforrás, de nem aktiválódik, a független szoftvergyártó.   <br/> - `Unsubscribed`: Felhasználó leiratkoztatva rendelkezik.   <br/> - `Suspended`: Felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`:  Azure-előfizetés fel van függesztve.  |
-| létrehozva                | DateTime      | Előfizetés létrehozása időbélyeg értékét (UTC). |
+| Létrehozva                | DateTime      | Előfizetés létrehozása időbélyeg értékét (UTC). |
 | módosítás dátuma           | DateTime      | Előfizetés módosítása időbélyegző-érték (UTC). |
 |  |  |  |
 
@@ -433,7 +437,7 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
 | az eTag               | Igen          | Hivatkozás az erőforrás műveleti állapotának beolvasása.                                                        |
 |  |  |  |
 
-### <a name="get-subscriptions"></a>Előfizetések beolvasása
+### <a name="get-subscriptions"></a>Az előfizetések beolvasása
 
 A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhasználó összes előfizetés összes ajánlatok lekérése az ISV-k.
 
@@ -474,11 +478,11 @@ A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhaszná
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | String        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| ajánlatazonosító                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
+| offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
 | planId                 | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
 | saasSubscriptionName   | String        | Az SaaS-előfizetés neve.                |
 | saasSubscriptionStatus | Enum          | A művelet állapotát.  A következők egyikét:  <br/> - `Subscribed`: Előfizetés az aktív.  <br/> - `Pending`: Felhasználó létrehozása az erőforrás, de nem aktiválódik, a független szoftvergyártó.   <br/> - `Unsubscribed`: Felhasználó leiratkoztatva rendelkezik.   <br/> - `Suspended`: Felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`:  Azure-előfizetés fel van függesztve.  |
-| létrehozva                | DateTime      | Előfizetés létrehozása időbélyeg értékét (UTC). |
+| Létrehozva                | DateTime      | Előfizetés létrehozása időbélyeg értékét (UTC). |
 | módosítás dátuma           | DateTime      | Előfizetés módosítása időbélyegző-érték (UTC). |
 |  |  |  |
 
@@ -526,10 +530,10 @@ Egy SaaS-webhook proaktív módon a SaaS-szolgáltatás módosításait értesí
 | id  | String       | A művelet által aktivált egyedi azonosítója.                |
 | Tevékenységazonosító   | String        | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Bármely egyeztetések szolgál.               |
 | subscriptionId                     | String        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| ajánlatazonosító                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. Csak a "Frissítés" művelet megadott.        |
+| offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. Csak a "Frissítés" művelet megadott.        |
 | publisherId                | String        | Az SaaS-ajánlat a Gyártóazonosítóval         |
 | planId                 | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója. Csak a "Frissítés" művelet megadott.          |
-| action                 | String        | A művelet, amely ezt az értesítést kezdeményezi. A lehetséges értékek - aktiválása, töröl, a felfüggesztés, visszaállítása, frissítés          |
+| a művelet                 | String        | A művelet, amely ezt az értesítést kezdeményezi. A lehetséges értékek - aktiválása, töröl, a felfüggesztés, visszaállítása, frissítés          |
 | timeStamp                 | String        | Időbélyeg értékét UTC formátumban, amikor az értesítés lett elindítva.          |
 |  |  |  |
 

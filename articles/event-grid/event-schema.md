@@ -8,18 +8,21 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: b67d656ed6ab537a01696ec9c0c98f84b880f03b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a795221790a9d56bcbfe30a50b0c838fb8d9e56
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561562"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304252"
 ---
 # <a name="azure-event-grid-event-schema"></a>Az Azure Event Grid-esemény séma
 
 Ez a cikk ismerteti a tulajdonságok és a sémát, amely az összes esemény találhatók. Események állnak öt szükséges karakterlánc-tulajdonságok és a egy szükséges objektum. A Tulajdonságok megegyeznek az összes eseményt, a bármely gyártótól. Az objektum tulajdonság tartozik, amely mindegyik közzétevő jellemző. A rendszer témaköröket ezek a Tulajdonságok konkrétan az erőforrás-szolgáltató, például az Azure Storage vagy az Azure Event Hubs a.
 
-Zdroje událostí események küldése az Azure Event Grid egy tömb, amely több esemény-objektumot. Az eseményeket egy event grid-témakör az üzenetküldés, ha a tömb rendelkezhet egy teljes mérete legfeljebb 1 MB. A tömbben szereplő minden esemény 64 KB-os korlátozódik. Ha egy esemény vagy a tömb nagyobb, mint a méretbeli korlátokat, a válasz érkezik **413 adattartalom túl nagy**.
+Zdroje událostí események küldése az Azure Event Grid egy tömb, amely több esemény-objektumot. Az eseményeket egy event grid-témakör az üzenetküldés, ha a tömb rendelkezhet egy teljes mérete legfeljebb 1 MB. A tömbben szereplő minden esemény korlátozódik 64 KB-os (nyilvánosan elérhetők) vagy 1 MB (előzetes verzió). Ha egy esemény vagy a tömb nagyobb, mint a méretbeli korlátokat, a válasz érkezik **413 adattartalom túl nagy**.
+
+> [!NOTE]
+> Egy esemény mérete legfeljebb 64 KB-os által általánosan elérhető (GA) szolgáltatói szerződés (SLA) vonatkozik. Támogatást biztosít az esemény mérete legfeljebb 1 MB jelenleg előzetes verzióban érhető el. Események több mint 64 KB-os 64 KB-os egységekben számoljuk. 
 
 Event Grid az eseményeket küld egy tömb, amely egy egyszeri esemény rendelkezik az előfizetőknek. Ez a viselkedés a későbbiekben változhatnak.
 
@@ -83,11 +86,11 @@ Az összes esemény rendelkezik ugyanazokat az alábbi felső szintű adatokat:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| tárgy | string | Az esemény tárgya közzétevő által megadott elérési útja. |
+| Tulajdonos | string | Az esemény tárgya közzétevő által megadott elérési útja. |
 | eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | string | Az esemény egyedi azonosítója. |
-| adat | objektum | Eseményadatok adott erőforrás-szolgáltatónál. |
+| Adatok | objektum | Eseményadatok adott erőforrás-szolgáltatónál. |
 | dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 

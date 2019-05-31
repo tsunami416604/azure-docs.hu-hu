@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 5f4c38ed6ee19beacc67e29d094a20f5576668d6
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 5574a7ba216eed42896d6fcb1890585f76561834
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833460"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258088"
 ---
 # <a name="publish-a-saas-application-offer"></a>Egy SaaS-alkalmazás ajánlat közzététele
 
@@ -20,6 +20,8 @@ Az adatokat azáltal, hogy az új ajánlat létrehozása után a **új ajánlat*
 
 > [!IMPORTANT] 
 > SaaS-ajánlat funkció az áttelepítés alatt a [Microsoft Partner Centeren](https://partner.microsoft.com/dashboard/directory).  Minden új gyártó kell használnia a Partner Center új SaaS-ajánlatok létrehozására és kezelésére a meglévő ajánlatok.  Az SaaS-ajánlatok kiadók migrálása folyamatban van batchwise a Cloud Partner portálra, a Partner Center.  A Cloud Partner portálra azt jelzik, ha meghatározott meglévő ajánlatok áttelepítette állapotüzeneteket jelenít meg.
+> További információkért lásd: [hozzon létre egy új SaaS-ajánlatot](../../partner-center-portal/create-new-saas-offer.md).
+
 
 Az alábbi ábrán látható, a magas szintű lépéseket egy új SaaS-alkalmazás ajánlat közzétételéhez.
 
@@ -31,7 +33,7 @@ A következő táblázat ismerteti az egyes közzétételi lépésre, az egy bec
 
 |     **Lépés**       |     **idő**      |  **Leírás**  |
 |  ---------------   |  ---------------  |  ---------------  |
-|         Tanúsítás           |       2 hét            |          Az ajánlat az Azure hitelesítő csapata által elemzett. Ebben a lépésben elvégzi a vizsgálat a vírusok, kártevő szoftverek, biztonsági, megfelelőségi és biztonsági problémákat. Azt is ellenőrzi, hogy ez az ajánlat megfelel-e az összes megfelelőségi feltételeket (lásd: [Előfeltételek](./cpp-prerequisites.md)). Ha problémát talál, visszajelzés érkezett.         |
+|         Tanúsítvány           |       2 hét            |          Az ajánlat az Azure hitelesítő csapata által elemzett. Ebben a lépésben elvégzi a vizsgálat a vírusok, kártevő szoftverek, biztonsági, megfelelőségi és biztonsági problémákat. Azt is ellenőrzi, hogy ez az ajánlat megfelel-e az összes megfelelőségi feltételeket (lásd: [Előfeltételek](./cpp-prerequisites.md)). Ha problémát talál, visszajelzés érkezett.         |
 |           Csomagolás         |       1 óra            |       Ajánlat technikai eszközök ügyfél használatra vannak csomagolva, és az érdeklődő rendszerek vannak konfigurálva, és beállítása.            |
 |        Közzétevő jelentkezzen ki            |         -          |        Végső közzétevő áttekintése és az ajánlat élesíti előtt megerősítést. Az ajánlat (az ajánlat információk lépések) a kijelölt előfizetésekben telepíthet, hogy megfelelnek-e a szükséges összes követelmény. Válassza ki **élő** , az ajánlat helyezheti át a következő lépéssel.           |
 |        Csomagolás            |        1 óra           |        Az ajánlat véglegesített marketplace éles rendszerekre és régióban replikálja a rendszer.           |

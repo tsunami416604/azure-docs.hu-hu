@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 4086b73313d563afaecad9b6a9289905d7085004
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 4af2e97e8ace432c37a770f1930514dd19e30944
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66142636"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235752"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – létrehozása és az Azure Kubernetes Service (AKS) fürt több csomópontja készletek kezelése
 
@@ -21,9 +21,10 @@ Az Azure Kubernetes Service (aks) Szolgáltatásban, ugyanazt a konfigurációt 
 Ez a cikk bemutatja, hogyan hozhat létre és kezelhet az AKS-fürtben több csomóponton készletet. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
 > [!IMPORTANT]
-> Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
+> Az AKS előzetes verziójú funkciók önkiszolgáló, a rendszer. A biztosított gyűjthet visszajelzéseket és a hibák kapcsolódóan a Közösség részéről. Előzetes verzióban elérhető ezeket a funkciókat nem üzemi használat céljára. Nyilvános előzetes verzióban érhető el "ajánlott beavatkozást" támogatás keretében tartoznak. Az AKS technikai támogatási csapat segítségét munkaidőben csendes-óceáni időzóna (PST) csak alatt érhető el. További információkért tekintse meg a következő cikkek támogatja:
 >
-> Ha az előzetes verziójú szolgáltatásaihoz is problémák merülnek fel [nyisson egy problémát a AKS GitHub-adattárat a] [ aks-github] az előzetes verziójú funkció a bejelentett hiba címét nevére.
+> * [Az AKS támogatási házirendek][aks-support-policies]
+> * [Az Azure-támogatás – gyakori kérdések][aks-faq]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -72,6 +73,7 @@ Az alábbi korlátozások érvényesek a felhőszolgáltatásnak, amely támogat
 * Több csomópont-készletekre csak érhető el, miután sikeresen regisztrálta létrehozott fürtök esetében a *MultiAgentpoolPreview* és *VMSSPreview* funkciók az előfizetéshez. Nem adhat hozzá, és csomópont-készletek kezelése a meglévő AKS-fürt létrehozása előtt ezeket a funkciókat sikeresen regisztrálva.
 * Az első node-készlet nem törölhető.
 * A HTTP-kérelem útválasztási bővítmény nem használható.
+* Nem hozzáadása/frissítése/törlése csomópontkészletek legtöbb művelet az egy meglévő Resource Manager-sablon használatával. Ehelyett [egy külön Resource Manager-sablonnal](#manage-node-pools-using-a-resource-manager-template) csomópontkészletek az AKS-fürtben módosíthatja.
 
 Bár ez a funkció előzetes verzióban érhető el, a következő további korlátozások vonatkoznak:
 
@@ -328,6 +330,95 @@ Events:
 
 Csak a alkalmazni mellékíz rendelkező podok ütemezett csomópontján *gpunodepool*. Bármely más pod szeretné ütemezni a *nodepool1* csomópontkészletek. További csomópont-készleteket hoz létre, ha további elkerülésére is használhat, és milyen podok korlátozása tolerations csomópont erőforrásokat is ütemezhető.
 
+## <a name="manage-node-pools-using-a-resource-manager-template"></a>Resource Manager-sablonnal csomópont készletek kezelése
+
+Amikor használhatja az Azure Resource Manager-sablon létrehozása és a felügyelt erőforrások, általában frissítheti a beállításokat a sablont, majd alkalmazza újra az erőforrás frissítése. A nodepools az aks-ben a kezdeti nodepool profil nem frissíthető az AKS-fürt létrehozása után. Ez a viselkedés azt jelenti, hogy nem egy meglévő Resource Manager-sablon frissítését, módosítja a csomópont-készleteket, és ismételt üzembe helyezése. Ehelyett hozzon létre egy külön Resource Manager-sablon, amely frissíti a csak az ügynökkészletek meglévő AKS-fürt számára.
+
+Például hozzon létre egy sablont `aks-agentpools.json` , és illessze be a következő példa jegyzékfájlt. Ez a példa a sablon a következő beállítások konfigurálása:
+
+* Frissítések a *Linux* nevű ügynökkészlet *myagentpool* három csomóponttal futtatásához.
+* A csomópont készlet futtatása a Kubernetes-verziót állítja be a csomópontok *1.12.8*.
+* Meghatározza a csomópont méretét, *Standard_DS2_v2*.
+
+Kell frissíteni, hozzáadása vagy törlése csomópontkészletek szükség szerint módosítsa ezeket az értékeket:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "clusterName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of your existing AKS cluster."
+      }
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "The location of your existing AKS cluster."
+      }
+    },
+    "agentPoolName": {
+      "type": "string",
+      "defaultValue": "myagentpool",
+      "metadata": {
+        "description": "The name of the agent pool to create or update."
+      }
+    },
+    "vnetSubnetId": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "The Vnet subnet resource ID for your existing AKS cluster."
+      }
+    }
+  },
+  "variables": {
+    "apiVersion": {
+      "aks": "2019-04-01"
+    },
+    "agentPoolProfiles": {
+      "maxPods": 30,
+      "osDiskSizeGB": 0,
+      "agentCount": 3,
+      "agentVmSize": "Standard_DS2_v2",
+      "osType": "Linux",
+      "vnetSubnetId": "[parameters('vnetSubnetId')]"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2019-04-01",
+      "type": "Microsoft.ContainerService/managedClusters/agentPools",
+      "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+            "maxPods": "[variables('agentPoolProfiles').maxPods]",
+            "osDiskSizeGB": "[variables('agentPoolProfiles').osDiskSizeGB]",
+            "count": "[variables('agentPoolProfiles').agentCount]",
+            "vmSize": "[variables('agentPoolProfiles').agentVmSize]",
+            "osType": "[variables('agentPoolProfiles').osType]",
+            "storageProfile": "ManagedDisks",
+      "type": "VirtualMachineScaleSets",
+            "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
+            "orchestratorVersion": "1.12.8"
+      }
+    }
+  ]
+}
+```
+
+Ez a sablon üzembe a [az csoport központi telepítésének létrehozása] [ az-group-deployment-create] parancsot, az alábbi példában látható módon. A meglévő AKS-fürt nevét és helyét kéri:
+
+```azurecli-interactive
+az group deployment create \
+    --resource-group myResourceGroup \
+    --template-file aks-agentpools.json
+```
+
+Attól függően, a csomópont tárolókészlet beállításainak és a műveletek a Resource Manager-sablonnal határoz meg az AKS-fürt frissítése néhány percet igénybe vehet.
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ebben a cikkben létrehozott egy AKS-fürtöt, amely tartalmazza a GPU-alapú csomópontokat. A felesleges költségek csökkentése érdekében előfordulhat, hogy törölni kívánja a *gpunodepool*, vagy az egész AKS-fürtöt.
@@ -351,7 +442,6 @@ Ebben a cikkben megtanulta, hogyan hozhat létre és kezelhet az AKS-fürtben t�
 Hozzon létre, és a Windows Server-tároló csomópontkészletek használja, lásd: [hozzon létre egy Windows Server-tárolót az aks-ben][aks-windows].
 
 <!-- EXTERNAL LINKS -->
-[aks-github]: https://github.com/azure/aks/issues
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
@@ -379,3 +469,6 @@ Hozzon létre, és a Windows Server-tároló csomópontkészletek használja, l�
 [supported-versions]: supported-kubernetes-versions.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
+[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

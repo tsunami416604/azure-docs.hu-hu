@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: rogarana
-ms.openlocfilehash: af903ce3ce7cfa165c278e415827dda36630e7b4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ad8ddf7e9e324bbcc48f15c95870a24fe7476828
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209731"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237765"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Az Azure Files (előzetes verzió) SMB-n keresztül az Azure Active Directory-hitelesítés áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,7 +26,7 @@ Hasznos lehet megérteni az egyes Azure AD-hitelesítéssel kapcsolatos SMB-n ke
     Az Azure Active Directory (Azure AD) a Microsoft több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás. Az Azure AD alapvető címtárszolgáltatásokat, alkalmazáshozzáférés-felügyeletet és identitásvédelmet egyetlen megoldásban egyesíti. További információkért lásd: [Mi az Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
 -   **Az Azure AD tartományi szolgáltatások**  
-    Az Azure AD Domain Services biztosítja a felügyelt tartományi szolgáltatásokat, például a tartományhoz való csatlakozás, a csoportházirendek, az LDAP és a Kerberos/NTLM hitelesítés. Ezek a szolgáltatások teljes mértékben kompatibilisek a Windows Server Active Directoryval. További információkért lásd: [Azure Active Directory (AD) Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md).
+    Az Azure AD Domain Services biztosítja a felügyelt tartományi szolgáltatásokat, például a tartományhoz való csatlakozás, a csoportházirendek, az LDAP és a Kerberos/NTLM hitelesítés. Ezek a szolgáltatások teljes mértékben kompatibilisek a Windows Server Active Directoryval. További információkért lásd: [Azure Active Directory (AD) Domain Services](../../active-directory-domain-services/overview.md).
 
 -   **Az Azure szerepköralapú hozzáférés-vezérlés (RBAC)**  
     Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést biztosít az Azure-hoz. RBAC használata esetén kezelheti erőforrásokhoz való hozzáférés biztosítása a felhasználóknak a feladataik elvégzéséhez szükséges legkevesebb engedélyeket. Az RBAC további információkért lásd: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-ban?](../../role-based-access-control/overview.md)
@@ -50,7 +50,7 @@ Az Azure Files SMB-n keresztül az Azure AD a képest megosztott kulcsos hiteles
 -   **Hozzáférés-vezérlési listák készíteni az adatokkal együtt**  
     Az Azure Files használatával a meglévő helyszíni fájlmegosztások biztonsági mentése. Az Azure Files megőrzi a hozzáférés-vezérlési listák az adatokkal együtt, megosztásakor a fájlmegosztások biztonsági mentése az Azure Files SMB-n keresztül.
 
-## <a name="how-it-works"></a>A szolgáltatás működése
+## <a name="how-it-works"></a>Működés
 Az Azure Files Azure AD tartományi szolgáltatásokat használja a Kerberos-hitelesítés az Azure AD hitelesítő adatait, tartományhoz csatlakoztatott virtuális gépek. Azure ad-ben az Azure Files használata előtt először az Azure AD tartományi szolgáltatások engedélyezése és a tartományhoz, a virtuális gépekről, amelyből hozzá szeretne férni a fájlokban tárolt adatokhoz. A tartományhoz csatlakoztatott virtuális gép az Azure AD Domain Services azonos virtuális hálózaton (VNET) kell lennie. 
 
 Amikor a rendszer identitást társít egy virtuális gépen futó alkalmazásokhoz próbál meg hozzáférni az Azure Files adatokhoz, a kérelem érkezik az Azure AD tartományi szolgáltatásokra az identitás hitelesítésére. Sikeres hitelesítés esetén az Azure AD tartományi szolgáltatások Kerberos jogkivonatot ad vissza. Az alkalmazás elküld egy kérelmet, amely tartalmazza a Kerberos-jogkivonatot, és az Azure Files használja ezt a jogkivonatot a kérelem engedélyezéséhez. Az Azure Files csak a jogkivonatot kap, és nem marad meg az Azure AD hitelesítő adatait.
@@ -60,7 +60,7 @@ Amikor a rendszer identitást társít egy virtuális gépen futó alkalmazások
 ### <a name="enable-azure-ad-authentication-over-smb"></a>Az SMB-n keresztüli Azure AD-hitelesítés engedélyezése
 Az Azure AD-hitelesítés 2018. szeptember 24. után létrehozott új és meglévő tárfiókok az Azure Files SMB-n keresztül engedélyezhető. 
 
-Az Azure AD-hitelesítés engedélyezése az SMB-n keresztül, előtt győződjön meg arról, hogy az Azure AD tartományi szolgáltatások az elsődleges lett-e telepítve. az Azure AD-bérlő, amelyhez társítva a tárfiók. Ha még nem állította be az Azure AD tartományi szolgáltatások, az útmutatót lépésről lépésre követve megadott [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](../../active-directory-domain-services/active-directory-ds-getting-started.md).
+Az Azure AD-hitelesítés engedélyezése az SMB-n keresztül, előtt győződjön meg arról, hogy az Azure AD tartományi szolgáltatások az elsődleges lett-e telepítve. az Azure AD-bérlő, amelyhez társítva a tárfiók. Ha még nem állította be az Azure AD tartományi szolgáltatások, az útmutatót lépésről lépésre követve megadott [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](../../active-directory-domain-services/create-instance.md).
 
 Az Azure AD tartományi szolgáltatások üzembe helyezése általában 10 – 15 percet vesz igénybe. Az Azure AD Domain Services telepítése után engedélyezheti az Azure AD-hitelesítés SMB-n keresztül az Azure Files számára. További információkért lásd: [engedélyezése az Azure Active Directory-hitelesítés SMB-n keresztül az Azure Files (előzetes verzió)](storage-files-active-directory-enable.md). 
 

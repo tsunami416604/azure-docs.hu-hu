@@ -1,21 +1,21 @@
 ---
-title: Az Azure Database for postgresql-hez a Query Store használati forgatókönyvek
-description: A cikk néhány olyan forgatókönyvet a Query Store az Azure Database for PostgreSQL-hez.
+title: Az Azure Database for PostgreSQL - kiszolgáló egyetlen Query Store használati forgatókönyvek
+description: A cikk néhány olyan forgatókönyvet a Query Store az Azure Database for PostgreSQL - hez-kiszolgáló egyetlen.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: 873462354b70d13e56ca108c3257031ef34873f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 029c595ba983d3b758568fbacaf6577014d893db
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563188"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067347"
 ---
 # <a name="usage-scenarios-for-query-store"></a>A Query Store használati forgatókönyvek
 
-**A következőkre vonatkozik:** Azure Database for PostgreSQL 9.6 és 10
+**A következőkre vonatkozik:** Azure Database for PostgreSQL – egyetlen kiszolgáló 9.6 és 10
 
 Számos olyan forgatókönyvekben, ahol nyomkövetési és karbantartása kiszámítható számítási feladatokra teljesítmény kritikus fontosságú a Query Store is használhatja. Vegye figyelembe az alábbi példák: 
 - Azonosító és a leggyakoribb drága lekérdezések hangolása 

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/23/2018
+ms.date: 05/23/2019
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12819bdc20dea57a8a114bb4ff311f828be8b15a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3ba36825805ff54165a3e6c4e221550cc30b07d3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249769"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235182"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Mi az az Azure Active Directory architektúrájának?
 Az Azure Active Directory (Azure AD) lehetővé teszi, hogy biztonságosan kezelje az Azure-szolgáltatások és -erőforrások elérését a felhasználók számára. Az Azure AD-ben megtalálható az identitáskezelési megoldások teljes palettája. Az Azure AD-funkciókkal kapcsolatos információért lásd: [Mi az az Azure Active Directory?](active-directory-whatis.md)
@@ -30,14 +30,14 @@ Az Azure AD földrajzilag elosztott architektúrája a széles körű megfigyel�
 
 Ez a cikk a következő architektúraelemeket tárgyalja:
  *  Szolgáltatásarchitektúra kialakítása
- *  Használhatósági 
+ *  Méretezhetőség
  *  Folyamatos rendelkezésre állás
  *  Adatközpontok
 
 ### <a name="service-architecture-design"></a>Szolgáltatásarchitektúra kialakítása
 A leggyakoribb módja hozhat létre egy elérhető és használható, adatokban gazdag rendszerek független építőelemek vagy skálázási egységek keresztül. Az Azure AD adatrétege skálázási egységek nevezzük *partíciók*. 
 
-Az adatréteg több front-end szolgáltatással rendelkezik, amelyek olvasási és írási képességeket nyújtanak. Az alábbi ábra bemutatja, hogyan lépnek egy egy címtárból partíció összetevői a földrajzilag elosztott adatközpontokban. 
+Az adatréteg több front-end szolgáltatással rendelkezik, amelyek olvasási és írási képességeket nyújtanak. Az alábbi ábra bemutatja, hogyan egy egy címtárból partíció összetevői a földrajzilag elosztott adatközpontok során lépnek érvénybe. 
 
   ![Egy címtárból partíció diagramja](./media/active-directory-architecture/active-directory-architecture.png)
 
@@ -49,7 +49,7 @@ Az *elsődleges replika* fogadja azon partíció összes *írását*, amelyhez t
 
 **Másodlagos replikák**
 
-Minden *címtárolvasás* *másodlagos replikákból* van szolgáltatva, amelyek különböző földrajzi helyeken lévő adatközpontokban találhatók. Sok másodlagos replika van, mivel az adatok replikálása aszinkron módon történik. A címtárolvasások, például a hitelesítési kérések, szolgált, amely az ügyfelek közelében találhatók adatközpontok adataihoz. A másodlagos replikák felelősek az olvasás méretezhetőségéért.
+Minden könyvtár *beolvassa* van szolgáltatva *másodlagos replikák*, fizikailag különböző földrajzi adatközpontok, melyek. Sok másodlagos replika van, mivel az adatok replikálása aszinkron módon történik. A címtárolvasások, például a hitelesítési kérések, szolgált, amely az ügyfelek közelében találhatók adatközpontokból. A másodlagos replikák felelősek az olvasás méretezhetőségéért.
 
 ### <a name="scalability"></a>Méretezhetőség
 
@@ -61,7 +61,7 @@ A címtáralkalmazások a legközelebbi adatközpontokhoz csatlakoznak. Ez a kap
 
 ### <a name="continuous-availability"></a>Folyamatos rendelkezésre állás
 
-A rendelkezésre állás (vagy üzemidő) határozza meg, hogy egy rendszer mennyire tud zavartalanul működni. Az Azure AD magas rendelkezésre állású kulcsa, hogy a szolgáltatások gyorsan képesek áthelyezni a forgalmat több, földrajzilag elosztott adatközpontok között. Mindegyik adatközpont független, ami lehetővé teszi a nem összefüggő hibaállapotokat.
+A rendelkezésre állás (vagy üzemidő) határozza meg, hogy egy rendszer mennyire tud zavartalanul működni. Az Azure AD magas rendelkezésre állású kulcsa, hogy a szolgáltatások gyorsan képesek áthelyezni a forgalmat több, földrajzilag elosztott adatközpontokban. Minden adatközpontban nem függ, amely lehetővé teszi, hogy a nem összefüggő hibaállapotokat. A magas rendelkezésre állás kialakítása révén az Azure AD nem szükséges leállítani a karbantartási tevékenységek miatt.
 
 Az Azure AD partíciójának kialakítása a vállalati AD kialakításához, amely tartalmazza az elsődleges replika körültekintően összehangolt és determinisztikus feladatátvételi folyamatot egyszeri terv használatával képest egyszerű.
 
@@ -73,21 +73,21 @@ Az olvasási műveletek (amelyek száma nagyságrendekkel meghaladja az írások
 
 **Adatok tartóssága**
 
-Az írások tartós véglegesítése legalább két adatközpontban megtörténik a nyugtázásuk előtt. Ehhez először véglegesíteni kell az írást az elsődleges replikán, majd azonnal replikálni kell legalább egy másik adatközpontba. Ez az írási művelet biztosítja, hogy egy lehetséges végzetes elvesztése üzemeltető az elsődleges adatközpont az adatvesztést eredményez.
+Az írási tartósan elkötelezett előtt legalább két adatközpontjában. Ez akkor történik, az az elsődleges írási véglegesítése és majd azonnal replikálni kell legalább egy másik adatközpontba. Ez az írási művelet biztosítja, hogy egy lehetséges végzetes elvesztése üzemeltető az elsődleges adatközpontban az adatvesztést eredményez.
 
 Az Azure AD-ben a nulla [helyreállítási időre vonatkozó célkitűzés (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) nincs adatvesztés, a feladatátvételt. Az érintett műveletek közé tartoznak az alábbiak:
 -  Kiállítási és a címtárolvasások
 -  Így csak körülbelül 5 percet RTO címtárba
 
-### <a name="data-centers"></a>Adatközpontok
+### <a name="datacenters"></a>Adatközpontok
 
-Az Azure AD replikái a világ számos részén található adatközpontokban vannak tárolva. További információk: [Azure adatközpontok](https://azure.microsoft.com/overview/datacenters).
+Az Azure AD replikái a világ számos részén található adatközpontokban vannak tárolva. További információkért lásd: [az Azure globális infrastruktúrája](https://azure.microsoft.com/global-infrastructure/).
 
-Az Azure AD a következő jellemzőkkel rendelkező adatközpontokon működik:
+Azure ad-ben a következő jellemzőkkel rendelkező adatközpontokon keresztül működik:
 
- * Hitelesítés, a Graph és az egyéb AD-szolgáltatások az átjárószolgáltatás mögött található. Az átjáró kezeli ezen szolgáltatások terheléselosztását. Ez feladatátvételt hajt végre automatikus Ha bármelyik nem megfelelő állapotú kiszolgálókat észlel tranzakciós állapottesztek. Ezen állapot-mintavételek alapján az átjáró dinamikusan átirányítja a forgalmat a kifogástalan állapotú adatközpontokhoz.
- * Az *olvasások* esetében a címtár másodlagos replikákkal és megfelelő előtér-szolgáltatásokkal rendelkezik egy több adatközpontban működő aktív-aktív konfigurációban. A teljes adatközpont meghibásodása esetén a rendszer automatikusan átirányítja a forgalmat egy másik adatközpontra.
- *  A *ír*, a címtár hajt végre feladatátvételt az elsődleges (fő-) replika adatközpontokon keresztül tervezett (új elsődleges szinkronizálása a régi elsődleges) vagy vészhelyzeti feladatátvételi eljárásokat. Az adatok tartóssága minden véglegesítés legalább két adatközpontra történő replikálásával valósul meg.
+ * Hitelesítés, a Graph és az egyéb AD-szolgáltatások az átjárószolgáltatás mögött található. Az átjáró kezeli ezen szolgáltatások terheléselosztását. Ez feladatátvételt hajt végre automatikus Ha bármelyik nem megfelelő állapotú kiszolgálókat észlel tranzakciós állapottesztek. Ezen állapot-mintavételek alapján, az átjáró dinamikusan átirányítja a forgalmat a kifogástalan állapotú adatközpontokhoz.
+ * A *beolvassa*, a címtár másodlagos replikákkal és megfelelő előtér-szolgáltatásokkal rendelkezik egy több adatközpontban működő aktív-aktív konfigurációban. Teljes adatközpont meghibásodása forgalom lesz automatikusan átirányíthatók egy másik adatközpontba.
+ *  A *ír*, a címtár hajt végre feladatátvételt az elsődleges (fő-) replika adatközpontra elosztva több keresztül tervezett (új elsődleges szinkronizálása a régi elsődleges) vagy vészhelyzeti feladatátvételi eljárásokat. Adatok tartóssága minden véglegesítés legalább két adatközpontban történő replikálásával valósul meg.
 
 **Adatkonzisztencia**
 

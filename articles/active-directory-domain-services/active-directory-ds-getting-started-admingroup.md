@@ -3,7 +3,7 @@ title: 'Az Azure Active Directory tartományi szolgáltatások: Első lépések 
 description: Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: ergreenl
-ms.openlocfilehash: 734fb5ce641d48800cef68ea79cdb258e44ac267
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: a4a515f3d669794d5bcdd8fa506a8d3b846db987
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417705"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234938"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
 
@@ -44,7 +44,7 @@ A varázsló automatikusan létrehozza a felügyeleti csoport az Azure AD-címt�
 
 ## <a name="configure-synchronization"></a>A szinkronizálás konfigurálása
 
-Az Azure AD Domain Services lehetővé teszi, hogy minden felhasználó és csoport az Azure ad-ben elérhető vagy teljes szinkronizálását, vagy kiválaszthatja a hatókörön belüli szinkronizálás csak az adott csoportok szinkronizálásához. Ha úgy dönt, hogy a teljes szinkronizálás, akkor lesz **nem** tudni válassza ki a hatókörrel rendelkező szinkronizálási egy későbbi időpontban. Hatókörrel rendelkező szinkronizálási kapcsolatos további információkért látogasson el a [Azure AD tartományi szolgáltatások hatókörrel rendelkező szinkronizálási cikk](active-directory-ds-scoped-synchronization.md).
+Az Azure AD Domain Services lehetővé teszi, hogy minden felhasználó és csoport az Azure ad-ben elérhető vagy teljes szinkronizálását, vagy kiválaszthatja a hatókörön belüli szinkronizálás csak az adott csoportok szinkronizálásához. Ha úgy dönt, hogy a teljes szinkronizálás, akkor lesz **nem** tudni válassza ki a hatókörrel rendelkező szinkronizálási egy későbbi időpontban. Hatókörrel rendelkező szinkronizálási kapcsolatos további információkért látogasson el a [Azure AD tartományi szolgáltatások hatókörrel rendelkező szinkronizálási cikk](scoped-synchronization.md).
 
 ### <a name="full-synchronization"></a>Teljes szinkronizálás
 
@@ -63,7 +63,7 @@ Az Azure AD Domain Services lehetővé teszi, hogy minden felhasználó és csop
 
 1. A a **összegzése** oldalon a varázsló, tekintse át a konfigurációs beállításokat a felügyelt tartományhoz. Léphet vissza egy lépést, a varázsló módosítások, ha szükséges. Amikor elkészült, kattintson a **OK** hozhat létre az új felügyelt tartományhoz.
 
-    ![Összegzés](./media/getting-started/domain-services-blade-summary.png)
+    ![Összefoglalás](./media/getting-started/domain-services-blade-summary.png)
 
 2. Megjelenik egy értesítés az Azure AD tartományi szolgáltatások központi telepítésének állapotát. Kattintson az értesítésre való központi telepítésére vonatkozó részletes állapot.
 
@@ -98,7 +98,7 @@ A folyamat üzembe helyezésének a felügyelt tartomány órát is igénybe veh
 
 ## <a name="need-help"></a>Segítség
 
-Eltarthat egy óráig vagy két mindkét ki kell építeni a felügyelt tartományhoz tartozó tartományvezérlőket. Ha a központi telepítés sikertelen volt, vagy több, mint néhány óra múlva "Függő" állapotban elakadt, nyugodtan [kérjen segítséget a termékcsoport](active-directory-ds-contact-us.md).
+Eltarthat egy óráig vagy két mindkét ki kell építeni a felügyelt tartományhoz tartozó tartományvezérlőket. Ha a központi telepítés sikertelen volt, vagy több, mint néhány óra múlva "Függő" állapotban elakadt, nyugodtan [kérjen segítséget a termékcsoport](contact-us.md).
 
 ## <a name="next-step"></a>Következő lépés
 

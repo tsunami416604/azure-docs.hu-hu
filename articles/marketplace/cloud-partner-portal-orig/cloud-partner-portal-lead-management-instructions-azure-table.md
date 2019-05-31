@@ -2,45 +2,59 @@
 title: Az Azure Table |} Az Azure Marketplace-en
 description: Az Azure Table érdeklődő felügyeletének konfigurálásához.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: af582e51875f84503116f4ec7131464d51e54a99
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: a1bcab9816627b453ba8b20b7bcd9402c2dfd151
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935844"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240535"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Az Azure Table utasítások felügyeleti vezethet
 
 Ez a cikk ismerteti a konfigurálása az Azure Table potenciális vásárlók tárolásához. Az Azure Table lehetővé teszi, hogy tárolhatja, és testre szabhatja a vásárlói adatokat.
 
-## <a name="to-configure-azure-table"></a>Az Azure Table konfigurálása
 
-1.  Ha nem rendelkezik Azure-fiókkal, akkor [hozzon létre egy ingyenes próbafiókot](https://azure.microsoft.com/pricing/free-trial/).
+## <a name="how-to-configure-azure-table"></a>Az Azure Table konfigurálása
 
-2.  Miután az Azure-fiókjával aktív, jelentkezzen be a [az Azure portal](https://portal.azure.com).
-3.  Az Azure Portalon hozzon létre egy tárfiókot. A következő képernyőfelvétel bemutatja, hogyan hozzon létre egy tárfiókot. További információ a storage szolgáltatás díjszabása: [storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
+1. Ha nem rendelkezik Azure-fiókkal, akkor [hozzon létre egy ingyenes próbafiókot](https://azure.microsoft.com/pricing/free-trial/).
+2. Miután az Azure-fiókjával aktív, jelentkezzen be a [az Azure portal](https://portal.azure.com).
+3. Az Azure Portalon hozzon létre egy tárfiókot, az alábbi eljárást követve.  
+    1. Válassza ki **+ erőforrás létrehozása** a bal oldali menüsáv a.  A **új** (panel) ablaktáblán jelenik meg a jobb oldalon.
+    2. Válassza ki **tárolási** a a **új** ablaktáblán.  A **kiemelt** lista akkor jelenik meg, a jobb oldalon.
+    3. Válassza ki **Tárfiók** fiókok létrehozásának megkezdéséhez.  Kövesse a cikk a [hozzon létre egy tárfiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
     ![Az Azure storage-fiók létrehozásának lépései](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
 
-4.  A kulcs a tárfiók kapcsolati sztringje másolja és illessze be azt a **Tárfiók kapcsolati Sztringje** mezőjében a Cloud Partner portálra. A kapcsolati karakterlánc például `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net`
-    
-    ![Azure storage-kulcs](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
+    További információ a tárfiókok kiválasztása [a rövid útmutató](https://docs.microsoft.com/azure/storage/).  További információ a storage szolgáltatás díjszabása: [storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-Használhat [az Azure storage explorer](https://azurestorageexplorer.codeplex.com/) vagy más eszköz a storage-táblába az adatok megtekintéséhez. Az Azure-táblában lévő adatokat exportálhatja is.
-adatok.
+4. Várjon, amíg a storage-fiók ki van építve, egy folyamat, amely általában néhány percig tart.  Majd hozzáférni a storage-fiókjában a **kezdőlap** kiválasztásával az Azure portal oldalán **tekintse meg az erőforrások** vagy kiválasztásával **összes erőforrás** a bal oldali navigációs sávon az Azure Portal menüsávon.
 
-## <a name="optional-use-microsoft-flow-with-an-azure-table"></a>**(Nem kötelező)**  Használja a Microsoft Flow az Azure-tábla
+    ![Az Azure storage-fiókját](./media/cloud-partner-portal-lead-management-instructions-azure-table/azure-storage-access.png)
 
-Használhat [Microsoft Flow](https://docs.microsoft.com/flow/) automatizálhatja az értesítéseket, amikor érdeklődőt kerül az Azure-tábla. Ha nem olyan fiókkal, használhatja [regisztrálhat egy ingyenes fiókot](https://flow.microsoft.com/).
+5. A tárolási fiók panelen, a kulcs a tárfiók kapcsolati sztringje másolja és illessze be azt a **Tárfiók kapcsolati Sztringje** mezőjében a Cloud Partner portálra. A kapcsolati karakterlánc például a:
+
+```sql
+DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
+```
+
+  ![Azure storage-kulcs](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
+
+Használhat [az Azure storage explorer](https://azurestorageexplorer.codeplex.com/) vagy más hasonló eszközt az adatok a storage-táblába. Az Azure-táblákat is exportálhatja az adatokat.
+
+
+## <a name="use-microsoft-flow-with-an-azure-table-optional"></a>Microsoft Flow használata az Azure Table (*választható*) 
+
+Használhat [Microsoft Flow](https://docs.microsoft.com/flow/) automatizálhatja az értesítéseket, amikor érdeklődőt kerül az Azure-tábla. Ha nincs fiókja, akkor az [regisztrálhat egy ingyenes fiókot](https://flow.microsoft.com/).
+
 
 ### <a name="lead-notification-example"></a>Értesítési példában vezethet
 
-Ebben a példában használja útmutatóként egy egyszerű folyamatot, amely automatikusan egy e-mailben értesítést küld, amikor egy új érdeklődővel bővül az Azure-tábla létrehozásához. Ebben a példában úgy állít be, egy ismétlődési érdeklődők adatait óránként küld, ha a table storage frissül.
+Ebben a példában használja útmutatóként egy alap folyamatot, amely automatikusan egy e-mailben értesítést küld, amikor egy új érdeklődővel bővül az Azure-tábla létrehozásához. Ebben a példában úgy állít be, egy ismétlődési érdeklődők adatait óránként küld, ha a table storage frissül.
 
 1. Jelentkezzen be a Microsoft Flow-fiók.
 2. A bal oldali navigációs sávján válassza **saját folyamatok**.
@@ -83,7 +97,7 @@ A következő készletét a lépéseket is kapcsolódni az Azure-tábla, és ál
 
      ![Válasszon egy egyéni értéket az Azure-tábla neve](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **Szűrőlekérdezés** – ebben a mezőben kattintson, és a egy felugró ablakban jelenik meg a Get múltbeli idő ikonra. Válassza ki **múltbeli időpont** időbélyegzőként Ez a lekérdezés szűrése használatára. Ez a függvény azt is megteheti, beillesztheti az mezőbe: `gt datetime'@{body('Get_past_time')}'`
+   - **Szűrőlekérdezés** – kattintson a mezőre, és a **múltbeli időpont beolvasása** ikon megjelenik egy felugró ablakban. Válassza ki **múltbeli időpont** időbélyegzőként Ez a lekérdezés szűrése használatára. Azt is megteheti beillesztheti a következő függvényt az mezőbe: CreatedTime `gt datetime'@{body('Get_past_time')}'` 
 
      ![Szűrő lekérdezés függvény beállítása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
@@ -114,20 +128,23 @@ A következő készletét a lépéseket is kapcsolódni az Azure-tábla, és ál
 
     - **A** – adja meg egy e-mail-címet, amely ezt az értesítést fog kapni minden tagja számára.
     - **Tulajdonos** – adja meg az e-mail tárgyát. Példa: Új érdeklődők!
-    - **Törzs**:   Adja hozzá a szöveget, amely tartalmazza minden e-mailben (opcionális), és illessze be a szervezet `('Get_entities')?['value']` függvényében, érdeklődő információit.
+    - **Törzs**:   Adja hozzá a szöveget, amely tartalmazza minden e-mailben (opcionális), és illessze be a szervezet `body('Get_entities')?['value']` függvényében, érdeklődő információit.
 
       >[!NOTE] 
       >Ez az e-mail szövegtörzséhez további statikus vagy dinamikus adatok pontok beszúrásához.
 
-       ![Állítsa be a érdeklődő értesítési e-mailben](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-emailbody-fx.png)
+      ![Állítsa be a érdeklődő értesítési e-mailben](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-emailbody-fx.png)
 
 13. Válassza ki **mentése** a folyamat mentéséhez. Microsoft Flow automatikusan teszteli a folyamatot a hibákat. Ha nincsenek hibák, a folyamat elindul, Miután elmentette futtatása.
 
 A következő képernyőfelvétel-készítés azt szemlélteti, hogyan kell kinéznie a végső folyamatot.
 
- ![A folyamat utolsó feladatütemezési](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
+[![A folyamat utolsó feladatütemezési](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
 
-### <a name="managing-your-flow"></a>A folyamat kezelése
+(*a képre nagyítani szeretne.* )
+
+
+### <a name="manage-your-flow"></a>A folyamat kezelése
 
 A folyamat kezelése futás után sem ördöngösség.  Teljes körű, a folyamat rendelkezik. Például akkor is állítsa le, szerkeszthetik, tekintse meg a futtatási előzmények és elemzések lekérése. A következő képernyő-rögzítési folyamat kezeléséhez rendelkezésre álló lehetőségeket mutatja. 
 
@@ -138,6 +155,7 @@ A folyamat továbbra is működik, amíg használatával állítsa le a **folyam
 Nem érdeklődő e-mail értesítéseket kap, ha az azt jelenti, hogy az új érdeklődők még nem sikerült hozzáadni az Azure-tábla. Ha a folyamat hibákat, a példához hasonló e-mailt kap a következő képernyőfelvételen.
 
  ![A folyamat sikertelen e-mail-értesítés](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-failure-note.png)
+
 
 ## <a name="next-steps"></a>További lépések
 

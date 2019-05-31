@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 82222dd927f46761941a6a750d96222cc626e71b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 130ca6bc946d44d80cddba5486d405bfb15523cb
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887266"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235882"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
 Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők az MXChip IoT fejlesztői készlet (DevKit) eszköz csatlakoztatása a Microsoft Azure IoT Central alkalmazáshoz.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A jelen cikkben ismertetett lépések végrehajtásához szüksége van az alábbi forrásanyagokat:
 
@@ -66,7 +66,7 @@ Ha korábban már használta az eszköz és a kívánt újrakonfigurálásának 
 #### <a name="to-prepare-the-devkit-device"></a>Az DevKit eszköz előkészítése
 
 1. Az MXChip a a legújabb előregyártott Azure IoT Central belső vezérlőprogram letöltése a [kiadások](https://aka.ms/iotcentral-docs-MXChip-releases) lapját a githubon.
-1. A fejlesztői készlet eszköz csatlakoztatása a fejlesztői gépén, USB-kábel segítségével. Windows, a fájl explorer megnyílik egy ablak a tárolót a fejlesztői készlet eszközön leképezve meghajtón. Ha például a meghajtó neve lehet **AZ3166 (D:)**.
+1. A fejlesztői készlet eszköz csatlakoztatása a fejlesztői gépén, USB-kábel segítségével. Windows, a fájl explorer megnyílik egy ablak a tárolót a fejlesztői készlet eszközön leképezve meghajtón. Ha például a meghajtó neve lehet **AZ3166 (D:)** .
 1. Húzza a **iotCentral.bin** fájlt arra a meghajtóra ablakot. A másolás befejeződése után az eszköz újraindul, új belső vezérlőprogramját.
 
 1. A fejlesztői készlet eszköz újraindításakor a következő képernyő jelenik meg:
@@ -208,12 +208,12 @@ A minta Devkits alkalmazást sablon alapján létrehozott alkalmazás tartalmaz 
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Állapotok 
-| Name (Név)          | Megjelenített név   | NORMÁL | FIGYELMEZTETÉS | DANGER | 
+| Name (Név)          | Display name   | NORMÁL | FIGYELMEZTETÉS | DANGER | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | Eszköz állapota   | Zöld  | Narancssárga  | Piros    | 
 
 #### <a name="events"></a>Események 
-| Name (Név)             | Megjelenített név      | 
+| Name (Név)             | Display name      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | B gomb megnyomásakor  | 
 
@@ -221,21 +221,21 @@ A minta Devkits alkalmazást sablon alapján létrehozott alkalmazás tartalmaz 
 
 Numerikus beállításai
 
-| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
+| Display name | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
+| Jelenlegi      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
 | Sebesség ventilátor    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 A beállítások ki-/ bekapcsolása
 
-| Megjelenített név | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
+| Display name | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | KI      | Ki     |
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Típus            | Megjelenített név | Mező neve | Adattípus |
+| Típus            | Display name | Mező neve | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköztulajdonság | Die száma   | dieNumber  | szám    |
 | Eszköztulajdonság | Eszköz helye   | location  | location    |
@@ -243,11 +243,11 @@ A beállítások ki-/ bekapcsolása
 
 ### <a name="commands"></a>Parancsok
 
-| Megjelenített név | Mező neve | Visszatérési típusa | A beviteli mező megjelenített neve | A beviteli mező neve | A beviteli mező típusa |
+| Display name | Mező neve | Visszatérési típusa | A beviteli mező megjelenített neve | A beviteli mező neve | A beviteli mező típusa |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| echo         | echo       | szöveg        | érték megjelenítése         | displayedValue   | szöveg             |
+| echo         | echo       | text        | érték megjelenítése         | displayedValue   | text             |
 | Visszaszámlálás    | Visszaszámlálás  | szám      | A darabszám               | countFrom        | szám           |
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte a Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz, a javasolt következő lépésre megtudhatja, hogyan [állítson be egy egyéni sablont](howto-set-up-template.md) a saját IoT-eszköz.
+Most, hogy megismerte a MXChip IoT DevKit csatlakoztatása az Azure IoT Central alkalmazáshoz, a javasolt következő lépésre megtudhatja, hogyan [állítson be egy egyéni sablont](howto-set-up-template.md) a saját IoT-eszköz.

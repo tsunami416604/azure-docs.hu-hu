@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/22/2018
+ms.date: 05/23/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: de898a7ebb9611f469f42bb23774b3b0a0c2410d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: be0de7e809565fce4171401760d11ef9de45724e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65541676"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236121"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Az Azure App Service-ben korlátozza a hozzáférést #
 
@@ -54,7 +54,7 @@ Kattintson a **[+] Hozzáadás** egy új hozzáférés-korlátozási szabály ho
 
 Szabályok létrehozásakor ki kell választania, engedélyezni vagy letiltani, valamint a szabály típusát. Biztosít hozzáférést a prioritás értéke, és mi csoportkezelést is szükségesek.  Igény szerint hozzáadhat egy nevet és leírást a szabályhoz.  
 
-Állítsa be az IP-cím-alapú szabály, válasszon ki egy IPv4- vagy IPv6. IP-cím jelöléssel kell adni a CIDR-jelölésrendszerben az IPv4 és IPv6-címeket is. Egy pontos címet ad meg, ahol az első négy oktetben jelölik az IP-címe pedig tulajdonságot/32 a maszk 1.2.3.4/32 hasonló használhatja. Az összes cím IPv4 CIDR-jelölés 0.0.0.0/0. A CIDR-jelölés használatával kapcsolatos további információkért olvassa [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
+Állítsa be az IP-cím-alapú szabály, válasszon ki egy IPv4- vagy IPv6. IP-cím jelöléssel kell adni a CIDR-jelölésrendszerben az IPv4 és IPv6-címeket is. Egy pontos címet ad meg, ahol az első négy oktetben jelölik az IP-címe pedig tulajdonságot/32 a maszk 1.2.3.4/32 hasonló használhatja. Az összes cím IPv4 CIDR-jelölés 0.0.0.0/0. A CIDR-jelölés használatával kapcsolatos további információkért olvassa [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 ![egy virtuális hálózati hozzáférés-korlátozási szabály hozzáadása](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
 
@@ -79,6 +79,14 @@ A szabály törléséhez kattintson a **...**  elemre a szabályt, majd kattints
 Amellett, hogy az alkalmazás elérése, korlátozhatja is hozzáférést az scm helyet, az alkalmazás által használt. Az scm helyet, az a web deploy-végpontot, és a Kudu konzol. Az scm helyet korlátozza a hozzáférést az alkalmazás hozzárendelését külön-külön, vagy ugyanaz, mint az alkalmazás és az scm helyet is be. Ha bejelöli a jelölőnégyzetet, ugyanazok a korlátozások vonatkoznak, mint az alkalmazások, minden a iktatni ki. Törölje a jelet a jelölőnégyzetből, ha a program bármilyen már korábban az scm helyet a beállítások lesznek alkalmazva. 
 
 ![lista korlátozza a hozzáférést](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
+
+## <a name="blocking-a-single-ip-address"></a>Egyetlen IP-cím blokkolása ##
+
+Az első IP-korlátozási szabály hozzáadása, ha a szolgáltatás hozzáadja explicit **tiltásával** szabály 2147483647 prioritással. A gyakorlatban az explicit **tiltásával** szabály végrehajtott utolsó szabály lesz, és letiltja a hozzáférést az IP-címeket, amelyek nem kifejezetten engedélyezett használatával egy **engedélyezése** szabály.
+
+A forgatókönyvhöz, ahol felhasználókat szeretne letilthatja egy egyetlen IP-cím vagy IP-Címblokk, de engedélyezése minden más hozzáférést, szükség hozzá explicit **mindent engedélyező** szabály.
+
+![egyetlen ip-cím blokkolása](media/app-service-ip-restrictions/block-single-address.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Hozzáférési korlátozás szabályok szoftveres kezelése ##
 

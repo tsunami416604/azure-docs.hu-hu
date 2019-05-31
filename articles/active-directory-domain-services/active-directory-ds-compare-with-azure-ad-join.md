@@ -3,7 +3,7 @@ title: Az Azure AD Join és az Azure Active Directory Domain Services összehaso
 description: Érdemesebb Azure AD-csatlakozás, Azure AD tartományi szolgáltatások
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/26/2017
-ms.author: ergreenl
-ms.openlocfilehash: d4f50ea89f2623d387fb77acb09e609def547468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: eaa8cb54a46b1ff3c2c0f7c40c824f6ddcca16b9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359432"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234962"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Válasszon az Azure Active Directory join és az Azure Active Directory Domain Services
 Ez a cikk ismerteti az Azure Active Directory (AD) való csatlakozás és az Azure AD tartományi szolgáltatások és a választja, a használati esetek alapján segít közötti különbségeket.
@@ -58,7 +58,7 @@ A tartományhoz csatlakozó a felhasználói hitelesítés NTLM vagy Kerberos-hi
 |:---| --- | --- |
 | Az eszköz által vezérelt | Azure AD | Az Azure AD tartományi szolgáltatásokkal felügyelt tartományban |
 | A címtárban ábrázolás | Eszközobjektumok az Azure AD-címtárban. | Számítógép-objektumok az AAD-DS-ben a felügyelt tartományban. |
-| Authentication | OAuth és OpenID Connect-alapú protokollok | A Kerberos, NTLM-protokollok |
+| Hitelesítés | OAuth és OpenID Connect-alapú protokollok | A Kerberos, NTLM-protokollok |
 | Kezelés | Az Intune mobileszköz-felügyeleti (MDM) szoftver | Csoportházirend |
 | Hálózat | Az interneten keresztül működik | Szükséges a gépet a felügyelt tartomány ugyanazon virtuális hálózaton.|
 | Ideális választás... | Végfelhasználói mobil- vagy asztali eszközök | Server virtual machines gépek az Azure-ban |
@@ -66,14 +66,14 @@ A tartományhoz csatlakozó a felhasználói hitelesítés NTLM vagy Kerberos-hi
 
 ## <a name="next-steps"></a>További lépések
 ### <a name="learn-more-about-azure-ad-domain-services"></a>További információ az Azure AD tartományi szolgáltatások
-* [Az Azure AD Domain Services áttekintése](active-directory-ds-overview.md)
+* [Az Azure AD Domain Services áttekintése](overview.md)
 * [Szolgáltatások](active-directory-ds-features.md)
-* [Központi telepítési forgatókönyvei](active-directory-ds-scenarios.md)
-* [Ismerje meg, ha az Azure AD Domain Services megfelelő-e a használati esetek](active-directory-ds-comparison.md)
-* [Megismerheti, hogyan szinkronizálja az Azure AD tartományi szolgáltatásokat az Azure AD-címtár](active-directory-ds-synchronization.md)
+* [Központi telepítési forgatókönyvei](scenarios.md)
+* [Ismerje meg, ha az Azure AD Domain Services megfelelő-e a használati esetek](comparison.md)
+* [Megismerheti, hogyan szinkronizálja az Azure AD tartományi szolgáltatásokat az Azure AD-címtár](synchronization.md)
 
 ### <a name="learn-more-about-azure-ad-join"></a>Tudjon meg többet az Azure AD-csatlakozás
 * [Az Azure Active Directory eszközkezelésének alapjai](../active-directory/device-management-introduction.md)
 
 ### <a name="get-started-with-azure-ad-domain-services"></a>Ismerkedés az Azure AD tartományi szolgáltatásokkal
-* [Az Azure Portalon az Azure AD tartományi szolgáltatások engedélyezése](active-directory-ds-getting-started.md)
+* [Az Azure Portalon az Azure AD tartományi szolgáltatások engedélyezése](create-instance.md)

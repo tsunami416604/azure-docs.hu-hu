@@ -1,20 +1,20 @@
 ---
-title: Hozzon létre és kezelhető az Azure Database for PostgreSQL-tűzfalszabályok Azure CLI használatával
-description: Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhető az Azure Database for PostgreSQL tűzfalszabályok az Azure CLI parancssori.
+title: Létrehozása és kezelése a tűzfalszabályok az Azure Database for postgresql-hez - Azure CLI használatával egyetlen kiszolgáló
+description: Ez a cikk ismerteti, hogyan hozhat létre, és az Azure Database-tűzfalszabályok kezelése a PostgreSQL - hez-Azure CLI parancssori használatával egyetlen kiszolgáló.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: 9a96361d3fb155ea5b400990690e3c2b1f65f819
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 03b1c215994e4089ad0aed4eac3868b05c564c4c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422372"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067537"
 ---
-# <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Hozzon létre és kezelhető az Azure Database for PostgreSQL-tűzfalszabályok Azure CLI használatával
+# <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Létrehozása és kezelése a tűzfalszabályok az Azure Database for postgresql-hez - Azure CLI használatával egyetlen kiszolgáló
 Kiszolgálószintű tűzfalszabályok segítségével hozzáférésének kezelése az Azure Database for PostgreSQL-kiszolgáló egy adott IP-cím vagy IP-címtartományt. Kényelmes megoldás az Azure parancssori felület parancsait használva, létrehozhat, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Azure Database for PostgreSQL-tűzfalszabályok áttekintése, lásd: [, Azure Database for PostgreSQL-kiszolgáló tűzfalszabályainak](concepts-firewall-rules.md).
 
 Virtuális hálózat (VNet) szabályok is használható a kiszolgálóhoz való hozzáférés biztonsága érdekében. Tudjon meg többet [létrehozása és kezelése a virtuális hálózati szolgáltatás végpontjai és az Azure CLI használatával szabályok](howto-manage-vnet-using-cli.md).

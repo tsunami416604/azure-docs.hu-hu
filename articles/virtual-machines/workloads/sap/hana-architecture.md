@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 05/25/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 80ef63cdd9de8cb2340fe15d761402bb9f00fae9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d077487f85c789bcdfea3d91e29ee0d44ce82de0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795963"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239443"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Azure-beli SAP HANA (nagyméretű példányok) architektúra
 
@@ -34,7 +34,7 @@ SAP Hana az Azure-ban (nagyméretű példányok) az általános architektúrát 
 
 Az architektúra látható három részből áll:
 
-- **jobb oldali**: A LOB-alkalmazások, például SAP mutat be egy helyszíni infrastruktúra, amely futtatja a különböző alkalmazások az adatokat, hogy a végfelhasználók számára elérhető erőforrások. Ideális esetben ez a helyszíni infrastruktúra majd csatlakozik az Azure-bA [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+- **jobb oldali**: A LOB-alkalmazások, például SAP mutat be egy helyszíni infrastruktúra, amely futtatja a különböző alkalmazások az adatokat, hogy a végfelhasználók számára elérhető erőforrások. Ideális esetben ez a helyszíni infrastruktúra csatlakoztatva van az Azure-bA [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 - **Center**: Azure IaaS megjeleníti, és ebben az esetben használja a virtuális gépek SAP vagy más SAP HANA DBMS rendszerként használó alkalmazások üzemeltetésére. Virtuális gépek kisebb HANA-példányok függvény, amely a virtuális gépek adja meg a memória és az alkalmazási rétegre együtt helyezik üzembe. További információ a virtuális gépek: [virtuális gépek](https://azure.microsoft.com/services/virtual-machines/).
 
@@ -45,11 +45,11 @@ Az architektúra látható három részből áll:
   -  [SAP használata Windows virtuális gépeken](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   -  [Azure virtuális gépeken futó SAP-megoldások használata](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-- **Balra**: Az SAP HANA TDI-tanúsítvánnyal rendelkező hardverek jeleníti meg az Azure-beli nagyméretű példány stamp. A nagyméretű HANA-példány egységek csatlakozik a virtuális hálózatok, az előfizetés ugyanazt a technológiát használják, mint a kapcsolat a helyszínről az Azure-bA.
+- **Balra**: Az SAP HANA TDI-tanúsítvánnyal rendelkező hardverek jeleníti meg az Azure-beli nagyméretű példány stamp. A nagyméretű HANA-példány egységek csatlakozik a virtuális hálózatok az Azure-előfizetés ugyanazt a technológiát használják, mint a kapcsolat a helyszínről az Azure-bA. 2019. május, kezdődően az optimalizálás van bevezetni, amely lehetővé teszi, hogy a nagyméretű HANA-példány egységek és az ExpressRoute-átjárót bevonása nélkül az Azure virtuális gépek közötti kommunikációhoz. Az ExpressRoute gyors útvonal elnevezésű optimalizálás ebben az architektúrában (piros vonalak) jelenik meg. 
 
 Az Azure-beli nagyméretű példány stamp magát a következő összetevőket kombinálja:
 
-- **Számítástechnika**: Kiszolgálók, Intel Xeon E7-8890v3 vagy Intel Xeon E7-8890v4 processzorok, amely a szükséges számítási képességeket biztosítanak, és az SAP HANA certified alapulnak.
+- **Számítástechnika**: Kiszolgálók, különböző generációja, amely a szükséges számítási képességeket biztosítanak, és az SAP HANA certified Intel Xeon processzorok alapulnak.
 - **Hálózati**: Egy egységes nagy sebességű hálózati háló kapcsolja össze a számítási, tárolási és hálózati Ébresztés összetevő.
 - **Tárolási**: A tárolási infrastruktúra, amely egy egységes hálózati háló keresztül érhető el. Az adott tárolási kapacitás biztosított attól függ, hogy az adott SAP HANA, az üzembe helyezett Azure-ban (nagyméretű példányok) konfigurációja. További tárolási kapacitás további havi költségek érhető el.
 

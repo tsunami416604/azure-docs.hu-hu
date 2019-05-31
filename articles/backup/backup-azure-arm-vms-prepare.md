@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: raynew
-ms.openlocfilehash: 98934216c0860c79575874df26603b1187e35978
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bac61342f39821b6181a6a0e61bf0b11fb311007
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60647544"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239349"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure virtuális gépek biztonsági mentése Recovery Services-tárolóban
 
-Ez a cikk bemutatja, hogyan lehet Azure virtuális gépek biztonsági mentése Recovery Services-tárolót, a használatával a [Azure Backup](backup-overview.md) szolgáltatás. 
+Ez a cikk bemutatja, hogyan lehet Azure virtuális gépek biztonsági mentése Recovery Services-tárolót, a használatával a [Azure Backup](backup-overview.md) szolgáltatás.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -47,29 +47,29 @@ Ezenkívül van néhány dolgot, amely a bizonyos körülmények között szüks
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
- A tároló tárolja a biztonsági másolatok és az idők során létrehozott helyreállítási pontokat, és tárolja a biztonsági másolat gépek társított biztonsági mentési szabályzatok. Hozzon létre egy tárolót a következőképpen:    
+ A tároló tárolja a biztonsági másolatok és az idők során létrehozott helyreállítási pontokat, és tárolja a biztonsági másolat gépek társított biztonsági mentési szabályzatok. Hozzon létre egy tárolót a következőképpen:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).    
-2. Írja be a kifejezést a keresőmezőbe, **Recovery Services**. A **szolgáltatások**, kattintson a **Recovery Services-tárolók**.   
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Írja be a kifejezést a keresőmezőbe, **Recovery Services**. A **szolgáltatások**, kattintson a **Recovery Services-tárolók**.
 
-     ![Keresse meg a Recovery Services-tárolók](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/> 
+     ![Keresse meg a Recovery Services-tárolók](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
 
-3. A **Recovery Services-tárolók** menüben kattintson a **+ Hozzáadás**.    
+3. A **Recovery Services-tárolók** menüben kattintson a **+ Hozzáadás**.
 
-     ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)   
+     ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
 
-4. A **Recovery Services-tároló**, adjon meg egy rövid nevet, a tárolót azonosító.   
-    - A névnek egyedinek kell lennie az Azure-előfizetéshez.   
-    - 2 – 50 karaktert tartalmazhat.    
-    - Betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.   
-5. Válassza ki az Azure-előfizetést, erőforráscsoportot és a földrajzi régióban, amelyben a tároló kell létrehozni. Ezt követően kattintson a **Create** (Létrehozás) gombra.    
-    - A tároló létrehozása egy ideig is eltarthat.  
-    - Figyelje a jobb felső területén, a portál.   
+4. A **Recovery Services-tároló**, adjon meg egy rövid nevet, a tárolót azonosító.
+    - A névnek egyedinek kell lennie az Azure-előfizetéshez.
+    - 2 – 50 karaktert tartalmazhat.
+    - Betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
+5. Válassza ki az Azure-előfizetést, erőforráscsoportot és a földrajzi régióban, amelyben a tároló kell létrehozni. Ezt követően kattintson a **Create** (Létrehozás) gombra.
+    - A tároló létrehozása egy ideig is eltarthat.
+    - Figyelje a jobb felső területén, a portál.
 
 
  Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listája. Ha nem látja a tárolót, válassza ki a **frissítése**.
- 
-![A Backup-tárolók listája](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)    
+
+![A Backup-tárolók listája](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
 ### <a name="modify-storage-replication"></a>Tárreplikáció módosítása
 
@@ -86,7 +86,7 @@ Módosítsa a következőképpen tárolóreplikáció típusa:
 
       ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/full-blade.png)
 > [!NOTE]
-   > A tárolóreplikáció típusa nem módosítható, miután a tároló be van állítva, és tartalmazza a biztonsági másolati elemek. Ha azt szeretné, ehhez létre kell hoznia a tárolóban. 
+   > A tárolóreplikáció típusa nem módosítható, miután a tároló be van állítva, és tartalmazza a biztonsági másolati elemek. Ha azt szeretné, ehhez létre kell hoznia a tárolóban.
 
 ## <a name="apply-a-backup-policy"></a>Biztonsági mentési szabályzat alkalmazása
 
@@ -101,7 +101,7 @@ A tároló biztonsági mentési szabályzat konfigurálása.
 
    ![Biztonsági mentés és a biztonsági mentés célja panel](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
-3. A **biztonsági mentési szabályzat**, válassza ki a tárolóval társítani kívánt házirendet. 
+3. A **biztonsági mentési szabályzat**, válassza ki a tárolóval társítani kívánt házirendet.
     - A virtuális gép naponta egyszer készít az alapértelmezett szabályzat. A napi biztonsági mentések 30 napig megőrződnek. Az azonnali helyreállítás pillanatfelvételek megmaradnak a két napig.
     - Ha nem szeretné használni az alapértelmezett házirendet, válassza ki a **hozzon létre új**, és a egy egyéni szabályzat létrehozása a következő eljárásban leírtak szerint.
 
@@ -116,7 +116,7 @@ A tároló biztonsági mentési szabályzat konfigurálása.
      !["A virtuális gépek kiválasztása" panelen](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
 5. A **biztonsági mentési**, kattintson a **biztonsági mentés engedélyezése**. Telepítheti a szabályzatot a tárolóban, és a virtuális gépeket, és telepíti a biztonsági mentési bővítményt a Virtuálisgép-ügynök az Azure virtuális gépen.
-     
+
      !["A biztonsági mentés engedélyezése" gombra](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
 Biztonsági mentés engedélyezése után:
@@ -126,7 +126,7 @@ Biztonsági mentés engedélyezése után:
 - Ha futtatja a biztonsági mentések, vegye figyelembe, hogy:
     - Egy futó virtuális Gépre van a legnagyobb valószínűséggel egy alkalmazáskonzisztens helyreállítási pont rögzítésére.
     - Azonban akkor is, ha a virtuális gép ki van kapcsolva biztonsági mentését. Az ilyen virtuális Gépet egy offline állapotú virtuális gép néven ismert. Ebben az esetben a helyreállítási pont összeomlás-konzisztens lesz.
-    
+
 
 ### <a name="create-a-custom-policy"></a>Egyéni szabályzat létrehozása
 
@@ -138,7 +138,7 @@ Ha egy új biztonsági mentési szabályzat létrehozása lehetőséget választ
     - Visszaállításkor, biztonsági másolatot a virtuális gép lemezek vannak storage-tárhelyéből, helyreállítási tárolási helyét a hálózaton keresztül. Az azonnali helyreállítás biztonsági mentési adatok átvitele a tárolóba való várakozás nélkül egy biztonsági mentési feladat során vett helyileg tárolt pillanatképek használhatja.
     - Öt nap közötti, az azonnali helyreállítás pillanatképeinek őrizheti meg. Két napot az alapértelmezett beállítása.
 3. A **megőrzési**, adja meg, hogy mennyi ideig szeretné megőrizni a a napi vagy heti biztonsági mentési pontok.
-4. A **havi biztonsági mentési pontok megőrzése**, adja meg, hogy szeretné-e egy-egy havi biztonsági másolat a napi vagy heti biztonsági mentések megtartása. 
+4. A **havi biztonsági mentési pontok megőrzése**, adja meg, hogy szeretné-e egy-egy havi biztonsági másolat a napi vagy heti biztonsági mentések megtartása.
 5. Kattintson a **OK** mentse a szabályzatot.
 
     ![Új biztonsági mentési szabályzat](./media/backup-azure-arm-vms-prepare/new-policy.png)
@@ -156,6 +156,34 @@ A kezdeti biztonsági mentés a ütemterv szerint fog futni, de is futtatható l
 4. Kattintson a **biztonsági mentés**.
 5. A **biztonsági mentés**, használja a naptárvezérlőt annak, hogy megőrződjön-e a helyreállítási pont kiválasztására. Ezután kattintson az **OK** gombra.
 6. A portál feladatértesítések figyelésére. Figyelheti a feladat előrehaladását a tároló irányítópultján > **biztonsági mentési feladatok** > **folyamatban**. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
+
+## <a name="verify-backup-job-status"></a>Biztonsági mentési feladat állapotának ellenőrzése
+
+A biztonsági mentési feladat részleteit a minden egyes virtuális gépek biztonsági mentésének 2 fázisból áll a **pillanatkép** fázis követ a **adatok átvitele a tárba** fázisban.<br/>
+A pillanatkép fázis együtt a lemezen tárolt helyreállítási pont rendelkezésre állását garantálja **azonnali visszaállítja** és legfeljebb 5 napig attól függően, a felhasználó által beállított pillanatkép megőrzési érhetők el. Adatok átvitele a tárba létrehoz egy helyreállítási pontot a hosszú távú megőrzésének tárolóban. Adatok átvitele a tárba csak elindul a pillanatkép fázis befejezése után.
+
+  ![Biztonsági mentési feladat állapota](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
+
+Kettő **részfeladatok** a háttér egy előtér biztonsági mentési feladatot, amely a ellenőrizni kell az alkalmazás futtatását a **biztonsági mentési feladat** részleteit tartalmazó panel adott, az alábbi:
+
+  ![Biztonsági mentési feladat állapota](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
+
+A **adatok átvitele a tárba** fázis a lemezek méretétől függően befejeződik, a lemez és számos más tényező churn több napig tarthat.
+
+Feladat állapotának függvényében a következő esetekben:
+
+**Snapshot** | **Adatok átvitele a tárba** | **Feladat állapota**
+--- | --- | ---
+Befejeződött | Folyamatban van | Folyamatban van
+Befejeződött | Kihagyva | Befejeződött
+Befejeződött | Befejeződött | Befejeződött
+Befejeződött | Meghiúsult | Figyelmeztetéssel fejeződött be
+Meghiúsult | Meghiúsult | Meghiúsult
+
+
+Most már ezzel a képességgel az ugyanazon virtuális géphez, két biztonsági mentést is futtatható egyszerre, de mindkét fázisban (pillanatkép, az adatok átvitele a tárba) csak egy részfeladat futtathat. Ezért a forgatókönyvek is, hogy egy folyamatban lévő biztonsági mentési feladat sikertelen lesz a következő nap backup eredményezett elkerülik a elválasztás funkciót. Ezt követő napi biztonsági mentések is rendelkezik pillanatkép készítése során befejezett **adatok átvitele a tárba** lesz szükség, ha egy korábbi napi biztonsági mentési feladat előrehaladásának állapotban van.
+A növekményes helyreállítási pont létrehozása a tárolóban, a legutóbbi helyreállítási pont létrehozása a tárolóban lévő összes forgalom rögzíti. A felhasználó nincs nincs hatással a költségek.
+
 
 ## <a name="optional-steps-install-agentallow-outbound"></a>Nem kötelező lépések (telepíthetik az ügynök/kimenő forgalom engedélyezése)
 ### <a name="install-the-vm-agent"></a>Virtuálisgép-ügynök telepítése
@@ -175,8 +203,8 @@ A biztonsági mentési bővítményt a virtuális gépen az Azure nyilvános IP-
 - Ha nehézségek rendelkező virtuális gépek csatlakoztatása, vagy ha a hibát látja **ExtensionSnapshotFailedNoNetwork** próbál csatlakozni, amikor érdemes explicit módon engedélyezi a hozzáférést, a biztonsági mentési bővítményt kommunikálhatnak az Azure nyilvános IP-címhez biztonsági mentési forgalom címeit. Hozzáférési módszer a következő táblázat foglalja össze.
 
 
-**Beállítás** | **Művelet** | **Részletek** 
---- | --- | --- 
+**Beállítás** | **Művelet** | **Részletek**
+--- | --- | ---
 **Az NSG-szabályok beállítása** | Lehetővé teszi a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/> Lehetővé teszi, és minden címtartományt kezelése, helyett hozzáadhat egy szabályt, amely engedélyezi a hozzáférést az Azure Backup szolgáltatás használata egy [szolgáltatáscímke](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure). | [További](../virtual-network/security-overview.md#service-tags) szolgáltatáscímkék kapcsolatban.<br/><br/> Szolgáltatások címkék hozzáférés-kezelés egyszerűsítése és többletköltséggel nem.
 **A proxy üzembe helyezése** | A forgalom útválasztási HTTP-proxy kiszolgáló telepítése. | Az Azure és a tároló nem csak a teljes hozzáférést biztosít.<br/><br/> Szabályozható a tároló URL-címek használata engedélyezett.<br/><br/> A virtuális gépek internet egyetlen pont hozzáférést.<br/><br/> Proxy további költségekkel.
 **Az Azure-tűzfal beállítása** | A virtuális gép, egy teljesen minősített tartománynév-címke az Azure Backup szolgáltatás a forgalom az Azure-tűzfalon keresztül | Könnyen használható, ha rendelkezik Azure-tűzfal beállítása egy virtuális hálózat alhálózatához.<br/><br/> Nem a saját FQDN-címkék létrehozása, és teljes tartománynevek módosíthatja a címke.<br/><br/> Ha az Azure-beli virtuális gépek felügyelt lemezekkel rendelkezik, szükség lehet további megnyitásához a tűzfalas (8443) portot.
@@ -200,7 +228,7 @@ Ha az NSG-KET a virtuális gép hozzáférés kezel, engedélyezi a kimenő hozz
     - A felügyelt virtuális gép: 8443.
 7. A **protokoll**válassza **TCP**.
 8. A **prioritású**, adja meg a prioritás értéke kisebb, mint minden újabb megtagadási szabályoknak.
-   
+
    Ha egy szabályt, amely megtagadja a hozzáférést, az új engedélyezése szabály magasabbnak kell lennie. Ha például van egy **Deny_All** prioritással 1000, az új szabályra szabálykészlet 1000-nél kisebb értékre kell állítani.
 9. Adjon meg egy nevet és leírást a szabályhoz, és válassza ki **OK**.
 
@@ -254,7 +282,7 @@ A bejövő kapcsolatok engedélyezése a proxybeállításokat.
    - A típusa **TCP**.
    - Állítsa be **helyi portok** való **adott**.
    - Állítsa be **távoli port** való **minden port**.
-  
+
 6. Fejezze be a varázslót, és adja meg a szabály nevét.
 
 ###### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>Vegyen fel egy kivételt az NSG-hez a proxy
@@ -282,4 +310,3 @@ Azure-tűzfal engedélyezi a kimenő hozzáférést a hálózati forgalmat az Az
 
 - Az esetleges problémák megoldásához [Azure Virtuálisgép-ügynökökkel](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) vagy [Azure VM backup](backup-azure-vms-troubleshoot.md).
 - [Visszaállítás](backup-azure-arm-restore-vms.md) Azure virtuális gépek.
-

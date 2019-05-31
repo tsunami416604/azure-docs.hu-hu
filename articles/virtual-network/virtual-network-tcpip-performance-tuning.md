@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: d0124d6656167af3942e0d054b4e1fa7a2b48e8b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ad1a5b69e4ec7b44c0e61a5ddd2c06633464d31a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410049"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235001"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Az Azure virtuális gépek TCP/IP-teljesítményhangolása
 
@@ -79,7 +79,7 @@ Ne feledje, hogy növelje a MTU nem feltétlenül hatékonyabb-hálózat létreh
 
 #### <a name="azure-and-vm-mtu"></a>Az Azure és a virtuális gép MTU
 
-Az Azure virtuális gépek MTU alapértelmezés szerint 1500 bájt. A virtuális hálózat az Azure stack-töredékben 1,400 bájt, egy csomag megkísérli. De a virtuális hálózati vermet lehetővé teszi csomagok 2,006 bájt akár Ha a tördelést bit be van állítva az IP-fejléc.
+Az Azure virtuális gépek MTU alapértelmezés szerint 1500 bájt. A virtuális hálózat az Azure stack-töredékben 1,400 bájt, egy csomag megkísérli.
 
 Vegye figyelembe, hogy a virtuális hálózati verem nem természetüknél fogva nem elég hatékony, mert a töredékek csomagok 1,400 bájt, annak ellenére, hogy a virtuális gépek 1500 MTU-rendelkeznek. Nagy része a hálózati csomagok sokkal kisebb, mint 1,400 vagy 1500 bájt.
 
@@ -140,7 +140,7 @@ Hálózati késés szabályozzák a fénysebességgel fiber száloptikás háló
 
 | | | | |
 |-|-|-|-|
-|**útvonal**|**távolságskála**|**Egyirányú idő**|**RTT**|
+|**Route**|**távolságskála**|**Egyirányú idő**|**RTT**|
 |New York, San Francisco|4,148 km-re|21 ms|42 ms|
 |New York-i London|5,585 km-re|28 ms|56 ms|
 |Sydney New York-i|15,993 km-re|80 ms|160 ms|
@@ -178,7 +178,7 @@ Ez a táblázat bemutatja a maximális MB / s sebességet egyetlen TCP-kapcsolat
 | | | | |
 |-|-|-|-|
 |**TCP-ablakméret (bájt)**|**Körbejárási késés (ms)**|**Maximális MB/s átviteli sebesség**|**Maximális megabit/másodperc átviteli sebesség**|
-|65,535|1.|65.54|524.29|
+|65,535|1|65.54|524.29|
 |65,535|30|2.18|17.48|
 |65,535|60|1.09|8.74|
 |65,535|90|.73|5.83|
@@ -237,7 +237,7 @@ Ezek a hatékony TCP beállításait `AutoTuningLevel`:
 | | | | |
 |-|-|-|-|
 |**AutoTuningLevel**|**Méretezési faktor**|**Skálázási szorzót**|**A képlet<br/>maximális méretének kiszámítása**|
-|Letiltva|Egyik sem|Egyik sem|Ablakméret|
+|Letiltva|Nincsenek|Nincsenek|Ablakméret|
 |Korlátozott|4|2^4|Ablakméret * (2 ^ 4)|
 |Erősen korlátozott|2|2^2|Ablakméret * (2 ^ 2)|
 |Normál|8|2^8|Ablakméret * (2 ^ 8)|
@@ -256,7 +256,7 @@ Mivel egy nagyobb MTU nagyobb MSS azt jelenti, hogy vezetőnév e MTU növelése
 
 ### <a name="accelerated-networking-and-receive-side-scaling"></a>A gyorsított hálózatkezelés és a fogadóoldali skálázás
 
-#### <a name="accelerated-networking"></a>Felgyorsított hálózat
+#### <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
 
 Virtuális gép hálózati funkciók régebben lett Processzort, a Vendég virtuális Gépen és a hipervizorgazda is. Minden csomagot, amely a gazdagépen keresztül továbbítását a szoftver dolgozza fel a gazdagép CPU-használat, beleértve az összes virtuális hálózati beágyazás és kibontás. Így további áramlik a forgalom, amely a gazdagép, annál magasabb CPU betölteni. És ha a gazdagép Processzorának elfoglalva más műveletekkel, amely is hatással lesz hálózati átviteli sebességgel és késéssel. Az Azure gyorsított hálózatkezeléssel problémát orvosolja.
 
@@ -264,7 +264,7 @@ Gyorsított hálózatkezelés a belső fejlesztésű programozható hardver az A
 
 Gyorsított hálózatkezelés javítja a teljesítményt azáltal, hogy a Vendég virtuális Gépen kerülni a gazdagépre, és létrehozza a közvetlenül a gazdagép SmartNIC egy datapath. Az alábbiakban néhány gyorsított hálózatkezelés előnyei:
 
-- **Rövidebb válaszidőt / magasabb szintű csomag / másodperc (pps)**: A virtuális kapcsoló eltávolítása a datapath kiküszöböli a csomagokat használhat fel a gazdagép a házirend-feldolgozási idő, és növeli a dolgozhatók fel a virtuális gép csomagok száma.
+- **Rövidebb válaszidőt / magasabb szintű csomag / másodperc (pps)** : A virtuális kapcsoló eltávolítása a datapath kiküszöböli a csomagokat használhat fel a gazdagép a házirend-feldolgozási idő, és növeli a dolgozhatók fel a virtuális gép csomagok száma.
 
 - **Alacsonyabb jitter**: Virtuáliskapcsoló-feldolgozó a szabályzatot, amely a alkalmazni mennyiségét és a munkaterhelés, a CPU, amely a feldolgozási függ. A házirend betartatása hardverre tehermentesítést eltávolítja az adott változékonyságát azáltal, hogy a csomagok közvetlenül a virtuális Gépet, mivel a gazdagép Virtuálisgép kommunikáció és az összes szoftver megszakítások és a környezet kapcsolók a.
 

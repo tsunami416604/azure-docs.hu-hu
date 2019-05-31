@@ -13,18 +13,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 6f743f7ea7fda368fc5895646145f553f3fb50fb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 20bb8d5380f5a905a827dfb12dcc032e327267e0
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864837"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418240"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az eseményvezérelt háttérben történő feldolgozás az Azure WebJobs SDK használatának első lépései
 
-Ez a cikk bemutatja, hogyan használható a Visual Studio 2019 hozzon létre egy Azure WebJobs SDK-projektet, helyileg futtatja az alkalmazást és hogyan telepítheti azt [Azure App Service](overview.md). A projektet hoz létre egy .NET Core-konzolalkalmazást, amely verzióját használja, a WebJobs SDK 3.x. Ha érdekli a verzió 2.x, amely a .NET-keretrendszert használja, lásd: [fejlesztés és üzembe helyezése a Visual Studio használatával – az Azure App Service WebJobs](webjobs-dotnet-deploy-vs.md).
+Ez a cikk bemutatja, hogyan használható a Visual Studio 2019 hozzon létre egy Azure WebJobs SDK-projektet, helyileg futtatja az alkalmazást és hogyan telepítheti azt [Azure App Service](overview.md). Verzió 3.x a WebJobs SDK támogatja a .NET Core és a .NET-keretrendszer konzolalkalmazással. Használata a WebJobs SDK-val kapcsolatos további információkért lásd: [az Azure WebJobs SDK használata az eseményvezérelt háttérben történő feldolgozás](webjobs-sdk-how-to.md).
 
-Használata a WebJobs SDK-val kapcsolatos további információkért lásd: [az Azure WebJobs SDK használata az eseményvezérelt háttérben történő feldolgozás](webjobs-sdk-how-to.md).
+Ez a cikk bemutatja, hogyan kell egy .NET Core-konzolalkalmazást, a WebJobs üzembe helyezése. A .NET-keretrendszer konzolalkalmazást, webjobs, lásd: [WebJobs, a .NET-keretrendszer konzolon alkalmazások](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps). Ha a WebJobs SDK-verzió érdekli 2.x verziója, amely csak a .NET-keretrendszer támogatja, lásd: [fejlesztés és üzembe helyezése a Visual Studio használatával – az Azure App Service WebJobs](webjobs-dotnet-deploy-vs.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +36,7 @@ Használata a WebJobs SDK-val kapcsolatos további információkért lásd: [az 
 
 1. A Visual Studióban válassza ki a **hozzon létre egy új projektet**.
 
-2. Válassza ki **Console App (.NET Core)**.
+2. Válassza ki **Console App (.NET Core)** .
 
 3. Adja a projektnek *WebJobsSDKSample*, majd válassza ki **létrehozás**.
 
@@ -217,7 +217,7 @@ Az Azure Storage emulator helyileg futó nem rendelkezik az a Funkciók, amelyek
 
    ![Storage-fiók létrehozása](./media/webjobs-sdk-get-started/create-storage-account.png)
 
-1. Alatt a **tárolási** csomópontja **Server Explorer**, válassza ki az új tárfiókot. Az a **tulajdonságok** ablakban kattintson a három pontra (**...** ) jobb oldalán a **kapcsolati karakterlánc** érték mező.
+1. Alatt a **tárolási** csomópontja **Server Explorer**, válassza ki az új tárfiókot. Az a **tulajdonságok** ablakban kattintson a három pontra ( **...** ) jobb oldalán a **kapcsolati karakterlánc** érték mező.
 
    ![Kapcsolati karakterlánc három pont](./media/webjobs-sdk-get-started/conn-string-ellipsis.png)
 

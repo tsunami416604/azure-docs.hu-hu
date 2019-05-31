@@ -1,5 +1,5 @@
 ---
-title: SQL Data Warehouse-besorolás |} A Microsoft Docs
+title: Az Azure SQL Data Warehouse besorolási |} A Microsoft Docs
 description: Útmutató a fájlbesorolás segítségével egyidejűséget, fontos, kezeléséhez, és a számítási erőforrásokat az Azure SQL Data Warehouse lekérdezések.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,14 +10,14 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4630e11ef4001c546aecfe74dbced346b6d30e4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 3edae23183896651efcbf7f867204a618a10c85d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000119"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236901"
 ---
-# <a name="sql-data-warehouse-workload-classification"></a>Az SQL Data Warehouse számítási feladatok besorolás
+# <a name="azure-sql-data-warehouse-workload-classification"></a>Az Azure SQL Data Warehouse számítási feladatok besorolás
 
 Ez a cikk bemutatja az SQL Data Warehouse számítási feladatok besorolási folyamata egy erőforrásosztály és a fontosság hozzárendelése a bejövő kérelmeket.
 

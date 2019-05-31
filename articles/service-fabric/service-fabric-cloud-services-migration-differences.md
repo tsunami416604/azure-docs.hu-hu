@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4682e47e664384a6869e1a74e3de6d9083db082b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b486e617389e1611dfebf3d347d2d64df088593
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387631"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258655"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>További tudnivalók a Cloud Services és a Service Fabric közötti különbségekről való migrálás előtt alkalmazásokat.
 A Microsoft Azure Service Fabric az új generációs felhőalapú alkalmazás platform, rugalmasan méretezhető, magas megbízhatóságú elosztott alkalmazásokhoz. Azt mutatja be a csomagolása, üzembe helyezésével, frissítésével és elosztott felhőalkalmazások kezelése frissítés számos új szolgáltatást. 
@@ -88,6 +88,24 @@ Egy általános kommunikációs mechanizmus állapot nélküli környezetekben, 
 A Service Fabric ugyanazt a kommunikációs modellt is használható. Ez akkor hasznos, ha egy meglévő alkalmazást a Cloud Services Service Fabric áttelepítése. 
 
 ![A Service Fabric közvetlen kommunikáció][8]
+
+## <a name="parity"></a>Paritás
+[A cloud Services hasonlít a Service Fabric magas fokú felügyeletet tesz a könnyű használat jegyében tervezett, de most már örökölt szolgáltatásnak, és új-fejlesztéshez a Service Fabric javasolt](https://docs.microsoft.com/azure/app-service/overview-compare); az alábbiakban található egy API-t összehasonlító:
+
+
+| **Felhőalapú szolgáltatás API** | **A Service Fabric API** | **Megjegyzések** |
+| --- | --- | --- |
+| RoleInstance.GetID | FabricRuntime.GetNodeContext.NodeId vagy. Csomópontnév | Azonosító a csomópontnév tulajdonsága |
+| RoleInstance.GetFaultDomain | FabricClient.QueryManager.GetNodeList | Szűrés csomópontnév és FD tulajdonsággal |
+| RoleInstance.GetUpgradeDomain | FabricClient.QueryManager.GetNodeList | NodeName szűrést, és frissítési tulajdonsággal |
+| RoleInstance.GetInstanceEndpoints | FabricRuntime.GetActivationContext or Naming (ResolveService) | FabricRuntime.GetActivationContext mind belül a replikák keresztül ServiceInitializationParameters.CodePackageActivationContext során megadott értékesítésicsatorna CodePackageActivationContext. Inicializálása |
+| RoleEnvironment.GetRoles | FabricClient.QueryManager.GetNodeList | Ha azt szeretné, ehhez írja be a listát kap szerinti szűrés ugyanilyen csomóponttípusok a fürtből manifest FabricClient.ClusterManager.GetClusterManifest keresztül, és a szerepkör/csomóponttípusok innen kimásolhatja. |
+| RoleEnvironment.GetIsAvailable | Csatlakozás WindowsFabricCluster, vagy hozzon létre egy adott csomóponton mutatott FabricRuntime | * |
+| RoleEnvironment.GetLocalResource | CodePackageActivationContext.Log/Temp/Work | * |
+| RoleEnvironment.GetCurrentRoleInstance | CodePackageActivationContext.Log/Temp/Work | * |
+| LocalResource.GetRootPath | CodePackageActivationContext.Log/Temp/Work | * |
+| Role.GetInstances | FabricClient.QueryManager.GetNodeList or ResolveService | * |
+| RoleInstanceEndpoint.GetIPEndpoint | FabricRuntime.GetActivationContext or Naming (ResolveService) | * |
 
 ## <a name="next-steps"></a>További lépések
 A legegyszerűbb áttelepítési út a Cloud Servicesből a Service Fabric, hogy csak a Cloud Services üzembe helyezési cserélje le a Service Fabric-alkalmazás, így az általános architektúrát, az alkalmazás nagyjából azonos. A következő cikk útmutató egy webes vagy feldolgozói szerepkör átalakítása egy Service Fabric állapotmentes szolgáltatás.

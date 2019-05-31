@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service-fürt a webes irányítópult kezelése
 description: Ismerje meg, hogyan használhatja a beépített Kubernetes webes felhasználói felületének irányítópultja az Azure Kubernetes Service (AKS)-fürt kezelése
 services: container-service
-author: iainfoulds
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: iainfou
-ms.openlocfilehash: e831979e0a9f9c8b4d812f682403ecf466abbd13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: twhitney
+ms.openlocfilehash: 80c0bd630ba2263696b72b003e27c53f1e457704
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465504"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304529"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Hozzáférés a Kubernetes webes irányítópultot az Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Kubernetes webes irányítópultot is használható alapvető felügyeleti műve
 
 A Kubernetes-irányítópult további információkért lásd: [Kubernetes webes felhasználói felületének irányítópultja][kubernetes-dashboard].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ebben a dokumentumban ismertetett lépések feltételezik, hogy már létrehozott egy AKS-fürtöt, és létrehozott egy `kubectl` kapcsolatot a fürttel. Ha szeretne létrehozni egy AKS-fürtöt, tekintse meg a [AKS gyors][aks-quickstart].
 

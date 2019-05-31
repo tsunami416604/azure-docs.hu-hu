@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: e2580a57f943ad8da16cfbaeda2ee35d0f4bb691
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: ed534f910fa1e44d3d53ab61ee86378eba788036
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073184"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240378"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Az Azure Database for PostgreSQL - kiszolgáló egyetlen tarifacsomagok
 
@@ -36,51 +36,9 @@ Válasszon egy tarifacsomagot, használja az alábbi táblázat kiindulási pont
 
 Miután létrehozott egy kiszolgálót, a virtuális magok, a hardver generációja és a díjszabás számát réteg (kivéve, és az alapszintű) módosíthatja felfelé vagy lefelé másodpercen belül. Is egymástól függetlenül módosíthatja felfelé storage és a biztonsági másolat megőrzési idejének felfelé vagy lefelé az alkalmazás leállása nélkül. A biztonsági mentési tár írja be a kiszolgáló létrehozása után nem módosítható. További információkért lásd: a [méretezni az erőforrásokat](#scale-resources) szakaszban.
 
-
 ## <a name="compute-generations-and-vcores"></a>Számítási generáció és a virtuális magok
 
-A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló hardver logikai CPU, a virtuális magok. Jelenleg két számítási generáció, 4. generációs és a Gen 5 közül választhat. Gen 4 logikai CPU k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorral. Gen 5 logikai CPU k Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorral. A gen 4 és a Gen 5 ("X" azt jelzi, hogy elérhető), a következő régiókban érhetők el. 
-
-| **Az Azure-régió** | **A gen 4** | **A gen 5** |
-|:---|:----------:|:--------------------:|
-| USA középső régiója |  | X |
-| USA keleti régiója |  | X |
-| USA 2. keleti régiója |  | X |
-| USA északi középső régiója |  | X |
-| USA déli középső régiója |  | X |
-| USA nyugati régiója |  | X |
-| USA nyugati régiója, 2. |  | X |
-| Dél-Brazília |  | X |
-| Közép-Kanada |  | X |
-| Kelet-Kanada |  | X |
-| Észak-Európa |  | X |
-| Nyugat-Európa |  | X |
-| Közép-Franciaország |  | X |
-| Az Egyesült Királyság déli régiója |  | X |
-| Az Egyesült Királyság nyugati régiója |  | X |
-| Kelet-Ázsia |  | X |
-| Délkelet-Ázsia |  | X |
-| Kelet-Ausztrália |  | X |
-| Ausztrália középső régiója |  | X |
-| Ausztrália 2. középső régiója |  | X |
-| Délkelet-Ausztrália |  | X |
-| Közép-India |  | X |
-| Dél-India |  | X |
-| Nyugat-India |  | X |
-| Kelet-Japán |  | X |
-| Nyugat-Japán |  | X |
-| Korea középső régiója |  | X |
-| Korea déli régiója |  | X |
-| Kelet-Kína 1 | X |  |
-| Kelet-Kína 2 |  | X |
-| Észak-Kína 1 | X |  |
-| Észak-Kína 2 |  | X |
-| Közép-Németország |  | X |
-| US DoD – Középső régió  | X |  |
-| US DoD – Kelet  | X |  |
-| USA-beli államigazgatás – Arizona |  | X |
-| USA-beli államigazgatás – Texas |  | X |
-| USA-beli államigazgatás – Virginia |  | X |
+A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló hardver logikai CPU, a virtuális magok. Kína kelet 1, Kína Észak 1, USA védelmi Minisztériuma – középső régiója és USA védelmi Minisztériuma – keleti kihasználhassák a Gen 4 logikai CPU alapuló Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorral. Minden más régiókban kihasználhassák a Gen 5 logikai CPU alapuló Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorral.
 
 ## <a name="storage"></a>Storage
 
@@ -93,19 +51,27 @@ A tároló üzembe helyezi az érték a tárolási kapacitás érhető el az Azu
 | Növekmény tárméret | 1 GB | 1 GB | 1 GB |
 | IO | Változó |3 IOPS/GB<br/>Minimum 100 IOPS<br/>Max 6000 IOPS | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Max 6000 IOPS |
 
-Hozzáadhat további tárolókapacitás alatt és a kiszolgáló létrehozása után. Az alapszintű csomag nem biztosítanak az iops-t. Az általános célú és memóriahasználatra optimalizált tarifacsomagok az iops-t a kiépített tárhely méretére vonatkozik egy 3:1 arányt a skálázás.
+Alatt és a kiszolgáló létrehozása után adja hozzá a további tárolókapacitás, és lehetővé teszi a rendszer storage tárolófelhasználásának a számítási feladat alapján automatikusan nő. Az alapszintű csomag nem biztosítanak az iops-t. Az általános célú és memóriahasználatra optimalizált tarifacsomagok az iops-t a kiépített tárhely méretére vonatkozik egy 3:1 arányt a skálázás.
 
 Az i/o-használat az Azure Portalon vagy Azure CLI-parancsok használatával követheti nyomon. A releváns metrikákat kíván monitorozni vannak [tárhelykorlátozás, tárolási százalékos aránya, felhasznált tárterület és i/o-százalék](concepts-monitoring.md).
 
 ### <a name="reaching-the-storage-limit"></a>Skálázhatósági méretkorlátot
 
-A kiszolgáló csak olvashatóként lesz megjelölve, amikor a szabad tárterület 5 GB alá vagy a kiépített tárterület 5%-a alá csökken (amelyik kisebb). Ha például 100 GB tárhelyet kiépítése, és a tényleges használat halad 95 GB, a kiszolgáló van megjelölve, csak olvasható. Ha 5 GB tárterületet osztott ki, a kiszolgáló akkor lesz megjelölve csak olvashatóként, amikor a szabad tárterület 250 MB alá csökken.  
+Kevesebb mint 100 GB-os kiépített tároló kiszolgálók csak olvasható, ha a szabad tárhely kisebb, mint 512 MB-ot vagy a felhasznált tárterület mérete 5 %-át lesznek megjelölve. Több mint 100 GB-os kiépített tároló kiszolgálók lesznek megjelölve olvasási, csak akkor, ha a szabad tárterületre 5 GB-nál kisebb.
+
+Például, ha ellátta 110 GB tárhelyet igényel, és a tényleges használat keresztül haladnak 105 GB, a kiszolgáló van megjelölve, csak olvasható. Azt is megteheti, ha 5 GB adattárolás kiépítése, a kiszolgáló van megjelölve csak olvasható 512 MB-nál kevesebb a szabad tárhely elérésekor.
 
 Ha a kiszolgáló értékre van állítva, csak olvasható, az összes meglévő munkamenet le vannak választva, és a nem véglegesített tranzakció vissza legyen állítva. Bármely ezt követő írási műveletek és a tranzakció érvényesítése sikertelen. Minden olvasási lekérdezések zavartalanul fog működni.  
 
 Növelje a kiosztott tárterület a kiszolgálóhoz, vagy új munkamenet indításához az írható-olvasható módban, és a drop adatok szabad tárhely felszabadítása érdekében. Futó `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` állítja be a jelenlegi munkamenet olvasási, írási módban. Annak érdekében, hogy adatsérülés elkerülése érdekében ne hajtsa végre írási műveleteket Ha a kiszolgáló továbbra is a csak olvasható állapotát.
 
-Azt javasoljuk, hogy beállította egy riasztás arra az esetre, ha a kiszolgáló tárhelyét hamarosan eléri a küszöbértéket a csak olvasható állapotba első elkerülése érdekében. További információkért lásd a dokumentációt [riasztást beállítása](howto-alert-on-metric.md).
+Azt javasoljuk, hogy kapcsolja be a storage automatikus növekedést vagy riasztás beállításához arra az esetre, ha a kiszolgáló tárhelyét hamarosan eléri a küszöbértéket így elkerülheti a csak olvasható állapotának beolvasása. További információkért lásd a dokumentációt [riasztást beállítása](howto-alert-on-metric.md).
+
+### <a name="storage-auto-grow"></a>Tárolási auto-növekedés
+
+Ha a tárolási automatikus növekedés engedélyezve van, a storage automatikusan nő a terhelés befolyásolása nélkül. Kevesebb mint 100 GB-os kiépített tároló kiszolgálók esetében a felhasznált tárterület mérete eléri 5 GB-tal, amint a szabad tárhely nem éri el a nagyobb, mint 1 GB vagy 10 %-a felhasznált tárterület. Több mint 100 GB-os kiépített tároló kiszolgálók esetében a felhasznált tárterület mérete növekszik 5 % 5 %-a kiépített tárhely méretére alatt rendelkezésre álló szabad tárhely esetén. A fenti maximális tárolási korlátokhoz a alkalmazni.
+
+Például ha 1000 GB tárhely kiépítése, és a tényleges használat keresztül haladnak 950 GB, a kiszolgáló tárméret 1050 GB-ra emelkedett. Azt is megteheti Ha 10 GB tárhelyet kiépítése, a tároló mérete esetén 15 GB-os növelését kevesebb mint 1 GB tárhelyet díjmentes.
 
 ## <a name="backup"></a>Backup
 

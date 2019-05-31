@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f4bbea8acd447a731cf5c56f9876baf9183735ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cba57875daf9b570d274ec8c4e9c4146af0dc045
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60518635"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072831"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Tárolócsoportok az Azure Container Instances szolgáltatásban
 
@@ -65,7 +65,7 @@ További információkért lásd: a [ResourceRequirements] [ resource-requiremen
 
 * Foglaljon le egy **minimális** 1 Processzor és a egy tárolócsoport memória 1 GB. Csoporton belül az egyes tárolópéldányok üzembe lehet helyezni 1-nél kisebb CPU és memória 1 GB. 
 
-* Az a **maximális** erőforrásokat egy tárolócsoport, tekintse meg a [Erőforrás rendelkezésre állási] [aci-régió – rendelkezésre állási] az Azure Container Instances üzembe helyezés a régióban.
+* Az a **maximális** erőforrásokat egy tárolócsoport, tekintse meg a [erőforrás rendelkezésre állási] [ region-availability] Azure Container Instances üzembe helyezés a régióban.
 
 ## <a name="networking"></a>Hálózat
 

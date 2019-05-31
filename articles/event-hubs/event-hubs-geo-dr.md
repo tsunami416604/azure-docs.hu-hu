@@ -14,18 +14,18 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 56077d018c1ae62809d51fc66d7f5aff93fb4c02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b3b3b019df70b6c27833afdd0447ecf32da32ff
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821824"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305007"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Az Azure Event Hubs - Geo-vészhelyreállítás 
 
 Ha a teljes Azure-régióban, vagy az adatközpontok (Ha nincs [rendelkezésre állási zónák](../availability-zones/az-overview.md) használt) leállás következik be, kritikus fontosságú adatok feldolgozásához, eltérő régióban vagy datacenter továbbra is. Emiatt a *Geo-disaster recovery* és *georeplikációs* bármely vállalat számára fontos funkciók. Az Azure Event Hubs geo-vészhelyreállítás és georeplikáció útján, a névterek szintjén is támogatja. 
 
-A Geo-disaster recovery funkció érhető el globálisan az Event Hubs Standard Termékváltozat esetében.
+A Geo-disaster recovery funkció érhető el globálisan az Event Hubs Standard és a dedikált Termékváltozat. Vegye figyelembe, hogy a geo-pár névterek csak az azonos szintű Termékváltozat között is. Például ha egy névtér egy fürtben, amely csak a saját dedikált Termékváltozatban érhető el, hogy azt csak párosítani lehessen egy másik fürtben névtér. 
 
 ## <a name="outages-and-disasters"></a>Leállások és katasztrófák kezelése
 

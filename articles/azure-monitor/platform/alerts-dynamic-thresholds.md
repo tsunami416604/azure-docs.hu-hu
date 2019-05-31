@@ -5,17 +5,17 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 04/26/2019
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3773a3e121c3b0162b83ea075601b7386228e4d5
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 0d6c578186dab9622ce650f535e11d505efcecb3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876196"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067618"
 ---
-# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Metrikákhoz kapcsolódó riasztások dinamikus küszöbértékekkel az Azure monitorban (nyilvános előzetes verzió)
+# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások dinamikus küszöbértékekkel az Azure monitorban
 
 Metrikariasztás dinamikus küszöbértékek észlelése a fejlett gépi tanulási (ML) további metrikák általi korábbi viselkedés, mintákat és rendellenességeket, amelyek jelzik a lehetséges szolgáltatással kapcsolatos problémák azonosítására használ. Egy egyszerű felhasználói felület és a méretezett operations támogatást biztosít a felhasználók olyan teljesen automatizált módon konfigurálhatja a riasztási szabályok az Azure Resource Manager API-n keresztül.
 
@@ -116,7 +116,7 @@ A következő elemeket a gyakorlati tanácsok a riasztások konfigurálása az e
 
 4. Miután kiválasztotta a célként megadott erőforrás, kattintson a **feltétel hozzáadása**.
 
-5. Válassza ki a **"CPU Percentage"**.
+5. Válassza ki a **"CPU Percentage"** .
 
 6. Szükség esetén pontosíthatja a metrika módosításával **időszak** és **összesítési**. Metrikus típus használata "Maximum" összesítés típusa, kevésbé tükrözik a működését, mert nem ajánlott. Az "Maximális" összesítési típus statikus küszöbérték esetleg több megfelelő.
 
@@ -153,7 +153,7 @@ A következő elemeket a gyakorlati tanácsok a riasztások konfigurálása az e
 
 4. Miután kiválasztotta a célként megadott erőforrás, kattintson a **feltétel hozzáadása**.
 
-5. Válassza ki a **"HTTP kérelem végrehajtási idő"**.
+5. Válassza ki a **"HTTP kérelem végrehajtási idő"** .
 
 6. Szükség esetén pontosíthatja a metrika módosításával **időszak** és **összesítési**. Metrikus típus használata "Maximum" összesítés típusa, kevésbé tükrözik a működését, mert nem ajánlott. Az "Maximális" összesítési típus statikus küszöbérték esetleg több megfelelő.
 

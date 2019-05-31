@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 3d50746324ddac21f222d4c743f4b7bf6ee9b773
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: d9cc5da0cd2936c1ac79a308366b8164548cb202
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864808"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241726"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Az Azure API Management a felhasználói fiókok kezelése
 
-Az API Management szolgáltatásban a fejlesztők az API-t, amely elérhetővé teszi az API Management segítségével a felhasználók. Ez az útmutató ismerteti, hogyan hozhat létre, és meghívhatja a fejlesztők az API-k és termékek használatára, hogy elérhetővé számukra az API Management-példánnyal. A felhasználói fiókok kezelése programozott módon további információkért lásd: a [felhasználó típusú entitás](https://docs.microsoft.com/rest/api/apimanagement/user) dokumentációjában találhatók a [API Management REST](/rest/api/apimanagement/) hivatkozást.
+Az API Management szolgáltatásban a fejlesztők az API-t, amely elérhetővé teszi az API Management segítségével a felhasználók. Ez az útmutató ismerteti, hogyan hozhat létre, és meghívhatja a fejlesztők az API-k és termékek használatára, hogy elérhetővé számukra az API Management-példánnyal. A felhasználói fiókok kezelése programozott módon további információkért lásd: a [felhasználó típusú entitás](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user) dokumentációjában találhatók a [API Management REST](/rest/api/apimanagement/) hivatkozást.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 

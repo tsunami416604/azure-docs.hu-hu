@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: raynew
-ms.openlocfilehash: 593a82221ec94e43d50b7382ba89053d5f68864a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e96aafe61c0d8547ffca9e97bfd9e90c9529155f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65805921"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237269"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Nagy számú VMware virtuális gépek/fizikai kiszolgálók vészhelyreállításának beállítása
 
@@ -155,7 +155,7 @@ Folyamat kiszolgálókapacitás érintett forgalom díjait, és nem engedélyeze
 
 **CPU** | **Memória** | **Gyorsítótárlemez** | **Adatváltozásának**
  --- | --- | --- | --- 
-12 vcpu-k<br> 2 sockets * 6 mag, 2,5 GHz-es @ | 24 GB | 1 GB | Akár 2 TB naponta
+12 vcpu-k<br> 2 sockets * 6 mag, 2,5 GHz-es @ | 24 GB | 1 GB | Akár 2 TB naponta
 
 Állítsa be a folyamatkiszolgáló a következőképpen:
 
@@ -188,7 +188,7 @@ Miután az első kötegbe tartozó virtuális gépek replikálása indíthat, fi
 1. Rendeljen hozzá egy katasztrófa utáni helyreállítás rendszergazdai replikált gépek állapotának monitorozásához.
 2. [Események figyelése](site-recovery-monitor-and-troubleshoot.md) replikált elemek és az infrastruktúra.
 3. [Az állapotmonitorozás](vmware-physical-azure-monitor-process-server.md) a horizontális felskálázási folyamat kiszolgálók.
-4. Regisztráljon, [e-mail-értesítések](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot.md#subscribe-to-email-notifications) események megkönnyíteni a felügyeletet.
+4. Regisztráljon, [e-mail-értesítések](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications) események megkönnyíteni a felügyeletet.
 5. Végezhet rendszeres [vészhelyreállítási próbák](site-recovery-test-failover-to-azure.md), annak érdekében, hogy minden a várt módon működik.
 
 

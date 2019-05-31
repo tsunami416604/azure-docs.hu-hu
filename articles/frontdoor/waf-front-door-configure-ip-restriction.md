@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 05/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: b129579916330a34a2a78d98f2c7653f129d3319
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: dae2bb8ece9ef56c0999e0f89abbf6f8d8e950e2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523707"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242928"
 ---
 # <a name="configure-an-ip-restriction-rule-with-web-application-firewall-for-azure-front-door-preview"></a>Az IP-korlátozási szabály konfigurálása webalkalmazási tűzfallal rendelkező Azure bejárati ajtajának (előzetes verzió)
  Ez a cikk bemutatja, hogyan bejárati ajtajának Azure webalkalmazási tűzfal (WAF) az IP-korlátozási szabályok konfigurálása az Azure CLI, Azure PowerShell-lel vagy Azure Resource Manager-sablon használatával.
@@ -157,7 +157,7 @@ Hozzon létre egy IP-egyezés a feltétel az összes szabály
    Használja a [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) parancsot határozza meg a műveletet, és a prioritás értéke. A következő példában a kérelmeket az ügyfél IP-címek, amelyek megfelelnek a lista engedélyezett lesz. 
 
 ```powershell
-  $IPAllowRule = New-AzFrontDoorCustomRuleObject `
+  $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
     -Name "IPAllowRule" `
     -RuleType MatchRule `
     -MatchCondition $IPMatchCondition `
@@ -166,7 +166,7 @@ Hozzon létre egy IP-egyezés a feltétel az összes szabály
 Hozzon létre egy letiltása az összes IP-szabály alacsonyabb prioritású, mint a korábbi IP-cím engedélyezése a szabály.
 
 ```powershell
-  $IPBlockAll = New-AzFrontDoorCustomRuleObject `
+  $IPBlockAll = New-AzFrontDoorWafCustomRuleObject `
     -Name "IPDenyAll" `
     -RuleType MatchRule `
     -MatchCondition $IPMatchALlCondition `

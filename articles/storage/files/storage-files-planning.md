@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 82c0aa53fa8905e0e58cb784a478ade474ec5601
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9144165a3ce593dce11b5e50ce5f0af9f0afa480
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232761"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237656"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -111,7 +111,7 @@ A használt GiB alább a létesített megosztás méretének csökkentése érde
 
 Az alábbi táblázatban néhány példa az ezekben a képletekben a létesített megosztás méretek mutatja be:
 
-|Kapacitás (GB) | Alapkonfiguráció IOPS | Sorozatfelvétel IOPS | Kimenő forgalom (MiB/s) | Bejövő (MiB/s) |
+|Kapacitás (GB) | Alap IOPS-érték | Sorozatfelvétel IOPS | Kimenő forgalom (MiB/s) | Bejövő (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Legfeljebb 300     | 66   | 44   |
 |500         | 500     | Legfeljebb 1500 felhasználóval   | 90   | 60   |
@@ -189,9 +189,9 @@ Több Azure-fájlmegosztások az Azure File Sync használatával egyetlen Window
 Átviteli adatokat egy már létező fájlt oszt meg, például egy helyszíni fájlmegosztás, az Azure Files tömeges számos egyszerű lehetőség van. Néhány népszerű eszközök közé tartozik a (nem teljes lista):
 
 * **Az Azure File Sync**: Egy Azure-fájlmegosztások ("Felhőbeli végpont") és a egy Windows-könyvtár névtér ("kiszolgálói végpont") között első szinkronizálási részeként az Azure File Sync replikálja az összes adat a meglévő fájlmegosztást a az Azure Files.
-* **[Az Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: Az Azure Import/Export szolgáltatás lehetővé teszi, hogy biztonságosan továbbíthat nagy mennyiségű adatot az Azure-fájlmegosztások merevlemezes meghajtók egy Azure-adatközpontban való szállításával. 
-* **[A Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: A Robocopy egy olyan jól ismert másolás eszköz, Windows és Windows Server részét képező. A Robocopy adatok átviteléhez az Azure Files helyileg a fájlmegosztás csatlakoztatása és a csatlakoztatott helyet használva a Robocopy parancsot a célként használható.
-* **[Az AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#upload-files-to-an-azure-file-share)**: Az AzCopy egy parancssori segédprogram, és az Azure Files, valamint az Azure Blob storage, az adatok másolása szolgál az optimális teljesítmény érdekében egyszerű parancs használatával. Az AzCopy Windows és Linux rendszerekhez érhető el.
+* **[Az Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : Az Azure Import/Export szolgáltatás lehetővé teszi, hogy biztonságosan továbbíthat nagy mennyiségű adatot az Azure-fájlmegosztások merevlemezes meghajtók egy Azure-adatközpontban való szállításával. 
+* **[A Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : A Robocopy egy olyan jól ismert másolás eszköz, Windows és Windows Server részét képező. A Robocopy adatok átviteléhez az Azure Files helyileg a fájlmegosztás csatlakoztatása és a csatlakoztatott helyet használva a Robocopy parancsot a célként használható.
+* **[Az AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : Az AzCopy egy parancssori segédprogram, és az Azure Files, valamint az Azure Blob storage, az adatok másolása szolgál az optimális teljesítmény érdekében egyszerű parancs használatával.
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)

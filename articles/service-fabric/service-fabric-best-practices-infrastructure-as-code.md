@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2dfe1493c6611fb69a417895aaa1028ad5881b9c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159927"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237418"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktúra mint kód
 
@@ -95,6 +95,47 @@ for root, dirs, files in os.walk(self.microservices_app_package_path):
         microservices_sfpkg.write(os.path.join(root, file), os.path.join(root_folder, file))
 
 microservices_sfpkg.close()
+```
+
+## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Az Azure virtuális gép operációs rendszer automatikus frissítési beállításai 
+Frissíti a virtuális gépek egy olyan felhasználó által kezdeményezett művelet, és a használata ajánlott [virtuális gép méretezési beállítása automatikus operációsrendszer-frissítés](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) Azure Service Fabric-fürtök gazdagép javításkezelőhöz; Patch Orchestration Application egy másik megoldás, amely szól, amikor az Azure-on kívül üzemeltetett bár gyűjteményértékelést kelljen végezni az Azure-ban egy gyakori OK, inkább a virtuális gép operációs rendszer automatikus verziófrissítése POA üzemeltető POA használható az Azure-ban keresztül POA. Ahhoz, hogy az operációs rendszer automatikus verziófrissítése, a számítási virtuális gép méretezési beállítása erőforrás-kezelő sablon tulajdonságai a következők:
+
+```json
+"upgradePolicy": {
+   "mode": "Automatic",
+   "automaticOSUpgradePolicy": {
+        "enableAutomaticOSUpgrade": true,
+        "disableAutomaticRollback": false
+    }
+},
+```
+Operációs rendszer automatikus frissítéseinek használata a Service Fabric, az új operációsrendszer-képet egy frissítési tartományt ki lesz állítva a Service Fabric-ban futó szolgáltatások magas rendelkezésre állás fenntartása érdekében egyszerre. Hogy az operációs rendszer automatikus verziófrissítése, a Service Fabric a fürthöz konfigurálva a Silver szintű tartóssági szint vagy újabb kell lennie.
+
+Ellenőrizze, hogy megakadályozza, hogy a windows gazdagépein összehangolatlan frissítések kezdeményezése hamis értékre van állítva a a következő beállításkulcsot: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+
+A Windows Update beállításkulcsot "false" értékűre, a számítási virtuális gép méretezési beállítása erőforrás-kezelő sablon tulajdonságai a következők:
+```json
+"osProfile": {
+        "computerNamePrefix": "{vmss-name}",
+        "adminUsername": "{your-username}",
+        "secrets": [],
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": false
+        }
+      },
+```
+
+## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Az Azure Service Fabric-fürt frissítési konfigurálása
+A következő egy Service Fabric-fürt Resource Manager-sablon tulajdonság automatikus frissítés engedélyezése:
+```json
+"upgradeMode": "Automatic",
+```
+Manuálisan frissítse a fürtöt, töltse le a kabinetfájl/deb terjesztési fürt virtuális géphez, és ezután meghívja az alábbi PowerShell-lel:
+```powershell
+Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
+Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
+Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 ```
 
 ## <a name="next-steps"></a>További lépések

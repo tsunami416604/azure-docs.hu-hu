@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 3/26/2019
 ms.author: victorh
-ms.openlocfilehash: e35f01cc5479a5d27d92c9ed74a12bc44db673cd
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 65ed28c967164be4d239cd4d59b6b36f06caeced
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65754048"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238407"
 ---
 | Resource | Alapértelmezett/maximális korlát | Megjegyzés |
 | --- | --- | --- |
@@ -23,12 +23,13 @@ ms.locfileid: "65754048"
 | Háttér-HTTP-beállítások |100<sup>1</sup> | |
 | Átjárónkénti példányok száma |32 | |
 | SSL-tanúsítványok |100<sup>1</sup> |HTTP-figyelőnként 1 |
+| SSL-tanúsítvány maximális mérete |V1 TERMÉKVÁLTOZATOT – 10 KB-OS<br>V2 SZINTŰ TERMÉKVÁLTOZATOT – 25 KB| |
 | Hitelesítési tanúsítványok |100 | |
 | Megbízható legfelső szintű tanúsítványok |100 | |
 | Minimális kérés időtúllépése |1 másodperc | |
 | Kérelem maximális időtúllépése |24 óra | |
-| Webhelyek száma |100<sup>1</sup> |HTTP-figyelőnként 1 |
-| URL-címleképezések száma figyelő |1. | |
+| Helyek száma |100<sup>1</sup> |HTTP-figyelőnként 1 |
+| URL-címleképezések száma figyelő |1 | |
 | URL-cím maximális-alapú szabályt leképezése|100||
 | Az átirányítási konfigurációk |100<sup>1</sup>| |
 | WebSocket egyidejű kapcsolat |Medium gateways 20k<br> Nagy átjárók 50k| |

@@ -12,17 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: lagayhar
-ms.openlocfilehash: bbf9c162cd52dc94ee820c8597f36f7cbfeace5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4cc1456aa9928cbd4a24c203eab62e3e75b4d7c1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691301"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256188"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
-
-Az [Application Insights](https://azure.microsoft.com/services/application-insights/) egy bővíthető elemzési szolgáltatás a webfejlesztők számára, amely segít megérteni az élő alkalmazása teljesítményét és használatát. Ezzel [automatikusan tartozó kérelem, a nyomon követése függőségeket és a teljesítményszámlálók gyűjtése](auto-collect-dependencies.md#java), [diagnosztizálhatja a teljesítménybeli problémák és kivételek](../../azure-monitor/app/detect-triage-diagnose.md), és [kód írása] [ api] nyomon követésére, mit a felhasználók az alkalmazását. 
+Az [Application Insights](https://azure.microsoft.com/services/application-insights/) egy bővíthető elemzési szolgáltatás a webfejlesztők számára, amely segít megérteni az élő alkalmazása teljesítményét és használatát. Ezzel [automatikusan tartozó kérelem, a nyomon követése függőségeket és a teljesítményszámlálók gyűjtése](auto-collect-dependencies.md#java), diagnosztizálhatja a teljesítménnyel kapcsolatos hibákat és kivételeket, és [kód írása] [ api] nyomon követheti a felhasználók használják az alkalmazást. 
 
 ![Képernyőkép a mintaadatok áttekintése](./media/java-get-started/overview-graphs.png)
 
@@ -487,7 +486,6 @@ Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy 
 * [Unix-teljesítményszámlálók figyelése](java-collectd.md)
 * [A weboldalak figyelésével](javascript.md) megfigyelheti az oldalbetöltési időket, az AJAX-hívásokat és a böngészőkivételeket.
 * [Egyéni telemetriát](../../azure-monitor/app/api-custom-events-metrics.md) írhat a böngészőben vagy a kiszolgálón való használat nyomon követése érdekében.
-* [Irányítópultokat](../../azure-monitor/app/app-insights-dashboards.md) hozhat létre a rendszer megfigyelésével kapcsolatos fő diagramok összegyűjtéséhez.
 * Az [Elemzések](../../azure-monitor/app/analytics.md) használatával hatékony telemetriai lekérdezéseket hajthat végre az alkalmazásból
 * További információ: [Azure Java-fejlesztőknek](/java/azure).
 

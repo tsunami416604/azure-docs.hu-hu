@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2018
+ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: b5467711f06380ca61b4a9d5150b66c3f945c08c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 73dd46d1ca0a20748d7a3a7838c499f0c659253d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141076"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241680"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>API-k védelme az Azure Active Directory és az API Management az OAuth 2.0 használatával
 
@@ -44,17 +44,19 @@ A következő lépések rövid áttekintése:
 
 Az Azure AD-vel API-k védelme, az első lépéseként kell regisztrálni egy alkalmazást, amely az API-t jelöli az Azure AD-ben. 
 
-1. Keresse meg az Azure AD-bérlőhöz, és keresse meg **alkalmazásregisztrációk (örökölt)**.
+1. Keresse meg a [az Azure portal - alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapot. 
 
-2. Válassza az **Új alkalmazás regisztrálása** elemet. 
+2. Válassza ki **új regisztrációs**. 
 
-3. Adja meg az alkalmazás nevét. (Ebben a példában a név `backend-app`.)  
+1. Amikor megjelenik az **Alkalmazás regisztrálása lap**, adja meg az alkalmazás regisztrációs adatait: 
+    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `backend-app`). 
+    - Az a **támogatott fióktípusok** szakaszban jelölje be **bármely szervezeti directory fiókok**. 
 
-4. Válasszon **webalkalmazás / API** , a **alkalmazástípus**. 
+1. Hagyja a **átirányítási URI-t** szakasz üres most.
 
-5. A **bejelentkezési URL-**, használhat `https://localhost` helyettesíti.
+1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához. 
 
-6. Kattintson a **Létrehozás** gombra.
+1. Az alkalmazás **áttekintése** lapon, keresse meg a **Alkalmazásazonosítót (ügyfél)** értékét, és jegyezze fel későbbi használatra.
 
 Az alkalmazás létrehozásakor a jegyezze meg a **Alkalmazásazonosító**, egy későbbi lépésben való használatra. 
 
@@ -62,23 +64,25 @@ Az alkalmazás létrehozásakor a jegyezze meg a **Alkalmazásazonosító**, egy
 
 Minden ügyfélalkalmazás, amely meghívja az API-t kell regisztrálni egy alkalmazást, valamint az Azure AD-ben. Ebben a példában az ügyfélalkalmazásra a fejlesztői konzolt az API Management fejlesztői portálon. Íme egy másik alkalmazás regisztrálása az Azure ad-ben, amely a fejlesztői konzol jelöli.
 
-1. Miközben a **alkalmazásregisztrációk (örökölt)** válassza **új alkalmazásregisztráció**. 
+1. Keresse meg a [az Azure portal - alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapot. 
 
-2. Adja meg az alkalmazás nevét. (Ebben a példában a név `client-app`.)
+1. Válassza ki **új regisztrációs**.
 
-3. Válasszon **webalkalmazás / API** , a **alkalmazástípus**.  
+1. Amikor megjelenik az **Alkalmazás regisztrálása lap**, adja meg az alkalmazás regisztrációs adatait: 
+    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `client-app`). 
+    - Az a **támogatott fióktípusok** szakaszban jelölje be **bármely szervezeti directory fiókok**. 
 
-4. A **bejelentkezési URL-**, használhat `https://localhost` helyőrző, vagy a bejelentkezési URL-címe az API Management-példány. (Ebben a példában az URL-cím van `https://contoso5.portal.azure-api.net/signin`.)
+1. Az a **átirányítási URI-t** szakaszban jelölje be `Web` , és adja meg az URL-cím `https://contoso5.portal.azure-api.net/signin`
 
-5. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához. 
 
-Az alkalmazás létrehozásakor a jegyezze meg a **Alkalmazásazonosító**, egy későbbi lépésben való használatra. 
+1. Az alkalmazás **áttekintése** lapon, keresse meg a **Alkalmazásazonosítót (ügyfél)** értékét, és jegyezze fel későbbi használatra.
 
 Hozza létre az alkalmazás használatát egy későbbi lépésben, az ügyfél titkos kulcs.
 
-1. Válassza ki **beállítások** újra, és nyissa meg **kulcsok**.
+1. Az ügyfélalkalmazás oldalak listájából válassza ki a **tanúsítványok és titkos kulcsok**, és válassza ki **új titkos ügyfélkulcsot**.
 
-2. A **jelszavak**, adjon meg egy **kulcs leírása**. Válassza ki, ha a kulcsot kell jár le, és válassza ki **mentése**.
+2. A **ügyfélkódot hozzáadása**, adjon meg egy **leírás**. Válassza ki, ha a kulcsot kell jár le, és válassza ki **Hozzáadás**.
 
 Jegyezze fel a kulcs értékét. 
 
@@ -86,17 +90,17 @@ Jegyezze fel a kulcs értékét.
 
 Most, hogy a regisztráció két alkalmazásokat, amelyek az API-t és a fejlesztői konzolt kell biztosítania az engedélyt, hogy az ügyfél-alkalmazásnak, hogy a háttér-alkalmazást hívja.  
 
-1. Keresse meg a **alkalmazásregisztráció (örökölt)**. 
+1. Navigáljon a **alkalmazásregisztrációk**. 
 
-2. Válassza ki `client-app`, és nyissa meg **beállítások**.
+2. Válassza ki `client-app`, és folytassa a listában, az alkalmazás lapjainak **API-engedélyek**.
 
-3. Válassza ki **szükséges engedélyek** > **Hozzáadás**.
+3. Válassza ki **adjon hozzá egy engedélyt**.
 
-4. Válassza ki **API kiválasztása**, és keressen rá a `backend-app`.
+4. A **API kiválasztása**, kereséséhez és kijelöléséhez `backend-app`.
 
-5. A **delegált engedélyek**válassza `Access backend-app`. 
+5. A **delegált engedélyek**, válassza ki a megfelelő engedélyekkel `backend-app`.
 
-6. Válassza ki **kiválasztása**, majd válassza ki **kész**. 
+6. Válassza ki **engedélyek hozzáadása** 
 
 > [!NOTE]
 > Ha **Azure Active Directory** nem szerepel az engedélyek más alkalmazásoknak, jelölje be **Hozzáadás** hozzáadhatja a listából.

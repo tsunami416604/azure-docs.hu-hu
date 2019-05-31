@@ -3,7 +3,7 @@ title: 'Az Azure Active Directory tartományi szolgáltatások: Első lépések 
 description: Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
@@ -13,20 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/23/2018
-ms.author: ergreenl
-ms.openlocfilehash: 3020d7b29f19ec2ab578acbebac8db8ea320a844
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 05/22/2019
+ms.author: mstephen
+ms.openlocfilehash: 65cc63b32afcc565f1901c4df2893ad103ec0da3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103570"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234910"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
 
 
-## <a name="before-you-begin"></a>Előzetes teendők
-Tekintse át a [Hálózati megfontolások az Azure Active Directory Domain Services-hez](active-directory-ds-networking.md) című dokumentumot.
+## <a name="before-you-begin"></a>Előkészületek
+Tekintse át a [Hálózati megfontolások az Azure Active Directory Domain Services-hez](network-considerations.md) című dokumentumot.
 
 
 ## <a name="task-2-configure-network-settings"></a>2. feladat: a hálózati beállítások konfigurálása
@@ -41,7 +41,7 @@ A következő konfigurációs feladat, hogy hozzon létre egy Azure virtuális h
 3. Válassza ki a virtuális hálózatot, amelyben az Azure AD tartományi szolgáltatások engedélyezve van. Válasszon ki egy meglévő virtuális hálózatot, vagy hozzon létre egy újat.
 
    > [!TIP]
-   > **A felügyelt tartomány nem helyezhető át egy másik virtuális hálózatot, Azure AD tartományi szolgáltatások engedélyezése után.** Válassza ki a megfelelő virtuális hálózatot engedélyezése a felügyelt tartományra. Miután létrehozott egy felügyelt tartományon, nem helyezhető egy másik virtuális hálózathoz, a felügyelt tartomány törlése nélkül. Ajánlott áttekinteni a [hálózati szempontok az Azure Active Directory Domain Services](active-directory-ds-networking.md) folytatás előtt.  
+   > **A felügyelt tartomány nem helyezhető át egy másik virtuális hálózatot, Azure AD tartományi szolgáltatások engedélyezése után.** Válassza ki a megfelelő virtuális hálózatot engedélyezése a felügyelt tartományra. Miután létrehozott egy felügyelt tartományon, nem helyezhető egy másik virtuális hálózathoz, a felügyelt tartomány törlése nélkül. Ajánlott áttekinteni a [hálózati szempontok az Azure Active Directory Domain Services](network-considerations.md) folytatás előtt.  
    >
 
 4. **Virtuális hálózat létrehozása:** Kattintson a **új létrehozása** egy új virtuális hálózat létrehozásához. Kijelölt alhálózatot használjon az Azure AD tartományi szolgáltatásokhoz. Hozzon létre például egy alhálózat neve "DomainServices", így az tudni, mi helyezünk üzembe az alhálózaton belüli más rendszergazdák. Kattintson a **OK** befejezése.
@@ -57,7 +57,7 @@ A következő konfigurációs feladat, hogy hozzon létre egy Azure virtuális h
 
    > [!NOTE]
    > **Útmutató az alhálózat kiválasztása**
-   > 1. Kijelölt alhálózatot használjon az Azure AD tartományi szolgáltatásokhoz. Ne telepítsen más virtuális gépek ennek az alhálózatnak. Ez a konfiguráció lehetővé teszi hálózati biztonsági csoportok (NSG-k) konfigurálása a számítási feladatok/virtuális gépek számára a felügyelt tartomány megszakítása nélkül. További információkért lásd: [hálózati szempontok az Azure Active Directory Domain Services](active-directory-ds-networking.md).
+   > 1. Kijelölt alhálózatot használjon az Azure AD tartományi szolgáltatásokhoz. Ne telepítsen más virtuális gépek ennek az alhálózatnak. Ez a konfiguráció lehetővé teszi hálózati biztonsági csoportok (NSG-k) konfigurálása a számítási feladatok/virtuális gépek számára a felügyelt tartomány megszakítása nélkül. További információkért lásd: [hálózati szempontok az Azure Active Directory Domain Services](network-considerations.md).
    > 2. Ne válasszon üzembe helyezéséhez az Azure AD tartományi szolgáltatásokat, az átjáró-alhálózat, mivel nem támogatott konfiguráció.
    > 3. A kiválasztott alhálózat rendelkeznie kell legalább 3-5 elérhető IP-címek címterében.
 

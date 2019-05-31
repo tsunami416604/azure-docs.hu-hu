@@ -1,9 +1,9 @@
 ---
-title: Hozzon létre egy secure LDAP-tanúsítványt a tartomány egy Azure AD tartományi szolgáltatások kezelése |} A Microsoft Docs
+title: Hozzon létre egy. Az Azure AD Domain Services tartományhoz tartozó a biztonságos LDAP (LDAPS)-tanúsítvány PFX-fájl
 description: Hozzon létre egy secure LDAP-tanúsítványt a tartomány egy Azure AD tartományi szolgáltatások kezelése
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
@@ -13,22 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2017
-ms.author: ergreenl
-ms.openlocfilehash: 801ba3b84ba9956ca8d13916ac4d90060a7f4037
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/13/2019
+ms.author: mstephen
+ms.openlocfilehash: b79418c6e64727e4fdf13b3f4f267d84fcf5da85
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418558"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235026"
 ---
 # <a name="create-a-pfx-file-with-the-secure-ldap-ldaps-certificate-for-a-managed-domain"></a>Hozzon létre egy. PFX-fájlt a biztonságos LDAP (LDAPS) tanúsítványt a felügyelt tartományhoz
 
-## <a name="before-you-begin"></a>Előzetes teendők
-Teljes [az 1. feladat: tanúsítvány beszerzése biztonságos LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md).
+## <a name="before-you-begin"></a>Előkészületek
 
+Teljes [az 1. feladat: tanúsítvány beszerzése biztonságos LDAP](configure-ldaps.md).
 
 ## <a name="task-2-export-the-secure-ldap-certificate-to-a-pfx-file"></a>2. feladat: A secure LDAP-tanúsítványt exportálni egy. PFX-fájl
+
 Ez a feladat a Kezdés előtt lekérése a secure LDAP-tanúsítványt nyilvános hitelesítésszolgáltatótól származó, vagy hozzon létre egy önaláírt tanúsítványt.
 
 Az LDAPS-t tanúsítványának exportálásához egy. PFX-fájlt:
@@ -96,6 +97,6 @@ Az LDAPS-t tanúsítványának exportálásához egy. PFX-fájlt:
 
     ![Kész tanúsítvány exportálása](./media/active-directory-domain-services-admin-guide/secure-ldap-exported-as-pfx.png)
 
-
 ## <a name="next-step"></a>Következő lépés
+
 [3. feladat: a felügyelt tartomány secure LDAP engedélyezése](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: 1ed494cea1ccf8845a25a3ab49d3194cc6a55509
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 05/30/2019
 ms.locfileid: "65785664"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>A beszédfelismerési szolgáltatás át a Translator Speech API
@@ -26,7 +26,7 @@ Ez a cikk segítségével az alkalmazások át a Microsoft Translator Speech API
 
 ## <a name="comparison-of-features"></a>Szolgáltatások összehasonlítása
 
-| Szolgáltatás                                           | Translator Speech API                                  | Beszédszolgáltatások | Részletek                                                                                                                                                                                                                                                                            |
+| Funkció                                           | Translator Speech API                                  | Beszédszolgáltatások | Részletek                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Szöveg fordítása                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | A beszédfelismerés fordítása                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |

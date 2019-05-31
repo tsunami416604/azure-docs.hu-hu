@@ -8,19 +8,20 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 4063e79a9415ac35b09cc77d0110c04e191b49c7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 7a0e628eed861767d1eeb50b0ded7bb3d8807328
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145873"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66271584"
 ---
-Megosztott lemezkép-katalógus szolgáltatása segít kialakítani a struktúra és a szervezet a felügyelt VM-rendszerképeit körül. Megosztott kép katalógusok adja meg:
+Megosztott lemezkép-katalógus szolgáltatása segít kialakítani a struktúra és a szervezet a felügyelt rendszerképek körül. Megosztott kép katalógusok adja meg:
 
 - Képek felügyelt globális replikálását.
 - Verziókezelés és a könnyebb kezelhetőség képek csoportosítása.
-- Győződjön meg arról, a képek a Zónaredundáns Társzolgáltatási (ZRS) fiókokkal magas rendelkezésre állású rendelkezésre állási zónákat támogató régiókban. A ZRS nagyobb rugalmasság a zónaszintű meghibásodásokkal szemben kínál.
-- Előfizetések között, és még a bérlők számára az RBAC használatával között megosztást.
+- Magas rendelkezésre állású képek a Zónaredundáns Társzolgáltatási (ZRS) fiókokkal a rendelkezésre állási zónákat támogató régiók. A ZRS nagyobb rugalmasság a zónaszintű meghibásodásokkal szemben kínál.
+- Előfizetések között, és még az Active Directory (AD) bérlő, az RBAC használatával között megosztást.
+- Az üzemelő példányok, az egyes régiókban kép replikákkal rendelkező méretezése.
 
 Egy megosztott lemezkép-katalógus használatával megoszthatja a különböző felhasználók, az egyszerű szolgáltatások vagy AD-csoportokat a képeket a szervezeten belül. Megosztott lemezképeket több régióban, a gyorsabb skálázás az üzembe helyezést lehet replikálni.
 
@@ -49,9 +50,9 @@ Lemezkép-definíciókat kép verziói logikai jellegű csoportosítását. A re
 
 Minden rendszerkép definíciójában három kombinációja – a használt paraméterek **közzétevő**, **ajánlat** és **Termékváltozat**. Ezek használhatók a keresés egy adott rendszerkép definíciójában. Lemezkép verziója, amelyek egy vagy két, de nem minden három érték lehet.  Ha például az alábbiakban három rendszerkép-definíciók és azok értékeit:
 
-|Rendszerkép-definíció|Gyártó|Ajánlat|Termékváltozat|
+|Rendszerkép-definíció|Kiadó|Ajánlat|SKU|
 |---|---|---|---|
-|myImage1|Contoso|Pénzügy|Háttérszolgáltatás|
+|myImage1|Contoso|Pénzügy|Háttér|
 |myImage2|Contoso|Pénzügy|Előtér|
 |myImage3|Tesztelés|Pénzügy|Előtér|
 
@@ -77,15 +78,15 @@ Forrásrégiók az alábbi táblázatban láthatók. Az összes nyilvános régi
 
 | Forrás régiók |
 |---------------------|-----------------|------------------|-----------------|
-| Ausztrália középső régiója   | USA középső régiója – EUAP | Korea középső régiója    | Egyesült Királyság 2. déli régiója      |
-| Ausztrália 2. középső régiója | Kelet-Ázsia       | Korea déli régiója      | Egyesült Királyság nyugati régiója         |
+| Ausztrália középső régiója   | USA középső RÉGIÓJA – EUAP | Korea középső régiója    | Egyesült Királyság 2. déli régiója      |
+| Ausztrália 2. középső régiója | Kelet-Ázsia       | Korea déli régiója      | Az Egyesült Királyság nyugati régiója         |
 | Kelet-Ausztrália      | USA keleti régiója         | USA északi középső régiója | USA nyugati középső régiója |
 | Délkelet-Ausztrália | USA 2. keleti régiója       | Észak-Európa     | Nyugat-Európa     |
 | Dél-Brazília        | USA 2. keleti régiója – EUAP  | USA déli középső régiója | Nyugat-India      |
 | Közép-Kanada      | Közép-Franciaország  | Dél-India      | USA nyugati régiója         |
 | Kelet-Kanada         | Dél-Franciaország    | Délkelet-Ázsia   | USA nyugati régiója         |
-| Közép-India       | Kelet-Japán      | Egyesült Királyság északi régiója         | USA 2. nyugati régiója       |
-| USA középső régiója          | Nyugat-Japán      | Egyesült Királyság déli régiója         |                 |
+| Közép-India       | Kelet-Japán      | Egyesült Királyság északi régiója         | USA nyugati régiója, 2.       |
+| USA középső régiója          | Nyugat-Japán      | Az Egyesült Királyság déli régiója         |                 |
 
 
 
@@ -102,10 +103,29 @@ További információkért lásd: [ellenőrizze az erőforrás-használati korl�
 ## <a name="scaling"></a>Méretezés
 Megosztott lemezkép-katalógus lehetővé teszi, hogy meg szeretné tartani a rendszerképek Azure replikák száma. Ez segít több virtuális gépre kiterjedő központi telepítési forgatókönyvei szerint is oszlanak meg a virtuális gépek üzembe helyezése különböző replikába csökkenti az esélyét, hogy a példány létrehozása feldolgozása egyetlen replika túlterhelés miatt szabályozás alatt áll.
 
+
+A megosztott lemezkép-katalógusában, most már telepítheti legfeljebb 1000 Virtuálisgép-példányt a virtuális gép méretezési (a felügyelt képekkel 600 beállítása). Kép replikák adja meg a jobb teljesítmény érdekében üzembe helyezés, a megbízhatóság és a konzisztencia.  Beállíthat egy másik replika száma minden egyes célrégióban számára, a skálázási igényeinek megfelelően. Mivel minden egyes replikának a rendszerkép részletes másolatát, így minden további replika költségráfordításokkal egyenes arányban, az üzemelő példányok méretezését. Amíg nem két lemezképet tisztában vagyunk vele, vagy régiók ugyanazok, itt látható az általános iránymutatás a replikák használatát egy régióban:
+
+- Minden 20 virtuális gépet, amely létrehoz egy időben javasoljuk, tartsa egy replikát. Például egyszerre használja ugyanazt a lemezképet egy régióban 120 virtuális gépek létrehozásakor, javasoljuk, hogy a lemezkép legalább 6 replika maradjon. 
+- Minden egyes méretezési csoport üzembe helyezését legfeljebb 600 példányaival javasoljuk, tartsa legalább egy replikát. Például ha 5 méretezési csoportok egyidejűleg, egyenként 600 Virtuálisgép-példányok ugyanazt a lemezképet használ egy adott régióban hoz javasoljuk, hogy a lemezkép legalább 5 replikák maradjon. 
+
+Minden esetben javasoljuk, hogy overprovision tényezőtől, például a kép mérete, a tartalom és az operációs rendszer típusa replikák száma.
+
+
 ![Hogyan méretezhetők a képek bemutató ábra](./media/shared-image-galleries/scaling.png)
 
 
-## <a name="replication"></a>Replikálás
+
+## <a name="make-your-images-highly-available"></a>Magas rendelkezésre állásúvá tenni a képek
+
+[Az Azure Zónaredundáns tárolás (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) régióban egy rendelkezésre állási zónában meghibásodása elleni rugalmasságot biztosít. A megosztott Képkatalógus általános elérhetőségét kiválaszthatja a lemezképek tárolását a ZRS-fiókok a rendelkezésre állási zónákat tartalmazó régiók. 
+
+Azt is beállíthatja a fióktípus a célként megadott régióban. Az alapértelmezett tárfiók típusa Standard_LRS, de Standard_ZRS választhat a rendelkezésre állási zónákat tartalmazó régiók. A ZRS regionális rendelkezésre állásának ellenőrzésére [Itt](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs).
+
+![A ZRS bemutató ábra](./media/shared-image-galleries/zrs.png)
+
+
+## <a name="replication"></a>Replikáció
 Megosztott lemezkép-katalógus lehetővé teszi a képek automatikusan replikálja más Azure-régiókban. Minden megosztott lemezkép verziója függően mi értelme a szervezet különböző régiókban lehet replikálni. Egy példa arra, hogy a legújabb lemezkép mindig replikálása több régióban, amíg az összes korábbi verziói csak érhető el 1 régió van. Ez segít mentse a megosztott lemezkép-verziók a tárolási költségekre. 
 
 A rendszer replikálja egy megosztott lemezkép verziója régiók létrehozásának időpontja után lehet frissíteni. A különböző régióban való replikálásához szükséges idő attól függ, másolását adatok mennyisége és a verzió a rendszer replikálja régiók száma. Ez eltarthat néhány óráig bizonyos esetekben. A replikáció történik, amíg a replikáció állapotát megtekintheti a régiónként. A kép replikáció befejezése után egy régióban, telepítheti a virtuális gép vagy a méretezési csoportot, hogy a lemezkép-verziót használó a régióban.
@@ -113,19 +133,18 @@ A rendszer replikálja egy megosztott lemezkép verziója régiók létrehozás�
 ![Hogyan replikálhat lemezképek bemutató ábra](./media/shared-image-galleries/replication.png)
 
 
-## <a name="access"></a>Hozzáférés
+## <a name="access"></a>Access
 
-Mivel a megosztott lemezkép-katalógusában, a megosztott kép és a megosztott lemezkép verziója összes erőforrást, azok megoszthatók a beépített natív Azure RBAC-vezérlők használatával. Az RBAC használatával megoszthatja ezeket az erőforrásokat más felhasználók, az egyszerű szolgáltatások és csoportokat. A hozzáférést a bérlőn belül létrehozták őket kívüli személyek is megoszthatja. Miután egy felhasználó hozzáfér a megosztott lemezkép verziója, azok telepíthet egy virtuális Gépet, vagy egy virtuálisgép-méretezési csoportban.  A megosztási mátrix, amely segít megérteni, hogy mi a felhasználó hozzáférést kap a következő:
+Mivel a megosztott lemezkép-katalógusában, a rendszerkép definíciójában és a lemezkép verziója összes erőforrást, azok megoszthatók a beépített natív Azure RBAC-vezérlők használatával. Az RBAC használatával megoszthatja ezeket az erőforrásokat más felhasználók, az egyszerű szolgáltatások és csoportokat. A hozzáférést a bérlőn belül létrehozták őket kívüli személyek is megoszthatja. Miután egy felhasználó hozzáfér a megosztott lemezkép verziója, azok telepíthet egy virtuális Gépet, vagy egy virtuálisgép-méretezési csoportban.  A megosztási mátrix, amely segít megérteni, hogy mi a felhasználó hozzáférést kap a következő:
 
-| Felhasználóval megosztott     | Megosztott lemezképkatalógus | Megosztott kép | Megosztott lemezkép verziója |
+| Felhasználóval megosztott     | Megosztott rendszerkép-katalógus | Rendszerkép-definíció | Lemezkép verziója |
 |----------------------|----------------------|--------------|----------------------|
-| Megosztott lemezképkatalógus | Igen                  | Igen          | Igen                  |
-| Megosztott kép         | Nem                   | Igen          | Igen                  |
-| Megosztott lemezkép verziója | Nem                   | Nem           | Igen                  |
+| Megosztott rendszerkép-katalógus | Igen                  | Igen          | Igen                  |
+| Rendszerkép-definíció     | Nem                   | Igen          | Igen                  |
 
-Azt javasoljuk, hogy a gyűjtemény szintjén, a legjobb élmény megosztása. RBAC kapcsolatos további információkért lásd: [RBAC használatával Azure-erőforrásokhoz való hozzáférés kezelése](../articles/role-based-access-control/role-assignments-portal.md).
+Azt javasoljuk, hogy a gyűjtemény szintjén, a legjobb élmény megosztása. Egyéni rendszerkép verziók megosztása nem ajánlott. RBAC kapcsolatos további információkért lásd: [RBAC használatával Azure-erőforrásokhoz való hozzáférés kezelése](../articles/role-based-access-control/role-assignments-portal.md).
 
-Képek is megoszthatók, ipari méretekben használatával egy több-bérlős alkalmazás regisztrációját a bérlők között. Bérlők között képek megosztásával kapcsolatos további információkért lásd: [katalógus Virtuálisgép-rendszerképek megosztása Azure bérlők](../articles/virtual-machines/linux/share-images-across-tenants.md).
+Képek is megoszthatók, nagy mennyiségű, akár egy több-bérlős alkalmazásregisztráció használatával bérlők között. Bérlők között képek megosztásával kapcsolatos további információkért lásd: [katalógus Virtuálisgép-rendszerképek megosztása Azure bérlők](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 ## <a name="billing"></a>Számlázás
 A megosztott lemezkép-katalógus használata nem jár többletdíjakkal. Meg kell fizetni az alábbi forrásanyagokat:

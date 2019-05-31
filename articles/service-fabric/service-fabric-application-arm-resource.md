@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: e2e1b2ae354d26c3d9729e3a3fdf39bee43647ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db515454c68fe3a7eb1a4616c3278d9fc93ddb2c
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621462"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258664"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Az Azure Resource Manager-erőforrások, alkalmazások és szolgáltatások kezelése
 
@@ -258,6 +258,17 @@ A következő kódrészlet azt mutatja be, a különböző típusú erőforráso
    > A *API-verzió* értékre kell állítani `"2017-07-01-preview"`. Ez a sablon is üzembe helyezhetők a fürt függetlenül mindaddig, amíg a fürt már telepítve lett.
 
 5. Üzembe helyezhetők. 
+
+## <a name="remove-service-fabric-resource-provider-application-resource"></a>Távolítsa el a Service Fabric erőforrás-szolgáltató alkalmazás erőforrás
+A következő aktiválják az alkalmazáscsomag kell nem kiosztott a fürtből, és ez fog törölni a felhasznált lemezterület:
+```powershell
+Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/providers/Microsoft.ServiceFabric/clusters/{cluster}/applicationTypes/{apptType}/versions/{version} -ApiVersion "2017-07-01-preview" | Remove-AzureRmResource -Force -ApiVersion "2017-07-01-preview"
+```
+Egyszerűen Microsoft.ServiceFabric/clusters/application eltávolítását az ARM-sablon nem leépítése az alkalmazás
+
+>[!NOTE]
+> Az eltávolítás befejeződése után nem kell megjelennie a csomag verziószáma SFX vagy ARM többé. Az alkalmazás típusa verzió erőforrás, amely az alkalmazás fut; nem törölhető ARM/SFRP megakadályozza, hogy ez. Ha megkísérli leépíteni a következőt: a futó csomag, SF futásidejű hurokhoz azokat.
+
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Resource Manager-n keresztül a meglévő alkalmazások kezelése
 

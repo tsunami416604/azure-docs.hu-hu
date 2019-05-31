@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 243a388ee59a1a550f80882b0af61e1f1db008ca
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 9d5e06c3d72d87a87b41a52ed4df369ebc04dccd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65977441"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387083"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions - időjárási megfigyelő minta forgatókönyv figyelése
 
@@ -42,7 +42,7 @@ Ez a minta egy hely aktuális időjárási feltételek figyeli, és riasztást k
 
 Ez a minta magában foglalja a szolgáltatás emellett az illegális időjárási API használatával történő ellenőrizze a hely aktuális időjárási feltételek.
 
-Az első lépésként létre kell időjárási Dark fiók. Létrehozhat egy ingyenes [ https://www.wunderground.com/signup ](https://www.wunderground.com/signup). Ha már rendelkezik fiókkal, szüksége lesz egy API-kulcs beszerzése. Ehhez funkcionáló [ https://www.wunderground.com/weather/api ](https://www.wunderground.com/weather/api), majd kiválasztja a kulcs beállításait. A Stratus fejlesztői csomag az ingyenes és a minta futtatásához elegendő.
+Az első lépésként létre kell időjárási Dark fiók. Létrehozhat egy ingyenes [ https://www.wunderground.com/signup ](https://www.wunderground.com/signup). Ha már rendelkezik fiókkal, szüksége lesz egy API-kulcs beszerzése. Ehhez funkcionáló [ https://www.wunderground.com/weather/api ](https://www.wunderground.com/weather/api/?MR=1), majd kiválasztja a kulcs beállításait. A Stratus fejlesztői csomag az ingyenes és a minta futtatásához elegendő.
 
 Miután egy API-kulcsot, adja hozzá a következő **Alkalmazásbeállítás** a függvényalkalmazáshoz.
 

@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 6e3e01ca9bd459aa6c6aca8dfaacb98b1267fada
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: fb7f238bb5c04bb03ee500b1b953895cc88c0596
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979351"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298929"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -22,7 +22,7 @@ Ha egy Azure-erőforrás nem kompatibilis a szabály a házirend, hasznos lehet 
 > - [Megfelelőségi részletei](#compliance-details)
 > - [Változások nyomon követése (előzetes verzió)](#change-history-preview)
 
-## <a name="compliance-details"></a>Megfelelőségi részletek
+## <a name="compliance-details"></a>Megfelelőségi részletei
 
 Amikor az erőforrás nem megfelelő, az adott erőforráshoz a megfelelőségi információk érhetők el a **szabályzatoknak való megfelelés** lapot. A megfelelőségi részletek panelen a következő információkat tartalmazza:
 
@@ -85,25 +85,29 @@ Ezeket a részleteket ismertetik, hogy miért erőforrás jelenleg nem megfelel�
 
 A következő mátrix térképek minden lehetséges _OK_ a a felelős [feltétel](../concepts/definition-structure.md#conditions) szabályzatdefinícióban:
 
-|Reason | Feltétel |
+|Reason | Állapot |
 |-|-|
-|Az aktuális értéknek tartalmaznia kell a célértéket kulcsként. |containsKey vagy **nem** notContainsKey |
-|Az aktuális értéknek tartalmaznia kell a célértéket. |tartalmaz vagy **nem** notContains |
-|Az aktuális értéknek egyenlőnek kell lennie a célértékkel. |egyenlő vagy **nem** notEquals |
-|Az aktuális értéknek léteznie kell. |Létezik |
-|Az aktuális értéknek a célértéken belülinek kell lennie. |a vagy **nem** notIn |
-|Az aktuális értéknek a célértékhez hasonlónak kell lennie. |például vagy **nem** notLike |
-|Az aktuális értéknek a ki- és nagybetűk közötti különbség figyelembevételével meg kell felelnie a célértéknek. |megfelelő vagy **nem** notMatch |
-|Az aktuális értéknek a kis- és nagybetűk közötti különbség figyelmen kívül hagyásával meg kell felelnie a célértéknek. |matchInsensitively vagy **nem** notMatchInsensitively |
-|Az aktuális értéknek nem tartalmazhatja a célértéket kulcsként. |notContainsKey vagy **nem** containsKey|
-|Az aktuális értéknek nem tartalmazhatja a célértéket. |notContains vagy **nem** tartalmaz |
-|Az aktuális érték nem lehet egyenlő a célértékkel. |notEquals vagy **nem** egyenlő |
-|Az aktuális érték nem létezhet. |**nem** létezik  |
-|Az aktuális érték nem eshet a célértékbe. |notIn vagy **nem** a |
-|Az aktuális érték nem lehet a célértékhez hasonló. |notLike vagy **nem** például |
-|Az aktuális érték a kis- és nagybetűk közötti különbség figyelembevételével nem felelhet meg a célértéknek. |notMatch vagy **nem** felel meg |
-|Az aktuális érték a kis- és nagybetűk közötti különbség figyelmen kívül hagyásával nem felelhet meg a célértéknek. |notMatchInsensitively vagy **nem** matchInsensitively |
-|A szabályzat definíciójában nem felel meg kapcsolódó erőforrás a hatás részleteinek. |A megadott típusú erőforrás **then.details.type** és a meghatározott erőforráshoz kapcsolódó a **Ha** része a szabály nem létezik. |
+|Aktuální hodnota kulcsként a célérték tartalmaznia kell. |containsKey vagy **nem** notContainsKey |
+|Aktuális értéknek tartalmaznia kell a célérték. |tartalmaz vagy **nem** notContains |
+|Aktuální hodnota a célérték egyenlőnek kell lennie. |egyenlő vagy **nem** notEquals |
+|Aktuální hodnota a célérték kisebbnek kell lennie. |kisebb vagy **nem** greaterOrEquals |
+|Aktuális érték nagyobb vagy egyenlő a célérték kell lennie. |greaterOrEquals vagy **nem** kevesebb |
+|Aktuální hodnota a célérték nagyobbnak kell lennie. |nagyobb vagy **nem** lessOrEquals |
+|Aktuális értéke kisebb vagy egyenlő a célként megadott értéknek kell lennie. |lessOrEquals vagy **nem** nagyobb |
+|Aktuální hodnota léteznie kell. |Létezik |
+|A célérték aktuális értéknek kell lennie. |a vagy **nem** notIn |
+|Aktuális értéknek kell lennie, mint a célérték. |például vagy **nem** notLike |
+|Aktuální hodnota kell egyeztet a célérték. |megfelelő vagy **nem** notMatch |
+|Aktuális érték a célérték kell a kis-és egyezést. |matchInsensitively vagy **nem** notMatchInsensitively |
+|Aktuális érték nem tartalmazhat a célérték kulcsként. |notContainsKey vagy **nem** containsKey|
+|Aktuális érték nem tartalmazhat a célérték. |notContains vagy **nem** tartalmaz |
+|Aktuális érték nem lehet egyenlő a célként megadott értékkel. |notEquals vagy **nem** egyenlő |
+|Aktuális érték nem létezhet. |**nem** létezik  |
+|Aktuális érték nem lehet a célérték. |notIn vagy **nem** a |
+|Aktuális érték nem lehet például a célérték. |notLike vagy **nem** például |
+|Aktuální hodnota kell nem egyeztet a célérték. |notMatch vagy **nem** felel meg |
+|Aktuální hodnota kell kis-és nem egyezik a célérték. |notMatchInsensitively vagy **nem** matchInsensitively |
+|Nincs kapcsolódó erőforrások felel meg a szabályzat-definícióban a hatásának részletei között. |A megadott típusú erőforrás **then.details.type** és a meghatározott erőforráshoz kapcsolódó a **Ha** része a szabály nem létezik. |
 
 ## <a name="compliance-details-for-guest-configuration"></a>Megfelelőségi adatai számára a Vendég-konfiguráció
 
@@ -128,7 +132,7 @@ Akkor is előfordulhat, hogy nincs hozzáférése a közvetlenül bejelentkezni 
    - **Erőforrástípus** – a _guestConfigurationAssignments_ teljes neve.
    - **Legutóbbi értékelés** – az utolsó időpont, a Vendég konfigurációs szolgáltatás értesítést kap az Azure Policy a cél virtuális gép állapotát.
 
-   ![Tekintse át a megfelelőségi részleteket.](../media/determine-non-compliance/guestconfig-assignment-view.png)
+   ![Megfelelőségi részleteinek megtekintése](../media/determine-non-compliance/guestconfig-assignment-view.png)
 
 1. Válassza ki a Vendég konfigurációs hozzárendelés neve a **neve** nyissa meg az oszlop a **erőforrás megfelelőségi** lapot.
 
@@ -136,7 +140,7 @@ Akkor is előfordulhat, hogy nincs hozzáférése a közvetlenül bejelentkezni 
 
 A **Vendég hozzárendelés** az összes elérhető megfelelőségi adatait jeleníti meg. Minden egyes sorára a nézet a virtuális gépen végrehajtott értékelést jelöli. Az a **OK** oszlop, miért a Vendég-hozzárendelés nem leíró kifejezés _nem megfelelő_ jelenik meg. Ha például Ön naplózás, hogy a virtuális gépek egy tartományhoz kell csatlakoztatni a **OK** oszlop jeleníti meg, beleértve az aktuális tartományi tagság szöveg.
 
-![Tekintse át a megfelelőségi részleteket.](../media/determine-non-compliance/guestconfig-compliance-details.png)
+![Megfelelőségi részleteinek megtekintése](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

@@ -4,19 +4,19 @@ description: Ez a cikk ismerteti, amely csatlakozik az IoT hub a Time Series Ins
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 258b603b8cd2e0cdfcc72ca17cd3cb0d034caf5b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 79d2062f0e174eeb7550205f90c1650185e1623a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143351"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236987"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>IoT hub-eseményforrás hozzáadása a Time Series Insights-környezethez
 
@@ -76,12 +76,12 @@ Az IoT hub egy új felhasználói csoport hozzáadása:
    | Tulajdonság | Leírás |
    | --- | --- |
    | Előfizetés azonosítója | Válassza ki az előfizetést, amelyben az IoT hub létrehozása.
-   | Iot-központ neve | Válassza ki az IoT hub nevét.
+   | IoT hub nevét | Válassza ki az IoT hub nevét.
    | IoT hub házirend neve | Válassza ki a megosztott elérési házirendet. A megosztott elérési házirendet az IoT hub beállításai lapon találja. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsok van. A megosztott hozzáférési szabályzatot az eseményforrás *kell* rendelkezik **szolgáltatás csatlakozása** engedélyeket.
    | IoT hub házirendjének kulcsa | A kulcs van töltve.
    | IoT hub fogyasztói csoport | A fogyasztói csoportot, amely eseményeket olvas az IoT hub. Kifejezetten ajánljuk, hogy használjon dedikált fogyasztói csoportot az eseményforrást.
    | Eseményszerializációs formátum | JSON-ban jelenleg csak akkor érhető el szerializálási formátum. Az eseményt üzenetek a következő formátumban kell lennie, vagy az adatok nem olvashatók. |
-   | Időbélyeg-tulajdonság neve | Az érték meghatározásához kell megérteni az állapotüzenet-adatokat az IoT hubnak küldött üzenet formátumát. Ez az érték a **neve** az állapotüzenet-adatokat használja, mint az esemény időbélyegzője kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen hagyja, a **eseményt sorba idő** az a Eseménynapló timestamp forrás szolgál. |
+   | Időbélyegző-tulajdonság neve | Az érték meghatározásához kell megérteni az állapotüzenet-adatokat az IoT hubnak küldött üzenet formátumát. Ez az érték a **neve** az állapotüzenet-adatokat használja, mint az esemény időbélyegzője kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen hagyja, a **eseményt sorba idő** az a Eseménynapló timestamp forrás szolgál. |
 
 1. A következő táblázat ismerteti a szükséges tulajdonságokat a **adja meg az IoT Hub beállításainak manuális**:
 
@@ -89,12 +89,12 @@ Az IoT hub egy új felhasználói csoport hozzáadása:
    | --- | --- |
    | Előfizetés azonosítója | Az előfizetés, amelyben az IoT hub létrehozása történt.
    | Erőforráscsoport | Az IoT hub létrehozása erőforráscsoport nevét.
-   | Iot-központ neve | az IoT hub nevére. Az IoT hub létrehozásakor adott meg az IoT hub nevét.
+   | IoT hub nevét | az IoT hub nevére. Az IoT hub létrehozásakor adott meg az IoT hub nevét.
    | IoT hub házirend neve | A megosztott elérési házirendet. A megosztott elérési házirend létrehozhat az IoT hub beállításai lapon. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsok van. A megosztott hozzáférési szabályzatot az eseményforrás *kell* rendelkezik **szolgáltatás csatlakozása** engedélyeket.
    | IoT hub házirendjének kulcsa | A közös hozzáférési kulcs, amellyel hitelesíti a hozzáférést az Azure Service Bus-névteret. Itt adhatja meg az elsődleges vagy másodlagos kulcsot.
    | IoT hub fogyasztói csoport | A fogyasztói csoportot, amely eseményeket olvas az IoT hub. Kifejezetten ajánljuk, hogy használjon dedikált fogyasztói csoportot az eseményforrást.
    | Eseményszerializációs formátum | JSON-ban jelenleg csak akkor érhető el szerializálási formátum. Az eseményt üzenetek a következő formátumban kell lennie, vagy az adatok nem olvashatók. |
-   | Időbélyeg-tulajdonság neve | Az érték meghatározásához kell megérteni az állapotüzenet-adatokat az IoT hubnak küldött üzenet formátumát. Ez az érték a **neve** az állapotüzenet-adatokat használja, mint az esemény időbélyegzője kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen hagyja, a **eseményt sorba idő** az a Eseménynapló timestamp forrás szolgál. |
+   | Időbélyegző-tulajdonság neve | Az érték meghatározásához kell megérteni az állapotüzenet-adatokat az IoT hubnak küldött üzenet formátumát. Ez az érték a **neve** az állapotüzenet-adatokat használja, mint az esemény időbélyegzője kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen hagyja, a **eseményt sorba idő** az a Eseménynapló timestamp forrás szolgál. |
 
 1. Adja hozzá a dedikált Time Series Insights fogyasztói csoport neve az IoT hub korábban hozzáadott.
 

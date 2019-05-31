@@ -3,7 +3,7 @@ title: 'Az Azure Active Directory tartományi szolgáltatások: Funkciók |} A M
 description: Az Azure Active Directory Domain Services szolgáltatásokat
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 8d1c3eb3-1022-4add-a919-c98cc6584af1
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.author: ergreenl
-ms.openlocfilehash: 9e4ab7aa4f61921d8b327404a266694349d78164
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/10/2019
+ms.author: mstephen
+ms.openlocfilehash: 27aaaca4f28feac0f68b4e034426c64b934b1f95
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417265"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234934"
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
 ## <a name="features"></a>Szolgáltatások
@@ -35,7 +35,7 @@ A következő funkciók érhetők el Azure AD tartományi szolgáltatásokkal fe
 * **Használja a vállalati hitelesítő adatok és jelszavak:** Az Azure AD-bérlő felhasználó jelszavát az Azure AD tartományi szolgáltatásokkal működik. Felhasználók a vállalati hitelesítő adatait a tartományhoz csatlakozó gépek használja, jelentkezzen be interaktívan, vagy a távoli asztali kapcsolaton keresztül, és a felügyelt tartomány hitelesítése.
 * **LDAP-kötés & LDAP olvassa el a támogatás:** A felhasználók hitelesítése a tartományok Azure AD tartományi szolgáltatások által kiszolgált LDAP-kötések használó alkalmazások is használhatja. Emellett alkalmazásokat, amelyek használják az LDAP-olvasási műveletek lekérdezés felhasználó/számítógép-attribútumok a címtárból is dolgozhat ellen az Azure AD tartományi szolgáltatásokat.
 * **Biztonságos LDAP (LDAPS):** Engedélyezheti a hozzáférést a könyvtár keresztül biztonságos LDAP (LDAPS). Secure LDAP-hozzáférését alapértelmezés szerint a virtuális hálózaton belül érhető el. Azonban Ön is engedélyezheti a secure LDAP-hozzáférését az interneten keresztül.
-* **Csoportházirend:** A felhasználók és számítógépek használhat egyetlen beépített csoportházirend-objektum minden egyes tárolókat kényszerítse a megfelelőséget a szükséges biztonsági szabályzatok felhasználói fiókokat és a tartományhoz csatlakoztatott számítógépeket. Emellett a saját egyéni csoportházirend-objektumok létrehozása és egyéni szervezeti egységek, és hozzárendelheti azokat [a Csoportházirend kezelése](active-directory-ds-admin-guide-administer-group-policy.md).
+* **Csoportházirend:** A felhasználók és számítógépek használhat egyetlen beépített csoportházirend-objektum minden egyes tárolókat kényszerítse a megfelelőséget a szükséges biztonsági szabályzatok felhasználói fiókokat és a tartományhoz csatlakoztatott számítógépeket. Emellett a saját egyéni csoportházirend-objektumok létrehozása és egyéni szervezeti egységek, és hozzárendelheti azokat [a Csoportházirend kezelése](manage-group-policy.md).
 * **DNS kezelése:** Az "AAD DC rendszergazdák" csoport tagjai DNS kezelheti a felügyelt tartomány már jól ismert DNS felügyeleti eszközökkel, például a DNS-felügyeleti beépülő MMC-modulban.
 * **Hozzon létre egyéni szervezeti egységhez (OU):** Az "AAD DC rendszergazdák" csoport tagjai a felügyelt tartomány hozhat létre egyéni szervezeti egységekhez. Ezek a felhasználók kapnak teljes körű rendszergazdai jogosultságokkal keresztül egyéni szervezeti egységek, így azok hozzáadhat/eltávolíthat szolgáltatásfiókok, számítógépek, csoportok stb. ezeket az egyéni szervezeti belül.
 * **Az Azure globális számos régióban elérhető:** [Az Azure régiói](https://azure.microsoft.com/regions/#services/) lapon találja azoknak az Azure-régióknak a felsorolását, amelyekben elérhetők az Azure AD tartományi szolgáltatások.

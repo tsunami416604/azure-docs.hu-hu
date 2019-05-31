@@ -8,12 +8,12 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 4e28ca15197f89caeaeaca0aabb648755b8235f1
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: b6ef57a3f39c82be30d92aef72c1bbe03b653768
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551543"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236507"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
@@ -29,7 +29,7 @@ Címváltozásának felderítését és a részletek hasznosak az alábbi péld�
 - Konfigurációkezelési adatbázis tartja, más néven a cmdb-JÉBEN, naprakész. Frissítés helyett az összes erőforrás és a egy ütemezett gyakoriságát, a teljes tulajdonság beállítása csak a get mi változott.
 - Milyen egyéb tulajdonságok Módosíthatott erőforrás megfelelőségi állapotok megváltozásakor ismertetése. Ezek a további tulajdonságok kiértékelése is szükség lehet egy Azure szabályzat-definíció kezelendő egyéb tulajdonságok betekintést nyújtson.
 
-Ez a cikk bemutatja, hogyan erőforrás Graph SDK-n keresztül az információk gyűjtésére. Ez az információ az Azure Portalon, olvassa el az Azure Policy [módosítási előzmények](../../policy/how-to/determine-non-compliance.md#change-history-preview) vagy az Azure-tevékenységnapló [módosítási előzmények](../../../azure-monitor/platform/activity-logs-overview.md#view-change-history).
+Ez a cikk bemutatja, hogyan erőforrás Graph SDK-n keresztül az információk gyűjtésére. Ez az információ az Azure Portalon, olvassa el az Azure Policy [módosítási előzmények](../../policy/how-to/determine-non-compliance.md#change-history-preview) vagy az Azure-tevékenységnapló [módosítási előzmények](../../../azure-monitor/platform/activity-log-view.md#azure-portal).
 
 > [!NOTE]
 > Változások részleteinek Erőforrás-grafikon a Resource Manager-tulajdonságok vannak. A virtuális gépen belüli változásainak követése, tekintse meg az Azure Automation [Change tracking](../../../automation/automation-change-tracking.md) vagy az Azure Policy [Vendég virtuális gépek konfigurációjának](../../policy/concepts/guest-configuration.md).
@@ -44,7 +44,7 @@ Az első lépés jelenik meg, mi változott, egy erőforráson, hogy az idő id�
 A **resourceChanges** végpont a kérelem törzsében szereplő két paraméter szükséges:
 
 - **resourceId**: Az Azure-erőforráshoz módosításait keressen.
-- **Intervallum**: Tulajdonságot _start_ és _záró_ mikor ellenőrizze a módosítási esemény a dátumokat a **Zulu időzóna (Z)**.
+- **Intervallum**: Tulajdonságot _start_ és _záró_ mikor ellenőrizze a módosítási esemény a dátumokat a **Zulu időzóna (Z)** .
 
 A példában a kérés törzse:
 

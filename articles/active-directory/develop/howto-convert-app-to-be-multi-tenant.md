@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68973d3a88791bcfffc8183f5e3a16975fe15742
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 2e6a5ecd704aabb4994337cb7b7df9e84677348d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540451"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235276"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
@@ -45,7 +45,7 @@ Tekintsük át részletesen minden lépése. Emellett egyenesen is ugorhat [ezen
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Frissíteni kell a több-bérlős regisztrációt
 
-Alapértelmezés szerint a web app és az API regisztrációkat az Azure ad-ben egyetlen új bérlő. Akkor is használhatja a regisztrációs több-bérlős keresése a **több ábráját** kapcsolható be a a **tulajdonságok** ablaktábláján az alkalmazás regisztrálása az a [az Azure portal] [ AZURE-portal] értékre állítaná, és **Igen**.
+Alapértelmezés szerint a web app és az API regisztrációkat az Azure ad-ben egyetlen új bérlő. Akkor is használhatja a regisztrációs több-bérlős keresése a **fióktípus esetében támogatott** kapcsolható be a a **hitelesítési** ablaktábláján az alkalmazás regisztrálása az a [azAzureportal] [ AZURE-portal] értékre állítaná, és **bármely szervezeti directory fiókok**.
 
 Egy alkalmazás több-bérlős lehet tenni, mielőtt az Azure AD szükséges az Alkalmazásazonosító URI-t az alkalmazás globálisan egyedinek kell lennie. Az alkalmazásazonosító URI egy módszer, amellyel az alkalmazás a protokollüzenetekben azonosítható. Egybérlős alkalmazás esetében az alkalmazásazonosító URI-nak csak a bérlőn belül kell egyedinek lennie. Több-bérlős alkalmazás esetében azonban globálisan egyedinek kell lennie, hogy az Azure AD megtalálja az alkalmazást a különböző bérlők közt. A globális egyediség azzal kényszeríthető ki, hogy a rendszer megköveteli, hogy az alkalmazásazonosító URI egy olyan egy gazdanévvel rendelkezzen, amely egyezik az Azure AD-bérlő egy ellenőrzött tartományával.
 
@@ -150,7 +150,7 @@ Ezt mutatják be egy natív ügyfél többszintű, webes API-minta hívja meg a 
 
 Hasonló eset akkor fordul elő, ha egy alkalmazás különböző rétegek regisztrálva lettek a különböző bérlők. Vegyük példaként a kis-és a egy natív ügyfélalkalmazás, amely meghívja ezt az Office 365 Exchange Online API létrehozásához. Fejlesztés a natív alkalmazás, és újabb verzióiban a natív alkalmazás ügyfél-bérlőben futtatásához, az Exchange online-hoz egyszerű szolgáltatás jelen kell lennie. Ebben az esetben a fejlesztői és az ügyfél kell vásárolnia az Exchange Online hozhatók létre a bérlőknek az egyszerű szolgáltatás.
 
-Ha Microsofton kívül más szervezetek által készített API-k, a fejlesztői API-ügyfelek számára, akik az alkalmazást az ügyfeleik bérlők jóváhagyást lehetőséget biztosíthat kell. A javasolt tervezési van a külső fejlesztők az API-t hozhat létre, így is működhetnek a webes ügyfél-előfizetési megvalósításához. Ehhez tegye az alábbiakat:
+Ha Microsofton kívül más szervezetek által készített API-k, a fejlesztői API-ügyfelek számára, akik az alkalmazást az ügyfeleik bérlők jóváhagyást lehetőséget biztosíthat kell. A javasolt tervezési van a külső fejlesztők az API-t hozhat létre, így is működhetnek a webes ügyfél-előfizetési megvalósításához. Ehhez tegye a következőket:
 
 1. Kövesse a korábbi szakaszokban, annak érdekében, hogy az API-t valósít meg a több-bérlős alkalmazás regisztrációs/kód követelményeknek.
 2. Mellett is közzéteheti az API-k hatóköröket vagy szerepköröket, ellenőrizze, hogy a regisztráció tartalmaz a "Bejelentkezés és felhasználói profil olvasása" engedéllyel (alapértelmezés szerint biztosított).

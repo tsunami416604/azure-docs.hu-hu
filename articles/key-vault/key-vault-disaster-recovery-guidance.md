@@ -7,14 +7,14 @@ manager: barbkess
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 05/24/2019
 ms.author: barclayn
-ms.openlocfilehash: 9346f3f9bd9395ac863af87d05724a76ae83fb2f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: dba1fe91a635f467f4a3aeeaa048897065822869
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702331"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236641"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Az Azure Key Vault rendelkezésre állás és redundancia
 
@@ -25,6 +25,8 @@ A key vault tartalmát a rendszer replikálja a régión belül, és a egy máso
 A key vault szolgáltatásban az egyes összetevők nem tudnak, ha a régión belül más összetevők lépést győződjön meg arról, hogy nincs-e funkció nincs teljesítménycsökkenése kérelem kiszolgálására. Nem kell semmit sem ez aktiválásához. Ez automatikusan megtörténik, és érzékelhető lesz.
 
 A ritka esemény, hogy egy teljes Azure-régió nem érhető el, a rendszer automatikusan irányítja a kérelmeket, hogy az Azure Key vault az adott régióban (*átadta a feladatait*) egy másodlagos régióba. Ha az elsődleges régió újra elérhetővé válik, a kérelmek útválasztása vissza (*részt a feladatátvételben*) az elsődleges régióba. Újra nem kell tennie semmit, mert ez automatikusan megtörténik.
+
+A magas rendelkezésre állás kialakítása révén az Azure Key Vault nem szükséges leállítani a karbantartási tevékenységek miatt.
 
 Van néhány figyelmeztetések érdemes figyelembe vennie:
 
@@ -41,7 +43,7 @@ Van néhány figyelmeztetések érdemes figyelembe vennie:
   * Sortörés
   * Kicsomagolása
   * Ellenőrzés
-  * Aláírás
+  * Bejelentkezés
   * Backup
 * Feladatátvétel feladatátvételben, miután az összes kérelem típusok (beleértve az olvasási *és* írási kérelmek) érhetők el.
 

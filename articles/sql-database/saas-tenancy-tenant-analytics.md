@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 0be39aaf5526ea288764fc72d6c498cca2d659b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6115d7f70c2c75898b18a27af298a44ca87ca1bd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61486493"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240873"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>A kinyert adatoknak - egybérlős alkalmazást több-bérlős analytics használatával
  
@@ -241,5 +241,5 @@ Gratulálunk!
 ## <a name="additional-resources"></a>További források
 
 - További [oktatóanyagok, amely a Wingtip SaaS-alkalmazás útmutatóra](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
-- [Rugalmas feladatok](sql-database-elastic-jobs-overview.md).
+- [Rugalmas feladatok](elastic-jobs-overview.md).
 - [Több-bérlős analytics kinyert adatok – több-bérlős app használatával](saas-multitenantdb-tenant-analytics.md)

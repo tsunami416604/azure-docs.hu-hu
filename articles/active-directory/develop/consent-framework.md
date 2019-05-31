@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93adedc5c1343df1eee05b653b60cfd7e810044c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 2edbf5548f5e230986f0a1786d67fb4580e574e2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540424"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235455"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Az Azure Active Directory hozzájárulási keretrendszer
 
@@ -40,7 +40,7 @@ A következő lépések bemutatják, hogyan beleegyezése élmény az alkalmazá
 
 1. Fel, hogy egy ügyfél webalkalmazást, amely egy erőforrás és az API eléréséhez adott engedélyek kéréséhez szükséges. Megtudhatja, hogyan ehhez a következő szakaszban Ez a konfiguráció, de alapvetően az Azure portal segítségével alkalmazásengedély-kérelmeket deklarálja a konfiguráláskor. Egyéb olyan konfigurációs beállításoknak, például az alkalmazás Azure AD-regisztrációs részét képezik azok:
 
-    ![Egyéb alkalmazások engedélyei](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
+    ![Egyéb alkalmazások engedélyei](./media/consent-framework/permissions.png)
 
 1. Vegye figyelembe, hogy az Alkalmazásengedélyek frissítve lett-e, az alkalmazás fut, és egy felhasználó arra készül, hogy első alkalommal használja. Az alkalmazás először szüksége van egy engedélyezési kód beszerzése az Azure AD-ből `/authorize` végpont. Az engedélyezési kód majd egy új hozzáférési beszerezni, és a jogkivonat frissítésére használható.
 
@@ -58,11 +58,10 @@ A következő lépések bemutatják, hogyan beleegyezése élmény az alkalmazá
 
     **Hogy engedélyt adjanak az alkalmazás a delegált engedélyek**
 
-   1. Nyissa meg a **beállítások** oldalon az alkalmazás
-   1. Válassza ki **szükséges engedélyek**.
-   1. Kattintson a **engedélyeket** gombra.
+   1. Nyissa meg a **API-engedélyek** oldalon az alkalmazás
+   1. Kattintson a **biztosítson rendszergazdai jóváhagyás** gombra.
 
-      ![Engedélyek megadása az explicit rendszergazdai jóváhagyás](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+      ![Engedélyek megadása az explicit rendszergazdai jóváhagyás](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
    > Hozzájárulás megadása az explicit használatával a **engedélyeket** gomb ADAL.js használó egyoldalas alkalmazások (SPA) jelenleg szükség. Ellenkező esetben a kérelem sikertelen lesz, amikor a hozzáférési jogkivonatot kér.

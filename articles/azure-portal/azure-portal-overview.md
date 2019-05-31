@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: kfollis
 ms.author: kfollis
-ms.date: 03/22/2019
+ms.date: 05/24/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: bff6fe697912bca0bc55501a74a01a92b1330521
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de04b461d8e2d2dce9a88052a86fbe5d163fafec
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60551395"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244184"
 ---
 # <a name="azure-portal-overview"></a>Az Azure Portal áttekintése
 
@@ -23,6 +23,8 @@ Ez a cikk vezet be az Azure portal, portál oldalelemeihez azonosítja, és isme
 ## <a name="what-is-the-azure-portal"></a>Mi az az Azure Portalon?
 
 Az Azure Portalon egy webalapú egységesített konzolon, köszönhetően a parancssori eszközöket. Az Azure portal használatával kezelheti az Azure-előfizetés grafikus felhasználói felületen. Hozhat létre, kezelheti, és monitorozás egyszerű webes alkalmazásoktól az összetett felhőalapú rendszerbe, az erőforrások áttekinthetőségét egyéni irányítópultokat hozhat létre, és konfigurálhatja a legjobb élmény kisegítő lehetőségek.
+
+Az Azure Portalon célja a rugalmasság és a folyamatos rendelkezésre állást. Ez jelenlét rendelkezik minden Azure-adatközpontban és ezáltal így rugalmas egyes adatközpont meghibásodása és is elkerülhető a hálózati slow-downs megközelíti a felhasználók fel. Az Azure Portalon folyamatosan frissíti, és nem szükséges leállítani a karbantartási tevékenységek miatt.
 
 ## <a name="azure-home"></a>Azure Home
 
@@ -66,7 +68,6 @@ Mi a Kedvencek közé az oldalsáv gyakran használt szolgáltatások mutató hi
 
 > [!TIP]
 > A leggyorsabb módja egy erőforrás, szolgáltatás vagy dokumentációjában található *keresési* globális fejlécben. A webhely-navigációs hivatkozások segítségével lépjen vissza az előző lapokra.
->
 >
 
 ## <a name="next-steps"></a>További lépések

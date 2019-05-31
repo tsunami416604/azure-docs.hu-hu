@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/22/2019
 ms.author: raynew
-ms.openlocfilehash: 1712e46494796e563c26316b4f45d968872c304f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8ade598e4f1b6331367e8bd04ad59951ef5de8f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60781801"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242367"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Az Azure virtuális gépeken futó SQL Server-adatbázisok visszaállítása
 
@@ -41,8 +41,9 @@ Mielőtt vissza tudná állítani egy adatbázist, vegye figyelembe a következ�
     - Csak a megadott ügyfél nevét is megnyithatja a kapcsolatot.
 - Az összes rendszer adatbázisban (modell master, msdb) állítsa le az SQL Server Agent szolgáltatást a visszaállítás elindítása előtt.
 - Zárja be az olyan alkalmazásokat, amelyek próbálnak kapcsolatot igénybe sem ezeknek az adatbázisoknak.
+- Ha több egy kiszolgálón futó összes a példányon be kell lennie, és futó ellenkező esetben a kiszolgáló nem fog az, hogy az adatbázis-visszaállítás a célkiszolgáló a listában.
 
-## <a name="restore-a-database"></a>Adatbázis helyreállítása
+## <a name="restore-a-database"></a>Adatbázis visszaállítása
 
 -Adatbázis visszaállításához a következő engedélyek szükségesek:
 
@@ -152,6 +153,13 @@ Ha a kiválasztott **teljes és különbségi** visszaállítási típusként, t
 1. A visszaállítási folyamat nyomon a **értesítések** területet, illetve nyomon követheti a kiválasztásával **visszaállítási feladatok** adatbázis menüben.
 
     ![Visszaállítási feladat állapota](./media/backup-azure-sql-database/restore-job-notification.png)
+
+### <a name="restore-databases-with-large-number-of-files"></a>Nagy mennyiségű fájlt az adatbázisok visszaállítása
+
+Ha a teljes karakterlánc adatbázis fájlok mérete nagyobb, mint egy [adott korlát](backup-sql-server-azure-troubleshoot.md#files-size-limit-beyond-which-restore-happens-to-default-path), az Azure Backup egy másik pit összetevő adatbázisfájlok listáját tárolja, úgy, hogy nem lesz a cél visszaállítási elérési útjának beállítása a visszaállítás során a művelet. A fájlok helyette az SQL alapértelmezett elérési útra lesz visszaállítva.
+
+  ![Adatbázis visszaállítása a nagy méretű fájlt](./media/backup-azure-sql-database/restore-large-files.jpg)
+
 
 ## <a name="next-steps"></a>További lépések
 

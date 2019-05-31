@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5ad7ef714147616fe55a9b978d501b974323e251
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5adba958ed3bcb9efbf66c079b541e11ceed570c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949577"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243589"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen2
 
@@ -26,9 +26,9 @@ Az Azure Data Lake Storage Gen2-hozzáférés-vezérlési modellt, amely támoga
 
 RBAC szerepkör-hozzárendelések használ jogosultságkészletek a alkalmazni *rendszerbiztonsági*. A *rendszerbiztonsági tag* olyan objektum, amely egy felhasználó, csoport, egyszerű szolgáltatás vagy az Azure Active Directory (AD), amely az Azure-erőforrásokhoz való hozzáférést kér a meghatározott felügyelt identitás jelöli.
 
-Általában ezek az Azure előrébb a legfelső szintű erőforrásokhoz (például: Az Azure Storage-fiókok). Azure Storage, és ennek megfelelően az Azure Data Lake Storage Gen2 esetében ez a mechanizmus most már elérhető a fájl rendszererőforrás.
+Általában ezek az Azure előrébb a legfelső szintű erőforrásokhoz (például: Az Azure Storage-fiókok). Azure Storage, és ennek megfelelően az Azure Data Lake Storage Gen2 esetében ez a mechanizmus a tároló (fájlrendszer) erőforrás ki van terjesztve.
 
-A storage-fiók hatókörében rendszerbiztonsági szerepköröket hozzárendelni kezelésével kapcsolatos információkért lásd: [hitelesítés hozzáférés az Azure-blobok és üzenetsorok az Azure Active Directoryval](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+A storage-fiók hatókörében rendszerbiztonsági szerepköröket hozzárendelni kezelésével kapcsolatos információkért lásd: [hozzáférést biztosít az Azure blob és üzenetsor az adatokat az RBAC az Azure Portalon](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>A fájl- és fájlszintű hozzáférés-vezérlési listák a szerepkör-hozzárendelések hatása
 
@@ -49,7 +49,7 @@ SAS-tokeneket használható engedélyek a token részeként tartalmazza. Az enge
 
 ## <a name="access-control-lists-on-files-and-directories"></a>Hozzáférés-vezérlési listák a fájlok és könyvtárak
 
-A szolgáltatásnevek társíthatja egy hozzáférési szintet a fájlok és könyvtárak. Ezeket a hozzárendeléseket a rendszer rögzített egy *hozzáférés-vezérlési lista (ACL)*. Minden fájl- és a storage-fiókban van a hozzáférés-vezérlési lista.
+A szolgáltatásnevek társíthatja egy hozzáférési szintet a fájlok és könyvtárak. Ezeket a hozzárendeléseket a rendszer rögzített egy *hozzáférés-vezérlési lista (ACL)* . Minden fájl- és a storage-fiókban van a hozzáférés-vezérlési lista.
 
 Ha egy szerepkörhöz rendelt a tárolási fiók szintjén a rendszerbiztonsági tag, hozzáférés-vezérlési listák használatával adja meg a rendszerbiztonsági tag egyedi fájlokat és könyvtárakat az emelt szintű hozzáférés.
 
@@ -77,8 +77,6 @@ Alapértelmezett ACL-ek olyan sablonok, az ACL-ek társított címtár, amely a 
 
 Mindkét hozzáférési ACL-EK és alapértelmezett ACL-ek ugyanazzal a struktúrával rendelkeznek.
 
-Mindkét hozzáférési ACL-EK és alapértelmezett ACL-ek ugyanazzal a struktúrával rendelkeznek.
-
 > [!NOTE]
 > Módosítja az alapértelmezett szülő ACL nem befolyásolja a hozzáférési ACL és alapértelmezett ACL-jéhez már létező gyermekelemek.
 
@@ -86,11 +84,14 @@ Mindkét hozzáférési ACL-EK és alapértelmezett ACL-ek ugyanazzal a struktú
 
 A Fájlrendszerobjektum engedélyei vannak **olvasási**, **írási**, és **Execute**, és azok a fájlok és könyvtárak az alábbi táblázatban látható módon:
 
-|            |    Fájl     |   Könyvtár |
+|            |    Fájl     |   Címtár |
 |------------|-------------|----------|
 | **Olvasás (R)** | Olvashatja a fájl tartalmát | Szükséges **olvasási** és **Execute** a könyvtár tartalmának listázásához |
 | **Írás (W)** | Írhatja a fájlt vagy hozzáfűzhet a fájlhoz | Szükséges **írási** és **Execute** szükséges gyermekelemek létrehozásához a címtárban |
 | **Végrehajtás (X)** | Nem jelent semmit a Data Lake Storage Gen2 környezetében | Szükséges gyermekelemeinek bejárásához könyvtár |
+
+> [!NOTE]
+> Ha engedélyeket oszt ki csak ACL-ek (nem RBAC) használatával, majd adni a szolgáltatásnevet kell megadni a szolgáltatás egyszerű olvasási vagy írási hozzáférés egy fájlba, **Execute** engedélyeit a fájlrendszer, valamint minden mappa a Mappahierarchia, hogy a fájlt.
 
 #### <a name="short-forms-for-permissions"></a>Az engedélyek rövid alakjai
 
@@ -101,7 +102,7 @@ A Fájlrendszerobjektum engedélyei vannak **olvasási**, **írási**, és **Exe
 | 7            | `RWX`        | Olvasás + Írás + Végrehajtás |
 | 5            | `R-X`        | Olvasás + Végrehajtás         |
 | 4            | `R--`        | Olvasás                   |
-| 0            | `---`        | Nincsenek engedélyek         |
+| 0            | `---`        | Nincs engedély         |
 
 #### <a name="permissions-inheritance"></a>Engedélyöröklés
 

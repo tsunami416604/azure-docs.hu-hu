@@ -1,20 +1,20 @@
 ---
-title: Biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for postgresql-hez
-description: 'Útmutató: biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for postgresql-hez az Azure parancssori felület használatával.'
+title: Biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: 'Útmutató: biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure parancssori felület használatával.'
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.openlocfilehash: 3415910426d365ea2dc17e7515871c1bf4841fd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/06/2019
+ms.openlocfilehash: 85fb00ad221ae982e4d3ddc9d2d5d20dd4f2793d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419921"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65069097"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Hogyan biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for postgresql-hez az Azure CLI használatával
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Hogyan biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure CLI használatával
 
 ## <a name="backup-happens-automatically"></a>Biztonsági mentés automatikusan történik
 Azure Database for PostgreSQL-kiszolgálók biztonsági mentése rendszeres visszaállítási szolgáltatások engedélyezése. Ezzel a funkcióval, előfordulhat, hogy állítsa vissza a kiszolgáló és az összes adatbázis egy korábbi-időponthoz, egy új kiszolgálón.

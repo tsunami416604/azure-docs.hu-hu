@@ -7,35 +7,35 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 66aa9ab0d5236615153fbb97f3242a9271a6c91b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1e0c043e484e4eaf2639f76c9af3fef15ad85047
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790144"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237487"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>A Microsoft Power BI ODBC segítségével az Azure HDInsight az Apache Hive-adatok megjelenítése
 
-Ismerje meg, hogyan csatlakozhat Azure HDInsight ODBC segítségével a Microsoft Power BI és az Apache Hive-adatok megjelenítése.
+Ismerje meg, hogyan csatlakozhat Azure HDInsight ODBC segítségével a Microsoft Power BI Desktop és az Apache Hive-adatok megjelenítése.
 
 >[!IMPORTANT]
 > Kihasználhatja a Hive ODBC-illesztőprogram importálása a Power BI Desktop általános ODBC-összekötő használatával. Azonban nem ajánlott a Hive-lekérdezési motor nem interaktív természeténél BI számítási feladatokhoz. [HDInsight interaktív lekérdezés összekötője](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) és [HDInsight Spark-összekötő](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) a teljesítményük jobb döntéseket.
 
-Ebben az oktatóanyagban betölteni az adatokat egy hivesampletable Hive-táblából a Power bi-bA. A Hive-tábla tartalmaz néhány mobiltelefon-használati adatokat. Ezután a használati adatok a világ térképen jeleníti meg:
+Ebben az oktatóanyagban az adatokat betölteni egy `hivesampletable` Hive táblát a Power bi-bA. A Hive-tábla tartalmaz néhány mobiltelefon-használati adatokat. Ezután a használati adatok a világ térképen jeleníti meg:
 
 ![HDInsight Power bi-ban a térkép jelentésbe](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
 
 Az információk az új [interaktív lekérdezés](../interactive-query/apache-interactive-query-get-started.md) fürt típusa. HDInsight interaktív lekérdezés közvetlen lekérdezés használatával csatlakozhat, olvassa el a [adatok interaktív lekérdezéses Hive jelenítheti meg a közvetlen lekérdezés használatával Azure HDInsight a Microsoft Power BI](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 
-
-
 ## <a name="prerequisites"></a>Előfeltételek
+
 Mielőtt végrehajtaná ezt a cikket, a következőkkel kell rendelkeznie:
 
 * **HDInsight-fürt**. A fürt vagy a Hive használatával egy HDInsight-fürtöt, vagy egy újonnan kiadott interaktív lekérdezési fürt lehet. Fürtök létrehozása, lásd: [fürt létrehozása](apache-hadoop-linux-tutorial-get-started.md#create-cluster).
-* **[A Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)**. Letöltheti a másolatot a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331).
+
+* **[A Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** . Letöltheti a másolatot a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331).
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC-adatforrás létrehozása
 
@@ -45,13 +45,19 @@ Lásd: [létrehozása Hive ODBC-adatforrás](apache-hadoop-connect-excel-hive-od
 
 A hivesampletable Hive-tábla összes HDInsight-fürtöket tartalmaz.
 
-1. Jelentkezzen be a Power BI Desktopban.
-2. Kattintson a **kezdőlap** lapra, majd **adatok lekérése** származó a **külső adatok** menüszalagra, és válassza ki **további**.
+1. Indítsa el a Power BI Desktopban.
+
+2. A felső menüben keresse meg **kezdőlap** > **adatok lekérése** > **több...** .
 
     ![Nyissa meg HDInsight Power BI-adatok](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
-3. A a **adatok lekérése** ablaktáblán kattintson **más** kattintson a bal oldali **ODBC** jobbról, és kattintson a **Connect** alján.
-4. Az a **származó ODBC** panelen válassza ki az adatokat a forrás az előző szakaszban létrehozott nevet, és kattintson **OK**.
-5. Az a **kezelő** ablaktáblán bontsa ki a **HIVE ODBC -> -> alapértelmezett**, jelölje be **hivesampletable**, és kattintson a **terhelés**.
+
+3. Az a **adatok lekérése** párbeszédpanelen válassza **más** válassza a bal oldali **ODBC** , jobb oldalról, majd **Connect** alján.
+
+4. Az a **származó ODBC** párbeszédpanelen válassza ki az adatokat a forrás nevét a legördülő listából az utolsó szakaszban létrehozott, és válassza ki **OK**.
+
+5. Az a **kezelő** párbeszédpanelen bontsa ki a **ODBC > HIVE-> alapértelmezett**, jelölje be **hivesampletable**, majd válassza ki **terhelés**.
+
+6. Az a **ODBC-illesztő** párbeszédablakban válassza **alapértelmezett vagy egyéni**, majd **Connect**.
 
 ## <a name="visualize-data"></a>Adatok vizualizációja
 
@@ -60,10 +66,11 @@ Továbbra is az előző eljárást.
 1. A megjelenítések ablaktáblán válassza ki a **térkép**.  Egy földgömb ikon.
 
     ![HDInsight Power bi-ban a jelentés személyre szabható.](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
-2. A mezők panelen válassza ki a **ország** és **devicemake**. Láthatja, hogy a térképen ábrázolt adatok.
+2. Az a **mezők** ablaktáblán válassza előbb **ország** és **devicemake**. Láthatja, hogy a térképen ábrázolt adatok.
 3. Bontsa ki a térképet.
 
 ## <a name="next-steps"></a>További lépések
+
 Ebben a cikkben megtanulta, hogyan HDInsight használata a Power BI adatok vizualizálásához.  További tudnivalókért tekintse meg a következő cikkeket:
 
 * [Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához](../interactive-query/hdinsight-connect-hive-zeppelin.md).

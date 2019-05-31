@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 7ef8715f23d21a23dc3f37b192314b922847d3e1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 85d6ed80da93f90e6dc0feaee7081ee3f36f1bf9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65805906"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242689"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Válassza ki a valós idejű elemzési és adatfolyam-feldolgozási technológia az Azure-ban
 
@@ -25,7 +25,7 @@ Az Azure Stream Analytics ajánlott szolgáltatása a stream Analytics az Azure-
 * Az irányítópultok adatmegjelenítéshez
 * Valós idejű [riasztások](stream-analytics-set-up-alerts.md) historikus és térbeli mintázatok vagy anomáliák
 * Kinyerési, átalakítási és betöltési (ETL) feladatok
-* [Event Sourcing minta](/azure/architecture/patterns/event-sourcing.md)
+* [Event Sourcing minta](/azure/architecture/patterns/event-sourcing)
 * [IoT Edge](stream-analytics-edge.md)
 
 Hozzáadása egy Azure Stream Analytics az alkalmazás feladata a leggyorsabb módot kínálni arra le adatfolyam-továbbítási analytics fel, és futtatása az Azure-ban, az SQL nyelv használatával már jól ismert. Az Azure Stream Analytics szolgáltatása egy feladat, így nem kell töltött idő a fürtök kezelését, és nem kell aggódnia az állásidő, a feladat szinten 99,9 %-os SLA. Számlázási is történik, így alacsony költségek indítási feladat szinten (egy folyamatos átviteli egység), de méretezhető (akár 192 Streamelési egységek). Célszerű a jóval költséghatékonyabb, mint futtassa, és a egy fürt kezelése néhány Stream Analytics-feladatok futtatásához.

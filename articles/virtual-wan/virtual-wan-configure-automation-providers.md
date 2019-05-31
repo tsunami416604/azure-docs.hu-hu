@@ -7,13 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: cherylmc
-Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: c007684f351e0980ff9840ac8950121f212eeb36
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: f286c02e0eb6e801f62d4f2e16f1197a1e9d44ce
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016092"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304544"
 ---
 # <a name="virtual-wan-partners"></a>Virtuális WAN-partnerek
 
@@ -199,65 +198,7 @@ Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során 
 
 ## <a name="default"></a>Alapértelmezett szabályzatok az IPsec-kapcsolat
 
-### <a name="initiator"></a>Kezdeményező
-
-Az alábbi szakaszok tartalmazzák a szabályzat támogatott kombinációk, Azure esetén a kezdeményező az alagút számára.
-
-**1. fázis**
-
-* AES_256, SHA1, DH_GROUP_2
-* AES_256, SHA_256, DH_GROUP_2
-* AES_128, SHA1, DH_GROUP_2
-* AES_128, SHA_256, DH_GROUP_2
-
-**2. fázis**
-
-* GCM_AES_256, GCM_AES_256, PFS_NONE
-* AES_256, SHA_1, PFS_NONE
-* AES_256, SHA_256, PFS_NONE
-* AES_128, SHA_1, PFS_NONE
-
-### <a name="responder"></a>Válaszadó
-
-Az alábbi szakaszok tartalmazzák a szabályzat támogatott kombinációk, Azure esetén az válaszadó az alagút számára.
-
-**1. fázis**
-
-* AES_256, SHA1, DH_GROUP_2
-* AES_256, SHA_256, DH_GROUP_2
-* AES_128, SHA1, DH_GROUP_2
-* AES_128, SHA_256, DH_GROUP_2
-* A 3DES, SHA1, DH_GROUP_2
-* A 3DES, SHA_256, DH_GROUP_2
-
-**2. fázis**
-
-* GCM_AES_256, GCM_AES_256, PFS_NONE
-* AES_256, SHA_1, PFS_NONE
-* CBC_3DES, SHA_1, PFS_NONE
-* AES_256, SHA_256, PFS_NONE
-* AES_128, SHA_1, PFS_NONE
-* CBC_3DES, SHA_256, PFS_NONE
-* CBC_DES, SHA_1, PFS_NONE 
-* AES_256-TAL, SHA_1, PFS_1
-* AES_256, SHA_1, PFS_2
-* AES_256, SHA_1, PFS_14
-* AES_128, SHA_1, PFS_1
-* AES_128, SHA_1, PFS_2
-* AES_128, SHA_1, PFS_14
-* CBC_3DES, SHA_1, PFS_1
-* CBC_3DES, SHA_1, PFS_2
-* CBC_3DES, SHA_256, PFS_2
-* AES_256-TAL, SHA_256, PFS_1
-* AES_256-TAL, SHA_256, PFS_2
-* AES_256-TAL, SHA_256, PFS_14
-* AES_256, SHA_1, PFS_24
-* AES_256-TAL, SHA_256, PFS_24
-* AES_128, SHA_256, PFS_NONE
-* AES_128, SHA_256, PFS_1
-* AES_128, SHA_256, PFS_2
-* AES_128, SHA_256, PFS_14
-* CBC_3DES, SHA_1, PFS_14
+[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
 
 ### <a name="does-everything-need-to-match-between-the-virtual-hub-vpngateway-policy-and-my-on-premises-sdwanvpn-device-or-sd-wan-configuration"></a>Nem minden meg kell egyeznie a VPN-átjáró virtuális központ házirend és a saját helyszíni SDWAN/VPN-eszköz vagy SD-WAN konfigurációs között?
 

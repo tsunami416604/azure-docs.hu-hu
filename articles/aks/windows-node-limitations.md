@@ -2,17 +2,17 @@
 title: A Windows Server csomópontkészletek Azure Kubernetes Service (AKS) vonatkozó korlátozások
 description: Ismerje meg az ismert korlátozások futtatásakor csomópontkészleteit a Windows Server és az alkalmazás számítási feladatainak Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: 3d249271995d96307722dadf6b3e012e63565e6a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.author: twhitney
+ms.openlocfilehash: 34ece6e49332f781f688a8741db3514faf8c9a25
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956276"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304396"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuális korlátozások csomópontkészleteit a Windows Server és az alkalmazás számítási feladatainak Azure Kubernetes Service (AKS)
 
@@ -21,9 +21,10 @@ Az Azure Kubernetes Service (aks) Szolgáltatásban, létrehozhat egy csomópont
 Ez a cikk néhány korlátozás és az aks-ben a Windows Server-csomópontok operációs rendszer fogalmakat ismerteti. A Windows Server csomópontkészletei jelenleg előzetes verzióban érhető el.
 
 > [!IMPORTANT]
-> Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
+> Az AKS előzetes verziójú funkciók önkiszolgáló, a rendszer. A biztosított gyűjthet visszajelzéseket és a hibák kapcsolódóan a Közösség részéről. Előzetes verzióban elérhető ezeket a funkciókat nem üzemi használat céljára. Nyilvános előzetes verzióban érhető el "ajánlott beavatkozást" támogatás keretében tartoznak. Az AKS technikai támogatási csapat segítségét munkaidőben csendes-óceáni időzóna (PST) csak alatt érhető el. További információkért tekintse meg a következő cikkek támogatja:
 >
-> Ha az előzetes verziójú szolgáltatásaihoz is problémák merülnek fel [nyisson egy problémát a AKS GitHub-adattárat a] [ aks-github] az előzetes verziójú funkció a bejelentett hiba címét nevére.
+> * [Az AKS támogatási házirendek][aks-support-policies]
+> * [Az Azure-támogatás – gyakori kérdések][aks-faq]
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>Korlátozások a Windows Server a Kubernetesben
 
@@ -57,6 +58,8 @@ Windows Server csomópont készlet támogatása az aks-ben a következő tovább
 - Az aks-ben előzetes funkciókat, például a hálózati házirend- és a fürt méretező, a Windows Server-csomópontok nem támogatott.
 - Bejövő forgalom tartományvezérlőket csak a Linux-csomópontok egy NodeSelector használatával lehet ütemezni.
 - Az Azure fejlesztési tárolóhelyek jelenleg csak a Linux-alapú csomópontkészletek érhető el.
+- Csoport felügyelt szolgáltatásfiókok (gMSA) támogatás, ha a Windows Server-csomópontok egy Active Directory-tartományhoz nem csatlakoztatott jelenleg nem áll rendelkezésre az aks-ben.
+    - A nyílt forráskódú, felső [aks-motor] [ aks-engine] projekt jelenleg támogatja a csoportosan felügyelt szolgáltatásfiók Ha a funkció használatához van szüksége.
 
 ## <a name="os-concepts-that-are-different"></a>Az eltérő operációs rendszer fogalmak
 
@@ -74,11 +77,13 @@ Az aks-ben, Windows Server-tárolók használatába [az aks-ben a Windows Server
 
 <!-- LINKS - external -->
 [upstream-limitations]: https://kubernetes.io/docs/setup/windows/#limitations
-[aks-github]: https://github.com/azure/aks/issues]
 [kubernetes]: https://kubernetes.io
+[aks-engine]: https://github.com/azure/aks-engine
 
 <!-- LINKS - internal -->
 [azure-network-models]: concepts-network.md#azure-virtual-networks
 [configure-azure-cni]: configure-azure-cni.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [windows-node-cli]: windows-container-cli.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

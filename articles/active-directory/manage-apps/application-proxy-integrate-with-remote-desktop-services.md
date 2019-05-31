@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 05/23/2019
 ms.author: mimart
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ecd55cbb3a8eefc150db731901458561d90f033
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 621ca9a7a55f86a92f0c809b6e220245f47dfd39
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783412"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233713"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy a távoli asztal közzététele
 
@@ -71,8 +71,9 @@ RDS és Azure AD-alkalmazásproxy a környezetének beállítása után lépése
    - Lefordítja az URL-fejlécek: Nem
 2. Felhasználók hozzárendelése a közzétett távoli asztali alkalmazást. Ellenőrizze, hogy az összes férhet hozzá, RDS, túl.
 3. Hagyja, az alkalmazás egyszeri bejelentkezési módszer **az Azure AD egyszeri bejelentkezés le van tiltva**. A felhasználók számára a rendszer felkéri egyszer az Azure ad-hez, és egyszer a távoli asztali webes hitelesítéséhez, de rendelkezik egyszeri bejelentkezéshez, a távoli asztali átjáró.
-4. Lépjen a **Azure Active Directory** > **Alkalmazásregisztrációk** > *az alkalmazás* > **beállításai**.
-5. Válassza ki **tulajdonságok** és frissítheti a **kezdőlap URL-címe** mezőt, mutasson a távoli asztali webes végpontra (például `https://\<rdhost\>.com/RDWeb`).
+4. Válassza ki **az Azure Active Directory**, majd **Alkalmazásregisztrációk**. Válassza ki az alkalmazást a listából.
+5. A **kezelés**válassza **Branding**.
+6. Frissítés a **kezdőlap URL-címe** mezőt, mutasson a távoli asztali webes végpontra (például `https://\<rdhost\>.com/RDWeb`).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Az alkalmazásproxy közvetlen RDS-forgalom
 

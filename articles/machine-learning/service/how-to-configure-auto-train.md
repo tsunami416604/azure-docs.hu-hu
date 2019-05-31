@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fcc1926d580007750e7e1f5a3de06ef6578e1b5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: c0f8a56df5b41236256115ced0d46a87c5ee91a5
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957459"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400238"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált Machine Learning-kísérletek konfigurálása a Pythonban
 
@@ -59,6 +59,14 @@ Besorolás | Regresszió | Idősor-előrejelzési
 [Naiv Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
 [Sztochasztikus gradiens módszeres (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
 
+Használja a `task` paramétert a `AutoMLConfig` konstruktor adja meg a kísérletet.
+
+```python
+from azureml.train.automl import AutoMLConfig
+
+# task can be one of classification, regression, forecasting
+automl_config = AutoMLConfig(task="classification")
+```
 
 ## <a name="data-source-and-format"></a>Adatforrás és a formátum
 Automatizált machine learning található adatok támogatja, a helyi számítógépére vagy a felhőben, például az Azure Blob Storage. Az adatok olvashatók be a scikit-ismerje meg a támogatott formátumok. Áttekintheti az adatokat:
@@ -121,7 +129,7 @@ Kulcs | Típus | Kölcsönösen kizárják egymást az    | Leírás
 ---|---|---|---
 X | Pandas Dataframe vagy Numpy tömbje | data_train, a címkét, az oszlopok |  Megkezdheti az összes funkció
 Y | Pandas Dataframe vagy Numpy tömbje |   label   | Megkezdheti az adatok. A besorolás kell lennie az egész számok tömbje.
-X_valid | Pandas Dataframe vagy Numpy tömbje   | data_train, felirat | _Nem kötelező_ érvényesítése az összes szolgáltatás. Ha nincs megadva, az X train között van felosztva, és ellenőrzése
+X_valid | Pandas Dataframe vagy Numpy tömbje   | data_train, felirat | _Nem kötelező_ funkció az érvényesítési set adatok. Ha nincs megadva, az X train között van felosztva, és ellenőrzése
 y_valid |   Pandas Dataframe vagy Numpy tömbje | data_train, felirat | _Nem kötelező_ a felirat adatainak ellenőrzése a. Ha nincs megadva, az y train között van felosztva, és ellenőrzése
 sample_weight | Pandas Dataframe vagy Numpy tömbje |   data_train, a címkét, az oszlopok| _Nem kötelező_ súlyértéket minden mintához. Akkor használja, ha szeretné rendelni az adatpontokhoz különböző súlya
 sample_weight_valid | Pandas Dataframe vagy Numpy tömbje | data_train, a címkét, az oszlopok |    _Nem kötelező_ súlyértéket minden érvényesítési mintához. Ha nincs megadva, a sample_weight train között van felosztva, és ellenőrzés
@@ -129,30 +137,6 @@ data_train |    Pandas Dataframe |  X, y, X_valid, y_valid |    Minden adat (fun
 label | sztring  | X, y, X_valid, y_valid |  A data_train melyik oszlop felel meg a címke
 Oszlopok | karakterláncok tömbje  ||  _Nem kötelező_ oszlopok engedélyezett funkciók használata
 cv_splits_indices   | Egész számok tömbje ||  _Nem kötelező_ indexek kell felosztani az adatokat az érvényesítési közötti listája
-
-### <a name="load-and-prepare-data-using-data-prep-sdk"></a>Betölteni és adatelőkészítéshez SDK használata az adatok előkészítése
-Automatizált machine learning-példakísérleteket támogatja az adatok betöltése és alakítja át a az adatelőkészítés SDK használatával. Az SDK-val lehetővé teszi a
-
->* Elemzés paraméter következtetésekhez (kódolás, elválasztó, a fejlécek) rendelkező több fájltípus betölthető
->* Típus-átalakítás következtetésekhez használatával fájl betöltése közben
->* MS SQL Server és az Azure Data Lake Storage kapcsolat támogatása
->* Az autorefresh tulajdonság oszlop hozzáadása
->* Hiányzó imputálására
->* Oszlopok származtatása példa alapján
->* Szűrés
->* Egyéni Python-átalakítások
-
-További információ az adatok előkészítési sdk tekintse meg a [hogyan készíti elő az adatok modellezését, ahol a cikk](how-to-load-data.md).
-Alább látható egy példa, adat-előkészítési sdk használata az adatok betöltése.
-```python
-# The data referenced here was pulled from `sklearn.datasets.load_digits()`.
-simple_example_data_root = 'https://dprepdata.blob.core.windows.net/automl-notebook-data/'
-X = dprep.auto_read_file(simple_example_data_root + 'X.csv').skip(1)  # Remove the header row.
-# You can use `auto_read_file` which intelligently figures out delimiters and datatypes of a file.
-
-# Here we read a comma delimited file and convert all columns to integers.
-y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelector(term='.*', use_regex = True))
-```
 
 ## <a name="train-and-validation-data"></a>Adatok train és érvényesítése
 
@@ -324,7 +308,7 @@ Használja az alábbi 2 illesztett modell az első lépés az API-k segítségé
 
 + 1. API: `get_engineered_feature_names()` visszafejtett neveinek listáját adja vissza.
 
-  Használat:
+  Használat
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -340,7 +324,7 @@ Használja az alábbi 2 illesztett modell az első lépés az API-k segítségé
 
 + 2. API: `get_featurization_summary()` featurization bemeneti szolgáltatások összegzését adja vissza.
 
-  Használat:
+  Használat
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
@@ -501,6 +485,8 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 ![a szolgáltatás fontosság graph](./media/how-to-configure-auto-train/feature-importance.png)
+
+Hogyan modell magyarázatokat és a szolgáltatás fontosság engedélyezhető az SDK automatizált machine learning-en kívül más területeken további információkért lásd: a [fogalom](machine-learning-interpretability-explainability.md) e című cikket.
 
 ## <a name="next-steps"></a>További lépések
 

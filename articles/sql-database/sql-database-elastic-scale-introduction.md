@@ -12,19 +12,19 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 9f61748a489987bf6c3f38e8ebfdab660198e10a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 59701c31e461bbd5d73ec708504139347f6075f2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60585464"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241855"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)
 Könnyedén horizontális felskálázása az Azure SQL-adatbázisok használatával a **Elastic Database** eszközök. Az eszközök és a szolgáltatások lehetővé teszik az adatbázis-erőforrások használata **Azure SQL Database** megoldásokat a tranzakciós munkaterhelések kezelésére, és különösen a szoftverek, mint a szoftverszolgáltatások (SaaS) alkalmazások. Rugalmas adatbázis-szolgáltatások alkotják a:
 
 * [Elastic Database-ügyfélkódtár](sql-database-elastic-database-client-library.md): Az ügyféloldali kódtár funkciója, amely lehetővé teszi, szilánkokra osztott adatbázisok létrehozásához és kezeléséhez.  Lásd: [Ismerkedés az Elastic Database-eszközök](sql-database-elastic-scale-get-started.md).
 * [Elastic Database felosztási-egyesítési eszközének](sql-database-elastic-scale-overview-split-and-merge.md): szilánkokra osztott adatbázisok között helyez át adatokat. Ez az eszköz számára, amely adatokat helyez át egy több-bérlős adatbázis egy egybérlős adatbázis (vagy fordítva) hasznos. Lásd: [Elastic database felosztási-egyesítési eszközzel oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-* [Elastic Database-feladatok](sql-database-elastic-jobs-overview.md) (előzetes verzió): Feladatok használata kezelheti az Azure SQL Database-adatbázisok nagy számú. Könnyen elvégezhet olyan adminisztratív műveleteket, például sémamódosításokat, hitelesítő adatok kezelése, referenciaadatok frissítése, teljesítményadat-gyűjtés vagy bérlő (ügyfél) eszköztelemetria-gyűjtést feladatok használatával.
+* [Elastic Database-feladatok](elastic-jobs-overview.md): Feladatok használata kezelheti az Azure SQL Database-adatbázisok nagy számú. Könnyen elvégezhet olyan adminisztratív műveleteket, például sémamódosításokat, hitelesítő adatok kezelése, referenciaadatok frissítése, teljesítményadat-gyűjtés vagy bérlő (ügyfél) eszköztelemetria-gyűjtést feladatok használatával.
 * [Elastic Database-lekérdezés](sql-database-elastic-query-overview.md) (előzetes verzió): Lehetővé teszi a több adatbázisra kiterjedő Transact-SQL-lekérdezés futtatásához. Ez lehetővé teszi a jelentéskészítő eszközökkel, például az Excel, a Power BI, Tableau kapcsolatot.
 * [Rugalmas tranzakciók](sql-database-elastic-transactions-overview.md): Ez a funkció lehetővé teszi a tranzakciók, amelyek az Azure SQL Database adatbázisok futtatását. Rugalmas adatbázis-tranzakciók forrásoszlopokat használó .NET-alkalmazások érhetők el, valamint integrálhatja a szolgáltatást a megszokott programozási felület használatával a [System.Transaction osztályok](https://msdn.microsoft.com/library/system.transactions.aspx).
 

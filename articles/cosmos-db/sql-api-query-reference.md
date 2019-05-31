@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 186e0365ae8aee3b7f92fcc06142e4d0496ffd08
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 70de178df86a4b202298eda63b0f59cb7bc96281
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415457"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237831"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL nyelvi referencia 
 
@@ -1346,7 +1346,7 @@ ROUND(<numeric_expression>)
   |-|-|
   |-6.5000|-7|
   |-0.5|-1|
-  |0,5|1.|
+  |0,5|1|
   |6.5000|7||
   
   **Példák**  
@@ -3159,7 +3159,7 @@ GetCurrentDateTime ()
   |ÉÉÉÉ|négyjegyű év|
   |MM|kétjegyű hónappal (01 = January, stb.)|
   |DD|hónap (01. és 31) kétjegyű napja|
-  |T?|kezdő idő elemek signifier|
+  |T|kezdő idő elemek signifier|
   |hh|két számjegyű óra (00 és 23 közötti)|
   |mm|két számjegyet perc (00 és 59 közötti)|
   |ss|két számjegyet másodperc (00 és 59 közötti)|

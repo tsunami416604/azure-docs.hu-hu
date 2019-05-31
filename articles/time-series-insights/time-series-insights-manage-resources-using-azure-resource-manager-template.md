@@ -4,19 +4,19 @@ description: Ez a cikk ismerteti, hogyan kezeli az Azure Time Series Insights-k�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f5e350e8a9093936f1e747afda7c3192b4d8368d
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: ba7d412e9bfc29a53cd0aa47a926f60580b45490
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471708"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237640"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával a Time Series Insights-erőforrások létrehozása
 
@@ -62,7 +62,7 @@ Az alábbi eljárás ismerteti a PowerShell használatával történő üzembe h
      | Paraméter | Leírás |
      | --- | --- |
      | eventHubNamespaceName | Az adatforrás event hubs-névtér. |
-     | eseményközpontNeve | A forrás eseményközpont neve. |
+     | eventHubName | A forrás eseményközpont neve. |
      | consumerGroupName | A fogyasztói csoportot, amelynek használatával a Time Series Insights szolgáltatás az adatok olvasásához az event hubs neve. **MEGJEGYZÉS:** Az Erőforrásverseny elkerülése érdekében, a fogyasztói csoportot lehet a Time Series Insights szolgáltatás számára dedikált, és más olvasók sincs megosztva. |
      | EnvironmentName | A környezeti változó nevére. A név nem tartalmazhat: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`, és bármelyik karakter. Minden egyéb karakter engedélyezett.|
      | eventSourceName | Az esemény forrás gyermek-erőforrás neve. A név nem tartalmazhat: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`, és bármelyik karakter. Minden egyéb karakter engedélyezett. |

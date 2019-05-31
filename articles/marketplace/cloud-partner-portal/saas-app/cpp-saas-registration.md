@@ -7,16 +7,20 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: 1edaf89c056918f640a905b99d01775273b2c133
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e31efb9a52ff004e6e35ddfc251732c014eedae9
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941931"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257436"
 ---
-# <a name="register-a-saas-application"></a>Egy SaaS-alkalmazás regisztrálása
+# <a name="register-a-saas-application"></a>SaaS-alkalmazás regisztrálása
 
 Ez a cikk azt ismerteti, hogyan regisztrálhat egy SaaS-alkalmazás használatával a Microsoft [az Azure portal](https://portal.azure.com/).  A sikeres regisztráció után kapni fog egy Azure Active Directory (Azure AD) biztonsági jogkivonatot a SaaS-teljesítési API-k elérésére használható.  Az Azure AD kapcsolatos további információkért lásd: [a hitelesítés?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
+
+> [!IMPORTANT] 
+> SaaS kínálnak a funkciót migrált a [Microsoft Partner Centeren](https://partner.microsoft.com/dashboard/directory).  Minden új gyártó kell használnia a Partner Center új SaaS-ajánlatok létrehozására és kezelésére a meglévő ajánlatok.  Az SaaS-ajánlatok kiadók migrálása folyamatban van batchwise a Cloud Partner portálra, a Partner Center.  A Cloud Partner portálra azt jelzik, ha meghatározott meglévő ajánlatok áttelepítette állapotüzeneteket jelenít meg.
+> További információkért lásd: [hozzon létre egy új SaaS-ajánlatot](../../partner-center-portal/create-new-saas-offer.md).
 
 
 ## <a name="service-to-service-authentication-flow"></a>Szolgáltatások közötti hitelesítési folyamat
@@ -45,7 +49,7 @@ Az Azure AD képességeit felhasználó alkalmazásokat először regisztrálni 
         - Válassza ki **webalkalmazás / API** a [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) és [erőforrás és az API-alkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) biztonságos kiszolgálón telepített. Ezzel a beállítással az OAuth bizalmas [webes ügyfél](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) és nyilvános [felhasználói ügynök-alapú ügyfelek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
         Egyazon alkalmazás az ügyfelet és az erőforrást/API-t is elérhetővé teheti.
     -   **Bejelentkezés URL-cím**: Webes alkalmazás és az API-alkalmazások adja meg az alkalmazás alap URL-CÍMÉT. Ha például **http://localhost:31544** lehet, hogy a helyi gépen futó webalkalmazás URL-CÍMÉT. Felhasználók a webes ügyfélalkalmazás bejelentkezni majd használna az URL-címet.
-    -   **Átirányítási URI**: Natív alkalmazások esetén adja meg az Azure AD a jogkivonatválaszok visszaadására használt URI-ja. Adja meg például egy adott értéket az alkalmazás **http://MyFirstAADApp**.
+    -   **Átirányítási URI**: Natív alkalmazások esetén adja meg az Azure AD a jogkivonatválaszok visszaadására használt URI-ja. Adja meg például egy adott értéket az alkalmazás **http://MyFirstAADApp** .
 
         ![SaaS-AD Alkalmazásregisztrációk](./media/saas-offer-app-registration-v1-2.png)
 
@@ -72,7 +76,7 @@ HTTP-metódus
 
 *Kérés URL-címe*
 
-**https://login.microsoftonline.com/*{Bérlőazonosító}*  /oauth2/jogkivonat**
+**https://login.microsoftonline.com/ *{Bérlőazonosító}*  /oauth2/jogkivonat**
 
 *URI-paraméter*
 
@@ -97,7 +101,7 @@ HTTP-metódus
 |  Grant_type         | True (Igaz)         | Engedélyezési típus. Az alapértelmezett érték `client_credentials`.                    |
 |  Client_id          | True (Igaz)         |  Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás azonosítója.                  |
 |  client_secret      | True (Igaz)         |  Az Azure AD-alkalmazáshoz társított jelszót.                               |
-|  Erőforrás           | True (Igaz)         |  A célerőforrás, amelyre a jogkivonat kérik. Az alapértelmezett érték `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
+|  Resource           | True (Igaz)         |  A célerőforrás, amelyre a jogkivonat kérik. Az alapértelmezett érték `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
 |  |  |  |
 
 

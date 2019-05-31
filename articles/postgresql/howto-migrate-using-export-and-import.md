@@ -1,20 +1,20 @@
 ---
-title: Importálás segítségével adatbázis áttelepítése és exportálása az Azure Database for postgresql-hez
+title: Importálás segítségével adatbázis áttelepítése és az Azure Database for PostgreSQL - kiszolgáló egyetlen exportálása
 description: Ismerteti, hogyan bontsa ki a PostgreSQL-adatbázis egy szkript fájlba, és a céladatbázis fájlból, hogy az adatok importálása.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/01/2018
-ms.openlocfilehash: ecd7dc225379fc9d3eda6fb2e80e3c47a73db49b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 785e9ec77dea749546e3f1d59007706eac14f2ea
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422338"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067026"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Exportálás a PostgreSQL-adatbázis migrálása és importálása
-Használható [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) kibontani a PostgreSQL-adatbázis egy szkript fájlba és [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) a céladatbázis fájlból, hogy az adatok importálásához.
+Használható [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) kibontani a PostgreSQL-adatbázis egy szkript fájlba és [psql](https://www.postgresql.org/docs/current/static/app-psql.html) a céladatbázis fájlból, hogy az adatok importálásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató lépéseinek, az alábbiak szükségesek:

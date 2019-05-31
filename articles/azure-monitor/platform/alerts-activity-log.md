@@ -1,18 +1,18 @@
 ---
-title: Létrehozása, megtekintése és kezelése az Azure Monitor tevékenységnapló-riasztások
-description: Az Azure Portal, az erőforrás-sablon és a PowerShell a tevékenységnapló-riasztások létrehozásának módjáról.
+title: Létrehozása, megtekintése és kezelése tevékenység naplóriasztások az Azure monitorban
+description: Tevékenységnapló-riasztások létrehozása az Azure Portalon, az Azure Resource Manager-sablon és az Azure PowerShell használatával hogyan lehet.
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 2b069e55d98da824363dc480c211cde0fcc2518c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f25321fa5a13ed5a39a62a4115bb0bc10306d36f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130053"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244956"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és használata az Azure Monitor tevékenységnapló-riasztások kezelése  
 
@@ -97,7 +97,7 @@ Kövesse az alábbi eljárást:
     Engedélyezi, tiltsa le, szerkesztése vagy egy szabály törlése. További információ a tevékenység szabály kezelése.
 
 
-Azt is megteheti, egy egyszerű analógia ismertetése feltételek, amelyeken riasztási szabályok hozható létre a tevékenységnapló-, a rendszer és felfedezni vagy szűrheti az eseményeket a [tevékenységnapló az Azure Portalon](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). Az Azure Monitor - tevékenységnapló-, egy is szűrheti vagy keresse meg szükséges esemény és majd a használatával hozzon létre egy riasztást a **tevékenységnapló-riasztás hozzáadása** gombra; majd lépésekkel 4 és újabb verziók esetében az oktatóanyag a fenti leírtak alapján.
+Azt is megteheti, egy egyszerű analógia ismertetése feltételek, amelyeken riasztási szabályok hozható létre a tevékenységnapló-, a rendszer és felfedezni vagy szűrheti az eseményeket a [tevékenységnapló az Azure Portalon](activity-log-view.md#azure-portal). Az Azure Monitor - tevékenységnapló-, egy is szűrheti vagy keresse meg szükséges esemény és majd a használatával hozzon létre egy riasztást a **tevékenységnapló-riasztás hozzáadása** gombra; majd lépésekkel 4 és újabb verziók esetében az oktatóanyag a fenti leírtak alapján.
     
  ![ riasztás hozzáadása a tevékenységnaplóról](media/alerts-activity-log/add-activity-log.png)
     
@@ -201,7 +201,7 @@ A fenti json-mintaadatok menthető, ez az útmutató céljából (például:) sa
 > Akár 5 percig is eltarthat a egy új tevékenység riasztási szabály aktiválása
 
 ## <a name="rest-api"></a>REST API 
-[Az Azure Monitor - tevékenység Log riasztások API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager egy parancsmagjához, valamint az Azure CLI-n keresztül.
+[Az Azure Monitor - tevékenységnapló-riasztások API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager egy parancsmagjához, valamint az Azure CLI-n keresztül.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -216,7 +216,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActi
 
 ahol a sampleActivityLogAlert.parameters.json a riasztási szabály létrehozásához szükséges paraméterek számára megadott értékeket tartalmazza.
 
-### <a name="use-activity-log-powershell-cmdlets"></a>Tevékenység Log PowerShell-parancsmagok használata
+### <a name="use-activity-log-powershell-cmdlets"></a>Tevékenységnapló PowerShell-parancsmagok használata
 
 A tevékenységnapló-riasztások rendelkezhetnek dedikált elérhető PowerShell-parancsmagokkal:
 
@@ -226,7 +226,7 @@ A tevékenységnapló-riasztások rendelkezhetnek dedikált elérhető PowerShel
 - [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0) : Letiltja a meglévő tevékenységnapló-riasztás, és beállítja a címkéket.
 - [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0)    : Eltávolítja a tevékenységnapló-riasztás.
 
-## <a name="cli"></a>CLI
+## <a name="cli"></a>parancssori felület
 
 Azure CLI-parancsok mellett a csoport dedikált [az monitor tevékenységnapló riasztás](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) érhetők el tevékenység napló a riasztási szabályok kezelése.
 

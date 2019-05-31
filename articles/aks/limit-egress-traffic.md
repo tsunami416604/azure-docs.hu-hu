@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: de0ba13a527569e446a44c275b7323d4487f53b6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 13fbb20cde454a0aaab156a74a9fbcbac2d90d07
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780300"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418133"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Előnézet - korlát irányuló kimenő adatforgalmat a fürtcsomópontok és a szükséges portokat és szolgáltatásokat az Azure Kubernetes Service (AKS) az adathozzáférés szabályozása
 
@@ -21,9 +21,10 @@ Alapértelmezés szerint az AKS-fürtök (kimenő) kimenő internet-hozzáféré
 Ez a cikk ismerteti, milyen hálózati portok és teljes tartománynevek (FQDN) is szükséges és választható, ha egy AKS-fürtöt a kimenő forgalomért korlátozza.  Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
 > [!IMPORTANT]
-> Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
+> Az AKS előzetes verziójú funkciók önkiszolgáló, a rendszer. A biztosított gyűjthet visszajelzéseket és a hibák kapcsolódóan a Közösség részéről. Előzetes verzióban elérhető ezeket a funkciókat nem üzemi használat céljára. Nyilvános előzetes verzióban érhető el "ajánlott beavatkozást" támogatás keretében tartoznak. Az AKS technikai támogatási csapat segítségét munkaidőben csendes-óceáni időzóna (PST) csak alatt érhető el. További információkért tekintse meg a következő cikkek támogatja:
 >
-> Ha az előzetes verziójú szolgáltatásaihoz is problémák merülnek fel [nyisson egy problémát a AKS GitHub-adattárat a] [ aks-github] az előzetes verziójú funkció a bejelentett hiba címét nevére.
+> * [Az AKS támogatási házirendek][aks-support-policies]
+> * [Az Azure-támogatás – gyakori kérdések][aks-faq]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -68,11 +69,11 @@ Az aks-ben portokat és a címek két készletnyi vannak:
 A következő kimenő portokat / hálózati szabályok szükségesek az AKS-fürt:
 
 * TCP-port *443-as porton*
-* TCP-port *9000*
+* TCP-port *9000* és TCP-port *22-es* az alagút első pod kommunikálni az API-kiszolgálóhoz az alagút vége.
 
 A következő teljes tartománynév / alkalmazás szabályok szükségesek:
 
-| Teljes tartománynév                      | Port      | Használat      |
+| TELJES TARTOMÁNYNÉV                      | Port      | Használat      |
 |---------------------------|-----------|----------|
 | *.azmk8s.io               | HTTPS:443 | Ez a cím az az API kiszolgálói végpont. |
 | aksrepos.azurecr.io       | HTTPS:443 | Ez a cím megadása kötelező hozzáférési lemezképek az Azure Container Registry (ACR). |
@@ -90,7 +91,7 @@ A következő kimenő portokat / hálózati szabályok nem szükséges a megfele
 
 A következő teljes tartománynév / alkalmazás szabályokat a megfelelő működéshez az AKS-fürtök használata javasolt:
 
-| Teljes tartománynév                                    | Port      | Használat      |
+| TELJES TARTOMÁNYNÉV                                    | Port      | Használat      |
 |-----------------------------------------|-----------|----------|
 | *.ubuntu.com                            | HTTP:80   | Ez a cím lehetővé teszi, hogy a szükséges biztonsági javítások és frissítések letöltéséhez a Linux-fürtcsomópontokon. |
 | packages.microsoft.com                  | HTTPS:443 | Ez a cím a Microsoft-csomagok tárházából, használja a gyorsítótárazott *apt-get paranccsal* műveletek. |
@@ -105,9 +106,6 @@ A következő teljes tartománynév / alkalmazás szabályokat a megfelelő műk
 
 Ebben a cikkben megtanulta, milyen portokat és a címek, hogy úgy korlátozhatja a fürt kimenő forgalomért. Miként kommunikál a podok magukat, és milyen korlátozások is definiálhat a fürtön belül van. További információkért lásd: [között pods házirendekkel az aks-ben hálózati forgalmának biztonságossá tétele][network-policy].
 
-<!-- LINKS - external -->
-[aks-github]: https://github.com/azure/aks/issues]
-
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
@@ -118,3 +116,5 @@ Ebben a cikkben megtanulta, milyen portokat és a címek, hogy úgy korlátozhat
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
 [aks-upgrade]: upgrade-cluster.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

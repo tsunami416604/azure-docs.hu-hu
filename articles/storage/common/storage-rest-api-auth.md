@@ -9,22 +9,22 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 19272e93739d98962ab6818e1c2626ac9e0ac6d9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 38a120747734cbe4af8804a3e7596fc11a2c2eb3
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204439"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306666"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Az Azure Storage REST API használata
 
-Ez a cikk bemutatja a Blob Storage szolgáltatás REST API-k és a szolgáltatás a hívás hitelesítéséhez. Írás a személy, aki semmit sem tud REST és nem tudja biztosítása a REST-hívást a szempontból, de a fejlesztő. Hogy tekintse meg a REST-hívást dokumentációja és útmutató a tényleges REST-hívást – mezőszöveg fordítása, mely mezők nyissa meg a helyét? Miután részletesebben beállítása a REST-hívást, használhatja ezt a tudást a többi tárolási szolgáltatás REST API-k használatához.
+Ez a cikk bemutatja a Blob Storage szolgáltatás REST API-k és a szolgáltatás a hívás hitelesítéséhez. Írás a fejlesztő, aki semmit sem tud REST és nem tudja biztosítása a REST-hívást szempontjából. Hogy tekintse meg a REST-hívást dokumentációja és útmutató a tényleges REST-hívást – mezőszöveg fordítása, mely mezők nyissa meg a helyét? Miután részletesebben beállítása a REST-hívást, használhatja ezt a tudást a többi tárolási szolgáltatás REST API-k használatához.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
 Az alkalmazás egy storage-fiók blob Storage-tárolók listája. Próbálja ki az ebben a cikkben kód, a következőkre van szükség: 
 
-* Telepítés [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) a következő számítási feladatokkal:
+* Telepítés [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) a következő számítási feladatokkal:
     - Azure-fejlesztés
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -49,9 +49,9 @@ Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megol
 
 REST azt jelenti, hogy *representational állapotátvitel*. Egy adott definíciót, tekintse meg [Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
-Alapvetően, a REST egy olyan architektúra, mikor használhat API-k hívása, vagy API-kat kell meghívni, így. Azt, hogy mi történik, sem független, és milyen egyéb szoftvert használja küldésekor vagy fogadásakor a REST-hívások. Egy olyan alkalmazást, amely egy Mac, Windows, Linux, az Android rendszerű telefon vagy táblagép, iPhone, iPod vagy webhely futtat, és az azonos REST API-t használja az összes platformokhoz. Adatok is át lehet adni a ki és/vagy a REST API meghívásakor. A REST API-t nem gondoskodik a milyen platformról nevezzük – a fontos, az adatokat a kérésben kapott, és a válaszban megadott adatok.
+Alapvetően, a REST egy olyan architektúra, mikor használhat API-k hívása, vagy API-kat kell meghívni, így. Azt, hogy mi történik, sem független, és milyen egyéb szoftverek használhatók küldésekor vagy fogadásakor a REST-hívások. Egy olyan alkalmazást, amely egy Mac, Windows, Linux, az Android rendszerű telefon vagy táblagép, iPhone, iPod vagy webhely futtat, és az azonos REST API-t használja az összes platformokhoz. Adatok is át lehet adni a ki és/vagy a REST API meghívásakor. A REST API-t nem gondoskodik a milyen platformról nevezzük – a fontos, az adatokat a kérésben kapott, és a válaszban megadott adatok.
 
-Egy hasznos ismeretek, hogy hogyan használható a REST. Az Azure-termékcsoport csapatának rendszeresen kiadja az új funkciókat. Sok esetben az új funkciók érhetők el, a REST-felületen keresztül, de rendelkezik nem még lett végzetesnek **összes** a storage ügyfélkódtárai vagy a felhasználói felületen (például az Azure Portalon). Ha mindig szeretne a legújabb és legjobb technológiát használja, akkor REST tanulás szükséges. Ha szeretne írni a saját könyvtár használatával kommunikálhat az Azure Storage, vagy szeretné elérni az Azure Storage-programozási nyelv, amely nem rendelkezik az SDK-t vagy a storage ügyféloldali kódtár, használhatja a REST API-t.
+Egy hasznos ismeretek, hogy hogyan használható a REST. Az Azure-termékcsoport csapatának rendszeresen kiadja az új funkciókat. Sok esetben az új funkciók érhetők el a REST-felületen keresztül. Egyes esetekben azonban a szolgáltatások még nem végzetesnek **összes** a storage ügyfélkódtárai vagy a felhasználói felületen (például az Azure Portalon). Ha mindig szeretne a legújabb és legjobb technológiát használja, akkor REST tanulás szükséges. Ha szeretne írni a saját könyvtár használatával kommunikálhat az Azure Storage, vagy szeretné elérni az Azure Storage-programozási nyelv, amely nem rendelkezik az SDK-t vagy a storage ügyféloldali kódtár, használhatja a REST API-t.
 
 ## <a name="about-the-sample-application"></a>Tudnivalók a mintaalkalmazás
 
@@ -61,7 +61,7 @@ Ha megtekinti a [Blob Service REST API](/rest/api/storageservices/Blob-Service-R
 
 ## <a name="rest-api-reference-list-containers-api"></a>REST API-leírások: API-tárolót
 
-Nézzük meg a lapot a REST API-referencia a [ListContainers](/rest/api/storageservices/List-Containers2) így ismernie az egyes mezőit forrását a kérés- és a kód a következő szakaszban a művelet.
+Nézzük meg a lapot a REST API-referencia a [ListContainers](/rest/api/storageservices/List-Containers2) műveletet. Ezek az információk segítséget nyújtanak az ismertetése, ahol egyes mezőit származnak a kérések és válaszok.
 
 **Kérelem metódusa**: GET. Ez a művelet a HTTP-metódus, mindenképp adja meg a kérelem objektum olyan osztályát. Ehhez a művelethez tartozó többi értéket tartalmazza, HEAD, PUT és DELETE, attól függően, az API-t hívja meg.
 
@@ -77,21 +77,21 @@ További paraméterek használatához fűzzön hozzá őket az érték, példáu
 /?comp=list&timeout=60&maxresults=100
 ```
 
-[Kérelem fejlécei](/rest/api/storageservices/List-Containers2#request-headers)**:** Ez a szakasz felsorolja a szükséges és választható kérelemfejlécek. A fejlécek három szükség: egy *engedélyezési* fejléc *x-ms-date* (tartalmazza a kérelem az Egyezményes világidő), és *x-ms-version* (határozza meg a többi verzióját API-t használja). Többek között *x-ms-client-request-id* a fejlécek nem kötelező – és bármit Ez a mező értéke megadható; írás a storage analytics naplók Ha naplózása engedélyezve van.
+[Kérelem fejlécei](/rest/api/storageservices/List-Containers2#request-headers) **:** Ez a szakasz felsorolja a szükséges és választható kérelemfejlécek. A fejlécek három szükség: egy *engedélyezési* fejléc *x-ms-date* (tartalmazza a kérelem az Egyezményes világidő), és *x-ms-version* (határozza meg a többi verzióját API-t használja). Többek között *x-ms-client-request-id* a fejlécek nem kötelező – és bármit Ez a mező értéke megadható; írás a storage analytics naplók Ha naplózása engedélyezve van.
 
-[Kérelem törzse](/rest/api/storageservices/List-Containers2#request-body)**:** Nincs nem ListContainers kérelemtörzs. Kérelem törzse az összes PUT művelet szolgál, blobok, valamint SetContainerAccessPolicy, amely lehetővé teszi, hogy a alkalmazni a tárolt hozzáférési szabályzatok egy XML-lista küldése feltöltésekor. A cikkben említett tárolt hozzáférési szabályzatok [használata közös hozzáférésű Jogosultságkódok (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+[Kérelem törzse](/rest/api/storageservices/List-Containers2#request-body) **:** Nincs nem ListContainers kérelemtörzs. Kérelem törzse az összes PUT művelet szolgál, blobok, valamint SetContainerAccessPolicy, amely lehetővé teszi, hogy a alkalmazni a tárolt hozzáférési szabályzatok egy XML-lista küldése feltöltésekor. A cikkben említett tárolt hozzáférési szabályzatok [használata közös hozzáférésű Jogosultságkódok (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
-[Válasz állapotkódja](/rest/api/storageservices/List-Containers2#status-code)**:** Arra utasítja a bármely állapotkódok, ismernie kell. Ebben a példában egy HTTP-állapotkód: 200-as rendben. HTTP-állapotkódok teljes listáját, tekintse meg [állapotkód-definíciókat](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). A Storage REST API-k az adott hibakódok, olvassa el [REST API-val gyakori hibakódok](/rest/api/storageservices/common-rest-api-error-codes)
+[Válasz állapotkódja](/rest/api/storageservices/List-Containers2#status-code) **:** Arra utasítja a bármely állapotkódok, ismernie kell. Ebben a példában egy HTTP-állapotkód: 200-as rendben. HTTP-állapotkódok teljes listáját, tekintse meg [állapotkód-definíciókat](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). A Storage REST API-k az adott hibakódok, olvassa el [REST API-val gyakori hibakódok](/rest/api/storageservices/common-rest-api-error-codes)
 
-[Válaszfejlécek](/rest/api/storageservices/List-Containers2#response-headers)**:** Ezek közé tartozik a *tartalomtípus*; *x-ms-request-id* (a kérés azonosítója, átadott, ha van ilyen); *x-ms-version* (azt jelzi, hogy a használt Blob szolgáltatás), és a *dátum* (UTC-t, arra utasítja a kérés érkezett eldöntve).
+[Válaszfejlécek](/rest/api/storageservices/List-Containers2#response-headers) **:** Ezek közé tartozik a *tartalomtípus*; *x-ms-request-id*, azaz a, az átadott; kérés azonosítója *x-ms-version*, ami azt jelenti, hogy a Blob szolgáltatás használni; verziója és a *dátum*, amely (UTC), és arra utasítja a elindításakor a kérelem érkezett.
 
 [Választörzs](/rest/api/storageservices/List-Containers2#response-body): Ezt a mezőt egy XML-struktúra a kért adatok megadása kötelező. Ebben a példában a válasz az tárolók és a hozzájuk tartozó tulajdonságok listája.
 
 ## <a name="creating-the-rest-request"></a>A REST-kérés létrehozása
 
-Pár megjegyzéseket előtt – biztonság, amikor az éles környezetben futó, mindig használjon HTTP helyett HTTPS. Ebben a gyakorlatban az alkalmazásában kell használnia a HTTP, a kérelmek és válaszok adatait is megtekintheti. A kérések és válaszok adatokat megtekinteni a tényleges REST-hívások, letöltheti [Fiddler](https://www.telerik.com/fiddler) vagy más hasonló alkalmazás. A Visual Studio-megoldásban a tárfiók nevét és a kulcs az osztályban kötöttek, és adja át a tárfiók nevének és a tárfiók kulcsát ListContainersAsyncREST módszer, amely a különböző összetevők a REST-kérelem létrehozásához használt módszerek . Egy valós alkalmazás esetében a tároló nevének és kulcsának lenne egy konfigurációs fájlban, a környezeti változók találhatók, vagy kérhető le az Azure Key Vaultban.
+Pár megjegyzéseket előtt – biztonság, amikor az éles környezetben futó, mindig használjon HTTP helyett HTTPS. Ebben a gyakorlatban az alkalmazásában kell használnia a HTTP, a kérelmek és válaszok adatait is megtekintheti. A kérések és válaszok adatokat megtekinteni a tényleges REST-hívások, letöltheti [Fiddler](https://www.telerik.com/fiddler) vagy más hasonló alkalmazás. A Visual Studio megoldás, a tárfiók nevét és a kulcs kötöttek az osztályban. A ListContainersAsyncREST metódus továbbítja a különböző összetevők a REST-kérelem létrehozásához használt módszerek a tárfiók nevének és a tárfiók kulcsára. Egy valós alkalmazás esetében a tároló nevének és kulcsának lenne egy konfigurációs fájlban, a környezeti változók találhatók, vagy kérhető le az Azure Key Vaultban.
 
-A mintaprojekt az engedélyezési fejléc létrehozásához a kód pedig egy különálló osztályt, a cél, hogy, sikerült a teljes osztály igénybe vehet, és adja hozzá a saját megoldás és azokat használja ", ami." Az engedélyezési fejléc kód a legtöbb, az Azure Storage REST API-hívásokkal működik.
+A minta-projektben az engedélyezési fejléc létrehozásához a kód egy külön osztály van. A cél pedig az, hogy, sikerült a teljes osztály igénybe vehet, és adja hozzá a saját megoldás és azokat használja ", ami." Az engedélyezési fejléc kód a legtöbb, az Azure Storage REST API-hívásokkal működik.
 
 Hozhat létre a kérést, amely a HttpRequestMessage objektum, nyissa meg a program.cs fájlban ListContainersAsyncREST. A kérelem létrehozásához a lépések a következők: 
 
@@ -358,7 +358,7 @@ Ez a rész az aláírás karakterlánc a tárfiók a kérés által megcélzott 
 /contosorest/\ncomp:list
 ```
 
-Ha a lekérdezés paraméterei, ez magába foglalja azokat is. Itt van a kódra, amely további lekérdezési paraméterek és a lekérdezési paraméterek több értékkel rendelkező kezelésére is alkalmas. Ne feledje, hogy ez a kód, a REST API-k minden működik, így a felvenni kívánt összes lehetőség, akkor is, ha a ListContainers metódus nem szükséges mindegyiket fejleszt.
+Ha lekérdezési paramétereket, az ebben a példában ezeket a paramétereket tartalmaz. Itt van a kódra, amely további lekérdezési paraméterek és a lekérdezési paraméterek több értékkel rendelkező kezelésére is alkalmas. Ne feledje, hogy ez a kód működéséhez az összes, a REST API-k létrehozásakor. Fel szeretne venni az összes lehetőséget biztosít, még akkor is, ha a ListContainers metódus nem kell azokat.
 
 ```csharp 
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
@@ -414,7 +414,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 }
 ```
 
-Ha ezt a kódot futtatja, az eredményül kapott MessageSignature néz ki:
+Ez a kód futtatásakor az eredményül kapott MessageSignature példához hasonlóan néz ki:
 
 ```
 GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-07-29\n/contosorest/\ncomp:list
@@ -428,11 +428,11 @@ SharedKey contosorest:Ms5sfwkA8nqTRw7Uury4MPHqM6Rj2nfgbYNvUKOa67w=
 
 A AuthorizationHeader a kérelem fejlécében helyezni, mielőtt elküldené a válasz az utolsó fejléc.
 
-Minden, amit tudnia a kóddal együtt történő helyreállíthatósága használhatja a Storage szolgáltatások REST API-k hívásához használandó kérelmet szeretne létrehozni egy osztály, amely ismerteti.
+Ismerteti, amely minden, amit tudni kell összeállítani egy osztályt, amellyel létrehozhat egy kérelmet a Storage szolgáltatások REST API-k meghívására.
 
 ## <a name="how-about-another-example"></a>Mi a helyzet egy másik példa? 
 
-Nézzük meg a kódot a ListBlobs hívja meg a tároló módosítása *tároló-1*. Ez a majdnem teljesen megegyezik a kódot, tárolók, az URI-t és a válasz elemzéséhez hogyan csak különbségek listázásához. 
+Nézzük meg a kódot a ListBlobs hívja meg a tároló módosítása *tároló-1*. Ez a kód majdnem megegyezik a kódot, tárolók, az URI-t és a válasz elemzéséhez hogyan csak különbségek listázásához. 
 
 Ha megtekinti a dokumentáció a [ListBlobs](/rest/api/storageservices/List-Blobs), úgy találja, hogy van-e a metódus *első* , és a RequestURI:
 
@@ -562,9 +562,9 @@ Content-Length: 1135
 </EnumerationResults>
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
-Ebben a cikkben megtanulta, hogyan használatával indítson egy a blob Storage REST API-tárolók listája vagy a tárolóban lévő blobok listájának lekéréséhez. Azt is megtanulta, hogyan hozhat létre a REST API-hívás az engedélyezési aláírás, hogyan használható a REST-kérés és vizsgálata a válasz.
+Ebben a cikkben megtanulta, hogyan használatával indítson egy a blob Storage REST API-t. A kérelemmel kérheti le a tárolók listájában vagy a tárolóban lévő blobok listája. Megtudhatta, hogyan hozhat létre a REST API-hívás engedélyezési aláírásának és hogyan használható a REST-kérés. Végül megtanulta, hogyan vizsgálhatja meg a választ.
 
 ## <a name="next-steps"></a>További lépések
 

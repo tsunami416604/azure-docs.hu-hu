@@ -8,21 +8,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: b07a932ef048aa894af990baa57b87529d9da3aa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8b96c38d5bb24a267ad0203083e485d1780f28c8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717389"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241465"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Hozzon létre egy .NET HDInsight-alkalmazás nem interaktív hitelesítés
 Az alkalmazás saját identitás (nem interaktív), vagy a bejelentkezett felhasználó az alkalmazás (interaktív) alatt a Microsoft .NET Azure HDInsight alkalmazását futtathatja. Ez a cikk bemutatja, hogyan hozhat létre egy .NET-alkalmazás csatlakoztatása az Azure és a HDInsight kezelése nem interaktív hitelesítéssel. A minta egy interaktív alkalmazás: [csatlakozhat az Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
 
 A nem interaktív .NET-alkalmazás lesz szüksége:
 
-* Az Azure-előfizetés Bérlőazonosító (más néven egy *címtár-azonosító*). Lásd: [Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
-* Az Azure Active Directory (Azure AD-) alkalmazás ügyfél-azonosítóval. Lásd: [létrehozása az Azure Active Directory-alkalmazás](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) és [egy alkalmazás Azonosítójának lekéréséhez](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
-* Az Azure AD-alkalmazás titkos kulcsát. Lásd: [Get kérelem hitelesítési kulcs](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Az Azure-előfizetés Bérlőazonosító (más néven egy *címtár-azonosító*). Lásd: [Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* Az Azure Active Directory (Azure AD-) alkalmazás ügyfél-azonosítóval. Lásd: [létrehozása az Azure Active Directory-alkalmazás](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) és [egy alkalmazás Azonosítójának lekéréséhez](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* Az Azure AD-alkalmazás titkos kulcsát. Lásd: [Get kérelem hitelesítési kulcs](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Egy HDInsight-fürtön. Tekintse meg a [kezdeti lépéseket ismertető oktatóanyag](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
@@ -35,7 +35,7 @@ Az Azure AD-alkalmazás hozzárendelése egy [szerepkör](../role-based-access-c
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben válassza az **Erőforráscsoportok** elemet.
 3. Válassza ki az erőforráscsoportot, amely rendelkezik a HDInsight-fürt, amelyre később az oktatóanyagban a Hive-lekérdezést fog futni. Ha nagy számú erőforráscsoportok, a szűrő segítségével keresse meg a megfelelőt.
-4. Válassza ki az erőforráscsoport menüben **hozzáférés-vezérlés (IAM)**.
+4. Válassza ki az erőforráscsoport menüben **hozzáférés-vezérlés (IAM)** .
 5. Válassza ki a **szerepkör-hozzárendelések** lapján megtekintheti a jelenlegi szerepkör-hozzárendeléseket.
 6. A lap tetején válassza **szerepkör-hozzárendelés hozzáadása**.
 7. Kövesse az utasításokat a tulajdonosi szerepkör hozzáadása az Azure AD-alkalmazást. Miután sikeresen hozzáadta a szerepkör, az alkalmazás tulajdonosának szerepkör alatt jelenik meg. 

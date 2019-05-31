@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 3701a69ab72abf20a4f1608a1cee56c9cea38aca
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 99b0cab3fd277f90a675f0e6087d572853053a08
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523641"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387338"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Webes alkalmazás arány korlát tűzfalszabály konfigurálása az Azure PowerShell-lel
 Az Azure-alapú webes alkalmazás tűzfal (WAF) arány korlátozó szabály Azure bejárati ajtajának szabályozza az egyetlen ügyfél IP-cím egy egy perces időszakra engedélyezett kérelmek száma.
@@ -65,10 +65,10 @@ A következő példa megegyezik */promo* értékeként a *RequestUri* változó:
      -MatchValue "/promo"
 ```
 ## <a name="create-a-custom-rate-limit-rule"></a>Hozzon létre egy egyéni arány korlát szabályt
-Nastavit pomocí arány korlátot [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject). A következő példában a korlát beállításé pedig 1000 van beállítva. Bármely ügyfél kéréseit, a promóciós oldalra, egy perc alatt 1000 meghaladó le lesznek tiltva, amíg el nem kezdi a következő percben.
+Nastavit pomocí arány korlátot [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject). A következő példában a korlát beállításé pedig 1000 van beállítva. Bármely ügyfél kéréseit, a promóciós oldalra, egy perc alatt 1000 meghaladó le lesznek tiltva, amíg el nem kezdi a következő percben.
 
 ```powershell-interactive
-   $promoRateLimitRule = New-AzFrontDoorCustomRuleObject `
+   $promoRateLimitRule = New-AzFrontDoorWafCustomRuleObject `
      -Name "rateLimitRule" `
      -RuleType RateLimitRule `
      -MatchCondition $promoMatchCondition `

@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3edc1c2bd328cd6e7b7991ff2b5438b8899a0ce7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 59a35e44c78ea86f3b02eb4ad99dc1fd8fcb4870
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160477"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236624"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak 
 
 Az Azure Machine Learning szolgáltatás a modell a különböző erőforrások vagy környezetek, együttesen a betaníthatja [ __számítási céljainak__](concept-azure-machine-learning-architecture.md#compute-target). Egy számítási célnak lehet egy helyi számítógépre vagy egy felhőalapú erőforrás, például az Azure Machine Learning COMPUTE számítási, az Azure HDInsight vagy egy távoli virtuális gépen.  Is létrehozhat a modell üzembe helyezése számítási célnak leírtak szerint [", és a modellek üzembe helyezése"](how-to-deploy-and-where.md).
 
-Hozzon létre, és a egy számítási célnak, az Azure Machine Learning SDK, az Azure Portalon vagy az Azure CLI használata kezelheti. Ha egy másik szolgáltatás (például egy HDInsight-fürtöt) használatával létrehozott számítási célnak, használhatja őket az Azure Machine Learning szolgáltatás munkaterületén csatolásával.
+Hozzon létre, és kezelheti az Azure Machine Learning SDK használatával az Azure Portalon, az Azure CLI-vel vagy az Azure Machine Learning a VS Code-bővítmény számítási célt. Ha egy másik szolgáltatás (például egy HDInsight-fürtöt) használatával létrehozott számítási célnak, használhatja őket az Azure Machine Learning szolgáltatás munkaterületén csatolásával.
  
 Ebben a cikkben megismerheti, hogyan használható a különböző számítási célnak modell betanítása.  Minden számítási célnak vonatkozó lépéseket kövesse az ugyanabban a munkafolyamatban:
 1. __Hozzon létre__ egy számítási célnak, ha még nem rendelkezik.
@@ -377,6 +377,10 @@ A számítási célokhoz, a munkaterület használatával társított érheti el
 
 További információkért lásd: [erőforrás-kezelés](reference-azure-machine-learning-cli.md#resource-management).
 
+## <a name="set-up-compute-with-vs-code"></a>Állítsa be a számítási VS Code használatával
+
+Elérheti, létrehozása és kezelése a számítási célokhoz, a munkaterület használatával társított a [VS Code-bővítménnyel](how-to-vscode-tools.md#create-and-manage-compute-targets) Azure Machine Learning szolgáltatás.
+
 ## <a id="submit"></a>Küldje el a betanítási Futtatás
 
 Miután létrehozott egy futtatási konfigurációt, használhatja azt a kísérlet futtatásához.  A kód a minta elküldeni a betanítási Futtatás megegyezik a számítási tárolók összes típusára vonatkozóan:
@@ -416,8 +420,9 @@ Váltson egy másik futtatási konfigurációt, például a különböző szám�
 
 Vagy használhatja:
 
-* A kísérlet elküldése egy `Estimator` , ahogyan az objektum [estimators Train gépi Tanulási modelleket](how-to-train-ml-models.md). 
+* A kísérlet elküldése egy `Estimator` , ahogyan az objektum [estimators Train gépi Tanulási modelleket](how-to-train-ml-models.md).
 * Egy kísérlet elküldésére [a CLI-bővítmény használata](reference-azure-machine-learning-cli.md#experiments).
+* -N keresztül kísérlet elküldése az [VS Code-bővítménnyel](how-to-vscode-tools.md#train-and-tune-models).
 
 ## <a name="github-tracking-and-integration"></a>GitHub nyomon követését és integráció
 

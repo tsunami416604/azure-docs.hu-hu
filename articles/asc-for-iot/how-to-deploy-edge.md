@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 5d56c878eab92a7152bc0b248cab5c2ebf7e6dde
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 85e342f08e5402e50e5b0dfd1fe2df90337f29ca
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198414"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254292"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Az IoT Edge-eszközön a biztonsági modul üzembe helyezése
 
@@ -57,7 +57,7 @@ Használja az alábbi lépéseket egy ASC IoT biztonsági modul telepítéséhez
 
 1. Az Azure Portalon nyissa meg a **Marketplace**.
 
-1. Válassza ki **IOT-**, majd keresse meg az **Azure Security Center az IoT** , és jelölje ki.
+1. Válassza ki **IOT-** , majd keresse meg az **Azure Security Center az IoT** , és jelölje ki.
 
    ![Válassza ki az Azure Security Center az IoT](media/howto/edge-onboarding-8.png)
 
@@ -136,11 +136,11 @@ Hozzon létre egy IoT Edge üzembe helyezése az Azure Security Center az IoT h�
 
 #### <a name="step-2-specify-routes"></a>2. lépés: Útvonalak megadása 
 
-1. Az a **útvonalak megadása** lapra, és állítsa a **ASCForIoTToIoTHub** átirányítása **"származó/üzenetek/modulok/azureiotsecurity/\* be felső $"**, kattintson **Tovább**.
+1. Az a **útvonalak megadása** lapra, és állítsa a **ASCForIoTToIoTHub** átirányítása **"származó/üzenetek/modulok/azureiotsecurity/\* be felső $"** , kattintson **Tovább**.
 
    ![Útvonalak megadása](media/howto/edge-onboarding-9.png)
 
-#### <a name="step-3-review-deployment"></a>3. lépés: Üzembe helyezés áttekintése
+#### <a name="step-3-review-deployment"></a>3. lépés: Tekintse át a központi telepítés
 
 1. Az a **tekintse át a központi telepítési** fülre, tekintse át a telepítési adatokat, majd válassza ki **küldés** a telepítés befejezéséhez.
 
@@ -158,7 +158,7 @@ Ha problémát tapasztal, a tároló naplóit a legjobb módszer az IoT Edge mod
    
    | Name (Név) | IMAGE |
    | --- | --- |
-   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
+   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
    | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    

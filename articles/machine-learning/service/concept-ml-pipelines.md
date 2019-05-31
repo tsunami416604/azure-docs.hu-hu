@@ -1,7 +1,7 @@
 ---
 title: 'A folyamatok: machine learning-munkafolyamatok optimalizálása'
 titleSuffix: Azure Machine Learning service
-description: Ebben a cikkben megismerkedhet a machine learning-folyamatokat hozhat létre Azure Machine Learning-SDK-val a Python és a folyamatok használatának előnye. A gépi tanulási (ML-) folyamatokat az adatelemzők gépi tanulási munkafolyamatok létrehozásához, optimalizálásához és felügyeletéhez használják.
+description: Ebben a cikkben megismerkedhet a machine learning-folyamatokat hozhat létre Azure Machine Learning-SDK-val a Python és a folyamatok használatának előnye. Machine learning (gépi tanulás) folyamatok segítségével az adatszakértők hozhat létre, optimalizálhat és kezelhet a machine learning-munkafolyamatokat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff693ac34382ea5673989ecb6cbb38e19e176ad3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3e3fe64baca6e61c7eee214b84fd1ccdc88d3629
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65801060"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237820"
 ---
-# <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Hozhat létre a machine learning-folyamatokat az Azure Machine Learning szolgáltatással
+# <a name="build-reusable-ml-pipelines-in-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás újrafelhasználható gépi Tanulási folyamatok létrehozása
 
 Ebben a cikkben megismerkedhet a machine learning-folyamatokat hozhat létre az Azure Machine Learning-SDK Pythonhoz készült, és a folyamatok használatának előnye.
 
@@ -64,7 +64,7 @@ Fő előnye az, hogy a teljes gépi tanulási munkafolyamatok folyamatok létreh
 
 |Legfontosabb előnye|Leírás|
 |:-------:|-----------|
-|**Felügyelet nélküli&nbsp;fut.**|Ütemezzen néhány lépést, amelyek párhuzamosan vagy egymás után futnak megbízható módon, felügyelet nélkül. Mivel adatelőkészítéshez és modellezés is utolsó napok vagy hetek, most összpontosíthat más feladatok a folyamat futása közben. |
+|**Felügyelet nélküli&nbsp;fut.**|Néhány lépéssel párhuzamosan vagy a feladatütemezés futtatása egy megbízható és a felügyelet nélküli módon ütemezhet. Mivel adatelőkészítéshez és modellezés is utolsó napok vagy hetek, most összpontosíthat más feladatok a folyamat futása közben. |
 |**Vegyes és sokféle számítási**|Több folyamatot, amely megbízhatóan koordinálja a heterogén és méretezhető számítási erőforrások és a tárolók használata. A folyamat egyes lépéseit a különböző számítási célokhoz, például a HDInsight, a GPU adatelemzési virtuális gépek és a Databricks futtathatja. Ez lehetővé teszi a rendelkezésre álló számítási lehetőségek hatékony kihasználását.|
 |**Újrahasznosíthatóság**|Bizonyos forgatókönyvek esetén, például az átképezési és kötegelt pontozási folyamatokat is sablonok kialakítása. Egyszerű REST-hívásokon keresztül a külső rendszerekből elindíthatja őket.|
 |**Nyomon követést és verziókezelés**|Helyett manuálisan követési adatok és az eredmény elérési iterálni, használatával az egyes folyamatok SDK explicit módon adja és verzió az adatok adatforrásokat, bemenetként, és adja vissza. Parancsfájlok és megnövelt hatékonyság adatok külön-külön is kezelheti.|

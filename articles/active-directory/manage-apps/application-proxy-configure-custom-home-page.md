@@ -11,30 +11,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 05/23/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fa5c5638da390f4416afc9f4bd9c5d58c34cea8
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0f4e71bd7fd7e0ed9a220619995ba108fdccabe4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825580"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233747"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy használatával állítsa be a közzétett alkalmazások egy egyéni kezdőlapja
 
-Ez a cikk ismerteti, hogyan konfigurálhat egy alkalmazást arra, hogy a felhasználót, hogy egy egyéni kezdőlap, amelyek eltérőek lehetnek attól függően, hogy azok belső vagy külső közvetlen. Amikor közzétesz egy alkalmazást a proxyval, beállíthat egy belső URL-cím, de egyes esetekben ez nem az oldal a felhasználó először kell megjelennie. Állítsa be egy egyéni kezdőlap, úgy, hogy egy felhasználó lekéri a jobb oldalon, ha szeretne hozzáférni az alkalmazáshoz. A felhasználó az egyéni kezdőlap jelenik meg, hogy beállította, függetlenül attól, hogy férnek hozzá az alkalmazást az Azure Active Directory hozzáférési paneljére vagy az Office 365 appindítóban.
+Ez a cikk ismerteti, hogyan konfigurálhat egy alkalmazást arra, hogy egy felhasználó egy egyéni kezdőlapjára irányítja. Amikor közzétesz egy alkalmazást a proxyval, beállíthat egy belső URL-cím, de egyes esetekben ez nem az oldal a felhasználó először kell megjelennie. Állítsa be egy egyéni kezdőlap, úgy, hogy egy felhasználó lekéri a jobb oldalon, ha szeretne hozzáférni az alkalmazáshoz. A felhasználó az egyéni kezdőlap jelenik meg, hogy beállította, függetlenül attól, hogy férnek hozzá az alkalmazást az Azure Active Directory hozzáférési paneljére vagy az Office 365 appindítóban.
 
 Amikor egy felhasználó elindítja az alkalmazást, azokat a legfelső szintű tartomány URL-címet a közzétett alkalmazás alapértelmezés szerint van irányítva. A kezdőlap általában a kezdőlap URL-címe van beállítva. Az Azure AD PowerShell-modul segítségével határozza meg egy egyéni kezdőlap URL-címe, ha azt szeretné, hogy egy alkalmazás felhasználói kerül az alkalmazáson belül egy adott oldalon.
 
-Az alábbiakban egy forgatókönyv, amely azt ismerteti, miért érdemes a vállalat állíthatja be egy egyéni kezdőlap, és miért érdemes lenne a felhasználó típusától függően eltérő:
+Íme egy forgatókönyvet, amely azt ismerteti, miért érdemes a vállalat állíthatja be egy egyéni kezdőlap:
 
+- A vállalati hálózaton belüli egy felhasználó megnyitja a `https://ExpenseApp/login/login.aspx` jelentkezik be, és az alkalmazás eléréséhez.
 - Egyéb eszközök (például képek), amelynek a legfelső szinten, a gyökérmappa-szerkezetében hozzá kell Application Proxy van, mert az alkalmazást közzéteszi `https://ExpenseApp` , a belső URL-cím.
-- Azonban a vállalati hálózaton belüli egy felhasználó megnyitja a `https://ExpenseApp/login/login.aspx` jelentkezik be, és az alkalmazás eléréséhez.
 - A külső URL-címét `https://ExpenseApp-contoso.msappproxy.net`, amely nem használ egy külső felhasználó a bejelentkezési lapot.
-- Szeretné állítani, `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` külső kezdőlap URL-címként, így egy külső felhasználó látja a bejelentkezési oldal először.
+- Szeretné állítani, `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` kezdőlap URL-címként, így egy külső felhasználó látja a bejelentkezési oldal először.
 
 >[!NOTE]
 >Amikor engedélyezi a felhasználók elérését a közzétett alkalmazásokat, az alkalmazások megjelennek a [Azure AD hozzáférési Panel](../user-help/my-apps-portal-end-user-access.md) és a [Office 365 appindítóban](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
@@ -49,21 +49,21 @@ Mielőtt beállítaná a kezdőlap URL-címe, vegye figyelembe az alábbi követ
 
 - Ha módosítja a közzétett alkalmazáshoz, a módosítás a kezdőlap URL-Címének értékét előfordulhat, hogy alaphelyzetbe. Ha a jövőben frissíti az alkalmazást, akkor kell újbóli ellenőrzése ennyi idő, és ha szükséges, frissítse a kezdőlap URL-címe.
 
-A külső vagy belső kezdőlap az Azure Portalon keresztül, vagy a PowerShell használatával módosíthatja.
+A kezdőlap URL-címe, az Azure Portalon keresztül, vagy a PowerShell használatával is megadhatja.
 
 ## <a name="change-the-home-page-in-the-azure-portal"></a>Az Azure Portalon a kezdőlap módosítása
 
-Ha módosítani szeretné a külső és belső kezdőlapján az alkalmazás az Azure AD portálon keresztül, kövesse az alábbi lépéseket:
+Ha módosítani szeretné a kezdőlap URL-címe az alkalmazás az Azure AD portálon keresztül, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a [Azure Active Directory portálon](https://aad.portal.azure.com/). Az Azure Active Directory felügyeleti központ az irányítópulton jelenik meg.
-2. Válassza ki az oldalsávon **Azure Active Directory**. Az Azure ad-ben – Áttekintés lap jelenik meg.
-3. Az Áttekintés oldalsávon válassza **alkalmazásregisztrációk**. Megjelenik a regisztrált alkalmazások listája.
-4. Válassza ki az alkalmazást a listából. A regisztrált alkalmazás részleteit megjelenítő lap jelenik meg.
-5. Jelölje ki a kapcsolatot a **átirányítási URI azonosítója**, amely átirányítási URI-nak a webes és a nyilvános ügyféltípusok számát jeleníti meg. A hitelesítési lapon a regisztrált alkalmazás jelenik meg.
-6. Az utolsó sorát a **átirányítási URI-k** táblát, és állítsa a **típusa** oszlop **nyilvános ügyfél (mobil és asztali)**, és a a **ÁTIRÁNYÍTÁSI URI**oszlop, írja be a használni kívánt belső URL-cím. Új üres sor jelenik meg az imént módosított sor.
-7. Az új sorban állítsa be a **típusa** oszlop **webes**, majd a a **ÁTIRÁNYÍTÁSI URI-t** oszlop, írja be a használni kívánt külső URL-CÍMÉT.
-8. Ha bármely meglévő átirányítási URI-t sorokat törölni szeretne, válassza ki a **törlése** mellett minden egyes nemkívánatos sort (egy szemetes) ikonra.
-9. Kattintson a **Mentés** gombra.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/) felületére rendszergazdaként.
+2. Válassza ki **Azure Active Directory**, majd **alkalmazásregisztrációk**. Megjelenik a regisztrált alkalmazások listája.
+3. Válassza ki az alkalmazást a listából. A regisztrált alkalmazás részleteit megjelenítő lap jelenik meg.
+4. A **kezelés**válassza **Branding**.
+5. Frissítés a **kezdőlap URL-címe** az új elérési úttal.
+
+   ![A kezdőlap URL-címe mező megjelenítése egy regisztrált alkalmazás márkajelzési lapját](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
+ 
+6. Kattintson a **Mentés** gombra.
 
 ## <a name="change-the-home-page-with-powershell"></a>Módosítsa a kezdőlapon a PowerShell-lel
 

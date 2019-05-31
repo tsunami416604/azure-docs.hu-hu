@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 93b5aeafafdc6ab7ee233f6360bb5e09f45b387f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/28/2019
+ms.openlocfilehash: ddff9ffb00f4167cb8f64a75b129711467de739d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708832"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297054"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Csatlakozás az Apache Kafka on HDInsight egy Azure virtuális hálózaton keresztül
 
@@ -85,7 +85,7 @@ Ebben a szakaszban a lépések segítségével hozzon létre a következő konfi
 
 1. Kövesse a [önaláírt tanúsítványok használata pont – hely kapcsolatok használata](../../vpn-gateway/vpn-gateway-certificates-point-to-site.md) dokumentumot. Ez a dokumentum az átjáró szükséges tanúsítványokat hoz létre.
 
-2. Nyisson meg egy PowerShell-parancssort, és jelentkezzen be az Azure-előfizetéshez az alábbi kód használatával:
+2. Nyisson meg egy PowerShell-parancssort, és jelentkezzen be az Azure-előfizetés a következő kód használatával:
 
     ```powershell
     Connect-AzAccount
@@ -197,8 +197,10 @@ Ebben a szakaszban a lépések segítségével hozzon létre a következő konfi
     New-AzStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $storageName `
-        -Type Standard_GRS `
-        -Location $location
+        -SkuName Standard_GRS `
+        -Location $location `
+        -Kind StorageV2 `
+        -EnableHttpsTrafficOnly 1
 
     # Get the storage account keys and create a context
     $defaultStorageKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName `
@@ -240,7 +242,7 @@ Ebben a szakaszban a lépések segítségével hozzon létre a következő konfi
 
 Alapértelmezés szerint az Apache Zookeeper-ügyfelek a Kafka-közvetítőkhöz a tartomány nevét adja vissza. Ez a konfiguráció nem működik a VPN szoftver-ügyfél, a névfeloldást a virtuális hálózatban található entitások esetében nem használható. Ehhez a konfigurációhoz a következő lépések segítségével Kafka meghirdetése tartománynevek helyett IP-címek konfigurálása:
 
-1. Egy böngészőben nyissa meg https://CLUSTERNAME.azurehdinsight.net. Cserélje le __CLUSTERNAME__ a Kafka on HDInsight-fürt nevére.
+1. Egy böngészőben nyissa meg `https://CLUSTERNAME.azurehdinsight.net`. Cserélje le `CLUSTERNAME` a Kafka on HDInsight-fürt nevére.
 
     Amikor a rendszer kéri, használja a HTTPS-felhasználónevet és jelszót a fürthöz. Az Ambari webes felhasználói Felületet, a fürt akkor jelenik meg.
 
@@ -320,7 +322,9 @@ A Kafka, a kapcsolat ellenőrzéséhez használja a következő lépések létre
 
 2. A következők használatával telepítheti a [kafka-python](https://kafka-python.readthedocs.io/) ügyfél:
 
-        pip install kafka-python
+    ```bash
+    pip install kafka-python
+    ```
 
 3. Adatokat küldeni a Kafka, használja a következő Python-kódban:
 

@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 94ec38bc2cad3566fad88dc2ac56648f79aa16b2
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 4650e171c180653e94d78451d66bba1bcc71b136
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873370"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241289"
 ---
 # <a name="visualize-data-with-power-bi"></a>Adatok ábrázolása a Power BI használatával
 Ez az oktatóanyag az SQL-adatraktárhoz Power BI-on keresztül történő kapcsolódást
@@ -93,4 +93,4 @@ Ha közvetlen kapcsolódás használatával:
 Ezek a korlátozások és figyelmeztetések lehetséges, hogy módosítani, mert a élmény javítására.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy ízelítőt kapott a mintaadatok kezeléséből, megismerkedhet a [fejlesztés](sql-data-warehouse-overview-develop.md), a [betöltés](design-elt-data-loading.md) és az [áttelepítés](sql-data-warehouse-overview-migrate.md) folyamatával, vagy körülnézhet a [Power BI webhelyén](https://www.powerbi.com/).
+Most, hogy Ön egy ideig, hogy ízelítőt kapott a mintaadatok, lásd: hogyan [fejlesztése](sql-data-warehouse-overview-develop.md) vagy [betöltése](design-elt-data-loading.md). vagy körülnézhet a [Power BI webhelyén](https://www.powerbi.com/).

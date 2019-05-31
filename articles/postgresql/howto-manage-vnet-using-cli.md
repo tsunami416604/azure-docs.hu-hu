@@ -1,20 +1,20 @@
 ---
-title: Hozzon létre és kezelhető az Azure Database for PostgreSQL virtuális hálózati Szolgáltatásvégpontok és szabályok az Azure CLI használatával
-description: Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhető az Azure Database for PostgreSQL virtuális hálózati Szolgáltatásvégpontok és szabályok az Azure CLI-parancssor használatával.
+title: Hozzon létre, és a virtuális hálózati Szolgáltatásvégpontok és szabályok kezelése az Azure Database for postgresql-hez - Azure CLI használatával egyetlen kiszolgáló
+description: Ez a cikk azt ismerteti, hogyan hozhat létre, és a virtuális hálózati Szolgáltatásvégpontok és szabályok kezelése az Azure Database for PostgreSQL szolgáltatás az Azure CLI parancssori.
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 10/23/2018
-ms.openlocfilehash: 7dc5a49e8b27d1a4e4126bef1cce638373e056fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: df2af0240852b23203e504d8233de4af48475438
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420930"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067572"
 ---
-# <a name="create-and-manage-azure-database-for-postgresql-vnet-service-endpoints-using-azure-cli"></a>Hozzon létre és kezelhető az Azure Database for PostgreSQL virtuális hálózati Szolgáltatásvégpontok az Azure CLI használatával
+# <a name="create-and-manage-vnet-service-endpoints-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Hozzon létre és kezelheti a virtuális hálózati Szolgáltatásvégpontok Azure Database for PostgreSQL - hez-Azure CLI használatával egyetlen kiszolgáló
 Virtuális hálózat (VNet) szolgáltatások végpontok és a szabályok egy virtuális hálózat magáncímterét kiterjesztheti az Azure Database for PostgreSQL-kiszolgáló. Kényelmes megoldás az Azure parancssori felület (CLI) parancs használatával, is létrehozása, frissítése, törlése, listázása és megjelenítése a virtuális hálózati Szolgáltatásvégpontok és szabályok kezelheti a kiszolgálót. Azure database for PostgreSQL virtuális hálózati Szolgáltatásvégpontok, többek között a korlátozásokat, áttekintést lásd: [, Azure Database for PostgreSQL-kiszolgáló virtuális hálózati Szolgáltatásvégpontok](concepts-data-access-and-security-vnet.md). Virtuális hálózati Szolgáltatásvégpontok az Azure Database for PostgreSQL minden támogatott régióban érhetők el.
 
 ## <a name="prerequisites"></a>Előfeltételek

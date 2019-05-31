@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ba5e0f696f54f46fb14086b542dc3b2e64155975
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60777389"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244941"
 ---
 # <a name="azure-activity-log-event-schema"></a>Az Azure tevékenységnapló eseménysémája
-A **Azure-tevékenységnapló** , amely bármely Azure-ban bekövetkezett előfizetés-szintű eseményeit betekintést nyújt a bejelentkezés. Ez a cikk ismerteti a eseménysémája egy adatkategóriát. Az adatok sémája eltér attól függően, ha az adatok a portal, PowerShell, CLI-t, vagy közvetlenül a REST API és a segítségével olvas [streamelési adatok a storage vagy az Event Hubs használatával egy Naplóprofil](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Az alábbi példák a séma szerint a portal, PowerShell, CLI és REST API-n keresztül elérhetővé tett. Ezen tulajdonságok leképezése a [Azure diagnosztikai naplók séma](./diagnostic-logs-schema.md) van megadva a cikk végén található.
+A **Azure-tevékenységnapló** , amely bármely Azure-ban bekövetkezett előfizetés-szintű eseményeit betekintést nyújt a bejelentkezés. Ez a cikk ismerteti a eseménysémája egy adatkategóriát. Az adatok sémája eltér attól függően, ha az adatok a portal, PowerShell, CLI-t, vagy közvetlenül a REST API és a segítségével olvas [streamelési adatok a storage vagy az Event Hubs használatával egy Naplóprofil](activity-log-export.md). Az alábbi példák a séma szerint a portal, PowerShell, CLI és REST API-n keresztül elérhetővé tett. Ezen tulajdonságok leképezése a [Azure diagnosztikai naplók séma](diagnostic-logs-schema.md) van megadva a cikk végén található.
 
 ## <a name="administrative"></a>Adminisztratív
 A kategória tartalmazza az összes rekordot létrehozni, frissítési, törlési és műveleti műveleteket hajtja végre a Resource Manageren keresztül. Milyen típusú itt jelennének meg ebbe a kategóriába tartozó eseményeket például a "virtuális gép létrehozása" és "hálózati biztonsági csoport törlése" minden felhasználó vagy alkalmazás használatával a Resource Manager által végrehajtott műveletek az egyes erőforrástípusok műveletként van modellezve. Ha a művelet típusa, Write, Delete vagy műveletet, a rekordokat a kezdő és a sikeres vagy sikertelen a művelet rögzítve lesznek a felügyeleti kategória. A felügyeleti kategória is módosítania kellene a szerepköralapú hozzáférés-vezérlés az előfizetéshez.
@@ -113,7 +113,7 @@ A kategória tartalmazza az összes rekordot létrehozni, frissítési, törlés
 | Elem neve | Leírás |
 | --- | --- |
 | Engedélyezési |Az esemény tulajdonságainak RBAC-blobját. Általában tartalmazza az "action", "szerepkör" és "hatókör" tulajdonság. |
-| hívó |A művelet, egyszerű Felhasználónévi jogcím vagy egyszerű szolgáltatásnév jogcím alapján a rendelkezésre állási végző felhasználó e-mail címe. |
+| Hívó |A művelet, egyszerű Felhasználónévi jogcím vagy egyszerű szolgáltatásnév jogcím alapján a rendelkezésre állási végző felhasználó e-mail címe. |
 | csatornák |A következő értékek egyikét: "Admin", "Művelet" |
 | jogcímek |A JWT jogkivonat a felhasználó vagy az alkalmazásnak, hogy ezt a műveletet az erőforrás-kezelőben hitelesítéséhez az Active Directory által használandó. |
 | correlationId |Általában egy GUID Azonosítót a karakterláncként. Ugyanaz a uber művelet eseményeket, amelyek megosztása a korrelációs azonosító tartozik. |
@@ -216,7 +216,7 @@ Ebben a kategóriában a az Azure-erőforrások előfordult resource health esem
         "localizedValue": "Resource Health"
     },
     "eventTimestamp": "2018-09-04T15:33:43.65Z",
-    "id": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
+    "id": "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
     "level": "Critical",
     "operationId": "",
     "operationName": {
@@ -232,7 +232,7 @@ Ebben a kategóriában a az Azure-erőforrások előfordult resource health esem
         "value": "Microsoft.Compute/virtualMachines",
         "localizedValue": "Microsoft.Compute/virtualMachines"
     },
-    "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
+    "resourceId": "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
     "status": {
         "value": "Active",
         "localizedValue": "Active"
@@ -242,7 +242,7 @@ Ebben a kategóriában a az Azure-erőforrások előfordult resource health esem
         "localizedValue": ""
     },
     "submissionTimestamp": "2018-09-04T15:36:24.2240867Z",
-    "subscriptionId": "<subscription Id>",
+    "subscriptionId": "<subscription ID>",
     "properties": {
         "stage": "Active",
         "title": "Virtual Machine health status changed to unavailable",
@@ -275,7 +275,7 @@ Ebben a kategóriában a az Azure-erőforrások előfordult resource health esem
 | status |Az állapotesemény állapotát leíró karakterlánc. Az értékek a következők lehetnek: Aktív, megoldott, InProgress, frissítve. |
 | subStatus | Általában a null riasztások esetén. |
 | submissionTimestamp |Időbélyeg, amikor az eseményt vált elérhetővé a lekérdezéséhez. |
-| subscriptionId |Azure Subscription Id. |
+| subscriptionId |Az Azure előfizetés-azonosítójára. |
 | properties |Állítsa be a `<Key, Value>` párok (azaz egy szótárban), az esemény részleteit leíró.|
 | properties.title | Az erőforrás állapotát leíró felhasználóbarát karakterláncot. |
 | Properties.details | Felhasználóbarát karakterlánc, amely a hibára vonatkozó további részleteit ismerteti. |
@@ -352,7 +352,7 @@ Ez a kategória összes aktiválás az Azure-riasztások rekordot tartalmaz. Itt
 ### <a name="property-descriptions"></a>A tulajdonság leírása
 | Elem neve | Leírás |
 | --- | --- |
-| hívó | Always Microsoft.Insights/alertRules |
+| Hívó | Always Microsoft.Insights/alertRules |
 | csatornák | Mindig "rendszergazda, a művelet" |
 | jogcímek | Az egyszerű szolgáltatásnév (szolgáltatásnév), vagy az erőforrás típusa, a riasztás motor JSON-blobját. |
 | correlationId | GUID, amely a karakterlánc-formátum. |
@@ -462,7 +462,7 @@ Ez a kategória tartalmazza a rekord a meghatározott az előfizetés automatiku
 ### <a name="property-descriptions"></a>A tulajdonság leírása
 | Elem neve | Leírás |
 | --- | --- |
-| hívó | Always Microsoft.Insights/autoscaleSettings |
+| Hívó | Always Microsoft.Insights/autoscaleSettings |
 | csatornák | Mindig "rendszergazda, a művelet" |
 | jogcímek | Az egyszerű szolgáltatásnév (szolgáltatásnév), vagy az erőforrás típusa, az automatikus skálázási motor JSON-blobját. |
 | correlationId | GUID, amely a karakterlánc-formátum. |
@@ -744,7 +744,7 @@ Ez a kategória összes érvénybe művelet műveletek által végrehajtott reko
 | Elem neve | Leírás |
 | --- | --- |
 | Engedélyezési | Az esemény tulajdonságainak RBAC tömbje. Új erőforrások esetén ez a művelet és a kérelem kiértékelési kiváltó hatókörét. A meglévő erőforrások a művelet pedig "Microsoft.Resources/checkPolicyCompliance/read". |
-| hívó | Az új erőforrások, az identity által kezdeményezett központi telepítés. A meglévő erőforrások, a Microsoft Azure házirend Insights RP GUID Azonosítóját. |
+| Hívó | Az új erőforrások, az identity által kezdeményezett központi telepítés. A meglévő erőforrások, a Microsoft Azure házirend Insights RP GUID Azonosítóját. |
 | csatornák | Házirend-események csak a "Művelet" csatorna használatára. |
 | jogcímek | A JWT jogkivonat a felhasználó vagy az alkalmazásnak, hogy ezt a műveletet az erőforrás-kezelőben hitelesítéséhez az Active Directory által használandó. |
 | correlationId | Általában egy GUID Azonosítót a karakterláncként. Ugyanaz a uber művelet eseményeket, amelyek megosztása a korrelációs azonosító tartozik. |
@@ -798,6 +798,6 @@ Az Azure-tevékenységnapló egy tárfiókhoz vagy az Event Hubs-névtér közve
 
 
 ## <a name="next-steps"></a>További lépések
-* [További információ a tevékenységnapló (korábbi nevén Auditnaplók)](../../azure-monitor/platform/activity-logs-overview.md)
-* [Az Event hubs Azure tevékenységnapló Stream](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+* [További információ a tevékenységnaplóban](activity-logs-overview.md)
+* [Az Azure Storage vagy az Event hubs szolgáltatás a tevékenységnapló exportálása](activity-log-export.md)
 

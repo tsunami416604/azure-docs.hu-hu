@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 30df480eb314594cbc4d949302aff11e6d764b6f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: c7b73cad200666db9e926d8e808eaa4a8dccffb2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147809"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66248972"
 ---
 ## <a name="premium-ssd"></a>Prémium SSD
 
@@ -24,7 +24,7 @@ További információ az egyes Virtuálisgép-típusok és -méretek az Azure a 
 ### <a name="disk-size"></a>Lemezméret
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-Amikor üzembe helyez egy prémium szintű tárolólemez standard szintű tárolás esetén, garantáltan a kapacitás, IOPS és átviteli sebessége a lemezen. Ha például P50 lemez létrehozása, ha Azure látja el 4095 GB-os tárolási kapacitás, 7500 IOPS és 250 MB/s átviteli sebességet, hogy a lemez. Az alkalmazás használhatja a kapacitás és teljesítmény részét vagy egészét. Prémium szintű SSD-lemezeket úgy tervezték, hogy a cél teljesítmény 99,9 %-ában.
+Amikor üzembe helyez egy prémium szintű tárolólemez standard szintű tárolás esetén, garantáltan a kapacitás, IOPS és átviteli sebessége a lemezen. Ha például P50 lemez létrehozása, ha Azure látja el 4095 GB-os tárolási kapacitás, 7500 IOPS és 250 MB/s átviteli sebességet, hogy a lemez. Az alkalmazás használhatja a kapacitás és teljesítmény részét vagy egészét. Prémium szintű SSD-lemezeket biztosítanak alacsony egyszámjegyű ezredmásodperces késéseket és IOPS és átviteli sebesség az előző táblában 99,9 %-ában ismertetett lett tervezve.
 
 ### <a name="transactions"></a>Tranzakciók
 
@@ -37,7 +37,7 @@ Az Azure standard SSD-k egy költséghatékony tárolási megoldás az IOPS alac
 ### <a name="disk-size"></a>Lemezméret
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-Standard SSD-k egyszámjegyű ezredmásodperces késéseket nyújt a legtöbb i/o-műveletek és az IOPS és átviteli sebesség kereteken belül az előző táblázatban 99 %-ában ismertetett tervezték. Tényleges IOPS és átviteli sebesség függvénye néha a forgalmi minták. Standard SSD-k, mint a HDD-lemezek stabilabb teljesítményt biztosít a kisebb hálózati késést.
+Standard SSD-k egyszámjegyű ezredmásodperces késéseket és IOPS és átviteli sebesség kereteken belül az előző táblázatban 99 %-ában ismertetett tervezték. Tényleges IOPS és átviteli sebesség függvénye néha a forgalmi minták. Standard SSD-k, mint a HDD-lemezek stabilabb teljesítményt biztosít a kisebb hálózati késést.
 
 ### <a name="transactions"></a>Tranzakciók
 
@@ -45,7 +45,7 @@ Standard SSD-k, az egyes i/o műveletek kisebb vagy egyenlő, mint 256 átviteli
 
 ## <a name="standard-hdd"></a>Standard HDD
 
-Az Azure standard szintű HDD biztosíthat a virtuális gépek megbízható, költséghatékony lemeztámogatás késleltetést toleráló-alapú számítási feladatait. Blobok, táblák, üzenetsorok és fájlokat is támogatja. A standard szintű storage merevlemezes (HDD) meghajtók tárolják az adatokat. Ha virtuális gépek dolgozik, fejlesztési és tesztelési célra, a kevésbé kritikus fontosságú számítási feladatokhoz szabványos SSD és HDD lemez is használható. Standard HDD-k minden Azure-régióban érhető el, és az összes Azure-alapú virtuális gépekhez használható.
+Az Azure standard szintű HDD biztosíthat a virtuális gépek megbízható, költséghatékony lemeztámogatás késleltetést toleráló-alapú számítási feladatait. A standard szintű storage merevlemezes (HDD) meghajtók tárolják az adatokat. Mint a korábban megszokott lemezek SSD-alapú késés, IOPS és átviteli sebesség a standard szintű HDD lemezek szélesebb körben változhat. Az virtuális gépek használatakor is HDD a standard szintű lemezek használhatja fejlesztési és tesztelési célra, a kevésbé kritikus fontosságú számítási feladatokhoz. Standard HDD-k minden Azure-régióban érhető el, és az összes Azure-alapú virtuális gépekhez használható.
 
 ### <a name="disk-size"></a>Lemezméret
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]

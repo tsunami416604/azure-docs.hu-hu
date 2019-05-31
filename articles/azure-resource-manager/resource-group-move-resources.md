@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ae1afe103d4c52a2a7d921ef4f34dc030f3c6f7
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 4b836faef4630f6bee914478aecaed1bb4db7d71
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872637"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225894"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -68,8 +68,8 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Tartalomkézbesítési hálózat (CDN)
 * Cloud Services – lásd: [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
 * Cognitive Services
-* Tárolóregisztrációs adatbázis
-* Content Moderator
+* Container Registry
+* Tartalommoderátor
 * Cost Management
 * Customer Insights
 * Data Catalog
@@ -91,14 +91,14 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Felügyelt identitás - felhasználó által hozzárendelt
 * Media Services
 * Győződjön meg arról, hogy új előfizetésbe való áthelyezését figyelője – nem lehet [előfizetési kvóták](../azure-subscription-service-limits.md#monitor-limits)
-* Értesítési központok
+* Notification Hubs
 * Operational Insights
 * Operations Management
 * Portál irányítópultok
 * A Power BI - mind a Power BI Embedded és a Power BI-munkaterület-csoport
 * Nyilvános IP - áthelyezhetők az alapszintű Termékváltozat nyilvános IP-Címére. Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
 * A Recovery Services-tároló – regisztráljon egy [előzetes](#recovery-services-limitations).
-* SAP HANA on Azure
+* Azure-beli SAP HANA-szolgáltatás
 * Scheduler
 * Keresés –, erőforrások nem helyezhetők át több keresési különböző régiókban lévő több műveletet. Helyezze át őket a különböző műveletek.
 * Service Bus
@@ -142,7 +142,7 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * A Lab Services – osztályterem-tesztkörnyezetek nem lehet áthelyezni egy új erőforráscsoportot vagy előfizetést. DevTest Labs szolgáltatásban egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések között nem helyezheti át.
 * Felügyelt alkalmazások
 * Microsoft Genomics
-* Biztonsági
+* Biztonság
 * Site Recovery
 * StorSimple-Eszközkezelő
 * Tekintse meg a virtuális hálózatok (klasszikus) – [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
@@ -323,7 +323,7 @@ A művelet több percig futtathatnak.
 
 ### <a name="recovery-services-limitations"></a>Recovery Services-korlátozások
 
- Recovery Services-tároló áthelyezéséhez regisztrálnia kell egy [korlátozott nyilvános előzetes verzió](../backup/backup-azure-move-recovery-services-vault.md).
+ Recovery Services-tároló áthelyezéséhez kövesse az alábbi lépéseket: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../backup/backup-azure-move-recovery-services-vault.md).
 
 Jelenleg áthelyezheti egy Recovery Services-tárolót, régiónként, egyszerre. Tárolók, amelyek biztonsági mentése az Azure Files, az Azure File Sync vagy az SQL IaaS virtuális gépek nem helyezhetők át.
 

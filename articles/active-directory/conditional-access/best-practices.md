@@ -18,14 +18,14 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54cb8c3017b2b0a4c476095ba639985fb9418441
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 67811e03bfa87a991b9eeb6f80ddddd87f781335
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917320"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305738"
 ---
-# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Az Azure Active Directory-beli feltételes hozzáférésre vonatkozó ajánlott eljárások
+# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások az Azure Active Directory feltételes hozzáférés
 
 A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy jogosult felhasználók hozzáférésének a felhőalapú alkalmazások. Ez a cikk azt ismerteti kapcsolatban:
 
@@ -71,7 +71,7 @@ Az összes házirendek érvényben vannak, két fázisban történik:
 
     ![Rendelés](./media/best-practices/06.png)
     
-    Külső MFA-szolgáltatók és a használati feltételek származnak tovább.
+    Külső MFA-szolgáltatók és a használati feltételeket tartalmazó fájl jár a Tovább gombra.
 
 
 

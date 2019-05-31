@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: c72392e46805049703300dd6f60fc7bf08b9053b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9bddb6552b11dd506ee3e2c1c416c15da11048b7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235783"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258755"
 ---
 # <a name="capacity-planning-and-scaling"></a>Kapacitástervezés és skálázás
 
@@ -70,6 +70,9 @@ A csomópont tulajdonságait és a bejelentett elhelyezési korlátozások hajts
 2. Futtatás `Get-ServiceFabricNode` , győződjön meg arról, hogy a csomópont átváltott le van tiltva. Ha nem, akkor várjon, amíg a csomópont le van tiltva. Ez minden egyes csomópont esetében néhány órát is igénybe vehet. Nem folytatható, amíg a csomópont átváltott le van tiltva.
 3. Egy adott csomópont típusa a virtuális gépek számának csökkentéséhez. A legmagasabb szintű Virtuálisgép-példány már törlődni fog.
 4. Ismételje meg az 1 – 3 igény szerint, de az elsődleges csomóponttípusok kevesebb, mint a megbízhatósági szint kódhiba a példányok száma soha nem méretezhető. Lásd: [tervezése a Service Fabric-fürt kapacitása](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) ajánlott példányok listáját.
+
+> [!NOTE]
+> Amikor egy függőleges skálázási műveletek végrehajtásához támogatjuk a következő: E telepítene át a Service Fabric-fürt és az alkalmazás nem felügyelt lemezt a Managed Disks szolgáltatásba alkalmazás üzemkimaradás nélkül. Új virtuális gép kiépítése szerint a méretezési csoportok felügyelt lemezekkel rendelkező, és egy alkalmazás frissítése az elhelyezési korlátozások végrehajtása célzó kiosztott kapacitás; a Service Fabric-fürt ütemezheti a számítási feladatok üzembe helyezett fürtöt csomópont kapacitás, amely a frissítési tartomány szerint jelennek meg, alkalmazás üzemkimaradás nélkül. [Alapszintű Termékváltozat az Azure Load Balancer Terheléselosztók](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) háttérbeli címkészlet-végpontok lehetnek az egyetlen rendelkezésre állási csoportban vagy virtuálisgép-méretezési csoportot a virtuális gépek. Ez azt jelenti, hogy egy alapszintű Termékváltozatú terheléselosztó nem használható, ha a méretezési csoportok között helyezi át a Service Fabric-rendszerek alkalmazás, anélkül, hogy ez az ideiglenes inaccessibility a Service fabric-fürt felügyeleti végpontja, akkor is, ha a fürt és az alkalmazás továbbra is futnak; gyakran felhasználó kiépítése egy Standard Termékváltozatú terheléselosztó egy alapszintű Termékváltozat LB és a Standard Termékváltozat LB-erőforrások közötti egy virtuális IP-cím (VIP) felcserélés végrehajtása során, a csökkentése érdekében minden jövőbeni körülbelül 30 másodperc így inaccessibility virtuális IP-CÍMEK felcserélése szükséges.
 
 ## <a name="horizontal-scaling"></a>Vízszintes méretezés
 

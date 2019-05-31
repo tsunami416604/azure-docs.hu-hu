@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: b6abb0048dcc722241a2cd87354224b0fd7fa2f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f6c00f4ada0590df91fce0c36281d0c0cac67b77
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561545"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257948"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Az Azure Event Grid zdroje událostí
 
@@ -24,7 +24,7 @@ Ez a cikk tartalmakra mutató hivatkozásokat biztosít minden egyes esemény fo
 
 Fizessen elő az Azure-előfizetések események reagálni az igények változásaira erőforrásokat az Azure-előfizetés között.
 
-|Cím |Leírás  |
+|Beosztás |Leírás  |
 |---------|---------|
 | [Oktatóanyag: Az Event Grid és a Microsoft Teams az Azure Automation](ensure-tags-exists-on-new-virtual-machines.md) |Hozzon létre egy virtuális gépet, amely eseményt küld. Az esemény aktiválása a címkéket a virtuális gép, és a egy Microsoft Teams-csatornához küldött üzenet aktivál egy Automation-runbook. |
 | [Útmutató: az eseményekre a portálon keresztül előfizetés](subscribe-through-portal.md) | A portál használatával feliratkozás Azure-előfizetés eseményeire. |
@@ -36,7 +36,7 @@ Fizessen elő az Azure-előfizetések események reagálni az igények változá
 
 Fizessen elő a Container Registry események reagálni az igények változásaira képeken.
 
-|Cím |Leírás  |
+|Beosztás |Leírás  |
 |---------|---------|
 | [Gyors útmutató: a tároló beállításjegyzék események küldése](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja a tároló-beállításjegyzék események küldése az Azure CLI használatával. |
 | [Eseményséma](event-schema-container-registry.md) | Container Registry események mezőket jeleníti meg. |
@@ -45,7 +45,7 @@ Fizessen elő a Container Registry események reagálni az igények változásai
 
 Fizessen elő az alkalmazás válaszadására egyéni témaköröket.
 
-|Cím  |Leírás  |
+|Beosztás  |Leírás  |
 |---------|---------|
 | [Rövid útmutató: létrehozása és átirányítása az Azure CLI-vel egyéni események](custom-event-quickstart.md) | Bemutatja, hogyan használható az Azure CLI-vel szeretne egyéni eseményeket küldeni. |
 | [Rövid útmutató: létrehozása és átirányítása egyéni események az Azure PowerShell használatával](custom-event-quickstart-powershell.md) | Bemutatja, hogyan használható az Azure PowerShell-lel szeretne egyéni eseményeket küldeni. |
@@ -65,7 +65,7 @@ Fizessen elő az alkalmazás válaszadására egyéni témaköröket.
 
 Fizessen elő az Event Hubs-események fájl események rögzítése válaszolni. Az Event Hubs egy eseményforrás vagy egy eseménykezelő működhet. A következő cikkek bemutatják, hogyan használható az Event Hubs forrásként.
 
-|Cím  |Leírás  |
+|Beosztás  |Leírás  |
 |---------|---------|
 | [Oktatóanyag: big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md) | Az Event Hubs rögzítési fájlt hoz létre, amikor az Event Grid eseményt küld egy függvényalkalmazáshoz. Az alkalmazás lekéri a rögzítési fájlt, és egy data warehouse-bA migrálja az adatokat. |
 | [Eseményséma](event-schema-event-hubs.md) | Az Event Hubs-események mezőket jeleníti meg. |
@@ -74,9 +74,9 @@ Példák az Event hubs, a kezelő: [az Event Hubs-kezelő](event-handlers.md#eve
 
 ## <a name="iot-hub"></a>IoT Hub
 
-Feliratkozás az IoT Hub eseményeire eszköz létrehozva, törlése, a csatlakoztatott és a leválasztott eseményeket válaszolni.
+IoT Hub-események létrehozása, törlése, csatlakoztatott, kapcsolat nélküli eszköz válaszol, és a telemetria-eseményeinek előfizetni.
 
-|Cím  |Leírás  |
+|Beosztás  |Leírás  |
 |---------|---------|
 | [Az Azure IoT Hub-események Logic Apps használatával kapcsolatos e-mail-értesítések küldése](publish-iot-hub-events-to-logic-apps.md) | Egy logikai alkalmazás küld értesítő e-mailt, minden alkalommal, amikor egy eszköz az IoT hubhoz való hozzáadása. |
 | [IoT Hub-események reagálnak a műveletek indítása Event Grid használatával](../iot-hub/iot-hub-event-grid.md) | Az IoT Hub integrálása az Event Grid áttekintése. |
@@ -87,7 +87,7 @@ Feliratkozás az IoT Hub eseményeire eszköz létrehozva, törlése, a csatlako
 
 Fizessen elő a feladat állapota válaszadására Media Services-események.
 
-|Cím  |Leírás  |
+|Beosztás  |Leírás  |
 |---------|---------|
 | [Áttekintés: reagálás a Media Services-események](../media-services/latest/reacting-to-media-services-events.md) | A Media Services integrálása az Event Grid áttekintése. |
 | [Oktatóanyag: Azure Media Services-események átirányítása egyéni webes végpontra parancssori felület használatával](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan küldhet eseményeket a Media Services szolgáltatásból. |
@@ -97,7 +97,7 @@ Fizessen elő a feladat állapota válaszadására Media Services-események.
 
 Erőforrás-csoport események reagálni az igények változásaira az erőforrások között egy erőforráscsoportot az előfizetés.
 
-|Cím  |Leírás  |
+|Beosztás  |Leírás  |
 |---------|---------|
 | [Oktatóanyag: az Azure Event Grid és a Logic Apps a virtuális gépek módosításainak monitorozása](monitor-virtual-machine-changes-event-grid-logic-app.md) | Egy logikai alkalmazást egy virtuális gép módosításainak figyeli, és ezeket a módosításokat kapcsolatos e-mailt küld. |
 | [Az Azure CLI: feliratkozás egy erőforráscsoport eseményeire](./scripts/event-grid-cli-resource-group.md)| Feliratkozik egy erőforráscsoport eseményeire hivatkozó szkriptre példát. Eseményeket küld egy Webhookot. |
@@ -111,7 +111,7 @@ Erőforrás-csoport események reagálni az igények változásaira az erőforr�
 
 Fizessen elő a Service Bus-eseményekre, anélkül, hogy egy aktív figyelője küldött üzeneteket.
 
-|Cím  |Leírás  |
+|Beosztás  |Leírás  |
 |---------|---------|
 | [Oktatóanyag: Azure Service Bus – Azure Event Grid integráció példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid üzeneteket küld a Service Bus-témakörbe, alkalmazás és a logikai alkalmazás működéséhez. |
 | [Áttekintés: Azure Service Bus – Event Grid-integrációt](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | A Service Bus integrálása az Event Grid áttekintése. |
@@ -121,7 +121,7 @@ Fizessen elő a Service Bus-eseményekre, anélkül, hogy egy aktív figyelője 
 
 Fizessen elő a Blob Storage-események válaszolni a blob-események létrehozása és törlése.
 
-|Cím  |Leírás  |
+|Beosztás  |Leírás  |
 |---------|---------|
 | [Gyors útmutató: Blob storage-események átirányítása egyéni webes végpontra az Azure CLI-vel](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan egy Webhookot a blob storage-események küldése az Azure CLI használatával. |
 | [Gyors útmutató: Blob storage-események átirányítása egyéni webes végpontra a PowerShell-lel](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan használhatja az Azure Powershellt egy Webhookot a blob storage-események küldéséhez. |
@@ -135,7 +135,7 @@ Fizessen elő a Blob Storage-események válaszolni a blob-események létrehoz�
 ## <a name="maps"></a>Maps
 Fizessen elő az Azure Maps események geokerítésen válaszadására. Ha például egy alkalmazás skálázhatóságával, valamint e-mailben értesítést minden alkalommal, amikor egy eszköz lép vagy kilép a geokerítésen.
 
-|Cím  |Leírás  |
+|Beosztás  |Leírás  |
 |---------|---------|
 | [Az Azure Maps események reagálás az Event Grid használatával](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Az Azure Maps integrálása az Event Grid áttekintése. |
 | [Oktatóanyag: A geokerítésen beállítása](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ez az oktatóanyag végigvezeti azokon az alapvető lépéseket geokerítésen beállítása az Azure Maps használatával. Azure Event Grid használatával a geokerítésen eredmények streamelése és beállíthat egy értesítést a geokerítésen eredményei alapján. |

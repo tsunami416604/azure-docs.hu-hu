@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b808654baded5bbe721866441a8d1115eff7bcaa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 842d3146bf1927871e29eb750cde09e9029b7c12
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308898"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242105"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>A Tevékenységnaplók megtekintése az Azure-erőforrások RBAC módosítások
 
@@ -43,7 +43,7 @@ Első lépésként a legegyszerűbb módja, hogy az Azure Portalon a Tevékenys�
 
 A tevékenységnaplóban a portálon számos szűrőket tartalmaz. Az RBAC-kapcsolódó szűrők a következők:
 
-|Szűrés  |Value  |
+|Szűrés  |Érték  |
 |---------|---------|
 |Eseménykategória     | <ul><li>Adminisztratív</li></ul>         |
 |Művelet     | <ul><li>Szerepkör-hozzárendelés létrehozása</li> <li>Szerepkör-hozzárendelés törlése</li> <li>Egyéni szerepkör-definíció létrehozása vagy módosítása</li> <li>Egyéni szerepkör-definíció törlése</li></ul>      |
@@ -121,9 +121,9 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 1. [Hozzon létre egy Log Analytics-munkaterület](../azure-monitor/learn/quick-create-workspace.md).
 
-1. [Az Activity Log Analytics megoldás konfigurálása](../azure-monitor/platform/collect-activity-logs.md#configuration) a munkaterületen.
+1. [Az Activity Log Analytics megoldás konfigurálása](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution) a munkaterületen.
 
-1. [A Tevékenységnaplók megtekintése](../azure-monitor/platform/collect-activity-logs.md#using-the-solution). Az Activity Log Analytics megoldás – áttekintés oldalra navigálhat gyors módja: kattintson a **Log Analytics** lehetőséget.
+1. [A Tevékenységnaplók megtekintése](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution). Az Activity Log Analytics megoldás – áttekintés oldalra navigálhat gyors módja: kattintson a **Log Analytics** lehetőséget.
 
    ![Az Azure Monitor beállítás bejelentkezik a portálra](./media/change-history-report/azure-log-analytics-option.png)
 
@@ -151,4 +151,4 @@ AzureActivity
 
 ## <a name="next-steps"></a>További lépések
 * [Események megtekintése a tevékenységnaplóban](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Az Azure-tevékenységnapló-előfizetési tevékenység figyelése](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
+* [Előfizetési tevékenységek monitorozása az Azure-tevékenységnaplóval](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)

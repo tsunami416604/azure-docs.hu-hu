@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec10359c6f684b1d7fb008946b7ceca2ed626ba
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: cd7055794860398ecc6296d0174a691e7fac4450
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545358"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235253"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Alkalmazástípusok a Microsoft identity platform
 
@@ -51,7 +51,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Egylapos alkalmazások (JavaScript)
 
-Számos modern alkalmazás egylapos alkalmazás előtérrendszerét elsősorban javascriptben írt rendelkezik. Gyakran előfordul az oktatóprogram egy keretrendszert, például az AngularJS, az Ember.js vagy Durandal.js használatával. A Microsoft identity platform végpont használatával támogatja ezeket az alkalmazásokat a [OAuth 2.0 implicit folyamat](v2-oauth2-implicit-grant-flow.md).
+Számos modern alkalmazás egylapos alkalmazás előtérrendszerét elsősorban javascriptben írt rendelkezik. Gyakran előfordul az oktatóprogram egy Angular, a react használatával vagy a Vue-keretrendszer használatával. A Microsoft identity platform végpont használatával támogatja ezeket az alkalmazásokat a [OAuth 2.0 implicit folyamat](v2-oauth2-implicit-grant-flow.md).
 
 Ebből a folyamatból, az alkalmazás fogad jogkivonatok közvetlenül a Microsoft identity platform authorize végponton, minden olyan kiszolgálók közötti adatcsere nélkül. Hitelesítési logikát, és a munkamenet idő szükséges kezelése teljes mértékben a JavaScript-kliens nélkül extra oldal átirányítja az helyezze el.
 

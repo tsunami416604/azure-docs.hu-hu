@@ -3,7 +3,7 @@ title: Kötést létrehozni biztonságos LDAP (LDAPS) használatával egy Azure 
 description: Kötést létrehozni biztonságos LDAP (LDAPS) használatával az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -13,18 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2018
-ms.author: ergreenl
-ms.openlocfilehash: 62776408675acba1ee8a57252c794e5a1c840155
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: 47c9553b4191fe6dbae8d92d75dfae83f191a063
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417035"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234851"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Kötést létrehozni biztonságos LDAP (LDAPS) használatával az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 Teljes [4. feladat – konfigurálja a felügyelt tartomány elérését az internetről érkező DNS](active-directory-ds-ldaps-configure-dns.md).
 
 
@@ -64,13 +64,13 @@ A minta az alábbi táblázatban az NSG zárol secure LDAP-hozzáférését az i
 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* [Az Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)
-* [Azure AD tartományi szolgáltatások által kezelt tartomány felügyelete](active-directory-ds-admin-guide-administer-domain.md)
+* [Az Azure AD tartományi szolgáltatások – első lépések útmutató](create-instance.md)
+* [Az Azure AD Domain Services tartomány kezelése](manage-domain.md)
 * [LDAP-lekérdezés alapjai](https://technet.microsoft.com/library/aa996205.aspx)
-* [Az Azure AD tartományi szolgáltatásokkal felügyelt tartományban a Csoportházirend-kezelése](active-directory-ds-admin-guide-administer-group-policy.md)
+* [A Csoportházirend kezelése az Azure AD tartományi szolgáltatásokhoz](manage-group-policy.md)
 * [Hálózati biztonsági csoportok](../virtual-network/security-overview.md)
 * [Hálózati biztonsági csoport létrehozása](../virtual-network/tutorial-filter-network-traffic.md)
 
 
 ## <a name="next-step"></a>Következő lépés
-[A felügyelt tartomány secure LDAP hibaelhárítása](active-directory-ds-ldaps-troubleshoot.md)
+[A felügyelt tartomány secure LDAP hibaelhárítása](tshoot-ldaps.md)

@@ -7,18 +7,18 @@ manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
 ms.date: 05/09/2019
-ms.author: anshan
+ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 535fe9a7920db89e434b4cc1b66aa38bf72a7829
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 089285637bb740fea47f1fd07de0906dfe46662b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790070"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244463"
 ---
-# <a name="how-to-shape-json-to-maximize-query-performance"></a>Hogyan formázhatja a JSON-lekérdezési teljesítmény maximalizálása 
+# <a name="shape-json-to-maximize-query-performance"></a>Alakzat JSON lekérdezési teljesítmény maximalizálása érdekében 
 
-Ez a cikk nyújt útmutatást, amelyeket formázhat JSON-t, a hatékonyság az Azure Time Series Insights-lekérdezéseket.
+Ez a cikk útmutatást nyújt az alakzat maximalizálható a hatékonyság érdekében az Azure Time Series Insights-lekérdezések JSON való.
 
 ## <a name="video"></a>Videó
 
@@ -27,36 +27,35 @@ Ez a cikk nyújt útmutatást, amelyeket formázhat JSON-t, a hatékonyság az A
 > [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-
-Fontos, milyen eseményeket küldeni a Time Series Insights állításoknak. Nevezetesen akkor mindig:
+Milyen eseményeket küldeni a Time Series Insights gondolja. Nevezetesen hogy mindig:
 
 1. az adatok elküldése a hálózaton keresztül lehető leghatékonyabb.
-1. Győződjön meg arról, az adatok olyan módon, amely lehetővé teszi, hogy a forgatókönyvnek megfelelő összesítések tárolása.
-1. Győződjön meg, hogy ne eléri a Time Series Insights maximális tulajdonság korlátai:
+1. Ellenőrizze, hogy adatai olyan módon, hogy az adott forgatókönyvnek megfelelő összesítések hajthat végre.
+1. Győződjön meg arról, hogy nem érik el a Time Series Insights maximális tulajdonság korlátai:
    - S1 környezetek 600 tulajdonságait (oszlop).
    - S2 környezetek 800 tulajdonságait (oszlop).
 
-Az alábbi útmutató segít a legjobb lehetséges lekérdezési teljesítmény érdekében:
+Az alábbi útmutató segít a legjobb lehetséges lekérdezési teljesítmény biztosítása érdekében:
 
-1. NA használjon dinamikus tulajdonságait, például a címke azonosítója,-tulajdonság neveként, mivel a üzletmentében szerezze meg a Tulajdonságok maximális korlátot.
-1. Ne küldjön a szükségtelen tulajdonságait. Ha egy lekérdezést a tulajdonság nem szükséges, célszerű nem küldje el, és elkerülheti a storage korlátozásaival.
-1. Használat [referenciaadatok](time-series-insights-add-reference-data-set.md), nehogy a statikus adatok küldése a hálózaton keresztül.
+1. Ne használjon dinamikus tulajdonságait, például a címke azonosítója-tulajdonság neveként. Ez a használati hozzájárul a Tulajdonságok maximális korlát elérése.
+1. Ne küldjön a szükségtelen tulajdonságait. Ha egy lekérdezést a tulajdonság nem kötelező, nem célszerű küldje el. Így elkerülheti a storage korlátozásaival.
+1. Használat [referenciaadatok](time-series-insights-add-reference-data-set.md) elkerülése érdekében a statikus adatok küldése a hálózaton keresztül.
 1. Megosztás dimenzió tulajdonságai között több esemény adatok hatékonyabb a hálózaton keresztüli küldéshez.
-1. Ne használja a részletes tömb beágyazást. A Time Series Insights objektumokat tartalmazó beágyazott tömbök legfeljebb két szintet támogat. A Time Series Insights több események tulajdonság-érték párok az simítja egybe az üzeneteket, a tömb.
-1. Ha csak néhány mértékek minden vagy a legtöbb esemény létezik, érdemes küldeni ezeket a mértékeket különálló tulajdonságként az objektumon belül. Külön-külön elküldheti csökkenti az események számát, és előfordulhat, hogy elérhetővé lekérdezések több nagy teljesítményű, mint a kevesebb eseménnyel kell feldolgozni. Ha több mértékek, elküldheti az egy-egy tulajdonság értékeként minimálisra csökkenti a szerezze meg a tulajdonság maximális korlát lehetőségét.
+1. Ne használja a részletes tömb beágyazást. A Time Series Insights objektumokat tartalmazó beágyazott tömbök legfeljebb két szintet támogat. A Time Series Insights tömbök üzenetek a tulajdonság-érték párok több események simítja egybe.
+1. Ha csak néhány mértékek minden vagy a legtöbb esemény létezik, érdemes küldeni ezeket a mértékeket különálló tulajdonságként az objektumon belül. Külön-külön elküldheti csökkenti az események számát, és előfordulhat, hogy javíthatja a lekérdezések teljesítményét, mert a kevesebb eseménnyel kell feldolgozni. Ha több mértékek, elküldheti az egy-egy tulajdonság értékeként minimálisra csökkenti a tulajdonság maximális korlát elérése lehetőségét.
 
 ## <a name="example-overview"></a>Példa – áttekintés
 
-Az alábbi két példák bemutatják, küldő események, a fenti javaslatok kiemeléséhez. Következő valamennyi példa láthatja, hogyan lettek alkalmazva a javaslatokat.
+Az alábbi két példák bemutatják, hogyan küldhet eseményeket a fenti javaslatok kiemeléséhez. Következő valamennyi példa látható a javaslatok alkalmazott hogyan.
 
-A példák egy forgatókönyvet, ahol több eszköz küldése mérések vagy jelek alapulnak. Mérések vagy jelek Flow arány, motor olaj nyomás, hőmérsékleti és páratartalom lehet. Az első példában nincsenek néhány mérések összes eszközön. A második példában sok eszköz, és minden egyes számos egyedi mértékek küld.
+A példák egy forgatókönyvet, ahol több eszköz küldése mérések vagy jelek alapulnak. Flow arány, motor olaj nyomás, hőmérsékleti és páratartalom mérések vagy jelek is lehet. Az első példában nincsenek néhány mérések összes eszközön. A második példában sok eszköz van, és minden eszköz által számos egyedi mértékek.
 
-## <a name="scenario-one-only-a-few-measurements-exist"></a>Első forgatókönyv: csak néhány mérések létezik
+## <a name="scenario-one-only-a-few-measurements-exist"></a>Egy példa: Csak néhány mérések létezik
 
 > [!TIP]
-> **Az ajánlás**: minden mérték/jel elküldeni egy külön tulajdonság oszlop.
+> Azt javasoljuk, hogy küldjön minden mérték vagy jel külön tulajdonság vagy oszlop.
 
-A következő példában van egy IoT Hub üzenet, ahol a külső tömb tartalmaz-e a közös dimenzióértékek egy közös szakaszhoz. A külső tömb referenciaadatok használja az üzenet a hatékonyság növelése érdekében. Referenciaadatok tartalmazza az eszközök metaadatait, minden eseményhez nem változik, de hasznos tulajdonságok biztosít az adatok elemzésére. Közös dimenzióértékek kötegelés, mind referenciaadatok takaríthat meg a hálózaton keresztül küldött bájtok alkalmazó így hatékonyabb az üzenetet.
+A következő példában van egy adott Azure IoT Hub üzenet, ahol a külső tömb tartalmaz-e a közös dimenzióértékek egy közös szakaszhoz. A külső tömb referenciaadatok használja az üzenet a hatékonyság növelése érdekében. Referenciaadatok tartalmaz az eszköz metaadatait, amelyek nem változnak, az egyes események, de biztosítja a hasznos tulajdonságai adatelemzésre. Közös dimenzióértékek kötegelés és adatok takarít meg a hálózaton keresztül küldött bájtok referencia alkalmazó, így az üzenet hatékonyabb.
 
 Példa JSON-adattartalom:
 
@@ -89,37 +88,33 @@ Példa JSON-adattartalom:
 ]
 ```
 
-* Referencia-adattábla (kulcs tulajdonság **deviceId**):
+* A tulajdonsággal rendelkező hivatkozási adattábla **deviceId**:
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
    | FXXX | SOR\_ADATOK | EU |
    | PÉÉÉ | SOR\_ADATOK | USA |
 
-* Time Series Insights esemény tábla (után az egybesimítás):
+* Time Series Insights esemény tábla, egybesimítását után:
 
-   | deviceId | messageId | deviceLocation | időbélyeg | adatsorozat. A folyamat arány láb3/s | adatsorozat. Olaj nyomás psi motor |
+   | deviceId | messageId | deviceLocation | timestamp | adatsorozat. A folyamat arány láb3/s | adatsorozat. Olaj nyomás psi motor |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | SOR\_ADATOK | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
    | FXXX | SOR\_ADATOK | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
    | PÉÉÉ | SOR\_ADATOK | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
-Fent:
+A két táblázat megjegyzések:
 
-- A **deviceId** oszlop szolgál a különböző eszközökhöz egy járműflotta az az oszlop fejlécére. DeviceId érték létesíteni a saját tulajdonságnév volna csak korlátozott 595 (S1 környezetben) vagy 795 (S2 környezetben), az összes eszköz az egyéb öt oszlopokat.
-
-- A felesleges tulajdonságok elkerülhetők a, például a gyártmány és modell, stb. Mivel azok nem kérdezhető le a jövőben, távolítsa el őket lehetővé teszi, hogy jobb hálózati és tárolási hatékonyságot.
-
-- Referenciaadatok segítségével csökkentheti a hálózaton keresztül továbbított bájtok száma. Két attribútum **üzenetazonosító** és **deviceLocation**, a kulcs tulajdonságot, csatlakozott **deviceId**. Ezeket az adatokat a telemetriai adatokat a bejövő egyidejűleg csatlakoztatott, és ezt követően tárolja a Time Series Insightsban lekérdezéséhez.
-
+- A **deviceId** oszlop szolgál a különböző eszközökhöz egy járműflotta az az oszlop fejlécére. DeviceId értékét a saját tulajdonságnév korlátozza az összes eszköz 595 (az S1-környezetek) vagy az egyéb öt oszlopokat (az S2-környezetek) 795.
+- A felesleges tulajdonságok elkerülhetők a, például a gyártmány és modell információt. A tulajdonságok a jövőben nem kérdezhető le, mert megszüntetése lehetővé teszi, hogy jobb hálózati és tárolási hatékonyságot.
+- Referenciaadatok segítségével csökkentheti a hálózaton keresztül továbbított bájtok száma. A két attribútum **üzenetazonosító** és **deviceLocation** összekapcsolhatók a kulcstulajdonság a **deviceId**. Az adatok bejövő időpontban a telemetriai adatokat a tartományhoz csatlakozik, és aztán a Time Series Insights lekérdezéséhez.
 - Két réteg beágyazási használnak, amely az a maximális beágyazási Time Series Insights támogatja. Rendkívül fontos a mélyen beágyazott tömbök elkerülése érdekében.
+- Mértékek különálló tulajdonságként az objektumon belüli érkeznek, mert néhány mértékeket. Itt **sorozat. Flow arány psi** és **sorozat. A motor olaj nyomás láb3/s** egyedi oszlop.
 
-- Mértékek belül ugyanarra az objektumra, különálló tulajdonságként érkeznek, mivel néhány mértékeket. Itt **sorozat. Flow arány psi** és **sorozat. A motor olaj nyomás láb3/s** egyedi oszlop.
-
-## <a name="scenario-two-several-measures-exist"></a>Második forgatókönyv: több mértékek létezik
+## <a name="scenario-two-several-measures-exist"></a>Második forgatókönyv: Több mértékek létezik
 
 > [!TIP]
-> **Javaslat:** mérések küldése a "type", "egység", "value" rekordokat.
+> Azt javasoljuk, hogy küldjön mérések, "type", "egység" és "érték" rekordokat.
 
 Példa JSON-adattartalom:
 
@@ -164,45 +159,41 @@ Példa JSON-adattartalom:
 ]
 ```
 
-* Referenciaadatok (kulcs a tulajdonságok akkor vannak **deviceId** és **series.tagId**):
+* Kulcs tulajdonságai a referencia-adattábla **deviceId** és **series.tagId**:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | egység |
+   | deviceId | series.tagId | messageId | deviceLocation | type | Egység |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | SOR\_ADATOK | EU | A folyamat arány | láb3/s |
    | FXXX | oilPressure | SOR\_ADATOK | EU | Olaj nyomás motor | psi |
    | PÉÉÉ | pumpRate | SOR\_ADATOK | USA | A folyamat arány | láb3/s |
    | PÉÉÉ | oilPressure | SOR\_ADATOK | USA | Olaj nyomás motor | psi |
 
-* Time Series Insights esemény tábla (után az egybesimítás):
+* Time Series Insights esemény tábla, egybesimítását után:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | egység | időbélyeg | Series.Value |
+   | deviceId | series.tagId | messageId | deviceLocation | type | Egység | timestamp | Series.Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | SOR\_ADATOK | EU | A folyamat arány | láb3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | oilPressure | SOR\_ADATOK | EU | Olaj nyomás motor | psi | 2018-01-17T01:17:00Z | 34.7 |
    | FXXX | pumpRate | SOR\_ADATOK | EU | A folyamat arány | láb3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | SOR\_ADATOK | EU | Olaj nyomás motor | Psi | 2018-01-17T01:17:00Z | 49.2 |
+   | FXXX | oilPressure | SOR\_ADATOK | EU | Olaj nyomás motor | psi | 2018-01-17T01:17:00Z | 49.2 |
    | PÉÉÉ | pumpRate | SOR\_ADATOK | USA | A folyamat arány | láb3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
    | PÉÉÉ | oilPressure | SOR\_ADATOK | USA | Olaj nyomás motor | psi | 2018-01-17T01:18:00Z | 22.2 |
 
-Fent:
+A két táblázat megjegyzések:
 
-- Az oszlopok **deviceId** és **series.tagId** az oszlopfejléceket a különböző eszközökön és a egy járműflotta a címkék szolgál. Mindegyik a saját attribútumként használatával szeretné csak korlátozottan 594 (S1 környezetben) vagy 794 (S2 környezetben) összes eszköz az egyéb hat oszlopokat a lekérdezésben.
-
+- Az oszlopok **deviceId** és **series.tagId** az oszlopfejléceket a különböző eszközökön és a egy járműflotta a címkék szolgál. A többi hat oszlopokkal rendelkező eszközök használatával minden egyes, a saját attribútum korlátok a lekérdezés (az S1-környezetek) 594 vagy 794 (az S2-környezetek) teljes száma.
 - a felesleges tulajdonságok lettek kerülni, az okból az első példában szereplő.
-
-- Referenciaadatok segítségével csökkentse a bevezetésével a hálózaton keresztül továbbított bájtok számát **deviceId**, az egyedi párjai **üzenetazonosító** és **deviceLocation**. Összetett kulcsot használ, **series.tagId**, az egyedi párjainak **típus** és **időegységet**. Az összetett kulcs lehetővé teszi, hogy a **deviceId** és **series.tagId** pár használandó, tekintse meg négy értéket: **üzenetazonosító, deviceLocation, írja be,** és **egység** . Ezeket az adatokat a telemetriai adatokat a bejövő egyidejűleg csatlakoztatott, és ezt követően tárolja a Time Series Insightsban lekérdezéséhez.
-
+- Referenciaadatok segítségével csökkentse a bevezetésével a hálózaton keresztül továbbított bájtok számát **deviceId**, az egyedi párosítást a használt **üzenetazonosító** és **deviceLocation**. Az összetett kulcs **series.tagId** használatos egyedi párjai **típus** és **egység**. Az összetett kulcs lehetővé teszi, hogy a **deviceId** és **series.tagId** négy értékeire hivatkozhatnak használt kulcspár: **üzenetazonosító, deviceLocation, írja be,** és **egység**. Ezek az adatok bejövő időpontban a telemetriai adatokat a tartományhoz. Ez aztán a Time Series Insights lekérdezéséhez.
 - két réteg beágyazási használata esetén az első példában szereplő okból.
 
 ### <a name="for-both-scenarios"></a>Mindkét forgatókönyv esetében
 
-Ha egy tulajdonság lehetséges értékek nagy számú, célszerű különböző értékeket belül csak egy oszlop, nem pedig minden egyes érték egy olyan új oszlop létrehozása, küldése. Az előző két példákban:
+A tulajdonság a lehetséges értékek nagy számú érdemes elküldeni belül minden egyes érték egy olyan új oszlop létrehozása helyett csak egy oszlop különböző értékeket. Az előző két példákban:
 
-  - Az első példában nincsenek néhány tulajdonsággal, amely számos értékkel rendelkezik, így a szükséges, hogy minden egyes külön tulajdonság.
-  - Azonban a második példában láthatja, hogy a mértékek nincs megadva az egyes tulajdonságok, de, egy közös series tulajdonságának értékek/intézkedéseinek tömb. Egy új kulcsot a rendszer elküldte, **tagId** , ami létrehoz egy olyan új oszlop **series.tagId** a egybesimított táblában. Új tulajdonságok jönnek létre, **típus** és **egység**, referenciaadatokkal, így meggátolja, hogy a tulajdonság korlát találati folyamatban van.
+  - Az első példában néhány tulajdonságai számos értékkel rendelkezik, így szükséges, hogy minden egyes külön tulajdonság.
+  - A második példában a mértékek nem megadott egyes tulajdonságokat. Ehelyett egy tömb, értékek és a egy közös sorozat tulajdonság intézkedések zajlik. Az új kulcs **tagId** érkezik, az új oszlopot hoz létre, amely **series.tagId** a egybesimított táblában. Az új tulajdonságok **típus** és **egység** jönnek létre, hogy a tulajdonság határértékét nem referencia-adatok használatával.
 
 ## <a name="next-steps"></a>További lépések
 
 - Olvasási [Azure Time Series Insights-lekérdezés szintaxisa](/rest/api/time-series-insights/ga-query-syntax) további információ a lekérdezés szintaxisa a Time Series Insights-adatok a REST API elérésével.
-
 - Ismerje meg, [alakzat eseményeket hogyan](./time-series-insights-send-events.md).

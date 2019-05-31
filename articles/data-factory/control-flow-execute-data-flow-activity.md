@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: b0a6c6feae11f8daeed54c5e763dbff3aa711652
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: c33219eacb1d3bada5630a7792f98ba33dba824e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153500"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235866"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Data flow tevékenység végrehajtása az Azure Data Factoryban
 A végrehajtási adatok folyamat tevékenység használatával futtassa az ADF adatfolyama folyamatfuttatások hibakeresési (védőfal), és az aktivált folyamatfuttatások.
@@ -49,25 +49,26 @@ A végrehajtási adatok folyamat tevékenység használatával futtassa az ADF a
 
 ![Hajtsa végre az adatfolyam](media/data-flow/activity-data-flow.png "végrehajtása az adatfolyam")
 
-### <a name="run-on"></a>Futtatás a következőn:
-
-Válassza ki a számítási környezetet Ez az adatfolyam végrehajtásához. Az alapértelmezett érték az Azure automatikus feloldása alapértelmezett integrációs modul. Ez a választás végrehajtja az adatok az adatfolyam a Spark-környezetben az adat-előállító ugyanabban a régióban. A számítási típus lesz, ami azt jelenti, hogy a számítási környezet több percet vesz igénybe az indítási feladat fürt.
-
 ### <a name="debugging-pipelines-with-data-flows"></a>Hibakeresési adatfolyam-gyűjteményre folyamatok
 
 ![Hibakeresési gomb](media/data-flow/debugbutton.png "hibakeresési gomb")
 
 A Data Flow Debug használatával az adatfolyamok egy folyamat hibakeresési futtassa interaktív módon tesztelése egy fűtéssel fürtöt használják. A folyamat Debug lehetőséget használva belül egy folyamatot az adatok folyamatok tesztelése.
 
-### <a name="run-on"></a>Futtatás a következőn:
+### <a name="run-on"></a>Futtatás
 
 Ez a mező kitöltése kötelező, amely meghatározza, mely az adatfolyam tevékenység-végrehajtási használandó integrációs modul. Alapértelmezés szerint a Data Factory az alapértelmezett automatikus feloldása Azure integrációs modul fogja használni. A saját Azure integrációs modulok, amelyek adott régiók definiálása, típusát, a magszámot, és a TTL számítási az adatokat a folyamat tevékenységek végrehajtását a is létrehozhat.
 
 Az adatfolyam-végrehajtások alapértelmezett érték 60 perc TTL általános számítási 8 maggal.
 
+Válassza ki a számítási környezetet Ez az adatfolyam végrehajtásához. Az alapértelmezett érték az Azure automatikus feloldása alapértelmezett integrációs modul. Ez a választás végrehajtja az adatok az adatfolyam a Spark-környezetben az adat-előállító ugyanabban a régióban. A számítási típus lesz, ami azt jelenti, hogy a számítási környezet több percet vesz igénybe az indítási feladat fürt.
+
 Az adatfolyam-tevékenységek a Spark-végrehajtási környezet felett van. Az a [Azure integrációs modul](concepts-integration-runtime.md) (általános célú, memóriahasználatra optimalizált és számításra optimalizált) számítási típus beállítása a feldolgozó magok száma, és a time-to-live megfelelően a végrehajtó motor az adatfolyam-számítási beállítások követelmények. Emellett TTL beállítása lehetővé teszi azonnal elérhetővé válik a feladatvégrehajtások meleg fürtben fenntartását.
 
 ![Azure integrációs modul](media/data-flow/ir-new.png "Azure integrációs modul")
+
+> [!NOTE]
+> Az Integration Runtime kijelölés adatfolyam tevékenységbe csak érvényes *végrehajtások aktivált* a folyamat. Hibakeresés a folyamatot az adatok elkezdenek beérkezni a hibakeresési lesz az alapértelmezett 8 magos Spark-fürtön hajtja végre.
 
 ### <a name="staging-area"></a>Átmeneti terület
 

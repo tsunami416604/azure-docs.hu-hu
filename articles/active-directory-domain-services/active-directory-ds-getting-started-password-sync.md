@@ -3,7 +3,7 @@ title: 'Az Azure Active Directory tartományi szolgáltatások: Jelszókivonat-s
 description: Első lépések az Azure Active Directory tartományi szolgáltatások használatával
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 5a32a0df-a3ca-4ebe-b980-91f58f8030fc
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/02/2018
-ms.author: ergreenl
-ms.openlocfilehash: ad905f93a8c4b03fd6ccc9edb93b52f23bcb2c58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/10/2019
+ms.author: mstephen
+ms.openlocfilehash: 734e4bad970229ea8eb770d586062b098e586353
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417495"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234897"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Az Azure Active Directory Domain Servicesre történő jelszókivonat-szinkronizálás engedélyezése
 Az előző feladatokban engedélyezte az Active Directory Domain Servicest az Azure Active Directory (Azure AD) bérlő számára. A következő feladat a jelszókivonatok szinkronizálásának engedélyezése, amely az Azure AD Domain Servicesszel való NT LAN Manager- (NTLM) és Kerberos-hitelesítéshez szükséges. A jelszókivonat-adatok szinkronizálásának beállítása után a felhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba.
@@ -82,6 +82,6 @@ Néhány perccel azután, hogy módosította a jelszavát, az új jelszó haszn�
 * [Saját jelszó frissítése](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)
 * [A jelszókezelés első lépései az Azure AD-ben](../active-directory/authentication/quickstart-sspr.md)
 * [Azure Active Directory Domain Servicesre történő jelszókivonat-szinkronizálás engedélyezése szinkronizált Azure AD-bérlő esetén](active-directory-ds-getting-started-password-sync-synced-tenant.md)
-* [Az Azure Active Directory tartományi szolgáltatások által felügyelt tartományok adminisztrációja](active-directory-ds-admin-guide-administer-domain.md)
+* [Az Azure AD Domain Services tartomány kezelése](manage-domain.md)
 * [Windows virtuális gép csatlakoztatása az Active Directory Domain Services által felügyelt tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Red Hat Enterprise Linux virtuális gép csatlakoztatása az Active Directory Domain Services által felügyelt tartományhoz](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

@@ -1,5 +1,5 @@
 ---
-title: Adatkészlet-definícióban, és verziókezelése az azureml-adatkészletek
+title: Verzió és az adatkészlet-definíciók az azureml-adatkészletek kezelése
 titleSuffix: Azure Machine Learning service
 description: Az adatkészlet-definíciók frissítése és a definíciók életciklusának kezelése
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: e58ce156deaaad259ea7b74521bcf9b79afbd183
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 4476bdd902f054683fa544dc44b548689f3a1881
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146201"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241884"
 ---
-# <a name="update-and-manage-the-lifecycle-of-dataset-definitions"></a>Frissítse és az adatkészlet-definíciók életciklusának kezelése
+# <a name="version-and-manage-your-dataset-definitions"></a>Verzió és az adatkészlet-definíciókban kezelése
 
 Ismerje meg, hogyan frissítse és kezelése az Azure Machine Learning-adatkészletek (előzetes verzió) az adatkészlet-definíciók.
 
@@ -37,7 +37,7 @@ Szüksége lesz egy Azure-előfizetés és a egy munkaterületet, regisztrálja 
 
 A mintafájl, amelyet az ebben a dokumentumban szereplő példák érhető el: [ https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv ](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv).
 
-## <a name="update-dataset-definitions"></a>Az adatkészlet-definíciók frissítése
+## <a name="create-and-update-definitions"></a>Hozzon létre és -leírások frissítése
 
 Rendszer először létrehoz és regisztrálja a munkaterület egy adatkészletet.
 
@@ -102,7 +102,7 @@ dataset.head(5)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>azonosító</th>
+      <th>ID</th>
       <th>Letartóztatás</th>
       <th>Szélesség</th>
       <th>Hosszúság</th>
@@ -117,7 +117,7 @@ dataset.head(5)
       <td>-87.60431945</td>
     </tr>
     <tr>
-      <th>1.</th>
+      <th>1</th>
       <td>10516598</td>
       <td>FALSE</td>
       <td>41.74410697</td>
@@ -170,7 +170,7 @@ ds_def_old.head(5)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>azonosító</th>
+      <th>ID</th>
       <th>Eset száma</th>
       <th>Dátum</th>
       <th>Letiltás</th>
@@ -219,7 +219,7 @@ ds_def_old.head(5)
       <td>(41.692833841, -87.60431945)</td>
     </tr>
     <tr>
-      <th>1.</th>
+      <th>1</th>
       <td>10516598</td>
       <td>HZ258664</td>
       <td>4/15/2016 17:00</td>
@@ -362,7 +362,7 @@ ds_def = dataset.get_definition(version_id = 1)
 ds_def.deprecate(deprecate_by_dataset_id=dataset.id, deprecated_by_definition_version=2)
 ```
 
-### <a name="archive"></a>Archív
+### <a name="archive"></a>Archívum
 
 Az adatkészlet-definíciók archiválhatók, ha a definíciók nem kellene használni (például a mögöttes adatok már nem érhető el) bármilyen okból. Archivált adatkészlet-definícióban machine learning-folyamatokat használja, ha végrehajtási hiba miatt blokkolva lesz.
 

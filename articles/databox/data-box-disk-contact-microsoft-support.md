@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: ''
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 5b392fecd75f5c18793a6122b8d5d967a2e54afa
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: acba9d2c87d2fb23e48ac24cec22388044702bac
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604439"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240150"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Nyisson egy támogatási jegyet az Azure Data Box 
 
-Ez a cikk az Azure Data Box és az Azure Data Box-lemezek, mindkettő az Azure Data Box szolgáltatás által kezelt vonatkozik. Ha problémát tapasztal az Azure Data Box szolgáltatás, létrehozhat egy szolgáltatási kérelmet, ha technikai támogatást. Ez a cikk végigvezeti:
+Ez a cikk az Azure Data Box, az Azure Data Box (nagy erőforrásigényű) és az Azure Data Box-lemezek, amelyek mindegyike az Azure Data Box szolgáltatás által kezelt vonatkozik. Ha problémát tapasztal az Azure Data Box szolgáltatás, létrehozhat egy szolgáltatási kérelmet, ha technikai támogatást. Ez a cikk végigvezeti:
 
 * Hogyan hozzon létre egy támogatási kérést.
 * Hogyan lehet egy támogatási kérést az életciklusnak a kezelésében a portálon belül.
 
-## <a name="create-a-support-request"></a>Támogatáskérés létrehozása
+## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
 
 A következő lépésekkel hozzon létre egy támogatási kérést:
 
@@ -34,7 +34,7 @@ A következő lépésekkel hozzon létre egy támogatási kérést:
     
     1. Az a **Problématípus** legördülő listában válassza **technikai**.
     2. Válassza ki az **Előfizetést**.
-    3. A **szolgáltatás**, ellenőrizze **minden szolgáltatás**. A legördülő listából válassza ki a **Data Box - előzetes verzió**. 
+    3. A **szolgáltatás**, ellenőrizze **minden szolgáltatás**. A legördülő listából válassza ki a **Data Box**. 
     4. Adja meg a **támogatási csomag**.
     5. Kattintson a **tovább**.
 
@@ -84,3 +84,5 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 ## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [Data Box-lemezek kapcsolatos problémák elhárítása](data-box-disk-troubleshoot.md).
+Ismerje meg, hogyan [Data Box kapcsolatos problémák elhárítása](data-box-troubleshoot.md).
+Ismerje meg, hogyan [Data Box Blob storage kapcsolatos problémák elhárítása](data-box-troubleshoot-rest.md).

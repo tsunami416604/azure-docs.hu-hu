@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: fe483f00c5711c2b2b62add32e951d26f732de2f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 3c8d64f34f01e4339b27bdeba455fac143ad53ff
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131444"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241157"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -186,8 +186,8 @@ A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterlán
   },
   "Host": {
     "LocalHttpPort": 7071,
-    "CORS": "*"
-    "CORSCredentials": true
+    "CORS": "*",
+    "CORSCredentials": false
   },
   "ConnectionStrings": {
     "SQLConnectionString": "<sqlclient-connection-string>"
@@ -318,12 +318,12 @@ A `host` parancs csak szükséges verzió 1.x.
 | **`--cors-credentials`** | Lehetővé teszi a hitelesített kérelmek eltérő eredetű (pl. cookie-k és a hitelesítési fejlécet) verziója csak a 2.x. |
 | **`--cors`** | CORS-források, szóközök nélküli szövegláncként vesszővel tagolt listája. |
 | **`--language-worker`** | A nyelvi feldolgozó konfigurálása argumentumokat. Verzió csak 2.x. |
-| **`--nodeDebugPort -n`** | A csomópont hibakereső használandó port. Alapértelmezett: A launch.json vagy 5858 érték. Verzió csak 1.x. |
+| **`--nodeDebugPort -n`** | A csomópont hibakereső használandó port. alapértelmezett érték: A launch.json vagy 5858 érték. Verzió csak 1.x. |
 | **`--password`** | A jelszó vagy egy fájlt, amely a jelszót a .pfx fájl tartalmazza. Csak a felhasznált `--cert`. Verzió csak 2.x. |
 | **`--port -p`** | A helyi port figyelésére. Alapértelmezett érték: 7071. |
 | **`--pause-on-error`** | Mielőtt kilépne a folyamat szüneteltetéséhez további adatokat. Csak akkor, ha a Core Tools elindítása egy integrált fejlesztési környezetből (IDE) használja.|
 | **`--script-root --prefix`** | Itt adhatja meg, amely kell futtatni, vagy üzembe helyezett függvényalkalmazás a gyökér elérési útját. Ez szolgál, amely a projektfájlok almappáiba lefordított projektekhez. Például ha hoz létre egy C# osztálytár projektet, a host.json, local.settings.json és function.json fájlok jönnek létre a egy *legfelső szintű* elérési úttal rendelkező almappát, például `MyProject/bin/Debug/netstandard2.0`. Ebben az esetben állítsa be az előtagja, mint `--script-root MyProject/bin/Debug/netstandard2.0`. Erre a függvényalkalmazás a gyökér, ha az Azure-ban. |
-| **`--timeout -t`** | Az a funkciók gazdagép indítása, másodpercek alatt időtúllépése. Alapértelmezett: 20 másodperc.|
+| **`--timeout -t`** | Az a funkciók gazdagép indítása, másodpercek alatt időtúllépése. alapértelmezett érték: 20 másodperc.|
 | **`--useHttps`** | Kösse `https://localhost:{port}` helyett a `http://localhost:{port}`. Alapértelmezés szerint ez a beállítás a számítógép megbízható tanúsítványt hoz létre.|
 
 Esetében a C# hordozhatóosztálytár-projektjének (.csproj), meg kell adni a `--build` létrehozni a szalagtár .dll fájl.

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: c1006aa21b3009bb7508c7a24ab501d39737261c
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 48c59ddc1e203030bd967911d536930cb94761d3
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978222"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356178"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Biztonságos futtatására kísérletek tanuláshoz és következtetésekhez egy Azure virtuális hálózaton belül
 
@@ -141,7 +141,7 @@ A felhasználó által megadott útvonalak hozzáadásakor adja meg az egyes kap
 
 ![Példa egy címelőtag felhasználó által megadott útvonala](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-További információkért lásd: a [Azure Batch-készlet létrehozása egy virtuális hálózaton belül](/azure/batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling) cikk.
+További információkért lásd: a [Azure Batch-készlet létrehozása egy virtuális hálózaton belül](../../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling) cikk.
 
 ### <a name="create-machine-learning-compute-in-a-virtual-network"></a>Hozzon létre a Machine Learning Compute a virtuális hálózaton
 
@@ -221,7 +221,7 @@ Virtuális gép vagy Azure HDInsight-fürt használata a munkaterület egy virtu
 
     * __Forrás szolgáltatáscímkéje__: Válassza ki __AzureMachineLearning__.
 
-    * __Porttartományok forrás__: Válassza ki __*__.
+    * __Porttartományok forrás__: Válassza ki __*__ .
 
     * __Cél__: Válassza ki __bármely__.
 

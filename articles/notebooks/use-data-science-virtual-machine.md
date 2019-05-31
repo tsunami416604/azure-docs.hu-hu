@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: getroyer
-ms.openlocfilehash: d4321fe60d47bf942e2c413ba81c2c9f54317fd1
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: ab3b742d50cc141420f9bffa1961a6e170b99d2a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597866"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234351"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Az Azure Data Science virtuális gépek használata
 
@@ -59,4 +59,4 @@ Ha egy projektet egy virtuális gépen fut, a fájlok csatlakoztatva vannak-e a 
 
 ## <a name="next-steps"></a>További lépések
 
-A Dsvm többet [Bevezetés az Azure Data Science Virtual Machines](/machine-learning/data-science-virtual-machine/overview).
+A Dsvm többet [Bevezetés az Azure Data Science Virtual Machines](/azure/machine-learning/data-science-virtual-machine/overview).

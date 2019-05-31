@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 38b2244d68de25f53d59dd4eb0a6beba03f0e51d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9368abe7d3b6ad6cf6e86b503dca4fca4f18739c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60916682"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388462"
 ---
 # <a name="page-through-the-images-results"></a>A lemezképek eredmények lap
 
-A képkeresési API hívásakor a Bing eredmények listáját adja vissza. A lista a lekérdezéshez kapcsolódó összes találat egy részét tartalmazza. Az első rendelkezésre álló válaszokat becsült teljes száma, a válasz-objektum eléréséhez [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#totalestimatedmatches) mező.  
+A képkeresési API hívásakor a Bing eredmények listáját adja vissza. A lista a lekérdezéshez kapcsolódó összes találat egy részét tartalmazza. Az első rendelkezésre álló válaszokat becsült teljes száma, a válasz-objektum eléréséhez [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#totalestimatedmatches) mező.  
 
 A következő példa bemutatja a `totalEstimatedMatches` lemezképek választ tartalmazó mezőt.  
 
@@ -34,7 +34,7 @@ A következő példa bemutatja a `totalEstimatedMatches` lemezképek választ ta
 }  
 ```  
 
-A lapon az elérhető rendszerképek keresztül, használja a [száma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#count) és [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offset) lekérdezési paramétereket.  
+A lapon az elérhető rendszerképek keresztül, használja a [száma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#count) és [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) lekérdezési paramétereket.  
 
 A `count` paraméter adja meg a válaszban visszaadott eredmények száma. Az eredmények, amelyek a válaszban vonatkozó kérések maximális számát 150. Az alapértelmezett érték 35. A tényleges szám i lehet kisebb, mint a kért.
 
@@ -58,7 +58,7 @@ Host: api.cognitive.microsoft.com
 
 Így várhatóan egyszerre 35 lemezképek lapon, ha szeretné beállítani a `offset` lekérdezési paraméter az első kérés a 0-ra, és ezután növelje `offset` minden későbbi kérés a 35 szerint. Azonban néhány, az eredmények a következő válasz többször is előfordulhatnak az előző válasz. Például az első két lemezképek, a válasz lehet ugyanaz, mint az előző válaszban kapott utolsó két képeit.
 
-Az ismétlődések számára, használja a [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#nextoffset) mezőjében a `Images` objektum. A `nextOffset` mező jelzi, hogy a `offset` , a következő kérésnél használja. Például, ha azt szeretné, 30 lemezképek lapra egyszerre, így állíthatja be `count` 30 és `offset` az első kérés a 0. A következő kérés, így állíthatja `count` 30 és `offset` az előző válaszban kapott értékéhez `nextOffset`. A visszafelé lapon, javasoljuk, hogy az előző eltolások Jegyzettömb karbantartásáért, valamint a legutóbbi popping.
+Az ismétlődések számára, használja a [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#nextoffset) mezőjében a `Images` objektum. A `nextOffset` mező jelzi, hogy a `offset` , a következő kérésnél használja. Például, ha azt szeretné, 30 lemezképek lapra egyszerre, így állíthatja be `count` 30 és `offset` az első kérés a 0. A következő kérés, így állíthatja `count` 30 és `offset` az előző válaszban kapott értékéhez `nextOffset`. A visszafelé lapon, javasoljuk, hogy az előző eltolások Jegyzettömb karbantartásáért, valamint a legutóbbi popping.
 
 > [!NOTE]
 > Lapozófájl a csak lemezkép search (Keresés/képek /), és nem hasznos képadatok vagy a felkapott képek (/ képek/népszerű) vonatkozik.

@@ -1,5 +1,5 @@
 ---
-title: Megosztott VM-rendszerképek létrehozása az Azure CLI-vel |} A Microsoft Docs
+title: Megosztott kép katalógusok létrehozása az Azure CLI-vel |} A Microsoft Docs
 description: Ebből a cikkből elsajátíthatja az Azure CLI használatával hozzon létre egy megosztott rendszerképet a virtuális gépek az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: f69b1aff28165b9bf37c49fe62d1fb5aada91285
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: bb6db6e5d5e33b7c7b5ba5a8711a06d6394b71f2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236404"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226037"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>Hozzon létre egy megosztott lemezkép-katalógus az Azure CLI-vel
 
@@ -46,15 +46,17 @@ A megosztott Képkatalógus funkció több erőforrástípusok rendelkezik. A Mi
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Virtuális gép létrehozása a lemezkép verzió használatával [az virtuális gép létrehozása](/cli/azure/vm#az-vm-create).
+Virtuális gép létrehozása a legújabb verzió rendszerképpel [az virtuális gép létrehozása](/cli/azure/vm#az-vm-create).
 
 ```azurecli-interactive 
 az vm create\
-   -g myGalleryRG \
-   -n myVM \
-   --image "/subscriptions/<subscription-ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0" \
+   --resource-group myGalleryRG \
+   --name myVM \
+   --image "/subscriptions/subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
    --generate-ssh-keys
 ```
+
+A kép azonosítója a használatával egy adott verziót is használhatja a `--image` paraméter. Lemezkép-verzió használatához például *1.0.0-s* típusa: `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`.
 
 [!INCLUDE [virtual-machines-common-gallery-list-cli](../../../includes/virtual-machines-common-gallery-list-cli.md)]
 

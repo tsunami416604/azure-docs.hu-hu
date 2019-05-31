@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan nyújt az Azure Cosmos DB a Active directory-in
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: e43341e59e807fdc20033d909beadb9d582149b5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 971d2ec96906a3309963495dd1af5d293a71f265
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65078940"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243516"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Szerepköralapú hozzáférés-vezérlés az Azure Cosmos DB-hez
 

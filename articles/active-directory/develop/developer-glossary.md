@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/13/2019
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c989b690e9537dcaaf3710996474a1b8b99826b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 314d7a8e8cf6837e2b22446ba23fee03d539bf35
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962737"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235353"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft identity platform fejlesztői szószedet
 
@@ -64,7 +64,7 @@ Annak érdekében, hogy egy alkalmazás integrálható, és delegálása az Azur
 
 Lásd: [alkalmazások integrálása az Azure Active Directory] [ AAD-Integrating-Apps] további részletekért.
 
-## <a name="authentication"></a>hitelesítés
+## <a name="authentication"></a>Hitelesítés
 
 A művelet egy entitás alapján biztosít az identitás- és hozzáférés-vezérlési szolgáltatásnév létrehozásához a jogosult hitelesítő adatok, nehéz. Során egy [OAuth2 engedélyezést](#authorization-grant) például a felek hitelesítéséhez, vagy a szerepkör tölti [erőforrás tulajdonosa](#resource-owner) vagy [ügyfélalkalmazás](#client-application), attól függően, a a támogatás használt.
 
@@ -95,7 +95,7 @@ A hitelesítő adatok jelölő a [erőforrás tulajdonosa](#resource-owner) [eng
 
 Esetén a Microsoft identity platform alkalmazásközi integrációt, a Microsoft identity platform valósítja meg az engedélyezési kiszolgálói szerepkör az Azure AD-alkalmazások és a Microsoft-szolgáltatás API-k, például [Microsoft Graph API-k] [Microsoft-Graph].
 
-## <a name="claim"></a>igénylés
+## <a name="claim"></a>Jogcím
 
 A [biztonsági jogkivonat](#security-token) jogcímeket, adja meg a helyességi feltételek egy entitás tartalmaz (például egy [ügyfélalkalmazás](#client-application) vagy [erőforrás tulajdonosa](#resource-owner)) (például a egymásikentitáshoz[erőforrás-kiszolgáló](#resource-server)). Jogcímek olyan név/érték párok, amelyek a jogkivonat tárgyában kapcsolatos továbbítási (például a hitelesített rendszerbiztonsági tagot a [az engedélyezési kiszolgáló](#authorization-server)). A jogcímeket egy adott jogkivonat értékkel a változókat, például a típusuk jogkivonatot, tárgyát, az alkalmazás konfigurációja és egyéb hitelesítéséhez használandó hitelesítő adatok típusától függenek.
 
@@ -119,7 +119,7 @@ Egy [OpenID Connect] [ OpenIDConnect-ID-Token] [biztonsági jogkivonat](#securit
 
 Lásd: [a Microsoft identity platform jogkivonatok referenciájából] [ AAD-Tokens-Claims] további részletekért.
 
-## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
+## <a name="microsoft-identity-platform"></a>A Microsoft identity platform
 
 A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg a Microsoft Graphot, más Microsoft API-kat vagy olyan API-kat, amelyeket fejlesztők készítettek. Egy teljes körű platform, amely olyan hitelesítési szolgáltatás, könyvtárak, alkalmazásregisztráció és konfigurációs, teljes körű fejlesztői dokumentáció, Kódminták és egyéb fejlesztői tartalom áll. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet. Lásd: [kapcsolatos Microsoft identitásplatformja](about-microsoft-identity-platform.md) további részletekért.
 
@@ -142,7 +142,7 @@ A [ügyfélalkalmazás](#client-application) megszerez egy [erőforrás-kiszolg�
 
 Akkor is surface során a [hozzájárulás](#consent) folyamatot, így a rendszergazda vagy az erőforrás tulajdonosa a lehetőséget, hogy az ügyfél-hozzáférési erőforrások bérlőben grant vagy letiltani.
 
-Alkalmazásengedély-kérelmeket megtörténik az "Alkalmazás" / "Beállítások" lapon a [az Azure portal][AZURE-portal], a "Szükséges engedélyek", kiválaszthatja a kívánt "Delegált engedélyek" és "alkalmazás Engedélyek"(az utóbbi tagjának kell lennie a globális rendszergazda szerepkörhöz). Mert egy [nyilvános ügyfél](#client-application) biztonságosan nem tudja kezelni a hitelesítő adatokat, azt csak kérhetnek delegált engedélyeket, amíg egy [bizalmas ügyfél](#client-application) kérése a delegált és az alkalmazás képes engedélyek. Az ügyfél [alkalmazásobjektum](#application-object) tárolja a deklarált engedélyeket a [requiredResourceAccess tulajdonság][AAD-Graph-App-Entity].
+Alkalmazásengedély-kérelmeket a konfigurált a **API-engedélyek** lapon-alkalmazásokhoz a [az Azure portal][AZURE-portal], válassza a kívánt "delegált engedélyek" és " Alkalmazásengedélyek"(az utóbbi tagjának kell lennie a globális rendszergazda szerepkörhöz). Mert egy [nyilvános ügyfél](#client-application) biztonságosan nem tudja kezelni a hitelesítő adatokat, azt csak kérhetnek delegált engedélyeket, amíg egy [bizalmas ügyfél](#client-application) kérése a delegált és az alkalmazás képes engedélyek. Az ügyfél [alkalmazásobjektum](#application-object) tárolja a deklarált engedélyeket a [requiredResourceAccess tulajdonság][AAD-Graph-App-Entity].
 
 ## <a name="resource-owner"></a>erőforrás tulajdonosának
 
@@ -156,7 +156,7 @@ Erőforrás-kiszolgáló API-kat, és érvényesíti a keresztül védett erőfo
 
 Csakúgy, mint egy ügyfélalkalmazás erőforrás-alkalmazás identitását konfigurációs keresztül létrehozott [regisztrációs](#application-registration) az Azure AD-bérlővel, így az alkalmazás és a szolgáltatásnév-objektumot. Bizonyos Microsoft által biztosított API-k, például az Azure AD Graph API-t, előre regisztrált egyszerű szolgáltatások elérhetők a bérlőknek üzembe helyezés során.
 
-## <a name="roles"></a>szerepkörök
+## <a name="roles"></a>roles
 
 Például [hatókörök](#scopes), szerepkörök lehetőséget biztosíthat egy [erőforrás-kiszolgáló](#resource-server) a védett erőforrásokhoz való hozzáférés szabályozására. Két típusa van: "felhasználói" szerepkör valósítja meg a szerepköralapú hozzáférés-vezérlést, míg az "alkalmazás" szerepkör valósít meg ugyanezt az erőforráshoz hozzáférést igénylő felhasználók/csoportok [ügyfélalkalmazások](#client-application) , amelyek hozzáférést igényelnek.
 
@@ -182,7 +182,7 @@ Amikor, regisztrálni vagy frissíteni az alkalmazás a [az Azure portal][AZURE-
 
 További információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok][AAD-App-SP-Objects].
 
-## <a name="sign-in"></a>bejelentkezés
+## <a name="sign-in"></a>sign-in
 
 Folyamat egy [ügyfélalkalmazás](#client-application) végfelhasználói hitelesítés kezdeményezése, és a rögzítés kapcsolatos állapot beszerzése céljából egy [biztonsági jogkivonat](#security-token) és hatókörének beállítása az alkalmazás munkamenet az adott állapotot. Állapot összetevőket, például a felhasználói profil adatait is tartalmazhat, és információkat származó jogkivonat.
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: e69d43b8bec7945c5aa1b394ce7402338f6fbbfb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: b42d376be0d26c8ced60344793dbc8f7dd4a3d53
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693247"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303760"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Az Azure Logic Apps és Microsoft Flow munkafolyamat-definíciós nyelv-funkciók dokumentációja
 
@@ -296,7 +296,7 @@ Kapcsolatos minden funkció teljes körű referenciáért lásd: a [betűrend sz
 <a name="alphabetical-list"></a>
 <a name="action"></a>
 
-### <a name="action"></a>action
+### <a name="action"></a>a művelet
 
 Vissza a *aktuális* futtatókörnyezet, illetve értékét más JSON név-érték párok, hozzárendelheti egy kifejezés, amely a következő kimeneti művelet.
 Alapértelmezés szerint ez a függvény a teljes művelet objektumra hivatkozik, de igény szerint megadhat egy tulajdonság, melynek az értéke.
@@ -435,6 +435,8 @@ actionOutputs('Get_user')
 }
 ```
 
+## <a name="all-functions---alphabaetical-list"></a>Az összes functions - alphabaetical listája
+
 <a name="actions"></a>
 
 ### <a name="actions"></a>Műveletek
@@ -516,7 +518,7 @@ addDays('<timestamp>', <days>, '<format>'?)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Időbélyeg*> | Igen | String | A karakterlánc, amely tartalmazza az időbélyeg |
-| <*nap*> | Igen | Egész szám | A hozzáadandó napok pozitív vagy negatív szám |
+| <*nap*> | Igen | Integer | A hozzáadandó napok pozitív vagy negatív szám |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
 
@@ -558,7 +560,7 @@ addHours('<timestamp>', <hours>, '<format>'?)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Időbélyeg*> | Igen | String | A karakterlánc, amely tartalmazza az időbélyeg |
-| <*Óra*> | Igen | Egész szám | A hozzáadandó órák pozitív vagy negatív szám |
+| <*Óra*> | Igen | Integer | A hozzáadandó órák pozitív vagy negatív szám |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
 
@@ -600,7 +602,7 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Időbélyeg*> | Igen | String | A karakterlánc, amely tartalmazza az időbélyeg |
-| <*minutes*> | Igen | Egész szám | Perc alatt adhatja hozzá az a pozitív vagy negatív szám |
+| <*minutes*> | Igen | Integer | Perc alatt adhatja hozzá az a pozitív vagy negatív szám |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
 
@@ -643,7 +645,7 @@ addProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*Objektum*> | Igen | Object | A JSON-objektum, amelyen kívánt tulajdonság hozzáadása |
 | <*A tulajdonság*> | Igen | String | A hozzáadandó tulajdonság nevét |
-| <*value*> | Igen | Bármelyik | A tulajdonság értéke |
+| <*value*> | Igen | Bármely | A tulajdonság értéke |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -673,7 +675,7 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Időbélyeg*> | Igen | String | A karakterlánc, amely tartalmazza az időbélyeg |
-| <*Másodperc*> | Igen | Egész szám | A hozzáadandó másodpercek pozitív vagy negatív szám |
+| <*Másodperc*> | Igen | Integer | A hozzáadandó másodpercek pozitív vagy negatív szám |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
 
@@ -716,7 +718,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Időbélyeg*> | Igen | String | A karakterlánc, amely tartalmazza az időbélyeg |
-| <*időköz*> | Igen | Egész szám | A megadott időegység hozzáadandó száma |
+| <*időköz*> | Igen | Integer | A megadott időegység hozzáadandó száma |
 | <*timeUnit*> | Igen | String | Az időegység használata *időköz*: "A második", "Minute", "Hour", "Day", "Week", "Month", "Year" |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
@@ -958,7 +960,7 @@ binary('hello')
 
 <a name="body"></a>
 
-### <a name="body"></a>törzs
+### <a name="body"></a>Törzs
 
 Egy művelet visszaadandó `body` kimeneti futásidőben.
 A gyorsírás `actions('<actionName>').outputs.body`.
@@ -1015,7 +1017,7 @@ bool(<value>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Igen | Bármelyik | Az átalakítandó érték |
+| <*value*> | Igen | Bármely | Az átalakítandó érték |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -1055,7 +1057,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*first-non-null-item*> | Bármelyik | Az első elem vagy nem null értéket. Ha minden paraméter null értékű, a függvény null értéket ad vissza. |
+| <*first-non-null-item*> | Bármely | Az első elem vagy nem null értéket. Ha minden paraméter null értékű, a függvény null értéket ad vissza. |
 ||||
 
 *Példa*
@@ -1091,7 +1093,7 @@ concat('<text1>', '<text2>', ...)
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*text1text2...*> | String | A karakterlánc a kombinált bemeneti karakterláncokból létrehozva |
+| <*text1text2...* > | String | A karakterlánc a kombinált bemeneti karakterláncokból létrehozva |
 ||||
 
 *Példa*
@@ -1106,7 +1108,7 @@ concat('Hello', 'World')
 
 <a name="contains"></a>
 
-### <a name="contains"></a>tartalmazza a következőt:
+### <a name="contains"></a>tartalmaz
 
 Ellenőrizze, hogy egy gyűjtemény rendelkezik-e egy adott elemet.
 Igaz értéket ad vissza, ha az elem található, vagy visszatérhet false (hamis) Ha nem található.
@@ -1422,7 +1424,7 @@ dayOfMonth('<timestamp>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*hónap napja*> | Egész szám | A megadott időbélyeg a hónap napja |
+| <*hónap napja*> | Integer | A megadott időbélyeg a hónap napja |
 ||||
 
 *Példa*
@@ -1452,7 +1454,7 @@ dayOfWeek('<timestamp>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*day-of-week*> | Egész szám | A megadott időbélyeg, ahol vasárnap értéke 0, hétfőn, a hét napja az 1, és így tovább |
+| <*day-of-week*> | Integer | A megadott időbélyeg, ahol vasárnap értéke 0, hétfőn, a hét napja az 1, és így tovább |
 ||||
 
 *Példa*
@@ -1482,7 +1484,7 @@ dayOfYear('<timestamp>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*év napja*> | Egész szám | A megadott időbélyeg az év napját |
+| <*év napja*> | Integer | A megadott időbélyeg az év napját |
 ||||
 
 *Példa*
@@ -1613,7 +1615,7 @@ div(<dividend>, <divisor>)
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*quotient-result*> | Egész szám | Az egész típusú eredményként a második szám szerint az első szám hányadosát |
+| <*quotient-result*> | Integer | Az egész típusú eredményként a második szám szerint az első szám hányadosát |
 ||||
 
 *Példa*
@@ -1791,7 +1793,7 @@ first([<collection>])
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*első gyűjteményelemet*> | Bármelyik | Az első elem a gyűjteményben |
+| <*első gyűjteményelemet*> | Bármely | Az első elem a gyűjteményben |
 ||||
 
 *Példa*
@@ -1945,7 +1947,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*időköz*> | Igen | Egész szám | A megadott időegység kivonandó száma |
+| <*időköz*> | Igen | Integer | A megadott időegység kivonandó száma |
 | <*timeUnit*> | Igen | String | Az időegység használata *időköz*: "A második", "Minute", "Hour", "Day", "Week", "Month", "Year" |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
@@ -1989,7 +1991,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*időköz*> | Igen | Egész szám | A megadott időegység kivonandó száma |
+| <*időköz*> | Igen | Integer | A megadott időegység kivonandó száma |
 | <*timeUnit*> | Igen | String | Az időegység használata *időköz*: "A második", "Minute", "Hour", "Day", "Week", "Month", "Year" |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
@@ -2145,13 +2147,13 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*kifejezés*> | Igen | Boolean | Ellenőrizze, hogy a kifejezés |
-| <*valueIfTrue*> | Igen | Bármelyik | A visszatérési érték, ha a kifejezés igaz |
-| <*valueIfFalse*> | Igen | Bármelyik | A visszatérési érték, amikor a kifejezés értéke FALSE (hamis) |
+| <*valueIfTrue*> | Igen | Bármely | A visszatérési érték, ha a kifejezés igaz |
+| <*valueIfFalse*> | Igen | Bármely | A visszatérési érték, amikor a kifejezés értéke FALSE (hamis) |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*specified-return-value*> | Bármelyik | A megadott, hogy alapján ad vissza a kifejezés értéke true vagy FALSE (hamis) |
+| <*specified-return-value*> | Bármely | A megadott, hogy alapján ad vissza a kifejezés értéke true vagy FALSE (hamis) |
 ||||
 
 *Példa*
@@ -2182,7 +2184,7 @@ indexOf('<text>', '<searchText>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*index-value*>| Egész szám | A megadott karakterláncrészlet kezdő pozíció vagy index értéket. <p>Ha a karakterlánc nem található, -1 számának visszaadása. |
+| <*index-value*>| Integer | A megadott karakterláncrészlet kezdő pozíció vagy index értéket. <p>Ha a karakterlánc nem található, -1 számának visszaadása. |
 ||||
 
 *Példa*
@@ -2212,7 +2214,7 @@ int('<value>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*integer-result*> | Egész szám | A megadott karakterlánc az egész verziója |
+| <*integer-result*> | Integer | A megadott karakterlánc az egész verziója |
 ||||
 
 *Példa*
@@ -2238,7 +2240,7 @@ item()
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*current-array-item*> | Bármelyik | A művelet aktuális iteráció a tömbben az aktuális elem |
+| <*current-array-item*> | Bármely | A művelet aktuális iteráció a tömbben az aktuális elem |
 ||||
 
 *Példa*
@@ -2251,7 +2253,7 @@ item().body
 
 <a name="items"></a>
 
-### <a name="items"></a>elem
+### <a name="items"></a>items
 
 A for-each ciklusban minden ciklusban az aktuális elem visszaadása.
 A for-each ciklusban belül e funkció használatához.
@@ -2267,7 +2269,7 @@ items('<loopName>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*Elem*> | Bármelyik | Az elem található a megadott for-each ciklusban az aktuális ciklus |
+| <*Elem*> | Bármely | Az elem található a megadott for-each ciklusban az aktuális ciklus |
 ||||
 
 *Példa*
@@ -2280,7 +2282,7 @@ items('myForEachLoopName')
 
 <a name="json"></a>
 
-### <a name="json"></a>JSON
+### <a name="json"></a>json
 
 A JavaScript Object Notation (JSON) típusú érték, vagy egy karakterláncot vagy XML-objektumot ad vissza.
 
@@ -2465,7 +2467,7 @@ lastIndexOf('<text>', '<searchText>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*ending-index-value*> | Egész szám | A megadott karakterláncrészlet utolsó előfordulásának kezdő pozíció vagy index értéket. <p>Ha a karakterlánc nem található, -1 számának visszaadása. |
+| <*ending-index-value*> | Integer | A megadott karakterláncrészlet utolsó előfordulásának kezdő pozíció vagy index értéket. <p>Ha a karakterlánc nem található, -1 számának visszaadása. |
 ||||
 
 *Példa*
@@ -2496,7 +2498,7 @@ length([<collection>])
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*hossza vagy száma*> | Egész szám | A gyűjteményben lévő elemek száma. |
+| <*hossza vagy száma*> | Integer | A gyűjteményben lévő elemek száma. |
 ||||
 
 *Példa*
@@ -2608,7 +2610,7 @@ Ez a példa bemutatja, hogy ez a függvény vissza egy minta visszahívási URL-
 
 <a name="max"></a>
 
-### <a name="max"></a>max.
+### <a name="max"></a>max
 
 A legmagasabb érték visszaadása egy listából vagy a tömb számokat, amelyek mindkét végén is beleértve.
 
@@ -2752,7 +2754,7 @@ multipartBody('<actionName>', <index>)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Műveletnév*> | Igen | String | A művelet, amely rendelkezik a több részből kimeneti neve |
-| <*index*> | Igen | Egész szám | Az index értéke a kívánt részt |
+| <*index*> | Igen | Integer | Az index értéke a kívánt részt |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -2875,7 +2877,7 @@ parameters('<parameterName>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*parameter-value*> | Bármelyik | A megadott paraméter értéke |
+| <*parameter-value*> | Bármely | A megadott paraméter értéke |
 ||||
 
 *Példa*
@@ -2908,13 +2910,13 @@ rand(<minValue>, <maxValue>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*minValue*> | Igen | Egész szám | A legkisebb egész szám |
-| <*maxValue*> | Igen | Egész szám | A legnagyobb egész szám, amely a függvénynek a következő egész szám |
+| <*minValue*> | Igen | Integer | A legkisebb egész szám |
+| <*maxValue*> | Igen | Integer | A legnagyobb egész szám, amely a függvénynek a következő egész szám |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*random-result*> | Egész szám | A véletlenszerű egész számot adja vissza a megadott tartomány |
+| <*random-result*> | Integer | A véletlenszerű egész számot adja vissza a megadott tartomány |
 ||||
 
 *Példa*
@@ -2939,8 +2941,8 @@ range(<startIndex>, <count>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*startIndex*> | Igen | Egész szám | Egész szám, amely elindítja a tömb első elemeként |
-| <*Száma*> | Igen | Egész szám | A tömbben található egész számok száma |
+| <*startIndex*> | Igen | Integer | Egész szám, amely elindítja a tömb első elemeként |
+| <*Száma*> | Igen | Integer | A tömbben található egész számok száma |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -3034,7 +3036,7 @@ setProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*Objektum*> | Igen | Object | A JSON-objektum szeretné állítani, amelynek tulajdonsága |
 | <*A tulajdonság*> | Igen | String | A meglévő vagy új beállítandó tulajdonság nevét |
-| <*value*> | Igen | Bármelyik | Az érték a megadott tulajdonság beállítása |
+| <*value*> | Igen | Bármely | Az érték a megadott tulajdonság beállítása |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -3053,7 +3055,7 @@ setProperty(json('customerProfile'), 'accountNumber', guid())
 
 <a name="skip"></a>
 
-### <a name="skip"></a>kihagyás
+### <a name="skip"></a>Kihagyás
 
 A gyűjtemény elejéről eltávolítandó elemek, és vissza *összes többi* elemek.
 
@@ -3064,7 +3066,7 @@ skip([<collection>], <count>)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Gyűjtemény*> | Igen | Tömb | A gyűjtemény, amelynek el kívánja távolítani elemek |
-| <*Száma*> | Igen | Egész szám | Távolítsa el elöl az elemek számának pozitív egész szám |
+| <*Száma*> | Igen | Integer | Távolítsa el elöl az elemek számának pozitív egész szám |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -3261,7 +3263,7 @@ string(<value>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Igen | Bármelyik | Az átalakítandó érték |
+| <*value*> | Igen | Bármely | Az átalakítandó érték |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -3334,8 +3336,8 @@ substring('<text>', <startIndex>, <length>)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Igen | String | A karakterláncot, amelynek kívánt karakterek |
-| <*startIndex*> | Igen | Egész szám | Egy pozitív szám, amelyet szeretne használja, mint a kezdő pozíció vagy index érték 0-nál nagyobb vagy egyenlő |
-| <*Hossza*> | Igen | Egész szám | Pozitív szám, amelyet szeretne a substring karakter |
+| <*startIndex*> | Igen | Integer | Egy pozitív szám, amelyet szeretne használja, mint a kezdő pozíció vagy index érték 0-nál nagyobb vagy egyenlő |
+| <*Hossza*> | Igen | Integer | Pozitív szám, amelyet szeretne a substring karakter |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -3367,7 +3369,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Időbélyeg*> | Igen | String | A karakterlánc, amely tartalmazza az időbélyeg |
-| <*időköz*> | Igen | Egész szám | A megadott időegység kivonandó száma |
+| <*időköz*> | Igen | Integer | A megadott időegység kivonandó száma |
 | <*timeUnit*> | Igen | String | Az időegység használata *időköz*: "A második", "Minute", "Hour", "Day", "Week", "Month", "Year" |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
@@ -3411,7 +3413,7 @@ take([<collection>], <count>)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Gyűjtemény*> | Igen | Karakterlánc- vagy tömb | A gyűjtemény, amelynek kívánt elemeket |
-| <*Száma*> | Igen | Egész szám | Az előtérben lévő elemek számának pozitív egész szám |
+| <*Száma*> | Igen | Integer | Az előtérben lévő elemek számának pozitív egész szám |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -3435,7 +3437,7 @@ take(createArray(0, 1, 2, 3, 4), 3)
 
 <a name="ticks"></a>
 
-### <a name="ticks"></a>órajel
+### <a name="ticks"></a>órajel során végbemenő
 
 Vissza a `ticks` tulajdonság értéke a megadott időbélyeg.
 A *osztásjelek* van egy 100 nanoszekundumos időszak.
@@ -3451,7 +3453,7 @@ ticks('<timestamp>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*ticks-number*> | Egész szám | A megadott időbélyeg óta számát |
+| <*ticks-number*> | Integer | A megadott időbélyeg óta számát |
 ||||
 
 <a name="toLower"></a>
@@ -3626,7 +3628,7 @@ triggerMultipartBody(<index>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*index*> | Igen | Egész szám | Az index értéke a kívánt részt |
+| <*index*> | Igen | Integer | Az index értéke a kívánt részt |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -3917,7 +3919,7 @@ uriPort('<uri>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*port-value*> | Egész szám | A `port` a megadott URI azonosító értékét. Ha `port` nem adjon meg egy értéket, az alapértelmezett port a protokoll adja vissza. |
+| <*port-value*> | Integer | A `port` a megadott URI azonosító értékét. Ha `port` nem adjon meg egy értéket, az alapértelmezett port a protokoll adja vissza. |
 ||||
 
 *Példa*
@@ -4052,7 +4054,7 @@ variables('<variableName>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*variable-value*> | Bármelyik | A megadott változó értékét |
+| <*variable-value*> | Bármely | A megadott változó értékét |
 ||||
 
 *Példa*
@@ -4159,14 +4161,14 @@ xpath('<xml>', '<xpath>')
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*xml*> | Igen | Bármelyik | Az XML-karakterlánc csomópontok és a egy XPath kifejezés értéke megfelelő értékeket keresése |
-| <*XPath*> | Igen | Bármelyik | A megfelelő XML-csomópontnak vagy értékek kereséséhez használt XPath-kifejezés |
+| <*xml*> | Igen | Bármely | Az XML-karakterlánc csomópontok és a egy XPath kifejezés értéke megfelelő értékeket keresése |
+| <*XPath*> | Igen | Bármely | A megfelelő XML-csomópontnak vagy értékek kereséséhez használt XPath-kifejezés |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | XML-csomópontot csak egyetlen csomópont megegyezik a megadott XPath-kifejezés |
-| <*value*> | Bármelyik | Az XML-csomópontot csak egyetlen érték megegyezik a megadott XPath-kifejezés értékét |
+| <*value*> | Bármely | Az XML-csomópontot csak egyetlen érték megegyezik a megadott XPath-kifejezés értékét |
 | [<*xml-node1*>, <*xml-node2*>, ...] </br>– vagy – </br>[<*value1*>, <*value2*>, ...] | Tömb | Olyan tömböt vagy XML-csomópontnak, amelyek megfelelnek a megadott XPath-kifejezésnek |
 ||||
 
