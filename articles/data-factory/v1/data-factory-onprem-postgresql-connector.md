@@ -75,13 +75,13 @@ A következő táblázat a JSON-elemeket társított PostgreSQL szolgáltatás l
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A type tulajdonságot kell beállítani: **OnPremisesPostgreSql** |Igen |
-| kiszolgáló |A PostgreSQL-kiszolgáló neve. |Igen |
-| adatbázis |A PostgreSQL-adatbázis neve. |Igen |
-| séma |A séma az adatbázis neve. A séma neve a kis-és nagybetűket. |Nem |
+| server |A PostgreSQL-kiszolgáló neve. |Igen |
+| database |A PostgreSQL-adatbázis neve. |Igen |
+| schema |A séma az adatbázis neve. A séma neve a kis-és nagybetűket. |Nem |
 | authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek: Névtelen, alapszintű és a Windows. |Igen |
-| felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
+| username |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
 | password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
-| átjáró neve |Az átjáró által a Data Factory szolgáltatás a helyi PostgreSQL-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
+| gatewayName |Az átjáró által a Data Factory szolgáltatás a helyi PostgreSQL-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében.
@@ -101,7 +101,7 @@ Ha a forrás típusa van **RelationalSource** (amely tartalmazza a PostgreSQL), 
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
+| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
 
 > [!NOTE]
 > Séma-és tábla-és nagybetűk. Tegye őket a `""` (dupla idézőjel) a lekérdezésben.
