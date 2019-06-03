@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 43aa0956ef1f44fa5705800ff2b424608ec75499
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2c6af53aeec5d40f603d65595d93527107c0d80a
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795615"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427700"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure-beli Kubernetes használata az Azure Cosmos DB (előzetes verzió)
 
@@ -29,7 +29,7 @@ Az Azure Cosmos DB API etcd kapcsolatos további információkért tekintse meg 
 
 1. Telepítse a legújabb verzióját, [Azure CLI-vel](/cli/azure/install-azure-cli?view=azure-cli-latest). Töltse le az Azure CLI-vel adott operációs rendszerhez, és telepítse.
 
-1. Telepítse a [v0.32.3](https://github.com/Azure/aks-engine/releases/tag/v0.32.3) Azure Kubernetes-motor verziója. A telepítési utasításokat a különböző operációs rendszerekhez érhetők el a [Azure Kubernetes-motor](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) lapot. Egyszerűen lépéssorral **AKS motor telepítése** szakaszában a csatolt dokumentumot. A letöltés után csomagolja ki a zip-fájlt.
+1. Telepítse a [legújabb verzió](https://github.com/Azure/aks-engine/releases) az Azure Kubernetes-motort. A telepítési utasításokat a különböző operációs rendszerekhez érhetők el a [Azure Kubernetes-motor](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) lapot. Egyszerűen lépéssorral **AKS motor telepítése** szakaszában a csatolt dokumentumot. A letöltés után csomagolja ki a zip-fájlt.
 
    Az Azure Kubernetes-motor (**aks-motor**) hoz létre a Kubernetes-fürtök az Azure-ban Azure Resource Manager-sablonokkal. Aks-motor a bemeneti értéke egy fürt csomagdefiníciós fájl, amely leírja a kívánt fürt, beleértve az orchestrator, a szolgáltatások és az ügynökök. A bemeneti fájlok szerkezete hasonlít a nyilvános API-t az Azure Kubernetes Service-ben.
 
@@ -77,7 +77,7 @@ Az Azure Cosmos DB API etcd kapcsolatos további információkért tekintse meg 
 1. A parancssorban keresse meg a mappát, ahol az Azure Kubernetes-motor végrehajtható fájl található. Ha például a parancssorban válthat mappába:
 
    ```cmd
-   cd "\aks-engine-v0.32.3-windows-amd64\aks-engine-v0.32.3-windows-amd64"
+   cd "\aks-engine-v0.36.3-windows-amd64\aks-engine-v0.36.3-windows-amd64"
    ```
 
 1. Nyisson meg egy tetszőleges szövegszerkesztőben, és határozza meg, amely az Azure Kubernetes-fürt az Azure Cosmos DB etcd API üzembe helyezése Resource Manager-sablonnal. A következő JSON-definíciót a szövegszerkesztőben másolja és mentse a fájlt az `apiModel.json`:

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4f1ce8fd44a501f594f3093789d1ef03e664d018
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69c14c6b98b572bc413f5a35696269e13344387e
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829548"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417308"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>A Text Analytics API nyelvéhez és régiójához támogatása
 
@@ -23,7 +23,11 @@ Ez a cikk ismerteti az egyes műveletek támogatott nyelvek: vélemények elemz�
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-A Text Analytics API felismeri a legfeljebb 120 különböző nyelvekhez. Nyelv észlelése "parancsfájl" egy nyelv adja vissza. Például a kifejezés a "Javaslatom van egy kutya", a rendszer visszaadja `en` helyett `en-US`. A csak speciális funkcióban kínai, ahol a language detection funkció visszalép `zh_CHS` vagy `zh_CHT` Ha képes meghatározni a parancsfájl a megadott szöveg megadott. Olyan esetekben, ahol egy adott parancsfájl nem lehet azonosítani az egy kínai dokumentumot, hogy vissza fogja küldeni egyszerűen `zh`.
+A Text Analytics API számos különféle nyelveken, variantní hodnoty, dialektusok és néhány területi kulturális nyelv észlelését.  Nyelv észlelése "parancsfájl" egy nyelv adja vissza. Például a kifejezés a "Javaslatom van egy kutya", a rendszer visszaadja `en` helyett `en-US`. A csak speciális funkcióban kínai, ahol a language detection funkció visszalép `zh_CHS` vagy `zh_CHT` Ha képes meghatározni a parancsfájl a megadott szöveg megadott. Olyan esetekben, ahol egy adott parancsfájl nem lehet azonosítani az egy kínai dokumentumot, hogy vissza fogja küldeni egyszerűen `zh`.
+
+Nem tesszük közzé ezt a szolgáltatást a nyelvek pontos listáját, de képes észlelni a számos különféle nyelveken, variantní hodnoty, dialektusok és néhány területi kulturális nyelv. 
+
+Ha a tartalom kevésbé gyakran használt nyelven, megpróbálhatja nyelvfelismerés megtekintheti, ha egy kódot ad vissza. A válasz nem észlelhető nyelvek `unknown`.
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Hangulatelemzést, Kulcsszókeresést és nevesített entitások felismerése
 

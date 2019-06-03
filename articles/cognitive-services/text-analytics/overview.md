@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/03/2019
 ms.author: aahi
-ms.openlocfilehash: ae1d8f18705b1058c10d4720c64f624ed0ef4a3d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7d52585b51af09c430130141c3680b5630f7b95e
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60829531"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417290"
 ---
 # <a name="what-is-text-analytics-api"></a>Mit jelent a szövegelemzési API-t?
 
@@ -27,14 +27,14 @@ Az API-t egy része [Azure Cognitive Services](https://docs.microsoft.com/azure/
 
 Szövegelemzés különböző dolgok jelenti, de a Cognitive Services, a szövegelemzési API elemzési az alábbiakban leírtak négyféle biztosít.
 
-## <a name="sentiment-analysis"></a>Hangulatelemzés
+## <a name="sentiment-analysis"></a>Véleményelemzés
 Használat [hangulatelemzés](how-tos/text-analytics-how-to-sentiment-analysis.md) alkotott ügyfélvéleményeket a márkájáról vagy a témakör a keresőmotorok pozitív vagy negatív véleményeket kapcsolatos nyers szöveg elemzésével megállapítása. Az API minden dokumentumhoz visszaad egy 0 és 1 közötti hangulati pontszámot, ahol az 1 a legpozitívabb pontszám.<br /> Az elemzési modellek előzetes betanítása a Microsoft széles körű szövegtörzs-technológiái és természetes nyelvi technológiái segítségével történik. [Bizonyos nyelvek](text-analytics-supported-languages.md) esetében az API képes a megadott szöveg elemzéséből kiszámított pontszámot közvetlenül visszaadni a hívó alkalmazásnak. Használhatja a [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c9) API vagy a [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK-t.
 
-## <a name="key-phrase-extraction"></a>Kulcsszókeresés
+## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 Automatikusan [kinyerheti a kulcskifejezéseket](how-tos/text-analytics-how-to-keyword-extraction.md) gyorsan azonosíthatja a fő pontokat. Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”. Használhatja a [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) itt az API-t vagy a [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK-t.
 
 ## <a name="language-detection"></a>Nyelvfelismerés
-Is [melyik nyelvfelismerés a bemeneti szöveg nyelven van megírva](how-tos/text-analytics-how-to-language-detection.md) és a jelentés minden egyes dokumentum legfeljebb 120 nyelv vonatkozó kérelem küldése egyetlen nyelvkód. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét. Használhatja a [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) API vagy a [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK-t.
+Is [melyik nyelvfelismerés a bemeneti szöveg nyelven van megírva](how-tos/text-analytics-how-to-language-detection.md) és a jelentés minden egyes dokumentum számos különféle nyelveken, variantní hodnoty, dialektusok és néhány területi kulturális nyelv a kérelem küldése egyetlen nyelvkód. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét. Használhatja a [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) API vagy a [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK-t.
 
 ## <a name="named-entity-recognition"></a>Megnevezett entitások felismerése
 [Azonosítsa és entitások kategorizálása](how-tos/text-analytics-how-to-entity-linking.md) a szövegben, személyek, helyek, szervezetek, dátum és idő, mennyiség, százalékos, pénznemek és több. A rendszer felismeri a közismert entitásokat, amelyeket összekapcsol az interneten található további információkkal. Használhatja a [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) API-t.

@@ -1,7 +1,10 @@
 - name: Azure Dev Spaces
+  href: ./index.yml
   items:
     - name: Áttekintés
-      href: index.yml
+      items:
+        - name: Az Azure Dev Spaces bemutatása
+          href: about.md
     - name: Gyors útmutatók
       items:
         - name: Csoportos fejlesztés
@@ -10,7 +13,7 @@
           href: quickstart-java.md
         - name: .NET Core (VS Code és parancssori felület)
           href: quickstart-netcore.md
-        - name: .NET Core (Visual Studio 2017)
+        - name: .NET Core (Visual Studio)
           href: quickstart-netcore-visualstudio.md
         - name: Node.js (VS Code és parancssori felület)
           href: quickstart-nodejs.md
@@ -32,7 +35,7 @@
               href: multi-service-netcore.md
             - name: 3 – Csoportos fejlesztés
               href: team-development-netcore.md
-        - name: .NET Core (Visual Studio 2017)
+        - name: .NET Core (Visual Studio)
           items:
             - name: 1 – Első lépések
               href: get-started-netcore-visualstudio.md

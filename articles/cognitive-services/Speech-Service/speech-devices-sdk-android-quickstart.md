@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 073166a594088bca04d81883247a5880fcbd1cb7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bd0160073898a5a83af2e7b2bba2dba007c04513
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234497"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66425662"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Gyors útmutató: A beszédfelismerés Devices SDK-val mintaalkalmazás futtatásának androidon
 
@@ -95,7 +95,7 @@ Az development kit konfigurációjának ellenőrzése, hozza létre és telepít
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Beszélgetés beszédátírási használatakor a speech kulcs és a régió adatait conversation.java is szükséges:
+    Beszélgetés beszédátírási használja, ha a speech kulcs és a régió adatait conversation.java is szükséges:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
@@ -145,7 +145,7 @@ Az development kit konfigurációjának ellenőrzése, hozza létre és telepít
 
    ![Beszéd Devices SDK-val példa mintaalkalmazás és beállítások](media/speech-devices-sdk/qsg-8.png)
 
-1. A beszélgetés Beszédátírási bemutatót az újonnan hozzáadott van. Indítsa el a munkamenet indítása átírás. Alapértelmezés szerint mindenki a Vendég, azonban ha résztvevő hangalapú aláírások akkor állítható. Ebben az eszközön a fájl /video/participants.properties. A beszédfelismerési aláírás pillantást létrehozásához [beszélgetések (SDK) alapuló átírás](how-to-use-conversation-transcription-service.md).
+1. Próbálja ki az új beszélgetés Beszédátírási bemutatót. Indítsa el a munkamenet indítása átírás. Alapértelmezés szerint a Vendég a mindenki számára. Azonban ha résztvevő hangalapú aláírásokat, elhelyezheti egy fájlba `/video/participants.properties` az eszközön. A beszédfelismerési aláírást létrehozni, tekintse meg [beszélgetések (SDK) alapuló átírás](how-to-use-conversation-transcription-service.md).
 
    ![Beszélgetés Beszédátírási bemutatóalkalmazást](media/speech-devices-sdk/qsg-15.png)
 

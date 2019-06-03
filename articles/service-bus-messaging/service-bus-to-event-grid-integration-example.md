@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: spelluru
-ms.openlocfilehash: b29798bb87b7c5c677e7d80e552e45e8d1290541
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b7dbc7dbc0b670de81a3f4603b0d52bce7559af8
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786836"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428315"
 ---
 # <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Válaszoljon az Azure Functions és az Azure Logic Apps használatával az Azure Event Grid-n keresztül fogadott Azure Service Bus-események
 Ebben az oktatóanyagban elsajátíthatja, hogyan válaszol az Azure Service Bus-események Azure Event Grid-n keresztül az Azure Functions és az Azure Logic Apps által kapott. A következőket teheti:
@@ -120,14 +120,14 @@ Ezután tegye a következőket:
     ![Függvény-alkalmazás kimenete](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
 3. Válassza ki **függvény URL-Címének lekérése** és jegyezze fel az URL-címet. 
 
-    ![Függvény URL-címének beolvasása](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+    ![Függvény URL-Címének lekérése](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
 # <a name="azure-functions-v1tabv1"></a>[Azure Functions V1](#tab/v1)
 
 1. Konfigurálja a használni kívánt függvény **V1** verziója: 
     1. A faszerkezetes nézetben válassza ki a függvényalkalmazást, és válassza ki **Alkalmazásbeállítások függvény**. 
 
-        ![Függvényalkalmazás beállításai]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
+        ![A függvényalkalmazás beállításai]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
     2. Válassza ki **~ 1** a **verze modulu Runtime**. 
 2. Bontsa ki a **funkciók** a fanézetben megtekintheti, és válassza ki a függvényt. Cserélje le a függvény kódját a következő kódot: 
 
@@ -179,7 +179,7 @@ Ezután tegye a következőket:
     ![Függvény-alkalmazás kimenete](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
 4. Válassza ki **függvény URL-Címének lekérése** és jegyezze fel az URL-címet. 
 
-    ![Függvény URL-címének beolvasása](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+    ![Függvény URL-Címének lekérése](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
 ---
 
@@ -280,13 +280,12 @@ Logikai alkalmazás csatlakoztatása az Azure Service Bus és az Azure Event Gri
     3. A **erőforrásnév**, válassza ki a Service Bus-névtér. 
     4. Válassza ki **új paraméter hozzáadása**, és válassza ki **Utótagszűrő**. 
     5. A **Utótagszűrő**, adja meg a nevét, a második a Service Bus témakör-előfizetésbe. 
-
         ![Logic Apps Designer – esemény konfigurálása](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
 6. Válassza ki **+ új lépés** a tervezőben, és kövesse az alábbi lépéseket:
     1. Keresse meg **Service Bus**.
     2. Válassza ki **a Service Bus** a listában. 
     3. Válassza a **üzeneteket** a a **műveletek** listája. 
-    4. Válassza ki **üzenetek beolvasása témafeliratkozásból (zárolás betekintésre)**. 
+    4. Válassza ki **üzenetek beolvasása témafeliratkozásból (zárolás betekintésre)** . 
 
         ![Logic Apps Designer – get-üzenetek művelet](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
     5. Adjon meg egy **a kapcsolat neve**. Példa: **Üzenetek beolvasása a témakör-előfizetésből**, és válassza ki a Service Bus-névteret. 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 80fabccb8a59bcd472812698f624d49dc26c24fa
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 9037c7b5498a5e0a37b05e5ee09891bf8066393d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399115"
+ms.locfileid: "66417487"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Oktatóanyag: Az Azure Blockchain-szolgáltatás használatával tranzakciók küldése
 
@@ -183,7 +183,7 @@ A nyilvános kulcsot beszerezheti a tranzakció csomópont listából. Másolja 
 
 ## <a name="create-smart-contract"></a>Az intelligens szerződés létrehozása
 
-1. A mappa **szerződések**, hozzon létre egy új fájlt `SimpleStorage.sol`. Adja hozzá a következő kódot.
+1. Az a **szerződések** mappában hozzon létre egy új fájlt `SimpleStorage.sol`. Adja hozzá a következő kódot.
 
     ```solidity
     pragma solidity >=0.4.21 <0.6.0;
@@ -205,7 +205,7 @@ A nyilvános kulcsot beszerezheti a tranzakció csomópont listából. Másolja 
     }
     ```
     
-1. A mappa **áttelepítések**, hozzon létre egy új fájlt `2_deploy_simplestorage.js`. Adja hozzá a következő kódot.
+1. Az a **áttelepítések** mappában hozzon létre egy új fájlt `2_deploy_simplestorage.js`. Adja hozzá a következő kódot.
 
     ```solidity
     var SimpleStorage = artifacts.require("SimpleStorage.sol");
@@ -223,10 +223,10 @@ A nyilvános kulcsot beszerezheti a tranzakció csomópont listából. Másolja 
     |-------|-------------
     | \<az alfa csomópont nyilvános kulcs\> | Az alfa csomópont nyilvános kulcs
     | \<Ethereum fiók címe\> | Az alapértelmezett tranzakció csomópontjában létrehozott Ethereum fiók címe
-    
+
     Ebben a példában a kezdeti értéke, a **storeData** 42 értékre van állítva.
 
-    **privateFor** határozza meg a csomópontok, amelyhez a szerződést érhető el. Ebben a példában a fiók az alapértelmezett tranzakció csomópont leadott is privát tranzakciók a **alpha** csomópont. Az összes titkos tranzakció résztvevők nyilvános kulcsok hozzá kell. Ha nem adja meg **privateFor:** és **származó:** , az intelligens szerződés tranzakciók nyilvános, és minden consortium tag számára láthatók.
+    **privateFor** határozza meg a csomópontok, amelyhez a szerződést érhető el. Ebben a példában a fiók az alapértelmezett tranzakció csomópont leadott is privát tranzakciók a **alpha** csomópont. Nyilvános kulcsok a résztvevők saját tranzakció adja hozzá. Ha nem adja meg **privateFor:** és **származó:** , az intelligens szerződés tranzakciók nyilvános, és minden consortium tag számára láthatók.
 
 1. Mentse a fájlokat kiválasztásával **fájl > Mentés összes**.
 

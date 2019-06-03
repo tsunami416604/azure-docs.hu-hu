@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 90ffebf5f3375e94545f82a95f5c240ad845bd94
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4ceff7d59443fe78fb8cf7164e5f31cf1acc189a
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66162179"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66420748"
 ---
 1. Jelentkezzen be a [Firebase konzoljába](https://firebase.google.com/console/). Hozzon létre egy új Firebase-projektet, ha nem rendelkezik még ilyennel.
 2. A projekt létrehozása után válassza az **Add Firebase to your Android app** (A Firebase hozzáadása az Android-alkalmazáshoz) lehetőséget. 
@@ -36,4 +36,4 @@ ms.locfileid: "66162179"
     ![A projektbeállítások kiválasztása](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
 4. Ha még nem töltötte le a **google-services.json** fájl, megteheti ezt oldal stb. 
 5. Váltson a **Cloud Messaging** a felső fülön. 
-6. Másolja ki és mentse a **kiszolgálókulcs** későbbi használatra. Ez az érték használatával az értesítési központ konfigurálása.
+6. Másolja ki és mentse a **Legacy Server key** későbbi használatra. Ez az érték használatával az értesítési központ konfigurálása.

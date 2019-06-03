@@ -9,18 +9,22 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 4ccb8665c9880e21897c81ed4b4ff534e52bb6d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 481f7a7589a58baac922001d230f95198ed45eb7
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829684"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417944"
 ---
 # <a name="example-how-to-detect-language-with-text-analytics"></a>Példa: Szövegelemzés nyelv észlelése
 
-A [Nyelvfelismerés API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) minden dokumentumra kiértékeli a szöveges bemenetet és visszaadja a nyelv azonosítót az elemzés erősségét jelző pontszámmal együtt. A Text Analytics 120 nyelv felismerésére képes.
+A [nyelvfelismerés](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) funkció API-szöveg a bemeneti, és minden egyes dokumentum esetében kiértékeli, és az elemzés erőssége jelző pontszámot ad vissza, nyelvi azonosítók.
 
 Ez a funkció véletlen szöveget gyűjtő tartalom áruházak számára hasznos, amikor a nyelv ismeretlen. Az analízis eredményei elemezhetők annak meghatározására, hogy milyen nyelvet használ a bemeneti dokumentum. A válasz visszaad egy pontszámot is, amely tükrözi a modell (0 és 1 közötti értékű) megbízhatóságát.
+
+Nem tesszük közzé ezt a szolgáltatást a nyelvek pontos listáját, de képes észlelni a számos különféle nyelveken, variantní hodnoty, dialektusok és néhány területi kulturális nyelv. 
+
+Ha a tartalom kevésbé gyakran használt nyelven, megpróbálhatja nyelvfelismerés megtekintheti, ha egy kódot ad vissza. A válasz nem észlelhető nyelvek `unknown`.
 
 > [!TIP]
 > Szövegelemzés is biztosít egy Linux-alapú Docker tároló rendszerképének nyelvfelismerés, így [telepítheti és futtathatja a Text Analytics tároló](text-analytics-how-to-install-containers.md) közel az adatokat.
@@ -202,11 +206,11 @@ A kapott eredmény a domináns nyelv, de a gyengébb megbízhatósági szintet j
 }
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben a nyelvfelismerés elveivel és folyamatával ismerkedett meg a Cognitive Services Text Analytics használatával. Az alábbiakban röviden felidézzük a korábban ismertetett és bemutatott főbb pontokat:
 
-+ A [Nyelvfelismerés API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) 120 nyelvre érhető el.
++ [Nyelv észlelése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) számos különféle nyelveken, variantní hodnoty, dialektusok és néhány területi kulturális nyelv érhető el.
 + A kérelem törzsében szereplő JSON-dokumentumok-Azonosítót és a szöveg tartalmazza.
 + POST-kérés a `/languages` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](text-analytics-how-to-access-key.md) használatával.
 + A válasz kimenet, amely minden dokumentumazonosítóhoz tartalmazza a nyelvi azonosítót, továbbítható bármilyen JSON-t elfogadó alkalmazáshoz, beleértve az Excelt és a Power BI-t, hogy csak néhányat említsünk.

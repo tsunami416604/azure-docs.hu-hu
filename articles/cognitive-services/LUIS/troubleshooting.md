@@ -11,16 +11,20 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: diberry
-ms.openlocfilehash: b114b1c3b1c421c6e6944666e3fd928d2aced966
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f922f9c64f182377365192543305b48659c518da
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66225875"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417975"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – gyakori kérdések (GYIK)
 
 Ez a cikk a Language Understanding (LUIS) kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
+
+## <a name="whats-new"></a>Újdonságok
+
+[További](whats-new.md) kapcsolatos újdonságok a Language Understanding.
 
 <a name="luis-authoring"></a>
 
@@ -64,7 +68,7 @@ A Cortana előre elkészített alkalmazásokat is elavult 2017-ben. Már nem tá
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Hogyan ruházhatom át tulajdonjogát a LUIS-alkalmazások?
 LUIS-alkalmazásokon át egy másik Azure-előfizetést, a LUIS alkalmazás exportálása, és importálja egy új fiók használatával. Frissítse a LUIS alkalmazás azonosítója, amely meghívja ezt az ügyfélalkalmazásban. Az új alkalmazás adhat vissza eltérő LUIS pontszámokat az eredeti alkalmazásból.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Egy példa utterance (kifejezés) saját egyéni entitás helyett az előre összeállított entitások van megjelölve. Hogyan javíthatom ki? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Egy példa utterance (kifejezés) saját egyéni entitás helyett az előre összeállított entitások van megjelölve. Hogyan javíthatom ezt ki? 
 
 Lásd: [előre összeállított entitások hibaelhárítási](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
 

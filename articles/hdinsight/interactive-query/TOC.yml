@@ -320,12 +320,14 @@
       maintainContext: true
     - name: Hálózati hozzáférés
       items:
+        - name: HDInsight virtuális hálózati architektúra
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: Tűzfal használata a kimenő forgalom korlátozására
+          href: ../hdinsight-restrict-outbound-traffic.md
         - name: HDInsight az Azure VNetben
           href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
         - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
           href: ../connect-on-premises-network.md
-          maintainContext: true
     - name: Monitorozás Azure Monitor-naplókkal
       items:
         - name: Az Azure Monitor-naplók használata

@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: d6e478cba13c7b4cf628535a4a1ecdbec344a733
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: 907383c057c0c1eebee6550a0d1e9c75dd88513c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035458"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417304"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Automatizált gépi tanulás a regressziós modell létrehozása
 
@@ -38,7 +38,7 @@ Ebben az oktatóanyagban elsajátíthatja a következő feladatokat:
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 >[!NOTE]
-> Ebben a cikkben kód az Azure Machine Learning SDK 1.0.0-s verziójának lett tesztelve.
+> Ebben a cikkben kód az Azure Machine Learning SDK verziója 1.0.39 lett tesztelve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -147,11 +147,11 @@ dflow_prepared.get_profile()
       <th>Típus</th>
       <th>Min</th>
       <th>Max</th>
-      <th>Darabszám</th>
+      <th>Count</th>
       <th>Hiányzó száma</th>
       <th>Nem hiányzó száma</th>
       <th>Hiányzó százalék</th>
-      <th>Hibaszámláló</th>
+      <th>Hibák száma</th>
       <th>Üres száma</th>
       <th>0,1 % ki osztóérték</th>
       <th>1 % ki osztóérték</th>
@@ -162,8 +162,8 @@ dflow_prepared.get_profile()
       <th>95 %-os ki osztóérték</th>
       <th>99 %-os ki osztóérték</th>
       <th>99,9 %-os ki osztóérték</th>
-      <th>Középérték</th>
-      <th>Standard szórás</th>
+      <th>középérték</th>
+      <th>Szórás</th>
       <th>Variancia</th>
       <th>Döntés</th>
       <th>Értékek</th>

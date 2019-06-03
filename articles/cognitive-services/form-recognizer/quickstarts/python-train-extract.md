@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 139c0c29033dc45d07fd0987c2eee92308512329
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 2657c69ef631c32b498404908014d8788d485989
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906982"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417965"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API a pythonnal
 
@@ -45,9 +45,12 @@ Használja az űrlap felismerő hozzáférést kapnak, amikor kap egy üdvözlő
 
 Befejeztével az űrlap felismerő erőforrás üzembe helyezéséhez keresse meg és válassza ki a **összes erőforrás** listájához a portálon. Válassza ki a **kulcsok** fülre kattintva megtekintheti az előfizetési kulcsok. Egyiket sem az alkalmazás hozzáférést biztosít az erőforráshoz. Másolja az értéket a **kulcs 1**. A következő szakaszban be fogja használni.
 
-## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
+## <a name="train-a-form-recognizer-model"></a>Egy űrlap felismerő modell betanítása
 
-Hozhat létre, és futtassa a mintát, hajtsa végre ezeket a módosításokat a következő kódrészletet:
+Először is kell egy Azure Storage-blobba betanítási adatok egy készletét. Rendelkeznie kell legalább öt mintául szolgáló űrlapok (PDF-dokumentumok és/vagy képek) az azonos típusú/struktúra a fő bemeneti adatként. Vagy használhat egy egyetlen üres űrlapot. "Üres" szót tartalmaznia kell az űrlap-fájl neve
+
+Egy űrlap felismerő modell betanításához az Azure blob-tárolóban a dokumentumok használatával, hívja a **betanításához** a következő kód futtatásával a python API-t. A kód futtatásához előtt ezeket a módosításokat:
+
 1. Cserélje le `<Endpoint>` az űrlap felismerő erőforrás Azure-régióban, ahol beszerzett az előfizetési kulcsok a végpont URL-címet.
 1. Cserélje le `<SAS URL>` a egy Azure Blob storage-tároló megosztott hozzáférhetnek a betanítási adatok helye jogosultságkód (SAS) URL-CÍMÉT.  
 1. Cserélje le `<Subscription key>` az előfizetés az előző lépésben kimásolt kulccsal.

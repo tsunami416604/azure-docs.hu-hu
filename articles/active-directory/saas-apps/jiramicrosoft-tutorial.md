@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/22/2019
+ms.date: 05/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dd8af0ed016dca5ab9c14b117a2673ca214e08c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 554a4c63c8492d69ad0899176cdc58895c5146f5
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688091"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455862"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>Oktatóanyag: Az Azure Active Directory-integráció a Microsoft által a JIRA SAML SSO-val
 
@@ -44,7 +44,7 @@ Egyszeri bejelentkezés engedélyezéséhez használja a Microsoft Azure Active 
 Az Azure AD-integráció konfigurálása a Microsoft által a JIRA SAML SSO-val, a következőkre van szükség:
 
 - Azure AD-előfizetés
-- JIRA Core és a szoftver 6.0 7.12, vagy a JIRA szolgáltatás ügyfélszolgálati 3.0, 3.5-ös telepítenie kell, és a Windows 64 bites verzióját a következőn:
+- JIRA Core és a szoftver 6.4, 8.0-s vagy JIRA szolgáltatás ügyfélszolgálati 3.0, 3.5-ös telepítenie kell, és a Windows 64 bites verzióját a következőn:
 - JIRA-kiszolgáló a HTTPS-kompatibilis
 - Vegye figyelembe, hogy a támogatott verziók JIRA beépülő modul szakasz alatt található szerepelnek.
 - JIRA-kiszolgáló elérhető-e internetes különösen az Azure AD bejelentkezési oldal a hitelesítéshez, és tudja fogadni a jogkivonatot az Azure ad-ből kell
@@ -62,7 +62,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 
 ## <a name="supported-versions-of-jira"></a>JIRA támogatott verziói
 
-* JIRA Core és a szoftvereket: a 7.12 6.0
+* JIRA Core és a szoftvereket: 6.4, 8.0-s
 * JIRA-ügyfélszolgálat 3.0.0-s való 3.5.0
 * JIRA 5.2 is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5.2.](jira52microsoft-tutorial.md)
 
@@ -81,7 +81,7 @@ Az Azure AD-be a Microsoft által a JIRA SAML SSO-integráció konfigurálásáh
 
 **A Microsoft által a JIRA SAML SSO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -179,34 +179,40 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a Microsoft által a JIRA SA
 
 6. Hajtsa végre a következő lépéseket a konfigurációs lapon:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon52.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon53.png)
 
     > [!TIP]
     > Győződjön meg arról, hogy nincs-e rendelve az alkalmazást, hogy nincs hiba feloldása a metaadatokat a csak egy tanúsítványt. Ha több tanúsítványnak, a metaadatok feloldása után a rendszergazda lekérdezi hiba.
 
-    a. Az a **metaadatok URL-címe** szövegmezőjébe illessze be **alkalmazás összevonási metaadatainak URL-címe** érték, amely az Azure Portalon, majd kattintson a másolta a **megoldásához** gombra. Ez olvassa be az identitásszolgáltató metaadatok URL-címet, és tölti fel a mezők adatai.
+    1. Az a **metaadatok URL-címe** szövegmezőjébe illessze be **alkalmazás összevonási metaadatainak URL-címe** érték, amely az Azure Portalon, majd kattintson a másolta a **megoldásához** gombra. Ez olvassa be az identitásszolgáltató metaadatok URL-címet, és tölti fel a mezők adatai.
 
-    b. Másolás a **azonosítóját, a válasz URL-cím és a bejelentkezési URL** értéket, majd illessze be őket a **azonosítóját, a válasz URL-cím és a bejelentkezési URL** rendre a szövegmezőből **JIRA SAML egyszeri bejelentkezés Microsoft-Domain és URL-címek** szakaszban az Azure Portalon.
+    1. Másolás a **azonosítóját, a válasz URL-cím és a bejelentkezési URL** értéket, majd illessze be őket a **azonosítóját, a válasz URL-cím és a bejelentkezési URL** rendre a szövegmezőből **JIRA SAML egyszeri bejelentkezés Microsoft-Domain és URL-címek** szakaszban az Azure Portalon.
 
-    c. A **bejelentkezési gomb neve** írja be a szervezet azt szeretné, tekintse meg a bejelentkezési képernyőn a felhasználók gomb felirata.
+    1. A **bejelentkezési gomb neve** írja be a szervezet azt szeretné, tekintse meg a bejelentkezési képernyőn a felhasználók gomb felirata.
 
-    d. A **SAML felhasználói azonosító helyek** válassza **felhasználói Azonosítóját a tulajdonos utasítás NameIdentifier elemében van** vagy **felhasználói azonosító szerepel egy attribútumelem**.  Ez az azonosító azt kell a JIRA felhasználói azonosítóját. Ha a felhasználói azonosító nem egyezik, majd rendszer nem engedélyezi felhasználók jelentkezhetnek be.
+    1. A **SAML felhasználói azonosító helyek** válassza **felhasználói Azonosítóját a tulajdonos utasítás NameIdentifier elemében van** vagy **felhasználói azonosító szerepel egy attribútumelem**.  Ez az azonosító azt kell a JIRA felhasználói azonosítóját. Ha a felhasználói azonosító nem egyezik, majd rendszer nem engedélyezi felhasználók jelentkezhetnek be.
 
-    > [!Note]
-    > Alapértelmezett SAML Felhasználóazonosító helye alkalmazásnév-azonosító. Egy attribútum beállítást módosíthatja, és adja meg a megfelelő attribútum nevét.
+       > [!Note]
+       > Alapértelmezett SAML Felhasználóazonosító helye alkalmazásnév-azonosító. Egy attribútum beállítást módosíthatja, és adja meg a megfelelő attribútum nevét.
 
-    e. Ha **felhasználói azonosító szerepel egy attribútumelem** lehetőség, ezt a **attribútum neve** szövegmezőbe írja be a nevét, ahol a felhasználói azonosító várható.
+    1. Ha **felhasználói azonosító szerepel egy attribútumelem** lehetőség, ezt a **attribútum neve** szövegmezőbe írja be a nevét, ahol a felhasználói azonosító várható.
 
-    f. Ha az összevont tartományt (például AD FS stb.) az Azure ad-vel használ, majd kattintson a a **engedélyezése a Kezdőtartomány felderítésének** lehetőséget, majd konfigurálja a **tartománynév**.
+    1. Ha az összevont tartományt (például AD FS stb.) az Azure ad-vel használ, majd kattintson a a **engedélyezése a Kezdőtartomány felderítésének** lehetőséget, majd konfigurálja a **tartománynév**.
 
-    g. A **tartománynév** írja be a tartomány nevét itt az AD FS-alapú bejelentkezés esetén.
+    1. A **tartománynév** írja be a tartomány nevét itt az AD FS-alapú bejelentkezés esetén.
 
-    h. Ellenőrizze **meg az egyszeri bejelentkezés engedélyezése** való jelentkezzen ki, amikor egy felhasználó kijelentkezik a JIRA Azure AD-ből szeretné.
+    1. Ellenőrizze **meg az egyszeri bejelentkezés engedélyezése** való jelentkezzen ki, amikor egy felhasználó kijelentkezik a JIRA Azure AD-ből szeretné.
+    
+    1. Engedélyezése **kényszerített Azure bejelentkezési** jelölőnégyzetet, ha szeretne bejelentkezni az Azure AD-n keresztül csak hitelesítő adatait.
+    
+       > [!Note]
+       > Ahhoz, hogy a bejelentkezési oldalon a rendszergazdai bejelentkezési név az alapértelmezett bejelentkezési űrlap Ha kényszerített azure bejelentkezési engedélyezve van, a lekérdezési paraméter hozzáadása a böngésző URL-CÍMÉT.
+       > `https://<domain:port>/login.action?force_azure_login=false`
 
-    i. Kattintson a **mentése** gombra kattintva mentse a beállításokat.
+    1. Kattintson a **mentése** gombra kattintva mentse a beállításokat.
 
-    > [!NOTE]
-    > Telepítési és hibaelhárítási kapcsolatos további információkért látogasson el [MS JIRA SSO összekötő rendszergazdai útmutató](../ms-confluence-jira-plugin-adminguide.md) , és nincs is [– gyakori kérdések](../ms-confluence-jira-plugin-faq.md) a segítségért
+       > [!NOTE]
+       > Telepítési és hibaelhárítási kapcsolatos további információkért látogasson el [MS JIRA SSO összekötő rendszergazdai útmutató](../ms-confluence-jira-plugin-adminguide.md). Emellett van egy [– gyakori kérdések](../ms-confluence-jira-plugin-faq.md) a segítségét.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 

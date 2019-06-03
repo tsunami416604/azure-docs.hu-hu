@@ -5,15 +5,15 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 29189a5919a01fcb897758fb64ca9e84b9381fb6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 07a5ee6ccdaecc78c9a8e61ae9e64a5264e3a875
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410908"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418356"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Azure-erőforrások előkészítése helyszíni gépek vészhelyreállításához
 
@@ -55,7 +55,7 @@ A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-bel
 1. Az a [az Azure portal](https://portal.azure.com) menüjében válassza **erőforrás létrehozása** > **tárolási** > **tárfiók – blob, fájl, tábla, üzenetsor** .
 2. A **Tárfiók létrehozása** területen írja be a fiók nevét.  Kiválasztott Azure-on belül egyedinek kell lennie, lehet 3 – 24 karakter hosszú, és csak kisbetűket és számokat használni. A jelen oktatóanyag esetében használja **contosovmsacct1910171607**.
 3. Az **Üzemi modell** mezőben válassza a **Resource Manager** lehetőséget.
-4. A **fióktípus**válassza **Storage (általános célú v1)**. Ne válasszon blob-tárolót.
+4. A **fióktípus**válassza **Storage (általános célú v1)** . Ne válasszon blob-tárolót.
 5. A **Replikáció** mezőben válassza az alapértelmezett **Írásvédett georedundáns tárolás** értéket a tárhely-redundanciához. Hagyja üresen a letiltott fejléccé biztonságos átvitelre van szükség.
 6. A **Teljesítmény** mezőben válassza a **Standard** lehetőséget. Ezután **hozzáférési szint**, válassza ki az alapértelmezett beállítás a **gyors**.
 7. A **előfizetés**, válassza ki az előfizetést, amelyben szeretné létrehozni az új tárfiókot.
@@ -68,7 +68,7 @@ A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-bel
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 1. Az Azure Portalon válassza ki a **+ erőforrás létrehozása**, és a Recovery Services keressen rá az Azure piactéren.
-2. Válassza ki **Backup és Site Recovery (OMS)**. A következő a **Backup és Site Recovery** lapon jelölje be **létrehozás**.
+2. Válassza ki **Backup és Site Recovery (OMS)** . A következő a **Backup és Site Recovery** lapon jelölje be **létrehozás**.
 1. A **Recovery services-tároló > név**, adjon meg egy, a tárolót azonosító rövid nevet. Ehhez az oktatóanyaghoz használja a **ContosoVMVault** nevet.
 2. A **erőforráscsoport**, válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. A jelen oktatóanyag esetében használja **contosoRG**.
 3. A **hely**, válassza ki a régiót, ahol a tárolóban kell lennie. A jelen oktatóanyag esetében használja **Nyugat-Európa**.

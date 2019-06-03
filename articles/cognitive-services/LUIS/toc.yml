@@ -83,7 +83,7 @@
           displayName: roles
         - name: Szabad formátumú adatok kinyerése
           href: luis-tutorial-pattern-any.md
-    - name: Robot használata
+    - name: A V4 Bot Framework használata
       items:
         - name: 'C# használatával'
           href: luis-csharp-tutorial-bf-v4.md
@@ -198,7 +198,7 @@
           href: luis-tutorial-bing-spellcheck.md
         - name: Beszédszolgáltatással
           href: luis-tutorial-speech-to-intent.md
-        - name: Robottal
+        - name: A V3 Bot Framework használata
           items:
             - name: Webalkalmazás-robot
               items:
@@ -279,6 +279,8 @@
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: Határok
       href: luis-boundaries.md
+    - name: Alkalmazásbeállítások
+      href: luis-reference-application-settings.md
     - name: Előre összeállított entitáshivatkozás
       items:
         - name: Entitások kultúránként
@@ -398,6 +400,8 @@
       href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: További források
   items:
+    - name: Újdonságok
+      href: whats-new.md
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Nyelvi és régiós támogatás

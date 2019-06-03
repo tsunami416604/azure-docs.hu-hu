@@ -11,16 +11,16 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 67f3a0d10490c5c63dfe262d07985f51bb384e34
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: dabb43cb2fe9b66d5d83d163b74d2f22354e33b8
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604473"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418028"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatok előkészítése az regressziós modellezéshez
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan előkészíti az adatokat az regressziós modellezési használatával a [adat-előkészítési csomagot az Azure Machine Learning](https://aka.ms/data-prep-sdk). Szűrését, és kombinálja a két különböző NYC taxi adatkészletek különféle átalakításokat futtat.
+Ebben az oktatóanyagban elsajátíthatja, hogyan előkészíti az adatokat az regressziós modellezési használatával a [adat-előkészítési csomagot](https://aka.ms/data-prep-sdk) származó a [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Szűrését, és kombinálja a két különböző NYC taxi adatkészletek különféle átalakításokat futtat.
 
 Ez az oktatóanyag **egy kétrészes sorozat első része**. Miután elvégezte az oktatóanyag-sorozat, akkor is alapján képes előre jelezni taxi belépőt költsége funkciókat az egy modell. Ezek a funkciók közé tartozik a felvételi nap és idő, számától és a felvétel helyére.
 
@@ -38,7 +38,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 Ugrás a [a fejlesztési környezet beállítása](#start) olvassa végig a notebook lépéseket, vagy használja az alábbi utasításokat a notebook beszerzése és az Azure notebookok vagy a saját notebook server futtatásához. A jegyzetfüzet futtatásához szüksége lesz:
 
 * Egy Python 3.6-os notebook kiszolgálót a következőkkel:
-    *  az Azure Machine Learning SDK Pythonhoz készült azureml-adatelőkészítés-csomagot
+    * A `azureml-dataprep` az Azure Machine Learning-SDK-csomagot
 * Az oktatóanyag notebook
 
 * Használja a [felhőalapú notebook server a munkaterületen](#azure) 
@@ -46,7 +46,7 @@ Ugrás a [a fejlesztési környezet beállítása](#start) olvassa végig a note
 
 ### <a name="azure"></a>A munkaterület egy felhőbeli notebook server használata
 
-Is könnyen a saját felhőalapú notebook server használatának első lépései. A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) már telepítve és konfigurálva van az Ön számára a felhőalapú erőforrás létrehozása után.
+Is könnyen a saját felhőalapú notebook server használatának első lépései. Az Azure Machine Learning SDK Pythonhoz készült már telepítve és konfigurálva van az Ön számára a felhőalapú erőforrás létrehozása után.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
@@ -56,8 +56,8 @@ Is könnyen a saját felhőalapú notebook server használatának első lépése
 
 Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/regressziós-1-adatok – prep.ipynb** notebookot.
 
-1. Befejeződött a telepítés lépéseit [Azure Machine Learning Python rövid](setup-create-workspace.md#sdk) Miniconda környezet kialakításához.  Nyugodtan hagyja ki a **hozzon létre egy munkaterületet** szakaszt, ha kívánja, de szükség lesz rá a [2. rész](tutorial-auto-train-models.md) az oktatóanyag-sorozat.
-1. A környezet használatával telepítse az azureml-adatelőkészítés `pip install azureml-dataprep`.
+1. Befejeződött a telepítés lépéseit [Azure Machine Learning Python rövid](setup-create-workspace.md#sdk) Miniconda környezetet, és telepítse az SDK-t.  Nyugodtan hagyja ki a **hozzon létre egy munkaterületet** szakaszt, ha kívánja, de szükség lesz rá a [2. rész](tutorial-auto-train-models.md) az oktatóanyag-sorozat.
+1. A `azureml-dataprep` csomag az SDK telepítésekor automatikusan települ.
 1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
 
     ```
@@ -85,7 +85,7 @@ Használja a következő szükséges csomagok telepítéséhez, ha már nincs r�
 pip install "azureml-dataprep[pandas]>=1.1.0,<1.2.0"
 ```
 
-Importálja az SDK-t.
+A csomag importálása.
 
 ```python
 import azureml.dataprep as dprep

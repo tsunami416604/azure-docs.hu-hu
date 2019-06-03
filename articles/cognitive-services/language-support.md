@@ -11,10 +11,10 @@ ms.date: 05/13/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 0883b8e5ae2eab39fca6434141d6591432ad341e
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 05/31/2019
 ms.locfileid: "65595712"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Természetes nyelvi támogatás az Azure Cognitive Services
@@ -28,7 +28,7 @@ Ez a cikk két szakaszra van osztva. Az első Azure Cognitive Services különb�
 Core nyelvek között az Azure Cognitive Services támogatottak:
 
 * kínai
-* angol
+* Angol
 * francia
 * német
 * olasz

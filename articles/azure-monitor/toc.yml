@@ -837,6 +837,8 @@
                   href: platform/action-groups-create-resource-manager-template.md
                 - name: Logikai alkalmazási művelet megvalósítása
                   href: platform/action-groups-logic-app.md
+                - name: A gyakori riasztási séma és a Logic Apps integrálása
+                  href: platform/alerts-common-schema-integrations.md
             - name: Riasztáskezelési megoldás
               href: platform/alert-management-solution.md
             - name: Riasztás felhasználói felülete
