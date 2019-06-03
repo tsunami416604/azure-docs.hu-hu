@@ -71,7 +71,7 @@ Az alábbi táblázat ismerteti a Salesforce-beli társított szolgáltatás ado
 | --- | --- | --- |
 | type |A type tulajdonságot kell beállítani: **A Salesforce**. |Igen |
 | environmentUrl | Adja meg az URL-címet a Salesforce-példány. <br><br> – Alapértelmezett érték a "https:\//login.salesforce.com". <br> – Adatok másolása a tesztkörnyezetből, adja meg a "https://test.salesforce.com". <br> – Adatok másolása az egyéni tartományt, adja meg, például "https://[domain].my.salesforce.com". |Nem |
-| felhasználónév |Adja meg a felhasználói fiók felhasználói nevét. |Igen |
+| username |Adja meg a felhasználói fiók felhasználói nevét. |Igen |
 | password |Adja meg a felhasználói fiókhoz tartozó jelszót. |Igen |
 | securityToken |Adja meg a felhasználói fiók biztonsági jogkivonatot. Lásd: [biztonsági jogkivonatának beszerzéséhez](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) alaphelyzetbe állítása/lekérése a biztonsági jogkivonat való létrehozásával kapcsolatos útmutatást. Az általános biztonsági jogkivonatokat kapcsolatos további információkért lásd: [biztonsági és API-val](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Igen |
 
@@ -98,7 +98,7 @@ A másolási tevékenység, ha a forrás típusa nem **RelationalSource** (amely
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |Egy SQL-92 lekérdezés vagy [Salesforce objektum Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lekérdezés. Például: `select * from MyTable__c`. |Nem (Ha a **tableName** , a **adatkészlet** van megadva) |
+| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. |Egy SQL-92 lekérdezés vagy [Salesforce objektum Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lekérdezés. Például: `select * from MyTable__c`. |Nem (Ha a **tableName** , a **adatkészlet** van megadva) |
 
 > [!IMPORTANT]
 > Az API neve "__c" részét egyéni objektumokra van szükség.
