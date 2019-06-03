@@ -85,15 +85,15 @@ A HDInsight Pig-tevékenység az adat-előállító [folyamat](data-factory-crea
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| név |A tevékenység neve |Igen |
+| name |A tevékenység neve |Igen |
 | description |Mire használható a tevékenységet leíró szöveg |Nem |
 | type |HDinsightPig |Igen |
-| bemenetek |Egy vagy több, a Pig-tevékenység által felhasznált bemeneti |Nem |
-| kimenetek |Egy vagy több, a Pig-tevékenység által előállított kimeneti |Igen |
+| inputs |Egy vagy több, a Pig-tevékenység által felhasznált bemeneti |Nem |
+| outputs |Egy vagy több, a Pig-tevékenység által előállított kimeneti |Igen |
 | linkedServiceName |A HDInsight-fürt a Data Factory társított szolgáltatásként regisztrált mutató hivatkozás |Igen |
-| parancsfájl |Adja meg a Pig-parancsprogram beágyazott |Nem |
-| parancsprogram elérési útja |A Pig-parancsprogram Store egy Azure blob Storage, és adja meg a fájl elérési útját. Használja a "script" vagy "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájlnév formátuma a kis-és nagybetűket. |Nem |
-| határozza meg |Adja meg a paramétereket a kulcs/érték párokként való belül a Pig-parancsprogram |Nem |
+| script |Adja meg a Pig-parancsprogram beágyazott |Nem |
+| scriptPath |A Pig-parancsprogram Store egy Azure blob Storage, és adja meg a fájl elérési útját. Használja a "script" vagy "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájlnév formátuma a kis-és nagybetűket. |Nem |
+| defines |Adja meg a paramétereket a kulcs/érték párokként való belül a Pig-parancsprogram |Nem |
 
 ## <a name="example"></a>Példa
 Vegyünk egy példát, játék-naplók analytics, ahol szeretné azonosítani a játékosok indítja el a vállalat a játékok által töltött időt.
