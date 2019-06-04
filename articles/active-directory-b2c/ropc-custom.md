@@ -269,7 +269,7 @@ A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan AP
 
 | Kulcs | Érték |
 | --- | ----- |
-| felhasználónév | `user-account` |
+| username | `user-account` |
 | password | `password1` |
 | grant_type | password |
 | scope | openid `application-id` offline_access |
@@ -317,7 +317,7 @@ Itt látható egy hasonló a POST híváson hozhatnak létre. Az adatokat haszn�
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| erőforrás | `application-id` |
+| resource | `application-id` |
 | refresh_token | `refresh-token` |
 
 - Cserélje le `application-id` az alkalmazás azonosítójával, a *ROPC_Auth_app* regisztráció.
