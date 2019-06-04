@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713e4e7874b2ca650ab669d52f9d3026b5e80899
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 166452b052313397f1ec17adb59cad3c20fab1f9
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780983"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497346"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Az Azure AD-alkalmazásgyűjtemény egy OpenID/OAuth-alkalmazás konfigurálása
 
@@ -98,7 +98,25 @@ A Graph API is hozzáférést biztosít a felhasználók és csoportok Azure AD-
 
 A következő lépések bemutatják, hogyan a a jóváhagyási működik az alkalmazás fejlesztői és felhasználói élményt:
 
-1. Fel, hogy egy ügyfél webalkalmazást, amely egy erőforrás vagy az API eléréséhez adott engedélyek kéréséhez szükséges. Az Azure portal segítségével alkalmazásengedély-kérelmeket deklarálja a konfiguráláskor. Egyéb olyan konfigurációs beállításoknak, például az alkalmazás Azure AD-regisztrációs részét képezik azok:
+1. Fel, hogy egy ügyfél webalkalmazást, amely egy erőforrás vagy az API eléréséhez adott engedélyek kéréséhez szükséges. Az Azure portal segítségével alkalmazásengedély-kérelmeket deklarálja a konfiguráláskor. Egyéb olyan konfigurációs beállításoknak, például azok az alkalmazás Azure AD-regisztrációk részévé válik. Az engedély kérelem elérési útját szüksége lesz a kövesse az alábbi lépéseket:
+
+    a. Kattintson a **alkalmazásregisztrációk** írja be az alkalmazás az alkalmazás neve a bal oldali menüben, és nyissa meg a keresőmezőbe.
+
+    ![Graph API](./media/openidoauth-tutorial/application.png)
+
+    b. Kattintson a **API-engedélyek megtekintése**.
+
+    ![Graph API](./media/openidoauth-tutorial/api-permission.png)
+
+    c. Kattintson a **adjon hozzá egy engedélyt**.
+
+    ![Graph API](./media/openidoauth-tutorial/add-permission.png)
+
+    d. Kattintson a **Microsoft Graph**.
+
+    ![Graph API](./media/openidoauth-tutorial/microsoft-graph.png)
+
+    e. Válassza ki a szükséges beállításokat **delegált engedélyek** és **Alkalmazásengedélyek**.
 
     ![Graph API](./media/openidoauth-tutorial/graphapi.png)
 
@@ -106,7 +124,7 @@ A következő lépések bemutatják, hogyan a a jóváhagyási működik az alka
 
 3. Ha a felhasználó már nem hitelesített, az Azure AD / authorize végpont kér be.
 
-    ![Authentication](./media/openidoauth-tutorial/authentication.png)
+    ![Hitelesítés](./media/openidoauth-tutorial/authentication.png)
 
 4. Után a felhasználó jelentkezett be, az Azure AD határozza meg, ha a felhasználónak megjelenítendő egy hozzájárulást kérő lap. Ez a döntés e a felhasználó (vagy a szervezet rendszergazdája) már megadta az alkalmazás jóváhagyásának alapul.
 
@@ -118,12 +136,12 @@ Az átlagos felhasználók maguk is jóváhagyhatják az néhány engedélyt. Eg
 
 ## <a name="difference-between-admin-consent-and-user-consent"></a>Rendszergazdai jóváhagyás és felhasználói beleegyezés közötti különbség
 
-A rendszergazdák is is beleegyezik az összes felhasználó nevében egy alkalmazás delegált engedélyeit a bérlőben. Rendszergazdai jóváhagyás megakadályozza, hogy a hozzájárulási párbeszédpanel a bérlő összes felhasználója számára jelenik meg. A rendszergazdai szerepkörrel rendelkező felhasználók számára biztosíthat jóváhagyás az Azure Portalon. Az a **beállítások** az alkalmazást, válassza a lap **szükséges engedélyek** > **engedélyek megadása**.
+A rendszergazdák is is beleegyezik az összes felhasználó nevében egy alkalmazás delegált engedélyeit a bérlőben. Rendszergazdai jóváhagyás megakadályozza, hogy a hozzájárulási párbeszédpanel a bérlő összes felhasználója számára jelenik meg. A rendszergazdai szerepkörrel rendelkező felhasználók számára biztosíthat jóváhagyás az Azure Portalon. Az a **beállítások** az alkalmazást, válassza a lap **szükséges engedélyek** > **biztosítson rendszergazdai jóváhagyás**.
 
 ![Engedélyek megadása gombra](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> Explicit hozzájárulás használatával a **engedélyek megadása** gomb már ADAL.js használó egyoldalas alkalmazások (gyógyfürdők) szükséges. Ellenkező esetben a kérelem sikertelen lesz, amikor a hozzáférési jogkivonatot kér.
+> Explicit hozzájárulás használatával a **biztosítson rendszergazdai jóváhagyás** gomb már ADAL.js használó egyoldalas alkalmazások (gyógyfürdők) szükséges. Ellenkező esetben a kérelem sikertelen lesz, amikor a hozzáférési jogkivonatot kér.
 
 Csak az alkalmazásra vonatkozó engedélyeket mindig szükség van egy bérlői rendszergazdai jóváhagyást. Ha az alkalmazás egy csak az alkalmazásra vonatkozó engedélyt kér, és a egy felhasználó megpróbál bejelentkezni az alkalmazásba, hibaüzenet jelenik meg. Az üzenet azt jelzi, hogy a felhasználó nem tudja, hogy engedélyt adjanak.
 

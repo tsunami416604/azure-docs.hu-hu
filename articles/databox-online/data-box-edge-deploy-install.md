@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/20/2019
+ms.date: 05/31/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7062e9d829242a62dfa4f661c21ce6c56b0db69c
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 0a9939155d92897019dc1ad5651d249cda11b993
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924527"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476942"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>Oktatóanyag: Az Azure Data Box Edge telepítése
 
@@ -70,7 +70,7 @@ Az eszköz egyetlen dobozban érkezik. Az eszköz kibontásához hajtsa végre a
 1. Helyezze a csomagot egy sima, vízszintes felületre.
 2. Vizsgálja meg a dobozt és a térkitöltő anyagot, hogy nincsenek-e rajta ütődés, vágás, nedvesség vagy más egyértelmű sérülés nyomai. Ha a lista vagy a csomagolási súlyosan sérült, nem nyithatja meg. Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával, ahol szakembereink segíthetnek felmérni, hogy az eszköz működőképes állapotban van-e.
 3. Bontsa ki a dobozt. A csomag felbontása után ellenőrizze, hogy megvannak-e a következők:
-    - Egy darab Edge-eszköz
+    - Egy egyetlen lemezház Data Box Edge-eszköz
     - Két tápkábel
     - Egy sín kit sestavení
     - A biztonsági, környezetvédelmi és szabályozási információk füzet
@@ -100,7 +100,7 @@ Keresse meg az összetevők telepítésének sín kit sestavení:
 1. Két A7 Dell ReadyRails sín szerelvények késleltetett II
 2. Két környezet igénybe vételét és hevederek hurok
 
-![Sín csomag tartalmának azonosítása](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
+    ![Sín csomag tartalmának azonosítása](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
 
 ### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>Telepítése és eltávolítása az eszköz nélküli rails (négyzetes watering vagy kör állványt)
 
@@ -109,10 +109,10 @@ Keresse meg az összetevők telepítésének sín kit sestavení:
 
 1. Elhelyezése a bal és jobb sín záró darabok feliratú **ELŐTÉR** befelé irányuló, és minden, a függőleges rack fekszenek első oldalán a lyuk felhasználószám záró darab elhelyezés.
 2. Minden egyes teljes adatra a kívánt U tárolóhelyek az alsó és felső lyuk igazítása
-3. Léphet a háttérrendszere a sín amíg teljesen a függőleges állvány nyomkarima a munkaállomások és a Zárolás gombra kattint a helyen. Ismételje meg ezeket a lépéseket, elhelyezése és a kezelőfelület darab, a függőleges állvány nyomkarima a felhasználószám.
+3. Léphet a háttérrendszere a sín amíg teljesen a függőleges állvány nyomkarima a munkaállomások és a Zárolás gombra kattint a helyen. Ismételje meg ezeket a lépéseket, elhelyezése és a függőleges állvány nyomkarima az előtér-specifikus felhasználószám.
 4. Távolítsa el a rails, a zárolás kiadási gomb lekéréses záró darab középpontját a, és minden egyes sín unseat.
 
-![Telepítése és eltávolítása az eszköz nélküli rails](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
+    ![Telepítése és eltávolítása az eszköz nélküli rails](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Telepítése és eltávolítása tooled rails (összefűzött watering állványt)
 
@@ -124,7 +124,7 @@ Keresse meg az összetevők telepítésének sín kit sestavení:
 3. A bal és jobb csatlakoztatása az előtér vertikális rack fekszenek csavart két pár használatával a rails csatolni.
 4. Húzza az ujját a bal és jobb biztonsági zárójelek közé hátsó függőleges rack fekszenek elleni továbbítja, és csatolja őket csavart két pár használatával.
 
-![Telepítése és eltávolítása tooled rails](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![Telepítése és eltávolítása tooled rails](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
 
 ### <a name="install-the-system-in-a-rack"></a>A rendszer egy állványra telepítése
 
@@ -133,7 +133,7 @@ Keresse meg az összetevők telepítésének sín kit sestavení:
 3. A rendszer csak a zárolást karok helyen kattintson aktív leküldéses.
 4. Nyomja le a dia-kiadás zárolási gombok on rails és a diák a rendszer, az állvány egyik kiszolgálója.
 
-![Rendszer telepítése egy állványra](./media/data-box-edge-deploy-install/installing-system-rack.png)
+    ![Rendszer telepítése egy állványra](./media/data-box-edge-deploy-install/installing-system-rack.png)
 
 ### <a name="remove-the-system-from-the-rack"></a>A rendszer eltávolítja az állványra szerelt
 
@@ -141,7 +141,7 @@ Keresse meg az összetevők telepítésének sín kit sestavení:
 2. Feloldás minden szintje forgatásával, akár kiadási pozícióját.
 3. A rendszer a partnerek bonyolultnak nyitóbeszélgetést, és lekérheti előre addig, amíg a sín standoffs J – tárolóhely elején. Emelje a rendszer fel, és a forrásadatok az állványra szerelt, és helyezze felületen.
 
-![Távolítsa el a rendszer, az állvány egyik kiszolgálója](./media/data-box-edge-deploy-install/removing-system-rack.png)
+    ![Távolítsa el a rendszer, az állvány egyik kiszolgálója](./media/data-box-edge-deploy-install/removing-system-rack.png)
 
 ### <a name="engage-and-release-the-slam-latch"></a>Léphet, és engedje el a slam zárolás
 
@@ -152,7 +152,7 @@ Keresse meg az összetevők telepítésének sín kit sestavení:
 2. A zárolás van életben automatikusan léphet, a rendszer leküldéssel kerülnek az állványra szerelt, és a zárolás van életben a kiindulásként kiadott.
 3. A rendszer, az állvány egyik kiszolgálója szállításra való előkészítését, vagy más instabil környezetek biztonságossá tételéhez, keresse meg a rögzített csatlakoztatási csavart egyes zárolás alatt, és elősegíti az egyes csavart egy # 2 megerősítését csillagcsavarhúzóra.
 
-![Léphet, és engedje el slam zárolás](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
+    ![Léphet, és engedje el slam zárolás](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
 
 ### <a name="route-the-cables"></a>Irányíthatja a kábelek
 
@@ -164,16 +164,16 @@ Keresse meg az összetevők telepítésének sín kit sestavení:
 3. A külső CMA szögletes zárójelek, a rendszer a kábel csomagjaiból biztonságossá minden oldalán a tárolóhely keresztül a hook és loop hevederek szál.
 
 
-![Irányíthatja a kábelek](./media/data-box-edge-deploy-install/routing-cables.png)
+    ![Irányíthatja a kábelek](./media/data-box-edge-deploy-install/routing-cables.png)
 
 ## <a name="cable-the-device"></a>Az eszköz bekábelezése
 
-Az alábbi eljárás ismerteti az Edge-eszköz tápkábellel és hálózati kábellel való bekábelezését.
+A következő eljárások azt ismertetik, hogyan hálózati és a Data Box peremhálózati eszköz kábelezése.
 
 Mielőtt elkezdené az eszköz kábelezése, a következők szükségesek:
 
-- Kicsomagolt és kiszolgálószekrénybe szerelt állapotú Edge fizikai eszköz.
-- Két tápkábel. 
+- A Data Box Edge fizikai eszköz kicsomagolása, és az állványra szerelt.
+- Két tápkábel.
 - Legalább egy 1-GbE RJ-45 hálózati kábel a felügyeleti felülethez való csatlakozáshoz. Az eszközön két 1-GbE hálózati adapter (egy felügyeleti és egy adathálózati) található.
 - Egy 25-GbE SFP+ rézkábel minden konfigurálni kívánt adathálózati adapterhez. PORT 2, PORT 3, PORT 4, PORT 5 vagy PORT 6 közül legalább egy hálózati adapter csatlakoztatva kell lennie az internethez (kapcsolattal rendelkező Azure-ban).  
 - A hozzáférést a (javasolt) két Áramelosztó egységek.
@@ -181,34 +181,46 @@ Mielőtt elkezdené az eszköz kábelezése, a következők szükségesek:
 > [!NOTE]
 > - Ha csak egy data hálózati adapter kapcsolódik, azt javasoljuk, például a PORT 3, PORT 4, PORT 5 vagy PORT 6 25/10-GbE hálózati adapter használatával adatok küldése az Azure-bA. 
 > - A legjobb teljesítmény érdekében és nagy mennyiségű adat kezeléséhez fontolja meg az összes adatport csatlakoztatását.
-> - Az Edge-eszköznek csatlakoznia kell az adatközponti hálózathoz, hogy fel tudja dolgozni az adatforrás-kiszolgálókról érkező adatokat.
+> - A Data Box peremhálózati eszköz kapcsolódnia kell az adatközponti hálózathoz, hogy azt is gyűjthet adatokat adatforrás-kiszolgálók.
 
-Az Edge-eszköz 8 NVMe SSD-vel rendelkezik. Az előlapon találhatók az állapotjelző LED-ek és a bekapcsológomb. Az eszköz a hátsó redundáns áramforrások ellátási egységek (PSUs) tartalmaz. Az eszköz hat hálózati adapterrel rendelkezik:
+A Data Box Edge-eszközön:
 
-- Két 1-GB/s sávszélességű adapter
-- Négy 25-GB/s felületek, mint 10-GB/s sávszélességű adapter segédanyagként is használható.
-- Alaplapi felügyeleti vezérlőnek (BMC). 
+- Előlapján meghajtók és a egy főkapcsoló rendelkezik.
 
-Keresse meg a különböző portokat az eszköz hátlapján.
- 
-  ![Egy bekábelezett eszköz hátlapja](./media/data-box-edge-deploy-install/backplane-cabled.png)
+    - Nincsenek 10 lemez tárolóhelyei, az eszköz található.
+    - 0-s bővítőhelyen egy használt operációsrendszer-lemez 240 GB-os SATA-meghajtót tartalmaz. 1-es bővítőhelyen üres, és bővítőhelyek 2 – 9 olyan adatok lemezként használt NVMe SSD-k.
+- A háttérrendszer sík redundáns áramforrások ellátási egységet (PSUs) tartalmaz.
+- A háttérrendszer sík hat hálózati adapterrel rendelkezik:
 
-A 6 portok megfelelő két hálózati kártya van az eszközön: 
+    - Két 1-GB/s sávszélességű adaptert.
+    - Négy 25-GB/s felületek, mint 10-GB/s sávszélességű adapter segédanyagként is használható.
+    - Alaplapi felügyeleti vezérlőnek (BMC).
 
- - QLogic FastLinQ 41264
- - QLogic FastLinQ 41262
+- A háttérrendszer sík 6 portok megfelelő két hálózati kártya rendelkezik:
+
+    - QLogic FastLinQ 41264
+    - QLogic FastLinQ 41262
 
 Támogatott kábelek, kapcsolók és a hálózati kártyák adó teljes listájáért látogasson el [Cavium FastlinQ 41000 sorozat együttműködési mátrix](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
  
 Az alábbi lépéseket és a hálózati eszköz kábelezése.
 
-1. Csatlakoztassa a tápkábeleket a burkolat egy-egy tápegységéhez. A magas rendelkezésre állás biztosításához az egyes tápegységeket különböző áramforrásokhoz csatlakoztassa.
+1. Azonosíthatja a különböző portokat az eszközt vissza síkját.
 
-2. Csatlakoztassa a tápkábeleket a kiszolgálószekrény áramelosztó egységeihez (PDU-k). Ügyeljen arra, hogy a két tápegység külön áramforrást használjon.
+    ![Biztonsági cabled eszköz adatsík](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
-3. Csatlakozzon az 1-GbE hálózati adapter PORTHOZ 1 a számítógépre, amely a fizikai eszköz konfigurálására szolgál. A PORT 1 a dedikált felügyeleti felület.
+2. Keresse meg a lemez a bővítőhelyek és a főkapcsoló elején, az eszköz.
 
-4. A PORT 2, PORT 3, PORT 4, PORT 5 vagy PORT 6 közül legalább egyet az adatközponti hálózathoz/internethez kell csatlakoztatni. A PORT 2 csatlakoztatása esetén használja az RJ-45 hálózati kábelt. A 10/25-GbE hálózati adapterek SFP + rézeres kábelek használja.  
+    ![Az eszköz első adatsík](./media/data-box-edge-deploy-install/device-front-plane-labeled-1.png)
+
+3. Csatlakoztassa a tápkábeleket a burkolat egy-egy tápegységéhez. A magas rendelkezésre állás biztosításához az egyes tápegységeket különböző áramforrásokhoz csatlakoztassa.
+4. Csatlakoztassa a tápkábeleket a kiszolgálószekrény áramelosztó egységeihez (PDU-k). Ügyeljen arra, hogy a két tápegység külön áramforrást használjon.
+5. Nyomja le az eszköz bekapcsolása főkapcsoló.
+6. Csatlakozzon az 1-GbE hálózati adapter PORTHOZ 1 a számítógépre, amely a fizikai eszköz konfigurálására szolgál. A PORT 1 a dedikált felügyeleti felület.
+7. A PORT 2, PORT 3, PORT 4, PORT 5 vagy PORT 6 közül legalább egyet az adatközponti hálózathoz/internethez kell csatlakoztatni.
+
+    - A PORT 2 csatlakoztatása esetén használja az RJ-45 hálózati kábelt.
+    - A 10/25-GbE hálózati adapterek SFP + rézeres kábelek használja.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -223,5 +235,3 @@ A következő oktatóanyag az eszköz csatlakoztatását, beállítását és ak
 
 > [!div class="nextstepaction"]
 > [Csatlakozás és a Data Box Edge beállítása](./data-box-edge-deploy-connect-setup-activate.md)
-
-

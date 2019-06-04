@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 3315af0898cb3b18af0334a433a94242b056a8bd
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1408e29793fdac77b89e3f0cc0a7be525f7fa1d2
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236206"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479767"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>Oktatóanyag:  Vélemények az utterance (kifejezés) beolvasása
 
@@ -54,6 +54,7 @@ Mivel ez közzétételi beállítás, a szándékok vagy az entitások oldalán 
 
 ## <a name="add-personname-prebuilt-entity"></a>Adja hozzá a PersonName előre összeállított entitások 
 
+1. Válassza ki **összeállítása** a navigációs menüben.
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali navigációs menüben.
 
@@ -69,11 +70,11 @@ Mivel ez közzétételi beállítás, a szándékok vagy az entitások oldalán 
 
 Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti visszajelzések rögzítéséhez. 
 
-1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. A bal oldali panelen válassza az **Intents** (Szándékok) lehetőséget.
 
-2. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
+1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
 
-3. Adja meg az új szándék nevét: `EmployeeFeedback`.
+1. Adja meg az új szándék nevét: `EmployeeFeedback`.
 
     ![Hozzon lére egy új, EmployeeFeedback nevű szándék párbeszédpanelt](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent-ddl.png)
 
@@ -106,7 +107,7 @@ Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti 
 
 1. Válassza a **Manage** (Kezelés) lehetőséget a jobb felső navigációs területen, majd a **Publish settings** (Közzétételi beállítások) elemet a bal oldali menüben.
 
-1. Válassza ki **Hangulatelemzés** a beállítás engedélyezése. 
+1. Válassza ki **hangulatelemzés használja annak megállapításához, hogy a felhasználó utterance (kifejezés) pozitív, negatív vagy semleges.** Ez a beállítás engedélyezése. 
 
     ![Hangulatelemzés bekapcsolása közzétételi beállításai](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
@@ -118,7 +119,11 @@ Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. Lépjen az URL-cím végéhez, és írja be a következőt: `Jill Jones work with the media team on the public portal was amazing`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő szándékot kell visszaadnia kinyert hangulatelemzéssel: `EmployeeFeedback`.
+1. Nyissa meg a végfelhasználók az URL-címét, és írja be a következő utterance (kifejezés):
+
+    `Jill Jones work with the media team on the public portal was amazing` 
+
+    Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő szándékot kell visszaadnia kinyert hangulatelemzéssel: `EmployeeFeedback`.
     
     ```json
     {
@@ -153,6 +158,8 @@ Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti 
     ```
 
     A sentimentAnalysis-egy pontszám 86 %-os pozitívnak kell lennie. 
+
+    Próbálkozzon egy másik utterance (kifejezés) értéke eltávolításával `q` az a böngésző címsorába: `William Jones did a terrible job presenting his ideas.` A véleménypontszám egy negatívat jelzi, alacsony pontszámmal visszaadó `0.18597582`.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

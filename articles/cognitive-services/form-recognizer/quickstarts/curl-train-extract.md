@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 037c323b2ef9e0a2d264e3fd5f7655456c30a1be
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 351cb7ba2d7a55300a0ace999792a498cf72ebbb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417465"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475264"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API-val a curl használatával
 
@@ -26,7 +26,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Rövid útmutató elvégzéséhez kell rendelkeznie:
 - Az űrlap felismerő korlátozott hozzáférésű előzetes verzióra való hozzáférést. Töltse ki az előzetes verzió eléréséhez, és küldje el a [űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap.
 - [cURL](https://curl.haxx.se/windows/) telepítve.
-- Az azonos típusú legalább öt űrlapok készlete. Használhat egy [mintaadatkészlettel](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban.
+- Az azonos típusú legalább öt űrlapok készlete. Ezeket az adatokat a modell betanításához használandó. Használhat egy [mintaadatkészlettel](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban. Töltse fel az adatok Azure Blob Storage-fiók gyökérmappájában.
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap felismerő erőforrás létrehozása
 
@@ -47,7 +47,7 @@ Befejeztével az űrlap felismerő erőforrás üzembe helyezéséhez keresse me
 
 ## <a name="train-a-form-recognizer-model"></a>Egy űrlap felismerő modell betanítása
 
-Először is kell egy Azure Storage-blobba betanítási adatok egy készletét. Rendelkeznie kell legalább öt mintául szolgáló űrlapok (PDF-dokumentumok és/vagy képek) az azonos típusú/struktúra a fő bemeneti adatként. Vagy használhat egy egyetlen üres űrlapot. "Üres" szót tartalmaznia kell az űrlap-fájl neve
+Először is kell egy Azure Storage-blobba betanítási adatok egy készletét. Rendelkeznie kell legalább öt mintául szolgáló űrlapok (PDF-dokumentumok és/vagy képek) az azonos típusú/struktúra a fő bemeneti adatként. Vagy használhat egy egyetlen üres képernyő két ki vannak töltve űrlap. Az űrlap üres fájl nevének kell a keresőkifejezésben "üres".
 
 A képernyő felismerő modell betanításához az Azure blob-tárolóban a dokumentumok használatával, hívja a **betanításához** API, amely a cURL-parancs futtatásával a következő. Futtassa a parancsot, mielőtt a módosítások:
 

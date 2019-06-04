@@ -14,32 +14,32 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 86113246fab399e8364653198e9a6971317e3f2c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 46247d42837f8ac181d33216d2b93d28e2533c09
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121699"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482448"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
 Ez az útmutató bemutatja, hogyan valósíthatók meg jelentkezzen be a Microsoft az OpenID Connect használatával hagyományos webhely böngészőalapú alkalmazást egy ASP.NET MVC-megoldás használatával.
 
-Ez az útmutató végén az alkalmazás fogja tudni fogadja el a bejelentkezések a személyes fiókok (beleértve az Outlook.com-os, live.com, és mások) valamint a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely integrálva van az Azure Active Directory.
+Ez az útmutató végén az alkalmazás képes fogadni, például outlook.com, live.com, és egyéb személyes fiókok bejelentkezések lesz. Ezek a fiókok is tartalmazzák a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely integrálva van az Azure Active Directoryban.
 
-> Ez az útmutató a Visual Studio 2017-et igényel.  Nincs telepítve?  [Töltse le ingyen a Visual Studio 2017-et](https://www.visualstudio.com/downloads/)
+> Ez az útmutató a Visual Studio 2019 van szükség.  Nincs telepítve?  [Töltse le az ingyenes Visual Studio 2019](https://www.visualstudio.com/downloads/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Ez az útmutató által létrehozott mintaalkalmazás működése
 
-![Bemutatja, hogyan jöjjön létre a mintaalkalmazás által ezen oktatóanyagok működik](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral.svg)
+![A mintaalkalmazás által ebben az oktatóanyagban létrehozott működését mutatja](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral.svg)
 
-Ez az útmutató által létrehozott alkalmazás a forgatókönyvet, amelyben egy felhasználó használ kér egy bejelentkezés gombot-on keresztül hitelesítendő felhasználó egy ASP.NET-webhely eléréséhez a böngészőben alapul. A forgatókönyvben a webhely renderelésének nagy része a kiszolgálói oldalon történik.
+A mintaalkalmazás hoz létre a forgatókönyvet, ahol a böngésző elérésére használja egy ASP.NET-webhely, amely kéri a felhasználót, hogy egy bejelentkezés gombot-on keresztül hitelesítendő alapul. A forgatókönyvben a webhely renderelésének nagy része a kiszolgálói oldalon történik.
 
 ## <a name="libraries"></a>Kódtárak
 
 Ez az útmutató a következő kódtárakra használja:
 
-|Szalagtár|Leírás|
+|Erőforrástár|Leírás|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Közbenső szoftver, amely lehetővé teszi az alkalmazások számára az OpenIdConnect hitelesítésre való használatát|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Közbenső szoftver, amely lehetővé teszi az alkalmazások számára a felhasználói munkamenet fenntartását cookie-k segítségével|

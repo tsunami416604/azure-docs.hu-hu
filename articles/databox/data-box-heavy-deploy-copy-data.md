@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 6bc7af30d409fb7add321953aa2e956a0a3c1840
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 8ee96f2e06071d60eb97596687387fd80ba14cc3
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427781"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496273"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb-preview"></a>Oktatóanyag: Adatok másolása az Azure Data Box nehéz SMB (előzetes verzió) használatával
 
@@ -227,7 +227,7 @@ Miután csatlakozott az SMB-megosztás, megkezdheti az adatok másolását.
 
     ![Hiba történt a fájlok letöltése](media/data-box-heavy-deploy-copy-data/download-error-files.png)
 
-    További információkért lásd: [adatmásolás a Data Box nehéz során hiba történt a naplók megtekintéséhez](data-box-logs.md#view-error-log-during-data-copy-to-data-box). Adatok másolása során hibák részletes listájáért lásd: [Data Box nehéz hibaelhárítása problémák](data-box-troubleshoot.md).
+    További információkért lásd: [adatmásolás a Data Box nehéz során hiba történt a naplók megtekintéséhez](data-box-logs.md#view-error-log-during-data-copy). Adatok másolása során hibák részletes listájáért lásd: [Data Box nehéz hibaelhárítása problémák](data-box-troubleshoot.md).
 
 5. Nyissa meg a hiba fájlt a Jegyzettömbben. A következő hiba történt a fájl azt jelzi, hogy az adatok nincs megfelelően igazítva.
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a28e9f1f911e274f9a53275afa577024405b336
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608304"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474695"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: Videók és átiratok moderálása
 
@@ -40,19 +40,19 @@ Ez az oktatóanyag a következőket mutatja be:
 - Futtassa a mintaalkalmazást, szüksége van egy Azure-fiókra, egy Azure Media Services-erőforrás, egy Azure Content Moderator erőforrás és az Azure Active Directorybeli hitelesítő adatokat. Ezek kapcsolatos utasításokért lásd: a [videó moderálási API](video-moderation-api.md) útmutató.
 - Töltse le a [videó felülvizsgálati Konzolalkalmazás](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) a Githubon.
 
-## <a name="enter-credentials"></a>Hitelesítő adatok megadása
+## <a name="enter-credentials"></a>Adja meg hitelesítő adatait
 
 Szerkessze a `App.config` fájlt, és az Active Directory-bérlő nevét, a Szolgáltatásvégpontok és előfizetési kulcsok által jelzett `#####`. A következő adatokra lesz szüksége:
 
-    |Kulcs|Leírás|
-    |-|-|
-    |`AzureMediaServiceRestApiEndpoint`|Az Azure Media Services (AMS) API végpontja|
-    |`ClientSecret`|Az Azure Media Services előfizetési kulcsa|
-    |`ClientId`|Az Azure Media Services ügyfélazonosítója|
-    |`AzureAdTenantName`|A szervezetet képviselő Active Directory-bérlő neve|
-    |`ContentModeratorReviewApiSubscriptionKey`|A Content Moderator felügyeleti API előfizetési kulcsa|
-    |`ContentModeratorApiEndpoint`|A Content Moderator API végpontja|
-    |`ContentModeratorTeamId`|A tartalommoderátori csapat azonosítója|
+|Kulcs|Leírás|
+|-|-|
+|`AzureMediaServiceRestApiEndpoint`|Az Azure Media Services (AMS) API végpontja|
+|`ClientSecret`|Az Azure Media Services előfizetési kulcsa|
+|`ClientId`|Az Azure Media Services ügyfélazonosítója|
+|`AzureAdTenantName`|A szervezetet képviselő Active Directory-bérlő neve|
+|`ContentModeratorReviewApiSubscriptionKey`|A Content Moderator felügyeleti API előfizetési kulcsa|
+|`ContentModeratorApiEndpoint`|A Content Moderator API végpontja|
+|`ContentModeratorTeamId`|A tartalommoderátori csapat azonosítója|
 
 ## <a name="examine-the-main-code"></a>A fő kódok vizsgálatát
 

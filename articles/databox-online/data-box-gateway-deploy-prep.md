@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9650cdb6935fb45f0c59e8a114a9ce1c8e2d809
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d99b10598b9f16da2cf202330f0b5bac9219699f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686521"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476833"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Oktatóanyag: Az Azure Data Box átjáró telepítésének előkészítése
 
@@ -51,7 +51,11 @@ Az alábbiakban a Data Box Gateway-erőforrással, a Data Box Gateway-eszközzel
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 - A Microsoft Azure-előfizetés támogatnia kell a Data Box-Gateway-erőforráshoz. Utólagos elszámolású előfizetések nem támogatottak.
-- Rendelkezik tulajdonosi vagy közreműködői hozzáférés az előfizetéshez.
+- Rendelkezik tulajdonosi vagy közreműködői hozzáférés a Data Box Edge/Data Box átjáró, az IoT Hub és az Azure Storage-erőforrások erőforráscsoport szintjén.
+
+    - Minden olyan Data Box-Edge létrehozása / Data Box-Gateway-erőforrás, rendelkeznie kell közreműködője (vagy magasabb) hatókörön belüli erőforráscsoport szintjén. Győződjön meg arról, hogy emellett a `Microsoft.DataBoxEdge` szolgáltató regisztrálva van. Regisztrálásával kapcsolatos további információkért látogasson el a [erőforrás-szolgáltató regisztrálása](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
+    - Minden IoT Hub-erőforrás létrehozásához, ellenőrizze, hogy Microsoft.Devices szolgáltató regisztrálva van. Regisztrálásával kapcsolatos további információkért látogasson el a [erőforrás-szolgáltató regisztrálása](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
+    - Hozzon létre egy tárfiók típusú erőforrást, újra kell közreműködői vagy magasabb hozzáférési hatókörrel rendelkező, az erőforráscsoport szintjén. Az Azure Storage szolgáltatás alapértelmezés szerint egy regisztrált erőforrás-szolgáltató.
 - Rendszergazdai vagy a felhasználó hozzáférhet az Azure Active Directory Graph API-val rendelkezik. További információkért lásd: [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 - Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
 

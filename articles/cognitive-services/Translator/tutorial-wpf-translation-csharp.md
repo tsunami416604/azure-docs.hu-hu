@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: erhopf
-ms.openlocfilehash: f7f8e86f17b0fdb715afc96dba80db0746440cef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3d51c7b7c2e8d7f9774018f54a6639bebb882420
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653298"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471548"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Oktatóanyag: A WPF-fordítási alkalmazás létrehozása
 
@@ -37,7 +37,7 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 
 Ez a lista tartalmazza a Cognitive Services, a jelen oktatóanyagban használt. Kövesse a hivatkozásra kattintva keresse meg az API-referencia, az egyes szolgáltatásokhoz.
 
-| Szolgáltatás | Szolgáltatás | Leírás |
+| Szolgáltatás | Funkció | Leírás |
 |---------|---------|-------------|
 | Fordítói szöveg | [Nyelvek beolvasása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Szövegfordítás támogatott nyelvekről teljes listájának lekéréséhez. |
 | Fordítói szöveg | [Fordítása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Szövegfordítás több mint 60 nyelvet. |
@@ -79,9 +79,9 @@ Adjunk szerelvények szerializálható és deszerializálható objektumokat, és
 1. Keresse meg a projekt a Visual Studio Solution Explorer (jobb oldali panelen). Kattintson jobb gombbal a projektre, majd válassza ki **Hozzáadás > hivatkozás...** , ekkor **hivatkozáskezelő**.
    ![Szerelvényhivatkozások hozzáadása](media/add-assemblies-sample.png)
 2. A szerelvények lap felsorolja az összes sestavení rozhraní .NET Framework való hivatkozáshoz elérhető. A, a képernyő jobb felső sarokban a Keresősáv használatával keresse meg ezeket a hivatkozásokat, és adja hozzá a projekthez:
-   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization?view=netframework-4.7.2)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web?view=netframework-4.7.2)
-   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web?view=netframework-4.7.2)
+   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
+   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web)
 3. Miután hozzáadta a projekthez mutató hivatkozásokat, kattinthat **OK** bezárásához **hivatkozáskezelő**.
 
 > [!NOTE]

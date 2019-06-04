@@ -20,14 +20,6 @@
       href: concepts-dependency-visualization.md
 - name: Útmutatók
   items:
-    - name: Ajánlott migrálás eljárások
-      items:
-        - name: Ajánlott biztonsági és kezelési eljárások a migrálás után
-          href: migrate-best-practices-security-management.md
-        - name: Ajánlott hálózatkezelési eljárások a migrálás után
-          href: migrate-best-practices-networking.md
-        - name: Ajánlott költségszámítási és méretezési eljárások a migrálás után
-          href: migrate-best-practices-costs.md
     - name: Migrálási példák – Contoso-sorozat
       href: contoso-migration-overview.md
     - name: Nagy méretű környezet felderítése és értékelése

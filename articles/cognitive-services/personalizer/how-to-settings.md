@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 80e5feeccc4acc3e1f3dab6b815c8605332c7c71
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 976830232453eee0993e64ac445c2e6a2f7e20ef
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834311"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478577"
 ---
 # <a name="personalizer-settings"></a>Personalizer beállításai
 
@@ -63,7 +63,9 @@ A beállítás módosítása után győződjön meg arról, jelölje be **menté
 
 ### <a name="model-update-frequency"></a>Modell frissítési gyakoriság
 
-**Frissítési gyakoriság modell** állítja be, hogy milyen gyakran egy új Personalizer modell retrained van. 
+A legújabb modellre, minden aktív esemény ellenszolgáltatás API-hívások betanított automatikusan Personalizer rangsorolják hívás nem használják. A **modell frissítési gyakoriság** beállítja, hogy milyen gyakran a rangsorolt hívás által használt modell frissítése. 
+
+Olyan helyzetben, amikor szorosan követi a változásokat a felhasználói viselkedés magas modell frissítési gyakoriságot hasznosak. Ilyenek például a webhelyek, amelyek az élő hírek, vírusos tartalmat, vagy élő termék ajánlattételi folyamat során. Ezekben az esetekben használható 15 perces gyakorisággal. Használati esetek többségében egy alacsonyabb frissítési gyakoriság érvényben. Egyperces frissítési gyakoriságot hasznosak, ha egy alkalmazás kód használatával Personalizer, bemutatók végrehajtásakor.%n vagy interaktív módon tesztelése a machine learning szempontok hibakereséséhez.
 
 ![Modell frissítési gyakoriság beállítása, milyen gyakran egy új Personalizer modell retrained van.](media/settings/configure-model-update-frequency-settings.png)
 
@@ -77,7 +79,7 @@ A beállítás módosítása után győződjön meg arról, jelölje be **menté
 
 ## <a name="export-the-personalizer-model"></a>A Personalizer modell exportálása
 
-A szakaszban az erőforrás-kezelés **modell és a házirend**, tekintse át a modell létrehozásához és az utolsó frissítés dátuma, és exportálja a jelenlegi modell.
+A szakaszban az erőforrás-kezelés **modell és a házirend**, tekintse át a modell létrehozásához és az utolsó frissítés dátuma, és exportálja a jelenlegi modell. Az Azure portal vagy a Personalizer API-k segítségével exportálja egy modellfájl archiválási célokból. 
 
 ![Aktuális Personalizer modell exportálása](media/settings/export-current-personalizer-model.png)
 

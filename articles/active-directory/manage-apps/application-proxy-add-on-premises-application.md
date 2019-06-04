@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7110d7004ae9be58bb150674d516692049507608
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 82c7b698f655b82ba95f66127f27a921def02cde
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299084"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472993"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 
@@ -34,10 +34,11 @@ Ez az oktatóanyag:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ahhoz, hogy hozzáadhasson egy alkalmazást a bérlőhöz, a következőkre van szüksége:
+Az Azure ad-hez a helyszíni alkalmazás hozzáadásához az alábbiak szükségesek:
 
 * A [a Microsoft Azure AD prémium vagy alapszintű előfizetés](https://azure.microsoft.com/pricing/details/active-directory)
 * Alkalmazás-rendszergazdai fiókkal
+* Felhasználói identitásokat a helyszíni címtárból szinkronizált vagy közvetlenül az Azure AD-bérlőt belül létrehozni. Identitásszinkronizálási lehetővé teszi, hogy az Azure ad-ben előre hitelesíti a felhasználókat, mielőtt őket hozzáférés engedélyezése az alkalmazásproxyval közzétett alkalmazások és az egyszeri bejelentkezés (SSO) végrehajtásához szükséges felhasználói információk.
 
 ### <a name="windows-server"></a>Windows server
 

@@ -7,18 +7,18 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.workload: data-services
 ms.topic: tutorial
-ms.custom: seodec18
-ms.date: 12/07/2018
-ms.openlocfilehash: 056e5a0f56e1a8998288e6a78f448f0f91777e1d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.custom: mvc
+ms.date: 06/03/2019
+ms.openlocfilehash: f78555b37cc82c1e97a6f51ec504bc47937ee8c4
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969299"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493420"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>A Stream Analytics-szel telefonhívás-adatok elemzése és megjelenítése a Power BI-irányítópulton eredmények
 
-Ez az oktatóanyag bemutatja, hogyan elemezhet telefonhívási adatokat az Azure Stream Analytics használatával. Az ügyfélalkalmazás által létrehozott telefonhívási adatok csaló hívásokat tartalmaznak, amelyeket egy Stream Analytics-feladat szűr ki.
+Ez az oktatóanyag bemutatja, hogyan elemezhet telefonhívási adatokat az Azure Stream Analytics használatával. Egy ügyfélalkalmazás által létrehozott telefonhívás-adatok csaló hívásokat, amely fog szűrni lehet a Stream Analytics-feladat tartalmaznak.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
+A Kezdés előtt hajtsa végre a következőket:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 * Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
@@ -71,7 +71,7 @@ Eseményközpont létrehozásához, majd az adatok az eseményközpontba küldé
 
 Mielőtt egy alkalmazás adatokat küldhet az Azure Event Hubsnak, az eseményközpontnak szüksége van egy szabályzatra megfelelő hozzáférést biztosít. A hozzáférési szabályzat egy kapcsolati sztringet hoz létre, amelyben megtalálhatók az engedélyezési információk.
 
-1. Lépjen az előző szakaszban létrehozott, *MyEventHub* nevű eseményközponthoz. A **Beállítások** területen válassza a **Megosztott elérési szabályzatok**, majd a **+Hozzáadás** elemet.
+1. Keresse meg az előző lépésben, MyEventHub * létrehozott eseményközpont. A **Beállítások** területen válassza a **Megosztott elérési szabályzatok**, majd a **+Hozzáadás** elemet.
 
 2. Adja a szabályzatnak a **MyPolicy** nevet, és ellenőrizze, hogy **Kezelés** lehetőség be van-e jelölve. Ezután kattintson a **Létrehozás** elemre.
 
@@ -111,7 +111,7 @@ A TelcoGenerator alkalmazást úgy kell beállítania az indítása előtt, hogy
    A paranccsal a következő paraméterek használhatók:
    * Óránkénti hívásadatrekordok száma.
    * Csalások valószínűségének százalékos aránya, amely azt adja meg, hogy az alkalmazás milyen gyakran szimuláljon csaló hívásokat. A 0,2-es érték azt jelenti, hogy nagyjából a hívások 20%-a fog csalónak tűnni.
-   * Időtartam órában, amely azt adja meg, hogy hány óráig fusson az alkalmazás. Az alkalmazást bármikor leállíthatja úgy is, ha a parancssorban leállítja a folyamatot (**Ctrl+C**).
+   * Időtartam órában, amely azt adja meg, hogy hány óráig fusson az alkalmazás. Azt is megakadályozhatja az alkalmazás bármikor a folyamat (**Ctrl + C**) a parancssorban.
 
    Néhány másodperc elteltével az alkalmazás elkezdi kijelezni a hívásrekordokat a képernyőn, miközben az eseményközpontba küldi őket. A telefonhívási adatok a következő mezőket tartalmazzák:
 
@@ -140,10 +140,10 @@ Most, hogy már rendelkezik a hívási események streamjével, létrehozhat egy
    |Előfizetés    |  \<Az Ön előfizetése\>   |   Válassza ki, melyik Azure-előfizetésben kívánja létrehozni a feladatot.       |
    |Erőforráscsoport   |   MyASADemoRG      |   Válassza a **Meglévő használata** lehetőséget, és adjon meg egy új erőforráscsoport-nevet a fiókjának.      |
    |Hely   |    USA 2. nyugati régiója     |      A hely, ahol a feladat üzembe helyezhető. Ajánlott a feladatot és az eseményközpontot ugyanabba a régióba helyezni, az optimális teljesítmény érdekében, továbbá így elkerülheti a régiók közötti adatátvitel díját is.      |
-   |Üzemeltetési környezet    | Felhő        |     A Stream Analytics-feladatok a felhőben vagy a peremhálózaton is üzembe helyezhetők. A Felhő beállítással az Azure Cloudban, a Peremhálózat pedig IoT Edge-eszközökön helyezheti üzembe a feladatot.    |
+   |Üzemeltetési környezet    | Felhő        |     A Stream Analytics-feladatok a felhőben vagy a peremhálózaton is üzembe helyezhetők. Felhőalapú lehetővé teszi, hogy az Azure felhőben üzembe helyezni, és peremhálózati lehetővé teszi az IoT Edge-eszköz üzembe helyezését.    |
    |Streamelési egységek     |    1       |      A streamelési egységek a feladatok végrehajtásához felhasznált számítási erőforrásokat jelölik. Alapértelmezés szerint ez az érték 1. További információ a streamelési egységek skálázásáról: [A streamelési egységek ismertetése és módosítása](stream-analytics-streaming-unit-consumption.md).      |
 
-4. A többi beállításnál használja az alapértelmezett értékeket, majd válassza a **Létrehozás** parancsot, és várja meg, amíg az üzembe helyezés befejeződik.
+4. Használja az alapértelmezett a többi beállításnál, válassza ki a **létrehozás**, és várjon, amíg az üzembe helyezés befejeződik.
 
    ![Azure Stream Analytics-feladat létrehozása](media/stream-analytics-manage-job/create-stream-analytics-job.png)
 
@@ -163,7 +163,7 @@ A következő lépés egy bemeneti forrás megadása, amelyből a feladat be tud
    |Előfizetés    |   \<Az Ön előfizetése\>      |   Jelölje ki azt az Azure-előfizetést, ahol létrehozta az eseményközpontot. Az eseményközpont ugyanabban az előfizetésben, mint a Stream Analytics-feladat, vagy egy másikban is.       |
    |Eseményközpont-névtér    |  myEventHubsNS       |  Válassza ki az előző szakaszban létrehozott eseményközpont-névteret. Az aktuális előfizetésben elérhető összes eseményközpont-névtér megjelenik a legördülő listában.       |
    |Eseményközpont neve    |   MyEventHub      |  Válassza ki az előző szakaszban létrehozott eseményközpontot. Az aktuális előfizetésben elérhető összes eseményközpont megjelenik a legördülő listában.       |
-   |Eseményközpont szabályzatának neve   |  Mypolicy       |  Válassza ki az előző lépésben létrehozott megosztott elérési házirendet. Az aktuális előfizetésben elérhető összes eseményközpont-szabályzat megjelenik a legördülő listában.       |
+   |Eseményközpont szabályzatának neve   |  MyPolicy       |  Válassza ki az előző lépésben létrehozott megosztott elérési házirendet. Az aktuális előfizetésben elérhető összes eseményközpont-szabályzat megjelenik a legördülő listában.       |
 
 4. A többi beállításnál hagyja meg az alapértelmezett beállításokat, majd válassza a **Mentés** lehetőséget.
 
@@ -195,7 +195,7 @@ A következő lépés egy átalakítás létrehozása, amely valós időben elem
 
 Ebben a példában a csaló hívásokat ugyanaz a felhasználó indítja eltérő helyekről, öt másodperces időközönként. Például ugyanaz a felhasználó nem indíthat szabályosan hívásokat egyszerre az USA-ból és Ausztráliából. A Stream Analytics-feladat átalakítási lekérdezésének megadásához tegye a következőket:
 
-1. Az Azure Portalon nyissa meg a **Minden erőforrás** panelt, majd navigáljon a korábban létrehozott, **ASATutorial** nevű Stream Analytics-feladathoz.
+1. Az Azure Portalról nyissa meg a **összes erőforrás** ablaktáblán, és keresse meg a **ASATutorial** korábban létrehozott Stream Analytics-feladatot.
 
 2. A Stream Analytics-feladat panel **Feladattopológia** szakaszában válassza a **Lekérdezés** lehetőséget. A lekérdezési ablak felsorolja a feladathoz konfigurált bemeneteket és kimeneteket, és a segítségével létrehozhat egy lekérdezést a bemeneti stream átalakításához.
 
@@ -248,7 +248,7 @@ A lekérdezésszerkesztőben létrehozott lekérdezéseket mintaadatokkal teszte
 
 4. A Power BI-munkaterületen válassza a **+ Létrehozás** lehetőséget egy új, *Fraudulent Calls* nevű irányítópult létrehozásához.
 
-5. Válassza a **Csempe felvétele** lehetőséget az ablak tetején. Ezután válassza az **Egyedi folyamatos átviteli adatok**, majd a **Tovább** lehetőséget. A **Saját adatkészletek** területen válassza az **ASAdataset** elemet. A **Megjelenítés típusa** legördülő menüben válassza a **Kártya** elemet, és a **Mezők** panelhez adja hozzá a **fraudulentcalls** elemet. Kattintson a **Tovább** gombra, és nevezze el a csempét, majd kattintson az **Alkalmaz** elemre a csempe létrehozásához.
+5. Válassza a **Csempe felvétele** lehetőséget az ablak tetején. Ezután válassza az **Egyedi folyamatos átviteli adatok**, majd a **Tovább** lehetőséget. A **Saját adatkészletek** területen válassza az **ASAdataset** elemet. Válassza ki **kártya** származó a **Vizualizáció típusának** legördülő menüben, és adja hozzá **csaló hívások** való **mezők**. Kattintson a **Tovább** gombra, és nevezze el a csempét, majd kattintson az **Alkalmaz** elemre a csempe létrehozásához.
 
    ![Hozzon létre a Power BI irányítópult-csempék](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
 
@@ -258,18 +258,18 @@ A lekérdezésszerkesztőben létrehozott lekérdezéseket mintaadatokkal teszte
    * Adjon meg egy értéket, és válassza a **fraudulentcalls** lehetőséget.
    * A **Megjelenítendő időtartomány** beállításnál válassza ki az utolsó 10 percet.
 
-7. A két csempe hozzáadása után az irányítópult az alábbi példában látható módon fog kinézni. Látható, hogy ha az eseményközpont küldőalkalmazása és a Streaming Analytics alkalmazás fut, a Power BI-irányítópult rendszeresen frissül, amint új adatok érkeznek.
+7. A két csempe hozzáadása után az irányítópult az alábbi példában látható módon fog kinézni. Figyelje meg, hogy ha az eseményközpont küldőalkalmazása és a Streaming Analytics alkalmazás fut, a Power BI-irányítópulton rendszeresen frissül, amint új adatok érkeznek.
 
    ![Eredmények megtekintése a Power BI-irányítópulton](media/stream-analytics-manage-job/power-bi-results-dashboard.png)
 
-## <a name="embedding-your-powerbi-dashboard-in-a-web-application"></a>A Power BI-irányítópult beágyazása egy webalkalmazásba
+## <a name="embedding-your-power-bi-dashboard-in-a-web-application"></a>A Power BI-irányítópult beágyazása egy webalkalmazás
 
-Az oktatóanyag ezen részében egy [ASP.NET](https://asp.net/) minta-webalkalmazást fog használni, amelyet a Power BI csapata készített az irányítópultja beágyazásához. További információ az irányítópult beágyazásáról: [Beágyazás a Power BI-ba](https://docs.microsoft.com/power-bi/developer/embedding).
+Az oktatóanyag ezen részében egy minta használni kívánt [ASP.NET](https://asp.net/) webes alkalmazás hozta létre a Power BI csapata az irányítópultja beágyazásához. További információ az irányítópult beágyazásáról: [Beágyazás a Power BI-ba](https://docs.microsoft.com/power-bi/developer/embedding).
 
 Állítsa be az alkalmazást, nyissa meg a [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub-adattárban és az utasítások alapján a **felhasználó tulajdonában lévő adatok** szakasz (használja a azátirányításiésakezdőlapURL-**integrate-dashboard-web-app** vonatkozó szakaszt). Mivel az irányítópult-alapú példát alkalmazzuk, használja a [GitHub-adattárban](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app) található **integrate-dashboard-web-app** mintakódot.
 Miután az alkalmazás fut a böngészőjében, az alábbi lépések végrehajtásával ágyazza be a weblapra a korábban létrehozott irányítópultot:
 
-1. Válassza a **Bejelentkezés a Power BI-ba** lehetőséget, amely engedélyezi az alkalmazásnak a Power BI-fiókjában lévő irányítópultokhoz való hozzáférést.
+1. Válassza ki **jelentkezzen be a Power BI**, amely engedélyezi a Power BI-fiókjában lévő irányítópultokhoz való az alkalmazás-hozzáférést.
 
 2. Kattintson az **Irányítópultok lekérése** gombra, amely megjeleníti a fiókjában található irányítópultokat egy táblában. Keresse meg a korábban létrehozott irányítópult nevét (**powerbi-embedded-dashboard**), és másolja be a megfelelő **EmbedUrl** értéket.
 

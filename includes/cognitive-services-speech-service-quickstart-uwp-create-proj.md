@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: fe2978e176b986164ebb01fddbd29481f8a117bd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: faa93b75bde3a14e48baa7d27a3eb6439a137e44
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145439"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482393"
 ---
-1. Indítsa el a Visual Studio 2017-et.
+1. Indítsa el a Visual Studio 2019.
 
 1. Győződjön meg arról, hogy elérhető a **Universal Windows Platform-fejlesztés** számítási feladat. A Visual Studio telepítőjének megnyitásához válassza az **Eszközök** > **Eszközök és funkciók beszerzése** elemet a Visual Studio menüsorából. Ha ez a számítási feladat már engedélyezve van, zárja be a párbeszédpanelt.
 
@@ -19,11 +19,11 @@ ms.locfileid: "66145439"
 
     Ha nincs engedélyezve, jelölje be a **Platformfüggetlen .NET-fejlesztés** lehetőség jelölőnégyzetét, majd válassza a **Módosítás** elemet a párbeszédpanel jobb alsó sarkában. Az új funkció telepítése eltarthat egy kis ideig.
 
-1. Hozzon létre egy üres Visual C# Universal Windows-alkalmazást. Először válassza a **Fájl** > **Új** > **Projekt** lehetőséget a menüben. Az **Új projekt** párbeszédpanelen bontsa ki a **Telepítve** > **Visual C#** > **Windows Universal** elemet a bal oldali panelen. Ezután válassza az **Üres alkalmazás (Universal Windows)** elemet. A projekt neve legyen *helloworld*.
+1. Hozzon létre egy üres Visual C# Universal Windows-alkalmazást. Először válassza a **Fájl** > **Új** > **Projekt** lehetőséget a menüben. Az **Új projekt** párbeszédpanelen bontsa ki a **Telepítve** > **Visual C#**  > **Windows Universal** elemet a bal oldali panelen. Ezután válassza az **Üres alkalmazás (Universal Windows)** elemet. A projekt neve legyen *helloworld*.
 
     ![Képernyőkép az Új projekt párbeszédpanelről](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-01-new-blank-app.png)
 
-1. A beszédfelismerés SDK megköveteli, hogy az alkalmazás a Windows 10 Fall Creators Update vagy újabb verzió felépítve. A felugró **Új Universal Windows Platform-projekt** ablak **Minimális verzió** beállításánál válassza a **Windows 10 Fall Creators Update (10.0; Build 16299)** értéket. A **Célverzió** mezőben válassza ki ezt vagy egy későbbi verziót, és kattintson az **OK** gombra.
+1. A beszédfelismerés SDK szükséges, hogy az alkalmazás a Windows 10 Fall Creators Update vagy újabb verzió van-e építve. A felugró **Új Universal Windows Platform-projekt** ablak **Minimális verzió** beállításánál válassza a **Windows 10 Fall Creators Update (10.0; Build 16299)** értéket. Az a **célverzió** mezőben, válassza ki, ez a verzió vagy újabb verziója, majd kattintson **OK**.
 
     ![Az Új Universal Windows Platform-projekt ablak képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 

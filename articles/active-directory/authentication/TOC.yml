@@ -43,8 +43,6 @@
       items:
         - name: Az MFA működése
           href: concept-mfa-howitworks.md
-        - name: Melyik a megfelelő verzió?
-          href: concept-mfa-whichversion.md
         - name: Licence biztosítása a felhasználók számára
           href: concept-mfa-licensing.md
         - name: Hitelesítési szolgáltató kezelése

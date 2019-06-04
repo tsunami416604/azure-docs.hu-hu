@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: f183fd9c9aca3e1c8ed5e2e31d2a451fae92e0a4
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 05eac7e673ad01e9d3e0fb25f261444fd7bc4e6d
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304485"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475513"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Az Azure Kubernetes Service (AKS) alkalmazás frissítése
 
@@ -85,7 +85,10 @@ A [docker tag][docker-tag] paranccsal címkézze fel a rendszerképet. Az `<acrL
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-Most a [docker push][docker-push] paranccsal töltse fel a rendszerképet a regisztrációs adatbázisba. Az `<acrLoginServer>` helyére az ACR bejelentkezési kiszolgálójának nevét írja be. Ha az ACR-beállításjegyzékbe való leküldés problémákat tapasztal, győződjön meg arról, hogy futtatta a [az acr bejelentkezési] [ az-acr-login] parancsot.
+Most a [docker push][docker-push] paranccsal töltse fel a rendszerképet a regisztrációs adatbázisba. Az `<acrLoginServer>` helyére az ACR bejelentkezési kiszolgálójának nevét írja be.
+
+> [!NOTE]
+> Ha az ACR-beállításjegyzékbe való leküldés problémákat tapasztal, ellenőrizze, hogy továbbra is jelentkezett be. Futtassa a [az acr bejelentkezési] [ az-acr-login] parancsának használatával a létrehozott Azure Tárolóregisztrációs adatbázis nevét a [hozzon létre egy Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . lépés. Például: `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2

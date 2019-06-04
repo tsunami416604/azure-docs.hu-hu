@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 83eabca3b2ec1903e25b02083b1a2d5b49745396
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6b2a0655173405008e0bccf3e31a8db391da6127
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800449"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496289"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Oktatóanyag: Adatok másolása az Azure Data Box SMB-n keresztül
 
@@ -68,7 +68,7 @@ Ha a gazdagép Windows Server számítógépet használ, kövesse az alábbi lé
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    Az adatok formátuma függően, a megosztás elérési utak a következők:
+    Az adatok formátumától függően a megosztások útvonalai a következők:
     - Az Azure blokkblob- `\\10.126.76.172\devicemanagertest1_BlockBlob`
     - Az Azure lapblob- `\\10.126.76.172\devicemanagertest1_PageBlob`
     - Az Azure Files- `\\10.126.76.172\devicemanagertest1_AzFile`
@@ -202,7 +202,7 @@ A teljesítmény optimalizálása érdekében használja a következő Robocopy-
 
 A Robocopy-paranccsal kapcsolatos további információért lásd [a Robocopyt és néhány példát](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) bemutató témakört.
 
-Nyissa meg a célmappát a másolt fájlok megtekintéséhez és ellenőrzéséhez. Ha hibába ütközik a másolási folyamat során, töltse le a hibafájlokat a hibaelhárításhoz. További információkért lásd: [adatmásolás a Data Box során hiba történt a naplók megtekintéséhez](data-box-logs.md#view-error-log-during-data-copy-to-data-box). Adatok másolása során hibák részletes listájáért lásd: [problémák hibaelhárítása a Data Box](data-box-troubleshoot.md).
+Nyissa meg a célmappát a másolt fájlok megtekintéséhez és ellenőrzéséhez. Ha hibába ütközik a másolási folyamat során, töltse le a hibafájlokat a hibaelhárításhoz. További információkért lásd: [adatmásolás a Data Box során hiba történt a naplók megtekintéséhez](data-box-logs.md#view-error-log-during-data-copy). Adatok másolása során hibák részletes listájáért lásd: [problémák hibaelhárítása a Data Box](data-box-troubleshoot.md).
 
 Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kiszámítására beágyazva, az adatok másolása közben kerül sor. A másolás befejezése után ellenőrizze, hogy mekkora a felhasznált és a szabad tárhely az eszközén.
     

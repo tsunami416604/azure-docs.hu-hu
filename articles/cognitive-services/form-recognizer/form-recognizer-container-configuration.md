@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
 ms.topic: overview
-ms.date: 05/15/2019
+ms.date: 05/31/2019
 ms.author: pafarley
-ms.openlocfilehash: 17cf1d88701370c4f81eab4f0d2df33ee2e94af5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 28acc2d1eafacb9e53fac3e3cce092738401f838
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796381"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475381"
 ---
 # <a name="configure-form-recognizer-containers"></a>Űrlap felismerő tárolók konfigurálása
 
@@ -49,7 +49,7 @@ Ez a beállítás a következő helyen található:
 
 * Az Azure Portalon: **Űrlap-felismerő a** áttekintése, címkével `Endpoint`
 
-|Szükséges| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
@@ -78,10 +78,10 @@ A képernyő felismerő tároló egy bemeneti és kimeneti csatlakoztatási van 
 
 A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs rendszere függően változik. Ezenkívül a [gazdaszámítógép](form-recognizer-container-howto.md#the-host-computer)a csatlakoztatási helye nem lehet elérni a Docker szolgáltatás fiókja által használt engedélyek közötti ütközés miatt, és a gazdagép csatlakoztatásához hely engedélyeket.
 
-|Választható| Name (Név) | Adattípus | Leírás |
+|Optional| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
-|Szükséges| `Input` | String | A bemeneti csatlakoztatási célját. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Szükséges| `Output` | String | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`.  <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Kötelező| `Input` | String | A bemeneti csatlakoztatási célját. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Kötelező| `Output` | String | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`.  <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása
 
@@ -92,7 +92,7 @@ Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs
 
 Cserélje le a(z)_argument_name_} a saját értékeire:
 
-| Helyőrző | Value |
+| Helyőrző | Érték |
 |-------------|-------|
 |{BILLING_KEY} | Ezt a kulcsot szolgál a tárolót, és az Azure Portalon űrlap felismerő kulcsok lapján található.  |
 |{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját az Azure Portalon az űrlap felismerő áttekintése oldalon érhető el.|
@@ -111,10 +111,10 @@ Az alábbi Docker-példák vannak az űrlap felismerő tároló.
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
-containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
-Eula=accept \
 --mount type=bind,source=c:\input,target=/input  \
 --mount type=bind,source=c:\output,target=/output \
+containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
+Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
 ApiKey={BILLING_KEY} \
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
@@ -125,10 +125,10 @@ FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
-containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
-Eula=accept \
 --mount type=bind,source=c:\input,target=/input  \
 --mount type=bind,source=c:\output,target=/output \
+containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
+Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
 ApiKey={BILLING_KEY} \
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \

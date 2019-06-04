@@ -1,11 +1,11 @@
 ---
 title: 'Oktatóanyag: Az Azure Active Directory-integráció a Projectplace |} A Microsoft Docs'
-description: Ebben az oktatóanyagban elsajátíthatja fog konfigurálása egyszeri bejelentkezéshez az Azure Active Directory és a Projectplace között.
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Projectplace között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: barbkess
+ms.reviewer: celested
 ms.assetid: 298059ca-b652-4577-916a-c31393d53d7a
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,178 +13,131 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/26/2019
+ms.date: 05/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 17fbc6bc4f022a15c34c5ca7b9465be392cdc639
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: aae6de49a3df3f1e648b99aa9936d6af85fc020f
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560626"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497290"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-projectplace"></a>Oktatóanyag: Projectplace az Azure Active Directory-integráció
+# <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>Oktatóanyag: Projectplace integrálása az Azure Active Directoryval
 
-Ebben az oktatóanyagban elsajátíthatja a Projectplace integrálása az Azure Active Directory (Azure AD) lesz.
+Ebben az oktatóanyagban elsajátíthatja a Projectplace integrálása az Azure Active Directory (Azure AD) lesz. Projectplace integrálása az Azure ad-vel, akkor a következőket teheti:
 
-Ez az integráció ezeket az előnyöket biztosítja:
+* Szabályozza, ki férhet hozzá a Projectplace Azure AD-ben.
+* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezett a Projectplace az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Felhasználókat automatikusan Projectplace kell létrehozni.
 
-* Az Azure AD, hogy ki férhet hozzá a Projectplace is használhatja.
-* Engedélyezheti a felhasználók számára, hogy automatikusan jelentkezzenek be a Projectplace (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
-
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
+SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Projectplace az Azure AD-integráció konfigurálásához lesz szüksége:
+Első lépésként szüksége van a következő elemek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, akkor regisztráljon egy [egy havi próbalehetőség](https://azure.microsoft.com/pricing/free-trial/) előfizetés.
-* Projectplace-előfizetés, amely egyszeri bejelentkezés engedélyezve van.
+* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, hozzájuthat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* Projectplace egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban fogja konfigurálni, és egy tesztelési környezetben az Azure AD egyszeri bejelentkezés tesztelése.
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Támogatja a Projectplace **SP és IDP** által kezdeményezett egyszeri Bejelentkezést, és támogatja a **igény szerinti** felhasználóátadást készíthet elő.
 
-* Projectplace a Szolgáltató által kezdeményezett egyszeri Bejelentkezést támogatja.
+## <a name="adding-projectplace-from-the-gallery"></a>Projectplace hozzáadása a katalógusból
 
-## <a name="add-projectplace-from-the-gallery"></a>Projectplace hozzáadása a katalógusból
+Az Azure AD integrálása a Projectplace konfigurálásához hozzá kell Projectplace a galériából a felügyelt SaaS-alkalmazások listájára.
 
-Projectplace integrálása az Azure AD beállításához, hozzá kell Projectplace a galériából a felügyelt SaaS-alkalmazások listájára.
-
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**:
-
-    ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
-
-2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
-
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-3. Egy alkalmazás hozzáadásához válassza **új alkalmazás** az ablak tetején:
-
-    ![Válassza ki az új alkalmazás](common/add-new-app.png)
-
-4. A Keresés mezőbe írja be a **Projectplace**. Válassza ki **Projectplace** a keresési eredmények, és válassza ki a **Hozzáadás**.
-
-     ![Keresési eredmények](common/search-new-app.png)
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
+1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
+1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
+1. Az a **Hozzáadás a katalógusból** területén írja be a **Projectplace** kifejezést a keresőmezőbe.
+1. Válassza ki **Projectplace** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban fog konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés a Projectplace Britta Simon nevű tesztfelhasználó használatával.
-Egyszeri bejelentkezés engedélyezéséhez szüksége egy Azure AD-felhasználót és a megfelelő felhasználó közötti kapcsolat létrehozására a Projectplace.
+Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata Projectplace **b Simon**. Működik az egyszeri bejelentkezés Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolat kapcsolat létrehozására a Projectplace szüksége.
 
-Az Azure AD egyszeri bejelentkezés a Projectplace tesztelése és konfigurálása, szüksége a lépések elvégzéséhez:
+Az Azure AD SSO Projectplace tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  a felhasználók számára a funkció engedélyezéséhez.
-2. **[Projectplace egyszeri bejelentkezés konfigurálása](#configure-projectplace-single-sign-on)**  az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  ahhoz, hogy az Azure AD egyszeri bejelentkezés a felhasználó számára.
-5. **[Hozzon létre egy Projectplace tesztfelhasználót](#create-a-projectplace-test-user)**  , amely kapcsolódik a felhasználó Azure ad-ben ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  , hogy működik-e a konfiguráció ellenőrzéséhez.
+1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Konfigurálja a Projectplace](#configure-projectplace)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés a b Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  b Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Projectplace tesztfelhasználó létrehozása](#create-projectplace-test-user)**  , amely kapcsolódik az Azure AD felhasználói ábrázolása Projectplace-megfelelője a b Simon van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Projectplace, ezeket a lépéseket:
+1. Az a [az Azure portal](https://portal.azure.com/), a a **Projectplace** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
+1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Projectplace** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**:
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    ![Válassza ki az egyszeri bejelentkezés](common/select-sso.png)
+1. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett módot, az alkalmazás előre konfigurálva, és a szükséges URL-címek vannak már előre fel van töltve az Azure-ral . A felhasználónak szüksége van a konfiguráció mentéséhez kattintson a **mentése** gombra.
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
+1. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:  `https://service.projectplace.com`
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás **ikon** másolása a **alkalmazás összevonási metaadatainak URL-címe** , a követelmény alapján, és mentse a Jegyzettömbben.
 
-    ![Szerkesztés ikon](common/edit-urls.png)
+   ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
 
-4. Az a **alapszintű SAML-konfigurációja** párbeszédpanel a **bejelentkezési URL-** mezőbe írjon be egy URL-címe ebben a mintában:
+1. Az a **állítsa be a Projectplace** területén másolja a megfelelő URL-címe szerint.
 
-    `https://<company>.projectplace.com`
+   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-   ![Alapszintű SAML-konfigurációja párbeszédpanel](common/sp-signonurl.png)
-    > [!NOTE]
-    > Ez az érték pedig. A tényleges bejelentkezési URL-címet kell. Forduljon a [Projectplace-ügyfélszolgálathoz](https://success.planview.com/Projectplace/Support) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** párbeszédpanel az Azure Portalon.
+### <a name="configure-projectplace"></a>Configure Projectplace
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be a **letöltése** mellett kapcsolni **összevonási metaadatainak XML** , a igényeknek, és mentse el a tanúsítványt a számítógépen:
-
-    ![Tanúsítvány letöltésére szolgáló hivatkozásra.](common/metadataxml.png)
-
-6. Az a **állítsa be a Projectplace** területén másolja a megfelelő URL-címeket, a követelmények alapján.
-
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
-
-    1. **Bejelentkezési URL-cím**.
-
-    1. **Az Azure AD-azonosító**.
-
-    1. **Kijelentkezési URL-címe**.
-
-### <a name="configure-projectplace-single-sign-on"></a>Projectplace egyszeri bejelentkezés konfigurálása
-
-Az egyszeri bejelentkezés konfigurálásához a **Projectplace** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** tanúsítvány és az Azure Portalról másolt URL-címeket a [ Projectplace-ügyfélszolgálathoz](https://success.planview.com/Projectplace/Support). Ez a csapat biztosítja, hogy a SAML SSO-kapcsolat mindkét oldalán megfelelően beállítva.
+Az egyszeri bejelentkezés konfigurálásához a **Projectplace** oldalon kell küldenie a másolt **alkalmazás összevonási metaadatainak URL-címe** , az Azure Portalról a [Projectplace támogatási csapatának](https://success.planview.com/Projectplace/Support) . Ez a csapat biztosítja, hogy a SAML SSO-kapcsolat mindkét oldalán megfelelően beállítva.
 
 >[!NOTE]
->Az egyszeri bejelentkezés beállításainak által végrehajtandó rendelkezik a [Projectplace-ügyfélszolgálathoz](https://success.planview.com/Projectplace/Support). Értesítést fog kapni, amint a konfigurálás befejeződött.
+>Az egyszeri bejelentkezés beállításainak által végrehajtandó rendelkezik a [Projectplace-ügyfélszolgálathoz](https://success.planview.com/Projectplace/Support). Értesítést fog kapni, amint a konfigurálás befejeződött. 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban az Azure Portalon b Simon nevű tesztfelhasználó fog létrehozni.
 
-1. Az Azure Portalon válassza ki a **Azure Active Directory** a bal oldali panelen válassza ki a **felhasználók**, majd válassza ki **minden felhasználó**:
-
-    ![Válassza ki az összes felhasználó](common/users.png)
-
-2. Válassza ki **új felhasználó** a képernyő tetején:
-
-    ![Válassza ki az új felhasználó](common/new-user.png)
-
-3. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket.
-
-    ![Felhasználói párbeszédpanel](common/user-properties.png)
-
-    1. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon @\<vállalati_tartomány >.\< bővítmény >**. (Például BrittaSimon@contoso.com.)
-
-    1. Válassza ki **jelszó megjelenítése**, és jegyezze fel az értéket, amely szerepel a **jelszó** mezőbe.
-
-    1. Kattintson a **Létrehozás** gombra.
+1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B. Simon`.  
+   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `BrittaSimon@contoso.com`.
+   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon projectplace tartalomcsomagjához számára a hozzáférés biztosításával az Azure AD egyszeri bejelentkezés használatához engedélyeznie kell.
+Ebben a szakaszban b Simon projectplace tartalomcsomagjához a hozzáférés biztosításával Azure egyszeri bejelentkezés használatához engedélyeznie kell.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**, majd válassza ki **Projectplace**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+1. Az alkalmazások listájában jelölje ki a **Projectplace**.
+1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-2. Az alkalmazások listájában jelölje ki a **Projectplace**.
+1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Alkalmazások listája](common/all-applications.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-3. A bal oldali panelen válassza ki a **felhasználók és csoportok**:
+1. Az a **felhasználók és csoportok** párbeszédablakban válassza **b Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
+1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-    ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
+### <a name="create-projectplace-test-user"></a>Projectplace tesztfelhasználó létrehozása
 
-4. Válassza ki **felhasználó hozzáadása**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
+>[!NOTE]
+>Ezt a lépést kihagyhatja, ha engedélyezve van a Projectplace-kiépítés rendelkezik. Kérje meg a [Projectplace-ügyfélszolgálathoz](https://success.planview.com/Projectplace/Support) engedélyezéséhez Jelentésközpont, miután a felhasználók kész az első bejelentkezés során létrejön a Projectplace.
 
-    ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
+Ahhoz, hogy az Azure AD-felhasználók a Projectplace bejelentkezni, hozzá kell őket a Projectplace. Adja hozzá manuálisan kell.
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza ki **Britta Simon** a felhasználók listában, és kattintson a **válassza** gombra a képernyő alján.
-
-6. Ha a SAML-előfeltétel szerepkör értéket a várt a **Szerepkörválasztás** párbeszédpanelen jelölje ki a megfelelő szerepkört a felhasználóhoz a listából. Kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
-
-### <a name="create-a-projectplace-test-user"></a>Projectplace tesztfelhasználó létrehozása
-
-Ahhoz, hogy az Azure AD-felhasználók a Projectplace bejelentkezni, hozzá kell őket a Projectplace. Ezeket manuálisan kell hozzáadni.
-
-Hozzon létre egy felhasználói fiókot, az alábbi lépéseket kell végrehajtani:
+**Hozzon létre egy felhasználói fiókot, az alábbi lépéseket kell végrehajtani:**
 
 1. Jelentkezzen be a **Projectplace** vállalati hely rendszergazdaként.
 
@@ -209,15 +162,14 @@ Hozzon létre egy felhasználói fiókot, az alábbi lépéseket kell végrehajt
 >[!NOTE]
 >Bármely más felhasználóifiók-létrehozási eszköz is használhatja, vagy Projectplace adhat hozzá felhasználói fiókokat az Azure AD által biztosított API-t.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-A Projectplace-csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a Projectplace-példányt, amelynek beállítása egyszeri bejelentkezés. További információkért lásd: [alkalmazások használatának és elérésének a saját alkalmazások portál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+A Projectplace-csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a Projectplace, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

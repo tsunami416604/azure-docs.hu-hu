@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: af61d975b540787b9b54d9fdea66773c10aeb6ac
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 27fcf32a9a268488da318567d3edc55d23bd8967
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145445"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482423"
 ---
-1. Indítsa el a Visual Studio 2017-et.
+1. Indítsa el a Visual Studio 2019.
 
 1. Győződjön róla meg, hogy elérhető az **Asztali fejlesztés a C++ segítségével** számítási feladat. A Visual Studio telepítőjének megnyitásához válassza az **Eszközök** > **Eszközök és funkciók beszerzése** elemet a Visual Studio menüsorából. Ha már engedélyezve van ez a számítási feladat, ugorjon a következő lépésre.
 
@@ -25,7 +25,7 @@ ms.locfileid: "66145445"
 
 1. Ha engedélyeznie kell a C++ tevékenységprofilt vagy a NuGetet, válassza a **Módosítás** lehetőséget (a párbeszédpanel jobb alsó sarkában). Az új funkciók telepítése eltarthat egy kis ideig. Ha már mindkét funkció engedélyezve van, csak zárja be a párbeszédpanelt.
 
-1. Hozzon létre egy új Visual C++ asztali Windows-konzolalkalmazást. Először válassza a **Fájl** > **Új** > **Projekt** lehetőséget a menüben. Az **Új projekt** párbeszédpanelen bontsa ki a **Telepítve** > **Visual C++** > **Windows asztali verzió** elemet a bal oldali panelen. Válassza a **Windows-konzolalkalmazás** lehetőséget. A projekt neve legyen *helloworld*.
+1. Hozzon létre egy új Visual C++ asztali Windows-konzolalkalmazást. Először válassza a **Fájl** > **Új** > **Projekt** lehetőséget a menüben. Az **Új projekt** párbeszédpanelen bontsa ki a **Telepítve** > **Visual C++**  > **Windows asztali verzió** elemet a bal oldali panelen. Válassza a **Windows-konzolalkalmazás** lehetőséget. A projekt neve legyen *helloworld*.
 
     ![Képernyőkép az Új projekt párbeszédpanelről](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
 

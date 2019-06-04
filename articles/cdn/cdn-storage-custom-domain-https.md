@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 7aaf4be23c806dda621430c4d1b0c142f41feb1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51fcb1e504f853973d9772bcece7e893a2d94e44
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323872"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472133"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Oktatóanyag: Tárolási blobok elérése az Azure CDN egyéni tartományon használatával HTTPS-kapcsolaton keresztül
 
@@ -44,7 +44,7 @@ Az Azure CDN figyelmen kívül hagyja a SAS-jogkivonathoz hozzáadott korlátoz�
 Ha ugyanazon végponthoz több SAS URL-címet hoz létre, fontolja meg a lekérdezési karakterláncok gyorsítótárazásának engedélyezését. Ezzel biztosíthatja, hogy a rendszer minden egyes URL-címet egyedi entitásként kezeljen. További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal](cdn-query-string.md).
 
 ## <a name="http-to-https-redirection"></a>HTTP–HTTPS átirányítás
-Lehetősége van a HTTP-forgalom HTTPS-re történő átirányítására, ha létrehoz egy [URL-átirányítási szabályt](cdn-rules-engine-reference-features.md#url-redirect) az [Azure CDN szabálymotorral](cdn-rules-engine.md). Ehhez a lehetőséghez a következő profilra lesz szüksége: **Azure CDN Premiumhoz a Verizontól**. 
+Lehetősége van a HTTP-forgalom HTTPS-re történő átirányítására, ha létrehoz egy [URL-átirányítási szabályt](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect) az [Azure CDN szabálymotorral](cdn-verizon-premium-rules-engine.md). Ehhez a lehetőséghez a következő profilra lesz szüksége: **Azure CDN Premiumhoz a Verizontól**.
 
 ![URL-átirányítási szabály](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
 

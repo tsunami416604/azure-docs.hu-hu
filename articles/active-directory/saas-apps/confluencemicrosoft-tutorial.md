@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/22/2019
+ms.date: 05/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45c9268495ed42ca67f815615b441986cf03332f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c9c422e93a6768b764873f21ad9eab6fad4a868e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683652"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Az Azure Active Directory-integráció a Microsoft által való összefolyás felett SAML SSO-val
 
@@ -78,6 +78,7 @@ Jelen pillanatban való összefolyás felett következő verziói támogatottak:
 - Való összefolyás felett: 6.10.0
 - Való összefolyás felett: 6.11.0
 - Való összefolyás felett: 6.12.0
+- Való összefolyás felett: 6.15.3
 
 > [!NOTE]
 > Vegye figyelembe, hogy az való összefolyás felett beépülő modult is működik az Ubuntu 16.04-verzió
@@ -94,7 +95,7 @@ Az Azure AD-be való összefolyás felett SAML SSO a Microsoft-integráció konf
 
 **A Microsoft által való összefolyás felett SAML SSO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -177,34 +178,40 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a Microsoft által való ös
 
 5. Hajtsa végre a következő lépéseket a konfigurációs lapon:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/addon52.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/addon53.png)
 
     > [!TIP]
     > Győződjön meg arról, hogy nincs-e rendelve az alkalmazást, hogy nincs hiba feloldása a metaadatokat a csak egy tanúsítványt. Ha több tanúsítványt, a rendszergazdai hibát feloldása a metaadatok beolvasása.
 
-    a. Az a **metaadatok URL-címe** szövegmezőjébe illessze be **alkalmazás összevonási metaadatainak URL-címe** érték, amely az Azure Portalon, majd kattintson a másolta a **megoldásához** gombra. Ez olvassa be az identitásszolgáltató metaadatok URL-címet, és tölti fel a mezők adatai.
+    1. Az a **metaadatok URL-címe** szövegmezőjébe illessze be **alkalmazás összevonási metaadatainak URL-címe** érték, amely az Azure Portalon, majd kattintson a másolta a **megoldásához** gombra. Ez olvassa be az identitásszolgáltató metaadatok URL-címet, és tölti fel a mezők adatai.
 
-    b. Másolás a **azonosítóját, a válasz URL-cím és a bejelentkezési URL** értéket, majd illessze be őket a **azonosítóját, a válasz URL-cím és a bejelentkezési URL** rendre a szövegmezőből **alapszintű SAML-konfigurációja** a szakasz az Azure Portalon.
+    1. Másolás a **azonosítóját, a válasz URL-cím és a bejelentkezési URL** értéket, majd illessze be őket a **azonosítóját, a válasz URL-cím és a bejelentkezési URL** rendre a szövegmezőből **alapszintű SAML-konfigurációja** a szakasz az Azure Portalon.
 
-    c. A **bejelentkezési gomb neve** írja be a szervezet azt szeretné, tekintse meg a bejelentkezési képernyőn a felhasználók gomb felirata.
+    1. A **bejelentkezési gomb neve** írja be a szervezet azt szeretné, tekintse meg a bejelentkezési képernyőn a felhasználók gomb felirata.
 
-    d. A **SAML felhasználói azonosító helyek**, válassza **felhasználói Azonosítóját a tulajdonos utasítás NameIdentifier elemében van** vagy **felhasználói azonosító szerepel egy attribútumelem**.  Ez az azonosító azt kell az való összefolyás felett felhasználói azonosítóját. Ha a felhasználói azonosító nem egyezik, majd rendszer nem engedélyezi felhasználók jelentkezhetnek be. 
+    1. A **SAML felhasználói azonosító helyek**, válassza **felhasználói Azonosítóját a tulajdonos utasítás NameIdentifier elemében van** vagy **felhasználói azonosító szerepel egy attribútumelem**.  Ez az azonosító azt kell az való összefolyás felett felhasználói azonosítóját. Ha a felhasználói azonosító nem egyezik, majd rendszer nem engedélyezi felhasználók jelentkezhetnek be. 
 
-    > [!Note]
-    > Alapértelmezett SAML Felhasználóazonosító helye alkalmazásnév-azonosító. Egy attribútum beállítást módosíthatja, és adja meg a megfelelő attribútum nevét.
+       > [!Note]
+       > Alapértelmezett SAML Felhasználóazonosító helye alkalmazásnév-azonosító. Egy attribútum beállítást módosíthatja, és adja meg a megfelelő attribútum nevét.
     
-    e. Ha **felhasználói azonosító szerepel egy attribútumelem** lehetőség, ezt a **attribútum neve** szövegmezőbe írja be a nevét, ahol a felhasználói azonosító várható. 
+    1. Ha **felhasználói azonosító szerepel egy attribútumelem** lehetőség, ezt a **attribútum neve** szövegmezőbe írja be a nevét, ahol a felhasználói azonosító várható. 
 
-    f. Ha az összevont tartományt (például AD FS stb.) az Azure ad-vel használ, majd kattintson a a **engedélyezése a Kezdőtartomány felderítésének** lehetőséget, majd konfigurálja a **tartománynév**.
+    1. Ha az összevont tartományt (például AD FS stb.) az Azure ad-vel használ, majd kattintson a a **engedélyezése a Kezdőtartomány felderítésének** lehetőséget, majd konfigurálja a **tartománynév**.
     
-    g. A **tartománynév** írja be a tartomány nevét itt az AD FS-alapú bejelentkezés esetén.
+    1. A **tartománynév** írja be a tartomány nevét itt az AD FS-alapú bejelentkezés esetén.
 
-    h. Ellenőrizze **meg az egyszeri bejelentkezés engedélyezése** való jelentkezzen ki, amikor egy felhasználó kijelentkezik való összefolyás felett az Azure AD-ből szeretné. 
+    1. Ellenőrizze **meg az egyszeri bejelentkezés engedélyezése** való jelentkezzen ki, amikor egy felhasználó kijelentkezik való összefolyás felett az Azure AD-ből szeretné. 
 
-    i. Kattintson a **mentése** gombra kattintva mentse a beállításokat.
+    1. Engedélyezése **kényszerített Azure bejelentkezési** jelölőnégyzetet, ha szeretne bejelentkezni az Azure AD-n keresztül csak hitelesítő adatait.
+    
+       > [!Note]
+       > Az alapértelmezett bejelentkezési űrlap a bejelentkezési oldalon a rendszergazdai bejelentkezési engedélyezése, ha a kényszerített azure bejelentkezés engedélyezve van, adja hozzá a lekérdezési paraméter a böngésző URL-CÍMÉT.
+       > `https://<domain:port>/login.action?force_azure_login=false`
+    
+    1. Kattintson a **mentése** gombra kattintva mentse a beállításokat.
 
-    > [!NOTE]
-    > Telepítési és hibaelhárítási kapcsolatos további információkért látogasson el [MS való összefolyás felett SSO összekötő rendszergazdai útmutató](../ms-confluence-jira-plugin-adminguide.md) , és nincs is [– gyakori kérdések](../ms-confluence-jira-plugin-faq.md) a segítségért
+       > [!NOTE]
+       > Telepítési és hibaelhárítási kapcsolatos további információkért látogasson el [MS való összefolyás felett SSO összekötő rendszergazdai útmutató](../ms-confluence-jira-plugin-adminguide.md). Emellett van egy [– gyakori kérdések](../ms-confluence-jira-plugin-faq.md) a segítségét.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 

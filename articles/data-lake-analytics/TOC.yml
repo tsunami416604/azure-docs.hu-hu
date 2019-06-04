@@ -48,6 +48,8 @@
           href: data-lake-analytics-diagnostic-logs.md
         - name: A kvótakorlátok beállítása
           href: data-lake-analytics-quota-limits.md
+        - name: Vészhelyreállítás tervezése
+          href: data-lake-analytics-disaster-recovery.md
     - name: U-SQL-programok fejlesztése
       items:
         - name: U-SQL nyelv

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/08/2019
 ms.author: edjez
-ms.openlocfilehash: b0dc8fbbb80a4d03b2cb64d09ffe9a36883c5bf9
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: a7f6c6fe25bf9dff2f102080f93fc1e0024ac660
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521373"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478630"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>Gyors útmutató: Személyre szabhatja a tartalom használatávalC# 
 
@@ -40,7 +40,9 @@ Ismerkedés a Personalizer az alábbi lépésekből áll:
 
 ## <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriság módosítása
 
-Az Azure Portalon Personalizer erőforrások esetén módosítsa a **modell frissítési gyakoriság** 10 másodperc. Ez lesz betanítása a szolgáltatás gyors, így láthatja, hogyan változik a top művelet minden egyes ismétléskor
+Az Azure Portalon Personalizer erőforrások esetén módosítsa a **modell frissítési gyakoriság** 10 másodperc. Ez lesz betanítása a szolgáltatás gyors, így láthatja, hogyan változik a top művelet minden egyes ismétléskor.
+
+Először példányosítása Personalizer hurkot, amikor nincs nincs modell óta módosították a betanításához ellenszolgáltatás API-hívásokat. Az egyes elemekhez egyenlő valószínűségek rangsorolják hívások adja vissza. Az alkalmazás továbbra is minden esetben kell rangsor tartalom használatával RewardActionId kimenetét.
 
 ![Modell frissítési gyakoriság módosítása](./media/settings/configure-model-update-frequency-settings.png)
 

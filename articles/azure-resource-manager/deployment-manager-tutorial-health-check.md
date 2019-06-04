@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 05/06/2019
+ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8ffc64359faab539ab74e354caad4081f31fcd43
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d43a0e7c48db9dd42c7cf3b52e5d4072a4827898
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790128"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479179"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Oktatóanyag: Állapot-ellenőrzése az Azure Deployment Manager (nyilvános előzetes verzió) használata
 
@@ -50,18 +50,18 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 * Teljes [használata az Azure Deployment Manager Resource Manager-sablonokkal](./deployment-manager-tutorial.md).
-* Töltse le [a sablonok és összetevők](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) , amely ebben az oktatóanyagban használja. 
+* Töltse le [a sablonok és összetevők](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) , amely ebben az oktatóanyagban használja.
 
 ## <a name="create-a-health-check-service-simulator"></a>Hozzon létre a szolgáltatás szimulátort állapotának ellenőrzése
 
-Éles környezetben általában használhat egy vagy több figyelési szolgáltatót. Annak érdekében, hogy lehető egészségügyi integráció, a Microsoft dolgozott a egyes felső szolgáltatás állapotfigyelési cégeket azzal, hogy Ön egy egyszerű, másolási és beillesztési megoldással állapot-ellenőrzések integrálhatja az üzemelő példányok. Ezek a vállalatok listáját lásd: [állapotfigyelési szolgáltatók](./deployment-manager-health-check.md#health-monitoring-providers). A jelen oktatóanyag létrehoz egy [Azure-függvény](/azure/azure-functions/) egy állapotfigyelő szolgáltatás szimulálásához. Ez a függvény állapotkódot vesz igénybe, és ugyanazt a kódot adja vissza. Az Azure Deployment Manager-sablon az üzembe helyezést, hogyan lehet az állapotkódot használja. 
+Éles környezetben általában használhat egy vagy több figyelési szolgáltatót. Annak érdekében, hogy lehető egészségügyi integráció, a Microsoft dolgozott a egyes felső szolgáltatás állapotfigyelési cégeket azzal, hogy Ön egy egyszerű, másolási és beillesztési megoldással állapot-ellenőrzések integrálhatja az üzemelő példányok. Ezek a vállalatok listáját lásd: [állapotfigyelési szolgáltatók](./deployment-manager-health-check.md#health-monitoring-providers). A jelen oktatóanyag létrehoz egy [Azure-függvény](/azure/azure-functions/) egy állapotfigyelő szolgáltatás szimulálásához. Ez a függvény állapotkódot vesz igénybe, és ugyanazt a kódot adja vissza. Az Azure Deployment Manager-sablon az üzembe helyezést, hogyan lehet az állapotkódot használja.
 
 A következő két fájlt az Azure-függvény üzembe helyezésére szolgálnak. Nem kell letölteni ezeket a fájlokat az oktatóanyagot.
 
-* A Resource Manager-sablon található [ https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json ](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Azure-függvény létrehozása a sablon központi telepítése.  
-* Az Azure-függvény-forráskódot zip-fájlban [ http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](http://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip). A zip nevű hívja meg a Resource Manager-sablon.
+* A Resource Manager-sablon található [ https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json ](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Azure-függvény létrehozása a sablon központi telepítése.
+* Az Azure-függvény-forráskódot zip-fájlban [ http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). A zip nevű hívja meg a Resource Manager-sablon.
 
-Az Azure-függvény üzembe helyezéséhez válassza **kipróbálás** nyissa meg az Azure Cloud shellt, és illessze be a következő szkriptet a shell ablakába.  Illessze be a kódot, kattintson a jobb gombbal a rendszerhéj ablakát, és jelölje ki **illessze be**. 
+Az Azure-függvény üzembe helyezéséhez válassza **kipróbálás** nyissa meg az Azure Cloud shellt, és illessze be a következő szkriptet a shell ablakába.  Illessze be a kódot, kattintson a jobb gombbal a rendszerhéj ablakát, és jelölje ki **illessze be**.
 
 > [!IMPORTANT]
 > **Projektnév** a PowerShell parancsfájl létrehozásához ebben az oktatóanyagban üzembe helyezett Azure-szolgáltatások neveit használja. Különböző Azure-szolgáltatásokat van eltérő követelmények vonatkoznak a nevek alapján. Annak érdekében, hogy a központi telepítés sikeres-e, válassza ki egy legalább 12 karakter csak kisbetűket és számokat a nevét.
@@ -81,7 +81,7 @@ Győződjön meg arról, és az Azure-függvény teszteléséhez:
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. Nyissa meg az erőforráscsoportot.  Alapértelmezés szerint ez a projekt nevére a **rg** hozzáfűzve.
 1. Válassza ki az app Service-ben az erőforráscsoportból.  Az app service alapértelmezett név a projekt nevére a **webapp** hozzáfűzve.
-1. Bontsa ki a **funkciók**, majd válassza ki **HttpTrigger1**. 
+1. Bontsa ki a **funkciók**, majd válassza ki **HttpTrigger1**.
 
     ![Az Azure Deployment Manager állapot-ellenőrzése az Azure-függvény](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
@@ -178,7 +178,7 @@ Ez a szakasz az a célja, hogy bemutatják, hogyan foglalhat bele egy állapot-e
     },
     ```
 
-    A definíció alapján a bevezetés folytatja-e az állapot vagy *kifogástalan* vagy *figyelmeztetés*. 
+    A definíció alapján a bevezetés folytatja-e az állapot vagy *kifogástalan* vagy *figyelmeztetés*.
 
 1. Frissítés a **dependsON** a bevezetési definícióját tartalmazza az újonnan definiált állapot-ellenőrzési lépést:
 
@@ -189,7 +189,7 @@ Ez a szakasz az a célja, hogy bemutatják, hogyan foglalhat bele egy állapot-e
     ],
     ```
 
-1. Frissítés **stepGroups** tartalmazza az állapot-ellenőrzési lépést. A **healthCheckStep** neve **postDeploymentSteps** , **stepGroup2**. **stepGroup3** és **stepGroup4** csak vannak telepítve, ha a megfelelő állapot *kifogástalan* vagy *figyelmeztetés*. 
+1. Frissítés **stepGroups** tartalmazza az állapot-ellenőrzési lépést. A **healthCheckStep** neve **postDeploymentSteps** , **stepGroup2**. **stepGroup3** és **stepGroup4** csak vannak telepítve, ha a megfelelő állapot *kifogástalan* vagy *figyelmeztetés*.
 
     ```json
     "stepGroups": [
@@ -265,7 +265,7 @@ Az erőforrások megjelenítéséhez be kell jelölnie a **Rejtett típusok megj
 
 ## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>A bevezetés nem kifogástalan állapotú üzembe helyezése
 
-Az oktatóanyag leegyszerűsítése a módosított bevezetési sablon megosztott a következő helyen található, hogy nem kell előkészíteni a saját példányát. Ha szeretné használni a saját, kövesse a [oktatóanyag: Az Azure Deployment Manager használata a Resource Manager-sablonok](./deployment-manager-tutorial.md).
+Az oktatóanyag leegyszerűsítése a módosított bevezetési sablon megosztott a következő helyeken, hogy nem kell előkészíteni a saját példányát. Ha szeretné használni a saját, kövesse a [oktatóanyag: Az Azure Deployment Manager használata a Resource Manager-sablonok](./deployment-manager-tutorial.md).
 
 * Topológia sablon: https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
 * Összetevők tároló: https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
@@ -394,7 +394,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
     * **&lt;namePrefix>ServiceWUSrg**: A ServiceWUS által definiált erőforrásokat tartalmazza.
     * **&lt;namePrefix>ServiceEUSrg**: A ServiceEUS által definiált erőforrásokat tartalmazza.
     * A felhasználó által meghatározott felügyelt identitás erőforráscsoportja.
-3. Válassza ki az erőforráscsoport nevét.  
+3. Válassza ki az erőforráscsoport nevét.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 5. Ennek a két lépésnek az ismétlésével törölje az oktatóanyagban létrehozott több erőforráscsoportot is.
 

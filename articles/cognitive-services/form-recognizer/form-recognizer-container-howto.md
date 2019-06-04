@@ -7,19 +7,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
 ms.topic: overview
-ms.date: 05/28/2019
+ms.date: 05/31/2019
 ms.author: pafarley
-ms.openlocfilehash: f65375bfd826660f8583068875a1fddc545a86d7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1c9e68f643f27f70190b5847225692d554cc5480
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306534"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475441"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Telepítse és futtassa az űrlap felismerő tárolók
 Űrlap felismerő gépi tanulási technológia azonosíthatja és kulcs-érték párok és táblák kinyerése űrlapok vonatkozik. Ez értékeket és hozzájuk táblabejegyzéseket társítja, és majd megjeleníti a strukturált adatok, amely tartalmazza a kapcsolatokat az eredeti fájl. Az egyéni űrlap felismerő modell annak érdekében, hogy csökkenthető, és könnyedén integrálhatja a munkafolyamat automation vagy más alkalmazásban egy egyszerű REST API használatával hívható meg. Csak öt dokumentumok (vagy egy üres képernyő) szükséges, így gyorsan, pontos eredményeket kaphat és fenntarthatja az adott tartalomra, nehéz kézi beavatkozás vagy kiterjedt data science szakértelem nélkül. Adatok címkézési vagy adatok jegyzet nem igényel.
 
-|Függvény|Funkciók|
+|Függvény|Szolgáltatások|
 |-|-|
 |Form Recognizer| <li>Folyamatok fájlokat, írja be a PDF-, PNG és JPG.<li>Egyéni modellek ugyanez az elrendezés legalább 5 űrlapokkal betanítja. <li>Kinyeri a kulcs-érték párok és a tábla adatait. <li>Használja a Cognitive Service számítógép Vision API RecognizeText és nyomtatott szöveg kinyerése űrlapok rendszerképek.<li>Jegyzet vagy címkézés nem igényel.|
 
@@ -69,7 +69,7 @@ Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek 
 
 Űrlap felismerő tárolórendszerképeket érhetők el.
 
-| Tároló | Adattár |
+| Tároló | Tárház |
 |-----------|------------|
 | cognitive-services-form-recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
 
@@ -114,9 +114,9 @@ Cserélje le ezeket a paramétereket a következő példában a saját értékei
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
-containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 --mount type=bind,source=c:\input,target=/input  \
 --mount type=bind,source=c:\output,target=/output \
+containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
 ApiKey={BILLING_KEY} \
@@ -142,6 +142,8 @@ Futtassa az első tároló 5000-es porton.
 
 ```bash 
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+--mount type=bind,source=c:\input,target=/input  \
+--mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \

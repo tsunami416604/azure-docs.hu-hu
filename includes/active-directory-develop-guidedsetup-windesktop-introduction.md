@@ -14,31 +14,31 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: f0cc888eaf3724737e9c868c69a641094a19348c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ae17ef749a353cd60227e31ba4dadf328b1dc935
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121584"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482299"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>A Microsoft Graph API hívása Windows asztali alkalmazások
 
-Ez az útmutató azt ismerteti, hogyan jogkivonatainak egy natív Windows asztali .NET (XAML) alkalmazás hozzáférési token lekérése, és hívja a Microsoft Graph API vagy más API-k, amelyek hozzáférést igényelnek egy Microsoft identitásplatformja v2.0-végpont (korábbi nevén az Azure AD) fejlesztők számára.
+Ez az útmutató azt ismerteti, hogyan natív Windows asztali .NET (XAML) alkalmazások használja a Microsoft Graph API meghívása a hozzáférési jogkivonatot. Az alkalmazás más API-k, amely a Microsoft identity platform hozzáférési jogkivonatok igényel a v2.0-végpont a fejlesztők is elérhető. Erre a platformra volt nevén Azure AD.
 
 Az útmutató befejezése után, az alkalmazás fogja tudni személyes fiókok (beleértve az Outlook.com-os, live.com, és mások) használó védett API hívása. Az alkalmazás is használja a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely az Azure Active Directory.  
 
 > [!NOTE]
-> Útmutató a Visual Studio 2015 Update 3 vagy a Visual Studio 2017 van szükség. Ezek egyikét nincs? [Töltse le az ingyenes Visual Studio 2017](https://www.visualstudio.com/downloads/).
+> Útmutató a Visual Studio 2015 Update 3 vagy a Visual Studio 2019 van szükség. Ezek egyikét nincs? [Töltse le az ingyenes Visual Studio 2019](https://www.visualstudio.com/downloads/).
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Ez az útmutató által létrehozott mintaalkalmazás működése
 
-![Bemutatja, hogyan jöjjön létre a mintaalkalmazás által ezen oktatóanyagok működik](./media/active-directory-develop-guidedsetup-windesktop-intro/windesktophowitworks.svg)
+![A mintaalkalmazás által ebben az oktatóanyagban létrehozott működését mutatja](./media/active-directory-develop-guidedsetup-windesktop-intro/windesktophowitworks.svg)
 
-A mintaalkalmazás által létrehozott, ez az útmutató a lehetővé teszi, hogy a Windows asztali alkalmazás, amely a Microsoft Graph API vagy egy webes API-t, amely a Microsoft identity platform végpont származó jogkivonatokat fogad el. Ebben a forgatókönyvben az engedélyezési fejléc via HTTP-kérelmekre vegyen fel egy token. A Microsoft-hitelesítési tár (MSAL) kezeli a token beszerzése és megújítása.
+A mintaalkalmazás által létrehozott, ez az útmutató a lehetővé teszi, hogy a Windows asztali alkalmazás, amely a Microsoft Graph API vagy egy webes API-t, amely a Microsoft identitásplatformjához végpontról jogkivonatokat fogad. Ebben a forgatókönyvben az engedélyezési fejléc via HTTP-kérelmekre vegyen fel egy token. A Microsoft-hitelesítési tár (MSAL) kezeli a token beszerzése és megújítása.
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Kezelési eléréséhez token beszerzése által védett webes API-k
 
-A felhasználó hitelesítése után a mintaalkalmazás kap egy jogkivonatot, amely a Microsoft Graph API vagy a fejlesztők a Microsoft identity platform által védett webes API lekérdezéséhez használható.
+A felhasználó hitelesítése után a mintaalkalmazás kap egy tokent a Microsoft Graph API vagy a fejlesztők a Microsoft identity platform által védett webes API lekérdezéséhez használhatja.
 
 Például a Microsoft Graph API-k az adott erőforrásokhoz való hozzáférés engedélyezése egy tokent igényelnek. Például egy jogkivonatot szükség a felhasználói profil olvasása, a felhasználó naptár elérésére vagy e-mailt. Az alkalmazás egy hozzáférési jogkivonatot kérhet erőforrások eléréséhez az API-hatókörök megadásával az MSAL használatával. A hozzáférési jogkivonatot a HTTP-hitelesítési fejléchez, a védett erőforráson végrehajtott minden hívás kerül.
 
@@ -48,6 +48,6 @@ MSAL gyorsítótárazását és hozzáférési tokenek frissítése, kezeli, íg
 
 Ez az útmutató a következő NuGet-csomagok használja:
 
-|Szalagtár|Leírás|
+|Erőforrástár|Leírás|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|A Microsoft-hitelesítési tár (MSAL.NET)|
