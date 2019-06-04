@@ -111,7 +111,7 @@
           items:
             - name: Kezelés az Azure Portalon
               href: data-box-portal-ui-admin.md
-            - name: A lemezzel kapcsolatos problémák elhárítása
+            - name: Data Box Heavy-problémák elhárítása
               href: data-box-disk-troubleshoot.md
             - name: Kapcsolatfelvétel a támogatási szolgáltatással
               href: data-box-disk-contact-microsoft-support.md
@@ -121,12 +121,32 @@
           items:
             - name: Mi az a Data Box Heavy?
               href: data-box-heavy-overview.md
+        - name: Oktatóanyagok
+          items:
+            - name: 1 – Rendelés
+              href: data-box-heavy-deploy-ordered.md
+            - name: 2 – Beállítás
+              href: data-box-heavy-deploy-set-up.md
+            - name: 3 – Csatlakozás és másolás
+              items:
+                - name: SMB-n keresztül
+                  href: data-box-heavy-deploy-copy-data.md
+            - name: '4 – Visszaküldés, feltöltés, ellenőrzés'
+              href: data-box-heavy-deploy-picked-up.md
         - name: Alapelvek
           items:
             - name: Követelmények áttekintése
               href: data-box-heavy-system-requirements.md
             - name: A korlátozások ismertetése
               href: data-box-heavy-limits.md
+        - name: Útmutató
+          items:
+            - name: Kezelés az Azure Portalon
+              href: data-box-portal-admin.md
+            - name: Eszközökkel kapcsolatos problémák elhárítása
+              href: data-box-troubleshoot.md
+            - name: Kapcsolatfelvétel a támogatási szolgáltatással
+              href: data-box-disk-contact-microsoft-support.md
     - name: További források
       items:
         - name: Data Box-termék

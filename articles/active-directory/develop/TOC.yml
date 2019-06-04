@@ -229,8 +229,6 @@
                   href: msal-js-initializing-client-applications.md
             - name: Hibák és kivételek kezelése
               href: msal-handling-exceptions.md
-            - name: MSAL-alkalmazások tesztelése
-              href: msal-testing.md
             - name: Naplózás
               href: msal-logging.md
             - name: Egyszeri bejelentkezés (JS)
@@ -366,6 +364,12 @@
                   href: msal-net-user-gets-consent-for-multiple-resources.md
                 - name: Adja meg a saját HttpClient objektumát
                   href: msal-net-provide-httpclient.md
+            - name: MSAL.js
+              items:
+                - name: Lapújrabetöltések elkerülése
+                  href: msal-js-avoid-page-reloads.md
+                - name: Egyéni állapot átadása hitelesítésé kérelmekben
+                  href: msal-js-pass-custom-state-authentication-request.md
         - name: A Visual Studio használata
           items:
             - name: Az Active Directory csatlakoztatott szolgáltatás használata

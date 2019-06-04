@@ -101,7 +101,7 @@
       href: sql-database-get-started-sql-data-sync.md
     - name: Machine Learning Services
       items:
-        - name: Prediktív modell létrehozása és üzembe helyezése R nyelven
+        - name: Prediktív modell létrehozása R nyelven
           items:
             - name: 1 – Az adatok előkészítése
               href: sql-database-tutorial-predictive-model-prepare-data.md
@@ -109,6 +109,14 @@
               href: sql-database-tutorial-predictive-model-build-compare.md
             - name: 3 – A modell üzembe helyezése
               href: sql-database-tutorial-predictive-model-deploy.md
+        - name: Csoportosítási modell létrehozása R nyelven
+          items:
+            - name: 1 – Az adatok előkészítése
+              href: sql-database-tutorial-clustering-model-prepare-data.md
+            - name: 2 – A modell létrehozása
+              href: sql-database-tutorial-clustering-model-build.md
+            - name: 3 – A modell üzembe helyezése
+              href: sql-database-tutorial-clustering-model-deploy.md
 - name: Példák
   items:
     - name: Kódminták

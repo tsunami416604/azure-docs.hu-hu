@@ -222,6 +222,8 @@
           displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
         - name: Forgatókönyvek rendelkezésre állása
           href: scenario-availability.md
+        - name: Alkalmazáskészítés
+          href: ship-application.md
         - name: Kibocsátási megjegyzések
           href: releasenotes.md
         - name: C++

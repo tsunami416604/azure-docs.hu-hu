@@ -66,7 +66,7 @@ Az Oracle-beli társított szolgáltatás a következő tulajdonságok támogato
 
 **Oracle kapcsolati titkosításának**, két lehetősége van:
 
-1.  Használandó **háromszoros DES-titkosítás (3DES) és Advanced Encryption Standard (AES)**, Oracle-kiszolgáló oldalán, nyissa meg az Oracle speciális biztonsági (OAS), és a titkosítási beállításainak konfigurálása, tekintse meg a részleteket [Itt](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Az ADF Oracle-összekötő automatikusan egyezteti OAS Oracle-kapcsolat létesítéséhez konfigurálja egy használandó titkosítási módszer.
+1.  Használandó **háromszoros DES-titkosítás (3DES) és Advanced Encryption Standard (AES)** , Oracle-kiszolgáló oldalán, nyissa meg az Oracle speciális biztonsági (OAS), és a titkosítási beállításainak konfigurálása, tekintse meg a részleteket [Itt](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Az ADF Oracle-összekötő automatikusan egyezteti OAS Oracle-kapcsolat létesítéséhez konfigurálja egy használandó titkosítási módszer.
 
 2.  Használandó **SSL**, kövesse az alábbi lépéseket:
 
@@ -284,13 +284,13 @@ Oracle és a másolt adatok, Data Factory-közbenső adattípusok a következő 
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| LEBEGŐPONTOS |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
-| INTEGER |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
+| FLOAT |Decimal, String (Ha a pontosság > 28) |
+| INTEGER |Decimal, String (Ha a pontosság > 28) |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| SZÁM |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
+| NUMBER |Decimal, String (Ha a pontosság > 28) |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |

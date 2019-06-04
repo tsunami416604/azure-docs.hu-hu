@@ -205,6 +205,8 @@
               href: devtest-lab-announcements.md
             - name: Támogatási információ hozzáadása tesztkörnyezethez
               href: devtest-lab-internal-support-message.md
+            - name: Megosztott rendszerkép-katalógus konfigurálása az Azure DevTest Labsben
+              href: configure-shared-image-gallery.md
         - name: Egyéni rendszerkép vagy képlet kiválasztása
           href: devtest-lab-comparing-vm-base-image-types.md
         - name: Egyéni rendszerképek kezelése

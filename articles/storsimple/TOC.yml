@@ -87,14 +87,16 @@
           href: storsimple-ova-web-ui-admin.md
     - name: Kibocsátási megjegyzések
       items:
-        - name: 1.1-es frissítés – aktuális
+        - name: 1.2-es frissítés
+          href: storsimple-virtual-array-update-12-release-notes.md
+        - name: 1.1-es frissítés
           href: storsimple-virtual-array-update-11-release-notes.md
         - name: 1. frissítés
           href: storsimple-virtual-array-update-1-release-notes.md
-        - name: 0.6-os frissítés
-          href: storsimple-virtual-array-update-06-release-notes.md
         - name: Archívum
           items:
+            - name: 0.6-os frissítés
+              href: storsimple-virtual-array-update-06-release-notes.md
             - name: 0.5-ös frissítés
               href: storsimple-virtual-array-update-05-release-notes.md
             - name: 0.4-es frissítés
@@ -103,7 +105,7 @@
               href: storsimple-ova-update-03-release-notes.md
             - name: 0.2-es és 0.1-es frissítés
               href: storsimple-ova-update-01-release-notes.md
-- name: StorSimple 8000 sorozat (Azure Portal)
+- name: StorSimple 8000 sorozat
   items:
     - name: Áttekintés
       items:

@@ -275,6 +275,8 @@
           href: storage-blob-event-overview.md
         - name: Lapblobok funkciói
           href: storage-blob-pageblob-overview.md
+        - name: Statikus webhelyek
+          href: storage-blob-static-website.md
     - name: Útmutató
       items:
         - name: Tárfiókok létrehozása és kezelése
@@ -353,7 +355,7 @@
         - name: Tulajdonságok és metaadatok beállítása és lekérése
           href: storage-properties-metadata.md
         - name: Statikus webhely üzemeltetése
-          href: storage-blob-static-website.md
+          href: storage-blob-static-website-how-to.md
         - name: Az Azure CDN leképezése egyéni tartományra HTTPS-en keresztüli hozzáféréshez
           href: storage-https-custom-domain-cdn.md
         - name: Egyéni tartomány konfigurálása

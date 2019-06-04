@@ -22,6 +22,8 @@
   items:
     - name: Egyszeri bejelentkezés a helyszíni erőforrásokba
       href: azuread-join-sso.md
+    - name: Elsődleges frissítési jogkivonatok
+      href: concept-primary-refresh-token.md
     - name: Felügyelt Azure-munkaállomások
       href: concept-azure-managed-workstation.md
 - name: Útmutatók
@@ -35,7 +37,7 @@
       href: azureadjoin-plan.md
     - name: A hibrid Azure AD-csatlakozás implementálásának megtervezése
       href: hybrid-azuread-join-plan.md
-    - name: Az eszközök hibrid Azure AD-csatlakozásának vezérlése
+    - name: Hibrid Azure AD-csatlakozás szabályozott ellenőrzése
       href: hybrid-azuread-join-control.md
     - name: Helyi rendszergazdák hozzárendelése Azure AD-csatlakoztatott eszközökhöz
       href: assign-local-admin.md

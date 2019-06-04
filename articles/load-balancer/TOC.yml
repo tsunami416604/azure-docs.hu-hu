@@ -18,6 +18,9 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Standard Load Balancer létrehozása – Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
+    - name: Standard Load Balancer létrehozása – Azure Resource Manager-sablon
+      displayName: ARM
+      href: quickstart-load-balancer-standard-public-template.md
 - name: Oktatóanyagok
   items:
     - name: Virtuális gépek internetes forgalmának terheléselosztása
