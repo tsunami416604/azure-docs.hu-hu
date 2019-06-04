@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/10/2019
+ms.date: 05/30/2019
 ms.author: tulasim
-ms.openlocfilehash: 2454e07e4fc4600f846acc7afbcc19cc0b677450
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3088d0f161496cfd2e1cb8897cef36365ece9962
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792236"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496962"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>A Tudásbázis válasz GenerateAnswer API és metaadatok beolvasása
 
@@ -78,14 +78,15 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 
 JSON-törzse többféle beállításokkal rendelkezik:
 
-|JSON-törzse tulajdonság|Szükséges|Típus|Cél|
+|JSON-törzse tulajdonság|Kötelező|Típus|Cél|
 |--|--|--|--|
-|`question`|szükséges|string|Egy felhasználó kérdést kell küldeni a tudásbázist.|
-|`top`|választható|egész szám|A kimenetben: rangsorolt eredmények száma. Az alapértelmezett érték az 1.|
-|`userId`|választható|string|Azonosíthatja a felhasználó egyedi azonosítója. Ezt az Azonosítót a csevegési naplók lesznek rögzítve.|
-|`scoreThreshold`|választható|egész szám|Csak azokat a válaszokat, a rendszer magabiztossági pontszámot a küszöbérték fölött lesz visszaadva. Az alapértelmezett érték a 0.|
-|`isTest`|választható|logikai|Ha igaz érték esetén eredményét adja vissza `testkb` Search-index közzétett index helyett.|
-|`strictFilters`|választható|string|Ha meg van adva, arra utasítja a QnA Maker, a választ csak, amelyek rendelkeznek a megadott metaadatok. Használat `none` jelzi a válasz nem fájlmetaadat-szűrők kell rendelkeznie. |
+|`question`|Szükséges|string|Egy felhasználó kérdést kell küldeni a tudásbázist.|
+|`top`|Nem kötelező|egész szám|A kimenetben: rangsorolt eredmények száma. Az alapértelmezett érték az 1.|
+|`userId`|Nem kötelező|string|Azonosíthatja a felhasználó egyedi azonosítója. Ezt az Azonosítót a csevegési naplók lesznek rögzítve.|
+|`scoreThreshold`|Nem kötelező|egész szám|Csak azokat a válaszokat, a rendszer magabiztossági pontszámot a küszöbérték fölött lesz visszaadva. Az alapértelmezett érték a 0.|
+|`isTest`|Nem kötelező|logikai|Ha igaz érték esetén eredményét adja vissza `testkb` Search-index közzétett index helyett.|
+|`strictFilters`|Nem kötelező|string|Ha meg van adva, arra utasítja a QnA Maker, a választ csak, amelyek rendelkeznek a megadott metaadatok. Használat `none` jelzi a válasz nem fájlmetaadat-szűrők kell rendelkeznie. |
+|`RankerType`|Nem kötelező|string|Ha a megadott `QuestionOnly`, arra utasítja a QnA Maker kérdések csak kereséséhez. Ha nincs megadva, a QnA Maker kérdéseket és válaszokat keres.
 
 Egy példa JSON-törzse hasonlóan néz ki:
 
@@ -113,13 +114,13 @@ A sikeres válasz állapota 200-as és a egy JSON-választ adja vissza.
 |Válaszok tulajdonság (pontszám szerint rendezve)|Cél|
 |--|--|
 |pontszám|0 és 100 közötti rangsorolási pontszám.|
-|Azonosító|A válasz rendelt egyedi azonosítója.|
+|Id|A válasz rendelt egyedi azonosítója.|
 |Kérdések|A felhasználó által megadott kérdéseket.|
 |Válasz|A választ a kérdésére.|
 |source|A forrás, amelyről a választ ki kell olvasni vagy menti a Tudásbázis neve.|
 |metaadatok|A válasz társított metaadatokat.|
 |metadata.name|Metaadat-neve. (karakterlánc, a maximális hossz: 100, a szükséges)|
-|metadata.value: Metaadat-értékben. (karakterlánc, a maximális hossz: 100, a szükséges)|
+|Metadata.Value|Metaadat-értékben. (karakterlánc, a maximális hossz: 100, a szükséges)|
 
 
 ```json
@@ -172,7 +173,7 @@ Mivel eredményei csak az étterem egyik "Paradicsom" szükséges, beállíthat 
 }
 ```
 
-<name="keep-context"></a>
+<a name="keep-context"></a>
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Kérdést és választ eredmények beszélgetés környezet használata
 
@@ -201,6 +202,21 @@ A GenerateAnswer adott válasz tartalmazza az egyező kérdés-válasz készlet 
             ]
         }
     ]
+}
+```
+
+## <a name="match-questions-only-by-text"></a>Kérdések, csak megfelelő szöveg szerint
+
+Alapértelmezés szerint a QnA Maker – kérdések és válaszok keres. Ha azt szeretné, csak a kérdések keresgélnie, készítése a választ valamely kérdésre, használja a `RankerType=QuestionOnly` a GenerateAnswer kérelem bejegyzés törzse.
+
+A közzétett kb is kereshet használatával `isTest=false`, vagy a tesztelési kb használatával `isTest=true`.
+
+```json
+{
+  "question": "Hi",
+  "top": 30,
+  "isTest": true,
+  "RankerType":"QuestionOnly"
 }
 ```
 

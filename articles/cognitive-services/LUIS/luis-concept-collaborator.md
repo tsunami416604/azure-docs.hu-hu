@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 8c2ed8932e67a2e0c83fe4e3fdf6783c24e56a6e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 294905ccfd0ce8db6da8737277b0ce978ba837ea
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956977"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473512"
 ---
 # <a name="collaborating-with-other-authors"></a>A többi szerzőjének közreműködő
 
@@ -31,7 +31,7 @@ Lásd: [Azure Active Directory-bérlő felhasználói](luis-how-to-collaborate.m
 
 ## <a name="luis-app-owner"></a>A LUIS alkalmazás tulajdonosa
 
-A fiók, amely létrehoz egy alkalmazást a tulajdonosa, és minden alkalmazás rendelkezik egy egyetlen tulajdonosa. Az alkalmazás megjelenik a tulajdonos **[beállítások](luis-how-to-collaborate.md)** lapot. A tulajdonos törölheti az alkalmazást e-maileket kapni, amikor a végpont kvóta eléri 75 %-a havi korlátot. 
+A fiók, amely létrehoz egy alkalmazást a tulajdonosa, és minden alkalmazás rendelkezik egy egyetlen tulajdonosa. Az alkalmazás megjelenik a tulajdonos **[beállítások](luis-how-to-collaborate.md)** lapot. A tulajdonos e-mailt kap, a végpont kvóta elérésekor 75 %-a havi korlátot. 
 
 ## <a name="authorization-roles"></a>Engedély szerepkörök
 A LUIS tulajdonosok és a egy kivétellel közreműködők nem támogatja a különböző szerepköröket. Az egyetlen fiók, amely törölheti az alkalmazás tulajdonosa.
@@ -42,7 +42,7 @@ Ha érdekli a modellhez való hozzáférés szabályozása, fontolja meg, a mode
 A LUIS tulajdon-átruházás, nem biztosít, azonban bármely közreműködő alkalmazást, és ezután importálja azt az alkalmazás létrehozása. Vegye figyelembe, hogy az új alkalmazás rendelkezik egy másik alkalmazás. Az alkalmazás új betanított, közzé kell, és a használt új végpont.
 
 ## <a name="luis-app-collaborators"></a>A LUIS alkalmazás közreműködők
-Az alkalmazások tulajdonosai közreműködők is hozzáadhat egy alkalmazást. Adja hozzá a közreműködő e-mail címet az alkalmazás tulajdonosa kell  **[beállítások](luis-how-to-collaborate.md)**. A közreműködő, az alkalmazás teljes hozzáféréssel rendelkezik. A közreműködő törölheti az alkalmazást, ha az alkalmazás a közreműködőt fiókot eltávolítják, de a tulajdonos fiókja marad. 
+Az alkalmazások tulajdonosai közreműködők is hozzáadhat egy alkalmazást. Adja hozzá a közreműködő e-mail címet az alkalmazás tulajdonosa kell  **[beállítások](luis-how-to-collaborate.md)** . A közreműködő, az alkalmazás teljes hozzáféréssel rendelkezik. A közreműködő törölheti az alkalmazást, ha az alkalmazás a közreműködőt fiókot eltávolítják, de a tulajdonos fiókja marad. 
 
 Ha szeretné megosztani több alkalmazás közreműködőkkel együtt, a minden alkalmazás kell hozzá a közreműködő e-mail. 
 

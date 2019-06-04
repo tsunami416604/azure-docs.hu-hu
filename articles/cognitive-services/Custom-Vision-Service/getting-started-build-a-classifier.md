@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: d0f0f3b120187a7538989f219876a8c10569a98e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3cb67b57f406774b4bcaf57c24b8e7741068ced6
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051472"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497312"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>A Custom Vision besorolás létrehozása
 
@@ -28,7 +28,7 @@ Képek besorolása a Custom Vision Service használatához először egy osztál
 
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Egyéni vizuális erőforrások létrehozása az Azure Portalon
-A Custom Vision Service használatához szüksége lesz a Custom Vision betanítási és Predikciós erőforrások létrehozása a a a [az Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). Ezzel létrehoz egy tanítási és az előrejelzési erőforrás. 
+A Custom Vision Service használatához szüksége lesz a Custom Vision betanítási és Predikciós erőforrások létrehozása a [az Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). Ezzel létrehoz egy tanítási és az előrejelzési erőforrás. 
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
@@ -70,7 +70,7 @@ Annak érdekében, hogy hatékonyan modellje betanításához, használja a kép
 * Háttér
 * a Vizualizáció stílusa
 * személy vagy csoportosított subject(s)
-* méret
+* Méret
 * type
 
 Ezenkívül győződjön meg arról, mind a betanító kép a következő feltételeknek:

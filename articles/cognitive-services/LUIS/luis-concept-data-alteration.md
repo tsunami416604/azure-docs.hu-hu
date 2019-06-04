@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 3395283e6228d7203b2e835961914e2f167fa451
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 0648dd9bc93097d3c2433943f983b5e9d22f0279
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522396"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473506"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Az ALTER utterance (kifejezés) adatok előtt vagy közben előrejelzése
 A LUIS segítségével kezelheti az utterance (kifejezés) előtt vagy közben az előrejelzési módszert biztosít. Ezek közé tartozik a helyesírás-ellenőrzés és kijavítása prebuild datetimeV2 időzóna problémák kijavítása. 
@@ -74,7 +74,7 @@ https://{Region}.API.cognitive.microsoft.com/Luis/v2.0/Apps/{appId}?q=Turn LED? 
 https://{Region}.API.cognitive.microsoft.com/Luis/v2.0/Apps/{appId}?q=Turn LED? **timezoneOffset = 60**& részletes = {logikai} & helyesírás-ellenőrzés = {logikai} & átmeneti = {logikai} & bing – helyesírás-ellenőrzés-subscription-key = {string} nap & ló = {logikai}
 
 ## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C#-kód megfelelő timezoneOffset értékét határozza meg
-Az alábbi C#-kódot használ a [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo?view=netframework-4.7.1) osztályának [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=netframework-4.7.1#examples) meghatározni a megfelelő módszer `timezoneOffset` alapján a rendszer pontos ideje:
+Az alábbi C#-kódot használ a [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) osztályának [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) meghatározni a megfelelő módszer `timezoneOffset` alapján a rendszer pontos ideje:
 
 ```CSharp
 // Get CST zone id

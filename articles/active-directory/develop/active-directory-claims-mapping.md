@@ -118,7 +118,7 @@ Vannak bizonyos csoportok, amelyek meghatározzák, hogy mikor és hogyan haszn�
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
 | iat |
 | identityprovider |
-| idp |
+| identityprovider |
 | in_corp |
 | instance |
 | ipaddr |
@@ -289,7 +289,7 @@ Az azonosító elem azonosítja, mely tulajdonság a forrás az értéket ad meg
 | Felhasználó | Vezetéknév | Család neve |
 | Felhasználó | givenName | Utónév |
 | Felhasználó | DisplayName | Megjelenített név |
-| Felhasználó | objektumazonosító | ObjectID |
+| Felhasználó | oid | ObjectID |
 | Felhasználó | levelezés | E-mail-cím |
 | Felhasználó | userprincipalname | Egyszerű felhasználónév |
 | Felhasználó | Szervezeti egység|Részleg|
