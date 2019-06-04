@@ -101,7 +101,7 @@ Ha a forrás típusa van **RelationalSource** (amely tartalmazza a PostgreSQL), 
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
+| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
 
 > [!NOTE]
 > Séma-és tábla-és nagybetűk. Tegye őket a `""` (dupla idézőjel) a lekérdezésben.
