@@ -92,7 +92,7 @@ A HDInsight Pig-tevékenység az adat-előállító [folyamat](data-factory-crea
 | outputs |Egy vagy több, a Pig-tevékenység által előállított kimeneti |Igen |
 | linkedServiceName |A HDInsight-fürt a Data Factory társított szolgáltatásként regisztrált mutató hivatkozás |Igen |
 | script |Adja meg a Pig-parancsprogram beágyazott |Nem |
-| parancsprogram elérési útja |A Pig-parancsprogram Store egy Azure blob Storage, és adja meg a fájl elérési útját. Használja a "script" vagy "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájlnév formátuma a kis-és nagybetűket. |Nem |
+| script path |A Pig-parancsprogram Store egy Azure blob Storage, és adja meg a fájl elérési útját. Használja a "script" vagy "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájlnév formátuma a kis-és nagybetűket. |Nem |
 | defines |Adja meg a paramétereket a kulcs/érték párokként való belül a Pig-parancsprogram |Nem |
 
 ## <a name="example"></a>Példa
