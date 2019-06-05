@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: reference
-ms.date: 04/30/2019
+ms.date: 05/29/2019
 ms.author: sajagtap
-ms.openlocfilehash: 19144ae40e67127b656cedd61199b732b1c05e86
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f802c64e141e8757f633d82ad577fa50f7d076fc
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236607"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688888"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator API-referencia
 
-A következő módokon Ismerkedés az Azure Content Moderator API-kat:
+Akkor is Ismerkedés az Azure Content Moderator API-k az alábbi módokon:
 
 - Az Azure Portalon [fizessen elő a Content Moderator API](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
 - Lásd: [próbálja ki a Content Moderator, a weben](quick-start.md) regisztrálni a [Content Moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/).
@@ -37,7 +37,7 @@ A következő Content Moderator API-k segítségével a jóváhagyás utáni mun
 
 ## <a name="review-apis"></a>API-k áttekintése
 
-A felülvizsgálati API-t a következő összetevőket tartalmazza:
+A felülvizsgálati API-kkal rendelkezik a következő összetevők:
 
 | Leírás | Leírások |
 | -------------------- |-------------|

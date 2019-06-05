@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: b599beb6a8d14d0e62d236251fb5f5b1e1a8bcfd
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: fde10da8d46a3aa5d0163a89d1212911701c4b60
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496943"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693221"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Ajánlott eljárások a QnA Maker Tudásbázis
 A [Tudásbázis fejlesztési életciklus](../Concepts/development-lifecycle-knowledge-base.md) végigvezeti Önt a a KB-os kezelése az elejétől a végéig. Ajánlott eljárások használatával növelheti a Tudásbázis, és jobb eredményeket nyújt az application/csevegőrobot a végfelhasználók számára.
@@ -113,7 +113,7 @@ A QnA Maker lehetővé teszi a felhasználóknak [együttműködés](../How-to/c
 
 ## <a name="active-learning"></a>Aktív tanulás
 
-[Aktív tanulás](../How-to/improve-knowledge-base.md) does alternatív kérdések javasolása széles minőségét és a felhasználó-alapú lekérdezések mennyisége, ha a legjobb feladat. Fontos, hogy az ügyfél-alkalmazások felhasználói lekérdezések részt az aktív tanulás visszajelzési ciklus ellenőrzéstől nélkül. Kérdések a QnA Maker Portal használata javasolt, ha is **[javaslatok szűrés](../How-To/improve-knowledge-base.md#add-active-learning-suggestion-to-knowledge-base)** , majd tekintse át és fogadja el vagy elutasíthatja a szólhatnak. 
+[Aktív tanulás](../How-to/improve-knowledge-base.md) does alternatív kérdések javasolása széles minőségét és a felhasználó-alapú lekérdezések mennyisége, ha a legjobb feladat. Fontos, hogy az ügyfél-alkalmazások felhasználói lekérdezések részt az aktív tanulás visszajelzési ciklus ellenőrzéstől nélkül. Kérdések a QnA Maker Portal használata javasolt, ha is **[javaslatok szűrés](../How-To/improve-knowledge-base.md)** , majd tekintse át és fogadja el vagy elutasíthatja a szólhatnak. 
 
 ## <a name="next-steps"></a>További lépések
 

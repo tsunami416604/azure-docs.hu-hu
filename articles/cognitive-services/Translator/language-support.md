@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: v-pawal
-ms.openlocfilehash: 1cfe4038ff422ecba68f110707e9535226ccd4a5
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 924324b11f49a50bfb5f00e117b33c0cc572e3bb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472100"
+ms.locfileid: "66514985"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
@@ -35,7 +35,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 * Neurális alapértelmezett: Neurális, az alapértelmezett fordítási rendszer. Használja ezt a paramétert `category=smt` hozzáférhetnek a statisztikai rendszerhez a Microsoft Translator Hub való használatra.
 * Neurális csak: Csak a Neurális fordítással érhető el.
 
-**Translator API v3-as** a v3-as Translator API egy Neurális alapértelmezés szerint, és statisztikai rendszerek csak érhetők el, ha Neurális rendszert nem létezik. 
+**Translator API v3-as** a v3-as Translator API egy Neurális alapértelmezés szerint, és statisztikai rendszerek csak érhetők el, ha Neurális rendszert nem létezik.
 
 > [!NOTE]
 > Jelenleg egy részét a Neurális érhetők el egyéni Translator és fokozatosan hozzáadtunk további azokat. [Egyéni a fordítót a jelenleg elérhető nyelvek megtekintéséhez](#customization).
