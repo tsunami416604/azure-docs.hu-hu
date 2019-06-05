@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: 52b5291e4b56b5065b9dddd5b8908ade0c1a8387
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e37e99323c92adad0b9e897af8c276a8ac153371
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66019842"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515634"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Oktatóanyag: Vizuális felhasználói felülettel autó árát előrejelzése
 
@@ -80,11 +80,11 @@ Ha ez a rövid útmutató nem fejeződött be, kövesse az alábbi lépéseket g
 
 1. Új kísérlet létrehozása kiválasztásával **+ új** a vizuális felhasználói felületet ablak alján.
 
-1. Válassza ki **kísérlet** >  **üres kísérlet**.
+1. Válassza ki **kísérletek** >  **üres kísérlet**.
 
 1. Válassza ki a kísérlet alapértelmezett nevét **"végzett kísérletezést létrehozott az...** "a vászon tetején, és módosítsa valami értelmesebbre. Ha például **autó árának előrejelzése**. A névnek nem kell egyedinek lennie.
 
-1. A kísérletvászontól balra az adathalmazokat és modulokat tartalmazó paletta látható. Modulok megkereséséhez használja a keresőmezőt a modulpaletta tetején. Típus **autó** a keresőmezőbe keresése nevű adathalmazt **Automobile price data (Raw)**. Húzza rá az adathalmazt a kísérletvászonra.
+1. A kísérletvászontól balra az adathalmazokat és modulokat tartalmazó paletta látható. Modulok megkereséséhez használja a keresőmezőt a modulpaletta tetején. Típus **autó** a keresőmezőbe keresése nevű adathalmazt **Automobile price data (Raw)** . Húzza rá az adathalmazt a kísérletvászonra.
 
     ![Képernyőkép az autó árát adathalmaz megkeresése](./media/ui-tutorial-automobile-price-train-score/automobile-dataset.png)
 
@@ -167,7 +167,7 @@ Most, hogy a modell segítségével az adatok a 70 %-os már betanított, ezzel 
 
 1. Típus **pontszám modell** a keresőmezőbe keresése a **Score Model** modul, és húzza a modult a kísérletvászonra. Csatlakozzon a kimenetét a **tanítási modell** modul bal oldali bemeneti portjával **Score Model**. A tesztelési adatokat tartalmazó kimenetét (jobb oldali portját) a csatlakozás a **Split Data** modul jobb oldali bemeneti portjával **Score Model**.
 
-1. Típus **kiértékelése** a keresőmezőbe keresése a **Evaluate Model** , és húzza az informatikai modult a kísérletvászonra. Csatlakozzon a kimenetét a **Score Model** modul bal oldali bemenetével **Evaluate Model**. Az elkészült kísérletnek a következőképpen kell kinéznie:
+1. Típus **kiértékelése** a keresőmezőbe keresése a **Evaluate Model** és húzza a modult a kísérletvászonra. Csatlakozzon a kimenetét a **Score Model** modul bal oldali bemenetével **Evaluate Model**. Az elkészült kísérletnek a következőképpen kell kinéznie:
 
     ![Képernyőfelvétel: a kísérletet az utolsó konfigurációját.](./media/ui-tutorial-automobile-price-train-score/final-graph.png)
 
@@ -183,7 +183,7 @@ Most, hogy a modell segítségével az adatok a 70 %-os már betanított, ezzel 
 
 A modell a következő statisztikai adatok jelennek meg:
 
-* **Mean Absolute Error (MAE)**: A átlaga (hiba az előre jelzett érték és a tényleges érték közötti különbséget).
+* **Mean Absolute Error (MAE)** : A átlaga (hiba az előre jelzett érték és a tényleges érték közötti különbséget).
 * **Root Mean-hiba (Gyökátlagos) négyzet**: Az eltérések átlaga a tesztelési adathalmazon végzett előrejelzések négyzetgyökét.
 * **Relatív abszolút hiba**: Abszolút hibák tényleges értékek és az összes tényleges értékek átlaga közötti különbségek abszolút eltérésének átlaga.
 * **Relatív négyzet hiba**: Viszonyítva eltéréseinek és az összes tényleges értékek átlaga a tényleges értékek átlaga.

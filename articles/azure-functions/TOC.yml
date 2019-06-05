@@ -15,16 +15,6 @@
       href: functions-create-your-first-function-visual-studio.md
     - name: Függvény létrehozása – Visual Studio Code
       href: functions-create-first-function-vs-code.md
-    - name: Függvény létrehozása – Node.js és Visual Studio Code
-      items:
-        - name: Első lépések
-          href: tutorial-javascript-vscode-get-started.md
-        - name: Az alkalmazás létrehozása
-          href: tutorial-javascript-vscode-create-app.md
-        - name: Az alkalmazás helyi futtatása és tesztelése
-          href: tutorial-javascript-vscode-run-app.md
-        - name: A webhely üzembe helyezése
-          href: tutorial-javascript-vscode-deploy-app.md
     - name: Függvény létrehozása – Java/Maven
       href: functions-create-first-java-maven.md
     - name: Függvény létrehozása – Python

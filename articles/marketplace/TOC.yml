@@ -58,8 +58,6 @@
         - name: A Marketplace-ből származó előnyei
           href: ./gtm-your-marketplace-benefits.md
           items:
-            - name: Üzleti gyarapodás a Microsofttal
-              href: ./gtm-promote-your-business.md
             - name: Előnyben részesített megoldások
               href: ./preferred-solutions.md
             - name: Integrált megoldások

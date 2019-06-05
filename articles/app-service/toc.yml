@@ -19,16 +19,6 @@
       href: app-service-web-get-started-dotnet-framework.md
     - name: Node.js-alapú alkalmazás létrehozása
       href: app-service-web-get-started-nodejs.md
-    - name: Node.js-alapú alkalmazások létrehozása a Visual Studio Code használatával
-      items:
-        - name: Első lépések
-          href: tutorial-javascript-vscode-get-started.md
-        - name: Az alkalmazás létrehozása
-          href: tutorial-javascript-vscode-create-app.md
-        - name: A webhely üzembe helyezése
-          href: tutorial-javascript-vscode-deploy-app.md
-        - name: Naplók megjelenítése
-          href: tutorial-javascript-vscode-tail-logs.md
     - name: PHP-alkalmazás létrehozása
       href: app-service-web-get-started-php.md
     - name: Java-alkalmazás létrehozása

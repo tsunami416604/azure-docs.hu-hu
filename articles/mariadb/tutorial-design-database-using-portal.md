@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 1eb24d90c3aefa81f53a3e31c0bd460f45e5a250
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1938a84d3e9c0ba8c84cbdbd2eee5b7ca448554d
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626345"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515666"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Oktatóanyag: Egy Azure Database for MariaDB-adatbázis tervezése az Azure portal használatával
 
@@ -63,6 +63,9 @@ Az Azure Database for MariaDB-kiszolgálót [számítási és tárolási erőfor
     Tarifacsomag | Lásd a leírást. | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **Tarifacsomag** > **Általános célú** lehetőséget. A következő beállításoknál használja az alapértelmezett értékeket:<br><ul><li>**Számítási generáció** (Gen 5)</li><li>**virtuális mag** (4 mag)</li><li>**Tárolási** (100 GB)</li><li>**Biztonsági másolatok megőrzési időszaka** (7 nap)</li></ul><br>A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Georedundáns** lehetőséget a **Biztonsági másolat redundanciabeállításai** területen. <br><br>A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
     
    ![Tarifacsomag](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
+
+   > [!TIP]
+   > A **auto-növekedés** engedélyezve van a kiszolgáló tárterület is nő, amikor Ön hamarosan eléri a lefoglalt korlátot, a számítási feladatok befolyásolása nélkül.
 
 4. Kattintson a **Létrehozás** gombra. Egy-két percen belül már fut a felhőben egy új Azure Database for MariaDB-kiszolgáló. Az eszköztáron válassza az **Értesítések** elemet az üzembehelyezési folyamat nyomon követéséhez.
 
@@ -165,7 +168,7 @@ Tegyük fel, hogy véletlenül törölt egy fontos adatbázistáblát, és nem t
 
 1. Az Azure Portalon keresse meg az Azure Database for MariaDB-adatbázist. Az **áttekintő** oldalon válassza a **Visszaállítás** elemet.
 
-   ![Adatbázis helyreállítása](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
+   ![Adatbázis visszaállítása](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 
 2. A **Visszaállítás** lapon adja meg vagy válassza ki a következő információkat:
    

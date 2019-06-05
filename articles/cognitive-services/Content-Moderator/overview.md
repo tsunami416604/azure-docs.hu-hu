@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 7e9c12c7da701fb627c51373e57f870d3fc77ac5
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 14cf500cff9f1f7f8b1573862c3060326e6518fa
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551313"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688860"
 ---
 # <a name="what-is-azure-content-moderator"></a>Mi az az Azure Content Moderator?
 
@@ -25,11 +25,14 @@ Az Azure Content Moderator API egy olyan Cognitive Services-szolgáltatás, amel
 
 A szoftverfejlesztőknek vagy a csapatoknak például a következő néhány alkalmazási helyzetben érdemes használniuk a Content Moderatort:
 
-- Online piacterek, amelyek moderálják a termékkatalógusokat és más, a felhasználók által létrehozott tartalmakat
-- Játékcégek, amelyek moderálják a felhasználók által létrehozott játékösszetevőket és a csevegőszobákat
-- Közösségi üzenetkezelési platformok, amelyek moderálják a felhasználók által hozzáadott képeket, szövegeket és videókat
-- Médianagyvállalatok, amelyek központosított moderálást alkalmaznak a tartalmakon
-- Általános és középiskolai oktatási megoldások szolgáltatói, amelyek a diákok és oktatók számára szűrik ki a helytelen tartalmakat
+- Termékkatalógus és más felhasználók által létrehozott tartalom mérsékelt online piacterein.
+- Üzletmenetre gyakorolt közepes játék összetevők felhasználó által létrehozott és csevegőszobák játék olvashatók.
+- Közösségi platformokon, amely mérsékelt képek, szöveg és a felhasználók által hozzáadott videókat.
+- Vállalati media vállalatok, amelyek a tartalmak központi moderálás alkalmazzák.
+- K-12 oktatási szolgáltatást nyújtó vállalkozásoknak szűri ki a tartalmat a diákok és oktatók számára nem megfelelő.
+
+> [!NOTE]
+> A Content Moderator szabálytalan gyermek kiaknázása képek nem használható. Azonban a minősített szervezetek használhatják a [PhotoDNA Felhőszolgáltatás](https://www.microsoft.com/photodna "Microsoft PhotoDNA Felhőszolgáltatás") képernyőre a tartalomtípushoz.
 
 ## <a name="what-it-includes"></a>Mit tartalmaz?
 

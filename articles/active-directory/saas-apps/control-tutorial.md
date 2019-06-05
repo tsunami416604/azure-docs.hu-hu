@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Az Azure Active Directory-integráció vezérlővel |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a vezérlő között.
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a folyamatos ellenőrzés között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,18 +16,18 @@ ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 569021d79e74bc7a5a2582741109e1094ba90de8
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: aa66ae77ccc271e475d61b286e0f236429e40feb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65862695"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507509"
 ---
-# <a name="tutorial-integrate-control-with-azure-active-directory"></a>Oktatóanyag: Vezérlés integrálása az Azure Active Directoryval
+# <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Oktatóanyag: Folyamatos ellenőrzés integrálása az Azure Active Directoryval
 
-Ebben az oktatóanyagban elsajátíthatja a vezérlés integrálása az Azure Active Directory (Azure AD) lesz. Vezérlő és az Azure AD integrálása, akkor a következőket teheti:
+Ebben az oktatóanyagban elsajátíthatja a folytonossági vezérlő (vezérlő) integrálása az Azure Active Directory (Azure AD) lesz. Vezérlő és az Azure AD integrálása, akkor a következőket teheti:
 
-* Szabályozza, ki férhet hozzá a vezérlő az Azure AD-ben.
+* Kezelheti az Azure AD ki férhet hozzá a vezérlő.
 * Engedélyezze a felhasználóknak kell automatikus bejelentkezésre szabályozhatja az Azure AD-fiókjukat.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
@@ -38,7 +38,7 @@ SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információk
 Első lépésként szüksége van a következő elemek:
 
 * Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, beszerezheti a egyhónapos ingyenes próbaidőszakot [Itt](https://azure.microsoft.com/pricing/free-trial/).
-* Vezérlő egyszeri bejelentkezés (SSO) engedélyezve van az előfizetés.
+* A vezérlő egyszeri bejelentkezés (SSO) engedélyezve van az előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -83,7 +83,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<SUBDOMAIN>.continuity.net/auth/saml`
 
     > [!Note]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [vezérlő ügyfél-támogatási csapatának](mailto:help@continuity.net) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Az érték nem valódi. Frissítse az értéket a megfelelő együtt. Az egyszeri bejelentkezés altartomány konfigurálhatók [vezérlő hitelesítési stratégiák](https://control.continuity.net/settings/account_profile#tab/security). Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **szerkesztése** gombra kattintva nyissa meg a **SAML-aláíró tanúsítvány** párbeszédpanel.
 
@@ -93,19 +93,13 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
     ![Másolja ki az ujjlenyomat értéket](common/copy-thumbprint.png)
 
-1. Az a **felügyeletét** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. Az a **felügyeletét** szakaszt, másolja a bejelentkezési URL-címet, és menti azt a számítógépet.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
-
-    b. Azure AD-azonosító
-
-    c. Kijelentkezési URL
-
 ### <a name="configure-control-sso"></a>Vezérlő egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **vezérlő** oldalon kell küldenie a **az ujjlenyomat értéket** és az Azure Portalról másolt URL-címek megfelelő [vezérlő támogatási csapatának](mailto:help@continuity.net). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálásához a **vezérlő** oldalán, akkor frissítenie kell az egyszeri bejelentkezéses hitelesítési beállítások [vezérlő hitelesítési stratégiák](https://control.continuity.net/settings/account_profile#tab/security). Frissítés **SAML egyszeri bejelentkezési URL-cím** az a **bejelentkezési URL-cím** és **tanúsítvány-ujjlenyomat** az a **az ujjlenyomat értéket** az Azure Portalról.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -139,7 +133,7 @@ Ebben a szakaszban Britta Simon szabályozható a hozzáférés biztosításáva
 
 ### <a name="create-control-test-user"></a>Vezérlő tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy vezérlő Britta Simon nevű felhasználó létrehozásához. Együttműködve [vezérlő támogatási csapatának](mailto:help@continuity.net) felhasználót is hozzáadhat a a felügyeleti platformmal. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy vezérlő Britta Simon nevű felhasználó létrehozásához. Együttműködve [vezérlő támogatási csapatának](mailto:help@continuity.net) felhasználót is hozzáadhat a a felügyeleti platformmal. Britta Simon használata az Azure AD **felhasználónév** feltöltéséhez őt **Identity Provider felhasználói azonosító** vezérlőelemben. Felhasználók kell létrehozni, és azok **Identity Provider felhasználói azonosító** vezérlőelem egyszeri bejelentkezés használatához állítsa be.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

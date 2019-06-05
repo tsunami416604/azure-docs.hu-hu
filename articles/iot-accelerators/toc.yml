@@ -147,16 +147,12 @@
       items:
         - name: OPC-ikerarchitektúra
           href: overview-opc-twin-architecture.md
-        - name: Csatlakoztatott gyár – Architektúra
-          href: iot-accelerators-connected-factory-sample-walkthrough.md
     - name: Útmutatók
       items:
         - name: Csatlakoztatott gyár
           items:
             - name: Az irányítópult használata
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: Átjáró üzembe helyezése
-              href: iot-accelerators-connected-factory-gateway-deployment.md
             - name: Az OPC-közzétevő használata
               href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: A megoldásgyorsító konfigurálása

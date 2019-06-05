@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 07/10/2018
+ms.date: 06/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 61cac49c34eb193d641a94c9a7839282289dd9c7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 40132f67b135b0dc081180c34361047e59776b81
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572578"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688561"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Azure-beli felügyelt alkalmazások a Marketplace piactéren
 
@@ -42,7 +42,7 @@ Emellett több üzleti előfeltételt kell teljesíteni. Ezek a következők:
 Ahhoz, hogy közzétevő lehessen az Azure Marketplace piactéren, az alábbiakat kell tennie:
 
 1. Microsoft-azonosító létrehozása – Hozzon létre Microsoft-fiókot egy olyan e-mail-cím használatával, amely a vállalati tartományhoz tartozik, nem pedig egy magánszemélyhez. Ezt az e-mail-címet a Microsoft fejlesztői központ és a Felhőpartnerportál fogja használni. További információért tekintse meg az [Azure Marketplace közzétevői útmutatóját](https://aka.ms/sellerguide).
-1. Az [Azure Marketplace Nomination Form](https://aka.ms/ampnomination) (Azure Marketplace jelentkezési űrlapja) elküldése – A **Solution that you intend to publish?** (Közzétenni kívánt megoldás?) kérdésnél válassza a **Managed Application** (Felügyelt alkalmazás) lehetőséget. Az űrlap elküldése után a Marketplace bevezetési csapata áttekinti a jelentkezést, és ellenőrzi a kérelmet. A jóváhagyási folyamat egy–három napot vehet igénybe. Ha a jelentkezést jóváhagyják, egy promóciós kódot kap, amellyel mentesül a fejlesztői központ regisztrációs díjának kifizetése alól. Ha **nem** tölti ki a Marketplace jelentkezési űrlapját, 99 dollár regisztrációs díjat kell fizetnie.
+1. Küldje el [Azure Marketplace-en jelölési űrlapot](https://aka.ms/ampnomination) – **közzétenni kívánt megoldás?** kiválasztása **felügyelt alkalmazás**. Az űrlap elküldése után a Marketplace bevezetési csapata áttekinti a jelentkezést, és ellenőrzi a kérelmet. A jóváhagyási folyamat egy–három napot vehet igénybe. Ha a jelentkezést jóváhagyják, egy promóciós kódot kap, amellyel mentesül a fejlesztői központ regisztrációs díjának kifizetése alól. Ha **nem** tölti ki a Marketplace jelentkezési űrlapját, 99 dollár regisztrációs díjat kell fizetnie.
 1. Regisztrálja a [fejlesztői központ](https://dev.windows.com/registration?accountprogram=azure) – a Microsoft ellenőrzi, hogy a szervezete nem egy érvényes jogi személy az országban vagy régióban, amely regisztrálva van egy érvényes adó azonosítót. A jóváhagyási folyamat 5–10 napot vehet igénybe. A regisztrációs díj elkerülése érdekében használja a jelentkezési folyamat során érkező e-mailben kapott kódot. További információért tekintse meg az [Azure Marketplace közzétevői útmutatóját](https://aka.ms/sellerguide).
 1. Bejelentkezés a [Cloud Partner Portalra](https://cloudpartner.azure.com) – A közzétevői profilban társítsa a fejlesztői központban regisztrált fiókot a Marketplace-beli közzétevői profilhoz. További információért tekintse meg az [Azure Marketplace közzétevői útmutatóját](https://aka.ms/sellerguide).
 
@@ -102,7 +102,9 @@ Az SKU-k a fő ajánlat alatt jelennek meg a piactéren. Saját megvásárolhat�
    Töltse ki az alábbi mezőket:
 
    * **Verzió**: Adja meg a verziót a csomag feltöltése. A következő formátumban kell lennie: `{number}.{number}.{number}{number}`.
-   * **Csomagfájl (.zip)**: Ez a csomag tömörített .zip csomag két szükséges fájlokat tartalmazza. Az egyik fájl a Resource Manager-sablon, amely a felügyelt alkalmazáshoz üzembe helyezendő erőforrásokat határozza meg. A másik fájl a [felhasználói felületet](create-uidefinition-overview.md) határozza meg a felügyelt alkalmazást a portálon keresztül üzembe helyező felhasználók számára. A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
+   * **Csomagfájl (.zip)** : Ez a csomag tömörített .zip csomag két szükséges fájlokat tartalmazza. Az egyik fájl a Resource Manager-sablon, amely a felügyelt alkalmazáshoz üzembe helyezendő erőforrásokat határozza meg. A másik fájl a [felhasználói felületet](create-uidefinition-overview.md) határozza meg a felügyelt alkalmazást a portálon keresztül üzembe helyező felhasználók számára. A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
+   * **Bérlőazonosító**: A bérlő azonosítója a fiók eléréséhez.
+   * **Igény szerinti elérésének lehetővé tétele**: Válassza ki **Igen** engedélyezéséhez [just-in-time hozzáférés-vezérlés](request-just-in-time-access.md) a fiókhoz. Ha engedélyezve van, a megadott időszakra vonatkozó kérelem a felhasználói fiókhoz való hozzáférést. Szükséges, hogy a felhasználók a felügyelt alkalmazás a fiók állandó hozzáférést adni, jelölje be **nem**.
    * **PrincipalId**: Ez a tulajdonság nem egy felhasználó, felhasználói csoport vagy alkalmazás számára biztosított Azure Active Directory (Azure AD) azonosítóját az ügyfél-előfizetés-erőforrásokhoz való hozzáférés. A Role Definition (Szerepkör-definíció) az engedélyeket ismerteti.
    * **Szerepkör-definíció**: Ez a tulajdonság egy minden a beépített szerepkörök listájával, szerepköralapú hozzáférés-vezérlés (RBAC) az Azure AD által támogatott. Kiválaszthatja az erőforrásoknak az ügyfél nevében történő felügyeletéhez leginkább megfelelőbb szerepkört.
    * **Házirend-beállítások**: Alkalmazza egy [Azure Policy](../governance/policy/overview.md) a felügyelt alkalmazást, hogy adja meg a megfelelőségi követelményei az üzembe helyezett megoldások. Válassza ki az alkalmazandó szabályzatokat az elérhető lehetőségek közül. **Szabályzatparaméterek** esetén adjon meg egy JSON-karakterláncot a paraméter értékeivel. A szabályzatdefiníciókról és a paraméterértékek formátumáról tekintse meg a következő dokumentumot: [Azure Policy-minták](../governance/policy/samples/index.md).
@@ -117,7 +119,7 @@ A Marketplace (Piactér) űrlap az [Azure Marketplace](https://azuremarketplace.
 
 ### <a name="preview-subscription-ids"></a>Preview subscription IDs (Előzetes verzióhoz hozzáférő azonosítók)
 
-Adja meg azon Azure-előfizetések azonosítóinak listáját, amelyek hozzáférhetnek az ajánlathoz, miután közzétette azt. Az engedélyezési listán szereplő előfizetéseket az ajánlat előzetes verziójának teszteléséhez használhatja, mielőtt elérhetővé tenné az ajánlatot mindenki számára. A partnerportálon egy legfeljebb 100 előfizetést tartalmazó engedélyezési listát állíthat össze.
+Adja meg azon Azure-előfizetések azonosítóinak listáját, amelyek hozzáférhetnek az ajánlathoz, miután közzétette azt. Az engedélyezési listán szereplő előfizetéseket az ajánlat előzetes verziójának teszteléséhez használhatja, mielőtt elérhetővé tenné az ajánlatot mindenki számára. Egy engedélyezési listáját, legfeljebb 100 előfizetések a partnerportálon állíthat össze.
 
 ### <a name="suggested-categories"></a>Suggested categories (Javasolt kategóriák)
 

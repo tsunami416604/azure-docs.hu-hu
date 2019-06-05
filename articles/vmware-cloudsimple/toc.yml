@@ -55,11 +55,11 @@
     - name: Oktatóanyagok
       items:
         - name: Erőforrás-szolgáltató engedélyezése
-          href: 'https://docs.azure.cloudsimple.com/enable-cloudsimple-service/'
+          href: enable-cloudsimple-service.md
         - name: CloudSimple-szolgáltatás létrehozása
-          href: 'https://docs.azure.cloudsimple.com/create-cloudsimple-service/'
+          href: create-cloudsimple-service.md
         - name: Hozzáférés a CloudSimple portáljához
-          href: 'https://docs.azure.cloudsimple.com/access-cloudsimple-portal/'
+          href: access-cloudsimple-portal.md
         - name: Csomópontok kezelése
           items:
             - name: Csomópontok vásárlása

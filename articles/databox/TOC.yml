@@ -123,6 +123,10 @@
           items:
             - name: Mi az a Data Box Heavy?
               href: data-box-heavy-overview.md
+        - name: Gyors útmutatók
+          items:
+            - name: Beállítás - Azure Portal
+              href: data-box-heavy-quickstart-portal.md
         - name: Oktatóanyagok
           items:
             - name: 1 – Rendelés
