@@ -76,9 +76,9 @@ Az alábbi táblázatban az adott SQL Server-alapú társított szolgáltatás J
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| típus |A type tulajdonságot kell beállítani: **OnPremisesSqlServer**. |Igen |
+| type |A type tulajdonságot kell beállítani: **OnPremisesSqlServer**. |Igen |
 | connectionString |Adja meg a connectionString adatokat a helyszíni SQL Server-adatbázis SQL-hitelesítés vagy a Windows-hitelesítés használatával való kapcsolódáshoz szükséges. |Igen |
-| átjáró neve |Az átjáró által a Data Factory szolgáltatás a helyszíni SQL Server adatbázishoz való csatlakozáshoz használandó neve. |Igen |
+| gatewayName |Az átjáró által a Data Factory szolgáltatás a helyszíni SQL Server adatbázishoz való csatlakozáshoz használandó neve. |Igen |
 | username |Ha Windows-hitelesítést használ, adja meg a felhasználónevet. Példa: **domainname\\felhasználónév**. |Nem |
 | password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 
