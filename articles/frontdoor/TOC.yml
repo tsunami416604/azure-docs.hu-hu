@@ -70,6 +70,8 @@
           href: waf-front-door-create-portal.md
         - name: WAF-szabályzat konfigurálása – Azure PowerShell
           href: waf-front-door-custom-rules-powershell.md
+        - name: Robotvédelem konfigurálása
+          href: waf-front-door-policy-configure-bot-protection.md
         - name: Egyéni válaszkód konfigurálása
           href: waf-front-door-configure-custom-response-code.md
         - name: IP-korlátozások konfigurálása

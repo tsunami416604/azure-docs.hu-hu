@@ -600,6 +600,8 @@
       items:
         - name: Teljesítménnyel kapcsolatos tippek
           items:
+            - name: Lekérdezés-végrehajtási mérőszámok lekérése
+              href: profile-sql-api-query.md
             - name: Lekérdezési teljesítmény hangolása
               href: sql-api-query-metrics.md
             - name: Teljesítménnyel kapcsolatos tippek .NET SDK-hoz

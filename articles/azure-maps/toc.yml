@@ -164,6 +164,8 @@
       items:
         - name: Térképvezérlő
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+        - name: Rajzeszközök
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: Szolgáltatásmodul
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
     - name: Resource Manager-sablon

@@ -27,6 +27,9 @@
         - name: Funkciók – Művelet és környezet
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set'
+        - name: Aktív tanulás
+          href: concept-active-learning.md
+          displayName: 'active, inactive'
         - name: Jutalmak
           href: concept-rewards.md
           displayName: 'reward, wait time, default reward'
@@ -44,7 +47,7 @@
   items:
     - name: Személyre szabó létrehozása és konfigurálása
       href: how-to-settings.md
-      displayName: 'azure, portal, settings, evaluation, offline, policy'
+      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model'
     - name: Elemzés
       items:
         - name: Offline értékelés

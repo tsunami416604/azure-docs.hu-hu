@@ -1,213 +1,222 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 'A Microsoft identitásplatformja (korábban: Azure Active Directory fejlesztők számára)'
-metadata:
-  title: A Microsoft identitásplatformja (Azure Active Directory fejlesztők számára)
-  description: 'Ismerje meg, hogyan használhatja a Microsoft identitásplatformját olyan alkalmazások felépítésére, amely az összes Microsoft-identitás használatával biztonságosan jelentkezteti be a felhasználókat, és jogkivonattal hívja meg a Microsoft Graphot, más Microsoft API-kat vagy olyan API-kat, amelyeket fejlesztők készítettek.'
-  services: active-directory
-  author: CelesteDG
-  manager: CelesteDG
-  ms.service: active-directory
-  ms.subservice: develop
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 05/07/2019
-  ms.author: celested
-abstract:
-  description: 'A Microsoft identitásplatformja az Azure Active Directory (Azure AD) fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg az olyan Microsoft API-kat, mint a Microsoft Graph, vagy olyan API-kat, amelyeket fejlesztők készítettek. Ez egy teljes körű szolgáltatásokat nyújtó platform, amely egy OAuth 2.0- és OpenID Connect-szabvánnyal kompatibilis hitelesítési szolgáltatásból, nyílt forráskódú kódtárakból, alkalmazásregisztrációból és -konfigurációból, átfogó fogalmi és referenciadokumentációból, rövid útmutatókból, kódmintákból és egyéb útmutatókból áll.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/identity-platform-thumbnail.png
-      width: 250
-    title: 'A Microsoft-identitásplatform áttekintése (2:20)'
-    href: 'https://youtu.be/y_fgJAatVhk'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/active-directory/develop/about-microsoft-identity-platform
-            html: <p>Megismerheti a Microsoft identitásplatformjának szolgáltatásait és képességeit.</p>
-            image:
-              src: ./media/index/i_get-started.svg
-            title: A Microsoft identitásplatformjának fejlődése
-          - href: /azure/active-directory/develop/v2-overview
-            html: '<p>Olyan alkalmazásokat hozhat létre, amelyek minden Microsoft-identitással biztonságosan jelentkeznek be, és jogkivonatok lekérésével hívják meg az olyan Microsoft API-kat, mint a Microsoft Graph, illetve a fejlesztők által készített API-kat.</p>'
-            image:
-              src: ./media/index/i_investigate.svg
-            title: 2.0-s verzió
-          - href: /azure/active-directory/develop/azure-ad-developers-guide/
-            html: '<p>Az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítése az Azure AD 1.0-s verziójú végpontjától kér jogkivonatokkal történik az Azure AD Authentication Library (ADAL), az Azure Portal és az Azure AD Graph API használatával.</p>'
-            image:
-              src: ./media/index/i_advanced.svg
-            title: 1.0-s verzió
-  - title: Alkalmazáshasználati helyzetek
-    items:
-      - type: paragraph
-        text: 'Nem kell, hogy az identitások használata nehéz legyen. Válassza ki, melyik forgatókönyv érvényes Önre – mindegyikhez tartozik egy áttekintés, egy alkalmazásregisztrációs és egy alkalmazáskód-konfigurációs útmutató, a jogkivonatok beszerzését és API-k meghívását bemutató példakód és javaslatok az alkalmazás élesítésével kapcsolatban.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/develop/scenario-spa-overview">Egyoldalas alkalmazás</a>
-          - html: <a href="/azure/active-directory/develop/scenario-web-app-sign-user-overview">Felhasználót bejelentkeztető webalkalmazás</a>
-          - html: <a href="/azure/active-directory/develop/scenario-web-app-call-api-overview">Webes API-kat hívó webalkalmazás</a>
-          - html: <a href="/azure/active-directory/develop/scenario-protected-web-api-overview">Védett webes API</a>
-          - html: <a href="/azure/active-directory/develop/scenario-web-api-call-api-overview">Lefelé irányuló webes API-kat hívó webes API</a>
-          - html: <a href="/azure/active-directory/develop/scenario-desktop-overview">Webes API-kat hívó asztali alkalmazás</a>
-          - html: <a href="/azure/active-directory/develop/scenario-daemon-overview">Démonalkalmazás</a>
-          - html: <a href="/azure/active-directory/develop/scenario-mobile-overview">Mobilalkalmazás</a>
-  - title: Gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Ezekből a rövid útmutatókból megtudhatja többek között, hogyan léptethet be felhasználókat egy alkalmazás, és hogyan hívhatja meg a Microsoft Graph API-t vagy bármilyen más webes API-t egy hozzáférési jogkivonattal.'
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_js.svg
-            title: JavaScript
-          - image:
-              src: ./media/index/logo_NET.svg
-            title: ASP .NET
-          - image:
-              src: ./media/index/logo_NETcore.svg
-            title: ASP.NET Core
-          - image:
-              src: ./media/index/logo_nodejs.svg
-            title: NodeJS
-          - image:
-              src: ./media/index/logo_android.svg
-            title: Android
-          - image:
-              src: ./media/index/logo_ios.svg
-            title: iOS
-          - image:
-              src: ./media/index/logo_Windows.svg
-            title: Univerzális Windows-platform
-          - image:
-              src: ./media/index/logo_Windows.svg
-            title: Windows asztali .NET
-          - image:
-              src: ./media/index/logo_NET.svg
-            title: .NET
-        rows:
-          - title: Egyoldalas alkalmazás
-            values:
-              - href: quickstart-v2-javascript.md
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Webalkalmazás
-            values:
-              - href: null
-              - href: quickstart-v2-aspnet-webapp.md
-              - href: quickstart-v2-aspnet-core-webapp.md
-              - href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Webes API
-            values:
-              - href: null
-              - href: 'https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet'
-              - href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Mobil- és asztali alkalmazások
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-v2-android.md
-              - href: quickstart-v2-ios.md
-              - href: quickstart-v2-uwp.md
-              - href: quickstart-v2-windows-desktop.md
-              - href: null
-          - title: Démonalkalmazások
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-v2-netcore-daemon.md
-  - title: Oktatóanyagok
-    items:
-      - type: paragraph
-        text: 'A Microsoft identitásplatformjával részletes, forgatókönyv-alapú eljárásokat használhat a hitelesítéssel kapcsolatos legfontosabb fejlesztői feladatok elvégzésére, például a felhasználók bejelentkeztetésére, a Microsoft Graph API meghívásához használható hozzáférési jogkivonat beszerzésére és a Microsoft Graph API egyszerű meghívására.'
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_js.svg
-            title: JavaScript
-          - image:
-              src: ./media/index/logo_NET.svg
-            title: ASP .NET
-          - image:
-              src: ./media/index/logo_android.svg
-            title: Android
-          - image:
-              src: ./media/index/logo_ios.svg
-            title: iOS
-          - image:
-              src: ./media/index/logo_Windows.svg
-            title: Univerzális Windows-platform
-          - image:
-              src: ./media/index/logo_Windows.svg
-            title: Windows asztali .NET
-        rows:
-          - title: Egyoldalas alkalmazás
-            values:
-              - href: tutorial-v2-javascript-spa.md
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Webalkalmazás
-            values:
-              - href: null
-              - href: tutorial-v2-asp-webapp.md
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Mobil- és asztali alkalmazások
-            values:
-              - href: null
-              - href: null
-              - href: tutorial-v2-android.md
-              - href: tutorial-v2-ios.md
-              - href: tutorial-v2-windows-uwp.md
-              - href: tutorial-v2-windows-desktop.md
-  - title: Példák
-    items:
-      - type: paragraph
-        text: 'Példakódokat kereshet az Ön által fejlesztett alkalmazás típusa, a platform és a használt API-k alapján.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/develop/sample-v2-code">2.0-s verziójú kódminták forgatókönyv szerint</a>
-          - html: <a href="/azure/active-directory/develop/sample-v1-code">1.0-s verziójú kódminták forgatókönyv szerint</a>
+summary: 'A Microsoft identitásplatformja az Azure Active Directory (Azure AD) fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg az olyan Microsoft API-kat, mint a Microsoft Graph, vagy olyan API-kat, amelyeket fejlesztők készítettek. Ez egy teljes körű szolgáltatásokat nyújtó platform, amely egy OAuth 2.0- és OpenID Connect-szabvánnyal kompatibilis hitelesítési szolgáltatásból, nyílt forráskódú kódtárakból, alkalmazásregisztrációból és -konfigurációból, átfogó fogalmi és referenciadokumentációból, rövid útmutatókból, kódmintákból és egyéb útmutatókból áll.'
+landingContent:
+  - title: A Microsoft identitásplatformja
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: A Microsoft identitásplatformjának fejlődése
+            url: about-microsoft-identity-platform.md
+          - text: Microsoft-identitásplatform (2.0-s verzió)
+            url: v2-overview.md
+          - text: Azure Active Directory fejlesztők számára (1.0-s verzió)
+            url: v1-overview.md
+      - linkListType: learn
+        links:
+          - text: Egy fejlesztői perc – A Microsoft-identitásplatform
+            url: 'https://youtu.be/y_fgJAatVhk'
+  - title: Egyoldalas alkalmazás készítése
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: Forgatókönyv áttekintése
+            url: scenario-spa-overview.md
+      - linkListType: quickstart
+        links:
+          - text: JavaScript
+            url: quickstart-v2-javascript.md
+      - linkListType: tutorial
+        links:
+          - text: JavaScript
+            url: tutorial-v2-javascript-spa.md
+      - linkListType: deploy
+        links:
+          - text: Alkalmazásintegráció tesztelése
+            url: identity-platform-integration-checklist.md
+      - linkListType: download
+        links:
+          - text: 'Minták – JavaScript, Angular'
+            url: 'sample-v2-code.md#single-page-applications-spa'
+          - text: Minta – SPA és Azure AD B2C
+            url: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp'
+  - title: Felhasználót bejelentkeztető webalkalmazás készítése
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: Forgatókönyv áttekintése
+            url: scenario-web-app-sign-user-overview.md
+      - linkListType: quickstart
+        links:
+          - text: ASP.NET-mag
+            url: quickstart-v2-aspnet-core-webapp.md
+          - text: ASP.NET
+            url: quickstart-v2-aspnet-webapp.md
+      - linkListType: tutorial
+        links:
+          - text: ASP.NET-mag
+            url: 'https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2'
+      - linkListType: deploy
+        links:
+          - text: Alkalmazásintegráció tesztelése
+            url: identity-platform-integration-checklist.md
+      - linkListType: download
+        links:
+          - text: 'Minták – ASP.NET Core, ASP.NET'
+            url: 'sample-v2-code.md#web-applications'
+  - title: Webes API-kat hívó webalkalmazás készítése
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: Forgatókönyv áttekintése
+            url: scenario-web-app-call-api-overview.md
+      - linkListType: tutorial
+        links:
+          - text: ASP.NET-mag
+            url: 'https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2#scope-of-this-tutorial'
+      - linkListType: deploy
+        links:
+          - text: Alkalmazásintegráció tesztelése
+            url: identity-platform-integration-checklist.md
+      - linkListType: download
+        links:
+          - text: 'Minták – ASP.NET Core, ASP.NET, Node.js, Ruby'
+            url: 'sample-v2-code.md#web-applications'
+  - title: Védett webes API készítése
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: Forgatókönyv áttekintése
+            url: scenario-protected-web-api-overview.md
+      - linkListType: tutorial
+        links:
+          - text: ASP.NET Core webes API
+            url: 'https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2'
+      - linkListType: deploy
+        links:
+          - text: Alkalmazásintegráció tesztelése
+            url: identity-platform-integration-checklist.md
+      - linkListType: download
+        links:
+          - text: Minták – ASP.NET
+            url: 'https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2'
+  - title: Webes API-kat hívó webes API
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: Forgatókönyv áttekintése
+            url: scenario-web-api-call-api-overview.md
+      - linkListType: tutorial
+        links:
+          - text: A Microsoft Graph-ot meghívó ASP.NET Core webes API
+            url: 'https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph'
+      - linkListType: deploy
+        links:
+          - text: Alkalmazásintegráció tesztelése
+            url: identity-platform-integration-checklist.md
+  - title: Webes API-kat hívó asztali alkalmazás készítése
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: Forgatókönyv áttekintése
+            url: scenario-desktop-overview.md
+      - linkListType: quickstart
+        links:
+          - text: Jogkivonat lekérése és a Microsoft Graph API meghívása (Windows asztali alkalmazás)
+            url: quickstart-v2-windows-desktop.md
+          - text: Jogkivonat lekérése és a Microsoft Graph API meghívása (UWP)
+            url: quickstart-v2-uwp.md
+      - linkListType: tutorial
+        links:
+          - text: Microsoft Graph API meghívása (Windows asztali alkalmazás)
+            url: tutorial-v2-windows-desktop.md
+          - text: Microsoft Graph API meghívása (UWP)
+            url: tutorial-v2-windows-uwp.md
+      - linkListType: deploy
+        links:
+          - text: Alkalmazásintegráció tesztelése
+            url: identity-platform-integration-checklist.md
+      - linkListType: download
+        links:
+          - text: 'Minták – .NET, .NET Core'
+            url: 'sample-v2-code.md#desktop-and-mobile-public-client-apps'
+  - title: Webes API-kat hívó démonalkalmazás létrehozása
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: Forgatókönyv áttekintése
+            url: scenario-daemon-overview.md
+      - linkListType: quickstart
+        links:
+          - text: Jogkivonat lekérése és a Microsoft Graph API meghívása (.NET Core konzol)
+            url: quickstart-v2-netcore-daemon.md
+          - text: Jogkivonat lekérése és a Microsoft Graph API meghívása (ASP.NET-webalkalmazás)
+            url: 'https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp'
+      - linkListType: deploy
+        links:
+          - text: Alkalmazásintegráció tesztelése
+            url: identity-platform-integration-checklist.md
+      - linkListType: download
+        links:
+          - text: 'Minta – ASP.NET konzol, ASP.NET web'
+            url: 'sample-v2-code.md#daemon-applications'
+  - title: Webes API-kat hívó mobilalkalmazás készítése
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: Forgatókönyv áttekintése
+            url: scenario-mobile-overview.md
+      - linkListType: quickstart
+        links:
+          - text: Jogkivonat lekérése és a Microsoft Graph API meghívása (Android)
+            url: quickstart-v2-android.md
+          - text: Jogkivonat lekérése és a Microsoft Graph API meghívása (iOS)
+            url: quickstart-v2-ios.md
+          - text: Jogkivonat lekérése és a Microsoft Graph API meghívása (Xamarin iOS és Android)
+            url: 'https://github.com/Azure-Samples/active-directory-xamarin-native-v2'
+      - linkListType: tutorial
+        links:
+          - text: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása (Android)
+            url: tutorial-v2-android.md
+          - text: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása (iOS)
+            url: tutorial-v2-ios.md
+      - linkListType: deploy
+        links:
+          - text: Alkalmazásintegráció tesztelése
+            url: identity-platform-integration-checklist.md
+      - linkListType: download
+        links:
+          - text: 'Minta – Android, iOS, Xamarin'
+            url: 'sample-v2-code.md#desktop-and-mobile-public-client-apps'
+  - title: Microsoft Graph API meghívása
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Tudnivalók a Microsoft Graph-ról
+            url: 'https://docs.microsoft.com/graph/overview'
+      - linkListType: quickstart
+        links:
+          - text: Beállítás és használat 3 perc alatt
+            url: 'https://developer.microsoft.com/graph/get-started'
+      - linkListType: learn
+        links:
+          - text: Az API használata
+            url: 'https://docs.microsoft.com/graph/use-the-api'
+          - text: 'Microsoft Graph REST API, 1.0-s verzió'
+            url: 'https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-1.0'
+          - text: 'Microsoft Graph REST API, bétaverzió'
+            url: 'https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-beta'
+      - linkListType: deploy
+        links:
+          - text: Graph Explorer
+            url: 'https://developer.microsoft.com/graph/graph-explorer/'
+  - title: 'Ügyfelek által használt alkalmazás készítése, amely közösségi vagy helyi identitásokkal végez bejelentkeztetést'
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Tudnivalók az Azure AD B2C-ről
+            url: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview'
+      - linkListType: tutorial
+        links:
+          - text: Identitásszolgáltatók hozzáadása az alkalmazásokhoz az Azure AD B2C-ben
+            url: 'https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers'

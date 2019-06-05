@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Az Azure AD Device Management dokumentációja
+title: Az Azure AD Device Identity Management dokumentációja
 metadata:
   document_id: null
-  title: 'Az Azure Active Directory Device Management dokumentációja – Oktatóanyagok, alapfogalmak és referenciák | Microsoft Docs'
-  description: 'Ez a cikk azt ismerteti, hogyan konfigurálhatja és tesztelheti az Azure Active eszközfelügyeleti megoldást.'
+  title: 'Az Azure Active Directory Device Identity Management dokumentációja – Oktatóanyagok, alapfogalmak és referenciák | Microsoft Docs'
+  description: 'Ismerje meg, hogyan konfigurálhatja és adminisztrálhatja az eszközidentitásokat az Azure AD-ben.'
   services: active-directory
   ms.subservice: devices
   author: MicrosoftGuyJFlo
@@ -16,7 +16,7 @@ metadata:
   ms.date: 08/14/2018
   ms.author: joflore
 abstract:
-  description: 'A felhasználók eszközökön keresztül férhetnek hozzá a vállalati tartalmakhoz. A tartalmak védelme érdekében rendszergazdaként mindenképpen érdemes a felügyelete alatt tartania ezeket az eszközöket. Így gondoskodhat róla, hogy a felhasználók csak olyan eszközökről férjenek hozzá a vállalat erőforrásaihoz, amelyek megfelelnek a biztonsági és megfelelőségi szabványoknak.<br>Az eszközfelügyelet egyben az eszközalapú feltételes hozzáférés alapja. Az eszközalapú feltételes hozzáféréssel gondoskodhat róla, hogy a környezet erőforrásai csak felügyelt eszközökkel legyenek elérhetők.'
+  description: 'A felhasználók az Azure AD-beli eszközökön keresztül férhetnek hozzá a vállalati tartalmakhoz. A tartalmak védelme érdekében rendszergazdaként mindenképpen érdemes az Azure AD-ben kezelnie ezeket az eszközidentitásokat. Így gondoskodhat róla, hogy a felhasználók csak olyan eszközökről férjenek hozzá a vállalat erőforrásaihoz, amelyek megfelelnek a biztonsági és megfelelőségi szabványoknak.<br>Az eszközidentitás-felügyelet egyben az eszközalapú feltételes hozzáférés alapja is. Az eszközalapú feltételes hozzáféréssel gondoskodhat róla, hogy a környezet erőforrásai csak felügyelt eszközökkel legyenek elérhetők.'
 sections:
   - title: Részletes útmutatók
     items:

@@ -43,7 +43,7 @@
       items:
         - name: Adatok szűrése az Azure Functions segítségével
           href: tutorial-deploy-function.md
-        - name: Átlagértékek keresése az ASA segítségével
+        - name: Átlagértékek keresése az Azure Stream Analytics segítségével
           href: tutorial-deploy-stream-analytics.md
         - name: Adatok pontozása az Azure Machine Learning Service-szel
           href: tutorial-deploy-machine-learning.md

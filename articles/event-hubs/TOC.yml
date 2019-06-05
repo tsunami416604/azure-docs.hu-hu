@@ -51,6 +51,8 @@
           href: event-hubs-capture-python.md
     - name: Streamelés az Apache Kafkához készült Event Hubsba
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
+    - name: Dedikált fürt létrehozása
+      href: event-hubs-dedicated-cluster-create-portal.md
 - name: Oktatóanyagok
   items:
     - name: Event Hubs-adatstreamek anomáliáinak vizualizációja

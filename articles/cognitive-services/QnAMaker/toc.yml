@@ -96,9 +96,9 @@
         - name: Tudásbázis létrehozása és közzététele
           href: Quickstarts/create-publish-knowledge-base.md
           displayName: 'create bot, bot, publish to bot, test, edit'
-        - name: Válasz kérése
+        - name: Válasz kérése metaadatok használatával
           href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer'
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context'
         - name: Tudásbázist használni képes robot létrehozása
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Más nyelvű tudásbázis létrehozása

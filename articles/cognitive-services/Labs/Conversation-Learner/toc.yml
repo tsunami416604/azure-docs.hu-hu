@@ -34,6 +34,8 @@
       href: tutorials/08-pre-trained-entities.md
     - name: Entitásfeloldók
       href: tutorials/09-entity-resolvers.md
+    - name: Felsorolási entitások
+      href: tutorials/tutorial-enum-set-entity.md
     - name: Alternatív bemenetek
       href: tutorials/10-alternative-inputs.md
     - name: Párbeszédpanelek naplózása

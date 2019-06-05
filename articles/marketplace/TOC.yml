@@ -470,8 +470,12 @@
           href: ./partner-center-portal/manage-account.md
         - name: Vállalati munkahelyi fiók megkeresése vagy létrehozása
           href: ./partner-center-portal/company-work-accounts.md
+        - name: Fiók áttelepítése a CPP-ből a Partnerközpontba
+          href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Új ajánlat létrehozása
       items:
+        - name: Ajánlat-létrehozási ellenőrzőlista
+          href: ./partner-center-portal/offer-creation-checklist.md
         - name: SaaS-ajánlat létrehozása
           href: ./partner-center-portal/create-new-saas-offer.md
         - name: SaaS Fulfillment API-k

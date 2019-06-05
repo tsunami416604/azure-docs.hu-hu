@@ -7,34 +7,10 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Fürt és adatbázis létrehozása
-      items:
-        - name: Azure Portal
-          href: create-cluster-database-portal.md
-        - name: Azure CLI
-          href: create-cluster-database-cli.md
-        - name: PowerShell
-          href: create-cluster-database-powershell.md
-        - name: 'C#'
-          href: create-cluster-database-csharp.md
-        - name: Python
-          href: create-cluster-database-python.md
-    - name: Adatok betöltése
-      items:
-        - name: Adatok streamelése – Event Hubs
-          href: ingest-data-event-hub.md
-        - name: Adatok streamelése – Event Grid
-          href: ingest-data-event-grid.md
-        - name: Adatok streamelése – Kafka
-          href: ingest-data-kafka.md
-        - name: Adatok kötegelése – Python
-          href: python-ingest-data.md
-        - name: Adatok kötegelése – Node SDK
-          href: node-ingest-data.md
-        - name: Adatok kötegelése – .Net Standard SDK
-          href: net-standard-ingest-data.md
-        - name: Adatok kötegelése – Logstash
-          href: ingest-data-logstash.md
+    - name: Fürt és adatbázis létrehozása – Azure Portal
+      href: create-cluster-database-portal.md
+    - name: Mintaadatok betöltése
+      href: ingest-sample-data.md
     - name: Adatok lekérdezése
       items:
         - name: Webes felhasználói felület
@@ -52,12 +28,38 @@
     - name: Az adatbetöltés áttekintése
       displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
       href: ingest-data-overview.md
+    - name: Az adatmegjelenítés áttekintése
+      href: viz-overview.md
 - name: Útmutatók
   items:
-    - name: Első lépések
+    - name: Fürt és adatbázis létrehozása
       items:
-        - name: Mintaadatok betöltése
-          href: ingest-sample-data.md
+        - name: Azure CLI
+          href: create-cluster-database-cli.md
+        - name: PowerShell
+          href: create-cluster-database-powershell.md
+        - name: 'C#'
+          href: create-cluster-database-csharp.md
+        - name: Python
+          href: create-cluster-database-python.md
+    - name: Adatok betöltése
+      items:
+        - name: Eseményközpont
+          href: ingest-data-event-hub.md
+        - name: Event Grid
+          href: ingest-data-event-grid.md
+        - name: Kafka
+          href: ingest-data-kafka.md
+        - name: Python
+          href: python-ingest-data.md
+        - name: Node SDK
+          href: node-ingest-data.md
+        - name: .Net Standard SDK
+          href: net-standard-ingest-data.md
+        - name: LogStash
+          href: ingest-data-logstash.md
+        - name: Adatok másolása az Azure Data Factoryval
+          href: data-factory-load-data.md
     - name: Üzembe helyezés
       items:
         - name: DevOps-feladat
@@ -82,10 +84,14 @@
               href: power-bi-imported-query.md
             - name: SQL-lekérdezés
               href: power-bi-sql-query.md
+        - name: ODBC-összekötő
+          href: connect-odbc.md
         - name: Sisense
           href: sisense.md
         - name: Grafana
           href: grafana.md
+        - name: Tableau
+          href: tableau.md
     - name: Kezelés
       items:
         - name: Adatbázis-engedélyek kezelése
@@ -104,7 +110,7 @@
       items:
         - name: Metrikák használata a fürtállapot monitorozásához
           href: using-metrics.md
-    - name: Más eszközök használata
+    - name: Integráció más eszközökkel
       items:
         - name: Apache Spark-összekötő
           href: spark-connector.md
@@ -112,10 +118,6 @@
           href: connect-from-databricks.md
         - name: Adatok elemzése Jupyter notebookokban és Kqlmagicben
           href: kqlmagic.md
-        - name: Adatok másolása az Azure Data Factoryval
-          href: data-factory-load-data.md
-        - name: Kapcsolódás ODBC-vel
-          href: connect-odbc.md
     - name: Hibaelhárítás
       items:
         - name: Fürt létrehozása

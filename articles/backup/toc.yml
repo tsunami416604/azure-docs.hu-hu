@@ -13,6 +13,9 @@
       href: quick-backup-vm-powershell.md
     - name: Virtuális gépek biztonsági mentése – Parancssori felület
       href: quick-backup-vm-cli.md
+    - name: Virtuális gépek biztonsági mentése – Resource Manager-sablon
+      displayName: ARM
+      href: quick-backup-vm-template.md
 - name: Oktatóanyagok
   items:
     - name: Azure-beli virtuális gépek tömeges biztonsági mentése
@@ -249,6 +252,8 @@
           href: troubleshoot-azure-files.md
         - name: SQL Server
           href: backup-sql-server-azure-troubleshoot.md
+        - name: Rendszerállapot
+          href: backup-azure-system-state-troubleshoot.md
     - name: Az Azure Backup számítási feladatainak monitorozása
       items:
         - name: Az Azure Portal használata

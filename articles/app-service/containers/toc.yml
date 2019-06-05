@@ -17,6 +17,18 @@
       href: quickstart-php.md
     - name: Node.js-alapú alkalmazás létrehozása
       href: quickstart-nodejs.md
+    - name: Node.js-alapú alkalmazások létrehozása a Docker és a Visual Studio Code használatával
+      items:
+        - name: Első lépések
+          href: tutorial-javascript-vscode-get-started.md
+        - name: Tároló-beállításjegyzék létrehozása
+          href: tutorial-javascript-vscode-create-registry.md
+        - name: A rendszerkép létrehozása
+          href: tutorial-javascript-vscode-containerize-app.md
+        - name: A rendszerkép üzembe helyezése
+          href: tutorial-javascript-vscode-deploy-container.md
+        - name: Naplók megjelenítése
+          href: tutorial-javascript-vscode-tail-logs.md
     - name: Java-alkalmazás létrehozása
       href: quickstart-java.md
     - name: Python-alkalmazás létrehozása

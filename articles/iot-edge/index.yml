@@ -1,55 +1,104 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure IoT Edge
-metadata:
-  title: 'Azure IoT Edge – Oktatóanyagok, API-referencia'
-  description: Az Azure IoT Edge szolgáltatás segítségével üzembe helyezheti az Azure szolgáltatásokat és az egyéni üzleti logikát a peremhálózati eszközökön.
-  author: kgremban
-  manager: philmea
-  ms.service: iot-edge
-  services: iot-edge
-  ms.topic: landing-page
-  ms.date: 03/13/2019
-  ms.author: kgremban
-abstract:
-  description: 'Az Azure IoT Edge egy eszközök internetes hálózata (IoT) típusú szolgáltatás, amely az IoT Hubra épül. Ez a szolgáltatás olyan ügyfelek számára ideális, akik eszközökön szeretnék elemezni az adatokat, vagyis „a peremhálózaton”, nem a felhőben. A számítási feladat egy részének a peremhálózatra helyezése révén az eszközök kevesebb időt töltenek a felhőbe történő üzenetküldéssel, és gyorsabban reagálhatnak az állapotváltozásokra.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/iot-edge-thumbnail.png
-      width: 250
-    title: 'Intelligens peremhálózat kiépítése az Azure IoT Edge segítségével (6:59)'
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Creating-the-intelligent-edge-with-Azure-IoT-Edge'
-    width: 250
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Azure-beli virtuális gép létrehozása, konfigurálása IoT Edge-eszközként való futtatáshoz, és kód telepítése a gépen:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
-            text: Windows
-            href: /azure/iot-edge/quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux-color.svg'
-            text: Linux
-            href: /azure/iot-edge/quickstart-linux
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan telepítheti és konfigurálhatja az IoT Edge-et, hogyan helyezhet üzembe modulokat, valamint hogyan használhatja a Stream Analyticset, a Custom Visiont és hasonló Azure-szolgáltatásokat a peremhálózaton.'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Beállíthatja a fejlesztői gépet, és megismerheti az IoT Edge-modulok használatát <a href="/azure/iot-edge/tutorial-develop-for-linux">Linux-eszközök</a> vagy <a href="/azure/iot-edge/tutorial-develop-for-windows">Windows-eszközök</a> esetében.'
-          - html: 'Egyéni kódmodulokat fejleszthet Linux-eszközökhöz <a href="/azure/iot-edge/tutorial-c-module">C-</a>, <a href="/azure/iot-edge/tutorial-csharp-module">C#-</a>, <a href="/azure/iot-edge/tutorial-python-module">Python-</a>, <a href="/azure/iot-edge/tutorial-node-module">Node.js-</a> vagy <a href="/azure/iot-edge/tutorial-java-module">Java-</a>környezetben.'
-          - html: 'Egyéni kódmodulokat fejleszthet Windows-eszközökhöz <a href="/azure/iot-edge/tutorial-c-module-windows">C-</a> vagy <a href="/azure/iot-edge/tutorial-csharp-module-windows">C#-</a> környezetben.'
-          - html: <a href="/azure/iot-edge/tutorial-deploy-function">Üzenetek szűrése az Azure Functions segítségével</a>
-          - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Átlagértékek keresése a modulként használt Azure Stream Analytics segítségével</a>
-          - html: <a href="/azure/iot-edge/tutorial-deploy-machine-learning">Adatok pontozása a modulként használt Azure Machine Learninggel</a>
-          - html: <a href="/azure/iot-edge/tutorial-deploy-custom-vision">Képek besorolása a modulként használt Custom Vision Service-szel</a>
-          - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">Adatok tárolása a peremhálózaton az SQL Serverrel</a>
+summary: 'Az Azure IoT Edge egy eszközök internetes hálózata (IoT) típusú szolgáltatás, amely az IoT Hubra épül. Ez a szolgáltatás olyan ügyfelek számára ideális, akik eszközökön, vagyis a „peremhálózatokon” szeretnék elemezni az adatokat, és nem a felhőben. A számítási feladat egy részének a peremhálózatra helyezése révén az eszközök kevesebb időt töltenek a felhőbe történő üzenetküldéssel, és gyorsabban reagálhatnak az eseményekre.'
+landingContent:
+  - title: Fejlesztés Linux-eszközökhöz
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Az első IoT Edge-modul üzembe helyezése Linux-eszközön
+            url: quickstart-linux.md
+      - linkListType: tutorial
+        links:
+          - text: IoT Edge-modulok létrehozása Linux-eszközökhöz
+            url: tutorial-develop-for-linux.md
+      - linkListType: how-to-guide
+        links:
+          - text: Modulok fejlesztése és hibakeresése a Visual Studio Code használatával
+            url: how-to-vs-code-develop-module.md
+  - title: Fejlesztés Windows-eszközökhöz
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Az első IoT Edge-modul üzembe helyezése Windows eszközön
+            url: quickstart.md
+      - linkListType: tutorial
+        links:
+          - text: IoT Edge-modulok létrehozása Windows-eszközökhöz
+            url: tutorial-develop-for-windows.md
+      - linkListType: how-to-guide
+        links:
+          - text: Modulok fejlesztése és hibakeresése a Visual Studio 2017 használatával
+            url: how-to-visual-studio-develop-module.md
+  - title: IoT Edge-eszközök regisztrálása
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: IoT Edge telepítése x64-es Linux rendszeren
+            url: how-to-install-iot-edge-linux.md
+          - text: IoT Edge telepítése ARM32-es Linux rendszeren
+            url: how-to-install-iot-edge-linux-arm.md
+          - text: IoT Edge telepítése x64-es Windows rendszeren
+            url: how-to-install-iot-edge-windows.md
+          - text: Linux-eszközök automatikus üzembe helyezése
+            url: how-to-auto-provision-simulated-device-linux.md
+          - text: Windows-eszközök automatikus üzembe helyezése
+            url: how-to-auto-provision-simulated-device-windows.md
+  - title: Kapcsolatfelvétel a nyílt forráskódú projektekkel foglalkozó fejlesztői közösséggel
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: IoT Edge-adattár
+            url: 'https://github.com/Azure/iotedge'
+          - text: IoT Edge – GitHub-problémák
+            url: 'https://github.com/Azure/iotedge/issues'
+          - text: Legutóbbi kiadások és változásnaplók
+            url: 'https://github.com/Azure/azure-iotedge/releases'
+  - title: IoT Edge-eszközök használata átjáróként
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: IoT Edge-eszköz használata átjáróként
+            url: iot-edge-as-gateway.md
+      - linkListType: how-to-guide
+        links:
+          - text: Transzparens átjáró konfigurálása
+            url: how-to-create-transparent-gateway.md
+          - text: Lefelé irányuló eszköz csatlakoztatása
+            url: how-to-connect-downstream-device.md
+  - title: Előkészületek éles forgatókönyvekhez
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Az automatikus üzembe helyezések ismertetése
+            url: module-deployment-monitoring.md
+          - text: Platformtámogatás
+            url: support.md
+          - text: Éles környezetben való üzembe helyezés feladatlistája
+            url: production-checklist.md
+          - text: IoT Edge-tanúsítványok használatának ismertetése
+            url: iot-edge-certs.md
+          - text: Az IoT Edge biztonsági szabványai
+            url: security.md
+      - linkListType: how-to-guide
+        links:
+          - text: Nagy léptékű üzembe helyezés és monitorozás az Azure CLI segítségével
+            url: how-to-deploy-monitor-cli.md
+          - text: CI/CD-folyamat létrehozása az Azure Pipelines szolgáltatással
+            url: how-to-ci-cd.md
+      - linkListType: deploy
+        links:
+          - text: REST API az IoT Hubhoz
+            url: 'https://docs.microsoft.com/rest/api/iothub/'
+  - title: Mesterséges intelligencia bevezetése a peremhálózatokon
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként
+            url: tutorial-deploy-machine-learning.md
+          - text: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
+            url: tutorial-deploy-custom-vision.md
+      - linkListType: deploy
+        links:
+          - text: Azure Cognitive Services-modulok keresése az Azure Marketplace-en
+            url: 'https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?subcategories=iot-edge-modules&search=azure%20cognitive%20services'

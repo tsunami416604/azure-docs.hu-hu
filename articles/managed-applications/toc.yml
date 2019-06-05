@@ -39,6 +39,8 @@
           href: create-uidefinition-overview.md
         - name: A portálfelület tesztelése
           href: test-createuidefinition.md
+        - name: Igény szerinti hozzáférés igénylése
+          href: request-just-in-time-access.md
         - name: Kezelt erőforrások frissítése
           href: update-managed-resources.md
         - name: Alkalmazásdefiníció közzététele a portál használatával
@@ -51,6 +53,8 @@
       items:
         - name: Felügyelt alkalmazások monitorozása
           href: monitor-managed-application-portal.md
+        - name: Igény szerinti hozzáférés igénylése
+          href: approve-just-in-time-access.md
 - name: Referencia
   items:
     - name: Azure CLI
