@@ -329,13 +329,13 @@ A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulaj
 
 | Tulajdonság | Leírás | Szükséges |
 | -------- | ----------- | -------- |
-| név | A folyamat a tevékenység neve. | Igen |
+| name | A folyamat a tevékenység neve. | Igen |
 | description | Az szöveg, amely leírja, hogy a tevékenység leírása. | Nem |
 | type | Ez a tulajdonság a HDInsightSpark kell beállítani. | Igen |
 | linkedServiceName | A HDInsight társított szolgáltatás, amelyen futtatja a Spark-program neve. | Igen |
 | rootPath | A blobtárolót és a Spark-fájlt tartalmazó mappát. A fájlnév formátuma a kis-és nagybetűket. | Igen |
 | entryFilePath | A gyökérmappában található azon a Spark kódcsomag relatív elérési útja. | Igen |
-| Osztálynév | Alkalmazás fő Java/Spark-osztálya. | Nem |
+| className | Alkalmazás fő Java/Spark-osztálya. | Nem |
 | argumentumok | A Spark-program parancssori argumentumokat listája. | Nem |
 | proxyUser | A felhasználói fiók megszemélyesítése a Spark-program végrehajtásához. | Nem |
 | sparkConfig | Adja meg a Spark-konfiguráció szereplő tulajdonságok értékeit [Spark konfigurálása: Alkalmazástulajdonságok](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nem |
