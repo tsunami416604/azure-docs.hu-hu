@@ -50,13 +50,13 @@ IoT-objektumok (például az eszközök és érzékelők) eseményt küld az Azu
 | Attribútum | Típus | Leírás |
 | --- | --- | --- |
 | id | string | Az esemény egyedi azonosítója. |
-| tárgy | string | Az esemény tárgya közzétevő által megadott elérési útja. |
-| adat | objektum | Eseményadatok adott erőforrás-szolgáltatónál. |
+| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
+| data | objektum | Eseményadatok adott erőforrás-szolgáltatónál. |
 | eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
-| témakör | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
 
 További információ az Event Grid-esemény séma:
 
