@@ -157,12 +157,12 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| tárgy | string | Az esemény tárgya közzétevő által megadott elérési útja. |
+| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
 | eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | string | Az esemény egyedi azonosítója. |
-| adat | objektum | A BLOB storage-eseményadatok. |
+| data | objektum | A BLOB storage-eseményadatok. |
 | dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
@@ -171,22 +171,22 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | id | string | Az esemény azonosítója. |
-| időbélyeg | string | Az az időpont, amikor az esemény történt. |
+| timestamp | string | Az az időpont, amikor az esemény történt. |
 | action | string | A művelet, amely magában foglalja a megadott esemény. |
-| cél | objektum | A cél az esemény. |
-| kérelem | objektum | A kérelem, ami az esemény jön létre. |
+| target | objektum | A cél az esemény. |
+| request | objektum | A kérelem, ami az esemény jön létre. |
 
 A célobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | mediaType | string | A hivatkozott objektum MIME-típusát. |
-| méret | egész szám | A tartalom bájtok száma. Ugyanaz, mint a Hossz mezőben. |
-| a kivonatoló | string | A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat. |
-| Hossza | egész szám | A tartalom bájtok száma. Ugyanaz, mint mérete mező. |
-| Adattár | string | A tárház nevét. |
-| címke | string | A címke neve. |
-| név | string | A diagram neve. |
+| size | egész szám | A tartalom bájtok száma. Ugyanaz, mint a Hossz mezőben. |
+| digest | string | A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat. |
+| length | egész szám | A tartalom bájtok száma. Ugyanaz, mint mérete mező. |
+| repository | string | A tárház nevét. |
+| tag | string | A címke neve. |
+| name | string | A diagram neve. |
 | version | string | A diagram verziója. |
 
 A kérelem objektum a következő tulajdonságokkal rendelkezik:
@@ -195,9 +195,9 @@ A kérelem objektum a következő tulajdonságokkal rendelkezik:
 | -------- | ---- | ----------- |
 | id | string | Az esemény által kezdeményezett kérelem azonosítója. |
 | addr | string | Az IP vagy állomásnév, esetleg az ügyfél kapcsolata az eseményt inicializáló portjával. Ez az érték a szabványos http-kérelem a RemoteAddr. |
-| gazdagép | string | A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem http-állomásfejlécet által megadott. |
+| host | string | A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem http-állomásfejlécet által megadott. |
 | method | string | A kérelmi metódust, ami az esemény jön létre. |
-| USERAGENT | string | A felhasználói ügynök fejléc a kérelem. |
+| useragent | string | A felhasználói ügynök fejléc a kérelem. |
 
 ## <a name="next-steps"></a>További lépések
 
