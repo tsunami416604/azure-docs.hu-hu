@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: bcfeca34eb11caaddac06971fe7f825a142586a2
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: efb49db6cce7ba238d40bf80ddf87b2a1a83834f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602065"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479983"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez
 Miután átadja a feladatokat a virtuális gépek az Azure-ba, visszaadhatja a virtuális gépek, a helyszíni helyre. Feladat-visszavételt, ismételt védelem a virtuális gép az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége lesz egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -46,7 +46,7 @@ Hozza létre a fő célkiszolgáló megfelelően a méretezése a következőkre
 - **Adatmegőrzési meghajtó méretét további**: 1 TB
 - **CPU-magok**: 4 mag, vagy több
 
-A következő támogatott Ubuntu kernelekkel támogatottak.
+A következő Ubuntu kernelekkel támogatottak.
 
 
 |Kernel-sorozat  |Legfeljebb  |
@@ -67,7 +67,7 @@ Egy Ubuntu 16.04.2 minimális 64-bit ISO tartsa a DVD-meghajtóba, és indítsa 
 
 1.  Válassza ki **angol** a választott nyelven, és válassza ki, **Enter**.
     
-    ![Nyelv kiválasztása](./media/vmware-azure-install-linux-master-target/image1.png)
+    ![Válasszon nyelvet](./media/vmware-azure-install-linux-master-target/image1.png)
 1. Válassza ki **Ubuntu Server telepítése**, majd válassza ki **Enter**.
 
     ![Válassza ki az Ubuntu Server telepítése](./media/vmware-azure-install-linux-master-target/image2.png)
@@ -245,7 +245,7 @@ A következő lépések segítségével hozzon létre egy adatmegőrzési lemez:
 
     ![A többutas azonosítója](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Formázza a meghajtót, és hozza létre az operációs rendszer az új meghajtó: **mkfs.ext4 /dev/eseményleképező/< adatmegőrzési lemez többutas azonosítója >**.
+3. Formázza a meghajtót, és hozza létre az operációs rendszer az új meghajtó: **mkfs.ext4 /dev/eseményleképező/< adatmegőrzési lemez többutas azonosítója >** .
     
     ![Fájlrendszer](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 

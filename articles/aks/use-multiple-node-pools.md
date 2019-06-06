@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 4af2e97e8ace432c37a770f1930514dd19e30944
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a295dfa1f7f2c58b3e45036212434837ac4bfb4d
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235752"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475448"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – létrehozása és az Azure Kubernetes Service (AKS) fürt több csomópontja készletek kezelése
 
@@ -74,6 +74,7 @@ Az alábbi korlátozások érvényesek a felhőszolgáltatásnak, amely támogat
 * Az első node-készlet nem törölhető.
 * A HTTP-kérelem útválasztási bővítmény nem használható.
 * Nem hozzáadása/frissítése/törlése csomópontkészletek legtöbb művelet az egy meglévő Resource Manager-sablon használatával. Ehelyett [egy külön Resource Manager-sablonnal](#manage-node-pools-using-a-resource-manager-template) csomópontkészletek az AKS-fürtben módosíthatja.
+* Csak akkor használható a fürt méretező (jelenleg előzetes verzióban érhető el az aks-ben).
 
 Bár ez a funkció előzetes verzióban érhető el, a következő további korlátozások vonatkoznak:
 
@@ -222,7 +223,7 @@ Törli a csomópontok és a csomópont készlethez néhány percet vesz igénybe
 
 ## <a name="specify-a-vm-size-for-a-node-pool"></a>Adja meg a Virtuálisgép-méretének csomópontkészletek
 
-Csomópont-készlet létrehozása a korábbi példákban egy alapértelmezett Virtuálisgép-méretet a csomópontok a fürtben létrehozott használták. Egy gyakori forgatókönyv, hogy a csomópont-készletek létrehozása és a különböző méretű virtuális gépek és a funkciók van. Például előfordulhat, hogy létrehoz egy csomópont-készlet, amely a nagy mennyiségű, a CPU és memória-csomópontokat tartalmaz vagy GPU-támogatással biztosító csomópontkészletek. A következő lépésben, [használata elkerülésére és tolerations][#schedule-pods-using-taints-and-tolerations] tájékoztatása az Kubernetes ütemező podok való hozzáférés korlátozására, hogy az ezeken a csomópontokon futtathat.
+Csomópont-készlet létrehozása a korábbi példákban egy alapértelmezett Virtuálisgép-méretet a csomópontok a fürtben létrehozott használták. Egy gyakori forgatókönyv, hogy a csomópont-készletek létrehozása és a különböző méretű virtuális gépek és a funkciók van. Például előfordulhat, hogy létrehoz egy csomópont-készlet, amely a nagy mennyiségű, a CPU és memória-csomópontokat tartalmaz vagy GPU-támogatással biztosító csomópontkészletek. A következő lépésben, [elkerülésére és tolerations](#schedule-pods-using-taints-and-tolerations) kell tudniuk a Kubernetes-ütemező podok futtatható ezeken a csomópontokon való hozzáférés korlátozása.
 
 A következő példában használó GPU-alapú csomópont-készlet létrehozása a *Standard_NC6* Virtuálisgép-méretet. Ezek a virtuális gépek működteti az NVIDIA Tesla K80 kártyát használják. Elérhető Virtuálisgép-méretekkel kapcsolatos tudnivalókat lásd: [az Azure-ban Linux rendszerű virtuális gépek méretei][vm-sizes].
 
@@ -332,7 +333,7 @@ Csak a alkalmazni mellékíz rendelkező podok ütemezett csomópontján *gpunod
 
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Resource Manager-sablonnal csomópont készletek kezelése
 
-Amikor használhatja az Azure Resource Manager-sablon létrehozása és a felügyelt erőforrások, általában frissítheti a beállításokat a sablont, majd alkalmazza újra az erőforrás frissítése. A nodepools az aks-ben a kezdeti nodepool profil nem frissíthető az AKS-fürt létrehozása után. Ez a viselkedés azt jelenti, hogy nem egy meglévő Resource Manager-sablon frissítését, módosítja a csomópont-készleteket, és ismételt üzembe helyezése. Ehelyett hozzon létre egy külön Resource Manager-sablon, amely frissíti a csak az ügynökkészletek meglévő AKS-fürt számára.
+Amikor használhatja az Azure Resource Manager-sablon létrehozása és a felügyelt erőforrások, általában frissítheti a beállításokat a sablont, majd alkalmazza újra az erőforrás frissítése. A csomópontkészletek az aks-ben a kezdeti csomópont-ügynökkészlet profilja nem lehet frissíteni az AKS-fürt létrehozása után. Ez a viselkedés azt jelenti, hogy nem egy meglévő Resource Manager-sablon frissítését, módosítja a csomópont-készleteket, és ismételt üzembe helyezése. Ehelyett hozzon létre egy külön Resource Manager-sablon, amely frissíti a csak az ügynökkészletek meglévő AKS-fürt számára.
 
 Például hozzon létre egy sablont `aks-agentpools.json` , és illessze be a következő példa jegyzékfájlt. Ez a példa a sablon a következő beállítások konfigurálása:
 

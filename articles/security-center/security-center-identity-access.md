@@ -3,7 +3,7 @@ title: Identitás és hozzáférés figyelése az Azure Security Centerben | Mic
 description: Itt megtudhatja, hogyan használható az Azure Security Center identitási és hozzáférési funkciója a felhasználók hozzáférési tevékenységeinek és identitással kapcsolatos problémáinak figyelésére.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 5517bb59d168ffa8d9339d9e765c385cef6db4ce
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.date: 05/30/2018
+ms.author: monhaber
+ms.openlocfilehash: 16548ae75567fa3ba6f8c9135d61945bd28d2db8
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389479"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428418"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés az Azure Security Centerben (előzetes verzió) figyelése
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
@@ -42,7 +42,6 @@ Az identitástevékenységek figyelésével proaktív módon tud cselekedni, mie
 > [!NOTE]
 > Ha az előfizetés több mint 600 fiókkal rendelkezik, a Security Center nem tudja futtatni az identitás javaslatokat az előfizetésen. Javaslatok, amelyek nem futnak a "értékelések nem érhetők el" amelyet alatt vannak felsorolva.
 A Security Center nem tud az identitás javaslatokat futtatásához egy Felhőszolgáltató (CSP) partner által létrehozott felügyeleti ügynökök.
->
 >
 
 Lásd: [javaslatok](security-center-identity-access.md#recommendations) a Security Center által biztosított identitás- és hozzáférés javaslatok listája.
@@ -111,23 +110,20 @@ Referenciaként az alábbi táblázat segítségével segítenek megérteni a re
 
 |Erőforrás típusa|Biztonsági pontszám|Ajánlás|Leírás|
 |----|----|----|----|
-|Előfizetés|50|Az MFA engedélyezése az előfizetés tulajdonosi engedélyekkel rendelkező fiókok Azure kezelési alkalmazás|A multi-factor Authentication (MFA) engedélyezéséhez a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése rendszergazdai jogosultságokkal rendelkező összes előfizetési fiókban.|
-|Előfizetés|50|Az előfizetés a security center engedélyezése |A fejlett fenyegetésészlelés, igény szerinti, az alkalmazások engedélyezési listáinak és speciális ajánlások összes előfizetés a Security center engedélyezése |
-|Előfizetés|50|Security center standard szintű az előfizetés engedélyezése |A Security center Standard szintű, a fejlett fenyegetésészlelés, igény szerinti, az alkalmazások engedélyezési listáinak és speciális ajánlások összes előfizetés engedélyezéséhez.|
-|Előfizetés|40|Az MFA engedélyezése az előfizetés írási jogosultsággal rendelkező fiókok Azure kezelési alkalmazás|Engedélyezi a multi-factor Authentication (MFA) a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése írási jogosultsággal rendelkező összes előfizetési fiókban.|
-|Előfizetés|30|Tulajdonosi engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből|Tulajdonosi engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából. |
-|Előfizetés|30|Az MFA engedélyezése az előfizetés olvasási jogosultsággal rendelkező fiókok Azure kezelési alkalmazás|A multi-factor Authentication (MFA) engedélyezéséhez a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése olvasási jogosultságokkal rendelkező összes előfizetési fiókban.|
-|Előfizetés|25|Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből|Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából. |
-|Előfizetés|20|Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetésből|Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetések közül. Elavult fiókok azok a fiókok, amelyekre bejelentkezési le van tiltva az Azure ad-ben.|
-|Előfizetés|5|Elavult fiókok eltávolítása az előfizetésből|Elavult fiókok eltávolítása az csak az aktuális felhasználó hozzáférésének engedélyezése az előfizetések közül. Elavult fiókok azok a fiókok, amelyekre bejelentkezési le van tiltva az Azure ad-ben.|
-|Előfizetés|5|Az előfizetéshez legalább egy tulajdonos kijelölése|Több mint egy előfizetés-tulajdonost kijelölni a rendszergazdai hozzáférés redundanciájának biztosításához.|
-|Előfizetés|5|Az előfizetés legfeljebb 3 tulajdonos kijelölése|Kevesebb mint 3 előfizetés-tulajdonost kijelölni az esetleges illetéktelen behatolás feltört tulajdonosa.|
-|Key Vault|5|A Key Vault-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
-|Előfizetés|15|Olvasási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből|Az olvasási jogosultsággal rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.|
-|Előfizetés|1|Biztonsági kapcsolattartói adatok megadása|Biztonsági kapcsolattartó adatainak megadása minden egyes előfizetésnél. Kapcsolattartási adatok, e-mail címét és telefonszámát szám. Az adatok kapcsolatba lépni Önnel, ha a biztonsági csoportunk, hogy az erőforrások kerülnek veszélybe|
+|Előfizetés|50|MFA engedélyezni kell a fiókok az előfizetésben tulajdonosi engedélyekkel rendelkező|A multi-factor Authentication (MFA) engedélyezéséhez a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése rendszergazdai jogosultságokkal rendelkező összes előfizetési fiókban.|
+|Előfizetés|40|MFA engedélyezni kell a írási engedéllyel rendelkező előfizetés fiókjának|Engedélyezi a multi-factor Authentication (MFA) a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése írási jogosultsággal rendelkező összes előfizetési fiókban.|
+|Előfizetés|30|Tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|Tulajdonosi engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.|
+|Előfizetés|30|MFA a az előfizetés olvasási engedélyekkel rendelkező fiókok engedélyezve kell lennie|A multi-factor Authentication (MFA) engedélyezéséhez a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése olvasási jogosultságokkal rendelkező összes előfizetési fiókban.|
+|Előfizetés|25|Írási rendelkező külső fiókok engedélyeit el kell távolítani az előfizetésből|Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából. |
+|Előfizetés|20|Tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből|Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetések közül.|
+|Előfizetés|5|Elavult fiókokat el kell távolítani az előfizetésből|Elavult fiókok eltávolítása az csak az aktuális felhasználó hozzáférésének engedélyezése az előfizetések közül. |
+|Előfizetés|5|Meg kell adni az előfizetéshez hozzárendelt egynél több tulajdonosa|Több mint egy előfizetés-tulajdonost kijelölni a rendszergazdai hozzáférés redundanciájának biztosításához.|
+|Előfizetés|5|Legfeljebb 3 tulajdonosok az előfizetéshez kell kijelölni|Kevesebb mint 3 előfizetés-tulajdonost kijelölni az esetleges illetéktelen behatolás feltört tulajdonosa.|
+|Key Vault|5|Engedélyezni kell a Key Vault-diagnosztikai naplók|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Előfizetés|15|Olvasási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből|Az olvasási jogosultsággal rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.| 
 
-> ! [MEGJEGYZÉS] Ha létrehozott egy feltételes hozzáférési szabályzatot, amely szükségessé teszi a többtényezős hitelesítés, de beállítása kizárásokkal rendelkezik, a Security Center MFA javaslat értékelés figyelembe veszi a szabályzat nem megfelelő, egyes felhasználók az Azure MFA nélkül bejelentkezni, mert.
->
+> [!NOTE]
+> Ha létrehozott egy feltételes hozzáférési szabályzatot, amely szükségessé teszi a többtényezős hitelesítés, de beállítása kizárásokkal rendelkezik, a Security Center MFA javaslat értékelés figyelembe veszi a szabályzat nem megfelelő, egyes felhasználók az Azure MFA nélkül bejelentkezni, mert.
 
 ## <a name="next-steps"></a>További lépések
 Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:

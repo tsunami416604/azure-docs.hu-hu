@@ -6,18 +6,20 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 4/30/2019
+ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 72eaa18d570e85274efbea80f12e9a7301eecbfa
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 25779cd62f70df41a7734d2f8097504923dcb3a3
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947070"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430881"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Az Application Gateway kapcsolatos gyakori kérdések
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Az alábbiakban gyakori kérdések az Azure Application Gateway-ről.
 
 ## <a name="general"></a>Általános kérdések
 
@@ -187,13 +189,18 @@ Lásd: [szabályok feldolgozása sorrendben](https://docs.microsoft.com/azure/ap
 
 A gazdagép mező határozza meg, hogy küldjön a mintavétel, ha konfigurálta a többhelyes az Application Gateway neve. Ellenkező esetben használja a "127.0.0.1". Ez az érték eltér a virtuális gép állomásneve. A formátum \<protokoll\>://\<gazdagép\>:\<port\>\<elérési út\>.
 
-### <a name="can-i-whitelist-application-gateway-access-to-only-a-few-source-ips"></a>Az Application Gateway a hozzáférést csak néhány forrás IP-címek engedélyezési lehetőségeket?
+### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Engedélyezheti a hozzáférést az Application Gateway csak néhány forrás IP-címek?
 
-Igen. Lásd: [korlátozza a hozzáférést a megadott forrás IP-címek](https://docs.microsoft.com/azure/application-gateway/configuration-overview#whitelist-application-gateway-access-to-a-few-source-ips).
+Igen. Lásd: [korlátozza a hozzáférést a megadott forrás IP-címek](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips).
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Használhatom ugyanazt a portot a nyilvános és privát néző is figyelői?
 
 Nem.
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Útmutatások érhetők el a v1 Termékváltozatot át a v2-termékváltozatra van?
+
+Igen. További részletekért lásd:, [Migrálása az Azure Application Gateway és a webalkalmazási tűzfal v1, v2](migrate-v1-v2.md).
+
 
 ## <a name="configuration---ssl"></a>Konfiguráció – SSL
 
@@ -312,6 +319,10 @@ További információkért lásd: [OWASP top-10 biztonsági rések](https://www.
 ### <a name="does-waf-support-ddos-protection"></a>Támogatja a WAF DDoS elleni védelem?
 
 Igen. Engedélyezheti a DDoS protection a virtuális hálózaton, ahol az application gateway üzemel. Ez a beállítás biztosítja, hogy az Azure DDoS Protection szolgáltatás is védelmet nyújt a application gateway virtuális IP-cím (VIP).
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Útmutatások érhetők el a v1 Termékváltozatot át a v2-termékváltozatra van?
+
+Igen. További részletekért lásd:, [Migrálása az Azure Application Gateway és a webalkalmazási tűzfal v1, v2](migrate-v1-v2.md).
 
 ## <a name="diagnostics-and-logging"></a>Diagnosztika és naplózás
 

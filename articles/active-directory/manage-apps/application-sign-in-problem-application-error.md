@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 234fc94a0a2ad3d3bee49853cf1dfc6a805a0166
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: adfc96d2d7abf38c00f32a5d53615bb7c99c320e
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825405"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742380"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Hiba történt a bejelentkezés után az alkalmazás lapon
 
@@ -67,9 +67,11 @@ Attribútum hozzáadása az Azure AD-konfigurációjának az Azure ad-ben válas
 
 A felhasználó bejelentkezik az alkalmazásba, amikor legközelebb az Azure AD küldése az új attribútumot a SAML-válasz.
 
-## <a name="the-application-expects-a-different-user-identifier-value-or-format"></a>Az alkalmazás különböző felhasználói azonosító értékét vagy formátumot vár
+## <a name="the-application-doesnt-identify-the-user"></a>Az alkalmazás nem azonosítani a felhasználót
 
-A bejelentkezés az alkalmazáshoz sikertelen, mert hiányzik a SAML-válasz attribútumok, például a szerepkörök, vagy az alkalmazás, a várt EntityID attribútum egy másik formátumra.
+A bejelentkezés az alkalmazáshoz sikertelen, mert hiányzik a SAML-válasz attribútumok, például a szerepkörök, vagy az alkalmazás vár egy eltérő formátumú, vagy a EntityID attribútum értéke.
+
+Ha használ [Azure ad-ben automatizált felhasználókiépítése](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) létrehozása, kezelése, és távolítsa el a felhasználókat az alkalmazásban. Ezt követően győződjön meg arról, hogy a felhasználó lett sikeresen kiépítve a SaaS-alkalmazás. További információkért lásd: [egyetlen felhasználó sem lett létrehozva, egy Azure AD katalógusából származó alkalmazásba](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
 
 ## <a name="add-an-attribute-in-the-azure-ad-application-configuration"></a>Az Azure AD-alkalmazás beállítása az attribútum hozzáadása:
 

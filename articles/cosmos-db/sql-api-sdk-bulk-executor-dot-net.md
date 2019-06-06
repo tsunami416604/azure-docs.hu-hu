@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 4f2d8b3246901f139695998224dfe036cccb9833
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74eddadd7fd967daa1eebb9d7cb223fdc708025f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627150"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471423"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Tömeges végrehajtó .NET könyvtár: Adatok letöltése 
 
@@ -42,6 +42,18 @@ ms.locfileid: "60627150"
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
+### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
+
+* Támogatás hozzáadva a graph tömeges végrehajtó fogadására a csúcsok és élek élettartam
+
+### <a name="a-name220-preview2220-preview2"></a><a name="2.2.0-preview2"/>2.2.0-preview2
+
+* Kijavítva egy probléma, amely során rugalmas méretezés az Azure Cosmos DB átjáró módban való futtatáskor kivételt okozott. Javítás a funkcionális szempontból egyenértékű 1.4.1 teszi kiadás.
+
+### <a name="a-name210-preview2210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
+
+* Hozzáadott BulkDelete támogatja az SQL API-fiókok, fogadja el a partíciós kulcs, a dokumentum azonosítója rekordok törléséhez. Ez a változás lehetővé teszi funkcionális szempontból egyenértékű 1.4.0-s kiadás.
+
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
 * Például MongoBulkExecutor használatával a .NET Standard 2.0 támogatása. A szolgáltatás révén funkcionális szempontból egyenértékű 1.3.0 kiadást is támogató .NET Standard 2.0 célkeretrendszerként.
@@ -50,10 +62,24 @@ ms.locfileid: "60627150"
 
 * Hozzáadott .NET Standard 2.0 a támogatott keretrendszerek egyik, a .NET Core-alkalmazások használata BulkExecutor könyvtárat.
 
+### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
+
+* A tömeges végrehajtó használatára az Azure Cosmos DB .NET SDK (2.4.0) legújabb verziójának frissítése
+
+### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
+
+* Támogatás hozzáadva a graph tömeges végrehajtó fogadására a csúcsok és élek élettartam
+
+### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
+
+* Kijavítva egy probléma, amely során rugalmas méretezés az Azure Cosmos DB átjáró módban való futtatáskor kivételt okozott.
+
+### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
+
+* Hozzáadott BulkDelete támogatja az SQL API-fiókok, fogadja el a partíciós kulcs, a dokumentum azonosítója rekordok törléséhez.
+
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-* SQL API-fiókok, fogadja el a partíciós kulcs, a dokumentum azonosítója rekordok törléséhez BulkDelete művelet túlterhelés hozzá.
-* SQL API-fiókok, fogadja el a partíciókulcsot, törli a dokumentumokat a bemeneti lekérdezés szűrőként használata mellett a partíciókulcs értékét megadó tartalmazó RequestOptions BulkDelete művelet túlterhelés hozzá.
 * Kijavítva egy probléma, amely egy formázási problémát az okozza, a BulkExecutor által használt felhasználói ügynök.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0

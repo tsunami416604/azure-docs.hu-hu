@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: f8d7b00de24c566cab204c66371dac9b569c42c9
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65619998"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734933"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályokban (előzetes verzió)
 
@@ -33,7 +33,7 @@ Bár a riasztási szabályok lehetővé teszik, hogy meghatározza a műveletcso
 
 ## <a name="configuring-an-action-rule"></a>Egy művelet szabály konfigurálása
 
-A funkció eléréséhez kiválasztásával **kezelheti** , a kezdőlap az Azure monitorban riasztásokat. Válassza ki **művelet szabályok (előzetes verzió)**. Elérheti azokat kiválasztásával **művelet szabályok (előzetes verzió)** az irányítópultról, riasztások kezdőlapjának alkotóelemeit.
+A funkció eléréséhez kiválasztásával **kezelheti** , a kezdőlap az Azure monitorban riasztásokat. Válassza ki **művelet szabályok (előzetes verzió)** . Elérheti azokat kiválasztásával **művelet szabályok (előzetes verzió)** az irányítópultról, riasztások kezdőlapjának alkotóelemeit.
 
 ![Az Azure Monitor kezdőlapja a műveleti szabályokban](media/alerts-action-rules/action-rules-landing-page.png)
 
@@ -67,7 +67,7 @@ A rendelkezésre álló szűrők a következők:
 * **Riasztási szabály azonosítója**: Lehetővé teszi a meghatározott riasztási szabályok használatával a Resource Manager-Azonosítót a riasztási szabály szűrést.
 * **Az állapot figyelése**: Szűrheti a figyelési feltétel, a "Fired" vagy "Megoldva" riasztási példányok.
 * **Leírás**: A reguláris kifejezéssel egyező belül a riasztási szabály részeként határozza meg a leírást.
-* **Riasztás környezete (tartalom)**: Reguláris kifejezéssel egyező belül a [riasztás környezete](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) riasztási példány mezőket.
+* **Riasztás környezete (tartalom)** : Reguláris kifejezéssel egyező belül a [riasztás környezete](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) riasztási példány mezőket.
 
 Ezeket a szűrőket egymással összefüggésben érvényesek. Például ha megadom a "Resource type" = "Virtual Machines" és 'Súlyosság' = "Sev0", majd I szűrt a riasztásokhoz "Sev0" csak saját virtuális gépeken. 
 
@@ -80,7 +80,7 @@ Ezután konfigurálja a művelet a szabály riasztás letiltása vagy a művelet
 #### <a name="suppression"></a>Tiltási
 
 Ha **tiltási**, műveleteket és értesítések a Mellőzés időtartamának beállítása. Válassza ki az alábbi lehetőségek közül:
-* **Múlva (mindig)**: Minden értesítés határozatlan időre letiltja.
+* **Múlva (mindig)** : Minden értesítés határozatlan időre letiltja.
 * **Ütemezett időpontban**: Értesítéseinek elrejtése, korlátozott időtartamú belül.
 * **Az ismételt**: Az ismétlődési ütemezés, amely lehet a napi, heti vagy havi mellőzése.
 
@@ -128,12 +128,15 @@ A Contoso biztosítani szeretné az összes bejelentkezéshez, az "Számítógé
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>3. forgatókönyv: Műveletcsoport meg van határozva egy erőforráscsoportot
 
-Contoso definiált [előfizetés szintjén metrikariasztás](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor), csak a külön-külön az az erőforráscsoport "ContosoRG" riasztásokat kiváltó műveletek határozhatók meg szeretne.
+Contoso definiált [előfizetés szintjén metrikariasztás](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor), csak a kifejezetten a saját erőforráscsoport "ContosoRG" által előállított riasztásokat kiváltó műveletek határozhatók meg szeretne.
 
 **Megoldás:** A művelet szabály létrehozása
 * Hatókör = "ContosoRG"
 * Nincs szűrő
 * Action Group set to 'ContosoActionGroup'
+
+> [!NOTE]
+> **Műveletcsoportok meghatározott műveleti szabályokban és a riasztási szabályok egymástól függetlenül, a duplikátumok megszüntetése nem működnek**. Műveletcsoport esetén a fent ismertetett forgatókönyvben meghatározása a riasztási szabály aktivál együtt a művelet a műveleti-szabályban megadott csoporttal. 
 
 ## <a name="managing-your-action-rules"></a>A művelet szabályok kezelése
 
@@ -153,7 +156,7 @@ A legjobb emelés naplóriasztások művelet szabályokkal, azt javasoljuk, hogy
 
 ![Műveleti szabályokban és a naplóriasztások (eredmények száma)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>gyakori kérdésekben
+## <a name="faq"></a>GYIK
 
 * K. Egy művelet szabály konfigurálása, során szeretném, egymással átfedésben lévő művelet az összes lehetséges, hogy el a duplikált értesítések szabályok megtekintéséhez. Az esetleges ehhez?
 

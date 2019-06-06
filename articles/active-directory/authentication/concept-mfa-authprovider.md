@@ -11,20 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfababeae15ee18a140042d9a6ca10be40e41339
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b1c9c24f5b594935c0057eb15acec09a0b27324
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415803"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496786"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Mikor érdemes használni az Azure multi-factor Authentication-szolgáltatót
 
 A kétlépéses ellenőrzés alapértelmezés szerint elérhető az Azure Active Directory- és Office 365-felhasználókkal rendelkező globális adminisztrátorok számára. De ha ki szeretné használni a [speciális szolgáltatásokat](howto-mfa-mfasettings.md), az Azure Multi-Factor Authentication (MFA) teljes verzióját meg kell vásárolnia.
 
 Az Azure multi-factor Auth szolgáltató segítségével a felhasználók számára az Azure multi-factor Authentication szolgáltatás által biztosított szolgáltatások előnyeinek akik **nem rendelkeznek licenccel**.
-
-Ha rendelkezik licencekkel, mind a minden felhasználó a szervezetben, majd nincs szüksége Azure multi-factor Auth szolgáltatót. Hozzon létre egy Azure multi-factor Authentication-szolgáltatót, csak akkor, ha is meg kell adnia a kétlépéses ellenőrzést, amelyek nem rendelkeznek licenccel az egyes felhasználók számára.
 
 > [!NOTE]
 > Hatékony 2018. szeptember 1-től. új auth-szolgáltatók többé nem hozható létre. Meglévő hitelesítésszolgáltatók előfordulhat, hogy továbbra is használja, és frissítve. A multi-factor authentication továbbra is elérhető az Azure AD Premium-licencet.

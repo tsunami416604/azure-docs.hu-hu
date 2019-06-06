@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a0ff97eb17dcf2625e1bb75dabf3e4a9686b5b85
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 805f11d57a635f4e73309d025e185049b511570b
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725714"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427835"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok
 A következő esetekben felvázolják a Key Vault tanúsítvány management szolgáltatás többek között a további lépéseket az első tanúsítvány létrehozásához a key vaultban lévő szükséges elsődleges használatokban.
@@ -39,8 +39,7 @@ Tanúsítványok épülnek fel, a Key Vault-tanúsítvánnyal; egymáshoz kapcso
 -   Az előkészítési a rendszergazda, nyilvános kulcsokra épülő infrastruktúra-rendszergazda, vagy mindenki számára egy adott vállalat (például a hitelesítésszolgáltatók és a fiókok kezelése Contoso) a Key Vault-tanúsítványok használatának előfeltétele.  
     A következő CAs a Key Vault használata az aktuális partnered szolgáltatók:  
     -   A DigiCert – Key Vault kínál OV-SSL DigiCert tanúsítványokat.  
-    -   GlobalSign – Key Vault kínál OV-SSL GlobalSign rendelkező tanúsítványokat  
-    -   WoSign – Key Vault ajánlatok OV-SSL vagy a Bővített SSL-tanúsítványok WoSign az ügyfél WoSign-fiókjukban az WoSign portálon konfigurált beállítás alapján.  
+    -   Globaltrust – Key Vault kínál OV-SSL Globaltrust rendelkező tanúsítványok.  
 
 **2. lépés** -rendszergazdai fiók egy hitelesítésszolgáltató-szolgáltató regisztrálásához, a Key Vault által használandó hitelesítő adatokat hoz létre a újítsa meg és SSL-tanúsítványokat bocsát ki a Key Vault használata.
 

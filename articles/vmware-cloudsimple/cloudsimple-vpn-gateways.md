@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa7730247ddc5f30c3d21a32421a6c55ec4ef72e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 9b2630614e549181f4dd2f4e79871c4594d09201
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872764"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496871"
 ---
 # <a name="vpn-gateways-overview"></a>VPN-átjárók áttekintése
 
@@ -37,6 +37,8 @@ Site-to-site VPN használati esetek a következők:
 * Kényelmes virtuális Gépet sablonok, ISO és egyéb fájlok való átvitele a helyszíni erőforrások a saját magánfelhő-alapú.
 * Kisegítő lehetőségek, a helyszíni hálózaton a magánfelhőben futó számítási feladatokat.
 
+![Site-to-Site VPN kapcsolati topológia](media/cloudsimple-site-to-site-vpn-connection.png)
+
 ### <a name="cryptographic-parameters"></a>Titkosítási paraméterek
 
 Site-to-site VPN-kapcsolat biztonságos kapcsolatot létesíteni a következő alapértelmezett titkosítási paramétereket használja.  Ha a helyszíni VPN-eszköz kapcsolatot hoz létre, a paraméterek meg kell egyeznie.
@@ -48,7 +50,7 @@ Site-to-site VPN-kapcsolat biztonságos kapcsolatot létesíteni a következő a
 | Paraméter | Javaslat: 1 | Javaslat 2 | Javaslat 3 |
 |-----------|------------|------------|------------|
 | IKE verziószám | IKEv1 | IKEv1 | IKEv1 |
-| Titkosítás | AES 128 | AES 256 | AES 256 |
+| Encryption | AES 128 | AES 256 | AES 256 |
 | Kivonatoló algoritmus| SHA 256 | SHA 256 | SHA 1 |
 | Diffie-Hellman csoport (DH-csoport) | 1 | 1 | 1 |
 | Élettartam | 28 800 másodperc | 28 800 másodperc | 28 800 másodperc |
@@ -59,9 +61,9 @@ Site-to-site VPN-kapcsolat biztonságos kapcsolatot létesíteni a következő a
 
 | Paraméter | Javaslat: 1 | Javaslat 2 | Javaslat 3 |
 |-----------|------------|------------|------------|
-| Titkosítás | AES 128 | AES 256 | AES 256 |
+| Encryption | AES 128 | AES 256 | AES 256 |
 | Kivonatoló algoritmus| SHA 256 | SHA 256 | SHA 1 |
-| Tökéletes előre csoport-sérülés utáni Titkosságvédelmi (PFS-csoport) | None | Nincsenek | None |
+| Tökéletes előre csoport-sérülés utáni Titkosságvédelmi (PFS-csoport) | Egyik sem | Nincsenek | Egyik sem |
 | Élettartam | 1,800 másodperc | 1,800 másodperc | 1,800 másodperc |
 | Adatok mérete | 4 GB | 4 GB | 4 GB |
 

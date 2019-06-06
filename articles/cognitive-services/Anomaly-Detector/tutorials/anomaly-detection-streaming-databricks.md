@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Rendellenességek észlelése, a streamelt adatokon az Azure Databricks használatával'
+title: 'Oktatóanyag: Streamelési adatok rendellenességeinek észlelése az Azure Databricks használatával'
 description: Az Anomáliadetektálási detector használatával API és az Azure Databricks használatával figyelheti az adatok a rendellenességeket.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: a00ad2523c215fa54d7d19d8c9e923b621f3081a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d1808bb88ac1bb27f2fd0652585521fbb2abdf56
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791826"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734666"
 ---
-# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Rendellenességek észlelése, a streamelt adatokon az Azure Databricks használatával
+# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok rendellenességeinek észlelése az Azure Databricks használatával
 
-A Microsoft Power BI Desktop ingyenes alkalmazás segítségével csatlakozni, átalakítani és szemléltetni is lehet az adatokat. Az Anomáliadetektálási detector használatával API, Azure Cognitive Services részeként az idősoros adatokat figyelési megoldást kínál. Ebben az oktatóanyagban használja az anomáliadetektálás futtatása közel valós idejű adatokat streamelt az Azure Databricks használatával. Twitter-adatok az Azure Event Hubs használatával fog, és importálja azokat az Azure Databricks a Spark Event Hubs összekötője segítségével. Ezt követően az API-t fogja használni a streamelési adatok hangulatelemzéséhez a rendellenességek észlelése. 
+[Az Azure Databricks](https://azure.microsoft.com/en-us/services/databricks/) egy gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatás. Az Anomáliadetektálási detector használatával API, Azure Cognitive Services részeként az idősoros adatokat figyelési megoldást kínál. Ebben az oktatóanyagban használja az anomáliadetektálás futtatása közel valós idejű adatokat streamelt az Azure Databricks használatával. Twitter-adatok az Azure Event Hubs használatával fog, és importálja azokat az Azure Databricks a Spark Event Hubs összekötője segítségével. Ezt követően az API-t fogja használni a streamelési adatok hangulatelemzéséhez a rendellenességek észlelése. 
 
 Az alábbi ábrán az alkalmazásfolyam látható:
 
@@ -79,7 +79,7 @@ Ebben a szakaszban, hozzon létre egy Azure Databricks munkaterületen a [az Azu
 
     Kattintson a **Létrehozás** gombra.
 
-4. A fiók létrehozása eltarthat néhány percig. 
+4. A munkaterület létrehozása eltarthat néhány percig. 
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Spark-fürt létrehozása a Databricks használatával
 
@@ -99,7 +99,8 @@ Ebben a szakaszban, hozzon létre egy Azure Databricks munkaterületen a [az Azu
    * Ebben a cikkben hozzon létre egy fürtöt **5.2** modul. Ne válassza **5.3** modul.
    * Győződjön meg arról, hogy a **leállítása után \_ \_ ennyi perc inaktivitás** jelölőnégyzet be van jelölve. Adja meg egy időtartamot (percben) a fürt leállításához, ha a fürt használja.
 
-     Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
+     Válassza a **Fürt létrehozása** lehetőséget. 
+4. A fürt létrehozása néhány percet vesz igénybe. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
 ## <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
 
@@ -127,7 +128,7 @@ Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitt
 
    ![Kódtár hozzáadása párbeszédpanel](../media/tutorials/databricks-add-library-option.png "Kódtár hozzáadása párbeszédpanel")
 
-2. Az Új kódtár oldalon a **Forrás** listából válassza a **Maven-koordináta** lehetőséget. A **Koordináta** mezőben adja meg a hozzáadni kívánt csomag koordinátáit. Az oktatóanyagban használt kódtárak Maven-koordinátái a következők:
+2. Az új kódtár oldalon a **forrás** kiválasztása **Maven**. A **koordinálja**, írja be a hozzáadni kívánt csomag koordinátáit. Az oktatóanyagban használt kódtárak Maven-koordinátái a következők:
 
    * Spark Event Hubs-összekötő – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Twitter API – `org.twitter4j:twitter4j-core:4.0.7`
@@ -161,7 +162,7 @@ Ebben az oktatóanyagban használja a [Azure Cognitive Services Anomáliadetekt�
 
 4. A **Létrehozás** párbeszédpanelen adja meg az alábbi értékeket:
 
-    |Value |Leírás  |
+    |Érték |Leírás  |
     |---------|---------|
     |Name (Név)     | Az Anomáliadetektálási detector használatával erőforrás nevét.        |
     |Előfizetés     | Az Azure-előfizetés az erőforrás társítva lesz.        |
@@ -172,17 +173,13 @@ Ebben az oktatóanyagban használja a [Azure Cognitive Services Anomáliadetekt�
 
      Kattintson a **Létrehozás** gombra.
 
-5. Az erőforrás létrehozása után a a **áttekintése** lapon jelölje be **hozzáférési kulcsok megjelenítése**.
+5. Az erőforrás létrehozása után a a **áttekintése** lapra, másolja és mentse a **végpont** URL-CÍMÉT, a képernyőképen látható módon. Válassza ki **hozzáférési kulcsok megjelenítése**.
 
     ![Hozzáférési kulcsok megjelenítése](../media/tutorials/cognitive-services-get-access-keys.png "Hozzáférési kulcsok megjelenítése")
 
-    Emellett másolja a végpont URL-címének egy részét a képernyőképen látható módon. Erre az URL-címre szükség lesz az oktatóanyagban.
-
-6. A **kulcsok**, válassza ki a használni kívánt kulcs a másolási ikonra.
+6. A **kulcsok**, válassza ki a használni kívánt kulcs a másolási ikonra. Mentse a hozzáférési kulcsot.
 
     ![Hozzáférési kulcsok másolása](../media/tutorials/cognitive-services-copy-access-keys.png "Hozzáférési kulcsok másolása")
-
-7. Mentse a végponti URL-cím és a hozzáférési kulcs ebben a lépésben beszerzett értékeit. Az oktatóanyag későbbi részében szüksége lesz rájuk.
 
 ## <a name="create-notebooks-in-databricks"></a>Jegyzetfüzetek létrehozása a Databricksben
 
@@ -191,7 +188,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen 
 - **SendTweetsToEventHub** – Előállítói jegyzetfüzet a tweetek beszerzésére a Twitterről, majd azok streamelésére az Event Hubsnak.
 - **AnalyzeTweetsFromEventHub** – fogyasztói jegyzetfüzet tweetek olvasásához az Event Hubs és használhat az anomáliadetektálás futtatása.
 
-1. A bal oldali panelen válassza a **Munkaterület** elemet. A **Munkaterület** legördülő menüjében válassza a **Létrehozás**, majd a **Jegyzetfüzet** elemet.
+1. Válassza ki az Azure Databricks-munkaterület **munkaterület** a bal oldali ablaktáblán. A **Munkaterület** legördülő menüjében válassza a **Létrehozás**, majd a **Jegyzetfüzet** elemet.
 
     ![Notebook létrehozása a Databricksben](../media/tutorials/databricks-create-notebook.png "Notebook létrehozása a Databricksben")
 
@@ -205,7 +202,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen 
 
 ## <a name="send-tweets-to-event-hubs"></a>Tweetek küldése az Event Hubsnak
 
-Az a **SendTweetsToEventHub** jegyzetfüzet, illessze be az alábbi kódot, és cserélje le a helyőrző értékek Event Hubs-névtér és Twitter-alkalmazás, amelyet korábban hozott létre. Ez a jegyzetfüzet valós időben streameli az „Azure” kifejezést tartalmazó tweeteket az Event Hubsba.
+Az a **SendTweetsToEventHub** jegyzetfüzet, illessze be az alábbi kódot, és cserélje le a helyőrző értékek Event Hubs-névtér és Twitter-alkalmazás, amelyet korábban hozott létre. Ez a jegyzetfüzet létrehozásának időpontja és a "Például a" s száma kibontja az "Azure" kulcsszót tartalmazó tweeteket, és az Event Hubsba mindezek lehetőségként megjelennek események valós idejű adatfolyam.
 
 ```scala
 //
@@ -302,7 +299,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancsot. A következő kódrészlethez hasonló kimenetnek kell megjelennie. A kimenetben szereplő minden esemény egy, az Event Hubsba betöltött tweet.
+A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancsot. A következő kódrészlethez hasonló kimenetnek kell megjelennie. A kimenetben szereplő minden esemény "Például a" s az Event hubsba betöltött száma és az időbélyegző kombinációját.
 
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
 
@@ -325,7 +322,7 @@ A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancso
 
 ## <a name="read-tweets-from-event-hubs"></a>Tweetek beolvasása az Event Hubsról
 
-Illessze be a következő kódot az **AnalyzeTweetsFromEventHub** jegyzetfüzetbe, és a helyőrzőket cserélje le a korábban létrehozott Azure Event Hubs értékeire. Ez a jegyzetfüzet beolvassa a tweeteket, amelyeket korábban az Event Hubsba streamelt a **SendTweetsToEventHub** jegyzetfüzet segítségével.
+Az a **AnalyzeTweetsFromEventHub** jegyzetfüzetbe illessze be az alábbi kódot, és a helyőrzőt cserélje le a korábban létrehozott Anomáliadetektálási detector használatával erőforrásához tartozó értékeket. Ez a jegyzetfüzet beolvassa a tweeteket, amelyeket korábban az Event Hubsba streamelt a **SendTweetsToEventHub** jegyzetfüzet segítségével.
 
 Ügyfél-Anomáliadetektálási detector használatával hívja először írása. 
 ```scala
@@ -387,7 +384,7 @@ object AnomalyDetector extends Serializable {
     return response.toString()
   }
 
-  // Calls the Latest Point Detection API for timeserie.
+  // Calls the Latest Point Detection API.
   def detectLatestPoint(series: Series): Option[AnomalySingleResponse] = {
     try {
       println("Process Timestamp: " + series.series.apply(series.series.length-1).timestamp.toString + ", size: " + series.series.length)
@@ -406,7 +403,7 @@ object AnomalyDetector extends Serializable {
     }
   }
 
-  // Calls the Batch Detection API for timeserie.
+  // Calls the Batch Detection API.
   def detectBatch(series: Series): Option[AnomalyBatchResponse] = {
     try {
       val response = processUsingApi(gson.toJson(series), batchDetectionUrl)
@@ -425,7 +422,7 @@ object AnomalyDetector extends Serializable {
 }
 ```
 
-A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancsot. A következő kódrészlethez hasonló kimenetnek kell megjelennie. : 
+A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancsot. A következő kódrészlethez hasonló kimenetnek kell megjelennie.
 
     import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
     import java.net.URL
@@ -447,10 +444,9 @@ Aggregátumfüggvény majd előkészítheti a későbbi használatra.
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
 import org.apache.spark.sql.types.{StructType, TimestampType, FloatType, MapType, BooleanType, DataType}
-//import org.apache.spark.sql.functions._
 import scala.collection.immutable.ListMap
 
-class AnomalyDetectorAggregationFunction_Hourly extends UserDefinedAggregateFunction {
+class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
   override def inputSchema: StructType = new StructType().add("timestamp", TimestampType).add("value", FloatType)
   
   override def bufferSchema: StructType = new StructType().add("point", MapType(TimestampType, FloatType))
@@ -482,8 +478,8 @@ class AnomalyDetectorAggregationFunction_Hourly extends UserDefinedAggregateFunc
       
       
       // 0.25 is maxAnomalyRatio. It represents 25%, max anomaly ratio in a time series.
-      // 95 is the sensitivity of the algorithms. 
-      // Check Anomaly detector API reference (https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-last-detect)
+      // 95 is the sensitivity of the algorithms.
+      // Check Anomaly detector API reference (https://aka.ms/anomaly-detector-rest-api-ref)
       
       val series: Series = new Series(detect_points.toArray, 0.25, 95, "hourly")
       val response: Option[AnomalySingleResponse] = AnomalyDetector.detectLatestPoint(series)
@@ -498,7 +494,7 @@ class AnomalyDetectorAggregationFunction_Hourly extends UserDefinedAggregateFunc
 
 ```
 
-A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancsot. A következő kódrészlethez hasonló kimenetnek kell megjelennie. 
+A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancsot. A következő kódrészlethez hasonló kimenetnek kell megjelennie.
 
     import org.apache.spark.sql.Row
     import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
@@ -506,7 +502,7 @@ A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancso
     import scala.collection.immutable.ListMap
     defined class AnomalyDetectorAggregationFunction
 
-Majd betölteni az adatokat az event hubs szolgáltatást.
+Majd betölteni az adatokat az event hubs szolgáltatást. Értékek a korábban létrehozott Azure Event hubs a helyőrzőt cserélje.
 
 ```scala
 //
@@ -544,7 +540,7 @@ display(msgStream)
 
 ```
 
-A kimenet a következő képen láthatóhoz. Azért kell fizetnie, figyeljen, hogy a tábla a dátumot eltérhet ebben az oktatóanyagban a dátum, az adatokat valós időben.
+A kimenet a következő képen láthatóhoz. Vegye figyelembe, hogy a tábla a dátumot eltérhet ebben az oktatóanyagban dátum, mivel az adatok valós idejű.
 ![Betöltés adatokat az Event hubs](../media/tutorials/load-data-from-eventhub.png "terhelés adatokat az Event Hubs")
 
 Streamelt adatokat az Azure Event Hubsból az Azure Databricksbe az Apache Spark az Event Hubs összekötője segítségével közel valós időben. A Spark Event Hubs-összekötőinek használatáról az [összekötő dokumentációjában](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs) talál további információt.
@@ -583,7 +579,8 @@ groupTime                       average
 
 ```
 
-Kérje le változások az összesített kimeneti eredmény. Anomáliadetektálás hosszabb okno historie igényel, mert a különbözeti használunk az észlelni kívánt pont előzmények adatok. 
+Kérje le változások az összesített kimeneti eredmény. Anomáliadetektálás hosszabb okno historie igényel, mert a különbözeti használunk az észlelni kívánt pont előzmények adatok. Cserélje le a "[helyőrző: tábla neve]" a különbözeti minősített táblanév (például "tweets") kell létrehozni. Cserélje le "[helyőrző: ellenőrzőpontokat mappa neve]" karakterláncérték, amely egyedi minden alkalommal futtassa ezt a kódot (például "etl-a – az eventhub-20190605").
+Az Azure databricks szolgáltatásban különbözeti Lake kapcsolatos további információkért tekintse meg a [különbözeti Lake útmutató](https://docs.azuredatabricks.net/delta/index.html)
 
 
 ```scala
@@ -599,6 +596,7 @@ groupStream.writeStream
 
 ```
 
+Cserélje le a "[helyőrző: tábla neve]" fent választott különbözeti tábla ugyanazzal a névvel.
 ```scala
 //
 // Show Aggregate Result
@@ -625,26 +623,34 @@ groupTime                       average
 
 ```
 
-Most már az összesített idősorozat-adatok folyamatosan be lett töltve a változásokat. Majd ütemezhet egy feladat minden órában legutóbbi pont a rendellenességek észlelését. 
+Most már az összesített idősorozat-adatok folyamatosan be lett töltve a változásokat. Majd ütemezhet egy óránkénti feladat legutóbbi pont a rendellenességek észlelését. Cserélje le a "[helyőrző: tábla neve]" fent választott különbözeti tábla ugyanazzal a névvel.
 
 ```scala
 //
-// Anomaly Detection with Batch query
+// Anomaly Detection
 //
 
 import java.time.Instant
+import java.time.format.DateTimeFormatter
+import java.time.ZoneOffset
 import java.time.temporal.ChronoUnit
 
 val detectData = spark.read.format("delta").table("[Placeholder: table name]")
 
-// How long history you want to use in anomaly detection. It is hourly time series in this tutorial, so 72 means 72 hours. 
-val batchSize = 72
+// You could use Databricks to schedule an hourly job and always monitor the latest data point
+// Or you could specify a const value here for testing purpose
+// For example, val endTime = Instant.parse("2019-04-16T00:00:00Z")
+val endTime = Instant.now()
 
-// Change the endTime to where you want to detect. You could use Databricks to schedule a job and change it to the latest hour. 
-val endTime = Instant.parse("2019-04-16T00:00:00Z")
+// This is when your input of anomaly detection starts. It is hourly time series in this tutorial, so 72 means 72 hours ago from endTime.
+val batchSize = 72
 val startTime = endTime.minus(batchSize, ChronoUnit.HOURS)
 
-val series = detectData.filter($"groupTime" < endTime.toString && $"groupTime" >= startTime.toString).sort($"groupTime")
+val DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneOffset.UTC);
+
+val series = detectData.filter($"groupTime" <= DATE_TIME_FORMATTER.format(endTime))
+  .filter($"groupTime" > DATE_TIME_FORMATTER.format(startTime))
+  .sort($"groupTime")
 
 series.createOrReplaceTempView("series")
 
@@ -653,7 +659,7 @@ series.createOrReplaceTempView("series")
 // Register the function to access it
 spark.udf.register("anomalydetect", new AnomalyDetectorAggregationFunction)
 
-val adResult = spark.sql("SELECT '" + endTime.toString + "' as timestamp, anomalydetect(groupTime, average) as anomaly FROM series")
+val adResult = spark.sql("SELECT '" + endTime.toString + "' as datetime, anomalydetect(groupTime, average) as anomaly FROM series")
 adResult.show()
 ```
 Az eredmény, az alábbi: 
@@ -665,36 +671,21 @@ Az eredmény, az alábbi:
 |2019-04-16T00:00:00Z|  false|
 +--------------------+-------+
 
-```
-Az eredmény rendellenességek észlelése vissza a különbözeti. 
-```scala
-//
-// Output Batch AD Result to delta
-//
 
-adResult.writeStream
-  .format("delta")
-  .outputMode("complete")
-  .option("checkpointLocation", "/delta/[Placeholder: table name]/_checkpoints/[Placeholder: folder name for checkpoints]")
-  .table("[Placeholder: table name]")
-  
-```
+That's it! Using Azure Databricks, you have successfully streamed data into Azure Event Hubs, consumed the stream data using the Event Hubs connector, and then run anomaly detection on streaming data in near real time.
+Although in this tutorial, the granularity is hourly, you can always change the granularity to meet your need. 
 
+## Clean up resources
 
-Ennyi az egész! Az Azure Databricks segítségével streamelt adatokat az Azure Event Hubsba, az adatok streamelése az Event Hubs összekötője segítségével felhasznált, és a rendellenességek észlelése futtatunk streamelési adatok közel valós időben.
-Bár ebben az oktatóanyagban a granularitási óránként kerül, bármikor módosíthatja a granularitási megfelelni az igényeknek. 
+After you have finished running the tutorial, you can terminate the cluster. To do so, in the Azure Databricks workspace, select **Clusters** from the left pane. For the cluster you want to terminate, move the cursor over the ellipsis under **Actions** column, and select the **Terminate** icon and then select **Confirm**.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+![Stop a Databricks cluster](../media/tutorials/terminate-databricks-cluster.png "Stop a Databricks cluster")
 
-Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez az Azure Databricks-munkaterület bal oldali panelén kattintson a **Fürtök** elemre. A leállítani kívánt fürtnél vigye az egérmutatót a **Műveletek** oszlopban található három pont fölé, majd kattintson a **Leállítás** ikonra.
+If you don't manually terminate the cluster it will automatically stop, provided you selected the **Terminate after \_\_ minutes of inactivity** checkbox while creating the cluster. In such a case, the cluster will automatically stop if it has been inactive for the specified time.
 
-![Databricks-fürt leállítása](../media/tutorials/terminate-databricks-cluster.png "Databricks-fürt leállítása")
+## Next steps
 
-Ha Ön nem állítja le manuálisan a fürt automatikusan leáll, a kiválasztott megadott a **után leáll \_ \_ ennyi perc inaktivitás** jelölőnégyzetet a fürt létrehozásakor. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
-
-## <a name="next-steps"></a>További lépések
-
-Ez az oktatóanyag bemutatta, hogyan használhatja az Azure Databricks szolgáltatást az adatok Azure Event Hubsra való streamelésére, és hogyan olvashatja valós időben a streamelt adatokat az Event Hubsról. Folytassa a következő oktatóanyaggal, megtudhatja, hogyan az Anomáliadetektálási detector használatával API-t, és megjelenítheti a Power BI desktop használatával rendellenességeket. 
+In this tutorial, you learned how to use Azure Databricks to stream data into Azure Event Hubs and then read the streaming data from Event Hubs in real time. Advance to the next tutorial to learn how to call the Anomaly Detector API and visualize anomalies using Power BI desktop. 
 
 > [!div class="nextstepaction"]
->[A Batch rendellenesség-észlelést a Power BI desktopban](batch-anomaly-detection-powerbi.md)
+>[Batch anomaly detection with Power BI desktop](batch-anomaly-detection-powerbi.md)

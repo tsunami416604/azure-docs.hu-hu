@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16d20e9ea2203c788a2b7b5eb0507b357350407d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7cb3f7baa38305215a8b8383d25132327327d182
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918508"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472953"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Hibrid identitás-életciklus megtervezése
 Identitás a nagyvállalati mobilitás és az alkalmazás a hozzáférési stratégia alapjainak egyike. Mobileszköz vagy SaaS-alkalmazás aláírása, az identitás-e a kulcsot minden hozzáférjenek. A legmagasabb szintjén az identitáskezelési megoldás magában foglalja a egységes és az identitás-adattárak közötti szinkronizálása mely automatizálása, valamint a folyamat üzembe helyezésének erőforrások központosítása tartalmazza. Az identitáskezelési megoldás kell egy központi identitás kell a helyszíni és felhőben és a segítségével is identitás-összevonási valamilyen központosított hitelesítés kezelése és biztonságos megosztás és együttműködés a külső felhasználók és a vállalatok. Erőforrások között operációs rendszerek és alkalmazások számára, vagy fiókazonosítójával szervezetekben. Szervezeti felépítés is módosítható úgy, hogy megfeleljen a kiépítési irányelveinknek és eljárásainknak.
@@ -48,22 +48,23 @@ Ezek a követelmények meghatározásánál tart, miközben győződjön meg arr
   
   * Támogatja a hibrid identitáskezelési megoldás kezeli Licenckezelés?
     * Ha igen, milyen lehetőségek állnak rendelkezésre?
-* A megoldás kezeli a felügyeleti csoport alapú licenc? 
+  * A megoldás kezeli a felügyeleti csoport alapú licenc? 
   
-      - Ha igen, van egy biztonsági csoport hozzárendelése lehetséges? 
-       - Ha igen, a felhőalapú címtárral automatikusan hozzárendeli licencek a csoport összes tagját? 
-        - Mi történik, ha a felhasználó ezt követően hozzá, vagy eltávolítása a csoportból, lesz egy licencet kell automatikusan kiosztani vagy megvonni szükség szerint? 
+    * Ha igen, van egy biztonsági csoport hozzárendelése lehetséges? 
+    * Ha igen, a felhőalapú címtárral automatikusan hozzárendeli licencek a csoport összes tagját? 
+    * Mi történik, ha a felhasználó ezt követően hozzá, vagy eltávolítása a csoportból, lesz egy licencet kell automatikusan kiosztani vagy megvonni szükség szerint? 
 * Integráció más külső Identitásszolgáltatók:
-* A hibrid megoldás integrálható legyen az egyszeri bejelentkezés megvalósítása külső Identitásszolgáltatók?
-* Az esetleges egyesítheti a különböző identitás-szolgáltatóktól javul identitás rendszerbe?
-* Ha igen, hogyan, és melyek ezek, és milyen lehetőségek állnak rendelkezésére?
+  * A hibrid megoldás integrálható legyen az egyszeri bejelentkezés megvalósítása külső Identitásszolgáltatók?
+  * Az esetleges egyesítheti a különböző identitás-szolgáltatóktól javul identitás rendszerbe?
+  * Ha igen, hogyan, és melyek ezek, és milyen lehetőségek állnak rendelkezésére?
 
 ## <a name="synchronization-management"></a>Szinkronizálás kezelése
 Az identitás-szolgáltatóktól használata, és láthatóan tartja őket a célja, az identity manager egyik szinkronizálva. A szinkronizált adatok maradjon egy mérvadó fő identitásszolgáltató alapján. Hibrid identitáskezelési forgatókönyvben a szinkronizált felügyeleti modell egy helyszíni kiszolgálón lévő összes felhasználó és eszköz identitások kezelésére, és a fiókok és opcionálisan a felhőbe jelszavak szinkronizálása. A felhasználó megadja az azonos jelszót a helyi, az a felhőben, és a bejelentkezés, a jelszót az identitáskezelési megoldás által ellenőrzött. Ez a modell a címtár-Szinkronizáló eszköz használja.
 
-![címtár-szinkronizálás](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) megfelelő kialakíthatja a szinkronizálást az a hibrid identitáskezelési megoldás győződjön meg arról, hogy az alábbi kérdések és válaszok: • Mik azok a hibrid identitáskezelési megoldás érhető el a szinkronizálási megoldások?
-• Mik azok az egyszeri bejelentkezés elérhető funkciók?
-• Mik a lehetőségek az identitás-összevonási B2B és B2C között?
+![címtár-szinkronizálás](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) megfelelő kialakíthatja a szinkronizálást az a hibrid identitáskezelési megoldás győződjön meg arról, hogy az alábbi kérdések és válaszok:
+*    Mik azok a hibrid identitáskezelési megoldás érhető el a szinkronizálási megoldások?
+*    Mik azok az egyszeri bejelentkezés elérhető funkciók?
+*    Mik azok a beállításokat az identitás-összevonási B2B és B2C között?
 
 ## <a name="next-steps"></a>További lépések
 [Hibrid identitás-kezelés bevezetési stratégiájának meghatározása](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)

@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, sstein
 manager: craigg
 ms.date: 05/10/2019
-ms.openlocfilehash: 79cf4c713d60fa600bbb80b9c16728502ffc88ff
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 4d8d2fd9a7408bb77939c9a1c8fdd67251282f49
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236833"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479217"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Az Azure SQL Database és az SQL Server összehasonlítása
 
@@ -96,8 +96,9 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [JSON-adatok támogatása](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Igen](sql-database-json-features.md) | [Igen](sql-database-json-features.md) |
 | [Nyelvi elemei](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Most – tekintse meg az egyes elemek |  Igen – lásd: [a T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md) |
 | [Társított kiszolgálók](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem – lásd: [rugalmas lekérdezés](sql-database-elastic-query-horizontal-partitioning.md) | Csak [SQL Server és SQL Database](sql-database-managed-instance-transact-sql-information.md#linked-servers) |
-| [Naplóküldés](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Magas rendelkezésre állású](sql-database-high-availability.md) minden adatbázis részét képezi. Vész-helyreállítási a következő cikkben [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md) |[Magas rendelkezésre állású](sql-database-high-availability.md) minden adatbázis részét képezi. Vész-helyreállítási a következő cikkben [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md) |
+| [Naplóküldés](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Magas rendelkezésre állású](sql-database-high-availability.md) minden adatbázis részét képezi. Vész-helyreállítási a következő cikkben [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md) | Natív módon beépített DMS áttelepítési folyamat részeként. [Magas rendelkezésre állású](sql-database-high-availability.md) minden adatbázis részét képezi, és magas rendelkezésre ÁLLÁSÚ helyett-naplóküldés használata nem ajánlott. Vész-helyreállítási a következő cikkben [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md) |
 | [Bejelentkezések és felhasználók](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) | Igen, de `CREATE` és `ALTER` bejelentkezési utasítások nem lehetséges (nem Windows és a kiszolgálói szintű Azure Active Directory bejelentkezések) összes beállítást. `EXECUTE AS LOGIN` a használata nem támogatott – `EXECUTE AS USER` helyette.  | Igen, az egyes [különbségek](sql-database-managed-instance-transact-sql-information.md#logins-and-users). Windows-bejelentkezések nem támogatottak, és azok le kell cserélni az Azure Active Directory bejelentkezések. |
+| [Hosszú távú megőrzésének - balról jobbra](sql-database-long-term-retention.md) | Igen, automatikusan elvégzett biztonsági mentések lépést tartani 10 évre. | még nem. Használat `COPY_ONLY` [manuális biztonsági mentések](sql-database-managed-instance-transact-sql-information.md#backup) ideiglenes megoldás. |
 | [Master Data Services (MDS)](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | Nem | Nem |
 | [Minimális naplózás tömeges importálás során](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Nem | Nem |
 | [Rendszeradatok módosítása](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | Nem | Igen |

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: absha
-ms.openlocfilehash: ebb14d97273851585e491e3bcd36f776ec9b61b4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 9160d300270bf1ab5043bee632d27bcc4b7bf332
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000975"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476032"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Az Application Gateway HTTP-fejlécek újraírása
 
@@ -153,11 +153,11 @@ Egy HTTP- kérés fejlécében vagy kiszolgálói változó meglétének fejléc
 
 ## <a name="limitations"></a>Korlátozások
 
+- Ha választ ugyanazzal a névvel több fejlécek, újraírásával ezeket a fejléceket egyik értékét eredményez a többi fejlécek elvetését a válaszban. Általában ez fordulhat Set-cookie-k fejléccel, mert egynél több Set-Cookie-fejléc rendelkezhet egy adott válaszként. Egy ilyen forgatókönyv esetén egy app service az application gateway szolgáltatással használja, és konfigurálta a cookie-alapú munkamenet-affinitás az application gateway-en. Ebben az esetben a válasz 2 Set-cookie-k fejléceket tartalmazza: egyet, azaz az app service által használt `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` és a egy másikat az application gateway-affinitást, azaz a `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`. A Set-cookie-k fejlécek ebben a forgatókönyvben egyik újraírását eredményezhet a eltávolítása a Set-cookie-k fejléc a válaszból.
+
 - A kapcsolat, a frissítés és a gazdagép fejlécek újraírását jelenleg nem támogatott.
 
 - A fejlécnevek tartalmazhat bármilyen alfanumerikus karaktereket és az adott szimbólumok meghatározott [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Jelenleg nem támogatottak az aláhúzás (\_) fejléc neve speciális karaktert.
-
-- Ha választ ugyanazzal a névvel több fejlécek, újraírásával ezeket a fejléceket egyik értékét eredményez a többi fejlécek elvetését a válaszban.
 
 ## <a name="next-steps"></a>További lépések
 

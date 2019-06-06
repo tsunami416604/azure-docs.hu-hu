@@ -69,7 +69,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: '(Előzetes verzió) <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Konfigurálása időzóna</a> példány létrehozása során.'
+          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Konfigurálja az időzóna</a> példány létrehozása során.'
           - html: 'A példányok létrehozásához <a href="https://aka.ms/managed-instance-collation">a választott a kiszolgálói szintű rendezés</a>.'
           - html: 'A GEO-visszaállítás funkcióval <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">állíthatja vissza az adatbázist a PowerShell használatával egy másik adatközpontba</a>.'
           - html: '(Előzetes verzió) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Hozza létre újból eldobott adatbázisokat PowerShell használatával</a>'

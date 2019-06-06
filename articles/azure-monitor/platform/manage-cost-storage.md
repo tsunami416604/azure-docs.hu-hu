@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 06/03/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: ead3122d2040a544c6f09e434f27b7970f0d5840
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8eeb29b2d1fe17ae5581dab81c34d5c2c635a6c2
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417864"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496342"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Használat és költségek az Azure Monitor naplóira kezelése
 
@@ -58,6 +58,9 @@ Log Analytics díjak az Azure-elszámolások kerülnek. A számlázás szakaszá
 Konfigurálja a maximális napi adatmennyiséget, és korlátozhatja a napi bevitelt a munkaterületen, de körültekintően járjon el, mert a cél nem lehet eléri a napi korlátot.  Ellenkező esetben az a nap fennmaradó részében, ami hatással lehet más Azure-szolgáltatások és megoldások, amelynek funkció függhet, naprakész adatok legyenek elérhetők a munkaterület az adatok elvesznek.  Ennek eredményeképpen figyelje meg, és fogadjon megítélnie riasztást küld, ha is hatással van az informatikai szolgáltatásokat támogató erőforrásokban egészségügyi feltételeit.  Célja, hogy a maximális napi adatmennyiséget, a felügyelt erőforrásoktól érkező adatmennyiség váratlan növekedés kezeléséhez, és az időkorláton belül, vagy ha szeretné korlátozni a munkaterületre vonatkozó nem tervezett költségek mennyiségét úgy használható.  
 
 A napi korlátot, a gyűjtemény számlázható adattípusok leállítja az a nap hátralevő. Egy figyelmeztetés szalagcím jelenik meg a kiválasztott Log Analytics-munkaterületet a lap tetején, és a egy műveletet a rendszer a *művelet* tábla alatt **LogManagement** kategória. Az adatgyűjtés után a visszaállítási idő alatt meghatározott folytatja *napi korlát lesz beállítva*. Azt javasoljuk, hogy arra az esetre, ha a napi korlátot elérte a konfigurált Ez a művelet események alapján riasztási szabály meghatározása. 
+
+> [!NOTE]
+> A napi korlát nem állítja le az adatgyűjtést az Azure Security Center.
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Milyen napi korlátot meghatározásához azonosítása
 
@@ -105,7 +108,7 @@ Az alábbi lépéseket adatért által a munkaterületen milyen hosszú log konf
 
 ## <a name="legacy-pricing-tiers"></a>Örökölt tarifacsomagok
 
-Nagyvállalati szerződéssel rendelkező ügyfelek 2018. július 1-aláírását, és akik már létrehozott Log Analytics-munkaterület az előfizetéshez, akkor továbbra is hozzáférhetnek a a *ingyenes* tervet. Ha az előfizetés nem kötődik meglévő EA-regisztrációhoz, a *ingyenes* szint nem érhető el, amikor egy új előfizetést a 2018. április 2. után hozzon létre egy munkaterületet.  Adatok korlátozódik, hétnapos megőrzési ideje a *ingyenes* szint.  Az örökölt *önálló* vagy *Csomópontonkénti* rétegek, valamint a jelenlegi 2018 egyetlen tarifacsomagban a gyűjtött adatok érhető el az elmúlt 31 napra vonatkozó. A *ingyenes* csomag esetében a napi korlátja 500 MB-ot a betöltési, és ha rendszeresen túllépi az engedélyezett mennyiségi összegek, a munkaterület módosíthatja az adatgyűjtés meghaladja ezt a határt egy másik csomaghoz. 
+Előfizetések, aki eddig egy Log Analytics-munkaterület és Application Insights-erőforrást, 2018. április 2. előtt, vagy 2019. február 1. előtt elindított nagyvállalati szerződéshez kapcsolódó továbbra is hozzáférhetnek a tarifacsomagok régebbi: Ingyenes, önálló (GB-onként) és a csomópontonként (OMS).  Az ingyenes díjcsomag munkaterületein napi korlátja 500 MB (kivéve az Azure Security Center által gyűjtött biztonsági adattípusok) adatbetöltés fog rendelkezni, és az adatmegőrzés legfeljebb 7 napig. Az ingyenes díjcsomag kizárólag értékelési célokra szolgál. Az önálló vagy Csomópontonkénti tarifacsomagok munkaterületek hozzáférése adatmegőrzés 2 éves. 
 
 > [!NOTE]
 > Az OMS E1 csomag, OMS E2 csomagot vagy a System Center OMS bővítményének megvásárlásából származó jogosultságok használatához válassza a Log Analytics *Csomópontonkénti* tarifacsomag.
@@ -131,7 +134,9 @@ A munkaterület helyezhetik át a jelenlegi tarifacsomag szeretne, ha az előfiz
 
 Ha a régi ingyenes tarifacsomagban és a egy nap alatt több mint 500 MB mennyiségű adatot küldő adatgyűjtés leáll, a többi, a nap. Napi korlát elérése a gyakori oka, hogy a Log Analytics leállítja az adatgyűjtést, vagy adatokat úgy tűnik, hogy hiányzik.  A log Analytics művelet típusú eseményt hoz létre, amikor adatgyűjtés indítása és leállítása. A keresés, ellenőrizze, hogy vannak napi korlát elérése és adatok hiányoznak a következő lekérdezés futtatásával: 
 
-`Operation | where OperationCategory == 'Data Collection Status'`
+```kusto
+Operation | where OperationCategory == 'Data Collection Status'
+```
 
 Ha leállítja az adatgyűjtést, van-e a OperationStatus **figyelmeztetés**. Amikor elindul az adatgyűjtés, van-e a OperationStatus **sikeres**. A következő táblázat ismerteti az oka, hogy leállítja az adatgyűjtést, és folytathatja az adatgyűjtést javasolt művelet:  
 
@@ -153,51 +158,63 @@ A magasabb szintű használatot a következők okozhatják:
 
 Szeretné megtudni, a szívverések naponta az elmúlt hónapban jelentő számítógépek számát, használata
 
-`Heartbeat | where TimeGenerated > startofday(ago(31d))
+```kusto
+Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
-| render timechart`
+| render timechart
+```
 
 Szeretne kapni, számlázunk ki, csomópontok, ha a munkaterület megtalálható az örökölt Csomópontonkénti tarifacsomag, amely számítógépek listáját, keressen a továbbító csomópontok **adattípusok számlázzuk** (az egyes adattípusok ingyenes). Ehhez használja a `_IsBillable` [tulajdonság](log-standard-properties.md#_isbillable) és a bal oldali mezőt, teljesen minősített tartománynév használata. Ez a számlázott adatok rendelkező számítógépek listáját adja vissza:
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName
+```
 
 Látható számlázható csomópontjainak száma szerint becsülhető meg: 
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| billableNodes=dcount(computerName)`
+| billableNodes=dcount(computerName)
+```
 
 > [!NOTE]
 > E `union withsource = tt *` , különböző adattípusok keresésekre végrehajtása költséges takarékosan kérdezi le. Ez a lekérdezés a használati adatok típusa számítógép információk lekérdezése a régi módja váltja fel.  
 
 Egy több pontos kiszámításához mi ténylegesen számítjuk fel, hogy a számítógépek óránként küldő számlázott adattípusok száma kap. (Örökölt Csomópontonkénti tarifacsomag kiválasztása a munkaterületekhez, a Log Analytics kiszámítja a csomópontok, amely óránként számlázunk kell.) 
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
+```
 
 ## <a name="understanding-ingested-data-volume"></a>Understanding betöltött adatmennyiség
 
 Az a **használat és becsült költségek** lapon a *adatbetöltés megoldásonként* küldött adatok teljes mennyiségét, és mekkora küld a rendszer egyes megoldások által látható diagramon. Ez lehetővé teszi, hogy határozza meg a trendeket, például hogy a teljes adathasználat (vagy egy adott megoldás használatának) nő, állandó vagy csökken van hátra. Ennek létrehozásához használt lekérdezés
 
-`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+```kusto
+Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+```
 
 Vegye figyelembe, hogy a záradék "ahol IsBillable = true" szűri ki az egyes megoldások, amelynek nem jár Adatbetöltési adattípusok. 
 
 Lásd: adatok trendjeit adott adattípusok, például ha az IIS-naplók miatt az adatok tanulmánya szeretné tovább, részletesebben is megtekintheti a:
 
-`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+```kusto
+Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+```
 
 ### <a name="data-volume-by-computer"></a>Adatmennyiség számítógépenként
 

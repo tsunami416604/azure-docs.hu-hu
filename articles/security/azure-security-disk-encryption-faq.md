@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 04/16/2019
+ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c49a639c0426b4535c4c2e88d36d447c10826f1
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 149452bd7d43ce46f320b9bae63a6f9cd48d98d4
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416705"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730699"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -82,6 +82,9 @@ Nem, az Azure Disk Encryption csak a csatlakoztatott kötetek titkosítja.
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Hogyan elforgatása titkok és titkosítási kulcsokat?
 
 Titkos kulcsok rotálására, csak hívja ugyanazt a parancsot, amellyel eredetileg engedélyezi a lemeztitkosítást, adjon meg egy másik Key Vaultot. A kulcstitkosítási kulcs rotálása, ugyanazt a parancsot, amellyel eredetileg engedélyezi a lemeztitkosítást, adja meg az új kulcstitkosítási hívjuk. 
+
+>[!WARNING]
+> - Ha korábban már használt [az Azure Disk Encryption az Azure AD-alkalmazás](azure-security-disk-encryption-prerequisites-aad.md) a virtuális gép titkosítása az Azure AD hitelesítő adatok megadásával kell továbbra is használja ezt a beállítást a virtuális gép titkosítására. Nem használhat [az Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) a titkosított virtuális gépen, ez nem támogatott forgatókönyv, azaz a átváltani AAD-alkalmazás számára a titkosított virtuális gép nem támogatott még.
 
 ## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>Hogyan adja hozzá vagy távolítsa el a kulcsalapú titkosítás kulcsa, ha nem eredetileg szükségem?
 

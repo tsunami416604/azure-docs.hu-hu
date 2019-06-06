@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 92a0ba8c0f43e26b7a1bbe82cc52f61d390fc04d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: cb9edbb508ddd993dcefbf69eb06b4f0d4156485
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827321"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742554"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Az Office telepítése egy fő virtuálisgép-rendszerképre
 
@@ -29,7 +29,9 @@ Ez a cikk is feltételezi, hogy emelt szintű hozzáférés a virtuális gépen,
 
 Megosztott aktiválás lehetővé teszi, hogy egy számítógépre a szervezet több felhasználó által az Office 365 ProPlus üzembe helyezése. További információ a megosztott aktiválás: [Office 365 Proplus megosztott aktiválás áttekintése](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus).
 
-Használja a [Office-telepítő eszköz](https://www.microsoft.com/download/details.aspx?id=49117) Office telepítéséhez. Windows 10 Enterprise több munkamenet csak az Office 365 ProPlus támogatja.
+Használja a [Office-telepítő eszköz](https://www.microsoft.com/download/details.aspx?id=49117) Office telepítéséhez. Windows 10 Enterprise több munkamenet csak az Office következő verzióit támogatja:
+- Office 365 ProPlus
+- A Microsoft 365 üzleti előfizetési az Office 365 üzleti
 
 Az Office-telepítő eszköz egy konfigurációs XML-fájl szükséges. Testre szabhatja a következő mintát, tekintse meg a [beállítási lehetőségei az Office-telepítő eszköz](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
 
@@ -132,7 +134,7 @@ Onedrive vállalati verzió felhasználónként megfelelően telepítve. Ebben a
 
 2. Töltse le a OneDriveSetup.exe a manuálisan előkészített helyre a következő hivatkozást: <https://aka.ms/OneDriveWVD-Installer>
 
-3. Ha az office a onedrive vállalati verziója, kihagyva  **\<ExcludeApp ID = "Onedrive vállalati verzió" /\>**, távolítsa el az összes meglévő onedrive vállalati verzió felhasználói telepítés a következő futtatásával egy rendszergazda jogú parancssorból a parancs:
+3. Ha az office a onedrive vállalati verziója, kihagyva  **\<ExcludeApp ID = "Onedrive vállalati verzió" /\>** , távolítsa el az összes meglévő onedrive vállalati verzió felhasználói telepítés a következő futtatásával egy rendszergazda jogú parancssorból a parancs:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

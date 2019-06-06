@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: ae477068e2413678d5dd755cb5a7334f85655c74
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 1aba0ab7083c437210166d2d5a2d77e7a657afe9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66259254"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474578"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS teljesítése API 2-es verzió 
 
@@ -774,26 +774,35 @@ A közzétevő meg kell valósítania egy webhook proaktívan értesíti a felha
 
 ```json
 {
-    "operationId": "<guid>",
-    "activityId": "<guid>",
-    "subscriptionId":"<guid>",
-    "offerId": "offer1",
-    "publisherId": "contoso",
-    "planId": "silver",
-    "quantity": "20"  ,
-    "action": "Subscribe",
-    "timeStamp": "2018-12-01T00:00:00"
+  "id": "<this is a Guid operation id, you can call operations API with this to get status>",
+  "activityId": "<this is a Guid correlation id>",
+  "subscriptionId": "<Guid to uniquely identify this resource>",
+  "publisherId": "<this is the publisher’s name>",
+  "offerId": "<this is the offer name>",
+  "planId": "<this is the plan id>",
+  "quantity": "<the number of seats, will be null if not per-seat saas offer>",
+  "timeStamp": "2019-04-15T20:17:31.7350641Z",
+  "action": "Unsubscribe",
+  "status": "NotStarted"  
+
 }
 ```
+Ha a művelet lehet ezek egyikét: 
+- `Subscribe`, (Ha az erőforrás aktiválva van)
+- `Unsubscribe`, (Ha az erőforrás törlése)
+- `ChangePlan`, (Amikor befejeződött a terv műveletet)
+- `ChangeQuantity`, (Ha a módosítás mennyiség művelet befejeződött),
+- `Suspend`, (Ha erőforrás fel lett függesztve)
+- `Reinstate`, (Ha erőforrás rendelkezik lett vizsgadíj felfüggesztés után)
 
-Ha a művelet lehet a következők egyikét: 
-- `Subscribe`  (Ha az erőforrás aktiválva van)
-- `Unsubscribe` (Ha az erőforrás törlése)
-- `ChangePlan` (Ha befejeződött a terv műveletet)
-- `ChangeQuantity` (Ha befejeződött a mennyiség műveletet)
-- `Suspend` (Ha az erőforrás fel lett függesztve)
-- `Reinstate` (Ha erőforrás rendelkezik lett vizsgadíj felfüggesztés után)
+Ahol a állapota lehet ezek egyikét: <br>
+        -NotStarted, <br>
+        -InProgress, <br>
+        – A feladat végül sikerült <br>
+        – Nem sikerült, <br>
+        -Ütközés <br>
 
+Gyakorlatban hasznosítható állapotok a sikeres és sikertelen webhook értesítést. Egy művelet életciklus NotStarted van, például a sikeres/sikertelen/ütközés kerül. Ha nincs elindítva vagy folyamatban van, továbbra is kérelmek GET művelettel API-n keresztül az állapot addig, amíg a művelet feldolgozása előtt műveleteknél véve. 
 
 ## <a name="mock-api"></a>API utánzása
 

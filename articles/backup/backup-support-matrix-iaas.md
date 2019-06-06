@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: raynew
-ms.openlocfilehash: 2f48e0d8b46684d067fe2e32f241e28d94c2edbd
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: ef522785d5074187871c25c54deae84b156d69b1
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399676"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743178"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
 Használhatja a [Azure Backup szolgáltatás](backup-overview.md) a helyszíni gépek és a számítási feladatok és Azure-beli virtuális gépek (VM) biztonsági mentése. Ez a cikk összegzi a támogatási beállításait és korlátozások biztonsági mentésekor az Azure-beli virtuális gépek az Azure Backup szolgáltatással.
@@ -54,6 +54,8 @@ Biztonsági mentések napi (keresztül a MARS-ügynök) | Ütemezett napi három
 Havi/évi biztonsági mentés   | Nem támogatott, ha a biztonsági másolat készítése az Azure Virtuálisgép-bővítménnyel. Csak napi és heti használata támogatott.<br/><br/> A szabályzat állíthat havi/évi megőrzési időszak a napi/heti biztonsági mentések megőrzési idejét.
 Óra automatikus beállítása | Nem támogatott.<br/><br/> Az Azure Backup automatikusan a nyári időszámításhoz nem módosíthatja, amikor a virtuális gépek biztonsági mentéséről.<br/><br/>  Igény szerint manuálisan módosítsa a házirendet.
 [Biztonsági szolgáltatások hibrid biztonsági mentés](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) |  Biztonsági funkciók letiltása nem támogatott.
+Biztonsági mentés a virtuális gép, amelynek gép időpontja változik | Nem támogatott.<br/><br/> Ha a gép időpontja változik a virtuális gép; biztonsági mentés engedélyezése után jövőbeli dátum-idő Azonban akkor is, ha a idő módosítás visszavonásra kerül, a sikeres biztonsági mentés nem garantált.  
+
 
 ## <a name="operating-system-support-windows"></a>Operációs rendszer támogatásának (Windows)
 
@@ -146,7 +148,7 @@ A virtuális gépek biztonsági mentése [rendelkezésre állási csoportok](htt
 A virtuális gépek biztonsági mentése [rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview) |  Nem támogatott.
 Az üzembe helyezett virtuális gépek biztonsági mentése [hibrid használati Benefit (HUB)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Támogatott.
 Az üzembe helyezett virtuális gépek biztonsági mentése egy [méretezési csoportot](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) |  Nem támogatott.
-Az üzembe helyezett virtuális gépek biztonsági mentése a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Microsoft vagy harmadik fél által közzétett) |  Támogatott.<br/><br/> A virtuális gép támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gép fájljait helyreállításakor visszaállíthatja csak egy kompatibilis operációs rendszer (nem egy korábbi vagy későbbi operációs rendszer).
+Az üzembe helyezett virtuális gépek biztonsági mentése a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Microsoft vagy harmadik fél által közzétett) |  Támogatott.<br/><br/> A virtuális gép támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gép fájljait helyreállításakor visszaállíthatja csak egy kompatibilis operációs rendszer (nem egy korábbi vagy későbbi operációs rendszer). Az Azure Marketplace virtuális gépek biztonsági virtuális, mivel ezen igények jegyvásárlási információit, de csak lemezként nem tudjuk visszaállítani.
 Virtuális gépek biztonsági mentése telepített egyéni rendszerképből (külső) |   Támogatott.<br/><br/> A virtuális gép támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gép fájljait helyreállításakor visszaállíthatja csak egy kompatibilis operációs rendszer (nem egy korábbi vagy későbbi operációs rendszer).
 Az Azure-bA áttelepített virtuális gépek biztonsági mentése  | Támogatott.<br/><br/> Biztonsági mentése a virtuális Gépet, a Virtuálisgép-ügynök a migrált gépen telepítve van.
 Készítsen biztonsági másolatot a virtuális gépre kiterjedő konzisztencia | Az Azure Backup nem biztosít az adatok és alkalmazások konzisztencia több virtuális gép között.

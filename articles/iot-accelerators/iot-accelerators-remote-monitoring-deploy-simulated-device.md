@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: cdd2b24e6f833ee0acb229a37c7cd3b8b6f36339
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66143406"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427564"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Új szimulált eszköz üzembe helyezése
 
@@ -88,13 +88,14 @@ Ebben a szakaszban a Docker betölteni az eszköz modellje a konfigurálható a 
 1. A meglévő eszköz modell fájlok másolása a tárolót az új helyen. Eszköz szimulálása tároló először keresse meg a tároló azonosítója:
 
     ```sh
-    docker ps
+    sudo docker ps
     ```
 
     Majd az eszköz modellje fájlok másolása a **tmp** mappa a virtuális gépen. Az alábbi parancs feltételezi, hogy a Tárolóazonosító c378d6878407 – ezt az értéket cserélje le az eszköz szimulálása Tárolóazonosító:
 
     ```sh
-    docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
+    sudo docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
+    sudo chown -R azureuser /tmp/devicemodels/
     ```
 
     Tartsa a **bash** nyissa meg az SSH-munkamenet-ablakot.
@@ -116,13 +117,13 @@ Ebben a szakaszban a Docker betölteni az eszköz modellje a konfigurálható a 
     Ha azt szeretné, megtekintheti a futó Docker-tárolók és a tároló azonosítók állapotát, használja a következő parancsot:
 
     ```sh
-    docker ps
+    sudo docker ps
     ```
 
     Ha azt szeretné, az eszköz szimulálása a tárolóból a napló megtekintéséhez futtassa a következő parancsot. Cserélje le a tároló azonosítója az eszköz szimulálása tároló Azonosítóját:
 
     ```sh
-    docker logs -f 5d3f3e78822e
+    sudo docker logs -f 5d3f3e78822e
     ```
 
 ## <a name="run-simulation"></a>Szimuláció futtatása

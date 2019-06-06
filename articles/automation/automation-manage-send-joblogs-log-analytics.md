@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8672bc28ea5e8562472408810a38ea0de6778cfd
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e0f2d3491db24ecbb49c189232dbc7f698e09fb1
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200627"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430772"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Feladat állapota és a feladatstreamek továbbítja automatizálást az Azure Monitor naplóira
 
@@ -96,7 +96,7 @@ Diagnosztika az Azure Automation két rekordtípust hoz létre az Azure Monitor 
 | Caller_s |A művelet kezdeményezője. Lehetséges értékek: egy e-mail-cím vagy egy ütemezett feladatokat tartalmazó rendszer. |
 | Tenant_g | A hívónak a bérlői azonosító GUID. |
 | JobId_g |GUID, a runbook-feladat azonosítója. |
-| ResultType |A runbook-feladat állapota. Lehetséges értékek:<br>– Új<br>- Elindítva<br>- Leállítva<br>- Felfüggesztve<br>- Sikertelen<br>-Befejeződött |
+| ResultType |A runbook-feladat állapota. Lehetséges értékek:<br>– Új<br>– Létrehozva<br>- Elindítva<br>- Leállítva<br>- Felfüggesztve<br>- Sikertelen<br>-Befejeződött |
 | Category | Az adattípus besorolása. Az Automation esetében az érték JobLogs. |
 | OperationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat. |
 | Resource | Az Automation-fiók neve |
@@ -176,7 +176,7 @@ $automationAccountId = "[resource id of your automation account]"
 Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Automation-feladat állapotának és az adatfolyam adatainak az Azure Monitor naplók küldésével által az automatizálási feladatok állapotának nagyobb betekintést kaphat:
 + Riasztások beállítása arra az esetre, ha probléma van.

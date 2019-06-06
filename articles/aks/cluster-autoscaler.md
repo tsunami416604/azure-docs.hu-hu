@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 23922ec02f7406b5cbc482c938dbcf6a56cad6d7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 58552914f369c49eed33ccefbb7736cf8dbf1fc6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234157"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475644"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Előnézet - igények figyelembevételével készült alkalmazás az Azure Kubernetes Service (AKS) egy fürt automatikus méretezése
 
@@ -28,11 +28,11 @@ Ez a cikk bemutatja, hogyan engedélyezheti és kezelheti a fürt méretező az 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk megköveteli, hogy futnak-e az Azure CLI 2.0.55 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ez a cikk megköveteli, hogy futnak-e az Azure CLI 2.0.65 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ### <a name="install-aks-preview-cli-extension"></a>Az aks előzetes CLI-bővítmény telepítése
 
-AKS-fürtök, amelyek támogatják az automatikus méretező fürt kell használni a virtuálisgép-méretezési csoportok és futtatása a Kubernetes-verzió *1.12.4* vagy újabb. A méretezési csoport támogatni fogja az előzetes verzióban. Részt, és a méretezési csoportok használó fürtök létrehozásához először telepítse a *aks előzetes* Azure CLI-bővítmény használata a [az bővítmény hozzáadása] [ az-extension-add] , ahogyan az alábbi paranccsal Példa:
+AKS-fürtök, amelyek támogatják az automatikus méretező fürt kell használni a virtuálisgép-méretezési csoportok és futtatása a Kubernetes-verzió *1.12.7* vagy újabb. A méretezési csoport támogatni fogja az előzetes verzióban. Részt, és a méretezési csoportok használó fürtök létrehozásához először telepítse a *aks előzetes* Azure CLI-bővítmény használata a [az bővítmény hozzáadása] [ az-extension-add] , ahogyan az alábbi paranccsal Példa:
 
 ```azurecli-interactive
 az extension add --name aks-preview
@@ -63,9 +63,10 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="limitations"></a>Korlátozások
 
-Az alábbi korlátozások érvényesek, ha létrehozásához és kezeléséhez használja a virtual machine scale sets AKS-fürt:
+Az alábbi korlátozások érvényesek, ha létrehozása és kezeli az AKS-fürt fürt automatikus méretező használatához:
 
 * A HTTP-kérelem útválasztási bővítmény nem használható.
+* Több csomópont készletet (jelenleg előzetes verzióban érhető el az aks-ben) jelenleg nem lehet használni.
 
 ## <a name="about-the-cluster-autoscaler"></a>Fürt automatikus méretező kapcsolatban
 

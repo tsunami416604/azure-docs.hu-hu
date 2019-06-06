@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 4721d87ab932f2e61346af3a48193e7075128622
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 1f430454bf994f9aac4ad6c113937f3798392319
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872727"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492861"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kódolás és tesztelés az Azure Functions helyi
 
@@ -39,7 +39,7 @@ Ez a helyi fejlesztési környezet egyes lehetővé teszi a függvény létrehoz
 ## <a name="next-steps"></a>További lépések
 
 + További információ a helyi fejlesztési lefordított C# függvények használatával a Visual Studio 2019, lásd: [fejlesztése az Azure Functions Visual Studio használatával](functions-develop-vs.md).
-+ A funkciókat a VS Code használata Mac, Linux vagy Windows-számítógépen a helyi fejlesztési kapcsolatos további információkért tekintse meg a [VS Code dokumentáció az Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started).
++ A funkciókat a VS Code használata Mac, Linux vagy Windows-számítógépen a helyi fejlesztési kapcsolatos további információkért tekintse meg a [VS Code dokumentáció az Azure Functions](https://docs.microsoft.com/azure/azure-functions/tutorial-javascript-vscode-get-started).
 + A parancssorba vagy terminálba funkciókat fejlesztésével kapcsolatos további tudnivalókért lásd: [együttműködik az Azure Functions Core Tools](functions-run-local.md).
 
 <!-- LINKS -->

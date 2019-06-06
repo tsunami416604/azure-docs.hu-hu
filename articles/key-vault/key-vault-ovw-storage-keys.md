@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vaultban felügyelt tárfiók – CLI
-description: A tárfiókkulcsok egy zökkenőmentes integráció az Azure Key Vault és alapuló hozzáférés a kulcshoz között nyújtson az Azure Storage-fiókot.
+title: Az Azure Key Vault és az Azure CLI tárfiókkulcsok kezelése
+description: A tárfiókkulcsok zökkenőmentes integráció az Azure Key Vault- és hozzáférés-alapú Azure storage-fiókba között adja meg.
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
@@ -8,160 +8,169 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 190375700f65cf2d3ea47335a646562eb46b2d49
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 91cc3f96f9cdd231c38232c972c2628d12b9f4b3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232563"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476153"
 ---
-# <a name="azure-key-vault-managed-storage-account---cli"></a>Az Azure Key Vaultban felügyelt tárfiók – CLI
+# <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Az Azure Key Vault és az Azure CLI tárfiókkulcsok kezelése 
 
-> [!NOTE]
-> [Azure Active Directory (Azure AD) integrálása az azure storage] a Microsoft felhőalapú identitás- és hozzáférés felügyeleti szolgáltatása. Az Azure AD-integráció a Blob és üzenetsor-szolgáltatás érhető el. (https://docs.microsoft.com/azure/storage/common/storage-auth-aad). A hitelesítéshez és engedélyezéshez, amely az Azure storage, csakúgy, mint az Azure Key Vault OAuth2 jogkivonat-alapú hozzáférést biztosít az Azure AD használatát javasoljuk. Ez lehetővé teszi, hogy:
-> - Hitelesítse az ügyfélalkalmazást, egy alkalmazás vagy felhasználó identitását, helyett a tárfiók hitelesítő adatait. 
-> - Használja az [Azure ad-ben felügyelt identitás](/azure/active-directory/managed-identities-azure-resources/) futtatásakor az Azure-ban. Felügyelt identitások távolítsa el az ügyfél-hitelesítéshez forrásokból együttesen kell és tárolását hitelesítő adatok a, vagy az alkalmazását.
-> - Szerepkör alapú hozzáférés-vezérlés (RBAC) használata a kezeléséhez engedélyezésre, amelynek a Key Vault által is támogatott.
+Az Azure Key Vault kezeli az Azure storage-fiókok és a klasszikus tárfiókok kulcsait. A Key Vaultban felügyelt tárolási fiók funkció használatával végezze el a számos kulcskezelési funkciót az Ön számára.
 
-Egy [Azure storage-fiók](/azure/storage/storage-create-storage-account) hitelesítő adatot egy fióknevet és a egy kulcs használja. A kulcsot automatikusan létrehozott, és több mint egy "jelszó" helyett a titkosítási kulcs szolgál. A Key Vault kezelheti a tárfiók kulcsaihoz, tárolja őket, mint [Key Vault titkos kódok](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
+Egy [Azure storage-fiók](/azure/storage/storage-create-storage-account) hitelesítő adatot egy fióknevet és a egy kulcs használja. A kulcs automatikusan létrehozott és szolgálja ki a jelszó, hanem egy, a titkosítási kulcs. A Key Vault kezeli a tárfiókkulcsok tárolja őket, mint [Key Vault titkos kódok](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). Kulcsok szerepel a listában (szinkronizált) egy Azure storage-fiókot, és rendszeres időközönként újbóli vagy _elforgatott_. 
 
-## <a name="overview"></a>Áttekintés
+A felügyelt tárfiókok fiók kulcsfontosságú funkció használatakor vegye figyelembe a következőket:
 
-A Key Vaultban felügyelt tárfiók funkció számos felügyeleti funkciója az Ön nevében hajt végre.:
-
-- Az Azure storage-fiók kulcsok listákat (szinkronizálás).
-- Újragenerálja (rotálja) a kulcsokat rendszeres időközönként.
-- Storage-fiókok és a klasszikus tárfiókok kulcsainak kezeli.
 - Kulcs értékeit a rendszer soha nem adja vissza a hívó adott válaszként.
-
-A felügyelt tárfiókok fiók kulcsfontosságú funkció használatakor:
-
-- **Kezelheti a tárfiók kulcsait a Key Vault engedélyezése csak.** Ne kísérelje meg saját maga is kezelheti őket, meg fogjuk zavarják a Key Vault folyamatokat.
-- **Nem engedélyezi a tárfiók kulcsait a Key Vault egynél több objektum által felügyelendő**.
-- **Manuálisan nem újragenerálni a tárfiókkulcsokat**. Azt javasoljuk, hogy a Key Vault-n keresztül újragenerálása.
-- A tárfiók kezelése a Key Vault kéri hajtható végre most egy egyszerű, és nem egy egyszerű szolgáltatás
-
-Az alábbi példa bemutatja, hogyan kezelheti a tárfiók kulcsait a Key Vault teszi lehetővé.
-
-> [!IMPORTANT]
-> Az Azure AD-bérlő minden regisztrált alkalmazás biztosít egy  **[szolgáltatásnév](/azure/active-directory/develop/developer-glossary#service-principal-object)**, amely funkcionál az alkalmazás azonosítóját. Az egyszerű szolgáltatás Alkalmazásazonosítója használt adná más Azure-erőforrások hozzáférési szerepköralapú hozzáférés-vezérlés (RBAC) révén. Mivel a Key Vault egy Microsoft-alkalmazásba, előre regisztrált összes az Azure AD bérlő alatt ugyanazon Alkalmazásazonosítóval, minden egyes Azure-felhőben lévő:
-> - Az Azure government felhőben az Azure AD-bérlőt használja Alkalmazásazonosító `7e7c393b-45d0-48b1-a35e-2905ddf8183c`.
-> - Az Azure nyilvános felhő, és minden más Azure AD-bérlőt használja Alkalmazásazonosító `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`.
-
-<a name="prerequisites"></a>Előfeltételek
---------------
-1. [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) az Azure CLI telepítése   
-2. [Storage-fiók létrehozása](https://azure.microsoft.com/services/storage/)
-    - Kövesse a jelen [dokumentum](https://docs.microsoft.com/azure/storage/) a storage-fiók létrehozása  
-    - **Elnevezési irányelvei:** A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.        
-      
-<a name="step-by-step-instructions-on-how-to-use-key-vault-to-manage-storage-account-keys"></a>Útmutató a Key Vault használata kezelheti a Tárfiók kulcsait. lépés
---------------------------------------------------------------------------------
-A koncepciót tekintve, hogy teljesülnek a lépések listájában vannak
-- Először lekérjük a (meglévő) storage-fiók
-- Azt, majd beolvassa (meglévő) key vault
-- Hogy majd KeyVault által felügyelt tárfiók hozzáadása a tárolóhoz, 1. kulcs beállítása az aktív kulcshoz és egy regenerációs időszakot 180 napig
-- Végül beállított egy storage-környezetet, a megadott tárfiók, az 1. kulcs
-
-Az az alábbi utasítások végrehajtásával, hogy társítja az Key Vault engedélyekkel kell rendelkeznie operátor a tárfiók szolgáltatásként
+- Csak a Key Vault kezelje a tárfiók kulcsait. Nem kezelhetik a kulcsokat, és elkerülheti a Key Vault folyamatok zavarása.
+- Csak egyetlen Key Vault objektum felügyelje a tárfiók kulcsait. Több objektumot a kulcskezelés tiltása.
+- A Key Vault kezelése a tárfiók, egy felhasználó rendszerbiztonsági tag, de nem egy egyszerű szolgáltatás kérhetnek.
+- Csak a Key Vault kulcsainak újragenerálása. Manuálisan nem a tárfiókkulcsok újragenerálása. 
 
 > [!NOTE]
-> Kérjük vegye figyelembe, hogy miután beállította az Azure Key Vaultban felügyelt tárfiók a kulcsok akkor kell **nem** már módosítható, kivéve a Key Vault-n keresztül. A tároló kulcsait, az azt jelenti, hogy a Key Vault kezelne elforgatása a tárfiók kulcsát felügyelt
+> Az Azure Storage-integrációja az Azure Active Directory (Azure AD) a Microsoft felhőalapú identitás- és hozzáférés felügyeleti szolgáltatása.
+> Az Azure AD-integráció érhető el a [Azure-blobok és üzenetsorok](https://docs.microsoft.com/azure/storage/common/storage-auth-aad).
+> Azure AD használata a hitelesítéshez és engedélyezéshez.
+> Az Azure AD hasonlóan az Azure Key Vault az Azure Storage OAuth2 jogkivonat-alapú hozzáférést biztosít.
+>
+> Az Azure AD lehetővé teszi, hogy hitelesítse az ügyfélalkalmazást egy alkalmazás vagy felhasználó identitását a tárfiók hitelesítő adatai helyett.
+> Használhat egy [Azure ad-ben felügyelt identitás](/azure/active-directory/managed-identities-azure-resources/) futtatásakor az Azure-ban. Felügyelt identitások távolítsa el az ügyfél-hitelesítés és a hitelesítő adatok tárolása a, vagy az alkalmazással van szükség.
+> Azure AD elküldi a szerepköralapú hozzáférés-vezérlés (RBAC) a hitelesítés, amelyet a Key Vault is támogat.
 
-> [!IMPORTANT]
-> Az Azure AD-bérlő minden regisztrált alkalmazás biztosít egy  **[szolgáltatásnév](/azure/active-directory/develop/developer-glossary#service-principal-object)**, amely funkcionál az alkalmazás azonosítóját. Az egyszerű szolgáltatás Alkalmazásazonosítója használt adná más Azure-erőforrások hozzáférési szerepköralapú hozzáférés-vezérlés (RBAC) révén. Mivel a Key Vault egy Microsoft-alkalmazásba, előre regisztrált összes az Azure AD bérlő alatt ugyanazon Alkalmazásazonosítóval, minden egyes Azure-felhőben lévő:
-> - Az Azure government felhőben az Azure AD-bérlőt használja Alkalmazásazonosító `7e7c393b-45d0-48b1-a35e-2905ddf8183c`.
-> - Az Azure nyilvános felhő, és minden más Azure AD-bérlőt használja Alkalmazásazonosító `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`.
+### <a name="service-principal-application-id"></a>Egyszerű szolgáltatás azonosítója
 
-> - Jelenleg tehet fel és kezelheti a storage-fiók a Key Vault egyszerű és a egy szolgáltatásnév nem használható
+Az Azure AD-bérlő minden regisztrált alkalmazás biztosít egy [szolgáltatásnév](/azure/active-directory/develop/developer-glossary#service-principal-object). Az egyszerű szolgáltatás funkcionál az alkalmazás azonosítója (ID). Az Alkalmazásazonosítót engedélyezési telepítéskor szolgál az RBAC-n keresztül más Azure-erőforrásokhoz való hozzáférés.
 
+A Key Vault egy Microsoft-alkalmazásba, amely előzetesen regisztrálva van az összes Azure AD-bérlőt. A Key Vault regisztrálva van, ugyanazon Alkalmazásazonosítóval, és minden egyes Azure-felhőben.
 
-1. Miután létrehozott egy tárfiókot, a storage-fiók erőforrás-azonosító beolvasásához a következő parancsot, a felügyelni kívánt
+| Bérlők | Felhő | Alkalmazásazonosító |
+| --- | --- | --- |
+| Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure public | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Egyéb  | Bármely | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
+<!-- Add closing sentences to summarize what the user accomplished in this section. -->
+
+## <a name="prerequisites"></a>Előfeltételek
+
+A Key Vault használata kezelheti a tárfiók kulcsára, előtt tekintse át az előfeltételeket:
+
+- Telepítse az [Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli).
+- Hozzon létre egy [Azure storage-fiók](https://azure.microsoft.com/services/storage/). Hajtsa végre a [ezeket a lépéseket](https://docs.microsoft.com/azure/storage/).
+- A tárfiók neve csak kisbetűket és számokat kell használnia. A név hossza 3 – 24 karakter hosszúnak kell lennie.        
+      
+## <a name="manage-storage-account-keys"></a>Storage-fiók kulcsainak kezelése
+
+Storage-fiók kulcsainak kezelése a Key Vault használatával négy egyszerű lépésben történik:
+
+1. Egy meglévő tárfiókot beolvasása.
+1. Beolvassa egy meglévő kulcstartón.
+1. A Key Vault felügyelt tárfiók hozzáadása a tárolóhoz. Állítsa be `key1` és a egy regenerációs időszakot 180 napig aktív kulcsként.
+1. Használat `key1` a megadott tárfiók tárolási környezet beállításához.
+
+> [!NOTE]
+> A Key Vault szolgáltatás operátori a storage-fiók van hozzárendelve.
+> 
+> Miután beállította az Azure Key Vaultban felügyelt tárfiókkulcsok, csak módosítása a kulcsok a Key Vault használatával.
+> A felügyelt tárfiókok hozzáférési kulcsait a Key Vault kezeli elforgatási szögét a tárfiók kulcsát.
+
+1. Miután létrehozott egy tárfiókot, a következő parancsot kezelése a storage-fiók erőforrás Azonosítójának lekéréséhez:
     ```
-    az storage account show -n storageaccountname 
+    az storage account show -n storageaccountname
     ```
-    Másolja ki a fenti paranccsal, amely az alább láthatóhoz hasonló eredményt azonosító mező
+
+    Az erőforrás-Azonosítójának értéke átmásolja a parancs kimenete:
     ```
-    /subscriptions/0xxxxxx-4310-48d9-b5ca-0xxxxxxxxxx/resourceGroups/ResourceGroup/providers/Microsoft.Storage/storageAccounts/StorageAccountName
+    /subscriptions/<subscription ID>/resourceGroups/ResourceGroup/providers/Microsoft.Storage/storageAccounts/StorageAccountName
     ```
-            "objectId": "93c27d83-f79b-4cb2-8dd4-4aa716542e74"
+
+    Példa a kimenetre:
+    ```
+    "objectId": "93c27d83-f79b-4cb2-8dd4-4aa716542e74"
+    ```
     
-2. RBAC szerepkör "Tárolási fiók kulcs operátora – szolgáltatási szerepkör" hozzárendelése a Key Vault, a tárfiók hozzáférési hatókör korlátozásával. Egy klasszikus tárfiók esetén használja a "Klasszikus tárolási fiók kulcs operátora – szolgáltatási szerepkör."
+1. A "Storage fiók kulcs operátora – szolgáltatási szerepkör" RBAC szerepkör hozzárendelése a Key Vault. Ez a szerepkör korlátozza a hozzáférési hatókör a tárfiókhoz. Egy klasszikus tárfiók esetén használja a "Klasszikus tárolási fiók kulcs operátora – szolgáltatási szerepkör" szerepkört.
+
     ```
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope 93c27d83-f79b-4cb2-8dd4-4aa716542e74
     ```
     
-    "93c27d83-f79b-4cb2-8dd4-4aa716542e74" a nyilvános felhőben Key Vault-Objektumazonosítója. A-csoportobjektum azonosítója a Key Vault a nemzeti/regionális felhőkben megtekinteni a fontos című fenti szakaszban
+    `93c27d83-f79b-4cb2-8dd4-4aa716542e74` az Objektumazonosító a Key vault az Azure nyilvános felhő. Objektum lekérése a Key vault az Azure Government cloud, lásd: [szolgáltatás egyszerű alkalmazás azonosítója](#service-principal-application-id).
     
-3. Key Vault létrehozása felügyelt Tárfiók.     <br /><br />
-   Az alábbi azt állítja egy 90 napos regenerációs időszakot. 90 nap után a Key Vault "1. kulcs" újragenerálása és cseréje: key1"a"2. kulcs: az aktív kulcs. Ez lezárásával befejezettként jelöli meg Key1 aktív kulcsként most. 
+1. Key Vault felügyelt tárfiók létrehozása:
+
+    Beállítani a regenerációs időszakot 90 nap. 90 nap után a Key Vault újragenerálása `key1` és az aktív kulcs felcserélése `key2` való `key1`. `key1` Ezután van megjelölve az aktív kulcs. 
    
     ```
     az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id <Id-of-storage-account>
     ```
 
-<a name="step-by-step-instructions-on-how-to-use-key-vault-to-create-and-generate-sas-tokens"></a>Útmutató a Key Vault használatát létrehozása és SAS-jogkivonatokat hoz létre. lépés
---------------------------------------------------------------------------------
-Is megkérheti a Key Vault SAS (közös hozzáférésű Jogosultságkód) jogkivonatokat hoz létre. Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. A SAS használatával biztosíthat az ügyfelek erőforrásokhoz való hozzáférés a tárfiókban lévő a fiókkulcsok megosztása nélkül. Ez a lényege a közös hozzáférésű jogosultságkód alkalmazásokban való használatának – az SAS a fiókkulcsok veszélyeztetése nélkül teszi lehetővé a tárolási erőforrások megosztását.
+<!-- Add closing sentences to summarize what the user accomplished in this section. -->
 
-Miután végzett a fent felsorolt lépéseket futtathatja kérje meg a Key Vault-, SAS-jogkivonatokat hoz létre a következő parancsokat. 
+## <a name="create-and-generate-tokens"></a>Hozzon létre és jogkivonatokat hoz létre
 
-A lista azokról a dolgokról, amelyek a azok megvalósítására az alábbi lépéseket is
-- Beállítja egy fiók SAS-definíciója nevű `<YourSASDefinitionName>` a KeyVault által felügyelt storage-fiók `<YourStorageAccountName>` a tárolóba `<VaultName>`. 
-- Létrehoz egy SAS-jogkivonata szolgáltatások Blob, fájl, tábla és üzenetsor, erőforrástípusok Service, a tároló és az objektum, minden engedélyt https-kapcsolaton keresztül és a megadott kezdő és záró dátuma
-- A KeyVault által felügyelt tárolási SAS-definíciója beállítja a tárolóban, a sablon URI-N napig fent, SAS típusa "account", és érvényes létrehozott SAS-token
-- A tényleges hozzáférési jogkivonat lekéri a KeyVault titkos kulcsnak megfelelő az SAS-definíciója
+Megkérheti a Key Vault létrehozása a közös hozzáférésű jogosultságkódok jogkivonataival is. Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. Biztosíthat az ügyfelek erőforrások elérését a tárfiókban lévő a fiókkulcsok megosztása nélkül. Közös hozzáférésű jogosultságkód biztosít egy biztonságos módon a tárolási erőforrások megosztását a fiókkulcsok veszélyeztetése nélkül.
 
-1. Ebben a lépésben hozunk létre egy SAS-definíciója. Miután létrejött az SAS-definíciója, megkérheti a Key Vault további SAS-jogkivonatok létrehozásához meg. Ez a művelet a tárolás/setsas engedélyre van szüksége.
+Az ebben a szakaszban szereplő parancsokkal végezze el a következő műveleteket:
 
-```
-$sastoken = az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-types sco --services bfqt --https-only --account-name storageacct --account-key 00000000
-```
-Láthatja, hogy a fenti művelettel kapcsolatos további segítségért [Itt](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas)
+- Állítsa be egy megosztott hozzáférési aláírást definíció `<YourSASDefinitionName>`. A definíciója van megadva, a storage-fiók felügyelt Key Vault `<YourStorageAccountName>` tárol a kulcstárolóban `<VaultName>`.
+- Hozzon létre egy fiók közös hozzáférésű jogosultságkód Blob, fájl, tábla és üzenetsor-szolgáltatásokhoz. A token Service, Container és objektum erőforrástípusok jön létre. A jogkivonat jön létre minden engedélyt, https protokollal, és a megadott kezdő és záró dátuma.
+- Állítsa be a Key Vaultban felügyelt megosztott tároló hozzáférési aláírás definícióját a tárolóban. A definíció a sablon URI-ját a közös hozzáférésű jogosultságkód létrehozásának rendelkezik. A definíció van a közös hozzáférésű jogosultságkód típus `account` és érvényes N napig.
+- A tényleges hozzáférési jogkivonat lekérése a Key Vault titkos kulcsából, amely megfelel a közös hozzáférésű jogosultságkód-definíció.
 
-Ha ez a művelet sikeresen lefutott, lent látható módon a hasonló kimenetnek kell megjelennie. Másolja ki, amely
+Miután elvégezte az előző szakasz lépéseit, a következő parancsokat kérje meg a Key Vault létrehozása a közös hozzáférésű jogosultságkód jogkivonata. 
 
-```console
-   "se=2020-01-01&sp=***"
-```
+1. Hozzon létre egy közös hozzáférésű jogosultságkód-definíció. A közös hozzáférésű jogosultságkód-definíció létrehozása után kérje meg a Key Vault létrehozása több közös hozzáférésű jogosultságkód jogkivonata. Ehhez a művelethez szükséges a `storage` és `setsas` engedélyeket.
+    ```
+    $sastoken = az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-types sco --services bfqt --https-only --account-name storageacct --account-key 00000000
+    ```
 
-1. Ebben a lépésben használjuk az előállított kimeneti adatokat ($sasToken) feletti hozzon létre egy SAS-definíciót. További dokumentáció olvasási [Itt](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters)   
+    A művelettel kapcsolatos segítségért olvassa el a [az tárolási fiók sas generálása](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas) referenciák dokumentációiba.
 
-```
-az keyvault storage sas-definition create --vault-name <YourVaultName> --account-name <YourStorageAccountName> -n <NameOfSasDefinitionYouWantToGive> --validity-period P2D --sas-type account --template-uri $sastoken
-```
-                        
+    A művelet sikeres futtatása után másolja ki a kimenetet.
+    ```console
+       "se=2020-01-01&sp=***"
+    ```
 
- > [!NOTE] 
- > Abban az esetben, hogy a felhasználó nem rendelkezik engedélyekkel a tárfiók először lekérjük a felhasználó objektumazonosítóját
+1. Használja a `$sasToken` az előző parancs által létrehozott és a egy közös hozzáférésű jogosultságkód-definíció létrehozása. A parancssori paraméterekkel kapcsolatos további információkért tekintse meg a [az keyvault-tároló sas-definíció létrehozására](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters) referenciák dokumentációiba.
+    ```
+    az keyvault storage sas-definition create --vault-name <YourVaultName> --account-name <YourStorageAccountName> -n <NameOfSasDefinitionYouWantToGive> --validity-period P2D --sas-type account --template-uri $sastoken
+    ```
 
- ```
- az ad user show --upn-or-object-id "developer@contoso.com"
+    Amikor a felhasználó nem rendelkezik jogosultsággal a tárfiókba, először kérje le a felhasználói objektum azonosítója:
+    ```
+    az ad user show --upn-or-object-id "developer@contoso.com"
 
- az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
- ```
-    
-## <a name="fetch-sas-tokens-in-code"></a>SAS-tokeneket kód beolvasása
+    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
+    ```
 
-Ebben a szakaszban ismertetjük, hogyan elvégezhető műveletek a tárfiók a beolvasása [SAS-tokeneket](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) a Key Vaultból
+<!-- Add closing sentences to summarize what the user accomplished in this section. -->
 
-Az az alábbi szakaszban bemutatjuk, hogyan SAS-tokeneket beolvasni egy SAS-definíciója, ahogyan fentebb létrehozása után.
+## <a name="fetch-tokens-in-code"></a>Beolvassa a kódban a tokenek
 
-> [!NOTE]
->   Hitelesítés a Key Vaultba, mert olvashat 3 módon a [alapvető fogalmai](key-vault-whatis.md#basic-concepts)
-> - Felügyeltszolgáltatás-identitás (ajánlott) használatával
-> - Egyszerű szolgáltatás és a tanúsítvány használatával 
-> - Egyszerű szolgáltatás és a jelszóval (nem ajánlott)
+Hajtsa végre a műveleteket a tárfiók által beolvasása [közös hozzáférésű jogosultságkódok jogkivonataival](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) a Key Vaultból.
+
+A Key Vault hitelesítésre három módja van:
+
+- Felügyeltszolgáltatás-identitás használata. Ez a megközelítés erősen ajánlott.
+- Egy egyszerű szolgáltatás és a tanúsítványt használja. 
+- Egy egyszerű szolgáltatás és a jelszót használja. Ez a módszer nem ajánlott.
+
+További információkért lásd: [Azure Key Vault: Alapvető fogalmait](key-vault-whatis.md#basic-concepts).
+
+A következő példa bemutatja, hogyan lehet beolvasni a közös hozzáférésű jogosultságkód jogkivonata. A tokenek egy közös hozzáférésű jogosultságkód-definíció létrehozása után olvassa be. 
 
 ```cs
-// Once you have a security token from one of the above methods, then create KeyVaultClient with vault credentials
+// After you get a security token, create KeyVaultClient with vault credentials.
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(securityToken));
 
-// Get a SAS token for our storage from Key Vault. SecretUri is of the format https://<VaultName>.vault.azure.net/secrets/<ExamplePassword>
+// Get a shared access signature token for your storage from Key Vault.
+// The format for SecretUri is https://<VaultName>.vault.azure.net/secrets/<ExamplePassword>
 var sasToken = await kv.GetSecretAsync("SecretUri");
 
-// Create new storage credentials using the SAS token.
+// Create new storage credentials by using the shared access signature token.
 var accountSasCredential = new StorageCredentials(sasToken.Value);
 
 // Use the storage credentials and the Blob storage endpoint to create a new Blob service client.
@@ -170,19 +179,22 @@ var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("htt
 var blobClientWithSas = accountWithSas.CreateCloudBlobClient();
 ```
 
-Ha lejár az SAS-jogkivonatot, majd kívánja a SAS-jogkivonat ismét beolvassa a Key Vaultból, majd a kód frissítése
+Ha a közös hozzáférésű jogosultságkód hamarosan lejár, a közös hozzáférésű jogosultságkód ismét beolvassa a Key Vaultból, és frissítse a kódot.
 
 ```cs
-// If your SAS token is about to expire, get the SAS Token again from Key Vault and update it.
+// If your shared access signature token is about to expire,
+// get the shared access signature token again from Key Vault and update it.
 sasToken = await kv.GetSecretAsync("SecretUri");
 accountSasCredential.UpdateSASToken(sasToken);
 ```
 
-### <a name="relevant-azure-cli-commands"></a>Kapcsolódó Azure CLI-parancsok
+<!-- Add closing sentences to summarize what the user accomplished in this section. -->
 
-[Az Azure CLI Storage-parancsok](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest)
+### <a name="azure-cli-commands"></a>Az Azure parancssori felület parancsai
 
-## <a name="see-also"></a>Lásd még
+Az Azure CLI-parancsok, amely a felügyelt tárfiókok kapcsolatos információkért tekintse meg a [az keyvault tárolási](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest) referenciadokumentációt.
 
-- [A kulcsok, titkos kódok és tanúsítványok ismertetése](https://docs.microsoft.com/rest/api/keyvault/)
-- [A Key Vault-csapat blogja](https://blogs.technet.microsoft.com/kv/)
+## <a name="next-steps"></a>További lépések
+
+- Tudjon meg többet [kulcsok, titkos kódok és tanúsítványok](https://docs.microsoft.com/rest/api/keyvault/).
+- Tekintse át a cikkeket az a [Azure Key Vaultért felelős csapat blogjára](https://blogs.technet.microsoft.com/kv/).

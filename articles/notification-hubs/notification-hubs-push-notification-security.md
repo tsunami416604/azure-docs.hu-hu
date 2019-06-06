@@ -12,36 +12,36 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/23/2019
+ms.date: 05/31/2019
 ms.author: jowargo
-ms.openlocfilehash: 2ba3be0d51758cf7afd9f85258403bf79ca8401f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 3f5b23028094b545262e9c01640890f2c0b989ca
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239418"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431257"
 ---
-# <a name="security-model-of-azure-notification-hubs"></a>Biztonsági modell az Azure Notification hubs használatával
+# <a name="notification-hubs-security"></a>Notification Hubs biztonsági
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a témakör ismerteti a biztonsági modell az Azure Notification hubs használatával. Mivel a Notification Hubs egy Service Bus entitásban, mint a Service Bus ugyanazt a biztonsági modellt valósítják meg. További információkért lásd: a [Service Bus-hitelesítés](https://msdn.microsoft.com/library/azure/dn155925.aspx) témaköröket.
+Ez a témakör ismerteti a biztonsági modell az Azure Notification hubs használatával.
 
 ## <a name="shared-access-signature-security-sas"></a>Közös hozzáférésű Jogosultságkód biztonsági (SAS)
 
 A Notification Hubs valósít meg egy entitás-szintű biztonsági rendszer SAS (közös hozzáférésű Jogosultságkód) néven. Ez a séma lehetővé teszi, hogy a leírás legfeljebb 12 olyan engedélyezési szabályok, amelyek az adott entitástól jogosultságokat deklarálnia üzenetküldési entitások.
 
-Minden szabály nevét, a kulcs értékét (közös titkos kódot) és olyan jogokkal, tartalmazza a "Biztonsági jogcímeinek." szakaszban leírtak szerint Egy értesítési központ létrehozása esetén a rendszer automatikusan létrehozza két szabályt: egy figyelési jogosultsággal (az ügyfél alkalmazás által használt) és egy, az összes jogosultságokkal (azaz a háttéralkalmazás használja).
+Minden szabály nevét, a kulcs értékét (közös titkos kódot) és olyan jogokkal, tartalmaz leírtak [biztonsági jogcímeinek](#security-claims). Egy értesítési központ létrehozása, amikor két szabály automatikusan jönnek létre: egyet a **figyelésére** jogokkal (vagyis az ügyfél-alkalmazás által használt) és a egy **összes** jogokkal (azaz a háttéralkalmazás használja).
 
 Végrehajtásakor regisztrációkezelés ügyfél alkalmazásokból, ha az adatokat küldött értesítések nem érzékeny (például az időjárás frissítések), gyakori módja egy értesítési központ eléréséhez a kulcs értékét a szabály-figyelési hozzáférés biztosítása az ügyfélalkalmazás számára és a kulcs értékét a szabály teljes hozzáférés biztosítása a háttéralkalmazás számára.
 
-Nem javasoljuk, hogy a kulcs értékét a Windows Store ügyfélalkalmazások ágyazhat be. Beágyazás a kulcsérték elkerülése érdekében úgy, hogy az ügyfélalkalmazás beolvasni a rendszerindításkor alkalmazási háttérrendszerből rendelkezzen.
+Alkalmazások nem kell a kulcsérték beágyazása Windows Store ügyfélalkalmazások, inkább rendelkezik az indításkor alkalmazási háttérrendszerből lekérni az ügyfélalkalmazás.
 
-Fontos megérteni, hogy a figyelési hozzáféréssel rendelkező kulcs lehetővé teszi, hogy egy ügyfélalkalmazás bármely címke regisztrálhat. Ha az alkalmazás regisztrációk kell korlátozni meghatározott címkéket, hogy bizonyos ügyfelek (például, ha a címkék képviselik a felhasználói azonosítók), majd az alkalmazás háttérrendszere a regisztrációk kell elvégeznie. További információkért lásd: Regisztrációkezelés. Vegye figyelembe, hogy így az ügyfél alkalmazás nem tartalmaz a Notification Hubs közvetlen hozzáférést.
+A kulcs **figyelésére** hozzáférés lehetővé teszi, hogy egy ügyfélalkalmazás bármely címke regisztrálhat. Ha az alkalmazás regisztrációk kell korlátozni meghatározott címkéket, hogy bizonyos ügyfelek (például, ha a címkék képviselik a felhasználói azonosítók), az alkalmazás háttérrendszere végezze el a regisztrációkat. További információkért lásd: [Regisztrációkezelés](notification-hubs-push-notification-registration-management.md). Vegye figyelembe, hogy így az ügyfél alkalmazás nem tartalmaz a Notification Hubs közvetlen hozzáférést.
 
 ## <a name="security-claims"></a>Biztonsági jogcímek
 
-Más entitásokhoz hasonlóan Notification Hub-műveletek engedélyezett három biztonsági jogcímek: Figyeljen, küldése és kezelése.
+Más entitásokhoz hasonlóan Notification Hub-műveletek engedélyezett három biztonsági jogcímek: **Figyeljen**, **küldése**, és **kezelése**.
 
 | Jogcím   | Leírás                                          | Engedélyezett műveletek |
 | ------- | ---------------------------------------------------- | ------------------ |

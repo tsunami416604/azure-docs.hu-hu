@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 165df03ec06081fe9b2e1ab84ffe7579ac457758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 693be80e493a0ba259d147f432dc9d6c07ba876d
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60502239"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427515"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Adatáttekintési és vizualizációs eszközök a Data Science virtuális gépen
 
-Egy kulcs az adatelemzés lépéseként megérteni az adatokat. Megjelenítési és adatvizsgálati eszközök segítségével felgyorsíthatja az adatok megértését. Az alábbiakban az egyes eszközök a dsvm-hez megadott, amelyek elősegítik a legfontosabb ebben a lépésben. 
+Egy kulcs az adatelemzés lépéseként megérteni az adatokat. Megjelenítési és adatvizsgálati eszközök segítségével felgyorsíthatja az adatok megértését. Íme néhány a dsvm-hez a biztosított eszközök, amelyek megkönnyítik a legfontosabb ebben a lépésben. 
 
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |
@@ -42,7 +42,7 @@ Egy kulcs az adatelemzés lépéseként megérteni az adatokat. Megjelenítési 
 | Mi ez?   |  Weka adatbányászati feladatokhoz gépi tanulási algoritmusok gyűjteménye. Az algoritmusok közvetlenül egy adatkészlet a alkalmazni, vagy saját Java kódot meghívva. Weka előtti adatfeldolgozás, besorolás, regressziós, fürtözés, társítási szabályok és megjelenítési eszközöket tartalmaz. |
 | Támogatott DSVM-kiadások     | Windows, Linux     |
 | Gyakori használati      | Általános gépi Tanulási eszköz     |
-| Hogyan futtathatja / használata?      | A Windows, a Start menü Weka keresése. A Linux-alapú bejelentkezés az X2Go, majd nyissa meg alkalmazások -> fejlesztés Weka ->. |
+| Hogyan futtathatja / használata?      | A Windows, a Start menü Weka keresése. Linuxon, jelentkezzen be X2Go, majd keresse meg az alkalmazások -> fejlesztés Weka ->. |
 | A minták mutató hivatkozások      | [Weka minták](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | A dsvm-hez kapcsolódó eszközök      |LightGBM, Rattle, Xgboost   |
 
@@ -56,12 +56,12 @@ Egy kulcs az adatelemzés lépéseként megérteni az adatokat. Megjelenítési 
 | A minták mutató hivatkozások      | [Rattle](https://togaware.com/onepager/) |
 | A dsvm-hez kapcsolódó eszközök      |LightGBM, Weka, Xgboost   |
 
-## <a name="powerbi-desktop"></a>PowerBI Desktop 
+## <a name="power-bi-desktop"></a>A Power BI Desktopban 
 |    |           |
 | ------------- | ------------- |
 | Mi ez?   | Interaktív adatábrázolás és Üzletiintelligencia-eszköze    |
 | A DSVM támogatott verziói      | Windows  |
 | Gyakori használati      |  Adatvizualizációk és -irányítópultokat készít   |
 | Hogyan futtathatja / használata?      | Asztali parancsikon (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| A dsvm-hez kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ban Juno      |
+| A dsvm-hez kapcsolódó eszközök      |   Visual Studio 2019, Visual Studio Code, Juno      |
 

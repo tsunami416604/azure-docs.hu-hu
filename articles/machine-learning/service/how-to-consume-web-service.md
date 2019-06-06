@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4aaf56a00669dbf7e312e2a6f8787ccc664d1190
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8fd7af7c2a075258e337b51c3aaca3da9e3d497f
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023816"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692866"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
@@ -30,7 +30,7 @@ Webszolgáltatás hoz létre, amikor üzembe helyezi a képet az Azure Container
 1. A modell által használt kérelem adatok típusának meghatározása.
 1. Hozzon létre egy alkalmazást, amely meghívja a webszolgáltatást.
 
-## <a name="connection-information"></a>Kapcsolat adatai
+## <a name="connection-information"></a>Kapcsolatadatok
 
 > [!NOTE]
 > Az Azure Machine Learning SDK használatával a webes szolgáltatás adatai olvashatók be. Ez a Python SDK-t. Bármilyen nyelv használatával hozzon létre egy ügyfél a szolgáltatás.
@@ -486,3 +486,11 @@ A következő JSON-dokumentumot kapott eredmények hasonlók:
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
+
+## <a name="consume-the-service-from-power-bi"></a>A Power bi szolgáltatás használata
+
+A Power BI támogatja az Azure Machine Learning webszolgáltatások predictions a Power BI-ban az adatokat feldúsítani felhasználását. 
+
+Hozzon létre egy webszolgáltatás, amelyet a Power BI-ban felhasználásához támogatott, a sémát a Power BI által igényelt formátumot támogatja. [Ismerje meg, hogyan hozzon létre egy Power BI által támogatott sémát](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#Example-script-with-dictionary-input-Support-consumption-from-Power-BI).
+
+A webszolgáltatás üzembe helyezése után a Power BI-adatfolyamok értelmezhető. [Ismerje meg, hogyan lehet az a Power bi-BÓL az Azure Machine Learning webszolgáltatás](https://docs.microsoft.com/power-bi/service-machine-learning-integration).

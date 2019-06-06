@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 06/05/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b3f4e1ddc041691ba68e14660ec5fa4cc39ddec1
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: db2557bd34cace220b1c9e5f7e6932dd63d9f89c
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518178"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734537"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Kapcsolódás az Azure Analysis Services ügyfélkódtárak
 
@@ -21,21 +21,21 @@ ms.locfileid: "65518178"
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Töltse le a legújabb klienskódtárak (Windows Installer)  
 
-|Letöltés  |Termék verziószáma  | 
+|Letöltés  |Termékverzió  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.19.24    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.19.24      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   16.1.0.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    16.1.0.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.24.20    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.24.20      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   16.3.0.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    16.3.0.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO és ADOMD (NuGet-csomagok)
 
 Analysis Services Management Objects (AMO) és ADOMD ügyféloldali függvénytárak is telepíthető csomagokat az elérhető [NuGet.org](https://www.nuget.org/). Ajánlott NuGet hivatkozások helyett a Windows Installer használatával telepíti át. 
 
-|Csomag  | Termék verziószáma  | 
+|Csomag  | Termékverzió  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    16.1.0     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   16.1.0      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    16.3.0     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   16.3.0      |
 
 NuGet-csomag szerelvények AssemblyVersion Szemantikus verziószámozást kövesse: MAJOR.MINOR.PATCH. NuGet-hivatkozásokat a várt verzió betölteni, akkor is, ha van egy másik verziója (MSI telepítése eredő) a GAC-ban. JAVÍTÁS értéke akkor növekszik, egyes kiadásaihoz. AMO és ADOMD-verziók őrzi meg a szinkronizálva.
 

@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1a690ea350ea98589e9134cd6f401c6ac3c58083
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 9204b0d8513d4adbb9c93be94284d7d46de41e06
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851030"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479562"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga"></a>Mik azok a mező-programmable gate arrays (FPGA)
 
@@ -80,7 +80,7 @@ A kezdéshez DNN betanított modellek üzembe helyezése FPGA-kban az Azure-felh
 
 Tekintse meg ezeket a videókat és blogok:
 
-+ [Nagy kapacitású hardver: Gépi tanulás nagy mennyiségű Azure + FPGA fölött: Build 2018-as (videó)](https://www.youtube.com/watch?v=BMgQAHIx2eY)
++ [Nagy kapacitású hardver: Gépi tanulás nagy mennyiségű Azure + FPGA fölött: Build 2018-as (videó)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 
 + [A Microsoft FPGA-alapú konfigurálható felhő (videó)](https://channel9.msdn.com/Events/Build/2017/B8063)
 

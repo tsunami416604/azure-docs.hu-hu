@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/31/2019
 ms.author: twhitney
-ms.openlocfilehash: 34ece6e49332f781f688a8741db3514faf8c9a25
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 12fb9dc67e8afae3dcb9ade97dd61ab438e0fac5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304396"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475407"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuális korlátozások csomópontkészleteit a Windows Server és az alkalmazás számítási feladatainak Azure Kubernetes Service (AKS)
 
@@ -45,6 +45,7 @@ A következő felsőbb rétegbeli korlátozások, a Windows Server-tárolók a K
 Windows Server csomópont készlet támogatása az aks-ben a következő további korlátozások vonatkoznak:
 
 - AKS-fürt Linux csomópontkészletek mindig tartalmazza az első node-címkészlettel. Az első Linux-alapú csomópont-készlet nem törölhető, kivéve, ha maga az AKS-fürt törlése.
+- Az AKS jelenleg csak az alapszintű load balancer, amely csak lehetővé teszi, hogy egy háttérkészlet, az alapértelmezett Linux-csomópontkészlet támogatja. Ennek eredményeképpen a Windows podok kimenő forgalmát mindig lesz [Azure által felügyelt nyilvános IP-címhez a lefordított][azure-outbound-traffic]. Mivel az IP-címet nem konfigurálható, nincs lehetőség jelenleg Windows podok engedélyezési lista adatforgalma. 
 - AKS-fürtök az Azure CNI (speciális) hálózatkezelési modellről kell használnia.
     - Hálózatkezelés Kubenet (alapszintű) nem támogatott. AKS-fürt által használt kubenet nem hozható létre. A hálózati modellek közötti különbségek további információkért lásd: [fogalmak az aks-ben az alkalmazások hálózati][azure-network-models].
     - A Azure CNI modellt igényel, további tervezésre és az IP-címkezelés szempontjai. Megtervezése és megvalósítása Azure CNI vonatkozó további információkért lásd: [konfigurálása Azure CNI hálózatkezelés az aks-ben][configure-azure-cni].
@@ -87,3 +88,4 @@ Az aks-ben, Windows Server-tárolók használatába [az aks-ben a Windows Server
 [windows-node-cli]: windows-container-cli.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat

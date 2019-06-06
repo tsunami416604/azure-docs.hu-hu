@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: e4ec13453c204885f38b10272e76245e641fbef9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f54da6e350b2cf9027b6e9e02ace2a90e292e1ce
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203594"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472343"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
@@ -258,7 +258,7 @@ public void run(
 
 A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a következő attribútumok konfigurálása a blob eseményindító:
 
-* [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobTriggerAttribute.cs)
+* [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
   Az attribútum konstruktorának paramétereként meg egy elérési út karakterlánca, amely azt jelzi, hogy tekintse meg a tároló és opcionálisan egy [blob minta](#trigger---blob-name-patterns). Például:
 
@@ -420,7 +420,7 @@ Az Azure Functions runtime biztosítja, hogy nincs blob által aktivált függv�
 
 Az Azure Functions-tárolók visszaigazolások nevű tárolóban lévő blob *azure-webjobs-gazdagépek* a függvényalkalmazás Azure storage-fiókban (határozzák meg az Alkalmazásbeállítás `AzureWebJobsStorage`). Egy blob beérkezési rendelkezik a következő információkat:
 
-* Az aktivált függvény ("*&lt;függvényalkalmazás neve >*. A műveletek.  *&lt;függvény neve >*", például: "MyFunctionApp.Functions.CopyBlob")
+* Az aktivált függvény (" *&lt;függvényalkalmazás neve >* . A műveletek.  *&lt;függvény neve >* ", például: "MyFunctionApp.Functions.CopyBlob")
 * A tároló neve
 * A blob típusa ("BlockBlob" vagy "PageBlob")
 * A blob neve
@@ -434,7 +434,7 @@ Ha egy blob eseményindító függvény egy adott BLOB nem sikerül, az Azure Fu
 
 Ha minden 5 alkalommal sikertelen, a az Azure Functions egy üzenetet ad hozzá nevű üzenetsor-tárolóba *webjobs-blobtrigger-poison*. Az üzenetsorban található üzenet ártalmas blobok esetében a következő JSON-objektum, amely a következő tulajdonságokat tartalmazza:
 
-* FunctionId (a következő formátumban  *&lt;függvényalkalmazás neve >*. A műveletek.  *&lt;függvény neve >*)
+* FunctionId (a következő formátumban  *&lt;függvényalkalmazás neve >* . A műveletek.  *&lt;függvény neve >* )
 * BlobType ("BlockBlob" vagy "PageBlob")
 * ContainerName
 * BlobName
@@ -1109,7 +1109,7 @@ A JavaScript, a blob adatait az eléréséhez `context.bindings.<name from funct
 |---|---|
 | Blob | [A BLOB-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | Blob, Table, Queue |  [Storage-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob, Table, Queue |  [hibaelhárítással](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Blob, Table, Queue |  [Hibaelhárítás](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>További lépések
 

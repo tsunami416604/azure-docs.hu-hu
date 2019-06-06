@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 318f21beffb401053c56576ccd9e641dc89cf559
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298801"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473782"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:  ADConnectivityTools PowerShell-referencia
 
@@ -35,7 +35,8 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 
 ### <a name="description"></a>LEÍRÁS
 
-Helyi Dns-kapcsolat teszteket futtat. Az Active Directory-összekötő konfigurálásához a felhasználónak kell rendelkeznie mindkét névfeloldás az erdő megpróbálnak csatlakozni, valamint a tartományvezérlők, ebben az erdőben kapcsolódó hasonlóan.
+Helyi Dns-kapcsolat teszteket futtat.
+Az Active Directory-összekötő konfigurálásához a felhasználónak rendelkeznie kell mindkét név resolutionthe azt az erdőt, azok próbál hasonlóan a tartományvezérlők, ebben az erdőben kapcsolódó is csatlakozhat.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -309,7 +310,7 @@ Accept wildcard characters: False
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
 Ha a felhasználó nem használja az Active Directory-hely által biztosított DNS-szolgáltatások / bejelentkezési tartományvezérlő, akkor előfordulhat, hogy ki szeretné hagyni 53-as port ellenőrzése.
-Felhasználó továbbra is tudja feloldani az _.ldap._tcp kell lennie. \<forestfqdn\> ahhoz, hogy az Active Directory-összekötő konfigurálása sikeres.
+A felhasználó továbbra is tudja feloldani az _.ldap._tcp kell lennie. \<forestfqdn\> ahhoz, hogy az Active Directory-összekötő konfigurálása sikeres.
 
 ```yml
 Type: SwitchParameter

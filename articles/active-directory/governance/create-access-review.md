@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bafa4614e40bb1796ec90e07ecf5b9286a8acb9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1ef72f1649c3f3e0af7fba53b2e8dbcee49d4b59
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113515"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734564"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>A csoportok a hozzáférési felülvizsgálat létrehozása és alkalmazások az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -30,15 +30,14 @@ Ez a cikk ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure AD Premium P2
-- [A hozzáférési felülvizsgálatok engedélyezve](access-reviews-overview.md)
+- Prémium szintű Azure AD P2
 - Globális rendszergazda vagy felhasználói rendszergazda
 
 További információkért lásd: [mely felhasználók rendelkeznie kell licencekkel?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="create-one-or-more-access-reviews"></a>Hozzon létre egy vagy több hozzáférési felülvizsgálatok
 
-1. Jelentkezzen be az Azure Portalon, és nyissa meg a [hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+1. Jelentkezzen be az Azure Portalon, és nyissa meg a [Identitáskezelést oldal](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
 1. A bal oldali menüben kattintson a **hozzáférési felülvizsgálatokkal**.
 
@@ -88,11 +87,11 @@ További információkért lásd: [mely felhasználók rendelkeznie kell licence
 
     Programok listájának megtekintéséhez nyissa meg a hozzáférési felülvizsgálatok lapot, és válassza ki **programok**. Ha Ön globális rendszergazda vagy felhasználói rendszergazda szerepkört, az további programokat is létrehozhat. Választhat, például, hogy az egyes megfelelőségi-kezdeményezéshez egy program vagy üzleti cél. Ha már nincs szüksége egy programot, és nem kell minden olyan vezérlőelemek, hozzá kell kapcsolni, törölheti azt.
 
-### <a name="upon-completion-settings"></a>A befejezést követő művelet beállításai
+### <a name="upon-completion-settings"></a>Befejezést követő művelet beállításai
 
 1. Adja meg, mi történik, a felülvizsgálat befejezése után, bontsa ki a **befejezést követő művelet beállításai** szakaszban.
 
-    ![A befejezést követő művelet beállításai](./media/create-access-review/upon-completion-settings.png)
+    ![Befejezést követő művelet beállításai](./media/create-access-review/upon-completion-settings.png)
 
 1. Ha szeretne automatikusan remove hozzáférést a felhasználók számára, hogy el lett utasítva, **eredmények automatikus alkalmazása az erőforrás** való **engedélyezése**. Ha szeretné manuálisan alkalmazza az eredményeket, ha a felülvizsgálatot követően, állítsa a kapcsolót **letiltása**.
 

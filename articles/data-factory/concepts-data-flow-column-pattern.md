@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 5131329f6675bc86374f5a5c081e0aaa7d36c0fe
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 08cdaafe00b7dc586ea75f6ff03fdb89107edee9
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155241"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430755"
 ---
 # <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Az Azure data factory-társítási adatok elkezdenek beérkezni oszlop minták
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Több Azure Data Factory adatfolyam átalakítások támogatja az elgondolásra épül, "Oszlopok minták", úgy, hogy a sablon oszlopok helyett változtatható oszlopnevek minták alapján is létrehozhat. Ez a funkció a Kifejezésszerkesztő belül oszlopok átalakítása xact, adott mezőnevek átjárószolgáltatásnak-minták meghatározására használhatja. Minták hasznosak, ha a bejövő forrásmezőket módosítása gyakran, különösen az oszlopok módosítása a szöveges fájlokat, vagy a NoSQL-adatbázisok esetében. Ez a feltétel más "Séma eltéréseket" néven.
+Több Azure Data Factory adatfolyam átalakítások támogatja az elgondolásra épül, "Oszlopok minták", úgy, hogy a sablon oszlopok helyett változtatható oszlopnevek minták alapján is létrehozhat. Ez a funkció a Kifejezésszerkesztő belül használhatja oszlopok átalakítása pontosan, a megadott mezőnevek átjárószolgáltatásnak-minták meghatározására. Minták hasznosak, ha a bejövő forrásmezőket módosítása gyakran, különösen az oszlopok módosítása a szöveges fájlokat, vagy a NoSQL-adatbázisok esetében. Ez a feltétel más "Séma eltéréseket" néven.
 
 ![oszlop minták](media/data-flow/columnpattern2.png "oszlop minták")
 
@@ -27,6 +27,6 @@ Való hozzáadásakor egy kifejezés olyan átalakítást, amely elfogadja a min
 
 Sablon oszlop minták létrehozását, használjon `$$` a kifejezés a bemeneti streamből minden egyező mező való hivatkozást jelöl.
 
-Ha használja a Kifejezésszerkesztő regex függvények egyikét, majd ezt követően használhatja $1, 2 USD, $3.. való hivatkozáshoz a subpatterns egyezik a regex kifejezés.
+Ha kíván használni a Kifejezésszerkesztő regex függvények egyikét, majd ezt követően használhatja $1, 2 USD, $3... az alárendelt minták hivatkozni megfeleltetni a regex kifejezés.
 
-Oszlop minta forgatókönyv például összeg használ több bejövő mezőket. A SUM összesítő számítások az összesítésben átalakításában. Majd az összes egyezést mezőtípusok ÖSSZEGEZZÜK, hogy egyezik "egész" és a $$ használatával minden egyes egyezik a kifejezésben hivatkoznak.
+Oszlop minta forgatókönyv például összeg használ több bejövő mezőket. A SUM összesítő számítások az összesítésben átalakításában. Ezután használhatja, amely egyezik "egész" és a $$ segítségével minden egyes egyezik a kifejezésben hivatkoznak mezőtípusok minden egyező összege.

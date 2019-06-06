@@ -1,23 +1,18 @@
 ---
 title: Az Azure Resource Manager-sablon szerkezetének és szintaxisának |} A Microsoft Docs
 description: Ismerteti, és a tulajdonságait az Azure Resource Manager-sablonok deklaratív JSON-szintaxis használatával.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.assetid: 19694cb4-d9ed-499a-a2cc-bcfc4922d7f5
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/18/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 94ed3c876ece827e4decd2b5b14332f5e854ab83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3b8b6b969568fc15558002c268cdc4a16c2fadd
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728014"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431238"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
 
@@ -72,7 +67,21 @@ A kifejezés szintaxisa belül `resourceGroup()` meghívja a függvényt, amely 
 
 Sablon függvényeket és paramétereket és nagybetűk nincsenek megkülönböztetve. Például, oldja fel az erőforrás-kezelő **variables('var1')** és **VARIABLES('VAR1')** ugyanaz, mint. Kiértékelésekor, hacsak a függvény kifejezetten módosítja (például toUpper vagy toLower) eset, a függvény megőrzi az az eset. Előfordulhat, hogy az egyes erőforrástípusok használatieset-követelmények attól függetlenül, hogyan értékeli ki a funkciók.
 
-Kezdje egy zárójelet szövegkonstansnak kell `[`, de nem rendelkezik, azt értelmezni, hogy egy kifejezés, adjon hozzá egy extra szögletes zárójelet, indítsa el a karakterlánc `[[`.
+Indítsa el a bal oldali zárójelet szövegkonstansnak kell `[` és egy záró zárójel `]`, de nem rendelkezik, azt értelmezni, hogy egy kifejezés, adjon hozzá egy extra szögletes zárójelet, indítsa el a karakterlánc `[[`. Ha például a változót:
+
+```json
+"demoVar1": "[[test value]"
+```
+
+Oldja fel `[test value]`.
+
+Azonban ha az a konstans sztring nem végződhet egy zárójelet, nem escape az első szögletes zárójelet. Ha például a változót:
+
+```json
+"demoVar2": "[test] value"
+```
+
+Oldja fel `[test] value`.
 
 Egy karakterláncértéket paraméterként átadása egy függvényt, használjon aposztrófot.
 
@@ -493,20 +502,20 @@ Az alábbi struktúra használatával erőforrásokat határoz meg:
 
 | Elem neve | Szükséges | Leírás |
 |:--- |:--- |:--- |
-| feltétel | Nem | Logikai érték, amely azt jelzi, hogy az erőforrás jön létre a központi telepítés során. Amikor `true`, üzembe helyezés során az erőforrás létrehozása. Amikor `false`, az erőforrást a rendszer kihagyta a központi telepítéshez. Lásd: [feltétel](#condition). |
+| condition | Nem | Logikai érték, amely azt jelzi, hogy az erőforrás jön létre a központi telepítés során. Amikor `true`, üzembe helyezés során az erőforrás létrehozása. Amikor `false`, az erőforrást a rendszer kihagyta a központi telepítéshez. Lásd: [feltétel](#condition). |
 | apiVersion |Igen |Az erőforrás létrehozásához használt REST API-verzió. Rendelkezésre álló értékeket megállapításához lásd: [sablonreferenciája](/azure/templates/). |
 | type |Igen |Az erőforrás típusát. Ezt az értéket a névteret, az erőforrás-szolgáltató és az erőforrástípus kombinációja (például **Microsoft.Storage/storageAccounts**). Rendelkezésre álló értékeket megállapításához lásd: [sablonreferenciája](/azure/templates/). Egy gyermek-erőforrás a formátum típusa attól függ, hogy beágyazva a szülő erőforrás vagy a szülő erőforrás kívül meghatározott. Lásd: [gyermekerőforrásait](#child-resources). |
-| név |Igen |Az erőforrás neve. A név RFC3986 meghatározott URI-összetevőt korlátozásokat kell követnie. Emellett az Azure-szolgáltatások elérhetővé az erőforrás neve kívüli felek ellenőrzése, hogy a név nem egy másik identitását meghamisítását tett kísérlet. Egy gyermek-erőforrás a formátum neve attól függ, hogy a szülő erőforrás ágyazott vagy a szülő erőforrás kívül meghatározott. Lásd: [gyermekerőforrásait](#child-resources). |
+| name |Igen |Az erőforrás neve. A név RFC3986 meghatározott URI-összetevőt korlátozásokat kell követnie. Emellett az Azure-szolgáltatások elérhetővé az erőforrás neve kívüli felek ellenőrzése, hogy a név nem egy másik identitását meghamisítását tett kísérlet. Egy gyermek-erőforrás a formátum neve attól függ, hogy a szülő erőforrás ágyazott vagy a szülő erőforrás kívül meghatározott. Lásd: [gyermekerőforrásait](#child-resources). |
 | location |Változó |Támogatott a megadott erőforráscsoport földrajzi helyét. Az elérhető helyek közül választhat, de általában logikus válasszon egyet a felhasználók közelében van. Általában is logikus helyezni erőforrásokat, amelyek ugyanabban a régióban léphetnek kapcsolatba egymással. A legtöbb erőforrástípusok szüksége egy olyan helyre, de bizonyos típusú (például a szerepkör-hozzárendelés) egy olyan helyre nem igényelnek. |
-| tags |Nem |Az erőforráshoz tartozó címkék. Hogy logikusan rendszerezhesse az erőforrások az előfizetésen címkékkel. |
+| címkék |Nem |Az erőforráshoz tartozó címkék. Hogy logikusan rendszerezhesse az erőforrások az előfizetésen címkékkel. |
 | Megjegyzések |Nem |A megjegyzések dokumentálja a sablonban lévő erőforrásokat. További információkért lásd: [sablonok megjegyzéseket](resource-group-authoring-templates.md#comments). |
-| másolás |Nem |Ha több példány van szükség, az erőforrások létrehozásához számát. Az alapértelmezett mód párhuzamos. Adja meg a soros módra, amikor nem szeretné, hogy az összes vagy egy időben üzembe helyezendő erőforrásokat. További információkért lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md). |
+| Másolás |Nem |Ha több példány van szükség, az erőforrások létrehozásához számát. Az alapértelmezett mód párhuzamos. Adja meg a soros módra, amikor nem szeretné, hogy az összes vagy egy időben üzembe helyezendő erőforrásokat. További információkért lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md). |
 | dependsOn |Nem |Az erőforrások telepíteni kell az erőforrás üzembe van helyezve. Resource Manager kiértékeli az erőforrások közti függőségeket, és a megfelelő sorrendben telepíti azokat. Ha az erőforrások nem függ egymástól, hogy helyezésük párhuzamosan. Az érték lehet egy erőforrás vesszővel elválasztott listáját nevét vagy az erőforrás egyedi azonosítók. Ez a sablon üzembe helyezett erőforrások csak listája. A sablonban nem meghatározott erőforrások már léteznie kell. Kerülje a szükségtelen függőségek hozzáadása a telepítéshez lelassíthatja, és hozzon létre körkörös függőségi. Beállítás függőségekkel kapcsolatos útmutatásért lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](resource-group-define-dependencies.md). |
 | properties |Nem |Erőforrás-specifikus konfigurációs beállításokat. A tulajdonságok értékei ugyanazok, mint a REST API-művelet (PUT metódust) az erőforrás létrehozásához nyújt a kérelem törzsében szereplő értékek. Megadhat egy másolási tömböt egy tulajdonságot több példányát is. Rendelkezésre álló értékeket megállapításához lásd: [sablonreferenciája](/azure/templates/). |
-| termékváltozat | Nem | Bizonyos erőforrások üzembe helyezéséhez a Termékváltozat definiáló engedélyezése. Ha például a tárfiókok a redundancia típusát is megadhat. |
+| sku | Nem | Bizonyos erőforrások üzembe helyezéséhez a Termékváltozat definiáló engedélyezése. Ha például a tárfiókok a redundancia típusát is megadhat. |
 | típusa | Nem | Bizonyos erőforrások lehetővé teszik egy értéket, amely meghatározza a telepít erőforrás típusát. Ha például a Cosmos DB létrehozása típusát is megadhat. |
 | csomag | Nem | Bizonyos erőforrások lehetővé teszik az értékek, amelyek meghatározzák a csomag telepítéséhez. Ha például egy virtuális gépen a Marketplace-beli rendszerképét is megadhat. | 
-| erőforrások |Nem |Gyermek erőforrások, amelyek a definiált erőforrás függenek. Csak adja meg a séma a szülő erőforrás által számukra engedélyezett erőforrástípusok. A szülőerőforrás függőség nem implicit. Meg kell határoznia, hogy a függőséget explicit módon. Lásd: [gyermekerőforrásait](#child-resources). |
+| Erőforrások |Nem |Gyermek erőforrások, amelyek a definiált erőforrás függenek. Csak adja meg a séma a szülő erőforrás által számukra engedélyezett erőforrástípusok. A szülőerőforrás függőség nem implicit. Meg kell határoznia, hogy a függőséget explicit módon. Lásd: [gyermekerőforrásait](#child-resources). |
 
 ### <a name="condition"></a>Állapot
 
@@ -735,7 +744,7 @@ A következő példa egy kimeneti definíciót szerkezetét mutatja:
 | Elem neve | Szükséges | Leírás |
 |:--- |:--- |:--- |
 | outputName |Igen |A kimeneti érték neve. Érvényes JavaScript-azonosítónak kell lennie. |
-| feltétel |Nem | Logikai érték, amely azt jelzi, hogy ez a kimeneti értéket adja vissza. Amikor `true`, az érték szerepel a kimenet a központi telepítéshez. Amikor `false`, a rendszer kihagyta a kimeneti értéket ehhez a központi telepítéshez. Ha nincs megadva, az alapértelmezett értéke `true`. |
+| condition |Nem | Logikai érték, amely azt jelzi, hogy ez a kimeneti értéket adja vissza. Amikor `true`, az érték szerepel a kimenet a központi telepítéshez. Amikor `false`, a rendszer kihagyta a kimeneti értéket ehhez a központi telepítéshez. Ha nincs megadva, az alapértelmezett értéke `true`. |
 | type |Igen |A kimeneti érték típusát. Sablon bemeneti paraméterként azonos kimeneti értékeket támogatásához. Ha megad **securestring** a kimeneti típus az érték nem jelennek meg az üzembe helyezési előzmények, és nem kérhető le egy másik sablonnal. Egynél több titkos értéket használja, a titkos kulcs tárolása a Key Vaultban, és a titkos kulcsot a paraméterfájlban hivatkozhat. További információkért lásd: [használata Azure Key Vaultban történő biztonságos paraméter értéke továbbítása üzembe helyezés során](resource-manager-keyvault-parameter.md). |
 | value |Igen |Sablonnyelv-kifejezés, amely értékeli ki és adja vissza a kimeneti értéket. |
 

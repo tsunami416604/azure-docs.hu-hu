@@ -2,20 +2,20 @@
 title: TechnicalProfiles |} A Microsoft Docs
 description: Adja meg a TechnicalProfiles elem egyéni szabályzat az Azure Active Directory B2C-t.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da769093794a559e4b856f7ae4f211c3900632c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f712634c83fa290ab24d5e8437a82d5f93af0b7f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711045"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512285"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -80,10 +80,10 @@ A **TechnicalProfile** elem tartalmazza a következő attribútumot:
 
 A **TechnicalProfile** a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | A tartomány neve, a technikai profil. Ha például a technikai profil határozza meg, a Facebook-identitásszolgáltató, ha a tartománynév Facebook.com weboldalt. |
-| Megjelenítendő név | 0:1 | A technikai profil, a felhasználók számára megjelenített neve. |
+| displayName | 0:1 | A technikai profil, a felhasználók számára megjelenített neve. |
 | Leírás | 0:1 | A felhasználók számára megjelenő technikai profil leírása. |
 | Protocol | 0:1 | A másik fél szolgáltatással való kommunikációhoz használt protokoll. |
 | Metaadatok | 0:1 | A protokoll egy tranzakció során a végponttal való kommunikációhoz használ kulcs/érték párok gyűjteménye. |
@@ -106,7 +106,7 @@ A **TechnicalProfile** a következő elemeket tartalmazza:
 
 A **protokoll** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Name (Név) | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. A lehetséges értékek: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `WsFed`, `WsTrust`, `Proprietary`, `session management`, `self-asserted`, vagy `None`. |
 | Kezelő | Nem | Ha a protokoll nevét beállítása `Proprietary`, adja meg a szerelvény meghatározásához a protokoll-leíró Azure AD B2C által használt teljes nevét. |
@@ -115,7 +115,7 @@ A **protokoll** elem tartalmazza a következő attribútumokat:
 
 A **metaadatok** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Elem | 0:n | A metaadatok, hogy a technikai profil vonatkozik. Minden egyes technikai profil típusát különböző metaadatelemek rendelkezik. Tekintse meg a technikai profil típusok további információt. |
 
@@ -123,7 +123,7 @@ A **metaadatok** elem a következő elemeket tartalmazza:
 
 A **elem** eleme a **metaadatok** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Kulcs | Igen | A metaadat-kulcsot. Tekintse meg az egyes technikai Profiltípusok metaadat-elemek listáját. |
 
@@ -131,7 +131,7 @@ A **elem** eleme a **metaadatok** elem tartalmazza a következő attribútumokat
 
 A **CryptographicKeys** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Kulcs | 1:n | A technikai profil használt titkosítási kulcs. |
 
@@ -139,7 +139,7 @@ A **CryptographicKeys** elem tartalmazza a következő elemet:
 
 A **kulcs** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Nem | Egy adott kulcspárt rájuk hivatkozni más elemek, a házirend-fájl egyedi azonosítója. |
 | StorageReferenceId | Igen | Az egyéb elemek a szabályzat fájlban hivatkozott kulcs tárolót azonosítójának. |
@@ -148,7 +148,7 @@ A **kulcs** elem tartalmazza a következő attribútumot:
 
 A **InputClaimsTransformations** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1:n | A jogcímek átalakításáról jogcímeket a jogcím-szolgáltató vagy a függő entitás elküldése előtt végrehajtandó azonosítóját. A jogcímek átalakításáról segítségével módosíthatja a meglévő ClaimsSchema jogcímeket, vagy hozzon létre újakat. |
 
@@ -164,7 +164,7 @@ A **InputClaimsTransformation** elem tartalmazza a következő attribútumot:
 
 A **InputClaims** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Bemeneti jogcím | 1:n | Egy várt bemeneti jogcím típusa. |
 
@@ -172,7 +172,7 @@ A **InputClaims** elem tartalmazza a következő elemet:
 
 A **bemeneti jogcím** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Igen | A szabályzat vagy a szülő házirend fájl ClaimsSchema szakasz már definiálva egy jogcímtípust azonosítóját. |
 | DefaultValue érték | Nem | Hozzon létre egy jogcímet, ha a jogcímek ClaimTypeReferenceId által jelzett használandó alapértelmezett értéket, hogy az eredményül kapott a jogcímet, egy bemeneti jogcím használhatják a technikai profil nem létezik. |
@@ -182,7 +182,7 @@ A **bemeneti jogcím** elem tartalmazza a következő attribútumokat:
 
 A **PersistedClaims** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1:n | A jogcímtípus is tartalmaz. |
 
@@ -190,7 +190,7 @@ A **PersistedClaims** elem a következő elemeket tartalmazza:
 
 A **PersistedClaim** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Igen | A szabályzat vagy a szülő házirend fájl ClaimsSchema szakasz már definiálva egy jogcímtípust azonosítóját. |
 | DefaultValue érték | Nem | Hozzon létre egy jogcímet, ha a jogcímek ClaimTypeReferenceId által jelzett használandó alapértelmezett értéket, hogy az eredményül kapott a jogcímet, egy bemeneti jogcím használhatják a technikai profil nem létezik. |
@@ -200,7 +200,7 @@ A **PersistedClaim** elem tartalmazza a következő attribútumokat:
 
 A **OutputClaims** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | OutputClaim | 1:n | Várt kimenet jogcím típusa. |
 
@@ -208,7 +208,7 @@ A **OutputClaims** elem tartalmazza a következő elemet:
 
 A **kimeneti jogcím** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Igen | A szabályzat vagy a szülő házirend fájl ClaimsSchema szakasz már definiálva egy jogcímtípust azonosítóját. |
 | DefaultValue érték | Nem | Hozzon létre egy jogcímet, ha a jogcímek ClaimTypeReferenceId által jelzett használandó alapértelmezett értéket, hogy az eredményül kapott a jogcímet, egy bemeneti jogcím használhatják a technikai profil nem létezik. |
@@ -219,7 +219,7 @@ A **kimeneti jogcím** elem tartalmazza a következő attribútumokat:
 
 A **OutputClaimsTransformations** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1:n | A jogcímek átalakítása jogcímeket a jogcím-szolgáltató vagy a függő entitás elküldése előtt végrehajtandó azonosítói. A jogcímek átalakításáról segítségével módosíthatja a meglévő ClaimsSchema jogcímeket, vagy hozzon létre újakat. |
 
@@ -227,7 +227,7 @@ A **OutputClaimsTransformations** elem tartalmazza a következő elemet:
 
 A **OutputClaimsTransformation** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A jogcímek átalakítását, a házirend vagy szülő házirend fájlt már definiált azonosítója. |
 
@@ -235,7 +235,7 @@ A **OutputClaimsTransformation** elem tartalmazza a következő attribútumot:
 
 A **ValidationTechnicalProfiles** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | A használható technikai profilok-azonosítók vagy azok egy részét a kimeneti jogcímek a hivatkozó technikai profil ellenőrzése. A bemeneti jogcímek között, a hivatkozott technikai profil összes szerepelnie kell a kimeneti jogcímek a hivatkozó technikai profil. |
 
@@ -243,7 +243,7 @@ A **ValidationTechnicalProfiles** elem tartalmazza a következő elemet:
 
 A **ValidationTechnicalProfile** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A házirend vagy szülő házirend fájlt már definiált egy technikai profil azonosítója. |
 
@@ -259,7 +259,7 @@ A **SubjectNamingInfo** tartalmazza a következő attribútumot:
 
 A **IncludeTechnicalProfile** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A házirend vagy szülő házirend fájlt már definiált egy technikai profil azonosítója. |
 
@@ -267,7 +267,7 @@ A **IncludeTechnicalProfile** elem tartalmazza a következő attribútumot:
 
 A **UseTechnicalProfileForSessionManagement** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A házirend vagy szülő házirend fájlt már definiált egy technikai profil azonosítója. |
 

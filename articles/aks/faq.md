@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 6bfcd11dd6bfd31583fb2d0cd3f4229d3dd70065
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 1cc03cbcffc5253e8b357b6702cd21c45740ff81
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65887360"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514490"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>– Azure Kubernetes Service (AKS) kapcsolatos gyakori kérdések
 
@@ -66,7 +66,7 @@ Ha hoz létre az AKS-fürt a használni kívánt erőforrások, például a stor
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>Biztosíthat a saját nevét az AKS-infrastruktúra erőforráscsoport?
 
-Igen. Alapértelmezés szerint az AKS erőforrás-szolgáltató automatikusan létrehoz egy másodlagos erőforráscsoportot (például *MC_myResourceGroup_myAKSCluster_eastus*) üzembe helyezése során. Ahhoz, hogy megfeleljenek a vállalati házirenddel, adja meg a saját felügyelt fürt nevét (*MC_*) erőforráscsoportot.
+Igen. Alapértelmezés szerint az AKS erőforrás-szolgáltató automatikusan létrehoz egy másodlagos erőforráscsoportot (például *MC_myResourceGroup_myAKSCluster_eastus*) üzembe helyezése során. Ahhoz, hogy megfeleljenek a vállalati házirenddel, adja meg a saját felügyelt fürt nevét (*MC_* ) erőforráscsoportot.
 
 Adja meg a saját erőforráscsoport neve, telepítse a [aks előzetes] [ aks-preview-cli] Azure CLI-bővítmény verziója *0.3.2-es verzióra* vagy újabb. Az AKS-fürt létrehozásakor a [az aks létrehozása] [ az-aks-create] parancsot, használja a *– csomópont-resource-group* paramétert, és adja meg az erőforráscsoport nevét. Ha Ön [egy Azure Resource Manager-sablonnal] [ aks-rm-template] AKS-fürt üzembe helyezéséhez használatával adhatja meg az erőforráscsoport neve a *nodeResourceGroup* tulajdonság.
 
@@ -120,7 +120,7 @@ A szolgáltatásiszint-szerződés (SLA) a szolgáltató vállalja, hogy megtér
 
 Az aks-ben, beállíthatja a `maxPods` értéke, ha a fürt létrehozása az Azure CLI-vel és az Azure Resource Manager-sablonok használatával. Azonban Kubenet és Azure CNI is szükség van egy *minimális érték* (érvényesíteni a Létrehozás időpontja):
 
-| Hálózat | Minimum | Maximum |
+| Hálózat | Minimális | Maximum |
 | -- | :--: | :--: |
 | Azure CNI | 30 | 250 |
 | Kubenet | 30 | 110 |
@@ -128,6 +128,10 @@ Az aks-ben, beállíthatja a `maxPods` értéke, ha a fürt létrehozása az Azu
 Az AKS egy olyan felügyelt szolgáltatás, hogy üzembe helyezheti és felügyelheti a bővítmények és a podok a fürt részeként. A múltban felhasználók megadására a `maxPods` kisebb az érték, amely a felügyelt podok (például: 30) futtatásához szükséges. AKS most kiszámítja a podok minimális számát a képlettel: ((maxPods vagy (maxPods * vm_count)) > felügyelt bővítmény podok minimális.
 
 Felhasználók nem bírálhatják felül a minimális `maxPods` érvényesítése.
+
+## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Használhatom-e a foglalást az Azure-kedvezmények az AKS-ügyfélcsomóponttal rendelkezik?
+
+AKS ügynökcsomópontok számlázzuk, a standard szintű Azure-beli virtuális gépek, így ha korábban már vásárolt [Azure foglalások] [ reservation-discounts] Virtuálisgép-méret az aks-ben használt, a rendszer automatikusan alkalmazza ezeket a kedvezményeket jelentenek.
 
 <!-- LINKS - internal -->
 
@@ -145,6 +149,7 @@ Felhasználók nem bírálhatják felül a minimális `maxPods` érvényesítés
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [aks-windows-cli]: windows-container-cli.md
 [aks-windows-limitations]: windows-node-limitations.md
+[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
 
 <!-- LINKS - external -->
 

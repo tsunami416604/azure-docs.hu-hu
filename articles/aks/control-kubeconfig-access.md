@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: d4d3d9a3ff57a7a388e9703d0d145d8ce6eafd12
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b55cc226cfbb462cdccd73b3b80cfb0d56c10711
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143009"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475617"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Hozzáférés megadása a Kubernetes konfigurációs fájl az Azure Kubernetes Service (AKS) az Azure szerepköralapú hozzáférés-vezérlés használatával
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan rendelje hozzá ezt a korlátot, akik az AKS-fürt k
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
-Ez a cikk is szükséges, hogy futnak-e az Azure CLI 2.0.53 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ez a cikk is szükséges, hogy futnak-e az Azure CLI 2.0.65 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="available-cluster-roles-permissions"></a>Elérhető fürtözött szerepkörök engedélyek
 
@@ -45,9 +45,9 @@ Ezek az RBAC-szerepkörök egy Azure Active Directory (AD) felhasználó vagy cs
 
 ## <a name="assign-role-permissions-to-a-user-or-group"></a>Szerepkör-engedélyek hozzárendelése egy felhasználóhoz vagy csoporthoz
 
-Az elérhető szerepkörök hozzárendeléséhez kell az erőforrás-Azonosítóját az AKS-fürtöt és az Azure AD felhasználói fiók vagy csoport azonosítója. A következő Példaparancsok tegye a következőket:
+Az elérhető szerepkörök hozzárendeléséhez kell az erőforrás-Azonosítóját az AKS-fürtöt és az Azure AD felhasználói fiók vagy csoport azonosítója. A következő Példaparancsok:
 
-* A fürt resource ID használatával lekérdezi a [az aks show] [ az-aks-show] parancsot a fürt nevű *myAKSCluster* a a *myResourceGroup* erőforráscsoport. Adja meg a saját fürt- és erőforrás-csoport neve, igény szerint.
+* A fürt resource ID használatával lekérése a [az aks show] [ az-aks-show] parancsot a fürt neve *myAKSCluster* a a *myResourceGroup* erőforráscsoport. Adja meg a saját fürt- és erőforrás-csoport neve, igény szerint.
 * Használja a [az fiók show] [ az-account-show] és [az ad felhasználó show] [ az-ad-user-show] parancsok beolvasni a felhasználói azonosítóját.
 * Végül hozzárendel egy szerepkör használatával a [az szerepkör-hozzárendelés létrehozása] [ az-role-assignment-create] parancsot.
 
@@ -69,7 +69,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Ha meg szeretné engedélyek hozzárendelése az Azure AD-csoportok, frissítse a `--assignee` helyett a felhasználó az előző példában látható módon a csoport Objektumazonosítójának paraméterrel. A csoport Objektumazonosítójának megszerzéséhez használja a [az ad-csoport megjelenítése] [ az-ad-group-show] parancsot. Az alábbi példa lekéri Objektumazonosítóját az Azure AD-csoport nevű *appdev*: `az ad group show --group appdev --query objectId -o tsv`
+> Ha meg szeretné engedélyek hozzárendelése az Azure AD-csoportok, frissítse a `--assignee` paraméter a objektumazonosítójú az előző példában látható a *csoport* helyett egy *felhasználói*. A csoport Objektumazonosítójának megszerzéséhez használja a [az ad-csoport megjelenítése] [ az-ad-group-show] parancsot. Az alábbi példa lekéri Objektumazonosítóját az Azure AD-csoport nevű *appdev*: `az ad group show --group appdev --query objectId -o tsv`
 
 A korábbi hozzárendelés módosíthatja a *fürt felhasználói szerepkör* igény szerint.
 

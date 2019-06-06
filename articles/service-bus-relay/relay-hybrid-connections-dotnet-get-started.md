@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés a hibrid Azure Relay-kapcsolatok websocketjeivel a .NET-ben | Microsoft Docs
-description: C#-konzolalkalmazást hozhat létre a hibrid Azure Relay-kapcsolatok websocketjeihez.
+title: Ismerkedés az Azure Relay hibrid kapcsolatok WebSockets .NET-keretrendszerben |} A Microsoft Docs
+description: Írhat egy C# az Azure Relay hibrid kapcsolatok a websockets protokoll-Konzolalkalmazás.
 services: service-bus-relay
 documentationcenter: .net
 author: spelluru
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 88d540f274d8b07bfbdbb566c670adf6ddfefd74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ad1d5415feefcf30ebae860bc8f4d8a3e2261d5
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749706"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428353"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Relay hibrid kapcsolatok a websockets protokoll a .NET-ben – első lépések
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -64,7 +64,7 @@ A Visual Studióban egy C# nyelven íródott konzolalkalmazást hozunk létre az
 
     ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
-Gratulálunk, végpontok közötti hibrid kapcsolati alkalmazást hozott létre!
+Gratulálunk, létrehozott egy teljes hibrid kapcsolatok alkalmazást!
 
 ## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban létrehozott .NET ügyfél és kiszolgáló-alkalmazások, amelyek a websockets protokoll üzenetek küldése és fogadása. Az Azure Relay hibrid kapcsolatok szolgáltatását is támogatja a HTTP protokollon keresztül küldhet és fogadhat üzeneteket. Az Azure Relay hibrid kapcsolatai HTTP használatával kapcsolatban lásd: a [HTTP rövid](relay-hybrid-connections-http-requests-dotnet-get-started.md).

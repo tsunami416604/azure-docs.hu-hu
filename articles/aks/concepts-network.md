@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 2d51699138914e4a8ad5d2a133161fcfce71e9fe
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5ce3290f7af32b10e1dfbf9b72686e5d30c885bb
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074050"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431317"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazások az Azure Kubernetes Service (AKS) hálózati fogalmai
 
@@ -99,6 +99,8 @@ Amikor létrehoz egy terheléselosztó szolgáltatás típusú, egy alapul szolg
 Az aks-ben hozzon létre egy bejövő erőforrást vagy hasonló nginx-et, vagy használja az AKS HTTP útválasztási funkcióval. Ha engedélyezi a HTTP-alkalmazások útválasztása az AKS-fürt, az Azure platform hoz létre a Bejövőforgalom-vezérlőt és a egy *külső DNS-* vezérlő. Kubernetes bejövő új erőforrások jönnek létre, mert a szükséges DNS-beli A rekordokat a DNS-zóna fürtre jellemző jönnek létre. További információkért lásd: [üzembe helyezése a HTTP-alkalmazások útválasztása][aks-http-routing].
 
 Bejövő forgalom egy másik gyakori funkcióját a TLS/SSL-lezárást. A HTTPS-en keresztül elérhető nagy méretű webes alkalmazások a TLS-lezárást lehet kezelni, a bejövő forgalom erőforrásnak, nem pedig maga az alkalmazás. Ahhoz, hogy a TLS-tanúsítvány automatikus létrehozása és konfigurálása, konfigurálhatja a bejövő forgalom erőforrás szolgáltatók, például hozzunk titkosítására használandó. Egy nginx-et Bejövőforgalom-vezérlőjéhez konfigurálása most titkosítása további információkért lásd: [bejövő forgalom és TLS][aks-ingress-tls].
+
+Beállíthatja a bejövőforgalom-vezérlőjéhez megőrzése az ügyfél forrás IP-címe az AKS-fürtben lévő tárolók kérelemhez. Ha egy tárolóba az AKS-fürt bejövőforgalom-vezérlőjéhez keresztül irányítja a kérelmeket az ügyfél, az eredeti forrás ip-címét, hogy a kérelem nem lesz elérhető, a céloldali tárolóra. Amikor engedélyezi a *ügyfél forrás IP-megőrzését*, a forrás IP-címe az ügyfél számára érhető el a kérelem fejléce alatt *X – továbbított – a*. Ha az ügyfél forrás IP-megőrzését a bejövőforgalom-vezérlőt használ, nem használható SSL átmenő. Ügyfél forrás IP-megőrzése és az SSL csatlakoztatott használható más szolgáltatásokkal, mint például a *terheléselosztó* típusa.
 
 ## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 

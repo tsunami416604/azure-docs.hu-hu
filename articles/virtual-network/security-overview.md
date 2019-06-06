@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: 73664359b206a9e149ebac6859df24a1263cd313
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 751a3a940dad74cbc8c7343ee70309736b381d5b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60731667"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478867"
 ---
 # <a name="security-groups"></a>Biztonsági csoportok
 <a name="network-security-groups"></a>
@@ -35,7 +35,7 @@ A hálózati biztonsági csoportok nulla vagy tetszőleges számú szabályt tar
 |Name (Név)|Egy egyedi név a hálózati biztonsági csoporton belül.|
 |Prioritás | Egy 100 és 4096 közötti szám. A szabályok feldolgozása prioritási sorrendben történik. Az alacsonyabb sorszámúak feldolgozása a magasabb sorszámúak előtt történik, mivel az alacsonyabb sorszámok magasabb prioritást jelölnek. Ha az adatforgalom megfelel valamelyik szabálynak, a feldolgozás leáll. Ennek eredményeképp az olyan alacsonyabb prioritású (magasabb számú) szabályokat, amelyek attribútumai megegyeznek a magasabb prioritású szabályokéival, a rendszer nem dolgozza fel.|
 |Forrás vagy cél| Bármelyik vagy egy egyéni IP-cím, Classless Inter-Domain Routing- (CIDR-) blokk (például 10.0.0.0/24), [szolgáltatáscímke](#service-tags) vagy [alkalmazásbiztonsági csoport](#application-security-groups). Ha egy Azure-erőforrás címét adja meg, az erőforráshoz rendelt magánhálózati IP-címet adja meg. A hálózati biztonsági csoportok feldolgozása azután történik, hogy az Azure a bejövő forgalomhoz a nyilvános IP-címeket magánhálózati IP-címekre fordítja le, de még mielőtt, hogy a magánhálózati IP-címeket nyilvános IP-címekre fordítaná le a kimenő forgalomhoz. További tudnivalók az Azure-beli [IP-címekről](virtual-network-ip-addresses-overview-arm.md). Tartományok, szolgáltatáscímkék vagy alkalmazásbiztonsági csoportok megadásával kevesebb biztonsági szabályt kell majd létrehoznia. A több egyéni IP-cím vagy -tartomány megadásának lehetősége (szolgáltatáscímkékből és alkalmazásbiztonsági csoportokból nem adható meg több) az egyes szabályokban [kibővített biztonsági szabályok](#augmented-security-rules) néven érhető el. Kibővített biztonsági szabályok kizárólag a Resource Manager-alapú üzemi modellben létrehozott hálózati biztonsági csoportokban hozhatóak létre. A klasszikus üzemi modellben létrehozott hálózati biztonsági csoportokban nem adhat meg több IP-címet vagy -címtartományt. További információ az [Azure üzemi modellekről](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
-|Protokoll     | TCP, UDP vagy bármely, amely tartalmazza a (de nem kizárólag) a TCP, UDP és ICMP. Az ICMP önmagában nem adható meg, ezért ha erre van szüksége, használja a Bármely lehetőséget. |
+|Protocol     | TCP, UDP vagy bármely, amely tartalmazza a (de nem kizárólag) a TCP, UDP és ICMP. Az ICMP önmagában nem adható meg, ezért ha erre van szüksége, használja a Bármely lehetőséget. |
 |Direction| Megadja, hogy a szabály a bejövő vagy a kimenő adatforgalomra vonatkozik.|
 |Porttartomány     |Megadhat egy egyéni portot vagy egy porttartományt is. Megadhatja például a 80-as portot vagy a 10000–10005 tartományt. Tartományok megadásával kevesebb biztonsági szabályt kell majd létrehoznia. Kibővített biztonsági szabályok kizárólag a Resource Manager-alapú üzemi modellben létrehozott hálózati biztonsági csoportokban hozhatóak létre. A klasszikus üzemi modellben létrehozott hálózati biztonsági csoportokban egyazon szabályban nem adhat meg több portot vagy porttartományt.   |
 |Műveletek     | Engedélyezés vagy letiltás        |
@@ -72,7 +72,7 @@ A kibővített biztonsági szabályok megkönnyítik a virtuális hálózatok bi
 * **AzureContainerRegistry** (csak Resource Manager): Ez a címke az Azure Container Registry szolgáltatás címelőtagjait. Ha az *AzureContainerRegistry* értéket adja meg, az AzureContainerRegistry felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést az AzureContainerRegistry szolgáltatáshoz, a régiót az AzureConainerRegistry.[régió neve] formátumban adhatja meg. 
 * **Az App Service** (csak Resource Manager): Ez a címke az Azure App Service szolgáltatás címelőtagjait. Ha az *AppService* értéket adja meg, az AppService szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést az AppService szolgáltatáshoz, a régiót az AppService.[régió neve] formátumban adhatja meg. 
 * **AppServiceManagement** (csak Resource Manager): Ez a címke az Azure App Service Management szolgáltatás címelőtagjait. Ha az *AppServiceManagement* értéket adja meg, az AppServiceManagement szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. 
-* **Az ApiManagement** (csak Resource Manager): Ez a címke az Azure Api Management szolgáltatás címelőtagjait. Ha az *ApiManagement* értéket adja meg, az ApiManagement szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható.  
+* **Az ApiManagement** (csak Resource Manager): Ez a címke az Azure Api Management szolgáltatás címelőtagjait. Ha megad *az ApiManagement* értékénél, engedélyezett vagy tiltott forgalmat egy-az ApiManagement átjárófelügyeleti felületen.  
 * **AzureConnectors** (csak Resource Manager): Ez a címke az Azure-összekötő szolgáltatás címelőtagjait. Ha az *AzureConnectors* értéket adja meg, az AzureConnectors szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést az AzureConnectors szolgáltatáshoz, a régiót az AzureConnectors.[régió neve] formátumban adhatja meg. 
 * **GatewayManager** (csak Resource Manager): Ez a címke az Azure-átjáró Manager szolgáltatás címelőtagjait. Ha a *GatewayManager* értéket adja meg, a GatewayManager szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható.  
 * **AzureDataLake** (csak Resource Manager): Ez a címke az Azure Data Lake szolgáltatás címelőtagjait. Ha az *AzureDataLake* értéket adja meg, az AzureDataLake szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. 
@@ -96,19 +96,19 @@ Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Hozzáférés|
+|Prioritás|Source|Forrásportok|Cél|Célportok|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Összes|Engedélyezés|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Hozzáférés|
+|Prioritás|Source|Forrásportok|Cél|Célportok|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Összes|Engedélyezés|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Hozzáférés|
+|Prioritás|Source|Forrásportok|Cél|Célportok|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Összes|Megtagadás|
 
@@ -116,19 +116,19 @@ Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
+|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Összes | Engedélyezés |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
+|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Összes | Engedélyezés |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
+|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Összes | Megtagadás |
 
@@ -148,7 +148,7 @@ Az előző képen az *NIC1* és az *NIC2* az *AsgWeb* alkalmazásbiztonsági cso
 
 Ez a szabály az internetről a webkiszolgálókra irányuló forgalom engedélyezéséhez szükséges. Mivel az internetről bejövő forgalmat az alapértelmezett [DenyAllInbound](#denyallinbound) biztonsági szabály tiltja, az *AsgLogic* és az *AsgDb* alkalmazásbiztonsági csoportok esetében nincs szükség további szabályokra.
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
+|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | Engedélyezés |
 
@@ -156,7 +156,7 @@ Ez a szabály az internetről a webkiszolgálókra irányuló forgalom engedély
 
 Mivel az alapértelmezett [AllowVNetInBound](#allowvnetinbound) biztonsági szabály az azonos virtuális hálózaton lévő erőforrások között minden kommunikációt engedélyez, ez a szabály az összes erőforrástól érkező forgalom tiltásához szükséges.
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
+|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | Összes | Megtagadás |
 
@@ -164,7 +164,7 @@ Mivel az alapértelmezett [AllowVNetInBound](#allowvnetinbound) biztonsági szab
 
 Ez a szabály engedélyezi az *AsgLogic* alkalmazásbiztonsági csoportról az *AsgDb* alkalmazásbiztonsági csoportra irányuló forgalmat. A szabály prioritása magasabb a *Deny-Database-All* szabály prioritásánál. Ennek eredményeként ez a szabály a *Deny-Database-All* szabály előtt lesz kiértékelve, ezért az *AsgLogic* alkalmazásbiztonsági csoporttól érkező forgalom engedélyezve lesz, az összes többi forgalom pedig le lesz tiltva.
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
+|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | Engedélyezés |
 
@@ -219,7 +219,7 @@ A hálózati adapterekhez rendelt összesített szabályokat könnyen megismerhe
 ## <a name="azure-platform-considerations"></a>Tudnivalók az Azure platformhoz
 
 - **Virtuális IP-címét a gazdacsomópont**: Alapvető infrastruktúra szolgáltatásokat, például a DHCP, DNS, IMDS és szolgáltatásállapot-figyelést 168.63.129.16 és 169.254.169.254 a virtuális gazdagép IP-címekkel vannak megadva. Ezen IP-címek tartoznak, és csak a virtualizált IP-címeit az összes régióban erre a célra.
-- **Licencelés (kulcskezelő szolgáltatás)**: A virtuális gépeken futó Windows-rendszerképeket licencelni kell. A licenceléshez el kell küldeni egy licencelési kérelmet a Kulcskezelő szolgáltatás ilyen kérelmeket kezelő kiszolgálóinak. A kérelmet az 1688-as kimenő porton küldi el a rendszer. Az [alapértelmezett 0.0.0.0/0 útvonalat](virtual-networks-udr-overview.md#default-route) használó konfigurációkban ez a platformszabály le van tiltva.
+- **Licencelés (kulcskezelő szolgáltatás)** : A virtuális gépeken futó Windows-rendszerképeket licencelni kell. A licenceléshez el kell küldeni egy licencelési kérelmet a Kulcskezelő szolgáltatás ilyen kérelmeket kezelő kiszolgálóinak. A kérelmet az 1688-as kimenő porton küldi el a rendszer. Az [alapértelmezett 0.0.0.0/0 útvonalat](virtual-networks-udr-overview.md#default-route) használó konfigurációkban ez a platformszabály le van tiltva.
 - **Virtuális gépek elosztott terhelésű készletek**: A alkalmazni forrás forrásport és címtartomány a forrásszámítógépről származik, nem a terheléselosztó vannak. A célport és a címtartomány nem a terheléselosztóhoz, hanem a célszámítógéphez tartozik.
 - **Azure szolgáltatáspéldányok**: Több Azure szolgáltatás, például a Virtual Machine Scale Sets, HDInsight és az alkalmazásszolgáltatási környezetek példányait virtuális hálózati alhálózatokon vannak üzembe helyezve. A virtuális hálózatokon üzembe helyezhető szolgáltatások teljes listájához lásd a [Virtuális hálózatok az Azure-szolgáltatásokhoz](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) című témakört. Mindenképp ismerkedjen meg behatóan az egyes szolgáltatások portkövetelményeivel, mielőtt egy hálózati biztonsági csoportot alkalmazna az erőforrást üzemeltető alhálózatra. Ha a valamely szolgáltatás által használt portokat letiltja, a szolgáltatás nem megfelelően fog működni.
 - **Kimenő e-mailek küldése**: A Microsoft azt javasolja, hogy hitelesített SMTP-továbbítási szolgáltatásokkal (általában 587 TCP-porton, de gyakran más, keresztül is) az Azure Virtual Machines e-mail üzenetek küldéséhez. Az SMTP-továbbítási szolgáltatások a feladói jellegzetességek biztosítására szakosodtak, így minimalizálják annak lehetőségét, hogy a külső e-mail-szolgáltatók visszautasítsák az üzeneteket. Ilyen SMTP-továbbítási szolgáltatás például, a teljesség igénye nélkül, az Exchange Online Protection és a SendGrid. Az SMTP-továbbítási szolgáltatások használata nincsen korlátozva az Azure-ban, függetlenül attól, hogy milyen előfizetése van. 

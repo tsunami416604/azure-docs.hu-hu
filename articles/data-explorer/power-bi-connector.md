@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 6147269ab38ac14c2a2ecadaac3448a491af7c20
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.date: 06/04/2019
+ms.openlocfilehash: 0bfacc968a04f8ef9e39a31cff5e81cf4e04c6fb
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399310"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494620"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Adatok megjelenítése a Power bi-hoz az Azure Data Explorer-összekötő használatával
 
@@ -38,13 +38,11 @@ Először csatlakozik az Azure Data Explorer súgófürtben, majd származó ada
 
     ![Adatok lekérése](media/power-bi-connector/get-data-more.png)
 
-1. Keresse meg *Azure adatkezelő*válassza **Azure Data Explorer (bétaverzió)** majd **Connect**.
+1. Keresse meg *Azure adatkezelő*válassza **Azure adatkezelő** majd **Connect**.
 
     ![Adatok keresése és lekérése](media/power-bi-connector/search-get-data.png)
 
-1. Az **Összekötő előnézete** képernyőn válassza a **Folytatás** lehetőséget.
-
-1. A következő képernyőn a következő információkat az űrlap kitöltésekor.
+1. Az a **Azure Data Explorer (Kusto)** lapon töltse ki az űrlapot a következő információkat.
 
     ![Fürt-, adatbázis- és táblázatbeállítások](media/power-bi-connector/cluster-database-table.png)
 

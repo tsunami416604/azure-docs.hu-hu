@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: eeb9f5fa91252bbc3c3038ab88bd2d7e802f263f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d8a8a2f005a92988158b3f9c36ce24936fb020b4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786396"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475630"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
@@ -126,7 +126,7 @@ AKS és Azure AD szolgáltatásnevek használata esetén vegye figyelembe a köv
 
 - A Kubernetes egyszerű szolgáltatása része a fürtkonfigurációnak. Azonban nem ajánlott az identitást használni a fürt üzembe helyezésére.
 - Alapértelmezés szerint egyszerű szolgáltatás hitelesítő adatai érvényesek az egy év. Is [frissítése vagy a szolgáltatásnév hitelesítő adatainak elforgatása] [ update-credentials] bármikor.
-- Minden egyszerű szolgáltatás társítva van egy Azure AD-alkalmazáshoz. A Kubernetes-fürt szolgáltatásneve társítható bármilyen érvényes Azure AD-alkalmazásnévhez (például: *https://www.contoso.org/example*). Az alkalmazás URL-címének nem szükséges valódi végpontnak lennie.
+- Minden egyszerű szolgáltatás társítva van egy Azure AD-alkalmazáshoz. A Kubernetes-fürt szolgáltatásneve társítható bármilyen érvényes Azure AD-alkalmazásnévhez (például: *https://www.contoso.org/example* ). Az alkalmazás URL-címének nem szükséges valódi végpontnak lennie.
 - Amikor megadja a szolgáltatásnév **Client ID-ját** (Ügyfél-azonosítóját), használja az `appId` értékét.
 - Az ügynök csomópont virtuális gépein a Kubernetes-fürt, az egyszerű szolgáltatás hitelesítő adatai a fájlban tárolt `/etc/kubernetes/azure.json`
 - Ha az [az aks create][az-aks-create] parancsot használja a szolgáltatásnév automatikus létrehozásához, a szolgáltatásnév hitelesítő adatai a `~/.azure/aksServicePrincipal.json` fájlba lesznek írva azon a gépen, amelyen a parancsot futtatta.
@@ -136,6 +136,24 @@ AKS és Azure AD szolgáltatásnevek használata esetén vegye figyelembe a köv
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
+
+## <a name="troubleshoot"></a>Hibaelhárítás
+
+Az egyszerű szolgáltatás hitelesítő adatai az AKS-fürt az Azure CLI által lettek gyorsítótárazva. Ha ezek a hitelesítő adatok lejártak, az AKS-fürt üzembe helyezése hibát tapasztal. A következő hibaüzenetet kapja, amikor fut [az aks létrehozása] [ az-aks-create] előfordulhat, hogy a gyorsítótárazott szolgáltatásnév hitelesítő adatainak hibás:
+
+```console
+Operation failed with status: 'Bad Request'.
+Details: The credentials in ServicePrincipalProfile were invalid. Please see https://aka.ms/aks-sp-help for more details.
+(Details: adal: Refresh request failed. Status Code = '401'.
+```
+
+Ellenőrizze a hitelesítőadat-fájlja a következő paranccsal kora:
+
+```console
+ls -la $HOME/.azure/aksServicePrincipal.json
+```
+
+A szolgáltatásnév hitelesítő adatainak alapértelmezett lejárati idejének egy év. Ha a *aksServicePrincipal.json* fájl régebbi, mint egy évig, törölje a fájlt, és próbálja meg újra telepíteni egy AKS-fürtöt.
 
 ## <a name="next-steps"></a>További lépések
 

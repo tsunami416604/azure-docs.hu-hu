@@ -2,20 +2,20 @@
 title: Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure Active Directory B2C |} A Microsoft Docs
 description: Ismerje meg, hogy az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure Active Directory B2C-t.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d86caf5e5c6df29e00f17462f6a06602ff1245d8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7a802354f20998c87ac8c2ef1f2c1dbdf47f6930
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688868"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66733650"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata az Azure Active Directory B2C egy egyéni házirend használatával konfigurálja
 
@@ -140,7 +140,7 @@ Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – els
     </TechnicalProfile>
     ```
 
-    Cserélje le a **DefaultValue** , **client_id** és **erőforrás_azonosítója** ProxyIdentityExperienceFramework alkalmazás, amelyet az alkalmazás azonosítójával a az előfeltételként szolgáló oktatóanyagot.
+    Cserélje le a **DefaultValue** , **client_id** ProxyIdentityExperienceFramework alkalmazás, amelyet az előfeltételnek számító oktatóanyagot az alkalmazás azonosítójával. Ezután cserélje le **DefaultValue** , **erőforrás_azonosítója** az előfeltételnek számító oktatóanyagot is létrehozott IdentityExperienceFramework alkalmazás az alkalmazás azonosítójával.  
 
 5. Adjon hozzá következő **ClaimsProvider** , a technikai profilok olyan elemet a **ClaimsProviders** elem:
 

@@ -7,27 +7,28 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9750aa924ba4b6e4e5f3a51e5b34531d3fab0a6e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9c8b8a6ad8a10a65a05b46bf433d00b4e3ecb402
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243299"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455632"
 ---
 # <a name="create-a-new-saas-offer"></a>Hozzon létre egy új SaaS-ajánlat
 
-Szoftver létrehozása, mint a szoftverszolgáltatások (SaaS) kínál első lépésként győződjön meg arról, amikor első [Partnerközpont-fiókkal létrehozása](./create-account.md) , és nyissa meg a [kereskedelmi Marketplace irányítópultjának](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), az a **kínál** lapja van kiválasztva. 
+Szoftver létrehozása, mint a szoftverszolgáltatások (SaaS) kínál első lépésként győződjön meg arról, amikor első [Partnerközpont-fiókkal létrehozása](./create-account.md) , és nyissa meg a [kereskedelmi Marketplace irányítópultjának](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), az a **áttekintése** lapja van kiválasztva.
 
-![A Partner Center kereskedelmi Marketplace irányítópultjának](./media/commercial-marketplace-offers.png)
+![A Partner Center kereskedelmi Marketplace irányítópultjának](./media/new-offer-overview.png)
 
 Válassza ki a + **hozzon létre egy új...** gombra, majd válassza a **szolgáltatott szoftver** menüpontot. 
 
 Ha más ajánlat típusok egyikét választja, átirányítjuk a korábbi [Cloud Partner Portalon](https://cloudpartner.azure.com/).  Csak SaaS-ajánlatok érhetők el a kereskedelmi Marketplace portálon, a Partner Center most. 
 
-![A Partner Center ajánlat időszak létrehozása](./media/new-offer.png)
+![A Partner Center ajánlat időszak létrehozása](./media/new-offer-click.png)
 
+A **új ajánlat** párbeszédpanel jelenik meg. 
 
-A **új ajánlat** párbeszédpanel jelenik meg. ![Új ajánlat párbeszédpanel](./media/new-offer-popup.png)
+![Új ajánlat párbeszédpanel](./media/new-offer-popup.png)
 
 
 ## <a name="offer-id-and-name"></a>Ajánlat azonosítója és neve

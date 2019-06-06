@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 52c79a0b883ff4c9ac77d7523764384b88c06a08
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: a561d29f462d44eb6bc440bb6110430cc5c51688
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389025"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735238"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linuxhoz készült Azure-soros konzolon
 
@@ -47,6 +47,7 @@ A soros konzol dokumentációja a Windows: [soros konzol a Windows](../windows/s
 
 - Linux-disztribúciók jellemző beállításait, lásd: [soros konzol Linux terjesztési rendelkezésre állási](#serial-console-linux-distribution-availability).
 
+- A virtuális gép vagy a virtuális gép méretezési készlet példány kell konfigurálni a soros kimeneti `ttys0`. Ez az alapértelmezett Azure-rendszerképek, de célszerű gondosan ellenőrizze ezt az egyéni lemezképek. Részletek [alább](#custom-linux-images).
 
 
 ## <a name="get-started-with-the-serial-console"></a>A soros konzol használatának első lépései
@@ -84,6 +85,9 @@ Soros konzol virtuálisgép-méretezési csoportokhoz tartozó példányonként 
 ## <a name="serial-console-linux-distribution-availability"></a>Soros konzol Linux terjesztési rendelkezésre állása
 A soros konzol megfelelő működéséhez konfigurálni kell a vendég operációs rendszer olvasása és írása az üzenetek konzol a soros port. A legtöbb [Azure által támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) a soros konzol alapértelmezés szerint konfigurálva van. Kiválasztásával **soros konzol** a a **támogatás + hibaelhárítás** az Azure Portalon szakasza nyújt a soros konzoljához való hozzáférés.
 
+> [!NOTE]
+> Ha semmit a soros konzol nem láthatóak, ügyeljen arra, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális Gépen. Szerezze meg a **Enter** fog gyakran problémák megoldása, semmi nem feltűnik-e a soros konzolon.
+
 Disztribúció      | Csatlakozás a soros konzolhoz
 :-----------|:---------------------
 Red Hat Enterprise Linux    | Soros hozzáférés alapértelmezés szerint engedélyezve van.
@@ -92,10 +96,13 @@ Ubuntu      | Soros hozzáférés alapértelmezés szerint engedélyezve van.
 CoreOS      | Soros hozzáférés alapértelmezés szerint engedélyezve van.
 SUSE        | Az Azure-ban elérhető újabb SLES lemezképek hozzáférése soros konzolon alapértelmezés szerint engedélyezve van. Ha régebbi verzióit (10 vagy korábbi) SLES használja az Azure-on, tekintse meg a [tudásbáziscikk](https://www.novell.com/support/kb/doc.php?id=3456486) soros konzol engedélyezéséhez.
 Oracle Linux        | Soros hozzáférés alapértelmezés szerint engedélyezve van.
-Egyéni Linux-rendszerképek     | A Linux rendszerű virtuális gép egyéni rendszerkép soros konzolon engedélyezéséhez a fájl hozzáféréséhez a konzolhoz */etc/inittab* , futtassa a parancsot egy terminálban `ttyS0`. Például: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Megfelelően az egyéni lemezképek létrehozásával kapcsolatos további információkért lásd: [létrehozása és feltöltése az Azure-ban Linux rendszerű virtuális merevlemez](https://aka.ms/createuploadvhd). Ha egy egyéni kernel fejleszt, érdemes megfontolni a kernel jelző: `CONFIG_SERIAL_8250=y` és `CONFIG_MAGIC_SYSRQ_SERIAL=y`. A konfigurációs fájl helye általában a */boot/* elérési útja.
 
-> [!NOTE]
-> Ha semmit a soros konzol nem láthatóak, ügyeljen arra, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális Gépen. Szerezze meg a **Enter** fog gyakran problémák megoldása, semmi nem feltűnik-e a soros konzolon.
+### <a name="custom-linux-images"></a>Egyéni Linux-rendszerképek
+A Linux rendszerű virtuális gép egyéni rendszerkép soros konzolon engedélyezéséhez a fájl hozzáféréséhez a konzolhoz */etc/inittab* , futtassa a parancsot egy terminálban `ttyS0`. Például: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`.
+
+Érdemes azt is, soros kimenetének célhelyeként ttys0 hozzáadása. Egyéni kép használata a soros konzol konfigurálásával kapcsolatos további információkért tekintse meg az általános rendszerkövetelményeket itt: [létrehozása és feltöltése az Azure-ban Linux rendszerű virtuális merevlemez](https://aka.ms/createuploadvhd#general-linux-system-requirements).
+
+Ha egy egyéni kernel fejleszt, érdemes megfontolni a kernel jelző: `CONFIG_SERIAL_8250=y` és `CONFIG_MAGIC_SYSRQ_SERIAL=y`. A konfigurációs fájl helye általában a */boot/* elérési útja. |
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>A soros konzol eléréséhez a gyakori forgatókönyvek
 
@@ -201,6 +208,7 @@ Soros konzol szöveg mindössze egy részét a képernyő méretétől (gyakran 
 Illessze be a hosszú karakterláncok nem működik. | A soros konzol illeszthetők be a terminál 2048 karakter hosszúságú lehet, megelőzve a soros port sávszélesség sztring hossza korlátozza.
 Soros konzol nem működik egy storage-fiók tűzfal. | Soros konzol szándékosan nem képes együttműködni az engedélyezve a rendszerindítás-diagnosztikai tárfiók a storage-fiók tűzfalak.
 Soros konzol nem működik a storage-fiók az Azure Data Lake Storage Gen2 a hierarchikus névterek. | Ez a hierarchikus névterek egy ismert hibája. Megoldásához, győződjön meg arról, hogy a virtuális gép rendszerindítási diagnosztika tárfiókja nem jön létre az Azure Data Lake Storage Gen2 használatával. Ez a beállítás csak akkor állítható tárfiók létrehozása után. Előfordulhat, hogy egy külön a rendszerindítási diagnosztika tárfiók létrehozása az Azure Data Lake Storage Gen2 engedélyezve van probléma megoldásához nélkül.
+A SLES saját lemezképek bemeneti egyenetlen billentyűzettel. Bevitelt a billentyűzetről csak ritkán ismerhető fel. | Ez a probléma a Plymouth csomagot. Plymouth nem kell futtatni az Azure-ban nem kell egy kezdőképernyőjén és Plymouth zavarja a soros konzol platform lehetővé teszi. Távolítsa el a Plymouth `sudo zypper remove plymouth` majd indítsa újra a rendszert. Azt is megteheti, módosítsa a GRUB-config kernel üzletági hozzáfűzésével `plymouth.enable=0` a sor végére. Ezt megteheti is [indításakor a rendszerindítási bejegyzés szerkesztése](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles), vagy az GRUB_CMDLINE_LINUX sor szerkesztésével `/etc/default/grub`, újraépítési a LÁRVAJÁRAT `grub2-mkconfig -o /boot/grub2/grub.cfg`, majd újraindítja a rendszert.
 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések

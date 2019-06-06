@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: e038c500d93e4d631c585eed743a373b5e6cec85
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 6b3cef32cf79c2448d2e254e27c332e01ea83c62
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968342"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428363"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Az Azure Security Center hálózati erőforrások védelme
 Az Azure Security Center folyamatosan elemzi a hálózati biztonsági eljárások az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a erősíti, és az erőforrások védelme a szükséges vezérlők konfigurálásának folyamatán hoz létre.
@@ -33,13 +33,13 @@ Ez a cikk foglalkozik, javaslatok, amelyek a alkalmazni a hálózati biztonsági
 A **hálózatkezelés** lap a szakaszok is részletes áttekintést nyújt a hálózati erőforrások állapotával kapcsolatos további információért mélyedjen:
 
 - Hálózati térkép létrehozásához (csak az Azure Security Center Standard csomagja esetén)
-- Hálózatok adaptív megerősítése
+- Adaptív hálózat-megerősítés
 - Hálózati biztonsági javaslatokat.
 - Örökölt **hálózatkezelés** panelen (a korábbi hálózati panel) 
  
 ![Hálózat panel](./media/security-center-network-recommendations/networking-pane.png)
 
-## <a name="network-map"></a>Hálózati térkép
+## <a name="network-map"></a>Hálózati térkép létrehozásához
 A hálózati interaktív térkép segítségével grafikus leképezést kaphat a biztonsági lefedi a javaslatok és elemzések az biztosít a hálózati erőforrások korlátozására. A térkép segítségével megtekintheti a hálózati topológia az Azure számítási feladatok, a virtuális gépek és alhálózatok és a funkció részletesen elemezheti a térképen az adott erőforrásokat, és ezeket az erőforrásokat a javaslatok között kapcsolatok.
 
 A hálózati térkép megnyitásához:
@@ -131,16 +131,14 @@ A harmadik szinten megjeleníti a virtuális gépek, a korábban leírtakhoz has
 
 |Erőforrás típusa|Biztonsági pontszám|Ajánlás|Leírás|
 |----|----|----|----|
-|Machine|40|Hálózati biztonsági csoportok engedélyezése a virtuális gépeken|Hálózati biztonsági csoportok a a virtuális gépek hálózati hozzáférésének engedélyezése.|
-|Alhálózat|35|A hálózati biztonsági csoportok alhálózatokhoz engedélyezése |Hálózati biztonsági csoportok a az alhálózatokra üzembe helyezett erőforrások hálózati hozzáférésének engedélyezése.|
-|Machine|30|Igény szerinti hálózati hozzáférés-vezérlés alkalmazása|Csak idő VM hozzáférés-vezérlés véglegesen zárolni a kiválasztott portot a hozzáférést a alkalmazni, és engedélyezze a jogosult felhasználók számára, hogy ugyanazt a mechanizmust keresztül és a egy korlátozott ideig a megnyitásukhoz.|
+|Machine|40|Engedélyezni kell a hálózati biztonsági csoportok a virtuális gépek|Hálózati biztonsági csoportok a a virtuális gépek hálózati hozzáférésének engedélyezése.|
+|Alhálózat|35|Engedélyezni kell a hálózati biztonsági csoportok az alhálózatok|Hálózati biztonsági csoportok a az alhálózatokra üzembe helyezett erőforrások hálózati hozzáférésének engedélyezése.|
+|Machine|30|Just-In-Time-hálózati hozzáférés-vezérlést alkalmazni kell a virtuális gépek|Csak idő VM hozzáférés-vezérlés véglegesen zárolni a kiválasztott portot a hozzáférést a alkalmazni, és engedélyezze a jogosult felhasználók számára, hogy ugyanazt a mechanizmust keresztül és a egy korlátozott ideig a megnyitásukhoz.|
 |Machine|20|Internetről elérhető végponton keresztüli hozzáférés korlátozása|Az internetkapcsolattal rendelkező virtuális gépek a meglévő hozzáférés korlátozásával, a hálózati biztonsági csoportok engedélyezése Felvértezni szabályok.|
 |Machine|10|Új generációs tűzfal hozzáadása|Next Generation Firewall (NGFW) megoldás, amelyekkel jobban megvédheti az internetkapcsolattal rendelkező virtuális gépek hozzáadásához.|
 |Machine|5|Hálózati átjáró csak tűzfalon keresztül haladjon a forgalom|A következő generációs tűzfal megoldás a telepítés befejezéséhez a védett internetkapcsolattal rendelkező virtuális gépek forgalmat kell átirányítani csak a következő generációs tűzfal megoldás használatával.|
-|Virtuális hálózat|5|DDoS protection-szabvány engedélyezése|Ezeket a virtuális hálózatokat a nyilvános IP-címek az alkalmazások nem védi a standard szintű DDOS protection szolgáltatás. Lehetővé teszi, hogy csökkenti a hálózat-es és a protokoll támadások engedélyezése javasolt.|
-|Machine|10|Új generációs tűzfal hozzáadása|egy Next Generation Firewall (NGFW) megoldás, amelyekkel jobban megvédheti az internetkapcsolattal rendelkező virtuális gépek nn.|
-|Machine|5|Hálózati átjáró csak tűzfalon keresztül haladjon a forgalom|A következő generációs tűzfal megoldás a telepítés befejezéséhez a védett internetkapcsolattal rendelkező virtuális gépek forgalmat kell átirányítani csak a következő generációs tűzfal megoldás használatával.|
-Virtuális hálózat|5|DDoS protection-szabvány engedélyezése|Ezeket a virtuális hálózatokat a nyilvános IP-címekkel rendelkező alkalmazások nem védi a standard szintű DDOS protection szolgáltatás. Lehetővé teszi, hogy csökkenti a hálózat-es és a protokoll támadások engedélyezése javasolt.|
+|VNet|5|DDoS protection-szabvány engedélyezése|Ezeket a virtuális hálózatokat a nyilvános IP-címek az alkalmazások nem védi a standard szintű DDOS protection szolgáltatás. Lehetővé teszi, hogy csökkenti a hálózat-es és a protokoll támadások engedélyezése javasolt.|
+
 ## <a name="see-also"></a>Lásd még
 Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
 

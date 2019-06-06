@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6140a8aea3fe0fe0a8f1c01cd1c97404c41f7a69
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5248b9546ffe931b72123778d0d23574e5238405
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65805981"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742411"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>Egyéni szabályok, amelyek értesítéseket küldenek az Azure IoT Central kiterjesztése
 
@@ -38,13 +38,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Hozzon létre egy IoT-központ alkalmazás az [Azure IoT Central - alkalmazásaimat](https://aka.ms/iotcentral) lap a következő beállításokkal:
 
-| Beállítás | Value |
+| Beállítás | Érték |
 | ------- | ----- |
-| Fizetési lehetőség | Használatalapú fizetés |
-| Alkalmazássablon | Contoso-példa |
-| Alkalmazás neve | Fogadja el az alapértelmezett, vagy válassza ki a saját nevét |
-| URL | Fogadja el az alapértelmezett, vagy válassza ki a saját egyedi URL-előtag |
-| Könyvtár | Az Azure Active Directory-bérlő |
+| Fizetési lehetőség | Utólagos, használatalapú fizetés |
+| Alkalmazássablon | Minta: Contoso |
+| Alkalmazásnév | Fogadja el az alapértelmezett, vagy válassza ki a saját nevét |
+| URL-cím | Fogadja el az alapértelmezett, vagy válassza ki a saját egyedi URL-előtag |
+| Címtár | Az Azure Active Directory-bérlő |
 | Azure-előfizetés | Az Azure-előfizetése |
 | Régió | USA keleti régiója |
 
@@ -65,7 +65,7 @@ Használja a [Event Hubs-névtér létrehozása az Azure portal](https://portal.
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
 | Location egység | USA keleti régiója |
-| Átviteli egységek | 1. |
+| Átviteli egységek | 1 |
 
 ### <a name="stream-analytics-job"></a>Stream Analytics-feladat
 
@@ -84,16 +84,16 @@ Használja a [a Stream Analytics-feladat létrehozása az Azure portal](https://
 
 Használja a [egy függvényalkalmazás létrehozásához az Azure portal](https://portal.azure.com/#create/Microsoft.FunctionApp) a következő beállításokkal:
 
-| Beállítás | Value |
+| Beállítás | Érték |
 | ------- | ----- |
-| Alkalmazásnév    | Válassza ki a függvényalkalmazás neve |
+| App neve    | Válassza ki a függvényalkalmazás neve |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
 | Operációs rendszer | Windows |
 | Szolgáltatási csomag | Használatalapú csomag |
 | Location egység | USA keleti régiója |
-| Futtatókörnyezet verme | .NET |
-| Storage | Új |
+| Futtatókörnyezeti verem | .NET |
+| Storage | Új létrehozása |
 
 ### <a name="sendgrid-account"></a>SendGrid-fiók
 
@@ -152,7 +152,7 @@ A portál létrehoz egy alapértelmezett függvény nevű **HttpTrigger1**:
 
 A sendgrid használatával e-mailek küldése, kell tennie a kötéseket a függvény a következőképpen konfigurálja:
 
-1. Válassza ki **integráció**, válassza ki a kimeneti **HTTP ($return)**, majd válassza ki **törlése**.
+1. Válassza ki **integráció**, válassza ki a kimeneti **HTTP ($return)** , majd válassza ki **törlése**.
 1. Válassza a **+ új kimenet**, majd válassza ki **SendGrid**, és válassza a **kiválasztása**. Válasszon **telepítése** a SendGrid-bővítmény telepítéséhez.
 1. Amikor a telepítés befejeződött, válassza ki a **függvény visszaadott értékének használata**. Adjon hozzá egy érvényes **címre** e-mail értesítések fogadásához.  Adjon hozzá egy érvényes **címről** használata az e-mailek feladójaként.
 1. Válassza ki **új** melletti **SendGrid API-kulcs Alkalmazásbeállítása**. Adja meg **SendGridAPIKey** a kulcsot, valamint a korábban feljegyzett értéket a SendGrid API-kulcsot. Ezután kattintson a **Létrehozás** elemre.
@@ -240,9 +240,9 @@ Ez a megoldás egy Stream Analytics-lekérdezés használatával észleli, ha eg
 1. Az Azure Portalon keresse meg a Stream analytics-feladatot, a **feladatok topológia** válassza **bemenetek**, válassza a **+ streambemenet hozzáadása**, és válassza a **esemény Hub**.
 1. Az alábbi táblázat az információk segítségével konfigurálhatja a bemenetet a korábban létrehozott event hubs használatával, majd kattintson a **mentése**:
 
-    | Beállítás | Value |
+    | Beállítás | Érték |
     | ------- | ----- |
-    | Bemeneti áljel | centraltelemetry |
+    | Bemeneti alias | centraltelemetry |
     | Előfizetés | Az Ön előfizetése |
     | Event Hubs-névtér | Az Event Hubs-névtér |
     | Eseményközpont neve | Meglévő - **centralexport** |
@@ -250,7 +250,7 @@ Ez a megoldás egy Stream Analytics-lekérdezés használatával észleli, ha eg
 1. Alatt **feladatok topológia**válassza **kimenetek**, válassza a **+ Hozzáadás**, és válassza a **Azure-függvény**.
 1. Az alábbi táblázatban az információk segítségével konfigurálhatja a kimenetet, majd kattintson a **mentése**:
 
-    | Beállítás | Value |
+    | Beállítás | Érték |
     | ------- | ----- |
     | Kimeneti alias | EmailNotification |
     | Előfizetés | Az Ön előfizetése |
@@ -310,15 +310,15 @@ Keresse meg a [IoT Central alkalmazásnak](https://aka.ms/iotcentral) a Contoso-
 1. Keresse meg a **folyamatos adatexportálás** lapon jelölje be **+ új**, majd **Azure Event Hubs**.
 1. Az Exportálás konfigurálja, majd válassza ki a következő beállítások használatával **mentése**:
 
-    | Beállítás | Value |
+    | Beállítás | Érték |
     | ------- | ----- |
-    | Megjelenített név | Exportálás az Event Hubs szolgáltatásba |
-    | Enabled | Be |
+    | Megjelenített név | Exportálás az Event hubs szolgáltatásba |
+    | Enabled | Bekapcsolva |
     | Event Hubs-névtér | Az Event Hubs-névtér neve |
-    | Event Hubs | centralexport |
-    | Mérések | Be |
+    | Eseményközpont | centralexport |
+    | Mérések | Bekapcsolva |
     | Eszközök | Ki |
-    | Eszközsablonok | Ki |
+    | Eszköz-sablonok | Ki |
 
 ![Folyamatos exportálási konfiguráció](media/howto-create-custom-rules/cde-configuration.png)
 
@@ -353,4 +353,4 @@ Ez az útmutató, megtanulta, hogyan lehet:
 * Hozzon létre egy Stream Analytics-lekérdezés, amely észleli, ha egy eszköz már le van állítva az adatok küldésének.
 * Az Azure Functions és a SendGrid szolgáltatások használatával e-mail értesítés küldése.
 
-Most, hogy tudja, hogyan hozhat létre egyéni szabályok és értesítések, a javasolt következő lépésre megtudhatja, hogyan [Visualize és az Azure IoT Central adatelemzés a Power BI-irányítópulton](howto-connect-powerbi.md).
+Most, hogy tudja, hogyan hozhat létre egyéni szabályok és értesítések, a javasolt következő lépésre megtudhatja, hogyan [kiterjesztése az Azure IoT Central egyéni Analytics](howto-create-custom-analytics.md).

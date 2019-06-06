@@ -1,34 +1,34 @@
 ---
-title: Azure Data Box kezelése az Azure Portalon |} A Microsoft Docs
-description: A cikk az Azure Data Box az Azure Portalon keresztüli kezelését ismerteti.
+title: Kezelheti az Azure Data Box, az Azure Data Box (nagy erőforrásigényű) Azure-portálon |} A Microsoft Docs
+description: Ismerteti, hogyan felügyelheti az Azure Data Box- és az Azure Data Box (nagy erőforrásigényű) az Azure portal használatával.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 05/30/2019
 ms.author: alkohli
-ms.openlocfilehash: 31909e1f13d211aa87f13547218a6967d8e195ac
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5ece12e117db7b334bce8edfd49a5a622e46e13c
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950607"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427719"
 ---
-# <a name="use-the-azure-portal-to-administer-your-azure-data-box"></a>Az Azure portal használata az Azure Data Box felügyeletéhez
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Az Azure portal segítségével felügyelheti az Azure Data Box- és az Azure Data Box (nagy erőforrásigényű)
 
-Ez a cikk ismerteti az egyes bonyolult munkafolyamatok és felügyeleti feladatokat, amelyek az Azure Data Box hajtható végre. A Data Box az Azure Portal használatával vagy a helyi webes felhasználói felületről felügyelhető.
+Ez a cikk az Azure Data Box és az Azure Data Box nehéz vonatkozik. Ez a cikk ismerteti a bonyolult munkafolyamatok és az Azure Data Box-eszköz végrehajtható felügyeleti feladatok némelyikét. A Data Box-eszköz az Azure Portalon kezelheti, vagy keresztül a helyi webes felhasználói Felületét.
 
-A cikk az Azure Portalon végrehajtható feladatokra összpontosít. Az Azure Portalon kezelheti a megrendeléseket, felügyelheti a Data Boxot, és nyomon követheti a befejezéshez közeledő rendelések állapotát.
+A cikk az Azure Portalon végrehajtható feladatokra összpontosít. Az Azure portal használata rendelések kezeléséhez, illetve kezelheti a Data Box-eszközre, és befejezési tartományain a rendelés állapotának nyomon követése.
 
 
 ## <a name="cancel-an-order"></a>Rendelés visszavonása
 
-A rendelések azok feladása utáni visszavonása mellett számos különféle okból döntet. A rendelést csak annak feldolgozását megelőzően vonhatja vissza. A rendelés feldolgozását és a Data Box előkészítését követően már nincs lehetőség a visszavonására. 
+A rendelések azok feladása utáni visszavonása mellett számos különféle okból döntet. A rendelést csak annak feldolgozását megelőzően vonhatja vissza. A rendelés feldolgozása, és a Data Box-eszköze készen áll, nincs lehetőség a megrendelés törlése.
 
 A rendelés visszavonásához kövesse az alábbi lépéseket.
 
-1.  Lépjen az **Áttekintés > Megszakítás** menüpontra. 
+1.  Lépjen az **Áttekintés > Megszakítás** menüpontra.
 
     ![Rendelés visszavonása 1](media/data-box-portal-admin/cancel-order1.png)
 
@@ -36,11 +36,11 @@ A rendelés visszavonásához kövesse az alábbi lépéseket.
 
     ![Rendelés visszavonása 2](media/data-box-portal-admin/cancel-order2.png)
 
-3.  Miután visszavonta a rendelést, a portálon a rendelés állapota frissül a **Megszakítva** állapotra. 
+3.  Miután visszavonta a rendelést, a portálon a rendelés állapota frissül a **Megszakítva** állapotra.
 
 ## <a name="clone-an-order"></a>Rendelés klónozása
 
-A klónozás bizonyos helyzetekben hasznosnak bizonyulhat. Például a felhasználó egyes adatokat már átvitt a Data Box használatával. Ahogy egyre újabb adatok keletkeznek, újabb Data Boxra van szükség ezek az Azure-ba való átviteléhez. Ebben az esetben egyszerűen klónozhatja az előző rendelést.
+A klónozás bizonyos helyzetekben hasznosnak bizonyulhat. Például a felhasználó egyes adatokat már átvitt a Data Box használatával. Több adat jön létre, mert szükség van egy másik Data Box-eszköz átviszi ezeket az adatokat az Azure-bA. Ebben az esetben egyszerűen klónozhatja az előző rendelést.
 
 A rendelések klónozásához kövesse az alábbi lépéseket.
 
@@ -67,15 +67,15 @@ Csak a teljesített vagy visszavont rendeléseket törölheti. A rendelések tö
 
 3. Ha a rendszer kéri, írja be a rendelés nevét a rendelés törlésének megerősítéséhez. Kattintson a **Törlés** gombra.
 
-## <a name="download-shipping-label"></a>Levélcímke letöltése
+## <a name="download-shipping-label"></a>Fuvarlevélcímke letöltése
 
-Ha a Data Box E-ink kijelzője nem működik és nem jeleníti meg a visszaküldési fuvarlevélcímkét, akkor azt le kell töltenie a portálról. 
+Ha a Data Box E-ink kijelzője nem működik és nem jeleníti meg a visszaküldési fuvarlevélcímkét, akkor azt le kell töltenie a portálról. A Data Box nehéz a nem E-ink megjelenített van, és ezért ez a munkafolyamat nem vonatkozik a Data Box nehéz.
 
 A fuvarlevélcímkék letöltéséhez kövesse az alábbi lépéseket.
 
 1.  Lépjen az **Áttekintés > Levélcímke letöltése** menüpontra. Ez a lehetőség csak az eszköz kézbesítését követően érhető el. 
 
-    ![Levélcímke letöltése](media/data-box-portal-admin/download-shipping-label.png)
+    ![Fuvarlevélcímke letöltése](media/data-box-portal-admin/download-shipping-label.png)
 
 2.  Ezzel letölti a következő fuvarlevélcímkét a visszaküldéshez. Mentse a címkét, majd nyomtassa ki. Hajtsa össze, majd helyezze a címkét az eszközön található átlátszó zsebbe. Győződjön meg arról, hogy a címke jól látható. Távolítsa el a matricákat, amelyek az előző szállítás során kerültek az eszközre.
 
@@ -95,7 +95,7 @@ A rendelés szerkesztéséhez kövesse az alábbi lépéseket.
 
     ![Szállítási cím szerkesztése 2](media/data-box-portal-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Értesítés adatainak szerkesztése
+## <a name="edit-notification-details"></a>Értesítési adatok szerkesztése
 
 Lehet, hogy módosítani szeretné, hogy mely felhasználók kapjanak értesítő e-maileket a rendelés állapotáról. Például előfordulhat, hogy valamelyik felhasználót értesíteni kell, ha az eszközt kiszállítják vagy már átvették. Egy másik felhasználó szükség lehet az adatok másolása befejeződött, így azok ellenőrizheti a forrás törlése előtt az Azure storage-fiókban van az adatok tájékoztatni kell. Ilyen esetekben szerkesztheti az értesítési adatokat.
 
@@ -120,7 +120,7 @@ A rendelési előzmények letöltéséhez kövesse az alábbi lépéseket.
 
     ![Rendelés előzményeinek letöltése](media/data-box-portal-admin/download-order-history-1.png)
 
-2. Kattintson a **Rendelés előzményeinek letöltése** elemre. A letöltött előzmények között a futárcégek nyomkövetési naplóinak rekordjai találhatóak. A napló aljára görgetve a következő hivatkozásokat láthatja:
+2. Kattintson a **Rendelés előzményeinek letöltése** elemre. A letöltött előzmények között a futárcégek nyomkövetési naplóinak rekordjai találhatóak. A Data Box nehéz a két csomópont megfelelő napló két készletnyi lesz. A napló aljára görgetve a következő hivatkozásokat láthatja:
     
    - A **másolási naplók** a Data Boxból az Azure-tárfiókba történő adatmásolás során hibásként jelzett fájlok listáját tartalmazzák.
    - Az **auditnaplók** a Data Box az Azure-adatközponton kívüli bekapcsolásainak és hozzáférés-megosztásainak listáját tartalmazzák.
@@ -204,7 +204,7 @@ Az eszköz állapotának a portálon való változásáról a rendszer értesít
 |Feladva     | A rendelés fel lett adva. A portálon a rendelésnél feltüntetett követési azonosítóval követheti nyomon a szállítást.        |
 |Kézbesítve     | A rendelés ki lett kézbesítve a rendelésben megadott címre.        |
 |Szállítás alatt     |A visszaküldött csomagot a szállítmányozó átvette és ellenőrizte.         |
-|Érkezett     | Az eszközt átvették és ellenőrizték az Azure-adatközpontban. <br> Miután a szállítmányt megvizsgálták, elkezdődik az eszköz feltöltése.      |
+|Megérkezett     | Az eszközt átvették és ellenőrizték az Azure-adatközpontban. <br> Miután a szállítmányt megvizsgálták, elkezdődik az eszköz feltöltése.      |
 |Adatok másolása     | Az adatok másolása folyamatban van. Kövesse nyomon a rendelés másolásának folyamatát az Azure Portalon. <br> Várjon, amíg az adatok másolása befejeződik. |
 |Befejezve       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
 |Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek a másolás során. <br> Tekintse át a másolási naplókat az Azure Portalon megadott útvonalon.   |
@@ -215,4 +215,4 @@ Az eszköz állapotának a portálon való változásáról a rendszer értesít
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg [a Data Box-hibák elhárításának](data-box-faq.md) módját.
+- Ismerje meg, hogyan [Data Box – hibaelhárítás és a Data Box nehéz problémák](data-box-troubleshoot.md).

@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 635e72a8e8a70b8885afea282511fbfaf24d2f94
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a021ed2be3a94add7500a98d71a962bb580078e9
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957336"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729466"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -110,7 +110,7 @@ A JavaScript [kötések](functions-triggers-bindings.md) konfigurált, és a egy
 
 ### <a name="inputs"></a>Bemenetek
 Bemeneti az Azure Functions két kategóriába oszthatók: egy a trigger bemenete a másik pedig a további adatokat. Az eseményindító és más bemeneti kötések (vazby prvku `direction === "in"`) háromféleképpen függvény által olvasható:
- - **_[Ajánlott]_  a függvénynek átadott paraméterek.** A függvény ugyanabban a sorrendben vannak meghatározva, a rendszer átad *function.json*. A `name` meghatározott tulajdonság *function.json* nem kell egyeznie a paraméter nevével, bár azt kell.
+ - ** _[Ajánlott]_  a függvénynek átadott paraméterek.** A függvény ugyanabban a sorrendben vannak meghatározva, a rendszer átad *function.json*. A `name` meghatározott tulajdonság *function.json* nem kell egyeznie a paraméter nevével, bár azt kell.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -141,7 +141,7 @@ Kimenetek (vazby prvku `direction === "out"`) számos módon a függvény által
 
 Kimeneti kötések adatok rendelhet a (nem a két módszer együttesen) a következő módszerek valamelyikével:
 
-- **_[Több kimenetek ajánlott]_  Objektum visszaadása.** Egy aszinkron/Promise visszaadó függvény használatakor visszatérhessen hozzárendelt kimeneti adatokat tartalmazó objektumot. Az alábbi példában a kimeneti kötések neve "httpResponse" és "queueOutput" a *function.json*.
+- ** _[Több kimenetek ajánlott]_  Objektum visszaadása.** Egy aszinkron/Promise visszaadó függvény használatakor visszatérhessen hozzárendelt kimeneti adatokat tartalmazó objektumot. Az alábbi példában a kimeneti kötések neve "httpResponse" és "queueOutput" a *function.json*.
 
   ```javascript
   module.exports = async function(context) {
@@ -156,7 +156,7 @@ Kimeneti kötések adatok rendelhet a (nem a két módszer együttesen) a követ
   ```
 
   Egy szinkron függvényt használja, ha az objektum segítségével visszatérhet [ `context.done` ](#contextdone-method) (lásd a példát).
-- **_[Ajánlott egyetlen kimeneti]_  Közvetlenül érték visszaadása, és az $return kötés használatával.** Ez csak az aszinkron/Promise visszatérő függvények esetében működik. A példa [exportálása egy aszinkron függvény](#exporting-an-async-function). 
+- ** _[Ajánlott egyetlen kimeneti]_  Közvetlenül érték visszaadása, és az $return kötés használatával.** Ez csak az aszinkron/Promise visszatérő függvények esetében működik. A példa [exportálása egy aszinkron függvény](#exporting-an-async-function). 
 - **Az értékeket rendel `context.bindings`**  közvetlenül a context.bindings rendelhet értéket.
 
   ```javascript
@@ -397,9 +397,9 @@ Ha HTTP-eseményindítók használata során a HTTP kérés- és objektumokat sz
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Csak válasz]_  Meghívásával `context.res.send(body?: any)`.** HTTP-választ jön létre a bemeneti `body` , a válasz törzse. `context.done()` implicit módon nevezzük.
++ ** _[Csak válasz]_  Meghívásával `context.res.send(body?: any)`.** HTTP-választ jön létre a bemeneti `body` , a válasz törzse. `context.done()` implicit módon nevezzük.
 
-+ **_[Csak válasz]_  Meghívásával `context.done()`.** HTTP-kötést egy különleges visszaadja a választ, az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
++ ** _[Csak válasz]_  Meghívásával `context.done()`.** HTTP-kötést egy különleges visszaadja a választ, az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
 
     ```json
     {
@@ -418,7 +418,7 @@ Ha HTTP-eseményindítók használata során a HTTP kérés- és objektumokat sz
 
 Az alábbi táblázat az egyes főverziója a Functions futtatókörnyezete által használt Node.js-verzió:
 
-| Functions-verzió | Node.js verziója | 
+| Functions-verzió | NODE.js-verzió | 
 |---|---|
 | 1.x | 6.11.2 (futásidejű zárolta) |
 | 2.x  | _Aktív LTS_ és páros számú _aktuális_ Node.js-verzió (8.11.1 és ajánlott 10.14.1). A verzió-beállításokat a WEBSITE_NODE_DEFAULT_VERSION [Alkalmazásbeállítás](functions-how-to-use-azure-function-app-settings.md#settings).|
@@ -465,23 +465,16 @@ A Függvényalkalmazás-csomagok telepítése a két módja van:
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-A függvények [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatás kapcsolati karakterláncok, ki vannak téve környezeti változókként végrehajtása során. Ezek a beállítások használatával is elérheti `process.env`, amint az itt látható a `GetEnvironmentVariable` függvény:
+A függvények [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatás kapcsolati karakterláncok, ki vannak téve környezeti változókként végrehajtása során. Ezek a beállítások használatával is elérheti `process.env`, a második és harmadik hívásokat az itt látható módon `context.log()` , hogy jelentkezzen a `AzureWebJobsStorage` és `WEBSITE_SITE_NAME` környezeti változókat:
 
 ```javascript
-module.exports = function (context, myTimer) {
+module.exports = async function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
     context.log('Node.js timer trigger function ran!', timeStamp);
-    context.log(GetEnvironmentVariable("AzureWebJobsStorage"));
-    context.log(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
-
-    context.done();
+    context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
+    context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
 };
-
-function GetEnvironmentVariable(name)
-{
-    return name + ": " + process.env[name];
-}
 ```
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]

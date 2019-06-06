@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: cc65d6d3f7e7dcc08ea29ecc8a299b556563135b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bfa3e5a943ee59b1ed335f45e113a60f62572675
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236314"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735031"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AZCopy használatába
 
@@ -28,7 +28,7 @@ Az AzCopy parancssori segédprogram, amely a blobok és a fájlok másolása, il
 
 ## <a name="download-azcopy"></a>Töltse le az AzCopy
 
-Először töltse le az AzCopy V10 végrehajtható fájlt a számítógép bármely mappája. Az egyszerűség kedvéért mennyiségnél az AzCopy mappa helyét a rendszer elérési útjához, a használat megkönnyítése érdekében.
+Először töltse le az AzCopy V10 végrehajtható fájl bármilyen könyvtárat a számítógépen. 
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
@@ -39,13 +39,15 @@ Először töltse le az AzCopy V10 végrehajtható fájlt a számítógép bárm
 
 ## <a name="run-azcopy"></a>Az AzCopy futtatása
 
-A parancssort keresse meg a könyvtárat, amelybe letöltötte a fájlt.
+Kényelmi célokat szolgál fontolja meg a könyvtár helyét a AzCopy végrehajtható fájl hozzáadása a használat megkönnyítése érdekében a rendszer elérési útjához. Ezzel a módszerrel írhatja `azcopy` bármelyik könyvtárból a rendszeren.
 
-Az AzCopy-parancsok listájának megtekintéséhez írja be a `azCopy`, és nyomja le az ENTER billentyűt.
+Ha nem kíván az AzCopy könyvtár hozzáadása az elérési úthoz, kell módosítsa a könyvtárakat az AzCopy végrehajtható fájlt, és írja be a helyére `azcopy` vagy `.\azcopy` Windows PowerShell-parancs felszólítja a.
 
-Egy bizonyos paranccsal kapcsolatos további tudnivalókért írja be a következőt `azCopy` a parancs neve követ.
+Parancsok listájának megtekintéséhez írja be a `azcopy -h` és nyomja le az ENTER billentyűt.
 
-További információ a példában a `copy` parancshoz, írja be a `azcopy copy`, és nyomja le az ENTER billentyűt.
+Egy bizonyos paranccsal kapcsolatos további információkért csak a parancs neve is (például: `azcopy list -h`).
+
+![Beágyazott Súgó](media/storage-use-azcopy-v10/azcopy-inline-help.png)
 
 Akkor is végrehajthat az Azcopyval jelentéssel bíró, mielőtt szüksége annak eldöntése, hogyan ehhez meg kell adnia engedélyezési hitelesítő adatok a storage szolgáltatásra.
 
@@ -81,7 +83,7 @@ Ezek a szerepkörök rendelhetők az identitás, ezek a hatókörök egyikében:
 
 Győződjön meg arról, és szerepkörök hozzárendelése kapcsolatban lásd: [hozzáférést biztosít az Azure blob és üzenetsor az adatokat az RBAC az Azure Portalon](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Nem kell egy ilyen szerepkörbe, rendelt személyazonosságát, ha az identitás bekerül a céltároló vagy mappa hozzáférés-vezérlési lista (ACL) rendelkezik. A hozzáférés-vezérlési listában az identitás írási engedélye a célmappában, és végrehajtási engedéllyel a tárolót és minden mappa van szüksége.
+Nem kell egy ilyen szerepkörbe, rendelt személyazonosságát, ha az identitás bekerül a céltároló vagy könyvtár hozzáférés-vezérlési lista (ACL) rendelkezik. A hozzáférés-vezérlési listában az identitás írási engedélye a célként megadott könyvtárban, és végrehajtási engedéllyel a tárolót és minden egyes szülőkönyvtárhoz van szüksége.
 
 További tudnivalókért lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
@@ -102,7 +104,7 @@ Ezek a szerepkörök rendelhetők az identitás, ezek a hatókörök egyikében:
 
 Győződjön meg arról, és szerepkörök hozzárendelése kapcsolatban lásd: [hozzáférést biztosít az Azure blob és üzenetsor az adatokat az RBAC az Azure Portalon](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Nem kell egy ilyen szerepkörbe, rendelt személyazonosságát, ha az identitás bekerül a céltároló vagy mappa hozzáférés-vezérlési lista (ACL) rendelkezik. A hozzáférés-vezérlési listában az identitás olvasási engedéllyel a célmappában, és végrehajtási engedéllyel a tárolót és minden mappa van szüksége.
+Nem kell egy ilyen szerepkörbe, rendelt személyazonosságát, ha az identitás bekerül a céltároló vagy könyvtár hozzáférés-vezérlési lista (ACL) rendelkezik. Az ACL-t az identitás kell olvasási engedéllyel a célkönyvtárat és engedély végrehajtani a tároló és az egyes szülőkönyvtárat.
 
 További tudnivalókért lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 

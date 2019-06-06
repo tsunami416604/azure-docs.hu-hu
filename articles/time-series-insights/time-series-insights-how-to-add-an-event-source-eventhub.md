@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8040368f4cbd6d264070aa3db0a8e6b07a866480
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8b39001481764eb955ab4535e8c6ea1752e0c012
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239022"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475730"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Event hub-eseményforrás hozzáadása a Time Series Insights-környezethez
 
@@ -34,7 +34,7 @@ Ez a cikk ismerteti, amely beolvassa az adatokat az Azure Event Hubsból az Azur
 
 ### <a name="add-a-consumer-group-to-your-event-hub"></a>Az eseményközpont fogyasztói csoport hozzáadása
 
-Alkalmazások fogyasztói csoportok segítségével az Azure Event Hubsból a lekéréses az adatokat. Adjon meg egy dedikált fogyasztói csoportot csak a Time Series Insights-környezet, megbízhatóan adatokat olvasni az event hub általi használatra.
+Alkalmazások fogyasztói csoportok segítségével az Azure Event Hubsból a lekéréses az adatokat. Adatok beolvasása az event hub megbízhatóan, adja meg a csak a Time Series Insights-környezet által használt dedikált fogyasztói csoportot.
 
 Az event hubs egy új felhasználói csoport hozzáadása:
 
@@ -64,38 +64,40 @@ Az event hubs egy új felhasználói csoport hozzáadása:
 
 1. Válassza ki a megfelelő értékeket a **importálási beállítás**:
    - Ha rendelkezik egy meglévő eseményközpontban az előfizetések, válassza ki a **Eseményközpontot használja a rendelkezésre álló előfizetések**. Ez a lehetőség akkor a legegyszerűbb megközelítés.
-   - Ha az event hubs külső az előfizetésekhez, vagy ha azt szeretné, válassza ki a speciális beállításokat, jelölje be **adja meg az Eseményközpont-beállítások manuális**.
 
-   [![Az új esemény forrás panelen adja meg az értékeket az első három paraméterek](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
+       [![Az új esemény forrás panelen adja meg az értékeket az első három paraméterek](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
 
-1. A következő táblázat ismerteti a szükséges tulajdonságokat a **Eseményközpontot használja a rendelkezésre álló előfizetések** lehetőséget:
 
-   [![Előfizetés és az event hub-adatok](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
+       [![Előfizetés és az event hub-adatok](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
-   | Tulajdonság | Leírás |
-   | --- | --- |
-   | Előfizetési azonosító | Válassza ki az előfizetést, amelyben az eseményközpont létre lett hozva.
-   | Service Bus-névtér | Válassza ki az Azure Service Bus-névtér, amely tartalmazza az eseményközpontba.
-   | Event Hubs neve | Válassza ki az event hubs nevét.
-   | Eseményközpont szabályzatának neve | Válassza ki a megosztott elérési házirendet. A megosztott elérési házirendet is létrehozhat az eseményközpontban **konfigurálása** fülre. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsok van. A megosztott hozzáférési szabályzatot az eseményforrás *kell* rendelkezik **olvasási** engedélyeket.
-   | Eseményközpont házirendjének kulcsa | Előfordulhat, hogy előre kitölti a kulcs értékét.
-   | Eseményközpontbeli fogyasztói csoport | A fogyasztói csoportot, amely eseményeket olvas az eseményközpontból. Kifejezetten ajánljuk, hogy használjon dedikált fogyasztói csoportot az eseményforrást. |
-   | Eseményszerializációs formátum | JSON-ban jelenleg csak akkor érhető el szerializálási formátum. Eseményt üzenetek a következő formátumban kell lennie, vagy az adatok nem olvashatók. |
-   | Időbélyegző-tulajdonság neve | Az érték meghatározásához kell megérteni az állapotüzenet-adatokat az eseményközpontnak küldött üzenet formátumát. Ez az érték a **neve** az állapotüzenet-adatokat használja, mint az esemény időbélyegzője kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen hagyja, a **eseményt sorba idő** az a Eseménynapló timestamp forrás szolgál. |
+     A következő táblázat ismerteti a szükséges tulajdonságokat a **Eseményközpontot használja a rendelkezésre álló előfizetések** lehetőséget:
 
-1. A következő táblázat ismerteti a szükséges tulajdonságokat a **adja meg az Eseményközpont-beállítások manuális** lehetőséget:
+     | Tulajdonság | Leírás |
+     | --- | --- |
+     | Előfizetés azonosítója | Válassza ki az előfizetést, amelyben az eseményközpont létre lett hozva.
+     | Service Bus-névtér | Válassza ki az Azure Service Bus-névtér, amely tartalmazza az eseményközpontba.
+     | Event Hubs neve | Válassza ki az event hubs nevét.
+     | Eseményközpont szabályzatának neve | Válassza ki a megosztott elérési házirendet. A megosztott elérési házirendet is létrehozhat az eseményközpontban **konfigurálása** fülre. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsok van. A megosztott hozzáférési szabályzatot az eseményforrás *kell* rendelkezik **olvasási** engedélyeket.
+     | Eseményközpont házirendjének kulcsa | Előfordulhat, hogy előre kitölti a kulcs értékét.
+     | Eseményközpontbeli fogyasztói csoport | A fogyasztói csoportot, amely eseményeket olvas az eseményközpontból. Kifejezetten ajánljuk, hogy használjon dedikált fogyasztói csoportot az eseményforrást. |
+     | Eseményszerializációs formátum | JSON-ban jelenleg csak akkor érhető el szerializálási formátum. Eseményt üzenetek a következő formátumban kell lennie, vagy nem lehet adatokat olvasni. |
+     | Időbélyegző-tulajdonság neve | Az érték meghatározásához kell megérteni az állapotüzenet-adatokat az eseményközpontnak küldött üzenet formátumát. Ez az érték a **neve** az állapotüzenet-adatokat használja, mint az esemény időbélyegzője kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen hagyja, a **eseményt sorba idő** az a Eseménynapló timestamp forrás szolgál. |
 
-   | Tulajdonság | Leírás |
-   | --- | --- |
-   | Előfizetési azonosító | Az előfizetés, amelyben az eseményközpont létre lett hozva.
-   | Erőforráscsoport | Az erőforráscsoport, amelyben az eseményközpont létre lett hozva.
-   | Service Bus-névtér | Service Bus-névtér az üzenetküldési entitások készletének tárolója. Egy új eseményközpont létrehozásakor egy Service Bus-névtér is létrejött.
-   | Event Hubs neve | Az eseményközpont neve. Az eseményközpont létrehozásakor azt is neki egy egyedi nevet.
-   | Eseményközpont szabályzatának neve | A megosztott elérési házirendet. Az eseményközpont megosztott elérési házirendet is létrehozhat **konfigurálása** fülre. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsok van. A megosztott hozzáférési szabályzatot az eseményforrás *kell* rendelkezik **olvasási** engedélyeket.
-   | Eseményközpont házirendjének kulcsa | A közös hozzáférési kulcs, amellyel hitelesíti a hozzáférést a Service Bus-névteret. Itt adhatja meg az elsődleges vagy másodlagos kulcsot.
-   | Eseményközpontbeli fogyasztói csoport | A fogyasztói csoportot, amely eseményeket olvas az eseményközpontból. Kifejezetten ajánljuk, hogy használjon dedikált fogyasztói csoportot az eseményforrást.
-   | Eseményszerializációs formátum | JSON-ban jelenleg csak akkor érhető el szerializálási formátum. Eseményt üzenetek a következő formátumban kell lennie, vagy az adatok nem olvashatók. |
-   | Időbélyegző-tulajdonság neve | Az érték meghatározásához kell megérteni az állapotüzenet-adatokat az eseményközpontnak küldött üzenet formátumát. Ez az érték a **neve** az állapotüzenet-adatokat használja, mint az esemény időbélyegzője kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen hagyja, a **eseményt sorba idő** az a Eseménynapló timestamp forrás szolgál. |
+    - Ha az event hubs külső az előfizetésekhez, vagy ha azt szeretné, válassza ki a speciális beállításokat, jelölje be **adja meg az Eseményközpont-beállítások manuális**.
+
+      A következő táblázat ismerteti a szükséges tulajdonságokat a **adja meg az Eseményközpont-beállítások manuális** lehetőséget:
+ 
+      | Tulajdonság | Leírás |
+      | --- | --- |
+      | Előfizetés azonosítója | Az előfizetés, amelyben az eseményközpont létre lett hozva.
+      | Erőforráscsoport | Az erőforráscsoport, amelyben az eseményközpont létre lett hozva.
+      | Service Bus-névtér | Service Bus-névtér az üzenetküldési entitások készletének tárolója. Egy új eseményközpont létrehozásakor egy Service Bus-névtér is létrejött.
+      | Event Hubs neve | Az eseményközpont neve. Az eseményközpont létrehozásakor azt is neki egy egyedi nevet.
+      | Eseményközpont szabályzatának neve | A megosztott elérési házirendet. Az eseményközpont megosztott elérési házirendet is létrehozhat **konfigurálása** fülre. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsok van. A megosztott hozzáférési szabályzatot az eseményforrás *kell* rendelkezik **olvasási** engedélyeket.
+      | Eseményközpont házirendjének kulcsa | A közös hozzáférési kulcs, amellyel hitelesíti a hozzáférést a Service Bus-névteret. Itt adhatja meg az elsődleges vagy másodlagos kulcsot.
+      | Eseményközpontbeli fogyasztói csoport | A fogyasztói csoportot, amely eseményeket olvas az eseményközpontból. Kifejezetten ajánljuk, hogy használjon dedikált fogyasztói csoportot az eseményforrást.
+      | Eseményszerializációs formátum | JSON-ban jelenleg csak akkor érhető el szerializálási formátum. Eseményt üzenetek a következő formátumban kell lennie, vagy nem lehet adatokat olvasni. |
+      | Időbélyegző-tulajdonság neve | Az érték meghatározásához kell megérteni az állapotüzenet-adatokat az eseményközpontnak küldött üzenet formátumát. Ez az érték a **neve** az állapotüzenet-adatokat használja, mint az esemény időbélyegzője kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen hagyja, a **eseményt sorba idő** az a Eseménynapló timestamp forrás szolgál. |
 
 1. A dedikált Time Series Insights fogyasztói csoport neve, amely az eseményközpont adott hozzá.
 

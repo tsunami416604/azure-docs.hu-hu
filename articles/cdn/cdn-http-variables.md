@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 8d4fc5fbdc3185c46f00d94537b197ec03f66755
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d572da27cee33cf546933e55a59c27dac4c1efd9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709920"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475203"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotorral HTTP változói
 HTTP-változók adja meg az eszközöket, amelyekkel HTTP kérés- és metaadatok lehet lekérdezni. A metaadatok majd dinamikusan a kérelem vagy válasz módosításához használható. HTTP-változók használata a következő szabályok adatbázismotor-funkciók korlátozva:
 
-- [Gyorsítótár-kulcs átírás](cdn-rules-engine-reference-features.md#cache-key-rewrite)
-- [Ügyfél-kérelem fejléce módosítsa](cdn-rules-engine-reference-features.md#modify-client-request-header)
-- [Ügyfél válasz fejléce módosítsa](cdn-rules-engine-reference-features.md#modify-client-response-header)
-- [URL Redirect](cdn-rules-engine-reference-features.md#url-redirect)
-- [URL-átírás](cdn-rules-engine-reference-features.md#url-rewrite)
+- [Gyorsítótár-kulcs átírás](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
+- [Ügyfél-kérelem fejléce módosítsa](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
+- [Ügyfél válasz fejléce módosítsa](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
+- [URL Redirect](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
+- [URL-átírás](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
 
 ## <a name="definitions"></a>Meghatározások
 A következő táblázat ismerteti a támogatott HTTP-változókat. Üres érték van adja vissza, ha Georedundáns metaadatokat (például postai irányítószám) egy adott kérés nem érhető el.
@@ -102,7 +102,7 @@ Az elválasztó karakterek a következő táblázat ismerteti.
 | / | Határoló egy HTTP-változó vagy minta. |
 | // | Keresse meg, és cserélje le a megadott minta összes példánya. |
 | /= | Található, másolja, majd írja újra a megadott minta összes előfordulását. |
-| ;  | A HTTP-változó kisbetűssé hozzárendelt érték konvertálása. |
+| ; | A HTTP-változó kisbetűssé hozzárendelt érték konvertálása. |
 | ^ | A HTTP-változó nagybetűvé hozzárendelt érték konvertálása. |
 | ,, | Társított kisbetűssé HTTP változó értéke a megadott karakter minden előfordulását konvertálni. |
 | ^^ | Társított nagybetűvé HTTP változó értéke a megadott karakter minden előfordulását konvertálni. |
@@ -113,7 +113,7 @@ A következő táblázat ismerteti a körülmények között, amely alatt a mega
 | Állapot | Leírás | Példa |
 | --------- | ----------- | --------|
 | Escape-karaktersorozat % szimbólum | Százalék szimbólummal is kell megjelölni egy fordított perjel használatával. <br />A jobb Mintaérték Szövegkonstansérték, nem pedig egy HTTP-változó lesznek kezelve.| \%{host} |
-| Ismeretlen változók | Üres karakterlánc mindig ismeretlen változók adja vissza. | a(z) % {unknownvariable} |
+| Ismeretlen változók | Üres karakterlánc mindig ismeretlen változók adja vissza. | a(z) % {unknown_variable} |
 | Érvénytelen karakterek vagy szintaxis | Érvénytelen karakterek vagy szintaxis tartalmazó változókat konstans értékeket számít. <br /><br />#1. példa: A megadott érték érvénytelen karaktert tartalmaz (például-). <br /><br />#2. példa: A megadott értéket tartalmaz a dupla kapcsos zárójelek. <br /><br />#3. példa: A megadott érték hiányzik egy záró kapcsos zárójelet.<br /> | #1. példa: % {resp_user-ügynök} <br /><br />#2. példa: % {{gazdagép}} <br /><br />#3. példa: % {gazdagép |
 | Hiányzik a változó neve. | NULL érték mindig adja vissza, ha a változó értéke nincs megadva. | %{} |
 | Záró karakterek | Egy változó végén karaktereket konstansértékekkel kell kezelni. <br />Jobb minta érték tartalmaz egy záró kapcsos zárójelet, amely egy literálérték, lesznek kezelve. | %{host}} |
@@ -127,9 +127,9 @@ A következő táblázat ismerteti, hogyan adhat meg egy alapértelmezett érté
 
 | Állapot | Szintaxis | Példa | Leírás |
 | --------- | ------ | --------| ----------- |
-| Egy alapértelmezett értékre állítva egy fejléc a következő feltételek bármelyikének teljesülésekor: <br /><br />– Hiányzik egy fejléc <br /><br />-Fejléc értéke NULL értékre van beállítva.| %{Variable:=Value} | %{http_referer:=unspecified} | A Referer fejléc csak állítja be *meghatározatlan* hiányzik vagy NULL értékre. Nincs művelet kerül sor, ha van beállítva. |
-| Ha ez hiányzik, állítsa be egy fejléc egy alapértelmezett értéket. | %{Variable=Value} | %{http_referer=unspecified} | A Referer fejléc csak állítja be *meghatározatlan* megadva. Nincs művelet kerül sor, ha van beállítva. |
-| Állítsa be a fejléc egy alapértelmezett értéket, ha nem teljesíti az alábbi feltételek bármelyike: <br /><br />– Hiányzik<br /><br /> -NULL értékű. | %{Variable:+Value} | %{http_referer:+unspecified} | A Referer fejléc csak állítja be *meghatározatlan* mikor értéket rendelték hozzá. Nincs művelet kerül sor, ha hiányzik vagy null. |
+| Egy alapértelmezett értékre állítva egy fejléc a következő feltételek bármelyikének teljesülésekor: <br /><br />– Hiányzik egy fejléc <br /><br />-Fejléc értéke NULL értékre van beállítva.| %{Variable:=Value} | %{http_referrer:=unspecified} | A hivatkozó fejléc csak állítja be *meghatározatlan* hiányzik vagy NULL értékre. Nincs művelet kerül sor, ha van beállítva. |
+| Ha ez hiányzik, állítsa be egy fejléc egy alapértelmezett értéket. | %{Variable=Value} | %{http_referrer=unspecified} | A hivatkozó fejléc csak állítja be *meghatározatlan* megadva. Nincs művelet kerül sor, ha van beállítva. |
+| Állítsa be a fejléc egy alapértelmezett értéket, ha nem teljesíti az alábbi feltételek bármelyike: <br /><br />– Hiányzik<br /><br /> -NULL értékű. | %{Variable:+Value} | %{http_referrer:+unspecified} | A hivatkozó fejléc csak állítja be *meghatározatlan* mikor értéket rendelték hozzá. Nincs művelet kerül sor, ha hiányzik vagy null. |
 
 ## <a name="manipulating-variables"></a>Változók módosítása
 Változók a következő módon kezelhetők:

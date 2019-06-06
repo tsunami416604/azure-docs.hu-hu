@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/26/2019
+ms.date: 05/30/2019
 ms.author: rolyon
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab18c8f165fc30636cd05091be1181743f9972d
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: aede5e315141251026867f7028ebf989d44da4d5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873639"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473051"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Az Azure AD tagjogosultság-kezelés (előzetes verzió) folyamat és az e-mail-értesítések kérése
 
@@ -44,10 +44,10 @@ Egy hozzáférés-csomag hozzáférést igénylő felhasználó hozzáférési k
 | --- | --- |
 | Elküldve | Felhasználó kérést küld. |
 | Jóváhagyásra váró elemek | Ha a házirend-hozzáférés csomag jóváhagyást igényel, függőben lévő jóváhagyási kérés helyezi át. |
-| Elévült | Ha nincsenek jóváhagyók tekintse át a kérést a jóváhagyási kérelem időkorláton belül, a kérelem lejár. Próbálkozzon újra, a felhasználónak kell küldje el újra a kérelmet. |
-| Elutasítva | Jóváhagyó elutasítja a kérést. |
+| Elévült | Ha nincsenek jóváhagyók jóváhagyja a kérést a jóváhagyási kérelem időkorláton belül, a kérelem lejár. Próbálkozzon újra, a felhasználónak kell küldje el újra a kérelmet. |
+| Megtagadva | Jóváhagyó elutasítja a kérést. |
 | Approved | Jóváhagyó jóváhagyja a kérést. |
-| Kézbesítés | Felhasználó rendelkezik **nem** már hozzárendelt a hozzáférés-csomagban lévő összes erőforrást. Ha egy külső felhasználót, a felhasználó még nem érhető el az erőforrás-könyvtár, és az engedélyek kérés elfogadva. |
+| Továbbítása | Felhasználó rendelkezik **nem** már hozzárendelt a hozzáférés-csomagban lévő összes erőforrást. Ha egy külső felhasználót, a felhasználó még nem érhető el az erőforrás-könyvtár, és az engedélyek kérés elfogadva. |
 | Kézbesítve | Felhasználó rendelkezik lett hozzárendelve hozzáférés a hozzáférés-csomagban lévő összes erőforrást. |
 | Kiterjesztett hozzáférés | Bővítmények a szabályzat engedélyezett, ha a felhasználó terjeszteni a hozzárendelést. |
 | Hozzáférés lejárt | Felhasználó hozzáférését a hozzáférés csomag érvényessége lejárt. Érhet el újra, a felhasználónak kell igényelnie. |
@@ -71,7 +71,7 @@ A következő táblázat részletesen ezek e-mail-értesítések.
 | 7 | Hozzáférési *[hozzáférési csomag]* nap X múlva lejár | X nap elteltével a hozzáférés csomaghoz hozzáféréssel a kérelmező lejár | Kérelmező |
 | 8 | Hozzáférési *[hozzáférési csomag]* lejárt | Ha a kérelmező hozzáférés hozzáférési csomagjára lejár | Kérelmező |
 
-### <a name="review-access-request-emails"></a>Felülvizsgálat hozzáférési kérelem e-mailek
+### <a name="access-request-emails"></a>Hozzáférési kérelem e-mailek
 
 A kérelmező elküldi a hozzáférési kérelem egy hozzáférési csomaghoz, amely konfigurálva van a jóváhagyás megkövetelése, ha a szabályzatában megtörténik a kérelem részleteit tartalmazó e-mail-értesítést kapnak. Részletei tartalmazzák a kérelmező neve, a szervezet, eléréséhez a kezdő és záró dátumát, ha meg van adva, üzleti indoklás, amikor a kérelem el lett küldve, és amikor a kérelem lejár. Az e-mail tartalmaz egy hivatkozást, ahol a jóváhagyók jóváhagyhatják vagy megtagadhatják a hozzáférési kérelem. Íme a kérelmező által a hozzáférési kérelem jóváhagyó küldött minta e-mail értesítést.
 
@@ -79,7 +79,7 @@ A kérelmező elküldi a hozzáférési kérelem egy hozzáférési csomaghoz, a
 
 ### <a name="approved-or-denied-emails"></a>Engedélyezett vagy megtagadott e-mailek
 
-Kérelmezőktől a hozzáférést a rendszer értesíti, ha a hozzáférési kérelem jóváhagyott és az elérhető, vagy ha a hozzáférési kérés megtagadva. Jóváhagyó áttekinti a kérelmező által benyújtott hozzáférési kérést, ha azok jóváhagyhatják vagy megtagadhatják a hozzáférési kérelem. A jóváhagyó hozzáadása egy üzleti indoklás a döntést kell.
+Kérelmezőktől a hozzáférést a rendszer értesíti, ha a hozzáférési kérelem jóváhagyott és az elérhető, vagy ha a hozzáférési kérés megtagadva. Amikor egy jóváhagyó megkap egy kérelmező által benyújtott hozzáférési kérést, akkor jóváhagyhatják vagy megtagadhatják a hozzáférési kérelem. A jóváhagyó hozzáadása egy üzleti indoklás a döntést kell.
 
 Hozzáférési kérelem jóváhagyásakor tagjogosultság-kezelés elindítja a hozzáférés csomagban az erőforrások a kérelmező hozzáférést adna folyamatán. Után a kérelmező hozzáférést kapott a hozzáférés-csomagban minden erőforráshoz, e-mailben értesítést a rendszer küld a kérelmezőnek, hogy azok hozzáférési kérés jóváhagyva és, hogy most már hozzáféréssel rendelkeznek a hozzáférés-csomag. Íme a hozzáférést egy hozzáférés-csomag megadásakor a kérelmezőnek küldött minta e-mail értesítést.
 

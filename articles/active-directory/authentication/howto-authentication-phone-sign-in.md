@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47e8541b82a1cd38f07684508a96b9789df20e92
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bb10378d890c2b7156b6764321e177a22ffc538a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359141"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472753"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Jelszó nélküli telefonnal bejelentkezni a Microsoft Authenticator alkalmazással (nyilvános előzetes verzió)
 
@@ -82,12 +82,12 @@ Amikor egy felhasználó engedélyezte a Microsoft Authenticator jelszó nélkü
 
 Végfelhasználók, akik az MFA engedélyezve vannak a szervezet helyszíni Azure MFA-kiszolgálón keresztül továbbra is létrehozhat és egyetlen jelszó nélküli telefon bejelentkezési hitelesítő adatokat használja. Ha a felhasználó megpróbálja több telepített (5 +) frissítése a Microsoft Authenticator a hitelesítő adataival, a módosítás hibát eredményezhet.  
 
-### <a name="device-registration"></a>Eszközregisztráció
+### <a name="device-registration"></a>Az eszköz regisztrálása
 
 Az előfeltételeket az új, erős hitelesítő adat, létrehozása egyik célja, hogy hol vannak az eszköz regisztrálva van-e belül az Azure AD-bérlővel, egy adott felhasználóhoz. Eszköz regisztrációs korlátozások miatt egy eszközhöz csak egy bérlőben lehet regisztrálni. Ezt a korlátot, az azt jelenti, hogy a csak egy munkahelyi vagy iskolai fiókkal, a Microsoft Authenticator alkalmazást a telefonos bejelentkezés esetén is engedélyezhető.
 
 ## <a name="next-steps"></a>További lépések
 
-[Ismerje meg az eszköz regisztrálása](../devices/overview.md#getting-devices-under-the-control-of-azure-ad)
+[Ismerje meg az eszköz regisztrálása](../devices/overview.md#getting-devices-in-azure-ad)
 
 [További tudnivalók az Azure multi-factor Authentication](../authentication/howto-mfa-getstarted.md)

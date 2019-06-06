@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: dfbbdf3f2414f7b00445b271b667ad761ba93df0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5701bb534d0fd0e25aab90f9d1035c96bb55c518
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724366"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476098"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Az Apache Spark-feladatok optimalizálása
 
@@ -59,10 +59,10 @@ Amikor létrehoz egy új Spark-fürtöt, lehetősége van az Azure Blob Storage 
 
 | Store típusa | Fájlrendszer | Sebesség | Átmeneti | Használati példák |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb[s]:**//url/ | **Standard** | Igen | Átmeneti fürt |
-| Azure Data Lake Storage Gen 2| **abfs[s]:**//url/ | **Gyorsabb** | Igen | Átmeneti fürt |
-| Azure Data Lake Storage Gen 1| **adl:**//url/ | **Gyorsabb** | Igen | Átmeneti fürt |
-| Helyi HDFS | **hdfs:**//url/ | **Leggyorsabb** | Nem | Interaktív 24/7 fürt |
+| Azure Blob Storage | **wasb:** //url/ | **Standard** | Igen | Átmeneti fürt |
+| Azure Data Lake Storage Gen 2| **abfs[s]:** //url/ | **Gyorsabb** | Igen | Átmeneti fürt |
+| Azure Data Lake Storage Gen 1| **adl:** //url/ | **Gyorsabb** | Igen | Átmeneti fürt |
+| Helyi HDFS | **hdfs:** //url/ | **Leggyorsabb** | Nem | Interaktív 24/7 fürt |
 
 ## <a name="use-the-cache"></a>A gyorsítótár használata
 

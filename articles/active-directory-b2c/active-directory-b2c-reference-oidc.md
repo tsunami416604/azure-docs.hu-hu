@@ -2,20 +2,20 @@
 title: Webes bejelentkezés OpenID Connect – Azure Active Directory B2C-|} A Microsoft Docs
 description: Az OpenID Connect hitelesítési protokoll használatával az Azure Active Directory B2C webes alkalmazásokat hozhat létre.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4137360fadab0206c6569b58d6a9a0519ce74450
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 85639e2648131f9475ad2ae77f31d43e64bf82e7
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703951"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509206"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webalkalmazás-bejelentkezés OpenID-kapcsolattal az Azure Active Directory B2C-vel
 
@@ -72,15 +72,15 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| Paraméter | Szükséges | Leírás |
+| Paraméter | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | client_id | Igen | Az alkalmazás AZONOSÍTÓJÁT, amely a [az Azure portal](https://portal.azure.com/) az alkalmazáshoz hozzárendelt. |
 | response_type | Igen | Tartalmaznia kell egy azonosító jogkivonat az OpenID Connect. Ha a webalkalmazás jogkivonatokat a webes API-k meghívására szolgáló is van szüksége, használhatja `code+id_token`. |
 | redirect_uri | Nem | A `redirect_uri` paraméter az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat. Ez pontosan egyeznie kell a `redirect_uri` paraméterek regisztrált az Azure Portalon, azzal a különbséggel, hogy az URL-kódolású kell lennie. |
 | scope | Igen | Hatókörök szóközzel elválasztott listáját. A `openid` hatókör azt jelzi, hogy jelentkezzen be a felhasználó és azonosító-jogkivonatokat formájában a felhasználóval kapcsolatos adatok beolvasása az engedélyt. A `offline_access` hatókör megadása nem kötelező a webes alkalmazásokhoz. Azt jelzi, hogy az alkalmazásnak szüksége lesz egy *frissítési jogkivonat* az erőforrásokhoz való kiterjesztett hozzáférést. |
 | response_mode | Nem | A módszer, amellyel az eredményül kapott engedélyezési kód küldése az alkalmazásnak. Ez lehet `query`, `form_post`, vagy `fragment`.  A `form_post` Válaszmód ajánlott legjobb biztonsági. |
-| state | Nem | A kérésben is a token válaszban visszaadott érték. Bármilyen tartalmat, amelyeket szeretne karakterlánc lehet. Egy véletlenszerűen generált egyedi érték webhelyközi kérések hamisításának megakadályozása támadások általában szolgál. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például a voltak a lap is szolgál. |
-| egyszeri | Igen | A kérésben (az alkalmazás által létrehozott), amely az eredményül kapott azonosító jogkivonat jogcímként szerepel érték. Az alkalmazás ezután ellenőrizheti ezt az értéket ismétlésének támadások számának csökkentése érdekében. Értéke általában egy véletlenszerű egyedi karakterlánc, amely a kérés eredetének azonosítására használhatók. |
+| állapot | Nem | A kérésben is a token válaszban visszaadott érték. Bármilyen tartalmat, amelyeket szeretne karakterlánc lehet. Egy véletlenszerűen generált egyedi érték webhelyközi kérések hamisításának megakadályozása támadások általában szolgál. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például a voltak a lap is szolgál. |
+| nonce | Igen | A kérésben (az alkalmazás által létrehozott), amely az eredményül kapott azonosító jogkivonat jogcímként szerepel érték. Az alkalmazás ezután ellenőrizheti ezt az értéket ismétlésének támadások számának csökkentése érdekében. Értéke általában egy véletlenszerű egyedi karakterlánc, amely a kérés eredetének azonosítására használhatók. |
 | p | Igen | A felhasználói folyamatot, amely futtatásakor. Felhasználói folyamat, amely jön létre az Azure AD B2C-bérlő neve. A felhasználói folyamat nevét kell kezdődnie `b2c\_1\_`. |
 | parancssor | Nem | A felhasználói beavatkozás szükséges típusa. Jelenleg az egyetlen érvényes érték `login`, amely arra kényszeríti a felhasználónak meg kell adnia a hitelesítő adataik adott kérelem. |
 
@@ -100,8 +100,8 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 | Paraméter | Leírás |
 | --------- | ----------- |
 | id_token | Az azonosító jogkivonat, amely az alkalmazás kéri. Az azonosító jogkivonat segítségével ellenőrizze a felhasználó identitását, és megkezdheti a felhasználói munkamenetet. |
-| Kód | Az engedélyezési kódot, amely az alkalmazás kéri, ha `response_type=code+id_token`. Az alkalmazás az engedélyezési kód használatával egy cél-erőforrásra vonatkozó hozzáférési jogkivonat kérése. Hitelesítési kódok általában körülbelül 10 perc múlva lejár. |
-| state | Ha egy `state` paraméter tartalmazza a kérés ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás kell ellenőrizze, hogy a `state` a kérés- és az értékek megegyeznek. |
+| code | Az engedélyezési kódot, amely az alkalmazás kéri, ha `response_type=code+id_token`. Az alkalmazás az engedélyezési kód használatával egy cél-erőforrásra vonatkozó hozzáférési jogkivonat kérése. Hitelesítési kódok általában körülbelül 10 perc múlva lejár. |
+| állapot | Ha egy `state` paraméter tartalmazza a kérés ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás kell ellenőrizze, hogy a `state` a kérés- és az értékek megegyeznek. |
 
 Hibaválaszok is lehet küldeni a `redirect_uri` paramétert, hogy az alkalmazás kezelni tudja azokat megfelelően:
 
@@ -116,7 +116,7 @@ error=access_denied
 | --------- | ----------- |
 | error | A kód, amely a bekövetkező hibák típusú besorolására használható. |
 | error_description | Egy adott hibaüzenet, amely segíthet a hitelesítési hiba kiváltó okának azonosításához. |
-| state | Ha egy `state` paraméter tartalmazza a kérés ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás kell ellenőrizze, hogy a `state` a kérés- és az értékek megegyeznek. |
+| állapot | Ha egy `state` paraméter tartalmazza a kérés ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás kell ellenőrizze, hogy a `state` a kérés- és az értékek megegyeznek. |
 
 ## <a name="validate-the-id-token"></a>Az azonosító jogkivonat érvényesítése
 
@@ -168,7 +168,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | client_id | Igen | Az alkalmazás AZONOSÍTÓJÁT, amely a [az Azure portal](https://portal.azure.com/) az alkalmazáshoz hozzárendelt. |
 | grant_type | Igen | Engedély megadása, amelynek kell típusú `authorization_code` az engedélyezési kód folyamata. |
 | scope | Nem | Hatókörök szóközzel elválasztott listáját. A `openid` hatókör azt jelzi, hogy a felhasználók bejelentkeztetése és id_token paraméterek formájában a felhasználóval kapcsolatos adatok beolvasása engedélyt. Az alkalmazás saját webes API-t, amely alkalmazás azonosítója megegyezik az ügyfél által jelölt-jogkivonat beolvasásához használható. A `offline_access` hatókör azt jelzi, hogy az alkalmazásnak kell-e a frissítési jogkivonatok az erőforrásokhoz való kiterjesztett hozzáférést. |
-| Kód | Igen | A felhasználói folyamat elején beszerzett engedélyezési kód. |
+| code | Igen | A felhasználói folyamat elején beszerzett engedélyezési kód. |
 | redirect_uri | Igen | A `redirect_uri` paraméter az alkalmazás, ahol kapott engedélyezési kód. |
 | client_secret | Igen | Az alkalmazás titkos létrehozott a [az Azure portal](https://portal.azure.com/). Ez az alkalmazástitkok egy fontos biztonsági összetevője. Meg kell tárolja biztonságos helyen a kiszolgálón. Módosítsa a titkos Ügyfélkód rendszeres időközönként. |
 
@@ -229,7 +229,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 ```
 
-| Paraméter | Szükséges | Leírás |
+| Paraméter | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | p | Igen | A felhasználói folyamatot, amely az eredeti frissítési jogkivonat beszerzéséhez használt. A kérelem nem használhat egy másik felhasználói folyamatot. Adja hozzá ezt a paramétert, a lekérdezési karakterláncban, nem pedig a bejegyzés törzse. |
 | client_id | Igen | Az alkalmazás AZONOSÍTÓJÁT, amely a [az Azure portal](https://portal.azure.com/) az alkalmazáshoz hozzárendelt. |
@@ -286,7 +286,7 @@ p=b2c_1_sign_in
 &post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| Paraméter | Szükséges | Leírás |
+| Paraméter | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | p | Igen | A felhasználói folyamatot, amely a felhasználó ki az alkalmazás aláírásához használni kívánt. |
 | post_logout_redirect_uri | Nem | Az URL-cím, amely a felhasználót át kell irányítani, sikeres bejelentkezés után. Ha nem tartalmaz, az Azure AD B2C-t jeleníti meg a felhasználó alábbi hibaüzenet jelenik meg. |

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: 25c0fe7a179db484f18c1aca16471e39a739052c
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: c25aef76b5559b6d00ccf60675d61ea5ea346773
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299187"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494353"
 ---
 # <a name="dynamic-packaging"></a>A dinamikus csomagolás
 
@@ -114,10 +114,10 @@ A dinamikus csomagolás MP4-fájlokat, amelyek tartalmazzák a hang a kódolt t�
     * DTS Express (dtse)
     * DTS-HD veszteségmentes (nincs mag) (dtsl)
 
-### <a name="hls-support"></a>HLS-támogatás
+### <a name="multi-audio-tracks"></a>Többszörös hangsáv
 
-Támogatja a dinamikus csomagolás HLS (4-es vagy újabb) eszközök, amelyek több hangsávval rendelkező több kodekeket és nyelveket.
-
+Adatfolyam-eszközöket, amelyek több hangsávval rendelkező több kodekeket és nyelveket, amikor a dinamikus csomagolás támogatja a többszörös hangsáv a HLS-kimenet (4-es vagy újabb).
+ 
 ### <a name="not-supported"></a>Nem támogatott
 
 A dinamikus csomagolás nepodporuje tartalmazó fájlokat [Dolby digitális](https://en.wikipedia.org/wiki/Dolby_Digital) (nem örökölt kodekkel) (AC3) hang.

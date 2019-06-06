@@ -5,17 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 06/04/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: d2312fac64515756f5ed2e0feb22fdc6b7205376
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 46ade0ecb0e2e081585803a0b1bc7eab989e21e6
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125190"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735214"
 ---
-**Utolsó dokumentum-frissítés**: 14 május 10:00 Csendes-ÓCEÁNI 2019.
+**Utolsó dokumentum-frissítés**: 4. június 2019 3:00 PM PST.
 
 Közzétételét egy [új osztályt a CPU biztonsági rések](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) néven ismert spekulatív végrehajtás kockázatának csökkentése ügyféloldali-csatorna támadások eredményezte az egyértelműség érdekében további kérő ügyfelek a kérdéseket.  
 
@@ -46,10 +46,10 @@ További információ a security hogyan integrált az Azure platformba érhető 
 
 Operációsrendszer-frissítés nem szükséges az Azure-ügyfeleink az Azure-ban futtatott alkalmazások elkülönítése, miközben, mindig célszerű a szoftver naprakészen tartásához. A legújabb biztonsági frissítések a Windows több spekulatív végrehajtás kockázatának csökkentése ügyféloldali csatorna biztonsági rés megoldások tartalmaznak. Hasonlóképpen Linux-disztribúciók kiadott több frissítéseket, a biztonsági rések. Íme a javasolt műveleteket frissíteni az operációs rendszer:
 
-| Ajánlat | Ajánlott művelet  |
+| Ajánlat | Javasolt művelet  |
 |----------|---------------------|
 | Azure Cloud Services  | Engedélyezése [automatikus frissítést](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) vagy ellenőrizze, hogy a legújabb vendég operációs rendszer futtatja. |
-| Azure Linux Virtual Machines | Frissítések telepítése az operációs rendszer-szolgáltatótól. További információkért lásd: [Linux](#linux) dokumentum későbbi részében. |
+| Azure-beli Linuxos virtuális gépek | Frissítések telepítése az operációs rendszer-szolgáltatótól. További információkért lásd: [Linux](#linux) dokumentum későbbi részében. |
 | Az Azure Windows virtuális gépek  | Telepítse a legújabb biztonsági kumulatív frissítést.
 | Más Azure PaaS-szolgáltatások | Nem tartoznak ezeket a szolgáltatásokat használó ügyfelek számára szükséges műveletek. Az Azure automatikusan biztosítja, hogy az operációs rendszer verziója naprakész. |
 
@@ -77,7 +77,7 @@ Nem megbízható kód futtatásakor engedélyezheti a további biztonsági szolg
 A cél operációs rendszer a további biztonsági funkciók engedélyezéséhez naprakész állapotban kell lennie. Számos spekulatív végrehajtás kockázatának csökkentése ügyféloldali csatorna megoldások alapértelmezés szerint engedélyezve vannak, amíg az itt leírt további funkciókat engedélyezni kell a manuális és teljesítménycsökkenést okozhat. 
 
 
-**1. lépés: Tiltsa le a virtuális gép a Hyper-Threading technológia** – a nem megbízható kód egy virtuális gép Hyper-Threading technológia letiltása, vagy helyezze át egy nem hiperszálas Virtuálisgép-méretet kell hiperszálas futtató ügyfeleknek. Annak ellenőrzéséhez, hogy a virtuális gép rendelkezik-e hiperszálkezeléssel, tekintse meg az alábbi szkriptet a parancssorból Windows, a virtuális gépen.
+**1. lépés: Tiltsa le a hyper-Threading technológiát a virtuális gép** -ügyfeleknek a többszálú virtuális gépeken futó nem megbízható kód kell tiltsa le a hyper-Threading technológiát, vagy helyezze át a virtuális gép nem – a hyper-threaded méretét. Hivatkozás [feljegyzett](https://docs.microsoft.com/azure/virtual-machines/windows/acu) a hyper-threaded Virtuálisgép-méretek (ahol vcpu-t mag arány, 2:1). Ellenőrizze, hogy a virtuális gép rendelkezik-e a hyper-threading engedélyezve van, tekintse meg az alábbi szkriptet a parancssorból Windows, a virtuális gépen.
 
 Típus `wmic` , adja meg az interaktív felületét. Írja be az alábbi fizikai mennyisége megtekintéséhez és a logikai processzorok, a virtuális gépen.
 
@@ -85,7 +85,7 @@ Típus `wmic` , adja meg az interaktív felületét. Írja be az alábbi fizikai
 CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
 ```
 
-Ha a logikai processzorok száma nagyobb, mint a fizikai processzor (magok), majd Hyper-Threading technológia engedélyezve van.  Ha egy virtuális gép hiperszálas futtatja, [Azure támogatási](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) beolvasni a Hyper-Threading le van tiltva technológia.  Hyper-Threading technológia le van tiltva, miután **támogatási lesz szükség a teljes virtuális gép újraindítását**. 
+Ha a logikai processzorok száma nagyobb, mint a fizikai processzor (magok), majd a hyper-threading engedélyezve van.  Ha egy hyper-threaded virtuális Gépet futtat, kérjük [Azure támogatási](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) lekérése hyper-threading le van tiltva.  A hyper-threading le van tiltva, miután **támogatási lesz szükség a teljes virtuális gép újraindítását**. Tekintse meg [magos száma](#core-count) tudni, miért érdemes a Virtuálisgép-magok száma csökkent.
 
 
 **2. lépés**: 1. lépés párhuzamosan, kövesse a [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) védelmet engedélyezve vannak a használatával ellenőrizheti a [SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell-modult.
@@ -123,14 +123,14 @@ A kimenet látható `MDS mitigation is enabled: False`, kérjük [Azure támogat
 <a name="linux"></a>További biztonsági funkciók belül engedélyezése megköveteli, hogy a cél operációs rendszer teljes mértékben naprakész. Bizonyos megoldások alapértelmezés szerint engedélyezve lesz. Az alábbi szakasz az a Funkciók, amelyek vannak kapcsolva, alapértelmezés szerint, illetve tartománybeli hardvertámogatásra (mikrokód). Ezek a szolgáltatások engedélyezését okozhat teljesítménycsökkenést. Az operációs rendszer szolgáltató referenciadokumentációt további útmutatás
 
 
-**1. lépés: Tiltsa le a virtuális gép a Hyper-Threading technológia** – a nem megbízható kód egy virtuális gép Hyper-Threading technológia letiltása, vagy áthelyezés virtuális Gépre nem hiperszálas kell hiperszálas futtató ügyfeleknek.  Ellenőrizze, hogy a hiperszálas, virtuális gép fut-e, futtassa a `lscpu` parancsot a Linux rendszerű virtuális gépen. 
+**1. lépés: Tiltsa le a hyper-Threading technológiát a virtuális gép** -ügyfeleknek a többszálú virtuális gépeken futó nem megbízható kód kell letiltja a hyper-Threading technológiát, vagy áthelyezés nem – a többszálú virtuális Gépre.  Hivatkozás [feljegyzett](https://docs.microsoft.com/azure/virtual-machines/linux/acu) a hyper-threaded Virtuálisgép-méretek (ahol vcpu-t mag arány, 2:1). Ellenőrizze, hogy a hyper-threaded virtuális gép fut-e, futtassa a `lscpu` parancsot a Linux rendszerű virtuális gépen. 
 
-Ha `Thread(s) per core = 2`, akkor a Hyper-Threading technológia engedélyezve van. 
+Ha `Thread(s) per core = 2`, majd a hyper-threading engedélyezve van. 
 
-Ha `Thread(s) per core = 1`, akkor a Hyper-Threading technológia le van tiltva. 
+Ha `Thread(s) per core = 1`, majd a hyper-threading le van tiltva. 
 
  
-A minta virtuális gép feleznie kimeneti: 
+Egy virtuális Gépet a hyper-threading engedélyezve van a példa a kimenetre: 
 
 ```console
 CPU Architecture:      x86_64
@@ -145,7 +145,8 @@ NUMA node(s):          1
 
 ```
 
-Ha egy virtuális gép hiperszálas futtatja, [Azure támogatási](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) beolvasni a Hyper-Threading le van tiltva technológia.  Hyper-Threading technológia le van tiltva, miután **támogatási lesz szükség a teljes virtuális gép újraindítását**.
+Ha egy hyper-threaded virtuális Gépet futtat, kérjük [Azure támogatási](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) lekérése hyper-threading le van tiltva.  A hyper-threading le van tiltva, miután **támogatási lesz szükség a teljes virtuális gép újraindítását**. Tekintse meg [magos száma](#core-count) tudni, miért érdemes a Virtuálisgép-magok száma csökkent.
+
 
 
 **2. lépés**: Bármely csökkentése érdekében az alábbi spekulatív végrehajtás kockázatának csökkentése ügyféloldali-csatorna biztonsági résekről, tekintse meg az operációs rendszer konfigurációszolgáltató dokumentációját:   
@@ -153,6 +154,11 @@ Ha egy virtuális gép hiperszálas futtatja, [Azure támogatási](https://aka.m
 - [Redhat and CentOS](https://access.redhat.com/security/vulnerabilities) 
 - [SUSE](https://www.suse.com/support/kb/?doctype%5B%5D=DT_SUSESDB_PSDB_1_1&startIndex=1&maxIndex=0) 
 - [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/) 
+
+
+### <a name="core-count"></a>Magok száma
+
+A többszálú virtuális gép létrehozásakor a Azure lefoglal magonként 2 hozzászólásláncot adott találatul – ezek az úgynevezett vcpu-k. Ha a hyper-threading le van tiltva, az Azure eltávolítja a szálak és a felszínre hozza be egyetlen szálon futó mag (fizikai mag). A Processzor vcpu-t aránya 2:1, így egyszer a hyper-threading le van tiltva, a Processzor száma a virtuális gép megjelenik a felére csökkent. Ha például egy D8_v3 virtuális gép 8 Vcpu (2 core x 4 magok szálak) futó hyper-threaded VM.  Ha a hyper-threading le van tiltva, a rendszer eldobja a processzorokat, 4 fizikai maggal és magonként 1 szálat. 
 
 ## <a name="next-steps"></a>További lépések
 

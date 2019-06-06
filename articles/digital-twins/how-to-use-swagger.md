@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 06/03/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 6636c87493230e3e392c29ffaf182b489ab0ba34
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 842c35a1575c7bcf6f547fb04d5680178b3bee78
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967775"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730358"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Az Azure digitális Twins Swagger dokumentációja
 
@@ -42,15 +42,15 @@ Az automatikusan generált Swagger-referenciaanyag választékát kínálja a fo
 
 Rövid összefoglaló ismerteti az API-t.
 
-![Swagger felső][1]
+[![Swagger felső](media/how-to-use-swagger/swagger_management_top.PNG)](media/how-to-use-swagger/swagger_management_top.PNG#lightbox)
 
 Felügyeleti API-objektum modellek is megtalálható.
 
-![Swagger-modellek][2]
+[![Swagger-modellek](media/how-to-use-swagger/swagger_management_models.PNG)](media/how-to-use-swagger/swagger_management_models.PNG#lightbox)
 
 Kiválaszthatja, hogy minden egyes listázott hálózatiobjektum-modellt fő jellemzőinek részletesebb összegzését.
 
-![Swagger-modell][3]
+[![Swagger-modell](media/how-to-use-swagger/swagger_management_model.PNG)](media/how-to-use-swagger/swagger_management_model.PNG#lightbox)
 
 A generált Swagger objektummodellt kényelmesek, tekintse meg az összes elérhető az Azure digitális Twins [objektumok és az API-k](./concepts-objectmodel-spatialgraph.md). A fejlesztők használhatják ehhez az erőforráshoz, amikor ezek a megoldások létrehozását az Azure digitális Twins.
 
@@ -64,7 +64,7 @@ Minden felsorolt végpont adatokat is tartalmaz a szükséges kérelem, mint pé
 * Kötelező paraméter adattípusokat.
 * HTTP-metódus az erőforrás eléréséhez.
 
-![Swagger-végpont][4]
+[![Swagger-végpont](media/how-to-use-swagger/swagger_management_endpoints.PNG)](media/how-to-use-swagger/swagger_management_endpoints.PNG#lightbox)
 
 Részletesebb ismertetőt, jelölje ki az egyes erőforrások.
 
@@ -74,11 +74,11 @@ A Swagger biztosít hatékony funkciók egyik lehetővé teszi a dokumentáció 
 
 Miután egy adott végpontnak választja, megjelenik **kipróbálás**.
 
-![Próbálja meg swagger][5]
+[![Próbálja meg swagger](media/how-to-use-swagger/swagger_management_try.PNG)](media/how-to-use-swagger/swagger_management_try.PNG#lightbox)
 
 Bontsa ki a szakaszt viszi, megjelenik minden szükséges és választható paraméter beviteli mezőket. Adja meg a megfelelő értékeket, és válassza ki **Execute**.
 
-![Kísérlet történt a swagger][6]
+[![Kísérlet történt a swagger](media/how-to-use-swagger/swagger_management_tried.PNG)](media/how-to-use-swagger/swagger_management_tried.PNG#lightbox)
 
 A teszt végrehajtása, után ellenőrizheti a érkezett válasz adatait.
 
@@ -86,7 +86,7 @@ A teszt végrehajtása, után ellenőrizheti a érkezett válasz adatait.
 
 Minden felsorolt végpont válasz törzsében adatok ellenőrzése a fejlesztési és tesztek is tartalmaz. Ezek közé tartoznak az állapot- és JSON meg szeretné tekinteni a sikeres HTTP-kéréseket.
 
-![Swagger-válasz][7]
+[![Swagger-válasz](media/how-to-use-swagger/swagger_management_response.PNG)](media/how-to-use-swagger/swagger_management_response.PNG#lightbox)
 
 A példák is hibakódok javításához vagy javítása sikertelen tesztek segítségével.
 
@@ -118,31 +118,22 @@ Interaktív módon az OAuth 2.0 által védett kérelmek tesztelésével kapcsol
 
 5. Másolja ki az Azure AD-alkalmazás azonosítója.
 
-6. Kattintson az Engedélyezés gombra a swagger-lapon.
+Elvégezte az Azure Active Directory eszközregisztrációs:
 
-    ![Swagger gomb engedélyezése](../../includes/media/digital-twins-permissions/swagger-select-authorize-btn.png)
+6. Kattintson a **engedélyezés** gomb a swagger-lapon.
 
-7. Illessze be az Alkalmazásazonosítót a client_id mező.
+    [![Kattintson a Swagger gomb engedélyezése](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-    ![Swagger client_id mező](../../includes/media/digital-twins-permissions/swagger-auth-form.png)
+7. Illessze be az Alkalmazásazonosítót a **client_id** mező.
 
-    ![Swagger-alkalmazás engedélyek megadása](../../includes/media/digital-twins-permissions/swagger-grant-application-permissions.png)
+    [![Swagger client_id mező](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-8. Meg kell jelennie a tulajdonosi hitelesítési jogkivonat átadott az engedélyezési fejléc és az eredmény jelenik meg a bejelentkezett felhasználó identitását.
+8. Ezután a következő modális sikeres irányítja.
 
-    ![Swagger-jogkivonat eredménye](../../includes/media/digital-twins-permissions/swagger-token-example.png)
+    [![Swagger-átirányítási modális paneljére](media/how-to-use-swagger/swagger_auth_redirect.PNG)](media/how-to-use-swagger/swagger_auth_redirect.PNG#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 
 - További információ az Azure digitális Twins objektum modellek és a térbeli intelligencia graph, olvassa el a [Azure digitális Ikerállapotának megismerése objektum modellek](./concepts-objectmodel-spatialgraph.md).
 
 - Ismerje meg, hogyan hitelesítheti a felügyeleti API-val, olvassa el [hitelesítés API-kkal](./security-authenticating-apis.md).
-
-<!-- Images -->
-[1]: media/how-to-use-swagger/swagger_management_top.PNG
-[2]: media/how-to-use-swagger/swagger_management_models.PNG
-[3]: media/how-to-use-swagger/swagger_management_model.PNG
-[4]: media/how-to-use-swagger/swagger_management_endpoints.PNG
-[5]: media/how-to-use-swagger/swagger_management_try.PNG
-[6]: media/how-to-use-swagger/swagger_management_tried.PNG
-[7]: media/how-to-use-swagger/swagger_management_response.PNG

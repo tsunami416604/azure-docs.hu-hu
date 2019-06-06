@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7f6dbc869db4a0a444d09a2dc234e171758c706
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 28201e09a4025c0c8820abc6836a5923e48eb885
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414859"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742286"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>A letiltott jelszavak egyéni lista konfigurálása
 
@@ -24,7 +24,7 @@ Számos szervezet található, a felhasználók létre közös helyi szavakat, p
 
 ## <a name="add-to-the-custom-list"></a>Az egyéni lista hozzáadása
 
-A letiltott jelszavak egyéni lista konfigurálása egy Azure Active Directory Premium P1 vagy P2-licenc szükséges. Részletes információkat az Azure Active Directory licenceléssel kapcsolatos, tekintse meg a [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/). |}
+A letiltott jelszavak egyéni lista konfigurálása egy Azure Active Directory Premium P1 vagy P2-licenc szükséges. Részletes információkat az Azure Active Directory licenceléssel kapcsolatos, tekintse meg a [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/).
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és keresse meg a **Azure Active Directory**, **hitelesítési módszerek**, majd **jelszavas védelem**.
 1. A beállítás **érvényesítése egyéni lista**, az **Igen**.

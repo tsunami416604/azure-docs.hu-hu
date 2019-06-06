@@ -10,36 +10,36 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 82d49a6a82251f440c06db03edc92851fce87741
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: efa85491f4b183a044ec5d9e5e6e3d11eebedbe3
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023612"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428434"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Példa: Hozzon létre egy egyéni ismeretek a szöveg lefordítása API-val
 
-Ebben a példában megtudhatja, hogyan hozhat létre egy webes API-t egyéni ismeretek, amely elfogadja a szöveg bármilyen nyelven, és lefordítja azt angolra. A példában egy [Azure-függvény](https://azure.microsoft.com/services/functions/) burkolása a [fordítása Text API](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) úgy, hogy az egyéni ismeretek felületet valósítja meg.
+Ebben a példában megtudhatja, hogyan hozhat létre egy webes API-t egyéni ismeretek. Ezen a képzettségi elfogadja a szöveg bármilyen nyelven, és lefordítja azt angolra. A példában egy [Azure-függvény](https://azure.microsoft.com/services/functions/) burkolása a [fordítása Text API](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) úgy, hogy az egyéni ismeretek felületet valósítja meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Olvassa el [egyéni ismeretek felület](cognitive-search-custom-skill-interface.md) című cikket, ha nem ismeri a bemeneti és kimeneti felület, amely egy egyéni függetlenül kell megvalósítania.
++ További információ [egyéni ismeretek felület](cognitive-search-custom-skill-interface.md) című cikket, ha nem ismeri a bemeneti és kimeneti felület, amely egy egyéni függetlenül kell megvalósítania.
 
 + [Iratkozzon fel a Translator Text API](../cognitive-services/translator/translator-text-how-to-signup.md), és felhasználni, API-kulcs beszerzése.
 
-+ Telepítés [Visual Studio 2017 15.5 verzió](https://www.visualstudio.com/vs/) vagy újabb, mint például az Azure-fejlesztési számítási feladatot.
++ Telepítés [Visual Studio 2019](https://www.visualstudio.com/vs/) vagy újabb, mint például az Azure-fejlesztési számítási feladatot.
 
 ## <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
-Bár ebben a példában egy Azure-függvényt használ a webes API-k üzemeltetéséhez, ennek kitöltése nem kötelező.  Mindaddig, amíg megfelel a [cognitive szakértelem követelményei csatoló](cognitive-search-custom-skill-interface.md), a módszert választja, nincs jelentősége. Az Azure Functions, azonban könnyen hozzon létre egy egyéni ismeretek.
+Bár ebben a példában egy Azure-függvényt használ a webes API-k üzemeltetéséhez, nem szükséges.  Mindaddig, amíg megfelel a [cognitive szakértelem követelményei csatoló](cognitive-search-custom-skill-interface.md), a módszert választja, nincs jelentősége. Az Azure Functions, azonban könnyen hozzon létre egy egyéni ismeretek.
 
 ### <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
 1. A Visual Studióban válassza ki a **új** > **projekt** a Fájl menüből.
 
-1. Új projekt párbeszédpanelen válassza ki a **telepített**, bontsa ki a **Visual C#** > **felhőalapú**, jelölje be **Azure Functions**, adjon meg egy A projekt nevét, és válassza ki **OK**. A függvényalkalmazás nevének egy C#-névtérként is érvényesnek kell lennie, ezért ne használjon aláhúzásjeleket, kötőjeleket vagy más nem alfanumerikus karaktereket.
+1. Új projekt párbeszédpanelen válassza ki a **telepített**, bontsa ki a **Visual C#**  > **felhőalapú**, jelölje be **Azure Functions**, adjon meg egy A projekt nevét, és válassza ki **OK**. A függvényalkalmazás nevének egy C#-névtérként is érvényesnek kell lennie, ezért ne használjon aláhúzásjeleket, kötőjeleket vagy más nem alfanumerikus karaktereket.
 
-1. Válassza ki **az Azure Functions v2 (.NET Core)**. Az 1. verzió is megteheti, de a kódot írt alá a v2 sablonon alapul.
+1. Válassza ki **az Azure Functions v2 (.NET Core)** . Az 1. verzió is megteheti, de a kódot írt alá a v2 sablonon alapul.
 
 1. Válassza ki a kívánt **HTTP-eseményindító**
 
@@ -195,7 +195,7 @@ Ebben a példában egy egyszerű enricher, amely egyszerre csak egy rekordot a m
 
 ## <a name="test-the-function-from-visual-studio"></a>A Visual Studióból a függvény tesztelése
 
-Nyomja meg **F5** program és tesztelési függvény viselkedések futtatásához. Ebben az esetben az alábbi függvény segítségével egy angol, spanyol nyelven használható szövegfordításra. Postman vagy a Fiddler segítségével ki egy hívást, mint például az alábbi képen látható:
+Nyomja meg **F5** program és tesztelési függvény viselkedések futtatásához. Az alábbi függvény ebben az esetben egy angol, spanyol nyelven használható szövegfordításra használjuk. Postman vagy a Fiddler segítségével ki egy hívást, mint például az alábbi képen látható:
 
 ```http
 POST https://localhost:7071/api/Translate
@@ -241,7 +241,7 @@ Ha elégedett a függvény működése, közzéteheti azt.
 
 1. Ha a Visual Studio még nem csatlakoztatta az Azure-fiókjába, válassza ki a **-fiók hozzáadása...**
 
-1. Kövesse a képernyőn megjelenő utasításokat. A rendszer felkéri az Azure-fiók, az erőforráscsoport, a szolgáltatási csomag és a használni kívánt tárfiókot adjon meg. Ha még nincs ilyen létrehozhat egy új erőforráscsoportot, egy új szolgáltatási csomagot és egy tárfiókot. Amikor végzett, válassza ki a **létrehozása**
+1. Kövesse a képernyőn megjelenő utasításokat. Kéri, hogy adja meg az Azure-fiók, az erőforráscsoport, a szolgáltatási csomag és a használni kívánt tárfiókot. Ha még nincs ilyen létrehozhat egy új erőforráscsoportot, egy új szolgáltatási csomagot és egy tárfiókot. Amikor végzett, válassza ki a **létrehozása**
 
 1. A telepítés befejezését követően figyelje meg, hogy a webhely URL-címe. Az Azure-ban a függvényalkalmazás címe. 
 
@@ -270,7 +270,7 @@ POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter defaul
 }
 ```
 
-Ebben a korábban látott a helyi környezetben a függvény futtatásakor egy hasonló eredményt kell hozhatók létre.
+Ebben a példában hasonló eredményt kell egy korábban már látott a függvény futtatásakor a helyi környezetben.
 
 ## <a name="connect-to-your-pipeline"></a>A folyamat kapcsolódni
 Most, hogy egy új egyéni ismeretek, adhat hozzá, a képességek alkalmazási lehetőségét. Az alábbi példa bemutatja, hogyan hívhat meg a szakértelem. Szakértelem nem kezeli az kötegekben, mivel a maximális kötegméretet kell csak egy utasítás hozzáadása ```1``` küldése dokumentumok egyenként.
@@ -307,7 +307,7 @@ Most, hogy egy új egyéni ismeretek, adhat hozzá, a képességek alkalmazási 
 ```
 
 ## <a name="next-steps"></a>További lépések
-Gratulálunk! Az első egyéni enricher hozott létre. Most ugyanezt a mintát adhat hozzá a saját egyéni funkciókat is követheti. 
+Gratulálunk! Az első egyéni enricher létrehozott. Most ugyanezt a mintát adhat hozzá a saját egyéni funkciókat is követheti. 
 
 + [Egy egyéni ismeretek hozzáadása a cognitive search folyamat](cognitive-search-custom-skill-interface.md)
 + [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)

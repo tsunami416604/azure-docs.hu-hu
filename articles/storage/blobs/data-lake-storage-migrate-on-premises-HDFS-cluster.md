@@ -4,26 +4,26 @@ description: A helyszíni HDFS adattárba adatok áttelepítése az Azure Storag
 services: storage
 author: normesta
 ms.service: storage
-ms.date: 03/01/2019
+ms.date: 06/05/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 1eac7ecce88dc817b9bd7bd5330d10b019cc7dd2
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 9a42135df38cde91cc6626a3f7d0328334af0a5d
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939263"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729039"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Azure Data Box használatával a helyszíni HDFS adattárba adatok áttelepítése az Azure Storage
 
-Áttelepítheti az adatokat a Hadoop-fürt (a blob storage vagy a Data Lake Storage Gen2) Azure Storage-bA a helyszíni HDFS adattárba egy Data Box-eszköz használatával.
+Áttelepítheti az adatokat a Hadoop-fürt (a blob storage vagy a Data Lake Storage Gen2) Azure Storage-bA a helyszíni HDFS adattárba egy Data Box-eszköz használatával. Egy 80 TB-os Data Box vagy a 770 TB-os Data Box (nagy erőforrásigényű) közül választhat.
 
 Ez a cikk a feladatok elvégzéséhez nyújt segítséget:
 
-:heavy_check_mark: Másolja az adatokat a Data Box-eszközre.
+:heavy_check_mark: Másolja az adatokat a Data Box vagy a Data Box nehéz eszköz.
 
-:heavy_check_mark: A Microsoft Data Box-eszköze szállításra.
+:heavy_check_mark: A Microsoftnak az eszköz szállításra.
 
 :heavy_check_mark: Helyezze át az adatokat a Data Lake Storage Gen2 tárfiók.
 
@@ -37,10 +37,10 @@ Ezeknek a dolgoknak az áttelepítés elvégzéséhez szüksége lesz.
 
 * Egy helyi Hadoop-fürtöt, amely tartalmazza a forrásadatokat.
 
-* Egy [Azure Data Box-eszköz](https://azure.microsoft.com/services/storage/databox/). 
+* Egy [Azure Data Box-eszköz](https://azure.microsoft.com/services/storage/databox/).
 
-    - [A Data Box ORDER](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered). Rendezés a Box, miközben a vágólapra válasszon egy tárfiókot, amely **nem** hierarchikus névtér engedélyezve van rajta. Ennek az az oka a Data Box még nem támogatja a közvetlen feltöltése az Azure Data Lake Storage Gen2. Másolja be egy storage-fiókot, és hajtsa végre a másodpéldány az ADLS Gen2-fiókba kell. Ehhez útmutatást az alábbi lépések szerepelnek.
-    - [Bekötéséhez és csatlakozás a Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) a helyszíni hálózathoz.
+    - [A Data Box ORDER](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) vagy [Data Box-(nagy erőforrásigényű)](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). Miközben az eszköz rendezése, ne felejtse el válasszon egy tárfiókot, amely **nem** hierarchikus névtér engedélyezve van rajta. Ennek az az oka a Data Box-eszköz még nem támogatják a közvetlen feltöltése az Azure Data Lake Storage Gen2. Másolja be egy storage-fiókot, és hajtsa végre a másodpéldány az ADLS Gen2-fiókba kell. Ehhez útmutatást az alábbi lépések szerepelnek.
+    - Kábelek, és csatlakozzon a [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) vagy [Data Box nehéz](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) a helyszíni hálózathoz.
 
 Ha készen áll, kezdjük.
 
@@ -48,12 +48,12 @@ Ha készen áll, kezdjük.
 
 Az adatok másolása a helyszíni HDFS áruházból származó, egy Data Box-eszköz meg fogja beállítása néhány dolgot, majd használja a [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) eszközt.
 
-Ha a másolt adatok mennyisége több mint egy egyetlen Data Box kapacitását, akkor az adatkészlethez, az adatok mezőkbe igazodó méretű részekre.
+Ha a másolt adatok mennyisége, több mint egy egyetlen Data Box kapacitását, vagy a Data Box nehéz egyetlen csomópont, amely tördelésével be, amelyek elférnek a eszközök méretek az adatkészlethez.
 
-Kövesse az alábbi lépéseket az adatok a REST API -k a Blob/objektumtár keresztül másolásához a Data Box. A REST API-felület fogja elérhetővé tenni a Data Box, a fürt HDFS tárolóként jelennek meg. 
+Kövesse az alábbi lépéseket a REST API -k a Blob/objektumtár keresztül adatok másolása a Data Box-eszközre. A REST API-felület fogja elérhetővé tenni az eszköz és a fürt egy HDFS tárolóként jelennek meg. 
 
 
-1. Másolja az adatokat a REST-en keresztül, mielőtt azonosíthatja a biztonsági és kapcsolati primitívek szeretne csatlakozni a REST-felület, a Data Box. Jelentkezzen be a helyi webes felhasználói felület a Data Box, és nyissa meg **csatlakozás és másolás** lapot. Ellen az Azure storage-fiók a Data Box alatt **hozzáférési beállítások**, keresse meg és jelölje ki **REST(Preview)**.
+1. Előtt másolja az adatokat a REST-en keresztül, azonosíthatja a biztonsági és kapcsolati primitívek a REST-felület, a Data Box vagy a Data Box nehéz csatlakozni. Jelentkezzen be a helyi webes felhasználói felület a Data Box, és nyissa meg **csatlakozás és másolás** lapot. Ellen az Azure storage-fiók az eszköz a **hozzáférési beállítások**, keresse meg és jelölje ki **REST**.
 
     !["Csatlakozás és másolás" lap](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
@@ -63,7 +63,7 @@ Kövesse az alábbi lépéseket az adatok a REST API -k a Blob/objektumtár kere
 
      !["A tárfiók eléréséhez és adatok feltöltése" párbeszédpanel](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. A végpont és a Data Box IP-cím hozzáadása `/etc/hosts` minden egyes csomóponton.
+3. A végpont és a Data Box vagy a Data Box nehéz csomópont IP-cím hozzáadása `/etc/hosts` minden egyes csomóponton.
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
@@ -122,22 +122,30 @@ Kövesse az alábbi lépéseket az adatok a REST API -k a Blob/objektumtár kere
   
 A másolási sebesség javításához:
 - Próbálja meg módosítani a leképező számát. (A fenti példában `m` = 4 leképező.)
-- Próbálja meg futtatni a több `distcp` párhuzamosan.
-- Ne feledje, hogy a nagy méretű fájlok jobban, mint a kisméretű fájlok hajtható végre.       
+- Próbálja meg futtatni több `distcp` párhuzamosan.
+- Ne feledje, hogy a nagy méretű fájlok jobban, mint a kisméretű fájlok hajtható végre.
     
 ## <a name="ship-the-data-box-to-microsoft"></a>A Data Box, a Microsoft szállításra
 
 Kövesse az alábbi lépéseket, előkészítése és a Microsoft Data Box-eszköze szállításra.
 
-1. Az adatmásolás befejezése után futtassa [szállításra való](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest) a Data Box. Miután az eszköz előkészítése befejeződött, töltse le a AJ fájlokat. Ezek AJ használja, vagy később, ellenőrizze az adatokat az Azure-bA feltöltött fájlok manifest lesz. Állítsa le az eszközt, és távolítsa el a kábelek. 
-2.  Ütemezhet begyűjtést a UPS- [vissza az Azure-bA a Data Box szállításra](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up). 
-3.  Microsoft megkapja az eszköz, csatlakoztatva van a hálózati adatközpontba, és adatokat töltenek fel a tárfiók a megadott (a hierarchikus névterek le van tiltva) után mikor megrendelt a Data Box. Ellenőrizze a AJ fájlokra vonatkozóan, hogy az Azure-bA feltöltött összes adatát. Most már továbbléphet az adatok Data Lake Storage Gen2-tárfiókra.
+1. Az adatmásolás befejezése után futtassa:
+    
+    - [A Data Box vagy a Data Box nehéz szállításra való](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
+    - Miután az eszköz előkészítése befejeződött, töltse le a AJ fájlokat. Ezek AJ használja, vagy később, ellenőrizze az adatokat az Azure-bA feltöltött fájlok manifest lesz. 
+    - Állítsa le az eszközt, és távolítsa el a kábelek.
+2.  Ütemezhet begyűjtést a UPS. Kövesse az utasításokat:
+
+    - [A Data Box szállításra](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up) 
+    - [A Data Box (nagy erőforrásigényű) szállításra](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up).
+3.  Microsoft megkapja az eszköz, az adatközponti hálózathoz csatlakozik, és az adatok a storage-fiók (a hierarchikus névterek le van tiltva) a megadott fel a rendszer mikor meg helyezi az eszközt ahhoz. Ellenőrizze a AJ fájlokra vonatkozóan, hogy az Azure-bA feltöltött összes adatát. Most már továbbléphet az adatok Data Lake Storage Gen2-tárfiókra.
+
 
 ## <a name="move-the-data-onto-your-data-lake-storage-gen2-storage-account"></a>Helyezze át az adatokat a Data Lake Storage Gen2 tárfiók alakzatot
 
 Ez a lépés akkor szükséges, ha használata Azure Data Lake Storage Gen2 lesz az adattároló. Ha csak egy blob storage-fiók nélkül hierarchikus névtér lesz az adattároló használ, nem kell erre a lépésre szükség.
 
-Ez 2 módon teheti meg. 
+Ezt kétféleképpen teheti meg.
 
 - Használat [Azure Data Factoryben az adatok áthelyezése az ADLS Gen2-re](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2). Adja meg kell **Azure Blob Storage** forrásaként.
 

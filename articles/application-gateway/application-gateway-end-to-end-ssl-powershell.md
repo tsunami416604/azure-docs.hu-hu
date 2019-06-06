@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 8c715cb84dff6e2e739de59aba33041ec1b8db52
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d9851f6b3e32d0c7ab0d7774458ba5bc4d9ba823
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786284"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729677"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Végpontok közötti SSL konfigurálása az Application Gateway a PowerShell használatával
 
@@ -44,7 +44,7 @@ Ebben a forgatókönyvben lesz:
 
 Végpontok közötti SSL konfigurálása az application gateway szolgáltatással, egy tanúsítvány szükséges az átjáró és a háttér-kiszolgálók számára tanúsítványokra szükség. Az átjáró tanúsítványa egy szimmetrikus kulcsot, az SSL protokoll specifikációja alapján az használható. A szimmetrikus kulcs majd használható titkosításához és visszafejtéséhez az átjáró küldött forgalmat. Az átjáró tanúsítványa kell lennie a személyes információcsere (PFX) formátumban. Ez a fájlformátum exportálja a titkos kulcsot, a titkosítási és visszafejtési forgalmat az application gateway által igényelt teszi lehetővé.
 
-A végpontok közötti SSL-titkosítás a háttéralkalmazás az Alkalmazásátjáró engedélyezési listán kell lennie. A háttér-kiszolgálók a nyilvános tanúsítvány feltöltése az application gatewayhez. A tanúsítvány hozzáadása biztosítja, hogy az application gateway csak kommunikál a háttér-ismert példányok. Ez további védi a végpontok közötti kommunikációt.
+A végpontok közötti SSL-titkosítás a háttéralkalmazás explicit módon engedélyezni kell az application gateway használatával. A háttér-kiszolgálók a nyilvános tanúsítvány feltöltése az application gatewayhez. A tanúsítvány hozzáadása biztosítja, hogy az application gateway csak kommunikál a háttér-ismert példányok. Ez további védi a végpontok közötti kommunikációt.
 
 A konfigurációs folyamat a következő szakaszokban ismertetett.
 
@@ -170,7 +170,7 @@ Minden konfigurációs elemet az application gateway létrehozása előtt vannak
    > Állomásfejléc és kiszolgálónév jelzése (SNI) a háttérben használja, ha a lekért nyilvános kulcs nem lehet a kívánt helyet, hogy melyik adatforgalmi folyamatokat. Ha kétségei vannak, látogasson el a https://127.0.0.1/ győződjön meg arról, melyik tanúsítványt használják a háttér-kiszolgálókon a *alapértelmezett* SSL-kötés létrehozásához. A kérelemből a nyilvános kulcsot használja az ebben a szakaszban. Ha a HTTPS-kötések használunk állomásfejléc és SNI, és nem jelenik meg egy válasz és a tanúsítvány manuális böngésző kérést a https://127.0.0.1/ a háttér-kiszolgálókon be kell állítania egy alapértelmezett SSL-kötés van a számukra. Ha ezt nem teszi meg, a sikertelen mintavételek és a háttér nem szerepel az engedélyezési listán.
 
    ```powershell
-   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\cert.cer
+   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
    ```
 
    > [!NOTE]

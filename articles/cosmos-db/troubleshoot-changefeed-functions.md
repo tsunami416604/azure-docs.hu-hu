@@ -7,12 +7,12 @@ ms.date: 05/23/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 66eff6ee603ced03a8f4d75d4569752e0b11a6e7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 09ea70ac302806b4cb0e97fde92dda4208e3d659
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242519"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734520"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Problémák diagnosztizálása és hibaelhárítása az Azure Functions az Azure Cosmos DB-eseményindító használata során
 
@@ -88,6 +88,12 @@ Ha úgy találja, hogy néhány módosítást az eseményindító nem érkeztek 
 Ezenkívül a forgatókönyv érvényesíthető, ha tudja, hány Azure-Függvényalkalmazás-példányt futtató. Ha a bérletek tároló vizsgálata és belül, a különböző értékeket bérleti elemek számát a `Owner` bennük tulajdonságot meg kell egyeznie a Függvényalkalmazás példányainak számát. További tulajdonosok, mint az Azure-Függvényalkalmazás ismert példányok esetén az azt jelenti, hogy ezek további tulajdonosok közé tartoznak a "lopásának megjelölése" a módosításokat.
 
 Megkerülő megoldás egyik egyszerű módja ebben az esetben, a alkalmazni egy `LeaseCollectionPrefix/leaseCollectionPrefix` új/eltérő értékkel a függvényt, illetve azt is megteheti, egy új bérleteket tárolóval.
+
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Kötés csak végezhető IReadOnlyList<Document> vagy JArray
+
+Ez a hiba történik, ha az Azure Functions-projektet (vagy bármely hivatkozott projektben) egy másik verziója fut, a által biztosított az Azure Cosmos DB SDK manuális NuGet hivatkozást tartalmaz a [Azure Functions Cosmos DB Extension](./troubleshoot-changefeed-functions.md#dependencies).
+
+A megoldás ezt a helyzetet, távolítsa el a manuális NuGet-hivatkozás, amely hozzá lett adva, és lehetővé teszik az Azure Cosmos DB SDK-referencia oldja meg az Azure Functions Cosmos DB Extension csomag keresztül.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -2,20 +2,20 @@
 title: Egy egyéni házirendek az Azure Active Directory B2C az OAuth2 technikai profil meghatározása |} A Microsoft Docs
 description: Adja meg egy egyéni házirendet az Azure Active Directory B2C az OAuth2 technikai profil.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 65634cb6573a0f163f7a0ca07bf26af9512e240b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 80b196b34e8eee99ed77c3c8a914f89fa68d87b8
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683888"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512951"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az OAuth2 technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 
@@ -76,7 +76,7 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | client_id | Igen | Az identitásszolgáltató az alkalmazás azonosítója. |
 | IdTokenAudience | Nem | A id_token célközönségét. Ha meg van adva, az Azure AD B2C-vel ellenőrzi, hogy a jogkivonat az identitásszolgáltató által visszaadott jogcím szerepel-e, és megadott egyenlő. |
@@ -104,7 +104,7 @@ A **CryptographicKeys** elem tartalmazza a következő attribútumot:
 | --------- | -------- | ----------- |
 | client_secret | Igen | A titkos ügyfélkulcsot az identity provider alkalmazás. A titkosítási kulcsot kötelező megadni, ha csak a **response_types** metaadat értéke `code`. Ebben az esetben az Azure AD B2C-vel hívást egy másik az engedélyezési kódot, a hozzáférési jogkivonatot. Ha a metaadat értéke `id_token`, kihagyhatja a titkosítási kulcs. |  
 
-## <a name="redirect-uri"></a>Átirányítási URI
+## <a name="redirect-uri"></a>Redirect URI
 
 Az identitásszolgáltató az átirányítási URL-cím konfigurálásakor adja meg a `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp`. Cserélje le **bérlői** a bérlő nevét (például: contosob2c.onmicrosoft.com) és **policyId** azonosítóval a szabályzat (például b2c_1a_policy). Az átirányítási URI-t kell lennie az összes kisbetűt.
 

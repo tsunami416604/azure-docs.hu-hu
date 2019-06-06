@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e491f0c452b7b51eac4e8cccab1cc7ed8430e49
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c5eff7925599931104440213112ce288fd521b61
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783446"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473776"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése
 
@@ -114,10 +114,10 @@ Konfigurálja a Kerberos, minden összekötő géphez ismételje meg a következ
 
 Most, hogy konfigurálta a kcd Szolgáltatáshoz, készen áll az Azure AD Application Proxy konfigurálása.
 
-1. Közzététel a SharePoint-webhely a következő beállításokkal. Lépésenkénti útmutatásért lásd: [közzététel az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md).
-   * **Belső URL-cím**: A SharePoint belső URL-cím a korábban kiválasztott például **<https://SharePoint/>**.
+1. Közzététel a SharePoint-webhely a következő beállításokkal. Lépésenkénti útmutatásért lásd: [közzététel az Azure AD-alkalmazásproxy használatával](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
+   * **Belső URL-cím**: A SharePoint belső URL-cím a korábban kiválasztott például **<https://SharePoint/>** .
    * **Az előhitelesítési módszer**: Azure Active Directory
-   * **A fejlécek URL-cím fordításának**: NEM
+   * **A fejlécek URL-cím fordításának**: NO
 
    >[!TIP]
    >A SharePoint használja a _állomásfejléc_ érték keresse ki a helyet. Ez az érték alapján hivatkozásokat is állít elő. Az eredő hatás, hogy minden olyan hivatkozás, amely a SharePoint hoz létre egy közzétett URL-címet, amely a külső URL-cím használata megfelelően vannak beállítva. Az érték **Igen** is lehetővé teszi, hogy az összekötő továbbítja a kérést a háttéralkalmazás. Azonban érték beállítása **nem** azt jelenti, hogy az összekötő nem küld a belső neve. Ehelyett az összekötő küld az állomásfejléc közzétett URL-címként a háttéralkalmazás.

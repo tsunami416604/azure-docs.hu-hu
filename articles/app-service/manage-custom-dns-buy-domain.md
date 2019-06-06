@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b3177c5dfc5602dd2b6530b0934c17400ab5d528
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 4b26446845d004b4dd92807c0b5ec0ada9ed181f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978883"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475212"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Az Azure App Service egyéni tartománynév vásárlása
 
@@ -118,7 +118,7 @@ Ezután válassza ki a kívánt beállításokat a tartomány. Tekintse meg az a
 
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
-|Adatvédelem | Engedélyezés | Részvétel a "Adatvédelem", amely szerepel a vételár _ingyenes_. Néhány legfelső szintű tartományok, amelyek nem támogatják az adatvédelmet regisztráló szervezetek által kezelt, és ezek jelennek meg a **adatvédelmet** lapot. |
+|Az adatvédelem | Engedélyezés | Részvétel a "Adatvédelem", amely szerepel a vételár _ingyenes_. Néhány legfelső szintű tartományok, amelyek nem támogatják az adatvédelmet regisztráló szervezetek által kezelt, és ezek jelennek meg a **adatvédelmet** lapot. |
 | Alapértelmezett állomásnevek hozzárendelése | **www** és **\@** | Ha szükséges, válassza ki a kívánt gazdagépnévvel kötéseket. A tartomány beszerzési művelet befejeződése után az alkalmazás a kijelölt állomásnevek címen érhető el. Ha az alkalmazás mögötti [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nem jelenik meg a beállítást, a gyökértartomány hozzárendelése (@), mert a Traffic Manager does nem támogatja A-rekordokat. A tartomány vásárlás befejezése után módosíthatja a hostname-hozzárendeléseket. |
 
 ### <a name="accept-terms-and-purchase"></a>Fogadja el a feltételeket, és vásárolja meg
@@ -138,13 +138,17 @@ Térjen vissza a **App Service-tartomány** kattintson **OK**. Amíg a művelet 
 
 ### <a name="test-the-hostnames"></a>A gazdanév tesztelése
 
-Az alkalmazás alapértelmezett állomásnevek rendelt, ha minden kiválasztott gazdagép sikeres értesítés is megjelenik. 
+Az alkalmazás alapértelmezett állomásnevek rendelt, ha minden kiválasztott gazdagép sikeres értesítés is megjelenik.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-A kiválasztott gazdanév található is megjelenik a **egyéni tartományok** lap a **egyéni állomásnevek** szakaszban. 
+A kiválasztott gazdanév található is megjelenik a **egyéni tartományok** lap a **egyéni állomásnevek** szakaszban.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
+
+> [!NOTE]
+> A **Megjegyzés biztonságos** az egyéni tartomány azt jelenti, hogy még nincs kötött SSL-tanúsítványt, és bármely HTTPS-kérést közvetlenül a böngészőből az egyéni tartomány kap, és hiba vagy figyelmeztetés, attól függően, a böngésző-címkét. SSL-kötés beállítása: [vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány](web-sites-purchase-ssl-web-site.md).
+>
 
 A gazdanév teszteléséhez nyissa meg a listában szereplő állomásnevek a böngészőben. A példa az előző képernyőképen látható, próbálja meg úgy ellenőrizheti, hogy _kontoso.net_ és _www\.kontoso.net_.
 

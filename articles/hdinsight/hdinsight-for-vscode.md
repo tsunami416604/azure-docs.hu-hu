@@ -1,20 +1,18 @@
 ---
-title: Az Azure HDInsight-eszközök – Visual Studio Code-ot használja a Hive, LLAP vagy PySpark |} A Microsoft Docs
+title: Azure HDInsight-eszközök – Visual Studio Code-ot használja a Hive, LLAP vagy PySpark
 description: Ismerje meg, hogyan használható az Azure HDInsight Tools for Visual Studio Code létrehozásához és elküldéséhez a lekérdezések és a parancsfájlokat.
-Keywords: Visual Studio Code-ot, az Azure HDInsight-eszközök, Hive, Python, PySpark, Spark, HDInsight, Hadoop LLAP, interaktív Hive, interaktív lekérdezés
-documentationcenter: ''
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/04/2019
-ms.openlocfilehash: 04e607517bc806b60d7e76e5076f9d3518e530eb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/30/2019
+ms.openlocfilehash: d114a1e62ae0d28e7d4a3ad453d5d7bd3e1d5b7a
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681764"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427685"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight Tools for Visual Studio Code használata
 
@@ -71,12 +69,12 @@ Elküldés előtt szkriptek HDInsight-fürtökhöz a Visual Studio Code-ból, sz
 
     ![HDInsight Tools for Visual Studio Code-bejelentkezés](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
-2. Bejelentkezési utasításait a **kimeneti** ablaktáblán.
+2. Kövesse az utasításokat a bejelentkezést a **kimeneti** ablaktáblán.
     + Az Azure globális környezetben **HDInsight: Bejelentkezési** parancs elindítja a **jelentkezzen be Azure** művelet a HDInsight Explorerben, és ez fordítva is igaz.
 
         ![Bejelentkezési utasítások az Azure-hoz](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin.png)
 
-    + Más környezetek esetén kövesse a bejelentkezési utasításokat.
+    + Más környezetekben kövesse a bejelentkezési utasításokat.
 
         ![Bejelentkezési utasítások az más környezetben](./media/hdinsight-for-vscode/hdi-azure-hdinsight-hdinsight-signin.png)
 
@@ -219,7 +217,7 @@ HDInsight Tools for Visual Studio Code interaktív Hive-lekérdezések elküldé
 
 8. Az eszköz is támogatja a **SQL záradék** lekérdezés.
 
-   ![Küldje el a Python-feladat eredményének](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) a beküldés állapotát a bal oldali sávon, amikor lekérdezést futtat az alsó állapot jelenik meg. További lekérdezések ne küldjön el, ha az állapot értéke **PySpark kernelt (foglalt)**.  
+   ![Küldje el a Python-feladat eredményének](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) a beküldés állapotát a bal oldali sávon, amikor lekérdezést futtat az alsó állapot jelenik meg. További lekérdezések ne küldjön el, ha az állapot értéke **PySpark kernelt (foglalt)** .  
 
 >[!NOTE]  
 >A fürtök is fenntartható a munkamenet-információk. A definiált változó, a függvény és a megfelelő értékeket a munkamenetet, így azok között ugyanazon fürt több szolgáltatás-hívást lehet hivatkozni tartanak. 
@@ -306,35 +304,35 @@ Fájl elküldése, figyelje meg, hogy a .vscode mappa automatikusan bekerül a m
     **POST /batches**   
     A kérelem törzse
 
-    | név | description | type | 
+    | name | description | type | 
     | :- | :- | :- | 
-    | fájl | Hajtsa végre az alkalmazást tartalmazó fájlt | elérési út (kötelező) | 
+    | Fájl | Hajtsa végre az alkalmazást tartalmazó fájlt | elérési út (kötelező) | 
     | proxyUser | Felhasználó megszemélyesítése a feladat futtatásakor | string | 
-    | Osztálynév | Alkalmazás Java/Spark main osztály | string |
+    | className | Alkalmazás Java/Spark main osztály | string |
     | args | Az alkalmazás a parancssori argumentumok | karakterláncok | 
     | JAR-fájlok kivételével | Ebben a munkamenetben használandó jars | Karakterlánc listája | 
     | pyFiles | Ebben a munkamenetben használandó Python-fájlok | Karakterlánc listája |
-    | fájl megjelenítése | Ebben a munkamenetben használni kívánt fájlok | Karakterlánc listája |
+    | Fájlok | Ebben a munkamenetben használni kívánt fájlok | Karakterlánc listája |
     | driverMemory | Az illesztőprogram-folyamathoz használandó memória mennyisége | string |
     | driverCores | Az illesztőprogram-folyamathoz használandó magok száma | int |
     | executorMemory | Memória / végrehajtó folyamat használata | string |
     | executorCores | Minden egyes végrehajtó használandó magok száma | int |
     | numExecutors | A munkamenet elindításához végrehajtóval száma | int |
     | archívum | Ebben a munkamenetben használandó archívum | Karakterlánc listája |
-    | üzenetsor | A neve, amelyhez a YARN várólista elküldve | string |
-    | név | A munkamenet neve | string |
+    | várólista | A neve, amelyhez a YARN várólista elküldve | string |
+    | name | A munkamenet neve | string |
     | megerősítési | Spark-konfiguráció tulajdonságai | Térkép kulcs = érték |
 
     Választörzs   
     A létrehozott Batch-objektum.
 
-    | név | description | type | 
+    | name | description | type | 
     | :- | :- | :- | 
     | id | A munkamenet-azonosító | int | 
     | appId | Ez a munkamenet-alkalmazás alkalmazásazonosítója |  String |
     | appInfo | Az alkalmazás részletes adatai | Térkép kulcs = érték |
     | napló | A napló sorok | karakterláncok |
-    | state |   A batch-állapot | string |
+    | állapot |   A batch-állapot | string |
 
 >[!NOTE]
 >A hozzárendelt livy-konfigurációs megjelennek a tesztkimenet ablaktáblán amikor küldje el a szkriptet.
@@ -353,14 +351,14 @@ Fájl elküldése, figyelje meg, hogy a .vscode mappa automatikusan bekerül a m
 
 4. Bontsa ki a fürtöt, hive metaadatok adatbázis és tábla sémájának megtekintéséhez.
 
-   ![Azure HDInsight-fürt](./media/hdinsight-for-vscode/hdi-azure-hdinsight-cluster.png)
+   ![Az Azure HDInsight-fürt](./media/hdinsight-for-vscode/hdi-azure-hdinsight-cluster.png)
 
 
 ## <a name="additional-features"></a>További funkciók
 
 A Visual Studio Code HDInsight támogatja a következő funkciókat:
 
-- **Automatikus kitöltés IntelliSense**. Javaslatok szót kulcsszó, módszerek, változók és így tovább. Különböző ikonjai a különböző objektumokat.
+- **Az automatikus kiegészítés IntelliSense**. Javaslatok szót kulcsszó, módszerek, változók és így tovább. Különböző ikonjai a különböző objektumokat.
 
     ![HDInsight Tools for Visual Studio Code IntelliSense objektumtípusok](./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png)
 - **Az IntelliSense hiba jelölő**. A nyelvi szolgáltatás kiemeli a szerkesztési által jelzett hibákat a Hive-parancsfájlnak.     
@@ -380,7 +378,7 @@ A Visual Studio Code HDInsight támogatja a következő funkciókat:
 
 ## <a name="logout"></a>Kijelentkezés  
 
-Lépjen a menüsoron **nézet** > **Parancskatalógus...** , majd adja meg **HDInsight: Kijelentkezési**.  Egy előugró ablak az kell az alsó jobb oldali sarokban megjelölve **kijelentkezési sikerült!**.
+Lépjen a menüsoron **nézet** > **Parancskatalógus...** , majd adja meg **HDInsight: Kijelentkezési**.  Egy előugró ablak az kell az alsó jobb oldali sarokban megjelölve **kijelentkezési sikerült!** .
 
 
 ## <a name="next-steps"></a>További lépések

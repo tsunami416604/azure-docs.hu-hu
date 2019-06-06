@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 06/05/2019
 ms.author: v-adgera
-ms.openlocfilehash: 797dfc44b9897920f9fd74346ee01e4b157a4ce8
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 31944c08bad503c20832ea7e4e682c0063ab0f9f
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967780"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735036"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Az Azure digitális Twins Postman konfigurálása
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan kezelhetik és az Azure digitális Twins felügyelet
 
 Bevezetés az Azure digitális Twins egy REST-ügyféleszköz segítségével [Postman](https://www.getpostman.com/) készítse elő a helyi tesztelési környezetét. A Postman-ügyfél segítségével gyorsan létrehozhat összetett HTTP-kérelmekre. Töltse le a Postman-ügyfél asztali verzióját a [www.getpostman.com/apps](https://www.getpostman.com/apps).
 
-[Postman](https://www.getpostman.com/) REST teszteli, amely megkeresi a legfontosabb HTTP kérés funkciói egy hasznos, asztali és a grafikus felhasználói Felülettel beépülő modul-alapú eszköz. 
+[Postman](https://www.getpostman.com/) REST teszteli, amely megkeresi a legfontosabb HTTP kérés funkciói egy hasznos, asztali és a grafikus felhasználói Felülettel beépülő modul-alapú eszköz.
 
 A Postman-ügyfélen keresztül megoldások fejlesztők adhatja meg a HTTP-kérelem típusú (*POST*, *első*, *frissítés*, *javítására*, és  *Törlés*), API-végpont meghívására, valamint az SSL használatát. Postman is támogatja a HTTP-kérelmek fejléceinek hozzáadását, paraméterek, űrlapadatokból és szervek.
 
@@ -39,15 +39,15 @@ Az Azure Active Directory-alkalmazások, az OAuth 2.0 típusú implicit engedél
 
 1. Alatt **szükséges engedélyek**válassza **Hozzáadás** , és adja meg **Azure digitális Twins** alatt **API-hozzáférés hozzáadása**. Ha a keresés nem találja meg az API-t, keressen inkább az **Azure Smart Spaces** kifejezésre. Ezután válassza ki **engedélyek megadása > delegált engedélyek** és **kész**.
 
-    ![Az Azure Active Directory alkalmazásregisztrációk api hozzáadása](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
+    [![Az Azure Active Directory alkalmazásregisztrációk api hozzáadása](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
 1. Kattintson a **Manifest** az alkalmazásjegyzékben, az alkalmazás megnyitásához. Állítsa be *oauth2AllowImplicitFlow* való `true`.
 
-      ![Az Azure Active Directory implicit folyamat][1]
+    [![Az Azure Active Directory implicit folyamat](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
 
 1. Konfigurálja a **válasz URL-cím** való `https://www.getpostman.com/oauth2/callback`.
 
-      ![Az Azure Active Directory-válasz URL-címe][2]
+    [![Az Azure Active Directory-válasz URL-címe](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
 
 1. Másolja ki és tartsa a **Alkalmazásazonosító** az Azure Active Directory-alkalmazás. A következő lépések használatban van.
 
@@ -71,16 +71,16 @@ Ezután állítsa be, és a egy Azure Active Directory-jogkivonat beszerzése Po
     | Mező  | Érték |
     |---------|---------|
     | Engedélyezési típus | `Implicit` |
-    | Visszahívási URL | `https://www.getpostman.com/oauth2/callback` |
+    | Visszahívási URL-címe | `https://www.getpostman.com/oauth2/callback` |
     | Hitelesítési URL-cím | Használja a **engedélyezési URL-címet** a 2. lépés |
-    | Ügyfélazonosító | Használja a **Alkalmazásazonosító** létrehozott vagy az előző szakaszban azt egy megváltozott célra az Azure Active Directory-alkalmazás |
+    | Ügyfél-azonosító | Használja a **Alkalmazásazonosító** létrehozott vagy az előző szakaszban azt egy megváltozott célra az Azure Active Directory-alkalmazás |
     | Scope | Hagyja üresen |
     | Állapot | Hagyja üresen |
     | Ügyfél-hitelesítés | `Send as Basic Auth header` |
 
 1. Az ügyfélnek meg kell jelennie mint:
 
-   ![Postman-ügyfél példa][3]
+    [![Postman-ügyfél példa](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. Válassza ki **jogkivonat kérelmezéséhez**.
 
@@ -98,13 +98,13 @@ Az előző lépések végrehajtását követően, hogy egy hitelesített többr�
 
 1. Alatt a **fejléc** lapon maradva adja hozzá egy HTTP-kérelem fejléc kulcs **Content-Type** értékkel `multipart/mixed`.
 
-   ![Tartalom típusa multipart/mixed][4]
+   [![Tartalom típusa multipart/mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Nem szöveges adatok szerializálása fájlokba. JSON-adatok JSON-fájlként menti.
 1. Alatt a **törzs** lapon maradva adja hozzá az egyes fájlok hozzárendelésével egy **kulcs** név kiválasztása `file` vagy `text`.
 1. Ezután válassza ki az egyes fájlok keresztül a **fájl kiválasztása** gombra.
 
-   ![Postman-ügyfél példa][5]
+   [![Postman-ügyfél példa](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
 
    >[!NOTE]
    > * A Postman-ügyfél nem igényel, rendelkezik-e manuálisan hozzárendelt többrészes adattömbök **Content-Type** vagy **tartalomtípus-szabályozó**.
@@ -120,10 +120,3 @@ Az előző lépések végrehajtását követően, hogy egy hitelesített többr�
 - Használja a több részből álló kéréseket [blobok hozzáadása az Azure digitális Twins' entitások](./how-to-add-blobs.md).
 
 - Hitelesítés a felügyeleti API-kkal kapcsolatos további információkért olvassa el a [hitelesítés API-kkal](./security-authenticating-apis.md).
-
-<!-- Images -->
-[1]: media/how-to-configure-postman/implicit-flow.png
-[2]: media/how-to-configure-postman/reply-url.png
-[3]: media/how-to-configure-postman/postman-oauth-token.png
-[4]: media/how-to-configure-postman/content-type.png
-[5]: media/how-to-configure-postman/form-body.png

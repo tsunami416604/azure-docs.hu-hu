@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0e361edfea6365c3d3fe072e12bb303e71bb8d63
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b993b34f81298b40c8849084380b2d1770708351
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66249081"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482362"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -143,7 +143,7 @@ A GPT particionálás csak az adatlemezeket, nem az operációsrendszer-lemezek 
 
 **Milyen lemeztípusok támogatja a pillanatképeket?**
 
-Prémium szintű SSD, a standard SSD és a standard szintű SSD támogatja a pillanatképek mérete korlátozott nélkül. Így pillanatkép nagy méretű lemezek (legfeljebb 32 TiB) is. Ultranagy SSD-k nem támogatják a pillanatképeket.
+Prémium szintű SSD, standard SSD és HDD-támogatás standard pillanatképek. A következő három lemeztípusok pillanatképek minden adatlemez-méretet (beleértve a méretű lemezek akár 32 TiB) támogatottak. Ultranagy SSD-k nem támogatják a pillanatképeket.
 
 ## <a name="standard-ssd-disks"></a>Standard SSD-lemez
 

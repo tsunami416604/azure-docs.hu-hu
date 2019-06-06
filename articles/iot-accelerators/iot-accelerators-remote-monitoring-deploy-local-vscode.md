@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: bfe28f3ff994d518cb744233e88a6f04b5771a83
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ed3301eb0e723e05e2a642ffea2f1609032553b4
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967529"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730173"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>A távoli figyelési megoldásgyorsító helyileg – Visual Studio Code telepítése
 
@@ -62,13 +62,14 @@ dotnet build -c Release
 A következő lépések bemutatják, hogyan futtathatja a távoli figyelési mikroszolgáltatás-alapú Visual Studio Code-ban:
 
 1. Indítsa el a Visual Studio Code-ot.
-1. Nyissa meg a **azure-iot-pcs-remote-monitoring-dotnet** modulnak a VS Code a helyi másolatot.
-1. Másolja a fájlokat **launch.json** és **tasks.json** scripts\local\launch\idesettings\vscode a\. Hozzon létre egy új mappát **azure-iot-pcs-remote-monitoring-dotnet\.vscode** , és illessze be a fájl létezik.
-1. A hibakeresési panel megnyitása a VS Code-ban, és futtassa a **futtatása minden mikroszolgáltatás-alapú** konfigurációja. Ez a konfiguráció fut, az eszköz szimulálása mikroszolgáltatások Docker, és az egyéb mikroszolgáltatások fut, a hibakereső.
+1. A VS Code-ban nyissa meg a **azure-iot-pcs-remote-monitoring-dotnet** mappát.
+1. Hozzon létre egy új nevű **.vscode** a a **azure-iot-pcs-remote-monitoring-dotnet** mappát.
+1. Másolja a fájlokat **launch.json** és **tasks.json** services\scripts\local\launch\idesettings\vscode, az a **.vscode** imént létrehozott mappára.
+1. Nyissa meg a **hibakeresési panel** a VS Code, és futtassa a **összes futtatása mikroszolgáltatások** konfigurációja. Ez a konfiguráció fut, az eszköz szimulálása mikroszolgáltatások Docker, és az egyéb mikroszolgáltatások fut, a hibakereső.
 
-Tegyük fel, a kimenet **Auth** szolgáltatásának a **hibakeresési konzolt** a következőképpen néz:
+Futó kimenete **összes futtatása microsoervices** a Debug-konzolon a következőhöz hasonló:
 
-[![Deploy-Local-Auth-Service](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
+[![Deploy-Local-Microservices](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
 
 ### <a name="run-the-web-ui"></a>A webes felhasználói felület futtatása
 

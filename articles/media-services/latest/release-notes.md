@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 06/04/2019
 ms.author: juliako
-ms.openlocfilehash: a5ce6467a547b9fded03b3b5a6f40f84d29d3618
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: e34e0f9fee1d09e66dcdd5069e800dc1f3f750cb
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66385145"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688651"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -36,11 +36,18 @@ További információkért lásd: [Migrálási útmutató segítséget nyújt a 
 
 ## <a name="may-2019"></a>2019. május
 
-### <a name="hls-v4-and-above-support-in-dynamic-packaging"></a>HLS v4 vagy újabb támogatása a dinamikus csomagolás 
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>A Media Services diagnosztikai naplók és mérőszámok az Azure Monitor támogatása
 
-Hozzáadott HLS (4-es vagy újabb) támogatja a dinamikus csomagolás, eszközök, amelyek több hangsávval rendelkező több kodekeket és nyelvek.
+Mostantól használhatja az Azure Monitor telemetriai adatok emmited a Media Services által megtekintéséhez.
 
-További információkért lásd: [dinamikus csomagolási](dynamic-packaging-overview.md).
+* Az Azure Monitor-diagnosztikai naplók segítségével figyelheti a Media Services kulcs kézbesítési végpont által küldött kérelmeket. 
+* Figyelheti a mérőszámokat a Media Services által kibocsátott [adatfolyam-továbbítási végpontok](streaming-endpoint-concept.md).   
+
+További információkért lásd: [figyelő Media Services-metrikák és diagnosztikai naplók](media-services-metrics-diagnostic-logs.md).
+
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Többszörös hangsáv támogatja a dinamikus csomagolás 
+
+Eszközök, amelyek több hangsávval rendelkező több kodekeket és nyelvek közvetítésekor [dinamikus csomagolási](dynamic-packaging-overview.md) mostantól támogatja a többszörös hangsáv a HLS-kimenet (4-es verziójú vagy újabb).
 
 ### <a name="korea-regional-pair-is-open-for-media-services"></a>Koreai régiópárt meg nyitva, a Media Services 
 

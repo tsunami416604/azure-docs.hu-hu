@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9ecf6d04056a91f1f9dd62a5238f60177d2bf59
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 16e4a5f63ba80b02a967888ad76fedf165a576c8
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420588"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473395"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Mi az elsődleges frissítési Token?
 
@@ -111,8 +111,11 @@ Amikor egy felhasználó alkalmazástelepítést kezdeményez a böngésző kapc
 Egy PRT bizonyos forgatókönyvek esetén a multi-factor authentication (MFA) jogcím kérheti le. Az MFA-alapú PRT alkalmazások jogkivonatokat kérhet használata esetén az MFA-jogcím átkerül alkalmazás jogkivonatok. Ez a funkció zökkenőmentes élményt nyújt a felhasználók megakadályozzák, hogy a minden alkalmazás, amely ezt megköveteli az MFA-hitelesítést. Egy PRT kaphat az MFA-jogcímet a következő módon:
 
 * **Jelentkezzen be a vállalati Windows Hello**: Windows Hello for Business váltja fel a jelszavak és a kriptográfiai kulcsokat használ a erős, kétfaktoros hitelesítés. Windows Hello for Business az eszközön a felhasználó, és magát a többtényezős Hitelesítést igényel üzembe helyezni. Amikor egy felhasználó bejelentkezik az Windows Hello for Business, a felhasználó PRT lekérdezi az MFA-jogcímet. Ebben a forgatókönyvben a felhasználók bejelentkezés intelligens kártyák, ha intelligens kártyás hitelesítés hoz létre az AD FS MFA jogcím is vonatkozik.
+   * Windows Hello for Business számít a multi-factor authentication, az MFA-jogcím frissül magát a PRT frissítésekor, amikor a felhasználók bejelentkeznek a vállalati WIndows Hello for Business folyamatosan kiterjeszti az MFA időtartama
 * **WAM interaktív bejelentkezés során MFA**: Során egy jogkivonat kérése WAM keresztül Ha a felhasználó köteles így tenni a többtényezős hitelesítés az alkalmazás eléréséhez a PRT, amely a meg nem újítják kommunikáció során imprinted az MFA-jogcímet.
+   * Ebben az esetben az MFA-jogcím nem frissül folyamatosan, így az MFA időtartama alapján a élettartamának beállítása a könyvtárhoz.
 * **Eszközök regisztrációja során MFA**: Ha a rendszergazda úgy konfigurálta az Eszközbeállítások az Azure AD- [többtényezős hitelesítés regisztrálható az eszköz](device-management-azure-portal.md#configure-device-settings), a felhasználó MFA a regisztráció befejezéséhez szüksége van. Ez a folyamat során a felhasználó számára kiállított PRT van az MFA-jogcímet a regisztráció során kapott. Ez a funkció csak a nem a többi eszközre bejelentkező felhasználóknak a csatlakoztatási műveletet végrehajtó felhasználó vonatkozik.
+   * Hasonlóan a WAM interaktív bejelentkezést, az MFA-jogcím nem frissül folyamatosan, így az MFA időtartama alapján a élettartamának beállítása a könyvtárhoz.
 
 Windows 10-es PRTs particionált listája az egyes hitelesítő adatokat tárolja. Tehát van egy PRT minden, a Windows Hello for Business, jelszóval vagy intelligens kártya. Ezt a particionálása biztosítja, hogy az MFA-jogcím elkülönített alapján a hitelesítő adatokat használ, és nem vegyes során a jogkivonat-kérelmeket.
 

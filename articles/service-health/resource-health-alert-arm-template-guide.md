@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 3d9a5ebb2e25cfbabf8cfdbd94c2d1d04ae1bbee
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e552b90a4c98eff7b04cbeaef26aa10749ce672c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788456"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493401"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager-sablonok használatával a resource health-riasztások konfigurálása
 
@@ -31,7 +31,7 @@ Az alábbi utasításokat, lesz szüksége az előzetesen beállításához néh
 1. Telepítenie kell a [Azure PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. Kell [létrehozása vagy újbóli műveletcsoport](../azure-monitor/platform/action-groups.md) arra az esetre, konfigurálva
 
-## <a name="instructions"></a>Útmutatás
+## <a name="instructions"></a>Utasítások
 1. PowerShell használatával jelentkezzen be Azure-fiókjával, és válassza ki az előfizetést, amellyel kommunikálni szeretne
 
         Login-AzAccount
@@ -442,5 +442,7 @@ További információ a Resource Health:
 -  [Az Azure Resource Health áttekintése](Resource-health-overview.md)
 -  [Az Azure Resource Health segítségével elérhető erőforrástípusok és állapot-ellenőrzések](resource-health-checks-resource-types.md)
 
+
 Hozza létre a Service Health-riasztások:
 -  [Service Health-riasztások beállítása](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Az Azure tevékenységnapló eseménysémája](../azure-monitor/platform/activity-log-schema.md)

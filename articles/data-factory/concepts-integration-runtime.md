@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 6a7daae90254bb4192dbaf13e1c2f9202e2d2baa
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7c86577abe1e8e158299e3a6aee2cff7f3568241
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232428"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427139"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
@@ -114,11 +114,11 @@ Az integrációs modul helye meghatározza a háttérszámítások helyét és a
 ### <a name="azure-ir-location"></a>Az Azure-beli integrációs modul helye
 Beállíthat egy adott helyet az Azure-beli integrációs modul számára. Ebben esetben az adatok áthelyezése vagy a tevékenységküldés abban a régióban történik. 
 
-Ha úgy dönt, hogy az automatikus feloldásra képes Azure-beli integrációs modult használja, amely az alapértelmezett beállítás: 
+Ha úgy dönt, hogy használja a **Azure integrációs modul automatikus feloldása** az alapértelmezett 
 
 - A másolási tevékenység során az ADF mindent megtesz, hogy automatikusan észlelje a fogadó- és forrásadattárat, kiválassza ugyanabban a régióban (ha lehetséges) vagy a legközelebbi azonos földrajzi helyen a legjobb helyet, vagy helyettük az adat-előállító régiót használja, ha ezek nem észlelhetőek.
 
-- Az ADF az integrációs modult a keresési/metaadat-beolvasási tevékenység végrehajtásakor és az átalakítási tevékenység elküldésekor az adat-előállító régióban használja.
+- Keresési/GetMetadata/törlése tevékenység-végrehajtási (más néven a folyamat tevékenységek) Adatátalakítási tevékenységgel (más néven külső tevékenységek) zahájeno és szerzői műveletek (kapcsolat tesztelése, Tallózás a mappák listája és táblalista adatok előnézete), az ADF használatával az integrációs modul fogja használni az adat-előállító régióját.
 
 - Az adatfolyam ADF fogja használni az integrációs modul az adat-előállító régióját. 
 

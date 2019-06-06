@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: f6c00f4ada0590df91fce0c36281d0c0cac67b77
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 3611072759c62f42294730405f1dc402c496acce
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257948"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735002"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Az Azure Event Grid zdroje událostí
 
@@ -140,6 +140,15 @@ Fizessen elő az Azure Maps események geokerítésen válaszadására. Ha péld
 | [Az Azure Maps események reagálás az Event Grid használatával](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Az Azure Maps integrálása az Event Grid áttekintése. |
 | [Oktatóanyag: A geokerítésen beállítása](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ez az oktatóanyag végigvezeti azokon az alapvető lépéseket geokerítésen beállítása az Azure Maps használatával. Azure Event Grid használatával a geokerítésen eredmények streamelése és beállíthat egy értesítést a geokerítésen eredményei alapján. |
 | [Eseményséma](event-schema-azure-maps.md) | Az Azure Maps események mezőket jeleníti meg. |
+
+## <a name="app-configuration"></a>Alkalmazás konfigurációja
+Fizessen elő az Azure App-konfigurációs események válaszadására kulcs-érték módosítása.
+
+|Beosztás | Leírás |
+|---------|---------|
+| [Reagálhat rájuk alkalmazások konfigurálása az Azure Event Grid használatával](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Az Azure-alkalmazások konfigurálása integrálása az Event Grid áttekintése. |
+| [Gyors útmutató: alkalmazások konfigurálása az Azure-események átirányítása egyéni webes végpontra az Azure CLI-vel](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI használatával az Azure-alkalmazások konfigurálása eseményeket küld egy WebHook ismerteti. |
+| [Eseményséma](event-schema-app-configuration.md) | Az Azure App-konfigurációs események mezőket jeleníti meg. |
 
 
 ## <a name="next-steps"></a>További lépések

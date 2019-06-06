@@ -8,22 +8,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/08/2019
+ms.date: 05/31/2019
 ms.author: tyao;kumud
-ms.openlocfilehash: 5368ed8d1e60a646366065e2cf617fb2f3735b53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4ba6cca679ce4910ea941d9578939721514b2ec
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459759"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478970"
 ---
 # <a name="azure-web-application-firewall-monitoring-and-logging"></a>Az Azure webalkalmazás-tűzfal figyelés és naplózás 
 
 Azure-WebApp tűzfala (WAF) megfigyelés és naplózás biztosítják naplózási és integrációs szolgáltatásaival az Azure Monitor és az Azure Monitor naplókat.
-
-> [!IMPORTANT]
-> A WAF monitorozási és naplózási szolgáltatás Azure bejárati ajtajának jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="azure-monitor"></a>Azure Monitor
 

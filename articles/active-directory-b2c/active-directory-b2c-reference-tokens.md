@@ -2,20 +2,20 @@
 title: Jogkivonatok – Azure Active Directory B2C – áttekintés |} A Microsoft Docs
 description: További információ az Azure Active Directory B2C-vel használt tokenek.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ac3c2132fc28d9813a9322898f79c7cdfffa12d7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b0a5eca4823bd6ec7d1197adb205f7fb98f8d67e
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681894"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509081"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C jogkivonatok áttekintése
 
@@ -42,7 +42,7 @@ A [regisztrált alkalmazás](tutorial-register-applications.md) jogkivonatok fog
 
 Biztonsági jogkivonatokat, amely az alkalmazás megkapja az Azure AD B2C-ből származhat a `/authorize` vagy `/token` végpontok. Ha azonosító-jogkivonatokat a beszerzett a `/authorize` végpontot, hogy elkészültek használatával a [implicit folyamat](active-directory-b2c-reference-spa.md), gyakran használt felhasználó jelentkezik be a javascript-alapú webes alkalmazásokhoz. Ha azonosító-jogkivonatokat a beszerzett a `/token` végpontot, hogy elkészültek használatával a [bizalmas kódfolyamat](active-directory-b2c-reference-oidc.md), amely megőrzi a jogkivonatot a böngészőből rejtett.
 
-## <a name="claims"></a>Igénylések
+## <a name="claims"></a>jogcímek
 
 Azure AD B2C-vel való használatakor, teljes mértékben szabályozhatják a jogkivonatok tartalmát. Konfigurálható [felhasználói folyamatok](active-directory-b2c-reference-policies.md) és [egyéni szabályzatok](active-directory-b2c-overview-custom.md) bizonyos csoportok felhasználói adatok küldése a jogcímek, az alkalmazás számára szükséges. Ezeket a jogcímeket is tartalmaznak alapvető tulajdonságok, mint például **displayName** és **emailAddress**. Az alkalmazások használhatják ezeket a jogcímeket biztonságosan a felhasználók és a kérelmek hitelesítéséhez. 
 
@@ -65,7 +65,7 @@ Az alábbi táblázat a jogcímeket, hogy várt azonosító-jogkivonatokat, majd
 | Hitelesítési környezethez tartozó osztályhivatkozása | `acr` | Nem alkalmazható | Csak a régebbi szabályzatokkal használható. |
 | Megbízhatósági keretrendszer házirend | `tfp` | `b2c_1_signupsignin1` | A szabályzat az azonosító jogkivonat beszerzéséhez használt neve. |
 | Hitelesítési idő | `auth_time` | `1438535543` | Az idő, amikor a felhasználó utoljára megadott hitelesítő adatokat, jelöli, alapidőpont szerint. |
-| Hatókör | `scp` | `Read`| Erőforrás-hozzáférési jogkivonatot az engedélyeket. Több megadott engedélyek szóközzel vannak elválasztva. |
+| Scope | `scp` | `Read`| Erőforrás-hozzáférési jogkivonatot az engedélyeket. Több megadott engedélyek szóközzel vannak elválasztva. |
 | Jogosult fél | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | A **Alkalmazásazonosító** az ügyfélalkalmazás által kezdeményezett a kérelmet. |
 
 ## <a name="configuration"></a>Konfiguráció

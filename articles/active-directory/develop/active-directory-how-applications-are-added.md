@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 06/04/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cc9d0a951ac6f7ed18ad6558ae9edb2d1f9c8f4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 84069fb80ac751cbde53b0febdac451b54cd2b29
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544641"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688752"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Hogyan és miért érdemes az Azure AD-alkalmazások felvétele
 
@@ -32,9 +32,9 @@ Nincsenek alkalmazások két ábrázolása az Azure ad-ben:
 * [Egyszerű szolgáltatások](app-objects-and-service-principals.md#service-principal-object) -lehessen venni egy alkalmazás egy példányát. Szolgáltatásnevek általában egy alkalmazásobjektumot hivatkoznak, és a egy alkalmazásobjektumot hivatkozhat több szolgáltatásnevek címtárak között.
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Mi alkalmazásobjektumok és honnan azok származnak?
-Kezelheti [alkalmazásobjektumok](app-objects-and-service-principals.md#application-object) keresztül az Azure Portalon a [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) tapasztalható. Alkalmazásobjektumok az alkalmazást az Azure AD ismertetik, és az alkalmazás lehetővé teszi a szolgáltatást, hogy ismerjék a jogkivonatok kiadása az alkalmazásnak a beállításai alapján a definíció lehessen venni. Az alkalmazásobjektum fogja csak szerepel a kezdőkönyvtárba kerül, akkor is, ha egy több-bérlős alkalmazás egyszerű szolgáltatásokat támogató más címtárakban. Az alkalmazásobjektum tartalmazhatja a következő (, valamint további információkat itt nem említett):
+Kezelheti [alkalmazásobjektumok](app-objects-and-service-principals.md#application-object) keresztül az Azure Portalon a [Alkalmazásregisztrációk](https://aka.ms/appregistrations) tapasztalható. Alkalmazásobjektumok az alkalmazást az Azure AD ismertetik, és az alkalmazás lehetővé teszi a szolgáltatást, hogy ismerjék a jogkivonatok kiadása az alkalmazásnak a beállításai alapján a definíció lehessen venni. Az alkalmazásobjektum fogja csak szerepel a kezdőkönyvtárba kerül, akkor is, ha egy több-bérlős alkalmazás egyszerű szolgáltatásokat támogató más címtárakban. Az alkalmazásobjektum tartalmazhatja a következő (, valamint további információkat itt nem említett):
 * Név, embléma és közzétevő
-* Válasz URL-címek
+* Redirect URIs
 * Titkos kulcsok (szimmetrikus és/vagy aszimmetrikus kulcsokkal az alkalmazás hitelesítéséhez használt)
 * API-függőségek (OAuth)
 * Közzétett API-k/erőforrás/hatókörök (OAuth)
@@ -74,7 +74,7 @@ Alkalmazás objektumok, például az egyszerű szolgáltatások is több útvona
   * Amikor az Office 365 szolgáltatásra vagy egy próba megkezdéséhez, egy vagy több szolgáltatásnevek jönnek létre a címtárban, a különböző szolgáltatások, amelyek az összes Office 365-höz tartozó funkciók biztosításához jelölő.
   * Egyes Office 365-szolgáltatásokhoz, például a SharePoint-összetevők többek között a munkafolyamatok közötti biztonságos kommunikációhoz töltheti egyszerű szolgáltatások létrehozása.
 * Amikor egy rendszergazda ad hozzá egy alkalmazás (ezzel is létrehoz egy alapul szolgáló alkalmazás objektum) alkalmazás-galériából
-* Az alkalmazás hozzáadása a [Azure AD-alkalmazásproxy](https://msdn.microsoft.com/library/azure/dn768219.aspx)
+* Az alkalmazás hozzáadása a [Azure AD-alkalmazásproxy](/azure/active-directory/manage-apps/application-proxy)
 * Csatlakozás az alkalmazás egyszeri bejelentkezési SAML vagy jelszót az egyszeri bejelentkezés (SSO)
 * Programozott módon az Azure AD Graph API vagy a Powershellen keresztül
 
@@ -101,8 +101,8 @@ Az alkalmazásokat, amelyek adja hozzá saját magát (-kiszolgálókként **(az
   * Jogcím-átalakítási szabályok
   * (A felhasználók átadásának) attribútum-leképezéshez
 * Az egyszerű szolgáltatás és alkalmazás objektumának további részletes információkért lásd: az Azure AD Graph REST API referenciadokumentációt tartalmaz:
-  * [Alkalmazás](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Egyszerű szolgáltatás](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+  * [Alkalmazás](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [Egyszerű szolgáltatás](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Alkalmazások miért tegye integrálása az Azure ad-vel?
 Alkalmazások felvétele az Azure ad-ben kihasználhatja a biztosít, beleértve a szolgáltatások valamelyikét:

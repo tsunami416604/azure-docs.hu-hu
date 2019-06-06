@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Átmenő hitelesítés az Azure Active Directory összevonási áttelepít |} A Microsoft Docs'
+title: 'Azure AD Connect: Összevonási áttelepíteni ESP az Azure AD-hez'
 description: Ez a cikk áthelyezi a hibrid identitáskezelési környezetet a összevonási átmenő hitelesítés kapcsolatos információkat tartalmaz.
 services: active-directory
 author: billmath
@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf0bb51470272099ed2824d0450082f93fe65f14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eb421442a7b45f3cd5925fd1475a0a69053c3113
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60382665"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473384"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Összevonási áttelepíteni az Azure Active Directory átmenő hitelesítéshez
 
@@ -48,7 +48,7 @@ A legtöbb ügyfél számára két vagy három hitelesítési ügynökök elegen
 
 Összevont identitáskezelési át az átmenő hitelesítéséről és közvetlen egyszeri bejelentkezés (SSO) a két módszer közül választhat. A használt módszer attól függ, hogyan eredetileg konfigurálták az AD FS-példányhoz.
 
-* **Az Azure AD Connect**. Ha az eredetileg konfigurálták az AD FS az Azure AD Connect használatával, *kell* átmenő hitelesítés az Azure AD Connect varázsló használatával módosíthatja.
+* **Azure AD Connect**. Ha az eredetileg konfigurálták az AD FS az Azure AD Connect használatával, *kell* átmenő hitelesítés az Azure AD Connect varázsló használatával módosíthatja.
 
    Az Azure AD Connect automatikusan futtatja a **Set-MsolDomainAuthentication** parancsmagot, ha a felhasználó bejelentkezési módszert. Az Azure AD Connect automatikusan unfederates ellenőrzött összevont tartományok az Azure AD-bérlőben.
 
@@ -75,7 +75,7 @@ Szeretné megtudni, melyik módszert használja, hajtsa végre a következő sza
 2. Az a **további feladatok** lapon jelölje be **aktuális konfiguráció megtekintése**, majd válassza ki **tovább**.<br />
  
    ![A nézet jelenlegi konfigurációs beállítás a további tevékenységek lap képernyőképe](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
-3. Az a **a megoldás áttekintése** területén görgessen **Active Directory összevonási szolgáltatások (AD FS)**.<br />
+3. Az a **a megoldás áttekintése** területén görgessen **Active Directory összevonási szolgáltatások (AD FS)** .<br />
 
    * Ha ez a szakasz jelenik meg az AD FS konfigurációt, biztonságosan feltételezzük, hogy az AD FS eredetileg konfigurálták az Azure AD Connect használatával. Átalakíthatja a tartományok összevont identitás felügyelt identitás, az Azure AD Connect használatával **felhasználói bejelentkezés módosítása** lehetőséget. A folyamattal kapcsolatos további információkért lásd a szakasz **1. lehetőség: Átmenő hitelesítés konfigurálása az Azure AD Connect használatával**.
    * Ha az AD FS nem szerepel az aktuális beállítások, meg kell manuálisan átalakítása a tartományok összevont identitás felügyelt identitás PowerShell használatával. Ez a folyamat kapcsolatos további információkért lásd: a szakasz **2. lehetőség: Váltson a összevonási átmenő hitelesítés az Azure AD Connect és a PowerShell használatával**.
@@ -156,7 +156,7 @@ Windows 8 és Windows 7-fiókok hibrid csatlakozás zökkenőmentes egyszeri Bej
 
 További információkért lásd: [konfigurálása hibrid Azure AD-hez csatlakoztatott eszközök](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
 
-#### <a name="branding"></a>Védjegyezés
+#### <a name="branding"></a>Védjegyzési
 
 Ha a szervezet [testre szabott az AD FS bejelentkezési oldalainak](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) szeretné megjeleníteni a szervezet több profiljával kapcsolatos információkat, fontolja meg, így hasonló [az Azure AD bejelentkezési oldal testreszabása](https://docs.microsoft.com/azure/active-directory/customize-branding).
 

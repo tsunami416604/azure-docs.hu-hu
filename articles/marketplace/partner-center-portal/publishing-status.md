@@ -7,22 +7,34 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 461c9f3f3725ba27410088ca19f1ec050375adf2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9bf3136969974abbe9a99a5632478e3cbb22307e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806146"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474519"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>A kereskedelmi Piactéri ajánlat közzétételi állapotának ellenőrzése
 
 Megtekintheti az aktuális **közzétételi állapota** a a **ajánlat áttekintése** lapján a [kereskedelmi piactér portálján](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) a Partner Center.
 
+Az alábbi Állapotjelzők egyik ajánlatok üzenet.
+
+| **Állapot**    | **Leírás**  |
+| :---------- | :-------------------|
+| **Vázlat** | Az ajánlat létre lett hozva, de nincs folyamatban van közzétéve. |
+| **A közzététel folyamatban** | Ajánlat/csomag működik a módja a közzétételi folyamat lépéseit. |
+| **Figyelmet szükséges** | Egy kritikus problémát, vagy a közzétételi műveletek közül a Microsoft által felderített minősítés során. |
+| **Előzetes verzió** | Az ajánlat volt minősítésre a Microsoftnak, és most várja a végső ellenőrzés a közzétevő. Válassza ki, hogy az ajánlat élesben élő. |
+| **Live** | Az ajánlat nem élő a piactéren, és is láthatók és ügyfelek által igényelt. |
+| **Függőben lévő stop értékesítési** | Közzétevő ki van jelölve "értékesítési stop" ajánlat vagy a csomag, de a művelet még nem fejeződtek be. |
+| **A piactéren nem érhető el.** | A Marketplace-en korábban közzétett ajánlat/terv el lett távolítva. |
+
 ## <a name="automated-validation"></a>Az automatikus ellenőrzés
 
 A közzétételi folyamat az első lépés egy olyan automatikus ellenőrzések. Minden egyes ellenőrzési lépés felel meg egyik funkciója, úgy döntött, hogy engedélyezze az előfizetési csomag létrehozása. A funkció nincs engedélyezve, ha az érvényesítés azokat, amelyek a következő közzétételi lépéssel kihagyja. A közzétételi állapot jóváhagyása előtt minden ellenőrzés kell végezni.
 
-- **Vásárlási folyamat telepítő ajánlat (> 10 perc)**
+- **Vásárlási folyamat telepítő ajánlat (< 10 perc)**
 
 Ebben a lépésben azt győződjön meg arról, hogy az ajánlat teljesíthetők, ha ügyfelek az Azure Portalon keresztül vásárolta meg. Ez a lépés csak akkor alkalmazható Microsoft értékesített ajánlatok.
 
@@ -34,11 +46,11 @@ Ebben a lépésben azt a test drive az ajánlat technikai konfigurációs szakas
 
 Ebben a lépésben az adatok és az előző lépésben, a test drive működésének ellenőrzése után azt üzembe helyezése és replikálja a test drive példányát, hogy az ügyfél használatra készen állnak a.  A lépés csak akkor alkalmazható, amelyek próbálja ki az engedélyezve van a.
 
-- **Felügyeleti érvényesítése és a regisztrációs vezethet (> 15 perc)**
+- **Felügyeleti érvényesítése és a regisztrációs vezethet (< 15 perc)**
 
 Ebben a lépésben azt győződjön meg arról, hogy a vezető felügyeleti rendszer fogadhat ügyfélérdeklődések az ajánlat beállításában megadott adatok alapján. Ez a lépés csak akkor alkalmazható, amelyek Lead felügyelet engedélyezve van a.
 
-## <a name="certification"></a>Tanúsítás
+## <a name="certification"></a>Tanúsítvány
 
 A közzététel előtt a kereskedelmi Partnerközpont-piactér elküldött ajánlatok minősítéssel kell rendelkezniük. Elküldött ajánlatok rendelkezéseinknek szigorú tesztelése, bizonyos automatizált és mások manuális, beleértve a-ellenőrzést futtat a [Azure Marketplace-en hitelesítési házirendek](https://docs.microsoft.com/legal/marketplace/general-policies). Ajánlat jelentkezés kell megjelölni jogosult hitelesítő előtt, lépjen tovább a következő lépés a közzétételi folyamat.
 

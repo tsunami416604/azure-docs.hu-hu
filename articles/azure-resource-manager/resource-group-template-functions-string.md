@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82b9403a3d5a5b6938f5b95bbfce888d1e70e451
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782922"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431213"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Karakterlánc-függvények az Azure Resource Manager-sablonok
 
@@ -339,7 +339,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | ---- | ---- | ----- |
 | a visszaadandó | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>tartalmazza a következőt:
+## <a name="contains"></a>tartalmaz
 
 `contains (container, itemToFind)`
 
@@ -349,7 +349,7 @@ Ellenőrzi, hogy egy tömb értéket tartalmaz, objektum kulcsot tartalmaz, vagy
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| tároló |Igen |tömb, objektumot vagy karakterlánc |Az érték, amely tartalmazza a keresendő érték. |
+| container |Igen |tömb, objektumot vagy karakterlánc |Az érték, amely tartalmazza a keresendő érték. |
 | itemToFind |Igen |karakterlánc- vagy int |Keresendő érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
@@ -713,7 +713,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | arrayOutput | String | egy |
 | stringOutput | String | O |
 
-## <a name="format"></a>Formátum
+## <a name="format"></a>format
 
 `format(formatString, arg1, arg2, ...)`
 
@@ -1015,7 +1015,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | lastString | Int | 0 |
 | NotFound | Int | -1 |
 
-## <a name="length"></a>Hossza
+## <a name="length"></a>length
 
 `length(string)`
 
@@ -1259,7 +1259,7 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
             "type": "string",
             "value": "[replace(parameters('testString'),'-', '')]"
         },
-        "secodeOutput": {
+        "secondOutput": {
             "type": "string",
             "value": "[replace(parameters('testString'),'1234', 'xxxx')]"
         }
@@ -1272,9 +1272,9 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | firstOutput | String | 1231231234 |
-| secodeOutput | String | 123-123-xxxx |
+| secondOutput | String | 123-123-xxxx |
 
-## <a name="skip"></a>kihagyás
+## <a name="skip"></a>Kihagyás
 
 `skip(originalValue, numberToSkip)`
 
@@ -1477,7 +1477,7 @@ A megadott érték konvertálása egy karakterláncot.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Igen | Bármelyik |Karakterlánc alakítandó érték. Bármilyen típusú érték lehet konvertálni, többek között az objektumok és tömböket. |
+| valueToConvert |Igen | Bármely |Karakterlánc alakítandó érték. Bármilyen típusú érték lehet konvertálni, többek között az objektumok és tömböket. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1550,7 +1550,7 @@ Egy részét, amely a megadott Karakterpozíció kezdődik, és tartalmazza a me
 |:--- |:--- |:--- |:--- |
 | stringToParse |Igen |string |Az eredeti karakterláncot, amely az a karakterláncrészletet ki kell olvasni. |
 | startIndex |Nem |int |A nulla alapú kezdő karakter pozíciójának a karakterláncrészletet. |
-| Hossza |Nem |int |A substring karakterek száma. A karakterláncon belüli helyre kell hivatkoznia. Lehet nulla vagy nagyobb. |
+| length |Nem |int |A substring karakterek száma. A karakterláncon belüli helyre kell hivatkoznia. Lehet nulla vagy nagyobb. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1893,7 +1893,7 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-## <a name="uri"></a>uri azonosító
+## <a name="uri"></a>URI-t
 
 `uri (baseUri, relativeUri)`
 
@@ -2077,7 +2077,7 @@ A megadott formátumban az aktuális (UTC) dátum/idő értéket ad vissza. Ha n
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| Formátum |Nem |string |Az URI-ként kódolt karakterlánc alakítandó érték. Mindkét [standard formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [egyéni formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| format |Nem |string |Az URI-ként kódolt karakterlánc alakítandó érték. Mindkét [standard formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [egyéni formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Megjegyzések
 

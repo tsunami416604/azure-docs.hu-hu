@@ -2,20 +2,20 @@
 title: ContentDefinitions – az Azure Active Directory B2C |} A Microsoft Docs
 description: Adja meg az egyéni szabályzat ContentDefinitions elem Azure Active Directory B2C-t.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6807ae8d9c8b8458b9ac4552a90119a8f709d330
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d82785a0f833afb6a9c675fc7022ed19e96c7fc0
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693365"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511313"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -67,7 +67,7 @@ A **ContentDefinition** elem tartalmazza a következő attribútumot:
 
 A **ContentDefinition** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | A tartalom definíciójában a HTML5-alapú lap URL-CÍMÉT tartalmazó karakterlánc. |
 | RecoveryUri | 0:1 | A HTML-oldalt a tartalomdefiníció kapcsolatos hiba megjelenítése az URL-CÍMÉT tartalmazó karakterlánc. | 
@@ -93,7 +93,7 @@ A **DataUri** elem segítségével adja meg a lap azonosítóját. Az Azure AD B
 
 A **LocalizedResourcesReferences** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | Honosított erőforrás mutató hivatkozásokat a tartalomdefiníció listája. | 
 
@@ -141,7 +141,7 @@ Honosítási támogatás hozzáadása a tartalomdefiníciók kapcsolatban lásd:
 
 Az azonosító attribútuma a **ContentDefinition** elem határozza meg, amely kapcsolódik a tartalomdefiníció az oldal. Az elem definiálja a környezetet, amely a HTML5-alapú/CSS egyéni sablont fogja alkalmazni. A következő táblázat ismerteti a tartalomdefiníció azonosítók ismeri fel az identitás-kezelőfelületi keretrendszer és a hozzájuk kapcsolódó lap típusok készlete. Saját tartalom definíciókat hozhat létre egy tetszőleges.
 
-| ID (Azonosító) | Alapértelmezett sablon | Leírás | 
+| azonosító | Alapértelmezett sablon | Leírás | 
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hibalap** – jeleníti meg a hiba lapon, ha kivétel, vagy hiba esetén. |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identitásszolgáltató kiválasztása oldal** – identitás-szolgáltatóktól, amelyeket a felhasználók a bejelentkezés során sorolja fel. A beállítások általában: vállalati identitás-szolgáltatóktól, közösségi Identitásszolgáltatók, például a Facebook és a Google + vagy helyi fiókot. |

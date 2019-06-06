@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 92476f9ac48c168c3bbe85d4da49b6afe034c117
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6cccae343e0a06af88c2e996c37910de72138c60
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730509"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475056"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével
 
@@ -42,6 +42,8 @@ Központi telepítése egy **előfizetés**, használjon [az üzembe helyezés l
 ```azurecli
 az deployment create --location <location> --template-file <path-to-template>
 ```
+
+Felügyeleti csoportok üzemelő példányai jelenleg csak a REST API-n keresztül támogatottak. Lásd: [erőforrások üzembe helyezése Resource Manager-sablonok és a Resource Manager REST API](resource-group-template-deploy-rest.md).
 
 Ebben a cikkben szereplő példák erőforráscsoportok üzemelő példányainak használja. Előfizetések üzemelő példányai kapcsolatos további információkért lásd: [erőforráscsoport és erőforrások létrehozásához az előfizetés szintjén](deploy-to-subscription.md).
 
@@ -102,11 +104,11 @@ az group deployment create --resource-group examplegroup \
 
 ## <a name="redeploy-when-deployment-fails"></a>Telepítse újra a központi telepítésének hibája esetén
 
-Ez a funkció más néven van *visszaállítási hiba*. Ha egy központi telepítés nem sikerül, automatikusan is újratelepítése egy korábbi, a sikeres telepítés az üzembe helyezési előzményekből. Újbóli üzembe helyezés megadásához használja a `--rollback-on-error` paramétert a üzembe helyezés parancsba. Ez a funkció akkor hasznos, ha rendelkezik egy korábbi hibátlan állapotra van az infrastruktúra telepítése és akarja, hogy vissza kell állítani az. Nincsenek figyelmeztetések és korlátozások:
+Ez a funkció más néven van *visszaállítási hiba*. Ha egy központi telepítés nem sikerül, automatikusan is újratelepítése egy korábbi, a sikeres telepítés az üzembe helyezési előzményekből. Újbóli üzembe helyezés megadásához használja a `--rollback-on-error` paramétert a üzembe helyezés parancsba. Ez a funkció akkor hasznos, ha van egy korábbi hibátlan állapotra az infrastruktúra üzembe helyezéshez, és szeretné állítani az állapotot. Nincsenek figyelmeztetések és korlátozások:
 
 - Az újbóli üzembe helyezés pontosan, ahogy korábban már volt futtatva ugyanazokkal a paraméterekkel futtatja. A paraméterek nem módosítható.
 - A korábbi központi telepítés segítségével futtatja a [teljes mód](./deployment-modes.md#complete-mode). Nem szerepel a korábbi központi telepítés minden erőforrás törlődni, és a minden erőforrás-konfigurációt az előző állapotukba. Győződjön meg arról, hogy megértette a [üzembe helyezési mód](./deployment-modes.md).
-- Az újratelepítés csak érinti az erőforrásokat, a módosításokat adatokat nem érinti.
+- Az újratelepítés csak érinti az erőforrásokat, adatok módosításokat a változás nem érinti.
 - Ez a funkció csak az erőforráscsoport központi telepítések, nem előfizetési szintű központi telepítések támogatott. Előfizetés-szintű üzembe helyezéssel kapcsolatos további információkért lásd: [erőforráscsoport és erőforrások létrehozásához az előfizetés szintjén](./deploy-to-subscription.md).
 
 Ez a beállítás használatához az üzemelő példányok egyedi névvel kell rendelkezniük az előzményekben található ellenőrizhető, hogy. Ha nem rendelkezik egyedi nevét, az aktuális telepítése sikertelen volt. a korábban sikeresen végrehajtott központi telepítés előzményei esetleg felülírhatja. Használhatja ezt a beállítást csak a legfelső szintű telepítések. Beágyazott sablonból üzemelő példányok nem újbóli üzembe helyezés érhetők el.

@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96442a9d49581da6841fa7acb8329354ec727f60
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6a50f4a8a63022668dac68c974f8c828c72777c9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918479"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473112"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Gyakori forgatókönyvek az Azure ad-ben tagjogosultság-kezelés (előzetes verzió)
 
@@ -32,7 +32,7 @@ ms.locfileid: "64918479"
 
 Többféleképpen is konfigurálható tagjogosultság-kezelés a szervezet számára. Azonban Ön bevezető, hogy annak megértése, a gyakori forgatókönyvek rendszergazdák, a jóváhagyók és a kérelmezőktől a hozzáférést.
 
-## <a name="administrators"></a>Rendszergazdák
+## <a name="administrators"></a>A rendszergazdák
 
 ### <a name="im-new-to-entitlement-management-and-i-want-help-with-getting-started"></a>Tagjogosultság-kezelés az új vagyok, és szeretném segítséget az első lépések
 
@@ -50,7 +50,7 @@ Többféleképpen is konfigurálható tagjogosultság-kezelés a szervezet szám
 > | **2.** [Csomag el az erőforrás-szerepkörök hozzáadása](entitlement-management-access-package-edit.md#add-resource-roles)<ul><li>Csoportok</li><li>Alkalmazások</li><li>SharePoint-webhelyek</li></ul> | ![Erőforrás-szerepkörök hozzáadása](./media/entitlement-management-scenarios/resource-roles.png) |
 > | **3.** [Szabályzat hozzáadása](entitlement-management-access-package-edit.md#policy-for-users-in-your-directory)<ul><li>A címtárban lévő felhasználók számára</li><li>Jóváhagyás szükséges</li><li>Elévülési beállítások</li></ul> | ![Házirend hozzáadása](./media/entitlement-management-scenarios/policy.png) |
 
-### <a name="i-want-to-allow-users-from-my-business-partners-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Szeretném, hogy a felhasználók a saját üzleti partnerek (beleértve a felhasználók még nincs a címtáramban) hozzáférés kéréséhez csoportok, alkalmazások vagy SharePoint-webhelyek
+### <a name="i-want-to-allow-users-from-my-business-partners-directory-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Szeretném, hogy a felhasználók saját üzleti partnerek címtárból (beleértve a felhasználók még nincs a címtáramban) hozzáférés kéréséhez csoportok, alkalmazások vagy SharePoint-webhelyek
 
 > [!div class="mx-tableFixed"]
 > | Lépések | Példa |
@@ -83,7 +83,7 @@ Többféleképpen is konfigurálható tagjogosultság-kezelés a szervezet szám
 > | --- | --- |
 > | [Hozzárendelések – felhasználói jelentés megtekintése](entitlement-management-reports.md)<ul><li>Nézet, ha a kért és jóváhagyott ki</li></ul> |  |
 
-## <a name="approvers"></a>Jóváhagyók
+## <a name="approvers"></a>A jóváhagyók
 
 ### <a name="i-want-to-approve-requests-to-access-groups-applications-or-sharepoint-sites"></a>Szeretném csoportok, alkalmazások vagy SharePoint-helyek eléréséhez kérések jóváhagyása
 
@@ -124,4 +124,4 @@ Többféleképpen is konfigurálható tagjogosultság-kezelés a szervezet szám
 ## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: Az első hozzáférési csomag létrehozása](entitlement-management-access-package-first.md)
-- [Szerkesztése és kezelése a meglévő hozzáférési csomag](entitlement-management-access-package-edit.md)
+- [Meglévő hozzáférési csomag szerkesztése és kezelése](entitlement-management-access-package-edit.md)

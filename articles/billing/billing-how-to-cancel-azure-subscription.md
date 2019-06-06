@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 5/30/2019
+ms.date: 06/03/2019
 ms.author: banders
-ms.openlocfilehash: 235d93de56289bb2daaa661ee9806732da3b6d6a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8f4279d9ac085cdd1ded0dfdda4fad9d3fe12fb8
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417613"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480232"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Az Azure-előfizetés megszüntetése
 
@@ -29,6 +29,7 @@ Mielőtt az előfizetés megszüntetése:
 * Állítsa le a szolgáltatásokat. Nyissa meg a [erőforrások lapon, a felügyeleti portálon](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), és **leállítása** bármely futó virtuális gépek, alkalmazások és más szolgáltatásokat.
 * Vegye figyelembe, hogy az adatok migrálását. Lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
 * Törölnie kell az összes erőforrásra és erőforráscsoportra minden. Azok törlése előtt el kell azt megszüntethet egy előfizetést. Minden erőforráscsoport külön-külön kell törölni. Erőforrás-csoport törlése, során meg kell erősítenie törlését az erőforráscsoport nevének beírásával.
+* Ha minden egyéni szerepkört ehhez az előfizetéshez hivatkozó `AssignableScopes`, frissítenie kell ezeket egyéni szerepkörök az előfizetés eltávolításához. Ha egy egyéni szerepkör frissítése egy előfizetés megszüntetése után meg, előfordulhat, hogy hibaüzenetet kap. További információkért lásd: [egyéni szerepkörökkel kapcsolatos problémák elhárítása](../role-based-access-control/troubleshooting.md#problems-with-custom-roles) és [egyéni szerepkörök az Azure-erőforrások](../role-based-access-control/custom-roles.md).
 
 Ha megszakítja egy fizetős Azure-támogatási csomagra, meg kell fizetni az előfizetési időszak a többi. További információkért lásd: [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/).
 
@@ -43,11 +44,9 @@ Ha megszakítja egy fizetős Azure-támogatási csomagra, meg kell fizetni az el
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Mi történik a lemondom az előfizetésemet?
 
-Ha megszakítja a műveletet, a számlázás megáll azonnal. Azonban a megszüntetés a portálon megjeleníteni kívánt akár 10 percet is igénybe vehet.
+Megszakítja a műveletet, miután a számlázás megáll azonnal. Azonban a megszüntetés a portálon megjeleníteni kívánt akár 10 percet is igénybe vehet. Ha megszakítja egy számlázási időszak közepén, számla küldünk a tipikus invoice Date a lejárta után.
 
-Ezt követően a szolgáltatások le vannak tiltva. Ez azt jelenti, hogy a virtuális gépek felszabadítva, ideiglenes IP-címek felszabadítását, és tároló csak olvasható.
-
-Ha megszakítja egy számlázási időszak közepén, számla küldünk a tipikus invoice Date a lejárta után.
+Megszakítja a műveletet, miután a szolgáltatások le vannak tiltva. Ez azt jelenti, hogy a virtuális gépek felszabadítva, ideiglenes IP-címek felszabadítását, és tároló csak olvasható.
 
 Hogy Várjon, amíg a 90 nappal korábbinak véglegesen törli az adatokat, abban az esetben kell-e férni, vagy megváltoztatja döntését. A Microsoft nem számítunk fel díjat, az adatok megőrzése. További tudnivalókért lásd: [Microsoft Trust Center – hogyan kezeljük adatait](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 8d432d588cfd563ee48b93f9042339e9590bb5e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 086c7d303fd199090de3be77b2456c4ebcd053a8
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60533283"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66726937"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Az IoT Central kezelése az Azure PowerShellből
 
@@ -25,7 +25,7 @@ Létrehozásához és IoT-központ alkalmazások kezelése – az IoT-központ [
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha inkább a helyi gépen az Azure PowerShell futtatásához, tekintse meg [Azure PowerShell-modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-az-ps). Azure PowerShell helyi futtatásakor használja a **Connect-AzAccount** parancsmag való bejelentkezéshez az Azure-ba, mielőtt megpróbálná a parancsmagok ebben a cikkben.
 
@@ -68,10 +68,10 @@ A szkript először létrehoz egy erőforráscsoportot a keleti régiójában, a
 |ResourceGroupName |Az erőforráscsoport, amely tartalmazza az alkalmazást. Ennek az erőforráscsoportnak már léteznie kell az előfizetésben. |
 |Location egység |Alapértelmezés szerint ez a parancsmag használja az erőforráscsoport helyét. Jelenleg az IoT Central alkalmazáshoz hozhat létre a **USA keleti RÉGIÓJA**, **USA nyugati RÉGIÓJA**, **Észak-Európa**, vagy **Nyugat-Európa** régióban. |
 |Name (Név)              |Az Azure Portalon az alkalmazás neve. |
-|Altartomány         |Az altartomány az alkalmazás URL-címét. A példában az alkalmazás URL-cím van https://mysubdomain.azureiotcentral.com. |
+|Subdomain         |Az altartomány az alkalmazás URL-címét. A példában az alkalmazás URL-cím van https://mysubdomain.azureiotcentral.com. |
 |SKU               |Jelenleg az egyetlen érték **S1** (standard szintű). Lásd: [Azure IoT Central díjszabás](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Sablon          | Az alkalmazás sablont szeretné használni. További információkért lásd az alábbi táblázatot: |
-|Megjelenítendő név       |Az alkalmazás a felhasználói felületen megjelenített neve. |
+|displayName       |Az alkalmazás a felhasználói felületen megjelenített neve. |
 
 **Az alkalmazás**
 

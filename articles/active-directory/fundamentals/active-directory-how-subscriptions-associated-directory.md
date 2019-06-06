@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f37c501bb53b3b73c30d02d00d49515f907e4ae
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d2889af6000e77fba7a91392c0adb227588b5306
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463630"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430792"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Hozzárendelése vagy Azure-előfizetés hozzáadása az Azure Active Directory-bérlővel
 
@@ -42,6 +42,7 @@ Mielőtt hozzárendelése, vagy adja hozzá az előfizetés, el kell végeznie a
     - RBAC szerepkörök rendelt felhasználók elveszíti a hozzáférését
     - Szolgáltatás-rendszergazda és Társrendszergazdák elveszíti a hozzáférést
     - Ha bármely kulcstartók, nem érhető el legyenek, és javítsa ki őket a hozzárendelés után kell
+    - Ha bármely felügyelt identitások források, például a virtuális gépek vagy a Logic Apps, kell engedélyezze újra, vagy létrehozhatja a hozzárendelés után
     - Ha egy regisztrált Azure Stack, kell újraregisztrálni a hozzárendelés után
 
 1. Jelentkezzen be egy olyan fiókkal, amely:
@@ -76,7 +77,9 @@ Miután egy előfizetés másik címtárhoz történő társításához lehet to
 
 1. Ha bármely kulcstartók, módosítania kell a kulcstartó bérlőazonosítója. További információkért lásd: [egy kulcstartó Bérlőazonosítójának módosítása az előfizetés áthelyezése után](../../key-vault/key-vault-subscription-move-fix.md).
 
-2. Ha regisztrált az Azure Stack ezt az előfizetést, akkor újra regisztrálnia kell. További információkért lásd: [regisztrálása az Azure Stack az Azure-ral](/azure-stack/operator/azure-stack-registration).
+2. Ha használta a rendszer által hozzárendelt identitások a felügyelt erőforrások, újra engedélyeznie kell ezeket. Ha felhasználó által hozzárendelt identitások felügyelt használja, meg kell újból létrehoznia ezeket. Miután újraengedélyezése, vagy újra létrehozni a felügyelt identitásokból, újra létre kell hoznia ezeket az identitásokat a jogosultságait. További információ: [Mi az Azure-erőforrások felügyelt identitások?](../managed-identities-azure-resources/overview.md).
+
+3. Ha regisztrált az Azure Stack ezt az előfizetést, akkor újra regisztrálnia kell. További információkért lásd: [regisztrálása az Azure Stack az Azure-ral](/azure-stack/operator/azure-stack-registration).
 
 
 

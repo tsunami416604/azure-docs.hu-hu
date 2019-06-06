@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: da8433e6c03aec5c5b2ff5d290065804816ac724
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb01aa84201c1e0727414215974a343e8cf3b724
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122298"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475905"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Belső terheléselosztó létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
@@ -60,7 +60,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 
 ### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
 
-Hozzon létre egy **myLoadBalancer** nevű nyilvános alapszintű terheléselosztót az [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) paranccsal, amely tartalmaz egy **myFrontEnd** nevű előtérbeli IP-konfigurációt, egy **myBackEndPool** nevű háttérbeli készletet, és a **10.0.0.7 magánhálózati IP-címmel van társítva.
+A belső terheléselosztó létrehozása a [az network lb létrehozása](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű **myLoadBalancer** nevű előtérbeli IP-konfiguráció is tartalmazó **myFrontEnd**, nevű háttérkészlet **myBackEndPool** magánhálózati IP-cím társított ** 10.0.0.7.
 
 ```azurecli-interactive
   az network lb create \

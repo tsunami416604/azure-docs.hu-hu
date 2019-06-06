@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 76d18b6a942ed9b8c6871b0ff7cbc1c83917ada4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c84c3eb74d214a5c98aabef7b2e2987dfdf67c0f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66130468"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472606"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Az Azure Monitor engedélyezése (előzetes verzió) virtuális gépek – áttekintés
 
@@ -40,6 +40,7 @@ A Kezdés előtt győződjön meg arról, hogy tisztában van-e az alábbi szaka
 A virtuális gépek az Azure Monitor Log Analytics-munkaterület az alábbi régiókban támogatja:
 
 - USA nyugati középső régiója
+- USA 2. nyugati<sup>1</sup>
 - USA keleti régiója
 - Közép-Kanada<sup>1</sup>
 - Egyesült Királyság déli régiója<sup>1</sup>
@@ -74,7 +75,7 @@ A munkaterület az ipari méretekben forgatókönyv konfigurálásához segíts�
 
 Az alábbi táblázat a virtuális gépek az Azure monitorban támogatott Windows- és Linux operációs rendszerek listája. Ebben a szakaszban később nyújtott teljes listáját, amelyek a fő- és alverzió Linux operációsrendszer-kiadás részleteit, és a kernel verziója támogatott.
 
-|Operációs rendszer verziója |Teljesítmény |Maps |Egészségügy |
+|Operációs rendszer verziója |Teljesítmény |Maps |Állapot |
 |-----------|------------|-----|-------|
 |A Windows Server 2019 | X | X | X |
 |A Windows Server 2016 1803 | X | X | X |

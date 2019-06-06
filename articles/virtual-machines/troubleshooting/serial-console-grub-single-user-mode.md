@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/08/2019
 ms.author: alsin
-ms.openlocfilehash: 89cbf220c9ae32c7f63da4941ced1bdbfa1e5293
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 440d917c2ee4a51f2c8ba4b134b50508bdaf4bcb
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835042"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735268"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Használja a soros konzol eléréséhez a grub-HIBÁT, és az egyfelhasználós módot
 Grub-HIBÁT a végösszeg egyesített Rendszerbetöltőt, ami valószínűleg a legfontosabb, láthatja, ha a gép. Megjeleníti az operációs rendszer megkezdése előtt, mert nem érhető el SSH-n keresztül. A grub-HIBÁT Ön tudja módosítani a rendszerindítási konfiguráció többek között a egyfelhasználós módban indul.
@@ -184,7 +184,7 @@ SLES GRUB-hozzáféréshez YaST rendszerbetöltőt konfiguráció szükséges. E
 Ön automatikusan eldobja vészhelyzeti shellbe SLES általában nem indítható. Adja meg manuálisan a vészhelyzeti rendszerhéj, használja az alábbi utasításokat:
 
 1. A grub-HIBÁT nyomja le az "e" a rendszerindítási bejegyzés (SLES-bejegyzés) szerkesztése
-1. Keresse meg a kernel sor azt kezdődik `linux`
+1. Keresse meg a kernel sor – elemmel indul `linux`
 1. Hozzáfűzés `systemd.unit=emergency.target` a sor végére
 1. Indítsa újra ezeket a beállításokat, és írja be a vészhelyzeti rendszerhéj a Ctrl + X
    > Vegye figyelembe, hogy azt a rendszer eldobja a vészhelyzeti shellbe egy _csak olvasható_ fájlrendszer. Ha azt szeretné, hogy módosítani szeretné a fájlokat, szüksége lesz az olvasási és írási engedélyekkel fájlrendszer újbóli csatlakoztatásához. Ehhez adja meg a `mount -o remount,rw /` a rendszerhéjba van beépítve

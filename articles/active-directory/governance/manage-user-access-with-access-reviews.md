@@ -16,12 +16,12 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5efbc3b78800caa9d603e870b81705424c4d3fd6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9d873f1dace3e3be6a8767e77d57db5ac554afd7
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113230"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473802"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -32,7 +32,7 @@ Az Azure Active Directoryval (Azure AD) könnyedén biztosíthatja a felhasznál
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure AD Premium P2
+- Prémium szintű Azure AD P2
 
 További információkért lásd: [mely felhasználók rendelkeznie kell licencekkel?](access-reviews-overview.md#which-users-must-have-licenses).
 
@@ -44,7 +44,7 @@ A hozzáférési felülvizsgálatokban egy vagy több felhasználó is szerepelh
 
 2. Döntse el, hogy minden felhasználó a saját hozzáférését vizsgálja-e felül, vagy inkább kijelöl egy vagy több felhasználót a többiek hozzáférésének felülvizsgálatára.
 
-3. Globális rendszergazda vagy felhasználói rendszergazda, nyissa meg a [hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+3. Globális rendszergazda vagy felhasználói rendszergazda, nyissa meg a [Identitáskezelést oldal](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
 4. A hozzáférési felülvizsgálat létrehozása. További információkért lásd: [csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat létrehozása](create-access-review.md).
 

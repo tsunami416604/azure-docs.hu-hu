@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/22/2019
+ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 8e17c5e34ec3e2397c3054b1d0e0d97dbf410db2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 40564e52cbcde0e835ed97132196bf7ed084f5b7
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65986873"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431197"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatikus skálázás és zónaredundáns az Application Gateway 
 
@@ -26,8 +26,8 @@ Az új v2 szintű Termékváltozatot a következő fejlesztéseket tartalmazza:
   A Zone redudancy érhető el csak ha Azure-beli zónák rendelkezésre állnak. Más régiókban minden más szolgáltatások támogatottak. További információkért lásd: [Mik a rendelkezésre állási zónák az Azure-ban?](../availability-zones/az-overview.md#services-support-by-region)
 - **Statikus virtuális IP-CÍMEK**: Application gateway v2 Termékváltozat támogatja a statikus virtuális IP-cím kizárólag írja be. Ez biztosítja, hogy az application gateway társított virtuális IP-CÍMEK a telepítéshez, akár az újraindítás után élettartama nem változik.
 - **Fejléc Újraírási**: Az Application Gateway lehetővé teszi hozzáadása, eltávolítása vagy frissítse a HTTP-kérelmek és válaszfejlécek v2 szintű Termékváltozatot. További információkért lásd: [Újraírási HTTP-fejlécek az Application Gateway segítségével](rewrite-http-headers.md)
-- **Key Vault-integráció (előzetes verzió)**: Application Gateway v2 HTTPS-kompatibilis figyelői csatolt kiszolgálói tanúsítványokat a Key Vault integration (a nyilvános előzetes verzió) támogatja. További információkért lásd: [Key Vault tanúsítványokkal rendelkező SSL-lezárást](key-vault-certs.md).
-- **Az Azure Kubernetes Service Bejövőforgalom-vezérlőt (előzetes verzió)**: Az Application Gateway v2 Bejövőforgalom-vezérlőjéhez lehetővé teszi, hogy az Azure Application Gateway használható a bejövő forgalom számára az Azure Kubernetes Service (AKS) néven az AKS-fürtöt. További információkért lásd: a [dokumentációs oldalon](https://azure.github.io/application-gateway-kubernetes-ingress/).
+- **Key Vault-integráció (előzetes verzió)** : Application Gateway v2 HTTPS-kompatibilis figyelői csatolt kiszolgálói tanúsítványokat a Key Vault integration (a nyilvános előzetes verzió) támogatja. További információkért lásd: [Key Vault tanúsítványokkal rendelkező SSL-lezárást](key-vault-certs.md).
+- **Az Azure Kubernetes Service Bejövőforgalom-vezérlőt (előzetes verzió)** : Az Application Gateway v2 Bejövőforgalom-vezérlőjéhez lehetővé teszi, hogy az Azure Application Gateway használható a bejövő forgalom számára az Azure Kubernetes Service (AKS) néven az AKS-fürtöt. További információkért lásd: a [dokumentációs oldalon](https://azure.github.io/application-gateway-kubernetes-ingress/).
 - **Nagyobb teljesítmény**: A v2 Termékváltozatot kínál legfeljebb 5 X nagyobb SSL kiszervezheti a teljesítmény, mint a Standard és a WAF Termékváltozat a korábban megszokott.
 - **Központi telepítési és frissítési gyorsabb** a v2 szintű Termékváltozatot biztosít, mint a korábban megszokott Standard/WAF Termékváltozatban gyorsabb üzembe helyezési és frissítési idő. Ez a WAF konfigurációmódosításokat is tartalmaz.
 
@@ -54,6 +54,8 @@ Számítási egység útmutatást:
 > [!NOTE]
 > Minden példány jelenleg képes támogatni az körülbelül 10 kapacitásegységek.
 > Képes kezelni a számítási egység kérések száma attól függ, például a TLS-tanúsítvány kulcsának mérete, a kulcscsere-algoritmus, a fejléc újraírások, és a WAF bejövő kérelem méret esetén különféle feltételek. Azt javasoljuk, hogy a számítási egység kérelmek arányának meghatározása az alkalmazás az egységteszteket végezhet. Kapacitás és a számítási egység lesz elérhető metrikaként számlázási indítása előtt.
+
+Az alábbi táblázatban látható példa az árak, és csak illusztrációs célokat szolgálnak.
 
 **Az USA keleti régiójában díjszabás**:
 
@@ -122,7 +124,7 @@ Az alábbi táblázat az egyes Termékváltozat szolgáltatásait hasonlítja ö
 | Egyéni hibalapok                                | &#x2713; | &#x2713; |
 | WebSocket támogatás                                 | &#x2713; | &#x2713; |
 | HTTP/2-támogatás                                    | &#x2713; | &#x2713; |
-| Kapcsolatok kiürítése                               | &#x2713; | &#x2713; |
+| Kapcsolatkiürítés                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
 > A Termékváltozat már támogatja az automatikus skálázás v2 [alapértelmezett állapotadat-mintavételek](application-gateway-probe-overview.md#default-health-probe) automatikusan a háttér-készletben található összes erőforrás állapotának figyelésére, és jelölje ki a háttérrendszer a tagokkal, amelyek nem megfelelő állapotú tekinthetők. Az alapértelmezett állapotadat-mintavétel konfigurálása automatikusan történik a háttérrendszerek, amelyek nem rendelkeznek, egyéni mintavétel konfigurációra. További tudnivalókért lásd: [állapotadat-mintavételek az application gatewayben](application-gateway-probe-overview.md).
@@ -142,6 +144,9 @@ Az alábbi táblázat az egyes Termékváltozat szolgáltatásait hasonlítja ö
 |Netwatcher integráció|Nem támogatott.|
 |Az Azure-támogatási központ-integráció|Még nem érhető el.
 
+## <a name="migrate-from-v1-to-v2"></a>Migrálás az 1-esről a 2-es verzióra
+
+Az Azure PowerShell-parancsfájlt, amelyik segítségére lehet a a v1 az Application Gateway/WAF Termékváltozat v2 automatikus méretezése a PowerShell-galériából érhető el. Ez a szkript segít a v1-átjárón a konfigurációs másolja. Forgalom az áttelepítés akkor továbbra is Ön felelőssége. További részletekért lásd: [áttelepítése Azure Application Gateway v1, v2](migrate-v1-v2.md).
 ## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure portal](quick-create-portal.md)

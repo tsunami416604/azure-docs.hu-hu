@@ -11,65 +11,63 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/23/2019
+ms.date: 6/6/2019
 ms.author: raiye
-ms.openlocfilehash: 4c0f364e596fbe2bf9083cbcf521902523c92a70
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ecf898d331ec426aa343441d29084b4f2c656fa0
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241325"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743035"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
 
 ## <a name="may-2019-guest-os"></a>2019. május vendég operációs rendszer
 
->[!NOTE]
->A lehetséges, hogy a vendég operációs rendszer jelenleg tesszük elérhetővé a Cloud Service virtuális gépeken, az automatikus frissítések vannak beállítva. A bevezetés befejezésekor ebben a verzióban lesz elérhető a manuális frissítést keresztül az Azure portal és a konfigurációs fájlok. A lehetséges, hogy a vendég operációs rendszer a következő javításokat tartalmazza. Ez a lista a változhat.
-
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-|  Rel 19-05   |  [4498206 ]  |  Előfordulhat, hogy az Internet Explorer összegzése   |  2,86, 3.73, 4.66  |  2019. Május 14.  |
-|  Rel 19-05   |  [4505050 ]  |  Előfordulhat, hogy az Internet Explorer összegzése   |  2,86, 3.73, 4.66  |  2019. május 18.  |
-|  Rel 19-05   |  [4497932 ]  |  Előfordulhat, hogy Flash Update   |  3.73, 4.66, 5.31  |  2019. Május 14.  |
-|  Rel 19-05   |  [4499175 ]  |  Előfordulhat, hogy a biztonság összegzése   |  2.86  |  2019. Május 14.  |
-|  Rel 19-05   |  [4495612 ]  |  Előfordulhat, hogy a .NET 3.5 a biztonság összegzése   |  2.86  |  2019. Május 14.  |
-|  Rel 19-05   |  [4495593 ]  |  Előfordulhat, hogy a .NET 4.5.2-es a biztonság összegzése   |  2.86  |  2019. Május 14.  |
-|  Rel 19-05   |  [4499158 ]  |  Előfordulhat, hogy a biztonság összegzése   |  3.73  |  2019. Május 14.  |
-|  Rel 19-05   |  [4495607 ]  |  Előfordulhat, hogy a .NET 3.5 a biztonság összegzése   |  3.73  |  2019. Május 14.  |
-|  Rel 19-05   |  [4495591 ]  |  Előfordulhat, hogy a .NET 4.5.2-es a biztonság összegzése   |  3.73  |  2019. Május 14.  |
-|  Rel 19-05   |  [4492872 ]  |  Internet Explorer összegzése   |  3.73  |  2019. április 16.  |
-|  Rel 19-05   |  [4499165 ]  |  Március a biztonság összegzése   |  4.66  |  2019. Május 14.  |
-|  Rel 19-05   |  [4495615 ]  |  Előfordulhat, hogy a .NET 3.5 a biztonság összegzése   |  4.66  |  2019. Május 14.  |
-|  Rel 19-05   |  [4495589 ]  |  Előfordulhat, hogy a .NET 4.5.2-es a biztonság összegzése   |  4.66  |  2019. Május 14.  |
-|  Rel 19-05   |  [4498947 ]  |  Előfordulhat, hogy SSU   |  5.31  |  2019. Május 14.  |
-|  Rel 19-05   |  [4494175 ]  |  Előfordulhat, hogy a mikrokód Update   |  5.31  |  2019. Május 14.  |
-|  Rel 19-05   |  [4505052 ]  |  Előfordulhat, hogy a biztonság összegzése   |  5.31  |  2019. május 19.  |
-|  Rel 19-05   |  [4499728 ]  |  Előfordulhat, hogy SSU   |  6.7  |  2019. május 19.  |
-|  Rel 19-05   |  [4505056 ]  |  Előfordulhat, hogy a biztonság összegzése   |  6.7  |  2019. május 19.  |
-|  Rel 19-05   |  [4494174 ]  |  Előfordulhat, hogy a mikrokód Update   |  6.7  |  2019. Május 14.  |
-|  Rel 19-05   |  [4495590 ]  |  Előfordulhat, hogy a biztonság összegzése .NET   |  6.7  |  2019. Május 14.  |
+|  Rel 19-05   |  [4498206]  |  Előfordulhat, hogy az Internet Explorer összegzése   |  2,86, 3.73, 4.66  |  2019. Május 14.  |
+|  Rel 19-05   |  [4505050]  |  Előfordulhat, hogy az Internet Explorer összegzése   |  2,86, 3.73, 4.66  |  2019. május 18.  |
+|  Rel 19-05   |  [4497932]  |  Előfordulhat, hogy Flash Update   |  3.73, 4.66, 5.31  |  2019. Május 14.  |
+|  Rel 19-05   |  [4499175]  |  Előfordulhat, hogy a biztonság összegzése   |  2.86  |  2019. Május 14.  |
+|  Rel 19-05   |  [4495612]  |  Előfordulhat, hogy a .NET 3.5 a biztonság összegzése   |  2.86  |  2019. Május 14.  |
+|  Rel 19-05   |  [4495593]  |  Előfordulhat, hogy a .NET 4.5.2-es a biztonság összegzése   |  2.86  |  2019. Május 14.  |
+|  Rel 19-05   |  [4499158]  |  Előfordulhat, hogy a biztonság összegzése   |  3.73  |  2019. Május 14.  |
+|  Rel 19-05   |  [4495607]  |  Előfordulhat, hogy a .NET 3.5 a biztonság összegzése   |  3.73  |  2019. Május 14.  |
+|  Rel 19-05   |  [4495591]  |  Előfordulhat, hogy a .NET 4.5.2-es a biztonság összegzése   |  3.73  |  2019. Május 14.  |
+|  Rel 19-05   |  [4492872]  |  Internet Explorer összegzése   |  3.73  |  2019. április 16.  |
+|  Rel 19-05   |  [4499165]  |  Március a biztonság összegzése   |  4.66  |  2019. Május 14.  |
+|  Rel 19-05   |  [4495615]  |  Előfordulhat, hogy a .NET 3.5 a biztonság összegzése   |  4.66  |  2019. Május 14.  |
+|  Rel 19-05   |  [4495589]  |  Előfordulhat, hogy a .NET 4.5.2-es a biztonság összegzése   |  4.66  |  2019. Május 14.  |
+|  Rel 19-05   |  [4498947]  |  Előfordulhat, hogy SSU   |  5.31  |  2019. Május 14.  |
+|  Rel 19-05   |  [4494175]  |  Előfordulhat, hogy a mikrokód Update   |  5.31  |  2019. Május 14.  |
+|  Rel 19-05   |  [4505052]  |  Előfordulhat, hogy a biztonság összegzése   |  5.31  |  2019. május 19.  |
+|  Rel 19-05   |  [4499728]  |  Előfordulhat, hogy SSU   |  6.7  |  2019. május 19.  |
+|  Rel 19-05   |  [4505056]  |  Előfordulhat, hogy a biztonság összegzése   |  6.7  |  2019. május 19.  |
+|  Rel 19-05   |  [4494174]  |  Előfordulhat, hogy a mikrokód Update   |  6.7  |  2019. Május 14.  |
+|  Rel 19-05   |  [4495590]  |  Előfordulhat, hogy a biztonság összegzése .NET   |  6.7  |  2019. Május 14.  |
 
-[KB4493510]: https://support.microsoft.com/kb/KB4493510
-[KB4493472]: https://support.microsoft.com/kb/KB4493472
-[KB4493451]: https://support.microsoft.com/kb/KB4493451
-[KB4493446]: https://support.microsoft.com/kb/KB4493446
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[4498206]: https://support.microsoft.com/kb/4498206
+[4505050]: https://support.microsoft.com/kb/4505050
+[4497932]: https://support.microsoft.com/kb/4497932
+[4499175]: https://support.microsoft.com/kb/4499175
+[4495612]: https://support.microsoft.com/kb/4495612
+[4495593]: https://support.microsoft.com/kb/4495593
+[4499158]: https://support.microsoft.com/kb/4499158
+[4495607]: https://support.microsoft.com/kb/4495607
+[4495591]: https://support.microsoft.com/kb/4495591
+[4492872]: https://support.microsoft.com/kb/4492872
+[4499165]: https://support.microsoft.com/kb/4499165
+[4495615]: https://support.microsoft.com/kb/4495615
+[4495589]: https://support.microsoft.com/kb/4495589
+[4498947]: https://support.microsoft.com/kb/4498947
+[4494175]: https://support.microsoft.com/kb/4494175
+[4505052]: https://support.microsoft.com/kb/4505052
+[4499728]: https://support.microsoft.com/kb/4499728
+[4505056]: https://support.microsoft.com/kb/4505056
+[4494174]: https://support.microsoft.com/kb/4494174
+[4495590]: https://support.microsoft.com/kb/4495590
 
 
 ## <a name="april-2019-guest-os"></a>Április 2019 vendég operációs rendszer
@@ -83,11 +81,11 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | Rel 19-04 | [4493448] | Windows biztonsági | 2.85 | 2019. április 9. |
 | Rel 19-04 | [4493478] | Flash | 3.72, 4.65, 5.30, 6.6 | 2019. április 9. |
 | Rel 19-04 | [4493435] | Internet Explorer | 2.85, 3.72, 4.65 | 2019. április 9. |
-| Rel 19-04 | [KB4490628] | Karbantartási frissítését | 2.85 | 2019. március 12. |
-| Rel 19-04 | [KB4474419] | SHA2-támogatás | 2.85 | 2019. március 12. |
-| Rel 19-04 | [KB4489878] | Március nem a biztonság összegzése | 2.85 | 2019. március 12. |
-| Rel 19-04 | [KB4489891] | Március nem a biztonság összegzése | 3.72 | 2019. március 12. |
-| Rel 19-04 | [KB4489881] | Március nem a biztonság összegzése | 4.65 | 2019. március 12. |
+| Rel 19-04 | [4490628] | Karbantartási frissítését | 2.85 | 2019. március 12. |
+| Rel 19-04 | [4474419] | SHA2-támogatás | 2.85 | 2019. március 12. |
+| Rel 19-04 | [4489878] | Március nem a biztonság összegzése | 2.85 | 2019. március 12. |
+| Rel 19-04 | [4489891] | Március nem a biztonság összegzése | 3.72 | 2019. március 12. |
+| Rel 19-04 | [4489881] | Március nem a biztonság összegzése | 4.65 | 2019. március 12. |
 
 [4493509]: https://support.microsoft.com/kb/4493509
 [4493470]: https://support.microsoft.com/kb/4493470
@@ -96,11 +94,11 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 [4493448]: https://support.microsoft.com/kb/4493448
 [4493478]: https://support.microsoft.com/kb/4493478
 [4493435]: https://support.microsoft.com/kb/4493435
-[KB4490628]: https://support.microsoft.com/kb/KB4490628
-[KB4474419]: https://support.microsoft.com/kb/KB4474419
-[KB4489878]: https://support.microsoft.com/kb/KB4489878
-[KB4489891]: https://support.microsoft.com/kb/KB4489891
-[KB4489881]: https://support.microsoft.com/kb/KB4489881
+[4490628]: https://support.microsoft.com/kb/KB4490628
+[4474419]: https://support.microsoft.com/kb/KB4474419
+[4489878]: https://support.microsoft.com/kb/KB4489878
+[4489891]: https://support.microsoft.com/kb/KB4489891
+[4489881]: https://support.microsoft.com/kb/KB4489881
 
 ## <a name="march-2019-guest-os"></a>Március 2019 vendég operációs rendszer
 

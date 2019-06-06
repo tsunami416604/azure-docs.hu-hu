@@ -2,20 +2,20 @@
 title: ClaimsSchema – az Azure Active Directory B2C |} A Microsoft Docs
 description: Adja meg az egyéni szabályzat ClaimsSchema elem Azure Active Directory B2C-t.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 81df3532ee466f32ee42f0010de9aa74dbeb6d85
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e09c4530fc6dce00e6d807908c7de598422a440b
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721748"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511849"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,18 +42,18 @@ A **ClaimsSchema** elem definiálja, amely lehet hivatkozni a jogcímtípusok, a
 
 A **takar** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A jogcímtípus használt azonosító. Más elemek használhatja ezt az azonosítót a házirendben. |
 
 A **takar** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
-| Megjelenítendő név | 0:1 | Különböző képernyőkön felhasználók számára megjelenő cím. Az érték lehet [honosított](localization.md). |
+| displayName | 0:1 | Különböző képernyőkön felhasználók számára megjelenő cím. Az érték lehet [honosított](localization.md). |
 | Adattípus | 0:1 | A jogcím típusa. A logikai érték, date, dateTime, int, hosszú adattípusok, string, Publishedresources, alternativeSecurityIdCollection is használható. |
 | DefaultPartnerClaimTypes | 0:1 | A partner alapértelmezett jogcímtípusok megadott protokoll használatára. Az érték felülírható legyen a a **PartnerClaimType** megadott a **bemeneti jogcím** vagy **kimeneti jogcím** elemeket. Ez az elem használatával adja meg egy protokoll alapértelmezett nevét.  |
-| Maszk | 0:1 | Egy nem kötelező karakterlánc maszkolás karaktereket is alkalmazható a jogcím megjelenítésekor. Ha például a telefon száma 324-232-4343 is maszkolva XXX-XXX-4343. |
+| maszk | 0:1 | Egy nem kötelező karakterlánc maszkolás karaktereket is alkalmazható a jogcím megjelenítésekor. Ha például a telefon száma 324-232-4343 is maszkolva XXX-XXX-4343. |
 | UserHelpText | 0:1 | A jogcím típusa, amely a felhasználóknak megérteni célra leírása. Az érték lehet [honosított](localization.md). |
 | UserInputType | 0:1 | A felhasználó számára elérhetőnek kell lennie, amikor a jogcím-adatok manuális megadása a jogcím típusa szövegbeviteli vezérlőelem típusa. Tekintse meg később ezen a lapon definiált felhasználói bemeneti típusnak. |
 | Korlátozás | 0:1 | Az érték korlátozások a jogcím, például egy reguláris kifejezés (Regex) vagy az elfogadható értékek listáját. Az érték lehet [honosított](localization.md). |
@@ -63,13 +63,13 @@ PredicateValidationReference| 0:1 | Egy hivatkozást egy **PredicateValidationsI
 
 A **DefaultPartnerClaimTypes** tartalmazhatja a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Protocol | 0:n | Alapértelmezett partnereikkel együtt protokollokat jogcím-típus neve. |
 
 A **protokoll** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Name (Név) | Igen | Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek:  OAuth1, az OAuth2, egy SAML2, OpenIdConnect, WsFed vagy WsTrust. |
 | PartnerClaimType | Igen | A jogcím típusa használni kívánt nevét. |
@@ -100,11 +100,11 @@ Ennek eredményeképpen az Azure AD B2C által kiállított JWT jogkivonat bocs�
 }
 ```
 
-### <a name="mask"></a>Maszk
+### <a name="mask"></a>maszk
 
 A **maszk** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | `Type` | Igen | Az igényt maszk típusa. A lehetséges értékek: `Simple` vagy `Regex`. A `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszkot a vezető része egy karakterlánc jogcím van hozzárendelve. A `Regex` érték azt jelzi, hogy a teljes karakterlánc jogcím van hozzárendelve egy reguláris kifejezést.  Ha a `Regex` érték van megadva, nem kötelező attribútum kell definiálni a reguláris kifejezés használata. |
 | `Regex` | Nem | Ha **`Type`** értékre van állítva `Regex`, adja meg a reguláris kifejezés használata.
@@ -150,20 +150,20 @@ A **korlátozás** elemet tartalmazhatnak a következő attribútumot:
 
 A **korlátozás** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Enumerálás | 1:n | A felhasználó egy jogcímet, például egy értéket a legördülő listában válassza ki az elérhető beállítások a felhasználói felületen. |
-| Mintázat | 1:1 | A reguláris kifejezés használata. |
+| Pattern | 1:1 | A reguláris kifejezés használata. |
 
 ### <a name="enumeration"></a>Enumerálás
 
 A **enumerálás** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Text | Igen | A megjelenítendő karakterlánc, amely a felhasználói felületen ezt a lehetőséget választja a felhasználó számára látható. |
 |Érték | Igen | A jogcím értéke, amely ezzel a beállítással társítva van. |
-| SelectByDefault | Nem | Azt jelzi-e ez a beállítás van kiválasztva a felhasználói felület alapértelmezés szerint. Érvényes értékek: IGAZ vagy hamis. |
+| SelectByDefault | Nem | Azt jelzi-e ez a beállítás van kiválasztva a felhasználói felület alapértelmezés szerint. Lehetséges értékek: IGAZ vagy hamis. |
 
 Ez a példa konfigurálja egy **Város** legördülő lista jogcímet, és a egy alapértelmezett értéket az `New York`:
 
@@ -184,7 +184,7 @@ Város legördülő alapértelmezett értékkel, New York-i beállítása:
 ![Város legördülő](./media/claimsschema/dropdownsingleselect.png)
 
 
-### <a name="pattern"></a>Mintázat
+### <a name="pattern"></a>Pattern
 
 A **minta** elem magában foglalhatja a következő attribútumokat:
 

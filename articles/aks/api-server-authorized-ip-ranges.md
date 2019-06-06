@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c27d47a918939d012abee3c2317eba39587d734
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 185c16e76094fe55a54fb17bef24fcd03d7b54f0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243584"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475153"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Előzetes verzió – az API kiszolgálóra történő biztonságos hozzáférés engedélyezett IP-címtartományok Azure Kubernetes Service (AKS)
 
@@ -74,8 +74,6 @@ A következő korlátozások vonatkoznak az API-t kiszolgáló engedélyezett IP
 A Kubernetes API-t kiszolgáló, hogyan érhetők el az alapul szolgáló Kubernetes API-kat. Ez az összetevő kommunikációt tesz lehetővé a felügyeleti eszközök, például `kubectl` vagy a Kubernetes irányítópultot. Az AKS egy egybérlős fürt főkiszolgáló, egy dedikált kiszolgálóval API-t biztosít. Alapértelmezés szerint az API-kiszolgáló nyilvános IP-cím van hozzárendelve, és a szerepköralapú hozzáférés-vezérlést (RBAC) hozzáférés felett Önnek kell rendelkeznie.
 
 Az AKS ellenkező esetben a nyilvánosan elérhető vezérlősík való biztonságos hozzáférés / API-kiszolgálóhoz, engedélyezése és használata engedélyezett IP-címtartományok. Ezek engedélyezett IP-címtartományok engedélyezése csak az API-kiszolgálóval való kommunikációhoz megadott IP-címtartományok. Az API-kiszolgálóhoz nem tartozik ezek engedélyezett IP-címtartományok IP-címről érkező kérelem le van tiltva. Ön továbbra is az RBAC használatával, majd engedélyezze a felhasználók és az általuk kért műveleteket.
-
-Az engedélyezett IP-címtartomány funkció használatához egy nyilvános IP-címet közvetlenül a csomópont-készlet egy alapszintű NGINX-szolgáltatás üzembe helyezésével. Az API-kiszolgáló a csomópont készlethez a hitelesített nyilvános IP-címen keresztül kommunikál. Az API-kiszolgáló eléréséhez további IP-címtartományok majd határozza meg.
 
 Az API-kiszolgáló és a fürt más összetevői kapcsolatos további információkért lásd: [Kubernetes alapvető fogalmait az aks-ben][concepts-clusters-workloads].
 

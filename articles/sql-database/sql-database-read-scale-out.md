@@ -11,19 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 04/19/2019
-ms.openlocfilehash: cbcdcfd151951334246a4e85d9f521a15bb6269d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/03/2019
+ms.openlocfilehash: 1b452fb0bac91429793f8d55e439c36c70784722
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146110"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492721"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Csak olvasható replikák terheléselosztás csak olvasható lekérdezési számítási feladatok használata
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 Részeként a [magas rendelkezésre állású architektúra](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability), a prémium szintű, fontos üzleti vagy nagy kapacitású szolgáltatási rétegben található minden egyes adatbázis automatikusan ki van építve a egy elsődleges replika, és több másodlagos replikát. A másodlagos replikák számítási mérete megegyezik az elsődleges replika vannak kiosztva. A **olvasási kibővített** funkció lehetővé teszi terheléselosztás SQL-adatbázis csak olvasható-alapú számítási feladatokat a kapacitását, csak olvasási replikára az írható-olvasható replika osztozik. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási számítási feladatok, és nem lesz hatással a teljesítményét. A funkció célja az alkalmazások, amelyek logikailag elkülönített csak olvasható feladatokhoz, például analytics tartalmazzák. Teljesítménybeli előnyök további kapacitás használatának nélkül juthat, külön költségek.
 

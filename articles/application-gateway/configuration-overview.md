@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 5bfd1f930c190e717e435856f424f0cdf80deb2c
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 55c7670821ee6c6f5b924bf18b5f7ad01d4b6d51
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946811"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431297"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfigurálása – áttekintés
 
@@ -57,7 +57,7 @@ Hálózati biztonsági csoportok (NSG-k) az Application Gatewayen támogatottak.
 
 - A forgalom a **AzureLoadBalancer** címke engedélyezni kell.
 
-##### <a name="whitelist-application-gateway-access-to-a-few-source-ips"></a>Néhány forrás IP-címek engedélyezési lista az Application Gateway elérésére
+##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Néhány forrás IP-címek az Application Gateway-hozzáférés engedélyezése
 
 A jelen esetben használja az Application Gateway-alhálózat NSG-k. Az alábbi korlátozások PUT ez prioritásuk szerinti sorrendben kell az alhálózaton található:
 
@@ -170,7 +170,7 @@ Miután létrehozott egy figyelőt, hogy társítsa azt egy kérelem-útválaszt
 
 Egy application gateway az Azure portal használatával hoz létre, amikor létrehoz egy alapértelmezett szabályt (*felhasználóval a rule1*). Ez a szabály köti a alapértelmezett figyelőt (*appGatewayHttpListener*) és az alapértelmezett háttér-címkészletet (*appGatewayBackendPool*) és az alapértelmezett háttér-HTTP-beállítások ( *appGatewayBackendHttpSettings*). Miután létrehozta az átjárót, szerkessze a beállításokat az alapértelmezett szabály, vagy létrehozhat új szabályokat.
 
-### <a name="rule-type"></a>Szabálytípus
+### <a name="rule-type"></a>Szabály típusa
 
 Szabály létrehozásakor választhat a között [ *alapszintű* és *-alapú*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rule).
 
@@ -209,13 +209,13 @@ Egy alapszintű szabály csak egy háttér-HTTP-beállítás engedélyezett. A a
 
 ### <a name="redirection-setting"></a>Átirányítási beállítás
 
-Ha átirányítása egy alapszintű szabály van konfigurálva, a kapcsolódó figyelőt az összes kérelmet a rendszer átirányítja a cél. Ez a *globális* átirányítást. Ha átirányítása egy útvonalalapú szabály van konfigurálva, a rendszer átirányítja csak egy adott hely területen kérelmeket. Ilyen például, egy vásárlási bevásárlókocsi területet, amely helyén */cart/\**. Ez a *-alapú* átirányítást.
+Ha átirányítása egy alapszintű szabály van konfigurálva, a kapcsolódó figyelőt az összes kérelmet a rendszer átirányítja a cél. Ez a *globális* átirányítást. Ha átirányítása egy útvonalalapú szabály van konfigurálva, a rendszer átirányítja csak egy adott hely területen kérelmeket. Ilyen például, egy vásárlási bevásárlókocsi területet, amely helyén */cart/\** . Ez a *-alapú* átirányítást.
 
 Átirányítások kapcsolatos további információkért lásd: [Application Gateway átirányítás áttekintése](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
 
 #### <a name="redirection-type"></a>Átirányítás típusa
 
-Válassza ki a szükséges átirányítás típusát: *Permanent(301)*, *Temporary(307)*, *Found(302)*, vagy *other(303) lásd*.
+Válassza ki a szükséges átirányítás típusát: *Permanent(301)* , *Temporary(307)* , *Found(302)* , vagy *other(303) lásd*.
 
 #### <a name="redirection-target"></a>Átirányítás célhelye
 
@@ -269,7 +269,7 @@ Ez a beállítás a figyelő támogatja a kombinálva HTTPS [végpontok között
 
 Ez a beállítás meghatározza azt a portot, ahol a háttérkiszolgálók figyeli a forgalmat az application gateway az. Konfigurálhatja a beállításnak 1 és 65535 közötti port.
 
-### <a name="request-timeout"></a>Kérés időtúllépése
+### <a name="request-timeout"></a>Kérelem időtúllépése
 
 A beállítás akkor a válasz érkezik a háttérkészlet, mielőtt egy "kapcsolat időkorlátja lejárt" hibaüzenetet ad vissza, amely az application gateway másodpercek számát.
 

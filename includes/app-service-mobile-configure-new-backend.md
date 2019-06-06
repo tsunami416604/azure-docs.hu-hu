@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 99ca7e82a11687d25355589e7ea539a14cdb493b
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: a7c994f85d90e94d514bb4e4f91a6644ed45432c
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420758"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66455197"
 ---
 1. Töltse le az ügyfél SDK rövid útmutatók, a következő platformokhoz:
     
@@ -94,7 +94,7 @@ ms.locfileid: "66420758"
 
         2. Hozza létre a .NET server projektet helyileg a Visual Studióban.
 
-        3. A Visual Studióban nyissa meg a Megoldáskezelőben kattintson a jobb gombbal a `ZUMOAPPNAMEService` projektre, kattintson a **közzététel**, látni fogja a `Publish to App Service` ablak. Ha Mac rendszeren dolgozik, tekintse meg az egyéb módokon üzembe helyezni az alkalmazást [Itt](https://docs.microsoft.com/en-us/azure/app-service/deploy-local-git).
+        3. A Visual Studióban nyissa meg a Megoldáskezelőben kattintson a jobb gombbal a `ZUMOAPPNAMEService` projektre, kattintson a **közzététel**, látni fogja a `Publish to App Service` ablak. Ha Mac rendszeren dolgozik, tekintse meg az egyéb módokon üzembe helyezni az alkalmazást [Itt](https://docs.microsoft.com/azure/app-service/deploy-local-git).
         
            ![A Visual studio közzététel](./media/app-service-mobile-configure-new-backend/visual-studio-publish.png)
 

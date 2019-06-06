@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 51b394043f88789865edea5be6376ae536f88848
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: fba969b70ae052c928f33888d3c93eb7683ae9f7
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420438"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455797"
 ---
-# <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Egy megosztott képgyűjtemény konfigurálása az Azure DevTest Labs szolgáltatásban
-DevTest Labs szolgáltatásban mostantól támogatja a [megosztott Képkatalógus](/virtual-machines/windows/shared-image-galleries.md) funkció. Lehetővé teszi a labor felhasználók képek érhetnek el megosztott hely labor-erőforrások létrehozása során. Segít struktúra és a szervezet köré az egyéni által kezelt Virtuálisgép-rendszerképek hozhat létre. A megosztott Képkatalógus funkció támogatja:
+# <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Megosztott rendszerkép-katalógus konfigurálása az Azure DevTest Labsben
+DevTest Labs szolgáltatásban mostantól támogatja a [megosztott Képkatalógus](/virtual-machines/windows/shared-image-galleries.md) funkció. A funkcióval a tesztkörnyezet-felhasználók megosztott helyen tárolt rendszerképekhez férhetnek hozzá, amikor tesztkörnyezet-erőforrásokat hoznak létre. Emellett azt is lehetővé teszi, hogy az egyénileg felügyelt VM-rendszerképekhez struktúrát és szervezetet hozzon létre. A megosztott Képkatalógus funkció támogatja:
 
-- A képek felügyelt globális replikációt
-- Verziókezelés és a könnyebb kezelhetőség képek csoportosítása
-- Győződjön meg arról, a képek a Zónaredundáns Társzolgáltatási (ZRS) fiókokkal magas rendelkezésre állású rendelkezésre állási zónákat támogató régiókban. A ZRS nagyobb rugalmasság a zónaszintű meghibásodásokkal szemben kínál.
-- Előfizetések között, és még a bérlők, szerepköralapú hozzáférés-vezérlés (RBAC) használatával között megosztást.
+- Rendszerképek felügyelt globális replikációja
+- Verziókövetés és rendszerképek csoportosítása az egyszerűbb kezelés érdekében
+- A lemezképek magas rendelkezésre állása zónaredundáns tárolási (ZRS-) fiókokkal biztosítható a rendelkezésre állási zónákat támogató régiókban. A ZRS ellenállóbbá teszi a lemezképeket a zónán belüli hibákkal szemben.
+- Megosztás előfizetések és bérlők között szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
 
 További információkért lásd: [megosztott Képkatalógus dokumentáció](../virtual-machines/windows/shared-image-galleries.md). 
  
-Ha felügyelt rendszerkép található, biztosítani kell, és szeretné elérhetővé teheti azokat a vállalat nagy számú, egy adattár, amely megkönnyíti a frissítése, és megoszthatja a képek egy megosztott lemezkép-katalógusában is használhatja. Labortulajdonosként csatlakoztathat egy meglévő megosztott lemezkép-katalógusában a labor. Ez a katalógus csatolást labor felhasználók gépek hozhatnak létre a legújabb lemezképek. Ez a szolgáltatás egyik legfőbb előnye az, hogy DevTest Labs szolgáltatásban mostantól kihasználhatja a lemezképek megosztása labs között, előfizetések és -régiók között. 
+Ha nagy számú felügyelt lemezképet kell kezelnie, és szeretné azokat elérhetővé tenni a teljes cég számára, használhat megosztott rendszerkép-katalógust és tárházat, amelynek használatával egyszerűen frissíthetők és oszthatók meg a rendszerképek. A tesztkörnyezet tulajdonosaként egy már meglévő megosztott rendszerkép-katalógust a tesztkörnyezethez is csatolhat. A katalógus csatolása után a tesztkörnyezet felhasználói virtuális gépeket hozhatnak létre ezekből a legfrissebb rendszerképekből. Ennek a funkciónak az egyik legfontosabb előnye, hogy a DevTest-laborok így több tesztkörnyezetre, több előfizetésre és több régióra kiterjedően használhatják a megosztott rendszerképeket. 
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 - Egyszerre csak egy laborhoz csak csatolhat egy megosztott lemezkép-katalógusában. Ha egy másik gyűjtemény csatlakoztatni szeretne, válassza le a meglévőt, és egy másik új kell. 
@@ -46,10 +46,17 @@ Ha felügyelt rendszerkép található, biztosítani kell, és szeretné elérhe
 1. Tesztkörnyezetek listájában válassza ki a **labor**.
 1. Válassza ki **Konfigurace a zásady** a a **beállítások** szakaszban a bal oldali menüben.
 1. Válassza ki **megosztott kép katalógusok** alatt **virtuálisgép-bázisok** a bal oldali menüben.
+
+    ![Megosztott kép katalógusok menü](./media/configure-shared-image-gallery/shared-image-galleries-menu.png)
 1. A labor kattintva egy meglévő megosztott lemezkép-katalógus csatolása a **Attach** gombra, és a gyűjtemény kiválasztásával a legördülő listában.
+
+    ![Csatolás](./media/configure-shared-image-gallery/attach-options.png)
 1. Nyissa meg a csatlakoztatott katalógus, és konfigurálja a katalógust úgy, hogy **engedélyezése vagy letiltása** megosztott képeket a virtuális gép létrehozásához.
+
+    ![Engedélyezése vagy letiltása](./media/configure-shared-image-gallery/enable-disable.png)
 1. Labor felhasználók ezután hozhat létre egy virtuális gépet a engedélyezett képekkel kattintva **+ Hozzáadás** és lévő lemezkép keresése a **válassza ki az alapszintű** lap.
 
+    ![Tesztkörnyezet-felhasználók](./media/configure-shared-image-gallery/lab-users.png)
 ## <a name="use-azure-resource-manager-template"></a>Az Azure Resource Manager sablonjainak használata
 
 ### <a name="attach-a-shared-image-gallery-to-your-lab"></a>A labor egy megosztott lemezkép-katalógus csatolása

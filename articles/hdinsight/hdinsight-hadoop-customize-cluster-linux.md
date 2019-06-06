@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 63f81c331db619323f74b77e48627fd8b432565f
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 03fcbb0216d85e337b4161aa24ceeb7d3a2bdebe
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518894"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479459"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Az Azure HDInsight-fürtök testreszabása szkriptműveletek használatával
 
@@ -58,7 +58,7 @@ Szkriptműveletet egy HDInsight-fürt csomópontjain futó Bash-szkript. Jellemz
 
      * ESP-fürtök:
          
-         * A wasb [s] :// vagy http [s] :// URI-k használata támogatott.
+         * A wasb: / / vagy a wasbs: / / vagy http [s] :// URI-k használata támogatott.
             
 * Korlátozhatja az egyes csomóponttípusok futtatásához. Például a fő csomópontok vagy a munkavégző csomópontok.
 
@@ -171,7 +171,7 @@ Ez a szakasz ismerteti a különböző módokon használhatja a Parancsfájlműv
 
     A következő táblázat ismerteti az elemeket az űrlapon:
 
-    | Tulajdonság | Value |
+    | Tulajdonság | Érték |
     | --- | --- |
     | Szkript kiválasztása | A saját parancsfájl használatára, válassza ki a __egyéni__. Ellenkező esetben válassza a megadott szkriptek közül. |
     | Name (Név) |Adja meg a parancsfájlművelet nevét. |
@@ -253,7 +253,7 @@ Nyissa meg a [az Azure portal](https://portal.azure.com):
 
     A következő táblázat ismerteti az elemeket az űrlapon:
 
-    | Tulajdonság | Value |
+    | Tulajdonság | Érték |
     | --- | --- |
     | Szkript kiválasztása | A saját parancsfájl használatára, válassza ki a __egyéni__. Ellenkező esetben válassza ki a megadott parancsfájlt. |
     | Name (Név) |Adja meg a parancsfájlművelet nevét. |
@@ -346,7 +346,7 @@ A .NET SDK használatával történő parancsfájlok alkalmazni a fürt egy pél
 
 4. Ehhez a fürthöz-szkriptek előzményeit jeleníti meg a parancsfájl műveletek szakaszban. Ezen információk közé tartozik a megőrzött szkriptek listáját. Az alábbi képernyőképen látható, hogy a Solr szkript futtatása a fürtön. A képernyőfelvételen bármely a megőrzött szkriptek nem jelenik meg.
 
-    ![Szkriptműveletek](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
+    ![A Parancsfájlműveletek](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
 
 5. Válassza ki a parancsfájl megjelenítése az előzményekben tekintheti át a **tulajdonságok** Ez a szkript a következő szakaszban. A képernyő tetején futtassa újra a parancsfájlt, vagy léptetheti elő.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: A Jelszókivonat-szinkronizálás az Azure ad összevonási áttelepít |} A Microsoft Docs'
+title: 'Azure AD Connect: Összevonási áttelepíteni nál az Azure AD-hez |} A Microsoft Docs'
 description: Ez a cikk áthelyezi a hibrid identitáskezelési környezetet a összevonási Jelszókivonat-szinkronizálás kapcsolatos információkat tartalmaz.
 services: active-directory
 author: billmath
@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 180464e22b34c7b378643e738ea0c30ee5a4b11e
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: a1d2c587129f9f9f09c8f3871748449dc7b1755b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298894"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474030"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>A Jelszókivonat-szinkronizálás az Azure Active Directory összevonási áttelepítésére
 

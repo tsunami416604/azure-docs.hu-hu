@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 05/31/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ddaead7a0e616b3138dca0b18a58d64e38a46f9e
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 68f62a6945f3b651781414e3194104b6d2e6295c
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66356416"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455812"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure Blob Storage-adatok importálása az Azure Import/Export szolgáltatás használata
 
@@ -58,7 +58,7 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
 6.  Készítse elő a lemezen, futtassa a következő parancsot. **Az adatok méretétől függően ez eltarthat néhány órát napra.** 
 
     ```
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite /enablecontentmd5 
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite /enablecontentmd5 
     ```
     Egy journal-fájl jön létre ugyanabban a mappában, ahol az eszközt futtatta. Két más fájlok is létrejönnek - egy *.xml* fájlt (a mappa, ahol futtatja az eszközt) és a egy *meghajtó-manifest.xml* fájlt (adatokat tartalmazó mappát).
     
@@ -72,6 +72,7 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
     |/bk:     |A meghajtó BitLocker-kulcsa. A numerikus jelszó kimenetéből: `manage-bde -protectors -get D:`      |
     |/srcdir:     |A lemez szállításra meghajtóbetűjelének követ `:\`. Például: `D:\`.         |
     |/dstdir:     |Az Azure Storage-ban a cél tároló neve.         |
+    |/blobtype:     |Ez a beállítás határozza meg az adatokat importálni kívánt blobok. A blokkblobok esetében ez a `BlockBlob` , a lapblobokhoz, pedig `PagaBlob`.         |
     |/skipwrite:     |A beállítást, amely megadja, hogy nem szükséges átmásolni új adatokat és a lemezen található meglévő adatokat, hogy elő kell készíteni.          |
     |/enablecontentmd5:     |A beállítást, ha engedélyezve van, biztosítja, hogy MD5 számított blokkblobok az Azure-bA a feltöltésekor.          |
 7. Ismételje meg minden egyes szállításra lemezt az előző lépésben. A megadott nevű napló fájl jön létre minden egyes futtatáskor a parancssor.

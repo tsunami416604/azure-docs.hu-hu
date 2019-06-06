@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 05/30/2019
-ms.openlocfilehash: 94309a019800b560cf6731d84cea324932e3f357
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 4f1dd0bfc0637c6681b513860a63df2b8c35fe5e
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66398536"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430858"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Modell-e az Azure Machine Learning szolgáltatással
 
@@ -462,7 +462,7 @@ Az ismertető és az eredeti modellt telepíthetők, és kiértékelés időpont
 
 Automatizált machine learning szolgáltatás fontosság automatikus betanított modellek értelmezéséhez csomagot tartalmaz. Ezenkívül besorolási forgatókönyveket teszi fontosság osztályszintű funkció lekéréséhez. Ehhez a viselkedéshez belüli automatikus machine learning két módszer áll rendelkezésre:
 
-* Ensemble betanított modell fontosak a szolgáltatás engedélyezéséhez használja a [ `explain_model()` ](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) függvény.
+* Ensemble betanított modell fontosak a szolgáltatás engedélyezéséhez használja a [ `explain_model()` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) függvény.
 
     ```python
     from azureml.train.automl.automlexplainer import explain_model
@@ -471,7 +471,7 @@ Automatizált machine learning szolgáltatás fontosság automatikus betanított
         per_class_summary, per_class_imp = explain_model(fitted_model, X_train, X_test)
     ```
 
-* Ahhoz, hogy minden egyes feladatfuttatáshoz képzési előtt a szolgáltatás fontosság, állítsa be a `model_explainability` paramétert `True` a a `AutoMLConfig` objektum érvényesítési adatok biztosítása mellett. Ezután a [ `retrieve_model_explanation()` ](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) függvény.
+* Ahhoz, hogy minden egyes feladatfuttatáshoz képzési előtt a szolgáltatás fontosság, állítsa be a `model_explainability` paramétert `True` a a `AutoMLConfig` objektum érvényesítési adatok biztosítása mellett. Ezután a [ `retrieve_model_explanation()` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) függvény.
 
     ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation

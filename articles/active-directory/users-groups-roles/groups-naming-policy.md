@@ -1,6 +1,6 @@
 ---
 title: Az Office 365-csoportok – Azure Active Directory csoportelnevezési házirend kényszerítése |} A Microsoft Docs
-description: Az Azure Active Directoryban (előzetes verzió) az Office 365-csoportok elnevezési szabályzat beállítása
+description: Office 365-csoportok az Azure Active Directoryban elnevezési szabályzat beállítása
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d21616938978e501cc112fde105be4db4499b2a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 0c13b95028975c5463217455c940bb84c3867899
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605555"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734783"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Az Office 365-csoportok az Azure Active Directoryban elnevezési szabályzat kényszerítése
 
@@ -76,12 +76,12 @@ Kijelölt rendszergazdák kivonhatók a ezek a házirendek összes csoport szám
 - Felhasználói adminisztrátor
 - Címtárírók
 
-## <a name="configure-naming-policy-in-azure-portal-preview"></a>Kiosztási szabályzat konfigurálása az Azure Portalon (előzetes verzió)
+## <a name="configure-naming-policy-in-azure-portal"></a>Kiosztási szabályzat konfigurálása az Azure Portalon
 
 1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) rendszergazdai felhasználói fiókkal.
 1. Válassza ki **csoportok**, majd **elnevezési szabályzatában foglalt** elnevezési szabályzat lapjának megnyitásához.
 
-    ![Nyissa meg az elnevezési szabályzat oldalt a felügyeleti központ](./media/groups-naming-policy/policy-preview.png)
+    ![Nyissa meg az elnevezési szabályzat oldalt a felügyeleti központ](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Zobrazí nebo upraví az előtag-utótag csoportelnevezési házirend
 
@@ -94,7 +94,7 @@ Kijelölt rendszergazdák kivonhatók a ezek a házirendek összes csoport szám
 
 1. Az a **elnevezési szabályzatában foglalt** lapon jelölje be **letiltott szavakat**.
 
-    ![szerkesztése és feltöltése az elnevezési szabályzatában foglalt letiltott szavakat listázása](./media/groups-naming-policy/blockedwords-preview.png)
+    ![szerkesztése és feltöltése az elnevezési szabályzatában foglalt letiltott szavakat listázása](./media/groups-naming-policy/blockedwords.png)
 
 1. Zobrazí nebo upraví egyéni letiltott szavakat aktuális listájának kiválasztásával **letöltése**.
 1. A fájl ikonra kattintva töltse fel az új egyéni letiltott szavak listáját.
@@ -198,7 +198,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ## <a name="remove-the-naming-policy"></a>A kiosztási szabályzat eltávolítása
 
-### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>Távolítsa el a kiosztási szabályzat (előzetes verzió) az Azure portal használatával
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Távolítsa el a csoportelnevezési házirend, az Azure portal használatával
 
 1. Az a **elnevezési szabályzatában foglalt** lapon jelölje be **házirend törlése**.
 1. Miután meggyőződött a törlés, a kiosztási szabályzat törlődik a, beleértve az összes előtag-utótag elnevezési házirend és egyéni letiltott szavakat.
@@ -230,7 +230,7 @@ Miután beállította a csoportelnevezési házirend az Azure ad-ben, amikor egy
 - A előzetes verziója a nevét (a előtagot és utótagot), a csoportelnevezési házirend szerint, amint a felhasználó begépeli a csoport neve
 - Ha a felhasználó sikeresen megadja a letiltott szavakat, megjelennek egy hibaüzenet, eltávolíthatják a letiltott szavakat.
 
-Alkalmazások és szolgáltatások | Megfelelőség
+Számítási feladat | Megfelelőség
 ----------- | -------------------------------
 Az Azure Active Directory portálok | Az Azure ad-ben és a hozzáférési Panel portálhoz az elnevezési szabályzat érvénybe léptetését nevének megjelenítése, amikor a felhasználó egy csoportnevet létrehozása vagy egy csoport szerkesztése során. Amikor a felhasználó egy egyéni letiltott szó, egy hibaüzenet jelenik meg a letiltott szó jelenik meg, hogy a felhasználó el is távolíthatja.
 Outlook Web Access (OWA) | Az Outlook Web Access jeleníti meg, a csoportelnevezési házirend kényszerítve a neve, amikor a felhasználó egy csoport neve vagy a csoport aliasa. Amikor egy felhasználó egyéni tiltott szót, egy hibaüzenet jelenik meg a felhasználói felület és a letiltott szó, hogy a felhasználó távolíthatja el.

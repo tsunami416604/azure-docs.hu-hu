@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 77908e24a19a48bf9b84d5d5b664bf0443159118
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 256101cce5588f56a8094a7a9a98e5fe69e6ec73
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128702"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497254"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Engedélyezze, és tekintse át a Kubernetes Azure Kubernetes Service (AKS) naplózza a fő csomópont
 
 Az Azure Kubernetes Service (AKS), mint például a fő összetevőket a *kube-apiserver* és *kube-tartományvezérlő-manager* felügyelt szolgáltatásként biztosított. Létrehozásához és kezeléséhez a csomópontokat, amelyeken a *kubelet* és tároló-futtatókörnyezet, és a felügyelt Kubernetes API-kiszolgálón keresztül alkalmazások üzembe helyezése. Az alkalmazások és szolgáltatások hibáinak elhárítása érdekében szükség lehet a fő összetevői által létrehozott naplók megtekintése. Ez a cikk bemutatja, hogyan engedélyezése, és a fő Kubernetes-összetevők naplóinak lekérdezése az Azure Monitor naplóira használatával.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk egy meglévő AKS-fürtöt az Azure-fiókban futó igényel. Ha Ön még nem rendelkezik egy AKS-fürtöt, hozzon létre egyet a [Azure CLI-vel] [ cli-quickstart] vagy [az Azure portal][portal-quickstart]. Az Azure Monitor works naplózza mindkét RBAC használata, és nem RBAC engedélyezve van az AKS-fürt.
 
@@ -26,15 +26,14 @@ Ez a cikk egy meglévő AKS-fürtöt az Azure-fiókban futó igényel. Ha Ön m�
 
 Könnyebben gyűjteni, és tekintse át a több forrásból származó adatokat, az Azure Monitor naplóira biztosít egy lekérdezési nyelvet és elemzési motor, amely a környezet elemzéseket biztosít. A munkaterület szerinti rendezés és elemezheti az adatokat, és más Azure-szolgáltatások például az Application Insights és a Security Center integrálható. A különböző platform segítségével a naplók elemzéséhez, választhatja a diagnosztikai naplók küldése egy Azure storage-fiók vagy eseményközpont. További információkért lásd: [Mi az Azure Monitor naplóira?] [log-analytics-overview].
 
-Az Azure Monitor naplóira engedélyezve van, és kezeli az Azure Portalon. Ahhoz, hogy a Kubernetes az AKS-fürt fő összetevőinek naplógyűjtés, egy webböngészőben nyissa meg az Azure Portalon, és kövesse az alábbi lépéseket:
+Az Azure Monitor naplóira engedélyezve van, és a felügyelt az Azure Portalon. Ahhoz, hogy a Kubernetes az AKS-fürt fő összetevőinek naplógyűjtés, egy webböngészőben nyissa meg az Azure Portalon, és kövesse az alábbi lépéseket:
 
 1. Válassza ki például az AKS-fürt erőforráscsoportjának *myResourceGroup*. Ne válassza ki az erőforráscsoport, amely tartalmaz az egyes AKS-fürt erőforrásokat, például *MC_myResourceGroup_myAKSCluster_eastus*.
 1. A bal oldalon válassza ki a **diagnosztikai beállítások**.
-1. Válassza ki például az AKS-fürt *myAKSCluster*, majd válassza a **diagnosztika bekapcsolása**.
-1. Adjon meg egy nevet, például *myAKSClusterLogs*, majd válassza a **küldeni a Log Analytics-munkaterület**.
-    * Válassza ki a *konfigurálása* Log Analytics-munkaterületet, és válasszon egy meglévő munkaterületet, vagy **új munkaterület létrehozása**.
-    * Hozzon létre egy munkaterületet van szüksége, ha adjon meg egy nevet, egy erőforráscsoportot és egy helyen.
-1. Az elérhető naplóit, jelölje ki az engedélyezni kívánt naplók. Alapértelmezés szerint a *kube-apiserver*, *kube-tartományvezérlő-manager*, és *kube-ütemező* naplói engedélyezve vannak. Például engedélyezheti a további naplók *kube-naplózási* és *fürt-méretező*. Lépjen vissza, és módosíthatja a gyűjtött naplók, ha engedélyezve vannak a Log Analytics-munkaterületek.
+1. Válassza ki például az AKS-fürt *myAKSCluster*, majd válassza a **diagnosztikai beállítás hozzáadása**.
+1. Adjon meg egy nevet, például *myAKSClusterLogs*, majd válassza a **Küldés a Log Analyticsnek**.
+1. Válasszon ki egy meglévő munkaterületet, vagy hozzon létre egy újat. Ha egy munkaterületet hoz létre, adja meg egy nevet, egy erőforráscsoportot és egy helyen.
+1. Az elérhető naplóit, jelölje ki az engedélyezni kívánt naplók. Gyakori a naplófájlokban a *kube-apiserver*, *kube-tartományvezérlő-manager*, és *kube-ütemező*. Például engedélyezheti a további naplók *kube-naplózási* és *fürt-méretező*. Lépjen vissza, és módosíthatja a gyűjtött naplók, ha engedélyezve vannak a Log Analytics-munkaterületek.
 1. Ha elkészült, válassza ki a **mentése** a kiválasztott naplók gyűjtésének engedélyezéséhez.
 
 > [!NOTE]
@@ -50,7 +49,7 @@ Az Azure Monitor naplóira engedélyezve van, és kezeli az Azure Portalon. Ahho
 >
 > `az provider register --namespace Microsoft.ContainerService`
 
-Az alábbi példában portál képernyőképe a *diagnosztikai beállítások* ablakban, majd létrehozhat egy Log Analytics-munkaterület:
+Az alábbi példában portál képernyőképe a *diagnosztikai beállítások* ablakban:
 
 ![Log Analytics-munkaterületet az AKS-fürt az Azure Monitor-naplók engedélyezése](media/view-master-logs/enable-oms-log-analytics.png)
 

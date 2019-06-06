@@ -8,14 +8,14 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cd2f96954cde367eb99d89e89bcf672b53dd590
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b9e249885bd0e930773d4b374f85d72e60abdbdc
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247994"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427740"
 ---
-# <a name="azure-data-box-heavy-system-requirements"></a>Az Azure Data Box (nagy erőforrásigényű) rendszerre vonatkozó követelmények
+# <a name="azure-data-box-heavy-system-requirements-preview"></a>Az Azure Data Box nehéz rendszerkövetelmények (előzetes verzió)
 
 Ez a cikk ismerteti a fontos követelmények az Azure Data Box nehéz eszköz és a kapcsolódó ügyfelek számára az eszközre. Azt javasoljuk, hogy tekintse át az információkat gondosan előtt üzembe helyezése a Data Box (nagy erőforrásigényű), majd tekintse át biztonsági, szükség szerint a telepítési és az ezt követő művelet során.
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 06/05/2019
 ms.author: juliako
-ms.openlocfilehash: 5acd9b68368f56000a0a32d1ade310cf30143950
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6b5422e2eb67eb309c086c023df9f733940e5e44
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799383"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735079"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>A Video Indexer widgetek beágyazása az alkalmazásokba
 
@@ -61,6 +61,9 @@ A **Lejátszó** vezérlő lehetővé teszi a videó streamelését adaptív át
 5. Másolja a beágyazási kódot, és adja hozzá az alkalmazáshoz. 
 
     ![Vezérlő](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
+
+> [!NOTE]
+> Ha problémákba ütközik a megosztási a Videó URL-címek, próbálja meg a "location" paraméter hozzáadása a hivatkozás. A paramétert kell megadni a [Azure-régióban, amelyben a Video Indexer létezik](regions.md). Például: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 ## <a name="embedding-private-content"></a>Személyes tartalom beágyazása
 

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: fe913f057d00fd18b1b163f124d9dd0b83abf0de
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 5854a795ba7ceeeb4512f1e2fd16d98826d55dd5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925897"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477984"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referencia – IoT Hub-végpontok
 
@@ -75,20 +75,20 @@ Meglévő Azure-szolgáltatások az előfizetésben az IoT hubhoz való működ�
 
 Az IoT Hub a következő Azure-szolgáltatások jelenleg további végpontokat támogatja:
 
-* Azure Storage-tárolók
+* Az Azure Storage-tárolók
 * Event Hubs
 * Service Bus által kezelt üzenetsorok
 * Service Bus-üzenettémák
 
 Hozzáadhat végpontok számának korlátozásairól lásd: [kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md).
 
-A REST API-hoz [végpont állapotának lekérése](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) beolvasni a végpontok állapotát. Javasoljuk, hogy használja a [az IoT Hub-metrikák](iot-hub-metrics.md) útválasztási üzenet késése alapján azonosíthatja és elháríthatja a hibákat, amikor végpontonkénti állapotot kézbesíthetetlen vagy nem megfelelő állapotú kapcsolódó.
+A REST API-hoz [végpont állapotának lekérése](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) beolvasni a végpontok állapotát. Javasoljuk, hogy használja a [az IoT Hub-metrikák](iot-hub-metrics.md) útválasztási üzenet késése azonosíthatja és elháríthatja a hibák esetén a végpontonkénti állapotot kézbesíthetetlen vagy nem megfelelő állapotú, mikorra várható késés magasabb lehet, ha a végpont ezeket állapotok valamelyikével, a kapcsolódó.
 
 |Állapotadatok|Leírás|
 |---|---|
-|kifogástalan|A végpont már fogad üzeneteket, várt módon.|
+|Kifogástalan állapotú|A végpont már fogad üzeneteket, várt módon.|
 |Nem megfelelő állapotú|A végpont nem fogad üzeneteket várt módon, és az IoT Hub újból megkísérli a adatokat lehet küldeni ennek a végpontnak. Nem megfelelő állapotú végpont állapota kifogástalanra frissül, az IoT Hub állapotának egy végül konzisztens állapotba létrejöttekor.|
-|ismeretlen|Az IoT Hub nem létrehozott egy kapcsolatot a végponthoz. Nincsenek üzenetek érkeznek, vagy elutasították erről a végpontról.|
+|Ismeretlen|Az IoT Hub nem létrehozott egy kapcsolatot a végponthoz. Nincsenek üzenetek érkeznek, vagy elutasították erről a végpontról.|
 |kézbesítetlen levelek|A végpont nem fogad üzeneteket, az IoT Hub újrapróbált üzenetek küldése az retrial időszak után.|
 
 ## <a name="field-gateways"></a>Helyszíni átjárók

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/8/2019
+ms.date: 05/31/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 26db3a67c3efbd0ba2a5c58facd0c07175f7ed12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15a80dac0e0601480e22ad960f2827f3d8f290c0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460255"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479067"
 ---
 # <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>Az Azure portal segítségével Azure bejárati ajtajának WAF szabályzat létrehozása
 
@@ -48,7 +48,7 @@ Először hozzon létre egy alapszintű WAF-házirend a felügyelt alapértelmez
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Bejárati ajtajának              | Válassza ki a bejárati ajtajának profil nevét.|
-    | Előtérbeli gazdagép           | Válassza ki a bejárati ajtajának gazdagép nevét, majd válassza ki **Hozzáadás**.|
+    | Előtér-gazdagép           | Válassza ki a bejárati ajtajának gazdagép nevét, majd válassza ki **Hozzáadás**.|
     
     > [!NOTE]
     > Az előtér-állomás a WAF-házirend társítva, ha azt látható módon szürkén jelenik meg. Először távolítsa el a frontend gazdagépet a társított házirendből, és újra társítani a előtér-gazdagép egy új WAF-házirend.
@@ -63,17 +63,19 @@ WAF működés megtekintéséhez módosíthatja a mód beállításait **észlel
 
  ![WAF házirend módváltás](./media/waf-front-door-create-portal/policy.png)
 
+### <a name="custom-rules"></a>Egyéni szabályok
+
+Létrehozhat egy egyéni szabály kiválasztásával **egyéni szabály felvétele** alatt a **egyéni szabályok** szakaszban. Ezzel elindítja az egyéni szabály konfigurációs lapon. Az alábbi példában egy egyéni szabályt, amely blokkolja egy kérelmet, ha a lekérdezési karakterláncot tartalmaz konfigurálási, **blockme**.
+
+![WAF házirend módváltás](./media/waf-front-door-create-portal/customquerystring2.png)
+
 ### <a name="default-rule-set-drs"></a>Alapértelmezett szabálykészletet (DRS)
 
 Azure által felügyelt alapértelmezett szabálykészletet alapértelmezés szerint engedélyezve van. Egy szabály csoporton belül az egyes szabályok letiltása, bontsa ki az adott szabály csoport, válassza a szabályok a **jelölőnégyzet** elé a szabály száma, és válassza **letiltása** az lapon. Műveletek típusok módosításához szabályban egyéni szabályok beállítása, jelölje be a szabály száma elé, és válassza a **művelet módosítható** fenti fülre.
 
- ![WAF-szabálykészlet módosítása](./media/waf-front-door-create-portal/managed.png)
+ ![WAF-szabálykészlet módosítása](./media/waf-front-door-create-portal/managed2.png)
 
 ## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [Azure webalkalmazási tűzfal](waf-overview.md).
 - Tudjon meg többet [Azure bejárati ajtajának](front-door-overview.md).
-
-
-
-

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 464d01b7b818b461024737a83d88c78947453c37
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736139"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428481"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Csatlakozás a Media Services v3 API – .NET
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat az Azure Media Services v3 .NET SDK has
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [A Media Services-fiók létrehozása](create-account-cli-how-to.md). Ügyeljen arra, hogy ne felejtse el az erőforráscsoport nevét és a Media Services-fiók neve
-- Olyan eszköz, amely a .NET-fejlesztés szeretné telepíteni. A jelen cikkben ismertetett lépések bemutatják használata [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Akkor használja a Visual Studio Code, lásd: [használata C# ](https://code.visualstudio.com/docs/languages/csharp). Vagy egy másik Kódszerkesztő is használhatja.
+- Olyan eszköz, amely a .NET-fejlesztés szeretné telepíteni. A jelen cikkben ismertetett lépések bemutatják használata [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Akkor használja a Visual Studio Code, lásd: [használata C# ](https://code.visualstudio.com/docs/languages/csharp). Vagy egy másik Kódszerkesztő is használhatja.
 
 ## <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 90c7e4653b879c2432f08506cea08646e84bb69a
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 46be01c57be0e4f5fa74f8e8b0d91db3d78f441c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297705"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480411"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Leképezési adatok folyamatok teljesítmény és finomhangolás – útmutató
 
@@ -29,15 +29,28 @@ Az Azure Data Factory leképezési adatfolyamok adja meg egy böngészőben kód
 
 ![Hibakeresési gomb](media/data-flow/debugb1.png "hibakeresése")
 
+## <a name="monitor-data-flow-performance"></a>Data flow teljesítményének monitorozása
+
+Tervezése a társítási adatok elkezdenek beérkezni a böngészőben, miközben test jednotky minden egyes átalakítás kattintva választhat az adatok előzetes lapon az egyes átalakítási beállítások alsó ablaktábláján. A következő lépéssel, figyelembe kell venni, hogy a folyamattervezőben az adatokat a folyamat-végpont tesztelése. Adatok folyamat végrehajtása tevékenység hozzáadása és az adatfolyam teljesítményének tesztelése a hibakeresési gomb használatával. A folyamat ablak alsó ablaktábláján az "actions" eyeglass ikon jelenik meg:
+
+![Adatfolyam-figyelő](media/data-flow/mon002.png "adatfolyam figyelő 2")
+
+Kattintson erre az ikonra a végrehajtási terv és a későbbi teljesítményprofilját a adatfolyama jeleníti meg. Ezen információk használatával az adatfolyama elleni különböző méretű adatforrások teljesítményének. Vegye figyelembe, hogy az általános teljesítmény számítások a fürt feladat végrehajtási telepítési idő 1 perc akkor feltételezheti, és ha az alapértelmezett Azure integrációs modult használ, előfordulhat, hogy hozzá kell, valamint a fürt léptetéses felfelé időt 5 perc.
+
+![Data Flow figyelési](media/data-flow/mon003.png "adatfolyam figyelő 3")
+
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Az Azure SQL Database és az Azure SQL Data warehouse-bA optimalizálása
 
 ![Forrás-rész](media/data-flow/sourcepart2.png "rész forrás")
 
-### <a name="you-can-match-spark-data-partitioning-to-your-source-database-partitioning-based-on-a-database-table-column-key-in-the-source-transformation"></a>Spark, az adatparticionálás, az adatforrás adatbázis-particionálást a forrás átalakítása az adatbázis-táblában oszlop kulcs alapján meg tudja
+### <a name="partition-your-source-data"></a>Az adatforrás-adatok particionálása
 
 * Nyissa meg "Optimalizálása", és válassza a "Forrás". Egy adott tábla oszlop vagy egy típus beállítása a lekérdezésben.
 * Ha "oszlop" lehetőséget választja, majd válassza ki a partíciós oszlopa.
 * A kapcsolatok maximális számát is, állítsa be az Azure SQL DB-hez. Magasabb a beállítás az adatbázis kapcsolatait párhuzamos szerezhet próbálhatja ki. Bizonyos esetekben azonban csak korlátozott számú kapcsolatok gyorsabb működés eredményezhet.
+* A forrás adatbázistáblák nem lehet particionálni kell.
+* Beállítása egy lekérdezést a forrás-átalakítást, amely megfelel az adatbázis-táblázat a particionálási séma lehetővé teszi a forrás-adatbázismotor partíció eltávolítási kihasználhatja.
+* Ha a forrás már nincs particionálva, ADF továbbra is a Spark átalakítási környezetben a forrás átalakításában szerepel a kiválasztott kulcs alapján adatparticionálási fogja használni.
 
 ### <a name="set-batch-size-and-query-on-source"></a>Köteg mérete és a lekérdezések a forráson
 
@@ -51,7 +64,7 @@ Az Azure Data Factory leképezési adatfolyamok adja meg egy böngészőben kód
 
 ![Fogadó](media/data-flow/sink4.png "fogadó")
 
-* Annak érdekében, hogy az adatok floes sor soronként feldolgozását, állítsa be a "Batch"mérete a fogadó Azure SQL DB beállításaiban. Ez jelzi az ADF folyamat adatbázisba írja az megadott mérete alapján, és kötegekben.
+* Annak érdekében, hogy az adatfolyamok sor soronként feldolgozása, állítsa be a "Batch"mérete a fogadó Azure SQL DB beállításaiban. Ez jelzi az ADF folyamat adatbázisba írja az megadott mérete alapján, és kötegekben.
 
 ### <a name="set-partitioning-options-on-your-sink"></a>Állítsa be a beállítások a fogadón particionálás
 
@@ -84,7 +97,7 @@ Az Azure Data Factory leképezési adatfolyamok adja meg egy böngészőben kód
 
 ### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>A polybase tömeges adatok betöltése az átmeneti segítségével
 
-* Annak érdekében, hogy az adatok floes sor soronként feldolgozását, megadva a "Tesztelés" lehetőséget az fogadó között, így a ADF kihasználhatják a Polybase elkerülése érdekében a sor-sor beszúrása a DW-be. Ez fel fog szólítania a polybase szolgáltatást akkor használja, hogy az adatok tömeges tölthetők az ADF.
+* Annak érdekében, hogy az adatfolyamok sor soronként feldolgozása, megadva a "Tesztelés" lehetőséget az fogadó között, így a ADF kihasználhatják a Polybase elkerülése érdekében a sor-sor beszúrása a DW-be. Ez fel fog szólítania a polybase szolgáltatást akkor használja, hogy az adatok tömeges tölthetők az ADF.
 * Az adatokat a folyamat tevékenységet végrehajtása esetén egy folyamatot, az átmeneti tárolás engedélyezve van, válassza ki az átmeneti adatok tömeges betöltése a Blob tároló helyét kell.
 
 ### <a name="increase-the-size-of-your-azure-sql-dw"></a>Az Azure SQL DW méretének növelése
@@ -113,4 +126,4 @@ Az adatfolyam cikkekben talál:
 
 - [Az a folyamat áttekintése](concepts-data-flow-overview.md)
 - [Data Flow tevékenység](control-flow-execute-data-flow-activity.md)
-
+- [Az adatfolyam teljesítményének figyelése](concepts-data-flow-monitoring.md)

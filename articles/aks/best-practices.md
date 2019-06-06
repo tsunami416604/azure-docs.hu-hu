@@ -2,18 +2,17 @@
 title: Ajánlott eljárások az Azure Kubernetes Service (AKS)
 description: A fürt operátor és a fejlesztői gyakorlati tanácsok az Azure Kubernetes Service (AKS) alkalmazások elkészítésében és kezelésében gyűjteménye
 services: container-service
-author: rockboyfor
+author: iainfoulds
 ms.service: container-service
 ms.topic: article
-origin.date: 12/07/2018
-ms.date: 03/04/2019
-ms.author: v-yeche
-ms.openlocfilehash: c73f2fea808944847fab6a675914ee57e537560b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/07/2018
+ms.author: iainfou
+ms.openlocfilehash: 20922f0fb6932191b8e522e4640b1ba4fecd5ca4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467153"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514556"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Fürt operátor és a fejlesztői ajánlott eljárások az Azure Kubernetes Service (AKS) az alkalmazások létrehozása és felügyelete
 
@@ -27,21 +26,21 @@ A fürt felelősnek együttműködjenek alkalmazástulajdonosok és a fejlesztő
 
 **Több-bérlős rendszer**
 
-* [Fürt elkülönítési ajánlott eljárásai](operator-best-practices-cluster-isolation.md)
+* [Ajánlott fürtelkülönítési eljárások](operator-best-practices-cluster-isolation.md)
     * Több-bérlős és logikai elkülönítése, a névterek tartalmaz.
-* [Alapszintű ütemezési funkciókat ajánlott eljárásai](operator-best-practices-scheduler.md)
+* [Ajánlott eljárások a Scheduler alapszintű funkcióihoz](operator-best-practices-scheduler.md)
     * Tartalmazza a erőforráskvóták és pod megszakítás költségvetése használatával.
-* [A scheduler speciális funkciók ajánlott eljárásai](operator-best-practices-advanced-scheduler.md)
+* [Ajánlott eljárások a Scheduler speciális funkcióihoz](operator-best-practices-advanced-scheduler.md)
     * Tartalmazza a elkerülésére és tolerations, csomópont választók és -affinitást, és a pod közötti kapcsolat és affinitást.
-* [Ajánlott eljárások a hitelesítéshez és engedélyezéshez](operator-best-practices-identity.md)
+* [Ajánlott hitelesítési és engedélyezési eljárások](operator-best-practices-identity.md)
     * Magában foglalja az Azure Active Directory szerepköralapú hozzáférés-vezérlést (RBAC), és a pod identitások használatával.
 
 **Biztonság**
 
-* [Ajánlott eljárások Fürtbiztonság és frissítések](operator-best-practices-cluster-security.md)
+* [A fürtbiztonság és a frissítések ajánlott eljárásai](operator-best-practices-cluster-security.md)
     * Magában foglalja a biztonságos hozzáférés az API-kiszolgálóhoz, a tároló hozzáférésének korlátozása és kezelése, frissítése és a csomópont újraindul.
 * [Rendszerkép kezelése és biztonsági védelmének bevált gyakorlata](operator-best-practices-container-image-management.md)
-    * Tartalmazza a lemezkép és a modulok, megbízható beállításjegyzékek és automatizált buildekig használatával alaplemezkép frissítések védelme...
+    * Tartalmazza az lemezkép és a modulok és automatizált buildekig alaplemezkép frissítések biztonságossá tétele.
 * [Podok biztonsági védelmének bevált gyakorlata](developer-best-practices-pod-security.md)
     * Erőforrásokhoz való hozzáférés biztonságossá tétele, a hitelesítő adatok felfedésével korlátozása és a pod identitások és a digitális kulcstartók tartalmazza.
 
@@ -49,7 +48,7 @@ A fürt felelősnek együttműködjenek alkalmazástulajdonosok és a fejlesztő
 
 * [Ajánlott eljárások a hálózati kapcsolat](operator-best-practices-network.md)
     * Magában foglalja a különböző hálózati modellek esetében bejövő és a webes alkalmazás tűzfalak (WAF) használ, és a csomópont SSH-hozzáférés biztonságossá tétele.
-* [Tárolási és biztonsági védelmének bevált gyakorlata](operator-best-practices-storage.md)
+* [A tárolás és a biztonsági mentés ajánlott eljárásai](operator-best-practices-storage.md)
     * Tartalmazza a megfelelő tárolási típusa és a csomópont méretét, dinamikus kiépítése, köteteket és biztonsági mentések kiválasztása.
 
 **Nagyvállalati szintű számítási feladatok futtatása**
@@ -61,7 +60,7 @@ A fürt felelősnek együttműködjenek alkalmazástulajdonosok és a fejlesztő
 
 A fejlesztők vagy az alkalmazás tulajdonosa, a fejlesztői élmény egyszerűsítése érdekében, és adja meg kell application teljesítményigényeken.
 
-* [Ajánlott eljárások az alkalmazásfejlesztők számára az erőforrások kezelése](developer-best-practices-resource-management.md)
+* [Ajánlott erőforrás-kezelési eljárások alkalmazásfejlesztők számára](developer-best-practices-resource-management.md)
     * Magában foglalja a pod erőforrás-kérelmek és-korlátok, a fejlesztői eszközök és alkalmazások hibáinak keresése.
 * [Podok biztonsági védelmének bevált gyakorlata](developer-best-practices-pod-security.md)
     * Erőforrásokhoz való hozzáférés biztonságossá tétele, a hitelesítő adatok felfedésével korlátozása és a pod identitások és a digitális kulcstartók tartalmazza.

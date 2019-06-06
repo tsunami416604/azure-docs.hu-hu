@@ -5,16 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 01133662ca3a7364efd362f6db99d33243b2ad4b
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 06/05/2019
+ms.openlocfilehash: 3e1597def26c09378d3917ad2d49163ef17732f8
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073541"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66732867"
 ---
 # <a name="limitations-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - kiszolgáló egyetlen korlátozásai
-A következő szakaszok ismertetik a kapacitás és a működési korlátai az adatbázis-szolgáltatás.
+A következő szakaszok ismertetik a kapacitás és a működési korlátai az adatbázis-szolgáltatás. Ha szeretné (számítási, memória, tárolási) erőforrást szintekről ismerje meg, tekintse meg a [tarifacsomagok](concepts-pricing-tiers.md) cikk.
+
 
 ## <a name="maximum-connections"></a>Kapcsolatok maximális száma
 Tarifacsomag és virtuális magok száma kapcsolatok maximális száma a következők: 

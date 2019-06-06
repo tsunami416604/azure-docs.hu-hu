@@ -1,29 +1,25 @@
 ---
-title: Hívása, aktiválása vagy beágyazása a HTTP-végpontokat – Azure Logic Apps-munkafolyamatok |} A Microsoft Docs
+title: Hívása, eseményindító, vagy HTTP-végpontokat – Azure Logic Apps-munkafolyamatok beágyazása
 description: Állítsa be a HTTP-végpontok hívása, eseményindító, vagy a munkafolyamatok beágyazása az Azure Logic Apps
 services: logic-apps
-keywords: a munkafolyamatok, HTTP-végpontokat
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: integration
+author: ecfan
+ms.author: klam; LADocs
+ms.reviewer: jehollan, klam, LADocs
+manager: carmonm
+ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
+ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.author: klam; LADocs
-ms.openlocfilehash: c58b39f8e2d49eeb3e64c7ffce1d34d7a7b7b780
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b091fb8c6f0b2b655ce0595188c362206f79d702
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304167"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495058"
 ---
-# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Hívása, eseményindító, vagy HTTP-végpontokat, a logic apps-munkafolyamatok beágyazása
+# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>Hívás, a trigger vagy a beágyazott munkafolyamatok HTTP-végpontokat az Azure Logic Appsben
 
 Natív módon, közzéteheti a szinkron HTTP-végpontokat eseményindítóként, a logic apps szolgáltatásról, hogy indíthat, vagy hívja a logic apps egy URL-címmel. Beágyazhatja munkafolyamatok is a logikai alkalmazások használata hívható végpontok egy minta használatával.
 
@@ -249,7 +245,7 @@ Válaszok rendelkezik, ezeket a tulajdonságokat:
 | --- | --- |
 | statusCode |Itt adhatja meg a bejövő kérelem válaszol a HTTP-állapotkódot. Ez a kód bármilyen érvényes állapotkód: 2xx, 4xx vagy 5xx kezdetű is lehet. Azonban 3xx állapotkódok használata nem engedélyezett. |
 | A fejlécek |A válasz tartalmazza a fejlécek tetszőleges számú határozza meg. |
-| törzs |Megadja egy szervezet objektum, amely egy karakterlánc lehet, egy JSON-objektum, vagy akár bináris tartalom hivatkozni az előző lépésben. |
+| Törzs |Megadja egy szervezet objektum, amely egy karakterlánc lehet, egy JSON-objektum, vagy akár bináris tartalom hivatkozni az előző lépésben. |
 
 Itt látható a JSON-sémája néz ki most a **válasz** művelet:
 

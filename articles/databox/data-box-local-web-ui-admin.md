@@ -1,25 +1,25 @@
 ---
-title: A Microsoft Azure Data Box felügyelete a helyi webes felhasználói felülettel | Microsoft Docs in data
-description: A cikk azt ismerteti, hogyan használhatja a helyi webes felhasználói felületet a Data Box-eszköz felügyeletére.
+title: Helyi webes felhasználói felület felügyeleti Azure Data Box, az Azure Data Box nehéz |} A Microsoft Docs
+description: A Data Box és a Data Box nehéz eszközök felügyeletéhez a helyi webes felhasználói felület használata
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
-ms.date: 02/01/2019
+ms.topic: article
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: d5b6949930161f78c6edf4213df98471e96b1d42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf8af37b0caf51966e336bcb4cea0c4ece5ca9c7
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327252"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496259"
 ---
-# <a name="use-the-local-web-ui-to-administer-your-data-box"></a>A Data Box felügyelete a helyi webes felhasználói felülettel
+# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A helyi webes felhasználói felület használatával a Data Box és a Data Box nehéz felügyeletére
 
-A cikk a Data Boxon végrehajtható konfigurációs és felügyeleti feladatokat ismerteti. A Data Box az Azure Portal felhasználói felületével és az eszköz helyi webes felhasználói felületével felügyelhető. A cikk a helyi webes felhasználói felülettel végrehajtható feladatokra összpontosít.
+Ez a cikk ismerteti a Data Box és a Data Box nehéz eszközökön végrehajtott konfigurációs és felügyeleti feladatokat. Kezelheti a Data Box és a Data Box nehéz eszközöket az Azure portal felhasználói felületén keresztül, és az eszköz helyi webes felületén. A cikk a helyi webes felhasználói felülettel végrehajtható feladatokra összpontosít.
 
-A Data Box helyi webes felhasználói felülete az eszköz kezdeti konfigurálására használható. A helyi webes felhasználói felülettel emellett leállíthatja és újraindíthatja a Data Boxot, diagnosztikai teszteket futtathat, szoftvereket frissíthet, másolási naplókat tekinthet meg, valamint naplócsomagot hozhat létre a Microsoft támogatási szolgálata számára.
+A kezdeti konfiguráció az eszköz helyi webes felhasználói felületen, a Data Box és a Data Box nehéz szolgál. A helyi webes felhasználói felületének használatával állítsa le vagy indítsa újra az eszközt, futtasson diagnosztikai teszteket, szoftverek frissítése, másolása a naplók megtekintéséhez és -naplófájl-csomag létrehozása a Microsoft Support. A Data Box nehéz eszközön két független csomópont megfelelő az eszköz minden egyes csomópontja két külön helyi webes előkészíthetik érheti el.
 
 A cikk az alábbi oktatóanyagokat tartalmazza:
 
@@ -27,11 +27,11 @@ A cikk az alábbi oktatóanyagokat tartalmazza:
 - Az eszköz leállítása és újraindítása
 - Töltse le a AJ vagy fájlok manifest
 - Az eszköz rendelkezésre álló kapacitásának megtekintése
-- Ellenőrzőösszeg-érvényesítés kihagyása 
+- Ellenőrzőösszeg-érvényesítés kihagyása
 
 ## <a name="generate-support-package"></a>Támogatási csomag létrehozása
 
-Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rendszernaplókból. A Microsoft támogatási szolgálata a csomag segítségével hárítja el a problémát. Támogatási csomag létrehozásához hajtsa végre az alábbi lépéseket:
+Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rendszernaplókból. A Microsoft támogatási szolgálata a csomag segítségével hárítja el a problémát. Hozzon létre egy támogatási csomagot, hajtsa végre az alábbi lépéseket:
 
 1. A helyi webes felhasználói felületen nyissa meg a **Contact Support** (Kapcsolatfelvétel a támogatási szolgálattal) lapot, és kattintson a **Create Support package** (Támogatási csomag létrehozása) elemre.
 
@@ -52,9 +52,9 @@ Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rend
 
 ## <a name="shut-down-or-restart-your-device"></a>Az eszköz leállítása és újraindítása
 
-A Data Box a helyi webes felhasználói felülettel állítható le vagy indítható újra. Az újraindítás előtt ajánlott offline állapotba állítani a gazdagépen található megosztásokat, majd magát az eszközt is. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. Az eszköz leállításakor ellenőrizze, hogy nincs-e folyamatban adatmásolás.
+Állítsa le, vagy indítsa újra az eszközt a helyi webes felhasználói felületen. Az újraindítás előtt ajánlott offline állapotba állítani a gazdagépen található megosztásokat, majd magát az eszközt is. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. Az eszköz leállításakor ellenőrizze, hogy nincs-e folyamatban adatmásolás.
 
-A Data Box leállításához hajtsa végre az alábbi lépéseket.
+Állítsa le az eszközt, hajtsa végre a következő lépéseket.
 
 1. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
 2. Kattintson a **Shut down** (Leállítás) elemre.
@@ -80,11 +80,11 @@ A Data Box újraindításához hajtsa végre az alábbi lépéseket.
 
 ## <a name="download-bom-or-manifest-files"></a>Töltse le a AJ vagy fájlok manifest
 
-Anyagot találhat az anyagjegyzék (AJ) vagy a jegyzékfájlok tartalmazzák az, hogy a Data boxra másolja a fájlokat. Ezek a fájlok jönnek létre a Data Box szállításra való előkészítésekor.
+Anyagot találhat az anyagjegyzék (AJ) vagy a jegyzékfájlok tartalmaznak a Data Box vagy a Data Box nehéz másolt fájlok listája. Ezek a fájlok akkor jönnek létre, amikor előkészíti az eszköz szállításra.
 
-Mielőtt elkezdené, győződjön meg arról, hogy befejeződött-e a Data Box **szállításra való** . lépés. Kövesse az alábbi lépéseket, töltse le a AJ vagy fájlok manifest:
+Mielőtt elkezdené, győződjön meg arról, hogy befejeződött-e az eszköz **szállításra való** . lépés. Kövesse az alábbi lépéseket, töltse le a AJ vagy fájlok manifest:
 
-1. Nyissa meg a Data Box helyi webes felületén. Látni fogja, hogy a Data Box a szállításra való előkészítése befejeződött. Ha az eszköz előkészítése befejeződött, az eszköz állapota látható **szállításra kész**.
+1. Nyissa meg az eszköz helyi webes felhasználói Felületét. Látni fogja, hogy az eszköz a szállításra való előkészítése befejeződött. Ha az eszköz előkészítése befejeződött, az eszköz állapota látható **szállításra kész**.
 
     ![Eszköz szállításra kész](media/data-box-portal-admin/ready-to-ship.png)
 
@@ -109,6 +109,9 @@ Mielőtt elkezdené, győződjön meg arról, hogy befejeződött-e a Data Box *
     |mydbmdrg2_MDisk-BOM.txt     |Managed Disk         |AZ SMB ÉS NFS         |
 
 Ez a lista után az Azure-adatközpontban és a Data Box ad vissza az Azure Storage-fiókhoz feltöltött fájlok ellenőrzésére használhatja. Az alábbiakban látható egy minta jegyzékfájl.
+
+> [!NOTE]
+> A Data Box (nagy erőforrásigényű), a fájlok (AJ) listáját két csoportjára jelen az eszközön a két csomópont megfelelő.
 
 ```xml
 <file size="52689" crc64="0x95a62e3f2095181e">\databox\media\data-box-deploy-copy-data\prepare-to-ship2.png</file>
@@ -150,25 +153,24 @@ Ez a lista után az Azure-adatközpontban és a Data Box ad vissza az Azure Stor
 <file size="3603" crc64="0x7e34c25d5606693f">\databox\TOC.yml</file>
 ```
 
-Ez a fájl lévő összes fájl, amely át lettek másolva a Data Box listáját tartalmazza. Ebben a fájlban *crc64* érték vonatkozik, a megfelelő fájlt hoz létre ellenőrzőösszeget.
+Ez a fájl minden a másolt fájlokat a Data Box vagy a Data Box nehéz listáját tartalmazza. Ebben a fájlban *crc64* érték vonatkozik, a megfelelő fájlt hoz létre ellenőrzőösszeget.
 
 ## <a name="view-available-capacity-of-the-device"></a>Az eszköz rendelkezésre álló kapacitásának megtekintése
 
-Az eszköz irányítópultján tekintheti meg az eszköz rendelkezésre álló és felhasznált kapacitását. 
+Az eszköz irányítópultján tekintheti meg az eszköz rendelkezésre álló és felhasznált kapacitását.
 
 1. A helyi webes felhasználói felületen lépjen a **View dashboard** (Irányítópult megtekintése) lapra.
 2. A **Connect and copy** (Kapcsolódás és másolás) részen az eszköz szabad és felhasznált területe látható.
 
     ![Rendelkezésre álló kapacitás megtekintése](media/data-box-local-web-ui-admin/verify-used-space-dashboard.png)
 
-
 ## <a name="skip-checksum-validation"></a>Ellenőrzőösszeg-érvényesítés kihagyása
 
-Ellenőrzőösszegek akkor jönnek létre az adatok alapértelmezés szerint szállításra való előkészítésekor. Attól függően, a következő adattípus (kis méretűek), egyes ritka esetekben a teljesítmény lassú lehet. Ilyen esetben kihagyhatja az ellenőrzőösszeg létrehozását. 
+Ellenőrzőösszegek akkor jönnek létre az adatok alapértelmezés szerint szállításra való előkészítésekor. Attól függően, a következő adattípus (kis méretűek), egyes ritka esetekben a teljesítmény lassú lehet. Ilyen esetben kihagyhatja az ellenőrzőösszeg létrehozását.
 
 Határozottan javasoljuk, hogy csak akkor tiltsa le az ellenőrző létrehozását, ha komoly hatással lenne a teljesítményre.
 
-1. A helyi webes felhasználói felületen, az eszköz jobb felső sarkában nyissa meg a beállításokat.
+1. A jobb felső sarkában a helyi webes felhasználói felületen, az eszköz, lépjen a **beállítások**.
 
     ![Ellenőrzőösszeg letiltása](media/data-box-local-web-ui-admin/disable-checksum.png)
 
@@ -177,5 +179,5 @@ Határozottan javasoljuk, hogy csak akkor tiltsa le az ellenőrző létrehozás�
 
 ## <a name="next-steps"></a>További lépések
 
-- Megismerheti, hogyan [kezelheti a Data Boxot az Azure Portalon keresztül](data-box-portal-admin.md).
+- Ismerje meg, hogyan [a Data Box és a Data Box nehéz kezelése az Azure Portalon keresztül](data-box-portal-admin.md).
 

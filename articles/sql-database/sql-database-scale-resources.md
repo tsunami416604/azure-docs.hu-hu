@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: e476f27e2a1945135bd90435078d5bcd47c4b3de
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c918abdc635e7a4a831e367e159354bb752e95e6
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073143"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743110"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dinamikusan méretezheti az adatbázis-erőforrások minimális állásidővel
 
@@ -55,6 +55,9 @@ Az Azure SQL Database összes három változatban érhetők el ajánlat dinamiku
 - Az egy [önálló adatbázis](sql-database-single-database-scale.md), használhat [DTU](sql-database-dtu-resource-limits-single-databases.md) vagy [virtuális mag](sql-database-vcore-resource-limits-single-databases.md) modellek meghatározásához rendeli hozzá az egyes adatbázisok erőforrások maximális mennyiségét.
 - A [felügyelt példány](sql-database-managed-instance.md) használ [virtuális magok](sql-database-managed-instance.md#vcore-based-purchasing-model) módban, és lehetővé teszi, hogy meghatározza a maximális CPU-magok és a példányhoz lefoglalt tárterület maximális. A példány belüli összes adatbázist fog ugyanazokat az a példányhoz lefoglalt erőforrásokat.
 - [Rugalmas készletek](sql-database-elastic-pool-scale.md) engedélyezése, hogy a készlet maximális erőforrás felső határ az egyes adatbázisok csoport definiálja.
+
+> [!NOTE]
+> Várható a kapcsolat rövid szünet, ha a méretezési csoport legfeljebb/vertikális leskálázási folyamat befejeződött. Ha megvalósította [újrapróbálkozási logika standard átmeneti hibák esetén](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), nem láthatja a feladatátvételt.
 
 ## <a name="alternative-scale-methods"></a>Alternatív méretezési módszer
 

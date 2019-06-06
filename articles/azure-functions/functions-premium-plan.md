@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: de1915c7efb4bd8634228f341df2c57c443dd28e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: dab7561db8f223bff87f41ef756605359c3478e4
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242305"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492700"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Az Azure Functions prémium szintű csomag (előzetes verzió)
 
@@ -56,7 +56,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="private-network-connectivity"></a>Privát hálózati kapcsolatok
 
-Az Azure Functions üzembe helyezett egy prémium szintű csomag kihasználja [új VNet-integráció, a web apps](../app-service/web-sites-integrate-with-vnet.md#new-vnet-integration).  Ha konfigurálva, az alkalmazás képes kommunikálni a virtuális hálózaton belüli erőforrásokhoz vagy Szolgáltatásvégpontok védelméről.  Az IP-korlátozások az alkalmazásnak, hogy a bejövő forgalom korlátozása is elérhetők.
+Az Azure Functions üzembe helyezett egy prémium szintű csomag kihasználja [új VNet-integráció, a web apps](../app-service/web-sites-integrate-with-vnet.md).  Ha konfigurálva, az alkalmazás képes kommunikálni a virtuális hálózaton belüli erőforrásokhoz vagy Szolgáltatásvégpontok védelméről.  Az IP-korlátozások az alkalmazásnak, hogy a bejövő forgalom korlátozása is elérhetők.
 
 A függvényalkalmazás a prémium szintű csomagban lévő alhálózat hozzárendelése, amikor szüksége elegendő IP-cím az alhálózat minden lehetséges példány. Az előzetes verzió ideje alatt a példányok maximális száma eltérőek lehetnek, ha szükség van legalább 100 elérhető címekkel rendelkező olyan IP-Címblokk.
 

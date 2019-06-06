@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
-ms.openlocfilehash: dbc8363052556f29633c069bcd82af5249a3406f
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 3bc67d7fdc582b6d45596b152bb5d58e41152a46
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306877"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428114"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 
@@ -38,7 +38,7 @@ A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy fejlesztői számítógép, amelyen a következők futnak:
-  * Visual Studio 2015 vagy Visual Studio 2017.
+  * Visual Studio 2015 vagy Visual Studio 2019.
   * [Service Fabric SDK és -eszközök](service-fabric-get-started.md).
   *  Windows rendszerhez készült Docker. [A Docker CE for Windows (stable) letöltése](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez a lépés szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
 
@@ -482,7 +482,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 A Windows Server-tárolók nem kompatibilisek a keresztül a gazda operációs rendszer összes verziójára. Példa:
  
 - Windows Server-tárolók felhasználásával a Windows Server 1709-es nem működik egy Windows Server 2016 verziót futtató gazdagépen. 
-- A Windows Server 2016 használatával létrehozott Windows Server-tárolók csak a Windows Server 1709-es rendszerű gazdagépen a Hyper-v elkülönítési módban működik. 
+- A Windows Server 2016 használatával létrehozott Windows Server-tárolók csak a Windows Server 1709-es rendszerű gazdagépen a Hyper-V elkülönítési módban működik. 
 - A Windows Server 2016 használatával létrehozott Windows Server-tárolók szükség lehet annak érdekében, hogy a tároló az operációs rendszer és a gazdagép operációs Rendszeréhez változatát ugyanaz a Windows Server 2016 rendszerű gazdagépen folyamatelkülönítési módban való futtatáskor.
  
 További tudnivalókért lásd: [Windows-tárolók verzióinak kompatibilitása](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).

@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 8af545f5700e90303562174a3c27cc5438b28e24
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 579d50a95ad0e478f401b7db012e7c743ce58491
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925882"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730462"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Az Azure Notification Hubs leküldéses értesítések: Gyakori kérdések
 
@@ -56,7 +56,7 @@ Az alapszintű és standard szintű Notification Hubs vagyis a megfelelően konf
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Hogyan frissítse vagy Visszaléptetés a központ vagy a névtér másik tarifacsomagra?
 
-Nyissa meg a  **[Azure Portal]** > **Notification Hubs-névterek** vagy **Notification Hubs**. Válassza ki az erőforrást szeretné frissíteni, és váltson **Tarifacsomag**. Vegye figyelembe az alábbi követelményeknek:
+Nyissa meg a  **[Azure Portal]**  > **Notification Hubs-névterek** vagy **Notification Hubs**. Válassza ki az erőforrást szeretné frissíteni, és váltson **Tarifacsomag**. Vegye figyelembe az alábbi követelményeknek:
 
 * A frissített tarifacsomag érvényes *összes* hubs használata a névtérben.
 * Ha az eszközök száma meghaladja a korlátot, a réteg még alacsonyabb szolgáltatásszintre való, eszközök törlése előtt, alacsonyabbra szeretne.
@@ -69,17 +69,17 @@ Server SDK-k érhetők el .NET, Java, Node.js, PHP és Python. Notification Hubs
 
 ### <a name="which-client-platforms-do-you-support"></a>Milyen ügyfélplatformokat támogatja?
 
-Leküldéses értesítések támogatását [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) és az Android, [Chrome-alkalmazások](notification-hubs-chrome-push-notifications-get-started.md), és [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). További információkért látogasson el a [A Notification Hubs bevezetés kapcsolatos oktatóanyagok] lapot.
+Leküldéses értesítések támogatását [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) és az Android, és [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). További információkért látogasson el a [A Notification Hubs bevezetés kapcsolatos oktatóanyagok] lapot.
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Támogatják a szöveges üzenet, e-mailben vagy webes értesítések?
 
 A Notification Hubs elsősorban célja, hogy az értesítések küldése a mobilalkalmazások. Nem biztosítják e-mail vagy szöveges üzenetek kezelésére. Azonban ezeket a képességeket biztosító külső rendszerek integrálhatók az Notification Hubs használatával leküldéses értesítések küldése [Mobile Apps].
 
-A Notification Hubs is biztosít egy böngészőben leküldéses értesítési kézbesítési szolgáltatás beépített. Ügyfelek valósítható meg ez a funkció kiszolgálóoldali által támogatott platformok felett SignalR használatával. Ha szeretne értesítések küldése a Chrome-tesztkörnyezetben a böngészőben megjelenő alkalmazásokba, tekintse meg a [Chrome-alkalmazások oktatóanyag].
+A Notification Hubs is biztosít egy böngészőben leküldéses értesítési kézbesítési szolgáltatás beépített. Ügyfelek valósítható meg ez a funkció kiszolgálóoldali által támogatott platformok felett SignalR használatával. 
 
 ### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>Hogyan történik a Mobile Apps, mind az Azure Notification hubs használatával kapcsolatban, és mikor célszerű használni őket?
 
-Ha rendelkezik egy meglévő mobil-háttéralkalmazást, és csak a leküldéses értesítések küldéséhez funkció hozzáadni kívánt, használhatja az Azure Notification hubs használatával. Ha azt szeretné, a mobil-háttéralkalmazás beállításához az alapoktól, fontolja meg az Azure App Service Mobile Apps funkcióját. Egy mobilalkalmazást egy értesítési központ automatikusan látja el, hogy a mobil-háttéralkalmazást, egyszerűen küldhet leküldéses értesítéseket. A Mobile Apps díjszabása tartalmaz egy értesítési központ az alapdíjat. Csak amikor ügyfél túllépi a csomagban foglalt leküldések kell fizetnie. A költségek további részletekért látogasson el a [App Service díjszabása] lapot.
+Ha rendelkezik egy meglévő mobil-háttéralkalmazást, és csak a leküldéses értesítések küldéséhez funkció hozzáadni kívánt, használhatja az Azure Notification hubs használatával. Ha azt szeretné, a mobil-háttéralkalmazás beállításához az alapoktól, fontolja meg az Azure App Service Mobile Apps funkcióját. Egy mobilalkalmazást egy értesítési központ automatikusan látja el, hogy a mobil-háttéralkalmazást, egyszerűen küldhet leküldéses értesítéseket. A Mobile Apps díjszabása tartalmaz egy értesítési központ az alapdíjat. Csak amikor ügyfél túllépi a csomagban foglalt leküldések kell fizetnie. A költségek további részletekért látogasson el a [Az App Service díjszabása] lapot.
 
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>Hány eszközt is támogatásnak Ha küldhető leküldéses értesítések a Notification hubs szolgáltatással?
 
@@ -210,7 +210,6 @@ Elérheti a mérőszámokat szoftveresen is. További információkért tekintse
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [A Notification Hubs – REST API-k]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [A Notification Hubs bevezetés kapcsolatos oktatóanyagok]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-[Chrome-alkalmazások oktatóanyag]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [Háttér-regisztrációs útmutató]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Háttér-regisztrációs útmutató 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
@@ -222,4 +221,4 @@ Elérheti a mérőszámokat szoftveresen is. További információkért tekintse
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
-[App Service díjszabása]: https://azure.microsoft.com/pricing/details/app-service/
+[Az App Service díjszabása]: https://azure.microsoft.com/pricing/details/app-service/

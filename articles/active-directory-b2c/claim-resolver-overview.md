@@ -2,20 +2,20 @@
 title: Az Azure Active Directory B2C-vel egyéni szabályzatok feloldók készül jogcím |} A Microsoft Docs
 description: Ismerje meg a jogcímek feloldók az Azure Active Directory B2C egy egyéni szabályzat használata.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/25/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f4bb5deb0c30ba113f315c69393e92bddfe0d27
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a13d4b0b44c51f78a068b1619fe083a08756af6b
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703462"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511605"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók az Azure Active Directory B2C-vel egyéni szabályzatok jogcím feloldók
 
@@ -48,7 +48,7 @@ Az alábbi szakaszok tartalmazzák a rendelkezésre álló jogcímek feloldók.
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
 | {Kulturális környezet: LanguageName} | A kétbetűs ISO-kódja a nyelvhez. | hu |
-| {Culture:LCID}   | A nyelvi kód LCID. | 1038 |
+| {Culture:LCID}   | A nyelvi kód LCID. | 1033 |
 | {Kulturális környezet: RegionName} | A kétbetűs ISO-kódja a régióban. | USA |
 | {Culture:RFC5646} | A RFC5646 nyelvi kódot. | en-US |
 

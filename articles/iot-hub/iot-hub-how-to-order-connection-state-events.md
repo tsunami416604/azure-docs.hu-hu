@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: ff8f8c6656c4cd095749b3e048c72572d113f1ad
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f4baab6e0909144efc613572207e7f24c4b4fe1f
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015259"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743281"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Rendelés eszköz az Azure Cosmos DB használatával az Azure IoT Hub kapcsolati események
 
@@ -266,13 +266,13 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
 
 4. Töltse ki **esemény-előfizetés részleteit**: Adjon meg egy leíró nevet, és válassza ki **Event Grid séma**.
 
-5. Töltse ki a **eseménytípusok** mezőket. Törölje a jelet **fizessen elő az összes eseménytípusra** válassza **csatlakoztatott eszköz** és **eszköz leválasztott** a menüből.
+5. Töltse ki a **eseménytípusok** mezőket. A legördülő listában válassza ki csak **csatlakoztatott eszköz** és **eszköz leválasztott** a menüből. Kattintson bármely más, zárja be a listát, és mentse a beállításokat a képernyőn.
 
    ![Állítsa be a keresett eseménytípusok](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
 6. A **Végpontrészleteket**, válassza ki a végpont típusa szerint **Webhook** és kattintson a válassza végpont, és illessze be az URL-cím a logikai alkalmazás kimásolt és kijelölés megerősítéséhez.
 
-   ![Válassza ki a végpont URL-címe](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
+   ![Válassza ki a végpont URL-címe](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 
 7. Az űrlap most a következő példához hasonlóan kell kinéznie:
 
@@ -302,11 +302,9 @@ Most, hogy az esemény-előfizetés be van állítva, nézzük tesztet úgy, egy
 
    ![Az eszköz kapcsolati Sztringje](./media/iot-hub-how-to-order-connection-state-events/DeviceConnString.png)
 
-HostName=test-eventgrid-hub.azure-devices.net;DeviceId=Demo-Device-1;SharedAccessKey=cv8uPNixe7E2R9EHtimoY/PlJfBV/lOYCMajVOp/Cuw=
-
 ### <a name="start-raspberry-pi-simulator"></a>Indítsa el a Raspberry Pi-szimulátor
 
-1. A Raspberry Pi-webszimulátor használatával szimulálja az eszköz kapcsolat.
+A Raspberry Pi-webszimulátor használatával szimulálja az eszköz kapcsolat.
 
 [Indítsa el a Raspberry Pi-szimulátor](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
 
@@ -340,7 +338,7 @@ Használata helyett a [az Azure portal](https://portal.azure.com), az IoT Hub l�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ebben az oktatóanyagban olyan erőforrásokat használtunk, amelyek költségekkel terhelik az Azure-előfizetését. Miután végzett az oktatóanyag kipróbálásával és az eredmények tesztelésével, mindenképp tiltsa le vagy törölje azokat az erőforrásokat, amelyeket nem kíván megtartani.
+Ebben az oktatóanyagban olyan erőforrásokat használtunk, amelyek költségekkel terhelik az Azure-előfizetését. Ha elkészült próbálhatja ki az oktatóanyagban és tesztelés az eredményeket, tiltsa le, vagy törölje az erőforrást, amelyet szeretne tartani.
 
 Ha nem szeretné elveszteni a logikai alkalmazásba fektetett munkáját, a törlés helyett csak tiltsa le.
 

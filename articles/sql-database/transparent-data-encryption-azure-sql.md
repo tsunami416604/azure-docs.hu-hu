@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: 8ed7d144b886cc29592418007b9103b4aa94e8ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b09182ef06c708e9c606173f02b006e7802f29ed
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331077"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477819"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás az SQL Database és a Data warehouse-bA
 
@@ -33,7 +33,7 @@ Is-Azure virtuális gépen futó SQL Server használhatja a Key Vaultból aszimm
 
 ## <a name="service-managed-transparent-data-encryption"></a>Szolgáltatás által kezelt transzparens adattitkosítás
 
-Az Azure-ban az alapértelmezett beállítás a transzparens adattitkosítás, hogy az adatbázis-titkosítási kulcs egy beépített kiszolgálói tanúsítvány védi. A beépített kiszolgálói tanúsítvány egy egyedülálló megoldás minden olyan kiszolgáló esetén. Ha egy adatbázis georeplikációs kapcsolatban, az elsődleges adatbázis szülő kiszolgálókulcs védi az elsődleges és a geo-secondary adatbázis. Ha a két adatbázis ugyanazon a kiszolgálón csatlakozik, azok a beépített tanúsítvány is megoszthatja. A Microsoft automatikusan elforgatja ezeket a tanúsítványokat megfelelnek-e a belső biztonsági házirendet, és a legfelső szintű kulccsal védi a Microsoft belső titkoskód-tárolót.
+Az Azure-ban az alapértelmezett beállítás a transzparens adattitkosítás, hogy az adatbázis-titkosítási kulcs egy beépített kiszolgálói tanúsítvány védi. A beépített kiszolgálói tanúsítvány egy egyedülálló megoldás minden olyan kiszolgáló esetén. Ha egy adatbázis georeplikációs kapcsolatban, az elsődleges adatbázis szülő kiszolgálókulcs védi az elsődleges és a geo-secondary adatbázis. Ha a két adatbázis ugyanazon a kiszolgálón csatlakozik, azok a beépített tanúsítvány is megoszthatja. A Microsoft automatikusan elforgatja ezeket a tanúsítványokat megfelelnek-e a belső biztonsági házirendet, és a legfelső szintű kulccsal védi a Microsoft belső titkoskód-tárolót.  Ügyfelek ellenőrizheti az SQL Database megfelelőségi független külső naplózási jelentések elérhető a belső biztonsági házirendeknek a [Microsoft Trust Center](https://servicetrust.microsoft.com/).
 
 A Microsoft is zökkenőmentesen helyezi és kezeli a georeplikációhoz szükséges kulcsokat, és helyreállítja.
 

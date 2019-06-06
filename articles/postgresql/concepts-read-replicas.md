@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 13580289144d798a57e636f15ab5bce629ff3572
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/05/2019
+ms.openlocfilehash: 75a3c8a9912fe9ace70e411983996167da755128
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242281"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734652"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - kiszolgáló egyetlen olvasható replika
 
@@ -60,17 +60,15 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 Amikor a rendszer kéri adja meg a felhasználói fiók jelszavát.
 
 ## <a name="monitor-replication"></a>A figyelő replikáció
-Azure Database for PostgreSQL kínál a **Lag között replikák maximális száma** metrika az Azure monitorban. Ez a metrika csak a fő kiszolgálón érhető el. A metrika a késés a master és a legtöbb elmaradt replika közötti jeleníti meg. 
+Azure Database for postgresql-hez két mérőszámait replikálásának figyelése. A két mérőszám játszik **Lag között replikák maximális száma** és **replika Lag**. Ezek a metrikák megtekintése kapcsolatban lásd: a **replika figyelése** szakaszában a [a cikk a replika útmutató](howto-read-replicas-portal.md).
 
-Azure Database for postgresql-hez is biztosít a **replika Lag** metrika az Azure monitorban. Ez a metrika csak a replikák számára érhető el. 
+A **Lag között replikák maximális száma** metrika a master és a legtöbb elmaradt replika közötti jeleníti meg a késés. Ez a metrika csak a fő kiszolgálón érhető el.
 
-A mérték kiszámítása a `pg_stat_wal_receiver` megtekintése:
+A **replika Lag** metrika időpontot jeleníti meg, mert az utolsó játssza vissza a tranzakciót. Nem léteznek tranzakciók a fő kiszolgálón jelentkezik, ha a metrika az idő elteltével jeleníti meg. Ez a metrika csak a replikakiszolgálót érhető el. Replika Lag kiszámítása a `pg_stat_wal_receiver` megtekintése:
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
-
-A replika Lag mérőszám látható az utolsó megismételt tranzakció óta eltelt idő. Nem léteznek tranzakciók a fő kiszolgálón jelentkezik, ha a metrika az idő elteltével jeleníti meg.
 
 Állítsa be egy riasztás értesíti, amikor a replika lag eléri-e egy érték, amely nem fogadható el, a számítási feladatok számára. 
 

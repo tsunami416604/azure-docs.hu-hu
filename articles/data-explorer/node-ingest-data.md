@@ -1,28 +1,28 @@
 ---
-title: 'Gyors útmutató: Az Azure Data Explorer csomópontja library használata az adatok betöltése'
-description: Ennek a rövid útmutatónak a segítségével megtanulhatja, hogyan tölthet be adatokat az Azure Data Explorerbe a Node.js használatával.
+title: Az Azure Data Explorer csomópontja library használata az adatok betöltése
+description: Ebből a cikkből megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer Node.js használatával.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 10/25/2018
-ms.openlocfilehash: 42a4d2e34eab3679f98d5a62099ab57e5924fcc3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 19da42437cfe1d7b63dfed4bd2b30716d691a0e3
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800427"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494484"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Gyors útmutató: Az Azure Data Explorer csomópontja library használata az adatok betöltése
+# <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Az Azure Data Explorer csomópontja library használata az adatok betöltése
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer két ügyfélkódtárat biztosít a Node számára: egy [betöltési kódtárat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) és [egy adatkódtárat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a rövid útmutatóban először létrehoz egy táblát és egy adatleképezést egy tesztfürtben. Ezután sorba helyezi a fürtbe való betöltést, és ellenőrzi az eredményeket.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer két ügyfélkódtárat biztosít a Node számára: egy [betöltési kódtárat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) és [egy adatkódtárat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a cikkben, először hozzon létre egy tábla és a egy teszt fürtben megfeleltetése. Ezután sorba helyezi a fürtbe való betöltést, és ellenőrzi az eredményeket.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez az Azure-előfizetés mellett szüksége lesz a következőkre is:
+Mellett az Azure-előfizetéssel szüksége van ez a cikk a következőkre:
 
 * [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
 
@@ -158,7 +158,7 @@ Futtassa a következő parancsot az elmúlt négy órában végzett összes bet�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze meg a létrehozott erőforrásokat. Ha nem szeretné, futtassa a következő parancsot az adatbázisban a `StormEvents`-tábla felesleges elemeinek eltávolításához.
+Ha azt tervezi, hajtsa végre a más cikkeket, megtarthatja a létrehozott erőforrásokat. Ha nem szeretné, futtassa a következő parancsot az adatbázisban a `StormEvents`-tábla felesleges elemeinek eltávolításához.
 
 ```Kusto
 .drop table StormEvents
@@ -166,5 +166,4 @@ Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Lekérdezések írása](write-queries.md)
+* [Lekérdezések írása](write-queries.md)

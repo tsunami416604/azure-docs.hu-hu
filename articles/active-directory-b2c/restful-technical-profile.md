@@ -2,20 +2,20 @@
 title: Egy egyéni házirendek az Azure Active Directory B2C egy REST-alapú technikai profilban meghatározása |} A Microsoft Docs
 description: Adja meg az Azure Active Directory B2C egyéni házirendet egy REST-alapú technikai profilban.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0726c22e436658d51419b9e32d73f48db99ba805
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 21a2ea861df96a057db0ec13eacd0906ed51fff1
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705307"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512744"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy REST-alapú technikai profilban meghatározása
 
@@ -83,7 +83,7 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ServiceUrl | Igen | A REST API-végpont URL-címe | 
 | AuthenticationType | Igen | A REST-alapú jogcímszolgáltató által végrehajtott hitelesítés típusa. A lehetséges értékek: `None`, `Basic`, vagy `ClientCertificate`. A `None` érték azt jelzi, hogy a REST API-t nem névtelen. A `Basic` érték azt jelzi, hogy a REST API egyszerű HTTP-hitelesítés védi. Csak ellenőrzött felhasználókat, beleértve az Azure AD B2C-vel, hozzáférhet az API-t. A `ClientCertificate` (ajánlott) érték azt jelzi, hogy a REST API korlátozza a hozzáférést az ügyféltanúsítvány-alapú hitelesítés használatával. Csak a szükséges tanúsítványokat, például az Azure AD B2C-vel rendelkező szolgáltatások érhetik el a szolgáltatást. | 
@@ -134,7 +134,7 @@ Az alábbi példa bemutatja egy egyszerű hitelesítést technikai profil:
 
 Ha a hitelesítés típusát `ClientCertificate`, a **CryptographicKeys** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ClientCertificate | Igen | A X509 (RSA key set) tanúsítványt használják a hitelesítéshez. | 
 
@@ -161,7 +161,7 @@ A REST API-t kell adja vissza egy hibaüzenet, például a "a felhasználó nem 
 | --------- | -------- | ----------- |
 | version | Igen | 1.0.0 | 
 | status | Igen | 409 | 
-| Kód | Nem | A RESTful-végpont szolgáltató, amely hibakód jelenik meg, mikor `DebugMode` engedélyezve van. | 
+| code | Nem | A RESTful-végpont szolgáltató, amely hibakód jelenik meg, mikor `DebugMode` engedélyezve van. | 
 | requestId | Nem | Egy kérés azonosítója, amely RESTful-végpont szolgáltatójáról jelenik meg, mikor `DebugMode` engedélyezve van. | 
 | userMessage | Igen | Egy hibaüzenet a felhasználó számára. | 
 | developerMessage | Nem | A problémáról és annak megoldásáról, amely részletes leírása jelenik meg, mikor `DebugMode` engedélyezve van. | 

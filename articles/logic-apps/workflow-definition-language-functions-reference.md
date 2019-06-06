@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: 24e0a0ae2a6af964d3ed87d1817de6e5f403c9b1
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 506076e2d9b171e1ec1ff604519cbbfbe4339e87
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416348"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66733066"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Az Azure Logic Apps és Microsoft Flow munkafolyamat-definíciós nyelv-funkciók dokumentációja
 
@@ -297,7 +297,7 @@ Kapcsolatos minden funkció teljes körű referenciáért lásd: a [betűrend sz
 <a name="alphabetical-list"></a>
 <a name="action"></a>
 
-### <a name="action"></a>a művelet
+### <a name="action"></a>action
 
 Vissza a *aktuális* futtatókörnyezet, illetve értékét más JSON név-érték párok, hozzárendelheti egy kifejezés, amely a következő kimeneti művelet.
 Alapértelmezés szerint ez a függvény a teljes művelet objektumra hivatkozik, de igény szerint megadhat egy tulajdonság, melynek az értéke.
@@ -519,7 +519,7 @@ addDays('<timestamp>', <days>, '<format>'?)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Időbélyeg*> | Igen | String | A karakterlánc, amely tartalmazza az időbélyeg |
-| <*nap*> | Igen | Integer | A hozzáadandó napok pozitív vagy negatív szám |
+| <*nap*> | Igen | Egész szám | A hozzáadandó napok pozitív vagy negatív szám |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
 
@@ -561,7 +561,7 @@ addHours('<timestamp>', <hours>, '<format>'?)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Időbélyeg*> | Igen | String | A karakterlánc, amely tartalmazza az időbélyeg |
-| <*Óra*> | Igen | Integer | A hozzáadandó órák pozitív vagy negatív szám |
+| <*Óra*> | Igen | Egész szám | A hozzáadandó órák pozitív vagy negatív szám |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
 
@@ -603,7 +603,7 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Időbélyeg*> | Igen | String | A karakterlánc, amely tartalmazza az időbélyeg |
-| <*minutes*> | Igen | Integer | Perc alatt adhatja hozzá az a pozitív vagy negatív szám |
+| <*minutes*> | Igen | Egész szám | Perc alatt adhatja hozzá az a pozitív vagy negatív szám |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
 
@@ -676,7 +676,7 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Időbélyeg*> | Igen | String | A karakterlánc, amely tartalmazza az időbélyeg |
-| <*Másodperc*> | Igen | Integer | A hozzáadandó másodpercek pozitív vagy negatív szám |
+| <*Másodperc*> | Igen | Egész szám | A hozzáadandó másodpercek pozitív vagy negatív szám |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
 
@@ -719,7 +719,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Időbélyeg*> | Igen | String | A karakterlánc, amely tartalmazza az időbélyeg |
-| <*időköz*> | Igen | Integer | A megadott időegység hozzáadandó száma |
+| <*időköz*> | Igen | Egész szám | A megadott időegység hozzáadandó száma |
 | <*timeUnit*> | Igen | String | Az időegység használata *időköz*: "A második", "Minute", "Hour", "Day", "Week", "Month", "Year" |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
@@ -737,7 +737,7 @@ Ebben a példában egy napot ad hozzá a megadott időbélyeg:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day')
 ```
 
-És ezt az eredményt adja vissza: `"2018-01-02T00:00:00:0000000Z"`
+És ezt az eredményt adja vissza: `"2018-01-02T00:00:00.0000000Z"`
 
 *2. példa*
 
@@ -1425,7 +1425,7 @@ dayOfMonth('<timestamp>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*hónap napja*> | Integer | A megadott időbélyeg a hónap napja |
+| <*hónap napja*> | Egész szám | A megadott időbélyeg a hónap napja |
 ||||
 
 *Példa*
@@ -1455,7 +1455,7 @@ dayOfWeek('<timestamp>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*day-of-week*> | Integer | A megadott időbélyeg, ahol vasárnap értéke 0, hétfőn, a hét napja az 1, és így tovább |
+| <*day-of-week*> | Egész szám | A megadott időbélyeg, ahol vasárnap értéke 0, hétfőn, a hét napja az 1, és így tovább |
 ||||
 
 *Példa*
@@ -1485,7 +1485,7 @@ dayOfYear('<timestamp>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*év napja*> | Integer | A megadott időbélyeg az év napját |
+| <*év napja*> | Egész szám | A megadott időbélyeg az év napját |
 ||||
 
 *Példa*
@@ -1616,7 +1616,7 @@ div(<dividend>, <divisor>)
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*quotient-result*> | Integer | Az egész típusú eredményként a második szám szerint az első szám hányadosát |
+| <*quotient-result*> | Egész szám | Az egész típusú eredményként a második szám szerint az első szám hányadosát |
 ||||
 
 *Példa*
@@ -1948,7 +1948,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*időköz*> | Igen | Integer | A megadott időegység kivonandó száma |
+| <*időköz*> | Igen | Egész szám | A megadott időegység kivonandó száma |
 | <*timeUnit*> | Igen | String | Az időegység használata *időköz*: "A második", "Minute", "Hour", "Day", "Week", "Month", "Year" |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
@@ -1992,7 +1992,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*időköz*> | Igen | Integer | A megadott időegység kivonandó száma |
+| <*időköz*> | Igen | Egész szám | A megadott időegység kivonandó száma |
 | <*timeUnit*> | Igen | String | Az időegység használata *időköz*: "A második", "Minute", "Hour", "Day", "Week", "Month", "Year" |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
@@ -2185,7 +2185,7 @@ indexOf('<text>', '<searchText>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*index-value*>| Integer | A megadott karakterláncrészlet kezdő pozíció vagy index értéket. <p>Ha a karakterlánc nem található, -1 számának visszaadása. |
+| <*index-value*>| Egész szám | A megadott karakterláncrészlet kezdő pozíció vagy index értéket. <p>Ha a karakterlánc nem található, -1 számának visszaadása. |
 ||||
 
 *Példa*
@@ -2215,7 +2215,7 @@ int('<value>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*integer-result*> | Integer | A megadott karakterlánc az egész verziója |
+| <*integer-result*> | Egész szám | A megadott karakterlánc az egész verziója |
 ||||
 
 *Példa*
@@ -2298,7 +2298,7 @@ iterationIndexes('<loopName>')
 
 | Vrácená hodnota | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*index*> | Integer | Az aktuális iteráció belsejében a megadott index értéke Until ciklus | 
+| <*index*> | Egész szám | Az aktuális iteráció belsejében a megadott index értéke Until ciklus | 
 |||| 
 
 *Példa* 
@@ -2373,7 +2373,7 @@ Ez a példa létrehoz egy számláló változó és lépésekben a változó-Unt
 
 <a name="json"></a>
 
-### <a name="json"></a>json
+### <a name="json"></a>JSON
 
 A JavaScript Object Notation (JSON) típusú érték, vagy egy karakterláncot vagy XML-objektumot ad vissza.
 
@@ -2558,7 +2558,7 @@ lastIndexOf('<text>', '<searchText>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*ending-index-value*> | Integer | A megadott karakterláncrészlet utolsó előfordulásának kezdő pozíció vagy index értéket. <p>Ha a karakterlánc nem található, -1 számának visszaadása. |
+| <*ending-index-value*> | Egész szám | A megadott karakterláncrészlet utolsó előfordulásának kezdő pozíció vagy index értéket. <p>Ha a karakterlánc nem található, -1 számának visszaadása. |
 ||||
 
 *Példa*
@@ -2573,7 +2573,7 @@ lastIndexOf('hello world', 'world')
 
 <a name="length"></a>
 
-### <a name="length"></a>Hossza
+### <a name="length"></a>length
 
 Egy gyűjteményben lévő elemek számának visszaadása.
 
@@ -2589,7 +2589,7 @@ length([<collection>])
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*hossza vagy száma*> | Integer | A gyűjteményben lévő elemek száma. |
+| <*hossza vagy száma*> | Egész szám | A gyűjteményben lévő elemek száma. |
 ||||
 
 *Példa*
@@ -2845,7 +2845,7 @@ multipartBody('<actionName>', <index>)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Műveletnév*> | Igen | String | A művelet, amely rendelkezik a több részből kimeneti neve |
-| <*index*> | Igen | Integer | Az index értéke a kívánt részt |
+| <*index*> | Igen | Egész szám | Az index értéke a kívánt részt |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -3001,13 +3001,13 @@ rand(<minValue>, <maxValue>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*minValue*> | Igen | Integer | A legkisebb egész szám |
-| <*maxValue*> | Igen | Integer | A legnagyobb egész szám, amely a függvénynek a következő egész szám |
+| <*minValue*> | Igen | Egész szám | A legkisebb egész szám |
+| <*maxValue*> | Igen | Egész szám | A legnagyobb egész szám, amely a függvénynek a következő egész szám |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*random-result*> | Integer | A véletlenszerű egész számot adja vissza a megadott tartomány |
+| <*random-result*> | Egész szám | A véletlenszerű egész számot adja vissza a megadott tartomány |
 ||||
 
 *Példa*
@@ -3032,8 +3032,8 @@ range(<startIndex>, <count>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*startIndex*> | Igen | Integer | Egész szám, amely elindítja a tömb első elemeként |
-| <*Száma*> | Igen | Integer | A tömbben található egész számok száma |
+| <*startIndex*> | Igen | Egész szám | Egész szám, amely elindítja a tömb első elemeként |
+| <*Száma*> | Igen | Egész szám | A tömbben található egész számok száma |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -3157,7 +3157,7 @@ skip([<collection>], <count>)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Gyűjtemény*> | Igen | Tömb | A gyűjtemény, amelynek el kívánja távolítani elemek |
-| <*Száma*> | Igen | Integer | Távolítsa el elöl az elemek számának pozitív egész szám |
+| <*Száma*> | Igen | Egész szám | Távolítsa el elöl az elemek számának pozitív egész szám |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -3384,7 +3384,7 @@ string( { "name": "Sophie Owen" } )
 
 <a name="sub"></a>
 
-### <a name="sub"></a>Sub
+### <a name="sub"></a>sub
 
 Az első szám, a második szám kivonásának az eredmény visszaadása.
 
@@ -3427,8 +3427,8 @@ substring('<text>', <startIndex>, <length>)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Igen | String | A karakterláncot, amelynek kívánt karakterek |
-| <*startIndex*> | Igen | Integer | Egy pozitív szám, amelyet szeretne használja, mint a kezdő pozíció vagy index érték 0-nál nagyobb vagy egyenlő |
-| <*Hossza*> | Igen | Integer | Pozitív szám, amelyet szeretne a substring karakter |
+| <*startIndex*> | Igen | Egész szám | Egy pozitív szám, amelyet szeretne használja, mint a kezdő pozíció vagy index érték 0-nál nagyobb vagy egyenlő |
+| <*Hossza*> | Igen | Egész szám | Pozitív szám, amelyet szeretne a substring karakter |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -3460,7 +3460,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Időbélyeg*> | Igen | String | A karakterlánc, amely tartalmazza az időbélyeg |
-| <*időköz*> | Igen | Integer | A megadott időegység kivonandó száma |
+| <*időköz*> | Igen | Egész szám | A megadott időegység kivonandó száma |
 | <*timeUnit*> | Igen | String | Az időegység használata *időköz*: "A második", "Minute", "Hour", "Day", "Week", "Month", "Year" |
 | <*Formátum*> | Nem | String | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni Formátumminta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["ó"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddTHH:mm:ss:fffffffK), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információkat. |
 |||||
@@ -3504,7 +3504,7 @@ take([<collection>], <count>)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Gyűjtemény*> | Igen | Karakterlánc- vagy tömb | A gyűjtemény, amelynek kívánt elemeket |
-| <*Száma*> | Igen | Integer | Az előtérben lévő elemek számának pozitív egész szám |
+| <*Száma*> | Igen | Egész szám | Az előtérben lévő elemek számának pozitív egész szám |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -3544,7 +3544,7 @@ ticks('<timestamp>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*ticks-number*> | Integer | A megadott időbélyeg óta számát |
+| <*ticks-number*> | Egész szám | A megadott időbélyeg óta számát |
 ||||
 
 <a name="toLower"></a>
@@ -3719,7 +3719,7 @@ triggerMultipartBody(<index>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*index*> | Igen | Integer | Az index értéke a kívánt részt |
+| <*index*> | Igen | Egész szám | Az index értéke a kívánt részt |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |
@@ -4010,7 +4010,7 @@ uriPort('<uri>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*port-value*> | Integer | A `port` a megadott URI azonosító értékét. Ha `port` nem adjon meg egy értéket, az alapértelmezett port a protokoll adja vissza. |
+| <*port-value*> | Egész szám | A `port` a megadott URI azonosító értékét. Ha `port` nem adjon meg egy értéket, az alapértelmezett port a protokoll adja vissza. |
 ||||
 
 *Példa*

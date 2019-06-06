@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 13fbb20cde454a0aaab156a74a9fbcbac2d90d07
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: b5a203150906758bde33431a1dab717e090f2e28
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418133"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475572"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Előnézet - korlát irányuló kimenő adatforgalmat a fürtcsomópontok és a szükséges portokat és szolgáltatásokat az Azure Kubernetes Service (AKS) az adathozzáférés szabályozása
 
@@ -75,7 +75,7 @@ A következő teljes tartománynév / alkalmazás szabályok szükségesek:
 
 | TELJES TARTOMÁNYNÉV                      | Port      | Használat      |
 |---------------------------|-----------|----------|
-| *.azmk8s.io               | HTTPS:443 | Ez a cím az az API kiszolgálói végpont. |
+| *.azmk8s.io               | HTTPS:443,22,9000 | Ez a cím az az API kiszolgálói végpont. |
 | aksrepos.azurecr.io       | HTTPS:443 | Ez a cím megadása kötelező hozzáférési lemezképek az Azure Container Registry (ACR). |
 | *.blob.core.windows.net   | HTTPS:443 | Ez a cím a rendszerképeket az ACR tárolt háttérrendszer tároló. |
 | mcr.microsoft.com         | HTTPS:443 | Ez a cím megadása kötelező hozzáférési lemezképek Microsoft Container Registry (MCR). |

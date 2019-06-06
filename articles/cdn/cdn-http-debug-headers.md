@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
-ms.openlocfilehash: 4ba42850ee28e2e212d9bc2b7b64be103218757c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5693e0e191b36aa8d4552824c649a38d2f17b5b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736972"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475285"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotorral X-EK-Debug HTTP-fejlécek
 A hibakeresési gyorsítótár kérelem fejlécét, `X-EC-Debug`, a gyorsítótár-szabályzat, amely a kért objektum érvényes további információkat tartalmaz. Ezek a fejlécek csak az adott **verizon Azure CDN Premium** termékek.
@@ -27,7 +27,7 @@ A hibakeresési gyorsítótár kérelem fejlécét, `X-EC-Debug`, a gyorsítót�
 ## <a name="usage"></a>Használat
 A felhasználó a POP-kiszolgálók által küldött válasz tartalmazza a `X-EC-Debug` fejléc csak a következő feltételek teljesülése esetén:
 
-- A [gyorsítótár válaszfejlécek hibakeresési funkció](cdn-rules-engine-reference-features.md#debug-cache-response-headers) engedélyezve van a rules engine, az adott kérelemhez.
+- A [gyorsítótár válaszfejlécek hibakeresési funkció](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) engedélyezve van a rules engine, az adott kérelemhez.
 - A megadott kérelem hibakeresési gyorsítótár válaszfejlécek, melyeket fog szerepelni a válasz határozza meg.
 
 ## <a name="requesting-debug-cache-information"></a>Hibakeresési információk gyorsítótárazása kérése
@@ -118,7 +118,7 @@ A következő minta válasz fejléce azt jelzi, hogy a kért tartalmat sikerült
 ## <a name="cache-key-response-header"></a>Gyorsítótár-kulcs válaszfejléc
 A `X-EC-Debug: x-ec-cache-key` válaszfejléc azt jelzi, hogy a kért tartalomhoz társított fizikai gyorsítótár kulcs. Egy elérési utat, amely az eszköz azonosítja a gyorsítótárazás céljára áll egy fizikai gyorsítótár-kulcsot. Más szóval a kiszolgálók ellenőrzi, hogy egy eszköz, az elérési út alapján egy gyorsítótárazott verziója a gyorsítótár-kulcs által meghatározott módon.
 
-A fizikai gyorsítótár-kulcs dupla perjellel kezdődik (/ /) követi a szabadságigények a tartalom (HTTP vagy HTTPS) protokollt. Ezt a protokollt az azt követő relatív elérési útját a kért eszközhöz, amely elindítja a tartalom-hozzáférési ponttal rendelkező (például _/000001/_).
+A fizikai gyorsítótár-kulcs dupla perjellel kezdődik (/ /) követi a szabadságigények a tartalom (HTTP vagy HTTPS) protokollt. Ezt a protokollt az azt követő relatív elérési útját a kért eszközhöz, amely elindítja a tartalom-hozzáférési ponttal rendelkező (például _/000001/_ ).
 
 Alapértelmezés szerint HTTP-platformok használatára vannak konfigurálva *standard-gyorsítótár*, ami azt jelenti, hogy lekérdezési karakterláncok figyelmen kívül hagyja a gyorsítótárazást. Ezt a konfigurációtípust megakadályozza, hogy a gyorsítótár-kulcs lekérdezési karakterlánc adatokat is beleértve.
 
@@ -151,7 +151,7 @@ A fenti válasz fejléce szintaxis használt kifejezések meghatározása a köv
 
 - MATimePeriod: Max-age értékét (azaz MASeconds) alakítja át egy nagyobb egység hozzávetőleges megfelelője (például, nap). 
 
-- UnixTime: Azt jelzi, hogy a gyorsítótár időbélyeg a lekért tartalom a Unix-ideje (más néven) POSIX idő- vagy UNIX rendszerű alapidőpont). A gyorsítótár időbélyeg azt jelzi, hogy a kezdő dátumot és időt, amelyből egy eszköz TTL fog számítani. 
+- UnixTime: Azt jelzi, hogy a gyorsítótár időbélyeg a lekért tartalom Unix-ideje (más néven POSIX idő- vagy UNIX rendszerű alapidőpont). A gyorsítótár időbélyeg azt jelzi, hogy a kezdő dátumot és időt, amelyből egy eszköz TTL fog számítani. 
 
     Ha a forráskiszolgáló nem használja a kiszolgálón, vagy ha a kiszolgáló nem ad vissza az életkor válaszfejléc gyorsítótárazás külső HTTP, a gyorsítótár időbélyeg lesz a dátum/idő amikor az eszköz beolvasni vagy újra érvényesítve. Ellenkező esetben a POP-kiszolgálókat az életkor mező kiszámításához használja az eszköz TTL módon: Lekérés/RevalidateDateTime - kor.
 

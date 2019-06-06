@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: b51b9f08819a4c496e051d375f6d52aaa985c8e6
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 13cb3880662e1665b03dd63f009645acbe97fc75
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66394131"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734892"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>A gyakori riasztási séma integrálása a Logic Apps használatával
 
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy logikai alkalmazást, amely minden
 
 ## <a name="overview"></a>Áttekintés
 
-A [gyakori riasztási séma](https://aka.ms/commonAlertSchemaDocs) biztosít a szabványos és bővíthető JSON-séma minden más riasztási típus. Gyakori riasztási sémája a leghasznosabb, ha a webhookok, a runbookok és a logic Apps-alkalmazások programozott módon – ki. Ebben a cikkben bemutatjuk, hogyan egy-egy logikai alkalmazást hozhat létre minden riasztás kezelése. Ugyanezek az elvek alkalmazhatók az egyéb programozott módszerekkel. A logikai alkalmazás ebben a cikkben leírt jól definiált változókat hoz létre a ["fontos" mezők](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields), és azt is leírja, hogy miként kezelheti [riasztási típus]('https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields') specifikus logika.
+A [gyakori riasztási séma](https://aka.ms/commonAlertSchemaDocs) biztosít a szabványos és bővíthető JSON-séma minden más riasztási típus. Gyakori riasztási sémája a leghasznosabb, ha a webhookok, a runbookok és a logic Apps-alkalmazások programozott módon – ki. Ebben a cikkben bemutatjuk, hogyan egy-egy logikai alkalmazást hozhat létre minden riasztás kezelése. Ugyanezek az elvek alkalmazhatók az egyéb programozott módszerekkel. A logikai alkalmazás ebben a cikkben leírt jól definiált változókat hoz létre a ["fontos" mezők](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields), és azt is leírja, hogy miként kezelheti [riasztási típus](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) specifikus logika.
 
 
 ## <a name="prerequisites"></a>Előfeltételek 
@@ -125,7 +125,7 @@ Ez a cikk feltételezi, hogy az olvasó már megszokott
 
     ![Logic app kifejezés](media/alerts-common-schema-integrations/logic-app-expressions.png "Logic app kifejezés")
     
-     A ["monitoringService" mező]('https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields') lehetővé teszi, hogy egyedi azonosítására a riasztási típus alapján a amely hozhat létre feltételes logikát.
+     A ["monitoringService" mező](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) lehetővé teszi, hogy egyedi azonosítására a riasztási típus alapján a amely hozhat létre feltételes logikát.
 
     
     Ha például az alábbi kódrészlet ellenőrzi, ha a riasztás az Application Insights-alapú naplóriasztás, és ha igen jelenít meg a keresési eredmények között. Más esetben "NA" jelenít meg.

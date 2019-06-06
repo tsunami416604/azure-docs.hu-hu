@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 527e9979b624970dd55b4300fe63c27386640ac4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a293f0b656c075ae3b21ccf98e602e43ed761958
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560493"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428458"
 ---
 # <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Oktatóanyag: Honosított leküldéses értesítések küldése iOS-eszközök Azure Notification Hubs használatával
 
@@ -49,7 +49,7 @@ A [A legfrissebb hírek elküldése a Notification Hubs használatával], egy al
 > [!NOTE]
 > Honosított értesítések küldése az egyik lehetőség, hogy minden címke több verzióját. Például angol, francia és Mandarin támogatásához kell három különböző címkék a globális hírekkel: "world_en", "world_fr", és a "world_ch". Majd kell a globális hírekkel honosított változatát el egyes ezekkel a címkékkel. Ez a témakör a sablonok címkék elterjedése és több üzenetet küld az megkövetelését elkerülése érdekében használhatja.
 
-Magas szinten sablonok, amelyek egy adja meg, hogy egy adott eszközhöz egy értesítést kell kapnia. A sablon meghatározza a hasznos adatok pontos formátumát a háttéralkalmazás által küldött üzenet részét képező tulajdonságokra hivatkozva. Abban az esetben amely tartalmazza az összes támogatott nyelvet területibeállítás-agnosztikus üzenet küldése:
+Sablonok módon adja meg, hogy egy adott eszközhöz egy értesítést kell kapnia. A sablon meghatározza a hasznos adatok pontos formátumát a háttéralkalmazás által küldött üzenet részét képező tulajdonságokra hivatkozva. Abban az esetben amely tartalmazza az összes támogatott nyelvet területibeállítás-agnosztikus üzenet küldése:
 
 ```json
 {
@@ -74,7 +74,7 @@ A sablonok további információkért lásd: [sablonok](notification-hubs-templa
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Végezze el a [leküldéses értesítések küldése az adott iOS-eszközök](notification-hubs-ios-xplat-segmented-apns-push-notification.md) oktatóanyag és van elérhető, a kódot, mert ebben az oktatóanyagban közvetlenül épít, hogy a kódot.
-* A Visual Studio 2017 nem kötelező.
+* A Visual Studio 2019 nem kötelező.
 
 ## <a name="update-the-app-user-interface"></a>Az alkalmazás felhasználói felület frissítéséhez
 
@@ -90,7 +90,7 @@ Végezze el a ViewController.h adjon hozzá egy IBOutlet, az alábbi képen lát
 
 ## <a name="build-the-ios-app"></a>Az iOS-alkalmazás készítése
 
-1. Az a `Notification.h` adja hozzá a `retrieveLocale` metódust, és a tároló módosítása, és feliratkozhat a módszereket, az alábbi kódban látható módon:
+1. Az a `Notification.h`, adja hozzá a `retrieveLocale` metódust, és a tároló módosítása, és feliratkozhat a módszereket, az alábbi kódban látható módon:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;

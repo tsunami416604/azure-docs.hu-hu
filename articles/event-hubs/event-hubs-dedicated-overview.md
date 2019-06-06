@@ -15,18 +15,18 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 4f721dc4fda5bef002c794d79dfd2f054f9eaf38
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 52e092e6e48f004656860cb5d078e780039584ab
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511176"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730241"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Dedikált Event Hubs áttekintése
 
 *Event Hubs-fürtök* egybérlős központi telepítések a legnagyobb erőforrás-igényű streamelési igényekkel rendelkező ügyfelek számára kínálnak. Az egybérlős ajánlattal rendelkezik garantált 99,99 %-os SLA-t, és csak a dedikált tarifacsomagban elérhető. Az Event Hubs-fürt is garantált kapacitás és a másodperc törtrésze késése másodpercenként több millió bejövő forgalom. A dedikált fürtön belül létrehozott névterek és az event hubs többek között az összes, a Standard ajánlat és más, de minden bejövő forgalom korlátok nélkül. Ezenkívül tartalmazza a népszerű [Event Hubs Capture](event-hubs-capture-overview.md) további költségek nélkül, így automatikusan batch és a naplófájlok adatfolyamok kezelése az Azure Storage vagy az Azure Data Lake szolgáltatást. 
 
-Fürtök kiépítése, és a számlázás alapját **kapacitásegységek (CUs)**, egy előre kiosztott Processzor és memória-erőforrások mennyiségét. Minden egyes fürt az 1, 2, 4, 8, 12, 16 vagy 20 kapacitásegységek vásárolhatók. Mennyit képes fogadni, és adatfolyam-/ Kapacitásegység függ számos tényezőtől, például az előállítók és fogyasztók, hasznos adat alakzat, kimenő forgalom száma (lásd a részleteket alább a teljesítménytesztek eredménye) értékelésére. 
+Fürtök kiépítése, és a számlázás alapját **kapacitásegységek (CUs)** , egy előre kiosztott Processzor és memória-erőforrások mennyiségét. Minden egyes fürt az 1, 2, 4, 8, 12, 16 vagy 20 kapacitásegységek vásárolhatók. Mennyit képes fogadni, és adatfolyam-/ Kapacitásegység függ számos tényezőtől, például az előállítók és fogyasztók, hasznos adat alakzat, kimenő forgalom száma (lásd a részleteket alább a teljesítménytesztek eredménye) értékelésére. 
 
 > [!NOTE]
 > Minden Event Hubs-fürtök alapértelmezés szerint a Kafka-engedélyezve, és támogatja a Kafka-végpontok, amelyek segítségével a meglévő által a Kafka-alapú alkalmazások. Kafka engedélyezve a kellene a fürt nem befolyásolja a a Kafka használati esetek; nincs lehetőség vagy tiltsa le a Kafka-fürt szükséges.
@@ -50,22 +50,22 @@ Bejövő nagy mennyiségben (> 100 átviteli egységek), fürt költségei jelen
 
 Az Event Hubs dedikált ajánlat fix havi díja, legalább 4 óra számoljuk fel. A dedikált szintet kínál összes funkciót, a standard szintű csomag, de a vállalati méretezés és korlátait az erőforrás-igényű számítási feladatok rendelkező ügyfelek számára. 
 
-| Szolgáltatás | Standard | Dedikált |
+| Funkció | Standard | Dedikált |
 | --- |:---:|:---:|
-| Sávszélesség | 20 átviteli egységek (legfeljebb 40 átviteli egységek) | 20 kapacitásegység használható |
-| Névterek |  1. | 50 / Kapacitásegység |
-| Event Hubs |  10 | Nincs korlátozva az event hubs-témakörök |
-| Beáramlási események | / Millió esemény kell fizetnie | Belefoglalva |
+| A sávszélesség | 20 átviteli egységek (legfeljebb 40 átviteli egységek) | 20 kapacitásegység használható |
+| Névterek |  1 | 50 / Kapacitásegység |
+| Event Hubs |  névterenként 10 | 1000 névterenként |
+| Belépő események | / Millió esemény kell fizetnie | Tartalmazza |
 | Üzenet mérete | 1 millió bájt | 1 millió bájt |
 | Partíciók | 40 névterenként | 2000 / Kapacitásegység |
-| Fogyasztói csoportok | Eseményközpont 20 | Nincs korlátozva az event hubs 1000 / Kapacitásegység, |
-| Közvetített kapcsolatok | 1000 tartalmazza | 100 K csomagban foglalt |
+| Felhasználói csoportok | Eseményközpont 20 | Nincs korlátozva az event hubs 1000 / Kapacitásegység, |
+| Felügyelt kapcsolatok | 1000 tartalmazza, a maximális 5000 | 100 K csomagban foglalt, és a maximális száma |
 | Üzenetmegőrzés | 7 nap, 84 GB-os átviteli egység per tartalmazza | 90 nap, a 10 TB-ot foglalt / Kapacitásegység |
-| Rögzítés | Fizetés / óra | Belefoglalva |
+| Rögzítés | Fizetés / óra | Tartalmazza |
 
 ## <a name="how-to-onboard"></a>Hogyan vezethető
 
-Event Hubs dedikált előkészítése, lépjen kapcsolatba a [Event Hubs-csapattal](mailto:askeventhubs@microsoft.com). A dedikált terv sajátossága, hogy egy több gyakorlati Bevezetés az Event Hubs termékért felelős csoport a rugalmas üzembe helyezést az Ön számára megfelelő beolvasni a fog tapasztalni. 
+Az önkiszolgáló működés, [hozzon létre egy Event Hubs-fürt](event-hubs-dedicated-cluster-create-portal.md) keresztül a [az Azure Portal](https://aka.ms/eventhubsclusterquickstart) jelenleg előzetes verzióban érhető el. Ha bármilyen kérdése van vagy segítségre van szüksége a Bevezetés az Event Hubs dedikált, lépjen kapcsolatba a [Event Hubs-csapattal](mailto:askeventhubs@microsoft.com).
 
 ## <a name="faqs"></a>Gyakori kérdések
 
@@ -87,20 +87,21 @@ A vizsgálat során, a következő feltételek lett megadva:
 - Az event hubs streamfeldolgozási használt 200 partíciók rendelkezett. 
 - Volt betöltött adatokat fogad az összes partíció két fogadó alkalmazás kapott.
 
-#### <a name="can-i-scale-down-my-cluster"></a>Skálázhatom-e le a fürtöt?
+#### <a name="can-i-scale-updown-my-cluster"></a>Skálázhatom-e fel- és leskálázását fürt?
 
-A létrehozás után fürtök használatáért legalább 4 óra. Az önkiszolgáló élményt előzetes verzióként küldhet egy [támogatási kérést](https://ms.portal.azure.com/#create/Microsoft.Support) mellett az Event Hubs csapatának *műszaki > kvóta > méretezési felfelé vagy lefelé dedikált fürt méretezése irányuló kérelem*. Használatával csökkentheti a fürt a kérelem végrehajtásához legfeljebb 7 napig is eltarthat. 
+A létrehozás után fürtök használatáért legalább 4 óra. Az önkiszolgáló élményt előzetes verzióként küldhet egy [támogatási kérést](https://ms.portal.azure.com/#create/Microsoft.Support) mellett az Event Hubs csapatának *műszaki > kvóta > méretezési felfelé vagy lefelé dedikált fürt méretezése irányuló kérelem* a méretezési csoport a fürt felfelé vagy lefelé. Használatával csökkentheti a fürt a kérelem végrehajtásához legfeljebb 7 napig is eltarthat. 
 
 #### <a name="how-will-geo-dr-work-with-my-cluster"></a>Hogyan működik a Geo-DR-fürt?
 
 Geo-pár másik névtér alatt egy dedikált szintű fürtöt tartalmazó névtér alatt egy dedikált szintű fürtöt is. Nem javasoljuk egy dedikált szintű névteret, a standard szintű kínál, és mivel az átviteli sebességhatár nem kompatibilis, és emiatt a hibák a névtér párosítási. 
 
 #### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Áttelepíthetek egy dedikált szintű fürthöz tartoznak, a standard szintű névterek?
-Hogy jelenleg nem támogatják az automatikus migrálási folyamat az event hubs-adatok áttelepíthető egy dedikált egy standard szintű névtérben. Fürtbe történő áttelepítéséhez egy dedikált szintű, javasoljuk a kiürítés minden olyan üzeneteket balra, a Standard szintű event hubs és és cserélje le a kapcsolati végpontok, amelyek a dedikált névtér.
+Hogy jelenleg nem támogatják az automatikus migrálási folyamat az event hubs-adatok áttelepíthető egy dedikált egy standard szintű névtérben. 
 
 ## <a name="next-steps"></a>További lépések
 
-Forduljon a Microsoft értékesítési képviselőjével vagy a Microsoft Support további részletes információkat Event Hubs dedikált kapacitást. Akkor is tudhat meg többet az Event Hubs tarifacsomagok kövesse az alábbi hivatkozásokat:
+Forduljon a Microsoft értékesítési képviselőjével vagy a Microsoft Support további részletes információkat Event Hubs dedikált. Hozzon létre egy fürtöt is, vagy további információ az Event Hubs tarifacsomagok kövesse az alábbi hivatkozásokat:
 
+- [Hozzon létre egy Event Hubs-fürtöt az Azure Portalon](https://aka.ms/eventhubsclusterquickstart) 
 - [Event Hubs dedikált díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/). A Microsoft értékesítési képviselőjével vagy a Microsoft Support további részletes információkat Event Hubs dedikált kapacitást is kérhet segítséget.
 - A [Event Hubs – gyakori kérdések](event-hubs-faq.md) díjszabási információkat tartalmaz, valamint választ ad néhány gyakori kérdés az Event Hubs szolgáltatásról.

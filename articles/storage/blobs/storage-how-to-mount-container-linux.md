@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 2/1/2019
 ms.author: normesta
 ms.reviewer: seguler
-ms.openlocfilehash: 261fd9f820f3e5421d9d0f4f7c9220ec31003283
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d5077b75ff9e760917e9d5d02bea49dc4967a08b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148439"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473446"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Blob-tároló csatlakoztatása fájlrendszerként blobfuse az útmutató
 
 ## <a name="overview"></a>Áttekintés
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) van a virtuális fájlrendszer illesztőprogramja az Azure Blob storage. Blobfuse lehetővé teszi a meglévő blokkblobok adataival a tárfiókban lévő hozzáférnie a Linux-fájlrendszer. Az Azure Blob storage-objektum tárolási szolgáltatás, de nem rendelkezik a hierarchikus névtér. Blobfuse ezt a virtuális könyvtár séma használatával a ferde "/" elválasztóként névteret biztosít.  
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) van a virtuális fájlrendszer illesztőprogramja az Azure Blob storage. Blobfuse lehetővé teszi a meglévő blokkblobok adataival a tárfiókban lévő hozzáférnie a Linux-fájlrendszer. Blobfuse a virtuális könyvtár sémát használ, a ferde "/" elválasztóként.  
 
 Ez az útmutató bemutatja, hogyan blobfuse használja, és a Linux és a hozzáférési adatokat a Blob storage-tároló csatlakoztatható. Blobfuse kapcsolatos további információkért olvassa el a részleteket [a blobfuse tárház](https://github.com/Azure/azure-storage-fuse).
 

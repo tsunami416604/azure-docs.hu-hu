@@ -4,15 +4,15 @@ description: A gyűjtőberendezés az Azure Migrate ismerteti.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 05/31/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: d00899e0ca358b4e2970caa8c63c98e375ea970c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 865e0679ed05823d115baeb9eea3c01d7fb5f2a5
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728026"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428478"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -111,7 +111,7 @@ A kapcsolat ellenőrzése az URL-listák való csatlakozással érvényességét
 --- | --- | ---
 *.portal.azure.com | Érvényes globális Azure-bA. Az Azure-szolgáltatás, és időszinkronizálás kapcsolatát ellenőrzi. | Hozzáférés az URL-cím megadása kötelező.<br/><br/> Előfeltételek ellenőrzése sikertelen, ha nincs kapcsolat.
 *.portal.azure.us | Csak az Azure Government alkalmazható. Az Azure-szolgáltatás, és időszinkronizálás kapcsolatát ellenőrzi. | Hozzáférés az URL-cím megadása kötelező.<br/><br/> Előfeltételek ellenőrzése sikertelen, ha nincs kapcsolat.
-*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Töltse le a vCenter PowerCLI PowerShell modult használja. | URL-címek hozzáférésre szükség.<br/><br/> Előfeltételek ellenőrzése nem sikerül.<br/><br/> A gyűjtő virtuális gép automatikus modul telepítése sikertelen lesz. A modul telepítése manuálisan egy internetkapcsolattal rendelkező gépen, és másolja a modulok a készülék szüksége. [További hibaelhárítási útmutató 4. lépés áttekinthet](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception).
+*.oneget.org:443<br/><br/> *.github.com/oneget/oneget<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.azure.microsoft.com<br/><br/> *.azure.microsoft.com/en-us<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443<br/><br/> *.visualstudio.microsoft.com | Töltse le a vCenter PowerCLI PowerShell modult használja. | URL-címek hozzáférésre szükség.<br/><br/> Előfeltételek ellenőrzése nem sikerül.<br/><br/> A gyűjtő virtuális gép automatikus modul telepítése sikertelen lesz. A modul telepítése manuálisan egy internetkapcsolattal rendelkező gépen, és másolja a modulok a készülék szüksége. [További hibaelhárítási útmutató 4. lépés áttekinthet](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception).
 
 
 ### <a name="install-vmware-powercli-module-manually"></a>Telepítse manuálisan a VMware PowerCLI-modul
@@ -184,7 +184,7 @@ Az Azure Migrate által gyűjtött VMware számlálók teljes listáját a alatt
 
 **Kategória** |  **Metadata** | **vCenter datapoint**
 --- | --- | ---
-Gép részletei | VM-azonosító | vm.Config.InstanceUuid
+Gép részletei | VIRTUÁLIS GÉP AZONOSÍTÓJA | vm.Config.InstanceUuid
 Gép részletei | a virtuális gép neve | vm.Config.Name
 Gép részletei | vCenter Server ID | VMwareClient.InstanceUuid
 Gép részletei |  Virtuális gép leírása |  vm.Summary.Config.Annotation
@@ -210,8 +210,8 @@ Lemez adatai (lemezenként) | Az olvasás átviteli sebességét megabájt / má
 Lemez adatai (lemezenként) | Lemezírás teljesítménye megabájt / másodperc | virtualDisk.write.average
 Hálózati Adapter adatai száma (NIC) | Hálózati adapter neve | hálózati adapteren. Kulcs
 Hálózati Adapter adatai száma (NIC) | MAC-cím | ((VirtualEthernetCard)nic).MacAddress
-Hálózati Adapter adatai száma (NIC) | IPv4-címek | vm.Guest.Net
-Hálózati Adapter adatai száma (NIC) | IPv6-címek | vm.Guest.Net
+Hálózati Adapter adatai száma (NIC) | IPv4 Addresses | vm.Guest.Net
+Hálózati Adapter adatai száma (NIC) | IPv6 Addresses | vm.Guest.Net
 Hálózati Adapter adatai száma (NIC) | Az olvasás átviteli sebességét megabájt / másodperc | NET.Received.average
 Hálózati Adapter adatai száma (NIC) | Lemezírás teljesítménye megabájt / másodperc | NET.transmitted.average
 Elérési út Leltáradatait | Name (Név) | container.GetType().Name

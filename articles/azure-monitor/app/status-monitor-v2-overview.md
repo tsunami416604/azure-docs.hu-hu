@@ -1,6 +1,6 @@
 ---
 title: Az Azure Állapotfigyelőt v2 – áttekintés |} A Microsoft Docs
-description: Az állapotfigyelő v2 áttekintése. A webhely újbóli üzembe helyezése nélkül webhely teljesítményének megfigyeléséhez. A helyszíni, valamint a virtuális gépeken, illetve az Azure-ban üzemeltetett ASP.NET-webappokhoz is használható.
+description: Az állapotfigyelő v2 áttekintése. A webhely újbóli üzembe helyezése nélkül webhely teljesítményének megfigyeléséhez. ASP.NET-webalkalmazásokat együttműködik a helyileg üzemeltetett, a virtuális gépek vagy az Azure-ban.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,31 +12,33 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 2adc706c5da4fa53ace2a8a471789e276878c491
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2126408222433e6339723dc2da0d2611bb234fe8
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66255861"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734162"
 ---
 # <a name="status-monitor-v2"></a>Állapotmonitor v2
 
-Állapot figyelő v2 egy közzétett PowerShell-modul a [PowerShell-Galériabeli](https://www.powershellgallery.com/packages/Az.ApplicationMonitor) és a helyettesíti a [Állapotfigyelőt](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now). Ez a modul adja meg az IIS-kiszolgálón üzemeltetett webalkalmazások .NET kód nélküli kialakítási.
-Telemetriát küld az Azure Portalon ahol [figyelő](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) alkalmazását.
+Állapot figyelő v2 egy PowerShell-modul közzétett a [PowerShell-galériából](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
+A szolgáltatás lecseréli [Állapotfigyelőt](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
+A modul adja meg az IIS-kiszolgálón üzemeltetett .NET webes alkalmazások, kód nélküli kialakítási.
+Telemetriája el lesz küldve az Azure Portalt, ahol [figyelő](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) az alkalmazást.
 
 > [!IMPORTANT]
 > Állapot figyelő v2 jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Ez az előnézeti verzió egy szolgáltatásiszint-megállapodás nélkül biztosított, és ezt nem javasoljuk a termelési számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, és néhány előfordulhat, hogy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="powershell-gallery"></a>PowerShell-galéria
 
-https://www.powershellgallery.com/packages/Az.ApplicationMonitor
+A PowerShell-galériából található itt: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 
 
 ## <a name="instructions"></a>Utasítások
-- Tekintse át a [első lépések útmutató](status-monitor-v2-get-started.md) tömör Kódminták a kezdéshez.
-- Tekintse át a [részletes utasítások](status-monitor-v2-detailed-instructions.md) az első lépésekről részletes bemutatása.
+- Tekintse meg a [első lépések útmutató](status-monitor-v2-get-started.md) tömör Kódminták a kezdés beolvasásához.
+- Tekintse meg a [részletes utasítások](status-monitor-v2-detailed-instructions.md) az első lépésekről részletes bemutatása.
 
 ## <a name="powershell-api-reference"></a>PowerShell API-referencia
 - [Disable-ApplicationInsightsMonitoring](status-monitor-v2-api-disable-monitoring.md)
@@ -56,13 +58,16 @@ https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 
 - Támogatja az Állapotfigyelőt v2 proxy telepítések?
 
-  **Igen**. Töltse le az Állapotfigyelőt v2 több lehetősége van. Ha a számítógép rendelkezik internet-hozzáféréssel, segítségével készítheti elő a PowerShell-galériából történő `-Proxy` paramétereket. Manuálisan is letöltheti a modult, és telepítse azt a gépen, vagy a modul közvetlenül használni. A felsorolt lehetőségek ismertetett a [részletes utasításokat](status-monitor-v2-detailed-instructions.md).
+  *Igen*. Töltse le az Állapotfigyelőt v2 többféle módon lehet. Ha a számítógép rendelkezik internet-hozzáféréssel, segítségével készítheti elő a PowerShell-galériában használatával `-Proxy` paramétereket.
+Manuálisan is letöltheti a modult, és telepítse azt a számítógépet, vagy közvetlenül használni.
+A felsorolt lehetőségek ismertetett a [részletes utasítások](status-monitor-v2-detailed-instructions.md).
   
-- Az engedélyezés ellenőrzése sikeres volt?
+- Hogyan ellenőrizhetem, hogy sikerült-e a engedélyezését?
 
-   A parancsmag nem rendelkezünk, ellenőrizze, hogy engedélyezése sikeres volt. Azt javasoljuk, [élő mérőszámok](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) gyorsan megfigyelni, ha az alkalmazás USA telemetriai adatokat küldenek.
+   Nincs nem parancsmag lehetővé tétele sikerességéről.
+Javasoljuk, használjon [élő mérőszámok](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) gyors meghatározását, ha az alkalmazás telemetriai adatokat küldenek.
 
-   Is [Analytics](../log-query/get-started-portal.md) minden jelenleg a telemetriai adatokat küldenek a felhőalapú szerepkörök listáját.
+   Is [Log Analytics](../log-query/get-started-portal.md) listázhatja az összes jelenleg a telemetriai adatokat küldenek a felhőalapú szerepkörök:
    ```Kusto
    union * | summarize count() by cloud_RoleName, cloud_RoleInstance
    ```
@@ -71,14 +76,14 @@ https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 
 A telemetriai adatok megtekintése:
 
-* [A metrikák áttekintése](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez
-* [Eseményeket és naplókat kereshet](../../azure-monitor/app/diagnostic-search.md) problémák diagnosztizálásához
-* [Elemzések](../../azure-monitor/app/analytics.md) az összetettebb lekérdezésekhez
-* [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md)
+* [Metrikák böngészése](../../azure-monitor/app/metrics-explorer.md) teljesítményének figyelése és használati.
+* [Eseményeket és naplókat kereshet](../../azure-monitor/app/diagnostic-search.md) problémák diagnosztizálásához.
+* [Elemzések](../../azure-monitor/app/analytics.md) az összetettebb lekérdezésekhez.
+* [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).
 
 További telemetriai funkciók hozzáadása:
 
 * [Létrehozhat webes teszteket](monitor-web-app-availability.md) , hogy a hely elérhető maradjon.
-* [Ügyfél-telemetriát adhat hozzá](../../azure-monitor/app/javascript.md) lássa a weblapkód kivételeit és nyomkövetési hívásokat szúrhasson be.
-* [Application Insights SDK hozzáadása a kódhoz](../../azure-monitor/app/asp-net.md) , hogy Ön nyomkövetési és naplóhíváskat szúrhasson
+* [Ügyfél-telemetriát adhat hozzá](../../azure-monitor/app/javascript.md) lássa a weblapkód kivételeit és nyomkövetési hívásokat engedélyezése.
+* [Az Application Insights SDK hozzáadása a kódhoz](../../azure-monitor/app/asp-net.md) így nyomkövetési és naplóhíváskat szúrhasson.
 

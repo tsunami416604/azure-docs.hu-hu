@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2126157f49bd978d2218986601245cae2e4157b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0db341a9e36d61761321821de5631a564adea050
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322058"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428169"
 ---
 # <a name="report-and-check-service-health"></a>Szolgáltatásállapot jelentése és ellenőrzése
 A szolgáltatások problémát észlel, amikor válaszol, és javítsa ki az incidensek és üzemkimaradások utáni helyreállításon képességét a lehetővé teszi a hibák gyors észlelésében függ. Ha jelenti problémák és hibák az Azure Service Fabric health Manager a szolgáltatás kódból, standard állapotfigyelési eszközöket, amelyek a Service Fabric biztosít az állapot ellenőrzéséhez használhatja.
@@ -37,7 +37,7 @@ Ez a cikk végigvezeti egy példa, amely a szolgáltatás kódból állapotáró
 ## <a name="prerequisites"></a>Előfeltételek
 A következőkkel kell rendelkeznie:
 
-* Visual Studio 2015 vagy Visual Studio 2017
+* Visual Studio 2015 vagy Visual Studio 2019
 * Service Fabric SDK
 
 ## <a name="to-create-a-local-secure-dev-cluster"></a>Biztonságos helyi fejlesztési fürt létrehozása
@@ -65,7 +65,7 @@ A következőkkel kell rendelkeznie:
 A Visual Studio projektsablonjai a Service Fabric mintakód tartalmazza. A következő lépések bemutatják, hogyan lehet jelentést egyéni hálózatállapot-események a szolgáltatás kódból. Ezek a jelentések a az eszközt, hogy a Service Fabric biztosít, a Service Fabric Explorer, az Azure portal állapotának megtekintése és a PowerShell használatával az állapotmonitorozásra vonatkozó automatikusan megjelennek.
 
 1. Nyissa meg újra az alkalmazást a Visual Studióban korábban létrehozott, vagy hozzon létre egy új alkalmazást használatával a **állapotalapú szolgáltatás** Visual Studio-sablont.
-1. Nyissa meg a Stateful1.cs fájlt, és keresse meg a `myDictionary.TryGetValueAsync` hívja meg a `RunAsync` metódust. Láthatja, hogy a metódus visszatérése egy `result` a számláló a jelenlegi érték, amely tárolja, mivel ebben az alkalmazásban a kulcs logika, hogy a futó számát. Ha ez egy valódi alkalmazás, és az eredmény hiánya jelölt hiba, érdemes jelző esemény.
+1. Nyissa meg a Stateful1.cs fájlt, és keresse meg a `myDictionary.TryGetValueAsync` hívja meg a `RunAsync` metódust. Láthatja, hogy a metódus visszatérése egy `result` a számláló a jelenlegi érték, amely tárolja, mivel ebben az alkalmazásban a kulcs logika, hogy a futó számát. Ha az alkalmazás egy valódi alkalmazás volt, és az eredmény hiánya jelölt hiba, érdemes jelző esemény.
 1. A health eseményt, amikor eredmény hiánya jelenti. a hiba jelentéséhez, adja hozzá az alábbi lépéseket.
    
     a. Adja hozzá a `System.Fabric.Health` névtér a Stateful1.cs fájlt.
@@ -124,7 +124,7 @@ A Visual Studio projektsablonjai a Service Fabric mintakód tartalmazza. A köve
     }
     ```
    Ez a kód akkor következik be, a jelentés minden alkalommal, amikor `RunAsync` hajt végre. A módosítás elvégzése után nyomja le az **F5** az alkalmazás futtatásához.
-1. Miután az alkalmazás fut, nyissa meg a Service Fabric Explorer az alkalmazás állapotának ellenőrzéséhez. Ezúttal a Service Fabric Explorer mutatja, hogy az alkalmazás állapota nem megfelelő. Ez a következő jelentett a kódban, hogy korábban hozzáadott hiba miatt.
+1. Miután az alkalmazás fut, nyissa meg a Service Fabric Explorer az alkalmazás állapotának ellenőrzéséhez. Ezúttal a Service Fabric Explorer mutatja, hogy az alkalmazás állapota nem megfelelő. Az alkalmazás látható nem megfelelő, mert a hiba, amely nem jelentett, a kódot, amely korábban hozzáadott.
    
     ![Sérült alkalmazás a Service Fabric Explorerben](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
 1. Ha az elsődleges replikán a Service Fabric Explorert a fanézetben megtekintheti, látni fogja, hogy **állapot** azt jelzi, hogy egy hiba túl. A Service Fabric Explorer is hozzáadott egészségügyi jelentés részleteit jeleníti meg a `HealthInformation` paraméter a kódban. Láthatja, hogy ugyanazt a rendszerállapot-jelentések a PowerShell és az Azure Portalon.

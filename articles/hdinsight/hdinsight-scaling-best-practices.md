@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.openlocfilehash: 622261d0f7e602635aa6a638357278a9c63a6ecd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.date: 06/03/2019
+ms.openlocfilehash: eb68421c4f62d94eedf266a0c34a0e276eacc4a6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990531"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479278"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight-fürtök méretezése
 
@@ -58,13 +58,12 @@ Ne kelljen a futó feladatok során egy vertikális leskálázási művelet sike
 1. A feladatok manuálisan végén.
 1. Küldje el újra a feladatok, miután a skálázási művelet lezárult.
 
-Függőben lévő és a futó feladatok megtekintéséhez használhatja a YARN **ResourceManager felhasználói felülete**, ezeket a lépéseket követve:
+Függőben lévő és a futó feladatok megtekintéséhez használhatja a YARN **erőforrás-kezelő felhasználói felületén**, ezeket a lépéseket követve:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Lépjen a bal oldali **minden szolgáltatás** > **Analytics** > **HDInsight-fürtök**, majd válassza ki a fürtöt.
-3. Lépjen a fő nézetből **fürt irányítópultjai** > **otthoni Ambari**. Adja meg a fürt hitelesítő adatait.
-4. Az Ambari felhasználói felületén, válassza ki **YARN** a bal oldali menüben a szolgáltatások listájában.  
-5. A YARN lapon válassza ki a **Gyorshivatkozások** és az aktív átjárócsomóponthoz fölé, majd válassza ki **ResourceManager felhasználói felülete**.
+1. Az a [az Azure portal](https://portal.azure.com/), válassza ki a fürtöt.  Lásd: [fürtök listázása és megjelenítése](./hdinsight-administer-use-portal-linux.md#showClusters) vonatkozó utasításokat. A fürt egy portál új lapon nyílik meg.
+2. Lépjen a fő nézetből **fürt irányítópultjai** > **otthoni Ambari**. Adja meg a fürt hitelesítő adatait.
+3. Az Ambari felhasználói felületén, válassza ki **YARN** a bal oldali menüben a szolgáltatások listájában.  
+4. A YARN lapon válassza ki a **Gyorshivatkozások** és az aktív átjárócsomóponthoz fölé, majd válassza ki **ResourceManager felhasználói felülete**.
 
     ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
 

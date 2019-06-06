@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 9385ed5127b8cc1aaf84c887b652fd8970883ba6
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: b881a645a42d92407aa39d0f4896629f799e6928
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65524028"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66426923"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Az Azure Search-alkalmazás javaslata vagy az automatikus kiegészítés hozzáadása
 
@@ -70,7 +70,7 @@ Nyissa meg a **Index.cshtml** fájlt a mappába \Views\Home a kód megjeleníté
 <input class="searchBox" type="text" id="example1a" placeholder="search">
 ```
 
-Ez a Stílusbeállítások, JavaScript és a helyőrző szöveg hivatkozik azonosító osztályát az egyszerű bemeneti szövegmezőt.  A beágyazott JavaScript a Magic Quadrant van.
+Ebben a példában egy egyszerű bemeneti szövegmezőt egy olyan osztállyal a Stílusbeállítások, JavaScript és a helyőrző szöveg hivatkozik azonosító.  A beágyazott JavaScript a Magic Quadrant van.
 
 A C# nyelven írt mintát Index.cshtml JavaScriptet használ kihasználhatja a [jQuery az automatikus kiegészítés felhasználói felületi kódtár](https://jqueryui.com/autocomplete/). Ebben a könyvtárban azáltal, hogy az MVC-vezérlő asynchronní volání kanálu javaslatokat beolvasni az automatikus kiegészítés élmény hozzáadja a keresőmezőbe. A JavaScript nyelvű IndexJavaScript.cshtml szerepel. Ez magában foglalja az alábbi parancsfájlt a keresősávba, csakúgy, mint az Azure Search REST API-hívások.
 
@@ -95,7 +95,7 @@ A fenti kód futtat a böngészőben a "example1a" beviteli mezőt a jQuery felh
 source: "/home/suggest?highlights=false&fuzzy=false&",
 ```
 
-A fenti vonal jelzi a jQuery felhasználói felület automatikus kiegészítés funkció hová a keresőmező alatt megjelenítendő elemek listájának beolvasása. Mivel ennek MVC-projektben, a javaslat függvény meghívja a HomeController.cs, amely az adatszolgáltató (javaslat a következő szakaszban többet) lekérdezési javaslatok logikáját tartalmazza. Ez a funkció is továbbítja néhány paramétert vezérlő emeli ki, az intelligens megfelelő és az időszakot. Az automatikus kiegészítés JavaScript API hozzáadása a kifejezés paramétert.
+A fenti vonal jelzi a jQuery felhasználói felület automatikus kiegészítés funkció hová a keresőmező alatt megjelenítendő elemek listájának beolvasása. Mivel ez a projekt MVC-projektben, a javaslat függvény meghívja a HomeController.cs, amely az adatszolgáltató (javaslat a következő szakaszban többet) lekérdezési javaslatok logikáját tartalmazza. Ez a funkció is továbbítja néhány paramétert vezérlő emeli ki, az intelligens megfelelő és az időszakot. Az automatikus kiegészítés JavaScript API hozzáadása a kifejezés paramétert.
 
 ### <a name="extending-the-sample-to-support-fuzzy-matching"></a>A minta kibővítése az intelligens egyeztetés támogatása érdekében
 
@@ -162,7 +162,7 @@ Most, hogy áttekintette a JavaScript-kódot a weblap, nézzük meg a C# kiszolg
 
 Nyissa meg a **HomeController.cs** fájlt a tartományvezérlők a könyvtárban. 
 
-Először is Észreveheti a nevű osztály tetején módszer `InitSearch`. Ez hitelesített HTTP-indexügyfelet hoz létre az Azure Search szolgáltatáshoz. További információkért lásd: [használata az Azure Search .NET-alkalmazásból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+Először is Észreveheti a nevű osztály tetején módszer `InitSearch`. Ezzel a módszerrel hoz létre a HTTP-index hitelesített ügyfelek az Azure Search szolgáltatásba. További információkért lásd: [használata az Azure Search .NET-alkalmazásból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
 41. sorban figyelje meg, hogy a javaslat funkciót. -Alapú, a [DocumentsOperationsExtensions.Suggest metódus](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
 
@@ -271,7 +271,7 @@ $(function () {
 });
 ```
 
-Ha összehasonlítja ezt a kezdőlapvezérlőt meghívó fenti példával, több hasonlóságot láthat.  Az automatikus kiegészítés konfigurációja `minLength` és `position` ugyanazok, pontosan. 
+Ha összehasonlítjuk az ebben a példában a fenti példa, amely a kezdőlapvezérlő meghívja a, több Hasonlóságok láthatja.  Az automatikus kiegészítés konfigurációja `minLength` és `position` ugyanazok, pontosan. 
 
 Itt a forrás a jelentős különbség. Helyett a javasolt módszert hívja meg a kezdőkönyvtár-vezérlőben levő, a REST-kérés jön létre a JavaScript-függvény, és Ajax végre. A választ a rendszer ezután „sikeresen” feldolgozza, és a forrásként használja.
 
@@ -302,7 +302,7 @@ Mostanáig az üzemeltetett NYCJobs bemutató index már használja. Ha azt szer
 
 1. A DataLoader mappában NYCJobs mintakódot, nyissa meg a **DataLoader.sln** a Visual Studióban.
 
-1. Adja hozzá az Azure Search szolgáltatás azon kapcsolatadatokkal. Nyissa meg az App.config fájlt a DataLoader projektben, és módosítsa a TargetSearchServiceName és a TargetSearchServiceApiKey appSettings elemeket az Azure Search szolgáltatásnak és az Azure Search szolgáltatás API-kulcsának megfelelően. Ezek az Azure Portalon találhatók meg.
+1. Adja hozzá az Azure Search szolgáltatás azon kapcsolatadatokkal. Nyissa meg az App.config fájlt a DataLoader projektben, és módosítsa a TargetSearchServiceName és a TargetSearchServiceApiKey appSettings elemeket az Azure Search szolgáltatásnak és az Azure Search szolgáltatás API-kulcsának megfelelően. Ez az információ az Azure Portalon található.
 
 1. Nyomja le az F5 billentyűt az alkalmazás két indexek létrehozása, és importálja a NYCJob mintaadatokat indítása.
 

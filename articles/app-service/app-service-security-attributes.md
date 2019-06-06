@@ -9,12 +9,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1d7ab8008e8fbdb5f851f158d14f62bdea803f11
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: e38e1479c1e094f691e8f22f0a48f9342cae5cf3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001701"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475075"
 ---
 # <a name="security-attributes-for-azure-app-service"></a>Az Azure App Service biztonsági attribútumok
 
@@ -51,7 +51,7 @@ Ez a cikk a gyakori biztonsági attribútumok az Azure App Service beépített d
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hitelesítés| Igen | Ügyfeleink App Service-ben, amely automatikusan integrálható alkalmazásokat hozhat létre [Azure Active Directory (Azure AD)](../active-directory/index.md) és más OAuth kompatibilis identitásszolgáltatókkal; lásd: [hitelesítés és engedélyezés Az Azure App Service](overview-authentication-authorization.md). Felügyeleti hozzáférés az App Service-eszközöket minden hozzáférés hitelesítése az Azure AD egyszerű és Azure Resource Manager RBAC-szerepkörök kombinációja vezérlik majd. |
+| Hitelesítés| Igen | Ügyfeleink App Service-ben, amely automatikusan integrálható alkalmazásokat hozhat létre [Azure Active Directory (Azure AD)](../active-directory/index.yml) és más OAuth kompatibilis identitásszolgáltatókkal; lásd: [hitelesítés és engedélyezés Az Azure App Service](overview-authentication-authorization.md). Felügyeleti hozzáférés az App Service-eszközöket minden hozzáférés hitelesítése az Azure AD egyszerű és Azure Resource Manager RBAC-szerepkörök kombinációja vezérlik majd. |
 | Engedélyezés| Igen | Felügyeleti hozzáférés az App Service-eszközöket minden hozzáférés hitelesítése az Azure AD egyszerű és Azure Resource Manager RBAC-szerepkörök kombinációja vezérlik majd.  |
 
 

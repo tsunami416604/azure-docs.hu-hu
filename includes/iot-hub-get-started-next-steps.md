@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 9f7f71f47fadd7cfe2364acf1a8505e1967a78e5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: fc4b613eb9e77acef4568ef93b7606fb43568f82
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146433"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476013"
 ---
 Ismerkedés az Azure IoT Hub és az összes kiterjesztett IoT-forgatókönyvek megismerése a folytatáshoz tekintse meg a következőket:
 
@@ -25,7 +25,7 @@ Ismerkedés az Azure IoT Hub és az összes kiterjesztett IoT-forgatókönyvek m
 
 - [Az IoT Hub valós idejű érzékelői adatainak megjelenítése a Power BI használatával](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)
 
-- [Az IoT Hub valós idejű érzékelői adatainak megjelenítése az Azure App Service Web Apps funkciójával](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
+- [Az IoT hub valós idejű érzékelői adatainak megjelenítése a web app használatával](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
 
 - [Időjárás-előrejelzés az IoT Hub érzékelői adataival az Azure Machine Learningben](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)
 

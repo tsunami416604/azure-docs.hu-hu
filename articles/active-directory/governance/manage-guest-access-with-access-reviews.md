@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc5bcdbbe821008f74e85a91889044c8975ce93
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7c896356b67de185c55396e98aa6bb2e61dd004d
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113261"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472914"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -35,13 +35,13 @@ Is könnyedén biztosíthatja, hogy vendég felhasználók rendelkeznek-e megfel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure AD Premium P2
+- Prémium szintű Azure AD P2
 
 További információkért lásd: [mely felhasználók rendelkeznie kell licencekkel?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Hozzon létre, és a vendégek hozzáférési felülvizsgálat végrehajtása
 
-Először egy globális rendszergazdai vagy a felhasználó-rendszergazdaként, lépjen a [hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) annak biztosításához, hogy a hozzáférési felülvizsgálatok készen áll a szervezet számára.
+Először egy globális rendszergazdai vagy a felhasználó-rendszergazdaként, lépjen a [Identitáskezelést oldal](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) annak biztosításához, hogy a hozzáférési felülvizsgálatok készen áll a szervezet számára.
 
 Az Azure AD lehetővé teszi, hogy számos forgatókönyv esetében a vendégfelhasználók áttekintése.
 

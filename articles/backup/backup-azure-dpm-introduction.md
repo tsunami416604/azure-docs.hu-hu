@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: f119d128b35b93d7e18d514c09d187689d8dffe9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 82e4278a130bb67a1af61ead981259d7bb4e1aa7
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111274"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427435"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Az Azure-ba, a System Center DPM-mel biztonsági másolatot előkészítése
 
@@ -54,6 +54,7 @@ Támogatott fájltípusok | Az ilyen biztonsági másolat készíthető a Azure 
 Nem támogatott fájltípusok | A kis-és nagybetűket fájlrendszerek; kiszolgálók a rögzített hivatkozások (kimaradnak); újraelemzési pontok (kimaradnak); titkosított és tömörített (kimaradnak); titkosított és ritka (kimaradnak); Tömörített stream; elemezni az adatfolyamot.
 Helyi tárhely | Egyes gépek biztonsági helyi szabad tárhely, amely az adatokat, amelyek készül biztonsági másolat méretének legalább 5 %-át kell rendelkeznie. Például 100 GB adat biztonsági mentésével legalább 5 GB szabad hely az ideiglenes hely szükséges.
 Tároló tárolási | Nem a biztonsági másolatot készíthet az Azure Backup-tároló adatok mennyisége korlátozott, de egy adatforráshoz (például egy virtuális gép vagy adatbázis) mérete nem haladhatja meg a 54400 GB.
+Azure ExpressRoute | Ha Azure ExpressRoute privát vagy a Microsoft társviszony-létesítés van beállítva, akkor adatainak biztonsági mentése az Azure-ba nem használható.<br/><br/> Ha Azure ExpressRoute nyilvános Társviszony-létesítés van konfigurálva, használat adatainak biztonsági mentése az Azure-bA.<br/><br/> **Megjegyzés:** Nyilvános társviszony-létesítés esetében új kapcsolatcsoportot elavult.
 Az Azure Backup ügynöke | Ha a DPM a System Center 2012 SP1 rendszeren fut, telepítse a 2-es vagy újabb kumulatív DPM SP1. Ez az ügynök telepítéséhez szükséges.<br/><br/> Ez a cikk ismerteti, hogyan helyezhet üzembe az Azure Backup ügynököt, más néven a Microsoft Azure Recovery Service-(MARS-) ügynök legújabb verzióját. Ha egy korábbi verziója telepítve van, győződjön meg arról, hogy a biztonsági mentés a várt módon működik a legújabb verzióra frissíteni.
 
 Mielőtt elkezdené, egy Azure-fiókra van szüksége az Azure Backup szolgáltatás engedélyezve van. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információ [Azure Backup árairól](https://azure.microsoft.com/pricing/details/backup/).
@@ -164,7 +165,7 @@ Minden olyan gép, amely biztonsági másolatot készít az Azure Backup a Backu
     - Adjon meg egy legalább 16 karakter.
     - Mentse a fájlt egy biztonságos helyre szükség esetén a helyreállítás.
 
-    ![Titkosítás](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Encryption.png)
+    ![Encryption](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Encryption.png)
 
     > [!WARNING]
     > A titkosítási jelszó a saját és a Microsoft nem rendelkezik, betekintést.

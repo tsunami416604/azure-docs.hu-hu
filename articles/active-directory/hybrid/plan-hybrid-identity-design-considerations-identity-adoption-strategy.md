@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39495e11e42853bf3cf9481475d970667c56223f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: c55dc0cbc175542d0b208bbe72566a0adb55a371
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919103"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496728"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>A hibrid identitás bevezetési stratégia kidolgozása
 Ebben a feladatban a hibrid identitáskezelési megoldás, amely aktorcsoportot tárgyalt, az üzleti igényeknek hibrid identitás bevezetési stratégiája határozza meg:
@@ -63,7 +63,7 @@ A használt stratégia fogja diktálni a felhasználói bejelentkezési élmény
 
 **A tartomány tagja, és privát hálózati alkalmazások**:
 
-|  | Szinkronizált identitás | Federated Identity |
+|  | Szinkronizált identitás | Összevont identitás |
 | --- | --- | --- |
 | Webböngészők |Űrlapalapú hitelesítés |egyszeri bejelentkezés, egyes esetekben szükséges adja meg a szervezet azonosítója |
 | Outlook |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
@@ -73,12 +73,12 @@ A használt stratégia fogja diktálni a felhasználói bejelentkezési élmény
 
 **Külső vagy nem megbízható forrásból**:
 
-|  | Szinkronizált identitás | Federated Identity |
+|  | Szinkronizált identitás | Összevont identitás |
 | --- | --- | --- |
 | Webböngészők |Űrlapalapú hitelesítés |Űrlapalapú hitelesítés |
 | Az Outlook, a Skype for Business (Lync), a OneDrive vállalati verzióba, Office-előfizetés |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
 | Exchange ActiveSync |Hitelesítő adatok kérése |egyszeri bejelentkezés Lync, a rendszer hitelesítő adatokat az Exchange-hez |
-| Mobilalkalmazások |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
+| Mobilalkalmazásokban |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
 
 Ha eldöntötte, hogy a külső identitásszolgáltató vagy van folyamatban az Azure AD összevonási használata egy 1. feladat származó, vegye figyelembe a következő támogatott funkciók szeretné:
 
@@ -199,8 +199,7 @@ Bár előfordulhat, hogy kiegyenlítése után a megoldás a stratégia, akkor t
 | A helyszíni AD |Multi-Factor Authentication-kiszolgáló |
 
 > [!NOTE]
-> Gondoskodnia kell arról, hogy a multi-factor authentication szolgáltatás tervezési beállítás, amely a kijelölt támogatja-e a funkciókat, a Tervező szükséges.  További információk [válassza ki a legmegfelelőbb többtényezős biztonsági megoldást,](../authentication/concept-mfa-whichversion.md#what-am-i-trying-to-secure).
-> 
+> Gondoskodnia kell arról, hogy a multi-factor authentication szolgáltatás tervezési beállítás, amely a kijelölt támogatja-e a funkciókat, a Tervező szükséges.  További információk [válassza ki a legmegfelelőbb többtényezős biztonsági megoldást,](../authentication/concept-mfa-howitworks.md).
 > 
 
 ## <a name="multi-factor-auth-provider"></a>Multi-factor Auth szolgáltatóval

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 374fd700f3ac99c00b922f4fca330fee9acfd704
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 0e592c03da222e5265ed53aab8ef73f3b477f33a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955748"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475867"
 ---
 # <a name="security-in-azure-app-service"></a>Biztonság az Azure App Service-ben
 
@@ -113,7 +113,6 @@ Azt is megteheti, integrálható az App Service-alkalmazás az [Azure Key Vault]
 
 Az alábbiakat kivéve a **elkülönített** tarifacsomag, minden szinten az alkalmazások futtatása az App Service-ben a megosztott hálózati infrastruktúrán. Ha például a nyilvános IP-címek és terheléselosztók előtérbeli más bérlők felhasználóival vannak megosztva. A **elkülönített** szint biztosít teljes körű hálózatelkülönítés az alkalmazásokat egy dedikált futtatásával [App Service Environment-környezet](environment/intro.md). App Service-környezet fut, a saját példányát [Azure Virtual Network](/azure/virtual-network/). Lehetővé teszi, hogy: 
 
-- A hálózati hozzáférés korlátozása [hálózati biztonsági csoportok](../virtual-network/virtual-networks-dmz-nsg.md). 
 - Dedikált előtér-szolgálja ki a segítségével egy dedikált nyilvános végpontot.
 - Belső alkalmazás használatával egy belső terheléselosztó (ILB), amely lehetővé teszi a hozzáférés csak az Azure virtuális hálózaton belül szolgálnak. Az ILB a privát alhálózatra, így az alkalmazások teljes elkülönítés az internetről származó IP-címmel rendelkezik.
 - [Használja az ILB mögötti webalkalmazási tűzfal (WAF)](environment/integrate-with-application-gateway.md). A WAF a nyilvánosan elérhető alkalmazások, például DDoS elleni védelem, URI szűrési és SQL-injektálás megelőzési nagyvállalati szintű védelmet biztosít.

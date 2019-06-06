@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 47b9ede2d529f78b14c21f53c6cd18ed691a3df3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 81a5f99b0babd79af0034f684c45bfcf1bb25bd8
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768155"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66425620"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolási tevékenységek teljesítményéhez és finomhangolási útmutató
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -79,7 +79,7 @@ Tudnivalók:
 
 ## <a name="data-integration-units"></a>Adategységek-integráció
 
-A **adatok integrációs egység (DIU)** (korábbi nevén a Felhőbeli adatáthelyezési egység vagy DMU) egy mérték, amely a Data Factory egy egységet (a Processzor, memória és a hálózatierőforrás-lefoglalás kombinációjával) hatékonyságát. **Csak érvényes DIU [Azure integrációs modul](concepts-integration-runtime.md#azure-integration-runtime)**, de nem [helyi Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime).
+A **adatok integrációs egység (DIU)** (korábbi nevén a Felhőbeli adatáthelyezési egység vagy DMU) egy mérték, amely a Data Factory egy egységet (a Processzor, memória és a hálózatierőforrás-lefoglalás kombinációjával) hatékonyságát. **Csak érvényes DIU [Azure integrációs modul](concepts-integration-runtime.md#azure-integration-runtime)** , de nem [helyi Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
 **A minimális integrációs adategységek megjelenő új másolási tevékenység futtatási két.** Ha nincs megadva, a következő táblázat felsorolja a különböző másolási forgatókönyvek esetén a használt alapértelmezett DIUs:
 
@@ -93,7 +93,7 @@ Ez az alapértelmezett felülbírálásához, adjon meg értéket a **dataIntegr
 Láthatja, hogy a ténylegesen felhasznált adatok integrációs egységek minden egyes példányra, futtassa a másolási tevékenység kimenetét, ha egy tevékenységet a figyelést. A részletek [másolása figyelését](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> DIUs beállításaként **nagyobb, mint 4** csak akkor, ha jelenleg működik, **több fájlt másol a Blob storage és Data Lake Storage/Amazon S3-/ cloud FTP/felhőbeli SFTP-bármely más felhőalapú adatokat tárolja.**.
+> DIUs beállításaként **nagyobb, mint 4** jelenleg érvényes csak akkor, ha Ön **több fájlok másolása az Azure Storage és Data Lake Storage/Amazon S3/Google Cloud Storage/felhőbeli FTP/felhőbeli SFTP bármely más felhőalapú adattárak**.
 >
 
 **Példa**

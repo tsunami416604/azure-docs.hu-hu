@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 8b1a9b3dee999a35950559a049230f7fdbbc47b6
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 03a6ea45577b4a4bf57501b1834f91438feb4e2b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399192"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477860"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Az Azure Monitor riasztások hibaelhárítása  
 
 Ez a cikk bemutatja, hogyan, előfordulhat, hogy amikor a beállítása az Azure Monitor riasztások leggyakoribb hibák elhárításához. Funkció vagy naplóriasztások konfigurációját a gyakori problémák megoldását is tartalmazza. 
 
-Az előfizetési időszak *naplóriasztások* ismerteti, hogy a napló lekérdezés alapján fire riasztások egy [Azure Log Analytics-munkaterület](../learn/tutorial-viewdata.md) vagy a [Azure Application Insights](../../azure-monitor/app/analytics.md). További információ funkciót, terminológia és-típusok a [Naplóriasztások az Azure Monitor](../platform/alerts-unified-log.md).
+Az előfizetési időszak *naplóriasztások* ismertetik, hogy a napló lekérdezés alapján fire szabályok egy [Azure Log Analytics-munkaterület](../learn/tutorial-viewdata.md) vagy a [Azure Application Insights](../../azure-monitor/app/analytics.md). További információ funkciót, terminológia és-típusok a [Naplóriasztások az Azure Monitor](../platform/alerts-unified-log.md).
 
 > [!NOTE]
 > Ez a cikk nem tekinti a esetben, ha az Azure portal megjeleníti a riasztási szabály elindítva, és értesítést nem társított műveletcsoport végzi. Ezekben az esetekben a részleteket lásd: [létrehozása és kezelése az Azure Portalon Műveletcsoportok](../platform/action-groups.md).

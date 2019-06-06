@@ -12,28 +12,22 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 7/10/2018
+ms.date: 6/05/2019
 ms.author: aljo
-ms.openlocfilehash: e94280f9df1d4ac59856a73f6f6c2b7f7a0b9cc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a75b02b8173507a28204a3ec2030ce7ed9838495
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726587"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729865"
 ---
 # <a name="production-readiness-checklist"></a>Termelési készenlét ellenőrzőlistája
 
 Az alkalmazás és a fürt készen áll az éles forgalmat is? Futtathatja és tesztelheti az alkalmazások és a fürt nem feltétlenül jelenti azt, készen áll, éles környezetben. Tartsa meg az alkalmazás és a fürt zökkenőmentes végig a következő címen. Erősen ajánlott ezeket kell ellenőrizni összes elemet. Természetesen lehet váltani, használja az alternatív megoldások egy adott vonal elem (például a saját diagnosztikai keretrendszer).
 
 
-## <a name="pre-requisites-for-production"></a>Éles előfeltételei
-1. [Az Azure Service Fabric ajánlott biztonsági eljárások](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) vannak: 
-1. X.509-tanúsítványok használata
-1. Biztonsági szabályzatok beállítása
-1. Az SSL konfigurálása az Azure Service Fabric
-1. Az Azure Service Fabric hálózati elkülönítési és biztonsági használata
-1. A biztonság az Azure Key Vault beállítása
-1. A felhasználók szerepkörökhöz Microsoft.Network/loadBalancersAssign
+## <a name="prerequisites-for-production"></a>Éles előfeltételei
+1. Azure Service Fabric – ajánlott eljárások: [Alkalmazás-tervezés](./service-fabric-best-practices-applications.md), [biztonsági](./service-fabric-best-practices-security.md), [hálózatkezelés](./service-fabric-best-practices-networking.md), [kapacitástervezés és skálázás](./service-fabric-best-practices-capacity-scaling.md), [infrastruktúra mint kód](./service-fabric-best-practices-infrastructure-as-code.md), és [figyelési és diagnosztikai](./service-fabric-best-practices-monitoring.md). 
 1. A Reliable Actors biztonsági konfiguráció megvalósításához, ha az Actors programozási modell használatával
 1. 20-nál több maggal vagy a 10 csomópont-fürtöket hozzon létre egy dedikált elsődleges csomóponttípus-szolgáltatások. Adjon hozzá [elhelyezési korlátozások](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) lefoglalni az elsődleges csomóponttípushoz,-szolgáltatások.
 1. Egy D2v2 vagy magasabb szintű Termékváltozatot használja az elsődleges csomóponttípushoz. Javasoljuk, hogy válasszon ki egy Termékváltozat legalább 50 GB merevlemez-kapacitással rendelkező.

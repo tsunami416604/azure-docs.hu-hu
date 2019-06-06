@@ -4,14 +4,14 @@ description: Azure Resource Manager és az Azure PowerShell használatával hely
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5203519b1553de54d4e3cd1fafe6fb3d1c18ebd6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 63d729f19b0ef20d0e7a716d6857b4627095856b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779959"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476983"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel
 
@@ -35,6 +35,8 @@ Központi telepítése egy **előfizetés**, használjon [New-AzDeployment](/pow
 New-AzDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
+Felügyeleti csoportok üzemelő példányai jelenleg csak a REST API-n keresztül támogatottak. Lásd: [erőforrások üzembe helyezése Resource Manager-sablonok és a Resource Manager REST API](resource-group-template-deploy-rest.md).
+
 Ebben a cikkben szereplő példák erőforráscsoportok üzemelő példányainak használja. Előfizetések üzemelő példányai kapcsolatos további információkért lásd: [erőforráscsoport és erőforrások létrehozásához az előfizetés szintjén](deploy-to-subscription.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -44,7 +46,7 @@ Szüksége lesz egy sablon használatával helyez üzembe. Ha még nem rendelkez
 Sablonok üzembe helyezése az Azure Cloud shellt használja, ha az Azure PowerShell telepítése és csatlakozás az Azure szüksége:
 
 - **Azure PowerShell-parancsmagjainak telepítése a helyi számítógépen.** További információért lásd [az Azure PowerShell használatának első lépéseit](/powershell/azure/get-started-azureps).
-- **Csatlakozás az Azure használatával [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)**. Ha több Azure-előfizetéssel rendelkezik, szükség lehet futtatni [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). További információkért lásd: [használata több Azure-előfizetéssel](/powershell/azure/manage-subscriptions-azureps).
+- **Csatlakozás az Azure használatával [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)** . Ha több Azure-előfizetéssel rendelkezik, szükség lehet futtatni [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). További információkért lásd: [használata több Azure-előfizetéssel](/powershell/azure/manage-subscriptions-azureps).
 
 ## <a name="deploy-local-template"></a>Helyi sablon üzembe helyezése
 

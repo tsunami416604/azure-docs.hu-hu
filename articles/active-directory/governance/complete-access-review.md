@@ -16,12 +16,12 @@ ms.date: 05/22/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae204ec1789f227150adc560d4a292404d23b7e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ec3909ffbb624284f999360140b7454098643062
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113317"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473368"
 ---
 # <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>A csoportok a hozzáférési felülvizsgálat befejezése vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -31,7 +31,7 @@ Rendszergazdaként Ön [csoportokat vagy alkalmazásokat a hozzáférési felül
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure AD Premium P2
+- Prémium szintű Azure AD P2
 - Globális rendszergazda, felhasználó rendszergazdai, biztonsági rendszergazdai vagy biztonsági olvasó
 
 További információkért lásd: [mely felhasználók rendelkeznie kell licencekkel?](access-reviews-overview.md#which-users-must-have-licenses).
@@ -40,7 +40,7 @@ További információkért lásd: [mely felhasználók rendelkeznie kell licence
 
 Nyomon követheti a folyamat állapotát, a felülvizsgálatot, végezze el az ellenőrzéseket.
 
-1. Jelentkezzen be az Azure Portalon, és nyissa meg a [hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+1. Jelentkezzen be az Azure Portalon, és nyissa meg a [Identitáskezelést oldal](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
 1. A bal oldali menüben kattintson a **hozzáférési felülvizsgálatokkal**.
 

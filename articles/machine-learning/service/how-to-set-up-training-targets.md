@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 59a35e44c78ea86f3b02eb4ad99dc1fd8fcb4870
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 054aaf6f607bba216f979665a0b0672ec253ba7f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236624"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475980"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak 
 
@@ -31,22 +31,22 @@ Ebben a cikkben megismerheti, hogyan használható a különböző számítási 
 
 
 >[!NOTE]
-> Ebben a cikkben kód az Azure Machine Learning SDK-val 1.0.6-os lett tesztelve.
+> Ebben a cikkben kód az Azure Machine Learning SDK verziója 1.0.39 lett tesztelve.
 
 ## <a name="compute-targets-for-training"></a>Számítási céljainak képzéshez
 
 Az Azure Machine Learning szolgáltatás különböző támogatással rendelkezik a különböző számítási célnak között. Egy tipikus modell fejlesztési életciklus kisebb mennyiségű adatot a dev/Kísérletezési kezdődik. Ezen a ponton használatát javasoljuk a helyi környezetben. Például a helyi számítógépen vagy egy felhőalapú virtuális Gépen. Vertikális felskálázás a tanítási a nagyobb adatkészletek, vagy hajtsa végre az elosztott betanítás, egy vagy több node fürtöt létrehozni, hogy az automatikus skálázást alkalmat futtató minden elküldésekor a az Azure Machine Learning Compute használatát javasoljuk. Bár a különböző forgatókönyvekben eltérőek lehetnek az alábbiakban ismertetett támogatási is hozzáadhat a saját számítási erőforrás:
 
 
-|Számítási célt képzéshez| GPU-gyorsítás | Automatikus<br/> hiperparaméter finomhangolása | Automatikus<br/> gépi tanulás | Az Azure Machine Learning-folyamatokat |
+|Képzési &nbsp;célok| GPU-támogatással |Automatizált gépi tanulás | Gépi tanulási folyamatok | Vizuális felület
 |----|:----:|:----:|:----:|:----:|
-|[Helyi számítógép](#local)| Talán | &nbsp; | ✓ | &nbsp; |
-|[Az Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
-|[Távoli virtuális Gépen](#vm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
-|[Az Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Az Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Helyi számítógép](#local)| Talán | igen | &nbsp; | &nbsp; |
+|[Az Azure Machine Learning Compute](#amlcompute)| igen | Igen & <br/>hiperparaméter&nbsp;hangolása | igen | igen |
+|[Távoli virtuális Gépen](#vm) |igen | Igen & <br/>hiperparaméter finomhangolása | igen | &nbsp; |
+|[Azure&nbsp;Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | igen | igen | &nbsp; |
+|[Az Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | igen | &nbsp; |
+|[Az Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | igen | &nbsp; |
+|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | igen | &nbsp; |
 
 **Célok több betanítási feladatokhoz felhasználható számítási**. Például ha csatlakoztat egy távoli virtuális Gépen a munkaterülethez, felhasználhatja azt több feladat esetében.
 

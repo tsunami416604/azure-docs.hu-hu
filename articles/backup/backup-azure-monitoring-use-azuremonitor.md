@@ -7,15 +7,15 @@ manager: shivamg
 keywords: A log Analytics; Az Azure Backup; Riasztások; Diagnosztikai beállítások; Műveletcsoportok
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 94fde7714f3efe0a460983966923071bce1afcc6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2d7c158b32c15fb8be153511136eafb73147afa6
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190507"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734857"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Az Azure Monitor használatával nagy mennyiségű figyelése
 
@@ -46,7 +46,7 @@ Kiválaszthatja egy LA munkaterület célként egy másik előfizetésből. *A a
 
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>A Log Analytics-munkaterületet a megoldás üzembe helyezése
 
-Amint az adatok LA munkaterületen belül [github-sablon üzembe helyezése](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) alakzatot LA adatok vizualizálásához. Ellenőrizze, hogy megkapja az ugyanabban az erőforráscsoportban, munkaterület neve, és munkaterület helye megfelelően azonosíthatja a munkaterületet, és ez a sablon telepíthető.
+Amint az adatok LA munkaterületen belül [GitHub-sablon üzembe helyezése](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) alakzatot LA adatok vizualizálásához. Ellenőrizze, hogy megkapja az ugyanabban az erőforráscsoportban, munkaterület neve, és munkaterület helye megfelelően azonosíthatja a munkaterületet, és ez a sablon telepíthető.
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>Log Analytics (LA) használatával az Azure Backup-adatok megtekintése
 
@@ -242,13 +242,13 @@ A alkalmazni a szűrőket, győződjön meg arról, hogy azért küldtük Önnek
 
 ![Az Azure virtuális gép biztonsági mentéseinek tevékenységeket tartalmazó naplók](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-Kattintson a "JSON" szegmens további részletekért és a másolás-beillesztés azt egy szövegszerkesztőben az alakzatot tekinti meg. Ekkor megjelenik a tároló részleteit, és az elem, amely kiváltotta a tevékenység naplózása, a biztonsági másolati elem.
+Kattintson a művelet nevét jeleníti meg a műveletet, és a fontos adatait.
 
-Kattintson a "Tevékenységnapló-riasztás hozzáadása" az összes napló riasztásokat generálni.
+![Új riasztási szabály](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-Kattintson a "Hozzáadás tevékenységnapló-riasztás" fent látható, és megnyílik a riasztás létrehozásakor képernyő, amely hasonló riasztás létrehozása képernyő [fent ismertetett](#create-alerts-using-log-analytics).
+Kattintson a **Új riasztási szabály** megnyitásához a **létrehozás szabály** képernyő, itt hozhat létre riasztási leírt lépéseket követve [cikk](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
 
-Az RS vault Íme az erőforrást, és ezért meg kell ismételni ugyanaz a művelet minden, a használni kívánt értesítési keresztül tevékenységeket tartalmazó naplók tárolók. A feltétel nem fog minden olyan küszöbértéket, időszak, gyakorisága, mivel ez az esemény-alapú riasztás. Amint a megfelelő tevékenységnapló jön létre, a riasztás aktiválódik.
+Itt az erőforrás a magát a Recovery Services-tárolót, és ezért meg kell ismételni ugyanaz a művelet minden, a használni kívánt értesítési keresztül tevékenységeket tartalmazó naplók tárolók. A feltétel nem fog minden olyan küszöbértéket, időszak, gyakorisága, mivel ez az esemény-alapú riasztás. Amint a megfelelő tevékenységnapló jön létre, a riasztás aktiválódik.
 
 ## <a name="recommendation"></a>Ajánlás
 

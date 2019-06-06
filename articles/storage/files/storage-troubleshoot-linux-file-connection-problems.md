@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 06b3a5110bfdea2a2067979c806701011dc16f3d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0a6b48dbba232c06945b00d5107581d8d0c017b0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987706"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472413"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files-problémák hibaelhárítása
 
@@ -110,14 +110,13 @@ A titkosítási szolgáltatás az SMB 3.0-s Linux rendszeren a 4.11 kernel jelen
 
 Ha a Linuxos SMB-ügyfél nem támogatja a titkosítást, csatlakoztatási Azure fájlok, az az Azure Linux VM, amely ugyanabban az adatközpontban, mivel a fájlmegosztás SMB 2.1 használatával. Ellenőrizze, hogy a [biztonságos átvitelre van szükség]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás le van tiltva, a tárfiókban. 
 
-<a id="accessdeniedportal"></a>
-## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>"Hozzáférés megtagadva" hiba történik az Azure-fájlmegosztások a portálon
+<a id="authorizationfailureportal"></a>
+## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>"Engedélyezési hiba" hiba történik az Azure-fájlmegosztások a portálon
 
 Ha a felhasználó Azure-fájlmegosztások a portálon, a következő hiba jelenhet meg:
 
-Hozzáférés megtagadva  
-Nincs hozzáférése  
-Úgy tűnik, nincs hozzáférése a tartalomhoz. Érhet el, forduljon a tulajdonosa.  
+Engedélyezési hiba  
+Nem rendelkezik hozzáféréssel
 
 ### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>1. ok: A felhasználói fiók nem rendelkezik a tárfiókhoz való hozzáférést
 
@@ -250,6 +249,6 @@ Ezután symlinks hozhat létre a gyakran a [wiki](https://wiki.samba.org/index.p
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="need-help-contact-support"></a>Segítségre van szüksége? Forduljon a támogatási szolgálathoz.
+## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) beolvasni a probléma gyors megoldása érdekében.

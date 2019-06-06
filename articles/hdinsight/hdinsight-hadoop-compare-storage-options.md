@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 2724451d44a793023f7b69196b186f68f6fc6a26
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 320b8f948d08e46c43085e174dfbe838f44bac79
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720466"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479160"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtökhöz való használatra tárolási lehetőségek összehasonlítása
 
@@ -26,7 +26,7 @@ Ez a cikk ezek tárolási típusok és a hozzájuk tartozó egyedi funkciók át
 
 A következő táblázat összefoglalja az Azure Storage szolgáltatás, amely a különböző HDInsight-verziók támogatottak:
 
-| Társzolgáltatás | Fióktípus | Namespace típusa | Támogatott szolgáltatások | Támogatott teljesítményszintek | Támogatott elérési szint | HDInsight Version (HDInsight-verzió) | Fürttípus |
+| Storage szolgáltatás | Fiók típusa | Namespace típusa | Támogatott szolgáltatások | Támogatott teljesítményszintek | Támogatott elérési szint | HDInsight Version (HDInsight-verzió) | Fürttípus |
 |---|---|---|---|---|---|---|---|
 |2. generációs Azure Data Lake Storage| Általános célú V2 | Hierarchikus (fájlrendszer) | Blob | Standard | Gyakori, ritka elérésű, archív tárolási szint | 3.6. + | Összes |
 |Azure Storage| Általános célú V2 | Object | Blob | Standard | Gyakori, ritka elérésű, archív tárolási szint | 3.6. + | Összes |
@@ -53,7 +53,7 @@ Létrehozhat egy fürtöt, az elsődleges és a nem kötelező másodlagos stora
 | 3.6 | 1. generációs Data Lake Storage | 1. generációs Data Lake Storage | Igen |
 | 3.6 | 1. generációs Data Lake Storage | Általános célú V1, általános célú v2-ben BlobStorage (Blokkblobok) | Igen |
 | 3.6 | 1. generációs Data Lake Storage | 2. generációs Data Lake Storage | Nem |
-| 4.0 | 1. generációs Data Lake Storage | Bármelyik | Nem |
+| 4.0 | 1. generációs Data Lake Storage | Bármely | Nem |
 
 * = Ez lehet egy vagy több Data Lake Storage Gen2-fiókok esetében, mindaddig, amíg azok az összes beállítás az azonos felügyelt identitás fürt elérésére használhat.
 
@@ -137,7 +137,7 @@ A HDInsight hozzáférést nyújt a helyileg a számítási csomópontokhoz csat
 
 HDInsight keresztül is elérheti az Azure Storage szolgáltatásban tárolt adatok. A szintaxist a következőképpen történik:
 
-    wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
+    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
 Ha egy Azure Storage-fiók használata a HDInsight-fürtök, vegye figyelembe a következő alapelveket:
 
@@ -219,7 +219,7 @@ A Data Lake Storage Gen1 használja az Azure Active Directory hitelesítési és
 | --- | --- |
 | Hitelesítés |Data Lake Storage Gen1 együttműködik az Azure Active Directory (Azure AD) identitás- és hozzáférés-kezelés a Data Lake Storage Gen1 tárolt összes adatot. Az integráció miatt Data Lake Storage Gen1 számos előnyt biztosít, az összes Azure AD-funkciók. Ezek a funkciók közé tartozik a többtényezős hitelesítés, a feltételes hozzáférés, szerepköralapú hozzáférés-vezérlés, Alkalmazáshasználat monitorozását, biztonsági figyelés és riasztások, és így tovább. Data Lake Storage Gen1 támogatja az OAuth 2.0 protokollt a REST-felületen belüli hitelesítéshez. Lásd: [hitelesítés az Azure Data Lake Storage Gen1 belül az Azure Active Directoryval](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
 | Hozzáférés-vezérlés |Data Lake Storage Gen1 hozzáférés-vezérlést biztosít a WebHDFS protokoll által elérhetővé tett POSIX-stílusú engedélyek támogatásával. A hozzáférés-vezérlési listák a gyökérkönyvtáron, az alkönyvtárakon és az egyes fájlokon is engedélyezhetők. A hozzáférés-vezérlési listák Data Lake Storage Gen1 kontextusában működéséről további információkért lásd: [hozzáférés-vezérlés a Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md). |
-| Titkosítás |Data Lake Storage Gen1 is biztosít a fiókban tárolt adatok titkosítását. A Data Lake Storage Gen1 fiók létrehozásakor megadhatja a titkosítási beállításokat. Ha szeretné, hogy titkosítja az adatokat, vagy választhatja a titkosítás nélkül. További információkért lásd: [titkosítást a Data Lake Storage Gen1](../data-lake-store/data-lake-store-encryption.md). A titkosítással kapcsolatos konfigurációk megadására útmutatásért lásd: [Azure Data Lake Storage Gen1 használatának első lépései az Azure portal használatával](../data-lake-store/data-lake-store-get-started-portal.md). |
+| Encryption |Data Lake Storage Gen1 is biztosít a fiókban tárolt adatok titkosítását. A Data Lake Storage Gen1 fiók létrehozásakor megadhatja a titkosítási beállításokat. Ha szeretné, hogy titkosítja az adatokat, vagy választhatja a titkosítás nélkül. További információkért lásd: [titkosítást a Data Lake Storage Gen1](../data-lake-store/data-lake-store-encryption.md). A titkosítással kapcsolatos konfigurációk megadására útmutatásért lásd: [Azure Data Lake Storage Gen1 használatának első lépései az Azure portal használatával](../data-lake-store/data-lake-store-get-started-portal.md). |
 
 A Data Lake Storage Gen1 adatok védelmével kapcsolatos további tudnivalókért lásd: [az Azure Data Lake Storage Gen1 tárolt adatok védelme](../data-lake-store/data-lake-store-secure-data.md).
 

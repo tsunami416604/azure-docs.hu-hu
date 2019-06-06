@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 2de945d2ef1d87b47ea81aac034916466d3c9bda
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 6ddfd90956fde0c57e14083a3704cbf365456c75
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258849"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735163"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Üzenet végrehajtott információbeolvasás az eszköz a felhőbe irányuló IoT Hub-üzenetek (előzetes verzió)
 
@@ -49,6 +49,8 @@ Az üzenetek által támogatott bármely adatforrásból származhatnak [IoT Hub
 
 Végrehajtott információbeolvasás adhat hozzá, amelyek a beépített végpont az IoT Hub-üzenetek, vagy üzeneteket, amelyek az egyedi végpontok például az Azure Blob storage, Service Bus-üzenetsorban vagy egy Service Bus-témakörbe történő továbbítása.
 
+Végrehajtott információbeolvasás is üzeneteket, amelyek közzététele folyamatban van az Event Gridbe Event Grid, a végpont kiválasztásával adhat hozzá. További információkért lásd: [az Iot Hub és az Event Grid](iot-hub-event-grid.md).
+
 Végrehajtott információbeolvasás végpontonként érvényesek. Ha megad egy adott végpont le kell öt végrehajtott információbeolvasás, az azonos öt végrehajtott információbeolvasás fogja, hogy a végpont összes üzenet vannak megjelölve.
 
 Hogyan próbálhatja ki üzenet végrehajtott információbeolvasás, olvassa el a [üzenet végrehajtott információbeolvasás oktatóanyag](tutorial-message-enrichments.md)
@@ -75,7 +77,7 @@ Hogyan próbálhatja ki üzenet végrehajtott információbeolvasás, olvassa el
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-Ez a funkció előzetes verzióban érhető el, és érhető el minden régióban, kivéve az USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Nyugat-Európa, [Azure Government](/azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome.md), és [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
+Ez a funkció előzetes verzióban érhető el, és érhető el minden régióban, kivéve az USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Nyugat-Európa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china/china-welcome), és [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="next-steps"></a>További lépések
 

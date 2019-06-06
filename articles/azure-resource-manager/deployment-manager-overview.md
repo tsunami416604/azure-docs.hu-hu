@@ -1,23 +1,18 @@
 ---
 title: Régióban – az Azure Deployment Manager biztonságos üzembe helyezési eljárások
 description: Ismerteti, hogyan lehet a szolgáltatás telepítése több választható régióban az Azure Deployment Manager keresztül. Ellenőrizze a telepítés előtt minden régióban elérhetőek stabilitását biztonságos üzembe helyezési eljárásokat jeleníti meg.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/13/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: d93d9999c407e64658b88025feda48d33e1a5ad1
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 52b132b45bd90d7d21bb072e9a94d8588d5cf301
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595787"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431168"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Biztonságos üzembe helyezési eljárások az Azure Deployment Manager (nyilvános előzetes verzió) engedélyezése
 
@@ -25,7 +20,7 @@ A szolgáltatás számos régióban üzembe helyezheti, és ellenőrizze, hogy a
 
 Deployment Manager funkciója a Resource Manager. Üzembe helyezés során a képességekkel bővíti. Használat Deployment Manager, ha rendelkezik olyan összetett szolgáltatás, amelynek számos régióban üzembe helyezni. A szolgáltatás kibocsátásának előkészítésével a régiókban történő üzembe helyezés előtt azonosíthat potenciális problémákat. Ha már nincs szüksége egy szakaszos bevezetést, a felesleges óvintézkedéseket, használja a standard [központi telepítési beállítások](resource-group-template-deploy-portal.md) a Resource Managerhez. Deployment Manager zökkenőmentesen integrálható az összes meglévő külső eszközökkel, amelyek támogatják a Resource Manager-környezetek, például a folyamatos integrációt és folyamatos készregyártás (CI/CD) ajánlatok. 
 
-Az Azure Deployment Manager privát előzetes verzióban érhető el. Az Azure Deployment Manager használatára, végezze el a [bejelentkezési űrlap kitöltése](https://aka.ms/admsignup). Súgó be javítják a szolgáltatást azáltal, hogy [visszajelzés](https://aka.ms/admfeedback).
+Az Azure Deployment Manager szolgáltatás előzetes verzióban. Segítsen jobbá tenni a funkció azáltal, hogy [visszajelzés](https://aka.ms/admfeedback).
 
 Deployment Manager használatához szüksége négy fájlok létrehozásához:
 

@@ -3,18 +3,18 @@ title: Egyéni adatok az Azure Maps-egy rasztertérkép renderelése |} A Micros
 description: Az Azure Maps-egy rasztertérkép egyéni adatok jelennek meg.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 04/03/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 46f08aaa33563f620e7a011620730249e903f7b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9fed8464bd19c4b8a32e37c8c97698f0a2d9503
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60794570"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734295"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adatok egy rasztertérkép megjelenítése
 
@@ -42,7 +42,7 @@ A címkék és a egy egyéni rendszerkép gombostűk jelennek meg, hajtsa végre
 
 2. A kérelem létrehozásához válassza **új** újra. Az a **hozzon létre új** ablakban válassza **kérelem**. Adjon meg egy **kérelem neve** számára a gombostűk válassza ki a gyűjteményt, mint a helyet, ahol a mentse a kérést, majd válassza az előző lépésben létrehozott **mentése**.
     
-    ![A Postmanben a kérelem létrehozása](./media/tutorial-geofence/postman-new.png)
+    ![A Postmanben a kérelem létrehozása](./media/how-to-render-custom-data/postman-new.png)
 
 3. Az első HTTP-metódus a jelentéskészítő lapon válassza ki, és adja meg a hozzon létre egy GET kérelmet a következő URL-CÍMRE.
 
@@ -145,7 +145,7 @@ Az elérési út és a PIN-kód helyére vonatkozó információt is beszerezhet
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
     ```
 
-6. Íme a képernyőképet:
+    Itt van a válasz-lemezképet:
 
     ![Adatok beolvasása az Azure Maps adattárolás](./media/how-to-render-custom-data/uploaded-path.png)
 
@@ -164,9 +164,9 @@ Sokszög megjelenését a stílus dostupnosti használatával módosíthatja a [
     &subscription-key={subscription--key}
     ```
 
-Íme a képernyőképet:
+    Itt van a válasz-lemezképet:
 
-![Egy nem átlátszó sokszög megjelenítése](./media/how-to-render-custom-data/opaque-polygon.png)
+    ![Egy nem átlátszó sokszög megjelenítése](./media/how-to-render-custom-data/opaque-polygon.png)
 
 
 ## <a name="render-a-circle-and-pushpins-with-custom-labels"></a>Kör és egyéni címkével rendelkező gombostűk megjelenítéséhez
@@ -186,9 +186,9 @@ Kövesse az alábbi lépéseket egy kör és egyéni címkével rendelkező gomb
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co002D62||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
     ```
 
-Íme a képernyőképet:
+    Itt van a válasz-lemezképet:
 
-![Az egyéni gombostűk kör megjelenítése](./media/how-to-render-custom-data/circle-custom-pins.png)
+    ![Az egyéni gombostűk kör megjelenítése](./media/how-to-render-custom-data/circle-custom-pins.png)
 
 ## <a name="next-steps"></a>További lépések
 

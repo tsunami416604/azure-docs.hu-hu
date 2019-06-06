@@ -1,8 +1,8 @@
 ---
-title: Azure éles környezetben való üzemeltetés és a felügyelet
-description: Ez a cikk általános leírását, a felügyeleti és működtetése az Azure éles hálózati környezetben.
+title: Kezelés az Azure éles hálózati környezetben – Microsoft Azure
+description: Ez a cikk bemutatja, hogyan a Microsoft kezeli, és biztonságossá tétele az Azure-adatközpontokból az Azure éles hálózati környezetben működik.
 services: security
-documentationcenter: na
+documentationcenter: n
 author: TerryLanfear
 manager: barbkess
 editor: TomSh
@@ -12,16 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 05/30/2019
 ms.author: terrylan
-ms.openlocfilehash: 0099eb61d97f813f7adca320b47c195fa1aabbdc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 515896851c5bf7b9c847416ebadedf1242e0eeb9
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591482"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428264"
 ---
-# <a name="azure-production-operations-and-management"></a>Azure éles környezetben való üzemeltetés és a felügyelet    
+# <a name="management-and-operation-of-the-azure-production-network"></a>Kezelés és működés az éles Azure-hálózat    
+Ez a cikk bemutatja, hogyan a Microsoft kezeli, és biztonságossá tétele az Azure-adatközpontokból az Azure éles hálózati környezetben működik.
+
+## <a name="monitor-log-and-report"></a>Figyelő, naplózási és jelentés
+
 A felügyeleti és az éles Azure-hálózat művelet célja egy koordinált az üzemeltetési csapatok az Azure és az Azure SQL Database között. A teams használatát több rendszer és alkalmazás-teljesítményfigyelési eszköz a környezetben. És megfelelő eszközök használják a hálózati eszközök, kiszolgálók, szolgáltatások és alkalmazási folyamatok figyeléséhez.
 
 Ahhoz, hogy az Azure-környezetben futó szolgáltatások biztonságos végrehajtásának, a üzemeltetési csapatok megvalósítása többszintű monitorozás, naplózás és jelentéskészítés, többek között a következő műveleteket:

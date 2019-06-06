@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 06/06/2019
 ms.author: juliako
-ms.openlocfilehash: c025a4c6e2a5a06e12e25ce226a327b099b95306
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: f04ae727957d988e75ea0984d0005a6a140ca63f
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550967"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66732981"
 ---
 # <a name="live-events-and-live-outputs"></a>Élő események és élő kimenetek
 
@@ -79,48 +79,53 @@ Az élő esemény létrehozása után lekérheti a betöltési URL-címeket. Eze
 
 Kreatív vagy nem kreatív URL-címeket is használhat. 
 
+> [!NOTE] 
+> A bemeneti URL-címet kell prediktív állítsa a "személyes" módot.
+
 * Non-vanity URL
 
     A nem kreatív URL-cím az alapértelmezett mód az AMS 3-as verziójában. Az élő eseményt gyorsan megkaphatja, de a bemeneti URL-cím csak az élő esemény kezdetekor válik ismertté. Az URL-cím megváltozik, ha leállítja/elindítja az élő eseményt. <br/>A nem kreatív URL-címek olyan esetekben hasznosak, amikor egy végfelhasználó olyan alkalmazással szeretne streamelni, ahol az alkalmazás a lehető leghamarabb szeretné megkapni az élő eseményt, és nem jelent problémát a dinamikus bemeneti URL-cím.
 * Személyes URL-címe
 
     A kreatív módot a nagy műsorszolgáltatók használják, akik hardveres közvetítéskódolókat használnak, és nem szeretnék újrakonfigurálni a kódolókat az élő esemény kezdetekor. Prediktív bemeneti URL-címet szeretnének, amely nem változik idővel.
+    
+    Ebben a módban megadásához állítsa `vanityUrl` való `true` létrehozáskor (alapértelmezett érték a `false`). Ön is a saját hozzáférési token át kell (`LiveEventInput.accessToken`) létrehozáskor. Adjon meg a token értéket az URL-cím egy véletlenszerű token elkerülése érdekében. A hozzáférési jogkivonat nem érvényes GUID-karakterlánc (a vagy a kötőjelek nélkül) lehet. A mód beállítása után nem lehet frissíteni.
 
-> [!NOTE] 
-> A bemeneti URL-címet kell prediktív használja a "személyes" módot, majd továbbítja a saját hozzáférési jogkivonat (egy véletlenszerű lexikális elem szerepel az URL-cím elkerülésére) szüksége.
+    A hozzáférési jogkivonat egyedinek kell lennie az adatközpontban. Ha az alkalmazás egy személyes URL-cím használatára van szüksége, ajánlott mindig hozzon létre egy új GUID-példányt a hozzáférési jogkivonat (újbóli használata bármely létező GUID-Azonosítót) helyett. 
 
 ### <a name="live-ingest-url-naming-rules"></a>Élő betöltési URL-elnevezési szabályok
 
 Az alábbi *véletlenszerű* sztring egy 128 bites hexadecimális szám (amely 32 karakterből áll 0-9-ig és a-f-ig).<br/>
-Az alábbi *hozzáférési jogkivonatot* kell megadnia rögzített URL-címhez. Ez is 128 bites hexadecimális szám.
+A *hozzáférési jogkivonat* rögzített URL-cím megadása szükséges. Be kell állítani egy hozzáférési jogkivonat karakterlánc, karakterlánc hossza érvénytelen GUID. <br/>
+A *adatfolyam neve* azt jelzi, hogy egy adott kapcsolathoz tartozó stream nevét. A stream név-érték általában hozzáadódik az élő kódoló használatát.
 
 #### <a name="non-vanity-url"></a>Non-vanity URL
 
 ##### <a name="rtmp"></a>RTMP
 
-`rtmp://<random 128bit hex string>.channel.media.azure.net:1935/<access token>`
-`rtmp://<random 128bit hex string>.channel.media.azure.net:1936/<access token>`
-`rtmps://<random 128bit hex string>.channel.media.azure.net:2935/<access token>`
-`rtmps://<random 128bit hex string>.channel.media.azure.net:2936/<access token>`
+`rtmp://<random 128bit hex string>.channel.media.azure.net:1935/live/<access token>/<stream name>`<br/>
+`rtmp://<random 128bit hex string>.channel.media.azure.net:1936/live/<access token>/<stream name>`<br/>
+`rtmps://<random 128bit hex string>.channel.media.azure.net:2935/live/<access token>/<stream name>`<br/>
+`rtmps://<random 128bit hex string>.channel.media.azure.net:2936/live/<access token>/<stream name>`<br/>
 
 ##### <a name="smooth-streaming"></a>Smooth Streaming
 
-`http://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml`
-`https://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml`
+`http://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
+`https://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
 
 #### <a name="vanity-url"></a>Személyes URL-címe
 
 ##### <a name="rtmp"></a>RTMP
 
-`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1935/<access token>`
-`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1936/<access token>`
-`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/<access token>`
-`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/<access token>`
+`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1935/live/<access token>/<stream name>`<br/>
+`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1936/live/<access token>/<stream name>`<br/>
+`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/live/<access token>/<stream name>`<br/>
+`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/live/<access token>/<stream name>`<br/>
 
 ##### <a name="smooth-streaming"></a>Smooth Streaming
 
-`http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml`
-`https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml`
+`http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
+`https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
 
 ## <a name="live-event-preview-url"></a>Élő esemény előnézeti URL-címe
 

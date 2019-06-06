@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 32cad7005b2b4da830ac3febf6da847933967a3d
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: ea2399572177cc10006a5d9ee715190fff4a347b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400022"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471447"
 ---
 # <a name="about-recovery-plans"></a>A helyreállítási tervek ismertetése
 
@@ -37,10 +37,10 @@ A helyreállítási terv segít egy rendszeres helyreállítási folyamat meghat
 
 Tervezhet és alkalmazás-specifikus tulajdonságok rögzítése helyreállítási csoport létrehozása. Példaként vegyünk egy SQL Servert használó egy tipikus háromrétegű alkalmazás háttér, a közbenső szoftver és a webes előtérrendszer. Általában a helyreállítási terv testreszabása, azt minden egyes rétegben található gépek a megfelelő sorrendben a feladatátvételt követően.
 
-    - Az SQL-háttérrendszer először, a közbenső szoftver el kell indulnia a Tovább, és végül a webes előtérrendszer.
-    - Az indítási sorrend biztosítja, hogy működik-e az alkalmazás által az utolsó gép indításakor.
-    - Ez a sorrend biztosítja, hogy amikor a közbenső szoftver elindul, és megpróbál csatlakozni az SQL Server réteget, az SQL Server-csomag már fut. 
-    - Ebben a sorrendben is segít, győződjön meg arról, hogy az előtér-kiszolgáló utolsó elindul, úgy, hogy a felhasználók nem csatlakoznak az alkalmazás URL-címe, előtt minden be és fut, és az alkalmazás készen áll a kérelmek fogadásához.
+- Az SQL-háttérrendszer először, a közbenső szoftver el kell indulnia a Tovább, és végül a webes előtérrendszer.
+- Az indítási sorrend biztosítja, hogy működik-e az alkalmazás által az utolsó gép indításakor.
+- Ez a sorrend biztosítja, hogy amikor a közbenső szoftver elindul, és megpróbál csatlakozni az SQL Server réteget, az SQL Server-csomag már fut. 
+- Ebben a sorrendben is segít, győződjön meg arról, hogy az előtér-kiszolgáló utolsó elindul, úgy, hogy a felhasználók nem csatlakoznak az alkalmazás URL-címe, előtt minden be és fut, és az alkalmazás készen áll a kérelmek fogadásához.
 
 Szeretne létrehozni ebben a sorrendben, csoportokat hozzáadni a helyreállítási csoporthoz, és hozzáadni azokat a csoportokat.
 - A megadott sorrendben, ahol alkalmazás-előkészítés szolgál. Adott esetben az alkalmazás RTO-helyreállítás javítása érdekében a műveletek párhuzamosan futnak.

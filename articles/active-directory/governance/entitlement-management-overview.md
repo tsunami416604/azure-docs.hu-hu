@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/27/2019
+ms.date: 05/30/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b9baa48c13e317ba3fb54d998ee8f125d2093c7
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921071"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474068"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Mi az Azure ad-ben tagjogosultság-kezelés? (Előzetes verzió)
 
@@ -70,22 +70,13 @@ Az alábbiakban a típusú erőforrásokat tagjogosultság-kezelés való hozzá
 
 - Az Azure AD biztonsági csoportok
 - Office 365-csoportok
-- Az Azure AD vállalati alkalmazások
-- SaaS-alkalmazás
-- Egyéni integrált alkalmazások
-- A SharePoint Online webhelycsoportokhoz
-- A SharePoint Online-webhelyekkel
+- Az Azure AD vállalati alkalmazások, például SaaS-alkalmazás és az egyéni integrált alkalmazások, amelyek támogatják az összevonási vagy kiépítése
+- A SharePoint Online webhelycsoportokhoz és helyek
 
-## <a name="prerequisites"></a>Előfeltételek
+Szabályozhatja, hogy az Azure AD biztonsági csoportok vagy az Office 365-csoportok támaszkodik más erőforrásokhoz való hozzáférést is.  Példa:
 
-Az Azure AD tagjogosultság-kezelés (előzetes verzió) használatához kell rendelkeznie a következő licencek egyikét:
-
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5 licenc
-
-További információkért lásd: [regisztrálhat az Azure Active Directory Premium kiadások](../fundamentals/active-directory-get-started-premium.md) vagy [Enterprise Mobility + Security E5 próba](https://aka.ms/emse5trial).
-
-Speciális felhőkben, mint például az Azure Government, Azure Germany és Azure China 21Vianet nem érhetők el jelenleg ebben az előzetes verzióban használható.
+- Adhat felhasználói licenceket a Microsoft Office 365-höz egy hozzáférés-csomag az Azure AD biztonsági csoportok használatáról és konfigurálásáról [Csoportalapú licencelés](../users-groups-roles/licensing-groups-assign.md) az adott csoporthoz
+- Engedélyezheti a felhasználók számára hozzáférést Azure-erőforrások kezelése az Azure AD biztonsági csoportok használatával egy hozzáférési csomagban, és hozzon létre egy [Azure szerepkör-hozzárendelés](../../role-based-access-control/role-assignments-portal.md) az adott csoporthoz
 
 ## <a name="what-are-access-packages-and-policies"></a>Melyek a hozzáférési csomagok és a szabályzatok?
 
@@ -129,15 +120,15 @@ Tagjogosultság-kezelés és a hozzá tartozó dokumentáció jobb megértéséh
 | tagjogosultság-kezelés | Egy szolgáltatás, amely hozzárendeli, visszavonja, és felügyeli a hozzáférési csomagok. |
 | Access-csomag | Engedélyeket és szabályzatokat olyan felhasználók kérhetik gyűjteménye. Egy hozzáférés-csomag mindig szerepel egy katalógust. |
 | hozzáférési kérelem | Egy olyan hozzáférési csomagot elérésére irányuló kérelmet. Egy kérelem általában halad végig egy munkafolyamatot. |
-| házirend | Szabályok készletét, amely meghatározza az access-életciklus, például hogyan felhasználók is hozzáférhetnek, akik jóváhagyhatja és mennyi ideig a felhasználók hozzáférhetnek. A házirendek például alkalmazottak hozzáférését és külső hozzáférés tartalmazza. |
+| policy | Szabályok készletét, amely meghatározza az access-életciklus, például hogyan felhasználók is hozzáférhetnek, akik jóváhagyhatja és mennyi ideig a felhasználók hozzáférhetnek. A házirendek például alkalmazottak hozzáférését és külső hozzáférés tartalmazza. |
 | catalog | Egy kapcsolódó erőforrások és a hozzáférési csomagok tároló. |
 | Általános katalógus | A beépített katalógus, amely mindig elérhető. Az általános katalógus erőforrások felvétele a bizonyos engedélyek szükségesek. |
-| erőforrás | Egy eszköz vagy szolgáltatás (például egy csoport, alkalmazás vagy webhely), amely egy felhasználó kaphat engedélyeket. |
-| erőforrástípus | Típusú erőforrások, például a csoportokat, alkalmazásokat és a SharePoint Online-webhelyhez. |
+| resource | Egy eszköz vagy szolgáltatás (például egy csoport, alkalmazás vagy webhely), amely egy felhasználó kaphat engedélyeket. |
+| Erőforrás típusa | Típusú erőforrások, például a csoportokat, alkalmazásokat és a SharePoint Online-webhelyhez. |
 | erőforrás-szerepkör | Egy gyűjtemény társítva erőforrás. |
 | erőforrás-könyvtár | Egy könyvtárat, amely rendelkezik egy vagy több erőforrás megosztására. |
 | hozzárendelt felhasználó | Hozzárendelés-hozzáférés egy felhasználó vagy csoport csomag. |
-| engedélyezése | A folyamat a felhasználók kérvényezhetik a kívánt elérhetővé egy hozzáférés-csomagot. |
+| Engedélyezése | A folyamat a felhasználók kérvényezhetik a kívánt elérhetővé egy hozzáférés-csomagot. |
 
 ## <a name="roles-and-permissions"></a>Szerepkörök és engedélyek
 
@@ -154,7 +145,7 @@ Tagjogosultság-kezelés a feladat függvény alapján különböző szerepkörr
 
 Az alábbi táblázat ezek a szerepkörök engedélyeit.
 
-| Feladat | Felhasználói rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | Hozzáférés a Csomagkezelő | Jóváhagyó |
+| Tevékenység | Felhasználói rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | Hozzáférés a Csomagkezelő | Jóváhagyó |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Hozzon létre egy új hozzáférési csomagot az általános-katalógusban](entitlement-management-access-package-create.md) | :heavy_check_mark: |  :heavy_check_mark: |  |  |  |
 | [Hozzon létre egy új hozzáférési csomagot a katalógusban található](entitlement-management-access-package-create.md) | :heavy_check_mark: |   | :heavy_check_mark: |  |  |
@@ -173,6 +164,12 @@ Az alábbi táblázat ezek a szerepkörök engedélyeit.
 | [Erőforrások és-tárolókról a katalógus hozzáadása/eltávolítása](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | [Katalógus tulajdonosok hozzáadása vagy csomagkezelők eléréséhez](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | [Szerkesztheti vagy törölheti a katalógusban](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+
+## <a name="license-requirements"></a>Licenckövetelmények
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+Speciális felhőkben, mint például az Azure Government, Azure Germany és Azure China 21Vianet nem érhetők el jelenleg ebben az előzetes verzióban használható.
 
 ## <a name="next-steps"></a>További lépések
 

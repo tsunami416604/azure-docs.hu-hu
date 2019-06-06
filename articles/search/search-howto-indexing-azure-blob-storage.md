@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: e55d596cfaf34c177f6dc43c27aaac37da87d2f7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f60146e4e11e50b2f2254a0d8d7f59c01ba74464
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024860"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479937"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Dokumentumok indexelése az Azure Blob Storage, az Azure Search szolgáltatással
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-, Microsoft Office-dokumentumok, és számos egyéb gyakori formátum) az Azure Blob storage-ban tárolja. Első lépésként beállítása és konfigurálása a blob indexelőjével alapjait ismerteti. Ezután egy mélyebb feltárása viselkedéseket, kínál, és esetekben valószínűleg találkozik.
@@ -139,6 +139,7 @@ Attól függően, a [az indexelő konfigurációjának](#PartsOfBlobToIndex), a 
   * **metaadatok\_tárolási\_utolsó\_módosított** (Edm.DateTimeOffset) - utolsó módosítás a BLOB időbélyegző. Az Azure Search az időbélyeg módosított blobok elkerülése érdekében a kezdeti indexelése követően újraindexelés mindent azonosítására használ.
   * **metaadatok\_tárolási\_mérete** (Edm.Int64) – a blob mérete bájtban.
   * **metaadatok\_tárolási\_tartalom\_md5** (Edm.String) – a blob tartalmát, ha elérhető MD5-kivonat.
+  * **metaadatok\_tárolási\_sas\_token** (Edm.String) – egy ideiglenes által is használt jogkivonat [egyéni képesség](cognitive-search-custom-skill-interface.md) megfelelő eléréséhez a blob. A sas-jogkivonat nem lehet későbbi használatra, akkor lejárhatnak kell tárolni.
 * Minden egyes dokumentum formátumban jellemző metaadat-tulajdonságot ki kell olvasni a mezőkben szereplő [Itt](#ContentSpecificMetadata).
 
 Nem kell mezők az összes fenti tulajdonságait a search-index a – csak rögzítése szüksége lesz az alkalmazás tulajdonságait.

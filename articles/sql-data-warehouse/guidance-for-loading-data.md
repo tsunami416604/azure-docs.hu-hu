@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load data
-ms.date: 04/17/2018
+ms.date: 05/31/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: f1bfd6a9f7b5d6b7622b3fc79848b986172ff746
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1b5af710feb743a30ac4a2af94b6e7e8b6c56595
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240842"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479893"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Az adatok Azure SQL Data Warehouse-ba való betöltésének ajánlott eljárásai
 
@@ -102,7 +102,9 @@ Ha több ezer egyszeres beszúrást hajt végre egy nap, kötegelje a beszúrás
 
 ## <a name="creating-statistics-after-the-load"></a>Statisztika létrehozása a betöltés után
 
-A lekérdezési teljesítmény javításához fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően.  A statisztika részletes ismertetése: [Statisztika](sql-data-warehouse-tables-statistics.md). A következő példa a Customer_Speed tábla öt oszlopára vonatkozó statisztikákat hoz létre.
+A lekérdezési teljesítmény javításához fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően.  Ezt megteheti manuálisan, vagy engedélyezheti a [automatikus létrehozása statustics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic).
+
+A statisztika részletes ismertetése: [Statisztika](sql-data-warehouse-tables-statistics.md). Az alábbi példa bemutatja, hogyan manuálisan létrehozni statisztikákat a Customer_Speed tábla öt oszlopára.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);

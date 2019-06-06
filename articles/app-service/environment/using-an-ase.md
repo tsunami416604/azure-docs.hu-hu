@@ -11,19 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d536e9d14edfa17e890480c07951eccb70e9eb9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9c34d3cfd5ce9bb3a8f9a9072f2843331065100
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61228345"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496507"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata #
-
-## <a name="overview"></a>Áttekintés ##
 
 Az Azure App Service Environment-környezet üzembe helyezése az Azure App Service-ben az ügyfél az Azure virtual network egyik alhálózatában. Ez a következőkből áll:
 
@@ -62,17 +60,14 @@ Alkalmazás létrehozása az ASE környezetben:
 
 1. Válassza ki az operációs rendszert. 
 
-    * Új előzetes verziójú funkció, az ASE környezetben egy Linux-alkalmazás üzemeltetése, ezért javasoljuk, hogy meg nem adja hozzá a Linux-alkalmazások az ASE éles számítási feladatokhoz éppen futó. 
-    * Egy Linux-alkalmazás hozzáadása az ASE az azt jelenti, hogy az ASE-t is az előnézeti módban. 
-
 1. Válassza ki a meglévő App Service-csomagot az ASE környezetben, vagy hozzon létre egy újat az alábbi lépéseket:
 
     a. Válassza ki **létrehozása új**.
 
     b. Adja meg az App Service-csomag nevét.
 
-    c. Válassza az ASE Környezetet a a **hely** legördülő listából. Az ASE környezetben egy Linux-alkalmazás üzemeltetése csak engedélyezett 6 régióban jelenleg: **USA nyugati RÉGIÓJA, USA keleti RÉGIÓJA, Nyugat-Európa, Észak-Európa, Kelet-Ausztrália, Délkelet-Ázsia.** 
-
+    c. Válassza az ASE Környezetet a a **hely** legördülő listából. 
+    
     d. Válasszon egy **elkülönített** tarifacsomag. Válassza ki **kiválasztása**.
 
     e. Kattintson az **OK** gombra.

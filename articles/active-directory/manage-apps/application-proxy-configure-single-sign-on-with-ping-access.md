@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 365f017fe7d71500c17d0a9ccd9c5a0a26a78b75
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: ab08c93662988655154cf300ac4ee3758fbc7872
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989595"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472801"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejlécalapú hitelesítéskor az egyszeri bejelentkezést az alkalmazásproxy és a PingAccess
 
@@ -124,11 +124,11 @@ Végül, a helyszíni alkalmazás beállítása, hogy a felhasználó rendelkezi
 
 1. Az a **alkalmazásregisztrációk** az alkalmazás oldalsávon válassza **API-engedélyek** > **adjon hozzá egy engedélyt**  >   **A Microsoft API-k** > **Microsoft Graph**. A **kérelem API-engedélyek** lapján **Microsoft Graph** jelenik meg, amely tartalmazza az API-k a Windows Azure Active Directoryban.
 
-   ![API-engedélyek kérése](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
+   ![Engedélyek kéréséhez API](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
 2. Válassza ki **delegált engedélyek** > **felhasználói** > **User.Read**.
 3. Válassza ki **Alkalmazásengedélyek** > **alkalmazás** > **Application.ReadWrite.All**.
 4. Válassza ki **engedélyek hozzáadása**.
-5. Az a **API-engedélyek** lapon jelölje be **adja meg a rendszergazdai jóváhagyás \<a könyvtárnév >**.
+5. Az a **API-engedélyek** lapon jelölje be **adja meg a rendszergazdai jóváhagyás \<a könyvtárnév >** .
 
 #### <a name="collect-information-for-the-pingaccess-steps"></a>A PingAccess lépéseket-adatainak összegyűjtése
 
@@ -150,7 +150,7 @@ Ezek az információk gyűjtésére:
 4. Tovább a **(bérlő) címtár-azonosító** is válassza ki a érték **példányt vágólapra**, majd másolja és mentse azt. Azt adja meg ezt az értéket később PingAccess a kibocsátó.
 5. Az oldalsávon a **alkalmazásregisztrációk** válassza ki az alkalmazás **tanúsítványok és titkos kulcsok** > **új titkos ügyfélkulcsot**. A **ügyfélkódot hozzáadása** lap jelenik meg.
 
-   ![Titkos ügyfélkód hozzáadása](./media/application-proxy-configure-single-sign-on-with-ping-access/add-a-client-secret.png)
+   ![Ügyfél titkos kód hozzáadása](./media/application-proxy-configure-single-sign-on-with-ping-access/add-a-client-secret.png)
 6. A **leírás**, típus `PingAccess key`.
 7. A **lejárat**, válassza ki a PingAccess kulcs beállítása: **1 év múlva**, **2 évben**, vagy **soha**.
 8. Válassza a **Hozzáadás** lehetőséget. A PingAccess megjelenik a kulcs a táblázat az ügyfél titkos adatait, és a egy véletlenszerű karakterlánc az adott autofills a **érték** mező.
@@ -158,9 +158,9 @@ Ezek az információk gyűjtésére:
 
 ### <a name="update-graphapi-to-send-custom-fields-optional"></a>Frissítés GraphAPI küldendő egyéni mezők (nem kötelező)
 
-Az Azure AD elküldi a hitelesítéshez, a biztonsági jogkivonatok listáját lásd: [a Microsoft identity platform azonosító jogkivonatok](../develop/id-tokens.md). Ha egy egyéni jogcímet, amely küld más jogkivonatok, állítsa be a `acceptMappedClaims` alkalmazás mezőt `True`. Graph Explorer is használhatja, vagy az Azure AD portálon alkalmazásjegyzék ezt a módosítást.
+Ha egy egyéni jogcímszabályok által küldött többi jogkivonatok belül van szüksége a access_token PingAccess paraméterét, állítsa be a `acceptMappedClaims` alkalmazás mezőt `True`. Graph Explorer is használhatja, vagy az Azure AD portálon alkalmazásjegyzék ezt a módosítást.
 
-Ez a példa Graph Explorer használja:
+**Ez a példa Graph Explorer használja:**
 
 ```
 PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application>
@@ -170,7 +170,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 }
 ```
 
-Ez a példa a [Azure Active Directory portálon](https://aad.portal.azure.com/) frissíteni a `acceptMappedClaims` mező:
+**Ez a példa a [Azure Active Directory portálon](https://aad.portal.azure.com/) frissíteni a `acceptMappedClaims` mező:**
 
 1. Jelentkezzen be a [Azure Active Directory portálon](https://aad.portal.azure.com/) alkalmazást rendszergazdaként.
 2. Válassza ki **Azure Active Directory** > **alkalmazásregisztrációk**. Azon alkalmazások listája jelenik meg.
@@ -179,7 +179,28 @@ Ez a példa a [Azure Active Directory portálon](https://aad.portal.azure.com/) 
 5. Keresse meg a `acceptMappedClaims` mezőben, majd módosítsa az értéket `True`.
 6. Kattintson a **Mentés** gombra.
 
-### <a name="use-a-custom-claim-optional"></a>Használjon egy egyéni jogcímek (nem kötelező)
+
+### <a name="use-of-optional-claims-optional"></a>Használja a választható jogcímek (nem kötelező)
+Nem kötelező jogcímek standard-but-not-included-by-default jogcímeket, amely minden felhasználó és a bérlő rendelkezik hozzáadását teszi lehetővé. Az alkalmazás nem kötelező jogcímek az alkalmazásjegyzékben módosításával konfigurálhatja. További információ: a [az Azure AD application manifest cikk ismertetése](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest/)
+
+E-mail cím venni az a, amely felhasználja a PingAccess access_token. példa:
+```
+    "optionalClaims": {
+        "idToken": [],
+        "accessToken": [
+            {
+                "name": "email",
+                "source": null,
+                "essential": false,
+                "additionalProperties": []
+            }
+        ],
+        "saml2Token": []
+    },
+```
+
+### <a name="use-of-claims-mapping-policy-optional"></a>Jogcímek társítása a házirend alól (választható) használata
+[Jogcím-szabályzat hozzárendelése (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties/) attribútumok, amelyek nem léteznek az Azure ad számára. Jogcímtársítások lehetővé teszi, hogy a régi helyszíni alkalmazások migrálása a felhőbe, amely az AD FS vagy a felhasználói objektumok élvezik további egyéni jogcímek hozzáadásával
 
 Ahhoz, hogy az alkalmazás egy egyéni jogcímszabályok használja, és további mezőket tartalmaznak, lehet, hogy megismerte is [egy egyéni jogcímek társítása a házirend létrehozása és hozzárendelése, az alkalmazás](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
@@ -187,6 +208,16 @@ Ahhoz, hogy az alkalmazás egy egyéni jogcímszabályok használja, és tovább
 > Egyéni jogcím használatával is rendelkeznie kell meghatározott, és az alkalmazáshoz hozzárendelt egyéni házirendet. Ez a szabályzat tartalmaznia kell az összes szükséges egyéni attribútumokat.
 >
 > Szabályzat-definíció és a hozzárendelés révén a PowerShell, az Azure AD Graph Explorer vagy a Microsoft Graph teheti meg. Ha ezeket a PowerShell, szüksége lehet, hogy először a `New-AzureADPolicy` , és hozzárendelheti az alkalmazást a `Add-AzureADServicePrincipalPolicy`. További információkért lásd: [jogcím-hozzárendelési szabályzat-hozzárendelés](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+
+Példa:
+```powershell
+$pol = New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","JwtClaimType":"employeeid"}]}}') -DisplayName "AdditionalClaims" -Type "ClaimsMappingPolicy"
+
+Add-AzureADServicePrincipalPolicy -Id "<<The object Id of the Enterprise Application you published in the previous step, which requires this claim>>" -RefObjectId $pol.Id 
+```
+
+### <a name="enable-pingaccess-to-use-custom-claims-optional-but-required-if-you-expect-the-application-to-consume-additional-claims"></a>Egyéni jogcímek (nem kötelező, de szükséges, ha az alkalmazás további jogcímek felhasználása várhatóan) használata a PingAccess engedélyezése
+PingAccess fogja beállítani a következő lépést, ha a webes munkamenet hoz létre (Beállítások -> hozzáférés -> webes előadások) rendelkeznie kell **kérelem profil** sincs kijelölve, és **felhasználói attribútumok frissítése** Állítsa be **nem**
 
 ## <a name="download-pingaccess-and-configure-your-application"></a>PingAccess letöltéséhez, és az alkalmazás konfigurálása
 

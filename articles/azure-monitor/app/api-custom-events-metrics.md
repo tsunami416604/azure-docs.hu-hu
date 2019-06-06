@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6e20aef77625fe426526884c3fcee83019afd0c0
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 5194b9e6f40dbcd5e48b33c12db4b3cd94f75de3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299249"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478418"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikák
 
@@ -153,7 +153,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 A telemetria érhető el a `customEvents` táblára [Application Insights-elemzési](analytics.md). Minden egyes sora jelöl hívása `trackEvent(..)` az alkalmazásban.
 
-Ha [mintavételi](../../azure-monitor/app/sampling.md) van folyamatban, az elemek száma tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma a == 10 azt jelenti, hogy a trackEvent() a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. Egyéni események megfelelő száma lekéréséhez használjon ezért használható kóddal például `customEvents | summarize sum(itemCount)`.
+Ha [mintavételi](../../azure-monitor/app/sampling.md) van folyamatban, az elemek száma tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma a == 10 azt jelenti, hogy a trackEvent() a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. Lekérni egy egyéni események megfelelő számát, ezért érdemes kód például `customEvents | summarize sum(itemCount)`.
 
 ## <a name="getmetric"></a>GetMetric
 

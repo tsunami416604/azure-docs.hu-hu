@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 3f3b60c3744ce9dea61054b3fa0aaccfea27d784
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: fa6b4d6d0db09f8c4955430d6dc227356416d915
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66238320"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735945"
 ---
 A következő táblázat felsorolja a kvóták, és korlátozza az adott [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). További információ az Event Hubs-díjszabás: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -39,11 +39,11 @@ Az Event Hubs dedikált ajánlat fix havi díja, legalább 4 óra számoljuk fel
 | --- | ---|
 | A sávszélesség |  20 kapacitásegység használható |
 | Névterek | 50 / Kapacitásegység |
-| Event Hubs |  Nincs korlátozva az event hubs-témakörök |
+| Event Hubs |  1000 névterenként |
 | Belépő események | Tartalmazza |
 | Üzenet mérete | 1 millió bájt |
 | Partíciók | 2000 / Kapacitásegység |
 | Felhasználói csoportok | Nincs korlátozva az event hubs 1000 / Kapacitásegység, |
 | Felügyelt kapcsolatok | 100 K csomagban foglalt |
-| Üzenetmegőrzés | 90 nap, a 10 TB-ot foglalt / Kapacitásegység |
+| Üzenetmegőrzés | Fel és 7 nap (90 napos megőrzési idejét hamarosan elérhető), 10 TB-ot foglalt / Kapacitásegység |
 | Rögzítés | Tartalmazza |

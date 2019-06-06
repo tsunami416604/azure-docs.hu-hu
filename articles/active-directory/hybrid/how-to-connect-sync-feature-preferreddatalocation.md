@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Active Directory Connect szinkronizálási szolgáltatás: Az Office 365-ben adatainak előnyben részesített helye Multi-földrajzi funkciók konfigurálása |} A Microsoft Docs'
+title: 'Azure AD Connect: Konfigurálja az Office 365-erőforrások adatainak előnyben részesített helye'
 description: Útmutató az Office 365 felhasználói erőforrásokat a felhasználó Azure Active Directory Connect-szinkronizálással közelében helyezze.
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 927987237b51a47d0c8b7c66054842b0a7ff09a7
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348177"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473028"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Az Azure Active Directory Connect szinkronizálási szolgáltatás: Konfigurálja az Office 365-erőforrások adatainak előnyben részesített helye
 Ez a témakör az a célja, hogy végigvezetik az attribútum a adatainak előnyben részesített helye konfigurálása az Azure Active Directory (Azure AD) Connect-szinkronizálás. Amikor valaki használ Multi-földrajzi funkciókat az Office 365-ben, ez az attribútum használatával a földrajzi helymeghatározás, a felhasználó Office 365-adatokat jelöl ki. (A használati *régió* és *földrajzi* azonos értelemben használják.)
@@ -124,7 +124,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért
 3. Egy új bejövő szabály létrehozásához válassza **új szabály hozzáadása**.
 4. Alatt a **leírás** lapra, adja meg a következő konfigurációt:
 
-    | Attribútum | Value | Részletek |
+    | Attribútum | Érték | Részletek |
     | --- | --- | --- |
     | Name (Név) | *Adjon meg egy nevet* | Például "az ad-felhasználó preferredDataLocation" |
     | Leírás | *Adjon meg egy egyéni leírást* |  |
@@ -137,9 +137,9 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért
 5. Tartsa a **Scoping szűrő** üres, az összes objektumát tartalmazza. Akkor lehet, hogy módosítania kell a Hatókörszűrő megfelelően az Azure AD Connect üzemelő példány.
 6. Nyissa meg a **átalakítási lapon**, és a következő átalakítási szabály végrehajtása:
 
-    | Folyamat típusát | Célattribútum | Forrás | Miután a alkalmazni | Egyesítési típus |
+    | Folyamat típusát | Célattribútum | Source | Miután a alkalmazni | Egyesítési típus |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | Válassza ki az adatforrás-attribútum | Nincs bejelölve | Frissítés |
+    |Direct | preferredDataLocation | Válassza ki az adatforrás-attribútum | Nincs bejelölve | frissítés |
 
 7. A bejövő szabály létrehozásához válassza **Hozzáadás**.
 
@@ -153,7 +153,7 @@ A kimenő szinkronizálási szabály lehetővé teszi a metaverzumba, hogy a flo
 3. Válassza ki **új szabály hozzáadása**.
 4. Alatt a **leírás** lapra, adja meg a következő konfigurációt:
 
-    | Attribútum | Value | Részletek |
+    | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
     | Name (Név) | *Adjon meg egy nevet* | Például "ki az Azure AD-felhasználó preferredDataLocation" |
     | Leírás | *Adjon meg egy leírást* ||
@@ -165,7 +165,7 @@ A kimenő szinkronizálási szabály lehetővé teszi a metaverzumba, hogy a flo
 
 5. Nyissa meg a **Scoping szűrő** lapra, és két záradékai egy egyetlen hatókörkezelési Szűrőcsoport hozzáadása:
 
-    | Attribútum | Művelet | Value |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |
@@ -174,9 +174,9 @@ A kimenő szinkronizálási szabály lehetővé teszi a metaverzumba, hogy a flo
 
 6. Nyissa meg a **átalakítási** lapra, és végrehajtja a következő átalakítási szabályt:
 
-    | Folyamat típusát | Célattribútum | Forrás | Miután a alkalmazni | Egyesítési típus |
+    | Folyamat típusát | Célattribútum | Source | Miután a alkalmazni | Egyesítési típus |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocation | preferredDataLocation | Nincs bejelölve | Frissítés |
+    | Direct | preferredDataLocation | preferredDataLocation | Nincs bejelölve | frissítés |
 
 7. Bezárás **Hozzáadás** a kimenő szabály létrehozásához.
 

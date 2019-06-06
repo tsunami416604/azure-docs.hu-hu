@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 05/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 16d100256f9252b478500488c2dc5a01c7e6a0b5
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 93eb0fba91ce5064d04a340e8b3e5b984ee73081
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418059"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515573"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -155,11 +155,11 @@ Az Azure Machine Learning segítségével automatizált gépi Tanulási modell l
 
 Automatizált ML is érhető el a többi Microsoft-megoldások például:
 
-|Integráció|Leírás
-|------------|-----------
-|ML.NET|Automatikus modell kiválasztása és képzések a Visual Studio és a Visual Studio Code használatával ML.NET a .NET-alkalmazások automatizált a Machine Learning (előzetes verzió). [További](https://docs.microsoft.com/dotnet/machine-learning/automl-overview).
-|HDIsnight|Horizontális felskálázás az automatizált Machine Learning betanítási feladatokat a Spark on HDInsight-fürtök párhuzamosan. [További](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md).
-|PowerBI|Hívja meg a machine learning-modellek közvetlenül a Power BI (előzetes verzió). [További](https://docs.microsoft.com/power-bi/service-machine-learning-automated).
+|Integráció|Leírás|
+|------------|-----------|
+|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatikus modell kiválasztása és képzések a Visual Studio és a Visual Studio Code használatával ML.NET a .NET-alkalmazások automatizált a Machine Learning (előzetes verzió).|
+|[HDIsnight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Horizontális felskálázás az automatizált Machine Learning betanítási feladatokat a Spark on HDInsight-fürtök párhuzamosan.|
+|[PowerBI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Hívja meg a machine learning-modellek közvetlenül a Power BI (előzetes verzió).|
 
 ## <a name="next-steps"></a>További lépések
 

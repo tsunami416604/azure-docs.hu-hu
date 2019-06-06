@@ -2,25 +2,25 @@
 title: Megoldások és képzés az Azure Active Directory B2C |} A Microsoft Docs
 description: Ez a cikk biztosít a hivatkozások megoldás és képzési adatok, amelyek segítségével megismerheti és Azure Active Directory B2C használata vége a teljes üzleti megoldások.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
-ms.author: davidmu
+ms.author: marsma
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7b409cc80d2443b01d3025dd84348af18118d640
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 95002eb73277176d4a8aeaa40deea4d96c39a755
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691971"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512414"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Megoldások és az Azure Active Directory B2C-oktatás
 
 Az Azure Active Directory (Azure AD) B2C lehetővé teszi a szervezetek számára, hogy üzleti megoldásokat, amelyekkel az ügyfelekkel megvalósításához. Az alábbi útmutatók megoldások létrehozásához és képzési olyan letölthető dokumentum, amely részletesen bemutatja ezeket a megoldásokat.
 
-| Cím | Leírás |
+| Beosztás | Leírás |
 | ----- | ----------- |
 | [Ügyfél Identitáskezelés az Azure AD B2C-vel](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | Ebben a cikkben áttekintjük a szolgáltatást, Parakh Jain ([@jainparakh](https://twitter.com/jainparakh)) az Azure AD B2C a csapat USA áttekintést nyújt a szolgáltatás működése, és is bemutatják, hogyan gyorsan csatlakozhassunk B2C-vel egy ASP.NET Core-alkalmazást. |
 | [Azure AD B2C használatának előnyei](https://aka.ms/b2coverview) | Az Azure AD B2C-vel, és az alkalmazás miként hasznosíthatók az CIAM szolgáltatás gyakori forgatókönyvek és előnyök ismertetése. |
