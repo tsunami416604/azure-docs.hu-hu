@@ -163,7 +163,7 @@ catch(ServiceException $e){
 }
 ```
 
-Üzeneteket küldenek (és a fogadott) példányai a Service Bus a [BrokeredMessage] [ BrokeredMessage] osztály. [BrokeredMessage] [ BrokeredMessage] objektumok rendelkeznek normál módszerek és az egyéni alkalmazásspecifikus tulajdonságokat, és a egy tetszőleges alkalmazásadatokból álló törzzsel törzs tárolására használt tulajdonságokat.
+Üzeneteket küldenek (és a fogadott) példányai a Service Bus a [BrokeredMessage][BrokeredMessage] osztály. [BrokeredMessage][BrokeredMessage] objektumok rendelkeznek normál módszerek és az egyéni alkalmazásspecifikus tulajdonságokat, és a egy tetszőleges alkalmazásadatokból álló törzzsel törzs tárolására használt tulajdonságokat.
 
 A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. Az üzenetsorban tárolt üzenetek száma korlátlan, az üzenetsor által tárolt üzenetek teljes mérete azonban korlátozva van. Ez a várólista mérete felső korlátja 5 GB-os.
 
