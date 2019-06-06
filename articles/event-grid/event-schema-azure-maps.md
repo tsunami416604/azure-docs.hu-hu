@@ -104,12 +104,12 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| tárgy | string | Az esemény tárgya közzétevő által megadott elérési útja. |
+| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
 | eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | string | Az esemény egyedi azonosítója. |
-| adat | objektum | A Geokerítések eseményadatokat. |
+| data | objektum | A Geokerítések eseményadatokat. |
 | dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
@@ -118,10 +118,10 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | apiCategory | string | Az esemény kategóriája API-t. |
-| ApiName | string | Az esemény API neve. |
-| Problémák | objektum | Megtekintheti a feldolgozás során észlelt problémákat. Ha problémákat ad vissza, majd lesz nem adott vissza a visszajelzéshez geometriája. |
+| apiName | string | Az esemény API neve. |
+| issues | objektum | Megtekintheti a feldolgozás során észlelt problémákat. Ha problémákat ad vissza, majd lesz nem adott vissza a visszajelzéshez geometriája. |
 | responseCode | szám | HTTP-válaszkód |
-| geometriája | objektum | Az időkorlát geometriája a koordináta tartalmazó listák helyezze, vagy átfedésben vannak a searchBuffer pozíciója körül. |
+| geometries | objektum | Az időkorlát geometriája a koordináta tartalmazó listák helyezze, vagy átfedésben vannak a searchBuffer pozíciója körül. |
 
 Ha hiba lép fel, a Maps API-ban a hibaobjektum adja vissza. A hiba objektum a következő tulajdonságokkal rendelkezik:
 
@@ -133,7 +133,7 @@ Hiba esetén a Maps API-ban a ErrorDetails objektumot adja vissza. A ErrorDetail
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| Kód | string | A HTTP-állapotkódot. |
+| code | string | A HTTP-állapotkódot. |
 | message | string | Ha elérhető, a hiba az emberi olvasható leírása. |
 | innererror | InnerError | Ha elérhető, szolgáltatásspecifikus a hibával kapcsolatos információkat tartalmazó objektumot. |
 
@@ -141,14 +141,14 @@ A InnerError szolgáltatásspecifikus a hibával kapcsolatos információkat tar
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| Kód | string | A hibaüzenet. |
+| code | string | A hibaüzenet. |
 
 A geometriája objektum geometriai a geokerítések lejárt a kérelemben szereplő felhasználó atáridő azonosítóit sorolja fel. A geometriája objektum geometriai elemek a következő tulajdonságokkal rendelkezik: 
 
 | Tulajdonság | Típus | Leírás |
 |:-------- |:---- |:----------- |
-| az eszközazonosító | string | Eszköz azonosítója. |
-| távolságskála | string | <p>A geokerítésen legközelebbi szegélyének és a koordinátán közötti távolság. Pozitív azt jelenti, hogy a koordináta kívül a geokerítésen. Ha a koordináta kívül esik a geokerítésen, de több mint searchBuffer, erről a legközelebbi geokerítésen szegély értékét, majd értéke 999 közötti. Negatív azt jelenti, hogy a koordináta a geokerítésen belül. Ha a koordináta belül a sokszög, de több mint searchBuffer, erről a legközelebbi geokerítések szegély értékét, majd értéke-999. Egy érték 999 azt jelenti, hogy nincs-e nagyszerű magabiztosan a koordináta is a geokerítésen kívül esik. Egy érték-999 azt jelenti, hogy nincs-e nagyszerű magabiztosan a koordináta is a geokerítésen belül van.<p> |
+| deviceid | string | Eszköz azonosítója. |
+| distance | string | <p>A geokerítésen legközelebbi szegélyének és a koordinátán közötti távolság. Pozitív azt jelenti, hogy a koordináta kívül a geokerítésen. Ha a koordináta kívül esik a geokerítésen, de több mint searchBuffer, erről a legközelebbi geokerítésen szegély értékét, majd értéke 999 közötti. Negatív azt jelenti, hogy a koordináta a geokerítésen belül. Ha a koordináta belül a sokszög, de több mint searchBuffer, erről a legközelebbi geokerítések szegély értékét, majd értéke-999. Egy érték 999 azt jelenti, hogy nincs-e nagyszerű magabiztosan a koordináta is a geokerítésen kívül esik. Egy érték-999 azt jelenti, hogy nincs-e nagyszerű magabiztosan a koordináta is a geokerítésen belül van.<p> |
 | geometryid |string | Egyedi azonosítója a geokerítésen geometriai azonosítja. |
 | nearestlat | szám | A legközelebbi pont a geometriai, földrajzi szélessége |
 | nearestlon | szám | A legközelebbi pont a geometriai, földrajzi hosszúság. |
@@ -159,7 +159,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | String] | A kérelemben szereplő felhasználó atáridő lejárt a geokerítésen geometriai azonosítója listája. |
-| geometriája | geometriája] |Az időkorlát geometriája a koordináta tartalmazó listák helyezze, vagy átfedésben vannak a searchBuffer pozíciója körül. |
+| geometries | geometriája] |Az időkorlát geometriája a koordináta tartalmazó listák helyezze, vagy átfedésben vannak a searchBuffer pozíciója körül. |
 | invalidPeriodGeofenceGeometryId | String]  | Geometriai azonosítója, amely szerepel a kérelemben szereplő felhasználó atáridő időtartam érvénytelen. a geokerítésen listája. |
 | isEventPublished | logikai | Igaz értéket legalább egy esemény közzétételekor az Azure Maps esemény előfizető, false (hamis), ha nincs esemény közzé van téve az Azure Maps esemény előfizető. |
 
