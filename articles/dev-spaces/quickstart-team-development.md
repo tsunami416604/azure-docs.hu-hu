@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Tárolók és mikroszolgáltatások az Azure-csapat a Kubernetes-fejlesztés
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: jeconnoc
-ms.openlocfilehash: 74ed1981ba6bf62413d7d7bfd51282eb04afd403
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: e9f9198f8e086bee6c6b02b67ae7dd9cf523416c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393405"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480362"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: A Kubernetes Azure-fejlesztési szóközzel csoportos fejlesztése
 
@@ -92,6 +92,8 @@ cd charts/
 helm init --wait
 helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
 ```
+> [!Note]
+> **Ha az RBAC-kompatibilis fürtöt használ**, konfiguráljon [a tiller valóban által használt szolgáltatásfiók](https://helm.sh/docs/using_helm/#role-based-access-control). Ellenkező esetben `helm` parancsok sikertelenek lesznek.
 
 A `helm install` parancs több percet is igénybe vehet. A parancs kimenete a fürthöz, amikor elkészült, telepített minden szolgáltatás állapotát jeleníti meg:
 

@@ -9,18 +9,18 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 0c492424e67853f7cb4a017fb4215d38a555a8a4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 07b86138a95853673b5d54e272b40af41d58f418
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545045"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475944"
 ---
 # <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>Gyors útmutató: Készítse elő és az adatok megjelenítése az Azure Machine Learning kódírás nélkül
 
-Készítse elő az adatok és megjelenítése a fogd és vidd vizuális felületen (előzetes verzió) az Azure Machine Learning. A használni kívánt adatok különböző autót adatokat, például márkája, típusa, műszaki specifikációk, és ár-bejegyzéseket tartalmaz.  
+Készítse elő az adatok és megjelenítése a fogd és vidd vizuális felületen (előzetes verzió) az Azure Machine Learning. A használni kívánt adatok különböző autót adatokat, például márkája, típusa, műszaki specifikációk, és ár-bejegyzéseket tartalmaz. Ez a rövid útmutató végén fogja ezeket az adatokat felhasználhatja a előrejelzésére egy autó árát. 
 
-Ebben a rövid útmutatóban fog ismerje meg, és előkészíti az adatokat:
+Machine learning-modell betanításához birtokában megértéséhez, valamint az adatok előkészítéséhez.  Ebben a rövid útmutatóban lesz:
 
 - Adja hozzá, és az adatok előnézetének megtekintéséhez az első kísérlet létrehozása
 - Eltávolítja a hiányzó értékeket az adatok előkészítése
@@ -66,11 +66,11 @@ A vizuális felhasználói felületet eszköz Itt adható meg egy interaktív, v
 
 ## <a name="add-data"></a>Adatok hozzáadása
 
-Az első lépésben, a machine Learning van szüksége az adatok. Több mintaadathalmazainak ezen a felületen, amelyet használhat, vagy adatokat számos más forrásból is importálhat. Ebben a példában a mintaadatkészlettel használni kívánt **Automobile price data (Raw)**. 
+Az első lépésben, a machine Learning van szüksége az adatok. Több mintaadathalmazainak ezen a felületen, amelyet használhat, vagy adatokat számos más forrásból is importálhat. Ebben a példában a mintaadatkészlettel használni kívánt **Automobile price data (Raw)** . 
 
 1. A kísérletvászontól balra az adathalmazokat és modulokat tartalmazó paletta látható. Válassza ki **mentett adatkészletek** majd **minták** a rendelkezésre álló mintaadatkészletek megtekintéséhez.
 
-1. Válassza ki az adatkészletet **Automobile price data (raw)**, és húzza a vászonra.
+1. Válassza ki az adatkészletet **Automobile price data (raw)** , és húzza a vászonra.
 
    ![Húzza a vászonra adatok](./media/ui-quickstart-run-experiment/drag-data.png)
 
@@ -131,7 +131,7 @@ Most, hogy az első kísérlet futtatása jelenítheti meg az adatokat, hogy tö
 
      ![Az adatok előnézete](./media/ui-quickstart-run-experiment/preview-data.gif)
 
-1. Kattintson az egyes oszlopok, hogy az adatkészlet többet.
+1. Kattintson az egyes oszlopok ismerje meg jobban az adatkészlet, és gondolja, hogy ezeket az oszlopokat egy autó árának előrejelzése hasznos lesz.
 
 ## <a name="prepare-data"></a>Adatok előkészítése
 
@@ -176,7 +176,7 @@ Először távolítsa el a **normalized-losses** oszlopot teljesen.
 
 ### <a name="clean-missing-data"></a>Hiányzó adatok tisztítása
 
-Adjon hozzá egy másik modul, amely eltávolítja az összes többi sort, amelyből adatok hiányoznak.
+Amikor egy modell betanításához kell valamit a hiányzó adatokra vonatkozó.  Ebben az esetben fogja hozzáadni egy modul az összes többi sort, amelyből adatok hiányoznak.  
 
 1. Típus **tisztaként** a keresőmezőbe keresése a **Clean Missing Data** modul.
 
@@ -216,7 +216,7 @@ Végrehajtott módosítások a modulok a kísérlet során, mivel a állapota me
 
     Jelenleg 193 sorok és oszlopok 25.
 
-    Amikor rákattint a **num-az-ajtók** még 2 egyedi értékeket, de a hiányzó értékek 0 most már megjelenik.  
+    Amikor rákattint a **num-az-ajtók** még 2 egyedi értékeket, de a hiányzó értékek 0 most már megjelenik. Kattintson végig a többi megtekintéséhez, hogy nincsenek-e hiányzó értékek az adatkészletet a bal oldali oszlop. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -228,7 +228,7 @@ Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 
 - Adja hozzá, és az adatok előnézetének megtekintéséhez az első kísérlet létrehozása
 - Eltávolítja a hiányzó értékeket az adatok előkészítése
-- Az eredményül kapott adatok megjelenítése
+- Az előkészített adatok megjelenítése
 
 Továbbra is az oktatóanyag az adatok felhasználásához előrejelzésére egy autó árát.
 

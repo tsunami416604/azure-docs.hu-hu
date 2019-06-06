@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 5ee6e9aefb235feb28468798c3bd6b107f8c7c49
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2f25267b95e9ed5f7d5f6e6373fb9e3807927a7f
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244041"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735348"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Oktatóanyag: Azure Time Series Insights egyoldalas webalkalmazás létrehozása
 
@@ -126,7 +126,7 @@ Mielőtt az alkalmazás létrehozásához, az Azure ad-vel kell regisztrálni. R
 
    1. Állítsa vissza a hozzászólás alatt a három sor `"PROD RESOURCE LINKS"` a függőségeket a FEJLESZTÉSTŐL az éles környezetbe váltás. Tegye megjegyzésbe a hozzászólás alatt a három sor `"DEV RESOURCE LINKS"`.
 
-      [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
+      [!code-html[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
 
       A függőségek az alábbi példához hasonlóan kell ellátva:
 
@@ -178,7 +178,7 @@ Mielőtt az alkalmazás létrehozásához, az Azure ad-vel kell regisztrálni. R
 
    1. A Visual studióban megjelenik a napló sikeres közzététel **kimeneti** ablaktáblán. Az üzembe helyezés befejezése a Visual Studio egy böngészőlapon nyílik meg a webalkalmazás, és kéri a bejelentkezéshez. A sikeres bejelentkezést követően a Time Series Insights vezérlőelemek adatokkal van feltöltve.
 
-## <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.  
+## <a name="troubleshoot"></a>Hibaelhárítás  
 
 Hibakód/állapot | Leírás
 ---------------------| -----------

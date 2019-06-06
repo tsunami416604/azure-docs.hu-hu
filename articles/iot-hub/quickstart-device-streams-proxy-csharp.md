@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub eszköz C adatfolyamok rövid SSH vagy RDP (előzetes verzió) |} A Microsoft Docs
-description: Ebben a rövid útmutatóban két minta futtatása lesz C# alkalmazásokat, amelyek az RDP/SSH-forgatókönyvek engedélyezése egy IoT Hub eszköz adatfolyam felett.
+title: 'Az Azure IoT Hub eszköz Streamek C# gyors útmutató: az SSH és az RDP-t (előzetes verzió) |} A Microsoft Docs'
+description: Ebben a rövid útmutatóban a két minta futtatása C# alkalmazásokat, amelyek SSH- és RDP-forgatókönyvek engedélyezése egy IoT Hub eszköz adatfolyam felett.
 author: rezasherafat
 manager: briz
 ms.service: iot-hub
@@ -10,39 +10,39 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 514c2e0ea1ef33406c6633064434239d8bdd0e3f
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 1d5fbb410a61419f6f6d2e80cdb1a16c07672fe9
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65832991"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66733342"
 ---
-# <a name="quickstart-sshrdp-over-an-iot-hub-device-stream-using-a-c-proxy-application-preview"></a>Gyors útmutató: Az IoT Hub eszköz stream használatához képest SSH vagy RDP- C# proxyalkalmazást (előzetes verzió)
+# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Gyors útmutató: SSH és az RDP engedélyezése egy IoT Hub eszköz adatfolyam felett használatával egy C# proxyalkalmazást (előzetes verzió)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
 A Microsoft Azure IoT Hub jelenleg támogatja az eszköz adatfolyamok, mint egy [előzetes verziójú funkció](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Az IoT Hub eszköz Streamek](iot-hub-device-streams-overview.md) szolgáltatás és eszköz alkalmazások biztonságos és tűzfalbarát módon kommunikálnak. A rövid útmutató magában foglalja a két C# programok, amelyek lehetővé teszik az ügyfél-kiszolgáló alkalmazási forgalmat (például az SSH és az RDP-t) az IoT hubon keresztül létrehozott eszköz adatfolyam lesz elküldve. Lásd: [helyi Proxy minta SSH vagy RDP](iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp) áttekintését, a telepítés.
+[Az IoT Hub eszköz Streamek](iot-hub-device-streams-overview.md) szolgáltatás és eszköz alkalmazások biztonságos és tűzfalbarát módon kommunikálnak. A rövid útmutató magában foglalja a két C# alkalmazásokat, amelyek lehetővé teszik az ügyfél és kiszolgáló alkalmazási forgalmat (például a Secure Shell [SSH] és Remote Desktop Protocol [RDP] az IoT hubon keresztül létrehozott eszköz adatfolyam lesz elküldve. A telepítő áttekintését lásd: [mintaalkalmazás helyi proxy SSH vagy RDP](iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp).
 
-Először ismertetünk a telepítő az SSH (22-es port használatával). Azt majd ismertetjük, hogyan módosíthatja a telepítő port RDP-hez. Mivel az eszköz Streamek alkalmazás és a protokoll független, egyazon mintából módosítható, hogy más típusú alkalmazás forgalom kezelésére. Ez általában csak módosítása is hozzátartozik a kommunikációhoz használt portot, az importálni kívánt alkalmazás által használt.
+Ez a cikk először a témakör ismerteti a telepítés az SSH (22-es port használatával), és ezután ismerteti, hogyan lehet módosítani a telepítő port RDP-hez. Mivel az eszköz Streamek alkalmazás - és a protokoll-független, egyazon mintából módosítható, hogy más típusú alkalmazás forgalom kezelésére. Ezt a módosítást általában csak módosítása, hogy a kívánt alkalmazásra használja a kommunikációhoz használt portot is hozzátartozik.
 
-## <a name="how-it-works"></a>A szolgáltatás működése
+## <a name="how-it-works"></a>Működés
 
-Az alábbi ábra bemutatja, hogyan az eszköz és szolgáltatás helyi proxy programok ebben a példában SSH-ügyfél és az SSH démon között teljes körű kapcsolat lehetővé teszi a telepítés. Itt feltételezzük, hogy a démon fut-e az eszköz helyi proxyként ugyanazon az eszközön.
+A következő ábra azt szemlélteti, hogyan lehetővé a helyi eszköz és szolgáltatás helyi proxyalkalmazásokba ebben a példában a végpontok közötti kapcsolat az SSH-ügyfél és az SSH démon folyamatok közötti. Itt feltételezzük, hogy a démon fut-e az eszköz helyi proxy alkalmazásként ugyanazon az eszközön.
 
-![Helyi proxy telepítése](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
+![Helyi proxy alkalmazás telepítése](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
 
-1. Szolgáltatás helyi proxy csatlakozik az IoT hubhoz, és kezdeményezi a céleszköz, az eszköz azonosítójával eszköz adatfolyam
+1. A szolgáltatás helyi proxyalkalmazást csatlakozik az IoT hubhoz, és kezdeményezi a céleszköz eszköz adatfolyam.
 
-2. Eszköz helyi proxy a stream kezdeményezés kézfogás befejeződött, és az IoT Hub a Szolgáltatásoldali streamvégponton keresztül egy teljes körű streamelési alagutat létesít.
+1. Az eszköz helyi proxyalkalmazást a stream kezdeményezés kézfogás befejeződött, és az IoT hub a Szolgáltatásoldali streamvégponton keresztül egy teljes körű streamelési alagutat létesít.
 
-3. Eszköz helyi proxy csatlakozik-e az SSH démon (SSHD) az eszközön a 22-es porton (konfigurálható, a port leírtak szerint a [futtatása az eszköz helyi Proxy szakasz](#run-the-device-local-proxy).
+1. Az eszköz helyi proxyalkalmazást csatlakozik az SSH démon, amely az eszköz a 22-es porton figyel. Ez a beállítás nem konfigurálható, a "Futtatása az eszköz helyi proxyalkalmazást" szakaszban leírtak szerint.
 
-4. Szolgáltatás helyi proxy várja az új SSH-kapcsolatok a felhasználó által a kijelölt porton, amely ebben az esetben 2222-es port (ez történik akkor is konfigurálható, leírtak szerint a [futtassa a szolgáltatás helyi Proxy szakasz](#run-the-service-local-proxy). SSH-ügyfél-n keresztül csatlakozó felhasználó, az alagút lehetővé teszi a forgalmát az SSH-ügyfél és a szolgáltatás programok között.
+1. A szolgáltatás helyi proxyalkalmazást megvárja a felhasználó új SSH-kapcsolatokat, a kijelölt porton, amely ebben az esetben 2222-es port. Ez a beállítás nem konfigurálható, az "A szolgáltatás helyi proxy-alkalmazások futtatása" szakaszban leírtak szerint. Amikor a felhasználó az SSH-ügyfél-n keresztül csatlakozik, az alagút lehetővé teszi, hogy SSH-alkalmazás forgalmat az SSH-ügyfél és kiszolgáló alkalmazás közötti adatátvitelhez.
 
 > [!NOTE]
-> SSH-forgalmat küld a rendszer a stream keresztül fog bújtatni küld a rendszer közvetlenül a szolgáltatás és eszköz közötti helyett az IoT Hub streamvégponton keresztül. További információkért lásd a szakasz [eszköz streameli előnyöket](./iot-hub-device-streams-overview.md#benefits).
+> SSH-forgalmat, egy eszköz stream keresztül küldött az IoT hub folyamatos átviteli végponton keresztül bújtatott helyett közvetlenül a szolgáltatás és az eszközök között küldött. További információkért lásd: a [az Iot Hub eszköz Streamek előnyei](iot-hub-device-streams-overview.md#benefits).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,29 +50,28 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Előzetes verziójának eszköz Streamek jelenleg csak a az IoT-központok létrehozni a következő régiókban támogatott:
+* Előzetes verziójának eszköz Streamek jelenleg csak az IoT hub, az alábbi régiókban létrehozott támogatott:
 
-*  **USA középső RÉGIÓJA**
+  * USA középső régiója
+  * USA középső RÉGIÓJA – EUAP
 
-*  **USA középső RÉGIÓJA – EUAP**
+* Ebben a rövid útmutatóban futtató két mintaalkalmazásból használatával írt C#. A .NET Core SDK 2.1.0, vagy később a fejlesztői gépén van szüksége.
 
-A rövid útmutatóban futtatott két mintaalkalmazás a C# használatával készült. A fejlesztői gépen szükség lesz a .NET Core SDK 2.1.0-s vagy újabb változatára.
+  Letöltheti a [.NET Core SDK a .NET használatával több platformon](https://www.microsoft.com/net/download/all).
 
-Letöltheti a [.NET Core SDK a .NET használatával több platformon](https://www.microsoft.com/net/download/all).
+* Ellenőrizze a jelenlegi verziója C# a fejlesztői gépen, a következő paranccsal:
 
-A C# aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
+    ```
+    dotnet --version
+    ```
 
-```
-dotnet --version
-```
+* Futtassa a következő parancsot az Azure IoT-bővítmény hozzáadása a Cloud Shell-példány Azure CLI-hez. Az IOT-bővítmény hozzáadja az IoT Hub, IoT Edge és IoT Device Provisioning Service (DPS) – az Azure CLI parancsok.
 
-Futtassa a következő parancsot a Microsoft Azure IoT-bővítmény hozzáadása a Cloud Shell-példány Azure CLI-hez. Az IOT-bővítmény hozzáadása Azure CLI-vel az IoT Hub, IoT Edge és IoT Device Provisioning Service (DPS) parancsok.
+   ```azurecli-interactive
+   az extension add --name azure-cli-iot-ext
+   ```
 
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
-
-Töltse le a C#-mintaprojektet a https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip címről, és bontsa ki a ZIP-archívumot.
+* [Töltse le a mintát C# projekt](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip), és bontsa ki a ZIP-archívumot.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -80,41 +79,41 @@ Töltse le a C#-mintaprojektet a https://github.com/Azure-Samples/azure-iot-samp
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a rövid útmutatóban az Azure Cloud Shell használatával regisztrál egy szimulált eszközt.
+Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a rövid útmutatóban az Azure Cloud Shellben használhatja egy szimulált eszköz regisztrálásához.
 
-1. Futtassa a következő parancsot az Azure Cloud Shellben, hozza létre az eszközidentitást.
+1. Hozza létre az eszközidentitást, a Cloud Shellben futtassa az alábbi parancsot:
 
-   **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
-
-   **Sajáteszköz**: Ez az eszköz a megadott név. Használjon Sajáteszköz látható módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
+   > [!NOTE]
+   > * Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub választott név.
+   > * Használat *Sajáteszköz*látható módon. A regisztrált eszköz a megadott név legyen. Ha úgy dönt, hogy az eszköz egy másik nevet, használja során ez a cikk ezt a nevet, és az eszköz nevére a mintaalkalmazásból ahhoz, hogy futtatni őket.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
     ```
 
-2. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
+1. Az első a *eszköz kapcsolati karakterláncának* az imént regisztrált eszközhöz, futtassa az alábbi parancsokat a Cloud Shellben:
 
-   **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
+   > [!NOTE]
+   > Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub választott név.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
     ```
 
-    Jegyezze fel az eszköz kapcsolati karakterláncot, amely a következő példához hasonlóan néz ki:
+    Megjegyzés: az eszköz kapcsolati karakterláncának későbbi használatra ebben a rövid útmutatóban. Az alábbi példához hasonlóan néz ki:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    Ezt az értéket használni fogja a rövid útmutató későbbi részében.
+1. Csatlakoztatása az IoT hubhoz, és a egy eszköz stream létesít, is szüksége van a *szolgáltatáskapcsolati karakterláncra* az IoT hub a Szolgáltatásoldali kérelem engedélyezéséhez. Az alábbi parancs lekéri az IoT hub ezt az értéket:
 
-3. Emellett a *szolgáltatáskapcsolati karakterláncra* az IoT hub a Szolgáltatásoldali alkalmazás csatlakoztatása az IoT hubhoz, és létrehozza a eszköz stream engedélyezése. Az alábbi parancs lekéri az IoT hub ezt az értéket:
-
-   **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
+   > [!NOTE]
+   > Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub választott név.
 
     ```azurecli-interactive
     az iot hub show-connection-string --policy-name service --name YourIoTHubName
     ```
 
-    Jegyezze fel, a visszaadott érték, amely a következőhöz hasonló:
+    Megjegyzés: a visszaadott érték az ebben a rövid útmutató későbbi használatra. Az alábbi példához hasonlóan néz ki:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -122,15 +121,15 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 Ebben a szakaszban kapcsolatot hoz létre az SSH-forgalom egy teljes körű stream.
 
-### <a name="run-the-device-local-proxy"></a>Az eszköz helyi proxy futtatása
+### <a name="run-the-device-local-proxy-application"></a>Az eszköz helyi proxy-alkalmazások futtatása
 
-Navigáljon a `device-streams-proxy/device` a kicsomagolt projektet tartalmazó mappában. Szüksége lesz a következő információkat hasznos:
+Nyissa meg a *eszköz-adatfolyamok-proxy/eszköz* könyvtárat a kicsomagolt projektet tartalmazó mappában. Tartsa praktikus a következő információkat:
 
 | Argumentum neve | Hodnota argumentu |
 |----------------|-----------------|
-| `deviceConnectionString` | A kapcsolati karakterláncot a korábban létrehozott eszköz. |
-| `targetServiceHostName` | Az IP-címet, ahol az SSH-kiszolgáló figyel (Ez akkor lehet `localhost` Ha a futtató helyi eszköz proxy azonos IP-cím). |
-| `targetServicePort` | A protokoll által használt port (alapértelmezés szerint ez lenne az SSH-hoz a 22-es port).  |
+| `deviceConnectionString` | A kapcsolati karakterláncot, az eszköz, amelyet korábban hozott létre. |
+| `targetServiceHostName` | Az IP-cím, ahol az SSH-kiszolgáló figyel. A cím lenne `localhost` , mintha a hol futnak az eszköz helyi proxyalkalmazást azonos IP-cím. |
+| `targetServicePort` | Az alkalmazás protokoll által használt port (az ssh-t, alapértelmezés szerint ez lenne 22-es port).  |
 
 Fordítsa le és futtassa a kódot az alábbiak szerint:
 
@@ -141,22 +140,22 @@ cd ./iot-hub/Quickstarts/device-streams-proxy/device/
 dotnet build
 
 # Run the application
-# In Linux/MacOS
+# In Linux or macOS
 dotnet run $deviceConnectionString localhost 22
 
 # In Windows
 dotnet run %deviceConnectionString% localhost 22
 ```
 
-### <a name="run-the-service-local-proxy"></a>Futtassa a helyi szolgáltatási proxy
+### <a name="run-the-service-local-proxy-application"></a>A szolgáltatás helyi proxy-alkalmazások futtatása
 
 Navigáljon a `device-streams-proxy/service` a kicsomagolt projektet tartalmazó mappában. Szüksége lesz a következő információkat hasznos:
 
-| Paraméternév | Paraméter értéke |
+| Paraméter neve | Hodnota parametru |
 |----------------|-----------------|
 | `iotHubConnectionString` | Az IoT hub szolgáltatáskapcsolati karakterláncát. |
 | `deviceId` | A korábban létrehozott eszköz azonosítóját. |
-| `localPortNumber` | Eltérő helyi portokat, ha az SSH-ügyfél csatlakozni fognak. Ebben a példában 2222-es port használunk, de ezt más tetszőleges számokat módosítása. |
+| `localPortNumber` | Helyi port, amely az SSH-ügyfél csatlakozni fog. Ebben a példában 2222-es port használunk, de használhat más tetszőleges számát. |
 
 Fordítsa le és futtassa a kódot az alábbiak szerint:
 
@@ -167,48 +166,48 @@ cd ./iot-hub/Quickstarts/device-streams-proxy/service/
 dotnet build
 
 # Run the application
-# In Linux/MacOS
+# In Linux or macOS
 dotnet run $serviceConnectionString MyDevice 2222
 
 # In Windows
 dotnet run %serviceConnectionString% MyDevice 2222
 ```
 
-### <a name="run-ssh-client"></a>SSH-ügyfél futtatása
+### <a name="run-the-ssh-client"></a>Az SSH-ügyfél
 
-Most már az SSH-ügyfél programot használ, és csatlakozzon a 2222-es port (és nem az SSH démon közvetlenül) proxyt helyi szolgáltatás.
+Most már az SSH-ügyfélalkalmazás használata, és csatlakozzon a helyi szolgáltatás-proxyalkalmazást (helyett az SSH démon közvetlenül) 2222-es porton.
 
 ```
 ssh <username>@localhost -p 2222
 ```
 
-Ezen a ponton, megjelenik a hitelesítő adatait az SSH-bejelentkezési felület.
+Ezen a ponton az SSH bejelentkezési ablak kéri, hogy adja meg hitelesítő adatait.
 
-A konzol kimenetét, az a Szolgáltatásoldali (a szolgáltatás helyi proxy 2222-es portot figyeli):
+Konzolkimenet Szolgáltatásoldali (2222-es portot figyeli a szolgáltatás helyi proxy-alkalmazások):
 
-![Helyi szolgáltatás proxy-kimenet](./media/quickstart-device-streams-proxy-csharp/service-console-output.png)
+![Proxy szolgáltatás helyi alkalmazás kimenete](./media/quickstart-device-streams-proxy-csharp/service-console-output.png)
 
-Az eszköz helyi proxy, amelyhez csatlakozik, az SSH démon a konzolkimenetet `IP_address:22`:
+Az eszköz helyi proxy alkalmazásra, amelyhez csatlakozik, az SSH démon konzolkimenetet *IP_address:22*:
 
-![Eszköz helyi proxy kimenet](./media/quickstart-device-streams-proxy-csharp/device-console-output.png)
+![Eszköz helyi proxy alkalmazás kimenete](./media/quickstart-device-streams-proxy-csharp/device-console-output.png)
 
-Az SSH-ügyfél program konzolkimenetet (SSH-ügyfél kommunikál az SSH démon ahol szolgáltatás helyi proxy figyeli a 22-es porton csatlakozik):
+Az SSH-ügyfélalkalmazás konzol kimenetét. Az SSH démon 22-es, porton csatlakozik a helyi szolgáltatási proxy alkalmazás figyel, amely kommunikál az SSH-ügyfél:
 
-![SSH-ügyfél program kimenete](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png)
+![SSH-ügyfél alkalmazás kimenete](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png)
 
 ## <a name="rdp-to-a-device-via-device-streams"></a>Egy eszköz eszköz Streamek keresztül RDP-vel
 
-A telepítő RDP nagyon hasonlít az SSH (lásd fent). Alapvetően kell használjon az RDP cél IP-cím és a 3389-es és RDP-ügyfél (az SSH-ügyfél) helyett.
+RDP-beállítások nagyon hasonlít a telepítő az SSH (fentebb leírt) számára. Az RDP-cél IP-cím használata, és helyette a 3389-es port és az RDP-ügyfél (helyett az SSH-ügyfél) használata.
 
-### <a name="run-the-device-local-proxy-rdp"></a>Futtassa az eszköz helyi proxy (RDP)
+### <a name="run-the-device-local-proxy-application-rdp"></a>Futtassa az eszköz helyi-proxyalkalmazást (RDP)
 
-Navigáljon a `device-streams-proxy/device` a kicsomagolt projektet tartalmazó mappában. Szüksége lesz a következő információkat hasznos:
+Nyissa meg a *eszköz-adatfolyamok-proxy/eszköz* könyvtárat a kicsomagolt projektet tartalmazó mappában. Tartsa praktikus a következő információkat:
 
 | Argumentum neve | Hodnota argumentu |
 |----------------|-----------------|
-| `DeviceConnectionString` | A kapcsolati karakterláncot a korábban létrehozott eszköz. |
-| `targetServiceHostName` | Az állomásnév vagy IP-címet, ahol az RDP-kiszolgáló fut (Ez akkor lehet `localhost` Ha az eszköz helyi proxy futtató ugyanazon IP). |
-| `targetServicePort` | A protokoll által használt port (alapértelmezés szerint ez lenne az RDP a 3389-es port).  |
+| `DeviceConnectionString` | A kapcsolati karakterláncot, az eszköz, amelyet korábban hozott létre. |
+| `targetServiceHostName` | Az állomásnév vagy IP-címet, ahol RDP-kiszolgáló fut-e. A cím lenne `localhost` , mintha a hol futnak az eszköz helyi proxyalkalmazást azonos IP-cím. |
+| `targetServicePort` | A portot használják a protokoll (RDP, alapértelmezés szerint ez lenne 3389-es port).  |
 
 Fordítsa le és futtassa a kódot az alábbiak szerint:
 
@@ -216,22 +215,22 @@ Fordítsa le és futtassa a kódot az alábbiak szerint:
 cd ./iot-hub/Quickstarts/device-streams-proxy/device
 
 # Run the application
-# In Linux/MacOS
+# In Linux or macOS
 dotnet run $DeviceConnectionString localhost 3389
 
 # In Windows
 dotnet run %DeviceConnectionString% localhost 3389
 ```
 
-### <a name="run-the-service-local-proxy-rdp"></a>Futtassa a helyi szolgáltatási proxyt (RDP)
+### <a name="run-the-service-local-proxy-application-rdp"></a>A szolgáltatás helyi proxyalkalmazást (RDP) futtatása
 
 Navigáljon a `device-streams-proxy/service` a kicsomagolt projektet tartalmazó mappában. Szüksége lesz a következő információkat hasznos:
 
-| Paraméternév | Paraméter értéke |
+| Paraméter neve | Hodnota parametru |
 |----------------|-----------------|
 | `iotHubConnectionString` | Az IoT hub szolgáltatáskapcsolati karakterláncát. |
 | `deviceId` | A korábban létrehozott eszköz azonosítóját. |
-| `localPortNumber` | Eltérő helyi portokat, ha az SSH-ügyfél csatlakozni fognak. Ebben a példában 2222-es port használunk, de ezt más tetszőleges számokat módosítása. |
+| `localPortNumber` | Helyi port, amely az SSH-ügyfél csatlakozni fog. Ebben a példában 2222-es port használunk, de ezt más tetszőleges számokat módosítása. |
 
 Fordítsa le és futtassa a kódot az alábbiak szerint:
 
@@ -242,7 +241,7 @@ cd ./iot-hub/Quickstarts/device-streams-proxy/service/
 dotnet build
 
 # Run the application
-# In Linux/MacOS
+# In Linux or macOS
 dotnet run $serviceConnectionString MyDevice 2222
 
 # In Windows
@@ -251,9 +250,9 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 ### <a name="run-rdp-client"></a>RDP-ügyfél
 
-Most már használhatja az RDP-ügyfélprogram, és csatlakozzon a helyi szolgáltatási proxy 2222-es porton (Ez a korábban kiválasztott egy tetszőleges szabad portot volt).
+Most már az RDP-ügyfélalkalmazás használata, és csatlakozzon a helyi szolgáltatás proxy-alkalmazások, a 2222-es porton (ez volt egy tetszőleges szabad portot, amely a korábban kiválasztott).
 
-![RDP csatlakozik a helyi szolgáltatási proxy](./media/quickstart-device-streams-proxy-csharp/rdp-screen-capture.png)
+![RDP csatlakozik a helyi szolgáltatás proxy-alkalmazások](./media/quickstart-device-streams-proxy-csharp/rdp-screen-capture.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -261,9 +260,9 @@ Most már használhatja az RDP-ügyfélprogram, és csatlakozzon a helyi szolgá
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid, rendelkezik beállítása egy IoT hubot, regisztrált egy eszközt, egy eszköz - és szolgáltatás helyi proxy program létesíteni egy eszköz stream IoT hubon keresztül telepített és alagutat az SSH vagy RDP-forgalmat a proxyk használt. Az azonos paradigmát más ügyfél/kiszolgáló irányú protokollok (ahol kiszolgálón futtatja az eszközön, például az SSH démon) képes kezelni.
+Ebben a rövid, már beállítása egy IoT hubot, regisztrált egy eszközt, telepített helyi eszköz és szolgáltatás helyi proxy alkalmazásai létrehozására, az IoT hubon keresztül eszköz adatfolyam és SSH vagy RDP-forgalom a proxy-alkalmazások segítségével. Az azonos paradigmát más ügyfél – kiszolgáló irányú protokollok, ahol a kiszolgáló fut-e az eszközön (például az SSH démon) képes kezelni.
 
-További információ az eszköz adatfolyamok az alábbi hivatkozásokat:
+Eszköz Streamek kapcsolatos további információkért lásd:
 
 > [!div class="nextstepaction"]
 > [Eszköz Streamek áttekintése](./iot-hub-device-streams-overview.md)

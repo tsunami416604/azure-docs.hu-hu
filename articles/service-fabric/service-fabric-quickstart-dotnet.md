@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: aebc308f6bfaddbe8e9b430096cb6698d7dd06c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d7c0f19d6680eef7492faaaab0d45e0c70011f01
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773156"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428079"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Gyors útmutató: Egy .NET Service fabric reliable services-alkalmazás üzembe helyezése
 
@@ -33,7 +33,7 @@ Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe első .NET-alkalmaz�
 Az alkalmazás használatával a következőkkel ismerkedhet meg:
 
 * Alkalmazás létrehozása a .NET és a Service Fabric használatával
-* Az ASP.NET Core használata webes kezelőfelületként
+* ASP.NET core használata webes kezelőfelület
 * Alkalmazásadatok tárolása állapotalapú szolgáltatásban
 * Alkalmazás helyi hibakeresése
 * Az alkalmazás horizontális felskálázása több csomópontra
@@ -43,7 +43,7 @@ Az alkalmazás használatával a következőkkel ismerkedhet meg:
 
 A gyorsútmutató elvégzéséhez:
 
-1. [Telepítse a Visual Studio 2017-et](https://www.visualstudio.com/) az **Azure-fejlesztési**, valamint az **ASP.NET- és webfejlesztési** számítási feladatokkal.
+1. [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) az a **Azure-fejlesztési** és **ASP.NET és webfejlesztési** számítási feladatokhoz.
 2. [A Git telepítése](https://git-scm.com/)
 3. [Telepítse a Microsoft Azure Service Fabric SDK-t](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
 4. Futtassa a következő parancsot, amellyel engedélyezheti a Visual Studio üzembe helyezését a helyi Service Fabric-fürtön:
@@ -87,11 +87,11 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="run-the-application-locally"></a>Az alkalmazás helyi futtatása
 
-A Start menüben kattintson a jobb gombbal a Visual Studio ikonra, majd válassza a **Futtatás rendszergazdaként** lehetőséget. Ha csatlakoztatni szeretné a hibakeresőt a szolgáltatásaihoz, rendszergazdaként kell futtatnia a Visual Studiót.
+A Start menüben kattintson a jobb gombbal a Visual Studio ikonra, majd válassza a **Futtatás rendszergazdaként** lehetőséget. Társítsa a hibakeresőt a szolgáltatásokhoz, akkor kell futtatnia a Visual Studiót rendszergazdaként.
 
 Nyissa meg a **Voting.sln** Visual Studio-megoldást a klónozott adattárból.
 
-Alapértelmezés szerint a szavazóalkalmazás a 8080-as portot figyeli.  Az alkalmazásport a */VotingWeb/PackageRoot/ServiceManifest.xml* fájlban van beállítva.  Az alkalmazásport a **Végpont** elem **Port** attribútumának átírásával módosítható.  Az alkalmazás helyi üzembe helyezéséhez és futtatásához az alkalmazásportnak a számítógépen megnyitva és elérhető állapotban kell lennie.  Ha megváltoztatja az alkalmazásportot, a „8080”-at az egész cikkben helyettesítse be az új alkalmazásport értékével.
+Alapértelmezés szerint a szavazóalkalmazás a 8080-as portot figyeli.  Az alkalmazásport a */VotingWeb/PackageRoot/ServiceManifest.xml* fájlban van beállítva.  Az alkalmazásport a **Végpont** elem **Port** attribútumának átírásával módosítható.  Az alkalmazás helyi üzembe helyezéséhez és futtatásához az alkalmazásportnak a számítógépen megnyitva és elérhető állapotban kell lennie.  Ha megváltoztatja az alkalmazásportot, a "8080" Ez a cikk során cserélje le az új alkalmazásport értékével.
 
 Az alkalmazás üzembe helyezéséhez nyomja le az **F5** billentyűt.
 
@@ -113,7 +113,7 @@ A szavazóalkalmazás két szolgáltatásból áll:
 
 ![Alkalmazásdiagram](./media/service-fabric-quickstart-dotnet/application-diagram.png)
 
-Amikor szavazatot adnak le az alkalmazásban, az alábbi eseményekre kerül sor:
+Amikor szavazatot adnak le az alkalmazásban, az alábbi események történnek:
 
 1. A JavaScript HTTP PUT kérelemként elküldi a szavazati kérést a webes API-nak a webes kezelőfelületi szolgáltatásban.
 
@@ -123,7 +123,7 @@ Amikor szavazatot adnak le az alkalmazásban, az alábbi eseményekre kerül sor
 
 ## <a name="debug-in-visual-studio"></a>Hibakeresés a Visual Studióban
 
-Az alkalmazásnak megfelelően kellene futnia, de a hibakeresővel megtekintheti, hogyan működnek az alkalmazás fő részei. Az alkalmazás Visual Studióban történő hibakeresése során egy helyi Service Fabric fejlesztési fürtöt használ. Arra is lehetősége van, hogy a hibakeresési folyamatot a saját forgatókönyvéhez igazítsa. Ebben az alkalmazásban az adatokat a háttérszolgáltatás tárolja egy megbízható szótárban. A Visual Studio alapértelmezés szerint a hibakereső leállításakor eltávolítja az alkalmazást. Az alkalmazás eltávolításával a háttérszolgáltatásban tárolt adatok is el lesznek távolítva. Ha szeretné megtartani az adatokat a hibakeresési munkamenetek között, akkor módosítania kell az **Application Debug Mode** (Alkalmazás hibakeresési módja) tulajdonságot a **Voting** (Szavazás) projektben a Visual Studióban.
+Az alkalmazásnak megfelelően kellene futnia, de a hibakeresővel megtekintheti, hogyan működnek az alkalmazás fő részei. A Visual Studióban az alkalmazás hibakeresését, amikor egy helyi Service Fabric fejlesztési fürtöt használ. Beállíthatja a hibakeresési folyamatot a forgatókönyvéhez. Ebben az alkalmazásban az adatokat a háttérszolgáltatás tárolja egy megbízható szótárban. A Visual Studio alapértelmezés szerint a hibakereső leállításakor eltávolítja az alkalmazást. Az alkalmazás eltávolításával a háttérszolgáltatásban tárolt adatok is el lesznek távolítva. Ha szeretné megtartani az adatokat a hibakeresési munkamenetek között, akkor módosítania kell az **Application Debug Mode** (Alkalmazás hibakeresési módja) tulajdonságot a **Voting** (Szavazás) projektben a Visual Studióban.
 
 Ha szeretné megtekinteni, hogy mi történik a kódban, hajtsa végre a következő lépéseket:
 
@@ -132,23 +132,23 @@ Ha szeretné megtekinteni, hogy mi történik a kódban, hajtsa végre a követk
 2. Nyissa meg a **/VotingData/Controllers/VoteDataController.cs** fájlt, és állítson be egy töréspontot a webes API **Put** metódusában (54. sor).
 
 3. Térjen vissza a böngészőhöz, és kattintson egy szavazási lehetőségre vagy adjon meg egy újat. Az első töréspont a webes kezelőfelület API-vezérlőjében jelentkezik.
-   * A böngészőben futó JavaScript ekkor küld kérelmet a webes kezelőfelületi szolgáltatás API-vezérlőjének.
+   * Ez a lépés nem, ahol a böngészőben futó JavaScript kérelmet küld a webes API-vezérlő az előtér-szolgáltatás.
 
      ![Szavazási kezelőfelületi szolgáltatás hozzáadása](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-   * Elsőként hozza létre a ReverseProxyra mutató URL-címet a háttérszolgáltatás számára **(1)**.
-   * Ezután küldje el a HTTP PUT kérelmet a ReverseProxyhoz **(2)**.
-   * Végül küldje vissza a választ a háttérszolgáltatásból az ügyfélhez **(3)**.
+   * Elsőként hozza létre a ReverseProxyra mutató URL-címet a háttérszolgáltatás számára **(1)** .
+   * Ezután küldje el a HTTP PUT kérelmet a ReverseProxyhoz **(2)** .
+   * Végül küldje vissza a választ a háttérszolgáltatásból az ügyfélhez **(3)** .
 
 4. A folytatáshoz nyomja le az **F5** billentyűt.
    - Ha a böngésző kéri adjon olvasási és végrehajtási engedélyeket a ServiceFabricAllowedUsers csoportnak a hibakeresési módban.
-   - Ezzel elérte a háttérszolgáltatás töréspontját.
+   - A következővel: az a háttérszolgáltatás töréspontját.
 
      ![Szavazási háttérszolgáltatás hozzáadása](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
    - A metódus első sorában **(1)** a `StateManager` egy `counts` nevű megbízható szótárat kér le vagy ad meg.
    - A megbízható szótárakban tárolt értékekkel folytatott mindennemű interakcióhoz tranzakcióra van szükség, amelyet ez a using utasítás **(2)** hoz létre.
-   - A tranzakcióban frissítse a szavazási lehetőséghez tartozó kulcs értékét, majd véglegesítse a műveletet **(3)**. Ha a véglegesítési metódus visszatért, az adatok frissülnek a szótárban, és a fürt egyéb csomópontjaira is replikálódnak. Az adatok ettől fogva biztonságosan tárolódnak a fürtön, és a háttérszolgáltatás feladatait más csomópontok is átvehetik, míg az adatok továbbra is elérhetők maradnak.
+   - A tranzakcióban frissítse a szavazási lehetőséghez tartozó kulcs értékét, majd véglegesítse a műveletet **(3)** . Ha a véglegesítési metódus visszatért, az adatok frissülnek a szótárban, és a fürt egyéb csomópontjaira is replikálódnak. Az adatok ettől fogva biztonságosan tárolódnak a fürtön, és a háttérszolgáltatás feladatait más csomópontok is átvehetik, míg az adatok továbbra is elérhetők maradnak.
 5. A folytatáshoz nyomja le az **F5** billentyűt.
 
 A hibakeresési munkamenet leállításához nyomja le a **Shift+F5** billentyűkombinációt.
@@ -188,7 +188,7 @@ Az alkalmazás frissítéséhez tegye a következőket:
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 
 * Alkalmazás létrehozása a .NET és a Service Fabric használatával
-* Az ASP.NET Core használata webes kezelőfelületként
+* ASP.NET core használata webes kezelőfelület
 * Alkalmazásadatok tárolása állapotalapú szolgáltatásban
 * Alkalmazás helyi hibakeresése
 * Az alkalmazás horizontális felskálázása több csomópontra

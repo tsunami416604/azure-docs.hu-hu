@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bd90d315fd5590a8bd862a1a3397cf8c254fccc8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9e926ca2625f98522652ae7e7d245ecf2ed576c4
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714279"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688716"
 ---
 # <a name="what-is-azure-backup"></a>Mi az az Azure Backup?
 
@@ -32,7 +32,7 @@ Az Azure Backup legfontosabb értékelemeket nyújtja:
     - Az Azure Import/Export szolgáltatás használatával nagy mennyiségű adat importálása offline kezdeti biztonsági mentést hajt végre, ha nincs a bejövő adatok költséggel.  [További információk](backup-azure-backup-import-export.md).
 - **A biztonságos**: Az Azure Backup megoldásokat kínál az úton lévő és a tárolt adatok védelme.
 - **Alkalmazáskonzisztens biztonsági másolatok beolvasása**: Az alkalmazáskonzisztens biztonsági mentés azt jelenti, hogy a helyreállítási pont rendelkezik az összes szükséges adattal a biztonsági másolat visszaállításához. Az Azure Backup olyan alkalmazáskonzisztens biztonsági mentést nyújt, amely garantálja, hogy ne legyen szükség további javításokra az adatok visszaállításához. Az alkalmazáskonzisztens adatok visszaállítása rövidebb idő alatt végrehajtható, így gyorsan visszatérhet egy működőképes állapotba.
-- **Rövid és hosszú távú megőrzése**: Recovery Services-tárolókat rövid és hosszú távú adatmegőrzés is használhat. Az Azure nem korlátozza az adatok megőrzési idejét a Recovery Services-tárolókban. Mindaddig, amíg Ön, mint a tárolhatja. Az Azure Backup védett példányonként 9999 helyreállítási pontos felső határral rendelkezik. [További](backup-introduction-to-azure-backup.md#backup-and-retention)kapcsolatban, hogy ezt a korlátot milyen hatással van a biztonsági mentési igényeire.
+- **Rövid és hosszú távú megőrzése**: Recovery Services-tárolókat rövid és hosszú távú adatmegőrzés is használhat. Az Azure nem korlátozza az adatok megőrzési idejét a Recovery Services-tárolókban. Mindaddig, amíg Ön, mint a tárolhatja. Az Azure Backup védett példányonként 9999 helyreállítási pontos felső határral rendelkezik. 
 - **Automatikus tárolófelügyelet** – A hibrid környezetek gyakran megkövetelik a heterogén tárhely alkalmazását – valamennyi tárhely szükséges a helyszínen, valamennyi a felhőben. Az Azure Backup szolgáltatással nem kell költenie helyszíni tárolóeszközökre. Az Azure Backup automatikusan foglalja le és kezeli a biztonsági mentési tárolót, és a egy használatalapú mint-akkor-használható modellt használ, hogy csak a kell fizetnie a felhasznált tárterületet. [További](https://azure.microsoft.com/pricing/details/backup) információ a díjszabásról.
 - **Többféle tárolási lehetőség** – az Azure Backup két replikációtípust nyújt a tárolás és adatok magas rendelkezésre állású.
     - [Helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy-lrs.md) replikálja az adatokat három alkalommal (hozza létre az adatok három másolatát) egy adatközpontban lévő tárolóskálázási egységben. Az adatok összes másolata ugyanabban a régióban található. Az LRS egy alacsony költségű megoldás az adatok védelmére a helyi hardveres hibák esetén.
@@ -109,6 +109,25 @@ Tudjon meg többet [hogyan biztonsági mentési works](backup-architecture.md#ar
 **Készítsen biztonsági másolatot a helyszínen futó alkalmazások szeretnék** | Alkalmazás együttműködő biztonsági másolat készíthető a gépek DPM- vagy MABS kell védeni.
 **Szeretném, hogy az Azure virtuális gépek részletes és rugalmas biztonsági mentési és helyreállítási beállításai** | A MABS és DPM biztonsági mentési ütemezés további rugalmasságának biztosítása érdekében, és a teljes rugalmasság a védelmét, és fájlokat, mappa, kötet, alkalmazások és rendszerállapot visszaállítása az Azure-ban futó Azure virtuális gépek védelmét.
 
+## <a name="backup-and-retention"></a>Biztonsági mentés és megőrzés
+
+Az Azure Backup *védett példányonként* 9999 helyreállítási pontos felső határral rendelkezik. Ezeket a helyreállítási pontokat biztonsági másolatoknak, illetve pillanatképeknek is hívják.
+
+- A védett példányok olyan számítógépek, kiszolgálók (fizikai vagy virtuális) vagy számítási feladatok, amelyek úgy vannak konfigurálva, hogy biztonsági mentést végezzenek az Azure-ba. Az egyes példányok védelméhez biztonsági másolatot kell készíteni az adatokról.
+- Az adatok biztonsági másolata maga a védelem. Ha a forrásadatok elvesznek vagy sérülnek, a biztonsági másolatból vissza lehet állítani azokat.
+
+Az alábbi táblázat az egyes összetevők maximális biztonsági mentési gyakoriságát. A biztonsági mentési szabályzat konfigurációja határozza meg, milyen gyorsan használja fel a helyreállítási pontokat. Ha például minden nap létrehoz egy helyreállítási pontot, akkor 27 év után fogynának el a helyreállítási pontjai. Ha havonta csak egy helyreállítási pontot használ fel, akkor helyreállítási pontjai 833 év után fogynának el. A Backup szolgáltatás nem társít lejárati időt a helyreállítási pontokhoz.
+
+|  | Az Azure Backup ügynöke | System Center DPM | Azure Backup Server | Azure IaaS virtuális gép biztonsági mentése |
+| --- | --- | --- | --- | --- |
+| Biztonsági mentés gyakorisága<br/> (a Recovery Services-tárolóba) |Napi három biztonsági mentés |Napi két biztonsági mentés |Napi két biztonsági mentés |Napi egy biztonsági mentés |
+| Biztonsági mentés gyakorisága<br/> (lemezre) |Nem alkalmazható |15 percenként az SQL Serverhez<br/><br/> Minden órában más számítási feladatokhoz |15 percenként az SQL Serverhez<br/><br/> Minden órában más számítási feladatokhoz |Nem alkalmazható |
+| Megőrzési beállítások |Napi, heti, havi, éves |Napi, heti, havi, éves |Napi, heti, havi, éves |Napi, heti, havi, éves |
+| Helyreállítási pontok maximális száma védett példányonként |9999|9999|9999|9999|
+| Maximális megőrzési időtartam |A biztonsági mentés gyakoriságától függően változik |A biztonsági mentés gyakoriságától függően változik |A biztonsági mentés gyakoriságától függően változik |A biztonsági mentés gyakoriságától függően változik |
+| Helyreállítási pontok a helyi lemezen |Nem alkalmazható | 64 fájlkiszolgálókhoz<br/><br/> 448 alkalmazáskiszolgálókhoz | 64 fájlkiszolgálókhoz<br/><br/> 448 alkalmazáskiszolgálókhoz |Nem alkalmazható |
+| Helyreállítási pontok a szalagon |Nem alkalmazható |Korlátlan |Nem alkalmazható |Nem alkalmazható |
+
 ## <a name="how-does-azure-backup-work-with-encryption"></a>Hogyan működik az Azure Backup a titkosítás?
 
 **Titkosítás** | **Biztonsági másolatot készíteni a helyszíni** | **Azure-beli virtuális gépek biztonsági mentése** | **SQL biztonsági mentése Azure virtuális gépeken**
@@ -119,7 +138,7 @@ Titkosítás az átvitel során<br/> (Adatok áthelyezése egyik helyről egy m�
 ## <a name="next-steps"></a>További lépések
 
 - [Felülvizsgálat](backup-architecture.md) az architektúra és összetevők különböző biztonsági mentési forgatókönyveket.
-- [Győződjön meg arról](backup-support-matrix.md) szolgáltatásainak és beállításainak biztonsági mentés esetén támogatott.
+- [Győződjön meg arról](backup-support-matrix.md) támogatja a követelmények és korlátozások, a biztonsági mentés, valamint a [Azure VM backup](backup-support-matrix-iaas.md).
 
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png

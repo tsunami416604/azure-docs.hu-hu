@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/16/2019
-ms.openlocfilehash: 8d186ae83e1016de9c4548d4b1c39303025a5270
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0392cc6334aaf383f43d55134fa65f82c44270c3
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795818"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428405"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Gyors útmutató: 1 – az Azure Search-index létrehozásaC#
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "65795818"
 > * [Postman](search-fiddler.md)
 >*
 
-Ez a cikk végigvezeti a létrehozásának folyamatán [Azure Search-index](search-what-is-an-index.md) használatával C# és a [.NET SDK-val](https://aka.ms/search-sdk). Ez az első leckéje egy 3. rész – a gyakorlatban a létrehozása, betöltés és lekérdezés az index. Az index létrehozása ezen feladatok végrehajtásával valósul meg:
+Ez a cikk végigvezeti a létrehozásának folyamatán [Azure Search-index](search-what-is-an-index.md) használatával C# és a [.NET SDK-val](https://aka.ms/search-sdk). Ebben a rövid útmutatóban egy háromrészes gyakorlatban létrehozása, betöltés és lekérdezés az index az első leckéje. Az index létrehozása ezen feladatok végrehajtásával valósul meg:
 
 > [!div class="checklist"]
 > * Hozzon létre egy [ `SearchServiceClient` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) objektum egy keresési szolgáltatáshoz való csatlakozáshoz.
@@ -39,7 +39,7 @@ Ez a rövid útmutató az alábbi szolgáltatások, eszközök és adatok haszn�
 
 + [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja.
 
-+ [A Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), bármely kiadás esetén. Mintakód és útmutató az ingyenes közösségi kiadása lettek tesztelve.
+[A Visual Studio 2019](https://visualstudio.microsoft.com/downloads/), bármely kiadás esetén. Mintakód és útmutató az ingyenes közösségi kiadása lettek tesztelve.
 
 + [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) biztosít egy .NET Core nyelven írt konzolalkalmazással a Mintamegoldás C#, az Azure-minták GitHub-adattárában található. Töltse le és csomagolja ki a megoldást. Alapértelmezés szerint a megoldások olyan csak olvasható. Kattintson a jobb gombbal a megoldás, és törölje a csak olvasható attribútumot, így módosíthatja a fájlokat. A megoldás adatokat tartalmazza.
 
@@ -61,17 +61,15 @@ Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásn
 
 1. Az appSettings.JSON fájl, cserélje le a tartalmat az alábbi példa a alapértelmezett, és adja meg a szolgáltatás nevét és a felügyeleti api-kulcsát. 
 
-
    ```json
    {
        "SearchServiceName": "Put your search service name here (not the full URL)",
        "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
     }
    ```
+   A szolgáltatásnév számára a név csak kell. Például, ha az URL-cím https://mydemo.search.windows.net, adjon hozzá `mydemo` a JSON-fájlba.
 
-  A szolgáltatásnév számára a név csak kell. Például, ha az URL-cím https://mydemo.search.windows.net, adjon hozzá `mydemo` a JSON-fájlba.
-
-1. Nyomja le az F5 állítsa össze a megoldást, és futtassa a konzolalkalmazást. Ebben a gyakorlatban, valamint azokat, amelyeket hajtsa végre a fennmaradó lépésekkel olyan áttekintése, ez a kód működését. 
+1. Nyomja le az F5 állítsa össze a megoldást, és futtassa a konzolalkalmazást. Ebben a gyakorlatban a hátralévő lépéseket, és ezeket a lépéseket, amelyek olyan áttekintése, ez a kód működését. 
 
 Azt is megteheti, olvassa el [használata az Azure Search .NET-alkalmazásból](search-howto-dotnet-sdk.md) lefedettségét az SDK működésének részletesebb. 
 
@@ -108,7 +106,7 @@ Egyetlen meghívása a `Indexes.Create` módszer létrehoz egy indexet. Ezt a m�
 
 1. Állítsa be az `Index` objektum `Name` tulajdonságát az index nevének.
 
-2. Állítsa be az `Index` objektum `Fields` tulajdonságát a `Field` objektumok tömbjének. A `Field` objektumok létrehozásának legegyszerűbb módja az, ha meghívja a `FieldBuilder.BuildForType` metódust, és a típus paraméternél egy modellosztályt ad meg. A modellosztály olyan tulajdonságokkal rendelkezik, amelyek az index mezőire mutatnak. Ez lehetővé teszi a keresési indexben található dokumentumok modellosztály-példányokhoz kötését is.
+2. Állítsa be az `Index` objektum `Fields` tulajdonságát a `Field` objektumok tömbjének. A `Field` objektumok létrehozásának legegyszerűbb módja az, ha meghívja a `FieldBuilder.BuildForType` metódust, és a típus paraméternél egy modellosztályt ad meg. A modellosztály olyan tulajdonságokkal rendelkezik, amelyek az index mezőire mutatnak. Ez a leképezés lehetővé teszi, hogy a keresési indexben található dokumentumok modellosztály-példányokhoz kötést létrehozni.
 
 > [!NOTE]
 > Ha nem tervez modellosztályt használni, közvetlenül `Field` objektumok létrehozásával is meghatározhatja az indexet. A konstruktornak megadhatja a mező nevét és az adattípust (vagy sztringmezők esetében az elemzőnek). Például egyéb tulajdonságokat is beállíthat `IsSearchable`, `IsFilterable`, hogy néhányat említsünk.
@@ -117,7 +115,7 @@ Egyetlen meghívása a `Indexes.Create` módszer létrehoz egy indexet. Ezt a m�
 
 Fontos, hogy Ön szem előtt tartani a keresési felhasználói élmény és az üzleti igényeket az index tervezésekor. Minden mezőt hozzá kell rendelni a [attribútumok](https://docs.microsoft.com/rest/api/searchservice/Create-Index) , hogy melyik keresési funkciók (szűrés, értékkorlátozás, rendezés, és így tovább) vezérlőelem alkalmazni a mezőket. Azon tulajdonságok esetében, amelyeket külön nem állított be, a `Field` osztály alapértelmezés szerint letiltja a megfelelő keresési funkciót, kivéve, ha Ön kifejezetten engedélyezi.
 
-Ebben a példában az index neve "hotels" és mezőket egy modellosztály segítségével vannak definiálva. A modellosztály minden tulajdonsága olyan attribútumokkal rendelkezik, amelyek meghatározzák a vonatkozó indexmező kereséssel kapcsolatos viselkedéseit. A modellosztály meghatározása a következőképpen történik:
+Ebben a példában az index neve "hotels" és mezőket egy modellosztály segítségével vannak definiálva. A modellosztály minden tulajdonsága attribútumok, amelyek meghatározzák a megfelelő index mezőt a keresési kapcsolatos viselkedéseit rendelkezik. A modellosztály meghatározása a következőképpen történik:
 
 ```csharp
 using System;
@@ -175,7 +173,7 @@ public partial class Hotel
 
 Minden tulajdonság esetében annak alapján választottuk ki az attribútumokat, ahogyan szerintünk az alkalmazások használni fogják őket. Valószínű például, hogy a hotelekre kereső felhasználókat érdekelhetik majd a `description` mezőben megadott kulcsszavak, így erre a mezőre vonatkozóan engedélyeztük a teljes szöveges keresést úgy, hogy a `Description` tulajdonsághoz hozzáadtuk az `IsSearchable` attribútumot.
 
-Vegye figyelembe, hogy az indexben csak egy `string` típusú mező lehet kijelölve *kulcsmezőként* a `Key` attribútum hozzáadásával (lásd a fenti példában: `HotelId`).
+Vegye figyelembe, hogy pontosan egy mezőt az indexben típusú `string` kell lennie a kijelölt a *kulcs* mező hozzáadásával a `Key` attribútum (lásd: `HotelId` a fenti példában).
 
 A fenti indexdefiníció egy nyelvi elemzőt használ a `description_fr` mező esetében, mivel annak francia nyelvű szöveget kell tartalmaznia. További információkért lásd: [nyelvi elemzők hozzáadása az Azure Search-index](index-add-language-analyzers.md).
 
@@ -184,7 +182,7 @@ A fenti indexdefiníció egy nyelvi elemzőt használ a `description_fr` mező e
 > 
 > 
 
-Most, hogy meghatároztuk a modellosztályt, már egyszerűen létrehozhatunk egy indexdefiníciót:
+Most, hogy meghatároztuk a modellosztályt, egyszerűen létrehozhatunk egy indexdefiníciót:
 
 ```csharp
 var definition = new Index()

@@ -5,15 +5,15 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 5/31/2019
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c43375afe7965475e84793ddcd54a38a2e9bd3cd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 58f89ddcf4480df14689541ec99b6c9b2526721a
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073730"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688109"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Gyors útmutató: Fürt üzembe helyezése az Azure Kubernetes Service (AKS) az Azure portal használatával
 
@@ -31,27 +31,28 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-Az Azure portal bal felső sarkában válassza **+ erőforrás létrehozása** > **Kubernetes-szolgáltatást**.
+Az Azure portal bal felső sarkában válassza **+ erőforrás létrehozása** > **tárolók** >  **Kubernetes-szolgáltatást**.
 
 AKS-fürt létrehozásához hajtsa végre a következő lépéseket:
 
-1. **Alapvető beállítások** – Konfigurálja a következő beállításokat:
+1. Az a **alapjai** lapon, a következő beállításokat:
    - *A PROJECT DETAILS*: Válassza ki az Azure-előfizetéssel, majd válassza ki vagy hozzon létre egy Azure-erőforráscsoportot, mint például *myResourceGroup*. Adja meg a **Kubernetes-fürt nevét**, például *myAKSCluster*.
    - *FÜRT RÉSZLETES ADATAI*: Válassza ki a régió, a Kubernetes-verziót és a DNS-név előtagja az AKS-fürtöt.
-   - *MÉRETEZÉSI CSOPORT*: Válassza ki az AKS-csomópontok Virtuálisgép-méretét. A virtuálisgép-méret az AKS-fürt telepítését követően **nem** módosítható.
+   - **ELSŐDLEGES CSOMÓPONTKÉSZLETEK**: jelölje be az AKS-csomópontok Virtuálisgép-méretét. A virtuálisgép-méret az AKS-fürt telepítését követően **nem** módosítható. 
        - Adja meg a fürtre telepítendő csomópontok számát. Ehhez a rövid útmutatóhoz a **Csomópontok száma** beállítás értékeként adjon meg *1*-et. A csomópontok száma a fürt telepítése után is **módosítható**.
     
      ![AKS-fürt létrehozása – alapvető adatok megadása](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-     Válassza ki **tovább: Hitelesítési** teljes.
+     Válassza ki **tovább: Méretezési csoport** teljes.
 
-1. **Hitelesítési**: Konfigurálja a következő beállításokat:
-   - Hozzon létre egy új szolgáltatásnevet, vagy *konfigurálja* a rendszert valamelyik meglévő használatára. Meglévő SPN használata esetén meg kell adnia az SPN ügyfélazonosítóját és kulcsát.
-   - Engedélyezze a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatát. Ezekkel a vezérlőkkel pontosabban szabályozhatja a hozzáférést az AKS-fürtben üzembe helyezett Kubernetes-erőforrásokhoz.
+2. Az a **méretezési** párbeszédpanelen tartsa meg az alapértelmezett beállításokat. A képernyő alján kattintson **tovább: hitelesítés**.
+3. Az a **hitelesítési** lapon, a következő beállításokat:
+   - Hozzon létre egy új egyszerű szolgáltatást, ha a **szolgáltatásnév** mezőt a **(új) alapértelmezett szolgáltatásnév**. Vagy dönthet *konfigurálása egyszerű szolgáltatás* , használjon egy meglévőt. Ha egy már meglévőt használja, szüksége lesz a adja meg az egyszerű szolgáltatásnév ügyfél-azonosítója és kulcsa.
+   - Engedélyezze a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatát. Mindezzel biztosíthatja a további részletesen szabályozhatja az AKS-fürt üzembe helyezett Kubernetes-erőforrásokhoz való hozzáférés.
 
-     Alapértelmezés szerint *alapszintű* hálózatkezelés szolgál, és az Azure Monitor for containers szolgáltatásban engedélyezve van. Amikor elkészült, válassza az **Áttekintés + létrehozás**, majd a **Létrehozás** lehetőséget.
+    Alapértelmezés szerint *alapszintű* hálózatkezelés szolgál, és az Azure Monitor for containers szolgáltatásban engedélyezve van. Kattintson a **felülvizsgálat + létrehozása** , majd **létrehozás** ellenőrzés befejeződésekor.
 
-Az AKS-fürt létrehozása és a használatra való előkészítése néhány percet vesz igénybe. Amikor végzett, tallózással keresse meg az AKS-fürt erőforráscsoportja például *myResourceGroup*, és válassza ki például az AKS erőforrás *myAKSCluster*. Megjelenik az AKS-fürt irányítópultja, ahogyan az a következő példa képernyőfelvételen is látható:
+Az AKS-fürt létrehozása néhány percet vesz igénybe. A telepítés befejeződése után kattintson a **erőforrás megnyitása**, vagy tallózással keresse meg az AKS-fürt erőforráscsoportja például *myResourceGroup*, és válassza ki az AKS-erőforrás, például *myAKSCluster*. Az AKS-fürt irányítópultja jelenik meg, mint ebben a példában:
 
 ![Példa AKS-irányítópult az Azure Portalon](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
@@ -59,7 +60,7 @@ Az AKS-fürt létrehozása és a használatra való előkészítése néhány pe
 
 Kubernetes-fürtök kezeléséhez használja [kubectl][kubectl], a Kubernetes parancssori ügyfelét. A `kubectl` ügyfél előzetesen már telepítve van az Azure Cloud Shellben.
 
-Nyissa meg a Cloud Shellt az Azure Portal jobb felső sarkában található gomb használatával.
+Nyissa meg a Cloud Shell használatával a `>_` gomb az Azure portal tetején.
 
 ![Az Azure Cloud Shell megnyitása a portálon](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 

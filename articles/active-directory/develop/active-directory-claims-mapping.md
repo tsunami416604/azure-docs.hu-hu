@@ -118,7 +118,7 @@ Vannak bizonyos csoportok, amelyek meghatározzák, hogy mikor és hogyan haszn�
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
 | iat |
 | identityprovider |
-| identityprovider |
+| idp |
 | in_corp |
 | instance |
 | ipaddr |

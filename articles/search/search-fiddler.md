@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bd3b9fe80a57a6a0dd824d92ae14a863ced240b2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: eaf594286e5ffc101ad2d24e808fcb806998d053
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793547"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471565"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Gyors útmutató: Ismerkedés az Azure Search REST API-k Postman
 > [!div class="op_single_selector"]
@@ -73,13 +73,13 @@ A Postman állítson össze egy kérelmet, amely a következő képernyőképhez
 
 Az Azure Search szolgáltatásban, általában hozza létre az indexet, az adatok betöltése előtt. A [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) erre a célra szolgál. 
 
-Az URL-címet kell terjeszteni a `hotel` index neve.
+Az URL-címet kell terjeszteni a `hotels` index neve.
 
 Ehhez a Postman:
 
 1. Módosítsa a kívánt műveleteket **PUT**.
 
-2. Másolja be az URL-cím `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotel?api-version=2019-05-06`.
+2. Másolja be az URL-cím `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`.
 
 3. Adja meg az index definícióját (lásd alább) a kérés törzsében.
 
@@ -257,7 +257,7 @@ A cél másolja az URL-cím egy módosított verziója: `https://<YOUR-SEARCH-SE
 
 ### <a name="1---create-an-index"></a>1 – Index létrehozása
 
-Módosítsa a kívánt műveleteket **PUT**. Másolja be az URL-cím egy módosított verziója: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotel?api-version=2019-05-06`. Másolja az indexdefiníciót a kérelemtörzsbe fent megadott. Az oldalon az alábbi képernyőfelvételhez hasonlóan kell kinéznie. Kattintson a **Execute** felső jobb a befejezett kérelem elküldéséhez.
+Módosítsa a kívánt műveleteket **PUT**. Másolja be az URL-cím egy módosított verziója: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`. Másolja az indexdefiníciót a kérelemtörzsbe fent megadott. Az oldalon az alábbi képernyőfelvételhez hasonlóan kell kinéznie. Kattintson a **Execute** felső jobb a befejezett kérelem elküldéséhez.
 
 ![Fiddler-kérelem törzse][7]
 

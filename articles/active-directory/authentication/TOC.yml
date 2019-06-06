@@ -142,10 +142,6 @@
               href: active-directory-certificate-based-authentication-android.md
             - name: CBA iOS-eszközökön
               href: active-directory-certificate-based-authentication-ios.md
-    - name: Fejlesztés
-      items:
-        - name: MFA beépítése egyéni alkalmazásokba
-          href: howto-mfa-sdk.md
     - name: Jelentéskészítés
       items:
         - name: SSPR-jelentések

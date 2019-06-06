@@ -81,6 +81,8 @@
           href: concepts-data-access-and-security-threat-protection.md
         - name: VNet
           href: concepts-data-access-and-security-vnet.md
+        - name: Kapcsolati architektúra
+          href: concepts-connectivity-architecture.md
     - name: Az üzletmenet folytonossága
       items:
         - name: Áttekintés

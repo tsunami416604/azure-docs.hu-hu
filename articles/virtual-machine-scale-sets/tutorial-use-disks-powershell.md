@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 92f2a07ae47621b4d42bb74da5f62447f86eb5ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6035a6ddd690db456edfa5777ca2d41e4be8b919
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60329521"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66728589"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Hozzon létre és használhat lemezeket a virtuálisgép-méretezési csoport az Azure PowerShell használatával
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
 ## <a name="default-azure-disks"></a>Alapértelmezett Azure-lemezek
@@ -49,7 +49,7 @@ Egy méretezési csoport létrehozásakor vagy skálázásakor a rendszer két l
 **Ideiglenes lemez** – Az ideiglenes lemezek olyan tartós állapotú meghajtót (SSD-t) használnak, amely ugyanazon az Azure-gazdagépen található, mint a virtuálisgép-példány. Ezek nagy teljesítményű lemezek, és olyan műveletekhez használhatók, mint például az ideiglenes adatfeldolgozás. Ha azonban a virtuálisgép-példányt egy új gazdagépre költöztetik, az ideiglenes lemezen tárolt adatokat a rendszer eltávolítja. Az ideiglenes lemez méretét a virtuálisgép-példány mérete határozza meg. Az ideiglenes lemezek a */dev/sdb* címkét kapják, a csatlakoztatási pontjuk pedig */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Ideiglenes lemezek méretei
-| Typo | Gyakori méretek | Ideiglenes lemez max. mérete (GiB) |
+| Típus | Gyakori méretek | Ideiglenes lemez max. mérete (GiB) |
 |----|----|----|
 | [Általános célú](../virtual-machines/windows/sizes-general.md) | A, B és D sorozat | 1600 |
 | [Számításra optimalizált](../virtual-machines/windows/sizes-compute.md) | F sorozat | 576 |
@@ -63,7 +63,7 @@ Egy méretezési csoport létrehozásakor vagy skálázásakor a rendszer két l
 További adatlemezek adhatók hozzá, amelyekre alkalmazásokat telepíthet és amelyeken adatokat tárolhat. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. Az egyes adatlemezek kapacitása maximum 4 TB lehet. A virtuálisgép-példány mérete határozza meg, hány adatlemez csatolható. A virtuális gépek minden vCPU-jához két adatlemez csatolható.
 
 ### <a name="max-data-disks-per-vm"></a>Adatlemezek max. száma virtuális gépenként
-| Typo | Gyakori méretek | Adatlemezek max. száma virtuális gépenként |
+| Típus | Gyakori méretek | Adatlemezek max. száma virtuális gépenként |
 |----|----|----|
 | [Általános célú](../virtual-machines/windows/sizes-general.md) | A, B és D sorozat | 64 |
 | [Számításra optimalizált](../virtual-machines/windows/sizes-compute.md) | F sorozat | 64 |
@@ -86,7 +86,7 @@ A prémium lemezek SSD-alapú, nagy teljesítményű, kis késleltetésű lemeze
 |Prémium szintű tárolólemezek típusai | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Lemezméret (felfelé kerekítés) | 32 GB | 64 GB | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) |
-| Lemezenkénti maximális IOPS-érték | 120 | 240 | 500 | 2300 | 5000 | 7500 | 7500 |
+| Lemezenkénti maximális IOPS-érték | 120 | 240 | 500 | 2,300 | 5000 | 7500 | 7,500 |
 Adattovábbítás lemezenként | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
 Míg a fenti táblázatban a lemezenkénti maximális IOPS-érték látható, nagyobb teljesítmény is elérhető több adatlemez összevonásával. Például egy Standard_GS5 virtuális gép esetében maximálisan 80 000 IOPS érhető el. A virtuális gépenkénti maximális IOPS-értékkel kapcsolatos részletes információkért lásd a [Windows rendszerű virtuális gépek méreteit](../virtual-machines/windows/sizes.md) ismertető cikket.

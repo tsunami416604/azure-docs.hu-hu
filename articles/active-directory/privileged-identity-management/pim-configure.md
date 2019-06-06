@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8b9fe027a023cec6c816fa641beb41e5849741
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0678dc42d8c22c8dcc20137cf70f81a1eb4f61c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60289110"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473686"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 
@@ -42,23 +42,14 @@ A PIM lényegében segítségével kezelheti a ki, mit, mikor, hol és miért é
 - Magatartási **hozzáférési felülvizsgálatokkal** annak biztosítása érdekében a felhasználók továbbra is szükséges szerepkörök
 - Töltse le **naplózási előzmények** a belső vagy külső naplózás
 
-## <a name="prerequisites"></a>Előfeltételek
-
-A PIM használatát tervezi, kell rendelkeznie a következő fizetett vagy a próbaverziós licencek egyikét. További információkért lásd: [Mi az az Azure Active Directory?](../fundamentals/active-directory-whatis.md).
-
-- Prémium szintű Azure AD P2
-- Enterprise Mobility + Security (EMS) E5
-
-Felhasználók licenceinek kapcsolatos információkért lásd: [Licenckövetelményekért a PIM használatát tervezi](subscription-requirements.md).
-
 ## <a name="terminology"></a>Terminológia
 
 A PIM és a hozzá tartozó dokumentáció jobb megértéséhez, tekintse át az alábbi feltételek.
 
 | Kifejezés vagy fogalom | Szerepkör-hozzárendelés kategória | Leírás |
 | --- | --- | --- |
-| Jogosult | Typo | Szerepkör-hozzárendelés, amelyhez a felhasználót a szerepkör használatához egy vagy több művelet végrehajtásához szükséges. Ha egy felhasználó jogosult szerepkör lett végrehajtva, ez azt jelenti, ha kiemelt feladatait van szükségük a szerepkör aktiválásához. Nincs megadott valaki egy állandó jogosult szerepkör-hozzárendelés és hozzáférési nincs különbség. Az egyetlen különbség, hogy néhány felhasználó nem kell olyan folyamatosan. |
-| aktív | Typo | Szerepkör-hozzárendelés, amelyek nem igényelnek a felhasználót, hogy a szerepkör használatához bármely művelet elvégzésére. A felhasználók hozzárendelve aktívként a szerepkörhöz rendelt jogosultság. |
+| Jogosult | Típus | Szerepkör-hozzárendelés, amelyhez a felhasználót a szerepkör használatához egy vagy több művelet végrehajtásához szükséges. Ha egy felhasználó jogosult szerepkör lett végrehajtva, ez azt jelenti, ha kiemelt feladatait van szükségük a szerepkör aktiválásához. Nincs megadott valaki egy állandó jogosult szerepkör-hozzárendelés és hozzáférési nincs különbség. Az egyetlen különbség, hogy néhány felhasználó nem kell olyan folyamatosan. |
+| aktív | Típus | Szerepkör-hozzárendelés, amelyek nem igényelnek a felhasználót, hogy a szerepkör használatához bármely művelet elvégzésére. A felhasználók hozzárendelve aktívként a szerepkörhöz rendelt jogosultság. |
 | aktiválás |  | Folyamat használatához egy szerepkör, amely a felhasználó nem jogosult egy vagy több műveletet hajt végre. Műveletek tartalmazhat, egy üzleti indoklásának megadása, vagy jóváhagyási kérése a kijelölt jóváhagyókat többtényezős hitelesítés (MFA)-ellenőrzés elvégzése. |
 | Hozzárendelve | Állapot | Aktív szerepkör-hozzárendeléssel rendelkező felhasználóként. |
 | Aktiválva | Állapot | Egy jogosult szerepkör-hozzárendelés rendelkező felhasználóként végrehajtani a műveleteket a szerepkör aktiválását, és most már aktív.  Aktiválta, miután a felhasználó használhatja az előre konfigurált időszak-az-ideje előtt újra aktiválni kell azokat a szerepkör. |
@@ -104,6 +95,12 @@ A PIM használatát támogatja a következő esetekben:
 - Jóváhagyást igénylő szerepkör aktiválásának kérelme
 - Az aktiválási kérelem állapotának megtekintése
 - Az aktiválás jóváhagyása után feladatok végrehajtása az Azure AD-ben
+
+## <a name="license-requirements"></a>Licenckövetelmények
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+Felhasználók licenceinek kapcsolatos információkért lásd: [Licenckövetelményekért a PIM használatát tervezi](subscription-requirements.md).
 
 ## <a name="next-steps"></a>További lépések
 

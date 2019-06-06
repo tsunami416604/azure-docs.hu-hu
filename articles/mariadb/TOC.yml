@@ -51,6 +51,8 @@
           href: concepts-ssl-connection-security.md
         - name: VNet
           href: concepts-data-access-security-vnet.md
+        - name: Kapcsolati architektúra
+          href: concepts-connectivity-architecture.md
     - name: Az üzletmenet folytonossága
       items:
         - name: Áttekintés

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ab1f0a72137ace1942cb8016ae1bfa5c3fd964fb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 907d12464156f551930098f6bd6a6a24596307cb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66396413"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479919"
 ---
 # <a name="about-site-recovery"></a>Tudnivalók a Site Recovery szolgáltatásról
 
@@ -41,7 +41,7 @@ A Site Recovery a következők replikációját képes kezelni:
 **Azure-beli virtuális gép replikációja** | Beállíthatja az Azure-beli virtuális gépek vészhelyreállítását egy elsődleges régióról egy másodlagos régióra.
 **Helyszíni virtuális gép replikációja** | Helyszíni virtuális gépeket és fizikai kiszolgálókat replikálhat az Azure-ba vagy egy másodlagos helyszíni adatközpontba. Az Azure-ba történő replikációval kiküszöbölhetők a másodlagos adatközpontok fenntartásával járó bonyodalmak és költségek.
 **Számítási feladat replikációja** | A támogatott Azure-beli virtuális gépeken, helyszíni Hyper-V-alapú és VMware-alapú virtuális gépeken, valamint a Windows-/Linux-alapú fizikai kiszolgálókon futó bármilyen számítási feladat replikálható.
-**Adatrugalmasság** | A Site Recovery koordinálja a replikációt, de az alkalmazás adataihoz nem fér hozzá. Az Azure-ba történő replikálás során az adatokat az Azure Storage tárolja, és az ezzel járó rugalmasságot is biztosítja. Feladatátvétel esetén a rendszer Azure-beli virtuális gépeket hoz létre a replikált adatok alapján.
+**Adatrugalmasság** | A Site Recovery koordinálja, hogy alkalmazásadatok elfogja a replikációt. Az Azure-ba történő replikálás során az adatokat az Azure Storage tárolja, és az ezzel járó rugalmasságot is biztosítja. Feladatátvétel esetén a rendszer Azure-beli virtuális gépeket hoz létre a replikált adatok alapján.
 **RTO- és RPO-célok** | A vállalati korlátokon belül tartja a helyreállítási idők célkitűzéseit (recovery time objectives, RTO-k) és a helyreállítási pont célkitűzéseit (recovery point objectives, RPO-k). A Site Recovery folyamatos replikációt biztosít Azure és VMware virtuális gépek esetén, és csupán 30 másodperces replikációs frekvenciát Hyper-V esetén. Az RTO tovább csökkenthető az [Azure Traffic Managerrel](https://azure.microsoft.com/blog/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/) való integrációval.
 **Alkalmazás-konzisztencia feladatátvétel esetén** | Alkalmazáskonzisztens pillanatképekkel rendelkező helyreállítási pontokat használhat a replikáláshoz. Ezek a pillanatképek a lemez adatait, a memóriában lévő összes adatot és az összes folyamatban lévő tranzakciót is rögzítik.
 **Megszakítás nélküli tesztelés** | Egyszerűen végrehajthat vészhelyreállítási próbákat anélkül, hogy ez hatással lenne a folyamatban lévő replikációra.
@@ -56,7 +56,7 @@ A Site Recovery a következők replikációját képes kezelni:
 
 **Támogatott** | **Részletek**
 --- | ---
-**Replikációs forgatókönyvek** | Azure-beli virtuális gépeket replikálhat egyik Azure-régióból a másikba.<br/><br/>  Replikálja a helyszíni VMware virtuális gépeket, Hyper-V virtuális gépek fizikai kiszolgálókat (Windows és Linux), az Azure Stack virtuális gépek az Azure-bA.<br/><br/> Helyszíni VMware virtuális gépeket, a System Center VMM által felügyelt Hyper-V virtuális gépeket, valamint fizikai kiszolgálókat replikálhat egy másodlagos helyre.
+**Replikációs forgatókönyvek** | Azure-beli virtuális gépeket replikálhat egyik Azure-régióból a másikba.<br/><br/>  Replikálja a helyszíni VMware virtuális gépeket, Hyper-V virtuális gépek fizikai kiszolgálókat (Windows és Linux), az Azure Stack virtuális gépek az Azure-bA.<br/><br/> <br/><br/> AWS Windows-példányok Azure-bA replikálni.<br/><br/> Helyszíni VMware virtuális gépeket, a System Center VMM által felügyelt Hyper-V virtuális gépeket, valamint fizikai kiszolgálókat replikálhat egy másodlagos helyre.
 **Régiók** | Áttekintheti a Site Recovery által [támogatott régiókat](https://azure.microsoft.com/regions/services/). |
 **Replikált gépek** | Áttekintheti az [Azure-beli virtuális gépeknek](azure-to-azure-support-matrix.md#replicated-machine-operating-systems), a [helyszíni VMware virtuális gépeknek és fizikai kiszolgálóknak](vmware-physical-azure-support-matrix.md#replicated-machines), valamint a [helyszíni Hyper-V virtuális gépeknek](hyper-v-azure-support-matrix.md#replicated-vms) a replikációs követelményeit.
 **Számítási feladatok** | A támogatott replikációs gépeken futó bármilyen számítási feladat replikálható. Ezenkívül a Site Recovery csapata alkalmazásspecifikus tesztelést végzett [néhány alkalmazáshoz](site-recovery-workload.md#workload-summary).

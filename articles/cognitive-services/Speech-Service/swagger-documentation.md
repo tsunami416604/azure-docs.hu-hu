@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 04/12/2019
 ms.author: erhopf
-ms.openlocfilehash: 29fcbd058651c428b488f5ce1c767105cb7921a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6cf3ab6480900aa763598120e6ff7e308f5044e1
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461663"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743208"
 ---
 # <a name="swagger-documentation"></a>A Swagger dokumentációja
 
@@ -26,7 +26,7 @@ A beszédfelismerési szolgáltatás olyan való kommunikációhoz használt ada
 
 ## <a name="generating-code-from-the-swagger-specification"></a>A Swagger-specifikációra származó kód generálása
 
-A [Swager specifikáció](https://cris.ai/swagger/ui/index) lehetőséget is kínál, amelyek lehetővé teszik, hogy gyorsan tesztelheti az különböző elérési utak. Azonban néha kívánatos görbékhez létrehozása egy egyetlen kódtár, hogy alapján szeretne létrehozni a jövőbeli megoldások a kódot. Vessünk egy pillantást egy Python-kódtár létrehozni a folyamatot.
+A [Swagger-specifikációja](https://cris.ai/swagger/ui/index) lehetőséget is kínál, amelyek lehetővé teszik, hogy gyorsan tesztelheti az különböző elérési utak. Azonban néha kívánatos görbékhez létrehozása egy egyetlen kódtár, hogy alapján szeretne létrehozni a jövőbeli megoldások a kódot. Vessünk egy pillantást egy Python-kódtár létrehozni a folyamatot.
 
 Swagger beállítása és a beszédfelismerési szolgáltatás előfizetésében ugyanabban a régióban kell. Az Azure Portalon a régió alatt az beszédszolgáltatások erőforrás ellenőrizheti. Támogatott régiók teljes listáját lásd: [régiók](regions.md).
 

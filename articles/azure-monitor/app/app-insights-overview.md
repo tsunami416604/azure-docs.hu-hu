@@ -11,19 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/14/2019
+ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: ec595e23fbbf3ace5bfd0786d88250a88b61453c
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: cdaae4e539d5216cf4950c15349f01b54ae8acd2
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66256645"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496374"
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
 Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. A különböző platformokon, beleértve a .NET, Node.js és Java EE-alapú, számos olyan alkalmazásokkal működik a helyszíni, hibrid vagy bármely nyilvános felhőben üzemeltetett. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes monitorozni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center integrálásával.
-
-[Tekintse meg a bevezető animációt](https://www.youtube.com/watch?v=fX2NtGrh-Y0).
 
 ## <a name="how-does-application-insights-work"></a>Hogyan működik az Application Insights?
 Ön telepít egy kis méretű kialakítási csomagot az alkalmazásban, és beállít egy Application Insights-erőforrást a Microsoft Azure Portalon. A kialakítási csomag figyeli az alkalmazást, és telemetriai adatokat küld a portálnak. (Az alkalmazás bárhol futhat – nem kötelező az Azure-ban üzemeltetni.)
@@ -104,11 +102,13 @@ Az Application Insights a Microsoft Azure-ban üzemeltetett számos szolgáltat�
 
 Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önnek a legmegfelelőbb. További szolgáltatásokat később is felvehet.
 
-* **Futtatáskor: webalkalmazás vizsgálata a kiszolgálón.** Elkerülheti a kódfrissítéseket. Adminisztrátori hozzáféréssel kell rendelkeznie a kiszolgálón.
-  * [**IIS a helyszínen vagy egy virtuális gépen**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-  * [**Azure-webalkalmazás vagy virtuális gép**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* **Fejlesztéskor: az Application Insights hozzáadása a kódhoz.** Egyéni telemetriai adatok használatát, valamint háttérbeli szolgáltatások és asztali alkalmazások vizsgálatát teszi lehetővé.
-  * [Visual Studio](../../azure-monitor/app/asp-net.md) 2013 2. frissítés vagy újabb.
+* **Futtatáskor: webalkalmazás vizsgálata a kiszolgálón.** Ideális megoldás a már telepített alkalmazásokat. Elkerülheti a kódfrissítéseket.
+  * [**Az IIS-ben üzemeltetett ASP.NET-alkalmazások a helyszínen vagy egy virtuális Gépre**](../../azure-monitor/app/monitor-performance-live-website-now.md)
+  * [**Az Azure Web Apps szolgáltatásban üzemeltetett ASP.NET- vagy ASP.NET Core-alkalmazások**](../../azure-monitor/app/azure-web-apps.md)
+* **Fejlesztéskor: az Application Insights hozzáadása a kódhoz.** Lehetővé teszi, hogy eszköztelemetria-gyűjtést testreszabását, és további telemetriai adatokat küldhet.
+  * [ASP.NET Applications](../../azure-monitor/app/asp-net.md)
+  * [ASP.NET Core Applications](../../azure-monitor/app/asp-net-core.md)
+  * [.NET-Konzolalkalmazással](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
   * [Más platformok](../../azure-monitor/app/platforms.md)
@@ -120,10 +120,12 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
 Első lépések futtatáskor:
 
 * [IIS-kiszolgáló](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 
 Első lépések fejlesztéskor:
 
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
+* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
 
@@ -139,9 +141,9 @@ Első lépések fejlesztéskor:
 
 ## <a name="videos"></a>Videók
 
-[![Animált bevezetés](./media/app-insights-overview/video-front-1.png)](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
+- Külső videó: [Application Insights beállítása ASP.NET-alkalmazással](https://www.youtube.com/watch?v=blnGAVgMAfA).
+- Külső videó: [az ASP.NET Core és a Visual Studio Application Insights konfigurálása](https://www.youtube.com/watch?v=NoS9UhcR4gA&t).
+- Külső videó: [konfigurálása az Application Insights az ASP.NET Core és a Visual Studio Code](https://youtu.be/ygGt84GDync).
 
 <!--Link references-->
 

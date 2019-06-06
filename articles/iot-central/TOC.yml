@@ -91,6 +91,8 @@
               href: howto-export-data-blob-storage.md
         - name: Egyéni szabályok létrehozása
           href: howto-create-custom-rules.md
+        - name: Egyéni elemzések létrehozása
+          href: howto-create-custom-analytics.md
         - name: Adatok vizualizációja a Power BI-ban
           href: howto-connect-powerbi.md
         - name: Más IoT-felhők csatlakoztatása

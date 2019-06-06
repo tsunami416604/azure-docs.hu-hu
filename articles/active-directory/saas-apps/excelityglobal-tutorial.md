@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: bb18aa35c89657f01319512eac6c15096174891f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd4fe4f7b105fd7aa2d2cf7ee568f85a7ad98ecb
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60279150"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734809"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ExcelityGlobal
 
@@ -52,7 +52,7 @@ Az Azure AD integrálása a ExcelityGlobal konfigurálásához hozzá kell Excel
 
 **ExcelityGlobal hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -140,7 +140,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ExcelityGlobal, hajt
 
 ### <a name="configure-excelityglobal-single-sign-on"></a>ExcelityGlobal egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **ExcelityGlobal** oldalon kell küldenie a **az ujjlenyomat értéket** és az Azure Portalról másolt URL-címek megfelelő [ExcelityGlobal támogatási csapatának](https://www.excelityglobal.com/contact-us/our-locations/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **ExcelityGlobal** oldalon kell küldenie a **az ujjlenyomat értéket** és az Azure Portalról másolt URL-címek megfelelő [ExcelityGlobal támogatási csapatának](https://www.excelityglobal.com/contact-us). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -195,7 +195,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-excelityglobal-test-user"></a>ExcelityGlobal tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű ExcelityGlobal hoz létre. Együttműködve [ExcelityGlobal támogatási csapatának](https://www.excelityglobal.com/contact-us/our-locations/) a felhasználók hozzáadása az ExcelityGlobal platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű ExcelityGlobal hoz létre. Együttműködve [ExcelityGlobal támogatási csapatának](https://www.excelityglobal.com/contact-us) a felhasználók hozzáadása az ExcelityGlobal platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

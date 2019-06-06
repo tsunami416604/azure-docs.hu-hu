@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa653ecf306f5ac5eefaddd61d98e81f919876d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 6f9daeb5e0de9c53f16efff46e02015acfa7c521
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66513310"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734596"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: Hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása
 
@@ -65,7 +65,7 @@ A hibrid Azure AD-csatlakozáshoz szükséges, hogy az eszközök hozzáférjene
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com` (Ha közvetlen egyszeri bejelentkezést használ, vagy tervezi annak használatát)
 
-Ha a szervezet az interneten keresztül egy kimenő proxy hozzáférésre van szüksége, a Microsoft azt javasolja [végrehajtása az webes Proxy automatikus felderítési (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) lehetővé teszik a Windows 10-es számítógépek ehhez eszközregisztráció az Azure ad-ben. Ha problémái vannak az konfigurálása és kezelése WPAD, lépjen [az automatikus észlelés hibaelhárítása] (https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10). 
+Ha a szervezet az interneten keresztül egy kimenő proxy hozzáférésre van szüksége, a Microsoft azt javasolja [végrehajtása az webes Proxy automatikus felderítési (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) lehetővé teszik a Windows 10-es számítógépek ehhez eszközregisztráció az Azure ad-ben. Ha problémái vannak az konfigurálása és kezelése WPAD, lépjen a [automatikus észlelési hibaelhárítási](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)). 
 
 Ha nem használ WPAD, és a proxybeállítások megadására a számítógépen, ezért kezdve a Windows 10 1709-es teheti [egy csoportházirend-objektum (GPO) segítségével a WinHTTP-beállítások konfigurálása](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
 
@@ -158,7 +158,7 @@ Az eszköznek az Azure-bérlőbeli regisztrációs állapotát a **[Get-MsolDevi
 
 A **Get-MSolDevice** parancsmag használatához a következők szükségesek:
 
-- Egy objektumot a **eszközazonosító** , amely megfelel a Windows ügyfél léteznie kell azonosítójával.
+- Egy objektumot a **Eszközazonosító** , amely megfelel a Windows ügyfél léteznie kell Azonosítójával.
 - A **DeviceTrustType** beállítás értékének **tartományhoz csatlakoztatottnak** kell lennie. Ez egyenértékű az Azure AD-portál Eszközök oldalán található **Hibrid Azure AD-hez csatlakoztatott** értékkel.
 - A feltételes hozzáférésű eszközöknél az **Engedélyezve** beállításhoz az **Igaz** értéket kell megadni, a **DeviceTrustLevel** beállításhoz pedig a **Felügyelt** értéket.
 

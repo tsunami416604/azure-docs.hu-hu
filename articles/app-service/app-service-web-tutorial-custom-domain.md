@@ -13,15 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/18/2018
+ms.date: 06/06/201
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 962955a405d12365f69519b004ea8f95d529a97c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 1b43463537f620eb59f78184de41ec37c26b97ed
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475555"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742836"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure App Service-ben
 
@@ -119,7 +119,7 @@ Az oktatóanyag példájában a `www` altartományhoz (például `www.contoso.co
 
 #### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
 
-Egy CNAME rekord hozzáadásával képezzen le egy altartományt az alkalmazás alapértelmezett gazdagépnevére (`<app_name>.azurewebsites.net`, ahol az `<app_name>` az alkalmazás neve).
+Adjon hozzá egy CNAME-rekordot le egy altartományt az alkalmazás alapértelmezett tartomány nevét (`<app_name>.azurewebsites.net`, ahol `<app_name>` az alkalmazás neve).
 
 A `www.contoso.com` tartomány példája esetében adjon hozzá egy CNAME rekordot, amely a `www` előtagot az `<app_name>.azurewebsites.net` elemre képezi le.
 
@@ -129,13 +129,13 @@ Miután hozzáadta a CNAME rekordot, a DNS-rekordok oldala a következő példá
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>A CNAME rekord hozzárendelésének engedélyezése az Azure-ban
 
-Az Azure Portal bal oldali navigációs sávján válassza ki az **Egyéni tartományok** elemet. 
+Az Azure Portal bal oldali navigációs sávján válassza ki az **Egyéni tartományok** elemet.
 
 ![Egyéni tartomány menü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 Az alkalmazás **Egyéni tartományok** oldalán adja hozzá a teljes egyéni DNS-nevet (`www.contoso.com`) a listához.
 
-Válassza ki a **Gazdagépnév hozzáadása** elem melletti **+** ikont.
+Válassza ki a **+** melletti ikon **egyéni tartomány hozzáadása**.
 
 ![Gazdagépnév hozzáadása](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -143,15 +143,15 @@ Válassza ki a **Gazdagépnév hozzáadása** elem melletti **+** ikont.
 
 Válassza az **Érvényesítés** lehetőséget.
 
-Megjelenik a **Gazdagépnév hozzáadása** oldal. 
+A **egyéni tartomány hozzáadása** lap jelenik meg.
 
 Győződjön meg arról, hogy **gazdagépnév rekordtípusa** értékre van állítva **CNAME (www\.example.com vagy bármely altartomány)** .
 
-Válassza a **Gazdagépnév hozzáadása** lehetőséget.
+Válassza az **Egyéni tartomány hozzáadása** lehetőséget.
 
 ![DNS-név hozzáadása az alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Eltarthat egy ideig, amíg az új gazdanév megjelenik az alkalmazás **Egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
+Eltarthat egy ideig, az alkalmazás megjelenik az új egyéni tartomány **egyéni tartományok** lapot. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
 
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
@@ -191,7 +191,7 @@ Az **Egyéni tartományok** oldalon másolja az alkalmazás IP-címét.
 Ha egy A rekordot egy alkalmazásra kíván leképezni, az App Service-nek **két** DNS-rekordra van szüksége:
 
 - egy **A** rekordra, amelyet leképezhet az alkalmazás IP-címére.
-- egy **TXT** típusú rekordra, amelyet leképezhet az alkalmazás alapértelmezett `<app_name>.azurewebsites.net` gazdagépnevére. Az App Service ezt a rekordot csak a konfiguráláskor használja annak ellenőrzéséhez, hogy Ön-e az egyéni tartomány tulajdonosa. Miután az App Service-ben érvényesítette és konfigurálta az egyéni tartományt, törölheti ezt a TXT típusú rekordot.
+- A **TXT** rekordra, amelyet leképezhet az alkalmazás alapértelmezett tartománynevének `<app_name>.azurewebsites.net`. Az App Service ezt a rekordot csak a konfiguráláskor használja annak ellenőrzéséhez, hogy Ön-e az egyéni tartomány tulajdonosa. Miután az App Service-ben érvényesítette és konfigurálta az egyéni tartományt, törölheti ezt a TXT típusú rekordot.
 
 Az `contoso.com` tartomány példájában a következő táblának megfelelően hozza létre az A és a TXT típusú rekordot (a `@` általában a gyökértartományt jelöli).
 
@@ -219,23 +219,23 @@ A rekordok hozzáadása után a DNS-rekordok oldala a következő példához has
 
 Az Azure Portalon az alkalmazás **Egyéni tartományok** oldalán adja hozzá a teljes egyéni DNS-nevet (például `contoso.com`) a listához.
 
-Válassza ki a **Gazdagépnév hozzáadása** elem melletti **+** ikont.
+Válassza ki a **+** melletti ikon **egyéni tartomány hozzáadása**.
 
-![Gazdagépnév hozzáadása](./media/app-service-web-tutorial-custom-domain/add-host-name.png)
+![Gazdagépnév hozzáadása](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 Írja be az A rekordhoz konfigurált teljes tartománynevet (például `contoso.com`).
 
 Válassza az **Érvényesítés** lehetőséget.
 
-Megjelenik a **Gazdagépnév hozzáadása** oldal. 
+A **egyéni tartomány hozzáadása** lap jelenik meg.
 
 Győződjön meg arról, hogy a **Gazdagépnév rekordtípusa** beállítás értéke **A rekord (example.com)** .
 
-Válassza a **Gazdagépnév hozzáadása** lehetőséget.
+Válassza az **Egyéni tartomány hozzáadása** lehetőséget.
 
 ![DNS-név hozzáadása az alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-Eltarthat egy ideig, amíg az új gazdanév megjelenik az alkalmazás **Egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
+Eltarthat egy ideig, az alkalmazás megjelenik az új egyéni tartomány **egyéni tartományok** lapot. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
 
 ![A rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
@@ -258,7 +258,7 @@ Az oktatóanyag példájában egy [helyettesítő karaktert tartalmazó DNS-neve
 
 #### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
 
-Egy CNAME rekord hozzáadásával képezzen le egy helyettesítő karaktert tartalmazó nevet az alkalmazás alapértelmezett gazdagépnevére (`<app_name>.azurewebsites.net`).
+Adjon hozzá egy CNAME rekordot a helyettesítő név leképezése az alkalmazás alapértelmezett tartomány nevét (`<app_name>.azurewebsites.net`).
 
 A `*.contoso.com` tartomány példájában a CNAME rekord a `*` előtagot a `<app_name>.azurewebsites.net` elemre képezi le.
 
@@ -274,23 +274,23 @@ Az Azure Portal bal oldali navigációs sávján válassza ki az **Egyéni tarto
 
 ![Egyéni tartomány menü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Válassza ki a **Gazdagépnév hozzáadása** elem melletti **+** ikont.
+Válassza ki a **+** melletti ikon **egyéni tartomány hozzáadása**.
 
 ![Gazdagépnév hozzáadása](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 Írjon be egy olyan teljes tartománynevet, amely megfelel a helyettesítő karaktert tartalmazó tartománynak (például `sub1.contoso.com`), majd válassza az **Érvényesítés** lehetőséget.
 
-A **Gazdagépnév hozzáadása** gomb aktívvá válik. 
+A **egyéni tartomány hozzáadása** gomb aktívvá válik.
 
 Győződjön meg arról, hogy **gazdagépnév rekordtípusa** értékre van állítva **CNAME-rekordot (www\.example.com vagy bármely altartomány)** .
 
-Válassza a **Gazdagépnév hozzáadása** lehetőséget.
+Válassza az **Egyéni tartomány hozzáadása** lehetőséget.
 
 ![DNS-név hozzáadása az alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-Eltarthat egy ideig, amíg az új gazdanév megjelenik az alkalmazás **Egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
+Eltarthat egy ideig, az alkalmazás megjelenik az új egyéni tartomány **egyéni tartományok** lapot. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
 
-Válassza ismét a **+** ikont, ha a helyettesítő karaktert tartalmazó tartománynak megfelelő másik gazdagépnevet kíván hozzáadni. Például adja hozzá a következőt: `sub2.contoso.com`.
+Válassza ki a **+** ikonra kattintva újra adja hozzá egy másik egyéni tartományt, amely megfelel a helyettesítő karaktert tartalmazó tartomány. Például adja hozzá a következőt: `sub2.contoso.com`.
 
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 

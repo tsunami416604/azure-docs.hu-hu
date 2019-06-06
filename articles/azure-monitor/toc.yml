@@ -95,10 +95,6 @@
           href: platform/alerts-overview.md
         - name: Klasszikus riasztások
           href: platform/alerts-classic.overview.md
-        - name: Intelligens csoportok
-          href: platform/alerts-smartgroups-overview.md
-        - name: Automatikus méretezés
-          href: platform/autoscale-overview.md
         - name: Metrikákhoz kapcsolódó riasztások
           href: platform/alerts-metric-overview.md
         - name: Naplóriasztások
@@ -109,6 +105,10 @@
           href: platform/alerts-common-schema.md
         - name: Műveletszabályok
           href: platform/alerts-action-rules.md
+        - name: Intelligens csoportok
+          href: platform/alerts-smartgroups-overview.md
+        - name: Automatikus méretezés
+          href: platform/autoscale-overview.md
         - name: Elemzés módosítása
           href: app/change-analysis.md
     - name: Adatok vizualizációja

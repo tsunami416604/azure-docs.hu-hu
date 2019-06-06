@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 03/21/2019
+ms.date: 05/31/2019
 ms.author: helohr
-ms.openlocfilehash: 820c89ce352db772f629a99a438ed86448af02fe
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 296ea271e88dfbbd91b901dc1b24d49fc31c139e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965715"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476726"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows virtuális asztal előzetes verziója? 
 
@@ -26,6 +26,12 @@ Mostantól elérhető nyilvános előzetes verzióban érhető el Windows virtu�
 * Minden számítógép, a meglévő távoli asztali szolgáltatások (RDS) és a Windows Server asztali környezet és az alkalmazások használata
 * Asztali számítógép és az alkalmazások virtualizálása
 * A Windows 10, Windows Server és Windows 7 rendszerű asztali számítógépek és egységes felügyeleti kezelőfelület-alkalmazások kezelése
+
+## <a name="introductory-video"></a>Bevezető videó
+
+Az alábbi videó Scott Manchester mutat be, bizonyos Windows virtuális asztal képességeket:
+
+<br></br><iframe src="https://www.youtube-nocookie.com/embed/30dOLcZ4_9U" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="key-capabilities"></a>Főbb képességek
 
@@ -92,7 +98,6 @@ A következő távoli asztali ügyfelek támogatják a Windows virtuális asztal
 
 * [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
 * [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
-
 
 ## <a name="supported-virtual-machine-os-image"></a>Támogatott a virtuális gép operációsrendszer-lemezkép
 

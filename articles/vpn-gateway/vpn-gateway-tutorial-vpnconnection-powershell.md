@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: cac68506803cda2c4e537feac84da2a82bc128bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b59d58eb2c387e5ba1f71748751110bf932837b9
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457991"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66727126"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Oktatóanyag: PowerShell-lel S2S VPN-kapcsolatok létrehozása és kezelése
 
@@ -31,7 +31,7 @@ Az alábbi diagram az oktatóanyagban használt topológiát mutatja:
 
 ![Helyek közötti VPN-kapcsolat ábrája](./media/vpn-gateway-tutorial-vpnconnection-powershell/site-to-site-diagram.png)
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="requirements"></a>Követelmények
 
@@ -102,7 +102,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName $RG1
   -ConnectionType IPsec -SharedKey "Azure@!b2C3"
 ```
 
-BGP használata esetén egészítse ki a nem kötelező „**-EnableBGP $True**” tulajdonsággal, amely engedélyezi a BGP-t a kapcsolaton. Ez alapértelmezés szerint le van tiltva.
+BGP használata esetén egészítse ki a nem kötelező „ **-EnableBGP $True**” tulajdonsággal, amely engedélyezi a BGP-t a kapcsolaton. Ez alapértelmezés szerint le van tiltva.
 
 ## <a name="update-the-vpn-connection-pre-shared-key-bgp-and-ipsecike-policy"></a>A VPN kapcsolat előmegosztott kulcs, BGP és IPsec/IKE-szabályzat tulajdonságainak frissítése
 

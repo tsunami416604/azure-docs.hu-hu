@@ -3,18 +3,18 @@ title: Ismerkedés az Azure IoT Central kezelőfelületével | Microsoft Docs
 description: Szerkesztőként érdemes megismerkedni az IoT-megoldások létrehozásához használt Azure IoT Central kezelőfelületének fő területeivel.
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/24/2019
+ms.date: 05/31/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 8a0621d0261bfbc7ab396abf837ee7b1123352d1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 53306b2087a47f5a61fc2a228e2d1f527127f746
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233450"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476322"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ismerkedés az Azure IoT Central kezelőfelületével
 
@@ -35,7 +35,7 @@ Az _operátorok_ az Azure IoT Central kezelőfelületén felügyelhetik az Azure
 
 ## <a name="use-the-left-navigation-menu"></a>A bal oldali navigációs menü használata
 
-A bal oldali navigációs menü használata a különböző területeket, az alkalmazás eléréséhez. Bontsa ki, vagy válassza a navigációs sáv összecsukása **<** vagy **>**:
+A bal oldali navigációs menü használata a különböző területeket, az alkalmazás eléréséhez. Bontsa ki, vagy válassza a navigációs sáv összecsukása **<** vagy **>** :
 
 | Menü | Leírás |
 | ---- | ----------- |
@@ -63,7 +63,9 @@ A kezelőfelületen egy világos és egy sötét téma közül választhat:
 
 ![Irányítópult](media/overview-iot-central-tour/homepage.png)
 
-Az irányítópult Ez az első lap jelenik meg, jelentkezzen be az Azure IoT Central alkalmazáshoz. Szerkesztő, mint az irányítópult más felhasználók számára testreszabható hozzáadhat csempéket. További részletekért tekintse át [az Azure IoT Central operátori nézeteinek testreszabására](tutorial-customize-operator.md) vonatkozó oktatóanyagot. A felhasználók is [saját személyes irányítópultok kialakítása](howto-personalize-dashboard.md).
+* Az irányítópult Ez az első lap jelenik meg, jelentkezzen be az Azure IoT Central alkalmazáshoz. Szerkesztő, mint az irányítópult más felhasználók számára testreszabható hozzáadhat csempéket. További részletekért tekintse át [az Azure IoT Central operátori nézeteinek testreszabására](tutorial-customize-operator.md) vonatkozó oktatóanyagot.
+
+* Kezelőként személyre szabott irányítópultokat hozhat létre, és azokat, és az alapértelmezett irányítópult közötti váltáshoz. További tudnivalókért lásd: a [létrehozása és kezelése a személyes irányítópultok](howto-personalize-dashboard.md) útmutató cikk.
 
 ## <a name="device-explorer"></a>Eszközkereső
 
@@ -86,29 +88,36 @@ Az _Eszközkészletek_ oldalon jelennek meg a szerkesztő által létrehozott es
 
 Az Elemzés oldalon diagramok láthatók, amelyek segítenek áttekinteni az alkalmazáshoz csatlakozó eszközök viselkedését. Az operátorok ezen az oldalon monitorozhatják és vizsgálhatják ki a csatlakoztatott eszközökkel kapcsolatos problémákat. Az ezen az oldalon megjelenő diagramokat a szerkesztő határozza meg. További tudnivalókért lásd az [egyéni elemzések az Azure IoT Central-alkalmazásokban történő létrehozását](howto-use-device-sets.md) ismertető szakaszt.
 
-## <a name="jobs"></a>Feladatok (job)
+## <a name="jobs"></a>Feladatok
 
 ![Feladatok oldal](media/overview-iot-central-tour/jobs.png)
 
-A feladatok oldal csoportos eszközfelügyeleti műveletek elvégzését teszi lehetővé az eszközökön. A szerkesztő az oldalt az eszköz tulajdonságok, beállítások és parancsok frissítésére használja. További tudnivalókért tekintse meg a [Feladat futtatása](howto-run-a-job.md) cikket.
+A feladatok lapot tömeges eszközfelügyeleti műveleteknek az eszközök futtatását teszi lehetővé. A szerkesztő az oldalt az eszköz tulajdonságok, beállítások és parancsok frissítésére használja. További tudnivalókért tekintse meg a [Feladat futtatása](howto-run-a-job.md) cikket.
 
-## <a name="device-templates"></a>Eszközsablonok
+## <a name="device-templates"></a>Eszköz-sablonok
 
 ![Eszköz sablonok lap](media/overview-iot-central-tour/templates.png)
 
-Az eszköz sablonok lap, ahol egy jelentéskészítő létrehozza és kezeli az eszköz sablonok az alkalmazásban. További tudnivalókért lásd az [új eszköztípus az Azure IoT Central-alkalmazásokban történő definiálását](tutorial-define-device-type.md) ismertető szakaszt.
+Az eszköz sablonok lap, ahol egy jelentéskészítő létrehozza és kezeli az eszköz sablonok az alkalmazásban. Egy eszköz sablon például megadja az eszköz jellemzői:
+
+- Telemetria, állapotát és esemény mérések.
+- Beállítások és tulajdonságok.
+- Parancsok.
+- Események vagy telemetriaértékeket alapuló szabály.
+
+További tudnivalókért lásd az [új eszköztípus az Azure IoT Central-alkalmazásokban történő definiálását](tutorial-define-device-type.md) ismertető szakaszt.
 
 ## <a name="continuous-data-export"></a>Folyamatos adatexportálás
 
 ![Folyamatos adatexportálás lap](media/overview-iot-central-tour/export.png)
 
-A folyamatos Exportálás lap, ahol a rendszergazda határozza meg az alkalmazásból származó adatok, telemetriai adatokat, például exportálása. Más szolgáltatások is az exportált adatok tárolására, vagy használhatja az elemzés. További tudnivalókért tekintse meg a [exportálhatja az adatokat az Azure IoT Central](howto-export-data.md) cikk.
+A folyamatos Exportálás lap, ahol a rendszergazda határozza meg adatok, például az alkalmazás telemetriáját közvetítése. Más szolgáltatások is az exportált adatok tárolására, vagy használhatja az elemzés. További tudnivalókért tekintse meg a [exportálhatja az adatokat az Azure IoT Central](howto-export-data.md) cikk.
 
-## <a name="administration"></a>Felügyelet
+## <a name="administration"></a>Adminisztráció
 
 ![Adminisztráció oldal](media/overview-iot-central-tour/administration.png)
 
-Az Adminisztráció oldal hivatkozásokat tartalmaz a rendszergazda által például az alkalmazás felhasználóinak és szerepköreinek meghatározásához használt eszközökhöz. További tudnivalókért lásd az [Azure IoT Central-alkalmazások adminisztrációját](howto-administer.md) ismertető szakaszt.
+A felügyelet lapon a rendszergazda például a felhasználók és szerepkörök definiálása az alkalmazásban, és a felhasználói felület testreszabása a eszközök hivatkozásokat tartalmaz. További tudnivalókért lásd az [Azure IoT Central-alkalmazások adminisztrációját](howto-administer.md) ismertető szakaszt.
 
 ## <a name="next-steps"></a>További lépések
 

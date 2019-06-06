@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0be7a8b756ee3d1d71b15e10797176e50037a47
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: b35d2e21de3da184496da53fdf46d865fdfdf5c7
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540150"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734488"
 ---
 # <a name="what-is-authentication"></a>Mi a hitelesítés?
 
@@ -85,14 +85,11 @@ Az alábbi ábrán látható egy egyszerűsített a Microsoft identity platform-
 
 A kiépítési folyamat:
 
-|   |   |
-|---|---|
-| 1. | A felhasználó a bérlőtől a B bérlőhöz próbál jelentkezzen be az alkalmazás |
-| 2 | A rendszer kéri és ellenőrzi a felhasználó hitelesítő adatait |
-| 3 | A rendszer kéri a felhasználó hozzájárulását ahhoz, hogy az alkalmazás hozzáférjen a B bérlőhöz |
-| 4 | A Microsoft identity platform használja az alkalmazásobjektum a tervrajz létrehozni egy szolgáltatásnevet a bérlőtől a B bérlőhöz |
-| 5 | A felhasználó megkapja az igényelt jogkivonatot |
-|   |   |
+1. A felhasználó a bérlőtől a B próbál jelentkezzen be az alkalmazást, az engedélyezési végpont az alkalmazás tokent kér.
+1. A felhasználói hitelesítő adatok szerezte be, és ellenőrzi a hitelesítéshez
+1. Az alkalmazás eléréséhez a bérlőtől a B bérlőhöz történő kéri a felhasználót
+1. A Microsoft identity platform használ az alkalmazásobjektum a bérlőhöz webportált létrehozni egy szolgáltatásnevet a bérlőtől a B bérlőhöz
+1. A felhasználó megkapja az igényelt jogkivonatot
 
 A folyamat tetszőleges mennyiségben ismételhető a többi bérlőre (C, D és így tovább) vonatkozóan. A bérlő megőrzi a tervezet az alkalmazás (alkalmazásobjektum). A többi bérlőn, amelyekre az alkalmazás hozzájárulást kapott, továbbra is a felhasználók és a rendszergazdák határozhatják meg az egyedi bérlőkön lévő megfelelő szolgáltatásnév-objektumokon keresztül, hogy az alkalmazás milyen tevékenységeket hajthat végre. További információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok a Microsoft identity platform](app-objects-and-service-principals.md).
 
@@ -109,7 +106,7 @@ Az egyes biztonsági jogkivonatokban lévő jogcímek a jogkivonat típusától,
 
 Az alábbi táblázat röviden a Microsoft identity platform által kibocsátott jogcímek különböző típusú biztosítja. Részletesebb információkért lásd: a [hozzáférési jogkivonatokat](access-tokens.md) és [azonosító-jogkivonatokat](id-tokens.md) identity platform a Microsoft által kiadott.
 
-| Igénylés | Leírás |
+| Jogcím | Leírás |
 | --- | --- |
 | Alkalmazásazonosító | A jogkivonatot használó alkalmazást azonosítja. |
 | Célközönség | A fogadó erőforrást azonosítja, amelynek a jogkivonat szól. |

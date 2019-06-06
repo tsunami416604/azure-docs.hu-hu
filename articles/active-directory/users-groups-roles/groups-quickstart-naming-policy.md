@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0e600204479bc54a590df6bf1bbcd634eaac7fc
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: b17ef24d753041934f68f3daee950aaa0bec46ba
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605640"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734759"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Gyors útmutató: Az Azure Active Directory elnevezési szabályzat
 
@@ -31,12 +31,12 @@ Ebben a rövid útmutatóban elnevezési szabályzatot állíthat be az Azure Ac
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal-preview"></a>Az Azure portal (előzetes verzió) használatával egy bérlő csoportelnevezési házirend konfigurálása
+## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal"></a>Az Azure portal használatával egy bérlő csoportelnevezési házirend konfigurálása
 
 1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) rendszergazdai felhasználói fiókkal.
 1. Válassza ki **csoportok**, majd **elnevezési szabályzatában foglalt** elnevezési szabályzat lapjának megnyitásához.
 
-    ![Nyissa meg az elnevezési szabályzat oldalt a felügyeleti központ](./media/groups-naming-policy/policy-preview.png)
+    ![Nyissa meg az elnevezési szabályzat oldalt a felügyeleti központ](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Zobrazí nebo upraví az előtag-utótag csoportelnevezési házirend
 
@@ -49,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 1. Az a **elnevezési szabályzatában foglalt** lapon jelölje be **letiltott szavakat**.
 
-    ![szerkesztése és feltöltése az elnevezési szabályzatában foglalt letiltott szavakat listázása](./media/groups-naming-policy/blockedwords-preview.png)
+    ![szerkesztése és feltöltése az elnevezési szabályzatában foglalt letiltott szavakat listázása](./media/groups-naming-policy/blockedwords.png)
 
 1. Zobrazí nebo upraví egyéni letiltott szavakat aktuális listájának kiválasztásával **letöltése**.
 1. A fájl ikonra kattintva töltse fel az új egyéni letiltott szavak listáját.
@@ -59,7 +59,7 @@ Ennyi az egész. Beállította az elnevezési szabályzatot és hozzáadta az eg
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>Távolítsa el a kiosztási szabályzat (előzetes verzió) az Azure portal használatával
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Távolítsa el a csoportelnevezési házirend, az Azure portal használatával
 
 1. Az a **elnevezési szabályzatában foglalt** lapon jelölje be **házirend törlése**.
 1. Miután meggyőződött a törlés, a kiosztási szabályzat törlődik a, beleértve az összes előtag-utótag elnevezési házirend és egyéni letiltott szavakat.

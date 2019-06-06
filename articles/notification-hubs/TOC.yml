@@ -38,10 +38,6 @@
       items:
         - name: Leküldéses értesítések küldése felhőalapú Baidu-értesítés használatával
           href: notification-hubs-baidu-china-android-notifications-get-started.md
-    - name: Chrome
-      items:
-        - name: Leküldéses értesítések küldése Chrome-alkalmazásokba
-          href: notification-hubs-chrome-push-notifications-get-started.md
     - name: iOS
       items:
         - name: Leküldéses értesítések küldése iOS-alkalmazásokba

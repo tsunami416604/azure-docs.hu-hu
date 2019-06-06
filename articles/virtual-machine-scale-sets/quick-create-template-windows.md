@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 8124f2236b37f72741c16dad8f1649d08963542e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a91bbceb3cb55cf3e7f8e0f84581af07f1ffb80d
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614771"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66728910"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Gyors útmutató: Windowsos virtuálisgép-méretezési csoport létrehozása Azure-sablonnal
 
@@ -29,7 +29,7 @@ A virtuálisgép-méretezési csoportok segítségével azonos, automatikus ská
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
 ## <a name="define-a-scale-set-in-a-template"></a>Méretezési csoport meghatározása sablonban
@@ -42,7 +42,7 @@ A sablonok határozzák meg az egyes erőforrástípusok konfigurációját. A v
 | Tulajdonság                     | A tulajdonság leírása                                  | Példa sablonérték                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | A létrehozandó Azure-erőforrástípus                            | Microsoft.Compute/virtualMachineScaleSets |
-| név                         | A méretezési csoport neve                                       | myScaleSet                                |
+| name                         | A méretezési csoport neve                                       | myScaleSet                                |
 | location                     | A méretezési csoport létrehozásának helye                     | USA keleti régiója                                   |
 | sku.name                     | A méretezési csoport egyes példányainak virtuálisgép-mérete                  | Standard_A1                               |
 | sku.capacity                 | Az először létrehozandó virtuálisgép-példányok száma           | 2                                         |

@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: afeaccd798204ab0973be87ea36c275e1d633403
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4795952faa91d62b76f267795660db5ab4075e79
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66110423"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734499"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Gyors útmutató: Windows-tárolók üzembe helyezése a Service Fabric
 
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál.
 
-A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe a Docker-tárolók előre összeállított rendszerképeit egy Service Fabric-alkalmazásban. Ha a elkészült, rendelkezni fog egy futó Windows Server Core 2016-kiszolgáló és az IIS-tárolóval. Ez a rövid útmutató a Windows-tárolók üzembe helyezését mutatja be. A Linux-tárolók üzembe helyezését lásd [ebben a rövid útmutatóban](service-fabric-quickstart-containers-linux.md).
+A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe a Docker-tárolók előre összeállított rendszerképeit egy Service Fabric-alkalmazásban. Ha a elkészült, rendelkezni fog egy futó Windows Server Core 2016-kiszolgáló és az IIS-tárolóval. Ez a rövid útmutató ismerteti, hogy egy Windows-tárolók üzembe helyezését. Olvasási [ebben a rövid útmutatóban](service-fabric-quickstart-containers-linux.md) Linux-tárolók üzembe helyezését.
 
 ![Az IIS alapértelmezett webhelye][iis-default]
 
@@ -44,7 +44,7 @@ Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 
 * Azure-előfizetés (létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
 * Egy fejlesztői számítógép, amelyen a következők futnak:
-  * Visual Studio 2015 vagy Visual Studio 2017.
+  * A Visual Studio 2015-öt vagy a Windows 2019.
   * [Service Fabric SDK és -eszközök](service-fabric-get-started.md).
 
 ## <a name="package-a-docker-image-container-with-visual-studio"></a>Docker-rendszerképtároló becsomagolása a Visual Studióval
@@ -57,7 +57,7 @@ Válassza a **Service Fabric application** (Service Fabric-alkalmazás) lehetős
 
 A **Hosted Containers and Applications** (Üzemeltetett tárolók és alkalmazások) sablonokból válassza a **Container** (Tároló) elemet.
 
-A **Lemezképnév**, adja meg a "mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016", a [Windows Server Core-kiszolgáló és az IIS-alaprendszerképet](https://hub.docker.com/r/microsoft-windows-servercore-iis).
+A **Lemezképnév**, adja meg a "mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016", a [Windows Server Core-kiszolgáló és az IIS-alaprendszerképet](https://hub.docker.com/_/microsoft-windows-servercore-iis).
 
 Konfigurálja úgy a tárolóport–gazdagépport leképezést, hogy a szolgáltatáshoz a 80-as porton beérkező kérések a tárolón a 80-as portra legyenek leképezve.  Állítsa a **Tárolóport** beállítást 80, a **Gazdaport** beállítást pedig szintén 80 értékre.  
 
@@ -67,7 +67,7 @@ Nevezze el a szolgáltatást „MyContainerService” néven, majd kattintson az
 
 ## <a name="specify-the-os-build-for-your-container-image"></a>Az operációs rendszer buildjének megadása a tárolórendszerképhez
 
-Előfordulhat, hogy a Windows Server egy bizonyos verziójával épített tárolók a Windows Server egy más verzióját futtató gazdagépen nem működnek. Például a Windows Server 1709-cel létrehozott tárolók nem működnek a Windows Server 2016-os verzióját futtató gazdagépeken. További tudnivalókat a [Windows Server tároló operációs rendszerének és a gazdagép operációs rendszerének kompatibilitását ismertető cikket](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). 
+Előfordulhat, hogy a Windows Server egy bizonyos verziójával épített tárolók a Windows Server egy más verzióját futtató gazdagépen nem működnek. Például tárolók felhasználásával a Windows Server 1709-es nem futnak Windows Server 2016 rendszert futtató gazdagépeken. További tudnivalókat a [Windows Server tároló operációs rendszerének és a gazdagép operációs rendszerének kompatibilitását ismertető cikket](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). 
 
 A Service Fabric-futtatókörnyezet 6.1-es vagy újabb verziójával több operációsrendszer-képet is megadhat tárolónként, és mindegyik rendszerképet megcímkézheti azon operációs rendszer buildverziójával, amelybe az üzembe helyezése történik. Így meggyőződhet arról, hogy az alkalmazása különböző verziójú Windows operációs rendszereket futtató gazdagépeken is működik. További tudnivalókat a [specifikus tárolórendszerképek operációs rendszer buildje alapján végzett megadását ismertető cikkben talál](service-fabric-get-started-containers.md#specify-os-build-specific-container-images). 
 
@@ -77,14 +77,14 @@ A Microsoft különböző rendszerképeket tesz közzé a Windows Server külön
     <ContainerHostPolicies CodePackageRef="Code"> 
       <ImageOverrides> 
         ...
-          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowservercore-1803" /> 
-          <Image Name= "mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016" Os="14393" /> 
-          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowservercore-1709" Os="16299" /> 
+          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowsservercore-1803" /> 
+          <Image Name= "mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016" Os="14393" /> 
+          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowsservercore-1709" Os="16299" /> 
       </ImageOverrides> 
     </ContainerHostPolicies> 
 ```
 
-A szolgáltatásjegyzék továbbra is csak egy rendszerképet ad meg a nanoserverhez, `mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016`.
+A szolgáltatásjegyzék továbbra is csak egy rendszerképet ad meg a nanoserverhez, `mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016`.
 
 A a *ApplicationManifest.xml* fájl, módosítsa **PasswordEncrypted** való **hamis**. A nyilvános tárolórendszerképet a Docker hubon, az, hogy kapcsolja ki a titkosítás, mert üres jelszóval titkosított hoz létre egy összeállítási hiba van a fiókkal és jelszóval üresek.
 
@@ -100,11 +100,11 @@ Ha szükséges, telepítse az Azure Powershellt utasításait a [Azure PowerShel
 
 A PowerShellben futtassa a következő parancsfájl futtatása előtt `Connect-AzAccount` kapcsolat létrehozása az Azure-ral.
 
-Másolja a vágólapra, és nyissa meg a következő parancsfájl **Windows PowerShell ISE-ben**.  Az üres Untitled1.ps1 ablakban illessze be a tartalmát. Majd adjon meg értékeket a változókat a parancsfájl: `subscriptionId`, `certpwd`, `certfolder`, `adminuser`, `adminpwd`stb.  A megadott könyvtár `certfolder` a parancsfájl futtatása előtt léteznie kell.
+Másolja a vágólapra, és nyissa meg a következő parancsfájl **Windows PowerShell ISE-ben**.  Az üres Untitled1.ps1 ablakban illessze be a tartalmát. Majd adjon meg értékeket a változókat a parancsfájl: `subscriptionId`, `certpwd`, `certfolder`, `adminuser`, `adminpwd`, és így tovább.  A megadott könyvtár `certfolder` a parancsfájl futtatása előtt léteznie kell.
 
 [!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
 
-Miután az értékeket a változók, nyomja le az ENTER **F5** a parancsfájl futtatásához.
+Miután az érték változóhoz megadott, kattintson a **F5** a parancsfájl futtatásához.
 
 Miután a szkript futtatása, és létrehozza a fürtöt, keresse meg a `ClusterEndpoint` a kimenetben. Példa:
 
@@ -142,7 +142,7 @@ Az alkalmazást a létrehozása után telepítheti a fürtben, közvetlenül a V
 
 A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a **MyFirstContainer** elemre, majd kattintson a **Publish** (Közzététel) parancsra. Ekkor megjelenik a Publish (Közzététel) párbeszédpanel.
 
-Másolja a tartalom következő **CN =** futtatásakor a PowerShell-ablakban a `Import-PfxCertificate` fenti parancsot, és vegye fel a portot `19000` rá. Például: `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Másolja be azt a **kapcsolati végpont** mező. Ne felejtse el ezt az értéket, mivel egy későbbi lépésben szükség lesz rá.
+Másolja a tartalom következő **CN =** futtatásakor a PowerShell-ablakban a `Import-PfxCertificate` fenti parancsot, és vegye fel a portot `19000` rá. Például: `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Másolja be azt a **kapcsolati végpont** mező. Ne felejtse el ezt az értéket, mivel egy későbbi lépésben szüksége lesz rá.
 
 Kattintson az **Advanced Connection Parameters** (Speciális kapcsolati paraméterek) elemre, és ellenőrizze a kapcsolati paraméterek információit.  *FindValue* és *ServerCertThumbprint* értékeknek egyezniük kell futtatásakor telepített tanúsítvány ujjlenyomatával `Import-PfxCertificate` az előző lépésben.
 
@@ -150,7 +150,7 @@ Kattintson az **Advanced Connection Parameters** (Speciális kapcsolati paramét
 
 Kattintson a **Publish** (Közzététel) gombra.
 
-A fürtben szereplő minden alkalmazásnak egyedi névvel kell rendelkeznie. Névütközés esetén nevezze át a Visual Studio-projektet, és végezze el újra az üzembe helyezést.
+A fürtben szereplő minden alkalmazásnak egyedi névvel kell rendelkeznie. Névütközés esetén nevezze át a Visual Studio-projektet, és telepítse újra.
 
 Nyisson meg egy böngészőt, és keresse meg a címet, amely mindössze a **kapcsolati végpont** mezőt az előző lépésben. Azt is megteheti, hogy beilleszti előre a `http://` sémaazonosítót, vagy hozzáfűzheti a `:80` portot az URL-címhez. Ha például a http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
 

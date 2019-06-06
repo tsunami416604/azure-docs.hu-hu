@@ -47,6 +47,8 @@
       href: concept-point-time-snapshot.md
     - name: Funkciókezelés
       href: concept-feature-management.md
+    - name: Eseménykezelés
+      href: concept-app-configuration-event.md
     - name: Magas rendelkezésre állás
       items:
         - name: Rugalmasság és vészhelyreállítás
@@ -57,6 +59,8 @@
       href: howto-integrate-azure-managed-service-identity.md
     - name: Konfigurációs adatok importálása vagy exportálása
       href: howto-import-export-data.md
+    - name: Események átirányítása egyéni végponthoz
+      href: howto-app-configuration-event.md
     - name: Ajánlott eljárások
       href: howto-best-practices.md
 - name: Referencia

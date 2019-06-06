@@ -2,22 +2,18 @@
 title: Az Azure Resource Manager áttekintése | Microsoft Docs
 description: Ismerteti, hogyan használja az Azure Resource Manager eszközt erőforrások telepítésére, felügyeletére és hozzáférés-vezérlésére az Azure portálon.
 services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.assetid: 76df7de1-1d3b-436e-9b44-e1b3766b3961
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/24/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: b6d84a07de408cedb0e21181c70e5c1481ac62bc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6ad87c776bbbab9959f7c90a8d006ae7f62bde79
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66225900"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514341"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 
@@ -51,13 +47,15 @@ A Resource Manager számos előnyt kínál:
 * Címkékkel láthatja el az erőforrásokat, így logikusan rendszerezhető az előfizetés összes erőforrása.
 * Az azonos címkén osztozó erőforrások csoportjának költségeit megtekintve jól átláthatók a szervezet számlái.
 
-## <a name="understand-management-scope"></a>Megismerheti a felügyeleti hatóköre
+## <a name="understand-scope"></a>A hatókör megismerése
 
-Az Azure biztosít a felügyeleti hatókör négy szint: [felügyeleti csoportok](../governance/management-groups/index.md), előfizetések, [erőforráscsoportok](#resource-groups), és erőforrásokat. Az alábbi ábra ezekre a rétegekre mutat egy példát.
+Az Azure biztosít a hatókör négy szint: [felügyeleti csoportok](../governance/management-groups/index.md), előfizetések, [erőforráscsoportok](#resource-groups), és erőforrásokat. Az alábbi ábra ezekre a rétegekre mutat egy példát.
 
 ![Scope](./media/resource-group-overview/scope-levels.png)
 
-Felügyeleti beállításokat a hatókörszintek bármelyikéhez megadhat. A kiválasztott szint határozza meg, milyen széles körben lesz alkalmazva a beállítás. Az alacsonyabb szintek öröklik a magasabb szintek beállításait. Például, amikor alkalmaz egy [házirend](../governance/policy/overview.md) az előfizetéséhez, a szabályzat érvényes az összes erőforráscsoportra és az előfizetése. A szabályzat alkalmazásakor az erőforráscsoport, amely a házirend alkalmazva az erőforráscsoportot és az ahhoz tartozó összes erőforrást. Egy másik erőforráscsoportot azonban nem rendelkezik a szabályzat-hozzárendelést.
+Felügyeleti beállításokat a hatókörszintek bármelyikéhez megadhat. A kiválasztott szint határozza meg, milyen széles körben lesz alkalmazva a beállítás. Az alacsonyabb szintek öröklik a magasabb szintek beállításait. Például, amikor alkalmaz egy [házirend](../governance/policy/overview.md) az előfizetéséhez, a szabályzat érvényes az összes erőforráscsoportra és az előfizetése. A szabályzat alkalmazásakor az erőforráscsoport, amely a házirend alkalmazva az erőforráscsoportot és az ahhoz tartozó összes erőforrást. Azonban egy másik erőforráscsoportot a szabályzat-hozzárendelés nem rendelkezik.
+
+Sablonok telepíthet a felügyeleti csoportokhoz, előfizetések vagy erőforráscsoportok.
 
 ## <a name="guidance"></a>Útmutatás
 
@@ -85,7 +83,7 @@ Néhány fontos tényezőt érdemes figyelembe venni az erőforráscsoport megha
 
 Egy erőforráscsoport létrehozásakor meg kell adnia az erőforráscsoport helyét. Most felmerülhet Önben a kérdés, hogy „Miért van szüksége egy erőforráscsoportnak helyre? Ha pedig az erőforrások rendelkezhetnek az erőforrástól eltérő hellyel, akkor miért számít egyáltalán az erőforráscsoport helye?” Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha az erőforráscsoport számára megad egy helyet, akkor a metaadatok tárolási helyét adja meg. Megfelelőségi okokból szükség lehet arra, hogy az adatokat egy adott régióban tárolja.
 
-Ha az erőforráscsoport átmenetileg nem érhető el, mert a metaadatok nem érhető el az erőforráscsoportban lévő erőforrásokat nem frissíthető. Más régiókban található erőforrások továbbra is elvárt módon működnek, de azokat nem lehet frissíteni. A kockázat minimalizálása érdekében keresse meg az erőforráscsoport és erőforrások ugyanabban a régióban.
+Ha az erőforráscsoport átmenetileg nem érhető el, mert a metaadatok nem érhető el az erőforráscsoportban lévő erőforrásokat nem frissíthető. Más régiókban található erőforrások továbbra is elvárt módon működnek, de azokat nem lehet frissíteni. Megbízható alkalmazások létrehozásával kapcsolatos további információkért lásd: [megbízható Azure-alkalmazások tervezése](/azure/architecture/reliability/).
 
 ## <a name="resource-providers"></a>Erőforrás-szolgáltatók
 

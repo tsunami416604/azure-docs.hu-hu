@@ -2,20 +2,20 @@
 title: Mi az az Azure Active Directory B2C? | Microsoft Docs
 description: Ismerje meg, hozzon létre és kezelhet identitással kapcsolatos műveletet, például a regisztrációs bejelentkezési és profilok kezelése az alkalmazás Azure Active Directory B2C használatával.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 02/20/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 33c6f9e06439ebeb17608aa374532ac4f7a020cf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5cceac260979b4322d41843038eab0998c8e8ba4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701356"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509748"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Mi az az Azure Active Directory B2C?
 
@@ -98,7 +98,7 @@ Paramétereket lekérdezési sztringben küldhet az Azure AD B2C-nek. Ha átadja
 
 Felhasználói folyamat oldalainak testreszabása, lásd: [oktatóanyag: Testre szabhatja a felület az Azure Active Directory B2C felhasználói élmények](tutorial-customize-ui.md). Egyéni szabályzat oldalainak testreszabása, lásd: [egyéni szabályzat használata az Azure Active Directory B2C az alkalmazás a felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md) vagy [konfigurálása a felhasználói felület dinamikus tartalom az Azure-beli egyéni szabályzatok használatával Az Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md).
 
-## <a name="developer-resources"></a>Fejlesztői forrásanyagok
+## <a name="developer-resources"></a>Fejlesztői erőforrások
 
 ### <a name="client-applications"></a>Ügyfélalkalmazások
 

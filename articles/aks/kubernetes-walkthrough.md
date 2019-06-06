@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/20/2019
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: b96c1ada1ebb1bc53f7f55311c69a3cdc04f7574
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: b99ee8e6a379a1e86eaf37bb232176c3ca13c0d9
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956443"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66687948"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Gyors útmutató: Fürt üzembe helyezése az Azure Kubernetes Service (AKS) az Azure CLI használatával
 
@@ -238,7 +238,7 @@ A művelet az Azure Vote alkalmazás megtekintéséhez nyissa meg a szolgáltat�
 
 Az AKS-fürt létrehozása után az Azure Monitor-tárolókhoz rögzítheti a fürtcsomópontok és a podok mérőszámok lett engedélyezve. Ezek az állapotmetrikák elérhetők az Azure Portalon.
 
-Az Azure Vote podok jelenlegi állapotának, üzemidejének és erőforrás-felhasználásának megjelenítéséhez hajtsa végre az alábbi lépéseket:
+Az aktuális állapot, hasznos üzemidőt és az Azure Vote podok erőforrás-használati megtekintéséhez kövesse az alábbi lépéseket:
 
 1. Nyissa meg egy webböngészőben az Azure Portalt [https://portal.azure.com][azure-portal].
 1. Válassza ki az erőforráscsoportját (pl. *myResourceGroup*), majd válassza i az AKS-fürtöt (pl. *myAKSCluster*).
@@ -251,11 +251,11 @@ Megjelenik az *azure-vote-back* és az *azure-vote-front* tároló, az alábbi p
 
 ![Futó tárolók állapotának megtekintése az AKS-ben](media/kubernetes-walkthrough/monitor-containers.png)
 
-Naplóit tekinthetik a `azure-vote-front` pod, válassza ki a lehetőséget, hogy **megtekintés az analyticsben**, majd **tárolónaplók megtekintése** hivatkozásra a tárolók listájának jobb oldalán. Ezek a naplók tartalmazzák a tároló *stdout* és *stderr* streamjét is.
+Naplóit tekinthetik a `azure-vote-back` pod, válassza ki a lehetőséget, hogy **megtekintés az analyticsben**, majd kattintson a **tárolónaplók megtekintése** hivatkozásra a tárolók listájának jobb oldalán. Ezek a naplók tartalmazzák a tároló *stdout* és *stderr* streamjét is.
 
 ![Tárolók naplóinak megtekintése az AKS-ben](media/kubernetes-walkthrough/monitor-container-logs.png)
 
-## <a name="delete-cluster"></a>Fürt törlése
+## <a name="delete-the-cluster"></a>A fürt törlése
 
 Ha a fürtre már nincs szükség, az [az group delete][az-group-delete] paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
