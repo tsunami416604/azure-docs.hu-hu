@@ -63,6 +63,8 @@
       href: Face-API-How-to-Topics/how-to-use-headpose.md
     - name: Arcfelismerési modell megadása
       href: Face-API-How-to-Topics/specify-recognition-model.md
+    - name: Arcfelismerési modell megadása
+      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: A nagy léptékű funkció használata
       href: Face-API-How-to-Topics/how-to-use-large-scale.md
     - name: Videók valós idejű elemzése

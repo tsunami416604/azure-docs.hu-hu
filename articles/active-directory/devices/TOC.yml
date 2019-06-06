@@ -1,8 +1,8 @@
-- name: Az eszközfelügyelet dokumentációja
+- name: A Device Identities dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Azure AD eszközfelügyeletének ismertetése
+    - name: Mi az az eszközidentitás?
       href: overview.md
     - name: Mi az az Enterprise State Roaming?
       href: enterprise-state-roaming-overview.md
@@ -29,7 +29,7 @@
 - name: Útmutatók
   expanded: true
   items:
-    - name: Eszközök kezelése az Azure Portalon
+    - name: Eszközidentitások kezelése
       href: device-management-azure-portal.md
     - name: Elavult eszközök kezelése
       href: manage-stale-devices.md

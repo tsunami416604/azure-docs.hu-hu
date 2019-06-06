@@ -73,6 +73,8 @@
           href: waf-overview.md
         - name: WAF-konfiguráció
           href: application-gateway-waf-configuration.md
+        - name: Egyéni szabályok
+          href: custom-waf-rules-overview.md
     - name: Állapotfigyelés
       items:
         - name: Állapotadat-mintavétel
@@ -141,6 +143,12 @@
           href: application-gateway-customize-waf-rules-powershell.md
         - name: Azure CLI
           href: application-gateway-customize-waf-rules-cli.md
+    - name: WAF egyéni szabályok
+      items:
+        - name: Példák egyéni szabályokra
+          href: create-custom-waf-rules.md
+        - name: A WAF konfigurálása egyéni szabályokkal
+          href: configure-waf-custom-rules.md
     - name: Útválasztás URL-cím alapján
       items:
         - name: Azure PowerShell

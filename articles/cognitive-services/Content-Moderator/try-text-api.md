@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/30/2019
-ms.openlocfilehash: edf4a3e9d9e9b51ac44f839cababa9d14bc0d17a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 05/29/2019
+ms.openlocfilehash: 21209548d1cfe7b6eebb1757e817a12c797e78a9
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228048"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688837"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Az API-konzolról mérsékelt szöveg
 
-Használja a [szöveg moderálási API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) az Azure Content Moderator a szöveges tartalom vizsgálata. A művelet ellenőrzi a tartalom trágárság cenzúrázása és hasonlítja össze a tartalmat, és megosztott egyéni feketelistákkal ellen.
+Használja a [szöveg moderálási API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) az Azure Content Moderator trágárság cenzúrázása a szöveges tartalom vizsgálata és összehasonlítása, egyéni és megosztott listájával.
 
 ## <a name="get-your-api-key"></a>Az API-kulcs beszerzése
 
@@ -72,7 +72,7 @@ Also, 999-99-9999 looks like a social security number (SSN).
 
 ## <a name="analyze-the-response"></a>A válasz elemzése
 
-A következő választ a különféle elemzéseket az API-val jeleníti meg. Tartalomszűrés, személyazonosításra alkalmas adatok, besorolás (előzetes verzió) és az automatikusan kijavíthatók verzióját tartalmazza.
+A következő választ a különféle elemzéseket az API-val jeleníti meg. Tartalomszűrés, a személyes adatok, a besorolás (előzetes verzió) és a az automatikusan kijavíthatók verziót tartalmazza.
 
 > [!NOTE]
 > A gépi támogatású "Osztályozás" funkció előzetes verzióban érhető el, és kizárólag angol támogatja.

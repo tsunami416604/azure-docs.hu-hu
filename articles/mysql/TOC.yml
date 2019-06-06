@@ -157,6 +157,10 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
+    - name: Tárterület automatikus növelése
+      items:
+        - name: Azure Portal
+          href: howto-auto-grow-storage-portal.md
     - name: Hozzáférés a kiszolgálói naplókhoz
       items:
         - name: Azure Portal

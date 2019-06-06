@@ -226,6 +226,8 @@
     - name: FedRAMP
       displayName: 'blueprint, privacy, certifications'
       items:
+        - name: Azure-szolgáltatások vizsgálati hatókör szerint
+          href: ./compliance/azure-services-in-fedramp-auditscope.md
         - name: Adatelemzés
           href: ./blueprints/fedramp-analytics-overview.md
         - name: Adattárház
