@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/27/2019
+ms.date: 6/03/2019
 ms.author: monhaber
-ms.openlocfilehash: 807bde76bb6bb50490ee599768273a59c49d5e45
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: c5b5b88ee1334ac6d7b39b8ad53bd020e6042454
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258693"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480535"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformok és az Azure Security Center által támogatott funkciók
 
@@ -67,7 +67,7 @@ A következő Linux operációs rendszerek támogatottak:
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6
 * Debian GNU/Linux 8. és 9
-* Ubuntu Linux 14.04 LTS és 16.04 LTS
+* És az Ubuntu Linux 14.04 LTS, 16.04 LTS
 
 ## <a name="vms-and-cloud-services"></a>Virtuális gépek és Cloud Services
 A felhőalapú szolgáltatásként futtató virtuális gépeket is támogatottak. Csak cloud services webes és feldolgozói szerepkörök üzemelési pont felcserélése futtató figyeli a program. A cloud services kapcsolatos további információkért lásd: [áttekintése az Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
@@ -93,7 +93,7 @@ A felhőalapú szolgáltatásként futtató virtuális gépeket is támogatottak
 |FIM|✔|✔|✔|✔|✔|✔|Standard|
 |Lemez titkosítási vizsgálata|✔|✔|X|✔|✔|X|Ingyenes|
 |Külső üzembe helyezés|✔|X|X|✔|X|X|Ingyenes|
-|Az NSG-k értékelése|✔|✔|X|✔|✔|X|Ingyenes|
+|NSG-értékelés|✔|✔|X|✔|✔|X|Ingyenes|
 |Fileless fenyegetésészlelés|✔|✔|✔|X|X|X|Standard|
 |Hálózati térkép létrehozásához|✔|✔|X|✔|✔|X|Standard|
 |Az adaptív hálózati vezérlők|✔|✔|X|✔|✔|X|Standard|
@@ -129,7 +129,7 @@ Ezek a védelmi módszerek mindegyike javaslatok létrehozásának kapcsolatos i
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
-|Az Azure Blob storage fiókok *|✔| ✔|
+|Az Azure Blob storage-fiókok|✔| ✔|
 |App Services|✔| ✔|
 |Cloud Services|✔| X|
 |Virtuális hálózatok|✔| n/a|
@@ -137,7 +137,6 @@ Ezek a védelmi módszerek mindegyike javaslatok létrehozásának kapcsolatos i
 |Hálózati adapterek (NIC-k)|✔| n/a|
 |NSG-k|✔| n/a|
 |Előfizetés|✔ **| ✔|
-|App Service-ben|✔| n/a|
 |Batch|✔| n/a|
 |Service Fabric|✔| n/a|
 |Automation-fiók|✔| n/a|
@@ -147,14 +146,9 @@ Ezek a védelmi módszerek mindegyike javaslatok létrehozásának kapcsolatos i
 |Stream Analytics|✔| n/a|
 |Eseményközpont|✔| n/a|
 |Logikai alkalmazások|✔| n/a|
-|Alhálózat|✔| n/a|
-|Virtuális hálózat|✔| n/a|
 |Tárfiók|✔| n/a|
 |Redis|✔| n/a|
-|SQL|✔| n/a|
 |A Data lake analytics|✔| n/a|
-|Tárfiók|✔| n/a|
-|Előfizetés|✔| n/a|
 |Key Vault|✔| n/a|
 
 

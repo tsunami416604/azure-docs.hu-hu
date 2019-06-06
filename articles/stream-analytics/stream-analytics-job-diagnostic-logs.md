@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: e784cfd2956479327cff9c97a09dd0ada6a154c2
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: ff2930fbe0e53c4b3c1223f87919c0913296d07c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826574"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515920"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Az Azure Stream Analytics hibáinak elhárítása a diagnosztikai naplók használatával
 
@@ -46,7 +46,7 @@ Alapértelmezés szerint a tevékenységnaplókat, és a Stream Analytics-felada
 
    ![Stream Analytics tevékenység log művelet összegzése](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. Görgessen le a **tulajdonságok** a JSON-t, amely részletesen ismerteti a sikertelen műveletet okozó hibáról, szakaszában. Ebben a példában a hiba a kötött szélességi értékeknek from out of futásidejű hiba okozta.
+4. Görgessen le a **tulajdonságok** a JSON-t, amely részletesen ismerteti a sikertelen műveletet okozó hibáról, szakaszában. Ebben a példában a hiba a kötött szélességi értékeknek from out of futásidejű hiba okozta. Eltérés van az adatok egy Stream Analytics-feladat által feldolgozott adatok hibát okoz. Megismerkedhet a különböző [bemeneti és kimeneti adatok hibákat, és miért bekövetkezésük](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
    ![JSON-hiba részletei](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
@@ -103,7 +103,7 @@ time | A napló Timestamp (az UTC).
 resourceId | Az, hogy a művelet került sor, nagybetűvel erőforrás azonosítója. Ez magában foglalja az előfizetés-azonosító, az erőforráscsoportot és a feladat nevét. Ha például   **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Kategória, vagy jelentkezzen **végrehajtási** vagy **szerzői műveletek**.
 operationName | A művelet, amelyet a rendszer neve. Ha például **események küldése: SQL kimeneti hiba írni mysqloutput**.
-állapot | A művelet állapotát. Ha például **sikertelen** vagy **sikeres**.
+status | A művelet állapotát. Ha például **sikertelen** vagy **sikeres**.
 szint | Naplózási szint. Ha például **hiba**, **figyelmeztetés**, vagy **tájékoztató**.
 properties | Napló bejegyzés-specifikus részletei, szerializált JSON-karakterláncot. További információkért lásd: Ez a cikk következő szakaszaiban.
 

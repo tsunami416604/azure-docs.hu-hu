@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/04/2019
 ms.author: twhitney
-ms.openlocfilehash: 6b5ebbab717a3db7c9b50549d2762df61c274131
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 11f6869d4d5a2ee0ef2e986ee8268c7a001ea015
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307347"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688632"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Kapcsolódás RDP-vel az Azure Kubernetes Service (AKS) karbantartási és hibaelhárítási fürtcsomópontok a Windows Server
 
@@ -32,7 +32,18 @@ Emellett az Azure CLI 2.0.61 verziójára van szükség, vagy később telepíte
 
 Az AKS-fürt Windows Server csomópontjai nem rendelkezik a kívülről elérhető IP-címeket. Ahhoz, hogy egy RDP-kapcsolatot, telepíthet egy nyilvánosan elérhető IP-címmel rendelkező virtuális gép ugyanazon az alhálózaton, a Windows Server-csomópontként.
 
-Az alábbi példa létrehoz egy virtuális gép nevű *myVM* a a *myResourceGroup* erőforráscsoportot. Cserélje le *$SUBNET_ID* azonosítójú, az a Windows Server csomópontkészletek által használt alhálózat.
+Az alábbi példa létrehoz egy virtuális gép nevű *myVM* a a *myResourceGroup* erőforráscsoportot.
+
+Először kérje le a a Windows Server csomópontkészletek által használt alhálózat. Az alhálózati azonosító lekéréséhez szükséges az alhálózat neve. Az alhálózat nevének kell a virtuális hálózat nevét. A virtuális hálózat nevének lekérése a fürtöt a hálózatok listájában lekérdezésével. Lekérdezés a fürthöz, annak neve van szükség. Az Azure Cloud shellben a következő futtatásával ezek mindegyikét kaphat:
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+VNET_NAME=$(az network vnet list -g $CLUSTER_RG --query [0].name -o tsv)
+SUBNET_NAME=$(az network vnet subnet list -g $CLUSTER_RG --vnet-name $VNET_NAME --query [0].name -o tsv)
+SUBNET_ID=$(az network vnet subnet show -g $CLUSTER_RG --vnet-name $VNET_NAME --name $SUBNET_NAME --query id -o tsv)
+```
+
+Most, hogy a SUBNET_ID, futtassa a következő parancsot a virtuális Gépet hoz létre ugyanabban az Azure Cloud Shell ablakban:
 
 ```azurecli-interactive
 az vm create \

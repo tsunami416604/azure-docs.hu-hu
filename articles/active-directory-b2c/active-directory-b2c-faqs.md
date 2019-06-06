@@ -2,20 +2,20 @@
 title: Gyakori kérdések az Azure Active Directory B2C |} A Microsoft Docs
 description: Gyakori kérdések (GYIK) Azure Active Directory B2C-t.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c837ce66656c0e8a6a15d359c76459b03c2d0dd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9198bd4f88533a8eb5817dcb6edb75931c40ec80
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722778"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510054"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Gyakori kérdések (GYIK) 
 Ez az oldal az Azure Active Directory (Azure AD) B2C-vel kapcsolatos gyakori kérdésekre ad választ. Tartsa vissza a frissítések keresése.
@@ -104,7 +104,7 @@ Nem, az Azure AD B2C-vel nem támogatja ugyanazokat a jelentések prémium szint
 * **Naplózási jelentések** egyaránt rendszergazdai tevékenységhez, valamint alkalmazás-tevékenységet tartalmaznak. 
 * **Használati jelentések** felhasználók száma, a bejelentkezések száma, és az MFA mennyisége. 
 
-### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>A felhasználói felület az Azure AD B2C által üzemeltetett oldalak is honosításához? Milyen nyelveket támogat?
+### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>A felhasználói felület az Azure AD B2C által üzemeltetett oldalak is honosításához? Milyen nyelvek vannak támogatva?
 Igen!  További információ [nyelvi testreszabás](active-directory-b2c-reference-language-customization.md), amely jelenleg nyilvános előzetes verzióban.  Fordítások 36 nyelvhez biztosítunk, és igény szerint bármilyen karakterlánc felül lehet bírálni.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Használható a saját regisztrációs és bejelentkezési lapok, amelyek az Azure AD B2C által üzemeltetett saját URL-címek? Például válthatok az URL-címet a login.microsoftonline.com login.contoso.com?

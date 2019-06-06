@@ -2,20 +2,20 @@
 title: Az Azure Active Directory B2C felhasználói hozzáférés felügyelete |} A Microsoft Docs
 description: Ismerje meg, hogyan kiskorúak azonosítása, dátum születési és ország/régió adatok összegyűjtése és használati feltételek elfogadása beszerzése az alkalmazás Azure AD B2C használatával.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f4f2b93316c87a5e8ba572ca2b584dbd13f6536c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 6aead01ec0084eb75ea385a67f7c85ea185b017a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956948"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510570"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói hozzáférés felügyelete
 
@@ -50,7 +50,7 @@ A következő egy felhasználói folyamat szülői beleegyezési ötvözve egy p
 
 2. Az alkalmazás dolgozza fel a JSON-token, és a kisebb értesíti őket, hogy a szülői hozzájárulásra szükség, és a egy szülő online beleegyezése igénylése a képernyő látható. 
 
-3. Az Azure AD B2C mutatja be az út, hogy a felhasználó bejelentkezhet általában és kiad egy jogkivonatot, amely tartalmazza az alkalmazáshoz **legalAgeGroupClassification = "minorWithParentalConsent"**. Az alkalmazás gyűjti a szülő e-mail-címét, és ellenőrzi, hogy a szülő felnőtt. Ehhez egy megbízható forrásból, például egy nemzeti azonosító office, licencellenőrzési vagy megvalósíthatósági példában hitelkártya használ. Ha az ellenőrzés sikeres, az alkalmazás kéri, jelentkezzen be az Azure AD B2C felhasználói folyamat használatával a kisebb. Ha a rendszer megtagadja a hozzájárulási (például, ha **legalAgeGroupClassification = "minorWithoutParentalConsent"**), Azure AD B2C visszaadja egy JSON-token (nem a bejelentkezési) az alkalmazást, hogy indítsa újra a jóváhagyási folyamatot. Úgy is igény szerint testre szabhatja a felhasználói folyamatot, hogy egy kisebb vagy a felnőtt újra hozzáférést kaphatnak egy kisebb fiók regisztrációs kód küld a másodlagos e-mail cím vagy a felnőtt e-mail-címét a rekordot.
+3. Az Azure AD B2C mutatja be az út, hogy a felhasználó bejelentkezhet általában és kiad egy jogkivonatot, amely tartalmazza az alkalmazáshoz **legalAgeGroupClassification = "minorWithParentalConsent"** . Az alkalmazás gyűjti a szülő e-mail-címét, és ellenőrzi, hogy a szülő felnőtt. Ehhez egy megbízható forrásból, például egy nemzeti azonosító office, licencellenőrzési vagy megvalósíthatósági példában hitelkártya használ. Ha az ellenőrzés sikeres, az alkalmazás kéri, jelentkezzen be az Azure AD B2C felhasználói folyamat használatával a kisebb. Ha a rendszer megtagadja a hozzájárulási (például, ha **legalAgeGroupClassification = "minorWithoutParentalConsent"** ), Azure AD B2C visszaadja egy JSON-token (nem a bejelentkezési) az alkalmazást, hogy indítsa újra a jóváhagyási folyamatot. Úgy is igény szerint testre szabhatja a felhasználói folyamatot, hogy egy kisebb vagy a felnőtt újra hozzáférést kaphatnak egy kisebb fiók regisztrációs kód küld a másodlagos e-mail cím vagy a felnőtt e-mail-címét a rekordot.
 
 4. Az alkalmazás egy lehetőséget kínál, a kisebb beleegyezése visszavonásához.
 

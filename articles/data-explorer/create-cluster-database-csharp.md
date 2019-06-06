@@ -1,18 +1,18 @@
 ---
-title: 'Gyors útmutató: Hozzon létre egy Azure Data Explorer fürt és -adatbázis használatávalC#'
+title: Hozzon létre egy Azure Data Explorer fürt és -adatbázis használatávalC#
 description: Ismerje meg, hogyan hozhat létre Azure Data Explorer fürt és -adatbázis használatával aC#
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: 719aba498c08617b42d248d3c677499f8eb3e4b2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: e51551d4ce8061122fce52b05e68e102b71c27a8
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900822"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494608"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Hozzon létre egy Azure Data Explorer fürt és -adatbázis használatávalC#
 
@@ -24,7 +24,7 @@ ms.locfileid: "65900822"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürtöt, és a egy adatbázis használatával C#.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a cikkben létrehozhat egy fürtöt, és a egy adatbázis használatával C#.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -66,7 +66,7 @@ Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szol
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
    |---|---|---|
    | clusterName | *mykustocluster* | A fürt kívánt nevét.|
-   | termékváltozat | *D13_v2* | A Termékváltozat a fürthöz használt. |
+   | sku | *D13_v2* | A Termékváltozat a fürthöz használt. |
    | resourceGroupName | *testrg* | Az erőforrás csoport neve, ahol a fürt létrejön. |
 
     Nincsenek további nem kötelező paraméterek, amelyet használhat, például a fürt kapacitásának.
@@ -112,7 +112,7 @@ Most már egy fürt és a egy adatbázist.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-* Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze meg a létrehozott erőforrásokat.
+* Ha azt tervezi, hajtsa végre a más cikkeket, megtarthatja a létrehozott erőforrásokat.
 * Erőforrások törléséhez törölje a fürtöt. Ha töröl egy fürtöt, benne az adatbázisokat is törli. A következő paranccsal törölje a fürtöt:
 
     ```C#-interactive
@@ -121,5 +121,4 @@ Most már egy fürt és a egy adatbázist.
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Rövid útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)](net-standard-ingest-data.md)
+* [Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)](net-standard-ingest-data.md)

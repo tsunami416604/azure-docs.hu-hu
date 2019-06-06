@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 05/21/2019
+ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 929a4ae2e954933bf00550770ba9d41319dc6241
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 1be9d11db9a1c614614e0a4023f84b15588ba5f0
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418047"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742965"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -97,7 +97,7 @@ A következő számítási céljainak, vagy a számítási erőforrásokat, a we
 | [Helyi webszolgáltatás](#local) | Tesztelés és hibakeresés | Megfelelő választás a korlátozott tesztelés és hibaelhárítás.
 | [Az Azure Kubernetes Service (AKS)](#aks) | Valós idejű következtetésekhez | Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít. |
 | [Az Azure Container Instances (aci Szolgáltatásban)](#aci) | Tesztelés | Megfelelő választás a lépték esetén a CPU-alapú számítási feladatok. |
-| [Az Azure Machine Learning Compute](how-to-run-batch-predictions.md) | (Előzetes verzió) A Batch következtetésekhez | Futtassa a kötegelt pontozási a kiszolgáló nélküli számítási. A normál és alacsony prioritású virtuális gépeket támogatja. |
+| [Az Azure Machine Learning Compute](how-to-run-batch-predictions.md) | A Batch következtetésekhez | A kiszolgáló nélküli számítási futtatása a batch következtetésekhez. A normál és alacsony prioritású virtuális gépeket támogatja. |
 | [Azure IoT Edge](#iotedge) | (Előzetes verzió) IoT-modul | Üzembe helyezés, és gépi Tanulási modelleket szolgálnak az IoT-eszközökön. |
 
 
@@ -130,8 +130,9 @@ Jelenleg a következő típusok támogatottak:
 Séma létrehozása használatához közé tartozik a `inference-schema` csomagot a conda-környezet fájlban. Az alábbi példában `[numpy-support]` óta a bejegyzés parancsfájl használ egy numpy paraméter típusa: 
 
 #### <a name="example-dependencies-file"></a>Függőségek példafájl
-Az alábbiakban látható egy példa egy Conda-függőségeket fájl következtetésekhez.
-```python
+A következő yaml-kódot, amelyek az egy Conda-függőségeket fájl következtetésekhez.
+
+```YAML
 name: project_environment
 dependencies:
   - python=3.6.2
@@ -186,6 +187,48 @@ def run(data):
         return error
 ```
 
+#### <a name="example-script-with-dictionary-input-support-consumption-from-power-bi"></a>Példa parancsfájl szótár bemenettel (támogatási használat a Power bi-BÓL)
+
+A következő példa bemutatja, hogyan adhat meg a bemeneti adatokat < kulcs: érték > szótár, Dataframe használatával. Ez a módszer a a Power bi-ban üzembe helyezett webszolgáltatás támogatott ([további információ a Power BI-ból a webszolgáltatás használata](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
+
+```python
+import json
+import pickle
+import numpy as np
+import pandas as pd
+import azureml.train.automl
+from sklearn.externals import joblib
+from azureml.core.model import Model
+
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
+from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
+
+def init():
+    global model
+    model_path = Model.get_model_path('model_name')   # replace model_name with your actual model name, if needed
+    # deserialize the model file back into a sklearn model
+    model = joblib.load(model_path)
+
+input_sample = pd.DataFrame(data=[{
+              "input_name_1": 5.1,         # This is a decimal type sample. Use the data type that reflects this column in your data
+              "input_name_2": "value2",    # This is a string type sample. Use the data type that reflects this column in your data
+              "input_name_3": 3            # This is a integer type sample. Use the data type that reflects this column in your data
+            }])
+
+output_sample = np.array([0])              # This is a integer type sample. Use the data type that reflects the expected result
+
+@input_schema('data', PandasParameterType(input_sample))
+@output_schema(NumpyParameterType(output_sample))
+def run(data):
+    try:
+        result = model.predict(data)
+        # you can return any datatype as long as it is JSON-serializable
+        return result.tolist()
+    except Exception as e:
+        error = str(e)
+        return error
+```
 További példa parancsprogramokat tekintse meg az alábbi példák:
 
 * A Pytorch: [https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
@@ -281,7 +324,7 @@ Kvóta és régióban rendelkezésre állás az ACI, olvassa el a [kvóták és 
 
 További információkért lásd: a dokumentáció a a [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) és [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) osztályokat.
 
-### <a id="aks"></a>Az Azure Kubernetes Service (ÉLES)
+### <a id="aks"></a>Az Azure Kubernetes Service (DEVTEST & ÉLES)
 
 Használjon egy meglévő AKS-fürtöt, vagy hozzon létre egy újat az Azure Machine Learning SDK-t, a parancssori felület vagy az Azure portal használatával.
 
@@ -293,6 +336,9 @@ Ha már rendelkezik egy AKS-fürt csatolt, telepítheti azt. Ha még nem létreh
 
   ```python
   aks_target = AksCompute(ws,"myaks")
+  # If deploying to a cluster configured for dev/test, ensure that it was created with enough
+  # cores and memory to handle this deployment configuration. Note that memory is also used by
+  # things such as dependencies and AML components.
   deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
   service = Model.deploy(ws, "aksservice", [model], inference_config, deployment_config, aks_target)
   service.wait_for_deployment(show_output = True)
@@ -315,16 +361,23 @@ További információ az AKS üzembe helyezési és automatikus méretezés a [A
 #### Egy új AKS-fürt létrehozása<a id="create-attach-aks"></a>
 **Becsült időtartam:** Körülbelül 5 perc.
 
-> [!IMPORTANT]
-> Létrehozása vagy csatlakoztatása egy AKS-fürtöt a beállítás csak egyszer feldolgozni a munkaterületen. Újból felhasználhatja a fürt több telepítéshez. Ha a fürt vagy az azt tartalmazó erőforráscsoport törléséhez, üzembe kell helyeznie a következő alkalommal létre kell hoznia egy új fürtöt.
+Létrehozása vagy csatlakoztatása egy AKS-fürtöt a beállítás csak egyszer feldolgozni a munkaterületen. Újból felhasználhatja a fürt több telepítéshez. Ha a fürt vagy az azt tartalmazó erőforráscsoport törléséhez, üzembe kell helyeznie a következő alkalommal létre kell hoznia egy új fürtöt. A munkaterülethez csatlakoztatott több AKS-fürt is rendelkezhet.
 
-További információt a beállítás `autoscale_target_utilization`, `autoscale_max_replicas`, és `autoscale_min_replicas`, tekintse meg a [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none-) hivatkozást.
+Szeretne fejlesztői, ellenőrzés és tesztelés az AKS-fürt létrehozása, ha beállított `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` használatakor [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py). Ezzel a beállítással létrehozott fürt csak egy csomópont van.
+
+> [!IMPORTANT]
+> Beállítás `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` hoz létre egy AKS-fürtöt, amely nem megfelelő az éles forgalom kezelésére. Lehet, hogy következtetésekhez alkalommal hosszabb, mint egy éles környezetben létrehozott fürtön. A hibatűrés a fejlesztési-tesztelési fürtökhöz is nem garantált.
+>
+> Azt javasoljuk, hogy a fejlesztési és tesztelési létrehozott fürtök legalább két virtuális processzort használja.
+
 A következő példa bemutatja, hogyan hozhat létre egy új Azure Kubernetes Service-fürt:
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Use the default configuration (you can also provide parameters to customize this)
+# Use the default configuration (you can also provide parameters to customize this).
+# For example, to create a dev/test cluster, use:
+# prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksComputee.ClusterPurpose.DEV_TEST)
 prov_config = AksCompute.provisioning_configuration()
 
 aks_name = 'myaks'
@@ -341,6 +394,7 @@ Egy AKS-fürtöt az Azure Machine Learning SDK kívül létrehozásával kapcsol
 * [AKS-fürt létrehozása](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [Hozzon létre egy AKS-fürt (portál)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
+További információ a `cluster_purpose` paramétert, tekintse meg a [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) hivatkozást.
 
 > [!IMPORTANT]
 > A [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), ha az élcsomópontba, győződjön meg arról, szorozva vm_size agent_count nagyobb vagy egyenlő 12 virtuális processzort válasszon agent_count és vm_size, egyéni értékeket. Például ha egy "Standard D3 v2", amelynek 4 virtuális CPU-vm_size majd ki kell választania egy agent_count 3 vagy nagyobb.
@@ -349,7 +403,16 @@ Egy AKS-fürtöt az Azure Machine Learning SDK kívül létrehozásával kapcsol
 
 #### <a name="attach-an-existing-aks-cluster"></a>Meglévő AKS-fürt csatolása
 
-Ha már rendelkezik az AKS-fürtöt az Azure-előfizetésben, és verzió 1.12. ## és van legalább 12 virtuális processzort, a rendszerképének üzembe helyezéséhez használhatja. A következő kód bemutatja, hogyan csatlakoztathat egy meglévő AKS 1.12 bemutatja. ## fürt a munkaterülethez:
+Ha már rendelkezik az AKS-fürtöt az Azure-előfizetésben, és verzió 1.12. ##, használhatja a rendszerképének üzembe helyezéséhez.
+
+> [!WARNING]
+> AKS-fürt csatlakoztatása egy munkaterületet, hogyan fogja használni a fürt beállításával meghatározhatja a `cluster_purpose` paraméter.
+>
+> Ha nincs beállítva a `cluster_purpose` paraméter, vagy adja `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, akkor a fürt rendelkeznie kell legalább 12 virtuális processzort érhető el.
+>
+> Ha `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, akkor a fürt nem kell 12 virtuális processzort. Egy fürtöt, amely konfigurálva van a fejlesztés + tesztelés azonban nem lesz megfelelő az éles-szintű forgalom, és következtetésekhez alkalommal növelhető.
+
+A következő kód bemutatja, hogyan csatlakoztathat egy meglévő AKS 1.12 bemutatja. ## fürt a munkaterülethez:
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -357,11 +420,18 @@ from azureml.core.compute import AksCompute, ComputeTarget
 resource_group = 'myresourcegroup'
 cluster_name = 'mycluster'
 
-# Attach the cluster to your workgroup
+# Attach the cluster to your workgroup. If the cluster has less than 12 virtual CPUs, use the following instead:
+# attach_config = AksCompute.attach_configuration(resource_group = resource_group,
+#                                         cluster_name = cluster_name,
+#                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
 ```
+
+További információ a `attack_configuration()`, tekintse meg a [AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) hivatkozást.
+
+További információ a `cluster_purpose` paramétert, tekintse meg a [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) hivatkozást.
 
 ## <a name="consume-web-services"></a>Webszolgáltatások felhasználása
 
@@ -395,7 +465,7 @@ print(response.json())
 További információkért lásd: [ügyfél létrehozása alkalmazások felhasználhatják őket a problémák megoldásához segítséget](how-to-consume-web-service.md).
 
 
-### <a id="azuremlcompute"></a> Batch-felhasználás
+### <a id="azuremlcompute"></a> A Batch következtetésekhez
 Az Azure Machine Learning Compute tárolók létrehozása és felügyelete az Azure Machine Learning szolgáltatás által. A batch-előrejelzés az Azure Machine Learning-folyamatokat használható.
 
 Az Azure Machine Learning Compute batch következtetésekhez leírását, olvassa el a [futtatása a Batch-előrejelzések hogyan](how-to-run-batch-predictions.md) cikk.

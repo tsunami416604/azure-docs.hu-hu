@@ -2,20 +2,20 @@
 title: Egy egyéni házirendek az Azure Active Directory B2C egy OAuth1 technikai profil meghatározása |} A Microsoft Docs
 description: Adja meg az Azure Active Directory B2C egyéni házirendet egy OAuth1 technikai profil.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7b3d579e9d4ceb92ee961778ba6083292461c144
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 993fc8b2e318b59775f61de391ac75fa765485f0
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699827"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513120"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy OAuth1 technikai profil meghatározása
 
@@ -81,11 +81,11 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 
 A **CryptographicKeys** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | client_secret | Igen | A titkos ügyfélkulcsot az identity provider alkalmazás.   | 
 
-## <a name="redirect-uri"></a>Átirányítási URI
+## <a name="redirect-uri"></a>Redirect URI
 
 Az identitásszolgáltató az átirányítási URL-cím konfigurálásakor adja meg a `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Cserélje le **bérlői** a bérlő neve (például: contosob2c.onmicrosoft.com) és **policyId** azonosítóval a szabályzat (például b2c_1a_policy). Az átirányítási URI-t kell lennie az összes kisbetűt. Adjon hozzá egy átirányítási URL-címet minden szabályzat, amely az identity provider-bejelentkezés használatához. 
 

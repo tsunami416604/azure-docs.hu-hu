@@ -8,17 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 479edc11604670189b0accba67aa8f345f6260cd
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: a0a2bc58603a81ba23ff3f1feb05f4d2350cfe72
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551370"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688743"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Az Azure Backup – gyakori kérdések
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="recovery-services-vault"></a>Helyreállítási tár
+## <a name="recovery-services-vault"></a>Recovery Services-tároló
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>Az egyes Azure-előfizetésekben létrehozható tárolók száma korlátozott?
 Igen. Legfeljebb 500 Recovery Services-tárolók száma előfizetésenként az Azure Backup szolgáltatás, a támogatott régióban hozhat létre. Ha több tárolóra van szüksége, hozzon létre egy további előfizetést.
@@ -182,8 +182,8 @@ Az Azure Backup tárolási architektúrája ezen két megoldás előnyeit ötvö
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>A létrehozható helyreállítási pontok száma korlátozott?
 Védett példányonként 9999 helyreállítási pontot hozhat létre. A védett példány egy számítógép, kiszolgáló (fizikai vagy virtuális) vagy munkaterhelést futtatják, amelyről biztonsági másolatot készít az Azure-bA.
 
-- Tudjon meg többet [biztonsági mentés és megőrzés](./backup-introduction-to-azure-backup.md#backup-and-retention).
-- Ismerje meg [védett példányok](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)?
+- Tudjon meg többet [biztonsági mentés és megőrzés](./backup-overview.md#backup-and-retention).
+
 
 ### <a name="how-many-times-can-i-recovery-data-thats-backed-up-to-azure"></a>Hány alkalommal lehetőségeket az adatok helyreállítását az Azure-bA biztonsági mentésének?
 Az Azure Backupból történő helyreállítások száma korlátlan.
@@ -197,7 +197,7 @@ Nem. Helyreállítás az ingyenes és a kimenő forgalom nem kell fizetnie.
 - Ha növeli a megőrzési időtartamot, a meglévő helyreállítási pontok az új szabályzatnak megfelelően megmaradnak.
 - Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítási feladat során törlendőként lesznek megjelölve.
 
-## <a name="encryption"></a>Titkosítás
+## <a name="encryption"></a>Encryption
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>Az Azure-ba küldött adatok titkosítottak?
 Igen. Adatok titkosítása az AES256 használatával a helyszíni gépen. Az adatokat a rendszer egy biztonságos HTTPS-kapcsolaton keresztül küldi el. Csak a tárolási és helyreállítási szolgáltatás közötti HTTPS-kapcsolaton által védett felhőben továbbított adatokat. az iSCSI protokoll biztonságossá teszi a helyreállítási szolgáltatás és a felhasználó gép között továbbított adatokat. Az iSCSI-csatorna védelmére Secure tunneling használják.

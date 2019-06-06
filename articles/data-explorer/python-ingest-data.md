@@ -1,24 +1,24 @@
 ---
-title: 'Gyors útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése'
-description: Ennek a rövid útmutatónak a segítségével megtanulhatja, hogyan tölthet be adatokat az Azure Data Explorerbe a Python használatával.
+title: Az Azure Data Explorer Python-kódtár használata az adatok betöltése
+description: Ebből a cikkből megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer Python használatával.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 10/16/2018
-ms.openlocfilehash: fdeae2c6b598feee0abc57c80ea32f2108504330
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: da23ec91891776e9a459b04c5718147427843991
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827170"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496924"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Gyors útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése
+# <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Az Azure Data Explorer Python-kódtár használata az adatok betöltése
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer két ügyfélkódtárat biztosít a Python számára: egy [betöltési kódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) és [egy adatkódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a rövid, először hozzon létre egy tábla és a egy fürtben megfeleltetése. Ezután sorba helyezi a fürtbe való betöltést, és ellenőrzi az eredményeket.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer két ügyfélkódtárat biztosít a Python számára: egy [betöltési kódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) és [egy adatkódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a cikkben, először hozzon létre egy tábla és a egy fürtben megfeleltetése. Ezután sorba helyezi a fürtbe való betöltést, és ellenőrzi az eredményeket.
 
-Ez a rövid útmutató elérhető [Azure Notebookként](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb) is.
+Ez a cikk is érhető el egy [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -170,7 +170,7 @@ Futtassa a következő parancsot az elmúlt négy órában végzett összes bet�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze meg a létrehozott erőforrásokat. Ha nem szeretné, futtassa a következő parancsot az adatbázisban a StormEvents-tábla felesleges elemeinek eltávolításához.
+Ha azt tervezi, hajtsa végre a más cikkeket, megtarthatja a létrehozott erőforrásokat. Ha nem szeretné, futtassa a következő parancsot az adatbázisban a StormEvents-tábla felesleges elemeinek eltávolításához.
 
 ```Kusto
 .drop table StormEvents
@@ -178,5 +178,4 @@ Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Adatok lekérdezése a Python használatával](python-query-data.md)
+* [Adatok lekérdezése a Python használatával](python-query-data.md)

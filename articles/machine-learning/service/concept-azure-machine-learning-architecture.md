@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: e57133a750e282484271261d8e4ddb9a12de2a0e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8bb06d04aec8e98308c0f5595b6b39e4b98302ff
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242425"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480060"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -162,6 +162,9 @@ Amikor egy futtassa, amelyben a forráskönyvtár helyi Git-tárház képzés, a
 ## <a name="snapshot"></a>Pillanatkép
 
 Futtatás elküldésekor az Azure Machine Learning tömöríti a könyvtárat, amely tartalmazza a parancsfájl egy zip-fájlba, és elküldi azokat a számítási célnak. A zip-fájl majd ki kell olvasni, és a szkript futása hiba. Az Azure Machine Learning a zip-fájl is tárolja a futtatási rekord részeként pillanatképet készít. A munkaterület segítségével bárki futtatási rekord kereshetnek és a pillanatkép letöltése.
+
+> [!NOTE]
+> Bekerüljenek a pillanatkép a szükségtelen fájlok megakadályozása érdekében, hogy egy figyelmen kívül hagyása fájl (.gitignore vagy .amlignore). Helyezze a fájlt a pillanatkép-címtárban, és adja hozzá a fájlnevek, figyelmen kívül hagyni. A .amlignore fájlja azonos [szintaxist és a .gitignore fájlt, amelyek az](https://git-scm.com/docs/gitignore). Ha mindkét fájl létezik, a .amlignore fájl élvez elsőbbséget.
 
 ## <a name="activity"></a>Tevékenység
 

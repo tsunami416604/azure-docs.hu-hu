@@ -2,20 +2,20 @@
 title: Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal Weibo beállítása |} A Microsoft Docs
 description: Adja meg a regisztráció és bejelentkezés Weibo az alkalmazások az Azure Active Directory B2C fiókkal rendelkező ügyfelek számára.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9701d1583a19be46c4c72a82d9f376a8db0c625c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 808d4bc8521917b89a7265be6dfab60757baf910
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704246"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508056"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal Weibo beállítása
 
@@ -55,6 +55,6 @@ Weibo fiók használatára az identitásszolgáltatójaként az Azure Active Dir
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.
 5. Adjon meg egy **neve**. Adja meg például *Weibo*.
-6. Válassza ki **identitásszolgáltató típusa**válassza **Weibo (előzetes verzió)**, és kattintson a **OK**.
+6. Válassza ki **identitásszolgáltató típusa**válassza **Weibo (előzetes verzió)** , és kattintson a **OK**.
 7. Válassza ki **az identitásszolgáltató beállítása** , és írja be az Alkalmazáskulcs, mint korábban rögzített a **ügyfél-azonosító** , és adja meg az alkalmazás titkos kulcsát, feljegyzett a **titkos Ügyfélkód** , a korábban létrehozott Weibo alkalmazás.
 8. Kattintson a **OK** majd **létrehozás** a Weibo konfigurációjának mentéséhez.

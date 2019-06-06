@@ -9,22 +9,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/16/2019
+ms.date: 05/31/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 99b0cab3fd277f90a675f0e6087d572853053a08
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 903405c8fada6165b79e780a7828c6de3b95163e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66387338"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478923"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Webes alkalmazás arány korlát tűzfalszabály konfigurálása az Azure PowerShell-lel
 Az Azure-alapú webes alkalmazás tűzfal (WAF) arány korlátozó szabály Azure bejárati ajtajának szabályozza az egyetlen ügyfél IP-cím egy egy perces időszakra engedélyezett kérelmek száma.
 Ez a cikk bemutatja, hogyan konfigurálhatja a WAF arány korlát szabály, amely szabályozza a webalkalmazásnak, amely tartalmazza az egyetlen ügyfél engedélyezett kérések számát */promo* az Azure PowerShell-lel URL-címben.
-
-> [!IMPORTANT]
-> A WAF forgalmi szabály funkció Azure bejárati ajtajának jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

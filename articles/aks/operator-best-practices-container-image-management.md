@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 1cc91f55d3895f06176875cb9ae620685dc09a26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea39bceaa6b58e84def9635436d902002e33cd14
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464806"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514514"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások tárolókezelés kép és a biztonság az Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,6 @@ Ez a cikk foglalkozik, hogyan teheti biztonságossá a tárolókat az aks-ben a.
 
 > [!div class="checklist"]
 > * Keressen és a kép a biztonsági rések
-> * A digitálisan aláírt tárolórendszerképeket egy megbízható registry használata
 > * Automatikus aktiválása és ismételt üzembe helyezése tárolórendszerképek, amikor frissül egy alaplemezkép
 
 Ajánlott eljárást is olvashatja [biztonsági fürt] [ best-practices-cluster-security] és [pod biztonsági][best-practices-pod-security].
@@ -36,16 +35,6 @@ Tárolóalapú számítási feladatok a bevezetésével egy potenciálisan vesz�
 ![Vizsgálat és javíthatja a tárolórendszerképek, ellenőrzésének és üzembe helyezése](media/operator-best-practices-container-security/scan-container-images-simplified.png)
 
 Egy való életből vett példában használhatja egy folyamatos integrációs és folyamatos üzembe helyezés (CI/CD) folyamatokat a lemezkép vizsgálatok, ellenőrzési és központi telepítések automatizálásához. Az Azure Container Registry tartalmazza a képességek ellenőrzése a biztonsági rések.
-
-## <a name="use-a-trusted-registry"></a>Megbízható beállításjegyzék
-
-**Ajánlott eljárásokkal kapcsolatos útmutatás** – korlátozza a lemezkép-regisztrációs adatbázisok, amelyek podok és központi telepítések használhatja. Csak a megbízható beállításjegyzékek, amelyben ellenőrizni és szabályozhatja az elérhető rendszerképek engedélyezi.
-
-A fokozott biztonság érdekében használatával is írhatják a tárolólemezképek ugyanúgy, mint az alkalmazás kódja is digitális aláírással. Majd csak akkor engedélyezik az AKS üzembe helyezhetnek aláírt lemezképeket. Ez a folyamat egy kiegészítő biztonsági réteget nyújt, abban, hogy csak digitálisan aláírt és megbízhatónak tekintenek meg, nem csak képeket, hogy egy biztonsági rés ellenőrzés rendszerképeket AKS korlátozza. Akkor győződjön meg arról is, hogy a tároló rendszerképét nem módosultak-e, és pontosan azonos nevű kép helyébe.
-
-A digitálisan aláírt tárolórendszerképek biztosító megbízható beállításjegyzékek összetettebbé a környezetben, de lehet szükség az egyes házirend vagy az előírásoknak való megfelelés. Az Azure Container Registry támogatja a megbízható beállításjegyzékek használatát, és írja alá a lemezképeket.
-
-A digitálisan aláírt lemezképek kapcsolatos további információkért lásd: [tartalom az Azure Container Registry megbízhatósági][acr-content-trust].
 
 ## <a name="automatically-build-new-images-on-base-image-update"></a>Automatikusan hozhat létre az új képek a rendszerkép alapszintű frissítésének
 
@@ -62,7 +51,6 @@ Alaplemezkép frissítésekkel kapcsolatos további információkért lásd: [au
 Ez a cikk biztonságossá tétele a tárolókat összpontosít. Néhány ilyen területet végrehajtásához a következő cikkekben talál:
 
 * [Az Azure Container Registry feladatokat az rendszerkép alapszintű frissítésének rendszerképek létrehozásának automatizálása][acr-base-image-update]
-* [Az Azure Container Registry tartalom bizalmi kapcsolat][acr-content-trust]
 
 <!-- EXTERNAL LINKS -->
 [azure-pipelines]: /azure/devops/pipelines/?view=vsts
@@ -72,5 +60,4 @@ Ez a cikk biztonságossá tétele a tárolókat összpontosít. Néhány ilyen t
 <!-- INTERNAL LINKS -->
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
-[acr-content-trust]: ../container-registry/container-registry-content-trust.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md

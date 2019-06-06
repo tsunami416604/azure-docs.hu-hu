@@ -2,20 +2,20 @@
 title: Jelentkezzen be egy Azure Active Directory-fiókot az Azure Active Directory B2C-vel egyéni szabályzatok használatával beállítása |} A Microsoft Docs
 description: Jelentkezzen be az Azure Active Directory-fiókkal az Azure Active Directory B2C használatával egyéni szabályzatok beállításához.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9ad4a1a9fff8e011638eb7c532bf7619c87c1996
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8ade695f1930c11f2d2d7ab7e0430910bd6f8705
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785188"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508644"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezést egy Azure Active Directory-fiókot az Azure Active Directory B2C-vel egyéni szabályzatok használatával 
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók szá
 
 Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
 
-## <a name="register-an-application"></a>Alkalmazás regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 Ahhoz, hogy jelentkezzen be egy meghatározott felhasználók számára az Azure AD a szervezeten belül, kell regisztrálni egy alkalmazást a szervezeti Azure AD-bérlővel.
 
@@ -37,7 +37,7 @@ Ahhoz, hogy jelentkezzen be egy meghatározott felhasználók számára az Azure
 4. Válassza az **Új alkalmazás regisztrálása** elemet.
 5. Adja meg az alkalmazás nevét. Például: `Azure AD B2C App`.
 6. Az a **alkalmazástípus**válassza `Web app / API`.
-7. Az a **bejelentkezési URL-**, adja meg a következő URL-cím csupa kisbetűvel, ahol `your-B2C-tenant-name` helyére az Azure AD B2C-bérlő neve:
+7. Az a **bejelentkezési URL-** , adja meg a következő URL-cím csupa kisbetűvel, ahol `your-B2C-tenant-name` helyére az Azure AD B2C-bérlő neve:
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp

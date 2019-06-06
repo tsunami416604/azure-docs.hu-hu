@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a160591ef0a47eed097ce8db373878f32965de9b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 18dc3e224df18c900653e4549badcdd93f0df6ec
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247124"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688016"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurálja, optimalizálhat és AzCopy hibaelhárítása
 
@@ -52,7 +52,7 @@ Használja a `azcopy env` Ez a változó aktuális értéke ellenőrzéséhez.  
 
 ## <a name="change-the-location-of-the-log-files"></a>A naplófájlok helyének módosítása
 
-Alapértelmezés szerint a naplófájlok találhatók a `%USERPROFILE\\.azcopy` Windows vagy a mappát a `$HOME\\.azcopy` mappába a Mac és Linux rendszeren. Ez a hely módosíthatja, ha ezek a parancsok használatával kell.
+Alapértelmezés szerint a naplófájlok találhatók a `%USERPROFILE\\.azcopy` Windows vagy a könyvtárban a `$HOME\\.azcopy` Macre és Linuxra könyvtárába. Ez a hely módosíthatja, ha ezek a parancsok használatával kell.
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
@@ -74,7 +74,7 @@ Az AzCopy minden feladat napló és a terv fájlt hoz létre. A naplók segíts�
 
 A naplók tartalmazni fogja a sikertelen állapotát (`UPLOADFAILED`, `COPYFAILED`, és `DOWNLOADFAILED`), a teljes elérési útja, és a hiba okát.
 
-Alapértelmezés szerint a napló és a terv fájlok találhatók a `%USERPROFILE\\.azcopy` mappájába, Windows vagy `$HOME\\.azcopy` mappába a Mac és Linux rendszereken.
+Alapértelmezés szerint a napló és a terv fájlok találhatók a `%USERPROFILE\\.azcopy` Windows könyvtárába vagy `$HOME\\.azcopy` Macre és Linuxra könyvtárába.
 
 > [!IMPORTANT]
 > Amikor egy kérés elküldése Support (vagy a hiba elhárításához bármely harmadik féltől származó használata esetén), megoszthatja a kivonatosan verzióját szeretné végrehajtani a parancsot. Ez biztosítja a SAS véletlenül ne oszthassák meg olyan bárki. A kivont verzió elején. a naplófájl található.

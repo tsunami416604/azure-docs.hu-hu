@@ -5,24 +5,24 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 06/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f1dbd4b6635d615cc7bed4cf5cc38234ec0c3f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c6a74548d0dc965127c5568708155341f60dbc65
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359193"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496749"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure multi-factor Authentication beállításainak konfigurálása
 
-Ez a cikk segít az Azure Portalon a multi-factor Authentication szolgáltatás beállításainak kezelése. Ez fedezi a különböző témakörök, amelyek a legtöbbet az Azure multi-factor Authentication segítségével. Nem mind a szolgáltatások áll rendelkezésre minden [verzióját az Azure multi-factor Authentication](concept-mfa-whichversion.md#what-features-do-i-need).
+Ez a cikk segít az Azure Portalon a multi-factor Authentication szolgáltatás beállításainak kezelése. Ez fedezi a különböző témakörök, amelyek a legtöbbet az Azure multi-factor Authentication segítségével. Nem minden szolgáltatását az Azure multi-factor Authentication minden verziójában érhető el.
 
-Navigáljon az Azure-portálról a multi-factor Authentication kapcsolatos beállítások elérheti **Azure Active Directory** > **MFA**.
+Hozzáférhet az Azure Portalon navigáljon az Azure multi-factor Authentication kapcsolatos beállítások **Azure Active Directory** > **MFA**.
 
 ![Az Azure portal – Azure AD multi-factor Authentication szolgáltatás beállításainak](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -30,10 +30,10 @@ Navigáljon az Azure-portálról a multi-factor Authentication kapcsolatos beál
 
 Ezek a beállítások némelyike a alkalmazni az MFA-kiszolgáló, az Azure MFA vagy mindkettőhöz.
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 | ------- | ----------- |
 | Fiókzárolás | Ideiglenesen zárolni fiókok a multi-factor authentication szolgáltatás Ha túl sok hitelesítési kísérleteket a sor megtagadva. Ez a funkció csak a felhasználók, akik adjon meg egy PIN-kódot vonatkozik. (MFA Server) |
-| [Felhasználó blokkolása/feloldása](#block-and-unblock-users) | Bizonyos felhasználók (helyszíni) MFA-kiszolgálón tiltsa le a multi-factor Authentication szolgáltatás kérelmek fogadására képes használja. A letiltott felhasználók hitelesítési kísérletek a rendszer automatikusan megtagadja. Felhasználók, amelyek le vannak tiltva az idő 90 nap letiltva marad. |
+| [Felhasználó blokkolása/feloldása](#block-and-unblock-users) | Adott felhasználók nem tudnak a multi-factor Authentication szolgáltatás-kérelmek fogadásához használt. A letiltott felhasználók hitelesítési kísérletek a rendszer automatikusan megtagadja. Felhasználók, amelyek le vannak tiltva az idő 90 nap letiltva marad. |
 | [Visszaélési riasztás](#fraud-alert) | Felhasználók képességét jelentse a csalárd ellenőrzési kérések kapcsolatos beállítások konfigurálása |
 | Értesítések | MFA-kiszolgáló események értesítések engedélyezéséhez. |
 | [Az OATH-tokenek](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | A felhasználók számára az OATH-tokenek kezelésére szolgál az Azure MFA felhőalapú környezetekben. |
@@ -44,14 +44,14 @@ Ezek a beállítások némelyike a alkalmazni az MFA-kiszolgáló, az Azure MFA 
 
 Ebben a szakaszban a beállítások csak az MFA-kiszolgálóhoz vannak.
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 | ------- | ----------- |
-| Kiszolgáló beállításai | Töltse le az MFA-kiszolgáló és a környezet inicializálása aktiváló hitelesítő adatok előállítása |
+| kiszolgáló beállításai | Töltse le az MFA-kiszolgáló és a környezet inicializálása aktiváló hitelesítő adatok előállítása |
 | [Az egyszeri Mellőzés](#one-time-bypass) | A felhasználót, hogy csak korlátozott ideig a kétlépéses ellenőrzés nélküli hitelesítés engedélyezése. |
 | [Gyorsítótár-szabályokkal](#caching-rules) |  Gyorsítótárazás elsősorban a Ha a helyszíni rendszerek, például VPN, több ellenőrzési kérést küld, miközben még folyamatban van az első kérésre. Ez a funkció lehetővé teszi, hogy automatikusan, sikeres, a felhasználó sikeres folyamatban az első ellenőrzést követően a későbbi kérelmeket. |
 | Kiszolgáló állapota | A helyszíni MFA-kiszolgálóval, beleértve a verzió állapota, IP-Címek használatához és a legutóbbi kommunikációs időpontját és dátumát állapotának megtekintéséhez. |
 
-## <a name="activity-report"></a>Tevékenységjelentés
+## <a name="activity-report"></a>Tevékenységgel kapcsolatos jelentés
 
 A jelentéskészítési elérhető itt csak a (helyszíni) MFA-kiszolgálóra. Az Azure MFA Szolgáltatáshoz (felhő) a jelentések a bejelentkezések jelentés megtekintéséhez az Azure ad-ben.
 
@@ -89,7 +89,7 @@ Konfigurálja a _visszaélési riasztás_ funkciót, hogy a felhasználók jelen
 ### <a name="configuration-options"></a>Beállítási lehetőségek
 
 * **Felhasználó blokkolása visszaélés jelentésekor**: Ha egy felhasználó a csalás jelentéseket, a fiók le van tiltva, 90 napig, vagy amíg a rendszergazda feloldja a fiók. A rendszergazdák, tekintse át a bejelentkezések bejelentkezési jelentés használatával, és megfelelő lépéseket a jövőbeli csalások megakadályozásához. A rendszergazda tudja majd [feloldása](#unblock-a-user) a felhasználói fiók.
-* **Csalást jelent a kezdeti üdvözlés során kódot**: Amikor a felhasználók megkapják a telefonhívás, a kétlépéses hitelesítés végrehajtására, azokat általában nyomja le az **#** a bejelentkezés megerősítéséhez. Csalást jelent be, hogy a felhasználó nem ír kódot előtt **#**. Ez a kód **0** alapértelmezés szerint azonban testre szabható.
+* **Csalást jelent a kezdeti üdvözlés során kódot**: Amikor a felhasználók megkapják a telefonhívás, a kétlépéses hitelesítés végrehajtására, azokat általában nyomja le az **#** a bejelentkezés megerősítéséhez. Csalást jelent be, hogy a felhasználó nem ír kódot előtt **#** . Ez a kód **0** alapértelmezés szerint azonban testre szabható.
 
    >[!NOTE]
    >Az alapértelmezett hangalapú üdvözletek, a Microsoft nyomja meg a felhasználók felkérése **0#** a csalási riasztás küldéséhez. Ha szeretné más, a kód használata **0**, jegyezze fel, és töltse fel a saját egyéni hangalapú üdvözletek, a felhasználók megfelelő utasításokat.
@@ -144,7 +144,7 @@ Ha például van egy német rendszernyelvű csak egy egyéni üzenetet:
 1. Válassza ki egy .mp3, .wav vagy hangfájl feltöltése.
 1. Válassza a **Hozzáadás** lehetőséget.
 
-## <a name="one-time-bypass"></a>Egyszeri mellőzés
+## <a name="one-time-bypass"></a>Az egyszeri Mellőzés
 
 A _egyszeri Mellőzés_ funkció lehetővé teszi, hogy a felhasználó egy alkalommal a kétlépéses ellenőrzés nélkül. A Mellőzés átmeneti, és a megadott számú másodperc után lejár. Olyan esetekben, ahol a mobilalkalmazásban vagy a telefon nem kap egy értesítést vagy egy telefonhívás engedélyezheti az egyszeri mellőzés, hogy a felhasználó hozzáférhessen a kívánt erőforrást.
 
@@ -162,7 +162,7 @@ A _egyszeri Mellőzés_ funkció lehetővé teszi, hogy a felhasználó egy alka
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Keresse meg a **Azure Active Directory** > **MFA** > **egyszeri Mellőzés**.
 
-## <a name="caching-rules"></a>Gyorsítótárszabályok
+## <a name="caching-rules"></a>Gyorsítótár-szabályokkal
 
 Beállíthatja, hogy a hitelesítési kísérlet után a felhasználók hitelesítése az egy adott időszakban az _gyorsítótárazás_ funkció. Későbbi hitelesítési próbálkozások során a felhasználó a megadott belül automatikusan sikeresek időszakban. Gyorsítótárazás elsősorban a Ha a helyszíni rendszerek, például VPN, több ellenőrzési kérést küld, miközben még folyamatban van az első kérésre. Ez a funkció lehetővé teszi, hogy automatikusan, sikeres, a felhasználó sikeres folyamatban az első ellenőrzést követően a későbbi kérelmeket.
 
@@ -265,7 +265,7 @@ Ha a szervezete biztosít a helyszíni alkalmazások Megjegyzés MFA NPS-bővít
 
 | Az Azure AD-bérlő típusa | Megbízható IP-címek funkció beállításai |
 |:--- |:--- |
-| Managed |**Megadott IP-címek**: A rendszergazdák adjon meg egy IP-címtartományt, amely megkerülhetik a kétlépéses ellenőrzés felhasználók számára, akik jelentkezzen be a vállalati intraneten.|
+| Kezelt |**Megadott IP-címek**: A rendszergazdák adjon meg egy IP-címtartományt, amely megkerülhetik a kétlépéses ellenőrzés felhasználók számára, akik jelentkezzen be a vállalati intraneten.|
 | Összevont |**Az összes összevont felhasználók**: Jelentkezhessen be a szervezeten belüli összes összevont felhasználók megkerülhetik a kétlépéses ellenőrzést. A felhasználók az Active Directory összevonási szolgáltatások (AD FS) által kiadott jogcím ellenőrzés megkerülését.<br/>**Megadott IP-címek**: A rendszergazdák adjon meg egy IP-címtartományt, amely megkerülhetik a kétlépéses ellenőrzés felhasználók számára, akik jelentkezzen be a vállalati intraneten. |
 
 A megbízható IP-címek megkerülése a vállalati intraneten belül csak a működését. Ha a **minden összevont felhasználó** lehetőséget és a egy felhasználó bejelentkezik a vállalati intraneten kívülről a felhasználó rendelkezik a kétlépéses ellenőrzés használatával történő hitelesítéshez. A folyamat megegyezik akkor is, ha a felhasználó megadja az AD FS-jogcímek. 
@@ -338,7 +338,7 @@ Amikor a felhasználók regisztrálják fiókjukat az Azure multi-factor Authent
 | Megadott telefonszám hívása |Automatikus hanghívást indít helyezi. A felhasználó fogadja a hívást, és a hitelesítéshez lenyomja a telefon billentyűzetén a # gombot. A telefonszám nem lesznek szinkronizálva a helyszíni Active Directoryban. |
 | SMS küldése megadott telefonszámra |Egy ellenőrző kódot tartalmazó szöveges üzenetet küld. Kéri a felhasználót, hogy a bejelentkezési felületen meg kell adnia az ellenőrzőkódot. Ez a folyamat egyirányú SMS nevezzük. Kétirányú SMS azt jelenti, hogy a felhasználónak meg kell szöveg vissza egy adott kódblokkra. Kétirányú SMS elavult, és 2018. November 14. után nem támogatott. Felhasználók, akik kétirányú SMS automatikusan át konfigurált _telefonszámot_ ellenőrzés időpontjában.|
 | Értesítés mobilalkalmazáson keresztül |Leküldéses értesítést küld a telefonjára vagy regisztrált készülékére. A felhasználó megtekinti az értesítést, és kiválasztja **ellenőrizze** ellenőrzés befejezéséhez. A Microsoft Authenticator alkalmazás érhető el az [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](https://go.microsoft.com/fwlink/?Linkid=825073). |
-| Mobilalkalmazás vagy hardvertoken ellenőrző kódja |A Microsoft Authenticator alkalmazás egy új OATH-ellenőrző kód 30 másodpercenként hoz létre. A felhasználó a bejelentkezési felületen kerül, az ellenőrző kódot. A Microsoft Authenticator alkalmazás érhető el az [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](https://go.microsoft.com/fwlink/?Linkid=825073). |
+| Ellenőrző kódot a mobilalkalmazásban vagy a hardvertoken |A Microsoft Authenticator alkalmazás egy új OATH-ellenőrző kód 30 másodpercenként hoz létre. A felhasználó a bejelentkezési felületen kerül, az ellenőrző kódot. A Microsoft Authenticator alkalmazás érhető el az [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](https://go.microsoft.com/fwlink/?Linkid=825073). |
 
 ### <a name="enable-and-disable-verification-methods"></a>Engedélyezheti vagy letilthatja a hitelesítési módszerek
 
@@ -351,7 +351,7 @@ Amikor a felhasználók regisztrálják fiókjukat az Azure multi-factor Authent
 
 Hitelesítési módszerek használatával kapcsolatos további részleteket a cikkben található [hitelesítési módszerei](concept-authentication-methods.md).
 
-## <a name="remember-multi-factor-authentication"></a>Multi-Factor Authentication megjegyzése
+## <a name="remember-multi-factor-authentication"></a>Remember Multi-Factor Authentication
 
 A _multi-factor Authentication megjegyzése_ eszközök és böngészők, amely a felhasználó által megbízhatónak tartott a funkció egy olyan ingyenes szolgáltatás minden multi-factor Authentication-felhasználók számára. Felhasználók utólagos jogosultak a megadott számú napokon történt, miután azok már sikeresen bejelentkezett egy eszközön a multi-factor Authentication szolgáltatás használatával. A funkció javítja a használhatósági csökkenthetik a szám, ahányszor a felhasználó rendelkezik ugyanazon az eszközön a kétlépéses ellenőrzés végrehajtására.
 

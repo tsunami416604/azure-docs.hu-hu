@@ -2,20 +2,20 @@
 title: Az Azure SQL Data Warehouse - MPP-architektúra |} A Microsoft Docs
 description: Ismerje meg, hogyan kombinálja az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) és az Azure storage nagy teljesítménye és skálázhatósága eléréséhez.
 services: sql-data-warehouse
-author: happynicolle
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: nicw
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: c3cdd464dffc810e76cf101ac70c2a14bbc4f9ff
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 25dc469c9f50dee7d088fccd214020791ff73def
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790715"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515799"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Az Azure SQL Data Warehouse - nagymértékben párhuzamos feldolgozási (MPP) architektúra
 Ismerje meg, hogyan kombinálja az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) és az Azure storage nagy teljesítménye és skálázhatósága eléréséhez. 
@@ -40,8 +40,8 @@ Az SQL Data Warehouse a tárterület és a számítási műveletek elkülönít�
 Az SQL Data warehouse-bA az Azure storage segítségével a felhasználói adatok biztonsága.  Mivel az adatok tárolásának és kezeli az Azure storage, SQL Data Warehouse külön-külön tárhelyet díjat. Az adat, szilánkokra osztott **disztribúciók** a rendszer a teljesítmény optimalizálása érdekében. Kiválaszthatja, melyik horizontális skálázási minta használatával ossza el az adatokat, ha a tábla meghatározása. Az SQL Data Warehouse a horizontális skálázási mintát támogat:
 
 * Kivonat
-* Ciklikus multiplexelés
-* Replikáció
+* Ciklikus időszeletelés
+* Replikálás
 
 ### <a name="control-node"></a>Vezérlő csomópont
 
@@ -56,7 +56,7 @@ Minden számítási csomópont van egy csomópont-azonosító, amely a rendszer 
 ### <a name="data-movement-service"></a>Adatátviteli szolgáltatás
 Az adatátviteli szolgáltatás (DMS) az, hogy koordinálja a számítási csomópontok közötti adatáthelyezés adatok átviteli technológiát. Néhány lekérdezés annak érdekében, hogy a párhuzamos lekérdezések pontos eredményeket adjon vissza adatáthelyezés van szükség. Amikor szükség az adatmozgatás, a DMS biztosítja, hogy a megfelelő adatokat lekérdezi a megfelelő helyre. 
 
-## <a name="distributions"></a>Felosztások
+## <a name="distributions"></a>Disztribúciók
 
 A terjesztés az tárolása és feldolgozása a párhuzamos lekérdezések elosztott adatokon a Futtatás alapvető egysége. Amikor az SQL Data Warehouse egy lekérdezés fut, a munkahelyi 60 kisebb lekérdezések párhuzamos futtatását van felosztva. A 60 kisebb lekérdezésekre mindegyike futtat az adatok disztribúciók egyik. Minden számítási csomópont egy vagy több a 60 elosztás kezeli. Maximális számítási erőforrásokat az adattárház számítási csomópontok egy terjesztési rendelkezik. Minimális számítási erőforrásokat az adattárház rendelkezik minden disztribúcióján használhatók egy számítási csomóponton.  
 

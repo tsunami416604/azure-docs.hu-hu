@@ -2,26 +2,25 @@
 title: Az Azure Kubernetes Service (AKS)-fürt hitelesítő adatainak alaphelyzetbe állítása
 description: Ismerje meg, hogyan frissítés vagy visszaállítása az egyszerű szolgáltatás hitelesítő adatait egy fürtöt az Azure Kubernetes Service (AKS)
 services: container-service
-author: rockboyfor
+author: iainfoulds
 ms.service: container-service
 ms.topic: article
-origin.date: 01/30/2019
-ms.date: 03/04/2019
-ms.author: v-yeche
-ms.openlocfilehash: d880615d0d132403c935fe39e8478d7b3fc48dbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/31/2019
+ms.author: iainfou
+ms.openlocfilehash: 189bcf2ddc7d301c8100f74e51374abd217a144f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61029359"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475485"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Frissítés vagy a hitelesítő adatok forgatása egyszerű szolgáltatások Azure Kubernetes Service (AKS)
 
 Alapértelmezés szerint az AKS-fürtök jönnek létre, amely egy éves lejárati ideje szolgáltatásnévvel. Az Ön közelében a lejárati dátum alaphelyzetbe állíthatja a bővítése az egyszerű szolgáltatás egy további időszakban a hitelesítő adatokat. Érdemes azt is, frissítéséhez vagy, egy meghatározott biztonsági szabályzat részeként a hitelesítő adatok forgatása. Ez a cikk részletesen bemutatja ezeket a hitelesítő adatokat az AKS-fürt frissítéséhez.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-Az Azure CLI 2.0.56 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
+Az Azure CLI 2.0.65 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
 ## <a name="choose-to-update-or-create-a-service-principal"></a>Válassza ki a frissíteni vagy egyszerű szolgáltatás létrehozása
 
@@ -34,17 +33,18 @@ Ha azt szeretné, hozzon létre egy egyszerű szolgáltatást az AKS-fürt friss
 
 ### <a name="get-the-service-principal-id"></a>A résztvevő-azonosító beszerzése
 
-A létező egyszerű szolgáltatás hitelesítő adatainak frissítéséhez, kérje le a szolgáltatásnév-Azonosítót, a fürt használata a [az aks show] [ az-aks-show] parancsot. Az alábbi példa lekéri a fürt nevű azonosítója *myAKSCluster* a a *myResourceGroup* erőforráscsoportot. A szolgáltatásnév-Azonosítót további parancs használható változóként van megadva.
+A létező egyszerű szolgáltatás hitelesítő adatainak frissítéséhez, kérje le a szolgáltatásnév-Azonosítót, a fürt használata a [az aks show] [ az-aks-show] parancsot. Az alábbi példa lekéri a fürt nevű azonosítója *myAKSCluster* a a *myResourceGroup* erőforráscsoportot. A résztvevő-azonosító értéke nevű változóként *SP_ID* további parancs használható.
 
-```azurecli
-SP_ID=$(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
+```azurecli-interactive
+SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
 ```
 
 ### <a name="update-the-service-principal-credentials"></a>A szolgáltatásnév hitelesítő adatainak frissítése
 
 A változó beállítása, amely tartalmazza a szolgáltatásnév-Azonosítót, állítsa alaphelyzetbe a hitelesítő adatok használatával [az ad sp hitelesítő adatok alaphelyzetbe állítása][az-ad-sp-credential-reset]. Az alábbi példa az Azure-biztonságos új titkos kód létrehozása a szolgáltatásnévhez tartozó platform lehetővé teszi. Az új biztonságos titkos kulcsot is egy változóban van tárolva.
 
-```azurecli
+```azurecli-interactive
 SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
 ```
 
@@ -56,7 +56,7 @@ Ha úgy döntött, hogy frissítse a meglévő egyszerű szolgáltatás hiteles�
 
 Hozzon létre egy egyszerű szolgáltatást, és frissítse az AKS-fürt új ezekkel a hitelesítő adatokkal, használja a [az ad sp create-for-rbac] [ az-ad-sp-create] parancsot. A következő példában a `--skip-assignment` paraméter megakadályozza bármilyen további alapértelmezett hozzárendelés használatát:
 
-```azurecli
+```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
 ```
 
@@ -73,7 +73,7 @@ A kimenet a következő példához hasonló. Jegyezze fel a saját `appId` és `
 
 Ezután határozza meg a szolgáltatás egyszerű azonosító és a titkos ügyfélkódra kimenetét a saját használatával változóival [az ad sp create-for-rbac] [ az-ad-sp-create] parancsot, az alábbi példában látható módon. A *SP_ID* van a *appId*, és a *SP_SECRET* van a *jelszó*:
 
-```azurecli
+```azurecli-interactive
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
 SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ```
@@ -82,7 +82,7 @@ SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 
 Függetlenül attól, hogy úgy döntött, hogy a létező egyszerű szolgáltatás hitelesítő adatainak frissítéséhez, vagy hozzon létre egy egyszerű szolgáltatást, most frissítenie az AKS-fürtöt az új hitelesítő adatok használatával a [az aks-hitelesítő adatok frissítése] [ az-aks-update-credentials] parancsot. Változói a *– egyszerű szolgáltatás* és *--client-secret* használhatók:
 
-```azurecli
+```azurecli-interactive
 az aks update-credentials \
     --resource-group myResourceGroup \
     --name myAKSCluster \
@@ -98,9 +98,9 @@ Az egyszerű szolgáltatás hitelesítő adatai az AKS frissíteni kell néhány
 Ez a cikk az AKS-fürthöz tartozó egyszerű szolgáltatás frissítve lett. Identitáskezelés a fürtön belüli számítási feladatokhoz való további információkért lásd: [gyakorlati tanácsok a hitelesítés és engedélyezés az aks-ben][best-practices-identity].
 
 <!-- LINKS - internal -->
-[install-azure-cli]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
-[az-aks-show]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-show
-[az-aks-update-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-update-credentials
+[install-azure-cli]: /cli/azure/install-azure-cli
+[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-aks-update-credentials]: /cli/azure/aks#az-aks-update-credentials
 [best-practices-identity]: operator-best-practices-identity.md
-[az-ad-sp-create]: https://docs.azure.cn/zh-cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac
-[az-ad-sp-credential-reset]: https://docs.azure.cn/zh-cn/cli/ad/sp/credential?view=azure-cli-latest#az-ad-sp-credential-reset
+[az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
+[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset

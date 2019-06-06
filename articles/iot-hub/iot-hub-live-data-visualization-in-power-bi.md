@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 4/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 7c770aced36e4c90f654de8d31c12d55ad80c8d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e932048b41e9af149f14a814a1c92d86bd26f29
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60780121"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479866"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Azure IoT Hub használata a Power BI valós idejű érzékelői adatainak megjelenítése
 
@@ -25,7 +25,7 @@ ms.locfileid: "60780121"
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-Ismerteti az Azure IoT hub által fogadott Power BI használatával valós idejű érzékelői adatainak megjelenítése. Ha ki szeretné próbálni toe megjelenítheti az adatokat az IoT hub, a Web Apps, a [használata az Azure Web Apps az Azure IoT Hub valós idejű érzékelői adatainak megjelenítése](iot-hub-live-data-visualization-in-web-apps.md).
+Ismerteti az Azure IoT hub által fogadott Power BI használatával valós idejű érzékelői adatainak megjelenítése. Ha ki szeretné próbálni toe megjelenítheti az adatokat az IoT hub egy olyan webalkalmazással, a [webalkalmazás használata Azure IoT Hub valós idejű érzékelői adatainak megjelenítése](iot-hub-live-data-visualization-in-web-apps.md).
 
 ## <a name="what-you-do"></a>TEENDŐ
 
@@ -179,6 +179,6 @@ Microsoft által a [Power BI-mobilalkalmazásokban](https://powerbi.microsoft.co
 
 Az Azure IoT hub valós idejű érzékelői adatainak megjelenítése Power bi-ban sikeresen felhasználta.
 
-Nincs más módja az Azure IoT Hub adatainak megjelenítése. Lásd: [használata az Azure Web Apps az Azure IoT Hub valós idejű érzékelői adatainak megjelenítése](iot-hub-live-data-visualization-in-web-apps.md).
+A másik lehetőség az Azure IoT Hub adatainak megjelenítése, lásd: [webalkalmazás használata Azure IoT Hub valós idejű érzékelői adatainak megjelenítése](iot-hub-live-data-visualization-in-web-apps.md).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

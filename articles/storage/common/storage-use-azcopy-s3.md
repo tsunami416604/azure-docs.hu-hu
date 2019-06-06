@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: c0bc74ac0fe45f2502064340a0c3ce5b82694b06
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b18c4c039b615c7c88268b6e668df9f7fec9fabf
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245699"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66687925"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Adatok másolása az Amazon S3 gyűjtő AzCopy használatával
 
-Az AzCopy parancssori segédprogram, amely a blobok és a fájlok másolása, illetve a storage-fiók használatával. Ez a cikk másolása az objektumok, mappák és gyűjtők Amazon Web Services (AWS) S3-ból az Azure blob storage használatával AzCopy.
+Az AzCopy parancssori segédprogram, amely a blobok és a fájlok másolása, illetve a storage-fiók használatával. Ez a cikk másolása objektumok, könyvtárak és gyűjtők Amazon Web Services (AWS) S3-ból az Azure blob storage-AzCopy használatával.
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>Válassza ki, hogyan fogja engedélyezési hitelesítő adatok megadása
 
@@ -46,7 +46,7 @@ Az AWS-hozzáférési kulcsot és titkos hívóbetűje gyűjthet, és állítsa 
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **MacOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
 
-## <a name="copy-objects-folders-and-buckets"></a>Objektumok, mappák és gyűjtők másolása
+## <a name="copy-objects-directories-and-buckets"></a>Objektumok, könyvtárak és gyűjtők másolása
 
 Az AzCopy használja a [URL blokk Put](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API-t, így közvetlenül az AWS S3 és a tároló kiszolgálók közötti adatokat másolja. Ezek a másolási műveletek ne használja a hálózati sávszélesség számítógép.
 
@@ -64,12 +64,12 @@ Az AzCopy használja a [URL blokk Put](https://docs.microsoft.com/rest/api/stora
 >
 > Gyűjtők virtuális üzemeltető kapcsolatos további információkért lásd: [virtuális üzemeltető a gyűjtők]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html).
 
-### <a name="copy-a-folder"></a>Másolja a mappát
+### <a name="copy-a-directory"></a>Másolja egy könyvtár
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<folder-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<folder-name>" --recursive=true` |
-| **Példa** | `azcopy cp "https://s3.amazonaws.com/mybucket/myfolder" "https://mystorageaccount.blob.core.windows.net/mycontainer/myfolder" --recursive=true` |
+| **Syntax** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<directory-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>" --recursive=true` |
+| **Példa** | `azcopy cp "https://s3.amazonaws.com/mybucket/mydirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory" --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>Másolja a gyűjtőhöz
 

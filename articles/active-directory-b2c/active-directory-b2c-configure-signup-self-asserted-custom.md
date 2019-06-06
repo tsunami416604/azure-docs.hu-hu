@@ -2,20 +2,20 @@
 title: Adja hozzá a jogcímeket, és testre szabhatja a felhasználói bevitel egyéni szabályzatok – Azure Active Directory B2C használatával |} A Microsoft Docs
 description: Ismerje meg, hogy felhasználói bevitel testreszabása, és a regisztrálási vagy bejelentkezési utazás jogcímeket hozzáadása az Azure Active Directory B2C-t.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a64c58d23543279a3a32d2d7b612b43dee8741eb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c15d315d186af5622d9fa988945750d93e8eb11f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768012"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507557"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Adja hozzá a jogcímeket, és testre szabhatja a felhasználói bevitel, az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
@@ -51,7 +51,7 @@ A következő elemeket a jogcím meghatározásához használják:
 - **UserHelpText** -segít a szükséges ismertetése.
 - **UserInputType** – egy szövegmező, választógomb kijelölés, a legördülő listából válassza ki vagy többszörös kijelölés is lehet.
 
-#### <a name="textbox"></a>Szövegmező
+#### <a name="textbox"></a>TextBox
 
 ```xml
 <ClaimType Id="city">
@@ -263,7 +263,7 @@ A következő elemeket a jogcím meghatározásához használják:
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Győződjön meg arról, hogy használja az Azure AD-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és kiválasztása az Azure AD-bérlő tartalmazó könyvtárra.
 3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **alkalmazásregisztrációk**.
-4. Válassza ki **identitás-kezelőfelületi keretrendszer (előzetes verzió)**.
+4. Válassza ki **identitás-kezelőfelületi keretrendszer (előzetes verzió)** .
 5. Válassza ki **egyéni szabályzat feltöltése**, majd töltse fel a módosított két-fájlok.
 2. Válassza ki a regisztrálási vagy bejelentkezési szabályzatot, feltöltött, majd kattintson a **Futtatás most** gombra.
 3. Regisztráció e-mail-címmel kell lennie.

@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 06/03/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7328fb958774b5e17511d046e914cc5612e8a96d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa25e8a965b89c4e97263e3767a9400079fcad7a
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415828"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496806"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Működés: Azure Multi-Factor Authentication
 
@@ -36,10 +36,10 @@ Az Azure multi-factor Authentication (MFA) segítségével biztonságosabb a hoz
 
 A multi-factor Authentication szolgáltatás része a következő ajánlatokra:
 
-* **Az Azure Active Directory Premium licenccel** – teljes kiemelt Azure multi-factor Authentication szolgáltatás (felhő) vagy az Azure multi-factor Authentication-kiszolgáló (helyszíni) használatát.
-   * **Az Azure MFA szolgáltatáshoz (felhő)** - **Ez a beállítás akkor az új üzembe helyezésekhez javasolt elérési**. Az Azure MFA a felhőben nincsenek a helyszíni infrastruktúrát igényel, és az összevont vagy kizárólag felhőbeli felhasználó használható.
-   * **Az Azure MFA-kiszolgáló** – Ha a szervezet szeretne a kapcsolódó infrastruktúra-elemek kezelése és az AD FS a helyszíni környezetben telepített ezzel a módszerrel lehet, hogy egy lehetőséget.
-* **A multi-factor Authentication for Office 365** – Azure multi-factor Authentication funkcióinak egy részét, az előfizetés részeként érhetők el. Az Office 365-höz MFA kapcsolatos további információkért tekintse meg a cikket [a multi-factor authentication for Office 365 központi telepítések tervezése](https://support.office.com/article/plan-for-multi-factor-authentication-for-office-365-deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba).
+* **Az Azure Active Directory Premium** vagy **Microsoft 365 vállalati** – teljes kiemelt feltételes hozzáférési szabályzatok segítségével a többtényezős hitelesítés kötelezővé tétele az Azure multi-factor Authentication használatát.
+
+* **Az Azure AD ingyenes**, **alapszintű Azure AD**, vagy önálló **Office 365** licencek – használja az előre létrehozott [feltételes hozzáférési alapkonfiguráció alkalmazásvédelmi szabályzatok](../conditional-access/concept-baseline-protection.md) megkövetelése többtényezős hitelesítés a felhasználók és rendszergazdák számára.
+
 * **Az Azure Active Directory globális rendszergazdái** – Azure multi-factor Authentication funkcióinak egy részét, globális rendszergazdai fiókok védelme való érhetők el.
 
 > [!NOTE]
@@ -51,16 +51,9 @@ Mivel a legtöbb felhasználó vannak bemutatásával csak jelszavak használat�
 
 * A támogatási csapat találkozik forgatókönyvek kezeléséhez, ahol a felhasználó nem tud bejelentkezni, mert nem rendelkeznek hozzáféréssel a hitelesítési módszereiket, vagy nem működnek megfelelően betanításához.
    * A feltételes hozzáférési szabályzatokkal az Azure MFA szolgáltatás, a támogatási csapat adhat hozzá egy felhasználó egy csoportot, amely ki van zárva a többtényezős hitelesítés szabályzat.
-   * Támogatási csapattal ideiglenes az egyszeri Mellőzés lehetővé teszi, hogy a kétlépéses ellenőrzés nélkül végezzen hitelesítést az Azure MFA-kiszolgáló felhasználók számára engedélyezheti. A Mellőzés átmeneti, és a megadott számú másodperc után lejár.   
-* Érdemes lehet használni a megbízható IP-címek vagy nevesített helyek arra, hogy minimalizálja a kétlépéses ellenőrzés utasításokat. Ezzel a funkcióval a felügyelt vagy összevont bérlők rendszergazdái megkerülhetik a kétlépéses ellenőrzést, a felhasználók számára, amely egy megbízható hálózati helyről, például a szervezeti intraneten bejelentkezés.
+* Érdemes lehet a feltételes hozzáférés – nevesített helyek, a kétlépéses ellenőrzés minimalizálása érdekében olyan módon kéri. Ezzel a funkcióval a rendszergazdák megkerülhetik a kétlépéses ellenőrzést, a felhasználók számára, amely egy biztonságos, megbízható hálózati helyről, például egy hálózati bejelentkezés használt új felhasználói bevezetésére vonatkozó szegmens.
 * Üzembe helyezése [Azure AD Identity Protection](../active-directory-identityprotection.md) , és aktiválja a kétlépéses ellenőrzést, a kockázati események alapján.
 
 ## <a name="next-steps"></a>További lépések
 
-- A részletes MFA beszerzése [központi telepítési csomag](https://aka.ms/MFADeploymentPlan)
-
-- További részletek a [felhasználók licenceléséről](concept-mfa-licensing.md)
-
-- További részletek arról, hogy [melyik verziót telepítse](concept-mfa-whichversion.md)
-
-- Választ kaphat a [gyakori kérdésekre](multi-factor-authentication-faq.md)
+- [Részletes Azure multi-factor Authentication üzembe helyezés](howto-mfa-getstarted.md)

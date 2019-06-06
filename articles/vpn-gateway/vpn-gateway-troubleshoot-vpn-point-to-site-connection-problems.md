@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2018
+ms.date: 05/31/2019
 ms.author: genli
-ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cab40284f36f21f9de72ee4dc1faf78153621d26
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457476"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475971"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítás: Az Azure pont – hely kapcsolati problémák
 
@@ -62,7 +62,7 @@ Az ügyféltanúsítvány telepítésével kapcsolatos további információkér
 
 ### <a name="symptom"></a>Jelenség
 
-Próbálja ki, és egy Azure virtuális hálózat gteway Windows az IKEv2 használatával csatlakozhat, a következő hibaüzenetet kap:
+Próbálja ki, és egy Azure virtuális hálózati átjáró a Windows az IKEv2 használatával csatlakozhat, a következő hibaüzenetet kap:
 
 **Nem sikerült létrehozni a számítógép és a VPN-kiszolgáló közötti hálózati kapcsolat, mert a távoli kiszolgáló nem válaszol**
 
@@ -305,7 +305,7 @@ Távolítsa el a pont – hely VPN-kapcsolatot, és telepítse újra a VPN-ügyf
 
 ### <a name="solution"></a>Megoldás
 
-A probléma megoldásához, törölje a régi VPN-ügyfél konfigurációs fájljainak a **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >**, majd futtassa újra a VPN-ügyfél telepítő .
+A probléma megoldásához, törölje a régi VPN-ügyfél konfigurációs fájljainak a **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >** , majd futtassa újra a VPN-ügyfél telepítő .
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Pont – hely VPN-ügyfél nem tudja feloldani az erőforrásokat a helyi tartomány teljes Tartományneve
 

@@ -2,18 +2,17 @@
 title: Használja az Azure Monitor bejelentkezik az Azure HDInsight-fürtök figyelése
 description: Ismerje meg, hogyan használható az Azure Monitor naplóira egy HDInsight-fürtön futó feladatok figyelése.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/20/2019
-ms.author: hrasheed
-ms.openlocfilehash: 610843d325744aec8ad944075f06c63c90b6fe4d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 06/03/2019
+ms.openlocfilehash: 16659a335ef6126e75f5a9a99784e71afa056bef
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203680"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479264"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Használja az Azure Monitor naplózza a HDInsight-fürtök figyelése
 
@@ -49,21 +48,15 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Ebben a szakaszban konfigurálja egy meglévő HDInsight Hadoop-fürtöt az Azure Log Analytics-munkaterületet a figyelheti a feladatokat, hibakeresési naplók, stb.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Az a [az Azure portal](https://portal.azure.com/), válassza ki a fürtöt.  Lásd: [fürtök listázása és megjelenítése](./hdinsight-administer-use-portal-linux.md#showClusters) vonatkozó utasításokat. A fürt egy portál új lapon nyílik meg.
 
-2. A bal oldali menüben válassza ki a **minden szolgáltatás**.
+1. A bal oldali alatt **figyelés**válassza **Operations Management Suite**.
 
-3. A **ANALYTICS**válassza **HDInsight-fürtök**.
+1. A fő nézetből alatt **OMS-Monitorozással**válassza **engedélyezése**.
 
-4. A listáról válassza ki a fürtöt.
+1. Az a **válasszon ki egy munkaterületet** legördülő listára, válassza ki egy meglévő Log Analytics-munkaterületet.
 
-5. A bal oldali alatt **figyelés**válassza **Operations Management Suite**.
-
-6. A fő nézetből alatt **OMS-Monitorozással**válassza **engedélyezése**.
-
-7. Az a **válasszon ki egy munkaterületet** legördülő listára, válassza ki egy meglévő Log Analytics-munkaterületet.
-
-8. Kattintson a **Mentés** gombra.  A beállítás mentéséhez teljesítése pár percet vesz igénybe.
+1. Kattintson a **Mentés** gombra.  A beállítás mentéséhez teljesítése pár percet vesz igénybe.
 
     ![Engedélyezze a monitorozást az HDInsight-fürtök](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "engedélyezze a monitorozást az HDInsight-fürtök")
 

@@ -2,20 +2,20 @@
 title: Oktatóanyag – identitás-szolgáltatóktól ad hozzá az alkalmazások – Azure Active Directory B2C |} A Microsoft Docs
 description: Ismerje meg, hogyan adja hozzá az identitás-szolgáltatóktól az alkalmazások az Azure Active Directory B2C az Azure portal használatával.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/01/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c1bd78442f6a7218dde3710236766117816c42fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 76e12dc6bf9bcb50dc58e7730f3a08dd6a9d4440
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710132"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512191"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Oktatóanyag: Identitásszolgáltató hozzáadása az alkalmazásait az Azure Active Directory B2C-vel
 
@@ -50,7 +50,7 @@ Bejelentkezés engedélyezése a felhasználók számára az Azure ad-ből, meg 
 4. Válassza az **Új alkalmazás regisztrálása** elemet.
 5. Adja meg az alkalmazás nevét. Például: `Azure AD B2C App`.
 6. Az a **alkalmazástípus**válassza `Web app / API`.
-7. Az a **bejelentkezési URL-**, adja meg a következő URL-cím csupa kisbetűvel, ahol `your-B2C-tenant-name` váltja fel az Azure AD B2C-bérlő nevével.
+7. Az a **bejelentkezési URL-** , adja meg a következő URL-cím csupa kisbetűvel, ahol `your-B2C-tenant-name` váltja fel az Azure AD B2C-bérlő nevével.
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
@@ -95,7 +95,7 @@ Miután létrehozta az alkalmazást a hozzáadni kívánt identitásszolgáltat�
 2. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
 3. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.
 4. Adjon meg egy **neve**. Adja meg például *Contoso Azure ad-ben*.
-5. Válassza ki **identitásszolgáltató típusa**válassza **Open ID Connect (előzetes verzió)**, és kattintson a **OK**.
+5. Válassza ki **identitásszolgáltató típusa**válassza **Open ID Connect (előzetes verzió)** , és kattintson a **OK**.
 6. Kattintson a **az identitásszolgáltató beállítása**
 7. A **metaadatok URL-címe**, adja meg a következő URL-címet lecseréli `your-AD-tenant-domain` a tartomány nevét az Azure AD-bérlő.
 
@@ -130,7 +130,7 @@ Miután létrehozta az alkalmazást a hozzáadni kívánt identitásszolgáltat�
 
 Az oktatóanyagban, amelyek az Előfeltételek részeként létrehozott egy felhasználói folyamat esetében a regisztráció és bejelentkezés nevű *B2C_1_signupsignin1*. Ebben a szakaszban az identitás-szolgáltatóktól történő hozzáadása a *B2C_1_signupsignin1* felhasználói folyamatot.
 
-1. Válassza ki **felhasználókövetési adatai (szabályzatok)**, majd válassza ki a *B2C_1_signupsignin1* felhasználói folyamatot.
+1. Válassza ki **felhasználókövetési adatai (szabályzatok)** , majd válassza ki a *B2C_1_signupsignin1* felhasználói folyamatot.
 2. Válassza ki **Identitásszolgáltatók**, jelölje be a **Facebook** és **Contoso Azure ad-ben** identitásszolgáltatókat, amelyek adott hozzá.
 3. Kattintson a **Mentés** gombra.
 

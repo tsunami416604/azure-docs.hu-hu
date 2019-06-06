@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 3843b5022aaf218bf91e25ecf6d9c36bb2db2dee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0a80630ffa363d2b633667d8104cc0326c4afa2e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575423"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478591"
 ---
 # <a name="plan-virtual-networks"></a>Virtuális hálózatok tervezése
 
 Kísérletezhet a virtuális hálózat létrehozásának elég egyszerű, de valószínűleg több virtuális hálózat központilag telepíti az éles környezetben a szervezet igényeinek támogatásához idővel. Az egyes tervezési lesz a virtuális hálózatok üzembe helyezése, és csatlakozzon a hatékonyabban szükséges erőforrásokat. Ebben a cikkben szereplő információkat akkor hasznos, ha már ismeri a virtuális hálózatok, és rendelkezik tapasztalattal a velük végzett munkát. Ha nem ismeri a virtuális hálózatok, javasoljuk, hogy olvasási [virtuális hálózatok áttekintése](virtual-networks-overview.md).
 
-## <a name="naming"></a>Elnevezés
+## <a name="naming"></a>Elnevezése
 
 Az összes Azure-erőforrások nevezni. A név egy hatókör, amely különbözhet az egyes erőforrástípusok egyedinek kell lennie. Például egy virtuális hálózat neve egyedinek kell lennie egy [erőforráscsoport](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), de belül is kettőzhető egy [előfizetés](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) vagy az Azure [régió](https://azure.microsoft.com/regions/#services). Egy elnevezési konvenciója, amellyel folyamatosan erőforrások elnevezésekor meghatározása akkor hasznos, ha több hálózati erőforrások felügyelete a idővel. További javaslatok: [elnevezési konvenciók](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#networking).
 
@@ -77,7 +77,7 @@ Szűrheti a hálózati forgalom és a egy hálózati biztonsági csoportok és a
 - Egy alhálózaton belül különböző virtuális gépek különböző biztonsági szabály van szükség, ha a hálózati adaptert a virtuális gépen, egy vagy több alkalmazásbiztonsági csoportokkal is hozzárendelhetők. Biztonsági szabály megadhatja egy alkalmazásbiztonsági csoportot a forrás, cél vagy mindkettőt. Ez a szabály majd csak érvényes a hálózati adaptereket, amelyek az alkalmazásbiztonsági csoport tagjai. Tudjon meg többet [hálózati biztonsági csoportok](security-overview.md) és [az alkalmazásbiztonsági csoportok](security-overview.md#application-security-groups).
 - Az Azure számos alapértelmezett biztonsági szabályokat minden egyes hálózati biztonsági csoporton belül hoz létre. Egy alapértelmezett szabály lehetővé teszi, hogy a virtuális hálózatban lévő erőforrások között az összes bejövő forgalmat. Bírálja felül ezt a viselkedést, használja a hálózati biztonsági csoportok, egyéni útválasztás a forgalom irányítása NVA vagy mindkettőt. Javasoljuk, hogy, ismerkedjen meg az Azure összes [alapértelmezett biztonsági szabályokat](security-overview.md#default-security-rules) és megismerheti, hogyan erőforrás hálózati biztonsági csoport szabályai érvényesek.
 
-Megtekintheti a minta tervek szegélyhálózaton (más néven DMZ) megvalósítása az Azure és a használatával az internet között egy [NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) vagy [hálózati biztonsági csoportok](virtual-networks-dmz-nsg.md).
+Megtekintheti a minta tervek szegélyhálózaton (más néven DMZ) megvalósítása az Azure és a használatával az internet között egy [NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json).
 
 ### <a name="traffic-routing"></a>Forgalom-Útválasztás
 
@@ -87,7 +87,7 @@ Az Azure egy alhálózatról kimenő forgalom több alapértelmezett útvonalaka
 
 Ha egyéni útválasztás megvalósításához van szüksége, javasoljuk, hogy, ismerje meg az [útválasztás az Azure-ban](virtual-networks-udr-overview.md).
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 Vagy is kapcsolódni egy virtuális hálózatot más virtuális hálózatokhoz való kapcsolódásának virtuális hálózatok közötti társviszony, a helyszíni hálózathoz az Azure VPN gateway használatával.
 

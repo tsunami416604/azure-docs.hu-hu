@@ -1,22 +1,22 @@
 ---
-title: 'Gyors útmutató: Betöltési adat a Logstashből az Adatkezelőbe az Azure'
-description: Ebben a rövid útmutató (betöltés) adatok betöltését az Azure Data Explorer a Logstashből
+title: Betöltési adat a Logstashből az Adatkezelőbe az Azure
+description: Ebből a cikkből elsajátíthatja, hogyan gyűjthet (betöltés) adatokat az Azure Data Explorer a Logstashből
 author: tamirkamara
 ms.author: takamara
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 01/14/2019
-ms.openlocfilehash: e0d81454e6036d09bb74af6f522063a1aed5fffe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 86f6732cbf2409d3c79a3d7709100e8af24988a0
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60759367"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494543"
 ---
-# <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>Gyors útmutató: Betöltési adat a Logstashből az Adatkezelőbe az Azure
+# <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>Betöltési adat a Logstashből az Adatkezelőbe az Azure
 
-[A Logstash](https://www.elastic.co/products/logstash) egy nyílt forráskódú, több forrásból származó adatokat fogadnak egy időben, átalakítja az adatokat, és ezután elküldi az adatokat a kívánt "stash" kiszolgálóoldali adatfeldolgozási folyamat. Ebben a rövid, küld adatokat az Azure Adatkezelőbe, ez egy gyors és hatékonyan méretezhető exploration szolgáltatás napló és a telemetriai adatok. Először hozzon létre egy tábla és a megfeleltetése egy teszt fürtben fog, és majd közvetlen Logstash adatokat küldeni a táblába, és ellenőrzik az eredményeket.
+[A Logstash](https://www.elastic.co/products/logstash) egy nyílt forráskódú, több forrásból származó adatokat fogadnak egy időben, átalakítja az adatokat, és ezután elküldi az adatokat a kívánt "stash" kiszolgálóoldali adatfeldolgozási folyamat. Ebben a cikkben fogja, hogy adatokat küld az Azure az adatkezelőt, ez egy gyors és hatékonyan méretezhető exploration szolgáltatás napló és a telemetriai adatok. Először hozzon létre egy tábla és a megfeleltetése egy teszt fürtben fog, és majd közvetlen Logstash adatokat küldeni a táblába, és ellenőrzik az eredményeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -146,5 +146,4 @@ Futtassa a következő parancsot az adatbázis karbantartása a `logs` tábla:
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Lekérdezések írása](write-queries.md)
+* [Lekérdezések írása](write-queries.md)

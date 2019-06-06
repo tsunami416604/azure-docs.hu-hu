@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5044567396d832d3c3b2b46e3c3e90e053834595
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: d31bde1a33d622c2c0b7aa716cbbbfbc8ef42ecf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417893"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514579"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
@@ -407,7 +407,7 @@ Számlázással kapcsolatos általános feladatokat, például frissítheti a fi
 | microsoft.office365.supportTickets/allEntities/allTasks | Hozzon létre és kezelheti az Office 365 támogatási jegyeket. |
 
 ### <a name="desktop-analytics-administrator"></a>Asztali Analytics rendszergazdája
-Elérheti és kezelheti az asztali felügyeleti eszközöket és szolgáltatásokat, beleértve az Intune-ban.
+A Desktop Analytics és az Office testreszabási & házirend szolgáltatások is kezelheti. Asztali Analytics például a eszközleltár megtekintése, központi telepítési csomagok létrehozása, üzembe helyezési és egészségügyi állapotának megtekintéséhez. Az Office testreszabási & szabályzat szolgáltatáshoz Ez a szerepkör lehetővé teszi a felhasználók Office házirendek kezelése.
 
   > [!NOTE]
   > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.

@@ -2,20 +2,20 @@
 title: A saját attribútumokat adhat hozzá egyéni szabályzatokat az Azure Active Directory B2C |} A Microsoft Docs
 description: A forgatókönyv a bővítménytulajdonságok és egyéni attribútumok használata, és többek között azokat a felhasználói felületen.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9f81f60c7153368ae12f80bb7bb6781c3e295cb8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ab7231c214060d17927e2509bee1687e2c9c87a3
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689206"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507581"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Egyéni attribútumok használata egyéni profil szabályzat szerkesztése
 
@@ -63,7 +63,7 @@ Utasítások szerepelnek a **további lépések** szakasz ebben a cikkben.
 10. Válasszon **engedélyeket** , majd erősítse meg **Igen**.
 11. A következő azonosítók másolja a vágólapra, és mentse őket:
     * **Alkalmazásazonosító**. Példa: `103ee0e6-f92d-4183-b576-8c3739027780`.
-    * **Objektumazonosító:**. Példa: `80d8296a-da0a-49ee-b6ab-fd232aa45201`.
+    * **Objektumazonosító:** . Példa: `80d8296a-da0a-49ee-b6ab-fd232aa45201`.
 
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>Az egyéni házirend hozzáadása módosítása a **ApplicationObjectId**
 

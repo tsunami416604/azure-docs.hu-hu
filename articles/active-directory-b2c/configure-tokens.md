@@ -2,20 +2,20 @@
 title: Jogkivonatok – Azure Active Directory B2C konfigurálása |} A Microsoft Docs
 description: Ismerje meg, hogy a jogkivonat élettartamát és kompatibilitási beállítások konfigurálása az Azure Active Directory B2C-t.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69a6284ea7b8905bb5efdb1f4c9f26027bd6f9d9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e1163c88a100ebb7500607475ab5740557904137
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689607"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511333"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Jogkivonatok konfigurálása az Azure Active Directory B2C-vel
 
@@ -32,7 +32,7 @@ A jogkivonat élettartamát bármely felhasználói folyamatot is beállíthatja
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő tartalmazó könyvtárba. Válassza ki a **címtár és előfizetés-szűrő** a felső menüben válassza az Azure AD B2C-bérlő tartalmazó könyvtárba.
 3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Válassza ki **felhasználókövetési adatai (szabályzatok)**.
+4. Válassza ki **felhasználókövetési adatai (szabályzatok)** .
 5. Nyissa meg a korábban létrehozott felhasználói folyamatot. 
 6. Válassza ki **tulajdonságok**.
 7. A **jogkivonat élettartama**, állítsa be az alkalmazás igényeinek a következő tulajdonságokkal:
@@ -43,7 +43,7 @@ A jogkivonat élettartamát bármely felhasználói folyamatot is beállíthatja
 
 ## <a name="configure-token-compatibility"></a>Jogkivonat-kompatibilitási konfigurálása
 
-1. Válassza ki **felhasználókövetési adatai (szabályzatok)**.
+1. Válassza ki **felhasználókövetési adatai (szabályzatok)** .
 2. Nyissa meg a korábban létrehozott felhasználói folyamatot. 
 3. Válassza ki **tulajdonságok**.
 4. A **jogkivonat-kompatibilitási beállítások**, állítsa be az alkalmazás igényeinek a következő tulajdonságokkal:

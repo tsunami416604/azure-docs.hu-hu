@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 75987c7838846aacb099b725e2a222967b32fe64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 73ed98bf950f7c9f52e2b8eeb431fe4b36bfe324
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691259"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427924"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 
@@ -81,56 +81,57 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 
 ## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Az Azure-beli fájlmegosztás igény szerinti az csatlakoztatása `mount`
 
-1. **[Telepítse a cifs-utils csomagot a Linux-disztribúció](#install-cifs-utils)**.
+1. **[Telepítse a cifs-utils csomagot a Linux-disztribúció](#install-cifs-utils)** .
 
-1. **Hozzon létre egy mappát a csatlakoztatási pont**: Egy mappát a csatlakoztatási pont hozható létre tetszőleges a fájlrendszerben, de általános egyezmény a alatt létrehozásához a `/mnt` mappát. Példa:
+1. **Hozzon létre egy mappát a csatlakoztatási pont**: Egy mappát a csatlakoztatási pont hozható létre tetszőleges a fájlrendszerben, de általános egyezmény a alatt egy új mappa létrehozásához. Ha például a következő parancs létrehoz egy új könyvtárat, cserélje le **< tárfiók_neve >** és **< file_share_name >** a környezetének megfelelő információkkal:
 
     ```bash
-    mkdir /mnt/MyAzureFileShare
+    mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **Az Azure-fájlmegosztás csatlakoztatása a csatlakoztatási paranccsal**: Ne felejtse el kicserélni `<storage-account-name>`, `<share-name>`, `<smb-version>`, `<storage-account-key>`, és `<mount-point>` a környezetének megfelelő információkkal. Ha a Linux-disztribúció támogatja SMB 3.0-s titkosítással (lásd: [ismertetése SMB ügyfélkövetelmények](#smb-client-reqs) további információ), használja `3.0` a `<smb-version>`. Linux-disztribúció, amelyek nem támogatják az SMB 3.0-s titkosítással, használja a `2.1` a `<smb-version>`. Azure-fájlmegosztások csak csatlakoztathatók kívül egy Azure-régiót (például a helyszínen vagy más Azure-régióban) az SMB 3.0-s. 
+1. **Az Azure-fájlmegosztás csatlakoztatása a csatlakoztatási paranccsal**: Ne felejtse el kicserélni **< tárfiók_neve >** , **< megosztás_neve >** , **< smb_version >** , **< storage_account_key >** , és **< mount_point >** a környezetének megfelelő információkkal. Ha a Linux-disztribúció támogatja SMB 3.0-s titkosítással (lásd: [ismertetése SMB ügyfélkövetelmények](#smb-client-reqs) további információ), használja **3.0** a **< smb_version >** . Linux-disztribúció, amelyek nem támogatják az SMB 3.0-s titkosítással, használja a **2.1** a **< smb_version >** . Azure-fájlmegosztások csak csatlakoztathatók kívül egy Azure-régiót (például a helyszínen vagy más Azure-régióban) az SMB 3.0-s. 
 
     ```bash
-    sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
+    sudo mount -t cifs //<storage_account_name>.file.core.windows.net/<share_name> <mount_point> -o vers=<smb_version>,username=<storage_account_name>,password=<storage_account_key>,dir_mode=0777,file_mode=0777,serverino
     ```
 
 > [!Note]  
-> Ha elkészült az Azure-fájlmegosztást használja, előfordulhat, hogy használjon `sudo umount <mount-point>` a fájlmegosztás leválasztásához.
+> Ha elkészült az Azure-fájlmegosztást használja, előfordulhat, hogy használjon `sudo umount <mount_point>` a fájlmegosztás leválasztásához.
 
 ## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Az Azure-fájlmegosztást az állandó csatlakoztatási pont létrehozása `/etc/fstab`
 
-1. **[Telepítse a cifs-utils csomagot a Linux-disztribúció](#install-cifs-utils)**.
+1. **[Telepítse a cifs-utils csomagot a Linux-disztribúció](#install-cifs-utils)** .
 
-1. **Hozzon létre egy mappát a csatlakoztatási pont**: Egy mappát a csatlakoztatási pont hozható létre tetszőleges a fájlrendszerben, de általános egyezmény a alatt létrehozásához a `/mnt` mappát. Bárhol is hoz létre, vegye figyelembe a mappa az abszolút elérési út. Ha például az a következő parancs létrehoz egy új mappát `/mnt` (az elérési út abszolút elérési utat).
+1. **Hozzon létre egy mappát a csatlakoztatási pont**: Egy mappát a csatlakoztatási pont hozható létre tetszőleges a fájlrendszerben, de általános egyezmény a alatt egy új mappa létrehozásához. Bárhol is hoz létre, vegye figyelembe a mappa az abszolút elérési út. Ha például a következő parancs létrehoz egy új könyvtárat, cserélje le **< tárfiók_neve >** és **< file_share_name >** a környezetének megfelelő információkkal.
 
     ```bash
-    sudo mkdir /mnt/MyAzureFileShare
+    sudo mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **Hozzon létre egy hitelesítő adatait tartalmazó fájlt a felhasználónevet (a tárfiók neve) és a jelszót (a tárfiók-kulcsot), a fájlmegosztás tárolásához.** Ne felejtse el kicserélni `<storage-account-name>` és `<storage-account-key>` a környezetének megfelelő információkkal. 
+1. **Hozzon létre egy hitelesítő adatait tartalmazó fájlt a felhasználónevet (a tárfiók neve) és a jelszót (a tárfiók-kulcsot), a fájlmegosztás tárolásához.** Cserélje le **< tárfiók_neve >** és **< storage_account_key >** a környezetének megfelelő információkkal.
 
     ```bash
     if [ ! -d "/etc/smbcredentials" ]; then
-        sudo mkdir /etc/smbcredentials
+    sudo mkdir /etc/smbcredentials
     fi
-
-    if [ ! -f "/etc/smbcredentials/<storage-account-name>.cred" ]; then
-        sudo bash -c 'echo "username=<storage-account-name>" >> /etc/smbcredentials/<storage-account-name>.cred'
-        sudo bash -c 'echo "password=<storage-account-key>" >> /etc/smbcredentials/<storage-account-name>.cred'
+    if [ ! -f "/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred" ]; then
+    sudo bash -c 'echo "username=<STORAGE ACCOUNT NAME>" >> /etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred'
+    sudo bash -c 'echo "password=7wRbLU5ea4mgc<DRIVE LETTER>PIpUCNcuG9gk2W4S2tv7p0cTm62wXTK<DRIVE LETTER>CgJlBJPKYc4VMnwhyQd<DRIVE LETTER>UT<DRIVE LETTER>yR5/RtEHyT/EHtg2Q==" >> /etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred'
     fi
     ```
 
 1. **A hitelesítő adatait tartalmazó fájlt engedélyeinek módosítása, így csak a legfelső szintű olvassa el vagy módosítsa a jelszót fájlt is.** Mivel a tárfiók kulcsát lényegében a storage-fiókhoz tartozó felettes rendszergazdai jelszót, az engedélyek beállítása a fájlt úgy, hogy csak a legfelső szintű hozzáférhetnek a fontos, hogy az alacsonyabb jogosultságú felhasználók nem sikerült beolvasni a tárfiókkulcsot.   
 
     ```bash
-    sudo chmod 600 /etc/smbcredentials/<storage-account-name>.cred
+    sudo chmod 600 /etc/smbcredentials/<storage_account_name>.cred
     ```
 
-1. **Fűzze hozzá a következő sort a következő paranccsal `/etc/fstab`** : Ne felejtse el kicserélni `<storage-account-name>`, `<share-name>`, `<smb-version>`, és `<mount-point>` a környezetének megfelelő információkkal. Ha a Linux-disztribúció támogatja SMB 3.0-s titkosítással (lásd: [ismertetése SMB ügyfélkövetelmények](#smb-client-reqs) további információ), használja `3.0` a `<smb-version>`. Linux-disztribúció, amelyek nem támogatják az SMB 3.0-s titkosítással, használja a `2.1` a `<smb-version>`. Azure-fájlmegosztások csak csatlakoztathatók kívül egy Azure-régiót (például a helyszínen vagy más Azure-régióban) az SMB 3.0-s. 
+1. **Fűzze hozzá a következő sort a következő paranccsal `/etc/fstab`** : Ne felejtse el kicserélni **< tárfiók_neve >** , **< megosztás_neve >** , **< smb_version >** , és **< mount_point >** a környezetének megfelelő információkkal. Ha a Linux-disztribúció támogatja SMB 3.0-s titkosítással (lásd: [ismertetése SMB ügyfélkövetelmények](#smb-client-reqs) további információ), használja **3.0** a **< smb_version >** . Linux-disztribúció, amelyek nem támogatják az SMB 3.0-s titkosítással, használja a **2.1** a **< smb_version >** . Azure-fájlmegosztások csak csatlakoztathatók kívül egy Azure-régiót (például a helyszínen vagy más Azure-régióban) az SMB 3.0-s.
 
     ```bash
-    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,credentials=/etc/smbcredentials/<storage-account-name>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    sudo bash -c 'echo "//<STORAGE ACCOUNT NAME>.file.core.windows.net/<FILE SHARE NAME> /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME> cifs nofail,vers=3.0,credentials=/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+
+    sudo mount /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME>
     ```
 
 > [!Note]  
@@ -148,4 +149,4 @@ Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesró
 
 * [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
 * [Gyakori kérdések](../storage-files-faq.md)
-* [hibaelhárítással](storage-troubleshoot-linux-file-connection-problems.md)
+* [Hibaelhárítás](storage-troubleshoot-linux-file-connection-problems.md)

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
-ms.openlocfilehash: 4cbc0b399bddbaebd4cb951dcd116e090c2e0c09
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 363cd9319db0477e9b5ba2d2dd03a7e995a26fef
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938029"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515613"
 ---
 # <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Az Azure Marketplace és AppSource által szállított integrált megoldások
 
@@ -30,6 +30,15 @@ Integrált megközelítést előnyei a következők:
 
 ## <a name="next-steps"></a>További lépések
 
-Fedezze fel az integrált megoldásokat, és tanácsadási szolgáltatások szakaszának felkeresésével ezek értékes partnerekkel való csatlakozás [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
+Fedezze fel az integrált megoldásokat, és itt a listaelemek felkeresésével ezek értékes partnerekkel való csatlakozáshoz:
+
+* [A Customer 360 Zero2Hero működteti](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
+* [Gyors kereskedelmi](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
+* [Kredit Analytics](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
+* [Egészségügyi Cloud biztonsági verem](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
+* [DevOps-gyorsítás motor](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
+* [A Windows Server teljes támogatása](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+
+és tanácsadási szolgáltatások szakaszának is felkeresésével [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
 
 ---

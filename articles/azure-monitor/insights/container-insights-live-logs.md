@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/10/2019
+ms.date: 06/04/2019
 ms.author: magoedte
-ms.openlocfilehash: 376a7f3f83cc7fcf7490675d9c0aef1513862e8a
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 8d4cc5e46066ad2f18d596d0484f62f478b4cc23
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521730"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514328"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Naplók és események megtekintése a valós idejű (előzetes verzió)
 -Tárolókhoz az Azure Monitor tartalmaz egy szolgáltatást, amely jelenleg előzetes verziójú, amely az Azure Kubernetes Service (AKS) tároló naplóinak (stdout/stderr) és az események élő betekintést biztosít a kubectl-parancsok futtatása nélkül. Bármelyik lehetőséget választja, amikor egy új panel jelenik meg a teljesítmény adattábla a a **csomópontok**, **tartományvezérlők**, és **tárolók** megtekintése. Azt mutatja, élő naplózás és a tároló motor további segítik a hibaelhárítást a valós idejű által előállított eseményeket. 
@@ -27,7 +27,7 @@ ms.locfileid: "65521730"
 >**Közreműködői** fürterőforrás való hozzáférésre szüksége a funkció működéséhez.
 >
 
-Élő naplók által támogatott három különböző módszereket a naplók elérése:
+Élő naplókat a naplók elérése három különböző módszereket támogatja:
 
 1. Az AKS nélküli Kubernetes RBAC-hitelesítés engedélyezve 
 2. Az AKS Kubernetes RBAC-hitelesítés engedélyezve
@@ -66,10 +66,13 @@ Ha engedélyezte a Kubernetes RBAC-hitelesítés, szüksége lesz a alkalmazni a
          apiGroup: rbac.authorization.k8s.io
     ```
 
-2. Ha első alkalommal konfigurál, a következő parancs futtatásával hozzon létre a fürt szabály kötést: `kubectl create -f LogReaderRBAC.yaml`. Ha korábban engedélyezte a támogatás az élő naplók megtekintése előtt vezettünk be az élő eseménynaplójában, frissítse a konfigurációt, futtassa a következő parancsot: `kubectl apply -f LiveLogRBAC.yml`. 
+2. Ha első alkalommal konfigurál, a következő parancs futtatásával hozzon létre a fürt szabály kötést: `kubectl create -f LogReaderRBAC.yaml`. Ha korábban engedélyezte a támogatás az élő naplók megtekintése előtt vezettünk be az élő eseménynaplójában, frissítse a konfigurációt, futtassa a következő parancsot: `kubectl apply -f LogReaderRBAC.yml`. 
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Az AKS konfigurálása az Azure Active Directoryval
-Az AKS beállítható úgy, hogy a felhasználók hitelesítéséhez az Azure Active Directory (AD) használja. Ha első alkalommal konfigurál, [integrálása az Azure Active Directory és az Azure Kubernetes Service](../../aks/azure-ad-integration.md). A lépések létrehozása során a [ügyfélalkalmazás](../../aks/azure-ad-integration.md#create-client-application) , és adja meg a **átirányítási URI-**, másik URI hozzáadása a listához kell `https://ininprodeusuxbase.microsoft.com/*`.  
+Az AKS beállítható úgy, hogy a felhasználók hitelesítéséhez az Azure Active Directory (AD) használja. Ha első alkalommal konfigurál, [integrálása az Azure Active Directory és az Azure Kubernetes Service](../../aks/azure-ad-integration.md). A lépések létrehozása során a [ügyfélalkalmazás](../../aks/azure-ad-integration.md#create-client-application), meg kell adnia a két **átirányítási URI** bejegyzéseket. A két URI-azonosítók a következők:
+
+- https://ininprodeusuxbase.microsoft.com/*
+- https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html  
 
 >[!NOTE]
 >Az egyszeri bejelentkezést az Azure Active Directory konfigurálása hitelesítési csak egy új AKS-fürt kezdeti telepítése során is elvégezhető. Egy már üzembe helyezte az AKS-fürtöt az egyszeri bejelentkezés nem állíthatja be. Konfigurálnia kell a hitelesítési **alkalmazásregisztráció (örökölt)** lehetőség támogatja a helyettesítő karakter használatát az URI-ban, és miközben Azure AD-ben hozzáadná a listában, regisztrálnia kell, mint egy **natív** alkalmazást.
@@ -88,7 +91,7 @@ Napló- és eseményt üzenetek pedig csak a nézetben kiválasztott erőforrás
 | Csomópontok | Csomópont | Esemény | Ha egy csomópont van kiválasztva események sincs szűrve, és a Kubernetes-fürtre kiterjedő események megjelenítése. Panel címe a fürt nevét jeleníti meg. |
 | Csomópontok | Pod | Esemény | A pod kiválasztásakor események a névtérhez vannak szűrve. A panel címsorában a pod névtere. | 
 | Vezérlők | Pod | Esemény | A pod kiválasztásakor események a névtérhez vannak szűrve. A panel címsorában a pod névtere. |
-| Vezérlők | Vezérlő | Esemény | A vezérlő kiválasztásakor a névtér események vannak szűrve. A panel címsorában a névteret a vezérlő. |
+| Vezérlők | tartományvezérlő | Esemény | A vezérlő kiválasztásakor a névtér események vannak szűrve. A panel címsorában a névteret a vezérlő. |
 | Csomópontok és vezérlők és tárolók | Tároló | Naplók | A panel címsorában a pod a tároló nevére van csoportosítva. |
 
 Ha az AKS-fürtöt az egyszeri bejelentkezési AAD használatával van konfigurálva, a böngésző-munkamenet során először használ hitelesítésre kéri. Válassza ki a fiókot és a hitelesítés befejezéséhez az Azure-ral.  

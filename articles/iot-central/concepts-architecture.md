@@ -3,17 +3,17 @@ title: Az Azure IoT Central architekturális fogalmak |} A Microsoft Docs
 description: Ez a cikk bemutatja az Azure IoT Central architektúrájával kapcsolatos alapfogalmak
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/26/2019
+ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: timlt
-ms.openlocfilehash: 4f4b917808f4973dc83294391f58d7e0e2d01c4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: philmea
+ms.openlocfilehash: 4bc9a79576c3165585a4a2c897bd41bfb77c080c
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887403"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693134"
 ---
 # <a name="azure-iot-central-architecture"></a>Az Azure IoT Central architektúrája
 
@@ -79,6 +79,14 @@ Egy eszköz sablonban:
 
 Egy alkalmazás egy vagy több szimulált és valódi eszközön minden egyes eszköz sablon alapján is rendelkezik.
 
+## <a name="data-export"></a>Adatok exportálása
+
+Az Azure IoT Central alkalmazáshoz is [folyamatosan exportálhatja az adatokat](howto-export-data-event-hubs-service-bus.md) a saját Azure Event Hubs és Azure Service Bus-példányok. Az Azure Blob storage-fiókjában az adatok rendszeres időközönként exportálja. IoT-központ mérések, eszközök és eszközsablonok exportálhatja.
+
+## <a name="batch-device-updates"></a>Batch-eszköz frissítése
+
+Az Azure IoT Central alkalmazáshoz is [hozzon létre és futtathat feladatokat](howto-run-a-job.md) csatlakoztatott eszközök kezelésére. Ezek a feladatok lehetővé teszik a tömeges eszköz tulajdonságait és a beállításokat, vagy futtatnak parancsokat. Például létrehozhat egy feladatot a több hűtött eladóautomaták ventilátor sebességének növelése érdekében.
+
 ## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 
 Egy [rendszergazdai hozzáférési szabályokat definiálhat](howto-administer.md) az előre definiált szerepkörök használatával az Azure IoT Central alkalmazáshoz. A rendszergazda felhasználókat rendelhet szerepköröket, amelyek meghatározzák, milyen területeken, az alkalmazás a felhasználónak hozzáférése van.
@@ -95,7 +103,10 @@ Azure IoT Central belül biztonsági szolgáltatások a következők:
 ## <a name="ui-shell"></a>Felhasználói felület rendszerhéj
 
 A felhasználói felület shell egy modern, rugalmas, HTML5-alapú böngészőalapú alkalmazás.
+A rendszergazda testre szabható az alkalmazás a felhasználói felület alkalmazása egyéni témákat, és a saját egyéni erőforrások átirányítása súgóhivatkozások módosítása. Felhasználói felület testreszabásával kapcsolatos további információkért lásd: [testreszabása az Azure IoT Central felhasználói felület](howto-customize-ui.md) cikk.
+
+Az üzemeltető alkalmazás személyre szabott irányítópultokat hozhat létre. Számos olyan irányítópultokat, amelyek más adatok megjelenítése és a kettő közötti váltás rendelkezhet.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy az Azure IoT Central architektúrája megismerkedett a javasolt következő lépésre kapcsolatos [eszközkapcsolatok](concepts-connectivity.md) az Azure IoT Central.
+Most, hogy megismerkedett az Azure IoT Central architektúrája,-e a javasolt következő lépésre kapcsolatos [eszközkapcsolatok](concepts-connectivity.md) az Azure IoT Central.

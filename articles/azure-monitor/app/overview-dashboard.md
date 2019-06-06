@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: 47c83e6bc700f972e6dff83e4d067e61218c04bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60255617"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497152"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights áttekintő irányítópult
 
@@ -37,7 +37,7 @@ Időtartomány kijelölésének egyszerűsített, egy egyszerű, egykattintásos
 
 Általános teljesítménye jelentősen nőtt. Népszerű szolgáltatások, mint az egykattintásos hozzáférést rendelkezik **keresési** és **Analytics**. Egyes alapértelmezett dinamikus frissítése a KPI-csempe megfelelő Application Insights-funkciók betekintést nyújt. Tudjon meg többet sikertelen kérelmek válassza **hibák** alatt a **vizsgálat** fejléc:
 
-![Hibák](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
+![hibák](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Alkalmazás irányítópultja
 
@@ -60,9 +60,12 @@ Nyissa meg újra az áttekintő tapasztalatok csak adja meg:
 
 ![Áttekintés gombra](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha **csempe beállításainak konfigurálása** és biztosította az irányítópulton nem jelennek meg 31 napos időszak letelte után az adatok, akár 90 napos alapértelmezett adatmegőrzési-31 nap egyéni időtartomány beállítása. Jelenleg nem ez a viselkedés nincs megkerülő megoldás.
+
 ## <a name="next-steps"></a>További lépések
 
 - [Tölcsérek](../../azure-monitor/app/usage-funnels.md)
 - [Megőrzés](../../azure-monitor/app/usage-retention.md)
 - [Felhasználói folyamatok](../../azure-monitor/app/usage-flows.md)
-- [Irányítópultok](../../azure-monitor/app/app-insights-dashboards.md)

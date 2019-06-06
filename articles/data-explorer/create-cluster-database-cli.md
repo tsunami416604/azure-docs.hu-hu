@@ -1,18 +1,18 @@
 ---
-title: 'Gyors útmutató: Egy Azure Data Explorer fürt és adatbázis létrehozása az Azure CLI-vel'
+title: Egy Azure Data Explorer fürt és adatbázis létrehozása az Azure CLI-vel
 description: Ismerje meg, hogyan hozhat létre Azure Data Explorer fürt és adatbázis az Azure CLI-vel
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 04/10/2019
-ms.openlocfilehash: 1fb9027ab3301bb860d260aed737ab7674039d9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: e771def95db00b5de8c27011641a628560952970
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446151"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494792"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Egy Azure Data Explorer fürt és adatbázis létrehozása az Azure CLI-vel
 
@@ -24,15 +24,15 @@ ms.locfileid: "60446151"
 > * [Python](create-cluster-database-python.md)
 >
 
-Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürt és a egy adatbázist az Azure parancssori felület használatával.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a cikkben létrehozhat egy fürt és a egy adatbázis az Azure parancssori felület használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+Ez a cikk végrehajtásához Azure-előfizetés szükséges. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha helyi telepítése és használata az Azure CLI, az ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb. Futtassa az `az --version` parancsot a verzió ellenőrzéséhez. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket.
+Ha helyi telepítése és használata az Azure CLI, ehhez a cikkhez az Azure CLI 2.0.4-es vagy újabb. Futtassa az `az --version` parancsot a verzió ellenőrzéséhez. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket.
 
 ## <a name="configure-the-cli-parameters"></a>A CLI paramétereinek konfigurálása
 
@@ -60,8 +60,8 @@ A következő lépéseket nem szükséges, ha a parancsok az Azure Cloud Shellbe
 
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
    |---|---|---|
-   | név | *azureclitest* | A fürt kívánt nevét.|
-   | termékváltozat | *D13_v2* | A Termékváltozat a fürthöz használt. |
+   | name | *azureclitest* | A fürt kívánt nevét.|
+   | sku | *D13_v2* | A Termékváltozat a fürthöz használt. |
    | resource-group | *testrg* | Az erőforrás csoport neve, ahol a fürt létrejön. |
 
     Nincsenek további nem kötelező paraméterek, amelyet használhat, például a fürt kapacitásának.
@@ -85,7 +85,7 @@ Ha az eredmény tartalmazza `provisioningState` együtt a `Succeeded` érték, a
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
    |---|---|---|
    | cluster-name | *azureclitest* | A fürt, ahol létrejön az adatbázis neve.|
-   | név | *clidatabase* | Az adatbázis neve.|
+   | name | *clidatabase* | Az adatbázis neve.|
    | resource-group | *testrg* | Az erőforrás csoport neve, ahol a fürt létrejön. |
    | soft-delete-period | *P365D* | Azt jelzi, hogy mennyi ideig megtartott adatok lekérdezéséhez érhető el. Lásd: [adatmegőrzési](/azure/kusto/concepts/retentionpolicy) további információt. |
    | hot-cache-period | *P31D* | Azt jelzi, hogy mennyi ideig megtartott adatok a gyorsítótárban. Lásd: [házirend gyorsítótár](/azure/kusto/concepts/cachepolicy) további információt. |
@@ -100,7 +100,7 @@ Most már egy fürt és a egy adatbázist.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-* Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze meg a létrehozott erőforrásokat.
+* Ha azt tervezi, hajtsa végre a más cikkeket, megtarthatja a létrehozott erőforrásokat.
 * Erőforrások törléséhez törölje a fürtöt. Ha töröl egy fürtöt, benne az adatbázisokat is törli. A következő paranccsal törölje a fürtöt:
 
     ```azurecli-interactive
@@ -109,5 +109,4 @@ Most már egy fürt és a egy adatbázist.
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése](python-ingest-data.md)
+* [Az Azure Data Explorer Python-kódtár használata az adatok betöltése](python-ingest-data.md)

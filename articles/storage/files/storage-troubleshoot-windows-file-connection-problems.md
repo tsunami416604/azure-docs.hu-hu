@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9658ed46e1a46aa3fc2c7fe251fd73b2ef0a13dd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 7bc7f3631748f4ac74a76e9e67aa2aef2c8f9a71
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991365"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480321"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files-problémák hibaelhárítása
 
@@ -28,7 +28,7 @@ Ez a cikk a gyakori problémák a Microsoft Azure Files kapcsolódó Windows-üg
 
 Fájlmegosztást megkísérlésekor a következő hiba jelenhet meg:
 
-- 5. rendszerhiba történt. A hozzáférés megtagadva.
+- Az 5-ös rendszerhiba fordult elő. A hozzáférés megtagadva.
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>1. ok: Nem titkosított kommunikációs csatornát
 
@@ -54,9 +54,9 @@ Ellenőrizze a virtuális hálózat és tűzfal-szabályok megfelelően van-e be
 
 Amikor egy fájlmegosztás csatlakoztatása a helyszíni, illetve egy másik adatközpontban oldja meg, a következő hibákat kaphat:
 
-- 53-as rendszerhiba történt. A hálózati elérési út nem található.
-- 67-es rendszerhiba történt. A hálózatnév nem található.
-- 87 rendszerhiba történt. A paraméter helytelen.
+- Az 53-as rendszerhiba fordult elő. A hálózati elérési út nem található.
+- A 67-es rendszerhiba fordult elő. A hálózatnév nem található.
+- A 87-es rendszerhiba fordult elő. A paraméter helytelen.
 
 ### <a name="cause-1-port-445-is-blocked"></a>1. ok: 445-ös port le van tiltva.
 
@@ -136,14 +136,13 @@ Visszaállítás a **LmCompatibilityLevel** érték 3 az alábbi beállításjeg
 
 Egyidejű megnyitott leírók számának csökkentése zárja be az egyes kezeli, és próbálkozzon újra. További információkért lásd: [a Microsoft Azure Storage teljesítmény és méretezhetőség – ellenőrzőlista](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-<a id="accessdeniedportal"></a>
-## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>"Hozzáférés megtagadva" hiba történik az Azure-fájlmegosztások a portálon
+<a id="authorizationfailureportal"></a>
+## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>"Engedélyezési hiba" hiba történik az Azure-fájlmegosztások a portálon
 
 Ha a felhasználó Azure-fájlmegosztások a portálon, a következő hiba jelenhet meg:
 
-Hozzáférés megtagadva  
-Nincs hozzáférése  
-Úgy tűnik, nincs hozzáférése a tartalomhoz. Érhet el, forduljon a tulajdonosa.  
+Engedélyezési hiba  
+Nem rendelkezik hozzáféréssel 
 
 ### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>1. ok: A felhasználói fiók nem rendelkezik a tárfiókhoz való hozzáférést
 
@@ -225,7 +224,7 @@ Csatlakoztatott meghajtók felhasználónként. Ha az alkalmazás vagy szolgált
 
 ### <a name="solution"></a>Megoldás
 
-Használja az alábbi megoldások valamelyikét:
+Használja az alábbi megoldások egyikét:
 
 -   Csatlakoztassa a meghajtó ugyanazzal a fiókkal, amely tartalmazza az alkalmazást. Használhatja például a PsExec eszköz.
 - A tárfiók nevét és a kulcsot adja meg a felhasználói nevet és a jelszó paramétereit a háló parancs használata.
@@ -287,5 +286,5 @@ AAD tartományi szolgáltatások engedélyezése az AAD-bérlő az előfizetés 
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="need-help-contact-support"></a>Segítségre van szüksége? Forduljon a támogatási szolgálathoz.
+## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) beolvasni a probléma gyors megoldása érdekében.

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 6ec85e840f8e61c46e86b0fa8fb947fb763a4265
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 410990ecdca8a94be9c7c3d0b48a5092fcaa6060
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518866"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515906"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Az Azure Desired State Configuration bővítmény kezelő bemutatása
 
@@ -81,7 +81,7 @@ Ez az információ látható a [az Azure portal](../../automation/automation-dsc
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-A csomópont-konfiguráció megadásához, ellenőrizze, hogy nevét használja a *csomópont-konfiguráció* és nem a konfigurációt.
+A csomópont-konfiguráció megadásához győződjön meg arról a csomópont-konfiguráció létezik Azure állapot-konfigurációban.  Ha nem jelenik meg, a bővítmény telepítési hiba adja vissza.  Ügyeljen arra, hogy nevét használja a *csomópont-konfiguráció* és nem a konfigurációt.
 Egy konfigurációs van definiálva egy parancsfájlban használt [(MOF-fájl) csomópont-konfiguráció fordítása](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
 A név mindig lesz a konfigurációt, majd utána egy ponttal `.` és `localhost` vagy egy adott számítógép nevét.
 

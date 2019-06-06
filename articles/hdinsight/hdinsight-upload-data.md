@@ -1,33 +1,32 @@
 ---
 title: A HDInsight Apache Hadoop-feladatok adatok feltöltése
 description: Ismerje meg, hogyan tölthet fel és Apache Hadoop-feladatok a HDInsight a klasszikus Azure CLI, Azure Storage Explorer, az Azure PowerShell, a Hadoop parancssor vagy Sqoop használatával érheti el adatait.
-keywords: etl hadoop, hadoop, hadoop-adatok betöltése az adatok beolvasása
 author: hrasheed-msft
-ms.reviewer: jasonh
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/08/2019
-ms.openlocfilehash: 3283c885956c5b43171c6287dc00efa9a82db28e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/03/2019
+ms.openlocfilehash: 0dbd5a886e2369d29a568eca47dda5558f43c8cd
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722797"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479138"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>A HDInsight Apache Hadoop-feladatok adatok feltöltése
 
-Az Azure HDInsight egy teljes körű Hadoop elosztott fájlrendszer (HDFS) Azure Storage és az Azure Data Lake Storage (Gen1 és Gen2) biztosít. Az Azure Storage és Data Lake Storage Gen1 és Gen2 célja HDFS bővítményként zökkenőmentes felhasználói élményt nyújtson az ügyfeleknek. A Hadoop-ökoszisztéma közvetlenül gazdagépvezérlő által kezelt adatok összetevők teljes készlete lehetővé teszik. Az Azure Storage, Data Lake Storage Gen1 és Gen2 olyan különálló fájlrendszereket, amely az adatok és a számítások az adatok tárolására vannak optimalizálva. Az előnyök, az Azure Storage információ: [az Azure Storage a HDInsight][hdinsight-storage], [használata Data Lake Storage Gen1 HDInsight](hdinsight-hadoop-use-data-lake-store.md), és [ Data Lake Storage Gen2 használata a HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Az Azure HDInsight egy teljes körű Hadoop elosztott fájlrendszer (HDFS) Azure Storage és az Azure Data Lake Storage (Gen1 és Gen2) biztosít. Az Azure Storage és Data Lake Storage Gen1 és Gen2 célja HDFS bővítményként zökkenőmentes felhasználói élményt nyújtson az ügyfeleknek. A Hadoop-ökoszisztéma közvetlenül gazdagépvezérlő által kezelt adatok összetevők teljes készlete lehetővé teszik. Az Azure Storage, Data Lake Storage Gen1 és Gen2 olyan különálló fájlrendszereket, amely az adatok és a számítások az adatok tárolására vannak optimalizálva. Az előnyök, az Azure Storage információ: [az Azure Storage a HDInsight](hdinsight-hadoop-use-blob-storage.md), [használata Data Lake Storage Gen1 HDInsight](hdinsight-hadoop-use-data-lake-store.md), és [használata Data Lake Storage Gen2- HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt elkezdené, vegye figyelembe az alábbi követelményeknek:
 
-* Egy Azure-beli HDInsight-fürt. Útmutatásért lásd: [Azure HDInsight – első lépések] [ hdinsight-get-started] vagy [létre HDInsight-fürtök](hdinsight-hadoop-provision-linux-clusters.md).
+* Egy Azure-beli HDInsight-fürt. Útmutatásért lásd: [Azure HDInsight – első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md) vagy [létre HDInsight-fürtök](hdinsight-hadoop-provision-linux-clusters.md).
 * Az alábbi cikkekben Tudásbázis:
 
-    - [Az Azure Storage használata a HDInsight][hdinsight-storage]
+    - [Az Azure Storage használata a HDInsight](hdinsight-hadoop-use-blob-storage.md)
     - [HDInsight Data Lake Storage Gen1 használata](hdinsight-hadoop-use-data-lake-store.md)
     - [HDInsight Data Lake Storage Gen2 használata](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
@@ -64,11 +63,11 @@ Például: `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
 Mivel az alapértelmezett fájlrendszer, a HDInsight az Azure Storage-ban, /example/data.txt valójában az Azure Storage-ban. A fájlt is hivatkoznak:
 
-    wasb:///example/data/data.txt
+    wasbs:///example/data/data.txt
 
 vagy
 
-    wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
 Más Hadoop-parancsokat, amelyek együttműködnek a fájlok listáját lásd: [https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
@@ -104,7 +103,7 @@ Az Azure Data Factory szolgáltatás nem egy teljes körűen felügyelt szolgál
 ### <a id="sqoop"></a>Apache Sqoop
 A Sqoop az eszköz a Hadoop és relációs adatbázisok közötti adatátvitelhez. Adatokat importálhat egy relációsadatbázis-kezelő rendszerének (RDBMS), például SQL Server, MySQL és a Hadoop elosztott fájlrendszer (HDFS), az Oracle, az adatok átalakítása a Hadoop MapReduce- vagy Hive-, és majd exportálja az adatokat egy RDBMS be újra, használhatja azt.
 
-További információkért lásd: [Sqoop használata a HDInsight-][hdinsight-use-sqoop].
+További információkért lásd: [Sqoop használata a HDInsight-](hadoop/hdinsight-use-sqoop.md).
 
 ### <a name="development-sdks"></a>Fejlesztés SDK-k
 Az Azure Storage a következő programozási nyelvek a az Azure SDK-val is elérhető:
@@ -144,7 +143,7 @@ Az Azure SDK-k telepítésével kapcsolatos további információkért lásd: [A
 
 **Ok**: A HDInsight-alapú HBase-fürtök alapértelmezett egy 256 KB-os blokkméret az Azure storage való írás esetén. A HBase API-k vagy REST API-k esetében működik, amíg ez hibát eredményez használatakor a `hadoop` vagy `hdfs dfs` parancssori segédeszközöket.
 
-**Megoldás**: Használat `fs.azure.write.request.size` a nagyobb blokkméret megadásához. Ezt megteheti is használati alapon használatával a `-D` paraméter. A következő parancs használatával ezt a paramétert a `hadoop` parancsot:
+**Feloldási**: Használat `fs.azure.write.request.size` a nagyobb blokkméret megadásához. Ezt megteheti is használati alapon használatával a `-D` paraméter. A következő parancs használatával ezt a paramétert a `hadoop` parancsot:
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
@@ -152,28 +151,21 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 Az értékét növelje `fs.azure.write.request.size` globálisan az Apache Ambari használatával. Módosítsa az Ambari webes Kezelőfelületen használható a következő lépéseket:
 
-1. A böngészőben nyissa meg az Ambari webes felhasználói Felületet, a fürt számára. Ez a https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a fürt neve.
+1. A böngészőben nyissa meg az Ambari webes felhasználói Felületet, a fürt számára. Ez a `https://CLUSTERNAME.azurehdinsight.net`, ahol `CLUSTERNAME` a fürt neve.
 
     Amikor a rendszer kéri, adja meg a rendszergazdai felhasználónevét és jelszavát a fürt számára.
 2. Válassza ki a képernyő bal oldalán, **HDFS**, majd válassza ki a **Configs** fülre.
 3. Az a **szűrése...**  írja be a következőt `fs.azure.write.request.size`. Ez a mező és az oldal közepén aktuális értékét jeleníti meg.
 4. Új értékét módosítsa az értéket a 262144 (256 KB). Ha például 4194304 (4 MB).
 
-![Az Ambari webes felhasználói felületen keresztül értékét képe](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
+    ![Az Ambari webes felhasználói felületen keresztül értékét képe](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
 
 Az Ambari használatával kapcsolatos további információkért lásd: [kezelése a HDInsight-fürtök az Apache Ambari webes kezelőfelületen](hdinsight-hadoop-manage-ambari.md).
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte, hogyan olvashatja be őket a HDInsight, olvassa el a további elemzéseket végezhet a következő cikkeket:
 
-* [Azure HDInsight – első lépések][hdinsight-get-started]
-* [Programozott módon az Apache Hadoop-feladatok elküldése][hdinsight-submit-jobs]
-* [Az Apache Hive használata a HDInsight][hdinsight-use-hive]
-* [Az Apache Pig használata a HDInsight][hdinsight-use-pig]
-
-[hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-[hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
+* [Az Azure HDInsight – első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [Programozott módon az Apache Hadoop-feladatok elküldése](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
+* [Az Apache Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)

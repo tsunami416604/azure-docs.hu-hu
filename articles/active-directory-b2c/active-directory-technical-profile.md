@@ -2,20 +2,20 @@
 title: Az Azure Active Directory technikai profil meghatározása egy egyéni házirendek az Azure Active Directory B2C |} A Microsoft Docs
 description: Adja meg az Azure Active Directory B2C-vel egyéni szabályzatok az Azure Active Directory technikai profil.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 433307791201e3799b3bc9e54aec765d9fbeb4af
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8b8bbe540d9e296b0f6a0c11a62d3b861e0115d3
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718708"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507434"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az Azure Active Directory technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 
@@ -252,7 +252,7 @@ A következő technikai profil töröl egy közösségi felhasználói fiók has
 ```
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Művelet | Igen | A végrehajtandó műveletet. A lehetséges értékek: `Read`, `Write`, `DeleteClaims`, vagy `DeleteClaimsPrincipal`. | 
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nem | Emelje a hibát, ha a felhasználói objektum nem létezik a címtárban. A lehetséges értékek: `true` vagy `false`. | 

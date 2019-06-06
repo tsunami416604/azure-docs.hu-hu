@@ -2,20 +2,20 @@
 title: Egy hozzáférési jogkivonatot a felhasználó a folyamatokon keresztül adják át az alkalmazás – az Azure Active Directory B2C |} A Microsoft Docs
 description: Ismerje meg, hogyan adhat át egy hozzáférési jogkivonatot keresztül OAuth2.0 identitásszolgáltatókhoz való jogcímként az Azure Active Directory B2C felhasználói folyamatokban.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0270ef3ff74a219442a6800b67055deda7a0583f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: db4b799aa31a4132609b0dd158b65070fb2474b7
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705335"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510951"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Felhasználói folyamat segítségével egy hozzáférési jogkivonatot át alkalmazását az Azure Active Directory B2C-vel
 
@@ -36,7 +36,7 @@ Az Azure AD B2C jelenleg csak az támogatja a hozzáférési jogkivonatot az át
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő tartalmazó könyvtárba. Válassza ki a **címtár és előfizetés-szűrő** a felső menüben, és válassza ki a bérlő tartalmazó könyvtárra.
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
-4. Válassza ki **felhasználókövetési adatai (szabályzatok)**, majd jelölje ki a felhasználói folyamatot. Ha például **B2C_1_signupsignin1**.
+4. Válassza ki **felhasználókövetési adatai (szabályzatok)** , majd jelölje ki a felhasználói folyamatot. Ha például **B2C_1_signupsignin1**.
 5. Válassza az **Alkalmazásjogcímek** lehetőséget.
 6. Engedélyezze a **Identity Provider Access Token** jogcím.
 

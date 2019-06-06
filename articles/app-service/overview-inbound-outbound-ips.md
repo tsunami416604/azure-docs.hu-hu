@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 96f580532d9ea45dd767e32c2451243e83af66ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de9ae8e5c0cbf0997811db9624f6c6b92e03a5df
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835294"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742941"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Bejövő és kimenő IP-címek az Azure App Service-ben
 
@@ -35,9 +35,17 @@ Horizontálisan felskálázott példányok számától függetlenül minden alka
 - Az utolsó alkalmazás az erőforráscsoport törlése _és_ régió kombináció és hozza létre újra.
 - Törli a létező SSL-kötést, például tanúsítványának megújítása közben (lásd: [tanúsítványok megújítása](app-service-web-tutorial-custom-ssl.md#renew-certificates)).
 
-## <a name="get-static-inbound-ip"></a>Bejövő statikus IP-cím kérése
+## <a name="find-the-inbound-ip"></a>A bejövő IP-cím keresése
 
-Néha érdemes egy dedikált, statikus IP-címet az alkalmazás számára. Egy bejövő statikus IP-címének lekéréséhez, konfigurálni kell egy [IP-alapú SSL-kötés](app-service-web-tutorial-custom-ssl.md#bind-your-ssl-certificate). Ha valójában nincs szüksége az alkalmazás biztonságossá tétele SSL funkció, még akkor is tölthet fel egy önaláírt tanúsítványt ehhez a kötéshez. IP-alapú SSL-kötést, a tanúsítvány van kötve az IP-cím, így az App Service rendelkezések egy statikus IP-címet már meg is valósult. 
+Csak a következő parancsot a helyi terminálban:
+
+```bash
+nslookup <app-name>.azurewebsites.net
+```
+
+## <a name="get-a-static-inbound-ip"></a>Statikus bejövő IP-cím beszerzése
+
+Néha érdemes egy dedikált, statikus IP-címet az alkalmazás számára. Egy bejövő statikus IP-címének lekéréséhez, konfigurálni kell egy [IP-alapú SSL-kötés](app-service-web-tutorial-custom-ssl.md#secure-a-custom-domain). Ha valójában nincs szüksége az alkalmazás biztonságossá tétele SSL funkció, még akkor is tölthet fel egy önaláírt tanúsítványt ehhez a kötéshez. IP-alapú SSL-kötést, a tanúsítvány van kötve az IP-cím, így az App Service rendelkezések egy statikus IP-címet már meg is valósult. 
 
 ## <a name="when-outbound-ips-change"></a>Ha a kimenő IP-címek módosítása
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/14/2019
+ms.date: 06/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 89ba5b9641d156dfb098d51272b8bf8d3fd53f5b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 946a9bd7595692dddd157d01945fd15bdf1ab965
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785861"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493755"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management adataihoz való hozzáférés hozzárendelése
 
@@ -170,6 +170,13 @@ Egy erőforráscsoport használatához legalább a Cost Management Reader (vagy 
 7. A **rendelhet hozzáféréseket**válassza **az Azure AD-felhasználó, csoport vagy alkalmazás**.
 8. Hozzáférés hozzárendelése, keresse meg, és válassza ki a felhasználót.
 9. Kattintson a **Save** (Mentés) gombra.
+
+## <a name="cross-tenant-authentication-issues"></a>Több-bérlős hitelesítési problémák
+
+Az Azure Cost Management jelenleg korlátozott több-bérlős hitelesítés támogatása. Bizonyos esetekben meg a bérlőn, akkor jelenhet egy **hozzáférés megtagadva** hiba történt a költségek elemzése. Ez a hiba akkor fordulhat elő, ha szerepköralapú hozzáférés-vezérlés (RBAC) a bérlő egy másik előfizetéshez konfigurálása, és ismételje meg a költségadatok megtekintéséhez.
+
+*A probléma megkerüléséhez*: Miután konfigurálta a több-bérlős RBAC, várjon egy órát. Ezt követően próbálja meg költségelemzés költségek megtekintése vagy Cost Management hozzáférést biztosít a felhasználók mind a bérlők számára.  
+
 
 ## <a name="next-steps"></a>További lépések
 

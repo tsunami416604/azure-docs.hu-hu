@@ -2,20 +2,20 @@
 title: Az Azure Active Directory B2C felhasználói felületének (UI) egyéni szabályzatok használatával dinamikus testreszabása |} A Microsoft Docs
 description: Támogatja a HTML5-alapú/CSS tartalom, amely dinamikusan változik a futásidőben több márkajelzési környezeteket.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c655a1ed7cefcc7af8a22ed1d869b1a2e8b81715
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e1abdfa8bc47f42f7373760370588c0bc41fc1dc
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708875"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507782"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Egyéni szabályzatok használatával konfigurálja a felhasználói felület dinamikus tartalom
 
@@ -68,7 +68,7 @@ Ez az útmutató akkor:
 
 1. A Visual Studióban hozzon létre egy projektet kiválasztásával **fájl** > **új** > **projekt**.
 
-2. Az a **új projekt** ablakban válassza **Visual C#** > **webes** > **ASP.NET Core-webalkalmazás (.NET Core)**.
+2. Az a **új projekt** ablakban válassza **Visual C#**  > **webes** > **ASP.NET Core-webalkalmazás (.NET Core)** .
 
 3. Adjon nevet az alkalmazásnak (például *Contoso.AADB2C.UI*), majd válassza ki **OK**.
 

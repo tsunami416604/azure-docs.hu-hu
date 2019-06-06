@@ -2,20 +2,20 @@
 title: Az alkalmazás egyéni szabályzat használata az Azure Active Directory B2C a felhasználói felület testreszabása |} A Microsoft Docs
 description: Ismerje meg az egyéni szabályzat használata az Azure Active Directory B2C felhasználói felület testreszabása.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/18/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dc60c1fbdbd04653160db4d7794f8887305859d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c3c97e786e2147f043a63b90b886e01eb5944cb4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696885"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507676"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás egyéni szabályzat használata az Azure Active Directory B2C a felhasználói felület testreszabása
 
@@ -27,7 +27,7 @@ Miután elvégezte a cikkben, kell egy regisztrációs és bejelentkezési tarta
 
 Hajtsa végre a [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md). -Előfizetés, és jelentkezzen be helyi fiókot működő egyéni házirendet kell rendelkeznie.
 
-## <a name="page-ui-customization"></a>Oldal felhasználói felületének testreszabása
+## <a name="page-ui-customization"></a>Oldal-UI testreszabása
 
 A lap felhasználói felületének testreszabása szolgáltatással, testre szabhatja a megjelenését és működését minden olyan egyéni szabályzatot. Lehetősége van fenntartani az alkalmazása és az Azure AD B2C közötti márkabeli és vizuális egységességet is.
 
@@ -64,7 +64,7 @@ A HTML-tartalmat, Blob Storage-tároló, tegye a következőket:
 2. Az a **Hub** menüjében válassza **új** > **tárolási** > **tárfiók**.
 3. Adjon meg egy egyedi **neve** a tárfiók számára.
 4. **Üzemi modell** maradhat **Resource Manager**.
-5. Változás **fiók típusa** való **a Blob storage-**.
+5. Változás **fiók típusa** való **a Blob storage-** .
 6. **Teljesítmény** maradhat **Standard**.
 7. **Replikációs** maradhat **RA-GRS**.
 8. **Hozzáférési szint** maradhat **gyors**.

@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 06/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2e0c17b07f70d9b05ff9ea6c3af2e8dc26127cae
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 56a2b89277cbf8866c1992a6738bd80106ef3313
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906519"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480003"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés az Apache Hive a HDInsight a JDBC-illesztőprogram segítségével
 
@@ -28,7 +28,6 @@ További információ a Hive JDBC-kapcsolaton: [HiveJDBCInterface](https://cwiki
 * Egy HDInsight Hadoop-fürtöt. Hozzon létre egyet, tekintse meg [Azure HDInsight – első lépések](apache-hadoop-linux-tutorial-get-started.md).
 * A [Java fejlesztői készlet (JDK) 11-es verzió](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) vagy újabb verziója.
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/). SQuirreL JDBC ügyfélalkalmazás.
-
 
 ## <a name="jdbc-connection-string"></a>JDBC-kapcsolati sztring
 
@@ -54,20 +53,12 @@ SQuirreL SQL JDBC ügyfél, amely távolról futtathat Hive-lekérdezéseket a H
 
 1. Hozzon létre átmásolni őket a fürt egyes fájlokat tartalmazó könyvtárat.
 
-2. Cserélje le a következő parancsfájl `sshuser` az a fürt SSH-felhasználói fiók nevét.  Cserélje le `CLUSTERNAME` a HDInsight-fürt nevéhez.  Egy parancssorból adja meg a fájlok másolása egy HDInsight-fürtön a következő parancsot:
+2. Cserélje le a következő parancsfájl `sshuser` az a fürt SSH-felhasználói fiók nevét.  Cserélje le `CLUSTERNAME` a HDInsight-fürt nevéhez.  Egy parancssorból lépjen a munkát az előző lépésben létrehozott, és adja meg a fájlok másolása egy HDInsight-fürtön a következő parancsot:
 
-    ```bash
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/hadoop-common.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/commons-codec*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/libfb*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
+    ```cmd
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar} .
+
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/{commons-codec*.jar,commons-logging-*.jar,hive-*-1.2*.jar,httpclient-*.jar,httpcore-*.jar,libfb*.jar,libthrift-*.jar} .
     ```
 
 3. A SQuirreL SQL-alkalmazás elindításához. Válassza ki a az ablak bal oldalán, **illesztőprogramok**.
@@ -82,7 +73,7 @@ SQuirreL SQL JDBC ügyfél, amely távolról futtathat Hive-lekérdezéseket a H
 
     * **Név**: Hive
     * **Minta URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Elérési út felesleges osztály**: Használja a Hozzáadás gombra az összes korábban letöltött jar-fájlok hozzáadása
+    * **Elérési út felesleges osztály**: Használja a **Hozzáadás** korábban letöltött összes jar-fájlok hozzáadása gomb
     * **Osztálynév**: org.apache.hive.jdbc.HiveDriver
 
    ![Adja hozzá az illesztőprogram párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)

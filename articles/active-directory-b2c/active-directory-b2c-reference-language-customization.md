@@ -2,20 +2,20 @@
 title: Nyelvi testreszabás az Azure Active Directory B2C |} A Microsoft Docs
 description: További információ a nyelvi testreszabása.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c319349d721a390562faac0fc6f90a7b471db0f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 48633b195df997f0e9a8f06bd4f5c553ca620e98
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703420"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509391"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C a nyelvi testreszabás
 
@@ -192,14 +192,14 @@ Chrome és a Firefox beállított nyelvet is kérhetnek. Ha egy támogatott nyel
 | francia                | fr            |
 | gudzsaráti              | Gu            |
 | hindi                 | hi            |
-| horvát              | óra            |
+| horvát              | HR            |
 | magyar             | hu            |
 | olasz               | it            |
 | japán              | ja            |
 | kannada               | kn            |
 | koreai                | ko            |
 | malajálam             | ml            |
-| maráthi               | MR            |
+| marathi               | MR            |
 | maláj                 | ms            |
 | Norvég (nynorsk)      | nb            |
 | holland                 | nl            |
@@ -213,7 +213,7 @@ Chrome és a Firefox beállított nyelvet is kérhetnek. Ha egy támogatott nyel
 | svéd               | sv            |
 | tamil                 | TA            |
 | telugu                | Te            |
-| thai                  | .            |
+| thai                  | TH            |
 | török               | TR            |
 | Egyszerűsített kínai –  | zh-hans       |
 | Kínai – hagyományos | zh-hant       |

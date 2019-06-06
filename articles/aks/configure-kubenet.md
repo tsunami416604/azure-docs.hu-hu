@@ -5,15 +5,15 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 06/03/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: a4ed3ec823982bf3977edf9939d98419e1c4b01f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: cde7d692e8bb37e874c6e55e5584d96e3b13af31
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956394"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497193"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Hálózatkezelés a saját IP-címtartományok Azure Kubernetes Service (AKS) kubenet használata
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan használható *kubenet* hálózatkezelés hozhat lé
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az Azure CLI 2.0.56 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
+Az Azure CLI 2.0.65 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>A saját alhálózattal rendelkező hálózat kubenet áttekintése
 
@@ -48,7 +48,7 @@ A *Azure CNI*, gyakori probléma a hozzárendelt IP-címtartomány túl kicsi, m
 
 Biztonság sérülését, mint használó egy AKS-fürtöt hozhat létre *kubenet* és a egy meglévő virtuális hálózat alhálózatához csatlakozik. Ez a megközelítés lehetővé teszi, hogy a csomópontok megadott IP-címek fenntartott IP-címek meghozni a potenciális podok futtatható a fürt összes nagy számú nélkül kapnak.
 
-A *kubenet*, egy sokkal kisebb IP-címtartományt használjon, és képes támogatni a nagy méretű fürtök és alkalmazások számára. Például akkor is igaz az olyan */27* IP-címtartományt, a futhat egy 20-25 csomópontot tartalmazó fürt méretezése vagy frissítéséhez elegendő hely a. A fürt mérete legfeljebb támogatná *2200-2750* podok (az alapértelmezett legfeljebb 110 podok száma csomópontonként).
+A *kubenet*, egy sokkal kisebb IP-címtartományt használjon, és képes támogatni a nagy méretű fürtök és alkalmazások számára. Például akkor is igaz az olyan */27* IP-címtartományt, a futhat egy 20-25 csomópontot tartalmazó fürt méretezése vagy frissítéséhez elegendő hely a. A fürt mérete legfeljebb támogatná *2200-2750* podok (az alapértelmezett legfeljebb 110 podok száma csomópontonként). Podok konfigurálható a csomópontonkénti maximális számának *kubenet* az aks-ben: 250.
 
 A következő alapvető számítások a különbség a hálózati modellek összehasonlítása:
 
@@ -140,15 +140,15 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>AKS-fürt létrehozása a virtuális hálózatban
 
-Sikeresen létrehozott egy virtuális hálózatot és alhálózatot, és a létrehozott és hozzárendelt egy egyszerű szolgáltatás engedélyeit a hálózati erőforrások használata. Most hozzon létre egy AKS-fürt a virtuális hálózat és alhálózat használatával a [az aks létrehozása] [ az-aks-create] parancsot. Adja meg a saját szolgáltatásnév  *\<appId >* és  *\<jelszó >*, ahogyan az egyszerű szolgáltatás létrehozása az előző parancs kimenetében.
+Sikeresen létrehozott egy virtuális hálózatot és alhálózatot, és a létrehozott és hozzárendelt egy egyszerű szolgáltatás engedélyeit a hálózati erőforrások használata. Most hozzon létre egy AKS-fürt a virtuális hálózat és alhálózat használatával a [az aks létrehozása] [ az-aks-create] parancsot. Adja meg a saját szolgáltatásnév  *\<appId >* és  *\<jelszó >* , ahogyan az egyszerű szolgáltatás létrehozása az előző parancs kimenetében.
 
 A következő IP-címtartományok is vannak meghatározva, a fürt létrehozása a folyamat:
 
-* A *--service-cidr* szolgál az AKS-fürtöt a belső szolgáltatások IP-címet hozzárendelni. Az IP-címtartomány egy nem használt más részében lévő a hálózati környezet címteret kell lennie. Ez magában foglalja a helyszíni hálózat tartományokat csatlakozzon, illetve szeretne csatlakozni, az Azure virtuális hálózatok az Express Route vagy egy helyek közötti VPN-kapcsolatok használatával.
+* A *--service-cidr* szolgál az AKS-fürtöt a belső szolgáltatások IP-címet hozzárendelni. Az IP-címtartomány egy nem használt más részében lévő a hálózati környezet címteret kell lennie. A tartományba beletartozik minden helyszíni hálózati tartományok csatlakoztatása, illetve szeretne csatlakozni, az Azure virtuális hálózatok az Express Route vagy helyek közötti VPN-kapcsolat használatával.
 
 * A *ip---dns-szolgáltatás* címének kell lennie a *.10* a szolgáltatás IP-címtartomány-címét.
 
-* A *--pod-cidr* kell lennie a nem használt más részében lévő a hálózati környezet nagy címtér. Ez magában foglalja a helyszíni hálózat tartományokat csatlakozzon, illetve szeretne csatlakozni, az Azure virtuális hálózatok az Express Route vagy helyek közötti VPN-kapcsolat használatával.
+* A *--pod-cidr* kell lennie a nem használt más részében lévő a hálózati környezet nagy címtér. A tartományba beletartozik minden helyszíni hálózati tartományok csatlakoztatása, illetve szeretne csatlakozni, az Azure virtuális hálózatok az Express Route vagy helyek közötti VPN-kapcsolat használatával.
     * Ez a címtartomány elég nagy csomópontok várhatóan fel kell lennie. Ez a címtartomány nem módosítható, ha több címet van szüksége további csomópontokat a fürt üzembe helyezése után.
     * A pod IP-címtartomány segítségével hozzárendelni egy */24* címtér a fürt egyes csomópontjaihoz. A következő példában a *--pod-cidr* , *192.168.0.0/16* rendeli hozzá az első fürtcsomópont *192.168.0.0/24*, a második csomópont *192.168.1.0/24*, és a harmadik csomópont *192.168.2.0/24*.
     * A fürt skálázását követve rugalmasan méretezhető, vagy frissítéseket az Azure platform egy pod IP-címtartományt rendelni minden új csomópont továbbra is.

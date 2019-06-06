@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/18/2018
-ms.openlocfilehash: 8e8baf9ba8fca2966825620d0588ab005abd37b9
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 03/18/2019
+ms.openlocfilehash: 1c9894772f440a568cbc08890feb961471d84137
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604377"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480214"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Az Azure Cosmos DB tábla .NET Standard API: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -75,7 +75,7 @@ A platformfüggetlen .NET Standard kódtár [Microsoft.Azure.Cosmos.Table](https
 | [0.9.1-Preview](#0.9.1-preview) |2018. október 18. |--- |
 
 
-## <a name="faq"></a>gyakori kérdésekben
+## <a name="faq"></a>GYIK
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

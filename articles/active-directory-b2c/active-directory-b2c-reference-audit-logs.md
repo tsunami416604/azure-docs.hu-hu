@@ -2,20 +2,20 @@
 title: Naplózási minták és a definíciók bejelentkezik az Azure Active Directory B2C |} A Microsoft Docs
 description: Útmutató és -példák az Azure AD B2C-naplók elérése a.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fdc3578fe78e60086a148e4204019a8293030b83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 27c91185bacea839ec73a3f4bd06f5df43bd4edf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688750"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509653"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Auditnaplók eléréséhez az Azure AD B2C-vel
 
@@ -33,7 +33,7 @@ A **B2C** kategória-naplók az alábbi típusú tevékenységeket tartalmazza:
 |Címtár |Directory-attribútumok kérhető le, ha rendszergazdaként jelentkezik be az Azure Portallal kapcsolatos tevékenységek |
 |Alkalmazás | A B2C-alkalmazások CRUD-műveletek |
 |Kulcs |A B2C-kulcstároló tárolt kulcsok CRUD-műveletek |
-|Erőforrás |B2C-erőforrásokat (például a szabályzatok és az identitás-szolgáltatóktól) CRUD-műveletek
+|Resource |B2C-erőforrásokat (például a szabályzatok és az identitás-szolgáltatóktól) CRUD-műveletek
 |Hitelesítés |Felhasználói hitelesítő adatok és a kiállítási érvényesítése|
 
 > [!NOTE]

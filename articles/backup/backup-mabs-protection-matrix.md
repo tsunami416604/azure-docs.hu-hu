@@ -9,12 +9,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 050e3032d47b8215ae1aef8492c247031275ab86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83cfd2b7ccdf8ec14e828baec1031e11b28c988c
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60237615"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427369"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Az Azure Backup Server védelmi mátrixa
 
@@ -82,6 +82,15 @@ Ez a cikk felsorolja a különböző kiszolgálókon és védheti az Azure Backu
 |VMware virtuális gépek|VMware vCenter/vSphere ESX/ESXi-licenccel rendelkező verzió 5.5/6.0/6.5 |Fizikai kiszolgáló <br/>Helyszíni Hyper-V virtuális Gépen <br/> Windows virtuális gép VMWare-ben|I|I|VMware virtuális gépek a fürt megosztott köteteinek (CSV), NFS, és a SAN-tároló<br /> A fájlok és mappák elemszintű helyreállítás csak a Windows virtuális gép esetében elérhető, a VMware vapp alkalmazásokra nem támogatottak.|
 |VMware virtuális gépek|[A VMware vSphere 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Fizikai kiszolgáló <br/>Helyszíni Hyper-V virtuális Gépen <br/> Windows virtuális gép VMWare-ben|I|N|VMware virtuális gépek a fürt megosztott köteteinek (CSV), NFS, és a SAN-tároló<br /> A fájlok és mappák elemszintű helyreállítás csak a Windows virtuális gép esetében elérhető, a VMware vapp alkalmazásokra nem támogatottak.|
 |Linux|Hyper-V vagy VMware-alapú vendégként futó Linux|Fizikai kiszolgáló <br/>Helyszíni Hyper-V virtuális Gépen <br/> Windows virtuális gép VMWare-ben|I|I|A Hyper-V a Windows Server 2012 R2 vagy Windows Server 2016-ra kell futnia. Védelem: Teljes virtuális gépet<br /><br />Helyreállítás: Teljes virtuális gépet <br/><br/> Támogatott Linux-disztribúciók és verziók listáját lásd: a cikk [Linux-disztribúciók, Azure által támogatott](../virtual-machines/linux/endorsed-distros.md).|
+
+## <a name="azure-expressroute-support"></a>Az Azure ExpressRoute-támogatás
+
+Ha Azure ExpressRoute privát vagy a Microsoft társviszony-létesítés van beállítva, akkor adatainak biztonsági mentése az Azure-ba nem használható.
+
+Ha Azure ExpressRoute nyilvános Társviszony-létesítés van konfigurálva, használat adatainak biztonsági mentése az Azure-bA.
+
+>[!NOTE]
+>Nyilvános társviszony-létesítés esetében új kapcsolatcsoportot elavult.
 
 ## <a name="cluster-support"></a>Fürtök támogatása
 Az Azure Backup Server védheti az adatokat az alábbi fürtözött alkalmazásokban:

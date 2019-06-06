@@ -2,20 +2,20 @@
 title: ClaimsTransformations – az Azure Active Directory B2C |} A Microsoft Docs
 description: Az identitás élmény keretrendszer sémát az Azure Active Directory B2C a ClaimsTransformations elem definíciója.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 65b64563bf00bb519a65b6d2e0418b4f755dea2d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c904ac9d4c59a467dd8402ec44682c3cbd03fd8d
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710816"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511539"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -35,7 +35,7 @@ Szeretne felvenni a függvénylistában jogcímek átalakítása használható a
 
 A **ClaimsTransformation** elem tartalmazza a következő attribútumokat:
 
-| Attribútum |Szükséges | Leírás |
+| Attribútum |Kötelező | Leírás |
 | --------- |-------- | ----------- |
 | Azonosító |Igen | A jogcím-átalakítást egyedi azonosításához használt azonosító. Az azonosító az egyéb XML-elemeket a házirendben hivatkozik. |
 | TransformationMethod | Igen | Az átalakítási módszerek a jogcímek átalakítását. Minden egyes jogcím-átalakítást saját értékekkel rendelkezik. Tekintse meg a [jogcím-átalakítási referencia](#claims-transformations-reference) teljes listáját az elérhető értékek. |
@@ -59,7 +59,7 @@ A **ClaimsTransformation** elem a következő elemeket tartalmazza:
 ```
 
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | Listáját **bemeneti jogcím** elemei, amelyek megadják a jogcímtípusok, amelyeket a rendszer, adjon meg, a jogcímek átalakítását. Ezek az elemek mindegyike tartalmaz egy hivatkozást egy már az ClaimsSchema szakaszban, a szabályzatban meghatározott takar. |
 | InputParameters | 0:1 | Listáját **InputParameter** elemeket, amelyeket bemenetként a jogcímek átalakításáról biztosított.  
@@ -69,7 +69,7 @@ A **ClaimsTransformation** elem a következő elemeket tartalmazza:
 
 A **InputClaims** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Bemeneti jogcím | 1:n | Egy várt bemeneti jogcím típusa. |
 
@@ -86,13 +86,13 @@ A **bemeneti jogcím** elem tartalmazza a következő attribútumokat:
 
 A **InputParameters** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | InputParameter | 1:n | Egy várt bemeneti paraméter. |
 
 #### <a name="inputparameter"></a>InputParameter
 
-| Attribútum | Szükséges |Leírás |
+| Attribútum | Kötelező |Leírás |
 | --------- | ----------- |----------- |
 | Azonosító | Igen | A jogcím átalakítási metódus paramétereként hivatkozás azonosítója. Minden egyes jogcím átalakítási metódus saját értékekkel rendelkezik. Tekintse meg a jogcímek átalakítása tábla teljes listáját az elérhető értékek. |
 | Adattípus | Igen | A data paraméter, például a karakterláncot, logikai érték beolvasása, Int vagy dátum és idő alapján a DataType enumerálása az egyéni házirend XML-séma típusa. Ez a típus aritmetikai műveletek megfelelő végrehajtásához használatos. Minden egyes jogcím-átalakítást saját értékekkel rendelkezik. Tekintse meg a [jogcím-átalakítási referencia](#claims-transformations-reference) teljes listáját az elérhető értékek. |
@@ -102,7 +102,7 @@ A **InputParameters** elem tartalmazza a következő elemet:
 
 A **OutputClaims** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | Várt kimenet jogcím típusa. |
 
@@ -110,7 +110,7 @@ A **OutputClaims** elem tartalmazza a következő elemet:
 
 A **kimeneti jogcím** elem tartalmazza a következő attribútumokat:
 
-| Attribútum |Szükséges | Leírás |
+| Attribútum |Kötelező | Leírás |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | Igen | A hivatkozás egy már az ClaimsSchema szakaszban, a szabályzatban meghatározott takar.
 | TransformationClaimType | Igen | Egy azonosító való hivatkozáshoz egy átalakítás jogcím típusa. Minden egyes jogcím-átalakítást saját értékekkel rendelkezik. Tekintse meg a [jogcím-átalakítási referencia](#claims-transformations-reference) teljes listáját az elérhető értékek. |

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
-ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7d97866bb3ae895f83fff248ceec2e83dd60bf9
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61231830"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688909"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
@@ -30,7 +30,7 @@ Ebben a cikkben az Előfeltételek: egy Azure-előfizetést, egy Recovery Servic
 
 Riasztások figyelése, vagy megtekintheti a felügyeleti adatait egy Recovery Services-tárolót, nyissa meg a tárolóban.
 
-1. Jelentkezzen be a [az Azure Portal](https://portal.azure.com/) Azure-előfizetése.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) Azure-előfizetése.
 
 2. Kattintson a portál **minden szolgáltatás**.
 
@@ -103,7 +103,7 @@ Alapértelmezésben a részletekről kivételével **legutóbbi előfordulás id
 * Severity
 * Időtartam
 * Létrehozás ideje
-* status
+* Állapot
 * Legutóbbi előfordulás időpontja
 
 ### <a name="change-the-details-in-alerts-report"></a>A részleteket a riasztási jelentés módosítása
@@ -156,7 +156,7 @@ Válassza ki a riasztás súlyosságát (kritikus vagy figyelmeztetés) e-mail l
 
 ## <a name="manage-backup-items"></a>Biztonsági másolati elemek kezelése
 
-Recovery Services-tároló számos különböző típusú biztonsági mentési adatokat tárolja. Biztonsági mentési típusok teljes listáját lásd: [, amely alkalmazások és számítási feladatok biztonsági mentésre alkalmas](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use). A különféle kiszolgálók, számítógépek, adatbázisok és számítási feladatok kezeléséhez kattintson a **biztonsági másolati elemek** csempére kattintva tekintheti meg a tároló tartalmát.
+Recovery Services-tároló számos különböző típusú biztonsági mentési adatokat tárolja. [További](backup-overview.md#what-can-i-back-up) kapcsolatban milyen biztonsági másolatot készíthet. A különféle kiszolgálók, számítógépek, adatbázisok és számítási feladatok kezeléséhez kattintson a **biztonsági másolati elemek** csempére kattintva tekintheti meg a tároló tartalmát.
 
 ![Biztonsági másolati elemek csempe](./media/backup-azure-manage-windows-server/backup-items.png)
 
@@ -226,20 +226,20 @@ Egy műveletet, vagy minden művelet tekintheti meg. Nem választhat ki két vag
 * Backup
 * Visszaállítás
 * Biztonsági mentés letiltása
-* biztonsági mentési adatok törlése
+* Biztonsági mentési adatok törlése
 
-#### <a name="status"></a>status
+#### <a name="status"></a>Állapot
 
 Minden állapota vagy egy tekintheti meg. Nem választhat ki két vagy három állapota. A lehetséges állapotok a következők:
 
 * Minden állapot
-* Befejezve
-* Folyamatban
+* Befejeződött
+* Folyamatban van
 * Meghiúsult
 * Megszakítva
 * Figyelmeztetésekkel fejeződött be
 
-#### <a name="start-time"></a>Kezdő időpont
+#### <a name="start-time"></a>Kezdési idő
 
 Dátumát és időpontját, amely a lekérdezés kezdődik. Az alapértelmezett érték egy 24 órás időszakban.
 
@@ -278,7 +278,7 @@ Igen. Az alábbi esetekben nem kap értesítést.
 
 ## <a name="troubleshooting-monitoring-issues"></a>Figyelési kapcsolatos hibák elhárítása
 
-**A probléma leírása:** Feladatok és/vagy az Azure Backup ügynök származó riasztások nem jelennek meg a portálon.
+**Probléma:** Feladatok és/vagy az Azure Backup ügynök származó riasztások nem jelennek meg a portálon.
 
 **Hibaelhárítási lépéseket:** A folyamat ```OBRecoveryServicesManagementAgent```, a feladat és riasztás adatokat küld az Azure Backup szolgáltatással. Egyes esetekben ez a folyamat letöltés állapottal vagy -leállítás.
 

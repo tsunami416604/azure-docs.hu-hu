@@ -17,12 +17,12 @@ ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0986610007f5c470589eb94d6761b8d31dd79e72
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 3208afc7ec18013c6e70e148995d33114cf7e06c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463495"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513662"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai 
 
@@ -181,6 +181,8 @@ Szoftveresen is segítségével végezheti el a bejelentkezési adatokat a [repo
 |500121| Hitelesítés meghiúsult az erős hitelesítés során.|
 |500133| A helyességi feltétel nem esik az érvényes idő. Győződjön meg arról, hogy a hozzáférési jogkivonat nem járt le, a felhasználó helyességi feltétel használata előtt, vagy kérje meg egy új jogkivonatot.|
 |530021|Alkalmazás nem felel meg a jóváhagyott feltételes hozzáférés alkalmazás követelményeinek.|
+|7000218|A kérelem törzsének tartalmaznia kell a következő paraméter: "client_assertion" vagy "titkos ügyfélkódot".|
+
 
 ## <a name="next-steps"></a>További lépések
 

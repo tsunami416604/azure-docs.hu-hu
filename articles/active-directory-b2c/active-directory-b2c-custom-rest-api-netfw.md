@@ -2,20 +2,20 @@
 title: REST API-val jogcím cseréje az Azure Active Directory B2C felhasználói interakciósorozatban szereplő integrálása |} A Microsoft Docs
 description: Integrálja a REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő, a felhasználói bevitel ellenőrzése.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/30/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e44bb1ed6a7a090b4b1213ca14be2b42642475e4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3b896b2c423f2f9155ddb7803e59e719bd027cf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717292"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510722"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>A felhasználói adatbevitel auditáló REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő integrálása
 
@@ -60,7 +60,7 @@ A lépések elvégzéséhez a [Ismerkedés az egyéni szabályzatok](active-dire
 
 1. A Visual Studióban hozzon létre egy projektet kiválasztásával **fájl** > **új** > **projekt**.
 
-2. Az a **új projekt** ablakban válassza **Visual C#** > **webes** > **ASP.NET Web Application (.NET Framework)**.
+2. Az a **új projekt** ablakban válassza **Visual C#**  > **webes** > **ASP.NET Web Application (.NET Framework)** .
 
 3. Az a **neve** mezőbe írja be az alkalmazás nevét (például *Contoso.AADB2C.API*), majd válassza ki **OK**.
 
@@ -248,13 +248,13 @@ Jogcím-szolgáltatóktól rendelkezhet több technikai profil különböző oko
 
 A következő XML-kódrészlet két technikai profil a jogcímeket szolgáltató csomópontot tartalmaz:
 
-* **TechnicalProfile Id="REST-API-SignUp"**: A RESTful szolgáltatás határozza meg.
+* **TechnicalProfile Id="REST-API-SignUp"** : A RESTful szolgáltatás határozza meg.
   * `Proprietary` ismertetjük a protokoll egy RESTful-alapú szolgáltató.
   * `InputClaims` határozza meg a jogcímeket küld az Azure AD B2C-ből a REST-szolgáltatást.
 
     Ebben a példában a tartalom a jogcím `givenName` küld a REST-szolgáltatás, mint `firstName`, a tartalom a jogcím `surname` küld a REST-szolgáltatás, mint `lastName`, és `email` , küld. A `OutputClaims` elem definiálja a jogcímek lekért RESTful szolgáltatás vissza az Azure AD B2C-t.
 
-* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**: Egy ellenőrzési technikai profil hozzáadása egy meglévő technikai profilban (alap szabályzatban definiált). A regisztrációs folyamatok során az érvényesítési technikai profil a korábbi technikai profil hív meg. Ha a RESTful szolgáltatás hibát jelez a HTTP 409 (ütközés hiba), a hibaüzenet jelenik meg a felhasználó számára.
+* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"** : Egy ellenőrzési technikai profil hozzáadása egy meglévő technikai profilban (alap szabályzatban definiált). A regisztrációs folyamatok során az érvényesítési technikai profil a korábbi technikai profil hív meg. Ha a RESTful szolgáltatás hibát jelez a HTTP 409 (ütközés hiba), a hibaüzenet jelenik meg a felhasználó számára.
 
 Keresse meg a `<ClaimsProviders>` csomópontot, majd adja hozzá a következő XML-részletet a `<ClaimsProviders>` csomópont:
 

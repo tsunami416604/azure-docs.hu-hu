@@ -2,17 +2,16 @@
 title: Importálása és exportálása egy tartományi zónafájl az Azure DNS Azure parancssori felületével |} A Microsoft Docs
 description: Ismerje meg, hogyan importálása és exportálása a DNS-zónafájl az Azure DNS Azure CLI-vel
 services: dns
-author: WenJason
+author: vhorne
 ms.service: dns
-origin.date: 4/3/2019
-ms.date: 04/15/2019
-ms.author: v-jay
-ms.openlocfilehash: 25445415141372e1f231549c5b8f8575a89363c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 4/3/2019
+ms.author: victorh
+ms.openlocfilehash: 00ff5636f97b24c656ee4e5d8ceb2f6b22524538
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61293075"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515346"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importálása és exportálása a DNS-zónafájl az Azure CLI használatával
 
@@ -74,7 +73,7 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 Ha egy ilyen nevű zóna nem létezik az erőforráscsoportban, létrejön az Ön számára. Ha a zóna már létezik, az importált rekordhalmazok egyesítésekor a meglévő rekordhalmazt. 
 
-### <a name="step-1-import-a-zone-file"></a>1. lépés A zónafájl importálása
+### <a name="step-1-import-a-zone-file"></a>1.lépés A zónafájl importálása
 
 A zóna egy zónafájl importálása **contoso.com**.
 
@@ -90,7 +89,7 @@ A zóna egy zónafájl importálása **contoso.com**.
     az network dns zone import -g myresourcegroup -n contoso.com -f contoso.com.txt
     ```
 
-### <a name="step-2-verify-the-zone"></a>2. lépés A zóna ellenőrzése
+### <a name="step-2-verify-the-zone"></a>2.lépés A zóna ellenőrzése
 
 Ellenőrizze a DNS-zóna, a fájl importálása után, az alábbi módszerek bármelyikét használhatja:
 
@@ -115,19 +114,19 @@ Ellenőrizze a DNS-zóna, a fájl importálása után, az alábbi módszerek bá
         "nsRecords": [
           {
             "additionalProperties": {},
-            "nsdname": "ns1-03.azure-dns.cn."
+            "nsdname": "ns1-03.azure-dns.com."
           },
           {
             "additionalProperties": {},
-            "nsdname": "ns2-03.azure-dns.cn."
+            "nsdname": "ns2-03.azure-dns.net."
           },
           {
             "additionalProperties": {},
-            "nsdname": "ns3-03.azure-dns.cn."
+            "nsdname": "ns3-03.azure-dns.org."
           },
           {
             "additionalProperties": {},
-            "nsdname": "ns4-03.azure-dns.cn."
+            "nsdname": "ns4-03.azure-dns.info."
           }
         ],
         "resourceGroup": "myresourcegroup",
@@ -138,9 +137,9 @@ Ellenőrizze a DNS-zóna, a fájl importálása után, az alábbi módszerek bá
     ```
 
     ```cmd
-    nslookup www.contoso.com ns1-03.azure-dns.cn
+    nslookup www.contoso.com ns1-03.azure-dns.com
 
-        Server: ns1-01.azure-dns.cn
+        Server: ns1-01.azure-dns.com
         Address:  40.90.4.1
 
         Name:www.contoso.com
@@ -148,13 +147,13 @@ Ellenőrizze a DNS-zóna, a fájl importálása után, az alábbi módszerek bá
         134.170.188.221
     ```
 
-### <a name="step-3-update-dns-delegation"></a>3. lépés DNS-delegálás frissítése
+### <a name="step-3-update-dns-delegation"></a>3. lépés. DNS-delegálás frissítése
 
 Miután ellenőrizte, hogy helyesen importálta a zónában, a DNS-delegálás az Azure DNS névkiszolgálóit átirányítása frissíteni szeretné. További információkért tekintse meg a cikket [a DNS-delegálás frissítése](dns-domain-delegation.md).
 
 ## <a name="export-a-dns-zone-file-from-azure-dns"></a>Az Azure DNS DNS-zónafájl exportálása
 
-Az Azure CLI-paranccsal importálhatja a DNS-zóna formátuma:
+Az Azure CLI-paranccsal exportálhatja a DNS-zóna formátuma:
 
 ```azurecli
 az network dns zone export -g <resource group> -n <zone name> -f <zone file name>

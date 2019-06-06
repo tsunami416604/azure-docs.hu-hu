@@ -2,20 +2,20 @@
 title: Egyéni szabályzatok – Azure Active Directory B2C megjegyzések fejlesztők számára |} A Microsoft Docs
 description: Megjegyzések konfigurálását és karbantartását az Azure AD B2C-vel egyéni szabályzatok a fejlesztők számára készült.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1093f1882328604819d5fbab33d87b26f1af2886
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1d0be4ec2ed8feb308839377e0494ef2f4b78368
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703243"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510214"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C-vel egyéni szabályzatok megjegyzések fejlesztők számára
 
@@ -59,7 +59,7 @@ Egyéni szabályzat/identitás-kezelőfelületi keretrendszer képességek folya
 
 ### <a name="identity-providers-tokens-protocols"></a>Identitás-szolgáltatók jogkivonatok, protokollok
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |-------- | ----------- | ------- | -- | ----- |
 | IDP-OpenIDConnect |  |  | X | Ha például a Google +.  |
 | IDP-OAUTH2 |  |  | X | Ha például a Facebook.  |
@@ -76,7 +76,7 @@ Egyéni szabályzat/identitás-kezelőfelületi keretrendszer képességek folya
 
 ### <a name="component-support"></a>Összetevő-támogatás
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | ----------- | ------- | -- | ----- |
 | Azure Multi Factor Authentication |  |  | X |  |
 | Az Azure Active Directory helyi könyvtárként |  |  | X |  |
@@ -87,7 +87,7 @@ Egyéni szabályzat/identitás-kezelőfelületi keretrendszer képességek folya
 
 ### <a name="content-definition"></a>Tartalomdefiníció
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | ----------- | ------- | -- | ----- |
 | Error page, api.error |  |  | X |  |
 | Identitásszolgáltató kiválasztása oldal, api.idpselections |  |  | X |  |
@@ -103,7 +103,7 @@ Egyéni szabályzat/identitás-kezelőfelületi keretrendszer képességek folya
 
 ### <a name="app-ief-integration"></a>Alkalmazás-IEF integráció
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | ----------- | ------- | -- | ----- |
 | Lekérdezési karakterlánc paraméter domain_hint |  |  | X | Jogcím, elérhető Identitásszolgáltató adható át. |
 | Lekérdezési karakterlánc paraméter login_hint |  |  | X | Jogcím, elérhető Identitásszolgáltató adható át. |
@@ -113,7 +113,7 @@ Egyéni szabályzat/identitás-kezelőfelületi keretrendszer képességek folya
 
 ### <a name="session-management"></a>Munkamenet-kezelés
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | ----------- | ------- | -- | ----- |
 | Egyszeri bejelentkezés munkamenet-szolgáltató |  |  | X |  |
 | Külső bejelentkezés munkamenet-szolgáltató |  |  | X |  |
@@ -122,15 +122,15 @@ Egyéni szabályzat/identitás-kezelőfelületi keretrendszer képességek folya
 
 ### <a name="security"></a>Biztonság
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |-------- | ----------- | ------- | -- | ----- |
 | A házirend kulcsok létrehozása, manuális feltöltése |  |  | X |  |
 | Policy Keys- RSA/Cert, Secrets |  |  | X |  |
-| Szabályzatfeltöltés |  |  | X |  |
+| Szabályzat feltöltése |  |  | X |  |
 
 ### <a name="developer-interface"></a>Fejlesztői felület
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | ----------- | ------- | -- | ----- |
 | Azure Portal-IEF UX |  |  | X |  |
 | Application Insights UserJourney naplók |  | X |  | Hibaelhárítás a fejlesztés során használt.  |

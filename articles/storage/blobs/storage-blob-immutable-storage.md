@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 60cf37e5f6375d08e73241f6e357ac39ea665e9b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d58c596421cec2e69210dd39a5d4a9708c154b44
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192539"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492750"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Az Azure Blob storage-ban üzleti szempontból kritikus fontosságú adatok Store
 
@@ -34,9 +34,9 @@ Jellemző alkalmazási területek:
 
 Nem módosítható storage támogatja a következőket:
 
-- **[Időalapú adatmegőrzési házirend támogatási](#time-based-retention)**: Felhasználói adatok tárolására a megadott intervallumban házirendek állíthatja be. Időalapú adatmegőrzési esetén beállítása, blobok is létrehozott és olvassa el, de nem módosítható és nem törölhető. Miután a megőrzési időtartam lejárt, blobok törölhetők, de nem írható felül.
+- **[Időalapú adatmegőrzési házirend támogatási](#time-based-retention)** : Felhasználói adatok tárolására a megadott intervallumban házirendek állíthatja be. Időalapú adatmegőrzési esetén beállítása, blobok is létrehozott és olvassa el, de nem módosítható és nem törölhető. Miután a megőrzési időtartam lejárt, blobok törölhetők, de nem írható felül.
 
-- **[Jogi célú visszatartási szabályzatot támogatási](#legal-holds)**: Ha a megőrzési időtartam nem ismert, felhasználói adatok immutably tárolásához, a jogi céllal zároltak közé történő törléséig jogi célú visszatartással állíthatja be.  Egy jogi céllal zároltak közé a házirend be van állítva, ha blobok is létrehozott és olvassa el, de nem módosítható és nem törölhető. Minden jogi céllal zároltak közé társítva, egy felhasználó által definiált alfanumerikus karakterek (például Ügyfélazonosítóként eseménynév, stb.), amely egy karakterlánc-azonosítót. 
+- **[Jogi célú visszatartási szabályzatot támogatási](#legal-holds)** : Ha a megőrzési időtartam nem ismert, felhasználói adatok immutably tárolásához, a jogi céllal zároltak közé történő törléséig jogi célú visszatartással állíthatja be.  Egy jogi céllal zároltak közé a házirend be van állítva, ha blobok is létrehozott és olvassa el, de nem módosítható és nem törölhető. Minden jogi céllal zároltak közé társítva, egy felhasználó által definiált alfanumerikus karakterek (például Ügyfélazonosítóként eseménynév, stb.), amely egy karakterlánc-azonosítót. 
 
 - **Az összes blob rétegek támogatás**: FÉREG házirendek az Azure Blob storage-rétegét független, és a alkalmazni kell az összes szint: gyakori és ritka elérésű, valamint az archivált adatok. Felhasználók hogyan helyezhetik át az adatokat a legtöbb költség optimalizált szint számítási feladatai adatok módosíthatatlansági fenntartása mellett.
 
@@ -53,7 +53,7 @@ Tároló és a fiók törlése még nem engedélyezettek van-e azokat a blobokat
 ### <a name="time-based-retention"></a>Időalapú adatmegőrzés
 
 > [!IMPORTANT]
-> Időalapú adatmegőrzési kell *zárolva* kell lennie egy nem módosítható a BLOB (írási és törlési védett) állapot mp 17a-4(f) és egyéb szabályozásoknak való megfelelőséget. Azt javasoljuk, hogy egy ésszerű időn belül, általában 24 órán belül a házirend zárolása. Nem javasoljuk a *oldják a zárolást* állapot rövid távú funkció kísérletek kívül más célra.
+> Időalapú adatmegőrzési kell *zárolva* egy megfelelő legyen a BLOB nem módosítható (írási és törlési védett) állapot mp 17a-4(f) és egyéb szabályozásoknak való megfelelőséget. Azt javasoljuk, hogy akkor zárolja a szabályzatot egy ésszerű időn belül általában legfeljebb 24 óra. Egy alkalmazott időalapú adatmegőrzési kezdeti állapota *oldják a zárolást*, lehetővé téve, hogy a szolgáltatás tesztelése, és hajtsa végre a módosításokat a szabályzat előtt zárolni tudja. Bár a *oldják a zárolást* állapot módosíthatatlansági védelmet biztosít, nem javasoljuk a *oldják a zárolást* állapot rövid távú funkció kísérletek kívül más célra. 
 
 Időalapú adatmegőrzési szabály alkalmazásakor a tárolón a tárolóban lévő összes BLOB időtartama nem módosítható állapotban marad a *hatékony* megőrzési ideje. Meglévő blobok hatékony megőrzési időtartama a különbség a blob-módosítás időpontja és a felhasználó által megadott megőrzési időtartam megegyezik.
 
@@ -65,6 +65,8 @@ Az új blobok esetében az adatmegőrzési időtartam egyenlő a felhasználó �
 > A meglévő blobot a tárolóban, _testblob1_, egy évre visszamenőleg lett létrehozva. A tényleges megőrzési időszak _testblob1_ négy év van meghatározva.
 >
 > Egy új blob _testblob2_, a tároló most már fel van töltve. Az új blob hatékony megőrzési időtartama öt év meghatározva.
+
+Egy nem zárolt időalapú adatmegőrzési ajánlott csak tesztelésre funkció, és egy házirend zárolni kell ahhoz, hogy meg kell felelnie az mp-ben 17a-4(f) és egyéb szabályozásoknak való megfelelőséget. Időalapú adatmegőrzési zárolva van, ha a házirend nem távolítható el, és 5 növekszik a tényleges megőrzési időszak maximális engedélyezett. Zárolhatja az időalapú adatmegőrzési házirendek, és hogyan további információkért lásd: a [bevezetés](#getting-started) szakaszban.
 
 ### <a name="legal-holds"></a>Jogi célú visszatartások
 
@@ -78,8 +80,8 @@ Az alábbi táblázat a Művelettípusok blob, a másik nem módosítható forga
 |---------|---------|---------|
 |A blob tényleges adatmegőrzési időtartama még nem járt le és/vagy jogi célú visszatartás van érvényben     |Nem módosítható: törlés- és írásvédett         | Blob kihelyezése<sup>1</sup>, blokk Put<sup>1</sup>, Put tiltólista<sup>1</sup>, tároló, Delete Blob Set Blob metaadatainak, lapra helyezze, állítsa be a Blob tulajdonságai, a Blob pillanatkép, a növekményes másolási Blob, Hozzáfűzés letiltása         |
 |A blobon beállított tényleges megőrzési időtartam lejárt     |Csak írásvédett (a törlési műveletek engedélyezettek)         |Blob kihelyezése<sup>1</sup>, blokk Put<sup>1</sup>, Put tiltólista<sup>1</sup>, Blob metaadatainak, lapra helyezze, állítsa be a Blob tulajdonságai, a Blob pillanatkép, a növekményes másolási Blob, fűzze hozzá a letiltása         |
-|Minden jogi tárolja az üres, és időalapú adatmegőrzési szabályzat nem található a tárolóban     |Változtatható         |None         |
-|Nincs FÉREG szabályzat jön létre (időalapú adatmegőrzés vagy jogi céllal zároltak közé)     |Változtatható         |None         |
+|Minden jogi tárolja az üres, és időalapú adatmegőrzési szabályzat nem található a tárolóban     |Változtatható         |Egyik sem         |
+|Nincs FÉREG szabályzat jön létre (időalapú adatmegőrzés vagy jogi céllal zároltak közé)     |Változtatható         |Egyik sem         |
 
 <sup>1</sup> az alkalmazás lehetővé teszi, hogy egy új blob létrehozása után ezeket a műveleteket. Minden későbbi felülírja a meglévő blob elérési útnak egy nem módosítható tároló műveletek nem engedélyezettek.
 
@@ -124,7 +126,7 @@ A legújabb verzióiban a [az Azure portal](https://portal.azure.com), [Azure CL
 
     A szabályzat kezdeti állapota nem oldják a zárolást a szolgáltatás tesztelése, és hajtsa végre a módosításokat a szabályzat előtt zárolni tudja lehetővé teszi. A szabályzat zárolás elengedhetetlen az előírásoknak, például a 17a – 4/mp-ben.
 
-5. A szabályzat zárolása. Kattintson a jobb gombbal a három pontra (**...** ), és további műveletek az alábbi menü jelenik meg:
+5. A szabályzat zárolása. Kattintson a jobb gombbal a három pontra ( **...** ), és további műveletek az alábbi menü jelenik meg:
 
     !["Szabályzat zárolás" menüben](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
 
@@ -169,7 +171,7 @@ A következő ügyfélkódtárak nem módosítható storage támogatja az Azure 
 
 **Biztosítható dokumentáció FÉREG megfelelőségi?**
 
-Igen. A megfelelés, a dokumentum a Microsoft a vezető független értékelés cég rögzíti és információs irányítási Cohasset nem módosítható az Azure Blob-tároló és az adott követelményeknek való megfelelőségét kiértékelheti, hogy társítja őrződnek meg a pénzügyi szolgáltatások iparágban. Cohasset ellenőrzi, hogy az Azure nem módosítható Blobtároló, időalapú Blobok FÉREG állapotban tartani használatakor megfelel-e a megfelelő tárolási követelmények CFTC szabály 1.31(c)-(d), a finra az Egyesült szabály 4511 és 17a – 4. szabály (mp). A Microsoft a szabálykészletet célzott, mivel a legtöbb részletes útmutatást globálisan rekordok megőrzési a pénzügyi intézmények számára. A Cohasset jelentés érhető el a [Microsoft Service Trust Center](https://aka.ms/AzureWormStorage).
+Igen. A megfelelés, a dokumentum a Microsoft a vezető független értékelés cég rögzíti és információs irányítási Cohasset nem módosítható az Azure Blob-tároló és az adott követelményeknek való megfelelőségét kiértékelheti, hogy társítja őrződnek meg a pénzügyi szolgáltatások iparágban. Cohasset ellenőrzi, hogy az Azure nem módosítható Blobtároló, időalapú Blobok FÉREG állapotban tartani használatakor megfelel-e a megfelelő tárolási követelmények CFTC szabály 1.31(c)-(d), a finra az Egyesült szabály 4511 és 17a – 4. szabály (mp). A Microsoft a szabálykészletet célzott, mivel a legtöbb részletes útmutatást globálisan rekordok megőrzési a pénzügyi intézmények számára. A Cohasset jelentés érhető el a [Microsoft Service Trust Center](https://aka.ms/AzureWormStorage). Az igazolás betűvel kérhet a Microsoft FÉREG a megfelelőséggel, lépjen kapcsolatba az Azure-támogatás.
 
 **A funkció csak blokkblobokat, vagy a lapon, és a hozzáfűző blobok is vonatkozik?**
 
@@ -186,6 +188,10 @@ Igen, a tároló lehet megadva jogi célú visszatartás és a egy időalapú ad
 **Azok a jogi céllal zároltak közé szabályzatok csak a jogi eljárás vagy vannak-e más használati forgatókönyvek?**
 
 Nem, a jogi tartsa még csak nem időalapú adatmegőrzési használt általános kifejezés. Kizárólag a pereskedés használja, nem kell kapcsolatos eljárást. Jogi céllal zároltak közé házirendek hasznosak letiltása, felülírása és törlése a FÉREG adatok, fontos vállalati védelme Ha a megőrzési időtartam nem ismert. Hogy használhatja azt egy vállalati szabályzat az üzletmenet szempontjából kritikus fontosságú FÉREG számítási feladatok védelméhez, vagy használja a tesztelési házirend szerint, mielőtt egy egyéni eseményindítót időalapú adatmegőrzési használatát igényli. 
+
+**Eltávolítható egy *zárolva* időalapú adatmegőrzési szabály vagy a jogi céllal zároltak közé?**
+
+Csak a feloldott időalapú adatmegőrzési házirendek távolíthatja el a tárolóból. Időalapú adatmegőrzési szabály zárolása, után nem lehet eltávolítani; csak tényleges megőrzési időszak bővítmények használata engedélyezett. Jogi céllal zároltak közé címkék lehet törölni. Minden jogi címkék törlésekor a rendszer eltávolítja a jogi céllal zároltak közé.
 
 **Mi történik, ha megpróbálok törölni egy tárolót, amelyre *zárolt* időalapú adatmegőrzési szabályzat vagy jogi célú visszatartás vonatkozik?**
 
@@ -375,12 +381,12 @@ $policy = Set-AzRmStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 13 -Etag $policy.Etag -ExtendPolicy
 ```
 
-Egy vonatkozó módosíthatatlansági szabályzat eltávolítása az (add - Force elvetése a rendszer kéri):
+Egy nem zárolt módosíthatatlansági szabályzat eltávolítása az (add - Force elvetése a rendszer kéri):
 ```powershell
 # with an immutability policy object
 $policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
-Remove-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
+Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 # with an account name or container name
 Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `

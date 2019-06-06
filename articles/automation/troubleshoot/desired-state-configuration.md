@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 63bb5c6338cf230c2bb47cb0a2c03810053f970a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7cb0d77a266dbe8afd331782965e7e9a44663671
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61087268"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514463"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Hibaelhárítás a Desired State Configuration (DSC)
 
@@ -145,6 +145,25 @@ Konfigurációban használt hitelesítő adatokat, de nem adott meg megfelelő *
 #### <a name="resolution"></a>Megoldás:
 
 * Győződjön meg arról, hogy adja át a megfelelő **ConfigurationData** beállítása **PSDscAllowPlainTextPassword** minden csomópont-konfiguráció, amely szerepel a konfigurációs igaz. További információkért lásd: [eszközök az Azure Automation DSC](../automation-dsc-compile.md#assets).
+
+### <a name="failure-processing-extension"></a>Forgatókönyv: Dsc-bővítmény, "Feldolgozási kiterjesztés" hiba történt az előkészítési
+
+#### <a name="issue"></a>Probléma
+
+Ha a bevezetési DSC bővítménnyel, a hiba akkor fordul elő, amely tartalmazza a hiba:
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba általában akkor fordul elő, amikor a csomópont hozzá van rendelve egy csomópont-konfiguráció neve, amely a szolgáltatás nem létezik.
+
+#### <a name="resolution"></a>Megoldás:
+
+* Győződjön meg arról, hogy egy csomópont-konfiguráció neve, amely pontosan megegyezik-e a szolgáltatás a csomópont még való hozzárendelése.
+* Dönthet úgy, hogy tartalmazza a csomópont-konfiguráció neve, mely a bevezetési a csomópontot, de nem a csomópont-konfiguráció hozzárendelése
 
 ## <a name="next-steps"></a>További lépések
 

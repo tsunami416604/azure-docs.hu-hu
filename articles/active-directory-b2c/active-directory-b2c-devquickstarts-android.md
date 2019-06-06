@@ -2,20 +2,20 @@
 title: Android-alkalmazás használatával az Azure Active Directory B2C egy token beszerzése |} A Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre Android-alkalmazás, amely az Azure Active Directory B2C az AppAuth használatával felhasználói identitásokat kezelhet és hitelesítheti a felhasználókat.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: acd0e9616f830d9378709e67f0d05e3ae549700d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4db4806b6be018bfc53a155627de825bf62d8395
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703330"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510116"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Jelentkezzen be az Azure Active Directory B2C egy Android-alkalmazás használatával
 
@@ -113,7 +113,7 @@ AuthorizationServiceConfiguration config =
 // perform the auth request...
 ```
 
-### <a name="authorizing"></a>Engedélyezés folyamatban
+### <a name="authorizing"></a>Engedélyező
 
 Miután konfigurálása, vagy egy engedélyezési szolgáltatás konfigurációjának lekérése, egy engedélyezési kérést lehet létrehozni. A kérelem létrehozásához szüksége lesz a következő információkat:
 

@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure állapota figyelő v2 API-leírások: Állapot beolvasása |} A Microsoft Docs'
-description: Állapot figyelő v2 API referencia Get-ApplicationInsightsMonitoringStatus. A webhely újbóli üzembe helyezése nélkül webhely teljesítményének megfigyeléséhez. A helyszíni, valamint a virtuális gépeken, illetve az Azure-ban üzemeltetett ASP.NET-webappokhoz is használható.
+title: 'Az Azure Állapotfigyelőt v2 API-leírások: Állapot beolvasása |} A Microsoft Docs'
+description: Állapot figyelő v2 API-hivatkozás. Get-ApplicationInsightsMonitoringStatus. A webhely újbóli üzembe helyezése nélkül webhely teljesítményének megfigyeléséhez. A helyszíni, valamint a virtuális gépeken, illetve az Azure-ban üzemeltetett ASP.NET-webappokhoz is használható.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,37 +12,37 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: ff61cf2bfb49a64d2f885cb13fd6c48e32c1f8f3
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 860226320fe1a546798cc462e4e5c06d4b9228cf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416003"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514306"
 ---
 # <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus-v022-alpha"></a>A figyelő v2 API állapota: Get-ApplicationInsightsMonitoringStatus (v0.2.2-alpha)
 
-Ez a dokumentum ismerteti, amely tartalmazza a szükséges, amelynek a parancsmag a [Az.ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+Ez a cikk ismerteti, amely tagja a parancsmag a [Az.ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 > [!IMPORTANT]
 > Állapot figyelő v2 jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Ez az előnézeti verzió egy szolgáltatásiszint-megállapodás nélkül biztosított, és ezt nem javasoljuk a termelési számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, és néhány előfordulhat, hogy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="description"></a>Leírás
 
-Hibaelhárítás a PowerShell-modult használja ezt a parancsmagot biztosítunk.
-Ez a parancsmag fájlverzió-információkat és figyeléséhez szükséges kulcsfájlok jelentést.
-További paraméterek további jelentéseket biztosít az aktuális állapotának figyelése.
+Lehetővé teszi, hogy a használt PowerShell-moduljának hibaelhárítása.
+Ez a parancsmag jelentést fájlverzió-információkat és figyeléséhez szükséges kulcs fájlokkal kapcsolatos információk.
+További paraméterek nyújtanak további jelentések figyelési állapotát.
 
 > [!IMPORTANT] 
-> Ez a parancsmag egy PowerShell-munkamenetet rendszergazdai jogosultság szükséges.
+> Ez a parancsmag megköveteli egy PowerShell-munkamenetet rendszergazdai jogosultságokkal rendelkezik.
 
 ## <a name="examples"></a>Példák
 
 
-### <a name="example-basic-information"></a>Példa: alapvető információk
+### <a name="example-basic-information"></a>Példa: Alapvető adatok
 
-Futtassa a parancsot: `Get-ApplicationInsightsMonitoringStatus` a kimenetnek ezzel a modullal kapcsolatos információkat:
+Futtatás `Get-ApplicationInsightsMonitoringStatus` az aktuális modult információit jeleníti meg:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus
@@ -77,11 +77,11 @@ Machine Identifier:
 0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF
 ```
 
-### <a name="example-runtime-status"></a>Példa: futásidejű állapot
+### <a name="example-runtime-status"></a>Példa: Futtatókörnyezetbeli állapot
 
-A folyamat a finomhangolt gépen annak ellenőrzéséhez, hogy a rendszer betölti az összes DLL-ek vizsgálhatja meg. Figyelés működik, ha legalább 12 DLL-ek betöltési.
+A folyamatot a finomhangolt számítógépet, hogy ha az összes DLL-fájl a rendszer betölti az vizsgálhatja meg. Figyelés működik, ha legalább 12 DLL-ek betöltési.
 
-- Cmd: `Get-ApplicationInsightsMonitoringStatus -InspectProcess`
+Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
 
 
 ```
@@ -115,19 +115,19 @@ listdlls64.exe -accepteula w3wp
 0x000000000ad60000  0x108000  C:\Windows\TEMP\2.4.0.0.Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
 ```
 
-## <a name="parameters"></a>Paraméterek 
+## <a name="parameters"></a>Paraméterek
 
-### <a name="no-params"></a>(Nincsenek paraméterei)
+### <a name="no-parameters"></a>(Nincsenek paraméterei)
 
-Által **alapértelmezett**, ez a parancsmag verziószámok és -figyeléshez szükséges DLL-elérési utak jelenti.
+Alapértelmezés szerint ez a parancsmag a verziószámok és -figyeléshez szükséges DLL-elérési utak jelentést.
 
 Használja ezt a beállítást, ha szeretné azonosítani minden olyan DLL, beleértve az Application Insights SDK-verzióját.
 
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-**Választható**. Ez a parancsmag jelenteni fogja, hogy az IIS fut-e.
-Ez a parancsmag is letölt vizsgálhatja meg a szükséges DLL-fájlok az IIS-futtatókörnyezet betöltött, ha külső eszközök.
+**Választható**. Ez a paraméter használatával jelentést, hogy az IIS fut-e.
+Annak megállapítása, hogy a szükséges DLL-ek betöltődik az IIS-modul a külső eszközöket is le fogja tölteni.
 
 
 Ha ez a folyamat bármely okból meghiúsul, manuálisan is futtatható ezekkel a parancsokkal:
@@ -138,10 +138,10 @@ Ha ez a folyamat bármely okból meghiúsul, manuálisan is futtatható ezekkel 
 
 ### <a name="-force"></a>-Force
 
-**Választható**. Csak a InspectProcess használható. Ez a kapcsoló kihagyja a felhasználó megkérdezése a további eszközök.
+**Választható**. Csak a InspectProcess használható. Ez a kapcsoló használatával hagyja ki a felhasználói kérés, amely előtt a rendszer letölti a további eszközök jelenik meg.
 
 
 ## <a name="next-steps"></a>További lépések
 
  Hozzon ki még többet Állapotfigyelőt v2:
- - Használja az útmutatóban [hibaelhárítás](status-monitor-v2-troubleshoot.md) Állapotfigyelőt v2.
+ - Használja az útmutatóban [hibaelhárítása](status-monitor-v2-troubleshoot.md) Állapotfigyelőt v2.

@@ -2,20 +2,20 @@
 title: Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal WeChat beállítása |} A Microsoft Docs
 description: Adja meg a regisztráció és bejelentkezés WeChat az alkalmazások az Azure Active Directory B2C fiókkal rendelkező ügyfelek számára.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cfe5309a142b444d8118419cd24a7f5ec8d5cf26
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: aa44edcf009d381894a581172ea5edffefe946a0
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703793"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508139"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal WeChat beállítása
 
@@ -42,7 +42,7 @@ WeChat fiók használatára az identitásszolgáltatójaként az Azure Active Di
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.
 5. Adjon meg egy **neve**. Adja meg például *WeChat*.
-6. Válassza ki **identitásszolgáltató típusa**válassza **WeChat (előzetes verzió)**, és kattintson a **OK**.
+6. Válassza ki **identitásszolgáltató típusa**válassza **WeChat (előzetes verzió)** , és kattintson a **OK**.
 7. Válassza ki **az identitásszolgáltató beállítása** , és adja meg az alkalmazás azonosítója, mint korábban rögzített a **ügyfél-azonosító** , és írja be az ALKALMAZÁSKULCS, feljegyzett a **titkos Ügyfélkód** , a WeChat alkalmazás, amelyet korábban hozott létre.
 8. Kattintson a **OK** majd **létrehozás** a WeChat konfigurációjának mentéséhez.
 

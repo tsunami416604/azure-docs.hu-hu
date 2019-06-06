@@ -2,20 +2,20 @@
 title: Karakterlánc-jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C |} A Microsoft Docs
 description: Karakterlánc jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C a.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6c6b90cb2b24f6a87504a3a0dbd47f998b67ebc1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a06447aaa6579052285e7e2cd93bf40183ed173f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707460"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512588"
 ---
 # <a name="string-claims-transformations"></a>Karakterlánc jogcím-átalakítás
 
@@ -476,7 +476,7 @@ Lekérdezi egy e-mail-cím tartományt jelölő része.
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | Bemeneti jogcím | emailAddress | string | A ClaimType, amely tartalmazza az e-mail-cím. |
-| OutputClaim | tartomány | string | Az a jogcím-átalakítás után előállított takar meghívása – a tartományhoz. |
+| OutputClaim | Tartomány | string | Az a jogcím-átalakítás után előállított takar meghívása – a tartományhoz. |
 
 Használja a jogcím-átalakítás elemzése után a tartomány nevét a @ karaktert a felhasználó. Ez a személyes azonosításra alkalmas adatokat (PII) eltávolítása a naplózási adatok hasznos lehet. A következő jogcímek átalakítását bemutatja, hogyan elemezhető a tartomány nevét egy **e-mail** jogcím.
 
@@ -582,9 +582,9 @@ Például a következő jogcím-e átalakítási ellenőrzések Ha értékét **
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **claimToMatch**: Kiskorú
+    - **claimToMatch**: Alverzió
 - Bemeneti paraméterek:
-    - **matchTo**: Kiskorú
+    - **matchTo**: Alverzió
     - **stringComparison**: ordinalIgnoreCase 
     - **outputClaimIfMatched**:  B2C_V1_90001
 - Kimeneti jogcímek:

@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 7b983535f862a452c900d0a0a12ae0d79b56f92f
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: ab818c0bded71b4566173f4a6a720fce9bc539c3
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65850536"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514525"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>A Kubernetes alapvető fogalmainak Azure Kubernetes Service (AKS)
 
@@ -70,7 +70,7 @@ Az alkalmazások és a támogató szolgáltatások futtatásához, szükség van
 
 Az Azure virtuális gép méretét a csomópontok határozza meg, hány processzort, mennyi memóriát és a méret és típus (például nagy teljesítményű SSD vagy HDD rendszeres) rendelkezésre álló tárhelyet. Ha várhatóan nagy mennyiségű Processzor és memória vagy nagy teljesítményű tárolást igénylő alkalmazásokhoz szükség, ennek megfelelően tervezze meg a csomópont méretét. Is méretezheti a csomópontok számát felfelé az AKS-fürt az igényeknek.
 
-Az aks-ben a Virtuálisgép-lemezkép a csomópontok a fürtben jelenleg alapul Ubuntu Linux vagy Windows Server 2019. AKS-fürt létrehozása vagy vertikális felskálázás a csomópontok számát, az Azure platform a kért számú virtuális gépeket hoz létre, és konfigurálja őket. Nem tartozik a végezhető el a manuális konfiguráció.
+Az aks-ben a Virtuálisgép-lemezkép a csomópontok a fürtben jelenleg alapul Ubuntu Linux vagy Windows Server 2019. AKS-fürt létrehozása vagy vertikális felskálázás a csomópontok számát, az Azure platform a kért számú virtuális gépeket hoz létre, és konfigurálja őket. Nem tartozik a végezhető el a manuális konfiguráció. Ügynökcsomópontok számlázása a normál virtuális gépként, így kedvezményeket is van a Virtuálisgép-méretet használja (beleértve a [Azure foglalások][reservation-discounts]) automatikusan alkalmazza.
 
 Egyéni csomagok vagy egy másik gazdagép operációs Rendszeréhez, tároló-futtatókörnyezet, használni kell, ha a saját Kubernetes fürt használatával telepíthet [aks-motor][aks-engine]. A felsőbb rétegbeli `aks-engine` kiadott szolgáltatások és konfigurációs lehetőségeket talál, mielőtt hivatalosan támogatott AKS-fürtben. Például ha egy tároló-futtatókörnyezet Moby eltérő használni kívánt, használhatja `aks-engine` konfigurálásához és üzembe helyezéséhez a Kubernetes-fürt, amely az aktuális igényeinek.
 
@@ -270,3 +270,4 @@ Ez a cikk ismerteti az egyes a Kubernetes-alapösszetevők, és ezek hogyan vona
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md

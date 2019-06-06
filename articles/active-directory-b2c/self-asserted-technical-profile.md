@@ -2,20 +2,20 @@
 title: Az önellenőrzött technikai profil meghatározása egy egyéni házirendek az Azure Active Directory B2C |} A Microsoft Docs
 description: Adja meg az Azure Active Directory B2C-vel egyéni szabályzatok önellenőrzött technikai profil.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 41305cc5825344a61ff15ddb5deb629cd0f1c679
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c728660f1a77c02f1e4b5fdeb467a7dbba4e36a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691030"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512658"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az önellenőrzött technikai profil meghatározása egy Azure Active Directory B2C egyéni házirendek
 
@@ -127,7 +127,7 @@ Technikai profil REST API-t hívja meg az üzleti logikát, felülírja a bemene
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | setting.showContinueButton | Nem | Megjeleníti a Folytatás gombra. A lehetséges értékek: `true` (alapértelmezett), vagy `false` |
 | setting.showCancelButton | Nem | Megjeleníti a Mégse gombra. A lehetséges értékek: `true` (alapértelmezett), vagy `false` |

@@ -2,20 +2,20 @@
 title: Felhasználói áttelepítése megközelítést alkalmaz az Azure Active Directory B2C |} A Microsoft Docs
 description: Bemutatjuk a core és a speciális fogalmakat a Graph API-val, és igény szerint az Azure AD B2C-vel egyéni szabályzatok használatával felhasználói áttelepítése.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a4195d7c292100712e6d68831443369ab793bb95
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1e913b02f99095afb7ee1a3f2122e3c1fe1a60b5
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726119"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507662"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Felhasználói áttelepítése
 Az Azure Active Directory B2C az identitásszolgáltató áttelepítéskor (Azure AD B2C-vel), szükség lehet a felhasználói fiók áttelepítéséhez. Ez a cikk bemutatja, hogyan telepítheti át meglévő felhasználói fiókok bármely identitásszolgáltatótól az Azure AD B2C-vel. A cikk nem szinkronban kell lennie az előírásoknak megfelelő, de néhány forgatókönyv bemutatja. A fejlesztő feladata mindkét megközelítés megfelelőségét.
@@ -31,7 +31,7 @@ Az Azure AD B2C keresztül a felhasználó telepíthet át [Azure AD Graph API][
 
 Mindkét folyamatokban először futtatja az áttelepítést megelőző folyamatba, olvassa el a felhasználók a régi identitásszolgáltatótól származó, és új fiók létrehozása az Azure AD B2C-címtárát a. Ha nem rendelkezik a jelszót, a rendszer véletlenszerűen generált jelszó használatával létrehozni a fiókot. Majd kérje meg a felhasználó módosíthatja a jelszavát, vagy amikor a felhasználó első alkalommal bejelentkezik, az Azure AD B2C-vel kéri a felhasználót, hogy állítsa alaphelyzetbe.
 
-## <a name="password-policy"></a>Jelszószabályzat
+## <a name="password-policy"></a>Jelszóházirend
 Az Azure AD B2C-vel jelszóházirend (helyi fiókok esetében) az Azure AD-házirend alapján történik. Az Azure AD B2C regisztrálási vagy bejelentkezési és a jelszó alaphelyzetbe állítása a házirendek használja "erős" jelszó erőssége, és nem jár le a jelszavakat. További információkért lásd: [az Azure AD-jelszóházirendet][AD-PasswordPolicies].
 
 Ha a fiókok, amelyeket szeretné áttelepíteni használja, mint egy gyengébb jelszó erőssége a [kényszeríti ki az Azure AD B2C-vel erős jelszó erőssége][AD-PasswordPolicies], letilthatja az erős jelszó követelmény. Az alapértelmezett jelszó szabályzat módosításához állítsa a `passwordPolicies` tulajdonságot `DisableStrongPassword`. Ha például a következő módosíthatja a felhasználói kérés:
@@ -63,7 +63,7 @@ Először regisztrálja az áttelepítés alkalmazás Azure AD-ben. Ezután hozz
 1. Új alkalmazás létrehozásához az alábbiak szerint:
    - A **neve**, használjon **B2CUserMigration** vagy bármilyen más nevet.
    - A **alkalmazástípus**, használjon **Web app és az API**.
-   - A **bejelentkezési URL-**, használjon `https://localhost` (mert nem megfelelő ehhez az alkalmazáshoz).
+   - A **bejelentkezési URL-** , használjon `https://localhost` (mert nem megfelelő ehhez az alkalmazáshoz).
    - Kattintson a **Létrehozás** gombra.
    
 1. Az alkalmazás létrehozása után a a **alkalmazások** listájához, válassza ki az újonnan létrehozott **B2CUserMigration** alkalmazás.
@@ -145,7 +145,7 @@ A JSON-fájl szerkesztéséhez nyissa meg a `AADB2C.UserMigration.sln` Visual St
 ![Felhasználói adatok fájl](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Amint láthatja, a fájl felhasználói entitások listáját tartalmazza. Minden egyes felhasználó típusú entitás a következő tulajdonságokkal rendelkezik:
-- e-mail
+- email
 - displayName
 - Keresztnév
 - Vezetéknév
@@ -191,7 +191,7 @@ Az áttelepítés ellenőrzése, használja az alábbi két módszer egyikét:
    
 - Egy felhasználó lekérdezheti a bejelentkezési e-mail-címe, ez a mintaalkalmazás használja:
    
-   1. Futtassa az alábbi parancsot:
+   1. Futtassa a következő parancsot:
    
       ```Console
           UserMigration.exe 3 {email address}

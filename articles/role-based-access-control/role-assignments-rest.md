@@ -12,15 +12,15 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 05/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e9c307b2b2e720881acb983a2a1b00ac8e03dac4
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 3602e4ca83e828270ebef56c688670b896ca58a4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357060"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472731"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Rbac-RÓL és a REST API használatával Azure-erőforrásokhoz való hozzáférés kezelése
 
@@ -52,9 +52,9 @@ Az RBAC lista hozzáférés listázása a szerepkör-hozzárendeléseket. Szerep
 
     | Szűrés | Leírás |
     | --- | --- |
-    | `$filter=atScope()` | A listában csak a megadott hatókörön, a nem többek között a szerepkör-hozzárendelést subscopes szerepkör-hozzárendeléseit. |
-    | `$filter=principalId%20eq%20'{objectId}'` | Listázza egy adott felhasználó, csoport vagy egyszerű szolgáltatás szerepkör-hozzárendeléseit. |
-    | `$filter=assignedTo('{objectId}')` | Listázza egy adott felhasználó, köztük azokról, örökölt szerepkör-hozzárendeléseit. |
+    | `$filter=atScope()` | Szerepkör-hozzárendeléseit csak a megadott hatókörön, a nem többek között a szerepkör-hozzárendelést subscopes sorolja fel. |
+    | `$filter=principalId%20eq%20'{objectId}'` | Megjeleníti egy adott felhasználó, csoport vagy egyszerű szolgáltatás szerepkör-hozzárendeléseit. |
+    | `$filter=assignedTo('{objectId}')` | Megjeleníti egy megadott felhasználó vagy szolgáltatás szerepkör-hozzárendeléseit. Ha a felhasználó tagja egy csoportnak, amely rendelkezik a szerepkör-hozzárendelés, a szerepkör-hozzárendelés is szerepel. Ez a szűrő abban tranzitív csoportok, ami azt jelenti, hogy ha a felhasználó tagja egy csoportnak, és a csoport tagja egy másik csoportra, amely rendelkezik a szerepkör-hozzárendelés, a szerepkör-hozzárendelés is szerepel. Ez a szűrő csak a felhasználó vagy szolgáltatásnév objektumazonosító fogad el. Egy csoport objektumazonosító nem adhatók át. |
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 8a3c9a4fb1b43c1d00d66fee3548ccd10a1e075e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 5a659da4bcc86544c31d7a789779253a0f571f34
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969390"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497545"
 ---
 # <a name="monitor-site-recovery"></a>A figyelő a Site Recovery
 
@@ -52,7 +52,7 @@ Megtekintheti a gépeket a feladatátvételi teszt állapota a tárolóban.
 **állapot** | **Részletek**
 --- | ---
 A teszt elvégzése ajánlott | Feladatátvételi teszt nem volt, mert a védelem engedélyezése gépek.
-Sikeresen végrehajtva | A gépek vagy több sikeres feladatátvételi teszteket.
+Sikeresen végbement | A gépek vagy több sikeres feladatátvételi teszteket.
 Nem alkalmazható | A gépeket, amelyek jelenleg jogosultak a feladatátvételi teszt nem. Gépek, melyek feladatai át, például, kezdeti replikációs és tesztelési feladatátvétel/feladatátvételi vannak folyamatban.
 
 ## <a name="monitor-configuration-issues"></a>A figyelő konfigurációs problémák
@@ -190,8 +190,8 @@ Iratkozhat fel ezeket az eseményeket kritikus email értesítéseket kapni:
 
 A következőképpen iratkozhat fel:
 
-A tárolóban > **figyelés és jelentéskészítés** területén kattintson **Site Recovery-események**.
+A tárolóban > **figyelés** területén kattintson **Site Recovery-események**.
 1. Kattintson a **E-mail-értesítések**.
 1. A **e-mailes értesítés**, bekapcsolja az értesítéseket, és adja meg, akik küldéséhez. Minden előfizetés-Adminisztrátorok küldeni az értesítéseket, és igény szerint adott e-mail-címeket is elküldheti.
 
-    ![E-mail értesítés](./media/site-recovery-monitor-and-troubleshoot/email.png)
+    ![E-mail-értesítések](./media/site-recovery-monitor-and-troubleshoot/email.png)

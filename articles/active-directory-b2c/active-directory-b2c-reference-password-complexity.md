@@ -2,20 +2,20 @@
 title: Jelszó bonyolultsága – Azure Active Directory B2C |} A Microsoft Docs
 description: Hogyan kell konfigurálni a bonyolultsági feltételeknek az Azure Active Directory B2C a fogyasztók által megadott jelszót.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/11/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5c47a22883de4a3b28a42b390ef78368277e22be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 37f8305d8ed212cf2c6678b35220d823611b9d7a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703742"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509015"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Jelszavak bonyolultsági feltételeknek konfigurálása az Azure Active Directory B2C-vel
 
@@ -45,7 +45,7 @@ Ha egyéni szabályzatokat használ, akkor az ([jelszóösszetettség konfigurá
 
 ### <a name="comparison-chart"></a>Összehasonlítási táblázata
 
-| Összetettség | Leírás |
+| Bonyolultsága | Leírás |
 | --- | --- |
 | Egyszerű | Ez a jelszó legalább 8 és 64 karakter hosszú lehet. |
 | Erős | Ez a jelszó legalább 8 és 64 karakter hosszú lehet. 3 / 4 kisbetűk, nagybetűk, számok és szimbólumok van szükség. |

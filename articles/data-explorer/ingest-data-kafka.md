@@ -1,20 +1,20 @@
 ---
-title: 'Gyors útmutató: Betölteni az adatokat a Kafkából az Azure Data Explorer'
-description: Ez a rövid útmutatóban megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer kafka.
+title: Betölteni az adatokat a Kafkából az Azure Data Explorer
+description: Ebből a cikkből megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer kafka.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 05/17/2019
-ms.openlocfilehash: f36acb7237438848a53fdf91c291c4f67233af5d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901021"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497280"
 ---
-# <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Gyors útmutató: Betölteni az adatokat a Kafkából az Azure Data Explorer
+# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Betölteni az adatokat a Kafkából az Azure Data Explorer
  
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer Kafka Adatbetöltési (az adatok betöltése) kínál. A Kafka egy elosztott streamelési platform streamadatfolyamatok, amely megbízhatóan adatáthelyezést közötti rendszerek vagy alkalmazások kiépítését lehetővé teszi, hogy.
  
@@ -43,7 +43,7 @@ git clone git://github.com:Azure/kafka-sink-azure-kusto.git
 cd ./kafka-sink-azure-kusto/kafka/
 ```
 
-#### <a name="build"></a>Build
+#### <a name="build"></a>Felépítés
 
 Helyileg készítése a Mavennel előállításához egy `.jar` függőségekkel befejeződött.
 
@@ -162,5 +162,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
 ## <a name="next-steps"></a>További lépések
  
-> [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+* [Az Azure Data Explorer adatok lekérdezése](web-query-data.md)

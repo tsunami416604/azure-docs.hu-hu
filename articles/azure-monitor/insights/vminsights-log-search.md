@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 38979aa5cbb7eff0a949dfb77d6a29b2cdb5c67b
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 23ce57add0d55ba5901e2f5fcf82b3279d349cdc
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602078"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472589"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
 A virtuális gépek az Azure Monitor teljesítmény és a kapcsolati metrika, a számítógép és a folyamat leltáradatok és a állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics-munkaterületet az Azure monitorban.  Ezek az adatok érhető el [lekérdezés](../../azure-monitor/log-query/log-query-overview.md) az Azure monitorban. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
@@ -43,8 +43,8 @@ A következő mezőket és egyezmények a alkalmazni VMConnection és VMBoundPor
 
 - Számítógép: Teljes tartománynév gép Reporting 
 - AgentID: A Log Analytics-ügynökkel rendelkező gép egyedi azonosítója  
-- Számítógép: A gép ServiceMap által elérhetővé tett az Azure Resource Manager-erőforrás neve. A következő formában van *m – {GUID}*, ahol *GUID* ügynökazonosító, ugyanaz a GUID  
-- Folyamat: A folyamat ServiceMap által elérhetővé tett az Azure Resource Manager-erőforrás neve. A következő formában van *p-{hexadecimális karakterlánc}*. Folyamat gép hatókörön belüli egyedi, és hozzon létre egy egyedi folyamat azonosítója gépek között, kombinálhatja a gép és a folyamat mezőket. 
+- Számítógép: A gép ServiceMap által elérhetővé tett az Azure Resource Manager-erőforrás neve. A következő formában van *m – {GUID}* , ahol *GUID* ügynökazonosító, ugyanaz a GUID  
+- Folyamat: A folyamat ServiceMap által elérhetővé tett az Azure Resource Manager-erőforrás neve. A következő formában van *p-{hexadecimális karakterlánc}* . Folyamat gép hatókörön belüli egyedi, és hozzon létre egy egyedi folyamat azonosítója gépek között, kombinálhatja a gép és a folyamat mezőket. 
 - ProcessName: A jelentéskészítési folyamat végrehajtható fájljának nevét.
 - Az összes IP-címek olyan karakterláncok IPv4 kanonikus formátumban, például *13.107.3.160* 
 
@@ -124,13 +124,6 @@ Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek ös
 
 ### <a name="ports"></a>Portok 
 Egy gép azon portjait, aktívan bejövő forgalmat fogadja el vagy potenciálisan fogadja el a forgalmat, de a jelentéskészítési időszakban üresjáratban a VMBoundPort táblában írja.  
-
->[!NOTE]
->Az Azure Monitor-beli virtuális gépek nem támogatja, összegyűjtése és port adatok rögzítése a Log Analytics-munkaterület az alábbi régiókban:  
->- USA keleti régiója  
->- Nyugat-Európa
->
-> Az adatgyűjtés engedélyezve van a többi [támogatott régiók](vminsights-enable-overview.md#log-analytics) Azure Monitor-beli virtuális gépek számára. 
 
 Minden rekord VMBoundPort azonosíthatók a következő mezőket: 
 

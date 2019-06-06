@@ -2,20 +2,20 @@
 title: A technikai profil definiálása a JWT jogkivonat kibocsátója egy egyéni házirendek az Azure Active Directory B2C |} A Microsoft Docs
 description: A JWT jogkivonat kibocsátója az Azure Active Directory B2C egy egyéni házirendek definiálása a technikai profil.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 33dce27b69d080c57b925562ba83db0046b77ca9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 573463d91fc7a4119bd1bc30182588ff9dfdecb7
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683784"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510705"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>A technikai profil meghatározása az egyéni Azure Active Directory B2C-házirendek a JWT jogkivonat kibocsátója
 
@@ -44,11 +44,11 @@ A **InputClaims**, **OutputClaims**, és **PersistClaims** elemek a következők
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | Igen | A jogcímet, amely a felhasználói identitás kell használni az OAuth2 engedélyezési kód jogcím és frissítési jogkivonatok. Alapértelmezés szerint be kell állítani `objectId`, ha nem ad meg egy másik SubjectNamingInfo jogcím típusa. | 
 | SendTokenResponseBodyWithJsonNumbers | Nem | Mindig `true`. Örökölt formátumban, ahol numerikus értékeket karakterláncként JSON számok helyett, beállításra `false`. Ez az attribútum szükség van az ügyfelek, amelyek végrehajtása függőség a korábbi implementálhat, amely az ilyen tulajdonságok karakterláncként ad vissza. | 
-| token_lifetime_secs | Nem | Hozzáférési jogkivonatok élettartama. Az OAuth 2.0 a védett erőforrás eléréséhez használt tulajdonosi jogkivonatának életartama. Az alapértelmezett érték 3600 másodperc (1 óra). A (inkluzív) minimális érték 300 másodpercig (5 perc). A (inkluzív) maximális érték 86 400 másodperc (24 óra). | 
+| token_lifetime_secs | Nem | Hozzáférési jogkivonatok élettartama. A védett erőforrások eléréséhez az OAuth 2.0 tulajdonosi jogkivonat élettartama. Az alapértelmezett érték 3600 másodperc (1 óra). A (inkluzív) minimális érték 300 másodpercig (5 perc). A (inkluzív) maximális érték 86 400 másodperc (24 óra). | 
 | id_token_lifetime_secs | Nem | Azonosító jogkivonat élettartama. Az alapértelmezett érték 3600 másodperc (1 óra). A (inkluzív) minimális érték 300 másodpercig (5 perc). (A határokat is beleértve) a maximális érték másodperc 86,400 (24 óra). | 
 | refresh_token_lifetime_secs | Nem | Frissítse a jogkivonatok élettartamának. Amely előtt a frissítési jogkivonatok segítségével egy új hozzáférési jogkivonat beszerzése, ha az alkalmazás a offline_access hatókör volt megadva a maximális időtartam. Az alapértelmezett érték 120,9600 másodperc (14 nap). A (inkluzív) minimális érték 86 400 másodperc (24 óra). (A határokat is beleértve) a maximális érték 7,776,000 másodperc (90 nap). | 
 | rolling_refresh_token_lifetime_secs | Nem | Frissítési jogkivonat csúszóablak-élettartama. Ez az időtartam elteltével a felhasználónak kötelező hitelesítse magát újra, attól függetlenül, az érvényességi időtartam legutóbbi az alkalmazás által beszerzett jogkivonat frissítésére. Ha nem szeretné kényszeríteni a csúszóablak-élettartama, állítsa a allow_infinite_rolling_refresh_token `true`. Az alapértelmezett érték 7,776,000 másodperc (90 nap). A (inkluzív) minimális érték 86 400 másodperc (24 óra). (A határokat is beleértve) a maximális érték 31,536,000 másodperc (365 napos). | 
@@ -60,7 +60,7 @@ A **InputClaims**, **OutputClaims**, és **PersistClaims** elemek a következők
 
 A CryptographicKeys elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | issuer_secret | Igen | A X509 (RSA key set). a JWT jogkivonat aláírásához használni kívánt tanúsítványt. Ez a `B2C_1A_TokenSigningKeyContainer` kulcs, konfigurálva a [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md). | 
 | issuer_refresh_token_key | Igen | A X509 (RSA key set) tanúsítványt használja, a frissítési jogkivonat titkosítása. Konfigurált a `B2C_1A_TokenEncryptionKeyContainer` kulcs az [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md) |

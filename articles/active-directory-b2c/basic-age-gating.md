@@ -2,20 +2,20 @@
 title: Engedélyezze a korhatáralapú hozzáférés Azure Active Directory B2C |} A Microsoft Docs
 description: Ismerje meg az alkalmazás használatával kiskorúak azonosítása.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b594dc6eadce5093c58d693492f8e86eb92ae4e3
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 33b379a03c92b81885f7adfc70f7025a85ce9057
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228003"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511664"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C Korhatáralapú hozzáférés engedélyezése
 
@@ -41,7 +41,7 @@ Korhatáralapú magában foglalja a két kora érték: az életkor valaki már n
 | BH | Bahrein | Egyik sem | 21 |
 | CM | Kamerun | Egyik sem | 21 |
 | CY | Ciprus | 16 | 18 |
-| CZ | Csehország | 16 | 18 |
+| CZ | Cseh Köztársaság | 16 | 18 |
 | DE | Németország | 16 | 18 |
 | DK | Dánia | 16 | 18 |
 | EE | Észtország | 16 | 18 |

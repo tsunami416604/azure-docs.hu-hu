@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: sogup
-ms.openlocfilehash: b345f5e7f6f32d7fbb76d4f0227c8f4f925ff884
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 9fba7d679b7d0edb3c99207c99b23f9616c6fa0e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400296"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477584"
 ---
 # <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -76,7 +76,7 @@ Az Azure Backup automatikusan kezeli a tárolóhoz tartozó tároló. Meg kell a
    - Tudjon meg többet [földrajzi](../storage/common/storage-redundancy-grs.md) és [helyi](../storage/common/storage-redundancy-lrs.md) redundanciát.
 
 > [!NOTE]
-> Kiválasztása után a **tárolóreplikáció típusa** a **georedundáns** való **helyileg redundáns**, nem térhet vissza.
+> Módosítása **Tárolóreplikáció típusa** (helyileg redundáns / georedundáns) egy Recovery services-tároló kapcsolódik a tárban lévő biztonsági mentések konfigurálása előtt elvégezni. Miután a biztonsági mentés konfigurálása, módosíthatja a lehetőség le van tiltva, és nem módosítható a **Tárolóreplikáció típusa**. 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -2,20 +2,20 @@
 title: Predikátumok és PredicateValidations – az Azure Active Directory B2C |} A Microsoft Docs
 description: Közösségi fiók jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C a.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eff8e2cedd6f9388d811002a622dbcdcd0e7ed6c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 06879164c6f72891b734da077c667c6f90448fe4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714172"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512969"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikátumok és PredicateValidations
 
@@ -33,33 +33,33 @@ A **predikátum** elem egy alapvető érvényesítési ellenőrzéséhez egy jog
 
 A **predikátumokat** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Predikátum | 1:n | Predikátumok listája. | 
 
 A **predikátum** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A predikátum használt azonosító. Más elemek használhatja ezt az azonosítót a házirendben. |
-| Módszer | Igen | Az érvényesítéshez használandó módszer típusa. Érvényes értékek: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**, vagy **IsDateRange**. A **IsLengthRange** érték ellenőrzi, hogy a megadott minimális és maximális paraméter tartományán belül van-e egy karakterlánc jogcím értékének hossza. A **MatchesRegex** értékét ellenőrzi, hogy egy karakterlánc jogcím értéke megegyezik-e egy reguláris kifejezést. A **IncludesCharacters** értékét ellenőrzi, hogy jogcím egy karakterláncértéket tartalmaz egy karakterkészlet. A **IsDateRange** értékét ellenőrzi, hogy egy olyan dátumértéket jogcím megadott minimális és maximális paraméterek számos között. |
+| Módszer | Igen | Az érvényesítéshez használandó módszer típusa. Lehetséges értékek: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**, vagy **IsDateRange**. A **IsLengthRange** érték ellenőrzi, hogy a megadott minimális és maximális paraméter tartományán belül van-e egy karakterlánc jogcím értékének hossza. A **MatchesRegex** értékét ellenőrzi, hogy egy karakterlánc jogcím értéke megegyezik-e egy reguláris kifejezést. A **IncludesCharacters** értékét ellenőrzi, hogy jogcím egy karakterláncértéket tartalmaz egy karakterkészlet. A **IsDateRange** értékét ellenőrzi, hogy egy olyan dátumértéket jogcím megadott minimális és maximális paraméterek számos között. |
 
 A **predikátum** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 | A felhasználók számára, ha az ellenőrzés sikertelen, egy hibaüzenet. Ez a karakterlánc honosítható használatával a [nyelvi testreszabás](localization.md) |
 | Paraméterek | 1:1 | A karakterlánc érvényesítési metódus típusú paramétereit. | 
 
 A **paraméterek** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Paraméter | 1:n | A karakterlánc érvényesítési metódus típusú paramétereit. | 
 
 A **paraméter** elem tartalmazza a következő attribútumokat:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Azonosító | 1:1 | A paraméter-azonosítója. |
 
@@ -132,37 +132,37 @@ A predikátum meghatározása egy jogcímtípust összevetni az érvényesítés
 
 A **PredicateValidations** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1:n | A predikátum érvényesítési listája. | 
 
 A **PredicateValidation** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A predikátum érvényesítési használt azonosító. A **takar** elem használhatja ezt az azonosítót a házirendben. |
 
 A **PredicateValidation** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | PredicateGroups | 1:n | Predikátum csoportok listája. | 
 
 A **PredicateGroups** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | PredicateGroup | 1:n | Predikátumok listája. | 
 
 A **PredicateGroup** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A predikátum csoport használt azonosító.  |
 
 A **PredicateGroup** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 |  A predikátum, hogy a felhasználók tudni, hogy milyen előnyöket leírását, adjon meg. | 
 | PredicateReferences | 1:n | Predikátumhivatkozások listáját. | 
@@ -175,13 +175,13 @@ A **PredicateReferences** elem tartalmazza a következő attribútumokat:
 
 A **PredicateReferences** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | PredicateReference | 1:n | A predikátum hivatkozik. | 
 
 A **PredicateReference** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A predikátum érvényesítési használt azonosító.  |
 

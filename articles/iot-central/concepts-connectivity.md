@@ -7,13 +7,13 @@ ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: timlt
-ms.openlocfilehash: f11d1c6b727799f2cc67c6f5012dc4d117556d2e
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+manager: philmea
+ms.openlocfilehash: 533327ca1d202f15376e580d20317ddaf0b1d302
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467813"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693185"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
 
@@ -139,7 +139,7 @@ A következő lépések írják le részletesebben a folyamat. A lépések kiss�
 
 1. A csatlakoztatott eszköz kezdetben megjelenik-e egy **társítatlan eszköz** a a **Device Explorer** lapot. Az eszköz kiépítési állapot **regisztrált**. **Társítsa** az eszköz számára a megfelelő eszköz sablont, és hagyja jóvá az eszköz csatlakoztatása az IoT Central alkalmazáshoz. Ezután az IoT Hub kapcsolati karakterlánc lekérése és adatokat küldjön az eszköz. Eszközök üzembe helyezését a művelet befejeződött, a kiépítési állapota ezután **kiépített**.
 
-## <a name="provisioning-status"></a>Létesítés állapota
+## <a name="provisioning-status"></a>kiépítési állapot
 
 Ha egy valódi eszköz csatlakozik az IoT Central alkalmazáshoz, a kiépítési állapot módosul a következő:
 
@@ -197,7 +197,7 @@ Szerinti kiválaszt egyet ezek a különbség a protokollok és útmutatást kap
 
 Ha az eszköz nem tudja használni a támogatott protokollok, az Azure IoT Edge segítségével protokoll átalakítás. IoT Edge feldolgozás kiszervezése az Edge-ben az Azure IoT Central-alkalmazás más üzletiintelligencia-az-a-edge forgatókönyvek támogatja.
 
-## <a name="security"></a>Biztonsági
+## <a name="security"></a>Biztonság
 
 Eszközök és az Azure IoT Central között továbbított összes adat titkosítva van. Az IoT Hub olyan eszköz, amely csatlakozik az IoT Hub eszköz felé néző végpontok bármelyikét, érkező minden kérés hitelesíti. Elkerülheti a hitelesítő adatok cseréje a hálózaton keresztül, az eszköz a aláírt jogkivonatokat használ az hitelesítéséhez. További információkért tekintse meg, [férhet hozzá az IoT Hub](../iot-hub/iot-hub-devguide-security.md).
 

@@ -1,6 +1,6 @@
 ---
 title: Általános célú szolgáltatásszint – Azure SQL Database |} A Microsoft Docs
-description: További tudnivalók az Azure SQL Database általános célú csomagban
+description: További tudnivalók az Azure SQL Database általános célú csomag
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,12 +12,12 @@ ms.author: jovanpop-msft
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: dc379f1ee67174cd806840e4244054701d18f0d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b972ea985a09457d8b6a17a292e18754761f5a6e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709150"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479193"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Általános célú szolgáltatásszint – Azure SQL Database
 
@@ -45,10 +45,11 @@ Alapul szolgáló infrastruktúra egy része sikertelen lesz, amikor az adatbáz
 
 ## <a name="when-to-choose-this-service-tier"></a>Mikor érdemes a szolgáltatási szint kiválasztása
 
-Általános célú szolgáltatási szinten egy alapértelmezett szolgáltatási rétegben az általános számítási feladatok többsége tervezett, Azure SQL Database-ben. Ha egy teljes körűen felügyelt adatbázis-kezelő a tárolóeszközök késése 5-10 ms, amely megfelel a legtöbb esetben az Azure az SQL IaaS között 99,99 %-os SLA-val, általános célú csomagban lehetőség az Ön számára.
+Általános célú szolgáltatási szinten egy alapértelmezett szolgáltatási rétegben az általános számítási feladatok többsége tervezett, Azure SQL Database-ben. Ha egy teljes körűen felügyelt adatbázis-kezelő a tárolóeszközök késése 5-10 ms, amelyek megfelelnek a legtöbb esetben az Azure az SQL IaaS között 99,99 %-os SLA-val, általános célú csomagban lehetőség az Ön számára.
 
 ## <a name="next-steps"></a>További lépések
 
+- Keresse meg az erőforrás tulajdonságait (mag, IO, memória száma) az általános célú/Standard szintű [felügyelt példány](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), egyetlen adatbázis-kezelő [Virtuálismag-modell](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) vagy [DTU modell](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes), vagy A rugalmas készlet [Virtuálismag-modell](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) és [DTU modell](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits).
 - Ismerje meg [üzletileg kritikus fontosságú](sql-database-service-tier-business-critical.md) és [nagy kapacitású](sql-database-service-tier-hyperscale.md) szinten.
 - Ismerje meg [Service Fabric](../service-fabric/service-fabric-overview.md).
 - A magas rendelkezésre állású és vész-helyreállítási További beállításokért lásd: [üzletmenet-folytonossági](sql-database-business-continuity.md).

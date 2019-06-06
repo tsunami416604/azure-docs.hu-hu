@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 970d533424e2e603a96bf7e36317cbcdf5110304
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: fc2c23d93a1800232b81c5eb2f861e8b71c3e437
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306815"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428067"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Az API Management integrálása a Service Fabric az Azure-ban
 
@@ -43,7 +43,7 @@ Előkészületek:
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Telepítés [az Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy [az Azure CLI](/cli/azure/install-azure-cli).
 * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) egy hálózati biztonsági csoportban.
-* Ha Windows-fürtöt telepít, állítson be egy Windows fejlesztési környezetet. Telepítse a [Visual Studio 2017](https://www.visualstudio.com) szoftvert, valamint az **Azure-fejlesztési**, **ASP.NET- és webes fejlesztési**, továbbá a **.NET Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
+* Ha Windows-fürtöt telepít, állítson be egy Windows fejlesztési környezetet. Telepítés [Visual Studio 2019](https://www.visualstudio.com) és a **Azure-fejlesztési**, **ASP.NET és webfejlesztési**, és **.NET Core platformfüggetlen fejlesztési**számítási feladatokhoz.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
 
 ## <a name="network-topology"></a>Hálózati topológia
 
@@ -88,7 +88,7 @@ Indítsa el a Visual Studiót rendszergazdaként, és hozzon létre egy ASP.NET 
     </Resources>
     ```
 
-    A port eltávolításával lehetővé teszi, hogy a Service Fabric dinamikusan határozzon meg egy portot az alkalmazás porttartományából, a fürt Resource Manager-sablonjában található hálózati biztonsági csoporton keresztül megnyitva azt, és engedélyezze az API Management szolgáltatásból bejövő forgalmat.
+    A port eltávolításával lehetővé teszi, hogy a Service Fabric az alkalmazás porttartományából, nyitják meg a hálózati biztonsági csoport a fürt Resource Manager-sablon, a bejövő forgalmat, az API Management lehetővé teszi a dinamikus port megadásához.
 
  6. Nyomja le az F5 gombot a Visual Studióban, hogy ellenőrizhesse a Web API helyi elérhetőségét.
 

@@ -13,23 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 06/04/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d3ab6f53fdb11b0b8d643868d0692667c8672f9
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: c5c45071406c420546a90a71751045fea926804f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545179"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513519"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>A Microsoft identity platform és az OAuth 2.0 hitelesítési kódfolyamat
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Az OAuth 2.0 hitelesítési kódmegadás alkalmazást, amely egy eszközön a védett erőforrások, például a webes API-k eléréséhez használható. A Microsoft identity platform megvalósítása az OAuth 2.0 használatával, hozzáadhat jelentkezzen be, és az API eléréséhez a mobil- és asztali alkalmazásokhoz. Ez az Útmutató nyelvtől független, és ismerteti, hogyan küldhetők és fogadhatók HTTP-üzenetek bármelyikének használata nélkül a [Azure nyílt forráskódú hitelesítési tárak](active-directory-authentication-libraries.md).
+Az OAuth 2.0 hitelesítési kódmegadás alkalmazást, amely egy eszközön a védett erőforrások, például a webes API-k eléréséhez használható. A Microsoft identity platform megvalósítása az OAuth 2.0 használatával, hozzáadhat jelentkezzen be, és az API eléréséhez a mobil- és asztali alkalmazásokhoz. Ez az Útmutató nyelvtől független, és ismerteti, hogyan küldhetők és fogadhatók HTTP-üzenetek bármelyikének használata nélkül a [Azure nyílt forráskódú hitelesítési tárak](reference-v2-libraries.md).
 
 > [!NOTE]
 > A Microsoft identity platform végpont nem az összes Azure Active Directory-forgatókönyvet és funkciót támogatja. Annak megállapításához, hogy ha a Microsoft identity platform végpontot használja, olvassa el [a Microsoft identity platform korlátozásai](active-directory-v2-limitations.md).
@@ -64,18 +64,18 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Paraméter    | Required/optional | Leírás |
 |--------------|-------------|--------------|
-| `tenant`    | szükséges    | A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További részletekért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints).  |
-| `client_id`   | szükséges    | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt.  |
-| `response_type` | szükséges    | Tartalmaznia kell `code` az engedélyezési kód folyamata.       |
-| `redirect_uri`  | szükséges | Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. A natív és mobil alkalmazások esetén az alapértelmezett értéket használjon `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
-| `scope`  | szükséges    | Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md) , hogy szeretné-e a felhasználót, hogy engedélyt adjanak az. |
+| `tenant`    | Szükséges    | A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További részletekért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints).  |
+| `client_id`   | Szükséges    | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt.  |
+| `response_type` | Szükséges    | Tartalmaznia kell `code` az engedélyezési kód folyamata.       |
+| `redirect_uri`  | Szükséges | Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. A natív és mobil alkalmazások esetén az alapértelmezett értéket használjon `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
+| `scope`  | Szükséges    | Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md) , hogy szeretné-e a felhasználót, hogy engedélyt adjanak az. |
 | `response_mode`   | Ajánlott | Meghatározza a létrejövő jogkivonat vissza küldhet az alkalmazáshoz használandó módszert. A következők egyike lehet:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` a kódot biztosít az átirányítási URI-t a lekérdezési sztring paramétereként. Ha Ön a kért egy azonosító jogkivonat, használja az implicit folyamatot, nem használhatja `query` meghatározott a [OpenID specifikációja](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Ha csak a kódot kért, `query`, `fragment`, vagy `form_post`. `form_post` az átirányítási URI-t a kódot egy HOZZÁSZÓLÁSRA hajtja végre. További információ: [OpenID Connect protokollal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
 | `state`                 | Ajánlott | A kérésben is a token válaszban visszaadott érték. Bármilyen tartalmat, akinél karakterlánc lehet. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](https://tools.ietf.org/html/rfc6749#section-10.12). Az érték is az alkalmazás a felhasználói állapot kapcsolatos információkat is kódolása, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet. |
-| `prompt`  | választható    | Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges. Jelenleg az egyetlen érvényes értékek a következők `login`, `none`, és `consent`.<br/><br/>- `prompt=login` a felhasználónak meg kell adnia a hitelesítő adataik adott kérelem negating egyszeri bejelentkezéses kényszeríti.<br/>- `prompt=none` Ellenkező – biztosítja, hogy a felhasználó el minden olyan interaktív kérdés nem megjelenik. Ha a kérés nem teljesíthető csendes egyszeri bejelentkezéses keresztül, a Microsoft identity platform végpont adja vissza egy `interaction_required` hiba.<br/>- `prompt=consent` Elindítja az OAuth-hozzájárulási párbeszédpanel kéri a felhasználót, hogy az alkalmazás engedélyeket, a felhasználó bejelentkezése után. |
-| `login_hint`  | választható    | Segítségével előre töltse ki a felhasználónév, e-mail-cím mező a bejelentkezési oldal a felhasználó számára, ha ismeri a kívánt időben felhasználóneve. Alkalmazások gyakran ismételt hitelesítés kellene már kinyert a felhasználónevet egy korábbi bejelentkezési használata során fogja használni ezt a paramétert a `preferred_username` jogcím.   |
-| `domain_hint`  | választható    | Lehetnek `consumers` vagy `organizations`.<br/><br/>Ha tartalmazza, azt kihagyja az e-mail-alapú felderítési folyamat, hogy a felhasználó végighalad a bejelentkezési oldalon és a egy némileg több zökkenőmentes felhasználói élményt. Gyakran alkalmazásokat fogja használni ezt a paramétert ismételt hitelesítés során oly módon, a `tid` a korábbi bejelentkezési. Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad`, használjon `domain_hint=consumers`. Ellenkező esetben használjon `domain_hint=organizations`.  |
-| `code_challenge_method` | választható    | Kódolás használt módszer a `code_verifier` számára a `code_challenge` paraméter. A következő értékek egyike lehet:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Ha ki van zárva, `code_challenge` adatforrásmérete egyszerű szöveges Ha `code_challenge` részét képezi. Egyaránt támogatja a Microsoft identity platform `plain` és `S256`. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
-| `code_challenge`  | választható | Használt kód engedélyezések koncepció kulcs használatával a kód Exchange (PKCE) egy natív ügyfél. Kötelező, ha `code_challenge_method` részét képezi. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| `prompt`  | Nem kötelező    | Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges. Jelenleg az egyetlen érvényes értékek a következők `login`, `none`, és `consent`.<br/><br/>- `prompt=login` a felhasználónak meg kell adnia a hitelesítő adataik adott kérelem negating egyszeri bejelentkezéses kényszeríti.<br/>- `prompt=none` Ellenkező – biztosítja, hogy a felhasználó el minden olyan interaktív kérdés nem megjelenik. Ha a kérés nem teljesíthető csendes egyszeri bejelentkezéses keresztül, a Microsoft identity platform végpont adja vissza egy `interaction_required` hiba.<br/>- `prompt=consent` Elindítja az OAuth-hozzájárulási párbeszédpanel kéri a felhasználót, hogy az alkalmazás engedélyeket, a felhasználó bejelentkezése után. |
+| `login_hint`  | Nem kötelező    | Segítségével előre töltse ki a felhasználónév, e-mail-cím mező a bejelentkezési oldal a felhasználó számára, ha ismeri a kívánt időben felhasználóneve. Alkalmazások gyakran ismételt hitelesítés kellene már kinyert a felhasználónevet egy korábbi bejelentkezési használata során fogja használni ezt a paramétert a `preferred_username` jogcím.   |
+| `domain_hint`  | Nem kötelező    | Lehetnek `consumers` vagy `organizations`.<br/><br/>Ha tartalmazza, azt kihagyja az e-mail-alapú felderítési folyamat, hogy a felhasználó végighalad a bejelentkezési oldalon és a egy némileg több zökkenőmentes felhasználói élményt. Gyakran alkalmazásokat fogja használni ezt a paramétert ismételt hitelesítés során oly módon, a `tid` a korábbi bejelentkezési. Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad`, használjon `domain_hint=consumers`. Ellenkező esetben használjon `domain_hint=organizations`.  |
+| `code_challenge_method` | Nem kötelező    | Kódolás használt módszer a `code_verifier` számára a `code_challenge` paraméter. A következő értékek egyike lehet:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Ha ki van zárva, `code_challenge` adatforrásmérete egyszerű szöveges Ha `code_challenge` részét képezi. Egyaránt támogatja a Microsoft identity platform `plain` és `S256`. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| `code_challenge`  | Nem kötelező | Használt kód engedélyezések koncepció kulcs használatával a kód Exchange (PKCE) egy natív ügyfél. Kötelező, ha `code_challenge_method` részét képezi. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 Ezen a ponton a felhasználó kell adnia megadják hitelesítő adataikat, és a hitelesítés végrehajtásához. A Microsoft identity platform végpont is biztosítja, hogy a felhasználó hozzájárult a megadott engedélyeket a `scope` lekérdezési paraméter. Ha a felhasználó nem egyezett bele bármelyik ezeket az engedélyeket, azt fogja kéri a felhasználót az járul hozzá a szükséges engedélyekkel. A részletek [engedélyek, beleegyezése és több-bérlős alkalmazások az itt elérhető](v2-permissions-and-consent.md).
 
@@ -151,14 +151,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Paraméter  | Required/optional | Leírás     |
 |------------|-------------------|----------------|
-| `tenant`   | szükséges   | A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További részletekért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints).  |
-| `client_id` | szükséges  | Az alkalmazás (ügyfél) AZONOSÍTÓJÁT, amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt lapot. |
-| `grant_type` | szükséges   | Meg kell `authorization_code` az engedélyezési kód folyamata.   |
-| `scope`      | szükséges   | Hatókörök szóközzel elválasztott listáját. A hatókörök, ez a szakasz a kért megfelelő vagy a hatókörök, az első alapját képező kért egy részét kell lennie. Ha az ebben a kérelemben megadott hatókörök span több erőforrás-kiszolgáló, akkor a Microsoft identity platform végpont vissza az első hatókörében megadott erőforrás-jogkivonat. A hatókörök részletes magyarázatát, tekintse meg [engedélyek, beleegyezése és hatókörök](v2-permissions-and-consent.md). |
-| `code`          | szükséges  | A folyamat első szakasza beszerzett authorization_code. |
-| `redirect_uri`  | szükséges  | Az azonos redirect_uri használt értékkel beszerezni a authorization_code. |
+| `tenant`   | Szükséges   | A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További részletekért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints).  |
+| `client_id` | Szükséges  | Az alkalmazás (ügyfél) AZONOSÍTÓJÁT, amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt lapot. |
+| `grant_type` | Szükséges   | Meg kell `authorization_code` az engedélyezési kód folyamata.   |
+| `scope`      | Szükséges   | Hatókörök szóközzel elválasztott listáját. A hatókörök, ez a szakasz a kért megfelelő vagy a hatókörök, az első alapját képező kért egy részét kell lennie. Ha az ebben a kérelemben megadott hatókörök span több erőforrás-kiszolgáló, akkor a Microsoft identity platform végpont vissza az első hatókörében megadott erőforrás-jogkivonat. A hatókörök részletes magyarázatát, tekintse meg [engedélyek, beleegyezése és hatókörök](v2-permissions-and-consent.md). |
+| `code`          | Szükséges  | A folyamat első szakasza beszerzett authorization_code. |
+| `redirect_uri`  | Szükséges  | Az azonos redirect_uri használt értékkel beszerezni a authorization_code. |
 | `client_secret` | a web apps szükséges | Az alkalmazás titkos, amelyet az alkalmazás az alkalmazás regisztrációs portálon létrehozott. Egy natív alkalmazást, ne használja az alkalmazás titkos, mert client_secrets megbízhatóan nem tárolható az eszközökön. Webalkalmazások és webes API-kat, amelynek a titkos ügyfélkódot tárolja biztonságos helyen a kiszolgálói oldalon lehetősége van szükség.  A titkos ügyfélkulcsot kell URL-kódolású elküldése előtt.  |
-| `code_verifier` | választható  | Az azonos code_verifier a authorization_code beszerzéséhez használt. Szükséges, ha az engedélyezési kód engedélyezési kérésben PKCE használt. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| `code_verifier` | Nem kötelező  | Az azonos code_verifier a authorization_code beszerzéséhez használt. Szükséges, ha az engedélyezési kód engedélyezési kérésben PKCE használt. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>A sikeres válasz
 
@@ -264,11 +264,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Paraméter     |                | Leírás        |
 |---------------|----------------|--------------------|
-| `tenant`        | szükséges     | A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További részletekért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints).   |
-| `client_id`     | szükséges    | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
-| `grant_type`    | szükséges    | Meg kell `refresh_token` esetében ez a hitelesítési kódfolyamat alapját képező. |
-| `scope`         | szükséges    | Hatókörök szóközzel elválasztott listáját. A hatókörök, ez a szakasz a kért megfelelő vagy a hatókörök, az eredeti authorization_code kérelem alapját képező kért egy részét kell lennie. Ha az ebben a kérelemben megadott hatókörök span több erőforrás-kiszolgáló, akkor a Microsoft identity platform végpont vissza az első hatókörében megadott erőforrás-jogkivonat. A hatókörök részletes magyarázatát, tekintse meg [engedélyek, beleegyezése és hatókörök](v2-permissions-and-consent.md). |
-| `refresh_token` | szükséges    | A folyamat második szakasz beszerzett refresh_token. |
+| `tenant`        | Szükséges     | A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További részletekért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints).   |
+| `client_id`     | Szükséges    | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
+| `grant_type`    | Szükséges    | Meg kell `refresh_token` esetében ez a hitelesítési kódfolyamat alapját képező. |
+| `scope`         | Szükséges    | Hatókörök szóközzel elválasztott listáját. A hatókörök, ez a szakasz a kért megfelelő vagy a hatókörök, az eredeti authorization_code kérelem alapját képező kért egy részét kell lennie. Ha az ebben a kérelemben megadott hatókörök span több erőforrás-kiszolgáló, akkor a Microsoft identity platform végpont vissza az első hatókörében megadott erőforrás-jogkivonat. A hatókörök részletes magyarázatát, tekintse meg [engedélyek, beleegyezése és hatókörök](v2-permissions-and-consent.md). |
+| `refresh_token` | Szükséges    | A folyamat második szakasz beszerzett refresh_token. |
 | `client_secret` | a web apps szükséges | Az alkalmazás titkos, amelyet az alkalmazás az alkalmazás regisztrációs portálon létrehozott. Azt kell nem használható egy natív alkalmazást, mert client_secrets megbízhatóan nem tárolható az eszközökön. Webalkalmazások és webes API-kat, amelynek a titkos ügyfélkódot tárolja biztonságos helyen a kiszolgálói oldalon lehetősége van szükség. |
 
 #### <a name="successful-response"></a>A sikeres válasz

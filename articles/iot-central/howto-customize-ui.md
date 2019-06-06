@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0256396cd228898f3852772b113e6064a0656746
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 4d385f1e8c883453b4153ca4c9119d3be0a608bb
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237657"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495561"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Az Azure IoT-központ felhasználói felület testreszabása 
 
@@ -75,6 +75,5 @@ Adjon hozzá új bejegyzéseket a Súgó menü is, és távolítsa el az alapér
 
 Most, hogy megismerte, hogyan szabhatja testre a felhasználói felület az IoT-központ alkalmazásban, az alábbiakban néhány javasolt következő lépések:
 
-> [!div class="nextstepaction"]
-> [Az alkalmazás felügyelete](./howto-administer.md)
-> [az irányítópult konfigurálása](./howto-configure-homepage.md)
+- [Az alkalmazás felügyelete](./howto-administer.md)
+- [Az irányítópult konfigurálása](./howto-configure-homepage.md)

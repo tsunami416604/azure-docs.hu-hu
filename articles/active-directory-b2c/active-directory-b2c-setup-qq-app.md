@@ -2,20 +2,20 @@
 title: Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal Gyorsműveletek beállítása |} A Microsoft Docs
 description: Adja meg a regisztráció és bejelentkezés Gyorsműveletek az alkalmazások az Azure Active Directory B2C fiókkal rendelkező ügyfelek számára.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6eba804fc96a91d17644c903e1462c31c0fc9149
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7744d99bb97d11b7702c8ee388cf27bc0cc087cc
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704161"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508346"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal Gyorsműveletek beállítása
 
@@ -54,7 +54,7 @@ Gyorsműveletek fiók használatára az identitásszolgáltatójaként az Azure 
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.
 5. Adjon meg egy **neve**. Adja meg például *Gyorsműveletek*.
-6. Válassza ki **identitásszolgáltató típusa**válassza **Gyorsműveletek (előzetes verzió)**, és kattintson a **OK**.
+6. Válassza ki **identitásszolgáltató típusa**válassza **Gyorsműveletek (előzetes verzió)** , és kattintson a **OK**.
 7. Válassza ki **az identitásszolgáltató beállítása** , és adja meg az alkalmazás azonosítója, mint korábban rögzített a **ügyfél-azonosító** , és írja be az Alkalmazáskulcs, feljegyzett a **titkos Ügyfélkód** a Gyorsműveletek az a korábban létrehozott alkalmazás.
 8. Kattintson a **OK** majd **létrehozás** a Gyorsműveletek konfigurációjának mentéséhez.
 

@@ -8,16 +8,18 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e88977cc4d99df176116e6be7d8e06adb6297782
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 9d29445054848d798476fed8184b89f9b6c1210f
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209580"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497591"
 ---
 # <a name="vlans-and-subnets-overview"></a>Virtuális helyi hálózatok és alhálózatok áttekintése
 
 CloudSimple biztosít egy hálózati régiónként a CloudSimple szolgáltatás telepítési helyét.  A hálózat egy egyetlen 3. rétegbeli TCP-címterületek IP-útválasztás alapértelmezés szerint engedélyezve.  Az összes magánfelhők és alhálózatok ebben a régióban létrehozott kommunikálhatnak egymással további konfiguráció nélkül.  Elosztott portcsoportokat a vcenter-kiszolgáló a VLAN-ok használatával is létrehozhat.
+
+![CloudSimple hálózati topológia](media/cloudsimple-network-topology.png)
 
 ## <a name="vlans"></a>VLAN-OK
 
@@ -34,6 +36,10 @@ Egy alhálózat is létrehozhat, ha egy VLAN-t, az alhálózat címtartománya a
 Magánfelhő létrehozása egy elkülönített VMware-környezetet (ESXi-gazdagépek, vCenter, vsan-hoz és NSX), a vCenter-kiszolgáló által felügyelt környezetben.  A kiválasztott hálózati összetevőket vannak üzembe helyezve **vSphere/vSAN-alhálózatokat CIDR**.  A hálózati CIDR-tartományt az üzembe helyezés során különböző alhálózatokon van felosztva.
 
 Minimális vSphere/vSAN-alhálózatokat CIDR-tartományt előtag: **/24** maximális vSphere/vSAN-alhálózatokat CIDR-tartományt előtag:   **/21-én**
+
+> [!CAUTION]
+> A vSphere/vSAN CIDR-tartományt IP-címek szerint Magánfelhő-infrastruktúra számára vannak fenntartva. Ne használjon IP-cím a tartományban lévő bármelyik virtuális gépet.
+
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/vSAN-alhálózatokat CIDR-tartományt korlátok
 

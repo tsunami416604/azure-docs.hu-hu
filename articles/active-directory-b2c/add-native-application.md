@@ -2,20 +2,20 @@
 title: Adjon hozzá egy natív ügyfélalkalmazás – Azure Active Directory B2C |} A Microsoft Docs
 description: Ismerje meg, hogyan adhat hozzá az Active Directory B2C-bérlő natív ügyfélalkalmazás.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
-ms.author: davidmu
+ms.author: marsma
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 772b6b8a4d71b7d1c6418651ee0a4ee7b03af0cc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b4e9b95cb226aeec686816d0ed7160062e110c62
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703911"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511824"
 ---
 # <a name="add-a-native-client-application-to-your-azure-active-directory-b2c-tenant"></a>Egy natív ügyfélalkalmazást az Azure Active Directory B2C-bérlő hozzáadása
 

@@ -2,20 +2,20 @@
 title: A honosítás – az Azure Active Directory B2C |} A Microsoft Docs
 description: Adja meg a honosítás elem egyéni szabályzat az Azure Active Directory B2C-t.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2291bdd270a15c4932d79b124616400d2667c891
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a02983c5019870e8b17db48184b2f238a82f8a40
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705844"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510585"
 ---
 # <a name="localization"></a>Honosítás
 
@@ -39,13 +39,13 @@ A **honosítási** elem lehetővé teszi, hogy több területi beállításokat,
 
 A **honosítási** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Enabled | Nem | A lehetséges értékek: `true` vagy `false`. |
 
 A **honosítási** elem a következő XML-elemeket tartalmazza
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1:n | Támogatott nyelvek listája. | 
 | LocalizedResources | 0:n | Honosított erőforrások listája. |
@@ -63,7 +63,7 @@ A **SupportedLanguages** elem tartalmazza a következő attribútumokat:
 
 A **SupportedLanguages** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1:n | Tartalom, amely megfelel egy nyelvcímkét RFC 5646 - nyelvek azonosító címkék szerint jeleníti meg. | 
 
@@ -71,13 +71,13 @@ A **SupportedLanguages** elem a következő elemeket tartalmazza:
 
 A **LocalizedResources** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | Honosított erőforrások egyedi azonosításához használt azonosító. |
 
 A **LocalizedResources** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0:n | Teljes gyűjtemények különböző kulturális környezetek határozza meg. Egy gyűjtemény elemek és számos országban különböző karakterláncok különböző számú rendelkezhet. Gyűjtemények közé tartoznak az enumerálások jelennek meg, a jogcím-típusok. Például ország/régió listáját egy legördülő lista a felhasználó számára látható. |
 | LocalizedStrings | 0:n | Meghatározza a karakterláncokat, kivéve azokat, amelyek megjelennek a gyűjtemények, a különböző kulturális környezetek karakterláncok mindegyikét. |
@@ -86,7 +86,7 @@ A **LocalizedResources** elem a következő elemeket tartalmazza:
 
 A **LocalizedCollections** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1:n | Támogatott nyelvek listája. |
 
@@ -102,13 +102,13 @@ A **LocalizedCollection** elem tartalmazza a következő attribútumokat:
 
 A **LocalizedCollection** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Elem | 0:n | A felhasználó számára egy jogcímet a felhasználói felületen, például egy értéket a legördülő listában válassza ki valamelyik elérhető lehetőség határozza meg. |
 
 A **elem** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Text | Igen | A megjelenített felhasználóbarát mezőnevét karakterlánc, hogy megjelenjen-e a felhasználó a felhasználói felületen ezt a lehetőséget választja. |
 | Érték | Igen | A karakterlánc jogcím társított Ez a beállítás értéke. |
@@ -138,13 +138,13 @@ Az alábbi példa bemutatja a használatát a **LocalizedCollections** elemet. T
 
 A **LocalizedStrings** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1:n | Honosított karakterlánc. |
 
 A **LocalizedString** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Elemtípus | Igen | A hivatkozás egy jogcím típusú elem vagy egy felhasználói felület elem a házirendben. A lehetséges értékek: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`, vagy a. A `ClaimType` honosítani az egyik jogcím attribútumait, a karakterlánc megadott értéket használja. A `UxElement` honosítani a felhasználói felületi elemekre a elemtípusú megadott egyik értéket használja. A `ErrorMessage` honosítása, a rendszer hibaüzenetek a elemtípusú megadott értéket használja. A `Predicate` honosítani az egyik érték szolgál a [predikátum](predicates.md) hibaüzeneteket, a karakterlánc megadott módon. A `InputValidation` honosítani az egyik érték szolgál a [PredicateValidation](predicates.md) hibaüzenetek a elemtípusú megadott csoportban. |
 | ElementId | Igen | Ha **ElementType** értékre van állítva `ClaimType`, `Predicate`, vagy `InputValidation`, ez az elem már az ClaimsSchema szakaszban meghatározott jogcím típusa hivatkozást tartalmaz. | 

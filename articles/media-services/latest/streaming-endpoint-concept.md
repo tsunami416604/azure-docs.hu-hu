@@ -11,14 +11,14 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 3f939154d2b34e6dc043e505ab89897221bcfe23
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3e1a5d8ba8b6d0ec8e3ec1ba9506a88ee87d8ed1
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149229"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515727"
 ---
-# <a name="streaming-endpoints-origin"></a>Streamvégpontok (forrás)
+# <a name="streaming-endpoints"></a>Streamvégpontok 
 
 A Microsoft Azure Media Services szolgáltatásban egy [folyamatos átviteli végponton](https://docs.microsoft.com/rest/api/media/streamingendpoints) jelöli egy dinamikus (just-in-time) csomagolás és a forrás szolgáltatás, amely az élő és igény szerinti tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, az egyik a gyakori streamelési protokollok (HLS vagy DASH). Emellett a **folyamatos átviteli végponton** iparágvezető DRMs dinamikus (just-in-time) titkosítást nyújt.
 
@@ -53,7 +53,7 @@ SLA-információkért lásd: [díjszabás és SLA](https://azure.microsoft.com/p
 
 ## <a name="comparing-streaming-types"></a>Streamelési típusok összehasonlítása
 
-Szolgáltatás|Standard|Prémium
+Funkció|Standard|Prémium
 ---|---|---
 Ingyenes az első 15 nap során <sup>1</sup>| Igen |Nem
 Teljesítmény |Legfeljebb 600 MB/s, és a CDN használata esetén megadhat egy magasabb hatékony átviteli sebességre.|200 MB / s folyamatos átviteli egységek (SU). Egy újabb hatékony átviteli sebességre is adja meg, a CDN használata esetén.

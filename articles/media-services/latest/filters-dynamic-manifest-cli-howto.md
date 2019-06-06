@@ -11,19 +11,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 06/03/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c7415bfeadc978fe7b3b6a03265c0643b129afbf
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: fd581d1dfea850e925909df59f2d4fdd421053fb
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000166"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494371"
 ---
 # <a name="creating-filters-with-cli"></a>Szűrők létrehozása a CLI-vel 
 
-Kézbesítse a tartalmakat az ügyfelek számára (élő eseményeket vagy igény szerinti Videószolgáltatás streaming), amikor az ügyfél az alapértelmezett eszköz jegyzékfájl leírtnál nagyobb rugalmasságot előfordulhat, hogy kell. Az Azure Media Services lehetővé teszi, hogy meghatározza a fiók és a tartalom eszköz szűrőket. További információkért lásd: [szűrők](filters-concept.md) és [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md).
+Kézbesítse a tartalmakat az ügyfelek számára (élő eseményeket vagy igény szerinti Videószolgáltatás streaming), amikor az ügyfél az alapértelmezett eszköz jegyzékfájl leírtnál nagyobb rugalmasságot előfordulhat, hogy kell. Az Azure Media Services lehetővé teszi, hogy meghatározza a fiók és a tartalom eszköz szűrőket. 
+
+Ez a szolgáltatás és a felhasználási forgatókönyvek részletes ismertetését lásd: [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md) és [szűrők](filters-concept.md).
 
 Ez a témakör bemutatja, hogyan beállít egy szűrőt az igény szerinti videó eszköz és a CLI a Media Services v3 használatával létrehozhat [Fiókszűrők](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) és [eszköz szűrők](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest). 
 

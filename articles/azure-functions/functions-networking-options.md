@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 49f89d39b3b917ec6357b241d7c413c2790eca25
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f13e498859986d5ee697cbd67907fd344147ed0c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575601"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492838"
 ---
 # <a name="azure-functions-networking-options"></a>Érvényes hálózati beállításairól az Azure Functions
 
@@ -61,7 +61,7 @@ Virtuális hálózat integrációja a függvény alkalmazás hozzáférést bizt
 
 Virtuális hálózati integráció segítségével adatbázisokat és a virtuális hálózaton futó webszolgáltatások alkalmazások elérésének lehetővé tétele. A virtuális hálózati integráció nem kell egy nyilvános végpontot a virtuális Gépen alkalmazásokat teszi közzé. Ehelyett használhatja a saját, az internet irányítható címeket.
 
-Az általánosan elérhető verziót, a virtuális hálózati integráció függvényalkalmazások kapcsolódni egy virtuális hálózat VPN-átjáró támaszkodik. App Service-csomagban üzemeltetett funkciók érhető el. Ez a szolgáltatás konfigurálásával kapcsolatban lásd: [az alkalmazás integrálása az Azure-beli virtuális hálózathoz](../app-service/web-sites-integrate-with-vnet.md#enabling-vnet-integration).
+Az általánosan elérhető verziót, a virtuális hálózati integráció függvényalkalmazások kapcsolódni egy virtuális hálózat VPN-átjáró támaszkodik. App Service-csomagban üzemeltetett funkciók érhető el. Ez a szolgáltatás konfigurálásával kapcsolatban lásd: [az alkalmazás integrálása az Azure-beli virtuális hálózathoz](../app-service/web-sites-integrate-with-vnet.md).
 
 ### <a name="preview-version-of-virtual-network-integration"></a>Virtuális hálózati integráció előzetes verziója
 

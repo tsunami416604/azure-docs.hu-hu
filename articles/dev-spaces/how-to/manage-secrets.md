@@ -9,19 +9,19 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Container Service, tárolók
-ms.openlocfilehash: 8ee50289083b12b7b2abd3b9ece2c8de345df9fe
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 900529d54a26729d9d0fb949d9217d5e2d618254
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851432"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515290"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Titkos kulcsok kezelése, az egy Azure-fejlesztési terület használatakor
 
 A szolgáltatások szükség lehet bizonyos jelszavak, a kapcsolati karakterláncok és egyéb titkos adatait, például adatbázisok vagy más biztonságos Azure-szolgáltatásokkal. Konfigurációs fájlok titkos adatokat értékének beállításával, elérhetővé teheti őket a kód a környezeti változókként.  Ezek a titkos kódok biztonságának fenyegetése elkerülése érdekében óvatosan kell kezelni.
 
-Az Azure fejlesztési tárolóhelyek biztosít két ajánlott, hogy a titkos kulcsok tárolására szolgáló beállítások: a values.dev.yaml fájlt, és közvetlenül a azds.yaml beágyazott. Titkos kódok tárolása values.yaml nem ajánlott.
- 
+Az Azure fejlesztési tárolóhelyek lehetőségeket kínál a két ajánlott módszer, titkos kódok tárolása az Azure fejlesztési tárolóhelyek ügyfél eszközkészlet által létrehozott Helm-diagramok: a values.dev.yaml fájlt, és közvetlenül a azds.yaml beágyazott. Titkos kódok tárolása values.yaml nem ajánlott. A két megközelítés használatos Helm-en kívül hibakeresését az ügyfél által generált diagramok definiált ebben a cikkben létrehozásakor a saját Helm-diagramot, a Helm-diagramot használhatja közvetlenül a kezelésére és titkos kulcsok tárolására.
+
 ## <a name="method-1-valuesdevyaml"></a>1. módszer: values.dev.yaml
 1. Nyissa meg a VS Code a projekthez, amely az Azure fejlesztési tárolóhelyek engedélyezve van.
 2. Adjon hozzá egy fájlt _values.dev.yaml_ ugyanabban a mappában, mint a meglévő _azds.yaml_ és határozza meg a titkos kulcsot és az értékeket, az alábbi példában látható módon:

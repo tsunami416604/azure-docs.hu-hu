@@ -2,20 +2,20 @@
 title: Jelentkezzen be az Azure Active Directory B2C-vel egyéni szabályzatok használatával egy több-bérlős Azure AD-identitásszolgáltató beállítása |} A Microsoft Docs
 description: Adjon hozzá egy több-bérlős Azure ad-ben identitásszolgáltatótól az egyéni szabályzatok – Azure Active Directory B2C használatával.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d0c849619f2f39ebab533d7e1d7feee7c8822306
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 72d01d6927ee421d01a831244acf65c44a084354
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688238"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508662"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezési több-bérlős Azure Active Directory az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
@@ -40,7 +40,7 @@ Ahhoz, hogy jelentkezzen be egy meghatározott felhasználók számára az Azure
 4. Válassza az **Új alkalmazás regisztrálása** elemet.
 5. Adja meg az alkalmazás nevét. Például: `Azure AD B2C App`.
 6. Az a **alkalmazástípus**válassza `Web app / API`.
-7. A a **bejelentkezési URL-**, adja meg a következő URL-cím csupa kisbetűvel, ahol `your-tenant` váltja fel az Azure AD B2C-bérlő (fabrikamb2c.onmicrosoft.com) nevére:
+7. A a **bejelentkezési URL-** , adja meg a következő URL-cím csupa kisbetűvel, ahol `your-tenant` váltja fel az Azure AD B2C-bérlő (fabrikamb2c.onmicrosoft.com) nevére:
 
     ```
     https://yourtenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp

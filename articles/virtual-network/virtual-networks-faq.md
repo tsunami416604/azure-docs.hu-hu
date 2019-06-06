@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: b072314bdbec1d5a6184e6f20e98c35a9135a5b7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f4facdf8fc530c35ba02620f451a00a8da36d982
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508420"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497113"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -180,17 +180,18 @@ Igen. Egy virtuális hálózaton üzembe helyezett virtuális gépek és a Felh�
 ## <a name="azure-services-that-connect-to-vnets"></a>Azure-szolgáltatásokat, amelyhez csatlakozni a virtuális hálózatok
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Használható az Azure App Service Web Apps egy virtuális hálózattal?
-Igen. Telepítheti a Web Apps egy ASE (App Service-környezet) használatával virtuális hálózaton belül. Ha rendelkezik konfigurált a virtuális hálózathoz pont – hely kapcsolat, minden webes alkalmazás biztonságos kapcsolódást és a virtuális hálózatban található erőforrások eléréséhez. További információkért tekintse át a következő cikkeket:
+Igen. Is helyezhet üzembe webalkalmazásokat egy ASE (App Service-környezet) használatával virtuális hálózaton belül, az alkalmazások a háttérrendszer csatlakozhat a virtuális hálózatok a VNet-integráció és a bejövő forgalom zároljuk a Szolgáltatásvégpontok az alkalmazáshoz. További információkért tekintse át a következő cikkeket:
 
+* [Az App Service hálózatkezelési szolgáltatások](../app-service/networking-features.md)
 * [Webalkalmazások létrehozása az App Service Environment-környezetben](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Az alkalmazás integrálása az Azure-beli virtuális hálózathoz](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [A Web Apps VNet-integrációval és hibrid kapcsolatok használatával](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json#hybrid-connections-and-app-service-environments)
+* [App Service-ben korlátozza a hozzáférést](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Telepíthetek Cloud Services webes és feldolgozói szerepkör (PaaS) egy virtuális hálózaton?
 Igen. Telepítheti a Felhőszolgáltatások szerepkörpéldányok belüli virtuális hálózatok (opcionális). Ehhez az szükséges, megadhatja a virtuális hálózat neve és a szerepkör, illetve alhálózati leképezések a hálózati konfigurációs szakasz az szolgáltatás konfigurációját. Nem kell minden, a bináris fájlok frissítése.
 
-### <a name="can-i-connect-a-virtual-machine-scale-set-vmss-to-a-vnet"></a>Összekapcsolhatok egy virtuális gép méretezési beállítása (VMSS) egy virtuális hálózaton?
-Igen. Egy VMSS kell kapcsolódni egy virtuális hálózathoz.
+### <a name="can-i-connect-a-virtual-machine-scale-set-to-a-vnet"></a>Összekapcsolhatok egy virtuális gép méretezési csoport egy virtuális hálózathoz?
+Igen. Egy virtuális gép méretezési csoport egy virtuális hálózathoz kell csatlakoznia.
 
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>-E teljes listáját az Azure-szolgáltatások, hogy üzembe helyezhetem az erőforrások egy vnetbe?
 Igen, a további részletek: [virtuális hálózat integrációja Azure-szolgáltatások](virtual-network-for-azure-services.md).
@@ -202,7 +203,7 @@ Egyes Azure PaaS-szolgáltatások (például Azure Storage és Azure SQL Databas
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Áthelyezheti a virtuális hálózatok kívüli szolgáltatások?
 Nem. Szolgáltatások és virtuális hálózatok nem helyezhető át. Erőforrás áthelyezése egy másik virtuális hálózathoz, akkor törölje, és telepítse újra az erőforrás.
 
-## <a name="security"></a>Biztonsági
+## <a name="security"></a>Biztonság
 
 ### <a name="what-is-the-security-model-for-vnets"></a>Mi az a virtuális hálózatok biztonsági modellje?
 Virtuális hálózatok egymáshoz, és más az Azure infrastruktúra-ban üzemeltetett szolgáltatások elkülönülnek. Virtuális hálózat egy megbízhatósági kapcsolat határán.
@@ -219,7 +220,7 @@ Igen. További információkért lásd: [Azure hálózati biztonság – átteki
 ## <a name="apis-schemas-and-tools"></a>API-k, sémákkal és eszközök
 
 ### <a name="can-i-manage-vnets-from-code"></a>Felügyelhető virtuális hálózatok code-ból?
-Igen. A virtuális hálózatok, a REST API-k is használhatja a [Azure Resource Manager](/rest/api/virtual-network) és [klasszikus (szolgáltatásfelügyelet)](https://go.microsoft.com/fwlink/?LinkId=296833) üzembe helyezési modellel.
+Igen. A virtuális hálózatok, a REST API-k is használhatja a [Azure Resource Manager](/rest/api/virtual-network) és [klasszikus](https://go.microsoft.com/fwlink/?LinkId=296833) üzembe helyezési modellel.
 
 ### <a name="is-there-tooling-support-for-vnets"></a>Van-e a virtuális hálózatok eszközös támogatást?
 Igen. További információ:
@@ -227,7 +228,7 @@ Igen. További információ:
 - A PowerShell használatával telepített virtuális hálózatok kezelése a [Resource Manager](/powershell/module/az.network) és [klasszikus](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) üzembe helyezési modellel.
 - Az Azure parancssori felület (CLI) üzembe helyezése és kezelése a virtuális hálózatok használatával telepített a [Resource Manager](/cli/azure/network/vnet) és [klasszikus](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) üzembe helyezési modellel.  
 
-## <a name="vnet-peering"></a>VNet-társviszony
+## <a name="vnet-peering"></a>Társviszony létesítése virtuális hálózatok között
 
 ### <a name="what-is-vnet-peering"></a>Mi az virtuális hálózatok közötti társviszony?
 Virtuális hálózatok közötti társviszony-létesítés (vagy virtuális hálózatok közötti társviszony) lehetővé teszi, hogy a virtuális hálózatok összekapcsolása. Virtuális hálózatok közötti társviszony-létesítés virtuális hálózatok közötti kapcsolat lehetővé teszi őket közvetlenül a Microsoftnak IPv4-címeken keresztül közötti forgalom irányítására. A virtuális Társhálózatokba tartozó virtuális gépek kommunikálhatnak egymással, mintha ugyanazon a hálózaton belül vannak. Ezek a virtuális hálózatok ugyanabban a régióban vagy eltérő régiókban (más néven globális virtuális társhálózatok létesítésének) lehet. Azure-előfizetések virtuális Társhálózat-kapcsolatot is létrehozhatók.
@@ -247,10 +248,10 @@ A következő erőforrások alapszintű Terheléselosztók, ami azt jelenti, hog
 - API Management
 - Az Active Directory tartományi szolgáltatások (ADDS)
 - Logic Apps
-- HD Insight
+- HDInsight
 -   Azure Batch
 - AKS
-- App Service Environment-környezet
+- App Service-környezet
 
 Ezen erőforrás ExpressRoute- vagy VNet – VNet virtuális hálózati átjárók keresztül csatlakozhat.
 
@@ -285,7 +286,7 @@ Nem. Tranzitív társviszony-létesítés nem támogatott. Meg kell társviszony
 Nem. Virtuális hálózatok közötti társviszonyt, hogy a helyi vagy globális, sávszélesség-korlátozások nem ír elő. A sávszélesség csak korlátozza a virtuális gép vagy a számítási erőforrás.
 
 ### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>Hogyan háríthatók el a virtuális hálózatok közötti Társviszony problémákat?
-Íme egy [hibaelhárító útmutatót] (https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) próbálkozhat.
+Íme egy [hibaelhárító útmutató](https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) próbálkozhat.
 
 ## <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 
