@@ -90,12 +90,12 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| tárgy | string | Az esemény tárgya közzétevő által megadott elérési útja. |
+| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
 | eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | string | Az esemény egyedi azonosítója. |
-| adat | objektum | A BLOB storage-eseményadatok. |
+| data | objektum | A BLOB storage-eseményadatok. |
 | dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
@@ -103,15 +103,15 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| api-t | string | A művelet, amely kiváltotta az eseményt. |
+| api | string | A művelet, amely kiváltotta az eseményt. |
 | clientRequestId | string | Egy ügyfél által generált, átlátszatlan érték, és a egy 1 KB-os karakter korlátja. Ha engedélyezte a naplózást a storage analytics, az elemzési naplók van rögzítve. |
 | requestId | string | A kérelem egyedi azonosítója. Ezzel a kérést a hibaelhárításhoz. |
-| az eTag | string | Az érték, amely feltételesen műveletek végrehajtásához használhatja. |
+| eTag | string | Az érték, amely feltételesen műveletek végrehajtásához használhatja. |
 | contentType | string | A blob megadott tartalom típusa. |
 | contentLength | egész szám | A blob (bájt) mérete. |
 | blobType | string | A blob típusa. Érvényes értékek: "BlockBlob" vagy "PageBlob". |
 | url | string | A blob elérési útja. |
-| sorrendvezérlő | string | Egy felhasználó általi érték, amely a kérések nyomon követésére használható. |
+| sequencer | string | Egy felhasználó általi érték, amely a kérések nyomon követésére használható. |
 | storageDiagnostics | objektum | A tárolási diagnosztikai információt. |
  
 ## <a name="next-steps"></a>További lépések
