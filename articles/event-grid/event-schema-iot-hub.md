@@ -151,11 +151,11 @@ Az összes esemény legfelső szintű ugyanazokat az adatokat tartalmazza:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | id | string | Az esemény egyedi azonosítója. |
-| témakör | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| Tulajdonos | string | Az esemény tárgya közzétevő által megadott elérési útja. |
+| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
 | eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| Adatok | objektum | Az IoT Hub eseményadatokat.  |
+| data | objektum | Az IoT Hub eseményadatokat.  |
 | dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
@@ -163,7 +163,7 @@ Minden IoT Hub-események az objektum a következő tulajdonságokat tartalmazza
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| HubName | string | Ahol az eszköz létrehozása vagy törlése az IoT Hub nevét. |
+| hubName | string | Ahol az eszköz létrehozása vagy törlése az IoT Hub nevét. |
 | deviceId | string | Az eszköz egyedi azonosítója. Ez a karakterlánc kis-és nagybetűket legfeljebb 128 karakter hosszú, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint a következő speciális karaktereket tartalmazhatja: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 
 Az objektum tartalmát minden egyes esemény-közzétevő eltérőek. 
@@ -188,9 +188,9 @@ A **létre az eszköz** és **eszköz törlése** IoT Hub-események, az objektu
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| ikereszköz | objektum | Az ikereszközök, amely a felhőalapú alkalmazások eszköz metaadatainak ábrázolása kapcsolatos információk. | 
+| twin | objektum | Az ikereszközök, amely a felhőalapú alkalmazások eszköz metaadatainak ábrázolása kapcsolatos információk. | 
 | deviceID | string | Az ikereszközök egyedi azonosítója. | 
-| Az ETag | string | Egy érvényesítő egy ikereszköz-frissítések konzisztencia biztosításához. Minden egyes etag garantáltan ikereszköz minden egyedi. |  
+| etag | string | Egy érvényesítő egy ikereszköz-frissítések konzisztencia biztosításához. Minden egyes etag garantáltan ikereszköz minden egyedi. |  
 | deviceEtag| string | Egy érvényesítő frissítések egy eszközjegyzékébe konzisztencia biztosításához. Minden egyes deviceEtag garantáltan eszközjegyzék minden egyedi. |
 | status | string | Az ikereszközök e engedélyezése vagy letiltása. | 
 | statusUpdateTime | string | Az utolsó ikereszköz Eszközállapot ISO8601 időbélyegzője frissítése. |
@@ -202,8 +202,8 @@ A **létre az eszköz** és **eszköz törlése** IoT Hub-események, az objektu
 | primaryThumbprint | string | Elsődleges ujjlenyomat a x509 a tanúsítványt. |
 | secondaryThumbprint | string | Másodlagos ujjlenyomat a x509 a tanúsítványt. | 
 | version | egész szám | Egész szám, amely értéke eggyel mindegyik az eszköz ideje ikereszköz frissül. |
-| kívánt | objektum | Csak az alkalmazás háttér-írják, és olvassa el az eszköz tulajdonságok egy részét. | 
-| jelentett | objektum | Csak az eszköz által írt, és az alkalmazás háttér által beolvasott tulajdonságok egy részét. |
+| desired | objektum | Csak az alkalmazás háttér-írják, és olvassa el az eszköz tulajdonságok egy részét. | 
+| reported | objektum | Csak az eszköz által írt, és az alkalmazás háttér által beolvasott tulajdonságok egy részét. |
 | lastUpdated | string | Az utolsó ikereszköz eszköztulajdonság ISO8601 időbélyegzője frissítése. | 
 
 ## <a name="next-steps"></a>További lépések
