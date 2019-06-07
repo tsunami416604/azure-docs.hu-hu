@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: d93de4ff3f6dd00ac049ea9d83aebb7aad07137e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd8362748c39389139e8384d0bad7e84d20128a4
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539009"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751629"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Szövegfelolvasás – gyakori kérdések
 
@@ -33,7 +33,7 @@ Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse me
 
 **K: Ha szeretne egy testre szabott Hangüzenetek modellt használja, akkor az API-t ugyanaz, mint a standard szintű beszédhangot használt?**
 
-**A**: Egyéni beszédfelismerési modellek létrehozása és üzembe helyezett, kap egy egyedi végpont a modellt. A beszédfelismerési mérnökeinkkel, az alkalmazások használatához adjon meg a végpont a HTTP-kérelmekre. Ugyanazokat a funkciókat az a szöveg-beszéd átalakítás szolgáltatás REST API-ban elérhető egyéni végpontra érhető el. Ismerje meg, hogyan [hozhat létre és használhat egyéni végpontra](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint).
+**A**: Egyéni beszédfelismerési modellek létrehozása és üzembe helyezett, kap egy egyedi végpont a modellt. A beszédfelismerési mérnökeinkkel, az alkalmazások használatához adjon meg a végpont a HTTP-kérelmekre. Ugyanazokat a funkciókat az a szöveg-beszéd átalakítás szolgáltatás REST API-ban elérhető egyéni végpontra érhető el. Ismerje meg, hogyan [hozhat létre és használhat egyéni végpontra](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-voice-endpoint).
 
 **K: Kell előkészíteni a betanítási adatok, a saját egyéni beszédfelismerési modelleket hozhat létre?**
 
@@ -41,7 +41,7 @@ Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse me
 
 Beszéd adatok gyűjteménye, egy testre szabott Hangüzenetek modell létrehozásához szükséges. Ez a gyűjtemény hangfájlok speech felvételek, és a egy szövegfájlt, mindegyik hangfájlt vonatkozó áll. A digitális hangját eredményét az erősen támaszkodik a betanítási adatok minőségét. Egy jó szövegfelolvasás előállításához, fontos, hogy a felvételt a magas színvonalú, állandó mikrofon csendes szoba történik. Egy egységes kötet sebességét, és beszéljen és térközt, és még akkor is, konzisztencia, a beszéd kifejező mannerisms beszéd is, amellyel a nagyszerű digitális hangot alapvető. Erősen ajánlott az adott beszédhangot rögzítése egy felvételt studióban.
 
-Nem jelenleg a Microsoft online felvétel támogatást, vagy felvétel studio javaslatokkal szolgálni. Lásd: a formátum követelmény [és előkészítése](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#prepare-recordings-and-transcripts).
+Nem jelenleg a Microsoft online felvétel támogatást, vagy felvétel studio javaslatokkal szolgálni. Lásd: a formátum követelmény [és előkészítése](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice).
 
 **K: Milyen parancsfájlok használjam jegyezze fel az egyéni beszédfelismerési képzéshez Beszédadatok?**
 
@@ -63,5 +63,5 @@ További szolgáltatások segítő szkripteket a rögzítés lehetőséget bizto
 
 ## <a name="next-steps"></a>További lépések
 
-* [hibaelhárítással](troubleshooting.md)
+* [Hibaelhárítás](troubleshooting.md)
 * [Kibocsátási megjegyzések](releasenotes.md)

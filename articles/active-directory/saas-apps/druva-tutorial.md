@@ -12,122 +12,88 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/04/2019
+ms.date: 06/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da134672224c5881a69f002d418c79af97036d8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdf359f38bd7032b4de48a17b91ba1c10b165c91
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280300"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807771"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-druva"></a>Oktatóanyag: Az Azure Active Directory-integrációt kínál a Druva együtt
+# <a name="tutorial-integrate-druva-with-azure-active-directory"></a>Oktatóanyag: Kínál a Druva integrálása az Azure Active Directoryval
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan kínál a Druva integrálható az Azure Active Directory (Azure AD).
-Az Azure AD integrálása a Druva nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja a Druva integrálása az Azure Active Directory (Azure AD) lesz. Druva integrálása az Azure ad-vel, akkor a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá a Druva Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett a Druva (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Szabályozza, ki férhet hozzá a Druva Azure AD-ben.
+* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve kínál a Druva együtt az Azure AD-fiókjukat.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Druva együtt, a következőkre van szükség:
+Első lépésként szüksége van a következő elemek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Druva egyszeri bejelentkezés engedélyezve van az előfizetés
+* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, beszerezheti a egyhónapos ingyenes próbaidőszakot [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Druva egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
-
-* Támogatja a Druva **SP** és **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Támogatja a Druva **SP** és **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
 
 ## <a name="adding-druva-from-the-gallery"></a>Druva hozzáadása a katalógusból
 
 Az Azure AD integrálása a Druva konfigurálásához hozzá kell kínál a Druva a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a Druva a katalógusból, hajtsa végre az alábbi lépéseket:**
-
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
-
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
-
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
-
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
-
-    ![Az új alkalmazás gomb](common/add-new-app.png)
-
-4. A Keresés mezőbe írja be a **kínál a Druva**, jelölje be **kínál a Druva** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
-
-     ![Az eredmények listájában a Druva](common/search-new-app.png)
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
+1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
+1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
+1. Az a **Hozzáadás a katalógusból** területén írja be a **kínál a Druva** kifejezést a keresőmezőbe.
+1. Válassza ki **kínál a Druva** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a Druva nevű tesztfelhasználó alapján **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó a Druva hivatkozás kapcsolata kell hozható létre.
+Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata kínál a Druva együtt **Britta Simon**. Működik az egyszeri bejelentkezés Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolat kapcsolat létrehozására a Druva szüksége.
 
-Az Azure AD egyszeri bejelentkezést kínál a Druva együtt tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD SSO kínál a Druva tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Druva egyszeri bejelentkezés konfigurálása](#configure-druva-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Druva egyszeri bejelentkezést](#configure-druva-sso)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Hozzon létre kínál a Druva tesztfelhasználót](#create-druva-test-user)**  - a-megfelelője a Britta Simon szerepel, amely kapcsolódik az Azure AD felhasználói ábrázolása Druva.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezést kínál a Druva, hajtsa végre az alábbi lépéseket:
+1. Az a [az Azure portal](https://portal.azure.com/), a a **kínál a Druva** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
+1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **kínál a Druva** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+1. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, a felhasználó nem rendelkezik egy lépést végrehajtani, mert az alkalmazás már előre integrált, az Azure-ral.
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+1. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:  `https://login.druva.com/login`
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre a következő lépést:
-
-    ![Druva tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-identifier.png)
-
-    Az a **azonosító** szöveges karakterlánc értéket írja be:  `druva-cloud`
-
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
-
-    ![image](common/both-preintegrated-signon.png)
-
-    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:  `https://cloud.druva.com/home`
-
-6. Druva alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+1. Druva alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 
-7. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket: 
+1. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
 
     | Name (Név) | Adatforrás-attribútum|
     | ------------------- | -------------------- |
     | insync\_auth\_jogkivonat |Adja meg a token létrehozott értéket |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
 
     b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
@@ -141,137 +107,108 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezést kínál a Druva, ha
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Base64)** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+   ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-9. Az a **állítsa be a Druva** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. Az a **állítsa be a Druva** területén másolja a megfelelő URL-címe szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
-
-    b. Azure Ad Identifier
-
-    c. Kijelentkezési URL
-
-### <a name="configure-druva-single-sign-on"></a>Druva egyszeri bejelentkezés konfigurálása
+### <a name="configure-druva-sso"></a>Druva egyszeri bejelentkezés konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a Druva vállalati hely rendszergazdaként.
 
-2. Lépjen a **kezelése \> beállítások**.
+1. Lépjen a **kezelése \> beállítások**.
 
     ![Beállítások](./media/druva-tutorial/ic795091.png "beállításai")
 
-3. Egyszeri bejelentkezés beállításai párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Egyszeri bejelentkezés beállításai párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés beállításai](./media/druva-tutorial/ic795092.png "egyszeri bejelentkezés beállításai")
-    
+
     a. A **azonosító szolgáltató bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
-        
+
     b. A **azonosító szolgáltató kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket, **kijelentkezési URL-címe**, Azure Portalról másolt
-        
+
     c. Nyissa meg a base-64 kódolású tanúsítványt a Jegyzettömbben, a tartalmát a vágólapra másolja és illessze be azt a **azonosító társzolgáltató tanúsítványának** szövegmező
-     
+
     d. Megnyitásához a **beállítások** kattintson **mentése**.
 
-4. Az a **beállítások** kattintson **egyszeri bejelentkezési Token létrehozása**.
+1. Az a **beállítások** kattintson **egyszeri bejelentkezési Token létrehozása**.
 
     ![Beállítások](./media/druva-tutorial/ic795093.png "beállításai")
 
-5. Az a **egyszeri bejelentkezéses hitelesítési Token** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **egyszeri bejelentkezéses hitelesítési Token** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![Az SSO-jogkivonat](./media/druva-tutorial/ic795094.png "SSO-jogkivonat")
-    
+
     a. Kattintson a **másolási**, illessze be az értéket másolta a **érték** szövegmezőjébe a **attribútum hozzáadása** szakaszban az Azure Portalon.
-    
+
     b. Kattintson a **Bezárás** gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
-
-2. Válassza ki **új felhasználó** a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
-
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
+1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
+   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `BrittaSimon@contoso.com`.
+   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezést kínál a Druva hozzáférésének engedélyezésére használja.
+Ebben a szakaszban Britta Simon által biztosított hozzáférés kínál a Druva Azure egyszeri bejelentkezés használatához engedélyeznie kell.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **kínál a Druva**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+1. Az alkalmazások listájában jelölje ki a **kínál a Druva**.
+1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-2. Az alkalmazások listájában jelölje ki a **kínál a Druva**.
+1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Az alkalmazások listáját a Druva hivatkozásra](common/all-applications.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
-
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. Az a **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
+1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
 ### <a name="create-druva-test-user"></a>Druva tesztfelhasználó létrehozása
 
-Ahhoz, hogy a Druva jelentkezzen be az Azure AD-felhasználók, akkor ki kell építeni kínál a Druva be. Esetén a Druva kiépítés a manuális feladat.
+Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Druva, akkor ki kell építeni kínál a Druva be. Esetén a Druva kiépítés a manuális feladat.
 
 **Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:**
 
 1. Jelentkezzen be a **kínál a Druva** rendszergazdaként a vállalati webhely.
 
-2. Lépjen a **kezelése \> felhasználók**.
-   
+1. Lépjen a **kezelése \> felhasználók**.
+
     ![Felhasználók kezelése](./media/druva-tutorial/ic795097.png "felhasználók kezelése")
 
-3. Kattintson a **létrehozása új**.
-   
+1. Kattintson a **létrehozása új**.
+
     ![Felhasználók kezelése](./media/druva-tutorial/ic795098.png "felhasználók kezelése")
 
-4. Új felhasználó létrehozása párbeszédpanelen hajtsa végre az alábbi lépéseket:
-   
+1. Új felhasználó létrehozása párbeszédpanelen hajtsa végre az alábbi lépéseket:
+
     ![Hozzon létre Új_felhasználó](./media/druva-tutorial/ic795099.png "Új_felhasználó létrehozása")
-   
+
     a. Az a **E-mail-cím** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon\@contoso.com**.
-   
+
     b. Az a **neve** szövegmezőbe írja be például a felhasználó nevét **BrittaSimon**.
-   
+
     c. Kattintson a **felhasználó létrehozása**.
 
->[!NOTE]
->Eszközt is használhat bármilyen más kínál a Druva felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése Druva által biztosított API-k.
+> [!NOTE]
+> Eszközt is használhat bármilyen más kínál a Druva felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése Druva által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
-
-Ha a hozzáférési panelen a Druva csempére kattint, meg kell lehet automatikusan bejelentkezett a Druva, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+A Druva csempe kiválasztásakor a hozzáférési panelen, érdemes lehet automatikusan bejelentkezett a Druva, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -280,4 +217,3 @@ Ha a hozzáférési panelen a Druva csempére kattint, meg kell lehet automatiku
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

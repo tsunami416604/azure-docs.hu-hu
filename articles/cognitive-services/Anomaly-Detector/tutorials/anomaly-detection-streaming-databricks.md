@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: d1808bb88ac1bb27f2fd0652585521fbb2abdf56
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: a5790b5412023f06d9f9fd1d2ff61c11db4c53f3
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734666"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807480"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok rendellenességeinek észlelése az Azure Databricks használatával
 
-[Az Azure Databricks](https://azure.microsoft.com/en-us/services/databricks/) egy gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatás. Az Anomáliadetektálási detector használatával API, Azure Cognitive Services részeként az idősoros adatokat figyelési megoldást kínál. Ebben az oktatóanyagban használja az anomáliadetektálás futtatása közel valós idejű adatokat streamelt az Azure Databricks használatával. Twitter-adatok az Azure Event Hubs használatával fog, és importálja azokat az Azure Databricks a Spark Event Hubs összekötője segítségével. Ezt követően az API-t fogja használni a streamelési adatok hangulatelemzéséhez a rendellenességek észlelése. 
+[Az Azure Databricks](https://azure.microsoft.com/services/databricks/) egy gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatás. Az Anomáliadetektálási detector használatával API, Azure Cognitive Services részeként az idősoros adatokat figyelési megoldást kínál. Ebben az oktatóanyagban használja az anomáliadetektálás futtatása közel valós idejű adatokat streamelt az Azure Databricks használatával. Twitter-adatok az Azure Event Hubs használatával fog, és importálja azokat az Azure Databricks a Spark Event Hubs összekötője segítségével. Ezt követően az API-t fogja használni a streamelési adatok hangulatelemzéséhez a rendellenességek észlelése. 
 
 Az alábbi ábrán az alkalmazásfolyam látható:
 

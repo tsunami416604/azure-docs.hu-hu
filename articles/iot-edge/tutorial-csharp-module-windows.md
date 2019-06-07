@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7678415b7ce505da7678a00a4bcf2d933e260530
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 122028217a78463fa2ceaed63248a74257206345
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303978"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808775"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: Fejlesztés a C# IoT Edge-modul a Windows-eszközök
 
@@ -78,7 +78,7 @@ Az Azure IoT Edge-eszközöket biztosít a projektsablonok az összes támogatot
 
    | Mező | Érték |
    | ----- | ----- |
-   | Sablonválasztás | Válassza ki  **C# modul**. | 
+   | Válasszon ki egy sablont | Válassza ki  **C# modul**. | 
    | A modul projekt neve | A modulnak adja a **CSharpModule** nevet. | 
    | Docker-rendszerkép tárház | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló rendszerképének előre van töltve, a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> Néz ki a végső lemezképtárban \<beállításjegyzék neve\>.azurecr.io/csharpmodule. |
 
@@ -104,16 +104,17 @@ Manifest nasazení az IoT Edge-futtatókörnyezet osztanak meg a tárolóregiszt
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-4. Save the deployment.template.json file. 
+4. Mentse a deployment.template.json fájlt. 
 
-### Update the module with custom code
+### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+Az alapértelmezett modul kód egy bemeneti üzenetsor fogadja, és azokat mentén áthalad egy kimeneti várólista. Adjunk néhány további programkódokat kellene megtervezni, hogy a modul feldolgozza a peremhálózaton az üzeneteket az IoT Hub való továbbítás előtt. A modul frissítésére, hogy minden üzenet hőmérséklet adatait elemzi, és csak elküldi az üzenetet az IoT hubhoz, ha a hőmérséklet meghalad egy bizonyos küszöbértéket. 
 
-1. In Visual Studio, open **CSharpModule** > **Program.cs**.
+1. A Visual Studióban nyissa meg a **CSharpModule** > **Program.cs**.
 
-2. At the top of the **CSharpModule** namespace, add three **using** statements for types that are used later:
+2. A **CSharpModule** névtér tetején adjon hozzá három **using** utasítást a későbbiekben használt típusokhoz:
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>

@@ -154,6 +154,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/data'
         - name: Földrajzi hely szolgáltatás
           href: 'https://docs.microsoft.com/rest/api/maps/geolocation'
+        - name: Mobilitási szolgáltatás
+          href: 'https://docs.microsoft.com/rest/api/maps/mobility'
         - name: Megjelenítő szolgáltatás
           href: 'https://docs.microsoft.com/rest/api/maps/render'
         - name: Útvonal szolgáltatás

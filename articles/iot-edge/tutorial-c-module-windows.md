@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 79f3b125a4cb88b3555cf13aa4d4bc5c430df166
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 49f853341edab7c7dc92f72472b81f7fb22c0ad8
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303881"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808754"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: Windows-eszközökhöz a C IoT Edge-modul fejlesztése
 
@@ -78,7 +78,7 @@ Létrehozhat egy C-megoldást, amelyet a saját kódjával testreszabhat.
 
    | Mező | Érték |
    | ----- | ----- |
-   | Sablonválasztás | Válassza ki **C modul**. | 
+   | Válasszon ki egy sablont | Válassza ki **C modul**. | 
    | A modul projekt neve | A modulnak adja a **CModule** nevet. | 
    | Docker-rendszerkép tárház | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló rendszerképének előre van töltve, a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> Néz ki a végső lemezképtárban \<beállításjegyzék neve\>.azurecr.io/cmodule. |
 
@@ -104,29 +104,33 @@ Manifest nasazení az IoT Edge-futtatókörnyezet osztanak meg a tárolóregiszt
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-4. Save the deployment.template.json file. 
+4. Mentse a deployment.template.json fájlt. 
 
-### Update the module with custom code
+### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+Az alapértelmezett modul kód egy bemeneti üzenetsor fogadja, és azokat mentén áthalad egy kimeneti várólista. Adjunk néhány további programkódokat kellene megtervezni, hogy a modul feldolgozza a peremhálózaton az üzeneteket az IoT Hub való továbbítás előtt. A modul frissítésére, hogy minden üzenet hőmérséklet adatait elemzi, és csak elküldi az üzenetet az IoT hubhoz, ha a hőmérséklet meghalad egy bizonyos küszöbértéket. 
 
 
-1. The data from the sensor in this scenario comes in JSON format. To filter messages in JSON format, import a JSON library for C. This tutorial uses Parson.
+1. Ebben a forgatókönyvben az érzékelőről származó adatok JSON formátumban szerepelnek. A JSON formátumú üzenetek szűréséhez importáljon egy C-hez készült JSON-kódtárat. Ez az oktatóanyag Parson-kódtárat használ.
 
-   1. Download the [Parson GitHub repository](https://github.com/kgabis/parson). Copy the **parson.c** and **parson.h** files into the **CModule** project.
+   1. Töltse le a [Parson GitHub-adattár](https://github.com/kgabis/parson). Másolás a **parson.c** és **parson.h** fájlokat a **CModule** projekt.
 
-   2. In Visual Studio, open the **CMakeLists.txt** file from the CModule project folder. At the top of the file, import the Parson files as a library called **my_parson**.
+   2. A Visual Studióban nyissa meg a **CMakeLists.txt** fájlt a CModule projekt mappából. A fájl tetején importálja a Parson-fájlokat **my_parson** nevű kódtárként.
 
       ```
-      add_library (my_parson parson.c parson.h)
+      add_library(my_parson
+          parson.c
+          parson.h
+      )
       ```
 
-   3. Add **my_parson** to the list of libraries in the **target_link_libraries** section of the CMakeLists.txt file.
+   3. Adjon hozzá **my_parson** könyvtárai listájának a **target_link_libraries** CMakeLists.txt fájl szakaszában.
 
-   4. Save the **CMakeLists.txt** file.
+   4. Mentse a **CMakeLists.txt** fájlt.
 
-   5. Open **CModule** > **main.c**. At the bottom of the list of include statements, add a new one to include `parson.h` for JSON support:
+   5. Nyissa meg **CModule** > **main.c**. Az a lista alján utasításokat tartalmaznak, adjon hozzá egy új felvenni `parson.h` JSON-támogatás:
 
       ```c
       #include "parson.h"

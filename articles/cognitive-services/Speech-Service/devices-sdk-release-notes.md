@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: wellsi
-ms.openlocfilehash: fab23c86ee2e8f654ac4a9619c39d05ee4e9e4c1
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1c91cde45a6a420376af36f70487adf7fe0ee83a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237933"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751807"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>A Cognitive Services beszédfelismerő eszközök SDK kibocsátási megjegyzései
 A következő szakaszok lista módosul a legfrissebb verziókban.
@@ -49,7 +49,7 @@ A következő szakaszok lista módosul a legfrissebb verziókban.
 
 **Használhatatlanná tévő változásai** 
 
-*   [Hálózati ébresztési szó telepítése](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg#run-a-sample-application) lett egyszerűsített, azt az alkalmazás részeként, és nem kell külön telepíteni az eszközön.
+*   [Hálózati ébresztési szó telepítése](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) lett egyszerűsített, azt az alkalmazás részeként, és nem kell külön telepíteni az eszközön.
 *   Az ébresztési word felismerés megváltozott, és két események támogatottak.
     - RecognizingKeyword, azt jelzi, a beszéd eredmény (nem ellenőrzött) kulcsszó szöveget tartalmaz.
     - RecognizedKeyword, azt jelzi, hogy az adott kulcsszó FELISMERVE befejeződött kulcsszó felismerése.

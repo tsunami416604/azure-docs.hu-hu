@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 891b64b8e31266360d718255dcd8e8a1f9fb597c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 81d660857eff63e0dfeeda400b168ea424152081
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306584"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808601"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Oktatóanyag: Fejlesztés az IoT Edge-modulok Windows-eszközökhöz
+# <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Oktatóanyag: IoT Edge-modulok létrehozása Windows-eszközökhöz
 
 A Visual Studio használatával fejlesztése és kód üzembe helyezése IoT Edge rendszerű Windows-eszközökhöz.
 
@@ -173,53 +173,54 @@ Az IoT Edge-futtatókörnyezet kell kérni a tárolórendszerképeket az IoT Edg
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-4. Save the deployment.template.json file. 
+4. Mentse a deployment.template.json fájlt. 
 
-### Review the sample code
+### <a name="review-the-sample-code"></a>Tekintse át a mintakódot
 
-The solution template that you created includes sample code for an IoT Edge module. This sample module simply receives messages and then passes them on. The pipeline functionality demonstrates an important concept in IoT Edge, which is how modules communicate with each other.
+A megoldássablon, létrehozott egy IoT Edge-modul a mintakód tartalmazza. Ez a minta modul egyszerűen fogadja az üzeneteket, és továbbítja őket. Adatfolyamat-funkciókat mutatja be, hogy egyik fontos vonása, az IoT Edge segítségével, amely hogyan modulok kommunikálnak egymással.
 
-Each module can have multiple *input* and *output* queues declared in their code. The IoT Edge hub running on the device routes messages from the output of one module into the input of one or more modules. The specific language for declaring inputs and outputs varies between languages, but the concept is the same across all modules. For more information about routing between modules, see [Declare routes](module-composition.md#declare-routes).
+Minden modul rendelkezhet több *bemeneti* és *kimeneti* üzenetsorok deklarálva a kódra összpontosítsanak. Az IoT Edge hub az eszközön futó üzenetirányítást végez egy modul kimenetéből származó be egy vagy több modul bemenetével. Az adott nyelvhez tartozó bemenetek és kimenetek deklaráló nyelvek közé esik, de a koncepció azonos több összes modulban. További információ a modulok közötti útválasztás: [útvonalak deklarálja](module-composition.md#declare-routes).
 
-1. In the **main.c** file, find the **SetupCallbacksForModule** function.
+1. Az a **main.c** fájlt és keresse meg a **SetupCallbacksForModule** függvény.
 
-2. This function sets up an input queue to receive incoming messages. It calls the C SDK module client function [SetInputMessageCallback](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-setinputmessagecallback). Review this function and see that it initializes an input queue called **input1**. 
+2. Ez a függvény beállítja egy bemeneti üzenetsor bejövő üzenetek fogadására. Meghívja a C SDK modul ügyfél függvény [SetInputMessageCallback](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-setinputmessagecallback). Ezt a funkciót, és megnézheti, hogy egy bemeneti várólista nevű inicializálja **input1**. 
 
-   ![Find the input name in the SetInputMessageCallback constructor](./media/tutorial-develop-for-windows/declare-input-queue.png)
+   ![A bemeneti név található a SetInputMessageCallback konstruktor](./media/tutorial-develop-for-windows/declare-input-queue.png)
 
-3. Next, find the **InputQueue1Callback** function.
+3. Ezt követően keresse meg a **InputQueue1Callback** függvény.
 
-4. This function processes received messages and sets up an output queue to pass them along. It calls the C SDK module client function [SendEventToOutputAsync](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-sendeventtooutputasync). Review this function and see that it initializes an output queue called **output1**. 
+4. A függvény feldolgozza a kapott üzeneteket, és adja meg azokat a mentén úgy állít be egy kimeneti várólista. Meghívja a C SDK modul ügyfél függvény [SendEventToOutputAsync](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-sendeventtooutputasync). Ezt a funkciót, és megnézheti, hogy egy kimeneti várólista nevű inicializálja **output1**. 
 
-   ![Find the output name in the SendEventToOutputAsync constructor](./media/tutorial-develop-for-windows/declare-output-queue.png)
+   ![Keresse meg a kimeneti név a SendEventToOutputAsync konstruktorban](./media/tutorial-develop-for-windows/declare-output-queue.png)
 
-5. Open the **deployment.template.json** file.
+5. Nyissa meg a **deployment.template.json** fájlt.
 
-6. Find the **modules** property of the $edgeAgent desired properties. 
+6. Keresse meg a **modulok** a $edgeAgent tulajdonságát kívánt tulajdonságot. 
 
-   There should be two modules listed here. The first is **tempSensor**, which is included in all the templates by default to provide simulated temperature data that you can use to test your modules. The second is the **IotEdgeModule1** module that you created as part of this project.
+   Az itt felsorolt két modult kell lennie. Az első **tempSensor**, amely az összes sablon, amellyel tesztelheti a modulok szimulált hőmérsékleti adatokat alapértelmezés szerint tartalmazza. A második pedig a **IotEdgeModule1** modul, amely a projekt részeként létrehozott.
 
-   This modules property declares which modules should be included in the deployment to your device or devices. 
+   A modulok tulajdonság deklarálja, hogy melyik modulokat kell foglalni az üzembe helyezés az eszközre vagy eszközökre. 
 
-7. Find the **routes** property of the $edgeHub desired properties. 
+7. Keresse meg a **útvonalak** a $edgeHub tulajdonságát kívánt tulajdonságot. 
 
-   One of the functions if the IoT Edge hub module is to route messages between all the modules in a deployment. Review the values in the routes property. The first route, **IotEdgeModule1ToIoTHub**, uses a wildcard character (**\***) to include any message coming from any output queue in the IoTEdgeModule1 module. These messages go into *$upstream*, which is a reserved name that indicates IoT Hub. The second route, **sensorToIotEdgeModule1**, takes messages coming from the tempSensor module and routes them to the *input1* input queue of the IotEdgeModule1 module. 
+   Az egyik a functions az IoT Edge hubot modul esetén a központi telepítés összes moduljai közötti üzenetek továbbítását. Tekintse át az útvonalak tulajdonság értékei. Az első útvonal **IotEdgeModule1ToIoTHub**, használja a helyettesítő karaktert ( **\*** ) bármely a IoTEdgeModule1 modul kimeneti várólista-ből érkező bármely üzenet tartalmazza. Ezeket az üzeneteket lépnek *felső $* , amely, amely azt jelzi, hogy az IoT Hub foglalt név. A második útvonal **sensorToIotEdgeModule1**, vesz igénybe a tempSensor modulból érkező üzeneteket, és átirányítja őket a *input1* IotEdgeModule1 modul bemeneti várólistát. 
 
-   ![Review routes in deployment.template.json](./media/tutorial-develop-for-windows/deployment-routes.png)
+   ![Tekintse át a deployment.template.json útvonalak](./media/tutorial-develop-for-windows/deployment-routes.png)
 
 
-## Build and push your solution
+## <a name="build-and-push-your-solution"></a>És a megoldás leküldéses
 
-You've reviewed the module code and the deployment template to understand some key deployment concepts. Now, you're ready to build the IotEdgeModule1 container image and push it to your container registry. With the IoT tools extension for Visual Studio, this step also generates the deployment manifest based on the information in the template file and the module information from the solution files. 
+Áttekintette a modul kódot és a központi telepítési sablon üzembe helyezés fő fogalmak megértéséhez. Most már készen áll a IotEdgeModule1 tárolólemezkép létrehozásához, hogy a tárolóregisztrációs adatbázisba. A Visual Studio eszközök IoT-bővítmény, az ebben a lépésben is nyújtanak a sablonfájlt, valamint a megoldásfájlok modul információi alapján manifest nasazení állít elő. 
 
-### Sign in to Docker
+### <a name="sign-in-to-docker"></a>Jelentkezzen be a
 
-Provide your container registry credentials to Docker on your development machine so that it can push your container image to be stored in the registry. 
+Adja meg a tároló a tárolójegyzék hitelesítő adatainak a Docker a fejlesztői gépen, hogy, leküldheti a tárolórendszerképet a beállításjegyzék tárolja. 
 
-1. Open PowerShell or a command prompt.
+1. Nyissa meg a PowerShell vagy az parancssor.
 
-2. Sign in to Docker with the Azure container registry credentials that you saved after creating the registry. 
+2. Jelentkezzen be a Docker mentette a beállításjegyzék létrehozását követően az Azure container registry hitelesítő adataival. 
 
    ```cmd
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -262,7 +263,7 @@ A fejlesztői gépén most már hozzáfér a tárolóregisztrációs adatbázisb
 
     ![Mindkét képen verziók megtekintése a tárolóregisztrációs adatbázis](./media/tutorial-develop-for-windows/view-repository-versions.png)
 
-### <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
+### <a name="troubleshoot"></a>Hibaelhárítás
 
 Összeállításakor és a modul rendszerképének leküldése hibákat észlel, ha gyakran rendelkezik, hogy a fejlesztői gépen a Docker-konfigurációját. A következő ellenőrzések segítségével áttekintheti a konfigurációt: 
 
