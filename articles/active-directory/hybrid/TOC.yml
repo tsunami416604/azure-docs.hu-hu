@@ -18,6 +18,10 @@
       href: tutorial-phs-backup.md
 - name: Alapelvek
   items:
+    - name: Hibrid identitás
+      items:
+        - name: Helyszíni számítási feladatok felhőalapú kezelése
+          href: cloud-governed-management-for-on-premises.md
     - name: Azure AD Connect és Connect Health
       items:
         - name: Mi az Azure AD Connect és a Connect Health?

@@ -2,20 +2,20 @@
 title: RelyingParty – az Azure Active Directory B2C |} A Microsoft Docs
 description: Adja meg az egyéni szabályzat RelyingParty elem Azure Active Directory B2C-t.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/25/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9e8718d9216bb2f4a83f8e0373b4788210015b75
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2b5e9bfe6eaa9b84e259d941760792635a2994f4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66253775"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512839"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -102,7 +102,7 @@ A `DefaultUserJourney` elem azt határozza meg egy hivatkozást, amely általáb
 
 A **DefaultUserJourney** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A házirend a felhasználói út azonosítója. További információkért lásd: [felhasználói utak](userjourneys.md) |
 
@@ -168,9 +168,9 @@ További információkért lásd: [konfigurálása a felhasználói felület din
 
 A **TechnicalProfile** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- | 
-| Id | Igen | Az értéknek kell lennie `PolicyProfile`. |
+| Azonosító | Igen | Az értéknek kell lennie `PolicyProfile`. |
 
 A **TechnicalProfile** a következő elemeket tartalmazza:
 
@@ -185,7 +185,7 @@ A **TechnicalProfile** a következő elemeket tartalmazza:
 
 A **protokoll** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Name (Név) | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. A lehetséges értékek: `OpenIdConnect` vagy `SAML2`. A `OpenIdConnect` értékét jelöli az OpenID Connect 1.0 protokoll standard OpenID foundation specifikációnak megfelelően. A `SAML2` OASIS specifikációnak megfelelően a SAML 2.0 protokoll standard jelöli. Éles környezetben ne használja a SAML-jogkivonat. |
 
@@ -213,7 +213,7 @@ Az a **SubjectNameingInfo** elemben meghatározhatja, hogy a jogkivonat tárgyá
 
 A **SubjectNamingInfo** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ClaimType | Igen | Egy hivatkozást egy kimenő jogcímet **PartnerClaimType**. A kimeneti jogcímek definiálni kell a függő entitás házirend **OutputClaims** gyűjtemény. |
 

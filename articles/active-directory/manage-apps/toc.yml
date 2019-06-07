@@ -2,8 +2,10 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az alkalmazáskezelés ismertetése
+    - name: Mi az alkalmazáskezelés?
       href: what-is-application-management.md
+    - name: Mi az alkalmazásproxy?
+      href: what-is-application-proxy.md
 - name: Gyors útmutatók
   expanded: true
   items:

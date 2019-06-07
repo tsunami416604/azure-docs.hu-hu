@@ -1,7 +1,11 @@
 - name: Áttekintés
   items:
-    - name: Oracle virtuális gépekkel kapcsolatos megfontolások
-      href: oracle-considerations.md
+    - name: Oracle-megoldások áttekintése
+      href: oracle-overview.md
+    - name: Megoldások Azure-beli virtuális gépeken
+      href: oracle-vm-solutions.md
+    - name: Megoldások az OCI-vel – előzetes verzió
+      href: oracle-oci-overview.md
 - name: Gyors útmutatók
   items:
     - name: Oracle-adatbázis létrehozása
@@ -10,7 +14,7 @@
   items:
     - name: Oracle ASM konfigurálása
       href: configure-oracle-asm.md
-    - name: Oracle DataGuard konfigurálása
+    - name: Oracle Data Guard konfigurálása
       href: configure-oracle-dataguard.md
     - name: Oracle GoldenGate konfigurálása
       href: configure-oracle-golden-gate.md

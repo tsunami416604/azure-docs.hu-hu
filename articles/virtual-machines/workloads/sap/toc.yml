@@ -86,6 +86,8 @@
       href: cal-s4h.md
     - name: SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
       href: hana-vm-operations.md
+    - name: SAP HANA Azure-beli virtuális gépek tárkonfigurációi
+      href: hana-vm-operations-storage.md
     - name: Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
       items:
         - name: Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés

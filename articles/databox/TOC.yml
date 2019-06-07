@@ -111,9 +111,7 @@
           items:
             - name: Kezelés az Azure Portalon
               href: data-box-portal-ui-admin.md
-            - name: Adatok áthelyezése blobszintre
-              href: data-box-how-to-set-data-tier.md
-            - name: Data Box Heavy-problémák elhárítása
+            - name: Data Box Disk-hibák elhárítása
               href: data-box-disk-troubleshoot.md
             - name: Kapcsolatfelvétel a támogatási szolgáltatással
               href: data-box-disk-contact-microsoft-support.md
@@ -155,12 +153,18 @@
               href: data-box-local-web-ui-admin.md
             - name: Eszközökkel kapcsolatos problémák elhárítása
               href: data-box-troubleshoot.md
+            - name: Adatok áthelyezése blobszintre
+              href: data-box-how-to-set-data-tier.md
             - name: Kapcsolatfelvétel a támogatási szolgáltatással
               href: data-box-disk-contact-microsoft-support.md
             - name: Migrate (Áttelepítés)
               items:
+                - name: A SharePoint Online-ba
+                  href: data-box-heavy-migrate-spo.md
                 - name: Az Azure File Syncre
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: A HDFS-tárolóról
+                  href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: További források
       items:
         - name: Data Box-termék

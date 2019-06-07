@@ -11,7 +11,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/23/2019
+  ms.date: 06/03/2019
   ms.author: anshan
 abstract:
   description: 'Üdvözli az Azure Time Series Insights! Az Azure Time Series Insights hatékony adatfeltárási és telemetriai eszközöket biztosít a működési elemzések hatékonyabbá tételéhez. A dokumentáció ismerteti a szolgáltatást, az első lépéseket a szolgáltatás számos funkciójának használatához, az ügyféloldali SDK-t, valamint a hatékony Time Series Insights API-kat. Két verzióhoz érhetők el információk, a már általánosan elérhető verzióhoz (a Time Series Insights általánosan elérhető verziója) és egy előzetes verziójú nagyobb szolgáltatásfrissítéshez (Time Series Insights előzetes verzió).'
@@ -46,9 +46,9 @@ sections:
         className: cardsD
         items:
           - title: Az Azure Time Series Insights általánosan elérhető verziója
-            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">Környezet létrehozása</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">Egyoldalas webalkalmazás létrehozása</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">Ismerkedés a JavaScript ügyfélkódtárral</a></p>
+            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">Azure Time Series Insights-környezet létrehozása</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">Egyoldalas webalkalmazás létrehozása</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">Ismerkedés a JavaScript ügyfélkódtárral</a></p>
           - title: Az Azure Time Series Insights előzetes verziója
-            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">Oktatóanyag az előzetes verzióhoz</a></p>
+            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">Környezet létrehozása az Azure Time Series Insights előzetes verziójával</a></p>
   - title: Referencia
     items:
       - type: list
@@ -56,6 +56,8 @@ sections:
         className: cardsD
         items:
           - title: A Time Series Insights általánosan elérhető verziójának API-jai
-            html: <p><a href="/rest/api/time-series-insights-management">Erőforrás-kezelési API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">Lekérdezés API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">Lekérdezési szintaxis</a></p>
+            html: <p><a href="rest/api/time-series-insights/ga">Adathozzáférés</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">Lekérdezés API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">Lekérdezési szintaxis</a></p>
           - title: A Time Series Insights előzetes verziójának API-jai
             html: <p><a href="/rest/api/time-series-insights/preview-query">Lekérdezés API</a></p> <p><a href="/rest/api/time-series-insights/preview-model">Model API</a></p> <p><a href="/rest/api/time-series-insights/preview-env">Environment API</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">Time Series Expression API</a></p>
+          - title: Ügyféloldali SDK
+            html: '<p><a href="https://github.com/microsoft/tsiclient/blob/master/docs/API.md">JavaScript ügyféloldali SDK</a></p>'
