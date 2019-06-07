@@ -2,20 +2,20 @@
 title: REST API-jogcímek cseréje érvényesítése az Azure Active Directory B2C-t |} A Microsoft Docs
 description: A témakör az Azure Active Directory B2C-vel egyéni szabályzatok.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/24/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 090b0ef4d4f5f3d883ba1255e6f30d2bb0566274
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0779e4a93230a90b8eee76f1898154c1a5b82661
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681251"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508727"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Forgatókönyv: A felhasználói bevitel auditáló REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő integrálása
 

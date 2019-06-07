@@ -2,20 +2,20 @@
 title: Konfigurálja a munkamenet-viselkedés – Azure Active Directory B2C |} A Microsoft Docs
 description: Adja meg az Azure Active Directory B2C munkamenet-viselkedés.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7bfa34f44ca8ba53b89e4218303a7cd77cd0add9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3167a63be46e0d777fbec0c6a3301684fb7636bd
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700982"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512549"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Munkamenet-viselkedés konfigurálása az Azure Active Directory B2C-vel
 
@@ -51,10 +51,10 @@ A következő használati esetek engedélyezve vannak ezek a tulajdonságok hasz
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és kiválasztása az Azure AD B2C-bérlő tartalmazó könyvtárra.
 3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Válassza ki **felhasználókövetési adatai (szabályzatok)**.
+4. Válassza ki **felhasználókövetési adatai (szabályzatok)** .
 5. Nyissa meg a korábban létrehozott felhasználói folyamatot. 
 6. Válassza ki **tulajdonságok**.
-7. Konfigurálása **webalkalmazás munkamenet élettartama (perc)**, **webalkalmazás munkamenet-időkorlátja**, **egyszeri bejelentkezési konfigurációjának**, és **szükséges azonosító jogkivonat a kijelentkezési kérelmekben**  igény szerint.
+7. Konfigurálása **webalkalmazás munkamenet élettartama (perc)** , **webalkalmazás munkamenet-időkorlátja**, **egyszeri bejelentkezési konfigurációjának**, és **szükséges azonosító jogkivonat a kijelentkezési kérelmekben**  igény szerint.
 
     ![Munkamenet viselkedésének konfigurálása](./media/session-behavior/session-behavior.png)
     

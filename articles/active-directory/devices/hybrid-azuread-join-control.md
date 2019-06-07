@@ -1,136 +1,102 @@
 ---
-title: Szabályozhatja a hibrid Azure AD join eszközét |} A Microsoft Docs
-description: Ismerje meg, hogyan szabályozhatja a hibrid Azure AD-csatlakozás az eszközök az Azure Active Directoryban.
+title: Szabályozott ellenőrzés hibrid Azure AD JOIN – Azure ad-ben
+description: Ismerje meg, hogyan teheti a hibrid Azure AD-csatlakozás szabályozott ellenőrzés egyszerre a teljes szervezetre kiterjedő az engedélyezés előtt
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 05/30/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93afc6f748ca9f464261c59e037a603ab6113bf8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd5b388f92a875fb2635037a6eae3ff3b6a95793
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60353108"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513288"
 ---
-# <a name="control-the-hybrid-azure-ad-join-of-your-devices"></a>Az eszközök hibrid Azure AD-csatlakozásának vezérlése
+# <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás szabályozott ellenőrzése
 
-Hibrid Azure Active Directory (Azure AD) csatlakozás egy olyan folyamat, automatikusan regisztrálja az Azure AD a helyi tartományhoz csatlakoztatott eszközök. Előfordulhatnak olyan esetek, amikor nem szeretné automatikusan regisztrálni kell az eszközök. Ez igaz, például ellenőrizheti, hogy minden megfelelően működik-e a kezdeti bevezetés során.
+Előfeltételek az összes érvényesítve van, amikor Windows-eszközök automatikusan regisztrálnak az Azure AD-bérlő eszközökként. Az Azure ad-ben ezek eszközidentitások állapotát a hibrid Azure AD-csatlakozás nevezik. Ebben a cikkben ismertetett fogalmakat további információt a cikkekben található [bemutatása az Eszközfelügyelet az Azure Active Directory](overview.md) és [a hibrid Azure Active Directory join megvalósítás megtervezése ](hybrid-azuread-join-plan.md).
 
-Ez a cikk útmutatást nyújt a hibrid Azure AD-csatlakozás az eszközök felügyeletét. 
+Szervezetek előfordulhat, hogy szeretné a hibrid Azure AD-csatlakozás szabályozott ellenőrzés előtt teszi lehetővé, és egyszerre a teljes szervezet. Ez a cikk a hibrid Azure AD JOIN szabályozott ellenőrzés elvégzésének módját ismertetik.
 
-
-## <a name="prerequisites"></a>Előfeltételek
-
-Ez a cikk azt feltételezi, hogy ismeri a:
-
--  [Az Azure Active Directory eszközkezelésének alapjai](../device-management-introduction.md)
- 
--  [A hibrid Azure Active Directory join megvalósítás megtervezése](hybrid-azuread-join-plan.md)
-
--  [Konfigurálás hibrid Azure Active Directory-csatlakozás a felügyelt tartományok](hybrid-azuread-join-managed-domains.md) vagy [konfigurálása hibrid Azure Active Directory-csatlakozás összevont tartományok](hybrid-azuread-join-federated-domains.md)
-
-
-
-## <a name="control-windows-current-devices"></a>Aktuális Windows-eszközök
+## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-current-devices"></a>Szabályozott ellenőrzés a hibrid Azure AD-csatlakozás az aktuális Windows-eszközökön
 
 A Windows asztali operációs rendszert futtató eszközök esetében a támogatott verziója a Windows 10 Évfordulós frissítés (1607-es verzió) vagy újabb. Ajánlott eljárásként frissítse a Windows 10 legújabb verzióját.
 
-Minden Windows aktuális eszközök automatikus regisztrációját az Azure AD-eszköz indítása vagy a felhasználói bejelentkezés. Ez a viselkedés a csoportházirend-objektumot (GPO) vagy a System Center Configuration Manager segítségével szabályozhatja.
+Ehhez az aktuális Windows-eszközök hibrid Azure AD joinnal ellenőrzött érvényesség, kell tennie:
 
-A Windows jelenlegi eszközeinek vezérléséhez, kell tennie: 
-
-
-1.  **Az összes eszközre**: Tiltsa le az automatikus regisztrációt.
-2.  **A kijelölt eszközökhöz**: Automatikus eszközregisztráció engedélyezése.
-
-Miután ellenőrizte, hogy minden a várt módon működik, készen áll az összes eszköz regisztrálására újra engedélyezni szeretné az.
+1. A szolgáltatási csatlakozási pontot (SCP) az Active Directory (AD) bejegyzés törlése, ha létezik
+1. Ügyféloldali beállításjegyzék-beállítás a szolgáltatáskapcsolódási pont konfigurálása a tartományhoz csatlakoztatott számítógépek olyan csoportházirend-objektum (GPO) használatával
+1. Az AD FS használatakor is konfigurálnia kell az ügyféloldali beállításjegyzék-beállítást, a szolgáltatáskapcsolódási pont az AD FS-kiszolgáló csoportházirend-objektum  
 
 
 
-### <a name="group-policy-object"></a>Csoportházirend-objektum 
+### <a name="clear-the-scp-from-ad"></a>Törölje az az SCP-t az AD-ből
 
-Szabályozhatja az eszköz regisztrációs viselkedését az eszközök a következő csoportházirend-objektum a központi telepítésével: **Regisztrálja a tartományhoz csatlakoztatott számítógépeket eszközként**.
+Az Active Directory Services Interfaces szerkesztőprogram (ADSI szerkesztő) segítségével módosíthatja az az SCP objektumokat az ad-ben.
 
-A csoportházirend-objektum beállítása:
+1. Indítsa el a **ADSI-szerkesztő** asztali alkalmazás és a felügyeleti munkaállomás vagy egy tartományvezérlő, egy vállalati rendszergazda engedélyezte.
+1. Csatlakozás a **konfigurációs névhasználati környezet** annak a tartománynak.
+1. Keresse meg a **CN = Configuration, DC = contoso, DC = com** > **CN = Services** > **CN = Device Registration Configuration**
+1. A levél objektum alatt kattintson a jobb gombbal **CN = Device Registration Configuration** válassza **tulajdonságai**
+   1. Válassza ki **kulcsszavak** származó a **Attribútumszerkesztő** ablakot, és kattintson **szerkesztése**
+   1. Válassza ki az értékeket a **azureADId** és **azureADName** (egyenként), és kattintson a **eltávolítása**
+1. Bezárás **ADSI-szerkesztő**
 
-1.  Nyissa meg **Kiszolgálókezelő**, majd lépjen **eszközök** > **csoportházirend-kezelő**.
 
-2.  Nyissa meg a tartomány csomópontjára, amely megfelel a tartományhoz, ahol szeretné az automatikus regisztráció engedélyezése vagy letiltása.
+### <a name="configure-client-side-registry-setting-for-scp"></a>A szolgáltatáskapcsolódási pont ügyféloldali beállításjegyzék-beállítás konfigurálása
 
-3.  Kattintson a jobb gombbal **csoportházirend-objektumok**, majd válassza ki **új**.
+A következő példa használatával hozza létre a csoportházirend objektumot (GPO), telepítsen egy beállításjegyzék-beállítást jegyezve szolgáltatáskapcsolódási pont konfigurálása a beállításjegyzékben, az eszközök.
 
-4.  Adjon meg egy nevet (például **hibrid Azure AD-csatlakozás**) a csoportházirend-objektum számára. 
+1. Nyissa meg a Csoportházirend kezelése konzolon, és hozzon létre egy új csoportházirend-objektumot a tartomány.
+   1. Adja meg az újonnan létrehozott csoportházirend-objektum nevét (például ClientSideSCP).
+1. A csoportházirend-objektum szerkesztéséhez, és keresse meg a következő elérési út: **Számítógép konfigurációja** > **beállítások** > **Windows beállítások** > **beállításjegyzék**
+1. Kattintson a jobb gombbal a beállításjegyzékben, és válassza **új** > **beállításjegyzék-elem**
+   1. Az a **általános** lapra, adja meg a következőket
+      1. Művelet: **Update**
+      1. Struktúra: **HKEY_LOCAL_MACHINE**
+      1. Kulcs elérési útja: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
+      1. Érték neve: **TenantId**
+      1. Érték típusa: **REG_SZ**
+      1. Érték: A globálisan egyedi Azonosítót vagy **címtár-azonosító** az Azure AD-példány (Ez az érték megtalálható a **az Azure portal** > **Azure Active Directory**  >   **Tulajdonságok** > **címtár-azonosító**)
+   1. Kattintson az **OK** gombra
+1. Kattintson a jobb gombbal a beállításjegyzékben, és válassza **új** > **beállításjegyzék-elem**
+   1. Az a **általános** lapra, adja meg a következőket
+      1. Művelet: **Update**
+      1. Struktúra: **HKEY_LOCAL_MACHINE**
+      1. Kulcs elérési útja: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
+      1. Érték neve: **tenantName**
+      1. Érték típusa: **REG_SZ**
+      1. Érték: Az ellenőrzött **tartománynév** az Azure ad-ben (például `contoso.onmicrosoft.com` vagy bármely más ellenőrzött tartomány nevét a címtár)
+   1. Kattintson az **OK** gombra
+1. Zárja be a szerkesztőt az újonnan létrehozott csoportházirend-objektum
+1. Az újonnan létrehozott csoportházirend-Objektumot a kívánt szervezeti egység, amely az ellenőrzött bevezetését population tartozik tartományhoz csatlakoztatott számítógépeket tartalmazó mutató hivatkozás
 
-5.  Kattintson az **OK** gombra.
+### <a name="configure-ad-fs-settings"></a>Az AD FS-beállítások konfigurálása
 
-6.  Kattintson a jobb gombbal az új csoportházirend-Objektumot, és válassza **szerkesztése**.
+Ha az AD FS használja, először az utasításokat a fent említett, de a csoportházirend-objektum kapcsolása az AD FS-kiszolgálók ügyféloldali szolgáltatáskapcsolódási pont konfigurálása. Ez a konfiguráció az AD FS eszközidentitások forrása létrehozására, mint az Azure AD szükséges.
 
-7.  Lépjen a **számítógép konfigurációja** > **házirendek** > **felügyeleti sablonok** > **Windows Összetevők** > **Eszközregisztráció**. 
+## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Hibrid Azure AD join a Windows régebbi verziójú eszközök vezérelt érvényesítése
 
-8.  Kattintson a jobb gombbal **eszközként regisztrálja a tartományhoz csatlakoztatott számítógépeket**, majd válassza ki **szerkesztése**.
+Windows régebbi verziójú eszközök regisztrálása, telepíteni kell a szervezetek [Microsoft munkahelyi csatlakoztatás Windows 10-számítógépek](https://www.microsoft.com/download/details.aspx?id=53554) elérhető a Microsoft Download Center.
 
-    > [!NOTE] 
-    > Ez a csoportházirend-sablon a Csoportházirend kezelése konzol korábbi verzióiról át lett nevezve. Ha a konzol korábbi verzióiban használ, lépjen a **számítógép konfigurációja** > **házirendek** > **felügyeleti sablonok**  >  **Windows-összetevők** > **Eszközregisztráció** > **regisztrálása a tartományhoz csatlakozó számítógép eszközként**. 
+A csomag például egy szoftverterjesztési rendszer segítségével telepíthet [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). A csomag a standard szintű beavatkozás nélküli telepítés beállítások quiet paraméter támogatja. A Configuration Manager aktuális ágának előnyöket kínál, hiszen nyomon követheti a befejezett regisztrációk például korábbi verzióihoz képest.
 
-9.  Az alábbi beállítások közül, majd válassza ki és **alkalmaz**:
+A telepítő, amely a felhasználó nevében a rendszer létrehoz egy ütemezett feladatot. A feladat akkor aktiválódik, ha a felhasználó bejelentkezik a Windows. A feladat csendes csatlakoztatja az eszközt az Azure AD-felhasználói hitelesítő adatok az Azure AD-hitelesítés után.
 
-    - **Letiltott**: Automatikus eszközregisztráció megakadályozására.
-    - **Engedélyezett**: Automatikus eszközregisztráció engedélyezése.
+Szabályozhatók az eszközök regisztrációját, hogy üzembe kell helyeznie a Windows Installer-csomag régebbi verziójú Windows-eszközök a kiválasztott csoporthoz.
 
-10. Kattintson az **OK** gombra.
+> [!NOTE]
+> A szolgáltatáskapcsolódási pont nem történik meg az ad-ben, akkor kövesse ugyanazt a megközelítést leírtak szerint [ügyféloldali beállításjegyzék-beállítás a szolgáltatáskapcsolódási pont konfigurálása](#configure-client-side-registry-setting-for-scp)) a tartományhoz csatlakoztatott számítógépek olyan csoportházirend-objektum (GPO) használatával.
 
-Kapcsolja a csoportházirend-Objektumot egy Ön által választott helyre van szüksége. Például a házirend az összes, a tartományhoz csatlakoztatott jelenlegi eszköz beállítása a szervezetben, kapcsolja a csoportházirend-Objektumot a tartományhoz. Ehhez az ellenőrzött telepítési, állítsa ezt a szabályzatot tartományhoz csatlakoztatott Windows aktuális eszközökre, szervezeti egység vagy egy biztonsági csoport tartozik.
 
-### <a name="configuration-manager-controlled-deployment"></a>A Configuration Manager központi telepítési szabályozza 
-
-Az eszköz regisztrációs viselkedését az aktuális eszközök szabályozhatja úgy konfigurálja a következő ügyfélbeállítással: **Automatikusan regisztrálja az Azure Active Directory új Windows 10-tartományhoz csatlakozott eszközökkel**.
-
-Ügyfélbeállítás konfigurálása:
-
-1.  Nyissa meg **Configuration Manager**válassza **felügyeleti**, majd lépjen **ügyfélbeállítások**.
-
-2.  Nyissa meg a tulajdonságait **alapértelmezett ügyfélbeállítások** válassza **Cloud Services**.
-
-3.  A **eszközbeállítások**, válasszon egyet a következő értékeket a **automatikusan regisztrálja az Azure Active Directory új Windows 10-tartományhoz csatlakozott eszközökkel**:
-
-    - **Nem**: Automatikus eszközregisztráció megakadályozására.
-    - **Igen**: Automatikus eszközregisztráció engedélyezése.
-
-4.  Kattintson az **OK** gombra.
-
-Kíván hivatkozni egy Ön által választott helyre ezt az ügyfélbeállítást. Adja meg ezt az ügyfélbeállítást a minden Windows aktuális a szervezetnél található eszközökön, például az ügyfélbeállítás, a tartományhoz kell társítani. Ehhez egy ellenőrzött központi telepítést, az ügyfél-eszközbeállítást Windows-tartományhoz tartozó szervezeti egység vagy egy biztonsági csoport aktuális eszközök konfigurálhatja.
-
-> [!Important]
-> Noha a fenti konfigurációs gondoskodik a meglévő tartományhoz csatlakoztatott Windows 10-es eszközök, a hibrid Azure AD-csatlakozás befejezéséhez a Csoportházirend alkalmazása a potenciális késedelem miatt előfordulhat, hogy továbbra is próbálja eszközöket, amelyek a rendszer újonnan a tartományhoz, vagy A Configuration Manager-beállítások az eszközökön. 
->
-> Ennek elkerülése érdekében azt javasoljuk, hogy létrehozott egy új Sysprep lemezkép (használt példaként az üzembe helyezési módszer). Hozza létre a olyan eszköz, amely lett korábban sosem hibrid Azure AD-hez, és azt, hogy már rendelkezik a csoportházirend beállítást vagy a Configuration Manager ügyfél-eszközbeállítást a alkalmazni. Az új rendszerképet is az új számítógépeket, amelyek a szervezet tartományához kell használnia. 
-
-## <a name="control-windows-down-level-devices"></a>A korábbi verziójú Windows-eszközök vezérlése
-
-Windows régebbi verziójú eszközök regisztrálásához, töltse le és telepítse a Windows Installer-csomag (.msi) a letöltőközpontból szeretne a [Microsoft munkahelyi csatlakoztatás Windows 10-számítógépek](https://www.microsoft.com/download/details.aspx?id=53554) lapot.
-
-A csomag például egy szoftverterjesztési rendszer segítségével telepíthet [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). A csomag a standard szintű beavatkozás nélküli telepítés beállítások quiet paraméter támogatja. A Configuration Manager aktuális ágának előnyöket kínál, hiszen nyomon követheti a befejezett regisztrációk például korábbi verzióihoz képest.
-
-A telepítő létrehoz egy ütemezett feladatot a rendszer a felhasználó környezetében futó. A feladat akkor aktiválódik, ha a felhasználó bejelentkezik a Windows. A feladat csendes csatlakoztatja az eszközt az Azure AD-felhasználói hitelesítő adatok az Azure AD-hitelesítés után.
-
-Szabályozhatja az eszközök regisztrációját, üzembe kell helyeznie a Windows Installer-csomag csak a Windows régebbi verziójú eszközök egy kiválasztott csoportja számára. Ha ellenőrizte, hogy minden a várt módon működik, készen áll a csomag megkezdik az összes régebbi verziójú eszközök.
-
+Miután ellenőrizte, hogy minden a várt módon működik, automatikusan rögzítheti a többi, a Windows jelenlegi és a régebbi verziójú eszközök az Azure AD által [konfigurálása az Azure AD Connect használatával SCP](hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Active Directory eszközkezelésének alapjai](../device-management-introduction.md)
-
-
-
+[A hibrid Azure Active Directory join megvalósítás megtervezése](hybrid-azuread-join-plan.md)

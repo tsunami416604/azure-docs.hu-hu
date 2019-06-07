@@ -1,18 +1,18 @@
 ---
-title: 'Gyors útmutató: Az Azure Data Explorer fürt és adatbázis létrehozása PowerShell használatával'
+title: Az Azure Data Explorer fürt és adatbázis létrehozása PowerShell használatával
 description: Ismerje meg, hogyan hozhat létre Azure Data Explorer fürt és adatbázis PowerShell-lel
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: 28785bb99dcdb767a64ae977e8326b80130fb135
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 85c8cc81b3c61e2faf65bf8a06c69ca7f2b906c9
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240195"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497327"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Az Azure Data Explorer fürt és adatbázis létrehozása PowerShell használatával
 
@@ -24,7 +24,7 @@ ms.locfileid: "66240195"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürtöt, és a egy adatbázis Powershell használatával. PowerShell-parancsmagok és parancsfájlok is futtathatja a Windows, Linux, vagy a [Azure Cloud Shell](../cloud-shell/overview.md) a [Az.Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) létrehozása és konfigurálása az Azure Data Explorer fürtök és az adatbázisok.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a cikkben létrehozhat egy fürtöt, és a egy adatbázis Powershell használatával. PowerShell-parancsmagok és parancsfájlok is futtathatja a Windows, Linux, vagy a [Azure Cloud Shell](../cloud-shell/overview.md) a [Az.Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) létrehozása és konfigurálása az Azure Data Explorer fürtök és az adatbázisok.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha helyi telepítése és használata az Azure CLI, az ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb. Futtassa az `az --version` parancsot a verzió ellenőrzéséhez. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket.
+Ha helyi telepítése és használata az Azure CLI, ehhez a cikkhez az Azure CLI 2.0.4-es vagy újabb. Futtassa az `az --version` parancsot a verzió ellenőrzéséhez. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket.
 
 ## <a name="configure-parameters"></a>Paraméterek konfigurálása
 
@@ -107,7 +107,7 @@ Most már egy fürt és a egy adatbázist.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-* Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze meg a létrehozott erőforrásokat.
+* Ha azt tervezi, hajtsa végre a más cikkeket, megtarthatja a létrehozott erőforrásokat.
 * Erőforrások törléséhez törölje a fürtöt. Ha töröl egy fürtöt, benne az adatbázisokat is törli. A következő paranccsal törölje a fürtöt:
 
     ```azurepowershell-interactive
@@ -117,4 +117,4 @@ Most már egy fürt és a egy adatbázist.
 ## <a name="next-steps"></a>További lépések
 
 * [További Az.Kusto parancsok](/powershell/module/az.kusto/?view=azps-1.7.0#kusto)
-* [Rövid útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)](net-standard-ingest-data.md)
+* [Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)](net-standard-ingest-data.md)
