@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1520b01826de2a80d8baeccf4913fa180d385644
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: eb7cbb80be12498242363eb8141a468e08cba73a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66256301"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478328"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights az Azure cloud services
 [Az Application Insights] [ start] figyelheti [Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állási, teljesítmény, hibák és használati adatok az Application Insights SDK-k egyesül [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) a cloud Services szolgáltatások adatait. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -194,18 +194,18 @@ A feldolgozói szerepkörök esetében kétféle módon kivételek követheti ny
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 A rendszer alapértelmezés szerint az alábbi számlálókat gyűjti:
 
-    * \Process(??APP_WIN32_PROC??)\% A processzor kihasználtsága
-    * \Memory\Available Bytes
-    * \.NET CLR-kivételek (??APP_CLR_PROC??)\# az összes kivétel közül másodpercenként
-    * \Process(??APP_WIN32_PROC??)\Private Bytes
-    * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
-    * \Processor(_Total)\% Processor Time
+* \Process(??APP_WIN32_PROC??)\% A processzor kihasználtsága
+* \Memory\Available Bytes
+* \.NET CLR-kivételek (??APP_CLR_PROC??)\# az összes kivétel közül másodpercenként
+* \Process(??APP_WIN32_PROC??)\Private Bytes
+* \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
+* \Processor(_Total)\% Processor Time
 
 Webes szerepkörök esetében a rendszer az alábbi számlálókat is gyűjti:
 
-    * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec
-    * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
-    * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
+* \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec
+* \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
+* \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
 Szerkesztésével megadhat további egyéni vagy más Windows-teljesítményszámlálók *ApplicationInsights.config* [ebben a példában látható módon](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
 
