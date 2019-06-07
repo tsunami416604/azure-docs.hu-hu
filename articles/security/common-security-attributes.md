@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 460d8756c437a1212aef054cf069be2bccac8c8a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 64accb70561d4c0282b3ee45935d955dba1c67c4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001366"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474539"
 ---
 # <a name="security-attributes-for-azure-services"></a>Az Azure-szolgáltatások biztonsági attribútumok
 
@@ -103,7 +103,7 @@ Ez a cikk összegyűjti a kiválasztott Azure-szolgáltatások általános bizto
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hitelesítés| Igen | Ügyfeleink App Service-ben, amely automatikusan integrálható alkalmazásokat hozhat létre [Azure Active Directory (Azure AD)](../active-directory/index.md) és más OAuth kompatibilis identitásszolgáltatókkal; lásd: [hitelesítés és engedélyezés Az Azure App Service](../app-service/overview-authentication-authorization.md). Felügyeleti hozzáférés az App Service-eszközöket minden hozzáférés hitelesítése az Azure AD egyszerű és Azure Resource Manager RBAC-szerepkörök kombinációja vezérlik majd. |
+| Hitelesítés| Igen | Ügyfeleink App Service-ben, amely automatikusan integrálható alkalmazásokat hozhat létre [Azure Active Directory (Azure AD)](../active-directory/index.yml) és más OAuth kompatibilis identitásszolgáltatókkal; lásd: [hitelesítés és engedélyezés Az Azure App Service](../app-service/overview-authentication-authorization.md). Felügyeleti hozzáférés az App Service-eszközöket minden hozzáférés hitelesítése az Azure AD egyszerű és Azure Resource Manager RBAC-szerepkörök kombinációja vezérlik majd. |
 | Engedélyezés| Igen | Felügyeleti hozzáférés az App Service-eszközöket minden hozzáférés hitelesítése az Azure AD egyszerű és Azure Resource Manager RBAC-szerepkörök kombinációja vezérlik majd.  |
 
 
@@ -261,7 +261,7 @@ Ez a cikk összegyűjti a kiválasztott Azure-szolgáltatások általános bizto
 | Ellenőrzés/felügyeleti naplózás és a naplózási adatsík| Igen | A Log Analytics használatával. |
 | Adatsík naplózása és naplózása| Igen | A Log Analytics használatával. |
 
-### <a name="access-controls"></a>Hozzáférés-szabályozás
+### <a name="access-controls"></a>Hozzáférés-vezérlés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|

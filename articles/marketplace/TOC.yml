@@ -326,39 +326,6 @@
               href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: SaaS-alkalmazásajánlat
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
-          items:
-            - name: Előfeltételek
-              href: ./cloud-partner-portal/saas-app/cpp-prerequisites.md
-            - name: SaaS-alkalmazásajánlat létrehozása
-              href: ./cloud-partner-portal/saas-app/cpp-create-offer.md
-              items:
-                - name: Ajánlatbeállítási lap
-                  href: ./cloud-partner-portal/saas-app/cpp-offer-settings-tab.md
-                - name: Technikai információs lap
-                  href: ./cloud-partner-portal/saas-app/cpp-technical-info-tab.md
-                - name: Csomagok lap
-                  href: ./cloud-partner-portal/saas-app/cpp-plans-tab.md
-                - name: Csatornainformációs lap
-                  href: ./cloud-partner-portal/saas-app/cpp-channel-info-tab.md
-                - name: Tesztverzió lap
-                  href: ./cloud-partner-portal/saas-app/cpp-testdrive-tab.md
-                - name: Áruház részletei lap
-                  href: ./cloud-partner-portal/saas-app/cpp-storefront-tab.md
-                - name: Névjegyek lap
-                  href: ./cloud-partner-portal/saas-app/cpp-contacts-tab.md
-            - name: Ajánlat közzététele
-              href: ./cloud-partner-portal/saas-app/cpp-publish-offer.md
-            - name: Létező ajánlat frissítése
-              href: ./cloud-partner-portal/saas-app/cpp-update-existing-offer.md
-            - name: SaaS Fulfillment API-k
-              href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md
-              items:
-                - name: SaaS-alkalmazás regisztrálása
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-registration.md
-                - name: SaaS API v1 (elavult)
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md
-                - name: SaaS API v2
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md
         - name: Virtuálisgép-ajánlat
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
           items:

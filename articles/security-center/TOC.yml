@@ -61,19 +61,18 @@
       href: security-center-policies-overview.md
     - name: Alapértékek összehasonlítása fájlintegritási monitorozással
       href: security-center-file-integrity-monitoring-baselines.md
-      items:
-        - name: Adatgyűjtés
-          href: security-center-enable-data-collection.md
-        - name: Beépített biztonsági szabályzatok
-          href: security-center-policy-definitions.md
-        - name: E-mail-értesítések
-          href: security-center-provide-security-contact-details.md
-        - name: Tarifacsomag
-          href: security-center-pricing.md
-        - name: Biztonsági konfigurációk
-          href: security-center-customize-os-security-config.md
-        - name: Bérlőszintű láthatóság
-          href: security-center-management-groups.md
+    - name: Adatgyűjtés
+      href: security-center-enable-data-collection.md
+    - name: Beépített biztonsági szabályzatok
+      href: security-center-policy-definitions.md
+    - name: E-mail-értesítések
+      href: security-center-provide-security-contact-details.md
+    - name: Tarifacsomag
+      href: security-center-pricing.md
+    - name: Biztonsági konfigurációk
+      href: security-center-customize-os-security-config.md
+    - name: Bérlőszintű láthatóság
+      href: security-center-management-groups.md
     - name: Biztonsági javaslatok megvalósítása
       href: security-center-recommendations.md
       items:

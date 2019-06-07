@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 06/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0411e1ab76d010eae26142d681dc157a1eb776a8
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: bec4cb17f2d25cd00ef115a78736c95eaf26d95f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481158"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752463"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>Oktatóanyag: Otsuka Shokai integrálása az Azure Active Directoryval
 
@@ -79,14 +79,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a következő lépésekkel:
-
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.otsuka-shokai.co.jp/S000000100`
-
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.otsuka-shokai.co.jp/ResponseOffice365`
-
-    > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Otsuka Shokai ügyfél-támogatási csapatának](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** oldalon az alkalmazás előre konfigurálva, és a szükséges URL-címek vannak már előre fel van töltve az Azure-ral. A felhasználónak szüksége van a konfiguráció mentéséhez kattintson a **mentése** gombra.
 
 1. Otsuka Shokai alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. Otsuka Shokai alkalmazás vár **nameidentifier** a leképezendő **user.objectid**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése**  ikonra, és módosítsa a attribútumleképezés.
 
@@ -139,7 +132,7 @@ Ebben a szakaszban az Azure Portalon b Simon nevű tesztfelhasználó fog létre
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `BrittaSimon@contoso.com`.
+   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -163,7 +156,7 @@ Ebben a szakaszban b Simon által biztosított hozzáférés Otsuka Shokai Azure
 
 ### <a name="create-otsuka-shokai-test-user"></a>Otsuka Shokai tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Otsuka Shokai hoz létre. Együttműködve [Otsuka Shokai támogatási csapatának](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) a felhasználók hozzáadása az Otsuka Shokai platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói B.Simon nevű Otsuka Shokai hoz létre. Együttműködve [Otsuka Shokai támogatási csapatának](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) a felhasználók hozzáadása az Otsuka Shokai platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
