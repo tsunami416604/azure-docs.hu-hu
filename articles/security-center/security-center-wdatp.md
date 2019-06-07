@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: monhaber
-ms.openlocfilehash: 15232c92e60d21d759bec59597cb161480b8c2ea
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: d42b929807bf67b73d0587232608efc0cea6d717
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743232"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752572"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>A Windows Defender komplex veszélyforrások elleni védelem az Azure Security Centerrel
 
@@ -93,7 +93,7 @@ Kövesse a [felhasználói hozzáférések hozzárendelése a portál](https://d
 
 ## <a name="set-the-firewall-configuration"></a>A tűzfal-konfiguráció beállítása
 
-Ha a proxy vagy tűzfal blokkolja a névtelen forgalmat, a Windows Defender ATP-érzékelő csatlakozik a rendszer környezetéből, győződjön meg arról, hogy névtelen forgalom engedélyezett. Kövesse a [engedélyezze a hozzáférést a Windows Defender ATP szolgáltatás URL-címeinek a proxykiszolgálón](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-windows-defender-atp-service-urls-in-the-proxy-server).
+Ha a proxy vagy tűzfal blokkolja a névtelen forgalmat, a Windows Defender ATP-érzékelő csatlakozik a rendszer környezetéből, győződjön meg arról, hogy névtelen forgalom engedélyezett. Kövesse a [engedélyezze a hozzáférést a Windows Defender ATP szolgáltatás URL-címeinek a proxykiszolgálón](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 
 ## <a name="test-the-feature"></a>A szolgáltatás tesztelése
 

@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f3d7f916d31a03d7b868749026f541dd646459f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 79af90d1c2c5b698ee7394f7fb20486b3069038c
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60732518"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751942"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) a hibák kezelése
 
-Tartós függvény vezénylések kódban vannak megvalósítva, és használhatja a hibakezelési képességekkel programozási nyelv. Ezt szem valójában nincs ismerje meg hiba- és kártalanítási beépítése a vezénylések kell minden olyan új fogalmakat. Vannak azonban érdemes figyelembe vennie, néhány működés.
+Tartós függvény vezénylések kódban vannak megvalósítva, és használhatja a hibakezelési képességekkel programozási nyelv. Ezt szem valójában nincs kapcsolatos hiba- és kártalanítási beépítése a vezénylések kell minden olyan új fogalmakat. Vannak azonban érdemes figyelembe vennie, néhány működés.
 
 ## <a name="errors-in-activity-functions"></a>Hibák a tevékenységfüggvényeket
 

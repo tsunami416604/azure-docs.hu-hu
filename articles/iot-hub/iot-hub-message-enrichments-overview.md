@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 6ddfd90956fde0c57e14083a3704cbf365456c75
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 13e35ab93fc37541548785c6355489eaf3a3efc2
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735163"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754552"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Üzenet végrehajtott információbeolvasás az eszköz a felhőbe irányuló IoT Hub-üzenetek (előzetes verzió)
 
@@ -77,7 +77,7 @@ Hogyan próbálhatja ki üzenet végrehajtott információbeolvasás, olvassa el
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-Ez a funkció előzetes verzióban érhető el, és érhető el minden régióban, kivéve az USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Nyugat-Európa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china/china-welcome), és [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
+Ez a funkció előzetes verzióban érhető el, és érhető el minden régióban, kivéve az USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Nyugat-Európa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china), és [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1be9d11db9a1c614614e0a4023f84b15588ba5f0
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 89539509e759da7f041ce0216397b1a9c8ff1f16
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66742965"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753090"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -92,14 +92,7 @@ További információkért lásd: a dokumentáció a a [Model class](https://doc
 
 A következő számítási céljainak, vagy a számítási erőforrásokat, a webszolgáltatás üzembe üzemeltetéséhez használható. 
 
-| Számítási célt | Használat | Leírás |
-| ----- | ----- | ----- |
-| [Helyi webszolgáltatás](#local) | Tesztelés és hibakeresés | Megfelelő választás a korlátozott tesztelés és hibaelhárítás.
-| [Az Azure Kubernetes Service (AKS)](#aks) | Valós idejű következtetésekhez | Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít. |
-| [Az Azure Container Instances (aci Szolgáltatásban)](#aci) | Tesztelés | Megfelelő választás a lépték esetén a CPU-alapú számítási feladatok. |
-| [Az Azure Machine Learning Compute](how-to-run-batch-predictions.md) | A Batch következtetésekhez | A kiszolgáló nélküli számítási futtatása a batch következtetésekhez. A normál és alacsony prioritású virtuális gépeket támogatja. |
-| [Azure IoT Edge](#iotedge) | (Előzetes verzió) IoT-modul | Üzembe helyezés, és gépi Tanulási modelleket szolgálnak az IoT-eszközökön. |
-
+[!INCLUDE [aml-compute-target-deploy](../../../includes/aml-compute-target-deploy.md)]
 
 ## <a name="prepare-to-deploy"></a>Az üzembe helyezés előkészítése
 

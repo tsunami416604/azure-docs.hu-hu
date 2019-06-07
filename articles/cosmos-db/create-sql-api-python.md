@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 033baa80eaa10581777061b40c64afe6331a2e92
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: f6420d073b4fe348b8533eaaaa5209323f35a25f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979070"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754261"
 ---
 # <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Az Azure Cosmos DB: Azure Cosmos DB SQL API-fiók használatával Python-alkalmazás létrehozása
 
@@ -42,7 +42,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Cosmos DB
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a>Gyűjtemény hozzáadása
+## <a name="add-a-container"></a>Tároló felvétele
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -85,7 +85,7 @@ Most pedig klónozzon egy SQL API-alkalmazást a GitHubról, állítsa be a kapc
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
 
-1. Az [Azure Portalon](https://portal.azure.com/), az Azure Cosmos DB-fiók bal oldali navigációs sávján kattintson a **Kulcsok** elemre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az **URI** és az **Elsődleges kulcs** értékét a `CosmosGetStarted.py` fájlba.
+1. Az a [az Azure portal](https://portal.azure.com/), az Azure Cosmos-fiókban a bal oldalsávon kattintson **kulcsok**. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az **URI** és az **Elsődleges kulcs** értékét a `CosmosGetStarted.py` fájlba.
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-sql-api-dotnet/keys.png)
 
@@ -216,7 +216,7 @@ Az alábbi kódrészletek mind a `CosmosGetStarted.py` fájlból származnak.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gyűjteményt készíteni, és hogyan lehet futtatni az alkalmazást. Így már további adatokat importálhat a Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban bemutattuk hogyan hozzon létre egy Azure Cosmos-fiókot, hozzon létre egy tárolót az adatkezelő segítségével, és futtathat egy alkalmazást. Így már további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be az SQL API-hoz](import-data.md)

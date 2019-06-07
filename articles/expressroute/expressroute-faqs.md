@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/06/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 1a6f3fbc0160a78fb76f810257d3285725445eba
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: adffb18272d10c579f8b28bef055813b1074a237
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257962"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754737"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -288,7 +288,7 @@ Igen. Az ExpressRoute prémium szintű díjak vonatkoznak, és az ExpressRoute k
 
 ## <a name="expressroute-local"></a>ExpressRoute Local
 ### <a name="what-is-expressroute-local"></a>Mit jelent a helyi ExpressRoute?
-Az ExpressRoute helyi egy Termékváltozat az ExpressRoute-kapcsolatcsoportot. A rendszer helyi egyik legfőbb jellemzője, hogy egy ExpressRoute-társviszony-létesítési helyszínen biztosítja a helyi expressroute-kapcsolatcsoporthoz a hozzáférést csak egy vagy két Azure-régiókban lévő vagy a azonos metro. Ezzel szemben a standard szintű kapcsolatcsoportot hozzáférést biztosít minden Azure-régióban egy geopolitikai területen és a egy prémium szintű Azure-régiók mindegyikében kapcsolatcsoport globálisan. 
+Az ExpressRoute helyi egy elérhető a Termékváltozat az ExpressRoute-kapcsolatcsoport [ExpressRoute közvetlen](expressroute-erdirect-about.md). A rendszer helyi egyik legfőbb jellemzője, hogy egy ExpressRoute-társviszony-létesítési helyszínen biztosítja a helyi expressroute-kapcsolatcsoporthoz a hozzáférést csak egy vagy két Azure-régiókban lévő vagy a azonos metro. Ezzel szemben a standard szintű kapcsolatcsoportot hozzáférést biztosít minden Azure-régióban egy geopolitikai területen és a egy prémium szintű Azure-régiók mindegyikében kapcsolatcsoport globálisan. 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Milyen előnyökkel jár az ExpressRoute helyi?
 Míg a Standard vagy prémium szintű ExpressRoute-kapcsolatcsoport kimenő adatforgalom díjköteles van szüksége, nem kell fizetnie kimenő adatátvitel külön-külön helyi ExpressRoute-kapcsolatcsoporthoz. Más szóval az ára az ExpressRoute helyi adatok átviteli díján tartalmazza. Az ExpressRoute helyi a leggazdaságosabb megoldás, ha nagy mennyiségű adat átvitelét és a kívánt Azure-régiók közel társviszony-létesítési ExpressRoute-egységekhez egy privát kapcsolaton keresztül az adatok is tenné. 

@@ -7,18 +7,14 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 62259749e04d66d78206a0bba77ce88f2c08c82f
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: d35e1dc96f65e51ab14c4962d1824334cbdb1616
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66689001"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752029"
 ---
 # <a name="custom-rules-for-web-application-firewall"></a>Webalkalmazási tűzfal egyéni szabályok
-
-> [!IMPORTANT]
-> Az Azure Application Gateway WAF egyéni szabályok jelenleg nyilvános előzetes verzióként. **Egyéni szabályok csak a WAF_v2 Termékváltozat érhetők**.
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure Application Gateway webalkalmazási tűzfala (WAF) tartalmaz egy előre konfigurált, a platform által kezelt szabálykészletben által kínált számos különböző típusú támadások elleni védelem. Ezeket a támadásokat hely scripting, SQL-injektálás és mások közötti közé tartozik. Ha Ön a WAF-rendszergazda, érdemes lehet írni, mivel megvédi a alapvető szabálykészlet saját szabályok (CRS) szabályokat állíthat be. A szabályok vagy blokkolhatják vagy engedélyezhetik a kért forgalmat, a megadott feltételeknek megfelelő alapján.
 

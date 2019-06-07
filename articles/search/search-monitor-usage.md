@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3fa463cb7178fa5cc2108383047a7ca94ffb48a3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bac897178c8220abe72a92a5cf14fc4767cdd3bf
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797377"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755060"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search erőforrás-használat és a lekérdezés tevékenység figyelése
 
@@ -118,7 +118,7 @@ A search service forgalmi naplók tartalmazó blobok struktúrája ebben a szaka
 | operationName |sztring |"Query.Search" |A művelet neve |
 | operationVersion |string |"2019-05-06" |A használt api-verzió |
 | category |sztring |"OperationLogs" |állandó |
-| resultType |sztring |"Sikeres" |Érvényes értékek: Sikeres vagy sikertelen |
+| resultType |sztring |"Sikeres" |Lehetséges értékek: Sikeres vagy sikertelen |
 | resultSignature |int |200 |HTTP-eredménykód |
 | durationMS |int |50 |Ennyi ezredmásodpercig tart a művelet időtartama |
 | properties |objektum |az alábbi táblázatban foglaltuk össze |A művelet-specifikus adatokat tartalmazó objektum |
@@ -175,7 +175,7 @@ Az Azure Search REST API és a .NET SDK-val programozott hozzáférést biztosí
 * [Dokumentumok száma](/rest/api/searchservice/count-documents)
 * [Az indexelő állapotának beolvasása](/rest/api/searchservice/get-indexer-status)
 
-A PowerShell vagy az Azure CLI használatával engedélyezéséhez tekintse a dokumentáció [Itt](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs).
+A PowerShell vagy az Azure CLI használatával engedélyezéséhez tekintse a dokumentáció [Itt](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
 
 ## <a name="next-steps"></a>További lépések
 

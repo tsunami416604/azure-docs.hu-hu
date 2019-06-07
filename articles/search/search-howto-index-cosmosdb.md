@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 07989b06b756e1e360ac3c37927a8267c84d9162
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 0610f57e264189961a6803bee5bb93c1ec9fb103
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522839"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753999"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Az Azure Search-indexelők használatával a Cosmos DB indexelése
 
@@ -282,6 +282,8 @@ Az index és az adatforrás létrehozása után készen áll az indexelő létre
 Az indexelő futása kétóránként (ütemezési időköz beállítása "PT2H"). Az indexelők futtatásához a 30 percenként, a "PT30M" időközt beállítani. A legrövidebb támogatott időköz 5 perc. Az ütemezés nem kötelező, ha nincs megadva, az indexelő futása csak egyszer, amikor létrejön. Azonban bármikor egy indexelő igény szerinti is futtathatja.   
 
 Az indexelő API létrehozása a további részletekért tekintse meg [indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+
+További információk az indexelő ütemezés definiálása: [az Azure Search indexelők ütemezése](search-howto-schedule-indexers.md).
 
 ## <a name="use-net"></a>A .NET használata
 

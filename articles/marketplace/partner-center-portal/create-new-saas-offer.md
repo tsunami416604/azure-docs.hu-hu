@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9c8b8a6ad8a10a65a05b46bf433d00b4e3ecb402
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.openlocfilehash: 897634ac0c30b4a2cc496c225965f465a94fe4e9
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2019
-ms.locfileid: "66455632"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751895"
 ---
 # <a name="create-a-new-saas-offer"></a>Hozzon létre egy új SaaS-ajánlat
 
@@ -74,7 +74,7 @@ Annak érdekében, hogy a szoftver listában, mint a szoftverszolgáltatások (S
 
 - Az ajánlat az Azure-ügyfelek kompatibilisnek kell lennie. (Gyakran SaaS-alkalmazásokat is a legjobb teljesítmény és kompatibilitási üzemeltetett Azure-ban, de ez nem kötelező.) 
 - Az ajánlat kell használnia [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) az identitáskezeléshez és hitelesítéshez.
-- Az ajánlat kell használnia [SaaS teljesítése API-k](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2) integrálása az Azure piactéren.
+- Az ajánlat kell használnia [SaaS teljesítése API-k](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) integrálása az Azure piactéren.
 
 #### <a name="billing-infrastructure-costs"></a>A számlázás az infrastruktúrára fordítandó költségeket.
 SaaS-ajánlatok esetében, a közzétevőként figyelembe kell venni az Azure-infrastruktúra használati díjak és szoftver-licencelési díjak egyetlen költség elemként. A költségek jelenik meg az ügyfél havi fix keretösszegek előtt. Azure-infrastruktúra használati felügyelt, és közvetlenül Önnek, a partner számlázzuk. Az ügyfél nem fogja látni a tényleges infrastruktúra használati díjak. A kiadók általában a szoftver licenc díjszabása Azure-infrastruktúra használati díjak kötegeléséhez tilthatók le. 

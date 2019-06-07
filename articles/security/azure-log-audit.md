@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 6ab6ec6a88dbba066be9ecf9919be876090cfdff
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: edadb369461bb3865dd6894c3329e7079fa9d13f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121501"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752552"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-naplózás
 
@@ -279,7 +279,7 @@ A következő táblázat sorolja fel, és ismerteti az integrációs forgatókö
 |[Alkalmazástérkép](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)|Az alkalmazás összetevői, alapvető metrikákkal és riasztásokkal.|
 |[Diagnosztikai keresés például adatok](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| Események keresése és szűrése, például kérések, kivételek, függőségi hívások, naplókivonatok és lapmegtekintések.|
 |[Összesített adatok Metrikaböngészője](https://docs.microsoft.com/azure/azure-monitor/app/metrics-explorer)|Összesített adatok – például kérés- és hibaarányok, valamint kivételek, válaszidők és lapbetöltési idők – böngészése, szűrése és szegmentálása.|
-|[Irányítópultok](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards#dashboards)|Különböző erőforrásokból származó adatokat fűzhet össze és oszthat meg másokkal. Kiváló megoldás több összetevőből álló alkalmazások, valamint csoportszobában való folyamatos megjelenítés esetén.|
+|[Irányítópultok](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)|Különböző erőforrásokból származó adatokat fűzhet össze és oszthat meg másokkal. Kiváló megoldás több összetevőből álló alkalmazások, valamint csoportszobában való folyamatos megjelenítés esetén.|
 |[Live Metrics Stream](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)|Új buildverzió telepítésekor közel valós idejű teljesítménymutatókat figyelhet, és meggyőződhet arról, hogy minden megfelelő módon működik-e.|
 |[Elemzés](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)|A hatékony lekérdezési nyelvnek köszönhetően válaszokat kaphat az alkalmazás teljesítményére és használatára vonatkozó legégetőbb kérdésekre.|
 |[Automatikus és manuális riasztások](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)|Automatikus értesítést az alkalmazás normál telemetriai utaló alkalmazkodni és jelzik, ha valami kívül a szokásos minta. Riasztásokat állíthat be az egyéni vagy normál metrikák adott szintjeire is.|
@@ -330,7 +330,7 @@ Többféleképpen négy [gyűjtése a naplók és mérőszámok az Azure-szolgá
 
 | Szolgáltatás | Erőforrás típusa | Naplók | Mérőszámok | Megoldás |
 | :------ | :------------ | :--- | :------ | :------- |
-|Azure Application Gateway| Microsoft.Network/<br>applicationGateways|  Diagnosztika|Diagnosztika|    [Az Azure Application](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [Alkalmazásátjáró-elemzési](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
+|Azure Application Gateway| Microsoft.Network/<br>applicationGateways|  Diagnosztika|Diagnosztika|    [Az Azure Application](https://docs.microsoft.com/azure/azure-monitor/insights/azure-networking-analytics) [Alkalmazásátjáró-elemzési](https://docs.microsoft.com/azure/azure-monitor/insights/azure-networking-analytics#azure-application-gateway-analytics-solution-in-azure-monitor)|
 |Application Insights||     Összekötő|  Összekötő|  [Az Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [összekötő (előzetes verzió)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
 |Azure Automation-fiókok| Microsoft.Automation/<br>AutomationAccounts|    Diagnosztika||       [További információ](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
 |Az Azure Batch-fiókok|  Microsoft.Batch/<br>batchAccounts|  Diagnosztika|    Diagnosztika||
@@ -344,7 +344,7 @@ Többféleképpen négy [gyűjtése a naplók és mérőszámok az Azure-szolgá
 |Azure Load Balancer|   Microsoft.Network/<br>loadBalancers|    Diagnosztika|||
 |Azure Logic Apps|  Microsoft.Logic/<br>A munkafolyamatok|  Diagnosztika|    Diagnosztika||
 ||Microsoft.Logic/<br>integrationAccounts||||
-|Network Security Groups (Hálózati biztonsági csoportok)|   Microsoft.Network/<br>networksecuritygroups|Diagnosztika||   [Azure-beli hálózati biztonsági csoport analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
+|Network Security Groups (Hálózati biztonsági csoportok)|   Microsoft.Network/<br>networksecuritygroups|Diagnosztika||   [Azure-beli hálózati biztonsági csoport analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-networking-analytics#azure-application-gateway-and-network-security-group-analytics)|
 |Helyreállítási tárak|   Microsoft.RecoveryServices/<br>tárolók|||[Az Azure Recovery Services-Analytics (előzetes verzió)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 |Szolgáltatások keresése|   Microsoft.Search/<br>searchServices|    Diagnosztika|    Diagnosztika||
 |Service Bus-névtér| Microsoft.ServiceBus/<br>névterek|    Diagnosztika|Diagnosztika|    [Service Bus-elemzés (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|

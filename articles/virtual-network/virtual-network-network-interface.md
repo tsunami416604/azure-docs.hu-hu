@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: a3cb6e1b20e405cedddae8684a4b91fcb8a5514a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f25840c21ec64ca8d8e9e17eb39637cff7524c76
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695345"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755256"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy egy hálózati adapter törlése
 
@@ -26,7 +26,7 @@ Ismerje meg, hogyan hozzon létre, módosítsa a beállításokat és egy háló
 
 Ha meg kell hozzáadása, módosítása vagy eltávolítása a hálózati illesztő IP-címeket, tekintse meg [kezelése IP-címek](virtual-network-network-interface-addresses.md). Ha a hálózati adaptereket, vagy távolítsa el a hálózati adapterek virtuális gépeiről, lásd: hozzá kell adnia [hozzáadása vagy eltávolítása a hálózati adapterek](virtual-network-network-interface-vm.md).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -52,7 +52,7 @@ Az Azure portal használatával a virtuális gép létrehozásakor a portálon a
     |Name (Név)|Igen|A nevét, válassza ki az erőforráscsoporton belül egyedinek kell lennie. Idővel valószínűleg, akkor több hálózati adapterek az Azure-előfizetésében. Javaslatok elnevezési létrehozásakor, hogy több hálózati adapterrel egyszerűbb felügyelete, lásd: [elnevezési konvenciók](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions). A név nem lehet módosítani, a hálózati adapter létrehozása után.|
     |Virtuális hálózat|Igen|Válassza ki a virtuális hálózatot a hálózati adapter. Hozzárendelhet egy hálózati adapter csak egy virtuális hálózathoz, hogy az ugyanazon előfizetésben és helyen, a hálózati adapter létezik. Hálózati adapter létrehozása után nem módosítható a virtuális hálózathoz van rendelve. A virtuális gép hozzáadása a hálózati adapter is szerepelnie kell az azonos helyen és előfizetésen a hálózati adaptert.|
     |Alhálózat|Igen|Válassza ki egy alhálózatot a kiválasztott virtuális hálózaton belül. Az alhálózatot a hálózati adapter van rendelve a létrehozást követően módosítható.|
-    |Magánhálózati IP-címek kiosztása|Igen| Ebben a beállításban a IPv4-cím a hozzárendelési módszer választhassa. A következő hozzárendelési módszer közül választhat: **Dinamikus:** Ezzel a beállítással az Azure automatikusan hozzárendeli a következő elérhető címe a kiválasztott alhálózat címterét. **Statikus:** Ezzel a beállítással manuálisan kell rendelnie egy elérhető IP-cím a kiválasztott alhálózat címterében. Statikus és dinamikus címek nem változtatja meg, amíg nem módosítja őket, vagy a hálózati adapter törlése. A hozzárendelési módszer a hálózati adapter létrehozása után módosíthatja. Az Azure DHCP-kiszolgáló ezt a címet a virtuális gép operációs rendszerén belül a hálózati adapterhez rendeli.|
+    |Magánhálózati IP-cím hozzárendelése|Igen| Ebben a beállításban a IPv4-cím a hozzárendelési módszer választhassa. A következő hozzárendelési módszer közül választhat: **Dinamikus:** Ezzel a beállítással az Azure automatikusan hozzárendeli a következő elérhető címe a kiválasztott alhálózat címterét. **Statikus:** Ezzel a beállítással manuálisan kell rendelnie egy elérhető IP-cím a kiválasztott alhálózat címterében. Statikus és dinamikus címek nem változtatja meg, amíg nem módosítja őket, vagy a hálózati adapter törlése. A hozzárendelési módszer a hálózati adapter létrehozása után módosíthatja. Az Azure DHCP-kiszolgáló ezt a címet a virtuális gép operációs rendszerén belül a hálózati adapterhez rendeli.|
     |Hálózati biztonsági csoport|Nem| Hagyja beállítása **nincs**, válasszon egy meglévő [hálózati biztonsági csoport](security-overview.md), vagy [hozzon létre egy hálózati biztonsági csoport](tutorial-filter-network-traffic.md). Hálózati biztonsági csoportok lehetővé teszik egy hálózati adapter kívüli hálózati forgalom szűrésére. Hálózati adapter nulla vagy egy hálózati biztonsági csoport alkalmazhat. Nulla vagy egy hálózati biztonsági csoportot az alhálózathoz, a hálózati adapterhez hozzárendelt is alkalmazható. Néha nem várt eredmények fordulhat elő, amikor egy hálózati adaptert, és az alhálózatot a hálózati adapterhez rendelt hálózati biztonsági csoport alkalmazza. Hálózati adapterek és alhálózatok alkalmazott hálózati biztonsági csoportok hibaelhárítása: [hálózati biztonsági csoportok hibaelhárítása](diagnose-network-traffic-filter-problem.md).|
     |Előfizetés|Igen|Válassza ki az Azure egyik [előfizetések](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). A virtuális gépet, csatlakoztassa a hálózati adaptert, és kösse össze a virtuális hálózat ugyanabban az előfizetésben léteznie kell.|
     |Private IP address (IPv6)|Nem| Ha bejelöli ezt a jelölőnégyzetet, IPv6-címet a hálózati kapcsolat mellett a hálózati adapterhez rendelt IPv4-cím van hozzárendelve. Ez a cikk a fontos adatokat IPv6 hálózati adapterrel rendelkező IPv6-alapú című szakaszában talál. Az IPv6-cím-hozzárendelési módszer nem választhatja ki. Ha IPv6-címet hozzárendelni, a dinamikus módszerrel van hozzárendelve.
@@ -111,6 +111,8 @@ A DNS-kiszolgáló által az Azure DHCP-kiszolgáló a virtuális gép operáci�
 4. A következők közül választhat:
    - **Öröklés a virtuális hálózattól**: Válassza ezt a beállítást, a DNS-kiszolgáló beállítása a hálózati adapter be van-e rendelve a virtuális hálózathoz meghatározott öröklik. Egyéni DNS-kiszolgálót vagy az Azure által biztosított DNS-kiszolgáló a virtuális hálózat szintjén van meghatározva. Az Azure által biztosított DNS-kiszolgáló fel tudja oldani az erőforrások ugyanahhoz a virtuális hálózathoz rendelt gazdagépnevek. Az erőforrásokhoz a hozzárendelt különböző virtuális hálózatokhoz megoldásához teljes Tartománynevét kell használni.
    - **Egyéni**: Konfigurálhatja a saját DNS-kiszolgáló több virtuális hálózaton a nevek feloldásához. Adja meg a kiszolgáló egy DNS-kiszolgálóként használni kívánt IP-címét. A DNS-kiszolgáló címét adja meg, hogy csak a hálózati adapterhez van hozzárendelve, és felülbírálások bármilyen DNS-beállításainak a hálózati adapter be van-e rendelve a virtuális hálózathoz.
+     >[!Note]
+     >Ha a virtuális gép egy rendelkezésre állási csoport részét képező hálózati Adaptert használ, minden a rendelkezésre állási csoport részét képező összes hálózati adaptert a virtuális gépet minden egyes megadott DNS-kiszolgálók öröklődnek.
 5. Kattintson a **Mentés** gombra.
 
 **Parancsok**

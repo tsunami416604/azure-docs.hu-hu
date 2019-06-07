@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 6/5/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: b1763e7c24ea75a698c3718ab5e205dcc3e0c8c4
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 4b33174b20cdf42e29cdb5b4786122513d2c6080
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66495803"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753737"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -62,7 +62,7 @@ A rendszer a kimenő virtuális hálózati forgalomhoz tartozó minden IP-címet
 
 ### <a name="inbound-dnat-support"></a>Bejövő DNAT-támogatás
 
-A tűzfal nyilvános IP-címére érkező bejövő hálózati forgalmat a rendszer lefordítja (Destination Network Address Translation, célhálózati címfordítás), és a virtuális hálózat magánhálózati IP-címeire szűri. 
+A tűzfal nyilvános IP-címére érkező bejövő hálózati forgalmat a rendszer lefordítja (Destination Network Address Translation, célhálózati címfordítás), és a virtuális hálózat magánhálózati IP-címeire szűri.
 
 ### <a name="azure-monitor-logging"></a>Azure Monitor-naplózás
 
@@ -82,8 +82,7 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |A hálózati és az szabályokban porttartomány|Portjait legfeljebb 64 000, magas portok vannak fenntartva, felügyeleti és állapotának mintavételei. |Dolgozunk a korlátozás enyhítése.|
 |Előfordulhat, hogy első maszkolva intelligens veszélyforrás-riasztásai|A hálózati szabályok a 80-as/443-as kimenő szűrési maszkok célhelyet fenyegetésészlelési intelligencia riasztást, ha a riasztás csak módra konfigurálni.|Hozzon létre kimenő szűrés a 80-as/443-as alkalmazás szabályok használatával. Vagy módosítsa a threat intelligence módot **riasztás és a megtagadási**.|
 |Az Azure tűzfal használja az Azure DNS csak a névfeloldáshoz|Azure tűzfal teljes tartománynevek csak az Azure DNS használatával oldja fel. Egyéni DNS-kiszolgáló nem támogatott. Nincs nincs hatással a DNS-feloldás más alhálózatokon.|Dolgozunk a korlátozás enyhítése.|
-|Az Azure tűzfal SNAT/DNAT nem működik a magánhálózati IP-célhelyek|Az Azure tűzfal SNAT/DNAT-támogatás internetes kimenő és bejövő korlátozódik. SNAT/DNAT jelenleg nem működik a magánhálózati IP-célhelyeket. Ha például a küllős topológiájú.|A rendszer vizsgálata folyamatban van.
-
+|Az Azure tűzfal SNAT/DNAT nem működik a magánhálózati IP-célhelyek|Az Azure tűzfal SNAT/DNAT-támogatás internetes kimenő és bejövő korlátozódik. SNAT/DNAT jelenleg nem működik a magánhálózati IP-célhelyeket. Ha például a küllős topológiájú.|Ebben az esetben a folyamatterv egy következő frissítés számára.
 ## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: Telepítse és konfigurálja az Azure portal segítségével Azure-tűzfal](tutorial-firewall-deploy-portal.md)

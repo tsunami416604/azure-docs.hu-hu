@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f60146e4e11e50b2f2254a0d8d7f59c01ba74464
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 832be20f78d1e88a3bb6d1c25c7aaf5d7354e857
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479937"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753978"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Dokumentumok indexelése az Azure Blob Storage, az Azure Search szolgáltatással
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-, Microsoft Office-dokumentumok, és számos egyéb gyakori formátum) az Azure Blob storage-ban tárolja. Első lépésként beállítása és konfigurálása a blob indexelőjével alapjait ismerteti. Ezután egy mélyebb feltárása viselkedéseket, kínál, és esetekben valószínűleg találkozik.
@@ -116,6 +116,8 @@ Az indexelő kétóránként (ütemezési időköz beállítása "PT2H") fog fut
 
 Az indexelő API létrehozása a további részletekért tekintse meg [indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
+További információk az indexelő ütemezés definiálása: [az Azure Search indexelők ütemezése](search-howto-schedule-indexers.md).
+
 ## <a name="how-azure-search-indexes-blobs"></a>Hogyan indexeli az Azure Search a blobok
 
 Attól függően, a [az indexelő konfigurációjának](#PartsOfBlobToIndex), a blob indexelőjével indexelésére használhatja, csak tárolási metaadatok (hasznos, ha csak a metaadatokat és a blobok a tartalom indexelése nem szükséges), tároló és a tartalom metaadatainak, vagy mindkét metaadatok és szöveges tartalma. Alapértelmezés szerint az indexelő kinyeri a metaadatokat és a tartalom.
@@ -139,7 +141,8 @@ Attól függően, a [az indexelő konfigurációjának](#PartsOfBlobToIndex), a 
   * **metaadatok\_tárolási\_utolsó\_módosított** (Edm.DateTimeOffset) - utolsó módosítás a BLOB időbélyegző. Az Azure Search az időbélyeg módosított blobok elkerülése érdekében a kezdeti indexelése követően újraindexelés mindent azonosítására használ.
   * **metaadatok\_tárolási\_mérete** (Edm.Int64) – a blob mérete bájtban.
   * **metaadatok\_tárolási\_tartalom\_md5** (Edm.String) – a blob tartalmát, ha elérhető MD5-kivonat.
-  * **metaadatok\_tárolási\_sas\_token** (Edm.String) – egy ideiglenes által is használt jogkivonat [egyéni képesség](cognitive-search-custom-skill-interface.md) megfelelő eléréséhez a blob. A sas-jogkivonat nem lehet későbbi használatra, akkor lejárhatnak kell tárolni.
+  * **metaadatok\_tárolási\_sas\_token** (Edm.String) – egy ideiglenes segítségével az SAS-jogkivonatot [egyéni képesség](cognitive-search-custom-skill-interface.md) eléréséhez a blob. Ez a token nem kell tárolni későbbi használatra, akkor előfordulhat, hogy hamarosan lejár.
+
 * Minden egyes dokumentum formátumban jellemző metaadat-tulajdonságot ki kell olvasni a mezőkben szereplő [Itt](#ContentSpecificMetadata).
 
 Nem kell mezők az összes fenti tulajdonságait a search-index a – csak rögzítése szüksége lesz az alkalmazás tulajdonságait.

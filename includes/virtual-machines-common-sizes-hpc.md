@@ -2,18 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines
-author: jonbeck7
+author: vermagit
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/26/2019
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: azcspmt;jonbeck;cynthn;amverma
 ms.custom: include file
-ms.openlocfilehash: f3c1a946afb7f51a1c7543dabae7f2f42ff466be
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9b4bdee19c883252e7de140ac7b19babd43d1df8
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145834"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755165"
 ---
 Az Azure H-sorozatú virtuális gépek (VM) úgy tervezték, hogy a vezetői szintű teljesítményt, méretezhetőséget MPI, és optimalizálhatja a költségeket különböző valós HPC számítási feladatok esetében.
 
@@ -27,22 +27,30 @@ H-sorozatú virtuális gépek magas CPU-használati vagy nagy méretű memóriá
 
 ## <a name="hb-series"></a>HB sorozat
 
-Prémium szintű Storage: A Premium Storage támogatja a gyorsítótárazást: Támogatott
+ACU: 199-216
+
+Prémium szintű Storage: Támogatott
+
+Prémium szintű Storage gyorsítótárazást: Támogatott
 
 | Méret | vCPU | Processzor | Memória (GB) | Memória sávszélesség GB/s | Alapszintű CPU gyakorisága (GHz) | Az összes virtuális mag gyakorisága (GHz-es, csúcsérték) | Egy mag gyakorisága (GHz-es, csúcsérték) | RDMA-teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Max Ethernet NICs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | Az összes | 700 | 4 | 1. |
+| Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | Összes | 700 | 4 | 1 |
 
 <br>
 
 ## <a name="hc-series"></a>HC sorozat
 
-Prémium szintű Storage: A Premium Storage támogatja a gyorsítótárazást: Támogatott
+ACU: 297-315
+
+Prémium szintű Storage: Támogatott
+
+Prémium szintű Storage gyorsítótárazást: Támogatott
 
 
 | Méret | vCPU | Processzor | Memória (GB) | Memória sávszélesség GB/s | Alapszintű CPU gyakorisága (GHz) | Az összes virtuális mag gyakorisága (GHz-es, csúcsérték) | Egy mag gyakorisága (GHz-es, csúcsérték) | RDMA-teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Max Ethernet NICs |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Az összes | 700 | 4 | 1. |
+| Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Összes | 700 | 4 | 1 |
 
 
 <br>
@@ -57,13 +65,13 @@ Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
 | Méret | vCPU | Processzor | Memória (GB) | Memória sávszélesség GB/s | Alapszintű CPU gyakorisága (GHz) | Az összes virtuális mag gyakorisága (GHz-es, csúcsérték) | Egy mag gyakorisága (GHz-es, csúcsérték) | RDMA-teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Max Ethernet NICs |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_H8 | 8 | Intel Xeon E5-2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
-| Standard_H16 | 16 | Intel Xeon E5-2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 |  56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
-| Standard_H8m | 8 | Intel Xeon E5-2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
-| Standard_H16m | 16 | Intel Xeon E5-2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
+| Standard_H8 | 8 | Intel Xeon E5-2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
+| Standard_H16 | 16 | Intel Xeon E5-2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 |  - | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
+| Standard_H8m | 8 | Intel Xeon E5-2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
+| Standard_H16m | 16 | Intel Xeon E5-2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
 | Standard h16r méretű <sup>1</sup> | 16 | Intel Xeon E5-2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
 | Standard h16mr méretű <sup>1</sup> | 16 | Intel Xeon E5-2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
 
-<sup>1</sup> MPI-alkalmazások, a dedikált RDMA-háttérhálózatot engedélyezve van FDR InfiniBand hálózat, amely ultra rendkívül alacsony késést és magas sávszélességet kínál.
+<sup>1</sup> MPI-alkalmazások, a dedikált RDMA-háttérhálózatot engedélyezve van FDR InfiniBand hálózat.
 
 <br>

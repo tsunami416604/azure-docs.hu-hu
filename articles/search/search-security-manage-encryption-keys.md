@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 9d2cd2a2f4b3143d58d0ef03d67de094ea03303e
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 567f32cba76aaf2d1657b2476c4d11596d44dec5
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523095"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753938"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Az Azure Search encryption ügyfél által kezelt kulcsok használata az Azure Key Vaultban
 
@@ -227,7 +227,7 @@ Az AAD-alkalmazás létrehozása a portálon:
 
 1. [Egy Azure Active Directory-alkalmazás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
 
-1. [Az Alkalmazásazonosító és hitelesítési kulcs beszerzése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key) , azok titkosított index létrehozásához szükség lesz. Meg kell adnia értékeket tartalmaznak **Alkalmazásazonosító** és **hitelesítési kulcs**.
+1. [Az Alkalmazásazonosító és hitelesítési kulcs beszerzése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) , azok titkosított index létrehozásához szükség lesz. Meg kell adnia értékeket tartalmaznak **Alkalmazásazonosító** és **hitelesítési kulcs**.
 
 >[!Important]
 > Hitelesítés az AAD-alkalmazás használata helyett egy felügyelt identitás meghatározásakor vegye figyelembe a tény, hogy nem jogosult az Azure Search kezelése az AAD-alkalmazás az Ön nevében, és Ön, mint a rendszeres elforgatási szögét az AAD-alkalmazás kezelése az alkalmazás hitelesítési kulcsát.

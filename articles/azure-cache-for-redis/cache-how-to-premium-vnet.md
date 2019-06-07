@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: d4b8fd6ccb3fc7cb2627d4bd3e103239181e4d9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8c95b2981933764bc8d6dcf8bf57e9ab40ef53b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831071"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752059"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network támogatása a prémium szintű Azure Cache Redis konfigurálása
 Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatásait, beleértve a Prémiumszintű funkciókkal, például a fürtözés, az adatmegőrzés és a virtuálishálózat-támogatást is nyújt. Virtuális hálózat egy magánhálózat a felhőben. Ha az Azure Cache Redis-példányt a virtuális hálózathoz van konfigurálva, még nem nyilvánosan címezhető és a virtuális gépek és az alkalmazások a virtuális hálózaton belül csak érhetők el. Ez a cikk ismerteti, hogyan kell egy prémium szintű Azure Cache Redis-példányt a virtuális hálózat támogatásának konfigurálása.
@@ -113,7 +113,7 @@ Hét kimenő port követelmény vonatkozik.
 | Port(s) | Direction | Átviteli protokoll | Cél | Helyi IP-cím | Távoli IP |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Kimenő |TCP |Redis Cache függőségek az Azure Storage/nyilvános kulcsokra épülő infrastruktúra (Internet) | (Alhálózat redis) |* |
-| 53 |Kimenő |TCP/UDP |A redis-függőségek a DNS (Internet/VNet) | (Alhálózat redis) |* |
+| 53 |Kimenő |TCP/UDP |A redis-függőségek a DNS (Internet/VNet) | (Alhálózat redis) | 168.63.129.16 és 169.254.169.254 <sup>1</sup> és az alhálózat bármely egyéni DNS-kiszolgáló <sup>3</sup> |
 | 8443 |Kimenő |TCP |A Redis a belső kommunikáció | (Alhálózat redis) | (Alhálózat redis) |
 | 10221-10231 |Kimenő |TCP |A Redis a belső kommunikáció | (Alhálózat redis) | (Alhálózat redis) |
 | 20226 |Kimenő |TCP |A Redis a belső kommunikáció | (Alhálózat redis) |(Alhálózat redis) |
@@ -121,6 +121,9 @@ Hét kimenő port követelmény vonatkozik.
 | 15000-15999 |Kimenő |TCP |A Redis a belső kommunikáció | (Alhálózat redis) |(Alhálózat redis) |
 | 6379-6380 |Kimenő |TCP |A Redis a belső kommunikáció | (Alhálózat redis) |(Alhálózat redis) |
 
+<sup>1</sup> a Microsoft által birtokolt ezeket az IP-címek szolgálnak a gazdagép virtuális Gépet, amely szolgál az Azure DNS-cím.
+
+<sup>3</sup> alhálózatok vagy újabb, az egyéni DNS-kiszolgáló, redis Cache-gyorsítótárak, amely figyelmen kívül hagyja az egyéni DNS nem szükséges.
 
 #### <a name="inbound-port-requirements"></a>Bejövő port követelményei
 

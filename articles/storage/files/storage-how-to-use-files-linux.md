@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 73ed98bf950f7c9f52e2b8eeb431fe4b36bfe324
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 375d0de60b916becc8e86a1e33cf4ed46f12c077
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427924"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754833"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 
@@ -75,7 +75,10 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 
     Más disztribúciókon, használja a megfelelő Csomagkezelő vagy [összeállítása forrásból](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **A csatlakoztatott megosztást könyvtár engedélyeinek vonatkozó**: A példákban az engedélyt az alábbi `0777` van segítségével adjon olvasási, írási és végrehajtási engedélyek minden felhasználó számára. Más lecserélheti [chmod engedélyek](https://en.wikipedia.org/wiki/Chmod) igény szerint.
+* **A csatlakoztatott megosztást könyvtár engedélyeinek vonatkozó**: A példákban az engedélyt az alábbi `0777` van segítségével adjon olvasási, írási és végrehajtási engedélyek minden felhasználó számára. Más lecserélheti [chmod engedélyek](https://en.wikipedia.org/wiki/Chmod) igény szerint, azonban ez azt jelenti, hogy vélhetően a hozzáférés korlátozása. Ha más engedélyeket használ, érdemes is használ a felhasználó- és csoportazonosító, hogy a kiválasztott helyi csoportok továbbra is.
+
+> [!NOTE]
+> Ha explicit módon nem rendel dir_mode és file_mode könyvtárat és fájlnevet engedéllyel, akkor alapértelmezés szerint 0755.
 
 * **Győződjön meg, hogy a 445-ös port nyitva**: Az SMB a 445-ös TCP-porton keresztül kommunikál – ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös TCP-portot az ügyfél gépéről.
 
@@ -89,7 +92,7 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
     mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **Az Azure-fájlmegosztás csatlakoztatása a csatlakoztatási paranccsal**: Ne felejtse el kicserélni **< tárfiók_neve >** , **< megosztás_neve >** , **< smb_version >** , **< storage_account_key >** , és **< mount_point >** a környezetének megfelelő információkkal. Ha a Linux-disztribúció támogatja SMB 3.0-s titkosítással (lásd: [ismertetése SMB ügyfélkövetelmények](#smb-client-reqs) további információ), használja **3.0** a **< smb_version >** . Linux-disztribúció, amelyek nem támogatják az SMB 3.0-s titkosítással, használja a **2.1** a **< smb_version >** . Azure-fájlmegosztások csak csatlakoztathatók kívül egy Azure-régiót (például a helyszínen vagy más Azure-régióban) az SMB 3.0-s. 
+1. **Az Azure-fájlmegosztás csatlakoztatása a csatlakoztatási paranccsal**: Ne felejtse el kicserélni **< tárfiók_neve >** , **< megosztás_neve >** , **< smb_version >** , **< storage_account_key >** , és **< mount_point >** a környezetének megfelelő információkkal. Ha a Linux-disztribúció támogatja SMB 3.0-s titkosítással (lásd: [ismertetése SMB ügyfélkövetelmények](#smb-client-reqs) további információ), használja **3.0** a **< smb_version >** . Linux-disztribúció, amelyek nem támogatják az SMB 3.0-s titkosítással, használja a **2.1** a **< smb_version >** . Azure-fájlmegosztások csak csatlakoztathatók kívül egy Azure-régiót (például a helyszínen vagy más Azure-régióban) az SMB 3.0-s. Ha szeretné módosíthatja a használt csatlakoztatott megosztási engedélyeit könyvtárat és fájlnevet, de ez azt jelentené a hozzáférés korlátozása.
 
     ```bash
     sudo mount -t cifs //<storage_account_name>.file.core.windows.net/<share_name> <mount_point> -o vers=<smb_version>,username=<storage_account_name>,password=<storage_account_key>,dir_mode=0777,file_mode=0777,serverino

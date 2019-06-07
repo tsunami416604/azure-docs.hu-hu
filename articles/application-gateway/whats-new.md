@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: cdf2a1a730be657b41c7a4b2daf2f178661394b4
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 2a494b924107baeabbcf412af7e1bbdb1db0f753
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947109"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752018"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Újdonságok, az Azure Application Gateway?
 
@@ -25,8 +25,9 @@ Az Azure Application Gateway folyamatosan frissül. Naprakész a legújabb fejle
 
 ## <a name="new-features"></a>Új funkciók
 
-|Szolgáltatás  |Leírás  |Közzététel dátuma  |
+|Funkció  |Leírás  |Hozzáadás dátuma  |
 |---------|---------|---------|
+|WAF egyéni szabályok |Applicaiton átjáró WAF_v2 mostantól támogatja az egyéni szabályok létrehozásához. Lásd: [egyéni szabályok az Application Gateway](custom-waf-rules-overview.md). |Június 2019 |
 |Automatikus méretezés, a zone redudancy, statikus VIP-támogatás általánosan elérhető |Az újraírási fejléc mely támogatja az automatikus skálázást, a zone redudancy, javíthatja a teljesítményt, a statikus virtuális IP-címek, a Key Vault v2 Termékváltozat általánosan elérhetővé vált. Lásd: [Application Gateway az automatikus skálázás dokumentációja](application-gateway-autoscaling-zone-redundant.md). |Április 2019 |
 |Key Vault-integráció |Az Application Gateway mostantól támogatja a Key Vault integration (a nyilvános előzetes verzió) a HTTPS-kompatibilis figyelői csatolt kiszolgálói tanúsítványok. Lásd: [Key Vault tanúsítványokkal rendelkező SSL-lezárást](key-vault-certs.md). |Április 2019 |
 |Fejléc CRUD/Újraírások     |Mostantól módosíthatja a HTTP-fejléceket. Lásd: [oktatóanyag: Application gateway létrehozása, és a HTTP-fejlécek újraírási](tutorial-http-header-rewrite-powershell.md) további információt.|2018. december|

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 06/06/2019
 ms.author: magoedte
-ms.openlocfilehash: b410dab40d5434a6f23950a9f151e50240ace63b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 436685f3bba58ed7d06dfe834d808e7fe422176b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916367"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751980"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Az Azure Log Analytics-ügynököket a naplóadatok gyűjtése
 
@@ -59,7 +59,8 @@ Kiadás dátuma: 2018 augusztus után verzióval kezdődően igyekszünk a köve
 * AMI új verziói nem támogatottak.  
 * Csak az SSL futtató verziók 1.x alapértelmezés szerint támogatott.
 
-Ha a disztribúció vagy a verziója, amely jelenleg nem támogatott, és a támogatási modell nem igazodnak használ, javasoljuk, hogy először ágaztatnia ebben a tárházban, bosszankodnak, hogy a Microsoft támogatási nem nyújt segítséget az elágaztatott ügynök verziók.
+>[!NOTE]
+>Ha a disztribúció vagy a verziója, amely jelenleg nem támogatott, és a támogatási modell nem igazodnak használ, javasoljuk, hogy először ágaztatnia ebben a tárházban, bosszankodnak, hogy a Microsoft támogatási nem nyújt segítséget az elágaztatott ügynök verziók.
 
 * Amazon Linux 2017.09 (x 64)
 * CentOS Linux 6 (x86/x64) és 7 (x 64)  
@@ -72,6 +73,21 @@ Ha a disztribúció vagy a verziója, amely jelenleg nem támogatott, és a tám
 >[!NOTE]
 >OpenSSL 1.1.0-s csak a x86_x64 platformok (64 bites) és a támogatott OpenSSL-esnél korábbi 1.x bármilyen platformon nem támogatott.
 >
+
+### <a name="agent-prerequisites"></a>Ügyfélügynök előfeltételei
+
+Az alábbi táblázat a támogatott Linux-disztribúciók, amely az agent telepítve lesz a szükséges csomagokat emeli ki.
+
+|Szükséges csomag |Leírás |Minimális verziója |
+|-----------------|------------|----------------|
+|Glibc |    GNU C-kódtár | 2.5-12 
+|openssl    | OpenSSL-függvénytárak | 1.0.x verziót vagy 1.1.x |
+|A curl | a cURL webes ügyféllel | 7.15.5 |
+|Python-ctypes | | 
+|PAM | Cserélhető hitelesítési modulok | | 
+
+>[!NOTE]
+>Rsyslog vagy syslog-ng köteles beszedni syslog-üzeneteket. Red Hat Enterprise Linux, CentOS és Oracle Linux-verzió (sysklog) 5-ös verzióját az alapértelmezett syslog démon nem támogatott a syslog-események gyűjtése. A syslog-adatok gyűjtésére ezek disztribúciók ezen verziója, az rsyslog démonnal kell telepíteni és konfigurálni sysklog helyett.
 
 ## <a name="tls-12-protocol"></a>A TLS 1.2 protokoll
 Az Azure Monitor naplóira átvitt adatok biztonságának biztosítása érdekében, erősen javasoljuk, hogy legalább az ügynök konfigurálása Transport Layer Security (TLS) 1.2-es. Biztonsági rés található régebbi verziói a TLS/Secure Sockets Layer (SSL), és jelenleg továbbra is működnek, hogy a visszamenőleges kompatibilitás, amíg azok **nem ajánlott**.  További információkért tekintse át a [biztonságosan a TLS 1.2 használatával az adatok küldésének](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 

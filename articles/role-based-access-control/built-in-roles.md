@@ -15,12 +15,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5d964ebd40ac1bd8817bc93d5e4f78096f221be2
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 427c4615fcbb036ffff56a8fc592f258fb98845e
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65977764"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755109"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 
@@ -35,125 +35,125 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 
 | Beépített szerepkör | Leírás |
 | --- | --- |
-| [Tulajdonos](#owner) | Lehetővé teszi az összes funkció kezelését, beleértve az erőforrásokhoz való hozzáférést is. |
-| [Közreműködő](#contributor) | Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz való hozzáférést. |
-| [Olvasó](#reader) | Lehetővé teszi, hogy mindent megtekinthessen, de módosításokat nem hajthat végre. |
+| [Tulajdonos](#owner) | Lehetővé teszi az összes funkció kezelését, beleértve az erőforrásokhoz való hozzáférést. |
+| [Közreműködő](#contributor) | Lehetővé teszi az erőforrásokhoz való hozzáférés kivételével mindent felügyelhetnek. |
+| [Olvasó](#reader) | Lehetővé teszi, hogy mindent megtekinthessen, de nem végezze el a módosításokat. |
 | [AcrDelete](#acrdelete) | ACR delete |
 | [AcrImageSigner](#acrimagesigner) | ACR-lemezképaláíró |
-| [AcrPull](#acrpull) | ACR-lekérés |
-| [AcrPush](#acrpush) | ACR-leküldés |
+| [AcrPull](#acrpull) | ACR lekéréses |
+| [AcrPush](#acrpush) | ACR leküldéses |
 | [AcrQuarantineReader](#acrquarantinereader) | ACR-karanténadatolvasó |
 | [AcrQuarantineWriter](#acrquarantinewriter) | ACR-karanténadatíró |
-| [API Management szolgáltatás Közreműködője](#api-management-service-contributor) | Kezelheti a szolgáltatást és az API-kat |
-| [API Management szolgáltatás operátori szerepköre](#api-management-service-operator-role) | Szolgáltatásokat kezelhet, de API-kat nem |
-| [API Management szolgáltatás olvasói szerepköre](#api-management-service-reader-role) | Írásvédett hozzáférés a szolgáltatáshoz és az API-khoz |
-| [Application Insights-összetevők Közreműködője](#application-insights-component-contributor) | Kezelhet Application Insights-összetevőket |
+| [API Management szolgáltatás Közreműködője](#api-management-service-contributor) | Kezelheti a szolgáltatás és az API-k |
+| [API Management szolgáltatás operátori szerepköre](#api-management-service-operator-role) | Kezelheti a szolgáltatást, de nem az API-k |
+| [API Management szolgáltatás olvasói szerepköre](#api-management-service-reader-role) | Csak olvasási hozzáférés a szolgáltatáshoz és API-k |
+| [Application Insights-összetevők Közreműködője](#application-insights-component-contributor) | Kezelheti az Application Insights-összetevők |
 | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Engedélyt ad a felhasználónak megtekintése és letöltése az Application Insights Snapshot Debugger az gyűjtött hibakeresési pillanatképek. Vegye figyelembe, hogy ezeket az engedélyeket nem szerepelnek a [tulajdonosa](#owner) vagy [közreműködői](#contributor) szerepköröket. |
-| [Automation-feladat operátora](#automation-job-operator) | Feladatok létrehozása és kezelése Automation-runbookok használatával. |
-| [Automation-operátor](#automation-operator) | Az Automation-operátorok elindíthatnak, leállíthatnak, felfüggeszthetnek és folytathatnak feladatokat |
-| [Automation-Runbook operátora](#automation-runbook-operator) | Runbook-tulajdonságok olvasása – a runbook-feladatok létrehozásához. |
+| [Automation-feladat operátora](#automation-job-operator) | Létrehozása és kezelése Automation-Runbookok használatával feladatok. |
+| [Automation-operátor](#automation-operator) | Automation-operátorok tudnak indítása, leállítása, felfüggesztése és folytatása a feladatok |
+| [Automation-Runbook operátora](#automation-runbook-operator) | Olvassa el a Runbook-tulajdonságok –, a runbook-feladatok létrehozásához. |
 | [Avere Közreműködője](#avere-contributor) | Létrehozhat és -Avere vFXT fürt kezelése. |
 | [Avere operátor](#avere-operator) | A fürt kezeléséhez a Avere vFXT fürt által használt |
 | [Az Azure Kubernetes Service-fürt rendszergazdai szerepkör](#azure-kubernetes-service-cluster-admin-role) | Fürt rendszergazdai hitelesítő adatok a művelet listázza. |
 | [Az Azure Kubernetes Service-fürt felhasználói szerepkör](#azure-kubernetes-service-cluster-user-role) | Fürt felhasználói hitelesítő adatok a művelet listázza. |
 | [Az Azure Maps olvasója (minta)](#azure-maps-data-reader-preview) | Olvassa el a hozzáférést az Azure maps-fiók kapcsolódó adatok leképezése. |
 | [Az Azure Stack-regisztráció tulajdonosa](#azure-stack-registration-owner) | Lehetővé teszi az Azure Stack-regisztrációk kezelését. |
-| [Biztonsági mentési közreműködő](#backup-contributor) | Lehetővé teszi a biztonsági mentési szolgáltatás felügyeletét, de nem hozhat létre tárolókat, és nem adhat hozzáférést másoknak |
-| [Biztonságimásolat-felelős](#backup-operator) | Lehetővé teszi a biztonsági mentési szolgáltatások felügyeletét, kivéve a biztonsági másolatok eltávolítását, tárolók létrehozását és a másoknak való hozzáférés megadását |
-| [Biztonsági mentési olvasó](#backup-reader) | Megtekintheti a biztonsági mentési szolgáltatásokat, de nem végezhet módosításokat |
-| [Számlázási olvasó](#billing-reader) | Olvasási hozzáférést biztosít a számlázási adatokhoz |
-| [BizTalk Contributor](#biztalk-contributor) | Lehetővé teszi a BizTalk-szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. |
-| [Blockchain-tag-csomópont elérése (előzetes verzió)](#blockchain-member-node-access-preview) | Engedélyezi a hozzáférést a Blockchain Member csomópontjaihoz |
-| [CDN-végpont Közreműködője](#cdn-endpoint-contributor) | Kezelhet CDN-végpontokat, de nem tud hozzáférést adni más felhasználóknak. |
+| [Biztonsági mentési közreműködő](#backup-contributor) | Lehetővé teszi a felügyelt biztonsági mentési szolgáltatás, de nem tárolók létrehozása és adhat hozzáférést másoknak |
+| [Biztonságimásolat-felelős](#backup-operator) | Lehetővé teszi a biztonsági mentési szolgáltatásai, kivéve a biztonsági mentés, a tárolók létrehozását és a másoknak való hozzáférés megadását eltávolításának kezelését |
+| [Biztonsági mentési olvasó](#backup-reader) | Megtekintheti a biztonsági mentési szolgáltatásai, de nem végezhet módosításokat |
+| [Számlázási olvasó](#billing-reader) | Olvasási hozzáférést biztosít a számlázási adatokat |
+| [BizTalk Contributor](#biztalk-contributor) | Lehetővé teszi a BizTalk-szolgáltatások kezelését, ezekhez nem biztosít hozzáférést. |
+| [Blockchain-tag-csomópont elérése (előzetes verzió)](#blockchain-member-node-access-preview) | Blockchain tagcsomópontok hozzáférésének engedélyezése |
+| [CDN-végpont Közreműködője](#cdn-endpoint-contributor) | Kezelheti a CDN-végpontokat, de nem tud hozzáférést adni más felhasználóknak. |
 | [CDN-végpont olvasója](#cdn-endpoint-reader) | Megtekintheti a CDN-végpontokat, de nem végezhet módosításokat. |
 | [A CDN-profil Közreműködője](#cdn-profile-contributor) | Kezelheti a CDN-profilokat és azok végpontjait, de nem tud hozzáférést adni más felhasználóknak. |
 | [A CDN-profil olvasója](#cdn-profile-reader) | Megtekintheti a CDN-profilokat és azok végpontjait, de nem végezhet módosításokat. |
-| [Klasszikus hálózati közreműködő](#classic-network-contributor) | Lehetővé teszi a hagyományos hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
-| [Hagyományos Tárfiók-közreműködő](#classic-storage-account-contributor) | Lehetővé teszi a hagyományos tárfiókok kezelését, de ezekhez nem biztosít hozzáférést. |
-| [Hagyományos tároló fiók fő operátora – szolgáltatási szerepkör](#classic-storage-account-key-operator-service-role) | A hagyományos tárfiók kulcsának operátorai jogosultak a hagyományos tárfiókokhoz tartozó kulcsok listázására és újragenerálására |
-| [Virtuális gépek hagyományos Közreműködője](#classic-virtual-machine-contributor) | Lehetővé teszi a hagyományos virtuális gépek kezelését, de ezekhez nem biztosít hozzáférést, és nem teszi lehetővé a virtuális gépekhez hozzárendelt virtuális hálózatok és tárfiókok elérését sem. |
+| [Klasszikus hálózati közreműködő](#classic-network-contributor) | Lehetővé teszi a hagyományos hálózatok kezelését, ezekhez nem biztosít hozzáférést. |
+| [Hagyományos Tárfiók-közreműködő](#classic-storage-account-contributor) | Lehetővé teszi a klasszikus tárfiókok kezelését, ezekhez nem biztosít hozzáférést. |
+| [Hagyományos tároló fiók fő operátora – szolgáltatási szerepkör](#classic-storage-account-key-operator-service-role) | Klasszikus Tárfiók kulcsának operátorai jogosultak a hagyományos Tárfiókokhoz kulcsok listázására és újragenerálására |
+| [Virtuális gépek hagyományos Közreműködője](#classic-virtual-machine-contributor) | Lehetővé teszi a klasszikus virtuális gépek, de nem biztosít hozzáférést, és nem a virtuális hálózat vagy kapcsolódó tárfiók kezelését. |
 | [A cognitive Services-közreműködő](#cognitive-services-contributor) | Lehetővé teszi, hogy létrehozása, olvasása, frissítése, törlése és a Cognitive Services, kulcsok kezelése. |
-| [A cognitive Services-adatok olvasója (minta)](#cognitive-services-data-reader-preview) | Cognitive Services-kulcsok olvasását teszi lehetővé. |
+| [A cognitive Services-adatok olvasója (minta)](#cognitive-services-data-reader-preview) | Lehetővé teszi a Cognitive Services-adatok olvasása. |
 | [A cognitive Services-felhasználó](#cognitive-services-user) | Lehetővé teszi, hogy Ön elolvassa és a Cognitive Services, kulcsok listázását. |
 | [A cosmos DB-fiók olvasói szerepköre](#cosmos-db-account-reader-role) | Olvashatja az Azure Cosmos DB-fiókja adatait. Lásd: [DocumentDB-Fiókközreműködő](#documentdb-account-contributor) kezeléséhez az Azure Cosmos DB-fiókokhoz. |
 | [A cosmos DB-operátor](#cosmos-db-operator) | Lehetővé teszi az Azure Cosmos DB-fiókok, de nincs hozzáférés az adatokhoz a azok kezelését. Megakadályozza, hogy a hozzáférési kulcsokat és kapcsolati karakterláncokat. |
-| [CosmosBackupOperator](#cosmosbackupoperator) | Cosmos DB-adatbázis vagy fióktároló visszaállítására vonatkozó kérelmet küldhet. |
-| [A Cost Management Közreműködője](#cost-management-contributor) | Megtekintheti a költségeket és kezelheti a költségkonfigurációt (például költségvetés, exportok) |
-| [A Cost Management olvasó](#cost-management-reader) | Megtekintheti a költségadatokat és a konfigurációt (például költségvetés, exportok) |
-| [Data Box Közreműködője](#data-box-contributor) | Engedélyezi a Data Box Service minden funkciójának kezelését, kivéve a hozzáférés másoknak való megadását. |
-| [Data Box-olvasó](#data-box-reader) | Engedélyezi a Data Box Service kezelését, kivéve a rendelések létrehozását, a rendelésadatok szerkesztését és a hozzáférés másoknak való megadását. |
-| [Data Factory Közreműködője](#data-factory-contributor) | Létrehozhat és kezelhet adat-előállítókat, valamint azokban található gyermekerőforrásokat. |
-| [Data Lake Analytics-fejlesztő](#data-lake-analytics-developer) | Lehetővé teszi a saját feladatok elküldését, figyelését és kezelését, de nem tud létrehozni vagy törölni Data Lake Analytics-fiókokat. |
-| [Adatok Purger](#data-purger) | Véglegesen törölheti az elemzési adatokat |
-| [DevTest Labs User](#devtest-labs-user) | Lehetővé teszi az Azure DevTest Labs virtuális gépeinek csatlakoztatását, indítását, újraindítását és leállítását. |
-| [DNS-zóna Közreműködője](#dns-zone-contributor) | Lehetővé teszi az Azure DNS-beli DNS-zónák és rekordkészletek kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
+| [CosmosBackupOperator](#cosmosbackupoperator) | Elküldhet egy Cosmos DB-adatbázis visszaállítási kérelmében vagy egy tároló-fiókot |
+| [A Cost Management Közreműködője](#cost-management-contributor) | Költségek megtekintheti és kezelheti a költség-konfiguráció (pl. költségvetéseket, export) |
+| [A Cost Management olvasó](#cost-management-reader) | Költségadatok és a konfiguráció (pl. költségvetéseket, export) |
+| [Data Box Közreműködője](#data-box-contributor) | Kezelheti a Data Box szolgáltatás található minden elemet kivételével másoknak való hozzáférés megadását teszi lehetővé. |
+| [Data Box-olvasó](#data-box-reader) | Kezelheti a Data Box szolgáltatás kivéve a rendelés létrehozása vagy szerkesztése a rendelés részleteit, és a másoknak való hozzáférés megadását teszi lehetővé. |
+| [Data Factory Közreműködője](#data-factory-contributor) | Létrehozhat és kezelhet adat-előállítók, valamint az azokhoz tartozó gyermekerőforrásait. |
+| [Data Lake Analytics-fejlesztő](#data-lake-analytics-developer) | Lehetővé teszi elküldése, monitorozásához és a saját feladatok kezelése, de nem létrehozása vagy törlése a Data Lake Analytics-fiókok. |
+| [Adatok Purger](#data-purger) | Elemzési adatok is kiürítheti. |
+| [DevTest Labs User](#devtest-labs-user) | Lehetővé teszi, hogy csatlakozik, kezdő, újraindítását és leállítását a virtuális gépek az Azure DevTest Labs-környezetben. |
+| [DNS-zóna Közreműködője](#dns-zone-contributor) | Lehetővé teszi a DNS-zónák és -rekordhalmazok az Azure DNS kezelését, de nem teszi lehetővé az azokhoz való hozzáférés szabályozásához. |
 | [DocumentDB-Fiókközreműködő](#documentdb-account-contributor) | Kezelheti az Azure Cosmos DB-fiókokhoz. Az Azure Cosmos DB DocumentDB nevén. |
 | [Event Hubs-adatok tulajdonosa](#event-hubs-data-owner) | Teljes hozzáférést biztosít az Azure Event Hubs-erőforrások | 
-| [EventGrid EventSubscription Közreműködője](#eventgrid-eventsubscription-contributor) | Lehetővé teszi a EventGrid-eseményelőfizetések műveleteinek kezelését. |
-| [EventGrid EventSubscription olvasó](#eventgrid-eventsubscription-reader) | Lehetővé teszi a EventGrid-eseményelőfizetések olvasását. |
+| [EventGrid EventSubscription Közreműködője](#eventgrid-eventsubscription-contributor) | Lehetővé teszi EventGrid esemény-előfizetési műveletek kezelését. |
+| [EventGrid EventSubscription olvasó](#eventgrid-eventsubscription-reader) | Olvassa el az esemény-előfizetések EventGrid teszi lehetővé. |
 | [HDInsight-fürt operátor](#hdinsight-cluster-operator) | Lehetővé teszi, hogy olvassa el, és a HDInsight-fürt konfigurációjának módosítását. |
-| [HDInsight Domain Services-közreműködő](#hdinsight-domain-services-contributor) | Olvashatja, létrehozhatja, módosíthatja és törölheti a HDInsight Enterprise Security Package csomaghoz szükséges Domain Services-műveleteket |
-| [Intelligens rendszerek Fiókközreműködője](#intelligent-systems-account-contributor) | Lehetővé teszi az intelligens rendszerek fiókjainak kezelését, az azokhoz való hozzáférés nélkül. |
-| [Key Vault-közreműködő](#key-vault-contributor) | Lehetővé teszi a kulcstartók kezelését, de ezekhez nem biztosít hozzáférést. |
-| [Lab Creator](#lab-creator) | Felügyelt tesztkörnyezetek az Azure Lab-fiókokban való létrehozását, kezelését és törlését teszi lehetővé. |
+| [HDInsight Domain Services-közreműködő](#hdinsight-domain-services-contributor) | Olvashatja, létrehozása, módosítása és törlése a tartományi szolgáltatások kapcsolódó műveletek HDInsight vállalati biztonsági csomag szükséges |
+| [Intelligens rendszerek Fiókközreműködője](#intelligent-systems-account-contributor) | Lehetővé teszi az intelligens rendszerek fiókjainak kezelését, ezekhez nem biztosít hozzáférést. |
+| [Key Vault-közreműködő](#key-vault-contributor) | Lehetővé teszi a kulcstartók kezelését, ezekhez nem biztosít hozzáférést. |
+| [Lab Creator](#lab-creator) | Lehetővé teszi a létrehozását, kezelését, és törölje a felügyelt tesztkörnyezetek az Azure Lab-fiókokban. |
 | [Log Analytics-közreműködő](#log-analytics-contributor) | Log Analytics-közreműködő az összes monitorozási adat olvashatja és szerkesztheti a figyelési beállításokat. Figyelési beállítások szerkesztése magában foglalja a virtuális gépek; a Virtuálisgép-bővítmény hozzáadása tudni naplógyűjtemény konfigurálása céljából az Azure Storage; tárfiók kulcsainak beolvasását létrehozásáról és konfigurálásáról az Automation-fiókok; megoldások hozzáadását; és az Azure diagnostics konfigurálása az összes Azure-erőforrást. |
-| [Log Analytics olvasó](#log-analytics-reader) | A Log Analytics-olvasó megtekintheti az összes figyelési adatot, és kereshet azokban, valamint megtekintheti a figyelési beállításokat, beleértve az összes Azure-erőforrás Azure-beli diagnosztikájának konfigurációját is. |
-| [A logikai alkalmazás Közreműködője](#logic-app-contributor) | Lehetővé teszi logikai alkalmazások kezelését, de ezekhez nem biztosít hozzáférést. |
-| [Logikai alkalmazás operátora](#logic-app-operator) | Lehetővé teszi logikai alkalmazások olvasását, engedélyezését és letiltását. |
-| [Felügyelt alkalmazás operátori szerepkör](#managed-application-operator-role) | Engedélyezi a felügyelt alkalmazások erőforrásainak olvasását és műveletek azokon való végrehajtását |
+| [Log Analytics olvasó](#log-analytics-reader) | Log Analytics olvasó megtekintheti és keresheti az összes figyelési adatot, valamint megtekintheti a figyelési beállításokat, beleértve az Azure diagnostics konfigurációjának megtekintését az összes Azure-erőforrások. |
+| [A logikai alkalmazás Közreműködője](#logic-app-contributor) | Lehetővé teszi, hogy a logikai alkalmazás kezelését, ezekhez nem biztosít hozzáférést. |
+| [Logikai alkalmazás operátora](#logic-app-operator) | Lehetővé teszi, hogy olvasását, engedélyezését és a logikai alkalmazás letiltása. |
+| [Felügyelt alkalmazás operátori szerepkör](#managed-application-operator-role) | Olvassa el, és műveleteket hajthat végre felügyelt alkalmazásokra vonatkozó erőforrásokhoz |
 | [Felügyelt alkalmazások Adatolvasó](#managed-applications-reader) | Olvassa el a felügyelt alkalmazás és igény szerinti hozzáférés kérése az erőforrások teszi lehetővé. |
-| [Managed Identity Contributor](#managed-identity-contributor) | A felhasználóhoz hozzárendelt identitás létrehozása, olvasása, frissítése és törlése |
-| [Felügyelt identitások üzemeltetője](#managed-identity-operator) | A felhasználóhoz hozzárendelt identitás olvasása és hozzárendelése |
-| [A felügyeleti csoport Közreműködője](#management-group-contributor) | Felügyeleti csoport közreműködői szerepköre |
-| [A felügyeleti csoport olvasó](#management-group-reader) | Felügyeleti csoport olvasói szerepköre |
+| [Managed Identity Contributor](#managed-identity-contributor) | Create, Read, Update, and Delete User Assigned Identity |
+| [Felügyelt identitások üzemeltetője](#managed-identity-operator) | Olvassa el, és rendelje hozzá a felhasználóhoz hozzárendelt identitás |
+| [A felügyeleti csoport Közreműködője](#management-group-contributor) | A felügyeleti csoport közreműködői szerepkört |
+| [A felügyeleti csoport olvasó](#management-group-reader) | A felügyeleti csoport olvasói szerepköre |
 | [Közreműködő figyelése](#monitoring-contributor) | Az összes monitorozási adat olvashatja és szerkesztheti a figyelési beállításokat. Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
-| [Figyelési metrikák közzétevő](#monitoring-metrics-publisher) | Lehetővé teszi a metrikák Azure-erőforrásokhoz való közzétételét |
+| [Figyelési metrikák közzétevő](#monitoring-metrics-publisher) | Lehetővé teszi, hogy metrikákat az Azure-erőforrások közzététele |
 | [Olvasó figyelése](#monitoring-reader) | Olvashatja az összes figyelési adatot (metrikákat, naplókat, stb.). Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
-| [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
-| [Új Relic APM-Fiókközreműködő](#new-relic-apm-account-contributor) | Lehetővé teszi a New Relic Application Performance Management-fiókok és -alkalmazások kezelését, az azokhoz való hozzáférés nélkül. |
+| [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, ezekhez nem biztosít hozzáférést. |
+| [Új Relic APM-Fiókközreműködő](#new-relic-apm-account-contributor) | Lehetővé teszi új Relic alkalmazásteljesítmény-felügyeleti fiókok és az alkalmazások, de az azokhoz való hozzáférés kezelését. |
 | [Olvasó és adatelérés](#reader-and-data-access) | Lehetővé teszi minden megtekintését, de nem teszi lehetővé, törölheti, vagy hozzon létre egy storage-fiók vagy az abban található erőforrást. Olvasási/írási hozzáférést a tárfiókok kulcsainak elérésével storage-fiókban tárolt adatokat is engedélyezi. |
-| [Redis Cache Contributor](#redis-cache-contributor) | Lehetővé teszi a Redis-gyorsítótárak kezelését, az azokhoz való hozzáférés nélkül. |
-| [Erőforrás-szabályzati közreműködő (előzetes verzió)](#resource-policy-contributor-preview) | (Előnézet) Erőforrás-szabályzat létrehozására/módosítására, támogatási jegy létrehozására, valamint erőforrások/hierarchia beolvasására jogosultsággal rendelkező, EA-beli visszatöltött felhasználók. |
-| [A Scheduler Feladatgyűjteményeinek Közreműködője](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatgyűjtemények kezelését, az azokhoz való hozzáférés nélkül. |
-| [Search szolgáltatás Közreműködője](#search-service-contributor) | Lehetővé teszi a keresési szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. |
+| [Redis Cache Contributor](#redis-cache-contributor) | Lehetővé teszi a Redis-gyorsítótárak kezelését, ezekhez nem biztosít hozzáférést. |
+| [Erőforrás-szabályzati közreműködő (előzetes verzió)](#resource-policy-contributor-preview) | (Előzetes verzió) Erőforrás-szabályzat létrehozására/módosítására jogosultságokkal EA-beli visszatöltött felhasználók hozzon létre támogatási jegyet, és erőforrások/hierarchia beolvasására. |
+| [A Scheduler Feladatgyűjteményeinek Közreműködője](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatgyűjtemények kezelését, ezekhez nem biztosít hozzáférést. |
+| [Search szolgáltatás Közreműködője](#search-service-contributor) | Lehetővé teszi a keresési szolgáltatások kezelését, ezekhez nem biztosít hozzáférést. |
 | [Biztonsági rendszergazda](#security-admin) | A Security Center csak: Megtekintheti biztonsági házirendek, biztonsági állapotot, szerkessze a biztonsági szabályzatok, riasztások megtekintése és javaslatok, riasztások és javaslatok elvetése |
 | [Biztonságkezelő (örökölt)](#security-manager-legacy) | Ez az örökölt szerepkör. Használja helyette a biztonsági rendszergazda |
 | [Biztonsági olvasó](#security-reader) | A Security Center csak: Megtekintheti a javaslatok és riasztások, a biztonsági házirendek, a biztonsági állapotot, de nem végezhet módosításokat megtekintése |
 | [Service Bus adatok tulajdonosa](#service-bus-data-owner) | Az Azure Service Bus-erőforrások teljes hozzáférésének engedélyezése |
-| [Site Recovery-közreműködő](#site-recovery-contributor) | Lehetővé teszi a Site Recovery szolgáltatás felügyeletét, kivéve a tárolók létrehozását és a szerepkör-hozzárendelést |
-| [Site Recovery-operátor](#site-recovery-operator) | Lehetővé teszi a feladatátvételt és a feladat-visszavételt, de nem biztosít egyéb Site Recovery-beli felügyeleti műveleteket |
+| [Site Recovery-közreműködő](#site-recovery-contributor) | Lehetővé teszi a Site Recovery szolgáltatást, kivéve a tárolók létrehozását és a szerepkör-hozzárendelés kezelését |
+| [Site Recovery-operátor](#site-recovery-operator) | Lehetővé teszi a feladatátvétel és feladat-visszavétel, de nem biztosít egyéb Site Recovery felügyeleti műveleteket |
 | [Site Recovery-olvasó](#site-recovery-reader) | Lehetővé teszi a Site Recovery állapotának megtekintését, de nem biztosít egyéb felügyeleti műveleteket |
-| [Térbeli horgonyok közreműködő](#spatial-anchors-account-contributor) | Lehetővé teszi a fiókban található térbeli fixpontok kezelését, de azok törlését nem |
-| [Térbeli horgonyok fiók tulajdonosa](#spatial-anchors-account-owner) | Lehetővé teszi a fiókban található térbeli fixpontok kezelését, beleértve azok törlését is |
-| [Térbeli horgonyok fiók olvasó](#spatial-anchors-account-reader) | Lehetővé teszi a fiókban található térbeli fixpontok megkeresését és azok tulajdonságainak beolvasását |
+| [Térbeli horgonyok közreműködő](#spatial-anchors-account-contributor) | Lehetővé teszi, hogy térbeli horgonyok kezelése a fiókban, de ne törölje őket |
+| [Térbeli horgonyok fiók tulajdonosa](#spatial-anchors-account-owner) | Lehetővé teszi a fiókjában, beleértve a törlésük térbeli horgonyok kezelését |
+| [Térbeli horgonyok fiók olvasó](#spatial-anchors-account-reader) | Keresse meg és a fiókban térbeli horgonyok tulajdonságainak olvasása |
 | [SQL-Adatbázisok Közreműködője](#sql-db-contributor) | Lehetővé teszi az SQL Database-adatbázisok kezelését, ezekhez nem biztosít hozzáférést. Emellett a biztonsággal kapcsolatos házirendjeiket vagy a szülő SQL Server nem tudja kezelni. |
 | [SQL Managed Instance Contributor](#sql-managed-instance-contributor) | Lehetővé teszi, hogy az SQL felügyelt példányok kezelése és a szükséges hálózati konfiguráció, de nem adhat hozzáférést másoknak. |
-| [SQL Security Manager](#sql-security-manager) | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok biztonsági házirendjeinek felügyeletére az azokhoz való hozzáférés nélkül. |
-| [SQL Server Contributor](#sql-server-contributor) | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok felügyeletére az azokhoz való hozzáférés nélkül. Az adatbázisok biztonsági házirendjeinek felügyeletét nem teszi lehetővé. |
+| [SQL Security Manager](#sql-security-manager) | Lehetővé teszi az SQL Server-kiszolgálók és adatbázisok, de ezekhez nem biztosít hozzáférést a biztonsági házirendek kezelését. |
+| [SQL Server Contributor](#sql-server-contributor) | Lehetővé teszi, hogy SQL Server-kiszolgálók és adatbázisok kezelése, de nem érhető el, és nem a biztonsági-házirendjeinek. |
 | [Tárfiók-közreműködő](#storage-account-contributor) | Lehetővé teszi tárfiókok kezelését, de ezekhez nem biztosít hozzáférést. |
-| [Tárolási fiók fő operátora – szolgáltatási szerepkör](#storage-account-key-operator-service-role) | A tárfiók kulcsának operátorai jogosultak a tárfiókokhoz tartozó kulcsok listázására és újragenerálására |
-| [Storage-Blobadatok Közreműködője](#storage-blob-data-contributor) | Azure Storage-blobtárolók és -adatok olvasási, írási és törlési hozzáférésének engedélyezése |
-| [Tárolási Blob adatok tulajdonosa](#storage-blob-data-owner) | Teljes hozzáférést engedélyez az Azure Storage blobtárolóihoz és adataihoz, így a POSIX hozzá-férésvezérlés hozzárendeléséhez is. |
-| [Storage-Blobadatok olvasója](#storage-blob-data-reader) | Azure Storage-blobtárolók és -adatok olvasási hozzáférésének engedélyezése |
-| [Storage-Üzenetsorbeli adatok Közreműködője](#storage-queue-data-contributor) | Azure Storage-üzenetsorok és üzenetsorbeli üzenetek olvasási, írási és törlési hozzáférésének engedélyezése |
-| [Tárolási üzenetsor üzenetet processzor](#storage-queue-data-message-processor) | Azure Storage-üzenetsorbeli üzenetek betekintési, fogadási és törlési hozzáférésének engedélyezése |
-| [Tárolási üzenetsor adatok üzenet küldője](#storage-queue-data-message-sender) | Azure Storage-üzenetsorbeli üzenetek elküldésének engedélyezése |
+| [Tárolási fiók fő operátora – szolgáltatási szerepkör](#storage-account-key-operator-service-role) | A Tárfiók kulcsának operátorai jogosultak a Tárfiókokhoz kulcsok listázására és újragenerálására |
+| [Storage-Blobadatok Közreműködője](#storage-blob-data-contributor) | Lehetővé teszi, hogy olvasási, írási és törlési hozzáférésének Azure Storage-blobtárolók és -adatok |
+| [Tárolási Blob adatok tulajdonosa](#storage-blob-data-owner) | Lehetővé teszi a teljes körű hozzáférést az Azure Storage-blobtárolók és adatait, beleértve a POSIX hozzáférés-vezérlés hozzárendelése. |
+| [Storage-Blobadatok olvasója](#storage-blob-data-reader) | Az Azure Storage-blobtárolók és -adatok olvasási hozzáférésének engedélyezése |
+| [Storage-Üzenetsorbeli adatok Közreműködője](#storage-queue-data-contributor) | Lehetővé teszi, hogy olvasási, írási és törlési hozzáférésének Azure Storage üzenetsorok és üzenetsorbeli üzenetek számára |
+| [Tárolási üzenetsor üzenetet processzor](#storage-queue-data-message-processor) | Lehetővé teszi, hogy a betekintési, kap, és törlési hozzáférésének Azure Storage-üzenetsor üzenetei |
+| [Tárolási üzenetsor adatok üzenet küldője](#storage-queue-data-message-sender) | Lehetővé teszi, hogy az Azure Storage-üzenetsorbeli üzenetek küldéséhez |
 | [Storage-Üzenetsorbeli adatok olvasója](#storage-queue-data-reader) | Azure Storage-üzenetsorok és üzenetsorbeli üzenetek olvasási hozzáférésének engedélyezése |
-| [Támogatáskérési közreműködő](#support-request-contributor) | Támogatási kérések létrehozását és kezelését teszi lehetővé |
-| [Traffic Manager-közreműködő](#traffic-manager-contributor) | Lehetővé teszi Traffic Manager-profilok kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
-| [Felhasználói hozzáférés rendszergazdája](#user-access-administrator) | Lehetővé teszi a Azure-erőforrásokhoz való felhasználói hozzáférés kezelését. |
-| [A virtuális gépre való rendszergazdai bejelentkezés](#virtual-machine-administrator-login) | A virtuális gépek megtekintése a portálon, és bejelentkezés rendszergazdaként |
-| [Virtuális gépek közreműködője](#virtual-machine-contributor) | Lehetővé teszi a virtuális gépek kezelését, az azokhoz való hozzáférés nélkül, és nem teszi lehetővé a virtuális gépekhez hozzárendelt virtuális hálózatok és tárfiókok elérését sem. |
-| [A virtuális gépre való felhasználói bejelentkezés](#virtual-machine-user-login) | A virtuális gépek megtekintése a portálon, és bejelentkezés hagyományos felhasználóként. |
-| [Webes Tarifacsomagok Közreműködője](#web-plan-contributor) | Lehetővé teszi a webes tarifacsomagok kezelését, az azokhoz való hozzáférés nélkül. |
-| [Webhelyek Közreműködője](#website-contributor) | Lehetővé teszi a webhelyek kezelését (a webes tarifacsomagokét azonban nem), az azokhoz való hozzáférés nélkül. |
+| [Támogatáskérési közreműködő](#support-request-contributor) | Lehetővé teszi a támogatási kérések létrehozásához és kezeléséhez |
+| [Traffic Manager-közreműködő](#traffic-manager-contributor) | Lehetővé teszi a Traffic Manager-profilok kezelését, de nem teszi lehetővé az azokhoz való hozzáférés szabályozásához. |
+| [Felhasználói hozzáférés rendszergazdája](#user-access-administrator) | Azure-erőforrásokhoz való felhasználói hozzáférés kezelését teszi lehetővé. |
+| [A virtuális gépre való rendszergazdai bejelentkezés](#virtual-machine-administrator-login) | A portálon, és jelentkezzen be rendszergazdai virtuális számítógépek megtekintése |
+| [Virtuális gépek közreműködője](#virtual-machine-contributor) | Lehetővé teszi virtuális gépek, de nem biztosít hozzáférést, és nem a virtuális hálózat vagy kapcsolódó tárfiók kezelését. |
+| [A virtuális gépre való felhasználói bejelentkezés](#virtual-machine-user-login) | A portálon és a felhasználói bejelentkezési nézet a virtuális gépek. |
+| [Webes Tarifacsomagok Közreműködője](#web-plan-contributor) | Lehetővé teszi számukra a websites, de nem biztosít hozzáférést a webes tarifacsomagok kezelését. |
+| [Webhelyek Közreműködője](#website-contributor) | Lehetővé teszi a webhelyek (a webes tarifacsomagokét) kezelését, ezekhez nem biztosít hozzáférést. |
 
 
 ## <a name="owner"></a>Tulajdonos
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi az összes funkció kezelését, beleértve az erőforrásokhoz való hozzáférést is. |
+> | **Leírás** | Lehetővé teszi az összes funkció kezelését, beleértve az erőforrásokhoz való hozzáférést. |
 > | **Azonosító** | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | **Műveletek** |  |
 > | * | Bármilyen típusú erőforrások létrehozása és felügyelete |
@@ -168,16 +168,16 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz való hozzáférést. |
+> | **Leírás** | Lehetővé teszi az erőforrásokhoz való hozzáférés kivételével mindent felügyelhetnek. |
 > | **Azonosító** | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | **Műveletek** |  |
 > | * | Bármilyen típusú erőforrások létrehozása és felügyelete |
 > | **notActions** |  |
 > | Microsoft.Authorization/*/Delete | Szerepkörök és szerepkör-hozzárendelések törlése |
 > | Microsoft.Authorization/*/Write | Szerepkörök és szerepkör-hozzárendelések létrehozása |
-> | Microsoft.Authorization/elevateAccess/Action | Felhasználói hozzáférés rendszergazdai szerepkörének megadása a hívónak a bérlői hatókörben |
-> | Microsoft.Blueprint/blueprintAssignments/write | Tetszőleges tervelemek létrehozása vagy frissítése |
-> | Microsoft.Blueprint/blueprintAssignments/delete | Tetszőleges tervelemek törlése |
+> | Microsoft.Authorization/elevateAccess/Action | Hozzáférést biztosít a hívó felhasználói hozzáférés rendszergazdája a bérlői hatókörben |
+> | Microsoft.Blueprint/blueprintAssignments/write | Létrehozás vagy frissítés tetszőleges tervezetösszetevők |
+> | Microsoft.Blueprint/blueprintAssignments/delete | Tetszőleges tervezetösszetevők törlése |
 > | **DataActions** |  |
 > | *none* |  |
 > | **NotDataActions** |  |
@@ -187,7 +187,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi, hogy mindent megtekinthessen, de módosításokat nem hajthat végre. |
+> | **Leírás** | Lehetővé teszi, hogy mindent megtekinthessen, de nem végezze el a módosításokat. |
 > | **Azonosító** | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | **Műveletek** |  |
 > | */read | Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat. |
@@ -213,7 +213,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="acrimagesigner"></a>ACR-lemezképaláíró
+## <a name="acrimagesigner"></a>AcrImageSigner
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -232,7 +232,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | ACR-lekérés |
+> | **Leírás** | ACR lekéréses |
 > | **Azonosító** | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
 > | **Műveletek** |  |
 > | Microsoft.ContainerRegistry/registries/pull/read | Kérje le, vagy kérjen lemezképeket tároló-beállításjegyzék. |
@@ -247,7 +247,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | ACR-leküldés |
+> | **Leírás** | ACR leküldéses |
 > | **Azonosító** | 8311e382-0749-4cb8-b61a-304f252e45ec |
 > | **Műveletek** |  |
 > | Microsoft.ContainerRegistry/registries/pull/read | Kérje le, vagy kérjen lemezképeket tároló-beállításjegyzék. |
@@ -259,7 +259,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="acrquarantinereader"></a>ACR-karanténolvasó
+## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -274,7 +274,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="acrquarantinewriter"></a>ACR-karanténíró
+## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -290,17 +290,17 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="api-management-service-contributor"></a>API Management szolgáltatás közreműködője
+## <a name="api-management-service-contributor"></a>API Management szolgáltatás Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Kezelheti a szolgáltatást és az API-kat |
+> | **Leírás** | Kezelheti a szolgáltatás és az API-k |
 > | **Azonosító** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **Műveletek** |  |
 > | Microsoft.ApiManagement/service/* | Hozzon létre, és az API Management szolgáltatás kezelése |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -311,11 +311,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="api-management-service-operator-role"></a>Az API Management szolgáltatás operátori szerepköre
+## <a name="api-management-service-operator-role"></a>API Management szolgáltatás operátori szerepköre
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Szolgáltatásokat kezelhet, de API-kat nem |
+> | **Leírás** | Kezelheti a szolgáltatást, de nem az API-k |
 > | **Azonosító** | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
 > | **Műveletek** |  |
 > | Microsoft.ApiManagement/service/*/read | Olvassa el API Management szolgáltatás példányai |
@@ -329,7 +329,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.ApiManagement/service/write | API Management szolgáltatás új példányának létrehozása |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -340,18 +340,18 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="api-management-service-reader-role"></a>Az API Management szolgáltatás olvasói szerepköre
+## <a name="api-management-service-reader-role"></a>API Management Service Reader Role
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Írásvédett hozzáférés a szolgáltatáshoz és az API-khoz |
+> | **Leírás** | Csak olvasási hozzáférés a szolgáltatáshoz és API-k |
 > | **Azonosító** | 71522526-b88f-4d52-b57f-d31fc3546d0d |
 > | **Műveletek** |  |
 > | Microsoft.ApiManagement/service/*/read | Olvassa el API Management szolgáltatás példányai |
 > | Microsoft.ApiManagement/service/read | Egy API Management szolgáltatáspéldány metaadatok olvasása |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -362,18 +362,18 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="application-insights-component-contributor"></a>Application Insights-összetevők közreműködője
+## <a name="application-insights-component-contributor"></a>Application Insights-összetevők Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Kezelhet Application Insights-összetevőket |
+> | **Leírás** | Kezelheti az Application Insights-összetevők |
 > | **Azonosító** | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
 > | Microsoft.Insights/components/* | Létrehozása és kezelése az Insights-összetevők |
 > | Microsoft.Insights/webtests/* | Létrehozása és kezelése a webes tesztek |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -404,11 +404,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="automation-job-operator"></a>Az Automation-feladat operátora
+## <a name="automation-job-operator"></a>Automation-feladat operátora
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Feladatok létrehozása és kezelése Automation-runbookok használatával. |
+> | **Leírás** | Létrehozása és kezelése Automation-Runbookok használatával feladatok. |
 > | **Azonosító** | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -435,7 +435,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Az Automation-operátorok elindíthatnak, leállíthatnak, felfüggeszthetnek és folytathatnak feladatokat |
+> | **Leírás** | Automation-operátorok tudnak indítása, leállítása, felfüggesztése és folytatása a feladatok |
 > | **Azonosító** | d3881f73-407a-4167-8283-e981cbba0404 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -454,7 +454,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Automation/automationAccounts/schedules/read | Egy Azure Automation szolgáltatásbeli ütemezési eszköz beolvasása |
 > | Microsoft.Automation/automationAccounts/schedules/write | Létrehoz vagy frissít egy Azure Automation szolgáltatásbeli ütemezési eszköz |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Automation/automationAccounts/jobs/output/read | A feladat kimenetének beolvasása |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
@@ -466,11 +466,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="automation-runbook-operator"></a>Az Automation-runbook operátora
+## <a name="automation-runbook-operator"></a>Automation-Runbook operátora
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Runbook-tulajdonságok olvasása – a runbook-feladatok létrehozásához. |
+> | **Leírás** | Olvassa el a Runbook-tulajdonságok –, a runbook-feladatok létrehozásához. |
 > | **Azonosító** | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -516,7 +516,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Egy blob törlésének eredményét adja vissza |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Blobot vagy blobok listáját adja vissza |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Egy blobot vagy blobok listáját adja vissza |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Blob írásának eredményét adja vissza |
 > | **NotDataActions** |  |
 > | *none* |  |
@@ -528,7 +528,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Leírás** | A fürt kezeléséhez a Avere vFXT fürt által használt |
 > | **Azonosító** | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
 > | **Műveletek** |  |
-> | Microsoft.Compute/virtualMachines/read | Egy virtuális gép tulajdonságait olvassa be |
+> | Microsoft.Compute/virtualMachines/read | Virtuális gép tulajdonságainak beolvasása |
 > | Microsoft.Network/networkInterfaces/read | Lekérdezi egy hálózati illesztőjének definícióját.  |
 > | Microsoft.Network/networkInterfaces/write | Hálózati adapter létrehozása vagy frissítése egy meglévő hálózati adaptert.  |
 > | Microsoft.Network/virtualNetworks/read | A virtuális hálózati definíció beolvasása |
@@ -537,13 +537,13 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Network/networkSecurityGroups/join/action | Csatlakoztatja a hálózati biztonsági csoport. Nem Alertable. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | A tároló törlésének eredményét adja vissza |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | A tárolók listájának visszaadása |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Tárolók listájának visszaadása |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/write | A put blobtároló eredményét adja vissza |
 > | **notActions** |  |
 > | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Egy blob törlésének eredményét adja vissza |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Blobot vagy blobok listáját adja vissza |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Egy blobot vagy blobok listáját adja vissza |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Blob írásának eredményét adja vissza |
 > | **NotDataActions** |  |
 > | *none* |  |
@@ -555,7 +555,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Leírás** | Fürt rendszergazdai hitelesítő adatok a művelet listázza. |
 > | **Azonosító** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Műveletek** |  |
-> | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Felügyelt fürt fürtadminisztrátori hitelesítő adatainak listázása |
+> | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Egy felügyelt fürt a clusterAdmin hitelesítő adatainak listázása |
 > | **notActions** |  |
 > | *none* |  |
 > | **DataActions** |  |
@@ -570,7 +570,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Leírás** | Fürt felhasználói hitelesítő adatok a művelet listázza. |
 > | **Azonosító** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | **Műveletek** |  |
-> | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Felügyelt fürt fürtfelhasználói hitelesítő adatainak listázása |
+> | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Egy felügyelt fürt a clusterUser hitelesítő adatainak listázása |
 > | **notActions** |  |
 > | *none* |  |
 > | **DataActions** |  |
@@ -593,7 +593,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="azure-stack-registration-owner"></a>Azure Stack-regisztráció tulajdonosa
+## <a name="azure-stack-registration-owner"></a>Az Azure Stack-regisztráció tulajdonosa
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -614,7 +614,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a biztonsági mentési szolgáltatás felügyeletét, de nem hozhat létre tárolókat, és nem adhat hozzáférést másoknak |
+> | **Leírás** | Lehetővé teszi a felügyelt biztonsági mentési szolgáltatás, de nem tárolók létrehozása és adhat hozzáférést másoknak |
 > | **Azonosító** | 5e467623-bb1f-42f4-a55d-6e525e11384b |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -643,7 +643,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.RecoveryServices/Vaults/usages/* | Hozzon létre, és a Recovery Services-tároló használata kezelheti |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
-> | Microsoft.Storage/storageAccounts/read | A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése. |
+> | Microsoft.Storage/storageAccounts/read | A storage-fiókok vagy a megadott tárfiók tulajdonságainak beolvasása adja vissza. |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | A védett elem a művelet érvényesítése |
@@ -667,11 +667,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="backup-operator"></a>Biztonsági mentési operátor
+## <a name="backup-operator"></a>Biztonságimásolat-felelős
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a biztonsági mentési szolgáltatások felügyeletét, kivéve a biztonsági másolatok eltávolítását, tárolók létrehozását és a másoknak való hozzáférés megadását |
+> | **Leírás** | Lehetővé teszi a biztonsági mentési szolgáltatásai, kivéve a biztonsági mentés, a tárolók létrehozását és a másoknak való hozzáférés megadását eltávolításának kezelését |
 > | **Azonosító** | 00c29273-979b-4161-815c-10b084fb9324 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -712,7 +712,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.RecoveryServices/Vaults/usages/read | Egy adott Recovery Services-tároló használati adatait adja vissza. |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
-> | Microsoft.Storage/storageAccounts/read | A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése. |
+> | Microsoft.Storage/storageAccounts/read | A storage-fiókok vagy a megadott tárfiók tulajdonságainak beolvasása adja vissza. |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | A védett elem a művelet érvényesítése |
 > | Microsoft.RecoveryServices/Vaults/backupOperations/read | Adja vissza a biztonsági mentési művelet állapotának helyreállítási tár. |
@@ -743,7 +743,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Megtekintheti a biztonsági mentési szolgáltatásokat, de nem végezhet módosításokat |
+> | **Leírás** | Megtekintheti a biztonsági mentési szolgáltatásai, de nem végezhet módosításokat |
 > | **Azonosító** | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -792,11 +792,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="billing-reader"></a>Számlázási olvasó
+## <a name="billing-reader"></a>Számlázás olvasója
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Olvasási hozzáférést biztosít a számlázási adatokhoz |
+> | **Leírás** | Olvasási hozzáférést biztosít a számlázási adatokat |
 > | **Azonosító** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -813,17 +813,17 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="biztalk-contributor"></a>BizTalk közreműködője
+## <a name="biztalk-contributor"></a>BizTalk Contributor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a BizTalk-szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. |
+> | **Leírás** | Lehetővé teszi a BizTalk-szolgáltatások kezelését, ezekhez nem biztosít hozzáférést. |
 > | **Azonosító** | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.BizTalkServices/BizTalk/* | A BizTalk-szolgáltatások létrehozásához és kezeléséhez |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -834,11 +834,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="blockchain-member-node-access-preview"></a>Blockchain Member csomópont-hozzáférés (előzetes verzió)
+## <a name="blockchain-member-node-access-preview"></a>Blockchain-tag-csomópont elérése (előzetes verzió)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Engedélyezi a hozzáférést a Blockchain Member csomópontjaihoz |
+> | **Leírás** | Blockchain tagcsomópontok hozzáférésének engedélyezése |
 > | **Azonosító** | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **Műveletek** |  |
 > | Microsoft.Blockchain/blockchainMembers/transactionNodes/read | Beolvassa vagy listázza a meglévő Blockchain tag tranzakció csomópont. |
@@ -849,11 +849,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="cdn-endpoint-contributor"></a>A CDN-végpont közreműködője
+## <a name="cdn-endpoint-contributor"></a>CDN-végpont Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Kezelhet CDN-végpontokat, de nem tud hozzáférést adni más felhasználóknak. |
+> | **Leírás** | Kezelheti a CDN-végpontokat, de nem tud hozzáférést adni más felhasználóknak. |
 > | **Azonosító** | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -871,7 +871,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="cdn-endpoint-reader"></a>A CDN-végpont olvasója
+## <a name="cdn-endpoint-reader"></a>CDN-végpont olvasója
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -893,7 +893,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="cdn-profile-contributor"></a>A CDN-profil közreműködője
+## <a name="cdn-profile-contributor"></a>A CDN-profil Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -937,17 +937,17 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="classic-network-contributor"></a>Virtuális hálózatok hagyományos közreműködője
+## <a name="classic-network-contributor"></a>Klasszikus hálózati közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a hagyományos hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
+> | **Leírás** | Lehetővé teszi a hagyományos hálózatok kezelését, ezekhez nem biztosít hozzáférést. |
 > | **Azonosító** | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.ClassicNetwork/* | Hozzon létre, és a klasszikus hálózatok kezelése |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -958,17 +958,17 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="classic-storage-account-contributor"></a>Hagyományos tárfiók-közreműködő
+## <a name="classic-storage-account-contributor"></a>Hagyományos Tárfiók-közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a hagyományos tárfiókok kezelését, de ezekhez nem biztosít hozzáférést. |
+> | **Leírás** | Lehetővé teszi a klasszikus tárfiókok kezelését, ezekhez nem biztosít hozzáférést. |
 > | **Azonosító** | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.ClassicStorage/storageAccounts/* | Tárfiókok létrehozása és kezelése |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -979,15 +979,15 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="classic-storage-account-key-operator-service-role"></a>A hagyományos tárfiók kulcsának operátora – szolgáltatási szerepkör
+## <a name="classic-storage-account-key-operator-service-role"></a>Hagyományos tároló fiók fő operátora – szolgáltatási szerepkör
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | A hagyományos tárfiók kulcsának operátorai jogosultak a hagyományos tárfiókokhoz tartozó kulcsok listázására és újragenerálására |
+> | **Leírás** | Klasszikus Tárfiók kulcsának operátorai jogosultak a hagyományos Tárfiókokhoz kulcsok listázására és újragenerálására |
 > | **Azonosító** | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
 > | **Műveletek** |  |
-> | Microsoft.ClassicStorage/storageAccounts/listkeys/action | Tárfiókok elérési kulcsainak listázása. |
-> | Microsoft.ClassicStorage/storageAccounts/regeneratekey/action | Tárfiók meglévő elérési kulcsainak újragenerálása. |
+> | Microsoft.ClassicStorage/storageAccounts/listkeys/action | A storage-tárfiókok elérési kulcsainak listázása. |
+> | Microsoft.ClassicStorage/storageAccounts/regeneratekey/action | A tárfiók meglévő elérési kulcsainak újragenerálása. |
 > | **notActions** |  |
 > | *none* |  |
 > | **DataActions** |  |
@@ -995,27 +995,27 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="classic-virtual-machine-contributor"></a>Virtuális gépek hagyományos közreműködője
+## <a name="classic-virtual-machine-contributor"></a>Virtuális gépek hagyományos Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a hagyományos virtuális gépek kezelését, de ezekhez nem biztosít hozzáférést, és nem teszi lehetővé a virtuális gépekhez hozzárendelt virtuális hálózatok és tárfiókok elérését sem. |
+> | **Leírás** | Lehetővé teszi a klasszikus virtuális gépek, de nem biztosít hozzáférést, és nem a virtuális hálózat vagy kapcsolódó tárfiók kezelését. |
 > | **Azonosító** | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.ClassicCompute/domainNames/* | Hozzon létre, és a klasszikus számítási tartománynevek kezelése |
 > | Microsoft.ClassicCompute/virtualMachines/* | Virtuális gépek létrehozása és kezelése |
 > | Microsoft.ClassicNetwork/networkSecurityGroups/join/action |  |
-> | Microsoft.ClassicNetwork/reservedIps/link/action | Egy fenntartott IP-cím hivatkozása |
+> | Microsoft.ClassicNetwork/reservedIps/link/action | Hivatkozás a fenntartott IP-cím |
 > | Microsoft.ClassicNetwork/reservedIps/read | A fenntartott IP-címek beolvasása |
 > | Microsoft.ClassicNetwork/virtualNetworks/join/action | Csatlakozás a virtuális hálózathoz. |
 > | Microsoft.ClassicNetwork/virtualNetworks/read | Virtuális hálózat beolvasása. |
-> | Microsoft.ClassicStorage/storageAccounts/disks/read | A tárfióklemez beolvasása. |
+> | Microsoft.ClassicStorage/storageAccounts/disks/read | A tárfióklemez adja vissza. |
 > | Microsoft.ClassicStorage/storageAccounts/images/read | A tárfióklemezkép adja vissza. (Elavult. Használja a "Microsoft.ClassicStorage/storageAccounts/vmImages") |
-> | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Tárfiókok elérési kulcsainak listázása. |
-> | Microsoft.ClassicStorage/storageAccounts/read | Tárfiók visszaadása az adott fiókhoz. |
+> | Microsoft.ClassicStorage/storageAccounts/listKeys/action | A storage-tárfiókok elérési kulcsainak listázása. |
+> | Microsoft.ClassicStorage/storageAccounts/read | Vissza a tárfiók a megadott fiók. |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1035,18 +1035,18 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.CognitiveServices/* |  |
-> | Microsoft.Features/features/read | Beolvassa az előfizetéshez tartozó szolgáltatásokat. |
-> | Microsoft.Features/providers/features/read | Beolvassa az előfizetés szolgáltatásait az adott erőforrás-szolgáltatón. |
+> | Microsoft.Features/features/read | Lekéri az előfizetéshez tartozó szolgáltatásokat. |
+> | Microsoft.Features/providers/features/read | Az előfizetés a szolgáltatás lekéri az adott erőforrás-szolgáltatón. |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
 > | Microsoft.Insights/diagnosticSettings/* | Hoz létre, a frissítések vagy az Analysis Server diagnosztikai beállításának beolvasása |
 > | Microsoft.Insights/logDefinitions/read | A naplódefiníciók olvasása |
 > | Microsoft.Insights/metricdefinitions/read | A metrikadefiníciók olvasása |
 > | Microsoft.Insights/metrics/read | Metrikák olvasása |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
-> | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveleteket. |
+> | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveletek. |
 > | Microsoft.Resources/subscriptions/operationresults/read | Az előfizetési művelet eredményeinek lekérése. |
-> | Microsoft.Resources/subscriptions/read | Beolvassa az előfizetések listáját. |
+> | Microsoft.Resources/subscriptions/read | Az előfizetések listájának beolvasása. |
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1057,11 +1057,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="cognitive-services-data-reader-preview"></a>Cognitive Services Adatolvasó (Előzetes verzió)
+## <a name="cognitive-services-data-reader-preview"></a>A cognitive Services-adatok olvasója (minta)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Cognitive Services-kulcsok olvasását teszi lehetővé. |
+> | **Leírás** | Lehetővé teszi a Cognitive Services-adatok olvasása. |
 > | **Azonosító** | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | **Műveletek** |  |
 > | *none* |  |
@@ -1081,15 +1081,15 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Műveletek** |  |
 > | Microsoft.CognitiveServices/*/read |  |
 > | Microsoft.CognitiveServices/accounts/listkeys/action | Kulcsok listázása |
-> | Microsoft.Insights/alertRules/read | Klasszikus metrikaalapú riasztás olvasása |
-> | Microsoft.Insights/diagnosticSettings/read | Erőforrás diagnosztikai beállításának olvasása |
+> | Microsoft.Insights/alertRules/read | Klasszikus metrikariasztás olvasása |
+> | Microsoft.Insights/diagnosticSettings/read | Egy erőforrás diagnosztikai beállítás beolvasása |
 > | Microsoft.Insights/logDefinitions/read | A naplódefiníciók olvasása |
 > | Microsoft.Insights/metricdefinitions/read | A metrikadefiníciók olvasása |
 > | Microsoft.Insights/metrics/read | Metrikák olvasása |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
-> | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveleteket. |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
+> | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveletek. |
 > | Microsoft.Resources/subscriptions/operationresults/read | Az előfizetési művelet eredményeinek lekérése. |
-> | Microsoft.Resources/subscriptions/read | Beolvassa az előfizetések listáját. |
+> | Microsoft.Resources/subscriptions/read | Az előfizetések listájának beolvasása. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | **notActions** |  |
@@ -1099,7 +1099,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="cosmos-db-account-reader-role"></a>Cosmos DB-fiók olvasói szerepköre
+## <a name="cosmos-db-account-reader-role"></a>A cosmos DB-fiók olvasói szerepköre
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1130,7 +1130,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.DocumentDb/databaseAccounts/* |  |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1148,7 +1148,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Cosmos DB-adatbázis vagy fióktároló visszaállítására vonatkozó kérelmet küldhet. |
+> | **Leírás** | Elküldhet egy Cosmos DB-adatbázis visszaállítási kérelmében vagy egy tároló-fiókot |
 > | **Azonosító** | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
 > | **Műveletek** |  |
 > | Microsoft.DocumentDB/databaseAccounts/backup/action | Biztonsági mentés konfigurálása kéréséhez |
@@ -1164,13 +1164,13 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Megtekintheti a költségeket és kezelheti a költségkonfigurációt (például költségvetés, exportok) |
+> | **Leírás** | Költségek megtekintheti és kezelheti a költség-konfiguráció (pl. költségvetéseket, export) |
 > | **Azonosító** | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | **Műveletek** |  |
 > | Microsoft.Consumption/* |  |
 > | Microsoft.CostManagement/* |  |
 > | Microsoft.Billing/billingPeriods/read | Felsorolja a rendelkezésre álló elszámolási időszakok |
-> | Microsoft.Resources/subscriptions/read | Beolvassa az előfizetések listáját. |
+> | Microsoft.Resources/subscriptions/read | Az előfizetések listájának beolvasása. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | Microsoft.Advisor/configurations/read | Konfiguráció beolvasása |
@@ -1186,13 +1186,13 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Megtekintheti a költségadatokat és a konfigurációt (például költségvetés, exportok) |
+> | **Leírás** | Költségadatok és a konfiguráció (pl. költségvetéseket, export) |
 > | **Azonosító** | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
 > | **Műveletek** |  |
 > | Microsoft.Consumption/*/read |  |
 > | Microsoft.CostManagement/*/read |  |
 > | Microsoft.Billing/billingPeriods/read | Felsorolja a rendelkezésre álló elszámolási időszakok |
-> | Microsoft.Resources/subscriptions/read | Beolvassa az előfizetések listáját. |
+> | Microsoft.Resources/subscriptions/read | Az előfizetések listájának beolvasása. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | Microsoft.Advisor/configurations/read | Konfiguráció beolvasása |
@@ -1208,11 +1208,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Engedélyezi a Data Box Service minden funkciójának kezelését, kivéve a hozzáférés másoknak való megadását. |
+> | **Leírás** | Kezelheti a Data Box szolgáltatás található minden elemet kivételével másoknak való hozzáférés megadását teszi lehetővé. |
 > | **Azonosító** | add466c9-e687-43fc-8d98-dfcf8d720be5 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1228,16 +1228,16 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Engedélyezi a Data Box Service kezelését, kivéve a rendelések létrehozását, a rendelésadatok szerkesztését és a hozzáférés másoknak való megadását. |
+> | **Leírás** | Kezelheti a Data Box szolgáltatás kivéve a rendelés létrehozása vagy szerkesztése a rendelés részleteit, és a másoknak való hozzáférés megadását teszi lehetővé. |
 > | **Azonosító** | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Databox/*/read |  |
 > | Microsoft.Databox/jobs/listsecrets/action |  |
-> | Microsoft.Databox/jobs/listcredentials/action | A megrendeléssel kapcsolatos titkosítatlan hitelesítő adatok listázása. |
-> | Microsoft.Databox/locations/availableSkus/action | Ez a metódus a rendelkezésre álló termékváltozatok listáját adja vissza. |
-> | Microsoft.Databox/locations/validateAddress/action | A szállítási cím ellenőrzése és másodlagos címek biztosítása, ha vannak ilyenek. |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.Databox/jobs/listcredentials/action | A megrendeléssel kapcsolatos titkosítatlan hitelesítő adatok listája. |
+> | Microsoft.Databox/locations/availableSkus/action | Ez a módszer a rendelkezésre álló termékváltozatok listáját adja vissza. |
+> | Microsoft.Databox/locations/validateAddress/action | A szállítási cím ellenőrzése és másodlagos címek biztosítása, ha van ilyen. |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | **notActions** |  |
 > | *none* |  |
@@ -1246,18 +1246,18 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="data-factory-contributor"></a>Data Factory közreműködője
+## <a name="data-factory-contributor"></a>Data Factory Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Létrehozhat és kezelhet adat-előállítókat, valamint azokban található gyermekerőforrásokat. |
+> | **Leírás** | Létrehozhat és kezelhet adat-előállítók, valamint az azokhoz tartozó gyermekerőforrásait. |
 > | **Azonosító** | 673868aa-7521-48a0-acc6-0f60742d39f5 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
 > | Microsoft.DataFactory/dataFactories/* | Létrehozhat és kezelhet adat-előállítók és a bennük található gyermekerőforrásait. |
 > | Microsoft.DataFactory/factories/* | Létrehozhat és kezelhet adat-előállítók és a bennük található gyermekerőforrásait. |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1268,18 +1268,18 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="data-lake-analytics-developer"></a>Data Lake Analytics-fejlesztő
+## <a name="data-lake-analytics-developer"></a>Data Lake Analytics Developer
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a saját feladatok elküldését, figyelését és kezelését, de nem tud létrehozni vagy törölni Data Lake Analytics-fiókokat. |
+> | **Leírás** | Lehetővé teszi elküldése, monitorozásához és a saját feladatok kezelése, de nem létrehozása vagy törlése a Data Lake Analytics-fiókok. |
 > | **Azonosító** | 47b7735b-770e-4598-a7da-8b91488b4c88 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.BigAnalytics/accounts/* |  |
 > | Microsoft.DataLakeAnalytics/accounts/* |  |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1303,15 +1303,15 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="data-purger"></a>Adattörlő
+## <a name="data-purger"></a>Adatok Purger
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Véglegesen törölheti az elemzési adatokat |
+> | **Leírás** | Elemzési adatok is kiürítheti. |
 > | **Azonosító** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | **Műveletek** |  |
 > | Microsoft.Insights/components/*/read |  |
-> | Microsoft.Insights/components/purge/action | Adatok végleges törlése az Application Insightsból |
+> | Microsoft.Insights/components/purge/action | Adatok végleges törlése az Application Insights |
 > | Microsoft.OperationalInsights/workspaces/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/purge/action | Megadott adatok törlése a munkaterületről |
 > | **notActions** |  |
@@ -1321,20 +1321,20 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="devtest-labs-user"></a>DevTest Labs-felhasználó
+## <a name="devtest-labs-user"></a>DevTest Labs User
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi az Azure DevTest Labs virtuális gépeinek csatlakoztatását, indítását, újraindítását és leállítását. |
+> | **Leírás** | Lehetővé teszi, hogy csatlakozik, kezdő, újraindítását és leállítását a virtuális gépek az Azure DevTest Labs-környezetben. |
 > | **Azonosító** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
-> | Microsoft.Compute/availabilitySets/read | Egy adott rendelkezésre állási csoport tulajdonságainak beolvasása |
+> | Microsoft.Compute/availabilitySets/read | Rendelkezésre állási csoport tulajdonságainak beolvasása |
 > | Microsoft.Compute/virtualMachines/*/read | A virtuális gépek (VM-méretek, futásidejű állapot, a Virtuálisgép-bővítmények, stb.) tulajdonságainak olvasása |
-> | Microsoft.Compute/virtualMachines/deallocate/action | Kikapcsolja a virtuális gépet és felszabadítja a számítási erőforrásokat |
-> | Microsoft.Compute/virtualMachines/read | Egy virtuális gép tulajdonságait olvassa be |
-> | Microsoft.Compute/virtualMachines/restart/action | Újraindítja a virtuális gépet |
-> | Microsoft.Compute/virtualMachines/start/action | Elindítja a virtuális gépet |
+> | Microsoft.Compute/virtualMachines/deallocate/action | A virtuális gépet és felszabadítja a számítási erőforrások kikapcsolása |
+> | Microsoft.Compute/virtualMachines/read | Virtuális gép tulajdonságainak beolvasása |
+> | Microsoft.Compute/virtualMachines/restart/action | A virtuális gép újraindítása |
+> | Microsoft.Compute/virtualMachines/start/action | A virtuális gép indítása |
 > | Microsoft.DevTestLab/*/read | Labor tulajdonságainak olvasása |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | Jogcím egy véletlenszerű igényelhető virtuális gép a tesztkörnyezetben. |
 > | Microsoft.DevTestLab/labs/createEnvironment/action | Virtuális gépek létrehozása a lab-ben. |
@@ -1356,28 +1356,28 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Network/publicIPAddresses/join/action | Nyilvános ip-címmel csatlakozik. Nem Alertable. |
 > | Microsoft.Network/publicIPAddresses/read | Lekérdezi egy nyilvános IP-cím cím definíciója. |
 > | Microsoft.Network/virtualNetworks/subnets/join/action | Egy virtuális hálózathoz csatlakozik. Nem Alertable. |
-> | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveleteket. |
-> | Microsoft.Resources/deployments/read | Beolvassa vagy listázza az üzemelő példányokat. |
+> | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveletek. |
+> | Microsoft.Resources/deployments/read | Beolvassa vagy listázza az üzemelő példányok. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
-> | Microsoft.Storage/storageAccounts/listKeys/action | A megadott tárfiók hozzáférési kulcsainak lekérése. |
+> | Microsoft.Storage/storageAccounts/listKeys/action | A megadott tárfiók hozzáférési kulcsainak. |
 > | **notActions** |  |
-> | Microsoft.Compute/virtualMachines/vmSizes/read | Listázza az elérhető méreteket, melyekre a virtuális gép frissíthető |
+> | Microsoft.Compute/virtualMachines/vmSizes/read | Felsorolja az elérhető méretek a virtuális gép frissíthető |
 > | **DataActions** |  |
 > | *none* |  |
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="dns-zone-contributor"></a>A DNS-zóna közreműködője
+## <a name="dns-zone-contributor"></a>DNS Zone Contributor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi az Azure DNS-beli DNS-zónák és rekordkészletek kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
+> | **Leírás** | Lehetővé teszi a DNS-zónák és -rekordhalmazok az Azure DNS kezelését, de nem teszi lehetővé az azokhoz való hozzáférés szabályozásához. |
 > | **Azonosító** | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
 > | Microsoft.Network/dnsZones/* | DNS-zónák és rekordok létrehozása és kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1388,7 +1388,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="documentdb-account-contributor"></a>DocumentDB-fiókközreműködő
+## <a name="documentdb-account-contributor"></a>DocumentDB Account Contributor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1398,7 +1398,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
 > | Microsoft.DocumentDb/databaseAccounts/* | Azure Cosmos DB-fiókok létrehozása és kezelése |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1425,11 +1425,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid-eseményelőfizetés közreműködője
+## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a EventGrid-eseményelőfizetések műveleteinek kezelését. |
+> | **Leírás** | Lehetővé teszi EventGrid esemény-előfizetési műveletek kezelését. |
 > | **Azonosító** | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -1448,11 +1448,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="eventgrid-eventsubscription-reader"></a>EventGrid-eseményelőfizetés olvasója
+## <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription olvasó
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a EventGrid-eseményelőfizetések olvasását. |
+> | **Leírás** | Olvassa el az esemény-előfizetések EventGrid teszi lehetővé. |
 > | **Azonosító** | 2414bbcf-6497-4faf-8c65-045460748405 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -1480,7 +1480,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.HDInsight/clusters/updateGatewaySettings/action | HDInsight-fürt átjáró-beállításainak frissítése |
 > | Microsoft.HDInsight/clusters/configurations/* |  |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
-> | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveleteket. |
+> | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveletek. |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1495,7 +1495,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Olvashatja, létrehozhatja, módosíthatja és törölheti a HDInsight Enterprise Security Package csomaghoz szükséges Domain Services-műveleteket |
+> | **Leírás** | Olvashatja, létrehozása, módosítása és törlése a tartományi szolgáltatások kapcsolódó műveletek HDInsight vállalati biztonsági csomag szükséges |
 > | **Azonosító** | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | **Műveletek** |  |
 > | Microsoft.AAD/*/read |  |
@@ -1508,17 +1508,17 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="intelligent-systems-account-contributor"></a>Intelligens rendszerek fiókközreműködője
+## <a name="intelligent-systems-account-contributor"></a>Intelligens rendszerek Fiókközreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi az intelligens rendszerek fiókjainak kezelését, az azokhoz való hozzáférés nélkül. |
+> | **Leírás** | Lehetővé teszi az intelligens rendszerek fiókjainak kezelését, ezekhez nem biztosít hozzáférést. |
 > | **Azonosító** | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
 > | Microsoft.IntelligentSystems/accounts/* | Intelligens rendszerek fiókok létrehozása és kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1533,7 +1533,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a kulcstartók kezelését, de ezekhez nem biztosít hozzáférést. |
+> | **Leírás** | Lehetővé teszi a kulcstartók kezelését, ezekhez nem biztosít hozzáférést. |
 > | **Azonosító** | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -1554,7 +1554,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Felügyelt tesztkörnyezetek az Azure Lab-fiókokban való létrehozását, kezelését és törlését teszi lehetővé. |
+> | **Leírás** | Lehetővé teszi a létrehozását, kezelését, és törölje a felügyelt tesztkörnyezetek az Azure Lab-fiókokban. |
 > | **Azonosító** | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -1571,7 +1571,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="log-analytics-contributor"></a>Log Analytics-közreműködő
+## <a name="log-analytics-contributor"></a>Log Analytics közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1581,7 +1581,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | */read | Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat. |
 > | Microsoft.Automation/automationAccounts/* |  |
 > | Microsoft.ClassicCompute/virtualMachines/extensions/* |  |
-> | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Tárfiókok elérési kulcsainak listázása. |
+> | Microsoft.ClassicStorage/storageAccounts/listKeys/action | A storage-tárfiókok elérési kulcsainak listázása. |
 > | Microsoft.Compute/virtualMachines/extensions/* |  |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
 > | Microsoft.Insights/diagnosticSettings/* | Hoz létre, a frissítések vagy az Analysis Server diagnosztikai beállításának beolvasása |
@@ -1589,7 +1589,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.OperationsManagement/* |  |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
-> | Microsoft.Storage/storageAccounts/listKeys/action | A megadott tárfiók hozzáférési kulcsainak lekérése. |
+> | Microsoft.Storage/storageAccounts/listKeys/action | A megadott tárfiók hozzáférési kulcsainak. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | **notActions** |  |
 > | *none* |  |
@@ -1598,11 +1598,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="log-analytics-reader"></a>Log Analytics-olvasó
+## <a name="log-analytics-reader"></a>Log Analytics olvasó
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | A Log Analytics-olvasó megtekintheti az összes figyelési adatot, és kereshet azokban, valamint megtekintheti a figyelési beállításokat, beleértve az összes Azure-erőforrás Azure-beli diagnosztikájának konfigurációját is. |
+> | **Leírás** | Log Analytics olvasó megtekintheti és keresheti az összes figyelési adatot, valamint megtekintheti a figyelési beállításokat, beleértve az Azure diagnostics konfigurációjának megtekintését az összes Azure-erőforrások. |
 > | **Azonosító** | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | **Műveletek** |  |
 > | */read | Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat. |
@@ -1616,16 +1616,16 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="logic-app-contributor"></a>A logikai alkalmazás közreműködője
+## <a name="logic-app-contributor"></a>A logikai alkalmazás Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi logikai alkalmazások kezelését, de ezekhez nem biztosít hozzáférést. |
+> | **Leírás** | Lehetővé teszi, hogy a logikai alkalmazás kezelését, ezekhez nem biztosít hozzáférést. |
 > | **Azonosító** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
-> | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Tárfiókok elérési kulcsainak listázása. |
-> | Microsoft.ClassicStorage/storageAccounts/read | Tárfiók visszaadása az adott fiókhoz. |
+> | Microsoft.ClassicStorage/storageAccounts/listKeys/action | A storage-tárfiókok elérési kulcsainak listázása. |
+> | Microsoft.ClassicStorage/storageAccounts/read | Vissza a tárfiók a megadott fiók. |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
 > | Microsoft.Insights/diagnosticSettings/* | Hoz létre, a frissítések vagy az Analysis Server diagnosztikai beállításának beolvasása |
 > | Microsoft.Insights/logdefinitions/* | Erre az engedélyre szükség a felhasználók számára, akik hozzáférhetnek a vizsgálati naplók a portálon keresztül. Lista naplókategóriák a tevékenységnaplóban. |
@@ -1634,8 +1634,8 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/operationresults/read | Az előfizetési művelet eredményeinek lekérése. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
-> | Microsoft.Storage/storageAccounts/listkeys/action | A megadott tárfiók hozzáférési kulcsainak lekérése. |
-> | Microsoft.Storage/storageAccounts/read | A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése. |
+> | Microsoft.Storage/storageAccounts/listkeys/action | A megadott tárfiók hozzáférési kulcsainak. |
+> | Microsoft.Storage/storageAccounts/read | A storage-fiókok vagy a megadott tárfiók tulajdonságainak beolvasása adja vissza. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | Microsoft.Web/connectionGateways/* | Hozzon létre és kezeli a kapcsolódási átjáró. |
 > | Microsoft.Web/connections/* | Hozzon létre és kezeli a kapcsolat. |
@@ -1654,7 +1654,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi logikai alkalmazások olvasását, engedélyezését és letiltását. |
+> | **Leírás** | Lehetővé teszi, hogy olvasását, engedélyezését és a logikai alkalmazás letiltása. |
 > | **Azonosító** | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -1663,9 +1663,9 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Insights/metricDefinitions/*/read | A Logic Apps elérhető metrikáinak beolvasása. |
 > | Microsoft.Logic/*/read | A Logic Apps-erőforrások beolvasása. |
 > | Microsoft.Logic/workflows/disable/action | Letiltja a munkafolyamatot. |
-> | Microsoft.Logic/workflows/enable/action | Engedélyezi a munkafolyamatot. |
+> | Microsoft.Logic/workflows/enable/action | A munkafolyamat engedélyezése. |
 > | Microsoft.Logic/workflows/validate/action | Érvényesíti a munkafolyamatot. |
-> | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveleteket. |
+> | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveletek. |
 > | Microsoft.Resources/subscriptions/operationresults/read | Az előfizetési művelet eredményeinek lekérése. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1680,15 +1680,15 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="managed-application-operator-role"></a>Felügyeltalkalmazás-operátori szerepkör
+## <a name="managed-application-operator-role"></a>Felügyelt alkalmazás operátori szerepkör
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Engedélyezi a felügyelt alkalmazások erőforrásainak olvasását és műveletek azokon való végrehajtását |
+> | **Leírás** | Olvassa el, és műveleteket hajthat végre felügyelt alkalmazásokra vonatkozó erőforrásokhoz |
 > | **Azonosító** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | **Műveletek** |  |
 > | */read | Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat. |
-> | Microsoft.Solutions/applications/read | Az alkalmazások listájának beolvasása. |
+> | Microsoft.Solutions/applications/read | Alkalmazások listájának beolvasása. |
 > | Microsoft.Solutions/*/action |  |
 > | **notActions** |  |
 > | *none* |  |
@@ -1697,7 +1697,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="managed-applications-reader"></a>Felügyeltalkalmazás-olvasó
+## <a name="managed-applications-reader"></a>Felügyelt alkalmazások Adatolvasó
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1714,11 +1714,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="managed-identity-contributor"></a>Felügyelt identitások közreműködője
+## <a name="managed-identity-contributor"></a>Managed Identity Contributor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | A felhasználóhoz hozzárendelt identitás létrehozása, olvasása, frissítése és törlése |
+> | **Leírás** | Create, Read, Update, and Delete User Assigned Identity |
 > | **Azonosító** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | **Műveletek** |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
@@ -1740,7 +1740,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | A felhasználóhoz hozzárendelt identitás olvasása és hozzárendelése |
+> | **Leírás** | Olvassa el, és rendelje hozzá a felhasználóhoz hozzárendelt identitás |
 > | **Azonosító** | f1a07417-d97a-45cb-824c-7a7467783830 |
 > | **Műveletek** |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
@@ -1757,11 +1757,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="management-group-contributor"></a>Felügyeleti csoport közreműködője
+## <a name="management-group-contributor"></a>A felügyeleti csoport Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Felügyeleti csoport közreműködői szerepköre |
+> | **Leírás** | A felügyeleti csoport közreműködői szerepkört |
 > | **Azonosító** | 5d58bcaf-24a5-4b20-bdb6-eed9f69fbe4c |
 > | **Műveletek** |  |
 > | Microsoft.Management/managementGroups/delete | Felügyeleti csoport törlése. |
@@ -1776,11 +1776,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="management-group-reader"></a>Felügyeleti csoport olvasója
+## <a name="management-group-reader"></a>A felügyeleti csoport olvasó
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Felügyeleti csoport olvasói szerepköre |
+> | **Leírás** | A felügyeleti csoport olvasói szerepköre |
 > | **Azonosító** | ac63b705-f282-497d-ac71-919bf39d939d |
 > | **Műveletek** |  |
 > | Microsoft.Management/managementGroups/read | A hitelesített felhasználó felügyeleti csoportok listája. |
@@ -1791,7 +1791,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="monitoring-contributor"></a>Figyelési közreműködő
+## <a name="monitoring-contributor"></a>Közreműködő figyelése
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1829,11 +1829,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="monitoring-metrics-publisher"></a>Figyelési metrikák közzétevője
+## <a name="monitoring-metrics-publisher"></a>Figyelési metrikák közzétevő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a metrikák Azure-erőforrásokhoz való közzétételét |
+> | **Leírás** | Lehetővé teszi, hogy metrikákat az Azure-erőforrások közzététele |
 > | **Azonosító** | 3913510d-42f4-4e42-8a64-420c390055eb |
 > | **Műveletek** |  |
 > | Microsoft.Insights/Register/Action | A Microsoft Insights-szolgáltató regisztrálása |
@@ -1846,7 +1846,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="monitoring-reader"></a>Figyelési olvasó
+## <a name="monitoring-reader"></a>Olvasó figyelése
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1867,13 +1867,13 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
+> | **Leírás** | Lehetővé teszi a hálózatok kezelését, ezekhez nem biztosít hozzáférést. |
 > | **Azonosító** | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
 > | Microsoft.Network/* | Hozzon létre és hálózatok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1884,16 +1884,16 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="new-relic-apm-account-contributor"></a>New Relic APM-fiókközreműködő
+## <a name="new-relic-apm-account-contributor"></a>Új Relic APM-Fiókközreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a New Relic Application Performance Management-fiókok és -alkalmazások kezelését, az azokhoz való hozzáférés nélkül. |
+> | **Leírás** | Lehetővé teszi új Relic alkalmazásteljesítmény-felügyeleti fiókok és az alkalmazások, de az azokhoz való hozzáférés kezelését. |
 > | **Azonosító** | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1912,9 +1912,9 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Leírás** | Lehetővé teszi minden megtekintését, de nem teszi lehetővé, törölheti, vagy hozzon létre egy storage-fiók vagy az abban található erőforrást. Olvasási/írási hozzáférést a tárfiókok kulcsainak elérésével storage-fiókban tárolt adatokat is engedélyezi. |
 > | **Azonosító** | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | **Műveletek** |  |
-> | Microsoft.Storage/storageAccounts/listKeys/action | A megadott tárfiók hozzáférési kulcsainak lekérése. |
-> | Microsoft.Storage/storageAccounts/ListAccountSas/action | A fiók SAS-jogkivonatát adja vissza a megadott tárfiókhoz. |
-> | Microsoft.Storage/storageAccounts/read | A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése. |
+> | Microsoft.Storage/storageAccounts/listKeys/action | A megadott tárfiók hozzáférési kulcsainak. |
+> | Microsoft.Storage/storageAccounts/ListAccountSas/action | A megadott tárfiók a fiók SAS-jogkivonatát adja vissza. |
+> | Microsoft.Storage/storageAccounts/read | A storage-fiókok vagy a megadott tárfiók tulajdonságainak beolvasása adja vissza. |
 > | **notActions** |  |
 > | *none* |  |
 > | **DataActions** |  |
@@ -1922,17 +1922,17 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="redis-cache-contributor"></a>Redis gyorsítótárak közreműködője
+## <a name="redis-cache-contributor"></a>Redis gyorsítótárak Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a Redis-gyorsítótárak kezelését, az azokhoz való hozzáférés nélkül. |
+> | **Leírás** | Lehetővé teszi a Redis-gyorsítótárak kezelését, ezekhez nem biztosít hozzáférést. |
 > | **Azonosító** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
 > | Microsoft.Cache/redis/* | Hozzon létre, és a redis Cache gyorsítótárak kezelése |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -1943,11 +1943,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="resource-policy-contributor-preview"></a>Erőforrás-szabályzati közreműködő (előnézet)
+## <a name="resource-policy-contributor-preview"></a>Erőforrás-szabályzati közreműködő (előzetes verzió)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | (Előnézet) Erőforrás-szabályzat létrehozására/módosítására, támogatási jegy létrehozására, valamint erőforrások/hierarchia beolvasására jogosultsággal rendelkező, EA-beli visszatöltött felhasználók. |
+> | **Leírás** | (Előzetes verzió) Erőforrás-szabályzat létrehozására/módosítására jogosultságokkal EA-beli visszatöltött felhasználók hozzon létre támogatási jegyet, és erőforrások/hierarchia beolvasására. |
 > | **Azonosító** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | **Műveletek** |  |
 > | */read | Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat. |
@@ -1963,16 +1963,16 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="scheduler-job-collections-contributor"></a>Scheduler szolgáltatás feladatgyűjteményeinek közreműködője
+## <a name="scheduler-job-collections-contributor"></a>A Scheduler Feladatgyűjteményeinek Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a Scheduler-feladatgyűjtemények kezelését, az azokhoz való hozzáférés nélkül. |
+> | **Leírás** | Lehetővé teszi a Scheduler-feladatgyűjtemények kezelését, ezekhez nem biztosít hozzáférést. |
 > | **Azonosító** | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Scheduler/jobcollections/* | Feladat gyűjtemények létrehozásához és kezeléséhez |
@@ -1984,16 +1984,16 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="search-service-contributor"></a>Search szolgáltatás közreműködője
+## <a name="search-service-contributor"></a>Search szolgáltatás Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a keresési szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. |
+> | **Leírás** | Lehetővé teszi a keresési szolgáltatások kezelését, ezekhez nem biztosít hozzáférést. |
 > | **Azonosító** | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Search/searchServices/* | Keresési szolgáltatások létrehozásához és kezeléséhez |
@@ -2042,7 +2042,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.ClassicCompute/virtualMachines/*/write | A klasszikus virtuális gépek konfigurációjának írása |
 > | Microsoft.ClassicNetwork/*/read | Klasszikus hálózati konfigurációs információkat olvasása |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Security/* | Biztonsági összetevők és a szabályzatok létrehozása és kezelése |
@@ -2096,7 +2096,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a Site Recovery szolgáltatás felügyeletét, kivéve a tárolók létrehozását és a szerepkör-hozzárendelést |
+> | **Leírás** | Lehetővé teszi a Site Recovery szolgáltatást, kivéve a tárolók létrehozását és a szerepkör-hozzárendelés kezelését |
 > | **Azonosító** | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -2121,10 +2121,10 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | A Tártoken művelettel Társzintű Háttérműveletekhez beolvasni a tároló szint háttérbeli műveletek használható. |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | Olvassa el a riasztások a Recovery services-tároló |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
-> | Microsoft.Storage/storageAccounts/read | A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése. |
+> | Microsoft.Storage/storageAccounts/read | A storage-fiókok vagy a megadott tárfiók tulajdonságainak beolvasása adja vissza. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | **notActions** |  |
 > | *none* |  |
@@ -2137,7 +2137,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a feladatátvételt és a feladat-visszavételt, de nem biztosít egyéb Site Recovery-beli felügyeleti műveleteket |
+> | **Leírás** | Lehetővé teszi a feladatátvétel és feladat-visszavétel, de nem biztosít egyéb Site Recovery felügyeleti műveleteket |
 > | **Azonosító** | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -2192,10 +2192,10 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Egy adott Recovery Services-tároló használati adatait adja vissza. |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | A Tártoken művelettel Társzintű Háttérműveletekhez beolvasni a tároló szint háttérbeli műveletek használható. |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
-> | Microsoft.Storage/storageAccounts/read | A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése. |
+> | Microsoft.Storage/storageAccounts/read | A storage-fiókok vagy a megadott tárfiók tulajdonságainak beolvasása adja vissza. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | **notActions** |  |
 > | *none* |  |
@@ -2249,11 +2249,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="spatial-anchors-account-contributor"></a>Spatial Anchors-fiókközreműködő
+## <a name="spatial-anchors-account-contributor"></a>Térbeli horgonyok közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a fiókban található térbeli fixpontok kezelését, de azok törlését nem |
+> | **Leírás** | Lehetővé teszi, hogy térbeli horgonyok kezelése a fiókban, de ne törölje őket |
 > | **Azonosító** | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
 > | **Műveletek** |  |
 > | *none* |  |
@@ -2269,11 +2269,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="spatial-anchors-account-owner"></a>Spatial Anchors-fióktulajdonos
+## <a name="spatial-anchors-account-owner"></a>Térbeli horgonyok fiók tulajdonosa
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a fiókban található térbeli fixpontok kezelését, beleértve azok törlését is |
+> | **Leírás** | Lehetővé teszi a fiókjában, beleértve a törlésük térbeli horgonyok kezelését |
 > | **Azonosító** | 70bbe301-9835-447d-afdd-19eb3167307c |
 > | **Műveletek** |  |
 > | *none* |  |
@@ -2290,11 +2290,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="spatial-anchors-account-reader"></a>Spatial Anchors-fiókolvasó
+## <a name="spatial-anchors-account-reader"></a>Térbeli horgonyok fiók olvasó
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a fiókban található térbeli fixpontok megkeresését és azok tulajdonságainak beolvasását |
+> | **Leírás** | Keresse meg és a fiókban térbeli horgonyok tulajdonságainak olvasása |
 > | **Azonosító** | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
 > | **Műveletek** |  |
 > | *none* |  |
@@ -2308,7 +2308,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="sql-db-contributor"></a>SQL-adatbázisok közreműködője
+## <a name="sql-db-contributor"></a>SQL-Adatbázisok Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2317,7 +2317,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Sql/locations/*/read |  |
@@ -2363,7 +2363,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Leírás** | Lehetővé teszi, hogy az SQL felügyelt példányok kezelése és a szükséges hálózati konfiguráció, de nem adhat hozzáférést másoknak. |
 > | **Azonosító** | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
 > | **Műveletek** |  |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Network/networkSecurityGroups/* |  |
@@ -2388,13 +2388,13 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok biztonsági házirendjeinek felügyeletére az azokhoz való hozzáférés nélkül. |
+> | **Leírás** | Lehetővé teszi az SQL Server-kiszolgálók és adatbázisok, de ezekhez nem biztosít hozzáférést a biztonsági házirendek kezelését. |
 > | **Azonosító** | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el a Microsoft-engedélyezés |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Például a storage-fiók vagy az SQL database erőforrás csatlakozik egy alhálózathoz. Nem alertable. |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/* |  |
@@ -2439,16 +2439,16 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="sql-server-contributor"></a>SQL Server közreműködője
+## <a name="sql-server-contributor"></a>Az SQL Server Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok felügyeletére az azokhoz való hozzáférés nélkül. Az adatbázisok biztonsági házirendjeinek felügyeletét nem teszi lehetővé. |
+> | **Leírás** | Lehetővé teszi, hogy SQL Server-kiszolgálók és adatbázisok kezelése, de nem érhető el, és nem a biztonsági-házirendjeinek. |
 > | **Azonosító** | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Sql/locations/*/read |  |
@@ -2501,7 +2501,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
 > | Microsoft.Insights/diagnosticSettings/* | Diagnosztikai beállítások kezelése |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Például a storage-fiók vagy az SQL database erőforrás csatlakozik egy alhálózathoz. Nem alertable. |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Storage/storageAccounts/* | Tárfiókok létrehozása és kezelése |
@@ -2513,7 +2513,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="storage-account-key-operator-service-role"></a>A tárfiók kulcsának operátora – szolgáltatási szerepkör
+## <a name="storage-account-key-operator-service-role"></a>Tárolási fiók fő operátora – szolgáltatási szerepkör
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2529,11 +2529,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="storage-blob-data-contributor"></a>Storage-blobadatok közreműködője
+## <a name="storage-blob-data-contributor"></a>Storage-Blobadatok Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Olvasási, írási és Azure Storage-tárolók és blobok törlése. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **Leírás** | Olvasási, írási és Azure Storage-tárolók és blobok törlése. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 > | **Azonosító** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | **Műveletek** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Törli a tárolót. |
@@ -2548,11 +2548,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="storage-blob-data-owner"></a>Storage-blobadatok tulajdonosa
+## <a name="storage-blob-data-owner"></a>Tárolási Blob adatok tulajdonosa
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Az Azure Storage-blobtárolók és adatait, beleértve a POSIX hozzáférés-vezérlés hozzárendelése teljes hozzáférést biztosít. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **Leírás** | Az Azure Storage-blobtárolók és adatait, beleértve a POSIX hozzáférés-vezérlés hozzárendelése teljes hozzáférést biztosít. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 > | **Azonosító** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Műveletek** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/* | Tárolók teljes körű engedélyeket. |
@@ -2563,11 +2563,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="storage-blob-data-reader"></a>Storage-blobadatok olvasója
+## <a name="storage-blob-data-reader"></a>Storage Blob Data Reader
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Olvassa el, és az Azure Storage-tárolók és blobok listázása. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **Leírás** | Olvassa el, és az Azure Storage-tárolók és blobok listázása. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 > | **Azonosító** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **Műveletek** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Egy tárolót vagy tárolók listáját adja vissza. |
@@ -2578,11 +2578,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="storage-queue-data-contributor"></a>Storage-üzenetsorbeli adatok közreműködője
+## <a name="storage-queue-data-contributor"></a>Storage-Üzenetsorbeli adatok Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Olvasási, írási és törlési Azure Storage üzenetsorok és üzenetsorbeli üzenetek. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **Leírás** | Olvasási, írási és törlési Azure Storage üzenetsorok és üzenetsorbeli üzenetek. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 > | **Azonosító** | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | **Műveletek** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Üzenetsor törlése. |
@@ -2597,11 +2597,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="storage-queue-data-message-processor"></a>Storage-üzenetsorbeli adatok üzenetfeldolgozója
+## <a name="storage-queue-data-message-processor"></a>Tárolási üzenetsor üzenetet processzor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Belepillantás, lekérése és egy üzenet törlése az Azure Storage üzenetsorába. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **Leírás** | Belepillantás, lekérése és egy üzenet törlése az Azure Storage üzenetsorába. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 > | **Azonosító** | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | **Műveletek** |  |
 > | *none* |  |
@@ -2613,11 +2613,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="storage-queue-data-message-sender"></a>Storage-üzenetsorbeli adatok üzenetküldője
+## <a name="storage-queue-data-message-sender"></a>Tárolási üzenetsor adatok üzenet küldője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Üzenetek hozzáadása az Azure Storage üzenetsorába. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **Leírás** | Üzenetek hozzáadása az Azure Storage üzenetsorába. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 > | **Azonosító** | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | **Műveletek** |  |
 > | *none* |  |
@@ -2628,14 +2628,14 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="storage-queue-data-reader"></a>Storage-üzenetsorbeli adatok olvasója
+## <a name="storage-queue-data-reader"></a>Storage Queue Data Reader
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Olvassa el, és az Azure Storage üzenetsorok és üzenetsorbeli üzenetek listázása. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **Leírás** | Olvassa el, és az Azure Storage üzenetsorok és üzenetsorbeli üzenetek listázása. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 > | **Azonosító** | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Műveletek** |  |
-> | Microsoft.Storage/storageAccounts/queueServices/queues/read | A sort vagy a sorok listáját adja vissza. |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/read | Egy üzenetsor vagy a sorok listáját adja vissza. |
 > | **notActions** |  |
 > | *none* |  |
 > | **DataActions** |  |
@@ -2647,7 +2647,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Támogatási kérések létrehozását és kezelését teszi lehetővé |
+> | **Leírás** | Lehetővé teszi a támogatási kérések létrehozásához és kezeléséhez |
 > | **Azonosító** | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
@@ -2664,13 +2664,13 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi Traffic Manager-profilok kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
+> | **Leírás** | Lehetővé teszi a Traffic Manager-profilok kezelését, de nem teszi lehetővé az azokhoz való hozzáférés szabályozásához. |
 > | **Azonosító** | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
 > | Microsoft.Network/trafficManagerProfiles/* |  |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -2681,11 +2681,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="user-access-administrator"></a>Felhasználói hozzáférés adminisztrátora
+## <a name="user-access-administrator"></a>Felhasználói hozzáférés rendszergazdája
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a Azure-erőforrásokhoz való felhasználói hozzáférés kezelését. |
+> | **Leírás** | Azure-erőforrásokhoz való felhasználói hozzáférés kezelését teszi lehetővé. |
 > | **Azonosító** | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Műveletek** |  |
 > | */read | Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat. |
@@ -2698,11 +2698,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="virtual-machine-administrator-login"></a>Virtuális gépre való rendszergazdai bejelentkezés
+## <a name="virtual-machine-administrator-login"></a>A virtuális gépre való rendszergazdai bejelentkezés
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | A virtuális gépek megtekintése a portálon, és bejelentkezés rendszergazdaként |
+> | **Leírás** | A portálon, és jelentkezzen be rendszergazdai virtuális számítógépek megtekintése |
 > | **Azonosító** | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | **Műveletek** |  |
 > | Microsoft.Network/publicIPAddresses/read | Lekérdezi egy nyilvános IP-cím cím definíciója. |
@@ -2713,16 +2713,16 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **notActions** |  |
 > | *none* |  |
 > | **DataActions** |  |
-> | Microsoft.Compute/virtualMachines/login/action | Bejelentkezés egy virtuális gépre normál felhasználóként |
-> | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Bejelentkezés egy virtuális gépre a Windows rendszergazdai vagy a Linux gyökérszintű felhasználójának jogosultságaival |
+> | Microsoft.Compute/virtualMachines/login/action | Jelentkezzen be egy virtuális gépre normál felhasználóként |
+> | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Jelentkezzen be egy virtuális géphez a Windows rendszergazdai vagy a Linux gyökérszintű felhasználójának jogosultságaival |
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="virtual-machine-contributor"></a>Virtuális gépek közreműködője
+## <a name="virtual-machine-contributor"></a>Virtuális gépek Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a virtuális gépek kezelését, az azokhoz való hozzáférés nélkül, és nem teszi lehetővé a virtuális gépekhez hozzárendelt virtuális hálózatok és tárfiókok elérését sem. |
+> | **Leírás** | Lehetővé teszi virtuális gépek, de nem biztosít hozzáférést, és nem a virtuális hálózat vagy kapcsolódó tárfiók kezelését. |
 > | **Azonosító** | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
@@ -2756,12 +2756,12 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.RecoveryServices/Vaults/read | A tároló Get művelet lekérdezi egy Azure-erőforrásokra "tároló" típusú objektum |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Egy adott Recovery Services-tároló használati adatait adja vissza. |
 > | Microsoft.RecoveryServices/Vaults/write | A tárlétrehozási művelettel vault típusú Azure-erőforrás hozható létre |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.SqlVirtualMachine/* |  |
-> | Microsoft.Storage/storageAccounts/listKeys/action | A megadott tárfiók hozzáférési kulcsainak lekérése. |
-> | Microsoft.Storage/storageAccounts/read | A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése. |
+> | Microsoft.Storage/storageAccounts/listKeys/action | A megadott tárfiók hozzáférési kulcsainak. |
+> | Microsoft.Storage/storageAccounts/read | A storage-fiókok vagy a megadott tárfiók tulajdonságainak beolvasása adja vissza. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | **notActions** |  |
 > | *none* |  |
@@ -2770,11 +2770,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="virtual-machine-user-login"></a>Virtuális gépre való felhasználói bejelentkezés
+## <a name="virtual-machine-user-login"></a>A virtuális gépre való felhasználói bejelentkezés
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | A virtuális gépek megtekintése a portálon, és bejelentkezés hagyományos felhasználóként. |
+> | **Leírás** | A portálon és a felhasználói bejelentkezési nézet a virtuális gépek. |
 > | **Azonosító** | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | **Műveletek** |  |
 > | Microsoft.Network/publicIPAddresses/read | Lekérdezi egy nyilvános IP-cím cím definíciója. |
@@ -2785,20 +2785,20 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **notActions** |  |
 > | *none* |  |
 > | **DataActions** |  |
-> | Microsoft.Compute/virtualMachines/login/action | Bejelentkezés egy virtuális gépre normál felhasználóként |
+> | Microsoft.Compute/virtualMachines/login/action | Jelentkezzen be egy virtuális gépre normál felhasználóként |
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="web-plan-contributor"></a>Webes tarifacsomagok közreműködője
+## <a name="web-plan-contributor"></a>Webes Tarifacsomagok Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a webes tarifacsomagok kezelését, az azokhoz való hozzáférés nélkül. |
+> | **Leírás** | Lehetővé teszi számukra a websites, de nem biztosít hozzáférést a webes tarifacsomagok kezelését. |
 > | **Azonosító** | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -2811,17 +2811,17 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="website-contributor"></a>Webhelyek közreműködője
+## <a name="website-contributor"></a>Webhelyek Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a webhelyek kezelését (a webes tarifacsomagokét azonban nem), az azokhoz való hozzáférés nélkül. |
+> | **Leírás** | Lehetővé teszi a webhelyek (a webes tarifacsomagokét) kezelését, ezekhez nem biztosít hozzáférést. |
 > | **Azonosító** | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
 > | Microsoft.Insights/components/* | Létrehozása és kezelése az Insights-összetevők |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |

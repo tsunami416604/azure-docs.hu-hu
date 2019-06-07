@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 1aba0ab7083c437210166d2d5a2d77e7a657afe9
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: da23b90e44869dcbd21acf9b2c4e04f30153ae09
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474578"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751776"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS teljesítése API 2-es verzió 
 
@@ -107,7 +107,7 @@ A feloldás végpontot lehetővé teszi, hogy a közzétevő számára, hogy old
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |  Egyedi karakterlánc-érték a kérés követési az ügyfélről, lehetőleg egy GUID Azonosítót. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
 |  x-ms-correlationid |  Egyedi karakterlánc értéke a művelethez az ügyfélen. Ez a paraméter utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
-|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beolvasása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 |  x-ms-marketplace-token  |  Az URL-címben, amikor a felhasználó a rendszer átirányítja az SaaS-ISV webhelyet az Azure-ból token lekérdezési paraméter (például: `https://contoso.com/signup?token=..`). *Megjegyzés:* Az URL-cím használat előtt a böngészőből a token érték dekódolása.  |
 
 *Válaszkódot:*
@@ -171,7 +171,7 @@ A közzétevő SaaS-előfizetések listája.
 | Content-Type       |  `application/json`  |
 | x-ms-requestid     |  Egyedi karakterlánc-érték a kérés követési az ügyfélről, lehetőleg egy GUID Azonosítót. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
 | x-ms-correlationid |  Egyedi karakterlánc értéke a művelethez az ügyfélen. Ez a paraméter utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
-| Engedélyezési      |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+| Engedélyezési      |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Válaszkódot:*
 
@@ -198,7 +198,7 @@ A hitelesítési jogkivonat alapján, beszerezheti a közzétevő és a kiadó, 
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation. [Provisioning, Subscribed, Suspended, Unsubscribed]
+          "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
       }
   ],
   "continuationToken": ""
@@ -241,7 +241,7 @@ Lekérdezi a megadott SaaS-előfizetés. Ez a hívás használatával licencelé
 |  Content-Type      |  `application/json`  |
 |  x-ms-requestid    |  Egyedi karakterlánc-érték a kérés követési az ügyfélről, lehetőleg egy GUID Azonosítót. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
 |  x-ms-correlationid |  Egyedi karakterlánc értéke a művelethez az ügyfélen. Ez a paraméter utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
-|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Válaszkódot:*
 
@@ -305,7 +305,7 @@ Ez a hívás segítségével ismerje meg, hogy vannak-e a jelenlegi közzétevő
 |   Content-Type     |  `application/json` |
 |   x-ms-requestid   |   Egyedi karakterlánc-érték a kérés követési az ügyfélről, lehetőleg egy GUID Azonosítót. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
 |  x-ms-correlationid  | Egyedi karakterlánc értéke a művelethez az ügyfélen. Ez a paraméter utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
-|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 
 *Válaszkódot:*
 
@@ -359,7 +359,7 @@ Belső kiszolgálóhiba<br>
 |  Content-Type      | `application/json`  |
 |  x-ms-requestid    | Egyedi karakterlánc-érték a kérés követési az ügyfélről, lehetőleg egy GUID Azonosítót. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
 |  x-ms-correlationid  | Egyedi karakterlánc értéke a művelethez az ügyfélen. Ez a karakterlánc utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
-|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 
 *A kérelem:*
 
@@ -416,7 +416,7 @@ A terv az előfizetés frissítése.
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |   A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
 |  x-ms-correlationid  |  A műveletet az ügyfél egyedi karakterlánc-érték. Ez a paraméter utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.    |
-| Engedélyezési      |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+| Engedélyezési      |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Kérelem hasznos adatai:*
 
@@ -482,7 +482,7 @@ A mennyiség, az előfizetés frissítése.
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |   A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
 |  x-ms-correlationid  |  A műveletet az ügyfél egyedi karakterlánc-érték. Ez a paraméter utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.    |
-| Engedélyezési      |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+| Engedélyezési      |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Kérelem hasznos adatai:*
 
@@ -548,7 +548,7 @@ Előfizetés lemondása, és törölje a megadott előfizetéshez.
 |   Content-Type     |  `application/json` |
 |  x-ms-requestid    |   A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.   |
 |  x-ms-correlationid  |  A műveletet az ügyfél egyedi karakterlánc-érték. Ez a paraméter utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.   |
-|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Válaszkódot:*
 
@@ -601,7 +601,7 @@ A jelenlegi közzétevő a szálankénti függőben lévő műveletek listája.
 |   Content-Type     |  `application/json` |
 |  x-ms-requestid    |  A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
 |  x-ms-correlationid |  A műveletet az ügyfél egyedi karakterlánc-érték. Ez a paraméter utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
-|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Válaszkódot:*
 
@@ -664,7 +664,7 @@ Lehetővé teszi, hogy a megadott aktivált aszinkron művelet állapotának nyo
 |  Content-Type      |  `application/json`   |
 |  x-ms-requestid    |   A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
 |  x-ms-correlationid |  A műveletet az ügyfél egyedi karakterlánc-érték. Ez a paraméter utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
-|  Engedélyezési     |[JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  Engedélyezési     |[JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Válaszkódot:* Kód: 200<br> Függőben lévő SaaS művelet lekérdezi a megadott<br>
 Válasz tartalma:
@@ -727,7 +727,7 @@ A művelet a megadott értékekkel sikeres/sikertelen jelezheti állapotának fr
 |   Content-Type     | `application/json`   |
 |   x-ms-requestid   |   A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
 |  x-ms-correlationid |  A műveletet az ügyfél egyedi karakterlánc-érték. Ez a paraméter utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
-|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  Engedélyezési     |  [JSON webes jogkivonat (JWT) tulajdonosi jogkivonat beszerzése.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Kérelem hasznos adatai:*
 

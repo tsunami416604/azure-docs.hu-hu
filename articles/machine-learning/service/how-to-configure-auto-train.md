@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0f8a56df5b41236256115ced0d46a87c5ee91a5
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: df05bd984667283b0ccc143ba14fff6b35d69144
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400238"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753177"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált Machine Learning-kísérletek konfigurálása a Pythonban
 
@@ -158,7 +158,7 @@ Egyéni ellenőrzési adatkészlet, ha véletlenszerű split nem elfogadható, �
 
 Ezután határozza meg, hol kell betanítani a modellt. Egy automatizált machine learning betanítási kísérlet futtassa a következő számítási lehetőségek:
 *   A helyi gépen, például a helyi számítógépen vagy laptopon – általában amikor rendelkezik kisméretű adatkészlet, és továbbra is a feltárás fázisban.
-*   Egy távoli gépen a felhőben – [Azure Machine Learning-felügyelt számítási](concept-azure-machine-learning-architecture.md#managed-and-unmanaged-compute-targets) egy felügyelt szolgáltatás, amely lehetővé teszi a Azure-beli virtuális gépek fürtjein gépi tanulási modelleket taníthat be.
+*   Egy távoli gépen a felhőben – [Azure Machine Learning-felügyelt számítási](concept-compute-target.md#amlcompute) egy felügyelt szolgáltatás, amely lehetővé teszi a Azure-beli virtuális gépek fürtjein gépi tanulási modelleket taníthat be.
 
 Tekintse meg a [a GitHub-webhelyről](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) például a helyi és távoli notebookok számítási céljainak.
 

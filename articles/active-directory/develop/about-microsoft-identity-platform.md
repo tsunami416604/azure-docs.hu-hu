@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ead81dfec5c98e810abfe4b88accb9aa9092fc90
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 58136aba278097e9778cc1361ed77a4512e3d51b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472720"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751917"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>A Microsoft identitásplatformjának fejlődése
 
@@ -58,7 +58,7 @@ A **Microsoft Graph API-alkalmazás** jelenleg előzetes verzióban érhető el.
 
 ### <a name="msal-libraries"></a>Az MSAL kódtárak
 
-Az MSAL library használatával hozhat létre alkalmazásokat, amelyek az összes Microsoft-identitások hitelesítésére. Általánosan elérhetők az MSAL kódtárak a .NET-ben. A JavaScript, iOS és Android az MSAL kódtárak vannak előzetes verzióban érhető el, és az éles környezetben használhatók. Az azonos termelési szintű támogatást biztosítunk MSAL kódtárak előzetes verzióban érhető el, ahogy azt az MSAL és az adal-t azon verzióit, általánosan elérhető.
+Az MSAL library használatával hozhat létre alkalmazásokat, amelyek az összes Microsoft-identitások hitelesítésére. A .NET és a JavaScript az MSAL kódtárak általánosan elérhetők. Az iOS és Android az MSAL kódtárak vannak előzetes verzióban érhető el, és az éles környezetben használhatók. Az azonos termelési szintű támogatást biztosítunk MSAL kódtárak előzetes verzióban érhető el, ahogy azt az MSAL és az adal-t azon verzióit, általánosan elérhető.
 
 A MSAL kódtárak használatával az alkalmazás integrálása az Azure AD B2C-t.
 

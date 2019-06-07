@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: e3ee5a0aa22d1231dca7d02a77d39e0a2b569314
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62109327"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753843"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure biztonsági és megfelelőségi terv: PaaS Web Application Hosting for UK OFFICIAL Workloads
 
@@ -85,7 +85,7 @@ A következő technológiákat biztosítja identitás az eszközkezelési funkci
 - Keresztül kihasználva [Azure Active Directory feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) ügyfelek kényszerítheti a további biztonsági ellenőrzéseket, alkalmazások vagy felhasználók a környezetükben például hely, eszköz-, állapot és bejelentkezési meghatározott feltételek alapján való hozzáférés a kockázat.
 - [Az Azure DDoS Protection](https://docs.microsoft.com/azure/security/security-paas-deployments#security-advantages-of-a-paas-cloud-service-model) alkalmazás-tervezés – ajánlott eljárások kombinálva, DDoS-támadások, az mindig forgalomfigyelést, és valós idejű csökkenti a hálózati szintű gyakori támadások elleni védelmet biztosít. PaaS architektúrával platform-szintű DDoS protection az átlátható az ügyfél és a platform beépített, de fontos megjegyezni, hogy az alkalmazás biztonsági tervezési felelős az ügyfél rejlik.
 
-#### <a name="data-in-transit"></a>Az átvitt adatok
+#### <a name="data-in-transit"></a>Átvitt adatok
 
 Adatok kívül az átvitel során, és az Azure-összetevők közötti védje [Transport Layer Security/Secure Sockets Layer (TLS/SSL)](https://www.microsoft.com/TrustCenter/Security/Encryption), amely használatával szimmetrikusan titkosítja a közös titkos kulcsot alapján, hogy kommunikáció titkosításához utazás a hálózaton keresztül. Alapértelmezés szerint hálózati forgalom használatával lett biztonságossá téve a TLS 1.2.
 
@@ -145,7 +145,7 @@ Ez a sablon a következő Azure Storage-összetevőket használja:
 - [A Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) 
 - Csak a HTTPS-kapcsolatok engedélyezése
 
-#### <a name="data-at-rest"></a>Inaktív adat
+#### <a name="data-at-rest"></a>Inaktív adatok
 
 Keresztül [a Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) Azure Storage tárterületre írt összes adat titkosítva van segítségével 256 bites AES-titkosítás, az egyik rendelkezésre álló legerősebb blokktitkosító. A Microsoft által felügyelt titkosítási kulcsok SSE technológiával is használhatja, vagy használhatja [saját titkosítási kulcsok](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
 
@@ -191,7 +191,7 @@ Ez a sablon a következő Application Insights-összetevőket használja:
 
 #### <a name="azure-activity-logs"></a>Azure-Tevékenységnaplók
 
-[Azure-tevékenységnapló](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs#what-you-can-do-with-the-activity-log) az előfizetések vezérlősík eseményeket naplózza. A tevékenységnapló használatával megadhatja, hogy a "mit, ki, és mikor" írási műveletek (PUT, POST, DELETE) tett erőforrásokra az előfizetésben. A művelet és az egyéb releváns tulajdonságok állapotát is ismernie is.
+[Azure-tevékenységnapló](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) az előfizetések vezérlősík eseményeket naplózza. A tevékenységnapló használatával megadhatja, hogy a "mit, ki, és mikor" írási műveletek (PUT, POST, DELETE) tett erőforrásokra az előfizetésben. A művelet és az egyéb releváns tulajdonságok állapotát is ismernie is.
 
 #### <a name="azure-monitor"></a>Azure Monitor
 

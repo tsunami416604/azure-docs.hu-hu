@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 7687abf5fc4af0eea9fa6aa210cfd6734cec2b36
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e9f500e3ab965b9dbfc5e395a6572497c85f6f8f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410572"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755131"
 ---
 # <a name="automatically-scale-session-hosts"></a>Munkamenetgazdák automatikus méretezése
 
@@ -26,7 +26,7 @@ A környezetben, ahol a szkript futtatása a következő műveleteket kell rende
 
 - Windows virtuális asztal bérlő és a fiók vagy lekérdezni az adott bérlőn (például a távoli asztali szolgáltatások közreműködő) engedélyekkel egyszerű szolgáltatások.
 - Munkamenet gazdagépre a virtuális gépek készletté konfigurálva, és regisztrálta a Windows virtuális asztal szolgáltatásban.
-- Egy további virtuális gép, amely az ütemezett feladat fut a Feladatütemező keresztül, és munkamenet-gazdagépek hálózati hozzáféréssel rendelkezik. Ez a dokumentum későbbi szakaszában a nyújtaniuk scaler VM, lesz.
+- Egy további virtuális gép, amely az ütemezett feladat fut a Feladatütemező keresztül, és munkamenet-gazdagépek hálózati hozzáféréssel rendelkezik. Ez lesz példányaként a dokumentum későbbi szakaszában scaler virtuális Gépet.
 - A [a Microsoft Azure Resource Manager PowerShell-modul](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) telepítve az ütemezett feladat fut a virtuális gépen.
 - A [Windows virtuális asztal PowerShell-modul](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) telepítve az ütemezett feladat fut a virtuális gépen.
 

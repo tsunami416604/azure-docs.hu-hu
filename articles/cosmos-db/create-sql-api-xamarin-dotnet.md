@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: a17461a90a19d775b8c7cac86d0bc6e9a18856bd
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: e0d439edc35e70bc8ac477cf56a6bc25e41df083
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860885"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754724"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Építhet teendőkezelő alkalmazást az Azure Cosmos DB SQL API-fiók használatával xamarinnal
 
@@ -48,7 +48,7 @@ Mac gépek esetében letöltheti az **ingyenes** [Visual Studio for Mac](https:/
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a>Gyűjtemény hozzáadása
+## <a name="add-a-container"></a>Tároló felvétele
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -184,7 +184,7 @@ Most tekintsük át röviden, hogyan kommunikál az alkalmazás az Azure Cosmos 
     }
     ```
 
-    Itt új URI-ra van szükség a lecserélni kívánt dokumentum egyedi azonosításához. Az URI az `UriFactory.CreateDocumentUri` használatával szerezhető be, majd át kell adni a számára az adatbázis és a gyűjtemény nevét, valamint a dokumentum azonosítóját.
+    Itt új URI lecserélni kívánt dokumentum egyedi azonosításához szükséges használatával szerezhető be és `UriFactory.CreateDocumentUri` és adná azt át, az adatbázis és gyűjtemény nevét és a dokumentum azonosítója.
 
     A `DocumentClient.ReplaceDocumentAsync` a paraméterként meghatározott dokumentumra cseréli le az URI által azonosított dokumentumot.
 
@@ -245,7 +245,7 @@ A következő lépések mutatják be, hogyan futtathatja az alkalmazást a Visua
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan hozhat létre Azure Cosmos DB-fiókot, hogyan hozhat létre gyűjteményt az Adatkezelő segítségével, valamint hogyan hozhat lére és helyezhet üzembe Xamarin-alkalmazásokat. Így már további adatokat importálhat az Azure Cosmos DB-fiókba.
+Ebben a rövid, bemutattuk, hogyan hozhat létre Azure Cosmos-fiókot, hozzon létre egy tárolót az adatkezelő segítségével hozhat létre és Xamarin-alkalmazás üzembe helyezése. További adatok az Azure Cosmos-fiók már importálhat.
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be](import-data.md)

@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 05/22/2019
-ms.openlocfilehash: 7ff8405bba39e274c4f9f0cbacb7c295564c877e
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: ef431754db222554c6543e12e4cb6cf0431f7b51
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303215"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755046"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példány erőforráskorlátok
 
@@ -38,8 +38,8 @@ Az Azure SQL Database felügyelt példány két hardvergenerációk telepíthet�
 | --- | --- | --- |
 | Hardver | Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokkal, SSD virtuális mag csatolt = 1 PP (fizikai mag) | Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorokkal, gyors NVMe SSD, virtuális mag = 1. LP (a hyper-szál) |
 | Virtuális magok | 8, 16, 24 virtuális mag | 8, 16, 24, 32, 40, 64, 80 virtuális magok |
-| Memory (Memória) | 7 GB / virtuális mag | 5.1 GB / virtuális mag |
-| Maximális In-Memory OLTP memória | 3 GB / virtuális mag | 2.6-os GB / virtuális mag |
+| Memória (memória/mag arány) | 7 GB / virtuális mag | 5.1 GB / virtuális mag |
+| Maximális In-Memory OLTP memória | Instance-határérték: 3 GB / virtuális mag<br/>Adatbázis-korlátozások:<br/> – 8 magos: 8GB adatbázisonként<br/> – 16 magos: 20GB / adatbázis<br/> – 24-core: 36GB adatbázisonként | Instance-határérték: 2,5 GB / virtuális mag<br/>Adatbázis-korlátozások:<br/> – 8 magos: 13GB adatbázisonként<br/> – 16 magos: 32GB / adatbázis |
 | Maximális Egypéldányos tárolás (általános célú) |  8 TB | 8 TB |
 | Maximális Egypéldányos tárolás (üzletileg kritikus) | 1 TB | 1 TB-os, 2 TB vagy 4 TB-os attól függően, a magok számát |
 
@@ -50,14 +50,14 @@ Felügyelt példány két szolgáltatási csomagban – általános célú és a
 | **Funkció** | **Általános célú** | **Üzletileg kritikus** |
 | --- | --- | --- |
 | Virtuális magok száma\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
-| Memory (Memória) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB – 408 GB (5.1 GB/virtuális mag) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB – 408 GB (5.1 GB/virtuális mag) |
+| Memória (memória/mag arány) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB – 408 GB (5.1 GB/virtuális mag) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB – 408 GB (5.1 GB/virtuális mag) |
 | Maximális példányméret storage | 8 TB | Gen4: 1 TB <br/> Gen5: <br/>– 1 TB-os 8, 16 virtuális mag<br/>– A 24 virtuális mag 2 TB<br/>– 4 TB-os 32, 40, 64, 80 virtuális magok |
 | Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány | Határozza meg a maximális tárhelyméretet a példány |
 | Egy példány adatbázisok maximális száma | 100 | 100 |
 | Maximális adatbázisfájlok példányonként | Legfeljebb 280 | – 32 767 fájlt adatbázisonként |
 | Adatok/Log/iops-érték (becsült) | 500 – 7500 fájlonként<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K (1375/vCore) |
 | Napló átviteli sebesség | 3 MB/s / virtuális mag<br/>Maximális 22-es MB/s-példányonként | 4 MB/s / virtuális mag<br/>Maximális száma 48 MB/s-példányonként|
-| A fájlmegosztásra (becsült) | 100 - fájlonként 250 MB/s<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | |
+| A fájlmegosztásra (becsült) | 100 - fájlonként 250 MB/s<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | – |
 | IO-késés (becsült) | 5-10 ms | 1-2 ms |
 | Max. tempDB mérete | 192 - 1,920 GB (24 GB / virtuális mag) | Nincsenek megkötések - korlátozza a maximális példányméret |
 | Munkamenetek maximális száma | 30000 | 30000 |

@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: how-to
 ms.date: 05/30/2019
-ms.openlocfilehash: 935d2e1c96705506636c2883113a64bb70c39336
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5cb4caa6f0f8098e68d693be6cc2f33b5ccbeb32
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806191"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752852"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>A Partner Center kereskedelmi Marketplace-fiók kezelése 
 
@@ -279,7 +279,7 @@ Ha azt szeretné, a Partnerközpont hozzáférés biztosítása a vadonatúj Azu
 1.  Az a **felhasználók** lap (alatt **Fiókbeállítások**), jelölje be **adja hozzá az Azure AD-alkalmazások**.
 2.  A következő oldalon válassza ki a **új Azure AD-alkalmazás**.
 3.  Adja meg a **válasz URL-cím** az új Azure AD-alkalmazást. Ez az URL-címet, ahol a felhasználók bejelentkezés és az Azure AD-alkalmazás (más néven az alkalmazás URL-címe vagy bejelentkezési URL-) használja. A **válasz URL-cím** nem lehet hosszabb 256 karakternél, és a címtáron belül egyedinek kell lennie.
-4.  Adja meg a **Alkalmazásazonosító URI-t** az új Azure AD-alkalmazást. Ez az az Azure AD-alkalmazást, amely megjelenik az Azure AD egyszeri bejelentkezési kérelem elküldésekor egy logikai azonosítója. Vegye figyelembe, hogy a **Alkalmazásazonosító URI-t** minden egyes Azure AD-alkalmazást a címtár egyedinek kell lennie. Ez az azonosító nem lehet hosszabb 256 karakternél. Az Alkalmazásazonosító URI kapcsolatos további információkért lásd: [alkalmazások integrálása az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#changing-the-application-registration-to-support-multi-tenant).
+4.  Adja meg a **Alkalmazásazonosító URI-t** az új Azure AD-alkalmazást. Ez az az Azure AD-alkalmazást, amely megjelenik az Azure AD egyszeri bejelentkezési kérelem elküldésekor egy logikai azonosítója. Vegye figyelembe, hogy a **Alkalmazásazonosító URI-t** minden egyes Azure AD-alkalmazást a címtár egyedinek kell lennie. Ez az azonosító nem lehet hosszabb 256 karakternél. Az Alkalmazásazonosító URI kapcsolatos további információkért lásd: [alkalmazások integrálása az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts).
 5.  Az a **szerepkörök** területén adja meg a szerepkört vagy testre szabott engedélyeit az Azure AD-alkalmazás.
 6.  Kattintson a **Mentés** gombra.
 
@@ -313,9 +313,9 @@ Megjegyzés: az Azure Active Directory (AAD) bérlői szerepkörök globális re
 |      |• A Partnerközponthoz tartozó támogatási jegyek létrehozása
 ||• Nézet szerződések, az árlisták és ajánlatok
 ||• Megtekintése, létrehozása és kezelése a partner felhasználók számára|
-|Kezelő|• Hozzáférhet kifizetés és adó beállításokat kivételével az összes Microsoft fiók funkció
+|Manager|• Hozzáférhet kifizetés és adó beállításokat kivételével az összes Microsoft fiók funkció
 |      |• Kezelheti a felhasználók, szerepkörök, és a munkahelyi fiókok (bérlők)|
-|Fejlesztő|• Töltse fel a csomagok, alkalmazások és bővítmények elküldheti, és a telemetriai adatok részletes használati jelentés megtekintése
+|Fejlesztői|• Töltse fel a csomagok, alkalmazások és bővítmények elküldheti, és a telemetriai adatok részletes használati jelentés megtekintése
 |      |• Nem tud hozzáférni a pénzügyi adatok vagy a fiók beállításokat|
 |Üzleti Közreműködője|• Pénzügyi adatok eléréséhez, és állítsa be a szolgáltatás díjszabását.
 |      |• Nem hozhatók létre, és küldje el az új alkalmazások és bővítmények|
@@ -367,7 +367,7 @@ Amikor eltávolít egy bérlő, a bérlőben a Partnerközpont-fiókkal hozzáad
 > A bérlő nem távolítható el, ha a jelenleg bejelentkezett Partnerközpont-fiókkal ugyanabban a bérlőben. Egy bérlő eltávolításához, jelentkezzen be, a partnerközpont- **Manager** , amely társítva van a fiók egy másik bérlőhöz. Ha a fiókjához társított kizárólag egy bérlővel van, a bérlőt csak eltávolítható be a Microsoft-fiókkal, amely a fiók megnyitása a bejelentkezést követően.
 
 
-## <a name="agreements"></a>Szerződések
+## <a name="agreements"></a>Egyezmények
 
 A **szerződések** Partnerközpont szakaszában (alatt **fiókbeállításokat**) tekintse meg a közzétételi szerződések, amely az Ön által engedélyezett listáját. Ezek a szerződések nevét és az ügynökverziókat, valamint a dátum, a rendszer elfogadta és a felhasználót, hogy elfogadja a Szerződés neve szerint jelennek meg. 
 

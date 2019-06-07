@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: cb4ad20067783d8d6bd649710950fea51a22a454
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: c97b974919c5aec4c902867604d207cda11e8594
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979146"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754294"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Egy Java-alkalmazások Azure Cosmos DB SQL API-fiók használatával
 
@@ -26,7 +26,7 @@ ms.locfileid: "65979146"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Ez a rövid útmutató azt mutatja be, hogyan hozhatja létre és kezelheti Java-alkalmazással egy Azure Cosmos DB [SQL API](sql-api-introduction.md)-fiók erőforrásait. Először létrehoz egy Azure Cosmos DB SQL API-fiókot az Azure Portallal, majd létrehoz egy Java-alkalmazást az [SQL Java SDK](sql-api-sdk-async-java.md)-val, végül pedig erőforrásokat ad hozzá a Cosmos DB-fiókhoz a Java-alkalmazással. A rövid útmutatóban lévő utasítások bármilyen, Java-programok futtatására alkalmas operációs rendszeren végrehajthatók. A rövid útmutató lépéseinek követésével megismerkedhet a Cosmos DB-adatbázisok és -gyűjtemények a felhasználói felületen vagy programozás útján történő létrehozásával és módosításával.
+Ez a rövid útmutató azt mutatja be, hogyan hozhatja létre és kezelheti Java-alkalmazással egy Azure Cosmos DB [SQL API](sql-api-introduction.md)-fiók erőforrásait. Először létrehoz egy Azure Cosmos DB SQL API-fiókot az Azure Portallal, majd létrehoz egy Java-alkalmazást az [SQL Java SDK](sql-api-sdk-async-java.md)-val, végül pedig erőforrásokat ad hozzá a Cosmos DB-fiókhoz a Java-alkalmazással. A rövid útmutatóban lévő utasítások bármilyen, Java-programok futtatására alkalmas operációs rendszeren végrehajthatók. Ez a rövid útmutató elvégzése után lesz ismerős létrehozását és módosítását a Cosmos DB-adatbázisok, a felhasználói felületen vagy programozás útján, megismerheti a tárolók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,7 +48,7 @@ A dokumentum-adatbázis létrehozásához először létre kell hoznia egy SQL A
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a>Gyűjtemény hozzáadása
+## <a name="add-a-container"></a>Tároló felvétele
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -75,7 +75,7 @@ Most pedig váltsunk át kódok használatára. Klónozunk egy SQL API-alkalmaz�
 
 Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben folytathatja [Az alkalmazás futtatása](#run-the-app) szakasszal. 
 
-* `AsyncDocumentClient` inicializálás. Az [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) ügyféloldali logikai leképezést biztosít az Azure Cosmos DB adatbázis-szolgáltatáshoz. Ezzel az ügyféllel a szolgáltatásra irányuló kérések konfigurálhatók és hajthatók végre.
+* `AsyncDocumentClient` inicializálás. A [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) az Azure Cosmos database szolgáltatás ügyféloldali logikai leképezést biztosít. Ezzel az ügyféllel a szolgáltatásra irányuló kérések konfigurálhatók és hajthatók végre.
 
     ```java
     client = new AsyncDocumentClient.Builder()
@@ -204,7 +204,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd indítsa 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan hozhat létre Azure Cosmos DB-fiókot, dokumentum-adatbázist és gyűjteményt az Adatkezelő segítségével, valamint hogyan futtathat egy alkalmazást, amely programozottan hajtja végre ugyanezt. Most már további adatokat importálhat az Azure Cosmos DB-gyűjteménybe. 
+Ebben a rövid útmutatóban bemutattuk hogyan hozzon létre egy Azure Cosmos-fiókot, dokumentum-adatbázis és a tároló az adatkezelő segítségével, és futtathat egy alkalmazást, amely programozottan hajtja végre ugyanezt. Már további adatokat importálhat az Azure Cosmos-tárolóba. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be](import-data.md)

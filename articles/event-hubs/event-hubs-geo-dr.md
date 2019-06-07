@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7b3b3b019df70b6c27833afdd0447ecf32da32ff
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: a1dafb8e4c16a59bfed51016ce9ccb0ec3eb7d6c
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305007"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754766"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Az Azure Event Hubs - Geo-vészhelyreállítás 
 
@@ -98,7 +98,7 @@ Vegye figyelembe az alábbi szempontokat figyelembe kell venni ebben a kiadásba
  
 2. Az a tény, hogy az adatok nem replikálódik, az azt jelenti, hogy jelenleg aktív munkamenetek nem lesznek replikálva. Ezenkívül duplikáltelem-észlelési és ütemezett üzenetek előfordulhat, hogy nem működik. Az új munkamenetek, ütemezett üzenetek és új ismétlődések fog működni. 
 
-3. Egy összetett elosztott infrastruktúra feladatátadás kell [kipróbálni](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) legalább egyszer. 
+3. Egy összetett elosztott infrastruktúra feladatátadás kell [kipróbálni](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) legalább egyszer. 
 
 4. Entitások szinkronizálása körülbelül 50-100 entitást percenkénti némi időt is igénybe vehet.
 

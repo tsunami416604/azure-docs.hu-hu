@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 449dbb04d58fe7980c845b8c5bc8d837b643c1be
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 69e51f23980aa1d4225f2e5062470f94e5ca9008
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66386732"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753786"
 ---
 # <a name="azure-service-fabric-security"></a>Az Azure Service Fabric biztonsága 
 
@@ -205,7 +205,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [Azt javasoljuk, hogy végrehajtja-e egy iparági szabványnak megfelelő konfigurációt, amely széles körben ismert és tesztelt, például a biztonsági előírások alapterv létrehozása saját maga helyett](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); ezek a virtuális gép kiépítési beállítás Méretezési csoportokat, hogy Azure Desired State Configuration (DSC) bővítmény kezelő, a virtuális gépek konfigurálni, mivel azok online állapotba kerül, így az üzemi célú szoftverek futnak.
 
 ## <a name="azure-firewall"></a>Azure Firewall
-[Az Azure tűzfal az egy felügyelt, felhőalapú és hálózati biztonsági szolgáltatás, amely védelmet nyújt az Azure Virtual Network-erőforrások. Teljes állapot-nyilvántartó tűzfal beépített magas rendelkezésre állás és méretezhetőség korlátlan felhőalapú szolgáltatásként is. ](https://docs.microsoft.com/azure/firewall/overview); Ez lehetővé teszi a kimenő HTTP-vagy Https forgalmat egy megadott listán szereplő teljes tartománynevek (FQDN) például a helyettesítő karakterek használata korlátozza. Ehhez a szolgáltatáshoz nem szükséges SSL-lezárás. A javasolt, hogy kihasználhatja [Azure tűzfal FQDN címkék](https://docs.microsoft.com/azure/firewall/fqdn-tags) Windows-frissítések, és a Microsoft Windows Update hálózati forgalom engedélyezéséhez végpontjait a tűzfal is áthaladhat. [Üzembe helyezése sablon használatával Azure tűzfal](https://docs.microsoft.com/azure/firewall/deploy-template) Microsoft.Network/azureFirewalls erőforrás Sablondefiníció egy minta biztosít.
+[Az Azure tűzfal az egy felügyelt, felhőalapú és hálózati biztonsági szolgáltatás, amely védelmet nyújt az Azure Virtual Network-erőforrások. Teljes állapot-nyilvántartó tűzfal beépített magas rendelkezésre állás és méretezhetőség korlátlan felhőalapú szolgáltatásként is. ](https://docs.microsoft.com/azure/firewall/overview); Ez lehetővé teszi a kimenő HTTP-vagy Https forgalmat egy megadott listán szereplő teljes tartománynevek (FQDN) például a helyettesítő karakterek használata korlátozza. Ehhez a szolgáltatáshoz nem szükséges SSL-lezárás. A javasolt, hogy kihasználhatja [Azure tűzfal FQDN címkék](https://docs.microsoft.com/azure/firewall/fqdn-tags) Windows-frissítések, és a Microsoft Windows Update hálózati forgalom engedélyezéséhez végpontjait a tűzfal is áthaladhat. [Üzembe helyezése sablon használatával Azure tűzfal](https://docs.microsoft.com/azure/firewall/deploy-template) Microsoft.Network/azureFirewalls erőforrás Sablondefiníció egy minta biztosít. Két, a Service Fabric-alkalmazások közös tűzfalszabályok, hogy lehetővé tegyék a fürt hálózati kommunikálni * jövőben a Microsoft, és a * servicefabric.azure.com; Windows-frissítéseket és a Service Fabric számítási virtuálisgép-bővítmény kód lekérni.
 
 ## <a name="tls-12"></a>A TLS 1.2
 [TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)

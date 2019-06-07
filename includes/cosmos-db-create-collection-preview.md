@@ -8,36 +8,31 @@ ms.topic: include
 ms.date: 11/19/2018
 ms.author: dech
 ms.custom: include file
-ms.openlocfilehash: c3cbfda674abaeea1adf35c3ee0d2b5ddf6b2f84
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 331886f01345aba576cd8f96f95077f9bbdae704
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153756"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754309"
 ---
-Az Azure Portal Adatkezelő eszközét mostantól adatbázis és gyűjtemény létrehozására is használhatja. 
+Hozzon létre egy adatbázist és egy tárolót az Azure Portalon az adatkezelő eszközét mostantól használhatja. 
 
-1. Kattintson az **Adatkezelő** > **Új gyűjtemény** elemre. 
+1. Kattintson a **adatkezelő** > **új tároló**. 
     
-    A jobb szélen megjelenik a **Gyűjtemény hozzáadása** terület. Előfordulhat, hogy jobbra kell görgetnie, hogy lássa.
+    A **tároló hozzáadása** terület jobb szélen megjelenik, előfordulhat, hogy újra kell görgessen jobbra, hogy lássa.
 
-    ![Az Azure Portal Adatkezelő, Gyűjtemény hozzáadása panel](./media/cosmos-db-create-collection/azure-cosmos-db-new-collection-preview.png)
+    ![Az Azure portal adatkezelő, tároló hozzáadása panel](./media/cosmos-db-create-collection/azure-cosmos-db-new-collection-preview.png)
 
-2. A **Gyűjtemény hozzáadása** oldalon adja meg az új gyűjtemény beállításait.
+2. Az a **Hozzáadás tároló** lap, adja meg az új tároló beállításait.
 
-    Beállítás|Ajánlott érték|Leírás
-    ---|---|---
-    Adatbázis azonosítója|*Feladatok*|Az új adatbázisnak adja a *Feladatok* nevet. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat /, \\, #, ? karaktereket vagy záró szóközt.
-    Katalógus azonosítója|*elemek*|Az új gyűjteménynek adja az *Elemek* nevet. A gyűjteményazonosítók nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázisnevekre.
-    Az adatbázis átviteli sebességének kiosztása|Hagyja üresen|Az Azure Cosmos DB oszthatnak ki átviteli kapacitásokat vagy az adatbázis szintjén (az adatbázis összes gyűjtemény megoszthatja az azonos átviteli) vagy a gyűjtemény szintjén. Hagyja üresen kiépítése átviteli sebesség, a gyűjtemény szintjén, adott gyűjteményhez.
-    Tárkapacitás|*Korlátlan*|Válassza ki a Storage kapacitásának **korlátlan**. 
-    Partíciókulcs|*/Category*|Adja meg "/ kategória" értéket partíciókulcsként. A partíciós kulcs beállítása lehetővé teszi, hogy a gyűjtemény igényeinek a tárolási és átviteli sebességet az alkalmazás méretezése az Azure Cosmos DB. Általában a partíciókulcs megfelelő választás, amelyik az egyenletes eloszlás tárolás és a kérés a kötet a számítási feladatok között számos különböző értékeket, és az eredmények szerepel. [További információ a particionálást.](../articles/cosmos-db/partitioning-overview.md)
-    Teljesítmény|*400 Kérelemegység/s*|Módosítsa a teljesítményt másodpercenként 400 kérelemegységre (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében. 
+    |Beállítás|Ajánlott érték|Leírás
+    |---|---|---|
+    |**Adatbázis-azonosító**|Feladatok|Az új adatbázisnak adja a *Feladatok* nevet. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat /, \\, #, ? karaktereket vagy záró szóközt. Ellenőrizze a **kiépítése adatbázis átviteli** lehetőség, lehetővé teszi a különböző az adatbázison belül az összes tárolót az adatbázishoz létesített átviteli sebesség megosztásához. Ezt a lehetőséget is segít a költségek csökkentését. |
+    |**Átviteli sebesség**|400|Hagyja meg az átviteli sebesség 400 kérelemegység / másodperc (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.| 
+    |**Tároló azonosítója**|Elemek|Adja meg *elemek* , az új tároló nevét. A Tárolóazonosítóknak ugyanazok a Karakterkorlátozások vonatkoznak, mint az adatbázis neve van.|
+    |**Partíciókulcs**| /kategória| A cikkben bemutatott példa */category* partíciókulcsként. A partíciós kulcs beállítása lehetővé teszi, hogy a gyűjtemény igényeinek a tárolási és átviteli sebességet az alkalmazás méretezése az Azure Cosmos DB. Általában a partíciókulcs megfelelő választás, amelyik az egyenletes eloszlás tárolás és a kérés a kötet a számítási feladatok között számos különböző értékeket, és az eredmények szerepel. [További információ a particionálást.](../articles/cosmos-db/partitioning-overview.md)|
     
-    Az előző beállításokon túl azt is megteheti, hogy **egyedi kulcsokat** ad a gyűjteményhez. Ebben a példában az erre szolgáló mezőt hagyja üresen. Az egyedi kulcsok lehetőséget nyújtanak a fejlesztők számára, hogy adatintegritási réteget adjanak az adatbázishoz. Ha egy gyűjtemény létrehozása során egyedi kulcsszabályzatot állít fel, azzal gondoskodhat róla, hogy egy vagy több érték egyedi legyen egy partíciókulcson belül. További információt az [Azure Cosmos DB-ben egyedi kulcsaival](../articles/cosmos-db/unique-keys.md) kapcsolatos cikkben talál.
+    Az előző beállításokon túl azt is megteheti **egyedi kulcsok** a tároló. Ebben a példában az erre szolgáló mezőt hagyja üresen. Az egyedi kulcsok lehetőséget nyújtanak a fejlesztők számára, hogy adatintegritási réteget adjanak az adatbázishoz. Tároló létrehozása során egyedi létrehozásával egy vagy több értéket partíció kulcsonként egyediségének biztosítása érdekében. További információt az [Azure Cosmos DB-ben egyedi kulcsaival](../articles/cosmos-db/unique-keys.md) kapcsolatos cikkben talál.
     
-    Kattintson az **OK** gombra.
+    Kattintson az **OK** gombra. Az adatkezelő megjeleníti az új adatbázist és a tároló.
 
-    Az Adatkezelő megjeleníti az új adatbázist és gyűjteményt.
-
-    ![Az Azure Portal Adatkezelője, az új adatbázissal és gyűjteménnyel](./media/cosmos-db-create-collection/azure-cosmos-db-data-explorer-preview.png)

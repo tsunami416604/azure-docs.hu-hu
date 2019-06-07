@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 054aaf6f607bba216f979665a0b0672ec253ba7f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: a815ec4ac97f8476403f773aeedb19ff84092b03
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475980"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752966"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak 
 
@@ -37,18 +37,8 @@ Ebben a cikkben megismerheti, hogyan használható a különböző számítási 
 
 Az Azure Machine Learning szolgáltatás különböző támogatással rendelkezik a különböző számítási célnak között. Egy tipikus modell fejlesztési életciklus kisebb mennyiségű adatot a dev/Kísérletezési kezdődik. Ezen a ponton használatát javasoljuk a helyi környezetben. Például a helyi számítógépen vagy egy felhőalapú virtuális Gépen. Vertikális felskálázás a tanítási a nagyobb adatkészletek, vagy hajtsa végre az elosztott betanítás, egy vagy több node fürtöt létrehozni, hogy az automatikus skálázást alkalmat futtató minden elküldésekor a az Azure Machine Learning Compute használatát javasoljuk. Bár a különböző forgatókönyvekben eltérőek lehetnek az alábbiakban ismertetett támogatási is hozzáadhat a saját számítási erőforrás:
 
+[!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
-|Képzési &nbsp;célok| GPU-támogatással |Automatizált gépi tanulás | Gépi tanulási folyamatok | Vizuális felület
-|----|:----:|:----:|:----:|:----:|
-|[Helyi számítógép](#local)| Talán | igen | &nbsp; | &nbsp; |
-|[Az Azure Machine Learning Compute](#amlcompute)| igen | Igen & <br/>hiperparaméter&nbsp;hangolása | igen | igen |
-|[Távoli virtuális Gépen](#vm) |igen | Igen & <br/>hiperparaméter finomhangolása | igen | &nbsp; |
-|[Azure&nbsp;Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | igen | igen | &nbsp; |
-|[Az Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | igen | &nbsp; |
-|[Az Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | igen | &nbsp; |
-|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | igen | &nbsp; |
-
-**Célok több betanítási feladatokhoz felhasználható számítási**. Például ha csatlakoztat egy távoli virtuális Gépen a munkaterülethez, felhasználhatja azt több feladat esetében.
 
 > [!NOTE]
 > Az Azure Machine Learning Compute létrehozhatják állandó erőforrásként vagy dinamikusan létrehozott, egy Futtatás kérés. Futtatás-alapú létrehozása eltávolítja a számítási célnak, a betanítási Futtatás befejezése után, ezért az ilyen módon létrehozott számítási célnak nem használhat újra.

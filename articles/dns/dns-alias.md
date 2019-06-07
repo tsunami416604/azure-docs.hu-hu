@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 5/13/2019
+ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: b34baa6f1ba91935fc6307dbb1617393786043b9
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.openlocfilehash: ff71eb7d1386226e29b3f0846e0894a553f978e5
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692850"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754232"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Az Azure DNS-alias a rekordok áttekintése
 
@@ -31,7 +31,7 @@ A következő rekordtípusokhoz, az Azure DNS-zóna egy aliast rekordhalmaz tám
 
 - **A DNS A vagy AAAA típusú rekordhalmaz mutasson a nyilvános IP-erőforrást.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource. A DNS-rekordhalmaz automatikusan megtörténik, ha a nyilvános IP-cím megváltozik, vagy törölni. DNS értékhiányos rekordokat, amelyek nem megfelelő IP-címek kerülni a rendszer.
 
-- **A DNS A/AAAA/CNAME-rekordhalmazok átirányítása a Traffic Manager-profil.** You can create an A/AAAA or CNAME record set and use alias records to point it to a Traffic Manager profile. Ez különösen hasznos ha kell irányíthatja a forgalmat a zóna legfelső pontján, mint a hagyományos CNAME-rekordokat a zóna felső pontja nem támogatottak. Tegyük fel például, hogy a Traffic Manager-profil myprofile.trafficmanager.net, és a vállalati DNS-zónát a contoso.com. Hozzon létre egy alias rekordhalmaz írja be A/AAAA contoso.com (a zóna felső pontja), és myprofile.trafficmanager.net mutasson.
+- **A DNS A/AAAA/CNAME-rekordhalmazok átirányítása a Traffic Manager-profil.** You can create an A/AAAA or CNAME record set and use alias records to point it to a Traffic Manager profile. Ez különösen hasznos szolgálatot irányíthatja a forgalmat a zóna legfelső pontján, hagyományos CNAME-rekordokat a zóna felső pontja nem támogatott. Tegyük fel például, hogy a Traffic Manager-profil myprofile.trafficmanager.net, és a vállalati DNS-zónát a contoso.com. Hozzon létre egy alias rekordhalmaz írja be A/AAAA contoso.com (a zóna felső pontja), és myprofile.trafficmanager.net mutasson.
 - **Az Azure Content Delivery Network (CDN) végpontjára mutató**. Ez akkor hasznos, amikor hoz létre az Azure storage és az Azure CDN használatával statikus webhelyek kiszolgálására.
 - **Egy másik DNS rekordhalmaz ugyanabban a zónában lévő mutasson.** Az aliasrekordok hivatkozhatnak más azonos típusú rekordhalmazokra. Például egy DNS CNAME-rekordhalmazt lehet egy alias egy másik CNAME-rekordhalmazt. Ezzel az elrendezéssel fokozott akkor hasznos, ha azt szeretné, hogy néhány rekordhalmazt kell aliasok és az egyes nem alias.
 
@@ -41,11 +41,11 @@ Van néhány olyan gyakori helyzetet Alias rekordokat.
 
 ### <a name="prevent-dangling-dns-records"></a>Értékhiányos DNS-rekordok letiltása
 
-A hagyományos DNS-rekordok egyik általános problémája van értékhiányos rögzíti. Ha például DNS-rekordok változásainak IP-címek nem lettek frissítve. A probléma akkor fordul elő, különösen az A/AAAA vagy CNAME rekordtípusok.
+A hagyományos DNS-rekordok egyik általános problémája van értékhiányos rögzíti. Ha például DNS-rekordok változásainak IP-címek még nem lett frissítve. A probléma akkor fordul elő, különösen az A/AAAA vagy CNAME rekordtípusok.
 
-A hagyományos DNS-zóna rekord ha a cél IP-címet vagy CNAME már nem létezik, a hozzá társított DNS-rekord manuálisan frissíteni kell. Egyes szervezetekben manuális frissítés nem fordulhat elő, a folyamat problémák miatt, vagy a szerepkörök és engedélyszintek társított elkülönítése miatt. Például egy szerepkör előfordulhat, hogy megvan a egy CNAME vagy IP-cím, amelyhez tartozik egy alkalmazás törléséhez. De nem rendelkezik elegendő szolgáltató ezen célok mutató DNS-rekordot frissíteni. Késés tapasztalható a DNS-rekord frissítése a felhasználók számára egy szolgáltatáskimaradás okozhatja esetleg azt.
+A hagyományos DNS-zóna rekord ha a cél IP-címet vagy CNAME már nem létezik, a hozzá társított DNS-rekord manuálisan frissíteni kell. Egyes szervezetekben manuális frissítés nem fordulhat elő, a folyamat problémák miatt idő vagy a szerepkörök és engedélyszintek társított elkülönítése. Például egy szerepkör előfordulhat, hogy megvan a egy CNAME vagy IP-cím, amelyhez tartozik egy alkalmazás törléséhez. De nem rendelkezik elegendő szolgáltató ezen célok mutató DNS-rekordot frissíteni. Késés tapasztalható a DNS-rekord frissítése a felhasználók számára egy szolgáltatáskimaradás okozhatja esetleg azt.
 
-Alias rekordok értékhiányos hivatkozások megakadályozása szorosan kapcsoló egy Azure-erőforrás a DNS-rekord teljes életciklusát. Például érdemes lehet nyilvános IP-cím vagy a Traffic Manager-profil átirányítása egy aliast rekordként minősített DNS-rekord. Ha a rendszer törli a mögöttes erőforrások, a DNS-aliasrekordot a egyszerre törlődik.
+Alias rekordok értékhiányos hivatkozások megakadályozása szorosan kapcsoló egy Azure-erőforrás a DNS-rekord teljes életciklusát. Például érdemes lehet nyilvános IP-cím vagy a Traffic Manager-profil átirányítása egy aliast rekordként minősített DNS-rekord. Ha törli a mögöttes erőforrások, a DNS-aliasrekordot lesz egy üres rekordhalmaz. Már nem a törölt erőforrásra hivatkozik.
 
 ### <a name="update-dns-record-set-automatically-when-application-ip-addresses-change"></a>DNS-rekordkészletet, automatikusan frissíti az alkalmazás IP-címek változásakor
 
@@ -54,9 +54,9 @@ Ez a forgatókönyv hasonlít az előzőre. Például egy alkalmazás áthelyez�
 ### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Elosztott terhelésű alkalmazások üzemeltetését a zóna legfelső pontján
 
 A DNS protokoll megakadályozza, hogy a CNAME-rekordokat a zóna legfelső pontján hozzárendelését. Például ha a tartománya a contoso.com; hozhat létre CNAME-rekordokat a somelable.contoso.com; azonban nem hozhat létre CNAME contoso.com magát.
-Ez a korlátozás problémát jelent, a kérelmek terheléselosztással rendelkező alkalmazástulajdonosok mögött [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Egy CNAME rekord létrehozása a Traffic Manager-profil használatával van szüksége, mivel nincs lehetőség a zóna felső pontja a Traffic Manager-profilt mutassanak.
+Ez a korlátozás problémát jelent, a kérelmek terheléselosztással rendelkező alkalmazástulajdonosok mögött [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Egy CNAME rekord létrehozása a Traffic Manager-profil használatával van szüksége, mivel már nem lehet a zóna felső pontja a Traffic Manager-profilt mutassanak.
 
-Ez a probléma alias rekordok használatával kell megoldani. Ellentétben a CNAME-rekordokat alias-rekord zóna felső pontjánál hozható létre, és alkalmazástulajdonosok használhatja a zóna felső pontja rekord átirányítása egy Traffic Manager-profil, amely rendelkezik a külső végpontokat. Alkalmazástulajdonos más tartományban a DNS-zóna használt azonos Traffic Manager-profilt is mutat.
+Ez zárhatók alias rekordok használatával. Ellentétben a CNAME-rekordokat alias-rekordok jönnek létre a zóna legfelső pontján és alkalmazástulajdonosok szolgál, a zóna felső pontja rekord átirányítása egy Traffic Manager-profil, amely rendelkezik a külső végpontokat. Alkalmazástulajdonos mutasson az azonos Traffic Manager-profilt, amely a DNS-zóna más tartományban szolgál.
 
 Ha például a contoso.com és a www\.contoso.com is mutasson a Traffic Manager-profilt. További információt az Azure Traffic Manager-profilok alias rekordok használatával, tekintse meg a következő lépések szakasz.
 
@@ -66,7 +66,7 @@ Csakúgy, mint a Traffic Manager-profil is használhatja alias rekordokat a DNS-
 
 Például www.contoso.com a statikus webhely neve, a felhasználók számára a webhely használatával nincs szükség a contoso.com DNS-nevének www illesztenie hozzáférhet.
 
-Az előzőekben leírtaknak CNAME-rekordokat nem támogatottak a zóna legfelső pontján. Tehát contoso.com átirányítása a CDN-végpontra egy CNAME rekord nem használható. Ehelyett egy aliasrekordot használatával közvetlenül a zóna felső pontja átirányítása egy CDN-végponthoz.
+Az előzőekben leírtaknak CNAME-rekordokat a zóna legfelső pontján nem támogatottak. Tehát contoso.com átirányítása a CDN-végpontra egy CNAME rekord nem használható. Ehelyett egy aliasrekordot használatával közvetlenül a zóna felső pontja átirányítása egy CDN-végponthoz.
 
 > [!NOTE]
 > Mutasson a zóna felső pontja CDN-végpontok az Azure CDN az Akamaitól jelenleg nem támogatott.

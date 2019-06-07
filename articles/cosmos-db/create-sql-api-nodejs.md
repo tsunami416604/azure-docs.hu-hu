@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: dech
-ms.openlocfilehash: 1927717062b4da7b077e80f36f1498b578c49ad5
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: ec6f676933f5c275c49fa4da1af0e1c3084dab89
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979108"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754575"
 ---
 # <a name="quickstart-build-a-nodejs-app-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Azure Cosmos DB SQL API-fiók használata a Node.js-alkalmazás létrehozása
 
@@ -43,7 +43,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Cosmos DB
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a>Gyűjtemény hozzáadása
+## <a name="add-a-container"></a>Tároló felvétele
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -133,7 +133,7 @@ Az alábbi kódrészletek mind az **app.js** fájlból származnak.
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
 
-1. Az [Azure Portalon](https://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **kulcsok** elemre, majd kattintson az **írási/olvasási kulcsok** lehetőségre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot a `config.js` fájlba.
+1. Az a [az Azure portal](https://portal.azure.com/), az Azure Cosmos-fiókban a bal oldalsávon kattintson **kulcsok**, és kattintson a **írható és olvasható kulcsok**. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot a `config.js` fájlba.
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-sql-api-dotnet/keys.png)
 
@@ -164,7 +164,7 @@ Ezután visszaléphet az Adatkezelőbe, ahol lekérdezheti és módosíthatja az
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gyűjteményt készíteni, és hogyan lehet futtatni az alkalmazást. Most további adatokat importálhat a Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban bemutattuk hogyan hozzon létre egy Azure Cosmos-fiókot, hozzon létre egy tárolót az adatkezelő segítségével, és futtathat egy alkalmazást. Így már további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be](import-data.md)

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: BrianLevenson
-ms.openlocfilehash: 881d62cd7b7b9d4434a807a2aab62b75e9a8e97b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 5e20d65160e66937668d9f504245a8c042d58fee
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937778"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751654"
 ---
 # <a name="azure-marketplace-and-appsource-roadmap"></a>Az Azure Marketplace és az AppSource ütemterve
 
@@ -21,12 +21,15 @@ Ez a dokumentum mit tartogat a jövő az Azure Marketplace, az appsource-ban és
 
 Örömmel vesszük javaslatait! Beszélgetésbe a [Microsoft Partnerközösségéhez](https://www.microsoftpartnercommunity.com/) a legújabb frissítéseinek új funkciókat, programok és események.
 
+
 ## <a name="roadmap"></a>Ütemterv
 ![](./media/marketplace-publishers-guide/roadmap.png)
+
 
 ## <a name="recent-releases"></a>Verziók
 
 Ha egy olyan képességet, azt törlődni fog az ütemterv részét képezi. Funkció, amely hozzá van adva a piactéren az alábbiakat foglalja magában.
+
 
 ### <a name="for-march-2019"></a>A március 2019
 
@@ -34,12 +37,11 @@ Ha egy olyan képességet, azt törlődni fog az ütemterv részét képezi. Fun
 * [CSP csatornákhoz (ISV) ajánlatok közzététele](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)
 * [Már viszonteladóként is értékesítheti a Piactéri ajánlatok elérhetőségének (CSP)](https://docs.microsoft.com/partner-center/sell-marketplace-products)
 * [Standard szerződés](https://docs.microsoft.com/azure/marketplace/standard-contract)
-* [SaaS-teljesítési API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis)
+* [SaaS-teljesítési API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-apis)
 * [Marketplace-en helyeken és pénznemek](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)
 * [Értékesítői Insights](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
+
 
 ## <a name="next-steps"></a>További lépések
 
 Látogasson el a [Azure Marketplace és AppSource útmutató Közzétevőknek](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) lapot.
-
----

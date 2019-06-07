@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 5f0e7feb52b34a4bd29bef01925bf9ea8f84d7db
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bca7c1b9ffe7ac0ab82f4287bba201a78fbf726a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024786"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755082"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Az Azure Search szolgáltatással az Azure Table storage indexelése
 Ez a cikk bemutatja, hogyan használhatja az Azure Search index, az Azure Table storage-ban tárolt adatok.
@@ -114,6 +114,8 @@ Az index és az adatforrás létrehozása után készen áll az indexelő létre
 Az indexelő futása kétóránként. (Az ütemezési időköz értéke "PT2H".) Az indexelők futtatásához a 30 percenként, a "PT30M" időközt beállítani. A legrövidebb támogatott időköz öt perc alatt. Nem kötelező megadni. az ütemezés Ha nincs megadva, az indexelők futtatja, csak ha a létrehozást követően. Ugyanakkor igény szerint bármikor az indexelő is futtathatja.   
 
 Indexelő létrehozása API további információkért lásd: [indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+
+További információk az indexelő ütemezés definiálása: [az Azure Search indexelők ütemezése](search-howto-schedule-indexers.md).
 
 ## <a name="deal-with-different-field-names"></a>Különböző mezőnevek kezelése
 Egyes esetekben a meglévő index a mezőnevek eltérnek a tulajdonságneveket a táblában. Mezőleképezések használhatja a mezők nevét a táblázatból tulajdonságneveket leképezni a keresési index. További információ a mezőmegfeleltetésről, lásd: [Azure Search-indexelő Mezőleképezések áthidalhatók az adatforrások és a keresési indexek közötti különbségekről](search-indexer-field-mappings.md).

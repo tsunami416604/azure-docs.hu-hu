@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bb06d04aec8e98308c0f5595b6b39e4b98302ff
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: f369f899d4a383205ad124e4fcd8dabf9f92f63f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480060"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753192"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -27,7 +27,7 @@ Ismerje meg az architektúra, fogalmak és a munkafolyamat az Azure Machine Lear
 
 A machine learning munkafolyamat általában ez a sorozat a következőképpen:
 
-1. Fejlesztés a gépi tanulási parancsfájlok képzési **Python**.
+1. Fejlesztés a gépi tanulási parancsfájlok képzési **Python** vagy vizuális felhasználói felülettel.
 1. Létrehozhat és konfigurálhat egy **számítási célt**.
 1. **Küldje el a parancsfájlok** a konfigurált számítási célnak az adott környezetben való futtatásához. Során képzés, a parancsfájlok olvasni vagy írni **adattárolója**. Végrehajtás a rekordokat a rendszer menti és **fut** a a **munkaterület** és szerint csoportosított **kísérletek**.
 1. **A kísérlet lekérdezése** a naplózott mérőszámok az aktuális és korábbi fut a. A metrikák nem szükséges teljesítendő jelzik, ha 1. lépés, és a parancsfájlok iterálása ikonjához.
@@ -107,34 +107,7 @@ A Python SDK API-t vagy az Azure Machine Learning parancssori felület használa
 
 ## <a name="compute-target"></a>Számítási célt
 
-Egy számítási célnak, hogy az a tanítási szkriptet futtatni, vagy a szolgáltatás üzembe helyezésének üzemeltetéséhez használt számítási erőforrás. A támogatott számítási célnak a következők:
-
-| Számítási célt | Képzés | Környezet |
-| ---- |:----:|:----:|
-| A helyi számítógépen | ✓ | &nbsp; |
-| Az Azure Machine Learning compute | ✓ | &nbsp; |
-| Linux rendszerű virtuális gép az Azure-ban</br>(például a Data Science virtuális gép) | ✓ | &nbsp; |
-| Azure Databricks | ✓ | &nbsp; |
-| Azure Data Lake Analytics | ✓ | &nbsp; |
-| Az Apache Spark for HDInsight | ✓ | &nbsp; |
-| Azure Container Instances | &nbsp; | ✓ |
-| Azure Kubernetes Service | &nbsp; | ✓ |
-| Azure IoT Edge | &nbsp; | ✓ |
-| A mező-programmable gate array (FPGA) | &nbsp; | ✓ |
-
-Számítási célnak csatolt munkaterület. Számítási, a munkaterület felhasználók által megosztott célok nem a helyi gépen.
-
-### <a name="managed-and-unmanaged-compute-targets"></a>Felügyelt és nem felügyelt számítási célnak
-
-* **Felügyelt**: Tárolók létrehozása és felügyelete az Azure Machine Learning szolgáltatás számítási. Ezek a számítási célok machine learning feladatokra lettek optimalizálva. Az Azure Machine Learning compute az egyetlen felügyelt számítási célnak 2018. December 4. A jövőben további felügyelt számítási célnak vehetők fel.
-
-    Létrehozhatja a machine learning számítási példányok a munkaterület segítségével közvetlenül az Azure Portalon, az Azure Machine Learning-SDK vagy az Azure CLI használatával. Minden egyéb számítási célnak a munkaterület alkalmazáson kívül létrehozott legyen, és ezután csatlakozik.
-
-* **Nem felügyelt**: Számítási célnak, amelyek *nem* Azure Machine Learning szolgáltatás kezeli. Szüksége lehet kívül az Azure Machine Learning létrehozása őket, és csatolja őket a munkaterület használata előtt. Nem felügyelt számítási célnak karbantartásához, illetve a machine learning számítási feladatokhoz a teljesítmény javítása szükséges további lépéseket is szükséges.
-
-Egy számítási célnak képzéshez kiválasztásával kapcsolatos információkért lásd: [kiválasztása és használata egy számítási célnak a modell betanításához](how-to-set-up-training-targets.md).
-
-Központi telepítés egy számítási célnak kiválasztásával kapcsolatos információkért lásd: a [modellek Azure Machine Learning szolgáltatás üzembe helyezése](how-to-deploy-and-where.md).
+A [számítási célt](concept-compute-target.md) lehetővé teszi, hogy adja meg, amelyen futtatja a tanítási szkriptet vagy a gazdagép helyezheti üzembe számítási erőforrásokat. Ezen a helyen a helyi számítógépre vagy egy olyan felhőalapú számítási erőforrásra lehet. Számítási célnak megkönnyítik a számítási környezetben módosítsa a kód módosítása nélkül. 
 
 ## <a name="training-script"></a>Tanítási szkriptet
 

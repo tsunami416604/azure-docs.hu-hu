@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/06/2019
 ms.author: twhitney
-ms.openlocfilehash: 5f727cb5c56c31e769edcb365f6d571253174567
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: cdcc1b985c570d1af4bbb33ac29a37e63b1dfa90
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305301"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752387"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Előzetes verzió – hozzon létre egy Windows Server-tárolót az Azure Kubernetes Service (AKS)-fürtön az Azure CLI használatával
 
@@ -86,7 +86,6 @@ Bár ez a funkció előzetes verzióban érhető el, a következő további korl
 * Az AKS-fürtöt egy legfeljebb nyolc csomópontkészletek rendelkezhet.
 * Az AKS-fürt legfeljebb 400 csomópontok között nyolc csomópont készletekben.
 * A Windows Server-csomópont készlet nevének maximális hossza 6 karakter rendelkezik.
-* A Windows Server csomópontkészletek nem érhetők az Kanada régióban jelenleg.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: f873f20f97b822e1f4dee716cb69535b0522dc2c
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6b5f0e96b90ee0515c0a86f41c6ee2161d6c54a6
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866523"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752713"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkciók és eszközök az Azure Cloud Shell
 
@@ -72,7 +72,7 @@ A cloud Shell nyílt forráskódú eszközök, például a Terraform, az Ansible
 |Category   |Name (Név)   |
 |---|---|
 |Linux rendszerű eszközök            |A bash<br> zsh<br> SH<br> tmux<br> tájékozódjon<br>               |
-|Azure-eszközök            |[Az Azure CLI](https://github.com/Azure/azure-cli) és [Azure klasszikus parancssori felület](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Azure-eszközök            |[Az Azure CLI](https://github.com/Azure/azure-cli) és [Azure klasszikus parancssori felület](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |Szövegszerkesztő           |kód (a Cloud Shell-szerkesztőben)<br> vim<br> a nano<br> emacs    |
 |Verziókövetés         |git                    |
 |Eszközök létrehozása            |Győződjön meg arról<br> maven<br> npm<br> a pip         |

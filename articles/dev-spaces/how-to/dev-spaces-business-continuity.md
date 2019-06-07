@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
 manager: jeconnoc
-ms.openlocfilehash: 7b463be143ed3f89c1b10424dafc7a0e841ecbfc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69f5bdd80e4cf10db6a530ddfa08a1f26cd42ca0
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686965"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754413"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Üzleti folytonosság és vészhelyreállítás helyreállítási Azure fejlesztési tárolóhelyek
 
@@ -27,7 +27,7 @@ Az Azure fejlesztési tárolóhelyek funkciója az Azure Kubernetes Service (AKS
 
 Az AKS-fürtök különböző régiókban lévő fejlesztői, szóközök engedélyezése lehetővé teszi, hogy fejlesztési tárolóhelyek használatával egy Azure-régióban hiba után azonnal folytathatja.
 
-Többrégiós üzemelő példányainak AKS kapcsolatos általános információkért lásd: [többrégiós üzembe helyezés tervezése](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multi-region-deployment)
+Többrégiós üzemelő példányainak AKS kapcsolatos általános információkért lásd: [többrégiós üzembe helyezés tervezése](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
 AKS-fürt kompatibilis az Azure fejlesztési tárolóhelyek központi telepítésével kapcsolatos információkért lásd: [Azure Cloud Shellt használja a Kubernetes-fürt létrehozása](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
 

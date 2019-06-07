@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/20/2019
-ms.openlocfilehash: 432ddf6e0fea0d6de3c24dc853502dca303ce693
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 06/06/2019
+ms.openlocfilehash: e39440a46228d82b0722f7d9d349d11fb2417b42
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954555"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754598"
 ---
 # <a name="quickstart-build-a-net-web-app-using-sql-api-account-in-azure-cosmos-db"></a>Gyors útmutató: Egy .NET-webalkalmazás létrehozása az Azure Cosmos DB SQL API-fiók használatával
 
@@ -52,33 +52,32 @@ Egy Azure-előfizetés vagy az Azure Cosmos DB ingyenes próbaverziós fiókját
 
 Az Azure Portalon az adatkezelő segítségével hozzon létre egy adatbázist és gyűjteményt. 
 
-1.  Válassza ki **adatkezelő** a bal oldali navigációs az Azure Cosmos DB-fiók oldalon, és válassza ki **új gyűjtemény**. 
+1.  Válassza ki **adatkezelő** a bal oldali navigációs az Azure Cosmos DB-fiók oldalon, és válassza ki **új tároló**. 
     
-    Szükség lehet görgessen jobbra, tekintse meg a **gyűjtemény hozzáadása** területen.
+    Szükség lehet görgessen jobbra, tekintse meg a **tároló hozzáadása** ablak.
     
     ![Az Azure portal adatkezelő, gyűjtemény hozzáadása panel](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
-1.  A **Gyűjtemény hozzáadása** oldalon adja meg az új gyűjtemény beállításait.
+1.  Az a **Hozzáadás tároló** panelen adja meg az új gyűjtemény beállításait.
     
     |Beállítás|Ajánlott érték|Leírás
     |---|---|---|
-    |**Adatbázis-azonosító**|Teendők|Adja meg *ToDoList* az új adatbázis számára. Adatbázis neve 1 és 255 karakter között kell tartalmaznia, és nem tartalmazhat `/, \\, #, ?`, vagy záró szóközt.|
-    |**Gyűjtemény azonosítója**|Elemek|Az új gyűjteménynek adja az *Elemek* nevet. A gyűjteményazonosítók ugyanazok a Karakterkorlátozások vonatkoznak, mint az adatbázis neve.|
-    |**Partíciókulcs**| /kategória| A cikkben bemutatott példa */category* partíciókulcsként.|
+    |**Adatbázis-azonosító**|Teendők|Adja meg *ToDoList* az új adatbázis számára. Adatbázis neve 1 és 255 karakter között kell tartalmaznia, és nem tartalmazhat `/, \\, #, ?`, vagy záró szóközt. Ellenőrizze a **kiépítése adatbázis átviteli** lehetőség, lehetővé teszi a különböző az adatbázison belül az összes tárolót az adatbázishoz létesített átviteli sebesség megosztásához. Ezt a lehetőséget is segít a költségek csökkentését. |
     |**Átviteli sebesség**|400|Hagyja meg az átviteli sebesség 400 kérelemegység / másodperc (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.| 
+    |**Tároló azonosítója**|Elemek|Az új gyűjteménynek adja az *Elemek* nevet. A gyűjteményazonosítók ugyanazok a Karakterkorlátozások vonatkoznak, mint az adatbázis neve.|
+    |**Partíciókulcs**| /kategória| A cikkben bemutatott példa */category* partíciókulcsként.|
+
     
     Ne adjon **egyedi kulcsok** ebben a példában. Egyedi kulcsok segítségével adhat hozzá egy adatintegritási réteget az adatbázis úgy, hogy egy vagy több értéket partíció kulcsonként egyediségét. További információkért lásd: [Azure Cosmos DB-ben egyedi kulcsaival](unique-keys.md).
     
-1.  Kattintson az **OK** gombra. 
-    Az Adatkezelő megjeleníti az új adatbázist és gyűjteményt.
+1.  Kattintson az **OK** gombra. Az adatkezelő megjeleníti az új adatbázist és a létrehozott tárolót.
     
-    ![Az Azure Portal Adatkezelője, az új adatbázissal és gyűjteménnyel](./media/create-sql-api-dotnet/azure-cosmos-db-new-collection.png)
 
 ## <a name="add-data-to-your-database"></a>Adatok hozzáadása az adatbázishoz
 
 Adja hozzá az új adatbázis az adatkezelő segítségével adatokat.
 
-1. A **adatkezelő**, megjelenik az új adatbázis a **gyűjtemények** ablaktáblán. Bontsa ki a **ToDoList** adatbázist, majd a **elemek** gyűjtemény, jelölje be **dokumentumok**, majd válassza ki **új dokumentum**. 
+1. A **adatkezelő**, bontsa ki a **ToDoList** adatbázisából, és bontsa ki a **elemek** tároló. Majd **elemek**, majd válassza ki **új elem**. 
    
    ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
@@ -108,7 +107,7 @@ Adja hozzá az új adatbázis az adatkezelő segítségével adatokat.
 
 Nézze meg, milyen egyszerű az Azure Cosmos DB adatokkal programozott módon dolgozni, klónozza a minta SQL API .NET webes alkalmazást a Githubról, frissítse a kapcsolati karakterláncot, és futtassa az alkalmazást, az adatok frissítéséhez. 
 
-Is létrehozhat az adatbázist és gyűjteményt a .NET mintakód segítségével. További tudnivalókért lásd: [tekintse át a .NET-kód](#review-the-net-code).
+Is létrehozhat az adatbázis és a tároló a .NET mintakód segítségével. További tudnivalókért lásd: [tekintse át a .NET-kód](#review-the-net-code).
 
 ### <a name="clone-the-sample-app"></a>A mintaalkalmazás klónozása
 
@@ -148,7 +147,7 @@ Első lépésben klónozza a C# [SQL API-alkalmazás](https://github.com/Azure-S
       `<add key="authKey" value="19ZDNJAiYL26tmnRvoez6hmtIfBGwjun50PWRjNYMC2ig8Ob9hYk7Fq1RYSv8FcIYnh1TdBISvCh7s6yyb0000==" />`
 
        
-1. Ellenőrizze, hogy az adatbázis és gyűjtemény értékeit a *web.config* felel meg a korábban létrehozott nevét. 
+1. Győződjön meg arról, hogy az adatbázis és gyűjtemény (más néven tároló) értékek a *web.config* felel meg a korábban létrehozott nevét. 
 
    ```csharp
    <add key="database" value="ToDoList"/>
@@ -163,7 +162,7 @@ Első lépésben klónozza a C# [SQL API-alkalmazás](https://github.com/Azure-S
 
 1. A NuGet **Tallózás** mezőjébe írja be a *DocumentDB* szöveget.
 
-1. Az eredmények közül telepítse a **Microsoft.Azure.DocumentDB** könyvtár, ha még nem telepítette. Ez telepíti a [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) csomagot és annak összes függőségét.
+1. Az eredmények közül telepítse a **2.2.3 verzió** , **Microsoft.Azure.DocumentDB** könyvtár, ha még nem telepítette. Ez telepíti a [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) csomagot és annak összes függőségét.
    
    Ha a NuGet-Csomagkezelőt, hogy egyes csomagok hiányoznak a megoldásból üzenetet jelenít meg, válassza ki a **visszaállítása** hogy telepítse őket a belső forrásból. 
 
@@ -177,7 +176,7 @@ Léphet vissza az Adatkezelőbe az Azure Portalon megtekintheti, lekérdezheti, 
 
 ## <a name="review-the-net-code"></a>Tekintse át a .NET-kód
 
-Ez a lépés nem kötelező. Ebben a rövid útmutatóban egy adatbázis és gyűjtemény létrehozása az Azure Portalon, és mintaadatok hozzáadása a .NET-minta használatával. Azonban Ön is létrehozhat az adatbázis és a gyűjtemény a .NET-minta használatával. Tekintse át az alábbi kódrészletek, ha érdeklődne az adatbázis-erőforrások létrehozását a kódban. A kódrészletek a rendszer az összes átveszi a *DocumentDBRepository.cs* fájlt a **todo** projekt.
+Ez a lépés nem kötelező. Ebben a rövid útmutatóban létrehozott egy adatbázist és egy tárolót az Azure Portalon, és mintaadatok hozzáadása a .NET-minta használatával. Azonban Ön is létrehozhat az adatbázis és a tároló a .NET-minta használatával. Tekintse át az alábbi kódrészletek, ha érdeklődne az adatbázis-erőforrások létrehozását a kódban. A kódrészletek a rendszer az összes átveszi a *DocumentDBRepository.cs* fájlt a **todo** projekt.
 
 * Ez a kód inicializálja a `DocumentClient`: 
 
@@ -230,7 +229,7 @@ Ez a lépés nem kötelező. Ebben a rövid útmutatóban egy adatbázis és gy�
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a gyors útmutatóból megtudhatta, hogyan hozzon létre egy Azure Cosmos DB-fiókot, hozzon létre egy adatbázist és gyűjteményt az adatkezelő segítségével és az adatok frissítése a .NET-webalkalmazás futtatása. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
+Ebből a gyors útmutatóból megtudhatta, hogyan hozzon létre egy Azure Cosmos DB-fiókot, hozzon létre egy adatbázist és egy tárolót az adatkezelő segítségével és az adatok frissítése a .NET-webalkalmazás futtatása. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be](import-data.md)

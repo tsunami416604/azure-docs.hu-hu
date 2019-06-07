@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/30/2019
-ms.openlocfilehash: 0e3a35c2ceed5f3bb08b2d332f05bbaf416c94b2
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 4ce3ca31163c286f54b9630e5d4779e2e47a032f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743245"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754583"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Kimenő hálózati adatforgalmat tűzfal (előzetes verzió) használata Azure HDInsight-fürtök konfigurálása
 
@@ -162,7 +162,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 Az Azure-tűzfal integrálása az Azure Monitor naplóira akkor hasznos, ha először első egy alkalmazás használata, ha Ön nem ismeri az összes alkalmazás függőségeit. További információ az Azure Monitor naplóinak [naplóadatok elemzése az Azure monitorban](../azure-monitor/log-query/log-query-overview.md)
 
 ## <a name="access-to-the-cluster"></a>Hozzáférés a fürthöz
-Után sikeresen fel a tűzfal beállításának, használhatja a belső végpont (https://<clustername>-int.azurehdinsight.net) eléréséhez az Ambari, a virtuális hálózaton belül. A nyilvános végpont használata (https://<clustername>. azurehdinsight.net) vagy ssh végpont (<clustername>-ssh.azurehdinsight.net), ellenőrizze, hogy rendelkezik a megfelelő útvonalak az útvonaltáblában lévő és NSG-szabályok beállítása a probléma elkerülése érdekében asymetric útválasztási kifejtett [Itt](https://docs.microsoft.com/azure/firewall/integrate-lb).
+Után sikeresen fel a tűzfal beállításának, használhatja a belső végpont (`https://<clustername>-int.azurehdinsight.net`) eléréséhez az Ambari, a virtuális hálózaton belül. A nyilvános végpont használata (`https://<clustername>.azurehdinsight.net`) vagy ssh végpont (`<clustername>-ssh.azurehdinsight.net`), ellenőrizze, hogy rendelkezik a megfelelő útvonalak az útvonaltáblában lévő és NSG-szabályok beállítása a kifejtett asymetric útválasztási probléma elkerülése érdekében [Itt](https://docs.microsoft.com/azure/firewall/integrate-lb).
 
 ## <a name="configure-another-network-virtual-appliance"></a>Egy másik virtuális hálózati berendezések konfigurálása
 

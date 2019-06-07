@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2019
+ms.date: 06/06/2019
 ms.author: roiyz
-ms.openlocfilehash: 538eb492829c8ad171d1d27b51405725f53f352a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b24af016349db0fcfb4106a1e69da395e3d0150
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743596"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755154"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Az Azure Monitor virtuálisgép-bővítmény linuxhoz
 
@@ -53,11 +53,27 @@ A Log Analytics-ügynök bővítményt a Linux-disztribúciók is futtatni.
 >OpenSSL-verzió kisebb 1.x bármilyen platformon nem támogatott, és csak támogatott verzió 1.10 x86_64 platformok (64 bites).  
 >
 
+### <a name="agent-prerequisites"></a>Ügyfélügynök előfeltételei
+
+Az alábbi táblázat a támogatott Linux-disztribúciók, amely az agent telepítve lesz a szükséges csomagokat emeli ki.
+
+|Szükséges csomag |Leírás |Minimális verziója |
+|-----------------|------------|----------------|
+|Glibc |    GNU C-kódtár | 2.5-12 
+|openssl    | OpenSSL-függvénytárak | 1.0.x verziót vagy 1.1.x |
+|A curl | a cURL webes ügyféllel | 7.15.5 |
+|Python-ctypes | | 
+|PAM | Cserélhető hitelesítési modulok | | 
+
+>[!NOTE]
+>Rsyslog vagy syslog-ng köteles beszedni syslog-üzeneteket. Red Hat Enterprise Linux, CentOS és Oracle Linux-verzió (sysklog) 5-ös verzióját az alapértelmezett syslog démon nem támogatott a syslog-események gyűjtése. A syslog-adatok gyűjtésére ezek disztribúciók ezen verziója, az rsyslog démonnal kell telepíteni és konfigurálni sysklog helyett.
+
 ### <a name="agent-and-vm-extension-version"></a>Az ügynök és a Virtuálisgép-bővítmény verziója
 Az alábbi táblázat tartalmazza az Azure Monitor Virtuálisgép-bővítmény és a Log Analytics ügynök csomag minden kiadott verziójáról. A Log Analytics csomag verziója kibocsátási megjegyzései mutató hivatkozás megtalálható. Kibocsátási megjegyzések a hibajavítások és a egy adott ügynök kiadásban elérhető új szolgáltatások közé tartozik.  
 
 | Az Azure Monitor Linux rendszerű virtuális gép bővítmény verziója | Log Analytics-ügynököket csomag verziója | 
 |--------------------------------|--------------------------|
+|1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
 | 1.8.0-as | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 

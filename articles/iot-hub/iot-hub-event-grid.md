@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: f08845dbf4168627d0198e81d2092a1fe56c6c89
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 73a9aebfd0c5338f63927860ce3f6c57b20428a4
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733869"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754776"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub-események reagálnak a műveletek indítása Event Grid használatával
 
@@ -25,7 +25,7 @@ Az Azure IoT Hub integrálható az Azure Event Griddel, hogy eseményértesíté
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Az Event Grid-integrációt a régiókban, ahol az Event Grid támogatott található IoT-központok érhető el. Eszköz telemetriai események kivételével minden eszköz események általánosan elérhetők. Eszköz telemetriai esemény nyilvános előzetes verzióban érhető el, és érhető el minden régióban, kivéve az USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Nyugat-Európa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china/china-welcome), és [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/). Régiók legfrissebb listáját lásd: [Azure Event Grid bemutatása](../event-grid/overview.md).
+Az Event Grid-integrációt a régiókban, ahol az Event Grid támogatott található IoT-központok érhető el. Eszköz telemetriai események kivételével minden eszköz események általánosan elérhetők. Eszköz telemetriai esemény nyilvános előzetes verzióban érhető el, és érhető el minden régióban, kivéve az USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Nyugat-Európa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china), és [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/). Régiók legfrissebb listáját lásd: [Azure Event Grid bemutatása](../event-grid/overview.md).
 
 ## <a name="event-types"></a>Eseménytípusok
 

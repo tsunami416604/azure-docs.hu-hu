@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9a592533a92ec724c9a332bef5fdfcf385cb7b2c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730684"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754535"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -59,10 +59,10 @@ A következő API-kat kell módosítani vagy elavult:
 - [**GET /configurations/ {configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (bizalmas adatok eltávolításával)
     - Korábban már használt egyedi konfigurációs típusok (beleértve a titkos kulcsok) beszerzése.
     - Titkos kulcsok nincs megadva az API-hívás egyedi konfigurációs típusok most adja vissza. Az összes beállításokat, beleértve a titkos kulcsokat, beszerzéséhez használja az új bejegyzés /configurations hívás. Csak az átjáró beállításainak beszerzéséhez használja az új bejegyzés /getGatewaySettings hívás.
-- [**GET /configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configurations) (deprecated)
+- [**GET /configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (deprecated)
     - Korábban (beleértve a titkos kulcsok) minden konfigurációk beszerzése
     - Az API-hívás már nem lesz támogatott. A jövőben az összes konfiguráció beszerzéséhez használja az új bejegyzés /configurations hívás. Nincs megadva bizalmas paraméterekkel rendelkező konfigurációk beszerzéséhez használja a GET /configurations/ {configurationName}-hívás.
-- [**POST /configurations/ {configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#change-connectivity-settings) (elavult)
+- [**POST /configurations/ {configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (elavult)
     - Korábban már használt átjáró hitelesítő adatainak frissítése.
     - Az API-hívás a rendszer elavult, és már nem támogatott. Használja helyette az új bejegyzés /updateGatewaySettings.
 

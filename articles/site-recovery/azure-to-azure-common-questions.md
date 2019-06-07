@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgan
-ms.openlocfilehash: 1a13bda37c5bfac4efe6bd6109cb1dfcd5f7d2a9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 271e3c31c3e08d170add84ca4995f4876d4d3a33
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925670"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753772"
 ---
-# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vészhelyreállítási
+# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure-ból Azure-ba történő vészhelyreállítás
 
 Ez a cikk ismerteti az Azure virtuális gépek vészhelyreállítása egy másik Azure-régióba kapcsolatos gyakori kérdésekre adott válaszok segítségével [Site Recovery](site-recovery-overview.md). 
 
@@ -143,7 +143,7 @@ Igen. Ha növeli a megőrzési időtartam 24 óra, 72 óra, a Site Recovery ment
 Ez azt jelenti, hogy így arról, hogy a helyreállítási pont konzisztens az összes a replikált virtuális gépek között.
 A Site Recovery "Virtuális gépre kiterjedő konzisztencia,", amely válassza ki, ha létrehoz egy replikációs csoport összes gépek együttes replikálásához a csoport részét képező lehetőséget biztosít.
 A virtuális gépek lesz megosztott összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontokat, hogy feladatátvételkor.
-Olvassa el az oktatóanyag [több virtuális gépre kiterjedő konzisztencia engedélyezése](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication).
+Olvassa el az oktatóanyag [több virtuális gépre kiterjedő konzisztencia engedélyezése](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm).
 
 ### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Helyezhetem el a feladatátvételt egyetlen virtuális gép egy adott virtuális gépre kiterjedő konzisztencia replikációs csoport?
 A "Virtuális gépre kiterjedő konzisztencia" lehetőség kiválasztásával, vannak feltüntetve, hogy az alkalmazás maga csoportban lévő összes virtuális gépet. Ezért egyetlen virtuális gép feladatátvétele nem engedélyezett.

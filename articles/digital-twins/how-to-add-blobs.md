@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 06/05/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: b77960961a7c032faad7000f7a2ce297802a1497
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 9490772226ecdb90cdd2e0b98fe8336b91db6044
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967049"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754502"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Blobok hozzáadása az Azure digitális Twins objektumok
 
@@ -30,13 +30,13 @@ Használhatja a több részből álló kéréseket az eszközspecifikus végpont
 
 [!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
-### <a name="blob-metadata"></a>Blob metaadatai
+### <a name="blob-metadata"></a>BLOB metaadatai
 
 Mellett **Content-Type** és **tartalomtípus-szabályozó**, az Azure digitális Twins többrészes blobkérelmek meg kell adnia a megfelelő JSON-törzse. Melyik JSON-törzse elküldése zajlik HTTP-kérési művelet típusától függ.
 
 A négy fő JSON-sémák a következők:
 
-![JSON-sémáinak][1]
+[![JSON-sémáinak](media/how-to-add-blobs/blob-models.PNG)](media/how-to-add-blobs/blob-models.PNG#lightbox)
 
 JSON-blob metaadatainak megfelel a következő modellhez:
 
@@ -56,11 +56,11 @@ JSON-blob metaadatainak megfelel a következő modellhez:
 | **parentId** | String | A szülőentitás a blob társítandó (szóköz, eszközök vagy felhasználók) |
 | **name** |String | A blob emberi mobilbarát nevét |
 | **type** | String | Blob - típusa nem használható *típus* és *typeId*  |
-| **typeId** | Integer | A blob azonosítója – nem használható *típus* és *typeId* |
-| **subtype** | String | A blob - altípusa nem használható *altípus* és *subtypeId* |
-| **subtypeId** | Integer | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
+| **typeId** | Egész szám | A blob azonosítója – nem használható *típus* és *typeId* |
+| **Altípus** | String | A blob - altípusa nem használható *altípus* és *subtypeId* |
+| **subtypeId** | Egész szám | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
 | **description** | String | A blob testre szabott leírása |
-| **sharing** | String | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
+| **megosztás** | String | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
 
 BLOB metaadatainak mindig van megadva az első adatrészletben a **Content-Type** `application/json` vagy mint egy `.json` fájlt. A fájlokban tárolt adatokhoz a második adattömb van megadva, és bármely támogatott MIME-típusát.
 
@@ -114,10 +114,10 @@ Külön-külön visszaadott blobok felelnek meg a következő JSON-séma:
 | **name** |String | A blob emberi mobilbarát nevét |
 | **parentId** | String | A szülőentitás a blob társítandó (szóköz, eszközök vagy felhasználók) |
 | **type** | String | Blob - típusa nem használható *típus* és *typeId*  |
-| **typeId** | Integer | A blob azonosítója – nem használható *típus* és *typeId* |
-| **subtype** | String | A blob - altípusa nem használható *altípus* és *subtypeId* |
-| **subtypeId** | Integer | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
-| **sharing** | String | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
+| **typeId** | Egész szám | A blob azonosítója – nem használható *típus* és *typeId* |
+| **Altípus** | String | A blob - altípusa nem használható *altípus* és *subtypeId* |
+| **subtypeId** | Egész szám | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
+| **megosztás** | String | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
 | **description** | String | A blob testre szabott leírása |
 | **contentInfos** | Tömb | Adja meg a strukturálatlan metaadat-információkat, beleértve a verzió |
 | **fullName** | String | A blob teljes neve |
@@ -183,7 +183,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 Végül [cURL](https://curl.haxx.se/) felhasználók is kérést többrészes űrlap azonos módon:
 
-![Eszköz blobok][5]
+[![Eszköz blobok](media/how-to-add-blobs/curl.PNG)](media/how-to-add-blobs/curl.PNG#lightbox)
 
 ```bash
 curl
@@ -211,7 +211,7 @@ A következő szakaszok ismertetik a core blobbal kapcsolatos API-végpontokat �
 
 Blobok eszközöket csatlakoztathat. Az alábbi képen látható a Swagger-dokumentáció, a felügyeleti API-k. Azt adja meg az API-végpontjainak eszközzel kapcsolatos blob használat és a szükséges útvonal paramétereket, átadandó őket.
 
-![Eszköz blobok][2]
+[![Eszköz blobok](media/how-to-add-blobs/blobs-device-api.PNG)](media/how-to-add-blobs/blobs-device-api.PNG#lightbox)
 
 Ha például frissítése vagy blob létrehozása és csatolása a blob egy eszközön, győződjön meg arról, egy hitelesített JAVÍTANI a HTTP-kérést:
 
@@ -225,11 +225,11 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 
 Sikeres kérések vissza JSON-objektum, mint [fentebb leírt](#blobModel).
 
-### <a name="spaces"></a>Szóközök
+### <a name="spaces"></a>Tárolóhelyek
 
 Blobok csatlakoztathat szóközöket is. Az alábbi képen végpontjai terület API blobok kezeléséért felelős. Ezekre a végpontokra átadandó elérési út paramétereit is felsorolja.
 
-![Lemezterület-blobok][3]
+[![Lemezterület-blobok](media/how-to-add-blobs/blobs-space-api.PNG)](media/how-to-add-blobs/blobs-space-api.PNG#lightbox)
 
 Például adja vissza egy blob egy szóközzel csatolt, győződjön meg arról, egy hitelesített HTTP GET kérést:
 
@@ -249,7 +249,7 @@ Egyazon végpont a PATCH-kérés metaadatok leírását frissíti, és létrehoz
 
 Blobok csatlakoztathat felhasználói modellek (például társítása a profilképét). Az alábbi képen látható megfelelő felhasználói API-végpontok és a szükséges útvonal paramétereket, például `id`:
 
-![Felhasználói blobok][4]
+[![Felhasználói blobok](media/how-to-add-blobs/blobs-users-api.PNG)](media/how-to-add-blobs/blobs-users-api.PNG#lightbox)
 
 Például beolvasni egy blob egy felhasználó csatlakozik, győződjön meg arról, az űrlap adat egy hitelesített HTTP GET kérés:
 
@@ -288,10 +288,3 @@ Azt is ellenőrizze, hogy egyes többrészes adattömbök rendelkezik egy megfel
 - Az Azure digitális Twins Swagger dokumentációja kapcsolatos további információkért olvassa el [használata az Azure digitális Twins Swagger](how-to-use-swagger.md).
 
 - Postman – blobok feltöltése, olvassa el [Postman konfigurálása](./how-to-configure-postman.md).
-
-<!-- Images -->
-[1]: media/how-to-add-blobs/blob-models.PNG
-[2]: media/how-to-add-blobs/blobs-device-api.PNG
-[3]: media/how-to-add-blobs/blobs-space-api.PNG
-[4]: media/how-to-add-blobs/blobs-users-api.PNG
-[5]: media/how-to-add-blobs/curl.PNG

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 5106b22500b73b650742e7fe0f881c2a4c984eff
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 4501a343b406f07b4775f3ad0e84d71825412a4b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937710"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752737"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-alkalmazások ajánlat közzétételi útmutató
 
@@ -148,4 +148,4 @@ Ha ezt még nem tette meg,
 Ha regisztrálva van és a egy új ajánlat létrehozása vagy egy meglévő, dolgozik
 
 - [Jelentkezzen be a Cloud Partner portálra](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot.
-- Lásd: [Azure SaaS-alkalmazás ajánlat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-offer) további információt.
+- Lásd: [Azure SaaS-alkalmazás ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) további információt.

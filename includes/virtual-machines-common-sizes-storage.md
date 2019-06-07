@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 5123ee3f65744f3d0c255712efe990b01be58e26
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: de998265188b1482be22225bba3c6ab3d58e562b
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420741"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66755634"
 ---
 Tárolási optimalizált Virtuálisgép-méretek magas lemez-adatátviteli és i/o-e, és ideálisak a Big Data, SQL, nosql-alapú adatbázisok, az adattárházak és nagy tranzakciós adatbázisok.  Ilyenek például Cassandra, MongoDB, Cloudera vagy Redis. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint helyi tároló átviteli sebesség és a hálózati sávszélesség optimalizált méreteire vonatkoztatva számát.
 
@@ -57,7 +57,7 @@ Prémium szintű Storage gyorsítótárazást: Nem támogatott
 - SLES 12 SP2 vagy újabb
 - Érvényes 6.10, a Microsoft által biztosított LIS csomaggal 4.3.1 RHEL vagy CentOS verzió 6.7 (vagy újabb) telepítve van
 - RHEL vagy CentOS 7.3-as verzió, Microsoft által biztosított LIS 4.2.1 csomaggal (vagy újabb) telepítve van
-- RHEL vagy CentOS 7.4-es vagy újabb verzió
+- RHEL vagy CentOS 7.6 vagy újabb verzió
 - Oracle Linux UEK4 vagy újabb
 - Debian 9 portolások kernel, a Debian, 10 vagy újabb
 - CoreOS 4.14 kernel vagy újabb

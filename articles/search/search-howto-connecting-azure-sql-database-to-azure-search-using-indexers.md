@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c23933e7f379a438d436fd99c5fea7899c5891ef
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 59a45791676f62f42763e0e834d327b0c0c4106d
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025356"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755100"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Csatlakozás és a tartalom az Azure Search-indexelők használatával Azure SQL Database indexelése
 
@@ -158,23 +158,7 @@ Az indexelő futtatása rendszeres ütemezés szerint is rendezheti. Ehhez adja 
 
 A **időköz** paraméter megadása kötelező. Az intervallum hivatkozik a két egymást követő indexelő végrehajtásának kezdete közötti idő. A legkisebb megengedett intervallum értéke 5 perc; a leghosszabb érték egy nap. Egy XSD "nyelv szerinti dayTimeDuration" értékként kell formázni (korlátozott részhalmaza olyan [ISO 8601 időtartama](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) érték). A minta: `P(nD)(T(nH)(nM))`. Példák: `PT15M` 15 percenként, a `PT2H` 2 óránként számára.
 
-A választható **startTime** azt jelzi, ha az ütemezett végrehajtásának kell megkezdődnie. Ha ezt kihagyja, az aktuális UTC időpontig szolgál. Ez az idő, amelyben az első végrehajtás eset van ütemezve, mintha az indexelő futása során folyamatosan óta a startTime múltbeli – is lehet.  
-
-Az indexelő csak egy végrehajtásának futtatható egyszerre. Az indexelő futása közben a végrehajtása van ütemezve, ha a végrehajtás van elhalaszthatók, amíg a következő ütemezett időpontban.
-
-Vegyünk egy példát, ez részletesebb legyen. Tegyük fel, hogy a következő óránkénti ütemezés konfigurálva:
-
-    "schedule" : { "interval" : "PT1H", "startTime" : "2015-03-01T00:00:00Z" }
-
-Ez történik:
-
-1. Az első indexelő végrehajtás elindul, vagy 2015. március 1-12:00-kor UTC.
-2. Tegyük fel, a végrehajtási vesz igénybe, 20 perc (vagy bármely idő kevesebb mint 1 óra).
-3. A második végrehajtása, vagy 2015. március 1-1:00-kor kezdődik
-4. Most tegyük fel, hogy a végrehajtási vesz igénybe több, mint egy óra – például 70 perc –, hogy ez befejeződik, körülbelül 2:10:00
-5. Van 2:00-kor, ideje harmadik végrehajtásának indítása most. Azonban mivel a második végrehajtása 1 reggel továbbra is fut, a harmadik végrehajtását a rendszer kihagyta. A harmadik végrehajtási hajnali 3 órakor kezdődik
-
-Hozzáadása, módosítása vagy törlése az ütemezés egy meglévő indexelő használatával egy **PUT indexelő** kérelmet.
+További információk az indexelő ütemezés definiálása: [az Azure Search indexelők ütemezése](search-howto-schedule-indexers.md).
 
 <a name="CaptureChangedRows"></a>
 
@@ -297,7 +281,7 @@ A **softDeleteMarkerValue** kell karakterláncot – a tényleges érték karakt
 | smalldatetime, dátum és idő, datetime2, dátum, datetimeoffset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
 | Földrajzi hely |Edm.GeographyPoint |Támogatott SRID 4326 (Ez az alapértelmezett beállítás) pontra típusa csak földrajzi példánya |
-| ROWVERSION |– |Oszlopok sor-verzió nem lehet tárolni, a keresési indexben, de a change Tracking szolgáltatáshoz használható |
+| rowversion |– |Oszlopok sor-verzió nem lehet tárolni, a keresési indexben, de a change Tracking szolgáltatáshoz használható |
 | idő, időtartam, binary, varbinary, kép, xml, geometriai, CLR-beli típusok |– |Nem támogatott |
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások

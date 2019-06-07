@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: cdc1b07b93386c0225c1e6c5f570ea1247e450b5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e9092fb91ad98e6147647717e11d1a64bcff580e
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924394"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754176"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Az Azure Data Box Gateway alkalmazási helyzetei
 
@@ -50,7 +50,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy a Data Box futó átjáróesz
 - Az adatok követően kell helyezze át az archív tárolási szintről. A blob szintjének két módon állíthatja be: Az Azure PowerShell-parancsfájl vagy egy Azure Storage életciklus-felügyeleti szabályzat.  
     - Ha az Azure powershellel, kövesse az alábbi [lépéseket](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) az adatok áthelyezése az archív tárolási szintről.
     - Ha használja az Azure-életciklus-felügyelet, kövesse az alábbi lépéseket az adatok áthelyezése az archív tárolási szintről.
-        - [Regisztráljon](/azure/storage/common/storage-lifecycle-management-concepts#register-for-preview) előzetes verziójának Blob életciklus management szolgáltatás használatához az archív szinten.
+        - [Regisztráljon](/azure/storage/common/storage-lifecycle-management-concepts) előzetes verziójának Blob életciklus management szolgáltatás használatához az archív szinten.
         - A következő házirendet, amellyel [az archívum az adatok betöltését](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest).
 - A blobok archív vannak megjelölve, ha azok már nem módosítható az átjáró, kivéve, ha gyakori vagy ritka elérésű szintre áthelyezett. Ha a fájl a helyi tárolóban, a helyi példány (beleértve a törlések) végzett módosítások nem frissíti a rendszer archív szint.
 - A blob szintről gyakori vagy ritka elérésű módosításával rehydrated kell lennie az archív tárolóban lévő adatok olvasása. [A megosztás frissítése](data-box-gateway-manage-shares.md#refresh-shares) az átjáró nem rehidratálási a blobot.
