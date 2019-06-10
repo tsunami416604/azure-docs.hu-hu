@@ -306,22 +306,22 @@ Fájl elküldése, figyelje meg, hogy a .vscode mappa automatikusan bekerül a m
 
     | name | description | type | 
     | :- | :- | :- | 
-    | Fájl | Hajtsa végre az alkalmazást tartalmazó fájlt | elérési út (kötelező) | 
+    | file | Hajtsa végre az alkalmazást tartalmazó fájlt | elérési út (kötelező) | 
     | proxyUser | Felhasználó megszemélyesítése a feladat futtatásakor | string | 
     | className | Alkalmazás Java/Spark main osztály | string |
     | args | Az alkalmazás a parancssori argumentumok | karakterláncok | 
-    | JAR-fájlok kivételével | Ebben a munkamenetben használandó jars | Karakterlánc listája | 
+    | jars | Ebben a munkamenetben használandó jars | Karakterlánc listája | 
     | pyFiles | Ebben a munkamenetben használandó Python-fájlok | Karakterlánc listája |
-    | Fájlok | Ebben a munkamenetben használni kívánt fájlok | Karakterlánc listája |
+    | files | Ebben a munkamenetben használni kívánt fájlok | Karakterlánc listája |
     | driverMemory | Az illesztőprogram-folyamathoz használandó memória mennyisége | string |
     | driverCores | Az illesztőprogram-folyamathoz használandó magok száma | int |
     | executorMemory | Memória / végrehajtó folyamat használata | string |
     | executorCores | Minden egyes végrehajtó használandó magok száma | int |
     | numExecutors | A munkamenet elindításához végrehajtóval száma | int |
-    | archívum | Ebben a munkamenetben használandó archívum | Karakterlánc listája |
-    | várólista | A neve, amelyhez a YARN várólista elküldve | string |
+    | archives | Ebben a munkamenetben használandó archívum | Karakterlánc listája |
+    | queue | A neve, amelyhez a YARN várólista elküldve | string |
     | name | A munkamenet neve | string |
-    | megerősítési | Spark-konfiguráció tulajdonságai | Térkép kulcs = érték |
+    | conf | Spark-konfiguráció tulajdonságai | Térkép kulcs = érték |
 
     Választörzs   
     A létrehozott Batch-objektum.
@@ -331,8 +331,8 @@ Fájl elküldése, figyelje meg, hogy a .vscode mappa automatikusan bekerül a m
     | id | A munkamenet-azonosító | int | 
     | appId | Ez a munkamenet-alkalmazás alkalmazásazonosítója |  String |
     | appInfo | Az alkalmazás részletes adatai | Térkép kulcs = érték |
-    | napló | A napló sorok | karakterláncok |
-    | állapot |   A batch-állapot | string |
+    | log | A napló sorok | karakterláncok |
+    | state |   A batch-állapot | string |
 
 >[!NOTE]
 >A hozzárendelt livy-konfigurációs megjelennek a tesztkimenet ablaktáblán amikor küldje el a szkriptet.
