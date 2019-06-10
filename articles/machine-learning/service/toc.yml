@@ -86,24 +86,27 @@
     - name: Munkaterület
       displayName: concept definitions architecture
       href: concept-workspace.md
+    - name: Számítási cél
+      displayName: concept definitions architecture
+      href: concept-compute-target.md
     - name: Vizuális felület
       displayName: concept
       href: ui-concept-visual-interface.md
-    - name: Automatizált gépi tanulás
+    - name: Automatizált ML
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
     - name: Modellkezelés (MLOps)
       displayName: 'deploy, deployment, mlops, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
+    - name: Újrahasználható ML-folyamatok
+      href: concept-ml-pipelines.md
     - name: Modell értelmezhetősége
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
-    - name: Gyorsítás FPGA-kkal
+    - name: FPGA-k áttekintése
       href: concept-accelerate-with-fpgas.md
-    - name: Optimalizálás az ONNX és az ONNX Runtime használatával
+    - name: Az ONNX és az ONNX Runtime
       href: concept-onnx.md
-    - name: Machine Learning-folyamatok
-      href: concept-ml-pipelines.md
     - name: Biztonság
       items:
         - name: Vállalati biztonság áttekintése

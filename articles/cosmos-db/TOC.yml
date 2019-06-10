@@ -533,8 +533,8 @@
           href: how-to-sql-subquery.md
     - name: Változáscsatorna
       items:
-        - name: Az Azure Cosmos DB eseményindító-naplói
-          href: how-to-configure-cosmos-db-trigger-logs.md
+        - name: Azure Cosmos DB-trigger kapcsolódási szabályzata
+          href: how-to-configure-cosmos-db-trigger-connection-policy.md
         - name: Több Azure Cosmos DB-eseményindító
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB-eseményindítók hibaelhárítása

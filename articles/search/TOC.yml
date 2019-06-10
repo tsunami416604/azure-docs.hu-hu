@@ -163,24 +163,28 @@
       items:
         - name: Az indexelők áttekintése
           href: search-indexer-overview.md
-        - name: Blob Storage-indexelő
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Table Storage-indexelő
+        - name: Azure Table Storage-indexelő
           href: search-howto-indexing-azure-tables.md
-        - name: SQL DB-indexelő
+        - name: Azure SQL DB-indexelő
           href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Cosmos DB indexelő
+        - name: Azure Cosmos DB-indexelő
           href: search-howto-index-cosmosdb.md
-        - name: „Egy a többhöz” blobindexelés
-          href: search-howto-index-one-to-many-blobs.md
-        - name: CSV-blob indexelése
-          href: search-howto-index-csv-blobs.md
-        - name: JSON-blob indexelése
-          href: search-howto-index-json-blobs.md
+        - name: Azure Blob Storage-indexelő
+          items:
+            - name: Blobindexelő beállítása
+              href: search-howto-indexing-azure-blob-storage.md
+            - name: Egy-a-többhöz típusú blobok indexelése
+              href: search-howto-index-one-to-many-blobs.md
+            - name: CSV-blobok indexelése
+              href: search-howto-index-csv-blobs.md
+            - name: JSON-blobok indexelése
+              href: search-howto-index-json-blobs.md
+        - name: Indexelők ütemezése
+          href: search-howto-schedule-indexers.md
+        - name: Mezők leképezése
+          href: search-indexer-field-mappings.md
         - name: Csatlakozás az SQL Server virtuális gépeihez
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-        - name: Mezőleképezések
-          href: search-indexer-field-mappings.md
         - name: Gyakori problémák megoldása
           href: search-indexer-troubleshooting.md
     - name: Bővítés mesterséges intelligenciával
