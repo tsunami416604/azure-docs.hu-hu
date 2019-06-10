@@ -68,18 +68,18 @@ Az alábbi adattípusok használatával létrehozott modellek támogatottak a **
 | --- | --- |
 | double |kétszeres pontosságú lebegőpontos számot |
 | int |32 bites egész számot |
-| lebegőpontos |egyszeres pontosságú lebegőpontos számot |
-| hosszú |hosszú egész szám |
+| float |egyszeres pontosságú lebegőpontos számot |
+| long |hosszú egész szám |
 | int8\_t |8 bites egész számot |
 | Int16\_t |16 bites egész számot |
 | Int32\_t |32 bites egész számot |
 | Int64\_t |64 bites egész számot |
 | bool |logikai |
 | ascii\_char\_ptr |ASCII-karakterlánc |
-| EDM\_DÁTUM\_IDŐ\_ELTOLÁSA |dátum-idő eltolása |
+| EDM\_DATE\_TIME\_OFFSET |dátum-idő eltolása |
 | EDM\_GUID |GUID |
 | EDM\_BINARY |binary |
-| DEKLARÁLJA\_STRUCT |Az összetett típus |
+| DECLARE\_STRUCT |Az összetett típus |
 
 Kezdjük az utolsó adattípus. A **DECLARE\_STRUCT** lehetővé teszi összetett adattípusok, amely a többi típusokban csoportosításán alapulnak. Ez a csoportosítás lehetővé számunkra, hogy a modell a következőhöz hasonló:
 
