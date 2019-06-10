@@ -35,8 +35,8 @@ Az Eseményelőfizetés neve 3 – 64 karakter hosszúságúnak kell lennie, és
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| cél | objektum | Az objektum, amely meghatározza a végpontot. |
-| szűrő | objektum | Eseménytípusok szűrése a választható mező. |
+| destination | objektum | Az objektum, amely meghatározza a végpontot. |
+| filter | objektum | Eseménytípusok szűrése a választható mező. |
 
 ### <a name="destination-object"></a>Célobjektum
 
