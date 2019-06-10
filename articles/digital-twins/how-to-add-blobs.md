@@ -57,10 +57,10 @@ JSON-blob metaadatainak megfelel a következő modellhez:
 | **name** |String | A blob emberi mobilbarát nevét |
 | **type** | String | Blob - típusa nem használható *típus* és *typeId*  |
 | **typeId** | Egész szám | A blob azonosítója – nem használható *típus* és *typeId* |
-| **Altípus** | String | A blob - altípusa nem használható *altípus* és *subtypeId* |
+| **subtype** | String | A blob - altípusa nem használható *altípus* és *subtypeId* |
 | **subtypeId** | Egész szám | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
 | **description** | String | A blob testre szabott leírása |
-| **megosztás** | String | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
+| **sharing** | String | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
 
 BLOB metaadatainak mindig van megadva az első adatrészletben a **Content-Type** `application/json` vagy mint egy `.json` fájlt. A fájlokban tárolt adatokhoz a második adattömb van megadva, és bármely támogatott MIME-típusát.
 
@@ -115,9 +115,9 @@ Külön-külön visszaadott blobok felelnek meg a következő JSON-séma:
 | **parentId** | String | A szülőentitás a blob társítandó (szóköz, eszközök vagy felhasználók) |
 | **type** | String | Blob - típusa nem használható *típus* és *typeId*  |
 | **typeId** | Egész szám | A blob azonosítója – nem használható *típus* és *typeId* |
-| **Altípus** | String | A blob - altípusa nem használható *altípus* és *subtypeId* |
+| **subtype** | String | A blob - altípusa nem használható *altípus* és *subtypeId* |
 | **subtypeId** | Egész szám | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
-| **megosztás** | String | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
+| **sharing** | String | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
 | **description** | String | A blob testre szabott leírása |
 | **contentInfos** | Tömb | Adja meg a strukturálatlan metaadat-információkat, beleértve a verzió |
 | **fullName** | String | A blob teljes neve |
