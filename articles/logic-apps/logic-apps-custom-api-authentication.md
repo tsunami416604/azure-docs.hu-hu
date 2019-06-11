@@ -191,10 +191,10 @@ Nyissa meg a logikai alkalmazás definíciójának kódnézetben, nyissa meg a *
 | Elem | Kötelező | Leírás | 
 | ------- | -------- | ----------- | 
 | tenant | Igen | Az Azure AD-bérlő GUID azonosítója | 
-| Célközönség | Igen | A globálisan egyedi Azonosítót a célként megadott erőforrás, amely szeretné elérni, amely az alkalmazás azonosítóját a webalkalmazás vagy API-alkalmazás az ügyfél-azonosítója | 
+| audience | Igen | A globálisan egyedi Azonosítót a célként megadott erőforrás, amely szeretné elérni, amely az alkalmazás azonosítóját a webalkalmazás vagy API-alkalmazás az ügyfél-azonosítója | 
 | clientId | Igen | A globálisan egyedi Azonosítót, az ügyfél hozzáférést igényelnek, ami az identitása a logikai alkalmazás az ügyfél-azonosítója | 
-| titkos | Igen | Kulcs vagy jelszó, az ügyfél, amely a hozzáférési jogkivonatot kér az alkalmazás azonosítója | 
-| típus | Igen | A hitelesítési típus. A ActiveDirectoryOAuth hitelesítéshez, az értéke `ActiveDirectoryOAuth`. | 
+| secret | Igen | Kulcs vagy jelszó, az ügyfél, amely a hozzáférési jogkivonatot kér az alkalmazás azonosítója | 
+| type | Igen | A hitelesítési típus. A ActiveDirectoryOAuth hitelesítéshez, az értéke `ActiveDirectoryOAuth`. | 
 |||| 
 
 Példa:
@@ -236,7 +236,7 @@ Az a **engedélyezési** szakaszban, ezt a sort:
 
 | Elem | Szükséges | Leírás | 
 | ------- | -------- | ----------- | 
-| típus | Igen | A hitelesítési típus. Az ügyfél SSL-tanúsítványok, az értéknek kell lennie `ClientCertificate`. | 
+| type | Igen | A hitelesítési típus. Az ügyfél SSL-tanúsítványok, az értéknek kell lennie `ClientCertificate`. | 
 | password | Igen | A jelszót az ügyféltanúsítvány (PFX-fájl) eléréséhez | 
 | pfx | Igen | A base64-kódolású tartalmak az ügyféltanúsítvány (PFX-fájl) | 
 |||| 
@@ -253,7 +253,7 @@ Az a **engedélyezési** szakaszban, ezt a sort:
 
 | Elem | Kötelező | Leírás | 
 | ------- | -------- | ----------- | 
-| típus | Igen | A hitelesítési típus, amelyet használni szeretne. Az alapszintű hitelesítés, az értéknek kell lennie `Basic`. | 
+| type | Igen | A hitelesítési típus, amelyet használni szeretne. Az alapszintű hitelesítés, az értéknek kell lennie `Basic`. | 
 | username | Igen | A hitelesítéshez használni kívánt felhasználónevet | 
 | password | Igen | A hitelesítéshez használni kívánt jelszót | 
 |||| 
