@@ -38,7 +38,7 @@ A következő HTTP PUT kérelmet használatával hozzon létre egy új Azure ala
 |subscriptionId   |  elérési út       |  True (Igaz)       |   sztring      |  Az előfizetés hitelesítő adatait, amelyek egyértelműen azonosítják a Microsoft Azure-előfizetéshez. Az előfizetés-Azonosítót az URI-t minden szolgáltatás hívás részét képezi.      |
 |resourceGroupName     |     elérési út    | True (Igaz)        |  sztring       |   Az erőforráscsoport neve.     |
 |loadBalancerName     |  elérési út       |      True (Igaz)   |    sztring     |    A terheléselosztó neve.    |
-|API-verzió    |   lekérdezés     |  True (Igaz)       |     sztring    |  API-verzió.      |
+|api-version    |   lekérdezés     |  True (Igaz)       |     sztring    |  API-verzió.      |
 
 
 
