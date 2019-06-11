@@ -56,11 +56,11 @@ Az alábbi példa bemutatja az alapvető szerkezete egy csomagdefiníciós fájl
 | Elem neve | Kötelező? | Leírás |
 | --- | --- | --- |
 | $schema |Nem |A JSON-fájl helyét. A JSON-fájl segítségével ellenőrizheti a csomagdefiníciós fájl érvényességét. |
-| cím |Igen |A lab-ben jelenik meg az összetevő neve. |
+| title |Igen |A lab-ben jelenik meg az összetevő neve. |
 | description |Igen |A lehívandó összetevő jelenik meg a labor leírása. |
 | iconUri |Nem |URI-ját az ikon jelenik meg a tesztkörnyezetben. |
 | targetOsType |Igen |Az operációs rendszer a virtuális gép, amelyen telepítve van-e az összetevő. Támogatott kapcsolók a következők: Windows és Linux rendszereken. |
-| paraméterek |Nem |Az összetevő telepítési parancs egy gépen való futtatásakor biztosított értékeket. Ennek segítségével testre szabhatja az összetevő. |
+| parameters |Nem |Az összetevő telepítési parancs egy gépen való futtatásakor biztosított értékeket. Ennek segítségével testre szabhatja az összetevő. |
 | runCommand |Igen |Összetevő telepítése a virtuális gépen végrehajtott parancs. |
 
 ### <a name="artifact-parameters"></a>Összetevő-paraméterek
