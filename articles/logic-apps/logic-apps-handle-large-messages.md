@@ -120,15 +120,15 @@ Ezeket a lépéseket ismertetik a részletes folyamat, Logic Apps számára a lo
    | A Logic Apps fejlécmezőt kérése | Value | Typo | Leírás |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | darabolásos | String | Azt jelzi, hogy a tartalom tömbökben van feltöltve. |
-   | **x-ms-content-length** | <*tartalom-hossza*> | Egész szám | A teljes tartalom mérete (bájt) darabolás előtt |
+   | **x-ms-content-length** | <*tartalom-hossza*> | Integer | A teljes tartalom mérete (bájt) darabolás előtt |
    ||||
 
 2. A végpont válaszol "200" sikeres állapotkód és a nem kötelező információkkal:
 
    | Végpont válasz fejléce mező | Typo | Kötelező | Leírás |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-chunk-size** | Egész szám | Nem | A javasolt adatrészlet mérete (bájt) |
-   | **Hely** | String | Nem | Az URL-címét, hova küldhetők a HTTP-javítás üzenetek |
+   | **x-ms-chunk-size** | Integer | Nem | A javasolt adatrészlet mérete (bájt) |
+   | **Location** | String | Nem | Az URL-címét, hova küldhetők a HTTP-javítás üzenetek |
    ||||
 
 3. A logikai alkalmazás hoz létre, és ezt az információt az egyes küldi az üzeneteket követő HTTP PATCH:
@@ -140,7 +140,7 @@ Ezeket a lépéseket ismertetik a részletes folyamat, Logic Apps számára a lo
      | A Logic Apps fejlécmezőt kérése | Value | Typo | Leírás |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*range*> | String | A bájttartomány számára a tartalom darabban, beleértve a kezdő érték, a befejezési értéket, és a teljes tartalom méretét, például: "bájtok száma 0-1023/10100 =" |
-     | **A Content-Type** | <*content-type*> | String | A darabolt tartalmának típusa |
+     | **Content-Type** | <*content-type*> | String | A darabolt tartalmának típusa |
      | **Content-Length** | <*tartalom-hossza*> | String | A hosszát mérete (bájt) a aktuální Blok dat |
      |||||
 
