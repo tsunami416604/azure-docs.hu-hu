@@ -59,8 +59,8 @@ Ez a cikk az egyéni kódot is használhatja a rétegek kívül a logikai alkalm
 | Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
 | sourceType |   | A futtatási forrás típusa. Engedélyezett értékek a következők **Microsoft.Logic/workflows** és **egyéni**. (Kötelező) |
-| Forrás |   | Ha a forrás típusa **Microsoft.Logic/workflows**, kövesse az ebben a sémában kell az adatforrások információit. Ha a forrás típusa **egyéni**, egy JToken sémája. (Kötelező) |
-| Rendszerazonosító | String | Logikai alkalmazás rendszer azonosítóját. (Kötelező) |
+| source |   | Ha a forrás típusa **Microsoft.Logic/workflows**, kövesse az ebben a sémában kell az adatforrások információit. Ha a forrás típusa **egyéni**, egy JToken sémája. (Kötelező) |
+| systemId | String | Logikai alkalmazás rendszer azonosítóját. (Kötelező) |
 | runId | String | A logikai alkalmazás futtatásának azonosítóját. (Kötelező) |
 | operationName | String | A művelet (például művelet vagy trigger) neve. (Kötelező) |
 | repeatItemScopeName | String | Ismételje meg a konfigurációelem neve, ha a művelet belül egy `foreach` / `until` ciklus. (Kötelező) |
@@ -71,7 +71,7 @@ Ez a cikk az egyéni kódot is használhatja a rétegek kívül a logikai alkalm
 | eventLevel |   | Az esemény szintjét. (Kötelező) |
 | eventTime |   | ÉÉÉÉ-hh-DDTHH:MM:SS.00000Z UTC formátumban, az esemény időpontja. (Kötelező) |
 | recordType |   | A track rekord típusát. Az érték engedélyezett **egyéni**. (Kötelező) |
-| rekord |   | Egyéni rekord típusa. Engedélyezett formátuma JToken. (Kötelező) |
+| record |   | Egyéni rekord típusa. Engedélyezett formátuma JToken. (Kötelező) |
 ||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B-protokoll követési sémák
