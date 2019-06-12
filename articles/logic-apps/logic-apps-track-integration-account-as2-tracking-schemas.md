@@ -63,7 +63,7 @@ Segítségével nyomon, hogy sikeres, a hibákat, és a vállalatközi (B2B) tra
 | as2To | String | AS2 üzenetet fogadó nevét, az AS2-üzenet fejlécét. (Kötelező) |
 | as2From | String | AS2 üzenet küldője nevét, az AS2-üzenet fejlécét. (Kötelező) |
 | agreementName | String | Az AS2-megállapodás, amelyhez az üzenetek elhárulnak neve. (Választható lehetőség) |
-| irány | String | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | String | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | messageId | String | AS2-Üzenetazonosító, a a fejlécek az AS2-üzenet (nem kötelező) |
 | dispositionType |String | Üzenet Disposition-Notification (MDN) típusú érték. (Választható lehetőség) |
 | fileName | String | Az AS2-üzenet fejlécének a fájl neve. (Választható lehetőség) |
@@ -116,7 +116,7 @@ Segítségével nyomon, hogy sikeres, a hibákat, és a vállalatközi (B2B) tra
 | as2To | String | Az AS2-üzenetek fogadó partner nevének. (Kötelező) |
 | as2From | String | Az AS2-üzenetek küldő partner nevének. (Kötelező) |
 | agreementName | String | Az AS2-megállapodás, amelyhez az üzenetek elhárulnak neve. (Választható lehetőség) |
-| irány |String | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction |String | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | messageId | String | AS2-üzenet azonosítója. (Választható lehetőség) |
 | originalMessageId |String | AS2 eredeti üzenet azonosítója. (Választható lehetőség) |
 | dispositionType | String | MDN típusú érték. (Választható lehetőség) |
