@@ -74,7 +74,7 @@ A következő JSON az alkalmazásállapot bővítmény sémáját jeleníti meg.
 
 | Name (Név) | Érték és példa | Adattípus
 | ---- | ---- | ----
-| protokoll | `http` vagy `tcp` | string |
+| protocol | `http` vagy `tcp` | string |
 | port | Nem kötelező, ha a protokoll `http`kötelező, ha a protokoll `tcp` | int |
 | requestPath | Kötelező, ha a protokoll `http`, nem engedélyezett, ha a protokoll `tcp` | string |
 
