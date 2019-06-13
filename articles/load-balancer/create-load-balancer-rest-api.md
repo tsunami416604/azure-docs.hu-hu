@@ -72,7 +72,7 @@ Alapszintű Load Balancer, nevű létrehozása ebben a lépésben *lb* , a **USA
    }
   ```
 ### <a name="step-2-configure-load-balancer-resources"></a>2. LÉPÉS. Terheléselosztó erőforrásainak konfigurálása
-Ebben a lépésben konfigurálja a terheléselosztó *lb* erőforrásokat, például az előtérbeli IP-konfiguráció (*fe-lb*), egy háttércímkészlet (*kell lb*), a terheléselosztási szabály () *rulelb*), az állapotfigyelő mintavételező (*mintavétel-lb*), és a egy bejövő NAT-szabály (*-nat-szabályok*).
+Ebben a lépésben konfigurálja a terheléselosztó *lb* erőforrásokat, például az előtérbeli IP-konfiguráció (*fe-lb*), egy háttércímkészlet (*kell lb*), a terheléselosztási szabály () *rulelb*), az állapotfigyelő mintavételező (*mintavétel-lb*), és a egy bejövő NAT-szabály ( *-nat-szabályok*).
 #### <a name="sample-request"></a>Mintakérelem
 
   ```HTTP    

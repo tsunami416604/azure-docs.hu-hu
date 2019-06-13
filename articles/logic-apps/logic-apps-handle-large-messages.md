@@ -57,7 +57,7 @@ Ha a végpont letöltések vagy feltöltések darabolás engedélyezve van, a HT
 
 Emellett ha egy HTTP-művelet már nem engedélyezi az darabolás, is be kell állítania a művelet darabolás `runTimeConfiguration` tulajdonság. Ez a tulajdonság a műveletben, vagy közvetlenül a szerkesztőben kód nézet később ismertetett, vagy a Logic Apps Designerben Itt állíthatja be:
 
-1. A HTTP-művelet jobb felső sarokban, válassza a három pont gombra (**...** ), majd **beállítások**.
+1. A HTTP-művelet jobb felső sarokban, válassza a három pont gombra ( **...** ), majd **beállítások**.
 
    ![Nyissa meg a műveletet, a beállítások menü](./media/logic-apps-handle-large-messages/http-settings.png)
 
@@ -128,7 +128,7 @@ Ezeket a lépéseket ismertetik a részletes folyamat, Logic Apps számára a lo
    | Végpont válasz fejléce mező | Typo | Kötelező | Leírás |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Nem | A javasolt adatrészlet mérete (bájt) |
-   | **Location** | String | Nem | Az URL-címét, hova küldhetők a HTTP-javítás üzenetek |
+   | **Hely** | String | Nem | Az URL-címét, hova küldhetők a HTTP-javítás üzenetek |
    ||||
 
 3. A logikai alkalmazás hoz létre, és ezt az információt az egyes küldi az üzeneteket követő HTTP PATCH:
@@ -140,7 +140,7 @@ Ezeket a lépéseket ismertetik a részletes folyamat, Logic Apps számára a lo
      | A Logic Apps fejlécmezőt kérése | Value | Typo | Leírás |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*range*> | String | A bájttartomány számára a tartalom darabban, beleértve a kezdő érték, a befejezési értéket, és a teljes tartalom méretét, például: "bájtok száma 0-1023/10100 =" |
-     | **Content-Type** | <*content-type*> | String | A darabolt tartalmának típusa |
+     | **A Content-Type** | <*content-type*> | String | A darabolt tartalmának típusa |
      | **Content-Length** | <*tartalom-hossza*> | String | A hosszát mérete (bájt) a aktuální Blok dat |
      |||||
 

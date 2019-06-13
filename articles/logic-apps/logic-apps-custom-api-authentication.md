@@ -63,7 +63,7 @@ A logikai alkalmazás hitelesítése az Azure ad-ben a az Azure AD alkalmazás-i
 
    ![Hozzon létre új alkalmazás regisztrálása](./media/logic-apps-custom-api-authentication/new-app-registration-azure-portal.png)
 
-4. Nevezze el az alkalmazás azonosítóját, és távozzon **alkalmazástípus** beállítása **webalkalmazás / API**, adjon meg egy egyedi karakterlánc formátumú esetében – tartomány **bejelentkezési URL-**, ,majd **Hozzon létre**.
+4. Nevezze el az alkalmazás azonosítóját, és távozzon **alkalmazástípus** beállítása **webalkalmazás / API**, adjon meg egy egyedi karakterlánc formátumú esetében – tartomány **bejelentkezési URL-** , ,majd **Hozzon létre**.
 
    ![Adjon meg nevet és a bejelentkezés URL-címet az alkalmazás azonosítója](./media/logic-apps-custom-api-authentication/logic-app-identity-azure-portal.png)
 
