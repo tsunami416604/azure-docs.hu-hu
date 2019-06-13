@@ -66,7 +66,7 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
 | receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
 | agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| irány | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | interchangeControlNumber | String | Adatcsere ellenőrzőszáma. (Választható lehetőség) |
 | functionalGroupControlNumber | String | Funkcionális ellenőrző szám. (Választható lehetőség) |
 | transactionSetControlNumber | String | A tranzakciókészlet ellenőrzőszáma. (Választható lehetőség) |
@@ -122,7 +122,7 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
 | receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
 | agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| irány | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | interchangeControlNumber | String | Adatcsere ellenőrzőszáma, a funkcionális nyugtázással leállt. Érték tölti fel a küldési oldalon, ahol érkezik, a funkcionális nyugtázási küldött üzenetek csak a partnernek. (Választható lehetőség) |
 | functionalGroupControlNumber | String | Funkcionális csoport-ellenőrzőszám az működési átvételi. Érték tölti fel a küldési oldalon, ahol érkezik, a funkcionális nyugtázási küldött üzenetek csak a partnernek. (Választható lehetőség) |
 | isaSegment | String | Az ISA-szegmens az üzenet. Érték tölti fel a küldési oldalon, ahol érkezik, a funkcionális nyugtázási küldött üzenetek csak a partnernek. (Választható lehetőség) |
@@ -180,7 +180,7 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
 | receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
 | agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| irány | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | interchangeControlNumber | String | Adatcsere ellenőrzőszáma. (Választható lehetőség) |
 | isaSegment | String | Az ISA-szegmens üzenet. (Választható lehetőség) |
 | isTechnicalAcknowledgmentExpected | Boolean | A technikai nyugtázása a X12 beállított e szerződés. (Kötelező) |
@@ -231,7 +231,7 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
 | receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
 | agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| irány | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | interchangeControlNumber | String | Adatcsere ellenőrzőszáma az műszaki átvételi partnerek érkezett. (Választható lehetőség) |
 | isaSegment | String | Az ISA-szegmens a műszaki nyugtázási partnerek érkezett. (Választható lehetőség) |
 | respondingInterchangeControlNumber |String | Adatcsere ellenőrzőszáma a partnertől kapott a műszaki nyugtázás. (Választható lehetőség) |
@@ -284,7 +284,7 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
 | receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
 | agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| irány | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | interchangeControlNumber | String | Adatcsere ellenőrzőszáma. (Választható lehetőség) |
 | functionalGroupControlNumber | String | Funkcionális ellenőrző szám. (Választható lehetőség) |
 | gsSegment | String | Üzenet GS szegmens. (Választható lehetőség) |
@@ -340,7 +340,7 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
 | receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
 | agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| irány | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | interchangeControlNumber | String | Adatcsere ellenőrzőszáma, amely feltölti a küldési oldalon műszaki nyugtázási partnerek fogadásakor. (Választható lehetőség) |
 | functionalGroupControlNumber | String | Funkcionális csoport ellenőrzőszám az műszaki átvételi, amely feltölti a küldési oldalon műszaki nyugtázási partnerek fogadásakor. (Választható lehetőség) |
 | isaSegment | String | Ugyanaz, mint a adatcsere ellenőrzés száma, de csak bizonyos esetekben ki van töltve. (Választható lehetőség) |
