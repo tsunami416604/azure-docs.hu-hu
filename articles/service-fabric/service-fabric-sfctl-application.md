@@ -28,26 +28,26 @@ Létrehozása, törlése és kezelheti az alkalmazások és alkalmazás-típusok
 
 |Parancs|Leírás|
 | --- | --- |
-| létrehozás | Service Fabric-alkalmazás a megadott leírás használatával hoz létre. |
+| create | Service Fabric-alkalmazás a megadott leírás használatával hoz létre. |
 | delete | Törli a már meglévő Service Fabric-alkalmazás. |
-| üzembe helyezett | A Service Fabric-csomópont a központi telepítésű alkalmazás adatainak beolvasása. |
-| üzembe helyezett állapot | A health egy Service Fabric-csomóponton üzembe helyezett alkalmazás adatainak beolvasása. |
-| üzembe helyezett-list | A Service Fabric-csomóponton üzembe helyezett alkalmazások listájának beolvasása. |
-| egészségügy | A service fabric-alkalmazás állapotának beolvasása. |
-| információ | Service Fabric-alkalmazás adatainak beolvasása. |
-| lista | A Service Fabric-fürt létrehozása, amely a megadott szűrőknek megfelelő alkalmazások listájának beolvasása. |
-| betöltés | Lekérdezi az információ a Service Fabric-alkalmazás betöltése. |
-| Manifest | A jegyzékfájl alkalmazástípust leíró beolvasása. |
-| üzembe helyezése | Rendelkezések, illetve regisztrál egy Service Fabric-alkalmazás írja be a fürthöz a .sfpkg csomag használata a külső tárolójában, vagy pedig az alkalmazáscsomag a lemezképtároló. |
+| deployed | A Service Fabric-csomópont a központi telepítésű alkalmazás adatainak beolvasása. |
+| deployed-health | A health egy Service Fabric-csomóponton üzembe helyezett alkalmazás adatainak beolvasása. |
+| deployed-list | A Service Fabric-csomóponton üzembe helyezett alkalmazások listájának beolvasása. |
+| health | A service fabric-alkalmazás állapotának beolvasása. |
+| info | Service Fabric-alkalmazás adatainak beolvasása. |
+| list | A Service Fabric-fürt létrehozása, amely a megadott szűrőknek megfelelő alkalmazások listájának beolvasása. |
+| load | Lekérdezi az információ a Service Fabric-alkalmazás betöltése. |
+| manifest | A jegyzékfájl alkalmazástípust leíró beolvasása. |
+| provision | Rendelkezések, illetve regisztrál egy Service Fabric-alkalmazás írja be a fürthöz a .sfpkg csomag használata a külső tárolójában, vagy pedig az alkalmazáscsomag a lemezképtároló. |
 | report-health | A Service Fabric-alkalmazás állapotának jelentést küld. |
 | type | A megadott névnek megfelelő Service Fabric-fürt alkalmazástípusok listájának beolvasása. |
-| típus-list | A Service Fabric-fürt alkalmazástípusok listájának beolvasása. |
+| type-list | A Service Fabric-fürt alkalmazástípusok listájának beolvasása. |
 | unprovision | Eltávolítja vagy a regisztrációjának törlése a Service Fabric-alkalmazástípus a fürtből. |
-| frissítés | Elindul az alkalmazás a Service Fabric-fürt frissítéséhez. |
-| frissítés-folytatása | Folytatja a Service Fabric-fürt egy alkalmazás frissítéséhez. |
-| frissítés-visszaállítás | Elindítja a visszaállítása a kérelmet jelenleg a folyamatban lévő frissítése a Service Fabric-fürtben. |
-| frissítés – állapot | Részletek beolvasása végrehajtani ezt az alkalmazást a legújabb frissítést. |
-| feltöltés | Másolja a lemezképtároló egy Service Fabric-alkalmazáscsomagot. |
+| upgrade | Elindul az alkalmazás a Service Fabric-fürt frissítéséhez. |
+| upgrade-resume | Folytatja a Service Fabric-fürt egy alkalmazás frissítéséhez. |
+| upgrade-rollback | Elindítja a visszaállítása a kérelmet jelenleg a folyamatban lévő frissítése a Service Fabric-fürtben. |
+| upgrade-status | Részletek beolvasása végrehajtani ezt az alkalmazást a legújabb frissítést. |
+| upload | Másolja a lemezképtároló egy Service Fabric-alkalmazáscsomagot. |
 
 ## <a name="sfctl-application-create"></a>sfctl-alkalmazás létrehozása
 Service Fabric-alkalmazás a megadott leírás használatával hoz létre.
