@@ -40,14 +40,14 @@ A legtöbb elemét sémája a következő:
 
 | Tulajdonság | Szükséges | Leírás |
 | -------- | -------- | ----------- |
-| név | Igen | Egy elem előfordulását hivatkozni belső azonosítója. Az elem nevét, a leggyakoribb használata `outputs`, ahol a kimeneti értékeket a megadott elemek vannak leképezve a sablon paramétereit. Kívánt elem értékét kimeneti kötést is használhatja a `defaultValue` másik elem. |
+| name | Igen | Egy elem előfordulását hivatkozni belső azonosítója. Az elem nevét, a leggyakoribb használata `outputs`, ahol a kimeneti értékeket a megadott elemek vannak leképezve a sablon paramétereit. Kívánt elem értékét kimeneti kötést is használhatja a `defaultValue` másik elem. |
 | type | Igen | Az elem megjelenítése a felhasználói felületi vezérlőnek. Támogatott típusainak listáját lásd: [elemek](#elements). |
 | label | Igen | Az elem megjelenítendő szöveg. Néhány elemtípus tartalmazza a több címke, ezért az érték lehet több karakterláncokat tartalmazó objektumot. |
-| DefaultValue érték | Nem | Az alapértelmezett érték az elem. Néhány elem típusát támogatja a összetett alapértelmezett értékeket, ezért az érték lehet egy objektumot. |
-| Elemleírás | Nem | Az elem az elemleírás megjeleníteni kívánt szöveg. Hasonló `label`, bizonyos elemek támogatja a több eszközre tipp karakterlánc. Beágyazott hivatkozások Markdown szintaxissal lehet beágyazni.
-| Korlátozások | Nem | Egy vagy több tulajdonságot, amely segítségével testre szabhatja az elem ellenőrzési viselkedését. Typ prvku megkötések támogatott tulajdonságai eltérők. Néhány elem típusát támogatja az ellenőrzési viselkedése testre szabhatja, és így vannak nincsenek megkötések tulajdonság. |
-| beállítások | Nem | Testre szabható a az elem viselkedése további tulajdonságokat. Hasonló `constraints`, a támogatott tulajdonságok elem típusa szerint változó. |
-| Látható | Nem | Azt jelzi, hogy az elem megjelenik-e. Ha `true`, az elem és a megfelelő gyermekelemek jelennek meg. Az alapértelmezett érték `true`. Használat [logikai függvények](create-uidefinition-functions.md#logical-functions) dinamikusan szabályozhatja e tulajdonság értéke.
+| defaultValue | Nem | Az alapértelmezett érték az elem. Néhány elem típusát támogatja a összetett alapértelmezett értékeket, ezért az érték lehet egy objektumot. |
+| toolTip | Nem | Az elem az elemleírás megjeleníteni kívánt szöveg. Hasonló `label`, bizonyos elemek támogatja a több eszközre tipp karakterlánc. Beágyazott hivatkozások Markdown szintaxissal lehet beágyazni.
+| constraints | Nem | Egy vagy több tulajdonságot, amely segítségével testre szabhatja az elem ellenőrzési viselkedését. Typ prvku megkötések támogatott tulajdonságai eltérők. Néhány elem típusát támogatja az ellenőrzési viselkedése testre szabhatja, és így vannak nincsenek megkötések tulajdonság. |
+| options | Nem | Testre szabható a az elem viselkedése további tulajdonságokat. Hasonló `constraints`, a támogatott tulajdonságok elem típusa szerint változó. |
+| visible | Nem | Azt jelzi, hogy az elem megjelenik-e. Ha `true`, az elem és a megfelelő gyermekelemek jelennek meg. Az alapértelmezett érték `true`. Használat [logikai függvények](create-uidefinition-functions.md#logical-functions) dinamikusan szabályozhatja e tulajdonság értéke.
 
 ## <a name="elements"></a>Elemek
 
