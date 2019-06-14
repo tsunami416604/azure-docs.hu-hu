@@ -36,8 +36,8 @@ A kérelemhez szükséges a következő mezőket:
 | **Name (Név)**             | **Leírás**                                      |
 |----------------------|------------------------------------------------------|
 | requestId            | Az ügyfél által megadott GUID azonosítója                                |
-| Keresztnév            | A felhasználó utóneve                              |
-| Vezetéknév             | A felhasználó vezetékneve                               |
+| firstName            | A felhasználó utóneve                              |
+| lastName             | A felhasználó vezetékneve                               |
 | emailAddress         | A felhasználó e-mail címe                           |
 | externalId           | A felhasználó Azure AD objektum azonosítója                      |
 | connectionId         | A blockchain-kapcsolat egyedi azonosítója |
@@ -69,7 +69,7 @@ Blockchain Workbenchet választ küld a következő mezőket:
 | connectionId          | A blockchain-kapcsolat egyedi azonosítója|
 | messageSchemaVersion  | Üzenetkezelési sémaverzió |
 | messageName           | **CreateUserUpdate** |
-| állapot                | A felhasználó-létrehozási kérés állapotát.  Ha sikeres, értéke **sikeres**. Hiba esetén, a értéke **hiba**.     |
+| status                | A felhasználó-létrehozási kérés állapotát.  Ha sikeres, értéke **sikeres**. Hiba esetén, a értéke **hiba**.     |
 | additionalInformation | További információ a megadott állapota alapján |
 
 Példa a sikeres **felhasználó létrehozása** Blockchain Workbenchet a választ:
