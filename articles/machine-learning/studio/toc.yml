@@ -7,8 +7,7 @@
       displayName: overview
       href: what-is-ml-studio.md
     - name: Machine Learning-termékeink összehasonlítása
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-      maintainContext: true
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
 - name: Oktatóanyagok
   items:
     - name: Az első kísérlet létrehozása

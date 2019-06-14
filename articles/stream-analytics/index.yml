@@ -64,7 +64,7 @@ sections:
         className: cardsD
         items:
           - title: Előnézetek
-            html: '<p><a href="stream-analytics-previews#public-previews">Nyilvános előzetes verziók</a></p><p><a href="stream-analytics-previews#private-previews">Privát előzetes verziók</a></p>'
+            html: '<p><a href="stream-analytics-previews#public-previews">Nyilvános előzetes verziók</a></p><p><a href="stream-analytics-previews#other-previews">Privát előzetes verziók</a></p>'
           - title: Parancssor
             html: '<p><a href="https://docs.microsoft.com/powershell/module/az.streamanalytics/#stream_analytics">Azure PowerShell</a></p>'
           - title: Nyelvek

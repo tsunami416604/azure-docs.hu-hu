@@ -8,6 +8,7 @@
     - name: Példa felhasználói forgatókönyvek
       href: text-analytics-user-scenarios.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: REST API
       items:
@@ -33,6 +34,8 @@
           href: quickstarts/go-sdk.md
         - name: Ruby
           href: quickstarts/ruby-sdk.md
+        - name: Node.js
+          href: quickstarts/nodejs-sdk.md
 - name: Oktatóanyagok
   items:
     - name: A Power BI integrálása ügyfelektől származó visszajelzések elemzéséhez

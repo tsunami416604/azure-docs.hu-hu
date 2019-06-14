@@ -34,6 +34,8 @@
           href: virtual-machines-windows-sql-automated-backup-v2.md
     - name: Kezelés
       items:
+        - name: Az Azure Portallal
+          href: virtual-machines-windows-sql-manage-portal.md
         - name: Az SQL 2008 és R2 támogatásának kibővítése
           href: virtual-machines-windows-sql-server-2008-eos-extend-support.md
         - name: Kapcsolódás virtuális géphez
