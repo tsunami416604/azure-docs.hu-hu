@@ -14,14 +14,14 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: aac1ed82a01477b081f4bc146f199eba87d97859
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60309177"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Adatok áthelyezése a Salesforce-ból az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-salesforce-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-salesforce.md)
 
@@ -286,24 +286,24 @@ Lásd: [RelationalSource tulajdonságait](#copy-activity-properties) a Relationa
 
 | Salesforce-típus | . NET-alapú típusa |
 | --- | --- |
-| Automatikus száma |String |
-| Jelölőnégyzet |Boolean |
+| Auto Number |String |
+| Checkbox |Boolean |
 | Currency (Pénznem) |Decimal |
 | Dátum |DateTime |
 | Dátum/idő |DateTime |
 | E-mail |String |
 | Azonosító |String |
-| Keresési kapcsolat |String |
-| Többszörös kijelöléses értéklista |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Szám |Decimal |
 | Százalék |Decimal |
 | Telefonszám |String |
-| Értéklista |String |
+| Picklist |String |
 | Text |String |
-| Szövegterület |String |
-| Szövegterület (hosszú) |String |
-| Szövegterület (részletes) |String |
-| Szöveg (titkosítva) |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
 | URL-cím |String |
 
 > [!NOTE]

@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.openlocfilehash: c73a40e46d86632732454ae16ea4f83e3ffa0281
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60627269"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Hogyan eszközök beléptetésének kezelése az Azure Device Provisioning szolgáltatás SDK-k
@@ -21,7 +21,7 @@ A *eszközregisztráció* létrehoz egy rekordot egy adott eszköz vagy egy csop
 ## <a name="prerequisites"></a>Előfeltételek
 * A kapcsolati karakterlánc lekérését a Device Provisioning Service-példány.
 * Szerezze be az eszköz biztonsági összetevőinek a [igazolási mechanizmus](concepts-security.md#attestation-mechanism) használt:
-    * [**Platformmegbízhatósági modul (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module):
+    * [**Platformmegbízhatósági modul (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
         * Egyéni regisztráció: Regisztrációs azonosító és a TPM Ellenőrzőkulcsát egy fizikai eszközt vagy TPM-szimulátort.
         * Regisztrációs csoportot nem vonatkozik a TPM-igazolás.
     * [**X.509**](/azure/iot-dps/concepts-security):

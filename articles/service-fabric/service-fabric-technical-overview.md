@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 09/17/2018
 ms.author: masnider
 ms.openlocfilehash: 085d5e560eec090ab76c263f8f93140786f2d734
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60543206"
 ---
 # <a name="service-fabric-terminology-overview"></a>A Service Fabric a terminológia áttekintése
@@ -146,7 +146,7 @@ A meglévő alkalmazások Service Fabric is futtathatja:
 
 Olvassa el a [a szolgáltatás programozási modell választása](service-fabric-choose-framework.md) cikkben további információt.
 
-### <a name="docker-compose"></a>Docker Compose 
+### <a name="docker-compose"></a>A docker Compose 
 [A docker Compose](https://docs.docker.com/compose/) része a Docker-projekt. A Service Fabric biztosít korlátozottan támogatja az [üzembe helyezése a Docker Compose modellt használó alkalmazások](service-fabric-docker-compose.md).
 
 ## <a name="environments"></a>Környezetek

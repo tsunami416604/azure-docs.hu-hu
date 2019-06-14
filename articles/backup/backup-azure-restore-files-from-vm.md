@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: pullabhk
 ms.openlocfilehash: 22ada6f9bb614bdc3698c58c6aa8ec3dd5def868
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60240091"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gépek biztonsági mentése
@@ -196,7 +196,7 @@ Az alábbi táblázat bemutatja a kiszolgáló és a számítógép operációs 
 
 A Linux a fájlok visszaállítására használt számítógép operációs rendszerének támogatnia kell a fájlrendszer, a védett virtuális gép. A parancsfájl futtatására kiválasztásakor ellenőrizze, hogy a számítógép egy kompatibilis operációs rendszer, és az alábbi táblázatban szereplő verziók egyikét használja:
 
-|Linux operációs rendszer | Verziók  |
+|Linux OS | Verziók  |
 | --------------- | ---- |
 | Ubuntu | 12.04-es vagy újabb verzió |
 | CentOS | 6.5-ös vagy újabb verzió  |

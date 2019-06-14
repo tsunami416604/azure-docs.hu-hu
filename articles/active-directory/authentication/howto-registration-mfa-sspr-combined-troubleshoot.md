@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60414621"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Hibaelhárítási kombinált biztonsági információk regisztrációs (előzetes verzió)
@@ -35,16 +35,16 @@ Az Azure AD-ben a hitelesítési módszerek kategóriába vannak az események n
 
 Az alábbi táblázat a kombinált regisztrációs által létrehozott összes naplózási eseményt:
 
-| Tevékenység | status | Ok | Leírás |
+| Tevékenység | Állapot | Reason | Leírás |
 | --- | --- | --- | --- |
-| A felhasználó regisztrált az összes szükséges biztonsági adatai | Sikeres | A felhasználó regisztrált az összes szükséges biztonsági adatait. | Ez az esemény akkor fordul elő, amikor egy felhasználó sikeresen befejezte a regisztrációs.|
+| A felhasználó regisztrált az összes szükséges biztonsági adatai | Siker | A felhasználó regisztrált az összes szükséges biztonsági adatait. | Ez az esemény akkor fordul elő, amikor egy felhasználó sikeresen befejezte a regisztrációs.|
 | A felhasználó regisztrált az összes szükséges biztonsági adatai | Hiba | A felhasználó megszakította a biztonsági adatok regisztrálása. | Ez az esemény akkor fordul elő, amikor egy felhasználó megszakítja a megszakítási módból regisztrációs.|
-| Felhasználó által regisztrált biztonsági adatai | Sikeres | Felhasználó által regisztrált *metódus*. | Ez az esemény akkor fordul elő, amikor egy felhasználó regisztrál egy egyéni módszer. *Módszer* lehet hitelesítő alkalmazás, telefonos, E-mail, biztonsági kérdések, alkalmazás jelszó, másodlagos telefonszám, és így tovább.| 
-| Felhasználó, tekintse át biztonsági adatait | Sikeres | Felhasználó sikeresen tekintse át biztonsági adatait. | Ez az esemény akkor fordul elő, amikor egy felhasználó kijelöli **rendben** a biztonsági adatok áttekintése lapon.|
+| Felhasználó által regisztrált biztonsági adatai | Siker | Felhasználó által regisztrált *metódus*. | Ez az esemény akkor fordul elő, amikor egy felhasználó regisztrál egy egyéni módszer. *Módszer* lehet hitelesítő alkalmazás, telefonos, E-mail, biztonsági kérdések, alkalmazás jelszó, másodlagos telefonszám, és így tovább.| 
+| Felhasználó, tekintse át biztonsági adatait | Siker | Felhasználó sikeresen tekintse át biztonsági adatait. | Ez az esemény akkor fordul elő, amikor egy felhasználó kijelöli **rendben** a biztonsági adatok áttekintése lapon.|
 | Felhasználó, tekintse át biztonsági adatait | Hiba | A felhasználó nem tudta ellenőrizni biztonsági adatait. | Ez az esemény akkor fordul elő, amikor egy felhasználó kijelöli **rendben** lap tekintse át a biztonsági adatokat, de hiba lép fel a háttérkiszolgálón.|
-| Törölt felhasználó biztonsági adatai | Sikeres | Törölt felhasználó *metódus*. | Ez az esemény akkor fordul elő, amikor a felhasználó töröl egy egyéni módszer. *Módszer* lehet hitelesítő alkalmazás, telefonos, E-mail, biztonsági kérdések, alkalmazás jelszó, másodlagos telefonszám, és így tovább.|
+| Törölt felhasználó biztonsági adatai | Siker | Törölt felhasználó *metódus*. | Ez az esemény akkor fordul elő, amikor a felhasználó töröl egy egyéni módszer. *Módszer* lehet hitelesítő alkalmazás, telefonos, E-mail, biztonsági kérdések, alkalmazás jelszó, másodlagos telefonszám, és így tovább.|
 | Törölt felhasználó biztonsági adatai | Hiba | Nem sikerült törölni a felhasználói *metódus*. | Ez az esemény akkor fordul elő, amikor egy felhasználó próbál törölni egy metódust, de valamilyen okból sikertelen. *Módszer* lehet hitelesítő alkalmazás, telefonos, E-mail, biztonsági kérdések, alkalmazás jelszó, másodlagos telefonszám, és így tovább.|
-| Beállítás változása alapértelmezett biztonsági adatai | Sikeres | Felhasználó módosította a következő alapértelmezett biztonsági adatait *metódus*. | Ez az esemény akkor fordul elő, amikor a felhasználók az alapértelmezett mód. *Módszer* is Authenticator alkalmazásban megjelenő értesítésre, egy kód a saját hitelesítő alkalmazásból vagy a jogkivonatot, hívás + X XXXXXXXXXX, szöveg egy kódot + X XXXXXXXXX, és így tovább.|
+| Beállítás változása alapértelmezett biztonsági adatai | Siker | Felhasználó módosította a következő alapértelmezett biztonsági adatait *metódus*. | Ez az esemény akkor fordul elő, amikor a felhasználók az alapértelmezett mód. *Módszer* is Authenticator alkalmazásban megjelenő értesítésre, egy kód a saját hitelesítő alkalmazásból vagy a jogkivonatot, hívás + X XXXXXXXXXX, szöveg egy kódot + X XXXXXXXXX, és így tovább.|
 | Beállítás változása alapértelmezett biztonsági adatai | Hiba | A felhasználó nem tudta módosítani az alapértelmezett biztonsági adatainak *metódus*. | Ez az esemény akkor fordul elő, amikor a felhasználó megpróbálja módosítani az alapértelmezett módszer, de valamilyen okból sikertelen. *Módszer* is Authenticator alkalmazásban megjelenő értesítésre, egy kód a saját hitelesítő alkalmazásból vagy a jogkivonatot, hívás + X XXXXXXXXXX, szöveg egy kódot + X XXXXXXXXX, és így tovább.|
 
 ## <a name="troubleshooting-interrupt-mode"></a>Hibaelhárítási megszakítási mód

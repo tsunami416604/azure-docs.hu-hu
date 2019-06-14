@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60415615"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszóátállítás
@@ -61,7 +61,7 @@ Olvassa el az alábbi lépések segítségével megismerheti a jelszó mögötti
 
 Ha az SSPR engedélyezve van, választania kell a hitelesítési módszerek az alábbiak közül legalább egyet. Néha hallgassa meg ezek a beállítások "kapuk." néven Kifejezetten ajánljuk, hogy Ön **két vagy több hitelesítési módszer kiválasztása** , hogy a felhasználók rendelkeznek a nagyobb rugalmasságot, arra az esetre, szükség esetén az egyik hozzáférés nem tudnak. Az alábbi módszerekkel kapcsolatos további részleteket a cikkben található [hitelesítési módszerei?](concept-authentication-methods.md).
 
-* Mobilalkalmazásbeli értesítés (előzetes verzió)
+* Mobilalkalmazás-értesítés (előzetes verzió)
 * Mobilalkalmazás-kód (előzetes verzió)
 * E-mail
 * Mobiltelefon
@@ -93,7 +93,7 @@ A jelszó-visszaállításhoz módszerként mobilalkalmazás, például a Micros
 * Ha a rendszergazdák egy módszert igényel használt jelszó alaphelyzetbe állítása, ellenőrző kódot csak a lehetőség érhető el.
 * Ha a rendszergazdáknak a két módszer van szükségük lehet használt jelszó alaphelyzetbe állítása, felhasználók is használhatják **vagy** értesítési **vagy** ellenőrzőkódot kívül bármely más módszerek engedélyezve van.
 
-| Az új jelszó kéréséhez szükséges módszerek száma | Az egyik | Kettő |
+| Új jelszó kéréséhez szükséges módszerek száma | Az egyik | Kettő |
 | :---: | :---: | :---: |
 | Elérhető Mobile Apps funkciói | Kód | Kód vagy az értesítés |
 

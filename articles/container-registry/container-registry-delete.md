@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: danlep
 ms.openlocfilehash: 1e496002c869c5d2c072773d37ed5fd5d4a5841e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60430799"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Az Azure Container Registry a tárolólemezképek törlése
@@ -24,7 +24,7 @@ Törölheti a kép adatait a különféle módokon, mert fontos tudni, hogyan be
 
 Egy tároló *beállításjegyzék* egy szolgáltatás, amely tárolja, és elosztja a tárolórendszerképeket. A docker Hub egy nyilvános Docker-tárolójegyzék, amíg az Azure Container Registry biztosítja magán Docker tároló-beállításjegyzékek az Azure-ban.
 
-## <a name="repository"></a>Adattár
+## <a name="repository"></a>Tárház
 
 Tároló-beállításjegyzékek kezelése *tárházak*, ugyanazzal a névvel, de eltérő címkéket a tárolólemezképeket gyűjteményei. Az alábbi három lemezképek például a "acr-helloworld" tárház szerepelnek:
 

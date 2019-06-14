@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/05/2018
 ms.author: aschhab
 ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60307478"
 ---
 # <a name="sqlruleaction-syntax"></a>SQLRuleAction-szintaxis
@@ -197,7 +197,7 @@ A kulcsszavak képviseli logikai állandók `TRUE` vagy `FALSE`. Az értékek, t
   
 A karakterlánc-állandókat szimpla idézőjelek közé kell tenni, és bármilyen érvényes Unicode-karaktert tartalmazhat. Egy egyszeres idézőjel vagy aposztróf ágyazva egy karakterlánc-konstansra cube.addmeasurecolumn két szimpla idézőjelek között.  
   
-## <a name="function"></a>függvény  
+## <a name="function"></a>Függvény  
   
 ```  
 <function> :=  

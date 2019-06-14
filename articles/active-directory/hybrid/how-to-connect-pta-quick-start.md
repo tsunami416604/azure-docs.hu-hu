@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ba5455680647b90b113d31c55816a2e0b0131b33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60243668"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Az Azure Active Directory átmenő hitelesítés: Első lépések
@@ -34,7 +34,7 @@ Az Azure Active Directory (Azure AD) átmenő hitelesítés lehetővé teszi, ho
 
 Kövesse ezeket az utasításokat az átmenő hitelesítés telepítése a bérlő:
 
-## <a name="step-1-check-the-prerequisites"></a>1. lépés: Az előfeltételek ellenőrzése
+## <a name="step-1-check-the-prerequisites"></a>1\. lépés: Az előfeltételek ellenőrzése
 
 Győződjön meg arról, hogy az alábbi előfeltételek teljesülnek.
 
@@ -70,7 +70,7 @@ Győződjön meg arról, hogy az alábbi előfeltételek teljesülnek.
    - A hitelesítési ügynökök hozzáférésre van szükségük **login.windows.net** és **login.microsoftonline.com** kezdeti regisztráció. Nyissa meg a tűzfal, valamint az URL-címeket.
    - A tanúsítványok ellenőrzését, a következő URL-címek feloldása: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, és **www \.microsoft.com:80**. Mivel az URL-címek szolgálnak más Microsoft-termékekkel, előfordulhat, hogy már ezen URL-címek feloldva a tanúsítványok ellenőrzését.
 
-## <a name="step-2-enable-the-feature"></a>2. lépés: A funkció engedélyezése
+## <a name="step-2-enable-the-feature"></a>2\. lépés: A funkció engedélyezése
 
 Átmenő hitelesítés keresztül engedélyezése [az Azure AD Connect](whatis-hybrid-identity.md).
 
@@ -88,7 +88,7 @@ Ha már telepítette az Azure AD Connect használatával a [Expressz telepítés
 >[!IMPORTANT]
 >Az átmenő hitelesítés egy olyan bérlői szintű szolgáltatás. Bekapcsolását, hatással van a bejelentkezés a felhasználók több _összes_ a felügyelt tartomány a bérlőben. Ha az átmenő hitelesítés való váltás az Active Directory összevonási szolgáltatások (AD FS), az ellenőrzést, várjon legalább 12 órán át az AD FS-infrastruktúra leállítása előtt. A várakozási idő, hogy győződjön meg arról, hogy felhasználók is folyamatosan jelentkezik be az Exchange ActiveSync az áttérés során. Az áttelepítés az AD FS-ről átmenő hitelesítés további segítségért tekintse meg a részletes telepítési csomag közzétett [Itt](https://aka.ms/adfstoptadpdownload).
 
-## <a name="step-3-test-the-feature"></a>3. lépés: A szolgáltatás tesztelése
+## <a name="step-3-test-the-feature"></a>3\. lépés: A szolgáltatás tesztelése
 
 Kövesse az alábbi utasításokat, győződjön meg arról, hogy engedélyezte az átmenő hitelesítés megfelelően:
 
@@ -104,7 +104,7 @@ Kövesse az alábbi utasításokat, győződjön meg arról, hogy engedélyezte 
 
 Ezen a ponton a bérlő összes felügyelt tartományokban lévő felhasználók az átmenő hitelesítés használatával jelentkezhetnek be. Összevont tartományokban lévő felhasználók azonban továbbra is, az AD FS vagy egy másik összevonási szolgáltató, amelyet korábban konfigurált használatával bejelentkezni. Ha alakít át egy tartományt a felügyelt összevont, az adott tartomány összes felhasználó automatikusan indítsa el az átmenő hitelesítés használatával jelentkezik be. Az átmenő hitelesítés szolgáltatás nincs hatással a kizárólag felhőalapú felhasználói.
 
-## <a name="step-4-ensure-high-availability"></a>4. lépés: Magas rendelkezésre állásának biztosításához
+## <a name="step-4-ensure-high-availability"></a>4\. lépés: Magas rendelkezésre állásának biztosításához
 
 Ha azt tervezi, éles környezetben üzembe helyezése az átmenő hitelesítés, telepítenie kell a további önálló hitelesítési ügynökök. Ezek a hitelesítési ügynököt telepíteni ko _más_ , mint az egy futó Azure AD Connect. A telepítő felhasználói bejelentkezési kérelmek magas rendelkezésre állást biztosít.
 
@@ -140,7 +140,7 @@ Először ezt megteheti interaktív módon csak a letöltött végrehajtható hi
 A második hozzon létre, és a egy felügyelet nélküli telepítési parancsfájl futtatásához. Ez akkor hasznos, ha meg szeretné üzembe helyezésekor egyszerre több hitelesítési ügynök vagy hitelesítési ügynökök telepítése Windows-kiszolgálókon, amely nem rendelkezik a felhasználói felület engedélyezve van, vagy a távoli asztal nem érhetők el. Az alábbiakban az ezzel a módszerrel útmutatást:
 
 1. Hitelesítési ügynök telepítéséhez a következő parancsot: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
-2. A hitelesítési ügynök regisztrálhatja az szolgáltatás Windows PowerShell használatával. Hozzon létre egy PowerShell hitelesítő objektumot `$cred` egy globális rendszergazdai felhasználónevet és jelszót, amely tartalmazza a bérlő számára. Futtassa a következő parancsot, és cserélje le *\<felhasználónév\>* és  *\<jelszó\>*:
+2. A hitelesítési ügynök regisztrálhatja az szolgáltatás Windows PowerShell használatával. Hozzon létre egy PowerShell hitelesítő objektumot `$cred` egy globális rendszergazdai felhasználónevet és jelszót, amely tartalmazza a bérlő számára. Futtassa a következő parancsot, és cserélje le *\<felhasználónév\>* és  *\<jelszó\>* :
 
         $User = "<username>"
         $PlainPassword = '<password>'
@@ -153,7 +153,7 @@ A második hozzon létre, és a egy felügyelet nélküli telepítési parancsf�
 >[!IMPORTANT]
 >Ha hitelesítési ügynök telepítve van a virtuális gépen, a virtuális gép beállítása egy másik hitelesítési ügynök nem tudja klónozni. Ez a módszer **nem támogatott**.
 
-## <a name="step-5-configure-smart-lockout-capability"></a>5. lépés: Intelligens zárolás funkciót konfigurálása
+## <a name="step-5-configure-smart-lockout-capability"></a>5\. lépés: Intelligens zárolás funkciót konfigurálása
 
 Intelligens zárolás zárolásának kártékony elemek számára próbál kitalálni a felhasználók jelszavát, vagy úgy szerezheti be a találgatásos módszerrel segíti. Intelligens zárolás az Azure ad-ben és / vagy a megfelelő zárolási beállításait konfigurálja a helyszíni Active Directoryban, támadások is kiszűrte az Active Directory elérése előtti. Olvasási [Ez a cikk](../authentication/howto-password-smart-lockout.md) további az intelligens zárolás beállítások konfigurálása a felhasználói fiókok védelmét a bérlő.
 

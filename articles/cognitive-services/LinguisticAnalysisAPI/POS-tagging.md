@@ -11,10 +11,10 @@ ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0269397b0f8da66d2bafecfb427ba705fdfff001
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60394489"
 ---
 # <a name="part-of-speech-tagging"></a>Rész-az-szövegrészeket
@@ -37,11 +37,11 @@ Ezek közé tartozik például a kategóriák *főnév* (általában jelölő sz
 | '' | záró idézőjel | ' '' |
 | ( | nyitó zárójel | ( [ { |
 | ) | záró zárójel | ) ] } |
-| ;  | vesszővel tagolt | ;  |
+| ; | vesszővel tagolt | ; |
 | -- | kötőjel | -- |
 | . | mondat szegmenslezáró | . ! ? |
 | : | pontosvesszővel vagy a három pontra | : ; ... |
-| Másolat | együtt, a koordinációt | és, de vagy még|
+| CC | együtt, a koordinációt | és, de vagy még|
 | CD | számok, kardinális | kilenc 20-at 1980 96 " |
 | DT | determiner |egy a-minden mindkét sem|
 | EX | meglétet vizsgáló: Itt | Hiba |
@@ -65,7 +65,7 @@ Ezek közé tartozik például a kategóriák *főnév* (általában jelölő sz
 | RBS | módosítószót superlative | ajánlott legnagyobb bluntest legkorábbi legtávolabbi első legtávolabbi nagyon nehéz heartiest legmagasabb legnagyobb legalább második legfontosabb legrosszabb a legközelebbi legtöbb kevesebb |
 | FÜGGŐ ENTITÁS | particle | a kikapcsolva kapcsolatos ki beállítása |
 | SYM | Szimbólum | % & |
-| ERRE: | "a" preposition vagy infinitive jelölő | erre: |
+| A | "a" preposition vagy infinitive jelölő | erre: |
 | HŰHA | interjection | Hűha Hurrá howdy hello |
 | VB | igeként alap űrlapot | Adja meg működés közben hozzárendelése |
 | VBD | igeként múltbeli igeidőt | hozzárendelt rendelte flew |

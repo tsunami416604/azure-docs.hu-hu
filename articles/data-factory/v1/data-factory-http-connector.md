@@ -13,15 +13,15 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60318478"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Egy HTTP-forrásból származó adatok áthelyezése az Azure Data Factory használatával
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-http-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-http.md)
 
@@ -66,7 +66,7 @@ HTTP összekötőt a helyszíni adatforrások hitelesítő adatok beállításá
 
 Állítsa be **authenticationType** való **alapszintű**, **kivonatoló**, vagy **Windows**. Általános HTTP összekötő tulajdonságaihoz az előző szakaszokban ismertetett állítsa be a következő tulajdonságokat:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | userName | A felhasználónév, a HTTP-végpont elérésére használhat. | Igen |
 | password | A felhasználó jelszava (**felhasználónév**). | Igen |
@@ -94,7 +94,7 @@ HTTP összekötőt a helyszíni adatforrások hitelesítő adatok beállításá
 
 Alapszintű hitelesítés használatához állítsa **authenticationType** való **ClientCertificate**. Általános HTTP összekötő tulajdonságaihoz az előző szakaszokban ismertetett állítsa be a következő tulajdonságokat:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | embeddedCertData | Bináris adatok a PFX-fájl Base-64 kódolású tartalmát. | Adja meg **embeddedCertData** vagy **certThumbprint** |
 | certThumbprint | Az átjáró számítógépre tanúsítványtár telepített tanúsítvány ujjlenyomatával. Csak akkor, amikor adatokat másol egy helyszíni HTTP-forrás vonatkoznak. | Adja meg **embeddedCertData** vagy **certThumbprint** |

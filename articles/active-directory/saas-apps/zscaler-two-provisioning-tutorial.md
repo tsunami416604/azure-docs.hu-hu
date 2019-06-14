@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: v-ant-msft
 ms.openlocfilehash: 837014fde6962f64d7da023a001a4c41089a0097
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "67049418"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása Zscaler két konfigurálása
 
@@ -125,7 +125,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 11. Tekintse át a a két Zscaler az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképezések** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok a Zscaler két frissítési műveletek. Válassza ki **mentése** véglegesíti a módosításokat.
 
-    ![Attribútumleképezések](./media/zscaler-two-provisioning-tutorial/user-attribute-mappings.png)
+    ![Attribútum-leképezéshez](./media/zscaler-two-provisioning-tutorial/user-attribute-mappings.png)
 
 12. Az a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-csoportokat, ZscalerTwo**:
 
@@ -133,7 +133,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 13. Tekintse át a szinkronizált Azure AD-ből, a két Zscaler oszlopainál a **attribútumleképezések** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével megfelelnek a Zscaler két a frissítési műveletek. Válassza ki **mentése** véglegesíti a módosításokat.
 
-    ![Attribútumleképezések](./media/zscaler-two-provisioning-tutorial/group-attribute-mappings.png)
+    ![Attribútum-leképezéshez](./media/zscaler-two-provisioning-tutorial/group-attribute-mappings.png)
 
 14. Hatókörszűrő konfigurálásához tekintse meg a következő témakör utasításait a [Scoping szűrő oktatóanyag](./../active-directory-saas-scoping-filters.md).
 

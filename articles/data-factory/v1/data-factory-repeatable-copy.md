@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 20c916275acd6bb79675c592711b17b277c9fc78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60605189"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Az Azure Data Factoryban reprodukálható másolatot
@@ -73,7 +73,7 @@ ID    Product        Quantity    ModifiedDate
 
 Ez a viselkedés elkerülése érdekében meg kell adnia a UPSERT szemantika az alábbi két módszerek egyikének használatával:
 
-### <a name="mechanism-1-using-sqlwritercleanupscript"></a>1. mechanizmus: sqlWriterCleanupScript használatával
+### <a name="mechanism-1-using-sqlwritercleanupscript"></a>1\. mechanizmus: sqlWriterCleanupScript használatával
 Használhatja a **sqlWriterCleanupScript** tulajdonságot a fogadó tábla adatok törlése előtt az adatok beszúrása a szelet futtatásakor. 
 
 ```json
@@ -103,7 +103,7 @@ ID    Product        Quantity    ModifiedDate
 
 A másolási tevékenység lefutott a karbantartási parancsprogramot, törölheti az adott szeletre vonatkozó megfelelő adatait. Ezután a bemeneti olvasni (amely csak egy olyan rekorddal majd található) a CSV-t és a táblába beszúrt. 
 
-### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>2. mechanizmus: sliceIdentifierColumnName használatával
+### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>2\. mechanizmus: sliceIdentifierColumnName használatával
 > [!IMPORTANT]
 > SliceIdentifierColumnName az Azure SQL Data Warehouse jelenleg nem támogatott. 
 

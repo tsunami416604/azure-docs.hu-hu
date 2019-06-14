@@ -14,10 +14,10 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07259d90c7119dec4ca9139e10af2fb20a439425
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60289402"
 ---
 # <a name="assign-azure-ad-roles-in-pim"></a>Az Azure AD PIM-szerepkörök hozzárendelése
@@ -48,11 +48,11 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult az Azure AD-ren
 
 1. Kattintson a **Szerepkörválasztás**, kattintson a kezelése, és kattintson a kívánt szerepkört **kiválasztása**.
 
-    ![Szerepkörválasztás](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
+    ![Szerepkör kiválasztása](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
 
 1. Kattintson a **tagok kiválasztása**, válassza ki a felhasználókat, rendelje hozzá a szerepkörhöz, és kattintson a kívánt **kiválasztása**.
 
-    ![Szerepkörválasztás](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![Szerepkör kiválasztása](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
 1. Felügyelt tagok kattintson a Hozzáadás **OK** a felhasználó hozzáadása a szerepkörhöz.
 

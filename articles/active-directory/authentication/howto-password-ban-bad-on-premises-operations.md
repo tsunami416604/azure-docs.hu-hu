@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca85007bb016cc98d1be61ce08865945e699ad4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60358182"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Az Azure AD jelszóvédelem eljárások
@@ -32,7 +32,7 @@ Kövesse a cikk útmutatást [konfigurálása a letiltott jelszavak egyéni list
 1. Állítsa be **engedélyezése a Windows Server Active Directory jelszavas védelem** való **Igen**
 1. Említetteknek megfelelően az [üzembe helyezési útmutató](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), javasoljuk, hogy először állítsa a **mód** való **naplózási**
    * Ha elégedett a szolgáltatással, válthat a **mód** való **kényszerített**
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra
 
 ![Az Azure Portalon az Azure AD jelszóvédelem összetevők engedélyezése](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
 

@@ -12,10 +12,10 @@ ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60368323"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>A Computer Vision képtípussal észlelése
@@ -26,7 +26,7 @@ Az a [kép elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5
 
 Számítógépes Látástechnológia kép elemzi, és értékeli annak lehetőségét, hogy a kép ClipArt a méretezési csoport 0 – 3, a folyamatban, az alábbi táblázatban leírtak szerint.
 
-| Value | Jelentés |
+| Érték | Jelentés |
 |-------|---------|
 | 0 | Nem ClipArt |
 | 1 | Nem egyértelmű |

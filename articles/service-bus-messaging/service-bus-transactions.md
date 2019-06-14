@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/22/2018
 ms.author: aschhab
 ms.openlocfilehash: a839a4cad824a74bde388317cf3aaddf9c5bd47f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60332346"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Tranzakciófeldolgozás a Service Bus – áttekintés
@@ -37,8 +37,8 @@ A Service Bus támogatja az egyetlen üzenetküldő entitásra (üzenetsor, tém
 
 A tranzakció hatókörén belül végrehajtható műveletek a következők:
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: Send, SendAsync, SendBatch, SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: Teljes körű, CompleteAsync, Szolgáltatásműveletnek, AbandonAsync, kézbesítetlen, DeadletterAsync, késleltetése, DeferAsync, RenewLock, RenewLockAsync 
+* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : Send, SendAsync, SendBatch, SendBatchAsync 
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : Teljes körű, CompleteAsync, Szolgáltatásműveletnek, AbandonAsync, kézbesítetlen, DeadletterAsync, késleltetése, DeferAsync, RenewLock, RenewLockAsync 
 
 Kap műveletek nem szerepelnek, mivel feltételezzük, hogy az alkalmazás beszerzi az üzenetek a [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) mód valamely kap hurok vagy egy [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) visszahívást, és csak ekkor megnyílik az adott tranzakció-hatókörben, az üzenet feldolgozására.
 

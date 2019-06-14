@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: d1681aee9dc11f0dbd3133bced0b919a8c1623b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60310920"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Service Fabric áttekintése az Azure-fürtök
@@ -31,9 +31,9 @@ Az Azure Service Fabric-fürt egy Azure-erőforrás, amely használja, és kommu
 * Virtuális gépek és virtuális hálózati adapterek
 * virtuálisgép-méretezési csoportok
 * virtuális hálózatokkal
-* terheléselosztók
-* tárfiókok
-* nyilvános IP-címek
+* Terheléselosztók
+* Storage-fiókok
+* public IP addresses
 
 ![Service Fabric-fürt][Image]
 
@@ -55,7 +55,7 @@ Használhatja a méretezési csoportok üzembe helyezése és kezelése a virtu�
 További információkért olvassa el [Service Fabric-csomóponttípusok és virtuálisgép-méretezési csoportokban](service-fabric-cluster-nodetypes.md).
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-Virtuálisgép-példányokhoz csatlakoznak mögött egy [az Azure load balancer](/azure/load-balancer/load-balancer-overview), amely társítva van egy [nyilvános IP-cím](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) és a DNS-címkét.  Ha a fürt üzembe helyezése  *&lt;clustername&gt;*, a DNS-név  *&lt;clustername&gt;.&lt; hely&gt;. cloudapp.Azure.com formát követi* a DNS-címkét a méretezési csoport előtt lévő terheléselosztó társítva van.
+Virtuálisgép-példányokhoz csatlakoznak mögött egy [az Azure load balancer](/azure/load-balancer/load-balancer-overview), amely társítva van egy [nyilvános IP-cím](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) és a DNS-címkét.  Ha a fürt üzembe helyezése  *&lt;clustername&gt;* , a DNS-név  *&lt;clustername&gt;.&lt; hely&gt;. cloudapp.Azure.com formát követi* a DNS-címkét a méretezési csoport előtt lévő terheléselosztó társítva van.
 
 Egy fürtben lévő virtuális gépek csak rendelkeznek [magánhálózati IP-címek](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses).  Felügyeleti és a szolgáltatás forgalmat továbbít a nyilvános terheléselosztót.  Hálózati adatforgalmat, ezek a gépek (az ügyfelek az adott csomópontok/példányok kapcsolódni) NAT-szabályok vagy terheléselosztási szabályok (a forgalom irányul, virtuális gépek ciklikus időszeletelés).  Load balancer társított nyilvános IP-címre egy DNS-névvel rendelkezik a következő formátumban:  *&lt;clustername&gt;.&lt; hely&gt;. cloudapp.Azure.com formát követi*.  Nyilvános IP-cím egy másik Azure-erőforrás az erőforráscsoportban.  Ha egy fürtben több csomóponttípus definiálja, egy terheléselosztó jön létre minden egyes csomópont típusa és méretezési csoportot. Vagy beállíthatja, hogy egyetlen terheléselosztó több csomópont esetében.  Az elsődleges csomóponttípushoz rendelkezik a DNS-címke  *&lt;clustername&gt;.&lt; hely&gt;. cloudapp.Azure.com formát követi*, más csomóponttípusok rendelkeznek a DNS-címke  *&lt;clustername&gt;-&lt;nodetype&gt;.&lt; hely&gt;. cloudapp.Azure.com formát követi*.
 
@@ -95,7 +95,7 @@ Alkalmazások számára az idő előrehaladtával változik. Szükség lehet nö
 
 További információkért olvassa el [méretezés Azure-fürtök](service-fabric-cluster-scaling.md).
 
-## <a name="upgrading"></a>Frissítés
+## <a name="upgrading"></a>A frissítés
 Azure Service Fabric-fürt egy erőforrás, amelynek a tulajdonosa, de részben a Microsoft felügyeli. A Microsoft felelős az alapul szolgáló operációs rendszer javításait, és a Service Fabric-futtatókörnyezet frissítéseket végez a fürtön. Állítsa be a fürt automatikus futtatókörnyezet frissítését, kapni a Microsoft által kiadott új verzióra, vagy kiválaszthat egy támogatott futtatókörnyezet-verzióra. Futtatókörnyezet frissítését, valamint fürtkonfiguráció, például a tanúsítványokat és alkalmazásportok is frissítheti.
 
 További információkért olvassa el [fürtök frissítése](service-fabric-cluster-upgrade.md).

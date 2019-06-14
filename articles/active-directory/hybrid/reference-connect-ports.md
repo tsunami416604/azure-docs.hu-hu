@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48d2ef0de9ae59e63cd9957200c46c788e2d785f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60387306"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Hibrid identitás – szükséges portok és protokollok
@@ -28,10 +28,10 @@ A következő dokumentum a technikai útmutató a szükséges portok és protoko
 
 ![Mi az az Azure AD Connect?](./media/reference-connect-ports/required3.png)
 
-## <a name="table-1---azure-ad-connect-and-on-premises-ad"></a>1. táblázat – Azure AD Connect és a helyszíni AD
+## <a name="table-1---azure-ad-connect-and-on-premises-ad"></a>1\. táblázat – Azure AD Connect és a helyszíni AD
 Ez a táblázat ismerteti a portok és protokollok, amelyek szükségesek az Azure AD Connect-kiszolgáló közötti kommunikációhoz és a helyszíni AD.
 
-| Protokoll | Portok | Leírás |
+| Protocol | Portok | Leírás |
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |DNS-keresések a cél-erdőben. |
 | Kerberos |88 (TCP/UDP) |Kerberos-hitelesítés az AD-erdőhöz. |
@@ -41,36 +41,36 @@ Ez a táblázat ismerteti a portok és protokollok, amelyek szükségesek az Azu
 | LDAP/SSL |636 (TCP/UDP) |Adatok importálása az AD-ből használja. Az adatátvitel aláírt és titkosított. Csak akkor használja az SSL használata. |
 | RPC |49152 – 65535 (véletlenszerű magas RPC Port)(TCP/UDP) |Az Azure AD Connect, ha az AD-erdőhöz van kötve a kezdeti konfiguráció során, és a jelszó-szinkronizálás során használt. Lásd: [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017), és [KB224196](https://support.microsoft.com/kb/224196) további információt. |
 
-## <a name="table-2---azure-ad-connect-and-azure-ad"></a>2. táblázat – Azure AD Connect és az Azure AD
+## <a name="table-2---azure-ad-connect-and-azure-ad"></a>2\. táblázat – Azure AD Connect és az Azure AD
 Ez a táblázat bemutatja a portok és protokollok, az Azure AD Connect-kiszolgáló és az Azure AD közötti kommunikációhoz szükséges.
 
-| Protokoll | Portok | Leírás |
+| Protocol | Portok | Leírás |
 | --- | --- | --- |
 | HTTP |80 (A TCP/UDP) |Töltse le a CRL-ek (tanúsítvány-visszavonási listákat) ellenőrzése az SSL-tanúsítványok segítségével. |
 | HTTPS |443(TCP/UDP) |Használja az Azure AD szinkronizálása. |
 
 Az URL-címek és IP címeket meg kell nyitnia a tűzfalon, lásd: [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 
-## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>3. táblázat – Azure AD Connect és az AD FS összevonási kiszolgálók/WAP
+## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>3\. táblázat – Azure AD Connect és az AD FS összevonási kiszolgálók/WAP
 Ez a táblázat bemutatja a portok és protokollok, az Azure AD Connect-kiszolgáló és AD FS összevonási és WAP-kiszolgálók közötti kommunikációhoz szükséges.  
 
-| Protokoll | Portok | Leírás |
+| Protocol | Portok | Leírás |
 | --- | --- | --- |
 | HTTP |80 (A TCP/UDP) |Töltse le a CRL-ek (tanúsítvány-visszavonási listákat) ellenőrzése az SSL-tanúsítványok segítségével. |
 | HTTPS |443(TCP/UDP) |Használja az Azure AD szinkronizálása. |
 | WinRM |5985 |WinRM-figyelőhöz |
 
-## <a name="table-4---wap-and-federation-servers"></a>4. táblázat – WAP és az összevonási kiszolgálók
+## <a name="table-4---wap-and-federation-servers"></a>4\. táblázat – WAP és az összevonási kiszolgálók
 Ez a táblázat bemutatja a portok és protokollok, amelyek az összevonási kiszolgálók és a WAP-kiszolgálók közötti kommunikációhoz szükséges.
 
-| Protokoll | Portok | Leírás |
+| Protocol | Portok | Leírás |
 | --- | --- | --- |
 | HTTPS |443(TCP/UDP) |Hitelesítéshez használt. |
 
-## <a name="table-5---wap-and-users"></a>5. táblázat – WAP és a felhasználók
+## <a name="table-5---wap-and-users"></a>5\. táblázat – WAP és a felhasználók
 Ez a táblázat bemutatja a portok és protokollok, amelyek a felhasználók és a WAP-kiszolgálók közötti kommunikációhoz szükséges.
 
-| Protokoll | Portok | Leírás |
+| Protocol | Portok | Leírás |
 | --- | --- | --- |
 | HTTPS |443(TCP/UDP) |Eszköz-hitelesítéshez használt. |
 | TCP |49443 (TCP) |Használja a tanúsítvány hitelesítéséhez. |
@@ -79,7 +79,7 @@ Ez a táblázat bemutatja a portok és protokollok, amelyek a felhasználók és
 Az alábbi táblázat ismerteti a portok és protokollok, az Azure AD Connect és az Azure AD közötti kommunikációhoz szükséges.
 
 ### <a name="table-6a---pass-through-authentication-with-sso"></a>Tábla 6a - átmenő hitelesítés SSO-val
-|Protokoll|Portszám|Leírás
+|Protocol|Portszám|Leírás
 | --- | --- | ---
 |HTTP|80|Engedélyezze a kimenő HTTP-forgalom biztonsági ellenőrzés céljából, például az SSL Használatát. Az összekötő az automatikus frissítés funkció megfelelő működéséhez emellett szükséges.
 |HTTPS|443| Engedélyezze a kimenő HTTPS-forgalmat a műveletek, például a engedélyezése és letiltása a funkció, összekötők regisztrálásához, összekötő frissítések letöltése és az összes felhasználói bejelentkezési kérelmek kezelését.
@@ -88,7 +88,7 @@ Emellett az Azure AD Connect képesnek kell lennie, hogy a közvetlen IP-kapcsol
 
 ### <a name="table-6b---password-hash-sync-with-sso"></a>6b - Jelszókivonatok szinkronizálása az egyszeri bejelentkezési táblára
 
-|Protokoll|Portszám|Leírás
+|Protocol|Portszám|Leírás
 | --- | --- | ---
 |HTTPS|443| Engedélyezze az egyszeri bejelentkezés regisztrációs (csak az SSO-regisztrációs folyamathoz szükséges).
 
@@ -100,7 +100,7 @@ Az alábbi táblázatok ismertetik a végpontokat, portok és protokollok, amely
 ### <a name="table-7a---ports-and-protocols-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>Tábla 7a - portok és protokollok a az Azure AD Connect Health agent for (AD FS/szinkronizálása) és az Azure AD
 Ez a táblázat bemutatja a következő kimenő portokat és protokollokat, az Azure AD Connect Health-ügynökök és az Azure AD közötti kommunikációhoz szükséges.  
 
-| Protokoll | Portok | Leírás |
+| Protocol | Portok | Leírás |
 | --- | --- | --- |
 | HTTPS |443(TCP/UDP) |Kimenő |
 | Azure Service Bus |5671 (TCP/UDP) |Kimenő |

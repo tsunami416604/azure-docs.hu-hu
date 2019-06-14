@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: spelluru
 ms.openlocfilehash: e681652c13e521bd33524e247db65088f47a794c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60394992"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Exportálja, vagy a személyes adatok törlése az Azure DevTest Labs szolgáltatásban
@@ -39,10 +39,10 @@ DevTest Labs a felhasználó e-mail címének automatikus leállítási e-mail �
 ### <a name="user-object-id"></a>Felhasználói objektum azonosítója
 DevTest Labs hónap hónapos over energiaköltségi trendjeinek és a költségek erőforrás adatai a labor-rendszergazdák megjelenítése használ a felhasználói objektum azonosítója. Lehetővé teszi számukra, hogy nyomon követni a költségeket, és kezelheti a küszöbértékeket a labor. 
 
-**Becsült költség trend az aktuális hónap:**
+**Becsült költség trend az aktuális hónap:** 
 ![becsült költség trend az aktuális hónap](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**Hónap elejétől számított költség becslése a erőforrás:**
+**Hónap elejétől számított költség becslése a erőforrás:** 
 ![becsült hónap elejétől számított költségek erőforrás szerint](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
@@ -69,7 +69,7 @@ Labor felhasználóként kérheti a személyes adatokat, amely tárolja a DevTes
     ![Blobok csempe kiválasztása](./media/personal-data-delete-export/select-blobs-tile.png)
 5. Válassza ki a tárolót nevű **labresourceusage** a tárolók listájában.
 
-    ![Blobtároló kiválasztása](./media/personal-data-delete-export/select-blob-container.png)
+    ![Válassza ki a blob-tároló](./media/personal-data-delete-export/select-blob-container.png)
 6. Válassza ki a **mappa** a labor elnevezve. Tapasztalni **csv** -fájlokat **lemezek** és **virtuális gépek** ebben a mappában a lab-ben. A csv-fájlok letöltéséhez, a tartalmát egy hozzáférést kér a lab-felhasználó szűrése és osztania azt velük.
 
     ![CSV-fájl letöltése](./media/personal-data-delete-export/download-csv-file.png)

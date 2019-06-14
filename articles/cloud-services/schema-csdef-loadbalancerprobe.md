@@ -1,9 +1,8 @@
 ---
 title: Az Azure Cloud Services def LoadBalancerProbe Schema | Microsoft Docs
 ms.custom: ''
-origin.date: 04/14/2015
-ms.date: 11/06/2017
-ms.prod: azure
+ms.date: 04/14/2015
+services: cloud-services
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -11,14 +10,14 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
 caps.latest.revision: 14
-author: thraka
-ms.author: v-yiso
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: de365de7bf93c0a612f102b3ec2b25c79d1c3d18
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60613863"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services – definíciós LoadBalancerProbe séma
@@ -62,7 +61,7 @@ A következő táblázat ismerteti az attribútumai a `LoadBalancerProbe` elem:
 
 |Attribútum|Típus|Leírás|
 | ------------------- | -------- | -----------------|
-| `name`              | `string` | Kötelező. A terheléselosztói mintavételezők neve. A névnek egyedinek kell lennie.|
+| `name`              | `string` | Kötelező. A terheléselosztói mintavételezők neve. A nevének egyedinek kell lennie.|
 | `protocol`          | `string` | Kötelező. Adja meg a végpont által használt protokoll. A lehetséges értékek: `http` és `tcp`. Ha `tcp` van megadva, a fogadott ACK megadása kötelező a mintavétel a sikeres. Ha `http` van megadva, a megadott URI-ból 200 OK válasz a mintavétel a sikeres megadása kötelező.|
 | `path`              | `string` | A virtuális gép állapotának lekérdezéséhez használt URI azonosító. `path` kötelező megadni, ha `protocol` értékre van állítva `http`. Ellenkező esetben nem engedélyezett.<br /><br /> Nincs alapértelmezett érték.|
 | `port`              | `integer` | Választható. A kommunikáció a mintavételi port. Ez nem kötelező, minden végpont, mivel ugyanazt a portot a mintavétel majd fogja használni. Egy másik portot a tesztelés, valamint konfigurálhatja. A lehetséges értékek tartomány 1 és 65535 között, a határokat is beleértve.<br /><br /> Az alapértelmezett érték a végpont állítja be.|

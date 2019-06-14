@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: a7d440509e2b823400cde83c1ac2ec054c37eb74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 71f78685ee5fa340ec22c63e3e7f057bef122474
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311902"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048520"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok Store az Azure Key Vaultban
 
@@ -32,7 +32,7 @@ Ez a funkció a data factory felügyelt identitás támaszkodik. Megtudhatja, ho
 
 Az Azure Key Vaultban tárolt hitelesítő adatokat, hivatkozni kell tennie:
 
-1. **Beolvasni a data factory által felügyelt identitás** másolásával "SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója" az előállító együtt létrehozott értékét. Szerzői felhasználói felület ADF használatakor a felügyelt identitás Alkalmazásazonosítója jeleníthető meg az Azure Key Vault társított szolgáltatás létrehozása ablak;. is lekérheti az Azure Portalról, tekintse meg [beolvasása a data factory által felügyelt identitás](data-factory-service-identity.md#retrieve-managed-identity).
+1. **Beolvasni a data factory által felügyelt identitás** másolása a "Felügyelt identitás Alkalmazásazonosítója" az előállító együtt létrehozott értékét. Szerzői felhasználói felület ADF használatakor a felügyelt identitás Alkalmazásazonosítója jeleníthető meg az Azure Key Vault társított szolgáltatás létrehozása ablak;. is lekérheti az Azure Portalról, tekintse meg [beolvasása a data factory által felügyelt identitás](data-factory-service-identity.md#retrieve-managed-identity).
 2. **A felügyelt identitás hozzáférést az Azure Key Vaultban.** A kulcstartó-hozzáférési házirendek -> > Új -> Ez felügyelt identitás Alkalmazásazonosítója megadását keresés hozzáadása **első** engedély titkos kód engedélyei legördülő listában. Lehetővé teszi a kijelölt factory eléréséhez a key vaultban titkos kulcsot.
 3. **Az Azure Key Vaultban mutató társított szolgáltatás létrehozása.** Tekintse meg [Azure Key Vault-beli társított szolgáltatást](#azure-key-vault-linked-service).
 4. **Adattár társított szolgáltatását, belül mely hivatkozás a megfelelő titkos tárolja a kulcsot tároló létrehozása.** Tekintse meg [referencia titkos kulcsot a key vaultban tárolt](#reference-secret-stored-in-key-vault).
@@ -48,7 +48,7 @@ Társított Azure Key Vault szolgáltatás a következő tulajdonságok támogat
 
 **Használatával a szerzői műveletek a felhasználói felület:**
 
-Kattintson a **kapcsolatok** -> **társított szolgáltatások** -> **+ új** -> "Az Azure Key Vault" keresése:
+Kattintson a **kapcsolatok** -> **társított szolgáltatások** ->  **+ új** -> "Az Azure Key Vault" keresése:
 
 ![Keresés AKV](media/store-credentials-in-key-vault/search-akv.png)
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: banders
 ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370356"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>A használatalapú fizetéses előfizetést Azure foglalás használati adatai
@@ -33,7 +33,7 @@ Ez a cikk azt feltételezi, hogy a Foglalás egyetlen előfizetéshez van alkalm
 
 A következő szakaszokban feltételezzük, hogy futtatja a keleti régiójában és a fenntartott virtuális gép példány adatokat úgy tűnik, az alábbi táblázat a Standard_DS1_v2 Windows virtuális gépek:
 
-| Mező | Value |
+| Mező | Érték |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
 |Mennyiség |1|
@@ -44,7 +44,7 @@ A hardver része a virtuális gép hatálya alá tartozó, mert az üzembe helye
 
 ### <a name="statement-section-of-csv-file-for-vms"></a>A virtuális gépek CSV-fájl utasítás szakasz
 
-Ez a szakasz a CSV-fájl látható a teljes felhasználás a foglalás. A szűrőt a alkalmazni a **fogyasztásmérő alkategóriája** tartalmazó mezőt **"Foglalás-"**. Hiba a következő képernyőképhez hasonlóan jelenik meg:
+Ez a szakasz a CSV-fájl látható a teljes felhasználás a foglalás. A szűrőt a alkalmazni a **fogyasztásmérő alkategóriája** tartalmazó mezőt **"Foglalás-"** . Hiba a következő képernyőképhez hasonlóan jelenik meg:
 
 ![Képernyőkép a szűrt foglalás használatra vonatkozó részletek és a költségek](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
 
@@ -68,7 +68,7 @@ A következő szakaszok példaként az Azure SQL Database használatával a hasz
 
 Tegyük fel, hogy futtatja a keleti régiójában és a foglalási adatokat úgy tűnik, az alábbi táblázat, egy SQL Database Gen 4:
 
-| Mező | Value |
+| Mező | Érték |
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Mennyiség |2|

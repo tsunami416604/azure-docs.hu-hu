@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0abf2eca52616638f0c4dce89691c0d4f7875106
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60415343"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel
@@ -44,7 +44,7 @@ A felhőszolgáltatás biztosításához állítson be egy jogcímszabályt, hog
 7. Válassza a **Hitelesítési módszerek hivatkozásai** lehetőséget a Bejövő jogcím típusaként.
 8. Válassza **Az összes jogcímérték továbbítása** lehetőséget.
     ![Átalakítási jogcímszabály hozzáadása varázsló](./media/howto-mfa-adfs/configurewizard.png)
-9. Kattintson a **Befejezés** gombra. Zárja be az AD FS felügyeleti konzolt.
+9. Kattintson a **Befejezés**gombra. Zárja be az AD FS felügyeleti konzolt.
 
 ## <a name="trusted-ips-for-federated-users"></a>Megbízható IP-címek összevont felhasználók számára
 
@@ -67,7 +67,7 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
 6. A Jogcímszabály neve melletti mezőben adjon nevet a szabálynak. Példa: InsideCorpNet.
 7. A Bejövő jogcím típusa melletti legördülő listából válassza a **Vállalati hálózaton belül** elemet.
    ![Jogcím a vállalati hálózaton belüli felvétele](./media/howto-mfa-adfs/trustedip4.png)
-8. Kattintson a **Befejezés** gombra.
+8. Kattintson a **Befejezés**gombra.
 9. A Kiadás átalakítási szabályai részben kattintson a **Szabály hozzáadása** elemre.
 10. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Jogcímek küldése egyéni szabállyal** elemet a legördülő menüből, és kattintson a **Tovább** gombra.
 11. A Jogcímszabály neve: alatti mezőbe írja be a következőt: *Keep Users Signed In* (A felhasználók maradjanak bejelentkezve).
@@ -76,7 +76,7 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
     ![Bejelentkezett felhasználók egyéni jogcímszabályok létrehozása](./media/howto-mfa-adfs/trustedip5.png)
-13. Kattintson a **Befejezés** gombra.
+13. Kattintson a **Befejezés**gombra.
 14. Kattintson az **Alkalmaz** gombra.
 15. Kattintson az **OK** gombra.
 16. Zárja be az AD FS felügyeleti konzolt.

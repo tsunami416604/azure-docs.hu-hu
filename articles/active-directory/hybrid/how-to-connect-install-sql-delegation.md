@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 02/26/2018
-ms.date: 04/09/2019
+ms.date: 02/26/2018
 ms.subservice: hybrid
-ms.author: v-junlch
+ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60243549"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Telepítse az Azure AD Connect SQL-lel delegált rendszergazdai engedélyekkel
@@ -29,7 +28,7 @@ Az Azure AD Connect legújabb buildjének, mielőtt felügyeleti delegálás, SQ
 
 Az Azure AD Connect legújabb kiadása most kiépítése az adatbázis is az SQL-rendszergazda által sávon kívül végrehajtott és az Azure AD Connect rendszergazdája az adatbázis-tulajdonosi jogosultságok telepítve.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 Ez a funkció használatához szüksége, vegye figyelembe, hogy több mozgó részből áll, és mindegyik is igénybe vehet a szervezet egy másik rendszergazdája.  Az alábbi táblázat foglalja össze az egyes szerepkörök és üzembe helyezése az Azure AD Connect ezzel a funkcióval a feladataik.
 
 |Szerepkör|Leírás|
@@ -45,7 +44,7 @@ A sávon kívüli-adatbázis kiépítése, és az Azure AD Connect telepítése 
 >Bár ez nem szükséges, célszerű **erősen ajánlott** , hogy az adatbázis létrehozásakor a Latin1_General_CI_AS rendezés van-e kiválasztva.
 
 
-1. Az SQL-rendszergazda az ADSync-adatbázis létrehozása egy kis-és nagybetű nincs megkülönböztetve rendezési sorrend rendelkezik **(Latin1_General_CI_AS)**.  Az adatbázis neve legyen **ADSync**.  A helyreállítási modell kompatibilitási szintje és elszigetelési típusa frissülnek, hogy a helyes értékeket az Azure AD Connect telepítése során.  Azonban a rendezési sorrend megfelelően kell állítani az SQL-rendszergazda által ellenkező esetben az Azure AD Connect meggátolja a telepítést.  A biztonsági Társítás helyreállítása törölje, majd hozza létre újból az adatbázist.
+1. Az SQL-rendszergazda az ADSync-adatbázis létrehozása egy kis-és nagybetű nincs megkülönböztetve rendezési sorrend rendelkezik **(Latin1_General_CI_AS)** .  Az adatbázis neve legyen **ADSync**.  A helyreállítási modell kompatibilitási szintje és elszigetelési típusa frissülnek, hogy a helyes értékeket az Azure AD Connect telepítése során.  Azonban a rendezési sorrend megfelelően kell állítani az SQL-rendszergazda által ellenkező esetben az Azure AD Connect meggátolja a telepítést.  A biztonsági Társítás helyreállítása törölje, majd hozza létre újból az adatbázist.
  
    ![Rendezés](./media/how-to-connect-install-sql-delegation/sql4.png)
 2. Az Azure AD Connect-rendszergazda és a tartományi szolgáltatásfióknak a következő engedélyek megadására:
@@ -68,5 +67,3 @@ Abban az esetben, ha az SQL-rendszergazda rendelkezik ADSync-adatbázis biztons�
 - [Első lépések az Azure AD Connecttel a gyorsbeállítások használatával](how-to-connect-install-express.md)
 - [Az Azure AD Connect testreszabott telepítése](how-to-connect-install-custom.md)
 - [Az Azure AD Connect telepítése meglévő ADSync-adatbázis használatával](how-to-connect-install-existing-database.md)  
-
-<!-- Update_Description: wording update -->

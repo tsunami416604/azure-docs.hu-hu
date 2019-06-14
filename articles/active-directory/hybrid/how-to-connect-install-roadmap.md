@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ee64fe8643362c6a75e288d78e163317fd8a44d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60243688"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Az Azure AD Connect és az Azure AD Connect Health telepítési ütemterve
@@ -160,7 +160,7 @@ Az Azure AD Connect Health portálon riasztásokat, teljesítményfigyelési ada
 ![Az Azure AD Connect Health portál](./media/whatis-hybrid-identity-health/portalsidebar.png)
 
 * **Gyors üzembe helyezési**: Ha ezt a beállítást, a **gyors üzembe helyezés** panel nyílik meg. A **Get Tools** (Eszközök beszerzése) lehetőség kiválasztásával letöltheti az Azure AD Connect Health-ügynököt. Emellett hozzáférhet a dokumentációkhoz, és visszajelzést is küldhet.
-* **Az Azure Active Directory Connect (sync)**: Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt Azure AD Connect-kiszolgálók mutatja. A **Szinkronizálási hibák** bejegyzés az első bevezetett szinkronizálási szolgáltatása alapszintű szinkronizálási hibáit jeleníti meg kategóriák szerint. Ha kiválasztja a **Szinkronizálási szolgáltatások** bejegyzést, a megnyíló panel az Azure AD Connect-kiszolgálókra vonatkozó információkat tartalmazza. További információ ezekről a képességekről: [Az Azure AD Connect Health szinkronizálási szolgáltatás használata az AD FS szolgáltatással](how-to-connect-health-sync.md).
+* **Az Azure Active Directory Connect (sync)** : Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt Azure AD Connect-kiszolgálók mutatja. A **Szinkronizálási hibák** bejegyzés az első bevezetett szinkronizálási szolgáltatása alapszintű szinkronizálási hibáit jeleníti meg kategóriák szerint. Ha kiválasztja a **Szinkronizálási szolgáltatások** bejegyzést, a megnyíló panel az Azure AD Connect-kiszolgálókra vonatkozó információkat tartalmazza. További információ ezekről a képességekről: [Az Azure AD Connect Health szinkronizálási szolgáltatás használata az AD FS szolgáltatással](how-to-connect-health-sync.md).
 * **Active Directory összevonási szolgáltatások**: Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt összes AD FS szolgáltatást mutatja. Ha kiválaszt egy példányt, a megnyíló panel az adott szolgáltatáspéldányra vonatkozó információkat tartalmazza. Az információk között tulajdonságokat, riasztásokat, megfigyelési adatokat, használatelemzést és egy áttekintést talál. További információ ezekről a képességekről: [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md).
 * **Active Directory Domain Services**: Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt összes AD DS-erdőt mutatja. Ha kiválaszt egy erdőt, a megnyíló panel az adott erdőre vonatkozó információkat tartalmazza. Ezek az adatok a következők áttekintését teszik lehetővé: lényeges információk, tartományvezérlő irányítópult, replikáció állapota irányítópult, riasztások és figyelés. További információ ezekről a képességekről: [Az Azure AD Connect Health használata az AD DS szolgáltatással](how-to-connect-health-adds.md).
 * **Konfigurálása**: Ez a szakasz az alábbi funkciók be- és kikapcsolása lehetőséget kínál:

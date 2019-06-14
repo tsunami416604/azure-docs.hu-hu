@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60245174"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect használatával a meglévő ADSync-adatbázis telepítése
@@ -96,9 +96,9 @@ Az Azure AD Connect 1.2.65.0 előtti verziójával létrehozott adatbázis bizto
 
 Az alábbi táblázat segítségével ellenőrizheti a további lépések szükségesek.
 
-|Szolgáltatás|Lépések|
+|Funkció|Lépések|
 |-----|-----|
-|Jelszókivonat-szinkronizálás| a Jelszókivonat-szinkronizálás és a jelszó-visszaírás beállításokat teljes mértékben visszaállnak az Azure AD Connect-verziók 1.2.65.0 kezdve.  Ha visszaállítása az Azure AD Connect egy régebbi verzióját használja, tekintse át a szinkronizálási beállítások a következő szolgáltatások biztosítására, hogy azok megfelelnek a aktív szinkronizálási kiszolgáló.  Lehet, hogy további konfigurációs lépések szükségesek.|
+|A Jelszókivonat-szinkronizálás| a Jelszókivonat-szinkronizálás és a jelszó-visszaírás beállításokat teljes mértékben visszaállnak az Azure AD Connect-verziók 1.2.65.0 kezdve.  Ha visszaállítása az Azure AD Connect egy régebbi verzióját használja, tekintse át a szinkronizálási beállítások a következő szolgáltatások biztosítására, hogy azok megfelelnek a aktív szinkronizálási kiszolgáló.  Lehet, hogy további konfigurációs lépések szükségesek.|
 |Összevonás az AD FS rendszerrel|Az Azure-hitelesítés továbbra is az aktív szinkronizálási kiszolgáló konfigurálása az AD FS-házirend használata.  Ha az Azure AD Connect használatával kezelheti az AD FS farmon, igény szerint módosíthatja a bejelentkezési módszer az aktív szinkronizálást példány váljon a készenléti kiszolgáló előkészítése az AD FS összevonási.   Ha eszközbeállítások az aktív szinkronizálást kiszolgálón engedélyezve vannak, állítsa be ezeket a beállításokat ezen a kiszolgálón a "Eszközbeállítások konfigurálása" feladat futtatásával.|
 |Az átmenő hitelesítés és asztali egyszeri bejelentkezés|Frissítse a bejelentkezési módszert az aktív szinkronizálási kiszolgálón a konfigurációnak megfelelően.  Ha ez nem követi az elsődleges, átmenő hitelesítést, zökkenőmentes egyszeri bejelentkezést és a kiszolgáló előléptetése le lesz tiltva, és a bérlő előfordulhat, hogy tagadják, ha nem rendelkezik előtt, a Jelszókivonat-szinkronizálás, a biztonsági mentési beállítás jelentkezzen be. Azt is vegye figyelembe, hogy átmeneti módban átmenő hitelesítés engedélyezésekor egy új hitelesítési agent telepítve lesz, regisztrálja, és fog futni, és a egy magas rendelkezésre állású ügynök, amely bejelentkezési kéréseket fogad.|
 |Összevonás a PingFederate-tel|Az Azure-hitelesítés továbbra is használja a PingFederate-házirendet, az aktív szinkronizálási kiszolgáló konfigurálva.  A bejelentkezési módszer a PingFederate előkészítésekor a készenléti kiszolgáló váljon az aktív szinkronizálást példány igény szerint módosítható.  Ebben a lépésben elhalasztható, amíg nem kell vonni a pingfederate-tel további tartományokat.|

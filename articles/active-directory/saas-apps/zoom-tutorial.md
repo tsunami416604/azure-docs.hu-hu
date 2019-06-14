@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 641fe5439e320208d41969b9563293257648d488
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
-ms.translationtype: MT
+ms.openlocfilehash: 4b4b680657ba8575333f598d3a34c4f4b5f2ebd7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65895902"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050149"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Oktatóanyag: Nagyítás az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Nagyítás az Azure AD-be, az integráció konfigurálásához hozzá kell Nagy�
 
 **Nagyítás hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -112,7 +112,7 @@ A Nagyítás konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre 
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [nagyítás ügyfél-támogatási csapatának](https://support.zoom.us/hc/en-us) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-5. Nagyítás alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+5. Nagyítás alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 
@@ -120,12 +120,12 @@ A Nagyítás konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre 
     
     | Name (Név) | Névtér  |  Adatforrás-attribútum|
     | ---------------| --------------- | --------- |
-    | E-mail cím  | user.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
+    | E-mail-cím  | user.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
     | Utónév  | user.givenname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |
     | Vezetéknév  | user.surname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |
     | Telefonszám  | user.telephonenumber  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone` |
     | Részleg  | user.department  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department` |
-    | szerepkör |    user.assignedrole |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role` |
+    | role |    user.assignedrole |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role` |
 
     > [!NOTE]
     > Kattintson a [Itt](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) tudni, hogy az Azure AD-szerepkör konfigurálása
@@ -278,7 +278,7 @@ Ahhoz, hogy a nagyításhoz. Jelentkezzen be az Azure AD-felhasználók, akkor k
 > [!NOTE]
 > Bármely más nagyítás felhasználói fiók létrehozása eszközöket használhatja, vagy nagyítás üzembe helyezni az Azure Active Directory által biztosított API-k felhasználói fiókok.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 03/13/2017
-ms.date: 04/09/2019
+ms.date: 03/13/2017
 ms.subservice: hybrid
-ms.author: v-junlch
+ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60383268"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>A Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása
@@ -352,9 +351,9 @@ Jelszó Jelszókivonat szinkronizálása problémák objektum állapotának megt
 
 Az Állapot oszlopban a következő értékeket veheti fel:
 
-| status | Leírás |
+| Állapot | Leírás |
 | --- | --- |
-| Sikeres |Jelszó szinkronizálása sikerült. |
+| Siker |Jelszó szinkronizálása sikerült. |
 | FilteredByTarget |Jelszó beállítása **kell változtatni a jelszót a következő bejelentkezéskor**. Jelszó nem lett szinkronizálva. |
 | NoTargetConnection |Nincs objektum tartozik a metaverzumba, vagy az Azure ad-ben összekötőtérben. |
 | SourceConnectorNotPresent |Nem található a helyszíni Active Directory-összekötő-térben található objektum. |
@@ -372,7 +371,7 @@ Az Állapot oszlopban a következő értékeket veheti fel:
 ```powershell
 Import-Module ADSync
 $connectors = Get-ADSyncConnector
-$aadConnectors = $connectors | Where-Object {$_.SubType -eq "Azure Active Directory (Microsoft)"}
+$aadConnectors = $connectors | Where-Object {$_.SubType -eq "Windows Azure Active Directory (Microsoft)"}
 $adConnectors = $connectors | Where-Object {$_.ConnectorTypeName -eq "AD"}
 if ($aadConnectors -ne $null -and $adConnectors -ne $null)
 {
@@ -448,5 +447,3 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 * [A Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](how-to-connect-password-hash-synchronization.md)
 * [Az Azure AD Connect szinkronizálása: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
-
-<!-- Update_Description: wording update -->

@@ -9,17 +9,17 @@ ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 11a84d4ced3232102d262352b84abe1f813e2406
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60365180"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Az ExpressRoute-Kapcsolatcsoportok áthelyezése a klasszikusból Resource Manager-alapú üzemi modellbe PowerShell-lel
 
 Szeretne használni egy ExpressRoute-kapcsolatcsoportot a klasszikus és Resource Manager üzembe helyezési modellel, a kapcsolatcsoport kell áthelyezni a Resource Manager-alapú üzemi modellbe. A következő szakaszok segítenek a kapcsolatcsoport áthelyezése a PowerShell használatával.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -31,7 +31,7 @@ Szeretne használni egy ExpressRoute-kapcsolatcsoportot a klasszikus és Resourc
 
 ## <a name="move-an-expressroute-circuit"></a>ExpressRoute-Kapcsolatcsoportok áthelyezése
 
-### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>1. lépés: A klasszikus üzemi modellből gyűjtse össze a kapcsolatcsoport részletei
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>1\. lépés: A klasszikus üzemi modellből gyűjtse össze a kapcsolatcsoport részletei
 
 Jelentkezzen be a klasszikus Azure-környezet, és a kulcs összegyűjtése.
 
@@ -60,7 +60,7 @@ Jelentkezzen be a klasszikus Azure-környezet, és a kulcs összegyűjtése.
    Get-AzureDedicatedCircuit
    ```
 
-### <a name="step-2-sign-in-and-create-a-resource-group"></a>2. lépés: Jelentkezzen be, és hozzon létre egy erőforráscsoportot
+### <a name="step-2-sign-in-and-create-a-resource-group"></a>2\. lépés: Jelentkezzen be, és hozzon létre egy erőforráscsoportot
 
 Jelentkezzen be a Resource Manager-környezetben, és hozzon létre egy új erőforráscsoportot.
 
@@ -82,7 +82,7 @@ Jelentkezzen be a Resource Manager-környezetben, és hozzon létre egy új erő
    New-AzResourceGroup -Name "DemoRG" -Location "West US"
    ```
 
-### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>3. lépés: Az ExpressRoute-kapcsolatcsoport áthelyezése a Resource Manager-alapú üzemi modellbe
+### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>3\. lépés: Az ExpressRoute-kapcsolatcsoport áthelyezése a Resource Manager-alapú üzemi modellbe
 
 Most már készen áll az ExpressRoute-kapcsolatcsoport áthelyezése a klasszikus üzemi modellből a Resource Manager-alapú üzemi modellbe. A folytatás előtt ellenőrizze a megadott információkat [az ExpressRoute-Kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe](expressroute-move.md).
 

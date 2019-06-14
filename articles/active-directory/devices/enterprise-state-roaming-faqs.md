@@ -18,10 +18,10 @@ ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a77cf89b7697b7b6b08dead34339ae50dbba8518
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60296316"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
@@ -76,7 +76,7 @@ Windows 10-es November, 2015 vagy újabb kiadásaiban Enterprise State Roaming c
 Ha több Azure AD-fiókok a különböző Azure AD-bérlőt ugyanazon az eszközön, frissítenie kell az eszköz beállításjegyzék minden egyes Azure AD-bérlőhöz tartozó Azure Rights Management szolgáltatással való kommunikációra.  
 
 1. A GUID azonosító található minden egyes Azure AD-bérlővel. Nyissa meg az Azure Portalon, és válassza ki az Azure AD-bérlő. A Tulajdonságok lapon a kiválasztott bérlő van a bérlőhöz tartozó GUID (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), címkézett **címtár-azonosító**. 
-2. Miután a globálisan egyedi Azonosítót, szüksége lesz a beállításkulcs hozzáadása **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<bérlői azonosító GUID >**.
+2. Miután a globálisan egyedi Azonosítót, szüksége lesz a beállításkulcs hozzáadása **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<bérlői azonosító GUID >** .
    Az a **bérlői azonosító GUID** kulcsban, hozzon létre egy új karakterláncsoros értéket (REG-MULTI-SZ) **AllowedRMSServerUrls**. Adja meg az adatokat, a licencelési terjesztési pont URL-címek az eszköz hozzáfér a többi Azure bérlők számától.
 3. Annak a terjesztési pont licencelési URL-címeket futtatásával a **Get-AadrmConfiguration** parancsmag az AADRM modulban. Ha a tartozó értékeket a **LicensingIntranetDistributionPointUrl** és **LicensingExtranetDistributionPointUrl** eltérőek, mindkét értéket adja meg. Ha az értékek azonosak, csak egyszer adja meg az értéket.
 

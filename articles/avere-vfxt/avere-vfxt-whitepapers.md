@@ -7,10 +7,10 @@ ms.author: v-erkell
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.openlocfilehash: cf111f2ebe4233ea5d02cf5c7fbc0967655475d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60409192"
 ---
 # <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Az Azure-tanulmányok és más erőforrások Azure vFTX 
@@ -29,7 +29,7 @@ Ez az útmutató Avere vFXT tárolási vagy BeeGFS párhuzamos fájlrendszer biz
 
 A kétoldalas rövid alapszintű információkat tartalmaz, és diagramok, amelyek bemutatják, hogyan Avere vFXT használata az Azure-ban több használati esetek.
 
-## <a name="hybrid-cloud-for-file-based-workloads"></a>Hibrid felhő, a fájl-alapú számítási feladatokhoz
+## <a name="hybrid-cloud-for-file-based-workloads"></a>Hibrid felhő fájlalapú számítási feladatokhoz
 
 **Hivatkozás:** [Szemléltető ábra: A fájl-alapú számítási feladatokhoz a hibrid felhő készítése](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/) 
 

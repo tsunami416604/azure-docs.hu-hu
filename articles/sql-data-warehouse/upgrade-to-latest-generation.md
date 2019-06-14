@@ -11,10 +11,10 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.openlocfilehash: a8bd260db7a141ce845ce7fb5b7e10f642907b82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60310323"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Teljesítményoptimalizálás az SQL Data Warehouse frissítésével
@@ -27,11 +27,11 @@ Most már zökkenőmentesen frissítheti az Azure Portalon az SQL Data Warehouse
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
-## <a name="applies-to"></a>A következőkre vonatkozik
+## <a name="applies-to"></a>A következőkre vonatkozik:
 
 Ez a frissítés alkalmazva lesz optimalizált Gen1 számítási szinten található adattárházak [támogatott régiók](gen2-migration-schedule.md#automated-schedule-and-region-availability-table).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 1. Ellenőrizze, hogy a [régió](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) GEN1 GEN2 az áttelepítés támogatott. Megjegyzés: az automatikus áttelepítési dátum. Az automatizált folyamat való ütközések elkerülése érdekében tervezze meg a az automatizált folyamat kezdő dátum előtt manuális áttelepítést.
 2. Ha Ön egy régióban, amely még nem támogatott, továbbra is hozzá kell adni a régió kereséséhez vagy [visszaállítással frissítés](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) egy támogatott régióban.
@@ -58,7 +58,7 @@ Ez a frissítés alkalmazva lesz optimalizált Gen1 számítási szinten találh
 
 ## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Frissítse egy támogatott régióban az Azure portal használatával
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

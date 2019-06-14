@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
 ms.openlocfilehash: 9a0b536426ab024d5af7b257e44a2d5e20f14def
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371036"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Tekintse át a vállalati beléptetési számlázási REST API-k használatával
@@ -43,8 +43,8 @@ A következő fejléceket szükség:
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
-|*A Content-Type:*|Kötelező. Állítsa be `application/json`.|  
-|*Hitelesítés:*|Kötelező. Egy érvényes értékre `Bearer` [API-kulcs](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Content-Type:*|Kötelező. Állítsa be `application/json`.|  
+|*Authorization:*|Kötelező. Egy érvényes értékre `Bearer` [API-kulcs](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
 Ez a példa bemutatja egy szinkron hívás, amely az aktuális elszámolási időszakban az adatait adja vissza. Teljesítménybeli megfontolások miatt a szinkron hívások számára az elmúlt hónapban információkat ad vissza.  Ön is meghívhatja a [API aszinkron módon](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) való 36 hónapos adatokat adja vissza.
 
@@ -96,8 +96,8 @@ A következő fejléceket szükség:
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
-|*A Content-Type:*|Kötelező. Állítsa be `application/json`.|  
-|*Hitelesítés:*|Kötelező. Egy érvényes értékre `Bearer` [API-kulcs](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Content-Type:*|Kötelező. Állítsa be `application/json`.|  
+|*Authorization:*|Kötelező. Egy érvényes értékre `Bearer` [API-kulcs](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
 Ez a példa bemutatja egy szinkron hívás, amely az aktuális elszámolási időszakban az adatait adja vissza. Teljesítménybeli megfontolások miatt a szinkron hívások számára az elmúlt hónapban információkat ad vissza.  Ön is meghívhatja a [API aszinkron módon](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) való 36 hónapos adatokat adja vissza.
 
@@ -152,8 +152,8 @@ A következő fejléceket szükség:
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
-|*A Content-Type:*|Kötelező. Állítsa be `application/json`.|  
-|*Hitelesítés:*|Kötelező. Egy érvényes értékre `Bearer` [API-kulcs](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Content-Type:*|Kötelező. Állítsa be `application/json`.|  
+|*Authorization:*|Kötelező. Egy érvényes értékre `Bearer` [API-kulcs](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
 Ez a példa bemutatja egy szinkron hívás, amely az aktuális elszámolási időszakban az adatait adja vissza. Teljesítménybeli megfontolások miatt a szinkron hívások számára az elmúlt hónapban információkat ad vissza.  Ön is meghívhatja a [API aszinkron módon](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) való 36 hónapos adatokat adja vissza.
 

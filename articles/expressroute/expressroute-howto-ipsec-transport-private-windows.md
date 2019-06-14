@@ -9,10 +9,10 @@ ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
 ms.openlocfilehash: d728980517988e2dc39be4e4b64d20157a1aef54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60367278"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurálja az ExpressRoute privát társviszony-létesítés IPsec átviteli módhoz
@@ -176,7 +176,7 @@ Hozzon létre egy lista, amely meghatározza a titkosított HTTP-forgalmat a 808
 7. Az a **IP protokoll típusa** lapon jelölje be **TCP**. Ezután kattintson a **Tovább** gombra.
 
    [![30]][30]
-8. Az a **IP protokoll Port** lapon jelölje be **bármely portról** és **erre a portra:**. Típus **8080-as** a szövegmezőben. Ezek a beállítások határozzák meg, csak a HTTP-forgalmat a 8080-as portra lesznek titkosítva. Ezután kattintson a **Tovább** gombra.
+8. Az a **IP protokoll Port** lapon jelölje be **bármely portról** és **erre a portra:** . Típus **8080-as** a szövegmezőben. Ezek a beállítások határozzák meg, csak a HTTP-forgalmat a 8080-as portra lesznek titkosítva. Ezután kattintson a **Tovább** gombra.
 
    [![31]][31]
 9. Tekintse meg az IP-szűrők listája.  Az IP-szűrők listája konfigurációjának **azure-onpremises-HTTP8080** elindítja a következő feltételeknek megfelelő összes forgalom titkosítása:

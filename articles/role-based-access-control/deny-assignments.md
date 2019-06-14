@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 497571a65510f806d7d7994c9dc37f9a00b65a5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60197136"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Megismerheti az Azure-erőforrások hozzárendelések megtagadása
@@ -38,7 +38,7 @@ Ez a cikk azt ismerteti, hogyan megtagadása a hozzárendelések vannak definiá
  Egy megtagadási-hozzárendelést a következő tulajdonságokkal rendelkezik:
 
 > [!div class="mx-tableFixed"]
-> | Tulajdonság | Szükséges | Típus | Leírás |
+> | Tulajdonság | Kötelező | Típus | Leírás |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | Igen | String | A megtagadási hozzárendelés megjelenített neve. Egy adott hatókör egyedi névvel kell rendelkeznie. |
 > | `Description` | Nem | String | A megtagadási hozzárendelés leírása. |

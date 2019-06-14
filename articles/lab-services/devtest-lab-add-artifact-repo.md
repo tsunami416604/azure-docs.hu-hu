@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60311715"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Egyéni összetevők és a Resource Manager-sablonok tárolása a Git-adattár hozzáadása
@@ -74,7 +74,7 @@ A labor ad hozzá egy adattár, először kérje le kulcsfontosságú adatokat a
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Válassza ki **további szolgáltatások**, majd válassza ki **DevTest Labs** a szolgáltatások listájából.
 3. Tesztkörnyezetek listájában jelölje ki a labor. 
-4. Válassza ki **Konfigurace a zásady** > **Tárházak** > **+ Hozzáadás**.
+4. Válassza ki **Konfigurace a zásady** > **Tárházak** >  **+ Hozzáadás**.
 
     ![Adattár hozzáadása gombbal](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. A második **Tárházak** csoportjában adja meg a következő információkat:

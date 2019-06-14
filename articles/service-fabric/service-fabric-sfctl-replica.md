@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: d0a7199ff0e9cb17c3fbc179a9b37a6620f521f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60544670"
 ---
 # <a name="sfctl-replica"></a>sfctl-replika
@@ -28,12 +28,12 @@ A szolgáltatás partícióinak tartozó replikák kezelése.
 
 |Parancs|Leírás|
 | --- | --- |
-| üzembe helyezett | A Service Fabric csomópont telepítve replika részleteinek beolvasása. |
-| üzembe helyezett-list | A Service Fabric-csomópont replikát listájának beolvasása. |
-| egészségügy | A Service Fabric állapotalapú szolgáltatás replika- vagy állapotmentes szolgáltatás állapotának beolvasása. |
-| információ | A Service Fabric-partíción replika adatainak beolvasása. |
-| lista | A Service Fabric service partíció replika adatainak beolvasása. |
-| eltávolítás | Eltávolítja a csomóponton futó service replika. |
+| deployed | A Service Fabric csomópont telepítve replika részleteinek beolvasása. |
+| deployed-list | A Service Fabric-csomópont replikát listájának beolvasása. |
+| health | A Service Fabric állapotalapú szolgáltatás replika- vagy állapotmentes szolgáltatás állapotának beolvasása. |
+| info | A Service Fabric-partíción replika adatainak beolvasása. |
+| list | A Service Fabric service partíció replika adatainak beolvasása. |
+| eltávolítása | Eltávolítja a csomóponton futó service replika. |
 | report-health | A Service Fabric-replika health jelentést küld. |
 | restart | Megőrzött szolgáltatásként fut egy csomóponton szolgáltatás replikája újraindul. |
 
@@ -70,7 +70,7 @@ A replikát a Service Fabric csomópontjaival kapcsolatos információt tartalma
 
 |Argumentum|Leírás|
 | --- | --- |
-| --application-id [Required] | Az alkalmazás identitását. Ez általában a nélkül az alkalmazás teljes nevét a "fabric\:" URI-séma. 6.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "\~" karaktert. Például, ha az alkalmazás neve "fabric\:/myapp/app1", az identitása lenne "myapp\~app1" 6.0 + és "myapp/app1" korábbi verzióiban. |
+| --application-id [Required] | Az alkalmazás identitását. Ez általában a nélkül az alkalmazás teljes nevét a "fabric\:" URI-séma. 6\.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "\~" karaktert. Például, ha az alkalmazás neve "fabric\:/myapp/app1", az identitása lenne "myapp\~app1" 6.0 + és "myapp/app1" korábbi verzióiban. |
 | --csomópontnév [kötelező] | A csomópont neve. |
 | --partition-id | A partíció identitását. |
 | --service-manifest-name | A szolgáltatásjegyzék-alkalmazástípus a Service Fabric-fürt részeként regisztrált neve. |

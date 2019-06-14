@@ -4,23 +4,23 @@ description: Ez a témakör ismerteti a megakadályozása véletlen törlések (
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 07/12/2017
-ms.date: 11/09/2018
-ms.component: hybrid
-ms.author: v-junlch
+ms.date: 07/12/2017
+ms.subservice: hybrid
+ms.author: billmath
+ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1244dd460196e5882caab0d4b526850da48d084
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60383389"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Az Azure AD Connect szinkronizálása: Véletlen törlések megakadályozása
@@ -31,9 +31,9 @@ Amikor az Azure AD Connect telepítésének megakadályozása véletlen törlés
 ## <a name="what-is-prevent-accidental-deletes"></a>Mi az véletlen törlések megakadályozása
 Gyakori forgatókönyvek, amikor megjelenik számos törlések tartalmazza:
 
-- Vált [szűrés](how-to-connect-sync-configure-filtering.md) , ha egy teljes [OU](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) vagy [tartomány](how-to-connect-sync-configure-filtering.md#domain-based-filtering) nincs bejelölve.
-- Egy adott szervezeti egységben lévő minden objektum törlése.
-- Egy szervezeti egység átnevezése, amelynek következtében a rendszer a benne lévő összes objektumot hatókörön kívülinek tekinti a szinkronizálás vonatkozásában.
+* Vált [szűrés](how-to-connect-sync-configure-filtering.md) , ha egy teljes [OU](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) vagy [tartomány](how-to-connect-sync-configure-filtering.md#domain-based-filtering) nincs bejelölve.
+* Egy adott szervezeti egységben lévő minden objektum törlése.
+* Egy szervezeti egység átnevezése, amelynek következtében a rendszer a benne lévő összes objektumot hatókörön kívülinek tekinti a szinkronizálás vonatkozásában.
 
 A PowerShell használatával módosíthatja az alapértelmezett érték 500-objektumok használatával `Enable-ADSyncExportDeletionThreshold`, amely az AD-Szinkronizáló modul telepítve van az Azure Active Directory Connect része. Ezt az értéket a szervezet méretének megfelelően átméretezi kell konfigurálnia. Szinkronizálásütemező 30 percenként fut, mivel az érték 30 percen belül látható törlések száma.
 
@@ -69,6 +69,5 @@ Ha ez nem várt, vizsgálja meg, és javítási műveleteket. Ha szeretné látn
 ## <a name="next-steps"></a>További lépések
 **Áttekintő témakör**
 
-- [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
-- [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
-
+* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f13e498859986d5ee697cbd67907fd344147ed0c
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: a0bb34f8a43199a5d3a18064bce92ef4bec543af
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66492838"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050642"
 ---
 # <a name="azure-functions-networking-options"></a>Érvényes hálózati beállításairól az Azure Functions
 
@@ -25,13 +25,13 @@ Függvényalkalmazások a többféle módon is üzemeltethet:
 
 * Nincs több különböző szintű virtuális hálózati kapcsolat és skálázási lehetőségek egy több-bérlős infrastruktúrában futó tervet beállítás:
     * A [Használatalapú csomag](functions-scale.md#consumption-plan), amely dinamikusan méretezhető betölteni a válaszban, és minimális hálózati elkülönítési lehetőséget kínál.
-    * A [prémium szintű csomag](functions-scale.md#premium-plan-public-preview), amely is méretezhető dinamikusan, miközben átfogóbb hálózatelkülönítés kínál.
+    * A [prémium szintű csomag](functions-scale.md#premium-plan), amely is méretezhető dinamikusan, miközben átfogóbb hálózatelkülönítés kínál.
     * Az Azure [App Service-csomag](functions-scale.md#app-service-plan), amely rögzített méretű, működik, és a prémium szintű csomaggal hasonló hálózati elkülönítés kínálja.
 * Függvények futtathat egy [App Service Environment-környezet](../app-service/environment/intro.md). Ez a módszer üzembe helyezi a függvény a virtuális hálózatban, és teljes hálózati vezérlő és elszigeteltséget biztosít.
 
 ## <a name="matrix-of-networking-features"></a>A hálózati funkciók mátrix
 
-|                |[Használatalapú csomag](functions-scale.md#consumption-plan)|[Prémium szintű csomag (előzetes verzió)](functions-scale.md#premium-plan-public-preview)|[App Service-csomag](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
+|                |[Használatalapú csomag](functions-scale.md#consumption-plan)|[Prémium szintű csomag (előzetes verzió)](functions-scale.md#premium-plan)|[App Service-csomag](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Bejövő IP-korlátozások](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
 |[Kimenő IP-korlátozások](#private-site-access)|❌No| ❌No|❌No|✅Yes|

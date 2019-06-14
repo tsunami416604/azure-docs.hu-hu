@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12bfd70336c01e5595a086f360ce176df190a20e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60356533"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>kézikönyv: A jóváhagyott ügyfélalkalmazások szükségesek a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés 
@@ -53,7 +53,7 @@ Például egyéb szabályzatok alapján az alkalmazásalapú feltételes hozzáf
  
 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a témakör azt feltételezi, hogy Ön ismeri a:
 
@@ -145,7 +145,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/07.png)
 
-4. **Feltételek:** Mint **feltételek**, konfigurálnia kell **ügyfélalkalmazások (előzetes verzió)**. 
+4. **Feltételek:** Mint **feltételek**, konfigurálnia kell **ügyfélalkalmazások (előzetes verzió)** . 
 
     a. Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 
@@ -412,7 +412,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/07.png)
 
-4. **Feltételek:** Mint **feltételek**, konfigurálnia kell **ügyfélalkalmazások (előzetes verzió)**. 
+4. **Feltételek:** Mint **feltételek**, konfigurálnia kell **ügyfélalkalmazások (előzetes verzió)** . 
 
     Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 

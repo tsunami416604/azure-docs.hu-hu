@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: 4108616e3ae41e2c88b74bb08d5f846c0035101f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236198"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>A System Center Data Protection Manager hibaelhárítása
@@ -22,7 +22,7 @@ Ez a cikk ismerteti a Data Protection Manager használata során előforduló pr
 A legújabb kibocsátási megjegyzések a System Center Data Protection Manager tekintse meg a [a System Center dokumentációja](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016). A Data Protection Manager a támogatással kapcsolatos többet is megtudhat [Ez a mátrix](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016).
 
 
-## <a name="error-replica-is-inconsistent"></a>Hiba: Inkonzisztens replika
+## <a name="error-replica-is-inconsistent"></a>Hiba: A replika inkonzisztens
 
 A replika inkonzisztens lehet a következő okok miatt:
 - A replika-létrehozási feladata meghiúsul.
@@ -42,7 +42,7 @@ A probléma megoldásához hajtsa végre a következő műveleteket:
 - Győződjön meg arról, hogy a lemez állapota megfelelő, és hogy van-e elegendő szabad terület a replikát.
 - Győződjön meg arról, hogy nincsenek-e ismétlődő biztonsági mentési feladatok, amelyek egy időben futnak.
 
-## <a name="error-online-recovery-point-creation-failed"></a>Hiba: Az online helyreállítási pont létrehozása sikertelen volt.
+## <a name="error-online-recovery-point-creation-failed"></a>Hiba: Online helyreállítási pont létrehozása nem sikerült
 
 A probléma megoldásához hajtsa végre a következő műveleteket:
 - Győződjön meg arról, hogy használ-e az Azure Backup szolgáltatás ügynökének legújabb verzióját.
@@ -53,7 +53,7 @@ A probléma megoldásához hajtsa végre a következő műveleteket:
 - Győződjön meg arról, hogy a replika jelen, és nem hiányzik-e.
 - Győződjön meg arról, hogy rendelkezik-e elegendő hely a frissítés feladatütemezési száma (USN) naplót szeretne létrehozni a replikát.
 
-## <a name="error-unable-to-configure-protection"></a>Hiba: Nem sikerült beállítani a védelmet.
+## <a name="error-unable-to-configure-protection"></a>Hiba: Nem sikerült beállítani a védelmet
 
 Ez a hiba akkor fordul elő, ha a Data Protection Manager-kiszolgáló nem tud csatlakozni a védett kiszolgálón. 
 

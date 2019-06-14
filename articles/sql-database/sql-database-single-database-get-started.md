@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
-ms.reviewer: carlrab
+ms.reviewer: carlrab, sstein
 manager: craigg
 ms.date: 04/23/2019
-ms.openlocfilehash: 3a0f3154142dc02a9ab48bc288c543b02fef46ea
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
-ms.translationtype: MT
+ms.openlocfilehash: 85bbd14c8d2bcd8e3699e5f5efdae9f52acd63e5
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389073"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808552"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Gyors útmutató: Önálló adatbázis létrehozása az Azure SQL Database az Azure portal használatával
 
@@ -137,4 +137,4 @@ Ha elkészült, használja ezeket az erőforrásokat, törölheti őket a követ
   - [Kapcsolódás és lekérdezés az Azure Data Studióval](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Önálló adatbázis létrehozása a kiépített számítási rétegben, Azure CLI-vel: [Azure CLI-minták](sql-database-cli-samples.md).
 - Egy önálló adatbázis létrehozása az Azure PowerShell-lel kiépített számítási szinten: [Azure PowerShell-minták](sql-database-powershell-samples.md).
-- Egy önálló adatbázis létrehozása az Azure Powershell használatával kiszolgáló nélküli számítási szinten: [kiszolgáló nélküli adatbázis létrehozása PowerShell használatával](sql-database-serverless.md#create-new-serverless-database-using-powershell)
+- Egy önálló adatbázis létrehozása az Azure Powershell használatával kiszolgáló nélküli számítási szinten: [kiszolgáló nélküli adatbázis létrehozása PowerShell használatával](sql-database-serverless.md#create-new-database-in-serverless-compute-tier-using-powershell)

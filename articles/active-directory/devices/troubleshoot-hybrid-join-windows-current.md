@@ -17,10 +17,10 @@ ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dcb7dc356c8101c1b0907818b45618ef6372c691
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60250893"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott Windows 10 és Windows Server 2016-eszközök 
@@ -46,7 +46,7 @@ Ez a dokumentum nyújt hibaelhárítási útmutatót kapcsolatos lehetséges pro
 
 A Windows 10 és Windows Server 2016, a hibrid Azure Active Directory join támogatja a Windows 10, 2015 novemberi frissítés vagy újabb verzió. Az Évfordulós frissítés használatát javasoljuk.
 
-## <a name="step-1-retrieve-the-join-status"></a>1. lépés: A csatlakozás állapotának lekérése 
+## <a name="step-1-retrieve-the-join-status"></a>1\. lépés: A csatlakozás állapotának lekérése 
 
 **A csatlakozás állapotának lekéréséhez:**
 
@@ -103,7 +103,7 @@ WamDefaultAuthority: organizations
 
 
 
-## <a name="step-2-evaluate-the-join-status"></a>2. lépés: A csatlakozás állapota kiértékelése 
+## <a name="step-2-evaluate-the-join-status"></a>2\. lépés: A csatlakozás állapota kiértékelése 
 
 Tekintse át a következő mezőket, és győződjön meg arról, hogy rendelkeznek-e a várt értékek:
 

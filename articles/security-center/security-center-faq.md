@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: de652f508f6946219627b3a3d51b148cbee58dbf
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 300d96a792663a32a326d5d01f281b77ccf9c4bf
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966864"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050505"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -126,8 +126,10 @@ További információkért lásd: [automatikus üzembe helyezés abban az esetbe
 
 ### Mi történik, ha korábban a Microsoft Monitoring Agent közvetlenül telepítve van a gépen, de nem bővítményeként (közvetlen ügynök)?<a name="directagentinstalled"></a>
 Ha a Microsoft Monitoring Agent közvetlenül a virtuális gép (nem pedig egy Azure-bővítmény) van telepítve, a Security Center telepíti a Microsoft Monitoring Agent bővítményt, és előfordulhat, hogy a Microsoft Monitoring agent frissítése a legújabb verzióra.
-Az ügynök telepítve van továbbra is, hogy a már konfigurált munkaterületeire, és emellett a munkaterülethez, a Security Center konfigurált jelentést (többkiszolgálós támogatott).
+Az ügynök telepítve van továbbra is, hogy a már konfigurált munkaterületeire, és emellett a munkaterülethez, a Security Center konfigurált jelentést (többkiszolgálós támogatott Windows-gépeken).
 Ha a konfigurált munkaterületével felhasználói munkaterület (nem a Security Center alapértelmezett munkaterületen), akkor telepítenie kell a "biztonsági /"SecurityCenterFree"megoldás a Security Center használatával indítsa el az események feldolgozását a virtuális gépek és számítógépek számára, amely jelentéskészítés munkaterület.
+
+A Linux rendszerű gépek az ügynök többkiszolgálós még nem támogatott – ezért egy meglévő ügynöktelepítés észlelése esetén az Automatikus kiépítés nem történik, és a gép konfigurációja nem változik.
 
 Előfizetések előkészítette a Security Center a 2019-03-17., amikor egy meglévő ügynököt érzékeli, mielőtt a meglévő gépek nem lesz telepítve a Microsoft Monitoring Agent bővítményt, és a gép nem lesz hatással. Ezek a gépek lásd a "Feloldás a monitoring agent állapotproblémái a gépeken" javaslat ezeken a gépeken az ügynök telepítésével kapcsolatos problémák megoldásához
 

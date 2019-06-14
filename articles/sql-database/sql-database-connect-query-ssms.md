@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 60f2edf0adbfd740ce552449125ae69ab50a8586
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61409694"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051088"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: SQL Server Management Studio használatával csatlakozhat, és az Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -30,7 +30,7 @@ Ez a rövid útmutatóban használni kívánt [SQL Server Management Studio] [ s
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolat egy virtuális gépről](sql-database-managed-instance-configure-vm.md)|
@@ -87,7 +87,7 @@ Az SMSS csatlakozzon az Azure SQL Database-kiszolgálóhoz.
 
 5. Az adatbázis-objektumok megtekintéséhez bontsa ki a **adatbázisok** majd **mySampleDatabase**.
 
-   ![adatbázis-objektumok megtekintése](./media/sql-database-connect-query-ssms/connected.png)  
+   ![mySampleDatabase objektumok](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
@@ -106,7 +106,7 @@ Futtassa a következő parancsot [kiválasztása](https://msdn.microsoft.com/lib
 
 3. Válassza az eszköztár **Execute** be adatokat a `Product` és `ProductCategory` táblákat.
 
-    ![adatok két tábla lekérdezése](./media/sql-database-connect-query-ssms/query2.png)
+    ![tábla Product és ProductCategory adatok lekérése](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Adat beszúrása
 
@@ -133,7 +133,7 @@ Futtassa a következő parancsot [BESZÚRÁSA](https://msdn.microsoft.com/librar
            ,GETDATE() );
    ```
 
-2. Válassza ki **Execute** az új sor beszúrásához a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)**.
+2. Válassza ki **Execute** az új sor beszúrásához a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)** .
 
 ## <a name="view-the-result"></a>Az eredmény megtekintéséhez
 
@@ -146,7 +146,7 @@ Futtassa a következő parancsot [BESZÚRÁSA](https://msdn.microsoft.com/librar
 
 2. Válassza a **Végrehajtás** lehetőséget. Az alábbi eredmény jelenik meg.
 
-   ![Eredmény](./media/sql-database-connect-query-ssms/result.png)
+   ![a termék table lekérdezés eredménye](./media/sql-database-connect-query-ssms/result.png)
 
 ## <a name="update-data"></a>Adatok frissítése
 
@@ -160,7 +160,7 @@ Futtassa a következő parancsot [frissítés](https://msdn.microsoft.com/librar
    WHERE Name = 'myNewProduct';
    ```
 
-2. Válassza ki **Execute** egy megadott sorának frissítéséhez a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)**.
+2. Válassza ki **Execute** egy megadott sorának frissítéséhez a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)** .
 
 ## <a name="delete-data"></a>Adat törlése
 
@@ -173,7 +173,7 @@ Futtassa a következő parancsot [törlése](https://msdn.microsoft.com/library/
    WHERE Name = 'myNewProduct';
    ```
 
-2. Válassza ki **Execute** egy megadott sorának törléséhez a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)**.
+2. Válassza ki **Execute** egy megadott sorának törléséhez a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)** .
 
 ## <a name="next-steps"></a>További lépések
 

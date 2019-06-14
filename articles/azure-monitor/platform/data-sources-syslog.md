@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: magoedte
 ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60240859"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-adatforrások az Azure monitorban
@@ -54,7 +54,7 @@ A Linuxhoz készült Log Analytics-ügynököt csak a létesítmények és súly
 ### <a name="configure-syslog-in-the-azure-portal"></a>Syslog konfigurálása az Azure Portalon
 A Syslog beállítása a [adatok menü a Speciális beállítások](agent-data-sources.md#configuring-data-sources). Ez a konfiguráció minden egyes Linux-ügynök a konfigurációs fájlt érkeznek.
 
-Írja be a nevét, majd egy új funkció is hozzáadhat **+**. Minden funkció esetében csak a kiválasztott súlyossági szinten pedig a üzenetek összegyűjtött.  Ellenőrizze a súlyossági szint esetén csak az adott létesítmény gyűjteni kívánt számára. Szűrő üzenetek további feltételeket nem tud biztosítani.
+Írja be a nevét, majd egy új funkció is hozzáadhat **+** . Minden funkció esetében csak a kiválasztott súlyossági szinten pedig a üzenetek összegyűjtött.  Ellenőrizze a súlyossági szint esetén csak az adott létesítmény gyűjteni kívánt számára. Szűrő üzenetek további feltételeket nem tud biztosítani.
 
 ![Syslog konfigurálása](media/data-sources-syslog/configure.png)
 

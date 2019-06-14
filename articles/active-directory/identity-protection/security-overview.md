@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 610668768c7baca13cb60caf1d810cced31ebec3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60452941"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Az Azure Active Directory Identity Protection – biztonsági áttekintés
@@ -39,17 +39,17 @@ Biztonsági áttekintés nagyjából két szakaszra oszlik:
   
 ## <a name="trends"></a>Trendek
 
-### <a name="new-risky-users-detected"></a>A rendszer új kockázatos felhasználókat észlelt
+### <a name="new-risky-users-detected"></a>Észlelt új kockázatos felhasználók
 
 Ez a diagram a választott időszakban észlelt új kockázatos felhasználók számát jeleníti meg. A nézet a diagram felhasználói kockázati szint (alacsony, közepes, nagy) szerint szűrheti. A kurzort az UTC dátum növekszik, az adott napra észlelt kockázatos felhasználók száma. Elemre kattint, ez a diagram irányítja a "Kockázatos felhasználók" jelentés. Veszélyeztetett felhasználók szervizelése, fontolja meg a jelszó módosítása.
 
-### <a name="new-risky-sign-ins-detected"></a>A rendszer új kockázatos bejelentkezéseket észlelt
+### <a name="new-risky-sign-ins-detected"></a>Új kockázatos bejelentkezések észlelt
 
 Ezen a diagramon tekintheti meg a kockázatos bejelentkezések észlelt a választott időszakban. Szűrheti a bejelentkezési kockázat típusa (valós idejű vagy összesítő) és a bejelentkezési kockázati szint (alacsony, közepes, nagy) a diagram nézete. Nem védett bejelentkezések valós idejű kockázati sikeres bejelentkezések, amelyek nem merül fel az MFA. (Megjegyzés: Sign-ins, amelyek a kockázatos miatt offline észlelések nem látható el védelemmel, a valós idejű az bejelentkezési kockázati házirend). A kurzort az UTC dátum lépésekben való bejelentkezéseket észlelt veszélyben az adott napra számának megtekintéséhez. Elemre kattint, ez a diagram irányítja a "Kockázatos bejelentkezések" jelentés.
 
 ## <a name="tiles"></a>Mozaik elrendezés
  
-### <a name="high-risk-users"></a>Nagy kockázatú felhasználók
+### <a name="high-risk-users"></a>Magas kockázatú felhasználók
 
 A "magas kockázatú felhasználók" csempe a felhasználók legújabb száma az identitás veszélyeztetése, nagy valószínűséggel jeleníti meg. Ezek a vizsgálat a legnagyobb prioritással kell lennie. Elemre kattint, a "magas kockázatú felhasználók" csempe lesz irányítsa át a megjelenítő csak a felhasználó magas kockázati szintű "Kockázatos felhasználók" jelentés szűrt nézetét. Ez a jelentés használata esetén további, és ezek a jelszó alaphelyzetbe állítása a felhasználók szervizelése.
 
@@ -64,12 +64,12 @@ A "közepes kockázatú felhasználók" csempe a felhasználók legújabb száma
 A "Nem védett kockázatos bejelentkezések" csempe sikeres, valós idejű kockázatos bejelentkezések nem futtatható, sem az MFA próbálnak futtatni rajta egy feltételes hozzáférési szabályzat, az Identity Protection kockázati házirend vagy a felhasználónkénti MFA Hitelesítést az elmúlt hét számát mutatja. Ezek a potenciálisan veszélyeztetett sikeres bejelentkezéseket, és nem MFA merül fel. Ilyen bejelentkezések a jövőbeli védelme érdekében alkalmazzon bejelentkezési kockázati házirendet. A "Nem védett kockázatos bejelentkezések" csempén kattintson a bejelentkezési kockázati házirend konfigurációs paneljére, amellyel konfigurálhatja a bejelentkezési kockázati házirend többtényezős hitelesítés megkövetelése a egy jelentkezzen be egy adott kockázati szint átirányítja.
 
 
-### <a name="legacy-authentication"></a>Örökölt hitelesítés
+### <a name="legacy-authentication"></a>Az örökölt hitelesítés
 
 Az "Örökölt hitelesítés" csempe örökölt hitelesítések száma az elmúlt egy hétben a szervezet jeleníti meg. Az örökölt hitelesítési protokollok nem támogatja a modern biztonsági módszerek, például egy MFA. Az örökölt hitelesítési megelőzése érdekében a feltételes hozzáférési szabályzat is alkalmazhat. Az "Örökölt hitelesítés" csempére kattintás átirányítja Önt a "Identity biztonságos pontszámot".
 
 
-### <a name="identity-secure-score"></a>Identitásbiztonsági pontszám
+### <a name="identity-secure-score"></a>Biztonságos identitás-pontszám
 
 Az identitás biztonságos pontszám méri, és összehasonlítja az iparági minták meg biztonsági állapotát. Ha az "Identity biztonságos pontszám (előzetes verzió)" csempére kattint, az "Identity biztonságos pontszám (előzetes verzió)" panel, ahol további biztonsági helyzetét növelésével kapcsolatos átirányítja.
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: erikre
 ms.openlocfilehash: d3db4166810da981ff0117536d8550a6b2203924
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370985"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Tekintse át az Azure erőforrás-használati REST API használatával
@@ -45,8 +45,8 @@ A következő fejléceket szükség:
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
-|*A Content-Type:*| Kötelező. Állítsa be `application/json`. |  
-|*Hitelesítés:*| Kötelező. Egy érvényes értékre `Bearer` token. |
+|*Content-Type:*| Kötelező. Állítsa be `application/json`. |  
+|*Authorization:*| Kötelező. Egy érvényes értékre `Bearer` token. |
 
 Adja meg a jelentés paramétereit a HTTP-kérés törzse. Az alábbi példában a jelentésben van állítva minden nap, amikor aktív, CSV-fájl írása egy Azure Storage blob-tárolóba, és óránként költségadatokat erőforráscsoportban lévő összes erőforrást tartalmaz létrehozásához `westus`.
 
@@ -89,7 +89,7 @@ Adja meg a jelentés paramétereit a HTTP-kérés törzse. Az alábbi példában
 }
 ```
 
-a
+A(z)
 
 ## <a name="filtering-reports"></a>Jelentések szűrése
 

@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 06/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 231f44612b5e87afdf84f31d86c80be644fb4484
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6ae1094a6e47d19af97fbbb1ce988d0756f33731
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154324"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048549"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Database-ből az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-azure-sql-connector.md)
 > * [Aktuális verzió](connector-azure-sql-database.md)
 
@@ -364,6 +364,9 @@ GO
 
 ### <a name="azure-sql-database-as-the-sink"></a>Az Azure SQL Database-t a fogadó
 
+> [!TIP]
+> További információ a támogatott írási viselkedéseket, konfigurációk és az ajánlott eljárás a [ajánlott eljárás az adatok betöltéséhez az Azure SQL Database-be](#best-practice-for-loading-data-into-azure-sql-database).
+
 Adatok másolása az Azure SQL Database, állítsa be a **típus** tulajdonságot a másolási tevékenység fogadó való **SqlSink**. A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -372,14 +375,11 @@ Adatok másolása az Azure SQL Database, állítsa be a **típus** tulajdonságo
 | writeBatchSize | Az SQL-táblába beilleszti sorok száma **kötegenként**.<br/> Az engedélyezett érték **egész** (sorok száma). Alapértelmezés szerint a Data Factory a megfelelő kötegméret sor mérete alapján dinamikus meghatározásához. | Nem |
 | writeBatchTimeout | A várakozási idő a köteg beszúrási művelet befejezését, mielőtt azt az időkorlátot.<br/> Az engedélyezett érték **timespan**. Példa: "00: 30:00" (30 perc). | Nem |
 | preCopyScript | Adjon meg egy SQL-lekérdezést a másolási tevékenység futtatása előtt írja az adatokat az Azure SQL Database-be. Csak indítva egyszer futtatni példányonkénti. Ez a tulajdonság használatával az előre betöltött adatokat. | Nem |
-| sqlWriterStoredProcedureName | A tárolt eljárást, amely meghatározza, hogyan alkalmazhatja a forrásadatok egy cél táblába neve. Például akkor upserts, vagy átalakíthatja a saját üzleti logikája használatával. <br/><br/>A tárolt eljárás **kötegenként meghívása**. Csak egyszer futnak le, és nincs köze forrásadatokkal rendelkező műveletek, használja a `preCopyScript` tulajdonság. Példa műveleti delete és csonkolja. | Nem |
+| sqlWriterStoredProcedureName | A tárolt eljárást, amely meghatározza, hogyan alkalmazhatja a forrásadatok egy cél táblába neve. <br/>A tárolt eljárás **kötegenként meghívása**. Olyan művelet, amely csak egyszer futnak le, és nincs köze tartalmazó adatforrásból, például törlés, és le, használja a `preCopyScript` tulajdonság. | Nem |
 | storedProcedureParameters |A tárolt eljárás paraméterei.<br/>Megengedett értékek: név-érték párokat. Nevek és a kis-és a paraméterek meg kell egyeznie a neveket és a kis-és nagybetűhasználatot, a tárolt eljárás paraméterértékeinek. | Nem |
 | sqlWriterTableType | Adjon meg egy tábla típusú név a tárolt eljárás használható. A másolási tevékenység áthelyezett elérhetővé teszi a tábla típusú egy ideiglenes táblába. Tárolt eljárás kód majd egyesítheti az adatok másolását a adatokkal. | Nem |
 
-> [!TIP]
-> Adatmásolás az Azure SQL Database, amikor a másolási tevékenység adatokat fűz hozzá a fogadó tábla alapértelmezés szerint. Ehhez az upsert vagy további üzleti logikát, használja a tárolt eljárás **SqlSink**. További részletek a [fogadó SQL tárolt eljárás meghívása](#invoking-stored-procedure-for-sql-sink).
-
-#### <a name="append-data-example"></a>Példa adatok hozzáfűzése
+**1. példa: adatok hozzáfűzése**
 
 ```json
 "activities":[
@@ -411,7 +411,7 @@ Adatok másolása az Azure SQL Database, állítsa be a **típus** tulajdonságo
 ]
 ```
 
-#### <a name="invoke-a-stored-procedure-during-copy-for-upsert-example"></a>Tárolt eljárás meghívása során upsert például másolása
+**2. példa: egy tárolt eljárás meghívása során másolása**
 
 További részletek a [fogadó SQL tárolt eljárás meghívása](#invoking-stored-procedure-for-sql-sink).
 
@@ -450,84 +450,69 @@ További részletek a [fogadó SQL tárolt eljárás meghívása](#invoking-stor
 ]
 ```
 
-## <a name="identity-columns-in-the-target-database"></a>A céladatbázis azonosító oszlop
+## <a name="best-practice-for-loading-data-into-azure-sql-database"></a>Ajánlott eljárás az adatok betöltéséhez az Azure SQL Database-be
 
-Ez a szakasz bemutatja, hogyan másolhat adatokat egy forrás táblából egy identitásoszlop nélkül az identity oszlopot tartalmazó táblát.
+Az Azure SQL Database-be másol adatokat, amikor különböző írási viselkedésének lehet szükség:
 
-#### <a name="source-table"></a>Forrástábla
+- **[Hozzáfűzés](#append-data)** : csak a rendelkező új rekordok; forrás adatok
+- **[Upsert](#upsert-data)** : Beszúrások és frissítések; egyaránt rendelkező forrás adatok
+- **[Írja felül](#overwrite-entire-table)** : Töltse be újra az egész táblát, minden alkalommal, amikor; szeretnék
+- **[Az egyéni logikát írási](#write-data-with-custom-logic)** : További feldolgozás előtt a végső beszúrási a céltáblázatba történő van szükségem.
+
+Tekintse meg a rendre szakaszok konfigurálásával az ADF és az ajánlott eljárásokat.
+
+### <a name="append-data"></a>Adatok hozzáfűzése
+
+Ez a fogadó Azure SQL Database-összekötő az alapértelmezett viselkedést, és tegye az ADF **tömeges Beszúrás** hatékonyan írni a táblában. Egyszerűen konfigurálható a forrás és fogadó ennek megfelelően a másolási tevékenység.
+
+### <a name="upsert-data"></a>Adatok beszúrása és frissítése (upsert)
+
+**E beállítás** (javasolt, ha különösen a nagy mennyiségű adat másolása rendelkezik): a **a legtöbb nagy teljesítményű megközelítés** upsert ehhez a rendszer a következő: 
+
+- Először is kihasználhatja a [adatbázishoz kötődő ideiglenes tábla](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=azuresqldb-current#database-scoped-global-temporary-tables-azure-sql-database) a tömeges betöltés összes rekordot a másolási tevékenység használatával. Az operatív adatbázison hatókörű ideiglenes táblák nem jelentkezett, millióinak betöltheti másodpercek alatt.
+- Egy tárolt eljárási tevékenység végrehajtása a alkalmazni az ADF- [EGYESÍTÉSE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) (vagy a beszúrási/frissítés) utasítás, és használja a temp táblát az összes forrás frissít vagy szúr be egy tranzakcióként életű könyvtárgyorsítótárból mértékének csökkentésével, és olyan műveletek naplózására. A tárolt eljárási tevékenység végén ideiglenes táblára, készen áll a következő upsert ciklusig levágja. 
+
+Tegyük fel, az Azure Data Factory, létrehozhat rendelkező folyamatot egy **másolási tevékenység** a kapcsolt egy **Stored Procedure-tevékenység** sikeres művelet. A korábbi adatokat másol a forrásadattárba a egy Azure SQL Database ideiglenes táblába, például: " **##UpsertTempTable**" adatkészletben levő table neveként majd az utóbbi hív meg egy tárolt eljárás, amellyel az ideiglenes táblából a forrásadatok egyesítése cél táblát, és ideiglenes tábla karbantartása.
+
+![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+
+Az adatbázis határoz meg egy tárolt eljárás egyesítési logikával, például a következő, az a fenti tárolt eljárási tevékenység mutatott. Feltéve, hogy a cél **Marketing** három oszlopokat tartalmazó táblába: **ProfileID**, **állapot**, és **kategória**, és végezze el az upsert alapján a **ProfileID** oszlop.
 
 ```sql
-create table dbo.SourceTbl
-(
-       name varchar(100),
-       age int
-)
+CREATE PROCEDURE [dbo].[spMergeData]
+AS
+BEGIN
+    MERGE TargetTable AS target
+    USING ##UpsertTempTable AS source
+    ON (target.[ProfileID] = source.[ProfileID])
+    WHEN MATCHED THEN
+        UPDATE SET State = source.State
+    WHEN NOT matched THEN
+        INSERT ([ProfileID], [State], [Category])
+      VALUES (source.ProfileID, source.State, source.Category);
+    
+    TRUNCATE TABLE ##UpsertTempTable
+END
 ```
 
-#### <a name="destination-table"></a>Céltábla
+**II. lehetőség:** lehetőségként választhatja [másolási tevékenység belül tárolt eljárás meghívása](#invoking-stored-procedure-for-sql-sink), miközben Megjegyzés: Ez a megközelítés a forrástábla helyett tömeges támaszkodva minden egyes sorára hajtja végre az alapértelmezett módszer is beilleszthet a másolási tevékenység így azt nem fér el a nagy méretű upsert.
 
-```sql
-create table dbo.TargetTbl
-(
-       identifier int identity(1,1),
-       name varchar(100),
-       age int
-)
-```
+### <a name="overwrite-entire-table"></a>Írja felül a teljes tábla
 
-> [!NOTE]
-> A céltábla tartalmaz azonosító oszlopot.
+Konfigurálható **preCopyScript** tulajdonság a másolási tevékenység fogadó ebben az esetben minden másolási tevékenység futtatása, ADF végrehajtja a parancsfájl először futtassa a másolat illessze be az adatokat. Például a teljes tábla felülírja a legújabb adatokkal, is megadhat egy parancsfájlt, amely először törölje az összes rekordot a forrás az új adatok tömeges-betöltés előtt.
 
-#### <a name="source-dataset-json-definition"></a>Forrás adatkészlet JSON-definíció
+### <a name="write-data-with-custom-logic"></a>Egyéni logikát az adatok írása
 
-```json
-{
-    "name": "SampleSource",
-    "properties": {
-        "type": " AzureSqlTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "SourceTbl"
-        }
-    }
-}
-```
-
-#### <a name="destination-dataset-json-definition"></a>Cél adatkészlet JSON-definíció
-
-```json
-{
-    "name": "SampleTarget",
-    "properties": {
-        "structure": [
-            { "name": "name" },
-            { "name": "age" }
-        ],
-        "type": "AzureSqlTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "TargetTbl"
-        }
-    }
-}
-```
-
-> [!NOTE]
-> A forrás- és table eltérő sémával rendelkezik. 
-
-A cél egy további oszlopot egy identitással rendelkezik. Ebben az esetben meg kell adnia a **struktúra** tulajdonság a célként megadott adatkészlet definíciójában, amely nem tartalmazza az identitásoszlop.
+Hasonló leírtak szerint [Upsert adatok](#upsert-data) szakaszban további feldolgozás előtt a végső beszúrási a forrásadatok a céltáblázatba történő, alkalmaznia kell is a) a nagyméretű méretezési betölteni a hatókörrel rendelkező adatbázis ideiglenes táblát, majd meghívása egy tárolt eljárást, vagy b) tárolt eljárás meghívása másolása során.
 
 ## <a name="invoking-stored-procedure-for-sql-sink"></a> Az SQL-fogadó tárolt eljárás meghívása
 
 Azure SQL Database-be másol adatokat, amikor is konfigurálásához és meghívása felhasználó által megadott tárolt eljárást a további paraméterek.
 
-Tárolt eljárás segítségével használhatja, ha a beépített másolási mechanizmusokkal nem szolgálnak ki erre a célra. Általában használhatók, amikor egy upsert, insert és update, vagy további feldolgozás előtt a végső beszúrási a forrásadatok a céltáblázatba történő kell elvégezni. Extra feldolgozási példákat egyesítési oszlop, keresse meg a további értéket, és annak több tábla.
+> [!TIP]
+> Tárolt eljárás meghívása dolgozza fel az adatok sor soronként tömeges művelet, amely nem ajánlott nagy méretű példány helyett. További információkat talál a [ajánlott eljárás az adatok betöltéséhez az Azure SQL Database-be](#best-practice-for-loading-data-into-azure-sql-database).
+
+Beépített másolási mechanizmust nem, a célt szolgálják, amikor egy tárolt eljárást használhatja például a további feldolgozás előtt a végső beszúrási a forrásadatok a céltáblázatba történő alkalmazásához. Extra feldolgozási példákat egyesítési oszlop, keresse meg a további értéket, és annak több tábla.
 
 A következő minta bemutatja, hogyan egy tárolt eljárást az upsert ehhez az Azure SQL Database egyik táblájába. Tegyük fel, amelyek bemeneti és a fogadó **Marketing** tábla minden egyes háromoszloposak: **ProfileID**, **állapot**, és **kategória**. Hajtsa végre az upsert alapján a **ProfileID** oszlopot, és csak egy adott kategória alkalmazhatja azt.
 
@@ -613,27 +598,27 @@ Másolt adatok vagy az Azure SQL Database, a következő hozzárendeléseket has
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
-| A FILESTREAM attribútum (varbinary(max)) |Byte[] |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
 | money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numerikus |Decimal |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
-| ROWVERSION |Byte[] |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| pénz |Decimal |
+| smallmoney |Decimal |
 | sql_variant |Object |
-| szöveg |String, Char[] |
+| text |String, Char[] |
 | time |TimeSpan |
-| időbélyeg |Byte[] |
+| timestamp |Byte[] |
 | tinyint |Byte |
 | uniqueidentifier |Guid |
-| Varbinary |Byte[] |
+| varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
 

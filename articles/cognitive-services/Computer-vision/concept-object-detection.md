@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 012ab849c926de332da55361c79c76c5a1311169
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60368041"
 ---
 # <a name="detect-common-objects-in-images"></a>Közös objektumok észlelése képeken
@@ -95,7 +95,7 @@ Fontos megjegyezni objektumfelismerés vonatkozó korlátozások, így elkerülh
 * Objektumok észlelése általában nem, ha szoros együttműködésben szélesen (például a lemezek stack).
 * Objektumok nem különbözteti meg a márkáról vagy termék neve (szénsavas store tároló, például a különböző típusú). Azonban információkat szerezhet a márka lemezkép használatával a [saját arculat észlelési](concept-brand-detection.md) funkció.
 
-## <a name="use-the-api"></a>Az API-val
+## <a name="use-the-api"></a>Az API használata
 
 Az észlelési szolgáltatás részét képezi a [kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-t. Ez az API REST-hívások vagy a natív SDK keresztül hívása. Például `Objects` a a **visualFeatures** lekérdezési paraméter. Ezt követően a teljes JSON-választ kap, ha egyszerűen elemezni a karakterlánc a tartalmát a `"objects"` szakaszban.
 

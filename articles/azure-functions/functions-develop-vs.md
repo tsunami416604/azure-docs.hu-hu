@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4366f09ccc9a3b2335e0aa84b7fb7398825cb87e
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: c6104a977a02211dcab17a5f232991d0d9cbb852
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864527"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050734"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
@@ -89,7 +89,7 @@ További információkért lásd: [funkciók hordozhatóosztálytár-projektjén
 
 ## <a name="configure-the-project-for-local-development"></a>A helyi fejlesztési projekt konfigurálása
 
-A Functions futtatókörnyezete egy Azure Storage-fiókot használ. Összes vált a HTTP és webhookok eltérő típusú, be kell állítani a **Values.AzureWebJobsStorage** egy érvényes Azure-Tárfiók kapcsolati sztringje kulcs. A függvényalkalmazás is használhatja a [az Azure storage emulator](../storage/common/storage-use-emulator.md) számára a **AzureWebJobsStorage** a projekt által igényelt csatlakozási beállítást. Az emulator használatához állítsa **AzureWebJobsStorage** való `UseDevelopmentStorage=true`. Egy tényleges tárolási kapcsolathoz üzembe helyezés előtt módosítania kell ezt a beállítást.
+A Functions futtatókörnyezete egy Azure Storage-fiókot használ. Összes vált a HTTP és webhookok eltérő típusú, be kell állítani a **Values.AzureWebJobsStorage** egy érvényes Azure-Tárfiók kapcsolati sztringje kulcs. A függvényalkalmazás is használhatja a [az Azure storage emulator](../storage/common/storage-use-emulator.md) számára a **AzureWebJobsStorage** a projekt által igényelt csatlakozási beállítást. Az emulator használatához állítsa **AzureWebJobsStorage** való `UseDevelopmentStorage=true`. Módosítsa ezt a beállítást egy tényleges tárolási kapcsolat üzembe helyezés előtt.
 
 A tárfiók kapcsolati sztringje beállítása:
 
@@ -185,7 +185,11 @@ Az Azure Functions Core Tools használatával kapcsolatos további tudnivalóké
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="function-app-settings"></a>Függvényalkalmazás beállításai
+### <a name="deployment-technology"></a>Központi telepítési technológia
+
+Közzététel a Visual Studióban, a két technológia egyik használja a központi telepítésének végrehajtása: [Web Deploy](functions-deployment-technologies.md#web-deploy-msdeploy) és [Zip üzembe helyezés a Run-a-Package engedélyezve (ajánlott)](functions-deployment-technologies.md#zip-deploy).
+
+## <a name="function-app-settings"></a>A függvényalkalmazás beállításai
 
 A local.settings.json a hozzáadott minden beállítást is meg kell adni a függvényalkalmazáshoz az Azure-ban. Ezek a beállítások nem lesznek feltöltve automatikusan, a projekt közzétételekor.
 

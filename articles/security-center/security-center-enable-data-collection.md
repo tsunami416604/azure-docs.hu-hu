@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/02/2019
+ms.date: 10/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 8fed3ce98b23c5ac1cc97b88a278c5946f06af8e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: b1280274122800147c442b73b360bc5141530a0e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968741"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050603"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM), a virtual machine scale sets, IaaS-tárolók és nem Azure-beli (pl. helyszíni) számítógépek biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Microsoft Monitoring Agent ügynököt az összeomlási memóriaképeket is átmásolja a munkaterülethez.
@@ -31,12 +31,11 @@ Ez a cikk a Microsoft Monitoring Agent telepítése, és állítsa be, amely tá
 > [!NOTE]
 > - Adatok gyűjtése csak akkor van szükség a számítási erőforrásokat (virtuális gépek, a virtual machine scale sets, IaaS-tárolók és nem Azure-beli számítógépek). Élvezheti az Azure Security Center akkor is, ha nem üzembe helyezi az ügynökök; azonban Ön csak korlátozott biztonsági, és a fent felsorolt funkciók nem támogatottak.  
 > - A támogatott platformok listáját lásd: [az Azure Security Center által támogatott platformok](security-center-os-coverage.md).
-> - Adatgyűjtés virtuálisgép-méretezési csoport esetében jelenleg nem támogatott.
-> - Adatok tárolása a Log Analytics, akár egy új vagy meglévő munkaterületet, előfordulhat, hogy további díjak vonatkoznak az adattárolás, a díjszabási lapon talál további részleteket.
+> - Adatok tárolása a Log Analytics, akár egy új vagy meglévő munkaterületet, előfordulhat, hogy többletköltségekkel adattároláshoz. További részletekért tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése <a name="auto-provision-mma"></a>
 
-Az adatok gyűjtését a gépek rendelkeznie kell a Microsoft Monitoring Agent telepítve van.  Az ügynök telepítése automatikusan lehet (ajánlott), vagy dönthet úgy, hogy telepítse kézzel az ügynököt.  
+Az adatok gyűjtését a gépek, rendelkeznie kell a Microsoft Monitoring Agent telepítve van.  Az ügynök telepítése automatikusan teheti meg (ajánlott) vagy manuálisan telepítheti az ügynököt.  
 
 >[!NOTE]
 > Alapértelmezés szerint az Automatikus kiépítés le van. A Security Center telepítése alapértelmezés szerint az Automatikus kiépítés beállítása, állítsa **a**.
@@ -87,10 +86,8 @@ A Security Center által létrehozott munkaterület kiválasztása:
 1. A Security Center automatikusan engedélyezi a a tarifacsomagot állítsa be az előfizetés-munkaterülethez a Security Center megoldást. 
 
 > [!NOTE]
-> A Security Center által létrehozott munkaterület tarifacsomagját a Log Analytics nincs hatással a Security Center a számlázás. A Security Center számlázási mindig alapján a Security Center biztonsági házirend és a megoldások a munkaterülethez telepítve. Az ingyenes, a Security Center lehetővé teszi a *SecurityCenterFree* megoldás az alapértelmezett munkaterületre. A Standard szinten a Security Center a *Security* megoldást teszi elérhetővé az alapértelmezett munkaterületen.
-> A Log Analytics adattárolási előfordulhat, hogy további díjak vonatkoznak az adattárolás, a díjszabási lapon talál további részleteket.
-
-További információ a díjszabásról lásd: [a Security Center díjszabási](https://azure.microsoft.com/pricing/details/security-center/).
+> A Security Center által létrehozott munkaterület tarifacsomagját a Log Analytics nincs hatással a Security Center a számlázás. A Security Center számlázási mindig alapján a Security Center biztonsági házirend és a megoldások a munkaterülethez telepítve. Az ingyenes, a Security Center lehetővé teszi a *SecurityCenterFree* megoldás az alapértelmezett munkaterületre. A Standard csomag esetében a Security Center lehetővé teszi a *biztonsági* megoldás az alapértelmezett munkaterületre.
+> A Log Analytics adattárolási díjkötelesek lehetnek további adatok tárolására. További részletekért tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/).
 
 További információ a meglévő log analytics-fiókok: [meglévő log analytics-ügyfél](security-center-faq.md#existingloganalyticscust).
 
@@ -102,7 +99,7 @@ A meglévő Log Analytics-munkaterület használatához rendelkeznie kell olvas�
 
 > [!NOTE]
 > Azure virtuális gépekre, amelyek csatlakoznak a meglévő munkaterületen engedélyezett megoldások lépnek érvénybe. Fizetett megoldások esetén ez további díjakat eredményezhet. Az adatok adatvédelmi megfontolások ellenőrizze, hogy a kijelölt munkaterület a megfelelő földrajzi régióban.
-> A log analytics adattárolási előfordulhat, hogy további díjak vonatkoznak az adattárolás, a díjszabási lapon talál további részleteket.
+> A log analytics adattárolási díjkötelesek lehetnek további adatok tárolására. További részletekért tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/).
 
 Egy meglévő Log Analytics-munkaterület kiválasztása:
 
@@ -150,7 +147,7 @@ Amikor kiválaszt egy munkaterületet, amely tárolja az adatokat, az összes el
 ## <a name="data-collection-tier"></a>Gyűjtemény adatszint
 Egy adatrétegbeli gyűjtemény kiválasztása az Azure Security Centerben a biztonsági események Log Analytics-munkaterület az a tároló csak hatással lesz. A Log Analytics-ügynök továbbra is gyűjthet, és elemezheti a biztonsági események az Azure Security Center fenyegetések felderítése során, függetlenül attól, melyik szint a biztonsági események úgy dönt, hogy tárolja a Log Analytics-munkaterület (ha vannak) szükséges. A munkaterületen tárolja a biztonsági események kiválasztása lehetővé teszi vizsgálat, a Keresés és a munkaterület események naplózását. 
 > [!NOTE]
-> A log analytics adattárolási előfordulhat, hogy további díjak vonatkoznak az adattárolás, a díjszabási lapon talál további részleteket.
+> A log analytics adattárolási díjkötelesek lehetnek további adatok tárolására. További részletekért tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/).
 > 
 > A jobb házirend az előfizetések és munkaterületek négyféle események szűrése a munkaterület-ben való tárolásának közül választhat: 
 
@@ -205,8 +202,10 @@ A következő használati esetek adja meg, hogy működik az esetre, ha már van
 
 - A Microsoft Monitoring Agent telepítve van a gépen, de nem bővítményeként (közvetlen ügynök)<br>
 Ha a Microsoft Monitoring Agent közvetlenül a virtuális gép (nem pedig egy Azure-bővítmény) van telepítve, a Security Center telepíti a Microsoft Monitoring Agent bővítményt, és előfordulhat, hogy a Microsoft Monitoring agent frissítése a legújabb verzióra.
-Az ügynök telepítve van továbbra is, hogy a már konfigurált munkaterületeire, és emellett a munkaterülethez, a Security Center konfigurált jelentést (többkiszolgálós támogatott).
+Az ügynök telepítve van továbbra is, hogy a már konfigurált munkaterületeire, és emellett a munkaterülethez, a Security Center konfigurált jelentést (többkiszolgálós támogatott Windows-gépeken).
 Ha a konfigurált munkaterületével felhasználói munkaterület (nem a Security Center alapértelmezett munkaterületen), akkor telepítenie kell a "biztonsági /"securityFree"megoldás a Security Center használatával indítsa el az események feldolgozását a virtuális gépek és számítógépek számára a jelentéskészítés munkaterületről.<br>
+<br>
+A Linux rendszerű gépek az ügynök többkiszolgálós még nem támogatott – ezért egy meglévő ügynöktelepítés észlelése esetén az Automatikus kiépítés nem történik, és a gép konfigurációja nem változik.
 <br>
 Előfizetések előkészítette a Security Center a 2019-03-17., amikor egy meglévő ügynököt érzékeli, mielőtt a meglévő gépek nem lesz telepítve a Microsoft Monitoring Agent bővítményt, és a gép nem lesz hatással. Ezek a gépek tekintse meg a "Feloldás a monitoring agent állapotproblémái a gépeken" javaslathoz ezeken a gépeken az ügynök telepítésével kapcsolatos problémák megoldásához.
 

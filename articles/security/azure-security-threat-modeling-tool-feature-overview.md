@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 601f3bf05388406c8f96a7351f7fb3aa4de2650a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60588793"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool funkcióinak áttekintése
@@ -153,13 +153,13 @@ Elemek kétféle módon csatlakoztathatja:
 
  A Tulajdonságok módosítható a rajzsablonokhoz, válassza a rajzsablonon és az információk megjelenítéséhez tölti fel. ennek megfelelően. Az alábbi példa bemutatja a előtt és után egy **adatbázis** rajzsablonon van húzni a diagram:
 
-#### <a name="before"></a>Korábban, mint
+#### <a name="before"></a>Előtte
 
-![Korábban, mint](./media/azure-security-threat-modeling-tool-feature-overview/properties1.png)
+![Előtte](./media/azure-security-threat-modeling-tool-feature-overview/properties1.png)
 
-#### <a name="after"></a>Később, mint
+#### <a name="after"></a>Utána
 
-![Később, mint](./media/azure-security-threat-modeling-tool-feature-overview/properties2.png)
+![Utána](./media/azure-security-threat-modeling-tool-feature-overview/properties2.png)
 
 ### <a name="messages"></a>Üzenetek
 
@@ -181,7 +181,7 @@ Miután hoz létre a diagramon, válassza ki a **elemzési** szimbólum (Nagyít
 
 Amikor kiválaszt egy fenyegetést, három különböző funkciót is használhatja:
 
-| Szolgáltatás                               | Információ      |
+| Funkció                               | Információ      |
 | --------------------------------------- | ------------ |
 | **Olvasási kijelző** | <p>A fenyegetés olvassa el, így a segítségével nyomon követheti, a korábban áttekintett elemek van megjelölve.</p><p>![Olvasás/olvasatlan kijelző](./media/azure-security-threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Interakció fókusz** | <p>Az ábrán a fenyegetés tartozó kapcsolati ki van emelve.</p><p>![Interakció fókusz](./media/azure-security-threat-modeling-tool-feature-overview/interactionfocus.png)</p> |

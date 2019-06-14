@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: a13d1f843604025ee0f843c0770b3d11b53dd837
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fc3b1cdfee76bbee7676170fa69a1c53a495dc53
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762878"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051141"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Oktatóanyag: Egyetlen adatbázisban az SSMS használatával Azure SQL Database relációs adatbázis tervezése
 
@@ -117,7 +117,7 @@ Az IP-cím már továbbíthatja az IP-tűzfalon keresztül. Mostantól csatlakoz
 > [!IMPORTANT]
 > Alapértelmezés szerint az SQL Database IP-tűzfalon keresztül érhető el az Azure-szolgáltatásokhoz. Kattintson a **KI** gombra ezen az oldalon az összes Azure-szolgáltatás hozzáférésének letiltásához.
 
-## <a name="connect-to-the-database"></a>Csatlakozzon az adatbázishoz
+## <a name="connect-to-the-database"></a>Csatlakozás az adatbázishoz
 
 Használat [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) az egyetlen adatbázis-kapcsolatot létesíteni.
 
@@ -150,8 +150,8 @@ A [Transact-SQL](/sql/t-sql/language-reference) használatával hozzon létre eg
 
 - Személy
 - Kurzus
-- Tanuló
-- Kreditösszeg
+- Hallgató
+- Kredit
 
 Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymáshoz. Ezen táblázatok némelyike más táblák oszlopaira hivatkozik. Például a *tanulói* táblára hivatkozik az *PersonId* oszlopa a *személy* tábla. Tanulmányozza a diagramot az ebben az oktatóanyagban szereplő táblák kapcsolatainak megértéséhez. A hatékony adatbázistáblák létrehozásának részleteiért lásd: [Hatékony adatbázistáblák létrehozása](https://msdn.microsoft.com/library/cc505842.aspx). Az adattípusok kiválasztására vonatkozó további információkért lásd: [Adattípusok](/sql/t-sql/data-types/data-types-transact-sql).
 
@@ -227,10 +227,10 @@ Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymásho
 4. Hajtsa végre az alábbi parancsokat a táblákat, és cserélje le az értékeket a Mintaadat beszúrásához *kiszolgáló*, *adatbázis*, *felhasználói*, és *jelszó* azokra az értékekre a környezethez.
 
    ```cmd
-   bcp Course in SampleCourseData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Person in SamplePersonData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Student in SampleStudentData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Credit in SampleCreditData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Person in SamplePersonData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Student in SampleStudentData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Credit in SampleCreditData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
    ```
 
 Ezzel mintaadatokat töltött be a korábban létrehozott táblákba.

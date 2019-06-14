@@ -16,10 +16,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: 28d16bce6dbb5063c085e8c4393777ee9d152768
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60345141"
 ---
 # <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Adatok importálása és az adatok exportálása modult használó Azure Machine Learning Studio-webszolgáltatások üzembe helyezése
@@ -67,7 +67,7 @@ Az adatokat olvasni az Azure SQL-táblát:
 ## <a name="create-the-predictive-experiment"></a>A prediktív kísérlet létrehozása
 A következő, állítsa be a prediktív kísérletet, amelyről a web Service szolgáltatásának telepítése.
 
-1. A kísérlet vászon alján kattintson **webszolgáltatás beállítása** válassza **prediktív webszolgáltatás [ajánlott]**.
+1. A kísérlet vászon alján kattintson **webszolgáltatás beállítása** válassza **prediktív webszolgáltatás [ajánlott]** .
 2. Távolítsa el a *webes bemenet* és *webes szolgáltatás kimeneti modulok* a prediktív kísérletből.
 3. Az összetevők a keresőmezőbe írja be a exportálási.
 4. Az eredmények listájában, adjon hozzá egy *adatok exportálása* modult a kísérletvászonra.
@@ -100,10 +100,10 @@ A klasszikus vagy egy új webszolgáltatás telepítheti.
 Klasszikus webszolgáltatásként üzembe helyezéséhez, és létrehozhat egy alkalmazást, ezért használja fel:
 
 1. A kísérlet vászon alján kattintson a Futtatás.
-2. A Futtatás befejeződésekor kattintson **webszolgáltatás üzembe helyezése** válassza **Web Service telepítése [klasszikus]**.
+2. A Futtatás befejeződésekor kattintson **webszolgáltatás üzembe helyezése** válassza **Web Service telepítése [klasszikus]** .
 3. A webszolgáltatás irányítópultján keresse meg az API-kulcsot. Másolja és mentse későbbi használatra.
 4. Az a **alapértelmezett végpont** tábla mértékrácsán kattintson a **kötegelt végrehajtási** nyissa meg az API-súgóoldalon mutató hivatkozást.
-5. A Visual Studióban hozzon létre egy C# Konzolalkalmazás: **Új** > **projekt** > **Visual C#**   >  **Windows klasszikus Asztalialkalmazás**  >   **Console App (.NET Framework)**.
+5. A Visual Studióban hozzon létre egy C# Konzolalkalmazás: **Új** > **projekt** > **Visual C#**   >  **Windows klasszikus Asztalialkalmazás**  >   **Console App (.NET Framework)** .
 6. Az API-súgóoldalon, keresse meg a **mintakód** szakasz az oldal alján.
 7. Másolja és illessze be a C# mintakód a Program.cs fájlba, és távolítson el minden hivatkozást a blob Storage.
 8. Frissítse az értéket, a *apikey tulajdonsággal végzett tesztelése* változó a korábban mentett API-kulccsal.
@@ -132,7 +132,7 @@ A Futtatás végeztével egy új tábla hozzáadódik a pontozási eredményeine
 3. Kísérlet üzembe helyezése lapon adjon meg egy nevet, a webes szolgáltatáshoz, és a egy tarifacsomagot választani, majd kattintson **telepítés**.
 4. Az a **rövid** kattintson **felhasználás**.
 5. Az a **mintakód** területén kattintson **Batch**.
-6. A Visual Studióban hozzon létre egy C# Konzolalkalmazás: **Új** > **projekt** > **Visual C#**   >  **Windows klasszikus Asztalialkalmazás**  >   **Console App (.NET Framework)**.
+6. A Visual Studióban hozzon létre egy C# Konzolalkalmazás: **Új** > **projekt** > **Visual C#**   >  **Windows klasszikus Asztalialkalmazás**  >   **Console App (.NET Framework)** .
 7. Másolja és illessze be a C# mintakód a Program.cs fájlba.
 8. Frissítse az értéket, a *apikey tulajdonsággal végzett tesztelése* változót a **elsődleges kulcs** található a **alapvető fogyasztási adatai** szakaszban.
 9. Keresse meg a *scoreRequest* nyilatkozat, és frissítse a webszolgáltatás-paraméterek, amelyeket a rendszer átad a *adatok importálása* és *adatok exportálása* modulok. Ebben az esetben, az eredeti lekérdezéssel, de egy új tábla nevét adja meg.

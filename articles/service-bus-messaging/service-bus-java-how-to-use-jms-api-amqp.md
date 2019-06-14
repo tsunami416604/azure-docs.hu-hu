@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
 ms.openlocfilehash: a7e4282a176794fe885049173ba56ce2461cd6fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60310961"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>A Service Bus és az AMQP 1.0-t a Java Message Service (JMS) API használata
@@ -375,7 +375,7 @@ Emellett Azure Service Bus bontja a vezérlősík az adatsík a, és ezért nem 
 | createQueue                 | felügyeleti API-tools-portál üzenetsor létrehozása                                           | 
 | createTemporaryQueue        | felügyeleti várólista létrehozása API/tools/portál *AutoDeleteOnIdle* lejárati időt beállítása |
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ez az útmutató bemutatta, hogyan használható a Service Bus által felügyelt üzenettovábbítási szolgáltatások (az üzenetsorok és üzenettémák közzététele vagy előfizetése) az Java a népszerű JMS API és az AMQP 1.0 használatával.
 
 Használhatja a Service Bus AMQP 1.0-t a többi nyelvet – például a .NET, C, Python és PHP. Eltérő nyelvek használatával létrehozott összetevők is megbízhatóan váltanak üzeneteket, és teljes visszaadása az AMQP 1.0 használatával támogatja a Service Bus.

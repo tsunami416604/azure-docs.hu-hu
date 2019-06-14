@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 039b0951484a6bf57703d9a91d604c9c5e5c9a66
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d25082c429c58c074726c75f7ff6f248daee4151
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64571172"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050619"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Az Azure Functions Python fejlesztői útmutatója
 
@@ -30,7 +30,7 @@ Ez a cikk bevezetést tapasztalatlan a Python használatával Azure Functions. A
 
 Egy Azure-függvényt egy állapot nélküli metódus az a Python-szkript, amely dolgozza fel a bemenetet és kimenetet kell lennie. Alapértelmezés szerint a futtatókörnyezet vár a metódus egy globális módszerként nevű végrehajtandó `main()` a a `__init__.py` fájlt.
 
-Az alapértelmezett konfiguráció megadásával módosíthatja a `scriptFile` és `entryPoint` tulajdonságait a `function.json` fájl. Például a _function.json_ alábbi arra utasítja a modul használatához a _customentry()_ metódus az a _main.py_ fájlt, az Azure-függvény belépési pontját.
+Az alapértelmezett konfiguráció megadásával módosíthatja a `scriptFile` és `entryPoint` tulajdonságait a *function.json* fájl. Például a _function.json_ alábbi arra utasítja a modul használatához a `customentry()` metódus az a _main.py_ fájlt, az Azure-függvény belépési pontját.
 
 ```json
 {
@@ -40,7 +40,7 @@ Az alapértelmezett konfiguráció megadásával módosíthatja a `scriptFile` �
 }
 ```
 
-Eseményindítók és kötések adatait a függvény segítségével módszert attribútumok keresztül van kötve a `name` meghatározott tulajdonság a `function.json` konfigurációs fájlt. Ha például a _function.json_ alábbi ismerteti egy egyszerű, HTTP-kérést nevű által aktivált függvényt `req`:
+Eseményindítók és kötések adatait a függvény segítségével módszert attribútumok keresztül van kötve a `name` meghatározott tulajdonság a *function.json* fájlt. Ha például a _function.json_ alábbi ismerteti egy egyszerű, HTTP-kérést nevű által aktivált függvényt `req`:
 
 ```json
 {
@@ -68,7 +68,7 @@ def main(req):
     return f'Hello, {user}!'
 ```
 
-Igény szerint is deklarálja a paramétertípusok, és adja vissza a függvény típusa jegyzetek Python használatával. Ha például ugyanannak a függvénynek írható használatával jegyzetek, az alábbiak szerint:
+Szükség esetén kihasználhatja az intellisense és a Kódszerkesztő által kínált automatikus kiegészítés szolgáltatásokkal, is deklarálja az attribútumtípusokat, és adja vissza a függvény típusa jegyzetek Python használatával. 
 
 ```python
 import azure.functions
@@ -78,7 +78,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```  
 
-Használja a Python-jegyzetek szerepel a [azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python) csomag bemeneti és kimeneti kötést létrehozni a módszereket. 
+Használja a Python-jegyzetek szerepel a [azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python) csomag bemeneti és kimeneti kötést létrehozni a módszereket.
 
 ## <a name="folder-structure"></a>gyökérmappa-szerkezetében
 
@@ -97,8 +97,6 @@ Egy Python-Functions-projektet a mappastruktúra a következőhöz hasonlóan n�
  | | - mySecondHelperFunction.py
  | - host.json
  | - requirements.txt
- | - extensions.csproj
- | - bin
 ```
 
 Van egy megosztott [host.json](functions-host-json.md) fájlt, amely a függvényalkalmazás konfigurálása használható. Minden függvény rendelkezik a saját kód és kötési konfigurációs fájlt (function.json). 
@@ -106,16 +104,16 @@ Van egy megosztott [host.json](functions-host-json.md) fájlt, amely a függvén
 Megosztott kód egy külön mappában kell tárolni. Modulok SharedCode mappában hivatkozni, használhatja a következő szintaxist:
 
 ```
-from ..SharedCode import myFirstHelperFunction
+from __app__.SharedCode import myFirstHelperFunction
 ```
 
-A Functions futtatókörnyezete által használt kötési bővítményeket vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles) Azure Functions Core Tools használatával. 
-
-A függvényalkalmazáshoz az Azure Functions-projekt telepítésekor a FunctionApp mappa teljes tartalmát szerepelnie kell a csomag, de nem maga a mappa.
+A Functions-projekt telepítésekor a függvényalkalmazáshoz az Azure-ban, a teljes tartalmát a *FunctionApp* mappa szerepelnie kell a csomag, de nem maga a mappa.
 
 ## <a name="triggers-and-inputs"></a>Eseményindítók és a bemenetek
 
-Bemenetei között meg vannak osztva az Azure Functions két kategóriába sorolhatók: triggerbemenete és további adatokat. Bár ezek eltérnek a `function.json`, a használat értéke megegyezik a Python-kódban.  Kapcsolati karakterláncok eseményindító és a bemeneti források leképezhető értékek a `local.settings.json` helyileg a fájlt, és az alkalmazás beállításait, ha az Azure-ban futtatja. Vegyük a következő kódrészlet például:
+Bemenetei között meg vannak osztva az Azure Functions két kategóriába sorolhatók: triggerbemenete és további adatokat. Bár ezek eltérnek a `function.json` fájl (használat) megegyező Python-kódban.  Kapcsolati karakterláncok vagy a titkos kulcsokat a trigger és a bemeneti források szereplő értékek leképezése a `local.settings.json` fájlt a helyi futtatás során, és az alkalmazás beállításait, ha az Azure-ban futtatja. 
+
+Ha például a következő kód bemutatja a különbség a kettő között:
 
 ```json
 // function.json
@@ -233,21 +231,9 @@ További naplózás módszerek érhetők el, amelyek a konzol különböző szin
 | a naplózás. **info (_üzenet_)**    | A legfelső szintű naplózó a szolgáltatói információval üzenetet ír.  |
 | a naplózás. **hibakeresés (_üzenet_)** | A legfelső szintű naplózó szintű hibakeresési üzenet írása.  |
 
-## <a name="importing-shared-code-into-a-function-module"></a>Megosztott kód importál egy függvénymodul
-
-Python-modulok mellett függvény modulok közzétett importálni kell a relatív importálás szintaxis használatával:
-
-```python
-from . import helpers  # Use more dots to navigate up the folder structure.
-def main(req: func.HttpRequest):
-    helpers.process_http_request(req)
-```
-
-Azt is megteheti megosztott kód üzembe a különálló csomag, közzéteszi a nyilvános és a egy privát PyPI példány, és adja meg azt a rendszeres függőségként.
-
 ## <a name="async"></a>Az aszinkron
 
-Mivel csak egyetlen Python folyamat függvényalkalmazás tartozhat, mint egy aszinkron coroutine használata az Azure-függvény megvalósítása javasolt a `async def` utasítást.
+Azt javasoljuk, hogy az Azure-függvényét, egy aszinkron coroutine a ír a `async def` utasítást.
 
 ```python
 # Will be run with asyncio directly
@@ -255,7 +241,7 @@ async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Ha a main() függvény szinkron (nincs `async` minősítő) azt automatikusan futtassa azt egy `asyncio` szálkészlet.
+Ha a main() függvény szinkron (nincs `async` minősítő) automatikusan futtatjuk a függvény egy `asyncio` szálkészlet.
 
 ```python
 # Would be run in an asyncio thread-pool
@@ -288,6 +274,21 @@ A függvény nevét.
 `invocation_id`  
 Az aktuális függvény meghívási azonosítója.
 
+## <a name="global-variables"></a>A globális változók
+
+Nem garantált, hogy az alkalmazás állapotát a későbbi végrehajtások megőrzi. Az Azure Functions runtime azonban gyakran több végrehajtások ugyanabból az alkalmazásból a ugyanezt az eljárást használ újra. Annak érdekében, hogy az eredményeket egy költséges számítási gyorsítótárazni, deklarálható mint egy globális változó. 
+
+```python
+CACHED_DATA = None
+
+def main(req):
+    global CACHED_DATA
+    if CACHED_DATA is None:
+        CACHED_DATA = load_json()
+
+    # ... use CACHED_DATA in code
+```
+
 ## <a name="python-version-and-package-management"></a>Python-verzió és a csomagmegosztás felügyeleti
 
 Jelenleg az Azure Functions csak támogatja Python 3.6.x (hivatalos CPython elosztás).
@@ -295,10 +296,6 @@ Jelenleg az Azure Functions csak támogatja Python 3.6.x (hivatalos CPython elos
 Amikor helyileg a az Azure Functions Core Tools vagy a Visual Studio Code használatával történő fejlesztéséhez, adja hozzá a nevét és a szükséges csomagok verzióit a `requirements.txt` fájlt, és telepítse őket használatával `pip`.
 
 Például a következő követelmények fájl és a pip parancs segítségével telepítse a `requests` PyPI-csomagot.
-
-```bash
-pip install requests
-```
 
 ```txt
 requests==2.19.1
@@ -308,20 +305,9 @@ requests==2.19.1
 pip install -r requirements.txt
 ```
 
-Amikor készen áll a közzétételre, győződjön meg arról, hogy az összes függősége az szerepel a `requirements.txt` a projektkönyvtárba gyökérmappájában található fájl. Sikeres végrehajtásához az Azure Functions, a követelmények fájlt tartalmaznia kell legalább a következő csomagokat:
-
-```txt
-azure-functions
-azure-functions-worker
-grpcio==1.14.1
-grpcio-tools==1.14.1
-protobuf==3.6.1
-six==1.11.0
-```
-
 ## <a name="publishing-to-azure"></a>Közzététel az Azure-bA
 
-Ha egy csomagot, amely fordító szükséges hozzá, és nem támogatja a telepítést a PyPI manylinux-kompatibilis kerekek használ, a közzététel az Azure-bA sikertelen lesz, és a következő hiba: 
+Amikor elkészült, közzétételére, győződjön meg arról, hogy az összes függősége az szerepel a *requirements.txt* fájlt, amely a projektkönyvtárba gyökérmappájában található. Ha egy csomagot, amely fordító szükséges hozzá, és nem támogatja a telepítést a PyPI manylinux-kompatibilis kerekek használ, a közzététel az Azure-bA sikertelen lesz, és a következő hiba: 
 
 ```
 There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
@@ -336,70 +322,83 @@ func azure functionapp publish <app name> --build-native-deps
 
 A háttérben Core Tools használatával docker futtatása a [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) rendszerképet a helyi gépen tárolójaként. Ebben a környezetben használja, akkor Ezután létrehozhatja és forrás terjesztési, mielőtt végleges üzembe helyezés az Azure szolgáltatásra csomagolás őket az Azure a szükséges modulok telepítéséhez.
 
-> [!NOTE]
-> Core Tools (func) használ a PyInstaller program befagyasztani a felhasználó kód és a egy egyetlen önálló végrehajtható fájl futtatását az Azure-ban való függőségek. Ez a funkció jelenleg előzetes verzióban érhető el, és előfordulhat, hogy nem terjed ki az összes típusú Python-csomagokat. Ha nem sikerül a modulok importálásához, próbálja meg újra közzététele a `--no-bundler` lehetőséget. 
-> ```
-> func azure functionapp publish <app_name> --build-native-deps --no-bundler
-> ```
-> Ha továbbra is problémákat tapasztal, vegye fel velünk a [nyissa meg a probléma](https://github.com/Azure/azure-functions-core-tools/issues/new) , beleértve a probléma leírását. 
+A függőségek létrehozása és közzététele a folyamatos továbbítás (CD) rendszert, használ [használata az Azure DevOps-folyamatok](https://docs.microsoft.com/azure/azure-functions/functions-how-to-azure-devops). 
 
+## <a name="unit-testing"></a>Egységtesztelés
 
-A függőségek és közzétett egy folyamatos integrációs (CI) és a folyamatos továbbítás (CD) rendszert használ, használhatja egy [Azure folyamat](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=vsts) vagy [Travis CI egyéni parancsfájl](https://docs.travis-ci.com/user/deployment/script/). 
+Pythonban írt funkciók tesztelhető legyen, mint más szokásos tesztelési keretrendszereket használó Python-kód. A legtöbb kötések, hozzon létre egy utánzatként funkcionáló bemeneti objektumot a megfelelő osztály egy példányát lehetőség a `azure.functions` csomagot.
 
-Példa `azure-pipelines.yml` parancsfájl a build és a közzétételi folyamat.
-```yml
-pool:
-  vmImage: 'Ubuntu 16.04'
+Például a következő egy HTTP által aktivált függvény utánzatként funkcionáló tesztje:
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '8.x'
+```python
+# myapp/__init__.py
+import azure.functions as func
+import logging
 
-- script: |
-    set -e
-    echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
-    curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-    sudo apt-get install -y apt-transport-https
-    echo "install Azure CLI..."
-    sudo apt-get update && sudo apt-get install -y azure-cli
-    npm i -g azure-functions-core-tools --unsafe-perm true
-    echo "installing dotnet core"
-    curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 2.0
-- script: |
-    set -e
-    az login --service-principal --username "$(APP_ID)" --password "$(PASSWORD)" --tenant "$(TENANT_ID)" 
-    func settings add FUNCTIONS_WORKER_RUNTIME python
-    func extensions install
-    func azure functionapp publish $(APP_NAME) --build-native-deps
+def main(req: func.HttpRequest,
+         obj: func.InputStream):
+
+    logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Példa `.travis.yaml` parancsfájl a build és a közzétételi folyamat.
+```python
+# myapp/test_func.py
+import unittest
 
-```yml
-sudo: required
+import azure.functions as func
+from . import my_function
 
-language: node_js
+class TestFunction(unittest.TestCase):
+    def test_my_function(self):
+        # Construct a mock HTTP request.
+        req = func.HttpRequest(
+            method='GET',
+            body=None,
+            url='/my_function', 
+            params={'name': 'Test'})
 
-node_js:
-  - "8"
+        # Call the function.
+        resp = my_function(req)
 
-services:
-  - docker
-
-before_install:
-  - echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
-  - curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-  - sudo apt-get install -y apt-transport-https
-  - sudo apt-get update && sudo apt-get install -y azure-cli
-  - npm i -g azure-functions-core-tools --unsafe-perm true
-
-
-script:
-  - az login --service-principal --username "$APP_ID" --password "$PASSWORD" --tenant "$TENANT_ID"
-  - az account get-access-token --query "accessToken" | func azure functionapp publish $APP_NAME --build-native-deps
-
+        # Check the output.
+        self.assertEqual(
+            resp.get_body(), 
+            'Hello, Test!',
+        )
 ```
+
+Íme egy másik példa, az üzenetsor által aktivált függvény:
+
+```python
+# myapp/__init__.py
+import azure.functions as func
+
+def my_function(msg: func.QueueMessage) -> str:
+    return f'msg body: {msg.get_body().decode()}'
+```
+
+```python
+# myapp/test_func.py
+import unittest
+
+import azure.functions as func
+from . import my_function
+
+class TestFunction(unittest.TestCase):
+    def test_my_function(self):
+        # Construct a mock Queue message.
+        req = func.QueueMessage(
+            body=b'test')
+
+        # Call the function.
+        resp = my_function(req)
+
+        # Check the output.
+        self.assertEqual(
+            resp, 
+            'msg body: test',
+        )
+``` 
 
 ## <a name="known-issues-and-faq"></a>Ismert problémák és gyakori kérdések
 

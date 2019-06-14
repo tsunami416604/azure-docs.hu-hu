@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
 ms.openlocfilehash: c57550a8b683ad8f184884374c4f09216417fc40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236396"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Csatlakozás az Azure Databricks a Excel-, Python vagy R
@@ -54,7 +54,7 @@ Egy adatforrás neve (DSN) egy adott adatforrásra vonatkozó információkat ta
 
     Az alábbi táblázat az értékeket a párbeszédpanelen adja meg az információkat.
     
-    |Mező  | Value  |
+    |Mező  | Érték  |
     |---------|---------|
     |**Adatforrás neve**     | Adja meg az adatforrás nevét.        |
     |**Host(s)**     | Adja meg a Databricks-munkaterület kimásolt érték *kiszolgáló állomásnevét*.        |
@@ -134,7 +134,7 @@ Ebben a szakaszban a referenciaadatok elérhető az Azure Databricksben (példá
 
 * Telepítse a Pythont a [Itt](https://www.python.org/downloads/). Is erre a hivatkozásra a Python telepítése telepíti a TÉTLEN.
 
-* Egy parancssorból a számítógépen, telepítse a `pyodbc` csomagot. Futtassa az alábbi parancsot:
+* Egy parancssorból a számítógépen, telepítse a `pyodbc` csomagot. Futtassa a következő parancsot:
 
       pip install pyodbc
 

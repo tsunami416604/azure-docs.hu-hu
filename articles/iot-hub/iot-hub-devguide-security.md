@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60400600"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
@@ -57,7 +57,7 @@ Ha például a tipikus IoT-megoldások:
 > [!NOTE]
 > Lásd: [engedélyek](#iot-hub-permissions) részletes információkat.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Az Azure IoT Hub végpontok hozzáférést biztosít egy jogkivonatot a megosztott elérési házirendeket és az identitás beállításjegyzék biztonsági hitelesítő adatok szemben ellenőrzésével.
 
@@ -108,7 +108,7 @@ Az AMQP használatával SASL egyszerű használatakor egy ügyfél csatlakoztat�
 
 ## <a name="scope-iot-hub-level-credentials"></a>Hatókör IoT hub-szintű hitelesítő adatokkal
 
-IoT hub-szintű biztonsági házirendek egy korlátozott erőforrás URI-jogkivonatok létrehozásával korlátozhatja körét. Ha például a végpontot, hogy az eszköz – felhő üzeneteket küldhet egy eszközről van-e **/devices/ {deviceId} / üzenetek/események**. Használhatja az IoT hub-szintű megosztott elérési házirendet a **DeviceConnect** engedélyek egy jogkivonatot, amelynek a resourceURI van a bejelentkezni **/devices/ {deviceId}**. Ezzel a módszerrel hoz létre, amely csak eszköz nevében üzenetek küldéséhez használható jogkivonatot **deviceId**.
+IoT hub-szintű biztonsági házirendek egy korlátozott erőforrás URI-jogkivonatok létrehozásával korlátozhatja körét. Ha például a végpontot, hogy az eszköz – felhő üzeneteket küldhet egy eszközről van-e **/devices/ {deviceId} / üzenetek/események**. Használhatja az IoT hub-szintű megosztott elérési házirendet a **DeviceConnect** engedélyek egy jogkivonatot, amelynek a resourceURI van a bejelentkezni **/devices/ {deviceId}** . Ezzel a módszerrel hoz létre, amely csak eszköz nevében üzenetek küldéséhez használható jogkivonatot **deviceId**.
 
 Ez a mechanizmus hasonlít a [az Event Hubs közzétevői házirend](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab), és egyéni hitelesítési módszerek megvalósítását teszi.
 
@@ -134,7 +134,7 @@ A biztonsági jogkivonat formátuma a következő:
 
 Az alábbiakban a várt értékek:
 
-| Value | Leírás |
+| Érték | Leírás |
 | --- | --- |
 | {aláírás} |Egy HMAC-SHA256 aláírás karakterlánccá: `{URL-encoded-resourceURI} + "\n" + expiry`. **Fontos**: A kulcs a Base64 kódolású anyag dekódolni, és a HMAC-SHA256 végzéséhez kulcsaként használt. |
 | {resourceURI} |URI-előtag (szegmens) szerint a végpontot, amely az ezzel a tokennel, az IoT hub (nincs protocol) állomásneve kezdve érhető el. Például: `myHub.azure-devices.net/devices/device1` |

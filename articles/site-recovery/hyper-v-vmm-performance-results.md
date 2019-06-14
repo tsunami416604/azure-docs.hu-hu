@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60363555"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Egy másodlagos helyre Hyper-V-replikáció terhelésiteszt-eredményei
@@ -106,7 +106,7 @@ Az eredmények egyértelműen bemutatják, hogy a Site Recovery, Hyper-V replika
 
 ![Elsődleges hardverkövetelmények](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | Hálózati adapter | Szoftver |
+| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | NIC | Szoftver |
 | --- | --- | --- | --- | --- | --- | --- |
 | A Hyper-V fürtben lévő kiszolgálók: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 256 rendelkezik |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |4 |GB/s x 4 I |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
 | VMM-kiszolgáló |2 | | |2 |1 Gbps |A Windows Server 2012 adatbázis R2 (x 64) és a VMM 2012 R2-ben |
@@ -118,7 +118,7 @@ Az eredmények egyértelműen bemutatják, hogy a Site Recovery, Hyper-V replika
 
 ![Elsődleges hardver-specifikáció](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | Hálózati adapter | Szoftver |
+| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | NIC | Szoftver |
 | --- | --- | --- | --- | --- | --- | --- |
 | A Hyper-V fürtben lévő kiszolgálók: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |A Dell™ PowerEdge™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 \@ 2.30-as GHz |2 |GB/s x 4 I |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
 | ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |4 | |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
@@ -170,10 +170,10 @@ Az eredmények egyértelműen bemutatják, hogy a Site Recovery, Hyper-V replika
 
 A táblázat összefoglalja a teljesítmény-mérőszámok és a központi telepítésben lévő is mért számlálókat.
 
-| Metrika | Számláló |
+| Metrika | A számláló |
 | --- | --- |
 | CPU |\Processor(_Total)\% Processor Time |
-| Elérhető memória |\Memory\Available (MB) |
+| Rendelkezésre álló memória |\Memory\Available (MB) |
 | IO |\PhysicalDisk(_Total)\Disk Transfers/sec |
 | Virtuális gép olvasási művelet/mp (IOPS) |\Hyper-V virtuális tárolóeszköz (\<VHD-t >) \Read művelet/mp |
 | Virtuális gép (IOPS) írási művelet/mp |\Hyper-V virtuális tárolóeszköz (\<VHD-t >) \Write művelet/mp |

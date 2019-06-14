@@ -19,10 +19,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353631"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Kezelés és testreszabás Active Directory összevonási szolgáltatások az Azure AD Connect használatával
@@ -106,7 +106,7 @@ Alternatív bejelentkezési azonosító konfigurálása az AD FS-hez két fő l�
 
 4. Az Azure AD Connect kéri a jelszót az új AD FS-farm konfigurálása az Azure AD Connecttel során megadott PFX-fájl. Kattintson a **jelszó megadása** PFX-fájljának jelszónak a megadását.
 
-   ![Tanúsítványjelszó](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
+   ![Tanúsítvány jelszava](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
     ![SSL-tanúsítvány megadása](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
@@ -172,7 +172,7 @@ Az Azure AD Connect használatával összevonni az Azure AD-tartomány hozzáad�
 
 4. A következő oldalon a varázsló akkor is összevonható a helyszíni címtár az Azure AD-tartomány listáját tartalmazza. Válassza ki a tartományt a listából.
 
-   ![Azure AD-tartomány](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
+   ![Azure AD domain](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
     Miután kiválasztotta a tartományhoz, a varázsló biztosít további a varázsló által elvégzendő műveleteket és a konfiguráció hatásának megfelelő információt. Bizonyos esetekben egy tartományhoz, amely még nem ellenőrizte az Azure ad-ben, ha a varázsló nyújt segítséget a tartomány ellenőrzéséhez. Lásd: [az egyéni tartománynév hozzáadása az Azure Active Directory](../active-directory-domains-add-azure-portal.md) további részletekért.
 

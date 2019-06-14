@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06566ab81b6af847a7eb174731105b7f43a7197f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60242770"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Első lépések
@@ -31,12 +31,12 @@ Az Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezés (k�
 
 Közvetlen egyszeri bejelentkezés üzembe helyezéséhez kövesse az alábbi lépéseket.
 
-## <a name="step-1-check-the-prerequisites"></a>1. lépés: Az előfeltételek ellenőrzése
+## <a name="step-1-check-the-prerequisites"></a>1\. lépés: Az előfeltételek ellenőrzése
 
 Győződjön meg arról, hogy a következő előfeltételeket:
 
 * **Az Azure AD Connect-kiszolgáló beállítása**: Ha [átmenő hitelesítés](how-to-connect-pta.md) a bejelentkezési módszerrel, nincs további előfeltétel-ellenőrzés nem szükséges. Ha [Jelszókivonat-szinkronizálás](how-to-connect-password-hash-synchronization.md) legyen a bejelentkezési módszer, és ha az Azure AD Connect és az Azure AD között tűzfal, ellenőrizze, hogy:
-   - 1.1.644.0 verziót vagy az Azure AD Connect újabb. 
+   - 1\.1.644.0 verziót vagy az Azure AD Connect újabb. 
    - Ha a tűzfal vagy proxy engedélyezett DNS engedélyezéskor a kapcsolatokat engedélyez a  **\*. msappproxy.net** URL-címek 443-as porton keresztül. Való hozzáférés engedélyezése, ha nem, akkor a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653), amely hetente frissül. Ezt az előfeltételt alkalmazható, csak akkor, ha engedélyezi a funkciót. Nem kötelező a tényleges felhasználói bejelentkezéseket.
 
     >[!NOTE]
@@ -55,7 +55,7 @@ Győződjön meg arról, hogy a következő előfeltételeket:
 
 * **Az Office 365-ügyfelek a legújabb verziókat használhatja**: A beavatkozás nélküli bejelentkezést az Office 365-ügyfelek (Outlook, Word, Excel és mások), a felhasználók kell verziók 16.0.8730.xxxx használja vagy újabb.
 
-## <a name="step-2-enable-the-feature"></a>2. lépés: A funkció engedélyezése
+## <a name="step-2-enable-the-feature"></a>2\. lépés: A funkció engedélyezése
 
 Engedélyezze a közvetlen egyszeri bejelentkezés révén [az Azure AD Connect](whatis-hybrid-identity.md).
 
@@ -98,7 +98,7 @@ Kövesse az alábbi utasításokat, győződjön meg arról, hogy engedélyezte 
 >[!NOTE]
 > Annak érdekében, hogy ha a Pass-the-Hash és a hitelesítő adatok ellopásának kockázatcsökkentési architektúrák használ a helyszíni környezetben, megfelelő módosításokat a `AZUREADSSOACC` számítógépfiók végül nem a a karanténba helyezett tárolóra. 
 
-## <a name="step-3-roll-out-the-feature"></a>3. lépés: A szolgáltatás bevezetése
+## <a name="step-3-roll-out-the-feature"></a>3\. lépés: A szolgáltatás bevezetése
 
 Is fokozatosan fokozatosan zökkenőmentes egyszeri Bejelentkezést a felhasználók az alábbi utasítások szerint. Először adja hozzá a következő, Azure AD-URL az összes, vagy a kiválasztott felhasználók intranetes zóna beállításait az Active Directory csoportházirend használatával:
 
@@ -199,7 +199,7 @@ Külső Active Directory csoportházirend-bővítmények számára, hogy az Azur
 
 Közvetlen egyszeri bejelentkezés nem működik a privát böngészési módban, a Firefox és a Microsoft Edge böngészőben. Azt is nem működik az Internet Explorer böngészőben fokozott védett módban fut, ha.
 
-## <a name="step-4-test-the-feature"></a>4. lépés: A szolgáltatás tesztelése
+## <a name="step-4-test-the-feature"></a>4\. lépés: A szolgáltatás tesztelése
 
 A funkció egy adott felhasználó teszteléséhez ellenőrizze, hogy az alábbi feltételek teljesülnek:
   - A felhasználó bejelentkezik vállalati eszközök.
@@ -214,9 +214,9 @@ Tesztelje a forgatókönyvet, ahol a felhasználó nem rendelkezik a felhasznál
    - Jelentkezzen be a `https://myapps.microsoft.com/contoso.onmicrosoft.com` egy új privát böngésző-munkamenetben. Cserélje le *contoso* a bérlő nevét.
    - Jelentkezzen be a `https://myapps.microsoft.com/contoso.com` egy új privát böngésző-munkamenetben. Cserélje le *contoso.com* az a bérlő ellenőrzött tartományt (nem összevont tartományban).
 
-## <a name="step-5-roll-over-keys"></a>5. lépés: Kulcsok vihető
+## <a name="step-5-roll-over-keys"></a>5\. lépés: Kulcsok vihető
 
-2. lépésben az Azure AD Connect létrehoz számítógépfiókok (amely az Azure AD), amelyen engedélyezte a közvetlen egyszeri bejelentkezés az Active Directory erdőkben. További tudnivalókért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Részletes technikai](how-to-connect-sso-how-it-works.md).
+2\. lépésben az Azure AD Connect létrehoz számítógépfiókok (amely az Azure AD), amelyen engedélyezte a közvetlen egyszeri bejelentkezés az Active Directory erdőkben. További tudnivalókért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Részletes technikai](how-to-connect-sso-how-it-works.md).
 
 >[!IMPORTANT]
 >A számítógép-fiók, a Kerberos-visszafejtési kulcs kiszivárgott, ha használható lehet létrehozni a Kerberos-jegyekhez bármely felhasználó számára az AD-erdőben. Rosszindulatú majd tudja megszemélyesíteni az Azure AD bejelentkezések a feltört felhasználók számára. Kifejezetten ajánljuk, hogy rendszeres időközönként rotálja ezek Kerberos visszafejtési kulcsok – 30 nap során legalább egyszer.

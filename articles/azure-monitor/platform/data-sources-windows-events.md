@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
 ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236916"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Windows Eseménynapló-adatforrások az Azure monitorban
@@ -28,7 +28,7 @@ Windows-eseménynaplók közé tartoznak a leggyakoribb [adatforrások](agent-da
 ## <a name="configuring-windows-event-logs"></a>Windows eseménynaplók konfigurálása
 A Windows eseménynaplók konfigurálása a [adatok menü a Speciális beállítások](agent-data-sources.md#configuring-data-sources).
 
-Az Azure Monitor csak a Windows Eseménynapló beállításaiban megadott eseményeket gyűjti.  Írja be a napló nevét, majd kattintson az Eseménynapló is hozzáadhat **+**.  Az egyes naplókhoz csak a kiválasztott súlyossági szint esetén csak az események összegyűjtése.  Ellenőrizze a súlyossági szint esetén csak az adott napló, amely szeretne gyűjteni.  További feltételeket az események szűrése nem tud biztosítani.
+Az Azure Monitor csak a Windows Eseménynapló beállításaiban megadott eseményeket gyűjti.  Írja be a napló nevét, majd kattintson az Eseménynapló is hozzáadhat **+** .  Az egyes naplókhoz csak a kiválasztott súlyossági szint esetén csak az események összegyűjtése.  Ellenőrizze a súlyossági szint esetén csak az adott napló, amely szeretne gyűjteni.  További feltételeket az események szűrése nem tud biztosítani.
 
 Írja be az Eseménynapló nevét, az Azure Monitor közös Eseménynapló nevének javaslatokat biztosít. Ha a hozzáadni kívánt napló nem jelenik meg a listában, továbbra is hozzáadhat, írja be a naplófájl teljes neve. Az Eseménynapló használatával is megtalálhatja a naplófájl teljes neve. Nyissa meg az eseménynaplóban a *tulajdonságok* a napló lapjáról, és másolja a karakterláncot, a *teljes fájlvisszaállítási név* mező.
 
@@ -56,10 +56,10 @@ Windows eseményrekordok rendelkezik olyan típusú **esemény** , és a tulajdo
 | ParameterXml |Esemény paraméterértékek XML formátumban. |
 | ManagementGroupName |A System Center Operations Manager-ügynököket a felügyeleti csoport neve.  Más ügynökök esetén ez az érték van. `AOI-<workspace ID>` |
 | RenderedDescription |A paraméterértékek esemény leírása |
-| Forrás |Az esemény forrását. |
+| source |Az esemény forrását. |
 | SourceSystem |Az esemény gyűjtötte a program az ügynök típusa. <br> Csatlakozás OpsManager – Windows-ügynök, közvetlenül vagy Operations Manager által felügyelt <br> Linux – az összes Linux-ügynökök  <br> AzureStorage – az Azure Diagnostics |
 | TimeGenerated |Dátum és a Windows az esemény létrehozásának ideje. |
-| Felhasználónév |Az esemény naplózójának a fiók felhasználóneve. |
+| UserName |Az esemény naplózójának a fiók felhasználóneve. |
 
 ## <a name="log-queries-with-windows-events"></a>Windows-események log lekérdezéseket.
 Az alábbi táblázat példákat különböző Windows-esemény lekérő log lekérdezéseket.

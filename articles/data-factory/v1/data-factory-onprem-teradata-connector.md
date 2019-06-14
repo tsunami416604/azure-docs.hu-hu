@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d22318f4d9e233a57d521fe36f0827b9fc3af3e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610741"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával Teradata
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-onprem-teradata-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-teradata.md)
 
@@ -83,7 +83,7 @@ Mivel a tevékenység a typeProperties szakasz tulajdonságai tevékenységek mi
 
 Ha a forrása típusa **RelationalSource** (amely tartalmazza a Teradata), a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | query |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Igen |
 
@@ -286,8 +286,8 @@ Adatok áthelyezése a Teradata, amikor a következő hozzárendeléseket haszn�
 | Teradata-adatbázis típusa | .NET-keretrendszer típusa |
 | --- | --- |
 | char |String |
-| CLOB |String |
-| Kép |String |
+| Clob |String |
+| Graphic |String |
 | VarChar |String |
 | VarGraphic |String |
 | Blob |Byte[] |
@@ -302,27 +302,27 @@ Adatok áthelyezése a Teradata, amikor a következő hozzárendeléseket haszn�
 | SmallInt |Int16 |
 | Dátum |DateTime |
 | Time |TimeSpan |
-| Idő időzónával együtt |String |
+| Time With Time Zone |String |
 | Időbélyeg |DateTime |
-| Az időzóna időbélyeg |DateTimeOffset |
-| Napi időköz |TimeSpan |
-| Intervallum nap – óra |TimeSpan |
-| Intervallum nap – perc |TimeSpan |
-| Intervallum nap – másodperc |TimeSpan |
-| Intervallum óra |TimeSpan |
-| Intervallum óra – perc |TimeSpan |
-| Intervallum óra – másodperc |TimeSpan |
-| Időköz percben |TimeSpan |
-| Második időköz percben |TimeSpan |
-| Intervallum második |TimeSpan |
-| Intervallum év |String |
-| Intervallum év, hónap |String |
-| Intervallum hónap |String |
-| Period(date) |String |
+| Timestamp With Time Zone |DateTimeOffset |
+| Interval Day |TimeSpan |
+| Interval Day To Hour |TimeSpan |
+| Interval Day To Minute |TimeSpan |
+| Interval Day To Second |TimeSpan |
+| Interval Hour |TimeSpan |
+| Interval Hour To Minute |TimeSpan |
+| Interval Hour To Second |TimeSpan |
+| Interval Minute |TimeSpan |
+| Interval Minute To Second |TimeSpan |
+| Interval Second |TimeSpan |
+| Interval Year |String |
+| Interval Year To Month |String |
+| Interval Month |String |
+| Period(Date) |String |
 | Period(Time) |String |
-| Időszak (idő időzónával együtt) |String |
+| Period(Time With Time Zone) |String |
 | Period(Timestamp) |String |
-| Időszak (Timestamp időzónával együtt) |String |
+| Period(Timestamp With Time Zone) |String |
 | Xml |String |
 
 ## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása

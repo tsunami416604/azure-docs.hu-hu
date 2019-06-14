@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 54cb9f604e9d1b817947990e657390387df6c881
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60556591"
 ---
 # <a name="sfctl-property"></a>sfctl-tulajdonság
@@ -30,7 +30,7 @@ A Service Fabric neve Store és a lekérdezés tulajdonságai.
 | --- | --- |
 | delete | Törli a megadott Service Fabric-tulajdonságot. |
 | Get | Lekérdezi a megadott Service Fabric-tulajdonságot. |
-| lista | Az összes Service Fabric-tulajdonság a megadott név alatt információkat kér le. |
+| list | Az összes Service Fabric-tulajdonság a megadott név alatt információkat kér le. |
 | PUT | Létrehozza vagy frissíti a Service Fabric-tulajdonság. |
 
 ## <a name="sfctl-property-delete"></a>sfctl-tulajdonság delete

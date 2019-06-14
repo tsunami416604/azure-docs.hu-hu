@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: magoedte
 ms.openlocfilehash: b0b221a9fe6c6482e8759664c297dbd25d0ee776
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60396333"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internetelérés nélküli számítógépek csatlakoztatása a Log Analytics-átjáró használatával az Azure monitorban
@@ -162,7 +162,7 @@ Az alábbi táblázat a telepítő által támogatott paraméterek emeli ki.
 |PORTSZÁM | TCP-port száma átjáró figyelésére |
 |PROXY | Proxy-kiszolgáló IP-címe |
 |INSTALLDIR | Adja meg a szoftverfrissítési fájlok átjáró telepítési könyvtár teljes elérési útja |
-|FELHASZNÁLÓNÉV | A proxykiszolgáló hitelesítéséhez a felhasználói azonosító |
+|USERNAME | A proxykiszolgáló hitelesítéséhez a felhasználói azonosító |
 |JELSZÓ | A felhasználó azonosító proxy hitelesítése |
 |LicenseAccepted | Adjon meg egy értéket a **1** , győződjön meg arról, hogy fogadja el a licencszerződést |
 |HASAUTH | Adjon meg egy értéket a **1** amikor megadott felhasználónév/jelszó paramétereit |
@@ -412,7 +412,7 @@ Az alábbi táblázat a Log Analytics-átjáró esetében rendelkezésre álló 
 
 ![Képernyőkép a Log Analytics átjáróinterfész teljesítményszámlálók megjelenítése](./media/gateway/counters.png)
 
-## <a name="assistance"></a>Segítségnyújtás
+## <a name="assistance"></a>Segítség
 Ha be van jelentkezve az Azure Portalon, a Log Analytics-átjáró vagy bármely más Azure-szolgáltatás vagy funkció segítséget kaphat.
 Segítséget szeretne kérni, kattintson a kérdőjel ikonra a portálon, válassza a jobb felső sarkában **új támogatási kérelem**. Végezze el az új támogatási űrlap.
 

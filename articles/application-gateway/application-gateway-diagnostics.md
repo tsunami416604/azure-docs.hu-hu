@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: amitsriva
-ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8b0ee159b1c4a4072ce5a86f9fb925744a415b3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66135486"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048715"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway számára
 
@@ -155,8 +155,7 @@ Az Azure alapértelmezés szerint létrehozza a tevékenységnaplóban. A napló
 
 ### <a name="access-log"></a>Hozzáférési napló
 
-A hozzáférési napló jön létre, csak akkor, ha engedélyezte az egyes Application Gateway-példányokon, az előző lépésekben leírtaknak megfelelően. Az adatok a storage-fiók, ha engedélyezte a naplózást a megadott tárolódik. Minden egyes hozzáférés az Application Gateway JSON formátumban rögzíti, az alábbi példában látható módon:
-
+A hozzáférési napló jön létre, csak akkor, ha engedélyezte az egyes Application Gateway-példányokon, az előző lépésekben leírtaknak megfelelően. Az adatok a storage-fiók, ha engedélyezte a naplózást a megadott tárolódik. Minden egyes hozzáférés az Application Gateway JSON formátumban rögzíti a v1 az alábbi példában látható módon:
 
 |Érték  |Leírás  |
 |---------|---------|
@@ -196,6 +195,58 @@ A hozzáférési napló jön létre, csak akkor, ha engedélyezte az egyes Appli
     }
 }
 ```
+És az Application Gateway WAF v2 a naplók megjelenítése egy kis további információk:
+
+|Érték  |Leírás  |
+|---------|---------|
+|instanceId     | Application Gateway-példány a kérés.        |
+|clientIP     | A kérés eredeti IP-cím.        |
+|clientPort     | A kérés eredeti port.       |
+|httpMethod     | A kérelem által használt HTTP-metódus.       |
+|requestUri     | A fogadott kérelem URI azonosítója.        |
+|RequestQuery     | **Kiszolgáló útválasztásos**: Háttérkészlet-példányt, amely a kérés érkezett.</br>**X-AzureApplicationGateway-LOG-ID**: Korrelációs azonosító kérelmében. Hibaelhárítás forgalmat a háttér-kiszolgálókon is használható. </br>**A KISZOLGÁLÓÁLLAPOT**: HTTP-válaszkód, az Application Gateway a háttérrendszer cégtől kapott.       |
+|UserAgent     | A HTTP-kérelem fejléce a felhasználói ügynök.        |
+|httpStatus     | HTTP-állapotkódot küld vissza az ügyfélnek, az Application Gateway.       |
+|httpVersion     | A kérelem HTTP-verzióját.        |
+|receivedBytes     | Csomag érkezett, a memória méretét.        |
+|sentBytes| Küldött bájtok csomag mérete.|
+|timeTaken| (Ezredmásodpercben), hogy mennyi ideig tart a feldolgozandó kérelmet, és a válasz küldésének. Ezt az időközt, amikor megkapja az Application Gateway a HTTP-kérés, hogy az idő, amikor a válasz küldése a művelet végeztével az első bájtig eltelt idő szerint számítjuk ki. Fontos megjegyezni, hogy a Time-Taken mező általában tartalmazza az idő, amely a kérések és válaszok csomagok utazás a hálózaton keresztül. |
+|sslEnabled| A háttérkészlet-kommunikációt használja-e SSL. Érvényes értékek: kapcsolja ki.|
+|sslCipher| A titkosítócsomag használt SSL-kommunikáció (ha az SSL engedélyezve van).|
+|sslProtocol| Az SSL protokoll (Ha engedélyezve van az SSL) használja.|
+|serverRouted| A háttérkiszolgáló, hogy az application gateway irányítja a kérést.|
+|serverStatus| A háttérkiszolgáló HTTP-állapotkódot.|
+|serverResponseLatency| A háttérkiszolgáló válaszának késését.|
+|host| A kérelem az állomásfejléc szereplő cím.|
+```json
+{
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "operationName": "ApplicationGatewayAccess",
+    "time": "2017-04-26T19:27:38Z",
+    "category": "ApplicationGatewayAccessLog",
+    "properties": {
+        "instanceId": "ApplicationGatewayRole_IN_0",
+        "clientIP": "191.96.249.97",
+        "clientPort": 46886,
+        "httpMethod": "GET",
+        "requestUri": "/phpmyadmin/scripts/setup.php",
+        "requestQuery": "X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.4.0.4&X-AzureApplicationGateway-LOG-ID=874f1f0f-6807-41c9-b7bc-f3cfa74aa0b1&SERVER-STATUS=404",
+        "userAgent": "-",
+        "httpStatus": 404,
+        "httpVersion": "HTTP/1.0",
+        "receivedBytes": 65,
+        "sentBytes": 553,
+        "timeTaken": 205,
+        "sslEnabled": "off"
+        "sslCipher": "",
+        "sslProtocol": "",
+        "serverRouted": "104.41.114.59:80",
+        "serverStatus": "200",
+        "serverResponseLatency": "0.023",
+        "host": "52.231.230.101"
+    }
+}
+```
 
 ### <a name="performance-log"></a>Teljesítmény-napló
 
@@ -208,7 +259,7 @@ A teljesítmény napló jön létre, csak akkor, ha engedélyezte, az összes Ap
 |healthyHostCount     | A háttér-készlet kifogástalan állapotú gazdagépek száma.        |
 |unHealthyHostCount     | A háttér-készlet nem megfelelő állapotú gazdagépek száma.        |
 |requestCount     | Kiszolgált kérések száma.        |
-|késés | Átlagos késése (ezredmásodpercben), amely a kérések szolgál a háttér a példány érkező kérelmeket. |
+|Késés | Átlagos késése (ezredmásodpercben), amely a kérések szolgál a háttér a példány érkező kérelmeket. |
 |failedRequestCount| Sikertelen kérelmek száma.|
 |throughput| Átlagos átviteli bájt / másodpercben mért utolsó naplóban óta.|
 
@@ -248,10 +299,10 @@ A tűzfal napló jön létre, csak akkor, ha engedélyezte az összes applicatio
 |ruleSetType     | A szabály típusának beállítása. Elérhető érték OWASP.        |
 |ruleSetVersion     | A szabálykészlet használt verziója. Elérhető értékek a következők: 2.2.9-es és 3.0 verziót.     |
 |ruleId     | A riasztást kiváltó esemény szabály azonosítója.        |
-|üzenet     | A riasztást kiváltó esemény felhasználóbarát üzenet. További részletek találhatók a Részletek területen.        |
-|művelet     |  A kérésre végrehajtott műveletet. Elérhető értékek a következők: letiltott és engedélyezett.      |
-|hely     | A hely, amelyhez a napló jött létre. Jelenleg csak globális szabályokat mivel globális szerepel.|
-|részletek     | A riasztást kiváltó esemény részletei.        |
+|message     | A riasztást kiváltó esemény felhasználóbarát üzenet. További részletek találhatók a Részletek területen.        |
+|action     |  A kérésre végrehajtott műveletet. Elérhető értékek a következők: letiltott és engedélyezett.      |
+|Hely     | A hely, amelyhez a napló jött létre. Jelenleg csak globális szabályokat mivel globális szerepel.|
+|Részletek     | A riasztást kiváltó esemény részletei.        |
 |details.message     | A szabály leírását.        |
 |details.data     | Adott adatok találhatók. kérés, amely megfelel a szabálynak.         |
 |details.file     | A szabályt tartalmazó konfigurációs fájlt.        |

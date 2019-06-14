@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
 ms.author: aljo, anmola
-ms.openlocfilehash: 147607bbea65199ff97459711ad6301a4ae93aa4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: caed77234646654d151b64d2c80b7231342f6d8c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60837521"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050477"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>A Service Fabric Reliable Services és Reliable Actors Windows a tárolóba
 
@@ -119,6 +119,16 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
    </ContainerHostPolicies>
    </Policies>
    ```
+
+> [!NOTE] 
+> Alapértelmezés szerint a Service Fabric-alkalmazások rendelkeznek a Service Fabric-futtatókörnyezet, a végpont fogadja a kéréseket és alkalmazásspecifikus formájában a hozzáférést. Fontolja meg a hozzáférés letiltását, amikor az alkalmazás futtat a nem megbízható kód. További információkért tekintse meg [ajánlott biztonsági eljárások a Service Fabric](service-fabric-best-practices-security.md#platform-isolation). Letiltja a hozzáférést a Service Fabric-futtatókörnyezet, az alkalmazásjegyzéknek az importált Szolgáltatásjegyzék megfelelő módon házirendek szakaszában adja hozzá a következő beállítást:
+>
+```xml
+  <Policies>
+      <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+  </Policies>
+```
+>
 
 10. Ez az alkalmazás teszteléséhez szüksége telepíteni kell egy fürtöt, amely 5.7-es vagy újabb verziót futtat. A futtatókörnyezet 6.1-es vagy alacsonyabb verziók kell szerkesztése és az előzetes verziójú funkció engedélyezéséhez a fürt beállításainak frissítése. Kövesse a jelen [cikk](service-fabric-cluster-fabric-settings.md) a következő beállítás hozzáadásához.
     ```

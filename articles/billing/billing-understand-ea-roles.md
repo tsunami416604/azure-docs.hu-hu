@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/21/2018
 ms.author: banders
 ms.openlocfilehash: 98ed28af8df246549fb521a81f1968e1f5c28cc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370713"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Megismerheti az Azure nagyvállalati szerződéssel rendszergazdai szerepkörök az Azure-ban
@@ -26,7 +26,7 @@ Segíti a vállalata használati kezelését, és a költségek, Azure ügyfelek
 
 - Vállalati rendszergazda
 - A vállalati rendszergazdák (írásvédett)
-- Részleg adminisztrátora
+- Szervezeti egység rendszergazdája
 - Szervezeti egység rendszergazdája (írásvédett)
 - Fióktulajdonos
  
@@ -40,7 +40,7 @@ A következő szakaszok ismertetik a korlátozások és az egyes szerepkörök k
 |---|---|
 |Vállalati rendszergazda|Korlátlan|
 |A vállalati rendszergazdák (írásvédett)|Korlátlan|
-|Részleg adminisztrátora|Korlátlan|
+|Szervezeti egység rendszergazdája|Korlátlan|
 |Szervezeti egység rendszergazdája (írásvédett)|Korlátlan|
 |Fióktulajdonos|fiókonként 1<sup>1</sup>|
 
@@ -48,7 +48,7 @@ A következő szakaszok ismertetik a korlátozások és az egyes szerepkörök k
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Szervezeti felépítés és a szerepkör engedélyei
 
-|Feladatok| Vállalati rendszergazda|A vállalati rendszergazdák (írásvédett)|Részleg adminisztrátora|Szervezeti egység rendszergazdája (írásvédett)|Fióktulajdonos|
+|Feladatok| Vállalati rendszergazda|A vállalati rendszergazdák (írásvédett)|Szervezeti egység rendszergazdája|Szervezeti egység rendszergazdája (írásvédett)|Fióktulajdonos|
 |---|---|---|---|---|---|
 |Vállalati rendszergazdák megtekintése|✔|✔|✘|✘|✘|
 |Adja hozzá, vagy távolítsa el a vállalati rendszergazdák|✔|✘|✘|✘|✘|
@@ -67,7 +67,7 @@ A következő szakaszok ismertetik a korlátozások és az egyes szerepkörök k
 
 ## <a name="usage-and-costs-access-by-role"></a>Használat és költségek hozzáférés szerepkör szerint
 
-|Feladatok| Vállalati rendszergazda|A vállalati rendszergazdák (írásvédett)|Részleg adminisztrátora|Szervezeti egység rendszergazdája (írásvédett) |Fióktulajdonos|
+|Feladatok| Vállalati rendszergazda|A vállalati rendszergazdák (írásvédett)|Szervezeti egység rendszergazdája|Szervezeti egység rendszergazdája (írásvédett) |Fióktulajdonos|
 |---|---|---|---|---|---|
 |Nézet kreditegyenlegét többek között a pénzügyi kötelezettségvállalás|✔|✔|✘|✘|✘|
 |Költségkeret-beállítási kvóták megtekintése részleg|✔|✔|✘|✘|✘|
@@ -95,8 +95,8 @@ Az alábbi táblázat a nagyvállalati szerződés rendszergazdai szerepköröke
 |---|---|---|---|
 |Fiók tulajdonosa vagy a részleg rendszergazdája|✔ Engedélyezve|Tulajdonos|A szervezet nagyvállalati szerződés díjszabása|
 |Fiók tulajdonosa vagy a részleg rendszergazdája|✘ le van tiltva|Tulajdonos|Kiskereskedelmi árképzésével|
-|Fiók tulajdonosa vagy a részleg rendszergazdája|✔ Engedélyezve |nincs|Nincs díjszabás|
-|Fiók tulajdonosa vagy a részleg rendszergazdája|✘ le van tiltva |nincs|Nincs díjszabás|
+|Fiók tulajdonosa vagy a részleg rendszergazdája|✔ Engedélyezve |Egyik sem|Nincs díjszabás|
+|Fiók tulajdonosa vagy a részleg rendszergazdája|✘ le van tiltva |Egyik sem|Nincs díjszabás|
 |None|Nem alkalmazható |Tulajdonos|Kiskereskedelmi árképzésével|
 
 A vállalati rendszergazda szerepkör meg, és nézet díjak szabályzatok a vállalati portálon. Az RBAC szerepkör frissíthető az Azure Portalon. További információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../role-based-access-control/role-assignments-portal.md).

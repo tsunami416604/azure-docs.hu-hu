@@ -12,10 +12,10 @@ ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60414953"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Hozzon létre egy rugalmas hozzáférés-vezérlési felügyeleti stratégia az Azure Active Directoryval
@@ -77,15 +77,15 @@ Ebben a példában szabályzatkészlet biztosít a kiválasztott felhasználók 
 
 **Állítsa be a hitelesítésszolgáltató kockázatcsökkentési házirendek:**
 
-* 1. szabályzat: Célcsoportok kívüli személyek való hozzáférés letiltása
+* 1\. szabályzat: Célcsoportok kívüli személyek való hozzáférés letiltása
   * Felhasználók és csoportok: Minden felhasználónak bele. AppUsers CoreAdmins és EmergencyAccess kizárása
   * Felhőalapú alkalmazások: Tartalmazza az összes alkalmazás
-  * Feltételek: (nincs)
-  * Hozzáférés megadása: Blokk
-* 2. szabályzat: MFA vagy megbízható eszköz igénylő AppUsers hozzáférést biztosít.
+  * Feltételek: (Nincs)
+  * Hozzáférés megadása: Letiltás
+* 2\. szabályzat: MFA vagy megbízható eszköz igénylő AppUsers hozzáférést biztosít.
   * Felhasználók és csoportok: AppUsers tartalmazza. CoreAdmins és EmergencyAccess kizárása
   * Felhőalapú alkalmazások: Tartalmazza az összes alkalmazás
-  * Feltételek: (nincs)
+  * Feltételek: (Nincs)
   * Hozzáférés megadása: Hozzáférés biztosítása, többtényezős hitelesítés megkövetelése, a megfelelő eszköz megkövetelése. Több vezérlő: A kijelölt feltételek egyikének megkövetelése.
 
 ### <a name="contingencies-for-user-lockout"></a>A felhasználó zárolási ágakba
@@ -97,7 +97,7 @@ A fenyegetéseknek való ismertetése során egy bekövetkező szolgáltatáskim
    * **A kategória 1 működés szempontjából kritikus fontosságú alkalmazások** több percig, például olyan alkalmazásokat, amelyek közvetlenül nincsenek hatással a bevételt, a szervezet, amely nem lehet nem érhető el.
    * **2. kategória fontos alkalmazások** , hogy az üzlet néhány órán belül elérhetők lesznek.
    * **3. kategória alacsony prioritású alkalmazások** , amely képes elviselni egy pár nappal megszakadását.
-2. 1. és 2 kategóriába tartozó alkalmazások esetében a Microsoft azt javasolja, előre megterveznie, milyen típusú hozzáférési szintet szeretné engedélyezni:
+2. 1\. és 2 kategóriába tartozó alkalmazások esetében a Microsoft azt javasolja, előre megterveznie, milyen típusú hozzáférési szintet szeretné engedélyezni:
    * Biztos, hogy a teljes hozzáféréssel vagy korlátozott munkamenet, például korlátozza a letöltéseket?
    * Biztosan engedélyezi a hozzáférést az alkalmazáshoz, de nem a teljes alkalmazás részére?
    * Biztosan information worker hozzáférés engedélyezéséhez és letiltásához a rendszergazdai hozzáférés, a hozzáférés-vezérlést visszaállításáig?
@@ -139,33 +139,33 @@ Az alábbi példában: **A példában A - hozzáférés alapvető fontosságú c
 
 **A - hitelesítésszolgáltató Contingency szabályzatok hozzáférés alapvető fontosságú csoportmunka-alkalmazás visszaállításához. példa:**
 
-* 1. szabályzat: Az Exchange és SharePoint megkövetelése a tartományhoz csatlakozott eszközökkel
+* 1\. szabályzat: Az Exchange és SharePoint megkövetelése a tartományhoz csatlakozott eszközökkel
   * Név: EM001 - VÉSZHELYZET ENGEDÉLYEZÉSE: MFA megszakítás [1/4] – Exchange, SharePoint – hibrid Azure AD-csatlakozás megkövetelése
   * Felhasználók és csoportok: ContingencyAccess tartalmazza. CoreAdmins és EmergencyAccess kizárása
   * Felhőalapú alkalmazások: Az Exchange Online és SharePoint Online
-  * Feltételek: Bármelyik
+  * Feltételek: Bármely
   * Hozzáférés megadása: Tartományhoz csatlakoztatott megkövetelése
   * Állapot: Letiltva
-* 2. szabályzat: A platformokat tiltsa le a nem Windows
+* 2\. szabályzat: A platformokat tiltsa le a nem Windows
   * Név: EM002 - VÉSZHELYZET ENGEDÉLYEZÉSE: MFA megszakítás [2 vagy 4] hozzáférés – Exchange, SharePoint - letiltása Windows kivételével
   * Felhasználók és csoportok: Minden felhasználónak bele. CoreAdmins és EmergencyAccess kizárása
   * Felhőalapú alkalmazások: Az Exchange Online és SharePoint Online
   * Feltételek: Platform tartalmazza az összes platformot is, a Windows kizárása
-  * Hozzáférés megadása: Blokk
+  * Hozzáférés megadása: Letiltás
   * Állapot: Letiltva
-* 3. szabályzat: CorpNetwork hálózatokra letiltása
+* 3\. szabályzat: CorpNetwork hálózatokra letiltása
   * Név: EM003 - VÉSZHELYZET ENGEDÉLYEZÉSE: MFA megszakítás [3/4] hozzáférés – Exchange, SharePoint - letiltása vállalati hálózaton kívül
   * Felhasználók és csoportok: Minden felhasználónak bele. CoreAdmins és EmergencyAccess kizárása
   * Felhőalapú alkalmazások: Az Exchange Online és SharePoint Online
   * Feltételek: Helyek tartalmazza a bármilyen olyan helyre, CorpNetwork kizárása
-  * Hozzáférés megadása: Blokk
+  * Hozzáférés megadása: Letiltás
   * Állapot: Letiltva
-* 4. szabályzat: EAS explicit módon letiltása
+* 4\. szabályzat: EAS explicit módon letiltása
   * Név: EM004 - VÉSZHELYZET ENGEDÉLYEZÉSE: MFA megszakítás [4/4] – az Exchange - blokk EAS az összes felhasználó számára
   * Felhasználók és csoportok: Minden felhasználónak bele
   * Felhőalapú alkalmazások: Az Exchange Online belefoglalása
   * Feltételek: Ügyfélalkalmazások: Az Exchange Active Sync szolgáltatással
-  * Hozzáférés megadása: Blokk
+  * Hozzáférés megadása: Letiltás
   * Állapot: Letiltva
 
 Az aktiválás sorrend:
@@ -181,19 +181,19 @@ A következő példában **példa B - Contingency feltételes hozzáférési sza
 
 **B - hitelesítésszolgáltató Contingency házirendek. példa:**
 
-* 1. szabályzat: Nem található a SalesContingency csapat mindenki letiltása
+* 1\. szabályzat: Nem található a SalesContingency csapat mindenki letiltása
   * Név: EM001 - VÉSZHELYZET ENGEDÉLYEZÉSE: Eszköz megfelelőségi megszakítás [1/2] – a Salesforce - kivételével SalesforceContingency letiltása minden felhasználó
   * Felhasználók és csoportok: Minden felhasználónak bele. SalesAdmins és SalesforceContingency kizárása
   * Felhőalapú alkalmazások: Salesforce-ban.
   * Feltételek: None
-  * Hozzáférés megadása: Blokk
+  * Hozzáférés megadása: Letiltás
   * Állapot: Letiltva
-* 2. szabályzat: Az értékesítési csoportnak bármilyen platformon kívül (a támadási felületének csökkentése érdekében) mobile letiltása
+* 2\. szabályzat: Az értékesítési csoportnak bármilyen platformon kívül (a támadási felületének csökkentése érdekében) mobile letiltása
   * Név: EM002 - VÉSZHELYZET ENGEDÉLYEZÉSE: Eszköz megfelelőségi megszakítása: [2/2] - Salesforce - letiltása minden platformhoz, kivéve az iOS és Android rendszerhez
   * Felhasználók és csoportok: SalesforceContingency tartalmazza. SalesAdmins kizárása
   * Felhőalapú alkalmazások: Salesforce
   * Feltételek: Platform tartalmazza az összes platformot is, zárja ki az iOS és Android rendszerhez
-  * Hozzáférés megadása: Blokk
+  * Hozzáférés megadása: Letiltás
   * Állapot: Letiltva
 
 Az aktiválás sorrend:

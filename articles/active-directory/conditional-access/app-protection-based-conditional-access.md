@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2250449c0ef342332945b80cb10cb9a02885b259
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60355989"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Alkalmazásvédelmi szabályzat szükséges a cloud app hozzáféréshez a feltételes hozzáférés (előzetes verzió)
@@ -56,7 +56,7 @@ App-protection-alapú feltételes hozzáférési szabályzatok más szabályzato
 - Intune app protection-szabályzat alkalmazások, amelyek a szabályzat fogadásához levelezésre.
 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk azt feltételezi, hogy ismeri a:
 
@@ -111,7 +111,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
     ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/07.png)
 
-4. A **feltételek**, konfigurálja **eszközplatformok** és **ügyfélalkalmazások (előzetes verzió)**:
+4. A **feltételek**, konfigurálja **eszközplatformok** és **ügyfélalkalmazások (előzetes verzió)** :
 
     a. A **eszközplatformok**válassza **Android** és **iOS**.
 
@@ -121,7 +121,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
     ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/91.png)
 
-5. A **hozzáférés-vezérlés**válassza **megkövetelése alkalmazásvédelmi szabályzat (előzetes verzió)**.
+5. A **hozzáférés-vezérlés**válassza **megkövetelése alkalmazásvédelmi szabályzat (előzetes verzió)** .
 
     ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/05.png)
  
@@ -141,13 +141,13 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
     ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/07.png)
 
-4. A **feltételek**, konfigurálja **ügyfélalkalmazások (előzetes verzió)**. 
+4. A **feltételek**, konfigurálja **ügyfélalkalmazások (előzetes verzió)** . 
 
     a. A **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 
     ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/92.png)
 
-    b. A **hozzáférés-vezérlés**válassza **megkövetelése alkalmazásvédelmi szabályzat (előzetes verzió)**.
+    b. A **hozzáférés-vezérlés**válassza **megkövetelése alkalmazásvédelmi szabályzat (előzetes verzió)** .
 
     ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/05.png)
 
@@ -194,7 +194,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/07.png)
 
-4. A **feltételek**, konfigurálja **eszközplatformok** és **ügyfélalkalmazások (előzetes verzió)**. 
+4. A **feltételek**, konfigurálja **eszközplatformok** és **ügyfélalkalmazások (előzetes verzió)** . 
  
     a. A **eszközplatformok**válassza **Android** és **iOS**.
 
@@ -230,7 +230,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
     ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/07.png)
 
-4. A **feltételek**, konfigurálja **ügyfélalkalmazások (előzetes verzió)**. 
+4. A **feltételek**, konfigurálja **ügyfélalkalmazások (előzetes verzió)** . 
 
     A **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 
@@ -296,7 +296,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/07.png)
 
-4. A **feltételek**, konfigurálja **eszközplatformok** és **ügyfélalkalmazások (előzetes verzió)**. 
+4. A **feltételek**, konfigurálja **eszközplatformok** és **ügyfélalkalmazások (előzetes verzió)** . 
  
     a. A **eszközplatformok**válassza **Android** és **iOS**.
 
@@ -332,7 +332,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
     ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/07.png)
 
-4. A **feltételek**, konfigurálja **ügyfélalkalmazások (előzetes verzió)**. 
+4. A **feltételek**, konfigurálja **ügyfélalkalmazások (előzetes verzió)** . 
 
     A **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 
@@ -403,7 +403,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/02.png)
 
-4. A **feltételek**, konfigurálja **eszközplatformok** és **ügyfélalkalmazások (előzetes verzió)**. 
+4. A **feltételek**, konfigurálja **eszközplatformok** és **ügyfélalkalmazások (előzetes verzió)** . 
  
     a. A **eszközplatformok**válassza **Android** és **iOS**.
 

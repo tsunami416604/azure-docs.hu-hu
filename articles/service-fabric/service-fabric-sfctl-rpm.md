@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 04080d75042bfa8a07533336936165e0abef051b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60556355"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
@@ -30,7 +30,7 @@ Lekérdezés, és parancsokat küldjön a repair-kezelő szolgáltatás.
 | --- | --- |
 | approve-force | Arra kényszeríti a jóváhagyás, az adott helyreállítási feladat. |
 | delete | A befejezett javítási feladat törlése. |
-| lista | A megadott szűrők megfelelő helyreállítási feladatok listáját kéri le. |
+| list | A megadott szűrők megfelelő helyreállítási feladatok listáját kéri le. |
 
 ## <a name="sfctl-rpm-approve-force"></a>hagyja jóvá sfctl rpm-kényszerítése
 Arra kényszeríti a jóváhagyás, az adott helyreállítási feladat.

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: 0d055b1a78622665137a6abad18681a728ae2b30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60422653"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>A Twilio használata Java-alkalmazás az Azure-ban a telefonhívás módját
@@ -183,7 +183,7 @@ Ez a kód mutatni, Twilio, a Java használatával Azure-on alapvető funkciói l
 
 * Egy webes űrlap használata helyett használhatja az Azure storage blobból vagy az SQL Database telefonszámok tárolására, és hívja a szöveget. Az Azure storage-blobok a Java használatával kapcsolatos információkért lásd: [használata a Blob Storage szolgáltatás a Javával][howto_blob_storage_java]. 
 * Használhat **RoleEnvironment.getConfigurationSettings** beolvasni a Twilio-fiókja Azonosítóját és hitelesítési tokent a telepítési konfigurációt, fix kódolása makecall.jsp szereplő értékek helyett. További információ a **RoleEnvironment** osztály, lásd: [JSP-ben az Azure szolgáltatás futtatókörnyezeti kódtárának használata] [ azure_runtime_jsp] és az Azure szolgáltatás futtatókörnyezete csomag dokumentációját a [ http://dl.windowsazure.com/javadoc][azure_javadoc].
-* A makecall.jsp kód hozzárendel egy Twilio-megadott URL-címet, [ https://twimlets.com/message ] [ twimlet_message_url], az a **URL-cím** változó. Az URL-címet biztosít, amely tájékoztatja a Twilio, a hívás való Twilio Markup Language (TwiML) választ. Ha például a visszaadott TwiML tartalmazhat egy **&lt;Say&gt;** művelet, amely folyamatban van a hívott a kimondott szöveget eredményez. A Twilio által megadott URL-cím helyett is létrehozhatja a saját szolgáltatás Twilio a kérelem; További információkért lásd: [a Twilio használata Hanghívási és SMS-funkciókhoz javában hogyan][howto_twilio_voice_sms_java]. TwiML további információ található [ https://www.twilio.com/docs/api/twiml ] [ twiml], és további információ a **&lt;Say&gt;** és egyéb Twilio-művelet címen [ https://www.twilio.com/docs/api/twiml/say ] [ twilio_say].
+* A makecall.jsp kód hozzárendel egy Twilio-megadott URL-címet, [ https://twimlets.com/message ] [ twimlet_message_url], az a **URL-cím** változó. Az URL-címet biztosít, amely tájékoztatja a Twilio, a hívás való Twilio Markup Language (TwiML) választ. Ha például a visszaadott TwiML tartalmazhat egy **&lt;Say&gt;** művelet, amely folyamatban van a hívott a kimondott szöveget eredményez. A Twilio által megadott URL-cím helyett is létrehozhatja a saját szolgáltatás Twilio a kérelem; További információkért lásd: [a Twilio használata Hanghívási és SMS-funkciókhoz javában hogyan][howto_twilio_voice_sms_java]. TwiML további információ található [ https://www.twilio.com/docs/api/twiml ] [ twiml], és további információ a **&lt; Say&gt;** és egyéb Twilio-művelet címen [ https://www.twilio.com/docs/api/twiml/say ] [ twilio_say].
 * Olvassa el a Twilio biztonsági irányelveknek, [ https://www.twilio.com/docs/security ] [ twilio_docs_security].
 
 A Twilio kapcsolatos további információkért lásd: [ https://www.twilio.com/docs ] [ twilio_docs].

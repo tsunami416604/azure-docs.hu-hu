@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60382293"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Tervezési alapelvek
@@ -175,7 +175,7 @@ Tegyük fel, hogy telepítette az Azure AD Connect a ConsistencyGuid szolgáltat
 
 ![Új könyvtárak hozzáadása meglévő üzemelő példányt](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 
-## <a name="azure-ad-sign-in"></a>Bejelentkezés az Azure AD-ba
+## <a name="azure-ad-sign-in"></a>Az Azure AD-be
 A helyszíni címtár Azure ad-ben és azt integrálni, fontos tudni, hogyan a szinkronizálási beállítások hatással lehetnek a módon felhasználó hitelesíti magát. Az Azure AD userPrincipalName (UPN) használ a felhasználó hitelesítéséhez. Azonban ha szinkronizálja a felhasználókat, ki kell választania az attribútum a userPrincipalName értéke gondosan használandó.
 
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>A userPrincipalName attribútum kiválasztása

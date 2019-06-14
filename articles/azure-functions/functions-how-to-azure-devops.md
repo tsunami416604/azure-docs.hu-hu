@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
 ms.custom: ''
-ms.openlocfilehash: 27b5dc9ccee8647d4fbb617063865df18b80bc5d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: ce57aae1119261c0545b59a037226fdc12ec115f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990272"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050657"
 ---
 # <a name="continuous-delivery-using-azure-devops"></a>Folyamatos készregyártás az Azure DevOps használatával
 
@@ -36,9 +36,7 @@ Minden nyelv rendelkezik az adott létrehozási lépések hozhat létre egy köz
 A következő minta segítségével hozzon létre egy YAML-fájlt a .NET-alkalmazás létrehozásához.
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: 'VS2017-Win2016'
 steps:
 - script: |
@@ -69,9 +67,7 @@ steps:
 A következő minta segítségével hozzon létre egy YAML-fájlt a JavaScript-alkalmazást hozhat létre:
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: ubuntu-16.04 # Use 'VS2017-Win2016' if you have Windows native +Node modules
 steps:
 - bash: |
@@ -99,9 +95,7 @@ steps:
 A következő minta segítségével hozzon létre egy YAML-fájlt a Python-alkalmazást hozhat létre, a Python csak a Linux Azure Functions támogatott:
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: ubuntu-16.04
 steps:
 - task: UsePythonVersion@0
@@ -118,6 +112,25 @@ steps:
     source worker_venv/bin/activate
     pip3.6 install setuptools
     pip3.6 install -r requirements.txt
+- task: ArchiveFiles@2
+  displayName: "Archive files"
+  inputs:
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+    includeRootFolder: false
+    archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
+    name: 'drop'
+```
+#### <a name="powershell"></a>PowerShell
+
+A következő minta segítségével hozzon létre egy YAML-fájlt az PowerShell alkalmazás, a PowerShell csak a Windows Azure Functions támogatott:
+
+```yaml
+pool:
+      vmImage: 'VS2017-Win2016'
+steps:
 - task: ArchiveFiles@2
   displayName: "Archive files"
   inputs:
@@ -175,6 +188,10 @@ Miután a kód forrását, keresse meg az Azure Functions build sablonokat, és 
 
 ![Az Azure Functions sablonok készítése](media/functions-how-to-azure-devops/build-templates.png)
 
+Bizonyos esetekben a build-összetevőket kell egy adott mappastruktúra, és ellenőrizze, hogy szükség lehet a **Prepend gyökérmappájának neve elérési utak archiválására** lehetőséget.
+
+![Gyökérmappa jogosultságokat](media/functions-how-to-azure-devops/prepend-root-folder.png)
+
 #### <a name="javascript-apps"></a>JavaScript-alkalmazásokhoz
 
 Ha a JavaScript-alkalmazását Windows natív modulok függőség van, frissíteni kell:
@@ -182,10 +199,6 @@ Ha a JavaScript-alkalmazását Windows natív modulok függőség van, frissíte
 - Az Ügynökkészlet verziójára **Hosted VS2017**
 
   ![Fordító-ügynökhöz az operációs rendszer módosítása](media/functions-how-to-azure-devops/change-agent.png)
-
-- A parancsfájl a **bővítményeket hozhat létre** . lépés: a sablonban `IF EXIST *.csproj dotnet build extensions.csproj --output ./bin`
-
-  ![Módosítsa a parancsprogram](media/functions-how-to-azure-devops/change-script.png)
 
 ### <a name="deploy-your-app"></a>Az alkalmazás üzembe helyezése
 

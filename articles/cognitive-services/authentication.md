@@ -1,5 +1,5 @@
 ---
-title: Authentication
+title: Hitelesítés
 titleSuffix: Cognitive Services - Azure
 description: 'Hitelesíteni a kérelmet az Azure Cognitive Services-erőforrás három módja van: egy előfizetési kulcsot, tulajdonosi jogkivonattal vagy több szolgáltatásos előfizetést. Ebben a cikkben, ismerteti az egyes módszerek, és hogyan kérheti.'
 services: cognitive-services
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: erhopf
 ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60336770"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Az Azure Cognitive Services-kérések hitelesítéséhez
@@ -161,5 +161,5 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 ## <a name="see-also"></a>Lásd még
 
 * [Mi a Cognitive Services?](welcome.md)
-* [Cognitive Services-díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/)
+* [A Cognitive Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/)
 * [Fiók létrehozása](cognitive-services-apis-create-account.md)

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: ff3e95a603b8f9a188c7839578cd12287935de90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d9e30bb8b31939b14d347369bbe88e23fcec49c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60778254"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050525"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Hozzon létre hatékony lekérdezések Batch-erőforrások listája
 
@@ -89,7 +89,7 @@ Expand karakterlánc csökkenti az egyes információk beszerzéséhez szükség
 * Ebben a példában bontsa ki a karakterláncot adja meg, hogy statisztikai adatok a rendszer visszalépteti az a lista minden eleme: `stats`.
 
 > [!NOTE]
-> A három lekérdezési karakterlánc típusok létesítő (szűrés, válassza ki, és bontsa ki), győződjön meg arról, hogy a tulajdonságnevek és esetben egyezik, mint a REST API-val elem. Például, amikor a .NET használata [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask) osztály, meg kell adnia **állapot** helyett **állapot**, annak ellenére, hogy a .NET-tulajdonság [ CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask.state). Tekintse meg az alábbi táblázatokban tulajdonságleképezései a .NET és REST API-k között.
+> A három lekérdezési karakterlánc típusok létesítő (szűrés, válassza ki, és bontsa ki), győződjön meg arról, hogy a tulajdonságnevek és esetben egyezik, mint a REST API-val elem. Például, amikor a .NET használata [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) osztály, meg kell adnia **állapot** helyett **állapot**, annak ellenére, hogy a .NET-tulajdonság [ CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State). Tekintse meg az alábbi táblázatokban tulajdonságleképezései a .NET és REST API-k között.
 > 
 > 
 
@@ -110,7 +110,7 @@ Belül a [Batch .NET] [ api_net] API-t, a [ODATADetailLevel] [ odata] osztály s
 * [ODATADetailLevel][odata].[ SelectClause][odata_select]: Adja meg az egyes elemek visszaadott tulajdonságértékek.
 * [ODATADetailLevel][odata].[ExpandClause][odata_expand]: Minden elem egyetlen API hívással helyett minden elem külön hívások adatok beolvasására.
 
-A következő kódrészletet a Batch .NET API használatával kérdezi le hatékonyan az egy adott készletét készletek statisztikáit a Batch szolgáltatást. Ebben a forgatókönyvben a Batch-felhasználók számára a készletek tesztelési és éles környezetben is. A teszt címkészlet azonosítókat a "test" előtaggal van, és az éles készletet azonosítók "éles" előtagot kapnak. A kódtöredék *myBatchClient* megfelelően inicializálva példánya a [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient#microsoft_azure_batch_batchclient) osztály.
+A következő kódrészletet a Batch .NET API használatával kérdezi le hatékonyan az egy adott készletét készletek statisztikáit a Batch szolgáltatást. Ebben a forgatókönyvben a Batch-felhasználók számára a készletek tesztelési és éles környezetben is. A teszt címkészlet azonosítókat a "test" előtaggal van, és az éles készletet azonosítók "éles" előtagot kapnak. A kódtöredék *myBatchClient* megfelelően inicializálva példánya a [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) osztály.
 
 ```csharp
 // First we need an ODATADetailLevel instance on which to set the filter, select,
@@ -139,7 +139,7 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> Egy példányát [ODATADetailLevel] [ odata] konfigurált egyes és kibontás záradékok is átadható megfelelő Get módszerek, például [PoolOperations.GetPool](/dotnet/api/microsoft.azure.batch.pooloperations#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__), a visszaadott adatok mennyisége korlátozza.
+> Egy példányát [ODATADetailLevel] [ odata] konfigurált egyes és kibontás záradékok is átadható megfelelő Get módszerek, például [PoolOperations.GetPool](/dotnet/api/microsoft.azure.batch.pooloperations.getpool#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__), a visszaadott adatok mennyisége korlátozza.
 > 
 > 
 

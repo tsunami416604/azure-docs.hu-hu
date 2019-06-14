@@ -10,10 +10,10 @@ ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60308728"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Méretezési csoport partíciókat és -replikákat a lekérdezés és a számítási feladatok indexeléséhez az Azure Search
@@ -29,7 +29,7 @@ SUs kevesebb találatot használata egy arányosan alacsonyabb számlákat. A sz
 ## <a name="terminology-replicas-and-partitions"></a>Terminológiai: replikák és partíciók
 Replikák és partíciók olyan biztonsági másolatot egy keresési szolgáltatás elsődleges-erőforrásokat.
 
-| Erőforrás | Meghatározás |
+| Resource | Meghatározás |
 |----------|------------|
 |*Partíciók* | Indexelt tárolási és i/o biztosít olvasási és írási műveletek (például amikor újraépítése vagy egy index frissítése).|
 |*Replikák* | A keresési szolgáltatás elsősorban az egyenleg lekérdezési műveletek betöltéséhez használt példánya. Minden egyes replikának mindig futtatja az index egy példányát. Ha 12 replikákat, kell betölteni a szolgáltatás minden egyes indexnek 12 példányait.|

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: cherylmc
 ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60407632"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Helyek közötti kapcsolat létrehozása az Azure Portalon
@@ -30,7 +30,7 @@ A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható lé
 
 ![Helyek közötti VPN Gateway létesítmények közötti kapcsolathoz – diagram](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
@@ -54,7 +54,7 @@ A cikkben szereplő példák a következő értékeket használják. Ezekkel az 
 * **Virtuális hálózati átjáró neve:** VNet1GW
 * **Nyilvános IP-címe:** VNet1GWIP
 * **VPN típusa:** Útvonalalapú
-* **Kapcsolat típusa:** Helyek közötti (IPsec)
+* **Kapcsolat típusa:** Site-to-site (IPsec)
 * **Átjáró típusa:** VPN
 * **Helyi hálózati átjáró neve:** Site1
 * **Kapcsolat neve:** VNet1toSite1

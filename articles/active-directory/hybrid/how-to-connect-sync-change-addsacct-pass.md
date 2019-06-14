@@ -5,31 +5,31 @@ services: active-directory
 keywords: Az AD DS-fiókot, az Active Directory-fiók, jelszó
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-origin.date: 07/12/2017
-ms.date: 11/09/2018
-ms.component: hybrid
-ms.author: v-junlch
+ms.topic: conceptual
+ms.date: 07/12/2017
+ms.subservice: hybrid
+ms.author: billmath
+ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60241596"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Az AD DS-fiók jelszavának módosítása
 Az AD DS-fiókot az Azure AD Connect a helyszíni Active Directoryval való kommunikációhoz használt felhasználói fiók hivatkozik. Ha megváltoztatja a jelszót az AD DS-fiók, frissítenie kell az Azure AD Connect szinkronizálási szolgáltatás az új jelszóval. Ellenkező esetben a szinkronizálás a helyszíni Active Directoryval már nem szinkronizálhatók megfelelően, és fog történni hibák a következők:
 
-- A Synchronization Service Managert, bármely importálási vagy exportálási művelet a helyszíni AD meghiúsul, és **-start – hitelesítő adatok nélkül** hiba.
+* A Synchronization Service Managert, bármely importálási vagy exportálási művelet a helyszíni AD meghiúsul, és **-start – hitelesítő adatok nélkül** hiba.
 
-- A Windows eseménynaplót, az alkalmazás eseménynaplója tartalmaz hibát **Event ID 6000** és az üzenet **"a"contoso.com"kezelőügynök futtatása sikertelen, mert a hitelesítő adatok érvénytelenek voltak a"**.
+* A Windows eseménynaplót, az alkalmazás eseménynaplója tartalmaz hibát **Event ID 6000** és az üzenet **"a"contoso.com"kezelőügynök futtatása sikertelen, mert a hitelesítő adatok érvénytelenek voltak a"** .
 
 
 ## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>A Synchronization Service frissítése az új jelszót az AD DS-fiókot
@@ -55,7 +55,6 @@ A Synchronization Service frissítése az új jelszóval:
 ## <a name="next-steps"></a>További lépések
 **Áttekintő témakör**
 
-- [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
 
-- [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
-
+* [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

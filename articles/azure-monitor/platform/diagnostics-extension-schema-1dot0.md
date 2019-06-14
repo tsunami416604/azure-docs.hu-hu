@@ -10,10 +10,10 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60237860"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Azure Diagnostics 1.0-konfigurációs séma
@@ -101,9 +101,9 @@ A legfelső szintű elem a diagnosztikai konfigurációs fájl.
 
 Attribútumok:
 
-|Attribútum  |Typo   |Szükséges| Alapértelmezett | Leírás|  
+|Attribútum  |Típus   |Kötelező| Alapértelmezett | Leírás|  
 |-----------|-------|--------|---------|------------|  
-|**configurationChangePollInterval**|időtartam|Optional | PT1M| Diagnosztikai konfigurációs módosítások, amelyen a diagnosztikai figyelő kérdezze le az időközt adja meg.|  
+|**configurationChangePollInterval**|Időtartam|Optional | PT1M| Diagnosztikai konfigurációs módosítások, amelyen a diagnosztikai figyelő kérdezze le az időközt adja meg.|  
 |**overallQuotaInMB**|unsignedInt|Optional| 4000 MB. Ha megad egy értéket, nem haladhatja meg ezt a mennyiséget |Összes naplózási puffer számára lefoglalt fájlrendszer-tárhely teljes mennyisége.|  
 
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs elem  
@@ -113,11 +113,11 @@ Elem: DiagnosticMonitorConfiguration eleme.
 
 Attribútumok:
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
 |**scheduledTransferLogLevelFilter**|string|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**. Más lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
-|**scheduledTransferPeriod**|időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
+|**scheduledTransferPeriod**|Időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
 
 ## <a name="logs-element"></a>Naplók elem  
  Az alapszintű Azure-naplók puffer konfigurációját.
@@ -126,11 +126,11 @@ Attribútumok:
 
 Attribútumok:  
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
 |**scheduledTransferLogLevelFilter**|string|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**. Más lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
-|**scheduledTransferPeriod**|időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
+|**scheduledTransferPeriod**|Időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
 
 ## <a name="directories-element"></a>Könyvtárak elem  
 A puffer konfigurációs fájl alapú naplókhoz definiálható határozza meg.
@@ -140,10 +140,10 @@ Elem: DiagnosticMonitorConfiguration eleme.
 
 Attribútumok:  
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
-|**scheduledTransferPeriod**|időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
+|**scheduledTransferPeriod**|Időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
 
 ## <a name="crashdumps-element"></a>CrashDumps Element  
  Az összeomlási memóriaképek könyvtár határozza meg.
@@ -152,7 +152,7 @@ Attribútumok:
 
 Attribútumok:  
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**container**|string|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
 |**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
@@ -164,7 +164,7 @@ Attribútumok:
 
 Attribútumok:  
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**container**|string|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
 |**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
@@ -176,7 +176,7 @@ Attribútumok:
 
 Attribútumok:  
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**container**|string|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
 |**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
@@ -193,7 +193,7 @@ Attribútumok:
 
 Attribútumok:
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**container**|string|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
 |**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
@@ -205,7 +205,7 @@ Attribútumok:
 
 Attribútumok:  
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**path**|string|Kötelező. Figyelni kívánt könyvtár abszolút elérési útja.|  
 |**expandEnvironment**|logikai|Kötelező. Ha beállítása **igaz**, az elérési út környezeti változók vannak bontva.|  
@@ -217,7 +217,7 @@ Attribútumok:
 
 Attribútumok:  
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**name**|string|Kötelező. A helyi erőforrás, amely tartalmazza a figyelni kívánt könyvtár neve.|  
 |**relativePath**|string|Kötelező. Az elérési útját a helyi erőforrás monitorozásához viszonyítva.|  
@@ -230,10 +230,10 @@ Attribútumok:
 
  Attribútumok:  
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
-|**scheduledTransferPeriod**|időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
+|**scheduledTransferPeriod**|Időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
 
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration Element  
  Határozza meg a teljesítményszámláló gyűjtéséhez.
@@ -242,10 +242,10 @@ Attribútumok:
 
  Attribútumok:  
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**counterSpecifier**|string|Kötelező. A teljesítményszámláló gyűjtése az elérési útja.|  
-|**sampleRate**|időtartam|Kötelező. Az a sebesség, amellyel a teljesítményszámláló kell gyűjteni.|  
+|**sampleRate**|Időtartam|Kötelező. Az a sebesség, amellyel a teljesítményszámláló kell gyűjteni.|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element  
  Határozza meg az Eseménynapló bejegyzéseit, amelyek figyelése.
@@ -254,11 +254,11 @@ Attribútumok:
 
   Attribútumok:
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
 |**scheduledTransferLogLevelFilter**|string|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**. Más lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
-|**scheduledTransferPeriod**|időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
+|**scheduledTransferPeriod**|Időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
 
 ## <a name="datasource-element"></a>DataSource elem  
  Határozza meg az Eseménynapló figyelése.
@@ -267,7 +267,7 @@ Attribútumok:
 
  Attribútumok:
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**name**|string|Kötelező. Adja meg a napló gyűjtése XPath kifejezés.|  
 

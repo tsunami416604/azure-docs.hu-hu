@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d811cd69185e77f50749fc48974dee684fb7cfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a2322636aab2e0f38e29063d958cb670b5e062f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65744700"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050406"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartdraw"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SmartDraw
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a SmartDraw konfigurálásához hozzá kell SmartDraw 
 
 **SmartDraw hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -116,7 +116,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SmartDraw, hajtsa v�
     > [!NOTE]
     > A bejelentkezési URL-érték nem valódi. A tényleges bejelentkezési URL-címet, az oktatóanyag későbbi részében ismertetett frissíteni a bejelentkezési URL-érték. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-6. SmartDraw alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+6. SmartDraw alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 
@@ -126,7 +126,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SmartDraw, hajtsa v�
     | ---------------| --------------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | E-mail-cím | user.mail |
+    | E-mail | user.mail |
     | Csoportok | User.groups |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -175,13 +175,13 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SmartDraw, hajtsa v�
 
     a. Az a **a tartomány (például acme.com)** szövegmezőbe írja be a tartomány.
 
-    b. Másolás a **az SP által kezdeményezett bejelentkezési URL-cím lesz** a példány, és illessze be a bejelentkezési URL szövegmezőjébe **alapszintű SAML-konfigurációja** az Azure Portalon.
+    b. Másolás a **az SP által kezdeményezett bejelentkezési URL-cím lesz** a példány, és illessze be a bejelentkezési URL szövegmezőjébe **alapszintű SAML-konfigurációja** az Azure Portalon.
     
     c. Az a **SmartDraw hozzáférés engedélyezése a biztonsági csoportok** szövegmezőbe írja be **mindenki**.
 
     d. Az a **a SAML kibocsátó URL-cím** szövegmezőjébe illessze be az értéket, **az Azure AD-azonosító** az Azure Portalról másolt.
 
-    e. A Jegyzettömbben, nyissa meg az Azure Portalról letöltött metaadatainak XML-fájl, tartalma másolja és illessze be azt a **az SAML-metaadatokat** mezőbe.
+    e. A Jegyzettömbben, nyissa meg az Azure Portalról letöltött metaadatainak XML-fájl, tartalma másolja és illessze be azt a **az SAML-metaadatokat** mezőbe.
 
     f. Kattintson a **konfiguráció mentése** 
 
@@ -240,7 +240,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó SmartDraw jön létre. SmartDraw támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az SmartDraw, egy új jön létre a hitelesítés után.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

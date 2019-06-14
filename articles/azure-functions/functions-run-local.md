@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 3c8d64f34f01e4339b27bdeba455fac143ad53ff
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6c0732b33608105009eda9bba2e4970e8e12e652
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241157"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050579"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -173,7 +173,7 @@ További információkért lásd: [Azure Functions eseményindítók és kötés
 
 ## <a name="local-settings-file"></a>Local settings file (Helyi beállításfájl)
 
-A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterláncok és a beállítások az Azure Functions Core Tools tárolja. A local.settings.json fájlban beállítások csak által használt funkciók eszközök helyi futtatás során. Alapértelmezés szerint ezek a beállítások nem települnek át automatikusan az Azure-bA a projekt közzétételekor. Használja a `--publish-local-settings` váltson [közzétételekor](#publish) , hogy ezek a beállítások lettek hozzáadva a függvényalkalmazáshoz az Azure-ban. Vegye figyelembe, hogy az értékek **kapcsolati Sztringjei** soha nem kerülnek közzétételre. A fájl az alábbi struktúrával rendelkezik:
+A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterláncok és a beállítások az Azure Functions Core Tools tárolja. A local.settings.json fájlban beállítások csak által használt funkciók eszközök helyi futtatás során. Alapértelmezés szerint ezek a beállítások nem települnek át automatikusan az Azure-bA a projekt közzétételekor. Használja a `--publish-local-settings` váltson [közzétételekor](#publish) , hogy ezek a beállítások lettek hozzáadva a függvényalkalmazáshoz az Azure-ban. Az értékek **kapcsolati Sztringjei** soha nem kerülnek közzétételre. A fájl az alábbi struktúrával rendelkezik:
 
 ```json
 {
@@ -419,43 +419,37 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 ## <a name="publish"></a>Közzététel az Azure-bA
 
-Core Tools két típusú központi, támogatja a függvény soubory projektu közvetlenül a függvényalkalmazás üzembe helyezése és üzembe helyezése egy egyéni Linux-tárolót, amely csak a verzió támogatott 2.x. Már rendelkeznie kell [egy függvényalkalmazás létrehozása az Azure-előfizetésében](functions-cli-samples.md#create).
+Az Azure Functions Core Tools támogatja a két típusú központi: függvény soubory projektu közvetlenül üzembe a függvényalkalmazás keresztül [Zip üzembe](functions-deployment-technologies.md#zip-deploy) és [egy egyéni Docker-tároló üzembe helyezése](functions-deployment-technologies.md#docker-container). Már rendelkeznie kell [egy függvényalkalmazás létrehozása az Azure-előfizetésében](functions-cli-samples.md#create), amely meg tudja telepíteni a kódot. Fordítási igénylő projektek kell kialakítani, hogy a bináris fájlokat is üzembe helyezhetők.
 
-Verzió 2.x, rendelkeznie kell [regisztrálva a bővítmények](#register-extensions) a projekt közzététel előtt. Fordítási igénylő projektek kell kialakítani, hogy a bináris fájlokat is üzembe helyezhetők.
+### <a name="project-file-deployment"></a>Üzembe helyezés (soubory projektu)
 
-### <a name="project-file-deployment"></a>Projekt fájl telepítése
-
-A leggyakoribb üzembe helyezési módszer magában foglalja a függvényalkalmazás projektjét, a bináris fájlok és a függőségek csomagolása és üzembe helyezni a csomagot a függvényalkalmazás Core Tools használatával. Igény szerint is [a függvényeket közvetlenül a központi telepítési csomag futtathatja](run-functions-from-deployment-package.md).
-
-A Functions-projekt közzététele az Azure-ban egy függvényalkalmazás, használja a `publish` parancsot:
+A helyi kódot közzéteszi egy függvényalkalmazást az Azure-ban, használja a `publish` parancsot:
 
 ```bash
 func azure functionapp publish <FunctionAppName>
 ```
 
-Ez a parancs az Azure-ban meglévő függvényalkalmazással tesz közzé. Hiba akkor fordul elő, amikor a `<FunctionAppName>` az előfizetés nem létezik. Megtudhatja, hogyan hozhat létre egy függvényalkalmazást a parancssort vagy terminálablakot az Azure CLI-vel, tekintse meg a [hozzon létre egy Függvényalkalmazást, kiszolgáló nélküli végrehajtáshoz](./scripts/functions-cli-create-serverless.md).
-
-A `publish` parancs feltölti az a funkciók projekt könyvtár tartalmát. Ha törli a fájlokat helyileg, a `publish` parancs nem törli őket az Azure-ból. Használatával törölheti az Azure-ban a [Kudu eszköz](functions-how-to-use-azure-function-app-settings.md#kudu) a a [Azure Portal].
+Ez a parancs az Azure-ban meglévő függvényalkalmazással tesz közzé. Ha a közzététele hibát kap egy `<FunctionAppName>` , amely az előfizetés nem létezik. Megtudhatja, hogyan hozhat létre egy függvényalkalmazást a parancssort vagy terminálablakot az Azure CLI-vel, tekintse meg a [hozzon létre egy Függvényalkalmazást, kiszolgáló nélküli végrehajtáshoz](./scripts/functions-cli-create-serverless.md). Alapértelmezés szerint ez a parancs az alkalmazás futtatását engedélyezi [futtassa a csomag](run-functions-from-deployment-package.md) mód.
 
 >[!IMPORTANT]
 > Ha függvényalkalmazást hoz létre az Azure Portalon, akkor verzióját használja, alapértelmezés szerint a függvény futtatókörnyezetét 2.x. Győződjön meg arról, a függvény Alkalmazásverzió használatát, a futtatókörnyezet 1.x kövesse a [verziót futtat 1.x](functions-versions.md#creating-1x-apps).
 > A futtatókörnyezet verziója, amely rendelkezik a meglévő funkciók függvényalkalmazás nem módosítható.
 
-A következő projekt közzététele beállítások verziója, a 1.x és 2.x a alkalmazni:
+A következő közzétételi beállítások verziója, a 1.x és 2.x vonatkoznak:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Közzétételi beállítások a local.settings.json az Azure-ba, kéri a felhasználót, felülírása, ha a beállítás már létezik. A storage emulatort használja, ha módosítja az Alkalmazásbeállítás- [tényleges tárolási kapcsolat](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | Alkalmazásbeállítások felülírja a rendszer kéri le. Ha `--publish-local-settings -i` szolgál.|
 
-A következő projekt közzététele a beállítások csak verziójában támogatott 2.x:
+A következő közzétételi beállítások verziójában csak támogatott 2.x:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only -o`** |  Csak a közzétételi beállítások, és hagyja ki a tartalmat. Az alapértelmezett érték kérése. |
 |**`--list-ignored-files`** | Közzététele a .funcignore fájl alapuló során figyelmen kívül hagyott fájlok listáját jeleníti meg. |
 | **`--list-included-files`** | Azon fájlok listáját, amely közzétett, a .funcignore fájl alapján jeleníti meg. |
-| **`--nozip`** | Alapértelmezés szerint bekapcsolja `Run-From-Zip` mód kikapcsolása. |
+| **`--nozip`** | Alapértelmezés szerint bekapcsolja `Run-From-Package` mód kikapcsolása. |
 | **`--build-native-deps`** | Alkalmazások átugrása .wheels mappa python közzétételekor fog működni. |
 | **`--additional-packages`** | Natív függőségek készítése során a telepítendő csomagok listáját. Például: `python3-dev libevent-dev`. |
 | **`--force`** | Bizonyos esetekben előre közzétételi ellenőrzési figyelmen kívül. |
@@ -463,9 +457,9 @@ A következő projekt közzététele a beállítások csak verziójában támoga
 | **`--no-build`** | Dotnet-függvények készítése kihagyása. |
 | **`--dotnet-cli-params`** | Ha a közzététel lefordított C# (.csproj) funkciók, a core tools meghívja a "dotnet build – kimeneti bin és közzétételi". Az átadott paramétereket a parancssorba lesz hozzáfűzve. |
 
-### <a name="custom-container-deployment"></a>Egyéni a tárolók üzembe helyezése
+### <a name="deployment-custom-container"></a>Üzembe helyezés (egyéni tároló)
 
-Funkciók lehetővé teszi egyéni Linux-tárolóban a Functions-projekt telepítését. További információkért lásd: [függvény létrehozása Linux rendszerben egyéni rendszerkép használatával](functions-create-function-linux-custom-image.md). Verzió 2.x verzióját Core Tools támogatja az egyéni tároló üzembe helyezését. Egyéni tárolók rendelkeznie kell egy docker-fájlban. Használja a--dockerfile lehetőséget a `func init`.
+Az Azure Functions lehetővé teszi a Functions-projektet az egy [egyéni Docker-tároló](functions-deployment-technologies.md#docker-container). További információkért lásd: [függvény létrehozása Linux rendszerben egyéni rendszerkép használatával](functions-create-function-linux-custom-image.md). Egyéni tárolók rendelkeznie kell egy docker-fájlban. Szeretne létrehozni egy alkalmazást egy docker-fájlban, használja a--dockerfile beállítás `func init`.
 
 ```bash
 func deploy

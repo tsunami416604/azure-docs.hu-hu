@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75f55f1058537da255a2611f544239f693615678
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60354746"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>kézikönyv: A felügyelt eszközök szükségesek a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés
@@ -85,7 +85,7 @@ Ez a beállítás csak Windows 10-es vagy régebbi verziójú eszközök példá
 Eszköz teszi a hibrid Azure ad-ben csatlakozott egy felügyelt eszközt?  Egy helyszíni tartományhoz csatlakoztatott eszközök AD, feltételezzük, hogy ezek az eszközök felett van érvényben, használjon, például felügyeleti megoldások **System Center Configuration Manager (SCCM)** vagy **csoportházirend (GP)** őket. Mivel nincs semmilyen metódus az Azure ad-e az alábbi módszereket írtunk egy eszközt meghatározásához, a hibrid Azure AD léptetett eszköz megkövetelése egy viszonylag egyszerű olyan mechanizmus, egy felügyelt eszköz megkövetelése. Célszerű megítélhető, hogy a módszereket, amelyek érvényesek a helyi tartományhoz csatlakoztatott eszközök-e elég erős a felügyelt eszközök jelent, ha ilyen eszközt is egy hibrid Azure AD-csatlakoztatású eszközt rendszergazdaként.
 
 
-## <a name="require-device-to-be-marked-as-compliant"></a>Eszköz megfelelőként való megjelölésének megkövetelése
+## <a name="require-device-to-be-marked-as-compliant"></a>Megfelelőként megjelölt eszköz megkövetelése
 
 Lehetőség *megfelelőként megjelölt eszköz megkövetelése* a legerősebb űrlap kérése egy felügyelt eszközt.
 

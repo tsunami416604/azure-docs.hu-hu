@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: e1574b55f9f14daba1831ba7f73b7f9ebde4c7f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd1644ad9b7fcee951b31997ab549f117530f635
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61387940"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808376"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>A Java-webalkalmazás monitorozásának indítása
 
@@ -85,7 +85,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Az Eclipse Azure-konfigurációs menüje](./media/java-quick-start/0007-j.png)
 
-5. Az Application Insights beépülő modul konfigurálása után kell [közzététele és újra közzétettük](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#publish-the-web-app-to-azure) az alkalmazás újra, mielőtt azt fogja tudni telemetria küldésének elkezdésére.
+5. Az Application Insights beépülő modul konfigurálása után kell [közzététele és újra közzétettük](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#deploy-the-app) az alkalmazás újra, mielőtt azt fogja tudni telemetria küldésének elkezdésére.
 
 > [!NOTE]
 > A Javához készült Application Insights SDK képes élő metrikákat rögzíteni és megjeleníteni. Azonban az első alkalommal, amikor engedélyezi a telemetria gyűjtését, eltarthat néhány percig amíg az adatok megjelennek a portálon. Ha az alkalmazás egy alacsony forgalmú tesztalkalmazás, vegye figyelembe, hogy a legtöbb metrika rögzítése csak akkor történik, ha aktív kérések és műveletek vannak folyamatban.

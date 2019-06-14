@@ -10,10 +10,10 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: 864fe70d7702680f21234a1a15c02515b19f770b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60597707"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>A Windows ügynök ellenőrzésének az eredménye az Update Management ismertetése
@@ -65,7 +65,7 @@ A .NET-keretrendszer ellenőrzi, hogy a rendszer számára legalább [.NET-keret
 
 A WMF ellenőrzi, hogy a rendszer rendelkezik-e a Windows Management Framework (WMF) szükséges verziója. [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) a legkorábbi támogatott verziója. Javasoljuk, hogy telepítse [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) a hibrid Runbook-feldolgozó megbízhatóságának növelése érdekében.
 
-### <a name="tls-12"></a>TLS 1.2
+### <a name="tls-12"></a>A TLS 1.2
 
 Ez az ellenőrzés határozza meg, hogy a TLS 1.2-t használ a kommunikáció titkosítása. A TLS 1.0 a platform által már nem támogatott. Azt javasoljuk, hogy az ügyfelek az Update Management kommunikálni TLS 1.2 használatára.
 

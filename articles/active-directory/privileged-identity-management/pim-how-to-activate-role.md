@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa820d6c140251fce6b09110e65b45005b53afcc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60289620"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>A PIM saját Azure AD-szerepkörök aktiválása
@@ -73,7 +73,7 @@ Amikor szüksége van egy Azure AD-szerepkör, aktiválás segítségével kérh
 
     Ha a szerepkör nem igényel jóváhagyási, egy **aktiválási állapota** panelen megjelennek az aktiválási állapotát jeleníti meg.
 
-    ![Aktiválási állapot](./media/pim-how-to-activate-role/activation-status.png)
+    ![Aktiválási állapota](./media/pim-how-to-activate-role/activation-status.png)
 
     Ha minden szakasz befejeződött, kattintson a **Kijelentkezés** jelentkezzen ki az Azure Portalon mutató hivatkozást. Amikor bejelentkezik vissza a portálra, most már használhatja a szerepkört.
 

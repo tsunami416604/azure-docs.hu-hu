@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
 ms.openlocfilehash: 9fd9eaf1e62d063026e0e656346baaaade87064f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60410145"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere-fürt DNS-konfigurációja
@@ -77,7 +77,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 Adja meg a DNS-kiszolgáló, amely a vFXT fürt használja a **fürt** > **felügyeleti hálózati** beállítások lapon. A lapon megjelenő beállítások a következők:
 
 * DNS-kiszolgáló címe
-* DNS-tartománynév
+* DNS domain name
 * DNS search domains
 
 Olvasási [DNS-beállítások](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) az Avere fürt konfigurálása útmutatóban ezt oldal használatával kapcsolatos további részletekért.

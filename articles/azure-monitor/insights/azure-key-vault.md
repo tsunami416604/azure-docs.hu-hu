@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
 ms.openlocfilehash: 481b643f2f7201a2a1745c7aef9ddd81883da020
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60498526"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Az Azure Key Vault Analytics megoldás az Azure monitorban
@@ -103,9 +103,9 @@ Miután rákattintott a **Key Vault-elemzés** csempét, a naplók összegzései
 ## <a name="azure-monitor-log-records"></a>Az Azure Monitor-rekordok naplózása
 Az Azure Key Vault megoldás elemzi a rekord, amelynek típusa a **KeyVaults** , hogy a rendszer begyűjti az [AuditEvent-naplókat](../../key-vault/key-vault-logging.md) az Azure Diagnostics.  Ezek a rekordok tulajdonságait az alábbi táblázatban a következők:  
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
-| Typo |*AzureDiagnostics* |
+| Típus |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
 | CallerIpAddress |A kérést leadó ügyfél IP-címe |
 | Category | *AuditEvent* |
@@ -117,7 +117,7 @@ Az Azure Key Vault megoldás elemzi a rekord, amelynek típusa a **KeyVaults** ,
 | OperationName |A művelet, dokumentált módon neve [Azure Key Vault naplózása](../../key-vault/key-vault-logging.md) |
 | OperationVersion |Az ügyfél által kért REST API-verzió (például *2015-06-01*) |
 | requestUri_s |A kérelem URI azonosítója |
-| Erőforrás |A kulcstároló nevét |
+| Resource |A kulcstároló nevét |
 | ResourceGroup |A kulcstároló erőforráscsoport |
 | ResourceId |Az Azure Resource Manager szerinti erőforrás-azonosító. A Key Vault naplóihoz Ez az a Key Vault erőforrás-azonosítója. |
 | ResourceProvider |*MICROSOFT.KEYVAULT* |

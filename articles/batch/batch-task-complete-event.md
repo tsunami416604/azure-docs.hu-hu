@@ -2,7 +2,7 @@
 title: Az Azure Batch tevékenység kész esemény |} A Microsoft Docs
 description: Referencia a Batch-feladat befejeződésének eseményét.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,14 +10,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-origin.date: 04/20/2017
-ms.date: 05/14/2018
-ms.author: v-junlch
+ms.date: 04/20/2017
+ms.author: lahugh
 ms.openlocfilehash: b5fd1a8020c8e95323bc2333c0583dafe58e8456
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60549971"
 ---
 # <a name="task-complete-event"></a>Tevékenység kész esemény
@@ -92,5 +91,3 @@ ms.locfileid: "60549971"
 |exitCode|Int32|A tevékenység kilépési kódját.|
 |RetryCount|Int32|A száma a feladat rendelkezik lett rendszer megpróbálja újból végrehajtani a Batch szolgáltatás által. A rendszer megpróbálja újból végrehajtani a feladatot, ha egy nem nulla kilépési kóddal, legfeljebb a megadott MaxTaskRetryCount kilép.|
 |requeueCount|Int32|A száma a feladat eredményeként egy felhasználói kérelem rendelkezik a Batch szolgáltatás által lett lefutni.<br /><br /> Amikor a felhasználó eltávolítja csomópontok egy készletet (átméretezése, vagy a készletre kicsinyítésével), vagy ha a feladat letiltása közben, a felhasználó is adja meg, hogy fut a csomópontokon feladatok várólistára kerülnek végrehajtásra. Ez a szám ebből kifolyólag a feladat rendelkezik lett várólistára hány alkalommal követi nyomon.|
-
-<!-- Update_Description: update metedata properties -->

@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 02/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9fe689e6911c5e9497ee82132e8b70bd9aada7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60322233"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>A Media Services-események Azure Event Grid-sémák
@@ -457,7 +457,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | trackType | string | A track típusa (hang / kép). |
 | TrackName | string | A track neve. |
 | Átviteli sebesség | egész szám | A szám sávszélességű. |
-| időbélyeg | string | Az adathalmaz időbélyegét eltávolította. |
+| timestamp | string | Az adathalmaz időbélyegét eltávolította. |
 | időskálára | string | Az időbélyeg-időskálára. |
 | Eredménykód | string | Az adatok adatköteget csepp OK. **FragmentDrop_OverlapTimestamp** vagy **FragmentDrop_NonIncreasingTimestamp**. |
 
@@ -500,7 +500,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | ingestUrl | string | Betöltési URL-címe, az élő esemény által biztosított. |
 | EncoderIp | string  | A kódoló IP-cím. |
 | encoderPort | string | A kódoló a stream forrását a port. |
-| időbélyeg | string | Első időbélyegzője az adathalmaz kapott. |
+| timestamp | string | Első időbélyegzője az adathalmaz kapott. |
 | időskálára | string | Amelyben időbélyeg jelölt időskálára. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
@@ -622,7 +622,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | nonIncreasingCount | egész szám | A múltban időbélyegzőnél adattömbök száma az elmúlt 20 másodperc alatt érkezett. |
 | unexpectedBitrate | bool | Ha a várt és tényleges bitsebességre való átkódolása eltér az elmúlt 20 másodperc alatt több mint engedélyezett korlátot. IGAZ, ha, és csak akkor, ha, incomingBitrate > = 2 * sávszélességű vagy incomingBitrate < = vagy IncomingBitrate sávszélességű/2 = 0. |
 | state | string | Az élő esemény állapota. |
-| kifogástalan | bool | Azt jelzi, hogy betöltési állapota megfelelő számát és a jelzők alapján. Kifogástalan igaz. Ha overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
+| Kifogástalan állapotú | bool | Azt jelzi, hogy betöltési állapota megfelelő számát és a jelzők alapján. Kifogástalan igaz. Ha overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -669,12 +669,12 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | string | A EventGrid-témakör. Ez a tulajdonság az erőforrás-azonosító, a Media Services-fiók rendelkezik. |
-| tárgy | string | A Media Services-csatorna a Media Services-fiók erőforrás elérési útja. A témakör és a tulajdonos számára, az erőforrás a feladat AZONOSÍTÓJÁT kiszámításával. |
+| topic | string | A EventGrid-témakör. Ez a tulajdonság az erőforrás-azonosító, a Media Services-fiók rendelkezik. |
+| subject | string | A Media Services-csatorna a Media Services-fiók erőforrás elérési útja. A témakör és a tulajdonos számára, az erőforrás a feladat AZONOSÍTÓJÁT kiszámításával. |
 | eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. Például "Microsoft.Media.JobStateChange." |
 | eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | string | Az esemény egyedi azonosítója. |
-| adat | objektum | A Media Services eseményadatokat. |
+| data | objektum | A Media Services eseményadatokat. |
 | dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 

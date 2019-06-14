@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d9bf155f24c947f8a27a38af01aedcf0b041b94
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d0d0c3683d8855418bdafa204325525c4cd3943c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966045"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050789"
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Vertikális skálázása az Azure-beli Linuxos virtuális gép az Azure Automationnel
 Vertikális skálázás az a folyamat növelésével vagy csökkentésével az erőforrásokat a gép számítási feladatokra válaszul. Az Azure-ban a lehet elvégezni a virtuális gép méretének módosításával. Ez segít a következő esetekben
@@ -83,6 +83,7 @@ A körvonal ehhez további van, mint alatt
 > | Standard_ND6s |Standard_ND24s |
 > | Standard_NV6 |Standard_NV24 |
 > | Standard_NV6s_v2 |Standard_NV24s_v2 |
+> | Standard_NV12s_v3 |Standard_NV48s_v3 |
 
 ## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>A telepítő az Azure Automation eléréséhez a virtuális gépek
 Először is szüksége, hozzon létre egy Azure Automation-fiók, amely üzemelteti a runbookokat, a méretezés a Virtuálisgép-méretezési példányra használt. Az Automation szolgáltatás vezettünk be az "Futtató fiók" funkció, amely lehetővé teszi a beállítás mentése az egyszerű szolgáltatás automatikusan a runbookok futtatásáért a felhasználó nevében nagyon egyszerű. Tudjon meg többet erről az alábbi cikkben szerepel:

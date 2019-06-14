@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: adigan
 ms.openlocfilehash: a52f42fb194d2f39861a57c95a664ad57b4f91d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60500765"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>A SharePoint-farmok biztonsági mentéséhez az Azure Stackben
@@ -132,7 +132,7 @@ Miután konfigurálta a MABS és a korábbiakban leírtak a SharePoint-farm, Sha
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 13. Tekintse át a beállításokat a a **összefoglalás** lapon, és kattintson a **csoport létrehozása**. A védelmi csoport létrehozása után látni fogja a sikert jelző üzenet.
 
-    ![Összegzés](./media/backup-azure-backup-sharepoint/summary.png)
+    ![Összefoglalás](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>Állítsa vissza a SharePoint-elem lemezről MABS használatával
 A következő példában a *helyreállítás SharePoint-elem* véletlenül törölve lett, és kell helyreállítani.

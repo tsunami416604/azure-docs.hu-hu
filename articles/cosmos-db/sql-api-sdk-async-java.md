@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 3/5/2019
 ms.author: moderakh
 ms.openlocfilehash: 356838f16f7f13506657326bae5dbe994d54bdd5
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "57570096"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Aszinkron Java az Azure Cosmos DB SQL API-hoz készült SDK: Kibocsátási megjegyzések és erőforrások
@@ -146,22 +146,22 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.4.3](#2.4.3) |2019. március 5.|--- |
-| [2.4.2](#2.4.2) |2019. március 1.|--- |
-| [2.4.1](#2.4.1) |2019. február 20.|--- |
-| [2.4.0](#2.4.0) |2019. február 8.|--- |
-| [2.4.0-beta-1](#2.4.0-beta-1) |2019. február 4.|--- |
-| [2.3.1](#2.3.1) |2019. január 15.|--- |
-| [2.3.0](#2.3.0) |2018. november 29.|--- |
-| [2.2.2](#2.2.2) |2018. november 8.|--- |
-| [2.2.1](#2.2.1) |2018. november 2.|--- |
-| [2.2.0](#2.2.0) |2018. szeptember 22.|--- |
-| [2.1.0](#2.1.0) |2018. szeptember 5.|--- |
-| [2.0.1](#2.0.1) |2018. augusztus 16.|--- |
-| [2.0.0](#2.0.0) |2018. június 20.|--- |
-| [1.0.2](#1.0.2) |2018. május 18.|--- |
-| [1.0.1](#1.0.1) |2018. április 20.|--- |
-| [1.0.0](#1.0.0) |2018. február 27.|--- |
+| [2.4.3](#2.4.3) |2019\. március 5.|--- |
+| [2.4.2](#2.4.2) |2019\. március 1.|--- |
+| [2.4.1](#2.4.1) |2019\. február 20.|--- |
+| [2.4.0](#2.4.0) |2019\. február 8.|--- |
+| [2.4.0-beta-1](#2.4.0-beta-1) |2019\. február 4.|--- |
+| [2.3.1](#2.3.1) |2019\. január 15.|--- |
+| [2.3.0](#2.3.0) |2018\. november 29.|--- |
+| [2.2.2](#2.2.2) |2018\. november 8.|--- |
+| [2.2.1](#2.2.1) |2018\. november 2.|--- |
+| [2.2.0](#2.2.0) |2018\. szeptember 22.|--- |
+| [2.1.0](#2.1.0) |2018\. szeptember 5.|--- |
+| [2.0.1](#2.0.1) |2018\. augusztus 16.|--- |
+| [2.0.0](#2.0.0) |2018\. június 20.|--- |
+| [1.0.2](#1.0.2) |2018\. május 18.|--- |
+| [1.0.1](#1.0.1) |2018\. április 20.|--- |
+| [1.0.0](#1.0.0) |2018\. február 27.|--- |
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

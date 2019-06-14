@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
 ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60238619"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Fájlok visszaállítása Windows az Azure Resource Manager-alapú üzemi modell használatával
@@ -44,7 +44,7 @@ Ha véletlenül törölte a fájlt, és visszaállítja azt (, amelyről a bizto
 
     ![Képernyőkép az Azure Backup szolgáltatással, az adatok helyreállítása kiemelésével](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Az a **bevezetés** adatok ugyanazon a kiszolgálón vagy számítógépen való visszaállításához jelölje be **ezen a kiszolgálón (`<server name>`)** > **tovább**.
+3. Az a **bevezetés** adatok ugyanazon a kiszolgálón vagy számítógépen való visszaállításához jelölje be **ezen a kiszolgálón (`<server name>`)**  > **tovább**.
 
     ![Képernyőkép a helyreállítás adatok varázsló első lépések lap](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 

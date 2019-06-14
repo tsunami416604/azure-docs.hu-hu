@@ -12,10 +12,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: cc37109eda2690b4407f9cd0c92851b7c0e3f915
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60399957"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Méretezhető adatelemzés az Azure Data Lake: Egy végpontok közötti forgatókönyv
@@ -148,7 +148,7 @@ Hajtsa végre a U-SQL használatával, nyissa meg a Visual Studióban kattintson
 
 ### <a name="ingest"></a>Adatok betöltése céljából: A nyilvános blob adatainak olvasása
 
-Az Azure blobban lévő adatok helyét hivatkozott **wasb://container\_neve\@blob\_tárolási\_fiók\_name.blob.core.windows.net/blob_name**használatával képes kinyerni és **Extractors.Csv()**. Helyettesítse be a saját tároló neve és a tárfiók nevét a következő parancsfájlok tároló\_neve\@blob\_tárolási\_fiók\_nevű wasb-címét. Mivel ugyanazt a formátumot a fájlneveket, lehetőség használni **út\_adatok\_\{\*\}.csv** , olvassa el az összes 12 útadatokat tartalmazó fájlt.
+Az Azure blobban lévő adatok helyét hivatkozott **wasb://container\_neve\@blob\_tárolási\_fiók\_name.blob.core.windows.net/blob_name**használatával képes kinyerni és **Extractors.Csv()** . Helyettesítse be a saját tároló neve és a tárfiók nevét a következő parancsfájlok tároló\_neve\@blob\_tárolási\_fiók\_nevű wasb-címét. Mivel ugyanazt a formátumot a fájlneveket, lehetőség használni **út\_adatok\_\{\*\}.csv** , olvassa el az összes 12 útadatokat tartalmazó fájlt.
 
     ///Read in Trip data
     @trip0 =

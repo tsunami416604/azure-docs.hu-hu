@@ -18,10 +18,10 @@ ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60295949"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>kézikönyv: Kockázatos felhasználók és bejelentkezések vizsgálata 
@@ -52,13 +52,13 @@ A kockázatos felhasználók jelentés egy alapértelmezett-nézetet tartalmaz:
 
 - Kockázati szint
 
-- Kockázat részletei
+- Kockázati részletei
 
-- Kockázat legutóbbi frissítése
+- Utolsó frissítés kockázat
 
-- Typo
+- Típus
 
-- status
+- Állapot
  
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/03.png)
@@ -81,7 +81,7 @@ A részletek megtekintéséhez mutat be:
 
 - Legutóbbi kockázatos bejelentkezések
 
-- Bejelentkezéshez nem hozzárendelt kockázatos események
+- Nincs felhasználóhoz kapcsolva, a bejelentkezési kockázati események
 
 - Kockázati előzmények
 
@@ -113,9 +113,9 @@ A jelentésben lévő adatok az Ön számára megfelelő szintű szűkítéséhe
 
 - Kockázati szint
 
-- Typo
+- Típus
 
-- status
+- Állapot
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/06.png)
 
@@ -126,9 +126,9 @@ A **neve** szűrő lehetővé teszi, hogy adja meg a nevét vagy a felhasználó
 
 A **állapot kockázati** szűrővel kiválasztása:
 
-- Kockázatos
-- Javítva
-- Elvetve
+- Veszélyben
+- Kijavítva
+- Elvetett
 
 
 A **kockázati szint** szűrővel kiválasztása:
@@ -222,11 +222,11 @@ A részletek megtekintéséhez mutat be:
 
 - Alapvető adatok
 
-- Eszközadatok
+- Eszközinformáció
 
 - Kockázati adatok
 
-- MFA-adatok
+- MFA-információ
 
 - Feltételes hozzáférés
 
@@ -238,9 +238,9 @@ Emellett a következőket teheti:
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/13.png)
 
-- Feltörés megerősítése 
+- Győződjön meg róla sérült a biztonsága 
 
-- Megerősítés biztonságosként
+- Biztonságos megerősítése
 
 További információkért lásd: [észlelési pontosságának növelése](howto-improve-detection-accuracy.md).
 
@@ -278,11 +278,11 @@ A **Bejelentkezési állapot** szűrővel az alábbi lehetőségek közül vála
 
 A **állapot kockázati** szűrővel kiválasztása:
 
-- Kockázatos
-- Feltörés megerősítve
-- Megerősített biztonságos
-- Elvetve
-- Javítva
+- Veszélyben
+- Megerősítette sérült a biztonsága
+- Biztonságos megerősítve
+- Elvetett
+- Kijavítva
 
 
 A **kockázati szint (összesítés)** szűrővel kiválasztása:
@@ -302,16 +302,16 @@ A **feltételes hozzáférési** szűrővel kiválasztása:
 
 - Összes
 - Nem alkalmazott
-- Sikeres
+- Siker
 - Hiba
 
 
 A **Dátum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.
 Lehetséges értékek:
 
-- Az elmúlt 1 hónap
-- Az elmúlt 7 nap
-- Utolsó 24 óra
+- Elmúlt 1 hónap
+- Elmúlt 7 napban
+- Az elmúlt 24 óra
 - Egyéni időintervallum
 
 

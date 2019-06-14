@@ -16,22 +16,22 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
 ms.openlocfilehash: df189e405dcd5277c1ccbd94e9d5d302660be79b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60359827"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Engedélyezze a biztonságos LDAP (LDAPS-t) számára az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 Teljes [2. feladat – exportálja a secure LDAP-tanúsítványt egy. PFX-fájl](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md).
 
 
-## <a name="task-3-enable-secure-ldap-for-the-managed-domain-using-the-azure-portal"></a>3. feladat: Az Azure portal használatával a felügyelt tartomány secure LDAP engedélyezése
+## <a name="task-3-enable-secure-ldap-for-the-managed-domain-using-the-azure-portal"></a>3\. feladat: Az Azure portal használatával a felügyelt tartomány secure LDAP engedélyezése
 Biztonságos LDAP engedélyezése, hajtsa végre az alábbi konfigurációs lépéseket:
 
-1. Keresse meg a  **[az Azure portal](https://portal.azure.com)**.
+1. Keresse meg a  **[az Azure portal](https://portal.azure.com)** .
 
 2. Keressen rá a "domain services" kifejezésre a **erőforrások keresése** keresőmezőbe. Válassza ki **Azure AD tartományi szolgáltatások** a keresési eredmény. A **Azure AD tartományi szolgáltatások** lap felsorolja a felügyelt tartományra.
 

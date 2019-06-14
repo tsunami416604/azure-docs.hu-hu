@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60307908"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>A teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény Windows
@@ -73,7 +73,7 @@ A következő JSON-ra a séma Azure teljesítménydiagnosztikai Virtuálisgép-b
 |publisher|Microsoft.Azure.Performance.Diagnostics|A bővítmény közzétevő névterét.
 |type|AzurePerformanceDiagnostics|A Virtuálisgép-bővítmény típusa.
 |typeHandlerVersion|1.0|A kiterjesztés kezelő verziója.
-|performanceScenario|alapszintű|A teljesítmény eset, amelyekre kapcsolatos adatok rögzítéséhez. Érvényes értékek a következők: **alapszintű**, **vmslow**, **Azure filesba –**, és **egyéni**.
+|performanceScenario|Alapszintű|A teljesítmény eset, amelyekre kapcsolatos adatok rögzítéséhez. Érvényes értékek a következők: **alapszintű**, **vmslow**, **Azure filesba –** , és **egyéni**.
 |traceDurationInSeconds|300|A nyomkövetési adatok, a nyomkövetési beállítások választásakor időtartama.
 |perfCounterTrace|p|Teljesítmény-számláló nyomkövetési lehetővé teszi. Érvényes értékek a következők **p** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az üres érték.
 |networkTrace|n|Hálózati nyomkövetés engedélyezése lehetőséget. Érvényes értékek a következők **n** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az üres érték.
@@ -109,11 +109,11 @@ Kövesse ezeket az utasításokat a bővítmény telepíthető Windows virtuáli
     > [!NOTE]
     > A bővítmény akkor fut, amikor a kiépítés sikeres volt. Két percet vesz igénybe, vagy kevesebb, az alapszintű forgatókönyv végrehajtásához. Más esetekben futtatja az időtartam a telepítés során megadott keresztül.
 
-## <a name="remove-the-extension"></a>A bővítmény eltávolítása
+## <a name="remove-the-extension"></a>Távolítsa el a bővítményt
 Távolítsa el a bővítményt a virtuális gépről, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), válassza ki a virtuális gépet, ahonnan a távolítsa el a bővítményt, majd válassza a **bővítmények** panelen. 
-2. Válassza ki a (**...** ) a teljesítmény a diagnosztikai bővítmény bejegyzést a listából, és válassza ki a **Eltávolítás**.
+2. Válassza ki a ( **...** ) a teljesítmény a diagnosztikai bővítmény bejegyzést a listából, és válassza ki a **Eltávolítás**.
 
     ![Képernyőkép a bővítmények panelről, eltávolítás kiemelésével](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
 
@@ -234,7 +234,7 @@ A PerfInsights eszköz különböző naplókat, konfiguráció és diagnosztikai
 
 ## <a name="view-and-share-the-results"></a>Megjelenítheti és megoszthatja az eredmények
 
-A bővítmény kimenetében található egy zip-fájl feltöltése a tárfiókba, a telepítés során megadott, és 30 napig használatával megosztott [közös hozzáférésű Jogosultságkódok (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). A zip-fájl tartalmazza a diagnosztikai naplók és a egy jelentés eredményeket és meglátásokat bemutató javaslatok. Kimeneti zip-fájl egy SAS-hivatkozás nevű szöveges fájlban található *zipfilename*a mappában _saslink.txt **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<verzió >**. Bárki, aki ezt a hivatkozást a rendszer a zip-fájl letöltéséhez.
+A bővítmény kimenetében található egy zip-fájl feltöltése a tárfiókba, a telepítés során megadott, és 30 napig használatával megosztott [közös hozzáférésű Jogosultságkódok (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). A zip-fájl tartalmazza a diagnosztikai naplók és a egy jelentés eredményeket és meglátásokat bemutató javaslatok. Kimeneti zip-fájl egy SAS-hivatkozás nevű szöveges fájlban található *zipfilename*a mappában _saslink.txt **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<verzió >** . Bárki, aki ezt a hivatkozást a rendszer a zip-fájl letöltéséhez.
 
 Segítse a támogatási szakember, a támogatási jegy dolgozik, a Microsoft előfordulhat, hogy használja a SAS-hivatkozás a diagnosztikai adatok letöltéséhez.
 

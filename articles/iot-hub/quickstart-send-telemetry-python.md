@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: 03c7da3e17e8e606b46c5c5e104a1271e8fbfd33
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a8abd71609d3e063c92541485007a3bde44be954
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873104"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051239"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Gyors útmutató: Telemetria küldése egy eszközről IoT hubra és a egy háttér-alkalmazással (Python), annak olvasása
 
@@ -112,6 +112,13 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
     A következő képernyőképen az a kimenet látható, amikor a szimulálteszköz-alkalmazás telemetriát küld az IoT Hubnak:
 
     ![A szimulált eszköz futtatása](media/quickstart-send-telemetry-python/SimulatedDevice.png)
+    
+### <a name="to-avoid-the-import-iothubclient-error"></a>Az importálás iothub_client hiba elkerülése érdekében
+A Pythonhoz készült Azure IoT SDK jelenlegi verziója felett egy burkoló [az C SDK](https://github.com/azure/azure-iot-sdk-c). Véleménypontszámok generálásáról az [Boost](https://www.boost.org/) könyvtár. Ezért azt tartalmaz jelentős korlátozásai. További részletek [Itt](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)
+
+1. Ellenőrizze, hogy a megfelelő verzióját [Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues). Vegye figyelembe, hogy csak bizonyos verziók jól működik a minta. 
+2. Ellenőrizze, hogy a megfelelő verzióját C++ futásidejű [Microsoft Visual C++ terjeszthető változatát, a Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads). (Javasoljuk, hogy a legfrissebb).
+3. Győződjön meg arról, hogy telepítette-e az iothub-ügyfél: `pip install azure-iothub-device-client`.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb44c64540cc461bca4e305f7783f7c6b612591b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60296461"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Az Azure AD Connect felhasználói bejelentkezési lehetőségek
@@ -126,9 +126,9 @@ Az Azure AD bejelentkezési felület attól függ, hogy az Azure AD meg tudja a 
 Az Azure AD Connect sorolja fel, amely a tartományra határozza meg, és összehasonlítja azokat az egyéni tartomány az Azure AD UPN-utótagot. Ezután segít a megfelelő művelettel, amely állapotba kell helyezni.
 Az Azure AD bejelentkezési oldal az UPN-utótagot, amely a helyszíni Active Directory határozza meg, és megjeleníti a megfelelő állapot minden utótag alapján sorolja fel. Az állapot értékei a következők egyike lehet:
 
-| Állapot | Leírás | Beavatkozás szükséges |
+| Állapot | Leírás | Action needed |
 |:--- |:--- |:--- |
-| Ellenőrizve |Az Azure AD Connect található egy egyező ellenőrzött tartomány Azure AD-ben. Ebben a tartományban az összes felhasználó által a helyszíni hitelesítő adataikkal jelentkezhetnek be. |Nincs szükség beavatkozásra. |
+| Ellenőrizve |Az Azure AD Connect található egy egyező ellenőrzött tartomány Azure AD-ben. Ebben a tartományban az összes felhasználó által a helyszíni hitelesítő adataikkal jelentkezhetnek be. |Nem kell módosítania. |
 | Nincs ellenőrizve |Az Azure AD Connect talált egyező egyéni tartományt az Azure ad-ben, de nem ellenőrzi, hogy. Ez a tartomány felhasználói UPN-utótagját változnak az alapértelmezett. onmicrosoft.com utótag fog szerepelni, ha a tartomány nem ellenőrzött szinkronizálás után. | [Az egyéni tartomány ellenőrzése az Azure ad-ben.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | Nincs hozzáadva |Az Azure AD Connect nem talált egy egyéni tartományt, amely megfelelt annak az UPN-utótagot. Ez a tartomány felhasználói UPN-utótagját változnak az alapértelmezett. onmicrosoft.com utótag, ha a tartomány nem hozzáadva, és ellenőrizte az Azure-ban. | [Adja hozzá, és ellenőrizze az egyéni tartományt, amely megfelel az UPN-utótagot.](../fundamentals/add-custom-domain.md) |
 

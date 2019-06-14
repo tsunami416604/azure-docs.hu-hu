@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe9e0a4d481ef7b802c50fdc347872e389fa8ef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60294676"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>kézikönyv: A bejelentkezési kockázati szabályzat konfigurálása
@@ -53,11 +53,11 @@ A bejelentkezési kockázati házirend konfigurálásakor kell beállítani:
 
 - A bejelentkezési kockázati szintet, amely elindítja a szabályzat:
 
-    ![Bejelentkezés kockázati szintje](./media/howto-sign-in-risk-policy/12.png)
+    ![Bejelentkezési kockázati szint](./media/howto-sign-in-risk-policy/12.png)
 
 - Milyen típusú hozzáférést szeretne kényszeríti ki a bejelentkezési kockázati szint teljesülésekor:  
 
-    ![Hozzáférés](./media/howto-sign-in-risk-policy/13.png)
+    ![Access](./media/howto-sign-in-risk-policy/13.png)
 
 - A szabályzat állapotát:
 

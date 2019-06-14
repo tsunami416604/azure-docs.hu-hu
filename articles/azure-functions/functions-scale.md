@@ -13,80 +13,98 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05fb277564f72e62a4cdacc12a16cce229b2befc
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 3253cc7e379ae63880d533f14bc76e7af5a4425a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872744"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050555"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
-Az Azure Functions két különböző csomagokról fut: Használatalapú csomag és a prémium szintű csomag (nyilvános előzetes verzió). A Használatalapú csomag automatikusan hozzáadja a kódja fut. számítási teljesítmény. Az alkalmazás horizontálisan felskálázott, ha a terhelés kezeléséhez szükséges, és ha leállítja a kódot futtató vertikálisan leskálázni. Nem kell fizetnie a tétlen virtuális gépeket vagy foglalhat le előre a kapacitás.  A prémium szintű csomag is automatikusan méretezhető, és adjon hozzá további számítási teljesítményt, ha a kódja fut.  A prémium szintű csomag érhető el, további funkciókat, például a prémium szintű számítási példányok, a példányok meleg tartani határozatlan ideig képességét és virtuális hálózatok közötti kapcsolat.  Ha rendelkezik egy meglévő App Service-csomag, a függvényalkalmazások azokon belül is futtathatja.
+Ha függvényalkalmazást hoz létre az Azure-ban, ki kell választania egy szolgáltatási csomagot az alkalmazáshoz. Nincsenek elérhető Azure Functions szolgáltatási csomagok három: [Használatalapú csomag](#consumption-plan), [prémium szintű csomag](#premium-plan), és [App Service-csomag](#app-service-plan).
 
-> [!NOTE]  
-> Mindkét [prémium szintű csomag](https://aka.ms/functions-premiumplan) és [Használatalapú csomag Linux](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/) jelenleg előzetes verzióban érhető el.
+Úgy dönt, a üzemeltetési terv szabja meg az alábbi viselkedés tapasztalható:
 
-Ha nem ismeri az Azure Functions, tekintse meg a [Azure Functions áttekintő](functions-overview.md).
+* Hogyan betűmérethez a függvényalkalmazást.
+* Minden függvény alkalmazáspéldány számára elérhető erőforrások.
+* Speciális szolgáltatásokra, például a virtuális hálózatok közötti kapcsolat támogatása.
 
-Amikor létrehoz egy függvényalkalmazást, válassza ki a Functions szolgáltatási csomag az alkalmazásban. A terv vagy egy példányát a *Azure Functions gazdagép* végrehajtja a feladatokat. A terv vezérlők típusa:
+Használat és a prémium csomagok automatikusan adja hozzá a számítási teljesítményt, ha a kódja fut. Az alkalmazás horizontálisan felskálázott, ha a terhelés kezeléséhez szükséges, és ha leállítja a kódot futtató vertikálisan leskálázni. A Használatalapú csomagok esetében a is nem kell fizetnie a tétlen virtuális gépeket vagy foglalhat le előre a kapacitás.  
 
-* Hogyan példányait üzemeltetni horizontálisan felskálázott.
-* Minden állomás számára elérhető erőforrások.
-* Példány szolgáltatásai, például a virtuális hálózatok közötti kapcsolat.
+Prémium szintű csomag további szolgáltatásokat is nyújt, mint például a prémium szintű számítási példányok, a példányok meleg tartani határozatlan ideig lehetősége és a virtuális hálózatok közötti kapcsolat.
+
+App Service-csomag lehetővé teszi, hogy dedikált infrastruktúra, amely felügyelt. A függvényalkalmazás nem méretezhető események alapján, ami azt jelenti, akkor soha nem méretezhető nullára. (Ehhez meg kell adni [mindig a](#always-on) engedélyezve van.)
 
 > [!NOTE]
 > Használat és a prémium csomagban elérhető, a függvény alkalmazás-erőforrást a terv tulajdonság módosításával között válthat.
+
+## <a name="hosting-plan-support"></a>Üzemeltetési terv támogatása
+
+Funkciók támogatása esik a következő két kategóriába sorolhatók:
+
+* _Általánosan elérhető (GA)_ : teljes körűen támogatott, és éles használatra jóváhagyott.
+* _Előzetes verzió_: még nem támogatott, és hagyja jóvá, éles környezetben való használatra.
+
+Az alábbi táblázat a három szolgáltatási csomagok támogatását aktuális szintjét jelzi, ha a Windows vagy Linux rendszeren futó:
+
+| | Használatalapú csomag | Prémium szintű csomag | Dedikált terv |
+|-|:----------------:|:------------:|:----------------:|
+| Windows | FE | előzetes verzió | FE |
+| Linux | előzetes verzió | – | FE |
 
 ## <a name="consumption-plan"></a>Használatalapú csomag
 
 A Használatalapú csomag használatakor a példányok az Azure Functions-gazdagép dinamikusan hozzáadása és eltávolítása a bejövő események száma alapján. A kiszolgáló nélküli csomag automatikusan skálázható, és kell fizetnie a számítási erőforrásokat, csak akkor, amikor a függvények futnak. A Használatalapú csomag a függvény végrehajtási időkorlátja konfigurálható bizonyos idő után.
 
-Végrehajtások száma, végrehajtási időt, és a használt memória alapján számoljuk. A számlázás belül függvényalkalmazás a függvények összesített érték. További információkért lásd: a [Az Azure Functions díjszabását ismertető lapon].
+Végrehajtások száma, végrehajtási időt, és a használt memória alapján számoljuk. A számlázás belül függvényalkalmazás a függvények összesített érték. További információkért lásd: a [Azure Functions díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/functions/).
 
 A Használatalapú szolgáltatási csomag alapértelmezett és a következő előnyöket biztosítja:
 
-* A fizetés csak amikor a függvények futnak.
-* Automatikus skálázáshoz, akár nagy időszakokban betölteni.
+* Fizetés csak amikor a függvények futnak
+* Automatikus skálázáshoz, még akkor is magas időszakokban betöltése
 
-## <a name="premium-plan-public-preview"></a>Prémium szintű csomag (nyilvános előzetes verzió)
+Függvényalkalmazások ugyanabban a régióban a Használatalapú csomagot is hozzárendelhető. Nincs hátulütője vagy hatással az ugyanazon Használatalapú csomagban fut több alkalmazás kellene. Több alkalmazás hozzárendelése a ugyanolyan használatalapú csomag nem befolyásolja a rugalmasság, a skálázhatóság vagy a minden alkalmazás megbízhatóságát.
 
-A prémium szintű csomag használatakor példányok az Azure Functions-gazdagép gyors hozzáadása és eltávolítása, csakúgy, mint a használatalapú csomag bejövő események száma alapján.  Azonban a prémium szintű csomag is kínálja:
+## <a name="premium-plan"></a>Prémium szintű csomag (előzetes verzió)
 
-* Mindig meleg példányok bármilyen hidegindítási elkerülése érdekében.
-* Virtuális hálózatok közötti kapcsolat.
-* Korlátlan számú végrehajtási időtartamát.
-* Prémium szintű példányméretek (egymagos, két fő és négy alapvető példány).
-* Díjszabási lehetőségek Predictable.
-* Nagy sűrűségű alkalmazás elosztása több függvényalkalmazás-csomagok.
+Ha a prémium csomag használata esetén példányok az Azure Functions-gazdagép hozzáadása és eltávolítása, csakúgy, mint a Használatalapú csomag bejövő események száma alapján.  Prémium szintű csomag támogatja a következő funkciókat:
 
-Ezek a beállítások konfigurálásához információk megtalálhatók a [prémium szintű csomag az Azure Functions](functions-premium-plan.md).
+* Bármely hidegindítási elkerülése érdekében mindvégig meleg példányok
+* Virtuális hálózatok közötti kapcsolat
+* Korlátlan számú végrehajtási időtartama
+* Prémium szintű példányméretek (egymagos, két fő és négy core példányok)
+* Több kiszámítható díjszabás
+* Nagy sűrűségű alkalmazás foglalási több függvényalkalmazás-csomagok
 
-A számlázási végrehajtása és a felhasznált memória / helyett számlázási maghasználat (másodperc) és a szükséges és a fenntartott példányok között használt GB-másodperc alapul.  Legalább egy példánya szükség lehet meleg minden alkalommal, itt is van egy rögzített havi költség jén aktív (függetlenül a végrehajtások száma).
+Ezek a beállítások konfigurálásához információk megtalálhatók a [prémium csomag a dokumentum az Azure Functions](functions-premium-plan.md).
+
+Végrehajtási és a felhasznált memória / a számlázási helyett a prémium szintű csomag díjszabása alapján maghasználat (másodperc), a végrehajtási idő és a szükséges és a fenntartott példányok között használt memória száma.  Legalább egy példánya mindig kell lennie a meleg at. Ez azt jelenti, hogy nincs-e egy rögzített havi költség / aktív tervet, függetlenül a végrehajtásainak számát.
 
 Fontolja meg az Azure Functions prémium szintű csomag a következő esetekben:
-* A függvényalkalmazások futtassa folyamatosan vagy gyakorlatilag, folyamatosan. Ebben az esetben egy App Service-csomag költséghatékonyabban helyezhetők.
-* Több CPU és memória lehetőség milyen áll rendelkezésre a Használatalapú díjcsomag szükséges.
+
+* A függvényalkalmazások futtassa folyamatosan vagy gyakorlatilag, folyamatosan.
+* Több CPU és memória lehetőség a Használatalapú csomag által biztosított mi van szüksége.
 * A kód futtatásához hosszabb, mint a [engedélyezett maximális végrehajtási ideje](#timeout) a Használatalapú díjcsomag.
-* Csak az App Service-csomag, például az App Service Environment-környezet, a virtuális hálózat és VPN-kapcsolat és a nagyobb Virtuálisgép-méretek támogatása elérhető funkciókat követel meg.
+* Csak a prémium szintű csomagot, például a virtuális hálózat és VPN-kapcsolat elérhető funkciókat követel meg.
 
 > [!NOTE]
-> A premium csomag előzetes funkciók keresztül Windows infrastruktúra a .NET, a Node vagy a Java futtató jelenleg támogatja.
+> A prémium szintű csomag előzetes verziója jelenleg csak támogatja az Azure Functions a Windows.
 
 A prémium szintű csomagot futtatja a JavaScript-függvények, amikor egy példányt, amely rendelkezik kevesebb vcpu-k kell kiválasztani. További információkért lásd: a [válassza a prémium csomagok egymagos](functions-reference-node.md#considerations-for-javascript-functions).  
 
-## <a name="app-service-plan"></a>App Service-csomag
+## <a name="app-service-plan"></a>Dedikált (App Service) megtervezése
 
-A függvényalkalmazások is futtathatja a dedikált virtuális gépekről, más App Service-alkalmazások (alapszintű, Standard, prémium szintű és elkülönített termékváltozatok). App Service-csomagok támogatják a Linux.
+A függvényalkalmazások is futtathatja a dedikált virtuális gépekről, más App Service-alkalmazások (alapszintű, Standard, prémium szintű és elkülönített termékváltozatok).
 
-Fontolja meg az App Service-csomag, a következő esetekben:
+Fontolja meg az App Service-csomag, az alábbi esetekben:
 
 * Rendelkezik már meglévő, azokat az alacsony kihasználtságú virtuális gépeket, amelyek már fut más App Service-példányt.
-* Szeretné futtatni a függvényalkalmazást linuxon, vagy szeretne biztosítani egy egyéni rendszerképet, amelyre a függvények futtatását.
+* Szeretne biztosítani egy egyéni rendszerképet, amelyre a függvények futtatását.
 
-Használatalapú azonos függvény alkalmazások számára az App Service-csomag más App Service-erőforrások, például a web apps esetében tenné. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service díjcsomagjainak részletes áttekintése](../app-service/overview-hosting-plans.md). 
+Használatalapú azonos függvény alkalmazások számára az App Service-csomag más App Service-erőforrások, például a web apps esetében tenné. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service díjcsomagjainak részletes áttekintése](../app-service/overview-hosting-plans.md).
 
-Az App Service-csomag manuálisan horizontális felskálázása további Virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az automatikus méretezés. További információkért lásd: [példányszám manuális vagy automatikus méretezése](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Is skálázhatja egy másik App Service-csomag kiválasztásával. További információkért lásd: [az Azure-beli alkalmazás vertikális felskálázása](../app-service/web-sites-scale.md). 
+Az App Service-csomag manuálisan horizontálisan további Virtuálisgép-példányok hozzáadásával. Automatikus skálázás is engedélyezheti. További információkért lásd: [példányszám manuális vagy automatikus méretezése](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Is skálázhatja egy másik App Service-csomag kiválasztásával. További információkért lásd: [az Azure-beli alkalmazás vertikális felskálázása](../app-service/web-sites-scale.md). 
 
 JavaScript-függvények az App Service-csomag futtatásakor, kevesebb vcpu-k rendelkező csomagot érdemes választania. További információkért lásd: [válassza ki az App Service-csomagok egymagos](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
@@ -97,9 +115,12 @@ Ha az App Service-csomagot futtatja, engedélyeznie kell a **mindig** beállít�
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
-## <a name="what-is-my-hosting-plan"></a>Mit jelent a szolgáltatási csomag
 
-A szolgáltatási csomag, a függvényalkalmazás által használt megállapításához lásd: **App Service-csomag / tarifacsomag** a a **áttekintése** a függvényalkalmazás a lapon a [az Azure portal](https://portal.azure.com). App Service-csomagok a tarifacsomag is jelzi. 
+Még az Always On engedélyezve van, az egyes függvények végrehajtási időtúllépésének értéke szabályozza a `functionTimeout` beállítását a [host.json](functions-host-json.md#functiontimeout) soubor projektu.
+
+## <a name="determine-the-hosting-plan-of-an-existing-application"></a>A szolgáltatási csomag egy meglévő alkalmazás meghatározása
+
+A szolgáltatási csomag, a függvényalkalmazás által használt megállapításához lásd: **App Service-csomag / tarifacsomag** a a **áttekintése** a függvényalkalmazás a lapon a [az Azure portal](https://portal.azure.com). App Service-csomagok a tarifacsomag is jelzi.
 
 ![Méretezési csomag megtekintése a portálon](./media/functions-scale/function-app-overview-portal.png)
 
@@ -110,9 +131,7 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Ha ez a parancs kimenete van `dynamic`, a függvényalkalmazást a Használatalapú csomagban van. Ha ez a parancs kimenete van `ElasticPremium`, a prémium szintű csomag szerepel a függvényalkalmazást.  Minden más értékek azt jelzik, hogy az App Service-csomag szinten.
-
-Még az Always On engedélyezve van, az egyes függvények végrehajtási időtúllépésének értéke szabályozza a `functionTimeout` beállítását a [host.json](functions-host-json.md#functiontimeout) soubor projektu.
+Ha ez a parancs kimenete van `dynamic`, a függvényalkalmazást a Használatalapú csomagban van. Ha ez a parancs kimenete van `ElasticPremium`, a prémium szintű csomag szerepel a függvényalkalmazást. Minden egyéb értékek azt jelzik, hogy az App Service-csomag különböző rétegek.
 
 ## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
 
@@ -124,7 +143,7 @@ További információ a tárfiókok típusairól, lásd: [az Azure Storage szolg
 
 ## <a name="how-the-consumption-and-premium-plans-work"></a>A használat és a prémium szintű csomag működése
 
-A használat és a prémium csomagok a méretezési csoport vezérlő automatikusan skálázza a kapacitást CPU és memória-erőforrások a Functions gazdagép, az funkciók vannak a kiváltó események száma alapján további példányok hozzáadásával. A Functions gazdagép, a használatalapú csomagban minden példánya korlátozódik, 1,5 GB memória, és 1 Processzor.  A gazdagép egy példánya a teljes függvényalkalmazás, azaz függvény alkalmazás megosztás erőforrás-példány és a méretezési csoport belül lévő összes függvény egyszerre. A függvényalkalmazások, amely ugyanabban a használatalapú csomagban vannak méretezve, egymástól függetlenül.  A prémium csomag a csomag méretét határozza meg a rendelkezésre álló memória és CPU összes alkalmazás-csomag azon a példányon.  
+A használat és a prémium csomagok az Azure Functions infrastruktúra méretezi a CPU és memória-erőforrások a Functions gazdagép, az funkciók vannak a kiváltó események száma alapján további példányok hozzáadásával. A Functions gazdagép, a használatalapú csomagban minden példánya 1,5 GB memória- és a egy CPU korlátozódik.  A gazdagép egy példánya a teljes függvényalkalmazás, azaz függvény alkalmazás megosztás erőforrás-példány és a méretezési csoport belül lévő összes függvény egyszerre. A függvényalkalmazások, amely ugyanabban a használatalapú csomagban vannak méretezve, egymástól függetlenül.  A prémium csomag a csomag méretét határozza meg a rendelkezésre álló memória és CPU összes alkalmazás-csomag azon a példányon.  
 
 A funkció fő tárfiókot az Azure Files megosztásainak függvény kódfájlok tárolódnak. Ha a fő tárfiókot a függvényalkalmazás töröl, a függvény kódját fájlok törlődnek, és nem állítható helyre.
 
@@ -135,13 +154,13 @@ A funkció fő tárfiókot az Azure Files megosztásainak függvény kódfájlok
 
 Az Azure Functions összetevőt használja a *méretezési vezérlő* mértéke a események figyelésére, és határozza meg, hogy horizontálisan felskálázhatja vagy leskálázhatja a. A méretezési csoport vezérlő heurisztika használ minden egyes típusú trigger esetén. Például ha használja az Azure Queue storage eseményindítója, átméreteződik az üzenetsor hossza és a legrégebbi üzenetsori üzenet kora alapján.
 
-A skálázási egység a függvényalkalmazáshoz. Amikor a függvényalkalmazás horizontálisan, további erőforrások az Azure Functions-gazdagép több példányának futtatása, vannak lefoglalva. Ezzel szemben a számítási igény csökken, a méretezési csoport vezérlő eltávolítja a függvény példányait üzemeltetni. A példányok számát van végül vertikálisan leskálázni nullánál nem működik egy függvényalkalmazás belül futtatásakor.
+Az Azure Functions méretezési egység a függvényalkalmazáshoz. Amikor a függvényalkalmazás horizontálisan, további erőforrások az Azure Functions-gazdagép több példányának futtatása, vannak lefoglalva. Ezzel szemben a számítási igény csökken, a méretezési csoport vezérlő eltávolítja a függvény példányait üzemeltetni. A példányok számát van végül vertikálisan leskálázni nullánál nem működik egy függvényalkalmazás belül futtatásakor.
 
 ![Méretezési csoport vezérlő események figyelése és a példány létrehozása](./media/functions-scale/central-listener.png)
 
 ### <a name="understanding-scaling-behaviors"></a>Skálázási viselkedés ismertetése
 
-Skálázás tényezők és az eseményindító és a kiválasztott nyelvvel eltérően szerint méretezhető, több eltérőek lehetnek. Van azonban néhány skálázási szempont, amely már ma is jelen van a rendszerben:
+Skálázás tényezők és az eseményindító és a kiválasztott nyelvvel eltérően szerint méretezhető, több eltérőek lehetnek. Van néhány jainak részleteivel kellene skálázási viselkedés érdemes figyelembe vennie:
 
 * Egy adott függvényalkalmazás legfeljebb 200 példányig skálázható fel. Egyetlen példány előfordulhat, hogy egynél több üzenet vagy a kérelem egyszerre feldolgozni, ezért nincs párhuzamos végrehajtások száma beállított korlátot.
 * HTTP-eseményindítók, az új példányok csak lefoglalt 1 másodpercenként legfeljebb egyszer.
@@ -157,14 +176,14 @@ Számos szempontot, egy függvényalkalmazást, amelyek befolyásolják, arról,
 
 ### <a name="billing-model"></a>Számlázási modell
 
-A Használatalapú díjcsomag részletes leírása a számlázás a [Az Azure Functions díjszabását ismertető lapon]. Használati összesített értéket jelenít meg a függvény alkalmazási szintű, és csak a függvénykódot végrehajtott idő számát. A számlázási egység az alábbiak:
+A különböző csomagok díjszabása részletes leírása a a [Azure Functions díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/functions/). Használati összesített értéket jelenít meg a függvény alkalmazási szintű, és csak a függvénykódot végrehajtott idő számát. A számlázási egység az alábbiak:
 
-* **Erőforrás-használat gigabájtmásodpercben (GB-s)**. Számított, amely a memóriaméret és a egy függvényalkalmazás lévő összes függvény végrehajtási idejének. 
+* **Erőforrás-használat gigabájtmásodpercben (GB-s)** . Számított, amely a memóriaméret és a egy függvényalkalmazás lévő összes függvény végrehajtási idejének. 
 * **Végrehajtások**. Minden alkalommal, amikor egy függvény végrehajtása, amely egy eseményvezérelt eseményindítóra válasz számítanak.
 
 Hasznos lekérdezések és a számlázással kapcsolatos használati információk találhatók [a számlázási rendszerre – gyakori kérdések](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
 
-[Az Azure Functions díjszabását ismertető lapon]: https://azure.microsoft.com/pricing/details/functions
+[Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 
 ## <a name="service-limits"></a>Szolgáltatási korlátozások
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381586"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Kiszolgáló- és vészhelyreállítás előkészítése
@@ -65,9 +65,9 @@ Ha egyéni módosításokat végzett az elsődleges kiszolgáló és az átmenet
 
 #### <a name="import-and-synchronize"></a>Importálja és szinkronizálja
 1. Válassza ki **összekötők**, és válassza ki az első összekötőt típusú **Active Directory Domain Services**. Kattintson a **futtatása**válassza **teljes importálást**, és **OK**. Az ilyen típusú összekötők elvégezheti ezeket a lépéseket.
-2. Válassza ki az összekötő típusú **Azure Active Directory (Microsoft)**. Kattintson a **futtatása**válassza **teljes importálást**, és **OK**.
+2. Válassza ki az összekötő típusú **Azure Active Directory (Microsoft)** . Kattintson a **futtatása**válassza **teljes importálást**, és **OK**.
 3. Győződjön meg arról, hogy az összekötők lapon továbbra is ki van jelölve. Az egyes összekötők típusú **Active Directory Domain Services**, kattintson a **futtatása**válassza **különbözeti szinkronizálás**, és **OK**.
-4. Válassza ki az összekötő típusú **Azure Active Directory (Microsoft)**. Kattintson a **futtatása**válassza **különbözeti szinkronizálás**, és **OK**.
+4. Válassza ki az összekötő típusú **Azure Active Directory (Microsoft)** . Kattintson a **futtatása**válassza **különbözeti szinkronizálás**, és **OK**.
 
 Van már előkészített exportálási módosítja az Azure AD és a helyszíni AD (Ha Exchange hibrid telepítést használ). A következő lépések megvizsgálhatja, mi az az Exportálás a könyvtárak ténylegesen megkezdése előtt megváltozása teszi lehetővé.
 

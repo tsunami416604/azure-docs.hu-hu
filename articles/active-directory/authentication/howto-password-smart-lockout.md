@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60358140"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Az Azure Active Directory intelligens zárolás
@@ -65,7 +65,7 @@ Ellenőrizze, vagy módosítani az intelligens zárolás értékeket a szervezet
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és kattintson a **Azure Active Directory**, majd **hitelesítési módszerek**.
 1. Állítsa be a **Fiókzárolás küszöbe**alapján hány sikertelen bejelentkezések engedélyezett fiókonként az első zárolása előtt. Az alapértelmezett érték 10.
-1. Állítsa be a **Fiókzárolás időtartama (másodpercben)**, az egyes fiókzárolási hosszát másodpercben. Az alapértelmezett érték 60 másodperc (egy percig).
+1. Állítsa be a **Fiókzárolás időtartama (másodpercben)** , az egyes fiókzárolási hosszát másodpercben. Az alapértelmezett érték 60 másodperc (egy percig).
 
 > [!NOTE]
 > Ha az első bejelentkezés után is sikertelen, a zárolás, a fiók bejelentkezzenek újra. Egy fiók ismételten zárolja, ha növeli a Zárolás időtartama.

@@ -4,14 +4,14 @@ ms.service: billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: 8f30d9fb2fcfe8f55af13d7726aa8458f8733b3f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9b98e1a1f5243584d0ca4b1490e25302ec26b465
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236016"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050542"
 ---
-| Resource | [Használatalapú csomag](../articles/azure-functions/functions-scale.md#consumption-plan) | [Prémium szintű csomag](../articles/azure-functions/functions-scale.md#premium-plan-public-preview) | [App Service-csomag](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
+| Resource | [Használatalapú csomag](../articles/azure-functions/functions-scale.md#consumption-plan) | [Prémium szintű csomag](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service-csomag](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | Horizontális felskálázás | Eseményvezérelt | Eseményvezérelt | [Manuális vagy automatikus skálázás](../articles/app-service/web-sites-scale.md) | 
 |Alapértelmezett [időtúllépési időtartam](../articles/azure-functions/functions-scale.md#timeout) (min.) |5 | 30 |30<sup>2</sup> |
@@ -28,10 +28,10 @@ ms.locfileid: "66236016"
 | Egyéni tartományok alkalmazásonként</a> |500<sup>7</sup> |500 |500 |
 | Egyéni tartomány [SSL-támogatás](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nem támogatott, a helyettesítő tanúsítványt *. azurewebsites.net alapértelmezés szerint elérhető| korlátlan streameken működő SNI SSL és 1 IP SSL-kapcsolatot tartalmaz |korlátlan streameken működő SNI SSL és 1 IP SSL-kapcsolatot tartalmaz | 
 
-<sup>1</sup>adott korlátait a különféle App Service-csomagokkal, tekintse meg a [App Service-csomag korlátok](../articles/azure-subscription-service-limits.md#app-service-limits).  
-<sup>2</sup>alapértelmezés szerint az a funkciók 1.x modul az App Service-csomag időtúllépés a korlátlan streameken működő.  
-<sup>3</sup>használatához az App Service-csomag lehet [Always On](../articles/azure-functions/functions-scale.md#always-on). Standard megfizeti [díjszabás](https://azure.microsoft.com/pricing/details/app-service/).  
+<sup>1</sup> adott korlátait a különféle App Service-csomagokkal, tekintse meg a [App Service-csomag korlátok](../articles/azure-subscription-service-limits.md#app-service-limits).  
+<sup>2</sup> alapértelmezés szerint az a funkciók 1.x modul az App Service-csomag időtúllépés a korlátlan streameken működő.  
+<sup>3</sup> használatához az App Service-csomag lehet [Always On](../articles/azure-functions/functions-scale.md#always-on). Standard megfizeti [díjszabás](https://azure.microsoft.com/pricing/details/app-service/).  
 <sup>4</sup> Ez a korlát [állítsa be a gazdagép](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
-<sup>5</sup> függvény alkalmazásokat üzemeltethet a tényleges száma attól függ, a tevékenység az alkalmazások, a gép példány és a megfelelő erőforrás-használat méretét.   
-<sup>6</sup>a megadott tárolási kapacitása szerepel a teljes tartalom mérete az ideiglenes tároló összes alkalmazása tekintetében ugyanazt az App Service-csomagban. Használatalapú csomag használja az Azure Files ideiglenes tárhely.  
-<sup>7</sup>amikor a függvényalkalmazás szolgáltatásban üzemeltetett egy [Használatalapú csomag](../articles/azure-functions/functions-scale.md#consumption-plan), csak a CNAME beállítás támogatott. Az alkalmazások esetében egy [prémium szintű csomag](../articles/azure-functions/functions-scale.md#premium-plan-public-preview) vagy egy [App Service-csomag](../articles/azure-functions/functions-scale.md#app-service-plan), leképezhet egy egyéni tartományt egy olyan CNAME REKORDOT vagy egy A rekordot. 
+<sup>5</sup> függvény alkalmazásokat üzemeltethet a tényleges száma attól függ, a tevékenység az alkalmazások, a gép példány és a megfelelő erőforrás-használat méretét.
+<sup>6</sup> a megadott tárolási kapacitása szerepel a teljes tartalom mérete az ideiglenes tároló összes alkalmazása tekintetében ugyanazt az App Service-csomagban. Használatalapú csomag használja az Azure Files ideiglenes tárhely.  
+<sup>7</sup> amikor a függvényalkalmazás szolgáltatásban üzemeltetett egy [Használatalapú csomag](../articles/azure-functions/functions-scale.md#consumption-plan), csak a CNAME beállítás támogatott. Az alkalmazások esetében egy [prémium szintű csomag](../articles/azure-functions/functions-scale.md#premium-plan) vagy egy [App Service-csomag](../articles/azure-functions/functions-scale.md#app-service-plan), leképezhet egy egyéni tartományt egy olyan CNAME REKORDOT vagy egy A rekordot.

@@ -12,10 +12,10 @@ tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
 ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60448630"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>REST-végpontokat HTTP + Swagger összekötő az Azure Logic Appsben
@@ -92,13 +92,13 @@ A HTTP + Swagger összekötő tartalmaz egy lehetséges műveletet. Következő 
 Győződjön meg arról, kimenő HTTP-kérést a Swagger-metaadatok segítséget.
 Egy csillag (*) azt jelenti, hogy a kötelező kitölteni.
 
-| Megjelenített név | Tulajdonság neve | Leírás |
+| Display name | Tulajdonság neve | Leírás |
 | --- | --- | --- |
 | Módszer * |method |HTTP-parancs használata. |
-| URI * |uri azonosító |A HTTP-kérés URI azonosítója. |
+| URI * |URI-t |A HTTP-kérés URI azonosítója. |
 | Fejlécek |A fejlécek |A HTTP-fejléceket tartalmazza JSON-objektum. |
-| Törzs |törzs |A HTTP-kérelem törzse. |
-| Authentication |hitelesítés |Hitelesítési kérelem használatára. További információkért lásd: a [HTTP-összekötő](connectors-native-http.md#authentication). |
+| Törzs |Törzs |A HTTP-kérelem törzse. |
+| Hitelesítés |hitelesítés |Hitelesítési kérelem használatára. További információkért lásd: a [HTTP-összekötő](connectors-native-http.md#authentication). |
 
 **Kimenet részletei**
 

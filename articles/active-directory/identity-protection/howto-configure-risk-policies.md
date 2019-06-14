@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdacdf604ab7a4ded7ddf302a217084630f60b31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60295574"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>kézikönyv: Kockázati szabályzatainak konfigurálása az Azure Active Directory identity protection (frissítve)
@@ -60,11 +60,11 @@ A bejelentkezési kockázati házirend konfigurálásakor kell beállítani:
 
 - A bejelentkezési kockázati szintet, amely elindítja a szabályzat:
 
-    ![Bejelentkezés kockázati szintje](./media/howto-configure-risk-policies/12.png)
+    ![Bejelentkezési kockázati szint](./media/howto-configure-risk-policies/12.png)
 
 - Milyen típusú hozzáférést szeretne kényszeríti ki a bejelentkezési kockázati szint teljesülésekor:  
 
-    ![Hozzáférés](./media/howto-configure-risk-policies/13.png)
+    ![Access](./media/howto-configure-risk-policies/13.png)
 
 - A szabályzat állapotát:
 
@@ -145,7 +145,7 @@ A felhasználói kockázati házirend konfigurálásakor kell beállítani:
 
 - Milyen típusú hozzáférést szeretne kényszeríti ki a bejelentkezési kockázati szint teljesülésekor:  
 
-    ![Hozzáférés](./media/howto-configure-risk-policies/113.png)
+    ![Access](./media/howto-configure-risk-policies/113.png)
 
 - A szabályzat állapotát:
 

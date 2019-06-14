@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
 ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60303790"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Az Azure Logic Apps darabolás nagyméretű üzenetek kezelése
@@ -117,7 +117,7 @@ Ezeket a lépéseket ismertetik a részletes folyamat, Logic Apps számára a lo
 
 1. A logikai alkalmazás küld egy kezdeti HTTP POST és PUT kérés az üzenettörzse üres. A kérelem fejlécét, ezt a tartalmat, amely a logikai alkalmazás szeretne feltölteni tömbökben kapcsolatos információkat tartalmazza:
 
-   | A Logic Apps fejlécmezőt kérése | Value | Typo | Leírás |
+   | A Logic Apps fejlécmezőt kérése | Value | Típus | Leírás |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | darabolásos | String | Azt jelzi, hogy a tartalom tömbökben van feltöltve. |
    | **x-ms-content-length** | <*tartalom-hossza*> | Integer | A teljes tartalom mérete (bájt) darabolás előtt |
@@ -137,7 +137,7 @@ Ezeket a lépéseket ismertetik a részletes folyamat, Logic Apps számára a lo
 
    * Ezek az egyes javítás üzenetben küldött tartalom adattömb fejléc részleteit:
 
-     | A Logic Apps fejlécmezőt kérése | Value | Typo | Leírás |
+     | A Logic Apps fejlécmezőt kérése | Value | Típus | Leírás |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*range*> | String | A bájttartomány számára a tartalom darabban, beleértve a kezdő érték, a befejezési értéket, és a teljes tartalom méretét, például: "bájtok száma 0-1023/10100 =" |
      | **A Content-Type** | <*content-type*> | String | A darabolt tartalmának típusa |

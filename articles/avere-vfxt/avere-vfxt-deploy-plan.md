@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
 ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60409890"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Az Avere vFXT rendszer megtervezése
@@ -42,7 +42,7 @@ A Avere vFXT rendszer hálózati infrastruktúra tervezése során kövesse az a
 
 * A fürt létrehozási sablont hozhat létre a fürtöt, erőforráscsoportok, virtuális hálózatok, alhálózatok és storage-fiókok esetében a szükséges infrastruktúra-erőforrások legnagyobb része. Ha azt szeretné, használja a már meglévő erőforrásait, ellenőrizze azok megfelelnek a táblázatban. 
 
-  | Erőforrás | Meglévő használata? | Követelmények |
+  | Resource | Meglévő használata? | Követelmények |
   |----------|-----------|----------|
   | Erőforráscsoport | Igen, ha üres | Üresnek kell lennie| 
   | Tárfiók | Igen, ha a fürt létrehozása után összekapcsolása egy meglévő Blob-tároló <br/>  Nem, ha a fürt létrehozásakor egy új Blob-tároló létrehozása | Meglévő Blob-tároló üresnek kell lennie. <br/> &nbsp; |
@@ -74,7 +74,7 @@ A virtuális gépek, amelyek szolgálhat a fürtcsomópontok határozza meg a k�
 
 Minden egyes vFXT csomópont azonos lesz. Azt jelenti Ha létrehoz egy három csomópontos fürtben három virtuális gépet azonos típusú és méretű kap. 
 
-| Példány típusa | Virtuális magok | Memory (Memória)  | Helyi SSD-tárolóval  | Adatlemezek max. száma | Nem gyorsítótárazott lemezteljesítmény | Hálózati adapter (darabszám) |
+| Példány típusa | vCPUs | Memory (Memória)  | Helyi SSD-tárolóval  | Adatlemezek max. száma | Nem gyorsítótárazott lemezteljesítmény | Hálózati adapter (darabszám) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_E32s_v3 | 32  | 256 GiB | 512 GiB  | 32 | 51,200 IOPS <br/> 768 MBps | 16000 MB/s (8)  |
 

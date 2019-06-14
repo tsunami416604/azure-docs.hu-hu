@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60395805"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás az Azure ITSM-eszközeit IT Service Management-összekötő használatával
@@ -89,7 +89,7 @@ Az ITSM-termék csatlakozik, attól függően használja az alábbi lépéseket:
 
 Ha rendelkezik elő lett készítve az ITSM-eszközeit, az alábbi lépésekkel kapcsolat létrehozása:
 
-1. Lépjen a **összes erőforrás**, keressen **ServiceDesk(YourWorkspaceName)**.
+1. Lépjen a **összes erőforrás**, keressen **ServiceDesk(YourWorkspaceName)** .
 2. A **MUNKATERÜLET ADATFORRÁSAI** a bal oldali ablaktáblán kattintson a **ITSM-kapcsolatok**.
    ![ITSM-kapcsolatok](media/itsmc-overview/itsm-connections.png)
 
@@ -186,14 +186,14 @@ ServiceDeskWorkItemType_s="Incident"
 - Sürgősség
 - Hatás
 - Prioritás
-- Eszkalálás
+- Eszkalációs
 - Létrehozta
 - Megoldó
 - Lezárta
-- Forrás
-- Társítás
+- source
+- Hozzárendelve
 - Category
-- Cím
+- Beosztás
 - Leírás
 - Létrehozás dátuma
 - Lezárás dátuma
@@ -211,19 +211,19 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Ügyfélszolgálati azonosító
 - Létrehozta
 - Lezárta
-- Forrás
-- Társítás
-- Cím
-- Typo
+- source
+- Hozzárendelve
+- Beosztás
+- Típus
 - Category
 - Állapot
-- Eszkalálás
+- Eszkalációs
 - Ütközés állapota
 - Sürgősség
 - Prioritás
 - Kockázat
 - Hatás
-- Társítás
+- Hozzárendelve
 - Létrehozás dátuma
 - Lezárás dátuma
 - Utolsó módosítás dátuma
@@ -245,16 +245,16 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Impact_s |Hatás|
 | Priority_s | Prioritás |
 | CreatedBy_s | Megnyitotta |
-| ResolvedBy_s | Feloldotta|
+| ResolvedBy_s | Megoldó|
 | ClosedBy_s  | Lezárta |
 | Source_s| Kapcsolattartó típusa |
-| AssignedTo_s | Hozzárendelve a következőhöz:  |
+| AssignedTo_s | Hozzárendelve  |
 | Category_s | Category |
 | Title_s|  Rövid leírás |
 | Description_s|  Megjegyzések |
-| CreatedDate_t|  Megnyitva |
+| CreatedDate_t|  Megnyitott |
 | ClosedDate_t| Lezárt|
-| ResolvedDate_t|Feloldva|
+| ResolvedDate_t|Megoldva|
 | Computer  | Konfigurációs elem |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>A ServiceNow kimeneti adatait változáskérés
@@ -264,9 +264,9 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ServiceDeskId_s| Szám |
 | CreatedBy_s | Kérelmező |
 | ClosedBy_s | Lezárta |
-| AssignedTo_s | Hozzárendelve a következőhöz:  |
+| AssignedTo_s | Hozzárendelve  |
 | Title_s|  Rövid leírás |
-| Type_s|  Typo |
+| Type_s|  Típus |
 | Category_s|  Category |
 | CRState_s|  Állapot|
 | Urgency_s|  Sürgősség |

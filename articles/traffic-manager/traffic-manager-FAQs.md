@@ -3,20 +3,20 @@ title: Az Azure Traffic Manager – gyakori kérdések
 description: Ez a cikk ismerteti a Traffic Managerrel kapcsolatos gyakori kérdésekre adott válaszok
 services: traffic-manager
 documentationcenter: ''
-author: KumudD
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: kumud
-ms.openlocfilehash: b89e9a48ce20c7c00bd3282623919b8066e34b25
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: allensu
+ms.openlocfilehash: 640d36649f59842a740b4c12b4e3ab39a6d98c13
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717062"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050947"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager – gyakori kérdések (GYIK)
 
@@ -30,7 +30,6 @@ A Traffic Manager ezért nem biztosít egy végpontot, illetve az ügyfelek IP-c
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Milyen típusú forgalom lehet irányítva a Traffic Manager használatával?
 A [Traffic Manager működése](../traffic-manager/traffic-manager-how-it-works.md), egy Traffic Manager-végpont lehet bármely internetkapcsolattal rendelkező belül vagy kívül az Azure-szolgáltatás. Ezért a Traffic Manager érkező forgalmat a nyilvános internetről végpontok között az, hogy rendszer emellett az internetre irányuló irányíthatja. Ha a végpontokat, amelyek egy magánhálózaton belül (például egy belső verzióját [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) vagy az ilyen belső hálózat DNS-kérelem indítására felhasználóval rendelkezik, nem használhatja a Traffic Manager irányíthatja a forgalmat.
-
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>A Traffic Manager támogatja a "kiemelt" munkamenetek?
 
@@ -59,15 +58,18 @@ A teljesítmény metódus a legközelebbi elérhető végpontra irányítja a fo
 A [Traffic Manager működése](../traffic-manager/traffic-manager-how-it-works.md), a Traffic Manager a DNS szintjén működik. A DNS-címkeresés befejeződése után az ügyfelek az alkalmazás végpontjának közvetlenül kapcsolódni, nem Traffic Manageren keresztül. A kapcsolat, ezért bármely alkalmazás protokollt használhat. Akkor válassza ki azt a TCP, a monitorozási protokoll, a Traffic Manager végpont szolgáltatásállapot-figyelést végezhető bármilyen alkalmazás protokollok használata nélkül. Ha szeretné, hogy a health-protokoll segítségével választja, a végpont képesnek kell lennie HTTP vagy HTTPS GET kérelmek megválaszolására.
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Használhatom-e a Traffic Manager "csupasz" tartománynév?
+
 Igen. Megtudhatja, hogyan hozhat létre a tartomány neve található rekordokra való hivatkozáshoz egy Azure Traffic Manager-profilt egy aliast rekordot, lásd: [-aliasrekordot támogatásához apex-tartománynevek a Traffic Manager konfigurálása](../dns/tutorial-alias-tm.md).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Nem a Traffic Manager fontolja meg az ügyfél alhálózati cím DNS-lekérdezések kezelése esetén? 
+
 Igen, a DNS-lekérdezés forrás IP-címe mellett kap (Ez általában a DNS-feloldó IP-címét), ha keresések végrehajtása Geographic, teljesítmény- és alhálózat útválasztási módszer, a traffic manager is figyelembe veszi az ügyfél alhálózati cím Ha a lekérdezés által a feloldó a kérés a végfelhasználó nevében szerepel.  
 Pontosabban a [RFC 7871 – ügyfél-alhálózathoz, a DNS-lekérdezések](https://tools.ietf.org/html/rfc7871) biztosít, amely egy [Bővítménymechanizmussal DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) feloldók, amelyek támogatják ezt az ügyfél-alhálózat címen át is.
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Mi a DNS-Élettartamot, és hogyan ez befolyásolja a felhasználók?
 
 A Traffic Manager DNS-lekérdezést hajtanak végre, ha a válasz ideje-élettartam (TTL) nevű beállít egy értéket. Ez az érték, amelynek egység másodpercen belül van, azt jelzi, hogy a DNS feloldók aktiválásához a mennyi ideig gyorsítótárazza a választ a. Amíg DNS feloldók nem biztos, hogy a gyorsítótár ezt az eredményt, gyorsítótárazás, lehetővé teszi, hogy válaszolni a lekérdezésekre későbbi ki a gyorsítótárat a Traffic Manager DNS-kiszolgálók helyett. Ez hatással van a válaszokat a következő:
+
 - nagyobb TTL csökkenti a Traffic Manager DNS-kiszolgálókon, ami csökkentheti a költségeket az ügyfél mivel kiszolgált lekérdezések száma számlázható használati land lekérdezések száma.
 - nagyobb TTL potenciálisan csökkentheti a hajtsa végre egy DNS-címkeresés szükséges időt.
 - nagyobb TTL azt is jelenti, hogy az adatok nem tükrözi a legfrissebb állapotinformációkat, amely a Traffic Manager rendelkezik kombináljuk ellenőrzési ügynökeit.
@@ -77,46 +79,50 @@ A Traffic Manager DNS-lekérdezést hajtanak végre, ha a válasz ideje-élettar
 Beállíthatja, jelenleg egy profil szintjén, a DNS-Élettartamot kérelemegységszámot 0 másodperc és magas, mint 2 147 483 647 másodpercek száma (a megfelelő tartomány maximuma [– az RFC 1035](https://www.ietf.org/rfc/rfc1035.txt )). A 0 azt jelenti, hogy az alsóbb rétegbeli DNS feloldók nem gyorsítótárazzák a lekérdezési válaszadás felgyorsítása érdekében, és az összes lekérdezés várhatóan a Traffic Manager DNS-kiszolgálók a feloldásához elérésére TTL.
 
 ### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Hogyan képes megérteni a kötet várható a saját profil lekérdezések? 
+
 A mérőszámok egyikét a megadott Traffic Manager által a lekérdezések száma válaszolt-profillal. Ezt az információt kaphat egy profil szintű összesítés, vagy akkor is feloszthatja az azt tovább lásd: a kötetet, ahol a meghatározott végpontokhoz műveletnek lekérdezések. Emellett állíthat be riasztásokat, amelyek figyelmeztetik, ha a lekérdezés válaszkötet átlép a állított be feltételeket. További részletekért [Traffic Manager-mérőszámok és riasztások](traffic-manager-metrics-alerts.md).
 
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>A TRAFFIC Manager Geographic forgalom-útválasztási módszer
 
-### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Mik az egyes használati esetek, ahol földrajzi útválasztásának hasznos? 
+### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Mik az egyes használati esetek, ahol földrajzi útválasztásának hasznos?
+
 Földrajzi útválasztási típus használható minden olyan forgatókönyvben ahol Azure-ügyfeleket kell különbséget tenni a felhasználók földrajzi régió alapján. Például a földrajzi forgalom-útválasztási módszert használja, engedélyezheti a felhasználók számára az adott régióban, mint el más régiókból eltérő felhasználói élmény. Egy másik példa, hogy egy adott régióban felhasználók kiszolgálása az internetszolgáltatójuk csak által az adott régióban végpontok igénylő helyi adatok szuverenitását megbízások megfelel.
 
-### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Hogyan válasszak a Teljesítménycentrikus útválasztási mód vagy a földrajzi útválasztási mód használata kell? 
+### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Hogyan válasszak a Teljesítménycentrikus útválasztási mód vagy a földrajzi útválasztási mód használata kell?
+
 Ez a két legnépszerűbb útválasztási módszer közötti fő különbség, hogy a teljesítmény-útválasztási módszer elsődleges célja, hogy a forgalmat küldeni a végpontot, amely a legkisebb késéssel képes biztosítani a hívónak. mivel a Geographic útválasztás elsődleges célja az, hogy egy-egy térségen kényszerítése időkorlát a hívók számára, hogy szándékosan irányíthatja őket egy adott végpontnak. Bár ez nem mindig igaz az átfedés között földrajzi egyezés és kisebb késést biztosít, mivel történik. Előfordulhat, hogy lehet egy végpontot egy másik földrajzi hely, amely a hívó késés jobb felhasználói élményt biztosíthat, és ebben az esetben Teljesítménycentrikus útválasztást küld a felhasználónak, hogy a végpont, de a földrajzi útválasztásának mindig elküldi őket a végpont számára leképezett azok a földrajzi régióban. Hogy még törölje a jelet, fontolja meg az alábbi példa - Geographic-útválasztást, teheti például nem szokványos leképezések Ázsia minden forgalmat küldeni az Amerikai Egyesült Államokban és Ázsiában-végpontokra irányuló minden Egyesült Államokbeli forgalmat végpontok. Ebben az esetben földrajzi útválasztásának szándékosan elvégzi az pontosan mit konfigurált rá és teljesítményoptimalizálás nem veszi figyelembe. 
 >[!NOTE]
 >Előfordulhat, hogy forgatókönyvek, ahol előfordulhat, hogy mind a teljesítmény és földrajzi útválasztási lehetőségeket, az ezen forgatókönyvek beágyazott profilok remek választás a következőkhöz lehetnek. Például, ahol az összes forgalom küldése az Észak-Amerika beágyazott-profilhoz, amely rendelkezik az Amerikai Egyesült Államokban végpontok földrajzi útválasztási szülő profil beállítása és használata a teljesítmény-útválasztási e forgalmat küldeni az optimális végpontot, hogy a csoporton belül. 
 
-### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Mik a Traffic Manager által támogatott földrajzi útválasztásának régiók? 
+### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Mik a Traffic Manager által támogatott földrajzi útválasztásának régiók?
+
 A Traffic Manager által használt ország/régió-hierarchia található [Itt](traffic-manager-geographic-regions.md). Amíg ezt oldal megőrzött módosításai naprakészen szerepeljenek, szoftveresen is ugyanazokat az információkat használatával lekérhető a [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/). 
 
-### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Hogyan nem a traffic manager, hogy hol éppen lekérdezi a felhasználó a? 
+### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Hogyan nem a traffic manager, hogy hol éppen lekérdezi a felhasználó a?
+
 Traffic Manager megvizsgálja a forrás IP-címét a lekérdezés (Ez nagy valószínűséggel a egy helyi DNS-feloldási ennek során a felhasználó nevében lekérdezése), és a egy belső IP-cím terület térkép segítségével határozza meg, a helyet. Ezen a térképen az interneten változásainak rendszeresen frissül. 
 
 ### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Ez garantálja, hogy a Traffic Manager helyesen meghatározhatja a pontos minden esetben a felhasználó földrajzi helye?
-Nem, a Traffic Manager nem tudja garantálni, hogy a földrajzi régiót, azt a DNS-lekérdezés forrás IP-címről kikövetkeztetni mindig felel meg a felhasználó földrajzi helye a következő okok miatt: 
+
+Nem, a Traffic Manager nem tudja garantálni, hogy a földrajzi régiót, azt a DNS-lekérdezés forrás IP-címről kikövetkeztetni mindig felel meg a felhasználó földrajzi helye a következő okok miatt:
 
 - Először az előző – gyakori kérdések leírtak a a forrás IP-cím, láthatjuk, hogy egy DNS-feloldási ennek során a Keresés a felhasználó nevében. Bár a földrajzi helyet, a DNS-feloldási a felhasználó földrajzi helye jó proxy, azt is lehet különböző attól függően, hogy a DNS-feloldási szolgáltatás és az adott DNS-feloldási szolgáltatás használatát választotta egy ügyfél kapacitásigényéhez. Tegyük fel Malajzia található ügyfelek eszköz beállításait használja megadhatja egy DNS-feloldási szolgáltatás, amelynek DNS-kiszolgáló a szingapúri előfordulhat, hogy első követi a lekérdezés megoldások felhasználó és eszköz kezelésére. Ebben az esetben a Traffic Manager csak tekintheti meg a feloldó IP-címet, amely megfelel a szingapúri helyre. Lásd még a korábbi vonatkozó ügyfél alhálózati cím támogatás – gyakori kérdések ezen az oldalon.
 
 - Második a Traffic Manager használja egy belső térkép földrajzi régióban fordítási IP-cím. A térkép érvényesítve, és növeli az adatok pontosságát, és a fiók számára az internetről fenyegető jellege rendszeresen frissíteni, miközben továbbra is fennáll a lehetősége, hogy az információk ne legyen-e a földrajzi helyet az IP-pontos másolatát címek.
 
+###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>A végpont helyezkedjenek el azzal, konfigurálva van az a földrajzi útválasztásának ugyanabban a régióban nem kell?
 
-###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>A végpont helyezkedjenek el azzal, konfigurálva van az a földrajzi útválasztásának ugyanabban a régióban nem kell? 
 A végpont helye nem, amelyre régióban is le lehet képezni, korlátozás nélkül ír elő. Például a egy végpontot az Egyesült Államok – közép-India Azure-régióhoz indiai átirányítva, hogy minden felhasználó rendelkezhet.
 
-### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>A végpontok egy profilt, amely nincs konfigurálva ehhez a földrajzi útválasztásának is hozzárendelhetők földrajzi régiók? 
+### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>A végpontok egy profilt, amely nincs konfigurálva ehhez a földrajzi útválasztásának is hozzárendelhetők földrajzi régiók?
 
 Igen, ha egy profil útválasztási módszer nem földrajzi, használhatja a [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) földrajzi régiók hozzárendelése végpontokat a profilhoz. Nem földrajzi útválasztási típus-profilok esetén figyelmen kívül ezt a konfigurációt. Ha egy ilyen profil földrajzi útválasztási típus módosítja egy későbbi időpontban, a Traffic Manager használhatja ezeket a hozzárendeléseket.
 
-
 ### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Miért jelenik meg hibaüzenet jelenik meg a-útválasztási módszert egy meglévő profilt, módosítsa Geographic?
 
-Földrajzi útválasztási profil alatt a végpontok rendelve legalább egy régió van szükség. Földrajzi útválasztási típus konvertál egy meglévő profilt, szüksége lesz a használó végpontok földrajzi régiók társítása a [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) a földrajzi útválasztási típusának módosítása előtt. Portál használata esetén először törölje a végpontot, módosítsa a profil-útválasztási módszert földrajzi, és adja hozzá az a végpontok a földrajzi régió hozzárendelése együtt. 
+Földrajzi útválasztási profil alatt a végpontok rendelve legalább egy régió van szükség. Földrajzi útválasztási típus konvertál egy meglévő profilt, szüksége lesz a használó végpontok földrajzi régiók társítása a [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) a földrajzi útválasztási típusának módosítása előtt. Portál használata esetén először törölje a végpontot, módosítsa a profil-útválasztási módszert földrajzi, és adja hozzá az a végpontok a földrajzi régió hozzárendelése együtt.
 
-
-###  <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Miért van, erősen ajánlott, hogy ügyfeleink helyett végpontokat a profilhoz a beágyazott profilok létrehozása az földrajzi Útválasztás engedélyezése mellett? 
+### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Miért van, erősen ajánlott, hogy ügyfeleink helyett végpontokat a profilhoz a beágyazott profilok létrehozása az földrajzi Útválasztás engedélyezése mellett?
 
 Egy régióban is hozzárendelhető egy profilon belül csak egy végpont, ha használja a földrajzi útválasztási mód. Ha nem, hogy a végpont egy beágyazott típus egy gyermek-profil csatlakozik, a forgalmat, hogy a végpont történik a nem megfelelő állapotú, ha Manager továbbra is forgalmat küldeni, a tulajdonos alternatív nem küldött forgalom nem minden jobb óta. A TRAFFIC Manager elvégzi a nem végezhető el egy másik végpontra, még akkor, amikor a hozzárendelt régió rendelve a végpontot, hogy nem megfelelő állapotú (például ha egy végpontot, amely rendelkezik régió Spanyolország nem kifogástalan, még a nem egy másik végponti feladatátvétel nem megy a régióban "szülője" a régió, Európa hozzárendelt rendelkezik). Ez történik, győződjön meg arról, hogy a Traffic Manager tiszteletben tartja a földrajzi határokon, hogy egy ügyfél rendelkezik-e a telepítő a profilban. Az előnye, hogy egy másik végpont-ba irányuló feladatátvétel kapni, ha a végpont nem megfelelő állapotú, javasoljuk, hogy a földrajzi régiók kell rendelni a benne lévő egyes végpontokat helyett több végponttal rendelkező beágyazott profilok. Ezzel a módszerrel a egy végpontot a beágyazott gyermek profil sikertelen lesz, ha forgalmat is feladatátvételt egy másik végpontra belül ugyanazt a beágyazott gyermek-profilt.
 
@@ -127,101 +133,131 @@ Igen, csak az API 2017-03-01-es verzió és az újabb támogatja a földrajzi ú
 ## <a name="traffic-manager-subnet-traffic-routing-method"></a>A TRAFFIC Manager alhálózati forgalom-útválasztási módszer
 
 ### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Mik az egyes használati esetek, ahol alhálózat útválasztási hasznos?
+
 Alhálózat útválasztási teszi lehetővé teszi elérhetővé a forrás IP-címét a DNS-kérelmek IP-cím által azonosított felhasználók adott részhalmazához tapasztalatok megkülönböztetéséhez. Például különböző tartalmakat megjelenítő lenne, ha a felhasználók a vállalati központ egy webhelyhez csatlakozik. Egy másik lenne bizonyos internetszolgáltatók csak eléréséhez a végpontok, amelyek támogatják a csak IPv4-kapcsolat, ha ezeket az internetszolgáltatók az optimálisnál par teljesítmény IPv6 használatakor a felhasználók korlátozása.
 A másik ok az alhálózat útválasztási módszer együtt más egymásba ágyazott profilelérési profilok beállítása. Például ha a felhasználók használni földrajzi útválasztási mód a geokerítés-kívánt, de egy adott internetszolgáltató szeretne egy másik útválasztási módszert, profil withy alhálózat útválasztási módszer a szülő profilként és a is felülbírálása egy adott gyermek pro használatára, hogy az Internetszolgáltató fájl- és Mindenki másnak a standard földrajzi profil rendelkezik.
 
 ### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Hogyan, hogy a Traffic Manager a felhasználó IP-címét?
+
 Végfelhasználói eszközöket általában egy DNS-feloldási használnak ehhez a DNS-ben, a felhasználók nevében. A kimenő IP-címét az ilyen feloldók, mi a Traffic Manager a forrás IP-címként látja. Emellett alhálózat esetén használt útválasztási módszer is megvizsgálja, hogy van-e a kérelemmel együtt átadott EDNS0 kiterjesztett ügyfél alhálózat (ECS) információt. Ha ECS információra jelen van, és határozza meg, az Útválasztás-címét. A forrás IP-címét a lekérdezés ECS információ hiányában útválasztási célokat szolgál.
 
 ### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Hogyan lehet megadni IP-címek alhálózat útválasztási használatakor?
+
 Az IP-címek társítása a végpont kétféle módon adható meg. Első lépésként segítségével négyportos pontozott decimális oktett jelölés kezdő és záró címekkel adja meg a tartományt (például 1.2.3.4-5.6.7.8 vagy 3.4.5.6-3.4.5.6). A második a CIDR-jelölés használatával adja meg a tartományt (például 1.2.3.0/24). Több tartományt is adja meg, és a egy tartomány készlet mindkét jelöléssel típusok használhatók. Néhány korlátozás a alkalmazni.
+
 -   Meg nem lehet átfedés-címtartományok, mert csak egy végponttal képezhető le kell minden egyes IP
 -   A kezdőcím nem lehet több, mint a záró cím
 -   A CIDR-jelölés esetén az IP-cím, mielőtt a (/) kell lennie a kezdő cím-tartományt (például 1.2.3.0/24 érvényes, de 1.2.3.4.4/24 nincs érvényes)
 
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Hogyan lehet megadni egy tartalék végpont alhálózat útválasztási használatakor?
+
 Egy alhálózathoz útválasztási profilban Ha nincs alhálózattal rendelve, egy végponttal rendelkezik minden olyan kérelmet, amely nem egyezik a többi végpont azzal fejezhesse be itt. Azt javasoljuk, hogy az ilyen egy tartalék végpontot a profiljában óta a Traffic Manager eredménye NXDOMAIN választ vissza, ha a kérelem érkezik, és nincs hozzárendelve az olyan végpontok, vagy ha van leképezve a végpont azonban, hogy a végpont állapota nem kifogástalan.
 
 ### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Mi történik, ha a végpont le van tiltva, az egy alhálózathoz útválasztási típus profilt?
+
 Egy profil útválasztási alhálózat Ha rendelkezik az adott végpont le van tiltva, a Traffic Manager fog viselkedni, mintha az, hogy a végpont és a rendelkezik alhálózat-hozzárendelések nem létezik. Ha egy lekérdezést, amely lenne az IP-cím-hozzárendelés már párosítva érkezik, és a végpont le van tiltva, a Traffic Manager egy tartalék végpontot (az egyik nem leképezések) adja vissza, vagy ha ilyen végpont nem található, választ küld eredménye NXDOMAIN.
 
 ## <a name="traffic-manager-multivalue-traffic-routing-method"></a>A TRAFFIC Manager típushoz forgalom-útválasztási módszer
 
 ### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Mik az egyes használati esetek, ahol többértékű útválasztás akkor hasznos?
+
 Egyetlen lekérdezés választ több kifogástalan állapotú végpontok többértékű útválasztás adja vissza. A fő ez előnye, hogy a végpont állapota nem megfelelő, az ügyfél a további beállítások érhetők el anélkül, hogy egy másik DNS-hívás (ami előfordulhat, hogy ugyanaz az érték visszaadása egy felsőbb szintű gyorsítótár) újra. Ez a alkalmazni az állásidő minimalizálása érdekében a kívánt rendelkezésre állási érzékeny alkalmazások esetén.
 Egy másik többértékű útválasztási módszer használata egy végpontot az "kettős többcímes", mind az IPv4 és IPv6-címeket, és kíván adni a hívó mindkét lehetőség, ha a végpont-kapcsolatot kezdeményez közül választhat.
 
 ### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Hány végpontok adja vissza a többértékű útválasztás használatakor?
+
 Megadhatja, hogy vissza kell végpontok maximális számát, és típushoz reagál nem több, mint számos kifogástalan állapotú végpontok lekérdezés fogadásakor. Ez a konfiguráció maximális lehetséges értéke 10.
 
 ### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Többértékű útválasztás használatakor fog jelenik ugyanazokat a végpontok?
+
 Nem tudjuk garantálni, hogy ugyanazokat a végpontok visszaad minden lekérdezésben. Ez az a tény, hogy néhány, a végpontok előfordulhat, hogy sérült állapotba, nem szerepelnek a válasz ekkor is érintett
 
 ## <a name="real-user-measurements"></a>Valós felhasználói mérések
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Mik a valós felhasználói mérések használatának előnyei?
+
 Teljesítmény-útválasztási módszer használatakor a Traffic Manager szerzi vizsgálatával szerezheti be a forrás IP-cím és EDNS ügyfél alhálózat (ha az átadott) csatlakozni a végfelhasználó számára az ajánlott Azure-régióban, és ellenőrizni annak szemben a hálózati várakozási intelligenciát a szolgáltatás karbantartja. Valós felhasználói mérések fokozza a Ez az a teljes felhasználói bázis azzal, hogy azok hozzájárulnak a késés táblázat biztosítása mellett ez a tábla megfelelő kiterjedő a végfelhasználó hálózatokat, a végfelhasználók csatlakoztatása az Azure-élményt. Ez a továbbítani tudja a végfelhasználó számára nagyobb pontosság vezet.
 
 ### <a name="can-i-use-real-user-measurements-with-non-azure-regions"></a>Valós felhasználói mérések használhatom az-Azure régiók?
+
 Valós felhasználói mérések méri, és csak a késéssel jelentések Azure-régióban érhető el. Nem Azure-régiókban lévő üzemeltetett végpontokkal rendelkező teljesítményalapú útválasztást használ, ha továbbra is élvezheti a funkció által késés információ reprezentatív Azure-régió választotta volna társítani a végpontot kell nőtt.
 
 ### <a name="which-routing-method-benefits-from-real-user-measurements"></a>Útválasztási módszer a valós felhasználói mérések számos előnyt biztosít?
+
 A további információk a valós felhasználói mérések tapasztalatok csak a teljesítmény-útválasztási módszert használó profilok vonatkoznak. A valós felhasználói mérések hivatkozás minden profilhoz a érhető el, az Azure Portalon keresztül megtekintésekor.
 
 ### <a name="do-i-need-to-enable-real-user-measurements-each-profile-separately"></a>Van szükségem ahhoz, hogy valós felhasználói mérések egyes profilokat külön-külön?
+
 Nem, csak engedélyeznie kell azt egyszer előfizetésenként és minden késési adatok mérni, és jelentett érhetők el az összes profilra.
 
 ### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Hogyan lehet kikapcsolni a valós Felhasználómérés az előfizetésemet?
+
 Állítsa le összegyűjtése és vissza késési mérések küldését az ügyfélalkalmazásban leállításakor valós felhasználói mérések kapcsolatos díjakat halmoz fel. Például mérési JavaScript weblapokhoz beágyazott, állítsa le a JavaScript, vagy ha az oldal jelenik meg a meghívási kikapcsolásával a funkció használatát.
 
 Is kikapcsolhatja valós Felhasználóiélmény-mérések úgy, hogy a kulcs törlése. A kulcs a törölt bármely mérési küldi el a Traffic Manager, a kulcs nem őrződnek meg.
 
 ### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Használhatok valós felhasználói mérések eltérő weboldalak ügyfélalkalmazások?
+
 Igen, valós felhasználói mérések célja, hogy a végfelhasználó ügyfelek különböző típusú keresztül gyűjtött adatokat. Ez a GYIK frissülni fog a ügyfélalkalmazások új típusú támogatott beolvasása.
 
 ### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>Hány mérések minden alkalommal, amikor a valós felhasználói mérések engedélyezve van a weblap jelenik meg?
+
 Valós felhasználói mérések a méréshez megadott JavaScript használata esetén minden egyes oldalmegjelenítések hat méréseket eredményez. Ezek ezután jelentett vissza a Traffic Manager szolgáltatáshoz. Ez a funkció a Traffic Manager szolgáltatásnak küldött jelentésben mérések száma alapján díjkötelesek. Például ha a felhasználó ellép erről a weblapot, míg a mérés, de mielőtt azt jelentették, ezek a mértékek nem lesznek figyelembe véve a számlázás tekintetében.
 
 ### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>Van-e késést valós felhasználói mérések parancsfájl futtatása a saját weblap előtt?
+
 Nem, nem lesz programozott késleltetés, a szkript meghívása előtt.
 
 ### <a name="can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Használható a valós Felhasználóiélmény-mérések az csak az Azure-régiók mérése szeretnék?
+
 Indítva, nem, minden egyes alkalommal a valós felhasználói mérések parancsfájlja hat Azure-régiókban a szolgáltatás által meghatározott készletét. A beállított állatpotát módosításokat, és nagy számú ilyen indítások fordulhat elő, ha a mérték lefedettség kiterjedő különböző Azure-régióban.
 
 ### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Korlátozhatja a kérés érkezett egy adott számot mérések száma?
+
 A mérési JavaScript van beágyazva a weblapot, és van a teljes körű felügyeletet során való indítása és leállítása, használja azt. Mindaddig, amíg a Traffic Manager szolgáltatás Azure-régiók listáját mért kérelmet kap, a rendszer régiók készletét adja vissza.
 
 ### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Láthatja a saját ügyfélalkalmazás valós felhasználói mérések részeként mérésekből?
+
 A mérési logika fut az ügyfélalkalmazásban, mivel Ön teljes hozzáféréssel, mi történik, többek között a késési mérések jelent meg. A TRAFFIC Manager nem készít jelentést az összesített nézet a mérések alapján a kulcs az Ön előfizetéséhez kapcsolva kapott.
 
 ### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Módosíthatja a Traffic Manager által biztosított mérési parancsfájlt?
+
 Habár mi van beágyazva a weblapon irányítását, kifejezetten nem ajánlott, győződjön meg arról, hogy méri, és az késleltetések jelenti helyesen a mérési parancsfájlt olyan módosítások végrehajtását.
 
 ### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>Ez lehet majd mások is lássák a valós felhasználói mérések használhatják kulcsot?
+
 A mérési szkript egy beágyazott lehet majd mások is lássák a parancsfájlt és a valós felhasználói mérések (RUM) kulccsal. Azonban fontos, hogy tudja, hogy ezt a kulcsot eltér az előfizetés-azonosítóját, és akkor jön létre, a Traffic Manager által csak erre a célra használható. A az kulcsot, hogy nem veszélyezteti a az Azure-fiók biztonságát.
 
 ### <a name="can-others-abuse-my-rum-key"></a>Mások gyalázhat saját az kulcsot?
+
 Bár a másokkal való használatához a kulcs téves információkat küldhet az Azure-ba, néhány nem megfelelő mérések nem módosítja az Útválasztás, mivel azt figyelembe venni a többi mérések együtt érkező. Ha módosítania kell a kulcsok, újra létrehozhatja a kulcs ekkor a régi kulcsot el lesz vetve.
 
-###  <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>Kell helyezni a mérési JavaScript összes weblapok?
+### <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>Kell helyezni a mérési JavaScript összes weblapok?
+
 Valós felhasználói mérések mérések növekedés számának további értéket kínál. Eldöntéséhez, hogy kell helyezni, a weblapok vagy egy select néhány kellene ugyanakkor, hogy. Azt javasoljuk, így a leggyakrabban felkeresett oldal ahol a felhasználó az adott oldalon öt másodperc vagy annál maradni várható első lépésként.
 
 ### <a name="can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements"></a>A végfelhasználók információt azonosíthatók a Traffic Manager által valós felhasználói mérések használata?
-A megadott mérési JavaScript használata esetén a Traffic Manager a végfelhasználó ügyfél IP-címét és a helyi DNS-feloldási használják a forrás IP-címe lesz. A TRAFFIC Manager ügyfél IP-címet használja, csak után azt nem lehet azonosítani az adott végfelhasználó, aki a mérések küldött csonkolt. 
+
+A megadott mérési JavaScript használata esetén a Traffic Manager a végfelhasználó ügyfél IP-címét és a helyi DNS-feloldási használják a forrás IP-címe lesz. A TRAFFIC Manager ügyfél IP-címet használja, csak után azt nem lehet azonosítani az adott végfelhasználó, aki a mérések küldött csonkolt.
 
 ### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>A weblap mérési valós felhasználói mérések kell használnia a Traffic Manager útválasztási nem?
+
 Nem, akkor nem kell a Traffic Manager használatát. A Traffic Manager útválasztási oldalon külön a valódi felhasználók mérési részéről működik, és bár egy jó ötlete van két webes ugyanahhoz a tulajdonsághoz, akkor nem kell lennie.
 
 ### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>Van szükségem bármely szolgáltatás az Azure-régiók és a valós Felhasználóiélmény-mérések használatához?
+
 Nem, nem kell minden kiszolgálóoldali összetevő valós felhasználói mérések működjön az Azure-ban üzemeltetni. A vastagságú rendszerképet letöltötte a mérési JavaScript és a szolgáltatás fut, a különböző Azure-régióban üzemeltetett és az Azure által felügyelt. 
 
 ### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Saját Azure sávszélesség-használat növeli valós felhasználói mérések használata esetén?
+
 Ahogy már említettük, az előző válasz, valós felhasználói mérések kiszolgálóoldali összetevőinek birtokolt és felügyelt az Azure-ban. Ez azt jelenti, hogy az Azure sávszélesség-használat oka, hogy használja a valós felhasználói mérések nem nő. Ez nem tartalmaz semmilyen sávszélesség-használat kívül mely Azure-szolgáltatások díjait. Csak egy vastagságú lemezkép letöltése a mérték a késést, Azure-régióba történő által használt sávszélesség minimálisra azt. 
 
 ## <a name="traffic-view"></a>Forgalomnézet
 
 ### <a name="what-does-traffic-view-do"></a>Mire használható a Traffic View?
+
 A TRAFFIC View funkciója a Traffic Manager, amely segítséget nyújt a felhasználók számára, és hogyan szerzett kapcsolatban. A Traffic Manager és a hálózati késés üzletiintelligencia-táblák, amely a szolgáltatás kezeli a következő biztosítson által fogadott lekérdezések használja:
+
 - A régiók, ahol a felhasználók csatlakozzanak a végpontok az Azure-ban.
 - Az ezekben a régiókban csatlakozó felhasználók mennyisége.
 - Az Azure-régióban, amely azokat a rendszer első irányítja.
@@ -256,7 +292,8 @@ Az előzetes verzió ideje alatt a Traffic View-előfizetés szintjén lett enge
 >[!NOTE]
 >Ha az előfizetés szintjén a Traffic View előzetes verzió ideje alatt engedélyezve van, most minden előfizetés alatt a profil engedélyezheti újra kell.
  
-### <a name="how-can-i-turn-off-traffic-view"></a>Hogyan kapcsolhatja ki a Traffic View? 
+### <a name="how-can-i-turn-off-traffic-view"></a>Hogyan kapcsolhatja ki a Traffic View?
+
 A Traffic View kikapcsolhatja minden profilhoz a portálon vagy REST API használatával. 
 
 ### <a name="how-does-traffic-view-billing-work"></a>Hogyan működik a Traffic View számlázás?
@@ -271,16 +308,15 @@ Több előfizetés végpontok használata nem lehetséges az Azure Web Apps szol
 
 Minden olyan végpont esetében egynél több előfizetéssel a végpontok Traffic Manager használata. A Resource Managerben minden olyan előfizetésből végpontokat is hozzáadhatók a Traffic Manager, mindaddig, amíg a személy, a Traffic Manager-profil konfigurálása a végponthoz olvasási hozzáféréssel rendelkezik. Ezek az engedélyek használatával is megadható [Azure Resource Manager szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/role-assignments-portal.md).
 
-
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Használható a Traffic Manager felhőalapú szolgáltatás staging (átmeneti) pontokat használó?
 
-Igen. Felhőszolgáltatás staging (átmeneti) tárhelyek beállítható a Traffic Manager külső végpontokat. Állapot-ellenőrzések továbbra is lehet díjon számoljuk el az Azure-végpontot. A külső végpont típus használatban van, mert a mögöttes szolgáltatás módosításait a rendszer nem követi automatikusan. Külső végpontokat, a Traffic Manager nem tudja észlelni a Felhőszolgáltatás leállítása vagy törlése. Ezért a Traffic Manager továbbra is állapot-ellenőrzések díjszabása mindaddig, amíg a végpont le van tiltva vagy törölve.
+Igen. Felhőszolgáltatás staging (átmeneti) tárhelyek beállítható a Traffic Manager külső végpontokat. Állapot-ellenőrzések továbbra is lehet díjon számoljuk el az Azure-végpontot.
 
 ### <a name="does-traffic-manager-support-ipv6-endpoints"></a>A Traffic Manager támogatja az IPv6-os végpontjaiig?
 
 A TRAFFIC Manager jelenleg nem biztosít IPv6-címmel rendelkező kiszolgálókat. A Traffic Manager továbbra is használható az IPv6-alapú ügyfelek IPv6-végpontokhoz való csatlakozáshoz. Egy ügyfél nem kérést DNS közvetlenül a Traffic Manager. Ehelyett az ügyfél használja egy rekurzív DNS-szolgáltatás. Egy csak IPv6-alapú ügyfél kérelmeket küld a rekurzív DNS szolgáltatás IPv6-n keresztül. Majd a rekurzív szolgáltatás használatával az IPv4 Traffic Manager névkiszolgálóit csatlakoznia kell.
 
-A TRAFFIC Manager válaszol a DNS-nevét vagy a végpont IP-címét. IPv6 végpont támogatásához, két lehetőség van. Hozzáadhat a végpont DNS-névként, amely rendelkezik egy kapcsolódó AAAA típusú rekord és a Traffic Manager állapot-ellenőrzés lesz, a végpont és azt egy CNAME rekordot a lekérdezésekre adott válaszok adja vissza. Azt is megteheti, hogy a végpont, közvetlenül az IPv6-cím és a Traffic Manager használatával adja vissza egy AAAA típusú rekordot a lekérdezésekre adott válaszok. 
+A TRAFFIC Manager válaszol a DNS-nevét vagy a végpont IP-címét. IPv6 végpont támogatásához, két lehetőség van. Hozzáadhat a végpont DNS-névként, amely rendelkezik egy kapcsolódó AAAA típusú rekord és a Traffic Manager állapot-ellenőrzés lesz, a végpont és azt egy CNAME rekordot a lekérdezésekre adott válaszok adja vissza. Azt is megteheti, hogy a végpont, közvetlenül az IPv6-cím és a Traffic Manager használatával adja vissza egy AAAA típusú rekordot a lekérdezésekre adott válaszok.
 
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Használhatom-e a Traffic Manager ugyanabban a régióban egynél több webalkalmazást?
 
@@ -288,9 +324,9 @@ A TRAFFIC Manager válaszol a DNS-nevét vagy a végpont IP-címét. IPv6 végpo
 
 ### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>Hogyan helyezhetek át Azure-beli saját Traffic Manager-profil egy másik erőforráscsoportba?
 
-Azure-végpontok Traffic Manager-profil társított nyomon követi az erőforrás-azonosítók használatával. Ha egy Azure-erőforrás-végpontként (például nyilvános IP-cím, klasszikus Cloud Service, webalkalmazás vagy beágyazott módon használt egy másik Traffic Manager-profil) használt egy másik erőforráscsoportban található, az erőforrás-azonosító módosítások került. Ebben a forgatókönyvben jelenleg, frissítenie kell a Traffic Manager-profil által először, majd vissza a végpontokat a profilhoz. 
+Azure-végpontok Traffic Manager-profil társított nyomon követi az erőforrás-azonosítók használatával. Ha egy Azure-erőforrás-végpontként (például nyilvános IP-cím, klasszikus Cloud Service, webalkalmazás vagy beágyazott módon használt egy másik Traffic Manager-profil) használt egy másik erőforráscsoportban található, az erőforrás-azonosító módosítások került. Ebben a forgatókönyvben jelenleg, frissítenie kell a Traffic Manager-profil által először, majd vissza a végpontokat a profilhoz.
 
-##  <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager végpont figyelése
+## <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager végpont figyelése
 
 ### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>A Traffic Manager hatással a meghibásodások az Azure-régióban van?
 
@@ -324,19 +360,24 @@ A TRAFFIC manager nem tud biztosítani az összes tanúsítvány érvényesíté
 * Ügyfél-tanúsítványok nem támogatottak.
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Használható IP-cím vagy egy DNS-nevet a végpont hozzáadása során?
+
 Háromféle lehetőség az azonnali irányíthatják őket – DNS-névként, egy IPv4-címet és egy IPv6-cím használatával végpontok hozzáadása a TRAFFIC Manager támogatja. Ha a rendszer hozzáadja a végpontot egy IPv4- vagy IPv6-címet a lekérdezésekre adott válaszok lesz rekordtípus A vagy AAAA, illetve. Ha a végpont DNS-névként lett hozzáadva, majd a lekérdezésekre adott válaszok lesz CNAME típusú rekord. Végpontok felvétele, IPv4 vagy IPv6-cím csak akkor, ha a végpont típusa nem engedélyezett **külső**.
 A három címzési végponttípusok által támogatott összes útválasztási módszerek és a figyelési beállításokat.
 
 ### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Milyen típusú IP-cím használható a végpont hozzáadása során?
+
 Traffic Manager lehetővé teszi, hogy IPv4- vagy IPv6-végpontokat határoz meg. Az alább felsorolt néhány korlátozások vonatkoznak:
+
 - Fenntartott magánhálózati IP-címterek megfelelő címek nem engedélyezettek. Ezek a címek közé tartoznak az feltüntettük az RFC 1918, RFC 6890, RFC 5737, RFC 3068, RFC 2544 és RFC 5771
-- A cím nem tartalmazhat egyetlen portszámot (megadhatja a használandó portokat a konfigurációs profil beállításaiban) 
+- A cím nem tartalmazhat egyetlen portszámot (megadhatja a használandó portokat a konfigurációs profil beállításaiban)
 - Két különböző végpontnak nem található ugyanazzal a profillal rendelkezhet az azonos céloldali IP-cím
 
 ### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Használható a különböző végpont címzést egyetlen profilon belül típusok?
+
 Nem, a Traffic Manager teszi lehetővé az értékek nagyságrendjeit címzési végponttípusok belül egy profilt, kivéve a kis-és a egy profilt a többértékű útválasztási típus, ahol kombinálhatja az IPv4 és IPv6-címzési típusok
 
 ### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Mi történik, ha egy beérkező lekérdezés rekordtípus eltér a végpontok címzési típusú társított rekordtípus?
+
 A profil elleni fogadásakor egy lekérdezést, a Traffic Manager először megkeresi a végpontot, amely a megadott útválasztási módszer alapján vissza kell és a végpontok állapotát. Ezután úgy tűnik, a bejövő lekérdezésre kért rekordtípus és a rekordtípus, az alábbi táblázat alapján válasz visszaküldése előtt a végponthoz társított.
 
 A profilok az eltérő típushoz bármilyen másik útválasztási módszert:
@@ -362,12 +403,12 @@ Profilok esetén használt útválasztási módszer beállítása típushoz:
 |CNAME |    A többféle a és AAAA | NODATA |
 
 ### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Használhatok egy profil IPv4 / IPv6 címzett egymásba ágyazott profilelérési végpontok?
+
 Igen, azzal a kivétellel, hogy a profil típusa típushoz nem lehet egymásba ágyazott profilelérési a szülő profil állíthatja be.
 
+### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Webes alkalmazás a végpont a Traffic Manager-profil a leállítottam, de nem érkezik forgalom tudok újraindítani azt után is. Hogyan javíthatom ezt?
 
-### <a name="i-stopped-an-azure-cloud-service--web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Egy Azure-felhőszolgáltatásban leállítottam vagy webes alkalmazás végpontot a Traffic Manager-profil, de nem érkezik forgalom tudok újraindítani azt után is. Hogyan javíthatom ezt?
-
-Ha a Azure-beli felhőalapú szolgáltatás, vagy webes alkalmazás végpontjának leállt a Traffic Manager befejezi az állapotát, és újraindítja az állapot-ellenőrzések csak akkor, ha azt észleli, hogy a végpont újraindítása. Ez a késleltetés elkerülése érdekében tiltsa le, és ezután újraengedélyezni, hogy a végpont a Traffic Manager-profilt, a végpont újraindítását követően.   
+Ha egy Azure-alapú webes alkalmazás végpont le van állítva a Traffic Manager leállítja az állapotát ellenőrzi, és újraindítja az állapot-ellenőrzések csak akkor, ha azt észleli, hogy a végpont újraindítása. Ez a késleltetés elkerülése érdekében tiltsa le, és ezután újraengedélyezni, hogy a végpont a Traffic Manager-profilt, a végpont újraindítását követően.
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Használhatom a Traffic Manager, még akkor is, ha az alkalmazásom nincs HTTP vagy HTTPS támogatása?
 
@@ -380,6 +421,7 @@ TCP-figyelés használata esetén a Traffic Manager végpont a következő a meg
 ### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Milyen gyorsan helyezze át a Traffic Manager a nem megfelelő állapotú felhasználókat?
 
 A TRAFFIC Manager több, amelyek segítségével a következőképpen a Traffic Manager-profil feladatátvételi viselkedését vezérlő beállításokat biztosítja:
+
 - megadhatja, hogy a Traffic Manager-mintavételek a végpontok gyakrabban 10 másodperc, a tesztelés időköz beállításával. Ez biztosítja, hogy bármely végpont nem megfelelő állapotú fog lehető leghamarabb észlelt. 
 - megadhat mennyi ideig kell várni, mielőtt egy állapotának ellenőrzése a kérés többször (minimális időtúllépés értéke 5 mp-ben).
 - megadhatja, hogy hány sikertelen akkor fordulhat elő, mielőtt a végpont állapotúként van megjelölve. Ez az érték alacsony, mint 0, ahol a végpont eset nem kifogástalannak van jelölve, amint az első állapot-ellenőrzés sikertelen lehet. Azonban a minimális értéke 0 használata a eltűrt hibák száma vezethet folyamatban van a rotációból miatt fordulhat elő,-tesztelés időpontjában átmeneti problémákat végpontok.
@@ -392,12 +434,13 @@ A Traffic Manager ezek a beállítások használatával biztosíthat feladatátv
 A TRAFFIC Manager figyelési beállítások vannak egy profil szint szerint. Ha csak egy végpont használandó figyelési beállítás van szüksége, azt hajtható végre, hogy a végpont, hogy egy [profil beágyazott](traffic-manager-nested-profiles.md) amelynek figyelési beállítások nem azonosak a szülő-profilt.
 
 ### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Hogyan is hozzárendelhetők HTTP-fejléceket, a Traffic Manager állapot-ellenőrzések a végpontokhoz?
+
 Traffic Manager lehetővé teszi, hogy adja meg az egyéni fejlécek az a HTTP (S) állapot-ellenőrzések kezdeményezi a végpontokra. Adjon meg egy egyéni fejlécet szeretne, ha ezt a profilt (az összes végpontokra vonatkozik) szintjén, vagy adja meg a végpont szintjén. Ha egy fejléc mindkét szinten van definiálva, a végpont szintjén megadott egy profil szintje felülírja.
 Ez egy gyakori használati eset állomásfejléc meg úgy, hogy a Traffic Manager-kérelmek előfordulhat, hogy van irányítva megfelelően egy végpontnak egy több-bérlős környezetben futtatott. Ezt egy másik használati eset, hogy azonosítsa a Traffic Manager kérelmeit a végpontok HTTP (S) kérelmekről készült naplók
 
 ## <a name="what-host-header-do-endpoint-health-checks-use"></a>Milyen gazdagép fejléc nincs végpont állapot-ellenőrzések használatát?
-Nincs egyéni gazdagép fejléc beállítás áll rendelkezésre, ha az a Traffic Manager által használt állomásfejléc akkor, ha elérhető a végpont target a profilban konfigurált DNS-nevét. 
 
+Nincs egyéni gazdagép fejléc beállítás áll rendelkezésre, ha az a Traffic Manager által használt állomásfejléc akkor, ha elérhető a végpont target a profilban konfigurált DNS-nevét.
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Mik azok az IP-címek, amelyről az állapot-ellenőrzések származnak?
 
@@ -406,10 +449,12 @@ Kattintson a [Itt](https://azuretrafficmanagerdata.blob.core.windows.net/probes/
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Hány állapot-ellenőrzések saját végpontra várhatók a Traffic Managerből?
 
 A Traffic Manager állapot számát ellenőrzi, hogy az endpoint meghiúsulni függ a következők:
+
 - az érték, amely a figyelési időköz beállítása (kisebb időköz azt jelenti, hogy további kérések bármely adott időszakban a végponton üzenetsorokra).
 - a helyek, ahol az állapot-ellenőrzések száma (az IP-címeket, ha várhatóan az ellenőrzések szerepel a fenti – gyakori kérdések) származnak.
 
-### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Hogyan tudok értesülhet a végpontok egyikét leállása? 
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Hogyan tudok értesülhet a végpontok egyikét leállása?
+
 A Traffic Manager által biztosított metrikákat egyik profilban végpontok állapotát. Összes végpont a profil belül összesítést, láthatja a (például a végpontok 75 %-át olyan kifogástalan), vagy jelenleg egy végpont szintenként. A TRAFFIC Manager-metrikák érhetők el az Azure Monitor használatával, és használhatja a [riasztási funkciókat](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) , értesítéseket kaphat, ha a végpont állapotának módosítása. További részletekért lásd: [Traffic Manager-mérőszámok és riasztások](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>A TRAFFIC Manager beágyazott profilok
@@ -458,5 +503,6 @@ A következő táblázat ismerteti a Traffic Manager állapot-ellenőrzések egy
 | Inaktív. Az összes profil gyermekvégpontok vagy le van tiltva, vagy leállt, vagy ehhez a profilhoz nincsenek végpontok rendelkezik. |Leállítva | |
 
 ## <a name="next-steps"></a>Következő lépések:
+
 - További tudnivalók a Traffic Manager [végpont ellenőrzési és automatikus feladatátvételi](../traffic-manager/traffic-manager-monitoring.md).
 - További tudnivalók a Traffic Manager [forgalom-útválasztási módszerek](../traffic-manager/traffic-manager-routing-methods.md).

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: fa89117e85bc3d3c9664e6aa037fac923b7432ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60544871"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-classic-cli"></a>Bevezetés internetkapcsolattal rendelkező terheléselosztó (klasszikus) létrehozásába a klasszikus Azure CLI-ben
@@ -56,7 +56,7 @@ Ez az útmutató bemutatja, hogyan hozhat létre internetkapcsolattal rendelkez�
 A forgatókönyv feltételezi, hogy létrehozták a „web1” és „web2” virtuális gépet.
 Ez az útmutató létrehoz egy terheléselosztó készletet: a 80-as portot használja nyilvános portként, és a 80-as portot használja helyi portként. A mintavételi port szintén a 80-as porton van konfigurálva, és a terheléselosztó készlet „lbset” nevet kapta.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Hozza létre az első végpontot és terheléselosztó készletet a következő használatával a „web1” virtuális géphez: `azure network vm endpoint create`.
 
@@ -64,7 +64,7 @@ Hozza létre az első végpontot és terheléselosztó készletet a következő 
 azure vm endpoint create web1 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
 ```
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Adjon hozzá egy második virtuális gépet a terheléselosztó készlethez „web2” néven.
 
@@ -72,7 +72,7 @@ Adjon hozzá egy második virtuális gépet a terheléselosztó készlethez „w
 azure vm endpoint create web2 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
 ```
 
-### <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3\. lépés
 
 Ellenőrizze a terheléselosztó konfigurációját a következő használatával: `azure vm show`.
 

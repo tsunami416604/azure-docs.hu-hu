@@ -15,10 +15,10 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2dcbcbec9054b31312043ef6642f59fa64728b30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60194373"
 ---
 # <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Megtekintése az Azure portal segítségével Azure-erőforrások hozzárendelések megtagadása
@@ -34,7 +34,7 @@ Egy megtagadási hozzárendelés adatainak beolvasása, kell rendelkeznie:
 
 - `Microsoft.Authorization/denyAssignments/read` engedéllyel, amely tartalmazza a legtöbb [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
 
-## <a name="view-deny-assignments"></a>Megtagadási hozzárendelések megtekintése
+## <a name="view-deny-assignments"></a>Nézet hozzárendelés elutasítása
 
 Kövesse az alábbi lépéseket megtekintéséhez az előfizetés vagy a felügyeleti csoport hatókörű hozzárendelések tiltása.
 
@@ -42,7 +42,7 @@ Kövesse az alábbi lépéseket megtekintéséhez az előfizetés vagy a felügy
 
 1. Kattintson a felügyeleti csoport vagy a megtekinteni kívánt előfizetést.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 
 1. Kattintson a **hozzárendelések megtagadása** lap (vagy kattintson a **nézet** gombot a nézetben megtagadása hozzárendelések csempére).
 
