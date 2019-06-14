@@ -264,7 +264,5 @@
   items:
     - name: Windows-fürtök
       items:
-        - name: Windows-fürtök áttelepítése Linux-fürtökre
-          href: ../hdinsight-migrate-from-windows-to-linux.md
         - name: .NET–megoldások áttelepítése Linux-fürtökre
           href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md

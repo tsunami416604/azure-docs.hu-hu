@@ -9,10 +9,10 @@ ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: b17978da3195b364f868d33ab7ad9faa1544e9ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60238016"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Stream Azure diagnosztikai naplók a Log Analytics-munkaterületet az Azure monitorban
@@ -109,12 +109,12 @@ A AzureDiagnostics tábla néhány adatot az alábbi módon fog kinézni:
  
 | ResourceProvider | Category | A | B | C | D | E | F | G | H | I |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft.Resource1 | Naplók | x1 | y1 | z1 |
+| Microsoft.Resource1 | Adatmodelltáblához | x1 | y1 | z1 |
 | Microsoft.Resource2 | Hibanaplókat | | | | q1 | w1 | E1 csomag |
 | Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
 | Microsoft.Resource2 | Hibanaplókat | | | | q2 | w2 | e2 |
 | Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
-| Microsoft.Resource1 | Naplók | x5 | y5 | z5 |
+| Microsoft.Resource1 | Adatmodelltáblához | x5 | y5 | z5 |
 | ... |
  
 Csak egy explicit bármely adott Azure Log tábla nem rendelkezik 500-nál több oszlopot. Elérése után már az első 500 kívül bármely másik oszlopot az adatokat tartalmazó sorokat dobja el a betöltési idő. A AzureDiagnostics táblában, különösen ki vannak téve lehet hatással a ezt a korlátot. Ez általában történik, vagy mert az adatforrások széles küldött ugyanazon a munkaterületen, vagy több nagyon részletes adatforrások küld a ugyanazon a munkaterületen. 

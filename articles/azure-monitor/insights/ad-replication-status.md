@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.openlocfilehash: f7bbde98c6ef35021cc03b2646193d3601ca1cff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60495179"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Az Active Directory replikációs állapot figyelése az Azure Monitor szolgáltatással
@@ -106,7 +106,7 @@ Feljegyzett korábban, az irányítópulton megjelenő csempén a az AD Replicat
 >
 
 ### <a name="ad-replication-status-details"></a>AD replikációs állapot részletei
-Amikor egyik lista tetszőleges elemre kattint, láthatja, a napló lekérdezésekkel kapcsolatos további részletek. Az eredmények csak az adott elem kapcsolódó hibák vannak szűrve. Például, ha kattint az első tartományvezérlő alatt felsorolt **célkiszolgáló állapota (ADDC02)**, láthatja a szűrt lekérdezési eredmények megjelenítése hibák az adott tartományvezérlő-listán a célkiszolgálón:
+Amikor egyik lista tetszőleges elemre kattint, láthatja, a napló lekérdezésekkel kapcsolatos további részletek. Az eredmények csak az adott elem kapcsolódó hibák vannak szűrve. Például, ha kattint az első tartományvezérlő alatt felsorolt **célkiszolgáló állapota (ADDC02)** , láthatja a szűrt lekérdezési eredmények megjelenítése hibák az adott tartományvezérlő-listán a célkiszolgálón:
 
 ![AD replikációs állapothibákat lekérdezés eredményei](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
