@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60391361"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Hozzon létre egy Linux virtuális gép SSH-hitelesítést használó REST API-val
@@ -54,8 +54,8 @@ A következő fejléceket szükség:
 
 | Kérelem fejléce   | Leírás |
 |------------------|-----------------|
-| *A Content-Type:*  | Kötelező. Állítsa be `application/json`. |
-| *Hitelesítés:* | Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Kötelező. Állítsa be `application/json`. |
+| *Authorization:* | Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 REST API-kérelmek használatával kapcsolatos általános információkért lásd: [egy REST API-kérés/válasz összetevői](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -63,10 +63,10 @@ REST API-kérelmek használatával kapcsolatos általános információkért lá
 
 A következő gyakori definíciókat hozhat létre a kéréstörzs használhatók:
 
-| Name (Név)                       | Szükséges | Típus                                                                                | Leírás  |
+| Name (Név)                       | Kötelező | Típus                                                                                | Leírás  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True (Igaz)     | string                                                                              | Erőforrás helye. |
-| név                       |          | string                                                                              | A virtuális gép nevét. |
+| name                       |          | string                                                                              | A virtuális gép nevét. |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Itt adhatja meg a hardverbeállításokat, a virtuális gép. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Itt adhatja meg a virtuális gépek lemezeinek tárolási beállításait. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Meghatározza a virtuális gép operációs rendszer beállításait. |
@@ -133,7 +133,7 @@ A rendelkezésre álló definíciók a kérelem törzsében szereplő teljes lis
 
 Az ügyfél, a beállításokat a HTTP-kérelem küldéséhez használhatja. Is használhatja egy [böngészőben eszköz](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) kattintva a **kipróbálás** gombra.
 
-### <a name="responses"></a>Válaszok
+### <a name="responses"></a>Responses
 
 Nincsenek a művelethez létrehozni vagy frissíteni a virtuális gép két sikeres válaszok:
 

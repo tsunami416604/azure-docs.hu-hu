@@ -1,6 +1,6 @@
 ---
 title: Az Azure Diagnostics bővítmény 1.3 és újabb konfigurációs séma
-description: 1.3-as verziójú és az Azure diagnostics újabb le szállítani részeként a Microsoft Azure SDK 2.4 és később.
+description: 1\.3-as verziójú és az Azure diagnostics újabb le szállítani részeként a Microsoft Azure SDK 2.4 és később.
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
@@ -10,10 +10,10 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60238055"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Az Azure Diagnostics 1.3 és újabb konfigurációs séma
@@ -410,7 +410,7 @@ A PublicConfig és PrivateConfig vannak elkülönítve, mert az json használati
 ## <a name="diagnosticsconfiguration-element"></a>DiagnosticsConfiguration elem  
  *Fa: Gyökér - DiagnosticsConfiguration*
 
-1.3-as verziójában hozzáadva.  
+1\.3-as verziójában hozzáadva.  
 
 A legfelső szintű elem a diagnosztikai konfigurációs fájl.  
 
@@ -445,13 +445,13 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration Element
  *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
 
- Szükséges
+ Kötelező
 
 |Attribútumok|Leírás|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | Előfordulhat, hogy tudják használni a különféle Azure Diagnostics által gyűjtött diagnosztikai adatok helyi lemezterület maximális mennyisége. Az alapértelmezett érték 4096 MB.<br />
 |**useProxyServer** | Az Azure Diagnostics használata a proxykiszolgáló beállításait készletként, az Internet Explorer beállításainak konfigurálása.|
-|**fogadóként** | 1.5-ös hozzá. Választható. A fogadó hely is az összes alárendelt elemek, amelyek támogatják a fogadóként diagnosztikai adatok küldése mutat. Az Application Insights és az Event Hubs fogadó példája.|  
+|**fogadóként** | 1\.5-ös hozzá. Választható. A fogadó hely is az összes alárendelt elemek, amelyek támogatják a fogadóként diagnosztikai adatok küldése mutat. Az Application Insights és az Event Hubs fogadó példája.|  
 
 
 <br /> <br />
@@ -564,7 +564,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Lehetővé teszi, hogy hozzon létre egy számláló teljesítménytáblája, amely gyors lekérdezéseket van optimalizálva. Minden egyes megadott teljesítményszámláló a **PerformanceCounters** elem a metrikák tábla mellett a teljesítményszámláló tábla tárolja.  
 
- A **resourceId** attribútumot kötelező megadni.  A virtuális gép vagy virtuálisgép-méretezési készlet erőforrás-Azonosítóját az Azure Diagnostics telepít. Első a **resourceID** származó a [az Azure portal](https://portal.azure.com). Válassza ki **Tallózás** -> **erőforráscsoportok** -> **< név\>**. Kattintson a **tulajdonságok** csempére, és másolja az értéket a **azonosító** mező.  
+ A **resourceId** attribútumot kötelező megadni.  A virtuális gép vagy virtuálisgép-méretezési készlet erőforrás-Azonosítóját az Azure Diagnostics telepít. Első a **resourceID** származó a [az Azure portal](https://portal.azure.com). Válassza ki **Tallózás** -> **erőforráscsoportok** ->  **< név\>** . Kattintson a **tulajdonságok** csempére, és másolja az értéket a **azonosító** mező.  
 
 |Gyermekelemek|Leírás|  
 |--------------------|-----------------|  
@@ -584,7 +584,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Gyermekelemet|Leírás|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|A következő attribútumok szükség:<br /><br /> - **counterSpecifier** – a teljesítményszámláló neve. Például: `\Processor(_Total)\% Processor Time`. A gazdagépen futó teljesítményszámlálók listájának lekéréséhez futtassa a parancsot `typeperf`.<br /><br /> - **sampleRate** -gyakoriságát. a számláló kell mintát venni.<br /><br /> Nem kötelező attribútum:<br /><br /> **egység** – a számláló mértékegysége.|
-|**fogadóként** | 1.5-ös hozzá. Választható. A fogadó hely is a diagnosztikai adatok küldése mutat. Ha például az Azure Monitor vagy az Event Hubs.|    
+|**fogadóként** | 1\.5-ös hozzá. Választható. A fogadó hely is a diagnosztikai adatok küldése mutat. Ha például az Azure Monitor vagy az Event Hubs.|    
 
 
 
@@ -610,17 +610,17 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Az alapszintű Azure-naplók puffer konfigurációját.  
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
 |**scheduledTransferLogLevelFilter**|**string**|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**, az összes napló adatforgalmi. Egyéb (a legerősebbtől a legnagyobb legalább információkat) lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **Kritikus**.|  
 |**scheduledTransferPeriod**|**Időtartam**|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
-|**fogadóként** |**string**| 1.5-ös hozzá. Választható. A fogadó hely is a diagnosztikai adatok küldése mutat. Ha például az Application Insights vagy az Event Hubs.|  
+|**fogadóként** |**string**| 1\.5-ös hozzá. Választható. A fogadó hely is a diagnosztikai adatok küldése mutat. Ha például az Application Insights vagy az Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
 
- 1.9 hozzá.
+ 1\.9 hozzá.
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
@@ -642,11 +642,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Határozza meg a helyek között a diagnosztikai adatok küldése. Ha például az Application Insights szolgáltatás.  
 
-|Attribútum|Typo|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**name**|string|A sinkname azonosító karakterlánc.|  
 
-|Elem|Typo|Leírás|  
+|Elem|Típus|Leírás|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|Csak akkor, amikor adatokat küld az Application Insights használja. Egy olyan aktív az Application Insights-fiók, amely hozzáfér a kialakítási kulcsot tartalmaz.|  
 |**csatornák**|string|Minden további szűréshez, amely a stream, amikor az egyik|  
@@ -658,7 +658,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Határozza meg a naplózási adatokat továbbítja egy fogadó-adatfolyamokat a szűrőket.  
 
-|Elem|Typo|Leírás|  
+|Elem|Típus|Leírás|  
 |-------------|----------|-----------------|  
 |**Channel**|string|Lásd: leírás máshol ezen az oldalon.|  
 
@@ -669,7 +669,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Határozza meg a helyek között a diagnosztikai adatok küldése. Ha például az Application Insights szolgáltatás.  
 
-|Attribútumok|Typo|Leírás|  
+|Attribútumok|Típus|Leírás|  
 |----------------|----------|-----------------|  
 |**logLevel**|**string**|Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**, az összes napló adatforgalmi. Egyéb (a legerősebbtől a legnagyobb legalább információkat) lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **Kritikus**.|  
 |**name**|**string**|Tekintse meg a csatorna egyedi nevet|  
@@ -678,7 +678,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="privateconfig-element"></a>PrivateConfig Element
  *Fa: Gyökér - DiagnosticsConfiguration - PrivateConfig*
 
- 1.3-as verziójában hozzáadva.  
+ 1\.3-as verziójában hozzáadva.  
 
  Optional  
 

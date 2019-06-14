@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/11/2018
 ms.author: banders
 ms.openlocfilehash: 31e4eb1d6493c8de99ac48e09dfb2b8b6481b70a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60369250"
 ---
 # <a name="view-your-billing-accounts-in-azure-portal"></a>A számlázási fiókok megtekintése az Azure Portalon  
@@ -39,7 +39,7 @@ A hatókör egy csomópontot egy számlázási fiókot használó felhasználók
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
+2. A Keresés **Cost Management és számlázás**.
 
    ![Az Azure portál keresési bemutató képernyőkép](./media/billing-view-all-accounts/billing-search-cost-management-billing.png)
 

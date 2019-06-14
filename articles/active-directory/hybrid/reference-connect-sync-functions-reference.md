@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b33e993dbddc9c1567a1a6f7d3dca28af240a000
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381144"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Az Azure AD Connect szinkronizálása: Functions – referencia
@@ -80,7 +80,7 @@ A functions típusait **mvbin**, **mvstr**, és **mvref** többértékű attrib�
 | [tartalmaz](#contains) |[Száma](#count) |[Elem](#item) |[ItemOrNull](#itemornull) | |
 | [Csatlakozás](#join) |[RemoveDuplicates](#removeduplicates) |[Felosztás](#split) | | |
 | **Programfolyamat** | | | | |
-| [Hiba történt](#error) |[IIF](#iif) |[Kiválasztás](#select) |[Switch](#switch) | |
+| [Hiba történt](#error) |[IIF](#iif) |[Select](#select) |[Switch](#switch) | |
 | [ahol](#where) |[a](#with) | | | |
 | **Szöveg** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
@@ -103,7 +103,7 @@ A BitAnd függvénynek megadott bits értéket állítja be.
 Ez a függvény mindkét paraméter alakítja át a bináris kódolású karakterláncként, és beállítja egy kicsit:
 
 * 0 – Ha egy vagy mindkettő a megfelelő bit *maszk* és *jelző* : 0
-* 1. Ha mindkettő a megfelelő bits 1.
+* 1\. Ha mindkettő a megfelelő bits 1.
 
 Más szóval akkor adja vissza 0 minden esetben, kivéve, ha a megfelelő bitjeinek száma, mindkét paraméter 1.
 
@@ -363,7 +363,7 @@ A CGuid függvény karakteres megjelenítésének egy GUID Azonosítót a binár
 * Egy karakterlánc formátumú ebben a mintában: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, vagy {: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
 - - -
-### <a name="contains"></a>Contains
+### <a name="contains"></a>tartalmaz
 **Leírás:**  
 A Contains függvény megkeresi egy karakterláncot egy többértékű belüli
 
@@ -396,13 +396,13 @@ A ConvertFromBase64 függvény a megadott base64-kódolású érték konvertál 
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Forrás: Base64-kódolású karakterlánc  
-* Kódolás: Unicode, ASCII, UTF8
+* Encoding: Unicode, ASCII, UTF8
 
 **Példa**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
-Mindkét példa adja vissza "*Hello world!*"
+Mindkét példa adja vissza "*Hello world!* "
 
 - - -
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
@@ -420,7 +420,7 @@ Ezt a formátumot az Azure Active Directory DN-t használja.
 
 **Példa**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
-Adja vissza "*Hello world!*"
+Adja vissza "*Hello world!* "
 
 - - -
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -451,7 +451,7 @@ A kimeneti formátum, a függvény DN attribútumformátum lesz az Azure Active 
 48656C6C6F20776F726C6421 értéket ad vissza
 
 - - -
-### <a name="count"></a>Darabszám
+### <a name="count"></a>Count
 **Leírás:**  
 A Count függvénnyel az elemek számát adja vissza egy többértékű attribútum
 
@@ -956,7 +956,7 @@ Ha ott nem numChar kezdő pozíció, a karakterlánc fennmaradó karakterek szá
 Visszaadja a "Jakab"
 
 - - -
-### <a name="now"></a>Most
+### <a name="now"></a>most
 **Leírás:**  
 A funkcióval adja vissza egy dátum és idő megadása az aktuális dátum és idő, a számítógép rendszer dátum és idő alapján.
 
@@ -1128,7 +1128,7 @@ Raksmorgas adja vissza
 Adja vissza "ONeil", az egyetlen osztásjelek van definiálva, el kell távolítani.
 
 - - -
-### <a name="right"></a>Jobbra
+### <a name="right"></a>Jobb oldali
 **Leírás:**  
 A Right függvény egy karakterlánc jobb (záró) a megadott számú karaktert adja vissza.
 
@@ -1184,7 +1184,7 @@ A folyamat a megadott függvény alapján minden értékeket a többértékű at
 Összes értékének visszaadása a többértékű attribútum otherPhone után kötőjeleket (-) el lett távolítva.
 
 - - -
-### <a name="split"></a>Megosztott
+### <a name="split"></a>Felosztás
 **Leírás:**  
 A Split függvény egy karakterláncot egy elválasztó elválasztva vesz fel, és lehetővé teszi egy többértékű karakterlánc.
 
@@ -1246,7 +1246,7 @@ Kapcsoló kiértékeli az összes kifejezés, annak ellenére, hogy csak az egyi
 Néhány fő városok beszélt nyelvet adja vissza, egyéb esetben hibát ad vissza.
 
 - - -
-### <a name="trim"></a>Levágás
+### <a name="trim"></a>Trim
 **Leírás:**  
 A Trim függvény eltávolítja a kezdő és záró szóközök egy karakterláncból.
 
@@ -1295,7 +1295,7 @@ A tanúsítvány értékek visszaadása a többértékű attribútum userCertifi
 **Leírás:**  
 A With funkciót biztosít arra, hogy egyszerűbben összetett kifejezést egy változó használatával, amelyek egy alkifejezés, amely akkor jelenik meg egy vagy több alkalommal a összetett kifejezésben.
 
-**Szintaxis:**
+**Szintaxis:** 
 `With(var variable, exp subExpression, exp complexExpression)`  
 * változó: A alkifejezés jelöli.
 * alkifejezés: alkifejezés változót jelöli.

@@ -2,21 +2,22 @@
 title: Konfigurálja a teljesítmény forgalom-útválasztási módszer az Azure Traffic Managerrel |} A Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan Traffic Manager konfigurálása a végpontra irányíthatja a forgalmat a legkisebb késés
 services: traffic-manager
+manager: twooley
 documentationcenter: ''
-author: kumudd
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: kumud
-ms.openlocfilehash: 4c948668e355b87026240588c6fac11d86e355b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 5e9b02a4145d86b86ea3ba0d509d06b7c148cc6d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883973"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048475"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>A teljesítmény forgalom-útválasztási módszer konfigurálása
 
@@ -31,7 +32,7 @@ A teljesítmény forgalom-útválasztási módszer lehetővé teszi, hogy a forg
     1. A **forgalom-útválasztási módszer beállításait**, a **útválasztási módszer** kiválasztása **teljesítmény**.
     2. Állítsa be a **Végpontfigyelő beállításai** azonos az összes minden végpontot a profiljában, az alábbiak szerint:
         1. Válassza ki a megfelelő **protokoll**, és adja meg a **Port** számát. 
-        2. A **elérési** írja be a perjellel */*. Végpontok monitorozása, az elérési útvonalat és fájlnevet kell megadnia. A perjel "/" érvényes bejegyzés a relatív elérési útja, és azt jelenti, hogy a fájl a gyökérmappában lévő (alapértelmezett).
+        2. A **elérési** írja be a perjellel */* . Végpontok monitorozása, az elérési útvonalat és fájlnevet kell megadnia. A perjel "/" érvényes bejegyzés a relatív elérési útja, és azt jelenti, hogy a fájl a gyökérmappában lévő (alapértelmezett).
         3. Kattintson a lap tetején **mentése**.
 5.  A módosítások teszteléséhez a konfiguráció a következő:
     1.  A portál keresősávjában, keresse meg a Traffic Manager-profil nevét és a Traffic Manager-profil az eredmények között kattintson, amely jelenik meg.

@@ -11,10 +11,10 @@ ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c198b329f07c5c7459f25165b2dc0a3bfa032276
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60382065"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Az Azure AD UserPrincipalName feltöltése
@@ -25,7 +25,7 @@ A UserPrincipalName attribútum értéke a felhasználói fiókok Azure ad-ben f
 ## <a name="upn-terminology"></a>Egyszerű felhasználónév terminológiája
 Ez a cikk a következő kifejezésekkel használja:
 
-|Időtartam|Leírás|
+|Kifejezés|Leírás|
 |-----|-----|
 |Kezdeti tartomány|Az alapértelmezett tartomány (onmicrosoft.com) az Azure AD-bérlőben. Ha például contoso.onmicrosoft.com.|
 |A Microsoft Online e-mailek útválasztási címe (MOERA)|Az Azure AD számítja ki az Azure AD MailNickName attribútum és az Azure AD kezdeti tartományban MOERA &lt;MailNickName&gt;&#64;&lt;kezdeti tartomány&gt;.|
@@ -85,7 +85,7 @@ Felhasználói objektum a frissítések szinkronizálása az Azure AD-bérlővel
 ## <a name="upn-scenarios"></a>Egyszerű felhasználónév forgatókönyvek
 Az alábbiakban megtekinteni, hogyan az egyszerű felhasználónév alapján van kiszámítva az adott esethez.
 
-### <a name="scenario-1-non-verified-upn-suffix--initial-synchronization"></a>1. forgatókönyv: A nem ellenőrzött UPN-utótagot – kezdeti szinkronizálás
+### <a name="scenario-1-non-verified-upn-suffix--initial-synchronization"></a>1\. forgatókönyv: A nem ellenőrzött UPN-utótagot – kezdeti szinkronizálás
 
 ![Scenario1](./media/plan-connect-userprincipalname/example1.png)
 
@@ -105,7 +105,7 @@ Az Azure AD-bérlő felhasználói objektum:
 - UserPrincipalName: us1@contoso.onmicrosoft.com
 
 
-### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>2. forgatókönyv: A nem ellenőrzött UPN-utótagot – beállítása a helyszíni mailNickName attribútum
+### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>2\. forgatókönyv: A nem ellenőrzött UPN-utótagot – beállítása a helyszíni mailNickName attribútum
 
 ![Scenario2](./media/plan-connect-userprincipalname/example2.png)
 
@@ -123,7 +123,7 @@ Az Azure AD-bérlő felhasználói objektum:
 - mailNickName: us4
 - UserPrincipalName: us1@contoso.onmicrosoft.com
 
-### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>3. forgatókönyv: A nem ellenőrzött UPN-utótagot – frissítés a helyszíni userPrincipalName attribútum
+### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>3\. forgatókönyv: A nem ellenőrzött UPN-utótagot – frissítés a helyszíni userPrincipalName attribútum
 
 ![Scenario3](./media/plan-connect-userprincipalname/example3.png)
 
@@ -142,7 +142,7 @@ Az Azure AD-bérlő felhasználói objektum:
 - mailNickName: us4
 - UserPrincipalName: us4@contoso.onmicrosoft.com
 
-### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>4. forgatókönyv: A nem ellenőrzött UPN-utótagot – frissítés elsődleges SMTP-cím és a helyszíni mail attribútum
+### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>4\. forgatókönyv: A nem ellenőrzött UPN-utótagot – frissítés elsődleges SMTP-cím és a helyszíni mail attribútum
 
 ![Scenario4](./media/plan-connect-userprincipalname/example4.png)
 
@@ -159,7 +159,7 @@ Az Azure AD-bérlő felhasználói objektum:
 - mailNickName: us4
 - UserPrincipalName: us4@contoso.onmicrosoft.com
 
-### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>5. forgatókönyv: Ellenőrzött UPN-utótagot – frissítés a helyszíni userPrincipalName attribútum utótag
+### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>5\. forgatókönyv: Ellenőrzött UPN-utótagot – frissítés a helyszíni userPrincipalName attribútum utótag
 
 ![Scenario5](./media/plan-connect-userprincipalname/example5.png)
 

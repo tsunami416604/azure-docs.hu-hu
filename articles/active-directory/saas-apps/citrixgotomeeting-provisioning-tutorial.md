@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e3145d0faaa3aecb90b582b3b6ef0063572ff43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60430772"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása GoToMeeting konfigurálása
@@ -65,7 +65,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás GoToMeeting a felhasználói 
 
 1. Állítsa be a **kiépítés** mód **automatikus**. 
 
-    ![kiépítés folyamatban](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![Kiépítés](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
 1. A rendszergazdai hitelesítő adatok szakaszban hajtsa végre az alábbi lépéseket:
    

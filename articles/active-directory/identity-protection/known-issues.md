@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 392b7a08d9422658c5620f60e9c1caca074bc85e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60452680"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Gyakori kérdések és (frissítve) az Azure Active Directory identity protection szolgáltatással kapcsolatos ismert problémák
@@ -32,7 +32,7 @@ ms.locfileid: "60452680"
 **Zárja be a felhasználói kockázat** Identity Protection beállítja az aktor a felhasználó kockázati előzményeit az Identity Protection (frissítés), a klasszikus **Azure ad-ben**.
 
 
-**Zárja be a felhasználói kockázat** (frissítve) Identity Protection úgy állítja be az aktor a felhasználó kockázati előzmények az Identity Protection (frissítve) való **\<a rendszergazda nevű felhasználóhoz tartozó panelt mutató hivatkozás\>**.
+**Zárja be a felhasználói kockázat** (frissítve) Identity Protection úgy állítja be az aktor a felhasználó kockázati előzmények az Identity Protection (frissítve) való **\<a rendszergazda nevű felhasználóhoz tartozó panelt mutató hivatkozás\>** .
 
 A jelenlegi ismert probléma késéseket okoz a felhasználói kockázat elbocsátása folyamatban van. Ha rendelkezik egy "felhasználói kockázati házirend", ez a szabályzat alkalmazása az elbocsátott felhasználó percen belül elkészül, kattintson a "Elvetés felhasználói kockázat" le fog állni. Azonban vannak ismert késéseket és az "kockázati állapotot" elbocsátott felhasználó felhasználói. Áthidaló megoldásként frissítése a legújabb "Kockázat állapota" felhasználó megtekintéséhez a böngészőben szintjén az oldal.
 
@@ -43,7 +43,7 @@ A lekérdezések a **felhasználónév** mező-és nagybetűk, a lekérdezések 
 
 Vizualizációtól **dátumok megjelenítése a következőképpen** elrejti a **kockázati utolsó frissített** oszlop. Oszlopban kattintson a szerepkörtagok **oszlopok** a kockázatos felhasználók panel tetején.
 
-**Az összes esemény elvetését** Identity Protection a kockázati események állapotát állítja be a klasszikus **lezárva (Megoldva)**.
+**Az összes esemény elvetését** Identity Protection a kockázati események állapotát állítja be a klasszikus **lezárva (Megoldva)** .
 
 
 ## <a name="risky-sign-ins-report-known-issues"></a>Ismert problémák a kockázatos bejelentkezések jelentés
@@ -76,7 +76,7 @@ IP-Címek földrajzi hely meghatározásának leképezésének egy egész ipará
 
 **Erősítse meg a biztonságos** (az adott bejelentkezés) – tájékoztatja az Azure AD Identity Protection, hogy a bejelentkezési identitás tulajdonosa által végrehajtott és nem azt biztonság sérülését.
 
-- A visszajelzés fogadásakor a bejelentkezés (nem a felhasználó) mozgatjuk kockázati állapotának **megerősítve biztonságos** és a kockázati szintet **-**.
+- A visszajelzés fogadásakor a bejelentkezés (nem a felhasználó) mozgatjuk kockázati állapotának **megerősítve biztonságos** és a kockázati szintet **-** .
 
 - Ezenkívül a Microsoft biztosít az adatokat a machine learning-rendszerek, a kockázatfelmérés a jövőbeli fejlesztések.
 

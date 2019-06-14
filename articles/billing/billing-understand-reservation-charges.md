@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 4b4c6b390e9b3a0cf764f998523fe3c1cdc66026
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370287"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Hogyan kell alkalmazni a foglalási kedvezményt az Azure SQL Database
@@ -37,13 +37,13 @@ Ha leállítja egy erőforrást, a foglalási kedvezményt automatikusan alkalma
 
 Az alábbi példák bemutatják, hogyan a SQL Database szolgáltatás számára fenntartott kapacitás kedvezmény érvényes számától függően a magok, vásárolt, és amikor futnak.
 
-- 1. forgatókönyv: Egy 8 mag SQL-adatbázis egy SQL Database szolgáltatás számára fenntartott kapacitást vásárol. Egy 16 mag, amelyek megfelelnek a Foglalás attribútumait a többi SQL-adatbázis futtatása. 8 magos SQL-adatbázis számítási használat a használatalapú fizetéssel díjkötelesek. 8 mag, SQL Database a számítási feladatok használatáért egy órányi a foglalási kedvezményt kap.
+- 1\. forgatókönyv: Egy 8 mag SQL-adatbázis egy SQL Database szolgáltatás számára fenntartott kapacitást vásárol. Egy 16 mag, amelyek megfelelnek a Foglalás attribútumait a többi SQL-adatbázis futtatása. 8 magos SQL-adatbázis számítási használat a használatalapú fizetéssel díjkötelesek. 8 mag, SQL Database a számítási feladatok használatáért egy órányi a foglalási kedvezményt kap.
 
 Ezekben a példákban a többi feltételezik, hogy az SQL Database szolgáltatás számára fenntartott kapacitást vásárol egy 16 Core SQL Database és a többi a Foglalás attribútumok egyeznek a futó SQL-adatbázisok.
 
-- 2. forgatókönyv: Két SQL-adatbázisok 8 maggal rendelkező, egy óránál futtatja. Compute használat mindkét a 8 mag, SQL Database-adatbázisok a 16 mag foglalási kedvezményt alkalmazza.
-- 3. forgatókönyv: Egyet futtat, 13:30 = 1997031213 16 magos, 1 du az SQL Database. Egy másik 16 mag SQL Database 1:30 2 pm futtassa. A foglalási kedvezményt is tartoznak.
-- 4. forgatókönyv: Egyet futtat, 13:45-kor 16 magos, 1 du az SQL Database. Egy másik 16 mag SQL Database 1:30 2 pm futtassa. A 15 perces átfedési használatalapú fizetéssel díjkötelesek. A compute használatát a hátralevő időben alkalmazza a foglalási kedvezményt.
+- 2\. forgatókönyv: Két SQL-adatbázisok 8 maggal rendelkező, egy óránál futtatja. Compute használat mindkét a 8 mag, SQL Database-adatbázisok a 16 mag foglalási kedvezményt alkalmazza.
+- 3\. forgatókönyv: Egyet futtat, 13:30 = 1997031213 16 magos, 1 du az SQL Database. Egy másik 16 mag SQL Database 1:30 2 pm futtassa. A foglalási kedvezményt is tartoznak.
+- 4\. forgatókönyv: Egyet futtat, 13:45-kor 16 magos, 1 du az SQL Database. Egy másik 16 mag SQL Database 1:30 2 pm futtassa. A 15 perces átfedési használatalapú fizetéssel díjkötelesek. A compute használatát a hátralevő időben alkalmazza a foglalási kedvezményt.
 
 Ismertetése és használati jelentések számlázási megtekintheti az alkalmazást az Azure-foglalások: [ismertetése Azure foglalás használatának](billing-understand-reserved-instance-usage-ea.md).
 

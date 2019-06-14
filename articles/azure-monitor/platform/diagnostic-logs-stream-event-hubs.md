@@ -9,10 +9,10 @@ ms.date: 07/25/2018
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: b5299af375646e7759d0770139df2cd6d7ce105c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60237718"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream Azure diagnosztikai naplók egy eseményközpontba
@@ -24,7 +24,7 @@ Az alábbiakban néhány olyan módon, a streamelési funkciót használhat a di
 * **Stream naplók 3. fél naplózás és a telemetriai rendszer** – összes a diagnosztikai naplók a függőleges vonal tranzakciónaplójának adatai egy külső SIEM- vagy a log analytics eszközzel ugyanabba az eseményközpontba streamelheti.
 * **A service health megtekintéséhez streamelési "gyakori elérésű útvonal" adatok a Power bi-bA** – Event Hubs használatával, a Stream Analytics és a Power BI, egyszerűen alakíthatja át a diagnosztikai adatok közel valós idejű elemzés az Azure-szolgáltatásokhoz való. [A dokumentációs cikk állítsa be az Event Hubs, a Stream Analytics használatával adatokat feldolgozni és kimenetként használja a Power BI remek áttekintést nyújt](../../stream-analytics/stream-analytics-power-bi-dashboard.md). Íme néhány tipp az első állítsa be a diagnosztikai naplók segítségével:
 
-  * Egy eseményközpontba kategóriájára vonatkozó diagnosztikai naplók automatikusan jön létre, ha a beállítás a portálon vagy engedélyezése a PowerShell, ezért az event hubs kiválasztása a névtér nevét kezdetű **insights –**.
+  * Egy eseményközpontba kategóriájára vonatkozó diagnosztikai naplók automatikusan jön létre, ha a beállítás a portálon vagy engedélyezése a PowerShell, ezért az event hubs kiválasztása a névtér nevét kezdetű **insights –** .
   * A következő SQL-kódot egy Stream Analytics-mintalekérdezés elemezni a naplóban lévő összes adat egy Power BI-táblához, amelyekkel:
 
     ```sql

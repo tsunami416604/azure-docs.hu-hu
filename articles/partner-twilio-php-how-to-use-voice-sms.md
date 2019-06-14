@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: a51cd589702320ecb55e6a2e3c5f0a6139e281fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60422355"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Hogyan lehet a Twilio használata Hanghívási és SMS-funkciókhoz php
@@ -44,16 +44,16 @@ Az API-t felhasznál Twilio műveleteket; Ha például a **&lt;Say&gt;** művele
 
 Az alábbiakban látható egy Twilio-műveletek listájához. Ismerje meg az egyéb műveletek és funkciókat [Twilio Markup Language dokumentáció](https://www.twilio.com/docs/api/twiml).
 
-* **&lt;Tárcsázás&gt;**: A hívó csatlakozik egy másik telefonon.
-* **&lt;Gyűjtse össze&gt;**: Gyűjti a telefon billentyűzeten beírt számjegyeket.
-* **&lt;Vonalbontás&gt;**: A hívás véget ér.
-* **&lt;Play&gt;**: Hang lejátszása.
-* **&lt;Felfüggesztés&gt;**: A megadott számú másodperc vár beavatkozás nélkül.
-* **&lt;Rekord&gt;**: A hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
-* **&lt;Redirect&gt;**: Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
-* **&lt;Elutasítás&gt;**: A Twilio-számra egy bejövő hívás elutasítása a számlázási, nélkül
-* **&lt;Tegyük fel, hogy&gt;**: Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
-* **&lt;SMS&gt;**: SMS üzenetet küld.
+* **&lt;Tárcsázás&gt;** : A hívó csatlakozik egy másik telefonon.
+* **&lt;Gyűjtse össze&gt;** : Gyűjti a telefon billentyűzeten beírt számjegyeket.
+* **&lt;Vonalbontás&gt;** : A hívás véget ér.
+* **&lt;Play&gt;** : Hang lejátszása.
+* **&lt;Felfüggesztés&gt;** : A megadott számú másodperc vár beavatkozás nélkül.
+* **&lt;Rekord&gt;** : A hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
+* **&lt;Redirect&gt;** : Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
+* **&lt;Elutasítás&gt;** : A Twilio-számra egy bejövő hívás elutasítása a számlázási, nélkül
+* **&lt;Tegyük fel, hogy&gt;** : Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
+* **&lt;SMS&gt;** : SMS üzenetet küld.
 
 ### <a id="TwiML"></a>TwiML
 TwiML XML-alapú utasítások alapján a Twilio-műveleteket tartalmazó tájékoztatja a hívás feldolgozása Twilio vagy SMS.

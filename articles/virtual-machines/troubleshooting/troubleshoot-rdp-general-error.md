@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f290a7e16938c66d45fab9b78086f77bfdfe4839
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60319513"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Az Azure virtuális Gépen RDP általános hiba elhárítása
@@ -65,9 +65,9 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
 
 ### <a name="serial-console"></a>Soros konzol
 
-#### <a name="step-1-open-cmd-instance-in-serial-console"></a>1. lépés: A soros konzol CMD példány megnyitása
+#### <a name="step-1-open-cmd-instance-in-serial-console"></a>1\. lépés: A soros konzol CMD példány megnyitása
 
-1. Hozzáférés a [soros konzol](serial-console-windows.md) kiválasztásával **támogatás és hibaelhárítás** > **soros konzol (előzetes verzió)**. A szolgáltatás engedélyezve van a virtuális gépen, a virtuális gép sikeresen csatlakoztathatja.
+1. Hozzáférés a [soros konzol](serial-console-windows.md) kiválasztásával **támogatás és hibaelhárítás** > **soros konzol (előzetes verzió)** . A szolgáltatás engedélyezve van a virtuális gépen, a virtuális gép sikeresen csatlakoztathatja.
 
 2. Hozzon létre egy új csatorna a CMD-példányhoz. Típus **CMD** elindítja a csatornát a csatorna nevének lekérése érdekében.
 
@@ -77,7 +77,7 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
    ch -si 1
    ```
 
-#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>2. lépés: Ellenőrizze az RDP-beállításkulcsok értékeit:
+#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>2\. lépés: Ellenőrizze az RDP-beállításkulcsok értékeit:
 
 1. Annak ellenőrzése, hogy az RDP által le van tiltva a szabályzatokat.
 
@@ -164,17 +164,17 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
 
 Ha a probléma továbbra is történik, helyezze át a 2. lépés.
 
-#### <a name="step-2-enable-remote-desktop-services"></a>2. lépés: A távoli asztali szolgáltatások engedélyezése
+#### <a name="step-2-enable-remote-desktop-services"></a>2\. lépés: A távoli asztali szolgáltatások engedélyezése
 
 További információkért lásd: [távoli asztali szolgáltatások-beli virtuális gépen nem indítása](troubleshoot-remote-desktop-services-issues.md).
 
-#### <a name="step-3-reset-rdp-listener"></a>3. lépés: RDP-figyelő alaphelyzetbe állítása
+#### <a name="step-3-reset-rdp-listener"></a>3\. lépés: RDP-figyelő alaphelyzetbe állítása
 
 További információkért lásd: [a távoli asztal gyakran leválasztja az Azure virtuális Gépen](troubleshoot-rdp-intermittent-connectivity.md).
 
 ### <a name="offline-repair"></a>Offline javítása
 
-#### <a name="step-1-turn-on-remote-desktop"></a>1. lépés: Kapcsolja be a távoli asztal
+#### <a name="step-1-turn-on-remote-desktop"></a>1\. lépés: Kapcsolja be a távoli asztal
 
 1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](../windows/troubleshoot-recovery-disks-portal.md).
 2. Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
@@ -234,14 +234,14 @@ További információkért lásd: [a távoli asztal gyakran leválasztja az Azur
 
 Ha a probléma továbbra is történik, helyezze át a 2. lépés.
 
-#### <a name="step-2-enable-remote-desktop-services"></a>2. lépés: A távoli asztali szolgáltatások engedélyezése
+#### <a name="step-2-enable-remote-desktop-services"></a>2\. lépés: A távoli asztali szolgáltatások engedélyezése
 
 További információkért lásd: [távoli asztali szolgáltatások-beli virtuális gépen nem indítása](troubleshoot-remote-desktop-services-issues.md).
 
-#### <a name="step-3-reset-rdp-listener"></a>3. lépés: RDP-figyelő alaphelyzetbe állítása
+#### <a name="step-3-reset-rdp-listener"></a>3\. lépés: RDP-figyelő alaphelyzetbe állítása
 
 További információkért lásd: [a távoli asztal gyakran leválasztja az Azure virtuális Gépen](troubleshoot-rdp-intermittent-connectivity.md).
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
+## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

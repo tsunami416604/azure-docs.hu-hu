@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60369970"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>A Microsoft Azure-számla feltételeinek értelmezése
@@ -44,7 +44,7 @@ A számla a fiókadatok szakasza az első lap tetején, és a profil és az elő
 
 ![Fiókadatok szakasza számla](./media/billing-understand-your-invoice/1.png)
 
-| Időtartam | Leírás |
+| Kifejezés | Leírás |
 | --- | --- |
 | Vevői beszerzési rendelés száma |Egy nem kötelező beszerzési rendelésszámukra, nyomon követése az Ön által hozzárendelt |
 | Invoice No. (Számlaszám) |Követési célból használt egyedi, Microsoft generált számla szám |
@@ -65,7 +65,7 @@ Az előfizetés neve ("éles tároló") az a név az előfizetés az adott szám
 #### <a name="understand-the-previous-charges"></a>Az előző költségek ismertetése
 Az előző egyenleget, befizetéseket és a fennmaradó egyenleget a számla szakasza összefoglalja az előző elszámolási időszakban érvényes óta történt tranzakciókat.
 
-| Időtartam | Leírás |
+| Kifejezés | Leírás |
 | --- | --- |
 | Previous balance (Előző egyenleg) |A fizetendő összeg, az utolsó elszámolási időszakban érvényes |
 | Payments (Befizetések) |Teljes kifizetések és az utolsó elszámolási időszakban érvényes alkalmazott kreditek |
@@ -74,7 +74,7 @@ Az előző egyenleget, befizetéseket és a fennmaradó egyenleget a számla sza
 #### <a name="understand-the-current-charges"></a>Az esedékes díjak magyarázata
 A számla Current Charges szakasza az elszámolási időszakban felszámított díjakat kapcsolatos részleteket az aktuális elszámolási időszakban jeleníti meg.
 
-| Időtartam | Leírás |
+| Kifejezés | Leírás |
 | --- | --- |
 | Használati díjak |A használati díjak a teljes havi díjak egy adott előfizetés az aktuális elszámolási időszakban felszámított|
 | Discounts (Engedmények) |Az aktuális elszámolási időszakban érvényes szolgáltatási engedmények|
@@ -84,7 +84,7 @@ A számla Current Charges szakasza az elszámolási időszakban felszámított d
 
 A következő táblázat ismerteti az értékesített és a fizetési útmutató a számla a második oldalán látható.
 
-| Időtartam |Leírás |
+| Kifejezés |Leírás |
 | --- | --- |
 | Sold to (Vevő) |Profil címével, amely a fiókhoz. <br/><br/>Ha a cím van szüksége, tekintse meg [profil adatait az Azure-fiók például a kapcsolattartási e-mail cím és telefonszám módosítása](billing-how-to-change-azure-account-profile.md).|
 | Payment Instructions (Fizetési útmutató) |Útmutatást függően fizetési módot kell fizetnie (például által jóváírás kártyák vagy számla ellenében). |
@@ -97,17 +97,17 @@ A használati díjak szakasz a számla szint mérési adatok a költségek jelen
 
 A következő táblázat ismerteti a használati díjak oszlopfejlécek jelenik meg a számlán.
 
-| Időtartam |Leírás |
+| Kifejezés |Leírás |
 | --- | --- |
 | Name (Név) |A felső szintű szolgáltatásnak a használati azonosítja. |
-| Typo |Azure-szolgáltatás, amely a díjszámítást is érintheti típusát határozza meg. |
-| Erőforrás |A rendszer, elérheti az érték mértékegységét azonosítja. |
+| Típus |Azure-szolgáltatás, amely a díjszámítást is érintheti típusát határozza meg. |
+| Resource |A rendszer, elérheti az érték mértékegységét azonosítja. |
 | Régió |Az adatközpontok elhelyezkedésétől is adatközpont elhelyezkedése alapján igénybe vett |
 | Consumed (Felhasznált mennyiség) |Az elszámolási időszakban használt mérőszám mennyisége |
 | Tartalmazza |A mérőszám, amely tartalmazza az aktuális elszámolási időszakban érvényes díjmentesen mennyisége |
 | Billable (Számlázandó) |A felhasznált mennyiség és a foglalt mennyiség közötti különbséget mutatja. Ez a mennyiség díjköteles. A használatalapú fizetés, amelyek nem tartalmaz az ajánlat keretében elérhető ez a mennyiség megegyezik a felhasznált mennyiség |
 | Rate (Egységár) |A sebesség díját a számlázható egység |
-| Value |A Rate oszlop Kerettúllépés mennyiség oszlop szorzása eredménye látható. A felhasznált mennyiség nem haladja meg a foglalt mennyiséget, ha ott nem költségekkel ebben az oszlopban. |
+| Érték |A Rate oszlop Kerettúllépés mennyiség oszlop szorzása eredménye látható. A felhasznált mennyiség nem haladja meg a foglalt mennyiséget, ha ott nem költségekkel ebben az oszlopban. |
 | Rész összesen |Minden a költségek előtti adózási a számlázási időszak összege |
 | Teljes összeg százalékában |Adózás a számlázási időszak után a díjak összege |
 

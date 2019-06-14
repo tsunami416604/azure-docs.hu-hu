@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 780870cc71e95507a52ba6a9338026f895a96ac1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370976"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Megismerheti a Microsoft Ügyfélszerződéséhez rendszergazdai szerepkörök az Azure-ban
@@ -32,19 +32,19 @@ A következő táblázat ismerteti a számlázási szerepkörök számlázási p
 
 |Szerepkör|Leírás|
 |---|---|
-|Számlázásifiók-tulajdonos|Számlázási fiók az összes funkció kezelését|
-|Számlázásifiók-közreműködő|A számlázási fiók engedélyeinek kivételével mindent felügyelhetnek|
-|Számlázásifiók-olvasó|Csak olvasási nézetben minden, a számlázási fiók|
-|Számlázásiprofil-tulajdonos|Minden számlázási profil kezelése|
-|Számlázásiprofil-közreműködő|A számlázási profilja engedélyeinek kivételével mindent felügyelhetnek|
-|Számlázásiprofil-olvasó|A számlázási profilt minden, a csak olvasható nézet|
-|Számlakezelő|Megtekintheti és számlákat fizetnie a számlázási profilja|
-|Számlázási szakasz tulajdonosa|A számla szakasz összes funkció kezelését|
-|Számlázási szakasz közreműködője|A számla szakasz engedélyeinek kivételével mindent felügyelhetnek|
-|Számlázási szakasz olvasója|A számla szakaszban minden, a csak olvasható nézet|
+|Számlázási fiók tulajdonosa|Számlázási fiók az összes funkció kezelését|
+|Számlázási közreműködő|A számlázási fiók engedélyeinek kivételével mindent felügyelhetnek|
+|Számlázási olvasó fiók|Csak olvasási nézetben minden, a számlázási fiók|
+|A számlázás profil tulajdonosa|Minden számlázási profil kezelése|
+|A számlázás profil közreműködője|A számlázási profilja engedélyeinek kivételével mindent felügyelhetnek|
+|A számlázás profil olvasója|A számlázási profilt minden, a csak olvasható nézet|
+|Számla manager|Megtekintheti és számlákat fizetnie a számlázási profilja|
+|Számla szakasz tulajdonosa|A számla szakasz összes funkció kezelését|
+|Számla szakasz közreműködője|A számla szakasz engedélyeinek kivételével mindent felügyelhetnek|
+|Számla szakasz olvasó|A számla szakaszban minden, a csak olvasható nézet|
 |Azure-előfizetés létrehozója|Az Azure-előfizetések létrehozása|
 
-## <a name="billing-account-roles-and-tasks"></a>Számlázási fiók szerepkörei és feladatai
+## <a name="billing-account-roles-and-tasks"></a>Számlázási fiók szerepkörök és feladatok
 
 Számlázási fiók lehetővé teszi a szervezet használati díjának felszámolása kezelését. Számlázási fiók használatával rendezheti a költségek, a költségek figyelése és a számlákat és a számlázási hozzáférés a szervezet számára. További információkért lásd: [számlázási fiók ismertetése](billing-mca-overview.md#understand-billing-account).
 
@@ -52,7 +52,7 @@ Az alábbi táblázatok bemutatják, milyen szerepet feladatot elvégezhet a sz�
 
 ### <a name="manage-billing-account-permissions-and-properties"></a>Számlázási fiók engedélyeit, és a tulajdonságok kezelése
 
-|Tevékenység|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó|
+|Tevékenység|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók|
 |---|---|---|---|
 |Számlázási fiók meglévő engedélyeinek megtekintése|✔|✔|✔|
 |Mások megtekintése és kezelése a számlázási fiók jogosultságok megadása|✔|✘|✘|
@@ -60,37 +60,37 @@ Az alábbi táblázatok bemutatják, milyen szerepet feladatot elvégezhet a sz�
 
 ### <a name="manage-billing-profiles-for-billing-account"></a>Számlázási fiók számlázási profilok kezelése
 
-|Tevékenység|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó|
+|Tevékenység|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók|
 |---|---|---|---|
 |A fiókban lévő összes számlázási profil megtekintése|✔|✔|✔|
 
 ### <a name="manage-invoices-for-billing-account"></a>Számlák, Számlázás, fiók kezelése
 
-|Tevékenység|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó|
+|Tevékenység|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók|
 |---|---|---|---|
 |A fiókban lévő összes számlák megtekintése|✔|✔|✔|
 |Töltse le a számlákat, az Azure-használat és költségek fájlok, a árlisták, és a fiókban lévő dokumentumok adó|✔|✔|✔|
 
 ### <a name="manage-invoice-sections-for-billing-account"></a>Számla szakaszok számlázási fiók kezelése
 
-|Tevékenység|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó|
+|Tevékenység|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók|
 |---|---|---|---|
 |A fiókban lévő összes számla szakasz megtekintése|✔|✔|✔|
 
 ### <a name="manage-transactions-for-billing-account"></a>Tranzakciók számlázási fiók kezelése
 
-|Tevékenység|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó|
+|Tevékenység|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók|
 |---|---|---|---|
 |A fiók összes számlázási tranzakciók megtekintése|✔|✔|✔|
 |A fiók vásárolt az összes termék megtekintése|✔|✔|✔|
 
 ### <a name="manage-subscriptions-for-billing-account"></a>A számlázás, fiók-előfizetések kezelése
 
-|Tevékenység|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó|
+|Tevékenység|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók|
 |---|---|---|---|
 |Minden Azure-előfizetés megtekintése a számlázási fiók|✔|✔|✔|
 
-## <a name="billing-profile-roles-and-tasks"></a>Számlázási profil szerepkörei és feladatai
+## <a name="billing-profile-roles-and-tasks"></a>A számlázás profil szerepkörök és feladatok
 
 A számlázási a profil lehetővé teszi a számlákat és a fizetési módok kezeléséhez. A havi számla jön létre az Azure-előfizetések és az egyéb termékek, a számlázási profillal vásárolt. Fizetési módokat kell fizetnem a számla kell használnia. További információkért lásd: [számlázási a profilok megismerése](billing-mca-overview.md#understand-billing-profiles).
 
@@ -98,7 +98,7 @@ Az alábbi táblázatok bemutatják, milyen szerepet feladatot elvégezhet a sz�
 
 ### <a name="manage-billing-profile-permissions-properties-and-policies"></a>Számlázási profilengedélyek, a tulajdonságok és a szabályzatok kezelése
 
-|Tevékenység|Számlázásiprofil-tulajdonos|Számlázásiprofil-közreműködő|Számlázásiprofil-olvasó|Számla Manager|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó
+|Tevékenység|A számlázás profil tulajdonosa|A számlázás profil közreműködője|A számlázás profil olvasója|Számla Manager|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók
 |---|---|---|---|---|---|---|---|
 |A számlázási profil meglévő engedélyeinek megtekintése|✔|✔|✔|✔|✔|✔|✔|
 |Mások megtekintése és kezelése a számlázási profilja jogosultságok megadása|✔|✘|✘|✘|✘|✘|✘|
@@ -109,38 +109,38 @@ Az alábbi táblázatok bemutatják, milyen szerepet feladatot elvégezhet a sz�
 
 ### <a name="manage-invoices-for-billing-profile"></a>Számlák, számlázás profil kezelése
 
-|Tevékenység|Számlázásiprofil-tulajdonos|Számlázásiprofil-közreműködő|Számlázásiprofil-olvasó|Számla Manager|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó
+|Tevékenység|A számlázás profil tulajdonosa|A számlázás profil közreműködője|A számlázás profil olvasója|Számla Manager|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók
 |---|---|---|---|---|---|---|---|
 |A számlázási profil minden számla megtekintése|✔|✔|✔|✔|✔|✔|✔|
 |Töltse le a számlákat, az Azure-használat és költségek fájlok, a árlisták, és a számlázási profil dokumentumok adó|✔|✔|✔|✔|✔|✔|✔|
 
 ### <a name="manage-invoice-sections-for-billing-profile"></a>Számla szakaszok számlázási profil kezelése
 
-|Tevékenység|Számlázásiprofil-tulajdonos|Számlázásiprofil-közreműködő|Számlázásiprofil-olvasó|Számla Manager|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó
+|Tevékenység|A számlázás profil tulajdonosa|A számlázás profil közreműködője|A számlázás profil olvasója|Számla Manager|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók
 |---|---|---|---|---|---|---|---|
 |A számlázási profil számla szakaszok megtekintése|✔|✔|✔|✔|✔|✔|✔|
 |Új számla szakasz az elszámolási profil létrehozása|✔|✔|✘|✘|✘|✘|✘|
 
 ### <a name="manage-transactions-for-billing-profile"></a>Tranzakciók számlázási profil kezelése
 
-|Tevékenység|Számlázásiprofil-tulajdonos|Számlázásiprofil-közreműködő|Számlázásiprofil-olvasó|Számla Manager|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó
+|Tevékenység|A számlázás profil tulajdonosa|A számlázás profil közreműködője|A számlázás profil olvasója|Számla Manager|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók
 |---|---|---|---|---|---|---|---|
 |A számlázási profil minden elszámolási tranzakciók megtekintése|✔|✔|✔|✔|✔|✔|✔|
 
 ### <a name="manage-payment-methods-for-billing-profile"></a>Profil Számlázási fizetési módok kezelése
 
-|Tevékenység|Számlázásiprofil-tulajdonos|Számlázásiprofil-közreműködő|Számlázásiprofil-olvasó|Számla Manager|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó
+|Tevékenység|A számlázás profil tulajdonosa|A számlázás profil közreműködője|A számlázás profil olvasója|Számla Manager|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók
 |---|---|---|---|---|---|---|---|
 |A számlázási profil megtekintése fizetési módok|✔|✔|✔|✔|✔|✔|✔|
 |Nyomon követheti az Azure-kreditek elosztás a számlázási profilja|✔|✔|✔|✔|✔|✔|✔|
 
 ### <a name="manage-subscriptions-for-billing-profile"></a>Számlázási profil-előfizetések kezelése
 
-|Tevékenység|Számlázásiprofil-tulajdonos|Számlázásiprofil-közreműködő|Számlázásiprofil-olvasó|Számla Manager|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó
+|Tevékenység|A számlázás profil tulajdonosa|A számlázás profil közreműködője|A számlázás profil olvasója|Számla Manager|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók
 |---|---|---|---|---|---|---|---|
 |Minden Azure-előfizetés a számlázási profil megtekintése|✔|✔|✔|✔|✔|✔|✔|
 
-## <a name="invoice-section-roles-and-tasks"></a>Számlaszakasz szerepkörei és feladatai
+## <a name="invoice-section-roles-and-tasks"></a>Számla szakasz szerepkörök és feladatok
 
 Egy számla szakasz lehetővé teszi a költségek, a számla rendszerezéséhez. Részleg, fejlesztői környezet, a költségek rendszerezéséhez szakasz hozhat létre, vagy a szervezet igényeinek megfelelően. Engedélyezze a többi szakasz Azure-előfizetések létrehozására. Minden használati díjak és az előfizetések, majd a show, a számla a szakasz a vásárlásokat. További információkért lásd: [Understand számla szakasz](billing-mca-overview.md#understand-invoice-sections).
 
@@ -148,7 +148,7 @@ Az alábbi táblázatok bemutatják, milyen szerepet, teljes körű feladatok sz
 
 ### <a name="manage-invoice-section-permissions-and-properties"></a>Számla szakasz engedélyek és tulajdonságok kezelése
 
-|Feladatok|Számlázási szakasz tulajdonosa|Számlázási szakasz közreműködője|Számlázási szakasz olvasója|Azure-előfizetés létrehozója|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó | |
+|Feladatok|Számla szakasz tulajdonosa|Számla szakasz közreműködője|Számla szakasz olvasó|Azure-előfizetés létrehozója|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók | |
 |---|---|---|---|---|---|---|---|---|
 |A számla szakasz összes engedély megtekintése|✔|✔|✔|✔|✔|✔|✔| |
 |Mások megtekintése és kezelése a számla szakasz jogosultságok megadása|✔|✘|✘|✘|✘|✘|✘| |
@@ -157,25 +157,25 @@ Az alábbi táblázatok bemutatják, milyen szerepet, teljes körű feladatok sz
 
 ### <a name="manage-products-for-invoice-section"></a>Kezelheti a termékeket, a számla szakasz
 
-|Feladatok|Számlázási szakasz tulajdonosa|Számlázási szakasz közreműködője|Számlázási szakasz olvasója|Azure-előfizetés létrehozója|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó
+|Feladatok|Számla szakasz tulajdonosa|Számla szakasz közreműködője|Számla szakasz olvasó|Azure-előfizetés létrehozója|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók
 |---|---|---|---|---|---|---|---|
 |A számla szakaszban vásárolt az összes termék megtekintése|✔|✔|✔|✘|✔|✔|✔|
 |Kezelheti a számlázási termékek számla szakasszal, például a Mégse gombra, kapcsolja ki az automatikus megújítási és egyéb|✔|✔|✘|✘|✘|✘|✘|
 |A termékek módosítása számla szakasz|✔|✔|✘|✘|✘|✘|✘|
 
-### <a name="manage-subscriptions-for-invoice-section"></a>Számlaszakasz előfizetéseinek kezelése
+### <a name="manage-subscriptions-for-invoice-section"></a>A számla szakasz-előfizetések kezelése
 
-|Feladatok|Számlázási szakasz tulajdonosa|Számlázási szakasz közreműködője|Számlázási szakasz olvasója|Azure-előfizetés létrehozója|Számlázásifiók-tulajdonos|Számlázásifiók-közreműködő|Számlázásifiók-olvasó
+|Feladatok|Számla szakasz tulajdonosa|Számla szakasz közreműködője|Számla szakasz olvasó|Azure-előfizetés létrehozója|Számlázási fiók tulajdonosa|Számlázási közreműködő|Számlázási olvasó fiók
 |---|---|---|---|---|---|---|---|
 |Minden Azure-előfizetés számla szakaszának megtekintése|✔|✔|✔|✘|✔|✔|✔|
 |Változás számla szakasz az előfizetésekhez|✔|✔|✘|✘|✘|✘|✘|
 |Előfizetések számlázási tulajdonjogának kérése a felhasználóktól az egyéb számlázási fiókok|✔|✔|✘|✘|✘|✘|✘|
 
-## <a name="subscription-billing-roles-and-tasks"></a>Előfizetés számlázásának szerepkörei és feladatai
+## <a name="subscription-billing-roles-and-tasks"></a>Előfizetés számlázási szerepkörök és feladatok
 
 Az alábbi táblázat bemutatja, milyen szerepet feladatot elvégezhet az előfizetés környezetében kell.
 
-|Feladatok|Számlázási szakasz tulajdonosa|Számlázási szakasz közreműködője|Számlázási szakasz olvasója|Azure-előfizetés létrehozója|
+|Feladatok|Számla szakasz tulajdonosa|Számla szakasz közreműködője|Számla szakasz olvasó|Azure-előfizetés létrehozója|
 |---|---|---|---|---|
 |Az Azure-előfizetések létrehozása|✔|✔|✘|✔|
 |Költséghely az előfizetés frissítése|✔|✔|✘|✘|
@@ -185,7 +185,7 @@ Az alábbi táblázat bemutatja, milyen szerepet feladatot elvégezhet az előfi
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
+2. A Keresés **Cost Management és számlázás**.
 
    ![Az Azure portál keresési bemutató képernyőkép](./media/billing-understand-mca-roles/billing-search-cost-management-billing.png)
 
@@ -206,7 +206,7 @@ Az alábbi táblázat bemutatja, milyen szerepet feladatot elvégezhet az előfi
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
+## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 Ha segítségre van szüksége, kell [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
 ## <a name="next-steps"></a>További lépések

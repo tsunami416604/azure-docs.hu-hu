@@ -16,10 +16,10 @@ ms.date: 10/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 712cc5ce62225987f8cc3ea13b5e4fd10a7d5eaf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515790"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása a Salesforce beállítása
@@ -72,7 +72,7 @@ Ez a szakasz célja kidolgozására engedélyezése a felhasználó kiépítése
 
 4. Állítsa be a **Kiépítési mód** való **automatikus**.
 
-    ![kiépítés folyamatban](./media/salesforce-provisioning-tutorial/provisioning.png)
+    ![Kiépítés](./media/salesforce-provisioning-tutorial/provisioning.png)
 
 5. Alatt a **rendszergazdai hitelesítő adataival** területén adja meg a következő beállításokat:
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 32445e3f6859a6161eb2fae20233c598234f18a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60400626"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box-lemezek korlátai
@@ -72,7 +72,7 @@ Az alábbiakban az Azure objektumok lehet írni a méretét. Győződjön meg ar
 | Az Azure-objektum típusa | Alapértelmezett korlát                                             |
 |-------------------|-----------------------------------------------------------|
 | Blokkblob        | ~ 4,75 Tib-ra                                                 |
-| Lapblob         | 8 TiB <br> (Minden feltöltött Lapblob formátumú fájl igazítva 512 bájt kell lennie, ellenkező esetben a feltöltés sikertelen. <br> A VHD és VHDX is igazítva 512 bájt.) |
+| Page Blob         | 8 TiB <br> (Minden feltöltött Lapblob formátumú fájl igazítva 512 bájt kell lennie, ellenkező esetben a feltöltés sikertelen. <br> A VHD és VHDX is igazítva 512 bájt.) |
 |Azure Files        | 1 TiB <br> Legfeljebb megosztás mérete 5 Tib-ra     |
 | Felügyelt lemezek     |4 TiB <br> A mérete és a korlátok további információkért lásd: <li>[Felügyelt lemezek skálázási célértékei](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
 

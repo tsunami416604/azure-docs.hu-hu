@@ -1,18 +1,18 @@
 ---
 title: Fejlett funkcióira Metrikaböngészőt Azure
 description: Az Azure Monitor Metrikaböngészőjének speciális funkcióinak megismerése
-author: lingliw
+author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/12/19
-ms.author: v-lingwu
+ms.date: 01/22/2019
+ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60256782"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Fejlett funkcióira Metrikaböngészőt Azure
@@ -149,3 +149,4 @@ Tekintse meg ezt [cikk](alerts-metric.md) további metrikákhoz kapcsolódó ria
 ## <a name="next-steps"></a>További lépések
 
   Olvasási [egyéni KPI irányítópultok létrehozása](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) ajánlott eljárást a gyakorlatban hasznosítható irányítópultokat hoz létre a metrikákkal kapcsolatos.
+

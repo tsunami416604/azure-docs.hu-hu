@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 709fb3be37850be37d6378652921ce26f4ff15fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60242226"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Gyakori kérdések
@@ -83,7 +83,7 @@ Fontos, hogy milyen gyakran vihetők át a Kerberos visszafejtési kulcs a `AZUR
 
 Kövesse az alábbi lépéseket a helyszíni kiszolgálón hol futnak az Azure AD Connect:
 
-### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>1. lépés Ha közvetlen egyszeri bejelentkezés engedélyezve van az AD-erdőkkel listájának beolvasása
+### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>1\.lépés Ha közvetlen egyszeri bejelentkezés engedélyezve van az AD-erdőkkel listájának beolvasása
 
 1. Először töltse le és telepítse [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
 2. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
@@ -91,7 +91,7 @@ Kövesse az alábbi lépéseket a helyszíni kiszolgálón hol futnak az Azure A
 4. Futtassa a Powershellt rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Ez a parancs egy előugró ablak, írja be a bérlő globális rendszergazdai hitelesítő adatokat adjon meg.
 5. Hívás `Get-AzureADSSOStatus | ConvertFrom-Json`. Ez a parancs listáját jeleníti meg, AD-erdőkkel, (tekintse meg a "Tartományok" listája), amelyre ez a funkció engedélyezve van a.
 
-### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>2. lépés A minden AD-erdőben, amely úgy lett beállítva, a Kerberos-visszafejtési kulcs frissítése
+### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>2\.lépés A minden AD-erdőben, amely úgy lett beállítva, a Kerberos-visszafejtési kulcs frissítése
 
 1. Hívás `$creds = Get-Credential`. Amikor a rendszer kéri, adja meg a tartományi rendszergazda hitelesítő adatait a kívánt AD-erdőben.
 
@@ -106,7 +106,7 @@ Kövesse az alábbi lépéseket a helyszíni kiszolgálón hol futnak az Azure A
 
 ## <a name="how-can-i-disable-seamless-sso"></a>Hogyan tilthatom közvetlen egyszeri bejelentkezés?
 
-### <a name="step-1-disable-the-feature-on-your-tenant"></a>1. lépés A bérlő a funkció letiltásához
+### <a name="step-1-disable-the-feature-on-your-tenant"></a>1\.lépés A bérlő a funkció letiltásához
 
 #### <a name="option-a-disable-using-azure-ad-connect"></a>"A" lehetőség Tiltsa le az Azure AD Connect használatával
 
@@ -132,7 +132,7 @@ Futtassa az alábbi lépéseket a helyszíni kiszolgálón, ahol futtatja az Azu
 >[!IMPORTANT]
 >Közvetlen egyszeri bejelentkezés letiltása PowerShell-lel nem változik az állapota, az Azure AD Connectben. Engedélyezve van a közvetlen egyszeri bejelentkezés fog megjelenni a **felhasználói bejelentkezés módosítása** lapot.
 
-### <a name="step-2-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>2. lépés Ha közvetlen egyszeri bejelentkezés engedélyezve van az AD-erdőkkel listájának beolvasása
+### <a name="step-2-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>2\.lépés Ha közvetlen egyszeri bejelentkezés engedélyezve van az AD-erdőkkel listájának beolvasása
 
 Ha le van tiltva a közvetlen egyszeri bejelentkezés az Azure AD Connect használatával, kövesse a feladatok 1 – 4 alábbi. Közvetlen egyszeri bejelentkezés használata esetén inkább a PowerShell le van tiltva, ha ugorhat alábbi 5. feladat.
 
@@ -142,7 +142,7 @@ Ha le van tiltva a közvetlen egyszeri bejelentkezés az Azure AD Connect haszn�
 4. Futtassa a Powershellt rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Ez a parancs egy előugró ablak, írja be a bérlő globális rendszergazdai hitelesítő adatokat adjon meg.
 5. Hívás `Get-AzureADSSOStatus | ConvertFrom-Json`. Ez a parancs listáját jeleníti meg, AD-erdőkkel, (tekintse meg a "Tartományok" listája), amelyre ez a funkció engedélyezve van a.
 
-### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>3. lépés Törölje kézzel a `AZUREADSSOACCT` számítógépfiókkal minden AD-erdőben, amely megjelenik a listában.
+### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>3\. lépés. Törölje kézzel a `AZUREADSSOACCT` számítógépfiókkal minden AD-erdőben, amely megjelenik a listában.
 
 ## <a name="next-steps"></a>További lépések
 
