@@ -140,7 +140,7 @@ Ezeket a lépéseket ismertetik a részletes folyamat, Logic Apps számára a lo
      | A Logic Apps fejlécmezőt kérése | Value | Típus | Leírás |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*range*> | String | A bájttartomány számára a tartalom darabban, beleértve a kezdő érték, a befejezési értéket, és a teljes tartalom méretét, például: "bájtok száma 0-1023/10100 =" |
-     | **A Content-Type** | <*content-type*> | String | A darabolt tartalmának típusa |
+     | **Content-Type** | <*content-type*> | String | A darabolt tartalmának típusa |
      | **Content-Length** | <*tartalom-hossza*> | String | A hosszát mérete (bájt) a aktuální Blok dat |
      |||||
 
