@@ -86,7 +86,7 @@ Az Azure Disk Encryption for Linux internetkapcsolatra van szükség az Active D
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
 | KeyVaultURL | url | string |
-| Hozzáférési kód | password | string | 
+| Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | Az operációs rendszer, az adatok, az összes | string |
 
