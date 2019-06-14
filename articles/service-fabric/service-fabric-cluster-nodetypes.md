@@ -76,13 +76,13 @@ A tulajdonság leírása a következők:
 
 | **Name (Név)** | **Megengedett értékek** | ** --- ** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-| név | string | --- | egyedi nevet a bővítmény |
+| name | string | --- | egyedi nevet a bővítmény |
 | type | "ServiceFabricLinuxNode" vagy "ServiceFabricWindowsNode | --- | Azonosítja az operációs rendszer a Service Fabric a rendszer rendszerindítása |
 | autoUpgradeMinorVersion | IGAZ vagy hamis | --- | SF futásidejű alverziót az automatikus frissítés engedélyezése |
 | publisher | Microsoft.Azure.ServiceFabric | --- | a Service Fabric által közzétevő neve |
 | clusterEndpont | string | --- | URI:port felügyeleti végpontja |
 | nodeTypeRef | string | --- | NodeType csomóponttípus neve |
-| tartóssági szint | bronz, ezüst, arany, platinum | --- | nem módosítható az Azure-infrastruktúra szüneteltetésére engedélyezett idő |
+| durabilityLevel | bronz, ezüst, arany, platinum | --- | nem módosítható az Azure-infrastruktúra szüneteltetésére engedélyezett idő |
 | enableParallelJobs | IGAZ vagy hamis | --- | Compute ParallelJobs, távolítsa el a virtuális gép és a virtuális Gépet a párhuzamos azonos méretezési engedélyezése |
 | nicPrefixOverride | string | --- | Például a "10.0.0.0/24" alhálózati előtag |
 | commonNames | String] | --- | Fürtben telepített tanúsítványok köznapi nevek |
