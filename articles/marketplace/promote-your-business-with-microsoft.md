@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
 ms.openlocfilehash: f21c5f94c595fe3718a0a59a80deff8f1c53b9fc
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937649"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Népszerűsítse cégét a Microsofttal 
@@ -29,7 +29,7 @@ MPN nyújt útmutatást a következő témaköröket.
 
 Az ajánlat vagy az előléptetni, használja a következő táblázat további előnyök és erőforrások elérését. 
 
-| Értékelemek | erőforrások |  
+| Értékelemek | Erőforrások |  
 |:--- |:--- |  
 | Használja az alapértelmezett érték használatának legfontosabb előnyei | A Microsoft Partner Network részeként a kap egy készletét használatának legfontosabb előnyei, amelyek segítségére lehetnek az Ön időt és pénzt takaríthat meg. Az előnyöket is segíthet erősíti képességeit, jobb szolgáltatást nyújt ügyfeleinek és kapcsolatokat épít annak érdekében, a teljes üzleti lehetőségeit.<ul> <li>Használatának legfontosabb előnyei kapcsolatos további információkért látogasson el a használatának legfontosabb előnyei és a követelmények lapon található [partner.microsoft.com/membership/core-benefits](https://partner.microsoft.com/membership/core-benefits).</li> </ul> |  
 | A Cloud Platform kompetencia megszerzésére | Kompetenciát megszerzéséhez segít különbséget tenni saját maga a más Microsoft-partnerek között. Kompetenciát megszerzéséhez is segítséget nyújt technikai szakértelemmel és az ügyfelek sikerességét a piacon elérhető bemutatásához. Kompetencia számos kulcsfontosságú partner programok, például a közös értékesítési előfeltétele.<ul> <li>Cloud Platform kompetenciával kapcsolatos további információkért látogasson el a Cloud Platform kompetencia oldalon található [partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  

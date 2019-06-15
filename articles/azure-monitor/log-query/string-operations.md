@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61424703"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Munka karakterláncokkal az Azure Monitor log-lekérdezések
@@ -98,7 +98,7 @@ countof(text, search [, kind])
 - `search` – Egyszerű karakterlánc- vagy reguláris kifejezésnek megfelelő szöveg belül.
 - `kind` - _Normál_ | _regex_ (alapértelmezett: normál).
 
-### <a name="returns"></a>Visszatérési érték
+### <a name="returns"></a>adja vissza
 
 A tároló a keresési karakterlánc nem egyező száma. Egyszerű karakterlánc-egyezés átfedésbe, amíg megfelel a reguláris kifejezés nem.
 
@@ -140,7 +140,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text` – Egy karakterlánc keresése.
 - `typeLiteral` – Egy nem kötelező típusú konstans (például typeof(long)). Ha meg van adva, a kinyert karakterláncrészletet ilyen alakítja át.
 
-### <a name="returns"></a>Visszatérési érték
+### <a name="returns"></a>adja vissza
 A jelzett rögzítési csoport captureGroup összeveti a karakterláncrészletet typeLiteral igény szerint konvertálja.
 Ha nem egyezik meg, vagy a típus átalakítás sikertelen, nesmí vracet hodnotu null.
 
@@ -246,7 +246,7 @@ replace(regex, rewrite, input_text)
 - `rewrite` – A megfelelő regex bármilyen egyezés helyettesítő regex. \0 használatával tekintse meg a teljes egyezik, az első rögzítési csoport \1, \2, és így tovább a következő rögzítési csoportok.
 - `input_text` – A Keresés a bemeneti karakterlánc.
 
-### <a name="returns"></a>Visszatérési érték
+### <a name="returns"></a>adja vissza
 A szöveg írja újra az értékelést az összes regex-egyezés lecserélése után. Egyezések nincsenek átfedésben.
 
 ### <a name="examples"></a>Példák
@@ -262,7 +262,7 @@ A következő eredményeket veheti fel:
 
 Tevékenység                                        |cseréje
 ------------------------------------------------|----------------------------------------------------------
-4663 – kísérlet történt egy olyan objektumot  |4663. Tevékenységazonosító: Kísérlet történt egy olyan objektumot.
+4663 – kísérlet történt egy olyan objektumot  |4663\. Tevékenységazonosító: Kísérlet történt egy olyan objektumot.
 
 
 ## <a name="split"></a>felosztás

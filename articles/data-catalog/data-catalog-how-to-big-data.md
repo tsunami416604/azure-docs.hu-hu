@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: b6b419d575e2164fc683b8e6b5020572db74d1b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61001741"
 ---
 # <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Az Azure Data Catalog big data típusú adatforrások használata
@@ -59,5 +59,5 @@ Ebben a mintában logikus regisztrálja az egyes referencia adatfájlokat a **Az
 ## <a name="alternate-patterns"></a>Alternatív minták
 A minták az előző szakaszban leírt módon csak két nagy adattárban előfordulhat, hogy rendszerezhetők, de minden implementáció különböző. Függetlenül attól, milyen adatforrást vannak strukturált, a big data típusú adatforrások regisztrálásakor **Azure Data Catalog**, összpontosíthat a fájlok és könyvtárak, az adatkészleteket, amelyek tartozó többi értéket képviselő regisztrálása a szervezet. A fájlok és könyvtárak regisztrációja is telezsúfolni megnehezíti a felhasználók számára való, amit a katalógusban.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az adatforrások nyilvántartására **Azure Data Catalog** könnyebben megtalálhatóvá és értelmezhetővé teszi őket. Való regisztrálásával és a big Data típusú adatok fájlok és könyvtárak képviselő logikai adatkészletek jegyzetkészítés, segítséget nyújthat a felhasználók kereséséhez és használatához a big data típusú adatforrások szükségük van.

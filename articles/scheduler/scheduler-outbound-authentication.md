@@ -10,11 +10,11 @@ ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 42d6ec93a3382f494b49fb574c4aee5e8eec142a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344347"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64708947"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Kimenő hitelesítés az Azure Scheduler
 
@@ -44,7 +44,7 @@ A Scheduler támogatja a hitelesítés modellek:
 
 Hitelesítés hozzáadása során a `ClientCertificate` modellezheti, adja meg, ezek a kiegészítő elemek a kérelem törzsében.  
 
-| Elem | Szükséges | Leírás |
+| Elem | Kötelező | Leírás |
 |---------|----------|-------------|
 | **hitelesítési** (elem) | A hitelesítési objektumot az ügyfél SSL-tanúsítvány használata |
 | **type** | Igen | A hitelesítési típus. Az ügyfél SSL-tanúsítványok, tulajdonság értéke `ClientCertificate`. |
@@ -164,7 +164,7 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 Hitelesítés hozzáadása során a `Basic` modellezheti, adja meg, ezek a kiegészítő elemek a kérelem törzsében.
 
-| Elem | Szükséges | Leírás |
+| Elem | Kötelező | Leírás |
 |---------|----------|-------------|
 | **hitelesítési** (elem) | A hitelesítési objektumot az alapszintű hitelesítés használata | 
 | **type** | Igen | A hitelesítési típus. Az alapszintű hitelesítés, az értéke `Basic`. | 
@@ -276,13 +276,13 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 }
 ```
 
-## <a name="active-directory-oauth"></a>Active Directory OAuth
+## <a name="active-directory-oauth"></a>Az Active Directory OAuth
 
 ### <a name="request-body---active-directory-oauth"></a>Kérelem törzse – Active Directory OAuth 
 
 Hitelesítés hozzáadása során a `ActiveDirectoryOAuth` modellezheti, adja meg, ezek a kiegészítő elemek a kérelem törzsében.
 
-| Elem | Szükséges | Leírás |
+| Elem | Kötelező | Leírás |
 |---------|----------|-------------|
 | **hitelesítési** (elem) | Igen | A hitelesítési objektumot ActiveDirectoryOAuth hitelesítés használatával |
 | **type** | Igen | A hitelesítési típus. A ActiveDirectoryOAuth hitelesítéshez, az értéke `ActiveDirectoryOAuth`. |

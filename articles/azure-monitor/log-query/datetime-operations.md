@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: 402511ba3c45e8bd12cb7f92ecd54f6084c8ada2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62112357"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Dátum idő értékek az Azure Monitor log-lekérdezések használata
@@ -39,8 +39,8 @@ Mérföldkövei időegységet követ tizedes fejezik ki:
 |:---|:---|
 |n           | nap          |
 |ó           | óra         |
-|p           | perc       |
-|s           | másodperc       |
+|p           | Percenként       |
+|s           | A másodpercenként       |
 |ms          | ezredmásodpercnél  |
 |mikroszekundumos | mikroszekundumos  |
 |osztásjelek        | nanoszekundumos   |
@@ -134,7 +134,7 @@ Event
 
 Ez a lekérdezés eredménye a következő:
 
-|időbélyeg|count_|
+|timestamp|count_|
 |--|--|
 |2018-07-28T00:00:00.000|7,136|
 |2018-07-29T00:00:00.000|12,315|

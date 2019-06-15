@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: d80581aae56fc9d65d6f24d21f2c582cb74b3f2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61420376"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Keresse meg és teljesítménnyel kapcsolatos javaslatok alkalmazása
@@ -128,15 +128,15 @@ Az ajánlások egy **függőben lévő**, **érvényesítés**, vagy **sikeres**
 
 A javaslat alkalmazása nem fordulhat elő, azonnal. A portálon részletesen ajánlás állapotával kapcsolatban. Lehetséges, hogy az index az állapotok a következők:
 
-| status | Leírás |
+| Állapot | Leírás |
 |:--- |:--- |
-| Függőben |A alkalmazni javaslat érkezett parancsot, és ütemezve van végrehajtásra. |
-| Végrehajtás |Az ajánlás alkalmazása folyamatban van. |
-| Érvényesítés |Javaslatok sikeresen alkalmazva lett, és a szolgáltatás mérés előnyeit. |
-| Sikeres |Az ajánlás alkalmazása sikerült és előnyöket mért lett. |
-| Hiba |Hiba történt az ajánlás alkalmazásának folyamatában. Ez lehet egy átmeneti probléma, vagy akár egy sémát módosítani a tábla, és a szkript már nem érvényes. |
+| Függőben lévő |A alkalmazni javaslat érkezett parancsot, és ütemezve van végrehajtásra. |
+| Végrehajtása |Az ajánlás alkalmazása folyamatban van. |
+| Ellenőrzése |Javaslatok sikeresen alkalmazva lett, és a szolgáltatás mérés előnyeit. |
+| Siker |Az ajánlás alkalmazása sikerült és előnyöket mért lett. |
+| Hiba |Hiba történt az ajánlás alkalmazásának folyamata során. Ez lehet egy átmeneti probléma, vagy akár egy sémát módosítani a tábla, és a szkript már nem érvényes. |
 | Visszaállítás |Az ajánlás lett alkalmazva, de nem nagy teljesítményű minősül, és automatikusan vissza. |
-| Visszaállítva |Az ajánlás vissza lett állítva. |
+| Vissza |Az ajánlás vissza lett állítva. |
 
 További információkat a listából egy folyamaton belüli javaslatra kattintva:
 
@@ -155,7 +155,7 @@ Javaslatok sikeres bevezetése után (jelenleg műveletek index és a lekérdez�
 
 ![A figyelő teljesítményre gyakorolt hatás](./media/sql-database-advisor-portal/query-insights.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az Azure SQL Database az SQL database szolgáltatás teljesítményének javítására vonatkozó javaslatokat biztosít. Azáltal, hogy a T-SQL-szkriptek, optimalizálása az adatbázishoz, és végső soron a lekérdezési teljesítmény javításához segítséget kap.
 
 ## <a name="next-steps"></a>További lépések

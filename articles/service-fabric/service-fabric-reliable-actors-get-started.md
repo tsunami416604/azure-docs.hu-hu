@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
 ms.openlocfilehash: b6ca4810d86bb3c8413f0a740ac4483a848b8e10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60726332"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors – első lépések
@@ -50,11 +50,11 @@ A létrehozott projekt jelenít meg az alábbi struktúrával:
 
 A megoldás három projektet tartalmaz:
 
-* **Az alkalmazásprojekt (MyApplication)**. Ez a projekt csomagok központi telepítés együtt a szolgáltatásokhoz. Tartalmazza a *ApplicationManifest.xml* és a PowerShell-parancsfájlok kezelése az alkalmazást.
+* **Az alkalmazásprojekt (MyApplication)** . Ez a projekt csomagok központi telepítés együtt a szolgáltatásokhoz. Tartalmazza a *ApplicationManifest.xml* és a PowerShell-parancsfájlok kezelése az alkalmazást.
 
-* **A felület project (HelloWorld.Interfaces)**. Ez a projekt az aktor illesztőjének definícióját tartalmazza. Aktorok bármely bármely nevű projekt lehet definiálni.  Az illesztő határozza meg, hogy az aktor szerződést az aktor implementálása és az aktort meghívó ügyfelek osztoznak által közösen használt.  Ügyfél-projektek is függnek tőle, mert általában logikus definiálja azt a szerelvény, amely elkülönül az aktor implementálása.
+* **A felület project (HelloWorld.Interfaces)** . Ez a projekt az aktor illesztőjének definícióját tartalmazza. Aktorok bármely bármely nevű projekt lehet definiálni.  Az illesztő határozza meg, hogy az aktor szerződést az aktor implementálása és az aktort meghívó ügyfelek osztoznak által közösen használt.  Ügyfél-projektek is függnek tőle, mert általában logikus definiálja azt a szerelvény, amely elkülönül az aktor implementálása.
 
-* **Az aktorszolgáltatás-projektet (HelloWorld)**. Ez a projekt határozza meg, amelyet szeretne üzemeltetni az aktor Service Fabric-szolgáltatást. Az aktor megvalósítása tartalmaz *HelloWorld.cs*. Az aktor implementálását OD základního typu osztálynak `Actor` valósítja meg a meghatározott felületek és a *MyActor.Interfaces* projekt. Az aktor osztálya is meg kell valósítania egy konstruktort, amely fogad egy `ActorService` példány és a egy `ActorId` , majd azokat továbbítja az alapszintű `Actor` osztály.
+* **Az aktorszolgáltatás-projektet (HelloWorld)** . Ez a projekt határozza meg, amelyet szeretne üzemeltetni az aktor Service Fabric-szolgáltatást. Az aktor megvalósítása tartalmaz *HelloWorld.cs*. Az aktor implementálását OD základního typu osztálynak `Actor` valósítja meg a meghatározott felületek és a *MyActor.Interfaces* projekt. Az aktor osztálya is meg kell valósítania egy konstruktort, amely fogad egy `ActorService` példány és a egy `ActorId` , majd azokat továbbítja az alapszintű `Actor` osztály.
     
     A projekt is tartalmaz *Program.cs*, amely használatával a Service Fabric-futtatókörnyezet regisztrálja aktor osztályok `ActorRuntime.RegisterActorAsync<T>()`. A `HelloWorld` osztály már regisztrálva van. Minden olyan további aktorok megvalósításokhoz, hozzáadja a projekthez is szerepelnie kell a `Main()` metódust.
 
@@ -97,7 +97,7 @@ Hozzon létre egy egyszerű konzolalkalmazást az aktorszolgáltatás meghívás
 
 1. Kattintson a jobb gombbal a megoldásra a Megoldáskezelőben > **Hozzáadás** > **új projekt...** .
 
-2. Alatt a **.NET Core** típusok projektre, válassza a **Console App (.NET Core)**.  Adja a projektnek *ActorClient*.
+2. Alatt a **.NET Core** típusok projektre, válassza a **Console App (.NET Core)** .  Adja a projektnek *ActorClient*.
     
     ![Adja hozzá az új projekt párbeszédpanel][6]    
     

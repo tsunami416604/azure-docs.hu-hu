@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkd;juliako
 ms.openlocfilehash: b3357436d068396c5c3c4fae10ed6857759c5aed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61221327"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Specifikáció: darabolt MP4 élő az Azure Media Services feldolgozása 
@@ -93,12 +93,12 @@ Ezt a beállítást a kódoló egy követése beteszi egyes töredék MP4 bitstr
 
 ![Az elkülönített Streamek nyomon követi][image3]
 
-### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>3. lehetőség: A legalacsonyabb MP4 videó nyomon követése be egy stream-csomag hangsávra
+### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>3\. lehetőség: A legalacsonyabb MP4 videó nyomon követése be egy stream-csomag hangsávra
 Ez esetben az ügyfél úgy dönt, hogy a hangsávot a legalacsonyabb sávszélességű, MP4 videó nyomon követése a csomagot a egy töredék MP4 bitstream, és hagyja a többi két videó nyomon követi, külön Streamek. 
 
 ![Adatfolyam-hang és videó nyomon követi][image4]
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 Ez nem egy kimerítően teljes lista az összes lehetséges Adatbetöltési lehetőségek ebben a példában. Bármely csoportja, nyomon követi az adatfolyamokat, valójában, élő betöltési támogatja. Ügyfelek és a szállítók kódoló választhat saját megvalósításokhoz, mérnöki összetettségét, kódoló kapacitás, és a redundanciát és feladatátvételi szempontokat részletező cikkben alapján. A legtöbb esetben van azonban a teljes élő bemutató csak egy hangsávra. Ezért fontos annak biztosítása érdekében a egészséges legyen, a betöltés Stream, amely tartalmazza a hangsávot. Ez gyakran figyelembe veszi a hangsávot üzembe saját Stream (ahogy a 2. lehetőség) vagy az a legalacsonyabb sávszélességű, MP4 videó követése (ahogy a 3. lehetőség) a kötegelés eredményez. Is, a nagyobb redundancia és a hibatűrést, küldés, az azonos hangsávra két különböző Streamek (2 a redundáns hangsáv. lehetőség) vagy a hangsávot legalább két, a legalacsonyabb sávszélességű, MP4 videó nyomon követi (a 3 beállítást legalább két kötegelve hang-, a kötegelés video-adatfolyamokat) erősen ajánlott az élő betöltési Media Services szolgáltatásba.
 
 ## <a name="7-service-failover"></a>7. A szolgáltatás feladatátvételének

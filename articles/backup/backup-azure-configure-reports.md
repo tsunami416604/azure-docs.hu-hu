@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
 ms.openlocfilehash: e3004a44958d75d18d608a2fbed7ccc44a00dc93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60642678"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk bemutatja a lépést kell végrehajtania a jelentések az Azure Backup konfigurálása a Recovery Services-tároló használatával. Azt is bemutatja, hogyan lehet hozzáférni a jelentésekhez a Power BI használatával. Miután elvégezte ezeket a lépéseket, megnyithatja közvetlenül a Power BI segítségével megtekintheti, testreszabása és jelentéseket hozhat létre.
 
 > [!IMPORTANT]
-> 2018. november 1-jét követően egyes ügyfelek problémákat tapasztalhatnak a Power BI Azure Backup alkalmazásában tárolt adatok betöltésekor, amikor is ez a hibaüzenet jelenik meg: „Felesleges karaktereket észleltünk a JSON-bevitel végén. A kivételt az IDataReader-felület jelezte.”
+> 2018\. november 1-jét követően egyes ügyfelek problémákat tapasztalhatnak a Power BI Azure Backup alkalmazásában tárolt adatok betöltésekor, amikor is ez a hibaüzenet jelenik meg: „Felesleges karaktereket észleltünk a JSON-bevitel végén. A kivételt az IDataReader-felület jelezte.”
 A problémát az adatok a tárfiókba való betöltéséhez használt formátum változása okozza.
 Töltse le a legújabb alkalmazást (1.8-as) a probléma elkerülése érdekében.
 >
@@ -54,7 +54,7 @@ Kövesse az alábbi lépéseket egy Recovery Services-tárolót a storage-fiók 
       ![Engedélyezze a diagnosztikát a 3. lépés](./media/backup-azure-configure-reports/backup-azure-configure-reports.png)
 4. Válassza ki **diagnosztika bekapcsolása** használandó tárfiók konfigurálása a felhasználói felületének megnyitásához.
 
-      ![4. lépés diagnosztika bekapcsolása](./media/backup-azure-configure-reports/enable-diagnostics.png)
+      ![4\. lépés diagnosztika bekapcsolása](./media/backup-azure-configure-reports/enable-diagnostics.png)
 5. Az a **neve** adja meg a beállítás nevét. Válassza ki a **archiválás tárfiókba** jelölőnégyzetet, hogy az adatok megkezdheti a tárfiókba kerülnek a jelentéskészítés.
 
       ![Engedélyezze a diagnosztikát az 5. lépés](./media/backup-azure-configure-reports/select-setting-name.png)
@@ -87,7 +87,7 @@ Ha testre szabhatja, és megosztja a jelentést, hozzon létre egy munkaterület
       ![Tartalomcsomag beszerzése](./media/backup-azure-configure-reports/content-pack-get.png)
 4. Adja meg a storage-fiókot, amelyet az előző lépésben 5 nevét, és válassza ki **tovább**.
 
-    ![A tárfiók nevének megadása](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
+    ![Adja meg a tárfiók neve](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
 5. "Key" hitelesítési módszert használ, adja meg a tárfiókhoz a tárfiók-kulcsot. A [megtekintése és másolása a tárelérési kulcsok](../storage/common/storage-account-manage.md#access-keys), lépjen a tárfiókhoz az Azure Portalon.
 
      ![Adja meg a storage-fiók](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
@@ -130,7 +130,7 @@ Nyissa meg a konfigurált tárfiók, és válassza ki a tárolók. Ha a containe
   * A Power BI rendelkezik egy [az ütemezett frissítés naponta egyszer](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Az adatok manuális frissítés a tartalomcsomag a Power BI is végrehajthatja.
 
 ### <a name="how-long-can-i-retain-reports"></a>Mennyi ideig őrizheti meg a jelentéseket?
-Amikor konfigurál egy tárfiókot, kiválaszthatja a jelentés adatai olyan megőrzési időszakot a storage-fiókban. 6. a következő lépés a [jelentések tárfiók konfigurálása](backup-azure-configure-reports.md#configure-storage-account-for-reports) szakaszban. Emellett képes [elemzése az Excel](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) , és mentse őket a hosszabb megőrzési időt, az igényei szerint.
+Amikor konfigurál egy tárfiókot, kiválaszthatja a jelentés adatai olyan megőrzési időszakot a storage-fiókban. 6\. a következő lépés a [jelentések tárfiók konfigurálása](backup-azure-configure-reports.md#configure-storage-account-for-reports) szakaszban. Emellett képes [elemzése az Excel](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) , és mentse őket a hosszabb megőrzési időt, az igényei szerint.
 
 ### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>A jelentésekben lévő adatok után a tárfiók konfigurálható látható?
  Storage-fiók beállítása után létrehozott összes adatok a storage-fiók át lett helyezve, és jelentésekben érhető el. Folyamatban lévő feladatok rendszer nem küldi le a jelentéskészítéshez. Miután a feladat befejeződik, vagy nem sikerül, a jelentések zajlik.

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925657"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-bővítmény parancsai használatával a mongodb-hez az Azure Cosmos DB API-ban tárolt adatok kezelése 
@@ -163,7 +163,7 @@ A következő táblázat ismerteti a paraméterek belül a parancsot:
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
 | CustomAction    | string | Az egyéni parancs neve. "CreateCollection" kell lennie.     |
-| gyűjtemény      | string | A gyűjtemény neve                                   |
+| Gyűjtemény      | string | A gyűjtemény neve                                   |
 | offerThroughput | int    | Kiosztott átviteli sebesség beállítása az adatbázison. Ez egy nem kötelező paraméter |
 | shardKey        | string | Szilánkleképezés-kulcs elérési útja horizontálisan skálázott gyűjtemények. Ez egy nem kötelező paraméter |
 
@@ -208,7 +208,7 @@ A következő táblázat ismerteti a paraméterek belül a parancsot:
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
 |  CustomAction   |   string      |   Az egyéni parancs neve. "UpdateCollection" kell lennie.      |
-|  gyűjtemény   |   string      |   A gyűjtemény neve.       |
+|  Gyűjtemény   |   string      |   A gyűjtemény neve.       |
 | offerThroughput   |int|   Kiosztott átviteli sebesség beállítása a gyűjteményben.|
 
 ## <a name="output"></a>Kimenet
@@ -243,7 +243,7 @@ A következő táblázat ismerteti a paraméterek belül a parancsot:
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
 | CustomAction    |   string      |   Az egyéni parancs neve. "GetCollection" kell lennie.      |
-| gyűjtemény    |    string     |    A gyűjtemény neve.     |
+| Gyűjtemény    |    string     |    A gyűjtemény neve.     |
 
 ### <a name="output"></a>Kimenet
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: snehaa
 ms.openlocfilehash: 17cead93325da903161d95b315435d6e7b106dbb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61292977"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
@@ -80,7 +80,7 @@ Az alábbi mappák a készülék a víruskeresővel való ellenőrzésekből kiz
 - Helyi gyorsítótár az adatbázis és naplófájlok. Az Azure migrate szolgáltatás ezt a mappát RW lemezt hozzá kell férnie.
   %SystemDrive%\Profiler
 
-## <a name="discovery"></a>Detektálás
+## <a name="discovery"></a>Felderítés
 
 ### <a name="what-data-is-collected-by-azure-migrate"></a>Azure Migrate által gyűjtött adatokat?
 
@@ -97,7 +97,7 @@ A berendezés-alapú felderítés a helyszíni virtuális gépek metaadatait gy�
 - Memória mérete, a lemezméretek
 
 **A virtuális gép teljesítményadatok**
-- Processzorhasználat
+- CPU-használat
 - Memóriahasználat
 - A virtuális géphez csatlakoztatott összes lemez:
   - Lemez sebessége olvasott átviteli sebesség

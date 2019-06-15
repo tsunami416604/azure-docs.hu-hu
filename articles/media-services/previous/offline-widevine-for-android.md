@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
 ms.openlocfilehash: 64c5bff0e48f55406476e71c82763bd8f3c03afd
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937245"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine androidhoz streaming  
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Media Services által használt verzióját:"]
 > * [3-as verzió](../latest/offline-widevine-for-android.md)
 > * [2-es verzió](offline-widevine-for-android.md)
 
@@ -172,7 +172,7 @@ Hogyan juttathat az állandó licencek (offline-kompatibilis) az egyes ügyfelek
 Nem kell a tartalom másolása. Egyszerűen használhatja a tartalom és a egy egyetlen ContentKeyAuthorizationPolicy, de a két külön ContentKeyAuthorizationPolicyOption egy példányát:
 
 1. IContentKeyAuthorizationPolicyOption 1: használja a állandó licenc és a egy jogcímet, például a license_type tartalmazó ContentKeyAuthorizationPolicyRestriction 1 = "Állandó"
-2. 2. IContentKeyAuthorizationPolicyOption: használja a nem állandó licenc és a egy jogcímet, például a license_type tartalmazó ContentKeyAuthorizationPolicyRestriction 2 = "Nonpersistent"
+2. 2\. IContentKeyAuthorizationPolicyOption: használja a nem állandó licenc és a egy jogcímet, például a license_type tartalmazó ContentKeyAuthorizationPolicyRestriction 2 = "Nonpersistent"
 
 Ez esetben, amikor az ügyfél alkalmazásból licenc kérelem érkezik, licenc kérelem nincs különbség. A különböző felhasználó/eszköz, azonban az STS-re kell az üzleti logika különböző jogcímeket (a fenti két license_type egy) tartalmazó különböző JWT-jogkivonatok kiállításához. A JWT jogkivonat jogcím értéke használandó licenc szolgáltatás úgy dönt, hogy ki milyen típusú licenc: állandó és nem állandó.
 
@@ -186,9 +186,9 @@ A Widevine biztonsági szintek, a Google [Widevine DRM-architektúra áttekinté
 
 A Google [Widevine DRM-architektúra áttekintése](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf), azt határozza meg a következő három biztonsági szintek:
 
-1.  1. biztonsági szint: Az összes tartalom feldolgozása, titkosítás és vezérlés belül a megbízható végrehajtási környezetben (TEE) történik. Néhány megvalósítás modellekben biztonsági feldolgozási hajtható végre a különböző lapkák.
-2.  2. biztonsági szint: Titkosítás (de nem Videofeldolgozás) végez a TEE belül: visszafejtett pufferek alkalmazás tartományhoz adja vissza, és külön videó hardver vagy szoftver keresztül. 2. szintű azonban titkosítási információk feldolgozása van csak a TEE belül.
-3.  3. biztonsági szint nem rendelkezik egy TEE az eszközön. Megfelelő intézkedéseket előfordulhat, hogy a titkosítási adatokat és a gazdagép operációs rendszere a visszafejtett tartalom védelme érdekében. A 3. szint megvalósítás is tartalmazhat egy hardveres titkosítási motor, de, amely csak növeli a teljesítményt, nem biztonsági.
+1.  1\. biztonsági szint: Az összes tartalom feldolgozása, titkosítás és vezérlés belül a megbízható végrehajtási környezetben (TEE) történik. Néhány megvalósítás modellekben biztonsági feldolgozási hajtható végre a különböző lapkák.
+2.  2\. biztonsági szint: Titkosítás (de nem Videofeldolgozás) végez a TEE belül: visszafejtett pufferek alkalmazás tartományhoz adja vissza, és külön videó hardver vagy szoftver keresztül. 2\. szintű azonban titkosítási információk feldolgozása van csak a TEE belül.
+3.  3\. biztonsági szint nem rendelkezik egy TEE az eszközön. Megfelelő intézkedéseket előfordulhat, hogy a titkosítási adatokat és a gazdagép operációs rendszere a visszafejtett tartalom védelme érdekében. A 3. szint megvalósítás is tartalmazhat egy hardveres titkosítási motor, de, amely csak növeli a teljesítményt, nem biztonsági.
 
 Ugyanakkor, a [Azure Media Services dokumentációja a Widevine-licencsablon](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview), content_key_specs security_level tulajdonságát az alábbi öt különböző érték (megbízhatóságára vonatkozó ügyfélkövetelmények lejátszás) is rendelkezik:
 
@@ -203,7 +203,7 @@ A Google Widevine mindkét biztonsági szintek határozzák meg. A különbség 
 | **Biztonsági szintjének Widevine-architektúra** |**A Widevine API használt biztonsági szintek**|
 |---|---| 
 | **1. biztonsági szint**: Az összes tartalom feldolgozása, titkosítás és vezérlés belül a megbízható végrehajtási környezetben (TEE) történik. Néhány megvalósítás modellekben biztonsági feldolgozási hajtható végre a különböző lapkák.|**security_level=5**: A titkosítási alakíthatják és az összes kezelési az adathordozó (tömörített és tömörítetlen) belül kell kezelni egy hardveres biztonsági TEE.<br/><br/>**security_level=4**: A titkosítási és a tartalom dekódolási belül kell végrehajtani egy hardveres biztonsági TEE.|
-**Biztonsági szint 2**: Titkosítás (de nem Videofeldolgozás) végez a TEE belül: visszafejtett pufferek alkalmazás tartományhoz adja vissza, és külön videó hardver vagy szoftver keresztül. 2. szintű azonban titkosítási információk feldolgozása van csak a TEE belül.| **security_level=3**: A megosztottkulcs-anyag és a titkosítási műveletek belül kell végrehajtani egy hardveres biztonsági TEE. |
+**Biztonsági szint 2**: Titkosítás (de nem Videofeldolgozás) végez a TEE belül: visszafejtett pufferek alkalmazás tartományhoz adja vissza, és külön videó hardver vagy szoftver keresztül. 2\. szintű azonban titkosítási információk feldolgozása van csak a TEE belül.| **security_level=3**: A megosztottkulcs-anyag és a titkosítási műveletek belül kell végrehajtani egy hardveres biztonsági TEE. |
 | **3. biztonsági szint**: Nem rendelkezik egy TEE az eszközön. Megfelelő intézkedéseket előfordulhat, hogy a titkosítási adatokat és a gazdagép operációs rendszere a visszafejtett tartalom védelme érdekében. A 3. szint megvalósítás is tartalmazhat egy hardveres titkosítási motor, de, amely csak növeli a teljesítményt, nem biztonsági. | **security_level=2**: Szoftvert a titkosításnak és a egy rejtjelezett dekóder megadása kötelező.<br/><br/>**security_level=1**: A szoftveres whitebox kriptográfiai megadása kötelező.|
 
 ### <a name="question"></a>Kérdés
@@ -219,6 +219,6 @@ Letöltési sebesség javítása érdekében két módja van:
     1.  Szabályozott ügyfél: player alkalmazás automatikusan kiválasztja, vagy a felhasználó kijelöli a videó minősége réteg és zeneszámok letöltésére;
     2.  Szolgáltatás szabályozza: az egyik dinamikus Manifest szolgáltatás segítségével az Azure Media Services (globális) szűrő, amely HLS-lista vagy kötőjel MPD korlátozza az egyetlen jó minőségű réteghez, és a kiválasztott hangsáv létrehozása. Ezután a letöltési URL-CÍMÉT, a végfelhasználók számára megjelenik ez a szűrő tartalmazza.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben tárgyalt megvalósítása a kapcsolat nélküli módban lejátszás DASH tartalom Widevine védi az Android-eszközökön.  Azt a Widevine-által védett tartalom offline streamelési kapcsolatos gyakori kérdésekre is választ adni.

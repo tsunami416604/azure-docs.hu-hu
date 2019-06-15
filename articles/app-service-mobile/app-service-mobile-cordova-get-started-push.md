@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 40a7552ffd0bfcab173d2e35c52313a94ec3d0bb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62114338"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Az Apache Cordova-alkalmazáshoz a leküldéses értesítések hozzáadása
@@ -76,7 +76,7 @@ A leküldéses beépülő modul a következő módokon telepíthető:
 
 **A parancssorba:**
 
-Futtassa az alábbi parancsot:
+Futtassa a következő parancsot:
 
     cordova plugin add phonegap-plugin-push
 
@@ -93,7 +93,7 @@ Futtassa az alábbi parancsot:
 4. A **SENDER_ID**, ha már rendelkezik egy numerikus projekt Azonosítóját, a Google Developer Console projekt, akkor is Itt veheti fel. Ellenkező esetben adja meg a helyőrző értéket, például 777777. Android céloz meg, ha ezt az értéket később a soubor Config.XML v fájlban frissítheti.
 
     >[!NOTE]
-    >2.0.0-s verziójával kezdődően a google-services.json telepítve kell lennie a gyökérmappájában lévő mappának a projekt konfigurálásához a feladó azonosítója. További információkért lásd: a [ügyféltelepítési dokumentációban.](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
+    >2\.0.0-s verziójával kezdődően a google-services.json telepítve kell lennie a gyökérmappájában lévő mappának a projekt konfigurálásához a feladó azonosítója. További információkért lásd: a [ügyféltelepítési dokumentációban.](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
 
 5. Válassza a **Hozzáadás** lehetőséget.
 

@@ -13,10 +13,10 @@ ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: 3e3d6b8fdc9ac8dd28f73fecd6231e97a5645407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60901025"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Függőségi telemetria: Application Insights-adatmodell
@@ -27,7 +27,7 @@ Függőségi Telemetria (a [Application Insights](../../azure-monitor/app/app-in
 
 A parancsot kezdeményezett a függőségi hívás a neve. Alacsony cardinality értéke. Például a tárolt eljárás nevét és URL-cím elérési út sablonjának.
 
-## <a name="id"></a>ID (Azonosító)
+## <a name="id"></a>azonosító
 
 A függőségi hívás példány azonosítója. Korrelációs használt a kérelemben szereplő telemetriai elem a függőségi hívás megfelelő. További információkért lásd: [korrelációs](../../azure-monitor/app/correlation.md) lapot.
 
@@ -39,7 +39,7 @@ A függőségi hívás által kezdeményezett parancsot. Példák: SQL-utasítá
 
 Függőség neve. A függőségek logikai jellegű csoportosítását és más mezőket is, például a commandName és resultCode értelmezése alacsony cardinality értéke. Példák az SQL Azure-tábla és a HTTP.
 
-## <a name="target"></a>Cél
+## <a name="target"></a>Target
 
 Függőségi hívás célhelyre. Például a kiszolgáló nevét, az állomás címe. További információkért lásd: [korrelációs](../../azure-monitor/app/correlation.md) lapot.
 
@@ -51,7 +51,7 @@ Kérelem időtartama a formátumban: `DD.HH:MM:SS.MMMMMM`. Lehet kisebb, mint `1
 
 Függőségi hívás eredménykódja. Példák a következők: SQL-hibakód és HTTP-állapotkódot.
 
-## <a name="success"></a>Sikeres
+## <a name="success"></a>Siker
 
 A sikeres vagy sikertelen hívás megjelölése.
 

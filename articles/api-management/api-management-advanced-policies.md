@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: 43cbeea554f43e4db7d5440af83a9b414741d2f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60795880"
 ---
 # <a name="api-management-advanced-policies"></a>Az API Management speciális szabályzatok
@@ -135,7 +135,7 @@ Ez a példa bemutatja, hogyan hajthat végre, tartalomszűrés adatelem távolí
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum                                              | Leírás                                                                                               | Szükséges |
+| Attribútum                                              | Leírás                                                                                               | Kötelező |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | feltétel = "logikai kifejezés &#124; logikai állandó" | A logikai kifejezés vagy állandó értékeli ki, mikor a tartalmazó `when` házirendutasítás értékeli ki. | Igen      |
 
@@ -245,7 +245,7 @@ Ez a művelet-szintű szabályzat nem továbbítja a kérelmeket a háttérszolg
 
 ### <a name="elements"></a>Elemek
 
-| Elem         | Leírás   | Szükséges |
+| Elem         | Leírás   | Kötelező |
 | --------------- | ------------- | -------- |
 | forward-request | A gyökérelem. | Igen      |
 
@@ -296,13 +296,13 @@ Az alábbi példa bemutatja, hogyan korlátozhatja a környezeti változók ért
 
 ### <a name="elements"></a>Elemek
 
-| Elem           | Leírás   | Szükséges |
+| Elem           | Leírás   | Kötelező |
 | ----------------- | ------------- | -------- |
 | határérték-egyidejűség | A gyökérelem. | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum | Leírás                                                                                        | Kötelező | Alapértelmezett |
+| Attribútum | Leírás                                                                                        | Szükséges | Alapértelmezett |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
 | key       | Egy karakterlánc. A kifejezés engedélyezett. Meghatározza azt a párhuzamosság hatókört. Több szabályzat is megoszthatók. | Igen      | –     |
 | maximális darabszám | Egész szám. Adja meg a szabályzat engedélyezett kérelmek maximális száma határozza meg.           | Igen      | –     |
@@ -349,7 +349,7 @@ Event hubs szolgáltatás bekerülhet bármilyen karakterlánc használható ér
 
 ### <a name="elements"></a>Elemek
 
-| Elem         | Leírás                                                                     | Szükséges |
+| Elem         | Leírás                                                                     | Kötelező |
 | --------------- | ------------------------------------------------------------------------------- | -------- |
 | log-to-eventhub | A gyökérelem. Ez az elem értéke a karakterláncot az eseményközpont bejelentkezni. | Igen      |
 
@@ -461,7 +461,7 @@ A következő példában tízszer exponenciális újrapróbálkozás algoritmus 
 
 | Attribútum        | Leírás                                                                                                                                           | Szükséges | Alapértelmezett |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| feltétel        | (Boolean) literál vagy [kifejezés](api-management-policy-expressions.md) megadása, ha az újrapróbálkozás le kell állítani (`false`) vagy a folyamatos (`true`).      | Igen      | –     |
+| condition        | (Boolean) literál vagy [kifejezés](api-management-policy-expressions.md) megadása, ha az újrapróbálkozás le kell állítani (`false`) vagy a folyamatos (`true`).      | Igen      | –     |
 | count            | Egy pozitív szám, az újrapróbálkozások maximális számát megadó sikertelen bejelentkezési kísérletet.                                                                                | Igen      | –     |
 | interval         | Próbálja meg egy pozitív szám a várakozási időköz az újrapróbálkozás között megadása másodpercben.                                                                 | Igen      | –     |
 | max-interval     | Egy pozitív szám, a maximális megadása másodpercben Várjon, amíg az újrapróbálkozási kísérletek közötti időköz. Exponenciális újrapróbálkozási algoritmusok megvalósításának szolgál. | Nem       | –     |
@@ -519,7 +519,7 @@ A `return-response` házirend megszakítása folyamat-végrehajtás és egy alap
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum              | Leírás                                                                                                                                                                          | Szükséges  |
+| Attribútum              | Leírás                                                                                                                                                                          | Kötelező  |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
 | válasz-változóhoz-name | A környezeti változó nevére hivatkozik, például egy felsőbb szintű [küldési-kérelmek](api-management-advanced-policies.md#SendRequest) házirend- és tartalmazó egy `Response` objektum | Választható. |
 
@@ -580,13 +580,13 @@ Ez a minta-házirend használatával példán látható a `send-one-way-request`
 
 ### <a name="elements"></a>Elemek
 
-| Elem                    | Leírás                                                                                                 | Kötelező                        |
+| Elem                    | Leírás                                                                                                 | Szükséges                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | send-one-way-request       | A gyökérelem.                                                                                               | Igen                             |
 | url                        | A kérelem URL-címe                                                                                     | Ha nincs mód = copy; Ellenkező esetben igen. |
 | method                     | A kérelem HTTP-metódust.                                                                            | Ha nincs mód = copy; Ellenkező esetben igen. |
 | header                     | Kérelem fejléce. Több elemet is fejléc használata több kérelemfejlécek.                                  | Nem                              |
-| törzs                       | A kérelem törzse.                                                                                           | Nem                              |
+| Törzs                       | A kérelem törzsében.                                                                                           | Nem                              |
 | hitelesítés – tanúsítvány | [Az ügyfél-hitelesítéshez használandó tanúsítványt](api-management-authentication-policies.md#ClientCertificate) | Nem                              |
 
 ### <a name="attributes"></a>Attribútumok
@@ -594,7 +594,7 @@ Ez a minta-házirend használatával példán látható a `send-one-way-request`
 | Attribútum     | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Szükséges | Alapértelmezett  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="string" | Meghatározza, hogy ez egy új kérelmet, vagy egy másolatot a jelenlegi kérelem. A kimenő mód mód = másolása nem sikerült inicializálni a kérelem törzsében.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nem       | Új      |
-| név          | A fejléc kell beállítani a nevét adja meg.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Igen      | –      |
+| name          | A fejléc kell beállítani a nevét adja meg.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Igen      | –      |
 | létezik-művelet | Itt adható meg, milyen műveleteket, ha a fejléc már meg van adva. Ez az attribútum a következő értékek egyikét kell rendelkeznie.<br /><br /> -felülbírálás - lecseréli a meglévő fejléc értékét.<br />-skip – nem helyettesíti a meglévő fejléc értéke.<br />-hozzáfűzése - az érték hozzáfűzi a meglévő fejléc értéke.<br />a kérelem - delete - eltávolítja a fejléc.<br /><br /> Ha a beállítása `override` felvétel ugyanazzal a névvel több bejegyzést eredményez az összes bejegyzés (amely lesz látható többször) megfelelően beállítása fejléc; csak a felsorolt értékek jelennek meg az eredményt. | Nem       | felülbírálás |
 
 ### <a name="usage"></a>Használat
@@ -670,18 +670,18 @@ Ez a példa bemutatja egy hivatkozás ellenőrzése egyik módja jogkivonat egy 
 | url                        | A kérelem URL-címe                                                                                     | Ha nincs mód = copy; Ellenkező esetben igen. |
 | method                     | A kérelem HTTP-metódust.                                                                            | Ha nincs mód = copy; Ellenkező esetben igen. |
 | header                     | Kérelem fejléce. Több elemet is fejléc használata több kérelemfejlécek.                                  | Nem                              |
-| törzs                       | A kérelem törzse.                                                                                           | Nem                              |
+| Törzs                       | A kérelem törzsében.                                                                                           | Nem                              |
 | hitelesítés – tanúsítvány | [Az ügyfél-hitelesítéshez használandó tanúsítványt](api-management-authentication-policies.md#ClientCertificate) | Nem                              |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum                       | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Kötelező | Alapértelmezett  |
+| Attribútum                       | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Szükséges | Alapértelmezett  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="string"                   | Meghatározza, hogy ez egy új kérelmet, vagy egy másolatot a jelenlegi kérelem. A kimenő mód mód = másolása nem sikerült inicializálni a kérelem törzsében.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nem       | Új      |
 | response-variable-name="string" | Környezeti változó, amelyek megkapják a válasz objektum neve. Ha a változó nem létezik, akkor a házirend sikeres végrehajtása után jön létre, és -en keresztül elérhető lesz [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) gyűjtemény.                                                                                                                                                                                                                                                                                                                          | Igen      | –      |
 | timeout="integer"               | Az időkorlát másodpercben az URL-cím hívása előtt sikertelen lesz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nem       | 60       |
 | ignore-error                    | Ha igaz, és hiba történt a kérés eredményeket:<br /><br /> – Ha a válasz-változóhoz-name tartalmazni fog a null érték lett megadva.<br />– Ha a válasz-változó-neve nincs megadva, az összefüggésben. Kérelem nem fog frissülni.                                                                                                                                                                                                                                                                                                                                                                                   | Nem       | false    |
-| név                            | A fejléc kell beállítani a nevét adja meg.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Igen      | –      |
+| name                            | A fejléc kell beállítani a nevét adja meg.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Igen      | –      |
 | létezik-művelet                   | Itt adható meg, milyen műveleteket, ha a fejléc már meg van adva. Ez az attribútum a következő értékek egyikét kell rendelkeznie.<br /><br /> -felülbírálás - lecseréli a meglévő fejléc értékét.<br />-skip – nem helyettesíti a meglévő fejléc értéke.<br />-hozzáfűzése - az érték hozzáfűzi a meglévő fejléc értéke.<br />a kérelem - delete - eltávolítja a fejléc.<br /><br /> Ha a beállítása `override` felvétel ugyanazzal a névvel több bejegyzést eredményez az összes bejegyzés (amely lesz látható többször) megfelelően beállítása fejléc; csak a felsorolt értékek jelennek meg az eredményt. | Nem       | felülbírálás |
 
 ### <a name="usage"></a>Használat
@@ -714,13 +714,13 @@ Figyeljük meg [tulajdonságok](api-management-howto-properties.md) értékekké
 
 ### <a name="elements"></a>Elemek
 
-| Elem | Leírás  | Kötelező |
+| Elem | Leírás  | Szükséges |
 | ------- | ------------ | -------- |
 | Proxy   | Legfelső szintű elem | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum         | Leírás                                            | Kötelező | Alapértelmezett |
+| Attribútum         | Leírás                                            | Szükséges | Alapértelmezett |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
 | url="string"      | Proxykiszolgáló URL-cím formájában http://host:port.             | Igen      | –     |
 | username="string" | A proxy-hitelesítéshez használandó felhasználónév. | Nem       | –     |
@@ -777,7 +777,7 @@ Ez a minta házirend által használt a `set-method` házirend üzenetet küld e
 
 ### <a name="elements"></a>Elemek
 
-| Elem    | Leírás                                                       | Kötelező |
+| Elem    | Leírás                                                       | Szükséges |
 | ---------- | ----------------------------------------------------------------- | -------- |
 | Set-metódus | A gyökérelem. Az elem értékét adja meg a HTTP-metódus. | Igen      |
 
@@ -820,13 +820,13 @@ Ez a példa bemutatja, hogyan 401-es választ ad vissza, ha a hitelesítési jog
 
 ### <a name="elements"></a>Elemek
 
-| Elem    | Leírás   | Kötelező |
+| Elem    | Leírás   | Szükséges |
 | ---------- | ------------- | -------- |
 | állapot beállítása | A gyökérelem. | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum       | Leírás                                                | Kötelező | Alapértelmezett |
+| Attribútum       | Leírás                                                | Szükséges | Alapértelmezett |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
 | code="integer"  | A HTTP-állapotkód: való visszatéréshez.                            | Igen      | –     |
 | reason="string" | Az az oka az állapotkódot visszaadó leírása. | Igen      | –     |
@@ -858,15 +858,15 @@ A következő példa bemutatja a változó szabály beállítása a bejövő sza
 
 ### <a name="elements"></a>Elemek
 
-| Elem      | Leírás   | Szükséges |
+| Elem      | Leírás   | Kötelező |
 | ------------ | ------------- | -------- |
 | set-variable | A gyökérelem. | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum | Leírás                                                              | Kötelező |
+| Attribútum | Leírás                                                              | Szükséges |
 | --------- | ------------------------------------------------------------------------ | -------- |
-| név      | A változó neve.                                                | Igen      |
+| name      | A változó neve.                                                | Igen      |
 | value     | A változó értékét. Ez lehet konstans érték vagy egy kifejezés. | Igen      |
 
 ### <a name="usage"></a>Használat
@@ -928,13 +928,13 @@ A `trace` házirendet be egy karakterláncot ad hozzá a [API Inspectorral](http
 
 ### <a name="elements"></a>Elemek
 
-| Elem | Leírás   | Szükséges |
+| Elem | Leírás   | Kötelező |
 | ------- | ------------- | -------- |
 | Nyomkövetési   | A gyökérelem. | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum | Leírás                                                                             | Kötelező | Alapértelmezett |
+| Attribútum | Leírás                                                                             | Szükséges | Alapértelmezett |
 | --------- | --------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | A karakterlánc-literál jelentéssel bíró a trace viewer, és adja meg az üzenet forrása. | Igen      | –     |
 
@@ -1004,9 +1004,9 @@ Az alábbi példában kettő `choose` közvetlenül alárendelt szabályzat, sza
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum | Leírás                                                                                                                                                                                                                                                                                                                                                                                                            | Kötelező | Alapértelmezett |
+| Attribútum | Leírás                                                                                                                                                                                                                                                                                                                                                                                                            | Szükséges | Alapértelmezett |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| időtartam:       | Meghatározza, hogy a `wait` házirend megvárja, amíg az összes közvetlenül alárendelt szabályzatok befejezett vagy egyszerűen az egy. Engedélyezett értékek a következők:<br /><br /> - `all` -minden közvetlenül alárendelt szabályzat befejezéséhez várjon<br />-bármely – amíg bármilyen közvetlenül alárendelt házirend végrehajtásához. Az első közvetlenül alárendelt házirend befejezését követően a `wait` házirend befejeződött, és bármely más közvetlenül alárendelt házirendek végrehajtása megszakadt. | Nem       | összes     |
+| a       | Meghatározza, hogy a `wait` házirend megvárja, amíg az összes közvetlenül alárendelt szabályzatok befejezett vagy egyszerűen az egy. Engedélyezett értékek a következők:<br /><br /> - `all` -minden közvetlenül alárendelt szabályzat befejezéséhez várjon<br />-bármely – amíg bármilyen közvetlenül alárendelt házirend végrehajtásához. Az első közvetlenül alárendelt házirend befejezését követően a `wait` házirend befejeződött, és bármely más közvetlenül alárendelt házirendek végrehajtása megszakadt. | Nem       | összes     |
 
 ### <a name="usage"></a>Használat
 

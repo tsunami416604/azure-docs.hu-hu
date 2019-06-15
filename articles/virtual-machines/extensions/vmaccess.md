@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
 ms.openlocfilehash: 71aecc1748e70e2119b1f54c21a0f705afc5d5d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60800056"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Kezelheti a rendszergazda felhasználókat, az SSH és az ellenőrzés, vagy javítsa ki a VMAccess bővítmény használata az Azure CLI-vel Linux rendszerű virtuális gépek lemezeinek
@@ -68,7 +68,7 @@ az vm user update \
 
 > **MEGJEGYZÉS:** A `az vm user update` parancs hozzáfűzi az új nyilvános kulcs szövegét, a `~/.ssh/authorized_keys` a virtuális gépen a rendszergazda felhasználó fájlt. Ez nem cserélje le, vagy távolítsa el minden meglévő SSH-kulcsokat. Ez nem távolítja el korábbi kulcsok beállítása üzembe helyezési idő vagy a VMAccess bővítmény használatával ezt követő frissítésekben.
 
-## <a name="reset-password"></a>Új jelszó létrehozása
+## <a name="reset-password"></a>Másik jelszó kérése
 A következő példa alaphelyzetbe állítja a jelszót a felhasználó `azureuser` nevű virtuális gépre `myVM`:
 
 ```azurecli-interactive

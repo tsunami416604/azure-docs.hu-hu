@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 2b28dde812dcce120c951730c27809f7f024e122
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64681560"
 ---
 # <a name="azure-media-services-concepts"></a>Az Azure Media Services – alapelvek 
@@ -159,7 +159,7 @@ További információkért tekintse át a következő cikkeket:
 - [AES-128 védelme](media-services-protect-with-aes128.md)
 - [PlayReady/Widevine védelme](media-services-protect-with-playready-widevine.md)
 
-## <a name="delivering"></a>Kézbesítés
+## <a name="delivering"></a>Továbbítása
 ### <a name="a-iddynamicpackagingdynamic-packaging"></a><a id="dynamic_packaging"/>A dinamikus csomagolás
 Ha a Media Services dolgozik, javasoljuk, hogy a "mezzanine" formátumú fájlok kódolandó egy adaptív sávszélességű MP4-készletet, és alakítsa át a készlet a kívánt formátumban történő a [dinamikus csomagolási](media-services-dynamic-packaging-overview.md).
 
@@ -194,7 +194,7 @@ Biztosíthatja a felhasználók számára a progresszív letöltési URL-címeke
 
 http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-### <a name="streaming-urls"></a>Streamelési URL-ek
+### <a name="streaming-urls"></a>Streamelési URL-címek
 Az ügyfeleknek a tartalom streamelésének. Streamelési URL-címek biztosíthatja a felhasználók számára, hogy először hozzon létre egy OnDemandOrigin lokátort. A lokátor létrehozása, biztosít az alapútvonal adatfolyam kívánt tartalmat tartalmazó objektumot. Azonban képesek lesznek streamelni az ehhez a tartalomhoz szüksége további az elérési út módosítása. A teljes URL-címe a streamelési jegyzékfájlt létrehozására, a lokátor elérési útjának értéke és a jegyzékfájlt (filename.ism) kell összefűzni fájl nevét. A lokátor elérési útja, majd hozzáfűzése /Manifest és a egy megfelelő formátumú (ha szükséges).
 
 SSL-kapcsolaton keresztül is streamelheti a tartalmat. Ehhez ellenőrizze, hogy a streamelési URL-címek indítsa el a HTTPS. Jelenleg az AMS nem támogatja az SSL egyéni tartománnyal rendelkező.  

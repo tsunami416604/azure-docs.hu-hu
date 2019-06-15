@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
 ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60632872"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>A StorSimple-Eszközkezelő szolgáltatás figyelő hardverösszetevők és állapot használata
@@ -81,67 +81,67 @@ Az alábbi táblázat ismerteti a fizikai és logikai összetevők, a helyszíni
 
 | Összetevő | Modul | Típus | Location egység | Telepen cserélhető egység (FRU)? | Leírás |
 | --- | --- | --- | --- | --- | --- |
-| Meghajtó a [0, 11] bővítőhelyen |Lemezmeghajtók |Fizikai |Közös |Igen |Az SSD vagy HDD meghajtókat a elsődleges ház az egysoros jelennek meg. |
-| Környezeti hőmérséklet-érzékelő |Rendszerház |Fizikai |Közös |Nem |A váz a hőmérsékletet méri. |
-| Közepes adatsík hőmérséklet-érzékelő |Rendszerház |Fizikai |Közös |Nem |A hőmérsékletet, a közepes sík méri. |
-| Hallható riasztás |Rendszerház |Fizikai |Közös |Nem |Azt jelzi, hogy a hallható riasztás alrendszer a váz belül működik. |
-| Rendszerház |Rendszerház |Fizikai |Közös |Igen |Jelzi, hogy a vázat. |
-| Házbeállítások |Rendszerház |Fizikai |Közös |Nem |A váz előlapja hivatkozik. |
-| Sor feszültség-érzékelő |A PCM |Fizikai |Közös |Nem |Számos sor feszültség-érzékelő állapotuk jelenik meg, amely azt jelzi, hogy a mért feszültség tűréshatáron belül van. |
-| Sor aktuális érzékelők |A PCM |Fizikai |Közös |Nem |Számos sor aktuális érzékelők állapotuk jelenik meg, amely azt jelzi, hogy a mért jelenlegi tűréshatáron belül van. |
-| Hőmérséklet-érzékelő a PCM-ben |A PCM |Fizikai |Közös |Nem |Számos például bemeneti hőmérséklet-érzékelő- és elérési pont érzékelők rendelkezik saját jelző állapot. jelenik meg, hogy tolerancia belül van-e a mért hőmérséklet. |
-| [0-1] tápegység |A PCM |Fizikai |Közös |Igen |Egy sor minden a tápegységek, az a két PCMs, az eszköz hátoldalán található jelennek meg. |
-| Hűtés a [0-1] |A PCM |Fizikai |Közös |Igen |Egy sor minden a két PCMs szereplő négy hűtőventilátorok jelennek meg. |
-| Akkumulátor [0-1] |A PCM |Fizikai |Közös |Igen |Egy sor minden a a biztonsági mentési akkumulátor a PCM a rendszer illeszkedik modulok jelennek meg. |
-| Metis |– |Logikai |Közös |– |Az elemek állapotát jeleníti meg: e azok díjszabási kell, és hamarosan eléri teljes életciklusa. |
-| Fürt |– |Logikai |Közös |– |A fürtökön létrehozott két integrált vezérlő moduljai közötti állapotát jeleníti meg. |
-| Fürtcsomópont |– |Logikai |Közös |– |Azt jelzi, hogy a fürt részeként a vezérlő állapota. |
+| Meghajtó a [0, 11] bővítőhelyen |Lemezmeghajtók |Fizikai |Megosztott |Igen |Az SSD vagy HDD meghajtókat a elsődleges ház az egysoros jelennek meg. |
+| Környezeti hőmérséklet-érzékelő |Rendszerház |Fizikai |Megosztott |Nem |A váz a hőmérsékletet méri. |
+| Közepes adatsík hőmérséklet-érzékelő |Rendszerház |Fizikai |Megosztott |Nem |A hőmérsékletet, a közepes sík méri. |
+| Hallható riasztás |Rendszerház |Fizikai |Megosztott |Nem |Azt jelzi, hogy a hallható riasztás alrendszer a váz belül működik. |
+| Rendszerház |Rendszerház |Fizikai |Megosztott |Igen |Jelzi, hogy a vázat. |
+| Házbeállítások |Rendszerház |Fizikai |Megosztott |Nem |A váz előlapja hivatkozik. |
+| Sor feszültség-érzékelő |A PCM |Fizikai |Megosztott |Nem |Számos sor feszültség-érzékelő állapotuk jelenik meg, amely azt jelzi, hogy a mért feszültség tűréshatáron belül van. |
+| Sor aktuális érzékelők |A PCM |Fizikai |Megosztott |Nem |Számos sor aktuális érzékelők állapotuk jelenik meg, amely azt jelzi, hogy a mért jelenlegi tűréshatáron belül van. |
+| Hőmérséklet-érzékelő a PCM-ben |A PCM |Fizikai |Megosztott |Nem |Számos például bemeneti hőmérséklet-érzékelő- és elérési pont érzékelők rendelkezik saját jelző állapot. jelenik meg, hogy tolerancia belül van-e a mért hőmérséklet. |
+| [0-1] tápegység |A PCM |Fizikai |Megosztott |Igen |Egy sor minden a tápegységek, az a két PCMs, az eszköz hátoldalán található jelennek meg. |
+| Hűtés a [0-1] |A PCM |Fizikai |Megosztott |Igen |Egy sor minden a két PCMs szereplő négy hűtőventilátorok jelennek meg. |
+| Akkumulátor [0-1] |A PCM |Fizikai |Megosztott |Igen |Egy sor minden a a biztonsági mentési akkumulátor a PCM a rendszer illeszkedik modulok jelennek meg. |
+| Metis |– |Logikai |Megosztott |– |Az elemek állapotát jeleníti meg: e azok díjszabási kell, és hamarosan eléri teljes életciklusa. |
+| Fürt |– |Logikai |Megosztott |– |A fürtökön létrehozott két integrált vezérlő moduljai közötti állapotát jeleníti meg. |
+| Fürtcsomópont |– |Logikai |Megosztott |– |Azt jelzi, hogy a fürt részeként a vezérlő állapota. |
 | Fürtök kvóruma számára |– |Logikai | |– |Jelzi, hogy a legtöbb lemezen tagság a HDD-tárolókészlet. |
-| HDD-adatterület |– |Logikai |Közös |– |A merevlemez-meghajtó (HDD) tárolókészletben levő adatok használt lemezterület. |
-| Felügyeleti HDD-terület |– |Logikai |Közös |– |A felügyeleti feladatokhoz HDD a tárolókészletben lefoglalt terület. |
-| HDD-kvórumterület |– |Logikai |Közös |– |A HDD-tárolókészlet fürtök kvóruma számára lefoglalt terület. |
-| HDD-bővítőhely |– |Logikai |Közös |– |A HDD vezérlő cseréje a tárolókészletben lefoglalt terület. |
-| SSD data space |– |Logikai |Közös |– |A felhasznált lemezterület a tárolókészletben szemben – tartós állapotú meghajtót (SSD) adatok. |
-| SSD NVRAM-terület |– |Logikai |Közös |– |A tárolókészlet SSD NVRAM logikai kijelölt tárolóhely. |
-| HDD-tárolókészlet |– |Logikai |Közös |– |Az eszközről HDD-k létrehozása logikai a tárolókészlet állapotát jeleníti meg. |
-| SSD-tárolókészlet |– |Logikai |Közös |– |Az eszközről SSD-k létrehozása logikai a tárolókészlet állapotát jeleníti meg. |
-| Vezérlő [0-1] [állapot] |I/O |Fizikai |Vezérlő |Igen |A vezérlő állapotát jeleníti meg, és hogy a váz belül aktív vagy készenléti üzemmódban van. |
-| Hőmérséklet-érzékelő a tartományvezérlő |I/O |Fizikai |Vezérlő |Nem |Például i/o-modul, CPU hőmérséklet, DIMM és PCIe érzékelők számos hőmérséklet-érzékelő állapotuk jelenik meg, amely azt jelzi-e a hőmérséklet észlelt tűréshatáron belül van. |
-| SAS-bővítő |I/O |Fizikai |Vezérlő |Nem |A soros csatlakoztatott SCSI (SAS) bővítő, az integrált tárolási csatlakozni a vezérlő használt állapotát jelzi. |
-| SAS-csatlakozó [0-1] |I/O |Fizikai |Vezérlő |Nem |Azt jelzi, hogy minden egyes SAS-csatlakozó, integrált tárolási csatlakozni a SAS-bővítő használt állapotát. |
-| SBB közepes adatsík összekötöje |I/O |Fizikai |Vezérlő |Nem |Azt jelzi, hogy a közepes adatsík-összekötőt, amely minden vezérlő kapcsolódhat a közepes síknak állapotát. |
-| Processzormag |I/O |Fizikai |Vezérlő |Nem |A Processzormagok belül minden vezérlő állapotát jelzi. |
-| Házelektronikai tápegység |I/O |Fizikai |Vezérlő |Nem |Azt jelzi, hogy az a ház által használt energiaellátási rendszer állapotát. |
-| Házelektronikai diagnosztika |I/O |Fizikai |Vezérlő |Nem |A diagnosztika alrendszerek a vezérlő által biztosított állapotát jelzi. |
-| Alaplapi felügyeleti vezérlőnek (BMC) |I/O |Fizikai |Vezérlő |Nem |Azt jelzi, hogy az alaplapi felügyeleti vezérlőnek (BMC), amely egy speciális szolgáltatás processzor, amely figyeli a hardvereszköz érzékelők keresztül, és a rendszergazda független kapcsolaton keresztül kommunikál a állapotát. |
-| Ethernet |I/O |Fizikai |Vezérlő |Nem |Azt jelzi, hogy a hálózati adapterek, amelyek a felügyeleti és a vezérlőn megadott adatok portok állapotát. |
-| NVRAM |I/O |Fizikai |Vezérlő |Nem |NVRAM, egy biztonsági másolatot készít a telep fenntartani áramkimaradás esetén az alkalmazás kritikus fontosságú információkat ellátó nem felejtő közvetlen elérésű memória állapotát jelzi. |
+| HDD-adatterület |– |Logikai |Megosztott |– |A merevlemez-meghajtó (HDD) tárolókészletben levő adatok használt lemezterület. |
+| Felügyeleti HDD-terület |– |Logikai |Megosztott |– |A felügyeleti feladatokhoz HDD a tárolókészletben lefoglalt terület. |
+| HDD-kvórumterület |– |Logikai |Megosztott |– |A HDD-tárolókészlet fürtök kvóruma számára lefoglalt terület. |
+| HDD-bővítőhely |– |Logikai |Megosztott |– |A HDD vezérlő cseréje a tárolókészletben lefoglalt terület. |
+| SSD data space |– |Logikai |Megosztott |– |A felhasznált lemezterület a tárolókészletben szemben – tartós állapotú meghajtót (SSD) adatok. |
+| SSD NVRAM-terület |– |Logikai |Megosztott |– |A tárolókészlet SSD NVRAM logikai kijelölt tárolóhely. |
+| HDD-tárolókészlet |– |Logikai |Megosztott |– |Az eszközről HDD-k létrehozása logikai a tárolókészlet állapotát jeleníti meg. |
+| SSD-tárolókészlet |– |Logikai |Megosztott |– |Az eszközről SSD-k létrehozása logikai a tárolókészlet állapotát jeleníti meg. |
+| Vezérlő [0-1] [állapot] |I/O |Fizikai |tartományvezérlő |Igen |A vezérlő állapotát jeleníti meg, és hogy a váz belül aktív vagy készenléti üzemmódban van. |
+| Hőmérséklet-érzékelő a tartományvezérlő |I/O |Fizikai |tartományvezérlő |Nem |Például i/o-modul, CPU hőmérséklet, DIMM és PCIe érzékelők számos hőmérséklet-érzékelő állapotuk jelenik meg, amely azt jelzi-e a hőmérséklet észlelt tűréshatáron belül van. |
+| SAS-bővítő |I/O |Fizikai |tartományvezérlő |Nem |A soros csatlakoztatott SCSI (SAS) bővítő, az integrált tárolási csatlakozni a vezérlő használt állapotát jelzi. |
+| SAS-csatlakozó [0-1] |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy minden egyes SAS-csatlakozó, integrált tárolási csatlakozni a SAS-bővítő használt állapotát. |
+| SBB közepes adatsík összekötöje |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy a közepes adatsík-összekötőt, amely minden vezérlő kapcsolódhat a közepes síknak állapotát. |
+| Processzormag |I/O |Fizikai |tartományvezérlő |Nem |A Processzormagok belül minden vezérlő állapotát jelzi. |
+| Házelektronikai tápegység |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy az a ház által használt energiaellátási rendszer állapotát. |
+| Házelektronikai diagnosztika |I/O |Fizikai |tartományvezérlő |Nem |A diagnosztika alrendszerek a vezérlő által biztosított állapotát jelzi. |
+| Alaplapi felügyeleti vezérlőnek (BMC) |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy az alaplapi felügyeleti vezérlőnek (BMC), amely egy speciális szolgáltatás processzor, amely figyeli a hardvereszköz érzékelők keresztül, és a rendszergazda független kapcsolaton keresztül kommunikál a állapotát. |
+| Ethernet |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy a hálózati adapterek, amelyek a felügyeleti és a vezérlőn megadott adatok portok állapotát. |
+| NVRAM |I/O |Fizikai |tartományvezérlő |Nem |NVRAM, egy biztonsági másolatot készít a telep fenntartani áramkimaradás esetén az alkalmazás kritikus fontosságú információkat ellátó nem felejtő közvetlen elérésű memória állapotát jelzi. |
 
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>A StorSimple-eszköz EBOD ház összetevő lista
 Az alábbi táblázat ismerteti a fizikai és logikai összetevők, a helyszíni StorSimple eszköz (csak jelen 8600-as modell) EBOD ház található.
 
 | Összetevő | Modul | Típus | Location egység | FRU? | Leírás |
 | --- | --- | --- | --- | --- | --- |
-| Meghajtó a [0, 11] bővítőhelyen |Lemezmeghajtók |Fizikai |Közös |Igen |Egy sor minden a HDD meghajtókon található a EBOD ház jelennek meg. |
-| Környezeti hőmérséklet-érzékelő |Rendszerház |Fizikai |Közös |Nem |A váz a hőmérsékletet méri. |
-| Közepes adatsík hőmérséklet-érzékelő |Rendszerház |Fizikai |Közös |Nem |A hőmérsékletet, a közepes sík méri. |
-| Hallható riasztás |Rendszerház |Fizikai |Közös |Nem |Azt jelzi, hogy a hallható riasztás alrendszer a váz belül működik. |
-| Rendszerház |Rendszerház |Fizikai |Közös |Igen |Jelzi, hogy a vázat. |
-| Házbeállítások |Rendszerház |Fizikai |Közös |Nem |Az OPS vagy a váz előlapja vonatkozik. |
-| Sor feszültség-érzékelő |A PCM |Fizikai |Közös |Nem |Számos sor feszültség-érzékelő állapotuk jelenik meg, amely azt jelzi, hogy a mért feszültség tűréshatáron belül van. |
-| Sor aktuális érzékelők |A PCM |Fizikai |Közös |Nem |Számos sor aktuális érzékelők állapotuk jelenik meg, amely azt jelzi, hogy a mért jelenlegi tűréshatáron belül van. |
-| Hőmérséklet-érzékelő a PCM-ben |A PCM |Fizikai |Közös |Nem |Számos például bemeneti hőmérséklet-érzékelő- és elérési pont érzékelők rendelkezik az állapotuk jelenik meg, amely azt jelzi, hogy a mért hőmérséklet tűréshatáron belül vannak. |
-| [0-1] tápegység |A PCM |Fizikai |Közös |Igen |Egy sor minden a tápegységek, az a két PCMs, az eszköz hátoldalán található jelennek meg. |
-| Hűtés a [0-1] |A PCM |Fizikai |Közös |Igen |Egy sor minden a két PCMs szereplő négy hűtőventilátorok jelennek meg. |
-| Helyi tároló [HDD] |– |Logikai |Közös |– |Az eszközről HDD-k létrehozása logikai a tárolókészlet állapotát jeleníti meg. |
-| Vezérlő [0-1] [állapot] |I/O |Fizikai |Vezérlő |Igen |Az EBOD-modul a tartományvezérlők állapotát jeleníti meg. |
-| Az EBOD hőmérséklet-érzékelő |I/O |Fizikai |Vezérlő |Nem |Minden egyes vezérlőről számos hőmérséklet-érzékelő állapotuk jelenik meg, amely azt jelzi, hogy a hőmérséklet észlelt tűréshatáron belül van. |
-| SAS-bővítő |I/O |Fizikai |Vezérlő |Nem |A SAS-bővítő, az integrált tárolási csatlakozni a vezérlő használt állapotát jelzi. |
-| SAS-csatlakozó [0, 2] |I/O |Fizikai |Vezérlő |Nem |Azt jelzi, hogy minden egyes SAS-csatlakozó, integrált tárolási csatlakozni a SAS-bővítő használt állapotát. |
-| SBB közepes adatsík összekötöje |I/O |Fizikai |Vezérlő |Nem |Azt jelzi, hogy a közepes adatsík-összekötőt, amely minden vezérlő kapcsolódhat a közepes síknak állapotát. |
-| Házelektronikai tápegység |I/O |Fizikai |Vezérlő |Nem |Azt jelzi, hogy az a ház által használt energiaellátási rendszer állapotát. |
-| Házelektronikai diagnosztika |I/O |Fizikai |Vezérlő |Nem |A diagnosztika alrendszerek a vezérlő által biztosított állapotát jelzi. |
-| Az eszközvezérlő kapcsolat |I/O |Fizikai |Vezérlő |Nem |Az EBOD i/o-modulja, és az eszközvezérlő közötti kapcsolat állapotát jelzi. |
+| Meghajtó a [0, 11] bővítőhelyen |Lemezmeghajtók |Fizikai |Megosztott |Igen |Egy sor minden a HDD meghajtókon található a EBOD ház jelennek meg. |
+| Környezeti hőmérséklet-érzékelő |Rendszerház |Fizikai |Megosztott |Nem |A váz a hőmérsékletet méri. |
+| Közepes adatsík hőmérséklet-érzékelő |Rendszerház |Fizikai |Megosztott |Nem |A hőmérsékletet, a közepes sík méri. |
+| Hallható riasztás |Rendszerház |Fizikai |Megosztott |Nem |Azt jelzi, hogy a hallható riasztás alrendszer a váz belül működik. |
+| Rendszerház |Rendszerház |Fizikai |Megosztott |Igen |Jelzi, hogy a vázat. |
+| Házbeállítások |Rendszerház |Fizikai |Megosztott |Nem |Az OPS vagy a váz előlapja vonatkozik. |
+| Sor feszültség-érzékelő |A PCM |Fizikai |Megosztott |Nem |Számos sor feszültség-érzékelő állapotuk jelenik meg, amely azt jelzi, hogy a mért feszültség tűréshatáron belül van. |
+| Sor aktuális érzékelők |A PCM |Fizikai |Megosztott |Nem |Számos sor aktuális érzékelők állapotuk jelenik meg, amely azt jelzi, hogy a mért jelenlegi tűréshatáron belül van. |
+| Hőmérséklet-érzékelő a PCM-ben |A PCM |Fizikai |Megosztott |Nem |Számos például bemeneti hőmérséklet-érzékelő- és elérési pont érzékelők rendelkezik az állapotuk jelenik meg, amely azt jelzi, hogy a mért hőmérséklet tűréshatáron belül vannak. |
+| [0-1] tápegység |A PCM |Fizikai |Megosztott |Igen |Egy sor minden a tápegységek, az a két PCMs, az eszköz hátoldalán található jelennek meg. |
+| Hűtés a [0-1] |A PCM |Fizikai |Megosztott |Igen |Egy sor minden a két PCMs szereplő négy hűtőventilátorok jelennek meg. |
+| Helyi tároló [HDD] |– |Logikai |Megosztott |– |Az eszközről HDD-k létrehozása logikai a tárolókészlet állapotát jeleníti meg. |
+| Vezérlő [0-1] [állapot] |I/O |Fizikai |tartományvezérlő |Igen |Az EBOD-modul a tartományvezérlők állapotát jeleníti meg. |
+| Az EBOD hőmérséklet-érzékelő |I/O |Fizikai |tartományvezérlő |Nem |Minden egyes vezérlőről számos hőmérséklet-érzékelő állapotuk jelenik meg, amely azt jelzi, hogy a hőmérséklet észlelt tűréshatáron belül van. |
+| SAS-bővítő |I/O |Fizikai |tartományvezérlő |Nem |A SAS-bővítő, az integrált tárolási csatlakozni a vezérlő használt állapotát jelzi. |
+| SAS-csatlakozó [0, 2] |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy minden egyes SAS-csatlakozó, integrált tárolási csatlakozni a SAS-bővítő használt állapotát. |
+| SBB közepes adatsík összekötöje |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy a közepes adatsík-összekötőt, amely minden vezérlő kapcsolódhat a közepes síknak állapotát. |
+| Házelektronikai tápegység |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy az a ház által használt energiaellátási rendszer állapotát. |
+| Házelektronikai diagnosztika |I/O |Fizikai |tartományvezérlő |Nem |A diagnosztika alrendszerek a vezérlő által biztosított állapotát jelzi. |
+| Az eszközvezérlő kapcsolat |I/O |Fizikai |tartományvezérlő |Nem |Az EBOD i/o-modulja, és az eszközvezérlő közötti kapcsolat állapotát jelzi. |
 
 ## <a name="next-steps"></a>További lépések
 * Az eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás használatához lépjen a [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).

@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7bf064ff01693f7a65c756a99c435d7f1a39840e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61409415"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>Telepítse a frissítéseket a StorSimple Virtual Array – az Azure Portalon
@@ -33,7 +33,7 @@ Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése az eszköz új
 Mielőtt alkalmazná a frissítést, javasoljuk, hogy tegye meg a kötetek vagy megosztások kapcsolat nélküli módban a gazdagépen első és az eszköz majd. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét.
 
 > [!IMPORTANT]
-> 0.1-es frissítés vagy a GA szoftververziók futtatja, ha a gyorsjavítás metódus a helyi webes felhasználói felületen a 0.3 telepítéséhez kell használnia. 0.2-es frissítést futtatja, azt javasoljuk, hogy telepíti a frissítéseket, a klasszikus Azure portálon keresztül.
+> 0\.1-es frissítés vagy a GA szoftververziók futtatja, ha a gyorsjavítás metódus a helyi webes felhasználói felületen a 0.3 telepítéséhez kell használnia. 0\.2-es frissítést futtatja, azt javasoljuk, hogy telepíti a frissítéseket, a klasszikus Azure portálon keresztül.
  
 
 ## <a name="use-the-local-web-ui"></a>A helyi webes felhasználói felület használata
@@ -59,7 +59,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
    
     ![Keresés a katalógusban](./media/storsimple-virtual-array-install-update/download1.png)
 
-4. Kattintson a **Hozzáadás** parancsra. Ezzel a frissítést hozzáadja a kosárhoz.
+4. Kattintson a **Hozzáadás**lehetőségre. Ezzel a frissítést hozzáadja a kosárhoz.
 
 5. Kattintson a **Kosár megtekintése** gombra.
 
@@ -100,7 +100,7 @@ Ez a módszer használatával egy GA futtató eszközre telepítse a frissítés
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-0.2-es frissítést futtatja, azt javasoljuk, hogy az Azure Portalon keresztül frissítések telepítése. A portál eljárás a felhasználónak vizsgálata, töltse le és telepítse a frissítéseket. Ez az eljárás végrehajtásához körülbelül 7 perc szükséges. A következő lépésekkel telepítse a frissítést vagy gyorsjavítást.
+0\.2-es frissítést futtatja, azt javasoljuk, hogy az Azure Portalon keresztül frissítések telepítése. A portál eljárás a felhasználónak vizsgálata, töltse le és telepítse a frissítéseket. Ez az eljárás végrehajtásához körülbelül 7 perc szükséges. A következő lépésekkel telepítse a frissítést vagy gyorsjavítást.
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal.md)]
 

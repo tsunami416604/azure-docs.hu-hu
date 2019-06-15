@@ -17,10 +17,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 81535d51617a419174331dbf9b18ea558913dfa9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60922241"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépeken alkalmazások csatlakozási hibáinak elhárítása
@@ -69,7 +69,7 @@ Az alkalmazás egy helyek közötti VPN vagy ExpressRoute-kapcsolaton keresztül
 
 A problémáról és annak javítási okának meghatározása, kövesse az alábbi lépéseket.
 
-## <a name="step-1-access-application-from-target-vm"></a>1. lépés: Hozzáférési kérelem a cél virtuális gép
+## <a name="step-1-access-application-from-target-vm"></a>1\. lépés: Hozzáférési kérelem a cél virtuális gép
 Próbálja meg elérni az alkalmazást a megfelelő ügyféloldali-program, amelyen fut a virtuális gépről. Használja a helyi gazdagép nevét, a helyi IP-címet, vagy a visszacsatolási cím (127.0.0.1).
 
 ![Indítsa el az alkalmazást közvetlenül a virtuális gépről](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)

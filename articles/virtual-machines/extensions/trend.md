@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
 ms.openlocfilehash: d7808fbff0199105a12c0570807876413d5c98c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60800147"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security szolgáltatásként való telepítése és konfigurálása windowsos virtuális gépen
@@ -67,7 +67,7 @@ Először is győződjön meg arról, hogy a Virtuálisgép-ügynök már telep�
 
 Ha nem ismeri a felhőszolgáltatás és a virtuális gép nevét, futtassa **Get-AzureVM** , hogy a virtuális gépek adatainak megjelenítése az aktuális előfizetésben.
 
-Ha a **write-host** értéket ad vissza a parancs **igaz**, a Virtuálisgép-ügynök telepítve van. Ha a visszaadott érték **false (hamis)**, tekintse meg az utasításokat, és az Azure ebben a blogbejegyzésben a letöltésére mutató hivatkozást [Virtuálisgép-ügynök és -bővítmények – 2. rész](https://go.microsoft.com/fwlink/p/?LinkId=403947).
+Ha a **write-host** értéket ad vissza a parancs **igaz**, a Virtuálisgép-ügynök telepítve van. Ha a visszaadott érték **false (hamis)** , tekintse meg az utasításokat, és az Azure ebben a blogbejegyzésben a letöltésére mutató hivatkozást [Virtuálisgép-ügynök és -bővítmények – 2. rész](https://go.microsoft.com/fwlink/p/?LinkId=403947).
 
 Ha a Virtuálisgép-ügynök van telepítve, futtassa a következő parancsokat.
 

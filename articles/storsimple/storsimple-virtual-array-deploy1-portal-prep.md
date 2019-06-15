@@ -16,10 +16,10 @@ ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127140"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>A StorSimple Virtual Array üzembe helyezése – előkészítése az Azure Portalon
@@ -90,7 +90,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 Használja az alábbi részletes útmutatás a portál előkészítése a StorSimple-Eszközkezelő szolgáltatásban.
 
-## <a name="step-1-create-a-new-service"></a>1. lépés: Új szolgáltatás létrehozása
+## <a name="step-1-create-a-new-service"></a>1\. lépés: Új szolgáltatás létrehozása
 
 A StorSimple-Eszközkezelő szolgáltatás egyetlen példánya több StorSimple Virtual Arrayt kezelheti. Az alábbi lépések végrehajtásával hozza létre a StorSimple-eszközkezelő szolgáltatás egy példányát. Ha rendelkezik egy meglévő StorSimple-Eszközkezelő szolgáltatás kezelése a virtuális tömböket, kihagyhatja ezt a lépést, és folytassa [2. lépés: A Szolgáltatásregisztrációs kulcs lekérése](#step-2-get-the-service-registration-key).
 
@@ -104,7 +104,7 @@ A StorSimple-Eszközkezelő szolgáltatás egyetlen példánya több StorSimple 
 > 
 > 
 
-## <a name="step-2-get-the-service-registration-key"></a>2. lépés: Szolgáltatásregisztrációs kulcs lekérése
+## <a name="step-2-get-the-service-registration-key"></a>2\. lépés: Szolgáltatásregisztrációs kulcs lekérése
 
 Ha a StorSimple-eszközkezelő szolgáltatás működik és elérhető, le kell kérnie a szolgáltatásregisztrációs kulcsot. Ezzel a kulccsal regisztrálhatja és csatlakoztathatja StorSimple eszközét a szolgáltatáshoz.
 
@@ -117,7 +117,7 @@ Hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure
 > 
 > 
 
-## <a name="step-3-download-the-virtual-array-image"></a>3. lépés: A virtuális tömb lemezképének letöltése
+## <a name="step-3-download-the-virtual-array-image"></a>3\. lépés: A virtuális tömb lemezképének letöltése
 
 Miután a szolgáltatás regisztrációs kulcsával, szüksége lesz a virtuális tömb létrehozása a fogadó rendszeren a megfelelő virtuális tömb lemezképének letöltése. A virtuális tömb lemezképeket adott operációs rendszer és letölthető a gyors üzembe helyezés lap az Azure Portalon.
 
@@ -152,7 +152,7 @@ Hajtsa végre a következő lépéseket a [az Azure portal](https://ms.portal.az
 
 1. Keresse meg a Device Manager szolgáltatáshoz, válassza ki, és kattintson rá duplán. Ekkor megnyílik a **áttekintése** panelen.
 2. Válassza ki **Tárfiók hitelesítő adatainak** belül a **konfigurációs** szakaszban.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 4. Az a **tárfiók hozzáadása** panelen tegye a következőket:
    
    1. A **előfizetés**válassza **aktuális**.
@@ -161,7 +161,7 @@ Hajtsa végre a következő lépéseket a [az Azure portal](https://ms.portal.az
    
    3. Válassza ki **engedélyezése** a StorSimple-eszköz és a felhő közötti hálózati kommunikációhoz biztonságos csatornát létrehozni. Válassza ki **letiltása** csak akkor, ha a magánfelhő belül működik.
    
-   4. Kattintson a **Hozzáadás** parancsra. A storage-fiók sikeres létrehozása után értesítést kap.<br></br>
+   4. Kattintson a **Hozzáadás**lehetőségre. A storage-fiók sikeres létrehozása után értesítést kap.<br></br>
    
       ![Egy meglévő tárfiók-hitelesítő adat hozzáadása](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

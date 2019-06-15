@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60758664"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Fürt horizontális felskálázás változó igényeket elégíthet kezelése
@@ -32,7 +32,7 @@ A következő ábrán látható a folyamat a következő néhány lépést. Tov�
 
 1. Az a **automatikus skálázási beállítás neve** mezőben adjon meg egy nevet, például: *horizontális felskálázás: kihasználtsági gyorsítótár*. 
 
-   ![Szabály skálázása](media/manage-cluster-scaling/scale-rule.png)
+   ![Skálázási szabályhoz](media/manage-cluster-scaling/scale-rule.png)
 
 2. A **skálázási mód**válassza **skálázás metrika alapján**. Ebben a módban a dinamikus méretezést biztosít. Lehetőség kiválasztásával **skálázás adott példányszámra**.
 

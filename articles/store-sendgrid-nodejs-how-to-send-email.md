@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60931704"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Hogyan lehet E-mail küldése a SendGrid, a Node.js használatával
@@ -143,7 +143,7 @@ Szűrők használatával is alkalmazható egy üzenetet a **szűrők** tulajdons
 Minden szűrő egy szűrő-specifikus beállításokat tartalmazó kivonat szerint van megadva.
 Az alábbi példák bemutatják, az élőláb, majd kattintson a szűrők követés:
 
-### <a name="footer"></a>Lábléc
+### <a name="footer"></a>Élőláb
 
 ```javascript
 var email = new sendgrid.Email({

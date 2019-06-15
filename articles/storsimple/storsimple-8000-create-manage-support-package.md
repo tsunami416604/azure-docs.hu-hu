@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61481873"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Létrehozása és kezelése a StorSimple 8000 sorozat támogatási csomag
@@ -75,7 +75,7 @@ Az Export-HcsSupportPackage parancsmag a következő paramétereket is használh
 | Paraméter | Kötelező/választható | Leírás |
 | --- | --- | --- |
 | `-Path` |Szükséges |Használatával a megosztott hálózati mappát, amelyben a támogatási csomag kerül helyének megadására. |
-| `-EncryptionPassphrase` |Szükséges |Adjon meg egy jelszót a segítségével titkosítja a támogatási csomag használatával. |
+| `-EncryptionPassphrase` |Kötelező |Adjon meg egy jelszót a segítségével titkosítja a támogatási csomag használatával. |
 | `-Credential` |Optional |Adja meg a hálózati megosztott mappában a hozzáférési hitelesítő adatok használatával. |
 | `-Force` |Optional |Használja a titkosítási jelszót megerősítési lépés kihagyásához. |
 | `-PackageTag` |Optional |Megadhatja egy könyvtárat *elérési út* található, amely a támogatási csomagot el van helyezve. Az alapértelmezett érték a [device name]-[beállított aktuális dátum és time:yyyy-MM-dd-HH-mm-ss]. |

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
 ms.openlocfilehash: d704c32ee7417c6460ad6cc880e451adddfa61de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61345754"
 ---
 # <a name="azure-data-factory-faq"></a>Az Azure Data Factory – gyakori kérdések
@@ -139,7 +139,7 @@ Az adathalmaz olyan, szigorúan típusos paraméterek és a egy entitás, amely 
 
 A társított szolgáltatás nem is egy adattárat vagy számítási környezetek kapcsolatadatait tartalmazó, szigorúan típusos paraméterek. Emellett akkor is olyan entitás, amely akkor újrafelhasználás vagy hivatkozás.
 
-### <a name="control-flows"></a>Vezérlő folyamatok
+### <a name="control-flows"></a>Vezérlőfolyamatok
 Vezérlő folyamatok szervezése tevékenységlánc egy feladatütemezési, az elágaztatást, a folyamat szintjén meghatározó paraméterek tartalmazó folyamat tevékenységek és argumentumokat, át kell adnia a folyamat igény szerint vagy egy eseményindítóból meghívását. Vezérlő folyamatok átadása és (vagyis a foreach iterátorok) tárolók hurkolása egyéni állapota is.
 
 

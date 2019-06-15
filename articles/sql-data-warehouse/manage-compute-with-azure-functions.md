@@ -11,10 +11,10 @@ ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
 ms.openlocfilehash: b94e4c6f178119d6205c302cf35a9effaf2aa885
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61083861"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Az Azure Functions használatával kezelheti a számítási erőforrásokat az Azure SQL Data Warehouse
@@ -140,35 +140,35 @@ A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezeknek a függv
 
 Ez a szakasz röviden bemutatja, hogy mire szükség összetettebb ütemezéséhez szüneteltetése, folytatása, és skálázhatóságának.
 
-### <a name="example-1"></a>1. példa:
+### <a name="example-1"></a>1\. példa:
 
 Vertikális felskálázás 8:00-kor DW600 értékre, és vertikális leskálázás 20:00-kor DW200 értékre, minden nap.
 
 | Függvény  | Ütemezés     | Művelet                                |
 | :-------- | :----------- | :--------------------------------------- |
-| 1. függvény | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",  "ServiceLevelObjective": "DW600"}` |
-| 2. függvény | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
+| 1\. függvény | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",  "ServiceLevelObjective": "DW600"}` |
+| 2\. függvény | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
 
-### <a name="example-2"></a>2. példa 
+### <a name="example-2"></a>2\. példa 
 
 Vertikális reggel 8 -kor dw1000 értékre, vertikális leskálázás egyszer DW600,:, és 10-kor DW200 értékre, vertikális leskálázás.
 
 | Függvény  | Ütemezés     | Művelet                                |
 | :-------- | :----------- | :--------------------------------------- |
-| 1. függvény | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",  "ServiceLevelObjective": "DW1000"}` |
-| 2. függvény | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
-| 3. függvény | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
+| 1\. függvény | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",  "ServiceLevelObjective": "DW1000"}` |
+| 2\. függvény | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
+| 3\. függvény | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
 
-### <a name="example-3"></a>3. példa: 
+### <a name="example-3"></a>3\. példa: 
 
 Vertikális felskálázás 8:00-kor DW1000 értékre, és vertikális leskálázás 16:00-kor DW600 értékre a hétköznapokon. Szüneteltetés péntek 23:00-kor, folytatás hétfő reggel 7:00-kor.
 
 | Függvény  | Ütemezés       | Művelet                                |
 | :-------- | :------------- | :--------------------------------------- |
-| 1. függvény | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
-| 2. függvény | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
-| 3. függvény | 0 0 23 * * 5   | `var operation = {"operationType": "PauseDw"}` |
-| 4. függvény | 0 0 7 * * 0    | `var operation = {"operationType": "ResumeDw"}` |
+| 1\. függvény | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
+| 2\. függvény | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
+| 3\. függvény | 0 0 23 * * 5   | `var operation = {"operationType": "PauseDw"}` |
+| 4\. függvény | 0 0 7 * * 0    | `var operation = {"operationType": "ResumeDw"}` |
 
 
 

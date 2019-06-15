@@ -17,11 +17,11 @@ ms.date: 03/27/2019
 ms.author: v-ant
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 85ddcf3aff7d15c946230cedb0da190bca6aeab7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127497"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64721939"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása alapkövei OnDemand konfigurálása
 
@@ -105,7 +105,7 @@ Felhasználók automatikus átadása alapkövei OnDemand az Azure AD-ben konfigu
 
     * Az a **tartomány** mezőben adja meg a web service URL-címét a alapkövei OnDemand-bérlő. Ha például a szolgáltatás nem található: `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`, és a Contoso tartomány van `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`. A web service URL-cím lekérésével további információkért lásd: [e pdf](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
 
-6. 5. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** , győződjön meg arról, hogy az Azure AD alapkövei OnDemand csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, hogy a alapkövei OnDemand rendszergazdai engedélyekkel rendelkezzen, majd próbálkozzon újra.
+6. 5\. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** , győződjön meg arról, hogy az Azure AD alapkövei OnDemand csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, hogy a alapkövei OnDemand rendszergazdai engedélyekkel rendelkezzen, majd próbálkozzon újra.
 
     ![Kapcsolat a alapkövei OnDemand tesztelése](./media/cornerstone-ondemand-provisioning-tutorial/TestConnection.png)
 

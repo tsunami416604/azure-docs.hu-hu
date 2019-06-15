@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: mayg
 ms.openlocfilehash: 3221b2bd18b8b0756f280d88fffc6016d0498b8f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924824"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware virtuális gépek és fizikai kiszolgálók replikációjával kapcsolatos problémák elhárítása
 
 Ez a cikk ismerteti az egyes gyakori problémák és a helyszíni VMware virtuális gépek és fizikai kiszolgálók Azure-bA replikálása során esetlegesen jelentkező hibaüzenetek [Site Recovery](site-recovery-overview.md).
 
-## <a name="step-1-monitor-process-server-health"></a>1. lépés: A figyelő folyamat kiszolgáló állapota
+## <a name="step-1-monitor-process-server-health"></a>1\. lépés: A figyelő folyamat kiszolgáló állapota
 
 Site Recovery használja a [folyamatkiszolgáló](vmware-physical-azure-config-process-server-overview.md#process-server) fogadásához és optimalizálhatja a replikált adatokat, és küldje el az Azure-bA.
 
@@ -28,7 +28,7 @@ Azt javasoljuk, hogy a portálon, győződjön meg arról, hogy kapcsolódnak a 
 - [Az ajánlott eljárások áttekintése](vmware-physical-azure-troubleshoot-process-server.md#best-practices-for-process-server-deployment)
 - [Hibaelhárítás](vmware-physical-azure-troubleshoot-process-server.md#check-process-server-health) folyamatkiszolgáló állapota.
 
-## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>2. lépés: Csatlakozási és replikációs problémák elhárítása
+## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>2\. lépés: Csatlakozási és replikációs problémák elhárítása
 
 Kezdeti és folyamatos replikálási hibák gyakran okozza a forráskiszolgáló és a folyamatkiszolgáló között, vagy a folyamatkiszolgáló és az Azure közötti kapcsolódási problémák. 
 
@@ -37,7 +37,7 @@ A problémák megoldásához [kapcsolat és a replikáció hibaelhárítása](vm
 
 
 
-## <a name="step-3-troubleshoot-source-machines-that-arent-available-for-replication"></a>3. lépés: Forrásgépek, amelyek nem érhetők el a replikáció hibaelhárítása
+## <a name="step-3-troubleshoot-source-machines-that-arent-available-for-replication"></a>3\. lépés: Forrásgépek, amelyek nem érhetők el a replikáció hibaelhárítása
 
 Válassza ki a forrásoldali gép számára engedélyezze a replikációt a Site Recovery használatával megkísérlésekor a gép esetleg nem érhetők el a következő okok valamelyike:
 

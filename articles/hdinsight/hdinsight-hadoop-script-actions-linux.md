@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.openlocfilehash: 66132a2a6a7b5b89bca0767efe7c194ca3dec051
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64687449"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájlművelet-alapú fejlesztés a HDInsight
@@ -75,7 +75,7 @@ fi
 
 ### <a name="bps10"></a> A cél az operációs rendszer verziója
 
-Linux-alapú HDInsight az Ubuntu Linux-disztribúció alapján történik. HDInsight különböző verzióinak különböző verzióit Ubuntu, előfordulhat, hogy a parancsfájl viselkedésének módosítása támaszkodnak. A HDInsight 3.4-es és korábbi például Ubuntu verziók Upstart használó alapul. 3.5-ös és újabb verziók Ubuntu 16.04, amely Systemd használ alapul. Systemd és Upstart támaszkodnak különböző parancsokat, és így is dolgozhat a parancsfájlt kell írni.
+Linux-alapú HDInsight az Ubuntu Linux-disztribúció alapján történik. HDInsight különböző verzióinak különböző verzióit Ubuntu, előfordulhat, hogy a parancsfájl viselkedésének módosítása támaszkodnak. A HDInsight 3.4-es és korábbi például Ubuntu verziók Upstart használó alapul. 3\.5-ös és újabb verziók Ubuntu 16.04, amely Systemd használ alapul. Systemd és Upstart támaszkodnak különböző parancsokat, és így is dolgozhat a parancsfájlt kell írni.
 
 Egy másik fontos HDInsight 3.4-es és 3.5-ös közötti különbség az, hogy `JAVA_HOME` Java 8 most mutat. A következő kód bemutatja, hogyan határozza meg, ha a parancsfájl futása, az Ubuntu 14-es vagy 16:
 
@@ -337,7 +337,7 @@ Kialakítása a parancsfájlok használata során felmerülő hibák a következ
 
 Ez a probléma leggyakrabban esetén a szkript egy Windows-környezetben létrehozott egy közös sor számára a Windows számos szövegszerkesztő befejezési CRLF-jébe.
 
-*Megoldás*: Ha a szövegszerkesztőben lehetőség, a sor vége válassza ki Unix formátumban vagy LF Karakterrel. Módosítsa a CRLF-LF UNIX operációs rendszeren is felhasználhatja a következő parancsokat:
+*Feloldási*: Ha a szövegszerkesztőben lehetőség, a sor vége válassza ki Unix formátumban vagy LF Karakterrel. Módosítsa a CRLF-LF UNIX operációs rendszeren is felhasználhatja a következő parancsokat:
 
 > [!NOTE]  
 > A következő parancsok pedig nagyjából, annak, hogy azok a CRLF sorvégződések kell módosítani a LF Karakterrel. Válasszon ki egy, a rendszer a segédprogramok alapján.
@@ -353,7 +353,7 @@ Ez a probléma leggyakrabban esetén a szkript egy Windows-környezetben létreh
 
 *Ok*: Ez a hiba akkor fordul elő, ha a parancsfájl az UTF-8 és a egy bájt rendelés Mark (AJ) néven lett mentve.
 
-*Megoldás*: Mentse a fájlt, mint ASCII vagy UTF-8 AJ nélkül. Hozzon létre egy fájlt az Anyagjegyzék nélkül a Linux és Unix rendszeren is felhasználhatja a következő parancsot:
+*Feloldási*: Mentse a fájlt, mint ASCII vagy UTF-8 AJ nélkül. Hozzon létre egy fájlt az Anyagjegyzék nélkül a Linux és Unix rendszeren is felhasználhatja a következő parancsot:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 

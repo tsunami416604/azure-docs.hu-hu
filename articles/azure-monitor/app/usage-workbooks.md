@@ -14,10 +14,10 @@ ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
 ms.openlocfilehash: 6d84ad69b067f730bbfbcad9e46bdc9ae2036ead
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64569602"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Interaktív jelentések létrehozása az Azure Monitor-munkafüzetekkel
@@ -166,7 +166,7 @@ A jelenleg támogatott paraméterek négy különböző típusa van:
 
 ### <a name="using-a-text-parameter"></a>Egy szöveges paraméter használatával
 
-Az érték a felhasználó begépeli a szövegmezőben közvetlenül a lekérdezésben az escape-karaktersorozat vagy idézése váltja fel. A szükséges érték karakterlánc, ha a lekérdezés kell rendelkeznie a paraméter idézőjeleket (például **'{parameter}'**).
+Az érték a felhasználó begépeli a szövegmezőben közvetlenül a lekérdezésben az escape-karaktersorozat vagy idézése váltja fel. A szükséges érték karakterlánc, ha a lekérdezés kell rendelkeznie a paraméter idézőjeleket (például **'{parameter}'** ).
 
 Ez lehetővé teszi, hogy egy szövegmező, bárhol használható az értéket. Lehet, hogy a táblázat neve, oszlopnév, függvénynév, operátor, stb.
 

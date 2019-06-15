@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119528"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Az Azure Mobile Appshoz készült .NET háttérkiszolgáló-SDK használata
@@ -53,7 +53,7 @@ Telepítse az Azure-beli számítási keresztül a Visual Studióból az Azure M
 
 1. Nyissa meg a **új projekt** párbeszédpanelen (a **fájl** > **új** > **projekt...** ).
 2. Bontsa ki a **Visual C#** válassza **webes**.
-3. Válassza ki **ASP.NET-es webalkalmazás (.NET-keretrendszer)**.
+3. Válassza ki **ASP.NET-es webalkalmazás (.NET-keretrendszer)** .
 4. Adja meg a projekt nevét. Ezután kattintson az **OK** gombra.
 5. Válassza ki **Azure Mobile Apps** sablont a listából.
 6. Kattintson a **OK** a megoldás létrehozásához.
@@ -65,7 +65,7 @@ Telepítse az Azure-beli számítási keresztül a Visual Studióból az Azure M
 Telepítse a [Azure SDK for .NET] [ 4] (2.9.0-s verzió vagy újabb verzió) az Azure Mobile Apps-projekt létrehozása a Visual Studióban. Miután telepítette az SDK-t, hozzon létre egy ASP.NET-alkalmazás az alábbi lépéseket követve:
 
 1. Nyissa meg a **új projekt** párbeszédpanelen (a **fájl** > **új** > **projekt...** ).
-2. Bontsa ki a **sablonok** > **Visual C#**, és válassza ki **webes**.
+2. Bontsa ki a **sablonok** > **Visual C#** , és válassza ki **webes**.
 3. Válassza az **ASP.NET Web Application** (ASP.NET-es webalkalmazás) lehetőséget.
 4. Adja meg a projekt nevét. Ezután kattintson az **OK** gombra.
 5. A *ASP.NET 4.5.2 sablonok*válassza **Azure Mobile Apps**. Ellenőrizze **üzemeltetés a felhőben** mobilháttérmodul létrehozása, amelyre a projekt közzéteheti a felhőben.
@@ -104,7 +104,7 @@ Egyes funkciók engedélyezéséhez meg kell hívni a bővítő metódusokat a *
         .MapApiControllers()
         .ApplyTo(config);
 
-A server gyors üzembe helyezése az Azure portal-hívások **UseDefaultConfiguration()**. Ez egyenértékű a következő beállítás:
+A server gyors üzembe helyezése az Azure portal-hívások **UseDefaultConfiguration()** . Ez egyenértékű a következő beállítás:
 
         new MobileAppConfiguration()
             .AddMobileAppHomeController()             // from the Home package
@@ -203,7 +203,7 @@ Ha az Azure SDK-t, a következő most már létrehozhat egy sablont kontroler ta
    * Az a **Model class** legördülő menüben válassza ki az új dto-t.
    * Az a **DbContext** legördülő menüben válassza ki a Mobile Service DbContext osztályt.
    * A tartományvezérlő neve jön létre az Ön számára.
-4. Kattintson a **Hozzáadás** parancsra.
+4. Kattintson a **Hozzáadás**lehetőségre.
 
 A rövid útmutató kiszolgálói projektet tartalmaz egy egyszerű példa **TodoItemController**.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 8b76e1a168d39d2f39098754f43bae73c21c2049
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ac1a6136eae79700c427b27c8869bc9241c62abc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60799820"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717785"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager módban az Azure CLI-parancsok
 A cikk ismerteti a szintaxist és a beállítások létrehozása és kezelése az Azure-erőforrások Azure Resource Manager-alapú üzemi modellben használata általában az Azure parancssori felület (CLI) parancsok. Ezeket a parancsokat a parancssori felület futtatásával Resource Manager (arm) módban érhető el. Ez a nem teljes, és a parancssori felület verziójának valószínűleg eltérő parancsok és paraméterek. Azure-erőforrások és -erőforráscsoportok általános áttekintéséért lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).  
@@ -969,7 +969,8 @@ A paraméterbeállításokkal:
      -s, --subscription <subscription>      the subscription identifier
 
 <BR>
-    Network lb-címkészlet törlése [kapcsolók] < erőforráscsoport >< lb-neve > <name>
+
+    network lb address-pool delete [options] <resource-group> <lb-name> <name>
 
 A háttérbeli IP-készlet tartomány erőforrás eltávolítja a terheléselosztóból.
 
@@ -1333,7 +1334,9 @@ A paraméterbeállításokkal:
     -s, --subscription <subscription>            the subscription identifier
 
 <br>
-    Network public-ip list [kapcsolók] < erőforráscsoport > felsorolja az összes nyilvános IP-erőforrás egy erőforráscsoportban.
+
+    network public-ip list [options] <resource-group>
+Felsorolja az összes nyilvános IP-erőforrás egy erőforráscsoportban.
 
     azure network public-ip list -g myresourcegroup
 
@@ -1353,8 +1356,10 @@ A paraméterbeállításokkal:
     --json                                 use json output
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
+
 <BR>
-    Network public-ip show [kapcsolók] < erőforráscsoport > <name>
+
+    network public-ip show [options] <resource-group> <name>
 
 Egy erőforráscsoporton belül nyilvános IP-cím erőforrás nyilvános IP-cím tulajdonságainak megjelenítése.
 

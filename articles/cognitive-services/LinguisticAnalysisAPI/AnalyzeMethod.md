@@ -12,10 +12,10 @@ ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 02c41e2510fd77f4bb65143faf62737f0985d2b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61401185"
 ---
 # <a name="analyze-method"></a>Elemzési módszer
@@ -26,7 +26,7 @@ ms.locfileid: "61401185"
 A **elemzése** REST API egy adott természetes nyelvű bemeneti elemzésére szolgál.
 Amely is járhat, csak keresése a [mondatokra és lexikális](Sentences-and-Tokens.md) belül, amelyek bemeneti, keresés, a [része a beszéd, a címkék](POS-tagging.md), vagy kereséséhez a [vevőkör fa](Constituency-Parsing.md).
 Megadhatja, hogy melyik a megfelelő elemzők kiválasztásával a kívánt eredményt.
-Az összes rendelkezésre álló elemzők listázásához, tekintse meg a  **[elemzők](AnalyzersMethod.md)**.
+Az összes rendelkezésre álló elemzők listázásához, tekintse meg a  **[elemzők](AnalyzersMethod.md)** .
 
 Vegye figyelembe, hogy meg kell adnia a bemeneti karakterlánc nyelvét.
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 2a9879ebc55a5f25c1a358e386697dce1c55ec90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61434065"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Az SSL beállítása Azure-alkalmazásokhoz
@@ -33,14 +33,14 @@ Ez a feladat egy éles telepítést használ. Egy átmeneti üzemelő példány 
 
 Olvasási [ez](cloud-services-how-to-create-deploy-portal.md) első, ha még nem hozott egy felhőalapú szolgáltatás.
 
-## <a name="step-1-get-an-ssl-certificate"></a>1. lépés: SSL-tanúsítvány beszerzése
+## <a name="step-1-get-an-ssl-certificate"></a>1\. lépés: SSL-tanúsítvány beszerzése
 Az SSL konfigurálása az alkalmazáshoz, akkor először, amely szerint a hitelesítésszolgáltató (CA), akik erre a célra tanúsítványokat megbízható harmadik fél aláírt SSL-tanúsítvány beszerzése. Ha Ön még nem rendelkezik egy, kell egy olyan cég, amely képeit SSL-tanúsítványok beszerzése.
 
 A tanúsítványt az SSL-tanúsítványok az Azure-ban az alábbi követelményeknek kell megfelelnie:
 
 * A tanúsítványnak tartalmaznia kell egy titkos kulcsot.
 * A kulcscseréhez használt, a személyes információcsere (.pfx) fájl exportálható a tanúsítványt kell létrehozni.
-* A tanúsítvány tulajdonosnevének egyeznie kell a felhőalapú szolgáltatás eléréséhez használt tartományt. SSL-tanúsítványt egy hitelesítésszolgáltatótól (CA) cloudapp.net tartomány nem szerezheti be. Egy egyéni tartománynevet szeretne használni, amikor kell szerezni a szolgáltatás eléréséhez. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének egyeznie kell az egyéni tartománynevet az alkalmazás eléréséhez használt. Például, ha az egyéni tartománynév **contoso.com** tanúsítványt kérhet tenné a hitelesítésszolgáltató a ***. contoso.com** vagy **www\.contoso.com**.
+* A tanúsítvány tulajdonosnevének egyeznie kell a felhőalapú szolgáltatás eléréséhez használt tartományt. SSL-tanúsítványt egy hitelesítésszolgáltatótól (CA) cloudapp.net tartomány nem szerezheti be. Egy egyéni tartománynevet szeretne használni, amikor kell szerezni a szolgáltatás eléréséhez. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének egyeznie kell az egyéni tartománynevet az alkalmazás eléréséhez használt. Például, ha az egyéni tartománynév **contoso.com** tanúsítványt kérhet tenné a hitelesítésszolgáltató a * **. contoso.com** vagy **www\.contoso.com**.
 * A tanúsítvány legalább 2048 bites titkosítást kell használnia.
 
 Tesztelési célból is [létrehozása](cloud-services-certs-create.md) és a egy önaláírt tanúsítványt használja. Önaláírt tanúsítvány nincs hitelesítve a hitelesítésszolgáltató segítségével, és cloudapp.net tartományt is használja, mint a webhely URL-címe. Például a következő feladatot, amelyben a tanúsítványban használt köznapi név (CN) van önaláírt tanúsítványt használ **sslexample.cloudapp.net**.
@@ -49,7 +49,7 @@ Ezután szerepelnie kell a tanúsítvány adatait a szolgáltatás definíciós 
 
 <a name="modify"> </a>
 
-## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>2. lépés: A definíció- és konfigurációs fájljainak módosítása
+## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>2\. lépés: A definíció- és konfigurációs fájljainak módosítása
 Az alkalmazás a tanúsítvány használatára kell konfigurálni, és hozzá kell adni a HTTPS-végpontokat. Ennek eredményeképpen a szolgáltatásdefiníció és a szolgáltatás konfigurációs fájlok frissíteni kell.
 
 1. A fejlesztői környezetben nyissa meg a szolgáltatásdefiníciós fájlt (CSDEF), adjon hozzá egy **tanúsítványok** belül szakasz a **WebRole** szakaszt, és a tanúsítvány a következő információkat tartalmaznak (és köztes tanúsítványok):
@@ -138,7 +138,7 @@ Az alkalmazás a tanúsítvány használatára kell konfigurálni, és hozzá ke
 
 Most, hogy frissítve lett-e a szolgáltatás definíciós és a szolgáltatás konfigurációs fájljait, a csomag feltöltése az Azure-bA a központi telepítés. Ha használ **cspack**, ne használja a **/generateConfigurationFile** jelzőt, ahogy, amely felülírja az imént beszúrt tanúsítványának adatait.
 
-## <a name="step-3-upload-a-certificate"></a>3. lépés: Tanúsítvány feltöltése
+## <a name="step-3-upload-a-certificate"></a>3\. lépés: Tanúsítvány feltöltése
 Csatlakozás az Azure Portalra, és...
 
 1. Az a **összes erőforrás** szakaszban a portál, válassza ki a felhőalapú szolgáltatást.
@@ -155,7 +155,7 @@ Csatlakozás az Azure Portalra, és...
 
 4. Adja meg a **fájl**, **jelszó**, majd kattintson a **feltöltése** a adatok terület alján.
 
-## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>4. lépés: Csatlakozás a szerepkörpéldány HTTPS használatával
+## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>4\. lépés: Csatlakozás a szerepkörpéldány HTTPS használatával
 Most, hogy az üzembe helyezés működik és elérhető az Azure-ban, HTTPS használatával csatlakozhat.
 
 1. Kattintson a **webhely URL-címe** a böngésző megnyitásához.

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/29/2019
 ms.author: rkarlin
 ms.openlocfilehash: e2bcd92ffc8799b2edf04251b6ce160e96c7609c
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64875609"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Testre szabhatja az SQL information protection-szabályzat az Azure Security Centerben (előzetes verzió)
@@ -53,7 +53,7 @@ Az information protection-házirend testreszabása az Azure-bérlőhöz, szüks�
 2. Az a **konfigurálása jellemzésére** képernyőn hoz létre, vagy módosíthatja a címke neve és leírása. Beállíthat-e a címke átállításával aktív vagy le van tiltva a **engedélyezve** váltson be- és kikapcsolása. Végül adja hozzá, vagy távolítsa el a címke társított adatok típusai. Adatok felderítése, amely megfelel az, hogy az adattípust automatikusan tartalmazza a társított bizalmassági címkére a besorolási javaslatok.
 3. Kattintson az **OK** gombra.
  
-   ![Érzékenységi címke konfigurálása](./media/security-center-info-protection-policy/config-sensitivity-label.png)
+   ![Bizalmassági címke konfigurálása](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
 4. Címkék az érzékenységi növekvő sorrendben vannak felsorolva. Címkék között alapján a rangsorolás, húzza a címkék sorrendjét húzással módosíthatja a tábla, vagy használja a **feljebb** és **mozgatása lefelé** gombok a sorrendjének módosításához. 
  

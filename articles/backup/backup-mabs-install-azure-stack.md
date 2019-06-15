@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
 ms.openlocfilehash: d3a2ffdedda7f541fb1a3f37a8b40bc7af3dcb57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60852146"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
@@ -158,7 +158,7 @@ Töltse le az Azure Backup Server kétféleképpen történhet. Az Azure Backup 
 
 9. Az Azure Backup Server telepítő áll nyolc fájlok - telepítőt, és hét .bin fájlt. Ellenőrizze **Fájlnév** válassza ki az összes szükséges fájlokat, és kattintson a **tovább**. Töltse le az összes fájlt ugyanabba a mappába.
 
-    ![1. letöltőközpontból](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
+    ![1\. letöltőközpontból](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
     Az összes telepítési fájlok letöltési mérete nagyobb, mint 3 GB-os. A 10 MB/s letöltési hivatkozásra, az összes telepítési fájlok letöltése előfordulhat, hogy legfeljebb 60 percet vesz igénybe. Töltse le a fájlokat a megadott letöltési helyét.
 
@@ -166,7 +166,7 @@ Töltse le az Azure Backup Server kétféleképpen történhet. Az Azure Backup 
 
 Miután az Azure Stack virtuális géphez letöltött összes fájlt, nyissa meg a letöltési helyre. Az első fázisa az Azure Backup Server telepítése, hogy a fájlok kibontásához.
 
-![1. letöltőközpontból](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
+![1\. letöltőközpontból](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
 
 1. A letöltött fájlok listáját a telepítés indításához kattintson **MicrosoftAzureBackupserverInstaller.exe**.
 
@@ -323,11 +323,11 @@ Ha már tudja, hogy az állapot, az Azure-kapcsolat és az Azure-előfizetést, 
 
 | Kapcsolati állapota | Azure-előfizetés | Azure biztonsági mentés | Biztonsági mentés lemezre | Állítsa vissza az Azure-ból | Visszaállítás lemezről |
 | --- | --- | --- | --- | --- | --- |
-| Csatlakozva |Aktív |Engedélyezve |Engedélyezve |Engedélyezve |Engedélyezve |
-| Csatlakozva |Elévült |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
+| Csatlakozva |Aktív |Engedélyezett |Engedélyezett |Engedélyezett |Engedélyezett |
+| Csatlakozva |Elévült |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
 | Csatlakozva |– Figyelmeztetés megszüntetésről |Leállítva |Leállítva |A leállított és az Azure helyreállítási pontok törlése |Leállítva |
-| Kapcsolat > 15 napon keresztül |Aktív |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
-| Kapcsolat > 15 napon keresztül |Elévült |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
+| Kapcsolat > 15 napon keresztül |Aktív |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
+| Kapcsolat > 15 napon keresztül |Elévült |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
 | Kapcsolat > 15 napon keresztül |– Figyelmeztetés megszüntetésről |Leállítva |Leállítva |A leállított és az Azure helyreállítási pontok törlése |Leállítva |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>A kapcsolat megszakadása helyreállítása

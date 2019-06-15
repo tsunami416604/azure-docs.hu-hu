@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: d3e56f1741a9cfd3f2d9f786c2ce22eb6a946ef2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61481582"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>A helyszíni Always On rendelkezésre állási csoportok kiterjesztése az Azure-bA
@@ -42,7 +42,7 @@ Ez a szakasz bemutatja, hogyan használható a **Azure replika hozzáadása var�
 > [!IMPORTANT]
 > A **Azure replika hozzáadása varázsló** csak a klasszikus üzemi modellel létrehozott virtuális gépeket is támogatja. Új virtuális gépek üzembe helyezése a újabb Resource Manager-modellt kell használnia. Ha a virtuális gépek és a Resource Manager használatával, majd manuálisan kell hozzáadni a Transact-SQL commmands (itt nem látható) használatával másodlagos Azure-replika. Ez a varázsló nem fog működni a Resource Manager-forgatókönyvében.
 
-1. A belül az SQL Server Management Studióban bontsa ki **magas rendelkezésre állást mindig a** > **rendelkezésre állási csoportok** > **[a rendelkezésre állási csoport neve]**.
+1. A belül az SQL Server Management Studióban bontsa ki **magas rendelkezésre állást mindig a** > **rendelkezésre állási csoportok** >  **[a rendelkezésre állási csoport neve]** .
 2. Kattintson a jobb gombbal **rendelkezésre állási másodpéldányok**, majd kattintson a **hozzáadása replika**.
 3. Alapértelmezés szerint a **hozzáadása-replika rendelkezésre állási csoport varázsló** jelenik meg. Kattintson a **tovább**.  Ha be van jelölve a **többé ne jelenjen meg ez az oldal** lehetőséget az oldal alján előző indítás közben, a varázsló ezen a képernyőn nem jelenik meg.
    

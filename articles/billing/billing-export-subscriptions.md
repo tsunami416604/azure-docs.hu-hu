@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 8a3d1a3a6b1dce1d729942715bbe5962837ff093
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60918792"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Exportálás és a legfelső szintű előfizetés adatainak megtekintése
@@ -28,7 +28,7 @@ Ha szeretne az előfizetés azonosítókat a felhasználói hitelesítő adatokh
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 A letöltött .JSON kiterjesztésű fájlt a következő információkat biztosítja:
-- E-mail: A fiókjához társított e-mail-cím.
+- E-mail cím: A fiókjához társított e-mail-cím.
 - PUID azonosítója: Az Ön számlázási fiókjához tartozó egyedi azonosítója.
 - SubscriptionIds: A fiókjához, előfizetés-azonosító. a felsorolt tartozó előfizetések listája
 

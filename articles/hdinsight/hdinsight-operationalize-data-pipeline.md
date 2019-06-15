@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.openlocfilehash: 524386c046534b0ef0050e15d326118b84822822
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64718039"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Adatelemzési folyamat üzembe helyezése
@@ -544,7 +544,7 @@ Ez a munkafolyamat ütemezése, futtatása napi (vagy egy adott időtartományba
 
 Ahogy látható, a koordinátor többsége, csupán továbbítja konfigurációs adatait a munkafolyamat-példányhoz. Vannak azonban néhány fontos elemek hívásához.
 
-* 1. pont: A `start` és `end` az attribútumok a `coordinator-app` maga az elem szabályozhatja az időintervallum, amelyen keresztül a koordinátor futtatja.
+* 1\. pont: A `start` és `end` az attribútumok a `coordinator-app` maga az elem szabályozhatja az időintervallum, amelyen keresztül a koordinátor futtatja.
 
     ```
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
@@ -552,7 +552,7 @@ Ahogy látható, a koordinátor többsége, csupán továbbítja konfigurációs
 
     Koordinátor felelős műveletek belül a `start` és `end` dátumtartomány szerint a megadott időköz az `frequency` attribútum. Minden ütemezett művelethez ezután futtatja a munkafolyamatot a konfigurált. A fenti koordinátor definíciójában a koordinátor van konfigurálva műveleteket hajtson végre 2017. január 1-től 2017. január 5-én. A gyakoriság 1 nap értékre van állítva a [Oozie kifejezés nyelve](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) gyakorisága kifejezés `${coord:days(1)}`. Ez a művelet ütemezés koordinátor eredményez (és így a munkafolyamat) naponta egyszer. Dátumtartományokat, amelyek korábban, mint ebben a példában a művelet lesz ütemezve késedelem nélkül fusson. A dátum, amelyen művelet való futásra van ütemezve kezdetét nevezzük a *névleges idő*. Ha például az adatok feldolgozása a 2017. január 1-től a koordinátor ütemeznek művelet után névleges költséget számítunk időpont 2017-01-01T00:00:00 GMT.
 
-* 2. pont: A munkafolyamat dátum keretein belül a `dataset` elem megadja, hogy legyen egy adott dátumtartományra vonatkozóan az adatokat HDFS-ben keresse meg, és konfigurálja, hogyan Oozie határozza meg, hogy az adatok rendelkezésre áll-e még feldolgozásra.
+* 2\. pont: A munkafolyamat dátum keretein belül a `dataset` elem megadja, hogy legyen egy adott dátumtartományra vonatkozóan az adatokat HDFS-ben keresse meg, és konfigurálja, hogyan Oozie határozza meg, hogy az adatok rendelkezésre áll-e még feldolgozásra.
 
     ```
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -565,7 +565,7 @@ Ahogy látható, a koordinátor többsége, csupán továbbítja konfigurációs
 
     Az üres `done-flag` elem azt jelzi, hogy Oozie keres az bemeneti adatok a kijelölt időpontban, amikor az Oozie meghatározza adatok elérhető-e fájlok vagy könyvtárak jelenlétét. Ebben az esetben egy csv-fájl jelenléte. Ha egy csv-fájl jelen, Oozie azt feltételezi, készen áll az adatok, és elindítja egy munkafolyamat-példány feldolgozni a fájlt. Ha nem áll csv fájl található, az Oozie feltételezi, hogy az adatok még nem kész, és a munkafolyamat futtatását várakozó állapotba kerül.
 
-* 3. pontok: A `data-in` elem azt határozza meg az adott időbélyeg névleges adatokként meg, amikor az az értékeket cserélje le `uri-template` kapcsolódó adatkészlet.
+* 3\. pontok: A `data-in` elem azt határozza meg az adott időbélyeg névleges adatokként meg, amikor az az értékeket cserélje le `uri-template` kapcsolódó adatkészlet.
 
     ```
     <data-in name="event_input1" dataset="ds_input1">
@@ -577,11 +577,11 @@ Ahogy látható, a koordinátor többsége, csupán továbbítja konfigurációs
 
 Az előző három pont eddig is számtalan előnyét egy olyan helyzetet, ahol a koordinátor ütemezi a feldolgozás a forrásadatok a napi – naponta módon össze. 
 
-* 1. pont: A koordinátor kezdődik, a 2017-01-01 névleges dátuma.
+* 1\. pont: A koordinátor kezdődik, a 2017-01-01 névleges dátuma.
 
-* 2. pont: Az Oozie megkeresi az elérhető adat `sourceDataFolder/2017-01-FlightData.csv`.
+* 2\. pont: Az Oozie megkeresi az elérhető adat `sourceDataFolder/2017-01-FlightData.csv`.
 
-* 3. pontok: Az Oozie ezt a fájlt talál, ütemezi a fel az adatokat a 2017-01-01-munkafolyamat egy példányát. Az Oozie majd 2017-01-02 feldolgozása továbbra is. Ezt a próbaidőszakot akár, de nem tartalmazza a 2017-01-05 ismétlődik.
+* 3\. pontok: Az Oozie ezt a fájlt talál, ütemezi a fel az adatokat a 2017-01-01-munkafolyamat egy példányát. Az Oozie majd 2017-01-02 feldolgozása továbbra is. Ezt a próbaidőszakot akár, de nem tartalmazza a 2017-01-05 ismétlődik.
 
 A munkafolyamatok, a konfiguráció a koordinátor meghatározottak szerint egy `job.properties` fájlt, amely rendelkezik felülbírálja a munkafolyamat által használt beállításokat.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: aahi
 ms.openlocfilehash: 720a6c57d4f1a6079f78244559a25018349bd378
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831418"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics REST API meghívása
@@ -42,7 +42,7 @@ Ugyanazt a dokumentumokat, a Text Analytics művelet jelenleg nyújthatja: véle
 
 | Elem | Érvényes értékek | Kötelező? | Használat |
 |---------|--------------|-----------|-------|
-|`id` |Az adattípus karakterlánc, de a gyakorlatban dokumentumazonosító általában a egész szám lehet. | Kötelező | A rendszer adja át a kimenetet struktúra azonosítóját használja. A kérelemben szereplő minden egyes azonosító nyelvkódokról, kulcskifejezéseket és véleménypontszámának jön létre.|
+|`id` |Az adattípus karakterlánc, de a gyakorlatban dokumentumazonosító általában a egész szám lehet. | Szükséges | A rendszer adja át a kimenetet struktúra azonosítóját használja. A kérelemben szereplő minden egyes azonosító nyelvkódokról, kulcskifejezéseket és véleménypontszámának jön létre.|
 |`text` | Strukturálatlan nyers szöveg, legfeljebb 5,120 karakter hosszú lehet. | Kötelező | Nyelv észlelése, a szöveg bármilyen nyelven lehet kifejezni. A hangulatelemzést, kulcsszókeresést és entitás azonosítása, a szöveget kell lennie egy [támogatott nyelven](../text-analytics-supported-languages.md). |
 |`language` | 2 karakterből álló [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) helykódja egy [támogatott nyelven](../text-analytics-supported-languages.md) | Változó | Szükséges a hangulatelemzést, kulcsszókeresést és entitáskapcsolás; nyelv észlelése esetén nem kötelező. Nincs hiba, ha lehetséges, azonban az elemzés, e nélkül integritása csökken. A nyelvi kód meg kell egyeznie a `text` adnia. |
 

@@ -9,10 +9,10 @@ ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
 ms.openlocfilehash: e29a1f5d1e258ab66540010dc12f9326b8fd57a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60775746"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
@@ -80,8 +80,8 @@ Minden riasztási eseményről ismerteti **érintett erőforrás** és **a riasz
 |:---|:---|
 | alertId | GUID azonosítója, amely egyedileg azonosítja a riasztási eseményről. |
 | alertRule | A riasztási szabály által generált riasztás a példány neve. |
-| Severity | A riasztás súlyosságát. Érvényes értékek: Sev0, Sev1, Sev2, Sev3, Sev4 |
-| signalType | Azonosítja a jel, amelyre a riasztási szabály definiálva lett. Érvényes értékek: Metrika, Log, tevékenységnapló |
+| Severity | A riasztás súlyosságát. Lehetséges értékek: Sev0, Sev1, Sev2, Sev3, Sev4 |
+| signalType | Azonosítja a jel, amelyre a riasztási szabály definiálva lett. Lehetséges értékek: Metrika, Log, tevékenységnapló |
 | monitorCondition | Egy riasztás akkor aktiválódik, ha a riasztást figyelő feltétel értéke "Fired". Ha törli az alapul szolgáló a riasztást kiváltó üzenetszám, a figyelési feltétel értéke "Megoldva".   |
 | monitoringService | A monitorozási szolgáltatás vagy megoldás, amely a riasztást előidézte. A figyelési szolgáltatás által eseménysablon mezőjét a riasztás környezetét. |
 | alertTargetIds | Az ARM azonosítók minden érintett tárolók, a riasztások listája. A riasztás egy Log Analytics-munkaterület és Application Insights-példány a megadott az adott munkaterület/alkalmazásra. |

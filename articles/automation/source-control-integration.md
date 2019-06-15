@@ -10,10 +10,10 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64574109"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
@@ -49,7 +49,7 @@ Az a **forrás vezérlő összefoglalás** lapon adja meg az adatokat, és katti
 |---------|---------|
 |Forrás vezérlő neve     | A verziókövetési rövid nevét. *Ez a név csak betűket és számokat kell tartalmaznia.*        |
 |Verziókövetési típusa     | A forrás-vezérlő típusa. Az elérhető lehetőségek:</br> GitHub</br>Az Azure-kódtárak (Git)</br> Az Azure-kódtárak (TFVC)        |
-|Adattár     | A tárház vagy projekt nevét. Az első 200 tárházak adja vissza. Keresse meg a tárházat, írja be a nevét a mezőbe, majd kattintson **keresése a Githubon**.|
+|Tárház     | A tárház vagy projekt nevét. Az első 200 tárházak adja vissza. Keresse meg a tárházat, írja be a nevét a mezőbe, majd kattintson **keresése a Githubon**.|
 |Ág     | Az ág forrásfájlok lekérni. Ág célzó nem érhető el a TFVC verziókövetési típusa.          |
 |Mappa elérési útja     | A runbookok szinkronizálása tartalmazó mappát. Példa: /Runbooks </br>*A megadott mappában csak runbookok vannak szinkronizálva. A rekurzió nem támogatott.*        |
 |Auto Sync<sup>1</sup>     | Engedélyezi vagy letiltja az automatikus szinkronizálás, amikor a véglegesítés történik a verziókövetési tárházat a         |
@@ -93,7 +93,7 @@ Verziókövetés személyes hozzáférési jogkivonatok egyes minimális engedé
 
 A GitHub egy személyes hozzáférési jogkivonat létrehozásával kapcsolatos további információkért látogasson el a [létrehozása a személyes hozzáférési tokent a parancssor](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Hatókör  |Leírás  |
+|Scope  |Leírás  |
 |---------|---------|
 |**adattár**     |         |
 |Adattár: állapota     | Hozzáférés lefoglaltsági állapota         |
@@ -107,7 +107,7 @@ A GitHub egy személyes hozzáférési jogkivonat létrehozásával kapcsolatos 
 
 A személyes hozzáférési jogkivonat létrehozása az Azure-Adattárakkal kapcsolatos további információkért látogasson el [hitelesíti a hozzáférést a személyes hozzáférési jogkivonatok](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
-|Hatókör  |
+|Scope  |
 |---------|
 |A kód (olvasás)     |
 |Projekt és a team (olvasás)|
@@ -118,7 +118,7 @@ A személyes hozzáférési jogkivonat létrehozása az Azure-Adattárakkal kapc
 
 <sup>1</sup> a Szolgáltatáskapcsolatokat engedély csak akkor szükséges, ha engedélyezte a autosync.
 
-## <a name="syncing"></a>Szinkronizálás…
+## <a name="syncing"></a>Szinkronizálása
 
 Válassza ki a forrás a tábla a a **verziókövetés** lapot. Kattintson a **szinkronizálás indítása** a szinkronizálási folyamat elindításához.
 

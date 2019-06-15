@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: a4f9d9a7fe368ec4ffaceff80ce42d42a318c68d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61489108"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>A helyszíni StorSimple-eszköz (3. frissítés vagy újabb) üzembe helyezése
@@ -68,7 +68,7 @@ Mielőtt üzembe helyezné az eszközt, információkat kell gyűjtenie a StorSi
 
 * [StorSimple üzembehelyezési konfigurációs ellenőrzőlista letöltése](https://www.microsoft.com/download/details.aspx?id=49159)
 
-## <a name="deployment-prerequisites"></a>Üzembehelyezési előfeltételek
+## <a name="deployment-prerequisites"></a>Üzembe helyezési Előfeltételek
 Az alábbi szakaszok ismertetik a StorSimple-eszközkezelő szolgáltatás és a StorSimple-eszköz konfigurációs előfeltételeit.
 
 ### <a name="for-the-storsimple-device-manager-service"></a>A StorSimple-eszközkezelő szolgáltatás esetén
@@ -93,7 +93,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 ## <a name="step-by-step-deployment"></a>Részletes üzembe helyezés
 Az alábbi részletes útmutatás segítségével helyezze üzembe a StorSimple eszközt az adatközpontban.
 
-## <a name="step-1-create-a-new-service"></a>1. lépés: Új szolgáltatás létrehozása
+## <a name="step-1-create-a-new-service"></a>1\. lépés: Új szolgáltatás létrehozása
 A StorSimple-eszközkezelő szolgáltatás több StorSimple-eszközt is tud kezelni. Az alábbi lépések végrehajtásával hozza létre a StorSimple-eszközkezelő szolgáltatás egy példányát.
 
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-8000-create-new-service.md)]
@@ -105,19 +105,19 @@ A StorSimple-eszközkezelő szolgáltatás több StorSimple-eszközt is tud keze
 > * Ha engedélyezte a tárfiók automatikus létrehozását, folytassa a [2. lépés: A Szolgáltatásregisztrációs kulcs lekérése](#step-2-get-the-service-registration-key).
 
 
-## <a name="step-2-get-the-service-registration-key"></a>2. lépés: Szolgáltatásregisztrációs kulcs lekérése
+## <a name="step-2-get-the-service-registration-key"></a>2\. lépés: Szolgáltatásregisztrációs kulcs lekérése
 Ha a StorSimple-eszközkezelő szolgáltatás működik és elérhető, le kell kérnie a szolgáltatásregisztrációs kulcsot. Ezzel a kulccsal regisztrálhatja és csatlakoztathatja StorSimple eszközét a szolgáltatáshoz.
 
 Hajtsa végre a következő lépéseket az Azure Portalon.
 
 [!INCLUDE [storsimple-8000-get-service-registration-key](../../includes/storsimple-8000-get-service-registration-key.md)]
 
-## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>3. lépés: Eszköz konfigurálása és regisztrálása a Windows PowerShell storsimple-höz készült
+## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>3\. lépés: Eszköz konfigurálása és regisztrálása a Windows PowerShell storsimple-höz készült
 A StorSimple-höz készült Windows PowerShell-lel végezze el a StorSimple eszköz kezdeti beállítását az alábbiakban ismertetett eljárás alapján. A lépés végrehajtásához terminálemulációs szoftverre van szükség. További információ: [A PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](#use-putty-to-connect-to-the-device-serial-console).
 
 [!INCLUDE [storsimple-8000-configure-and-register-device-u2](../../includes/storsimple-8000-configure-and-register-device-u2.md)]
 
-## <a name="step-4-complete-minimum-device-setup"></a>4. lépés: Minimális eszközbeállítások végrehajtása
+## <a name="step-4-complete-minimum-device-setup"></a>4\. lépés: Minimális eszközbeállítások végrehajtása
 A StorSimple minimális eszközkonfigurációjához a következőket kell végrehajtania: 
 
 * Adjon egy valódi (értelmezhető) nevet az eszköznek.
@@ -130,14 +130,14 @@ Hajtsa végre az alábbi lépéseket az Azure Portalon a minimális eszközbeál
 
 A minimális eszközbeállítás elvégzése után az ajánlott eljárás a [legújabb frissítések keresése és alkalmazása](#scan-for-and-apply-updates).
 
-## <a name="step-5-create-a-volume-container"></a>5. lépés: Kötettároló létrehozása
+## <a name="step-5-create-a-volume-container"></a>5\. lépés: Kötettároló létrehozása
 A kötettároló tárfiók-, sávszélesség- és titkosítási beállításokat biztosít minden benne tárolt kötet számára. Ahhoz, hogy elkezdhessen köteteket kiépíteni a StorSimple eszközön, létre kell hoznia egy kötettárolót.
 
 Kötettároló létrehozásához hajtsa végre a következő lépéseket az Azure Portalon.
 
 [!INCLUDE [storsimple-8000-create-volume-container](../../includes/storsimple-8000-create-volume-container.md)]
 
-## <a name="step-6-create-a-volume"></a>6. lépés: Kötet létrehozása
+## <a name="step-6-create-a-volume"></a>6\. lépés: Kötet létrehozása
 A kötettároló létrehozása után tárkötetet építhet ki a StorSimple eszközön a kiszolgálók számára. Kötet létrehozásához hajtsa végre a következő lépéseket az Azure Portalon.
 
 > [!IMPORTANT]
@@ -146,7 +146,7 @@ A kötettároló létrehozása után tárkötetet építhet ki a StorSimple eszk
 
 [!INCLUDE [storsimple-8000-create-volume](../../includes/storsimple-8000-create-volume-u2.md)]
 
-## <a name="step-7-mount-initialize-and-format-a-volume"></a>7. lépés: Kötet csatlakoztatása, inicializálása és formázása
+## <a name="step-7-mount-initialize-and-format-a-volume"></a>7\. lépés: Kötet csatlakoztatása, inicializálása és formázása
 A következő lépéseket a Windows Server-állomásán kell végrehajtania.
 
 > [!IMPORTANT]
@@ -158,7 +158,7 @@ Ha mégsem szeretné konfigurálni az MPIO-t, az alábbi lépések végrehajtás
 
 [!INCLUDE [storsimple-8000-mount-initialize-format-volume](../../includes/storsimple-8000-mount-initialize-format-volume.md)]
 
-## <a name="step-8-take-a-backup"></a>8. lépés: Biztonsági mentés készítése
+## <a name="step-8-take-a-backup"></a>8\. lépés: Biztonsági mentés készítése
 Az adott időpontban mentett biztonsági másolatok védelmet biztosítanak a kötetek számára, továbbá javítják a rendelkezésre álló helyreállítási lehetőségeket, miközben a helyreállítási időt csökkentik. A StorSimple eszközén kétféle biztonsági mentést készíthet: helyi pillanatképeket és felhőbeli pillanatképeket. Mind a kétféle biztonsági mentés lehet **Ütemezett** vagy **Manuális**.
 
 Ütemezett biztonsági mentés létrehozásához hajtsa végre a következő lépéseket az Azure Portalon.
@@ -202,11 +202,11 @@ Az alábbi bekötési rajz a StorSimple soros konzol kábeléhez használható.
 
 A képen a DB9 csatlakozóhüvely a P1, a 3,5 mm-es csatlakozó pedig a P2.
 
-![1. bekötési rajz a StorSimple soros konzol kábeléhez](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram1.png)
+![1\. bekötési rajz a StorSimple soros konzol kábeléhez](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram1.png)
 
 A sztereó csatlakozó hegye PIN 3 RX-nek, a közepe PIN 2 TX-nek, az alapja pedig PIN 1 GND-nek minősül, ahogyan az a következő ábrán látható.
 
-![2. bekötési rajz a StorSimple soros konzol kábeléhez](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram2.png)
+![2\. bekötési rajz a StorSimple soros konzol kábeléhez](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram2.png)
 
 
 

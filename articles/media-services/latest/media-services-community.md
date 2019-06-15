@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: juliako
 ms.openlocfilehash: 6a3c02c1f14c37317a03cb6ebe63bcddc92f3253
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64710165"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-közösség  
@@ -28,7 +28,7 @@ Az Azure Media Services közösségi oldalai különböző módon tehet fel kér
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Hozzászólások
+## <a name="discussion"></a>Vitafórum
 
 ### <a name="twitter"></a>Twitter
 
@@ -52,7 +52,7 @@ Az Azure Media Services az elsődleges támogatási e-mail cím: **amshelp\@micr
 
 Az alábbi táblázat a funkció a sub csoportos e-mail:
 
-| Szolgáltatás | E-mail |
+| Funkció | E-mail |
 | --- | --- |
 | Azure Media Player |ampinfo@microsoft.com |
 | Azure Media Explorer |amse@microsoft.com |

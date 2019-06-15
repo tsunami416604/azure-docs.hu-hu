@@ -14,14 +14,14 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 81b7bf7c230c66087bf286ebd9369d992e93be90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61250573"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Adatok áthelyezése egy webes táblázat a forrás Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-web-table-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-web-table.md)
 
@@ -74,7 +74,7 @@ A következő táblázat a JSON-elemeket társított webszolgáltatás leírás�
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A type tulajdonságot kell beállítani: **Web** |Igen |
-| URL-cím |A webes forrás URL-címe |Igen |
+| URL |A webes forrás URL-címe |Igen |
 | authenticationType |Névtelen. |Igen |
 
 ### <a name="using-anonymous-authentication"></a>A névtelen hitelesítés használatával
@@ -102,7 +102,7 @@ A **typeProperties** szakasz eltérő az egyes adatkészlet, és az adattárban 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type |Az adatkészlet típusa. meg kell **Webtábla** |Igen |
-| elérési út |Az erőforrás, amely tartalmazza a tábla relatív URL-CÍMÉT. |Nem. Ha nincs megadva elérési út, csak az URL-címet a társított szolgáltatás definíciójában megadott szolgál. |
+| path |Az erőforrás, amely tartalmazza a tábla relatív URL-CÍMÉT. |Nem. Ha nincs megadva elérési út, csak az URL-címet a társított szolgáltatás definíciójában megadott szolgál. |
 | index |Az erőforrás a tábla indexe. Lásd: [egy tábla egy HTML-oldalt a Get-index](#get-index-of-a-table-in-an-html-page) szakasz lépéseit egy tábla indexének első HTML-lapon. |Igen |
 
 **Példa**

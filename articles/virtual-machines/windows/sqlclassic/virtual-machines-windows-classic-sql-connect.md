@@ -17,10 +17,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: b8994d4c1eabf4381bf8364c76f7328d225f7e1a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62111527"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Csatlakozás Azure-beli SQL Server-alapú virtuális géphez (hagyományos üzembe helyezési modell)
@@ -58,7 +58,7 @@ Ebben a forgatókönyvben csatlakoztathatja a virtuális gép **neve** (is láth
 ### <a name="connect-to-sql-server-over-the-internet"></a>Csatlakozás az SQL Serverhez az interneten keresztül
 Ha azt szeretné, az internetről az SQL Server adatbázismotorhoz csatlakozni, létre kell hoznia a bejövő TCP-kommunikációt egy virtuális gép végpontjának. Ez az Azure-konfigurációs lépés a TCP-port bejövő forgalmát egy olyan TCP-portra irányítja, amelyet elér a virtuális gép.
 
-Az interneten keresztül csatlakozni a virtuális gép DNS-név és a virtuális gép végpont portszámára (a cikk későbbi részében konfigurálva) kell használnia. Keresse meg a DNS-nevet, nyissa meg az Azure Portalon, és válassza **virtuális gépek (klasszikus)**. Ezután válassza ki a virtuális gép. A **DNS-név** látható a **áttekintése** szakaszban.
+Az interneten keresztül csatlakozni a virtuális gép DNS-név és a virtuális gép végpont portszámára (a cikk későbbi részében konfigurálva) kell használnia. Keresse meg a DNS-nevet, nyissa meg az Azure Portalon, és válassza **virtuális gépek (klasszikus)** . Ezután válassza ki a virtuális gép. A **DNS-név** látható a **áttekintése** szakaszban.
 
 Vegyük példaként egy klasszikus virtuális gép nevű **mysqlvm** a DNS-név **mysqlvm7777.cloudapp.net** és a egy virtuális gép végpontja **57500**. Ha megfelelően konfigurált kapcsolati, a következő kapcsolati karakterlánc segítségével bárhonnan elérheti a virtuális gép az interneten:
 

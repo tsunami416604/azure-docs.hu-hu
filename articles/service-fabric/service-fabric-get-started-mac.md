@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
 ms.openlocfilehash: 84d1f52b5fb8f18d3578bad28930f74534b1409f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60947592"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
@@ -53,7 +53,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Ezeket a beállításokat közvetlenül a Docker telepítési útvonalán található daemon.json fájlban frissítheti. Módosíthatja a démon konfigurációs beállításainak a Dockerben közvetlenül. Válassza a **Docker ikonját**, majd válassza a **Preferences (Beállítások)** > **Daemon (Démon)** > **Advanced (Speciális)** lehetőséget.
+    Ezeket a beállításokat közvetlenül a Docker telepítési útvonalán található daemon.json fájlban frissítheti. Módosíthatja a démon konfigurációs beállításainak a Dockerben közvetlenül. Válassza a **Docker ikonját**, majd válassza a **Preferences (Beállítások)**  > **Daemon (Démon)**  > **Advanced (Speciális)** lehetőséget.
     
     >[!NOTE]
     >

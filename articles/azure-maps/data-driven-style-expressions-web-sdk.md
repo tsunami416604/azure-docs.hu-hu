@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60904975"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Az adatvezérelt stílusa kifejezés (Web SDK-t)
@@ -79,7 +79,7 @@ Ebben a dokumentumban szereplő összes példák a következő szolgáltatás se
 
 Adatok kifejezések funkció tulajdonság adataihoz hozzáférést biztosítanak. 
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| kifejezés | Visszatérési típusa | Leírás |
 |------------|-------------|-------------|
 | `['at', number, array]` | objektum | Lekérdezi egy elemet egy tömb. |
 | `['geometry-type']` | string | Lekérdezi a funkció geometriai típusa: Pont, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
@@ -137,7 +137,7 @@ Ehhez hasonlóan a Vázlat sokszögek sor rétegekben jelenik meg. Tiltsa le ezt
 
 Matematikai kifejezések matematikai operátorokat kifejezés keretében adatokon alapuló számítások végrehajtásához adja meg.
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| kifejezés | Visszatérési típusa | Leírás |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | szám | A megadott számok összegét számítja ki. |
 | `['-', number]` | szám | Kivonja a megadott szám szerint 0. |
@@ -171,7 +171,7 @@ Logikai kifejezésen logikai operátorokkal kifejezések kiértékelése logikai
 
 Értékek összehasonlítása, az összehasonlítás szigorúan írta be. Különböző típusú értékek mindig minősülnek nem egyenlő. Esetekben, ahol a típusok ismert parse időpontban eltérő lehet érvénytelen tekinti, és a egy elemzési hiba állítja elő. 
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| kifejezés | Visszatérési típusa | Leírás |
 |------------|-------------|-------------|
 | `['! ', boolean]` | logikai | Logikai negálás. Értéket ad vissza `true` Ha a bemenet `false`, és `false` Ha a bemenet `true`. |
 | `['!= ', value, value]` | logikai | Értéket ad vissza `true` Ha bemeneti érték nem egyenlő, `false` más módon. |
@@ -334,7 +334,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Típus kifejezés biztosítanak eszközöket teszteléshez és a különböző adattípusok – például a karakterláncokat, számok és logikai értékek konvertálása.
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| kifejezés | Visszatérési típusa | Leírás |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | tömb \| objektum | Szövegkonstansérték tömböt vagy objektumot ad vissza. Ez a kifejezés használatával megakadályozza, hogy egy tömböt vagy objektumot, egy kifejezés kiértékelése megtörténik. Erre akkor szükség, amikor egy tömböt vagy objektumot kell egy kifejezés által visszaadott. |
 | `['to-boolean', value]` | logikai | A bemeneti érték konvertálása logikai érték beolvasása. Az eredmény `false` amikor a bemeneti érték egy üres karakterlánc, `0`, `false`, `null`, vagy `NaN`; ellenkező esetben a `true`. |
@@ -369,7 +369,7 @@ Típus kifejezés biztosítanak eszközöket teszteléshez és a különböző a
 
 Szín kifejezés könnyebben hozhat létre és kezelheti a színértékek.
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| kifejezés | Visszatérési típusa | Leírás |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | szín | Létrehoz egy színértéket származó *piros*, *zöld*, és *kék* összetevők közötti tartományban kell `0` és `255`, és a egy azalfaösszetevő`1`. Ha valamelyik összetevő az engedélyezett tartományon kívül esik, a kifejezés nem megfelelő. |
 | `['rgba', number, number, number, number]` | szín | Létrehoz egy színértéket származó *piros*, *zöld*, *kék* összetevők közötti tartományban kell `0` és `255`, és a egy tartományon belül az alfa összetevő `0` és `1`. Ha valamelyik összetevő az engedélyezett tartományon kívül esik, a kifejezés nem megfelelő. |
@@ -397,7 +397,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Karakterlánc operátor kifejezések átalakítási műveletek végrehajtása a karakterláncok például kiszámításával és átalakítás az eset. 
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| kifejezés | Visszatérési típusa | Leírás |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | string | Több karakterláncokat fűz össze a együtt. Minden egyes értéknek karakterláncnak kell lennie. Használja a `to-string` kifejezés egyéb értéktípusok alakítandó karakterlánc, szükség esetén írja be. |
 | `['downcase', string]` | string | A megadott karakterlánc kisbetűvé alakítja. |
@@ -751,10 +751,10 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Változókötés kifejezések, hogy azt lehet rá hivatkozni máshol kifejezésben többször azt újraszámítása nélkül tárolható egy változóban számítás eredménye. Ez a kifejezések, amelyek sok számítást magában foglalja a hasznos optimalizálása
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| kifejezés | Visszatérési típusa | Leírás |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"let"<br/>&nbsp;&nbsp;&nbsp;&nbsp;Név1: karakterlánc,<br/>&nbsp;&nbsp;&nbsp;&nbsp;érték1: bármely,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Név2: karakterlánc,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2: bármely,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Egy vagy több értéket által használható változók tárolja a `var` kifejezés a gyermek kifejezés, amely visszaadja az eredményt. |
-| `['var', name: string]` | bármilyen | Hivatkozik, amely használatával hoztuk létre a `let` kifejezés. |
+| `['var', name: string]` | Bármely | Hivatkozik, amely használatával hoztuk létre a `let` kifejezés. |
 
 **Példa**
 

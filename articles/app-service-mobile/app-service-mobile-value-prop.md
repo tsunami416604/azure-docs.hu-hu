@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: f3eb781e7f84e8cf03a975f7cb77f6a7ef074d44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60861377"
 ---
 # <a name="getting-started"></a>A Mobile Apps az Azure App Service-ben
@@ -45,7 +45,7 @@ A felhőalapú mobilalkalmazások fejlesztéséhez fontos funkciók a következ�
 
 * **Adatelérési**: A Mobile Apps egy mobilbarát OData v3 rendszerű adatforrást biztosít, amely Azure SQL Database és a egy helyszíni SQL-kiszolgálóhoz van csatolva. Mivel a szolgáltatás alapjául entitás-keretrendszer is használható, könnyen integrálható más NoSQL- és SQL-adatszolgáltatókkal, köztük az [Azure Table Storage] rendszerrel, a MongoDB-vel, az [Azure Cosmos DB]-vel, illetve olyan SaaS API-szolgáltatókkal, mint az Office 365 és a Salesforce.com.
 
-* **Kapcsolat nélküli szinkronizálás –**: Az ügyfél SDK-k megkönnyítik hozhat létre hatékony és rugalmas mobilalkalmazások kapcsolat nélküli adatkészleteket. Az adatkészletek automatikusan, támogatott ütközésfeloldási megoldásokkal szinkronizálhatók a háttéradatokkal.
+* **Kapcsolat nélküli szinkronizálás –** : Az ügyfél SDK-k megkönnyítik hozhat létre hatékony és rugalmas mobilalkalmazások kapcsolat nélküli adatkészleteket. Az adatkészletek automatikusan, támogatott ütközésfeloldási megoldásokkal szinkronizálhatók a háttéradatokkal.
 
   Részletesebben is tájékozódhat [az adatokkal kapcsolatos funkciókról].
 

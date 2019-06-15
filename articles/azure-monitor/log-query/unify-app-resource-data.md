@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: magoedte
 ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61424643"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Használja őket egységes előtérrendszerként több Azure Monitor az Application Insights-erőforrást 
@@ -103,12 +103,12 @@ Az alábbi táblázat a Log Analytics és az Application Insights séma különb
 | Alkalmazásnév | Alkalmazásnév|
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | az elemek száma |
-| AvailabilityDuration | időtartam |
+| AvailabilityDuration | Időtartam |
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | név |
-| AvailabilityTimestamp | időbélyeg |
+| AvailabilityTestName | name |
+| AvailabilityTimestamp | timestamp |
 | Böngésző | client_browser |
 | Város | client_city |
 | ClientIP | client_IP |
@@ -116,7 +116,7 @@ Az alábbi táblázat a Log Analytics és az Application Insights séma különb
 | Ország | client_CountryOrRegion | 
 | CustomEventCount | az elemek száma | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | név | 
+| CustomEventName | name | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | az elemek száma | 
@@ -127,13 +127,13 @@ Az alábbi táblázat a Log Analytics és az Application Insights séma különb
 | OperationName | operation_Name | 
 | Operációs rendszer | client_OS | 
 | PageViewCount | az elemek száma |
-| PageViewDuration | időtartam | 
-| PageViewName | név | 
+| PageViewDuration | Időtartam | 
+| PageViewName | name | 
 | ParentOperationID | operation_Id | 
 | RequestCount | az elemek száma | 
-| RequestDuration | időtartam | 
+| RequestDuration | Időtartam | 
 | Kérelemazonosító: | id | 
-| RequestName | név | 
+| RequestName | name | 
 | RequestSuccess | sikeres | 
 | ResponseCode | Eredménykód | 
 | Szerepkör | cloud_RoleName |

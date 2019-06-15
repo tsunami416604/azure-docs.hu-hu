@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61411569"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Telepítse a StorSimple Virtual Array 1.0-ás frissítés
@@ -30,11 +30,11 @@ Ez a cikk a StorSimple virtuális tömb helyi webes felületén keresztül, és 
 A szoftverfrissítések vagy gyorsjavítások naprakészen tartani a StorSimple Virtual Array alkalmaz. Mielőtt alkalmazná a frissítést, javasoljuk, hogy tegye meg a kötetek vagy megosztások kapcsolat nélküli módban a gazdagépen első és az eszköz majd. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. Miután a kötetek vagy megosztások offline állapotban, akkor kell is manuális biztonsági mentést az eszköz.
 
 > [!IMPORTANT]
-> - 1.0-ás frissítés megfelel **10.0.10296.0** szoftververzió az eszközön. Ez a frissítés újdonsága az információk, [kibocsátási megjegyzései frissítése 1.0](storsimple-virtual-array-update-1-release-notes.md).
+> - 1\.0-ás frissítés megfelel **10.0.10296.0** szoftververzió az eszközön. Ez a frissítés újdonsága az információk, [kibocsátási megjegyzései frissítése 1.0](storsimple-virtual-array-update-1-release-notes.md).
 >
 > - Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése az eszköz újraindul. Tekintve, hogy a StorSimple Virtual Array egy egyetlen csomóponttal rendelkező eszköz, a folyamatban lévő összes i/o megszakad, és a az eszköz állásidő élményhez.
 >
-> - 1. frissítés az Azure Portalon érhető el, csak akkor, ha a virtuális tömb a 0.6-os frissítés fut-e. A virtuális tömbök frissítés előtti a 0.6-os verziót futtató először telepítse a frissítést a 0.6-os és telepítse az 1. frissítés.
+> - 1\. frissítés az Azure Portalon érhető el, csak akkor, ha a virtuális tömb a 0.6-os frissítés fut-e. A virtuális tömbök frissítés előtti a 0.6-os verziót futtató először telepítse a frissítést a 0.6-os és telepítse az 1. frissítés.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 

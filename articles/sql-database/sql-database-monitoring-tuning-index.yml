@@ -42,7 +42,7 @@ sections:
           - title: Metrikák és naplózás
             href: /azure/sql-database/sql-database-metrics-diag-logging
             html: '<p>Az adatbázis diagnostics telemetriai adatainak az Azure SQL Analytics, az Azure Event Hubs vagy Azure Blob storage-egyéni Integrációk Stream.</p>'
-  - title: További erőforrások
+  - title: További források
     items:
       - type: paragraph
         text: 'Ismerje meg, amely segíthet a további funkciók az adatbázis teljesítményének optimalizálásához.'

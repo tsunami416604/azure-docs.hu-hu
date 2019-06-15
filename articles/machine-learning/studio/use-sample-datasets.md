@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
 ms.openlocfilehash: f86ae4977621927a09d9b83287a00dfa3bc17196
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736615"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studió mintaadatkészleteinek használata
@@ -60,7 +60,7 @@ Ez az adatkészlet minden Egyesült államokbeli repülőtér, a repülőtéren 
   <td>
 Győződjön meg arról, és az árat, beleértve a modell a szolgáltatások, például hengerszám és MPG, valamint egy biztosítási kockázati pontszám száma szerint tulajdonságkészletét kapcsolatos információk.
 <p></p>
-A kockázati pontszám először kapcsolódik automatikus ár. Ezután módosul, a tényleges kockázat a biztosítási matematikusok, symboling a folyamatot. + 3 érték azt jelzi, hogy az automatikus kockázatos, és a -3 értéket, hogy biztonságos-e valószínűleg.
+A kockázati pontszám először kapcsolódik automatikus ár. Ezután módosul, a tényleges kockázat a biztosítási matematikusok, symboling a folyamatot. \+ 3 érték azt jelzi, hogy az automatikus kockázatos, és a -3 értéket, hogy biztonságos-e valószínűleg.
 <p></p>
 <b>Használat:</b> Előrejelezheti a kockázati pontszám funkcióihoz, regressziós vagy többváltozós besorolást. 
 <p></p>

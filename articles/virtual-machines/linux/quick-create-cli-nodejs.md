@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
 ms.openlocfilehash: 569e90c7908ce435689a80f7917b20275703f537
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61473739"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>A klasszikus Azure CLI-vel Linux rendszerű virtuális gép létrehozása
@@ -50,7 +50,7 @@ A következő bemutató egy UbuntuLTS virtuális gép üzembe helyezését szeml
 
 A disztribúcióválasztás egyszerű módja az operációs rendszerek leggyakoribb disztribúciói számára leképezett Azure parancssori felület aliasainak a használata. Az alábbi táblázat az aliasokat tartalmazza (az Azure parancssori felület 0.10-es verziójától kezdve). A `quick-create` parancsot használó minden üzembe helyezés SSD-tárhelyen alapuló virtuális gépeket használ alapértelmezettként, ami gyorsabb üzembe helyezést és magas teljesítményű lemezelérést tesz lehetővé. (Ezek az aliasok az Azure-ban rendelkezésre álló disztribúcióknak csak egy kis részét jelentik. Az Azure Marketplace-en további rendszerképekhez [rendszerképek PowerShellben történő keresésével](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), [a weben](https://azure.microsoft.com/marketplace/virtual-machines/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), illetve [saját egyéni rendszerképének feltöltésével](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) juthat.)
 
-| Alias | Közzétevő | Ajánlat | SKU | Version |
+| Alias | Kiadó | Ajánlat | SKU | Version |
 |:--- |:--- |:--- |:--- |:--- |
 | CentOS |OpenLogic |CentOS |7.2 |legújabb |
 | CoreOS |CoreOS |CoreOS |Stable |legújabb |
@@ -67,7 +67,7 @@ A korábbi `quick-create` példa csak az `-M` jelölőt emelte ki a feltöltend�
 * a virtuális gép neve
 * hely (`westus` vagy `westeurope` jó alapértelmezett értékek)
 * Linux (hogy az Azure tudja, melyik operációs rendszert kívánja használni)
-* felhasználónév
+* username
 
 Az alábbi példa meghatározza az összes értéket, így nincs szükség további adatkérésre. Ha `~/.ssh/id_rsa.pub` ssh-rsa formátumú nyilvános kulcsfájllal rendelkezik, nincs szükség beavatkozásra:
 

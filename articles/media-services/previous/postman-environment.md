@@ -3,22 +3,21 @@ title: Importálja a Postman-környezetből az Azure Media Services REST-hívás
 description: Ez a témakör az Azure Media Services REST-hívások a Postman-környezet definíciójának.
 services: media-services
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: Juliako
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 02/08/2019
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 03/20/2019
+ms.author: juliako
 ms.openlocfilehash: 6813dfca4a89263a10887ef4fa58c7403a9b1294
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60637556"
 ---
 # <a name="import-the-postman-environment"></a>Importálja a Postman-környezet  

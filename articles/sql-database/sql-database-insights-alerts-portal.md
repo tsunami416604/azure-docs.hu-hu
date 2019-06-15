@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
 ms.openlocfilehash: 93337e39a117c1f8d38f24dc416ff8ae95513a34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61035972"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Riasztások létrehozása az Azure SQL Database és a Data warehouse-bA az Azure portal használatával
@@ -55,7 +55,7 @@ Konfigurálhatja és riasztási szabályok használatával kapcsolatos informác
 
 3. Válassza ki a **metrikariasztás hozzáadása (klasszikus)** gombra, és töltse ki a mezőket.
    
-    ![Riasztás beállítása](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
+    ![Riasztás hozzáadása](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. **Név** a riasztás szabályt, majd válassza ki a **leírása**, amely értesítő e-mailek is megjeleníti.
 5. Válassza ki a **metrika** figyelheti, majd kattintson a kívánt egy **feltétel** és **küszöbérték** a mérőszám értéke. Is kiválaszthatják a **időszak** , ameddig a metrikaszabály riasztási triggerek előtt teljesülniük kell. Így például, ha az időszak "PT5M" használja, és a riasztás 80 % fölötti keres CPU, a riasztás aktiválásakor mikor a **átlagos** CPU 80 % fölötti 5 perc volt. Akkor fordul elő, az első eseményindító, ha azt újra aktivál, ha az átlagos Processzorhasználat nem éri a 80 %-kal több mint 5 perc. A CPU-mérték 1 percenként történik. Tekintse át az alábbi táblázat a támogatott idő windows és az összesítés írja be, hogy minden egyes riasztás használ – nem minden riasztás átlagos értéket használja.   
 6. Ellenőrizze **E-mail-tulajdonosok...**  Ha azt szeretné, hogy elküldhetők e-mailben a riasztás akkor aktiválódik, amikor a rendszergazdák és a társadminisztrátorok.
@@ -79,7 +79,7 @@ Miután létrehozta a riasztást, is kiválaszthatja, és:
 | --- | --- | --- | --- | --- |
 | SQL-adatbázis | cpu_percent | Processzorhasználat (%) | Átlag | 5 perc |
 | SQL-adatbázis | physical_data_read_percent | Adat IO kihasználtsága (%) | Átlag | 5 perc |
-| SQL-adatbázis | log_write_percent | Naplózási IO százalékos aránya | Átlag | 5 perc |
+| SQL-adatbázis | log_write_percent | Napló i/o-százaléka | Átlag | 5 perc |
 | SQL-adatbázis | dtu_consumption_percent | DTU-kihasználtság (%) | Átlag | 5 perc |
 | SQL-adatbázis | tárterület | Adatbázis teljes mérete | Maximum | 30 perc |
 | SQL-adatbázis | connection_successful | Sikeres kapcsolatok | Összes | 10 perc |
@@ -95,7 +95,7 @@ Miután létrehozta a riasztást, is kiválaszthatja, és:
 ||||||
 | Rugalmas készlet | cpu_percent | Processzorhasználat (%) | Átlag | 10 perc |
 | Rugalmas készlet | physical_data_read_percent | Adat IO kihasználtsága (%) | Átlag | 10 perc |
-| Rugalmas készlet | log_write_percent | Naplózási IO százalékos aránya | Átlag | 10 perc |
+| Rugalmas készlet | log_write_percent | Napló i/o-százaléka | Átlag | 10 perc |
 | Rugalmas készlet | dtu_consumption_percent | DTU-kihasználtság (%) | Átlag | 10 perc |
 | Rugalmas készlet | storage_percent | Tárolási százalékos aránya | Átlag | 10 perc |
 | Rugalmas készlet | workers_percent | Feldolgozók százalékos aránya | Átlag | 10 perc |
@@ -104,15 +104,15 @@ Miután létrehozta a riasztást, is kiválaszthatja, és:
 | Rugalmas készlet | eDTU_used | használt edtu-k | Átlag | 10 perc |
 | Rugalmas készlet | storage_used | Felhasznált tárterület | Átlag | 10 perc |
 ||||||               
-| SQL data warehouse | cpu_percent | Processzorhasználat (%) | Átlag | 10 perc |
-| SQL data warehouse | physical_data_read_percent | Adat IO kihasználtsága (%) | Átlag | 10 perc |
-| SQL data warehouse | connection_successful | Sikeres kapcsolatok | Összes | 10 perc |
-| SQL data warehouse | connection_failed | Sikertelen kapcsolatok | Összes | 10 perc |
-| SQL data warehouse | blocked_by_firewall | Tűzfal által blokkolva | Összes | 10 perc |
-| SQL data warehouse | service_level_objective | Az adatbázis szolgáltatási szintjét | Összes | 10 perc |
-| SQL data warehouse | dwu_limit | dwu-korlát | Maximum | 10 perc |
-| SQL data warehouse | dwu_consumption_percent | Százalékos DWU | Átlag | 10 perc |
-| SQL data warehouse | dwu_used | Alkalmazott DWU | Átlag | 10 perc |
+| Az SQL data warehouse-bA | cpu_percent | Processzorhasználat (%) | Átlag | 10 perc |
+| Az SQL data warehouse-bA | physical_data_read_percent | Adat IO kihasználtsága (%) | Átlag | 10 perc |
+| Az SQL data warehouse-bA | connection_successful | Sikeres kapcsolatok | Összes | 10 perc |
+| Az SQL data warehouse-bA | connection_failed | Sikertelen kapcsolatok | Összes | 10 perc |
+| Az SQL data warehouse-bA | blocked_by_firewall | Tűzfal által blokkolva | Összes | 10 perc |
+| Az SQL data warehouse-bA | service_level_objective | Az adatbázis szolgáltatási szintjét | Összes | 10 perc |
+| Az SQL data warehouse-bA | dwu_limit | dwu-korlát | Maximum | 10 perc |
+| Az SQL data warehouse-bA | dwu_consumption_percent | Százalékos DWU | Átlag | 10 perc |
+| Az SQL data warehouse-bA | dwu_used | Alkalmazott DWU | Átlag | 10 perc |
 ||||||
 
 

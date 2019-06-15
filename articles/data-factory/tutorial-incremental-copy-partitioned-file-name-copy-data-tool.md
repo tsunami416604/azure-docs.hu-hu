@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
 ms.openlocfilehash: c89764d746f07e6100b1f250d4c107bb700fe014
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61098722"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Növekményes másolása az új fájlok particionált fájlnév idő alapján az adatok másolása eszközzel
@@ -48,7 +48,7 @@ A Blob storage előkészítése az oktatóanyaghoz elvégezhesse ezeket a lépé
     ![Fájlok feltöltése](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
     
     > [!NOTE]
-    > Módosítsa az UTC-idő a mappa nevét.  Például, ha az aktuális UTC időpontig 2:03 PM 2019. február 26., a hozhat létre a mappa elérési útját, **forrás/2019/02/26/14/** , a szabály által **forrás / {Year} / {Month} / {Day} / {Hour} /**.
+    > Módosítsa az UTC-idő a mappa nevét.  Például, ha az aktuális UTC időpontig 2:03 PM 2019. február 26., a hozhat létre a mappa elérési útját, **forrás/2019/02/26/14/** , a szabály által **forrás / {Year} / {Month} / {Day} / {Hour} /** .
 
 2. Hozzon létre egy tárolót **cél**. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
 
@@ -66,7 +66,7 @@ A Blob storage előkészítése az oktatóanyaghoz elvégezhesse ezeket a lépé
    
    ![Új adat-előállító hibaüzenete](./media/tutorial-copy-data-tool/name-not-available-error.png)
    
-   Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. Például: _**sajátneve**_**ADFTutorialDataFactory**. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. Például: _**sajátneve**_ **ADFTutorialDataFactory**. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 3. Válassza ki az Azure-**előfizetést** az új adat-előállító létrehozásához. 
 4. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
      
@@ -136,7 +136,7 @@ A Blob storage előkészítése az oktatóanyaghoz elvégezhesse ezeket a lépé
     
     ![A bemeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-loading-behavior.png)
     
-    c. A dinamikus mappa elérési útját, írási **forrás / {year} / {month} / {day} / {hour} /**, és módosítsa a formátumot, a következőket:
+    c. A dinamikus mappa elérési útját, írási **forrás / {year} / {month} / {day} / {hour} /** , és módosítsa a formátumot, a következőket:
     
     ![A bemeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name.png)
     
@@ -152,7 +152,7 @@ A Blob storage előkészítése az oktatóanyaghoz elvégezhesse ezeket a lépé
     
     ![Kimeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-output-file-folder.png)   
     
-    b. A dinamikus mappa elérési útját, írási **forrás / {year} / {month} / {day} / {hour} /**, és módosítsa a formátumot, a következőket:
+    b. A dinamikus mappa elérési útját, írási **forrás / {year} / {month} / {day} / {hour} /** , és módosítsa a formátumot, a következőket:
     
     ![Kimeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name2.png)    
     
@@ -184,7 +184,7 @@ A Blob storage előkészítése az oktatóanyaghoz elvégezhesse ezeket a lépé
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs4.png)
     
     > [!NOTE]
-    > Előfordulhat, hogy vegye figyelembe, hogy egy új mappa elérési útját kötelező-e létrehozni. Módosítsa az UTC-idő a mappa nevét.  Például, ha az aktuális UTC időpontig 3:20-kor 2019. február 26., hozhat létre a mappa elérési útját, **forrás/2019/02/26/15/** , a szabály által **{Year} / {Month} / {Day} / {Hour} /**.
+    > Előfordulhat, hogy vegye figyelembe, hogy egy új mappa elérési útját kötelező-e létrehozni. Módosítsa az UTC-idő a mappa nevét.  Például, ha az aktuális UTC időpontig 3:20-kor 2019. február 26., hozhat létre a mappa elérési útját, **forrás/2019/02/26/15/** , a szabály által **{Year} / {Month} / {Day} / {Hour} /** .
     
 13. Vissza a **Folyamatfuttatások** nézetben válassza **minden folyamatok Futtatás**, és várjon, amíg a azonos folyamat aktiválása újra egy másik egy óra múlva automatikusan.  
 

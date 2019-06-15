@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 64e9350606748116d2eef247790e88ed0d576c3f
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 64eb89612765f9a47d0eaac2b9cbceb6341c4155
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570368"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64681287"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
 A frissítési garanciával rendelkező ügyfelek az Azure Hybrid Benefit a Windows Server lehetővé teszi a helyszíni Windows Server-licenceivel és a Windows virtuális gépek futtatásához az Azure-ban költséghatékony. Az Azure Hybrid Benefit a Windows Server használatával a Windows operációs rendszer új virtuális gépek üzembe helyezése. Ez a cikk halad keresztül lépéseket, hogyan helyezhet üzembe új virtuális gépeket az Azure Hybrid Benefit a Windows Server, és hogy miként frissítheti meglévő a futó virtuális gépek. További információ az Azure Hybrid Benefit a Windows Server licencelési és költséghatékonyan takaríthat meg, tekintse meg a [Azure Hybrid Benefit a Windows Server licencelési oldal](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -36,7 +36,7 @@ A frissítési garanciával rendelkező ügyfelek az Azure Hybrid Benefit a Wind
 > A klasszikus virtuális gépek esetében egyetlen üzembe új virtuális gép, a helyi egyéni rendszerképek használata támogatott. Ez a cikk a támogatott képességek kihasználásához, először át kell klasszikus virtuális gépeket Resource Manager modellre.
 >
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Az Azure Hybrid Benefit a Windows Server használatával
 Windows virtuális gépek használata az Azure Hybrid Benefit néhány módja van:

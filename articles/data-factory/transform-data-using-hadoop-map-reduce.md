@@ -12,14 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: ccc194dd4120762a30da3ad28cdabed6faf53ba2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611502"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Adatok átalakítása Hadoop MapReduce-tevékenység használatával az Azure Data Factoryban
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-map-reduce.md)
 > * [Aktuális verzió](transform-data-using-hadoop-map-reduce.md)
 
@@ -60,19 +60,19 @@ Lásd: [Pig](transform-data-using-hadoop-pig.md) és [Hive](transform-data-using
 
 ## <a name="syntax-details"></a>Szintaxis részletei
 
-| Tulajdonság          | Leírás                              | Kötelező |
+| Tulajdonság          | Leírás                              | Szükséges |
 | ----------------- | ---------------------------------------- | -------- |
-| név              | A tevékenység neve                     | Igen      |
+| name              | A tevékenység neve                     | Igen      |
 | description       | Mire használható a tevékenységet leíró szöveg | Nem       |
 | type              | A Mapreduce a tevékenység típusát HDinsightMapReduce | Igen      |
 | linkedServiceName | Referencia a HDInsight-fürthöz társított szolgáltatásként a Data Factory regisztrálva. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
-| Osztálynév         | A futtatandó osztály neve         | Igen      |
+| className         | A futtatandó osztály neve         | Igen      |
 | jarLinkedService  | Egy Azure Storage társított szolgáltatás a Jar-fájlok tárolására szolgáló hivatkozás. Ha nem adja meg ezt a társított szolgáltatást, az Azure Storage társított szolgáltatás a HDInsight társított szolgáltatásban meghatározott használja. | Nem       |
 | jarFilePath       | Adja meg a jarLinkedService által hivatkozott Azure Storage-ban tárolt Jar-fájlok elérési útját. A fájlnév formátuma a kis-és nagybetűket. | Igen      |
 | jarlibs           | A karakterlánc tömbje a Jar-könyvtár jarLinkedService meghatározott Azure Storage tárolja a feladat által hivatkozott fájlok elérési útját. A fájlnév formátuma a kis-és nagybetűket. | Nem       |
 | getDebugInfo      | Itt adhatja meg, amikor a naplófájlok másolja az Azure Storage HDInsight-fürt által használt (vagy) jarLinkedService által megadott. Megengedett értékek: Nincs, mindig, vagy sikertelen. Alapértelmezett érték: Nincs. | Nem       |
 | argumentumok         | Argumenty Pro Hadoop-feladatok egy tömbjét adja meg. Az argumentumok adhatók be a parancssori argumentumok minden egyes tevékenységhez. | Nem       |
-| határozza meg           | Kulcs/érték párokként paraméterek megadása a Hive-parancsfájl belül hivatkozik. | Nem       |
+| defines           | Kulcs/érték párokként paraméterek megadása a Hive-parancsfájl belül hivatkozik. | Nem       |
 
 
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: b06fec8ab726f48e1937bae4cfbdbd9842788d0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61480817"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Hangulatelemzés végrehajtása az Azure Stream Analytics és az Azure Machine Learning használatával
@@ -119,7 +119,7 @@ Mostantól létrehozhat egy Stream Analytics-feladatot, amely a minta tweetek be
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).  
 
-2. Kattintson a **erőforrás létrehozása** > **IOT-** > **Stream Analytics-feladat**. 
+2. Kattintson a **erőforrás létrehozása** > **IOT-**  > **Stream Analytics-feladat**. 
 
 3. Nevezze el a feladat `azure-sa-ml-demo`, adja meg az előfizetés, adjon meg egy meglévő erőforráscsoportot vagy hozzon létre egy új, és válassza ki a feladat helyét.
 
@@ -152,7 +152,7 @@ A feladat küldése eredmények ugyanezen a blobtárolón belül hol lekérdezi 
 
 1. A **Feladattopológia** feladat panelen kattintson a **kimenetek** lehetőséget.  
 
-2. Az a **kimenetek** panelen kattintson a **Hozzáadás** >**a Blob storage-**, majd adja hozzá a kimenetben az alias `datamloutput`. 
+2. Az a **kimenetek** panelen kattintson a **Hozzáadás** >**a Blob storage-** , majd adja hozzá a kimenetben az alias `datamloutput`. 
 
 3. Töltse ki a **Blob Storage** panel ezekkel az értékekkel:
 
@@ -175,7 +175,7 @@ Az oktatóanyag ezen szakaszában adja meg a Stream állapotelemzési feladat eg
 
 1. Győződjön meg arról, hogy a web service URL-CÍMÉT és API-kulcsát az Excel-munkafüzet a korábban letöltött.
 
-2. Keresse meg a feladat panelt > **funkciók** > **+ Hozzáadás** > **AzureML**
+2. Keresse meg a feladat panelt > **funkciók** >  **+ Hozzáadás** > **AzureML**
 
 3. Töltse ki a **Azure Machine Learning-függvény** panel ezekkel az értékekkel:
 

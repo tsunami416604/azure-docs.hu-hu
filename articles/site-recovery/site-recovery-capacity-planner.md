@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
 ms.openlocfilehash: eeadfd6a57ff8a26f3f124e2a807fcd66e77b85f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61036743"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Kapacitás megtervezése a Hyper-V-beli virtuális gépek vészhelyreállításához 
@@ -54,7 +54,7 @@ Az eszköz két üzemmódban futtatható:
 
    a. A **válassza ki a forgatókönyv**, válassza a **Hyper-V – Azure** vagy **VMware/fizikai az Azure-bA**.
 
-   b. A **átlagos napi adatváltozási sebessége (%)**, adja meg a segítségével gyűjtött információkat a [Hyper-V kapacitástervezési eszköz](site-recovery-capacity-planning-for-hyper-v-replication.md) vagy [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md).
+   b. A **átlagos napi adatváltozási sebessége (%)** , adja meg a segítségével gyűjtött információkat a [Hyper-V kapacitástervezési eszköz](site-recovery-capacity-planning-for-hyper-v-replication.md) vagy [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md).
 
    c. A **tömörítési** beállítást nem használja, ha az Azure-bA replikált Hyper-V virtuális gépek. Tömörítés használja a külső-készülék, például a riverbed szolgáltatással.
 
@@ -68,7 +68,7 @@ Az eszköz két üzemmódban futtatható:
 
    * **(A megabit/másodperc) változásreplikációjához szükséges sávszélesség**: Átlagos napi adatváltozási sebesség kiszámítása a hálózati sávszélesség a változásreplikáláshoz.
    * **A kezdeti replikációhoz (a megabit/másodperc) szükséges sávszélességet**: A kezdeti replikáció értékek kiszámítása a hálózati sávszélesség a kezdeti replikációhoz.
-   * **Tárolás szükséges (GB)**: A teljes Azure-tárhely szükséges.
+   * **Tárolás szükséges (GB)** : A teljes Azure-tárhely szükséges.
    * **Standard szintű tárolóban működő IOPS teljes**: A szám a 8 KB IOPS egység méretét a teljes standard storage-fiókok alapján lesz kiszámítva. A gyors Planner a szám alapján számítja ki a forrás virtuális gép az összes lemez és a napi adatváltozási gyakoriság. A részletes Planner száma alapján lesz kiszámítva vannak rendelve a standard szintű Azure-beli virtuális gépek teljes száma, és az adatváltozási sebessége a virtuális gépeken.
    * **A standard szintű tárfiókok szükséges**: A standard szintű tárfiókok teljes száma a virtuális gép védelméhez szükséges. A standard szintű tárfiók tartalmazhat legfeljebb 20 000 iops-t minden virtuális gépen standard storage-ban. Legfeljebb 500 IOPS lemezenként támogatott.
    * **Blob szükséges lemezek száma**: A létrehozott Azure storage a lemezek számát.
@@ -92,17 +92,17 @@ Az eszköz két üzemmódban futtatható:
 
    a. A **Processzormagok**, adja meg a magok teljes száma a forráskiszolgálón.
 
-   b. A **lefoglalt memória (a MB-ban)**, adja meg a forráskiszolgáló RAM méretét.
+   b. A **lefoglalt memória (a MB-ban)** , adja meg a forráskiszolgáló RAM méretét.
 
    c. A **hálózati adapterek száma**, adja meg a hálózati adapterek számát a forráskiszolgálón.
 
-   d. A **összes tárterület (GB)**, adja meg a VM-tárterület teljes méretét. Például ha a forráskiszolgáló minden 500 GB-os három lemezt, tárterületének teljes mérete 1500 GB lesz.
+   d. A **összes tárterület (GB)** , adja meg a VM-tárterület teljes méretét. Például ha a forráskiszolgáló minden 500 GB-os három lemezt, tárterületének teljes mérete 1500 GB lesz.
 
    e. A **csatlakoztatott lemezek száma**, adja meg a forráskiszolgáló lemezek teljes száma.
 
    f. A **tárolókapacitás kihasználtságát (%) lemez**, adja meg az átlagos kihasználtság.
 
-   g. A **napi adatváltozási gyakoriság (%)**, adja meg a napi adatváltozási gyakoriság a forráskiszolgáló.
+   g. A **napi adatváltozási gyakoriság (%)** , adja meg a napi adatváltozási gyakoriság a forráskiszolgáló.
 
    h. A **leképezése az Azure Virtuálisgép-méret**, adja meg a leképezni kívánt Azure Virtuálisgép-méretet. Ha nem szeretné, ez megoldható manuálisan, válassza ki a **számítási IaaS virtuális gépek**. Ha a manuális beállítást adja, és válassza ki **számítási IaaS virtuális gépek**, felülírhatják a manuális beállítást. A számítási folyamat automatikusan meghatározza a legmegfelelőbb az Azure virtuális gép méretét.
 

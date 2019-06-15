@@ -7,16 +7,16 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.openlocfilehash: fa72037c8f54271f5651667765c5d5e2e9c03619
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60838071"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis áttelepítése importálása és exportálása
 Ez a cikk leírja a két leggyakoribb módszer az adatok importálása és exportálása egy Azure Database for MySQL-kiszolgálóhoz a MySQL Workbench használatával. 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 Ez az útmutató lépéseinek, az alábbiak szükségesek:
 - Egy Azure Database for MySQL-kiszolgáló, a következő [hozzon létre egy Azure Database for MySQL-kiszolgálóhoz az Azure portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md).
 - A MySQL Workbench [letöltött](https://dev.mysql.com/downloads/workbench/), vagy egy másik MySQL eszköz importálása és exportálása.
@@ -90,7 +90,7 @@ Az alábbi példa a tábla importálja a CSV-fájlból:
 ### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>SQL-adatok exportálása és varázslók importálhat a navigációs panel
 Egy varázsló segítségével exportálja vagy importálhat mysqldump parancsot a létrehozott vagy a MySQL Workbench segítségével létrehozott SQL. Ezekben a varázslókban, a hozzáférés a **kezelő** ablaktáblán vagy kiválasztásával **kiszolgáló** fő menüjéből. Válassza ki **adatexportálás** vagy **adatimportálás**. 
 
-#### <a name="data-export"></a>Adatexportálás
+#### <a name="data-export"></a>Adatok exportálása
 ![A MySQL Workbench-adatok exportálása a navigációs panel használatával](./media/concepts-migrate-import-export/p2.png)
 
 Használhatja a **adatexportálás** fülre, és a MySQL-adatok exportálása. 

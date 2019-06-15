@@ -8,10 +8,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.openlocfilehash: f5f5915e6fdb240fa519ee10526c935a524cb5b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61042216"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Átmeneti kapcsolati hibákat kezelése az Azure Database for MariaDB
@@ -46,4 +46,4 @@ Ellenőrizze, hogy tesztelje, újrapróbálkozási logika. Például próbálja 
 
 ## <a name="next-steps"></a>További lépések
 
-* [MariaDB-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása](howto-troubleshoot-common-connection-issues.md)
+* [Az Azure Database for MariaDB-hez való csatlakozás hibáinak elhárítása](howto-troubleshoot-common-connection-issues.md)

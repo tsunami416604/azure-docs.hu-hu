@@ -10,10 +10,10 @@ ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922836"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>A gyakori elérésű útvonal az Azure Diagnostics-adatok streamelés az Event Hubs használatával
@@ -45,7 +45,7 @@ Az Event Hubs Azure Diagnostics fogadó adatait a Cloud Services, a virtuális g
 * Event Hubs-névtér kiosztása a cikkenként [Event Hubs használatának első lépései](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Csatlakozzon az Event Hubs fogadó Azure Diagnostics
-Alapértelmezés szerint az Azure Diagnostics mindig küld naplókat és mérőszámokat egy Azure Storage-fiókot. Egy alkalmazás is továbbíthatja az adatokat az Event Hubs egy új hozzáadásával **fogadók** szakaszba a **PublicConfig** / **WadCfg** eleme a *. wadcfgx* fájlt. A Visual Studióban a *.wadcfgx* fájlt a következő elérési úton tárolja: **Cloud Service-projekt** > **szerepkörök** > **(RoleName)** > **diagnostics.wadcfgx** fájlt.
+Alapértelmezés szerint az Azure Diagnostics mindig küld naplókat és mérőszámokat egy Azure Storage-fiókot. Egy alkalmazás is továbbíthatja az adatokat az Event Hubs egy új hozzáadásával **fogadók** szakaszba a **PublicConfig** / **WadCfg** eleme a *. wadcfgx* fájlt. A Visual Studióban a *.wadcfgx* fájlt a következő elérési úton tárolja: **Cloud Service-projekt** > **szerepkörök** >  **(RoleName)**  > **diagnostics.wadcfgx** fájlt.
 
 ```xml
 <SinksConfig>
@@ -202,7 +202,7 @@ Az alábbi példa bemutatja, hogyan fejlesztő korlátozhatja a kritikus metrik�
 Ebben a példában a fogadó naplók a alkalmazni, és a szűrt csak hiba történt a nyomkövetési szint.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Üzembe helyezése és a egy Cloud Services-alkalmazás és a diagnosztika konfiguráció frissítése
-A Visual Studio, telepítheti az alkalmazást, és az Event Hubs fogadó konfigurációs a legegyszerűbb útvonalat biztosít. Megtekintheti, és szerkessze a fájlt, nyissa meg a *.wadcfgx* fájlt a Visual Studióban, szerkesztheti és mentheti. Az elérési út **Felhőszolgáltatás-projekt** > **szerepkörök** > **(RoleName)** > **diagnostics.wadcfgx**.  
+A Visual Studio, telepítheti az alkalmazást, és az Event Hubs fogadó konfigurációs a legegyszerűbb útvonalat biztosít. Megtekintheti, és szerkessze a fájlt, nyissa meg a *.wadcfgx* fájlt a Visual Studióban, szerkesztheti és mentheti. Az elérési út **Felhőszolgáltatás-projekt** > **szerepkörök** >  **(RoleName)**  > **diagnostics.wadcfgx**.  
 
 Ezen a ponton az összes központi telepítés és frissítés a Visual Studio, Visual Studio Team System, és minden parancsok vagy parancsfájlok, amelyek MSBuild és a használat alapján műveleteket a **/t: Közzététel** cél közé tartozik a *.wadcfgx* a csomagolási folyamatban. Emellett központi telepítések és frissítések a fájl az Azure-bA segítségével telepítheti a megfelelő Azure Diagnostics-ügynök bővítményt a virtuális gépeken.
 

@@ -16,10 +16,10 @@ ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 36c9a5d75c4a72365638619ab85d451df647feb3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939824"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
@@ -58,12 +58,12 @@ A háló környezet elérhetővé teszi a minősített metrikák, amely azt jelz
 | MemoryUtilization | ActualMem/AllocatedMem százalékos | % |
 | AllocatedCpu | Azure Resource Manager-sablon alapján kiosztott processzor | Millicore |
 | AllocatedMemory | Az Azure Resource Manager-sablon alapján lefoglalt memória | MB |
-| ActualCpu | Processzorhasználat | Millicore |
+| ActualCpu | CPU-használat | Millicore |
 | ActualMemory | Memóriahasználat | MB |
 | ContainerStatus | 0 – érvénytelen: A tároló állapota ismeretlen <br> 1 – függőben: A tároló úgy van ütemezve, elindításához <br> 2 - től: A tároló elindítás folyamatban van <br> 3 – lépések: A tároló sikeresen elindult <br> 4 – Leállítás: A tároló leáll. <br> 5 – leállt: A tároló sikeresen leállt. | – |
 | ApplicationStatus | 0 - unknown: Az állapota nem lekérhető <br> 1 – kész: Az alkalmazás sikeresen fut. <br> 2 – a frissítés: Frissítés folyamatban van <br> 3 - hoz létre: Az alkalmazás létrehozása folyamatban van <br> 4 – törlése: Az alkalmazás törlése folyamatban van <br> 5 – nem sikerült: Az alkalmazás telepítése nem sikerült | – |
-| ServiceStatus | 0 – érvénytelen: A szolgáltatás jelenleg nem rendelkezik egy állapot <br> 1. ok: A szolgáltatás állapota megfelelő  <br> 2 – figyelmeztetés: Előfordulhat, valami hiba történt a vizsgálatot igénylő <br> 3 – hiba: Valami nincs rendben, amely a platformnaplók vizsgálata szükséges <br> 4 – ismeretlen: Az állapota nem lekérhető | – |
-| ServiceReplicaStatus | 0 – érvénytelen: A replika jelenleg nem rendelkezik egy állapot <br> 1. ok: A szolgáltatás állapota megfelelő  <br> 2 – figyelmeztetés: Előfordulhat, valami hiba történt a vizsgálatot igénylő <br> 3 – hiba: Valami nincs rendben, amely a platformnaplók vizsgálata szükséges <br> 4 – ismeretlen: Az állapota nem lekérhető | – | 
+| ServiceStatus | 0 – érvénytelen: A szolgáltatás jelenleg nem rendelkezik egy állapot <br> 1\. ok: A szolgáltatás állapota megfelelő  <br> 2 – figyelmeztetés: Előfordulhat, valami hiba történt a vizsgálatot igénylő <br> 3 – hiba: Valami nincs rendben, amely a platformnaplók vizsgálata szükséges <br> 4 – ismeretlen: Az állapota nem lekérhető | – |
+| ServiceReplicaStatus | 0 – érvénytelen: A replika jelenleg nem rendelkezik egy állapot <br> 1\. ok: A szolgáltatás állapota megfelelő  <br> 2 – figyelmeztetés: Előfordulhat, valami hiba történt a vizsgálatot igénylő <br> 3 – hiba: Valami nincs rendben, amely a platformnaplók vizsgálata szükséges <br> 4 – ismeretlen: Az állapota nem lekérhető | – | 
 | RestartCount | Tároló újraindítások száma | – |
 
 > [!NOTE]

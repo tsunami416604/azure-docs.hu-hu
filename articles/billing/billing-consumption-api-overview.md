@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
 ms.openlocfilehash: 16e0bdfa0fc70d5239cb4127e61891a013bf54a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60615883"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure-használati API – áttekintés 
@@ -109,7 +109,7 @@ Az API-t tartalmazza:
 
 -   **Szerepköralapú hozzáférés-vezérlés az Azure** -konfigurálása hozzáférési házirendek a a [az Azure portal](https://portal.azure.com), a [Azure CLI-vel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview) határozza meg, melyik felhasználók vagy alkalmazások révén ingyenesen juthatnak az előfizetés használati adatokat. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés vagy a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörrel. 
 -   **Szűrés** -testre szabni a javaslat eredmény a következő szűrők használatával:
-    - Hatókör
+    - Scope
     - Lookback időszak
 -   **Foglalási adatokat a különböző típusú** -foglalási információkat jelenleg a vállalati és a Web Direct ügyfeleink számára érhető el.
 

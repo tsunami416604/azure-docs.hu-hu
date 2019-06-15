@@ -14,15 +14,15 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61462411"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása, vagy a helyszíni Oracle az Azure Data Factory használatával
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-onprem-oracle-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-oracle.md)
 
@@ -105,7 +105,7 @@ A következő táblázat ismerteti, amelyek adott, az Oracle-beli társított sz
 | type |A **típus** tulajdonságot állítsa **OnPremisesOracle**. |Igen |
 | driverType | Adja meg az illesztőprogramok másolhat adatokat, vagy az Oracle-adatbázishoz. Engedélyezett értékek a következők **Microsoft** és **ODP** (alapértelmezett). Lásd: [verziójától és a telepítés támogatott](#supported-versions-and-installation) illesztőprogram adatai számára. | Nem |
 | connectionString | Adja meg az információkat, amelyeket szeretne csatlakozni az Oracle database-példány a **connectionString** tulajdonság. | Igen |
-| átjáró neve | Az átjáró a helyszíni Oracle-kiszolgálóhoz való csatlakozáshoz használt neve. |Igen |
+| gatewayName | Az átjáró a helyszíni Oracle-kiszolgálóhoz való csatlakozáshoz használt neve. |Igen |
 
 **Példa: A Microsoft-illesztő használatával**
 
@@ -170,7 +170,7 @@ Az elérhető tulajdonságok köre az **typeProperties** a tevékenység szakasz
 
 A másolási tevékenység, ha a forrás a **OracleSource** típusa, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | oracleReaderQuery |Az egyéni lekérdezés segítségével olvassa el az adatokat. |Egy SQL-lekérdezési karakterláncot. Például "kiválasztása \* a **MyTable**". <br/><br/>Ha nincs megadva, az SQL-utasítás végrehajtása: "kiválasztása \* a **MyTable**" |Nem<br />(Ha **tableName** , **adatkészlet** van megadva) |
 
@@ -183,7 +183,7 @@ A másolási tevékenység, ha a forrás a **OracleSource** típusa, a következ
 | writeBatchTimeout |A várakozási idő a köteg beszúrási művelet befejezését, mielőtt azt az időkorlátot. |**timespan**<br/><br/> Példa: 00:30:00 (30 minutes) |Nem |
 | writeBatchSize |Szúr be adatokat az SQL-táblába, amikor a puffer mérete eléri a értékét **writeBatchSize**. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
 | sqlWriterCleanupScript |Adja meg egy lekérdezést a másolási tevékenység végrehajtásához, hogy az adott szeletre vonatkozó adatok törlődnek. |A lekérdezési utasítást. |Nem |
-| sliceIdentifierColumnName |Meghatározza a másolási tevékenységhez egy automatikusan létrehozott szelet azonosító töltse ki az oszlop neve. Az érték **sliceIdentifierColumnName** mikor futtassa újra a adott szeletre adatainak szolgál. |Az oszlop nevét, amely rendelkezik az adattípus oszlop **binary(32)**. |Nem |
+| sliceIdentifierColumnName |Meghatározza a másolási tevékenységhez egy automatikusan létrehozott szelet azonosító töltse ki az oszlop neve. Az érték **sliceIdentifierColumnName** mikor futtassa újra a adott szeletre adatainak szolgál. |Az oszlop nevét, amely rendelkezik az adattípus oszlop **binary(32)** . |Nem |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-példák az adatok másolása, és az Oracle-adatbázisból
 
@@ -553,7 +553,7 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
-### <a name="problem-1-net-framework-data-provider"></a>1. hiba: .NET-keretrendszer adatszolgáltatója
+### <a name="problem-1-net-framework-data-provider"></a>1\. hiba: .NET-keretrendszer adatszolgáltatója
 
 **Hibaüzenet**
 
@@ -571,9 +571,9 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
     1. Nyissa meg a gép konfigurációs fájlját a mappából a .NET 2.0-s < rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
     2. Keresse meg **Oracle-adatszolgáltató a .NET-hez**. Egy bejegyzés található, ahogyan az alábbi minta alapján elvileg **system.data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
 * Ez a bejegyzés átmásolása a machine.config fájlban a következő .NET 4.0-s: < rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ezután módosítsa a verzió 4.xxx.x.x.
-* Telepítés < ODP.NET telepített elérési\>a globális szerelvény-gyorsítótárban (GAC) futtatásával \11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll **gacutil /i [a szolgáltató elérési út]**.
+* Telepítés < ODP.NET telepített elérési\>a globális szerelvény-gyorsítótárban (GAC) futtatásával \11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll **gacutil /i [a szolgáltató elérési út]** .
 
-### <a name="problem-2-datetime-formatting"></a>2. hiba: Dátum és idő formázása
+### <a name="problem-2-datetime-formatting"></a>2\. hiba: Dátum és idő formázása
 
 **Hibaüzenet**
 
@@ -602,22 +602,22 @@ Ha áthelyezi adatait az Oracle, a következő hozzárendeléseket használatosa
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| LEBEGŐPONTOS |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
-| INTEGER |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
+| FLOAT |Decimal, String (Ha a pontosság > 28) |
+| INTEGER |Decimal, String (Ha a pontosság > 28) |
 | INTERVALLUM ÉV, HÓNAP |Int32 |
 | INTERVALLUM NAP – MÁSODPERC |TimeSpan |
-| HOSSZÚ |String |
-| MENNYI IDEIG NYERS |Byte[] |
+| LONG |String |
+| LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| SZÁM |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
+| NUMBER |Decimal, String (Ha a pontosság > 28) |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
-| }, ROWID |String |
-| IDŐBÉLYEG |DateTime |
-| A HELYI IDŐZÓNA IDŐBÉLYEG |DateTime |
-| AZ IDŐZÓNA IDŐBÉLYEG |DateTime |
-| ELŐJEL NÉLKÜLI EGÉSZ SZÁM |Szám |
+| ROWID |String |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
+| TIMESTAMP WITH TIME ZONE |DateTime |
+| UNSIGNED INTEGER |Number |
 | VARCHAR2 |String |
 | XML |String |
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 72ec3080658b98376952f72f746c1b53fdf7de77
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64704337"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutató
@@ -104,7 +104,7 @@ Node.js-ben a Key Vault-felügyeleti API-t és a Key Vault objektum API is kül�
 
 [Az Azure PowerShell, a Key Vault számára](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
-### <a name="quick-start-guides"></a>Gyors üzembe helyezési útmutatók
+### <a name="quick-start-guides"></a>Rövid útmutatók
 
 - [Kulcstartó létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 - [Ismerkedés a Key Vault Node.js-ben](https://github.com/Azure-Samples/key-vault-node-getting-started)

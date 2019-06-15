@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 22167de6676837c45c48a0bafd19b1ba69578827
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60888329"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Webhook-műveletek létrehozása az Azure IoT Central szabályai
@@ -39,7 +39,7 @@ Ebben a példában, csatlakozzon a RequestBin, értesítést kaphat, amikor a sz
 
 A szabály akkor lesz kiváltva, amikor megjelenik egy új kérelmet RequestBin jelennek meg.
 
-## <a name="payload"></a>Adatok
+## <a name="payload"></a>hasznos adat
 
 A szabály akkor lesz kiváltva, ha egy HTTP POST kérés jön létre a visszahívási URL-cím egy json-adattartalom a mérések, eszköz, a szabály és alkalmazásadatokat tartalmazó. A telemetriai adatok szabály a tartalom az alábbihoz hasonló:
 

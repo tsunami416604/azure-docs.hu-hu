@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 497ffb5acf6262dfb42f490efe68e1ea26c777cb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64572372"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Keresse meg egy címet az Azure Maps search szolgáltatással
@@ -60,7 +60,7 @@ Alapértelmezés szerint a legtöbb keresési lekérdezések `maxFuzzyLevel=1` t
 
     | Kulcs | Érték |
     |------------------|-------------------------|
-    | API-verzió | 1.0 |
+    | api-version | 1.0 |
     | Előfizetés-kulcs | \<az Azure Maps-kulcs\> |
     | lekérdezés | pizza |
 
@@ -110,7 +110,7 @@ Egy teljes vagy részleges utca, házszám át a keresés cím API, és a széle
   
     | Kulcs | Érték |
     |------------------|-------------------------|
-    | API-verzió | 1.0 |
+    | api-version | 1.0 |
     | Előfizetés-kulcs | \<az Azure Maps-kulcs\> |
     | lekérdezés | 400 széles körű St, Seattle, WA 98109 |
   
@@ -151,7 +151,7 @@ Egy teljes vagy részleges utca, házszám át a keresés cím API, és a széle
   
     | Kulcs | Érték |
     |------------------|-------------------------|
-    | API-verzió | 1.0 |
+    | api-version | 1.0 |
     | Előfizetés-kulcs | \<az Azure Maps-kulcs\> |
     | lekérdezés | 47.591180,-122.332700 |
   
@@ -209,7 +209,7 @@ Egy teljes vagy részleges utca, házszám át a keresés cím API, és a széle
   
     | Kulcs | Érték |
     |------------------|-------------------------|
-    | API-verzió | 1.0 |
+    | api-version | 1.0 |
     | Előfizetés-kulcs | \<az Azure Maps-kulcs\> |
     | lekérdezés | 47.591180,-122.332700 |
   

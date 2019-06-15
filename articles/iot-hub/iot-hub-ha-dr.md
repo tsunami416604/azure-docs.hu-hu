@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
 ms.openlocfilehash: 7479d9a230bd28c2ed2e4c8c79ba9301028af36c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60779372"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Az IoT Hub magas rendelkezésre állás és vészhelyreállítás helyreállítási
@@ -125,7 +125,7 @@ Ebben a lépésben leegyszerűsítése idempotens műveleteket kell használnia.
 
 Az alábbiakban egy magas rendelkezésre ÁLLÁS/Vészhelyreállítás beállítások összesítését jelenik meg ebben a cikkben, válassza ki a megfelelő megoldás, amely a megoldás működik, mint egy hivatkozási használható.
 
-| HA/DR-beállítás | RTO | Helyreállítási időkorlát | Manuális beavatkozásra van szükség? | Megvalósítás összetettségét | További költségek gyakorolt hatás|
+| HA/DR-beállítás | RTO | HELYREÁLLÍTÁSI IDŐKORLÁT | Manuális beavatkozásra van szükség? | Megvalósítás összetettségét | További költségek gyakorolt hatás|
 | --- | --- | --- | --- | --- | --- |
 | A Microsoft által kezdeményezett feladatátvétel |2 – 26 óra|Tekintse meg a fenti RPO-táblázat|Nem|None|None|
 | Manuális feladatátvétel |10 perc – 2 óra|Tekintse meg a fenti RPO-táblázat|Igen|Nagyon alacsony. Csak kell elindítani a műveletet a portálról.|None|

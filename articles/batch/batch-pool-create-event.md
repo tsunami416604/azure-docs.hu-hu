@@ -13,10 +13,10 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
 ms.openlocfilehash: 176f00de77c2d353d6efeb8b5a535a607b8f3204
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60776507"
 ---
 # <a name="pool-create-event"></a>Készlet létrehozása esemény
@@ -61,7 +61,7 @@ ms.locfileid: "60776507"
 |enableInterNodeCommunication|Bool|Itt adhatja meg, hogy a készlet be van állítva a közvetlen kommunikáció a csomópontok között.|
 |isAutoPool|Bool|Megadja, hogy a készlet hozták-e egy feladat AutoPool mechanizmus révén.|
 |maxTasksPerNode|Int32|A készlet egyetlen számítási csomóponton egyidejűleg futtatható tevékenységek maximális számát.|
-|vmFillType|String|Itt adhatja meg, hogy a Batch szolgáltatás miként ossza el a tevékenységeket a készlet számítási csomópontjai között. Érvényes értékek vannak elosztva, vagy a csomag.|
+|vmFillType|String|Határozza meg, hogyan osztja el a Batch szolgáltatás a feladatokat a készlet számítási csomópontjai között. Érvényes értékek vannak elosztva, vagy a csomag.|
 
 ###  <a name="bk_csconf"></a> cloudServiceConfiguration
 
@@ -84,7 +84,7 @@ ms.locfileid: "60776507"
 |------------------|----------|-----------|
 |publisher|String|A lemezkép kiadója.|
 |az ajánlat|String|Az ajánlatot a lemezkép.|
-|termékváltozat|String|A lemezkép Termékváltozata.|
+|sku|String|A lemezkép Termékváltozata.|
 |version|String|A lemezkép verziószámát.|
 
 ###  <a name="bk_winconf"></a> windowsConfiguration

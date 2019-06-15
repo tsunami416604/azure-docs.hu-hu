@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61417035"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Üzembe helyezni a StorSimple Virtual Array – Set mentése, iSCSI-kiszolgáló Azure Portalon
@@ -44,11 +44,11 @@ Mielőtt konfigurálja, és állítsa be a StorSimple Virtual Array, ellenőrizz
 Az alábbi részletes útmutatás segítségével beállíthatja és konfigurálhatja a StorSimple Virtual Array:
 
 * [1. lépés: Végezze el a helyi webes felhasználói felület beállítását és az eszköz regisztrálása](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
-* 2. lépés: A szükséges eszköz beállításának befejezése
+* 2\. lépés: A szükséges eszköz beállításának befejezése
 * [3. lépés: Kötet hozzáadása](#step-3-add-a-volume)
 * [4. lépés: Csatlakoztatása, inicializálása és kötetek](#step-4-mount-initialize-and-format-a-volume)
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>1. lépés: Végezze el a helyi webes felhasználói felület beállítását és az eszköz regisztrálása
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>1\. lépés: Végezze el a helyi webes felhasználói felület beállítását és az eszköz regisztrálása
 
 #### <a name="to-complete-the-setup-and-register-the-device"></a>A telepítés befejezéséhez, és regisztrálja az eszközt
 
@@ -90,7 +90,7 @@ Az alábbi részletes útmutatás segítségével beállíthatja és konfigurál
       > 
    4. Ekkor egy párbeszédpanel jelenik meg. A megadott formátumban adja meg a tartományi hitelesítő adatait. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png). A tartományi hitelesítő adatokat fogja ellenőrizni. Látni fogja egy hibaüzenet, ha a hitelesítő adatok helytelenek.
       
-       ![hitelesítő adatok](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
+       ![Hitelesítő adatok](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
    5. Kattintson az **Alkalmaz** gombra. Ezzel alkalmazni, és az Eszközbeállítások ellenőrzése.
 7. (Nem kötelező) konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, vegye figyelembe, hogy ha olyan webproxyt használ, csak konfigurálhatja azt itt.
    
@@ -125,7 +125,7 @@ Az alábbi részletes útmutatás segítségével beállíthatja és konfigurál
     
     ![Eszköz regisztrálása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
-## <a name="step-2-configure-the-device-as-iscsi-server"></a>2. lépés: Az eszköz konfigurálása iSCSI-kiszolgálóként
+## <a name="step-2-configure-the-device-as-iscsi-server"></a>2\. lépés: Az eszköz konfigurálása iSCSI-kiszolgálóként
 
 Az Azure Portalon, a szükséges eszköz beállításának befejezéséhez hajtsa végre az alábbi lépéseket.
 
@@ -152,7 +152,7 @@ Az Azure Portalon, a szükséges eszköz beállításának befejezéséhez hajts
    
     ![Eszközök konfigurálása iSCSI-kiszolgálóként](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
-## <a name="step-3-add-a-volume"></a>3. lépés: Kötet hozzáadása
+## <a name="step-3-add-a-volume"></a>3\. lépés: Kötet hozzáadása
 
 1. Az a **eszközök** panelen válassza ki az eszköz nemrég konfigurált egy iSCSI-kiszolgálóként. Kattintson a **...**  (másik lehetőségként kattintson a jobb gombbal a sor) és a helyi menüből válassza ki a **kötet hozzáadása**. Is **+ kötet hozzáadása** a parancssávon. Megnyílik a **kötet hozzáadása** panelen.
    
@@ -179,7 +179,7 @@ Az Azure Portalon, a szükséges eszköz beállításának befejezéséhez hajts
    
    ![Kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
-## <a name="step-4-mount-initialize-and-format-a-volume"></a>4. lépés: Kötet csatlakoztatása, inicializálása és formázása
+## <a name="step-4-mount-initialize-and-format-a-volume"></a>4\. lépés: Kötet csatlakoztatása, inicializálása és formázása
 
 A következő lépésekkel csatlakoztatása, inicializálása és formázása a StorSimple-köteteket egy Windows Server-gazdagépen.
 

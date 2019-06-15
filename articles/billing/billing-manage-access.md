@@ -17,10 +17,10 @@ ms.date: 11/02/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 8c2843840790d1e0dbfd4a789775c6c7ceb51a54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60918675"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Számlázási adatokat az Azure-hoz való hozzáférés kezelése
@@ -45,7 +45,7 @@ Ezek a szerepkörök rendelkeznek hozzáféréssel a számlázási adatokat a [a
 
 ### <a name="opt-in"></a> Felhasználók számlák letöltésének engedélyezése
 
-Miután a megfelelő szerepkörök hozzárendelése a csapat tagjai, a fiók rendszergazdája hozzáférés az Azure Portalon számlák letöltésének be kell kapcsolnia. 2016. December régebbi számlák érhetők el csak a fiók rendszergazdája.
+Miután a megfelelő szerepkörök hozzárendelése a csapat tagjai, a fiók rendszergazdája hozzáférés az Azure Portalon számlák letöltésének be kell kapcsolnia. 2016\. December régebbi számlák érhetők el csak a fiók rendszergazdája.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. A fiók rendszergazdája, válassza ki az előfizetését a [előfizetések paneljén](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) az Azure Portalon.
@@ -71,7 +71,7 @@ A számlázási olvasó funkció előzetes verzióban érhető el, és nem glob�
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Válassza ki előfizetését az Azure Portal [Előfizetések paneljéről](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
-1. Válassza ki **hozzáférés-vezérlés (IAM)**.
+1. Válassza ki **hozzáférés-vezérlés (IAM)** .
 1. Válassza ki **szerepkör-hozzárendelések** ehhez az előfizetéshez tartozó szerepkör-hozzárendelések megtekintéséhez.
 1. Válassza ki **szerepkör-hozzárendelés hozzáadása**.
 1. Az a **szerepkör** legördülő menüben válassza ki **számlázási olvasó**.

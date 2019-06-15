@@ -14,10 +14,10 @@ ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: kumud
 ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60884979"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Az Azure alapszintű terheléselosztó létrehozása a REST API használatával
@@ -57,7 +57,7 @@ Ebben a példában először létrehozhat egy alapszintű Load Balancer erőforr
 
 Az alábbi példa egy terheléselosztót hoz létre, mielőtt nevű virtuális hálózat létrehozása *vnetlb* nevű alhálózattal *subnetlb* nevű erőforráscsoportból *rg1* a a **USA keleti Régiójában** helyét.
 
-### <a name="step-1-create-a-basic-load-balancer"></a>1. LÉPÉS. Alapszintű Load Balancer létrehozása
+### <a name="step-1-create-a-basic-load-balancer"></a>1\. LÉPÉS. Alapszintű Load Balancer létrehozása
 Alapszintű Load Balancer, nevű létrehozása ebben a lépésben *lb* , a **USA keleti Régiójában** helyen belül a *rg1* erőforráscsoportot.
 #### <a name="sample-request"></a>Mintakérelem
 
@@ -71,7 +71,7 @@ Alapszintű Load Balancer, nevű létrehozása ebben a lépésben *lb* , a **USA
     "location": "eastus",
    }
   ```
-### <a name="step-2-configure-load-balancer-resources"></a>2. LÉPÉS. Terheléselosztó erőforrásainak konfigurálása
+### <a name="step-2-configure-load-balancer-resources"></a>2\. LÉPÉS. Terheléselosztó erőforrásainak konfigurálása
 Ebben a lépésben konfigurálja a terheléselosztó *lb* erőforrásokat, például az előtérbeli IP-konfiguráció (*fe-lb*), egy háttércímkészlet (*kell lb*), a terheléselosztási szabály () *rulelb*), az állapotfigyelő mintavételező (*mintavétel-lb*), és a egy bejövő NAT-szabály ( *-nat-szabályok*).
 #### <a name="sample-request"></a>Mintakérelem
 

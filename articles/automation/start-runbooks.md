@@ -10,10 +10,10 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: b065b611c923c4a28dc79c390ffb56ed97b316fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60880201"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Az Azure Automation forgatókönyv indítása
@@ -84,7 +84,7 @@ Az Azure Automation webszolgáltatás a bizonyos adattípusokkal, az alábbiakba
 
 ### <a name="named-values"></a>Névvel ellátott értékek
 
-Ha a paraméter adattípusa [objektum], akkor használhatja a következő JSON formátummal küldhet neki egy névvel ellátott értékek listája: *{Name1: "Érték1", Név2: "Érték2", név3: "Érték3"}*. Ezek az értékek csak egyszerű típusok lehetnek. A runbook a paramétert, kap egy [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) tulajdonságokkal, minden egyes névvel ellátott értékekkel.
+Ha a paraméter adattípusa [objektum], akkor használhatja a következő JSON formátummal küldhet neki egy névvel ellátott értékek listája: *{Name1: "Érték1", Név2: "Érték2", név3: "Érték3"}* . Ezek az értékek csak egyszerű típusok lehetnek. A runbook a paramétert, kap egy [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) tulajdonságokkal, minden egyes névvel ellátott értékekkel.
 
 Vegye figyelembe a következő teszt runbook, amely egy felhasználó nevű paramétert fogad el.
 
@@ -121,7 +121,7 @@ Smith
 
 ### <a name="arrays"></a>tömbök
 
-Ha a paraméter egy tömb, például [array] vagy [string []], használhatja a következő JSON formátummal küldhet neki értékekből álló listát: *[érték1, érték2, érték3]*. Ezek az értékek csak egyszerű típusok lehetnek.
+Ha a paraméter egy tömb, például [array] vagy [string []], használhatja a következő JSON formátummal küldhet neki értékekből álló listát: *[érték1, érték2, érték3]* . Ezek az értékek csak egyszerű típusok lehetnek.
 
 Tesztrunbook a következő nevű paraméter elfogadja *felhasználói*.
 

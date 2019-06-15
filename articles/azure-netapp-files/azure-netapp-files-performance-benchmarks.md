@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: b-juche
 ms.openlocfilehash: aca0668fc364518fe45d9fe94d089ee366b25676
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64870882"
 ---
-# <a name="performance-benchmarks-for-azure-netapp-files"></a>TELJESÍTMÉNYMÉRÉSEK NetApp Azure-fájlok
+# <a name="performance-benchmarks-for-azure-netapp-files"></a>Az Azure NetApp Files teljesítményével kapcsolatos mérőszámok
 
 Ez a cikk ismerteti a teljesítményteszt teljesítménytesztek eredményeinek Azure NetApp fájlok kötetszinten. 
 
@@ -53,7 +53,7 @@ A következő ellenőrzés futtatná:
 * 50 %-os 64 KiB Szekvenciális olvasási, 50 %-os 64 KiB szekvenciális írási
 * 50 %-os véletlenszerű 8 KiB olvasni, 50 %-os 8 KiB véletlenszerű írási
 
-## <a name="bandwidth"></a>Bandwidth
+## <a name="bandwidth"></a>A sávszélesség
 
 NetApp Azure Files kínál több [szolgáltatásszintek](azure-netapp-files-service-levels.md). Minden szolgáltatási szint egy eltérő mennyiségű Tib-ra, a kiosztott kapacitás (köteten kvóta) sávszélességet kínál. A sávszélesség korlátja egy kötet a szolgáltatási szint és a köteten kvóta kombinációja alapján van kiépítve. Vegye figyelembe, hogy a sávszélességre vonatkozó korlátját csak egy tényező szükséges tényleges átviteli sebességet, amelyet a rendszer bekövetkeznének meghatározásához.  
 
@@ -81,7 +81,7 @@ A teszt virtuális gépek és az Azure Files-NetApp kötet közötti távolságo
 
 ![Késés tanulmány](../media/azure-netapp-files/azure-netapp-files-latency-study.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Késleltetésre érzékeny számítási feladatok (adatbázisok) rendelkezhet egy ezredmásodpercnél több válaszideje. A tranzakciós teljesítmény lehet több mint 300k IOPS egyetlen kötetén.
 

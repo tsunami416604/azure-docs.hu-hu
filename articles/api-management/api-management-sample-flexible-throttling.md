@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
 ms.openlocfilehash: 22c3987121e2ab3479274c89c359c679f5f1135e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61087130"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Speciális kérésszabályzás az Azure API Management szolgáltatással
@@ -71,7 +71,7 @@ Ha a sávszélesség-szabályozási kulcs használatával egy [házirend kifejez
 
 Ez lehetővé teszi a fejlesztői ügyfélalkalmazás adja meg, hogyan azokat a sebesség korlátozása a kulcs létrehozásához. Az ügyfél létrehozhatnak saját rétegek kulcsok részhalmazához kiosztása a felhasználók számára, és a kulcshasználat elforgatása.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az Azure API Management biztosít arányát és a sávszélesség-szabályozási is védeni, és adjon meg értéket, az API-szolgáltatás ajánlat. Az új sávszélesség-szabályozási házirendek hatókörkezelési egyéni szabályok lehetővé teszik ennél ügyfelei számára, hogy még jobb alkalmazások készítése ahhoz, hogy ezek a házirendek részletes felett. Ebben a cikkben szereplő példák bemutatják, ezeket az új házirendeket használata korlátozza az ügyfél IP-címeket, a felhasználói identitás és a generált ügyfél értékek kulcsok gyártási átviteli sebesség. Vannak azonban az üzenetet, például a felhasználói ügynök, a URL-cím elérési út töredék, az üzenet mérete a használható számos egyéb részei.
 
 ## <a name="next-steps"></a>További lépések

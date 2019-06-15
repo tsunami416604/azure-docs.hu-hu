@@ -5,16 +5,15 @@ description: Ismerje meg, hogyan csatlakozhat a Cosmos DB-hez a Studio 3T és az
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-origin.date: 12/26/2018
-ms.date: 03/18/2019
-author: rockboyfor
-ms.author: v-yeche
+ms.date: 12/26/2018
+author: sivethe
+ms.author: sivethe
 ms.custom: seodec18
 ms.openlocfilehash: 9b0a6393d2372c831fdc964dee18acbccfd39a77
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61331948"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>Csatlakozás Cosmos-fiókhoz a Studio 3T használata
@@ -114,5 +113,3 @@ Egy adatbázis, gyűjtemény és a Studio 3T használata dokumentumok létrehoz�
 
 - Ismerje meg, hogyan [Robo 3T használata](mongodb-robomongo.md) az Azure Cosmos DB API a mongodb-hez.
 - Ismerkedés a MongoDB [minták](mongodb-samples.md) az Azure Cosmos DB API a mongodb-hez.
-
-<!-- Update_Description: update meta properties, wording update -->

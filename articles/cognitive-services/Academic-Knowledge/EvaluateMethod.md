@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61339092"
 ---
 # <a name="evaluate-method"></a>Módszer kiértékelése
@@ -35,8 +35,8 @@ Name (Név)     | Érték | Kötelező?  | Leírás
 **kifejezés**       | Szöveges karakterlánc | Igen | A lekérdezési kifejezés, amely meghatározza, mely entitások vissza kell adni.
 **model**      | Szöveges karakterlánc | Nem  | A lekérdezni kívánt modell neve.  Jelenleg az alapértelmezett érték *legújabb*.        
 **Attribútumok** | Szöveges karakterlánc | Nem<br>alapértelmezett érték: Azonosító | Egy vesszővel tagolt listája, amely meghatározza az attribútum értékei, amelyek szerepelnek a választ. Attribútumnevek-és nagybetűk.
-**count**        | Szám | Nem<br>Alapértelmezett: 10 | Visszaadott eredmények száma.
-**eltolás**     | Szám |   Nem<br>Alapértelmezett: 0    | Az első eredmény index való visszatéréshez.
+**count**        | Szám | Nem<br>alapértelmezett érték: 10 | Visszaadott eredmények száma.
+**eltolás**     | Szám |   Nem<br>alapértelmezett érték: 0    | Az első eredmény index való visszatéréshez.
 **OrderBy** |   Szöveges karakterlánc | Nem<br>Alapértelmezés: csökkenő valószínűség szerint | Az entitások rendezéshez használt attribútum neve. Igény szerint növekvő vagy csökkenő adható meg. A formátum: *name: asc* vagy *name: desc*.
   
  <br>

@@ -16,10 +16,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60653367"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>A nem induló Felhőszolgáltatási szerepkörök hibaelhárítása
@@ -66,7 +66,7 @@ Használhatja a távoli asztali eléréséhez a szerepkört, és teljes hibaadat
 2. A megoldás üzembe helyezése közben a Visual studióval a távoli asztal engedélyezése. További információkért lásd: [távoli asztali kapcsolat engedélyezése egy szerepkörhöz az Azure Cloud Services, a Visual Studio használatával](cloud-services-role-enable-remote-desktop-visual-studio.md).
 3. A Microsoft Azure Portalon, ha a példány egy állapotát jeleníti meg a **készen**, távoli másolatát a példányon. A távoli asztal az Cloud Services és a további információkért lásd: [szerepkörpéldányok távolról](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Jelentkezzen be a virtuális géphez a távoli asztal konfigurálása során megadott hitelesítő adataival.
-6. Nyisson meg egy parancsablakot.
+6. Nyissa meg a parancsablakot.
 7. Gépelje be: `IPconfig`.
 8. Jegyezze fel az IPV4-cím értékét.
 9. Open Internet Explorer.
@@ -76,7 +76,7 @@ Ellenőrizheti, hogy a webhely most visszatér több explicit hibaüzenetek:
 
 * Kiszolgálóhiba a "/" alkalmazás.
 * Leírás: Nem kezelt kivétel történt az aktuális webes kérelem végrehajtása közben. Tekintse át a híváslánc a hibával kapcsolatban, és ahol, adja meg a kódot a további információt.
-* Kivétel részletei: System.IO.FIleNotFoundException: Could not load file or assembly ‘Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35’ or one of its dependencies. A rendszer nem találja a megadott fájlt.
+* Kivétel részletei: System.IO.FIleNotFoundException: Could not load file or assembly ‘Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35’ or one of its dependencies. A rendszer a megadott fájl nem található.
 
 Példa:
 

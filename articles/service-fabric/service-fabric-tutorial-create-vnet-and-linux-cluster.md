@@ -16,10 +16,10 @@ ms.date: 02/14/2019
 ms.author: aljo
 ms.custom: mvc
 ms.openlocfilehash: 00d7e510fa43865f1427092f2f20b9847f1afa9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60863784"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure-beli virtuális hálózathoz Linux Service Fabric-fürt üzembe helyezése
@@ -53,7 +53,7 @@ A **Microsoft.ServiceFabric/clusters** erőforrásban a rendszer üzembe helyez 
 
 * három csomópont típusa
 * öt csomópont van az elsődleges csomóponttípusban (a sablon paramétereiben konfigurálható), minden más csomóponttípus egy csomópont
-* Operációs rendszer: Ubuntu 16.04 LTS (a sablon paramétereiben konfigurálható)
+* OS: Ubuntu 16.04 LTS (a sablon paramétereiben konfigurálható)
 * tanúsítványon alapuló védelem (a sablon paramétereiben konfigurálható);
 * engedélyezve van a [DNS szolgáltatás](service-fabric-dnsservice.md);
 * bronz szintű [tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);

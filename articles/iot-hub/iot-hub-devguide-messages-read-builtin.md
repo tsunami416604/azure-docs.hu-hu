@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 827d7d9a3d584342703a84dd2a42e5cda9b3a656
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61364002"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
@@ -46,7 +46,7 @@ Amikor az Event Hubs SDK-k vagy termékintegrációk, amelyek nem tudnak az IoT 
 
 3. A **események** szakasz tartalmazza a következő értékeket: **A partíciók**, **Event Hub-kompatibilis nevet**, **Event Hub-kompatibilis végpont**, **megőrzési időtartama**, és **fogyasztóicsoportok**.
 
-    ![Eszközről-a-felhőbe típusú üzenetek beállításai](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
+    ![Eszközről a felhőbe – beállítások](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
 A portálon az Event Hub-kompatibilis végpont mezőbe, amely a következőhöz hasonló teljes az Event Hubs kapcsolati karakterláncot tartalmazza: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**. Ha az SDK-t használ a többi értéket igényel, majd azokat a következő lesz:
 

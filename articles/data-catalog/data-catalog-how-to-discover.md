@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.openlocfilehash: b21bf1b50152130d7b6edd227c87fcaca28c1e6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61001429"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Az Azure Data Catalog az adatforrások felderítése
@@ -56,7 +56,7 @@ Az alapértelmezett csempe nézetben, a keresési eredmények között megjeleni
 
  ![Találatok kiemelése és az Azure Data Catalog-portálon megfelel a keresésnek](./media/data-catalog-how-to-discover/search-matches.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Mivel a Data Catalog adatforrás regisztrálása másolja szerkezeti és leíró metaadatokat az adatforrásból a katalógus-szolgáltatáshoz, az adatforrás könnyebben megtalálhatóvá és értelmezhetővé válnak. Egy adatforrás regisztrálása után szűrés segítségével könnyűszerrel megkeresheti, és a Data Catalog-portál a keresni.
 

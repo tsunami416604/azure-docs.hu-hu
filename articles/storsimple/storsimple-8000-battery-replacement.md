@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 4ebf3f28d40e0461d140a3fe74fb940720f26db6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418938"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693754"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Cserélje le a StorSimple eszközön a biztonsági mentési akkumulátor modul
 
@@ -41,7 +41,7 @@ A biztonsági mentési akkumulátor-modul a StorSimple eszközhöz egy mezőben 
 
 #### <a name="to-remove-the-backup-battery-module"></a>A biztonsági mentési akkumulátor moduljának eltávolítása
 1. Az Azure Portalon nyissa meg a StorSimple-Eszközkezelő szolgáltatás paneljén. Lépjen a **eszközök** , és válassza ki azt az eszközt az eszközök a listából. Navigáljon a **figyelő** > **hardverállapot**. A **megosztott összetevők**, tekintse meg az akkumulátor állapotát.
-2. Ahol sikertelen volt az akkumulátor a PCM azonosítása. 1. ábra a StorSimple-eszköz-jének mutatja.
+2. Ahol sikertelen volt az akkumulátor a PCM azonosítása. 1\. ábra a StorSimple-eszköz-jének mutatja.
    
     ![Az eszköz elsődleges ház modulok csatlakozópanel meghibásodása](./media/storsimple-battery-replacement/IC740994.png)
    
@@ -51,8 +51,8 @@ A biztonsági mentési akkumulátor-modul a StorSimple eszközhöz egy mezőben 
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
-   | 3 |0. vezérlő |
-   | 4 |1. vezérlő |
+   | 3 |Vezérlő 0 |
+   | 4 |Vezérlő 1 |
    
     A 2. ábrán a 3-as számú eredményobjektumokról állapotjelző vezetett a PCM 0-ban, amely megfelel a **tartalék akkumulátor** kell kell kapcsolni.
    

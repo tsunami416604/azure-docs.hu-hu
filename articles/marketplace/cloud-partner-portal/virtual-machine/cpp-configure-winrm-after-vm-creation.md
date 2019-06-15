@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
 ms.openlocfilehash: 4a4248efcfda76dfd8907069e167fdfa144d0365
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938517"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>A WinRM beállítása után a virtuális gép létrehozása
@@ -26,7 +26,7 @@ Ez a cikk ismerteti, hogyan konfigurálhatja egy meglévő Azure-ban üzemeltete
 
 A WinRM HTTPS protokollon keresztül-portot használja 5896, amely az Azure piactéren kínált előre konfigurált Windows virtuális gépek alapértelmezés szerint nincs engedélyezve. Ez a protokoll engedélyezéséhez használja az alábbi lépéseket a hálózati biztonsági csoport (NSG) az új szabály hozzáadása a [az Azure portal](https://portal.azure.com).  NSG-kkel kapcsolatos további információkért lásd: [biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
-1.  A panelre való **virtuális gépek >**  <*virtuális gép neve*>  **> Beállítások/hálózati**.
+1.  A panelre való **virtuális gépek >**   <*virtuális gép neve*>   **> Beállítások/hálózati**.
 2.  Kattintson az NSG neve (ebben a példában **testvm11002**) a tulajdonságainak megjelenítéséhez:
 
     ![Hálózati biztonsági csoport tulajdonságai](./media/nsg-properties.png)

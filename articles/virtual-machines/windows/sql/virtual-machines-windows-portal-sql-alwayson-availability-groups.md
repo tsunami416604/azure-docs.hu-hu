@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62129553"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Always On rendelkezésre állási csoportok konfigurálása Azure Virtual Machines szolgáltatásban automatikusan: Resource Manager
@@ -185,7 +185,7 @@ A **SQL Server-beállítások**, tekintse át, és az SQL Server virtuális gép
 
 Tekintse át a beállításokat, és kattintson **OK**.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 Az összefoglalás lapon az Azure ellenőrzi a beállításokat. A sablon is letöltheti. Tekintse át az összegzést. Kattintson az **OK** gombra.
 
 ### <a name="buy"></a>Vásárlás
@@ -206,7 +206,7 @@ Az RDP-vel egy SQL Server kövesse az alábbi lépéseket:
 1. Az Azure portal irányítópultján győződjön meg arról, hogy az üzembe helyezés sikeres volt-e.
 2. Kattintson a **erőforrások**.
 3. A a **erőforrások** panelen kattintson a **sqlserver-0**, azaz a számítógép neve egy SQL Servert futtató virtuális gépet.
-4. Paneljén **sqlserver-0**, kattintson a **Connect**. A böngésző kéri, ha szeretné-e megnyitni vagy menteni a távoli kapcsolat objektumot. Kattintson az **Open** (Megnyitás) elemre.
+4. Paneljén **sqlserver-0**, kattintson a **Connect**. A böngésző kéri, ha szeretné-e megnyitni vagy menteni a távoli kapcsolat objektumot. Kattintson a **nyílt**.
 5. **A távoli asztali kapcsolat** előfordulhat, hogy figyelmezteti, hogy a távoli kapcsolat közzétevője nem azonosítható. Kattintson a **Connect** (Csatlakozás) gombra.
 6. Windows biztonsági csatlakozni az elsődleges tartományvezérlő IP-címét a hitelesítő adatok megadását kéri. Kattintson a **másik fiók használata**. A **felhasználónév**, típus **contoso\DomainAdmin**. Ez a fiók beállításakor a rendszergazda felhasználó nevét a sablonban konfigurált. Ha konfigurálta a sablont választott összetett jelszót használja.
 7. **A távoli asztal** előfordulhat, hogy figyelmezteti, hogy a távoli számítógép nem hitelesíthető a biztonsági tanúsítványával kapcsolatos problémák miatt. Megjeleníti a biztonsági tanúsítvány neve. Ha követte az oktatóanyag, a név **sqlserver-0.contoso.com**. Kattintson a **Yes** (Igen) gombra.

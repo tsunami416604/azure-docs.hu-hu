@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62118111"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Hozzon létre egy automatikus méretezési képlet egy Batch-készletben lévő számítási csomópontok méretezése
@@ -160,8 +160,8 @@ Ezek a műveletek az előző szakaszban felsorolt típusok engedélyezettek.
 | doubleVec *operátor* doubleVec |+, -, *, / |doubleVec |
 | TimeInterval *operátor* dupla |*, / |TimeInterval |
 | TimeInterval *operátor* timeinterval |+, - |TimeInterval |
-| TimeInterval *operátor* időbélyeg |+ |időbélyeg |
-| időbélyeg *operátor* timeinterval |+ |időbélyeg |
+| TimeInterval *operátor* időbélyeg |+ |timestamp |
+| időbélyeg *operátor* timeinterval |+ |timestamp |
 | időbélyeg *operátor* időbélyeg |- |TimeInterval |
 | *operátor*dupla |-, ! |double |
 | *operator*timeinterval |- |TimeInterval |
@@ -195,7 +195,7 @@ Ezek előre meghatározott **funkciók** elérhető definiálása az automatikus
 | std(doubleVecList) |double |A doubleVecList értékek minta szórásának visszaadása. |
 | stop() | |Leállítja az automatikus méretezés kifejezés kiértékelése. |
 | Sum(doubleVecList) |double |A doubleVecList összetevőit összegét adja vissza. |
-| time(string dateTime="") |időbélyeg |Ha átadva adja vissza az aktuális idő, ha nincsenek átadott paraméterek időbélyegzőjét, vagy a dátum/idő karakterlánc időbélyegzőjét. Támogatott dátum és idő formátumok a következők: W3C-DTF és RFC 1123. |
+| time(string dateTime="") |timestamp |Ha átadva adja vissza az aktuális idő, ha nincsenek átadott paraméterek időbélyegzőjét, vagy a dátum/idő karakterlánc időbélyegzőjét. Támogatott dátum és idő formátumok a következők: W3C-DTF és RFC 1123. |
 | érték (doubleVec v, dupla i) |double |Az elem helyén i vektor v, a nulla kiindulási indexszel rendelkező értékét adja vissza. |
 
 A függvények az előző táblázatban ismertetett elfogadhatja a lista argumentumként. A vesszővel tagolt lista tetszőleges kombinációját *dupla* és *doubleVec*. Példa:
@@ -579,7 +579,7 @@ Error:
 ## <a name="example-autoscale-formulas"></a>A példában az automatikus méretezés képletek
 Tekintsünk meg néhány olyan képletek, amelyek a készletben működő számítási erőforrások nagyságának különböző módszereket mutatnak.
 
-### <a name="example-1-time-based-adjustment"></a>1. példa: Időalapú beállítása
+### <a name="example-1-time-based-adjustment"></a>1\. példa: Időalapú beállítása
 Tegyük fel, hogy átméretezi a készletet a hét napját és idejét alapján. Ez a példa bemutatja, hogyan növelheti vagy csökkentheti a készletben lévő csomópontok számát ennek megfelelően.
 
 A képlet először lekéri az aktuális idő. Ha a weekday (1-5) és munkaidőn (8 6 18: 00) belül, a cél készletméret 20 csomóponttal van beállítva. Ellenkező esetben a 10 csomópont értéke azt.
@@ -592,7 +592,7 @@ $isWorkingWeekdayHour = $workHours && $isWeekday;
 $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 ```
 
-### <a name="example-2-task-based-adjustment"></a>2. példa Feladatalapú beállítása
+### <a name="example-2-task-based-adjustment"></a>2\. példa Feladatalapú beállítása
 Ebben a példában a készlet méretét módosul az üzenetsorban szereplő feladatok száma alapján. Megjegyzések és a sortöréseket a képlet karakterláncok elfogadhatók.
 
 ```csharp
@@ -611,7 +611,7 @@ $TargetDedicatedNodes = max(0, min($targetVMs, 20));
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-3-accounting-for-parallel-tasks"></a>3. példa: Számlázási párhuzamos feladatok
+### <a name="example-3-accounting-for-parallel-tasks"></a>3\. példa: Számlázási párhuzamos feladatok
 Ebben a példában a készlet méretét, a feladatok száma alapján állítja be. Ez a képlet is figyelembe veszi a [MaxTasksPerComputeNode] [ net_maxtasks] a készlethez beállított értéket. Ez a megközelítés olyan esetekben hasznos, ahol [párhuzamos feladat a végrehajtás](batch-parallel-node-tasks.md) engedélyezve van a készleten.
 
 ```csharp
@@ -632,7 +632,7 @@ $TargetDedicatedNodes = max(0,min($targetVMs,3));
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-4-setting-an-initial-pool-size"></a>4. példa: Egy készlet kezdeti méret
+### <a name="example-4-setting-an-initial-pool-size"></a>4\. példa: Egy készlet kezdeti méret
 Ez a példa bemutatja egy C# kódrészlet az egy automatikus skálázási képletet, amely beállítja a készlet méretét a megadott számú csomópontra egy kezdeti adott időszakban. Ezután azt állítja be a készlet méretét futó számát és az aktív feladatok a kezdeti időszak eltelte után.
 
 A képlet megjelenik a következő kódrészletet:

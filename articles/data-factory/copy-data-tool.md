@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
 ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787695"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Adatok másolása eszköz az Azure Data Factoryban
@@ -78,7 +78,7 @@ Az alábbi képernyőképen látható szűrje az adatokat egy SQL-lekérdezést.
 ![Adatbázis adatainak szűrése](./media/copy-data-tool/filter-data-in-database.png)
 
 ### <a name="filter-data-in-an-azure-blob-folder"></a>Adatok szűrése egy Azure blob-mappába
-A mappa elérési útjának változók használatával adatokat másol egy mappát. A támogatott értékek: **{year}**, **{month}**, **{day}**, **{hour}**, és **{minute}**. Például: inputfolder / {year} / {month} / {day}. 
+A mappa elérési útjának változók használatával adatokat másol egy mappát. A támogatott értékek: **{year}** , **{month}** , **{day}** , **{hour}** , és **{minute}** . Például: inputfolder / {year} / {month} / {day}. 
 
 Tegyük fel, hogy a bemeneti mappa a következő formátumban: 
 
@@ -91,7 +91,7 @@ Tegyük fel, hogy a bemeneti mappa a következő formátumban:
 
 Kattintson a **Tallózás** gombot **fájl vagy mappa**, tallózással keresse meg az egyik mappát (például 2016 -> 03 -> 01-02 >), kattintson **válasszon**. 2016/03/01/02 a szövegmezőben kell megjelennie. 
 
-Ezután cserélje le **2016** a **{year}**, **03** a **{month}**, **01** a **{day}** , és **02** a **{hour}**, és nyomja le a **lapon** kulcs. Válassza ki ezeket a változókat formátumát, legördülő listák kell megjelennie:
+Ezután cserélje le **2016** a **{year}** , **03** a **{month}** , **01** a **{day}** , és **02** a **{hour}** , és nyomja le a **lapon** kulcs. Válassza ki ezeket a változókat formátumát, legördülő listák kell megjelennie:
 
 ![A szűrő fájl vagy mappa](./media/copy-data-tool/filter-file-or-folder.png)
 

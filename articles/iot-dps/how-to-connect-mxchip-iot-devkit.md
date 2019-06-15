@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: jeffya
 ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122832"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Az MXChip IoT DevKit IoT Hub-regisztráció az Azure IoT Hub Device Provisioning Service automatikus kiépítés használatával
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan használható az Azure IoT Hub Device Provisioni
 
 A [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy teljes körű Arduino-kompatibilis tábla a gazdag perifériák és érzékelők van. A használatával is fejleszthet [Azure IoT-eszköz Workbench](https://aka.ms/iot-workbench) vagy [Azure IoT-eszközök](https://aka.ms/azure-iot-tools) bővítőcsomagjának Visual Studio Code-ban. A fejlesztői készlet együttműködik a egyre növekvő [projektek katalógus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) is, amelyek kihasználják az Azure-szolgáltatások prototípusként Internet of Things (IoT) megoldását.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez az oktatóanyag lépéseinek végrehajtásához először a következő feladatokat végezheti el:
 
@@ -60,7 +60,7 @@ Egy frissítési Tartománnyal mentéséhez kattintson a fejlesztői készlet:
 
 1. A fejlesztői készlet, tartsa lenyomva a **gombra A**, push és kiadása a **alaphelyzetbe** gombra, majd engedje **gombra A**. A fejlesztői készlet konfigurációs módra vált.
 
-1. Kattintson a `F1` a parancskatalógus megnyitásához, írja be, és válassza ki **Azure IoT-eszköz Workbench: -Beállítások konfigurálása... > konfigurációs eszköz egyedi karakterlánc (frissítési)**.
+1. Kattintson a `F1` a parancskatalógus megnyitásához, írja be, és válassza ki **Azure IoT-eszköz Workbench: -Beállítások konfigurálása... > konfigurációs eszköz egyedi karakterlánc (frissítési)** .
   ![Frissítési Tartománnyal konfigurálása](media/how-to-connect-mxchip-iot-devkit/config-uds.png)
 
 1. Jegyezze fel a létrehozott karakterlánc frissítési Tartománnyal. Szüksége lesz rá az X.509-tanúsítvány előállításához. Nyomja le az `Enter`.

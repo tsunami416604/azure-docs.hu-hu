@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
 ms.openlocfilehash: 215a15da2868a4543ba1108899981f40f7bf4e07
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938259"
 ---
 # <a name="geographic-availability-and-currency-support"></a>A földrajzi elérhetőséggel és a pénznem támogatás
@@ -76,7 +76,7 @@ Az Azure piactér-beli előfizetések 141 földrajzi területek számára is meg
 | Magyarország                             | HU        | EUR          |
 | Izland                             | IS        | EUR          |
 | India                               | IN        | INR          |
-| Indonézia                           | ID (Azonosító)        | USD          |
+| Indonézia                           | azonosító        | USD          |
 | Irak                                | IQ        | USD          |
 | Írország                             | IE        | EUR          |
 | Izrael                              | IL        | USD          |
@@ -102,11 +102,11 @@ Az Azure piactér-beli előfizetések 141 földrajzi területek számára is meg
 | Mauritius                           | MU        | USD          |
 | Mexikó                              | MX        | USD          |
 | Moldova                             | MD        | USD          |
-| Monaco                              | MC        | EUR          |
+| Monaco                              | MINŐSÍTÉSSEL, MC        | EUR          |
 | Mongólia                            | MN        | USD          |
 | Montenegró                          | ME        | USD          |
 | Marokkó                             | MA        | USD          |
-| Namíbia                             | NA        | USD          |
+| Namíbia                             | n/a        | USD          |
 | Nepál                               | NP        | USD          |
 | Hollandia                         | NL        | EUR          |
 | Nicaragua                           | NI        | USD          |

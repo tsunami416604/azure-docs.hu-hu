@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.openlocfilehash: 0e6a52ea2fdd05546a4da9f8cd1165b41ed27944
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62097687"
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Always On rendelkezésre állási csoportokra vonatkozó ILB figyelő konfigurálása az Azure-ban
@@ -105,7 +105,7 @@ Az egyes virtuális Gépekhez az Azure-replikát tartalmazó elosztott terhelés
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Miután beállította a változókat, másolja a szkriptet a szöveges szerkesztő a PowerShell-munkamenetet a futtatáshoz. Ha a rendszer még mindig **>>**, nyomja le az ENTER billentyűt a újra, hogy a parancsfájl futtatásának megkezdése.
+13. Miután beállította a változókat, másolja a szkriptet a szöveges szerkesztő a PowerShell-munkamenetet a futtatáshoz. Ha a rendszer még mindig **>>** , nyomja le az ENTER billentyűt a újra, hogy a parancsfájl futtatásának megkezdése.
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Győződjön meg arról, hogy KB2854082 telepítve van-e, ha szükséges
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -151,7 +151,7 @@ A rendelkezésre állási csoport figyelőjének létrehozása két lépésben. 
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Miután beállította a változókat, nyisson meg egy rendszergazda jogú Windows PowerShell-ablakban, illessze be a szövegszerkesztőben a szkriptet a PowerShell-munkamenetet a futtatáshoz. Ha a rendszer még mindig **>>**, nyomja le az Enter újra, győződjön meg arról, hogy a parancsfájl futtatásának megkezdése.
+3. Miután beállította a változókat, nyisson meg egy rendszergazda jogú Windows PowerShell-ablakban, illessze be a szövegszerkesztőben a szkriptet a PowerShell-munkamenetet a futtatáshoz. Ha a rendszer még mindig **>>** , nyomja le az Enter újra, győződjön meg arról, hogy a parancsfájl futtatásának megkezdése.
 
 4. Ismételje meg a fenti lépéseket minden egyes virtuális Géphez.  
     Ez a szkript konfigurálja az IP-cím erőforrás a felhőszolgáltatás IP-címmel, és beállítja a más paramétereket, például a mintavételi portot. Az IP-cím erőforrás online állapotba kerül, ha azt a korábban létrehozott elosztott terhelésű végpont válaszolni tud a lekérdezés a a mintavételi portokon.

@@ -10,10 +10,10 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: f0591b47ce7ba6837f300088c856c0098fb66710
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60998834"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>B2B-hibák és megoldások az Azure Logic Apps
@@ -52,7 +52,7 @@ Ez a cikk segítséget nyújt a hibaelhárítás, amely akkor fordulhat elő a L
 
 |   |   |  
 |---|---|
-| Hibaleírás | A kérelem tartalma nullértékű vagy üres. | 
+| Hibaleírás | A kérelem tartalma null értékű vagy üres. | 
 | Felhasználói művelet | Olyan AS2-üzenet érkezett, amely az üzenet törzse nem tartalmaz. |
 |  |  | 
 
@@ -135,7 +135,7 @@ Példa:
 
 |   |   | 
 |---|---| 
-| Hibaleírás | Az üzenet dokumentumtípusa ismeretlen, és az egyezményben konfigurált meglévő sémák egyikével sem sikerült feloldani. |
+| Hibaleírás | Az üzenet típusa ismeretlen dokumentum, és nem tudta feloldani az egyezményben konfigurált meglévő sémák egyikével sem. |
 | Felhasználói művelet | Adja meg a szerződés beállítások megfelelő sémát. |
 |   |   |
 

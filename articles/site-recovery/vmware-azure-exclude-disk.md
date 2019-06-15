@@ -9,10 +9,10 @@ ms.date: 3/3/2019
 ms.author: mayg
 ms.topic: conceptual
 ms.openlocfilehash: 105074892cc6dfa4da1e7c8ddd0a0aad9f1b60a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60921989"
 ---
 # <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>Lemezek kizárása a VMware virtuális gépek replikálása az Azure-bA
@@ -67,7 +67,7 @@ Az alábbiakban két forgatókönyvet találhat a lemezek kizárása funkció me
 - SQL Server tempdb lemeze
 - Lapozófájl (pagefile.sys) lemeze
 
-## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>1. példa: SQL Server tempdb-adatbázist tartalmazó lemezének kizárása
+## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>1\. példa: SQL Server tempdb-adatbázist tartalmazó lemezének kizárása
 Vegyünk egy SQL Server virtuális gépet, amely tempdb-adatbázisa kizárható.
 
 A virtuális gép neve a SalesDB-ben.
@@ -81,7 +81,7 @@ DB-Disk0-OS | DISK0 | C:\ | Operációsrendszer-lemez
 DB-Disk1| Disk1 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 DB-Disk2 (a lemez ki lett zárva a védelemből) | Disk2 | E:\ | Ideiglenes fájlok
 DB-Disk3 (a lemez ki lett zárva a védelemből) | Disk3 | F:\ | SQL tempdb-adatbázis (mappa elérési útja (F:\MSSQL\Data\) <br /> <br />Jegyezze fel a mappa elérési útját a feladatátvétel előtt.
-DB-Disk4 | Disk4 |G:\ |2. felhasználói adatbázis
+DB-Disk4 | Disk4 |G:\ |2\. felhasználói adatbázis
 
 Mivel a virtuális gép két lemezén ideiglenes az adatváltozás, a SalesDB virtuális gép védelme során zárja ki a Disk2 és a Disk3 lemezt a replikációból. Az Azure Site Recovery nem replikálja ezeket a lemezeket. A feladatátvétel során ezek a lemezek nem lesznek jelen a feladatátvételi virtuális gépen az Azure-ban.
 
@@ -92,7 +92,7 @@ A feladatátvétel után az Azure virtuális gépen lévő lemezek a következő
 DISK0 | C:\ | Operációsrendszer-lemez
 Disk1 | E:\ | Ideiglenes tároló<br /> <br />Az Azure ad hozzá a lemezt, és az első elérhető betűjellel.
 Disk2 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
-Disk3 | G:\ | 2. felhasználói adatbázis
+Disk3 | G:\ | 2\. felhasználói adatbázis
 
 Mivel a Disk2 és a Disk3 lemez ki lett zárva a SalesDB virtuális gépből, az E: az első elérhető meghajtóbetűjel a listában. Az Azure hozzárendeli az E: betűjelet az ideiglenes tárolókötethez. A meghajtó betűjelei minden replikált lemez esetében ugyanazok maradnak.
 
@@ -156,7 +156,7 @@ Az előző példában az Azure virtuális gép lemezkonfigurációja a következ
 DISK0 | C:\ | Operációsrendszer-lemez
 Disk1 | E:\ | Ideiglenes tároló<br /> <br />Az Azure ad hozzá a lemezt, és az első elérhető betűjellel.
 Disk2 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
-Disk3 | G:\ | 2. felhasználói adatbázis
+Disk3 | G:\ | 2\. felhasználói adatbázis
 
 Amikor a feladat-visszavétel az eredeti helyre történik, a feladat-visszavételi virtuális gép lemezkonfigurációja nem tartalmaz kizárt lemezeket. A VMware–Azure replikációból kizárt lemezek nem lesznek elérhetőek a feladat-visszavételi virtuális gépen.
 
@@ -166,14 +166,14 @@ A tervezett, Azure-ból helyszíni VMware-re történő feladatátvétel után a
 --- | --- | ---
 DISK0 | C:\ | Operációsrendszer-lemez
 Disk1 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
-Disk2 | G:\ | 2. felhasználói adatbázis
+Disk2 | G:\ | 2\. felhasználói adatbázis
 
-## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>2. példa A lapozófájl (pagefile.sys) lemezének kizárása
+## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>2\. példa A lapozófájl (pagefile.sys) lemezének kizárása
 
 Vegyünk egy virtuális gépet, amely lapozófájllemeze kizárható.
 Két eset létezik.
 
-### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>1. eset: A lapozófájl a D: meghajtón van konfigurálva.
+### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>1\. eset: A lapozófájl a D: meghajtón van konfigurálva.
 Itt láthatja a lemezkonfigurációt:
 
 **Lemez neve** | **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
@@ -203,7 +203,7 @@ Itt láthatja az Azure virtuális gép lapozófájl-beállításait:
 
 ![Lapozófájl-beállítások az Azure virtuális gépen](./media/vmware-azure-exclude-disk/pagefile-on-azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>2. eset: A lapozófájl másik meghajtón (nem a D: meghajtón) van konfigurálva.
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>2\. eset: A lapozófájl másik meghajtón (nem a D: meghajtón) van konfigurálva.
 
 Itt láthatja a forrás virtuális gép lemezkonfigurációját:
 

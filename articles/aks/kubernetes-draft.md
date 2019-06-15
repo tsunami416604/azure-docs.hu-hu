@@ -2,17 +2,16 @@
 title: Vázlat használata AKS és Azure Container Registrybe
 description: Vázlat használata AKS és Azure Container Registrybe
 services: container-service
-author: rockboyfor
+author: zr-msft
 ms.service: container-service
 ms.topic: article
-origin.date: 08/15/2018
-ms.date: 04/08/2019
-ms.author: v-yeche
+ms.date: 08/15/2018
+ms.author: zarhoads
 ms.openlocfilehash: 462cfd6ec0a6b25f85dda0245dd4f5feed7cb712
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60465146"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Vázlat használata az Azure Kubernetes Service (AKS)
@@ -77,7 +76,7 @@ Most, hogy az AKS és ACR közötti megbízhatósági kapcsolat van, az AKS-für
 1. A Draft-konfiguráció beállítása *beállításjegyzék* értéket. Cserélje le a következő parancsokat, `<acrName>` az ACR-beállításjegyzék nevére:
 
     ```console
-    draft config set registry <acrName>.azurecr.cn
+    draft config set registry <acrName>.azurecr.io
     ```
 
 1. Jelentkezzen be az ACR-beállításjegyzékbe való [az acr bejelentkezési][az-acr-login]:
@@ -220,7 +219,7 @@ Ebben a példában a Java-mintaalkalmazás a megjelenített szöveg módosítás
 vi src/main/java/helloworld/Hello.java
 ```
 
-A kimeneti szöveg megjelenítéséhez frissítse *Hello World, vagyok az aks-ben a Java!*:
+A kimeneti szöveg megjelenítéséhez frissítse *Hello World, vagyok az aks-ben a Java!* :
 
 ```java
 package helloworld;
@@ -271,4 +270,4 @@ A Draft használatával kapcsolatos további információkért lásd: a Draft do
 [aks-helm]: ./kubernetes-helm.md
 [kubernetes-ingress]: ./ingress-basic.md
 [aks-quickstart]: ./kubernetes-walkthrough.md
-[az-acr-login]: https://docs.azure.cn/zh-cn/cli/acr?view=azure-cli-latest#az-acr-login
+[az-acr-login]: /cli/azure/acr#az-acr-login

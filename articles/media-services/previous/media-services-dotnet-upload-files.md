@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 03b9995eab503ac1fcd4615882419dde31d4f8bf
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64869459"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Fájlok feltöltése Media Services-fiókba a .NET használatával 
@@ -164,7 +164,7 @@ A kód a következőket teszi:
 Eszközök nagy mennyiségű feltöltését, vegye figyelembe a következőket:
 
 * Hozzon létre egy új **CloudMediaContext** szálanként objektum. A **CloudMediaContext** osztály nem szálbiztos.
-* 2. az alapértelmezett érték 5 például értéke NumberOfConcurrentTransfers növelése Ez a tulajdonság beállítása hatással van az összes példányát **CloudMediaContext**. 
+* 2\. az alapértelmezett érték 5 például értéke NumberOfConcurrentTransfers növelése Ez a tulajdonság beállítása hatással van az összes példányát **CloudMediaContext**. 
 * Az alapértelmezett érték 10 ParallelTransferThreadCount megőrizni.
 
 ## <a id="ingest_in_bulk"></a>Eszközök fürtjét egyszerre több Media Services .NET SDK használatával

@@ -10,10 +10,10 @@ ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1cbf91af4e91f41fff30a7edfa869d07a21b881e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61226963"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
@@ -27,7 +27,7 @@ Az alábbi táblázatban az egyes a Streamek és a közzétett forgatókönyvek 
 | Figyelmeztetés |A felhasználónak szóló figyelmeztető üzenetet. |A feladatelőzményekbe írt. |Megjelennek a Tesztkimenet ablaktáblán. |
 | Hiba |A felhasználónak szóló hibaüzenet. A kivételek a runbook továbbra is egy hibaüzenet alapértelmezés szerint. |A feladatelőzményekbe írt. |Megjelennek a Tesztkimenet ablaktáblán. |
 | Részletes |Általános vagy hibakeresési információkat üzenetek. |Csak akkor, ha a runbook be van kapcsolva a részletes naplózást, szerepel a feladatelőzményekben. |Csak akkor, ha a runbook Folytatás értékre van állítva a $VerbosePreference megjelennek a Tesztkimenet ablaktáblán. |
-| Előrehaladás |A rekordok automatikusan generált előtt és után a runbook egyes tevékenységeinek. A runbook ne próbálja meg létrehozni a saját állapotrekordjait, mert arra szolgálnak, interaktív felhasználó számára. |Szerepel a feladatelőzményekben, csak ha az állapot naplózása be van kapcsolva a runbookhoz. |Nem jelennek meg a Tesztkimenet ablaktáblán. |
+| Folyamatban van |A rekordok automatikusan generált előtt és után a runbook egyes tevékenységeinek. A runbook ne próbálja meg létrehozni a saját állapotrekordjait, mert arra szolgálnak, interaktív felhasználó számára. |Szerepel a feladatelőzményekben, csak ha az állapot naplózása be van kapcsolva a runbookhoz. |Nem jelennek meg a Tesztkimenet ablaktáblán. |
 | Hibakeresés |Egy interaktív felhasználó számára készült üzenetek. Nem runbookok általi használatra. |Nem szerepel a feladatelőzményekben. |Nem szerepel a Tesztkimenet ablaktáblán. |
 
 ## <a name="output-stream"></a>Kimeneti adatfolyam

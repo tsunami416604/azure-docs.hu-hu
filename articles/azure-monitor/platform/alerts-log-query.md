@@ -9,10 +9,10 @@ ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
 ms.openlocfilehash: 429770b7651a93473c03f5e386d8f7b72692c161
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60995965"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Az Azure Monitor riasztási lekérdezések naplózása
@@ -57,7 +57,7 @@ workspace('Contoso-workspace1').Perf
 ## <a name="examples"></a>Példák
 Az alábbi példákban olyan használó naplólekérdezések `search` és `union` , és adja meg a lépéseket követve módosíthatja ezeket a lekérdezéseket a riasztási szabályok segítségével.
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 Szeretne létrehozni egy használja a következő lekérdezést, amely lekéri a teljesítmény az adatokat a riasztási szabály `search`: 
 
 ``` Kusto
@@ -87,7 +87,7 @@ Perf
 ```
 
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 Szeretne létrehozni egy használja a következő lekérdezést, amely lekéri a teljesítmény az adatokat a riasztási szabály `search`: 
 
 ``` Kusto
@@ -119,7 +119,7 @@ Perf
 ```
  
 
-### <a name="example-3"></a>3. példa
+### <a name="example-3"></a>3\. példa
 
 Használja a következő lekérdezést, amely is használ egy naplózási riasztási szabályt létrehozni kívánt `search` és `union` teljesítményadatok lekéréséhez: 
 
@@ -162,7 +162,7 @@ Perf
 | count 
 ``` 
 
-### <a name="example-4"></a>4. példa
+### <a name="example-4"></a>4\. példa
 Szeretne létrehozni egy használja a következő lekérdezést, amely csatlakozik az eredmények két riasztási szabály `search` lekérdezéseket:
 
 ```Kusto

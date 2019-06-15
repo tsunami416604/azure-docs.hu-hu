@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: a24aa6aa1695a3d1166816b7960bdd7b551e1a37
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60882197"
 ---
 # <a name="reconfiguration-in-azure-service-fabric"></a>Az Azure Service Fabric újrakonfigurálási
 A *konfigurációs* számít, ha a replikák és a egy partíció egy állapotalapú szolgáltatás szerepük.
 
-A *újrakonfigurálás* egy konfigurációs áthelyezése egy másik konfigurációs folyamata. Ez módosítja a partíció egy állapotalapú szolgáltatás replikakészletének. A régi konfigurációt nevezzük a *korábbi konfigurációt (számítógép)*, és az új konfigurációt nevezzük a *aktuális konfigurációját (CC)*. Az Azure Service Fabric az újrakonfigurálás protokoll konzisztencia megőrzi, és fenntartja a rendelkezésre állási módosítania kellene a replikakészlethez során.
+A *újrakonfigurálás* egy konfigurációs áthelyezése egy másik konfigurációs folyamata. Ez módosítja a partíció egy állapotalapú szolgáltatás replikakészletének. A régi konfigurációt nevezzük a *korábbi konfigurációt (számítógép)* , és az új konfigurációt nevezzük a *aktuális konfigurációját (CC)* . Az Azure Service Fabric az újrakonfigurálás protokoll konzisztencia megőrzi, és fenntartja a rendelkezésre állási módosítania kellene a replikakészlethez során.
 
 Feladatátvevőfürt-kezelő a rendszer különböző eseményekre reagáló reconfigurations kezdeményezi. Például ha az elsődleges nem tud majd egy újrakonfigurálás kezdeményezték egy aktív másodlagos elsődleges előléptetése. Egy másik példa esetén alkalmazásfrissítések válaszul annak érdekében, hogy frissítse a csomópontot az elsődleges áthelyezése másik csomópontra szükség lehet.
 

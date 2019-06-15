@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: jingwang
 ms.openlocfilehash: 78f63b4f46fe5479d4d0fd5849ad80536d8a137c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61346893"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység az Azure Data Factoryban
@@ -43,13 +43,13 @@ A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, é
 
 **Fájltároló:**
 
-| Összekötő/metaadatok | Elemnév<br>(fájlok/mappák) | itemType<br>(fájlok/mappák) | méret<br>(fájl) | létrehozva<br>(fájlok/mappák) | módosítás dátuma<br>(fájlok/mappák) |childItems<br>(mappa) |contentMD5<br>(fájl) | struktúra<br/>(fájl) | Oszlopszám<br>(fájl) | Létezik<br>(fájlok/mappák) |
+| Összekötő/metaadatok | Elemnév<br>(fájlok/mappák) | itemType<br>(fájlok/mappák) | size<br>(fájl) | Létrehozva<br>(fájlok/mappák) | módosítás dátuma<br>(fájlok/mappák) |childItems<br>(mappa) |contentMD5<br>(fájl) | structure<br/>(fájl) | Oszlopszám<br>(fájl) | Létezik<br>(fájlok/mappák) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | Google Cloud Storage | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | Azure-blob | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
-| 1. generációs Azure Data Lake Storage | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| 2. generációs Azure Data Lake Storage | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| 1\. generációs Azure Data Lake Storage | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| 2\. generációs Azure Data Lake Storage | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | Fájlrendszer | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
@@ -60,7 +60,7 @@ A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, é
 
 **Relációs adatbázis:**
 
-| Összekötő/metaadatok | struktúra | Oszlopszám | Létezik |
+| Összekötő/metaadatok | structure | Oszlopszám | Létezik |
 |:--- |:--- |:--- |:--- |
 | Azure SQL Database | √ | √ | √ |
 | Felügyelt Azure SQL Database-példány | √ | √ | √ |
@@ -75,12 +75,12 @@ A következő metaadat-típusok a GetMetadata tevékenység lekérdezni a mezől
 |:--- |:--- |
 | Elemnév | A fájl vagy mappa neve. |
 | itemType | A fájl vagy mappa típusú. Kimeneti érték `File` vagy `Folder`. |
-| méret | Fájl mérete a bájtban. Csak fájl alkalmazható. |
-| létrehozva | A fájl vagy mappa létrehozott datetime. |
+| size | Fájl mérete a bájtban. Csak fájl alkalmazható. |
+| Létrehozva | A fájl vagy mappa létrehozott datetime. |
 | módosítás dátuma | Utolsó módosítás a fájl vagy mappa datetime. |
 | childItems | Almappák és az adott mappában lévő fájlok listája. Csak a mappára érvényes. Kimeneti érték neve és típusa, egyes alárendelt elemek listáját. |
 | contentMD5 | A fájl MD5-tel. Csak fájl alkalmazható. |
-| struktúra | A fájl vagy a relációs adatbázis-táblában lévő adatok szerkezetét. Kimeneti oszlop neve és típusú oszlop értéke. |
+| structure | A fájl vagy a relációs adatbázis-táblában lévő adatok szerkezetét. Kimeneti oszlop neve és típusú oszlop értéke. |
 | Oszlopszám | A fájl vagy a relációs tábla található oszlopok számát. |
 | Létezik| Egy fájl/mappa/table megtalálható-e vagy sem. Megjegyzés: Ha "létezik" van megadva a GetaMetadata mezők listájában, a tevékenység sikertelen nem, akkor is, ha az elem (fájl/mappa/tábla) nem létezik; Ehelyett adja vissza `exists: false` a kimenetben. |
 
@@ -131,7 +131,7 @@ A következő metaadat-típusok a GetMetadata tevékenység lekérdezni a mezől
 
 Jelenleg a GetMetadata tevékenység lehet beolvasni a következő típusú metaadat-információkat.
 
-Tulajdonság | Leírás | Szükséges
+Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
 fieldList | Felsorolja a szükséges metaadatokat adatokat. A részleteket a [metaadatok beállítások](#metadata-options) a támogatott metaadatok szakasz. | Igen 
 Adatkészlet | A referencia-adatkészletnek amelynek metaadatok tevékenységet, GetMetadata tevékenység által lekérni. Lásd: [Supported capabilities](#supported-capabilities) támogatott összekötők a szakaszt, és hivatkozik adatkészlet szintaxis részleteinek összekötő témakör. | Igen

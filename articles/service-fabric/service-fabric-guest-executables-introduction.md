@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/15/2018
 ms.author: aljo
 ms.openlocfilehash: b7efeb1b4d83f6a6b372f73a7c0a5ca9bffdc052
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60946671"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Egy meglévő végrehajtható telepítése Service Fabricre
@@ -35,7 +35,7 @@ Van egy Vendég végrehajtható, a Service Fabric-fürtön futó számos előnny
 * Sűrűsége. Több alkalmazást futtathatja egy fürtben, amely kiküszöböli a mindegyik alkalmazás saját hardveren futtatott.
 * Könnyebben: REST segítségével meghívhatja a Service Fabric elnevezési szolgáltatásban található más szolgáltatások a fürtben. 
 
-## <a name="samples"></a>Példák
+## <a name="samples"></a>Minták
 * [Minta csomagolás és a egy futtatható vendégalkalmazás üzembe helyezése](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Minta két Vendég végrehajtható fájlok (C# és nodejs) keresztül kommunikáljon az elnevezési szolgáltatásban REST használatával](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 

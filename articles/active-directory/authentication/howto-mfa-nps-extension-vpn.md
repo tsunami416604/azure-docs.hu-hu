@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e94b307d562c4317a87713612a62e6da007f9703
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64570641"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA által a hálózati házirend-kiszolgáló-bővítmény használata az Azure-hoz
@@ -143,7 +143,7 @@ Ebben a forgatókönyvben megfelelő működéséhez, regisztrálni kell az NPS-
 
 2. A Kiszolgálókezelőben válasza **eszközök**, majd válassza ki **hálózati házirend-kiszolgáló**.
 
-3. A hálózati házirend-kiszolgáló-konzolon kattintson a jobb gombbal **hálózati házirend-kiszolgáló (helyi)**, majd válassza ki **kiszolgáló regisztrálása az Active Directoryban**. Válassza ki **OK** kétszer.
+3. A hálózati házirend-kiszolgáló-konzolon kattintson a jobb gombbal **hálózati házirend-kiszolgáló (helyi)** , majd válassza ki **kiszolgáló regisztrálása az Active Directoryban**. Válassza ki **OK** kétszer.
 
     ![Kiszolgáló regisztrálása az Active Directory menüelem](./media/howto-mfa-nps-extension-vpn/image2.png)
 
@@ -153,7 +153,7 @@ Ebben a forgatókönyvben megfelelő működéséhez, regisztrálni kell az NPS-
 
 Használhat egy standard (varázsló-alapú) vagy a speciális konfigurációs beállítás, a RADIUS-kiszolgáló konfigurálása. Ez a szakasz azt feltételezi, hogy a varázsló alapú szabványos konfigurációs beállítást használja.
 
-1. Válassza ki a hálózati házirend-kiszolgáló konzol **hálózati házirend-kiszolgáló (helyi)**.
+1. Válassza ki a hálózati házirend-kiszolgáló konzol **hálózati házirend-kiszolgáló (helyi)** .
 
 2. Alatt **szabványos konfigurációs**válassza **RADIUS-kiszolgáló telefonos vagy VPN-kapcsolatok**, majd válassza ki **konfigurálása VPN vagy a telefonos**.
 
@@ -230,7 +230,7 @@ Ez a szakasz a VPN-kiszolgáló RADIUS-hitelesítés használatára konfigurálj
 
 2. A Kiszolgálókezelőben válasza **eszközök**, majd válassza ki **Útválasztás és távelérés**.
 
-3. Az a **Útválasztás és távelérés** ablakban kattintson a jobb gombbal  **\<kiszolgáló neve > (helyi)**, majd válassza ki **tulajdonságok**.
+3. Az a **Útválasztás és távelérés** ablakban kattintson a jobb gombbal  **\<kiszolgáló neve > (helyi)** , majd válassza ki **tulajdonságok**.
 
 4. Az a  **\<kiszolgáló neve > (helyi) tulajdonságok** ablakban válassza ki a **biztonsági** fülre.
 
@@ -269,7 +269,7 @@ Ebben a szakaszban Ön kijelenti, hogy a VPN-ügyfél hitelesítése és engedé
 
 4. Válassza ki **egy VPN-kapcsolat hozzáadása**.
 
-5. Az a **egy VPN-kapcsolat hozzáadása** ablakban, a a **VPN-szolgáltató** jelölje ki **Windows (beépített)**, a többi mezőhöz, szükség esetén végezze el, és válassza ki **Mentése**.
+5. Az a **egy VPN-kapcsolat hozzáadása** ablakban, a a **VPN-szolgáltató** jelölje ki **Windows (beépített)** , a többi mezőhöz, szükség esetén végezze el, és válassza ki **Mentése**.
 
     ![A "VPN-kapcsolat hozzáadása" ablak](./media/howto-mfa-nps-extension-vpn/image17.png)
 
@@ -372,7 +372,7 @@ A szkript használatához adja meg a bővítmény az Azure Active Directory rend
 
 1. Windows PowerShell futtatása rendszergazdaként.
 
-2. A PowerShell parancssorába írja be a **cd "c:\Program Files\Microsoft\AzureMfa\Config"**, majd válassza ki az ENTER billentyűt.
+2. A PowerShell parancssorába írja be a **cd "c:\Program Files\Microsoft\AzureMfa\Config"** , majd válassza ki az ENTER billentyűt.
 
 3. Adja meg a következő parancs parancssorba **.\AzureMfaNpsExtnConfigSetup.ps1**, majd válassza ki az ENTER billentyűt. A parancsfájl ellenőrzi, hogy telepítve van-e az Azure AD PowerShell modul. Ha nincs telepítve, a parancsfájl telepíti a modult.
 

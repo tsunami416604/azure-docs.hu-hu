@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: e4dd7299907168bb50ac8ebdf90b381c0bac01f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c8572e6bc7fdedb68527cad4e7ea4109838089b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608736"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64726843"
 ---
 # <a name="create-video-reviews-using-net"></a>Hozzon létre videót felülvizsgálatok .NET használatával
 
@@ -55,7 +55,7 @@ A videó kell egy streamvégponton, hogy a vizsgálóeszköz a videó játszik a
 
 A videókban (képek) használja az alábbi lemezképek:
 
-![1. képkocka miniatűrje](images/ams-video-frame-thumbnails-1.PNG) | ![2. keret videó miniatűrje](images/ams-video-frame-thumbnails-2.PNG) | ![3. keret videó miniatűrje](images/ams-video-frame-thumbnails-3.PNG) |
+![1\. képkocka miniatűrje](images/ams-video-frame-thumbnails-1.PNG) | ![2\. keret videó miniatűrje](images/ams-video-frame-thumbnails-2.PNG) | ![3\. keret videó miniatűrje](images/ams-video-frame-thumbnails-3.PNG) |
 | :---: | :---: | :---: |
 [1. képkocka](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame1-00-17.PNG) | [2. keret](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-2-01-04.PNG) | [3. keret](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-3-02-24.PNG) |
 
@@ -174,7 +174,7 @@ Létrehoz egy videó- **ContentModeratorClient.Reviews.CreateVideoReviews**. Tov
 - **Állapot**. Állítsa be az értéket "Unpublished." Ha nincs beállítva, a rendszer alapértelmezés szerint, "Függő", ami azt jelenti, hogy a videó felülvizsgálat közzé van téve, és emberi folyamatban. A videó felülvizsgálat közzététele után már nem adhat videókban, a szöveges vagy szöveges moderálás eredményt azt.
 
 > [!NOTE]
-> **CreateVideoReviews** adja vissza az IList<string>. Ezek a karakterláncok mindegyike tartalmaz egy videót felülvizsgálatok Azonosítót. Azonosítóit a részletekben GUID és nem ugyanaz, mint az értékét a **ContentId** tulajdonság. 
+> **CreateVideoReviews** adja vissza az IList\<karakterlánc >. Ezek a karakterláncok mindegyike tartalmaz egy videót felülvizsgálatok Azonosítót. Azonosítóit a részletekben GUID és nem ugyanaz, mint az értékét a **ContentId** tulajdonság. 
 
 Adja hozzá a következő definice metody névtér VideoReviews, osztály Program.
 

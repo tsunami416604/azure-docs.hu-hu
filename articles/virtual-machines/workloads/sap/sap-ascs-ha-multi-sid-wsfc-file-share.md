@@ -18,10 +18,10 @@ ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60651720"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -222,7 +222,7 @@ Load balancer korlátok kapcsolatos további információkért lásd: a "Privát
 
 Már konfigurált egy WSFC-fürt használatával egy SAP ASCS/SCS példányhoz használandó **fájlmegosztás**ezen az ábrán látható módon.
 
-![1. ábra: Egy SAP ASCS/SCS példányhoz, és az SOFS üzembe helyezett két fürt][sap-ha-guide-figure-8007]
+![1\. ábra: Egy SAP ASCS/SCS példányhoz, és az SOFS üzembe helyezett két fürt][sap-ha-guide-figure-8007]
 
 _**1. ábra:** Egy SAP ASCS/SCS példányhoz, és az SOFS üzembe helyezett két fürt_
 
@@ -237,7 +237,7 @@ _**1. ábra:** Egy SAP ASCS/SCS példányhoz, és az SOFS üzembe helyezett két
 
 A célja, hogy több SAP speciális üzleti alkalmazás programozási (ASCS) vagy az SAP Java (SCS) fürtözött példányok telepítése az azonos WSFC-fürtre, az alábbiak szerint: 
 
-![2. ábra: SAP több biztonsági AZONOSÍTÓVAL konfigurációs két fürtben][sap-ha-guide-figure-8008]
+![2\. ábra: SAP több biztonsági AZONOSÍTÓVAL konfigurációs két fürtben][sap-ha-guide-figure-8008]
 
 _**2. ábra:** SAP több biztonsági AZONOSÍTÓVAL konfigurációs két fürtben_
 
@@ -263,7 +263,7 @@ Ezeket a lépéseket ismerteti [infrastruktúra előkészítése az SAP több bi
 
 Újból felhasználhatja a meglévő \<SAPGlobalHost > és az első SAP Volume1 \<SID1 > rendszer.
 
-![3. ábra: Több SID-vel SOFS pedig ugyanaz, mint az SAP globális állomás neve][sap-ha-guide-figure-8014]
+![3\. ábra: Több SID-vel SOFS pedig ugyanaz, mint az SAP globális állomás neve][sap-ha-guide-figure-8014]
 
 _**3. ábra:** Több SID-vel SOFS pedig ugyanaz, mint az SAP globális állomás neve_
 
@@ -327,9 +327,9 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>Készítse elő a infrastruktúrája az SOFS-fürthöz egy másik globális SAP-állomás segítségével
 
-Beállíthatja, hogy a második SOFS (például a második SOFS-fürt szerepkört  **\<SAPGlobalHost2 >** és a egy másik **kötet2** a második  **\< SID2 >**).
+Beállíthatja, hogy a második SOFS (például a második SOFS-fürt szerepkört  **\<SAPGlobalHost2 >** és a egy másik **kötet2** a második  **\< SID2 >** ).
 
-![4. ábra: Több SID-vel SOFS pedig ugyanaz, mint az SAP globális állomásnév 2][sap-ha-guide-figure-8015]
+![4\. ábra: Több SID-vel SOFS pedig ugyanaz, mint az SAP globális állomásnév 2][sap-ha-guide-figure-8015]
 
 _**4. ábra:** Több SID-vel SOFS pedig ugyanaz, mint az SAP globális állomásnév 2_
 
@@ -347,7 +347,7 @@ Hozzon létre a második **kötet2**. Hajtsa végre ezt a PowerShell-parancsfáj
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![5. ábra: Második kötet2 a Feladatátvevőfürt-kezelő][sap-ha-guide-figure-8016]
+![5\. ábra: Második kötet2 a Feladatátvevőfürt-kezelő][sap-ha-guide-figure-8016]
 
 _**5. ábra:** Második kötet2 a Feladatátvevőfürt-kezelő_
 
@@ -398,31 +398,31 @@ Kötet2 és a egy SAPMNT fájlmegosztás létrehozása a  *\<SAPGlobalHost2 >* h
 
 Kattintson a jobb gombbal a **saoglobal2** SOFS fürtcsoportot, és válassza ki **fájlmegosztás hozzáadása**.
 
-![6. ábra: A "Fájlmegosztás hozzáadása" varázsló elindítása][sap-ha-guide-figure-8017]
+![6\. ábra: A "Fájlmegosztás hozzáadása" varázsló elindítása][sap-ha-guide-figure-8017]
 
 _**6. ábra:** "Fájlmegosztás hozzáadása" varázsló elindítása_
 
 <br>
 
-![7. ábra: "Az SMB-megosztás – gyors kijelölése"][sap-ha-guide-figure-8018]
+![7\. ábra: "Az SMB-megosztás – gyors kijelölése"][sap-ha-guide-figure-8018]
 
 _**7. ábra:** Válassza ki a "SMB-megosztás – gyors"_
 
 <br>
 
-![8. ábra: Válassza ki a "sapglobalhost2", és adja meg az elérési útját a kötet2][sap-ha-guide-figure-8019]
+![8\. ábra: Válassza ki a "sapglobalhost2", és adja meg az elérési útját a kötet2][sap-ha-guide-figure-8019]
 
 _**8. ábra:** Válassza ki a "sapglobalhost2", és adja meg az elérési útját a kötet2_
 
 <br>
 
-![9. ábra: Állítsa be a "sapmnt" fájlmegosztás neve][sap-ha-guide-figure-8020]
+![9\. ábra: Állítsa be a "sapmnt" fájlmegosztás neve][sap-ha-guide-figure-8020]
 
 _**9. ábra:** Állítsa be a "sapmnt" fájlmegosztás neve_
 
 <br>
 
-![10. ábra: Tiltsa le az összes beállítás][sap-ha-guide-figure-8021]
+![10\. ábra: Tiltsa le az összes beállítás][sap-ha-guide-figure-8021]
 
 _**10. ábra:** Tiltsa le az összes beállítás_
 
@@ -432,19 +432,19 @@ Rendelje hozzá *teljes hozzáférés* megoszthatja a fájlok és sapmnt:
 * A **SAP_\<SID > _GlobalAdmin** tartományi felhasználói csoport
 * Számítógép-objektum ASCS/SCS fürtcsomópontok **ascs-1$** és **ascs-2$**
 
-![11. ábra: Teljes hozzáférési engedélyek hozzárendelése a felhasználói csoport és számítógépes fiókok][sap-ha-guide-figure-8022]
+![11\. ábra: Teljes hozzáférési engedélyek hozzárendelése a felhasználói csoport és számítógépes fiókok][sap-ha-guide-figure-8022]
 
 _**11. ábra:** "" Teljes körű "control" hozzárendelése a felhasználói csoport és számítógépes fiókok_
 
 <br>
 
-![12. ábra: Válassza a "Create"][sap-ha-guide-figure-8023]
+![12\. ábra: Válassza a "Create"][sap-ha-guide-figure-8023]
 
 _**12. ábra:** Válassza a "Create"_
 
 <br>
 
-![13. ábra: A második sapmnt sapglobal2 gazdagépen kötve, és kötet2 jön létre][sap-ha-guide-figure-8024]
+![13\. ábra: A második sapmnt sapglobal2 gazdagépen kötve, és kötet2 jön létre][sap-ha-guide-figure-8024]
 
 _**13. ábra:** A második sapmnt sapglobal2 gazdagépen kötve, és kötet2 jön létre_
 

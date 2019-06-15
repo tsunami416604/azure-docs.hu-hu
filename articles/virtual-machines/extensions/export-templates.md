@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: roiyz
 ms.openlocfilehash: f56cfeeede393dbdb9632ea4120d3a81e89f3f7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61484035"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Erőforrás-csoportok, amelyek tartalmazzák a Virtuálisgép-bővítmények exportálása
@@ -64,7 +64,7 @@ Az Azure Resource Manager automatizálását parancsfájl Resource Manager-sablo
 
 Számos Azure-beli virtuálisgép-bővítmény egy védett beállítások konfigurációját, titkosítja a bizalmas adatokat, például a hitelesítő adatok és a konfiguráció karakterláncokat tartalmaznak. Védett beállításokat a rendszer nem exportál az automation-szkript. Ha szükséges, a védett beállításait lehet ismételten beszúrni kell azokat az exportált sablonalapúak.
 
-### <a name="step-1---remove-template-parameter"></a>1. lépés – a sablonparaméter eltávolítása
+### <a name="step-1---remove-template-parameter"></a>1\. lépés – a sablonparaméter eltávolítása
 
 Amikor exportálja az erőforráscsoport, egy egyetlen sablonparaméter, adjon meg egy értéket az exportált védett beállítások jön létre. Ez a paraméter távolíthatja el. Távolítsa el a paramétert, nézze át a paraméterek listája, és törli a következő paramétert a JSON-példához hasonlóan néz ki.
 
@@ -75,7 +75,7 @@ Amikor exportálja az erőforráscsoport, egy egyetlen sablonparaméter, adjon m
 }
 ```
 
-### <a name="step-2---get-protected-settings-properties"></a>2. lépés – Get védett tulajdonságai
+### <a name="step-2---get-protected-settings-properties"></a>2\. lépés – Get védett tulajdonságai
 
 Mivel minden egyes védett beállítás kötelező tulajdonságai készletét, ezek a tulajdonságok listáját kell összegyűjteni. A védett beállításainak konfigurálása az egyes paraméter található a [Azure Resource Manager-sémát a Githubon](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json). Ebben a sémában csak a jelen dokumentum az Áttekintés szakaszban felsorolt bővítmények a paraméterkészlettel tartalmazza. 
 
@@ -103,7 +103,7 @@ A séma rendszerképréteg, keresse meg a kívánt bővítményt, ebben a péld�
 }
 ```
 
-### <a name="step-3---re-create-the-protected-configuration"></a>3. lépés – a védett konfiguráció újbóli létrehozása
+### <a name="step-3---re-create-the-protected-configuration"></a>3\. lépés – a védett konfiguráció újbóli létrehozása
 
 Az exportált sablon lévő keresése `protectedSettings` és a egy újat, amely tartalmazza a kötelező kiterjesztés paraméterei, és minden egyes értéket cserélje le az exportált védett beállítás objektum.
 

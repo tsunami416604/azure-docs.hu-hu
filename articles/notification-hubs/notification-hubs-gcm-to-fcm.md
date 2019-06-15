@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: jowargo
 ms.openlocfilehash: 4cbfc67bc66e84b4743f3326db40872241e5d474
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61458297"
 ---
 # <a name="azure-notification-hubs-and-the-google-firebase-cloud-messaging-fcm-migration"></a>Az Azure Notification Hubs és a Google Firebase Cloud Messaging (FCM) áttelepítése
 
-## <a name="current-state"></a>Aktuális állapot
+## <a name="current-state"></a>Jelenlegi állapota
 
 Ha Google jelentettük be az áttelepítést a Google Cloud Messaging (GCM) a Firebase Cloud Messaging (FCM), leküldéses szolgáltatásokat nyújt, mint a miénk kellett állítsa be, hogyan elküldtük az értesítések az Android-eszközök befogadására a módosítást.
 

@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104986"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Figyelheti és kezelheti a Twitter Azure Logic Apps használatával
@@ -59,7 +59,7 @@ Választ kaphat a Twitter-fiókjával, és egyéb műveleteket hajthat végre el
        – vagy –
 
      * A lépéseket, ahol szeretné művelet hozzáadása, között helyezze az egérmutatót a nyíl lépések között. 
-     Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+     Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
      
        A Keresés mezőbe írja be "twitter" szűrőként. 
        Műveletek listája alatt válassza ki a kívánt művelet.
@@ -70,7 +70,7 @@ Választ kaphat a Twitter-fiókjával, és egyéb műveleteket hajthat végre el
 
 ## <a name="examples"></a>Példák
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter-eseményindítót: Új tweet közzétételekor
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter-eseményindítót: Egy új tweet közzétételekor
 
 Ez az eseményindító a logikaialkalmazás-munkafolyamat az eseményindító észlel egy új tweetet, például a hashtaggel, #Seattle kezdődik. Így például esetén ezek a tweeteket, hozzáadhat egy fájl tartalmát a tartalmazó tweeteket olyan tárhelyre, mint egy Dropbox-fiókra, a Dropbox-összekötő használatával. 
 

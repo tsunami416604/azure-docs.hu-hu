@@ -11,10 +11,10 @@ ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60738757"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
@@ -31,15 +31,15 @@ Az Azure Automationben a hozzáférés biztosításához a megfelelő RBAC-szere
 | Közreműködő |A közreműködői szerepkör segítségével minden elemet kezelhet, csak más felhasználók Automation-fiókokra vonatkozó hozzáférési jogosultságait nem módosíthatja. |
 | Olvasó |Az olvasói szerep lehetővé teszi az összes erőforrás megtekintését egy Automation-fiókban, de módosítás nem hajtható vele végre. |
 | Automation-operátor |Az Automation-operátori szerepkör lehetővé teszi, hogy a runbook neve és a Tulajdonságok megtekintése, valamint hogy az Automation-fiókot az összes runbook feladatok létrehozása és kezelése. Ez a szerepkör akkor hasznos, ha meg szeretné akadályozni, hogy az Automation-fiók erőforrásokat, például a hitelesítő adategységeket és a forgatókönyveket megtekintsék vagy módosítsák, de továbbra is engedélyezi a szervezet tagjai számára a forgatókönyvek végrehajtását. |
-|Az Automation-feladat operátora|Az Automation-feladat operátor szerepkör lehetővé teszi, hogy az Automation-fiókot az összes runbook feladatok létrehozása és kezelése.|
-|Az Automation-runbook operátora|A Runbook Automation-operátori szerepkör lehetővé teszi, hogy a runbook nevét és a tulajdonságok megtekintéséhez.|
+|Automation-feladat operátora|Az Automation-feladat operátor szerepkör lehetővé teszi, hogy az Automation-fiókot az összes runbook feladatok létrehozása és kezelése.|
+|Automation-Runbook operátora|A Runbook Automation-operátori szerepkör lehetővé teszi, hogy a runbook nevét és a tulajdonságok megtekintéséhez.|
 | Log Analytics közreműködő | A Log Analytics-közreműködő szerepkör lehetővé teszi, hogy az összes monitorozási adat olvasása és szerkesztése a figyelési beállításokat. Figyelési beállítások szerkesztése magában foglalja a virtuális gépek, tudják naplógyűjtemény konfigurálása céljából az Azure storage-ból tárfiók kulcsainak beolvasását az létrehozása és konfigurálása az Automation-fiókok, megoldások hozzáadása és Azure diagnostics konfigurálása az ad hozzá a Virtuálisgép-bővítmény az összes Azure-erőforrások.|
 | Log Analytics olvasó | A Log Analytics olvasó szerepkör lehetővé teszi, hogy megtekintése és keresése az összes monitorozási adat, valamint megtekintheti a figyelési beállításokat. Ez magában foglalja az Azure diagnostics konfigurációjának megtekintését az összes Azure-erőforrások. |
-| Figyelési közreműködő | A figyelés közreműködői szerepkör lehetővé teszi, hogy olvassa el az összes olyan figyelési adathoz és figyelési beállításainak frissítése.|
-| Figyelési olvasó | A Monitoring Reader szerepkör lehetővé teszi, hogy az összes monitorozási adat olvasása. |
+| Közreműködő figyelése | A figyelés közreműködői szerepkör lehetővé teszi, hogy olvassa el az összes olyan figyelési adathoz és figyelési beállításainak frissítése.|
+| Olvasó figyelése | A Monitoring Reader szerepkör lehetővé teszi, hogy az összes monitorozási adat olvasása. |
 | Felhasználói hozzáférés rendszergazdája |A felhasználói hozzáférés rendszergazdájának szerepköre lehetővé teszi, hogy kezelje a felhasználói hozzáférést az Azure Automation-fiókokhoz. |
 
-## <a name="role-permissions"></a>Szerepkör-engedélyek
+## <a name="role-permissions"></a>Szerepkör engedélyei
 
 Az alábbi táblázatok ismertetik az egyes szerepkörökhöz meghatározott engedélyeket. Ez magában foglalhatja műveletek, amelyek az engedélyeket, és NotActions, amelyek korlátozzák a őket.
 
@@ -98,7 +98,7 @@ Egy Automation-operátor is képes létrehozni és feladatok kezelése és olvas
 |Microsoft.Insights/alertRules/*      | Hozzon létre, és a riasztási szabályok kezelése.        |
 |Microsoft.Support/* |Hozzon létre, és kezelhetik a támogatási jegyeket.|
 
-### <a name="automation-job-operator"></a>Az Automation-feladat operátora
+### <a name="automation-job-operator"></a>Automation-feladat operátora
 
 Egy Automation-feladat operátor szerepkör kapnak, az Automation-fiók hatókörében. Ez lehetővé teszi az üzemeltető engedélyekkel a fiókban lévő összes runbook feladatok létrehozása és kezelése. Az alábbi táblázat a szerepkörhöz rendelt engedélyeket:
 
@@ -116,7 +116,7 @@ Egy Automation-feladat operátor szerepkör kapnak, az Automation-fiók hatókö
 |Microsoft.Insights/alertRules/*      | Hozzon létre, és a riasztási szabályok kezelése.        |
 |Microsoft.Support/* |Hozzon létre, és kezelhetik a támogatási jegyeket.|
 
-### <a name="automation-runbook-operator"></a>Az Automation-runbook operátora
+### <a name="automation-runbook-operator"></a>Automation-Runbook operátora
 
 Egy Automation-Runbook operátora szerepkör kap a Runbook-hatókörben. A runbook neve és tulajdonságai egy Automation-Runbook operátora tekintheti meg.  Ezt a szerepkört az "Automation-feladat operátor" szerepkör kombinálva lehetővé teszi, hogy az operátor számára is létrehozhat és kezelhet a runbook feladatokat. Az alábbi táblázat a szerepkörhöz rendelt engedélyeket:
 
@@ -162,7 +162,7 @@ A Log Analytics olvasó megtekintheti és keresheti az összes figyelési adatot
 |**Nincs művelet**| |
 |Microsoft.OperationalInsights/workspaces/sharedKeys/read|Nem sikerült beolvasni a megosztott hozzáférési kulcsokat.|
 
-### <a name="monitoring-contributor"></a>Figyelési közreműködő
+### <a name="monitoring-contributor"></a>Közreműködő figyelése
 
 Közreműködő figyelése olvashatja az összes monitorozási adat, és frissítheti a figyelési beállításokat. Az alábbi táblázat a szerepkörhöz rendelt engedélyeket:
 
@@ -188,7 +188,7 @@ Közreműködő figyelése olvashatja az összes monitorozási adat, és frissí
 |Microsoft.Support/*|Hozzon létre, és kezelhetik a támogatási jegyeket.|
 |Microsoft.WorkloadMonitor/workloads/*|Feladatok felügyeletét.|
 
-### <a name="monitoring-reader"></a>Figyelési olvasó
+### <a name="monitoring-reader"></a>Olvasó figyelése
 
 A Monitoring Reader olvashatja az összes figyelési adatot. Az alábbi táblázat a szerepkörhöz rendelt engedélyeket:
 
@@ -240,7 +240,7 @@ Az alábbi táblázatok bemutatják a virtuális gépek előkészítése a Chang
 |**Művelet**  |**Engedély** |**Minimális hatókör**  |
 |---------|---------|---------|
 |Új üzemelő példány létrehozása     | Microsoft.Resources/deployments/*        | Előfizetés         |
-|Új erőforráscsoport létrehozása     | Microsoft.Resources/subscriptions/resourceGroups/write         | Előfizetés        |
+|Hozzon létre új erőforráscsoportot     | Microsoft.Resources/subscriptions/resourceGroups/write         | Előfizetés        |
 |AutomationOnboarding panel – Új munkaterület létrehozása     |Microsoft.OperationalInsights/workspaces/write           | Erőforráscsoport        |
 |AutomationOnboarding panel – olvassa el a csatolt munkaterületet     | Microsoft.Automation/automationAccounts/read        | Automation-fiók       |
 |AutomationOnboarding panel – olvassa el a megoldás     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | Megoldás        |
@@ -263,11 +263,11 @@ Az Update management eléri a szolgáltatásokat több szolgáltatás. Az alább
 |**Erőforrás**  |**Szerepkör**  |**Hatókör**  |
 |---------|---------|---------|
 |Automation-fiók     | Log Analytics közreműködő       | Automation-fiók        |
-|Automation-fiók    | Virtuális gépek közreműködője        | A fiókhoz tartozó erőforráscsoportot        |
+|Automation-fiók    | Virtuális gépek Közreműködője        | A fiókhoz tartozó erőforráscsoportot        |
 |Log Analytics-munkaterület     | Log Analytics közreműködő| Log Analytics-munkaterület        |
 |Log Analytics-munkaterület |Log Analytics olvasó| Előfizetés|
 |Megoldás     |Log Analytics közreműködő         | Megoldás|
-|Virtuális gép     | Virtuális gépek közreműködője        | Virtuális gép        |
+|Virtuális gép     | Virtuális gépek Közreműködője        | Virtuális gép        |
 
 ## <a name="configure-rbac-for-your-automation-account"></a>Az Automation-fiókhoz tartozó RBAC konfigurálása
 

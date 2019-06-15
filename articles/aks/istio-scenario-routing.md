@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
 ms.openlocfilehash: bd660a2b6ffb96478c3170cc7013ff22518b758f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64702208"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligens útválasztást és a tesztcsoportos kiadások használata Istio Azure Kubernetes Service (AKS)
@@ -28,7 +28,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Az alkalmazás egy canary kiadás bevezetése
 > * A bevezetés véglegesítése
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 > [!NOTE]
 > Ebben a forgatókönyvben elleni Istio verziója tesztelve lett `1.1.3`.
@@ -410,7 +410,7 @@ kubectl get pods --namespace voting
 
 Most meg kell tudni váltani a verzió között `1.0` és verzió `2.0` (tesztcsoportos) a szavazóalkalmazás. A képernyő alján funkció jelző be egy cookie-t állítja be. Ez a cookie segítségével a `voting-app` útvonal felhasználóknak, hogy az új verzió virtuális szolgáltatás `2.0`.
 
-![1.0-s verzióját az AKS-szavazóalkalmazást - funkció jelölője nincs van beállítva.](media/istio/canary-release-01.png)
+![1\.0-s verzióját az AKS-szavazóalkalmazást - funkció jelölője nincs van beállítva.](media/istio/canary-release-01.png)
 
 ![Az AKS-szavazóalkalmazást - jelzőt IS szolgáltatáskészlet 2.0-s verzióját.](media/istio/canary-release-02.png)
 

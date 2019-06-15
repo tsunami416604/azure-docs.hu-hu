@@ -11,10 +11,10 @@ ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4f917c45030ad70a2ab76fed877bd822d1902f82
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64927282"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
@@ -169,7 +169,7 @@ Az alábbi táblázat a módosítások típusú adatok gyűjtési gyakoriságát
 | Windows beállításjegyzék | 50 perc |
 | Windows-fájl | 30 perc |
 | Linux-fájl | 15 perc |
-| Windows-szolgáltatások | akár 30 percig 10 másodperc</br> Alapértelmezett: 30 perc |
+| Windows-szolgáltatások | akár 30 percig 10 másodperc</br> alapértelmezett érték: 30 perc |
 | Linux-démonok | 5 perc |
 | Windows szoftverek | 30 perc |
 | Linux-szoftver | 5 perc |
@@ -274,7 +274,7 @@ Az alábbi táblázatban kapcsolatos naplókeresési mintákat a megoldás álta
 |Lekérdezés  |Leírás  |
 |---------|---------|
 |ConfigurationData<br>&#124;ahol ConfigDataType == "WindowsServices" és a SvcStartupType == "Auto"<br>&#124;ahol SvcState == "Leállított"<br>&#124;Összegzés arg_max(TimeGenerated, *) SoftwareName, számítógép szerint         | Megjeleníti a legutóbbi Hardverleltár-rekordok automatikus értékre van beállítva, de lett jelentve le Windows-szolgáltatásokhoz<br>A program csak a legújabb bejegyzést, hogy szoftvernév és számítógép      |
-|ConfigurationChange<br>&#124;ahol ConfigChangeType == "Szoftver" és a ChangeCategory == "Eltávolítva"<br>&#124;a TimeGenerated desc ORDER|A módosítási rekordok eltávolított szoftverek megjelenítése|
+|Konfigurációváltozás<br>&#124;ahol ConfigChangeType == "Szoftver" és a ChangeCategory == "Eltávolítva"<br>&#124;a TimeGenerated desc ORDER|A módosítási rekordok eltávolított szoftverek megjelenítése|
 
 ## <a name="alert-on-changes"></a>Riasztás a módosításokat
 
@@ -302,14 +302,14 @@ Bár a módosításokat az Állomásleíró fájlhoz a riasztás egy jó alkalma
 
 |Lekérdezés  |Leírás  |
 |---------|---------|
-|ConfigurationChange <br>&#124;ahol ConfigChangeType == "Fájlok" és a FileSystemPath tartalmaz "c:\\windows\\system32\\illesztőprogramok\\"|Hasznos, ha kritikus rendszerfájlok változásainak követése|
-|ConfigurationChange <br>&#124;Ha FieldsChanged tartalmazza: "FileContentChecksum" és a FileSystemPath == "c:\\windows\\system32\\illesztőprogramok\\stb\\gazdagépek"|Fő konfigurációs fájlok módosításai követésére használható|
-|ConfigurationChange <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|Hasznos, ha a rendszer kritikus szolgáltatások változásainak követése|
-|ConfigurationChange <br>&#124;ahol ConfigChangeType == "Démonok" és "ssh" és SvcState SvcName tartalmaz! = "Fut"|Hasznos, ha a rendszer kritikus szolgáltatások változásainak követése|
-|ConfigurationChange <br>&#124;ahol ConfigChangeType == "Szoftver" és a ChangeCategory == "Hozzáadott"|Szoftverkonfigurációjáról környezetek esetén hasznos ennek az igényét zárolva|
+|Konfigurációváltozás <br>&#124;ahol ConfigChangeType == "Fájlok" és a FileSystemPath tartalmaz "c:\\windows\\system32\\illesztőprogramok\\"|Hasznos, ha kritikus rendszerfájlok változásainak követése|
+|Konfigurációváltozás <br>&#124;Ha FieldsChanged tartalmazza: "FileContentChecksum" és a FileSystemPath == "c:\\windows\\system32\\illesztőprogramok\\stb\\gazdagépek"|Fő konfigurációs fájlok módosításai követésére használható|
+|Konfigurációváltozás <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|Hasznos, ha a rendszer kritikus szolgáltatások változásainak követése|
+|Konfigurációváltozás <br>&#124;ahol ConfigChangeType == "Démonok" és "ssh" és SvcState SvcName tartalmaz! = "Fut"|Hasznos, ha a rendszer kritikus szolgáltatások változásainak követése|
+|Konfigurációváltozás <br>&#124;ahol ConfigChangeType == "Szoftver" és a ChangeCategory == "Hozzáadott"|Szoftverkonfigurációjáról környezetek esetén hasznos ennek az igényét zárolva|
 |ConfigurationData <br>&#124;Ha SoftwareName tartalmazza: "Monitoring Agent" és a CurrentVersion! = "8.0.11081.0"|Jól használható jelent meg, amely gépek elavult vagy nem megfelelő szoftverfrissítési verziója telepítve van. Az utolsó jelentett konfigurációs állapotát, a módosítások nem jelentést készít.|
-|ConfigurationChange <br>&#124;ahol RegistryKey == "HKEY_LOCAL_MACHINE\\szoftver\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Hasznos, ha víruskereső létfontosságú kulcsok változásainak követése|
-|ConfigurationChange <br>&#124;Ha RegistryKey tartalmaz "HKEY_LOCAL_MACHINE\\rendszer\\CurrentControlSet\\szolgáltatások\\SharedAccess\\paraméterek\\FirewallPolicy"| Hasznos, ha tűzfal beállításainak változásainak követése|
+|Konfigurációváltozás <br>&#124;ahol RegistryKey == "HKEY_LOCAL_MACHINE\\szoftver\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Hasznos, ha víruskereső létfontosságú kulcsok változásainak követése|
+|Konfigurációváltozás <br>&#124;Ha RegistryKey tartalmaz "HKEY_LOCAL_MACHINE\\rendszer\\CurrentControlSet\\szolgáltatások\\SharedAccess\\paraméterek\\FirewallPolicy"| Hasznos, ha tűzfal beállításainak változásainak követése|
 
 ## <a name="next-steps"></a>További lépések
 

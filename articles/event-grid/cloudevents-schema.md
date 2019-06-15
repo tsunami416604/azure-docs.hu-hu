@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
 ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61436596"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents-séma használata az Event GRID használatával
@@ -67,13 +67,13 @@ CloudEvents v0.1 érhető el a következő tulajdonságokkal rendelkezik:
 | eventType          | String   | "com.example.someevent"          | Előfordulás történt típusa                                   | eventType
 | eventTypeVersion   | String   | "1.0"                            | Az esemény típusa (nem kötelező) verziója                            | dataVersion
 | cloudEventsVersion | String   | "0.1"                            | Az esemény használ CloudEvents-specifikáció verziója        | *átadni*
-| source             | URI      | "/ mycontext"                     | Az esemény-előállítót ismerteti                                       | topic#subject
+| source             | URI-T      | "/ mycontext"                     | Az esemény-előállítót ismerteti                                       | topic#subject
 | eventID            | String   | "1234-1234-1234"                 | Esemény azonosítója                                                    | id
 | eventTime          | Időbélyeg| "2018-04-05T17:31:00Z"           | Időbélyeg, ha az esemény történt-e (nem kötelező)                    | eventTime
-| schemaURL          | URI      | "https:\//myschema.com"           | A séma, az adatok attribútum betartó (nem kötelező) mutató hivatkozás | *nincs használatban*
+| schemaURL          | URI-T      | "https:\//myschema.com"           | A séma, az adatok attribútum betartó (nem kötelező) mutató hivatkozás | *nincs használatban*
 | contentType        | String   | "application/json"               | Ismerteti az adatok kódolási formátum (nem kötelező)                       | *nincs használatban*
 | Bővítmények         | Térkép      | { "extA": "vA", "extB", "vB" }  | Minden további metaadatok (nem kötelező)                                 | *nincs használatban*
-| adat               | Object   | { "objA": "vA", "objB", "vB" }  | Az eseménytartalom (nem kötelező)                                       | adat
+| data               | Object   | { "objA": "vA", "objB", "vB" }  | Az eseménytartalom (nem kötelező)                                       | data
 
 További információkért lásd: a [CloudEvents specifikációja](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 

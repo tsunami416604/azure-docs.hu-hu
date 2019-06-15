@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60550080"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>A Visual Studio-projektsablonok segítségével gyorsan elindíthatja a Batch-megoldások
@@ -89,7 +89,7 @@ A feladat Manager-sablon segítségével megvalósítani a feladatkezelői tevé
 
 1. Nyissa meg a meglévő megoldást a Visual Studióban.
 2. A Megoldáskezelőben kattintson a jobb gombbal a megoldás, kattintson a **Hozzáadás** > **új projekt**.
-3. A **Visual C#**, kattintson a **felhőalapú**, és kattintson a **Azure Batch-feladat felosztó Feladatkezelő**.
+3. A **Visual C#** , kattintson a **felhőalapú**, és kattintson a **Azure Batch-feladat felosztó Feladatkezelő**.
 4. Adjon meg egy nevet, amely ismerteti az alkalmazást, és a projekt azonosítja, a Feladatkezelő (például) "LitwareJobManager").
 5. A projekt létrehozásához kattintson a **OK**.
 6. Végezetül állítsa össze a projektet, azzal kényszerítheti a Visual Studio betölteni a hivatkozott NuGet-csomagok, és győződjön meg arról, hogy a projekt érvényes módosítás előtt.
@@ -258,7 +258,7 @@ A megoldás, amely a korábban létrehozott ad hozzá egy feladatot a processzor
 
 1. Nyissa meg a meglévő megoldást a Visual Studióban.
 2. A Megoldáskezelőben kattintson a jobb gombbal a megoldás, kattintson a **Hozzáadás**, és kattintson a **új projekt**.
-3. A **Visual C#**, kattintson a **felhőalapú**, és kattintson a **Azure Batch-feladat processzor**.
+3. A **Visual C#** , kattintson a **felhőalapú**, és kattintson a **Azure Batch-feladat processzor**.
 4. Adjon meg egy nevet, amely ismerteti az alkalmazást, és ez a projekt azonosítja, a feladat processzor (például) "LitwareTaskProcessor").
 5. A projekt létrehozásához kattintson a **OK**.
 6. Végezetül állítsa össze a projektet, azzal kényszerítheti a Visual Studio betölteni a hivatkozott NuGet-csomagok, és győződjön meg arról, hogy a projekt érvényes módosítás előtt.

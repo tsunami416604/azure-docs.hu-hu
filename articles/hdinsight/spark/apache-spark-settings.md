@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: 77f4ec9cce5d02ea4cbcc4968d02773a13edfe5b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64681302"
 ---
 # <a name="configure-apache-spark-settings"></a>Az Apache Spark beállításainak konfigurálása
@@ -148,6 +148,6 @@ Létezik néhány alapvető konfigurációs beállításokat, amelyek figyelése
 
 * [Az Apache Hadoop-összetevők és verziók a HDInsight?](../hdinsight-component-versioning.md)
 * [A HDInsight Apache Spark-fürt erőforrásainak kezelése](apache-spark-resource-manager.md)
-* [Az Apache Hadoop, az Apache Spark, az Apache Kafka és több HDInsight-fürtök beállítása](../hdinsight-hadoop-provision-linux-clusters.md)
+* [Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával](../hdinsight-hadoop-provision-linux-clusters.md)
 * [Az Apache Spark-konfigurációja](https://spark.apache.org/docs/latest/configuration.html)
 * [Futó Apache Spark on Apache Hadoop YARN](https://spark.apache.org/docs/latest/running-on-yarn.html)

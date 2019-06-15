@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
 ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61033900"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Virtuális hálózati szolgáltatásvégpont-szabályzatok (előzetes verzió)
@@ -125,7 +125,7 @@ A virtuális hálózati szolgáltatásvégpont-szabályzatok a következő előn
 - Alapértelmezés szerint az NSG-k engedélyezik a kimenő internetforgalmat, beleértve az Azure-szolgáltatások felé irányuló virtuális hálózati forgalmat is.
 - Ha szeretne megtagadni minden kimenő internetforgalmat, és csak a meghatározott Azure-beli szolgáltatási erőforrások felé irányuló forgalmat szeretné engedélyezni: 
 
-  1. lépés: NSG-ket csak Azure-szolgáltatások végpont régiókban kimenő forgalom engedélyezésére konfigurálja *Azure szolgáltatáscímkék*. További információért lásd az [NSG-khez elérhető szolgáltatáscímkéket](https://aka.ms/servicetags) ismertető szakaszt.
+  1\. lépés: NSG-ket csak Azure-szolgáltatások végpont régiókban kimenő forgalom engedélyezésére konfigurálja *Azure szolgáltatáscímkék*. További információért lásd az [NSG-khez elérhető szolgáltatáscímkéket](https://aka.ms/servicetags) ismertető szakaszt.
       
   A hálózati biztonsági csoportok olyan szabályai, amelyek a végpontrégiókra korlátozzák a hozzáférést, a következőképpen néznek ki:
 
@@ -135,7 +135,7 @@ A virtuális hálózati szolgáltatásvégpont-szabályzatok a következő előn
   Deny all
   ```
 
-  2. lépés: A szolgáltatásvégpont-szabályzatra való hozzáférést csak adott Azure-szolgáltatási erőforrások vonatkoznak.
+  2\. lépés: A szolgáltatásvégpont-szabályzatra való hozzáférést csak adott Azure-szolgáltatási erőforrások vonatkoznak.
 
   > [!WARNING]  
   > Ha a hálózati biztonsági csoport nem úgy van konfigurálva, hogy a végpontrégiókra korlátozza egy virtuális hálózat Azure-szolgáltatásokhoz való hozzáférését, más régiókban is hozzáférhet a szolgáltatási erőforrásokhoz, még akkor is, ha a szolgáltatásvégpont-szabályzat életbe lépett.
@@ -182,7 +182,7 @@ A szolgáltatásvégpont-szabályzatok használata nem jár további költségek
 
 A következő korlátozásokat érvényesíti a rendszer a szolgáltatásvégpont-szabályokon: 
 
- |Erőforrás | Alapértelmezett korlát |
+ |Resource | Alapértelmezett korlát |
  |---------|---------------|
  |ServiceEndpointPoliciesPerSubscription |500 |
  |ServiceEndpintPoliciesPerSubnet|100 |

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
 ms.openlocfilehash: 4f093251ce3c711cc060369abb27770157024d91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61488790"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>A helyszíni StorSimple eszköz a Government Portalon üzembe helyezése
@@ -69,7 +69,7 @@ A StorSimple eszköz üzembe helyezése, előtt kell gyűjteni az adatokat az es
 
 [StorSimple üzembehelyezési konfigurációs ellenőrzőlista letöltése](https://www.microsoft.com/download/details.aspx?id=49159)
 
-## <a name="deployment-prerequisites"></a>Üzembehelyezési előfeltételek
+## <a name="deployment-prerequisites"></a>Üzembe helyezési Előfeltételek
 Az alábbi szakaszok ismertetik a StorSimple-eszközkezelő szolgáltatás és a StorSimple-eszköz konfigurációs előfeltételeit.
 
 ### <a name="for-the-storsimple-device-manager-service"></a>A StorSimple-eszközkezelő szolgáltatás esetén
@@ -96,7 +96,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 ## <a name="step-by-step-deployment"></a>Részletes üzembe helyezés
 Az alábbi részletes útmutatás segítségével helyezze üzembe a StorSimple eszközt az adatközpontban.
 
-## <a name="step-1-create-a-new-service"></a>1. lépés: Új szolgáltatás létrehozása
+## <a name="step-1-create-a-new-service"></a>1\. lépés: Új szolgáltatás létrehozása
 A StorSimple-eszközkezelő szolgáltatás több StorSimple-eszközt is tud kezelni. A következő lépésekkel hozzon létre egy új példányát a StorSimple-Eszközkezelő szolgáltatásban.
 
 [!INCLUDE [storsimple-8000-create-new-service-gov](../../includes/storsimple-8000-create-new-service-gov.md)]
@@ -108,19 +108,19 @@ A StorSimple-eszközkezelő szolgáltatás több StorSimple-eszközt is tud keze
 > * Ha engedélyezte a tárfiók automatikus létrehozását, folytassa a [2. lépés: A Szolgáltatásregisztrációs kulcs lekérése](#step-2-get-the-service-registration-key).
 
 
-## <a name="step-2-get-the-service-registration-key"></a>2. lépés: Szolgáltatásregisztrációs kulcs lekérése
+## <a name="step-2-get-the-service-registration-key"></a>2\. lépés: Szolgáltatásregisztrációs kulcs lekérése
 Ha a StorSimple-eszközkezelő szolgáltatás működik és elérhető, le kell kérnie a szolgáltatásregisztrációs kulcsot. Ez a kulcs segítségével regisztrálhatja és csatlakoztathatja a StorSimple-eszköz a szolgáltatáshoz.
 
 Hajtsa végre az alábbi lépéseket a kormányzati portálon.
 
 [!INCLUDE [storsimple-8000-get-service-registration-key](../../includes/storsimple-8000-get-service-registration-key.md)]
 
-## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>3. lépés: Eszköz konfigurálása és regisztrálása a Windows PowerShell storsimple-höz készült
+## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>3\. lépés: Eszköz konfigurálása és regisztrálása a Windows PowerShell storsimple-höz készült
 A StorSimple-höz készült Windows PowerShell-lel végezze el a StorSimple eszköz kezdeti beállítását az alábbiakban ismertetett eljárás alapján. A lépés végrehajtásához terminálemulációs szoftverre lesz szüksége. További információ: [A PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](#use-putty-to-connect-to-the-device-serial-console).
 
 [!INCLUDE [storsimple-8000-configure-and-register-device-gov](../../includes/storsimple-8000-configure-and-register-device-gov-u2.md)]
 
-## <a name="step-4-complete-minimum-device-setup"></a>4. lépés: Minimális eszközbeállítások végrehajtása
+## <a name="step-4-complete-minimum-device-setup"></a>4\. lépés: Minimális eszközbeállítások végrehajtása
 A StorSimple minimális eszközkonfigurációjához a következőket kell végrehajtania:
 
 * Adjon egy valódi (értelmezhető) nevet az eszköznek.
@@ -131,14 +131,14 @@ Hajtsa végre az alábbi lépéseket az Azure Government-portálra, a minimális
 
 [!INCLUDE [storsimple-8000-complete-minimum-device-setup-u2](../../includes/storsimple-8000-complete-minimum-device-setup-u2.md)]
 
-## <a name="step-5-create-a-volume-container"></a>5. lépés: Kötettároló létrehozása
+## <a name="step-5-create-a-volume-container"></a>5\. lépés: Kötettároló létrehozása
 A kötettároló tárfiók-, sávszélesség- és titkosítási beállításokat biztosít minden benne tárolt kötet számára. Ahhoz, hogy elkezdhessen köteteket kiépíteni a StorSimple eszközön, létre kell hoznia egy kötettárolót.
 
 A Government Portalon egy kötettároló létrehozásához hajtsa végre az alábbi lépéseket.
 
 [!INCLUDE [storsimple-8000-create-volume-container](../../includes/storsimple-8000-create-volume-container.md)]
 
-## <a name="step-6-create-a-volume"></a>6. lépés: Kötet létrehozása
+## <a name="step-6-create-a-volume"></a>6\. lépés: Kötet létrehozása
 A kötettároló létrehozása után tárkötetet építhet ki a StorSimple eszközön a kiszolgálók számára. A Government Portalon, a kötet létrehozásához hajtsa végre az alábbi lépéseket.
 
 > [!IMPORTANT]
@@ -146,7 +146,7 @@ A kötettároló létrehozása után tárkötetet építhet ki a StorSimple eszk
 
 [!INCLUDE [storsimple-8000-create-volume](../../includes/storsimple-8000-create-volume-u2.md)]
 
-## <a name="step-7-mount-initialize-and-format-a-volume"></a>7. lépés: Kötet csatlakoztatása, inicializálása és formázása
+## <a name="step-7-mount-initialize-and-format-a-volume"></a>7\. lépés: Kötet csatlakoztatása, inicializálása és formázása
 Hajtsa végre ezeket a lépéseket a Windows Server-gazdagépen.
 
 > [!IMPORTANT]
@@ -158,7 +158,7 @@ Ha mégsem szeretné konfigurálni az MPIO-t, az alábbi lépések végrehajtás
 
 [!INCLUDE [storsimple-mount-initialize-format-volume](../../includes/storsimple-mount-initialize-format-volume.md)]
 
-## <a name="step-8-take-a-backup"></a>8. lépés: Biztonsági mentés készítése
+## <a name="step-8-take-a-backup"></a>8\. lépés: Biztonsági mentés készítése
 Az adott időpontban mentett biztonsági másolatok védelmet biztosítanak a kötetek számára, továbbá javítják a rendelkezésre álló helyreállítási lehetőségeket, miközben a helyreállítási időt csökkentik. A StorSimple eszközén kétféle biztonsági mentést készíthet: helyi pillanatképeket és felhőbeli pillanatképeket. Mind a kétféle biztonsági mentés lehet **Ütemezett** vagy **Manuális**.
 
 A Government Portalon ütemezett biztonsági mentés létrehozásához hajtsa végre az alábbi lépéseket.

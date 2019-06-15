@@ -17,11 +17,11 @@ ms.date: 03/28/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d474d9bfd6016885eaa21afcea5d44d39c624084
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104629"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64730581"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Samanage konfigurálása
 
@@ -108,7 +108,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás konfigurálá
 
    * Az a **rendszergazdai jelszó** mezőben adja meg a jelszót a rendszergazdai fiók, amely megfelel a rendszergazda felhasználóneve.
 
-6. 5. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** , győződjön meg arról, hogy az Azure AD Samanage csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, hogy a Samanage rendszergazdai engedélyekkel rendelkezzen, majd próbálkozzon újra.
+6. 5\. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** , győződjön meg arról, hogy az Azure AD Samanage csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, hogy a Samanage rendszergazdai engedélyekkel rendelkezzen, majd próbálkozzon újra.
 
     ![Kapcsolat Samanage tesztelése](./media/samanage-provisioning-tutorial/TestConnection.png)
 

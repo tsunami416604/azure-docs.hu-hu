@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122923"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Blob storage és a Visual Studio csatlakoztatott szolgáltatásainak (webjobs-feladat projektek)
@@ -144,7 +144,7 @@ Az újrapróbálkozások maximális száma nem konfigurálható. Azonos **MaxDeq
 
 Az üzenetsorban található üzenet ártalmas blobok esetében a következő JSON-objektum, amely a következő tulajdonságokat tartalmazza:
 
-* FunctionId (a következő formátumban *{webjobs-feladat neve}*. A műveletek. *{Függvény neve}*, például: WebJob1.Functions.CopyBlob)
+* FunctionId (a következő formátumban *{webjobs-feladat neve}* . A műveletek. *{Függvény neve}* , például: WebJob1.Functions.CopyBlob)
 * BlobType ("BlockBlob" vagy "PageBlob")
 * ContainerName
 * BlobName
@@ -193,7 +193,7 @@ A WebJobs SDK gondoskodik róla, hogy nincs **BlobTrigger** függvény egynél t
 
 BLOB visszaigazolások nevű tárolóban tárolt *azure-webjobs-gazdagépek* AzureWebJobsStorage kapcsolati sztring által meghatározott Azure storage-fiókban. Egy blob beérkezési rendelkezik a következő információkat:
 
-* A függvényt, amely a BLOB byla volána ("*{webjobs-feladat neve}*. A műveletek. *{Függvény neve}*", például: "WebJob1.Functions.CopyBlob")
+* A függvényt, amely a BLOB byla volána (" *{webjobs-feladat neve}* . A műveletek. *{Függvény neve}* ", például: "WebJob1.Functions.CopyBlob")
 * A tároló neve
 * A blob típusa ("BlockBlob" vagy "PageBlob")
 * A blob neve

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: aad60024187ca180c002f119f4b975e8f69796e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60629288"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>A StorSimple Virtual Array frissítés 0.2-es és 0.1-es frissítés – kibocsátási megjegyzések
@@ -37,12 +37,12 @@ A 0.2 felel meg a szoftververzió **10.0.10280.0**; 0.1-es frissítés verziója
 ## <a name="issues-fixed-in-the-update-02"></a>A 0.2-es frissítés megoldott problémák
 A 0.2 0.1-es frissítés a következő táblázat ismerteti a javítás mellett az összes módosításait tartalmazza:
 
-| Szolgáltatás | Probléma |
+| Funkció | Probléma |
 | --- | --- |
-| Frissítések |A legutóbbi verzió, a frissítések nem automatikusan észleli a klasszikus Azure portálon, így kellett használni a helyi webes felhasználói Felületet a frissítések telepítéséhez. Ebben a kiadásban a probléma megoldódik. 0.2-es frissítés telepítése után a jövőbeli frissítések a klasszikus Azure portál használatával is telepítheti. |
+| Frissítések |A legutóbbi verzió, a frissítések nem automatikusan észleli a klasszikus Azure portálon, így kellett használni a helyi webes felhasználói Felületet a frissítések telepítéséhez. Ebben a kiadásban a probléma megoldódik. 0\.2-es frissítés telepítése után a jövőbeli frissítések a klasszikus Azure portál használatával is telepítheti. |
 
-## <a name="whats-new-in-the-update-01"></a>0.1-es frissítés újdonságai
-0.1-es frissítés a következő hibajavításokat és fejlesztéseket tartalmaz. 
+## <a name="whats-new-in-the-update-01"></a>0\.1-es frissítés újdonságai
+0\.1-es frissítés a következő hibajavításokat és fejlesztéseket tartalmaz. 
 
 * **Felhőbeli leállások jobb rugalmasság**: Ez a kiadás számos hibajavítást vész-helyreállítási, biztonsági mentés, visszaállítás és a egy felhőalapú kapcsolódási bekövetkező szolgáltatáskimaradás esetén rétegezést kapcsolatos rendelkezik. 
 * **Továbbfejlesztett helyreállítási teljesítmény**: Ebben a kiadásban hibajavításokat tartalmaz, amely rendelkezik a visszaállítási feladat befejezési ideje le jelentősen Kivágás rendelkezik.
@@ -54,7 +54,7 @@ A 0.2 0.1-es frissítés a következő táblázat ismerteti a javítás mellett 
 ## <a name="issues-fixed-in-the-update-01"></a>Hibáinak 0.1-es frissítés javításai
 Az alábbi táblázat hibáinak javításai ebben a kiadásban összegzését tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma |
+| Nem. | Funkció | Probléma |
 | --- | --- | --- |
 | 1 |VMDK |VMware verzióban az operációsrendszer-lemez ritka riasztásokat okozó és normális működés megszakítása jelent meg. Ez lett javítva a kiadásban. |
 | 2 |iSCSI server |A legutóbbi kiadás a felhasználó volt szükséges megadni átjárót mindegyik engedélyezett hálózati interfész a StorSimple virtuális eszköz. Ez a viselkedés módosítva a kiadásban, hogy a felhasználó rendelkezik legalább egy átjáró engedélyezett hálózati adapterek konfigurálásához. |
@@ -62,10 +62,10 @@ Az alábbi táblázat hibáinak javításai ebben a kiadásban összegzését ta
 | 4 |Cloud-access |A legutóbbi verzió a StorSimple Virtual Array nincs hálózati kapcsolat, majd újra lett indítva, ha a helyi felhasználói Felületet kell kapcsolódási problémák. Ez a probléma nem oldódik ebben a kiadásban. |
 | 5 |Figyelési diagramok |Az előző verziót, a következő eszközön feladatátvétel a felhő kapacitás kihasználtsága diagramok helytelen értékeket a klasszikus Azure portálon jelennek meg. Ez javítja a jelenlegi kiadásban. |
 
-## <a name="known-issues-in-the-update-01"></a>0.1-es frissítés ismert problémái
+## <a name="known-issues-in-the-update-01"></a>0\.1-es frissítés ismert problémái
 Az alábbi táblázat a StorSimple Virtual Array az ismert problémák összegzését tartalmazza, és a kiadási jelezve a korábbi kiadásokban a problémák tartalmazza. **Az ebben a kiadásban feljegyzett problémák kiadás vannak, egy csillaggal jelölve. A listában szereplő szinte összes problémát a StorSimple Virtual Array az általánosan elérhető kiadás átvitt rendelkezik.**
 
-| Nem. | Szolgáltatás | Probléma | Megkerülő megoldás és megjegyzések |
+| Nem. | Funkció | Probléma | Megkerülő megoldás és megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |Az előzetes kiadásban létrehozott virtuális eszközre nem lehet frissíteni egy támogatott általánosan elérhető verzióra. |Ezek a virtuális eszközök feladatátvételt kell végrehajtani a végleges kiadás vész-helyreállítási munkafolyamat használatával. |
 | **2.** |Kiépített adatlemez |Miután ellátta bizonyos megadott méretű adatlemez és a megfelelő virtuális StorSimple-eszközt hozott létre, meg kell nem tartalomtól az adatlemezt. Kísérlet ehhez a helyi rétegeken az eszköz összes adatának adatvesztést eredményez. | |
