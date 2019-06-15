@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: ed57d72d32ba82a37036c9af77590bd4e93db8d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610525"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure Security
@@ -140,7 +140,7 @@ Engedélyezheti vagy letilthatja a naplók a következő típusú:
 
 -   A Web Server-naplózás – a W3C bővített naplófájlformátum használata HTTP-tranzakciót kapcsolatos információkat. Ez akkor hasznos, teljes webhelymetrikák például kezelt kérések, vagy hogy hány kérésnek egy adott IP-címről számának meghatározásakor.
 
-#### <a name="application-diagnostics"></a>Alkalmazásdiagnosztika
+#### <a name="application-diagnostics"></a>Az Application diagnostics
 [Az Application diagnostics](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) lehetővé teszi egy webalkalmazás által létrehozott adatok rögzítését. ASP.NET-alkalmazások használhatják a [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) osztályt az alkalmazásnaplóba diagnosztikai információk naplózása. Az Application Diagnostics, két fő típusa van események, alkalmazások teljesítményével és alkalmazások hibáival kapcsolatos. A hibák és a hibák oszthatók csatlakozási, biztonsági és meghibásodási problémákra tovább. Probléma adódott az alkalmazáskód hibái általában kapcsolódó.
 
 Az Application Diagnostics felületén tekintheti meg a következő módokon csoportosíthatók események:
@@ -274,7 +274,7 @@ A Microsoft [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-man
 
 A TRAFFIC Manager egy sor különböző alkalmazás igényeinek megfelelően, a végpontonkénti állapotot forgalom-útválasztási módszert biztosít [figyelési](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring), és automatikus feladatátvételt. A Traffic Manager ellenáll a meghibásodásoknak, beleértve akár egy egész Azure-régió meghibásodását is.
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-Az [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) magas rendelkezésre állást és hálózati teljesítményt biztosít alkalmazásai számára. 4. réteg (TCP, UDP) terheléselosztó bejövő forgalmat egy elosztott terhelésű készlet definiált szolgáltatások kifogástalan példányai között osztja el. Az Azure Load Balancer konfigurálható:
+Az [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) magas rendelkezésre állást és hálózati teljesítményt biztosít alkalmazásai számára. 4\. réteg (TCP, UDP) terheléselosztó bejövő forgalmat egy elosztott terhelésű készlet definiált szolgáltatások kifogástalan példányai között osztja el. Az Azure Load Balancer konfigurálható:
 
 -   Töltse be a bejövő internetes forgalom terheléselosztása virtuális gépekhez. Ez a konfiguráció az úgynevezett [internetre irányuló terheléselosztási](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview).
 

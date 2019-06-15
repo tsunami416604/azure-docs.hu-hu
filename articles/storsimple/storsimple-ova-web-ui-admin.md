@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630469"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>A webes felhasználói felület használata a StorSimple Virtual Array felügyeletéhez
@@ -63,17 +63,17 @@ A napló csomag áll a megfelelő naplók, amelyek segítségére lehetnek Suppo
 #### <a name="to-generate-the-log-package"></a>A napló-csomag létrehozása
 1. A helyi webes felhasználói felületen váltson **hibaelhárítás** > **rendszernaplók**.
    
-    ![1. napló csomagjának létrehozása](./media/storsimple-ova-web-ui-admin/image31.png)
+    ![1\. napló csomagjának létrehozása](./media/storsimple-ova-web-ui-admin/image31.png)
 2. Kattintson a lap alján **log-csomag létrehozása**. A rendszer naplóit tartalmazó csomagot hoz létre. Ez eltarthat néhány percig.
    
     ![napló 2. csomag létrehozása](./media/storsimple-ova-web-ui-admin/image32.png)
    
     Ön értesítést kap, ha a csomag sikeresen létrejött, és az oldal frissül, és a csomag létrehozásának időpontját jelzi.
    
-    ![3. napló csomagjának létrehozása](./media/storsimple-ova-web-ui-admin/image33.png)
+    ![3\. napló csomagjának létrehozása](./media/storsimple-ova-web-ui-admin/image33.png)
 3. Kattintson a **log letöltőcsomag**. Egy tömörített csomagot a rendszer letölti a rendszeren.
    
-    ![4. napló csomagjának létrehozása](./media/storsimple-ova-web-ui-admin/image34.png)
+    ![4\. napló csomagjának létrehozása](./media/storsimple-ova-web-ui-admin/image34.png)
 4. Tömörítse ki a letöltött log csomagot, és megtekintheti a rendszernapló fájljaiban.
 
 ## <a name="shut-down-and-restart-your-device"></a>Állítsa le és indítsa újra az eszközt
@@ -83,7 +83,7 @@ A napló csomag áll a megfelelő naplók, amelyek segítségére lehetnek Suppo
 1. A helyi webes felhasználói felületen váltson **karbantartási** > **energiaellátási beállítások**.
 2. Kattintson a lap alján **leállítási**.
    
-    ![1. eszköz leállítása](./media/storsimple-ova-web-ui-admin/image36.png)
+    ![1\. eszköz leállítása](./media/storsimple-ova-web-ui-admin/image36.png)
 3. Figyelmezteti, hogy az eszköz egy leállítási szakítja meg egy leállást eredményez a folyamatban lévő i figyelmeztetés jelenik meg. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-ova-web-ui-admin/image3.png).
    
     ![eszköz leállítás figyelmeztetés](./media/storsimple-ova-web-ui-admin/image37.png)

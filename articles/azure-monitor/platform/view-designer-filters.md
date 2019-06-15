@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.openlocfilehash: 31a902302ba806889854330c6517d9f5745f1c0c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60551726"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Az Azure Monitor nézetekben szűrők
@@ -28,7 +28,7 @@ Kattintson egy nézetre annak megnyitásához, ahol módosíthatja a dátum idő
 
 ![Példa szűrése](media/view-designer-filters/filters-example-time.png)
 
-Kattintson a **+** használatával egyéni szűrőket a nézet szűrő hozzáadásához. Vagy válassza ki a szűrő egy értéket a legördülő listából, vagy írjon be egy értéket. Szűrők hozzáadása gombra kattintva folytassa a **+**. 
+Kattintson a **+** használatával egyéni szűrőket a nézet szűrő hozzáadásához. Vagy válassza ki a szűrő egy értéket a legördülő listából, vagy írjon be egy értéket. Szűrők hozzáadása gombra kattintva folytassa a **+** . 
 
 
 ![Példa szűrése](media/view-designer-filters/filters-example-custom.png)
@@ -40,7 +40,7 @@ Ha eltávolítja az összes szűrő értékeit, majd a szűrő már nem lépnek 
 
 A szűrő létrehozása a **szűrők** lapon mikor [szerkesztési nézet](view-designer.md).  A szűrő a nézet globális, és a nézetben minden részére vonatkozik.  
 
-![Szűrőbeállítások](media/view-designer-filters/filters-settings.png)
+![Szűrés beállításai](media/view-designer-filters/filters-settings.png)
 
 A következő táblázat ismerteti az egy szűrő beállításait.
 

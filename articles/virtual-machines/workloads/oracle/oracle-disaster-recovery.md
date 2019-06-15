@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: 09df1421d6deae6db305cef2a46d6c40d0c12ba3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60835882"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Az Azure-környezet egy Oracle Database 12c adatbázis vészhelyreállítása
@@ -32,7 +32,7 @@ ms.locfileid: "60835882"
 ## <a name="goals"></a>Célok
 - Tervezze meg a topológia és a vész-helyreállítási követelményeknek megfelelő konfiguráció.
 
-## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>1. forgatókönyv: Elsődleges és a DR webhelyek az Azure-ban
+## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>1\. forgatókönyv: Elsődleges és a DR webhelyek az Azure-ban
 
 Egy ügyfél rendelkezik egy Oracle adatbázis-készlet mentése az elsődleges helyen. A DR-hely van egy másik régióban. Az ügyfél Oracle Data Guard használja a helyek közötti gyors helyreállítás. Az elsődleges hely is rendelkezik egy másodlagos adatbázist, jelentéskészítési és egyéb felhasználásra. 
 
@@ -52,13 +52,13 @@ Itt található egy összefoglaló az Azure beállítása:
 
 ![A DR-topológia oldalát bemutató képernyőkép](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
-## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>2. forgatókönyv: Helyszíni elsődleges hely és a DR hely az Azure-ban
+## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>2\. forgatókönyv: Helyszíni elsődleges hely és a DR hely az Azure-ban
 
 Egy ügyfél rendelkezik egy helyszíni Oracle-adatbázis beállítása (elsődleges hely). A DR-hely van az Azure-ban. Ezek a helyek közötti gyors helyreállítás Oracle Data Guard használható. Az elsődleges hely is rendelkezik egy másodlagos adatbázist, jelentéskészítési és egyéb felhasználásra. 
 
 Kétféleképpen a telepítő.
 
-### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>1. módszer: A helyszíni és az Azure nyitott TCP-portok a tűzfalon igénylő közti közvetlen kapcsolatokon keresztül 
+### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>1\. módszer: A helyszíni és az Azure nyitott TCP-portok a tűzfalon igénylő közti közvetlen kapcsolatokon keresztül 
 
 Közvetlen kapcsolat nem ajánlott, mert a külvilág számára a TCP-portok szolgáltatnak.
 
@@ -78,7 +78,7 @@ Következő található egy összefoglaló az Azure beállítása:
 
 ![A DR-topológia oldalát bemutató képernyőkép](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="approach-2-site-to-site-vpn"></a>2. módszer: Site-to-site VPN
+### <a name="approach-2-site-to-site-vpn"></a>2\. módszer: Site-to-site VPN
 Site-to-site VPN emellett akkor esetleg jobb megközelítés. VPN beállításával kapcsolatos további információkért lásd: [virtuális hálózat létrehozása a CLI-vel Site-to-Site VPN-kapcsolattal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli).
 
 #### <a name="topology"></a>Topológia

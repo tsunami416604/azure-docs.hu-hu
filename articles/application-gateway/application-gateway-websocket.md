@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/18/2019
 ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831239"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>WebSocket-támogatás az Application Gateway áttekintése
 
-Az Application Gateway összes átjáró-méretek websocket natív támogatást biztosít. Kizárólag WebSocket-támogatásra vonatkozó felhasználói beállítás nem létezik. 
+Az Application Gateway natív támogatást nyújt a WebSockethez minden átjáróméret esetében. Kizárólag WebSocket-támogatásra vonatkozó felhasználói beállítás nem létezik. 
 
 WebSocket protokoll a szabványosított [RFC6455](https://tools.ietf.org/html/rfc6455) lehetővé teszi, hogy egy kiszolgáló és a egy ügyfél egy teljes kétirányú kommunikációt egy hosszú ideig futó TCP-kapcsolaton keresztül. Ez a funkció lehetővé teszi a webkiszolgáló és az ügyfél, amely lehet a lekérdezés szükséges a HTTP-alapú megvalósításokhoz, feleslegessé téve a kétirányú interaktívabb kommunikációját. WebSocket rendelkezik alacsony többletterhelést HTTP eltérően, és felhasználhatja a azonos TCP-kapcsolat a több kérés/válasz erőforrások hatékonyabb kihasználását eredményezi. WebSocket protokoll célja a hagyományos HTTP-port a 80-as és 443-as porton keresztül működnek.
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
 ms.openlocfilehash: 4476e4732dfcf8d79c9678a7ff4719eba10e48f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60319428"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Belső hiba akkor fordul elő, amikor próbál csatlakozni egy Azure virtuális géphez a távoli asztalon keresztül
@@ -87,7 +87,7 @@ Csatlakozás [soros konzolon és a PowerShell-példány megnyitása](./serial-co
 
     3. [Frissítse a hálózati biztonsági csoportot az új portot](../../virtual-network/security-overview.md) az Azure portal RDP-portjára.
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>2. lépés: Az RDP-önaláírt tanúsítvány a megfelelő engedélyek beállítása
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>2\. lépés: Az RDP-önaláírt tanúsítvány a megfelelő engedélyek beállítása
 
 1.  Egy PowerShell-példány futtassa a következő parancsokat egyenként az RDP-önaláírt tanúsítvány megújítása:
 
@@ -136,7 +136,7 @@ Csatlakozás [soros konzolon és a PowerShell-példány megnyitása](./serial-co
 
 4. Indítsa újra a virtuális Gépet, és ismételje meg a távoli asztali kapcsolatot a virtuális gép indítása. Ha a hiba továbbra is fennáll, lépjen a következő lépéssel.
 
-3. lépés: Engedélyezze a TLS az összes támogatott verzió
+3\. lépés: Engedélyezze a TLS az összes támogatott verzió
 
 Az RDP-ügyfelet használja az alapértelmezett protokoll a TLS 1.0. Azonban ez módosítható a TLS 1.1-et az új standard vált. A TLS 1.1 le van tiltva, a virtuális gépen, ha a kapcsolat nem jön létre.
 1.  CMD-példányban engedélyezze a TLS protokoll:

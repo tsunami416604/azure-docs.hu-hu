@@ -16,10 +16,10 @@ ms.date: 04/08/2019
 ms.author: kfollis
 ms.custom: accessibility
 ms.openlocfilehash: fb0b347228fe82725d5246ae9eacdab8dff01257
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60551430"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Az Azure Portalon használható billentyűparancsok
@@ -44,14 +44,14 @@ Ez a cikk felsorolja a billentyűparancsok, amely mindenütt működik az Azure 
 |Fókusz áthelyezése a parancssávra |G+, |
 |Fókuszváltás a fejlécet és a bal oldali oldalsáv között | G+. |
 
-## <a name="go-to"></a>Látogasson el ide
+## <a name="go-to"></a>odamegy
 
 |Nyissa meg a helyet |Nyomja meg |
 | --- | --- |
 |Lépjen a **irányítópult** |G+D |
 |Lépjen a **minden erőforrás**|G+A |
 |Lépjen a **erőforráscsoportok**|G+R |
-|Nyissa meg a bal oldali oldalsáv elem ezen a helyen |G+szám|
+|Nyissa meg a bal oldali oldalsáv elem ezen a helyen |G + szám|
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 8823aebe17a5446b3c507878833c2525c338dde1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60756230"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64718001"
 ---
 # <a name="azure-data-box-edge-security-and-data-protection"></a>Az Azure Data Box Edge biztonság és adatvédelem
 

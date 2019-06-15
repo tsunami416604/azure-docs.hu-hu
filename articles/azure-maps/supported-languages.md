@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 1928185521419006a487a933e2ecba79894a09d3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64686782"
 ---
 # <a name="localization-support-in-azure-maps"></a>Honosítási támogatás az Azure Maps-Közösséghez
@@ -25,7 +25,7 @@ Az Azure Maps támogatja a különböző nyelveken és nézetek ország/régió 
 A szolgáltatások között az Azure Maps honosított a különböző nyelveken. Az alábbi táblázat a támogatott nyelvkódok biztosít az egyes szolgáltatások.  
   
 
-| ID (Azonosító)         | Name (Név)                   |  Maps | Keresés | Útválasztás | Forgalom incidensek | A térkép vezérlőelem-JS | Időzóna |
+| azonosító         | Name (Név)                   |  Maps | Keresés | Útválasztás | Forgalom incidensek | A térkép vezérlőelem-JS | Időzóna |
 |------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
 | af-ZA      | afrikaans              |       |    ✓   |    ✓    |                   |                |     ✓     |
 | ar-SA      | arab                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
@@ -85,7 +85,7 @@ A szolgáltatások között az Azure Maps honosított a különböző nyelveken.
 
 ## <a name="azure-maps-supported-views"></a>Az Azure Maps támogatott nézetek
 
-Az Azure Maps nézet paraméter (más néven "felhasználói régió paraméter") egy 2 kétbetűs ISO-3166 országkód, amelyek bemutatják a megfelelő leképezések az adott ország/régió megadása, amelynek beállítása a geopolitikai határokon vitatott és címkék jelennek meg a térképen.  Alapértelmezés szerint nézet paraméter értéke **"Egyesített"**.  Ország/régió, amely nem a nézet listát alapértelmezés szerint az "Egyesített" nézetre. A feladata, hogy a felhasználók helyének meghatározásához, és adja meg a nézet paraméter az adott hely megfelelően. Azure Maps a nézet paramétert kell használni, megfelel a vonatkozó törvényeket, beleértve az ország, ahol a térképeket, képeket és egyéb adatok és a külső tartalmakat, amelynek Ön a jogosult az Azure Maps-n keresztül elérésére vonatkozó leképezés legyen elérhető.
+Az Azure Maps nézet paraméter (más néven "felhasználói régió paraméter") egy 2 kétbetűs ISO-3166 országkód, amelyek bemutatják a megfelelő leképezések az adott ország/régió megadása, amelynek beállítása a geopolitikai határokon vitatott és címkék jelennek meg a térképen.  Alapértelmezés szerint nézet paraméter értéke **"Egyesített"** .  Ország/régió, amely nem a nézet listát alapértelmezés szerint az "Egyesített" nézetre. A feladata, hogy a felhasználók helyének meghatározásához, és adja meg a nézet paraméter az adott hely megfelelően. Azure Maps a nézet paramétert kell használni, megfelel a vonatkozó törvényeket, beleértve az ország, ahol a térképeket, képeket és egyéb adatok és a külső tartalmakat, amelynek Ön a jogosult az Azure Maps-n keresztül elérésére vonatkozó leképezés legyen elérhető.
 
 A következő táblázat a támogatott nézetek.
 
@@ -107,4 +107,4 @@ A következő táblázat a támogatott nézetek.
 | SA           | Szaúd-Arábia (arab nézet)            |   ✓   |        |     ✓          |
 | SY           | (Arab nézet) Szíria                   |   ✓   |        |     ✓          |
 | YE           | Jemen (arab nézet)                   |   ✓   |        |     ✓          |
-| Egyesített      | Egységes nézet (egyéb)                  |   ✓   |   ✓     |     ✓          |
+| Egységes      | Egységes nézet (egyéb)                  |   ✓   |   ✓     |     ✓          |

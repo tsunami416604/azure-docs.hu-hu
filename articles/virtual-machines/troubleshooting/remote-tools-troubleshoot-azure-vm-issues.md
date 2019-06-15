@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: 513ce98703e67053ab0bcac3e6fc7a3e959f6870
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307379"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717273"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Távoli eszközök használata az Azure virtuális gép hibáinak elhárítása
 
@@ -236,7 +236,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. Az azonos virtuális hálózaton egy másik virtuális gépről nyissa meg a **Services.msc**.
 
-2. Kattintson a jobb gombbal **szolgáltatások (helyi)**.
+2. Kattintson a jobb gombbal **szolgáltatások (helyi)** .
 
 3. Válassza ki **Csatlakozás másik számítógéphez**.
 

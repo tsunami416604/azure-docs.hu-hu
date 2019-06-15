@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60333860"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics egy CI/CD-folyamat beállítása  
@@ -44,7 +44,7 @@ A U-SQL projekt építhetők fel a Microsoft Build Engine (MSBuild) a megfelelő
 Ha nem, a projekt áttelepítése két lehetősége van:
 
 - Option 1: Módosítsa a régi importálás elem az előző egy.
-- Option 2: Nyissa meg a régi projekttel az Azure Data Lake Tools for Visual Studio. 2.3.3000.0 frissebb verzióját használja. A régi projektsablonnal automatikusan frissül a legújabb verzióra. 2.3.3000.0 frissebb verziójával létrehozott új projektek használja az új sablon.
+- Option 2: Nyissa meg a régi projekttel az Azure Data Lake Tools for Visual Studio. 2\.3.3000.0 frissebb verzióját használja. A régi projektsablonnal automatikusan frissül a legújabb verzióra. 2\.3.3000.0 frissebb verziójával létrehozott új projektek használja az új sablon.
 
 ### <a name="get-nuget"></a>NuGet beolvasása
 
@@ -83,7 +83,7 @@ Az argumentumok definíció- és értékek a következők:
 * **USQLTargetType = egyesítési vagy SyntaxCheck**:
     * **Egyesítse**. Egyesítéssel lefordítja a háttérkód-fájlokat. Példa **.cs**, **.py**, és **.r** fájlokat. Ez a U-SQL-parancsfájlt az eredményül kapott felhasználói kód kódtár inlines. Példák: egy dll bináris, Python vagy R kódot.
     * **SyntaxCheck**. SyntaxCheck mód a U-SQL parancsfájl először egyesít háttérkód-fájlokat. Majd azt állítja össze a kódot a U-SQL parancsfájl.
-* **DataRoot =\<DataRoot elérési út >**. DataRoot csak SyntaxCheck mód van szükség. Ha, létrehozta a parancsfájl SyntaxCheck móddal, MSBuild ellenőrzi, adatbázis-objektumok a szkriptben mutató hivatkozásokat. Épület, mielőtt a U-SQL-adatbázis a build gép DataRoot mappában található a hivatkozott objektumokat tartalmazó egyező helyi környezet beállítása. Is kezelheti a adatbázis függőségek szerint [hivatkozik egy U-SQL database-projekt](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). MSBuild csak adatbázis-objektum hivatkozik rá, fájlok nem ellenőrzi.
+* **DataRoot =\<DataRoot elérési út >** . DataRoot csak SyntaxCheck mód van szükség. Ha, létrehozta a parancsfájl SyntaxCheck móddal, MSBuild ellenőrzi, adatbázis-objektumok a szkriptben mutató hivatkozásokat. Épület, mielőtt a U-SQL-adatbázis a build gép DataRoot mappában található a hivatkozott objektumokat tartalmazó egyező helyi környezet beállítása. Is kezelheti a adatbázis függőségek szerint [hivatkozik egy U-SQL database-projekt](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). MSBuild csak adatbázis-objektum hivatkozik rá, fájlok nem ellenőrzi.
 * **EnableDeployment = true** vagy **hamis**. EnableDeployment azt jelzi, ha engedélyezett üzembe helyezése a hivatkozott U-SQL-adatbázisok az összeállítási folyamat során. Hivatkozhat egy U-SQL database-projektet, és az adatbázis-objektumok használata a U-SQL-szkript, ha a paraméter értéke **igaz**.
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Folyamatos integráció révén az Azure-folyamatok
@@ -454,33 +454,33 @@ Az alábbi lépéseket egy adatbázis-üzembe helyezési feladat az Azure-folyam
 
 #### <a name="common-parameters"></a>Az általános paraméterek
 
-| Paraméter | Leírás | Alapértelmezett érték | Szükséges |
+| Paraméter | Leírás | Alapértelmezett érték | Kötelező |
 |---------|-----------|-------------|--------|
-|Csomag|A U-SQL-adatbázis központi telepítési csomag telepítendő elérési útja.|null|true|
+|Csomag|A U-SQL-adatbázis központi telepítési csomag telepítendő elérési útja.|NULL|true|
 |Adatbázis|A telepített vagy létrehozott adatbázis neve.|master|false|
-|LogFile|A fájl elérési útját a naplózást. Alapértelmezés szerint ki (konzol) standard.|null|false|
+|LogFile|A fájl elérési útját a naplózást. Alapértelmezés szerint ki (konzol) standard.|NULL|false|
 |LogLevel|Naplózási szint: Részletes, normál, figyelmeztetés vagy hiba.|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>Helyi telepítés paraméter
 
-|Paraméter|Leírás|Alapértelmezett érték|Szükséges|
+|Paraméter|Leírás|Alapértelmezett érték|Kötelező|
 |---------|-----------|-------------|--------|
-|DataRoot|A helyi adatok gyökérmappa elérési útja.|null|true|
+|DataRoot|A helyi adatok gyökérmappa elérési útja.|NULL|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Az Azure Data Lake Analytics üzembe helyezési paraméterek
 
-|Paraméter|Leírás|Alapértelmezett érték|Szükséges|
+|Paraméter|Leírás|Alapértelmezett érték|Kötelező|
 |---------|-----------|-------------|--------|
-|Fiók|Itt adhatja meg, amely az Azure Data Lake Analytics-fiók telepíteni a fiók nevét.|null|true|
-|ResourceGroup|Az Azure erőforráscsoport nevét az Azure Data Lake Analytics-fiók.|null|true|
-|SubscriptionId|Az Azure Data Lake Analytics-fiók Azure-előfizetés azonosítója.|null|true|
-|Bérlő|A bérlő neve az Azure Active Directory (Azure AD) tartománynév. Az előfizetés-kezelési oldalán, az Azure Portalon keresse meg azt.|null|true|
-|AzureSDKPath|Függő szerelvényei keresése az Azure SDK elérési útja.|null|true|
+|Fiók|Itt adhatja meg, amely az Azure Data Lake Analytics-fiók telepíteni a fiók nevét.|NULL|true|
+|ResourceGroup|Az Azure erőforráscsoport nevét az Azure Data Lake Analytics-fiók.|NULL|true|
+|SubscriptionId|Az Azure Data Lake Analytics-fiók Azure-előfizetés azonosítója.|NULL|true|
+|Bérlő|A bérlő neve az Azure Active Directory (Azure AD) tartománynév. Az előfizetés-kezelési oldalán, az Azure Portalon keresse meg azt.|NULL|true|
+|AzureSDKPath|Függő szerelvényei keresése az Azure SDK elérési útja.|NULL|true|
 |Interaktív|E interaktív módban használja a hitelesítéshez.|false|false|
-|ClientID|Az Azure AD-alkalmazás azonosítója nem interaktív hitelesítés szükséges.|null|Nem interaktív hitelesítés szükséges.|
-|Secrete|A secrete vagy a jelszó nem interaktív hitelesítés. Csak a megbízható és biztonságos környezetben használandó.|null|Nem interaktív hitelesítéssel, vagy pedig SecreteFile használata szükséges.|
-|SecreteFile|A fájl mentésekor a secrete vagy a jelszó nem interaktív hitelesítés. Győződjön meg arról, hogy csak az aktuális felhasználó által olvasható legyen.|null|Nem interaktív hitelesítéssel, vagy pedig Secrete használata szükséges.|
-|Tanúsítványfájl|A fájl mentésekor X.509 tanúsítvány, nem interaktív hitelesítés. Az alapértelmezett érték használatához az ügyfél hitelesítési secrete.|null|false|
+|ClientID|Az Azure AD-alkalmazás azonosítója nem interaktív hitelesítés szükséges.|NULL|Nem interaktív hitelesítés szükséges.|
+|Secrete|A secrete vagy a jelszó nem interaktív hitelesítés. Csak a megbízható és biztonságos környezetben használandó.|NULL|Nem interaktív hitelesítéssel, vagy pedig SecreteFile használata szükséges.|
+|SecreteFile|A fájl mentésekor a secrete vagy a jelszó nem interaktív hitelesítés. Győződjön meg arról, hogy csak az aktuális felhasználó által olvasható legyen.|NULL|Nem interaktív hitelesítéssel, vagy pedig Secrete használata szükséges.|
+|Tanúsítványfájl|A fájl mentésekor X.509 tanúsítvány, nem interaktív hitelesítés. Az alapértelmezett érték használatához az ügyfél hitelesítési secrete.|NULL|false|
 | JobPrefix | Az előtag, az adatbázis DDL U-SQL feladatok üzembe helyezéséhez. | Deploy_ + DateTime.Now | false |
 
 ## <a name="next-steps"></a>További lépések

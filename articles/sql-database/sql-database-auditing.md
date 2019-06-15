@@ -13,10 +13,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 04/16/2019
 ms.openlocfilehash: 3efdf5c256a22529c9d19e9ae1dce5d2db9516a5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827773"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
@@ -104,7 +104,7 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 
 8. Írási naplózás konfigurálása naplózza az eseményközpontok felé, jelölje be **Event Hub (előzetes verzió)** , és nyissa meg **Eseményközpont részleteinek**. Válassza ki az event hubs, ahol a naplók lesz írva, és kattintson a **OK**. Győződjön meg arról, hogy az event hubs és az adatbázis és a kiszolgáló ugyanabban a régióban van.
 
-    ![Event Hubs](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+    ![Eseményközpont](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
 9. Kattintson a **Save** (Mentés) gombra.
 10. Ha szeretné a naplózott események testreszabásához, ehhez keresztül [PowerShell-parancsmagok](#subheading-7) vagy a [REST API-val](#subheading-9).
@@ -207,7 +207,7 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
 3. Lépjen vissza a naplózási konfiguráció lapon váltson a tárelérési kulcs az elsődleges, másodlagos, és kattintson **OK**. Kattintson a **mentése** a naplózási konfiguráció lap tetején.
 4. Lépjen vissza a tárolási konfiguráció lapon, és újragenerálja a másodlagos elérési kulcsot (a frissítés során a következő kulcs előkészítése).
 
-## <a name="additional-information"></a>További információ
+## <a name="additional-information"></a>További információk
 
 - További információ a napló formátumú, a hierarchiában, a tároló mappa, és elnevezési konvenciók, tekintse meg a [Blob auditálási napló fájlformátum referenciája](https://go.microsoft.com/fwlink/?linkid=829599).
 
@@ -231,7 +231,7 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
 
 ## <a id="subheading-7"></a>Az SQL database naplózási Azure PowerShell-lel kezelése
 
-**PowerShell-parancsmagok (beleértve a WHERE záradék támogatási további szűréshez)**:
+**PowerShell-parancsmagok (beleértve a WHERE záradék támogatási további szűréshez)** :
 
 - [Naplózási házirend (Set-AzSqlDatabaseAuditing) adatbázis frissítése](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
 - [Létrehozni vagy frissíteni a kiszolgáló naplózási házirend (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)

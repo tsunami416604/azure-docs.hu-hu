@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
 ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61232090"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Használja a Wirecast kódoló egyféle sávszélességű élő adatfolyamot küldeni 
@@ -94,7 +94,7 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
 3. Kattintson az **OK** gombra.
 4. A beállítások lapon állítsa be a **cél** mezőre, amely **Azure Media Services**.
 
-    A kódolás profil az előre kiválasztott **Azure H.264 720 p 16:9 (1280 x 720)**. Ezek a beállítások testreszabásához kattintson a fogaskerék ikonra a jobb oldalán a listából, és válassza **új készletet**.
+    A kódolás profil az előre kiválasztott **Azure H.264 720 p 16:9 (1280 x 720)** . Ezek a beállítások testreszabásához kattintson a fogaskerék ikonra a jobb oldalán a listából, és válassza **új készletet**.
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. Kódoló készletek beállítása.
@@ -106,7 +106,7 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
    * Kódoló: MainConcept H.264
    * A képkockák másodpercenkénti: 30
    * Átlagos átviteli sebesség: 5000 kbit/s (módosítható hálózati korlátai alapján)
-   * Profil: Elsődleges
+   * Profil: Fő
    * Kulcs keret minden: 60 keretek
 
      **Audio**

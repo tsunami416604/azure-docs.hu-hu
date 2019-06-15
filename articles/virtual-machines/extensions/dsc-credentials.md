@@ -16,18 +16,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 6618906f7b1b063de18a4f8a418c1c2744ca1533
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 723d0cfe6e292c4b8013de4da55779a6c675d610
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55975784"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64705929"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Hitelesítő adatokat adnak át az Azure DSCExtension kezelő
 
 Ez a cikk ismerteti a Desired State Configuration (DSC) bővítmény az Azure-hoz. A DSC-bővítmény kezelő áttekintését lásd: [bemutatása az Azure Desired State Configuration bővítmény kezelő](dsc-overview.md).
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="pass-in-credentials"></a>A hitelesítő adatokat adja át
 
@@ -61,7 +61,7 @@ configuration Main
 }
 ```
 
-Fontos, hogy tartalmazzák **csomópont localhost** a konfiguráció részeként. A kiterjesztés kezelő kifejezetten keres a **csomópont localhost** utasítást. A jelen nyilatkozat hiányzik, a következő lépések nem működnek. Emellett az is fontos, hogy tartalmazza a typecast **[PsCredential]**. Az adott típusú elindítja a bővítményt a hitelesítő adatok titkosításához.
+Fontos, hogy tartalmazzák **csomópont localhost** a konfiguráció részeként. A kiterjesztés kezelő kifejezetten keres a **csomópont localhost** utasítást. A jelen nyilatkozat hiányzik, a következő lépések nem működnek. Emellett az is fontos, hogy tartalmazza a typecast **[PsCredential]** . Az adott típusú elindítja a bővítményt a hitelesítő adatok titkosításához.
 
 Ez a szkript közzététele az Azure Blob storage:
 
@@ -84,7 +84,7 @@ $vm | Update-AzVM
 
 Ezt a kódot futtató kéri a hitelesítő adatait. A hitelesítő adat áll rendelkezésre, miután rövid ideig tárolja a memóriában. Ha a hitelesítő adatok használatával van közzétéve a **Set-AzVMDscExtension** parancsmagot, a hitelesítő adatok átkerülnek a virtuális gép HTTPS-kapcsolaton keresztül. A virtuális gépen az Azure tárolja a hitelesítő adatokat a lemezen a helyi virtuális gép tanúsítvány használatával titkosítja. A hitelesítő adatok visszafejtése röviden a memóriában, és ezután újból titkosított átadása, DSC.
 
-Ez a folyamat eltér attól az [biztonságos konfigurációval anélkül, hogy a kiterjesztés kezelő](/powershell/dsc/securemof). Az Azure-környezet akadályozható meg a tanúsítványok segítségével biztonságosan konfigurációs adatok továbbítására. A DSC-bővítmény kezelő használatakor nem kell megadnia **$CertificatePath** vagy egy **$CertificateID**/ **$Thumbprint** bejegyzést**ConfigurationData**.
+Ez a folyamat eltér attól az [biztonságos konfigurációval anélkül, hogy a kiterjesztés kezelő](/powershell/dsc/securemof). Az Azure-környezet akadályozható meg a tanúsítványok segítségével biztonságosan konfigurációs adatok továbbítására. A DSC-bővítmény kezelő használatakor nem kell megadnia **$CertificatePath** vagy egy **$CertificateID**/  **$Thumbprint** bejegyzést**ConfigurationData**.
 
 ## <a name="next-steps"></a>További lépések
 

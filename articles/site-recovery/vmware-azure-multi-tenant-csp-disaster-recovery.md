@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60460978"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>A Cloud Solution Provider (CSP) program, több-bérlős környezetben VMware-vészhelyreállítás beállítása
@@ -52,7 +52,7 @@ A bérlő előfizetés a Microsoft Partner Center irányítópultjának érheti 
 
 1. Az a **ügyfelek** lap, kattintson a bérlői fiók nevét.
 2. Az a **előfizetések** lap a bérlői fiók figyelheti a meglévő fiók-előfizetésre, és szükség szerint további előfizetéseket, hozzá.
-3. Válassza ki a bérlő vész-helyreállítási műveleteinek kezelésére, **erőforrások (Azure portal)**. Ez a bérlő Azure-előfizetés hozzáférést biztosít.
+3. Válassza ki a bérlő vész-helyreállítási műveleteinek kezelésére, **erőforrások (Azure portal)** . Ez a bérlő Azure-előfizetés hozzáférést biztosít.
 
     ![Az összes erőforrás-hivatkozás](./media/vmware-azure-multi-tenant-csp-disaster-recovery/all-resources-select.png)  
 
@@ -76,7 +76,7 @@ Ezután hajtsa végre és az Azure Portalon a bérlő összes Site Recovery-műv
     
     c) Miután létrehozott egy új felhasználó, lépjen vissza az Azure Portalon. Az a **előfizetés** lapon, válassza ki a megfelelő előfizetést.
 
-    d) a select **hozzáférés-vezérlés (IAM)**, és kattintson a **szerepkör-hozzárendelések**.
+    d) a select **hozzáférés-vezérlés (IAM)** , és kattintson a **szerepkör-hozzárendelések**.
 
     e) kattintson **szerepkör-hozzárendelés hozzáadása** hozzáadni egy felhasználót a megfelelő hozzáférési szinttel. A CSP-portálon keresztül létrehozó felhasználók a szerepkör-hozzárendelések lapon jelennek meg.
 
@@ -89,11 +89,11 @@ Ezután hajtsa végre és az Azure Portalon a bérlő összes Site Recovery-műv
 
 Nincsenek három fő több-bérlős modell:
 
-* **Üzemeltetési Megosztottkeresőszolgáltatás-ellátó (HSP)**: A partner tulajdonában lévő fizikai infrastruktúráját, és használja a megosztott erőforrások (vCenter, adatközpontok, fizikai tároló és így tovább) több bérlő virtuális gépek üzemeltetéséhez ugyanazon az infrastruktúrán. A partner is képes a globálisnév vész-helyreállítási felügyelt szolgáltatás, vagy a bérlő is saját vész-helyreállítási önkiszolgáló megoldást.
+* **Üzemeltetési Megosztottkeresőszolgáltatás-ellátó (HSP)** : A partner tulajdonában lévő fizikai infrastruktúráját, és használja a megosztott erőforrások (vCenter, adatközpontok, fizikai tároló és így tovább) több bérlő virtuális gépek üzemeltetéséhez ugyanazon az infrastruktúrán. A partner is képes a globálisnév vész-helyreállítási felügyelt szolgáltatás, vagy a bérlő is saját vész-helyreállítási önkiszolgáló megoldást.
 
 * **Dedikált szolgáltatás szolgáltató**: A partner a fizikai infrastruktúra tulajdonosa, de dedikált erőforrásokat (több vCenters, fizikai adattárolók, és így tovább) használja a külön infrastruktúra minden egyes bérlő-alapú virtuális gépek üzemeltetéséhez. A partner is képes a globálisnév vész-helyreállítási felügyelt szolgáltatás, vagy a bérlő is saját, önkiszolgáló megoldás.
 
-* **Felügyelt szolgáltatások szolgáltatói (MSP)**: Az ügyfél a tulajdonosa a virtuális gépeket üzemeltető fizikai infrastruktúráját, és a partner által biztosított a vész-helyreállítási engedélyezését és felügyelet.
+* **Felügyelt szolgáltatások szolgáltatói (MSP)** : Az ügyfél a tulajdonosa a virtuális gépeket üzemeltető fizikai infrastruktúráját, és a partner által biztosított a vész-helyreállítási engedélyezését és felügyelet.
 
 Beállításával bérlői előfizetések ebben a cikkben leírtak szerint, gyorsan hozzáadhatja a így az ügyfelek a megfelelő több-bérlős modell valamelyikében. További információ a különböző több-bérlős modell és a engedélyezése helyszíni hozzáférés-vezérlés [Itt](vmware-azure-multi-tenant-overview.md).
 

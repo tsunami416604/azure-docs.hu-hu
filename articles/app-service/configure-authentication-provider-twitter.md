@@ -16,10 +16,10 @@ ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 51a2ac93fd2d863855c820ba147418c5397c2a89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60851541"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Twitter-bejelentkezés használatához App Service-alkalmazás konfigurálása
@@ -35,7 +35,7 @@ Ebben a témakörben az eljárás végrehajtásához egy hitelesített e-mail c�
 3. Írja be a **neve** és a egy **leírás** az új alkalmazás. Illessze be az alkalmazás **URL-cím** számára a **webhely** értéket. Ezután a **visszahívási URL-Címének**, illessze be a **visszahívási URL-Címének** korábban vágólapra másolt. Ez az a Mobile App gateway hozzáfűzi az az elérési út */.auth/login/twitter/callback*. Például: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Győződjön meg arról, hogy használja a HTTPS-sémát.
 4. A lap alsó olvassa el és fogadja el a feltételeket. Kattintson a **Twitter-alkalmazás létrehozása**. Ez regisztrálja az alkalmazás megjelenik az alkalmazás részletei.
 5. Kattintson a **beállítások** lapon jelölje **telepítésének engedélyezése az alkalmazás segítségével jelentkezzen be Twitter**, majd kattintson a **beállítások**.
-6. Válassza ki a **kulcsok és hozzáférési tokenek** fülre. Jegyezze fel a értékeit **fogyasztói kulcs (API-kulcs)** és **fogyasztói titkos kulcs (API titkos kódot)**.
+6. Válassza ki a **kulcsok és hozzáférési tokenek** fülre. Jegyezze fel a értékeit **fogyasztói kulcs (API-kulcs)** és **fogyasztói titkos kulcs (API titkos kódot)** .
    
    > [!NOTE]
    > A fogyasztói titkos kulcs egy fontos biztonsági hitelesítő adat. Ne a titkos kulcs bárkivel megoszthatja vagy osztja el az alkalmazást.

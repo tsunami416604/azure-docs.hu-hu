@@ -14,10 +14,10 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 01d3af14963e92393d34a952bddc8097b7b08f18
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232610"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>R- és SQL adatok használata Azure SQL Database, Machine Learning Services (előzetes verzió)
@@ -194,7 +194,7 @@ Most már R eredményezi egy olyan értéket ad vissza.
 |---|
 |1542|
 
-Miért? Ebben az esetben a két argumentumot, ugyanolyan hosszúságú vektorok is lehet kezelni, mivel az R értéket ad vissza a belső termék mátrix.  Ez az a várt viselkedés lineáris algebra szabályainak megfelelően. Azonban ez sikerült problémákat okozhat, ha az alsóbb rétegbeli alkalmazás soha nem módosíthatja a kimeneti sémával vár!
+Hogy miért? Ebben az esetben a két argumentumot, ugyanolyan hosszúságú vektorok is lehet kezelni, mivel az R értéket ad vissza a belső termék mátrix.  Ez az a várt viselkedés lineáris algebra szabályainak megfelelően. Azonban ez sikerült problémákat okozhat, ha az alsóbb rétegbeli alkalmazás soha nem módosíthatja a kimeneti sémával vár!
 
 ## <a name="merge-or-multiply-columns-of-different-length"></a>Egyesítse vagy szorozza meg a különböző hosszúságú oszlopok
 
@@ -222,10 +222,10 @@ Töltse ki az adathalmaz, az R megismétli az elemeket, ahányszor szükséges e
     
 |*Col2*|*Col3*|
 |----|----|
-|1.|1.|
+|1|1|
 |10|2|
 |100|3|
-|1.|4|
+|1|4|
 |10|5|
 |100|6|
 
@@ -291,7 +291,7 @@ STDOUT message(s) from external script: $ Amount       : num  3400 16925 20350 1
 - A dátum/idő oszlop feldolgozása megtörtént az R adattípust **POSIXct**.
 - A szöveges oszlop, "ProductSeries" néven azonosított egy **tényező**, ami azt jelenti, egy kategorikus változó. Karakterlánc-értékek alapértelmezés szerint tényezőként kezeli. Ha az R egy karakterlánc, belső használatra egész számra konvertálni, és majd leképezve a karakterlánc a kimenetet.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Még ezeket rövid példákból láthatja szükség az adatok átalakítása a hatásait amikor átadása az SQL-lekérdezések bemenetként. Mivel egyes SQL-adattípusok nem támogatottak az R, vegye figyelembe a következő módokon hibák elkerülése érdekében:
 

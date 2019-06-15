@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/20/2019
 ms.author: terrylan
 ms.openlocfilehash: 48a7e52d4284e5c2db1d77d24d91fd4701aad8d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587146"
 ---
 # <a name="azure-network-architecture"></a>Az Azure hálózati architektúra
@@ -50,7 +50,7 @@ A Quantum 10 tervezési hajt végre a 3. rétegbeli váltása megállítását e
 ### <a name="access-routers"></a>Hozzáférés az útválasztók
 A terjesztési/hozzáférési L3 útválasztók (ARs) az elsődleges útválasztási funkcióra a terjesztés és a hozzáférési rétegek végezze el. Ezek az eszközök egy pár üzemelnek, és az alapértelmezett átjáró alhálózatok. AR párjaihoz több L2 összesítési kapcsoló párt, attól függően, kapacitás képes támogatni. Maximális száma attól függ, hogy az eszközt, valamint a hiba tartományok kapacitását. Egy tipikus három L2 összesítési kapcsoló pár egy AR pár áll.
 
-### <a name="l2-aggregation-switches"></a>2. összesítő kapcsolók  
+### <a name="l2-aggregation-switches"></a>2\. összesítő kapcsolók  
 Ezek az eszközök egy összesítési pontra L2 forgalom szolgál. A terjesztési réteg a L2 hálóra, és képes kezelni a nagy mennyiségű forgalmat. Mivel ezek az eszközök összesített forgalmat, 802.1Q szükséges funkciókat, és nagy sávszélességet igénylő technológiák, például port összesítési és 10GE.
 
 ### <a name="l2-host-switches"></a>L2 gazdagép kapcsolók

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
 ms.openlocfilehash: d6e1cc033416c90e27b5caf4bba310400e55b3a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60466314"
 ---
 # <a name="http-application-routing"></a>HTTP-alkalmazások útválasztása
@@ -77,7 +77,7 @@ annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-Hozzon létre egy fájlt **minták – http-kérelem-routing.yaml** másolja be a következő yaml-kódot. 43. sorban, frissítse `<CLUSTER_SPECIFIC_DNS_ZONE>` Ez a cikk az előző lépésben gyűjtött és a DNS-zóna nevét.
+Hozzon létre egy fájlt **minták – http-kérelem-routing.yaml** másolja be a következő yaml-kódot. 43\. sorban, frissítse `<CLUSTER_SPECIFIC_DNS_ZONE>` Ez a cikk az előző lépésben gyűjtött és a DNS-zóna nevét.
 
 
 ```yaml

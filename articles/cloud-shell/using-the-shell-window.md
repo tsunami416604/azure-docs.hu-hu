@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 2511f2c8fb706e232cde9ee4c02c7f8114bd3a2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60200612"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Az Azure Cloud Shell ablak használatával
@@ -30,9 +30,9 @@ Ez a dokumentum ismerteti, hogyan használhatja a Cloud Shell ablakába.
 A környezet választómezőt használja a Cloud Shell eszköztárában a Bash és a PowerShell környezetek közötti váltás.  
 ![Környezet kiválasztása](media/using-the-shell-window/env-selector.png)
 
-## <a name="restart-cloud-shell"></a>Cloud Shell újraindítása
+## <a name="restart-cloud-shell"></a>A Cloud Shell újraindítása
 Kattintson a Cloud Shell eszköztárában alaphelyzetbe állítani a gép állapota az újraindítás ikonra.  
-![Cloud Shell újraindítása](media/using-the-shell-window/restart.png)
+![A Cloud Shell újraindítása](media/using-the-shell-window/restart.png)
 > [!WARNING]
 > A Cloud Shell újraindítása visszaállítja a gép állapotát, és nem megőrzött fájlok az Azure által fájlmegosztás el fog veszni.
 

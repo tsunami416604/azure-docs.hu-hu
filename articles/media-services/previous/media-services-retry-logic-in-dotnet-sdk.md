@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61094663"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Újrapróbálkozási logika, a Media Services SDK-ban a .NET-hez  
@@ -52,7 +52,7 @@ A következő táblázat ismerteti a kivételeket, amelyek a .NET-keretrendszerh
 ### <a name="WebExceptionStatus"></a> WebException állapotkódok
 Az alábbi táblázat mutatja, melyik WebException hiba kódok az újrapróbálkozási logika van megvalósítva. A [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) enumerálás a állapotkódok határozza meg.  
 
-| status | Web Request | Storage | Lekérdezés | SaveChanges |
+| Állapot | Web Request | Storage | Lekérdezés | SaveChanges |
 | --- | --- | --- | --- | --- |
 | ConnectFailure |Igen |Igen |Igen |Igen |
 | NameResolutionFailure |Igen |Igen |Igen |Igen |
@@ -70,7 +70,7 @@ Az alábbi táblázat mutatja, melyik WebException hiba kódok az újrapróbálk
 ### <a name="HTTPStatusCode"></a> HTTP-állapotkódok hiba
 Lekérdezési és létrehozva műveletei throw dataserviceclientexception típusú kivétel, DataServiceQueryException vagy DataServiceQueryException, amikor a StatusCode tulajdonságban a HTTP-hiba állapotkódot adott vissza.  Az alábbi táblázat a hibakódok az újrapróbálkozási logika van megvalósítva.  
 
-| status | Web Request | Storage | Lekérdezés | SaveChanges |
+| Állapot | Web Request | Storage | Lekérdezés | SaveChanges |
 | --- | --- | --- | --- | --- |
 | 401 |Nem |Igen |Nem |Nem |
 | 403 |Nem |Igen<br/>A hosszabb ideig vár az újrapróbálkozások kezelésére. |Nem |Nem |

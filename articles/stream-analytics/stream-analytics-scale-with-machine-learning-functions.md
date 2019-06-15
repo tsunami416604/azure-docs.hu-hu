@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61479153"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Az Azure Machine Learning-függvényekkel a Stream Analytics-feladatok méretezése
@@ -77,8 +77,8 @@ Az alábbi, a táblát, az átviteli sebességet a Stream Analytics-feladat kül
 | **1 SU** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **3 SUS-t** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **6 SUS-t** |2,500 |5,000 |20,000 |30,000 |50,000 |
-| **12 SUS-t** |5000 |10,000 |40,000 |60,000 |100 000 |
-| **18 SUS-t** |7500 |15,000 |60,000 |90,000 |150,000 |
+| **12 SUS-t** |5,000 |10,000 |40,000 |60,000 |100,000 |
+| **18 SUS-t** |7,500 |15,000 |60,000 |90,000 |150,000 |
 | **24 SUS-t** |10,000 |20,000 |80,000 |120,000 |200,000 |
 | **…** |… |… |… |… |… |
 | **60 SUS-t** |25,000 |50,000 |200,000 |300,000 |500,000 |

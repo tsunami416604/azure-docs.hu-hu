@@ -8,10 +8,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
 ms.openlocfilehash: 78ea29b9b37c55a588a44f8d4b69486b89ee2fee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64684828"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>ScaleR és SparkR a HDInsight egyesítése
@@ -528,7 +528,7 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ez a cikk mutattuk be, hogyan kombinálhatók az adatkezelés a ScaleR modell fejlesztéséhez, a Hadoop Spark SparkR használata lehetőség. Ehhez a forgatókönyvhöz szükséges, hogy karbantartása külön Spark-munkameneteket, csak egy időben futnak egy munkamenetet, és exchange-adatok CSV-fájlok használatával. Bár ez egyszerűnek tűnik, ez a folyamat lehet még egyszerűbbé teszi a Machine Learning Services egy soron következő kiadásban SparkR és ScaleR is megosztani egy Spark-munkamenetet, és így a Spark DataFrames megosztása.
 

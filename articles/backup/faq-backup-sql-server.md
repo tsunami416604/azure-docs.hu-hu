@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: sachdevaswati
 ms.openlocfilehash: 649e50634d901ab48f1cb36c39d7331401c0cc51
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700167"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Egy Azure virtuális gépek biztonsági mentésének futó SQL Server-adatbázisok – gyakori kérdések
@@ -37,7 +37,7 @@ Bizonyos körülmények között az Azure Backup szolgáltatás elindítja a hel
 Automatikus – javítása, egy olyan funkció az összes felhasználó számára alapértelmezés szerint engedélyezve van; Azonban abban az esetben az elutasítás azt választja, majd hajtsa végre az alábbi:
 
   * Az SQL Server-példányon az a *C:\Program Files\Azure munkaterhelés Backup\bin* mappa létrehozása vagy szerkesztése a **ExtensionSettingsOverrides.json** fájlt.
-  * Az a **ExtensionSettingsOverrides.json**állítsa be *{"EnableAutoHealer": false}*.
+  * Az a **ExtensionSettingsOverrides.json**állítsa be *{"EnableAutoHealer": false}* .
   * Mentse a módosításokat, és zárja be a fájlt.
   * Nyissa meg az SQL Server-példány **kezelheti a feladat** , majd indítsa újra a **AzureWLBackupCoordinatorSvc** szolgáltatás.  
 

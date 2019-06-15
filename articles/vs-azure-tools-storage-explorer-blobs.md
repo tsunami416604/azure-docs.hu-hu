@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
 ms.openlocfilehash: f46467871a5ae0147b5dc60881bda4175eabac56
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60458395"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Storage-erőforrások kezelése a Storage Explorerben
@@ -172,7 +172,7 @@ A következő lépések bemutatják, hogyan kezelheti a blobokat (és mappák) e
      1. A fő ablaktábla eszköztárán válassza a **Feltöltés**, majd a legördülő menüből a **Fájlok feltöltése** lehetőséget.
 
         ![Fájlok feltöltése menü][15]
-     2. A **Fájlok feltöltése** párbeszédpanelen válassza a **Fájlok** szövegbeviteli mező jobb oldalán lévő, három pontot (**…**) ábrázoló gombot a feltölteni kívánt fájl(ok) kiválasztásához.
+     2. A **Fájlok feltöltése** párbeszédpanelen válassza a **Fájlok** szövegbeviteli mező jobb oldalán lévő, három pontot ( **…** ) ábrázoló gombot a feltölteni kívánt fájl(ok) kiválasztásához.
 
         ![A fájl beállításai][16]
      3. Adja meg a típusát **Blob típusát**. Lásd: [hozza létre a tárolót, valamint engedélyeket állíthat be](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) további információt.
@@ -183,7 +183,7 @@ A következő lépések bemutatják, hogyan kezelheti a blobokat (és mappák) e
      1. A fő ablaktábla eszköztárán válassza a **Feltöltés**, majd a legördülő menüből a **Mappa feltöltése** lehetőséget.
 
         ![Mappa feltöltése menü][17]
-     2. A **Mappa feltöltése** párbeszédpanelen a **Mappa** szövegbeviteli mező jobb oldalán lévő, három pontot (**…**) ábrázoló gombbal válassza ki a mappát, amelynek a tartalmát fel kívánja tölteni.
+     2. A **Mappa feltöltése** párbeszédpanelen a **Mappa** szövegbeviteli mező jobb oldalán lévő, három pontot ( **…** ) ábrázoló gombbal válassza ki a mappát, amelynek a tartalmát fel kívánja tölteni.
 
         ![Töltse fel a mappa beállításai][18]
      3. Adja meg a típusát **Blob típusát**. Lásd: [hozza létre a tárolót, valamint engedélyeket állíthat be](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) további információt.

@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: 5d028768c062ef7df74d48f83ccc4e27a506f1ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 283487eeb0f1f85940da4db8c932602e1b45efd3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737057"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64695806"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A függvényalkalmazás az Azure Functions erőforrások üzembe helyezésének automatizálása
 
@@ -37,9 +37,9 @@ Mintasablonok lásd:
 
 Ezeket az erőforrásokat általában tartalmaz egy Azure Functions üzembe helyezési:
 
-| Erőforrás                                                                           | Követelmény | Szintaxist és a Tulajdonságok referencia                                                         |   |
+| Resource                                                                           | Követelmény | Szintaxist és a Tulajdonságok referencia                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Függvényalkalmazás                                                                     | Kötelező    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| Függvényalkalmazás                                                                     | Szükséges    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
 | Egy [Azure Storage](../storage/index.yml) fiók                                   | Kötelező    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
 | Egy [Application Insights](../azure-monitor/app/app-insights-overview.md) összetevő | Optional    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
 | A [szolgáltatási csomag](./functions-scale.md)                                             | Nem kötelező<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
@@ -663,6 +663,27 @@ Cserélje le ```<url-encoded-path-to-azuredeploy-json>``` együtt egy [URL-kódo
 ```html
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"></a>
 ```
+
+### <a name="deploy-using-powershell"></a>Üzembe helyezés a PowerShell használatával
+
+A következő PowerShell-parancsok hozzon létre egy erőforráscsoportot, és üzembe helyezése egy sablont, amely egy függvényalkalmazás létrehozásához szükséges erőforrásokkal. Helyi futtatásához rendelkeznie kell [Azure PowerShell-lel](/powershell/azure/install-az-ps) telepítve. Futtatás [ `Connect-AzAccount` ](/powershell/module/az.accounts/connect-azaccount) való bejelentkezéshez.
+
+```powershell
+# Register Resource Providers if they're not already registered
+Register-AzResourceProvider -ProviderNamespace "microsoft.web"
+Register-AzResourceProvider -ProviderNamespace "microsoft.storage"
+
+# Create a resource group for the function app
+New-AzResourceGroup -Name "MyResourceGroup" -Location 'West Europe'
+
+# Create the parameters for the file, which for this template is the function app name.
+$TemplateParams = @{"appName" = "<function-app-name>"}
+
+# Deploy the template
+New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
+```
+
+A központi telepítés teszteléséhez, használhatja a [sablon ehhez hasonló](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) , amely létrehoz egy függvényalkalmazást az Windows használatalapú. Cserélje le `<function-app-name>` a függvényalkalmazás, egyedi névvel.
 
 ## <a name="next-steps"></a>További lépések
 

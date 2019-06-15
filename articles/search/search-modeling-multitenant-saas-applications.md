@@ -11,10 +11,10 @@ ms.date: 07/30/2018
 ms.author: liamca
 ms.custom: seodec2018
 ms.openlocfilehash: 58d7ca65a14f9f774b19796c9beae2a7c84102ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61288721"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Tervezési minták több-bérlős SaaS-alkalmazások és az Azure Search az
@@ -39,7 +39,7 @@ Partíciók és a replikán hozzáadása és eltávolítása lehetővé teszi a 
 ### <a name="service-and-index-limits-in-azure-search"></a>Az Azure Search szolgáltatás és az index korlátok
 Van néhány másik [tarifacsomagok](https://azure.microsoft.com/pricing/details/search/) az Azure Search szolgáltatásban a rétegek mindegyike rendelkezik másik [korlátok és kvóták](search-limits-quotas-capacity.md). Ezek a korlátozások némelyike a szolgáltatási szintű, az index szintjén néhány és néhány, a partíció-szinten.
 
-|  | Alapszintű | Standard1 | Standard (2) | Standard (3) | Standard3 HD |
+|  | Alapszintű | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maximális replikák szolgáltatásonként |3 |12 |12 |12 |12 |
 | Maximális partíciók szolgáltatásonként |1 |12 |12 |12 |3 |

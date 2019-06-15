@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: eb1fe69a7fb99949ac95291c33e76c1a32bf5439
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60506624"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>A StorSimple 8000 sorozatú eszközök StorSimple-Eszközkezelő szolgáltatás üzembe helyezése
@@ -127,7 +127,7 @@ A szolgáltatásadat-titkosítási kulcs módosítása – 3. lépés folyamat s
 2. A szolgáltatási adatok titkosítási kulcsváltozás storsimple-höz készült Windows PowerShell használatával kezdeményeznek.
 3. Ha egynél több StorSimple-eszköz, frissítse a szolgáltatásadat-titkosítási kulcs az eszközökön.
 
-### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>1. lépés: A szolgáltatásadat-titkosítási kulcs módosítása eszköz Windows PowerShell-parancsfájl használatával
+### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>1\. lépés: A szolgáltatásadat-titkosítási kulcs módosítása eszköz Windows PowerShell-parancsfájl használatával
 Általában az eszköz-rendszergazdai kérni fogja, hogy a szolgáltatás-rendszergazda engedélyezi-e az eszközöket, hogy a szolgáltatási adatok titkosítási kulcsainak módosítása. A szolgáltatás-rendszergazda segítségével hitelesíti majd módosíthatja a kulcsot az eszközön.
 
 Ebben a lépésben az Azure Resource Manager-alapú szkript használatával történik. A szolgáltatás rendszergazdája választhat, amely számára engedélyezni egy eszköz. Az eszköz ezután jogosult a szolgáltatási adatok titkosítási kulcsváltozás folyamat elindításához. 
@@ -143,7 +143,7 @@ Egy eszköz a következő feltételeknek kell megfelelnie, mielőtt kezdeményez
 * Egy eszköz nem lehet engedélyezni, amíg folyamatban van az alkalmatlanság a szolgáltatásadat-titkosítási kulcs.
 * Egy eszköz során néhány eszközt a szolgáltatásban regisztrált kell leváltani a titkosítást, míg mások nem engedélyezhető. 
 
-### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>2. lépés: Használható Windows PowerShell-bővítménye kezdeményezni a szolgáltatásadat-titkosítási kulcs módosítása
+### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>2\. lépés: Használható Windows PowerShell-bővítménye kezdeményezni a szolgáltatásadat-titkosítási kulcs módosítása
 Ez a lépés a Windows PowerShellben, az arra jogosult a StorSimple eszközön a StorSimple adapter történik.
 
 > [!NOTE]
@@ -168,7 +168,7 @@ Ha az eszköz soros konzoljához való csatlakozáshoz a Windows PowerShell fel�
    
    Ha egy adott eszköz a szolgáltatáshoz regisztrált, a helyettesítő folyamat befejeződött, és továbbléphet a következő lépéssel. Ha a szolgáltatáshoz regisztrált több eszköze van, folytassa a 3. lépés.
 
-### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>3. lépés: Frissítés a szolgáltatásadat-titkosítási kulcs a más StorSimple eszközökhöz
+### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>3\. lépés: Frissítés a szolgáltatásadat-titkosítási kulcs a más StorSimple eszközökhöz
 A Windows PowerShell felületét a StorSimple eszköz ezeket a lépéseket kell végrehajtani, ha több eszközt regisztrálni a StorSimple Manager szolgáltatáshoz. A kulcs a 2. lépésben beszerzett kell használni minden a fennmaradó a StorSimple eszköz frissítése regisztrálva a StorSimple Manager szolgáltatásban.
 
 A következő lépésekkel frissítse a szolgáltatásadat-titkosítási az eszközön.

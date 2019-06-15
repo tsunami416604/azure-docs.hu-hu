@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: aa69d8b07d31b5cf0386e34c113475cbf4191891
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60319547"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple helyileg rögzített kötetekről: gyakori kérdések (GYIK)
@@ -52,9 +52,9 @@ Mivel egyes helyi terület az eszközön, a rétegzett kötetek munkakészletén
 | 1 TB |176.5 TB |477.8 TB |
 | 4 TB |105.9 TB |411.1 TB |
 | 8,5 TB |0 TB |311.1 TB |
-| 10 TB |NA |277.8 TB |
-| 15 TB |NA |166.7 TB |
-| 22,5 TB |NA |0 TB |
+| 10 TB |n/a |277.8 TB |
+| 15 TB |n/a |166.7 TB |
+| 22,5 TB |n/a |0 TB |
 
 **K.** Miért van a gyors helyi kötet létrehozása hosszú ideje futó művelet?
 

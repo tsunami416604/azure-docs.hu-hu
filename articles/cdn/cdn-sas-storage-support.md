@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60324152"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS használatával Azure CDN szolgáltatás használata
@@ -97,7 +97,7 @@ Ez a beállítás csak érhető el **verizon Azure CDN Premium** profilok. Ezzel
 
 3. A gyorsítótárazás időtartama finomhangolása gyorsítótárazási szabályok segítségével, vagy a hozzáadásával `Cache-Control` fejlécek a forrás-kiszolgálón. Mivel az Azure CDN a SAS-jogkivonat kezeli az egyszerű lekérdezési karakterláncként, ajánlott eljárásként érdemes beállítania a gyorsítótárazás időtartamát, vagy az előtt a SAS-lejárati idő lejár. Ellenkező esetben, ha egy fájlt a rendszer több, mint a biztonsági Társítások aktív hosszabb időre gyorsítótárazza, a fájl valószínűleg elérhető az Azure CDN origin kiszolgálóról a SAS-lejárati idő eltelte után. Ha ez a helyzet akkor fordul elő, és azt szeretné, hogy a gyorsítótárazott fájl nem érhető el, törölje a jelölést a gyorsítótárból a fájl egy kiürítési műveletet kell végrehajtania. Az Azure CDN a gyorsítótárazás idejének beállításával kapcsolatos további információkért lásd: [vezérlő Azure CDN gyorsítótárazási viselkedésének gyorsítótár-szabályokkal](cdn-caching-rules.md).
 
-### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>3. lehetőség: CDN biztonsági jogkivonat-hitelesítés használata egy újraírási szabályt
+### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>3\. lehetőség: CDN biztonsági jogkivonat-hitelesítés használata egy újraírási szabályt
 
 Az Azure CDN biztonsági jogkivonat-hitelesítés használatához rendelkeznie kell egy **verizon Azure CDN Premium** profilt. Ez a beállítás akkor a legbiztonságosabb és testre szabható. Ügyfél-hozzáférési a biztonsági paraméterek, amelyet a biztonsági jogkivonat alapján. Miután létrehozott és állítsa be a biztonsági jogkivonatot, akkor lesz szükség az összes CDN végponti URL-címek. Azonban az URL-Újraírási szabályt, mert a SAS-jogkivonat nem szükséges a CDN-végponton. A SAS-jogkivonat később érvénytelenné válik, ha az Azure CDN már nem lesz képes kísérelje meg újra érvényesítését a tartalmat a forráskiszolgálóról.
 
@@ -136,7 +136,7 @@ SAS-paraméterek az Azure CDN nem láthatók el, mert az Azure CDN azokon kézbe
 | SAS-paraméter neve | Leírás |
 | --- | --- |
 | Indítás | Az az idő, amely az Azure CDN megkezdheti a blob fájl elérésére. Óra miatt tevékenységdiagramon (érkezésekor óra jel különböző időpontokban különböző összetevők), válassza a 15 perccel korábbi, ha azt szeretné, hogy az eszköz azonnal elérhető legyen. |
-| Vége | Az idő, amely után az Azure CDN már nem tud hozzáférni a blobfájlba. Előzőleg gyorsítótárazott Azure CDN-en fájlok továbbra is elérhető. Szabályozhatja a lejárati időpont, vagy a megfelelő lejárati idő beállítása az Azure CDN biztonsági jogkivonat, vagy az eszköz törlése. |
+| vége | Az idő, amely után az Azure CDN már nem tud hozzáférni a blobfájlba. Előzőleg gyorsítótárazott Azure CDN-en fájlok továbbra is elérhető. Szabályozhatja a lejárati időpont, vagy a megfelelő lejárati idő beállítása az Azure CDN biztonsági jogkivonat, vagy az eszköz törlése. |
 | Engedélyezett IP-címek | Választható. Ha használ **verizon Azure CDN**, és a meghatározott tartományok ezzel a paraméterrel megadható [Azure CDN a Verizon peremhálózati kiszolgáló IP-címtartományok](/azure/cdn/cdn-pop-list-api). Ha használ **Akamai Azure CDN**, az IP-címtartományok paraméter nem állítható be, mert nem statikus IP-címeket.|
 | Engedélyezett protokollok | Az a fiók SAS kódjával végzett kérelemhez engedélyezett protokoll(ok). A HTTPS beállítás ajánlott.|
 

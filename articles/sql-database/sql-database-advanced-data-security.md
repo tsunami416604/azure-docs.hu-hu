@@ -12,10 +12,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 03/31/2019
 ms.openlocfilehash: a078ac38cef5b395a19481188c474c7f908160d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61419558"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Az Azure SQL Database speciális Adatbiztonság
@@ -58,7 +58,7 @@ Kattintson a **Adatfelderítés és besorolás** megtekintéséhez bizalmas oszl
 
 Beállításainak megtekintése és kezelése HIRDETÉSEK, navigáljon a **adatok biztonságú** alatt a **biztonsági** az SQL Database-kiszolgálóhoz vagy a felügyelt példány fejléc. Ezen a lapon engedélyezése vagy ADS letilthatja és módosíthatja a sebezhetőségi felmérés és a teljes SQL Database-kiszolgálóhoz vagy a felügyelt példány komplex veszélyforrások elleni védelem beállításait.
 
-![Kiszolgáló beállításai](./media/sql-advanced-protection/server_settings.png) 
+![kiszolgáló beállításai](./media/sql-advanced-protection/server_settings.png) 
 
 ## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. SQL-adatbázis ADS beállításainak kezelése
 

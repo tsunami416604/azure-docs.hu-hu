@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1495c14ae4c588661452aa3696019da00be47548
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64571382"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Ha már rendelkezik meglévő bérlővel
@@ -34,7 +34,7 @@ Néhány helyi felhasználók és más kezelheti a felhőben. Egy gyakori forgat
 Ha használatba kezelése az Azure ad-ben is vannak a felhasználók a helyszíni AD és később szeretné használni Connect, akkor néhány további szempontok figyelembe kell vennie.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Az Azure ad-ben a meglévő felhasználók szinkronizálása
-Az Azure AD Connectet telepíti, és szinkronizálásának elindítása, amikor az Azure AD sync szolgáltatást (az Azure AD) minden új objektum-ellenőrzés, és próbálja meg megkeresni a megfelelő objektum. Ez a folyamat használt három attribútum: **userPrincipalName**, **proxyAddresses**, és **sourceAnchor**/**immutableid azonosítója** . Egyeztetés **userPrincipalName** és **proxyAddresses** néven egy **helyreállítható egyezés**. Egyeztetés **sourceAnchor** néven **rögzített egyezés**. Az a **proxyAddresses** attribútum értékének csak **SMTP:**, vagyis az elsődleges e-mail-címét, a kiértékelés szolgál.
+Az Azure AD Connectet telepíti, és szinkronizálásának elindítása, amikor az Azure AD sync szolgáltatást (az Azure AD) minden új objektum-ellenőrzés, és próbálja meg megkeresni a megfelelő objektum. Ez a folyamat használt három attribútum: **userPrincipalName**, **proxyAddresses**, és **sourceAnchor**/**immutableid azonosítója** . Egyeztetés **userPrincipalName** és **proxyAddresses** néven egy **helyreállítható egyezés**. Egyeztetés **sourceAnchor** néven **rögzített egyezés**. Az a **proxyAddresses** attribútum értékének csak **SMTP:** , vagyis az elsődleges e-mail-címét, a kiértékelés szolgál.
 
 A match csak akkor történik meg a Connect webhelyről érkező új objektumok. Ha módosítja egy meglévő objektum így ezeket az attribútumokat, a megfelelő, majd hibaüzenet jelenik meg helyette.
 

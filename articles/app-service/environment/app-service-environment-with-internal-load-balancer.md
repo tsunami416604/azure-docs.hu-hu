@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 88f100bc780d8df0202cfcce9b390085a71fc905
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130602"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó használata App Service-környezet
@@ -53,7 +53,7 @@ Néhány dolog, amely egy ILB ASE használata esetén nem hajtható végre. Ezek
 ## <a name="creating-an-ilb-ase"></a>Az ILB ASE létrehozása
 Az ILB ASE létrehozása eltér nem sokkal az ASE létrehozása általában. Az ASE létrehozásával alaposabb ismertetéséhez lásd: [App Service-környezet létrehozása][HowtoCreateASE]. Az ILB ASE létrehozásának folyamata megegyezik ASE létrehozása során egy virtuális hálózat létrehozása vagy kiválasztása egy már meglévő virtuális hálózat között. Az ILB ASE létrehozása: 
 
-1. Az Azure Portalon válassza ki a **hozzon létre egy erőforrás -> Web + Mobile App Service Environment ->**.
+1. Az Azure Portalon válassza ki a **hozzon létre egy erőforrás -> Web + Mobile App Service Environment ->** .
 2. Válassza ki előfizetését.
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 4. Válasszon ki vagy hozzon létre egy virtuális hálózatot.

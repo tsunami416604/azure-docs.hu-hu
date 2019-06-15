@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 03/13/2019
 ms.author: erikre
 ms.openlocfilehash: 4bf76ac0bdd59764815f18a40a3e243d7cf9d920
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60617393"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Költségek kezelése az Azure Budgetsszel
@@ -125,7 +125,7 @@ Az alábbi lépéseket, amelyek végrehajtják a fenti lépéseket a logikai alk
 
 Miután az Azure üzembe helyezte a logikai alkalmazást, a **Logic Apps Designerben** megnyílik, és megjeleníti a panel bemutató video- és a gyakran használt eseményindítókat.
 
-### <a name="add-a-trigger"></a>Adjon hozzá egy triggert
+### <a name="add-a-trigger"></a>Eseményindító hozzáadása
 
 Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet egy adott esemény vagy adott feltételek teljesülése aktivál. A Logic Apps-motor az eseményindító minden elindulásakor létrehoz egy logikaialkalmazás-példányt, amely elindítja és futtatja a munkafolyamatot. A műveletek olyan fordulhat elő, az eseményindító aktiválása után minden lépést.
 
@@ -374,7 +374,7 @@ Most már minden a helyére, meg kell hívnia a [API környezetet](https://docs.
     - **szűrők** -szűrők lehetővé teszik a kijelölt hatókörön belüli erőforrások egy meghatározott készletének a költségvetés szűkítheti. Például egy szűrő lehet egy előfizetési szintű költségvetés-erőforráscsoportok gyűjteménye.
     - **értesítések** – azt határozza meg az értesítés részletei és küszöbértékeit. Több küszöbértékek beállítása, és adjon meg egy e-mail-cím vagy a műveletcsoport is megkapja az értesítéseket.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az oktatóanyag utasításait követve, a segítségével megtanulta:
 - Hogyan lehet leállítani a virtuális gépek egy Azure Automation-Runbook létrehozása.

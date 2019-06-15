@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: fdf37a8360ec69017458fabee2a9e16aa2c160aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60789671"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>A StorSimple Virtual Array 1.0-ás frissítés kibocsátási megjegyzései
@@ -29,14 +29,14 @@ A következő kiadási megjegyzések a kritikus fontosságú megoldatlan problé
 
 A kibocsátási megjegyzésekben folyamatosan frissülnek, és ahogy ismertté kritikus problémák adódnak. A StorSimple Virtual Array üzembe helyezése, előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
 
-1.0-ás frissítés felel meg a szoftververzió **10.0.10296.0**.
+1\.0-ás frissítés felel meg a szoftververzió **10.0.10296.0**.
 
 > [!IMPORTANT]
 > - Azok zavart okozó frissítések, és indítsa újra az eszközt. I/o van folyamatban, ha az eszköz leállást. A frissítés alkalmazása részletes utasításokért ugorjon [frissítése 1.0 telepítése](storsimple-virtual-array-install-update-1.md).
 >
-> - 1. frissítés csak akkor használható, hogy az Azure Portalon keresztül, ha az eszköz fut a 0.6-os frissítés.
+> - 1\. frissítés csak akkor használható, hogy az Azure Portalon keresztül, ha az eszköz fut a 0.6-os frissítés.
 
-## <a name="whats-new-in-update-10"></a>1.0-ás frissítés újdonságai
+## <a name="whats-new-in-update-10"></a>1\.0-ás frissítés újdonságai
 
 **1.0-ás frissítés a StorSimple-Eszközkezelő szolgáltatás hitelesítéssel kapcsolatos módosításokat tartalmaz, és üzembe szeretné helyezni, a lehető legrövidebb időn belül.** Ez a frissítés tartalmazza a következő fejlesztéseket és hibajavítások:
 
@@ -55,18 +55,18 @@ A kibocsátási megjegyzésekben folyamatosan frissülnek, és ahogy ismertté k
 
 Az alábbi táblázat hibáinak javításai ebben a kiadásban összegzését tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma |
+| Nem. | Funkció | Probléma |
 | --- | --- | --- |
 | 1 |AAD-alapú hitelesítés| Ez a kiadás, amely lehetővé teszi az AAD hitelesíteni a StorSimple Device Manager a módosításokat tartalmaz.|
 | 2 |A szemétgyűjtés| A probléma lett jelentve, ahol az eszköz és a storage-fiókok eltérő régióban van, és az ügyfél jelentett ezzel hatással lenne a számlázás átmeneti hálózati hibák ügyfél telephelyén található. Ebben a kiadásban a probléma a rendszerriasztások mechanizmusában. |
 | 3 |Teljesítmény| Ebben a kiadásban eredményez a visszaállítás/felhőbeli olvasás/szint / réteg teljesítményének fokozása ki módosításokat tartalmaz.|
-| 4 |Frissítés| Hiba történt a frissítés a korábbi kiadásokban az ügyfél telephelyén található biztonsági mentési hibák eredményező. Ebben a kiadásban a probléma megoldódik.|
+| 4 |frissítés| Hiba történt a frissítés a korábbi kiadásokban az ügyfél telephelyén található biztonsági mentési hibák eredményező. Ebben a kiadásban a probléma megoldódik.|
 
-## <a name="known-issues-in-update-10"></a>1.0-ás frissítés ismert problémái
+## <a name="known-issues-in-update-10"></a>1\.0-ás frissítés ismert problémái
 
 Az alábbi táblázat a StorSimple Virtual Array az ismert problémák összegzését tartalmazza, és a kiadási jelezve a korábbi kiadásokban a problémák tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma | Megkerülő megoldás és megjegyzések |
+| Nem. | Funkció | Probléma | Megkerülő megoldás és megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |A virtuális tömbök az előzetes kiadásban létrehozott nem lehet frissíteni egy támogatott általánosan elérhető verzióra. |Ezek a virtuális tömbök kell végrehajtani a feladatátvételt a végleges kiadás vész-helyreállítási munkafolyamat használatával. |
 | **2.** |Kiépített adatlemez |Egyszer ellátta adatlemez bizonyos megadott méretű és hozta létre a megfelelő StorSimple Virtual Array, kell nem bontsa ki a vagy az adatlemez zsugorítani. Elvesztését eredményezi, a helyi rétegeken az eszköz összes adatának tegye kísérletet. | |

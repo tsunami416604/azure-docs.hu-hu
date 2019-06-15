@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: a45e2af6f2cb9c105c084585a03a6de615fa1397
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64573043"
 ---
 # <a name="streaming-endpoints-overview"></a>Adatfolyam-Szolgáltatásvégpontok áttekintése  
@@ -77,14 +77,14 @@ Ha a **verzió "1.0"** streamvégpont rendelkezik > = 1 prémium szintű streame
 
 |Típus|StreamingEndpointVersion|ScaleUnits|Tartalomkézbesítési hálózat (CDN)|Számlázás|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Klasszikus|1.0|0|NA|Ingyenes|
+|Klasszikus|1.0|0|n/a|Ingyenes|
 |Standard szintű Streamvégpont (előzetes verzió)|2.0|0|Igen|Díjköteles|
 |Prémium szintű streamelési egységek|1.0|>0|Igen|Díjköteles|
 |Prémium szintű streamelési egységek|2.0|>0|Igen|Díjköteles|
 
 ### <a name="features"></a>Szolgáltatások
 
-Szolgáltatás|Standard|Prémium
+Funkció|Standard|Prémium
 ---|---|---
 Ingyenes az első 15 nap során <sup>1</sup>| Igen |Nem
 Teljesítmény |Legfeljebb 600 MB/s, és a CDN használata esetén megadhat egy magasabb hatékony átviteli sebességre.|200 MB / s folyamatos átviteli egységek (SU). Egy újabb hatékony átviteli sebességre is adja meg, a CDN használata esetén.
@@ -104,7 +104,7 @@ SLA-információkért lásd: [díjszabás és SLA](https://azure.microsoft.com/p
 
 ## <a name="migration-between-types"></a>Áttelepítési típusok között
 
-Ettől: | Művelet | Műveletek
+Forrás | Cél | Műveletek
 ---|---|---
 Klasszikus|Standard|Jóváhagyás szükséges
 Klasszikus|Prémium| Méretezési csoport (további streamelési egységek)

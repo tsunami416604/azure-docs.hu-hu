@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: 85a3066095cfc30da19b06d26f41bdc156f85832
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60718223"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric-alkalmazás és a service manifest példák
@@ -26,7 +26,7 @@ Ez a szakasz példákat alkalmazás és jegyzékek tartalmazza. Ezek a példák 
 
 A következő index látható funkciókat és a példa manifest(s) azok egy részét.
 
-|Szolgáltatás|Jegyzék|
+|Funkció|Jegyzék|
 |---|---|
 |[Erőforrások szabályozása](service-fabric-resource-governance.md)|[A Reliable Services-alkalmazás-jegyzékfájl](service-fabric-manifest-example-reliable-services-app.md#application-manifest), [tároló Application manifest](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Szolgáltatás futtatása egy helyi rendszergazdai fiók](service-fabric-application-runas-security.md)|[A Reliable Services-alkalmazás-jegyzékfájl](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|

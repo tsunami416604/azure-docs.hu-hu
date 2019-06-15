@@ -6,16 +6,16 @@ metadata:
   title: Az Azure SQL Database - méretezhetőség
   meta.description: Learn how to scale your Azure SQL Database.
   services: sql-database
-  author: WenJason
-  manager: digimobile
+  ms.subservice: scale-out
+  author: jovanpop-msft
+  manager: craigg
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
   ms.devlang: null
   ms.topic: overview
-  origin.date: 01/25/2019
-  ms.date: 02/25/2019
-  ms.author: v-jay
+  ms.date: 01/25/2019
+  ms.author: jovanpop-msft
 sections:
   - items:
       - type: paragraph
@@ -26,24 +26,24 @@ sections:
         columns: 3
         items:
           - title: Vertikális felskálázás
-            href: /sql-database/sql-database-scale-resources
+            href: /azure/sql-database/sql-database-scale-resources
             html: '<p>Könnyedén erőforrásainak hozzáadása vagy eltávolítása az SQL-adatbázisban található, a legjobb ár-teljesítmény arányt, vagy kezelheti teljesítményével kapcsolatos problémákat.</p>'
           - title: Felskálázás olvasása
-            href: /sql-database/sql-database-read-scale-out
+            href: /azure/sql-database/sql-database-read-scale-out
             html: '<p>Kritikus fontosságú üzleti szint egy ingyenes, – ingyenes replika adatbázis, ahol futtathatja jelentéseket, elemzéseket és más csak olvasási lekérdezések adatokat biztosít.</p>'
           - title: Adatbázis horizontális skálázása
-            href: /sql-database/sql-database-elastic-scale-introduction
+            href: /azure/sql-database/sql-database-elastic-scale-introduction
             html: <p>Horizontális felskálázás az adatbázis maximális számítási és tárolási korlátok az önálló adatbázisok számára túl több adatbázisok szegmens segítségével.</p>
           - title: Rugalmas lekérdezések
-            href: /sql-database/sql-database-elastic-query-overview
+            href: /azure/sql-database/sql-database-elastic-query-overview
             html: <p>Rugalmas lekérdezések futtatása standard Transact-SQL lekérdezések egy globálisan elosztott adatbázis-szilánkból csoportján engedélyezze.</p>
           - title: Rugalmas tranzakciók
-            href: /sql-database/sql-database-elastic-transactions-overview
+            href: /azure/sql-database/sql-database-elastic-transactions-overview
             html: <p>Használja a globálisan elosztott tranzakciók tranzakciós szempontból konzisztens az elosztott adatok elérhetőségét.</p>
           - title: Adatbázisközi feladatok
-            href: /sql-database/elastic-jobs-overview
+            href: /azure/sql-database/elastic-jobs-overview
             html: <p>Adatbázisközi rugalmas feladatok használatával adatbázisok karbantartása.</p>
-  - title: További erőforrások
+  - title: További források
     items:
       - type: paragraph
         text: 'Ismerje meg a további funkciók, amelyek segítségével az adatok méretezését.'

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
 ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60462588"
 ---
 # <a name="project-url-preview-v7-reference"></a>Projekt URL-cím előnézete v7-referencia
@@ -73,7 +73,7 @@ Az alábbiakban a fejlécek, köztük a kérést és választ.
 ## <a name="query-parameters"></a>Lekérdezési paraméterek
 A kérelem lekérdezési paraméterek tartalmazhat. Tekintse meg a szükséges oszlop, paraméter szükséges. URL-címet kell kódolása a lekérdezési paramétereket. A lekérdezés egy http vagy https sémával; abszolút URL-CÍMNEK kell lennie. nem támogatjuk a relatív URL-címeket vagy más rendszerek például az ftp: / /
 
-|Name (Név)|Value|Typo|Szükséges|
+|Name (Név)|Érték|Típus|Szükséges|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|A piac, ahonnan az eredmények származnak. <br /><br />Tekintse meg piaci kódok piaci a lehetséges értékek listáját.<br /><br /> **MEGJEGYZÉS:** Az URL-cím előzetes API jelenleg csak támogatja a földrajzi RÉGIÓJA és az angol nyelvű.<br /><br />|String|Igen|
 |<a name="query" />q|Az előzetes verzióra az URL-cím|String|Igen|
@@ -90,7 +90,7 @@ A válasz sémája vagy egy [weblap] vagy byl vrácen Prvek, ahogy a webes keres
 ### <a name="error"></a>Hiba
 Határozza meg a következő hiba történt.
 
-|Elem|Leírás|Typo|
+|Elem|Leírás|Típus|
 |-------------|-----------------|----------|
 |<a name="error-code" />Kód|A hiba kódja, amely azonosítja a hiba kategóriáját. Lehetséges kódok listáját lásd: [hibakódok](#error-codes).|String|
 |<a name="error-message" />üzenet|A hiba leírása.|String|
@@ -102,7 +102,7 @@ Határozza meg a következő hiba történt.
 ### <a name="errorresponse"></a>Byl vrácen Prvek
 A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem teljesíthető.
 
-|Name (Név)|Value|Typo|
+|Name (Név)|Érték|Típus|
 |----------|-----------|----------|
 |_type|Mutató típusa.|String|
 |<a name="errors" />Hibák|Miért nem sikerült a kérelem miatt hibák listája.|[Error](#error)[]|
@@ -110,16 +110,16 @@ A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem telj
 ### <a name="webpage"></a>WebPage
 Meghatározza, milyen kapcsolatos információkat egy előzetes verzióban érhető el a weblapot.
 
-|Name (Név)|Value|Typo|
+|Name (Név)|Érték|Típus|
 |----------|-----------|----------|
-|név|Az oldal címe, nem feltétlenül a HTML-cím|String|
+|name|Az oldal címe, nem feltétlenül a HTML-cím|String|
 |url|Az URL-cím, amely ténylegesen volt bejárt (kérelem előfordulhat, hogy felvette a átirányítások)|String|
 |description|Az oldal és a tartalom rövid leírása|String|
 |isFamilyFriendly|A legpontosabb a webes index; eleme valós idejű fetches tegye alapján kizárólag az URL-címet, és nem az oldal tartalmát az észlelés|logikai|
 |primaryImageOfPage/contentUrl|Tartalmazza az előzetes verzióban érhető el egy reprezentatív kép URL-címe|String|
 
 ### <a name="identifiable"></a>Azonosításra alkalmas
-|Name (Név)|Value|Typo|
+|Name (Név)|Érték|Típus|
 |-------------|-----------------|----------|
 |id|Egy erőforrás-azonosítója|String|
 
@@ -172,8 +172,8 @@ A következő értékeket a lehetséges hiba kód és a részleges hiba kódja.
 
 |Kód|SubCode|Leírás
 |-|-|-
-|Kiszolgálóhibái|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|HTTP-állapotkód: 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Letiltva|A Bing InvalidRequest adja vissza, ha bármelyik részét a kérés érvénytelen, nem. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke nem érvényes.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a a HTTP-állapotkód: 400.<br/><br/>Ha a HTTPS helyett a HTTP protokollt használja, a Bing HttpNotAllowed adja vissza, és a HTTP-állapotkód: 410.
+|Kiszolgálóhibái|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP-állapotkód: 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokkolt|A Bing InvalidRequest adja vissza, ha bármelyik részét a kérés érvénytelen, nem. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke nem érvényes.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a a HTTP-állapotkód: 400.<br/><br/>Ha a HTTPS helyett a HTTP protokollt használja, a Bing HttpNotAllowed adja vissza, és a HTTP-állapotkód: 410.
 |RateLimitExceeded|Nincsenek alárendelt kódok|Minden alkalommal, amikor a lekérdezések másodpercenkénti (lekérdezési QPS) és a lekérdezések száma (QPM) havi kvótát túllépi a Bing RateLimitExceeded adja vissza.<br/><br/>Ha túllépi QPS, a Bing adja vissza a 429-es HTTP-állapotkód:, és Ha elfogynak QPM, a Bing adja vissza a 403-as.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|A Bing InvalidAuthorization adja vissza, ha a Bing a hívó nem tudja hitelesíteni. Ha például a `Ocp-Apim-Subscription-Key` fejléc hiányzik, vagy az előfizetési kulcs nem érvényes.<br/><br/>A redundancia akkor fordul elő, ha egynél több hitelesítési módszer adja meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód: a 401-es.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|A Bing InsufficientAuthorization adja vissza, ha a hívó nem rendelkezik engedéllyel az erőforrás eléréséhez. Ez akkor fordulhat elő, ha az előfizetési kulcs le lett tiltva, vagy lejárt. <br/><br/>Ha a hiba InsufficientAuthorization, a HTTP-állapotkód: a 403-as.

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60391165"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Queue storage és a Visual Studio csatlakoztatott szolgáltatásainak (webjobs-feladat projektek)
@@ -216,7 +216,7 @@ public static void CreateQueueMessage(
 Az SDK automatikusan szerializálja a JSON-objektum. Egy üzenetsor-üzenetet mindig létrejön, még akkor is, ha az objektum null értékű.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Hozzon létre több üzenetet, vagy aszinkron funkciók
-Hozzon létre több üzeneteket, győződjön meg arról, a kimeneti várólista paramétertípusa **ICollector<T>**  vagy **IAsyncCollector<T>**, az alábbi példában látható módon.
+Hozzon létre több üzeneteket, győződjön meg arról, a kimeneti várólista paramétertípusa **ICollector<T>**  vagy **IAsyncCollector<T>** , az alábbi példában látható módon.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -342,7 +342,7 @@ A **Blob** attribútum is használható a következők:
 ### <a name="automatic-poison-message-handling"></a>Automatikus ártalmas üzenetek kezelése
 Az SDK meghívja függvény legfeljebb 5-ször üzenetsori üzenetek feldolgozásához. Az ötödik próbálkozzon nem sikerül, ha az üzenet ártalmas várólistára került. Láthatja, hogy a próbálkozások maximális számának konfigurálása [konfigurációs beállításainak megadása](#how-to-set-configuration-options).
 
-Az ártalmas üzenetsor neve *{originalqueuename}*-ártalmas. Írhat a naplózásukhoz vagy egy értesítést küld, manuális beavatkozást ártalmas várólistában lévő üzenetek feldolgozásával függvény van szükség.
+Az ártalmas üzenetsor neve *{originalqueuename}* -ártalmas. Írhat a naplózásukhoz vagy egy értesítést küld, manuális beavatkozást ártalmas várólistában lévő üzenetek feldolgozásával függvény van szükség.
 
 Az alábbi példában a **CopyBlob** függvény sikertelen lesz, amikor egy üzenetsor-üzenetet, amely nem létezik blob nevét tartalmazza. Ha ez történik, az üzenet átkerül az copyblobqueue üzenetsorból a copyblobqueue-poison várólista. A **ProcessPoisonMessage** majd bejelentkezik az ártalmas üzenetek.
 
@@ -544,7 +544,7 @@ A WebJobs SDK irányítópultján, a legutóbbi 100 sor konzol kimeneti show fel
 
 ![Kimeneti be-vagy kikapcsolása](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-Egy folyamatos webjobs-feladatot, az alkalmazásnaplókat megjelenjen a/data/feladatok/folyamatos/*{webjobname}*/job_log.txt a webes alkalmazáshoz fájlrendszerben.
+Egy folyamatos webjobs-feladatot, az alkalmazásnaplókat megjelenjen a/data/feladatok/folyamatos/ *{webjobname}* /job_log.txt a webes alkalmazáshoz fájlrendszerben.
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

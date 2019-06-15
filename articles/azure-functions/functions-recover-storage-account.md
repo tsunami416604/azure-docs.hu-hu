@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
 ms.openlocfilehash: 6057fa52cd2f1e9b9fd525723f96ab66983fb5d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61020298"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Hogyan háríthatók el a "a functions futtatókörnyezete nem érhető el"
@@ -27,7 +27,7 @@ Ezt a dokumentumot célja, ha a Functions portálon jelenik meg a következő hi
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 Ez a probléma akkor fordul elő, amikor az Azure Functions Runtime nem indítható el. Ez a hiba fordul elő a leggyakoribb oka a függvényalkalmazás a tárfiókhoz való hozzáférés elvesztése. [További információ a tárolási fiók követelményeit Itt](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
@@ -55,7 +55,7 @@ Az előző lépésben Ha Ön egy tárfiók kapcsolati sztringje nem rendelkezett
 
 ### <a name="required-application-settings"></a>Szükséges alkalmazás beállításai
 
-* Szükséges
+* Kötelező
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 * Használatalapú csomag funkciók szükséges
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)

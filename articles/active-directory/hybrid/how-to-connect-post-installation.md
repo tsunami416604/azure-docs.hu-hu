@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64571320"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Következő lépések és az Azure AD Connect kezelése
@@ -56,12 +56,12 @@ Az Azure portal segítségével egy szinkronizálási állapotának ellenőrzés
 Ha a szinkronizálási feladat futtatása van szüksége, akkor ehhez:
 
 1. Kattintson duplán az Azure AD Connect asztali varázsló elindításához.
-2. Kattintson a **Configure** (Konfigurálás) elemre.
+2. Kattintson a **Konfigurálás** elemre.
 3. A feladatok képernyőn válassza ki a **szinkronizálási beállítások testreszabása** kattintson **tovább**
 4. Adja meg Azure AD hitelesítő adatait
 5. Kattintson a **tovább**. Kattintson a **tovább**.  Kattintson a **tovább**.
 5.  Az a **készen áll a konfigurálás** képernyőn, ügyeljen arra, hogy a **indítsa el a szinkronizálást, amint a konfigurálás befejeződik** be van jelölve.
-6.  Kattintson a **Configure** (Konfigurálás) elemre.
+6.  Kattintson a **Konfigurálás** elemre.
 
 Az Azure AD Connect szinkronizálása: ütemező további információkért lásd: [az Azure AD Connect Scheduler](how-to-connect-sync-feature-scheduler.md).
 

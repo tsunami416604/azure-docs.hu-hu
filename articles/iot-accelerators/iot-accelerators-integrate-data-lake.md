@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61449342"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>A távoli figyelési megoldás integrálása az Azure Data Lake Store
@@ -103,7 +103,7 @@ Az IoT hub az adatokat az Azure Data Lake store-adatfolyam egy Azure Stream Anal
 
 1. Válassza ki a Data Lake Store-fiókot az előző lépésekben létrehozott, és adja meg a mappastruktúra az áruház adatok.
 
-1. Adja meg a dátum formátuma mezőben **/streaming/ {date} / {idő}**. Hagyja az alapértelmezett dátum formátuma éééé/hh/nn- és időformátum ÓÓ.
+1. Adja meg a dátum formátuma mezőben **/streaming/ {date} / {idő}** . Hagyja az alapértelmezett dátum formátuma éééé/hh/nn- és időformátum ÓÓ.
 
     ![Adja meg a mappastruktúra](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-output.png)
 

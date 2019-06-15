@@ -19,10 +19,10 @@ ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 717607de6d9d193a7373637d0d0fcd879b54fed0
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544868"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és jóváhagyás az a Microsoft identity platform végpont
@@ -49,7 +49,7 @@ Ugyanez érvényes, amely integrálva van a Microsoft identity platform külső 
 
 * Olvassa el a felhasználó-naptár
 * A felhasználó naptárba írása
-* Levelek küldése felhasználóként
+* E-mail küldése a felhasználónak
 
 Az ilyen típusú engedélyek megadásával az erőforrás rendelkezik részletesen szabályozhatja az adatok, valamint hogyan API funkció érhető el. Egy harmadik féltől származó alkalmazások ezeket az engedélyeket kérhet a felhasználók és rendszergazdák férhetnek hozzá az adatokat, vagy ki kell hagynia a kérelmet, mielőtt az alkalmazás egy felhasználó nevében cselekedhet. Darabolás kisebb engedélycsoportok az erőforrás funkciókat, a harmadik féltől származó alkalmazások csak a függvény végrehajtásához szükséges konkrét engedélyeket kérhet építhetők fel. A felhasználók és rendszergazdák is ismeri, pontosan milyen adatokat az alkalmazás rendelkezik hozzáféréssel, és biztos lehet, hogy nincs-e viselkedik rosszindulatú is lehet. A fejlesztők kell mindig betartja a legalacsonyabb jogosultsági fogalma csak azok az alkalmazások működéséhez szükséges engedélyeket kér.
 
@@ -89,7 +89,7 @@ Ha egy alkalmazás segítségével hajtja végre a bejelentkezési [OpenID Conne
 
 A `email` hatókör használható a `openid` hatókörrel és a többi. Az alkalmazás-hozzáférés a felhasználó elsődleges e-mail címének formájában nyújt a `email` jogcím. A `email` jogcím szerepel egy token csak akkor, ha e-mail-címmel társítva, a felhasználói fiókkal, amely nem mindig ez a helyzet. Ha az a `email` hatókör, az alkalmazás fel kell készülnöm kezelésére egy esetet, amelyben a `email` jogcím nem szerepel a jogkivonatban.
 
-### <a name="profile"></a>profil
+### <a name="profile"></a>Profil
 
 A `profile` hatókör használható a `openid` hatókörrel és a többi. Jelentős mennyiségű felhasználóval kapcsolatos információkat nyújt az alkalmazás eléréséhez. Az hozzá tudjon férni információkat is tartalmaz, de nem csak az a felhasználó Utónév, Vezetéknév, elsődleges felhasználónév és objektum azonosítója. Egy adott felhasználó a id_tokens paraméter elérhető profil jogcímek teljes listáját lásd: a [ `id_tokens` referencia](id-tokens.md).
 
@@ -197,10 +197,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| Paraméter | Feltétel | Leírás |
+| Paraméter | Állapot | Leírás |
 | --- | --- | --- |
 | `tenant` | Szükséges | A directory-bérlőhöz, amelyet szeretne az engedélyt. A megadott GUID vagy rövid név formátumban, vagy az általános hivatkozott `common` a példában látható módon. |
-| `client_id` | Szükséges | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
+| `client_id` | Kötelező | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
 | `redirect_uri` | Szükséges |Az átirányítási URI-t a válasz az alkalmazás kezelni kell elküldeni kívánt helyre. Ez pontosan egyeznie kell az átirányítási URI-k, amelyek az alkalmazás regisztrációs portál regisztrált. |
 | `state` | Ajánlott | A kérésben is a token válaszban visszaadott érték. Bármilyen tartalmat karakterlánc lehet. Az állapot használatával kódolása a felhasználói állapot az alkalmazás információ előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézetet. |
 
@@ -275,15 +275,15 @@ A `/.default` hatókör aktiválása az 1.0-s verziójú végpont viselkedés `p
 
 Mivel `/.default` funkcionálisan megegyezik a `resource`-központú 1.0-s verziójú végpont viselkedését, lehetővé teszi azt is az 1.0-s verziójú végpont hozzájárulási viselkedését. Nevezetesen `/.default` egy jóváhagyási kérése csak aktivál, ha nem rendelkezik engedéllyel az ügyfél és az erőforrás között a felhasználó által. Ha bármely beleegyezést létezik, majd egy tokent ad vissza az adott erőforráshoz a felhasználó által biztosított minden hatókör tartalmazó. Azonban, ha nem rendelkezik engedéllyel, vagy a `prompt=consent` paraméter lett megadva, az ügyfélalkalmazás által regisztrált összes hatókör megjelenik a beleegyezést kérő üzenetet.
 
-#### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>1. példa: A felhasználó vagy a bérlő rendszergazdája, rendelkezik engedélyekkel
+#### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>1\. példa: A felhasználó vagy a bérlő rendszergazdája, rendelkezik engedélyekkel
 
 A felhasználó (vagy egy Bérlői rendszergazda) engedélyezte az ügyfél a Microsoft Graph-engedélyek `mail.read` és `user.read`. Ha az ügyfél kérést küld `scope=https://graph.microsoft.com/.default`, akkor nincs beleegyezést kérő megjelenik az ügyfélalkalmazások számára. tartalma függetlenül regisztrált vonatkozó Microsoft Graph. A hatókörök tartalmazó jogkivonatot kellene visszaadnia `mail.read` és `user.read`.
 
-#### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>2. példa A felhasználó engedélyt nem az ügyfél és az erőforrás között
+#### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>2\. példa A felhasználó engedélyt nem az ügyfél és az erőforrás között
 
 Nincs jóváhagyás a felhasználó létezik-e az ügyfél és a Microsoft Graph között. Az ügyfél regisztrálva van a `user.read` és `contacts.read` engedélyeket, valamint az Azure Key Vault hatókör `https://vault.azure.net/user_impersonation`. Ha az ügyfél a tokent kér `scope=https://graph.microsoft.com/.default`, a felhasználó számára a jóváhagyást kérő képernyőt fog kapni a `user.read`, `contacts.read`, és a Key Vault `user_impersonation` hatókörök. A token vissza lesz csak a `user.read` és `contacts.read` hatókörök benne.
 
-#### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>3. példa: A felhasználó hozzájárult, és az ügyfél kéri további hatókörök
+#### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>3\. példa: A felhasználó hozzájárult, és az ügyfél kéri további hatókörök
 
 A felhasználó hozzájárult már `mail.read` az ügyfél. Az ügyfél regisztrálva van a `contacts.read` hatókörhöz. a regisztráció. Ha az ügyfél kérést küld a token használatának `scope=https://graph.microsoft.com/.default` és kérelmek hozzájáruláshoz keresztül `prompt=consent`, majd a felhasználó csak egy a jóváhagyást kérő képernyőt látja, és az alkalmazás által regisztrált összes engedélyt. `contacts.read` a beleegyezést kérő oldalon szerepel, de `mail.read` nem lesz. A jogkivonatot adott vissza, legyen az Microsoft Graph és tartalmazni fogja `mail.read` és `contacts.read`.
 

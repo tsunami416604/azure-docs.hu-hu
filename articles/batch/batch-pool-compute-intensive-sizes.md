@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
 ms.openlocfilehash: 3974be886b57fbf685b211369094edf844d96ab6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60776524"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Rdma-t vagy a GPU-példányt használja a Batch-készletekben
@@ -43,7 +43,7 @@ Az rdma-t vagy GPU képességeit a Batch számításigényes méretek csak egyes
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Linux-készletek – virtuálisgép-konfiguráció
 
-| Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
+| Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Alkalmazáskészlet beállításai |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS, vagy<br/>CentOS-alapú HPC<br/>(Az azure Marketplace-en) | Az Intel MPI 5<br/><br/>Linuxos RDMA-illesztőprogramok | Engedélyezze a csomópontok közötti kommunikáció, tiltsa le az egyidejű feladat a végrehajtás |
 | [Hálózati vezérlő által, az NCv2, az NCv3, NDv2 sorozat](../virtual-machines/linux/n-series-driver-setup.md) | Az NVIDIA Tesla GPU (eltérő sorozat) | Ubuntu 16.04 LTS, vagy<br/>CentOS 7.3 vagy 7.4<br/>(Az azure Marketplace-en) | NVIDIA CUDA vagy CUDA eszközkészlet illesztőprogramok | – | 
@@ -53,7 +53,7 @@ Az rdma-t vagy GPU képességeit a Batch számításigényes méretek csak egyes
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Windows-készletek – virtuálisgép-konfiguráció
 
-| Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
+| Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Alkalmazáskészlet beállításai |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | A Windows Server 2016-ban, 2012 R2-ben, vagy<br/>2012 (az azure Marketplace-en) | A Microsoft MPI 2012 R2 vagy újabb, vagy<br/> Az Intel MPI 5<br/><br/>Windows RDMA-illesztőprogramok | Engedélyezze a csomópontok közötti kommunikáció, tiltsa le az egyidejű feladat a végrehajtás |
 | [Hálózati vezérlő, NCv2, az NCv3, ND, NDv2 sorozat](../virtual-machines/windows/n-series-driver-setup.md) | Az NVIDIA Tesla GPU (eltérő sorozat) | A Windows Server 2016-ban, vagy <br/>2012 R2 (az Azure Marketplace-en) | NVIDIA CUDA vagy CUDA eszközkészlet illesztőprogramok| – | 
@@ -67,7 +67,7 @@ Az rdma-t vagy GPU képességeit a Batch számításigényes méretek csak egyes
 > Az N-sorozat méretei nem támogatottak a Felhőszolgáltatás-konfigurációval a Batch-készletekben.
 >
 
-| Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
+| Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Alkalmazáskészlet beállításai |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | A Windows Server 2016, 2012 R2, 2012, vagy<br/>2008 R2 (vendég operációs rendszerek) | A Microsoft MPI 2012 R2 vagy újabb, vagy<br/>Az Intel MPI 5<br/><br/>Windows RDMA-illesztőprogramok | Csomópontok közötti kommunikáció,<br/> egyidejű feladat a végrehajtás letiltása |
 
@@ -110,7 +110,7 @@ Windows NC-csomópontok készletét a CUDA-alkalmazások futtatásához kell NVD
 | Beállítás | Érték |
 | ---- | ----- | 
 | **Rendszerkép típusa** | Marketplace (Linux/Windows) |
-| **Közzétevő** | MicrosoftWindowsServer |
+| **Publisher** | MicrosoftWindowsServer |
 | **Ajánlat** | WindowsServer |
 | **Termékváltozat** | 2016-Datacenter |
 | **A csomópont mérete** | NC6 Standard |
@@ -165,7 +165,7 @@ A Batch API-k vagy az Azure portal használatával hoz létre egy készletet, ha
 | Beállítás | Érték |
 | ---- | ---- |
 | **Rendszerkép típusa** | Marketplace (Linux/Windows) |
-| **Közzétevő** | OpenLogic |
+| **Publisher** | OpenLogic |
 | **Ajánlat** | CentOS-HPC |
 | **Termékváltozat** | 7.4 |
 | **A csomópont mérete** | H16r Standard |

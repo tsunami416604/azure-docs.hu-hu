@@ -11,10 +11,10 @@ ms.reviewer: klam, deli, LADocs
 ms.suite: integration
 ms.date: 10/05/2018
 ms.openlocfilehash: 0fec590523fa130af2e5670a92914c056df289d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60512242"
 ---
 # <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Gyors útmutató: Létrehozása és kezelése, automatikus logic app-munkafolyamatok – Visual Studio Code
@@ -74,7 +74,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 
 1. Adja meg a hitelesítési kódot. Amikor a rendszer kéri, válassza ki a **Folytatás**.
 
-   ![Írja be a kódot](./media/create-logic-apps-visual-studio-code/authentication-code.png)
+   ![Kód megadása](./media/create-logic-apps-visual-studio-code/authentication-code.png)
 
 1. Válassza ki az Azure-fiókjával. Miután bejelentkezett, zárja be a böngészőt, és térjen vissza a Visual Studio Code-ot.
 
@@ -102,7 +102,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 
    Ez a példa létrehoz egy új erőforráscsoportot:
 
-   ![Új erőforráscsoport létrehozása](./media/create-logic-apps-visual-studio-code/select-or-create-azure-resource-group.png)
+   ![Hozzon létre új erőforráscsoportot](./media/create-logic-apps-visual-studio-code/select-or-create-azure-resource-group.png)
 
 1. Adja meg az Azure-erőforráscsoport nevét, és nyomja le az ENTER BILLENTYŰT.
 

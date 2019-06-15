@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60861114"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Az Excel analytics áttelepíteni az Azure Machine Learning Studióban
@@ -73,7 +73,7 @@ A javaslatok alkalmazásakor azt ugyanazon alapteljesítményének a Studióban,
 | --- |:---:|:---:|:---:|
 | Címkézett érték |Tényleges (numerikus) |Azonos |Azonos |
 | Tanuló |Az Excel -> Data Analysis -> regresszió |Lineáris regresszió. |Lineáris regresszió |
-| Learner beállításai |– |Alapértelmezés |szokásos legkisebb négyzetek<br />L2 = 0.005 |
+| Learner beállításai |– |Alapértelmezés szerint |szokásos legkisebb négyzetek<br />L2 = 0.005 |
 | Adatkészlet |26 sort, 3 funkciók, 1 címkét. Az összes numerikus. |Azonos |Azonos |
 | Split: Betanítás |Az Excel tanított először 18 sort, a legutóbbi 8 sorok tesztelve. |Azonos |Azonos |
 | Split: Tesztelés |Excel-alkalmazása a legutóbbi 8 regressziós képlet |Azonos |Azonos |
@@ -119,7 +119,7 @@ Ha azt szeretné, regressziós kísérletezhet, és próbálkozzon jó adathalma
 | --- | --- | --- | --- | --- | --- |
 | Gyorsított döntési fa |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
 | Lineáris regresszió (gradiens módszeres) |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |
-| Neurális hálózat regresszió |1.548195 |2.114617 |0.177517 |0.047774 |0.952226 |
+| Neurális hálózat típusú regresszió |1.548195 |2.114617 |0.177517 |0.047774 |0.952226 |
 | Lineáris regresszió (szokványos legkisebb négyzetek) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
 ## <a name="key-takeaways"></a>Kulcs Takeaways

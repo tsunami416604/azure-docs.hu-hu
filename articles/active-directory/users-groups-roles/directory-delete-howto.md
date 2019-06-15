@@ -15,10 +15,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91ac6b4530414850c52605bac8cb701aa2b877d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60473128"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Az Azure Active Directoryban könyvtár törlése
@@ -63,7 +63,7 @@ Lejárt (30 nap) | Az összes elérhető adat| Felhasználók normális férhetn
 Le van tiltva (30 nap) | Csak rendszergazda számára elérhető adatok | Felhasználók nem férhetnek hozzá, az Office 365-fájlok vagy alkalmazások<br>A rendszergazdák a Microsoft 365 felügyeleti központ eléréséhez, de nem szükséges licencek kiosztása vagy felhasználók frissítése
 Felfüggesztést (30 nap után le van tiltva) | Törölt adatok (Ha nincs más szolgáltatások is automatikusan törölve) | Felhasználók nem férhetnek hozzá, az Office 365-fájlok vagy alkalmazások<br>A rendszergazdák hozzáférhetnek a Microsoft 365 felügyeleti központban vásárolhat és más előfizetések kezelése
 
-## <a name="delete-a-subscription"></a>Előfizetés törlése
+## <a name="delete-a-subscription"></a>Töröl egy előfizetést
 
 A megszüntetett állapotban három nap, a Microsoft 365 felügyeleti központ használatával a törlendő előfizetés is elhelyezhető.
 

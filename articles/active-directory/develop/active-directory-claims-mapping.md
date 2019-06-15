@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b770ee476fc5c1c334f53904539cc34cf962c62
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546202"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: A bérlőben (előzetes verzió) egy adott alkalmazáshoz tartozó jogkivonatok kibocsátott jogcímek testreszabása
@@ -50,7 +50,7 @@ Vannak bizonyos csoportok, amelyek meghatározzák, hogy mikor és hogyan haszn�
 | Alapszintű jogcímek készletéhez | A jogkivonatok (mellett a core jogcímkészlethez) alapértelmezés szerint vannak kibocsátott jogcímeket tartalmaz. Nincs megadva, vagy alapszintű jogcímek módosítása a jogcímtársítások szabályzatok használatával. |
 | Korlátozott jogcímek készletéhez | Nem módosítható a csoportházirend használatával. Az adatforrás nem lehet módosítani, és átalakítás nélkül alkalmazza ezeket a jogcímeket készítésekor. |
 
-### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>1. táblázat: JSON webes jogkivonat (JWT) korlátozott jogcímek készletéhez
+### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>1\. táblázat: JSON webes jogkivonat (JWT) korlátozott jogcímek készletéhez
 
 | Jogcím típusa (név) |
 | ----- |
@@ -185,7 +185,7 @@ Vannak bizonyos csoportok, amelyek meghatározzák, hogy mikor és hogyan haszn�
 | wids |
 | win_ver |
 
-### <a name="table-2-saml-restricted-claim-set"></a>2. táblázat: SAML korlátozott jogcímek készletéhez
+### <a name="table-2-saml-restricted-claim-set"></a>2\. táblázat: SAML korlátozott jogcímek készletéhez
 
 | Jogcím típusa (URI) |
 | ----- |
@@ -282,7 +282,7 @@ Ha a forrás átalakítási a **TransformationID** elemének szerepelnie kell a 
 
 Az azonosító elem azonosítja, mely tulajdonság a forrás az értéket ad meg a jogcímet. Az alábbi táblázat a forrás minden egyes érték érvényes azonosító értékét.
 
-#### <a name="table-3-valid-id-values-per-source"></a>3. táblázat: Forrás azonosítója érvényes értéket
+#### <a name="table-3-valid-id-values-per-source"></a>3\. táblázat: Forrás azonosítója érvényes értéket
 
 | Source | azonosító | Leírás |
 |-----|-----|-----|
@@ -356,7 +356,7 @@ Az azonosító elem azonosítja, mely tulajdonság a forrás az értéket ad meg
 
 A kiválasztott módszert alapján, bemenetek és kimenetek várható. A bemenetek és kimenetek megadása segítségével a **InputClaims**, **InputParameters** és **OutputClaims** elemeket.
 
-#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>4. táblázat: Átalakítás módszerek és a várt bemenetek és kimenetek
+#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>4\. táblázat: Átalakítás módszerek és a várt bemenetek és kimenetek
 
 |TransformationMethod|Várt bemenet|Várt kimenet|Leírás|
 |-----|-----|-----|-----|
@@ -382,7 +382,7 @@ A kiválasztott módszert alapján, bemenetek és kimenetek várható. A bemenet
 
 **Az SAML NameID és egyszerű felhasználónév:** Az attribútumok, amelyről a forrás, és a jogcímek átalakítása, amelyeknél engedélyezve van, a NameID és UPN értékek korlátozva. Tekintse meg az 5 és 6 engedélyezett értékeit tábla.
 
-#### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>5. táblázat: Az SAML NameID adatforrásként engedélyezett attribútumok
+#### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>5\. táblázat: Az SAML NameID adatforrásként engedélyezett attribútumok
 
 |Source|azonosító|Leírás|
 |-----|-----|-----|
@@ -406,7 +406,7 @@ A kiválasztott módszert alapján, bemenetek és kimenetek várható. A bemenet
 | Felhasználó | extensionattribute14 | Mellék attribútum 14 |
 | Felhasználó | extensionattribute15 | Mellék attribútum 15 |
 
-#### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>6. táblázat: Az SAML NameID engedélyezett átalakítási módszerek
+#### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>6\. táblázat: Az SAML NameID engedélyezett átalakítási módszerek
 
 | TransformationMethod | Korlátozások |
 | ----- | ----- |

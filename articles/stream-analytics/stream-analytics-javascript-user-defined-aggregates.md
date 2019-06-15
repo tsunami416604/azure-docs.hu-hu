@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.openlocfilehash: 6663e3fc48408de83e92f39e8c8070005818852d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61479558"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Az Azure Stream Analytics JavaScript nyelvű felhasználó által definiált összesítések (előzetes verzió)
@@ -82,7 +82,7 @@ Minden egyes JavaScript UDA-objektum deklarace Funkce határozza meg. Az alábbi
 
 Függvény aliasa a UDA azonosítója. Neve a Stream Analytics-lekérdezés, mindig használjon UDA alias együtt egy "uda." prefix.
 
-### <a name="function-type"></a>Függvény típusa
+### <a name="function-type"></a>Typ funkce
 
 Az UDA, a függvény típusúnak kell lennie **Javascript UDA**.
 

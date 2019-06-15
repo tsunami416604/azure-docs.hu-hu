@@ -12,10 +12,10 @@ author: gauravmalhot
 ms.author: gamal
 manager: craigg
 ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60786982"
 ---
 # <a name="templates"></a>Sablonok
@@ -30,7 +30,7 @@ Elkezdheti egy Data Factory-folyamatot hoz létre egy sablont a következő két
 
     ![Nyissa meg a sablonkatalógusban az áttekintő lap](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  A szerző lapon az erőforrás-kezelőben válassza ki a **+**, majd **folyamatot sablonból** a sablonkatalógusban megnyitásához.
+1.  A szerző lapon az erőforrás-kezelőben válassza ki a **+** , majd **folyamatot sablonból** a sablonkatalógusban megnyitásához.
 
     ![Nyissa meg a sablonkatalógusban a szerző lapról](media/solution-templates-introduction/templates-intro-image2.png)
 

@@ -14,10 +14,10 @@ ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
 ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60372285"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Felhasználók, munkamenetek és események elemzése az Application insights szolgáltatásban
@@ -58,7 +58,7 @@ A felhasználók, munkamenetek és események jelentés; mutató hivatkozás meg
 
 A felhasználók, munkamenetek és események jelentésben; másolatának megosztása Kattintson a **megosztás** az eszköztáron, majd kattintson a **Word ikon** az adatokat egy Word-dokumentum létrehozásához. Vagy kattintson a **Word ikon** a fő diagram felett.
 
-## <a name="meet-your-users"></a>A felhasználók megismerése
+## <a name="meet-your-users"></a>Felel meg a felhasználók számára
 
 A **felel meg a felhasználók** szakasz információkat jelenít meg az aktuális lekérdezés egyező nagyjából öt mintafelhasználók. Figyelembe véve, és felfedezése az egyének mellett összesítések, a viselkedés is vonatkozó adatokat a felhasználók miként ténylegesen használják az alkalmazást.
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: jowargo
 ms.openlocfilehash: 890577c013a96fc06acf3b05881649ad8202a083
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60872367"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Jogkivonat-alapú (HTTP/2) hitelesítése az APN Szolgáltatáshoz
@@ -50,7 +50,7 @@ Vegye figyelembe, hogy a beállítást, ha az APN szolgáltatás tanúsítványa
 
 Jogkivonat-alapú hitelesítés engedélyezéséhez a következő tulajdonságokat az Apple fejlesztői fiók nyitása kell:
 
-### <a name="key-identifier"></a>Kulcs azonosítója
+### <a name="key-identifier"></a>Kulcsazonosító
 
 A kulcs azonosítóját szerezhető be a "Kulcsok" lapot az Apple Developer-fiók
 

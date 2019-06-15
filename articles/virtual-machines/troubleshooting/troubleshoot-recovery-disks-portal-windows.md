@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 08/13/2018
 ms.author: genli
 ms.openlocfilehash: ec2da7d9f659f32c40f7a2685ab08be4eec27ed5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60320823"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Hibaelhárítás Windows virtuális gépek az operációsrendszer-lemez egy helyreállítási virtuális Géphez az Azure portal használatával történő csatlakoztatásával
@@ -105,7 +105,7 @@ A következő néhány lépést, egy másik virtuális Géphez hibaelhárítás 
 
     ![Válassza ki a fájl- és tárolási szolgáltatások Kiszolgálókezelőben](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
-3. Az adatlemez automatikusan észlelte és csatolva. A csatlakoztatott lemezek listájának megtekintéséhez válasszon **lemezek**. Kiválaszthatja az adatlemezt mennyiségi információk, beleértve a meghajtó betűjeléhez megtekintéséhez. Az alábbi példa bemutatja az adatlemezt csatolni, és használatával **F:**:
+3. Az adatlemez automatikusan észlelte és csatolva. A csatlakoztatott lemezek listájának megtekintéséhez válasszon **lemezek**. Kiválaszthatja az adatlemezt mennyiségi információk, beleértve a meghajtó betűjeléhez megtekintéséhez. Az alábbi példa bemutatja az adatlemezt csatolni, és használatával **F:** :
 
     ![Csatlakoztatott lemez és a rendszerkötet-információkat a Kiszolgálókezelőben](./media/troubleshoot-recovery-disks-portal-windows/server-manager-disk-attached.png)
 

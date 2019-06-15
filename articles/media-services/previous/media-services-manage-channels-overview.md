@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: c5dd0146fe59e7dc85787f146b10cfde7d6addb4
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64867894"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Media Services segítségével élő Streamelés áttekintése
@@ -47,7 +47,7 @@ A **Microsoft Azure Media Services** (AMS) lehetőséget nyújt az élő adatfol
 A Media Services igénybe veheti [dinamikus csomagolási](media-services-dynamic-packaging-overview.md), amely lehetővé teszi, hogy az MPEG-DASH, HLS, az élő adások közvetítése és Smooth Streaming formázza a csatorna közreműködői, a szolgáltatásnak küldött. A nézők vissza az élő stream továbbítása bármely HLS, DASH vagy Smooth Streaming kompatibilis lejátszók játszhatja le. A webes és mobilalkalmazások az Azure Media Player használatával biztosít a stream bármelyik ezeket a protokollokat.
 
 > [!NOTE]
-> 2018. május 12., az élő csatornák indítása fogja többé nem támogatja a RTP/MPEG-2 adatátviteli stream betöltési protokollját. Telepítse át a RTP/MPEG-2 RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollokra.
+> 2018\. május 12., az élő csatornák indítása fogja többé nem támogatja a RTP/MPEG-2 adatátviteli stream betöltési protokollját. Telepítse át a RTP/MPEG-2 RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollokra.
 
 ## <a name="streaming-endpoints-channels-programs"></a>Streamelési végpontok, a csatornák, programok
 
@@ -72,7 +72,7 @@ A Media Services 2.10 kiadástól kezdve, amikor létrehoz egy csatornát, megad
 
 Egy útmutató, amellyel a két csatornatípus esetében támogatott a Media Services összehasonlítása az alábbi táblázatban
 
-| Szolgáltatás | Áteresztő csatornán | Standard szintű csatornák |
+| Funkció | Áteresztő csatornán | Standard szintű csatornák |
 | --- | --- | --- |
 | Egyféle sávszélességű bemeneti bitsebességekre a felhőben van kódolva. |Nem |Igen |
 | Maximális felbontás, a rétegek száma |1080p, 8 rétegek, több mint 60 fps |720p, 6 rétegek 30 képkocka/s |

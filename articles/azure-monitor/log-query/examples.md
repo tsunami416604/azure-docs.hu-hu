@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
 ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759911"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Az Azure Monitor log lekérdezés példák
@@ -25,7 +25,7 @@ Ez a cikk példákat különböző [lekérdezések](log-query-overview.md) haszn
 
 Tekintse meg a [Kusto nyelvi referencia](https://docs.microsoft.com/azure/kusto/query/) használja ezeket a mintákat a különböző kulcsszavak részleteiért. Olvassa el a [leckében a lekérdezések létrehozásáról](get-started-queries.md) Ha most ismerkedik az Azure Monitor.
 
-## <a name="events"></a>Események
+## <a name="events"></a>Events
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>Alkalmazásszintű események keresése "Titkosítási" fürtkezelőben
 Ez a példa olyan rekordokat keres az **Events** táblában, amelyekben az **EventLog** értéke _Application_, a **RenderedDescription** pedig tartalmazza a _cryptographic_ értéket. Az elmúlt 24 órából származó rekordokat tartalmazza.

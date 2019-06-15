@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: jowargo
 ms.openlocfilehash: 31a22aabc7b0f1d51a673ef8642037103badcc02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61457804"
 ---
 # <a name="routing-and-tag-expressions"></a>Az Útválasztás és címke kifejezések
@@ -35,7 +35,7 @@ A cél egyetlen módja a adott értesítési regisztrációk az, hogy címkéket
 2. **Címke**: a megadott kód tartalmazó összes regisztrációk az értesítés fogadásához.
 3. **Címkét alkotó kifejezésbe**: címkék, amelynek beállítása a megadott kifejezésnek megfelelő összes regisztrációk az értesítés fogadásához.
 
-## <a name="tags"></a>Címkék
+## <a name="tags"></a>Tags
 
 Címke lehet bármely karakterlánc, legfeljebb 120 karakter, amely alfanumerikus és a következő nem alfanumerikus karakterek: '_', "@", '#', '. ',': ","-". Az alábbi példa bemutatja egy alkalmazás, amelyből adott zene csoportokról bejelentési értesítéseket fogadhat. Ebben az esetben az értesítések átirányításához legegyszerűbb címke regisztrációk címkék, amelyek a különböző sávok, ahogy az alábbi képen is látható:
 

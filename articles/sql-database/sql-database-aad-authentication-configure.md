@@ -13,10 +13,10 @@ ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: abb4a43176026fca5a80409ade13af1f8f96d9f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60390485"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL
@@ -143,7 +143,7 @@ A felügyelt példány sikeresen elvégezhető a feladatok, például a felhaszn
 
 8. Az Active Directory-rendszergazda lap tetején válassza **mentése**.
 
-    ![mentés](./media/sql-database-aad-authentication/save.png)
+    ![Mentés](./media/sql-database-aad-authentication/save.png)
 
     A változó a rendszergazda a folyamat eltarthat néhány percig. Az új rendszergazda ezután az Active Directory felügyeleti mezőjében jelenik meg.
 
@@ -345,7 +345,7 @@ Ezt a módszert akkor használja, ha a Windows összevont tartományok az Azure 
 
     ![Válassza ki az adatbázis neve][13]
 
-## <a name="active-directory-password-authentication"></a>Active Directorybeli jelszavas hitelesítés
+## <a name="active-directory-password-authentication"></a>Az Active Directory jelszavas hitelesítés
 
 Ezt a módszert használja, amikor egy Azure AD-szolgáltatásnevet, az Azure AD-vel csatlakoztatása a felügyelt tartomány. Is használhatja, például amikor távolról dolgozó a tartományhoz való hozzáférés nélkül összevont fiókok esetében.
 
@@ -377,7 +377,7 @@ conn.Open();
 
 A kapcsolati karakterlánc kulcsszó ``Integrated Security=True`` csatlakozik az Azure SQL Database esetében nem támogatott. Ha egy ODBC-kapcsolat, távolítsa el a szóközöket, és állítsa be a "ActiveDirectoryIntegrated" hitelesítési kell.
 
-### <a name="active-directory-password-authentication"></a>Active Directorybeli jelszavas hitelesítés
+### <a name="active-directory-password-authentication"></a>Az Active Directory jelszavas hitelesítés
 
 Adatbázishoz való kapcsolódáshoz a beépített hitelesítéssel és a egy Azure AD identity, a hitelesítés kulcsszót kell állítani az Active Directory-jelszó. A kapcsolati karakterláncot a felhasználói azonosító/UID és a jelszó/PWD kulcsszavakat és értékeket kell tartalmaznia. Az alábbi C# kódminta forrásoszlopokat használ.
 

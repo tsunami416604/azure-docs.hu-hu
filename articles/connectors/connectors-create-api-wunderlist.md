@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105666"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Figyelheti és kezelheti a Wunderlist Azure Logic Apps használatával
@@ -61,7 +61,7 @@ Az Azure Logic Apps és a Wunderlist-összekötő hozhat létre automatizált fe
        – vagy –
 
      * A lépéseket, ahol szeretné művelet hozzáadása, között helyezze az egérmutatót a nyíl lépések között. 
-     Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+     Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
      
        A keresőmezőbe írja be szűrőként "wunderlist". 
        Műveletek listája alatt válassza ki a kívánt művelet.

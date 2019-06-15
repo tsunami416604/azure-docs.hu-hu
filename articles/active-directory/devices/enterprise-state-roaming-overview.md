@@ -18,10 +18,10 @@ ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3a2a81bd8aa3fc99d033564e8a8782c79261305
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353142"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>Mi az az Enterprise State Roaming?
@@ -40,7 +40,7 @@ Enterprise State Roaming érhető el több Azure-régióban. Az elérhető régi
 | [Beállítások és adatroaming GYIK](enterprise-state-roaming-faqs.md) |Ez a témakör egyes rendszergazdák lehet beállításai és alkalmazás data Sync szolgáltatással kapcsolatos kérdésekre ad választ. |
 | [Csoport házirend és a mobileszköz-kezelési beállítások a beállítások szinkronizálása](enterprise-state-roaming-group-policy-settings.md) |Windows 10-es biztosít a csoportházirend és a mobileszköz-kezelés (MDM) házirend beállításait, és korlátozza a szinkronizálási beállításokat. |
 | [A Windows 10 roaming beállítások referenciája](enterprise-state-roaming-windows-settings-reference.md) |A beállítások, amelyek fog kell forrásul és/vagy a biztonsági másolat a Windows 10 teljes listáját a következő: |
-| [hibaelhárítással](enterprise-state-roaming-troubleshooting.md) |Ez a témakör halad végig hibaelhárítási néhány alapvető lépéseit, és az ismert problémák listáját tartalmazza. |
+| [Hibaelhárítás](enterprise-state-roaming-troubleshooting.md) |Ez a témakör halad végig hibaelhárítási néhány alapvető lépéseit, és az ismert problémák listáját tartalmazza. |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: f684a9d7bca77a8aa3aa60f5079dda0ce3b58a1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587463"
 ---
 # <a name="azure-network-security"></a>Azure hálózati biztonság
@@ -284,9 +284,9 @@ Egy NSG-t, akkor célszerű tisztában lennie a beépített szabályokat tartalm
 
 -   **Egy adott virtuális hálózaton belüli összes forgalom engedélyezése:** Az azonos Azure virtuális hálózatban lévő összes virtuális gép kommunikálhatnak egymással.
 
--   **Lehetővé teszi a bejövő Azure terheléselosztási:** Ez a szabály lehetővé teszi, hogy a forgalmat bármilyen forrás-címről bármely címre az Azure load balancer számára.
+-   **Lehetővé teszi a bejövő Azure terheléselosztási:**  Ez a szabály lehetővé teszi, hogy a forgalmat bármilyen forrás-címről bármely címre az Azure load balancer számára.
 
--   **Az összes bejövő megtagadása:** Ez a szabály az internetről, kifejezetten engedélyezett sourcing minden forgalmat blokkol.
+-   **Az összes bejövő megtagadása:**  Ez a szabály az internetről, kifejezetten engedélyezett sourcing minden forgalmat blokkol.
 
 -   **Minden forgalmat az internetre kimenő engedélyezése:** Ez a szabály lehetővé teszi, hogy a virtuális gépek, az internetes kapcsolatok kezdeményezésének. Ha nem szeretné ezeket a kapcsolatokat kezdeményezni, hozzon létre egy szabályt, amely ezeket a kapcsolatokat letiltása vagy kényszerítése a kényszerített bújtatás szeretné.
 
@@ -360,7 +360,7 @@ Azure-beli hálózati biztonsági berendezéseket a virtuális hálózat biztons
 
 -   VPN
 
--   Tanúsítványkezelés
+-   Tanúsítványok kezelése
 
 -   Active Directory
 
@@ -419,7 +419,7 @@ Az alábbiakban a rendelkezésre állási hálózati vezérlők:
 
 **Az Azure Load balancer**
 
-Magas rendelkezésre állást és hálózati teljesítményt biztosít alkalmazásai számára. 4. réteg (TCP, UDP) terheléselosztó bejövő forgalmat egy elosztott terhelésű készlet definiált szolgáltatások kifogástalan példányai között osztja el.
+Magas rendelkezésre állást és hálózati teljesítményt biztosít alkalmazásai számára. 4\. réteg (TCP, UDP) terheléselosztó bejövő forgalmat egy elosztott terhelésű készlet definiált szolgáltatások kifogástalan példányai között osztja el.
 
  ![Azure Load Balancer](media/azure-network-security/azure-network-security-fig-14.png)
 
@@ -509,7 +509,7 @@ Az Azure a figyelése, megelőzését, észlelését és válaszadás a biztons�
 
 -   Azure Monitor-naplók
 
-### <a name="network-watcher"></a>Hálózati figyelő
+### <a name="network-watcher"></a>A Network watcher
 
 [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) -forgatókönyv-alapú figyelés áll rendelkezésre a Network Watcher funkciókat. A szolgáltatás része, csomagrögzítés, következő ugrási, IP-folyamat ellenőrzése, a biztonsági csoport nézet NSG-Folyamatnaplók. Forgatókönyv szintű monitorozása biztosítja a teljes körű képet szakembereket egyes hálózati erőforrások monitorozása a hálózati erőforrásokhoz.
 
@@ -547,7 +547,7 @@ Meghatározza, hogy a [következő Ugrás](https://docs.microsoft.com/azure/netw
 
 Következő ugrás is az a következő ugrás társított útvonaltábla adja vissza. Lekérdezésekor a következő ugrás, ha egy felhasználó által megadott útvonalat az útvonal van meghatározva, hogy vissza kell. Ellenkező esetben a következő ugrás "Rendszerútvonal" adja vissza.
 
-#### <a name="security-group-view"></a>Biztonságicsoport-nézet
+#### <a name="security-group-view"></a>biztonsági csoport Nézet
 
 A hatékony és alkalmazott biztonsági szabályok, amelyek érvényesek a virtuális gép beolvasása. Hálózati biztonsági csoportok társítva, egy alhálózatot vagy egy hálózati adapterek szintjén. Ha kapcsolódik egy alhálózat szintjén, az alhálózat összes Virtuálisgép-példány vonatkozik. Hálózati [biztonsági csoport nézet](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) adja vissza az összes beállított NSG-k és szabályokat, amelyek a konfiguráció betekintést nyújtó virtuális gép hálózati adapter és az alhálózat szintjén vannak társítva. Emellett az érvényben lévő biztonsági szabályokat a rendszer minden virtuális gép hálózati adapterei adja vissza. Használatával a hálózati biztonsági csoport nézet, felmérheti a hálózati biztonsági réseket, például a portok megnyitása virtuális Géphez. Ha a hálózati biztonsági csoport a várt módon működik alapján is ellenőrizheti a [a konfigurált és érvényben lévő biztonsági szabályok összehasonlítása](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-auditing-powershell).
 
@@ -579,7 +579,7 @@ A Network Watcher lehetővé egy [diagnosztikai naplók](https://docs.microsoft.
 
 A következő funkciók érhetők el az erőforrás-szolgáltatói figyelése:
 
-#### <a name="audit-log"></a>Napló
+#### <a name="audit-log"></a>Auditnapló
 
 Hálózatok konfigurációjának részeként végrehajtott műveleteket a rendszer naplózza. Ezek a naplók alapvető különböző előírások létesíteni. Ezek a naplók tekinthetnek meg az Azure Portalon, vagy használja a Microsoft eszközök, például a Power bi-ban vagy harmadik féltől származó eszközökkel. Auditnaplók – a portal, PowerShell, CLI és Rest API-val érhetők el.
 

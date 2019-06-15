@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: 31738c43756da14ba6c2c92afbcb2882561c8001
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64722871"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# az Apache Hive és a HDInsight az Apache hadoop streamelési Apache Pig, felhasználó által definiált függvények
@@ -54,7 +54,7 @@ A verzió a .NET-keretrendszer és a HDInsight-verziók mellékelt Mono további
 
 ### <a name="apache-hive-udf"></a>Apache Hive UDF
 
-1. Nyissa meg a Visual Studio és a egy megoldás létrehozásához. A projekt típusaként válassza **Console App (.NET Framework)**, és nevezze el az új projekt **HiveCSharp**.
+1. Nyissa meg a Visual Studio és a egy megoldás létrehozásához. A projekt típusaként válassza **Console App (.NET Framework)** , és nevezze el az új projekt **HiveCSharp**.
 
     > [!IMPORTANT]
     > Válassza ki __.NET-keretrendszer 4.5__ egy Linux-alapú HDInsight-fürt használata. A .NET-keretrendszer-verziókat monó kompatibilitást további információkért lásd: [monó kompatibilitási](https://www.mono-project.com/docs/about-mono/compatibility/).
@@ -163,7 +163,7 @@ A verzió a .NET-keretrendszer és a HDInsight-verziók mellékelt Mono további
 
     ![A storage-fiók a fürt megjelenítése a Server Explorerben](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
 
-    * Ez a bejegyzés bővíthetők ki, ha az egy __Azure Storage-fiók__ a fürt alapértelmezett tárolóként. Az alapértelmezett tároló a fürt számára a fájlok megtekintését, bontsa ki a bejegyzést, és kattintson duplán a __(alapértelmezett tároló)__.
+    * Ez a bejegyzés bővíthetők ki, ha az egy __Azure Storage-fiók__ a fürt alapértelmezett tárolóként. Az alapértelmezett tároló a fürt számára a fájlok megtekintését, bontsa ki a bejegyzést, és kattintson duplán a __(alapértelmezett tároló)__ .
 
     * Ha ez a bejegyzés nem bonthatók ki, használja a __Azure Data Lake Storage__ az alapértelmezett tárolóként, a fürt számára. A fájlok a fürt számára az alapértelmezett tároló megjelenítéséhez kattintson duplán a __(alapértelmezett Tárfiók)__ bejegyzés.
 

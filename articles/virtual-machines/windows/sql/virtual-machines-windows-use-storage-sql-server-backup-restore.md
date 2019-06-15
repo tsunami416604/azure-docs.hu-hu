@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 1b6660a1565b3c119cc1dec0823870c7dd5bd24f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61477144"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Azure Storage használata az SQL Server biztonsági mentés és visszaállítás
@@ -51,14 +51,14 @@ Az alábbi Azure-összetevők biztonsági mentése az Azure Blob storage szolgá
 | --- | --- |
 | **Tárfiók** |A storage-fiók szolgál kiindulópontként a storage-szolgáltatások. Azure Blob Storage-szolgáltatás eléréséhez, először létre kell hoznia egy Azure Storage-fiókot. Azure Blob storage szolgáltatással kapcsolatos további információkért lásd: [az Azure Blob Storage szolgáltatás használata](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
 | **Tároló** |Egy tároló áll blobok csoportosítását biztosítja, és korlátlan számú BLOB tárolhatja. Írhat egy SQL Server egy Azure Blob service, a biztonsági mentési kell rendelkeznie legalább a legfelső szintű létrehozott tárolóba. |
-| **Blob** |Bármilyen típusú és méretű fájl. Blobok legyenek a következő URL-formátummal: **https://[storage account].blob.core.windows.net/[container]/[blob]**. A Lapblobok kapcsolatos további információkért lásd: [Understanding Block és Lapblobok](https://msdn.microsoft.com/library/azure/ee691964.aspx) |
+| **Blob** |Bármilyen típusú és méretű fájl. Blobok legyenek a következő URL-formátummal: **https://[storage account].blob.core.windows.net/[container]/[blob]** . A Lapblobok kapcsolatos további információkért lásd: [Understanding Block és Lapblobok](https://msdn.microsoft.com/library/azure/ee691964.aspx) |
 
 ## <a name="sql-server-components"></a>SQL Server-összetevők
 A következő SQL Server-összetevők biztonsági mentése az Azure Blob storage szolgáltatást használják.
 
 | Összetevő | Leírás |
 | --- | --- |
-| **URL-cím** |Egy URL-címet adja meg egy egységes erőforrás-azonosító (URI) egy egyedi biztonsági mentési fájlt. Az URL-cím segítségével adja meg a hely és az SQL Server biztonságimásolat-fájl neve. Az URL-cím a tényleges blobba, nem csak egy tárolóban kell mutatnia. Ha a blob nem létezik, a rendszer létrehozza. Ha meglévő blobokhoz meg van adva, biztonsági MENTÉS sikertelen, kivéve, ha a > WITH FORMAT kapcsolót. Az alábbiakban egy példát az URL-címet kell megadni a BACKUP parancsból a: **http[s]://[storageaccount].blob.core.windows.net/[container]/[FILENAME.bak]**. HTTPS ajánlott, de nem kötelező. |
+| **URL-cím** |Egy URL-címet adja meg egy egységes erőforrás-azonosító (URI) egy egyedi biztonsági mentési fájlt. Az URL-cím segítségével adja meg a hely és az SQL Server biztonságimásolat-fájl neve. Az URL-cím a tényleges blobba, nem csak egy tárolóban kell mutatnia. Ha a blob nem létezik, a rendszer létrehozza. Ha meglévő blobokhoz meg van adva, biztonsági MENTÉS sikertelen, kivéve, ha a > WITH FORMAT kapcsolót. Az alábbiakban egy példát az URL-címet kell megadni a BACKUP parancsból a: **http[s]://[storageaccount].blob.core.windows.net/[container]/[FILENAME.bak]** . HTTPS ajánlott, de nem kötelező. |
 | **Hitelesítő adatok** |A csatlakozáshoz, és az Azure Blob storage szolgáltatás való hitelesítéshez szükséges adatokat a hitelesítő adat van tárolva.  Ahhoz, hogy a biztonsági másolatokat az Azure Blob vagy visszaállítási belőle, hogy az SQL Server, az SQL Server hitelesítő adatokat kell létrehozni. További információkért lásd: [SQL kiszolgálói hitelesítő adatok](https://msdn.microsoft.com/library/ms189522.aspx). |
 
 > [!NOTE]

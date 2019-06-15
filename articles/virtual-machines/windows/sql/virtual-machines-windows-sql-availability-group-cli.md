@@ -15,10 +15,10 @@ ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 5efbe874bbf3c1c4081eb7a2c76c1be5a3358ec8
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65518979"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure SQL virtuális gép CLI használatával az Azure virtuális Gépeken futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása
@@ -38,7 +38,7 @@ Az Always On rendelkezésre állási csoport konfigurálása Azure SQL virtuáli
 - Egy meglévő tartományi felhasználói fiók, amely "A számítógép objektum létrehozása" engedéllyel rendelkezik a tartományban.  Például egy tartományi rendszergazdai fiók általában rendelkezik megfelelő engedéllyel (például: account@domain.com). _Ez a fiók is kell a helyi rendszergazdai csoport összes virtuális gépen a fürt létrehozásához._
 - A tartományi felhasználói fiók, amely az SQL Server szolgáltatás vezérli. 
  
-## <a name="step-1---create-storage-account-as-a-cloud-witness"></a>1. lépés – a felhőbeli tanúsító a storage-fiók létrehozása
+## <a name="step-1---create-storage-account-as-a-cloud-witness"></a>1\. lépés – a felhőbeli tanúsító a storage-fiók létrehozása
 A fürt egy storage-fiókot, hogy működjön, a felhőbeli tanúsító van szüksége. Minden olyan meglévő tárfiókot is használhat, vagy létrehozhat egy új tárfiókot. Ha egy meglévő tárfiókot használni kívánt, folytassa a következő szakaszra. 
 
 A következő kódrészletet a storage-fiókot hoz létre: 
@@ -54,7 +54,7 @@ az storage account create -n <name> -g <resource group name> -l <region ex:eastu
    >[!TIP]
    > A hiba jelenhet `az sql: 'vm' is not in the 'az sql' command group` elavult verziójának használatát az Azure CLI használata. Töltse le a [Azure CLI legújabb verziójának](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) megkerülheti a hibát.
 
-## <a name="step-2---define-windows-failover-cluster-metadata"></a>2. lépés – a Windows feladatátvevő fürt metaadatainak megadása
+## <a name="step-2---define-windows-failover-cluster-metadata"></a>2\. lépés – a Windows feladatátvevő fürt metaadatainak megadása
 Az Azure SQL virtuális gép CLI [az sql virtuális gép csoport](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) parancsot a Windows feladatátvevő fürt (WSFC) szolgáltatás, amely futtatja a rendelkezésre állási csoport metaadatainak kezel. Fürt metaadatait az Active Directory-tartománynak, a fürt fiókok, a storage-fiókok használhatók a felhőbeli tanúsító, és az SQL Server-verzió magában foglalja. Használat [az sql virtuálisgép-csoport létrehozása](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) definiálható a metaadatokat a WSFC az, hogy az első SQL Server virtuális gép hozzáadásakor, a fürt létrehozása meghatározottak szerint. 
 
 A következő kódrészletet a fürt metaadatainak határozza meg:
@@ -74,7 +74,7 @@ az sql vm group create -n <cluster name> -l <region ex:eastus> -g <resource grou
   --storage-account '<ex:https://cloudwitness.blob.core.windows.net/>'
 ```
 
-## <a name="step-3---add-sql-server-vms-to-cluster"></a>3. lépés: az SQL Server virtuális gépek hozzáadása a fürthöz
+## <a name="step-3---add-sql-server-vms-to-cluster"></a>3\. lépés: az SQL Server virtuális gépek hozzáadása a fürthöz
 Az első SQL Server virtuális gép felvétele a fürtbe létrehozza a fürtöt. A [az sql virtuális gép hozzáadása-az-group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) parancs létrehozza a fürtöt a korábban megadott névvel, telepíti az SQL Server virtuális gépek a fürtszerepkör, és hozzáadja őket a fürthöz. A későbbi Használatok a `az sql vm add-to-group` parancs hozzáadja az újonnan létrehozott fürt további SQL Server rendszerű virtuális gépekhez. 
 
 A következő kódrészlet létrehozza a fürtöt, és az első SQL Server virtuális gép hozzá: 
@@ -93,13 +93,13 @@ az sql vm add-to-group -n <VM2 Name> -g <Resource Group Name> --sqlvm-group <clu
 ```
 Használja ezt a parancsot a bármely más SQL Server virtuális gépek hozzáadása a fürt módosítása csak a `-n` paraméter az SQL Server rendszerű virtuális gép nevét. 
 
-## <a name="step-4---create-availability-group"></a>4. lépés – a rendelkezésre állási csoport létrehozása
+## <a name="step-4---create-availability-group"></a>4\. lépés – a rendelkezésre állási csoport létrehozása
 A rendelkezésre állási csoport manuálisan létrehoznia, ahogy azt szokásosan tenné, segítségével [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell), vagy [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
 
   >[!IMPORTANT]
   > Tegye **nem** hozzon létre egy figyelő jelenleg, mert ez az alábbi szakaszok az Azure CLI-n keresztül történik.  
 
-## <a name="step-5---create-internal-load-balancer"></a>5. lépés – belső terheléselosztó létrehozása
+## <a name="step-5---create-internal-load-balancer"></a>5\. lépés – belső terheléselosztó létrehozása
 
 Az Always On rendelkezésre állási csoport (rendelkezésre állási csoport) figyelőjét egy belső Azure Load Balancer (ILB) van szükség. Az ILB a rendelkezésre állási csoport figyelőjének, amely lehetővé teszi a gyorsabb feladatátvételt és újracsatlakozás egy "nem fix" IP-címet biztosít. Ha az SQL Server virtuális gépek rendelkezésre állási csoportban az azonos rendelkezésre állási csoport részét képezik, ezt követően használhatja az alapszintű Load Balancer; Ellenkező esetben azt kell használnia a Standard Load Balancer.  **Az ILB kell lennie az SQL Server Virtuálisgép-példányok megegyező virtuális hálózatba.** 
 
@@ -117,7 +117,7 @@ az network lb create --name sqlILB -g <resource group name> --sku Standard `
   >[!IMPORTANT]
   > Minden egyes SQL Server rendszerű virtuális gép nyilvános IP-erőforrásból rendelkeznie kell a standard Termékváltozat a Standard Load Balancer való kompatibilitás. A virtuális gép nyilvános IP-erőforrás-Termékváltozat határozza meg, lépjen a **erőforráscsoport**, jelölje be a **nyilvános IP-cím** erőforrás számára a kívánt SQL Server virtuális Gépet, és keresse meg az értéket **Termékváltozat**  , a **áttekintése** ablaktáblán.  
 
-## <a name="step-6---create-availability-group-listener"></a>6. lépés – a rendelkezésre állási csoport figyelőjének létrehozása
+## <a name="step-6---create-availability-group-listener"></a>6\. lépés – a rendelkezésre állási csoport figyelőjének létrehozása
 A rendelkezésre állási csoport manuális létrehozása után a figyelő használatával hozhat létre [az sql virtuális gép rendelkezésre állási csoport-figyelő](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create). 
 
 

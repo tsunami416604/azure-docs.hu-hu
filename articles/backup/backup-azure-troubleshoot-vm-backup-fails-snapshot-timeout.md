@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
 ms.openlocfilehash: 826a38dd80db7cd0e6e500949d2c259c3808c0a9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64914954"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
@@ -26,19 +26,19 @@ Ez a cikk ismerteti a hibaelhárítási lépések, amelyek segítségével kommu
 
 ## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable – Virtuálisgép-ügynök nem lehet kommunikálni az Azure Backup szolgáltatással
 
-**Hibakód:**: UserErrorGuestAgentStatusUnavailable <br>
+**Hibakód:** : UserErrorGuestAgentStatusUnavailable <br>
 **Chybová zpráva**: Nem lehet kommunikálni az Azure Backup Virtuálisgép-ügynök<br>
 
 Miután regisztrálta, és a egy virtuális Gépet, a Backup szolgáltatás ütemezése, biztonsági mentése időponthoz pillanatkép készítése a Virtuálisgép-ügynököt kommunikálva indítja el a feladat. Az alábbi feltételek bármelyike előfordulhat, hogy a pillanatkép nem aktiválása. Pillanatkép nem aktiválódik, amikor a biztonsági mentés sikertelen lehet. Kövesse az alábbi hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:<br>
-**1. ok: [Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**1. ok: [Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **2. ok: [Az ügynök telepítve van a virtuális gépen nem naprakész (a Linux rendszerű virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**3. ok: [Nem kérhető le a pillanatfelvétel állapotáról, vagy nem lehet egy pillanatképet készíteni](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
+**3. ok: [Nem kérhető le a pillanatfelvétel állapotáról, vagy nem lehet egy pillanatképet készíteni](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
 **4. ok: [A biztonsági mentési bővítményt frissítésére vagy betöltése sikertelen](#the-backup-extension-fails-to-update-or-load)**  
 **5. ok: [A virtuális gép nem rendelkezik internet-hozzáférés](#the-vm-has-no-internet-access)**
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - kommunikáció nem volt lehetséges a pillanatfelvétel állapotáról Virtuálisgép-ügynök
 
-**Hibakód:**: GuestAgentSnapshotTaskStatusError<br>
+**Hibakód:** : GuestAgentSnapshotTaskStatusError<br>
 **Chybová zpráva**: A virtuális gép ügynökével való kommunikáció nem volt lehetséges a pillanatfelvétel állapotáról <br>
 
 Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatás a ütemezése, biztonsági mentés a Virtuálisgép-biztonsági mentési bővítmény időponthoz pillanatképének kommunikálva indítja el a feladatot. Az alábbi feltételek bármelyike előfordulhat, hogy a pillanatkép nem aktiválása. A pillanatkép nem aktiválódik, ha egy biztonsági mentési hiba fordulhat elő. Kövesse az alábbi hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:  
@@ -48,7 +48,7 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - elérte a Visszaállításipont-gyűjtemény maximális korlátját
 
-**Hibakód:**: UserErrorRpCollectionLimitReached <br>
+**Hibakód:** : UserErrorRpCollectionLimitReached <br>
 **Chybová zpráva**: Elérte a Visszaállításipont-gyűjtemény maximális korlátját. <br>
 * A probléma akkor fordulhat elő, ha a helyreállítási pont erőforráscsoport megakadályozza az automatikus tisztítás helyreállítási pont található egy zárolás.
 * A probléma is előfordulhat, ha naponta több biztonsági mentése esetén. Jelenleg javasoljuk, hogy csak egy biztonsági mentés naponta, 1 – 5 napig megfelelően konfigurált pillanatkép megőrzési az azonnali helyreállítás pontok marad, és csak 18 azonnali RPs társítható egy virtuális Gépet egy adott időpontban. <br>
@@ -63,14 +63,14 @@ A probléma megoldásához távolítsa el a zárolást a az erőforráscsoport, 
 
 ## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured – a biztonsági mentés nem rendelkezik megfelelő engedélyekkel a titkosított virtuális gépek biztonsági mentése a key vault
 
-**Hibakód:**: UserErrorKeyvaultPermissionsNotConfigured <br>
+**Hibakód:** : UserErrorKeyvaultPermissionsNotConfigured <br>
 **Chybová zpráva**: Biztonsági mentés nem rendelkezik megfelelő engedélyekkel a key vault a biztonsági mentéshez, a titkosított virtuális gépekhez. <br>
 
 A titkosított virtuális gépek biztonsági mentési művelethez azt a kulcstartó hozzáférési engedéllyel kell rendelkeznie. Ehhez használja a [az Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) vagy [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection).
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - pillanatkép-készítési művelet sikertelen volt, mert nincs hálózati kapcsolat a virtuális gépen
 
-**Hibakód:**: ExtensionSnapshotFailedNoNetwork<br>
+**Hibakód:** : ExtensionSnapshotFailedNoNetwork<br>
 **Chybová zpráva**: Nem sikerült elkészíteni a pillanatképet, mert nincs hálózati kapcsolat a virtuális gépen<br>
 
 Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatás a ütemezése, biztonsági mentés a Virtuálisgép-biztonsági mentési bővítmény időponthoz pillanatképének kommunikálva indítja el a feladatot. Az alábbi feltételek bármelyike előfordulhat, hogy a pillanatkép nem aktiválása. A pillanatkép nem aktiválódik, ha egy biztonsági mentési hiba fordulhat elő. Kövesse az alábbi hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:    
@@ -80,7 +80,7 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 
 ## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks - VMSnapshot bővítmény művelete sikertelen volt
 
-**Hibakód:**: ExtentionOperationFailedForManagedDisks <br>
+**Hibakód:** : ExtentionOperationFailedForManagedDisks <br>
 **Chybová zpráva**: A VMSnapshot bővítmény művelete sikertelen volt<br>
 
 Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatás a ütemezése, biztonsági mentés a Virtuálisgép-biztonsági mentési bővítmény időponthoz pillanatképének kommunikálva indítja el a feladatot. Az alábbi feltételek bármelyike előfordulhat, hogy a pillanatkép nem aktiválása. A pillanatkép nem aktiválódik, ha egy biztonsági mentési hiba fordulhat elő. Kövesse az alábbi hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:  
@@ -91,7 +91,7 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 
 ## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed / BackUpOperationFailedV2 – biztonsági mentés sikertelen, belső hiba
 
-**Hibakód:**: BackUpOperationFailed / BackUpOperationFailedV2 <br>
+**Hibakód:** : BackUpOperationFailed / BackUpOperationFailedV2 <br>
 **Chybová zpráva**: Biztonsági mentés belső hiba miatt meghiúsult – próbálja megismételni a műveletet néhány perc múlva <br>
 
 Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatás a ütemezése, biztonsági mentés a Virtuálisgép-biztonsági mentési bővítmény időponthoz pillanatképének kommunikálva indítja el a feladatot. Az alábbi feltételek bármelyike előfordulhat, hogy a pillanatkép nem aktiválása. A pillanatkép nem aktiválódik, ha egy biztonsági mentési hiba fordulhat elő. Kövesse az alábbi hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:  
@@ -104,14 +104,14 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 
 ## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095gb"></a>UserErrorUnsupportedDiskSize – a jelenleg az Azure Backup nem támogatja a 4095GB-nál nagyobb lemezméretek
 
-**Hibakód:**: UserErrorUnsupportedDiskSize <br>
+**Hibakód:** : UserErrorUnsupportedDiskSize <br>
 **Chybová zpráva**: Jelenleg az Azure Backup nem támogatja a 4095GB-nál nagyobb lemezméretek <br>
 
 A biztonsági mentési művelet sikertelen lehet, ha a virtuális gép biztonsági mentésével a lemez mérete nagyobb 4095GB-nál. Nagyméretű lemezek támogatása hamarosan elérhető lesz.  
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nem lehet inicializálni a biztonsági mentés, mivel egy másik biztonsági mentési művelet folyamatban van
 
-**Hibakód:**: UserErrorBackupOperationInProgress <br>
+**Hibakód:** : UserErrorBackupOperationInProgress <br>
 **Chybová zpráva**: Nem lehet inicializálni a biztonsági mentés, mivel egy másik biztonsági mentési művelet folyamatban van<br>
 
 A legutóbbi biztonsági mentési feladat sikertelen volt, mert folyamatban van egy meglévő biztonsági mentési feladat. Egy új biztonsági mentési feladat nem indítható el, a jelenlegi feladat befejezéséig. Győződjön meg arról, a folyamatban lévő biztonsági mentési művelet elindítása vagy egy másik biztonsági mentési műveletek ütemezése előtt befejeződött. A biztonsági mentési feladatok állapotának ellenőrzéséhez hajtsa végre az alábbi lépéseket:

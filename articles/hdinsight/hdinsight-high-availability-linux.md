@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
 ms.openlocfilehash: 6cb72730ef3dbef81e2b2c9bc1c5cfd3bbd88b65
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64704927"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Rendelkezésre állás és megbízhatóság, a HDInsight Apache Hadoop-fürtök
@@ -46,7 +46,7 @@ Nimbus-csomópontok az Apache Storm-fürtök érhetők el. A Nimbus-csomópontok
 
 [ZooKeeper](https://zookeeper.apache.org/) csomópontok használt vezetőválasztási az átjárócsomópontokhoz fő szolgáltatások. Annak érdekében, hogy szolgáltatásokat, az adatcsomópontok (munkavégző) és átjárók tudja, melyik átjárócsomópont szolgáltatás főkulcsának aktív a azok is használhatók. Alapértelmezés szerint a HDInsight három ZooKeeper-csomópontok biztosít.
 
-### <a name="worker-nodes"></a>Feldolgozó-csomópontok
+### <a name="worker-nodes"></a>Munkavégző csomópontok
 
 Munkavégző csomópontok a tényleges adatelemzés végrehajtása a feladat elküldésekor a fürthöz. Ha egy feldolgozó csomópont meghibásodik, az általa feladat elküldésekor egy másik munkavégző csomópont. Alapértelmezés szerint a HDInsight négy feldolgozó csomópontokat hoz létre. Ez a szám igényei alatt és fürt létrehozása után módosíthatja.
 
@@ -112,7 +112,7 @@ Nincsenek ikonok mellett egy szolgáltatás, amely állapotát jelzi az esetlege
 
 Az alábbi riasztásokat segíti a fürt rendelkezésre állásának figyelése:
 
-| Riasztás megnevezése                               | Leírás                                                                                                                                                                                  |
+| Riasztás neve                               | Leírás                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Metrika a figyelő állapota                    | Ez a riasztás azt jelzi, hogy a figyelő állapota parancsfájl határoz meg a metrikák figyelése folyamatának állapotát.                                                                                   |
 | Az Ambari Ügynökszívverés                   | Ez a riasztás akkor aktiválódik, ha a kiszolgáló elvesztette a kapcsolatot az ügynök.                                                                                                                        |

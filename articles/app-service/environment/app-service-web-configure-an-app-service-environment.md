@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c0b4117f6e7b48dce1746ad6eb3dbe29c0d16af
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130619"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurálása az App Service környezet v1
@@ -37,7 +37,7 @@ Magas szintű az Azure App Service-környezet több fő összetevőből áll:
 * Classic(V1) vagy az erőforrás Manager(V2) Azure virtuális hálózat (VNet) 
 * Az App Service-környezetben üzemeltetett szolgáltatás fut, az alhálózat
 
-### <a name="compute-resources"></a>Számítási erőforrások
+### <a name="compute-resources"></a>A számítási erőforrásokat
 A négy erőforráskészletek esetében használja a számítási erőforrások.  Minden App Service Environment (ASE) az előtérrendszerek és három lehetséges feldolgozókészletek rendelkezik. Nem kell használnia minden három feldolgozókészletek – Ha azt szeretné, ugyanúgy használhatja egy vagy két.
 
 Az erőforráskészletek (előtérrendszerekből és) lévő gazdagépek nem érhetők el közvetlenül a bérlők számára. Távoli asztal protokoll (RDP) használatával való kapcsolódást, módosítsa a kiépítés nem, vagy rendszergazdai jogosultságokkal azok szerepét.

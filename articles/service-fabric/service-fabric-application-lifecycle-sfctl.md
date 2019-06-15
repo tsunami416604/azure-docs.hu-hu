@@ -2,18 +2,17 @@
 title: Az Azure Service Fabric parancssori felület (sfctl) használatával az Azure Service Fabric-alkalmazások kezelése
 description: Ismerje meg, hogyan telepíthet és távolíthat el alkalmazásokat az Azure Service Fabric-fürt az Azure Service Fabric parancssori felület használatával
 services: service-fabric
-author: rockboyfor
-manager: digimobile
+author: Christina-Kang
+manager: chackdan
 ms.service: service-fabric
 ms.topic: conceptual
-origin.date: 07/31/2018
-ms.date: 04/29/2019
-ms.author: v-yeche
+ms.date: 07/31/2018
+ms.author: bikang
 ms.openlocfilehash: 9b0f785a6a43f984708645084a8a8036326d3d24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60621377"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Az Azure Service Fabric-alkalmazás kezelése az Azure Service Fabric parancssori felület (sfctl) használatával
@@ -171,5 +170,3 @@ Végül, ha egy frissítés van folyamatban, és igényeinek megfelelően kell l
 * [Service Fabric parancssori felület alapjai](service-fabric-cli.md)
 * [Ismerkedés a Service Fabric Linux rendszeren](service-fabric-get-started-linux.md)
 * [A Service Fabric-alkalmazás frissítése elindítása](service-fabric-application-upgrade.md)
-
-<!--Update_Description: update meta properties -->

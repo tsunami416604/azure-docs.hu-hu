@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cffef4028a684e27c0941c234df551d844f13420
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65896863"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Tevékenységnaplók az Azure monitorban
@@ -103,7 +103,7 @@ Az alábbi táblázat egy alapszintű eseményközpont becsült havi költségé
 | Naplókategória | Felhasználók száma | Események száma másodpercenként | Események száma ötperces időközönként | Adatmennyiség az egyes időablakokban | Üzenetek száma időközönként | Üzenetek száma havonta | Havi költség (becsült) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Naplózás | 100,000 | 18 | 5400 | 10,8 MB | 43 | 371 520 | 10,83 dollár |
-| Naplózás | 1,000 | 0,1 | 52 | 104 KB | 1. | 8640 | 10,80 dollár |
+| Naplózás | 1,000 | 0,1 | 52 | 104 KB | 1 | 8640 | 10,80 dollár |
 | Bejelentkezések | 1,000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 dollár |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Az Azure Monitor-naplók költség kapcsolatos szempontok

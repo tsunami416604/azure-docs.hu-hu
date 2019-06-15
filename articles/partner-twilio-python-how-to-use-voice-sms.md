@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61457668"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Hogyan lehet a Twilio használata Hanghívási és SMS-funkciókhoz a Pythonban
@@ -46,17 +46,17 @@ Az API-t felhasznál Twilio műveleteket; Ha például a **&lt;Say&gt;** művele
 
 Az alábbiakban látható egy Twilio-műveletek listájához. Ismerje meg az egyéb műveletek és funkciókat [Twilio Markup Language dokumentáció][twiml].
 
-* **&lt;Tárcsázás&gt;**: A hívó csatlakozik egy másik telefonon.
-* **&lt;Gyűjtse össze&gt;**: Gyűjti a telefon billentyűzeten beírt számjegyeket.
-* **&lt;Vonalbontás&gt;**: A hívás véget ér.
-* **&lt;Felfüggesztés&gt;**: A megadott számú másodperc vár beavatkozás nélkül.
-* **&lt;Play&gt;**: Hang lejátszása.
-* **&lt;Queue&gt;**: Adja hozzá a hívók egy üzenetsorba.
-* **&lt;Rekord&gt;**: A hang, a hívó rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
-* **&lt;Redirect&gt;**: Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
-* **&lt;Elutasítás&gt;**: A Twilio-számra bejövő hívás elutasítja, számlázási nélkül.
-* **&lt;Tegyük fel, hogy&gt;**: Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
-* **&lt;SMS&gt;**: SMS üzenetet küld.
+* **&lt;Tárcsázás&gt;** : A hívó csatlakozik egy másik telefonon.
+* **&lt;Gyűjtse össze&gt;** : Gyűjti a telefon billentyűzeten beírt számjegyeket.
+* **&lt;Vonalbontás&gt;** : A hívás véget ér.
+* **&lt;Felfüggesztés&gt;** : A megadott számú másodperc vár beavatkozás nélkül.
+* **&lt;Play&gt;** : Hang lejátszása.
+* **&lt;Queue&gt;** : Adja hozzá a hívók egy üzenetsorba.
+* **&lt;Rekord&gt;** : A hang, a hívó rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
+* **&lt;Redirect&gt;** : Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
+* **&lt;Elutasítás&gt;** : A Twilio-számra bejövő hívás elutasítja, számlázási nélkül.
+* **&lt;Tegyük fel, hogy&gt;** : Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
+* **&lt;SMS&gt;** : SMS üzenetet küld.
 
 ### <a id="TwiML"></a>TwiML
 TwiML XML-alapú utasítások alapján a Twilio-műveleteket tartalmazó tájékoztatja a hívás feldolgozása Twilio vagy SMS.

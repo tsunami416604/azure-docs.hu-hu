@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 4943b730bb46ee00200d84faf95a7ccb069d3aa8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60790995"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Az Azure Disk Encryption-kompatibilis virtuális gépek replikálása másik Azure-régióba
@@ -29,18 +29,18 @@ A virtuális gépek lemeztitkosítás engedélyezve van az Azure Portalról a re
 
 - Key vault-engedélyek
     - Lista
-    - Létrehozás
+    - Hozzon létre
     - Lekérés
 
 -   A Key vault titkos kód engedélyei
     - Lista
-    - Létrehozás
+    - Hozzon létre
     - Lekérés
 
 - A Key vault Kulcsengedélyek (csak a virtuális gépek kulcstitkosítási kulcs segítségével titkosíthatja a lemeztitkosítási kulcsok esetén szükséges)
     - Lista
     - Lekérés
-    - Létrehozás
+    - Hozzon létre
     - Titkosítás
     - Visszafejtés
 
@@ -98,8 +98,8 @@ Ebben a példában az elsődleges Azure-régióban, Kelet-Ázsia, és a másodla
     - **Érintett előfizetés**: A célként megadott előfizetés, amely vész-helyreállítási szolgál. Alapértelmezés szerint a célként megadott előfizetés megegyezik a forrás-előfizetés.
     - **Céloldali erőforráscsoport**: Az erőforráscsoport, ahol az összes a replikált virtuális gépek tartoznak. Alapértelmezés szerint a Site Recovery létrehoz egy új erőforráscsoportot a célrégióban. A név lekéri az "asr" utótaggal. Ha az erőforráscsoport már létezik az Azure Site Recovery által létrehozott, a rendszer újra. Azt is beállíthatja testre szabni, a következő szakaszban látható módon. A céloldali erőforráscsoport helye lehet a régiót, a forrás virtuális gépeket üzemeltető kivételével bármelyik Azure-régióban.
     - **Cél virtuális hálózattal**: Alapértelmezés szerint a Site Recovery létrehoz egy új virtuális hálózat a célrégióban. A név lekéri az "asr" utótaggal. A forrás hálózati leképezve, és minden jövőbeli védelemhez használt. [További](site-recovery-network-mapping-azure-to-azure.md) információk a hálózatleképezésről.
-    - **Cél tárfiókok (Ha a forrás virtuális gép nem használ felügyelt lemezeket)**: Alapértelmezés szerint a Site Recovery által a forrás virtuális gép tárkonfigurációt mimicking új céltárfiók hoz létre. Ha már létezik egy tárfiókot, a rendszer újra.
-    - **Replikált felügyelt lemezek (Ha a forrásoldali virtuális gép felügyelt lemezeket használ)**: Site Recovery új replika felügyelt lemezeket hoz létre a célrégióban a forrás virtuális gép felügyelt lemezekre vonatkozó azonos tártípusban (standard vagy prémium), a forrás virtuális gép lemezét tükrözéséhez.
+    - **Cél tárfiókok (Ha a forrás virtuális gép nem használ felügyelt lemezeket)** : Alapértelmezés szerint a Site Recovery által a forrás virtuális gép tárkonfigurációt mimicking új céltárfiók hoz létre. Ha már létezik egy tárfiókot, a rendszer újra.
+    - **Replikált felügyelt lemezek (Ha a forrásoldali virtuális gép felügyelt lemezeket használ)** : Site Recovery új replika felügyelt lemezeket hoz létre a célrégióban a forrás virtuális gép felügyelt lemezekre vonatkozó azonos tártípusban (standard vagy prémium), a forrás virtuális gép lemezét tükrözéséhez.
     - **Gyorsítótár tárfiókjai**: A Site Recovery egy extra nevű tárfiókot kell *tárolási gyorsítótár* a forrásrégióban. A forrásoldali virtuális gép az összes módosítást nyomon követni, és a gyorsítótárfiók küldött. Ezek még ezután a rendszer a célhelyen.
     - **A rendelkezésre állási csoport**: Alapértelmezés szerint a Site Recovery létrehoz egy új rendelkezésre állási csoportot a célrégióban. Neve az "asr" utótaggal rendelkezik. Ha a Site Recovery által már létrehozott rendelkezésre állási csoport létezik, az azt újra.
     - **Lemez titkosítása kulcstartók**: Alapértelmezés szerint a Site Recovery létrehoz egy új kulcstartót a célrégióban. Rendelkezik egy "asr" utótaggal, a forrás virtuális gépek lemeztitkosítási kulcsok alapján. Ha már létezik az Azure Site Recovery által már létrehozott egy kulcstartót, újra.

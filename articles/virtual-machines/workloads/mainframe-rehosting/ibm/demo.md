@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: c6fcb345b49ce6354a24408ebe163fb928990252
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925694"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Állítsa be az alkalmazás fejlesztők szabályozott terjesztési (ADCD) IBM zD & T v1
@@ -165,7 +165,7 @@ Ha az előző konfigurációs lépés befejeződött, a **hozzon létre egy rend
 
 7. A következő képernyőn adja meg a hitelesítő adatait a virtuális gép (azaz nem a ztadmin hitelesítő adatok).
 
-8. A Tulajdonságok panelen adja meg az **központi processzor (CPs)**, mennyisége **System memória (GB)**, és a **telepítési könyvtár** a lemezképhez. Mivel ez egy bemutatót, maradjon kicsi.
+8. A Tulajdonságok panelen adja meg az **központi processzor (CPs)** , mennyisége **System memória (GB)** , és a **telepítési könyvtár** a lemezképhez. Mivel ez egy bemutatót, maradjon kicsi.
 
 9. Ellenőrizze, hogy a be van jelölve a **automatikus probléma IPL parancs után z/operációs rendszer központi telepítését**.
 
@@ -186,7 +186,7 @@ Gratulálunk! IBM Nagyszámítógépek környezet az Azure-ban most futtatja.
 
 - [Nagyszámítógépek migrálása: tévhitet és tények](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [IBM DB2-höz pureScale az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [hibaelhárítással](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Hibaelhárítás](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [Az Azure-migrálás nagyszámítógépes nyelvszakértőinkből](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

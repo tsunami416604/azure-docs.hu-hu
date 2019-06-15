@@ -13,10 +13,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 0fefe01e413e30e4aa3c1fa90de77cbdece39c38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61417388"
 ---
 # <a name="sql-database-audit-log-format"></a>Az SQL Database naplózási naplóformátum
@@ -70,12 +70,12 @@ Naplózás konfigurálása során meghatározott a Log Analytics-munkaterület �
 | response_rows | response_rows_d | Az eredményhalmaz visszaadott sorok száma | bigint | int |
 | schema_name | schema_name_s | A séma környezet, amelyben a művelet történt. A séma kívül bekövetkező eseményeket NULL | sysname | string |
 | – | securable_class_type_s | Biztonságos, a naplózott class_type leképező objektum | – | string |
-| sequence_group_id | sequence_group_id_g | Egyedi azonosító | Varbinary | GUID |
+| sequence_group_id | sequence_group_id_g | Egyedi azonosító | varbinary | GUID |
 | sequence_number | sequence_number_d | Nyomon követi a rekordok, amelyek túl nagy volt ahhoz, hogy az írási puffert naplózások elférjen egyetlen naplórekordot belül sorrendje | int | int |
 | server_instance_name | server_instance_name_s | Ahol a naplózási történt server-példány neve | sysname | string |
 | server_principal_id | server_principal_id_d | A bejelentkezési környezet, amelyben a művelet végrehajtását azonosítója | int | int |
 | server_principal_name | server_principal_name_s | Az aktuális bejelentkezési | sysname | string |
-| server_principal_sid | server_principal_sid_s | Az aktuális bejelentkezési biztonsági azonosítója | Varbinary | string |
+| server_principal_sid | server_principal_sid_s | Az aktuális bejelentkezési biztonsági azonosítója | varbinary | string |
 | session_id | session_id_d | Az esemény történt, amelyen a munkamenet azonosítója | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | Munkamenethez tartozó kiszolgálói tag | sysname | string |
 | Utasítás | statement_s | T-SQL-utasítás (ha vannak) végrehajtott | nvarchar(4000) | string |
@@ -84,7 +84,7 @@ Naplózás konfigurálása során meghatározott a Log Analytics-munkaterület �
 | target_database_principal_name | target_database_principal_name_s | Célfelhasználó művelet. NULL értékű, ha nem alkalmazható | string | string |
 | target_server_principal_id | target_server_principal_id_d | Kiszolgálói tag a GRANT/DENY/REVOKE műveletet végrehajtó. 0 értéket adja vissza, ha nem alkalmazható | int | int |
 | target_server_principal_name | target_server_principal_name_s | Cél bejelentkezési művelet. NULL értékű, ha nem alkalmazható | sysname | string |
-| target_server_principal_sid | target_server_principal_sid_s | Cél bejelentkezési biztonsági azonosítója. NULL értékű, ha nem alkalmazható | Varbinary | string |
+| target_server_principal_sid | target_server_principal_sid_s | Cél bejelentkezési biztonsági azonosítója. NULL értékű, ha nem alkalmazható | varbinary | string |
 | transaction_id | transaction_id_d | Csak az SQL Server (2016-tól induló) – az Azure SQL DB 0 | bigint | int |
 | user_defined_event_id | user_defined_event_id_d | Felhasználó által definiált sp_audit_write argumentumként átadott eseményazonosító. NULL értékű, a rendszer események (alapértelmezett) és a felhasználó által meghatározott esemény nem nulla. További információkért lásd: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
 | user_defined_information | user_defined_information_s | Felhasználó által definiált sp_audit_write argumentumként átadott adatokat. NULL értékű, a rendszer események (alapértelmezett) és a felhasználó által meghatározott esemény nem nulla. További információkért lásd: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar(4000) | string |

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2018
 ms.author: alkohli
 ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630138"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>A StorSimple Virtual Array – ajánlott eljárások
@@ -60,7 +60,7 @@ Az előző tényezők alapján, a méretezési követelmények az alábbi képle
 
 Az alábbi példák bemutatják, hogyan méretét a virtuális tömb igényei alapján.
 
-#### <a name="example-1"></a>1. példa:
+#### <a name="example-1"></a>1\. példa:
 Tudni szeretné a virtuális tömb
 
 * 2 TB rétegzett kötet vagy megosztás kiépítése.
@@ -88,7 +88,7 @@ Amíg nem várt növekedés és az új visszaállítások, körül a helyi lemez
 > Azt javasoljuk, hogy a helyi lemez vékonyan létesített. Ez a javaslat azért, hogy a visszaállítási helyet csak akkor van szükség, ha a visszaállítandó öt napnál régebbi adatokat. Elemszintű helyreállítás anélkül, hogy a további területet a visszaállításhoz az utolsó öt nap az adatok helyreállítását teszi lehetővé.
 
 
-#### <a name="example-2"></a>2. példa
+#### <a name="example-2"></a>2\. példa
 Tudni szeretné a virtuális tömb
 
 * 2 TB rétegzett kötetek kiépítéséhez
@@ -237,7 +237,7 @@ Feladatátvétel végrehajtásához keresztül a virtuális tömb, vegye figyele
   * Hiba történt a tényleges feladatátvétel során. A céleszköz ebben az esetben használhatatlan van megjelölve. Üzembe helyezése és konfigurálása egy másik céloldali virtuális tömb és kell használnia, amely feladatátvételhez.
   * A feladatátvétel befejeződött, ami a forráseszközt törölve lett a következő volt, de a céleszköz problémákkal rendelkezik, és semmilyen adatot nem férhet hozzá. Az adatok biztonságos-e továbbra is a felhőben, és egy másik virtuális tömbbe létrehozásával, és majd használni a céleszközön a vészhelyreállítás egyszerűen lekérhető.
 
-### <a name="deactivate"></a>Inaktiválás
+### <a name="deactivate"></a>inaktiválása
 A StorSimple Virtual Array inaktiválása, akkor az eszköz és a megfelelő a StorSimple Manager szolgáltatás közötti kapcsolat kiszolgálófejléc. Inaktiválási van egy **állandó** műveletet, és nem vonható vissza. Inaktivált eszköz nem lehet regisztrálni a StorSimple Manager szolgáltatással újra. További információért ugorjon [inaktiválása és törlése a StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md).
 
 Ha a virtuális tömb inaktiválása tartsa szem előtt az alábbi ajánlott eljárásokat:

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606434"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Az Azure Resource Manager kipróbálása
@@ -362,7 +362,7 @@ Jelenleg számítja ki a teljes száma a lehetséges egyidejű Tesztverzió fog 
 
 **Test Drive Resource Manager-sablon –** *szükséges* Itt a Resource Manager-sablon feltöltése. Ez az a fenti az előző szakaszban létrehozott fájlt. A fő sablon fájl neve: "main-template.json", és győződjön meg arról, hogy a Resource Manager-sablon szükséges kulcs változókat kimeneti paramétereket tartalmaz. (.Zip kiterjesztésű fájlnak kell lennie)
 
-**Információ - hozzáférés** *szükséges* után az ügyfél lekéri a Test Drive, a hozzáférési információk jelennek-e meg a számukra. Ezeket az utasításokat úgy van kialakítva, hogy a hasznos a kimeneti paraméterek a Test Drive Resource Manager-sablon megosztása. Adja meg a kimeneti paraméterek, használja a kapcsos zárójelek (például **{{outputname}}**), és azok kerül beillesztésre megfelelően a helyen. (HTML karakterlánc-formátum ajánlott Itt jelennek meg az előtér).
+**Információ - hozzáférés** *szükséges* után az ügyfél lekéri a Test Drive, a hozzáférési információk jelennek-e meg a számukra. Ezeket az utasításokat úgy van kialakítva, hogy a hasznos a kimeneti paraméterek a Test Drive Resource Manager-sablon megosztása. Adja meg a kimeneti paraméterek, használja a kapcsos zárójelek (például **{{outputname}}** ), és azok kerül beillesztésre megfelelően a helyen. (HTML karakterlánc-formátum ajánlott Itt jelennek meg az előtér).
 
 ### <a name="test-drive-deployment-subscription-details"></a>Tesztelés üzembe helyezési előfizetés részletei
 
@@ -403,7 +403,7 @@ Kattintson a Mentés gombra. Az utolsó lépés, hogy az Alkalmazásazonosítót
 Adott használjuk az alkalmazás üzembe helyezéséhez az előfizetéshez, hozzá kell adnunk a az alkalmazás az előfizetés közreműködője. A következő útmutatót: ezek a következők alatt:
 
 1. Az előfizetések panelen keresse meg, és válassza ki a megfelelő előfizetést, amely csak a Test Drive használja.
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 1. Kattintson a **szerepkör-hozzárendelések** fülre.  ![Adjon hozzá egy új hozzáférés-vezérlés egyszerű](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Kattintson a **szerepkör-hozzárendelés hozzáadása**.
 1. Állítsa be a szerepkört, **közreműködői**.

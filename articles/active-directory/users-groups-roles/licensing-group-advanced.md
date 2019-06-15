@@ -16,17 +16,17 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24bf8e7cf103d583cf6604e0c529ad4ea267ce84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60471906"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátait és ismert problémák csoportok használata kezelheti az Azure Active Directory licencelése
 
 A következő információk és példák segítségével egy Azure Active Directory (Azure AD) a Csoportalapú licencelés speciális ismereteket szerezhet.
 
-## <a name="usage-location"></a>Felhasználás helye
+## <a name="usage-location"></a>Használat helye
 
 Nem minden Microsoft-szolgáltatás érhető el minden területen. Egy úgy lehet licencet a felhasználóhoz, mielőtt a rendszergazda adja meg, hogy rendelkezik-e a **a felhasználási hely** tulajdonság a felhasználóra. A [az Azure Portalon](https://portal.azure.com), megadhatja a **felhasználói** &gt; **profil** &gt; **beállítások**.
 
@@ -188,7 +188,7 @@ Licenc egy csoporttól változásakor Azure ad-ben indul el a módosítások alk
    > ```
 
 3. A teljes naplójában hogyan csoport dolgozta, beleértve az összes felhasználó módosításait, állítsa be a következő szűrőket:
-   - **Kezdeményező (szereplő)**: "A Microsoft Azure AD biztonságicsoport-alapú licencelése"
+   - **Kezdeményező (szereplő)** : "A Microsoft Azure AD biztonságicsoport-alapú licencelése"
    - **Dátumtartomány** (nem kötelező): Ha egy adott csoport ismeri az egyéni tartomány elindult és befejeződött a feldolgozás
 
 A kimeneti példa azt mutatja, hogy feldolgozás, az ebből származó felhasználói változások és a Befejezés gombra a feldolgozás megkezdése.

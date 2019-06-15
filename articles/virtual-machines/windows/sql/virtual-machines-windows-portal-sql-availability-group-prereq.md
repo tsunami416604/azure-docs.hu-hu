@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.openlocfilehash: 1d0f3bfa03eb4bafdd10222e28782c318848b7f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60592244"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Teljesítse az előfeltételeket az Always On rendelkezésre állási csoportok létrehozása az Azure-beli virtuális gépeken
@@ -85,7 +85,7 @@ A virtuális hálózat létrehozása:
    | --- | --- |
    | **Name (Név)** |autoHAVNET |
    | **Címtér** |10.33.0.0/24 |
-   | **Alhálózat neve** |Adminisztratív körzet |
+   | **Alhálózat neve** |rendszergazda |
    | **Alhálózati címtartomány** |10.33.0.0/29 |
    | **Előfizetés** |Válassza ki a használni kívánt előfizetést. **Előfizetés** üres, ha csak egy előfizetéssel rendelkezik. |
    | **Erőforráscsoport** |Válasszon **meglévő** , és válassza ki az erőforráscsoport nevét. |
@@ -158,7 +158,7 @@ Miután létrehozta a hálózat, alhálózat, a rendelkezésre állási csoporto
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>A tartományvezérlők virtuális gépek létrehozása
 Hozzon létre, és a tartományvezérlők konfigurálása, térjen vissza a **SQL-magas rendelkezésre ÁLLÁS-RG** erőforráscsoportot.
 
-1. Kattintson a **Hozzáadás** parancsra. 
+1. Kattintson a **Hozzáadás**lehetőségre. 
 2. Típus **Windows Server 2016 Datacenter**.
 3. Kattintson a **Windows Server 2016 Datacenter**. A **Windows Server 2016 Datacenter**, győződjön meg arról, hogy az üzembe helyezési modell **Resource Manager**, és kattintson a **létrehozás**. 
 
@@ -184,7 +184,7 @@ Az alábbi táblázat ezek két gép beállításait:
 | **Erőforráscsoport** |SQL-HA-RG |
 | **Hely** |*A hely* |
 | **Méret** |DS1_V2 |
-| **Tárolás** | **Felügyelt lemezek használata** - **Igen** |
+| **Storage** | **Felügyelt lemezek használata** - **Igen** |
 | **Virtuális hálózat** |autoHAVNET |
 | **Alhálózat** |admin |
 | **Nyilvános IP-cím** |*Neve megegyezik a virtuális gép* |
@@ -206,7 +206,7 @@ Az alábbi lépésekkel, konfigurálja a **ad-elsődleges-tartományvezérlő** 
 1. A portálon nyissa meg a **SQL-magas rendelkezésre ÁLLÁS-RG** erőforrás-csoport, és válassza a **ad-elsődleges-tartományvezérlő** gép. A **ad-elsődleges-tartományvezérlő**, kattintson a **Connect** egy RDP-fájl, amely távoli asztali hozzáférés megnyitásához.
 
     ![Csatlakozás virtuális géphez](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/20-connectrdp.png)
-2. Jelentkezzen be a beállított rendszergazdai fiókjával (**\DomainAdmin**) és a jelszót (**Contoso! 0000**).
+2. Jelentkezzen be a beállított rendszergazdai fiókjával ( **\DomainAdmin**) és a jelszót (**Contoso! 0000**).
 3. Alapértelmezés szerint a **Kiszolgálókezelő** irányítópult üzenetnek kell megjelennie.
 4. Kattintson a **szerepkörök és szolgáltatások hozzáadása** hivatkozás az irányítópulton.
 

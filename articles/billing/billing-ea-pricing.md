@@ -16,10 +16,10 @@ ms.date: 02/22/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: d4c64433089f14d845cea8be9adf0ef13675cfd1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127633"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Megtekintheti és letöltheti a szervezet az Azure díjszabása
@@ -51,7 +51,7 @@ A számlázási profil tulajdonos, közreműködő, olvasó vagy számla manager
 ### <a name="download-price-sheets-for-the-current-billing-period"></a>Töltse le az árlisták az aktuális elszámolási időszakban
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
+1. A Keresés **Cost Management és számlázás**.
 1. Válassza ki a számlázási profilt. A hozzáférést, attól függően szükség lehet először ki kell választania egy számlázási fiókot.
 1. Az a **áttekintése** panelen keresse meg a letöltési hivatkozások a hónap elejétől számított díjakat alatt.
 1. Válassza ki **Azure árlista**.
@@ -60,7 +60,7 @@ A számlázási profil tulajdonos, közreműködő, olvasó vagy számla manager
 ### <a name="download-price-sheets-for-billed-charges"></a>Töltse le az árlisták számlázott díjak
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
+1. A Keresés **Cost Management és számlázás**.
 1. Válassza ki a számlázási profilt. A hozzáférést, attól függően szükség lehet először ki kell választania egy számlázási fiókot.
 1. Válassza ki a **Számlák** elemet.
 1. A számla rács megkeresi a letölteni kívánt árlistát tartozó számla.
@@ -78,7 +78,7 @@ Is használhatja a szervezet díjszabása alapján az az Azure díjkalkulátorá
 
 1. Nyissa meg a [Azure díjkalkulátorát](https://azure.microsoft.com/pricing/calculator).
 1. A jobb felső sarokban, válassza ki a **jelentkezzen be a**.
-1. A **programok és ajánlat** > **licencelési Program**válassza **nagyvállalati szerződés (EA)**.
+1. A **programok és ajánlat** > **licencelési Program**válassza **nagyvállalati szerződés (EA)** .
 1. A **programok és ajánlat** > **kiválasztott szerződés**válassza **egy elem sincs kijelölve**.
 
     ![Az árlista képernyőkép letöltése csv-gomb](./media/billing-ea-pricing/ea-pricing-calculator-estimate.png)

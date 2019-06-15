@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: adsolank;juliako;johndeu
 ms.openlocfilehash: a11ae0414d6737f1588515ec19524bcf499f0c74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61215805"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>A médiafájlokat az Azure Media Indexerrel
@@ -260,10 +260,10 @@ Egy hiba esetén az Azure Media Indexer jelentést kell biztonsági másolatot a
 | --- | --- | --- |
 | 2000 |Érvénytelen konfiguráció |Érvénytelen konfiguráció |
 | 2001 |Érvénytelen bemeneti eszközök |Hiányzik a bemeneti eszközök, illetve üres eszköz. |
-| 2002 |Érvénytelen jegyzékfájl |Jegyzékfájl üres vagy jegyzékfájlja érvénytelen elemet tartalmaz. |
+| 2002 |Érvénytelen a jegyzékfájl. |Jegyzékfájl üres vagy jegyzékfájlja érvénytelen elemet tartalmaz. |
 | 2003 |Nem sikerült letölteni a médiafájl |Érvénytelen URL-cím-jegyzékfájl. |
 | 2004 |Protokoll nem támogatott |Médiafájl URL-címe, protokoll nem támogatott. |
-| 2005 |Nem támogatott fájltípus |Bemeneti fájl típusa nem támogatott. |
+| 2005 |Nem támogatott fájltípus. |Bemeneti fájl típusa nem támogatott. |
 | 2006 |Túl sok a bemeneti fájl |Több mint 10 fájlok vannak a bemeneti jegyzékfájlban. |
 | 3000 |Nem sikerült dekódolni a médiafájl |Nem támogatott adathordozó kodek <br/>vagy<br/> Sérült médiafájl <br/>vagy<br/> Nincs a bemeneti audio stream. |
 | 4000 |Részlegesen sikerült a Batch-indexelő |Egyes bemeneti fájlokat nem sikerült indexelhetők. További információkért lásd: <a href="#output_files">kimeneti fájlok</a>. |

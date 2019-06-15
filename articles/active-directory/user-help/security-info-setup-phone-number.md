@@ -13,10 +13,10 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c1620be30d8cdf3a592ab0fc118938783579689
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60474993"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>Biztonsági adatok (előzetes verzió) beállítása telefonhívásokat használatára
@@ -86,11 +86,11 @@ Ha azt szeretné, hogy telefonhívásokat kell az alapértelmezett módszer hasz
 
     ![Módosítás hivatkozásra az alapértelmezett bejelentkezési módszer](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. Válassza ki **telefon - hívás (*_your_phone_number_*)** elérhető módszerek, és válassza ki a legördülő listából **megerősítése**.
+2. Válassza ki **telefon - hívás ( *_your_phone_number_* )** elérhető módszerek, és válassza ki a legördülő listából **megerősítése**.
 
     ![Az alapértelmezett bejelentkezési módszer kiválasztása](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-    Az alapértelmezett módszer használt bejelentkezési módosítások **telefon - hívás (*_your_phone_number_*)**.
+    Az alapértelmezett módszer használt bejelentkezési módosítások **telefon - hívás ( *_your_phone_number_* )** .
 
 ## <a name="additional-security-info-methods"></a>További biztonsági adatok módszerek
 Hogyan a szervezet névjegyeket igazolhatja személyazonosságát, akkor mi alapján szeretne ehhez további lehetősége van. A lehetőségek a következők:

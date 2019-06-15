@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: 734cf09869e5a2df5f9a505a3cb8ccc7bc2338d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60402315"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Az Azure Cosmos DB Azure Stream Analytics-kimenet  
@@ -58,9 +58,9 @@ Rögzített Azure Cosmos DB-gyűjtemények a Stream Analytics lehetővé teszi a
 Több állandó tároló való írás hamarosan elavulttá válik, és nem az ajánlott módszer a horizontális felskálázás a Stream Analytics-feladatot. A cikk [particionálás és skálázás az, Cosmos DB](../cosmos-db/sql-api-partition-data.md) további részleteket tartalmaz.
 
 ## <a name="improved-throughput-with-compatibility-level-12"></a>Nagyobb átviteli sebességet a kompatibilitási szint 1.2-es verziójával
--Es kompatibilitási szintű 1.2-es a Stream Analytics támogatja a natív integráció tömeges az Cosmos DB-be írni. Ez lehetővé teszi a írnak hatékonyan a Cosmos DB a lehető legnagyobb átviteli sebességet, és hatékonyan leíró szabályozási kérelmeket. A továbbfejlesztett írása mechanizmus az upsert viselkedése miatt egy új kompatibilitási szint alatt érhető el.  1.2-es, mielőtt az upsert működése beszúrása vagy egyesíteni a dokumentumot. Az 1.2-es upserts viselkedés úgy módosul, helyezze be vagy cserélje le a dokumentumot. 
+-Es kompatibilitási szintű 1.2-es a Stream Analytics támogatja a natív integráció tömeges az Cosmos DB-be írni. Ez lehetővé teszi a írnak hatékonyan a Cosmos DB a lehető legnagyobb átviteli sebességet, és hatékonyan leíró szabályozási kérelmeket. A továbbfejlesztett írása mechanizmus az upsert viselkedése miatt egy új kompatibilitási szint alatt érhető el.  1\.2-es, mielőtt az upsert működése beszúrása vagy egyesíteni a dokumentumot. Az 1.2-es upserts viselkedés úgy módosul, helyezze be vagy cserélje le a dokumentumot. 
 
-1.2-es, mielőtt használja Cosmos DB, ahol egy kötegelt írt tranzakcióként történő tömeges upsert dokumentumok partíciókulcson egyéni tárolt eljárás. Akkor is, ha egyetlen rekordot eléri a (szabályozás) átmeneti hiba, az egész batch meg kell ismételni. Ez arról, hogy az még elfogadható viszonylag lassabban szabályozási forgatókönyvek. A következő összehasonlító jeleníti meg, hogyan viselkednek a ilyen feladatok 1.2-es verziójával.
+1\.2-es, mielőtt használja Cosmos DB, ahol egy kötegelt írt tranzakcióként történő tömeges upsert dokumentumok partíciókulcson egyéni tárolt eljárás. Akkor is, ha egyetlen rekordot eléri a (szabályozás) átmeneti hiba, az egész batch meg kell ismételni. Ez arról, hogy az még elfogadható viszonylag lassabban szabályozási forgatókönyvek. A következő összehasonlító jeleníti meg, hogyan viselkednek a ilyen feladatok 1.2-es verziójával.
 
 Telepítés alatt látható két azonos Stream Analytics-feladatok ugyanazon bemeneti (eseményközpontból) olvasásakor. Mindkét Stream Analytics-feladatok [teljes particionált](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) továbbító lekérdezés, valamint egy írása azonos cosmos DB-gyűjteményekhez. A bal oldali metrikák a feladat-es kompatibilitási szintű 1.0 konfigurált, és azokat a jobb oldali meg van adva az 1.2-es. A cosmos DB-gyűjtemények partíciókulcs egy egyedi GUID azonosítót a bemeneti eseményt érkező.
 
@@ -71,7 +71,7 @@ Eseményközpont bejövő események száma 2 x nagyobb, mint a Cosmos DB-gyűjt
 ![cosmos db mérőszámok összehasonlítása](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
 Az 1.2-es a Stream Analytics a 100 %-a szabályozás/sebességkorlátozással nagyon kevés újraküldéseinek a Cosmos DB-ben elérhető átviteli sebesség használó intelligens. Más számítási feladatok, például a lekérdezések a gyűjtemény egy időben futó jobb felhasználói élményt biztosít. Abban az esetben kell próbálja ki, hogyan ASA elvégzi a horizontális felskálázást Cosmos DB-vel, a fogadó 1k – 10k az üzenetek/másodperc, Íme egy [azure-minták projekt](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) , amely lehetővé teszi, hogy.
-Vegye figyelembe, hogy a Cosmos DB kimeneti átviteli sebesség megegyezik 1.0 és 1.1. 1.2 jelenleg nem az alapértelmezett, mivel is [beállítani a kompatibilitási szintet](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) egy Stream Analytics-feladat portálon vagy az a [feladat REST API-hívás létrehozásához](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). Rendelkezik *erősen ajánlott* kompatibilitási szint 1.2 ASA a Cosmos DB-vel használandó. 
+Vegye figyelembe, hogy a Cosmos DB kimeneti átviteli sebesség megegyezik 1.0 és 1.1. 1\.2 jelenleg nem az alapértelmezett, mivel is [beállítani a kompatibilitási szintet](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) egy Stream Analytics-feladat portálon vagy az a [feladat REST API-hívás létrehozásához](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). Rendelkezik *erősen ajánlott* kompatibilitási szint 1.2 ASA a Cosmos DB-vel használandó. 
 
 
 

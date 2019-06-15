@@ -17,11 +17,11 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: e1ed419892412c1fb9334fed74b82c53154723ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252421"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64708419"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Egy nem felügyelt Virtuálisgép-rendszerkép létrehozása Azure virtuális gépből
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan általánosított Azure VM-lemezkép létrehozása a
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="generalize-the-vm"></a>A virtuális gép általánosítása 
-Ez a szakasz bemutatja, hogyan általánossá tétele a Windows virtuális gép lemezképként való használatra. Virtuális gép általánosítása eltávolít minden személyes fiókadatot, többek között, és előkészíti a számítógépet, hogy képként használni. További információ a Sysprepről: [Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).
+Ez a szakasz bemutatja, hogyan általánossá tétele a Windows virtuális gép lemezképként való használatra. Virtuális gép általánosítása eltávolít minden személyes fiókadatot, többek között, és előkészíti a számítógépet, hogy képként használni. Ha további információra van szüksége a Sysprepről, tekintse meg [A Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).
 
 Ellenőrizze, hogy a Sysprep a gépen futó kiszolgálói szerepkörök támogatottak. További információkért lásd: [Sysprep támogatási kiszolgálói szerepköre tekintetében](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -89,7 +89,7 @@ Linux virtuális gép is általánosítása `sudo waagent -deprovision+user` és
     Stop-AzVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
-    A *állapot* a virtuális gép az Azure Portalon a változik **leállítva** való **leállítva (felszabadítva)**.
+    A *állapot* a virtuális gép az Azure Portalon a változik **leállítva** való **leállítva (felszabadítva)** .
 2. A virtuális gép állapotának beállítása **Általánosítottra**. 
    
     ```powershell

@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60288549"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>Biztonsági riasztások az Azure AD-szerepkörök konfigurálása az PIM-ben
@@ -74,7 +74,7 @@ Ez a szakasz felsorolja az Azure AD-szerepkörök, hogyan háríthatja el a mell
 | **Hogyan lehet kijavítani?** | Tekintse át a fiókok a listában. Ha már nincs szükségük hozzáférést, távolítsa el őket a rendszerjogosultságú szerepkörökhöz. |
 | **Megelőzési** | Győződjön meg arról, hogy a felhasználók, amelyekről tudja, hogy a jelszó megváltozása esetén, amelyek a megosztott fiókok vannak Elforgatás erős jelszavakat. </br>Rendszeresen tekintse át a fiókok a kiemelt szerepkörök használatával [hozzáférési felülvizsgálatokkal](pim-how-to-start-security-review.md) és már nem szükséges szerepkör-hozzárendelések eltávolítása. |
 | **A portálon kockázatcsökkentési művelet** | A kiemelt szerepkörű eltávolítja a fiókot. |
-| **Ajánlott eljárások** | Megosztott, szolgáltatás, és a jelszó használatával hitelesíteni, és magas jogosultsági szintű felügyeleti szerepkörökhöz, például a globális rendszergazdai vagy biztonsági rendszergazda hozzárendelt vészelérési fiókok rendelkeznie kell a jelszavukat, az alábbi esetekben elforgatott:<ul><li>Egy biztonsági incidens való visszaélés vagy a felügyeleti hozzáférési jogosultságok biztonsági sérülése után</li><li>Miután bármely felhasználó jogosultságait változnak, hogy azok nem lesznek egy rendszergazda (például után egy rendszergazda hagyja informatikai vagy a szervezetből kilépő alkalmazott)</li><li>Rendszeres időközönként (például negyedévente vagy évente), akkor is, ha nem volt ismert illetéktelen behatolás vagy módosítás informatikai volt szükség létszámnövelésre</li></ul>Több felhasználó rendelkezik hozzáféréssel a fiókok hitelesítő adatait, mivel annak érdekében, hogy a kijelölt személyek van hátra a szerepkörökhöz már nem tud hozzáférni a fiókok hitelesítő adatait kell elforgatva. [További információ](https://aka.ms/breakglass) |
+| **Gyakorlati tanácsok** | Megosztott, szolgáltatás, és a jelszó használatával hitelesíteni, és magas jogosultsági szintű felügyeleti szerepkörökhöz, például a globális rendszergazdai vagy biztonsági rendszergazda hozzárendelt vészelérési fiókok rendelkeznie kell a jelszavukat, az alábbi esetekben elforgatott:<ul><li>Egy biztonsági incidens való visszaélés vagy a felügyeleti hozzáférési jogosultságok biztonsági sérülése után</li><li>Miután bármely felhasználó jogosultságait változnak, hogy azok nem lesznek egy rendszergazda (például után egy rendszergazda hagyja informatikai vagy a szervezetből kilépő alkalmazott)</li><li>Rendszeres időközönként (például negyedévente vagy évente), akkor is, ha nem volt ismert illetéktelen behatolás vagy módosítás informatikai volt szükség létszámnövelésre</li></ul>Több felhasználó rendelkezik hozzáféréssel a fiókok hitelesítő adatait, mivel annak érdekében, hogy a kijelölt személyek van hátra a szerepkörökhöz már nem tud hozzáférni a fiókok hitelesítő adatait kell elforgatva. [További információ](https://aka.ms/breakglass) |
 
 ### <a name="roles-are-being-assigned-outside-of-pim"></a>PIM-en kívül folyamatban van hozzárendelve
 

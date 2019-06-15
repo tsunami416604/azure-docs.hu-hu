@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: v-sharos
 ms.openlocfilehash: 260dfdd4b8fe7c277358fa5773029ea9a532740a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61078307"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>A StorSimple Snapshot Manager segítségével megtekintheti, és a kötetek kezelése
@@ -155,8 +155,8 @@ Előkészületek:
 ## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>Konfigurálja, és készítsen biztonsági másolatot a dinamikus tükrözött kötetek
 Hajtsa végre az alábbi lépések végrehajtásával konfigurálhatja a dinamikus tükrözött kötetek biztonsági mentése:
 
-* 1. lépés: Használja a dinamikus tükrözött kötetek létrehozására. 
-* 2. lépés: A backup konfigurálása a StorSimple Snapshot Manager.
+* 1\. lépés: Használja a dinamikus tükrözött kötetek létrehozására. 
+* 2\. lépés: A backup konfigurálása a StorSimple Snapshot Manager.
 
 ### <a name="prerequisites"></a>Előfeltételek
 Előkészületek:
@@ -165,7 +165,7 @@ Előkészületek:
 * Telepítse és konfigurálja a StorSimple Snapshot Manager. További információért ugorjon [üzembe helyezése a StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
 * Két kötet konfigurálása a StorSimple eszközön. (A példákban az elérhető kötetek vannak **lemez 1** és **Disk 2**.) 
 
-### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>1. lépés: Hozzon létre egy dinamikus tükrözött kötetet a Lemezkezelés használatával
+### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>1\. lépés: Hozzon létre egy dinamikus tükrözött kötetet a Lemezkezelés használatával
 Lemezkezelés szolgál kezeléséhez, merevlemezek és a köteteket vagy partíciókat tartalmaz. Lemezkezelés kapcsolatos további információkért látogasson el [Lemezkezelés](https://technet.microsoft.com/library/cc770943.aspx) a Microsoft TechNet webhelyen.
 
 #### <a name="to-create-a-dynamic-mirrored-volume"></a>A dinamikus tükrözött kötetek létrehozása
@@ -190,7 +190,7 @@ Lemezkezelés szolgál kezeléséhez, merevlemezek és a köteteket vagy partíc
     
     ![Lemez tükrözött felügyeleti dinamikus lemezek](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Verify_dynamic_disks_2.png) 
 
-### <a name="step-2-use-storsimple-snapshot-manager-to-configure-backup"></a>2. lépés: Használja a StorSimple Snapshot Manager biztonsági mentés konfigurálása
+### <a name="step-2-use-storsimple-snapshot-manager-to-configure-backup"></a>2\. lépés: Használja a StorSimple Snapshot Manager biztonsági mentés konfigurálása
 Az alábbi eljárás segítségével dinamikus tükrözött kötetek konfigurálni és majd a biztonsági mentés azonnali elindítása vagy ütemezett biztonsági mentések szabályzat létrehozása.
 
 #### <a name="to-configure-backup-of-a-dynamic-mirrored-volume"></a>Konfigurálhatja a dinamikus tükrözött kötetek biztonsági mentése

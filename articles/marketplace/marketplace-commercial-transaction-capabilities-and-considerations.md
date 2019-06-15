@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
 ms.openlocfilehash: bd8cdbec42ea7df34ceee3ab82a1c6cac60ab59e
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65849721"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Az Azure Marketplace-en kereskedelmi ügylet képességek és szempontok
@@ -98,16 +98,16 @@ A díjszabási lehetőséget lehet magasabb vagy alacsonyabb, mint a nyilvánosa
 
 |A licenc költsége  | 1,00 $ / óra  |
 |---------|---------|
-|Azure-használat költség (D1/1-mag)    |   0.14 $ / óra     |
+|Azure-használat költség (D1/1-mag)    |   0\.14 $ / óra     |
 |*A Microsoft számlázzuk*    |  *1.14 $ / óra*       |
 
 * Ebben a forgatókönyvben a Microsoft keresztül számláz az adott 1.14 $ óránkénti használatáért a közzétett Virtuálisgép-lemezkép.
 
-|A Microsoft számlák  | 1.14 $ / óra  |
+|A Microsoft számlák  | 1\.14 $ / óra  |
 |---------|---------|
 |A Microsoft fizet 80 %-licenc költségei|   0,80 $ / óra     |
 |A Microsoft tartja a 20 %-licenc költségei  |  0,20 $ / óra       |
-|A Microsoft 100 %-a az Azure használati költségeinek tartja | 0.14 $ / óra |
+|A Microsoft 100 %-a az Azure használati költségeinek tartja | 0\.14 $ / óra |
 
 **Hozott licences (BYOL)**
 
@@ -115,14 +115,14 @@ A díjszabási lehetőséget lehet magasabb vagy alacsonyabb, mint a nyilvánosa
 
 |A licenc költsége  | Egyeztetett és az Ön által számlázható licencdíját  |
 |---------|---------|
-|Azure-használat költség (D1/1-mag)    |   0.14 $ / óra     |
+|Azure-használat költség (D1/1-mag)    |   0\.14 $ / óra     |
 |*A Microsoft számlázzuk*    |  *0.14 $ / óra*       |
 
 * Ebben a forgatókönyvben a Microsoft keresztül számláz az adott $0.14 óránkénti használatáért a közzétett Virtuálisgép-lemezkép.
 
-|A Microsoft számlák  | 0.14 $ / óra  |
+|A Microsoft számlák  | 0\.14 $ / óra  |
 |---------|---------|
-|A Microsoft Azure használati költségeinek tartja    |   0.14 $ / óra     |
+|A Microsoft Azure használati költségeinek tartja    |   0\.14 $ / óra     |
 |A Microsoft tartja a 0 %-licenc költségei   |  0,00 USD / óra       |
 
 **SaaS-alkalmazás-előfizetés (értékesítési Azure-on keresztül)**
@@ -142,7 +142,7 @@ Ezt a beállítást kell konfigurálni, hogy a Microsoft keresztül, és a egy �
 |A Microsoft számlák  | 100,00 $ / hó  |
 |---------|---------|
 |A Microsoft fizet 80 %-licenc költségei <br> \* A Microsoft fizet, 90 %-licenc költségei minden minősített SaaS-alkalmazásokhoz   |   80,00 $ / hó <br> \* 90.00 $ / hó    |
-|A Microsoft tartja a 20 %-licenc költségei <br> \* A Microsoft biztosítja, hogy 10 %-a-licenc költségei minden minősített SaaS-alkalmazásokhoz.  |  20.00 $ / hó <br> \* $10.00     |
+|A Microsoft tartja a 20 %-licenc költségei <br> \* A Microsoft biztosítja, hogy 10 %-a-licenc költségei minden minősített SaaS-alkalmazásokhoz.  |  20\.00 $ / hó <br> \* $10.00     |
 
 * **Csökkentett Piactéri szolgáltatási díj:** Az egyes SaaS-termékek, a kereskedelmi Marketplace-en közzétett, a Microsoft csökkenti a Piactéri szolgáltatási díj a 20 %-os (a Microsoft kiadói szerződésében leírt) 10 %-os.  Ahhoz, hogy ahhoz, hogy a termék, a termékek közül legalább ki kell jelölni a Microsoft által szerint IP közös értékesítési készen áll, vagy közös értékesítési IP előnyt élvez. A csökkentett Piactéri szolgáltatási díj kap a hónap, jogosult-e legalább öt (5) munkanapon naptári hónap vége előtt kell teljesülnie. Csökkentett díj nem vonatkozik a virtuális gépek, felügyelt alkalmazásokban vagy a kereskedelmi piactéren keresztül elérhetővé tett bármilyen egyéb termékek, a Piactéri szolgáltatás.  A csökkentett Piactéri szolgáltatási díj minősített ajánlatokra-el 2019. május 1. és 2020. június 30. között a Microsoft által gyűjtött licenc díjak.  Ezt követően a Piactéri szolgáltatási díj visszatér a szokásos összeg.
 
@@ -162,31 +162,31 @@ Ha az ügyfél előnyben részesített számlázási módszert a Microsoft nagyv
 
 Például ha a vásárló megvásárolhatja a hitelkártya használatával:
 
-|Leírás    |    Date  |
+|Leírás    |    Dátum  |
 |----------|----------|
 |Rendelés időszak   | Augusztus 15, 2018-2018. augusztus 30. |
-|Előfizetési időszak vége (hónap)   | 2018. augusztus 30. |
-|A Számlázás dátuma | 2018. Szeptembertől 1. |
-|Ügyfél fizetési dátuma | 2018. Szeptembertől 1. |
+|Előfizetési időszak vége (hónap)   | 2018\. augusztus 30. |
+|A Számlázás dátuma | 2018\. Szeptembertől 1. |
+|Ügyfél fizetési dátuma | 2018\. Szeptembertől 1. |
 |Így letétbe helyezheti a időszak (hitelkártyák csak 30 napig) | Szeptembertől 1, 2018 – 2018. Szeptembertől 30. |
-|Gyűjtési időszak kezdete | 2018. Szeptembertől 1. |
-|Gyűjtési időszak vége (maximális, 30 nap) | 2018. Szeptembertől 30. |
-|Küldenie jóváhagyásra cége kifizetési kiszámítási dátuma (havonta a 15.) | 2018. október 1. |
-|Küldenie jóváhagyásra cége kifizetési dátuma | 2018. október 15. |
+|Gyűjtési időszak kezdete | 2018\. Szeptembertől 1. |
+|Gyűjtési időszak vége (maximális, 30 nap) | 2018\. Szeptembertől 30. |
+|Küldenie jóváhagyásra cége kifizetési kiszámítási dátuma (havonta a 15.) | 2018\. október 1. |
+|Küldenie jóváhagyásra cége kifizetési dátuma | 2018\. október 15. |
 
 Ha a vásárló megvásárolhatja a nagyvállalati szerződés használatával:
 
-| Leírás |    Date  |
+| Leírás |    Dátum  |
 |----------|----------|
 |Rendelés időszak | Augusztus 15, 2018-2018. augusztus 30. |
-|Előfizetési időszak vége (negyedév) | 2018. Szeptembertől 30. |
-|A Számlázás dátuma | 2018. október 15. |
+|Előfizetési időszak vége (negyedév) | 2018\. Szeptembertől 30. |
+|A Számlázás dátuma | 2018\. október 15. |
 |Így letétbe helyezheti a időszak (hitelkártyák csak 30 napig) | n/a |
-|Gyűjtési időszak kezdete | 2018. október 15. |
-|Gyűjtési időszak vége (maximális, 90 nap) | 2019. január 15. |
-|Ügyfél fizetési dátuma | 2018. december 30. |
-|Küldenie jóváhagyásra cége kifizetési kiszámítási dátuma (havonta a 15.) | 2019. január 15. |
-|Küldenie jóváhagyásra cége kifizetési dátuma | 2019. február 15. |
+|Gyűjtési időszak kezdete | 2018\. október 15. |
+|Gyűjtési időszak vége (maximális, 90 nap) | 2019\. január 15. |
+|Ügyfél fizetési dátuma | 2018\. december 30. |
+|Küldenie jóváhagyásra cége kifizetési kiszámítási dátuma (havonta a 15.) | 2019\. január 15. |
+|Küldenie jóváhagyásra cége kifizetési dátuma | 2019\. február 15. |
 
 **Ingyenes kreditek és a pénzügyi kötelezettségvállalás** 
 

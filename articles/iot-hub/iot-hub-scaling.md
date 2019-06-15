@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
 ms.openlocfilehash: 49e0db690818e67f96f5bcefa4f581b1db6da451
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64697333"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT Hub-csomag kiválasztása
@@ -105,7 +105,7 @@ A legjobb módszer a következő méretre egy IoT Hub-megoldás, hogy a forgalma
 * Felhőből az eszközre irányuló üzenetek
 * Identitásjegyzék műveletei
 
-Forgalom egységenkénti alapon, nem / hub mérjük. Egy 1 vagy 2-es szintű IoT Hub-példány lehet akár 200 egységre lenne szüksége társítva. 3. szintre IoT Hub-példány legfeljebb 10 egység lehet. Az IoT hub létrehozása után módosíthatja az egységek számát, vagy helyezze át az 1, 2 és a egy adott szinten belül 3 méretet között zavarja meg a meglévő operations. További információkért lásd: [az IoT Hub frissítése](iot-hub-upgrade.md).
+Forgalom egységenkénti alapon, nem / hub mérjük. Egy 1 vagy 2-es szintű IoT Hub-példány lehet akár 200 egységre lenne szüksége társítva. 3\. szintre IoT Hub-példány legfeljebb 10 egység lehet. Az IoT hub létrehozása után módosíthatja az egységek számát, vagy helyezze át az 1, 2 és a egy adott szinten belül 3 méretet között zavarja meg a meglévő operations. További információkért lásd: [az IoT Hub frissítése](iot-hub-upgrade.md).
 
 Például az egyes szintek forgalom képességeit eszköz – felhő üzeneteket az alábbiakra vendégteljesítmény:
 

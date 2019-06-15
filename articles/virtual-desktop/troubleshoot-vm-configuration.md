@@ -8,13 +8,13 @@ ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
 ms.openlocfilehash: 38d59fb20776470cb683f2a2146838bb217addf7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64928122"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Bérlő és a gazdagép készlet létrehozása
+# <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
 Ez a cikk segítségével problémák merültek fel a való konfigurálásakor a Windows virtuális asztal munkamenetben gazdagép virtuális gépek (VM).
 

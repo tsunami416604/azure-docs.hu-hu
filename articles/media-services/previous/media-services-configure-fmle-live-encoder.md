@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
 ms.openlocfilehash: 01bb628a6520488dcebf49a1e868213b955abc31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61466012"
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Használja az egyféle sávszélességű élő adatfolyamot küldeni FMLE kódoló 
@@ -102,7 +102,7 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
      Ha források segítségével váltakozó, kérjük, pipa az "összefűzés lehetőség" beállítás
 2. Válassza ki a formátumot melletti csavarkulcs ikont, a következő további beállításokat kell:
 
-   * Profil: Elsődleges
+   * Profil: Fő
    * Szint: 4.0
    * Kulcsképkocka gyakorisága: 2 másodperc
 

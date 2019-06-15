@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 9284400254860b47f3aea6de5c79ab4c2a77f199
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60755832"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Az Azure Data Box Gateway megosztási beállításait az Azure Portalon keresztül kezelheti 
@@ -121,11 +121,11 @@ A tárelérési kulcsok szinkronizálásához hajtsa végre a következő lépé
 1. Lépjen az erőforrás **Áttekintés** területére. 
 2. A megosztások listájában válassza ki a szinkronizálni kívánt tárfiókhoz tartozó megosztást, majd kattintson rá. Kattintson a **Tárkulcsok szinkronizálása** elemre. 
 
-     ![1. tárkulcs szinkronizálása](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
+     ![1\. tárkulcs szinkronizálása](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 
 3. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A szinkronizálást követően zárja be a párbeszédpanelt.
 
-     ![1. tárkulcs szinkronizálása](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
+     ![1\. tárkulcs szinkronizálása](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
 
 >[!NOTE]
 > Ezt a műveletet csak egyszer kell elvégezni az egyes tárfiókok esetében, nem kell megismételni minden egyes, ugyanazon tárfiókhoz tartozó megosztásnál.

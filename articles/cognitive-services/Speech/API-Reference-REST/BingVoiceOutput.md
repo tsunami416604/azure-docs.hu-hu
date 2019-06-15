@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: priyar
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515421"
 ---
 # <a name="bing-text-to-speech-api"></a>A Bing szöveg-beszéd átalakítás API
@@ -43,7 +43,7 @@ A szükséges fejlécadatokat hozzáférési token a következő.
 
 Name (Név)| Formátum | Leírás
 ----|----|----
-OCP-Apim-Subscription-Key | ASCII | Előfizetési kulcs
+OCP-Apim-Subscription-Key | ASCII | Az előfizetési kulcs
 
 A jogkivonat-szolgáltatás adja vissza, mint a JWT jogkivonat `text/plain`. A JWT átadott majd egy `Base64 access_token` engedélyeztetési fejléc előtaggal van ellátva a karakterlánc, a beszéd végpontra `Bearer`. Példa:
 
@@ -66,7 +66,7 @@ Content-Type | application/ssml+xml | A bemeneti tartalom típusa.
 X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bites-mono-Szövegfelolvasás <br> **2.** nyers – 16 khz – 16 bites-mono-pcm <br>**3.** hang-16 khz – 16 KB/s-mono-siren <br> **4.** riff – 16 khz – 16 KB/s-mono-siren <br> **5.** riff – 16 khz – 16 bites-mono-pcm <br> **6.** hang-16 khz-128kbitrate-mono-mp3 <br> **7.** hang-16 khz-64kbitrate-mono-mp3 <br> **8.** hang-16 khz-32kbitrate-mono-mp3 | A kimeneti audio formátum.
 X-Search-AppId | Egy GUID Azonosítót (csak hexadecimális, nincs szaggatott vonal) | Egy azonosító, amely egyedileg azonosítja az ügyfélalkalmazás. Ez lehet az alkalmazások a tároló azonosítója. Egy nem áll rendelkezésre, ha az azonosító lehet felhasználó által az alkalmazáshoz.
 X-Search-ClientID | Egy GUID Azonosítót (csak hexadecimális, nincs szaggatott vonal) | Egy azonosító, amely egyedileg azonosítja az alkalmazáspéldány minden telepítésnél.
-User-Agent | Alkalmazás neve | Az alkalmazásnév megadása kötelező, és legfeljebb 255 karakterből állhat.
+User-Agent | Alkalmazásnév | Az alkalmazásnév megadása kötelező, és legfeljebb 255 karakterből állhat.
 Engedélyezés | Engedélyezési jogkivonat |  Tekintse meg a <a href="#Subscription">engedélyezési jogkivonat</a> szakaszban.
 
 ### <a name="InputParam"></a>Bemeneti paraméterek
@@ -271,7 +271,7 @@ zh-TW | Nő | "A Microsoft Server beszéd szöveg Speech Voice (zh-TW, Yating, A
 zh-TW | Nő | "A Microsoft Server beszéd szöveg Speech Voice (zh-TW, HanHanRUS)"
 zh-TW | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (zh-TW, Zhiwei, Apollo)"
 
- * ar – Például támogatja a Modern Standard arab (MSA).
+ \* ar – Például támogatja a Modern Standard arab (MSA).
 
 > [!NOTE]
 > Vegye figyelembe, hogy az előző szolgáltatásnevek **Microsoft Server hang-szöveg, beszédfelismerés, beszédfelismerési (cs-CZ, Vit)** és **Microsoft Server hang-szöveg Speech szövegfelolvasás (en-IE, Shaun)** később elavulttá fog után 3/31/2018. sorrend optimalizálása, a Bing Speech API-funkciókat. Frissítse a kódot a frissített nevekkel.

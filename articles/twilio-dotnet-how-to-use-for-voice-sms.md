@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 3b8b21de9664a969e8b1ce5699034aa9ab41d0f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60329487"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Hogyan lehet a Twilio használata hanghívási és SMS-funkciókhoz az Azure-ból
@@ -85,7 +85,7 @@ A Twilio .NET segítő-kódtárak együttese biztosít az egyszerű és könnyen
 
 A Twilio öt kódtárak .NET-fejlesztők számára biztosít:
 
-| Kódtár | Leírás |
+| Erőforrástár | Leírás |
 | --- | --- |
 | Twilio.API | A Twilio Alapkönyvtár, amely egy egyszerű .NET-kódtárában Twilio REST API-t. A könyvtár a .NET, a Silverlight és a Windows Phone 7 érhető el. |
 | Twilio.TwiML | Lehetővé teszi .NET rövid TwiML jelölés létrehozásához. |
@@ -176,7 +176,7 @@ catch (TwilioException ex)
 Ha az alkalmazás kezdeményezi keresztül a hívást a Twilio API - példában a **CallResource.Create** metódus - Twilio a kérést küld egy kell visszaadnia TwiML válasz URL-CÍMÉT. A példában a [hogyan: Végezhet](#howto_make_call) a Twilio által megadott URL-cím [ https://twimlets.com/message ] [ twimlet_message_url] , a választ adja vissza.
 
 > [!NOTE]
-> TwiML webszolgáltatások használatra szolgál, míg a TwiML tekintheti meg a böngészőben. Kattintson például [ https://twimlets.com/message ] [ twimlet_message_url] megtekintéséhez egy üres `<Response>` elem; másik példaként kattintson [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ](https://twimlets.com/message?Message%5B0%5D=Hello%20World) megtekintéséhez egy `<Response>` elem, amely tartalmazza a &lt;Say&gt; elemet.
+> TwiML webszolgáltatások használatra szolgál, míg a TwiML tekintheti meg a böngészőben. Kattintson például [ https://twimlets.com/message ] [ twimlet_message_url] megtekintéséhez egy üres `<Response>` elem; másik példaként kattintson [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ](https://twimlets.com/message?Message%5B0%5D=Hello%20World) megtekintéséhez egy `<Response>` elem, amely tartalmazza a &lt; Say&gt; elemet.
 >
 
 Így nem kell hagyatkoznia a Twilio-megadott URL-címet, a saját URL-címet a hely által visszaadott HTTP-válaszok is létrehozhat. A hely által visszaadott HTTP-válaszok bármilyen nyelven hozhat létre. Ez a témakör azt feltételezi, hogy fogja üzemeltetni az URL-címet egy általános ASP.NET-kezelő.

@@ -14,14 +14,14 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4aba7aadbe92b6c4f0ab417785e230bb6a6823df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60486583"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Adatok áthelyezése egy FTP-kiszolgálóról az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-ftp-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-ftp.md)
 
@@ -153,11 +153,11 @@ Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját
 
 A **typeProperties** szakasz eltér az egyes adatkészlet. Az adatkészlet-típusra vonatkozó adatokat biztosít. A **typeProperties** szakasz egy adatkészlet típusú **FileShare** tulajdonságai a következők:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | folderPath |Adatútvonalának a mappához. Használja az escape-karaktert "\" a karakterláncban szereplő speciális karakterek. Tekintse meg a minta a társított szolgáltatás és adatkészlet-definíciók példákat.<br/><br/>Ennek a tulajdonságnak kombinálhatja **partitionBy** rendelkezik a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen |
 | fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg semmilyen értéket ehhez a tulajdonsághoz, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet esetén a létrehozott fájl neve a következő formátumban van: <br/><br/>`Data.<Guid>.txt` (Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nem |
-| fileFilter |Adja meg a fájlok egy adott sorkészletét jelölik ki használandó szűrő a **folderPath**, ahelyett, hogy minden fájl.<br/><br/>Engedélyezett értékek a következők: `*` (több karakter) és `?` (egyetlen karakter).<br/><br/>1. példa: `"fileFilter": "*.log"`<br/>2. példa: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** a fájlmegosztás a bemeneti adatkészletek vonatkozik. Ez a tulajdonság nem támogatott a Hadoop elosztott fájlrendszer (HDFS). |Nem |
+| fileFilter |Adja meg a fájlok egy adott sorkészletét jelölik ki használandó szűrő a **folderPath**, ahelyett, hogy minden fájl.<br/><br/>Engedélyezett értékek a következők: `*` (több karakter) és `?` (egyetlen karakter).<br/><br/>1\. példa: `"fileFilter": "*.log"`<br/>2\. példa: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** a fájlmegosztás a bemeneti adatkészletek vonatkozik. Ez a tulajdonság nem támogatott a Hadoop elosztott fájlrendszer (HDFS). |Nem |
 | partitionedBy |Adjon meg egy dinamikus használt **folderPath** és **fileName** az idősorozat-adatok. Meghatározhatja például, hogy egy **folderPath** , amely paraméteres van az adatok minden óra. |Nem |
 | format | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum ](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszokat. <br><br> Ha másolja a fájlokat, mivel ezek közötti fájlalapú tárolók (bináris másolat) szeretné használni, hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
 | compression | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok a következők **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**, és a támogatott szintek a következők **Optimal** és **leggyorsabb**. További információkért lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
@@ -171,7 +171,7 @@ Az előző szakaszban ismertetett módon, megadhat egy dinamikus **folderPath** 
 
 Time series adatkészleteket, az ütemezés és a szeletek kapcsolatos további információkért lásd: [adatkészletek létrehozása](data-factory-create-datasets.md), [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md), és [folyamatok létrehozása](data-factory-create-pipelines.md).
 
-#### <a name="sample-1"></a>1. példa
+#### <a name="sample-1"></a>1\. példa
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -182,7 +182,7 @@ Time series adatkészleteket, az ütemezés és a szeletek kapcsolatos további 
 ```
 Ebben a példában {szelet} helyére a Data Factory rendszerváltozó SliceStart, a megadott formátumban (YYYYMMDDHH) értékét. Indítsa el a szelet időpontja a SliceStart hivatkozik. A mappa elérési útja eltér az egyes szeletekhez. (Például wikidatagateway/wikisampledataout/2014100103 vagy wikidatagateway/wikisampledataout/2014100104.)
 
-#### <a name="sample-2"></a>2. példa
+#### <a name="sample-2"></a>2\. példa
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
@@ -204,7 +204,7 @@ A rendelkezésre álló tulajdonságok a **typeProperties** a tevékenység szak
 
 A másolási tevékenység, ha a forrás típusa **FileSystemSource**, a következő tulajdonság megtalálható **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | recursive |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákat, vagy csak a megadott mappába. |TRUE, False (alapértelmezett) |Nem |
 

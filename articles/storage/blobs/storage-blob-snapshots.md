@@ -9,10 +9,10 @@ ms.date: 03/06/2018
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 9c24f613de8bf26331f6fe328358aaf8a320d522
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65794238"
 ---
 # <a name="create-a-blob-snapshot"></a>Blob-pillanatkép létrehozása
@@ -154,13 +154,13 @@ A 2. forgatókönyv az alap blobot frissítve lett, de még nem a pillanatképre
 
 **3. forgatókönyv**
 
-3. forgatókönyv az alap blobot frissítve lett, de még nem a pillanatképre. Blokk 3 váltotta fel az alap blob 4 blokkja, de a pillanatkép továbbra is tükrözi 3 letiltása. Ennek eredményeképpen a fiók díjszabásának négy blokkokat.
+3\. forgatókönyv az alap blobot frissítve lett, de még nem a pillanatképre. Blokk 3 váltotta fel az alap blob 4 blokkja, de a pillanatkép továbbra is tükrözi 3 letiltása. Ennek eredményeképpen a fiók díjszabásának négy blokkokat.
 
 ![Az Azure Storage-erőforrások](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-3.png)
 
 **4. forgatókönyv**
 
-4. forgatókönyv az alap blob teljesen frissítve lett, és tartalmazza az eredeti blokkok egyike. Ennek eredményeképpen a fiók összes nyolc egyedi blokkok díjszabásának. Ez akkor fordulhat elő, ha például egy frissítési módszer használ [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [ UploadFromStream][dotnet_UploadFromStream], vagy [UploadFromByteArray][dotnet_UploadFromByteArray], mert ezek a metódusok cserélje le az összes blob tartalmát.
+4\. forgatókönyv az alap blob teljesen frissítve lett, és tartalmazza az eredeti blokkok egyike. Ennek eredményeképpen a fiók összes nyolc egyedi blokkok díjszabásának. Ez akkor fordulhat elő, ha például egy frissítési módszer használ [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [ UploadFromStream][dotnet_UploadFromStream], vagy [UploadFromByteArray][dotnet_UploadFromByteArray], mert ezek a metódusok cserélje le az összes blob tartalmát.
 
 ![Az Azure Storage-erőforrások](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 

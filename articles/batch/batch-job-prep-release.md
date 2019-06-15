@@ -3,7 +3,7 @@ title: Fel a feladatokat és a teljes feladat a számítási csomópontokon – 
 description: Feladatszintű előkészítő feladatok Azure Batch számítási csomópontokon való adatátvitel minimalizálása érdekében használni, és kiadási tevékenységek a feladat befejezésekor a csomópont karbantartásához.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
@@ -12,15 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-origin.date: 02/27/2017
-ms.date: 06/29/2018
-ms.author: v-junlch
-ms.custom: H1Hack27Feb2017
+ms.date: 02/27/2017
+ms.author: lahugh
+ms.custom: seodec18
 ms.openlocfilehash: 517ac0f612b9e5fc5909a7f0fe2ce088c9b367d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60776192"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Futtatási feladat-előkészítési és a feladatkiadási tevékenységeket a Batch számítási csomópontokon
@@ -59,7 +58,7 @@ Batch-feladatok gyakran van szükség egy közös adatkészletet bemenetként a 
 > 
 > 
 
-## <a name="job-preparation-task"></a>Feladat előkészítése tevékenység
+## <a name="job-preparation-task"></a>Feladat-előkészítési tevékenység
 Feladatok végrehajtását, mielőtt Batch végrehajtja a feladat-előkészítési tevékenység minden számítási csomóponton, ütemezett feladat futtatása. Alapértelmezés szerint a Batch szolgáltatás megvárja, amíg a feladat-előkészítési tevékenység befejezésének ütemezve, hogy a csomóponton a feladat futtatása előtt. A szolgáltatás ne várjon azonban konfigurálhatja. A csomópont újraindul, ha a feladat-előkészítési tevékenység fut újra, de letilthatja ezt a viselkedést.
 
 A feladat-előkészítési tevékenység végrehajtása csak a csomópontok, ütemezett feladat futtatása. Ez megakadályozza, hogy egy előkészítési tevékenység szükségtelen végrehajtásának abban az esetben, ha egy csomópont nincs hozzárendelve egy feladatot. Ez akkor fordulhat elő, ha a feladatok száma kisebb, mint a készletben működő csomópontok számát. Azt is vonatkozik, amikor [egyidejű feladat a végrehajtás](batch-parallel-node-tasks.md) van engedélyezve, amely hagy egyes csomópontok üresjárati if a tevékenységek száma kisebb, mint az összes lehetséges egyidejű feladatok. A feladat-előkészítési tevékenység nem futtat üresjáratban csomópontok, kevesebb kiadás képes költeni adatforgalmi díjat.
@@ -69,7 +68,7 @@ A feladat-előkészítési tevékenység végrehajtása csak a csomópontok, üt
 > 
 > 
 
-## <a name="job-release-task"></a>Feladat kiadása tevékenység
+## <a name="job-release-task"></a>Feladatkiadási tevékenység
 Miután a feladat befejezettként van megjelölve, a feladatkiadási tevékenység végrehajtása, amely legalább egy tevékenységet a készletben lévő minden egyes csomóponton. Hogy befejezettként egy feladatot egy megszakítási kérelmet kiállításával. A Batch szolgáltatás majd állítja be a feladat állapotának *megszakítást okozó*, bármely feladathoz hozzárendelt aktív vagy futó tevékenységek leáll, és futtatja a feladatkiadási tevékenység. A feladat majd áttér a *befejeződött* állapota.
 
 > [!NOTE]
@@ -196,11 +195,11 @@ Ebben az MSDN-fórum bejegyzése nyújt áttekintést, többféle módszer áll 
 
 Az Azure Batch-csapat tagjainak egyike által írt, azt számos módszert ismertet, amelyek segítségével helyezhet üzembe alkalmazásokat és az adatok számítási csomópontokra.
 
-[api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
+[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
-[azure_storage]: https://www.azure.cn/home/features/storage/
-[portal]: https://portal.azure.cn
+[api_rest]: https://msdn.microsoft.com/library/azure/dn820158.aspx
+[azure_storage]: https://azure.microsoft.com/services/storage/
+[portal]: https://portal.azure.com
 [job_prep_release_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/JobPrepRelease
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [net_batch_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
@@ -226,5 +225,3 @@ Az Azure Batch-csapat tagjainak egyike által írt, azt számos módszert ismert
 [net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
 
 [1]: ./media/batch-job-prep-release/portal-jobprep-01.png
-
-<!-- Update_Description: wording update -->

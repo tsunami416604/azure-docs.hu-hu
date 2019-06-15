@@ -11,10 +11,10 @@ ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 999c75d07ef7e24d4d75587b6b42a4ab1b2192cf
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596109"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Frissítse az adattárház Gen2-re
@@ -22,7 +22,7 @@ ms.locfileid: "65596109"
 A Microsoft lehetővé teszi, hogy belépő szintű költségének adattárház végezhetőek.  Csökkentse számítási szinten képes legyen kezelni az erőforrás-igényes lekérdezéseket mostantól elérhetők az Azure SQL Data warehouse-hoz. A teljes bejelentés [alacsonyabb szintű támogatás Gen2 számítási](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Az új ajánlat az alábbi táblázatban feltüntetett régiókban érhető el. A támogatott régiók Gen1 a korábbi adattárházak Gen2-re keresztül frissíthető vagy:
 
 - **Az automatikus frissítési folyamat:** Az automatikus frissítéseket, amint az egy régióban érhető el a szolgáltatás ne indítsa.  Az automatikus frissítések elindulását, egy adott régióban, az egyes DW-frissítések során a kiválasztott karbantartási ütemezés kerül sor.
-- [**Helyi frissítés Gen2-re:**](#self-upgrade-to-gen2) Szabályozhatja, mikor kell frissíteni, tegye a helyi frissítés Gen2-re. Ha még nem támogatott a régióban, visszaállíthatja közvetlenül egy helyreállítási pontról Gen2-példányra egy támogatott régióban.
+- [**Helyi frissítés Gen2-re:** ](#self-upgrade-to-gen2) Szabályozhatja, mikor kell frissíteni, tegye a helyi frissítés Gen2-re. Ha még nem támogatott a régióban, visszaállíthatja közvetlenül egy helyreállítási pontról Gen2-példányra egy támogatott régióban.
 
 ## <a name="automated-schedule-and-region-availability-table"></a>Az Automatikus ütemezés és a régió rendelkezésre állási tábla
 
@@ -32,38 +32,38 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 
 | **Régió** | **Alacsonyabb Gen2 érhető el** | **Az automatikus frissítések megkezdése** |
 |:--- |:--- |:--- |
-| Kelet-Ausztrália |Szabad |2019. június 1. |
-| Délkelet-Ausztrália |Szabad |2019. május 1. |
-| Dél-Brazília |Szabad |2019. június 1. |
-| Közép-Kanada |Szabad |2019. június 1. |
+| Kelet-Ausztrália |Elérhető |2019\. június 1. |
+| Délkelet-Ausztrália |Elérhető |2019\. május 1. |
+| Dél-Brazília |Elérhető |2019\. június 1. |
+| Közép-Kanada |Elérhető |2019\. június 1. |
 | Kelet-Kanada |\* |\* |
-| USA középső régiója |Szabad |2019. június 1. |
+| USA középső régiója |Elérhető |2019\. június 1. |
 | Kelet-Kína |\* |\* |
 | Kelet-Kína 2 |\* |Csak Gen2 |
 | Észak-Kína |\* |\* |
-| Észak-Kína 2 |Szabad |Csak Gen2 |
-| Kelet-Ázsia |Szabad |2019. június 1. |
-| USA keleti régiója |Szabad |2019. június 1. |
-| USA 2. keleti régiója |Szabad |2019. június 1. |
-| Közép-Franciaország |\* |2019. június 1. |
+| Észak-Kína 2 |Elérhető |Csak Gen2 |
+| Kelet-Ázsia |Elérhető |2019\. június 1. |
+| USA keleti régiója |Elérhető |2019\. június 1. |
+| USA 2. keleti régiója |Elérhető |2019\. június 1. |
+| Közép-Franciaország |\* |2019\. június 1. |
 | Közép-Németország |\* |\* |
-| Németország nyugati középső régiója |2019. szeptember 1.|2020. január 2. |
-| India középső régiója |Szabad |2019. június 1. |
-| India déli régiója |Szabad |2019. június 1. |
-| Kelet-Japán |Szabad |2019. június 1. |
-| Nyugat-Japán |Szabad |2019. május 1. |
-| Korea középső régiója |Szabad |2019. június 1. |
-| Korea déli régiója |Szabad |2019. május 1. |
-| USA északi középső régiója |Szabad |2019. május 1. |
-| Észak-Európa |Szabad |2019. június 1. |
-| USA déli középső régiója |Szabad |2019. június 1. |
-| Délkelet-Ázsia |Szabad |2019. június 1. |
-| Egyesült Királyság déli régiója |Elérhető, a 2019 |2019. június 1. |
-| Egyesült Királyság nyugati régiója |\*|\* |
-| USA nyugati középső régiója |2019. szeptember 2. |2020. január 2.|
-| Nyugat-Európa |Szabad |2019. június 1. |
-| USA nyugati régiója |Szabad |2019. június 1. |
-| USA 2. nyugati régiója |Szabad |2019. június 1. |
+| Németország nyugati középső régiója |2019\. szeptember 1.|2020\. január 2. |
+| Közép-India |Elérhető |2019\. június 1. |
+| Dél-India |Elérhető |2019\. június 1. |
+| Kelet-Japán |Elérhető |2019\. június 1. |
+| Nyugat-Japán |Elérhető |2019\. május 1. |
+| Korea középső régiója |Elérhető |2019\. június 1. |
+| Korea déli régiója |Elérhető |2019\. május 1. |
+| USA északi középső régiója |Elérhető |2019\. május 1. |
+| Észak-Európa |Elérhető |2019\. június 1. |
+| USA déli középső régiója |Elérhető |2019\. június 1. |
+| Délkelet-Ázsia |Elérhető |2019\. június 1. |
+| Az Egyesült Királyság déli régiója |Elérhető, a 2019 |2019\. június 1. |
+| Az Egyesült Királyság nyugati régiója |\*|\* |
+| USA nyugati középső régiója |2019\. szeptember 2. |2020\. január 2.|
+| Nyugat-Európa |Elérhető |2019\. június 1. |
+| USA nyugati régiója |Elérhető |2019\. június 1. |
+| USA nyugati régiója, 2. |Elérhető |2019\. június 1. |
 
 ## <a name="automatic-upgrade-process"></a>Az automatikus frissítési folyamat
 
@@ -85,8 +85,8 @@ Két lehetőség van során egy helyi frissítése.  Az aktuális data warehouse
 - [Frissítés helyben](upgrade-to-latest-generation.md) – Ez a beállítás frissíti a meglévő Gen1 adattárház Gen2-re. A frissítési folyamat is szükség lesz egy rövid dobja el a kapcsolat (körülbelül 5 perc), hogy indítsa újra az adattárházba.  Az adattárház újra lett indítva, miután teljes mértékben elérhető lesz. Ha a frissítés során problémákat tapasztal, nyisson meg egy [támogatási kérelem](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) és "Frissítés Gen2" lehetséges okaként hivatkoznak.
 - [Frissítés a visszaállítási pont](sql-data-warehouse-restore.md) – egy felhasználói visszaállítási pont létrehozása az aktuális Gen1 adattárházra, és állítsa vissza a közvetlenül egy Gen2-példányt. A meglévő Gen1 adatraktár érvényben marad. A visszaállítás befejezését követően az Gen2-adattárház teljes mértékben elérhető lesz.  A visszaállított Gen2-példányon összes tesztelés és ellenőrzés folyamat futtatása után az eredeti Gen1 példány lehet törölni.
 
-   - 1. lépés: Az Azure Portalról [egy felhasználói visszaállítási pont létrehozása a](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal).
-   - 2. lépés: Visszaállításakor a felhasználó által megadott visszaállítási pont, a "teljesítmény szint" értékre az előnyben részesített Gen2 réteghez.
+   - 1\. lépés: Az Azure Portalról [egy felhasználói visszaállítási pont létrehozása a](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal).
+   - 2\. lépés: Visszaállításakor a felhasználó által megadott visszaállítási pont, a "teljesítmény szint" értékre az előnyben részesített Gen2 réteghez.
 
 A frissítési folyamat továbbra is a háttérben lévő adatfájlok frissítése akár teljesítménycsökkenés bizonyos tapasztalhat. Változnak, hogy a teljesítményromlást fordított időt az adatfájlokat méretétől függ.
 

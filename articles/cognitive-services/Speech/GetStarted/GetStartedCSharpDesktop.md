@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 5f3b70a2dd9816210ed61280be38504a3980d205
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515348"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Gyors útmutató: A Bing beszédfelismerő API a C&#35; .NET Windows-es
@@ -47,7 +47,7 @@ A beszédfelismerő API a Cognitive Services-(korábban Project Oxford) részét
 >
 > * Az előfizetési kulcs használja. A megadott C# asztali mintaalkalmazással illessze be az előfizetési kulcs a szövegmezőbe írja be a minta futtatásakor. További információkért lásd: [futtassa a mintaalkalmazást](#step-3-run-the-sample-application).
 
-## <a name="step-1-install-the-sample-application"></a>1. lépés: A mintaalkalmazás telepítése
+## <a name="step-1-install-the-sample-application"></a>1\. lépés: A mintaalkalmazás telepítése
 
 1. Indítsa el a Visual Studio 2015-öt, és válassza ki **fájl** > **nyílt** > **projekt/megoldás**.
 
@@ -55,7 +55,7 @@ A beszédfelismerő API a Cognitive Services-(korábban Project Oxford) részét
 
 3. Kattintson duplán a SpeechToText-WPF-Samples.sln nevű Visual Studio 2015-megoldás (.sln) fájl megnyitásához. A megoldás megnyílik a Visual Studióban.
 
-## <a name="step-2-build-the-sample-application"></a>2. lépés: A mintaalkalmazás létrehozása
+## <a name="step-2-build-the-sample-application"></a>2\. lépés: A mintaalkalmazás létrehozása
 
 1. Ha a használni kívánt *szándékával felismerése*, először létre kell regisztrálni a [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). A végpont URL-címét a LUIS-alkalmazás használatával a kulcs értékét állítsa `LuisEndpointUrl` az app.config fájlban a samples/SpeechRecognitionServiceExample mappában. A LUIS alkalmazás a végpont URL-címének további információkért lásd: [tegye közzé alkalmazását](../../luis/luis-get-started-create-app.md#publish-your-app).
 
@@ -64,7 +64,7 @@ A beszédfelismerő API a Cognitive Services-(korábban Project Oxford) részét
 
 2. Nyomja le a Ctrl + Shift + B, vagy válassza ki **összeállítása** a menüszalag menü. Válassza ki **megoldás fordítása**.
 
-## <a name="step-3-run-the-sample-application"></a>3. lépés: A mintaalkalmazás futtatása
+## <a name="step-3-run-the-sample-application"></a>3\. lépés: A mintaalkalmazás futtatása
 
 1. A létrehozás befejezése után nyomja le az F5 billentyűt, vagy válasszon **Start** a menüszalag menü a minta futtatásához.
 

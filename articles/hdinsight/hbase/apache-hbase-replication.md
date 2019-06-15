@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.openlocfilehash: 95a1055df283765b24322f6f8efe3efcb9b19022
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707976"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Az Apache HBase-fürt replikációja az Azure virtuális hálózatok beállítása
@@ -71,7 +71,7 @@ Egyes változtatható értékek a sablonban:
 | Location egység | USA nyugati régiója |
 | Virtuális hálózat neve | &lt;ClusterNamePrevix>-vnet1 |
 | Címtér-előtagját | 10.1.0.0/16 |
-| Alhálózat neve | 1. alhálózata |
+| Alhálózat neve | 1\. alhálózata |
 | Alhálózati előtag | 10.1.0.0/24 |
 | Alhálózat (átjáró) neve | Átjáró-alhálózat (nem módosítható) |
 | (Átjáró) alhálózati előtag | 10.1.255.0/27 |
@@ -88,7 +88,7 @@ Egyes változtatható értékek a sablonban:
 | Location egység | USA keleti régiója |
 | Virtuális hálózat neve | &lt;ClusterNamePrevix>-vnet2 |
 | Címtér-előtagját | 10.2.0.0/16 |
-| Alhálózat neve | 1. alhálózata |
+| Alhálózat neve | 1\. alhálózata |
 | Alhálózati előtag | 10.2.0.0/24 |
 | Alhálózat (átjáró) neve | Átjáró-alhálózat (nem módosítható) |
 | (Átjáró) alhálózati előtag | 10.2.255.0/27 |
@@ -105,7 +105,7 @@ Az előző szakaszban a sablon létrehoz egy Ubuntu virtuális gép minden a ké
 Kötési telepítéséhez yon kell keresnie a két DNS virtuális gép nyilvános IP-címét.
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Nyissa meg a DNS virtuális gép kiválasztásával **erőforráscsoportok > [erőforráscsoport neve] > [vnet1DNS]**.  Az erőforráscsoport nevét az utolsó eljárás során létrehozott egy. Az alapértelmezett DNS virtuális gép neve *vnet1DNS* és *vnet2NDS*.
+2. Nyissa meg a DNS virtuális gép kiválasztásával **erőforráscsoportok > [erőforráscsoport neve] > [vnet1DNS]** .  Az erőforráscsoport nevét az utolsó eljárás során létrehozott egy. Az alapértelmezett DNS virtuális gép neve *vnet1DNS* és *vnet2NDS*.
 3. Válassza ki **tulajdonságok** a virtuális hálózati Tulajdonságok lapjának megnyitásához.
 4. Jegyezze fel a **nyilvános IP-cím**, ellenőrizze azt is, és a **magánhálózati IP-cím**.  A magánhálózati IP-címet kell **10.1.0.4** a vnet1DNS és **10.2.0.4** vnet2DNS számára.  
 5. Módosítsa az alapértelmezett (Azure által biztosított) DNS-kiszolgáló Bind telepítéséhez a következő lépésekben-csomagok letöltése bejövő és kimenő hozzáférésének engedélyezéséhez használandó mindkét virtuális hálózat DNS-kiszolgálók.
@@ -288,7 +288,7 @@ A következő lépések bemutatják, hogyan hívja a parancsfájl parancsfájlm�
 5. Válassza ki vagy adja meg a következőket:
 
    1. **Név**: Adja meg **engedélyezze a replikációt**.
-   2. **Bash-szkript URL-cím**: Adja meg **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
+   2. **Bash-szkript URL-cím**: Adja meg **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** .
    3. **A fő**: Győződjön meg arról, ez van kiválasztva. A csomóponttípusok törölje.
    4. **Paraméterek**: A következő minta paraméterek összes meglévő tábla a replikáció engedélyezése, és majd átmásolhatja a kiindulási fürt a célfürt az összes adat:
 
@@ -360,7 +360,7 @@ A `print_usage()` szakaszában a [parancsfájl](https://github.com/Azure/hbase-u
 
 ### <a name="scenarios"></a>Forgatókönyvek
 
-- **Másolja be az adott táblák (Teszt1 test2 és Teszt3) szerkesztett mostanáig minden sort (aktuális időbélyeg)**:
+- **Másolja be az adott táblák (Teszt1 test2 és Teszt3) szerkesztett mostanáig minden sort (aktuális időbélyeg)** :
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
   Vagy:
@@ -390,7 +390,7 @@ A `print_usage()` szakaszában a [parancsfájl](https://raw.githubusercontent.co
 
         --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
-- **Tiltsa le a replikációt a megadott táblák (table1 table2 és Tábl3)**:
+- **Tiltsa le a replikációt a megadott táblák (table1 table2 és Tábl3)** :
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 

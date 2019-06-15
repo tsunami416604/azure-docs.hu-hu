@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: db0b5bbe1261c7bdf76393c69a1189d2a850cd07
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719761"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Erőforrás zárolása az Azure-tervek ismertetése
@@ -28,7 +28,7 @@ A tervezet-hozzárendelést az összetevők által létrehozott erőforrások n�
 
 |Mód|Összetevő erőforrás típusa|Állapot|Leírás|
 |-|-|-|-|
-|Nincs zárolás|*|Nincs zárolva|Tervezetek nem védett erőforrásokat. Ebben az állapotban is szolgál az erőforrások hozzáadott egy **csak olvasható** vagy **ne törölje a** erőforrás csoport összetevő a tervezet-hozzárendelést kívül.|
+|Ne zárolja|*|Nincs zárolva|Tervezetek nem védett erőforrásokat. Ebben az állapotban is szolgál az erőforrások hozzáadott egy **csak olvasható** vagy **ne törölje a** erőforrás csoport összetevő a tervezet-hozzárendelést kívül.|
 |Csak olvasási engedély|Erőforráscsoport|Cannot Edit / Delete|Az erőforráscsoport csak olvasható, és címkéket az erőforráscsoport nem módosítható. **Sok mindent megváltoztathat** erőforrások hozzáadva, áthelyezték, módosítható, vagy ez az erőforráscsoport törölve.|
 |Csak olvasási engedély|Nem-erőforráscsoport|Csak olvasási engedély|Az erőforrás nem módosítható bármilyen módon – nem végez módosítást, és nem törölhető.|
 |Do Not Delete|*|Cannot Delete|Az erőforrások is módosítható, de nem lehet törölni. **Sok mindent megváltoztathat** erőforrások hozzáadva, áthelyezték, módosítható, vagy ez az erőforráscsoport törölve.|

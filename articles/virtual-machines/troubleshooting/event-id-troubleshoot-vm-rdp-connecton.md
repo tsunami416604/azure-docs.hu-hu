@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 4c783c70217a84bbe5ccf15accc4a2bec0b7cca8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485408"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Az Azure-beli virtuális gépek kapcsolati hibáinak elhárítása eseményazonosító alapján 
@@ -43,7 +43,7 @@ Hozzon létre egy biztonsági mentési pillanatképet, kövesse a [lemez pillana
 
 Távolról csatlakozhat a virtuális Gépet, használja a módszer [táveszközök használata Azure virtuális gép hibáinak elhárítása](remote-tools-troubleshoot-azure-vm-issues.md).
 
-## <a name="scenario-1"></a>1. forgatókönyv
+## <a name="scenario-1"></a>1\. forgatókönyv
 
 ### <a name="event-logs"></a>Eseménynaplók
 
@@ -56,35 +56,35 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 
 **Napló neve:**      Rendszer <br />
 **Forrás:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Dátum:***idő* <br />
+**Dátum:** *idő* <br />
 **Eseményazonosító:**      1058 <br />
 **Feladat kategóriája:** None <br />
 **Szint:**         Hiba <br />
 **Kulcsszavak:**      Klasszikus <br />
 **Felhasználói:**          – <br />
-**Számítógép:***számítógép* <br />
+**Számítógép:** *számítógép* <br />
 **Leírás:** A távoli asztali munkamenet kiszolgáló nem tudta cserélje le az önaláírt SSL-kapcsolatok a távoli asztali munkamenet kiszolgáló hitelesítéshez használt tanúsítvány lejárt. A megfelelő állapotkód volt, a hozzáférés megtagadva.
 
 **Napló neve:**      Rendszer <br />
 **Forrás:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Dátum:***idő* <br />
+**Dátum:** *idő* <br />
 **Eseményazonosító:**      1058 <br />
 **Feladat kategóriája:** None <br />
 **Szint:**         Hiba <br />
 **Kulcsszavak:**      Klasszikus <br />
 **Felhasználói:**          – <br />
-**Számítógép:***számítógép* <br />
+**Számítógép:** *számítógép* <br />
 **Leírás:** Nem sikerült a távoli asztali munkamenet gazdagép-kiszolgálón hozzon létre egy új önaláírt tanúsítvány használható SSL-kapcsolatok a távoli asztali munkamenet gazdagép kiszolgálóhitelesítés, a megfelelő állapotkód volt az objektum már létezik.
 
 **Napló neve:**      Rendszer <br />
 **Forrás:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Dátum:***idő* <br />
+**Dátum:** *idő* <br />
 **Eseményazonosító:**      1057 <br />
 **Feladat kategóriája:** None <br />
 **Szint:**         Hiba <br />
 **Kulcsszavak:**      Klasszikus <br />
 **Felhasználói:**          – <br />
-**Számítógép:***számítógép* <br />
+**Számítógép:** *számítógép* <br />
 **Leírás:** Nem sikerült a távoli asztali munkamenet kiszolgáló hozzon létre egy új önaláírt SSL-kapcsolatok a távoli asztali munkamenet kiszolgáló hitelesítéshez használandó tanúsítványt. Az ide tartozó állapotkód kulcskészletet nem létezik.
 
 Ellenőrizheti az SCHANNEL-események hiba 36872-es és 36870-es a következő parancsok futtatásával:
@@ -102,7 +102,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Szint:**         Hiba <br />
 **Kulcsszavak:**       <br />
 **Felhasználói:**          RENDSZER <br />
-**Számítógép:***számítógép* <br />
+**Számítógép:** *számítógép* <br />
 **Leírás:** Helyreállíthatatlan hiba történt az SSL kiszolgálói hitelesítő adatok titkos kulcsának elérésekor. A titkosító modul által visszaadott hibakód: 0x8009030d.  <br />
 Belső hiba állapota 10001.
 
@@ -206,7 +206,7 @@ Is megpróbálhatja törölni szeretné a kulcsot, hogy az RDP RDP-hez az önal�
 reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
 ```
 
-## <a name="scenario-2"></a>2. forgatókönyv
+## <a name="scenario-2"></a>2\. forgatókönyv
 
 ### <a name="event-log"></a>Eseménynapló
 
@@ -224,7 +224,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Szint:**         Hiba <br />
 **Kulcsszavak:**       <br />
 **Felhasználói:**          RENDSZER <br />
-**Számítógép:***számítógép* <br />
+**Számítógép:** *számítógép* <br />
 **Leírás:** Végzetes hiba történt a TLS kiszolgálói hitelesítő adatok létrehozása során. Belső hiba állapota 10013.
  
 ### <a name="cause"></a>Ok
@@ -237,7 +237,7 @@ RDP TLS 1.0-t használja, mint az alapértelmezett protokoll. Azonban a protokol
 
 A probléma elhárításához lásd: [hitelesítési hibák elhárítása Azure virtuális géphez csatlakozni RDP használatakor](troubleshoot-authentication-error-rdp-vm.md#tls-version).
 
-## <a name="scenario-3"></a>3. forgatókönyv
+## <a name="scenario-3"></a>3\. forgatókönyv
 
 Ha már telepítette a **távoli asztali Kapcsolatszervező** szerepkör a virtuális gépen, ellenőrizze, hogy van-e esemény 2056 vagy 1296 eseményt az elmúlt 24 órában. CMD-példányban futtassa a következő parancsokat: 
 
@@ -248,13 +248,13 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 
 **Napló neve:**      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
 **Forrás:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
-**Dátum:***idő* <br />
+**Dátum:** *idő* <br />
 **Eseményazonosító:**      2056 <br />
 **Feladat kategóriája:** (109) <br />
 **Szint:**         Hiba <br />
 **Kulcsszavak:**       <br />
 **Felhasználói:**          HÁLÓZATI SZOLGÁLTATÁS <br />
-**Számítógép:***számítógép teljes tartományneve* <br />
+**Számítógép:** *számítógép teljes tartományneve* <br />
 **Leírás:** A Microsoft-Windows-TerminalServices-SessionBroker Event ID 2056 forrás leírása nem található. Az összetevő, amely kiváltja ezt az eseményt a helyi számítógépen nincs telepítve, vagy sérült a telepítés. Telepítse, vagy javítsa ki az összetevő a helyi számítógépen. <br />
 Ha az esemény származik, egy másik számítógépen, a megjelenített információk kellett menthető az eseményhez. <br />
 Az esemény lett a következő információkat: <br />
@@ -264,13 +264,13 @@ Nem sikerült bejelentkezni az adatbázisba.
 
 **Napló neve:**      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
 **Forrás:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
-**Dátum:***idő* <br />
+**Dátum:** *idő* <br />
 **Eseményazonosító:**      1296 <br />
 **Feladat kategóriája:** (104) <br />
 **Szint:**         Hiba <br />
 **Kulcsszavak:**       <br />
 **Felhasználói:**          HÁLÓZATI SZOLGÁLTATÁS <br />
-**Számítógép:***számítógép teljes tartományneve* <br />
+**Számítógép:** *számítógép teljes tartományneve* <br />
 **Leírás:** A Microsoft-Windows-TerminalServices-SessionBroker-ügyfél Event ID 1296 forrás leírása nem található. Az összetevő, amely kiváltja ezt az eseményt a helyi számítógépen nincs telepítve, vagy sérült a telepítés. Telepítse, vagy javítsa ki az összetevő a helyi számítógépen.
 Ha az esemény származik, egy másik számítógépen, a megjelenített információk kellett menthető az eseményhez.
 Az esemény lett a következő információkat:  <br />

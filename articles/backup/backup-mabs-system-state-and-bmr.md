@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: raynew
 ms.openlocfilehash: 35ab150670cdc27efcedca233928e0c2184aeca6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62116175"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Rendszerállapotának biztonsági mentése és visszaállítása az Azure Backup Server operációs rendszer nélküli
@@ -94,7 +94,7 @@ Ha a biztonsági mentés befejeződött, a fájl átkerül a biztonsági mentés
 
     Ha módosítja a BMR-védelem a rendszerállapot-védelemre, helyre van szüksége a védett számítógépen. Ennek az az oka a rendszerállapot-védelem először írja a replikát a helyi számítógépen, és majd átviszi a Backup Server számítógéphez.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 1.  **Az Azure Backup Server telepítése**. Győződjön meg arról, hogy a Backup-kiszolgáló megfelelően van-e telepítve. További információkért lásd:
     * [Azure Backup Server rendszerre vonatkozó követelmények](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)

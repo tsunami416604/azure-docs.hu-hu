@@ -17,11 +17,11 @@ ms.date: 03/27/2019
 ms.author: v-ant
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f559d2c2398998ba590419758de559f21d9b65f5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62114665"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64696941"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Zendesk konfigurálása
 
@@ -116,7 +116,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás konfigurálá
 
     ![Zendesk titkos jogkivonat](./media/zendesk-provisioning-tutorial/ZenDesk2.png)
 
-7. 5. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** , győződjön meg arról, hogy az Azure AD a Zendeskhez csatlakozik. Ha a kapcsolat nem sikerül, ellenőrizze, hogy Zendesk-fiókja rendszergazdai engedélyekkel rendelkezik, és próbálkozzon újra.
+7. 5\. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** , győződjön meg arról, hogy az Azure AD a Zendeskhez csatlakozik. Ha a kapcsolat nem sikerül, ellenőrizze, hogy Zendesk-fiókja rendszergazdai engedélyekkel rendelkezik, és próbálkozzon újra.
 
     ![Kapcsolat Zendesk tesztelése](./media/zendesk-provisioning-tutorial/ZenDesk19.png)
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: kumud
 ms.openlocfilehash: b1d2d04e74828323166810d93c52a60671bf71e8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64710912"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Létrehozása, módosítása vagy törlése a szolgáltatásvégpont-szabályzat az Azure portal használatával
@@ -73,7 +73,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
  
 ## <a name="view-endpoint-policies"></a>Végpont szabályzatok megtekintése 
 
-1. Az a *minden szolgáltatás* a portál mezőben kezdje el beírni *szolgáltatásvégpont-szabályzatra*. Válassza ki **szolgáltatási végpont Policies(Preview)**.
+1. Az a *minden szolgáltatás* a portál mezőben kezdje el beírni *szolgáltatásvégpont-szabályzatra*. Válassza ki **szolgáltatási végpont Policies(Preview)** .
 2. A **előfizetések**, válassza ki az előfizetést és erőforráscsoportot, a következő képen látható módon
 
    ![A házirend megjelenítése](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-viewpolicies.PNG)

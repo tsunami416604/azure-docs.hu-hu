@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61408661"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>A StorSimple Virtual Array 1.1-es frissítés telepítése
@@ -30,11 +30,11 @@ Ez a cikk azt ismerteti, hogyan 1.1-es frissítés telepítése a StorSimple vir
 A szoftverfrissítések vagy gyorsjavítások naprakészen tartani a StorSimple Virtual Array alkalmaz. Mielőtt alkalmazná a frissítést, javasoljuk, hogy tegye meg a kötetek vagy megosztások kapcsolat nélküli módban a gazdagépen első és az eszköz majd. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. Miután a kötetek vagy megosztások offline állapotban, akkor kell is manuális biztonsági mentést az eszköz.
 
 > [!IMPORTANT]
-> - 1.1-es frissítés megfelel **10.0.10307.0** szoftververzió az eszközön. Ez a frissítés újdonsága az információk, [kibocsátási megjegyzései 1.1-es frissítés](storsimple-virtual-array-update-11-release-notes.md).
+> - 1\.1-es frissítés megfelel **10.0.10307.0** szoftververzió az eszközön. Ez a frissítés újdonsága az információk, [kibocsátási megjegyzései 1.1-es frissítés](storsimple-virtual-array-update-11-release-notes.md).
 >
 > - Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése az eszköz újraindul. Tekintve, hogy a StorSimple Virtual Array egy egyetlen csomóponttal rendelkező eszköz, a folyamatban lévő összes i/o megszakad, és a az eszköz állásidő élményhez.
 >
-> - 1.1-es frissítés az Azure Portalon érhető el, csak akkor, ha a virtuális tömb 1. frissítés fut-e. A virtuális tömbök 0.6-os frissítés verziót futtató először telepítse az 1.0-ás frissítés és ezután alkalmazza az 1.1-es frissítés.
+> - 1\.1-es frissítés az Azure Portalon érhető el, csak akkor, ha a virtuális tömb 1. frissítés fut-e. A virtuális tömbök 0.6-os frissítés verziót futtató először telepítse az 1.0-ás frissítés és ezután alkalmazza az 1.1-es frissítés.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
@@ -93,7 +93,7 @@ A következő lépésekkel 1.1-es frissítés letöltése a Microsoft Update kat
 A frissítés vagy gyorsjavítás telepítése előtt győződjön meg arról, hogy:
 
  - Hogy a frissítés vagy a gyorsjavítás letöltése helyileg a gazdagépen vagy egy hálózati megosztáson keresztül érhető el.
- - A virtuális tömb fut az 1. frissítés (10.0.10296.0). 0.6-os, frissítés futtatásakor [telepítéséhez 1. frissítés](storsimple-virtual-array-install-update-1.md) első, majd telepítse a frissítést 1.1.
+ - A virtuális tömb fut az 1. frissítés (10.0.10296.0). 0\.6-os, frissítés futtatásakor [telepítéséhez 1. frissítés](storsimple-virtual-array-install-update-1.md) első, majd telepítse a frissítést 1.1.
 
 Ez az eljárás végrehajtásához szükséges körülbelül 4 perc. A következő lépésekkel telepítse a frissítést vagy gyorsjavítást.
 

@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130755"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>ILB ASE létrehozása Azure Resource Manager-sablonokkal
@@ -58,12 +58,12 @@ Miután a *azuredeploy.parameters.json* fájl ki van töltve az ILB ASE környez
 Az Azure Resource Manager után a sablon elküldésekor fog létrehozni az ILB ASE néhány órát is igénybe.  A létrehozás befejezése után az ILB ASE jelennek meg a portálon UX az App Service Environment-környezetek listája az előfizetés, amely a központi telepítés elindítva.
 
 ## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>Fel- és az "Alapértelmezett" SSL-tanúsítvány konfigurálása
-Az ILB ASE létrehozása után egy SSL-tanúsítványt kell társítva az ASE-t az "alapértelmezett" SSL-tanúsítvány használata az alkalmazások SSL-kapcsolat.  Van folytatása a elméleti Contoso Corporation például, ha az ASE alapértelmezett DNS-utótag *belső contoso.com*, majd a kapcsolat *https://some-random-app.internal-contoso.com* igényel, amely SSL-tanúsítvány érvényes **.internal-contoso.com*. 
+Az ILB ASE létrehozása után egy SSL-tanúsítványt kell társítva az ASE-t az "alapértelmezett" SSL-tanúsítvány használata az alkalmazások SSL-kapcsolat.  Van folytatása a elméleti Contoso Corporation például, ha az ASE alapértelmezett DNS-utótag *belső contoso.com*, majd a kapcsolat *https://some-random-app.internal-contoso.com* igényel, amely SSL-tanúsítvány érvényes * *.internal-contoso.com*. 
 
 Nincsenek többféle módon, beleértve a belső hitelesítésszolgáltatók, a vásárol egy tanúsítványt külső kiállítótól és a egy önaláírt tanúsítvány használatával érvényes SSL-tanúsítvány beszerzése.  Az SSL-tanúsítvány forrásától függetlenül az alábbi tanúsítványattribútumokat megfelelően kell konfigurálni:
 
-* *Tulajdonos*:  Ezt az attribútumot állítsa **.az-gyökér-domain-here.com*
-* *Tulajdonos alternatív neve*:  Ennek az attribútumnak tartalmaznia kell mindkét **.az-gyökér-domain-here.com*, és a **.az-gyökér-domain-here.com*.  A második bejegyzés oka, hogy SSL-kapcsolatok az egyes alkalmazásokhoz hozzárendelt SCM/Kudu helyhez lesz-e az űrlap egy címmel *your-app-name.scm.your-root-domain-here.com*.
+* *Tulajdonos*:  Ezt az attribútumot állítsa * *.az-gyökér-domain-here.com*
+* *Tulajdonos alternatív neve*:  Ennek az attribútumnak tartalmaznia kell mindkét * *.az-gyökér-domain-here.com*, és a * *.az-gyökér-domain-here.com*.  A második bejegyzés oka, hogy SSL-kapcsolatok az egyes alkalmazásokhoz hozzárendelt SCM/Kudu helyhez lesz-e az űrlap egy címmel *your-app-name.scm.your-root-domain-here.com*.
 
 Az érvényes SSL-tanúsítványt az aktuális két további előkészítő lépések szükségesek.  Az SSL-tanúsítványt kell lennie egy .pfx-fájlba konvertálja/elmentve.  Ne feledje, hogy a .pfx-fájl összes köztes és főtanúsítványok van szükség, és jelszóval kell védeni kell is.
 
@@ -130,7 +130,7 @@ Miután a *azuredeploy.parameters.json* fájl ki van töltve, az alapértelmezet
 
 Az Azure Resource Manager után a sablon elküldésekor a módosítás alkalmazása előtér ASE / nagyjából negyven percet vesz igénybe.  Például egy alapértelmezett méretű ASE használatával két az előtér-kiszolgálókon, az a sablon percet vesz igénybe körülbelül egy óra és húsz végrehajtásához.  A sablon futása közben az ASE nem lesz képes van ellátva.  
 
-Miután befejeződött a sablont, az ILB ASE alkalmazások elérhetők HTTPS-kapcsolaton keresztül, és a kapcsolat biztonságát az alapértelmezett SSL-tanúsítvány használatával.  Az alapértelmezett SSL-tanúsítvány használható, ha az ILB ASE alkalmazásokat az alkalmazás nevét és az alapértelmezett állomásnév együttes használatával foglalkozik.  Például *https://mycustomapp.internal-contoso.com* az alapértelmezett SSL-tanúsítványt használna **.internal-contoso.com*.
+Miután befejeződött a sablont, az ILB ASE alkalmazások elérhetők HTTPS-kapcsolaton keresztül, és a kapcsolat biztonságát az alapértelmezett SSL-tanúsítvány használatával.  Az alapértelmezett SSL-tanúsítvány használható, ha az ILB ASE alkalmazásokat az alkalmazás nevét és az alapértelmezett állomásnév együttes használatával foglalkozik.  Például *https://mycustomapp.internal-contoso.com* az alapértelmezett SSL-tanúsítványt használna * *.internal-contoso.com*.
 
 Azonban a több-bérlős nyilvános szolgáltatásban futó alkalmazások, mint a fejlesztők is is konfigurálhatja az egyes alkalmazások egyéni állomásnevek, és konfigurálja egyedi SNI SSL-tanúsítványok kötései az egyes alkalmazások.  
 

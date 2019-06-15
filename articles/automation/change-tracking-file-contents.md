@@ -10,10 +10,10 @@ ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: dae0ea3e564a3dfafcd7f072f9b0d8854df17ed7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61304340"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>A Change Tracking követett fájl tartalmának megjelenítése
@@ -34,7 +34,7 @@ Tartalom nyomon követésének lehetővé teszi, hogy egy fájl tartalmának meg
 2. A felső menüben válassza ki a **beállításainak szerkesztése**.
 3. Válassza ki **fájltartalom** kattintson **hivatkozás**. Ekkor megnyílik a **tartalom helyének felvétele a Change Tracking megoldásba** ablaktáblán.
 
-   ![engedélyezése](./media/change-tracking-file-contents/enable.png)
+   ![Engedélyezése](./media/change-tracking-file-contents/enable.png)
 
 4. Válassza ki az előfizetést és a tárfiók tárolja a fájl tartalmát. Ha szeretné az összes meglévő követett fájl fájl tartalom nyomon követése, válassza ki a **a** a **töltse fel a fájl tartalmának az összes beállítás**. Ezt módosíthatja a minden fájl elérési útjának ezt követően.
 

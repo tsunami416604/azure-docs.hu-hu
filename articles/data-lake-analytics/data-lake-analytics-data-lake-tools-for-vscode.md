@@ -10,10 +10,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 02/09/2018
 ms.openlocfilehash: 5042d89f1cb5e928444e4b3c9a23db7bb1d66585
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60509097"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Használja az Azure Data Lake Tools for Visual Studio Code
@@ -170,7 +170,7 @@ Több kényelmesen aktiválása a **ADL: Zaregistrovat Sestavení** parancsot, h
 
 **Regisztráció az ADL keresztül: Sestavení (speciális) parancs regisztrálása**
 1.  Válassza ki a Ctrl + Shift + P a parancskatalógus megnyitásához.
-2.  Adja meg **ADL: Zaregistrovat Sestavení (speciális)**. 
+2.  Adja meg **ADL: Zaregistrovat Sestavení (speciális)** . 
 3.  Adja meg a helyi szerelvény elérési útja. 
 4.  A JSON-fájl jelenik meg. Tekintse át, és szükség esetén szerkessze a szerelvény függőségi viszonyairól és erőforrás-paraméterek. Jelennek útmutató a **kimeneti** ablak. Folytassa a szerelvényregisztráló, mentse a JSON-fájl (Ctrl + S).
 
@@ -366,10 +366,10 @@ Is [figyelheti a feltöltési állapotot](#check-storage-tasks-status).
 
 
 ### <a name="download-a-file"></a>Fájl letöltése 
-A parancs segítségével letölthető egy fájl **ADL: Fájl letöltése** vagy **ADL: Töltse le a fájlt (speciális)**.
+A parancs segítségével letölthető egy fájl **ADL: Fájl letöltése** vagy **ADL: Töltse le a fájlt (speciális)** .
 
 **Az ADL keresztül fájlok letöltéséhez: Töltse le a fájlt (speciális) parancsot.**
-1. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza **fájl letöltése (speciális)**.
+1. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza **fájl letöltése (speciális)** .
 2. A VS Code jeleníti meg egy JSON-fájlt. Adja meg a fájlok elérési útja, és egyszerre több fájl letöltéséhez. Jelennek útmutató a **kimeneti** ablak. A fájl vagy fájlok letöltése a folytatáshoz mentése (Ctrl + S) a JSON-fájlt.
 
     ![Fájl letöltése JSON-fájljának elérési úttal](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-files.png)

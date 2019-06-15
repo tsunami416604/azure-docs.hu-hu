@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: 146b33c1a52838279f000a7f793902e2f35dbfaa
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65826528"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagálás Blob storage-események
@@ -44,14 +44,14 @@ BLOB storage-események összes kell reagálni az igények változásaira az ada
 
 > |Tulajdonság|Típus|Leírás|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |témakör|string|Teljes Azure Resource Manager azonosítója, amely az eseményt bocsát ki a tárfiókot.|
-> |tárgy|string|Az objektum azonos kiterjesztett Azure Resource Manager formátumban, amelyek bemutatják a storage-fiókok, szolgáltatások és tárolók az Azure RBAC használatával az esemény tárgyát képező relatív erőforrás elérési útja.  Ez a formátum tartalmazza a blob nevét megőrzi.|
+> |topic|string|Teljes Azure Resource Manager azonosítója, amely az eseményt bocsát ki a tárfiókot.|
+> |subject|string|Az objektum azonos kiterjesztett Azure Resource Manager formátumban, amelyek bemutatják a storage-fiókok, szolgáltatások és tárolók az Azure RBAC használatával az esemény tárgyát képező relatív erőforrás elérési útja.  Ez a formátum tartalmazza a blob nevét megőrzi.|
 > |eventTime|string|Az esemény létrejött, az ISO 8601 formátumú dátum/idő|
 > |eventType|string|"Microsoft.Storage.BlobCreated" or "Microsoft.Storage.BlobDeleted"|
 > |Azonosító|string|Egyedi azonosító, ha az esemény|
 > |dataVersion|string|Az adatobjektum sémaverziója.|
 > |metadataVersion|string|A legfelső szintű tulajdonságok sémaverziója.|
-> |adat|objektum|A blob storage-specifikus eseményadatok gyűjtése|
+> |data|objektum|A blob storage-specifikus eseményadatok gyűjtése|
 > |data.contentType|string|A BLOB, a Content-Type fejlécében a blobból kellene visszaadnia a tartalom típusa|
 > |data.contentLength|szám|Egész számot jelölő bájt, számos, a Content-Length fejlécet a blobból kellene visszaadnia hasonlóan a blob mérete.  BlobCreated esemény, de nem BlobDeleted küldi.|
 > |Data.URL|string|Az URL-cím az objektum, amely az esemény tárgya|

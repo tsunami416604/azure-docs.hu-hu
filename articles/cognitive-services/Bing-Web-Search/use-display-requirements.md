@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60499885"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API – követelmények használata és megjelenítése
@@ -23,8 +23,8 @@ Bármely megvalósítása a tartalom és a kapcsolódó információkat a követ
 
 - Bing – Egyéni keresés
 - Bing – Entitáskeresés
-- Bing – Képkeresés
-- Bing – Hírkeresés
+- Bing Image Search
+- Bing News Search
 - Bing – Videokeresés
 - Bing Visual Search
 - Bing – Internetes keresés
@@ -34,7 +34,7 @@ Bármely megvalósítása a tartalom és a kapcsolódó információkat a követ
 ## <a name="definitions"></a>Meghatározások
 
 
-|Időtartam  |Leírás  |
+|Kifejezés  |Leírás  |
 |---------|---------|
 |Válasz     | Az eredmények kategória választ adja vissza. Például a Bing Web Search API válaszára belefoglalhatja válaszokat a weblap eredményeket, kép, videó, vizualizációt és hírek kategóriáit. |
 |Válasz     | Bármely és minden válaszokat és kapcsolódó adatait egyetlen keresési API-hívással adott válaszként kapott. |

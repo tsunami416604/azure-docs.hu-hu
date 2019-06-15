@@ -16,10 +16,10 @@ ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: d687e770fae6c32ee351a597e12d1aca6094e5cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60851375"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Az App Service-alkalmazások a Azure Active Directory-bejelentkezés konfigurálása
@@ -79,12 +79,12 @@ Regisztrálhat natív ügyfelek számára, amellyel az engedélyek hozzárendel�
 1. Navigáljon a **Azure Active Directory** a a [Azure Portal].
 2. A bal oldali navigációs sávján válassza **alkalmazásregisztrációk**. Kattintson a **új alkalmazásregisztráció** tetején.
 4. Az a **létrehozás** lap, adja meg egy **neve** az alkalmazás regisztrációját. Válassza ki **natív** a **alkalmazástípus**.
-5. Az a **átirányítási URI-t** mezőbe írja be a webhely */.auth/login/done* végpontról, a HTTPS-sémát. Ez az érték legyen hasonló *https://contoso.azurewebsites.net/.auth/login/done*. Ha inkább használja egy Windows-alkalmazás létrehozása a [csomag biztonsági azonosítója](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) , az URI-t.
+5. Az a **átirányítási URI-t** mezőbe írja be a webhely */.auth/login/done* végpontról, a HTTPS-sémát. Ez az érték legyen hasonló *https://contoso.azurewebsites.net/.auth/login/done* . Ha inkább használja egy Windows-alkalmazás létrehozása a [csomag biztonsági azonosítója](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) , az URI-t.
 5. Kattintson a **Create** (Létrehozás) gombra.
 6. Miután hozzáadta az alkalmazás regisztrációját, ezt választva nyithatja meg azt. Keresse meg a **Alkalmazásazonosító** , és jegyezze fel ezt az értéket.
 7. Kattintson a **minden beállítás** > **szükséges engedélyek** > **Hozzáadás** > **API kiválasztása**.
 8. Adja meg az App Service-alkalmazás, amely korábban regisztrált a keresési funkciót, majd jelölje ki azt, és kattintson a **kiválasztása**.
-9. Válassza ki **hozzáférés \<app_name >**. Ezután kattintson a **Kiválasztás** elemre. Ezután kattintson a **Done** (Kész) gombra.
+9. Válassza ki **hozzáférés \<app_name >** . Ezután kattintson a **Kiválasztás** elemre. Ezután kattintson a **Done** (Kész) gombra.
 
 Most már konfigurálta a natív ügyfélalkalmazás az App Service-alkalmazás eléréséhez.
 

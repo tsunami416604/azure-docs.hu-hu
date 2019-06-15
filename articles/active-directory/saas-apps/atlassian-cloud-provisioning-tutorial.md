@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant
 ms.openlocfilehash: 4e028429ca8a22915eff2b90ca63c6d05a67741b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64692238"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása Atlassian felhő konfigurálása
@@ -48,7 +48,7 @@ Atlassian felhő konfigurálása az Azure AD-felhasználók automatikus, mielőt
 
 **Az Azure AD alkalmazáskatalógusában Atlassian felhőalapú hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
+1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -115,7 +115,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
     ![Atlassian felhőalapú Jogosultságkiosztási](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
 
-7. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Atlassian felhőalapú csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, Atlassian felhőalapú fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+7. 5\. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Atlassian felhőalapú csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, Atlassian felhőalapú fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
 
     ![Atlassian felhőalapú Jogosultságkiosztási](./media/atlassian-cloud-provisioning-tutorial/test-connection.png)
 

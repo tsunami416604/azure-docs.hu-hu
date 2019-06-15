@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 44c54b570a38eb1a3b9ca773893599d1d497dfa2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62110995"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>A Cordova-mobilalkalmazás offline szinkronizálásának engedélyezése
@@ -128,7 +128,7 @@ A kapcsolat nélküli szinkronizálás – kód hozzá kell adni az alkalmazásh
           syncContext.pull(new WindowsAzure.Query('todoitem'));
         }
 
-    Úgy dönt, hogy mikor változásainak leküldése a Mobile Apps-háttéralkalmazás meghívásával **syncContext.push()**. Például hívhatja **syncBackend** egy gomb eseménykezelőt a szinkronizálás gomb kötve.
+    Úgy dönt, hogy mikor változásainak leküldése a Mobile Apps-háttéralkalmazás meghívásával **syncContext.push()** . Például hívhatja **syncBackend** egy gomb eseménykezelőt a szinkronizálás gomb kötve.
 
 ## <a name="offline-sync-considerations"></a>Kapcsolat nélküli szinkronizálás – szempontok
 

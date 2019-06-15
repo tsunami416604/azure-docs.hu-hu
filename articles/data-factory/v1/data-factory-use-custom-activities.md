@@ -14,14 +14,14 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: f7e3b1496890a4b97fc435b49ab9bf282134d1a6
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65910812"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-use-custom-activities.md)
 > * [2-es verzió (aktuális verzió)](../transform-data-using-dotnet-custom-activity.md)
 
@@ -415,14 +415,14 @@ Az alábbiakban a jelen szakaszban végrehajtandó lépések:
 > [!NOTE]
 > Hozzon létre a **file.txt** és feltöltése a blob-tárolóba, ha ezt még nem tette meg. Tekintse meg az előző szakaszban található.
 
-### <a name="step-1-create-the-data-factory"></a>1. lépés: Az adat-előállító létrehozása
+### <a name="step-1-create-the-data-factory"></a>1\. lépés: Az adat-előállító létrehozása
 1. Miután bejelentkezett az Azure Portalra, tegye a következőket:
    1. Kattintson a **erőforrás létrehozása** a bal oldali menüben.
    2. Kattintson a **adatok + analitika** a a **új** panelen.
    3. Kattintson a **Data Factory** elemre a **Data analytics** (Adatelemzés) panelen.
 
       ![Új Azure Data Factory menü](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. Az a **új adat-előállító** panelen adja meg **CustomActivityFactory** neve. Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **Nem érhető el a Data factory name "CustomActivityFactory"**, módosítsa az adat-előállító nevét (például **yournameCustomActivityFactory**), és próbálkozzon újra a létrehozással.
+2. Az a **új adat-előállító** panelen adja meg **CustomActivityFactory** neve. Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **Nem érhető el a Data factory name "CustomActivityFactory"** , módosítsa az adat-előállító nevét (például **yournameCustomActivityFactory**), és próbálkozzon újra a létrehozással.
 
     ![Új Azure Data Factory panel](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. Kattintson a **ERŐFORRÁSCSOPORT-név**, és válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy erőforráscsoportot.
@@ -433,7 +433,7 @@ Az alábbiakban a jelen szakaszban végrehajtandó lépések:
 
     ![A Data Factory panel](media/data-factory-use-custom-activities/data-factory-blade.png)
 
-### <a name="step-2-create-linked-services"></a>2. lépés: Társított szolgáltatások létrehozása
+### <a name="step-2-create-linked-services"></a>2\. lépés: Társított szolgáltatások létrehozása
 A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat társítanak az Azure data factoryhez. Ebben a lépésben társítani fogja az Azure Storage-fiók és az Azure Batch-fiókot az adat-előállítóhoz.
 
 #### <a name="create-azure-storage-linked-service"></a>Azure Storage társított szolgáltatás létrehozása
@@ -476,7 +476,7 @@ A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat
 
        Az a **poolName** tulajdonságot használja, azt is megadhatja a készlet neve helyett a készlet azonosítója.
 
-### <a name="step-3-create-datasets"></a>3. lépés: Adatkészletek létrehozása
+### <a name="step-3-create-datasets"></a>3\. lépés: Adatkészletek létrehozása
 Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat képviselik.
 
 #### <a name="create-input-dataset"></a>Bemeneti adatkészlet létrehozása
@@ -548,9 +548,9 @@ Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat k
 
     Kimeneti blob/fájl jön létre az egyes bemeneti szeletek. Itt látható, hogy az egyes szeletekhez egy kimeneti fájl neve. A kimeneti fájlok jönnek létre egy kimeneti mappában: **adftutorial\customactivityoutput**.
 
-   | Szelet | Kezdő időpont | Kimeneti fájl |
+   | Szelet | Kezdési idő | Kimeneti fájl |
    |:--- |:--- |:--- |
-   | 1. |2016-11-16T00:00:00 |2016-11-16-00.txt |
+   | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
    | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
@@ -628,7 +628,7 @@ Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat k
     ![Diagram csempe](./media/data-factory-use-custom-activities/DataFactoryBlade.png)
 2. A Diagram nézet most kattintson az OutputDataset.
 
-    ![Diagram nézet](./media/data-factory-use-custom-activities/diagram.png)
+    ![Diagramnézet](./media/data-factory-use-custom-activities/diagram.png)
 3. Megtekintheti, hogy öt kimeneti szelet kész állapotban van. Ha nem üzemkész állapotba kerül, azok még nem készült még.
 
    ![Kimeneti szeletek](./media/data-factory-use-custom-activities/OutputSlices.png)

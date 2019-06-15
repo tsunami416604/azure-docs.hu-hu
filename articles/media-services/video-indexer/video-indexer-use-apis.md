@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: ce04e19022a9902c228079e866c192985694134c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799251"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
@@ -40,14 +40,14 @@ Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Index
 
     Válassza a [Products](https://api-portal.videoindexer.ai/products) (Termékek) lapot. Ezután válassza az Authorization (Engedélyezés), majd a Subscribe (Feliratkozás) lehetőséget. 
     
-    ![Feliratkozás](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![Regisztráció](./media/video-indexer-use-apis/video-indexer-api02.png)
 
     > [!NOTE]
     > Az új felhasználók automatikusan feliratkoznak az Engedélyezési API-ra.
     
     Ha feliratkozott, megtekintheti a feliratkozását, valamint az elsődleges és másodlagos kulcsokat. A kulcsok védelmet igényelnek. Csak a kiszolgálókód használhatja a kulcsokat. Az ügyféloldalon (.js, .html stb.) nem lehetnek elérhetők.
 
-    ![Feliratkozás](./media/video-indexer-use-apis/video-indexer-api03.png)
+    ![Regisztráció](./media/video-indexer-use-apis/video-indexer-api03.png)
 
 > [!TIP]
 > Egy Video Indexer-felhasználó egyetlen előfizetői kulccsal több Video Indexer-fiókhoz is csatlakozhat. Ezek a Video Indexer-fiókok pedig különböző Media Services-fiókokhoz társíthatók.

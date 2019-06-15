@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: fddd2291fe7fbb46c57d31e9aebc7fc6244df971
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61336966"
 ---
 # <a name="json-search-syntax"></a>JSON keresési szintaxis
@@ -33,7 +33,7 @@ ms.locfileid: "61336966"
 }
 ```
 
-Lekérdezés elérési út a csomópont nevének (_v0, v1,..._ ) olyan csomópont-azonosítók, amely lehet hivatkozni a lekérdezésben objektumot. az edge-nevek (_e0, e1,..._ ) az elérési út a megfelelő élek típusú jelölik. Használhatjuk a csillag _*_ (kivéve a kiindulási csomópont, amely se musí zadat) csomópont- vagy peremtábla névként deklarálnia ilyen elemet a korlátozások nélkül. Például egy lekérdezési elérési `/v0/*/v1/e1/*/` elérési utak lekéri a diagramon az edge típusú korlátozása nélkül _(v0 v1)_. Eközben a lekérdezés nem rendelkezik a cél (az utolsó csomópont), az útvonal megkötések vagy.
+Lekérdezés elérési út a csomópont nevének (_v0, v1,..._ ) olyan csomópont-azonosítók, amely lehet hivatkozni a lekérdezésben objektumot. az edge-nevek (_e0, e1,..._ ) az elérési út a megfelelő élek típusú jelölik. Használhatjuk a csillag _*_ (kivéve a kiindulási csomópont, amely se musí zadat) csomópont- vagy peremtábla névként deklarálnia ilyen elemet a korlátozások nélkül. Például egy lekérdezési elérési `/v0/*/v1/e1/*/` elérési utak lekéri a diagramon az edge típusú korlátozása nélkül _(v0 v1)_ . Eközben a lekérdezés nem rendelkezik a cél (az utolsó csomópont), az útvonal megkötések vagy.
 
 Ha egy elérési út csak egyetlen csomópontot tartalmaz, például _v0_, a lekérdezés egyszerűen adja vissza az összes olyan entitás, amely eleget kell tennie. A korlátozás az objektumot a kiindulási csomópont a alkalmazni egy *indítása lekérdezési objektummal*, amelynek leírását a következő van megadva.
 

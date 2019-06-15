@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/3/2018
 ms.author: victorh
 ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60790742"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Elosztott terhelésű Azure-alapú webes alkalmazásokat üzemeltethet a zóna legfelső pontján
@@ -84,10 +84,10 @@ Most már a végpontokat a két webalkalmazást hozhat létre.
 
 1. Nyissa meg az erőforráscsoportot, és kattintson a Traffic Manager-profil.
 2. A bal oldali oszlopban kattintson **végpontok**.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 4. Használja az alábbi táblázat a végpontok konfigurálása:
 
-   |Típus  |Name (Név)  |Cél  |Location egység  |Egyéni fejléc beállításai|
+   |Típus  |Name (Név)  |Target  |Location egység  |Egyéni fejléc beállításai|
    |---------|---------|---------|---------|---------|
    |Külső végpont     |End-01|Az alkalmazás-01-es rögzített IP-cím|USA keleti régiója|gazdagép:\<az URL-cím, az alkalmazás-01-es rögzített\><br>Example: **host:app-01.azurewebsites.net**|
    |Külső végpont     |End-02|Az alkalmazás-02 rögzített IP-cím|USA középső régiója|gazdagép:\<az URL-cím, az alkalmazás-02 rögzített\><br>Example: **host:app-02.azurewebsites.net**

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
 ms.openlocfilehash: 1a0b6cf8ce272733c259283fdec9c215ac2b0fd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61442562"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Az IoT hubhoz az MQTT protokoll használatával kommunikálnak.
@@ -216,7 +216,7 @@ További információkért lásd: [üzenetkezelés – fejlesztői útmutató](i
 
 Az eszköz nem kap olyan üzeneteket az IoT hubról, amíg sikeresen előfizetett az eszközspecifikus végponthoz, képviseli a `devices/{device_id}/messages/devicebound/#` témakör szűrőt. Előfizetés létrehozása után az eszköz megkaphatná a felhőből az eszközre üzeneteinek hozzá az előfizetés az időpont után. Ha az eszköz kapcsolódik a **CleanSession** jelző értékre **0**, az előfizetés rendszer megőrzi a munkamenetek között. Ebben az esetben, amikor legközelebb az eszköz kapcsolódik a **CleanSession 0** bármely leválasztott állapotban neki küldött üzeneteket kap. Ha az eszköz **CleanSession** jelző értékre **1** , hogy nem kapja meg olyan üzeneteket az IoT hubról mindaddig, amíg az eszköz végpontja van feliratkozva.
 
-Az IoT Hub továbbítja az üzeneteket az a **témakör neve** `devices/{device_id}/messages/devicebound/`, vagy `devices/{device_id}/messages/devicebound/{property_bag}` Ha üzenet tulajdonságai. `{property_bag}` üzenet tulajdonságai url-kódolású kulcs/érték párt tartalmaz. Csak alkalmazás és a felhasználó állítható rendszer tulajdonságai (például **üzenetazonosító** vagy **correlationId**) a tulajdonságcsomag szerepelnek. Rendszer tulajdonságnevek rendelkezik az előtag **$**, alkalmazástulajdonságok nincs előtaggal rendelkező eredeti tulajdonság nevét használja.
+Az IoT Hub továbbítja az üzeneteket az a **témakör neve** `devices/{device_id}/messages/devicebound/`, vagy `devices/{device_id}/messages/devicebound/{property_bag}` Ha üzenet tulajdonságai. `{property_bag}` üzenet tulajdonságai url-kódolású kulcs/érték párt tartalmaz. Csak alkalmazás és a felhasználó állítható rendszer tulajdonságai (például **üzenetazonosító** vagy **correlationId**) a tulajdonságcsomag szerepelnek. Rendszer tulajdonságnevek rendelkezik az előtag **$** , alkalmazástulajdonságok nincs előtaggal rendelkező eredeti tulajdonság nevét használja.
 
 Amikor egy eszköz alkalmazást feliratkozik egy témakörhöz **QoS 2**, az IoT Hub maximális QoS level 1 a biztosít a **SUBACK** csomagot. Ezt követően az IoT Hub továbbítja az üzeneteket a QoS 1 eszközt.
 
@@ -244,7 +244,7 @@ A válasz törzse tartalmazza az ikereszközök a Tulajdonságok szakaszának, a
 
 A lehetséges állapotkódok a következők:
 
-|status | Leírás |
+|Állapot | Leírás |
 | ----- | ----------- |
 | 204 | Sikeres (nincs tartalom visszaadott) |
 | 429 | Túl sok kérelem (szabályozott), megfelelően [szabályozása az IoT Hub](iot-hub-devguide-quotas-throttling.md) |
@@ -275,9 +275,9 @@ A következő szakasz ismerteti, hogyan egy eszközt az IoT Hub az ikereszköz j
 
 A lehetséges állapotkódok a következők:
 
-|status | Leírás |
+|Állapot | Leírás |
 | ----- | ----------- |
-| 200 | Sikeres |
+| 200 | Siker |
 | 400 | Hibás kérés. Helytelen formátumú JSON |
 | 429 | Túl sok kérelem (szabályozott), megfelelően [szabályozása az IoT Hub](iot-hub-devguide-quotas-throttling.md) |
 | 5** | Kiszolgálóhibák |

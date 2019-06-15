@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
 ms.openlocfilehash: e984531feced2d61332e4c399848c12cd245a34a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60870706"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>A StorSimple Virtual Array frissítés a 0.6-os kibocsátási megjegyzései
@@ -29,7 +29,7 @@ A következő kiadási megjegyzések a kritikus fontosságú megoldatlan problé
 
 A kibocsátási megjegyzésekben folyamatosan frissülnek, és ahogy ismertté kritikus problémák adódnak. A StorSimple Virtual Array üzembe helyezése, előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
 
-0.6-os frissítés felel meg a szoftververzió **10.0.10293.0**.
+0\.6-os frissítés felel meg a szoftververzió **10.0.10293.0**.
 
 > [!IMPORTANT]
 > - Azok zavart okozó frissítések, és indítsa újra az eszközt. I/o van folyamatban, ha az eszköz leállást. A frissítés alkalmazása részletes utasításokért ugorjon [0.6-os frissítés telepítése](storsimple-virtual-array-install-update-06.md).
@@ -37,8 +37,8 @@ A kibocsátási megjegyzésekben folyamatosan frissülnek, és ahogy ismertté k
 > - Javasoljuk, hogy azonnal, mert tartalmaz a kritikus fontosságú biztonsági javítások 0.6-os frissítés telepítése.
 
 
-## <a name="whats-new-in-the-update-06"></a>0.6-os frissítés újdonságai
-0.6-os frissítés fontos frissítése, és közvetlenül kell telepíteni. Ez a frissítés a következő javításokat tartalmazza: 
+## <a name="whats-new-in-the-update-06"></a>0\.6-os frissítés újdonságai
+0\.6-os frissítés fontos frissítése, és közvetlenül kell telepíteni. Ez a frissítés a következő javításokat tartalmazza: 
 
 - **Windows biztonsági javítások** – ebben a kiadásban **Windows kritikus fontosságú biztonsági javítások**. A következő biztonsági frissítéseket, a biztonsági problémák és a kapcsolódó javításaival kapcsolatos további részletekért tekintse át:
     - [2016. december biztonsági csak minőségi frissítés a Windows 8.1 és Windows Server 2012 R2-ben](https://support.microsoft.com/help/3205400/december-2016-security-only-quality-update-for-windows-8.1-and-windows-server-2012-r2)
@@ -52,17 +52,17 @@ A kibocsátási megjegyzésekben folyamatosan frissülnek, és ahogy ismertté k
 
 Az alábbi táblázat hibáinak javításai ebben a kiadásban összegzését tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma |
+| Nem. | Funkció | Probléma |
 | --- | --- | --- |
 | 1 |Biztonság| Ebben a kiadásban a kritikus fontosságú Windows biztonsági frissítéseket tartalmazza. Javasoljuk, hogy a frissítés azonnal telepítését.|
 | 2 |Visszaállítás| A visszaállítás során hiba történt a versenyhelyzet, amely megakadályozza a visszaállítási feladat befejeződését. A hibajavítás a versenyhelyzet címeket.|
 
 
-## <a name="known-issues-in-the-update-06"></a>0.6-os frissítés ismert problémái
+## <a name="known-issues-in-the-update-06"></a>0\.6-os frissítés ismert problémái
 
 Az alábbi táblázat a StorSimple Virtual Array az ismert problémák összegzését tartalmazza, és a kiadási jelezve a korábbi kiadásokban a problémák tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma | Megkerülő megoldás és megjegyzések |
+| Nem. | Funkció | Probléma | Megkerülő megoldás és megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |Az előzetes kiadásban létrehozott virtuális eszközre nem lehet frissíteni egy támogatott általánosan elérhető verzióra. |Ezek a virtuális eszközök feladatátvételt kell végrehajtani a végleges kiadás vész-helyreállítási munkafolyamat használatával. |
 | **2.** |Kiépített adatlemez |Miután ellátta bizonyos megadott méretű adatlemez és a megfelelő virtuális StorSimple-eszközt hozott létre, meg kell nem tartalomtól az adatlemezt. Elvesztését eredményezi, a helyi rétegeken az eszköz összes adatának tegye kísérletet. | |

@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 04/11/2019
 ms.openlocfilehash: 2d1bcf2cf83fab106f79120c3caacc424f839836
-ms.sourcegitcommit: daf6538427ea6effef898f2ee3d857e5fa2dccbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/25/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64476541"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>További adatok, cikkek és rekordok első tördelés Azure Logic Apps használatával
@@ -51,7 +51,7 @@ Ez egy lista csupán néhány az összekötők, ahol túllépheti az adott műve
 
 Annak megállapításához, hogy művelet támogatja-e a Logic App Designerben tördelés, ellenőrizze a művelet beállításait a **tördelés** beállítás. Ez a példa bemutatja, hogyan kapcsolja be az SQL Server tördelés **sorok beolvasása** művelet.
 
-1. A művelet jobb felső sarokban, válassza a három pontra (**...** ) gombra, és válassza **beállítások**.
+1. A művelet jobb felső sarokban, válassza a három pontra ( **...** ) gombra, és válassza **beállítások**.
 
    ![Nyissa meg a művelet beállításai](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings.png)
 

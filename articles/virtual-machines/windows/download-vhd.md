@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 3d44a4a723c39bf9780475a2ac3088da94285f6e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61076327"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Töltse le a virtuális merevlemez Windows Azure-ból
@@ -36,7 +36,7 @@ A virtuális merevlemez használata képként más virtuális gépek létrehozá
 2.  [Csatlakozzon a virtuális Géphez](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 3.  A virtuális gépen nyissa meg a parancssori ablakot rendszergazdaként.
 4.  Módosítsa a könyvtárat a *%windir%\system32\sysprep* , és futtassa a sysprep.exe.
-5.  Jelölje ki a rendszer-előkészítő eszköz párbeszédpanel **adja meg System Out-of-Box élmény (OOBE)**, és ellenőrizze, hogy **Generalize** van kiválasztva.
+5.  Jelölje ki a rendszer-előkészítő eszköz párbeszédpanel **adja meg System Out-of-Box élmény (OOBE)** , és ellenőrizze, hogy **Generalize** van kiválasztva.
 6.  Válassza ki a leállítási beállítások **leállítási**, és kattintson a **OK**. 
 
 A VHD lemez egy meglévő virtuális gép vagy az adatlemez egy új példányát használja, hajtsa végre ezeket a lépéseket:
@@ -56,7 +56,7 @@ A VHD-fájl letöltéséhez, létre kell hoznia egy [közös hozzáférésű jog
 3.  URL-címet a lejárati idő beállítása *36000*.
 4.  Kattintson a **URL-címet generálni**.
 
-    ![URL-cím generálása](./media/download-vhd/export-generate.png)
+    ![URL-címet generálni](./media/download-vhd/export-generate.png)
 
 > [!NOTE]
 > A lejárati idő a Windows Server operációs rendszer esetén nagy VHD-fájl letöltése idő elegendő az alapértelmezett emelkedett. Töltse le a kapcsolat függően több órát is igénybe, a Windows Server operációs rendszert tartalmazó VHD-fájl várható. Ha a virtuális merevlemez adatlemez tölti le, az alapértelmezett időtartamot is használhatók. 

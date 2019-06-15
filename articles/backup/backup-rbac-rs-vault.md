@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: trinadhk
 ms.openlocfilehash: ed3797183e13a00d2c5381fa6449c111c3bc9ab9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60253730"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Szerepköralapú hozzáférés-vezérlés használata kezelheti az Azure Backup helyreállítási pontok
@@ -37,26 +37,26 @@ Az alábbi táblázat a biztonsági mentés felügyeleti műveletek és a művel
 | Ügynökfelügyeleti művelet | Minimálisan szükséges RBAC-szerepkör | Hatókör szükséges |
 | --- | --- | --- |
 | Helyreállítási tár létrehozása | Közreműködő | A tároló tartalmazó erőforráscsoportot |
-| Azure virtuális gépek biztonsági mentésének engedélyezése | Biztonsági mentési operátor | A tároló tartalmazó erőforráscsoportot |
-| | Virtuális gépek közreműködője | VM-erőforrás |
-| Igény szerinti biztonsági mentést a virtuális gép | Biztonsági mentési operátor | Helyreállítási tár erőforrás |
-| Virtuális gép visszaállítása | Biztonsági mentési operátor | Recovery Services-tároló |
+| Azure virtuális gépek biztonsági mentésének engedélyezése | Biztonságimásolat-felelős | A tároló tartalmazó erőforráscsoportot |
+| | Virtuális gépek Közreműködője | VM-erőforrás |
+| Igény szerinti biztonsági mentést a virtuális gép | Biztonságimásolat-felelős | Helyreállítási tár erőforrás |
+| Virtuális gép visszaállítása | Biztonságimásolat-felelős | Recovery Services-tároló |
 | | Közreműködő | Az erőforráscsoport, amelyben virtuális gép lesz üzembe helyezve. |
-| | Virtuális gépek közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
-| Nem felügyelt lemezek virtuális gép biztonsági másolatának visszaállítása | Biztonsági mentési operátor | Helyreállítási tár erőforrás |
-| | Virtuális gépek közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
+| | Virtuális gépek Közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
+| Nem felügyelt lemezek virtuális gép biztonsági másolatának visszaállítása | Biztonságimásolat-felelős | Helyreállítási tár erőforrás |
+| | Virtuális gépek Közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
 | | Tárfiók-közreműködő | Ahol lemezek fog állítani tárfiók típusú erőforrást |
-| Felügyelt lemezek visszaállítását a virtuális gép biztonsági mentése | Biztonsági mentési operátor | Helyreállítási tár erőforrás |
-| | Virtuális gépek közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
+| Felügyelt lemezek visszaállítását a virtuális gép biztonsági mentése | Biztonságimásolat-felelős | Helyreállítási tár erőforrás |
+| | Virtuális gépek Közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
 | | Tárfiók-közreműködő | A tároló adatok tárolásához előtt konvertálja azokat a felügyelt lemezek visszaállítása részeként kiválasztott ideiglenes tárfiók |
 | | Közreműködő | Az erőforráscsoportot, amelyhez felügyelt lemez lesz visszaállítva |
-| Egyedi fájlok visszaállítása virtuális gép biztonsági mentése | Biztonsági mentési operátor | Helyreállítási tár erőforrás |
-| | Virtuális gépek közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
+| Egyedi fájlok visszaállítása virtuális gép biztonsági mentése | Biztonságimásolat-felelős | Helyreállítási tár erőforrás |
+| | Virtuális gépek Közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
 | Azure VM Backup biztonsági mentési szabályzat létrehozása | Biztonsági mentési közreműködő | Helyreállítási tár erőforrás |
 | Az Azure VM backup biztonsági mentési szabályzat módosítása | Biztonsági mentési közreműködő | Helyreállítási tár erőforrás |
 | Az Azure VM backup biztonsági mentési szabályzat törlése | Biztonsági mentési közreműködő | Helyreállítási tár erőforrás |
 | Biztonsági mentés leállítása (az adatok megőrzésével vagy adatok törlése) a virtuális gép biztonsági mentése | Biztonsági mentési közreműködő | Helyreállítási tár erőforrás |
-| A helyszíni Windows Server/ügyfélen/SCDPM vagy az Azure Backup Server regisztrálása | Biztonsági mentési operátor | Helyreállítási tár erőforrás |
+| A helyszíni Windows Server/ügyfélen/SCDPM vagy az Azure Backup Server regisztrálása | Biztonságimásolat-felelős | Helyreállítási tár erőforrás |
 | Regisztrált helyszíni Windows Server/ügyfélen/SCDPM vagy az Azure Backup Server törlése | Biztonsági mentési közreműködő | Helyreállítási tár erőforrás |
 
 > [!IMPORTANT]
@@ -69,10 +69,10 @@ Az alábbi tábla bemutatja a biztonsági mentés felügyeleti műveletek és a 
 | --- | --- | --- |
 | Az Azure-fájlmegosztások biztonsági mentésének engedélyezése | Biztonsági mentési közreműködő | Recovery Services-tároló |
 | | Tárfiók | Tárfiók típusú erőforrást közreműködője |
-| Igény szerinti biztonsági mentést a virtuális gép | Biztonsági mentési operátor | Recovery Services-tároló |
-| Fájlmegosztás visszaállítása | Biztonsági mentési operátor | Recovery Services-tároló |
+| Igény szerinti biztonsági mentést a virtuális gép | Biztonságimásolat-felelős | Recovery Services-tároló |
+| Fájlmegosztás visszaállítása | Biztonságimásolat-felelős | Recovery Services-tároló |
 | | Tárfiók-közreműködő | Tárfiók erőforrásainak, ahol visszaállítási forrás és cél fájlmegosztások találhatók |
-| Egyedi fájlok visszaállítása | Biztonsági mentési operátor | Recovery Services-tároló |
+| Egyedi fájlok visszaállítása | Biztonságimásolat-felelős | Recovery Services-tároló |
 | | Tárfiók-közreműködő |   Tárfiók erőforrásainak, ahol visszaállítási forrás és cél fájlmegosztások találhatók |
 | Védelem leállítása | Biztonsági mentési közreműködő | Recovery Services-tároló |      
 | A tároló tárfiók regisztrációját |   Biztonsági mentési közreműködő | Recovery Services-tároló |

@@ -16,17 +16,17 @@ ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60714145"
 ---
 # <a name="service-bus-diagnostic-logs"></a>A Service Bus-diagnosztikai naplók
 
 Azure Service Bus két típusú naplók tekintheti meg:
-* **[A Tevékenységnaplók](../azure-monitor/platform/activity-logs-overview.md)**. Ezek a naplók egy feladat végrehajtott műveletek vonatkozó adatokat tartalmaznak. A naplók mindig engedélyezve van.
-* **[Diagnosztikai naplók](../azure-monitor/platform/diagnostic-logs-overview.md)**. Konfigurálhatja a diagnosztikai naplók részletesebb információ minden, a feladatokon belül történik. Diagnosztikai naplók cover tevékenységek a feladat jön létre, amíg a feladat törli, beleértve a frissítéseket és a tevékenységek a feladat futása közben előforduló kezdve.
+* **[A Tevékenységnaplók](../azure-monitor/platform/activity-logs-overview.md)** . Ezek a naplók egy feladat végrehajtott műveletek vonatkozó adatokat tartalmaznak. A naplók mindig engedélyezve van.
+* **[Diagnosztikai naplók](../azure-monitor/platform/diagnostic-logs-overview.md)** . Konfigurálhatja a diagnosztikai naplók részletesebb információ minden, a feladatokon belül történik. Diagnosztikai naplók cover tevékenységek a feladat jön létre, amíg a feladat törli, beleértve a frissítéseket és a tevékenységek a feladat futása közben előforduló kezdve.
 
 ## <a name="turn-on-diagnostic-logs"></a>Kapcsolja be a diagnosztikai naplók
 
@@ -72,8 +72,8 @@ resourceId | Azure Resource Manager-erőforrás azonosítója
 SubscriptionId | Előfizetés azonosítója
 EventTimeString | Művelet ideje
 EventProperties | Művelet tulajdonságai
-status | Művelet állapota
-Hívó | Hívó művelet (az Azure Portalon vagy a felügyeleti ügyfél)
+Állapot | Művelet állapota
+Caller | Hívó művelet (az Azure Portalon vagy a felügyeleti ügyfél)
 category | OperationalLogs
 
 Íme egy példa egy műveleti napló JSON-karakterlánc:

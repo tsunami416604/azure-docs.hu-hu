@@ -16,10 +16,10 @@ ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 31cf1f6da515aa9b453987383e78f466c5ba4fb9
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827296"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása a Workday konfigurálása
@@ -153,9 +153,9 @@ Ebben a forgatókönyvben egy Workday-bérlővel rendelkezik, és konfigurálta 
 |   |   |
 | - | - |
 | Nem. az ügynökök telepítéséhez kiépítése a helyszíni | 3 (a magas rendelkezésre állás és a feladatátvételi) |
-| Nem. az AD felhasználó kiépítési alkalmazások konfigurálása az Azure Portalon munkanap | 1. |
+| Nem. az AD felhasználó kiépítési alkalmazások konfigurálása az Azure Portalon munkanap | 1 |
 
-  ![1. forgatókönyv](./media/workday-inbound-tutorial/dep_scenario1.png)
+  ![1\. forgatókönyv](./media/workday-inbound-tutorial/dep_scenario1.png)
 
 #### <a name="deployment-scenario-2--single-workday-tenant---multiple-child-ad-domains"></a>Üzembe helyezés #2. forgatókönyv: Egybérlős Workday -> több gyermek AD-tartomány
 
@@ -166,7 +166,7 @@ Ebben a forgatókönyvben magában foglalja a felhasználók Workday-ből az erd
 | Nem. az ügynökök telepítéséhez kiépítése a helyszíni | 3 (a magas rendelkezésre állás és a feladatátvételi) |
 | Nem. az AD felhasználó kiépítési alkalmazások konfigurálása az Azure Portalon munkanap | one app per child domain |
 
-  ![2. forgatókönyv](./media/workday-inbound-tutorial/dep_scenario2.png)
+  ![2\. forgatókönyv](./media/workday-inbound-tutorial/dep_scenario2.png)
 
 #### <a name="deployment-scenario-3--single-workday-tenant---disjoint-ad-forests"></a>Üzembe helyezés #3. forgatókönyv: Egybérlős Workday -> különálló AD-erdőhöz
 
@@ -177,7 +177,7 @@ Ebben a forgatókönyvben magában foglalja a felhasználók Workday-ből a kül
 | Nem. az ügynökök telepítéséhez kiépítése a helyszíni | 3 / különálló AD-erdőhöz |
 | Nem. az AD felhasználó kiépítési alkalmazások konfigurálása az Azure Portalon munkanap | one app per child domain |
 
-  ![3. forgatókönyv](./media/workday-inbound-tutorial/dep_scenario3.png)
+  ![3\. forgatókönyv](./media/workday-inbound-tutorial/dep_scenario3.png)
 
 ### <a name="planning-workday-to-active-directory-user-attribute-mapping-and-transformations"></a>A Workday az Active Directory felhasználói attribútum hozzárendelésének és átalakítás megtervezése
 
@@ -311,9 +311,9 @@ Ebben a lépésben, fog "tartományi biztonság" szabályzat engedélyek megadá
    | ---------- | ---------- |
    | GET és Put | Feldolgozó adatok: Nyilvános feldolgozó jelentések |
    | GET és Put | Személy adatok: Munkahelyi kapcsolattartási adatok |
-   | Beolvasás | Feldolgozó adatok: Minden helyzetben |
-   | Beolvasás | Feldolgozó adatok: Aktuális személyzeti információk |
-   | Beolvasás | Feldolgozó adatok: A feldolgozó profil üzleti címe |
+   | Lekérés | Feldolgozó adatok: Minden helyzetben |
+   | Lekérés | Feldolgozó adatok: Aktuális személyzeti információk |
+   | Lekérés | Feldolgozó adatok: A feldolgozó profil üzleti címe |
    | GET és Put | Munkanapi fiókok |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Üzleti folyamat biztonsági házirendet engedélyeinek konfigurálása
@@ -360,7 +360,7 @@ Ez a szakasz ismerteti a felhasználói fiók kiépítése Workday-ből az integ
 * [Attribútum-leképezések konfigurálása](#part-3-configure-attribute-mappings)
 * [Engedélyezze, és indítsa el a felhasználók átadása](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>1. rész: Telepítse és konfigurálja a helyszíni kiépítés ügynökök
+### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>1\. rész: Telepítse és konfigurálja a helyszíni kiépítés ügynökök
 
 Hozza létre a helyszíni Active Directory, az ügynök egy kiszolgálóra, amelyen a .NET-keretrendszer 4.7.1+ és a hálózati hozzáférést a kívánt Active Directory tartomány(ok) kell telepíthető.
 
@@ -419,7 +419,7 @@ Miután telepítette a .NET 4.7.1+, letöltheti a **[helyszíni Itt a kiépíté
   
    ![Szolgáltatások](./media/workday-inbound-tutorial/services.png)
 
-### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>2. rész: Az üzembe helyezési összekötő alkalmazás felvétele és a Workday-kapcsolat
+### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>2\. rész: Az üzembe helyezési összekötő alkalmazás felvétele és a Workday-kapcsolat
 
 **Az Active Directory-kiépítés konfigurálása a Workday:**
 
@@ -464,7 +464,7 @@ Miután telepítette a .NET 4.7.1+, letöltheti a **[helyszíni Itt a kiépíté
 
    * Ha a hitelesítő adatok vannak mentése sikeresen megtörtént, a **leképezések** szakasz jelenik meg az alapértelmezett leképezést **Workday-feldolgozók szinkronizálja a helyi Active Directory**
 
-### <a name="part-3-configure-attribute-mappings"></a>3. rész: Attribútum-leképezések konfigurálása
+### <a name="part-3-configure-attribute-mappings"></a>3\. rész: Attribútum-leképezések konfigurálása
 
 Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az Active Directoryhoz.
 
@@ -474,7 +474,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 
    * Példa: Hatókör 1000000 és 2000000 (kivéve a 2000000) közötti feldolgozó azonosítókkal rendelkező felhasználók számára
 
-      * Attribútum: WorkerID
+      * attribútum: WorkerID
 
       * Operátor: Reguláris kifejezés egyeztetése
 
@@ -482,7 +482,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 
    * Példa: Csak az alkalmazottak és a nem a függő feldolgozók
 
-      * Attribútum: EmployeeID
+      * attribútum: EmployeeID
 
       * Operátor: NEM NULL
 
@@ -545,7 +545,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 | **Vállalati**         | Vállalati   |     |  Létrehozás + frissítése |
 | **SupervisoryOrganization**  | Szervezeti egység  |     |  Létrehozás + frissítése |
 | **ManagerReference**   | kezelő  |     |  Létrehozás + frissítése |
-| **BusinessTitle**   |  cím     |     |  Létrehozás + frissítése | 
+| **BusinessTitle**   |  title     |     |  Létrehozás + frissítése | 
 | **AddressLineData**    |  streetAddress  |     |   Létrehozás + frissítése |
 | **Község**   |   l   |     | Létrehozás + frissítése |
 | **CountryReferenceTwoLetter**      |   CO |     |   Létrehozás + frissítése |
@@ -572,7 +572,7 @@ A következő szakaszok ismertetik a felhasználók átadásának Workday-ből a
 > [!IMPORTANT]
 > Ha csak felhőalapú felhasználói, szükség lesz az Azure ad-hez, és nem a helyszíni Active Directory csak kövesse az alábbi eljárást.
 
-### <a name="part-1-adding-the-azure-ad-provisioning-connector-app-and-creating-the-connection-to-workday"></a>1. rész: Az Azure AD-kiépítési összekötő alkalmazás hozzáadását és a Workday-kapcsolat
+### <a name="part-1-adding-the-azure-ad-provisioning-connector-app-and-creating-the-connection-to-workday"></a>1\. rész: Az Azure AD-kiépítési összekötő alkalmazás hozzáadását és a Workday-kapcsolat
 
 **A csak felhőbeli felhasználók kiépítése az Azure Active Directory konfigurálása a Workday:**
 
@@ -604,7 +604,7 @@ A következő szakaszok ismertetik a felhasználók átadásának Workday-ből a
 
    * Ha a kapcsolat tesztelése sikeres volt, kattintson a **mentése** gombra az oldal tetején. Ha nem sikerül, ellenőrizze, hogy a Workday URL-címet és a hitelesítő adatok érvényesek a Workday.
 
-### <a name="part-2-configure-workday-and-azure-ad-attribute-mappings"></a>2. rész: Attribútumleképezések Workday és az Azure AD konfigurálása
+### <a name="part-2-configure-workday-and-azure-ad-attribute-mappings"></a>2\. rész: Attribútumleképezések Workday és az Azure AD konfigurálása
 
 Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az Azure Active Directoryhoz csak felhőbeli felhasználók.
 
@@ -614,7 +614,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 
    * Példa: Hatókör 1000000 és 2000000 közötti feldolgozó azonosítókkal rendelkező felhasználók számára
 
-      * Attribútum: WorkerID
+      * attribútum: WorkerID
 
       * Operátor: Reguláris kifejezés egyeztetése
 
@@ -622,7 +622,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 
    * Példa: Csak a függő dolgozók és a nem rendszeres munkatársak számára
 
-      * Attribútum: ContingentID
+      * attribútum: ContingentID
 
       * Operátor: NEM NULL
 
@@ -669,7 +669,7 @@ Kövesse az alábbi utasításokat a felhasználó e-mail-címeket és a felhasz
 * [A jelszóvisszaíró attribútumleképezések konfigurálása](#part-2-configure-writeback-attribute-mappings)
 * [Engedélyezze, és indítsa el a felhasználók átadása](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday"></a>1. rész: A visszaírási összekötő alkalmazás felvétele és a Workday-kapcsolat
+### <a name="part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday"></a>1\. rész: A visszaírási összekötő alkalmazás felvétele és a Workday-kapcsolat
 
 **A Jelszóvisszaíró Workday-összekötő konfigurálása:**
 
@@ -699,7 +699,7 @@ Kövesse az alábbi utasításokat a felhasználó e-mail-címeket és a felhasz
 
    * Kattintson a **kapcsolat tesztelése** gombra. Ha a kapcsolat tesztelése sikeres volt, kattintson a **mentése** gombra az oldal tetején. Ha nem sikerül, ellenőrizze, hogy a Workday URL-címet és a hitelesítő adatok érvényesek a Workday.
 
-### <a name="part-2-configure-writeback-attribute-mappings"></a>2. rész: A jelszóvisszaíró attribútumleképezések konfigurálása
+### <a name="part-2-configure-writeback-attribute-mappings"></a>2\. rész: A jelszóvisszaíró attribútumleképezések konfigurálása
 
 Ebben a szakaszban konfigurálhatja hogyan visszaírási attribútumok áramlanak Azure AD-ből a Workday. Jelenleg az összekötő csak az e-mail-cím és a felhasználónév workdaybe a jelszóvisszaíró támogatja.
 
@@ -871,7 +871,7 @@ Azt is ellenőrizze, hogy rendelkezik-e a szükséges portok megnyitásához nyi
 Győződjön meg arról, hogy az eszközt a megfelelő eredményeket ad meg, hogy ne felejtse el:
 
 * Az eszköz a böngészőben nyissa meg a kiszolgálón, amelyre a kiépítési ügynök van telepítve.
-* Győződjön meg arról, hogy minden olyan proxyk vagy a tűzfalak alkalmazható a kiépítési ügynök is érvényesek, ezen a weblapon. Ezt megteheti az Internet Explorerben a **beállítások -> Internet-beállítások -> kapcsolatok LAN-beállítások ->**. Ezen a lapon láthatja a mezőben "Használatát Proxy Server számára a helyi hálózaton". Válassza ezt a jelölőnégyzetet, és a proxykiszolgáló címét helyezze az "Address" mezőbe.
+* Győződjön meg arról, hogy minden olyan proxyk vagy a tűzfalak alkalmazható a kiépítési ügynök is érvényesek, ezen a weblapon. Ezt megteheti az Internet Explorerben a **beállítások -> Internet-beállítások -> kapcsolatok LAN-beállítások ->** . Ezen a lapon láthatja a mezőben "Használatát Proxy Server számára a helyi hálózaton". Válassza ezt a jelölőnégyzetet, és a proxykiszolgáló címét helyezze az "Address" mezőbe.
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>Konfigurálható egy kiépítési ügynök kiépítése több AD-tartomány?
 
@@ -931,7 +931,7 @@ Lásd még:
 
 Ez a konfiguráció beállításával biztosíthatja a **célobjektum-műveletek** a a **attribútumleképezések** panel az alább látható módon:
 
-![Művelet frissítése](./media/workday-inbound-tutorial/wd_target_update_only.png)
+![Frissítési művelet](./media/workday-inbound-tutorial/wd_target_update_only.png)
 
 Jelölje be a "Frissítés" csak a frissítési műveletek flow Workday-ből az AD. 
 
@@ -959,11 +959,11 @@ A megoldás jelenleg nem támogatja a bináris attribútumok például *thumbnai
 
 #### <a name="how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances"></a>Hogyan formázza a megjelenítendő nevét az ad-ben a felhasználó szervezeti egység/város attribútum és leíró regionális eltérésekre alapján?
 
-Általános követelmény konfigurálása a *displayName* attribútumot az ad-ben, hogy a felhasználó részlege és ország/régió kapcsolatos információkat is biztosít. A példa: Kovács János működik a marketingosztály Egyesült államokbeli, előfordulhat, hogy szeretné-e a *displayName* megjelenjen *Kovács János (Marketing-US)*.
+Általános követelmény konfigurálása a *displayName* attribútumot az ad-ben, hogy a felhasználó részlege és ország/régió kapcsolatos információkat is biztosít. A példa: Kovács János működik a marketingosztály Egyesült államokbeli, előfordulhat, hogy szeretné-e a *displayName* megjelenjen *Kovács János (Marketing-US)* .
 
 Íme, miként hozhat létre ilyen követelményei kezelheti *CN* vagy *displayName* , például a vállalat, üzleti egység, város vagy ország/régió attribútumait tartalmazza.
 
-* Minden munkanap attribútum használata a mögöttes XPATH API kifejezés, amely konfigurálható a beolvasott **attribútumleképzés -> speciális szakasz Workday-attribútumlista szerkesztése >**. Íme a Workday alapértelmezett XPATH API kifejezése *PreferredFirstName*, *PreferredLastName*, *vállalati* és *SupervisoryOrganization* attribútumok.
+* Minden munkanap attribútum használata a mögöttes XPATH API kifejezés, amely konfigurálható a beolvasott **attribútumleképzés -> speciális szakasz Workday-attribútumlista szerkesztése >** . Íme a Workday alapértelmezett XPATH API kifejezése *PreferredFirstName*, *PreferredLastName*, *vállalati* és *SupervisoryOrganization* attribútumok.
 
      | Munkanapi attribútum | API XPATH-kifejezés |
      | ----------------- | -------------------- |
@@ -988,14 +988,14 @@ A megoldás jelenleg nem támogatja a bináris attribútumok például *thumbnai
 
   Ellenőrizze a Workday-csapattal, hogy a fenti API kifejezések érvényesek-e a Workday-bérlői konfigurációjától. Ha szükséges, módosíthatja őket a szakaszban leírt módon [Workday felhasználói attribútumok listája testre szabható](#customizing-the-list-of-workday-user-attributes).
 
-* A megfelelő attribútum leképezés kifejezés hozhat létre, mely Workday attribútum "mérvadó" jelenti. a felhasználó utónevét, utolsó nevét, ország/régió és részleg azonosítása. Tegyük fel, az attribútumok *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* és *SupervisoryOrganization* jelölik. Ezzel hozhat létre az ad-kifejezés *displayName* attribútum egy megjelenített nevet, például a következőképpen beolvasásához *Kovács János (Marketing-US)*.
+* A megfelelő attribútum leképezés kifejezés hozhat létre, mely Workday attribútum "mérvadó" jelenti. a felhasználó utónevét, utolsó nevét, ország/régió és részleg azonosítása. Tegyük fel, az attribútumok *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* és *SupervisoryOrganization* jelölik. Ezzel hozhat létre az ad-kifejezés *displayName* attribútum egy megjelenített nevet, például a következőképpen beolvasásához *Kovács János (Marketing-US)* .
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
     ```
     Ha a jobb oldali kifejezésnek, a attribútumleképezések tábla szerkesztése, és módosítsa a *displayName* attribútumleképezés alább látható módon:   ![DisplayName leképezés](./media/workday-inbound-tutorial/wd_displayname_map.png)
 
-* A fenti példában kiterjesztése, nézzük szeretné átalakítani a városok nevei gyorsírás értékek Workday-ből érkező, majd hozhat létre például nevének megjelenítéséhez például *Smith, a John (CHI)* vagy *Doe, Jane (NYC)*, akkor érhető el ez az eredmény egy kapcsoló kifejezés használata a Workday *település* attribútumra, mint a okokból változó.
+* A fenti példában kiterjesztése, nézzük szeretné átalakítani a városok nevei gyorsírás értékek Workday-ből érkező, majd hozhat létre például nevének megjelenítéséhez például *Smith, a John (CHI)* vagy *Doe, Jane (NYC)* , akkor érhető el ez az eredmény egy kapcsoló kifejezés használata a Workday *település* attribútumra, mint a okokból változó.
 
      ```
     Switch
@@ -1335,14 +1335,14 @@ Ez a módosítás végrehajtásához kell használnia [Workday Studio](https://c
 
 Ez a szakasz ismerteti, hogyan használhatja a Microsoft Graph API és a Graph Explorer a Workday-kiépítés attribútumleképezések és séma exportálása egy JSON-fájlt, és importálja újra az Azure AD-be.
 
-#### <a name="step-1-retrieve-your-workday-provisioning-app-service-principal-id-object-id"></a>1. lépés: Lekérni a Workday kiépítési alkalmazás szolgáltatásnév Azonosítóját (objektumazonosító:)
+#### <a name="step-1-retrieve-your-workday-provisioning-app-service-principal-id-object-id"></a>1\. lépés: Lekérni a Workday kiépítési alkalmazás szolgáltatásnév Azonosítóját (objektumazonosító:)
 
 1. Indítsa el a [az Azure portal](https://portal.azure.com), és keresse meg az alkalmazás-kiépítés Workday tulajdonságok szakaszát.
 1. Az üzembe helyezési alkalmazás Tulajdonságok területen másolja a társított GUID értéket a *Objektumazonosító* mező. Ennek az értéknek is nevezik a **ServicePrincipalId** az alkalmazást, és azt használni kívánt Graph Explorer műveleteket.
 
    ![A WORKDAY App Service résztvevő-azonosító](./media/workday-inbound-tutorial/wd_export_01.png)
 
-#### <a name="step-2-sign-into-microsoft-graph-explorer"></a>2. lépés: Jelentkezzen be a Microsoft Graph Explorer
+#### <a name="step-2-sign-into-microsoft-graph-explorer"></a>2\. lépés: Jelentkezzen be a Microsoft Graph Explorer
 
 1. Indítsa el a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)
 1. Kattintson a "Bejelentkezés a Microsoft" gombra, és jelentkezzen be az Azure AD globális rendszergazdai vagy alkalmazás rendszergazdai hitelesítő adatok használatával.
@@ -1351,7 +1351,7 @@ Ez a szakasz ismerteti, hogyan használhatja a Microsoft Graph API és a Graph E
 
 1. Esetén a bejelentkezés sikeres megjelenik a felhasználói fiók adatait a bal oldali ablaktábla.
 
-#### <a name="step-3-retrieve-the-provisioning-job-id-of-the-workday-provisioning-app"></a>3. lépés: A kiépítési Feladatazonosító a Workday kiépítési alkalmazás beolvasása
+#### <a name="step-3-retrieve-the-provisioning-job-id-of-the-workday-provisioning-app"></a>3\. lépés: A kiépítési Feladatazonosító a Workday kiépítési alkalmazás beolvasása
 
 A Microsoft Graph Explorer futtassa a következő GET-lekérdezést, és cserélje le a [servicePrincipalId] az a **ServicePrincipalId** kinyert a [1. lépés](#step-1-retrieve-your-workday-provisioning-app-service-principal-id-object-id).
 
@@ -1363,7 +1363,7 @@ A válasz jelenik meg lent látható módon. Másolja az "id"attribútum a vála
 
    [![Üzembe helyezési feladat azonosítója](./media/workday-inbound-tutorial/wd_export_03.png)](./media/workday-inbound-tutorial/wd_export_03.png#lightbox)
 
-#### <a name="step-4-download-the-provisioning-schema"></a>4. lépés: Töltse le a kiépítési séma
+#### <a name="step-4-download-the-provisioning-schema"></a>4\. lépés: Töltse le a kiépítési séma
 
 A Microsoft Graph Explorer futtassa a következő GET-lekérdezés, és cserélje le a [servicePrincipalId] és [ProvisioningJobId] a ServicePrincipalId és az előző lépésben lekért a ProvisioningJobId.
 
@@ -1373,7 +1373,7 @@ A Microsoft Graph Explorer futtassa a következő GET-lekérdezés, és cserélj
 
 A JSON-objektum átmásolhatja a választ, és mentse a fájlt, készítsen biztonsági másolatot a séma.
 
-#### <a name="step-5-import-the-provisioning-schema"></a>5. lépés: A kiépítési séma importálása
+#### <a name="step-5-import-the-provisioning-schema"></a>5\. lépés: A kiépítési séma importálása
 
 > [!CAUTION]
 > Csak akkor, ha a séma konfigurációjához, amely nem módosítható az Azure portal használatával módosítani kell, vagy ha a konfiguráció visszaállítása biztonsági másolatból fájl érvényes és működő séma, hajtsa végre ezt a lépést.

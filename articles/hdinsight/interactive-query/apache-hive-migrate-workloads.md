@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 04/24/2019
 ms.openlocfilehash: b39279e560cb1738ff9b33ec587562efd2ed4e8d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65800950"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6-os Hive számítási feladatok migrálása HDInsight 4.0-s
@@ -20,7 +20,7 @@ Ez a dokumentum bemutatja, hogyan telepítheti át a HDInsight 3.6 Apache Hive �
 
 Ez a cikk ismerteti az alábbiakat:
 
-* 4.0-s HDInsight Hive-metaadatok migrálása
+* 4\.0-s HDInsight Hive-metaadatok migrálása
 * Nem ACID-táblák és-biztonságos áttelepítése
 * HDInsight-verziók között a Hive-biztonsági házirendek megőrzése
 * A lekérdezés végrehajtása és a hibakeresés, a HDInsight 3.6-os HDInsight 4.0-s
@@ -53,7 +53,7 @@ A Hive számítási feladatokhoz nem ACID-táblák és-vegyesen tartalmazhatnak.
 alter table myacidtable compact 'major';
 ```
 
-Ez a tömörítés szükség, mert a HDInsight 3.6-os és a HDInsight 4.0 ACID ACID eltérések eltérően ismertetése. Tömörítési kényszerít egy tiszta lappal, amely garantálja a konzisztenciát. 4. szakasz a [Hive-áttelepítési dokumentáció](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-upgrade-major/content/prepare_hive_for_upgrade.html) útmutatást nyújt a HDInsight 3.6-os ACID táblák tömeges tömörítési.
+Ez a tömörítés szükség, mert a HDInsight 3.6-os és a HDInsight 4.0 ACID ACID eltérések eltérően ismertetése. Tömörítési kényszerít egy tiszta lappal, amely garantálja a konzisztenciát. 4\. szakasz a [Hive-áttelepítési dokumentáció](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-upgrade-major/content/prepare_hive_for_upgrade.html) útmutatást nyújt a HDInsight 3.6-os ACID táblák tömeges tömörítési.
 
 Miután végrehajtotta a metaadattár áttelepítés és a tömörítést, áttelepítheti a tényleges adatraktár. A Hive-adatraktár áttelepítés befejezése a HDInsight 4.0 raktári után a következő tulajdonságokkal:
 

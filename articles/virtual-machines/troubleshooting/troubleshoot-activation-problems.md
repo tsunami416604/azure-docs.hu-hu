@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
 ms.openlocfilehash: 18cd5a86cc2f52567c5f320719d1a9f21b377ed4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60921273"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows virtuális gép aktiválással kapcsolatos problémák elhárítása
@@ -51,7 +51,7 @@ Ha megpróbálja aktiválni az Azure Windows virtuális Gépekhez, akkor megjele
 >
 >Ha az ExpressRoute használ, és rendelkezik az alapértelmezett útvonal közzétett, lásd: [Azure virtuális gép esetleg nem expressroute-on keresztül aktiválhatja](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>1. lépés a megfelelő KMS-ügyfél telepítési kulcsának konfigurálása (a Windows Server 2016 és Windows Server 2012 R2)
+### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>1\. lépés a megfelelő KMS-ügyfél telepítési kulcsának konfigurálása (a Windows Server 2016 és Windows Server 2012 R2)
 
 A virtuális Gépet, amely a Windows Server 2016 vagy Windows Server 2012 R2 egyéni rendszerkép alapján hozza létre konfigurálnia kell a megfelelő KMS-ügyfél telepítési kulcsának a virtuális gép számára.
 
@@ -78,7 +78,7 @@ Ez a lépés nem vonatkozik a Windows 2012 vagy Windows 2008 R2. Az Automation v
     cscript c:\windows\system32\slmgr.vbs /ipk CB7KF-BWN84-R7R2Y-793K2-8XDDG
     ```
 
-### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>2. lépés a virtuális gép és az Azure a KMS szolgáltatás közötti kapcsolat ellenőrzése
+### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>2\. lépés a virtuális gép és az Azure a KMS szolgáltatás közötti kapcsolat ellenőrzése
 
 1. Töltse le és csomagolja ki a [PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) egy helyi mappába a virtuális gép, amely nem aktiválja az eszköz. 
 

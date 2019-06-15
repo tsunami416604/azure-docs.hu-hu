@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 04163d1fa2a46a2de877702d479f439a5e8711d7
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65603131"
 ---
 # <a name="azure-customer-data-protection"></a>Az Azure vásárlói adatok védelmére   
@@ -44,7 +44,7 @@ Azure köszönhetően a felhasználók erős az adatbiztonságot, alapértelmeze
 - Az ügyfél és a felhőben.
 - Belsőleg az Azure és a közötti adatközpontok.
 
-**Titkosítási**: Storage-ban, és az átvitt adatok titkosítása titoktartásra és az adatok sértetlenségének biztosítása érdekében ajánlott eljárásként ügyfelek általi is telepíthető. Az ügyfelek számára a kommunikáció védelméhez, az internetről, és akár az Azure-ban üzemeltetett virtuális gépek közötti SSL használatára az Azure cloud services konfigurálása egyszerű.
+**Titkosítás**: Storage-ban, és az átvitt adatok titkosítása titoktartásra és az adatok sértetlenségének biztosítása érdekében ajánlott eljárásként ügyfelek általi is telepíthető. Az ügyfelek számára a kommunikáció védelméhez, az internetről, és akár az Azure-ban üzemeltetett virtuális gépek közötti SSL használatára az Azure cloud services konfigurálása egyszerű.
 
 **Adatredundancia**: A Microsoft biztosítja, hogy adatok védelme a kibertámadás esetén vagy az egy kínai adatközpont fizikai sérülés esetén. Ügyfelek is választhat:
 
@@ -55,9 +55,9 @@ Adatok replikálható a redundancia érdekében egy kiválasztott földrajzi ter
 
 A tárfiók létrehozásakor válassza ki a következő replikációs lehetőségek egyikét:
 
-- **Helyileg redundáns tárolás (LRS)**: A helyileg redundáns tárolás három másolatot tart fenn adatairól. A rendszer egy régió egyetlen létesítményén belül háromszor replikálja az LRS-t. LRS védi az adatokat a normál hardverleltárfájlok hibák után, de nem létesítményt hiba.
-- **Zónaredundáns tárolás (ZRS)**: A zónaredundáns tárolás három másolatot tart fenn adatairól. A ZRS rendszer háromszor replikálja az LRS-nél nagyobb tartósságot biztosítanak két vagy három intézményben. A replikáció egy adott régión belül, vagy két régióban is. A ZRS segítségével, győződjön meg arról, hogy az adatok tartós, egy adott régión belül.
-- **Georedundáns tárolás (GRS)**: Amikor létrehoz egy tárfiókot, a georedundáns tárolás alapértelmezés szerint engedélyezve van. A GRS hat másolatot tart fenn adatairól. A grs Tárolással az adatok rendszer háromszor replikálja az elsődleges régióban. Az adatok is háromszor replikálja a másodlagos régióban több száz mérfölddel erről az elsődleges régióban, így a legmagasabb szintű tartósságot. Az elsődleges régióban hiba esetén az Azure Storage átadja a feladatokat a másodlagos régióba. GRS segít az adatok tartósságának biztosítása két külön régióban.
+- **Helyileg redundáns tárolás (LRS)** : A helyileg redundáns tárolás három másolatot tart fenn adatairól. A rendszer egy régió egyetlen létesítményén belül háromszor replikálja az LRS-t. LRS védi az adatokat a normál hardverleltárfájlok hibák után, de nem létesítményt hiba.
+- **Zónaredundáns tárolás (ZRS)** : A zónaredundáns tárolás három másolatot tart fenn adatairól. A ZRS rendszer háromszor replikálja az LRS-nél nagyobb tartósságot biztosítanak két vagy három intézményben. A replikáció egy adott régión belül, vagy két régióban is. A ZRS segítségével, győződjön meg arról, hogy az adatok tartós, egy adott régión belül.
+- **Georedundáns tárolás (GRS)** : Amikor létrehoz egy tárfiókot, a georedundáns tárolás alapértelmezés szerint engedélyezve van. A GRS hat másolatot tart fenn adatairól. A grs Tárolással az adatok rendszer háromszor replikálja az elsődleges régióban. Az adatok is háromszor replikálja a másodlagos régióban több száz mérfölddel erről az elsődleges régióban, így a legmagasabb szintű tartósságot. Az elsődleges régióban hiba esetén az Azure Storage átadja a feladatokat a másodlagos régióba. GRS segít az adatok tartósságának biztosítása két külön régióban.
 
 **Adatok megsemmisítésének**: Amikor ügyfelek törli az adatokat, vagy hagyja meg az Azure, Microsoft követi felülírják a tárolási erőforrások, mielőtt azok újbóli, valamint a fizikai megsemmisítése leszerelt hardver vonatkozó szigorú szabványokat. A Microsoft végrehajtja az adatok egy teljes törlését, ügyfélkérés és a szerződés felmondása.
 

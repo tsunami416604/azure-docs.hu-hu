@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
 ms.openlocfilehash: 50092db9e2e3670168cbb3440b8cb99eb0c2ac20
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64714706"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>A csomagrögzítés kezelése az Azure Network Watcher a portál használatával
@@ -27,7 +27,7 @@ Network Watcher csomagrögzítés nyomon követésére, és a virtuális géprő
 
 Ebből a cikkből elsajátíthatja az indítása, leállítása, töltse le és csomagrögzítés törlése. 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Csomagrögzítés a következő kapcsolatok szükségesek:
 * Kimenő kapcsolatot a 443-as porton keresztül egy tárfiókba.
@@ -54,7 +54,7 @@ Ha egy hálózati biztonsági csoportot a hálózati adapter vagy az alhálózat
 
    - **Bájtok maximális száma csomagonként**: Az egyes csomagok rögzített bájtok száma. Ha üresen hagyja, az összes bájtot lesznek rögzítve.
    - **Bájtok maximális száma munkamenetenként**: Rögzített bájtok teljes száma. Ha az érték elérésekor a packet capture leáll.
-   - **Időkorlát (másodperc)**: A határidő előtt a csomagrögzítés le van állítva. Az alapértelmezett érték 18,000 másodperc.
+   - **Időkorlát (másodperc)** : A határidő előtt a csomagrögzítés le van állítva. Az alapértelmezett érték 18,000 másodperc.
    - Szűrés (nem kötelező). Válassza ki **+ szűrő hozzáadása**
      - **Protokoll**: A csomagrögzítés szűrését protokoll. Az elérhető értékek a következők: TCP, UDP és bármilyen.
      - **Helyi IP-cím**: A csomagrögzítés csomagok szűri, ha a helyi IP-cím megegyezik-e ezt az értéket.

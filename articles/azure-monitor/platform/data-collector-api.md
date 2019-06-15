@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
 ms.openlocfilehash: 0f5a996d68c80fd9b1f55a36de37579ea245d99d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922783"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Napló adatokat küldeni a HTTP-adatgyűjtő API (nyilvános előzetes verzió) az Azure Monitor
@@ -45,14 +45,14 @@ A HTTP-adatgyűjtő API használatához hozzon létre egy POST-kérelmet, amely 
 | Attribútum | Tulajdonság |
 |:--- |:--- |
 | Módszer |POST |
-| URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
+| URI-T |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | Tartalom típusa |application/json |
 
 ### <a name="request-uri-parameters"></a>A kérés URI paraméterei
 | Paraméter | Leírás |
 |:--- |:--- |
 | CustomerID |A Log Analytics-munkaterület egyedi azonosítója. |
-| Erőforrás |Az API-erőforrás neve: / api/logs. |
+| Resource |Az API-erőforrás neve: / api/logs. |
 | API-verzió |A kérelem használata API-verzió. Jelenleg ez a 2016-04-01 el. |
 
 ### <a name="request-headers"></a>Kérelemfejlécek
@@ -158,7 +158,7 @@ Például a beküldés bejegyzés lenne hozzon létre egy rekordot három tulajd
 
 Majd küldte el a következő bejegyzés formájában karakterláncok értékekkel, ha a tulajdonságok nem szeretné módosítani. Ezek az értékek konvertálhatók meglévő adattípusok:
 
-![2. példa rekord](media/data-collector-api/record-02.png)
+![2\. példa rekord](media/data-collector-api/record-02.png)
 
 De, ekkor történik a következő beküldése, ha az Azure Monitor létrehoznia az új tulajdonságok **boolean_d** és **string_d**. Ezeket az értékeket nem lehet konvertálni:
 
@@ -166,7 +166,7 @@ De, ekkor történik a következő beküldése, ha az Azure Monitor létrehoznia
 
 A következő bejegyzést, majd a rekord típusa létrehozása előtt elküldve, ha az Azure Monitor lenne hozzon létre egy rekordot három tulajdonságot **sikeresek**, **boolean_s**, és **string_s**. Ebbe a bejegyzésbe a kezdeti értékekre vannak formázva, karakterlánc:
 
-![4. példa rekord](media/data-collector-api/record-04.png)
+![4\. példa rekord](media/data-collector-api/record-04.png)
 
 ## <a name="reserved-properties"></a>Fenntartott tulajdonságai
 A következő tulajdonságok fenntartva, és nem használható az egyéni rekord típusát. Egy hibaüzenetet fog kapni, ha a tartalom magában foglalja a tulajdonságnevek.
@@ -187,7 +187,7 @@ A HTTP-állapotkód: 200, az azt jelenti, hogy a kérelem érkezett-e a feldolgo
 
 Ez a táblázat felsorolja, amely a szolgáltatás előfordulhat, hogy vissza állapotkódok teljes körét:
 
-| Kód | status | Hibakód | Leírás |
+| Kód | Állapot | Hibakód | Leírás |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |A kérelem sikeresen elfogadva. |
 | 400 |Hibás kérés |InactiveCustomer |A munkaterület le van zárva. |
@@ -202,8 +202,8 @@ Ez a táblázat felsorolja, amely a szolgáltatás előfordulhat, hogy vissza á
 | 403 |Tiltott |InvalidAuthorization |A szolgáltatás nem tudta hitelesíteni a kérelmet. A munkaterület Azonosítóját és a kapcsolat kulcsa érvényességének ellenőrzése. |
 | 404 |Nem található | | A megadott URL-cím helytelen, vagy a kérelem mérete túl nagy. |
 | 429 |Túl sok kérelem | | A szolgáltatás nagy mennyiségű adatait a fiókból, tapasztal. Próbálkozzon újra később a kérelmet. |
-| 500 |Belső kiszolgálóhiba |UnspecifiedError |Belső szolgáltatáshiba történt. Ismételje meg a kérelmet. |
-| 503 |Elérhetetlen szolgáltatás |ServiceUnavailable |A szolgáltatás jelenleg nem érhető el a kérelmek fogadására. Ismételje meg a kérelmet. |
+| 500 |Belső kiszolgálóhiba |UnspecifiedError |A szolgáltatás belső hibába ütközött. Ismételje meg a kérelmet. |
+| 503 |Szolgáltatás nem érhető el |ServiceUnavailable |A szolgáltatás jelenleg nem érhető el a kérelmek fogadására. Ismételje meg a kérelmet. |
 
 ## <a name="query-data"></a>Adatok lekérdezése
 Az Azure Monitor HTTP-adatgyűjtő API, a rekordok keresése által küldött adatokat lekérdezni **típus** , amely megegyezik a **LogType** meghatározott, értékkel kiegészítve **_CL**. Például, ha a használt **MyCustomLog**, akkor adna vissza, akkor az összes rekordot `MyCustomLog_CL`.

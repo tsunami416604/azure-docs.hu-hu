@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.openlocfilehash: 0eb4b77964aa3c07bac2af615a26c3a9199525de
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64692377"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Idő kezelése az Azure Stream Analytics ismertetése
@@ -171,7 +171,7 @@ Az alábbi lemezképek bemutatják, hogyan halad a vízjelek különböző kör�
 
 Ez a táblázat alatti ábrázolt példa adatok. Figyelje meg, hogy az esemény időpontját és a érkezési idő változó, egyes esetekben megfelelő, és néha nem.
 
-| Esemény időpontja | Érkezés időpontja | Eszközazonosító |
+| esemény időpontja | Érkezés időpontja | DeviceId |
 | --- | --- | --- |
 | 12:07 | 12:07 | device1
 | 12:08 | 12:08 | device2

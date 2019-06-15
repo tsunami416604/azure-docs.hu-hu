@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60498831"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram metódus
@@ -30,14 +30,14 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 
 ## <a name="request-parameters"></a>A kérés paraméterei
 
-Name (Név)  |Value | Kötelező?  |Leírás
+Name (Név)  |Érték | Kötelező?  |Leírás
 -----------|----------|--------|----------
 **kifejezés**    |Szöveges karakterlánc | Igen  |A lekérdezési kifejezés, amely meghatározza az entitásokat, amelyen hisztogramok kiszámításához.
 **model** |Szöveges karakterlánc | Nem |Válassza ki a modellt, amely a lekérdezni kívánt nevét.  Jelenleg az alapértelmezett érték *legújabb*.
 **Attribútumok** | Szöveges karakterlánc | Nem<br>alapértelmezett érték: | Egy vesszővel tagolt listája, amely meghatározza az attribútum értékei, amelyek szerepelnek a választ. Attribútumnevek-és nagybetűk.
-**count** |Szám | Nem<br>Alapértelmezett: 10 |Visszaadott eredmények száma.
-**eltolás**  |Szám | Nem<br>Alapértelmezett: 0 |Az első eredmény index való visszatéréshez.
-**Időtúllépés**  |Szám | Nem<br>Alapértelmezett: 1000 |Időkorlát ezredmásodpercben. Csak a az időtúllépési letelte előtt található értelmezés adja vissza.
+**count** |Szám | Nem<br>alapértelmezett érték: 10 |Visszaadott eredmények száma.
+**eltolás**  |Szám | Nem<br>alapértelmezett érték: 0 |Az első eredmény index való visszatéréshez.
+**Időtúllépés**  |Szám | Nem<br>alapértelmezett érték: 1000 |Időkorlát ezredmásodpercben. Csak a az időtúllépési letelte előtt található értelmezés adja vissza.
 
 ## <a name="response-json"></a>Válasz (JSON)
 
@@ -65,7 +65,7 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime teevan after 2012
 ```
-<br>A kifejezés a értelmezése API által visszaküldött első értelmezésében *és (összetett (AA. AuN == "jaime teevan"), Y > 2012)*.
+<br>A kifejezés a értelmezése API által visszaküldött első értelmezésében *és (összetett (AA. AuN == "jaime teevan"), Y > 2012)* .
 <br>A kifejezés értéke kerül majd átadásra a **calchistogram** API-t. A *attributes=Y,F.FN* paraméter azt jelzi, hogy a disztribúciók tanulmány számát kell év és tanulmány mező, pl.:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4

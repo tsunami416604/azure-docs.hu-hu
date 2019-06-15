@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 01d36188c1684eae8303cb20ba0fd0c708ff91ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60309870"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>A StorSimple az új hitelesítés használatára
@@ -63,12 +63,12 @@ A StorSimple 8000 sorozatú eszköz használata esetén a következő táblázat
 | Update 5 vagy újabb verzió és az eszköz offline állapotban. <br> Megjelenik egy értesítés, hogy az URL-je nem szerepel az engedélyezési listán.|1. Módosítsa a tűzfal-szabályokat, a hitelesítési URL-címét. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication).<br>2. [Az AAD-regisztrációs kulcs beolvasása a szolgáltatástól](#aad-based-registration-keys).<br>3. [A Windows PowerShell felületet a StorSimple 8000 sorozatú eszköz csatlakozni](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Használat `Redo-DeviceRegistration` parancsmagot, hogy regisztrálja az eszközt a Windows Powershellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
 | Update 5 vagy újabb verzió és az eszközt.| Nincs szükség műveletre.                                       |
 | Update 4-es vagy korábbi és az eszköz offline állapotban. |1. Módosítsa a tűzfal-szabályokat, a hitelesítési URL-címét.<br>2. [5. frissítés letöltése katalógus kiszolgálón keresztül](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [5. frissítés alkalmazása a gyorsjavítás módszerrel](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Az AAD-regisztrációs kulcs beolvasása a szolgáltatástól](#aad-based-registration-keys).<br>5. [A Windows PowerShell felületet a StorSimple 8000 sorozatú eszköz csatlakozni](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Használat `Redo-DeviceRegistration` parancsmagot, hogy regisztrálja az eszközt a Windows Powershellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
-| Update 4-es vagy korábbi és az eszköz online állapotban. |Módosítsa a tűzfal-szabályokat, a hitelesítési URL-címét.<br> 5. frissítés telepítése az Azure Portalon keresztül.              |
+| Update 4-es vagy korábbi és az eszköz online állapotban. |Módosítsa a tűzfal-szabályokat, a hitelesítési URL-címét.<br> 5\. frissítés telepítése az Azure Portalon keresztül.              |
 | A gyári alaphelyzetbe állítása előtt Update 5 verzióra.      |A portál megjeleníti egy AAD-alapú regisztrációs kulcsot, az eszköz régebbi szoftverek futtatása közben. Kövesse a lépéseket, ha az eszköz fut Update 4-es vagy korábbi az előző forgatókönyvben.              |
 
 ## <a name="aad-based-registration-keys"></a>AAD-alapú regisztrációs kulcsokat
 
-5. frissítés kezdve a StorSimple 8000 sorozat eszközeire, új kulcsokkal AAD-alapú regisztráció. A regisztrációs kulcs használatával regisztrálja az eszközt a StorSimple-Eszközkezelő szolgáltatásban.
+5\. frissítés kezdve a StorSimple 8000 sorozat eszközeire, új kulcsokkal AAD-alapú regisztráció. A regisztrációs kulcs használatával regisztrálja az eszközt a StorSimple-Eszközkezelő szolgáltatásban.
 
 Az AAD szolgáltatás új regisztrációs kulcsok használata a StorSimple 8000 sorozatú eszköz Update 4-es vagy korábbi (tartalmaz egy régebbi eszközjogkivonat most) futtatása nem használható.
 Ebben a forgatókönyvben a szolgáltatás regisztrációs kulcsának újragenerálása kell. Ha újragenerálja a kulcsot, az új kulcs szolgál az ezt követő eszközök regisztrálásához. A régi kulcsot már nem érvényes.

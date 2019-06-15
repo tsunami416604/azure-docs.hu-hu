@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
 ms.openlocfilehash: 0d83bdc3fd3f644013a2d2b80128839658524db9
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65864449"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Üzenetküldés a felhőből az eszközre az IoT Hub (.NET)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-## <a name="introduction"></a>Bemutatás
+## <a name="introduction"></a>Bevezetés
 
 Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel engedélyezheti a megbízható és biztonságos kétirányú kommunikációt több millió eszköz között, és megoldást biztosít a háttérrendszer. [Telemetria küldése egy eszközről IoT hubra... ](quickstart-send-telemetry-dotnet.md) bemutatja, hogyan hozzon létre egy IoT hubot, azt az eszközidentitás létrehozását és egy eszköz – felhő üzeneteket eszközalkalmazás code.
 
@@ -113,7 +113,7 @@ Először lekérni a portálon az IoT Hub kapcsolati karakterláncra.
 
 Most már írhat olyan .NET-konzolalkalmazást, amely a felhőből az eszközre irányuló üzeneteket küld az eszköz alkalmazás.
 
-1. A jelenlegi Visual Studio-megoldásban kattintson a jobb gombbal a megoldásra, majd válassza a Hozzáadás > Új projekt. Válassza ki **Windows asztali** , majd **Console App (.NET Framework)**. Adja a projektnek **SendCloudToDevice** , és válassza ki a .NET-keretrendszer legújabb verzióját, majd válassza ki **OK** a projekt létrehozásához.
+1. A jelenlegi Visual Studio-megoldásban kattintson a jobb gombbal a megoldásra, majd válassza a Hozzáadás > Új projekt. Válassza ki **Windows asztali** , majd **Console App (.NET Framework)** . Adja a projektnek **SendCloudToDevice** , és válassza ki a .NET-keretrendszer legújabb verzióját, majd válassza ki **OK** a projekt létrehozásához.
 
    ![A Visual Studio új projekt](./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png)
 

@@ -13,10 +13,10 @@ ms.reviewer: genemi, vanto
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 6713182003a280c1d53e904209159b55b4ad01c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60331145"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Az SQL virtuális szolgáltatásvégpont és VNet szabály létrehozása
@@ -67,7 +67,7 @@ A PowerShell-parancsprogram bemutató kisebb parancsfájlok sorozatát oszlik. A
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>1. parancsfájl: Változók
+### <a name="script-1-variables"></a>1\. parancsfájl: Változók
 
 Az első PowerShell-parancsprogram értékeket rendel a változókat. Az ezt követő parancsfájlok attól függ, hogy ezeket a változókat.
 
@@ -116,7 +116,7 @@ Write-Host 'Completed script 1, the "Variables".';
 
 <a name="a-script-20" />
 
-### <a name="script-2-prerequisites"></a>2. parancsfájlt: Előfeltételek
+### <a name="script-2-prerequisites"></a>2\. parancsfájlt: Előfeltételek
 
 Ez a parancsfájl előkészíti a következő szkriptet, ahol a végpont beavatkozásra. Ez a szkript létrehoz az Ön számára a következő elemek, de csak listában, ha azok nem léteznek. Szkript 2 kihagyhatja, ha biztos benne, hogy ezek az elemek már létezik:
 
@@ -207,7 +207,7 @@ Write-Host 'Completed script 2, the "Prerequisites".';
 
 <a name="a-script-30" />
 
-## <a name="script-3-create-an-endpoint-and-a-rule"></a>3. parancsfájlt: A végpont és a egy szabály létrehozása
+## <a name="script-3-create-an-endpoint-and-a-rule"></a>3\. parancsfájlt: A végpont és a egy szabály létrehozása
 
 Ez a szkript létrehoz egy virtuális hálózat alhálózatához. Ezután a parancsfájl hozzárendeli a **Microsoft.Sql** típusú végpont az alhálózathoz. Végül pedig a parancsfájl az SQL Database-kiszolgálóhoz, és ezáltal a szabály létrehozása a hozzáférés-vezérlési lista (ACL) ad hozzá az alhálózat.
 
@@ -293,7 +293,7 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 
 <a name="a-script-40" />
 
-## <a name="script-4-clean-up"></a>4. parancsfájlt: Karbantartás
+## <a name="script-4-clean-up"></a>4\. parancsfájlt: Karbantartás
 
 A végső parancsfájl törli a bemutató a korábbi parancsfájlok létrehozott erőforrásokat. Azonban a parancsprogram kéri a jóváhagyás előtt törli a következő:
 

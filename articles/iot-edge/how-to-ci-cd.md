@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: f449449c542ce6ac04daa58ff37a3577f0d75aee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61221848"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés az Azure IoT Edge-ben
@@ -47,7 +47,7 @@ Ebben a szakaszban létrehoz egy új build folyamatot. Állítsa be a folyamat s
 >
 >További információkért lásd: [buildelési folyamat létrehozása](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav#create-a-build-pipeline).
 
-1. Jelentkezzen be az Azure DevOps-szervezet (**https:\//dev.azure.com/{your szervezet} /**), és nyissa meg a projekt, amely az IoT Edge-megoldás adattár tartalmazza.
+1. Jelentkezzen be az Azure DevOps-szervezet (**https:\//dev.azure.com/{your szervezet} /** ), és nyissa meg a projekt, amely az IoT Edge-megoldás adattár tartalmazza.
 
    Ebben a cikkben létrehozott egy tárház nevű **IoTEdgeRepo**. A tárház tartalmaz **IoTEdgeSolution** amely rendelkezik a kódot egy modul nevű **filtermodule**. 
 
@@ -77,7 +77,7 @@ Ebben a szakaszban létrehoz egy új build folyamatot. Állítsa be a folyamat s
     
      ![Build ügynökkészlet konfigurálása](./media/how-to-ci-cd/configure-env.png)
 
-5. A folyamat előre konfigurált tartalmaz egy nevű feladatot **ügynöki feladat 1**. Válassza a pluszjelet (**+**) három feladatok hozzáadása a feladathoz: **Az Azure IoT Edge** kétszer, és **összeállítása összetevők közzététele** után. (A neve, az egyes feladatok megtekintéséhez fölé a **Hozzáadás** gombra.)
+5. A folyamat előre konfigurált tartalmaz egy nevű feladatot **ügynöki feladat 1**. Válassza a pluszjelet ( **+** ) három feladatok hozzáadása a feladathoz: **Az Azure IoT Edge** kétszer, és **összeállítása összetevők közzététele** után. (A neve, az egyes feladatok megtekintéséhez fölé a **Hozzáadás** gombra.)
 
    ![Az Azure IoT Edge-feladat hozzáadása](./media/how-to-ci-cd/add-iot-edge-task.png)
 
@@ -89,7 +89,7 @@ Ebben a szakaszban létrehoz egy új build folyamatot. Állítsa be a folyamat s
 
    * **Megjelenített név**: Fogadja el az alapértelmezett **Azure IoT Edge - modul lemezképek Build**.
    * **A művelet**: Fogadja el az alapértelmezett **modul lemezképeket**. 
-   * **.template.json file**: Kattintson a három pontra (**...** ), és keresse meg a **deployment.template.json** , amely tartalmazza az IoT Edge-megoldás a tárházban található fájl. 
+   * **.template.json file**: Kattintson a három pontra ( **...** ), és keresse meg a **deployment.template.json** , amely tartalmazza az IoT Edge-megoldás a tárházban található fájl. 
    * **Alapértelmezett platform**: Válassza ki a megfelelő platform a modulok IoT Edge-eszköz a célon. 
    * **Változók kimeneti**: A kimeneti változói tartalmazzák, amelyek segítségével konfigurálhatja a fájl elérési útját a deployment.json fájlt hoz létre, hivatkozási nevét. Állítsa a hivatkozás nevet valami könnyen megtalálható, például **edge**. 
 
@@ -98,7 +98,7 @@ Ebben a szakaszban létrehoz egy új build folyamatot. Állítsa be a folyamat s
    * **Megjelenített név**: A megjelenítendő név a művelet Mezőváltozások automatikusan frissül. 
    * **A művelet**: A legördülő lista segítségével válassza ki a **modul rendszerképeket**. 
    * **Tárolóregisztrációs adatbázis típusa**: Válassza ki a tárolóregisztrációs adatbázis, amely a modul lemezképeket fogja használni. Attól függően, melyik beállításjegyzék-típust választja, a képernyő módosításokat. Ha úgy dönt, **Azure Container Registry**, használja a legördülő listákban válassza ki az Azure-előfizetés és a tárolóregisztrációs adatbázis nevét. Ha úgy dönt, **általános Container Registry**válassza **új** beállításjegyzék szolgáltatás kapcsolat létrehozásához. 
-   * **.template.json file**: Kattintson a három pontra (**...** ), és keresse meg a **deployment.template.json** , amely tartalmazza az IoT Edge-megoldás a tárházban található fájl. 
+   * **.template.json file**: Kattintson a három pontra ( **...** ), és keresse meg a **deployment.template.json** , amely tartalmazza az IoT Edge-megoldás a tárházban található fájl. 
    * **Alapértelmezett platform**: Válassza ki a beépített modul rendszerképek ugyanarra a platformra.
 
    Ha a modul rendszerképek üzemeltetésére több tároló-beállításjegyzékek, szeretné-e ez a feladat ismétlődő, különböző tároló-beállításjegyzék és a használata **modul(ok) megkerülése** megkerülhetik a lemezképeket, amelyek nem a speciális beállításai között szereplő adott beállításjegyzékhez.
@@ -152,7 +152,7 @@ Hozzon létre egy új folyamatot, és konfigurálja az első szakasz minőségi 
 
 8. A QA fázisban kell megjelennie egy alapértelmezett **ügynöki feladat**. Konfigurálhatja az ügynöki feladat részleteit, de a központi telepítési feladatokat és nagybetűk megkülönböztetése nélkül platformmegbízhatósági, így használhatja **Hosted VS2017** vagy **üzemeltetett Ubuntu 1604** a a **ügynökkészlet**(vagy bármely más, a saját maga által felügyelt ügynök). 
 
-9. Válassza a pluszjelet (**+**) hozzáadása egy feladat. Keresse meg és adja hozzá **Azure IoT Edge**. 
+9. Válassza a pluszjelet ( **+** ) hozzáadása egy feladat. Keresse meg és adja hozzá **Azure IoT Edge**. 
 
     ![Tevékenységek hozzáadása a QA](./media/how-to-ci-cd/add-task-qa.png)
 

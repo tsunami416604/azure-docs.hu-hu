@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
 ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61442137"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub lekérdezési nyelv az eszköz és a modul twins, feladatokkal és üzenet-útválasztása
@@ -445,7 +445,7 @@ Szeretné megtudni, mi minden szimbólum a kifejezések szintaxisát a rövidít
 ### <a name="operators"></a>Operátorok
 A következő operátor használata támogatott:
 
-| Család | Operátorok |
+| Termékcsalád | Operátorok |
 | --- | --- |
 | Aritmetikai |+, -, *, /, % |
 | Logikai |ÉS, VAGY SEM |

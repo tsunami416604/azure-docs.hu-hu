@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/04/2019
-ms.openlocfilehash: 2be1f7bb6417834196da03b7cba22387744f8c19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1db1535779d180994c9ce4350d11f4c696da9e3e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61075548"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64721562"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Az SQL Database dinamikus adatmaszkolás
 
@@ -43,7 +43,7 @@ Dinamikus adatmaszkolás az Azure SQL Database-rendszergazda, a kiszolgálói re
 
 | Maszkolási függvényt | Masking Logic |
 | --- | --- |
-| **Alapértelmezett** |**Teljes maszkolási megfelelően a kijelölt mezők adattípusai**<br/><br/>• A XXXX vagy kevesebb Xs, ha a mező mérete 4-nél kevesebb karaktert adattípusokkal (nchar, ntext, nvarchar).<br/>• A numerikus adattípusokról (bigint, bit, decimal, int, pénzt, numerikus, smallint, pénz, tinyint, lebegőpontos, valós) nulla érték használata.<br/>• A 01-01-1900 dátum/idő adattípusok (dátum, datetime2, datetime, datetimeoffset, smalldatetime, ideje).<br/>• Az SQL-változatot, az alapértelmezett érték az aktuális típusú szolgál.<br/>• A dokumentum az XML <masked/> szolgál.<br/>• Az üres érték használata különleges adattípust (timestamp táblára, hierarchyid, GUID, bináris, kép, varbinary térbeli típusok). |
+| **Alapértelmezett** |**Teljes maszkolási megfelelően a kijelölt mezők adattípusai**<br/><br/>• A XXXX vagy kevesebb Xs, ha a mező mérete 4-nél kevesebb karaktert adattípusokkal (nchar, ntext, nvarchar).<br/>• A numerikus adattípusokról (bigint, bit, decimal, int, pénzt, numerikus, smallint, pénz, tinyint, lebegőpontos, valós) nulla érték használata.<br/>• A 01-01-1900 dátum/idő adattípusok (dátum, datetime2, datetime, datetimeoffset, smalldatetime, ideje).<br/>• Az SQL-változatot, az alapértelmezett érték az aktuális típusú szolgál.<br/>• A dokumentum az XML \<maszkolva / > szolgál.<br/>• Az üres érték használata különleges adattípust (timestamp táblára, hierarchyid, GUID, bináris, kép, varbinary térbeli típusok). |
 | **Hitelkártya** |**Maszkolási módszer, amely a kijelölt mezők utolsó négy számjegye** , és hozzáadja egy konstans sztring formájában, hitelkártyával előtagjaként.<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **E-mail** |**Maszkolási metódussal, amely elérhetővé teszi az első, és a tartomány helyére XXX.com** egy e-mail-cím formájában a konstans sztring előtag használatával.<br/><br/>aXX@XXXX.com |
 | **Véletlenszerű szám** |**Maszkolási metódussal, amely létrehoz egy véletlenszerű számot** a kiválasztott határokat és a tényleges adattípusok alapján. Ha a kijelölt határokon azonos, a maszkolási függvényt az a konstans szám.<br/><br/>![Navigációs ablak](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |

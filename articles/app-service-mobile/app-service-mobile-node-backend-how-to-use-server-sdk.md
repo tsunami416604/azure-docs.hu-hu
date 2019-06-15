@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128100"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>A Mobile Apps Node.js SDK használata
@@ -372,9 +372,9 @@ A azureMobile.js fájl beállításai a legtöbb rendelkezik egyenértékű alka
 
 | Alkalmazás-beállítás | azureMobile.js setting | Leírás | Érvényes értékek |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |név |Az alkalmazás neve |string |
+| **MS_MobileAppName** |name |Az alkalmazás neve |string |
 | **MS_MobileLoggingLevel** |Logging.level |Minimális naplózási szint üzenetek naplózása |Hiba, figyelmeztetés, információ részletes, hibakeresési, silly |
-| **MS_DebugMode** |hibakeresés |Engedélyezi vagy letiltja a hibakeresési mód |IGAZ, hamis |
+| **MS_DebugMode** |Hibakeresés |Engedélyezi vagy letiltja a hibakeresési mód |IGAZ, hamis |
 | **MS_TableSchema** |Data.Schema |SQL-táblák alapértelmezett séma neve |karakterlánc (alapértelmezett: dbo) |
 | **MS_DynamicSchema** |data.dynamicSchema |Engedélyezi vagy letiltja a hibakeresési mód |IGAZ, hamis |
 | **MS_DisableVersionHeader** |verzió (a nem definiált beállítása) |Az X-ZUMO-Server-verzió fejlécet letiltása |IGAZ, hamis |
@@ -404,7 +404,7 @@ Azure SQL Database használatával adattárként megegyezik az Azure App Service
 1. Az a **erőforráscsoport** mezőbe írja be ugyanazzal a névvel, az alkalmazás.
 1. Az alapértelmezett App Service-csomag van kiválasztva. Ha azt szeretné, az App Service-csomag módosítása:
 
-   a. Válassza ki **App Service-csomag** > **+ új létrehozása**.
+   a. Válassza ki **App Service-csomag** >  **+ új létrehozása**.
 
    b. Adjon meg egy nevet az új App Service-csomag, és válassza ki a megfelelő helyére.
 
@@ -422,7 +422,7 @@ Választhat, vagy egy meglévő SQL database csatlakozhat a Mobile Apps-háttér
 > [!NOTE]
 > Ha Ön már rendelkezik adatbázissal ugyanazon a helyen, a Mobile Apps-háttéralkalmazáshoz, ehelyett válassza **létező adatbázis használata** , és válassza ki, hogy az adatbázis. Az egy másik helyen található adatbázis használata nem ajánlott miatt nagyobb késleltetéssel jár.
 
-1. Válassza ki az új Mobile Apps-háttéralkalmazást, **beállítások** > **mobilalkalmazás** > **adatok** > **+ Hozzáadás**.
+1. Válassza ki az új Mobile Apps-háttéralkalmazást, **beállítások** > **mobilalkalmazás** > **adatok** >  **+ Hozzáadás**.
 1. Az a **adatkapcsolat hozzáadása** ablaktáblán válassza **SQL Database – kötelező beállítások konfigurálása** > **hozzon létre egy új adatbázist**. Adja meg az új adatbázis nevét a **neve** mezőbe.
 1. Válassza ki **kiszolgáló**. Az a **új kiszolgáló** panelen adjon meg egy egyedi kiszolgálónevet a a **kiszolgálónév** mezőbe, majd adja meg a megfelelő kiszolgáló rendszergazdai bejelentkezési nevét és jelszavát. Ügyeljen arra, hogy **azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése** van kiválasztva. Kattintson az **OK** gombra.
 

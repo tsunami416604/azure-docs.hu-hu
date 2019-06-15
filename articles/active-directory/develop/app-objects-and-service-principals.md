@@ -19,10 +19,10 @@ ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47626cbd8d5b8a5ddf7cc5c6ea42fb9453e5bfb2
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540672"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban
@@ -43,7 +43,7 @@ Egy [OAuth 2.0 engedélyezési Grant flow](developer-glossary.md#authorization-g
 
 A következő szakaszokban láthatja, hogyan jelöli az Azure AD-alkalmazásmodell a tervezési idejű és futtatható alkalmazás.
 
-## <a name="application-registration"></a>Alkalmazás regisztrálása
+## <a name="application-registration"></a>Alkalmazásregisztráció
 
 Amikor regisztrál az Azure AD-alkalmazást a [az Azure portal][AZURE-Portal], két objektum az Azure AD-bérlőben jönnek létre:
 
@@ -89,7 +89,7 @@ A példában:
 
 | Lépés | Leírás |
 |------|-------------|
-| 1.    | Az a folyamat, az alkalmazás és egyszerű szolgáltatási objektumok létrehozása a az alkalmazás saját bérlőjén. |
+| 1    | Az a folyamat, az alkalmazás és egyszerű szolgáltatási objektumok létrehozása a az alkalmazás saját bérlőjén. |
 | 2    | A Contoso és Fabrikam rendszergazdák befejezése után a jóváhagyás, egy szolgáltatásnév-objektum létrejön a vállalat az Azure AD-bérlőben, és az engedélyeket, a rendszergazda adta meg. Vegye figyelembe, hogy a HR-alkalmazást konfigurált/célja lehet, hogy a hozzájárulási a felhasználók egyéni használatra is. |
 | 3    | A fogyasztói bérlők, a HR kérelem (Contoso és Fabrikam) minden egyes rendelkezik saját szolgáltatásnév-objektumot. Minden egyes jelöli használata során az alkalmazás a futásideje, az engedélyek szabályozzák egy példányát hagyta jóvá a megfelelő rendszergazda. |
 

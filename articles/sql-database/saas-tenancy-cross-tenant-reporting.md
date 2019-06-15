@@ -13,10 +13,10 @@ ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 9562d0cd1ad97a459c3630456a6070ac2b6e63f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61484746"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Bérlők közötti jelentéskészítés használatával az elosztott lekérdezések
@@ -93,7 +93,7 @@ Megvizsgálhatja a definíciója a *helyszínek* megtekintése:
 
 1. A **Object Explorer**, bontsa ki a **contosoconcerthall** > **nézetek**:
 
-   ![megtekintés](media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![Nézetek](media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. Kattintson a jobb gombbal **dbo. Helyszínek**.
 3. Válassza ki **nézetként parancsfájl** > **LÉTESÍTÉSÉT** > **új Query-szerkesztő ablakban**
@@ -128,7 +128,7 @@ Ebben a gyakorlatban séma (a külső adatforrás és a külső tábla definíci
 
     ![külső adatforrás létrehozása](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
-   A globális nézetek hivatkozó külső táblák az előző szakaszban leírt, és meghatározott **TERJESZTÉSI = SHARDED(VenueId)**. Mivel minden egyes *VenueId* van hozzárendelve az egyes adatbázisok, ez növeli a teljesítményt számos forgatókönyv a következő szakaszban látható módon.
+   A globális nézetek hivatkozó külső táblák az előző szakaszban leírt, és meghatározott **TERJESZTÉSI = SHARDED(VenueId)** . Mivel minden egyes *VenueId* van hozzárendelve az egyes adatbázisok, ez növeli a teljesítményt számos forgatókönyv a következő szakaszban látható módon.
 
     ![külső táblák létrehozása](media/saas-tenancy-cross-tenant-reporting/external-tables.png)
 

@@ -9,10 +9,10 @@ ms.date: 03/27/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
 ms.openlocfilehash: 2c8b3b4671fd14f9b10b8491861ae2c652f0188b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60461654"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Az nva-k virtuális WAN hub útválasztási táblázat létrehozása: Azure Portal
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan figyelmeztetik a hub forgalmát egy hálózati virtu
 
 ![A Virtual WAN ábrája](./media/virtual-wan-route-table/vwanroute.png)
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Győződjön meg arról, hogy a következő feltételek teljesüléséről:
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a976b7c1f697c09082ca0f7978bb23bb4e467e5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61464181"
 ---
 # <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Áttekintése és összehasonlítása az Azure igény szerinti médiakódolók a 
@@ -53,7 +53,7 @@ Alapértelmezés szerint minden Media Services-fiók egy aktív kódolási felad
 ### <a name="formats"></a>Formátumok
 [Formátumai és kodekei](media-services-media-encoder-standard-formats.md)
 
-### <a name="presets"></a>Előzetes beállítások
+### <a name="presets"></a>Készletek
 Media Encoder Standard használatával lett konfigurálva a kódoló készletek leírt egyik [Itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
 ### <a name="input-and-output-metadata"></a>Bemeneti és kimeneti metaadatok

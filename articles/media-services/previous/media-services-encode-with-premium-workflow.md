@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: d20fc0cee6bce1389649e6287170b1963e799ccf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463904"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Speciális kódolás a Media Encoder Premium munkafolyamat
@@ -62,8 +62,8 @@ Az alábbi lépéseket kell végrehajtani:
     A legtöbb esetben a konfigurációs karakterláncból, a tevékenység az üres (például a következő példában). Néhány speciális esetben (igénylő futásidejű tulajdonságok dinamikusan állítható be), amely esetben biztosítja, a kódolási feladat XML-karakterlánc. Példák ilyen forgatókönyvek például: egy átmeneti területre, párhuzamos és soros vágása, a feliratozás adathordozó létrehozása.
 5. Két bemeneti eszközeinek adja hozzá a feladatot.
 
-   1. 1. – a munkafolyamat-objektumot.
-   2. 2. – a videó eszköz.
+   1. 1\. – a munkafolyamat-objektumot.
+   2. 2\. – a videó eszköz.
 
       >[!NOTE]
       >A feladat a médiaobjektum előtt hozzá kell adni a munkafolyamat-objektumot.

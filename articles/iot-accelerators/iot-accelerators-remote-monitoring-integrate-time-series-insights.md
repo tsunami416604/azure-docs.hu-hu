@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61442927"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Az Azure Time Series Insights integrálása a távoli monitorozással
@@ -51,7 +51,7 @@ Ezután helyezze üzembe a Time Series Insights további erőforrásként a táv
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza ki **erőforrás létrehozása** > **IOT-** > **Time Series Insights**.
+1. Válassza ki **erőforrás létrehozása** > **IOT-**  > **Time Series Insights**.
 
     ![Új Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
 
@@ -80,7 +80,7 @@ Hozzon létre egy új eseményforrás csatlakozni az IoT hubhoz. Győződjön me
 
     ![Esemény források megtekintése](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. Kattintson a **Hozzáadás** parancsra.
+1. Kattintson a **Hozzáadás**lehetőségre.
 
     ![Eseményforrás hozzáadása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
@@ -88,16 +88,16 @@ Hozzon létre egy új eseményforrás csatlakozni az IoT hubhoz. Győződjön me
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Eseményforrás neve | A nevet használja az alábbi képernyőképen **contosorm-iot-hub**. Használja a saját egyedi névre, ha e lépés elvégzése után. |
-    | Forrás | **IoT Hub** |
+    | Eseményforrás nevének | A nevet használja az alábbi képernyőképen **contosorm-iot-hub**. Használja a saját egyedi névre, ha e lépés elvégzése után. |
+    | source | **IoT Hub** |
     | Importálási beállítás | **Az IoT Hub használata a rendelkezésre álló előfizetések közül** |
     | Előfizetés azonosítója | Válassza ki saját Azure-előfizetését a legördülő menüből. |
-    | Iot hub neve | **contosorma57a6**. A távoli figyelési megoldás az IoT-központ nevét használja. |
-    | Iot hub szabályzatneve | **iothubowner** győződjön meg, hogy a használt szabályzat egy tulajdonos házirend. |
-    | Iot hub szabályzatkulcsa | Ez a mező automatikusan fel van töltve. |
-    | Iot hub fogyasztói csoport | **timeseriesinsights** |
+    | IOT hub nevét | **contosorma57a6**. A távoli figyelési megoldás az IoT-központ nevét használja. |
+    | IOT hub házirend neve | **iothubowner** győződjön meg, hogy a használt szabályzat egy tulajdonos házirend. |
+    | IOT hub házirendjének kulcsa | Ez a mező automatikusan fel van töltve. |
+    | IOT hub fogyasztói csoport | **timeseriesinsights** |
     | Eseményszerializációs formátum | **JSON**     | 
-    | Időbélyeg-tulajdonság neve | Hagyja üresen |
+    | Időbélyegző-tulajdonság neve | Hagyja üresen |
 
     ![Eseményforrás létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
@@ -136,7 +136,7 @@ A következő lépés, hogy konfigurálja az Azure Stream Analytics Manager mikr
 
 1. Válassza ki a **ContosoRM** erőforráscsoportot.
 
-1. Keresse meg az Azure Stream Analytics (ASA) a streamelési feladat az erőforrások listájában. Az erőforrás neve kezdődik **streamingjobs -**.
+1. Keresse meg az Azure Stream Analytics (ASA) a streamelési feladat az erőforrások listájában. Az erőforrás neve kezdődik **streamingjobs -** .
 
 1. A képernyő felső részén a gombra kattintva állítsa le az ASA streamelési feladatok.
 

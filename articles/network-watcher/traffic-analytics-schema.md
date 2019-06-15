@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
 ms.openlocfilehash: 491f19abfd87c28ede45e98a24f31fe7e599b18b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64691417"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>A Traffic Analytics séma és adatok összesítése
@@ -58,7 +58,7 @@ Az alábbiakban a séma- és azok jelölésére mezői
 | FlowEndTime_t | Dátuma és időpontja (UTC) | (Ez lesz első vonatkozó összesített érték) a folyamat utolsó előfordulásának az a folyamat naplója feldolgozási időköze "FlowIntervalStartTime_t" és "FlowIntervalEndTime_t" között. Flow-log v2, tekintetében az idő, amikor az utolsó folyamat az azonos négy rekordos használatába (lett megjelölve "B" a nyers folyamat rekord) tartalmaz a mező |
 | FlowType_s |  * IntraVNet <br> * Virtuális hálózatok közötti <br> * S2S <br> * P2S <br> * AzurePublic <br> * ExternalPublic <br> * MaliciousFlow <br> * Ismeretlen privát <br> * Ismeretlen | A táblázat alatti megjegyzésekben definíciója |
 | SrcIP_s | Forrás IP-címe | AzurePublic esetén üres lesz, és ExternalPublic folyamatok |
-| DestIP_s | Cél IP-cím | AzurePublic esetén üres lesz, és ExternalPublic folyamatok |
+| DestIP_s | Cél IP-címe | AzurePublic esetén üres lesz, és ExternalPublic folyamatok |
 | VMIP_s | IP-címét a virtuális gép | Használt AzurePublic és ExternalPublic folyamatok |
 | PublicIP_s | Nyilvános IP-címek | Használt AzurePublic és ExternalPublic folyamatok |
 | DestPort_d | Célport | Amikor a forgalom nem bejövő port | 

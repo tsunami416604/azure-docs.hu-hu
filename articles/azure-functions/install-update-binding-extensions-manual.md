@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 09/26/2018
 ms.author: glenga
 ms.openlocfilehash: cda977ba59070c3ddaac05784277d6c0b5109f0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61035733"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Manuálisan telepítse vagy frissítse az Azure Functions kötési bővítményeket a portálról
@@ -30,7 +30,7 @@ A következő lépések segítségével manuálisan telepíteni, vagy a portálr
 
 1. Az a [az Azure portal](https://portal.azure.com), keresse meg a függvényalkalmazást, és jelölje ki. Válassza ki a **áttekintése** lapot, és válasszon **leállítása**.  A függvényalkalmazás leállítása feloldja a fájlokat, hogy a módosítás.
 
-1. Válassza ki a **platformfunkciók** lapon és a **Fejlesztőeszközök** kiválasztása **speciális eszközök (Kudu)**. A Kudu-végpont (`https://<APP_NAME>.scm.azurewebsites.net/`) egy új ablakban nyílik meg.
+1. Válassza ki a **platformfunkciók** lapon és a **Fejlesztőeszközök** kiválasztása **speciális eszközök (Kudu)** . A Kudu-végpont (`https://<APP_NAME>.scm.azurewebsites.net/`) egy új ablakban nyílik meg.
 
 1. Jelölje ki a Kudu ablakban **hibakereső konzol** > **CMD**.  
 

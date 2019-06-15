@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 4e11b1bc16f874f892288f9677a71023f483de7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60458130"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN gateway RADIUS-hitelesítés integrálása az NPS-kiszolgálóval a multi-factor Authentication 
@@ -32,7 +32,7 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
 
 ## <a name="detailed-steps"></a>Részletes lépések
 
-### <a name="step-1-create-a-virtual-network-gateway"></a>1. lépés: Virtuális hálózati átjáró létrehozása
+### <a name="step-1-create-a-virtual-network-gateway"></a>1\. lépés: Virtuális hálózati átjáró létrehozása
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A virtuális hálózatban, amely a virtuális hálózati átjárót fogja futtatni, válassza ki a **alhálózatok**, majd válassza ki **átjáró-alhálózat** egy alhálózat létrehozásához. 
@@ -49,7 +49,7 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
 
 
  
-### <a name="step-2-configure-the-nps-for-azure-mfa"></a>2. lépés a hálózati házirend-kiszolgáló konfigurálása az Azure MFA-hoz
+### <a name="step-2-configure-the-nps-for-azure-mfa"></a>2\. lépés a hálózati házirend-kiszolgáló konfigurálása az Azure MFA-hoz
 
 1. A hálózati házirend-kiszolgálón [az NPS-bővítményének telepítése az Azure MFA-kiszolgáló](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
 2. Nyissa meg a NSP-konzolon kattintson a jobb gombbal **RADUIS ügyfelek**, majd válassza ki **új**. Hozza létre a RADUIS ügyfél a következő beállítások megadásával:
@@ -67,7 +67,7 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
 
 4. Lépjen a **házirendek** > **hálózati házirendek**, kattintson duplán a **Microsoft Routing és távelérési kiszolgáló felé irányuló kapcsolatot** szabályzatot, jelölje be  **Hozzáférés biztosítása**, és kattintson a **OK**.
 
-### <a name="step-3-configure-the-virtual-network-gateway"></a>3. lépés konfigurálása a virtuális hálózati átjáró
+### <a name="step-3-configure-the-virtual-network-gateway"></a>3\. lépés konfigurálása a virtuális hálózati átjáró
 
 1. Jelentkezzen be [az Azure portal](https://portal.azure.com).
 2. Nyissa meg a létrehozott virtuális hálózati átjárót. Győződjön meg arról, hogy az átjáró típusának értéke **VPN** és, hogy a VPN-típust **útvonalalapú**.

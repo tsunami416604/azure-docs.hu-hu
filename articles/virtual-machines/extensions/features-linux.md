@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: bf6eca33eb1448eb84065fb7fe184d01e77feb61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c83eb1f6525c54bc44386f84498789b50bf19043
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387272"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64721130"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuális gépi bővítmények és szolgáltatások linuxhoz
 
@@ -57,7 +57,7 @@ Annak érdekében, hogy a lehető legjobb élményt, vannak az ügynök minimál
 A Linux-ügynök fut több OSE-kre, azonban a bővítmények keretrendszer van korlátozva a OSE-kre vonatkozó adott bővítmények. További információkért tekintse meg [ezt a cikket](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
 ).
 
-Néhány bővítmény nem támogatja az összes OSE-kre között, és bocsáthat *hiba kódja 51, a "Nem támogatott operációs rendszer"*. Támogatási lehetőségek az egyes bővítmény dokumentációjában.
+Néhány bővítmény nem támogatja az összes OSE-kre között, és bocsáthat *hiba kódja 51, a "Nem támogatott operációs rendszer"* . Támogatási lehetőségek az egyes bővítmény dokumentációjában.
 
 #### <a name="network-access"></a>Hálózati hozzáférés
 
@@ -264,7 +264,7 @@ Azt javasoljuk, hogy mindig legyen az automatikus frissítés az ügynökhöz [A
 
 #### <a name="extension-updates"></a>Bővítmény-frissítések
 
-Bővítmény frissítés érhető el, ha a Linux-ügynök tölti le, és frissíti a bővítményt. Frissítések automatikus bővítmény kiadásokhoz *kisebb* vagy *gyorsjavítás*. Engedélyezve van a hibajelentések, vagy tilthatják le az bővítmények *kisebb* frissíti, amikor üzembe helyezi a bővítményt. A következő példa bemutatja, hogyan automatikus frissítése a Resource Manager-sablonnal rendelkező alverziót *autoUpgradeMinorVersion ": true,"*:
+Bővítmény frissítés érhető el, ha a Linux-ügynök tölti le, és frissíti a bővítményt. Frissítések automatikus bővítmény kiadásokhoz *kisebb* vagy *gyorsjavítás*. Engedélyezve van a hibajelentések, vagy tilthatják le az bővítmények *kisebb* frissíti, amikor üzembe helyezi a bővítményt. A következő példa bemutatja, hogyan automatikus frissítése a Resource Manager-sablonnal rendelkező alverziót *autoUpgradeMinorVersion ": true,"* :
 
 ```json
     "publisher": "Microsoft.Azure.Extensions",
@@ -337,7 +337,7 @@ Az alábbi hibaelhárítási lépéseket az összes Virtuálisgép-bővítménye
 
 1. A Linux-ügynök naplójában ellenőrzéséhez tekintse meg a tevékenység során lett üzembe helyezve a bővítményt a */var/log/waagent.log*
 
-2. Tekintse meg a tényleges bővítmény naplókat a további részletekért   */var/log/azure /<extensionName>*
+2. Tekintse meg a tényleges bővítmény naplókat a további részletekért */var/log/azure/\<bővítménynév >*
 
 3. Ellenőrizze a bővítmény-specifikus dokumentáció hibaelhárítási szakaszokat hibakódok ismert problémák stb.
 

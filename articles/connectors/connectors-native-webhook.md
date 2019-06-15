@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
 ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60447203"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Hozzon létre eseményalapú munkafolyamatokat és műveleteket webhookok és az Azure Logic Apps használatával
@@ -93,16 +93,16 @@ További részletek eseményindítók és műveletek kapcsolatban, hogy a webhoo
 Az előfizetés egy szolgáltatás, amely az URL-cím a logikai alkalmazás igény szerint üzenetszám meghívhatja egy visszahívási URL-címe.
 Egy * azt jelenti, hogy kötelező mező.
 
-| Megjelenítendő név | Tulajdonság neve | Leírás |
+| Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
 | Feliratkozás metódus * |method |Előfizetési kérés használandó HTTP-metódus |
-| Feliratkozás URI * |uri azonosító |Előfizetési kérés használandó HTTP URI |
+| Feliratkozás URI * |URI-t |Előfizetési kérés használandó HTTP URI |
 | Előfizetés lemondása metódus * |method |Leiratkozás kérelem használandó HTTP-metódus |
-| Előfizetés lemondása URI * |uri azonosító |A HTTP URI unsubscribe kérelem használata |
-| Fizessen elő a törzs |törzs |Az előfizetés HTTP-kérés törzse |
+| Előfizetés lemondása URI * |URI-t |A HTTP URI unsubscribe kérelem használata |
+| Fizessen elő a törzs |Törzs |Az előfizetés HTTP-kérés törzse |
 | Fizessen elő a fejlécek |A fejlécek |HTTP-kérelmek fejléceinek előfizetés |
 | Fizessen elő a hitelesítés |hitelesítés |Az előfizetés használandó HTTP-hitelesítést. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletekért |
-| Előfizetés lemondása törzse |törzs |A leiratkozási HTTP-kérés törzse |
+| Előfizetés lemondása törzse |Törzs |A leiratkozási HTTP-kérés törzse |
 | Leiratkozás a fejlécek |A fejlécek |HTTP-kérelmek fejléceinek unsubscribe |
 | Előfizetés lemondása hitelesítés |hitelesítés |A leiratkozási használandó HTTP-hitelesítést. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletekért |
 
@@ -129,16 +129,16 @@ Webhook-kérelmet
 Az előfizetés egy szolgáltatás, amely igény szerint egy munkafolyamat-lépés folytatásához az URL-cím segítségével meghívhatja a visszahívási URL-címe.
 Egy * azt jelenti, hogy kötelező mező.
 
-| Megjelenítendő név | Tulajdonság neve | Leírás |
+| Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
 | Feliratkozás metódus * |method |Előfizetési kérés használandó HTTP-metódus |
-| Feliratkozás URI * |uri azonosító |Előfizetési kérés használandó HTTP URI |
+| Feliratkozás URI * |URI-t |Előfizetési kérés használandó HTTP URI |
 | Előfizetés lemondása metódus * |method |Leiratkozás kérelem használandó HTTP-metódus |
-| Előfizetés lemondása URI * |uri azonosító |A HTTP URI unsubscribe kérelem használata |
-| Fizessen elő a törzs |törzs |Az előfizetés HTTP-kérés törzse |
+| Előfizetés lemondása URI * |URI-t |A HTTP URI unsubscribe kérelem használata |
+| Fizessen elő a törzs |Törzs |Az előfizetés HTTP-kérés törzse |
 | Fizessen elő a fejlécek |A fejlécek |HTTP-kérelmek fejléceinek előfizetés |
 | Fizessen elő a hitelesítés |hitelesítés |Az előfizetés használandó HTTP-hitelesítést. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletekért |
-| Előfizetés lemondása törzse |törzs |A leiratkozási HTTP-kérés törzse |
+| Előfizetés lemondása törzse |Törzs |A leiratkozási HTTP-kérés törzse |
 | Leiratkozás a fejlécek |A fejlécek |HTTP-kérelmek fejléceinek unsubscribe |
 | Előfizetés lemondása hitelesítés |hitelesítés |A leiratkozási használandó HTTP-hitelesítést. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletekért |
 

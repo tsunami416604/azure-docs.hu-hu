@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
 ms.openlocfilehash: 018552982a8ece3bbbaea2d60e2a6e64f681f822
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60815138"
 ---
 # <a name="command-line-interface"></a>Parancssori felület
@@ -80,9 +80,9 @@ A **host_service** parancsot a helyi gépen a KES szolgáltatás példányát fu
 |-----------------|----------------------------|
 | `<grammarFile>` | A bemeneti binární gramatika je elérési útja         |
 | `<indexFile>`   | A bemeneti bináris index elérési útja           |
-| `--port <port>` | Helyi port száma.  Alapértelmezett: 8000 |
+| `--port <port>` | Helyi port száma.  alapértelmezett érték: 8000 |
 
-Ezek a fájlok helyi fájlok elérési útja vagy URL-elérési útvonal az Azure-blobok adható meg.  Egy webszolgáltatás üzemeltetett http://localhost:&ltportot;&gt;/.  Lásd: [webes API-k](WebAPI.md) támogatott műveletek listáját.
+Ezek a fájlok helyi fájlok elérési útja vagy URL-elérési útvonal az Azure-blobok adható meg.  Egy webszolgáltatás üzemeltetett http://localhost:&lt portot;&gt; /.  Lásd: [webes API-k](WebAPI.md) támogatott műveletek listáját.
 
 Az Azure-on kívül a környezetben, helyileg üzemeltetett szolgáltatások korlátozva, index legfeljebb 1 MB méretű, 10 kérelmek / másodperc és 1000 teljes hívás fájlok.  Futtassa, hogy ezek a korlátozások, **host_service** egy Azure virtuális gépen, vagy helyezze üzembe az Azure cloud service használatával **deploy_service**.
 

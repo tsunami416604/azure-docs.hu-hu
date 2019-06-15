@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
 ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60313754"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Az Azure Logic Apps Dynamics 365-rekordok kezelése
@@ -120,7 +120,7 @@ Egy mező értékét egy műveletet vagy eseményindítót ad meg, ha az érték
 
 Ez a táblázat néhány mezőt és az ezek értékeinek szükséges adattípusokat mutatja be.
 
-| Mezőtípus | Kötelező adatok típusa | Leírás | 
+| Mező típusa | Kötelező adatok típusa | Leírás | 
 |------------|--------------------|-------------|
 | Szövegmezők | Egysoros szöveg | Ezek a mezők egyetlen sornyi szöveget vagy a dinamikus tartalmat, amely rendelkezik a text típus szükséges. <p><p>*Példa mezők*: **Leírás** és **kategória** | 
 | Egész számból álló mezők | Egész szám | Egyes mezőkben egész szám vagy az egész szám típusú dinamikus tartalom szükség. <p><p>*Példa mezők*: **Készültségi szint** és **időtartama** | 

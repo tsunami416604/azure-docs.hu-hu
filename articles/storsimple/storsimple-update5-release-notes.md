@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 462cbd6261723aa91bbfd23292611e758a800ed2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60844091"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>A StorSimple 8000 Series Update 5 kiadási megjegyzései
@@ -27,16 +27,16 @@ ms.locfileid: "60844091"
 
 A következő kiadási megjegyzések az új funkciók ismertetik, és a StorSimple 8000 Series Update 5 a kritikus fontosságú megoldatlan problémák azonosításához. Ebben a kiadásban a StorSimple szoftver frissítések listáját is tartalmaznak.
 
-5. frissítése bármilyen futó 0.1-es frissítés – Update 4 StorSimple-eszközre alkalmazhatók. Az eszköz Update 5 társított verziószáma 6.3.9600.17845.
+5\. frissítése bármilyen futó 0.1-es frissítés – Update 4 StorSimple-eszközre alkalmazhatók. Az eszköz Update 5 társított verziószáma 6.3.9600.17845.
 
 Tekintse át a kibocsátási megjegyzések a StorSimple-megoldásban a frissítés telepítése előtt található információkat.
 
 > [!IMPORTANT]
-> * 5. frissítése egy kötelező frissítés, és közvetlenül kell telepíteni. További információkért lásd: hogyan [Update 5 alkalmazása](storsimple-8000-install-update-5.md).
-> * 5. frissítése az eszközhöz, lemezfirmware, az operációs rendszer biztonsági és más operációs rendszer frissítése rendelkezik. Ez a frissítés körülbelül 4 óra vesz igénybe. Lemezfirmware-frissítés zavart okozó frissítést, és az eszköz egy állásidőt eredményez. Azt javasoljuk, hogy Update 5 és az eszköz naprakész állapotban tarthatja alkalmazza.
+> * 5\. frissítése egy kötelező frissítés, és közvetlenül kell telepíteni. További információkért lásd: hogyan [Update 5 alkalmazása](storsimple-8000-install-update-5.md).
+> * 5\. frissítése az eszközhöz, lemezfirmware, az operációs rendszer biztonsági és más operációs rendszer frissítése rendelkezik. Ez a frissítés körülbelül 4 óra vesz igénybe. Lemezfirmware-frissítés zavart okozó frissítést, és az eszköz egy állásidőt eredményez. Azt javasoljuk, hogy Update 5 és az eszköz naprakész állapotban tarthatja alkalmazza.
 > * Az új kiadásokhoz, akkor előfordulhat, hogy nem jelenik meg frissítések azonnal, mivel egy fázisokra bontva történő bevezetéséhez a frissítések végzünk. Néhány napot várni, és újra ezeket a frissítéseket, majd frissítéskeresés hamarosan elérhetővé válik.
 
-## <a name="whats-new-in-update-5"></a>5. frissítés újdonságai
+## <a name="whats-new-in-update-5"></a>5\. frissítés újdonságai
 
 A következő kulcsfontosságú fejlesztések és hibajavítások a frissítés 5-ben került sor.
 
@@ -51,7 +51,7 @@ A következő kulcsfontosságú fejlesztések és hibajavítások a frissítés 
 
 Az alábbi táblázat a problémákat, amelyek javítva lett a frissítés 5-ös összegzését tartalmazza.
 
-| Nem | Szolgáltatás | Probléma | Fizikai eszköz vonatkozik | Virtuális eszköz vonatkozik |
+| Nem | Funkció | Probléma | Fizikai eszköz vonatkozik | Virtuális eszköz vonatkozik |
 | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell távoli eljáráshívás |A korábbi kiadásában egy jelenít meg a felhasználót hiba történt a StorSimple felhőalapú készülék Windows PowerShell távoli kapcsolatot létesíteni tett kísérlet során. Ez a probléma alapvető oka volt, és javítva a kiadásban. |Nem |Igen |
 | 2 |Sávszélességsablonok |A korábbi kiadásokban hiba történt a sávszélesség-sablonokkal, melyek kiváltották, mire az eszköz használatára konfigurált, mint az alacsonyabb sávszélességet. Ebben a kiadásban a probléma megoldásához. |Igen |Igen |

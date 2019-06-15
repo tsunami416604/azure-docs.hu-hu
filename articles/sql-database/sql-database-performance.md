@@ -6,17 +6,16 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: WenJason
-ms.author: v-jay
+author: danimir
+ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: digimobile
-origin.date: 01/25/2019
-ms.date: 02/25/2019
+manager: craigg
+ms.date: 01/25/2019
 ms.openlocfilehash: adbccd5f9cfd5ddd1912e304f800f3ebe04912c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60584800"
 ---
 # <a name="monitor-and-improve-performance"></a>Figyelheti és javíthatja a teljesítményt
@@ -41,10 +40,10 @@ Ebben a nézetben áttekintést kaphat az adatbázis teljesítményét, és seg�
 
 ![Teljesítmény](./media/sql-database-performance/performance.png)
 
-* A **javaslatok** csempe nyújt információkat a finomhangolási javaslatai az adatbázis (első három javaslatok láthatók van-e további). Az erre a csempére kattintva megnyílik  **[teljesítménnyel kapcsolatos javaslatok](#performance-recommendations)**. 
+* A **javaslatok** csempe nyújt információkat a finomhangolási javaslatai az adatbázis (első három javaslatok láthatók van-e további). Az erre a csempére kattintva megnyílik  **[teljesítménnyel kapcsolatos javaslatok](#performance-recommendations)** . 
 * A **tevékenység hangolása** csempe a folyamatban levő és befejezett hangolási műveletek az adatbázis, a tevékenység hangolása előzményeit gyors betekintést biztosít összegzését tartalmazza. Erre a csempére kattintva megnyílik az adatbázis teljes hangolási előzmények megtekintését.
 * A **automatikus finomhangolási** csempén látható a [automatikus hangolási konfiguráció](sql-database-automatic-tuning-enable.md) az adatbázis (hangolási beállításokat, amelyek automatikusan érvénybe lépnek az adatbázishoz). Erre a csempére kattintva megnyílik az automation-konfiguráció párbeszédpanel.
-* A **adatbázis-lekérdezések** csempe a lekérdezési teljesítmény az adatbázis (teljes dtu-k használatát és a felső erőforrásigényes lekérdezések) összegzését jeleníti meg. Az erre a csempére kattintva megnyílik  **[lekérdezési Terheléselemző](#query-performance-insight)**.
+* A **adatbázis-lekérdezések** csempe a lekérdezési teljesítmény az adatbázis (teljes dtu-k használatát és a felső erőforrásigényes lekérdezések) összegzését jeleníti meg. Az erre a csempére kattintva megnyílik  **[lekérdezési Terheléselemző](#query-performance-insight)** .
 
 ## <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok
 
@@ -74,7 +73,7 @@ Az Azure SQL Database automatikusan hangolhassa adatbázis teljesítményének a
 
   ![teljesítmény-irányítópult](./media/sql-database-query-performance/performance.png)
 
-Erre a lapra vonatkozó további információkat tekinthet meg a cikk  **[lekérdezési Terheléselemző használata](sql-database-query-performance.md)**.
+Erre a lapra vonatkozó további információkat tekinthet meg a cikk  **[lekérdezési Terheléselemző használata](sql-database-query-performance.md)** .
 
 ## <a name="additional-resources"></a>További források
 

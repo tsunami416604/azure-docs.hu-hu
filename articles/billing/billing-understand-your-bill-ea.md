@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/01/2019
 ms.author: banders
 ms.openlocfilehash: be20ad0583558949f65b9706f0a478669360bf3d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64571212"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>A nagyvállalati szerződés Azure-elszámolások ismertetése
@@ -36,7 +36,7 @@ Olyan Azure számlát küld, ha az alábbiak egyikét az elszámolási időszakb
 - **Szolgáltatási kerettúllépés**: A szervezet használati díjak a kreditegyenlegét lehet.
 - **Külön számlázott díjak**: A szolgáltatások, a szervezet használja a kredit nem vonatkozik. Függetlenül az kreditegyenlegét számlázott van a következő szolgáltatásokat:
     - Canonical
-    - Citrix XenApp Essentials
+    - Citrix XenApp Essentials rendszerbe
     - A Citrix xendesktop-példányok
     - Regisztrált felhasználó
     - Openlogic
@@ -74,7 +74,7 @@ Egy vagy több Azure-számlák kapja, amikor az alábbiak történnek:
 - **Szolgáltatási kerettúllépés**: A szervezet használati díjak a kreditegyenlegét lehet.
 - **Külön számlázott díjak**: A szolgáltatások, a szervezet használja a kredit nem vonatkozik. Függetlenül az kreditegyenlegét számlázott van a következő szolgáltatásokat:
     - Canonical
-    - Citrix XenApp Essentials
+    - Citrix XenApp Essentials rendszerbe
     - A Citrix xendesktop-példányok
     - Regisztrált felhasználó
     - Openlogic
@@ -110,7 +110,7 @@ Az alábbi táblázatban a használati jelenik meg a számlán és a leírások 
 
 |Számla kifejezés|Használati összesítő kifejezés|Leírás|
 |---|---|---|
-|Kiegészítő összeg összesen|Összes használat|A teljes előtti használati díjat a jóváírás alkalmazása előtt a meghatározott időszakra vonatkozóan.|
+|Kiegészítő összeg összesen|Teljes felhasználás|A teljes előtti használati díjat a jóváírás alkalmazása előtt a meghatározott időszakra vonatkozóan.|
 |Kötelezettségvállalás használat|Kötelezettségvállalás használat|A kreditek adott időszak alatt a alkalmazni.|
 |Teljes értékesítés|Kerettúllépés összesen|A teljes felhasználás díja, amely meghaladja a kreditösszeg erejéig. Ez a mennyiség nem tartalmazzák a forgalmi adót.|
 |Adó összege|Nem alkalmazható|Áfa, amely a teljes értékesítési összeg az adott időszakra vonatkozik.|

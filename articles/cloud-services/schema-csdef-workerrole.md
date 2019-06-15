@@ -14,10 +14,10 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 90a11c5bb81a0d29f5f8a1c1696732453aa4b1ab
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62095404"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services – definíciós WorkerRole séma
@@ -151,7 +151,7 @@ A következő táblázat ismerteti az attribútumai a `WorkerRole` elemet.
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|név|string|Kötelező. A feldolgozói szerepkör neve. A szerepkör nevének egyedinek kell lennie.|
+|name|string|Kötelező. A feldolgozói szerepkör neve. A szerepkör nevének egyedinek kell lennie.|
 |enableNativeCodeExecution|logikai|Választható. Az alapértelmezett érték `true`; natív alapértelmezés szerint engedélyezve vannak a programkód és a teljesen megbízható. Ez az attribútum beállítása `false` nativní kód végrehajtását a feldolgozói szerepkör esetében tiltsa le, és használja helyettük a Azure részleges megbízhatóságot.|
 |vmsize|string|Választható. Ezt az értéket ehhez a szerepkörhöz, hogy engedélyezett a virtuális gép méretének módosításához. Az alapértelmezett érték `Small`. A lehetséges virtuálisgép-méretek és attribútumaik listáját lásd: [a Cloud Services virtuálisgép-méretek](cloud-services-sizes-specs.md).|
 
@@ -165,7 +165,7 @@ A következő táblázat ismerteti az attribútumai a `Setting` elemet.
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|név|string|Kötelező. Egy egyedi nevet a konfigurációs beállítás.|
+|name|string|Kötelező. Egy egyedi nevet a konfigurációs beállítás.|
 
 A szerepkör konfigurációs beállításai olyan név-érték párok, melyek a szolgáltatásdefiníciós fájlban deklarálva, és állítsa be a konfigurációs fájlban.
 
@@ -182,7 +182,7 @@ A következő táblázat ismerteti az attribútumai a `LocalStorage` elemet.
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|név|string|Kötelező. Egy egyedi nevet a helyi tárolóban.|
+|name|string|Kötelező. Egy egyedi nevet a helyi tárolóban.|
 |cleanOnRoleRecycle|logikai|Választható. Azt jelzi, hogy a helyi tárolóban meg kell tisztítani a szerepkör újraindítását követően. Alapértelmezett érték `true`.|
 |sizeInMb|int|Választható. A kívánt mennyiségű tárterület lefoglalása a helyi tárolóhoz, MB-ban. Ha nincs megadva, a lefoglalt lemezterület alapértelmezett, 100 MB. A tárolóhely lehet kiosztani minimális mérete 1 MB.<br /><br /> A helyi erőforrások maximális mérete a virtuális gép mérete függ. További információkért lásd: [a Cloud Services virtuálisgép-méretek](cloud-services-sizes-specs.md).|
 
@@ -205,8 +205,8 @@ A következő táblázat ismerteti az attribútumai a `InputEndpoint` elemet.
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|név|string|Kötelező. A külső végpont egyedi nevét.|
-|protokoll|string|Kötelező. Az átviteli protokoll a külső végpont számára. Egy feldolgozói szerepkör esetében lehetséges értékek a következők `HTTP`, `HTTPS`, `UDP`, vagy `TCP`.|
+|name|string|Kötelező. A külső végpont egyedi nevét.|
+|protocol|string|Kötelező. Az átviteli protokoll a külső végpont számára. Egy feldolgozói szerepkör esetében lehetséges értékek a következők `HTTP`, `HTTPS`, `UDP`, vagy `TCP`.|
 |port|int|Kötelező. A külső végpont portja. Bármely választja portszámot is megadhat, de a portszámokat, az egyes szerepkörökhöz a szolgáltatásban megadott egyedinek kell lennie.<br /><br /> A lehetséges értékek a tartomány 1 és 65535 közé, tartományba (az Azure SDK 1.7 vagy újabb verzió).|
 |tanúsítvány|string|HTTPS-végpont szükséges. Egy által meghatározott tanúsítvány nevére a `Certificate` elemet.|
 |localPort|int|Választható. Adja meg a végpont belső kapcsolatokhoz használt port. A `localPort` attribútum a külső portot a végponton képez le egy belső portját szerepet. Ez akkor hasznos, ahol egy szerepkör közölnie kell egy belső összetevő egy porton, hogy eltérő, amely ki van téve külsőleg forgatókönyvekben.<br /><br /> Ha nincs megadva, az értékét `localPort` ugyanaz, mint a `port` attribútum. Állítsa az értékét `localPort` a "*" automatikusan hozzárendelni egy szabad portot, amely felderíthető a futtatókörnyezeti API használata.<br /><br /> A lehetséges értékek a tartomány 1 és 65535 közé, tartományba (az Azure SDK 1.7 vagy újabb verzió).<br /><br /> A `localPort` attribútum értéke csak elérhető az Azure SDK verzióval 1.3-as vagy újabb verziója.|
@@ -220,8 +220,8 @@ A következő táblázat ismerteti az attribútumai a `InternalEndpoint` elemet.
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|név|string|Kötelező. Egy egyedi nevet a belső végpont számára.|
-|protokoll|string|Kötelező. Az átviteli protokoll a belső végpont számára. Lehetséges értékek a következők `HTTP`, `TCP`, `UDP`, vagy `ANY`.<br /><br /> Érték `ANY` Megadja, hogy minden protokoll, bármely porton engedélyezve van.|
+|name|string|Kötelező. Egy egyedi nevet a belső végpont számára.|
+|protocol|string|Kötelező. Az átviteli protokoll a belső végpont számára. Lehetséges értékek a következők `HTTP`, `TCP`, `UDP`, vagy `ANY`.<br /><br /> Érték `ANY` Megadja, hogy minden protokoll, bármely porton engedélyezve van.|
 |port|int|Választható. Belső elosztott terhelésű kapcsolatok a végpont által használt port. Egy elosztott terhelésű végpontot használ két port. A nyilvános IP-cím használt port, és a magánhálózati IP-címet a használt port. Ezek általában azonos az értékük, de Ön a eltérő portok használatára.<br /><br /> A lehetséges értékek a tartomány 1 és 65535 közé, tartományba (az Azure SDK 1.7 vagy újabb verzió).<br /><br /> A `Port` attribútum értéke csak elérhető az Azure SDK verzióval 1.3-as vagy újabb verziója.|
 
 ##  <a name="InstanceInputEndpoint"></a> InstanceInputEndpoint
@@ -233,9 +233,9 @@ A következő táblázat ismerteti az attribútumai a `InstanceInputEndpoint` el
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|név|string|Kötelező. Egy egyedi nevet a végpont.|
+|name|string|Kötelező. Egy egyedi nevet a végpont.|
 |localPort|int|Kötelező. Megadja a belső port, amely az összes szerepkörpéldány fogadni fog annak érdekében, hogy a továbbított bejövő forgalom fogadására a terheléselosztótól. A lehetséges értékek közötti tartományba esik 1 és 65535 között lehet.|
-|protokoll|string|Kötelező. Az átviteli protokoll a belső végpont számára. A lehetséges értékek: `udp` és `tcp`. Használat `tcp` http/https-alapú forgalmat.|
+|protocol|string|Kötelező. Az átviteli protokoll a belső végpont számára. A lehetséges értékek: `udp` és `tcp`. Használat `tcp` http/https-alapú forgalmat.|
 
 ##  <a name="AllocatePublicPortFrom"></a> AllocatePublicPortFrom
 A `AllocatePublicPortFrom` elem ismerteti, hogy minden példány bemeneti végpont elérésére használható külső ügyfelek által nyilvános porttartományát. Ebből a tartományból lefoglalt és bérlős központi telepítés és a frissítés során minden egyes szerepkör-példány végpont rendelt (VIP) nyilvános port számát. Az elem szülője a `FixedPortRange` elemet.
@@ -266,7 +266,7 @@ A következő táblázat ismerteti az attribútumai a `FixedPortRange` elemet.
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
 |perc|int|Kötelező. A tartományban minimum port. A lehetséges értékek a tartomány 1 és 65535 közé, tartományba (az Azure SDK 1.7 vagy újabb verzió).|
-|max.|string|Kötelező. A tartomány maximális port. A lehetséges értékek a tartomány 1 és 65535 közé, tartományba (az Azure SDK 1.7 vagy újabb verzió).|
+|max|string|Kötelező. A tartomány maximális port. A lehetséges értékek a tartomány 1 és 65535 közé, tartományba (az Azure SDK 1.7 vagy újabb verzió).|
 
 ##  <a name="Certificates"></a> Tanúsítványok
 A `Certificates` elem ismerteti a feldolgozói szerepkör-tanúsítványok gyűjteménye. Az elem szülője a `Certificate` elemet. Előfordulhat, hogy egy szerepkörhöz társított tanúsítványok bármilyen számát. A tanúsítványok elemmel további információkért lásd: [módosítsa a szolgáltatásdefiníciós fájlból tanúsítvánnyal](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files).
@@ -278,7 +278,7 @@ A következő táblázat ismerteti az attribútumai a `Certificate` elemet.
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|név|string|Kötelező. Ez a tanúsítvány, hivatkoznia kell rá, amikor egy HTTPS társítva használt nevét `InputEndpoint` elemet.|
+|name|string|Kötelező. Ez a tanúsítvány, hivatkoznia kell rá, amikor egy HTTPS társítva használt nevét `InputEndpoint` elemet.|
 |storeLocation|string|Kötelező. Ahol ezt a tanúsítványt a helyi számítógépen is található a tanúsítványtárolóban helye. Lehetséges értékek a következők `CurrentUser` és `LocalMachine`.|
 |storeName|string|Kötelező. Ahol ezt a tanúsítványt a helyi gépen található a tanúsítványtárolóban neve. Lehetséges értékek: a beépített tárolónevek `My`, `Root`, `CA`, `Trust`, `Disallowed`, `TrustedPeople`, `TrustedPublisher`, `AuthRoot`, `AddressBook`, vagy bármilyen egyéni tároló nevét. Ha egy egyéni tároló neve van megadva, automatikusan létrejön a tárolóban.|
 |permissionLevel|string|Választható. Adja meg a szerepkör folyamatok hozzáférési engedélyeket. Ha azt szeretné, hogy tudják elérni a titkos kulcsot, majd adja meg csak emelt szintű folyamatok `elevated` engedéllyel. `limitedOrElevated` az engedély lehetővé teszi a titkos kulcs elérésére szolgál, az összes szerepkör folyamatokat. A lehetséges értékek: `limitedOrElevated` és `elevated`. Az alapértelmezett érték `limitedOrElevated`.|
@@ -322,7 +322,7 @@ A következő táblázat ismerteti az attribútumai a `Variable` elem:
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|név|string|Kötelező. Állítsa be a környezeti változó neve.|
+|name|string|Kötelező. Állítsa be a környezeti változó neve.|
 |value|string|Választható. A környezeti változó beállított értéke. Meg kell adni vagy a value attribútumként vagy egy `RoleInstanceValue` elemet.|
 
 ##  <a name="RoleInstanceValue"></a> RoleInstanceValue
@@ -401,7 +401,7 @@ A következő táblázat ismerteti az attribútumai a `Content` elemet.
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|cél|string|Kötelező. Helye az az Azure virtuális gépen, amelyre a tartalmat el van helyezve. Ez a hely van a mappa viszonyított **%ROLEROOT%\Approot**.|
+|destination|string|Kötelező. Helye az az Azure virtuális gépen, amelyre a tartalmat el van helyezve. Ez a hely van a mappa viszonyított **%ROLEROOT%\Approot**.|
 
 Az elem azon a `SourceDirectory` elemet.
 

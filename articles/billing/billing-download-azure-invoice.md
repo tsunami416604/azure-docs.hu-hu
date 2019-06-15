@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60617935"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>A Microsoft Azure-számla megtekintése és letöltése
@@ -55,7 +55,7 @@ A számla kapcsolatos további információkért lásd: [Microsoft Azure-hoz kap
 Számlák jönnek létre az egyes [profil számlázási](billing-mca-overview.md#understand-billing-profiles) a Microsoft ügyfél-szerződés. Számlázási profil tulajdonos, közreműködő, olvasó, vagy a számlához manager számlákat letölteni az Azure Portalról.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
+1. A Keresés **Cost Management és számlázás**.
 1. Válassza ki a számlázási profilt. A hozzáférést, attól függően szükség lehet először ki kell választania egy számlázási fiókot.
 1. Válassza ki a **Számlák** elemet.
 1. A számla rács megkeresi a letölteni kívánt számla.
@@ -98,7 +98,7 @@ Kikapcsolja a számla első e-mail gombra kattintva és a fenti lépések elvég
 Ha egy Microsoft Ügyfélszerződéséhez, kérheti a, a számla kapni egy e-mailben. Számlázási profil tulajdonosoknak, közreműködőknek, olvasó és számla ellenében kezelők a számlát fog kapni e-mailben. Olvasói az e-mailek számla szabályozó nem lehet frissíteni.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
+1. A Keresés **Cost Management és számlázás**.
 1. Válassza ki a számlázási profilt. A hozzáférést, attól függően szükség lehet először ki kell választania egy számlázási fiókot.
 1. A **beállítások**válassza **tulajdonságok**.
 1. Alatt **E-mail számla**válassza **Update e-mail számla beállítás**.

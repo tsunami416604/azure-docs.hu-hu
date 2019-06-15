@@ -18,10 +18,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04d2be76072866da2b21718f60fd0c9a5923b15b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545108"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>A Microsoft identity platform és az OAuth 2.0-s erőforrás tulajdonos jelszavára vonatkozó hitelesítőadat
@@ -64,11 +64,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| Paraméter | Feltétel | Leírás |
+| Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Szükséges | A directory-bérlővel, amelyet a felhasználó be szeretne. Ez lehet GUID vagy rövid név formátumban. Ez a paraméter nem állítható be `common` vagy `consumers`, de beállítható `organizations`. |
-| `grant_type` | Szükséges | Meg kell `password`. |
-| `username` | Szükséges | A felhasználó e-mail címét. |
+| `tenant` | Kötelező | A directory-bérlővel, amelyet a felhasználó be szeretne. Ez lehet GUID vagy rövid név formátumban. Ez a paraméter nem állítható be `common` vagy `consumers`, de beállítható `organizations`. |
+| `grant_type` | Kötelező | Meg kell `password`. |
+| `username` | Kötelező | A felhasználó e-mail címét. |
 | `password` | Szükséges | A felhasználó jelszavát. |
 | `scope` | Ajánlott | Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md), vagy az alkalmazáshoz szükséges jogosultságokkal. A interaktív folyamatban a rendszergazda vagy a felhasználónak jóvá kell hagynia ezeken a hatókörökön előre. |
 
@@ -108,7 +108,7 @@ Ha a felhasználó még nem biztosított, a helyes felhasználónevet vagy jelsz
 | `invalid_request` | A kérés nem megfelelően állították össze. | Engedélyezési típusa nem támogatott a a `/common` vagy `/consumers` hitelesítési környezeteket.  Használat `/organizations` helyette. |
 | `invalid_client` | Az alkalmazás nem megfelelően van beállítva | Ez akkor fordulhat elő, ha a `allowPublicClient` tulajdonság true a [alkalmazásjegyzék](reference-app-manifest.md). A `allowPublicClient` tulajdonság van szükség, mert a ROPC engedély nem kell átirányítási URI-t. Az Azure AD nem tudja, hogy az alkalmazás egy nyilvános ügyfélalkalmazás vagy bizalmas az ügyfélalkalmazások, kivéve, ha a tulajdonság értéke. ROPC csak nyilvános ügyfél alkalmazásai támogatják. |
 
-## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
+## <a name="learn-more"></a>Részletek
 
 * Próbálja ki ROPC maga használatával a [konzol mintaalkalmazás](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
 * Annak megállapításához, hogy használjon a v2.0-végpont, olvassa el [a Microsoft identity platform korlátozásai](active-directory-v2-limitations.md).

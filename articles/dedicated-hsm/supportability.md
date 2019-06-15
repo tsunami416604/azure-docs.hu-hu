@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: barclayn
 ms.openlocfilehash: 8341e9057b07fbb72957eddc342ae875e4591993
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60912262"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Dedikált HSM Azure támogatási lehetőségek
@@ -24,7 +24,7 @@ ms.locfileid: "60912262"
 Az Azure dedikált HSM Service egy fizikai eszköz az egyetlen ügyfél használata révén a teljes körű rendszergazdai vezérlés és felügyeleti felelősséget. Az eszköz elérhetővé tett egy [Gemalto SafeNet Luna 7 HSM modell A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). A Microsoft nem jutnak felügyeleti figyelési szerepkörként fizikai soros port melléklet túl az ügyfél egyszer kiépítve.  Hozzáféréssel, nem a Microsoft nincs folyamatban levő szoftverek szintű karbantartás, illetve a rendszer felügyeleti feladatok is rendelkezik. Ennek eredményeképpen ügyfelei felelősek az üzemeltetési tevékenységek jellemző.
 Ügyfelek teljes körűen felelős az alkalmazásokat, amelyek használni a HSM-EK és a támogatási vagy consulting-alapú segítséget Gemalto együttműködve. Ügyfél tulajdonosi működési higiéniai mértékben, mert nincs lehetőség a Microsoft a szolgáltatás magas rendelkezésre állási garancia bármilyen ajánlat. Fontos, hogy az ügyfél felelőssége annak biztosítása érdekében az alkalmazások helyesen van konfigurálva a magas rendelkezésre állás elérése érdekében. A Microsoft ellenőrzi és eszközök állapotának és a hálózati kapcsolat fenntartása érdekében.
 
-## <a name="getting-support"></a>Támogatás igénylése
+## <a name="getting-support"></a>Támogatás igénybevétele
 
 Dedikált HSM ügyfél támogatása a Microsoft és Gemalto erőfeszítései. Bármilyen hardveres vagy hálózati elérési út problémák kibocsátásokban megtörténik a Microsoft, és a tényleges HSM, például a konfigurációt, a szoftver vagy a belső vezérlőprogram- és alkalmazásfejlesztés, bármilyen formában által Gemalto kibocsátásokban megtörténik. Ez a támogatási modell biztosítja, hogy a lehető leghatékonyabb támogatást a leggyorsabb útvonalat. Ha kétségei vannak az adott probléma, emelje a Microsoft támogatási kérelmet, és biztosíthatja, hogy megfelelően irányítja. A Microsoft maradjon szerepet játszanak az összes támogatási esetet, és a törekedni a legjobb támogatási szolgáltatásokat ügyfeleink számára.
 

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: sajagtap
 ms.openlocfilehash: f88ccbabc925b651abbc06f571a9d4220ed8aeb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61285547"
 ---
 # <a name="configure-the-review-tool"></a>A felülvizsgálati eszköz konfigurálása
@@ -64,7 +64,7 @@ Ha egynél több csapaton tagja, mely tartalom felülvizsgálatok jelennek meg m
 
 ![Alcsoportok közötti váltás](images/3-review-image-subteam-2.png)
 
-## <a name="tags"></a>Címkék
+## <a name="tags"></a>Tags
 
 A **címkék** lapon meghatározhatja a két alapértelmezett moderálás címkék mellett egyéni moderálás címkék&mdash;**isadult** (**egy**) és **isracy**  (**r**). Amikor létrehoz egy egyéni címkével, elérhetővé válik az értékelések mellett az alapértelmezett címkéket. Melyik címkék jelennek meg az értékelések azok oszlopláthatósági beállítások között módosíthatja.
 
@@ -105,7 +105,7 @@ A [vizsgálóeszköz](./human-in-the-loop.md) magában foglalja az alábbi csatl
 
 ![Content Moderator összekötők beállításai](images/settings-4-connectors.png)
 
-## <a name="workflows"></a>Munkafolyamatok
+## <a name="workflows"></a>A munkafolyamatok
 
 A **munkafolyamatok** lapon kezelését teszi lehetővé a [munkafolyamatok](../review-api.md#workflows). Munkafolyamatok felhőalapú szűrők a tartalmat, és azok együttműködését összekötők különböző módon rendezheti a tartalom és a megfelelő műveleteket. Itt meghatározhatja, szerkesztheti, és tesztelje a munkafolyamatokat. Lásd: [definiálása és -felhasználási munkafolyamatok](Workflows.md) ehhez útmutatást.
 

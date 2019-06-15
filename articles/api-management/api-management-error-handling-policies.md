@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: apimpm
-ms.openlocfilehash: 2bde63bb668188936b3dd3cf5ecbf3b8c604eb95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 87693caa5343e359bb3ab424de489c2270bbca62
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564316"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64704439"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Hiba történt az API Management házirendek kezelése
 
@@ -77,12 +77,12 @@ A `on-error` ügyfélházirend szekció használható bármilyen hatókörben. A
 
  Ha hiba lép fel, és a vezérlő ugrik a `on-error` házirend szakaszban tárolódik a hiba [környezetben. LastError](api-management-policy-expressions.md#ContextVariables) tulajdonság, amely a házirendek által elérhető lesz a `on-error` szakaszban. Hiba a következő tulajdonságokkal rendelkezik.  
   
-| Name (Név)     | Típus   | Leírás                                                                                               | Kötelező |
-|----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| Source   | string | Az elem, ahol a hiba történt a neveket. Házirend és a egy beépített folyamat lépés – név lehet.     | Igen      |
-| Reason   | string | Gép mobilbarát hiba kódra, amely volt használható a hibakezelést.                                       | Nem       |
-| Message  | string | Természetes nyelven olvasható hiba leírása.                                                                         | Igen      |
-| Scope    | string | Ha hiba történt, és lehet egy "globális", "termék", "api" vagy "művelet" hatókör neve | Nem       |
+| Name (Név)       | Típus   | Leírás                                                                                               | Kötelező |
+|------------|--------|-----------------------------------------------------------------------------------------------------------|----------|
+| `Source`   | string | Az elem, ahol a hiba történt a neveket. Házirend és a egy beépített folyamat lépés – név lehet.     | Igen      |
+| `Reason`   | string | Gép mobilbarát hiba kódra, amely volt használható a hibakezelést.                                       | Nem       |
+| `Message`  | string | Természetes nyelven olvasható hiba leírása.                                                                         | Igen      |
+| `Scope`    | string | Ha hiba történt, és lehet egy "globális", "termék", "api" vagy "művelet" hatókör neve | Nem       |
 | `Section`  | string | Ha hiba történt a szakasz nevét. A lehetséges értékek: "a bejövő", "Háttér", "kimenő" vagy "error".       | Nem       |
 | `Path`     | string | Adja meg a beágyazott házirend, például "[3] válasszon / mikor: [2]".                                                        | Nem       |
 | `PolicyId` | string | Az érték a `id` attribútumot, ha meg van adva, a szabályzatra, ahol a hiba történt az ügyfél által             | Nem       |
@@ -99,8 +99,8 @@ A `on-error` ügyfélházirend szekció használható bármilyen hatókörben. A
 | Source        | Állapot                                 | Reason                  | Message                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
 | konfiguráció | URI nem felel meg az API vagy művelet | OperationNotFound       | Nem egyezik meg a bejövő kérelem egy művelethez.                                                                      |
-| Engedélyezési | Nincs megadva előfizetési kulcs             | SubscriptionKeyNotFound | Hozzáférés megtagadva, mert előfizetési kulcs. Ellenőrizze, hogy az előfizetési kulcsot tartalmaznak, amikor az API-kérelem indítására. |
-| Engedélyezési | Előfizetési kulcs értéke érvénytelen.         | SubscriptionKeyInvalid  | A hozzáférés érvénytelen előfizetési kulcs miatt megtagadva. Ellenőrizze, hogy adja meg az aktív előfizetésre érvényes kulcs.            |
+| authorization | Nincs megadva előfizetési kulcs             | SubscriptionKeyNotFound | Hozzáférés megtagadva, mert előfizetési kulcs. Ellenőrizze, hogy az előfizetési kulcsot tartalmaznak, amikor az API-kérelem indítására. |
+| authorization | Előfizetési kulcs értéke érvénytelen.         | SubscriptionKeyInvalid  | A hozzáférés érvénytelen előfizetési kulcs miatt megtagadva. Ellenőrizze, hogy adja meg az aktív előfizetésre érvényes kulcs.            |
   
 ## <a name="predefined-errors-for-policies"></a>A szabályzatok előre meghatározott hibák  
  Az hibaállapotok szabályzat-kiértékelés során előforduló hibák a következők előre.  
@@ -110,19 +110,19 @@ A `on-error` ügyfélházirend szekció használható bármilyen hatókörben. A
 | Sebességkorlát-   | Túllépte a sávszélesség-korlátjának                                             | RateLimitExceeded         | Költési korlát túllépve                                                                                                               |
 | kvóta        | Kvóta túllépve                                                  | QuotaExceeded             | A csomagba foglalt lebeszélhető percek elfogytak. Kvóta lesz percmennyiség a xx:xx:xx. – vagy – a sávszélesség-kvóta kívüli. Kvóta lesz percmennyiség a xx:xx:xx. |
 | jsonp        | Visszahívási paraméter értéke érvénytelen (helytelen karaktereket tartalmaz) | CallbackParameterInvalid  | {Visszahívási paraméter-neve} visszahívási paraméter értéke nem egy érvényes JavaScript-azonosító.                                          |
-| ip-filter    | Nem sikerült elemezni a hívó IP-kérelemből                          | FailedToParseCallerIP     | Nem sikerült létrehozni a hívó IP-címet. Hozzáférés megtagadva.                                                                        |
-| ip-filter    | Hívó IP-cím nem az engedélyezettek listájához                                | CallerIpNotAllowed        | Nem engedélyezett a hívó IP-címe: {ip-cím}. Hozzáférés megtagadva.                                                                        |
-| ip-filter    | Hívó tiltólista IP-címe                                    | CallerIpBlocked           | Hívó IP-cím le van tiltva. Hozzáférés megtagadva.                                                                                         |
-| ellenőrzés-fejléc | Kötelező fejléc nem jelenik meg, vagy az érték nincs megadva               | HeaderNotFound            | Fejléc {fejléc neve üzemeltetett szolgáltatás} nem található a kérelemben. Hozzáférés megtagadva.                                                                    |
-| ellenőrzés-fejléc | Kötelező fejléc nem jelenik meg, vagy az érték nincs megadva               | HeaderValueNotAllowed     | Fejléc {fejléc neve üzemeltetett szolgáltatás} {fejléc-value} értéke nem engedélyezett. Hozzáférés megtagadva.                                                          |
-| validate-jwt | Jwt jogkivonat a kérelemben hiányzik                                 | TokenNotFound             | A JWT nem található a kérelemben. Hozzáférés megtagadva.                                                                                         |
-| validate-jwt | Aláírás-ellenőrzése nem sikerült                                     | TokenSignatureInvalid     | < jwt-könyvtárból üzenet\>. Hozzáférés megtagadva.                                                                                          |
-| validate-jwt | Érvénytelen célközönség                                                | TokenAudienceNotAllowed   | < jwt-könyvtárból üzenet\>. Hozzáférés megtagadva.                                                                                          |
-| validate-jwt | Érvénytelen kibocsátói                                                  | TokenIssuerNotAllowed     | < jwt-könyvtárból üzenet\>. Hozzáférés megtagadva.                                                                                          |
-| validate-jwt | Lejárt a jogkivonat.                                                   | TokenExpired              | < jwt-könyvtárból üzenet\>. Hozzáférés megtagadva.                                                                                          |
-| validate-jwt | Aláírási kulcs nem lett feloldva azonosító alapján                            | TokenSignatureKeyNotFound | < jwt-könyvtárból üzenet\>. Hozzáférés megtagadva.                                                                                          |
-| validate-jwt | Szükséges jogcímek és jogkivonat hiányoznak                          | TokenClaimNotFound        | JWT jogkivonat hiányzik a következő jogcímek: < c1\>, < c2\>,... Hozzáférés megtagadva.                                                            |
-| validate-jwt | Jogcím értékei eltérés                                           | TokenClaimValueNotAllowed | Jogcím {jogcímszabály neve üzemeltetett szolgáltatás} {jogcímérték} értéke nem engedélyezett. Hozzáférés megtagadva.                                                             |
+| ip-filter    | Nem sikerült elemezni a hívó IP-kérelemből                          | FailedToParseCallerIP     | Nem sikerült létrehozni a hívó IP-címet. A hozzáférés megtagadva.                                                                        |
+| ip-filter    | Hívó IP-cím nem az engedélyezettek listájához                                | CallerIpNotAllowed        | Nem engedélyezett a hívó IP-címe: {ip-cím}. A hozzáférés megtagadva.                                                                        |
+| ip-filter    | Hívó tiltólista IP-címe                                    | CallerIpBlocked           | Hívó IP-cím le van tiltva. A hozzáférés megtagadva.                                                                                         |
+| ellenőrzés-fejléc | Kötelező fejléc nem jelenik meg, vagy az érték nincs megadva               | HeaderNotFound            | Fejléc {fejléc neve üzemeltetett szolgáltatás} nem található a kérelemben. A hozzáférés megtagadva.                                                                    |
+| ellenőrzés-fejléc | Kötelező fejléc nem jelenik meg, vagy az érték nincs megadva               | HeaderValueNotAllowed     | Fejléc {fejléc neve üzemeltetett szolgáltatás} {fejléc-value} értéke nem engedélyezett. A hozzáférés megtagadva.                                                          |
+| validate-jwt | Jwt jogkivonat a kérelemben hiányzik                                 | TokenNotFound             | A JWT nem található a kérelemben. A hozzáférés megtagadva.                                                                                         |
+| validate-jwt | Aláírás-ellenőrzése nem sikerült                                     | TokenSignatureInvalid     | < jwt-könyvtárból üzenet\>. A hozzáférés megtagadva.                                                                                          |
+| validate-jwt | Érvénytelen célközönség                                                | TokenAudienceNotAllowed   | < jwt-könyvtárból üzenet\>. A hozzáférés megtagadva.                                                                                          |
+| validate-jwt | Érvénytelen kibocsátói                                                  | TokenIssuerNotAllowed     | < jwt-könyvtárból üzenet\>. A hozzáférés megtagadva.                                                                                          |
+| validate-jwt | Lejárt a jogkivonat.                                                   | TokenExpired              | < jwt-könyvtárból üzenet\>. A hozzáférés megtagadva.                                                                                          |
+| validate-jwt | Aláírási kulcs nem lett feloldva azonosító alapján                            | TokenSignatureKeyNotFound | < jwt-könyvtárból üzenet\>. A hozzáférés megtagadva.                                                                                          |
+| validate-jwt | Szükséges jogcímek és jogkivonat hiányoznak                          | TokenClaimNotFound        | JWT jogkivonat hiányzik a következő jogcímek: < c1\>, < c2\>,... A hozzáférés megtagadva.                                                            |
+| validate-jwt | Jogcím értékei eltérés                                           | TokenClaimValueNotAllowed | Jogcím {jogcímszabály neve üzemeltetett szolgáltatás} {jogcímérték} értéke nem engedélyezett. A hozzáférés megtagadva.                                                             |
 | validate-jwt | Más érvényesítési hibák                                       | JwtInvalid                | < az üzenetet a jwt-könyvtár\>                                                                                                          |
 
 ## <a name="example"></a>Példa

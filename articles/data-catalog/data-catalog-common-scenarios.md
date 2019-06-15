@@ -9,16 +9,16 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: e95cc64b9086a6fb4c5e2d42521a5fd3f44244ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61003956"
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Az Azure Data Catalog gyakori forgatókönyvei
 Ez a cikk bemutatja a gyakori forgatókönyvek, ahol az Azure Data Catalog kihasználása a meglévő adatforrásokat a szervezet segítségére lehetnek.
 
-## <a name="scenario-1-registration-of-central-data-sources"></a>1. forgatókönyv: Központi adatforrások regisztrálása
+## <a name="scenario-1-registration-of-central-data-sources"></a>1\. forgatókönyv: Központi adatforrások regisztrálása
 Szervezetek gyakran számos nagy értékű adatforrásokkal rendelkeznek. Ezeknek az adatforrásoknak üzleti –, az online tranzakció-feldolgozási (OLTP) rendszerek, a data warehouse-adattárházak és az üzleti intelligencia és elemzés adatbázisokat tartalmazza. Rendszerek és a közöttük, az átfedés száma általában idővel növekszik, üzleti igényei megváltoznak, és keresztül, például a fúziók és felvásárlások haladásával magához az üzlethez.
 
 Szervezet tagjai számára, hogy hol keresse meg az adatok belül ezeknek az adatforrásoknak nehézkes lehet. Például a következők túl gyakori kérdésekre:
@@ -34,7 +34,7 @@ Ha elkezdi az Azure Data Cataloggal, azonosítsa és regisztrálja az adatfelhas
 
 Ebben a forgatókönyvben is jár, így egyszerűbb átlátni és elérése a nagy értékű adatforrások ellátása megjegyzésekkel lehetőséget. Ebből a törekvésből egyik legfőbb szempontja, hogy hogyan használói kérhetnek az adatforráshoz való hozzáférés információkat tartalmazzák. Az Azure Data Cataloggal adja meg az e-mail-címét a felhasználó vagy csapat felelős adatforrás-hozzáférés szabályozása, valamint hivatkozásokat a meglévő eszközeivel vagy a dokumentációban vagy szabad szöveg, amely azt ismerteti, hogyan kérést. Ez az információ segít a tagok, aki regisztrált adatforrások felderítését, de még akik nem férhet hozzá az adatokhoz egyszerűen kérjen hozzáférést a folyamatokat, és határozza meg az adatforrások tulajdonosai vezérli az engedélyek.
 
-## <a name="scenario-2-self-service-business-intelligence"></a>2. forgatókönyv: Önkiszolgáló üzleti intelligencia
+## <a name="scenario-2-self-service-business-intelligence"></a>2\. forgatókönyv: Önkiszolgáló üzleti intelligencia
 Bár a hagyományos vállalati üzletiintelligencia megoldásokat továbbra is, amely számos szervezet adatelrendezések felbecsülhetetlen értékű részét, üzleti lépést módosításának által végrehajtott önkiszolgáló BI egyre több fontos. Önkiszolgáló üzleti Intelligencia használatával az információkkal dolgozó szakemberek és adatelemzők hozhat létre saját jelentések, munkafüzetek és az irányítópultok anélkül, hogy az egy központi informatikai csapat vagy folyamatban van, hogy informatikai csapat ütemezés és a rendelkezésre állási korlátozza.
 
 Az önkiszolgáló üzleti Intelligencia funkciók a felhasználók gyakran több forrásból, amelyek közül előfordulhat, hogy rendelkezik korábban nem használt üzleti Intelligencia és elemzés származó adatokat kombinálni. Bár ezek az adatforrások némelyike már ismertek, ez kihívást jelenthet Mi a teendő, keresse meg és kiértékelheti egy adott feladat lehetséges adatforrások felderítését.
@@ -47,7 +47,7 @@ A katalógus tartalmának a szerves növekedési egészíti ki természetes elő
 
 Fontos megjegyezni, hogy bár ebben a forgatókönyvben kifejezetten önkiszolgáló BI összpontosít, az azonos minták és kihívásokat alkalmazni a nagy méretű vállalati BI projektek is. Data Catalog segítségével a szervezet minden erőfeszítés, amely magában foglalja az adatforrás-felderítés manuális folyamat javítja.
 
-## <a name="scenario-3-capturing-tribal-knowledge"></a>3. forgatókönyv: A közösségi rögzítése
+## <a name="scenario-3-capturing-tribal-knowledge"></a>3\. forgatókönyv: A közösségi rögzítése
 Hogyan, hogy milyen adatokat kell tennie a feladat, és hol találja az adatokat?
 
 Ha, hogy a feladat egy ideig, akkor valószínűleg tudnia kell. A tanulási folyamat fokozatos mintajelentéshez, és idővel ismerkedtünk azokat az adatforrásokat, ahhoz, hogy a napi munkára.

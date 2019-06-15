@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: f54ff738199d433308a8eaba6a643861c57b4abb
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3dc6ea7419e3ee1f24d19447a7a33e5556ffc70f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540686"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64688708"
 ---
 # <a name="resize-a-windows-vm"></a>Egy Windows virtuális gép átméretezése
 
@@ -30,7 +30,7 @@ Miután létrehozott egy virtuális gépet (VM), méretezheti a virtuális gép 
 
 Ha a virtuális gép Premium szintű tárolást használ, győződjön meg arról, hogy a kiválasztott egy **s** méretét a Premium Storage-támogatás kéréséhez verzióját. Például választhatja, Standard_E4**s**_v3 standard E4 v3 helyett.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Nincs rendelkezésre állási csoportban a Windows virtuális gép átméretezése
 

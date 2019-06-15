@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 319def9072dbf38eff44ca4459428f1ef99a2b54
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64867965"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metrikák az Azure Monitorban
@@ -38,7 +38,7 @@ Az alábbi táblázat a különböző módon, hogy használhatja az Azure monito
 | Riasztás | Konfigurálja egy [a metrikaalapú riasztási szabály](alerts-metric.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](action-groups.md) mikor a metrika értéke átlép egy küszöbértéket. |
 | Automatizálás |  Használat [automatikus skálázási](autoscale-overview.md) növelése vagy csökkentése érdekében az erőforrásokat a küszöbérték átlépését egy metrikaérték alapján. |
 | Exportálás | [Naplók átirányítása a metrikák](diagnostic-logs-stream-log-store.md) adatok elemzése az Azure Monitor-metrikák az Azure Monitor naplóira adatokkal együtt és metrikaértékek 93 napnál hosszabb ideig tárolja.<br>Metrikák Stream- [Eseményközpont](stream-monitoring-data-event-hubs.md) irányíthatja őket a külső rendszerekkel. |
-| Lekérés | A parancssor használatával metrikaértékek elérését [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Egyéni alkalmazást a metrikaértékek elérését [REST API-val](rest-api-walkthrough.md).<br>A parancssor használatával metrikaértékek elérését [CLI](/cli/azure/monitor/metrics). |
+| Beolvasása | A parancssor használatával metrikaértékek elérését [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Egyéni alkalmazást a metrikaértékek elérését [REST API-val](rest-api-walkthrough.md).<br>A parancssor használatával metrikaértékek elérését [CLI](/cli/azure/monitor/metrics). |
 | Archívum | [Archív](..//learn/tutorial-archive-data.md) az erőforrás megfelelőségét, naplózás, vagy offline jelentéskészítésre teljesítmény vagy egészségügyi előzményeit. |
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Hogyan alakul az Azure Monitor-metrikák strukturált adatok?
@@ -52,7 +52,7 @@ Az Azure-metrikák figyelése által gyűjtött adatokat egy idősorozat-adatbá
 * Bizonyos metrikák rendelkezhet több dimenzióban leírtak szerint [többdimenziós metrikák](#multi-dimensional-metrics). Egyéni metrikák dimenziók legfeljebb 10 lehet.
 
 ## <a name="multi-dimensional-metrics"></a>Többdimenziós metrikák
-A legnagyobb kihívás a metrikaadatok, hogy milyen gyakran korlátozott összegyűjtött értékek segítséget nyújt információt. Az Azure Monitor-címek a többdimenziós metrikák mutatták. Dimenzió egy metrikát a név-érték párok megadásával írhatja le a metrikaérték további adatot áll. Például egy metrika _rendelkezésre álló lemezterület_ nevű dimenzió rendelkezhet _meghajtó_ értékekkel _C:_, _D:_, amelyek lehetővé teszik a megtekintése vagy összes rendelkezésre álló lemezterület-meghajtók, vagy minden meghajtó külön-külön.
+A legnagyobb kihívás a metrikaadatok, hogy milyen gyakran korlátozott összegyűjtött értékek segítséget nyújt információt. Az Azure Monitor-címek a többdimenziós metrikák mutatták. Dimenzió egy metrikát a név-érték párok megadásával írhatja le a metrikaérték további adatot áll. Például egy metrika _rendelkezésre álló lemezterület_ nevű dimenzió rendelkezhet _meghajtó_ értékekkel _C:_ , _D:_ , amelyek lehetővé teszik a megtekintése vagy összes rendelkezésre álló lemezterület-meghajtók, vagy minden meghajtó külön-külön.
 
 Az alábbi példában két adatkészletet egy képzeletbeli metrika nevű _hálózati átviteli sebesség_. Az első adatkészletet nincs dimenzió rendelkezik. A második adatkészlet jeleníti meg az értékeket két dimenzió _IP-cím_ és _iránya_:
 

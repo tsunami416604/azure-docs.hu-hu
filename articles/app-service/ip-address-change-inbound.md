@@ -12,10 +12,10 @@ ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: aaa89b5a3bb1af6878ed21e0160a534a1c989228
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61270064"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Hogyan készíti elő a bejövő IP-cím módosítása
@@ -28,9 +28,9 @@ Ha kapott egy értesítés, hogy az Azure App Service-alkalmazás bejövő IP-c�
 
 * Option 2: Ha csak egy CNAME-rekordot (DNS-rekord mutató URI-t) a tartomány regisztrációs portálon (harmadik féltől származó DNS-szolgáltató vagy az Azure DNS-ben) van konfigurálva, akkor semmit nem kell.
 
-* 3. lehetőség: Ha egy A rekordot (közvetlenül a IP-címre mutató DNS-rekord) a tartomány regisztrációs portálon (harmadik féltől származó DNS-szolgáltató vagy az Azure DNS-ben) van konfigurálva, cserélje le a meglévő IP-cím az újat. Az új IP-cím a következő utasításokat a következő szakaszban találja.
+* 3\. lehetőség: Ha egy A rekordot (közvetlenül a IP-címre mutató DNS-rekord) a tartomány regisztrációs portálon (harmadik féltől származó DNS-szolgáltató vagy az Azure DNS-ben) van konfigurálva, cserélje le a meglévő IP-cím az újat. Az új IP-cím a következő utasításokat a következő szakaszban találja.
 
-* 4. lehetőség: Ha az alkalmazás egy terheléselosztó mögé, IP-szűrő vagy bármely más IP mechanizmust, amely szükséges az alkalmazás IP-cím, cserélje le a meglévő IP-cím az újat. Az új IP-cím a következő utasításokat a következő szakaszban találja.
+* 4\. lehetőség: Ha az alkalmazás egy terheléselosztó mögé, IP-szűrő vagy bármely más IP mechanizmust, amely szükséges az alkalmazás IP-cím, cserélje le a meglévő IP-cím az újat. Az új IP-cím a következő utasításokat a következő szakaszban találja.
 
 ## <a name="find-the-new-inbound-ip-address-in-the-azure-portal"></a>Az Azure Portalon keresse meg az új bejövő IP-cím
 

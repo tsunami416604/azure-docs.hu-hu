@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
 ms.openlocfilehash: 7f692c08f8af322bf7e6ab576e2e6f516594a6c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61336517"
 ---
 # <a name="similarity-method"></a>Hasonlósági metódus
@@ -29,7 +29,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 
 ## <a name="request-parameters"></a>A kérés paraméterei
 
-Paraméter        |Adattípus      |Kötelező | Leírás
+Paraméter        |Adattípus      |Szükséges | Leírás
 ----------|----------|----------|------------
 **s1**        |String   |Igen  |Összehasonlítandó karakterlánc *
 **s2**        |String   |Igen  |Összehasonlítandó karakterlánc *
@@ -47,9 +47,9 @@ Name (Név) | Leírás
 
 ## <a name="successerror-conditions"></a>Sikeres/meghiúsult feltételek
 
-HTTP-állapot | Ok | Válasz
+HTTP-állapot | Reason | Válasz
 -----------|----------|--------
-**200**         |Sikeres | Lebegőpontos szám
+**200**         |Siker | Lebegőpontos szám
 **400**         | Hibás kérés vagy a kérelem érvénytelen | Hibaüzenet      
 **500**         |Belső kiszolgálóhiba | Hibaüzenet
 **Túllépte az időkorlátot**     | A kérelem túllépte az időkorlátot.  | Hibaüzenet

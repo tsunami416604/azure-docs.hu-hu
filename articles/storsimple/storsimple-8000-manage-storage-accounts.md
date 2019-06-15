@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 53aa442b86f5c82ded2f212a64f43852e6b3d2c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60632695"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével a tárfiók hitelesítő adatainak kezelése
@@ -77,7 +77,7 @@ A következő eljárások használatával adja hozzá az Azure storage-fiók hit
 
 1. Keresse meg a StorSimple-Eszközkezelő szolgáltatáshoz, válassza ki, és kattintson rá duplán. Ekkor megnyílik a **áttekintése** panelen.
 2. Válassza ki **Tárfiók hitelesítő adatainak** belül a **konfigurációs** szakaszban. A StorSimple-Eszközkezelő szolgáltatáshoz társított storage-fiókhitelesítő felsorolja.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 4. Az a **adja hozzá a tárfiók-hitelesítő adat** panelen tegye a következőket:
    
     1. A **előfizetés**válassza **más**.
@@ -88,7 +88,7 @@ A következő eljárások használatával adja hozzá az Azure storage-fiók hit
    
     4. Az SSL engedélyezéséhez kattintson a **engedélyezése** gombra kattintva hozzon létre egy biztonságos csatornát a StorSimple-Eszközkezelő szolgáltatás és a felhő közötti hálózati kommunikációhoz. Kattintson a **letiltása** gomb csak akkor, ha a magánfelhő belül működik.
    
-    5. Kattintson a **Hozzáadás** parancsra. A tárfiók-hitelesítő adat sikeres létrehozása után értesítést kap.
+    5. Kattintson a **Hozzáadás**lehetőségre. A tárfiók-hitelesítő adat sikeres létrehozása után értesítést kap.
 
 5. Az újonnan létrehozott tárfiók-hitelesítő adat jelenik meg a StorSimple-Eszközkezelő konfigurálása service panel **Tárfiók hitelesítő adatainak**.
    

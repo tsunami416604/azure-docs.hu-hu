@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60362788"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>A CHAP konfigurálása a StorSimple eszköz
@@ -59,7 +59,7 @@ Az egyirányú hitelesítési a cél hitelesíti magát a kezdeményező. A hite
    3. Erősítse meg a jelszót.
 
        ![CHAP-kezdeményező](./media/storsimple-8000-configure-chap/configure-chap6.png)
-3. Kattintson a **Save** (Mentés) gombra. A megerősítést kérő üzenet jelenik meg. A módosítások mentéséhez kattintson az **OK** gombra.
+3. Kattintson a **Save** (Mentés) gombra. A megerősítést kérő üzenet jelenik meg. A változtatások mentéséhez kattintson az **OK** gombra.
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Egyirányú hitelesítésének konfigurálása a Windows-gazdakiszolgálón
 1. A Windows-állomás kiszolgálón indítsa el az iSCSI-kezdeményező.
@@ -113,7 +113,7 @@ A cél hitelesíti magát a kezdeményező kétirányú hitelesítést, és majd
    3. Erősítse meg a jelszót.
 
        ![CHAP-kezdeményező](./media/storsimple-8000-configure-chap/configure-chap11.png)
-4. Kattintson a **Save** (Mentés) gombra. A megerősítést kérő üzenet jelenik meg. A módosítások mentéséhez kattintson az **OK** gombra.
+4. Kattintson a **Save** (Mentés) gombra. A megerősítést kérő üzenet jelenik meg. A változtatások mentéséhez kattintson az **OK** gombra.
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>A Windows-gazdakiszolgálón kétirányú hitelesítés konfigurálása
 

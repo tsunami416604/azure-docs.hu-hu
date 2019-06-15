@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 221f559dde2017c9b5d13dd4e06a140a6bcb5e2e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935424"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Cloud Partner Portal GDPR-megfelelőség
@@ -31,7 +31,7 @@ Cloud Partner portálra hozzáférést ad a felhasználóknak a lapon minden ada
 
 A személyes adatokat a delete billentyű kezelheti a felhasználók lap felhasználói fiókra. Szerepkörök adott biztonsági rendelkezünk egy **tulajdonosa** és a egy **közreműködői** , amely meghatározott felhasználókhoz rendelhetők, és a hozzárendelt/másolt/frissített/törölt is lehet.
 
-<a name="consent"></a>Hozzájárulás
+<a name="consent"></a>Hozzájárulás megadása
 -------
 
 Jóváhagyás Cloud Partner portálra az kezeléséhez, mindig először jelenik meg a kiadó szerződés szerződést, amely kell ahhoz, hogy a Microsoft a közzétevő, fogadja el. Ha Ön nem járul hozzá a kiadói szerződés szerződést, majd azt korlátozza a közzétevő nem fogja tudni értékesítés a Microsoft számára.

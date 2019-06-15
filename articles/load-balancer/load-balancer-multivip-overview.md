@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: chkuhtz
 ms.openlocfilehash: b9a140314b8eba6386c37bdbcf2bb3de58589335
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60594123"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Az Azure Load Balancer több Előtérrendszer
@@ -30,7 +30,7 @@ Az Azure Load Balancerhez határozza meg, amikor egy előtér- és a háttérren
 
 Az alábbi táblázatban néhány példa előtérbeli konfigurációkat tartalmazza:
 
-| Előtér | IP-cím | protokoll | port |
+| Előtér | IP-cím | protocol | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -54,7 +54,7 @@ További ezekben az esetekben az alapértelmezett viselkedés kezdi tárgyaljuk.
 
 Ebben a forgatókönyvben az előtérrendszer az alábbiak szerint vannak konfigurálva:
 
-| Előtér | IP-cím | protokoll | port |
+| Előtér | IP-cím | protocol | port |
 | --- | --- | --- | --- |
 | ![előtéri zöld](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![lila frontend](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -65,12 +65,12 @@ Azt adja meg a két szabályt:
 
 | Szabály | Térkép frontend | A háttérkészlet |
 | --- | --- | --- |
-| 1 |![előtéri zöld](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![Háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![Háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![Háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![Háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 1 |![előtéri zöld](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Az Azure Load balancerben teljes leképezés most a következőképpen történik:
 
-| Szabály | Előtérbeli IP-cím | protokoll | port | Cél | port |
+| Szabály | Előtérbeli IP-cím | protocol | port | Cél | port |
 | --- | --- | --- | --- | --- | --- |
 | ![zöld szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP Address |80 |
 | ![lila szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP Address |81 |
@@ -104,7 +104,7 @@ Ebben a forgatókönyvben a háttérkészletben lévő összes virtuális Géphe
 
 Tegyük fel, mint az előző forgatókönyvben ugyanazt a frontend konfigurációt:
 
-| Előtér | IP-cím | protokoll | port |
+| Előtér | IP-cím | protocol | port |
 | --- | --- | --- | --- |
 | ![előtéri zöld](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![lila frontend](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -113,12 +113,12 @@ Azt adja meg a két szabályt:
 
 | Szabály | Előtér | Háttérkészlet leképezése |
 | --- | --- | --- |
-| 1 |![szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![Háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) (A VM1 és VM2) Frontend1:80 |
-| 2 |![szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![Háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) (A VM1 és VM2) Frontend2:80 |
+| 1 |![A szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) (A VM1 és VM2) Frontend1:80 |
+| 2 |![A szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) (A VM1 és VM2) Frontend2:80 |
 
 Az alábbi táblázatban látható a teljes leképezés a terheléselosztó:
 
-| Szabály | Előtérbeli IP-cím | protokoll | port | Cél | port |
+| Szabály | Előtérbeli IP-cím | protocol | port | Cél | port |
 | --- | --- | --- | --- | --- | --- |
 | ![zöld szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |ugyanaz, mint a frontend (65.52.0.1) |ugyanaz, mint a frontend (80-as) |
 | ![lila szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |ugyanaz, mint a frontend (65.52.0.2) |ugyanaz, mint a frontend (80-as) |

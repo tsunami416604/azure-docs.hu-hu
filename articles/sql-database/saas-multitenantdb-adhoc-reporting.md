@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 10/30/2018
 ms.openlocfilehash: d4c5a2ca88f982626c8c2a8b37e4a7d6dfdbe599
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485823"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Alkalmi elemzési lekérdezések futtatása több Azure SQL-adatbázis
@@ -96,7 +96,7 @@ Ebben a gyakorlatban séma (a külső adatforrás és a külső tábla definíci
 
     ![külső adatforrás létrehozása](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
-   A tenant táblákban hivatkozó külső táblák van definiálva **TERJESZTÉSI = SHARDED(VenueId)**. Ez a lekérdezés egy adott irányítja *VenueId* a megfelelő adatbázishoz és javítható a teljesítmény számos, a következő szakaszban látható módon.
+   A tenant táblákban hivatkozó külső táblák van definiálva **TERJESZTÉSI = SHARDED(VenueId)** . Ez a lekérdezés egy adott irányítja *VenueId* a megfelelő adatbázishoz és javítható a teljesítmény számos, a következő szakaszban látható módon.
 
     ![külső táblák létrehozása](media/saas-multitenantdb-adhoc-reporting/external-tables.png)
 

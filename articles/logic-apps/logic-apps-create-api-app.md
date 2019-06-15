@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
 ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60681877"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Az Azure Logic Apps segítségével meghívhatja, egyéni API-k létrehozása
@@ -167,8 +167,8 @@ Az alábbiakban egy lekérdezési eseményindító, az API-k szempontból leírt
 
 | Új adatokat és az esemény található?  | API-válasz | 
 | ------------------------- | ------------ |
-| Találat | Adja vissza egy olyan HTTP `200 OK` , ahol a válasz-adattartalomra (bemenet a következő lépésre) állapot. <br/>Ez a válasz létrehoz egy logikaialkalmazás-példányt, és elindítja a munkafolyamatot. | 
-| Nincs találat | Adja vissza egy olyan HTTP `202 ACCEPTED` állapot egy `location` fejlécet és a egy `retry-after` fejléc. <br/>Az eseményindítók a `location` fejlécnek is tartalmaznia kell egy `triggerState` lekérdezési paraméter, amely általában a "Timestamp"mezőt. Az API-t a Ez az azonosító segítségével nyomon követheti, hogy a logikai alkalmazás aktiválva lett utoljára. | 
+| Található | Adja vissza egy olyan HTTP `200 OK` , ahol a válasz-adattartalomra (bemenet a következő lépésre) állapot. <br/>Ez a válasz létrehoz egy logikaialkalmazás-példányt, és elindítja a munkafolyamatot. | 
+| Nem található | Adja vissza egy olyan HTTP `202 ACCEPTED` állapot egy `location` fejlécet és a egy `retry-after` fejléc. <br/>Az eseményindítók a `location` fejlécnek is tartalmaznia kell egy `triggerState` lekérdezési paraméter, amely általában a "Timestamp"mezőt. Az API-t a Ez az azonosító segítségével nyomon követheti, hogy a logikai alkalmazás aktiválva lett utoljára. | 
 ||| 
 
 Például a szolgáltatás új fájlok rendszeres időnként ellenőrzik, felépíthet egy lekérdezési eseményindítói viselkedést:

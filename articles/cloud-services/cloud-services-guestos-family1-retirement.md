@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 5/21/2017
 ms.author: raiye
 ms.openlocfilehash: d6429766b6aac547fd99279659acb1067298e77c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60518972"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Vendég operációsrendszer-család 1 használatból való kivonást egyaránt értesítés
@@ -70,7 +70,7 @@ Javasoljuk, hogy a Cloud Service szerepkörök áttelepítéséhez a támogatott
 2. Az osFamily attribútum "2" állítsa a ServiceConfiguration.cscfg fájlban, és ismételt üzembe helyezése a cloud Services.
 
 ## <a name="extended-support-for-guest-os-family-1-ended-nov-3-2014"></a>Vendég operációsrendszer-család 1 meghosszabbított támogatása véget ért, 2014. november 3.
-1. Vendég operációsrendszer-család a cloud services már nem támogatottak. Áttelepítés kikapcsolása a szolgáltatáskimaradás elkerülése érdekében a lehető leghamarabb 1. termékcsaládját.  
+1\. Vendég operációsrendszer-család a cloud services már nem támogatottak. Áttelepítés kikapcsolása a szolgáltatáskimaradás elkerülése érdekében a lehető leghamarabb 1. termékcsaládját.  
 
 ## <a name="next-steps"></a>További lépések
 Tekintse át a legújabb [vendég operációs rendszer kiadással](cloud-services-guestos-update-matrix.md).

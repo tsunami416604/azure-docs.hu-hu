@@ -14,15 +14,15 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 4093febd19d71512e3c80704e88f9d5cf669d7d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60567425"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása
 
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="Adatátalakítási tevékenységek"]
 > * [Hive-tevékenység](data-factory-hive-activity.md)
 > * [Pig-tevékenység](data-factory-pig-activity.md)
 > * [MapReduce-tevékenység](data-factory-map-reduce.md)
@@ -303,7 +303,7 @@ Azt javasoljuk, hogy mindenképpen haladjon végig a [Data Factory használatán
       }
       ```
 
-      Mindkét **start** és **záró** időpontok kell [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601). Példa: 2014-10-14T16:32:41Z. A **záró** idő megadása nem kötelező. Ha nem ad meg értéket a **záró** tulajdonságot, akkor számítjuk ki, hogy "**kezdő időpont + 48 óra.**" A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
+      Mindkét **start** és **záró** időpontok kell [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601). Példa: 2014-10-14T16:32:41Z. A **záró** idő megadása nem kötelező. Ha nem ad meg értéket a **záró** tulajdonságot, akkor számítjuk ki, hogy "**kezdő időpont + 48 óra.** " A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
 
       > [!NOTE]
       > Adja meg a AzureMLBatchExecution beviteli tevékenység nem kötelező.
@@ -407,7 +407,7 @@ Az Azure Machine Learning-kísérletből a reader module segítségével, ha az 
 A fenti JSON-példa:
 
 * A telepített Azure Machine Learning Web service olvasási/írási adatokat az Azure SQL Database a és a egy olvasó és a egy író modul használatával. A webszolgáltatás tünteti fel a következő négy paraméterek:  Adatbázis-kiszolgáló nevét, adatbázisnevet, Server felhasználói fiók nevét és kiszolgáló felhasználói fiók jelszavát.
-* Mindkét **start** és **záró** időpontok kell [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601). Példa: 2014-10-14T16:32:41Z. A **záró** idő megadása nem kötelező. Ha nem ad meg értéket a **záró** tulajdonságot, akkor számítjuk ki, hogy "**kezdő időpont + 48 óra.**" A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
+* Mindkét **start** és **záró** időpontok kell [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601). Példa: 2014-10-14T16:32:41Z. A **záró** idő megadása nem kötelező. Ha nem ad meg értéket a **záró** tulajdonságot, akkor számítjuk ki, hogy "**kezdő időpont + 48 óra.** " A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
 
 ### <a name="other-scenarios"></a>Egyéb forgatókönyvek
 #### <a name="web-service-requires-multiple-inputs"></a>Webszolgáltatás igényel több bemenet

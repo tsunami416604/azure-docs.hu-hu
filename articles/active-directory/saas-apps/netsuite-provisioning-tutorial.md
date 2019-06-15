@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 928070ae7e5c9077c6f77e8cb7beb36815f47d6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515814"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Netsuite konfigurálása
@@ -67,7 +67,7 @@ Ez a szakasz célja engedélyezése a felhasználó kiépítése az Active Direc
 
 1. Állítsa be a **Kiépítési mód** való **automatikus**. 
 
-    ![kiépítés folyamatban](./media/netsuite-provisioning-tutorial/provisioning.png)
+    ![Kiépítés](./media/netsuite-provisioning-tutorial/provisioning.png)
 
 1. Alatt a **rendszergazdai hitelesítő adataival** területén adja meg a következő beállításokat:
    

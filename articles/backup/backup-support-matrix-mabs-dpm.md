@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
 ms.openlocfilehash: 704bb409d2b21e2ae258dbb2d627b1c088d80db7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60254638"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>A Microsoft Azure Backup Server vagy a System Center DPM biztonsági mentés támogatási mátrixa
@@ -88,7 +88,7 @@ Az Azure Backup biztonsági mentést a DPM vagy MABS-példányok, a következő 
 --- | ---
 **Telepítés** | Telepítse a DPM/MABS egycélú gépen.<br/><br/> Ne telepítse a DPM/MABS tartományvezérlőn, az alkalmazás kiszolgálói szerepkör telepítése a gépre, a Microsoft Exchange Server vagy a System Center Operations Manager rendszert futtató gépen vagy egy fürtcsomóponton.<br/><br/> [Tekintse át az összes DPM rendszerkövetelményei](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
 **Tartomány** | A DPM/MABS egy tartományhoz kell csatlakoztatni. Először telepítse, és ezután a DPM/MABS csatlakoztathatja egy tartományhoz. A DPM/MABS egy új tartományt a telepítést követő áthelyezése nem támogatott.
-**Tárolás** | A modern backup storage (MBP) a DPM 2016/MABS v2 és újabb verzióiban támogatott. Nem érhető el a MABS 1-es.
+**Storage** | A modern backup storage (MBP) a DPM 2016/MABS v2 és újabb verzióiban támogatott. Nem érhető el a MABS 1-es.
 **MABS frissítése** | Telepítse a MABS v3-as, vagy frissíti a MABS v2 MABS v3 közvetlenül. [További információk](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **Moving MABS** | MABS áthelyezése új kiszolgálóra a tároló megőrzése MB használata támogatott.<br/><br/> A kiszolgálónak a neve megegyezik az eredeti kell rendelkeznie. A név nem módosítható, ha azt szeretné tartani az ugyanahhoz a tárolókészlethez, és használja ugyanazt a MABS adatbázist adat-helyreállítási pontok tárolásához.<br/><br/> Kell visszaállítani, mert szüksége lesz a MABS-adatbázis biztonsági másolatát.
 
@@ -139,7 +139,7 @@ Nincs kapcsolat több mint 15 napon keresztül | Lejárt / – figyelmeztetés m
 
 A helyi lemezes tárhelyért biztonsági másolatot a DPM/MABS adatokat tárolja. 
 
-**Tárolás** | **Részletek**
+**Storage** | **Részletek**
 --- | ---
 **MBS** | A modern backup storage (MBP) a DPM 2016/MABS v2 és újabb verzióiban támogatott. Nem érhető el a MABS 1-es.
 **MABS storage Azure virtuális gépen** | Az Azure-os lemezekre, amely kapcsolódik a DPM/MABS virtuális Gépet, és a DPM/MABS kezelt adatokat tárolja. A DPM/MABS tárolókészlethez felhasználható lemezek számát a virtuális gép mérete korlátozza.<br/><br/> A2 VM: 4 lemez; A3 VM: 8 lemez; A4 VM: 16 lemez, az egyes lemezek 1 TB-os maximális mérettel. Ez határozza meg a biztonsági mentési tárolókészlet méretét, amely érhető el.<br/><br/> Készíthet biztonsági mentést adatok mennyisége száma és a csatlakoztatott lemezek méretétől függ.

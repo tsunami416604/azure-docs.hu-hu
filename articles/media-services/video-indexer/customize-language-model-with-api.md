@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 4ef5354a94ae707df8dd1f2767efe04dfbacd7ad
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799590"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>A Video Indexer API-kkal nyelvi modell testreszabása
@@ -32,7 +32,7 @@ A következő parancs létrehoz egy új egyéni nyelvi modell a megadott fiók. 
 > [!NOTE]
 > Az engedélyezett fájlok a modellhez, a fájlok tartalmát a további továbbra is kell betanítja a modellt. Utasításokat a képzés nyelv a következő szakaszban találhatók.
 
-### <a name="request-url"></a>Lekérdezés URL-címe
+### <a name="request-url"></a>Kérés URL-címe
 
 Ez a POST-kérelmet.
 
@@ -54,13 +54,13 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|string|Igen|A fiók globálisan egyedi azonosító|
 |accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 |modelName|string|Igen|A nyelvi modell neve|
 |language|string|Igen|A nyelvi modell nyelve. <br/>A **nyelvi** paramétert meg kell adni a nyelvi "nyelvi címke-régió" BCP-47 formátumát (például: "en-US"). Támogatott nyelvek (en-US) angol, német (de-DE), spanyol (es – SP), arab (ar-működtek az Adatbázisok), francia (fr-FR), Hindi (üdv mindenkinek! – Üdvözöljük), olasz (it-IT), japán (ja-JP), portugál (pt-BR), orosz (ru-RU) és kínai (zh-CN).  |
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 A nyelvi modell hozzáadandó fájlok feltöltése, fel kell tölteni az űrlap-adatok a szükséges paraméterek a fenti értékek biztosítása mellett a szervezet fájlokat. Ehhez két módja van: 
 
@@ -105,7 +105,7 @@ A következő parancs betanítja egy egyéni nyelvi modell található a megadot
 > [!NOTE]
 > Először hozzon létre a nyelvi modell, és töltse fel a fájlokat. Fájlokat tölthet fel vagy a nyelvi modell létrehozása során, vagy a nyelvi modell frissítésével. 
 
-### <a name="request-url"></a>Lekérdezés URL-címe
+### <a name="request-url"></a>Kérés URL-címe
 
 Ez a PUT kérelmet.
 
@@ -125,12 +125,12 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountID|string|Igen|A fiók globálisan egyedi azonosító|
 |modelId|string|Igen|A nyelvi modell azonosítót (jönnek létre, ha a nyelvi modell létrehozása)|
 |accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 További az e híváshoz szükséges a kérelem törzsében.
 
@@ -170,7 +170,7 @@ Kell majd használnia a **azonosító** értékét a nyelvi modell, a a **lingui
 
 A következő parancsot egy egyéni nyelvi modell törlése a megadott fiók. Bármely videó használta a szolgáltatást a törölt nyelvi modell fogja megőrizni a ugyanazt az indexet, mindaddig, amíg újra indexeli a videót. Ha újraindexelni a videót, egy új nyelvi modellbe rendelhet a videót. Ellenkező esetben a Video Indexer használja az alapértelmezett modell újraindexelni a videót.
 
-### <a name="request-url"></a>Lekérdezés URL-címe
+### <a name="request-url"></a>Kérés URL-címe
 
 Ez a törlési kérelem.
 
@@ -190,12 +190,12 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountID|string|Igen|A fiók globálisan egyedi azonosító|
 |modelId|string|Igen|A nyelvi modell azonosítót (jönnek létre, ha a nyelvi modell létrehozása)|
 |accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 További az e híváshoz szükséges a kérelem törzsében.
 
@@ -210,7 +210,7 @@ A következő parancs frissíti a megadott fiók egy egyéni nyelvi személy mod
 > [!NOTE]
 > Kell már létrehozta a nyelvi modell. Ez a hívás segítségével engedélyezése vagy letiltása a modellben található összes fájlt, a nyelvi modell nevének frissítéséhez és a nyelvi modell hozzáadandó fájlok feltöltése.
 
-### <a name="request-url"></a>Lekérdezés URL-címe
+### <a name="request-url"></a>Kérés URL-címe
 
 Ez a PUT kérelmet.
 
@@ -232,14 +232,14 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountID|string|Igen|A fiók globálisan egyedi azonosító|
 |modelId|string|Igen|A nyelvi modell azonosítót (jönnek létre, ha a nyelvi modell létrehozása)|
 |accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 |modelName|string|Nem|Új nevét, amely segítségével biztosíthat a modell|
-|engedélyezése|logikai|Nem|Válassza ki, hogy vannak-e ebben a modellben található összes fájlt (true) engedélyezve vagy letiltva (hamis)|
+|Engedélyezése|logikai|Nem|Válassza ki, hogy vannak-e ebben a modellben található összes fájlt (true) engedélyezve vagy letiltva (hamis)|
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 A nyelvi modell hozzáadandó fájlok feltöltése, fel kell tölteni az űrlap-adatok a szükséges paraméterek a fenti értékek biztosítása mellett a szervezet fájlokat. Ehhez két módja van: 
 
@@ -281,7 +281,7 @@ Használhatja a **azonosító** fájlok visszaadott Itt töltheti le a fájl tar
 
 A következő parancsot lehetővé teszi, hogy frissítse a nevét, és **engedélyezése** állapot egy fájl a megadott fiók az egyéni nyelvi modell.
 
-### <a name="request-url"></a>Lekérdezés URL-címe
+### <a name="request-url"></a>Kérés URL-címe
 
 Ez a PUT kérelmet.
 
@@ -301,15 +301,15 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|string|Igen|A fiók globálisan egyedi azonosító|
 |modelId|string|Igen|A nyelvi modell, amely tartalmazza a fájl (jönnek létre, ha a nyelvi modell létrehozása) azonosítója|
 |fileId|string|Igen|A fájl, amely frissítés alatt áll (jönnek létre, ha a fájl nem feltöltött a létrehozáskor vagy a nyelvi modell frissítése) azonosítója|
 |accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 |fileName|string|Nem|Frissítse a fájl nevét, a neve|
-|engedélyezése|logikai|Nem|Ez a fájl-e (igaz) engedélyezve van, vagy le van tiltva (hamis), a nyelvi modell|
+|Engedélyezése|logikai|Nem|Ez a fájl-e (igaz) engedélyezve van, vagy le van tiltva (hamis), a nyelvi modell|
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 További az e híváshoz szükséges a kérelem törzsében.
 
@@ -332,7 +332,7 @@ Használhatja a **azonosító** fájl visszaadott Itt töltheti le a fájl tarta
 
 A következő parancsot a megadott nyelvi modell például nyelvi és a nyelvi modell a fájlokat a megadott fiók az információkat adja vissza. 
 
-### <a name="request-url"></a>Lekérdezés URL-címe
+### <a name="request-url"></a>Kérés URL-címe
 
 Ez az egy GET kéréssel.
 ```
@@ -351,12 +351,12 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountID|string|Igen|A fiók globálisan egyedi azonosító|
 |modelId|string|Igen|A nyelvi modell azonosítót (jönnek létre, ha a nyelvi modell létrehozása)|
 |accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 További az e híváshoz szükséges a kérelem törzsében.
 
@@ -396,7 +396,7 @@ Használhatja a **azonosító** fájl visszaadott Itt töltheti le a fájl tarta
 
 A következő parancsot adja vissza minden, az egyéni nyelvi modellek listáját a megadott fiók.
 
-### <a name="request-url"></a>Lekérdezés URL-címe
+### <a name="request-url"></a>Kérés URL-címe
 
 Ez az egy GET kérelmet.
 
@@ -416,11 +416,11 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountID|string|Igen|A fiók globálisan egyedi azonosító|
 |accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 További az e híváshoz szükséges a kérelem törzsében.
 
@@ -468,7 +468,7 @@ A válasz a nyelvi modell, a fiókban lévő összes és az egyes metaadatok és
 
 A következő parancsot a megadott fájl törlése a megadott nyelvi modell található a megadott fiók. 
 
-### <a name="request-url"></a>Lekérdezés URL-címe
+### <a name="request-url"></a>Kérés URL-címe
 
 Ez a törlési kérelem.
 ```
@@ -487,13 +487,13 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountID|string|Igen|A fiók globálisan egyedi azonosító|
 |modelId|string|Igen|A nyelvi modell, amely tartalmazza a fájl (jönnek létre, ha a nyelvi modell létrehozása) azonosítója|
 |fileId|string|Igen|A fájl, amely frissítés alatt áll (jönnek létre, ha a fájl nem feltöltött a létrehozáskor vagy a nyelvi modell frissítése) azonosítója|
 |accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 További az e híváshoz szükséges a kérelem törzsében.
 
@@ -505,7 +505,7 @@ Nincs visszaadott tartalom van, amikor a fájl sikeresen törlődött a nyelvi m
 
 Ez adja vissza a metaadatait és tartalmát a megadott fájlban található a kiválasztott nyelvi modell a fiókját.
 
-### <a name="request-url"></a>Lekérdezés URL-címe
+### <a name="request-url"></a>Kérés URL-címe
 
 Ez az egy GET kéréssel.
 
@@ -524,13 +524,13 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountID|string|Igen|A fiók globálisan egyedi azonosító|
 |modelId|string|Igen|A nyelvi modell, amely tartalmazza a fájl (jönnek létre, ha a nyelvi modell létrehozása) azonosítója|
 |fileId|string|Igen|A fájl, amely frissítés alatt áll (jönnek létre, ha a fájl nem feltöltött a létrehozáskor vagy a nyelvi modell frissítése) azonosítója|
 |accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 További az e híváshoz szükséges a kérelem törzsében.
 
@@ -556,7 +556,7 @@ A válasz tartalmát és a fájl JSON formátumú, ehhez hasonló metaadatait ta
 
 A következő parancs letölti a tartalmát a megadott nyelvi modell található a megadott fiók a megadott fájlt tartalmazó szövegfájl. A szövegfájl meg kell egyeznie az eredetileg feltöltött szöveges fájl tartalmát.
 
-### <a name="request-url"></a>Lekérdezés URL-címe
+### <a name="request-url"></a>Kérés URL-címe
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}
 ```
@@ -573,13 +573,13 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountID|string|Igen|A fiók globálisan egyedi azonosító|
 |modelId|string|Igen|A nyelvi modell, amely tartalmazza a fájl (jönnek létre, ha a nyelvi modell létrehozása) azonosítója|
 |fileId|string|Igen|A fájl, amely frissítés alatt áll (jönnek létre, ha a fájl nem feltöltött a létrehozáskor vagy a nyelvi modell frissítése) azonosítója|
 |accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>Kérelem törzse 
+### <a name="request-body"></a>A kérés törzse 
 
 További az e híváshoz szükséges a kérelem törzsében.
 

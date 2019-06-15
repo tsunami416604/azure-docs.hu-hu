@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: bd1278db43ba31ed78f13a826a330e16c3bc8d57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736224"
 ---
 # <a name="front-door-routing-methods"></a>Bejárati ajtajának útválasztási módszerek
@@ -39,7 +39,7 @@ A "legközelebbi" háttér nem feltétlenül legközelebbi mért földrajzi táv
 
 Az alábbi, az általános döntési folyamatot:
 
-| Rendelkezésre álló háttérkomponensei | Prioritás | Késés jel (állapotadat-mintavétel alapján) | Súlyozások |
+| Rendelkezésre álló háttérkomponensei | Prioritás | Késés jel (állapotadat-mintavétel alapján) | Súlyok |
 |-------------| ----------- | ----------- | ----------- |
 | Először is, válassza ki az engedélyezett és a visszaadott kifogástalan háttérkomponenseinek (200 OK) az állapotmintához. Tegyük fel, nincsenek hat háttérrendszerek A, B, C, D, E, és az F, és a közöttük lévő C nem kifogástalan, és E le van tiltva. Így elérhető háttérrendszerek listája a következő A, B, D és F.  | Ezután a rendelkezésre állók közül a legmagasabb prioritást háttérrendszerek ki van jelölve. Tegyük fel háttérrendszer A, B és D prioritása 1 és a háttérrendszer F 2-es prioritást. Így a kiválasztott háttérrendszerek lesz A, B és d| Válassza ki a késési tartományon (legkisebb késés & megadott ms késést és nagybetűk megkülönböztetése)-alapú háttérkomponensek. Tegyük fel, ha egy 15 ms, a B kiszolgáló lesz az ms 30 és D, erről a bejárati ajtajának környezetben, ahol a kérés érkezett, és késés érzékenységi 30 ms, akkor legkisebb késés készlet magában foglalja a háttérrendszer A és B 60 ms, mert D túli 30 ms erről a legközelebbi háttérrendszerhez, amely rögzíti. | Végül bejárati ajtajának a rendszer Ciklikus időszeleteléses a forgalmat, többek között a megadott súlyok aránya háttérrendszereket végső kiválasztott készletét. Tegyük fel, A háttér-e legalább 5 és a háttérkiszolgáló B súlyú, 8, majd a forgalom szétosztani 5:8, többek között a és b háttérrendszerek aránya |
 

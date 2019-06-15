@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
 ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60461534"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure tűzfal log analytics-minták
@@ -28,7 +28,7 @@ Hajtsa végre a nézet hozzáadása a Log Analytics-munkaterület az alábbi lé
 
 1. Az Azure Portalon nyissa meg a Log Analytics-munkaterületet.
 2. Nyissa meg **Designer megtekintése** alábbi **általános**.
-3. Kattintson az **Importálás** gombra.
+3. Kattintson az **Importálás** elemre.
 4. Keresse meg és válassza a **AzureFirewall.omsview** előzőleg letöltött fájl.
 5. Kattintson a **Save** (Mentés) gombra.
 

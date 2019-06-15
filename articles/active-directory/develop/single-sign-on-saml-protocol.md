@@ -19,10 +19,10 @@ ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 593f07b27fec16c3df90a073479effb130bc5721
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545284"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML-protokoll
@@ -52,9 +52,9 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | azonosító | Szükséges | Azure ad-ben ezt az attribútumot használja feltölti a `InResponseTo` a visszaadott válasz attribútum. Azonosító kell nem kezdődhet számmal, így egy általános stratégia az, hogy egy karakterlánc, például a "id" egy GUID azonosító karakterlánc-ábrázolásra jogosultságokat. Ha például `id6c1c178c166d486687be4aaf5e482730` van egy érvényes azonosítót. |
 | Version | Szükséges | Ezt a paramétert kell megadni **2.0**. |
 | IssueInstant | Szükséges | Egy dátum/idő karakterlánc UTC értékkel és [oda-vissza formátumot ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure ad-ben az ilyen típusú dátum/idő értéket vár, de nem értékeli, vagy használja az értéket. |
-| AssertionConsumerServiceUrl | Választható | Ha meg van adva, ezt a paramétert meg kell egyeznie a `RedirectUri` a felhőalapú szolgáltatás, az Azure ad-ben. |
-| ForceAuthn | Választható | Ez egy olyan logikai érték. Ha az értéke igaz, az azt jelenti, hogy a felhasználónak meg kell változtatniuk a újra hitelesíteni kell, még akkor is, ha rendelkezik egy érvényes Azure AD-munkamenetet. |
-| IsPassive | Választható | Ez az egy logikai érték, amely meghatározza, hogy az Azure AD kell hitelesíteni a felhasználót csendes módban, a felhasználó beavatkozása nélkül a munkamenetcookie-t használja, ha van ilyen. Ha ez igaz, az Azure AD megpróbálja hitelesíteni a felhasználót a munkamenet cookie-k használatával. |
+| AssertionConsumerServiceUrl | Optional | Ha meg van adva, ezt a paramétert meg kell egyeznie a `RedirectUri` a felhőalapú szolgáltatás, az Azure ad-ben. |
+| ForceAuthn | Optional | Ez egy olyan logikai érték. Ha az értéke igaz, az azt jelenti, hogy a felhasználónak meg kell változtatniuk a újra hitelesíteni kell, még akkor is, ha rendelkezik egy érvényes Azure AD-munkamenetet. |
+| IsPassive | Optional | Ez az egy logikai érték, amely meghatározza, hogy az Azure AD kell hitelesíteni a felhasználót csendes módban, a felhasználó beavatkozása nélkül a munkamenetcookie-t használja, ha van ilyen. Ha ez igaz, az Azure AD megpróbálja hitelesíteni a felhasználót a munkamenet cookie-k használatával. |
 
 Az összes többi `AuthnRequest` attribútumok, például a jóváhagyás, cél, AssertionConsumerServiceIndex, AttributeConsumerServiceIndex és a ProviderName **figyelmen kívül hagyja**.
 
@@ -97,7 +97,7 @@ A `Scoping` elem, amely tartalmazza az Identitásszolgáltatók listája, nem k�
 
 Ha meg van adva, nem tartalmazza a `ProxyCount` attribútum, `IDPListOption` vagy `RequesterID` elem, mivel azok nem támogatottak.
 
-### <a name="signature"></a>Aláírás
+### <a name="signature"></a>aláírás
 Nem tartalmazza a `Signature` elemében `AuthnRequest` elemek, az Azure AD nem támogatja az aláírt hitelesítési kéréseket.
 
 ### <a name="subject"></a>Subject
@@ -199,7 +199,7 @@ A beállított érték `https://sts.windows.net/<TenantIDGUID>/`ahol \<TenantIDG
 <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-#### <a name="signature"></a>Aláírás
+#### <a name="signature"></a>aláírás
 
 Az Azure AD aláírja a helyességi feltétel, sikeres bejelentkezés válaszként. A `Signature` elem tartalmazza, amely a felhőalapú szolgáltatás segítségével hitelesíti a helyességi feltétel sértetlenségének ellenőrzéséhez a forrás digitális aláírást.
 

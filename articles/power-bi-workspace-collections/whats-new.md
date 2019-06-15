@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: 9ef9416abb4aaf0927d1e072286ef83a4d8c39cb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64724019"
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>A Power BI munkaterületi gyűjtemények újdonságai
@@ -22,7 +22,7 @@ Frissítések **Power BI-Munkaterületcsoportok** rendszeresen jelennek meg. Azo
 > [!IMPORTANT]
 > A Power BI munkaterületi gyűjtemények szolgáltatás elavult, és 2018 júniusáig vagy a szerződésében jelzett időpontig érhető el. Javasoljuk, hogy az alkalmazása zavartalan működése érdekében tervezze meg a migrációt a Power BI Embedded szolgáltatásba. Az adatok a Power BI Embedded szolgáltatásba való migrálásának részleteiért lásd a [Power BI munkaterületi gyűjtemények tartalmának Power BI Embedded szolgáltatásba történő migrálásával](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/) foglalkozó cikket.
 
-## <a name="march-2017"></a>2017. március
+## <a name="march-2017"></a>2017\. március
 
 **Önkiszolgáló képességek**
 
@@ -45,21 +45,21 @@ Frissítések **Power BI-Munkaterületcsoportok** rendszeresen jelennek meg. Azo
 
 * Frissített [jelentés JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
-## <a name="december-2016"></a>2016. december
+## <a name="december-2016"></a>2016\. december
 
 * [Új JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 
-## <a name="october-2016"></a>2016. október
+## <a name="october-2016"></a>2016\. október
 
 * [Bővített analitika R és a Power BI munkaterületi gyűjtemények](https://powerbi.microsoft.com/blog/r-in-pbie/)
 
-## <a name="august-31-2016"></a>2016. augusztus 31-ig.
+## <a name="august-31-2016"></a>2016\. augusztus 31-ig.
 Ez a kiadás tartalmazza:
 
 * Minden új JavaScript SDK-t támogató [speciális szűrési és a lap navigációs](interact-with-reports.md).
 * Power BI-Munkaterületcsoportok mostantól támogatottak az adatközpontban közép-Kanada. Ellenőrizze [adatközpont állapot](https://azure.microsoft.com/status/).
 
-## <a name="july-11-2016"></a>2016. július 11.
+## <a name="july-11-2016"></a>2016\. július 11.
 Ez a kiadás tartalmazza:
 
 * **Nagyszerű hírünk van!** A Power BI munkaterületi gyűjtemények szolgáltatás már nem előzetes verzió – a mostantól általánosan elérhető (az általánosan elérhető).  

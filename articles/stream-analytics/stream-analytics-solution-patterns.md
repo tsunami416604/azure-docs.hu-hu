@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 80843abe130f1388a5d4081adab7b9128446763b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65761978"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Az Azure Stream Analytics megoldás minták
@@ -169,7 +169,7 @@ A visszatöltési folyamat rendelkezik egy offline állapotban van a rendszer, a
 
 Backfilling továbbra is fontos, hogy legalább átmenetileg üzembe helyezése több erőforrást a kimeneti fogadók, mint stabil állapotban kell feldolgozása magasabb átviteli sebesség kezelésére.
 
-|Alkalmazási helyzetek  |Indítsa újra most csak a  |Indítsa újra az utolsó Leállítás időpontja |Indítsa újra a now + visszatöltési archivált események|
+|Forgatókönyvek  |Indítsa újra most csak a  |Indítsa újra az utolsó Leállítás időpontja |Indítsa újra a now + visszatöltési archivált események|
 |---------|---------|---------|---------|
 |**Dashboarding**   |Hozza létre a térköz    |A rövid kimaradás OK    |A hosszú szolgáltatáskimaradás használata |
 |**Riasztások kezelése**   |Elfogadható |A rövid kimaradás OK    |Nem szükséges |

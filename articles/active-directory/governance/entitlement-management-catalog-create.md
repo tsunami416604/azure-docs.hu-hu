@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6d9220cd2162b4c8cb77c1e7abd0372052f5454
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541615"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Létrehozása és kezelése a katalógus az Azure ad-ben tagjogosultság-kezelés (előzetes verzió)
@@ -98,7 +98,7 @@ A katalógusból is eltávolíthatja az erőforrásokat. Egy erőforrás csak el
 
 1. Válassza ki az eltávolítani kívánt erőforrásokat.
 
-1. Kattintson a **eltávolítása** (vagy kattintson a három pont (**...** ) majd **erőforrás eltávolítása**).
+1. Kattintson a **eltávolítása** (vagy kattintson a három pont ( **...** ) majd **erőforrás eltávolítása**).
 
 ## <a name="add-catalog-owners-or-access-package-managers"></a>Katalógus tulajdonosok hozzáadása vagy csomagkezelők eléréséhez
 

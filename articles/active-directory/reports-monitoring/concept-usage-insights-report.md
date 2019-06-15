@@ -17,10 +17,10 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 3fe1e72d277bffd4bc9b38ac377e33b341967e17
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65806356"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Használat és insights jelentés az Azure Active Directory portálon
@@ -45,7 +45,7 @@ A használati és insights jelentésből elérni az adatokat az alábbiak szüks
 2. Válassza ki a megfelelő címtárba, majd válassza ki **Azure Active Directory** válassza **vállalati alkalmazások**.
 3. Az a **tevékenység** szakaszban jelölje be **használat & insights** nyissa meg a jelentést. 
 
-![Jelentés használati és elemzések](./media/concept-usage-insights-report/main-menu.png)
+![Használati és elemzési jelentés](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>A jelentés
@@ -58,7 +58,7 @@ Is beállíthat egy adott alkalmazást a fókuszt. Válassza ki **megtekintheti 
 
 Amikor kiválaszt egy nap az alkalmazás használati diagramot, a bejelentkezési tevékenységek részletes listát kap az alkalmazás.  
 
-![Jelentés használati és elemzések](./media/concept-usage-insights-report/usage-and-insights-report.png)
+![Használati és elemzési jelentés](./media/concept-usage-insights-report/usage-and-insights-report.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -16,10 +16,10 @@ ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3c9fe597957057dc61da5c2b1cf6f9216711764a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61419154"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>A StorSimple Virtual Array – üzembe helyezés VMware rendszerben üzembe helyezése
@@ -62,7 +62,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 2. A hipervizor a virtuális eszköz kiépítése.
 3. A virtuális eszköz indítása és IP-címének lekéréséhez.
 
-## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>1. lépés: Győződjön meg, hogy a gazdagép rendszere megfelel-e virtuális eszköz minimális követelményeknek
+## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>1\. lépés: Győződjön meg, hogy a gazdagép rendszere megfelel-e virtuális eszköz minimális követelményeknek
 A virtuális eszköz létrehozásához szüksége lesz:
 
 * Gazdagép operációs rendszert futtató VMware ESXi kiszolgáló 5.0-, 5.5-ös, 6.0-s vagy 6.5-ös való hozzáférést.
@@ -73,7 +73,7 @@ A virtuális eszköz létrehozásához szüksége lesz:
   * Egy, a hálózatra csatlakozó hálózati adapter, amely képes a forgalmat az internetre irányítani. A minimális internetes sávszélességet, hogy az eszköz optimális működéséhez 5 MB/s kell lennie.
   * 500 GB-os virtuális lemez adatait.
 
-## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>2. lépés: Virtuális eszköz üzembe helyezése a hipervizorban
+## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>2\. lépés: Virtuális eszköz üzembe helyezése a hipervizorban
 A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszközt a hipervizoron.
 
 1. Másolja a virtuáliseszköz-rendszerképet a rendszerre. Letöltötte a virtuális lemezképet az Azure Portalon keresztül.
@@ -131,7 +131,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 18. Az a **virtuális gép verziójának** lapon jelölje be **virtuálisgép-verzió: 8**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
-19. Az a **vendég operációs rendszer** lapon válassza ki a **vendég operációs rendszer** , **Windows**. A **verzió**, a legördülő listából válassza ki a **Microsoft Windows Server 2012 (64 bites)**.
+19. Az a **vendég operációs rendszer** lapon válassza ki a **vendég operációs rendszer** , **Windows**. A **verzió**, a legördülő listából válassza ki a **Microsoft Windows Server 2012 (64 bites)** .
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
 20. A a **processzorok** lapon, módosítsa a **virtuális szoftvercsatornák számát** és **száma virtuális magok száma** úgy, hogy a **magok teljes száma** 4 (vagy több). Kattintson a **tovább**.
@@ -158,7 +158,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 27. A **Ready to Complete** (Befejezésre kész) oldalon tekintse át az új virtuális gépre vonatkozó beállításokat. Ellenőrizze **befejezése előtt a virtuális gép beállításainak szerkesztése**. Kattintson a **Folytatás** gombra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. Az a **virtuális gépek tulajdonságai** lap a **hardver** lapra, keresse meg a hardver. Válassza ki **új merevlemez**. Kattintson a **Hozzáadás** parancsra.
+28. Az a **virtuális gépek tulajdonságai** lap a **hardver** lapra, keresse meg a hardver. Válassza ki **új merevlemez**. Kattintson a **Hozzáadás**lehetőségre.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
 29. Megjelenik egy **hardver hozzáadása** ablak. A a **eszköztípus** lap **válassza ki a hozzáadni kívánt eszköz**, jelölje be **merevlemez**, és kattintson a **tovább**.
@@ -173,10 +173,10 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 32. Az a **speciális beállítások** lap, fogadja el az alapértelmezett.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. Az a **Ready to Complete** lapon, a lemez beállítások áttekintéséhez. Kattintson a **Befejezés** gombra.
+33. Az a **Ready to Complete** lapon, a lemez beállítások áttekintéséhez. Kattintson a **Befejezés**gombra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. Térjen vissza a virtuális gép tulajdonságai lapon. A virtuális gép bekerül egy új merevlemezre. Kattintson a **Befejezés** gombra.
+34. Térjen vissza a virtuális gép tulajdonságai lapon. A virtuális gép bekerül egy új merevlemezre. Kattintson a **Befejezés**gombra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
 35. A virtuális gépek, a jobb oldali panelen kiválasztott, keresse meg a **összefoglalás** fülre. Tekintse át a virtuális gép beállításait.
@@ -188,7 +188,7 @@ A rendszer üzembe helyezi a virtuális gépet. A következő lépés a virtuál
 > [!NOTE]
 > Azt javasoljuk, hogy telepítse a VMware-eszközök a virtuális tömb (az üzembe helyezett fent). A VMware-eszközök telepítése egy nem támogatott konfigurációt eredményez.
 
-## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>3. lépés: A virtuális eszköz elindítása és az IP-cím lekérése
+## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>3\. lépés: A virtuális eszköz elindítása és az IP-cím lekérése
 Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és csatlakozzon hozzá.
 
 #### <a name="to-start-the-virtual-device"></a>A virtuális eszköz indítása

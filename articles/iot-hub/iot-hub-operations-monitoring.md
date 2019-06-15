@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60345720"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub-műveletek figyelése (elavult)
@@ -29,7 +29,7 @@ Az IoT Hub hat azokat a eseményeket figyeli:
 * Felhőből az eszközre irányuló üzenetek
 * Kapcsolatok
 * Fájlfeltöltések
-* Üzenetirányítás
+* Üzenet-útválasztása
 
 > [!IMPORTANT]
 > IoT Hub-műveletek monitorozása nem garantálja a megbízható és rendezett kézbesíti az eseményeket. Az IoT Hub alapul szolgáló infrastruktúrát, attól függően néhány esemény előfordulhat, hogy elvész, vagy -i sorrendben. Például a sikertelen csatlakozási kísérletek, illetve az egyes eszközöktől nagy gyakoriságú szétkapcsolások hiba jelek alapján riasztásokat generálni figyelési műveletek használata. Műveletek figyelése az eseményeket az eszköz állapotát a konzisztens tároló létrehozása nem támaszkodhat, például nyomon követése áruházbeli csatlakoztatott vagy le van választva egy eszköz állapotát. 
@@ -96,7 +96,7 @@ Az eszközkategória telemetriai előforduló hibák az IoT hubra kapcsolódnak,
 }
 ```
 
-### <a name="cloud-to-device-commands"></a>Felhő–eszköz irányú parancsok
+### <a name="cloud-to-device-commands"></a>Felhőből az eszközre irányuló parancsok
 
 A felhőből az eszközre irányuló parancsok kategória előforduló hibák az IoT hubra a felhőből az eszközre irányuló üzenetek folyamat kapcsolódó követi nyomon. Ez a kategória tartalmazza a hibák fordulhatnak elő, amikor a felhőből az eszközre irányuló üzenetküldés (például illetéktelen küldő), (például a szállítási darabszám túllépve) a felhőből az eszközre irányuló üzenetek fogadása és visszajelzés a felhőből az eszközre irányuló üzenetek fogadása (mint például a visszajelzések lejárt). Ez a kategória nem dolgozza hibák az eszközről, amely nem megfelelően kezeli a felhőből az eszközre irányuló üzenet, ha a felhőből az eszközre irányuló üzenet sikeresen kézbesítve.
 
@@ -169,7 +169,7 @@ Ez a kategória nem tényleges jelentkező hibák közvetlenül az eszköz egy f
 }
 ```
 
-### <a name="message-routing"></a>Üzenetirányítás
+### <a name="message-routing"></a>Üzenet-útválasztása
 
 Az üzenet-útválasztási kategória üzenet útvonal értékelése és a végpont-állapotot az IoT Hub által érzékelt során felmerülő hibák nyomon követi. Ez a kategória tartalmazza az eseményeket, mint például amikor egy szabály eredménye "nem definiált", amikor az IoT Hub jelöli meg a végpont kézbesítetlen, valamint a végpont kapott más hibák. Ebbe a kategóriába nem tartalmazza a konkrét hibákat maguk az üzenetek (például a szabályozási hibák eszköz), amely az "eszköz telemetriai" kategóriában szerepelnek.
 

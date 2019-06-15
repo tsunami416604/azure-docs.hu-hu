@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
 ms.openlocfilehash: fa10ff14bf893c268d6b6b1a0d181d11a3f27dc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60586287"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure biztonsági és megfelelőségi terv: FedRAMP elemzés
@@ -86,11 +86,11 @@ Az NSG-k mindegyike rendelkezik az adott portokhoz és protokollokhoz meg, hogy 
   - [Diagnosztikai naplók és események](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) engedélyezve van, és a storage-fiókban tárolt
   - [Az Azure Monitor naplóira](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics) diagnosztikai naplók az NSG-hez csatlakozik.
 
-### <a name="data-at-rest"></a>Inaktív adat
+### <a name="data-at-rest"></a>Inaktív adatok
 Az architektúra a titkosítás, az adatbázis naplózási és más intézkedéseket az inaktív adatok védi.
 
 **Az adatreplikáció** Azure Government rendelkezik a két lehetőség [adatreplikáció](https://docs.microsoft.com/azure/storage/common/storage-redundancy):
- - Az alapértelmezett beállítás az adatreplikációt a **Georedundáns tárolást (GRS)**, amely aszinkron módon tárolja az ügyféladatokat kívül az elsődleges régióban egy különálló adatközpontban. Ez biztosítja, hogy az adat egy teljes elvesztésétől esemény az elsődleges adatközpont.
+ - Az alapértelmezett beállítás az adatreplikációt a **Georedundáns tárolást (GRS)** , amely aszinkron módon tárolja az ügyféladatokat kívül az elsődleges régióban egy különálló adatközpontban. Ez biztosítja, hogy az adat egy teljes elvesztésétől esemény az elsődleges adatközpont.
  - **Helyileg redundáns tárolás (LRS)** keresztül az Azure Storage-fiók is konfigurálható. LRS replikálja az adatokat lévő tárolóskálázási egységben, amely ugyanabban a régióban, amelyben az ügyfél hoz létre a fiók-ban. Az összes van replikálja az adatokat egyidejűleg, biztosítva, hogy egy elsődleges tárolási skálázási egység hibája nincs biztonsági mentési adatok elvesznek.
 
 **Az Azure Storage** titkosított adatok a rest-követelmények teljesítéséhez, minden szolgáltatás a referencia architektúra használja ki az üzembe helyezett [Azure Storage](https://azure.microsoft.com/services/storage/), amely tárolja az adatokat a [a Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption).

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630608"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Az eszköz felügyeletét ellenőrzési mutatók StorSimple használatával
@@ -53,7 +53,7 @@ Az eszköz első panelen LED-EK és a EBOD ház a közötti fő különbség a *
 ## <a name="front-panel-led-status"></a>Előlapi panel LED állapota
 Az alábbi táblázat segítségével azonosíthatja a LED-ek a előlapján, az eszköz vagy a EBOD ház által jelzett állapotát.  
 
-| Rendszer power | A modul hibája | Logikai hiba | Riasztás | status |
+| Rendszer power | A modul hibája | Logikai hiba | Figyelmeztető riasztás | Állapot |
 | --- | --- | --- | --- | --- |
 | Red-amber |KI |KI |– |Hálózati áramellátás Visszaállt elveszett, a biztonsági mentési power vagy hálózati áramellátás Visszaállt működő és a vezérlő modulok el lettek távolítva. |
 | Zöld |ON |ON |– |(5 mp) OPS panel bekapcsolási teszt állapota |
@@ -86,7 +86,7 @@ Jelmagyarázat LED:
 A PCM állapotának fel van tüntetve a LED panelen. Az eszköz PCM LED panel hat LED-ek rendelkezik. Négy ezek LED-ek állapotát jelenítik meg az áramforrás és a ventilátor. A fennmaradó két LED a biztonsági mentési akkumulátor a PCM-modulja állapotát jelzi. Az alábbi táblázat segítségével megállapíthatja a PCM állapotát.  
 
 ### <a name="pcm-indicator-leds-for-power-supply-and-fan"></a>A PCM jelző LED-ek tápegység és ventilátor
-| status | A PCM OK (zöld) | AC sikertelen (sárga) | Ventilátor (sárga) fellépő hibák | Tartományvezérlő sikertelen (sárga) |
+| Állapot | A PCM OK (zöld) | AC sikertelen (sárga) | Ventilátor (sárga) fellépő hibák | Tartományvezérlő sikertelen (sárga) |
 | --- | --- | --- | --- | --- |
 | Nincs (a ház) áramellátás Visszaállt |KI |KI |KI |KI |
 | Nincs áramellátás Visszaállt (csak ez a PCM) |KI |ON |KI |ON |
@@ -98,7 +98,7 @@ A PCM állapotának fel van tüntetve a LED panelen. Az eszköz PCM LED panel ha
 | A PCM belső vezérlőprogram letöltése |KI |Villogó |Villogó |Villogó |
 
 ### <a name="pcm-indicator-leds-for-the-backup-battery"></a>A biztonsági mentési akkumulátor a PCM jelző LED-EK
-| status | Akkumulátor jó (zöld) | Akkumulátor-tartalék (sárga) |
+| Állapot | Akkumulátor jó (zöld) | Akkumulátor-tartalék (sárga) |
 | --- | --- | --- |
 | Akkumulátor nincs jelen |KI |KI |
 | Telep megtalálható a díjazás? |ON |KI |
@@ -114,7 +114,7 @@ Az EBOD ház egy 580W PCM és a további telep nem rendelkezik. Az EBOD ház PCM
 
 Az alábbi táblázat segítségével megállapíthatja a PCM állapotát.  
 
-| status | A PCM OK (zöld) | AC sikertelen (sárga) | Ventilátor (sárga) fellépő hibák | Tartományvezérlő sikertelen (sárga) |
+| Állapot | A PCM OK (zöld) | AC sikertelen (sárga) | Ventilátor (sárga) fellépő hibák | Tartományvezérlő sikertelen (sárga) |
 | --- | --- | --- | --- | --- |
 | Nincs (a ház) áramellátás Visszaállt |KI |KI |KI |KI |
 | Nincs áramellátás Visszaállt (csak ez a PCM) |KI |ON |KI |ON |
@@ -158,7 +158,7 @@ Az alábbi táblázat segítségével meghatározhatja, hogy megfelelően műkö
 Az alábbi táblázat segítségével meghatározhatja, hogy megfelelően működik-e az EBOD-vezérlő modul.  
 
 ### <a name="ebod-controller-module-indicator-leds"></a>Az EBOD-vezérlő modul jelző LED-EK
-| status | I/o-modul OK (zöld) | I/o-modul tartalék (sárga) | Host port tevékenység (zöld) |
+| Állapot | I/o-modul OK (zöld) | I/o-modul tartalék (sárga) | Host port tevékenység (zöld) |
 | --- | --- | --- | --- |
 | Vezérlő modul OK |ON |KI |- |
 | Vezérlő modul hibája |KI |ON |- |
@@ -177,7 +177,7 @@ A merevlemez-meghajtók esetében a meghajtó állapotát jelöli egy zöld LED 
 Az alábbi táblázat segítségével meghatározhatja az egyes meghajtókon, amely viszont hatással van a teljes előlapi panel LED állapot állapotát.  
 
 ### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>Lemezmeghajtó jelző LED-ek esetében a EBOD ház
-| status | Tevékenység OK LED (zöld) | Tartalék LED (piros-sárga) | Az ops panel LED kapcsolódó |
+| Állapot | Tevékenység OK LED (zöld) | Tartalék LED (piros-sárga) | Az ops panel LED kapcsolódó |
 | --- | --- | --- | --- |
 | Nincs meghajtó telepítve |KI |KI |None |
 | Telepített és működő meghajtó |A tevékenység be-és kikapcsolása villogó |X |None |
@@ -219,7 +219,7 @@ Az ops panel vypnutí gombjának megnyomásával a hallható riasztás is vypnut
 A következő táblázat ismerteti a különböző riasztási feltételeket.
 
 ### <a name="alarm-conditions"></a>Riasztási feltételek
-| status | Severity | Riasztás | Az OPS LED panel |
+| Állapot | Severity | Figyelmeztető riasztás | Az OPS LED panel |
 | --- | --- | --- | --- |
 | A PCM riasztás – DC áramkimaradás egyetlen PCM |Hiba – a redundancia adatvesztés nélkül |S1 |A modul hibája |
 | A PCM riasztás – DC áramkimaradás egyetlen PCM |Hiba – a redundancia elvesztését |S1 |A modul hibája |
@@ -239,7 +239,7 @@ A következő táblázat ismerteti a különböző riasztási feltételeket.
 | Meghajtó ellenőrzési hiba |Figyelmeztetés – a meghajtó power adatvesztés nélkül |S1 |A modul hibája |
 | Meghajtó ellenőrzési hiba |Hiba – kritikus; meghajtó áramkimaradás |S1 |A modul hibája |
 | Meghajtó eltávolítása |Figyelmeztetés |None |A modul hibája |
-| Az akkumulátor töltöttsége érhető el |Figyelmeztetés |nincs |A modul hibája |
+| Az akkumulátor töltöttsége érhető el |Figyelmeztetés |Egyik sem |A modul hibája |
 
 ## <a name="next-steps"></a>További lépések
 Tudjon meg többet [StorSimple hardverösszetevők és állapot](storsimple-8000-monitor-hardware-status.md).

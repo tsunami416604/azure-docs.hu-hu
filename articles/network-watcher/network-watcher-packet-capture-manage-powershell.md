@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 81b02cc7c7683bcd9abac2ad1b554644035991c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64710097"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>A csomagrögzítés kezelése az Azure Network Watcher PowerShell-lel
@@ -41,7 +41,7 @@ Ez a cikk végigvezeti a különböző felügyeleti feladatok csomagrögzítés 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy az alábbi forrásanyagokat:
 
@@ -54,13 +54,13 @@ Ez a cikk feltételezi, hogy az alábbi forrásanyagokat:
 
 ## <a name="install-vm-extension"></a>Virtuálisgép-bővítmény telepítése
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 ```
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Az alábbi példa lekéri a sémakiterjesztési adatok futtatásához szükséges a `Set-AzVMExtension` parancsmagot. Ez a parancsmag telepíti a csomag rögzítési ügynököt a Vendég virtuális gépen.
 
@@ -91,7 +91,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
                          True         OK OK   
 ```
 
-### <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3\. lépés
 
 Győződjön meg arról, hogy az ügynök telepítve van-e, futtassa a `Get-AzVMExtension` parancsmagot, és adja át azt a virtuális gép és a bővítmény nevét.
 
@@ -125,7 +125,7 @@ ForceUpdateTag          :
 
 Ha az előző lépések befejeződött, a csomag rögzítési ügynök telepítve van a virtuális gépen.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 A következő lépés, hogy a Network Watcher-példány beolvasása. Az megörökli a változót a `New-AzNetworkWatcherPacketCapture` parancsmag a 4. lépésben.
 
@@ -134,7 +134,7 @@ $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatc
 $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName  
 ```
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Storage-fiók beolvasása. Ez a tárfiók a packet capture fájl tárolására szolgál.
 
@@ -142,7 +142,7 @@ Storage-fiók beolvasása. Ez a tárfiók a packet capture fájl tárolására s
 $storageAccount = Get-AzStorageAccount -ResourceGroupName testrg -Name testrgsa123
 ```
 
-### <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3\. lépés
 
 Szűrők a csomagrögzítés által tárolt adatok korlátozására használható. Az alábbi példa két szűrő beállítása.  Egy szűrő csak a helyi 10.0.0.3 IP-cím kimenő TCP-forgalom, 20, a 80-as és 443-as célportok gyűjti.  A második szűrőt gyűjti csak az UDP-forgalmat.
 
@@ -154,7 +154,7 @@ $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 > [!NOTE]
 > Csomagrögzítés több szűrőt is meghatározhatók.
 
-### <a name="step-4"></a>4. lépés
+### <a name="step-4"></a>4\. lépés
 
 Futtassa a `New-AzNetworkWatcherPacketCapture` parancsmagot, hogy a csomag rögzítési folyamat elindításához szükséges értékeket átadása az előző lépésben lekért.
 ```powershell

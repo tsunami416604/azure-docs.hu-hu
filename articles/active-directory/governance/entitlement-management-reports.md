@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60a61a581574c77a57939ea23fdadc7b060b82af
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541540"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>Jelentések megtekintése és a naplókat az Azure ad-ben tagjogosultság-kezelés (előzetes verzió)
@@ -44,7 +44,7 @@ ms.locfileid: "64541540"
 
     Erőforrásokat, amelyeket a felhasználónak hozzáférése van egy lista jelenik meg. A hozzáférés csomag, a házirend és a dátumokat tartalmazza.
 
-    ![Felhasználó-hozzárendelések jelentése](./media/entitlement-management-reports/user-assignments-report.png)
+    ![Hozzárendelések – felhasználói jelentés](./media/entitlement-management-reports/user-assignments-report.png)
 
 ## <a name="determine-the-status-of-a-users-request"></a>Egy felhasználói kérelem állapotának megállapítása
 
@@ -62,7 +62,7 @@ Azure ad-ben egy új kérelmet kap, amikor egy naplórekordot ír, amelyben a **
 
 Az Azure AD további naplózási rekordoknak fog kiírni, amíg folyamatban van. a kérelem többek között:
 
-| Category | Tevékenység | Kérés állapota |
+| Category | Tevékenység | Kérelem állapota |
 | :---- | :------------ | :------------ |
 | `EntitlementManagement` | `Auto approve access package assignment request` | Jóváhagyási kérelem nem igényel |
 | `UserManagement` | `Create request approval` | Kérelem jóváhagyása szükséges |

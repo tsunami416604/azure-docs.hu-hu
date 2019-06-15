@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
 ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62098862"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Telepítése és az Azure Backup Server frissítése
@@ -134,7 +134,7 @@ A tárreplikációs beállítás szerkesztése:
 
 7. Válassza ki az összes fájlt, és kattintson a **tovább**. Töltse le a Microsoft Azure Backup letöltési oldalról érkező összes fájlt, és helyezze el az összes fájlt ugyanabba a mappába.
 
-    ![1. letöltőközpontból](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
+    ![1\. letöltőközpontból](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
     Minden a fájlok letöltési mérete nem haladhatja meg a > 3G, mivel a 10 MB/s letöltése hivatkozásra a letöltés befejezéséhez legfeljebb 60 percig is tarthat.
 
@@ -277,11 +277,11 @@ Ha már tudja, hogy az állapot, az Azure-kapcsolat és az Azure-előfizetést, 
 
 | Kapcsolati állapota | Azure-előfizetés | Azure biztonsági mentés | Biztonsági mentés lemezre | Állítsa vissza az Azure-ból | Visszaállítás lemezről |
 | --- | --- | --- | --- | --- | --- |
-| Csatlakozva |Aktív |Engedélyezve |Engedélyezve |Engedélyezve |Engedélyezve |
-| Csatlakozva |Elévült |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
+| Csatlakozva |Aktív |Engedélyezett |Engedélyezett |Engedélyezett |Engedélyezett |
+| Csatlakozva |Elévült |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
 | Csatlakozva |– Figyelmeztetés megszüntetésről |Leállítva |Leállítva |A leállított és az Azure helyreállítási pontok törlése |Leállítva |
-| Kapcsolat > 15 napon keresztül |Aktív |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
-| Kapcsolat > 15 napon keresztül |Elévült |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
+| Kapcsolat > 15 napon keresztül |Aktív |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
+| Kapcsolat > 15 napon keresztül |Elévült |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
 | Kapcsolat > 15 napon keresztül |– Figyelmeztetés megszüntetésről |Leállítva |Leállítva |A leállított és az Azure helyreállítási pontok törlése |Leállítva |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>A kapcsolat megszakadása helyreállítása

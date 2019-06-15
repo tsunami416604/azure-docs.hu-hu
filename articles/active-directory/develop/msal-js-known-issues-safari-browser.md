@@ -18,17 +18,17 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb89b1ef4dbbef234fba3152d7f85bbadfbdc64a
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873885"
 ---
 # <a name="known-issues-on-safari-browser-with-msaljs"></a>A Safari böngésző az MSAL.js ismert problémák 
 
 ## <a name="silent-token-renewal-on-safari-12-and-itp-20"></a>A Safari 12 és ITP 2.0 csendes token megújítása
 
-12. az Apple iOS és MacOS 10.14 operációs rendszerek része egy kiadása a [12 a Safari böngésző](https://developer.apple.com/safari/whats-new/). Biztonsági és adatvédelmi okokból a Safari 12 tartalmazza a [intelligens követési megelőzési 2.0](https://webkit.org/blog/8311/intelligent-tracking-prevention-2-0/). Ez lényegében hatására a böngésző dobja el a külső cookie-k beállítása alapján történik. ITP 2.0 is kezeli az identitás-szolgáltatóktól, külső cookie-k által beállított cookie-kat.
+12\. az Apple iOS és MacOS 10.14 operációs rendszerek része egy kiadása a [12 a Safari böngésző](https://developer.apple.com/safari/whats-new/). Biztonsági és adatvédelmi okokból a Safari 12 tartalmazza a [intelligens követési megelőzési 2.0](https://webkit.org/blog/8311/intelligent-tracking-prevention-2-0/). Ez lényegében hatására a böngésző dobja el a külső cookie-k beállítása alapján történik. ITP 2.0 is kezeli az identitás-szolgáltatóktól, külső cookie-k által beállított cookie-kat.
 
 ### <a name="impact-on-msaljs"></a>Impact on MSAL.js
 

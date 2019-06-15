@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
 ms.openlocfilehash: cae75f4d64c8b3f74cc40e94a675c0f10a6bd9ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60312813"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Az Azure Data Factoryvel LastModifiedDate új és módosított fájlok másolása
@@ -53,19 +53,19 @@ A sablon négy paraméter határozza meg:
 
 4. Válassza ki **ezzel a sablonnal**.
 
-    ![Sablon használata](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
+    ![Ezzel a sablonnal](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
 5. A folyamat a panelen érhető el az alábbi példában látható módon jelenik meg:
 
     ![A folyamat megjelenítése](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
 6. Válassza ki **Debug**, értékének írása a **paraméterek** válassza **Befejezés**.  Az alábbi képen a következőképpen elkészülünk a paramétereket.
-   - **FolderPath_Source** = **/source/**
-   - **FolderPath_Destination** = **/destination/**
+   - **FolderPath_Source** =  **/source/**
+   - **FolderPath_Destination** =  **/destination/**
    - **LastModified_From** =  **2019-02-01T00:00:00Z**
    - **LastModified_To** = **2019-03-01T00:00:00Z**
     
-     A példában a fájlokat, amely utoljára módosítva lett belül közötti időt jelzi a *2019-02-01T00:00:00Z* és *2019-03-01T00:00:00Z* egy mappába másolja */source/*  mappába */destination/*.  Ezek a saját paramétereire lecserélheti.
+     A példában a fájlokat, amely utoljára módosítva lett belül közötti időt jelzi a *2019-02-01T00:00:00Z* és *2019-03-01T00:00:00Z* egy mappába másolja */source/*  mappába */destination/* .  Ezek a saját paramétereire lecserélheti.
     
      ![A folyamat futtatása](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
 
@@ -86,10 +86,10 @@ A sablon négy paraméter határozza meg:
     ![Eseményindító létrehozása](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 11. Az érték írása a **eseményindító futtatási paraméterei** , a következőket, majd válassza ki **Befejezés**.
-    - **FolderPath_Source** = **/source/**.  Lecserélheti a forrásadattár mappájában.
-    - **FolderPath_Destination** = **/destination/**.  Lecserélheti a célként megadott adattárba mappájában.
-    - **LastModified_From** =  **@trigger().outputs.windowStartTime**.  Egy Rendszerváltozó, az eseményindító, amely meghatározza, hogy az idő, amikor a folyamat aktiválódott utoljára.
-    - **LastModified_To** = **@trigger().outputs.windowEndTime**.  Egy Rendszerváltozó, az eseményindító, amely meghatározza, hogy az idő, amikor a folyamat akkor aktiválódik, ezúttal a.
+    - **FolderPath_Source** =  **/source/** .  Lecserélheti a forrásadattár mappájában.
+    - **FolderPath_Destination** =  **/destination/** .  Lecserélheti a célként megadott adattárba mappájában.
+    - **LastModified_From** =   **@trigger().outputs.windowStartTime**.  Egy Rendszerváltozó, az eseményindító, amely meghatározza, hogy az idő, amikor a folyamat aktiválódott utoljára.
+    - **LastModified_To** =  **@trigger().outputs.windowEndTime**.  Egy Rendszerváltozó, az eseményindító, amely meghatározza, hogy az idő, amikor a folyamat akkor aktiválódik, ezúttal a.
     
     ![Bemeneti paraméterek](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

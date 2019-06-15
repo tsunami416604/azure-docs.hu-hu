@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 5b23a5e93dcbb9c13243240bda760a16d108d731
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938459"
 ---
 <a name="what-is-test-drive"></a>Mi a Tesztverzió?
@@ -47,8 +47,8 @@ A potenciális ügyfelek felderíti az alkalmazás a Marketplace-en, bejelentkez
 
 Függetlenül attól, hogy bonyolult az alkalmazás a Microsoft Test Drive segít a termék keltse életre az ügyfél számára. Ma a Tesztverzió alapján a termék, a forgatókönyv és a piactér három különböző típusú biztosítunk.
 
-- **[Az Azure Resource Manager](./azure-resource-manager-test-drive.md)**: Egy Azure Resource Manager Test Drive egy központi telepítési sablont, amely tartalmazza az összes Azure-erőforrást, amely tartalmazza a megoldás a közzétevő létrehozása folyamatban. Ebben a forgatókönyvben igazodó termékek, amelyekről csak Azure-erőforrások használatához.
-- **[Logikai alkalmazás](./logic-app-test-drive.md)**: Egy logikai alkalmazás Tesztverziós, amelynek szinkronban kell foglalnia az összes összetett megoldások létrehozására szolgáló architektúrák központi telepítési sablont. Az összes Dynamics-alkalmazások vagy egyéni termékek Test Drive az ilyen típusú kell használnia.
+- **[Az Azure Resource Manager](./azure-resource-manager-test-drive.md)** : Egy Azure Resource Manager Test Drive egy központi telepítési sablont, amely tartalmazza az összes Azure-erőforrást, amely tartalmazza a megoldás a közzétevő létrehozása folyamatban. Ebben a forgatókönyvben igazodó termékek, amelyekről csak Azure-erőforrások használatához.
+- **[Logikai alkalmazás](./logic-app-test-drive.md)** : Egy logikai alkalmazás Tesztverziós, amelynek szinkronban kell foglalnia az összes összetett megoldások létrehozására szolgáló architektúrák központi telepítési sablont. Az összes Dynamics-alkalmazások vagy egyéni termékek Test Drive az ilyen típusú kell használnia.
 - **Power BI**: A Power bi-ban próbálja ki az egyéni kialakítású irányítópulton egyszerűen egy beágyazott kapcsolat. Minden olyan terméket, amely egyszerűbb egy interaktív Power BI vizuális kell használnia a Test Drive az ilyen típusú megoldást szeretne.
     Fel kell töltenie az itt csak a Power BI embedded URL-CÍMÉT.
 

@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60335427"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Redshift Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-amazon-redshift-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-amazon-redshift.md)
 
@@ -60,7 +60,7 @@ A következő szakaszok ismertetik az Amazon Redshift a Data Factory-entitások 
 
 Az alábbi táblázat ismerteti a JSON-elemek, amelyek egy Amazon Redshift-beli társított szolgáltatásra.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **type** |Ezt a tulajdonságot állítsa **AmazonRedshift**. |Igen |
 | **server** |The IP address or host name of the Amazon Redshift server. |Igen |
@@ -75,7 +75,7 @@ A szakaszok és definiálása az adatkészletek rendelkezésre álló tulajdons�
 
 A **typeProperties** szakasz eltérő az egyes adatkészlet, és a tárolóban lévő adatok helyét ismerteti. **A typeProperties** szakasz egy adatkészlet típusú **RelationalTable**, amely tartalmazza az Amazon Redshift-adatkészletek, a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **Táblanév** |Az Amazon Redshift-adatbázisban, amelyre a társított szolgáltatás hivatkozik a tábla neve. |Nem (Ha a **lekérdezés** egy másolási tevékenységgel típusú tulajdonsága **RelationalSource** van megadva) |
 
@@ -85,18 +85,18 @@ Szakaszok és a tevékenységek meghatározása rendelkezésre álló tulajdons�
 
 A másolási tevékenység, ha a forrás típusa **AmazonRedshiftSource**, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **Lekérdezés** | Az egyéni lekérdezés használata az adatok olvasásához. |Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
+| **query** | Az egyéni lekérdezés használata az adatok olvasásához. |Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
 | **redshiftUnloadSettings** | A tulajdonságcsoport tartalmazza a Redshift használatakor **UNLOAD** parancsot. | Nem |
 | **s3LinkedServiceName** | Az Amazon S3-ideiglenes tárolóként használni. A társított szolgáltatás típusa egy Azure Data Factory neve van megadva **AwsAccessKey**. | Használata esetén szükséges a **redshiftunloadsettings beállításaiban** tulajdonság |
 | **bucketName** | Azt jelzi, hogy az Amazon S3 gyűjtőt tárolja a köztes adatokat. Ha ez a tulajdonság nincs megadva, a másolási tevékenység automatikusan létrehozza a gyűjtőbe. | Használata esetén szükséges a **redshiftunloadsettings beállításaiban** tulajdonság |
 
 Másik lehetőségként használhatja a **RelationalSource** típus, amely tartalmazza az Amazon Redshift, a következő tulajdonság a **typeProperties** szakaszban. Megjegyzés: az adatforrás típusa nem támogatja a Redshift **UNLOAD** parancsot.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **Lekérdezés** |Az egyéni lekérdezés használata az adatok olvasásához. | Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
+| **query** |Az egyéni lekérdezés használata az adatok olvasásához. | Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Használja az adatok másolása az Amazon Redshift eltávolítása
 
@@ -334,14 +334,14 @@ A következő hozzárendeléseket használják, amikor a másolási tevékenysé
 | INTEGER |Int32 |
 | BIGINT |Int64 |
 | DECIMAL |Decimal |
-| VALÓDI |Single |
-| A KÉTSZERES PONTOSSÁG |Double |
-| LOGIKAI ÉRTÉK |String |
+| REAL |Single |
+| DOUBLE PRECISION |Double |
+| BOOLEAN |String |
 | CHAR |String |
 | VARCHAR |String |
 | DATE |DateTime |
-| IDŐBÉLYEG |DateTime |
-| SZÖVEG |String |
+| TIMESTAMP |DateTime |
+| TEXT |String |
 
 ## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
 A forrásadatkészlet oszlopok leképezése a fogadó-adatkészlet az oszlopok kapcsolatban lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).

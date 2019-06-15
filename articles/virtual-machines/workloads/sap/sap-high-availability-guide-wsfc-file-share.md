@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 28b3851a52ec5fe69eaa531e2e08f66fb73cb1e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60936309"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -235,7 +235,7 @@ Az Azure Load Balancer szolgáltatás biztosít egy *belső load balancer* az Az
 
 Helyezze üzembe a belső terheléselosztó, amely tartalmazza a fürt csomópontjai az erőforráscsoportban. Ezt követően konfigurálja a belső terheléselosztó portok továbbítási szabályok a mintavétel használatával minden szükséges port. Az ügyfelek csatlakozhatnak-n keresztül a virtuális gazdagép nevét. A DNS-kiszolgáló szünteti meg a fürt IP-címét. A belső terheléselosztó porttovábbítást a fürt az aktív csomópontra végzi.
 
-![1. ábra: A Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban egy megosztott lemez nélkül][sap-ha-guide-figure-1001]
+![1\. ábra: A Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban egy megosztott lemez nélkül][sap-ha-guide-figure-1001]
 
 _**1. ábra:** A Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban anélkül, hogy egy megosztott lemez_
 
@@ -256,7 +256,7 @@ Ez az architektúra olyan egyedi a következő módon:
 * Az SAP ASCS/SCS példányhoz egy helyi lemez mindkét fürtcsomóponton telepítve van.
 * A \<ASCS/SCS virtuális állomásnevet\> hálózati neve eltér &lt;SAP globális gazdagép&gt;.
 
-![2. ábra: Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra az SMB-fájlmegosztás][sap-ha-guide-figure-8004]
+![2\. ábra: Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra az SMB-fájlmegosztás][sap-ha-guide-figure-8004]
 
 _**2. ábra:** Új SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra az SMB-fájlmegosztásra_
 
@@ -271,7 +271,7 @@ SMB-fájlmegosztásra vonatkozó Előfeltételek:
 Az SAP \<SID\> fürtszerepkör nem tartalmazza a fürt megosztott lemezeket vagy általános fájlmegosztás fürt erőforrást.
 
 
-![3. ábra: SAP \<SID\> szerepkör erőforrásokat egy fájlmegosztást a fürt][sap-ha-guide-figure-8005]
+![3\. ábra: SAP \<SID\> szerepkör erőforrásokat egy fájlmegosztást a fürt][sap-ha-guide-figure-8005]
 
 _**3. ábra:** SAP &lt;SID&gt; szerepkör erőforrásokat egy fájlmegosztást a fürt_
 
@@ -280,7 +280,7 @@ _**3. ábra:** SAP &lt;SID&gt; szerepkör erőforrásokat egy fájlmegosztást a
 
 Használhatja egy kibővített fájlmegosztást üzemeltethet, és az SAP globális gazdagép fájlok védelmét. Egy kibővített fájlmegosztást SAPMNT fájl megosztási szolgáltatás magas rendelkezésre állást is kínál.
 
-![4. ábra: SAP globális gazdagép fájlok védelmére szolgáló kibővített fájlkiszolgáló-megosztás][sap-ha-guide-figure-8006]
+![4\. ábra: SAP globális gazdagép fájlok védelmére szolgáló kibővített fájlkiszolgáló-megosztás][sap-ha-guide-figure-8006]
 
 _**4. ábra:** Egy kibővített fájlmegosztást SAP globális gazdagép fájlok védelmére szolgáló_
 
@@ -333,7 +333,7 @@ Telepíthet egy fürtben, a saját SAP az SAP ASCS/SCS példányok \<SID\> fürt
 >Ebben a forgatókönyvben az SAP ASCS/SCS példányhoz van konfigurálva, a SAP globális gazdagép eléréséhez UNC elérési úttal \\ \\ &lt;SAP globális gazdagép&gt;\sapmnt\\&lt;SID&gt;\SYS\.
 >
 
-![5. ábra: Az SAP ASCS/SCS példányhoz, és a egy kibővített fájlmegosztást két fürtben üzembe helyezett][sap-ha-guide-figure-8007]
+![5\. ábra: Az SAP ASCS/SCS példányhoz, és a egy kibővített fájlmegosztást két fürtben üzembe helyezett][sap-ha-guide-figure-8007]
 
 _**5. ábra:** Az SAP ASCS/SCS példányhoz, és a egy kibővített fájlmegosztást két fürtben üzembe helyezett_
 

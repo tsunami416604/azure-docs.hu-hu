@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62112650"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>IOS-mobilalkalmazásokban offline szinkronizálás engedélyezése
@@ -147,7 +147,7 @@ Nyissa meg **QSDataModel.xcdatamodeld**. A négy tábla meghatározott--három, 
   * TodoItem: A teendők tárolja. A rendszer oszlopok **createdAt**, **updatedAt**, és **verzió** nem kötelező tulajdonságai vannak.
 
 > [!NOTE]
-> A Mobile Apps SDK fenntartja az oszlopnevek kezdődő "**``**". A rendszer oszlopok csakis ne használja ezt az előtagot. Ellenkező esetben az oszlopnevek módosítják a távoli háttérrendszer használata esetén.
+> A Mobile Apps SDK fenntartja az oszlopnevek kezdődő " **``** ". A rendszer oszlopok csakis ne használja ezt az előtagot. Ellenkező esetben az oszlopnevek módosítják a távoli háttérrendszer használata esetén.
 >
 >
 
@@ -164,7 +164,7 @@ A kapcsolat nélküli szinkronizálás – a szolgáltatás használatakor a ren
 | id | Egész 64 |
 | itemId | String |
 | properties | A bináris adatok |
-| tábla | String |
+| table | String |
 | tableKind | Egész 16 |
 
 
@@ -188,7 +188,7 @@ A kapcsolat nélküli szinkronizálás – a szolgáltatás használatakor a ren
 | id |String |
 | key |String |
 | keyType |Egész 64 |
-| tábla |String |
+| table |String |
 | value |String |
 
 ### <a name="data-table"></a>Adattábla
@@ -261,7 +261,7 @@ Egy folyamat folyamatjelző jelenik meg.
 
 7. Nézet a **TodoItem** újra adatokat. Az új és módosított teendők meg kell jelennie.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 A kapcsolat nélküli szinkronizálás – a szolgáltatás támogatása érdekében használjuk a `MSSyncTable` felületet, és inicializálva `MSClient.syncContext` a helyi tárolóból. Ebben az esetben a helyi tároló volt a legfontosabb adatainak-alapú adatbázis.
 
 A legfontosabb adatainak helyi tároló használata esetén meg kell adnia a több táblát a [javítsa ki a rendszer tulajdonságai](#review-core-data).

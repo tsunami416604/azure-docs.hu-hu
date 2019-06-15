@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60612541"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Virtuális hálózat integrációja Azure Data Lake Storage Gen1
@@ -83,7 +83,7 @@ Néhány elérhető lehetőség:
 
 ## <a name="configuration"></a>Konfiguráció
 
-### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>1. lépés: Az Azure AD szolgáltatás a végpontot használja a virtuális hálózat konfigurálása
+### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>1\. lépés: Az Azure AD szolgáltatás a végpontot használja a virtuális hálózat konfigurálása
 
 1.  Nyissa meg az Azure Portalt, és jelentkezzen be fiókjába.
  
@@ -107,7 +107,7 @@ Néhány elérhető lehetőség:
  
     ![A szolgáltatásvégpont sikeres hozzáadása](media/data-lake-store-network-security/config-vnet-4.png)
 
-### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>2. lépés: Az engedélyezett virtuális hálózat vagy alhálózat a Data Lake Storage Gen1 fiók beállítása
+### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>2\. lépés: Az engedélyezett virtuális hálózat vagy alhálózat a Data Lake Storage Gen1 fiók beállítása
 
 1.  A virtuális hálózat konfigurálását követően [hozzon létre egy új 1. generációs Azure Data Lake Storage-fiókot](data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account) az előfizetésében. Vagy használhat egy meglévő 1. generációs Data Lake Storage-fiókot is. Az 1. generációs Data Lake Storage-fióknak a virtuális hálózattal megegyező régióban kell lennie.
  

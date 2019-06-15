@@ -16,10 +16,10 @@ ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a931b303e40e41bc23e8b586e1d37e600625b1a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61415092"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Üzembe helyezni a StorSimple Virtual Array – Set mentése, a fájlkiszolgáló Azure-portálon
@@ -40,7 +40,7 @@ Mielőtt konfigurálja, és állítsa be a StorSimple Virtual Array, ellenőrizz
 ## <a name="step-by-step-setup"></a>Részletes beállítása
 Az alábbi részletes útmutatás segítségével beállíthatja és konfigurálhatja a StorSimple Virtual Array.
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>1. lépés: Végezze el a helyi webes felhasználói felület beállítását és az eszköz regisztrálása
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>1\. lépés: Végezze el a helyi webes felhasználói felület beállítását és az eszköz regisztrálása
 #### <a name="to-complete-the-setup-and-register-the-device"></a>A telepítés befejezéséhez, és regisztrálja az eszközt
 1. Nyisson meg egy böngészőablakot, és csatlakozzon a helyi webes felületén. Típus:
    
@@ -117,7 +117,7 @@ Az alábbi részletes útmutatás segítségével beállíthatja és konfigurál
     
     ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
-## <a name="step-2-configure-the-device-as-file-server"></a>2. lépés: Az eszköz fájlkiszolgáló konfigurálása
+## <a name="step-2-configure-the-device-as-file-server"></a>2\. lépés: Az eszköz fájlkiszolgáló konfigurálása
 Hajtsa végre a következő lépéseket a [az Azure portal](https://portal.azure.com/) a szükséges eszköz beállításának befejezéséhez.
 
 #### <a name="to-configure-the-device-as-file-server"></a>Az eszköz fájlkiszolgáló konfigurálása
@@ -152,7 +152,7 @@ Hajtsa végre a következő lépéseket a [az Azure portal](https://portal.azure
    
         ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
-5. Ha a tárfiók-hitelesítő adat sikeresen létrejött, a **konfigurálása** panel frissülni fog a megadott tárfiók hitelesítő adatainak megjelenítéséhez. Kattintson a **Configure** (Konfigurálás) elemre.
+5. Ha a tárfiók-hitelesítő adat sikeresen létrejött, a **konfigurálása** panel frissülni fog a megadott tárfiók hitelesítő adatainak megjelenítéséhez. Kattintson a **Konfigurálás** elemre.
    
    ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
@@ -166,7 +166,7 @@ Hajtsa végre a következő lépéseket a [az Azure portal](https://portal.azure
    
    Adjon hozzá egy megosztást lépne.
 
-## <a name="step-3-add-a-share"></a>3. lépés: Megosztás hozzáadása
+## <a name="step-3-add-a-share"></a>3\. lépés: Megosztás hozzáadása
 Megosztás létrehozásához hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure.com/).
 
 #### <a name="to-create-a-share"></a>Megosztás létrehozása
@@ -196,7 +196,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az [Azure P
    
       ![Megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
-## <a name="step-4-connect-to-the-share"></a>4. lépés: Csatlakozás a megosztáshoz
+## <a name="step-4-connect-to-the-share"></a>4\. lépés: Csatlakozás a megosztáshoz
 Most kell csatlakozni az előző lépésben létrehozott egy vagy több megosztást. Hajtsa végre ezeket a lépéseket a Windows Server-gazdagép csatlakozik a StorSimple Virtual Array.
 
 #### <a name="to-connect-to-the-share"></a>A megosztáshoz való csatlakozáshoz

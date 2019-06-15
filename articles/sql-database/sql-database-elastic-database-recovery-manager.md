@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 1bab1ed9e2a24b0a84f4327d47a910934319b397
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475889"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Horizontális skálázási térképek javítása a RecoveryManager osztállyal
@@ -33,7 +33,7 @@ Kifejezés-definíciókat, lásd: [rugalmas adatbáziseszközökkel](sql-databas
 
 ## <a name="why-use-the-recovery-manager"></a>Miért érdemes használni a helyreállítás-kezelő
 
-Szilánkokra osztott adatbázis környezetben nincs adatbázisonkénti egyetlen bérlőt, és számos adatbázis kiszolgálónként. Emellett lehetnek kiszolgálók számát a környezetben. Minden adatbázis le van képezve a horizontális skálázási térképet, így hívásai átirányíthatók a megfelelő kiszolgálóhoz és adatbázishoz. Adatbázisok nyomon követi a következők szerint egy **horizontális skálázási kulcs**, és minden egyes szegmens hozzá van rendelve egy **értékek tartományán**. Például olyan szegmenskulcsot tüntetheti ügyfél nevét a "D", "F" Található minden szegmensre (más néven adatbázisok) és a hozzárendelés tartományok leképezése a **globális szegmenstérkép (GSM)**. Minden adatbázis is tartalmaz a tartományokat, a szegmens, amely az úgynevezett által tartalmazott térképet a **helyi szegmenstérkép (LSM)**. Amikor egy alkalmazás szegmensek csatlakozik, a hozzárendelés gyorsítótárazza gyors lekérésére az alkalmazással. A LSM gyorsítótárazott adatok ellenőrzésére szolgál.
+Szilánkokra osztott adatbázis környezetben nincs adatbázisonkénti egyetlen bérlőt, és számos adatbázis kiszolgálónként. Emellett lehetnek kiszolgálók számát a környezetben. Minden adatbázis le van képezve a horizontális skálázási térképet, így hívásai átirányíthatók a megfelelő kiszolgálóhoz és adatbázishoz. Adatbázisok nyomon követi a következők szerint egy **horizontális skálázási kulcs**, és minden egyes szegmens hozzá van rendelve egy **értékek tartományán**. Például olyan szegmenskulcsot tüntetheti ügyfél nevét a "D", "F" Található minden szegmensre (más néven adatbázisok) és a hozzárendelés tartományok leképezése a **globális szegmenstérkép (GSM)** . Minden adatbázis is tartalmaz a tartományokat, a szegmens, amely az úgynevezett által tartalmazott térképet a **helyi szegmenstérkép (LSM)** . Amikor egy alkalmazás szegmensek csatlakozik, a hozzárendelés gyorsítótárazza gyors lekérésére az alkalmazással. A LSM gyorsítótárazott adatok ellenőrzésére szolgál.
 
 A GSM és LSM válhat nincs szinkronban a következő okok miatt:
 

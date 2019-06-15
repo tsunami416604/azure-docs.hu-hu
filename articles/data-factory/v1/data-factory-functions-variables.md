@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60486515"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Az Azure Data Factory - függvények és rendszerváltozók
@@ -30,10 +30,10 @@ Ez a cikk a functions és az Azure Data Factory által támogatott változók ka
 
 | Változó neve | Leírás | Forrásobjektum hatóköre | JSON-hatókör és alkalmazási helyzetek |
 | --- | --- | --- | --- |
-| WindowStart |Időtartam a jelenlegi művelet futtatása ablak kezdete |tevékenység |<ol><li>Adja meg az adatkijelölési lekérdezésekben. Tekintse meg a hivatkozott összekötő cikkeket a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) cikk.</li> |
-| WindowEnd |A jelenlegi művelet futtatása ablak időintervallum végén |tevékenység |ugyanaz, mint WindowStart. |
-| SliceStart |Adatok szelet előállítása időtartam kezdete |tevékenység<br/>Adatkészlet |<ol><li>Adja meg a dinamikus mappa elérési útját, és használata során fájlneveket [Azure Blob](data-factory-azure-blob-connector.md) és [fájlrendszer adatkészletek](data-factory-onprem-file-system-connector.md).</li><li>Adja meg a bemeneti függőségek a data factory függvények a tevékenység bemeneti gyűjteményében.</li></ol> |
-| SliceEnd |Az aktuális adatszelet időintervallum végén. |tevékenység<br/>Adatkészlet |ugyanaz, mint a SliceStart. |
+| WindowStart |Időtartam a jelenlegi művelet futtatása ablak kezdete |Tevékenység |<ol><li>Adja meg az adatkijelölési lekérdezésekben. Tekintse meg a hivatkozott összekötő cikkeket a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) cikk.</li> |
+| WindowEnd |A jelenlegi művelet futtatása ablak időintervallum végén |Tevékenység |ugyanaz, mint WindowStart. |
+| SliceStart |Adatok szelet előállítása időtartam kezdete |Tevékenység<br/>Adatkészlet |<ol><li>Adja meg a dinamikus mappa elérési útját, és használata során fájlneveket [Azure Blob](data-factory-azure-blob-connector.md) és [fájlrendszer adatkészletek](data-factory-onprem-file-system-connector.md).</li><li>Adja meg a bemeneti függőségek a data factory függvények a tevékenység bemeneti gyűjteményében.</li></ol> |
+| SliceEnd |Az aktuális adatszelet időintervallum végén. |Tevékenység<br/>Adatkészlet |ugyanaz, mint a SliceStart. |
 
 > [!NOTE]
 > Jelenleg a data factory megköveteli, hogy az ütemezés a tevékenységben megadott pontosan megegyezik-e a rendelkezésre állás, a kimeneti adatkészlet a megadott ütemezés. Ezért WindowStart, a WindowEnd, és a SliceStart és a SliceEnd mindig képezze le az azonos időtartam és a egy egyetlen kimeneti szelet.
@@ -82,7 +82,7 @@ Az alábbi táblázatok sorolják fel az Azure Data Factoryban összes funkció 
 | --- | --- | --- | --- |
 | Time |AddHours(X,Y) |X: DateTime <br/><br/>Y: int |Hozzáadja az adott idő alatt X Y óra. <br/><br/>Például: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Time |AddMinutes(X,Y) |X: DateTime <br/><br/>Y: int |X Y perc hozzá.<br/><br/>Például: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour(X) |X: DateTime |Lekérdezi a kezdési időpontot az X óra összetevőjét által jelölt óra. <br/><br/>Például: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Time |StartOfHour(X) |X: Datetime |Lekérdezi a kezdési időpontot az X óra összetevőjét által jelölt óra. <br/><br/>Például: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Dátum |AddDays(X,Y) |X: DateTime<br/><br/>Y: int |X, Y napot ad. <br/><br/>Példa: 9/15/2013 du. 12:00:00 + 2 nap = 9/17/2013 12:00:00 PM.<br/><br/>Akkor is napok kivonása túl negatív számként Y megadásával.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Dátum |AddMonths(X,Y) |X: DateTime<br/><br/>Y: int |X Y hónap hozzáadása.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Hónap túl kivonása Y-t egy negatív szám adja meg.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Dátum |AddQuarters(X,Y) |X: DateTime <br/><br/>Y: int |Y hozzáadja * X 3 hónap.<br/><br/>Például: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
@@ -142,7 +142,7 @@ A következő példa a Hive-tevékenység bemeneti és kimeneti paraméterek has
 }
 ```
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 
 A következő példában a dátum és idő paraméter a tárolt eljárási tevékenység határozza meg a szöveg használatával. Függvény, és a SliceStart változó formátumban. 
 
@@ -178,7 +178,7 @@ A következő példában a dátum és idő paraméter a tárolt eljárási tevé
 }
 ```
 
-### <a name="example-3"></a>3. példa
+### <a name="example-3"></a>3\. példa
 Helyett a SliceStart által jelölt nap az előző nap adatainak olvasására, használja a napokHozzaadasa függvény a következő példában látható módon: 
 
 ```json

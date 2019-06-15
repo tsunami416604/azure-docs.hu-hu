@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
 ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60731600"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>A Linux rendszerű virtuális gép DPDK beállítása
@@ -33,14 +33,14 @@ Az Azure virtuális gépek, amelyek támogatják a több operációs rendszer di
 
 ## <a name="benefit"></a>Előny
 
-**Magasabb csomagok másodpercenként (PPS)**: A ciklus száma megkerüli a kernel és a felhasználói térben csomagok véve irányítását csökkenti a környezet kapcsolók kiküszöbölése révén. Ez növeli a csomagok Azure-beli Linuxos virtuális gépek a másodpercenként feldolgozott is.
+**Magasabb csomagok másodpercenként (PPS)** : A ciklus száma megkerüli a kernel és a felhasználói térben csomagok véve irányítását csökkenti a környezet kapcsolók kiküszöbölése révén. Ez növeli a csomagok Azure-beli Linuxos virtuális gépek a másodpercenként feldolgozott is.
 
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
 Az Azure katalógusából a következő disztribúciók támogatottak:
 
-| Linux operációs rendszer     | Kernel verziója        |
+| Linux OS     | Kernel verziója        |
 |--------------|----------------       |
 | Ubuntu 16.04 | 4.15.0-1015-azure     |
 | Ubuntu 18.04 | 4.15.0-1015-azure     |
@@ -107,7 +107,7 @@ zypper \
 
 ## <a name="set-up-the-virtual-machine-environment-once"></a>A virtuális gép környezetet (egyszer)
 
-1. [Töltse le a legújabb DPDK](https://core.dpdk.org/download). 18.02 vagy újabb verziójú Azure szükség.
+1. [Töltse le a legújabb DPDK](https://core.dpdk.org/download). 18\.02 vagy újabb verziójú Azure szükség.
 2. Az alapértelmezett konfigurációt hozhat létre `make config T=x86_64-native-linuxapp-gcc`.
 3. A generált konfigurációt Mellanox PMDs engedélyezése `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`.
 4. A fordítási `make`.

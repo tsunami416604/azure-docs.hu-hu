@@ -10,10 +10,10 @@ ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 847c928681451b4fef93198e2f2272d5bb04b1b8
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919802"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Az Azure Automation konfiguráló DSC-konfigurációk fordítása
@@ -41,7 +41,7 @@ Miután eldöntötte egy fordítási metódust, az alábbi eljárásokkal fordí
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>Az Azure Portalon a DSC-konfiguráció fordítása
 
-1. Kattintson az Automation-fiók **State configuration (DSC)**.
+1. Kattintson az Automation-fiók **State configuration (DSC)** .
 1. Kattintson a **konfigurációk** lapfülre, majd kattintson a konfiguráció fordítása nevére.
 1. Kattintson a **összeállítása**.
 1. Ha a konfiguráció nem paraméterekkel rendelkezik, győződjön meg arról, hogy azt szeretné, hogy a kéri. Ha a konfigurációs paraméterek, a **konfiguráció fordítása** panelt, így is adja meg a paraméterértékeket. A következő [ **alapvető paramétert** ](#basic-parameters) további tájékoztatást talál a Paraméterek szakaszban.

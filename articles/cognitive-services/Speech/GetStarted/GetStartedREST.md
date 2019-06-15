@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515137"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Gyors útmutató: A Bing beszédfelismerés REST API használata
@@ -48,7 +48,7 @@ Ebben a példában a rögzített hangfájl megmutatják, hogyan használható a 
 
 A következő lépéssel, beszédfelismerés, hogy egy POST kérést küld a megfelelő kérelem fejléce és a törzs Speech HTTP-végpontokat.
 
-### <a name="service-uri"></a>Szolgáltatás URI-ja
+### <a name="service-uri"></a>Szolgáltatás-URI
 
 A speech recognition service URI van definiálva alapján [felismerés módok](../concepts.md#recognition-modes) és [nyelveket](../concepts.md#recognition-languages):
 
@@ -64,7 +64,7 @@ https://speech.platform.bing.com/speech/recognition/<RECOGNITION_MODE>/cognitive
 
 Néhány példa a szolgáltatás URI-k az alábbi táblázatban láthatók.
 
-| Felismerési mód  | Nyelv | Kimeneti formátum | Szolgáltatás URI-ja |
+| Felismerési mód  | Nyelv | Kimeneti formátum | Szolgáltatás-URI |
 |---|---|---|---|
 | `interactive` | pt-BR | Alapértelmezett | https:\//speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | `conversation` | en-US | Részletes | https:\//speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US & formátum = részletes |

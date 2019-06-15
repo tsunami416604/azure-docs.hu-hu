@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
 ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60400782"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Elosztott nyomkövetést (előzetes verzió) az Azure IoT eszköz – felhő üzenetek nyomon követése
@@ -191,7 +191,7 @@ Módosítja a kulcsát, az üzenetek a felhőből nyomon követését, frissíte
 
 1. Kattintson az eszközre.
 
-1. Keressen **engedélyezése elosztott nyomkövetést (előzetes verzió)**, majd **engedélyezése**.
+1. Keressen **engedélyezése elosztott nyomkövetést (előzetes verzió)** , majd **engedélyezése**.
 
     ![Az Azure Portalon elosztott nyomkövetést engedélyezése](./media/iot-hub-distributed-tracing/azure-portal.png)
 
@@ -213,7 +213,7 @@ Módosítja a kulcsát, az üzenetek a felhőből nyomon követését, frissíte
 
 1. Nyissa meg a VS Code és [az IoT Hub kapcsolati karakterlánc beállítása](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites).
 
-1. Bontsa ki az eszközt, és keressen **elosztott nyomkövetési beállítás (előzetes verzió)**. Részre, kattintson a **frissítés elosztott nyomkövetési beállítás (előzetes verzió)** alárendelt csomópont.
+1. Bontsa ki az eszközt, és keressen **elosztott nyomkövetési beállítás (előzetes verzió)** . Részre, kattintson a **frissítés elosztott nyomkövetési beállítás (előzetes verzió)** alárendelt csomópont.
 
     ![Az Azure IoT Hub-eszközkészlet elosztott nyomkövetést engedélyezése](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 

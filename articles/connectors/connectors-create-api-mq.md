@@ -11,10 +11,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 9e6ae5cb0afd75a1e87fe4d4d0cf307abab5a02a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60688827"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>A logic apps az MQ-összekötővel csatlakozhat az IBM MQ server kiszolgálóhoz
@@ -39,7 +39,7 @@ Az MQ-összekötő az alábbi műveleteket tartalmazza. Nincsenek nincsenek esem
 * A helyszíni adatátjáró – Azure-erőforrás létrehozása [a data gateway kapcsolat beállításához](../logic-apps/logic-apps-gateway-connection.md).
 
 * Hivatalosan támogatott IBM WebSphere MQ-verziók:
-    * 7.5 MQ
+    * 7\.5 MQ
     * MQ 8.0
 
 ## <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
@@ -48,7 +48,7 @@ Az MQ-összekötő az alábbi műveleteket tartalmazza. Nincsenek nincsenek esem
 2. Adja meg a **neve**, MQTestApp, például **előfizetés**, **erőforráscsoport**, és **hely** (használhatja azt a helyet, a helyszíni Data Gateway kapcsolat van konfigurálva). Válassza ki **rögzítés az irányítópulton**, és válassza ki **létrehozás**.  
 ![Logikai alkalmazás létrehozása](media/connectors-create-api-mq/Create_Logic_App.png)
 
-## <a name="add-a-trigger"></a>Adjon hozzá egy triggert
+## <a name="add-a-trigger"></a>Eseményindító hozzáadása
 
 > [!NOTE]
 > Az MQ-összekötő nem tartozhat eseményindító. Tehát egy másik eseményindító használatával indítsa el a logikai alkalmazást, mint például a **ismétlődési** eseményindító.

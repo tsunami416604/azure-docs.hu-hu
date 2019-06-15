@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 68378c87e18df874059579445352b8fd1b2b6c13
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105580"
 ---
 # <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>A felhőben az Azure Service Bus és az Azure Logic Apps, az Exchange-üzenetek
@@ -90,7 +90,7 @@ Győződjön meg róla, hogy a logikai alkalmazás a Service Bus-névtér való 
    1. Válassza ki az utolsó lépésnél, ahová a művelet hozzáadása, **új lépés**. 
 
       Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. 
-      Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+      Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
 
    1. A keresőmezőbe írja be szűrőként "Az Azure Service Bus". 
    Műveletek listája alatt válassza ki a kívánt művelet. 

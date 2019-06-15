@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: yegu
 ms.openlocfilehash: 66361871d365068a90a2eeab70d92adb6b246a83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60830007"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Hogyan háríthatók el az Azure Cache redis
@@ -202,12 +202,12 @@ Ez a hibaüzenet, amely segíthet a pont, a probléma okát és lehetséges mego
 | --- | --- |
 | h |Az utolsó időszeletben: 0 parancsokat kiadva. |
 | mgr |A szoftvercsatorna-kezelő tesz a `socket.select`, ami azt jelenti, hogy azt kéri, az operációs rendszer, amely rendelkezik, hogy egy szoftvercsatorna jelzi. Az olvasó olvasása a hálózatról aktívan nem, mert ez nem úgy gondolja, hogy bármilyen formában van |
-| üzenetsor |Nincsenek folyamatban lévő műveletek 73 összesen |
+| queue |Nincsenek folyamatban lévő műveletek 73 összesen |
 | l |a folyamatban lévő műveletek 6 az el nem küldött üzenetsorban, és még nem írt, a kimenő hálózati |
 | QS |67-es, a folyamatban lévő műveletek a kiszolgálóra küldött, de a választ még nem érhető el. A válasz lehet `Not yet sent by the server` vagy `sent by the server but not yet processed by the client.` |
 | qc |a folyamatban lévő műveletek 0 válaszok láthatta, de még nem még lett megjelölve befejezettként, mert arra várnak, hogy az a befejezési hurok |
 | wR |Van egy aktív írási (ami azt jelenti, a 6 el nem küldött kérelmek nem hagyja figyelmen kívül) bájtok/activewriters |
-| ebben: |Nincs aktív olvasó és nulla bájtot a hálózati bájtok/activereaders az olvasni kívánt érhető el |
+| A |Nincs aktív olvasó és nulla bájtot a hálózati bájtok/activereaders az olvasni kívánt érhető el |
 
 ### <a name="steps-to-investigate"></a>Vizsgálja meg a lépéseket
 

@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 1fbcc1d50dbc4488c4123be64e85de612233ccc3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935779"
 ---
 <a name="retrieve-operations"></a>Műveletek lekérése
@@ -34,10 +34,10 @@ Olvassa be az ajánlat vagy lekérni egy adott művelet a megadott műveletazono
 |  **Name (Név)**          |      **Leírás**                                                                                           | **Adattípus** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  publisherId       |  Például a közzétevő azonosítója `Contoso`                                                                   |  String       |
-|  ajánlatazonosító           |  Ajánlat azonosítója                                                                                              |  String       |
+|  offerId           |  Ajánlat azonosítója                                                                                              |  String       |
 |  operationId       |  GUID azonosítója, amely egyedileg azonosítja az ajánlatot a műveletet. Az operationId lehet beolvasni az API-val, és is adja vissza minden olyan hosszú ideig futó művelet esetén a válasz HTTP-fejléchez például a [közzététel ajánlat](./cloud-partner-portal-api-publish-offer.md) API-t.  |   Guid   |
 |  filteredStatus    | Szűrés állapot szerint használt opcionális lekérdezési paraméter (például `running`) az API által visszaadott a gyűjteményen.  |   String |
-|  API-verzió       | API legújabb verziója                                                                                           |    Dátum      |
+|  api-version       | API legújabb verziója                                                                                           |    Dátum      |
 |  |  |  |
 
 

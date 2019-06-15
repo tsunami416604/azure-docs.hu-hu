@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
 ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60794292"
 ---
 # <a name="access-the-vfxt-cluster"></a>Hozzáférés a vFXT fürt
@@ -58,8 +58,8 @@ Az a **konfigurációs** panelen:
 1. Adja meg a forrásport, például a 8443. 
 1. A célhelyen adja meg a vFXT fürt felügyeleti IP-cím és a 443-as porton. 
    Például: ``203.0.113.51:443``
-1. Kattintson a **Hozzáadás** parancsra.
-1. Kattintson az **Open** (Megnyitás) elemre.
+1. Kattintson a **Hozzáadás**lehetőségre.
+1. Kattintson a **nyílt**.
 
 ![Képernyőkép a Putty alkalmazást helyéről a alagút hozzáadásához kattintson](media/avere-vfxt-ptty-numbered.png)
 

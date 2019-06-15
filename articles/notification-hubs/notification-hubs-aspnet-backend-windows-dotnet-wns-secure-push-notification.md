@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: cf23ef5df3bdcaad23841da111fa06cc36b4cd57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61459248"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Biztonságosan leküldéses értesítések az Azure Notification hubs használatával
@@ -90,7 +90,7 @@ Biztonságos leküldéses oktatóanyag bemutatja, hogyan biztonságosan küldhet
 A következő lépés, hogy a leküldéses háttér-összetevőt.
 
 1. A Megoldáskezelőben kattintson a jobb gombbal a legfelső csomópontra, a megoldás (**megoldás SecurePush** ebben az esetben), majd kattintson a **Hozzáadás**, majd kattintson a **új projekt**.
-2. Bontsa ki a **Store Apps**, majd kattintson a **Windows Phone-alkalmazások**, majd kattintson a **Windows futásidejű összetevő (Windows Phone)**. Adja a projektnek **PushBackgroundComponent**, és kattintson a **OK** a projekt létrehozásához.
+2. Bontsa ki a **Store Apps**, majd kattintson a **Windows Phone-alkalmazások**, majd kattintson a **Windows futásidejű összetevő (Windows Phone)** . Adja a projektnek **PushBackgroundComponent**, és kattintson a **OK** a projekt létrehozásához.
 
     ![][12]
 3. A Megoldáskezelőben kattintson a jobb gombbal a **PushBackgroundComponent (Windows Phone 8.1)** projektre, majd kattintson a **Hozzáadás**, majd kattintson a **osztály**. Az új osztály neve `PushBackgroundTask.cs`. Kattintson a **Hozzáadás** az osztály létrehozásához.

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: cherylmc
 ms.openlocfilehash: ddc42023bae3403e7778327a40316462c85222c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60390024"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Az Azure portal használatával útvonalalapú VPN-átjáró létrehozása
@@ -49,7 +49,7 @@ Az átjáróalhálózat tartalmazza a fenntartott IP-címek, amelyek a virtuáli
    ![Az átjáró alhálózatának hozzáadása](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "Az átjáró alhálózatának hozzáadása")
 4. A **neve** a rendszer automatikusan kitölti az alhálózat szükséges "GatewaySubnet" érték. Módosíthatja az automatikusan kitöltött **címtartomány** értékeit, hogy megfeleljenek a következő értékeket:
 
-   **Címtartomány (CIDR-blokk)**: 10.1.255.0/27
+   **Címtartomány (CIDR-blokk)** : 10.1.255.0/27
 
    ![Az átjáró alhálózatának hozzáadása](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "Az átjáró alhálózatának hozzáadása")
 5. Az átjáró-alhálózat létrehozásához kattintson a **OK** az oldal alján.

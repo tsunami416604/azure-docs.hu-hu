@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 20fd8a0bfccea579ddef5a605d65f5643d4849bd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 893b71d3a1cc6ece8272cb1a372302ff384003dd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500015"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693769"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Az Azure Marketplace-en az Azure PowerShell használatával Windows Virtuálisgép-rendszerképek keresése
 
@@ -28,7 +28,7 @@ Ez a cikk ismerteti az Azure piactéren Virtuálisgép-rendszerképek keresése 
 
 Elérhető lemezképek és ajánlatok használatával is megkeresheti a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/) kirakat, a [az Azure portal](https://portal.azure.com), vagy a [Azure CLI-vel](../linux/cli-ps-findimage.md). 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -36,7 +36,7 @@ Elérhető lemezképek és ajánlatok használatával is megkeresheti a [Azure M
 
 Ez a táblázat bemutatja a rendelkezésre álló SKU-k egy részét a jelzett közzétevők és ajánlatokat.
 
-| Közzétevő | Ajánlat | SKU |
+| Kiadó | Ajánlat | SKU |
 |:--- |:--- |:--- |
 | MicrosoftWindowsServer |WindowsServer |A 2019-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
@@ -48,8 +48,8 @@ Ez a táblázat bemutatja a rendelkezésre álló SKU-k egy részét a jelzett k
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
 | MicrosoftDynamicsNAV |DynamicsNAV |2017 |
 | MicrosoftSharePoint |MicrosoftSharePointServer |2019 |
-| MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
-| MicrosoftRServer |RServer-WS2016 |Enterprise |
+| MicrosoftSQLServer |SQL2019-WS2016 |Vállalati |
+| MicrosoftRServer |RServer-WS2016 |Vállalati |
 
 ## <a name="navigate-the-images"></a>Keresse meg a képek
 
@@ -242,7 +242,7 @@ DataDiskImages   : []
 
 ```
 
-### <a name="accept-the-terms"></a>Feltételek elfogadása
+### <a name="accept-the-terms"></a>A feltételek elfogadása
 
 A licencszerződés megtekintéséhez használja a [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) parancsmagot, és adja meg a vásárlás megtervezése paramétereket. A kimenet egy hivatkozást kínál a feltételeket, a Piactéri lemezképhez a, és bemutatja, hogy Ön korábban elfogadta a használati. Győződjön meg arról, csak kisbetűk használata a paraméterértékek megadásához.
 

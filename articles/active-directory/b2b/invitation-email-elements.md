@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65768371"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívót tartalmazó e - Azure Active Directory elemei
@@ -37,7 +37,7 @@ A feladó címe LinkedIn-hez hasonló mintát használjuk.  Legyen egyértelmű 
 ### <a name="reply-to"></a>Válasz címzettje
 A válasz az e-mailben, ha elérhető, a meghívót küldő személy e-mail van beállítva, hogy e-mail-válasz egy e-mailt küld vissza a meghívót küldő személy.
 
-### <a name="branding"></a>Védjegyezés
+### <a name="branding"></a>Védjegyzési
 A bérlő használja a meghívói e-mailekről a vállalati arculat megjelenítése, amikor lehetséges, hogy beállította a bérlő számára. Ha azt szeretné, ez a funkció kihasználásához [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) konfigurálásának részleteiért vannak. A szalagcímembléma jelenik meg az e-mailben. Hajtsa végre a lemezkép mérete és minőségi utasítások [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) a legjobb eredmények elérése érdekében. Emellett a vállalat nevét is megjelenik-e a művelet meghívásához.
 
 ### <a name="call-to-action"></a>Művelet hívása
@@ -53,7 +53,7 @@ Ha még állított be a profilképét, a meghívót küldő személy monogramja 
 
   ![Képernyőfelvétel: a meghívó a meghívót küldő személy a megjelenített monogramja](media/invitation-email-elements/inviters-initials.png)
 
-### <a name="body"></a>Szövegtörzs
+### <a name="body"></a>Törzs
 A törzse tartalmazza az üzenetet, hogy a meghívót küldő személy composes mikor [vendégfelhasználók a könyvtárban, csoport vagy alkalmazás](add-users-administrator.md) vagy [a meghívó API használatával](customize-invitation-api.md). Egy szövegterület, így nem dolgozza fel biztonsági okokból HTML-címkéket.
 
   ![Képernyőfelvétel: a meghívást tartalmazó e-mail törzse](media/invitation-email-elements/invitation-email-body.png)

@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1229b7f9e2a430a663a3e78bb457c03cf4a4a590
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60714426"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Telepítse az SAP NetWeaver magas rendelkezésre ÁLLÁS egy Windows feladatátvevő fürt és megosztott lemez egy SAP ASCS/SCS példányhoz az Azure-ban
@@ -192,13 +192,13 @@ Ezeket a feladatokat egy magas rendelkezésre állású ASCS/SCS-példánnyal re
 
    Az SAP ASCS/SCS virtuális állomás nevét (sap-pr1 – ascs) IP-címe megegyezik a Azure Load Balancer (pr1-lb-ascs) IP-címét.
 
-   ![1. ábra: A DNS-bejegyzést az SAP ASCS/SCS-fürt virtuális nevét és a TCP/IP-cím megadása][sap-ha-guide-figure-3046]
+   ![1\. ábra: A DNS-bejegyzést az SAP ASCS/SCS-fürt virtuális nevét és a TCP/IP-cím megadása][sap-ha-guide-figure-3046]
 
    _**1. ábra:** A DNS-bejegyzést az SAP ASCS/SCS-fürt virtuális nevét és a TCP/IP-cím megadása_
 
 2. A virtuális gazdagép neve rendelt IP-cím meghatározásához válassza **DNS-kezelő** > **tartomány**.
 
-   ![2. ábra: Új virtuális nevét és a TCP/IP-cím az SAP ASCS/SCS-fürtkonfiguráció][sap-ha-guide-figure-3047]
+   ![2\. ábra: Új virtuális nevét és a TCP/IP-cím az SAP ASCS/SCS-fürtkonfiguráció][sap-ha-guide-figure-3047]
 
    _**2. ábra:** Új virtuális nevét és a TCP/IP-cím az SAP ASCS/SCS-fürtkonfiguráció_
 
@@ -262,7 +262,7 @@ A mintavételi port hozzáadása:
 
 2. A mintavételi port megadása. A mintavétel portszám: 0. A példánkban a mintavételi portot 62000 használjuk.
 
-   ![3. ábra: A fürt konfigurációt a mintavételi portot kötelező alapértelmezés szerint 0][sap-ha-guide-figure-3048]
+   ![3\. ábra: A fürt konfigurációt a mintavételi portot kötelező alapértelmezés szerint 0][sap-ha-guide-figure-3048]
 
    _**3. ábra:** Az alapértelmezett fürt konfigurációt a mintavételi portot kötelező 0_
 
@@ -337,7 +337,7 @@ A mintavételi port hozzáadása:
    ```
    A szkript futtatása után a rendszer kéri, indítsa újra a SAP fürtcsoport a változások életbe lépjenek.
 
-   ![4. ábra: A fürt port mintavételi, miután beállította az új érték][sap-ha-guide-figure-3049]
+   ![4\. ábra: A fürt port mintavételi, miután beállította az új érték][sap-ha-guide-figure-3049]
 
    _**4. ábra:** A fürt port mintavételi, miután beállította az új érték_
 
@@ -365,7 +365,7 @@ A második fürt telepítéséhez kövesse a lépéseket, amelyek az SAP telepí
 
 A SAP SSZON Windows szolgáltatás indítási típusának módosítása **automatikus (Késleltetett indítás)** mindkét fürtcsomóponton.
 
-![5. ábra: A szolgáltatás típusa az SAP SSZON példány módosíthatja a késleltetett automatikus][sap-ha-guide-figure-3050]
+![5\. ábra: A szolgáltatás típusa az SAP SSZON példány módosíthatja a késleltetett automatikus][sap-ha-guide-figure-3050]
 
 _**5. ábra:** A szolgáltatás típusa az SAP SSZON példány módosíthatja a késleltetett automatikus_
 
@@ -389,13 +389,13 @@ Akkor is könnyen teszteléséhez és a egy SAP ASCS/SCS-példány feladatátvé
 
 Az SAP PR1 fürtcsoport fut, a fürtcsomópont-t. Ha például a pr1-ascs-0. Rendelje hozzá a megosztott lemezmeghajtó S, amely az SAP PR1 fürt csoport része, fürtcsomópontra rögzíti. Az ASCS/SCS példányhoz használja is a lemezmeghajtó %s 
 
-![6. ábra: A Feladatátvevőfürt-kezelő: Az SAP \<SID\> fürtcsoport fut egy csomóponton][sap-ha-guide-figure-5000]
+![6\. ábra: A Feladatátvevőfürt-kezelő: Az SAP \<SID\> fürtcsoport fut egy csomóponton][sap-ha-guide-figure-5000]
 
 _**6. ábra:** A Feladatátvevőfürt-kezelő: Az SAP \<SID\> fürtcsoport fut egy csomóponton_
 
 Az SIOS DataKeeper felügyeleti és a konfigurációs eszközt láthatja, hogy a megosztott adatok a rendszer szinkron módon replikálja a fürtcsomópontra A forrás-kötet meghajtó S a céloldali kötet meghajtóról S fürtcsomópont b Ha például azt a rendszer replikálja a pr1-ascs-0 [10.0.0.40] pr1 – ascs-1 [10.0.0.41].
 
-![7. ábra: Az SIOS DataKeeper replikálja a helyi kötet fürtcsomópontról egy fürtcsomóponton B][sap-ha-guide-figure-5001]
+![7\. ábra: Az SIOS DataKeeper replikálja a helyi kötet fürtcsomópontról egy fürtcsomóponton B][sap-ha-guide-figure-5001]
 
 _**7. ábra:** Az SIOS DataKeeper replikálja a helyi kötet fürtcsomópontról egy fürtcsomóponton B_
 
@@ -418,12 +418,12 @@ _**7. ábra:** Az SIOS DataKeeper replikálja a helyi kötet fürtcsomópontról
 
    Az SAP a feladatátvételt követően \<SID\> fürtcsoport fut, a fürtcsomópont B. Ha például jelenleg is fut a pr1-ascs-1.
 
-   ![8. ábra: A Feladatátvevőfürt-kezelő, a SAP \<SID\> fürtcsoport B csomóponton fut.][sap-ha-guide-figure-5002]
+   ![8\. ábra: A Feladatátvevőfürt-kezelő, a SAP \<SID\> fürtcsoport B csomóponton fut.][sap-ha-guide-figure-5002]
 
    _**8. ábra**: A Feladatátvevőfürt-kezelő, a SAP \<SID\> fürtcsoport B csomóponton fut._
 
    A megosztott lemez már csatlakoztatva van a fürt csomópont b az SIOS DataKeeper van adatok meghajtóról forrás kötet S B fürtcsomóponton való replikálásához célmeghajtó kötet, S fürtcsomóponton A. Ha például replikálását végzi a pr1-ascs-1 [10.0.0.41] pr1 – ascs-0 [10.0.0.40].
 
-   ![9. ábra: Az SIOS DataKeeper replikálja a helyi kötet fürtcsomópontról B, a csomópont A fürthöz][sap-ha-guide-figure-5003]
+   ![9\. ábra: Az SIOS DataKeeper replikálja a helyi kötet fürtcsomópontról B, a csomópont A fürthöz][sap-ha-guide-figure-5003]
 
    _**9. ábra:** Az SIOS DataKeeper replikálja a helyi kötet fürtcsomópontról B, a csomópont A fürthöz_

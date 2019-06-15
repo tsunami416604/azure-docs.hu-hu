@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 5044f8b85e59911633a4ffab509efc000948144a
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65832579"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Hozhat létre és tesztelhet egy új szimulált eszköz
@@ -33,7 +33,7 @@ A második forgatókönyvben a Contoso biztosítani szeretné egy új intelligen
 | Name (Név)                     | Értékek                      |
 | ------------------------ | --------------------------- |
 | Szín                    | Fehér, a vörös, kék            |
-| Brightness               | 0 – 100                    |
+| Brightness               | 0 és 100 közötti                    |
 | Becsült hátralévő élettartamának | Visszaszámlálás 10 000 óra |
 
 *Telemetria*
@@ -123,7 +123,7 @@ Ebben a szakaszban, vegyen fel egy új **belső hőmérséklet** telemetriai ada
 
 1. Másolja a következő fájlokat az új mappába, az eszköz szimulálása mikroszolgáltatás letöltött másolatából:
 
-    | Source | Célhely |
+    | source | Cél |
     | ------ | ----------- |
     | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
     | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/02/2018
 ms.openlocfilehash: e79c83ecb17c4dcd11f7ccbecded59e7d1d13dfd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60525775"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>A MySQL-adatbázis migrálása az Azure Database for MySQL-hez memóriakép és visszaállítás használatával
@@ -18,7 +18,7 @@ Ez a cikk azt ismerteti, biztonsági mentése és visszaállítása-adatbázisok
 - Memóriakép és visszaállítás a parancssorból (használatával az mysqldump) 
 - Memóriakép és visszaállítás PHPMyAdmin használatával 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 Ez az útmutató elvégezhető, szüksége lesz:
 - [Az Azure-adatbázis létrehozása MySQL-kiszolgálóhoz - Azure-portálon](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) parancssori segédprogram olyan gépre telepíteni.
