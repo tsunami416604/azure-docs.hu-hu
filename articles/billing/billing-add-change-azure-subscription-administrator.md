@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: 000315a2d751a05d3e401ee1bb9f593c6e321194
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922900"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Adja hozzá, vagy az Azure-előfizetések rendszergazdáinak módosításáról
@@ -45,7 +45,7 @@ Ahhoz, hogy a felhasználó az Azure-előfizetés rendszergazdájának, hozzáre
 
 1. Kattintson arra az előfizetésre, ahol szeretné a hozzáférést.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 
 1. Kattintson a **szerepkör-hozzárendelések** fülre kattintva megtekintheti az előfizetéshez tartozó szerepkör-hozzárendelések.
 
@@ -72,6 +72,6 @@ Ahhoz, hogy a felhasználó az Azure-előfizetés rendszergazdájának, hozzáre
 * [Útmutató: Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
+## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

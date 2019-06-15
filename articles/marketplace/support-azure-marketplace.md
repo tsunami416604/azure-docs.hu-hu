@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
 ms.openlocfilehash: 496fef7cfd93004e77a710942cffabbf23d6b29a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937695"
 ---
 # <a name="support-for-the-marketplace"></a>A Marketplace-en támogatása  
@@ -30,7 +30,7 @@ Hozzon létre egy jegyet a Microsoft [marketplace publisher támogatási](https:
 |:--- |:--- |:--- |  
 | További segítségért látogasson el a helyen található egy incidens-lap létrehozása [piactér-támogatás](https://go.microsoft.com/fwlink/?linkid=844975)</li> </ul> | Támogatás a Cloud Partner portálra. | Közötti 6: 00 - 6 ESTE biztosítunk támogatást. |  
 
-## <a name="technical"></a>Műszaki  
+## <a name="technical"></a>Technikai  
 
 | Támogatási csatornán keresztül | Leírás |  
 |:--- |:--- |  

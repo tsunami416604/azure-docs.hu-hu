@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.openlocfilehash: 947e797842000e4da2f9e22077bc32c24d6c6a74
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64718840"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK használatával, az Apache Hive-lekérdezések futtatása
@@ -29,7 +29,7 @@ Ez a cikk elkezdéséhez a következőkkel kell rendelkeznie:
 * **A HDInsight Apache Hadoop-fürt**. Lásd: [HDInsight Linux-alapú Hadoop használatának első lépései](apache-hadoop-linux-tutorial-get-started.md).
 
     > [!WARNING]  
-    > 2017. szeptember 15. a HDInsight .NET SDK vracející Hive lekérdezés eredményeit az Azure Storage-fiókok csak támogatja. Ebben a példában egy HDInsight-fürtöt, amely az Azure Data Lake Storage használja elsődleges tárolóként használja, ha nem lehet lekérdezni a keresési eredmények a .NET SDK használatával.
+    > 2017\. szeptember 15. a HDInsight .NET SDK vracející Hive lekérdezés eredményeit az Azure Storage-fiókok csak támogatja. Ebben a példában egy HDInsight-fürtöt, amely az Azure Data Lake Storage használja elsődleges tárolóként használja, ha nem lehet lekérdezni a keresési eredmények a .NET SDK használatával.
 
 * **Visual Studio 2013/2015/2017**.
 

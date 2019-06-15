@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 3e77494eacaf16ac23a531cb7a16fe8bf6117006
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64714414"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#)
@@ -21,7 +21,7 @@ ms.locfileid: "64714414"
 
 Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők Raspberry Pi kapcsolódni a Microsoft Azure IoT Central alkalmazáshoz C# programozási nyelv használatával.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A jelen cikkben ismertetett lépések végrehajtásához szüksége van a következő összetevők:
 
@@ -35,13 +35,13 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 - Telemetriai adatokat, amely tartalmazza az eszköz összegyűjti a következő mérési:
   - Páratartalom
   - Hőmérséklet
-  - Pressure
+  - Kiürítése
   - Magnetométer (X, Y, a – Z)
   - Érzékelőből (X, Y, a – Z)
   - Giroszkóp (X, Y, a – Z)
 - Beállítások
   - Feszültségérzékelő
-  - Aktuális
+  - Jelenlegi
   - Sebesség ventilátor
   - Integrációs modul váltógombot.
 - Tulajdonságok
@@ -340,21 +340,21 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 
 Numerikus beállításai
 
-| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
+| Display name | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
+| Jelenlegi      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
 | Sebesség ventilátor    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 A beállítások ki-/ bekapcsolása
 
-| Megjelenített név | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
+| Display name | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | KI      | Ki     |
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Típus            | Megjelenített név | Mező neve | Adattípus |
+| Típus            | Display name | Mező neve | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköztulajdonság | Die száma   | dieNumber  | szám    |
 | Text            | Location egység     | location   | –       |

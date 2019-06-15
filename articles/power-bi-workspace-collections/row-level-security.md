@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: 2d0c8629e4abf9e27cd204b9a13b79808b177501
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64715198"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Sorszintű biztonság a Power BI munkaterületi gyűjteményekkel
@@ -48,7 +48,7 @@ Az alábbiakban néhány szempont, figyelje meg, hogy ebben a sémában:
 
 * Az összes mértékre, például **Total Sales**, vannak tárolva a **értékesítési** ténytáblában.
 * Nincsenek négy további kapcsolódó dimenziótábla: **Elem**, **idő**, **Store**, és **kerület**.
-* A kapcsolatvonalakon lévő azt jelzik, hogy milyen módon szűrőket is flow egyik táblából egy másikba. Ha például egy szűrő el van helyezve **Time [Date]**, az aktuális sémában, akkor csak szűrése lefelé értékeket a **értékesítési** tábla. Más táblák a szűrőt, mert a kapcsolatvonalakon lévő összes mutasson a sales táblába, és azonnal nem befolyásolhat.
+* A kapcsolatvonalakon lévő azt jelzik, hogy milyen módon szűrőket is flow egyik táblából egy másikba. Ha például egy szűrő el van helyezve **Time [Date]** , az aktuális sémában, akkor csak szűrése lefelé értékeket a **értékesítési** tábla. Más táblák a szűrőt, mert a kapcsolatvonalakon lévő összes mutasson a sales táblába, és azonnal nem befolyásolhat.
 * A **kerület** mérőszámának táblájában, aki a kezelő az egyes kerületek:
   
   ![Táblázatsorok körzet](media/row-level-security/district-table-4.png)

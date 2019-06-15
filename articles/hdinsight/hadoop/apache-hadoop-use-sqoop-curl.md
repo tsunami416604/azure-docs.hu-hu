@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 345f492c5b2c754cbbcfa150561ee06b5a4154a5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64718685"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Az Apache Sqoop-feladatok futtatása a HDInsight a curl használatával
@@ -102,7 +102,7 @@ A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wi
 * Tömeges exportálása – a Linux-alapú HDInsight, a Sqoop-összekötő segítségével a Microsoft SQL Server vagy az Azure SQL Database-adatok exportálása jelenleg nem támogatja a tömeges beszúrás.
 * Kötegelés – a Linux-alapú HDInsight használatakor a `-batch` Beszúrások végrehajtásakor váltson, Sqoop több beszúrás helyett a beszúrási műveletek kötegelése hajt végre.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ahogyan ebben a dokumentumban, is használhatja a nyers HTTP-kérelmek futtatásához, figyelése és a Sqoop feladatok eredményeinek megtekintéséhez a HDInsight-fürtön.
 
 A cikk ezt használja a REST-felület további információkért lásd: a <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Apache Sqoop REST API-útmutató</a>.
