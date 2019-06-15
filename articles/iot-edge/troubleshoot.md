@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 00147002317f15345f01c88e81973837d16e6669
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65797612"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
@@ -243,7 +243,7 @@ A tároló nem fut, és a edgeAgent naplók megjelenítése a 403-as hibát.
 ### <a name="root-cause"></a>Gyökérok
 Az Iot Edge-ügynök nincs engedélye egy modul rendszerképének eléréséhez. 
 
-### <a name="resolution"></a>Feloldás
+### <a name="resolution"></a>Megoldás:
 Győződjön meg arról, hogy a tárolójegyzék hitelesítő adatainak helyesen vannak megadva a manifest nasazení
 
 ## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>IoT Edge biztonsági démon meghiúsul, és a egy érvénytelen állomásnév
@@ -287,7 +287,7 @@ Felmerülhet korlátozott eszközökön, például a Raspberry Pi-októl stabili
 ### <a name="root-cause"></a>Gyökérok
 Az IoT Edge hub, az IoT Edge-futtatókörnyezet része, amely alapértelmezés szerint a teljesítmény optimalizáltuk, és megpróbálja nagy mennyiségű memóriát lefoglalni. Az optimalizálás nem ideális korlátozott peremhálózati eszközökre, és stabilitását problémákat okozhat.
 
-### <a name="resolution"></a>Feloldás
+### <a name="resolution"></a>Megoldás:
 Az IoT Edge hubot a környezeti változó értéke **OptimizeForPerformance** való **hamis**. Ehhez két módja van:
 
 A felhasználói felületen: 
@@ -364,7 +364,7 @@ Hiba történt a központi telepítésben definiált modulok elindítása van az
 ### <a name="potential-root-cause"></a>Lehetséges okát
 Alapértelmezés szerint az IoT Edge modulok saját elkülönített tároló hálózati indítja el. Az eszköz problémái lehetnek DNS-névfeloldás a magánhálózaton belül.
 
-### <a name="resolution"></a>Feloldás
+### <a name="resolution"></a>Megoldás:
 
 **1. lehetőség: DNS-kiszolgáló a tárolóban állítsa be a motor beállításai**
 

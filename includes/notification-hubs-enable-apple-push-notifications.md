@@ -8,149 +8,159 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 39c016e7b4b70368eb1ca2bd517ed7f48d223e24
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c664e73b39ad48a860661cfd9141ee74df203f3e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66140559"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116650"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>A tanúsítvány-aláírási kérelem fájljának létrehozása
 
-Az Apple Push Notification szolgáltatás (APNS) tanúsítványokat használ a leküldéses értesítések hitelesítéséhez. Kövesse ezeket az utasításokat az értesítések küldéséhez és fogadásához szükséges leküldéses tanúsítvány létrehozásához. További információért lásd az [Apple Push Notification szolgáltatás](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html) hivatalos dokumentációját.
+Az Apple Push Notification szolgáltatás (APNs) tanúsítványokat használ a leküldéses értesítések hitelesítéséhez. Kövesse ezeket az utasításokat az értesítések küldéséhez és fogadásához szükséges leküldéses tanúsítvány létrehozásához. További információért lásd az [Apple Push Notification szolgáltatás](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html) hivatalos dokumentációját.
 
-Hozza létre a tanúsítvány-aláírási kérelem (CSR) fájlját, mellyel az Apple létrehoz egy aláírt leküldéses tanúsítványt.
+Hozzon létre a tanúsítvány-aláírási kérelem (CSR) fájlt, amelyet az Apple létrehoz egy aláírt leküldéses tanúsítványt használ.
 
-1. Futtassa a **Kulcskarika-elérés** eszközt a Mac gépén. Ez a **Segédprogramok** vagy az **Egyéb** mappából nyitható meg a Launchpadről.
-2. Kattintson a **Kulcskarika-elérés** menüpontra, bontsa ki a **Tanúsítványasszisztens** almenü, majd kattintson a **Tanúsítvány igénylése egy tanúsítványkiadó központból...** lehetőségre.
+1. Futtassa a Kulcskarika-elérés eszközt Mac számítógépén. A Megnyitás a **segédprogramok** mappa vagy a **más** a Kezdőpanel mappájába.
+
+1. Válassza ki **Keychain Access**, bontsa ki a **Tanúsítványasszisztens**, majd válassza ki **tanúsítvány kérése hitelesítésszolgáltatótól**.
 
     ![Új tanúsítvány kérése a Kulcskarika-eléréssel](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
-3. Töltse ki a **Felhasználói e-mail-cím** és az **Általános név** mezőket, ügyeljen arra, hogy a **Mentve lemezre** lehetőség legyen kiválasztva, majd kattintson a **Folytatás** gombra. Hagyja a **CA E-mail-cím** mező üres, mert erre nincs szükség.
+
+1. Válassza ki a **felhasználó E-mail címének**, adja meg a **köznapi név** értékét, győződjön meg arról, hogy megadja **mentve lemezre**, majd válassza ki **Folytatás**. Hagyja **CA E-mail-cím** üres, nem szükséges.
 
     ![Szükséges tanúsítványinformációk](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-csr-info.png)
 
-4. Adjon meg egy nevet a tanúsítvány-aláírási kérelem (CSR) fájljához a **Mentés mint** mezőben, válassza ki a helyet a **Hely** mezőben, majd kattintson a **Mentés** gombra.
+1. Adjon meg egy nevet a CSR-fájlt a **Mentés másként**, válassza ki azt a helyet a **ahol**, majd válassza ki **mentése**.
 
-    ![Fájlnév választása a tanúsítványhoz](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
+    ![Válassza ki a tanúsítvány nevét](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
 
-    Ez a művelet menti a CSR-fájlt a megadott helyre; az alapértelmezett hely az Íróasztal. Jegyezze meg a fájlhoz választott helyet.
+    Ez a művelet menti a CSR-fájlt a kiválasztott helyen. Az alapértelmezett hely a **asztali**. Jegyezze meg a fájlhoz választott helyet.
 
-Ezután regisztrálni fogja az alkalmazását az Apple rendszerében, engedélyezi a leküldéses értesítéseket, és feltölti ezt az exportált CSR-t a leküldéses tanúsítvány létrehozásához.
+Ezután az alkalmazás regisztrálása az Apple, engedélyezze a leküldéses értesítéseket, és hozzon létre egy leküldéses tanúsítványt az exportált CSR-fájl feltöltése.
 
 ## <a name="register-your-app-for-push-notifications"></a>Alkalmazás regisztrálása leküldéses értesítésekhez
 
 Leküldéses értesítések küldése iOS-alkalmazások, az alkalmazás regisztrálása az Apple, és regisztrálni leküldéses értesítésekre is.  
 
-1. Ha már az alkalmazás még nem regisztrált, lépjen a [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) , az Apple Developer Center központban, jelentkezzen be az Apple ID Azonosítót, kattintson a **azonosítók**, majd kattintson a **alkalmazások azonosítói** , végül kattintson a a **+** jelre az új alkalmazás regisztrálásához.
+1. Ha már az alkalmazás még nem regisztrált, keresse meg a [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) , az Apple Developer Center központban. Ezt követően jelentkezzen be az Apple ID, válassza ki **azonosítók**válassza **Alkalmazásazonosítók**, majd válassza a **+** új alkalmazás regisztrálásához.
 
     ![Az iOS Provisioning Portal alkalmazásazonosítói oldala](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
-2. Frissítse a következő három mezőt az új alkalmazásában, és kattintson a **Continue** (Folytatás) gombra:
+1. A következő három érték az új alkalmazás frissítése, és válassza ki **Folytatás**:
 
-   * **Név**: Adjon meg egy leíró nevet az alkalmazáshoz tartozó a **neve** mezőbe a **App ID leírás** szakaszban.
-   * **Csomagazonosítója**: Alatt a **Explicit App ID** területén adjon meg egy **Bundle Identifier** formájában `<Organization Identifier>.<Product Name>` említetteknek megfelelően az [alkalmazás telepítési útmutató](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). A használt céges azonosítónak (*Organization Identifier*) és terméknévnek (*Product Name*) meg kell egyeznie azzal a céges azonosítóval és terméknévvel, amelyeket az XCode-projekt létrehozásakor használ. Az alábbi képernyőképen *NotificationHubs* érték egy szervezet azonosítóként van használatban, és *GetStarted* szolgál a termék nevét. Ha ügyel arra, hogy ez az érték megegyezzen azzal, amelyet az XCode-projektben használ, a helyes közzétételi profilt fogja tudni használni az XCode környezetben.
+   * **Név**: Adjon meg egy leíró nevet az alkalmazáshoz tartozó a **neve** párbeszédpanel a **App ID leírás** szakaszban.
+
+   * **Csomagazonosítója**: Az a **Explicit App ID** területén adjon meg egy **Bundle Identifier** az űrlap `<Organization Identifier>.<Product Name>` említetteknek megfelelően az [alkalmazás telepítési útmutató](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). A *Organization Identifier* és *Terméknév* értékeknek egyezniük kell a szervezet azonosítója és a termék nevét használhatja az Xcode-projekt létrehozásakor. Az alábbi képernyőképen a *NotificationHubs* érték egy szervezet azonosítóként van használatban, és a *GetStarted* érték szolgál a termék nevét. Győződjön meg arról, hogy a **Bundle Identifier** értéke megegyezik az Xcode-projektben, hogy az xcode-ban a helyes közzétételi profilt fogja használni.
+
    * **Leküldéses értesítések**: Ellenőrizze a **leküldéses értesítések** beállítást a **App Services** szakaszban.
 
      ![Regisztrációs űrlap új alkalmazásazonosítókhoz](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
 
-     Ez a művelet létrehozza az alkalmazásazonosítót, és a rendszer megkéri Önt az információk megerősítésére. Kattintson a **Register** (Regisztráció) gombra az új alkalmazásazonosító megerősítéséhez.
+     Ez a művelet létrehoz az Alkalmazásazonosító és a kérelmek, hogy az információk megerősítésére. Válassza ki **regisztrálása** ellenőrizze az új alkalmazás azonosítóját.
 
-     Miután a **Register** (Regisztráció) gombra kattintott, megjelenik az alábbi képen is látható **Registration complete** (Regisztráció kész) képernyő. Kattintson a **Done** (Kész) gombra.
+     Kiválasztása után **regisztrálása**, megjelenik a **regisztráció befejezéséhez** képernyőn a következő képen látható módon. Válassza a **Done** (Kész) lehetőséget.
 
      ![Alkalmazásazonosító regisztrációja a jogosultságok megjelenítésével](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
 
-3. Keresse meg az Ön által létrehozott alkalmazásazonosítót a fejlesztői központban az alkalmazásazonosítók alatt, és kattintson az azt tartalmazó sorra.
+1. A fejlesztői központban alatt **Alkalmazásazonosítók**, keresse meg a létrehozott alkalmazás Azonosítóját, és válassza ki a sort.
 
     ![Alkalmazásazonosítói lista](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids2.png)
 
-    Ha az alkalmazásazonosítóra kattint, megjelennek az alkalmazás részletei. Kattintson az alul található **Edit** (Szerkesztés) gombra.
+    Válassza ki az Alkalmazásazonosító az alkalmazás részleteinek megjelenítéséhez, és válassza ki a **szerkesztése** gombra a lap alján.
 
     ![Alkalmazásazonosítói oldal szerkesztése](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-4. Görgessen a képernyő aljára, és kattintson a **Create Certificate...** (Tanúsítvány létrehozása...) gombra a **Development Push SSL Certificate** (Leküldéses fejlesztési SSL-tanúsítvány) szakasz alatt.
+1. Görgessen lefelé a képernyőn, majd válassza az alsó a **tanúsítvány létrehozása** gomb alatt a **Development Push SSL-tanúsítvány** szakaszban.
 
     ![Tanúsítvány létrehozása az alkalmazásazonosító gomb](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
-    Ekkor megjelenik az **Add iOS Certificate** (iOS-tanúsítvány hozzáadása) segéd.
+    Ekkor megjelenik a **iOS tanúsítvány hozzáadása** Segéd.
 
     > [!NOTE]
     > Ez az oktatóprogram fejlesztési tanúsítványt használ. Ugyanez a folyamat használatos a termelési tanúsítvány regisztrálásához is. Csak arra ügyeljen, hogy ugyanazt a tanúsítványtípust használja az értesítések küldéséhez.
 
-5. Kattintson a **Choose File** (Fájl kiválasztása) lehetőségre, keresse meg a helyet, ahová mentette az első feladatban létrehozott CSR-fájlt, majd kattintson a **Generate** (Létrehozás) gombra.
+1. Válassza ki **fájl kiválasztása**, keresse meg a helyet, ahová mentette a CSR-fájlt, az első feladatra, és válassza **Generate**.
 
     ![Előállított tanúsítványok CSR-feltöltési oldala](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-cert-choose-csr.png)
 
-6. Miután a portál létrehozza a tanúsítványt, kattintson a **Download** (Letöltés) gombra, majd a **Done** (Kész) gombra.
+1. Miután a portál létrehozza a tanúsítványt, válassza ki a **letöltése** gombra, majd válassza ki **kész**.
 
     ![Előállított tanúsítványok letöltési oldala](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
-    Ez a művelet letölti a tanúsítványt, és menti azt a számítógépére, a **Letöltések** mappába.
+    A tanúsítvány letöltése és mentése a számítógépére, a **letölti** mappát.
 
     ![A tanúsítványfájl megkeresése a Letöltések mappában](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
     > [!NOTE]
     > Alapértelmezés szerint a letöltött fejlesztési tanúsítványfájl neve **aps_development.cer**.
 
-7. Kattintson duplán a letöltött **aps_development.cer** leküldéses tanúsítványra.
+1. Válassza ki a letöltött leküldéses tanúsítványt **aps_development.cer**.
 
     Ez a művelet telepíti az új tanúsítványt a kulcsláncba, ahogy az alábbi képen látható:
 
     ![Új tanúsítvány a Kulcskarika-elérés tanúsítványlistájában](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
-    > A tanúsítványban található név lehet különböző, de rendelkezni fog az **Apple Development iOS Push Services** (Apple fejlesztési iOS leküldéses szolgáltatások) előtagjával.
+    > A tanúsítványban található név lehet különböző, bár a neve a következő előtaggal **Apple fejlesztési iOS leküldéses szolgáltatások**.
 
-8. A kulcslánc-hozzáférési oldalon kattintson a jobb egérgombbal az új leküldéses tanúsítványra, melyet a **Certificates** (Tanúsítványok) kategóriában létrehozott. Kattintson az **Export** (Exportálás) elemre, válassza a **.p12** formátumot, majd kattintson a **Save** (Mentés) gombra.
+1. A kulcslánc-hozzáférési oldalon kattintson a jobb egérgombbal az új leküldéses tanúsítványra, melyet a **Certificates** (Tanúsítványok) kategóriában létrehozott. Válassza ki **exportálása**, a fájl neve, válassza ki a **.p12** formázása, és válassza ki **mentése**.
 
     ![Tanúsítványok exportálása p12 formátumban](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
-    Jegyezze fel az exportált .p12 tanúsítvány nevét és helyét. Az APNS-hitelesítés engedélyezéséhez használatos.
+    Jegyezze fel az exportált .p12 tanúsítvány nevét és helyét. Ezek az APNs-hitelesítés engedélyezéséhez szolgálnak.
 
     > [!NOTE]
-    > Ez az oktatóprogram egy QuickStart.p12 fájlt hoz létre. Az Ön fájljának neve és helye eltérhet ettől.
+    > Ebben az oktatóanyagban létrehoz egy fájlt **QuickStart.p12**. Az Ön fájljának neve és helye eltérhet ettől.
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Üzembe helyezési profil létrehozása az alkalmazáshoz
 
-1. Térjen vissza az [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) felületére, válassza a **Provisioning Profiles** (Üzembehelyezési profilok), majd az **All** (Összes) lehetőséget, és kattintson a **+** (plusz) gombra az új profil létrehozásához. Ekkor megjelenik az **Add iOS Provisioning Profile** (Üzembehelyezési iOS-profil hozzáadása) varázsló:
+1. Az a [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456), jelölje be **kiépítési profilok**, jelölje be **összes**, majd válassza ki **+** hozhat létre egy új profilt. Megjelenik a **hozzáadása IOS-es kiépítési profilt** varázsló.
 
     ![Üzembehelyezési profillista](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 
-2. Az üzembe helyezési profil típusaként válassza az **iOS App Development** (iOS-alkalmazásfejlesztés) lehetőséget a **Development** (Fejlesztés) alatt, majd kattintson a **Continue** (Folytatás) gombra.
+1. Válassza ki **iOS App Development** alatt **fejlesztési** kiépítési profil típusa, és válassza ki **Folytatás**.
 
-3. Ezután válassza ki az Ön által létrehozott azonosítót az **App ID** (Alkalmazásazonosító) legördülő listából, és kattintson a **Continue** (Folytatás) gombra
+1. Ezután válassza ki a létrehozott alkalmazás azonosítója a **Alkalmazásazonosító** legördülő listára, és válassza **Folytatás**.
 
     ![Az alkalmazásazonosító kiválasztása](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-select-appid-for-provisioning.png)
 
-4. A **Select certificates** (Tanúsítványok kiválasztása) képernyőn válassza ki a kódaláíráshoz használt szokásos fejlesztési tanúsítványt, majd kattintson a **Continue** (Folytatás) gombra. Ez a tanúsítvány nem a létrehozott leküldéses tanúsítvány.
+1. Az a **válassza ki a tanúsítványok** ablakban válassza ki a kódaláíráshoz használt szokásos fejlesztési tanúsítványt, és válassza ki **Folytatás**. Ez a tanúsítvány nem a létrehozott leküldéses tanúsítvány.
 
     ![A tanúsítvány kiválasztása](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-cert.png)
 
-5. Ezután válassza ki a teszteléshez használt eszközöket a **Devices** (Eszközök) mezőben, és kattintson a **Continue** (Folytatás) gombra
+1. Ezután válassza ki a teszteléshez használni kívánt eszközöket, és válassza ki **Folytatás**.
 
     ![Az eszközök kiválasztása](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-devices.png)
 
-6. Végül adjon meg egy nevet a profilnak a **Profile Name** (Profilnév) mezőben, és kattintson a **Generate** (Létrehozás) gombra.
+1. Végül adjon meg egy nevet a profilnak a **profilnév**, és válassza ki **Generate**.
 
     ![Egy üzembehelyezési profilnév kiválasztása](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
 
-7. Az új üzembe helyezési profil létrejötte után kattintson rá a letöltéshez, és telepítse az Xcode-fejlesztői gépére. Ezután kattintson a **Done** (Kész) gombra.
+1. Az új létesítési profil létrehozását követően válassza ki, töltse le és telepítse az Xcode-fejlesztői gépére. Ezután válassza a **Done** (Kész) elemet.
 
     ![Az üzembehelyezési profil letöltése](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
 
 ## <a name="create-a-notification-hub"></a>Értesítési központ létrehozása
-Ebben a szakaszban létrehoz egy új értesítési központot, valamint konfigurálja az APNs-hitelesítést a korábban létrehozott **.p12** leküldéses tanúsítvánnyal. Ha egy már korábban létrehozott értesítési központot kíván használni, egyből az 5. lépésre ugorhat.
+
+Ebben a szakaszban egy értesítési központ létrehozása és a hitelesítés beállítása az apns-sel a korábban létrehozott .p12 leküldéses tanúsítvány használatával. Ha szeretne egy már létrehozott értesítési központot használja, kihagyhatja az 5. lépés.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
-## <a name="configure-your-notification-hub-with-apns-information"></a>Az értesítési központ konfigurálása APNs-információkkal
+## <a name="configure-your-notification-hub-with-apns-information"></a>Az APNs-adatait az értesítési központ konfigurálása
 
 1. Az **Értesítési szolgáltatások** területen válassza az **Apple (APNS)** lehetőséget.
-2. Válassza a **Tanúsítvány** elemet.
-3. Válassza a **fájl ikont**.
-4. Válassza ki a korábban exportált **.p12** fájlt.
-5. Adja meg a helyes **jelszót**.
-6. Válassza a **Védőfal** módot. Az **Éles** beállítást kizárólag akkor használja, ha olyan felhasználóknak szeretne leküldéses értesítéseket küldeni, akik megvásárolták az alkalmazást az áruházból.
 
-    ! [Az APNS-tanúsítvány konfigurálása az Azure Portalon] [7]
+1. Válassza a **Tanúsítvány** elemet.
 
-Konfigurálta az értesítési központot az APNS-sel való együttműködésre, és rendelkezik a kapcsolati sztringekkel az alkalmazás regisztrálásához és leküldéses értesítések küldéséhez.
+1. A fájl ikonra.
+
+1. Válassza ki a korábban exportált .p12 fájlt.
+
+1. Adja meg a helyes jelszót.
+
+1. Válassza a **Védőfal** módot. Az **Éles** beállítást kizárólag akkor használja, ha olyan felhasználóknak szeretne leküldéses értesítéseket küldeni, akik megvásárolták az alkalmazást az áruházból.
+
+    ![APNs-tanúsítvány konfigurálása az Azure Portalon](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
+
+Most már konfigurálta az értesítési központot az apns-sel. Akkor is a kapcsolati karakterláncokkal az alkalmazás regisztrálásához és leküldéses értesítések küldéséhez.

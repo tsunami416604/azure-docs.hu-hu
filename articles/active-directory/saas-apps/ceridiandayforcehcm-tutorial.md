@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79741d9ec71dd7735ef94ef8172921965a9e9df1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ce73db9f177c9aa9915e9c0d6d13f9e00893d5b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65863784"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Ceridian Dayforce HCM
 
@@ -53,7 +53,7 @@ Konfigurálhatja az Azure AD integrálása a Ceridian Dayforce HCM, hozzá kell 
 
 **Ceridian Dayforce HCM hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -107,23 +107,23 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Ceridian Dayforce HC
 
     a. Az a **bejelentkezési URL-** beviteli mező, írja be az URL-cím való bejelentkezés Ceridian Dayforce HCM alkalmazását a felhasználók által használt-e.
 
-    | Környezet | URL |
+    | Környezet | URL-cím |
     | :-- | :-- |
-    | Éles környezethez | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
+    | Éles környezetben | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
     | Teszt | `https://ssotest.dayforcehcm.com/<DayforcehcmNamespace>` |
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
 
-    | Környezet | URL |
+    | Környezet | URL-cím |
     | :-- | :-- |
-    | Éles környezethez | `https://ncpingfederate.dayforcehcm.com/sp` |
+    | Éles környezetben | `https://ncpingfederate.dayforcehcm.com/sp` |
     | Teszt | `https://fs-test.dayforcehcm.com/sp` |
 
     c. Az a **válasz URL-cím** beviteli mező, írja be az URL-cím által használt Azure ad-ben a válasz közzététele.
 
-    | Környezet | URL |
+    | Környezet | URL-cím |
     | :-- | :-- |
-    | Éles környezethez | `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2` |
+    | Éles környezetben | `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2` |
     | Teszt | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
 
     > [!NOTE]
@@ -137,7 +137,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Ceridian Dayforce HC
     
     | Name (Név) | Adatforrás-attribútum|
     | ---------| --------- |
-    | név  | user.extensionattribute2 |
+    | name  | user.extensionattribute2 |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -230,7 +230,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Ceridian Dayforce HCM hoz létre. Együttműködve [Ceridian Dayforce HCM támogatási csapatának](https://www.ceridian.com/support) a felhasználók hozzáadása az Ceridian Dayforce HCM platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

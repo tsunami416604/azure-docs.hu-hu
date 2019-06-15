@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bee7454942b9214eeb1253339446df370e20fe01
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bfb154bce34b2ceda99b82c7ca3534b8a8ee0a1f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785839"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098487"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Kontiki
 
@@ -79,7 +79,7 @@ Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelen
 
 Az Azure AD egyszeri bejelentkezés az Kontiki tesztelése és konfigurálása, hogy a következő építőelemeit kell elvégeznie:
 
-| Feladat | Leírás |
+| Tevékenység | Leírás |
 | --- | --- |
 | **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)** | Lehetővé teszi a felhasználók a funkció használatához. |
 | **[Kontiki egyszeri bejelentkezés konfigurálása](#configure-kontiki-single-sign-on)** | Az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazásban. |
@@ -143,7 +143,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
     1. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    1. Az a **felhasználónév** mezőbe írja be **brittasimon\@\<a vállalati tartomány >.\< bővítmény >**. Ha például **brittasimon\@contoso.com**.
+    1. Az a **felhasználónév** mezőbe írja be **brittasimon\@\<a vállalati tartomány >.\< bővítmény >** . Ha például **brittasimon\@contoso.com**.
 
     1. Válassza ki a **Show jelszó** jelölőnégyzetet. Írja le az értéket, a megjelenő a **jelszó** mezőbe.
 
@@ -181,7 +181,7 @@ Ebben a szakaszban hozzáférést adhat a Britta Simon Kontiki így ő Azure egy
 
 Nincs művelet elem Kontiki a felhasználókiépítés konfigurálása. Ha egy hozzárendelt felhasználó próbál Kontiki jelentkezzen be a saját alkalmazások portál használatával, Kontiki ellenőrzi, hogy létezik-e a felhasználó. Ha nem talált a felhasználói fiókot, Kontiki automatikusan létrehozza a felhasználói fiókot.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
 

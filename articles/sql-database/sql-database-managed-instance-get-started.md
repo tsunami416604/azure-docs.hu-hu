@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: f54cea75e6f7866f1be41d3b0f82393af2235a0a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 27439758c9e2b909bb7179b69c7aade81429f502
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949873"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070488"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Egy Azure SQL Database felügyelt példány létrehozása
 
@@ -73,7 +73,7 @@ A következő lépések bemutatják, hogyan hozhat létre felügyelt példányt.
 11. Válassza ki **üzembe helyezés folyamatban** , amelyben részletesebben nyomon követheti az üzembehelyezési folyamatot a felügyelt példány ablakának megnyitásához. 
 
 > [!IMPORTANT]
-> Az első példánynál az alhálózatok üzembe helyezés ideje általában sokkal hosszabb, mint a további példányok. Ne szakítsa meg a központi telepítési műveletet, mert a vártnál tovább tart. A második felügyelt példány létrehozása az alhálózat csak néhány percet vesz igénybe.
+> Az első példánynál az alhálózatok üzembe helyezés ideje általában sokkal hosszabb, mint a további példányok. Ne szakítsa meg a központi telepítési műveletet, mert a vártnál tovább tart.
 
 ## <a name="review-resources-and-retrieve-your-fully-qualified-server-name"></a>Tekintse át az erőforrásokat, és a teljes kiszolgálónév lekérése
 
@@ -81,7 +81,7 @@ Miután az üzembe helyezés sikeres, tekintse át a létrehozott erőforrásoka
 
 1. Nyissa meg az erőforráscsoport, a felügyelt példány. Annak az Ön számára létrehozott erőforrások megtekintése a [felügyelt példány létrehozása](#create-a-managed-instance) rövid.
 
-   ![Felügyelt példány erőforrásai](./media/sql-database-managed-instance-get-started/resources.png)
+   ![Felügyelt példány erőforrások](./media/sql-database-managed-instance-get-started/resources.png)
 
 2. Jelölje be az útvonaltáblát tekintse át az Ön számára létrehozott felhasználó által megadott útvonal (UDR) táblában.
 
@@ -105,7 +105,7 @@ Miután az üzembe helyezés sikeres, tekintse át a létrehozott erőforrásoka
 
 7. Az a **áttekintése** lapra, keresse meg a **gazdagép** tulajdonság. Másolja a következő gyorsútmutatóval a teljesen minősített állomásnév cím a felügyelt példány használatra.
 
-   ![Állomásnév](./media/sql-database-managed-instance-get-started/host-name.png)
+   ![Gazdagép neve](./media/sql-database-managed-instance-get-started/host-name.png)
 
    A név a következőhöz hasonló, **your_machine_name.a1b2c3d4e5f6.database.windows.net**.
 

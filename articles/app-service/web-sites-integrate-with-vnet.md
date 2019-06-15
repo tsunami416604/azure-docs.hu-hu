@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dcb128d8793e3438d87e728bde069d07c72cf97b
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
-ms.translationtype: MT
+ms.openlocfilehash: a5187ed299f77c11892c6e34c8dfd3f904c7e075
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493041"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067706"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure-beli virtuális hálózathoz
 Ez a dokumentum ismerteti az Azure App Service virtuális hálózat integrációja, és hogyan állítható be az Apps a [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure virtuális hálózatok] [ VNETOverview] (Vnetek) lehetővé teszi számos, az Azure-erőforrások nem internetes routeable hálózati helyezni.  
@@ -33,8 +33,8 @@ Ez a dokumentum végighalad a két VNet-integráció funkciót, azaz a több-bé
 
 Nincsenek két formáját, a virtuális hálózat integrációja
 
-1. Egy verzió lehetővé teszi az integrációt a virtuális hálózatok ugyanabban a régióban. Ezt a kérdőívet, a szolgáltatás ugyanabban a régióban egy virtuális hálózat alhálózat szükséges.
-2. A más verzió lehetővé teszi az integrációt a más régiókban található virtuális hálózatok vagy a klasszikus virtuális hálózatok. A szolgáltatás ezen verziója szükséges, a virtuális hálózat egy virtuális hálózati átjáró üzembe helyezési.
+1. Egy verzió lehetővé teszi az integrációt a virtuális hálózatok ugyanabban a régióban. A funkció a képernyőn egy alhálózatot a virtuális hálózat ugyanabban a régióban van szükség. A szolgáltatás még előzetes verzióként, de az alábbi esetekben bizonyos korlátozásokkal Windows alkalmazás éles számítási feladatok esetében támogatott.
+2. A más verzió lehetővé teszi az integrációt a más régiókban található virtuális hálózatok vagy a klasszikus virtuális hálózatok. A szolgáltatás ezen verziója szükséges, a virtuális hálózat egy virtuális hálózati átjáró üzembe helyezési. Ez az a pont – hely VPN-alapú szolgáltatás.
 
 Egy alkalmazás egyszerre csak használhatja a VNet-integráció funkciót egy formája. Ezután a kérdés, mely szolgáltatásokat használja. Számos dologra vagy használhatja. Törölje a versenytársaink, ha a következők:
 
@@ -72,7 +72,7 @@ VNet-integráció és az alkalmazás ugyanabban a régióban található virtuá
 * a virtuális hálózat csatlakozik az erőforrások eléréséhez
 * Access-erőforrások közötti társviszonyban kapcsolat többek között az ExpressRoute-kapcsolatok
 
-Ez a funkció előzetes verzióban érhető el, de azt a termelési számítási feladatokhoz, az alábbi korlátozásokkal támogatja:
+Ez a funkció előzetes verzióban érhető el, de a következő korlátozásokkal Windows alkalmazás éles számítási feladatok esetében támogatott:
 
 * csak elérheti a címeket, amelyek az RFC 1918-címtartományba tartoznak. Most már a 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 címblokkok címeit.
 * globális társviszony-létesítési kapcsolaton keresztül történő erőforrás nem érhető el
@@ -83,8 +83,9 @@ Ez a funkció előzetes verzióban érhető el, de azt a termelési számítási
 * Az alkalmazás és a virtuális hálózat ugyanabban a régióban kell lennie
 * Az App Service-csomag példányonként egy címet használja. Alhálózat méretét a hozzárendelés után nem módosítható, mivel a is több, mint a maximális skálázhatósága alhálózatot használjon. 32-címekkel rendelkező/27-es nem az ajánlott mérete, mert a 20-példányok méretezett App Service-csomagot, amely helyet biztosít.
 * Integrált alkalmazás a virtuális hálózat nem törölhető. Először el kell távolítania az integráció 
+* Akkor is csak egy regionális virtuális hálózatok közötti integráció egy App Service-csomag. Több alkalmazás az App Service-csomag az azonos virtuális hálózaton használható. 
 
-A VNet-integráció funkció használata a Resource Manager virtuális hálózat ugyanabban a régióban:
+A szolgáltatás akkor is a Linux előzetes verzióban érhető el. A VNet-integráció funkció használata a Resource Manager virtuális hálózat ugyanabban a régióban:
 
 1. Nyissa meg a hálózat felhasználói felület a portálon. Ha az alkalmazás tudja használni az új szolgáltatást, majd megjelenik hozzáadása virtuális hálózathoz (előzetes verzió) lehetőséget.  
 
@@ -110,7 +111,7 @@ Az App Service-ben alkalmazásokat feldolgozói szerepkörökkel kapcsolatos üz
 
 Ha engedélyezve van a VNet-integráció, az alkalmazás továbbra is győződjön meg az internethez, a szokásos módon azonos csatornákon keresztül kimenő hívások. A kimenő címek, amelyek az alkalmazás tulajdonságainak portálon láthatók azok továbbra is az az alkalmazás által használt címek. Mi a módosítások az alkalmazás az, hogy a szolgáltatásvégpont-hívások védett szolgáltatásokhoz, vagy RFC 1918-címek hiányzóra változik a virtuális hálózathoz. 
 
-A funkció csak a worker kiszolgálónként több virtuális adapter támogatja.  Worker kiszolgálónként több virtuális adapter azt jelenti, hogy több virtuális adapter egy App Service-csomag. Ugyanazt az App Service-csomagban az alkalmazások használhatják ugyanazt a VNet-integráció, de ha egy további virtuális hálózathoz való csatlakozáshoz szüksége, szüksége lesz egy másik App Service-csomag létrehozása. A használt virtuális adapter nem egy erőforrás, amely az ügyfél közvetlen hozzáféréssel rendelkezik.
+A funkció csak a worker kiszolgálónként több virtuális adapter támogatja.  Több virtuális adapter worker kiszolgálónként egy App Service-csomag egy regionális virtuális hálózatok közötti integráció jelenti. Az alkalmazások az App Service-csomag használhatja ugyanazt a VNet-integráció, de ha egy alkalmazás egy további virtuális hálózathoz való csatlakozáshoz van szüksége, szüksége lesz egy másik App Service-csomag létrehozása. A használt virtuális adapter nem egy erőforrás, amely az ügyfél közvetlen hozzáféréssel rendelkezik.
 
 Ez a technológia működését jellege miatt a VNet-integráció használt forgalom nem jelenik meg a Network Watcher vagy az NSG folyamatnaplóit.  
 
@@ -123,12 +124,13 @@ Az átjáró a virtuális hálózat integrációja szükséges:
 * lehetővé teszi, hogy az App Service-csomag integrációját a legfeljebb öt virtuális hálózatok 
 * lehetővé teszi az ugyanazon a Vneten, több alkalmazás az App Service-csomag a által használt teljes száma, amelyek segítségével az App Service-csomag befolyásolása nélkül.  Ha rendelkezik 6 ugyanazt az App Service-csomagban ugyanabban a Vnetben használó alkalmazások, hogy számít 1 virtuális hálózat használatban. 
 * a pont – hely típusú VPN konfigurált virtuális hálózati átjáró szükséges.
+* Nem támogatott Linux-alkalmazásokkal való használatra
 * 99,9 %-os szolgáltatói szerződés miatt az SLA-t támogatja az átjárón
 
 Ez a funkció nem támogatja:
 
-* az ExpressRoute más erőforrások elérése 
-* a Szolgáltatásvégpontok közötti erőforrások elérése 
+* Erőforrásokhoz való hozzáférés ExpressRoute-on keresztül 
+* Erőforrásokhoz való hozzáférés szolgáltatásvégpontokon keresztül 
 
 ### <a name="getting-started"></a>Első lépések
 
@@ -200,7 +202,7 @@ Az ASP virtuális hálózatok közötti integráció felhasználói felület bem
 * **Hálózat szinkronizálása**. A szinkronizálási hálózati művelet van, csak a függő VNet-integráció átjáró szolgáltatás. Egy szinkronizálási hálózati művelet végrehajtása biztosítja, hogy a tanúsítványok és hálózati adatok szinkronizálva. Adja hozzá, vagy módosítsa a virtuális hálózat DNS-ben, ha kíván végezni egy **hálózat szinkronizálása** műveletet. Ez a művelet újraindul a virtuális hálózat használatával bármilyen alkalmazást.
 * **Útvonalak hozzáadása** útvonalak hozzáadása a hatékony felhasználhatóságot kimenő forgalom, a virtuális hálózathoz.
 
-**Útválasztás** forgalom irányítása a virtuális hálózat az alkalmazásból, az útvonalakat a virtuális hálózathoz meghatározott szolgálnak. Ha szeretne további kimenő adatforgalmat küldjön a vnetben, ezután adhatja csak hozzá ezen címterületet. Ez capabilty csak akkor működik az átjáró a VNet-integráció szükséges.
+**Útválasztás** forgalom irányítása a virtuális hálózat az alkalmazásból, az útvonalakat a virtuális hálózathoz meghatározott szolgálnak. Ha szeretne további kimenő adatforgalmat küldjön a vnetben, ezután adhatja csak hozzá ezen címterületet. A funkció csak akkor működik az átjáró a VNet-integráció szükséges.
 
 **Tanúsítványok** Ha az átjáró a VNet-integráció engedélyezése szükséges, nincs-e a szükséges exchange-tanúsítványok biztosítása a kapcsolat biztonságát. A tanúsítványok együtt vannak a DNS-konfigurációt, útvonalak és más hasonló dolgot, amelyek ismertetik a hálózaton.
 Ha tanúsítványokat vagy hálózati adatok megváltozik, kattintson a "Hálózat szinkronizálása" szeretne. Ha "Hálózat szinkronizálása" gombra kattint, akkor miatt a rövid kimaradásokat a kapcsolat az alkalmazás és a virtuális hálózat között. Amíg az alkalmazás újraindítása után a nem a kapcsolat megszakadása okozhat a hely nem működhet megfelelően. 

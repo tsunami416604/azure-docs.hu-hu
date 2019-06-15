@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 2a669f5b46db4d5de7d1d6863b94e6c117667aee
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2b57ec7727e8f5b648bcb97e5fae26c63724411c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153242"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127213"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure identitáskezelési és hozzáférés-vezérlés ajánlott biztonsági eljárások
 Ebben a cikkben bemutatjuk, Azure-Identitáskezelés és hozzáférés vezérlés ajánlott biztonsági eljárások gyűjteménye. Ajánlott eljárások vannak származtatva tapasztalatainkon [Azure ad-ben](../active-directory/fundamentals/active-directory-whatis.md) és az ügyfelek a funkciókat, például saját magának.
@@ -113,7 +113,7 @@ Szervezetek számára, amelyek egy közös identitást létrehozni egyszeri Beje
 
 Felhasználók a szervezet erőforrásaihoz férhetnek hozzá az eszközök és alkalmazások számos segítségével bárhonnan. INFORMATIKAI rendszergazdaként szeretné győződjön meg arról, hogy ezek az eszközök megfelelnek-e a biztonsági és megfelelőségi szabványoknak. Csak összpontosító férhet hozzá egy erőforrás már nem elegendő.
 
-Elosztja a biztonság és hatékonyság, gondolja át hogyan erőforrás érhető el, mielőtt egy hozzáférés-vezérléssel kapcsolatos döntést kell. Az Azure AD feltételes hozzáférésével megfelelhet ennek a követelménynek. A feltételes hozzáférés automatikus döntést hozhasson a hozzáférésről a felhőalkalmazásokhoz hozzáférő feltételei alapján teheti meg.
+Elosztja a biztonság és hatékonyság, gondolja át hogyan erőforrás érhető el, mielőtt egy hozzáférés-vezérléssel kapcsolatos döntést kell. Az Azure AD feltételes hozzáférés meg lehet oldani ennek a követelménynek. A feltételes hozzáférés automatikus döntést hozhasson a hozzáférésről a felhőalkalmazásokhoz hozzáférő feltételei alapján teheti meg.
 
 **Ajánlott eljárás**: Kezelheti, és a vállalati erőforrásokhoz való hozzáférés szabályozása.  
 **Részletes**: Konfigurálja az Azure AD- [feltételes hozzáférési](../active-directory/active-directory-conditional-access-azure-portal.md) egy csoport, a hely és a SaaS-alkalmazások és az Azure AD-hez csatlakozó alkalmazásokat az alkalmazás bizalmassági szintje alapján.
@@ -162,7 +162,7 @@ Ez az a leginkább rugalmas módon engedélyezze a kétlépéses ellenőrzést, 
 A módszert használ, az Azure AD Identity Protection kockázat kiértékelésekor a kétlépéses ellenőrzéshez szükséges, hogy a felhasználó és minden felhőalapú alkalmazásra bejelentkezési kockázat alapján. Ez a metódus szükséges, Azure Active Directory P2 licencelési. Ez a módszer a további tájékoztatást talál [Azure Active Directory Identity Protection](../active-directory/identity-protection/overview.md).
 
 > [!Note]
-> 1. lehetőség – a multi-factor Authentication szolgáltatás engedélyezése a felhasználói állapot módosításával felülbírálja a feltételes hozzáférési szabályzatokat. 2. és 3 beállítások feltételes hozzáférési szabályzatokat használ, mert azokat az 1. lehetőség nem használható.
+> 1\. lehetőség – a multi-factor Authentication szolgáltatás engedélyezése a felhasználói állapot módosításával felülbírálja a feltételes hozzáférési szabályzatokat. 2\. és 3 beállítások feltételes hozzáférési szabályzatokat használ, mert azokat az 1. lehetőség nem használható.
 
 A szervezetek, ne adjon hozzá további védelmi rétegeket, identitás, például a kétlépéses ellenőrzést, jobban ki a hitelesítő adatok ellopását alkalmazó támadásokkal. A hitelesítő adatok ellopását alkalmazó támadásokkal a biztonsági adatok vezethet.
 

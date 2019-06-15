@@ -9,10 +9,10 @@ ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: acf2526e79519e610614dc5217efbfe5e327b90f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66248144"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>A storage vagy az Azure Event Hubs Azure tevékenységnapló exportálása
@@ -156,7 +156,7 @@ Ha egy napló-profilja már létezik, akkor először távolítsa el a meglévő
     | --- | --- | --- |
     | name |Igen |A napló-profil neve. |
     | storage-account-id |Igen |Erőforrás-azonosító, amelyhez tevékenységeket tartalmazó naplók menteni a tárfiók. |
-    | helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő szóközzel elválasztott listáját. Megtekintheti összes régiók listáját az előfizetéshez a `az account list-locations --query [].name`. |
+    | locations |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő szóközzel elválasztott listáját. Megtekintheti összes régiók listáját az előfizetéshez a `az account list-locations --query [].name`. |
     | days |Igen |Mely eseményeket meg kell őrizni, 1 és 365 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplók (végtelen).  Ha nulla, majd az engedélyezett paramétert meg kell igaz értékre. |
     |enabled | Igen |IGAZ vagy hamis.  Engedélyezi vagy letiltja a megtartási házirend segítségével.  Igaz értéke esetén a nap paraméter 0-nál nagyobb számnak kell lennie.
     | kategóriák |Igen |Eseménykategóriák, érdemes gyűjtik szóközzel elválasztott listáját. Lehetséges értékek: írási, törlési és művelet. |
@@ -235,7 +235,7 @@ A JSON-elemek az alábbi táblázatban ismertetett.
 | callerIpAddress |IP-cím a felhasználó hajtott végre a műveletet, egyszerű Felhasználónévi jogcím vagy egyszerű szolgáltatásnév jogcímet rendelkezésre állása alapján. |
 | correlationId |Általában egy GUID Azonosítót a karakterláncként. Ugyanaz a uber művelet eseményeket, amelyek megosztása a korrelációs azonosító tartozik. |
 | identity |Az engedélyezési és a jogcímek leíró JSON-blobját. |
-| Engedélyezési |Az esemény tulajdonságainak RBAC-blobját. Általában tartalmazza az "action", "szerepkör" és "hatókör" tulajdonság. |
+| authorization |Az esemény tulajdonságainak RBAC-blobját. Általában tartalmazza az "action", "szerepkör" és "hatókör" tulajdonság. |
 | szint |Az esemény szintjét. A következő értékek egyikét: _Kritikus fontosságú_, _hiba_, _figyelmeztetés_, _tájékoztató_, és _részletes_ |
 | location |Régió, a helyét történt (vagy globális). |
 | properties |Állítsa be a `<Key, Value>` párok (azaz szótár), az esemény részleteit leíró. |

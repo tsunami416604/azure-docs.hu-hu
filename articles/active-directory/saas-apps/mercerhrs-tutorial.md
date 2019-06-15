@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 8944e4533448f5787f5c85c12e4ab2747eb96e4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ae074e8732898524d917f2537023c4b506cff80
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65872269"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097473"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Mercer BenefitsCentral (MBC)
 
@@ -52,7 +52,7 @@ Konfigurálja az integrációt a Mercer BenefitsCentral (MBC) az Azure AD-be, sz
 
 **Mercer BenefitsCentral (MBC) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -158,11 +158,11 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ebben a szakaszban engedélyezze Britta Simon Mercer-BenefitsCentral (MBC) nyújtó Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Mercer BenefitsCentral (MBC)**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Mercer BenefitsCentral (MBC)** .
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Mercer BenefitsCentral (MBC)**.
+2. Az alkalmazások listájában jelölje ki a **Mercer BenefitsCentral (MBC)** .
 
     ![A Mercer BenefitsCentral (MBC) hivatkozásra az alkalmazások listáját](common/all-applications.png)
 
@@ -184,7 +184,7 @@ Ebben a szakaszban engedélyezze Britta Simon Mercer-BenefitsCentral (MBC) nyúj
 
 Ebben a szakaszban egy Britta Simon Mercer-BenefitsCentral (MBC) nevű felhasználó létrehozásához. Együttműködve [Mercer BenefitsCentral (MBC) támogatási csapatának](https://www.mercer.com/contact-us.html) a felhasználók hozzáadása a Mercer BenefitsCentral (MBC) platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

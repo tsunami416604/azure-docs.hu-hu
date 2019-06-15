@@ -4,72 +4,77 @@ description: Az Azure IoT Edge-eszköz használata, amely képes feldolgozni az 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/23/2019
+ms.date: 06/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 722ee6197b467454818026c960e1ce0e5b39efb4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5881adb7e2fc0d52cc2037d3d4a9e986b3e29d74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717189"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058378"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>A transzparens átjáróként működő IoT Edge-eszköz konfigurálása
 
-Ez a cikk részletes utasításokat IoT Edge-eszközökön az IoT hubbal való kommunikációhoz más eszközök esetében transzparens átjáróként működik. Ez a cikk az előfizetési időszak *IoT Edge-átjáró* IoT Edge-eszköz transzparens átjáróként használt hivatkozik. További információkért lásd: [hogyan az IoT Edge-eszközt átjáróként használható](./iot-edge-as-gateway.md).
+Ez a cikk részletes utasításokat az IoT Edge-eszközöket az IoT hubbal való kommunikációhoz más eszközök esetében transzparens átjáróként működik. Ez a cikk az előfizetési időszak *IoT Edge-átjáró* IoT Edge-eszköz transzparens átjáróként használt hivatkozik. További információkért lásd: [hogyan az IoT Edge-eszközt átjáróként használható](./iot-edge-as-gateway.md).
 
 >[!NOTE]
 >Jelenleg:
-> * Ha az átjáró nem csatlakozik az IoT hubról, alsóbb rétegbeli eszközök az átjáró nem tudja hitelesíteni.
 > * Edge-kompatibilis eszközök IoT Edge-átjáró nem tud kapcsolódni. 
 > * Alsóbb rétegbeli eszközök fájl feltöltése nem használható.
 
-Egy eszközhöz átjáróként működik, képesnek kell lennie, biztonságosan csatlakozhat az alsóbb rétegbeli eszközök. Az Azure IoT Edge lehetővé teszi, hogy a nyilvános kulcsokra épülő infrastruktúrájú (PKI) eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben azt engedélyezi egy alsóbb rétegbeli eszközök transzparens átjáróként működő IoT Edge-eszköz csatlakozni. Ésszerű biztonságának fenntartása érdekében az alsóbb rétegbeli eszközök kell erősítse meg az IoT Edge-eszköz identitását. Azt szeretné, hogy az eszközök csak az átjárókat nem potenciálisan kártékony átjárókat csatlakozik.
+Transzparens átjáró sikeres kapcsolat beállítása három általános lépésből áll. Ez a cikk ismerteti az első lépés:
+
+1. **Az átjáró eszköz képesnek kell lennie, biztonságosan csatlakozhat az alsóbb rétegbeli eszközök, fogadhatják a Microsofttól alsóbb rétegbeli eszközök és irányíthatja az üzenetek a megfelelő célhelyre.**
+2. Az alsóbb rétegbeli eszköz rendelkeznie kell egy eszközidentitást az IoT Hub a hitelesítéshez, és tudja, hogy az átjáró eszköz keresztül kommunikálnak. További információkért lásd: [hitelesítése egy alsóbb rétegbeli eszközök Azure IoT hubra](how-to-authenticate-downstream-device.md).
+3. Az alsóbb rétegbeli eszközök képesnek kell lennie, biztonságosan csatlakozhat a átjáróeszközt. További információkért lásd: [egy alsóbb rétegbeli eszköz csatlakoztatása az Azure IoT Edge-átjáró](how-to-connect-downstream-device.md).
+
+
+Egy eszközt átjáróként működik, az azt képesnek kell lennie az alsóbb rétegbeli eszközök biztonságosan kapcsolódhat. Az Azure IoT Edge lehetővé teszi, hogy a nyilvános kulcsokra épülő infrastruktúrájú (PKI) eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben azt engedélyezi egy alsóbb rétegbeli eszközök transzparens átjáróként működő IoT Edge-eszköz csatlakozni. Ésszerű biztonságának fenntartása érdekében az alsóbb rétegbeli eszközök ellenőrizze az átjáró eszköz identitását. Ez az identitás-ellenőrzés megakadályozza, hogy az eszközök potenciálisan kártékony átjáró csatlakozik.
 
 Lehet, hogy egy alsóbb rétegbeli eszköz bármilyen alkalmazás vagy a platform, amely rendelkezik egy létrehozott identitás a [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) felhőalapú szolgáltatás. Sok esetben ezek az alkalmazások használni a [Azure IoT eszközoldali SDK-t](../iot-hub/iot-hub-devguide-sdks.md). Gyakorlati okokból azonban egy alsóbb rétegbeli eszközök az IoT Edge-átjáróeszköz magát a futó alkalmazás még akkor is lehet. 
 
-Minden olyan tanúsítvány-infrastruktúra, amely lehetővé teszi a megbízhatósági kapcsolat szükséges az eszköz-átjáró topológiát hozhat létre. Ez a cikk feltételezzük, hogy az azonos tanúsítvány beállítása, hogy engedélyezni szeretné használni [x.509-es Hitelesítésszolgáltatói biztonsági](../iot-hub/iot-hub-x509ca-overview.md) az IoT Hub, amelyek egy adott IoT hub (az IoT hub tulajdonos CA), és a egy sorozat tanúsítványok társított X.509 Hitelesítésszolgáltatói tanúsítvány, a hitelesítésszolgáltató és a egy hitelesítésszolgáltató aláírt az IoT Edge-eszköz.
+Minden olyan tanúsítvány-infrastruktúra, amely lehetővé teszi a megbízhatósági kapcsolat szükséges az eszköz-átjáró topológiát hozhat létre. Ez a cikk feltételezzük, hogy az azonos tanúsítvány beállítása, hogy engedélyezni szeretné használni [x.509-es Hitelesítésszolgáltatói biztonsági](../iot-hub/iot-hub-x509ca-overview.md) az IoT Hub, amely magában foglalja egy adott IoT hub (az IoT hub legfelső szintű hitelesítésszolgáltató), egy aláírt tanúsítvány sorozatát társított X.509 Hitelesítésszolgáltatói tanúsítvány a hitelesítésszolgáltató és a egy Hitelesítésszolgáltatót az IoT Edge-eszköz.
 
 ![Átjáró tanúsítvány beállítása](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-Az átjáró eszköz Hitelesítésszolgáltatói tanúsítvány az alsóbb rétegbeli eszközök megadja az IoT Edge során a kapcsolatot a kezdeményezéséről. Az alsóbb rétegbeli eszköz ellenőrzi, hogy az IoT Edge-eszköz hitelesítésszolgáltató tanúsítványát a tulajdonos Hitelesítésszolgáltatói tanúsítvány aláírásával. Ez a folyamat lehetővé teszi, hogy az alsóbb rétegbeli eszközök annak ellenőrzéséhez, hogy az átjáró egy megbízható forrásból származik.
+>[!NOTE]
+>A "legfelső szintű hitelesítésszolgáltató" Ez a cikk során használt kifejezés a nyilvános kulcsokra épülő infrastruktúra tanúsítványlánc legfelső hatóság nyilvános tanúsítványát, és nem feltétlenül szindikálási hitelesítésszolgáltató tanúsítvány gyökerében. Sok esetben ténylegesen egy közbenső hitelesítésszolgáltató nyilvános tanúsítványát. 
 
-A következő lépések végigvezetik a folyamat a tanúsítványok létrehozását, és telepíti őket a megfelelő helyeken.
+Az átjáró eszköz Hitelesítésszolgáltatói tanúsítvány az alsóbb rétegbeli eszközök megadja az IoT Edge során a kapcsolatot a kezdeményezéséről. Az alsóbb rétegbeli eszköz ellenőrzi, hogy az IoT Edge-eszköz hitelesítésszolgáltató tanúsítványát a legfelső szintű Hitelesítésszolgáltatói tanúsítvány aláírásával. Ez a folyamat lehetővé teszi az alsóbb rétegbeli eszköz győződjön meg arról, hogy az átjáró egy megbízható forrásból származik-e.
+
+A következő lépések végigvezetik a folyamat a tanúsítványok létrehozását, és telepíti őket a megfelelő helyeken az átjárón. Minden olyan gép, használja a tanúsítványok létrehozásához, és másolja őket keresztül az IoT Edge-eszköz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure IoT Edge-eszköz konfigurálásához átjáróként. Az IoT Edge telepítési lépéseket használhatja a következő operációs rendszerek:
-* [Windows](./how-to-install-iot-edge-windows.md)
-* [Linux x64](./how-to-install-iot-edge-linux.md)
-* [Linux ARM32](./how-to-install-iot-edge-linux-arm.md)
+Az Azure IoT Edge-eszköz konfigurálásához átjáróként. Az IoT Edge telepítési lépéseket a következő operációs rendszerek egyikét használhatja:
+  * [Windows](./how-to-install-iot-edge-windows.md)
+  * [Linux x64](./how-to-install-iot-edge-linux.md)
+  * [Linux ARM32](./how-to-install-iot-edge-linux-arm.md)
 
-Minden olyan gép, használja a tanúsítványok létrehozásához, és másolja őket keresztül az IoT Edge-eszköz.
-
->[!NOTE]
->Ezeket az utasításokat a tanúsítványok létrehozásához használja az "átjáró neve" kell lennie a neve megegyezik használt állomásnév az IoT Edge config.yaml fájlban és a kapcsolati karakterláncban az alsóbb rétegbeli eszköz GatewayHostName. A "gateway neve" kell lennie az IP-címet, vagy DNS- vagy gazdafájlbejegyzéssel használatával oldható fel. Kommunikáció a használt protokoll alapján (MQTTS:8883 / AMQPS:5671 / HTTPS:433) lehetséges alsóbb rétegbeli eszközök és az IoT Edge transparant között kell lennie. Ha tűzfal a kettő között, a megfelelő portot kell lennie nyitva.
+Ez a cikk hivatkozik a *átjáró állomásnév* különböző időpontokban. Az átjáró állomásnév van deklarálva a **állomásnév** paraméter az IoT Edge-átjáróeszköz config.yaml fájl. Ebben a cikkben a tanúsítványok létrehozására szolgál, és az alsóbb rétegbeli eszközök a kapcsolati karakterlánc neve. Az átjáró állomásnevet kell lennie az IP-címet, vagy DNS- vagy gazdafájlbejegyzéssel használatával oldható fel.
 
 ## <a name="generate-certificates-with-windows"></a>Windows-tanúsítványok létrehozása
 
-Ebben a szakaszban a lépések segítségével hozza létre teszttanúsítványokat egy Windows-eszközön. Ezeket a lépéseket használhatja a Windows IoT Edge-eszközön tanúsítványainak előállításához. Vagy a tanúsítványok létrehozása a Windows fejlesztői gépen, és másolja őket minden IoT Edge-eszköz. 
+Ebben a szakaszban a lépések segítségével hozza létre teszttanúsítványokat a Windows. Egy Windows-számítógép használatával is létrehozhat a tanúsítványokat, és másolja őket keresztül bármely IoT Edge-eszköz bármelyik támogatott operációs rendszert futtat. 
 
 Ebben a szakaszban létrehozott tanúsítványokat csak tesztelési célokra szolgálnak. 
 
 ### <a name="install-openssl"></a>OpenSSL telepítése
 
-OpenSSL for Windows telepítése a gépen, amely a tanúsítványok létrehozásához használ. OpenSSL telepítése számos módja van:
+OpenSSL for Windows telepítése a gépen, amely a tanúsítványok létrehozásához használ. Ha már telepítve van az eszközén Windows OpenSSL, előfordulhat, hogy kihagyja ezt a lépést, de győződjön meg arról, hogy openssl.exe a PATH környezeti változóban érhető el. 
 
-   >[!NOTE]
-   >Ha már telepítve van az eszközén Windows OpenSSL, kihagyhatja ezt a lépést, de győződjön meg arról, hogy openssl.exe a PATH környezeti változóban érhető el.
+OpenSSL telepítése számos módja van:
 
-* **Egyszerűbb:** Töltse le és telepítse a [külső OpenSSL bináris](https://wiki.openssl.org/index.php/Binaries), például a [a projektet a SourceForge](https://sourceforge.net/projects/openssl/). Adja hozzá a teljes elérési útját a PATH környezeti változóba openssl.exe. 
+* **Egyszerűbb:** Töltse le és telepítse a [külső OpenSSL bináris](https://wiki.openssl.org/index.php/Binaries), például a [SourceForge az OpenSSL](https://sourceforge.net/projects/openssl/). Adja hozzá a teljes elérési útját a PATH környezeti változóba openssl.exe. 
    
 * **Ajánlott:** Töltse le az OpenSSL-forráskódot, és a bináris fájlok felépítéséhez a számítógépen, saját magának vagy keresztül [vcpkg](https://github.com/Microsoft/vcpkg). Az alábbi utasításokat vcpkg használatával töltse le a forráskódot, fordítási és OpenSSL telepítése a Windows-gépen egyszerű lépésben.
 
-   1. Navigáljon ahhoz a könyvtárhoz, ahol vcpkg telepíteni szeretné. Ez a könyvtár, mint kifejezés  *\<VCPKGDIR >*. Töltse le és telepítse az utasítások [vcpkg](https://github.com/Microsoft/vcpkg).
+   1. Navigáljon ahhoz a könyvtárhoz, ahol vcpkg telepíteni szeretné. Ez a könyvtár, mint kifejezés  *\<VCPKGDIR >* . Töltse le és telepítse az utasítások [vcpkg](https://github.com/Microsoft/vcpkg).
    
-   2. A powershell parancssorba vcpkg telepítése után a következő parancsot az OpenSSL csomagot telepítse a Windows x64. A telepítés általában befejezéséhez körülbelül 5 percet vesz igénybe.
+   2. Egyszer vcpkg telepítve van, a következő parancsot a OpenSSL-csomag telepítéséhez a x64 Windows powershell parancssorból. A telepítés általában befejezéséhez körülbelül 5 percet vesz igénybe.
 
       ```powershell
       .\vcpkg install openssl:x64-windows
@@ -78,46 +83,48 @@ OpenSSL for Windows telepítése a gépen, amely a tanúsítványok létrehozás
 
 ### <a name="prepare-creation-scripts"></a>Létrehozási parancsfájlok előkészítése
 
-A c nyelvhez készült Azure IoT eszközoldali SDK-t tartalmaz parancsprogramokat, amelyek segítségével hozzon létre teszttanúsítványokat. Ebben a szakaszban klónozza az SDK-t, és a PowerShell konfigurálása.
+Az Azure IoT Edge git-tárház tartalmaz parancsprogramokat, amelyek segítségével hozzon létre teszttanúsítványokat. Ez a szakasz az IoT Edge-tárház klónozása, és hajtsa végre a parancsfájlok. 
 
 1. Nyisson meg egy PowerShell-ablakot rendszergazdai módban. 
 
-2. Klónozza a git-adattár, amely nem éles tanúsítványainak létrehozásához szükséges parancsfájlokat tartalmazza. Ezek a parancsfájlok segítségével hozhat létre a szükséges tanúsítványok beállítása a transzparens átjáró. Használja a `git clone` parancs vagy [töltse le a zip-fájl](https://github.com/Azure/azure-iot-sdk-c/archive/master.zip). 
+2. Klónozza a git-adattár, amely nem éles tanúsítványainak létrehozásához szükséges parancsfájlokat tartalmazza. Ezek a parancsfájlok segítségével hozhat létre a szükséges tanúsítványok beállítása a transzparens átjáró. Használja a `git clone` parancs vagy [töltse le a zip-fájl](https://github.com/Azure/iotedge/archive/master.zip). 
 
    ```powershell
-   git clone https://github.com/Azure/azure-iot-sdk-c.git
+   git clone https://github.com/Azure/iotedge.git
    ```
 
-3. Lépjen abba a könyvtárba, amelyben a használni kívánt. Ez a könyvtár, mint kifejezés  *\<WRKDIR >*.  Minden fájl ebben a címtárban létrejön.
+3. Lépjen abba a könyvtárba, amelyben a használni kívánt. Ez a cikk során ez a könyvtár Felhívjuk  *\<WRKDIR >* . Az összes tanúsítványt és kulcsot a munkakönyvtárban hozható létre.
 
-4. Másolja a konfigurációs és a parancsfájl a munkakönyvtárban. 
+4. A klónozott adattárra a munkakönyvtárban konfigurációs és parancsfájl másolása. 
 
    ```powershell
-   copy <path>\azure-iot-sdk-c\tools\CACertificates\*.cnf .
-   copy <path>\azure-iot-sdk-c\tools\CACertificates\ca-certs.ps1 .
+   copy <path>\iotedge\tools\CACertificates\*.cnf .
+   copy <path>\iotedge\tools\CACertificates\ca-certs.ps1 .
    ```
 
-   Ha az SDK zip letöltött, akkor a mappa neve `azure-iot-sdk-c-master` és az elérési út a megegyezik. 
-
-5. Állítsa be a környezeti változó OPENSSL_CONF használhat a openssl_root_ca.cnf konfigurációs fájlt.
+   Ha letöltötte a ZIP-adattárat, akkor a mappa neve `iotedge-master` és az elérési út a megegyezik. 
+<!--
+5. Set environment variable OPENSSL_CONF to use the openssl_root_ca.cnf configuration file.
 
     ```powershell
     $env:OPENSSL_CONF = "$PWD\openssl_root_ca.cnf"
     ```
-
-6. Engedélyezze a PowerShell a parancsprogramok futtatásához.
+-->
+5. Engedélyezze a PowerShell a parancsprogramok futtatásához.
 
    ```powershell
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
    ```
 
-7. A PowerShell a globális névtérhez a parancsfájlok által használt funkciók használata.
+7. A PowerShell a globális névtérben, a parancsfájlok által használt funkciók használata.
    
    ```powershell
    . .\ca-certs.ps1
    ```
 
-8. Győződjön meg arról, hogy OpenSSL megfelelően telepítve, és ellenőrizze, hogy nem jár együtt név ütközések a meglévő tanúsítványok. Ha probléma adódik, a parancsfájl kell azt ismertetik, hogyan javíthatók a rendszeren.
+   A PowerShell-ablakot, hogy csak tesztelési célokat szolgálnak. Ez a szkript által létrehozott tanúsítványokat, és nem használható éles üzemi helyzetekben figyelmeztetést jelenítenek meg.
+
+8. Ellenőrizze, hogy OpenSSL megfelelően telepítve, és győződjön meg arról, hogy nem jár együtt név ütközések a meglévő tanúsítványok. Ha probléma adódik, a parancsfájl kell azt ismertetik, hogyan javíthatók a rendszeren.
 
    ```powershell
    Test-CACertsPrerequisites
@@ -127,121 +134,116 @@ A c nyelvhez készült Azure IoT eszközoldali SDK-t tartalmaz parancsprogramoka
 
 Ebben a szakaszban három tanúsítványokat hoznak létre, és csatlakoztassa őket a láncban. Helyezi el a tanúsítványokat a lánc fájl lehetővé teszi, hogy az IoT Edge-átjáróeszköz és alsóbb rétegbeli eszközök egyszerűen telepítse őket.  
 
-1. Hozza létre a tulajdonos Hitelesítésszolgáltatói tanúsítványt és annak egy közbenső tanúsítvány aláírása. A tanúsítványok összes kerülnek  *\<WRKDIR >*.
-
-      ```powershell
-      New-CACertsCertChain rsa
-      ```
-
-2. Hozzon létre az IoT Edge eszköz Hitelesítésszolgáltatói tanúsítvány és titkos kulcs a következő paranccsal. Adjon meg egy nevet, az átjáró eszköz, amelyet használhat a fájlokat, és a tanúsítvány létrehozása során. 
+1. Hozzon létre a legfelső szintű Hitelesítésszolgáltatói tanúsítványt és annak egy közbenső tanúsítvány aláírása. A tanúsítványok a munkakönyvtárban kerülnek.
 
    ```powershell
-   New-CACertsEdgeDevice "<gateway name>"
+   New-CACertsCertChain rsa
    ```
 
-3. A tulajdonos Hitelesítésszolgáltatói tanúsítvány, a köztes tanúsítványt és az IoT Edge-eszköz Hitelesítésszolgáltatói tanúsítvány a következő paranccsal hozzon létre egy tanúsítványláncra. 
-
-   ```powershell
-   Write-CACertsCertificatesForEdgeDevice "<gateway name>"
-   ```
-
-   A szkript a következő tanúsítványok és a kulcsot hoz létre:
-   * `<WRKDIR>\certs\new-edge-device.*`
-   * `<WRKDIR>\private\new-edge-device.key.pem`
+   A parancsprogram-utasítás létrehoz néhány tanúsítvány és kulcs fájljai, de tekintse meg a megfelelőt, különösen a cikk későbbi részében lesz:
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
+
+2. Hozzon létre az IoT Edge eszköz Hitelesítésszolgáltatói tanúsítvány és titkos kulcs a következő paranccsal. Adja meg az átjáró állomásnév, az átjáró eszköz iotedge\config.yaml fájlban találja. Az átjáró állomásnevet használja a fájlokat és a tanúsítvány létrehozása során. 
+
+   ```powershell
+   New-CACertsEdgeDevice "<gateway hostname>"
+   ```
+
+   A parancsprogram-utasítás létrehoz néhány tanúsítvány és kulcs fájlt, beleértve két tekintse meg a cikk későbbi részében fogunk:
+   * `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
+   * `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+
+Most, hogy a tanúsítványok, folytassa a [tanúsítványok az átjáró telepítése](#install-certificates-on-the-gateway)
 
 ## <a name="generate-certificates-with-linux"></a>A Linux és a tanúsítványok előállítása
 
-Ebben a szakaszban a lépések segítségével hozza létre teszttanúsítványokat egy Linux rendszerű eszközön. A tanúsítványok létrehozása az IoT Edge-eszközén, vagy használjon egy külön számítógépen, és másolja a végső tanúsítványok bármely támogatott operációs rendszert futtató bármely IoT Edge-eszköz. 
+Ebben a szakaszban a lépések segítségével hozza létre teszttanúsítványokat Linux rendszeren. Linux rendszerű gépen használatával is létrehozhat a tanúsítványokat, és másolja őket keresztül bármely IoT Edge-eszköz bármelyik támogatott operációs rendszert futtat. 
+
+Ebben a szakaszban létrehozott tanúsítványokat csak tesztelési célokra szolgálnak. 
 
 ### <a name="prepare-creation-scripts"></a>Létrehozási parancsfájlok előkészítése
+
+Az Azure IoT Edge git-tárház tartalmaz parancsprogramokat, amelyek segítségével hozzon létre teszttanúsítványokat. Ez a szakasz az IoT Edge-tárház klónozása, és hajtsa végre a parancsfájlok. 
 
 1. Klónozza a git-adattár, amely nem éles tanúsítványainak létrehozásához szükséges parancsfájlokat tartalmazza. Ezek a parancsfájlok segítségével hozhat létre a szükséges tanúsítványok beállítása a transzparens átjáró. 
 
    ```bash
-   git clone https://github.com/Azure/azure-iot-sdk-c.git
+   git clone https://github.com/Azure/iotedge.git
    ```
 
-2. Lépjen abba a könyvtárba, amelyben a használni kívánt. Ez a könyvtár, mint kifejezés  *\<WRKDIR >*.  Minden fájl ebben a címtárban létrejön.
+2. Lépjen abba a könyvtárba, amelyben a használni kívánt. Ez a könyvtár teljes, a cikk kifejezés  *\<WRKDIR >* . Összes tanúsítvány és kulcs fájl ebben a címtárban létrejön.
   
-3. Másolja a konfigurációs és a parancsfájl-fájlt a munkakönyvtárban.
+3. Másolja a konfigurációs és a parancsfájl fájlt a klónozott IoT Edge-adattárból a munkakönyvtár.
 
    ```bash
-   cp <path>/azure-iot-sdk-c/tools/CACertificates/*.cnf .
-   cp <path>/azure-iot-sdk-c/tools/CACertificates/certGen.sh .
+   cp <path>/iotedge/tools/CACertificates/*.cnf .
+   cp <path>/iotedge/tools/CACertificates/certGen.sh .
    ```
 
-4. A megadott szkripttel tanúsítványainak létrehozásához szükséges OpenSSL konfigurálása. 
+<!--
+4. Configure OpenSSL to generate certificates using the provided script. 
 
    ```bash
    chmod 700 certGen.sh 
    ```
+-->
 
 ### <a name="create-certificates"></a>Tanúsítványok létrehozása
 
 Ebben a szakaszban három tanúsítványokat hoznak létre, és csatlakoztassa őket a láncban. Lánc fájlba helyezi el a tanúsítványokat is könnyedén telepítheti őket az IoT Edge-átjáróeszköz és alsóbb rétegbeli eszközök lehetővé teszi.  
 
-1. Hozzon létre a tulajdonos Hitelesítésszolgáltatói tanúsítvány és a egy köztes tanúsítványt. Ezek a tanúsítványok vannak elhelyezve  *\<WRKDIR >*.
+1. Hozzon létre a legfelső szintű Hitelesítésszolgáltatói tanúsítványt és a egy köztes tanúsítványt. Ezek a tanúsítványok vannak elhelyezve  *\<WRKDIR >* .
 
    ```bash
    ./certGen.sh create_root_and_intermediate
    ```
 
-   A szkript a következő tanúsítványok és kulcsok hoz létre:
+   A parancsfájl több tanúsítványt és kulcsot hoz létre. Jegyezze fel az egyik, amely azt a következő szakaszban fog hivatkozni:
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`
-   * `<WRKDIR>/certs/azure-iot-test-only.intermediate.cert.pem`
-   * `<WRKDIR>/private/azure-iot-test-only.root.ca.key.pem`
-   * `<WRKDIR>/private/azure-iot-test-only.intermediate.key.pem`
 
-2. Hozzon létre az IoT Edge eszköz Hitelesítésszolgáltatói tanúsítvány és titkos kulcs a következő paranccsal. Adjon meg egy nevet, az átjáró eszköz, amelyet használhat a fájlokat, és a tanúsítvány létrehozása során. 
+2. Hozzon létre az IoT Edge eszköz Hitelesítésszolgáltatói tanúsítvány és titkos kulcs a következő paranccsal. Adja meg az átjáró állomásnév, az átjáró eszköz iotedge/config.yaml fájlban találja. Az átjáró állomásnevet használja a fájlokat és a tanúsítvány létrehozása során. 
 
    ```bash
-   ./certGen.sh create_edge_device_certificate "<gateway name>"
+   ./certGen.sh create_edge_device_certificate "<gateway hostname>"
    ```
 
-   A szkript a következő tanúsítványok és a kulcsot hoz létre:
-   * `<WRKDIR>/certs/new-edge-device.*`
-   * `<WRKDIR>/private/new-edge-device.key.pem`
-
-3. Nevű tanúsítványláncolat **új – edge-eszközök – teljes-chain.cert.pem** a tulajdonos Hitelesítésszolgáltatói tanúsítvány, köztes tanúsítványt és az IoT Edge-eszköz CA tanúsítvány.
-
-   ```bash
-   cat ./certs/new-edge-device.cert.pem ./certs/azure-iot-test-only.intermediate.cert.pem ./certs/azure-iot-test-only.root.ca.cert.pem > ./certs/new-edge-device-full-chain.cert.pem
-   ```
+   A parancsfájl több tanúsítványt és kulcsot hoz létre. Jegyezze fel a két, amely azt a következő szakaszban fog hivatkozni: 
+   * `<WRKDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem`
+   * `<WRKDIR>/private/iot-edge-device-<gateway hostname>.key.pem`
 
 ## <a name="install-certificates-on-the-gateway"></a>Az átjáró tanúsítványok telepítése
 
 Most, hogy egy tanúsítványlánc végrehajtott, szüksége az IoT Edge-átjáróeszköz telepítheti és konfigurálhatja az IoT Edge-futtatókörnyezet, az új tanúsítványok hivatkozni. 
 
-1. A következő fájlokat másolja  *\<WRKDIR >*. Mentse ezeket bárhol az IoT Edge-eszközön. A cél könyvtárát, az IoT Edge-eszköz használata a kifejezés  *\<CERTDIR >*. 
+1. A következő fájlokat másolja  *\<WRKDIR >* . Mentse ezeket bárhol az IoT Edge-eszközön. A cél könyvtárát, az IoT Edge-eszköz használata a kifejezés  *\<CERTDIR >* . 
 
-   Ha létrehozta az IoT Edge-eszköz magát a tanúsítványokat, kihagyhatja ezt a lépést, és a munkakönyvtárban elérési útját használja.
+   * Eszköz CA-tanúsítvány –  `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
+   * Eszköz CA titkos kulcs- `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * Legfelső szintű hitelesítésszolgáltató- `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-   * Eszköz CA-tanúsítvány –  `<WRKDIR>\certs\new-edge-device-full-chain.cert.pem`
-   * Eszköz CA titkos kulcs- `<WRKDIR>\private\new-edge-device.key.pem`
-   * CA - tulajdonos `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
+   Használhat olyan szolgáltatásokhoz, mint [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy egy függvényt, például [biztonságos másolás protokoll](https://www.ssh.com/ssh/scp/) áthelyezni a fájlokat.  Ha létrehozta az IoT Edge-eszköz magát a tanúsítványokat, kihagyhatja ezt a lépést, és a munkakönyvtárban elérési útját használja.
 
 2. Nyissa meg az IoT Edge biztonsági démon konfigurációs fájlt. 
 
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-3. Állítsa be a **tanúsítvány** config.yaml fájlban az elérési úthoz, amelyre helyezte az IoT Edge-eszközön a tanúsítvány és kulcs fájlok tulajdonságait.
+3. Állítsa be a **tanúsítvány** tulajdonságok az IoT Edge-eszközön a tanúsítvány és kulcs fájlok teljes elérési útja a config.yaml fájlban. Távolítsa el a `#` karakter előtt távolítsa el a négy sorban a tanúsítvány tulajdonságait. Ne feledje, hogy a yaml francia éppen két szóköz.
 
    * Windows:
 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>\\certs\\new-edge-device-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>\\private\\new-edge-device.key.pem"
+        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-<gateway hostname>-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-<gateway hostname>.key.pem"
         trusted_ca_certs: "<CERTDIR>\\certs\\azure-iot-test-only.root.ca.cert.pem"
       ```
    
    * Linux: 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>/certs/new-edge-device-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>/private/new-edge-device.key.pem"
+        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>/private/iot-edge-device-<gateway hostname>.key.pem"
         trusted_ca_certs: "<CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem"
       ```
 
@@ -249,9 +251,9 @@ Most, hogy egy tanúsítványlánc végrehajtott, szüksége az IoT Edge-átjár
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>Az átjáró üzembe helyezése EdgeHub
 
-Amikor először telepíti az IoT Edge-eszközön, a rendszer csak egy modul automatikusan elindul: az IoT Edge-ügynök. Az eszköz átjáróként működik mindkét rendszer modult kell. Ha még nem telepítette a kapcsolt modulok az átjáró eszköz előtt, az eszköz indítása a második rendszer modul, az IoT Edge-központ telepítésének létrehozása. Az üzembe helyezés fognak kinézni üres, mert nem adja hozzá a szükséges modulok a varázslóban, de elvégzi az üzembe helyezést mindkét rendszer modulok. 
+Amikor először telepíti az IoT Edge-eszközön, a rendszer csak egy modul automatikusan elindul: az IoT Edge-ügynök. Az eszköz átjáróként működik mindkét rendszer modult kell. Ha még nem telepítette a kapcsolt modulok az átjáró eszköz előtt, hozzon létre egy kezdeti telepítés indítása a második rendszer modul, az IoT Edge hub az eszközhöz. Az üzembe helyezés fognak kinézni üres, mert nem adja hozzá a szükséges modulok a varázslóban, de lesz, győződjön meg arról, hogy fut-e a két rendszer modulok. 
 
-Ellenőrizheti, hogy melyik modulokat futtatják egy eszközön, a parancs `iotedge list`.
+Ellenőrizheti, hogy melyik modulokat futtatják egy eszközön, a parancs `iotedge list`. Ha a listában csak a modul adja vissza **edgeAgent** nélkül **edgeHub**, kövesse az alábbi lépéseket:
 
 1. Az Azure Portalon keresse meg az IoT-központot.
 
@@ -275,9 +277,9 @@ Ellenőrizheti, hogy melyik modulokat futtatják egy eszközön, a parancs `iote
 
 ## <a name="open-ports-on-gateway-device"></a>Az átjáróeszközön portok megnyitása
 
-IoT Edge-eszközök nem kell függvényt, hogy bemenő kapcsolatot, mert az IoT hubbal folytatott minden kommunikáció a kimenő kapcsolatok keresztül történik. Azonban átjáróeszközök eltérőek, mert fogadhat üzeneteket az alsóbb rétegbeli eszközök lehetnek.
+IoT Edge-eszközök nem kell függvényt, hogy bemenő kapcsolatot, mert az IoT hubbal folytatott minden kommunikáció a kimenő kapcsolatok keresztül történik. Átjáróeszközök különböznek fogad üzeneteket az alsóbb rétegbeli eszközök van szükségük. Ha a tűzfal az alsóbb rétegbeli eszközök és az átjáró eszköz között, majd kommunikációs kell lennie, valamint a tűzfalon keresztül lehetséges.
 
-Egy átjáró forgatókönyv működjön az IoT Edge hubot támogatott protokollok legalább egyikének meg kell nyitni alsóbb rétegbeli eszközök érkező bejövő forgalmat. A támogatott protokollok a következők: MQTT, AMQP és HTTPS.
+Egy átjáró forgatókönyv működjön az IoT Edge hubot támogatott protokollok legalább egyikének meg kell nyitni alsóbb rétegbeli eszközök érkező bejövő forgalmat. A támogatott protokollok a következők: MQTT, AMQP és HTTPS. 
 
 | Port | Protocol |
 | ---- | -------- |
@@ -290,7 +292,7 @@ Az IoT Edge-futtatókörnyezet továbbíthatnak hasonlóan modulok által küld�
 
 Irányíthatja a alsóbb rétegbeli eszközök által küldött üzenetek módon jelenleg megkülönböztetve azokat az üzeneteket a modulok által. Minden modulok által küldött üzeneteket tartalmaznak rendszer tulajdonsággal **connectionModuleId** , de az alsóbb rétegbeli eszközök által küldött üzenetek viszont nem. Az útvonal a WHERE záradék használatával bármilyen üzenetet a rendszer tulajdonságot tartalmazó kizárása. 
 
-Az útvonal alatt használni kívánt bármely alsóbb rétegbeli eszközök üzeneteket küldeni egy modulnév `ai_insights`.
+Az alábbi útvonal van lenne üzeneteket küldhet a bármely alsóbb rétegbeli eszközök nevű modulra mutat példát `ai_insights`, majd `ai_insights` az IoT hubnak.
 
 ```json
 {
@@ -303,8 +305,15 @@ Az útvonal alatt használni kívánt bármely alsóbb rétegbeli eszközök üz
 
 Üzenet-útválasztással kapcsolatos további információkért lásd: [hogyan helyezhet üzembe modulokat, és ezekkel létesíthetnek útvonalat](./module-composition.md#declare-routes).
 
-[!INCLUDE [iot-edge-extended-ofline-preview](../../includes/iot-edge-extended-offline-preview.md)]
+
+## <a name="enable-extended-offline-operation"></a>A kiterjesztett offline művelet engedélyezése
+
+Kezdve a [v1.0.4 kiadási](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) az IoT Edge-futtatókörnyezet, az átjáró eszköz és az alsóbb rétegbeli eszközök csatlakoztathatja azt is konfigurálható a kiterjesztett offline művelet. 
+
+Ezzel a képességgel helyi modulok vagy alsóbb rétegbeli eszközök újból hitelesítheti az IoT Edge-eszközön igény szerint és kommunikálnak egymással üzenetek és a módszerekkel, még akkor is, ha az IoT hub kapcsolódik. További információkért lásd: [ismertetése az IoT Edge kiterjesztett offline képességeiről, eszközök, a modulok és a gyermek eszközök](offline-capabilities.md).
+
+Ahhoz, hogy a kiterjesztett offline képességeiről, az IoT Edge-átjáróeszköz és csatlakozni tudjanak hozzá alsóbb rétegbeli eszközök közötti szülő-gyermek kapcsolat létrehozására. Ezeket a lépéseket mutatjuk be részletesebben [hitelesítése egy alsóbb rétegbeli eszközök Azure IoT hubra](how-to-authenticate-downstream-device.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy IoT Edge-eszköz transzparens átjáróként működik, az átjáró megbízhatósági és üzenetek küldése az alsóbb rétegbeli eszközök konfigurálásához szüksége. További információkért lásd: [egy alsóbb rétegbeli eszköz csatlakoztatása az Azure IoT Edge-átjáró](how-to-connect-downstream-device.md).
+Most, hogy IoT Edge-eszköz transzparens átjáróként működik, az átjáró megbízhatósági és üzenetek küldése az alsóbb rétegbeli eszközök konfigurálásához szüksége. További információkért lásd: [egy alsóbb rétegbeli eszköz csatlakoztatása az Azure IoT Edge-átjáró](how-to-connect-downstream-device.md) és [hitelesítése egy alsóbb rétegbeli eszközök Azure IoT hubra](how-to-authenticate-downstream-device.md).

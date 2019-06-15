@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5da934709274d90668d94dfea3a9c223e191d032
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5ab2701a82da0b8f7bc4e23a3d947be905593e85
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076060"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057216"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Asztali alkalmazás, hogy a hívások webes API-k – alkalmazás regisztrálása
 
@@ -42,16 +42,17 @@ Ha az asztali alkalmazás interaktív hitelesítést használ, bejelentkezhet b�
 - Ha az eszköz kódfolyamat használni kívánt, nem tud bejelentkezni a személyes Microsoft-fiókkal rendelkező felhasználók még
 - Ha a felhasználó bejelentkezik egy szolgáltató B2C-szabályzat, és közösségi identitású, csak a a interaktív és a felhasználónév-jelszó-hitelesítést használjon.
 
-## <a name="redirect-uris"></a>Átirányítási URI azonosítók
+## <a name="redirect-uris"></a>Redirect URIs
 
 Az átirányítási URI-k, az asztali alkalmazás használatához újra a használni kívánt folyamat függ.
 
-- Az interaktív hitelesítéshez használja, ha szeretné használni `https://login.microsoftonline.com/common/oauth2/nativeclient`. Ez a konfiguráció megfelelő URL-cím kattintva érhet el a **hitelesítési** szakaszban az alkalmazás
+- Ha használja a **interaktív hitelesítés** vagy **eszköz kód Flow**, érdemes használni `https://login.microsoftonline.com/common/oauth2/nativeclient`. Ez a konfiguráció megfelelő URL-cím kattintva érhet el a **hitelesítési** szakaszban az alkalmazás
   
   > [!IMPORTANT]
   > Még ma MSAL.NET használ egy másik átirányítási URI-t alapértelmezés szerint a Windows rendszerű asztali alkalmazások (`urn:ietf:wg:oauth:2.0:oob`). A későbbiekben szeretnénk lesz az alapértelmezés módosításáról, és ezért azt javasoljuk, hogy használja `https://login.microsoftonline.com/common/oauth2/nativeclient`
 
-- Ha az alkalmazás csak integrált Windows-hitelesítés, felhasználónév/jelszó vagy eszköz kód Flow, nem kell regisztrálnia az alkalmazás átirányítási URI-t. Sőt ezek a folyamatok ne adatváltási, a Microsoft identity platform v2.0-végpont, és az alkalmazás vissza nem hívható meg minden olyan egyedi URI. Annak érdekében, hogy megkülönböztetni azokat a bizalmas ügyfél alkalmazás folyamatot, amely nem rendelkezik átirányítási URI-k vagy (az ügyfél hitelesítő adat flow démon alkalmazásokban használt), express, hogy az alkalmazás-e nyilvános az ügyfélalkalmazások kell. Címen érhető el ebben a konfigurációban a **hitelesítési** az alkalmazáshoz, és a szakasz a **speciális beállítások** alszakaszt, válassza a **Igen**, kérdésre **Kezelni alkalmazás nyilvános ügyfél** (az a **ügyféltípus alapértelmezett** bekezdés)
+- Ha az alkalmazás csak integrált Windows-hitelesítést, a felhasználónév/jelszó, nem kell regisztrálnia az alkalmazás átirányítási URI-t. Sőt ezek a folyamatok ne adatváltási, a Microsoft identity platform v2.0-végpont, és az alkalmazás vissza nem hívható meg minden olyan egyedi URI. 
+- Annak érdekében, hogy az eszköz Kódfolyamat megkülönböztetni, integrált Windows-hitelesítés és a egy bizalmas ügyfél alkalmazás folyamatot, amely nem rendelkezik a felhasználónév/jelszó átirányítási URI-k vagy (az ügyfél hitelesítő adat flow démon alkalmazásokban használt), express kell hogy az alkalmazás egy nyilvános ügyfélalkalmazás. Címen érhető el ebben a konfigurációban a **hitelesítési** az alkalmazáshoz, és a szakasz a **speciális beállítások** alszakaszt, válassza a **Igen**, kérdésre **Kezelni alkalmazás nyilvános ügyfél** (az a **ügyféltípus alapértelmezett** bekezdés)
 
   ![Nyilvános ügyfél engedélyezése](media/scenarios/default-client-type.png)
 

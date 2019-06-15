@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: dech
 ms.custom: seodec18
 ms.openlocfilehash: 6c3c8aee51a4484013126a5959d3d275a88aa1cc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66242642"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Adatok kezelése az Azure Storage Explorerrel
@@ -111,16 +111,16 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 #### <a name="delete-a-database"></a>Adatbázis törlése
 - Kattintson a jobb gombbal az adatbázisra, kattintson az **Adatbázis törlése** elemre, majd kattintson az **Igen** gombra a felugró ablakban. A rendszer törli az adatbázis-csomópontot, és automatikusan frissíti az Azure Cosmos DB-fiókot.
 
-    ![1. adatbázis törlése](./media/storage-explorer/delete-database1.png)  
+    ![1\. adatbázis törlése](./media/storage-explorer/delete-database1.png)  
 
-    ![2. adatbázis törlése](./media/storage-explorer/delete-database2.png) 
+    ![2\. adatbázis törlése](./media/storage-explorer/delete-database2.png) 
 
 #### <a name="create-a-collection"></a>Gyűjtemény létrehozása
 1. Kattintson a jobb gombbal az adatbázisra, válassza a **Gyűjtemény létrehozása** elemet, majd adja meg a következő információkat, amilyen például **Gyűjtemény azonosítója**, a **Tárkapacitás** stb. A befejezéshez kattintson az **OK** gombra. 
 
-    ![1. gyűjtemény létrehozása](./media/storage-explorer/create-collection.png)
+    ![1\. gyűjtemény létrehozása](./media/storage-explorer/create-collection.png)
 
-    ![2. gyűjtemény létrehozása](./media/storage-explorer/create-collection2.png) 
+    ![2\. gyűjtemény létrehozása](./media/storage-explorer/create-collection2.png) 
 
 2. Válassza a **Korlátlan** lehetőséget, hogy megadhassa a partíciókulcsot, majd kattintson az **OK** gombra.
 

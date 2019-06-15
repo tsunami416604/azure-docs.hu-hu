@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66754535"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
@@ -148,7 +148,7 @@ Frissítse [verzió 27.1.0](https://github.com/Azure/azure-sdk-for-go/tree/maste
 Frissítse [Az PowerShell 2.0.0-s verzió](https://www.powershellgallery.com/packages/Az) vagy később a megszakítások elkerülése érdekében.  Ezek a változások által érintett metódus használatakor minimális kódmódosításra lehet szükség.
 - `Grant-AzHDInsightHttpServicesAccess` most már elavult és felváltotta az új `Set-AzHDInsightGatewayCredential` parancsmagot.
 - `Get-AzHDInsightJobOutput` frissítve lett a tárfiók hívóbetűjét, a részletes, szerepkörön alapuló hozzáférés támogatására.
-    - HDInsight-fürt operátor, közreműködői vagy tulajdonosi szerepkörrel rendelkező felhasználók nem érinti.
+    - Ez nem érinti a HDInsight-fürt operátor, közreműködő vagy tulajdonos szerepkörrel rendelkező felhasználóit.
     - Csak a olvasói szerepkörrel rendelkező felhasználók meg kell adnia a `DefaultStorageAccountKey` paraméter explicit módon.
 - `Revoke-AzHDInsightHttpServicesAccess` most már elavult. HTTP mindig engedélyezve van, ezért már nem szükséges ezt a parancsmagot.
  Tekintse meg a [az. Áttelepítési útmutató HDInsight](https://github.com/Azure/azure-powershell/blob/master/documentation/migration-guides/Az.2.0.0-migration-guide.md#azhdinsight) további részletekért.

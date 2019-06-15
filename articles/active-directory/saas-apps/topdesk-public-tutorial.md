@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: c4052dd3b4c8f49b19193109eb5e8d2306646960
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a2a0ffd670a03aeaaa262b83127a385be9efc978
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65888565"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088480"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TOPdesk – nyilvános
 
@@ -53,7 +53,7 @@ TOPdesk – az Azure AD-be nyilvános integráció konfigurálásához hozzá ke
 
 **Adja hozzá a TOPdesk – nyilvános katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -189,7 +189,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása TOPdesk - nyilvános, hajtsa
     
     a. Az Azure Portalról letöltött metaadatfájl feltöltése a **összevonási metaadatok**, kattintson a **Tallózás**.
 
-    b. A feltölteni a tanúsítványfájlt, **tanúsítvány (RSA)**, kattintson a **Tallózás**.
+    b. A feltölteni a tanúsítványfájlt, **tanúsítvány (RSA)** , kattintson a **Tallózás**.
 
     c. A kapott az TOPdesk ügyfélszolgálathoz alatt embléma fájlt feltölteni **embléma ikon**, kattintson a **Tallózás**.
 
@@ -276,7 +276,7 @@ Ahhoz, hogy Azure AD-felhasználók TOPdesk - ba való bejelentkezéshez, ki kel
 > [!NOTE]
 > Bármely más TOPdesk – nyilvános felhasználói fiók létrehozása eszközöket használhatja, vagy TOPdesk – az Azure AD-felhasználói fiókok kiépítése nyilvános által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f31361dc3d7e24092677f1a78b2c405ae84578ed
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 07341c1ad30f1242bdff430826fdc82c45e09dac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230049"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086074"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Oktatóanyag: Zscaler béta az Azure Active Directory-integráció
 
@@ -118,7 +118,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Zscaler bétaverzió
 
 6. A Zscaler béta alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. Az a **felhasználói jogcímek** című rész a **felhasználói attribútumok** párbeszédpanelen kövesse az alábbi lépéseket az SAML-jogkivonat attribútum hozzáadása az alábbi táblázatban látható módon.
     
-    | Name (Név) | Forrásattribútum | 
+    | Name (Név) | Adatforrás-attribútum | 
     | ---------------| --------------- |
     | Tagja(Pénzügy)  | user.assignedroles |
 
@@ -297,7 +297,7 @@ Ebben a szakaszban a felhasználó Britta Simon Zscaler bétaverziós jön létr
 >[!Note]
 >Hozza létre manuálisan egy felhasználó, lépjen kapcsolatba a [Zscaler béta támogatási csapatának](https://www.zscaler.com/company/contact).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Az Azure AD egyszeri bejelentkezés beállításainak ellenőrzéséhez a hozzáférési panelen.
 
