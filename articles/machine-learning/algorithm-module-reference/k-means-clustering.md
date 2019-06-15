@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/06/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7e9b7c8f2cf86245322679198b84b50d2c5edce8
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65464668"
 ---
 # <a name="module-k-means-clustering"></a>A modul: K-közép csoportosítás
@@ -75,7 +75,7 @@ Amikor feldolgozza a betanítási adatok, a K-közép-algoritmus egy véletlensz
 
          Ez a módszer néven is ismert a *véletlenszerű partíció* metódust.  
   
-    -   **K-Means++**: Ez az alapértelmezett módszere fürtök inicializálása.  
+    -   **K-Means++** : Ez az alapértelmezett módszere fürtök inicializálása.  
   
          A **K-azt jelenti, hogy ++** algoritmus 2007-ben, David Arthur Sergei Vassilvitskii, így elkerülheti a gyenge, fürtözés, a standard szintű K-közép-algoritmus által javasolt. **K – azt jelenti, hogy ++** standard K-közép javítja a fürtcsomópontok kezdeti központok kiválasztására vonatkozó egy másik módszer segítségével.  
   

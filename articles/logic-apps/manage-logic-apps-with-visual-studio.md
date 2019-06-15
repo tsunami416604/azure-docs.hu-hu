@@ -11,10 +11,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
 ms.openlocfilehash: 6a36770ff623e35c56a972a482e24ebb24849051
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65467429"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logikai alkalmazások Visual studióval kezelése
@@ -82,7 +82,7 @@ A Visual Studióban található összes a logic Apps alkalmazásokat az Azure-el
 
 <a name="open-designer"></a>
 
-## <a name="open-in-visual-studio"></a>Megnyitás Visual Studio-ban
+## <a name="open-in-visual-studio"></a>Megnyitás a Visual Studióban
 
 A Visual Studióban nyissa meg a logic apps a korábban létrehozott és telepített, közvetlenül az Azure Portalon vagy Azure Resource Manager-projekteket a Visual Studio használatával.
 

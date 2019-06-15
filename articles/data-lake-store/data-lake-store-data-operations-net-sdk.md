@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 0771c9c5311e264fb996bbac1c540f9ed11873cb
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65908072"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Fájlrendszerműveletek az Azure Data Lake Storage Gen1 .NET SDK használatával
@@ -42,7 +42,7 @@ Fiókkezelési műveletek végrehajtása a Data Lake Storage Gen1 .NET SDK-val k
 A [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) elérhető kódminta végigvezeti a fájlok tárolóban való létrehozásának, a fájlok összetűzésének, a fájlok letöltésének és az egyes fájlok tárolóból való törlésének folyamatán. A cikk ezen szakasza a kód fő részeit mutatja be.
 
 1. A Visual Studióban válassza ki a **fájl** menüben **új**, majd **projekt**.
-2. Válasszon **Console App (.NET Framework)**, majd válassza ki **tovább**.
+2. Válasszon **Console App (.NET Framework)** , majd válassza ki **tovább**.
 3. A **projektnév**, adja meg `CreateADLApplication`, majd válassza ki **létrehozás**.
 
 4. Adja hozzá a NuGet-csomagokat a projekthez.
@@ -131,7 +131,7 @@ Az alábbi kódrészlet egy Data Lake Storage Gen1 fájl tartalmát olvassa be.
         }
     }
 
-## <a name="get-file-properties"></a>Fájl tulajdonságainak beolvasása
+## <a name="get-file-properties"></a>Fájltulajdonságok lekérdezése
 Az alábbi kódrészlet egy fájlhoz vagy könyvtárhoz társított tulajdonságokat adja vissza.
 
     // Get file properties

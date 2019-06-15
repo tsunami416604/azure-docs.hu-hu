@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5e6548a5a04e32b374a8a9c29d2ca5f89fd65c78
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65160185"
 ---
 # <a name="private-cloud-vmware-components"></a>Magánfelhő VMware-összetevők
@@ -32,12 +32,12 @@ A magánfelhő VMware-környezetet a következő szoftver verziója van telepít
 |-----------|---------|------------------|
 | ESXi | 6.7U1 | Enterprise Plus |
 | vCenter | 6.7U1 | vCenter Standard |
-| vSAN | 6.7 | Enterprise |
+| vSAN | 6.7 | Vállalati |
 | NSX Data Center | 2.3 | Speciális |
 
 ## <a name="esxi"></a>ESXi
 
-VMware ESXi magánfelhő létrehozásakor beszerzett CloudSimple csomópontjára telepítse.  ESXi a hipervizor biztosít a számítási feladatok virtuális gépek (VM) üzembe helyezéséről.  Csomópontok saját magánfelhő-alapú hiperkonvergens infrastruktúrát (számítási és tárolási) ad.  A csomópontok a vSphere-fürt a magánfelhő részei.  Mindegyik fürtcsomópont négy felületek fizikai hálózatokhoz csatlakozó underlay hálózati.  Két fizikai hálózati adapter használatával létrehozhat egy **vSphere elosztott kapcsoló (VDS)** vCenter és két használatával létrehozhat egy **NSX felügyelte elosztott virtuáliskapcsoló (N-VDS)**.  Hálózati adapterek vannak konfigurálva a magas rendelkezésre állású aktív – aktív üzemmód.
+VMware ESXi magánfelhő létrehozásakor beszerzett CloudSimple csomópontjára telepítse.  ESXi a hipervizor biztosít a számítási feladatok virtuális gépek (VM) üzembe helyezéséről.  Csomópontok saját magánfelhő-alapú hiperkonvergens infrastruktúrát (számítási és tárolási) ad.  A csomópontok a vSphere-fürt a magánfelhő részei.  Mindegyik fürtcsomópont négy felületek fizikai hálózatokhoz csatlakozó underlay hálózati.  Két fizikai hálózati adapter használatával létrehozhat egy **vSphere elosztott kapcsoló (VDS)** vCenter és két használatával létrehozhat egy **NSX felügyelte elosztott virtuáliskapcsoló (N-VDS)** .  Hálózati adapterek vannak konfigurálva a magas rendelkezésre állású aktív – aktív üzemmód.
 
 További információ a VMware ESXi
 
@@ -76,7 +76,7 @@ NSX adatközpont hálózatvirtualizálás, a micro szegmentálását és a hál�
 * IP-címkészletet az Élcsomópontra szállítás
 * Élcsomópontok
 * Vezérlő és a peremhálózati virtuális gépek affinitást megakadályozó beállítása DRS szabály
-* 0. rétegbeli útválasztó
+* 0\. rétegbeli útválasztó
 * A réteg0 útválasztón BGP engedélyezése
 
 ## <a name="vsphere-cluster"></a>a vSphere-fürt

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 82b2f5ca70927856aeac889675b5ec4a54ae034f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796753"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Helyi üzleti keresési Bing-API 7-es referencia
@@ -51,7 +51,7 @@ Az alábbiakban a fejlécek, köztük a kérést és választ.
   
 |Fejléc|Leírás|  
 |------------|-----------------|  
-|Elfogadás|Választható kérelemfejléc.<br /><br /> Az alapértelmezett adathordozó-típus az application/json. Adja meg, hogy a válasz a [JSON-LD](https://json-ld.org/), állítsa be az Accept fejléc alkalmazás/ld + json.|  
+|Fogadja el|Választható kérelemfejléc.<br /><br /> Az alapértelmezett adathordozó-típus az application/json. Adja meg, hogy a válasz a [JSON-LD](https://json-ld.org/), állítsa be az Accept fejléc alkalmazás/ld + json.|  
 |<a name="acceptlanguage" />Accept-Language|Választható kérelemfejléc.<br /><br /> Nyelvek vesszővel elválasztott listája a felhasználói felület sztringjeihez. A lista prioritás szerinti csökkenő sorrendben jelenik meg. További információért, például a várt formátummal kapcsolatos részletekért lásd: [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ez a fejléc és a [setLang](#setlang) lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt.<br /><br /> Ha ezt a fejlécet, a cc lekérdezési paramétert is meg kell. A megfelelő piac meghatározásához a Bing a listában talált első támogatott nyelvet használja, és kombinálja azt a `cc` paraméter értékével. Ha a lista nem tartalmaz támogatott nyelvet, a Bing megkeresi a kérelmet támogató legközelebbi nyelvet és piacot, vagy másik lehetőségként egy összesített vagy alapértelmezett piacot használ az eredmények beszerzéséhez. A Bing által használt piac meghatározásához tekintse meg a BingAPIs-Market fejlécet.<br /><br /> Csak akkor használja ezt a fejlécet és a `cc` lekérdezési paramétert, ha több nyelvet ad meg. Ellenkező esetben használja az [mkt](#mkt) és a [setLang](#setlang) lekérdezési paramétereket.<br /><br /> A felhasználóifelület-sztring egy olyan sztring, amelyet feliratként használnak a felhasználói felületen. A JSON-válaszobjektumok tartalmaznak néhány felhasználóifelület-sztringet. A válaszobjektumokban található, a Bing.com tulajdonságaira mutató hivatkozások a megadott nyelvet alkalmazzák.|  
 |<a name="market" />BingAPIs-Market|Válaszfejléc.<br /><br /> A kérelem által használt piac. A formátum a következő: \<languageCode\>-\<countryCode\>. Például: en-US.|  
 |<a name="traceid" />BingAPIs-TraceId|Válaszfejléc.<br /><br /> A kérelem részleteit tartalmazó naplóbejegyzés azonosítója. Ha hiba történik, rögzítse ezt az azonosítót. Ha nem tudja meghatározni és megoldani a problémát, foglalja bele a kérelembe ezt az azonosítót is a támogatási csoportnak megadott többi információval együtt.|  
@@ -70,12 +70,12 @@ Az alábbiakban a fejlécek, köztük a kérést és választ.
 A kérelem lekérdezési paraméterek tartalmazhat. Tekintse meg a szükséges oszlop, paraméter szükséges. URL-címet kell kódolása a lekérdezési paramétereket.  
   
   
-|Name (Név)|Value|Típus|Szükséges|  
+|Name (Név)|Érték|Típus|Kötelező|  
 |----------|-----------|----------|--------------|
 |<a name="count" />Száma|Az eredményeket adja vissza, kezdve az index által megadott száma a `offset` paraméter.|String|Nem|   
 |<a name="localCategories" />localCategories|Keresés üzleti kategória szerint meghatározó beállítások listája.  Lásd: [helyi üzleti kategóriák keresése](local-categories.md)|String|Nem|  
 |<a name="mkt" />mkt|A piac, ahonnan az eredmények származnak. <br /><br />Tekintse meg piaci kódok piaci a lehetséges értékek listáját.<br /><br /> **MEGJEGYZÉS:** A helyi üzleti Search API jelenleg csak támogatja az en-us piacon és a nyelvet.<br /><br />|String|Igen|
-|<a name="offset"/>eltolás|Az index által megadott eredmények elindításához a `count` paraméter.|Integer|Nem|  
+|<a name="offset"/>eltolás|Az index által megadott eredmények elindításához a `count` paraméter.|Egész szám|Nem|  
 |<a name="query" />q|A felhasználó keresési kifejezés.|String|Nem|  
 |<a name="responseformat" />responseFormat|Az adathordozó-típus használata a válaszhoz. A kis-és értékek a következők.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Az alapértelmezett érték a JSON. A JSON-fájllal kapcsolatos információk objektumok, hogy a válasz tartalmazza, lásd: [Válaszobjektumok](#response-objects).<br /><br />  Ha JsonLd adja meg, a válasz törzse tartalmazza a keresési eredményeket tartalmazó JSON-LD objektumok. A JSON-LD kapcsolatos információkért lásd: [JSON-LD](https://json-ld.org/).|String|Nem|  
 |<a name="safesearch" />safeSearch|Felnőtt tartalmak szűrésére szolgáló szűrő. A következők azok a lehetséges szűrőértékek, amelyek nem különböztetik meg a kis- és nagybetűket.<br /><ul><li>Ki&mdash;weblapok és felnőtteknek szóló szöveg, képek és videók adja vissza.<br /><br/></li><li>Mérsékelt&mdash;felnőtt szöveget, de nem felnőtt lemezképek vagy videók weblapok adja vissza.<br /><br/></li><li>A szigorú&mdash;weblapok és felnőtteknek szóló szöveg, képek és videók nem adott vissza.</li></ul><br /> Az alapértelmezett érték a Moderate.<br /><br /> **MEGJEGYZÉS:** Ha a kérelem egy piaci származik, a Bing felnőtt szabályzat megköveteli, hogy `safeSearch` értéke Strict, a Bing figyelmen kívül hagyja a `safeSearch` értékét, és szigorú használja.<br/><br/>**MEGJEGYZÉS:** Ha használja a `site:` operátor, annak az esélyét, hogy a válasz tartalmazhat felnőtt tartalom, függetlenül attól, hogy mi van a `safeSearch` lekérdezési paraméter értéke. Csak akkor használja a `site:` operátort, ha ismeri a webhely tartalmát, és a felnőtteknek szóló tartalmak megjelenítése nem okoz problémát. |String|Nem|  
@@ -107,7 +107,7 @@ Határozza meg a következő hiba történt.
 ### <a name="errorresponse"></a>Byl vrácen Prvek  
 A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem teljesíthető.  
   
-|Name (Név)|Value|Típus|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Mutató típusa.|String|  
 |<a name="errors" />Hibák|Miért nem sikerült a kérelem miatt hibák listája.|[Error](#error)[]|  
@@ -117,16 +117,16 @@ A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem telj
 ### <a name="license"></a>Licenc  
 Határozza meg a licenc, amely alatt a szöveges vagy fénykép használható.  
   
-|Name (Név)|Value|Típus|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
-|név|A licenc neve.|String|  
+|name|A licenc neve.|String|  
 |url|Egy webhely, ahol a felhasználó kaphat-e további információ a licenc URL-címe.<br /><br /> A nevét és URL-cím használatával hivatkozás létrehozása.|String|  
 
 
-### <a name="link"></a>Összekapcsolás  
+### <a name="link"></a>Hivatkozás  
 Az összetevők a hivatkozás határozza meg.  
   
-|Name (Név)|Value|Típus|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Mutató típusa.|String|  
 |szöveg|A megjelenítendő szöveg.|String|  
@@ -135,14 +135,14 @@ Az összetevők a hivatkozás határozza meg.
 
 
   
-### <a name="organization"></a>Munkahely  
+### <a name="organization"></a>Szervezet  
 Határozza meg a kiadó.  
   
 Vegye figyelembe, hogy a közzétevő neve vagy a webhely vagy mindkét előfordulhat, hogy biztosítani.  
   
-|Name (Név)|Value|Típus|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
-|név|A közzétevő nevét.|String|  
+|name|A közzétevő nevét.|String|  
 |url|A kiadó webhelye URL-címe.<br /><br /> Vegye figyelembe, hogy a közzétevő nem ad egy webhelyet.|String|  
   
   
@@ -150,12 +150,12 @@ Vegye figyelembe, hogy a közzétevő neve vagy a webhely vagy mindkét előford
 ### <a name="place"></a>Hely  
 Határozza meg a helyi vállalati, például egy étterem vagy Szálloda kapcsolatos információkat.  
   
-|Name (Név)|Value|Típus|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Írja be a mutatót, amely a következők egyikére lehet beállítani:<br /><br /><ul><li>Szálloda</li><li>LocalBusiness<br /></li><li>Étterem</ul><li>|String|  
-|cím|A postai címét, ahol az entitás.|PostalAddress|  
+|Cím|A postai címét, ahol az entitás.|PostalAddress|  
 |entityPresentationInfo|További információ az entitás, például a mutatók, amelyek segítségével az entitás típusa határozza meg. Például hogy egy étterem vagy szállodában. A `entityScenario` mező ListItem értékre van állítva.|EntityPresentationInfo|  
-|név|Az entitás nevét.|String|  
+|name|Az entitás nevét.|String|  
 |Telefon|Az entitás telefonszáma.|String|  
 |url|Az a entitás webhely URL-címe.<br /><br /> Az entitás nevét, valamint az URL-cím használata hivatkozás létrehozása, amely rákattintáskor végigvezeti a felhasználót az entitás webhelyre.|String|  
 |webSearchUrl|A Bing keresési eredmény ehhez a helyhez URL-címe.|String| 
@@ -174,23 +174,23 @@ Meghatározza a Bing a kéréshez használt lekérdezési környezet.
 
 ### <a name="identifiable"></a>Azonosításra alkalmas
 
-|Name (Név)|Value|Típus|  
+|Name (Név)|Érték|Típus|  
 |-------------|-----------------|----------|
-|azonosító|Egy erőforrás-azonosítója|String|
+|id|Egy erőforrás-azonosítója|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Határozza meg a keresési eredmények csoport, mint például mainline.
 
-|Name (Név)|Value|Típus|  
+|Name (Név)|Érték|Típus|  
 |-------------|-----------------|----------|
 |items|Keresési eredmények megjelennek a csoport listája.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Határozza meg a keresési eredmény elemek megjelenítéséhez.
 
-|Name (Név)|Value|Típus|  
+|Name (Név)|Érték|Típus|  
 |-------------|-----------------|----------|
-|resultIndex|A cikk a válasz megjelenítéséhez a nulla alapú indexét. A cikk nem tartalmazza ezt a mezőt, a válasz jelennek meg az összes elemet. Például megjelenítik az összes hírek a hírek választ.|Integer|
+|resultIndex|A cikk a válasz megjelenítéséhez a nulla alapú indexét. A cikk nem tartalmazza ezt a mezőt, a válasz jelennek meg az összes elemet. Például megjelenítik az összes hírek a hírek választ.|Egész szám|
 |answerType|A válasz, amely tartalmazza az elem megjelenítésére. Ha például híreket.<br /><br />A típus használatával találja a választ a SearchResponse objektumban. A típus egy SearchResponse mező nevét.<br /><br /> Azonban a választípushoz használja, csak akkor, ha ez az objektum tartalmazza az érték mezőbe; Ellenkező esetben figyelmen kívül hagyhatja azt.|String|
 |textualIndex|Az index a textualAnswers megjelenítése a válaszról.| Előjel nélküli egész szám|
 |value|Az azonosítója, amely azonosítja a válasz megjelenítéséhez vagy egy elemet a válasz megjelenítéséhez. Ha az azonosító azonosítja a választ, a válasz elemek megjelenítése.|Azonosításra alkalmas|
@@ -198,7 +198,7 @@ Határozza meg a keresési eredmény elemek megjelenítéséhez.
 ### <a name="rankingresponse"></a>RankingResponse  
 Határozza meg, ahol a keresési eredmények lap tartalmának kell helyezni, és milyen sorrendben.  
   
-|Name (Név)|Value|  
+|Name (Név)|Érték|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|A keresési eredmények megjelennek a által.|  
 |<a name="ranking-pole" />Pole|A keresési eredmények között meg kell adni a legfeltűnőbb kezelése (például a fent a által látható és az oldalsávot).|  
@@ -209,7 +209,7 @@ Meghatározza a legfelső szintű objektum, amely a válasz tartalmazza, ha a k�
   
 Vegye figyelembe, hogy a szolgáltatás egy szolgáltatásmegtagadási támadást gyanítja, ha a kérés sikeres lesz (HTTP-állapotkód: a 200-as rendben); azonban a válasz törzse üres lesz.  
   
-|Name (Név)|Value|Típus|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Írja be a mutatót, amely SearchResponse van beállítva.|String|  
 |Forráshelyek|Az entitások, amelyek megfelelnek a keresési lekérdezés a listája.|JSON-objektum|  
@@ -222,7 +222,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   
 |Állapotkód|Leírás|  
 |-----------------|-----------------|  
-|200|Sikeres művelet.|  
+|200|Siker.|  
 |400|A lekérdezési paraméterek egyike hiányzik vagy érvénytelen.|  
 |401|Az előfizetési kulcs hiányzik vagy nem érvényes.|  
 |403|A felhasználó hitelesítése (például használni őket egy érvényes előfizetési kulcsot), de azok nem rendelkezik engedéllyel a kért erőforrás.<br /><br /> Bing is előfordulhat, hogy ez az állapot vissza. Ha a hívó lekérdezéseit kiszolgálónként havi kvóta túllépve.|  
@@ -262,8 +262,8 @@ A következő értékeket a lehetséges hiba kód és a részleges hiba kódja.
 
 |Kód|SubCode|Leírás
 |-|-|-
-|Kiszolgálóhibái|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|HTTP-állapotkód: 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Letiltva|A Bing InvalidRequest adja vissza, ha bármelyik részét a kérés érvénytelen, nem. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke nem érvényes.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a a HTTP-állapotkód: 400.<br/><br/>Ha a HTTPS helyett a HTTP protokollt használja, a Bing HttpNotAllowed adja vissza, és a HTTP-állapotkód: 410.
+|Kiszolgálóhibái|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP-állapotkód: 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokkolt|A Bing InvalidRequest adja vissza, ha bármelyik részét a kérés érvénytelen, nem. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke nem érvényes.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a a HTTP-állapotkód: 400.<br/><br/>Ha a HTTPS helyett a HTTP protokollt használja, a Bing HttpNotAllowed adja vissza, és a HTTP-állapotkód: 410.
 |RateLimitExceeded|Nincsenek alárendelt kódok|Minden alkalommal, amikor a lekérdezések másodpercenkénti (lekérdezési QPS) és a lekérdezések száma (QPM) havi kvótát túllépi a Bing RateLimitExceeded adja vissza.<br/><br/>Ha túllépi QPS, a Bing adja vissza a 429-es HTTP-állapotkód:, és Ha elfogynak QPM, a Bing adja vissza a 403-as.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|A Bing InvalidAuthorization adja vissza, ha a Bing a hívó nem tudja hitelesíteni. Ha például a `Ocp-Apim-Subscription-Key` fejléc hiányzik, vagy az előfizetési kulcs nem érvényes.<br/><br/>A redundancia akkor fordul elő, ha egynél több hitelesítési módszer adja meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód: a 401-es.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|A Bing InsufficientAuthorization adja vissza, ha a hívó nem rendelkezik engedéllyel az erőforrás eléréséhez. Ez akkor fordulhat elő, ha az előfizetési kulcs le lett tiltva, vagy lejárt. <br/><br/>Ha a hiba InsufficientAuthorization, a HTTP-állapotkód: a 403-as.

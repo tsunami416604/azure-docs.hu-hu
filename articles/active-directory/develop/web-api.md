@@ -18,10 +18,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 484e6b4c5f0e064254c957b07b8ba15ef98f2634
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545212"
 ---
 # <a name="web-api"></a>Webes API
@@ -33,7 +33,7 @@ Webes API-alkalmazások olyan webes alkalmazások, a webes API-k erőforrások l
 
 Az alkalmazás azonosítóját és a delegált felhasználói identitás típusai a folyamat az alábbi tárgyalja. A fő különbség az, hogy a delegált felhasználó identitását először kell szerezni az engedélyezési kódot, mielőtt a felhasználó bejelentkezhet és a webes API-k eléréséhez.
 
-## <a name="diagram"></a>Diagram
+## <a name="diagram"></a>Ábra
 
 ![Webalkalmazás, webes API-diagram](./media/authentication-scenarios/web_app_to_web_api.png)
 
@@ -67,7 +67,7 @@ Az alkalmazás azonosítóját és a delegált felhasználói identitás típusa
 
 Tekintse meg a Kódminták webalkalmazás, webes API-forgatókönyvekhez. És térjen vissza később gyakran – új mintát gyakran kerülnek. Webes [webes API alkalmazást](sample-v1-code.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
 
-## <a name="app-registration"></a>Appok regisztrálása
+## <a name="app-registration"></a>Alkalmazásregisztráció
 
 Alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont, lásd: [alkalmazás regisztrálása](quickstart-register-app.md).
 

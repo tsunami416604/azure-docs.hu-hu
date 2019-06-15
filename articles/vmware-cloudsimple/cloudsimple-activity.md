@@ -9,17 +9,17 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: dd073d040e6e7f149109c9988580dcd889f7c62f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65160140"
 ---
 # <a name="activity-management-overview"></a>Tevékenység áttekintése
 
 CloudSimple nyomon követi a magánfelhők működését befolyásoló tevékenységekre. Ezek a tevékenységek például a riasztások, események, feladatok és tevékenységek naplózása. A [tevékenység oldalak](https://docs.azure.cloudsimple.com/activity/) az aktuális tevékenység összefoglalója, és lehetővé teszi további részleteket a részletezéshez.
 
-## <a name="events"></a>Események
+## <a name="events"></a>Events
 
 Események nyomon követheti a felhasználói és tevékenységét a CloudSimple portálon.  Események megjelenítése a tevékenység egy adott erőforrást és a hatás súlyosságát társított.  Az események a CloudSimple portálon tekintheti meg.
 

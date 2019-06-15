@@ -13,25 +13,25 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 04/26/2019
 ms.openlocfilehash: 057c764a46508804bee6aa8f9912fdedc69e811f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65762701"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Az Azure SQL Database szószedet
 
-|Környezet|Időszak|További információ|
+|Környezet|Kifejezés|További információ|
 |:---|:---|:---|
 |Azure-szolgáltatás neve|Az Azure SQL Database vagy SQL-adatbázis|[Az Azure SQL Database szolgáltatásban](sql-database-technical-overview.md)|
-|Számítási szint|Kiszolgáló nélküli (előzetes verzió)|[kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md)
+|COMPUTE-kapacitás|Kiszolgáló nélküli (előzetes verzió)|[kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md)
 ||Kiépítve|[kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md)
-|Telepítési beállítások |Önálló adatbázis|[Önálló adatbázisok](sql-database-single-database.md)|
+|Üzembe helyezési beállítások |Önálló adatbázis|[Önálló adatbázisok](sql-database-single-database.md)|
 ||Rugalmas készlet|[Rugalmas készlet](sql-database-elastic-pool.md)|
 ||Felügyelt példány|[Felügyelt példány](sql-database-managed-instance.md)|
 |Kiszolgálóobjektumok|SQL Database-kiszolgáló vagy adatbázis-kiszolgáló|[Adatbázis-kiszolgáló](sql-database-servers.md)|
 ||SQL Database felügyelt példány server, a felügyelt példány server vagy a server-példány|[Felügyelt példány](sql-database-managed-instance.md)|
-Adatbázis-objektumok|Azure SQL Database|Bármely Azure SQL Database-adatbázis|
+adatbázis-objektumok|Azure SQL-adatbázis|Bármely Azure SQL Database-adatbázis|
 ||Önálló adatbázis|Önálló adatbázis beállítás létrehozott adatbázis|
 ||Készletezett adatbázis|Egy adatbázis belül létrehozott vagy áthelyezése rugalmas készletbe|
 ||Példány adatbázisa|Felügyelt példány belül létrehozott adatbázis|
@@ -44,7 +44,7 @@ Adatbázis-objektumok|Azure SQL Database|Bármely Azure SQL Database-adatbázis|
 ||Üzembe helyezett adatbázis|A kiépített számítási rétegben konfigurált adatbázis|
 |[Vásárlási modellek és erőforrások](sql-database-purchase-models.md)|DTU-alapú vásárlási modell|[DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md)|
 ||Virtuálismag-alapú vásárlási modell|[Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)|
-||virtuális mag|Egy alapszintű, a hipervizor a vendég operációs rendszer biztosítja.|
+||Virtuális mag|Egy alapszintű, a hipervizor a vendég operációs rendszer biztosítja.|
 ||Szolgáltatásszint|A beszerzési modell szolgáltatási szintet|
 ||Számítási mérete|Egy önálló adatbázis, a rugalmas készlet vagy a felügyelt példány szolgáltatási szinten belül a számítási erőforrások mennyisége|
 ||Tárolókapacitás|Egy önálló adatbázis, a rugalmas készlet vagy a felügyelt példány számára elérhető tárterület mérete|

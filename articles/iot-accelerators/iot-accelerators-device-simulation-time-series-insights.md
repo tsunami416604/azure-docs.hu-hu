@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 5d20adc11e0d679e12fd060e719593a50180db8e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65834864"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Az Eszközszimuláció megoldásgyorsító által küldött telemetriai adatok megjelenítése a Time Series Insights használatával
@@ -57,7 +57,7 @@ Az alábbi lépéseket az Azure CLI az Azure Cloud shellben hozzon létre a fogy
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza ki **erőforrás létrehozása** > **IOT-** > **Time Series Insights**:
+1. Válassza ki **erőforrás létrehozása** > **IOT-**  > **Time Series Insights**:
 
     ![Új Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
 
@@ -69,7 +69,7 @@ Az alábbi lépéseket az Azure CLI az Azure Cloud shellben hozzon létre a fogy
     | Előfizetés | Válassza ki saját Azure-előfizetését a legördülő menüből. |
     | Erőforráscsoport | **Contoso-szimuláció**. A megoldásgyorsító nevét használja. |
     | Location egység | Ez a példa **USA keleti Régiójában**. A környezet létrehozása és az eszköz szimulálása gyorsító ugyanabban a régióban. |
-    | Termékváltozat |**S1** |
+    | SKU |**S1** |
     | Kapacitás | **1** |
 
     ![A Time Series Insights létrehozása](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
@@ -98,15 +98,15 @@ Hozzon létre egy új eseményforrás csatlakozni az IoT hubhoz. A fogyasztói c
     | Beállítás | Érték |
     | ------- | ----- |
     | Forrás neve | A nevet használja az alábbi képernyőképen **contoso-iot-hub**. Használja a saját egyedi névre, ha e lépés elvégzése után. |
-    | Source | **IoT Hub** |
+    | source | **IoT Hub** |
     | Importálási beállítás | **Az IoT Hub használata a rendelkezésre álló előfizetések közül** |
     | Előfizetés azonosítója | Válassza ki saját Azure-előfizetését a legördülő menüből. |
-    | Iot hub neve | **Contoso-simulation7d894**. Az Eszközszimuláció megoldásgyorsító az IoT-központ nevét használja. |
-    | Iot hub szabályzatneve | **iothubowner** |
-    | Iot hub szabályzatkulcsa | Ez a mező automatikusan fel van töltve. |
-    | Iot hub fogyasztói csoport | **devicesimulationtsi** |
+    | IOT hub nevét | **Contoso-simulation7d894**. Az Eszközszimuláció megoldásgyorsító az IoT-központ nevét használja. |
+    | IOT hub házirend neve | **iothubowner** |
+    | IOT hub házirendjének kulcsa | Ez a mező automatikusan fel van töltve. |
+    | IOT hub fogyasztói csoport | **devicesimulationtsi** |
     | Eseményszerializációs formátum | **JSON** |
-    | Időbélyeg-tulajdonság neve | Hagyja üresen |
+    | Időbélyegző-tulajdonság neve | Hagyja üresen |
 
     ![Eseményforrás létrehozása](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 

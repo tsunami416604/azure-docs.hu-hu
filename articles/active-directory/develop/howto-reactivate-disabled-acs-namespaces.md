@@ -17,10 +17,10 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fe1517cce8a1f9b1024085340ffb927b282f0fb
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540289"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Útmutató: Letiltott Access Control Service-névterek újraaktiválása
@@ -29,7 +29,7 @@ ms.locfileid: "65540289"
 
 Mivel ezt követően az ACS-előfizetések rendszergazdai e-mail az ACS használatból való kivonást egyaránt 12 hónap, 9 hónap, 3 hónap, 1 hónap, 2 héten, 1 hét, és 1 nap 2018. November 7 kivezetési dátuma előtt 6 hónapra vonatkozó e-mailt elküldtük Önnek.
 
-2018. október 3. én bejelentettük (e-mailben és [egy blogbejegyzés](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)), akiknek az áttelepítést követően 2018. November 7. nem lehet befejezni a bővítmény ajánlat. A közlemény is volt a bővítmény kérő vonatkozó utasításokat.
+2018\. október 3. én bejelentettük (e-mailben és [egy blogbejegyzés](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)), akiknek az áttelepítést követően 2018. November 7. nem lehet befejezni a bővítmény ajánlat. A közlemény is volt a bővítmény kérő vonatkozó utasításokat.
 
 ## <a name="why-your-namespace-is-disabled"></a>Miért érdemes a névtér le van tiltva
 
@@ -80,11 +80,11 @@ Az ACS PowerShell használatával az Access Control-névtereket listában, és a
 
 ## <a name="request-an-extension"></a>Hosszabbítsa
 
-2019. január 21-én kezdődő új bővítmény kérések jegyében.
+2019\. január 21-én kezdődő új bővítmény kérések jegyében.
 
 Névterek letiltását az ügyfelek, akik bővítmények 2019. február 4. a kért program kezdődik. Továbbra is engedélyezheti újra névterek Powershellen keresztül, de a névterek le lesz tiltva a 48 óra után.
 
-2019. március 4 után ügyfelek már nem képes bármilyen névterek PowerShell-lel engedélyezze újra.
+2019\. március 4 után ügyfelek már nem képes bármilyen névterek PowerShell-lel engedélyezze újra.
 
 További bővítmények már nem lesz automatikusan jóváhagyja. Ha áttelepítéséhez további időre van szüksége, forduljon a [az Azure-támogatás](https://portal.azure.com/#create/Microsoft.Support) részletes áttelepítési ütemterv megadását.
 
@@ -93,7 +93,7 @@ További bővítmények már nem lesz automatikusan jóváhagyja. Ha áttelepít
 1. Jelentkezzen be az Azure Portalon, és hozzon létre egy [új támogatási kérelem](https://portal.azure.com/#create/Microsoft.Support).
 1. Adja meg az új támogatási űrlap, az alábbi példában látható módon.
 
-    | Támogatási kérelem mező | Value |
+    | Támogatási kérelem mező | Érték |
     |-----------------------|--------------------|
     | **Probléma típusa** | `Technical` |
     | **Előfizetés** | Az előfizetés beállítása |

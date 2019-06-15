@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c831fc7ab1a646d41c0dc08d0e1a66380fe1232
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824723"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazások üzembe helyezése és hatókörének beállítása szűrőket
@@ -85,7 +85,7 @@ Hatókörszűrő vannak konfigurálva, az egyes Azure AD-felhasználó kiépít�
 
    c. **IGAZ**. Záradék "true", ha a kiértékelt attribútum IGAZ logikai értéket adja vissza.
 
-   d. **FALSE (HAMIS)**. Záradék "true", ha a kiértékelt attribútum false logikai értéket adja vissza.
+   d. **FALSE (HAMIS)** . Záradék "true", ha a kiértékelt attribútum false logikai értéket adja vissza.
 
    e. **NULL ÉRTÉKŰ**. Záradék "true", ha a kiértékelt attribútum üres adja vissza.
 

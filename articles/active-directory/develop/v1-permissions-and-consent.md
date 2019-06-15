@@ -19,10 +19,10 @@ ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fb4342e024d826c65ed33184aaf33012d09190a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545190"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Engedélyek és jóváhagyás az az Azure Active Directory 1.0-s verziójú végpontján
@@ -69,7 +69,7 @@ Az Azure AD-ben az engedélyek rendelkeznek néhány tulajdonsággal, amelyek se
 | `AdminConsentDescription` | Ez a rendszergazdai jóváhagyás használata esetén a rendszergazdák számára megjelenő leírás. | Lehetővé teszi, hogy az alkalmazás elolvassa a felhasználók postafiókjában lévő e-maileket. |
 | `AdminConsentDisplayName` | Ez a rendszergazdai jóváhagyás használata esetén a rendszergazdák számára megjelenő rövid név. | Felhasználók levelezésének olvasása |
 | `UserConsentDescription` | Ez a felhasználói jóváhagyás használata esetén a felhasználók számára megjelenő leírás. |  Lehetővé teszi, hogy az alkalmazás elolvassa a postafiókjában lévő e-maileket. |
-| `UserConsentDisplayName` | A felhasználói jóváhagyás használata esetén a felhasználók számára megjelenő rövid név. | Levelek olvasása |
+| `UserConsentDisplayName` | A felhasználói jóváhagyás használata esetén a felhasználók számára megjelenő rövid név. | Levelezés olvasása |
 | `Value` | Az OAuth 2.0 engedélyezési folyamatok során az engedély azonosítására használt sztring. `Value` az alkalmazásazonosító URI-sztringjével is kombinálható a teljes engedélynév kialakítása érdekében. | `Mail.Read` |
 
 ## <a name="types-of-consent"></a>Jóváhagyástípusok

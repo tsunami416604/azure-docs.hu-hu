@@ -7,10 +7,10 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: add0f8252bdae6857b28deeb7de4c1d09973e452
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540771"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-bA VMware virtuális gépek replikálásának engedélyezése
@@ -34,7 +34,7 @@ Ha VMware virtuális gépeket replikál, tartsa szem előtt ezeket az informáci
 * Virtuális gépek replikációjának az ütemezett felderítést várakozás nélkül hozzáadásához jelölje ki a konfigurációs kiszolgáló (de ne kattintson rá), és válassza ki **frissítése**.
 * Replikációs, ha a virtuális gépet pedig előkészíti engedélyezésekor a folyamatkiszolgáló automatikusan telepíti az Azure Site Recovery mobilitási szolgáltatás rajta.
 
-## <a name="enable-replication"></a>Replikáció engedélyezése
+## <a name="enable-replication"></a>A replikáció engedélyezése
 
 Mielőtt végrehajtaná a jelen szakaszban ismertetett lépéseket, vegye figyelembe a következő információkat:
 * Az Azure Site Recovery most már közvetlenül az összes új replikációk felügyelt lemezek replikálja. A folyamatkiszolgáló replikációs naplók ír a gyorsítótárfiók a célrégióban. Ezek a naplók segítségével hozza létre a replikált felügyelt lemezeken lévő helyreállítási pontokat.
@@ -111,7 +111,7 @@ A hálózati adapterek száma szabja meg méretét, hogy Ön adja meg a cél vir
 - Ha a forrás virtuális gépek adaptereinek száma meghaladja az engedélyezett a céloldali virtuális gép méretét, a cél maximális használja. Például ha a forrás virtuális gép két hálózati adapterrel rendelkezik, és a céloldali virtuális gép mérete támogatja négy, a cél virtuális gépen, a két adapter. Ha a forrásoldali virtuális gép két adapterrel rendelkezik, de a támogat egy, a cél virtuális gép csak egy adapterrel rendelkezik.
 - Ha a virtuális gép több hálózati adapterrel rendelkezik, az összes az ugyanazon hálózathoz csatlakoznak. Az első adapter, amely a listában látható lesz is, a *alapértelmezett* hálózati adapter az Azure-beli virtuális gépen. 
 
-### <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit értékelem
+### <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
 A Microsoft frissítési garanciával rendelkező ügyfelek az Azure Hybrid Benefit segítségével megtakarítást a Windows Server rendszerű számítógépek, amelyek az Azure-bA migrálta a licencelési költségei. Az ajánlat Azure-beli vészhelyreállításához is vonatkozik. Ha Ön jogosult, hozzárendelheti a juttatás a virtuális géphez, amely a Site Recovery hoz létre, ha feladatátvitel történik. Ehhez kövesse az alábbi lépéseket:
 1. Nyissa meg a **számítógép és a hálózat tulajdonságai** a replikált virtuális gép.

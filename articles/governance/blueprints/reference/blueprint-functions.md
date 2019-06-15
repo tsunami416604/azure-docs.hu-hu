@@ -8,10 +8,10 @@ ms.topic: reference
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: dc72113a8f5ed978d64d35c43e94dc9e19e4cdb1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209412"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Functions Azure tervezetek való használatra
@@ -107,7 +107,7 @@ A Resource Manager-sablon összetevő azonosítójú _myTemplateArtifact_ tulajd
 
 Néhány példa az adatok beolvasása a _myTemplateArtifact_ minta vannak:
 
-| Kifejezés | Típus | Érték |
+| kifejezés | Típus | Érték |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Tömb | \["first", "másodperc"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
@@ -141,7 +141,7 @@ Az Azure tervezet függvény az Azure Resource Manager-sablon függvény külön
 
 `concat(parameters('organizationName'), '-vm')`
 
-## <a name="parameters"></a>paraméterek
+## <a name="parameters"></a>parameters
 
 `parameters(parameterName)`
 
@@ -200,7 +200,7 @@ Ezután _principalIds_ argumentumként `parameters()` a tervezet-összetevőben:
 }
 ```
 
-## <a name="resourcegroup"></a>resourceGroup
+## <a name="resourcegroup"></a>Erőforráscsoport
 
 `resourceGroup()`
 
@@ -324,7 +324,7 @@ Ezután a `resourceGroups()` függvény bármely tervezet lehívandó összetev�
 }
 ```
 
-## <a name="subscription"></a>előfizetés
+## <a name="subscription"></a>előfizetést
 
 `subscription()`
 

@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
 ms.openlocfilehash: 51d572ac324d0bc875e7ed81879f2456eeea4fbb
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65506610"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Azure-beli virtuális gépeken futó SQL Server – alkalmazásminták és fejlesztési stratégiák
@@ -36,7 +36,7 @@ Az egyes alkalmazásminta talál egy helyszíni forgatókönyv, a megfelelő fel
 
 **Műszaki véleményezők:** Corey Sanders, Drew McDaniel, Narayan Annamalai, Nir Mashkowski, Sanjay Mishra, Silvano Coriani, lengyel Schackow, Tim Hickey, Tim Wieman, Xin Jin
 
-## <a name="introduction"></a>Bemutatás
+## <a name="introduction"></a>Bevezetés
 N szintű alkalmazások számos különböző típusú megadhat különböző gépeken, valamint különálló összetevőkként hasonlóan a különböző alkalmazási rétegekben összetevői is fejleszthet. Például az ügyfélalkalmazás helyezheti, és üzleti szabályokat egy számítógépen, előtérbeli webes réteg és az adatelérési réteg összetevők egy másik gépen, és a egy másik gépen háttér-adatbázis-rétegből az összetevők. Az ilyen típusú strukturálja segít elkülöníteni egymástól az egyes szintek. Ha módosítja, ahol az adat származik, nem kell az ügyfél és a webes alkalmazások, de csak az adatelérési réteg összetevők módosítása.
 
 Egy tipikus *n szintű* alkalmazás tartalmazza a bemutatási szint, az üzleti szint és az adatréteg:

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: gwallace
 ms.openlocfilehash: b71ba69bcf4965ea607e097c392573e77aab6865
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65408276"
 ---
 # <a name="custom-script-extension-for-windows"></a>A Windows egyéni szkriptek futtatására szolgáló bővítmény
@@ -28,7 +28,7 @@ Ez a dokumentum részletesen használata az egyéni Szkriptbővítmény használ
 > [!NOTE]  
 > Ne használjon egyéni szkriptek futtatására szolgáló bővítmény óta magát a vár az Update-azvm parancsmag futtatásához a virtuális géppel azonos a paraméterként.  
 
-### <a name="operating-system"></a>Operációs rendszer:
+### <a name="operating-system"></a>Operációs rendszer
 
 A Custom Script bővítmény a Windows rendszer további információ a támogatott bővítmény kiterjesztés nyílt forráskódú, futtassa, és ez [Azure-bővítmény által támogatott operációs rendszerek](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems).
 
@@ -133,7 +133,7 @@ Hibakeresés, de hasznos lehet nyilvános beállítások használata javasolt, h
 
 Nyilvános beállításokat a virtuális gép, ahol a parancsfájl végrehajtása szövegként érkeznek.  Védett beállítások vannak titkosítva, csak az Azure és a virtuális gép ismert kulcsot használ. A beállítások lesznek mentve a virtuális géphez, mivel lettek küldve, vagyis ha a beállítások titkosított mentést titkosított a virtuális gépen. A tanúsítvány használatával fejthetők vissza a titkosított értékek tárolja a virtuális gépen, és fejti vissza a futásidejű beállításokat (ha szükséges).
 
-## <a name="template-deployment"></a>Sablon telepítése
+## <a name="template-deployment"></a>Sablonalapú telepítés
 
 Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. JSON-sémáját, amely az előző szakaszban részletes üzembe helyezés során az egyéni szkriptek futtatására szolgáló bővítmény futtatása az Azure Resource Manager-sablon is használható. A következő példák bemutatják, hogyan használja az egyéni szkriptek futtatására szolgáló bővítmény:
 
@@ -249,7 +249,7 @@ $vm | Update-AzureVM
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
-### <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
+### <a name="troubleshoot"></a>Hibaelhárítás
 
 Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure PowerShell-modul segítségével. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot:
 

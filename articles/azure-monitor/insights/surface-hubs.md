@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.openlocfilehash: 7e0dbb4c3cd8ae4bb552e7b7f0748f1bde2f51de
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232780"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Surface hubok monitorozása az Azure Monitor nyomon követéséhez az állapotfigyelő szolgáltatással
@@ -38,7 +38,7 @@ Ezután fogja hozzáadni egy meglévő Log Analytics-munkaterületet vagy hozzon
 * Automatikusan Intune-nal
 * Manuálisan keresztül **beállítások** a Surface Hub eszköz.
 
-## <a name="set-up-monitoring"></a>Állítsa be a figyelést,
+## <a name="set-up-monitoring"></a>Figyelés beállítása
 Az állapotát és tevékenységét a Surface hubon, az Azure Monitor használatával figyelheti. A Surface Hub is regisztrálásához, Intune-nal vagy a helyi használatával **beállítások** a Surface hubon.
 
 ## <a name="connect-surface-hubs-to-azure-monitor-through-intune"></a>A Surface hubokon csatlakozhat az Azure Monitor az Intune-ban

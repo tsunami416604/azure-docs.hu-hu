@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60199071"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>A LUIS-alkalmazás tesztelése a LUIS-portálon
@@ -103,9 +103,9 @@ Tartalmazza az alábbi eljárással a [Bing helyesírás-ellenőrzés 7-es](http
 
 1. Az a **teszt** panelen írja be az utterance (kifejezés). Amikor az utterance (kifejezés) előrejelzésének megtekintéséhez válassza ki a **[vizsgálat](#inspect-score)** alá az utterance (kifejezés) adott meg. 
 
-2. Ha a **vizsgálat** panel megnyílik, válassza ki  **[közzétett összehasonlítandó](#compare-with-published-version)**. 
+2. Ha a **vizsgálat** panel megnyílik, válassza ki  **[közzétett összehasonlítandó](#compare-with-published-version)** . 
 
-3. Ha a **közzétett** panel megnyílik, válassza ki  **[további beállítás](#additional-settings-in-test-panel)**.
+3. Ha a **közzétett** panel megnyílik, válassza ki  **[további beállítás](#additional-settings-in-test-panel)** .
 
 4. Az előugró párbeszédpanelen adja meg a **a Bing Spell Check** Szolgáltatáskulcs. 
     ![Adja meg a Bing Spell Check-kulcsot](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)

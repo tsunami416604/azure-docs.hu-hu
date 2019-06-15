@@ -13,10 +13,10 @@ ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
 ms.openlocfilehash: dbb5ee122e715aeaa66d786f02966beedd2447c3
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522330"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra
@@ -97,17 +97,17 @@ A virtuális hálózaton belüli kijelölt alhálózatot a felügyelt példány 
 
 ### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok
 
-| Name (Név)       |Port                        |Protocol|Forrás           |Célhely|Műveletek|
+| Name (Név)       |Port                        |Protocol|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármely              |MI ALHÁLÓZAT  |Engedélyezés |
+|Felügyeleti  |9000, 9003, 1438, 1440, 1452|TCP     |Bármely              |MI ALHÁLÓZAT  |Engedélyezés |
 |mi_subnet   |Bármely                         |Bármely     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 |health_probe|Bármely                         |Bármely     |AzureLoadBalancer|MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok
 
-| Name (Név)       |Port          |Protocol|Forrás           |Célhely|Műveletek|
+| Name (Név)       |Port          |Protocol|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
-|felügyelet  |80, 443, 12000|TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
+|Felügyeleti  |80, 443, 12000|TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármely           |Bármely     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 
 > [!IMPORTANT]

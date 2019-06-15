@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 51402196c8429797b644357822a1e3c08982b384
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209509"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>BGP konfigurálása Azure VPN Gateway-átjárók a parancssori felület használatával
@@ -50,7 +50,7 @@ Ebben a szakaszban szükség, mielőtt hajt végre a lépéseket bármely más k
 
 Telepítse a CLI-parancsok (2.0-s vagy újabb) legújabb verzióját. Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI használatába](/cli/azure/get-started-with-azure-cli).
 
-### <a name="step-1-create-and-configure-testvnet1"></a>1. lépés: A TestVNet1 létrehozása és konfigurálása
+### <a name="step-1-create-and-configure-testvnet1"></a>1\. lépés: A TestVNet1 létrehozása és konfigurálása
 
 #### <a name="Login"></a>1. Csatlakozás az előfizetéshez
 
@@ -80,7 +80,7 @@ az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestBGPRG1 --a
 az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestBGPRG1 --address-prefix 10.12.255.0/27 
 ```
 
-### <a name="step-2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2. lépés: A VPN-átjáró létrehozása a testvnet1-hez a BGP-paraméterekkel
+### <a name="step-2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2\. lépés: A VPN-átjáró létrehozása a testvnet1-hez a BGP-paraméterekkel
 
 #### <a name="1-create-the-public-ip-address"></a>1. A nyilvános IP-cím létrehozása
 
@@ -126,7 +126,7 @@ Létesítmények közötti kapcsolatot létesíteni, szüksége a helyszíni VPN
 ![BGP-t létesítmények közötti esetében](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crossprem.png)
 
 
-### <a name="step-1-create-and-configure-the-local-network-gateway"></a>1. lépés: Hozzon létre, és a helyi hálózati átjáró konfigurálása
+### <a name="step-1-create-and-configure-the-local-network-gateway"></a>1\. lépés: Hozzon létre, és a helyi hálózati átjáró konfigurálása
 
 Ebben a gyakorlatban továbbra is össze az ábrán látható. Ne felejtse el az értékeket olyanokra cserélni, amelyeket a saját konfigurációjához kíván használni. Ha helyi hálózati átjárók dolgozik, vegye figyelembe az alábbiakat:
 
@@ -142,7 +142,7 @@ az group create -n TestBGPRG5 -l eastus2 
 az network local-gateway create --gateway-ip-address 23.99.221.164 -n Site5 -g TestBGPRG5 --local-address-prefixes 10.51.255.254/32 --asn 65050 --bgp-peering-address 10.51.255.254
 ```
 
-### <a name="step-2-connect-the-vnet-gateway-and-local-network-gateway"></a>2. lépés: A virtuális hálózati átjáró és a helyi hálózati átjáró csatlakoztatása
+### <a name="step-2-connect-the-vnet-gateway-and-local-network-gateway"></a>2\. lépés: A virtuális hálózati átjáró és a helyi hálózati átjáró csatlakoztatása
 
 Ebben a lépésben, a TestVNet1 felől a létre Site5. Meg kell adnia a `--enable-bgp` paraméter BGP engedélyezése ehhez a kapcsolathoz. 
 
@@ -219,7 +219,7 @@ Ez a szakasz ad hozzá egy VNet – VNet kapcsolat BGP-vel, az alábbi ábrán l
 
 Az alábbi utasítások alapján az előző szakaszok lépéseit folytatják. Hozzon létre, és konfigurálja a TestVNet1 és a VPN-átjáró BGP-vel, meg kell adnia a [BGP engedélyezése a VPN-átjáró](#enablebgp) szakaszban.
 
-### <a name="step-1-create-testvnet2-and-the-vpn-gateway"></a>1. lépés: TestVNet2 és a VPN-átjáró létrehozása
+### <a name="step-1-create-testvnet2-and-the-vpn-gateway"></a>1\. lépés: TestVNet2 és a VPN-átjáró létrehozása
 
 Fontos győződjön meg arról, hogy az IP-címtér az új TestVNet2, virtuális hálózat nem átfedésben a VNet-címtartományok.
 
@@ -261,7 +261,7 @@ Hozzon létre a virtuális hálózati átjáró TestVNet2. Az Azure VPN Gateway 
 az network vnet-gateway create -n VNet2GW -l westus --public-ip-address GWPubIP2 -g TestBGPRG2 --vnet TestVNet2 --gateway-type Vpn --sku Standard --vpn-type RouteBased --asn 65020 --no-wait
 ```
 
-### <a name="step-2-connect-the-testvnet1-and-testvnet2-gateways"></a>2. lépés: A TestVNet1 és TestVNet2 átjárók csatlakoztatása
+### <a name="step-2-connect-the-testvnet1-and-testvnet2-gateways"></a>2\. lépés: A TestVNet1 és TestVNet2 átjárók csatlakoztatása
 
 Ebben a lépésben, a TestVNet1 felől a létre Site5. Ehhez a kapcsolathoz a BGP engedélyezéséhez meg kell adnia a `--enable-bgp` paraméter.
 

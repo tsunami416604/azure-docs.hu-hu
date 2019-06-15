@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.openlocfilehash: 83834104dd73e4381947903196ad35c3497b64a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60337561"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Webes és feldolgozói PHP-szerepkörök létrehozása
@@ -26,7 +26,7 @@ ms.locfileid: "60337561"
 
 Ez az útmutató bemutatja, hogyan PHP webes vagy feldolgozói szerepkörök létrehozása a Windows fejlesztői környezetben, a PHP verzióját az elérhető "beépített" verziók közül választhat, a PHP-konfiguráció módosítása, bővítmények engedélyezésével és végül üzembe helyezése az Azure-bA. Emellett bemutatja, hogyan lehet egy webes vagy feldolgozói szerepkör egy PHP-futtatókörnyezet (az egyéni konfigurációs és bővítmények) Ön által használandó konfigurálása.
 
-Az Azure három számítási modellt kínál az alkalmazások futtatásához: Az Azure App Service, Azure-beli virtuális gépek és az Azure Cloud Services. Mindhárom modell támogatja a PHP. A cloud Services, beleértve a webes és feldolgozói szerepkörök, biztosít *platformszolgáltatás (PaaS)*. Egy felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót az előtéri webalkalmazásokhoz biztosít. Feldolgozói szerepkör aszinkron, hosszan futó vagy bemenettől feladatok felhasználói interakciótól vagy beviteltől független futtathatja.
+Az Azure három számítási modellt kínál az alkalmazások futtatásához: Az Azure App Service, Azure-beli virtuális gépek és az Azure Cloud Services. Mindhárom modell támogatja a PHP. A cloud Services, beleértve a webes és feldolgozói szerepkörök, biztosít *platformszolgáltatás (PaaS)* . Egy felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót az előtéri webalkalmazásokhoz biztosít. Feldolgozói szerepkör aszinkron, hosszan futó vagy bemenettől feladatok felhasználói interakciótól vagy beviteltől független futtathatja.
 
 Ezek a beállítások kapcsolatos további információkért lásd: [számítási-üzemeltetési lehetőségeinek Azure által biztosított](cloud-services/cloud-services-choose-me.md).
 

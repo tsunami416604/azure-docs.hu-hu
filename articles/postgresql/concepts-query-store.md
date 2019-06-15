@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: b622de3e21d26676bb11d81a6facf8fea18cabc1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067186"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>A Query Store teljesítmény figyelése
@@ -86,7 +86,7 @@ A következő beállítások konfigurálásához a Query Store paraméterek érh
 
 | **A paraméter** | **Leírás** | **Alapértelmezett** | **Címtartomány**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Megadja, hogy melyik utasításokat követi. | nincs | nincs, az első, az összes |
+| pg_qs.query_capture_mode | Megadja, hogy melyik utasításokat követi. | Egyik sem | nincs, az első, az összes |
 | pg_qs.max_query_text_length | A lekérdezés maximális hossza, melyekbe menthetők a állítja be. Hosszabb lekérdezések csonkolva lesz. | 6000 | 100 - 10 EZER |
 | pg_qs.retention_period_in_days | A megőrzési időszak beállítása. | 7 | 1 - 30 |
 | pg_qs.track_utility | Megadja, hogy segédprogram parancsokat a rendszer nyomon követi-e | be | bekapcsolt kikapcsolt |
@@ -95,7 +95,7 @@ A következő beállítások kifejezetten statisztika várjon vonatkoznak.
 
 | **A paraméter** | **Leírás** | **Alapértelmezett** | **Címtartomány**|
 |---|---|---|---|
-| pgms_wait_sampling.query_capture_mode | Utasítások nyomon követi a csoportok várjon statisztikák. | nincs | nincs, az összes|
+| pgms_wait_sampling.query_capture_mode | Utasítások nyomon követi a csoportok várjon statisztikák. | Egyik sem | nincs, az összes|
 | Pgms_wait_sampling.history_period | Állítsa a gyakoriságot, ezredmásodpercben, mely várakozási esemény történik az adatgyűjtés. | 100 | 1-600000 |
 
 > [!NOTE] 
@@ -115,20 +115,20 @@ Ez a nézet az összes adat Query Store adja vissza. Az egyes különálló adat
 |**Name (Név)**   |**Típus** | **Hivatkozások**  | **Leírás**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | A runtime_stats_entries tábla azonosítója|
-|user_id    |objektumazonosító    |pg_authid.oid  |Az utasítás végrehajtása felhasználó Objektumazonosítója|
-|db_id  |objektumazonosító    |pg_database.oid    |OID-adatbázis, amelyben a rendszer az utasítást hajtott végre|
+|user_id    |oid    |pg_authid.oid  |Az utasítás végrehajtása felhasználó Objektumazonosítója|
+|db_id  |oid    |pg_database.oid    |OID-adatbázis, amelyben a rendszer az utasítást hajtott végre|
 |query_id   |bigint  || A belső kivonatkód, az utasítás elemzési fa erősségével|
 |query_sql_text |Varchar(10000)  || Egy tipikus utasítás szövege. Ugyanazzal a struktúrával különböző lekérdezéseket fürtözöttek együtt; Ez a szöveg az a szöveg az első a lekérdezések a fürt számára.|
 |plan_id    |bigint |   |Ez a lekérdezés nem érhető el megfelelő még a csomag azonosítója|
-|start_time |időbélyeg  ||  Összesítjük lekérdezések idő gyűjtők által - kérelemegységeket időtartamának alapértelmezés szerint 15 percenként. Ez az a kezdő időpont a idő gyűjtőhöz a bejegyzéshez tartozó megfelelő.|
-|end_time   |időbélyeg  ||  A time gyűjtőhöz a bejegyzéshez tartozó megfelelő befejezési időpontja.|
-|hívás  |bigint  || A lekérdezés végrehajtása hányszor|
+|start_time |timestamp  ||  Összesítjük lekérdezések idő gyűjtők által - kérelemegységeket időtartamának alapértelmezés szerint 15 percenként. Ez az a kezdő időpont a idő gyűjtőhöz a bejegyzéshez tartozó megfelelő.|
+|end_time   |timestamp  ||  A time gyűjtőhöz a bejegyzéshez tartozó megfelelő befejezési időpontja.|
+|hívások  |bigint  || A lekérdezés végrehajtása hányszor|
 |total_time |a kétszeres pontosság   ||  A lekérdezés teljes végrehajtási idő, ezredmásodpercben|
 |min_time   |a kétszeres pontosság   ||  Minimális lekérdezés-végrehajtási idő (MS)|
 |max_time   |a kétszeres pontosság   ||  Lekérdezés maximális végrehajtási idő (MS)|
 |mean_time  |a kétszeres pontosság   ||  Jelenti azt, hogy a lekérdezés-végrehajtási idő (MS)|
 |stddev_time|   a kétszeres pontosság    ||  A lekérdezés végrehajtási idő, ezredmásodpercben szórása |
-|sor   |bigint ||  Beolvasott vagy a-utasítás által érintett sorok száma|
+|sorok   |bigint ||  Beolvasott vagy a-utasítás által érintett sorok száma|
 |shared_blks_hit|   bigint  ||  Az utasítás által megosztott blokk gyorsítótár-találatok teljes száma|
 |shared_blks_read|  bigint  ||  Olvassa el a-utasítás által megosztott blokkok száma összesen|
 |shared_blks_dirtied|   bigint   || Az utasítás által dirtied megosztott blokkok száma összesen |
@@ -155,12 +155,12 @@ Ez a nézet értéket ad vissza a Query Store eseményadatai várjon. Az egyes k
 
 |**Name (Név)**|  **Típus**|   **Hivatkozások**| **Leírás**|
 |---|---|---|---|
-|user_id    |objektumazonosító    |pg_authid.oid  |Az utasítás végrehajtása felhasználó Objektumazonosítója|
-|db_id  |objektumazonosító    |pg_database.oid    |OID-adatbázis, amelyben a rendszer az utasítást hajtott végre|
+|user_id    |oid    |pg_authid.oid  |Az utasítás végrehajtása felhasználó Objektumazonosítója|
+|db_id  |oid    |pg_database.oid    |OID-adatbázis, amelyben a rendszer az utasítást hajtott végre|
 |query_id   |bigint     ||A belső kivonatkód, az utasítás elemzési fa erősségével|
 |event_type |szöveg       ||Az esemény, amelynek a háttérrendszer arra vár, hogy típusát|
 |esemény  |szöveg       ||A várakozási esemény neve, ha a háttérrendszer jelenleg vár|
-|hívás  |Egész szám        ||Az ugyanahhoz az eseményhez rögzített száma|
+|hívások  |Egész szám        ||Az ugyanahhoz az eseményhez rögzített száma|
 
 
 ### <a name="functions"></a>Functions

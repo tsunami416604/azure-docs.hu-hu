@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
 ms.openlocfilehash: 7ff45be4eea5c6e8ab83093847164ede0e94579a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606564"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>A Tevékenységnaplók megtekintése az erőforrásokon műveletek figyelése
@@ -53,7 +53,7 @@ Információ a vizsgálati naplók a portálon keresztül, PowerShell, az Azure 
 
 1. Figyelje meg, a szűrőket úgy módosítottuk, hogy a központi telepítési hibák fókusz az elmúlt 24 órában. Csak a szűrőknek megfelelő műveletek jelennek meg.
 
-    ![Nézetszűrők](./media/resource-group-audit/view-filters.png)
+    ![Szűrők megtekintése](./media/resource-group-audit/view-filters.png)
 
 1. Meghatározott műveleteket összpontosíthat, módosítsa a szűrőket, vagy újakat a alkalmazni. Például az alábbi képen látható, új érték a **Timespan** és **erőforrástípus** tárfiókok értékre van állítva. 
 
@@ -73,7 +73,7 @@ Információ a vizsgálati naplók a portálon keresztül, PowerShell, az Azure 
 
 1. A portálról megtekintheti az erőforrásai. Lépjen vissza az alapértelmezett tekintse meg a figyelő, és válasszon ki egy műveletet, amely az érintett erőforrás módosítása.
 
-    ![Válasszon művelet](./media/resource-group-audit/select-operation.png)
+    ![Művelet kiválasztása](./media/resource-group-audit/select-operation.png)
 
 1. Válassza ki **módosítási előzmények (előzetes verzió)** , és válassza ki az elérhető műveletek egyikét.
 

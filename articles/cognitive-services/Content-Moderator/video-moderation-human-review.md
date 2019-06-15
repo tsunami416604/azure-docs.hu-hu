@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: sajagtap
 ms.openlocfilehash: a6c467d3153400815e37a5d461766140abd1fa32
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65228127"
 ---
 # <a name="video-moderation-with-human-review"></a>Az emberi ellenőrző videomoderálás
@@ -25,7 +25,7 @@ Használja a Content Moderator gépi támogatású [videomoderálás](video-mode
 
 Videó besorolási gépi támogatású vagy a kép betanított modellek vagy videó betanított modellek érhető el. Videó deklarációkkal kép betanított eltérően a Microsoft felnőtt és szexuális videó osztályozó be van tanítva videók segítségével. Ez a módszer jobban egyezés minőségi eredményez.
 
-## <a name="shot-detection"></a>Felvételészlelés
+## <a name="shot-detection"></a>Jelenetfelismerés
 
 A besorolási részletek megjelenítése, nagyobb rugalmasság a videók elemzése segít a további videó intelligencia. Ahelyett, hogy csak a keretek ad ki, a Microsoft videomoderálás szolgáltatás biztosít célirányítópultot a kiszolgálószintű információkat túl. Most már lehetőség elemezheti videóit a képernyőkép szint és a keret szintjén.
 

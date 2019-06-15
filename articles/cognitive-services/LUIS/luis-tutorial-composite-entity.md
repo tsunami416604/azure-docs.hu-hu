@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 02/19/2019
 ms.author: diberry
 ms.openlocfilehash: a5cedec4937da276a4848498ad29a723f6e41ba3
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073702"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Oktatóanyag: Kapcsolódó adatok csoportosítása és kinyerése
@@ -93,7 +93,7 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
 
     ![Összetett név beírásakor legördülő lista párbeszédpanel képernyőképe](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-1. A **milyen típusú entitást szeretne létrehozni?**, minden kötelező mezőt a listában szerepelnek: `personName` és `Department`. Válassza a **Done** (Kész) lehetőséget. Figyelje meg, az összetett entitás hozzáadásának personName, előre létrehozott entitást. Ha egy előre összeállított entitások jelennek meg a kezdő és záró jogkivonatok összetett entitás között lehetnek, az összetett entitás ezeket előre összeállított entitások kell tartalmaznia. Ha az előre összeállított entitások nem szerepelnek, az összetett entitás nem jelzett megfelelően, de az egyes elemeket.
+1. A **milyen típusú entitást szeretne létrehozni?** , minden kötelező mezőt a listában szerepelnek: `personName` és `Department`. Válassza a **Done** (Kész) lehetőséget. Figyelje meg, az összetett entitás hozzáadásának personName, előre létrehozott entitást. Ha egy előre összeállított entitások jelennek meg a kezdő és záró jogkivonatok összetett entitás között lehetnek, az összetett entitás ezeket előre összeállított entitások kell tartalmaznia. Ha az előre összeállított entitások nem szerepelnek, az összetett entitás nem jelzett megfelelően, de az egyes elemeket.
 
     ![Összetett név beírásakor legördülő lista párbeszédpanel képernyőképe](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 

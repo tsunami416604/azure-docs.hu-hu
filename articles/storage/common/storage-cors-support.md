@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: bb296db0d97382deac984369704777de5d5cb362
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65147691"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatások
@@ -131,8 +131,8 @@ Ezután vegye figyelembe a következő CORS-kérések:
 | Kérés |  |  | Válasz |  |
 | --- | --- | --- | --- | --- |
 | **Metódus** |**Forrás** |**Kérelemfejlécek** |**A szabály egyezés** |**Eredmény** |
-| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |Első szabály |Sikeres |
-| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |Második szabály |Sikeres |
+| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |Első szabály |Siker |
+| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |Második szabály |Siker |
 | **GET** |http:\//www.contoso.com |x-ms-client-request-id |Második szabály |Hiba |
 
 Az első kérelem megegyezik az első szabály – a forrástartomány megegyezik az engedélyezett eredetek, a metódus felel meg az engedélyezett metódusok és a fejléc megegyezik az engedélyezett fejlécek – és így sikeres.

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
 ms.openlocfilehash: 9ae57b8ab26780ea975ad74f3348a0deaf8c9cc8
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65464627"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Az adatok exportálása az Azure Blob Storage
@@ -37,8 +37,8 @@ Ha nem rendelkezik egy meglévő Storage exportálása, kövesse az alábbi lép
 ## <a name="create-storage-account"></a>Storage-fiók létrehozása
 
 1. Hozzon létre egy [új storage-fiókot az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További a [Azure Storage-docs](https://aka.ms/blobdocscreatestorageaccount).
-2. Adja meg a fiók típusú tárfiók, **általános célú** vagy **a Blob storage-**.
-3. Válasszon előfizetést. 
+2. Adja meg a fiók típusú tárfiók, **általános célú** vagy **a Blob storage-** .
+3. Válasszon egy előfizetést. 
 
     > [!Note] 
     > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
@@ -79,7 +79,7 @@ Most, hogy egy célhelyet exportálhatja az adatokat, az alábbi lépésekkel á
 5. (Nem kötelező) Ha úgy döntött **adjon meg egy kapcsolati karakterláncot**, egy új mező jelenik meg, hogy illessze be a kapcsolati karakterláncot. Kapcsolati karakterláncára beolvasni a:
     - Storage-fiókot, nyissa meg a Storage-fiókba az Azure Portalon.
         - A **beállítások**válassza **hozzáférési kulcsok**
-        - 1. kulcs kapcsolati karakterláncát vagy a 2. kulcs kapcsolati karakterlánc másolása
+        - 1\. kulcs kapcsolati karakterláncát vagy a 2. kulcs kapcsolati karakterlánc másolása
  
 6. A legördülő listából válassza ki egy tárolót.
 

@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1985b7bbcfdaab2aa303f67a9b1d090c85eedd5d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825194"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Egy összevont egyszeri bejelentkezésre beállított katalógusából származó alkalmazásba történő bejelentkezésnél
@@ -61,7 +61,7 @@ A `Issuer` az alkalmazás Azure ad-ben az SAML-kérelmet küldött attribútum n
 
 
 
-## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik az alkalmazáshoz konfigurált válaszcímekkel
+## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel
 
 *Hiba AADSTS50011: A válaszcím "https:\//contoso.com" nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel*
 
@@ -145,8 +145,8 @@ Után rövid idő alatt a kiválasztott felhasználók ezeket az alkalmazásokat
 
 Az Azure AD nem támogatja az egyszeri bejelentkezés az alkalmazás által küldött SAML-kérelmet. Néhány gyakori hibák a következők:
 
--   Az SAML-kérelemből hiányzó kötelező mezők
--   SAML-kérelem kódolási metódusa
+-   Az SAML-kérelmet kötelező mezők hiányoznak
+-   SAML-kérelem kódolt metódusa
 
 **Felbontás**
 
@@ -263,7 +263,7 @@ Törölje a nem használt válasz-URL az alkalmazáshoz konfigurált.
 
 6.  Válassza ki az egyszeri bejelentkezést a konfigurálni kívánt alkalmazást.
 
-7.  Miután az alkalmazás betöltött, nyissa meg az **SAML-alapkonfiguráció** szakaszt. Az a **válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe)**, a rendszer által létrehozott alapértelmezett válasz URL-címek vagy fel nem használt törlése. Például: `https://127.0.0.1:444/applications/default.aspx`.
+7.  Miután az alkalmazás betöltött, nyissa meg az **SAML-alapkonfiguráció** szakaszt. Az a **válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe)** , a rendszer által létrehozott alapértelmezett válasz URL-címek vagy fel nem használt törlése. Például: `https://127.0.0.1:444/applications/default.aspx`.
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>A probléma, ha az alkalmazás küldött SAML-jogcímek testreszabása
 

@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.openlocfilehash: c32592ce539eeb2dec71792e4a6eb31e7d904eff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60312433"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Egy vezérlő táblával adatbázisból származó változásadatok másolásához
@@ -102,17 +102,17 @@ A sablon meghatározza öt:
 
 7. Válassza ki **ezzel a sablonnal**.
 
-     ![Sablon használata](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
+     ![Ezzel a sablonnal](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
 8. Az alábbi példában látható módon jelenik meg a rendelkezésre álló folyamat:
 
      ![A folyamat áttekintése](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. Válassza ki **tárolt eljárás**. A **tárolt eljárás neveként**, válassza a **[update_watermark]**. Válassza ki **importálási paraméter**, majd válassza ki **dinamikus tartalom hozzáadása**.  
+9. Válassza ki **tárolt eljárás**. A **tárolt eljárás neveként**, válassza a **[update_watermark]** . Válassza ki **importálási paraméter**, majd válassza ki **dinamikus tartalom hozzáadása**.  
 
      ![Állítsa be a tárolt eljárási tevékenység](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
 
-10. A tartalmat  **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}**, majd válassza ki **Befejezés**.  
+10. A tartalmat  **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** , majd válassza ki **Befejezés**.  
 
      ![A tárolt eljárás paraméterei tartalmának írása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
      

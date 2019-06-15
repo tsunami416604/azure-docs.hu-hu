@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
 ms.openlocfilehash: 15babefda36ba37cf6df7820ac888668e4a502be
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65509924"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Az Azure Blockchain Workbench használatával a felhasználók kezelése
@@ -58,7 +58,7 @@ Felhasználók hozzáadása a **rendszergazda** csoportot az Azure AD-címtárba
 5.  Válassza ki **felhasználók és csoportok > felhasználó hozzáadása**.
 6.  A **hozzárendelés hozzáadása**válassza **felhasználók**. Válassza ki, vagy keresse meg a felhasználó hozzáadása rendszergazdaként szeretné. Kattintson a **kiválasztása** kiválasztása befejezésekor.
 
-    ![Hozzárendelés felvétele](./media/manage-users/add-user-assignment.png)
+    ![Hozzárendelés hozzáadása](./media/manage-users/add-user-assignment.png)
 
 9.  Győződjön meg arról **szerepkör** értékre van állítva **rendszergazda**
 10. Válassza a **Hozzárendelés** elemet. A felvett felhasználók jelennek meg a listában a rendszergazdai szerepkörrel.
@@ -79,7 +79,7 @@ A Blockchain Workbench alkalmazás használatával kezelheti a felhasználókat 
 
     A kijelölt alkalmazáshoz tartozó tagok számát tükrözi a tagok csempét.
 
-    ![Alkalmazás kijelölése](./media/manage-users/blockchain-workbench-select-application.png)
+    ![alkalmazás kijelölése](./media/manage-users/blockchain-workbench-select-application.png)
 
 
 #### <a name="add-member-to-application"></a>Tag hozzáadása az alkalmazáshoz

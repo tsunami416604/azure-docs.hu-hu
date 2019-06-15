@@ -11,10 +11,10 @@ ms.date: 05/02/2019
 ms.author: jlembicz
 ms.custom: seodec2018
 ms.openlocfilehash: bc183cb8ac2155b8dd31dc603d70506ad3d5e20a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65797481"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Teljes szöveges keresés működése az Azure Search szolgáltatásban
@@ -74,7 +74,7 @@ A kérelem a keresőmotor a következőket teszi:
 Ez a cikk a legtöbb tárgya feldolgozását a *keresési lekérdezés*: `"Spacious, air-condition* +\"Ocean view\""`. Szűrés és rendezés esnek a hatókörön. További információkért lásd: a [Search API dokumentációja](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 <a name="stage1"></a>
-## <a name="stage-1-query-parsing"></a>1. fázis: Elemzési lekérdezés 
+## <a name="stage-1-query-parsing"></a>1\. fázis: Elemzési lekérdezés 
 
 Feljegyzett, a lekérdezési karakterláncban a kérés az első sort: 
 
@@ -128,7 +128,7 @@ A módosított lekérdezés fa ehhez a lekérdezéshez a következők lennének,
 > Választás `searchMode=any` keresztül `searchMode=all` legjobb döntést jutott reprezentatív lekérdezések futtatásával. Felhasználók, akik valószínűleg tartalmaz az operátorok (keresését dokumentumban tárolja a közös) találhatja eredmények intuitívabb Ha `searchMode=all` tájékoztatja a logikai lekérdezési szerkezeteket. További információ a kölcsönhatások közötti `searchMode` operátorok, tekintse meg és [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search).
 
 <a name="stage2"></a>
-## <a name="stage-2-lexical-analysis"></a>2. fázis: Lexikai elemzés 
+## <a name="stage-2-lexical-analysis"></a>2\. fázis: Lexikai elemzés 
 
 Lexikai elemzőket folyamat *lekérdezések távú* és *lekérdezések kifejezést* után a lekérdezési fa felépítése. Egy elemző fogadja el az elemző által szolgáltatott bemeneti szöveg, dolgozza fel a szöveget, és be kell építeni a lekérdezés fa majd küld vissza a tokenekre bontott feltételeket. 
 
@@ -190,7 +190,7 @@ Lexikai elemzés csak teljes használati – kifejezés lekérdezés vagy egy ki
 
 <a name="stage3"></a>
 
-## <a name="stage-3-document-retrieval"></a>3. fázis: A dokumentum beolvasása 
+## <a name="stage-3-document-retrieval"></a>3\. fázis: A dokumentum beolvasása 
 
 A dokumentum lekéréséhez hivatkozik az egyeztetési feltételek az indexben dokumentumok keresése. Ebben a szakaszban egy példán keresztül legjobb értendő. Kezdjük egy "Hotels" index a következő egyszerű séma kellene: 
 
@@ -253,9 +253,9 @@ Gyakori, de nem szükséges, a Keresés és a műveletek indexelő, így a leké
 
 Térjen vissza a jelen példában a **cím** mező, a fordított index néz ki:
 
-| Időszak | Dokumentumok listájához |
+| Kifejezés | Dokumentumok listájához |
 |------|---------------|
-| atman | 1. |
+| atman | 1 |
 | Beach | 2 |
 | Szálloda | 1, 3 |
 | óceán | 4  |
@@ -267,14 +267,14 @@ A cím mező csak a *Szálloda* megjelenik-e két dokumentumot: 1, 3.
 
 Az a **leírás** mező, az index a következőképpen történik:
 
-| Időszak | Dokumentumok listájához |
+| Kifejezés | Dokumentumok listájához |
 |------|---------------|
 | vezeték nélkül | 3
 | és | 4
-| Beach | 1.
+| Beach | 1
 | megfelel | 3
 | kényelmes | 3
-| távolságskála | 1.
+| distance | 1
 | sziget | 2
 | kauaʻi | 2
 | található | 2
@@ -286,12 +286,12 @@ Az a **leírás** mező, az index a következőképpen történik:
 | termek  | 1, 3
 | secluded | 4
 | part | 2
-| Ahhoz | 1.
-| a | 1, 2
-| erre: | 1.
+| Ahhoz | 1
+| műveletnek a(z) | 1, 2
+| erre: | 1
 | megtekintés | 1, 2, 3
-| walking | 1.
-| a következővel: | 3
+| walking | 1
+| a | 3
 
 
 **Egyező lekérdezési kifejezések indexelt feltételek ellen**
@@ -315,7 +315,7 @@ Lekérdezés-végrehajtás során egyes lekérdezések végrehajtásakor a keres
 
 A teljes a szóban forgó lekérdezés, a dokumentumok, amelyek megfelelnek 1, 2, 3. 
 
-## <a name="stage-4-scoring"></a>4. fázis: A pontozás  
+## <a name="stage-4-scoring"></a>4\. fázis: A pontozás  
 
 Minden dokumentumnak egy keresési eredményhalmaz egy relevanciapontszám van hozzárendelve. A relevanciapontszám feladata magasabb rank, ezeket a dokumentumokat, amely a legjobban a keresési lekérdezés által kifejezett egy felhasználó kapcsolatos kérdésére választ kaphat. A pontszám, amely megfelel a feltételek statisztikai tulajdonságok alapján számítja ki. A pontozó függvény lényege [TF/IDF (kifejezés gyakorisága – inverz dokumentum frequency)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). A ritka és gyakori használati tartalmazó lekérdezéseket TF/IDF elősegíti a ritka kifejezést tartalmazó eredmények. Például az összes Wikipedia-cikk elméleti index, dokumentumokból, amely egyezik a lekérdezés *elnöke*, a megfelelő dokumentumok *elnöke* relevánsabb, mint a dokumentumok minősülnek a megfelelő *a*.
 

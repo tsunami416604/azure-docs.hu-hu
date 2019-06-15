@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 87371f91d9ea1f556d0f78beebd73b8a28977b71
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510387"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Létrehozása és kezelése olvasható replikák az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure Portalról
@@ -67,7 +67,7 @@ Olvasási replika létrehozásához kövesse az alábbi lépéseket:
 
 5. Válasszon egy helyet a replika számára. Létrehozhat egy replikát bármelyik Azure-régióban. Az alapértelmezett hely a ugyanaz, mint a főkiszolgáló.
 
-    ![Válasszon ki egy helyet](./media/howto-read-replicas-portal/location-replica.png)
+    ![Válasszon helyet](./media/howto-read-replicas-portal/location-replica.png)
 
 6. Válassza ki **OK** , a replika létrehozásának megerősítése.
 

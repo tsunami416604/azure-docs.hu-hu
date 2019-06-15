@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
 ms.openlocfilehash: f37c945758cfbd03889d79acf764e7f67022267a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65789405"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Mintául szolgáló 3 - besorolás: Hitelkockázat előrejelzése
@@ -64,7 +64,7 @@ Itt látható a teljes kísérlet diagram:
 
 ![Eredmények értékelése](media/ui-sample-classification-predict-credit-risk-basic/evaluate-result.png)
 
-A kiértékelési eredmények között láthatja, hogy a modell a AUC 0.776. 0.5-ös küszöbértékkel a pontosság 0.621, a visszaírási 0,456, pedig a F1 pontszám 0.526.
+A kiértékelési eredmények között láthatja, hogy a modell a AUC 0.776. 0\.5-ös küszöbértékkel a pontosság 0.621, a visszaírási 0,456, pedig a F1 pontszám 0.526.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

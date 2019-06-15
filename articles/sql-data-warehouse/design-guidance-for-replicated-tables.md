@@ -11,10 +11,10 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 050a0183fd73e64a08550fede440a9bce138a98c
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65850558"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Tervezési útmutató a replikált táblák az Azure SQL Data Warehouse használata
@@ -138,20 +138,20 @@ Amikor az adatok betöltését replikált táblák, próbálja meg minimálisra 
 
 Például a terhelés minta négy forrásból származó adatokat tölt, és négy újraépíteni hív meg. 
 
-- 1. forrásból származó betölteni.
+- 1\. forrásból származó betölteni.
 - SELECT utasítás eseményindítók építse újra az 1.
 - Forrás 2 betöltése.
 - SELECT utasítás eseményindítók építse újra a 2.
-- 3. forrás betöltése.
+- 3\. forrás betöltése.
 - SELECT utasítás eseményindítók építse újra a 3.
 - Adatforrás 4 betöltése.
 - SELECT utasítás eseményindítók építse újra a 4.
 
 Például a terhelést a minta négy forrásból származó adatokat tölt, de csak hív meg egy újraépítése.
 
-- 1. forrásból származó betölteni.
+- 1\. forrásból származó betölteni.
 - Forrás 2 betöltése.
-- 3. forrás betöltése.
+- 3\. forrás betöltése.
 - Adatforrás 4 betöltése.
 - Építse újra a SELECT utasítás eseményindítók.
 

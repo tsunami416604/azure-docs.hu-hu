@@ -11,10 +11,10 @@ ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
 ms.openlocfilehash: 30a090aeb2d66c732e70a9acce67d5f3374c32fa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153152"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>How to use Queue storage from Ruby (A Queue Storage használata Rubyval)
@@ -98,8 +98,8 @@ result = azure_queue_service.peek_messages("test-queue",
 ## <a name="how-to-dequeue-the-next-message"></a>kézikönyv: A következő üzenet eltávolítása a sorból
 Eltávolíthatja az üzenetet egy üzenetsorból két lépésben.
 
-1. Meghívásakor **lista\_messages()**, a következő üzenetet kap egy üzenetsorban lévő alapértelmezés szerint. Azt is megadhatja, hogy hány üzenetet szeretne kapni. A kapott üzeneteket **lista\_messages()** válik az adott üzenetsorban üzeneteket olvasó többi kód számára. A láthatósági időkorlátot másodpercben paraméterként adja át.
-2. Befejeződik, az üzenet eltávolítása az üzenetsorból, meg kell is meghívhat **delete_message()**.
+1. Meghívásakor **lista\_messages()** , a következő üzenetet kap egy üzenetsorban lévő alapértelmezés szerint. Azt is megadhatja, hogy hány üzenetet szeretne kapni. A kapott üzeneteket **lista\_messages()** válik az adott üzenetsorban üzeneteket olvasó többi kód számára. A láthatósági időkorlátot másodpercben paraméterként adja át.
+2. Befejeződik, az üzenet eltávolítása az üzenetsorból, meg kell is meghívhat **delete_message()** .
 
 Az üzenet eltávolítása a két lépésből álló folyamat biztosítja, hogy a kód nem tudja feldolgozni egy üzenetet, mert hardveres vagy szoftveres hiba, amikor a kód egy másik példánya is megkaphassa ugyanazt az üzenetet, és próbálkozzon újra. A kód meghívja **törlése\_message()** jobb gombbal az üzenet feldolgozása után.
 

@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: magoedte
 ms.openlocfilehash: 86a56e71b89e7408d1bc8ca0ee1dc8112bea368f
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522145"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) az Azure Monitor szolgáltatással kapcsolatos ismert problémák
 
 Ez a cikk ismerteti az Azure Monitor szolgáltatással kapcsolatos ismert problémák a virtuális gépek esetében az Azure-ban, amely ötvözi az állapotot, az alkalmazás-összetevők felderítése és az Azure virtuális gép operációs rendszerének alkalmazásteljesítmény-figyelő megoldás. 
 
-## <a name="health"></a>Egészségügy 
+## <a name="health"></a>Állapot 
 Az alábbi ismert problémák az állapotfigyelő szolgáltatás jelenlegi kiadása:
 
 - Egy Azure virtuális gép eltávolítása vagy törlése, ha egy ideig a virtuális gép nézetben jelenik meg. Ezenkívül egy eltávolított vagy törölt virtuális gép állapotát kattintva megnyílik a **egészségügyi diagnosztikai** megtekintheti, és ezután kezdeményezi a betöltés hurkot. A törölt virtuális gép nevét kiválasztva megnyílik egy ablaktábla és a egy üzenet, amely megállapítja, hogy a virtuális gép törölve lett.

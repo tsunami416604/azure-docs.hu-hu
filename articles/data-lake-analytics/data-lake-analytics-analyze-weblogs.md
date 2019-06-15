@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 83742a4f82fb4d67fd258ff0d242847eab634c78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60334120"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Webhelynaplók elemzése az Azure Data Lake Analytics használatával
@@ -21,7 +21,7 @@ Ismerje meg, hogyan használja a Data Lake Analytics különösen tudni, mely hi
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Visual Studio 2015 vagy Visual Studio 2013**.
-* **[Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs)**.
+* **[Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs)** .
 
     A Data Lake Tools for Visual Studio telepítése után megjelenik egy **Data Lake** elemnek, a **eszközök** elemét a Visual Studióban:
 

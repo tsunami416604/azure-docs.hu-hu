@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 3265477108b7e74d65050408add6c5d5c94b4852
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233890"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>A LUIS-alkalmazás az előre összeállított útmutatója
@@ -52,11 +52,11 @@ The table below summarizes the currently supported domains. Support for English 
 
 <br><br>
 
-|Entitástípus|description|
+|Entitás típusa|description|
 |--|--|
 |Naptár|Naptár egy személyes értekezletek és találkozókat, _nem_ nyilvános események (például a világ cup ütemezéseket, Seattle események naptárak vagy általános naptárak (például milyen nap, még ma, mi does fall kezdődik, ha a Labor Day van).|
 |Kommunikáció|Hívásokat, kérelmek küldése a szövegek vagy a Csevegőüzenetek, keresse meg, és adja hozzá a névjegyek és számos más kommunikációs ügyekben (általában kimenő). Kapcsolattartó neve csak lekérdezéseket kommunikációs tartományhoz nem tartozik.|
-|E-mail-cím|E-mail-cím a kommunikációs tartományhoz tartozó altartományban. E-mailek üzeneteket küldhet és fogadhat kéréseket főként tartalmazza.|
+|E-mail|E-mail-cím a kommunikációs tartományhoz tartozó altartományban. E-mailek üzeneteket küldhet és fogadhat kéréseket főként tartalmazza.|
 |HomeAutomation|A HomeAutomation tartományban szándékok és entitások szabályozása otthoni intelligens eszközökkel kapcsolatos biztosít. Főleg támogatja a vezérlő parancs lámpa és légkondicionálóját kapcsolódó, de néhány más electric készülékek általánossá képességekkel rendelkezik.|
 |Megjegyzések|Megjegyzés tartományban szándékok és entitások jegyzeteket létrehozni, és írásra le elemeket a felhasználók számára biztosít.|
 |Helyek|Forráshelyek közé tartozik a vállalkozások, intézmények, éttermek, nyilvános szóközöket és címek. A tartomány támogatja a hely megkeresésével és nyilvános helyen – például tartózkodási hely, a üzemeltetési óra és távolság hatásával kapcsolatos.|

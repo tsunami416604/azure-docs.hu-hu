@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 5524645153db0468076cc9b567965bff79d915cb
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192315"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázás
@@ -111,11 +111,11 @@ Használja a **szinkronizálási** műveletet.
 |Kód  |Leírás  |
 |---------|---------|
 |-1     |  Érvénytelen       |
-|0     | Replikáció folyamatban        |
+|0     | Replikálása        |
 |1     |  Rehidratálása       |
-|2     |   Befejezve       |
+|2     |   Befejeződött       |
 |3     |   Meghiúsult      |
-|4     |    Véglegesítés     |
+|4     |    Véglegesítése     |
 |||
 
 
@@ -145,7 +145,7 @@ Az ssms-ben, az SSDT és kapcsolati karakterláncokat a PowerShell, Azure-függv
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-**A probléma leírása:** Felhasználók hibaüzenet **-kiszolgáló nem található "\<a kiszolgáló nevét >" példány "ReadOnly" kapcsolati módban.**
+**Probléma:** Felhasználók hibaüzenet **-kiszolgáló nem található "\<a kiszolgáló nevét >" példány "ReadOnly" kapcsolati módban.**
 
 **Megoldás:** Amikor kiválasztja a **a lekérdezési készlettől a feldolgozó kiszolgáló elkülönítése** beállítás, az alapértelmezett kapcsolati karakterlánc használatával Ügyfélkapcsolatok (nélkül `:rw`) lekérdezési készlet replikákat a rendszer átirányítja. A lekérdezési készlet replikák vannak nem még online hogy a szinkronizálás még nem fejeződtek be, ha az átirányított ügyfélkapcsolatok sikertelen lehet. Sikertelen kapcsolatok megelőzése érdekében kell lennie legalább két kiszolgálót a lekérdezési készletből szinkronizálás végrehajtása során. Minden kiszolgálón külön-külön szinkronizálása, míg mások is online maradnak. Ha nem rendelkezik a feldolgozási kiszolgálóval a lekérdezési készlet feldolgozása során, ha szeretné, távolítsa el a készletből feldolgozásra, és adja hozzá azt vissza a készletbe feldolgozás befejeződése után, de a szinkronizálás előtt. A memória és a QPU-metrikák használatával szinkronizálási állapotát figyeli.
 

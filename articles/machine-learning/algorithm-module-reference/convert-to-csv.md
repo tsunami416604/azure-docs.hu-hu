@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8b8b6758cc2df7a092ce36e9507f84ac534d0e3d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65028725"
 ---
 # <a name="convert-to-csv-module"></a>Átalakítás fürt megosztott kötetei szolgáltatás modul
@@ -48,7 +48,7 @@ Amikor egy adatkészlet átalakítás fürt megosztott Kötetévé, a fájl ker�
 
 Kattintson duplán a kimenetét [átalakítás fürt megosztott Kötetévé](./convert-to-csv.md), és válassza ki az alábbi lehetőségek egyikét.  
 
- + **Eredmény adatkészlet-letöltés >**: Azonnal megnyitja az adatok másolatát egy helyi mappába menthető CSV formátumban. Ha nem ad meg egy mappát, a alkalmazni egy alapértelmezett név, és a CSV-fájlt a rendszer menti a helyi **letölti** könyvtár.
+ + **Eredmény adatkészlet-letöltés >** : Azonnal megnyitja az adatok másolatát egy helyi mappába menthető CSV formátumban. Ha nem ad meg egy mappát, a alkalmazni egy alapértelmezett név, és a CSV-fájlt a rendszer menti a helyi **letölti** könyvtár.
 
 
  + **Eredmény adatkészlet -> Mentés adatkészletként**: A CSV-fájlt ment vissza az Azure ML-munkaterület külön adatkészletként.

@@ -14,10 +14,10 @@ ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
 ms.openlocfilehash: 6119f1116d255f7cd2a2bfc20e86eeca9e5dfe82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60523487"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Forgatókönyv: Telemetria engedélyezése a Microsoft Dynamics CRM Online Application Insights használatával
@@ -117,7 +117,7 @@ Kattintson a diagram részletesebb megjelenítéséhez:
 
 ![Keressen a lapmegtekintési események](./media/sample-mscrm/27.png)
 
-![Hasonló lapmegtekintések](./media/sample-mscrm/28.png)
+![Hasonló Lapmegtekintések](./media/sample-mscrm/28.png)
 
 ![Lapmegtekintési tulajdonságok](./media/sample-mscrm/29.png)
 

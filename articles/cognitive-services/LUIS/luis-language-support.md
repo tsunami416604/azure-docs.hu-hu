@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
 ms.openlocfilehash: 8f067bc005c4de9ddc87ed598b1717f8fbb29a6a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072380"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelvéhez és régiójához támogatása
@@ -49,14 +49,14 @@ A LUIS tisztában van azzal a kimondott szöveg a következő nyelveken:
 
 Nyelvi támogatás esetében eltérő [előre összeállított entitások](luis-reference-prebuilt-entities.md) és [előre összeállított tartományok](luis-reference-prebuilt-domains.md).
 
-### <a name="chinese-support-notes"></a>* Kínai támogatja a jegyzeteket
+### <a name="chinese-support-notes"></a>\* Kínai támogatja a jegyzeteket
 
  - Az a `zh-cn` kulturális környezet, LUIS vár helyett a hagyományos karakterkészlet egyszerűsített kínai karakterkészlet.
  - Leképezések, az entitások, a funkciók és a reguláris kifejezések nevei a kínai vagy latin karaktereket lehet.
  - Tekintse meg a [előre összeállított tartományok referencia](luis-reference-prebuilt-domains.md) , amelyen előre összeállított tartományok használata támogatott, az információ a `zh-cn` kulturális környezet.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
-### <a name="japanese-support-notes"></a>* Japán támogatja a jegyzeteket
+### <a name="japanese-support-notes"></a>\* Japán támogatja a jegyzeteket
 
  - Mivel a LUIS nem biztosít szintaktikai analysis, és nem lesz a következő Keigo és az informális Japán közötti különbségek megértése, kell foglalják magukban képzési példaként használt alkalmazásait formalitást különböző szintjeit.
      - でございます nem ugyanaz, mint です.

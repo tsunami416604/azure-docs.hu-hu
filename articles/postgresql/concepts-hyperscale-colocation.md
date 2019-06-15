@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: d03cfd49887adf1f6a4650e374d3e13eeca735a4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65077470"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Tábla közös elhelyezés az Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió)
@@ -102,7 +102,7 @@ Ebben az esetben az adatok terjesztési jelentős hátrányokkal hoz létre:
 
 -   Többletterhelést az egyes szegmensek több lekérdezés futtatása lekérdezése
 -   Sok sor visszaadása az ügyfél Q1 gyűjteményértékelést kelljen végezni
--   2. negyedévi nagy lenni
+-   2\. negyedévi nagy lenni
 -   A kell lekérdezéseket írni több lépésben kell módosítani az alkalmazásban
 
 Az adatokat a rendszer szétosztja között, mivel a lekérdezések párhuzamosíthatók a is. Azt azonban csak előnyös-e munkamennyiség, amelyet a lekérdezés lényegesen nagyobb, mint a terhelés több horizontális partícióra lekérdezését.

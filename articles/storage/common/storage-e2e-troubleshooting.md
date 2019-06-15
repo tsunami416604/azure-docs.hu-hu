@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 2707081adafa74237e3fb7730837f581e0c8b790
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154224"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Teljes körű hibaelhárítás az Azure Storage-mérőszámok és a naplózás, az AzCopy és a Message Analyzer használatával
@@ -220,7 +220,7 @@ Mellett az Azure Storage-nézet elrendezések használatával, is határozza meg
 ### <a name="apply-color-rules-to-the-analysis-grid"></a>Az elemzés rács színe szabályok alkalmazása
 A Storage-eszközök is kínálnak a Vizualizáció azt jelenti, hogy azonosíthatja a különböző típusú hibákat a elemzési rács színszabályainak. Így azok megjelennek a kiszolgáló naplózási és a hálózati nyomkövetés csak a HTTP-hibák, az előre definiált színt szabályok érvényesek lesznek.
 
-Szín szabályokat a alkalmazni, válassza ki a **Színszabályainak** az eszköztár menüszalagján. Látni fogja az Azure Storage színszabályainak menüjében. Az oktatóanyaghoz válasszon **Ügyfélhibák (400 és 499 StatusCode)**, ahogy az alábbi képen is látható.
+Szín szabályokat a alkalmazni, válassza ki a **Színszabályainak** az eszköztár menüszalagján. Látni fogja az Azure Storage színszabályainak menüjében. Az oktatóanyaghoz válasszon **Ügyfélhibák (400 és 499 StatusCode)** , ahogy az alábbi képen is látható.
 
 ![Az Azure Storage nézet elrendezése](./media/storage-e2e-troubleshooting/color-rules-menu.png)
 
@@ -278,7 +278,7 @@ A következő ábrán látható egy adott kéréshez, amikor egy Blob beolvasás
 
 Ezután azt fogja korrelációját, ha az ügyfélkérelem-azonosító meg, milyen műveletet, az ügyfél lett véve, ha a hiba történt az ügyfél log adatokkal. Egy új elemzési rácsnézet ehhez a munkamenethez megtekintéséhez a ügyfél naplóadatokat, amely megnyit egy második lapján jelenítheti meg:
 
-1. Először másolja be az értékét a **ügyfélkérelem** mezőt a vágólapra. Is ehhez, vagy sor kijelölése, megkeresi a **ügyfélkérelem** mező, kattintson a jobb gombbal az adatérték a, és kiválasztása **másolási "Ügyfélkérelem"**.
+1. Először másolja be az értékét a **ügyfélkérelem** mezőt a vágólapra. Is ehhez, vagy sor kijelölése, megkeresi a **ügyfélkérelem** mező, kattintson a jobb gombbal az adatérték a, és kiválasztása **másolási "Ügyfélkérelem"** .
 2. Az eszköztár menüszalagján válassza **új megjelenítő**, majd **elemzési rács** egy új lap megnyitásához. Az új lapon az összes adat látható a naplófájlok, csoportosítás, szűrés és színszabályainak nélkül.
 3. Az eszköztár menüszalagján válassza **nézet elrendezési**, majd **.NET-ügyfél az összes oszlop** alatt a **Azure Storage** szakaszban. E nézet elrendezése az ügyfél adatait jeleníti meg, log, valamint a kiszolgáló és a hálózat-nyomkövetési naplókat. Alapértelmezés szerint a rendszer rendezi a **MessageNumber** oszlop.
 4. Ezután az ügyfél napló kereséséhez az ügyfél-kérelem azonosítója. Válassza az eszköztár menüszalagon **található üzenetek**, majd adjon meg egy egyéni szűrő az ügyfélkérelem-azonosító a **található** mező. Használja ezt a szintaxist a szűrőt, a saját ügyfélkérelem-azonosító megadása:
@@ -303,14 +303,14 @@ Most, hogy ismeri az Üzenetelemző használatával a naplóadatok elemzéséhez
 | Nem várt késedelmeket egy üzenetsorban található üzenetek |AzureStorageClientDotNetV4.Description tartalmaz "Újrapróbálkozás sikertelen műveletet." |Ügyfél |
 | HTTP növekedése percentthrottlingerror értéket mutatnak |HTTP.Response.StatusCode   == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |Network (Hálózat) |
 | Növeli a percenttimeouterror értéket mutatnak |HTTP.Response.StatusCode   == 500 |Network (Hálózat) |
-| Növelje az (all) percenttimeouterror értéket mutatnak |* StatusCode == 500 |Összes |
+| Növelje az (all) percenttimeouterror értéket mutatnak |\* StatusCode == 500 |Összes |
 | Növeli a percentnetworkerror értéket mutatnak |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Ügyfél |
 | A HTTP 403 (tiltott) üzenetek |HTTP. Response.StatusCode 403-as == |Network (Hálózat) |
 | A HTTP 404 (nem található) üzenetek |HTTP.Response.StatusCode   == 404 |Network (Hálózat) |
-| 404 (all) |* StatusCode 404-es == |Összes |
+| 404 (all) |\* StatusCode 404-es == |Összes |
 | Közös hozzáférésű Jogosultságkód (SAS) hitelesítési probléma |AzureStorageLog.RequestStatus ==  "SASAuthorizationError" |Network (Hálózat) |
 | HTTP 409 (Ütközés) üzenetek |HTTP.Response.StatusCode   == 409 |Network (Hálózat) |
-| 409 (mind) |* StatusCode == 409 |Összes |
+| 409 (mind) |\* StatusCode == 409 |Összes |
 | Alacsony PercentSuccess vagy analytics naplóbejegyzések rendelkezik ClientOtherErrors állapotú tranzakciós műveletek |AzureStorageLog.RequestStatus == "ClientOtherError" |Kiszolgáló |
 | Nagle figyelmeztetés |((AzureStorageLog.EndToEndLatencyMS-AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5-ös)) és (AzureStorageLog.RequestPacketSize < 1460) és (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS > = 200) |Kiszolgáló |
 | A kiszolgáló és a hálózati naplókban időtartományt |#Timestamp > = 2014-10-20T16:36:38 és #Timestamp < = 2014-10-20T16:36:39 |Kiszolgáló, hálózati |

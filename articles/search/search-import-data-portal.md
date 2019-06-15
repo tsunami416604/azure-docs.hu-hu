@@ -10,10 +10,10 @@ ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: a0eefe38fdffd04bb95826f960771bd6430ea687
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024782"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Az Azure Search adatok importálása varázsló
@@ -81,7 +81,7 @@ Is importálás kizárólag egyedi táblából, adatbázisnézetből és egyené
 
 Az adatszerkezetet a varázsló futtatása előtt kell létrehoznia, és tartalmat kell tartalmaznia. Ne futtassa a **adatimportálás** varázsló egy üres adatforráson.
 
-|  Kiválasztás | Leírás |
+|  Választás | Leírás |
 | ---------- | ----------- |
 | **Meglévő adatforrás** |Ha a Search-szolgáltatásban már meg vannak adva indexelők, másik importálási folyamathoz kiválaszthat egy meglévő adatforrás-definíciót. Az Azure Search indexelők adatforrás-objektumok csak segítségével. Programozott módon létrehozhat egy adatforrás-objektum vagy a **adatimportálás** varázsló.|
 | **Példák**| Az Azure Search egy ingyenes globális Azure SQL database segítségével ismerje meg az Azure Search importálása és a lekérdezési kérelmek üzemelteti. Lásd: [a rövid útmutató: Importálása, index és lekérdezés a portál eszközei használatával](search-get-started-portal.md) bemutató. |

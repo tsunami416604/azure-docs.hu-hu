@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: a77cf20be30361abf6590dbd53bdb07c327eb9d8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205001"
 ---
 # <a name="azure-storage-analytics-logging"></a>Az Azure Storage analytics naplózása
@@ -113,7 +113,7 @@ Blobok listázása programozott módon kapcsolatos információkért lásd: [Blo
 
 |Attribútum|Leírás|
 |---------------|-----------------|
-|`LogType`|Ismerteti, hogy a napló tartalmazza-e olvasási, írási vagy törlési műveletek kapcsolatos információk. Ez az érték tartalmazhat egy vagy három, vesszővel elválasztva kombinációja.<br /><br /> 1. példa: `write`<br /><br /> 2. példa: `read,write`<br /><br /> 3. példa: `read,write,delete`|
+|`LogType`|Ismerteti, hogy a napló tartalmazza-e olvasási, írási vagy törlési műveletek kapcsolatos információk. Ez az érték tartalmazhat egy vagy három, vesszővel elválasztva kombinációja.<br /><br /> 1\. példa: `write`<br /><br /> 2\. példa: `read,write`<br /><br /> 3\. példa: `read,write,delete`|
 |`StartTime`|A legkorábbi időpontot, amikor egy bejegyzést a naplóban formájában `YYYY-MM-DDThh:mm:ssZ`. Például:`2011-07-31T18:21:46Z`|
 |`EndTime`|A napló formájában bejegyzés legújabb idején `YYYY-MM-DDThh:mm:ssZ`. Például:`2011-07-31T18:22:09Z`|
 |`LogVersion`|A napló formátuma verziója.|

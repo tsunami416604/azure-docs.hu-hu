@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 04/24/2019
 ms.author: helohr
 ms.openlocfilehash: b7d7b25d0355f2379b90313f17e2b595234df827
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65145986"
 ---
-# <a name="connect-from-windows-10-or-windows-7"></a>Csatlakozás a Windows 10-es vagy Windows 7
+# <a name="connect-from-windows-10-or-windows-7"></a>Csatlakozás Windows 10 vagy Windows Server 7 rendszerről
 
-> A következőre érvényes Windows 7 és Windows 10-es.
+> A következőkre érvényes: Windows 7 és Windows 10-es.
 
 A letölthető ügyfél érhető el, amely hozzáférést biztosít a Windows virtuális asztal előzetes erőforrásokhoz Windows 7 és Windows 10 rendszerű eszközökön.
 
@@ -51,7 +51,7 @@ Miután előfizetett egy csatornához, a tartalom a hírcsatorna automatikusan f
 
 Előfizetés után megtekintheti a hírcsatorna további információt a részletek panelen elérésével.
 
-1. Az ügyfél fő lapján, válassza a három pontra (**...** ) a hírcsatorna nevétől jobbra.
+1. Az ügyfél fő lapján, válassza a három pontra ( **...** ) a hírcsatorna nevétől jobbra.
 1. A legördülő menüből válassza ki a **részletek**.
 1. Az ügyfél jobb oldalán megjelenik a részleteket tartalmazó panel.
 
@@ -68,7 +68,7 @@ Ha szükséges, elkezdheti válassza a manuális frissítési **frissítés most
 
 Ebben a szakaszban fog arról szól, hogyan hírcsatorna leiratkozni. Fizessen elő újra egy másik fiókkal vagy az erőforrások eltávolítása a rendszerből leiratkozhat.
 
-1. Az ügyfél fő lapján, válassza a három pontra (**...** ) a hírcsatorna nevétől jobbra.
+1. Az ügyfél fő lapján, válassza a három pontra ( **...** ) a hírcsatorna nevétől jobbra.
 1. A legördülő menüből válassza ki a **Unsubscribe**.
 1. Tekintse át, és válassza ki **Folytatás** a párbeszédpanelről.
 

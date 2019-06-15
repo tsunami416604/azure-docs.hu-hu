@@ -17,10 +17,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3973a35acb4cb95d3392a8daa59e7fd9a8c56eb1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65191527"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Az Azure Active Directory Identity Protection kockázati események leírása
@@ -28,7 +28,7 @@ ms.locfileid: "65191527"
 Biztonsági rések túlnyomó többsége kerül sor, amikor a támadók próbál a jeggyel hozzáférést egy környezethez lopásának megjelölése a felhasználó identitását. Feltört identitásokat felderítése nem könnyű feladat. Az Azure Active Directory adaptív gépi tanulási algoritmusok és heurisztika segítségével észleli a felhasználói fiókokhoz kapcsolódó gyanús tevékenységeket. Minden észlelt gyanús művelet egy rekord nevű kockázati esemény van tárolva.
 
 
-## <a name="anonymous-ip-address"></a>Névtelen IP cím
+## <a name="anonymous-ip-address"></a>Anonymous IP address
 
 **Észlelés típusa:** Valós idejű  
 **Régi név:** Sign-ins from anonymous IP address
@@ -38,7 +38,7 @@ A kockázati esemény típusa azt jelzi, hogy a névtelen IP-címet (például a
 Ezen IP-címek actors, aki szeretné, hogy azok vélhetően ártó szándékkal bejelentkezési telemetriai (IP-cím, tartózkodási hely, eszköz, stb.) által általában használt.
 
 
-## <a name="atypical-travel"></a>Szokatlan útvonal
+## <a name="atypical-travel"></a>Bejelentkezés szokatlan utazás
 
 **Észlelés típusa:** Offline  
 **Régi név:** Bejelentkezés szokatlan helyekről
@@ -69,7 +69,7 @@ Amikor az internetes bűnözők veszélyeztetheti a jogosult felhasználók érv
 Ha a szolgáltatás felhasználói hitelesítő adatokat, a webről, illessze be a webhelyek vagy a fenti adatforrások beszerzi, azok veti össze az Azure AD-felhasználók aktuális érvényes hitelesítő adatokat érvényes egyezés található.
 
 
-## <a name="malware-linked-ip-address"></a>Kártevő szoftverrel összekapcsolt IP-cím
+## <a name="malware-linked-ip-address"></a>Kártevő szoftver társított IP-cím
 
 **Észlelés típusa:** Offline  
 **Régi név:** Bejelentkezések fertőzött eszközökről
@@ -78,7 +78,7 @@ Ha a szolgáltatás felhasználói hitelesítő adatokat, a webről, illessze be
 A kockázati esemény típusa által aktívan kiszolgálóval való kommunikációhoz egy robot ismert kártevő szoftverrel fertőzött IP-címekről indított bejelentkezések jelzi. Ez határozza meg, hogy a felhasználó-eszköz IP-címekkel, a bot kiszolgáló aktív állapotában bot kiszolgáló összevetésén alapulnak, amelyek IP-címek használatával történik.
 
 
-## <a name="unfamiliar-sign-in-properties"></a>Szokatlan bejelentkezési tulajdonságok
+## <a name="unfamiliar-sign-in-properties"></a>Ismeretlen bejelentkezési tulajdonságok
 
 **Észlelés típusa:** Valós idejű  
 **Régi név:** Bejelentkezések ismeretlen helyekről

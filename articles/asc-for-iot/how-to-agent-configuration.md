@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 311a867c863cbd72292d8e34b4f7abdb949b12c6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65198445"
 ---
 # <a name="tutorial-configure-security-agents"></a>Oktatóanyag: Biztonsági ügynökök konfigurálása
@@ -107,7 +107,7 @@ A következő táblázat tartalmazza az ASC vezérelhető tulajdonságainak IoT 
 
 Alapértelmezett értékek érhetők el a megfelelő sémát [Github](https://aka.ms/iot-security-module-default).
 
-| Name (Név)| status | Érvényes értékek| Alapértelmezett értékek| Leírás |
+| Name (Név)| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Kötelező: False (hamis) |Érvényes értékek: ISO 8601 formátumú időtartama |Alapértelmezett érték: PT7M |Maximális idő előtt magas prioritású üzeneteket küldi el.|
 |lowPriorityMessageFrequency |Kötelező: False (hamis)|Érvényes értékek: ISO 8601 formátumú időtartama |Alapértelmezett érték: PT5H |Maximális idő, alacsony prioritású üzenetek előtt küldi el.| 

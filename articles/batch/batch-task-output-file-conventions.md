@@ -16,10 +16,10 @@ ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d4e16ca40e8026861d492f950396d6aa39d4c445
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65791559"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>A Batch File Conventions-könyvtárral az Azure Storage-feladatok és tevékenységek adatok megőrzése a .NET-hez
@@ -59,7 +59,7 @@ Megőrizheti a kimeneti adatokat az Azure Storage használatával a File Convent
 
 1. Az Azure portálon lépjen Batch-fiókjára.
 1. A **beállítások**válassza **Tárfiók**.
-1. Ha Ön még nem rendelkezik a Batch-fiókhoz társított Storage-fiókot, kattintson a **Storage-fiók (nincs)**.
+1. Ha Ön még nem rendelkezik a Batch-fiókhoz társított Storage-fiókot, kattintson a **Storage-fiók (nincs)** .
 1. Tárfiók kiválasztása a listából az előfizetéshez. A legjobb teljesítmény érdekében használja az Azure Storage-fiók, amely ugyanabban a régióban a Batch-fiókot, ahol a feladatok futnak.
 
 ## <a name="persist-output-data"></a>Kimeneti adatok megőrzése

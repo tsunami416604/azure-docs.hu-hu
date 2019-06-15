@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
 ms.openlocfilehash: 2f6db23e02c836dea6d640757d12275b654ad468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60186791"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Példány szintű nyilvános IP-Címek (klasszikus) áttekintése
@@ -29,7 +29,7 @@ Egy példány szintű nyilvános IP (ILPIP) egy nyilvános IP-cím, amelyeket ho
 
 ![ILPIP és virtuális IP-CÍMEK közötti különbség](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
-1. ábrán látható, a felhőszolgáltatás érhető el egy virtuális IP-cím, amíg az egyes virtuális gépeket általában elért virtuális IP-cím használatával:&lt;portszám&gt;. Egy ILPIP rendel egy adott virtuális Gépre, a virtuális gép érhetők el közvetlenül az adott IP-cím használatával.
+1\. ábrán látható, a felhőszolgáltatás érhető el egy virtuális IP-cím, amíg az egyes virtuális gépeket általában elért virtuális IP-cím használatával:&lt;portszám&gt;. Egy ILPIP rendel egy adott virtuális Gépre, a virtuális gép érhetők el közvetlenül az adott IP-cím használatával.
 
 Egy felhőalapú szolgáltatás az Azure-ban való létrehozásakor megfelelő DNS-beli A rekordokat automatikusan létrehozza a férhessenek hozzá a szolgáltatás segítségével egy teljesen minősített tartománynevét (FQDN), a tényleges virtuális IP-CÍMEK használata helyett. Ugyanez a folyamat esetében egy ILPIP engedélyezi a hozzáférést a virtuális gép vagy szerepkörpéldány példányhoz a ILPIP helyett a teljes tartománynév alapján történik. Például ha létrehoz egy felhőalapú szolgáltatás nevű *contosoadservice*, és konfigurál egy webes szerepkörben nevű *contosoweb* két példánnyal, és a .cscfg fájlban `domainNameLabel` értékre van állítva  *WebPublicIP*, az Azure regisztrál, az alábbi A rögzíti a példányok:
 

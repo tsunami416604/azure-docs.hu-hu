@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
 ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65231430"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Megnevezett entitások felismerése Szövegelemzés használata
@@ -41,27 +41,27 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 
 | Típus  | SubType | Példa |
 |:-----------   |:------------- |:---------|
-| Ember        | N/A\*         | "Jeff", "Bill Gates"     |
-| Location egység      | N/A\*         | "Redmond, Washington", "Párizs"  |
-| Munkahely  | N/A\*         | "Microsoft"   |
-| Mennyiség      | Szám        | "6", "hat"     | 
-| Mennyiség      | Százalék    | "50 %", "ötven százalék"| 
-| Mennyiség      | Sorszám       | "2.", "a második"     | 
-| Mennyiség      | NumberRange   | "4 – 8"     | 
+| Személy        | N/A\*         | "Jeff", "Bill Gates"     |
+| Location egység      | N/A\*         | „Redmond, Washington”, „Paris”  |
+| Szervezet  | N/A\*         | „Microsoft”   |
+| Mennyiség      | Szám        | „6”, „six”     | 
+| Mennyiség      | Százalék    | „50%”, „fifty percent”| 
+| Mennyiség      | Sorszám       | „2nd”, „second”     | 
+| Mennyiség      | Számtartomány   | „4 to 8”     | 
 | Mennyiség      | Kor           | "90 napnál nem régebbi", "30 évnél fiatalabb"    | 
-| Mennyiség      | Pénznem      | "$10.99"     | 
-| Mennyiség      | Dimenzió     | "10 mérföld", "40 cm"     | 
-| Mennyiség      | Hőmérséklet   | "32 fokos"    |
-| DateTime      | N/A\*         | "6:30 = 1997031213 2012. február 4."      | 
-| DateTime      | Dátum          | "2., 2017 május", "05/02/2017"   | 
+| Mennyiség      | Currency (Pénznem)      | „$10.99”     | 
+| Mennyiség      | Dimenzió     | „10 miles”, „40 cm”     | 
+| Mennyiség      | Hőmérséklet   | „32 degrees”    |
+| DateTime      | N/A\*         | „6:30PM February 4, 2012”      | 
+| DateTime      | Dátum          | „May 2nd, 2017”, „05/02/2017”   | 
 | DateTime      | Time          | "8 am", "8:00"  | 
-| DateTime      | DateRange     | "Május 2. május 5-én a"    | 
-| DateTime      | timeRange     | "du. 6, 7 pm"     | 
-| DateTime      | Időtartam      | "1 perc 45 másodpercig"   | 
-| DateTime      | Beállítás           | "minden kedden"     | 
+| DateTime      | Dátumtartomány     | „May 2nd to May 5th”    | 
+| DateTime      | Időtartomány     | „6pm to 7pm”     | 
+| DateTime      | Időtartam      | „1 minute and 45 seconds”   | 
+| DateTime      | Beállítás           | „every Tuesday”     | 
 | DateTime      | Időzóna      |    | 
-| URL           | N/A\*         | "https:\//www.bing.com"    |
-| E-mail-cím         | N/A\*         | "support@contoso.com" |
+| URL-cím           | N/A\*         | "https:\//www.bing.com"    |
+| E-mail         | N/A\*         | "support@contoso.com" |
 
 \* Attól függően, a bemeneti és a kinyert entitásokat, bizonyos entitások előfordulhat, hogy kihagyja a `SubType`.  Az összes, a felsorolt támogatott entitás típusok a következők csak az angol, egyszerűsített kínai, francia, német és spanyol nyelven érhető el.
 
@@ -88,7 +88,7 @@ Dokumentum mérete kell lennie a 5,120 karakter / dokumentum, és legfeljebb 100
 }
 ```    
     
-## <a name="step-1-structure-the-request"></a>1. lépés: A kérelem struktúra
+## <a name="step-1-structure-the-request"></a>1\. lépés: A kérelem struktúra
 
 A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
 
@@ -103,13 +103,13 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
+## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem küldése
 
 Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás fogadja a második és az 1000 percenkénti kérések legfeljebb 100 kérelemből állhat. Mindegyik kérés legfeljebb 1 MB lehet.
 
 Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 
-## <a name="step-3-view-results"></a>3. lépés: Eredmények megtekintése
+## <a name="step-3-view-results"></a>3\. lépés: Eredmények megtekintése
 
 Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal és az észlelt tulajdonságokkal.
 
@@ -274,7 +274,7 @@ Egy példa a kimenetre entitáskapcsolás a következő látható:
 ```
 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta, fogalmak és a Cognitive Services Text Analytics használatával entitáskapcsolás munkafolyamatokat. Összegezve:
 

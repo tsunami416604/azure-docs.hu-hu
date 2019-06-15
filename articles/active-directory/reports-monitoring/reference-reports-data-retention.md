@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 41fa12c9d79d14a6602d995ed93b5d1a23be8a4d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65781045"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Mennyi ideig az Azure AD jelentéskészítési adatok tárolása?
@@ -32,7 +32,7 @@ Ebben a cikkben megismerkedhet a különböző tevékenységre vonatkozó jelent
 
 | Azure AD Edition | Gyűjtemény indítása |
 | :--              | :--   |
-| Azure AD Premium P1 <br /> Azure AD Premium P2 | Amikor regisztrál egy előfizetést |
+| Prémium szintű Azure AD P1 <br /> Prémium szintű Azure AD P2 | Amikor regisztrál egy előfizetést |
 | Azure AD Free <br /> Azure AD Basic | Az első megnyitásakor a [Azure Active Directory panel](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) vagy használja a [reporting API-k](https://aka.ms/aadreports)  |
 
 ---
@@ -66,7 +66,7 @@ A biztonsági jelek, az adatgyűjtési folyamat akkor kezdődik, amikor, jóváh
 
 **Tevékenységjelentések**    
 
-| Jelentés                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| Jelentés                 | Azure AD Free | Azure AD Basic | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
 | Naplók             | 7 nap        |  7 nap        | 30 nap             | 30 nap             |
 | Bejelentkezések               | –           |  –           | 30 nap             | 30 nap             |
@@ -76,9 +76,9 @@ A naplózási és a bejelentkezési tevékenységre vonatkozó adatok által át
 
 **Biztonsági jelek**
 
-| Jelentés         | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| Jelentés         | Azure AD Free | Azure AD Basic | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
 | :--            | :--           | :--            | :--                 | :--                 |
-| Érintett felhasználók  | 7 nap        | 7 nap         | 30 nap             | 90 nap             |
+| Veszélyeztetett felhasználók  | 7 nap        | 7 nap         | 30 nap             | 90 nap             |
 | Kockázatos bejelentkezések | 7 nap        | 7 nap         |  30 nap            | 90 nap             |
 
 ---

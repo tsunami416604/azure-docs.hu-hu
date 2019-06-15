@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 65e94a271fc8fc72ac74d51af3cf7b717f8410b0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5f3c1331e2b005b136a015c537d0fc18406ca9d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072090"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Manuális létrehozásához és a egy kötet használata Azure-fájlmegosztást az Azure Kubernetes Service (AKS)
@@ -20,7 +20,7 @@ Tárolóalapú alkalmazások gyakran kell eléréséhez, és a egy külső adatm
 
 A Kubernetes-köteteken további információkért lásd: [tárolási lehetőségek az aks-ben alkalmazásokhoz][concepts-storage].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
@@ -71,7 +71,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>A fájlmegosztás kötetként csatlakoztatása
 
-Csatlakoztatása az Azure-fájlmegosztást be a pod, konfigurálja a tároló specifikációja a kötetet. Hozzon létre egy új fájlt `azure-files-pod.yaml` a következő tartalommal. Ha a fájlmegosztást vagy titkos kód neve neve módosította, frissítse a *megosztásnév* és *secretName*. Ha szükséges, frissítse a `mountPath`, azaz az elérési utat, ahol a fájlok megosztása a pod csatlakoztatva van.
+Csatlakoztatása az Azure-fájlmegosztást be a pod, konfigurálja a tároló specifikációja a kötetet. Hozzon létre egy új fájlt `azure-files-pod.yaml` a következő tartalommal. Ha a fájlmegosztást vagy titkos kód neve neve módosította, frissítse a *megosztásnév* és *secretName*. Ha szükséges, frissítse a `mountPath`, azaz az elérési utat, ahol a fájlok megosztása a pod csatlakoztatva van. A Windows Server tárolók (jelenleg előzetes verzióban az aks-ben), adja meg egy *mountPath* használjon, például a Windows-elérési út egyezmény *"D:"* .
 
 ```yaml
 apiVersion: v1

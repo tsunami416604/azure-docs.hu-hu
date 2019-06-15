@@ -11,10 +11,10 @@ ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
 ms.openlocfilehash: ab7d2c0af4bc71733a7995b7e781f0facbfbb29f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236438"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Az Azure Backup figyelési feladatok
@@ -34,7 +34,7 @@ A következő Azure Backup megoldásai feladatok itt látható:
   - Azure-beli virtuális gép biztonsági mentése
   - Az Azure biztonsági mentés
   - Az Azure rendszeren futó munkaterhelés biztonsági például SQL
-  - Az Azure Backup ügynöke (MAB)
+  - Azure Backup ügynök (MAB)
 
 A System Center Data Protection Manager (SC-DPM), a Microsoft Azure Backup Server (MABS) feladatok nem jelennek meg.
 
@@ -48,8 +48,8 @@ Riasztások olyan elsősorban olyan forgatókönyvek, ahol felhasználó értes�
 ### <a name="alert-scenarios"></a>Riasztási forgatókönyvek
 A következő esetekben alertable forgatókönyvek szolgáltatás vannak meghatározva.
 
-  - Biztonsági mentési és visszaállítási hibák
-  - Biztonsági mentés sikeres volt, figyelmeztetésekkel fejeződött be az Azure Backup ügynök (MAB)
+  - Biztonsági mentési/visszaállítási hibák
+  - A biztonsági mentés sikeresen befejeződött az Azure Backup ügynök (MAB) esetében, de figyelmeztetésekkel
   - Védelem leállítása és megőrizni az adatokat és leállítása a védelmi adatok törlésével
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Ha a riasztás nem jelenik meg, kivételek
@@ -63,10 +63,10 @@ A fenti kivételek, a feltétellel, hogy ezeket a műveleteket (elsősorban a fe
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>A következő Azure biztonsági mentési megoldások riasztásai itt látható:
 
-  - Az Azure virtuális gép biztonsági mentéseinek
-  - Az Azure biztonsági másolatainak
-  - Például az SQL Azure-beli számítási biztonsági
-  - Az Azure Backup ügynöke (MAB)
+  - Azure-beli virtuális gép biztonsági mentései
+  - Azure File biztonsági mentései
+  - Azure számítási feladatok biztonsági mentései, például SQL
+  - Azure Backup ügynök (MAB)
 
 > [!NOTE]
 > A System Center Data Protection Manager (SC-DPM), a Microsoft Azure Backup Server (MABS) riasztások nem jelennek meg itt.

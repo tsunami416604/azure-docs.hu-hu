@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
 ms.openlocfilehash: 88b0ac853c64e1e32a2d1c429bdf8655158f030d
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411478"
 ---
 # <a name="specify-a-face-recognition-model"></a>Arcfelismerési modell megadása
@@ -43,7 +43,7 @@ Használatakor a [A Face – észlelése] API-t, rendelje hozzá a modell a köv
 * `recognition_01`
 * `recognition_02`
 
-Másik lehetőségként megadhatja a _returnRecognitionModel_ paraméter (alapértelmezett **false (hamis)**) jelzi-e _recognitionModel_ vissza kell adni az adott válaszként. Tehát a kérelem URL-CÍMÉT a [A Face – észlelése] REST API-t fog kinézni:
+Másik lehetőségként megadhatja a _returnRecognitionModel_ paraméter (alapértelmezett **false (hamis)** ) jelzi-e _recognitionModel_ vissza kell adni az adott válaszként. Tehát a kérelem URL-CÍMÉT a [A Face – észlelése] REST API-t fog kinézni:
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]
 &subscription-key=<Subscription key>`

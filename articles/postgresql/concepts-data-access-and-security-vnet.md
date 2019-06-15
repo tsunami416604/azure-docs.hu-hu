@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: c873abcdf3c64f8357c584c8e24809270946bf74
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073478"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata az Azure Database for PostgreSQL – egyetlen kiszolgáló
@@ -51,7 +51,7 @@ Egy virtuális hálózati szabályt arra utasítja az Azure Database for Postgre
 
 Amíg nem tesz semmit, a virtuális gépeket az alhálózatok nem tud kommunikálni az Azure Database for PostgreSQL-kiszolgálóhoz. Egy műveletet, amely létrehozza a kommunikációt egy virtuális hálózati szabály létrehozása. A közösségértékek a VNet szabály módszer kiválasztása szükség van a versengő, a tűzfal által kínált biztonsági beállításokat érintő összehasonlítása és a kontraszt megbeszélésre.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Azure-szolgáltatásokhoz való hozzáférés engedélyezése
+### <a name="a-allow-access-to-azure-services"></a>A. Az Azure-szolgáltatásokhoz való hozzáférés engedélyezése
 
 A kapcsolat biztonsági panelnek egy **be-és kikapcsolása** feliratú gomb **Azure-szolgáltatásokhoz való hozzáférés engedélyezése**. A **ON** beállítás lehetővé teszi, hogy az összes Azure IP-címek és az összes Azure-alhálózatok által kezdeményezett kommunikáció. Ezek az Azure IP-címek vagy az alhálózatok előfordulhat, hogy nem kell tulajdonában. Ez **ON** beállítás valószínűleg több nyitva, mint azt szeretné, hogy az Azure Database for postgresql-hez is. A virtuális hálózati szabály funkció lehetővé teszi a sok ennél a részletes.
 

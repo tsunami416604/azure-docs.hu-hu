@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.openlocfilehash: 0f405f542a8408c290704f1707ca10a24b08f861
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65203623"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Egy lassú vagy meghibásodott HDInsight-fürtön-feladat hibaelhárítása
@@ -21,15 +21,15 @@ Ha egy alkalmazás feldolgozása az adatokat egy HDInsight fürtön vagy lassan 
 
 Egy lassú vagy meghibásodott fürt diagnosztizálhatja, a környezetet, például a kapcsolódó Azure-szolgáltatások, fürtkonfiguráció és feladat-végrehajtási információt vonatkozó biztonságáért adatainak összegyűjtése. Egy hasznos diagnosztikai, hogy próbálja meg újra előállítani a hibás állapotú, egy másik fürtön.
 
-* 1. lépés: Gyűjtse össze a problémát.
-* 2. lépés: Ellenőrizze a HDInsight-fürt környezetében.
-* 3. lépés: A fürt állapotának megtekintéséhez.
-* 4. lépés: Tekintse át a környezet verem és -verziók.
-* 5. lépés: Vizsgálja meg a fürt naplófájlokat.
-* 6. lépés: Ellenőrizze a konfigurációs beállításokat.
-* 7. lépés: Reprodukálja a hibát egy másik fürtön.
+* 1\. lépés: Gyűjtse össze a problémát.
+* 2\. lépés: Ellenőrizze a HDInsight-fürt környezetében.
+* 3\. lépés: A fürt állapotának megtekintéséhez.
+* 4\. lépés: Tekintse át a környezet verem és -verziók.
+* 5\. lépés: Vizsgálja meg a fürt naplófájlokat.
+* 6\. lépés: Ellenőrizze a konfigurációs beállításokat.
+* 7\. lépés: Reprodukálja a hibát egy másik fürtön.
 
-## <a name="step-1-gather-data-about-the-issue"></a>1. lépés: Gyűjtse össze a problémát
+## <a name="step-1-gather-data-about-the-issue"></a>1\. lépés: Gyűjtse össze a problémát
 
 HDInsight számos eszközöket biztosít, amelyek használatával a fürtökkel problémák azonosítása és elhárítása. A következő lépések végigvezetik ezen eszközök, és javaslatokat tesz a felügyelő a probléma.
 
@@ -43,7 +43,7 @@ Probléma azonosítása érdekében vegye figyelembe a következő kérdéseket:
 * Ha adott probléma először fordulnak elő? Milyen gyakran ez történt óta?
 * Változott, a saját fürtkonfiguráció?
 
-### <a name="cluster-details"></a>Fürt adatai
+### <a name="cluster-details"></a>Fürt részletes adatai
 
 Fürt fontos információkat tartalmazza:
 
@@ -65,7 +65,7 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 Egy másik lehetőség van a PowerShell használatával. További információkért lásd: [kezelése az Apache Hadoop-fürtök a HDInsight az Azure PowerShell-lel](hdinsight-administer-use-powershell.md).
 
-## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>2. lépés: A HDInsight-fürt környezet ellenőrzése
+## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>2\. lépés: A HDInsight-fürt környezet ellenőrzése
 
 Egyes HDInsight-fürtök különböző Azure-szolgáltatások, valamint a nyílt forráskódú szoftverek, például az Apache Spark és Apache HBase támaszkodik. HDInsight-fürtök is meghívhatja a más Azure-szolgáltatásokkal, például az Azure-beli virtuális hálózatok.  Fürt hibát is okozhat, a fürtön futó szolgáltatások, vagy egy külső szolgáltatás által.  A fürt a fürt service konfiguráció módosítása is okozhatnak.
 
@@ -101,7 +101,7 @@ Hasonlítsa össze a legfrissebb verzióját a HDInsight-fürt verziója. Minden
 
 Ha a lassulásokat tapasztal a fürtben, fontolja meg, az Ambari felhasználói felületén vagy a klasszikus Azure CLI segítségével a szolgáltatások újraindítása. Előfordulhat, hogy a fürt tapasztalt átmeneti hibák, és újraindítás a leggyorsabb mód a stabilizálódhatnak a környezetben, és esetleg javíthatja a teljesítményt.
 
-## <a name="step-3-view-your-clusters-health"></a>3. lépés: A fürt állapotának megtekintéséhez
+## <a name="step-3-view-your-clusters-health"></a>3\. lépés: A fürt állapotának megtekintéséhez
 
 HDInsight-fürtök különböző típusú virtuálisgép-példányokon futó csomópontok állnak. Minden egyes csomópont erőforráshiány, hálózati problémák léptek fel és egyéb problémák, ami lelassíthatja a fürt figyelhető. Minden fürt két fő csomópontot tartalmaz, és a legtöbb fürttípus tartalmazhatja feldolgozó és élcsomópontok. 
 
@@ -204,13 +204,13 @@ Ezek a problémák diagnosztizálásához:
 
     Templeton eszközön keresztül végzett gyűjti, a feladat konzolkimenet `stderr` a `statusdir`, amelyek gyakran hasznos hibaelhárítási. `stderr` a YARN-alkalmazásazonosító, a tényleges lekérdezés tartalmazza.
 
-## <a name="step-4-review-the-environment-stack-and-versions"></a>4. lépés: Tekintse át a környezet verem és -verziók
+## <a name="step-4-review-the-environment-stack-and-versions"></a>4\. lépés: Tekintse át a környezet verem és -verziók
 
 Az Ambari felhasználói felületén **verem és verzió** oldal ismerteti, fürt-szolgáltatások konfigurációs és szolgáltatási verzióelőzmények.  Helytelen könyvtár Hadoop verziót lehet egy fürt hiba okát.  Az Ambari felhasználói felületén, válassza ki a **rendszergazdai** menüben, majd **platformok és verziók**.  Válassza ki a **verziók** fülre az oldal fájlverzió-információkat lásd:
 
 ![Verem és -verziók](./media/hdinsight-troubleshoot-failed-cluster/stack-versions.png)
 
-## <a name="step-5-examine-the-log-files"></a>5. lépés: Vizsgálja meg a naplófájlok
+## <a name="step-5-examine-the-log-files"></a>5\. lépés: Vizsgálja meg a naplófájlok
 
 Nincsenek naplók, amelyek akkor jönnek létre, a számos szolgáltatásból és a egy HDInsight-fürtöt alkotó összetevők számos különböző típusú. [WebHCat-naplófájlok](#check-your-webhcat-service) korábban ismerteti. Nincsenek számos egyéb hasznos naplófájlok segítségével megvizsgálhatja a fürttel kapcsolatos problémák szűkítéséhez az alábbi szakaszokban leírtak szerint.
 
@@ -242,13 +242,13 @@ Egy HDInsight-fürtön az Azure-táblák és az Azure Blob storage írt naplóf�
 
 Halomürítések az alkalmazás memória, beleértve a változók értékeit, ugyanakkor amelynek hasznosak a futási időben bekövetkező problémák diagnosztizálása pillanatképet tartalmaz. További információkért lásd: [engedélyezése halommemória-képek a Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
 
-## <a name="step-6-check-configuration-settings"></a>6. lépés: Ellenőrizze a konfigurációs beállítások
+## <a name="step-6-check-configuration-settings"></a>6\. lépés: Ellenőrizze a konfigurációs beállítások
 
 HDInsight-fürtök olyan előre konfigurált alapértelmezett beállításokat, a kapcsolódó szolgáltatások, például a Hadoop-, Hive, HBase és így tovább. Fürt, a hardverkonfigurációja, a csomópontok számát típusától függően a típusú feladatot futtat, és az adatok dolgozik (és az adatok feldolgozásának módja) szükség lehet optimalizálni a konfigurációt.
 
 Teljesítmény-konfigurációkat a legtöbb forgatókönyvhöz optimalizálására vonatkozó részletes utasításokért lásd: [optimalizálása az Apache Ambari fürtkonfigurációk](hdinsight-changing-configs-via-ambari.md). A Spark használata esetén lásd: [a teljesítmény optimalizálása az Apache Spark-feladatok](spark/apache-spark-perf.md). 
 
-## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>7. lépés: Reprodukálja a hibát egy másik fürtön
+## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>7\. lépés: Reprodukálja a hibát egy másik fürtön
 
 Segítségével diagnosztizálhatja a fürt hiba forrását. Indítsa el az új fürt ugyanazzal a konfigurációval, majd küldje el újra a sikertelen feladat lépéseket egyenként. Ellenőrizze az egyes lépések eredményét a következő feldolgozása előtt. Ez a módszer lehetővé teszi, hogy javítsa ki, majd futtassa újból a sikertelen egyetlen lépésben. Ez a módszer is rendelkezik az előnye, hogy csak a bemeneti adatok egyszer betöltése.
 

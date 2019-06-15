@@ -13,10 +13,10 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/30/2019
 ms.openlocfilehash: 47bf59adb33f3685b31430c652b31880d383833e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232643"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus biztonsági adatbázismentés használatával Azure SQL-adatbázis helyreállítása
@@ -97,7 +97,7 @@ Akkor is törölt adatbázis visszaállítása a fióktörlési idő és a egy k
 > [!TIP]
 > Egy PowerShell-példaszkript megjelenítő törölt adatbázis visszaállítása, lásd: [PowerShell-lel SQL-adatbázis visszaállítása](scripts/sql-database-restore-database-powershell.md).
 > [!IMPORTANT]
-> Ha törli egy Azure SQL Database server-példány, az összes adatbázis is törlődik, és nem állítható helyre. Jelenleg nem törölt kiszolgáló visszaállítása nem támogatott.
+> Ha törli egy Azure SQL Database server-példány, az összes adatbázis is törlődik, és nem állítható helyre. A törölt kiszolgálók visszaállítása jelenleg nem támogatott.
 
 ### <a name="deleted-database-restore-using-the-azure-portal"></a>Törölt adatbázis visszaállítása az Azure portal használatával
 
@@ -177,7 +177,7 @@ A REST API használatával egyetlen vagy készletezett adatbázisok visszaállí
 - Azure CLI-vel önálló vagy készletezett adatbázisok visszaállítását, lásd: [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
 - Felügyelt példányok Azure CLI-vel való visszaállításához, lásd: [az sql KÖZÉP2 visszaállítása](/cli/azure/sql/midb#az-sql-midb-restore)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Automatikus biztonsági mentést a felhasználói és az alkalmazáshibák, véletlen törlése és a hosszabb kimaradások az adatbázisok védelmét. A beépített kapacitásprofilokban szolgáltatási szintek és a számítási méret érhető el.
 

@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: robb
 ms.openlocfilehash: 99ac4ffc288773e52183d371ef2c20f6153bc0f3
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65471788"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Az Azure Diagnostics hibaelhárítása
 Ez a cikk ismerteti a hibaelhárítási információkat, amelyek megfelelőek az Azure Diagnostics használatával. Az Azure diagnostics kapcsolatos további információkért lásd: [Azure Diagnostics – áttekintés](diagnostics-extension-overview.md).
 
 ## <a name="logical-components"></a>Logikai összetevőit
-**Diagnosztikai beépülő modul indítója (DiagnosticsPluginLauncher.exe)**: Elindítja az Azure Diagnostics bővítmény. Adattárat biztosít, a belépési pont folyamatának.
+**Diagnosztikai beépülő modul indítója (DiagnosticsPluginLauncher.exe)** : Elindítja az Azure Diagnostics bővítmény. Adattárat biztosít, a belépési pont folyamatának.
 
-**Diagnosztikai beépülő modult (DiagnosticsPlugin.exe)**: Konfigurálja, elindul, és kezeli a monitorozási ügynök élettartamát. Ez az a legfontosabb, amely indítja el a gyorsindítóból.
+**Diagnosztikai beépülő modult (DiagnosticsPlugin.exe)** : Konfigurálja, elindul, és kezeli a monitorozási ügynök élettartamát. Ez az a legfontosabb, amely indítja el a gyorsindítóból.
 
-**Monitoring Agent (MonAgent\*.exe folyamatok)**: Figyeli, és gyűjti a diagnosztikai adatokat visz át.  
+**Monitoring Agent (MonAgent\*.exe folyamatok)** : Figyeli, és gyűjti a diagnosztikai adatokat visz át.  
 
 ## <a name="logartifact-paths"></a>Napló/összetevő elérési utak
 Az alábbiakban néhány fontos naplókat és az összetevők elérési útja. A dokumentum többi részében ezt az információt nevezzük.
 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
-| Összetevő | `Path` |
+| Összetevő | Útvonal |
 | --- | --- |
 | **Az Azure Diagnostics-konfigurációs fájl** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
 | **Naplófájlok** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
@@ -39,8 +39,8 @@ Az alábbiakban néhány fontos naplókat és az összetevők elérési útja. A
 | **Napló gyűjtése segédprogram elérési útja** | %SystemDrive%\Packages\GuestAgent\ |
 | **MonAgentHost naplófájl** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
-### <a name="virtual-machines"></a>Virtuális gépek
-| Összetevő | `Path` |
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
+| Összetevő | Útvonal |
 | --- | --- |
 | **Az Azure Diagnostics-konfigurációs fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
 | **Naplófájlok** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
@@ -214,7 +214,7 @@ Ez a kód a négy táblát hoz létre:
 | szolgáltató = "prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5("prov1") |
 | szolgáltató = "prov2" &lt;DefaultEvents eventDestination = "dest2" /&gt; |WADdest2 |
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Diagnosztikai bővítmény konfigurációjának ellenőrzése
 A bővítmény konfigurációjának ellenőrzése a legegyszerűbb módja az, hogy lépjen [Azure erőforrás-kezelő](http://resources.azure.com), és lépjen a virtuális gép vagy a cloud service helye az Azure Diagnostics bővítmény (IaaSDiagnostics / PaaDiagnostics) van.
@@ -232,7 +232,7 @@ A beépülő modul a következő kilépési kódokat ad vissza:
 
 | Kilépési kód | Leírás |
 | --- | --- |
-| 0 |Sikeres művelet. |
+| 0 |Siker. |
 | -1 |Általános hiba. |
 | -2 |Nem sikerült betölteni a rcf fájlt.<p>Ez a belső hiba csak akkor történjen meg, ha a Vendég ügynök beépülő modul indítója manuálisan hív helytelenül a virtuális gépen. |
 | -3 |A diagnosztika konfigurációs fájl nem tölthető be.<p><p>Megoldás: Egy konfigurációs fájl nem továbbítja a séma érvényesítése miatt. A megoldás, ha egy konfigurációs fájl, amely megfelel a séma biztosít. |

@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e25060152577e7947a78aa0e8d78c85cc7fd2fad
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65138343"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Egyszeri bejelentkezéshez a SAML 2.0 identitásszolgáltató (IdP) használata
@@ -26,7 +26,7 @@ ms.locfileid: "65138343"
 Ez a dokumentum információkat tartalmaz az identitásszolgáltatóval SAML 2.0-s szabványnak megfelelő SP-Lite profil-alapú, az előnyben részesített biztonsági jogkivonat-szolgáltatás (STS) / identitásszolgáltató. Ez a forgatókönyv akkor hasznos, ha már rendelkezik egy felhasználó könyvtárba, és tárolja a helyszíni SAML 2.0-val elérhető jelszót. A meglévő felhasználói címtár használható az Office 365-höz és más Azure AD által védett erőforrásokhoz való bejelentkezést. Az SAML 2.0-s SP-Lite profil a Security Assertion Markup Language (SAML) széles körben használt összevont identitás standard üzemeltetésbiztonsági bejelentkezési és attribútum exchange alapul.
 
 >[!NOTE]
->3. fél identitásszolgáltató használatát, amely az Azure ad-ben való használatra nem tesztelt listáját lásd: a [az Azure AD összevonás kompatibilitási listája](how-to-connect-fed-compatibility.md)
+>3\. fél identitásszolgáltató használatát, amely az Azure ad-ben való használatra nem tesztelt listáját lásd: a [az Azure AD összevonás kompatibilitási listája](how-to-connect-fed-compatibility.md)
 
 A Microsoft támogatja a bejelentkezést egy Microsoft felhőszolgáltatásra, például az Office 365, a megfelelően konfigurált SAML 2.0-s profil-alapú IdP-integrációja. SAML 2.0 identitásszolgáltató harmadik féltől származó termékekre, és ezért a Microsoft nem biztosít támogatást az üzembe helyezés, konfigurálása, a hibaelhárítási ezekkel kapcsolatos ajánlott eljárásokat. Egyszer megfelelően konfigurálva, a SAML 2.0 identitásszolgáltató használatával a Microsoft-kapcsolat Analyzer eszközt, amely modellről további részleteket az alábbi megfelelő konfiguráció is tesztelve az integrációt. Az SAML 2.0-s SP-Lite, profil-alapú identitásszolgáltató kapcsolatos további részletekért kérje meg a szervezet, amely a megadott azt.
 

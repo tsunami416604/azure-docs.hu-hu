@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: 058b6c979346d9dcce36940432d0e222e919dba9
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540827"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper cognitive szakértelem
@@ -39,7 +39,7 @@ Minden API-verzióhoz, a válaszban a kimeneti név mindig "kimeneti". Belsőleg
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
 
-## <a name="scenario-1-complex-types"></a>1. forgatókönyv: komplexní typy
+## <a name="scenario-1-complex-types"></a>1\. forgatókönyv: komplexní typy
 
 Példaként vegyünk egy forgatókönyvet, ahol szeretné létrehozni a szerkezetet *analyzedText* , amely két tagja van: *szöveg* és *vélemények*, illetve. Az Azure Search-index többrészes kereshető mező neve egy *komplex típus* és gyakran létrehozott, ha a forrásadatok rendelkezik egy megfelelő összetett szerkezet, amely hozzá van leképezve.
 
@@ -139,7 +139,7 @@ A **Shaper** szakértelem hoz létre egy új elem nevű *analyzedText* a kombin�
 }
 ```
 
-## <a name="scenario-2-input-consolidation"></a>2. forgatókönyv: a bemeneti összevonása
+## <a name="scenario-2-input-consolidation"></a>2\. forgatókönyv: a bemeneti összevonása
 
 Egy másik példa, hogy a feldolgozási folyamat különböző szakaszaiban kicsomagolta a könyv különböző oldalain fejezet címek és egy könyv címe imagine. Most már létrehozhat egy egyszeres szerkezet mikroszolgáltatásokból álló, ezeket a különféle bemeneteket.
 
@@ -193,7 +193,7 @@ Ebben az esetben a **Shaper** lapossá teszi az összes fejezet címek hozzon l�
 
 <a name="nested-complex-types"></a>
 
-## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>3. forgatókönyv: a bemeneti összevonása a beágyazott környezetekben
+## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>3\. forgatókönyv: a bemeneti összevonása a beágyazott környezetekben
 
 > [!NOTE]
 > A támogatott struktúrák beágyazott a [REST API verzióját 2019-05-06-Preview](search-api-preview.md) is használható egy [Tudásbázis store](knowledge-store-concept-intro.md) vagy az Azure Search-index.

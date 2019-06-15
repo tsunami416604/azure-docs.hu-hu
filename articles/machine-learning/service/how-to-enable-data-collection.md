@@ -12,10 +12,10 @@ author: marthalc
 ms.date: 12/03/2018
 ms.custom: seodec18
 ms.openlocfilehash: df2f0731aff6c90ef83b26041a9d383ce14974c6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024248"
 ---
 # <a name="collect-data-for-models-in-production"></a>A modellek éles adatok gyűjtése
@@ -129,7 +129,7 @@ Ha már van egy szolgáltatás telepíti a függőségeket a **környezet fájl*
 ## <a name="disable-data-collection"></a>Adatgyűjtés letiltása
 Adatgyűjtés bármikor leállíthatja. Python-kód vagy az Azure portal használatával tiltsa le az adatgyűjtést.
 
-+ 1. lehetőség – tiltsa le az Azure Portalon: 
++ 1\. lehetőség – tiltsa le az Azure Portalon: 
   1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
   1. Nyissa meg a munkaterületet.

@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
 ms.openlocfilehash: 42724f5fcb3101015cef0d218a3d548f349646be
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65785818"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>5 – besorolási. példa: Előrejelezheti a forgalom szolgáltatóváltást és felfelé értékesítése 
@@ -61,7 +61,7 @@ Első lépésként végzünk néhány egyszerű adatfeldolgozás.
 
 ## <a name="results"></a>Results (Eredmények)
 
-Megjelenítheti a kimenetét a **Evaluate Model** modult, tekintse meg a modell teljesítményét a vizsgálat beállítása. Az fel értékesítési feladat ROC-görbe mutatja be, hogy a modell jobban, mint egy véletlenszerű modell does. A görbe (AUC) alatti terület 0,857. 0.5-ös küszöbértékkel a pontosság 0,7, a visszaírási 0.463, pedig a F1 pontszám 0.545.
+Megjelenítheti a kimenetét a **Evaluate Model** modult, tekintse meg a modell teljesítményét a vizsgálat beállítása. Az fel értékesítési feladat ROC-görbe mutatja be, hogy a modell jobban, mint egy véletlenszerű modell does. A görbe (AUC) alatti terület 0,857. 0\.5-ös küszöbértékkel a pontosság 0,7, a visszaírási 0.463, pedig a F1 pontszám 0.545.
 
 ![Eredmények értékelése](./media/ui-sample-classification-predict-churn/evaluate-result.png)
 

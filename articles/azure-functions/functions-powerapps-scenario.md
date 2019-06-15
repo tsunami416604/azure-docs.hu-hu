@@ -13,10 +13,10 @@ ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
 ms.openlocfilehash: 26f6502f63b39d3f1ecf8dfeb09c8df4daa63b68
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65786117"
 ---
 # <a name="call-a-function-from-powerapps"></a>Függvény hívása a PowerAppsből
@@ -100,13 +100,13 @@ Most már készen áll az alkalmazás létrehozása a powerapps szolgáltatásba
 
     1. Az a **adatok** panelen, kattintson a **statikus adatok felvétele az alkalmazásba**.
 
-        ![Adatforrás felvétele](media/functions-powerapps-scenario/add-static-data.png)
+        ![Adatforrás hozzáadása](media/functions-powerapps-scenario/add-static-data.png)
 
         Általában akkor olvassa el, és külső forrásból származó adatok írása, de adja hozzá az Excel-adatok statikus adatok, mert ez csupán egy példa.
 
     1. Keresse meg a mentett Excel-fájlt, jelölje be a **turbina** táblát, és kattintson a **Connect**.
 
-        ![Adatforrás felvétele](media/functions-powerapps-scenario/choose-table.png)
+        ![Adatforrás hozzáadása](media/functions-powerapps-scenario/choose-table.png)
 
 
 1. Adja hozzá az egyéni API-k adatforrásként.

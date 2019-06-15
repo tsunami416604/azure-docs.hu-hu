@@ -9,10 +9,10 @@ ms.date: 04/03/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 43fe0047022173cc20f58688920fa95b95cc6c22
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65473536"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Egy CSP-hez hozzon létre, és az ügyfél nevében egy Azure IoT központi alkalmazás kezelése 
@@ -53,7 +53,7 @@ Az alkalmazás URL-je a hivatkozásra kattintva az alkalmazás. A böngészőben
 
 Adja meg a nevet az alkalmazásnak az alkalmazás URL-címe esetén automatikusan létrehozott. Igény szerint választhat egy másik URL-címet az alkalmazás. Minden egyes Azure IoT Central URL-cím az Azure IoT Central belül egyedinek kell lennie. Akkor egy hibaüzenet jelenik meg, ha úgy dönt, az URL-cím már foglalt.
 
-## <a name="directory"></a>Könyvtár
+## <a name="directory"></a>Címtár
 
 Mivel az Azure IoT Central kezelheti a kiválasztott a Microsoft Partner portál ügyfél tartalomcsomagokból környezet rendelkezik, csak az Azure Active Directory-bérlő a Directory mezőben adott ügyfélhez tartozó láthatja. 
 
@@ -87,7 +87,7 @@ A rendelkezésre álló sablonok közül választhat az új Azure IoT Central al
 | Alkalmazássablon | Leírás |
 | -------------------- | ----------- |
 | Egyéni alkalmazás   | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
-| Contoso-példa       | Létrehoz egy alkalmazást, amely tartalmaz egy egyszerű csatlakoztatott eszköz eszköz-sablont. Használja ezt a sablont az Azure IoT Central megismerésének megkezdéséhez. |
+| Minta: Contoso       | Létrehoz egy alkalmazást, amely tartalmaz egy egyszerű csatlakoztatott eszköz eszköz-sablont. Használja ezt a sablont az Azure IoT Central megismerésének megkezdéséhez. |
 | Minta: Devkits       | Létrehoz egy eszközsablonokat tartalmazó alkalmazást, amelyekkel csatlakoztathat egy MXChip vagy Raspberry Pi eszközt. Sablon használata, ha az eszköz a kódra kísérletezés eszköz a fejlesztők. |
 
 ## <a name="next-steps"></a>További lépések

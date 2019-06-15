@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 61bd230ffdb79b31390e96179e5beb3646902142
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796727"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Keresés kategória a helyi vállalati keresési Bing-API
@@ -26,7 +26,7 @@ A helyi vállalati keresési Bing-API lehetővé teszi, hogy keresse meg a kül�
 A következő típusú Search fő kategória határozza meg.  Egynél több kategória használatával rendelve egy vesszővel tagolt listája adható meg a `localCategories` paraméter.  
 - EatDrink 
 - SeeDo 
-- Üzlet 
+- Üzemi 
 - HotelsAndMotels 
 - BanksAndCreditUnions 
 - Ideiglenes 
@@ -66,7 +66,7 @@ Alkategóriák átadott ugyanúgy, mint `localCategories`. Alkategóriákat töb
 | MovieTheaters | Múzeumi | Park |
 | SightseeingTours | TouristInformation | Állatkertek |
  
-### <a name="shop"></a>Üzlet 
+### <a name="shop"></a>Üzemi 
 |  |  |  |
 | -- | -- | -- |
 | AntiqueStores | Könyvesboltokban | CDAndRecordStores |

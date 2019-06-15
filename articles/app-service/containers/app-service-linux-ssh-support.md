@@ -17,10 +17,10 @@ ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 18d10afc9132c81c2dcfbb1aa17ded81a21336ca
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65780044"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-támogatás a Linuxon futó Azure App Service
@@ -51,7 +51,7 @@ Bújtatás, a TCP használatával hozhat létre egy hitelesített WebSocket kapc
 
 Első lépésként telepítenie kell [Azure CLI-vel](/cli/azure/install-azure-cli?view=azure-cli-latest). Hogyan működik az Azure parancssori felület telepítése nélkül megtekintéséhez nyissa meg a [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Távoli kapcsolatot létesíteni az alkalmazás használatával az [az webapp távoli-kapcsolat létrehozása](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) parancsot. Adja meg  _\<előfizetés-azonosítója >_,  _\<csoport-neve >_ és \_< alkalmazás neve > _ az alkalmazáshoz.
+Távoli kapcsolatot létesíteni az alkalmazás használatával az [az webapp távoli-kapcsolat létrehozása](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) parancsot. Adja meg  _\<előfizetés-azonosítója >_ ,  _\<csoport-neve >_ és \_< alkalmazás neve > _ az alkalmazáshoz.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &

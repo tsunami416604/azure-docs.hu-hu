@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c57ed956ec50c8bac26720a27894c07353928336
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873900"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Az Internet Explorer és Microsoft Edge böngésző MSAL.js az ismert problémák
@@ -32,7 +32,7 @@ Több jelentést is az Internet Explorer és Microsoft Edge-hitelesítéssel kap
 ### <a name="cause"></a>Ok
 Ezeket a problémákat a legtöbb oka a következők szerint. A munkamenet-tároló és a helyi tároló biztonsági zónák a Microsoft Edge böngésző szerint vannak particionálva. A Microsoft Edge adott verziójában amikor a rendszer átirányítja az alkalmazás több zónában, a munkamenet-tároló és a helyi tároló törlődik. Pontosabban a munkamenet-tárolót a szokásos böngésző navigációs törlődik, és a munkamenet- és a helyi tároló törlődik, a böngésző InPrivate módban. MSAL.js adott állapotra menti a munkamenet-storage-ban, és ez az állapot ellenőrzése a hitelesítési folyamatok során támaszkodik. Ha a munkamenet-tároló üres, ebben az állapotban elvész, és ezért nem működő funkciókat eredményez.
 
-### <a name="issues"></a>Problémák
+### <a name="issues"></a>Hibák
 
 - **Végtelen átirányítási ciklusok és az oldal újra betölti a hitelesítés során**. Amikor a felhasználók bejelentkeznek az alkalmazásba a Microsoft Edge, visszaküldi az aad-ben a bejelentkezési lapot a rendszer átirányítja, és regisztrálásuk végtelen átirányítási ciklusba ismétlődő lapon újra eredményez. Ez általában együtt egy `invalid_state` hiba történt a munkamenet-storage-ban.
 

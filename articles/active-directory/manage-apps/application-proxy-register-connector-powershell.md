@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0eb3e52dfd02bd7948f1b5ffd908ac1255118008
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65782925"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Hozzon létre egy felügyelet nélküli telepítési parancsfájlt, az Azure AD-alkalmazásproxy-összekötő
@@ -53,7 +53,7 @@ Az összekötő regisztrálására használható két módszer van:
 * A létrehozott kapcsolat nélküli tokennel összekötő regisztrálása
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>A Windows PowerShell hitelesítő objektumot használ az összekötő regisztrálása
-1. Hozzon létre egy Windows PowerShell hitelesítő objektumot `$cred` , amely tartalmazza a megfelelő rendszergazdai felhasználónév és jelszó a címtár számára. Futtassa a következő parancsot, és cserélje le *\<felhasználónév\>* és  *\<jelszó\>*:
+1. Hozzon létre egy Windows PowerShell hitelesítő objektumot `$cred` , amely tartalmazza a megfelelő rendszergazdai felhasználónév és jelszó a címtár számára. Futtassa a következő parancsot, és cserélje le *\<felhasználónév\>* és  *\<jelszó\>* :
    
         $User = "<username>"
         $PlainPassword = '<password>'

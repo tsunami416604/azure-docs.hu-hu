@@ -13,15 +13,15 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: 7f184178343f69f522148777752c51afc5c5dcb6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65790415"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Az Azure SQL adatbázis Premium RS szolgáltatási szint (előzetes verzió) kivezetjük - áttelepítési lehetőségek
 
-2018 Februárjától a Microsoft bejelentette, hogy az Azure SQL Database, a prémium RS szolgáltatási rétegben elérhetőség nem lenne elérhető, és a 2019. január 31. után már nem szeretne támogatott. A támogatási határidő végén 2019. június 30. most már elérhető. Ez a cikk ismerteti az áttelepítés a Premium RS szolgáltatási rétegben egy másik szolgáltatási szinten a lehetőségei. 2019. június 30. után a Microsoft lesz automatikusan az adatbázisokat a prémium RS, amely a legjobban illik a prémium RS adatbázis teljesítmény-követelmények általánosan elérhető a szolgáltatási réteg.
+2018 Februárjától a Microsoft bejelentette, hogy az Azure SQL Database, a prémium RS szolgáltatási rétegben elérhetőség nem lenne elérhető, és a 2019. január 31. után már nem szeretne támogatott. A támogatási határidő végén 2019. június 30. most már elérhető. Ez a cikk ismerteti az áttelepítés a Premium RS szolgáltatási rétegben egy másik szolgáltatási szinten a lehetőségei. 2019\. június 30. után a Microsoft lesz automatikusan az adatbázisokat a prémium RS, amely a legjobban illik a prémium RS adatbázis teljesítmény-követelmények általánosan elérhető a szolgáltatási réteg.
 
 A migrálás célhelyek és díjszabási lehetőségeit, amely lehet prémium RS ügyfelek alkalmas a következők:
 
@@ -51,7 +51,7 @@ A nagy számítási igényű a prémium RS számítási feladatokhoz javasoljuk,
 |**Ha jelenleg...**|**Át összehasonlítható Virtuálismag-alapú...**|**Át összehasonlítható DTU-alapú...**|
 |---|---|---|
 |1 prémium RS|Általános célú 1 virtuális mag (Gen4)|Standard 3|
-|2. prémium RS|Általános célú, 2 virtuális mag (Gen4)|Standard 4|
+|2\. prémium RS|Általános célú, 2 virtuális mag (Gen4)|Standard 4|
 |Prémium RS 4|Általános célú, 4 virtuális magra jogosult (Gen4)|Standard 6|
 |Prémium RS 6|Általános célú 6 virtuális magra jogosult (Gen4)|Standard 7|
 
@@ -71,7 +71,7 @@ Azt javasoljuk, hogy az i/o-igényes egyetlen adatbázisok migrálását a Virtu
 |**Ha jelenleg...**|**Át összehasonlítható Virtuálismag-alapú...**|**Át összehasonlítható DTU-alapú...**|
 |---|---|---|
 |1 prémium RS| Nagy kapacitású 1 virtuális mag (Gen4) vagy a kritikus fontosságú üzleti-1 virtuális mag (Gen4)|1 prémium|
-|2. prémium RS| Nagy kapacitású 2 virtuális mag (Gen4) vagy üzleti kritikus 2 virtuális mag (Gen4|Premium 2|
+|2\. prémium RS| Nagy kapacitású 2 virtuális mag (Gen4) vagy üzleti kritikus 2 virtuális mag (Gen4|Premium 2|
 |Prémium RS 4| Nagy kapacitású 4 virtuális magra jogosult (Gen4) vagy üzleti kritikus 4 virtuális magra jogosult (Gen4)|Prémium szintű 4
 |Prémium RS 6| Nagy kapacitású 6 virtuális magra jogosult (Gen4) vagy a kritikus fontosságú üzleti-6 virtuális magra jogosult (Gen4)|Prémium szintű 6|
 

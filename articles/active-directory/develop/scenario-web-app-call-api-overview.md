@@ -16,13 +16,13 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce45f11a697b72ebdd0fe01166a70e7b47aa8e9f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65076300"
 ---
-# <a name="scenario-web-app-that-calls-web-apis"></a>Forgatókönyv: Webalkalmazás, hogy a hívások webes API-k
+# <a name="scenario-web-app-that-calls-web-apis"></a>Forgatókönyv: Webes API-kat hívó webalkalmazás
 
 Bejelentkezés felhasználók webes alkalmazás létrehozása a Microsoft identity platform, és amely meghívja a webes API-kat a bejelentkezett felhasználó nevében.
 
@@ -39,7 +39,7 @@ Ebben a forgatókönyvben supposes, hogy az alábbi forgatókönyv forrásanyago
 
 Hitelesítés hozzáadása a webalkalmazást, amely így bejelentkezhetnek a felhasználók, és meghív egy webes API-t a bejelentkezett felhasználó nevében.
 
-![Webalkalmazás, hogy a hívások webes API-k](./media/scenario-webapp/web-app.svg)
+![Webes API-kat hívó webalkalmazás](./media/scenario-webapp/web-app.svg)
 
 Web Apps, amely meghívja a webes API-kat:
 

@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/14/2019
 ms.openlocfilehash: 82b85ffd685df52e702db15e5a5b57a53a3b4f64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60342175"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: A helyszíni Azure SQL Database és SQL Server között az SQL Data Sync beállítása
@@ -45,7 +45,7 @@ A PowerShell-példák az SQL Data Sync konfigurálásáról, tekintse meg a [szi
 
 1. Az a **szinkronizálás más adatbázisokkal** lapon jelölje be **új szinkronizálási csoport**. A **új szinkronizálási csoport** lap, melyen a **szinkronizálási csoport létrehozása (1. lépés)** kiemelt.
 
-   ![1. lépés-beállítások](media/sql-database-get-started-sql-data-sync/stepone.png)
+   ![1\. lépés-beállítások](media/sql-database-get-started-sql-data-sync/stepone.png)
 
    Az a **adatok szinkronizálási csoport létrehozása** lapon, a következő beállításokat módosíthatja:
 
@@ -67,13 +67,13 @@ Az új szinkronizálási csoport létrehozása és üzembe helyezését követő
 
 Az a **központi adatbázis** területén adja meg a meglévő hitelesítő adatokat az SQL Database-kiszolgáló, amelyen a központi adatbázis is található. Ne adjon meg *új* ebben a szakaszban a hitelesítő adatokat.
 
-![2. lépés-beállítások](media/sql-database-get-started-sql-data-sync/steptwo.png)
+![2\. lépés-beállítások](media/sql-database-get-started-sql-data-sync/steptwo.png)
 
 ### <a name="to-add-an-azure-sql-database"></a>Az Azure SQL Database hozzáadása
 
 Az a **Tagadatbázis** című igény szerint adja hozzá az Azure SQL Database a szinkronizálási csoport kiválasztásával **hozzáadása az Azure SQL Database**. A **konfigurálása az Azure SQL Database** lap megnyitásakor.
 
-  ![2. lépés: az adatbázis konfigurálása](media/sql-database-get-started-sql-data-sync/steptwo-configure.png)
+  ![2\. lépés: az adatbázis konfigurálása](media/sql-database-get-started-sql-data-sync/steptwo-configure.png)
 
   Az a **konfigurálása az Azure SQL Database** lapon, a következő beállításokat módosíthatja:
 
@@ -152,7 +152,7 @@ Az a **Tagadatbázis** szakaszt, ha szükséges, hozzáadhat egy helyszíni SQL 
 
 Miután létrehozott és telepített, az új szinkronizálási csoport tagjait **konfigurálása szinkronizálási csoport (3. lépés)** kiemelten jelenik meg a **új szinkronizálási csoport** lapot.
 
-![3. lépés-beállítások](media/sql-database-get-started-sql-data-sync/stepthree.png)
+![3\. lépés-beállítások](media/sql-database-get-started-sql-data-sync/stepthree.png)
 
 1. Az a **táblák** lapon válasszon ki egy adatbázist a szinkronizálási csoport tagjainak listájáról, és válassza **frissítési séma**.
 
@@ -172,16 +172,16 @@ A szinkronizálások között minimális időtartama öt perc alatt.
 
 **Nem az SQL Data Sync teljes táblák létrehozása?**
 
-Ha a szinkronizálási séma táblák hiányoznak a céladatbázis, az SQL Data Sync hoz létre azokat a kijelölt oszlopok. Azonban ez nem eredményezi a teljes hűségű séma a következő okok miatt:
+Ha a szinkronizálási sématáblák hiányoznak a céladatbázisból, az SQL-adatszinkronizálás létrehozza azokat a kiválasztott oszlopokkal. Azonban ez nem eredményezi a teljes hűségű séma a következő okok miatt:
 
-- Csak a kiválasztott oszlopok jönnek létre a céltáblázatban. Nincs kijelölt oszlop. a rendszer figyelmen kívül hagyja.
-- Csak a kijelölt oszlop indexek jönnek létre a céltáblázatban. A nem kijelölt oszlopok ezek az indexek figyelmen kívül hagyja.
+- Csak az Ön által kiválasztott oszlopok jönnek létre a céltáblában. A nem kiválasztott oszlopokat a program figyelmen kívül hagyja.
+- Csak a kiválasztott oszlopindexek jönnek létre a céltáblában. A nem kiválasztott oszlopok indexeit a program figyelmen kívül hagyja.
 - XML-típusú oszlopok indexei hozhatók létre.
 - ELLENŐRZŐ korlátozások hozhatók létre.
 - A forrás táblák indítóinak hozhatók létre.
 - Nézetek és tárolt eljárások hozhatók létre.
 
-Ezek a korlátozások miatt javasoljuk, hogy az alábbiakat:
+E korlátozások miatt javasoljuk a következőket:
 
 - Az éles környezetekhez hozzon létre a teljes hűségű sémát saját magának.
 - Kísérletezés a szolgáltatással, ha az Automatikus kiépítés funkció használatához.

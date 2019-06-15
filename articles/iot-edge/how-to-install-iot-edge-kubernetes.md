@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 66aca7be9a2df93d846d7e78bc64c93279afc2d1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65160695"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>IoT Edge Kubernetes (előzetes verzió) telepítése
@@ -78,7 +78,7 @@ Az edge üzemelő példány minden összetevő egy Kubernetes-névtér az eszkö
     minikube dashboard
     ```
 
-    A fürt névterek alatt megjelenik egy, az IoT Edge-eszköz szabálya a következő *msiot -\<iothub-neve >-\<edgedevice-name >*. Az IoT Edge-ügynök és iotedged podok és legyen a névtér.
+    A fürt névterek alatt megjelenik egy, az IoT Edge-eszköz szabálya a következő *msiot -\<iothub-neve >-\<edgedevice-name >* . Az IoT Edge-ügynök és iotedged podok és legyen a névtér.
 
 1. Egy szimulált hőmérsékleti érzékelő modul használata a lépések hozzáadása a [modul üzembe helyezése](quickstart-linux.md#deploy-a-module) a rövid útmutató szakasza. IoT Edge-modul kezelése történik, csakúgy, mint bármely más IoT Edge-eszközt az IoT Hub portálról. A modul konfigurációs eszközök segítségével Kubernetes helyi módosítása nem ajánlott, mivel előfordulhat, hogy első felül.
 

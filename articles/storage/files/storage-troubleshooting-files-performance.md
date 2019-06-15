@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
 ms.openlocfilehash: 5ae0bb736a7cc0bbc38df5905abc5d8a71f60eb9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190053"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Az Azure Files teljesítménnyel kapcsolatos problémáinak elhárítása
@@ -21,7 +21,7 @@ Ez a cikk felsorolja a prémium szintű Azure-fájlmegosztások (előzetes verzi
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Nagy a késés, az alacsony átviteli sebesség és az általános, teljesítménnyel kapcsolatos problémák
 
-### <a name="cause-1-share-experiencing-throttling"></a>1. ok: Megosztás kiszolgálnia szabályozása
+### <a name="cause-1-share-experiencing-throttling"></a>1\. ok: Megosztás kiszolgálnia szabályozása
 
 A megosztáson található alapértelmezett kvóta 100 GB, amely biztosít 100 alapkonfiguráció iops-érték (legfeljebb 300 eszközcsomag egy óránál potenciális). Kiépítés és IOPS fennálló kapcsolatot további információkért lásd: a [megosztások kiosztott](storage-files-planning.md#provisioned-shares) szakasz a tervezési útmutató.
 
@@ -47,7 +47,7 @@ Győződjön meg arról, ha a megosztás szabályozás alatt áll, az használha
 
 - Növekedés kiosztott kapacitást ossza meg a megosztáson magasabb kvótát megadásával.
 
-### <a name="cause-2-metadatanamespace-heavy-workload"></a>2. ok: Metaadatok és névterének nagy munkaterhelést
+### <a name="cause-2-metadatanamespace-heavy-workload"></a>2\. ok: Metaadatok és névterének nagy munkaterhelést
 
 Ha a kérések többségét metaadat-központú, (például createfile/openfile/closefile/queryinfo/querydirectory) lesz, hogy a késés rosszabb olvasási/írási műveleteket képest.
 
@@ -59,7 +59,7 @@ Ellenőrizze, hogy ha a kérések többségét metaadat-központú, használhatj
 
 - Ellenőrizze, hogy ha az alkalmazás a metaadat-műveletek számának csökkentése módosíthatók.
 
-### <a name="cause-3-single-threaded-application"></a>3. ok: Alkalmazás egyszálas
+### <a name="cause-3-single-threaded-application"></a>3\. ok: Alkalmazás egyszálas
 
 Ha az ügyfél által használt alkalmazás egyszálas, ez jelentősen alacsonyabb IOPS/teljesítményt nyújt, mint a maximális lehetséges a létesített megosztás méretének alapján eredményezhet.
 

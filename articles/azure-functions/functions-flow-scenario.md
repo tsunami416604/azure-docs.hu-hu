@@ -13,10 +13,10 @@ ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
 ms.openlocfilehash: d3e777b5611dec382dc4eaaac5ec1594abcdab31
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65787673"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Függvény meghívása a Microsoft Flow-ból
@@ -50,7 +50,7 @@ Először létrehoz egy listát, amely a folyamat adatforrásként használja. A
 | Listaoszlop     | Adattípus           | Megjegyzések                                    |
 |-----------------|---------------------|------------------------------------------|
 | **Cím**           | Egysoros szöveg | A turbina neve                      |
-| **LastServiceDate** | Date                |                                          |
+| **LastServiceDate** | Dátum                |                                          |
 | **MaxOutput**       | Szám              | Kimenet a turbina kWh-ban            |
 | **ServiceRequired** | Igen/nem              |                                          |
 | **EstimatedEffort** | Szám              | A javítás becsült ideje (óra) |
@@ -122,13 +122,13 @@ Először hozzon létre egy folyamatot sablon nélkül (nélkül egy sablon), é
 
 2. Kattintson a SharePoint-eseményindítóhoz **egy elem létrehozásakor**.
 
-    ![Válasszon triggert](media/functions-flow-scenario/choose-trigger.png)
+    ![Válasszon ki egy triggert](media/functions-flow-scenario/choose-trigger.png)
 
     Ha még nem jelentkezett be a Sharepointba, erre kéri.
 
 3. A **webhely címe**, adja meg a SharePoint-webhely nevét, és a **listanév**, adja meg a listában, hogy a turbina adatokat tartalmaz.
 
-    ![Válasszon triggert](media/functions-flow-scenario/site-list.png)
+    ![Válasszon ki egy triggert](media/functions-flow-scenario/site-list.png)
 
 4. Kattintson a **új lépés**, majd **feltétel hozzáadása**.
 
@@ -226,7 +226,7 @@ Most, hogy a folyamat befejeződött, adjon hozzá egy sort a SharePoint-listáh
 
 2. Adja meg a következő értékeket a Szerkesztés rácsban.
 
-    | Listaoszlop     | Value           |
+    | Listaoszlop     | Érték           |
     |-----------------|---------------------|
     | **Cím**           | 60 turbina |
     | **LastServiceDate** | 08/04/2017 |

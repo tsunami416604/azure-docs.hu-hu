@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 798a7a3edbf11c8421848871d26ba55b5bada0b6
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067230"
 ---
 # <a name="best-practices-for-query-store"></a>Ajánlott eljárások a Query Store
@@ -24,7 +24,7 @@ Lehetővé teszik a Query Store rögzíteni az adatokat, az Ön számára fontos
 
 |**pg_qs.query_capture_mode** | **Forgatókönyv**|
 |---|---|
-|_Az összes_  |A számítási feladatok alaposan tekintetében az összes lekérdezés és a végrehajtás gyakoriságát és más statisztikai elemzése. A számítási feladatok az új lekérdezések azonosítása. Észlelés, ha ad hoc lekérdezéseket lehetőségek a felhasználókkal vagy automatikus paraméterezés azonosítására szolgál. _Az összes_ egy nagyobb erőforrás-használat költség is tartalmaz. |
+|_Összes_  |A számítási feladatok alaposan tekintetében az összes lekérdezés és a végrehajtás gyakoriságát és más statisztikai elemzése. A számítási feladatok az új lekérdezések azonosítása. Észlelés, ha ad hoc lekérdezéseket lehetőségek a felhasználókkal vagy automatikus paraméterezés azonosítására szolgál. _Az összes_ egy nagyobb erőforrás-használat költség is tartalmaz. |
 |_felső_  |A leggyakoribb lekérdezések – ezek az ügyfelek által kibocsátott figyelmet összpontosítanak.
 |_Nincsenek_ |Korábban már rögzített egy lekérdezési készlet, és ez alatt az időszak, amely a vizsgálni kívánt, és szeretné, hogy más lekérdezések vezethet be a felesleges kiküszöbölése. _Nincs_ egy megfelelő tesztelési és a teljesítménymérés környezetekben. _Nincs_ kell legyen óvatos, előfordulhat, hogy kihagyná nyomon követésére, és fontos új lekérdezések optimalizálása lehetőséget. Adott múltbeli idő Windows adatok nem állíthatók vissza. |
 

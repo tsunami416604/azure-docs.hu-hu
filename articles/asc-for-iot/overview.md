@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/29/2019
 ms.author: mlottner
 ms.openlocfilehash: 7efe32039f926ea9b5be3c24fa967dede72cd081
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192508"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Az IoT Azure Security Center bemutatása
@@ -41,15 +41,15 @@ Az Azure Security Center (ASC) az IoT egyszerűbbé teszi a hibrid számítási 
 
 ### <a name="unified-visibility-and-control"></a>Egyesített láthatóságát és felügyeletét
 
-Biztonsági egységes képet kaphat az összes helyszíni és felhőbeli számítási feladatok, például az Azure IoT-megoldás. Automatikus észleléséhez, és az új eszközök regisztrálásához és a biztonsági szabályzatokat alkalmazhat a számítási feladatok (levéleszközök, peremhálózati eszközökön az IOT Hub) gondoskodhat a biztonsági előírásoknak.
+Egyesített képet kaphat az összes helyszíni és felhőbeli számítási feladat biztonságáról, többek között az Azure IoT-megoldásokról is. Automatikusan észlelhet és készíthet elő új eszközöket, és alkalmazhat biztonsági szabályzatokat a számítási feladatokra (levélszintű eszközök, peremhálózati eszközök és IoT Hub) a biztonsági szabványoknak való megfelelés érdekében.
 
 ### <a name="adaptive-threat-prevention"></a>Az adaptív fenyegetések megelőzése
 
-ASC az IoT használatával folyamatosan figyeli a gépek, hálózatok és Azure-szolgáltatásokkal, mint az Azure IoT-megoldás a peremhálózati eszközökön az alkalmazások biztonságát. A több száz beépített biztonság állapotát, vagy hozzon létre egy saját, az IoT Hub-irányítópulthoz a központi ASC választhat. A biztonsági beállítások optimalizálásához, illetve a biztonsági pontszám gyakorlati ajánlásokat készítünk rendelkező virtuális gépek, hálózatok, alkalmazások és adatok között. Az újonnan hozzáadott IoT-képességeik mostantól az Azure IoT-megoldás a támadási felület csökkentése és elhárítani a problémákat, mielőtt kihasználnák.
+ASC az IoT használatával folyamatosan figyeli a gépek, hálózatok és Azure-szolgáltatásokkal, mint az Azure IoT-megoldás a peremhálózati eszközökön az alkalmazások biztonságát. A több száz beépített biztonság állapotát, vagy hozzon létre egy saját, az IoT Hub-irányítópulthoz a központi ASC választhat. Optimalizálhatja biztonsági beállításait és javíthatja biztonsági pontszámát a gyakorlatias javaslatokkal, melyek kiterjednek a virtuális gépekre, a hálózatra, az alkalmazásokra és az adatokra is. Az újonnan hozzáadott IoT-képességekkel csökkenthető az IoT-megoldás támadási felülete, és a problémákat még az előtt elháríthatja, hogy azt kihasználnák a támadók.
 
 ### <a name="intelligent-threat-detection-and-response"></a>Intelligens fenyegetésészlelés és -válasz
 
-Bővített analitika és a Microsoft Intelligent Security Graph segítségével kivédheti kibertámadásokat –. Beépített viselkedéselemzés és a gépi tanulás azonosítani a támadásokat, és a nulladik napi kihasználja. Figyelje az IoT-megoldás a bejövő támadásokat, és illetéktelen behatolás utáni tevékenységek. Eszköz vizsgálati és javítási interaktív eszközökkel és fenyegetésekkel kapcsolatos környezetalapú tudásbázissal leegyszerűsíthető.
+Bővített analitika és a Microsoft Intelligent Security Graph segítségével kivédheti kibertámadásokat –. Beépített viselkedéselemzés és a gépi tanulás azonosítani a támadásokat, és a nulladik napi kihasználja. Figyelheti az IoT-megoldásait érintő bejövő támadásokat és a behatolást követő tevékenységeket. Eszköz vizsgálati és javítási interaktív eszközökkel és fenyegetésekkel kapcsolatos környezetalapú tudásbázissal leegyszerűsíthető.
 
 ## <a name="next-steps"></a>További lépések
 

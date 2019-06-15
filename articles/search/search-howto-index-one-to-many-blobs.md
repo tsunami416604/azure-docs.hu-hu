@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seofeb2018
 ms.openlocfilehash: 628ced069c9d32c6e874c2e36a1e3b752c476003
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024649"
 ---
 # <a name="indexing-blobs-producing-multiple-search-documents"></a>Dokumentumok keresése több előállító-blobok indexelése
@@ -61,7 +61,7 @@ Mikor hozzon létre egy indexelőt, és állítsa a **parsingMode** való `jsonL
 
 A telepítő az Azure Search-index a következő információkat (base64-kódolású azonosító kivonatosan lerövidítettük) tartalmazó fog eredményezni.
 
-| id | hőmérséklet | pressure | időbélyeg |
+| id | hőmérséklet | pressure | timestamp |
 |----|-------------|----------|-----------|
 | aHR0... YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
 | aHR0... YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |

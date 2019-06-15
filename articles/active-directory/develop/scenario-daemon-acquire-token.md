@@ -17,10 +17,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa4f5dc7a5aceaf81f71eacd36d131471a57e5c0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65075370"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Démon alkalmazás, amely meghívja a webes API - jogkivonat beszerzése
@@ -65,7 +65,7 @@ A hatókör használt ügyfél-hitelesítő adatok mindig kell resourceId + "/ .
 
 > [!IMPORTANT]
 > Az MSAL (v2.0-végpontra) egy hozzáférési jogkivonatot kér egy erőforrást egy 1.0-s verziójú jogkivonatot elfogadása az Azure AD a kért hatókörhöz a kívánt célközönség elemzi a minden, a legutóbbi / előtti és használhatná az erőforrás-azonosítója alapján.
-> Ezért ha, például az Azure SQL (**https://database.windows.net**) az erőforrás vár egy adott célközönségnek, záró perjelek (az Azure SQL: `https://database.windows.net/`), szüksége lesz egy hatókörének kérése `https://database.windows.net//.default` (vegye figyelembe a dupla perjellel). Lásd még az MSAL.NET probléma [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Záró perjellel erőforrás URL-cím nincs megadva, amely az sql-hitelesítési hiba okozza.
+> Ezért ha, például az Azure SQL ( **https://database.windows.net** ) az erőforrás vár egy adott célközönségnek, záró perjelek (az Azure SQL: `https://database.windows.net/` ), szüksége lesz egy hatókörének kérése `https://database.windows.net//.default` (vegye figyelembe a dupla perjellel). Lásd még az MSAL.NET probléma [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Záró perjellel erőforrás URL-cím nincs megadva, amely az sql-hitelesítési hiba okozza.
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 

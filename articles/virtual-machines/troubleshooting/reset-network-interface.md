@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: 3a8e005f8678deef9fc4aebd2d620619fe6074bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60307314"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows virtuális gép alaphelyzetbe állítása a hálózati adapter 
@@ -79,7 +79,7 @@ Hálózati adapter alaphelyzetbe állítása, kövesse az alábbi lépéseket:
 #### <a name="use-azure-portal"></a>Az Azure Portal használata
 
 1.  Nyissa meg az [Azure Portal]( https://ms.portal.azure.com).
-2.  Válassza ki **virtuális gépek (klasszikus)**.
+2.  Válassza ki **virtuális gépek (klasszikus)** .
 3.  Válassza ki az érintett virtuális gépet.
 4.  Válassza ki **IP-címek**.
 5.  Ha a **magánhálózati IP-hozzárendelés** nem **statikus**, módosítsa a következőre **statikus**.

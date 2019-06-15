@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
 ms.openlocfilehash: 5ae0e7855db6bec9f48d2b9511f0d0626d883111
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65561336"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX feltöltése az Azure előkészítése
@@ -199,7 +199,7 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
 
 9. Ha a virtuális gép lesz része egy tartománynak, ellenőrizze a következő beállításokat, győződjön meg arról, hogy a korábbi beállításokat nem állítja. A házirendekben, amelyek ellenőrizni kell a következők:
     
-    | Cél                                     | Házirend                                                                                                                                                       | Value                                                                                    |
+    | Cél                                     | Szabályzat                                                                                                                                                       | Érték                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | Az RDP engedélyezve van                           | Computer Configuration\Policies\Windows Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Connections         | Lehetővé teszi a felhasználók távolról kapcsolódni a távoli asztal használatával                                  |
     | NLA csoportházirend                         | Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Security                                                    | Felhasználói hitelesítés szükséges a távoli kapcsolatokhoz hálózati szintű hitelesítéssel |
@@ -233,7 +233,7 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
    ``` 
 5. Ha a virtuális gép lesz része egy tartománynak, ellenőrizze a következő beállításokat, győződjön meg arról, hogy a korábbi beállításokat nem állítja. Az AD-szabályzatokat, amelyek a ellenőrizni kell a következők:
 
-    | Cél                                 | Házirend                                                                                                                                                  | Value                                   |
+    | Cél                                 | Szabályzat                                                                                                                                                  | Érték                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | A Windows tűzfal-profilok engedélyezése | Computer Configuration\Policies\Windows Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows Firewall   | Az összes hálózati kapcsolatok védelme         |
     | Engedélyezze az RDP-                           | Computer Configuration\Policies\Windows Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows Firewall   | A bejövő távoli asztali Kivételek tiltása |
@@ -325,9 +325,9 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
 
      A következő csoportok szerepelnie kell a szabályzatra vonatkozó:
 
-   - Rendszergazdák
+   - A rendszergazdák
    - Biztonságimásolat-felelősök
-   - Mindenki
+   - Mindenki számára
    - Felhasználók
 
 10. Indítsa újra a virtuális Gépen, győződjön meg arról, hogy Windows továbbra is megfelelő, elérhető, az RDP-kapcsolat használatával. Ezen a ponton érdemes a helyi Hyper-V – győződjön meg róla a virtuális gép teljesen elindult-e, és ellenőrizze, hogy RDP érhető el a virtuális gép létrehozásához.
@@ -339,7 +339,7 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
 ### <a name="install-windows-updates"></a>Windows-frissítések telepítése
 Az ideális konfiguráció **a javítási szintje a gép legkésőbb**. Ha ez nem lehetséges, győződjön meg arról, hogy telepítve vannak-e a következő frissítéseket:
 
-| Összetevő               | Binary         | Windows 7 SP1, Windows Server 2008 R2 SP1 | A Windows 8, Windows Server 2012-ben               | Windows 8.1, Windows Server 2012 R2 rendszerben | A Windows 10 1607-es verzió a Windows Server 2016-ban 1607-es verzió | Windows 10, 1703-as verzió    | A Windows 10 1709-es Windows Server 2016-ban 1709-es | A Windows 10 1803 Windows Server 2016 verziót 1803-as verzióban |
+| Összetevő               | binary         | Windows 7 SP1, Windows Server 2008 R2 SP1 | A Windows 8, Windows Server 2012-ben               | Windows 8.1, Windows Server 2012 R2 rendszerben | A Windows 10 1607-es verzió a Windows Server 2016-ban 1607-es verzió | Windows 10, 1703-as verzió    | A Windows 10 1709-es Windows Server 2016-ban 1709-es | A Windows 10 1803 Windows Server 2016 verziót 1803-as verzióban |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Storage                 | Disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | Storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
@@ -370,7 +370,7 @@ Az ideális konfiguráció **a javítási szintje a gép legkésőbb**. Ha ez ne
 |                         | Win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726         | 10.0.14393.594 - KB4022715                              | -                          | -                                               | -                                               |
 |                         | rdpdd.dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | Rdpwd.sys      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
-| Biztonsági                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                          | KB4012606                                               | KB4012606                  | -                                               | -                                               |
+| Biztonság                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                          | KB4012606                                               | KB4012606                  | -                                               | -                                               |
 |                         |                |                                           | KB4012216                                   |                                    | KB4013198                                               | KB4013198                  | -                                               | -                                               |
 |                         |                | KB4012215                                 | KB4012214                                   | KB4012216                          | KB4013429                                               | KB4013429                  | -                                               | -                                               |
 |                         |                |                                           | KB4012217                                   |                                    | KB4013429                                               | KB4013429                  | -                                               | -                                               |

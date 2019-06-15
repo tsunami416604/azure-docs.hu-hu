@@ -16,10 +16,10 @@ ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: 88de601caf984d2511229cd68190554086c3da38
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65779558"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
@@ -107,8 +107,8 @@ Az alábbi táblázat a más API-kkal támogathatják adatformátumok a célnyel
 API | Alapértelmezett adatformátum | További formátumok
 --------|---------------------|--------------
 /instance | JSON | szöveg
-/scheduledevents | JSON | nincs
-/attested | JSON | nincs
+/scheduledevents | JSON | Egyik sem
+/attested | JSON | Egyik sem
 
 Egy nem alapértelmezett válaszformátum eléréséhez adja meg a kért formátum a kérelem lekérdezési karakterlánc paramétereként. Példa:
 
@@ -119,7 +119,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > [!NOTE]
 > Levél csomópontok a `format=json` nem működik. A lekérdezések `format=text` explicit módon kell megadni az alapértelmezett formátum json-e.
 
-### <a name="security"></a>Biztonsági
+### <a name="security"></a>Biztonság
 
 Instance Metadata szolgáltatás végpont elérésére csak a futó virtuálisgép-példány nem átirányítható IP-címen belül. Emellett a kérelmet egy `X-Forwarded-For` fejléc elutasította a szolgáltatást.
 Kérelmek is tartalmaznia kell egy `Metadata: true` fejléc, győződjön meg arról, hogy a tényleges kérelmező közvetlenül: tervezett és nem véletlen átirányítás része.
@@ -132,7 +132,7 @@ HTTP-állapotkód | Reason
 ----------------|-------
 200 OK |
 400 Hibás kérés | Hiányzó `Metadata: true` fejléc, vagy hiányzik a formátum Levélcsomópont lekérdezésekor
-404 Nem található | A kért elem nem létezik.
+404 – Nem található | A kért elem nem létezik.
 405 Metoda není Povolena | Csak `GET` és `POST` kérelmek támogatottak.
 429 túl sok kérelem | Az API jelenleg legfeljebb 5 lekérdezések másodpercenként
 500 Service Error     | Némi várakozás után próbálkozzon újra
@@ -344,7 +344,7 @@ Adatok | Leírás | Bevezetett verzió
 -----|-------------|-----------------------
 attested | Lásd: [igazolt adatok](#attested-data) | 2018-10-01
 identity | Felügyelt identitások az Azure-erőforrásokhoz. Lásd: [hozzáférési jogkivonat beszerzése](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-példány | Lásd: [API-példány](#instance-api) | 2017-04-02
+instance | Lásd: [API-példány](#instance-api) | 2017-04-02
 scheduledevents | Lásd: [ütemezett események](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Példány API
@@ -357,19 +357,19 @@ Adatok | Leírás | Bevezetett verzió
 -----|-------------|-----------------------
 azEnvironment | Ahol a virtuális gép fut az Azure-környezet | 2018-10-01
 a customData | Lásd: [egyéni adatok](#custom-data) | 2019-02-01
-hely | Azure-régió, a virtuális gép fut. | 2017-04-02
-név | A virtuális gép neve | 2017-04-02
+location | Azure-régió, a virtuális gép fut. | 2017-04-02
+name | A virtuális gép neve | 2017-04-02
 az ajánlat | A Virtuálisgép-lemezkép információkat kínálnak, és lemezképek csak jelenleg telepítve van az Azure rendszerkép-katalógusában | 2017-04-02
 osType | Linux vagy Windows | 2017-04-02
 placementGroupId | [Elhelyezési csoport](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) a virtuálisgép-méretezési csoport beállítása | 2017-08-01
 csomag | [Csomag](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) tartalmazó neve, termék és Virtuálisgép-közzétevő, ha az Azure Marketplace-lemezkép | 2018-04-02
 platformUpdateDomain |  [Frissítési tartomány](manage-availability.md) a virtuális gép fut. | 2017-04-02
 platformFaultDomain | [Tartalék tartomány](manage-availability.md) a virtuális gép fut. | 2017-04-02
-szolgáltató | A virtuális gép szolgáltató | 2018-10-01
+Szolgáltató | A virtuális gép szolgáltató | 2018-10-01
 publicKeys | [Nyilvános kulcsok gyűjteményét](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) rendelve a virtuális gép és az elérési út | 2018-04-02
 publisher | A Virtuálisgép-lemezkép közzétevője | 2017-04-02
 resourceGroupName | [Erőforráscsoport](../../azure-resource-manager/resource-group-overview.md) a virtuális gép | 2017-08-01
-termékváltozat | Adott Termékváltozat a Virtuálisgép-lemezkép | 2017-04-02
+sku | Adott Termékváltozat a Virtuálisgép-lemezkép | 2017-04-02
 subscriptionId | A virtuális gép Azure-előfizetés | 2017-08-01
 címkék | [A címkék](../../azure-resource-manager/resource-group-using-tags.md) a virtuális gép  | 2017-08-01
 version | A Virtuálisgép-lemezkép verziója | 2017-04-02
@@ -606,7 +606,7 @@ Verification successful
 
 Adatok | Leírás
 -----|------------
-egyszeri | Felhasználók megadott karakterlánc nem kötelező, a kérelem. Ha nincs egyszeri lett megadva a kérelemben szereplő, a rendszer visszaadja-e az aktuális UTC-időbélyeg
+nonce | Felhasználók megadott karakterlánc nem kötelező, a kérelem. Ha nincs egyszeri lett megadva a kérelemben szereplő, a rendszer visszaadja-e az aktuális UTC-időbélyeg
 csomag | [Csomag](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) egy virtuális Géphez, az Azure Marketplace-lemezkép van, neve, termék és közzétevő tartalmaz.
 timestamp/createdOn | Az időbélyeg, amely az első aláírt dokumentum létrehozása
 timestamp/expiresOn | Az időbélyeg az aláírt dokumentum jár le
@@ -723,7 +723,7 @@ My custom data.
 Nyelv | Példa
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Ugrás  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Indítás  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
@@ -735,7 +735,7 @@ Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
 
-## <a name="faq"></a>gyakori kérdésekben
+## <a name="faq"></a>GYIK
 
 1. A hibaüzenetet kapok `400 Bad Request, Required metadata header not specified`. Ez mit jelent?
    * A Instance Metadata szolgáltatás szükséges a fejléc `Metadata: true` átadni a kérelmet. Ezt a fejlécet ad át a REST-hívást lehetővé teszi a Instance Metadata szolgáltatás elérését.

@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
 ms.openlocfilehash: d714756c19b94eafc40cc0dbeffbc07704e8f94e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65787813"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>4 – besorolási. példa: Hitelkockázatot (költség-és nagybetűket)
@@ -67,7 +67,7 @@ Ezután azt létrehozni a képzés, és tesztelje a kockázati előrejelzési mo
 Mivel a magas kockázati alábecslésének költségét, ehhez hasonló téves besorolás költsége beállított:
 
 - Alacsony kockázatot misclassified magas kockázatú esetek: 5
-- Magas kockázatot misclassified alacsony kockázatú esetek: 1.
+- Magas kockázatot misclassified alacsony kockázatú esetek: 1
 
 Költség függvény megfelelően, hogy egy új adatkészlet hozzon létre. Az új adatkészletre a rendszer replikálja az egyes magas kockázatú példa ötször, de alacsony kockázatú példák száma nem változik. Hogy az adatok felosztása tanítási és tesztelési adatkészleteket, így megakadályozhatja a ugyanabban a sorban a mindkét replikáció előtt.
 

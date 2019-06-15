@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1de17429dfe89506445b2d47999b102f3becb15b
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604399"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok-elévülési szabályzatának konfigurálása
@@ -69,7 +69,7 @@ Engedélyek visszaállítani egy törölt csoport további információkért lá
 > Amikor először állítsa be a lejárat, minden olyan csoportok, amelyek régebbiek lejárati időközét 30 lejáratig hátralévő napok vannak állítva. Az első megújítási értesítő e-mail küldése egy napon belül. Például csoport 400 napja hozták létre, és a lejárati időközét 180 napra van állítva. Elévülési szabályzatot alkalmazza, amikor csoport törlése előtt 30 nappal rendelkezik, kivéve, ha a tulajdonos megújítja azt.
 > Ha egy dinamikus csoport törlése és visszaállítása, új csoportként látható, és újra feltölti a szabálya szerint. Ez a folyamat akár 24 órát is igénybe vehet.
 
-## <a name="email-notifications"></a>E-mail értesítés
+## <a name="email-notifications"></a>E-mail-értesítések
 
 E-mail-értesítések, például a érkeznek az Office 365-csoportok tulajdonosainak 30 nap, 15 napon keresztül, és a csoport lejárata előtt 1 nap. Az e-mail nyelvét csoportok tulajdonosának előnyben részesített nyelvi vagy bérlői nyelvet határozza meg. Ha a csoport tulajdonosának előnyben részesített nyelvi definiálva van, vagy több tulajdonosoknak kell ugyanazt a kívánt nyelvet, az adott nyelvhez használja. Minden egyéb esetben a bérlő nyelvet használja.
 

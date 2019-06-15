@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: e95f167cf6dcfe90fff1c2be174ca197cb2aa004
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65204039"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek folyamatot a Data Factory és a Batch használatával
@@ -184,7 +184,7 @@ A módszer van néhány kulcsfontosságú összetevők, ismernie kell:
 
    b. Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget.
 
-   c. Bontsa ki a **sablonok**, és válassza ki **Visual C\#**. Ebben az útmutatóban a C használata\#, de használhat bármilyen .NET nyelven fejleszthet az egyéni tevékenység.
+   c. Bontsa ki a **sablonok**, és válassza ki **Visual C\#** . Ebben az útmutatóban a C használata\#, de használhat bármilyen .NET nyelven fejleszthet az egyéni tevékenység.
 
    d. Válassza ki **osztálytár** projekttípusok jobb listájából.
 
@@ -525,7 +525,7 @@ Egy feladat jön létre minden egyes tevékenység futtatásához. Ebben a péld
 
 A következő forgatókönyv további részleteket biztosít.
 
-#### <a name="step-1-create-the-data-factory"></a>1. lépés: Az adat-előállító létrehozása
+#### <a name="step-1-create-the-data-factory"></a>1\. lépés: Az adat-előállító létrehozása
 1. A bejelentkezés után a [az Azure portal](https://portal.azure.com/), az alábbi lépéseket:
 
    a. Válassza ki **új** a bal oldali menüben.
@@ -548,7 +548,7 @@ A következő forgatókönyv további részleteket biztosít.
 
    ![Adat-előállító lap](./media/data-factory-data-processing-using-batch/image6.png)
 
-#### <a name="step-2-create-linked-services"></a>2. lépés: Társított szolgáltatások létrehozása
+#### <a name="step-2-create-linked-services"></a>2\. lépés: Társított szolgáltatások létrehozása
 Társított szolgáltatások adattárakat vagy számítási szolgáltatások adat-előállító. Ebben a lépésben társítani fogja a storage-fiók és a Batch-fiókot az adat-előállítóhoz.
 
 #### <a name="create-an-azure-storage-linked-service"></a>Azure Storage-beli társított szolgáltatás létrehozása
@@ -597,7 +597,7 @@ Ebben a lépésben a Batch-fiók, amely a data factory egyéni tevékenység fut
 
 1. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
 
-#### <a name="step-3-create-datasets"></a>3. lépés: Adatkészletek létrehozása
+#### <a name="step-3-create-datasets"></a>3\. lépés: Adatkészletek létrehozása
 Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat képviselik.
 
 #### <a name="create-the-input-dataset"></a>A bemeneti adatkészlet létrehozása
@@ -736,7 +736,7 @@ Ebben a lépésben hozzon létre egy másik adatkészlet típusa AzureBlob, amel
 
 1. Válassza ki **telepítés** létrehozása és üzembe helyezése az eszköztáron a **OutputDataset**.
 
-#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>4. lépés: Hozzon létre, és futtatjuk a folyamatot az egyéni tevékenységek
+#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>4\. lépés: Hozzon létre, és futtatjuk a folyamatot az egyéni tevékenységek
 Ebben a lépésben létrehoz egy folyamatot egy tevékenységgel, a korábban létrehozott egyéni tevékenységet.
 
 > [!IMPORTANT]
@@ -807,7 +807,7 @@ Ebben a lépésben létrehoz egy folyamatot egy tevékenységgel, a korábban l�
 
 1. A folyamat üzembe helyezéséhez kattintson a parancssor **Üzembe helyezés** elemére.
 
-#### <a name="step-5-test-the-pipeline"></a>5. lépés: A folyamat tesztelése
+#### <a name="step-5-test-the-pipeline"></a>5\. lépés: A folyamat tesztelése
 Ebben a lépésben a folyamat által fájlokat húzhat a bemeneti mappákban teszteléséhez. Indítsa el az egyes bemeneti mappa egy fájlt a folyamat tesztelése.
 
 1. Az a **adat-előállító** az Azure Portalon, válassza a panel **Diagram**.

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 144fd11e9c1ee3e00412320840e864a3190ccdb0
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833988"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépes környezet és PaaS-erőforrások létrehozása Azure Resource Manager-sablonokkal
@@ -99,7 +99,7 @@ Ha a labor létrehozása az Azure Resource Manager-sablon tárház lett konfigur
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 1. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.   
-1. A labor ablaktábláján válassza ki a **Add +**.
+1. A labor ablaktábláján válassza ki a **Add +** .
 1. A **vyberte bázi** ablaktáblán megjelennek azok az alaprendszerképek lekéréshez használhatja az Azure Resource Manager-sablonok, a lista elején. Válassza ki a kívánt Azure Resource Manager-sablont.
 
     ![Alap kiválasztása](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)

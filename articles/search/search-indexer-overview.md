@@ -11,10 +11,10 @@ ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 87e35573eea836fc8a88c7515409c070ec63aa3b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024895"
 ---
 # <a name="indexers-in-azure-search"></a>Indexelők az Azure Search szolgáltatásban
@@ -59,18 +59,18 @@ Az indexelők adattárak feltérképezi az Azure-ban.
 ## <a name="basic-configuration-steps"></a>Alapszintű konfigurációs lépések
 Az indexelők az adott adatforrások esetében egyedi funkciókat biztosítanak. Ezért az indexelő- vagy az adatforrás-konfiguráció egyes szempontjai az indexelő típusától függően változnak. Az alapvető felépítés és követelmények azonban minden indexelő esetében azonosak. Az alábbiakban az összes indexelőre érvényes lépések láthatóak.
 
-### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
+### <a name="step-1-create-a-data-source"></a>1\. lépés: Adatforrás létrehozása
 Az indexelő beolvassa az adatforrás-kapcsolat egy *adatforrás* objektum. Az adatforrás-definíciót egy kapcsolati karakterláncot, és esetleg hitelesítő adatokat biztosít. Hívja a [adatforrás létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API vagy [DataSource osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) az erőforrás létrehozásához.
 
 Az adatforrások konfigurálása és kezelése az azokat használó indexelőktől függetlenül történik, ami azt jelenti, hogy egy adatforrást több indexelő is használhat egyidejűleg, egynél több index betöltésére.
 
-### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
+### <a name="step-2-create-an-index"></a>2\. lépés: Index létrehozása
 Az indexelők automatizálni tudják az adatfeldolgozáshoz kapcsolódó bizonyos feladatokat, de az indexek létrehozása nem tartozik ezek közé. Előfeltételként olyan előre meghatározott indexre van szükség, amelynek mezői egyeznek a külső adatforrás mezőivel. Mezők meg kell egyeznie a nevét és adattípusát. További információk az indexek strukturálásáról: [(Azure Search REST API) Index létrehozása](https://docs.microsoft.com/rest/api/searchservice/Create-Index) vagy [osztály Index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). A mezőtársításokkal kapcsolatos további információkért lásd [az Azure Search indexelők mezőleképezéseivel](search-indexer-field-mappings.md) foglalkozó témakört.
 
 > [!Tip]
 > Az indexelők nem tudnak indexet létrehozni Önnek, de a portál **Adatok importálása** varázslója a segítségére lehet ebben. A legtöbb esetben a varázsló következtetni tud az indexsémára a forrás meglévő metaadataiból, és előállít egy olyan előzetes indexsémát, amely beágyazott módon szerkeszthető mindaddig, amíg a varázsló aktív. Miután létrejött az index a szolgáltatásban, a további szerkesztés a portálon a legtöbb esetben új mezők hozzáadására van korlátozva. A varázsló használatát érdemes megfontolnia az indexek létrehozásakor, de az áttekintésükkor nem. A gyakorlati tanuláshoz végezze el a [portál útmutatójában](search-get-started-portal.md) foglalt lépéseket.
 
-### <a name="step-3-create-and-schedule-the-indexer"></a>3. lépés: Az indexelő létrehozása és ütemezése
+### <a name="step-3-create-and-schedule-the-indexer"></a>3\. lépés: Az indexelő létrehozása és ütemezése
 Az indexelő definíciója egy szerkezet, amely egyesíti az adatfeldolgozáshoz kapcsolódó összes elemet. Szükséges elemek a következők: adatforrás és index. Nem kötelező elemek közé tartozik egy ütemezés és a mező-leképezések. Mezőt leképezés csak megadása nem kötelező, ha forrás mezők és az index mezőire egyértelműen felel meg. Az indexelők egy másik szolgáltatásból is hivatkozhatnak egy adatforrásra, ha az adott adatforrás ugyanabból az előfizetésből származik. További információk az indexelők strukturálásáról: [Indexelő létrehozása (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
 
 <a id="RunIndexer"></a>

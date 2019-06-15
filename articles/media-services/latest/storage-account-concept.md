@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/11/2019
 ms.author: juliako
 ms.openlocfilehash: 9cbb995eb3310a2263185d6fd6dba20efce37f38
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65550149"
 ---
 # <a name="cloud-upload-and-storage"></a>Felhőbe történő feltöltés és tárolás
@@ -54,14 +54,14 @@ Az inaktív eszközök védelmére, titkosítani kell az eszközök által a sto
 
 ## <a name="storage-account-errors"></a>Tárfiók kapcsolatos hibák
 
-A "Leválasztott" Media Services-fiók azt jelzi, hogy a fiók már nem rendelkezik hozzáféréssel egy vagy több, a csatolt storage-fiókok megváltozása miatt a tárelérési kulcsok a. Naprakész tárelérési kulcsok a fiókban lévő feladatok végrehajtásához szükséges a Media Services által.
+A Media Services-fiók Leválasztott állapota azt jelzi, hogy a fiók már nem rendelkezik hozzáféréssel egy vagy több csatolt tárfiókhoz a tárelérési kulcsok változása miatt. A Media Servicesnek naprakész tárelérési kulcsokra van szüksége a fiókbeli feladatok nagy részének végrehajtásához.
 
-Az alábbiakban az elsődleges forgatókönyvet, amely a Media Services-fiók nem férhető hozzá csatolt storage-fiókok eredményezne. 
+Az alábbiak az elsődleges forgatókönyvek, amelyek a Media Services-fiók a csatolt tárfiókokhoz való hozzáférésének megszűnését eredményezhetik. 
 
 |Probléma|Megoldás|
 |---|---|
-|A Media Services-fiók vagy csatolt tárfiók(ok) előfizetések külön lett migrálva. |Telepítse át a tárfiók(ok) vagy a Media Services-fiókot, hogy azok ugyanabban az előfizetésben. |
-|A Media Services-fiók használ egy csatolt storage-fiók egy másik előfizetésben található korai Media Services-fiók állapotukkal, ahol ez volt támogatott. Korai Media Services-fiókok átalakítottunk modern Azure erőforrások Manager (ARM) alapú fiókok és a leválasztott állapotban lesz. |Telepítse át a storage-fiók vagy a Media Services-fiókot, hogy azok ugyanabban az előfizetésben.|
+|A Media Services-fiók vagy a csatolt tárfiókok külön előfizetésekbe lettek migrálva. |Helyezze át a tárfiókokat vagy a Media Services-fiókot, hogy mind egy előfizetésben legyenek. |
+|A Media Services-fiók egy másik előfizetésben lévő csatolt tárfiókot használ, mivel ez egy régi Media Services-fiók, amikor ez még támogatott volt. Minden régi Media Services-fiók át lett alakítva modern Azure Resource Manager- (ARM-) -alapú fiókká, és Leválasztott állapotba került. |Migrálja a tárfiókot vagy a Media Services-fiókot, hogy mind egy előfizetésben legyenek.|
 
 ## <a name="next-steps"></a>További lépések
 

@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60288377"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>A PIM Azure szerepkör-beállítások konfigurálása
@@ -42,7 +42,7 @@ Kövesse az alábbi lépéseket egy Azure-erőforrás szerepkör beállításain
 
 1. Kattintson a **szerepkör-beállítások**.
 
-    ![Szerepkör beállításai](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Szerepkör-beállítások](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
 1. Kattintson a szerepkör, amelynek beállításait konfigurálni szeretné.
 
@@ -85,7 +85,7 @@ Bizonyos esetekben érdemes tag hozzárendelése szerepkörhöz (egy nap, a pél
 
 Annak érdekében, hogy az erőforrás-kezelője a hozzárendelés foglaltak akik mondják, kényszerítheti a többtényezős Hitelesítést aktív hozzárendeléskor ellenőrzésével a **többtényezős hitelesítés megkövetelése aktív hozzárendeléskor** mezőbe.
 
-### <a name="require-multi-factor-authentication-on-activation"></a>Multi-Factor Authentication megkövetelése aktiváláskor
+### <a name="require-multi-factor-authentication-on-activation"></a>Többtényezős hitelesítés megkövetelése aktiváláskor
 
 Megkövetelheti az MFA futtatása, mielőtt aktiválna a szerepkör jogosult tagjai. Ez a folyamat biztosítja, hogy a felhasználó az aktiválás, akinek mondják ésszerű bizonyossággal kér. Kiemelt fontosságú erőforrások helyzetekben kényszerítése ezt a beállítást védi, ha a felhasználói fiók esetleg sérült a biztonsága.
 
@@ -93,7 +93,7 @@ Az MFA futtatása előtt aktiválási jogosult tag van szüksége, ellenőrizze 
 
 További információkért lásd: [multi-factor authentication (MFA) és a PIM](pim-how-to-require-mfa.md).
 
-## <a name="activation-maximum-duration"></a>Az aktiválás maximális időtartama
+## <a name="activation-maximum-duration"></a>Aktiválás maximális időtartama
 
 Használja a **aktiválás maximális időtartama** csúszka, hogy a szerepkör aktív marad-e után járjon le (óra), a maximális idő beállítása. Ez az érték 1 és 24 óra közötti lehet.
 
@@ -101,7 +101,7 @@ Használja a **aktiválás maximális időtartama** csúszka, hogy a szerepkör 
 
 Megkövetelheti, hogy a tagok adja meg az aktív hozzárendeléskor, vagy ha aktiválja. Indoklás megkövetelése, hogy ellenőrizze a **megkövetelése aktív hozzárendeléskor indoklás** mezőben vagy a **indoklás megkövetelése aktiváláskor** mezőbe.
 
-## <a name="require-approval-to-activate"></a>Az aktiváláshoz jóváhagyásra van szükség
+## <a name="require-approval-to-activate"></a>Aktiválásához jóváhagyás szükséges
 
 Ha szeretné a szerepkör aktiválásához jóváhagyás szükséges, kövesse az alábbi lépéseket.
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
 ms.openlocfilehash: ba469c038f04a31a57e798b97b5120bec573feae
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65414042"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Tesztkörnyezetfiókok konfigurálása az Azure Lab Services 
@@ -69,7 +69,7 @@ A felhasználónak **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkezn
 
 Ha engedélyt kíván adni az oktatóknak, hogy létrehozzák a tesztkörnyezeteket a tanóráikhoz, adja hozzá őket a **Tesztkörnyezet-létrehozó** szerepkörhöz:
 
-1. A a **labor fiók** lapon válassza ki **hozzáférés-vezérlés (IAM)**, és kattintson a **+ szerepkör-hozzárendelés hozzáadása** az eszköztáron. 
+1. A a **labor fiók** lapon válassza ki **hozzáférés-vezérlés (IAM)** , és kattintson a **+ szerepkör-hozzárendelés hozzáadása** az eszköztáron. 
 
     ![Hozzáférés-vezérlés -> szerepkör-hozzárendelés hozzáadása gomb](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
 1. Az a **szerepkör-hozzárendelés hozzáadása** lapon jelölje be **tesztkörnyezet létrehozója** a **szerepkör**, válassza ki a felhasználót, adja hozzá a labor létrehozó szerepkörhöz, és válassza ki a kívánt **mentése**. 
@@ -89,14 +89,14 @@ A tesztkörnyezetfiók tulajdonosaként megadhatja azokat a Marketplace-beli ren
     - A virtuális gépek üzembe helyezéséhez az Azure Resource Managert használják.
     - Nincs szükség külön licenccsomag vásárlására.
 2. Egy engedélyezett Marketplace-beli rendszerkép **letiltásának** a következő módjai vannak: 
-    1. Kattintson az utolsó oszlopban a három pontra **(...)**, majd a **Rendszerkép letiltása** lehetőségre. 
+    1. Kattintson az utolsó oszlopban a három pontra **(...)** , majd a **Rendszerkép letiltása** lehetőségre. 
 
         ![Egy rendszerkép letiltása](../media/tutorial-setup-lab-account/disable-one-image.png) 
     2. Jelöljön ki egy vagy több, a listában szereplő rendszerképet a nevük előtti jelölőnégyzet kijelölésével, majd kattintson a **Kiválasztott rendszerképek letiltása** lehetőségre. 
 
         ![Több rendszerkép letiltása](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
 1. A letiltott Marketplace-beli rendszerképek **engedélyezésének** a fentiekhez hasonlóan a következő módjai vannak: 
-    1. Kattintson az utolsó oszlopban a három pontra **(...)**, majd a **Rendszerkép engedélyezése** lehetőségre. 
+    1. Kattintson az utolsó oszlopban a három pontra **(...)** , majd a **Rendszerkép engedélyezése** lehetőségre. 
     2. Jelöljön ki egy vagy több, a listában szereplő rendszerképet a nevük előtti jelölőnégyzet kijelölésével, majd kattintson a **Kiválasztott rendszerképek engedélyezése** lehetőségre. 
 
 

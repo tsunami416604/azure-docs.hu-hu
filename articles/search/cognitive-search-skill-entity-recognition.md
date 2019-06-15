@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: f05161dbbfd9293cd7b1cbf447bb7ca1c313250c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65023445"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Entitások felismerése cognitive szakértelem
@@ -49,7 +49,7 @@ Ezek a jól ismert, de a jelenlegi támogatott "kategóriák" részeként nem be
 
 ## <a name="skill-inputs"></a>Ismeretek bemenetek
 
-| Bemenet neve      | Leírás                   |
+| Bemeneti név      | Leírás                   |
 |---------------|-------------------------------|
 | languageCode  | Választható. Az alapértelmezett szint a `"en"`.  |
 | szöveg          | Az elemzendő szöveg.          |
@@ -62,14 +62,14 @@ Ezek a jól ismert, de a jelenlegi támogatott "kategóriák" részeként nem be
 | Kimeneti név     | Leírás                   |
 |---------------|-------------------------------|
 | személyek      | Egy karakterlánctömb, ahol minden egyes karakterlánc egy személy nevét jelöli. |
-| helyek  | Egy karakterlánctömb, ahol az egyes sztringek jelenti egy helyre. |
+| locations  | Egy karakterlánctömb, ahol az egyes sztringek jelenti egy helyre. |
 | organizations  | Ahol az egyes sztringek jelenti egy szervezet karakterláncok tömbje. |
 | mennyiség  | Egy karakterlánctömb, ahol az egyes sztringek jelenti mennyiséget. |
 | Időpontok  | Egy karakterlánctömb, ahol minden karakterláncot jelenti-e a dátum és idő (ahogyan az a szöveg látható) értéket. |
 | URL-címek | Egy karakterlánctömb, ahol az egyes sztringek jelenti egy URL-cím |
 | e-mailek | Egy karakterlánctömb, ahol az egyes sztringek jelenti egy e-mailt |
 | namedEntities | Egy tömb, összetett típusok, amely a következő mezőket tartalmazzák: <ul><li>category</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (a hely hol található a szövegben)</li><li>megbízhatósági (egyelőre nem használt. A-1 értékre lesz beállítva)</li></ul> |
-| entitás | Egy tömb, amely a kinyert szöveget, a következő mezőkkel entitásokkal kapcsolatos részletes információkat tartalmaz, összetett típusok <ul><li> név (a tényleges entitás neve. Ez határozza meg a "normalized" űrlap)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (Wikipédia-oldal az entitás mutató)</li><li>bingId</li><li>(az entitás elismert kategóriáját) típusa</li><li>altípusa (csak az adott kategóriába számára elérhető, ezáltal egy részletesebb nézet typu entity)</li><li> egyezések (összetett tartalmazó gyűjteményhez)<ul><li>szöveg (a nyers szöveg az entitás)</li><li>eltolás (a hely hol található)</li><li>hossza (a nyers entitás szöveg hossza)</li></ul></li></ul> |
+| Entitások | Egy tömb, amely a kinyert szöveget, a következő mezőkkel entitásokkal kapcsolatos részletes információkat tartalmaz, összetett típusok <ul><li> név (a tényleges entitás neve. Ez határozza meg a "normalized" űrlap)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (Wikipédia-oldal az entitás mutató)</li><li>bingId</li><li>(az entitás elismert kategóriáját) típusa</li><li>altípusa (csak az adott kategóriába számára elérhető, ezáltal egy részletesebb nézet typu entity)</li><li> egyezések (összetett tartalmazó gyűjteményhez)<ul><li>szöveg (a nyers szöveg az entitás)</li><li>eltolás (a hely hol található)</li><li>hossza (a nyers entitás szöveg hossza)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Minta-definíció
 

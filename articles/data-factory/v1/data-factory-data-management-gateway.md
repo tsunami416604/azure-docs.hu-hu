@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 63b9cc26b927f78598422575646c876d90954bed
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65143305"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
@@ -252,7 +252,7 @@ Ha egy külső tűzfalat használ, a portot 8050 manuálisan is megnyithatja. Ha
 
 Ha nem kíván nyissa meg a-8050 az átjárót tartalmazó számítógépen, eltérő használatával mechanizmusok használata a **hitelesítő adatok beállítása** alkalmazás konfigurálása az adattár hitelesítő adatait. Használhat például [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell-parancsmagot. Tekintse meg, hogyan tárolhatja az adatokat a hitelesítő adatok a hitelesítő adatok beállítása és biztonsági szakaszban beállíthatja.
 
-## <a name="update"></a>Frissítés
+## <a name="update"></a>frissítés
 Alapértelmezés szerint az adatkezelési átjáró automatikusan frissül, ha az átjáró egy újabb verziója érhető el. Az átjáró nem frissül, amíg az ütemezett feladatokat kell elvégezni. Nincsenek további tevékenységeket dolgozza fel az átjáró a frissítési művelet befejeződéséig. Ha a frissítés sikertelen, átjáró, a régi verziót vissza lesz állítva.
 
 Az ütemezett frissítés ideje jelenik meg a következő helyeken:
@@ -366,9 +366,9 @@ Az alábbi táblázat ismerteti az oszlopok a **Átjárócsomópontok** lista:
 Figyelési tulajdonság | Leírás
 :------------------ | :----------
 Name (Név) | A logikai átjáró és a csomópontok kívánt átjáróval társított neve. Csomópont egy helyszíni Windows-gépen, amelyen az átjáró telepítve. Egynél több csomópont (legfeljebb négy csomópont) az egyetlen logikai átjáró, amely további információkért lásd: [Data Management Gateway - magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
-status | A logikai átjáró és az átjáró csomópontok állapotát. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért lásd: [átjáró állapota](#gateway-status) szakaszban.
+Állapot | A logikai átjáró és az átjáró csomópontok állapotát. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért lásd: [átjáró állapota](#gateway-status) szakaszban.
 Version | A logikai átjáró, és minden egyes átjárócsomópont verzióját mutatja. A logikai átjáró verziója határozza meg a csoport csomópontjának többsége verzióján alapul. Ha nincs a logikai átjáró beállításai, és verzió száma azonos a logikai átjáró függvény csak a csomópontok különböző verziójú csomópontok megfelelően. Mások a korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés nem működik).
-Elérhető memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték közel valós idejű pillanatképet.
+Rendelkezésre álló memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték közel valós idejű pillanatképet.
 Processzorkihasználtság | CPU-kihasználtság egy átjáró-csomópont. Ez az érték közel valós idejű pillanatképet.
 Hálózatkezelés (In/Out) | A hálózathasználat egy átjáró-csomópont. Ez az érték közel valós idejű pillanatképet.
 Egyidejű feladatok (futó / Limit) | Feladatok és minden egyes csomóponton futó feladatok száma. Ez az érték közel valós idejű pillanatképet. Korlát azt jelzi, hogy az egyidejű feladatok maximális száma minden egyes csomópont esetében. Ez az érték van megadva a mérete alapján. A vertikális felskálázása speciális esetekben, ahol CPU/memória/hálózati kevésbé használt, de tevékenységek időkorlátja egyidejű feladat-végrehajtási korlát növeléséhez. Ez a funkció egy egycsomópontos átjárón (akkor is, ha a skálázhatóság és rendelkezésre állás funkció nincs engedélyezve) is érhető el.
@@ -379,17 +379,17 @@ Ezen a lapon láthatja bizonyos beállítások, amelyek több értelme, ha az á
 ### <a name="gateway-status"></a>Átjáró állapota
 Az alábbi táblázat ismerteti a lehetséges állapotok egy **átjárócsomópont**:
 
-status  | Megjegyzések és forgatókönyvek
+Állapot  | Megjegyzések és forgatókönyvek
 :------- | :------------------
 Online | Csomópont csatlakoztatva a Data Factory szolgáltatásban.
 Offline | Csomópont offline állapotban.
-Frissítés | A csomópont automatikus frissítése folyamatban van.
+A frissítés | A csomópont automatikus frissítése folyamatban van.
 Korlátozott | Kapcsolat nem látható probléma miatt. HTTP-port 8050 probléma, a service bus kapcsolódási probléma vagy a hitelesítő adatok szinkronizálási problémája miatt lehet.
 Inaktív | Csomópontnak számít eltér a többi legtöbb csomópont konfigurációjának konfigurációban.<br/><br/> Egy csomópont inaktív lehet, ha a többi csomópont nem tud kapcsolódni.
 
 Az alábbi táblázat ismerteti a lehetséges állapotok egy **logikai átjáró**. Az átjáró állapotának ellenőrzéséhez az átjárócsomópontok állapotainak függ.
 
-status | Megjegyzések
+Állapot | Megjegyzések
 :----- | :-------
 Regisztrálni kell | Nem csomópont még regisztrálva van a logikai átjáró
 Online | Az Átjárócsomópontok online állapotban.
@@ -511,7 +511,7 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre, és regisztrálnia kell egy á
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Az Azure PowerShellben váltson arra a mappára: *C:\\\\programfájljainak\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\*. Futtatás *RegisterGateway.ps1* a helyi változókhoz kapcsolódó **$Key** , ahogyan az alábbi parancsot. Ez a szkript a ügyfél ügynöke telepítve van a gépén a korábban létrehozott logikai átjáróval regisztrálja.
+1. Az Azure PowerShellben váltson arra a mappára: *C:\\\\programfájljainak\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* . Futtatás *RegisterGateway.ps1* a helyi változókhoz kapcsolódó **$Key** , ahogyan az alábbi parancsot. Ez a szkript a ügyfél ügynöke telepítve van a gépén a korábban létrehozott logikai átjáróval regisztrálja.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

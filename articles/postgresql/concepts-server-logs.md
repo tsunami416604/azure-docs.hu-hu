@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4d1cf2c59e324cedd9b747b1ac65d6edcb9deb45
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067389"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Kiszolgálói naplók az Azure Database for PostgreSQL – egyetlen kiszolgáló
@@ -50,9 +50,9 @@ A következő táblázat ismerteti, mi az egyes naplókhoz. Attól függően, a 
 | Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | errorLevel | Naplózási szint, például: LOG, ERROR, NOTICE |
-| Üzenet | Elsődleges naplófájlüzenetre | 
+| Message | Elsődleges naplófájlüzenetre | 
 | Domain | Kiszolgáló verziója, például: postgres-10-es |
-| Részlet | Másodlagos naplófájlüzenetre (ha van) |
+| Részletek | Másodlagos naplófájlüzenetre (ha van) |
 | Oszlopnév | (Ha alkalmazható) oszlop neve |
 | %{Schemaname/ | (Ha van ilyen) a séma neve |
 | DatatypeName | Az adattípus (ha alkalmazható) neve |

@@ -15,10 +15,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f54e08e6c3b7b673541f124a90f32dbc860fa44
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65859541"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Az alkalmazásproxy és Qlik Sense 
@@ -52,7 +52,7 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételéhez. Egy részlete
 ### <a name="application-2"></a>#2. alkalmazás: 
 Kövesse a lépéseket, mint az alkalmazás 1, a következő kivételekkel: 
 
-**5. #**: A belső URL-cím most kell lennie az QlikSense azt a hitelesítési portot, amelyet az alkalmazás URL-CÍMÉT. Az alapértelmezett érték **4244** 4248 HTTP és HTTPS. Például: **https&#58;//demo.qlik.com:4244**</br></br> 
+**5. #** : A belső URL-cím most kell lennie az QlikSense azt a hitelesítési portot, amelyet az alkalmazás URL-CÍMÉT. Az alapértelmezett érték **4244** 4248 HTTP és HTTPS. Például: **https&#58;//demo.qlik.com:4244**</br></br> 
  **#10. lépés:** Ne az egyszeri bejelentkezés Konfigurálásához, és hagyja a **egyszeri bejelentkezés le van tiltva**
  
  

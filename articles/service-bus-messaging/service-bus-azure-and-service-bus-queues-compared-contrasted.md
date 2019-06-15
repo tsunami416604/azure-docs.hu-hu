@@ -15,16 +15,16 @@ ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: dbbc43bc7a2f42f8a72ce12d84da1ae406a588d2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799356"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tároló-üzenetsorok és Service Bus-üzenetsorok összehasonlítása
 Ez a cikk elemzi a közötti különbségeket és hasonlóságokat a Microsoft Azure jelenleg elérhető két típusa: Tároló-üzenetsorok és Service Bus-üzenetsorok. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
 
-## <a name="introduction"></a>Bemutatás
+## <a name="introduction"></a>Bevezetés
 Az Azure két típusú várólista mechanizmusokat támogatja: **Tárolási üzenetsorok** és **Service Bus-üzenetsorok**.
 
 **Tárolási üzenetsorok**, amelyek részét képezik a [az Azure storage](https://azure.microsoft.com/services/storage/) infrastruktúra, a szolgáltatás egy egyszerű REST-alapú GET és PUT/BETEKINTÉSI felületet biztosít a megbízható, állandó belül, és a szolgáltatások közötti üzenetküldési.

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 673b1df6094703bebcbfd9d82c1268c01d46e814
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233585"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>A Syslog használatával külső megoldás csatlakoztatása
@@ -32,7 +32,7 @@ Bármely helyszíni berendezés, amely támogatja az Azure-Sentinel Syslog kapcs
 > [!NOTE]
 > Ha a készülék támogatja a Syslog CEF, a kapcsolat teljes körű és kell ezt a lehetőséget, és kövesse a [adatok összekapcsolása a CEF](connect-common-event-format.md).
 
-## <a name="how-it-works"></a>A szolgáltatás működése
+## <a name="how-it-works"></a>Működés
 
 Syslog-kapcsolat Linux-ügynök használatával valósítható meg. Alapértelmezés szerint a Linux-ügynök fogadja az eseményeket a Syslog démonból UDP-n keresztül, de azokban az esetekben, ahol Linuxos gépek várhatóan nagy mennyiségű, a Syslog-események gyűjtése, például amikor egy Linux-ügynök kapja az események más eszközökről, úgy módosul, hogy a konfiguráció a Syslog-démont és az ügynök közötti TCP átviteli használja.
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
 ms.openlocfilehash: 122a1585abf43d1aedc7f329cd7e41a6228f8c3e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65200665"
 ---
 # <a name="security-recommendations"></a>Biztonsági javaslatok
@@ -37,7 +37,7 @@ Elemzések és javaslatok javíthatja biztonsági helyzetét eszköz eszköz meg
 
 | Severity | Name (Név)                                                      | Adatforrás | Leírás                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Közepes   | Nyitott portok az eszközön                                      | Ügynök       | A rendszer figyelő végpontot talált az eszközön                                                                                                                                                          |
+| Közepes   | Nyitott portok az eszközön                                      | Ügynök       | Figyelő végpont található az eszközön                                                                                                                                                          |
 | Közepes   | Megengedő tűzfal-házirend található a minősített főtanúsítványhoz kapcsolódik. | Ügynök       | Tűzfal-házirend található (bemeneti/kimeneti) engedélyezett. Tűzfalházirend kell alapértelmezés szerint az összes forgalom megtagadásához, és engedélyezi a szükséges kommunikációt és-tárolókról az eszköz szabályokat határozhat meg.                               |
 | Közepes   | A bemeneti lánc megengedő tűzfalszabály található.     | Ügynök       | Egy szabály a tűzfalon talált, amely számos különböző IP-címek és portok megengedő mintát tartalmaz.                                                                                    |
 | Közepes   | Megengedő tűzfalszabály kimeneti láncában található.    | Ügynök       | Egy szabály a tűzfalon talált, amely számos különböző IP-címek és portok megengedő mintát tartalmaz.                                                                                   |
@@ -63,5 +63,5 @@ Javaslat riasztások adja meg, az insight and javaslatok a műveletek javítása
 | Magas     | Több eszköz által használt azonos típusú hitelesítő adatok | IoT Hub     | Az IoT Hub hitelesítő adatok több eszközön használja. Ez azt jelezheti egy megbízható eszköz megszemélyesítésekor illegitimate eszközt. Duplikált hitelesítő adatok használata növeli annak kockázatát, az eszköz megszemélyesítési rosszindulatú szereplő szerint. |
 | Közepes   | Célszerű lehet tiltani az alapértelmezett IP-szűrő házirend                  | IoT Hub     | IP-szűrő konfigurációjának rendelkezik engedélyezett forgalmat, és alapértelmezés szerint kell definiált szabályokkal, alapértelmezés szerint az összes többi a forgalom megtagadásához.                                                                                                     |
 | Közepes   | IP-szűrési szabály nagy IP-címtartományt is tartalmaz.                   | IoT Hub     | Egy engedélyezési IP szűrési szabály forrás IP-címtartományt mérete túl nagy. Túlzottan megengedő az IoT hub rosszindulatú tehetők közzé.                                                                                       |
-| Alacsony      | Diagnosztikai naplók engedélyezése az IoT Hubban                       | IoT Hub     | Naplók engedélyezése és megőrzi őket a legfeljebb egy évig. Naplók megőrzése lehetővé teszi a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.                                       |
+| Alacsony      | Az IoT Hub-diagnosztikai naplók engedélyezése                       | IoT Hub     | Naplók engedélyezése és megőrzi őket a legfeljebb egy évig. Naplók megőrzése lehetővé teszi a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.                                       |
 |

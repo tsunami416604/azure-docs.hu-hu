@@ -5,13 +5,13 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 5/6/2019
 ms.author: iainfou
-ms.openlocfilehash: 7476747de31819907cf144e5a6b33cb29e1f866f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e7f45a3a0e62b2b559002b71bd8816e050f062ab
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072650"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Gyakorlati tanácsok a tárolási és biztonsági másolatokat az Azure Kubernetes Service (AKS)
@@ -34,12 +34,12 @@ Alkalmazások gyakran a különböző típusú és sebességű tárhelyet igény
 
 Az alábbi táblázat ismerteti a rendelkezésre álló tárhely és azok képességeinek:
 
-| Használati eset | Kötet beépülő modul | Olvasási/írási egyszer | Csak olvasható több | Olvasási/írási számos |
-|----------|---------------|-----------------|----------------|-----------------|
-| A megosztott konfiguráció       | Azure Files   | Igen | Igen | Igen |
-| Strukturált adatokat        | Azure Disks   | Igen | Nem  | Nem  |
-| Alkalmazásadatok, csak olvasható megosztás | [Dysk (előzetes verzió)][dysk] | Igen | Igen | Nem  |
-| Teljes strukturálatlan adatmennyiséget tárolni rendszerműveletekről fájl | [BlobFuse (előzetes verzió)][blobfuse] | Igen | Igen | Igen |
+| Használati eset | Kötet beépülő modul | Olvasási/írási egyszer | Csak olvasható több | Olvasási/írási számos | A Windows Server-tároló támogatása |
+|----------|---------------|-----------------|----------------|-----------------|--------------------|
+| A megosztott konfiguráció       | Azure Files   | Igen | Igen | Igen | Igen |
+| Strukturált adatokat        | Azure Disks   | Igen | Nem  | Nem  | Igen |
+| Alkalmazásadatok, csak olvasható megosztás | [Dysk (előzetes verzió)][dysk] | Igen | Igen | Nem  | Nem |
+| Teljes strukturálatlan adatmennyiséget tárolni rendszerműveletekről fájl | [BlobFuse (előzetes verzió)][blobfuse] | Igen | Igen | Igen | Nem |
 
 A két elsődleges típusú kötetek az aks-ben biztosított Azure-lemezek vagy az Azure Files biztonsági. A biztonság növelése érdekében mindkét tárolási típust kínál, amely titkosítja az inaktív adatok alapértelmezés szerint az Azure Storage Service Encryption (SSE) használja. Lemezek jelenleg nem lehet a az AKS csomópont szintjén az Azure Disk Encryption használatával titkosított.
 

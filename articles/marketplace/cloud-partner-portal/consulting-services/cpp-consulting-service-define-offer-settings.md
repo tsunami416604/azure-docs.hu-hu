@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
 ms.openlocfilehash: 601ad62bddd1373742b0cab5a388a55cfd52f4bc
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942776"
 ---
 # <a name="offer-settings-tab"></a>Ajánlatbeállítási lap
@@ -36,7 +36,7 @@ A példában látható módon a **Ajánlatazonosító** rendszer hozzáfűzi a G
 Ez az azonosító van a fiókjával kapcsolatban. Miután a szervezeti fiókkal jelentkezik be a **közzétevő-azonosító** megjelenik-e a legördülő menüből.
 
 
-### <a name="name"></a>Név*
+### <a name="name"></a>Név *
 
 Ez a karakterlánc az appsource-on vagy az Azure piactéren az ajánlat nevét jeleníti meg. A **neve** mező el legfeljebb 50 karakter hosszúságú lehet. A felülvizsgáló szükség lehet a cím fűzze hozzá a időtartama és írja be az ajánlat neve a szerkesztése.
 

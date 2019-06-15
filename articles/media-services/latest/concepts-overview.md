@@ -13,10 +13,10 @@ ms.date: 05/13/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 1e76569c7f5157dce681d15ec8d499b90e080102
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65762314"
 ---
 # <a name="media-services-concepts"></a>A Media Services – alapelvek
@@ -51,7 +51,7 @@ A Media Services-fiók létrehozása és a digitális fájlok feltöltése kell 
 - [Felhőbe történő feltöltés és tárolás](storage-account-concept.md)
 - [Eszközök fogalma](assets-concept.md)
 
-## <a name="encoding"></a>Kódolás
+## <a name="encoding"></a>Encoding
 
 Miután az eszközök a kiváló minőségű digitális médiafájlok feltöltése, kódolnia azokat, hogy a böngészők és eszközök széles lejátszhatók. 
 
@@ -62,7 +62,7 @@ Kódolás a Media Services v3-as, létre kell **alakítja át az** és **feladat
 - [Átalakítások és feladatok](transforms-jobs-concept.md)
 - [Kódolás a Media Services használatával](encoding-concept.md)
 
-## <a name="media-analytics"></a>Media Analytics
+## <a name="media-analytics"></a>Media analytics (Médiaelemzés)
 
 A video- és fájlok elemzéséhez, is szeretne létrehozni **alakítja át az** és **feladatok**.
 
@@ -101,7 +101,7 @@ Használhatja a Media Services **dinamikus jegyzékfájlok** csak egy adott megj
 - [Dinamikus jegyzékek](filters-dynamic-manifest-overview.md)
 - [Szűrők](filters-concept.md)
 
-## <a name="live-streaming"></a>Élő közvetítés
+## <a name="live-streaming"></a>Live streaming (Élő adatfolyam)
 
 Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőben lévő események élő közvetítésére. Az **élő események** az élő videóadatok betöltését és feldolgozását végzik. Amikor létrehoz egy **élő esemény**, egy bemeneti végpont jön létre, használhatja élő jelet küld a távoli kódoló. Miután a tárfiókba kerülnek stream a **élő esemény**, megkezdheti a streamelési eseményt hoz létre egy **eszköz**, **élő kimeneti**, és **Streamelési lokátor** . **Kimeneti élő** archiválja a streamet, a **eszköz** és keresztül megtekintők számára elérhető legyen a **folyamatos átviteli végponton**. A **élő esemény** két típus egyike lehet: **átmenő** és **valós idejű kódolás**.
 
@@ -114,7 +114,7 @@ Az alábbi ábrán az átmenő írja be a munkafolyamat:
 
 ## <a name="monitoring"></a>Figyelés
 
-### <a name="event-grid"></a>Eseményrács
+### <a name="event-grid"></a>Event Grid
 
 A feladat előrehaladásának megtekintéséhez használjon **Event Grid**. A Media Services is az élő esemény típusok bocsát ki. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. 
 

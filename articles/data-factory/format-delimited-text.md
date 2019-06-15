@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 407b8ba2fda35d3acbf1b425bb15fe20778613d7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65146003"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Az Azure Data Factoryban tagolt szövegformátum
@@ -31,7 +31,7 @@ Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját
 | type             | A type tulajdonságot az adatkészlet értékre kell állítani **DelimitedText**. | Igen      |
 | location         | A fájl(ok) beállításai. Minden egyes fájl alapú összekötő saját hely típusa és a támogatott tulajdonságok alapján `location`. **A részleteit az összekötő -> Tulajdonságok szakaszának adatkészlet**. | Igen      |
 | columnDelimiter  | Az oszlopok elválasztására használt karaktert vagy karaktereket. Elválasztó karaktere több adatfolyam leképezése, de nem a másolási tevékenység csak támogatott. <br>Az alapértelmezett érték **vesszővel `,`** , amikor az oszlophatároló számít, ha üres karakterláncot, ami azt jelenti, nincs elválasztó, a teljes sort kell venni egy oszlopban. | Nem       |
-| rowDelimiter     | Az egyetlen karakter vagy a sorok elválasztására használt "\r\n".<br>Az alapértelmezett érték a következő értékek bármelyike: **Olvasás: ["\r\n", "\r", "\n"]**, és **"\n" vagy "\r\n" íráskor** térképadatokat Flow és másolási tevékenység jelölik. <br>Amikor `rowDelimiter` nincs elválasztó (üres) értékre van állítva a `columnDelimiter` nincs elválasztó (üres karakterlánc) szerint, amely azt jelenti, hogy kezelje a teljes tartalom egyetlen értékként kell beállítani. | Nem       |
+| rowDelimiter     | Az egyetlen karakter vagy a sorok elválasztására használt "\r\n".<br>Az alapértelmezett érték a következő értékek bármelyike: **Olvasás: ["\r\n", "\r", "\n"]** , és **"\n" vagy "\r\n" íráskor** térképadatokat Flow és másolási tevékenység jelölik. <br>Amikor `rowDelimiter` nincs elválasztó (üres) értékre van állítva a `columnDelimiter` nincs elválasztó (üres karakterlánc) szerint, amely azt jelenti, hogy kezelje a teljes tartalom egyetlen értékként kell beállítani. | Nem       |
 | quoteChar        | Az egyetlen karakternek kell ajánlat oszlop értékeit, ha az oszlop elválasztó karaktert tartalmaz. <br>Az alapértelmezett érték **idézőjel** `"`. <br>Az adatfolyam-leképezés `quoteChar` nem lehet üres karakterlánc. <br>A másolási tevékenység amikor `quoteChar` van definiálva üres karakterlánc, akkor nincs idézőjel karakter van és není uveden v uvozovkách oszlop értékét, és `escapeChar` karaktert az oszlophatároló, és saját maga szolgál. | Nem       |
 | escapeChar       | Az escape-ajánlatok a határolójeles érték belül egyetlen karakter.<br>Az alapértelmezett érték **fordított perjel `\`** . <br>Az adatfolyam-leképezés `escapeChar` nem lehet üres karakterlánc. <br/>A másolási tevékenység amikor `escapeChar` üres karakterláncként van definiálva a `quoteChar` állítja be, valamint az üres karakterlánc, ebben az esetben ellenőrizze, hogy minden oszlop értékei nem tartalmaz elválasztó karaktereket kell lennie. | Nem       |
 | firstRowAsHeader | Megadja, hogy a treat/ügyeljen az első sor egy fejlécsort, az oszlopok nevét.<br>Engedélyezett értékek a következők **igaz** és **hamis** (alapértelmezett). | Nem       |

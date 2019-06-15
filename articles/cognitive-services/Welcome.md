@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: nitinme
 ms.openlocfilehash: d5a3226050901f6feb17c4d9d6a6582cb622618b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65020189"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mik az Azure Cognitive Services?
@@ -22,7 +22,7 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségé
 
 ## <a name="vision-apis"></a>Vision APIs
 
-|Szolgáltatásnév|A szolgáltatás leírása|
+|Szolgáltatás neve|A szolgáltatás leírása|
 |:-----------|:------------------|
 |[Számítógépes Látástechnológia](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|A Computer Vision service képek feldolgozása és információk korszerű algoritmusokat hozzáférést biztosít.|
 |[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|A Custom Vision Service lehetővé teszi, hogy egyéni rendszerképet deklarációkkal hozhat létre.|
@@ -33,7 +33,7 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségé
 
 ## <a name="speech-apis"></a>Beszédfelismerő API-k
 
-|Szolgáltatásnév|A szolgáltatás leírása|
+|Szolgáltatás neve|A szolgáltatás leírása|
 |:-----------|:------------------|
 |[Beszédszolgáltatások](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "beszédszolgáltatások")|Beszédszolgáltatás beszédfeldolgozó funkciókat ad hozzá alkalmazásokat.|
 |[Speaker Recognition API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Speaker Recognition API") (előzetes verzió)|A Speaker Recognition API algoritmusokat biztosít a beszélő felismerése és ellenőrzése.|
@@ -42,7 +42,7 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségé
 
 ## <a name="language-apis"></a>Nyelvi API-k
 
-|Szolgáltatásnév|A szolgáltatás leírása|
+|Szolgáltatás neve|A szolgáltatás leírása|
 |:-----------|:------------------|
 |[Language Understanding, LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "hangfelismerés")|Hangfelismerési szolgáltatás (LUIS) lehetővé teszi, hogy az alkalmazás tudja, hogy ember szándékának megértésére a saját szavaival.|
 |[A QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "a QnA Maker")|A QnA Maker egy kérdést és választ a szolgáltatás a szolgáltatásban tárolt részben strukturált tartalomból teszi lehetővé.|
@@ -52,7 +52,7 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségé
 
 ## <a name="search-apis"></a>Keresési API-k
 
-|Szolgáltatásnév|A szolgáltatás leírása|
+|Szolgáltatás neve|A szolgáltatás leírása|
 |:-----------|:------------------|
 |[Bing – Hírkeresés](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Bing – Hírkeresés")|Bing – Hírkeresés határozza meg a felhasználó lekérdezése fontos hírek listáját adja vissza.|
 |[Bing – Videókeresés](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing – Videókeresés")|A Bing Video Search minősül, a felhasználó lekérdezése a videók listáját adja vissza.|
@@ -67,7 +67,7 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségé
 
 ## <a name="decision-apis"></a>Döntési API-k
 
-|Szolgáltatásnév|A szolgáltatás leírása|
+|Szolgáltatás neve|A szolgáltatás leírása|
 |:-----------|:------------------|
 |[Anomáliadetektálási detector használatával](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomáliadetektálási detector használatával") (előzetes verzió)|Anomáliadetektálási detector használatával lehetővé teszi a figyelését, és az idősoros adatokat észlelheti a rendellenességeket.|
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|A Content Moderator lehetséges sértő, nemkívánatos és kockázatos tartalmak figyelését teszi lehetővé.|

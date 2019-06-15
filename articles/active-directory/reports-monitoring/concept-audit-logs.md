@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3da96c09026baff3965e0a90d1f461fd948a3a50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60441016"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
@@ -81,8 +81,8 @@ A naplózási adatok az alábbi mezőkkel szűrheti:
 - Szolgáltatás
 - Category
 - Tevékenység
-- status
-- Cél
+- Állapot
+- Target
 - Kezdeményező (Szereplő)
 - Dátumtartomány
 
@@ -98,7 +98,7 @@ A **szolgáltatás** szűrő lehetővé teszi, hogy a következő szolgáltatás
 - B2C
 - Feltételes hozzáférés
 - Alapvető könyvtár
-- Jogosultságkezelés
+- Tagjogosultság-kezelés
 - Identity Protection
 - Meghívott felhasználók
 - PIM
@@ -111,7 +111,7 @@ A **kategória** szűrővel az alábbi szűrők egyikét választhatja ki:
 - Összes
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
+- Hitelesítés
 - Engedélyezés
 - Kapcsolattartó
 - Eszköz
@@ -127,7 +127,7 @@ A **kategória** szűrővel az alábbi szűrők egyikét választhatja ki:
 
 A **tevékenység** szűrő alapján a kategória és tevékenység erőforrás adattípus-választást meg. Választhat egy adott tevékenységet, amelyet meg szeretne tekinteni, vagy kiválaszthatja az összeset. 
 
-A Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta használatával lekérheti az összes naplózási tevékenység listáját, ahol a $tenantdomain a tartománynév, illetve megtekintheti [naplózási jelentési eseményekkel kapcsolatos](reference-audit-activities.md) cikket.
+A Graph API https://graph.windows.net/ $tenantdomain/activities/auditActivityTypes?api-version=beta használatával lekérheti az összes naplózási tevékenység listáját, ahol a $tenantdomain a tartománynév, illetve megtekintheti [naplózási jelentési eseményekkel kapcsolatos](reference-audit-activities.md) cikket.
 
 A **állapot** szűrő lehetővé teszi a szűrést, egy naplózási művelet állapota alapján. Az állapot a következők egyike lehet:
 

@@ -11,10 +11,10 @@ ms.date: 04/17/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 419c533aabd67637efa64777387c491dd890596e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024641"
 ---
 # <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatási korlátai
@@ -47,7 +47,7 @@ Maximális korlátozza a storage, a számítási feladatok és az indexek, dokum
 
 ## <a name="index-limits"></a>Index korlátok
 
-| Erőforrás | Ingyenes | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | 2. |
+| Resource | Ingyenes | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | 2\. |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Indexek maximális száma |3 |5 vagy 15 |50 |200 |200 |1000 partíciónként vagy 3000 szolgáltatásonként |10 |10 |
 | Indexenkénti maximális egyszerű mezők |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
@@ -64,7 +64,7 @@ Maximális korlátozza a storage, a számítási feladatok és az indexek, dokum
 
 ## <a name="document-limits"></a>A dokumentum korlátok 
 
-2018. október már nem léteznek a dokumentum korlátait minden olyan új szolgáltatás bármely számlázható szint szerint kalkuláljuk (alap, S1, S2, S3 szintű, S3 HD) bármelyik régióban hozza létre. Bár a legtöbb régióban kellett volna 2017 November/December óta száma korlátlan, öt régióban, amely továbbra is a dokumentum készletként volt. Attól függően, hol és mikor egy keresési szolgáltatás hozta létre akkor előfordulhat, hogy fut egy szolgáltatás, amely dokumentumot korlátok továbbra is vonatkozik.
+2018\. október már nem léteznek a dokumentum korlátait minden olyan új szolgáltatás bármely számlázható szint szerint kalkuláljuk (alap, S1, S2, S3 szintű, S3 HD) bármelyik régióban hozza létre. Bár a legtöbb régióban kellett volna 2017 November/December óta száma korlátlan, öt régióban, amely továbbra is a dokumentum készletként volt. Attól függően, hol és mikor egy keresési szolgáltatás hozta létre akkor előfordulhat, hogy fut egy szolgáltatás, amely dokumentumot korlátok továbbra is vonatkozik.
 
 Annak megállapításához, hogy a szolgáltatás rendelkezik-e a dokumentum korlátok, ellenőrizze a szolgáltatás áttekintés oldalán a használati csempét. Dokumentum-száma korlátlan, vagy egy réteg korlát hatálya alá tartozik, a rendszer.
 
@@ -105,7 +105,7 @@ Ne feledje alacsonyan tartani a dokumentumok méretétől, a kérelem nem lekér
 Maximális futó alkalommal egyenleg és stabilitását a szolgáltatás egészére léteznek, de nagyobb méretű adatkészletek igényelhet a maximálisan engedélyezettnél több indexelési idő. Ha egy indexelési feladat a maximális rendelkezésre álló időn belül nem tudja végrehajtani, próbálja meg egy ütemezés szerint fut. Az ütemező nyomon követi az indexelés állapotát. Ha egy ütemezett indexelési feladat bármilyen okból megszakad, az indexelő folytathatja a munkát, ahol utolsó abbahagyta a következő ütemezett futáskor.
 
 
-| Erőforrás | Ingyenes&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |2. |
+| Resource | Ingyenes&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |2\. |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
 | Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |– |10 |10 |
 | Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |

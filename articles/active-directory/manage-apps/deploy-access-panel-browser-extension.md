@@ -17,10 +17,10 @@ ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b6f069489738e9dceeee350a36aa2b45715a314
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825034"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>A hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer
@@ -34,7 +34,7 @@ A hozzáférési Panel bővítmény érhető el is [Chrome](https://go.microsoft
 * Beállított [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), és a felhasználók gépek csatlakozott a tartományhoz.
 * A csoportházirend-objektumot (GPO) szerkesztését a "Beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek a ezt az engedélyt: A tartományi rendszergazdák, a vállalati rendszergazdák és a Csoportházirend-létrehozó tulajdonosok. [Részletek](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
-## <a name="step-1-create-the-distribution-point"></a>1. lépés: A terjesztési pont létrehozása
+## <a name="step-1-create-the-distribution-point"></a>1\. lépés: A terjesztési pont létrehozása
 Először be kell jelölnie a a telepítőcsomag a gépek távolról telepíteni a bővítményt a kívánt által elérhető hálózati helyen. Ehhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a kiszolgálóra rendszergazdaként
@@ -51,7 +51,7 @@ Először be kell jelölnie a a telepítőcsomag a gépek távolról telepíteni
     ![Az .msi fájlt másolja a megosztásba.](./media/deploy-access-panel-browser-extension/copy-package.png)
 7. Ellenőrizze, hogy a szerverek, a megosztást a telepítőcsomag elérhetik. 
 
-## <a name="step-2-create-the-group-policy-object"></a>2. lépés: A csoportházirend-objektum létrehozása
+## <a name="step-2-create-the-group-policy-object"></a>2\. lépés: A csoportházirend-objektum létrehozása
 1. Jelentkezzen be a kiszolgálóra, amelyen az Active Directory Domain Services (AD DS) telepítése.
 2. Nyissa meg a Server Manager **eszközök** > **csoportházirend-kezelő**.
    
@@ -72,7 +72,7 @@ Először be kell jelölnie a a telepítőcsomag a gépek távolról telepíteni
    
     ![Az új csoportházirend-objektum szerkesztéséhez](./media/deploy-access-panel-browser-extension/edit-gpo.png)
 
-## <a name="step-3-assign-the-installation-package"></a>3. lépés: A telepítési csomag hozzárendelése
+## <a name="step-3-assign-the-installation-package"></a>3\. lépés: A telepítési csomag hozzárendelése
 1. Határozza meg, hogy szeretné-e telepíteni a bővítményt alapján **számítógép konfigurációja** vagy **felhasználói konfiguráció**. Használata esetén [számítógép konfigurációja](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx), a bővítmény telepítve van a bejelentkezni, függetlenül a számítógépen. A [felhasználói konfiguráció](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx), felhasználók rendelkeznek a bővítmény telepítve van a számukra, függetlenül attól, hogy mely számítógépek jelentkeznek be.
 2. A bal oldali panelen, a **Csoportházirendkezelés-szerkesztő** ablakában nyissa meg a következő mappák elérési útja, attól függően, hogy milyen típusú konfigurációs választott valamelyikét:
    
@@ -95,7 +95,7 @@ Először be kell jelölnie a a telepítőcsomag a gépek távolról telepíteni
 
 A bővítmény már telepítve van a kiválasztott szervezeti Egységhez. [További információ a Csoportházirend szoftver telepítése.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
-## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>4. lépés: A bővítmény automatikus – engedélyezése az Internet Explorer
+## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>4\. lépés: A bővítmény automatikus – engedélyezése az Internet Explorer
 A telepítő futtatása mellett minden az Internet Explorer-bővítmény explicit módon engedélyezni kell ahhoz, hogy kell használni. A hozzáférési Panel bővítmény csoportházirend használatával engedélyezéséhez az alábbi lépésekkel:
 
 1. Az a **Csoportházirendkezelés-szerkesztő** ablakban lépjen az attól függően, hogy milyen típusú konfigurációs beállítást választja, a következő útvonalak egyikét [3. lépés: A telepítési csomag hozzárendelése](#step-3-assign-the-installation-package):
@@ -118,7 +118,7 @@ A telepítő futtatása mellett minden az Internet Explorer-bővítmény explici
 
 A bővítmény már engedélyezni kell a gépek a kiválasztott szervezeti egységben. [Tudjon meg többet engedélyezni vagy letiltani a gyakori csoportházirend használatával.](https://technet.microsoft.com/library/dn454941.aspx)
 
-## <a name="step-5-optional-disable-remember-password-prompt"></a>5. lépés (nem kötelező): "Jegyezze meg jelszót" üzenet letiltása
+## <a name="step-5-optional-disable-remember-password-prompt"></a>5\. lépés (nem kötelező): "Jegyezze meg jelszót" üzenet letiltása
 When users sign-in to websites using the Access Panel Extension, Internet Explorer may show the following prompt asking "Would you like to store your password?"
 
 ![Jelszó kérése](./media/deploy-access-panel-browser-extension/remember-password-prompt.png)
@@ -149,7 +149,7 @@ Felhasználók többé nem lesz képes tárolni a hitelesítő adatok vagy az au
 > 
 > 
 
-## <a name="step-6-testing-the-deployment"></a>6. lépés: A központi telepítés tesztelése
+## <a name="step-6-testing-the-deployment"></a>6\. lépés: A központi telepítés tesztelése
 Győződjön meg arról, ha a bővítmény telepítése sikeres volt-e az alábbi lépésekkel:
 
 1. Ha üzembe helyezte a használatával **számítógép konfigurációja**, jelentkezzen be egy ügyfélszámítógépre, a kiválasztott szervezeti Egységhez tartozó [2. lépés: A csoportházirend-objektum létrehozása](#step-2-create-the-group-policy-object). Ha üzembe helyezte a használatával **felhasználói konfiguráció**, győződjön meg arról, hogy a szervezeti egységhez tartozó felhasználóként bejelentkezni.

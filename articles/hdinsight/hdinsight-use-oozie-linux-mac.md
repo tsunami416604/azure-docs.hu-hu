@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 55db43bf3037fcba59e7ad783c6d8c06f1886bdb
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65142830"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Hadoop megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight Apache Oozie használata
@@ -300,7 +300,7 @@ A feladat definíciója, hogy hol található a workflow.xml ismerteti. Azt is b
 
     |Helyőrző értékét| Érték felülírva|
     |---|---|
-    |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| 1. lépésben kapott érték.|
+    |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| 1\. lépésben kapott érték.|
     |admin| A bejelentkezési neve, a HDInsight-fürt nem rendszergazda.|
     |Kiszolgálónév| Az Azure SQL database kiszolgáló neve.|
     |sqlLogin| Az Azure SQL database server bejelentkezés.|
@@ -665,7 +665,7 @@ Az alábbiakban a találkozhat bizonyos hibákat és azok megoldását.
 
 **Ok**: Az Azure Blob storage használt címek a **job.xml** fájl nem tartalmaz, a storage-tároló vagy tárfiók neve. A Blob storage-cím formátumú lehet `wasbs://containername@storageaccountname.blob.core.windows.net`.
 
-**Megoldás**: Módosítsa a Blob storage címeket, amelyek a feladat használ.
+**Feloldási**: Módosítsa a Blob storage címeket, amelyek a feladat használ.
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: Az Oozie nem engedélyezett a megszemélyesíteni &lt;felhasználó&gt;
 
@@ -675,7 +675,7 @@ Az alábbiakban a találkozhat bizonyos hibákat és azok megoldását.
 
 **Ok**: Az aktuális engedély-beállítások a megadott felhasználói fiók megszemélyesítése Oozie tiltása.
 
-**Megoldás**: Az Oozie tudja megszemélyesíteni a felhasználók a **felhasználók** csoport. Használja a `groups USERNAME` a csoportokat, amelyek a felhasználói fiók tagja megtekintheti. Ha a felhasználó nem tagja a **felhasználók** csoportjában adja hozzá a felhasználót a csoporthoz a következő paranccsal:
+**Feloldási**: Az Oozie tudja megszemélyesíteni a felhasználók a **felhasználók** csoport. Használja a `groups USERNAME` a csoportokat, amelyek a felhasználói fiók tagja megtekintheti. Ha a felhasználó nem tagja a **felhasználók** csoportjában adja hozzá a felhasználót a csoporthoz a következő paranccsal:
 
     sudo adduser USERNAME users
 
@@ -690,7 +690,7 @@ Az alábbiakban a találkozhat bizonyos hibákat és azok megoldását.
 
 **Ok**: Sqoop nem tudja betölteni az adatbázis eléréséhez szükséges adatbázis-illesztőprogramját.
 
-**Megoldás**: Az Oozie-feladatok a Sqoop használata esetén meg kell adnia az adatbázis-illesztőt is a további erőforrások, például a workflow.xml, a feladat által használt. Az archívumot, amely tartalmazza az adatbázis-illesztőprogramot az is hivatkozhat a `<sqoop>...</sqoop>` a workflow.xml szakaszában.
+**Feloldási**: Az Oozie-feladatok a Sqoop használata esetén meg kell adnia az adatbázis-illesztőt is a további erőforrások, például a workflow.xml, a feladat által használt. Az archívumot, amely tartalmazza az adatbázis-illesztőprogramot az is hivatkozhat a `<sqoop>...</sqoop>` a workflow.xml szakaszában.
 
 Például a feladat ebben a dokumentumban, akkor használja az alábbi lépéseket:
 

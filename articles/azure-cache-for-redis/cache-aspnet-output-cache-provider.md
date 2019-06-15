@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 04/22/2018
 ms.author: yegu
 ms.openlocfilehash: a93d21b07dc486f743694ee99f60018ed4ef517c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943872"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>A Redis az Azure Cache ASP.NET kimenetigyorsítótár-szolgáltatója
@@ -85,7 +85,7 @@ Az érték *connectionString* használatos kulcsként a tényleges kapcsolati ka
 
 Az alábbi példák bemutatják, hogyan *connectionString* szolgál.
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 
 ```xml
 <connectionStrings>
@@ -105,7 +105,7 @@ A `web.config`, tényleges érték helyett a paraméter értékeként fent kulcs
 </sessionState>
 ```
 
-#### <a name="example-2"></a>2. példa
+#### <a name="example-2"></a>2\. példa
 
 ```xml
 <appSettings>
@@ -125,7 +125,7 @@ A `web.config`, tényleges érték helyett a paraméter értékeként fent kulcs
 </sessionState>
 ```
 
-#### <a name="example-3"></a>3. példa
+#### <a name="example-3"></a>3\. példa
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">

@@ -9,10 +9,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60254065"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Egyéni metrikák az Azure monitorban
@@ -29,7 +29,7 @@ Egyéni metrikák az Azure Monitor használatával több módszert is lehet kül
 
 Ha egyéni mérőszámok küldése az Azure Monitor, minden egyes adatponthoz vagy jelentett értéket tartalmaznia kell a következő információkat.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 Egyéni metrikák az Azure monitornak elküldeni az entitást, amely elküldi a metrika egy érvényes Azure Active Directory (Azure AD-) token kell a **tulajdonosi** a kérelem fejlécében. Érvényes tulajdonosi jogkivonat-beszerzési néhány támogatott módja van:
 1. [Felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Hozzáférést biztosít az identitás egy Azure-erőforrás, például egy virtuális Gépet. Felügyelt Felügyeltszolgáltatás-identitás (MSI) célja az erőforrásoknak engedélyek bizonyos műveletek elvégzésére. Példa engedélyezi-e saját magáról metrikák kibocsátható egy erőforrást. Az erőforrás vagy az MSI-vel is megadható **figyelési metrikákat közzétevő** engedélyeit egy másik erőforrás. Ezzel az engedéllyel az MSI kibocsátható, valamint egyéb erőforrások mérőszámait.
 2. [Az Azure AD-szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). Ebben a forgatókönyvben, egy Azure AD-alkalmazást vagy szolgáltatást rendelhetők engedélyek kibocsátható egy Azure-erőforrás metrikáit.
@@ -70,7 +70,7 @@ Dimenziók nem kötelező, előfordulhat, hogy nem minden metrikák dimenziókat
 ### <a name="dimension-values"></a>Dimenzió értékei
 Ha egy metrika adatpont minden dimenzió kulcs jelentett, a metrika a reporting nincs a megfelelő dimenzióértékhez. Például akkor előfordulhat, hogy szeretne jelentést készíteni a ContosoApp a virtuális gép által felhasznált memória:
 
-* A metrika neve lenne **használatban lévő memória (bájt)**.
+* A metrika neve lenne **használatban lévő memória (bájt)** .
 * A dimenzió kulcs lenne **folyamat**.
 * A dimenzió érték lesz **ContosoApp.exe**.
 

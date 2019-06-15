@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce51f4df50de50cef06bba699ca7c6f76bc5d166
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833372"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Szerkesztése és kezelése az Azure ad-ben tagjogosultság-kezelés (előzetes verzió) egy meglévő hozzáférési csomagot
@@ -146,11 +146,11 @@ Az Azure AD automatikusan tud hozzárendelni felhasználók hozzáférés egy Sh
 
 1. Az erőforrás-szerepkörökkel listájában keresse meg az erőforrás-szerepkör el kívánja távolítani.
 
-1. Kattintson a három pont (**...** ) majd **Remove erőforrás szerepkör**.
+1. Kattintson a három pont ( **...** ) majd **Remove erőforrás szerepkör**.
 
     Azok a felhasználók a hozzáférés csomaghoz meglévő hozzárendelések automatikusan lesz a hozzáférését visszavonták erőforrás ehhez a szerepkörhöz, amikor a rendszer eltávolítja.
 
-## <a name="add-a-new-policy"></a>Új szabályzat felvétele
+## <a name="add-a-new-policy"></a>Új szabályzat hozzáadása
 
 A, adja meg, akik kérhet egy hozzáférési csomagot úgy, hogy hozzon létre egy házirendet. Egyetlen hozzáférési csomag több szabályzatokat hozhat létre, ha azt szeretné, hogy a felhasználók különböző jóváhagyási és a lejárati beállítások hozzárendelések nyújtott más-más részhalmazához. Egyetlen szabályzatban csak akkor használható belső és külső felhasználók hozzárendelése ugyanaz a hozzáférés-csomag. Azonban létrehozhat két szabályzat hozzáférési egyazon csomag – egy belső felhasználók, egy, a külső felhasználók számára. Ha több szabályzat is vonatkozik egy felhasználóhoz, kérni fogja a kérésüket, hogy válassza ki a szabályzatot hozzá kell rendelni szeretnék idején.
 

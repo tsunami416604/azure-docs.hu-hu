@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65442384"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Az Azure Data Box Gateway rendszerkövetelményei
@@ -32,10 +32,10 @@ A mögöttes gazdagép rendszere a Data Box átjáró viszont rendelnie a virtu�
 | Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
 | Virtuális processzorok (magok)   | Minimum 4 |
-| Memória  | Minimum 8 GB|
+| Memory (Memória)  | Minimum 8 GB|
 | Rendelkezésre állás|Egyetlen csomópont|
 | Lemezek| Operációsrendszer-lemez: 250 GB <br> Adatlemez: 2 TB-os minimális, dinamikusan kiosztott és SSD-k által kell készíteni|
-| Hálózati adapterek|1 vagy több virtuális hálózati adapter|
+| Hálózati illesztők|1 vagy több virtuális hálózati adapter|
 
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Az eszközhöz csatlakoztatott ügyfelek támogatott operációs rendszer

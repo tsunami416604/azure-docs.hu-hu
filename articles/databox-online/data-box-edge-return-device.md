@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 9aeae0ab68d809b36a3316054f12a5a9657721f1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65468604"
 ---
 # <a name="return-your-azure-data-box-edge-device"></a>Vissza az Azure Data Box Edge-eszköz
@@ -102,7 +102,7 @@ A következő lépésekkel törölheti az eszköz és az erőforrást az Azure P
 
 2. Az a **eszköz törlése** panelen adja meg az eszköz törlése, és válassza ki a **törlése**.
 
-    ![Törlés jóváhagyása](media/data-box-edge-return-device/delete-resource-2.png)
+    ![Törlés megerősítése](media/data-box-edge-return-device/delete-resource-2.png)
 
 Az eszköz után értesítést kap arról, és a társított erőforrás törlése sikerült.
 

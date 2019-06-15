@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.openlocfilehash: f40350129a12c7865051bcae80b74b6f9c069179
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233529"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Rendellenességek észlelése, és az Adatkezelőben az Azure-előrejelzés
@@ -117,7 +117,7 @@ demo_make_series2
 
 ![Time series méretezhetőség](media/anomaly-detection/series-scalability.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ez a dokumentum részletesen natív Azure adatkezelő függvények a time series rendellenességek észlelése és előrejelzését. Minden eredeti idősorozat van bontva a rendellenességek észlelése és/vagy előrejelzés szezonális, trend és a maradék összetevőit. Ezek a funkciók közel valós idejű figyelési helyzetek, például a hibák észlelése, a prediktív karbantartási és igény szerint használható, és előrejelzés betölteni.
 

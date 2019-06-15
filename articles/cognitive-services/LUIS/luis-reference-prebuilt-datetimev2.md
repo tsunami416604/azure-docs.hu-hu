@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: e7577dcf4859b1192121fe0406d0efb63a9f5990
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148638"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 előre összeállított entitások a LUIS-alkalmazások
@@ -91,7 +91,7 @@ A **datetimeV2** dátumok között a következő tartományokra támogatja:
 
 | Min | Max |
 |----------|-------------|
-| 1900. január 1-től.   | 2099. December 31-én. |
+| 1900\. január 1-től.   | 2099\. December 31-én. |
 
 ## <a name="ambiguous-dates"></a>Nem egyértelmű dátumok
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
 ms.openlocfilehash: 1b028fe016d6ae3df8c1dfce548fc0c11479d5a6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942718"
 ---
 # <a name="storefront-details-tab"></a>Áruház részletei lap
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan adja meg, hogy az áruház oldala. A **kirakat rész
 ![Új tanácsadási szolgáltatási ajánlat létrehozása – kirakat részletei lapon](media/consultingoffer-storefront-details.png)
 
 
-## <a name="offer-details"></a>Ajánlat részletei
+## <a name="offer-details"></a>Az ajánlat részletei
 
 A **ajánlat részletei** szakasz tartalmazza a következő mezőket:
 
@@ -86,11 +86,11 @@ A következő példa bemutatja egy jól szintből ajánlat leírása és a kapcs
 
 Program
 
-1. napi
+1\. napi
 
 -   Biztonságos, méretezhető, és az Azure Data Lake, az Azure HDInsight vagy Azure SQL Data Warehouse használatával jellemzők szerint rendezik az adatokat a Microsoft cloud összpontosít.
 
-2. napon
+2\. napon
 
 -   Bemutatja, hogyan konfigurálhatja és telepítheti a Microsoft R és az Azure Machine Learning a fejlett elemzési megoldásokat.
 

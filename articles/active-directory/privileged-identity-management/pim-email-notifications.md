@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60289193"
 ---
 # <a name="email-notifications-in-pim"></a>A PIM e-mail-értesítések
@@ -50,7 +50,7 @@ Ki kapja, e-mailek, az Azure AD-szerepkörökhöz tartozó függ a szerepkört, 
 
 | Felhasználó | Szerepkör-aktiválás jóváhagyása függőben van | Szerepkör-aktiválási kérelem befejeződött | A PIM engedélyezve van |
 | --- | --- | --- | --- |
-| Kiemelt szerepkörű rendszergazda</br>(Activated/Eligible) | Igen</br>(csak akkor, ha nincs explicit jóváhagyók vannak megadva) | Igen* | Igen |
+| A kiemelt szerepkörű rendszergazda</br>(Activated/Eligible) | Igen</br>(csak akkor, ha nincs explicit jóváhagyók vannak megadva) | Igen* | Igen |
 | Biztonsági rendszergazda</br>(Activated/Eligible) | Nem | Igen* | Igen |
 | Globális rendszergazda</br>(Activated/Eligible) | Nem | Igen* | Igen |
 
@@ -68,7 +68,7 @@ Az Azure AD-szerepkörökhöz tartozó heti PIM összefoglaló e-mail küldése 
 
 Az e-mail tartalmazza a négy csempére:
 
-| Csempe | Leírás |
+| csempe | Leírás |
 | --- | --- |
 | **Aktív felhasználók** | Ennyi alkalommal felhasználók aktiválása a jogosult szerepkör a bérlőn belül. |
 | **Véglegessé felhasználók** | Jogosult hozzárendelés rendelkező felhasználók véglegessé hányszor. |

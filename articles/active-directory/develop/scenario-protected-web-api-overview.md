@@ -16,13 +16,13 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5bc0075e6604bd1f94531040f2e4a0628e70667
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65074890"
 ---
-# <a name="scenario-protected-web-api"></a>Forgatókönyv: Védett webes API-k
+# <a name="scenario-protected-web-api"></a>Forgatókönyv: Védett webes API
 
 Ebben a forgatókönyvben megtudhatja, hogyan tehetők közzé a webes API-k és az API védelméről, így csak a hitelesített felhasználók hozzáférhetnek. Érdemes mindkét munkahelyi és iskolai fiókokhoz vagy személyes személyes Microsoft-fiókok a hitelesített felhasználók a webes API-t használja.
 

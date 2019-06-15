@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: a04dc76a110b1d126d5d826761e2e0c09c6aac47
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65520240"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Adatok másolása az Amazon Simple Storage szolgáltatásból az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 >
 > * [1-es verzió](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [Aktuális verzió](connector-amazon-simple-storage-service.md)
@@ -42,7 +42,7 @@ Pontosabban, az Amazon S3-összekötő támogatja a fájlok másolása,-elemzés
 
 Adatok másolása az Amazon S3, győződjön meg arról, kapott a következő engedélyeket:
 
-- **A másolási tevékenység-végrehajtási:**: `s3:GetObject` és `s3:GetObjectVersion` Amazon S3 objektum műveletekhez.
+- **A másolási tevékenység-végrehajtási:** : `s3:GetObject` és `s3:GetObjectVersion` Amazon S3 objektum műveletekhez.
 - **A Data Factory grafikus felhasználói felületének létrehozásához**: `s3:ListAllMyBuckets` és `s3:ListBucket` / `s3:GetBucketLocation` az Amazon S3 gyűjtő Operations engedélyek szükségesek emellett a műveletek, például a kapcsolat tesztelése, és tallózással keresse meg és nyissa meg a fájlok elérési útjainak. Ha nem szeretné ezeket az engedélyeket, hagyja ki a kapcsolat tesztelése a társított szolgáltatás létrehozása oldal, és adja meg az elérési út közvetlenül az adatkészlet beállításai.
 
 További információk az Amazon S3-engedélyek teljes listája: [engedélyek megadása egy házirendben](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).

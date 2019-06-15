@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: raynew
 ms.openlocfilehash: fe86c758dbf05f91d53cb918b7794c12ab3f39bc
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65518759"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
@@ -58,8 +58,8 @@ Tervezze meg a felderítések és értékelések az alábbi korlátok alapján:
 
 | **Entitás** | **Gép korlátja** |
 | ---------- | ----------------- |
-| PROJEKT    | 1,500             |
-| Detektálás  | 1,500             |
+| Project    | 1,500             |
+| Felderítés  | 1,500             |
 | Értékelés | 1,500             |
 
 Ezeket a tervezési szempontokat tartsa szem előtt:

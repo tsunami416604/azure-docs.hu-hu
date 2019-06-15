@@ -14,10 +14,10 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f61396d8fb0f02fe77f5ee35560f45a0c4698a10
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65850768"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Az Azure-fiókjával profilinformációinak módosítása
@@ -76,7 +76,7 @@ Kapcsolattartási e-mail címét a következő módszerek valamelyikével módos
 
 * Nyissa meg a [kapcsolattartási adatok](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) terület az Azure Portalon, és adjon meg egy e-mail címet. Az Ön által megadott címet kap, szolgáltatás- és marketing-kommunikáció. Az e-mail-címét az Azure fiókprofil Center automatikusan frissül. A profil e-mail-címének frissítése nem frissíti a bejelentkezési e-mail-címét.
 
-* Az a [az Azure portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade), saját monogramjával ikon kiválasztása vagy kép. Ezután válassza ki a helyi menüt (**...** ). Majd **saját elérhetőségi adatok** a menüből, és adjon meg egy e-mail címet. Az Ön által megadott címet kap, szolgáltatás- és marketing-kommunikáció. Azure-fiók Center profiljában megadott e-mail-címre automatikusan frissül. A profil e-mail-címének frissítése nem frissíti a bejelentkezési e-mail-címét.
+* Az a [az Azure portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade), saját monogramjával ikon kiválasztása vagy kép. Ezután válassza ki a helyi menüt ( **...** ). Majd **saját elérhetőségi adatok** a menüből, és adjon meg egy e-mail címet. Az Ön által megadott címet kap, szolgáltatás- és marketing-kommunikáció. Azure-fiók Center profiljában megadott e-mail-címre automatikusan frissül. A profil e-mail-címének frissítése nem frissíti a bejelentkezési e-mail-címét.
 
 ![Frissíti egy e-mail címet az Azure-ban – példa](./media/billing-how-to-change-azure-account-profile/azure-contact-information.png)
 
@@ -92,7 +92,7 @@ Marketing e-mailek forgalmat fogadó kikapcsolásához:
 
 Ha kikapcsolja a marketinganyagot, továbbra is kaphat szolgáltatási értesítések, a fiók alapján.
 
-## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 

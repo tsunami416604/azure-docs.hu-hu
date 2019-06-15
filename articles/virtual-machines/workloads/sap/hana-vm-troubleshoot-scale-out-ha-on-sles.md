@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60477046"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Győződjön meg arról, és az SAP HANA kibővített magas rendelkezésre állású telepítés SLES 12 SP3 hibaelhárítása 
@@ -473,7 +473,7 @@ Miután mindent megfelelően van beállítva, a minden csomóponton a támasztja
 systemctl status pacemaker
 </code></pre>
 
-Felső részén a kimenet az alábbi mintához hasonlóan kell kinéznie. Fontos, amely után az állapot **aktív** jelenik meg, mint **betöltött** és **aktív (fut)**. Miután az állapot **Loaded** láthatónak kell lennie **engedélyezve**.
+Felső részén a kimenet az alábbi mintához hasonlóan kell kinéznie. Fontos, amely után az állapot **aktív** jelenik meg, mint **betöltött** és **aktív (fut)** . Miután az állapot **Loaded** láthatónak kell lennie **engedélyezve**.
 
 <pre><code>
   pacemaker.service - Pacemaker High Availability Cluster Manager
@@ -802,7 +802,7 @@ A parancsok **SAPHanaSR-showAttr** és **crm állapot** használatbavételben a 
 crm configure show
 </code></pre>
 
-A fürtkonfiguráció között keresse meg egy új földrajzi megszorítás, a korábbi manuális erőforrás-migrálás okozta. Ez a példa a bejegyzés kezdődik **hely cli -**:
+A fürtkonfiguráció között keresse meg egy új földrajzi megszorítás, a korábbi manuális erőforrás-migrálás okozta. Ez a példa a bejegyzés kezdődik **hely cli -** :
 
 <pre><code>
 location cli-ban-msl_SAPHanaCon_HSO_HDB00-on-hso-hana-vm-s1-0 msl_SAPHanaCon_HSO_HDB00 role=Started -inf: hso-hana-vm-s1-0

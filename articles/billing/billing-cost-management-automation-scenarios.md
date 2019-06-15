@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
 ms.openlocfilehash: cb7a13d9abcf7c677d51f03df002ea06b543014e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232477"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Számlázási és a cost Management Automation-forgatókönyvek
@@ -52,7 +52,7 @@ Felügyeleti API-k számos forgatókönyv kapcsolatos költségek és a használ
 | Foglalási javaslatok |                           |                  |           X          |                  |                    |           |
 | Foglalási adatok         |                           |                  |           X          |         X        |                    |           |
 | Foglalási összegzések       |                           |                  |           X          |         X        |                    |           |
-| Használat részletei               |             X             |         X        |           X          |         X        |          X         |     X     |
+| Használati adatok               |             X             |         X        |           X          |         X        |          X         |     X     |
 | Számlázási időszak             |             X             |         X        |           X          |         X        |                    |           |
 | Számlák                    |             X             |         X        |           X          |         X        |                    |           |
 | RateCard                    |             X             |                  |           X          |         X        |          X         |           |
@@ -63,7 +63,7 @@ Felügyeleti API-k számos forgatókönyv kapcsolatos költségek és a használ
 
 ## <a name="api-summaries"></a>API összefoglaló
 
-### <a name="consumption"></a>Szolgáltatáshasználat
+### <a name="consumption"></a>Használat
 Web Direct- és nagyvállalati ügyfelek használhatják az összes a következő API-kat, nincs másként jelölve:
 
 -   [API költségvetése](https://docs.microsoft.com/rest/api/consumption/budgets) (*csak vállalati ügyfelek*): Erőforrások, erőforráscsoportok vagy számlázási mérőszámok költség- és használati költségvetéseket létrehozni. Ha költségvetése létrehozott, konfigurálhatja úgy a riasztásokat, amelyek figyelmeztetik, ha meghaladta meghatározott költségvetés küszöbértékeket. Beállíthatja úgy is fordulhat elő, ha elérte a költségvetési összegek műveleteket.

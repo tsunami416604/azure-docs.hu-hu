@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pabutler
 ms.openlocfilehash: 1a0a2bd9132ba5d018bc5d45699c052d10c30162
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942678"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Hozzon létre egy új tárolót ajánlatunk a Cloud Partner portálra
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre, és a egy tároló-ajánlat bejeg
 
 |  **Eszközcsoport**   |  **Leírás**  |
 |  ---------------   |  ---------------  |
-|    Termékváltozatok            |  A legkisebb telepíthető egység az ajánlat. Egyetlen ajánlatba (termék osztály) az ajánlat társított több termékváltozatok is rendelkezhet. Termékváltozatok segítségével tesz különbséget a támogatott szolgáltatások és a számlázási modellek között. |
+|    SKU-k            |  A legkisebb telepíthető egység az ajánlat. Egyetlen ajánlatba (termék osztály) az ajánlat társított több termékváltozatok is rendelkezhet. Termékváltozatok segítségével tesz különbséget a támogatott szolgáltatások és a számlázási modellek között. |
 |  Piactér       | Marketing, jogi és elégtelen felügyeleti eszközök és előírásokat tartalmazza.  <ul><li> Marketing eszközök tartalmazzák az ajánlat nevét, leírását és emblémák</li> <li> Jogi eszközök közé tartozik egy adatvédelmi szabályzatát, használati feltételeit és egyéb jogi dokumentáció</li>  <li> Elégtelen felügyeleti házirend lehetővé teszi, hogy adja meg, hogyan kezelje az Azure Marketplace-en a végfelhasználói portálon vezet.</li> </ul> |
 | Támogatás            | Támogatási kapcsolattartó és házirend információkat tartalmaz |
 

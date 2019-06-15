@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: szark
 ms.openlocfilehash: a1be0b6870882d3c7b0281dec7933e87c50e49de
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65834558"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Által támogatott Linux-disztribúciók az Azure-ban
@@ -33,7 +33,7 @@ A Linux Integration Services (LIS) illesztőprogramokat, a Hyper-V és az Azure 
 Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-rendszerképek, és a terjesztési csomag adattárból általában érhető el. Forráskód találhatók [GitHub](https://github.com/azure/walinuxagent).
 
 
-| Terjesztési | Version | Illesztőprogramok | Ügynök |
+| Disztribúció | Version | Illesztőprogramok | Ügynök |
 | --- | --- | --- | --- |
 | CentOS |A centOS 6.3 + 7.0 + |CentOS 6.3: [LIS letöltése](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+: A kernel |Csomag: A [tárház](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) "WALinuxAgent" alatt <br/>Forráskód: [GitHubon](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |A kernel |Forráskód: [GitHubon](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
@@ -94,7 +94,7 @@ A világ vezető szolgáltatója, nyílt forráskódú megoldások, a Red Hat se
 
 SUSE Linux Enterprise Server az Azure-ban az bevált platform, amely kiemelkedő megbízhatóságot és biztonságot felhő-számítástechnika biztosít. A SUSE sokoldalú Linux rendszeren zökkenőmentesen integrálható az Azure-felhőszolgáltatásokat, hogy egy könnyen kezelhető felhőbeli környezetre. A több mint 9,200 tanúsított alkalmazások több mint 1,800 független szoftvergyártók SUSE Linux Enterprise Server SUSE biztosítja, hogy az adatközpontban futó támogatott munkaterhelések magabiztosan telepíthető az Azure-ban.
 
-### <a name="canonical"></a>Kanonikus
+### <a name="canonical"></a>Canonical
 [https://www.ubuntu.com/cloud/azure](https://www.ubuntu.com/cloud/azure)
 
 Canonical termékgondozó csoportja és a nyílt közösségi cégirányítási meghajtó Ubuntu a sikeres ügyfél, kiszolgáló és a felhő-számítástechnika, amely tartalmazza a fogyasztók számára személyes felhőszolgáltatások. Canonical vision telefonról a felhőbe, az Ubuntu, egységes, ingyenes platform összessége, egységes felületeket biztosít a telefonon, táblagépen, TV és asztali. A vision segítségével Ubuntu consumer Electronics a döntéshozók és kedvencként egyes technologists között nyilvánosfelhő-szolgáltatók különböző intézmények számára az első választás.

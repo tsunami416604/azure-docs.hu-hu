@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: deea16b8670623acd2ae92ba62f579f5474d12ec
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65790900"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Nyelvi elemzők az Azure Search-index hozzáadása
@@ -61,7 +61,7 @@ Index-tulajdonságokkal kapcsolatos további információkért lásd: [a Create 
 
 |Nyelv|A Microsoft elemző neve|Lucene-elemzőt neve|  
 |--------------|-----------------------------|--------------------------|  
-|Arab|ar.microsoft|ar.lucene|  
+|arab|ar.microsoft|ar.lucene|  
 |örmény||HY.lucene|  
 |Bengáli|bn.microsoft||  
 |baszk||eu.lucene|  
@@ -73,7 +73,7 @@ Index-tulajdonságokkal kapcsolatos további információkért lásd: [a Create 
 |cseh|cs.microsoft|cs.lucene|  
 |dán|da.microsoft|da.lucene|  
 |holland|nl.microsoft|nl.lucene|  
-|angol|en.microsoft|en.lucene|  
+|Angol|en.microsoft|en.lucene|  
 |észt|et.microsoft||  
 |finn|fi.microsoft|fi.lucene|  
 |francia|fr.microsoft|FR.lucene|  
@@ -95,7 +95,7 @@ Index-tulajdonságokkal kapcsolatos további információkért lásd: [a Create 
 |litván|lt.microsoft||  
 |malajálam|ml.microsoft||  
 |Maláj (latin betűs)|ms.microsoft||  
-|maráthi|mr.microsoft||  
+|marathi|mr.microsoft||  
 |norvég|nb.microsoft|No.lucene|  
 |perzsa||fa.lucene|  
 |lengyel|pl.microsoft|pl.lucene|  

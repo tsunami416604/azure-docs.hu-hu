@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60565718"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
@@ -42,25 +42,25 @@ Az Azure HDInsight Hadoop fürt több verzió telepítését követően bármiko
 A Microsoft a legújabb Hadoop-ökoszisztéma összetevők és frissíti a támogatott HDInsight-verziók listáját. Részletes információkért lásd: [HDInsight támogatott verziók](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions).
 
 > [!IMPORTANT]
-> Linux-alapú HDInsight 3.3-as verziója 2017. július 31-ig volt elavult. A Data Factory 1. verziójának igény szerinti HDInsight társított szolgáltatások ügyfelek kaptak, amíg 15 2017 December, tesztelése és frissítése a HDInsight újabb verziója. 2018. július 31-ig. a Windows-alapú HDInsight megszűnik.
+> Linux-alapú HDInsight 3.3-as verziója 2017. július 31-ig volt elavult. A Data Factory 1. verziójának igény szerinti HDInsight társított szolgáltatások ügyfelek kaptak, amíg 15 2017 December, tesztelése és frissítése a HDInsight újabb verziója. 2018\. július 31-ig. a Windows-alapú HDInsight megszűnik.
 >
 > 
 
 ### <a name="after-the-retirement-date"></a>A kivezetési dátum után 
 
-2017. December 15.:
+2017\. December 15.:
 
 - Már nem hozhat létre Linux-alapú HDInsight 3.3-as verziója (vagy korábbi verziók) fürtök segítségével egy igény szerinti HDInsight társított szolgáltatás a Data Factory 1. verzió. 
 - Ha a [ **osType** és **verzió** tulajdonságok](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nem explicit módon szerepelnek a JSON-definíciót egy meglévő Data Factory 1. verziójának igény szerinti HDInsight társított szolgáltatás , módosította az alapértelmezett érték **verziója 3.1 osType = = Windows** való **verzió =\<HDI alapértelmezett legújabb\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType = Linux**.
 
-2018. július 31-ig.: után
+2018\. július 31-ig.: után
 
 - Windows-alapú HDInsight-fürtök bármely verzióját egy igény szerinti HDInsight társított szolgáltatás használatával a Data Factory 1. verzió már nem készíthetők. 
 
-### <a name="recommended-actions"></a>Javasolt műveletek 
+### <a name="recommended-actions"></a>Ajánlott műveletek 
 
 - Győződjön meg arról, hogy használhatja-e a legújabb Hadoop-ökoszisztéma összetevők és javítások, frissítse a [ **osType** és **verzió** tulajdonságok](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) az érintett a Data Factory 1. verziójának igény szerinti HDInsight kapcsolódó szolgáltatás definíciók újabb Linux-alapú HDInsight-verziók (HDInsight 3.6). 
-- 2017. December 15. tesztelje a Data Factory 1. verziójának Hive, Pig, MapReduce és a Hadoop streamelési tevékenységeket, hogy az érintett társított szolgáltatás. Győződjön meg arról, hogy kompatibilisek, az új **osType** és **verzió** alapértelmezett értéket (**verzió = 3.6-os**, **osType = Linux**) vagy a explicit HDInsight verzió és az operációs rendszer írja be, hogy szeretne frissíteni. 
+- 2017\. December 15. tesztelje a Data Factory 1. verziójának Hive, Pig, MapReduce és a Hadoop streamelési tevékenységeket, hogy az érintett társított szolgáltatás. Győződjön meg arról, hogy kompatibilisek, az új **osType** és **verzió** alapértelmezett értéket (**verzió = 3.6-os**, **osType = Linux**) vagy a explicit HDInsight verzió és az operációs rendszer írja be, hogy szeretne frissíteni. 
   Kompatibilitási kapcsolatos további információkért lásd: [áttelepítése egy Windows-alapú HDInsight-fürtről egy Linux-alapú fürt](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-from-windows-to-linux) és [Mik azok a Hadoop-összetevők és a HDInsight-verziók?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions). 
 - Windows-alapú HDInsight-fürtök létrehozása a Data Factory 1. verziójának igény szerinti HDInsight társított szolgáltatás használatának folytatásához, explicit módon beállíthat egy **osType** való **Windows** 2017. December 15. előtt. Azt javasoljuk, hogy át a Linux-alapú HDInsight-fürtök előtt 2018. július 31-ig. 
 - Egy igény szerinti HDInsight társított szolgáltatás végrehajtása a Data Factory 1. verziójának használatakor DotNet egyéni tevékenységei frissítés az DotNet egyéni tevékenység JSON-definíciót használja inkább az Azure Batch-társított szolgáltatást. További információkért lásd: [egyéni tevékenységek használata egy Data Factory-folyamatot](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities). 
@@ -144,7 +144,7 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 ### <a name="advanced-properties"></a>Speciális tulajdonságok
 Az igény szerinti HDInsight-fürt részletes konfigurációjáig megadhatja a következő tulajdonságokkal:
 
-| Tulajdonság               | Leírás                              | Kötelező |
+| Tulajdonság               | Leírás                              | Szükséges |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | Megadja a HDInsight-fürt létrehozása az alapvető konfigurációs paramétereket (core-site.xml). | Nem       |
 | hBaseConfiguration     | Megadja a HDInsight-fürt HBase-konfigurációs paramétereket (a hbase-site.xml). | Nem       |
@@ -215,7 +215,7 @@ Ha szeretne létrehozni, D4 méretű fő csomópontból és a feldolgozó csomó
 
 Ha ezek a Tulajdonságok értékkel, a következő üzenetet láthatja:
 
-  Nem sikerült létrehozni a fürtöt. Kivétel: Nem sikerült befejezni a fürt létrehozásának műveletét. A művelet 400-as kóddal meghiúsult. Fürt állapota: "Error". Üzenet: 'PreClusterCreationValidationFailure'. 
+  Nem sikerült létrehozni a fürtöt. Kivétel: Nem sikerült befejezni a fürt létrehozásának műveletét. A művelet 400-as kóddal meghiúsult. Fürt állapota: "Error". üzenet: 'PreClusterCreationValidationFailure'. 
   
 Ha ezt az üzenetet látja, biztosítása érdekében, hogy használja a parancsmagot, és a tábla API nevei [virtuálisgép-méretek](../../virtual-machines/linux/sizes.md).  
 
@@ -261,7 +261,7 @@ Létrehozhat egy HDInsight társított szolgáltatás regisztrálni a saját HDI
 | ----------------- | ---------------------------------------- | -------- |
 | type              | A type tulajdonság beállítása **HDInsight**. | Igen      |
 | clusterUri        | A HDInsight-fürt URI azonosítója.        | Igen      |
-| felhasználónév          | Egy meglévő HDInsight-fürthöz való kapcsolódáshoz használandó felhasználói fiók neve. | Igen      |
+| username          | Egy meglévő HDInsight-fürthöz való kapcsolódáshoz használandó felhasználói fiók neve. | Igen      |
 | password          | A felhasználói fiók jelszava.   | Igen      |
 | linkedServiceName | A Blob Storage a HDInsight-fürt által használt a storage-beli társított szolgáltatás neve. <p>Jelenleg nem adhat meg egy Data Lake Store-beli társított szolgáltatást ehhez a tulajdonsághoz. Ha a HDInsight-fürt a Data Lake Store hozzáférése van, előfordulhat, hogy a Data Lake Store adatigénylésekre a Hive és Pig-parancsfájlok alapján. </p> | Igen      |
 
@@ -390,9 +390,9 @@ Egyszerű szolgáltatásnév hitelesítése használja a következő tulajdonsá
 #### <a name="user-credential-authentication"></a>Felhasználói hitelesítő adatok hitelesítése
 A Data Lake Analytics felhasználói hitelesítő adja meg a következő tulajdonságokkal:
 
-| Tulajdonság          | Leírás                              | Kötelező |
+| Tulajdonság          | Leírás                              | Szükséges |
 | :---------------- | :--------------------------------------- | :------- |
-| Engedélyezési | A Data Factory Editorban válassza a **engedélyezés** gombra. Adja meg a hitelesítő adat, amelyet az automatikusan létrehozott engedélyezési URL-címet rendel hozzá ezt a tulajdonságot. | Igen      |
+| authorization | A Data Factory Editorban válassza a **engedélyezés** gombra. Adja meg a hitelesítő adat, amelyet az automatikusan létrehozott engedélyezési URL-címet rendel hozzá ezt a tulajdonságot. | Igen      |
 | sessionId     | Az OAuth munkamenet-azonosító az OAuth hitelesítési munkamenetből. Minden munkamenet-azonosító egyedi, és csak egyszer használhatók fel. Ez a beállítás automatikusan jön létre Data Factory Editor használata esetén. | Igen      |
 
 **Példa: Felhasználói hitelesítő adatok hitelesítése**

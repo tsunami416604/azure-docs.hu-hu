@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 66dd017e8f78f1e93c96262b42dc084c165cdef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60285492"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia
@@ -66,10 +66,10 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat frissítése|
 |Hozzáférési felülvizsgálatok|Azure AD hozzáférési felülvizsgálatok előkészítése állapotának frissítése|
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati e-mail-értesítési beállításainak frissítése|
-|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődésszám beállításának frissítése|
-|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődési időtartam (nap) beállításának frissítése|
-|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődési befejezési típus beállításának frissítése|
-|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődési típus beállításának frissítése|
+|Hozzáférési felülvizsgálatok|Frissítés hozzáférési felülvizsgálat ismétlődésszámot beállítása|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat ismétlődési időtartama napokban frissítése|
+|Hozzáférési felülvizsgálatok|Frissítés hozzáférési felülvizsgálati ismétlődés záró típusa beállítása|
+|Hozzáférési felülvizsgálatok|Frissítés hozzáférési felülvizsgálat ismétlődés típusa beállítása|
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati emlékeztető beállításainak frissítése|
 |Hozzáférési felülvizsgálatok|Program frissítése|
 |Hozzáférési felülvizsgálatok|Kérelem-jóváhagyás frissítése|
@@ -103,9 +103,9 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Címtárkezelés|Az Oauth2Permissiongrant eltávolítása|
 |Címtárkezelés|Alkalmazásszerepkör-hozzárendelés eltávolítása a szolgáltatásnévből|
 |Címtárkezelés|Tulajdonos eltávolítása az alkalmazásból|
-|Erőforrás|Tulajdonos eltávolítása az egyszerű szolgáltatásnévből|
-|Erőforrás|Szabályzat eltávolítása az egyszerű szolgáltatásnévből|
-|Erőforrás|Szolgáltatásnév eltávolítása|
+|Resource|Tulajdonos eltávolítása az egyszerű szolgáltatásnévből|
+|Resource|Szabályzat eltávolítása az egyszerű szolgáltatásnévből|
+|Resource|Szolgáltatásnév eltávolítása|
 
 
 ## <a name="automated-password-rollover"></a>Automatizált jelszóváltás
@@ -135,11 +135,11 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Alkalmazáskezelés|AdminPolicyDatas-SetResources|
 |Alkalmazáskezelés|AdminUserJourneys-GetResources|
 |Alkalmazáskezelés|AdminUserJourneys-RemoveResources|
-|Authentication|AdminUserJourneys-SetResources|
-|Authentication|IdentityProvider létrehozása|
-|Authentication|V1 alkalmazás létrehozása|
-|Authentication|V2 alkalmazás létrehozása|
-|Authentication|Egyéni tartomány létrehozása a bérlőben|
+|Hitelesítés|AdminUserJourneys-SetResources|
+|Hitelesítés|IdentityProvider létrehozása|
+|Hitelesítés|V1 alkalmazás létrehozása|
+|Hitelesítés|V2 alkalmazás létrehozása|
+|Hitelesítés|Egyéni tartomány létrehozása a bérlőben|
 |Engedélyezés|Új AdminUserJourney létrehozása|
 |Engedélyezés|Honosított json-erőforrás létrehozása|
 |Engedélyezés|Új egyéni identitásszolgáltató létrehozása|
@@ -269,79 +269,79 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Kulcs|Címtár törölve|
 |Egyéb|Címtár véglegesen törölve|
 |Egyéb|Ez a címtár törlésre van ütemezve|
-|Erőforrás|Vállalat előléptetése partnerré|
-|Erőforrás|Rights Management-tulajdonságok végleges törlése|
-|Erőforrás|Partner eltávolítása a vállalatból|
-|Erőforrás|Nem ellenőrzött tartomány eltávolítása|
-|Erőforrás|Ellenőrzött tartomány eltávolítása|
-|Erőforrás|Cégadatok beállítása|
-|Erőforrás|A DirSync funkció beállítása|
-|Erőforrás|A DirSyncEnabled jelölő beállítása|
-|Erőforrás|Partnerség beállítása|
-|Erőforrás|Véletlen törlés küszöbértékének beállítása|
-|Erőforrás|Vállalati adatok engedélyezett helyének beállítása|
-|Erőforrás|Vállalati nemzetközi szolgáltatás engedélyezésének beállítása|
-|Erőforrás|Címtárszolgáltatás beállítása a bérlőn|
-|Erőforrás|Tartomány hitelesítésének beállítása|
-|Erőforrás|Tartomány összevonási beállításainak beállítása|
-|Erőforrás|Jelszószabályzat beállítása|
-|Erőforrás|Rights Management tulajdonságainak beállítása|
-|Erőforrás|Vállalat frissítése|
-|Erőforrás|Vállalati beállítások frissítése|
-|Erőforrás|Frissítési tartomány|
-|Erőforrás|Tartomány ellenőrzése|
-|Erőforrás|E-mailek ellenőrzött tartományának ellenőrzése|
-|Erőforrás|Előkészítés|
-|Erőforrás|Riasztási beállítások frissítése|
-|Erőforrás|Heti összefoglaló beállításainak frissítése|
-|Erőforrás|Jelszóvisszaíró letiltása a címtárhoz|
-|Erőforrás|Jelszóvisszaíró engedélyezése a címtárhoz|
-|Erőforrás|Alkalmazásszerepkör-hozzárendelés hozzáadása csoporthoz|
-|Erőforrás|Csoport hozzáadása|
-|Erőforrás|Tag hozzáadása csoporthoz|
-|Erőforrás|Tulajdonos hozzáadása csoporthoz|
-|Erőforrás|Csoportbeállítások létrehozása|
-|Erőforrás|Csoport törlése|
-|Erőforrás|Csoportbeállítások törlése|
-|Erőforrás|Csoportalapú licenc felhasználókra való alkalmazásának befejezése|
-|Erőforrás|Csoport végleges törlése|
-|Erőforrás|Alkalmazás szerepkör-hozzárendelésének eltávolítása a csoportból|
-|Erőforrás|Tag eltávolítása a csoportból|
-|Erőforrás|Tulajdonos eltávolítása a csoportból|
-|Erőforrás|Csoport visszaállítása|
-|Erőforrás|Csoportlicenc beállítása|
-|Erőforrás|Csoport beállítása felhasználó által kezeltként|
-|Erőforrás|Csoportalapú licenc felhasználókra való alkalmazásának megkezdése|
-|Erőforrás|Csoportlicenc újraszámolásának aktiválása|
-|Erőforrás|Csoport frissítése|
-|Erőforrás|Csoportbeállítások frissítése|
-|Erőforrás|Tag hozzáadása|
-|Erőforrás|Csoport létrehozása|
-|Erőforrás|Csoport törlése|
-|Erőforrás|Tag eltávolítása|
-|Erőforrás|Csoport frissítése|
-|Erőforrás|Csoporthoz való csatlakoztatásra vonatkozó, függő kérelem jóváhagyása|
-|Erőforrás|Csoporthoz való csatlakoztatásra vonatkozó, függő kérelem visszavonása|
-|Erőforrás|Életciklus-kezelési szabályzat létrehozása|
-|Erőforrás|Csoporthoz való csatlakoztatásra vonatkozó, függő kérelem törlése|
-|Erőforrás|Csoporthoz való csatlakoztatásra vonatkozó, függő kérelem elutasítása|
-|Erőforrás|Csoport megújítása|
-|Erőforrás|Csoporttagság kérése|
-|Erőforrás|Dinamikus csoport tulajdonságainak beállítása|
-|Erőforrás|Életciklus-kezelési szabályzat frissítése|
-|Erőforrás|ASCII-titkosításon alapuló kulcs hozzáadása CPIM-kulcstárolóhoz|
-|Erőforrás|Kulcs hozzáadása CPIM-kulcstárolóhoz|
-|Erőforrás|CPIM-kulcstároló törlése|
-|Erőforrás|Kulcstároló törlése|
-|Erőforrás|Kulcstároló aktív kulcsaihoz tartozó metaadatok lekérése JWK-ban|
-|Erőforrás|Kulcstároló metaadatainak lekérése|
-|Erőforrás|Lekérdez egy CPIM-kulcstárolót jwk formátumban|
-|Erőforrás|Lekérdezi a bérlőben lévő kulcstárolók listáját|
-|Erőforrás|CPIM-kulcstároló biztonsági másolatának visszaállítása|
-|Erőforrás|Kulcstároló mentése|
-|Erőforrás|CPIM titkosított kulcs feltöltése|
-|Erőforrás|Hitelesítési kód kiadása az alkalmazásnak|
-|Erőforrás|id_token kiadása az alkalmazásnak|
+|Resource|Vállalat előléptetése partnerré|
+|Resource|Rights Management-tulajdonságok végleges törlése|
+|Resource|Partner eltávolítása a vállalatból|
+|Resource|Nem ellenőrzött tartomány eltávolítása|
+|Resource|Ellenőrzött tartomány eltávolítása|
+|Resource|Cégadatok beállítása|
+|Resource|A DirSync funkció beállítása|
+|Resource|A DirSyncEnabled jelölő beállítása|
+|Resource|Partnerség beállítása|
+|Resource|Véletlen törlés küszöbértékének beállítása|
+|Resource|Vállalati adatok engedélyezett helyének beállítása|
+|Resource|Vállalati nemzetközi szolgáltatás engedélyezésének beállítása|
+|Resource|Címtárszolgáltatás beállítása a bérlőn|
+|Resource|Tartomány hitelesítésének beállítása|
+|Resource|Tartomány összevonási beállításainak beállítása|
+|Resource|Jelszószabályzat beállítása|
+|Resource|Rights Management tulajdonságainak beállítása|
+|Resource|Vállalat frissítése|
+|Resource|Vállalati beállítások frissítése|
+|Resource|Frissítési tartomány|
+|Resource|Tartomány ellenőrzése|
+|Resource|E-mailek ellenőrzött tartományának ellenőrzése|
+|Resource|Előkészítés|
+|Resource|Riasztási beállítások frissítése|
+|Resource|Heti összefoglaló beállításainak frissítése|
+|Resource|Jelszóvisszaíró letiltása a címtárhoz|
+|Resource|Jelszóvisszaíró engedélyezése a címtárhoz|
+|Resource|Alkalmazásszerepkör-hozzárendelés hozzáadása csoporthoz|
+|Resource|Csoport hozzáadása|
+|Resource|Tag hozzáadása csoporthoz|
+|Resource|Tulajdonos hozzáadása csoporthoz|
+|Resource|Csoportbeállítások létrehozása|
+|Resource|Csoport törlése|
+|Resource|Csoportbeállítások törlése|
+|Resource|Csoportalapú licenc felhasználókra való alkalmazásának befejezése|
+|Resource|Csoport végleges törlése|
+|Resource|Alkalmazás szerepkör-hozzárendelésének eltávolítása a csoportból|
+|Resource|Tag eltávolítása a csoportból|
+|Resource|Tulajdonos eltávolítása a csoportból|
+|Resource|Csoport visszaállítása|
+|Resource|Csoportlicenc beállítása|
+|Resource|Csoport beállítása felhasználó által kezeltként|
+|Resource|Csoportalapú licenc felhasználókra való alkalmazásának megkezdése|
+|Resource|Csoportlicenc újraszámolásának aktiválása|
+|Resource|Csoport frissítése|
+|Resource|Csoportbeállítások frissítése|
+|Resource|Tag hozzáadása|
+|Resource|Csoport létrehozása|
+|Resource|Csoport törlése|
+|Resource|Tag eltávolítása|
+|Resource|Csoport frissítése|
+|Resource|Csoporthoz való csatlakoztatásra vonatkozó, függő kérelem jóváhagyása|
+|Resource|Csoporthoz való csatlakoztatásra vonatkozó, függő kérelem visszavonása|
+|Resource|Életciklus-kezelési szabályzat létrehozása|
+|Resource|Csoporthoz való csatlakoztatásra vonatkozó, függő kérelem törlése|
+|Resource|Csoporthoz való csatlakoztatásra vonatkozó, függő kérelem elutasítása|
+|Resource|Csoport megújítása|
+|Resource|Csoporttagság kérése|
+|Resource|Dinamikus csoport tulajdonságainak beállítása|
+|Resource|Életciklus-kezelési szabályzat frissítése|
+|Resource|ASCII-titkosításon alapuló kulcs hozzáadása CPIM-kulcstárolóhoz|
+|Resource|Kulcs hozzáadása CPIM-kulcstárolóhoz|
+|Resource|CPIM-kulcstároló törlése|
+|Resource|Kulcstároló törlése|
+|Resource|Kulcstároló aktív kulcsaihoz tartozó metaadatok lekérése JWK-ban|
+|Resource|Kulcstároló metaadatainak lekérése|
+|Resource|Lekérdez egy CPIM-kulcstárolót jwk formátumban|
+|Resource|Lekérdezi a bérlőben lévő kulcstárolók listáját|
+|Resource|CPIM-kulcstároló biztonsági másolatának visszaállítása|
+|Resource|Kulcstároló mentése|
+|Resource|CPIM titkosított kulcs feltöltése|
+|Resource|Hitelesítési kód kiadása az alkalmazásnak|
+|Resource|id_token kiadása az alkalmazásnak|
 
 
 ## <a name="core-directory"></a>Alapvető könyvtár
@@ -432,18 +432,18 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Szabályzatkezelés|GetIEFPolicies|
 |Szabályzatkezelés|GetIdentityProviders|
 |Szabályzatkezelés|GetTrustFrameworkPolicy|
-|Erőforrás|MigrateTenantMetadata|
-|Erőforrás|Erőforrások áthelyezése|
-|Erőforrás|IdentityProvider javítása|
-|Erőforrás|PutTrustFrameworkPolicy|
-|Erőforrás|PutTrustFrameworkpolicy|
-|Erőforrás|Felhasználói út eltávolítása|
-|Erőforrás|Egyéni identitásszolgáltató frissítése|
-|Erőforrás|Identitásszolgáltató frissítése|
-|Erőforrás|Helyi identitásszolgáltató frissítése|
-|Erőforrás|B2C címtárerőforrás frissítése|
-|Erőforrás|Szabályzat frissítése|
-|Erőforrás|Előfizetés állapotának frissítése|
+|Resource|MigrateTenantMetadata|
+|Resource|Erőforrások áthelyezése|
+|Resource|IdentityProvider javítása|
+|Resource|PutTrustFrameworkPolicy|
+|Resource|PutTrustFrameworkpolicy|
+|Resource|Felhasználói út eltávolítása|
+|Resource|Egyéni identitásszolgáltató frissítése|
+|Resource|Identitásszolgáltató frissítése|
+|Resource|Helyi identitásszolgáltató frissítése|
+|Resource|B2C címtárerőforrás frissítése|
+|Resource|Szabályzat frissítése|
+|Resource|Előfizetés állapotának frissítése|
 |Szerepkörkezelés|Felhasználói attribútum frissítése|
 |Szerepkörkezelés|Erőforrások áthelyezésének ellenőrzése|
 |Szerepkörkezelés|Eszköz hozzáadása|
@@ -518,10 +518,10 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Csoportkezelés|Kérelem-jóváhagyási kérelem felülvizsgálata|
 |Csoportkezelés|Hozzáférési felülvizsgálat frissítése|
 |Csoportkezelés|Hozzáférési felülvizsgálati e-mail-értesítési beállításainak frissítése|
-|Csoportkezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődésszám beállításának frissítése|
-|Csoportkezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődési időtartam (nap) beállításának frissítése|
-|Felhasználókezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődési befejezési típus beállításának frissítése|
-|Felhasználókezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődési típus beállításának frissítése|
+|Csoportkezelés|Frissítés hozzáférési felülvizsgálat ismétlődésszámot beállítása|
+|Csoportkezelés|Hozzáférési felülvizsgálat ismétlődési időtartama napokban frissítése|
+|Felhasználókezelés|Frissítés hozzáférési felülvizsgálati ismétlődés záró típusa beállítása|
+|Felhasználókezelés|Frissítés hozzáférési felülvizsgálat ismétlődés típusa beállítása|
 
 
 

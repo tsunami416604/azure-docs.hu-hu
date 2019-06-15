@@ -12,10 +12,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 77bc33747964a5f4ee1a67aba777dc3ed76b9a51
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073466"
 ---
 # <a name="accelerated-database-recovery"></a>Gyorsított adatbázis-helyreállítás
@@ -78,11 +78,11 @@ Az automatikus központi telepítési szabály helyreállítást ugyanazon mindh
 - **Mégis** fázis
 
   Hibás két fázisra (P)
-  - 1. fázis
+  - 1\. fázis
 
       Ismételje meg a sLog (legrégebbi nem véglegesített tranzakció utolsó ellenőrzési pont legfeljebb). Ismétlés egy gyors művelet, csak a sLog néhány rekordjainak feldolgozása igényeinek megfelelően.
       
-  - 2. fázis
+  - 2\. fázis
 
      Ismételje meg a tranzakciós napló kezdődik (helyett a legrégebbi nem véglegesített tranzakció) az utolsó ellenőrzőponttól
      

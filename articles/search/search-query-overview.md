@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
 ms.openlocfilehash: 95f5dde12ad9e34a0a04c988a816538ac30e01e6
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595977"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Hogyan lehet lekérdezést adhat az Azure Search szolgáltatásban
@@ -51,7 +51,7 @@ Példák lehetnek hasznosak új fogalmak ismertetése. Egy reprezentatív lekér
 
 + **`queryType`** az elemző, amely az Azure Search lehet beállítja a [alapértelmezett egyszerű lekérdezéselemzőt](search-query-simple-examples.md) (a teljes szöveges keresés optimális), vagy a [teljes Lucene lekérdezéselemző](search-query-lucene-examples.md) használt speciális lekérdezési szerkezeteket, például a reguláris kifejezések , közelségi keresésre, intelligens és helyettesítő karakteres keresés, hogy néhányat említsünk.
 
-+ **`search`** a match feltételeinek, általában szöveget, de gyakran kíséri meg a logikai operátorokkal biztosít. Egyetlen önálló kifejezések *kifejezés* lekérdezéseket. Ajánlat idézőjelek között több részből álló lekérdezések vannak *kulcskifejezések* lekérdezéseket. Lehet, hogy a keresés nem definiált, mint a **`search=*`**, de valószínűbb feltételek, kifejezések és hasonló mi jelenik meg a példa operátorok áll.
++ **`search`** a match feltételeinek, általában szöveget, de gyakran kíséri meg a logikai operátorokkal biztosít. Egyetlen önálló kifejezések *kifejezés* lekérdezéseket. Ajánlat idézőjelek között több részből álló lekérdezések vannak *kulcskifejezések* lekérdezéseket. Lehet, hogy a keresés nem definiált, mint a **`search=*`** , de valószínűbb feltételek, kifejezések és hasonló mi jelenik meg a példa operátorok áll.
 
 + **`searchFields`** nem kötelező, segítségével korlátozhatja az egyes mezők a lekérdezés végrehajtása.
 
@@ -86,8 +86,8 @@ A lekérdezési kérést a szükséges elemeket a következő összetevőket tar
 
 + Szolgáltatási végpont és az index dokumentumok gyűjtemény, rögzített és a felhasználó által definiált összetevőket tartalmazó URL-ként kifejezett: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
 + **`api-version`** (Csak REST) szükség, mert mindig az API-t egynél több verziója érhető el. 
-+ **`api-key`**, vagy egy lekérdezés, vagy a felügyeleti api-kulcsot, a kérést a szolgáltatás végzi a hitelesítést.
-+ **`queryType`**, egyszerű vagy teljes, amely kihagyható, ha a beépített, alapértelmezett egyszerű szintaxist használja.
++ **`api-key`** , vagy egy lekérdezés, vagy a felügyeleti api-kulcsot, a kérést a szolgáltatás végzi a hitelesítést.
++ **`queryType`** , egyszerű vagy teljes, amely kihagyható, ha a beépített, alapértelmezett egyszerű szintaxist használja.
 + **`search`** vagy **`filter`** biztosít az egyezés követelményeket, amelyeknek nincs megadva is lehet, ha egy üres keresés végrehajtására vonatkozó szándékát. Lekérdezés mindkétféle ismertetik az egyszerű elemző tekintetében, de még az összetett lekérdezéseket a keresési paraméter szükséges összetett lekérdezési kifejezések átadása.
 
 Minden más keresési paraméterek nem kötelezők. Attribútumok teljes listáját lásd: [Index létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). Közelebbről paraméterek használata feldolgozása közben, lásd: [teljes szöveges keresés működése az Azure Search](search-lucene-query-architecture.md).
@@ -160,7 +160,7 @@ Ha azt szeretné, hogy vissza a keresési pontszámtól eltérő érték szerint
 
 
 ### <a name="hit-highlighting"></a>Találatok kiemelése
-Az Azure Search a keresési lekérdezésnek megfelelő keresési eredmények pontos részének tárgyalta megkönnyíti a használatával a **`highlight`**, **`highlightPreTag`**, és **`highlightPostTag`** paramétereket. Megadhatja, hogy mely *searchable* (kereshető) mezők esetében kívánja bekapcsolni az egyező szöveg kiemelését, valamint az Azure által visszaadott egyező szöveg elejére és végére hozzáfűzni kívánt sztringcímkéket.
+Az Azure Search a keresési lekérdezésnek megfelelő keresési eredmények pontos részének tárgyalta megkönnyíti a használatával a **`highlight`** , **`highlightPreTag`** , és **`highlightPostTag`** paramétereket. Megadhatja, hogy mely *searchable* (kereshető) mezők esetében kívánja bekapcsolni az egyező szöveg kiemelését, valamint az Azure által visszaadott egyező szöveg elejére és végére hozzáfűzni kívánt sztringcímkéket.
 
 ## <a name="see-also"></a>Lásd még
 

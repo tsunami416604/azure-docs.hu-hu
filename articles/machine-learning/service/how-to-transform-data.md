@@ -13,10 +13,10 @@ ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
 ms.openlocfilehash: db23c8af7eaa4a86691ccb0bb831ce2cc28d635c
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65471835"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
@@ -198,11 +198,11 @@ builder.preview(skip=30, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/1/2015 22:54|2015. január 1-én ESTE 10 – 12 óra|
-|1|1/1/2015 23:54|2015. január 1-én ESTE 10 – 12 óra|
-|2|1/1/2015 23:59|2015. január 1-én ESTE 10 – 12 óra|
-|3|1/2/2015 0:54|2015. február 1-én 12 AM - 2 AM|
-|4|1/2/2015 1:00|2015. február 1-én 12 AM - 2 AM|
+|0|1/1/2015 22:54|2015\. január 1-én ESTE 10 – 12 óra|
+|1|1/1/2015 23:54|2015\. január 1-én ESTE 10 – 12 óra|
+|2|1/1/2015 23:59|2015\. január 1-én ESTE 10 – 12 óra|
+|3|1/2/2015 0:54|2015\. február 1-én 12 AM - 2 AM|
+|4|1/2/2015 1:00|2015\. február 1-én 12 AM - 2 AM|
 
 Itt láthatja a létrehozott program problémáját. A származtatása program elemezni a dátum szerint "Nap/hó/év", azaz nem választható ebben az esetben kizárólag a fent megadott egy példa alapján, választotta. A probléma megoldásához, egy adott rekord index célként, és adjon meg egy másik példa használatával a `add_example()` működnek a `builder` változó.
 
@@ -213,9 +213,9 @@ builder.preview(skip=30, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/1/2015 22:54|2015. január 1-én ESTE 10 – 12 óra|
-|1|1/1/2015 23:54|2015. január 1-én ESTE 10 – 12 óra|
-|2|1/1/2015 23:59|2015. január 1-én ESTE 10 – 12 óra|
+|0|1/1/2015 22:54|2015\. január 1-én ESTE 10 – 12 óra|
+|1|1/1/2015 23:54|2015\. január 1-én ESTE 10 – 12 óra|
+|2|1/1/2015 23:59|2015\. január 1-én ESTE 10 – 12 óra|
 |3|1/2/2015 0:54|Jan 2, 2015 12 AM - 2 AM|
 |4|1/2/2015 1:00|Jan 2, 2015 12 AM - 2 AM|
 
@@ -229,10 +229,10 @@ builder.preview(skip=75, count=5)
 ||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/3/2015 7:00|2015 január 3-6: 00 - 8 -kor|
-|1.|1/3/2015 7:54|2015 január 3-6: 00 - 8 -kor|
-|2|1/29/2015 6:54|Egyik sem|
-|3|1/29/2015 7:00|Egyik sem|
-|4|1/29/2015 7:54|Egyik sem|
+|1|1/3/2015 7:54|2015 január 3-6: 00 - 8 -kor|
+|2|1/29/2015 6:54|None|
+|3|1/29/2015 7:00|None|
+|4|1/29/2015 7:54|None|
 
 ```python
 builder.add_example(source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
@@ -242,10 +242,10 @@ builder.preview(skip=75, count=5)
 ||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/3/2015 7:00|2015 január 3-6: 00 - 8 -kor|
-|1.|1/3/2015 7:54|2015 január 3-6: 00 - 8 -kor|
-|2|1/29/2015 6:54|2015. január 29-én 6: 00 - 8 -kor|
-|3|1/29/2015 7:00|2015. január 29-én 6: 00 - 8 -kor|
-|4|1/29/2015 7:54|2015. január 29-én 6: 00 - 8 -kor|
+|1|1/3/2015 7:54|2015 január 3-6: 00 - 8 -kor|
+|2|1/29/2015 6:54|2015\. január 29-én 6: 00 - 8 -kor|
+|3|1/29/2015 7:00|2015\. január 29-én 6: 00 - 8 -kor|
+|4|1/29/2015 7:54|2015\. január 29-én 6: 00 - 8 -kor|
 
  A hívás aktuális példa származtatási listájának megtekintéséhez `list_examples()` builder objektumon.
 
@@ -257,7 +257,7 @@ examples = builder.list_examples()
 | -------- | -------- | -------- | -------- |
 |0|1/1/2015 1:00|2015 január 1-12 AM - 2 AM|-1|
 |1|1/2/2015 0:54|Jan 2, 2015 12 AM - 2 AM|-2|
-|2|1/29/2015 20:54|2015. január 29-én du. 8 – 22: 00|-3|
+|2|1/29/2015 20:54|2015\. január 29-én du. 8 – 22: 00|-3|
 
 
 Bizonyos esetekben ha törli a hibás, példák formájában adható át vagy `example_row` származó a pandas DataFrame, vagy `example_id` értéket. Például, ha futtatja `builder.delete_example(example_id=-1)`, az első átalakítási példa törli.

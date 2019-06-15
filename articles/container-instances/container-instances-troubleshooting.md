@@ -10,10 +10,10 @@ ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 9dc3e19f9429a6055a799f3f013c732538fa370d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65070853"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban gyakori problémáinak elhárítása
@@ -29,8 +29,8 @@ A tároló specifikáció meghatározásakor bizonyos paraméterek betartásána
 | Tároló csoport neve | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Tárolónév | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Tárolóportok | 1 és 65535 közötti |Egész szám |1 és 65535 közötti egész szám |`<port-number>` |`443` |
-| DNS-névcímke | 5-63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>` |`frontend-site1` |
-| Környezeti változó | 1–63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és aláhúzásjelet (_) bárhol, kivéve az első vagy utolsó karakter |`<name>` |`MY_VARIABLE` |
+| DNS name label | 5-63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>` |`frontend-site1` |
+| Környezeti változó | 1-63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és aláhúzásjelet (_) bárhol, kivéve az első vagy utolsó karakter |`<name>` |`MY_VARIABLE` |
 | Kötet neve | 5-63 |Kis- és nagybetűk megkülönböztetése nélkül |Kisbetűket és számokat és kötőjeleket tartalmazhat, bárhol, kivéve az első vagy utolsó karakter. Nem tartalmazhat két egymást követő kötőjelet. |`<name>` |`batch-output-volume` |
 
 ## <a name="os-version-of-image-not-supported"></a>A kép nem támogatott operációsrendszer-verzió

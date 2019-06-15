@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
 ms.openlocfilehash: dffeb81ae1eb244c38639a1241c0581e6fcdf94a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027960"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Az Azure Blockchain-szolgáltatás tranzakció csomópontok konfigurálása
@@ -84,7 +84,7 @@ Biztosítania az Azure AD-hozzáférés-vezérlés a végpontra:
     | Beállítás | Műveletek |
     |---------|-------------|
     | Szerepkör | Válassza ki **tulajdonosa**, **közreműködői**, vagy **olvasó**.
-    | Hozzáférés hozzárendelése a következőhöz: | Válassza ki **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
+    | Hozzáférés hozzárendelése | Válassza ki **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
     | Válassza ezt: | Keresse meg a felhasználó, csoport vagy egyszerű szolgáltatást szeretne hozzáadni.
 
 1. Válassza ki **mentése** a szerepkör-hozzárendelés hozzáadása.

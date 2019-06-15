@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
 ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60373692"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés az Application Insights
@@ -77,7 +77,7 @@ Az összes Azure szerepköralapú hozzáférés-vezérlés beépített szerepkö
 
 ![Képernyőfelvétel: a hozzáférés-vezérlési felhasználói szerepkör lista](./media/resources-roles-access-control/0003-user-roles.png)
 
-#### <a name="select-a-role"></a>Szerepkörválasztás
+#### <a name="select-a-role"></a>Szerepkör kiválasztása
 
 Adott esetben arra mutató hivatkozás a társított hivatalos dokumentációjában.
 
@@ -88,23 +88,23 @@ Adott esetben arra mutató hivatkozás a társított hivatalos dokumentációjá
 | [Application Insights-összetevő közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Szerkesztheti az Application Insights-erőforrások, webes teszteket és riasztások. |
 | [Olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Megtekintheti, de nem bármin változtatni. |
 | [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Application Insights Snapshot Debugger szolgáltatásainak használatához a felhasználónak engedélyt ad. Vegye figyelembe, hogy ezt a szerepkört sem a tulajdonosa, sem a közreműködői szerepkör tartalmazza. |
-| Azure-beli szolgáltatástelepítés kiadáskezelési közreműködője | Közreműködői szerepkör-szolgáltatásokhoz az Azure szolgáltatás üzembe helyezése az üzembe helyezést. |
+| Az Azure szolgáltatás üzembe helyezése a Kiadáskezelési Közreműködője | Közreműködői szerepkör-szolgáltatásokhoz az Azure szolgáltatás üzembe helyezése az üzembe helyezést. |
 | [Adatok Purger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Személyes adatok végleges törlése a különleges szerepkörrel. Tekintse meg a [személyes adatokra vonatkozó útmutatás](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) további információt.   |
 | Az ExpressRoute-rendszergazda | Létrehozhat a delete és express-útvonalak kezelése.|
 | [Log Analytics-közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics-közreműködő az összes monitorozási adat olvashatja és szerkesztheti a figyelési beállításokat. Figyelési beállítások szerkesztése magában foglalja a virtuális gépek; a Virtuálisgép-bővítmény hozzáadása tudni naplógyűjtemény konfigurálása céljából az Azure Storage; tárfiók kulcsainak beolvasását létrehozásáról és konfigurálásáról az Automation-fiókok; megoldások hozzáadását; és az Azure diagnostics konfigurálása az összes Azure-erőforrást.  |
-| [Log Analytics olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | A Log Analytics-olvasó megtekintheti az összes figyelési adatot, és kereshet azokban, valamint megtekintheti a figyelési beállításokat, beleértve az összes Azure-erőforrás Azure-beli diagnosztikájának konfigurációját is. |
+| [Log Analytics olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics olvasó megtekintheti és keresheti az összes figyelési adatot, valamint megtekintheti a figyelési beállításokat, beleértve az Azure diagnostics konfigurációjának megtekintését az összes Azure-erőforrások. |
 | masterreader | Lehetővé teszi, hogy a felhasználót, hogy mindent megtekinthessen, de nem végezhet módosításokat. |
-| [Közreműködő figyelése](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Olvashatja az összes figyelési adatot, és frissítheti a figyelési beállításokat. |
+| [Közreműködő figyelése](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Megtekintheti az összes monitorozási adat és frissítheti a figyelési beállításokat. |
 | [Figyelési metrikák közzétevő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Lehetővé teszi a metrikákat az Azure-erőforrások közzétételét. |
 | [Olvasó figyelése](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Olvashatja az összes figyelési adatot. |
-| Erőforrás-szabályzati közreműködő (előnézet) | Erőforrás-szabályzat létrehozására/módosítására jogosultságokkal EA-beli visszatöltött felhasználók hozzon létre támogatási jegyet, és olvassa el az erőforrások/hierarchia.  |
+| Erőforrás-szabályzati közreműködő (előzetes verzió) | Erőforrás-szabályzat létrehozására/módosítására jogosultságokkal EA-beli visszatöltött felhasználók hozzon létre támogatási jegyet, és olvassa el az erőforrások/hierarchia.  |
 | [Felhasználói hozzáférés rendszergazdája](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Lehetővé teszi a felhasználóknak más felhasználók Azure-erőforrásokhoz való hozzáférés kezelésére.|
 | [Webhelyek Közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Lehetővé teszi websites (a webes tarifacsomagokét), de az azokhoz való hozzáférés kezelése...|
 
 "Szerkesztés" tartalmazza, létrehozása, törlése és frissítése:
 
 * További források
-* Webtesztek
+* Webes tesztek
 * Riasztások
 * Folyamatos exportálás
 

@@ -76,7 +76,7 @@ sections:
           - html: '(Előzetes verzió) Új SQL Server 2019 Online <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">összeállítása</a> , és építse újra a fürtözött oszlopcentrikus index műveleteket.'
           - html: '(Előzetes verzió) Új <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">az Azure SQL Database Machine Learning-szolgáltatások (az r nyelv)</a>.'
           - html: '(Előzetes verzió) Új <a href="https://docs.microsoft.com/azure/sql-database/sql-database-serverless">kiszolgáló nélküli számítási kapacitás</a> számítási automatikus méretezést és a másodpercenként felhasznált számítási erőforrások számlák biztosít.'
-  - title: Öt perces gyors útmutatók
+  - title: Öt perces gyorsútmutatók
     items:
       - type: paragraph
         text: 'Az Azure SQL Database lehetővé teszi alapszintű felügyeleti feladatokat végezhet az Azure Portalon, az Azure CLI-vel és az Azure PowerShell használatával. Ismerje meg, hogyan hajthat végre alapszintű felügyeleti feladatokat a következő rövid minták használatával:'
@@ -131,7 +131,7 @@ sections:
           - html: <a href="/azure/sql-database/sql-database-security-tutorial">Az SQL-adatbázis védelme</a>.
           - html: Terjesztheti az adatait globálisan használatával egy <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">földrajzilag elosztott adatbázis</a>.
           - html: 'További információ <a href="sql-database-howto-single-database.md">útmutatók</a> , amelyek alapján beállíthatja az adatbázis.'
-  - title: Példák
+  - title: Minták
     items:
       - type: paragraph
         text: Szkriptek keresése a gyakori feladatok kezeléséhez.

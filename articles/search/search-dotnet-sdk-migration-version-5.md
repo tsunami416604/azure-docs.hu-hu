@@ -11,10 +11,10 @@ ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
 ms.openlocfilehash: 8382884b4ce2965dee4acf191f82eb012b670713
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65147477"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Az Azure Search .NET SDK 5-ös verzió frissítése
@@ -26,7 +26,7 @@ Az SDK-t, beleértve a példákat általános bemutatóért lásd: [használata 
 5-ös verzióját az Azure Search .NET SDK tartalmaz néhány módosítást korábbi verzióit. Ezek a leginkább kis, így a kód módosítása csak minimális erőfeszítéssel elvégzéséhez szükséges. Lásd: [frissítésére lépéseket](#UpgradeSteps) útmutatást a kód módosítása az új SDK-verzió használatához.
 
 > [!NOTE]
-> 2.0 – előzetes verzió vagy annál régebbi verzióját használja, ha meg kell először frissítse a 3-as verziójú, majd utána frissítse a 5-ös verzió. Lásd: [az Azure Search .NET SDK 3-as verziójú frissítését](search-dotnet-sdk-migration.md) útmutatást.
+> 2\.0 – előzetes verzió vagy annál régebbi verzióját használja, ha meg kell először frissítse a 3-as verziójú, majd utána frissítse a 5-ös verzió. Lásd: [az Azure Search .NET SDK 3-as verziójú frissítését](search-dotnet-sdk-migration.md) útmutatást.
 >
 > Az Azure Search-szolgáltatáspéldányhoz több REST API-verziók, többek között a legújabb buildszám támogatja. Továbbra is verzióját használja, amikor már nem a legújabb buildszám, de azt javasoljuk, hogy a legújabb verzió használatához kódok migrálása. A REST API használata esetén az api-version paraméter használatával minden kérésben meg kell adnia az API-verziót. A .NET SDK használatával, az SDK-t használ a verzióját határozza meg a megfelelő REST API-verzió. Ha egy régebbi SDK-t használja, továbbra is futtassa, hogy a kód módosítása nélkül, akkor is, ha a szolgáltatás frissítése egy újabb API-verzió támogatja.
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
 ms.openlocfilehash: 8df587db7655e2aafd876d80581f3296c8c99fbf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60201561"
 ---
 # <a name="dependency-visualization"></a>Függőségek vizualizációja
@@ -65,7 +65,7 @@ Ha regisztrálja az ügynököket a munkaterülethez, használja az Azonosítót
 Az Azure Migrate-projekt törlése esetén a munkaterület nem törlődik, együtt. Közzététel a projekt törlése, a Service Map használata nem ingyenes lesz, és minden egyes csomópont díját a fizetős szint a Log Analytics-munkaterület.
 
 > [!NOTE]
-> A függőségmegjelenítési funkciót használja a Service Map Log Analytics-munkaterület-n keresztül. 2018. február 28 óta az Azure Migrate általános rendelkezésre állást, a közlemény a funkció már elérhető külön díjfizetés nélkül. Hozzon létre egy új projektet, győződjön meg arról, hogy kell használni az ingyenes használat munkaterület. Általános rendelkezésre állás előtti meglévő munkaterületek felszámítható továbbra is, ezért azt javasoljuk, hogy helyezze át egy új projektet.
+> A függőségmegjelenítési funkciót használja a Service Map Log Analytics-munkaterület-n keresztül. 2018\. február 28 óta az Azure Migrate általános rendelkezésre állást, a közlemény a funkció már elérhető külön díjfizetés nélkül. Hozzon létre egy új projektet, győződjön meg arról, hogy kell használni az ingyenes használat munkaterület. Általános rendelkezésre állás előtti meglévő munkaterületek felszámítható továbbra is, ezért azt javasoljuk, hogy helyezze át egy új projektet.
 
 További tudnivalókat az Azure Migrate díjszabásáról [itt](https://azure.microsoft.com/pricing/details/azure-migrate/) talál.
 

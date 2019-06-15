@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: blobs
 ms.openlocfilehash: 4f6776a5f15cf391f3a65aceb6e9e783d87a2078
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148933"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Az Azure storage-fiók egy egyéni tartománynév konfigurálása
@@ -32,12 +32,12 @@ Konfigurálhat egy egyéni tartományt az Azure-tárfiókjában lévő Blobadato
 
 Az alábbi táblázatban láthatók a nevű storage-fiókban található blob adatok néhány minta URL-címek *mystorageaccount*. Az egyéni altartomány, amely regisztrálva van a tárfiók *www\.contoso.com*:
 
-| Erőforrás típusa | Alapértelmezett URL-cím | Egyéni tartomány URL-címe |
+| Erőforrás típusa | Alapértelmezett URL-címe | Egyéni tartomány URL-címe |
 | --- | --- | --- |
 | Tárfiók | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
 | Blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
-| Legfelső szintű tároló | http://mystorageaccount.blob.core.windows.net/myblob vagy http://mystorageaccount.blob.core.windows.net/$root/myblob| http://www.contoso.com/myblob vagy http://www.contoso.com/$root/myblob |
-| Web |  http://mystorageaccount. [zone].web.core.windows.net/$web/[indexdoc] vagy http://mystorageaccount. [ Zone].Web.Core.Windows.NET/[indexdoc] vagy http://mystorageaccount. [ Zone].Web.Core.Windows.NET/$Web vagy http://mystorageaccount. [ Zone].Web.Core.Windows.NET/ | http://www.contoso.com/$web vagy http://www.contoso.com/ vagy http://www.contoso.com/$web / [indexdoc] vagy http://www.contoso.com/[indexdoc] |
+| Legfelső szintű tároló | http://mystorageaccount.blob.core.windows.net/myblob vagy http://mystorageaccount.blob.core.windows.net/ $root/myblob| http://www.contoso.com/myblob vagy http://www.contoso.com/ $root/myblob |
+| Web |  http://mystorageaccount. [zone].web.core.windows.net/$web/[indexdoc] vagy http://mystorageaccount. [ Zone].Web.Core.Windows.NET/[indexdoc] vagy http://mystorageaccount. [ Zone].Web.Core.Windows.NET/$Web vagy http://mystorageaccount. [ Zone].Web.Core.Windows.NET/ | http://www.contoso.com/ $web vagy http://www.contoso.com/ vagy http://www.contoso.com/ $web / [indexdoc] vagy http://www.contoso.com/ [indexdoc] |
 
 > [!NOTE]  
 > Ahogyan az alábbi szakaszokban található, minden példák a blob-szolgáltatásvégpont is alkalmazható a webszolgáltatási végpontot.

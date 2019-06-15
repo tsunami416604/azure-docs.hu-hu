@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 6c22680102c57fdfc3d25beb19e5bc9847995b28
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65152732"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Telepítse az Azure IoT Edge-futtatókörnyezet (ARM32v7/armhf) Linux rendszeren
@@ -25,7 +25,7 @@ Az IoT Edge-futtatókörnyezet működését, és milyen összetevők járnak ka
 Ez a cikk a Linux ARM32v7/armhf IoT Edge-eszközön az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel. Például ezeket a lépéseket a Raspberry Pi-eszközök esetében akkor működik. ARM32 támogatott operációs rendszerek listáját lásd: [Azure IoT Edge által támogatott rendszerek](support.md#operating-systems). 
 
 >[!NOTE]
->A Linux-szoftver tárházakban csomagok feltételei vonatkoznak rá a licenc minden csomagban található (/ usr/megosztása/docs/*csomagnév –*). Olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.
+>A Linux-szoftver tárházakban csomagok feltételei vonatkoznak rá a licenc minden csomagban található (/ usr/megosztása/docs/*csomagnév –* ). Olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.
 
 ## <a name="install-the-container-runtime"></a>A tároló-modul telepítése
 
@@ -108,7 +108,7 @@ Miután megadta a kiépítési adatokat a konfigurációs fájlban, a démon új
 sudo systemctl restart iotedge
 ```
 
-### <a name="option-2-automatic-provisioning"></a>Option 2: Automatikus felhasználóátadás
+### <a name="option-2-automatic-provisioning"></a>Option 2: Az Automatikus kiépítés
 
 Automatikus kiépítésére egy eszközt, [Device Provisioning Service beállítása és lekérése a regisztrációs Eszközazonosító](how-to-auto-provision-simulated-device-linux.md). Csak olyan eszközökre, amelyeken egy platformmegbízhatósági modul (TPM) lapka automatikus üzembe helyezés működik. Például Raspberry Pi-eszközök nem biztosítja a TPM-hez alapértelmezés szerint. 
 

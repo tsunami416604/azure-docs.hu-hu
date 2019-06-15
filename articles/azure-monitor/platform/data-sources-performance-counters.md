@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
 ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205757"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Az Azure monitorban Windows és Linux rendszerű teljesítmény adatforrások
@@ -90,7 +90,7 @@ Ez az elem a paramétereket az alábbi táblázatban ismertetett.
 
 A következő táblázat felsorolja azokat az objektumokat és a számlálókat is megadhat a konfigurációs fájlban.  Érhetők el további számlálók bizonyos alkalmazások leírtak szerint [Linux-alkalmazások az Azure Monitor teljesítményszámlálók gyűjtése](data-sources-linux-applications.md).
 
-| Objektumnév | Számláló neve |
+| Objektum neve | Számláló neve |
 |:--|:--|
 | Logikai lemez | Szabad Inode-OK |
 | Logikai lemez | % Szabad terület |
@@ -126,10 +126,10 @@ A következő táblázat felsorolja azokat az objektumokat és a számlálókat 
 | Fizikai lemez | Átl. Lemez mp/átvitel |
 | Fizikai lemez | Átl. Lemez mp/írás |
 | Fizikai lemez | Fizikai lemez bájt/mp |
-| Feldolgozás | A PCT kiemelt idő |
-| Feldolgozás | A PCT felhasználói idő |
-| Feldolgozás | Használt memória mérete kilobájtban |
-| Feldolgozás | A megosztott virtuális memória |
+| Process | A PCT kiemelt idő |
+| Process | A PCT felhasználói idő |
+| Process | Használt memória mérete kilobájtban |
+| Process | A megosztott virtuális memória |
 | Processzor | DPC idő % |
 | Processzor | Inaktivitási idő % |
 | Processzor | Megszakítási idő % |
@@ -214,7 +214,7 @@ Az alábbi táblázat példákat különböző teljesítményrekordot lekérő l
 | Teljesítményoptimalizált &#124; ahol ObjectName == "Processzor" és a CounterName == "%-ban a processzoron" és a példánynév == "_Total" &#124; AVGCPU összefoglalója = avg(CounterValue) számítógépenként |Átlagos processzorhasználat az összes számítógép |
 | Teljesítményoptimalizált &#124; ahol CounterName == "%-ban a processzoron" &#124; summarize AggregatedValue = max(CounterValue) számítógépenként |Maximális processzorhasználat az összes számítógép |
 | Teljesítményoptimalizált &#124; ahol ObjectName == "Logikai lemez" és a CounterName == "Lemezvárólista jelenlegi hossza" és a számítógép == "MyComputerName" &#124; summarize AggregatedValue = avg(CounterValue) InstanceName szerint |Aktuální délka Fronty lemez átlagos egy adott számítógép összes példányra vetítve |
-| Teljesítményoptimalizált &#124; ahol CounterName == "Átvitel/mp" &#124; summarize AggregatedValue = PERCENTILIS (Avg, 95) számítógép szerint |95. percentilis az átvitel/mp minden számítógépnél |
+| Teljesítményoptimalizált &#124; ahol CounterName == "Átvitel/mp" &#124; summarize AggregatedValue = PERCENTILIS (Avg, 95) számítógép szerint |95\. percentilis az átvitel/mp minden számítógépnél |
 | Teljesítményoptimalizált &#124; ahol CounterName == "%-ban a processzoron" és a InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) bin (TimeGenerated, 1 óra), a számítógép által |CPU-használat minden óránkénti átlag |
 | Teljesítményoptimalizált &#124; ahol számítógép == "Sajátgép" és a CounterName startswith_cs "%" és a példánynév == "_Total" &#124; summarize AggregatedValue = (Avg, 70) PERCENTILIS szerint bin (TimeGenerated, 1 óra), CounterName | Egy adott számítógép minden % százalékos számláló óránkénti 70 PERCENTILIS |
 | Teljesítményoptimalizált &#124; ahol CounterName == "%-ban a processzoron" és a példánynév == "_Total" és a számítógép == "Sajátgép" &#124; összefoglalója ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] PERCENTILIS (Avg, 75) = ["max(CounterValue)"] = max(CounterValue) bin (TimeGenerated, 1 óra), a számítógép szerint |Óránkénti átlagos, minimális, maximális és 75 – PERCENTILIS CPU-használat egy adott számítógép |

@@ -9,10 +9,10 @@ ms.date: 04/30/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: e0f93b0a95a228b26fae266129aea4b595b05e0f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148357"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Tárolók és blobok névtelen olvasási hozzáférésének kezelése
@@ -143,7 +143,7 @@ Az alábbi táblázatban látható, hogy mely műveletek eltérő elnevezése le
 | A Blob lekérése | Névtelen kérések engedélyezett | Névtelen kérések engedélyezett |
 | A Blob tulajdonságainak lekérése | Névtelen kérések engedélyezett | Névtelen kérések engedélyezett |
 | A Blob tulajdonságainak megadása | Csak a hitelesített kérelmek | Csak a hitelesített kérelmek |
-| Blob metaadatainak beolvasása | Névtelen kérések engedélyezett | Névtelen kérések engedélyezett |
+| A Blob metaadatainak beolvasása | Névtelen kérések engedélyezett | Névtelen kérések engedélyezett |
 | Állítsa be a Blob metaadatai | Csak a hitelesített kérelmek | Csak a hitelesített kérelmek |
 | PUT letiltása | Csak a hitelesített kérelmek | Csak a hitelesített kérelmek |
 | (Csak a véglegesített blokkolja) blokk-lista lekérése | Névtelen kérések engedélyezett | Névtelen kérések engedélyezett |
@@ -155,7 +155,7 @@ Az alábbi táblázatban látható, hogy mely műveletek eltérő elnevezése le
 | Címbérleti Blobhoz | Csak a hitelesített kérelmek | Csak a hitelesített kérelmek |
 | PUT lap | Csak a hitelesített kérelmek | Csak a hitelesített kérelmek |
 | Laptartomány-beolvasási | Névtelen kérések engedélyezett | Névtelen kérések engedélyezett |
-| Blob hozzáfűzése | Csak a hitelesített kérelmek | Csak a hitelesített kérelmek |
+| Hozzáfűző Blob | Csak a hitelesített kérelmek | Csak a hitelesített kérelmek |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 09a2b616e2bba93be86241c64d37daec7d6dea3b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65029760"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Kivételek és Algoritmusokra és modulokra vonatkozó referenciák hibakód alapján
@@ -701,7 +701,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
 |Kivétel üzenetek|  
 |------------------------|  
-|Sikertelen volt a művelet.|  
+|Nem sikerült.|  
 |Hiba történt a művelet befejezése: {0}.|  
   
 
@@ -1192,7 +1192,7 @@ A Hive-lekérdezések machine Learning a Súgó a következő cikkekben talál:
   
  Ha a modul kivétel által jelentett létrehozott SQL üzenetet, alapján műveleteket a jelzett hibát. A hibaüzenetek néha például a nagy valószínűséggel hiba útmutatást:
 + *Nincs ilyen oszlop vagy hiányzó adatbázis*, jelezve, hogy előfordulhat, hogy írt be helytelen az oszlop nevét. Ha biztos abban, hogy az oszlop neve helyesen, próbálkozzon zárójelben vagy idézőjelek adni az oszlop azonosítóját.
-+ *SQL logikai hiba közelében \<SQL kulcsszó\>*, amely azt jelzi, hogy lehetséges, hogy a megadott kulcsszóval előtt szintaktikai hiba
++ *SQL logikai hiba közelében \<SQL kulcsszó\>* , amely azt jelzi, hogy lehetséges, hogy a megadott kulcsszóval előtt szintaktikai hiba
 
   
 |Kivétel üzenetek|  
@@ -2191,4 +2191,4 @@ További segítséget szeretne kérni, azt javasoljuk, hogy a hiba az Azure Mach
 |------------------------|  
 |Erőforrástár-kivétel.|  
 |Erőforrástár-kivétel: {0}|  
-|{0} erőforrástár-kivétel: {1}|  
+|{0} Erőforrástár-kivétel: {1}|  

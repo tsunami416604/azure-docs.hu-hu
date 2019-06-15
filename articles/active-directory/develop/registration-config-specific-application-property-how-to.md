@@ -16,10 +16,10 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8b93f26080229e980b680c157f59db4edf33e7a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545485"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Hogyan kell kitölteni egy egyénileg fejlesztett alkalmazásba az adott mezők
@@ -44,7 +44,7 @@ Ez a cikk röviden a az alkalmazás regisztrációs űrlapot az összes elérhet
 | Name (Név)             | Az alkalmazás neve. Ennek tartalmaznia kell legalább 4 karakterből kell állnia.                |
 | Alkalmazás típusa | **Webalkalmazást vagy webes API**: Egy webalkalmazás, webes API vagy mindkettő minősülő alkalmazás 
 | |**Natív**: Olyan alkalmazás, amely a felhasználó eszközére vagy számítógépére telepíthető           |
-| Bejelentkezési URL      | Az URL-címet, ahol felhasználók bejelentkezhetnek az alkalmazás használata                                  |
+| Bejelentkezési URL-cím      | Az URL-címet, ahol felhasználók bejelentkezhetnek az alkalmazás használata                                  |
 
 Miután megadta a fenti mezőket, az alkalmazás regisztrálva van az Azure Portalon, és a rendszer átirányítja az alkalmazás lapot. A **beállítások** gombra az alkalmazás panelen megnyílik a beállítások lapot, amely rendelkezik, további testre szabhatja az alkalmazást. Az alábbi táblázat ismerteti a beállítások lapon az összes mezőt. Vegye figyelembe, hogy csak itt jelennének meg ezeket a mezőket, attól függően, hogy létrehozott egy webalkalmazást vagy natív alkalmazások egy része.
 
@@ -57,7 +57,7 @@ Miután megadta a fenti mezőket, az alkalmazás regisztrálva van az Azure Port
 | Kijelentkezési URL      | Ez az egyszeri kijelentkezési kijelentkezési URL-címet. Az Azure AD kijelentkezési kérelmet küld az URL-címet a felhasználónak törölnie a munkamenetet az Azure ad-vel bármely más regisztrált alkalmazás használatával.                                                                                                                                       |
 | Több-bérlős  | Ez a kapcsoló megadja, hogy használható-e az alkalmazás több bérlő. Általában ez azt jelenti, hogy külső szervezetek számára az alkalmazás használatának annak regisztrálásával a bérlőben, és a céges adatokhoz való hozzáférést.                                                                   |
 | Válasz URL-címek      | A válasz URL-címek olyan a végpontok, ahol az Azure AD visszaadja az alkalmazás által kért jogkivonatokat.                                                                                                                                                                                                          |
-| Átirányítási URI azonosítók   | Natív alkalmazások esetén ez a Ha a felhasználó a sikeres hitelesítést követően érkezik. Az Azure AD, ellenőrizze, hogy az OAuth 2.0 kérelemben megadja az átirányítási URI-t az alkalmazás megfelel a portálon a regisztrált értékeket.                                                            |
+| Redirect URIs   | Natív alkalmazások esetén ez a Ha a felhasználó a sikeres hitelesítést követően érkezik. Az Azure AD, ellenőrizze, hogy az OAuth 2.0 kérelemben megadja az átirányítási URI-t az alkalmazás megfelel a portálon a regisztrált értékeket.                                                            |
 | Kulcsok            | Programozott hozzáférés webes API-k, felhasználói beavatkozás nélkül az Azure AD által védett kulcsokat is létrehozhat. Az a \* \*kulcsok\* \* lapon adja meg a kulcs leírása és a lejárati dátumot, és mentse a kulcs létrehozásához. Ellenőrizze, hogy helyre mentse, biztonságos, akkor később elérheti azt.             |
 
 ## <a name="next-steps"></a>További lépések

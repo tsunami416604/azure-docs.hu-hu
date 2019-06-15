@@ -9,10 +9,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
 ms.openlocfilehash: 611439802c200b30586b73b82d0a4bbbc857e114
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606715"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Azure Data Lake Tools for Visual Studio használatával – Adateltérés problémák megoldásához
@@ -28,7 +28,7 @@ Ebben az esetben az adatok egyenetlenül oszlanak el között minden adózási e
 
 Az Azure Data Lake Tools for Visual Studio segítségével, hogy a feladat rendelkezik-e Adateltérés probléma észlelése. Ha a probléma fennáll, feloldhatja úgy, ebben a szakaszban a megoldások.
 
-## <a name="solution-1-improve-table-partitioning"></a>1. megoldás: Tábla particionálásával javítása
+## <a name="solution-1-improve-table-partitioning"></a>1\. megoldás: Tábla particionálásával javítása
 
 ### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>Option 1: Előre szűrni az egyenetlen kulcs értéke
 
@@ -38,15 +38,15 @@ Nincs hatással az üzleti logikát, ha előre szűrheti a nagyobb gyakoriságot
 
 Az előző példában ha csak a adó-naplózási munkaterhelés feldolgozza az országban vagy régióban, ellenőrizze növelheti az adatok terjesztési a kulcsként a azonosítószámát kiválasztásával. Egy másik partíció vagy terjesztési kulcs kiadási is egyes esetekben az adatokat egyenletesebben osszák, de győződjön meg arról, hogy ez a választás nem érinti az üzleti logikát kell. Például az adó összege az egyes állapotokhoz kiszámításához, érdemes kijelölni _állapot_ partíciókulcsként. Ha a probléma továbbra is, próbálja meg a beállítást 3.
 
-### <a name="option-3-add-more-partition-or-distribution-keys"></a>3. lehetőség: Több partíció vagy terjesztési kulcsok hozzáadása
+### <a name="option-3-add-more-partition-or-distribution-keys"></a>3\. lehetőség: Több partíció vagy terjesztési kulcsok hozzáadása
 
 Csak helyett _állapot_ partíciókulcsként, particionálási egynél több kulcs is használja. Például érdemes lehet hozzáadni _irányítószám_ , egy további partíciókulcsot az adatok partícióméretei csökkentéséhez, és az adatokat egyenletesebben osszák.
 
-### <a name="option-4-use-round-robin-distribution"></a>4. lehetőség: Ciklikus multiplexelés használata
+### <a name="option-4-use-round-robin-distribution"></a>4\. lehetőség: Ciklikus multiplexelés használata
 
 Ha nem találja a megfelelő kulcs partíciót és-terjesztési, megpróbálhatja ciklikus multiplexelés használja. Ciklikus multiplexelés egyaránt kezeli az összes sort, és véletlenszerűen visszaállítja azokat megfelelő gyűjtőkbe. Az adatok egyenletesen lekérdezi, de helye információ egy hátránya, hogy bizonyos műveletek teljesítményének feladat is csökkentheti az elveszíti. Emellett ha mégis végez összesítést az egyenetlen kulcs, a Adateltérés probléma addig megmarad. Ciklikus multiplexelés kapcsolatos további információkért lásd: a U-SQL-tábla Disztribúciók szakaszában [CREATE TABLE (U-SQL): Tábla létrehozása sémával](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch).
 
-## <a name="solution-2-improve-the-query-plan"></a>2. megoldás: A lekérdezésterv javítása
+## <a name="solution-2-improve-the-query-plan"></a>2\. megoldás: A lekérdezésterv javítása
 
 ### <a name="option-1-use-the-create-statistics-statement"></a>Option 1: A CREATE STATISTICS utasítás
 
@@ -97,7 +97,7 @@ Példa:
                 ON @Sessions.Query == @Campaigns.Query
         ;   
 
-### <a name="option-3-use-rowcount"></a>3. lehetőség: Használja a sorok száma  
+### <a name="option-3-use-rowcount"></a>3\. lehetőség: Használja a sorok száma  
 Mellett SKEWFACTOR olyan esetekben, adott torzítja kulcs való csatlakozás, ha tudja, hogy a többi csatlakoztatott sor rendkívül kicsi, beállíthatja, hogy az optimalizáló hozzáadásával egy sorszám érhető el a U-SQL-utasítással való csatlakozás előtt. Ezzel a módszerrel optimalizáló választhat egy szórási illesztési stratégiát a teljesítmény javítása érdekében. Vegye figyelembe, hogy a sorok száma nem oldja meg a Adateltérés probléma, de néhány további segítségért kínál.
 
     OPTION(ROWCOUNT = n)
@@ -122,7 +122,7 @@ Példa:
                 INNER JOIN @Small ON Sessions.Client == @Small.Client
                 ;
 
-## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>3. megoldás: A felhasználó által definiált nyomáscsökkentő és egyesítő javítása
+## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>3\. megoldás: A felhasználó által definiált nyomáscsökkentő és egyesítő javítása
 
 Néha írhat egy felhasználó által definiált operátor összetett logikát foglalkozni, és a egy jól megírt nyomáscsökkentő és egyesítő Adateltérés probléma bizonyos esetekben előfordulhat, hogy csökkentése.
 

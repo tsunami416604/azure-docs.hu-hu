@@ -19,10 +19,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ea3ec9024e4ea6a254fb6fe80f93886dc31a0ff
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545787"
 ---
 # <a name="whats-new-for-authentication"></a>Újdonságok a hitelesítéshez? 
@@ -43,7 +43,7 @@ A hitelesítési rendszere módosítja, és hozzáadja a szolgáltatások rendsz
 
 Nincs, jelenleg ütemezve. 
 
-## <a name="march-2019"></a>2019. március
+## <a name="march-2019"></a>2019\. március
 
 ### <a name="looping-clients-will-be-interrupted"></a>Az ügyfelek hurkolás megszakad
 
@@ -63,9 +63,9 @@ A legtöbb ügyfelek nem kell a hiba elkerüléséhez viselkedés megváltoztat�
 
 * Hatókörök vagy a kért erőforrás
 
-* Ügyfélazonosító
+* Ügyfél-azonosító
 
-* Átirányítási URI
+* Redirect URI
 
 * Válasz típusa és mód
 
@@ -74,7 +74,7 @@ A legtöbb ügyfelek nem kell a hiba elkerüléséhez viselkedés megváltoztat�
 Kezelje a minden alkalmazás `invalid_grant` által egy interaktív kérdés megjelenítő ahelyett, hogy csendes kér egy token.  Annak érdekében, hogy ez a hiba, az ügyfelek biztosítják, hogy azok helyesen vannak gyorsítótárazás a kapott jogkivonatokat.
 
 
-## <a name="october-2018"></a>2018. október
+## <a name="october-2018"></a>2018\. október
 
 ### <a name="authorization-codes-can-no-longer-be-reused"></a>Engedélyezési kód már nem használható fel újra
 
@@ -84,13 +84,13 @@ Kezelje a minden alkalmazás `invalid_grant` által egy interaktív kérdés meg
 
 **Érintett protokoll**: [Hitelesítésikód-folyamata](v2-oauth2-auth-code-flow.md)
 
-2018. November 15., kezdve az Azure AD leáll, az alkalmazások korábban használt hitelesítési kódok elfogadásával. Ez a változás segítséget nyújt ahhoz, hogy az Azure AD az OAuth-specifikációnak megfelelően, és alkalmazza a v1 és v2 végpontokon.
+2018\. November 15., kezdve az Azure AD leáll, az alkalmazások korábban használt hitelesítési kódok elfogadásával. Ez a változás segítséget nyújt ahhoz, hogy az Azure AD az OAuth-specifikációnak megfelelően, és alkalmazza a v1 és v2 végpontokon.
 
 Ha az alkalmazás újból felhasználja a jogkivonatok lekérésére, több erőforrás-engedélyezési kódokat, javasoljuk, hogy a kód használatával egy frissítési jogkivonat lekérése, és a frissítési jogkivonat használatával más erőforrások kiegészítő jogkivonatok beszerzéséhez. Engedélyezési kód csak egyszer használhatók fel, de frissítési biztonsági jogkivonat használható többször több erőforrást. Minden olyan új alkalmazás, amely megpróbálja újból felhasználhatja a hitelesítési kódot az OAuth hitelesítésikód-folyamata során invalid_grant hiba lép fel.
 
 További információ a frissítési biztonsági jogkivonat: [frissítése a hozzáférési jogkivonatok](v1-protocols-oauth-code.md#refreshing-the-access-tokens).  Ha adal-t vagy az MSAL használatával, ez kezeli az Ön számára a szalagtár - cserélje le az "AcquireTokenByAuthorizationCodeAsync" a "AcquireTokenSilentAsync" második példányát. 
 
-## <a name="may-2018"></a>2018. május
+## <a name="may-2018"></a>2018\. május
 
 ### <a name="id-tokens-cannot-be-used-for-the-obo-flow"></a>ID jogkivonatok nem használható a OBO folyamat
 
@@ -100,7 +100,7 @@ További információ a frissítési biztonsági jogkivonat: [frissítése a hoz
 
 **Érintett protokollok**: Implicit folyamat és [OBO folyamat](v1-oauth2-on-behalf-of-flow.md)
 
-2018. május 1. után id_tokens nem használható a OBO folyamatban a helyességi feltétel alkalmazása új alkalmazások számára. Hozzáférési jogkivonatok helyette használandó API-kat, biztonságossá is között egy ügyfél és a középső réteg ugyanazzal az alkalmazással. Mielőtt 2018. május 1. továbbra is működik, és képes az exchange-hozzáférési jogkivonat helyeként; id_tokens regisztrált alkalmazás Ez a minta azonban nem tekinthető a legjobb.
+2018\. május 1. után id_tokens nem használható a OBO folyamatban a helyességi feltétel alkalmazása új alkalmazások számára. Hozzáférési jogkivonatok helyette használandó API-kat, biztonságossá is között egy ügyfél és a középső réteg ugyanazzal az alkalmazással. Mielőtt 2018. május 1. továbbra is működik, és képes az exchange-hozzáférési jogkivonat helyeként; id_tokens regisztrált alkalmazás Ez a minta azonban nem tekinthető a legjobb.
 
 Ez a változás megkerüléséhez a következőket teheti:
 

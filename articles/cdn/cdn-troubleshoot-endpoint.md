@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 66ee211856bb451caad7af02103aa306d76e8f97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60323657"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404-es állapotkódot adja vissza az Azure CDN-végpontok hibaelhárítása
@@ -97,7 +97,7 @@ Http-képzeletbeli példában térjen:\//www.contoso.com:8080/file.txt.  Felejts
 #### <a name="origin-host-header"></a>Forrás állomásfejléce
 A **forrás állomásfejléce** minden egyes kérelemmel a forrásnak küldött állomásfejléc-érték.  A legtöbb esetben ez legyen ugyanaz, mint a **forrás gazdaneve** azt korábban ellenőrizte.  Ebben a mezőben helytelen értéket általában nem okoznak a 404-es állapotot, de nagy eséllyel eredményez a többi 4xx állapot, attól függően, a forrás vár.
 
-#### <a name="origin-path"></a>Forrás elérési útvonala
+#### <a name="origin-path"></a>Forrás elérési útja
 Végül, hogy ellenőrizze a **forrás elérési útja**.  Alapértelmezés szerint ez üres a.  Ez a mező csak akkor ajánlott, ha a forrás-ban üzemeltetett erőforrások a CDN-en elérhetővé tenni kívánt a hatókörét leszűkítheti szeretné.  
 
 Példa végpontját szerettünk volna összes erőforrást a tárfiókban elérhető, így **forrás elérési útja** üres.  Ez azt jelenti, hogy HTTPS-kérelem:\//cdndocdemo.azureedge.net/publicblob/lorem.txt eredményez a végpontról kapcsolatot kérő cdndocdemo.core.windows.net */publicblob/lorem.txt*.  Hasonlóképpen, egy HTTPS-kérelem:\//cdndocdemo.azureedge.net/donotcache/status.png eredményez a kérelmező végpont */donotcache/status.png* a forrásból.

@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 9ccb6944227208cee8601751cf43a53c111c09c6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65021623"
 ---
 # <a name="add-scoring-profiles-to-an-azure-search-index"></a>Relevanciaprofil hozzáadása az Azure Search-index
@@ -247,7 +247,7 @@ A keresési pontszámtól statisztikai az adatok és a lekérdezés tulajdonság
 |`magnitude` &#124; `boostingRangeEnd`|Beállítja a tartomány, amelyben magnitude sorolódik záróértékét. Az értéknek egész vagy lebegőpontos szám kell lennie. 1-től 4 csillagosig ez lenne a 4.|  
 |`magnitude` &#124; `constantBoostBeyondRange`|Érvényes értékek: true vagy false (alapértelmezett). Ha értéke igaz, a teljes kiemelést továbbra is a alkalmazni a dokumentumokon, amelyek a, amelyek célmezőjének értéke magasabb, mint a tartomány felső végén értékét. Ha FALSE (hamis), a függvény kiemelése, a tartományon kívül esik, amelyek célmezőjének értéke nem alkalmazható.|  
 |`freshness`|A frissességet pontozó függvény segítségével levő értékek alapján elemek rangsorolási pontszámait `DateTimeOffset` mezőket. Például a közelmúltban elemet is rangsorolni magasabb, mint a régebbi elemek.<br /><br /> Akkor is rangsorolják elemekhez, például a jövőbeli dátumok naptárbeli események úgy, hogy az elemek közelebb a jelenlegi újabb, mint a jövőben további elemek rangsorolni.<br /><br /> A szolgáltatás jelenlegi kiadása a tartomány egyik végén lesz kijavítva, az aktuális időpontnál. Az egyéb célból egyszerre a múltban alapján a `boostingDuration`. Jelentősen növelheti a jövőben alkalommal számos, használja a negatív `boostingDuration`.<br /><br /> A relevanciaprofil alkalmazott módosítja a kiemelési maximális és minimális tartomány határozza meg a interpolációs gyakorisága (lásd az alábbi ábra). A alkalmazni kiemelési tényező megfordításához válassza egy boost tényezője 1-nél kisebb.|  
-|`freshness` &#124; `boostingDuration`|Beállít egy olyan lejárati időt, amely után az adott dokumentum kiemelése megszűnik. Lásd: [boostingDuration beállítása](#bkmk_boostdur) szintaxist és példákat a következő szakaszban.|  
+|`freshness` &#124; `boostingDuration`|Beállítja egy olyan lejárati időt, mely kiemelési után le fog állni, adott dokumentumra. Lásd: [boostingDuration beállítása](#bkmk_boostdur) szintaxist és példákat a következő szakaszban.|  
 |`distance`|A távolságot pontozó függvény segítségével hatással vannak a pontszám alapján hogyan dokumentumok zárja be, vagy távol vannak képest relatív hivatkozást földrajzi helyet. A referencia-hely van megadva a lekérdezést, paraméterben egy részeként (használatával a `scoringParameterquery` karakterlánc-beállítás), egy maga a szél argumentum.|  
 |`distance` &#124; `referencePointParameter`|Hivatkozás helyként használandó lekérdezésekben paramétere. `scoringParameter` az egy lekérdezési paraméter. Lásd: [dokumentumok keresése &#40;Azure Search szolgáltatás REST API&#41; ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) lekérdezési paraméterek leírását.|  
 |`distance` &#124; `boostingDistance`|Egy szám, amely azt jelzi, hogy a távolságot adja meg kilométerben a hivatkozási helyről, ahol a kiemelési tartomány véget ér.|  

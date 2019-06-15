@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2019
 ms.author: magoedte
 ms.openlocfilehash: 46ac6794272728069d50479f8cd097185bfeeb1a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072389"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Teljesítményproblémák-tárolókhoz az Azure Monitor riasztásainak beállítása
@@ -36,7 +36,7 @@ Riasztás magas CPU vagy a memóriahasználat vagy a kevés szabad lemezterület
 Ha még nem ismeri az Azure Monitor riasztások, tekintse meg [áttekintése a Microsoft Azure-ban riasztások](../platform/alerts-overview.md) megkezdése előtt. A riasztásokat, amelyek log lekérdezésekkel kapcsolatos további információkért lásd: [Naplóriasztások az Azure Monitor](../platform/alerts-unified-log.md). Metrikákhoz kapcsolódó riasztások kapcsolatos további információkért lásd: [metrikákhoz kapcsolódó riasztások az Azure monitorban](../platform/alerts-metric-overview.md).
 
 ## <a name="resource-utilization-log-search-queries"></a>Erőforrás kihasználtsága naplóbeli keresési lekérdezések
-Ebben a szakaszban a lekérdezések támogatásához minden egyes riasztási. 7. lépését használhatók a [riasztás létrehozása](#create-an-alert-rule) című szakaszát.
+Ebben a szakaszban a lekérdezések támogatásához minden egyes riasztási. 7\. lépését használhatók a [riasztás létrehozása](#create-an-alert-rule) című szakaszát.
 
 A következő lekérdezést a tag csomópontok CPU-felhasználás mintavételezését percenként átlagosan átlagos processzorhasználat számítja ki.  
 

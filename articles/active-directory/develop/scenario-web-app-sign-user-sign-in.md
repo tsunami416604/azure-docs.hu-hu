@@ -16,17 +16,17 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3fb7fbba7ec48da580d2a630ae51aa20b3307848
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65074620"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>Webalkalmazás-alkalmazást, amely képes bejelentkeztetni a felhasználókat – bejelentkezés
 
 Ismerje meg, jelentkezzen be a kódot a webalkalmazás számára, hogy jelentkezik be felhasználók hozzáadása.
 
-## <a name="sign-in"></a>Sign-in
+## <a name="sign-in"></a>Bejelentkezés
 
 A kódot, amelyet az előző cikkben [alkalmazás kód konfigurációját](scenario-web-app-sign-user-app-configuration.md) minden, meg kell valósítania kijelentkezést. Miután a felhasználó bejelentkezett az alkalmazásba, valószínűleg érdemes teszi lehetővé számukra, jelentkezzen ki. Az ASP.NET core kijelentkezési kezeli az Ön számára.
 

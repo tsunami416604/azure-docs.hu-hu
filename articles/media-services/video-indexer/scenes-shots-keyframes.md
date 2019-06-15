@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: d312a93f83ef38fa1ae855a1e313280fc608948d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799398"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Jelenetek, felvételek és kulcsképkockák
@@ -30,7 +30,7 @@ A video Indexer határozza meg, ha álló jelenet renderelése; a videóban vizu
 > [!NOTE]
 > Legalább 3 jelenetek tartalmazó videókra alkalmazható.
 
-## <a name="shot-detection"></a>Felvételészlelés
+## <a name="shot-detection"></a>Jelenetfelismerés
 
 Video Indexer – azt határozza meg, amikor egy képernyőkép változások nyomon követése a szomszédos keretek színsémát hirtelen és a fokozatos átmenetek vizuális jelek alapján a videóban. A célirányítópultot metaadatokat egy kezdési és befejezési időpontja, valamint tartalmazza a képernyőkép-készítés kulcsképek listáját tartalmazza. A helyességének olyan egymást követő keretek ugyanazt a kamerához egyszerre származnak.
 

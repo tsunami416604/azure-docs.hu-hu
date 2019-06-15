@@ -11,10 +11,10 @@ ms.date: 05/10/2019
 ms.author: brjohnst
 ms.custom: seodec2018
 ms.openlocfilehash: a59deed4ac0cec669ddc5e0335f7274586c702e8
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65541766"
 ---
 # <a name="upgrade-to-the-azure-search-net-sdk-version-9"></a>Az Azure Search .NET SDK 9-es verzió frissítése
@@ -29,7 +29,7 @@ Az SDK-t, beleértve a példákat általános bemutatóért lásd: [használata 
 9-es verzió, az Azure Search .NET SDK korábbi verzióinak számos módosításokat tartalmaz. Ezek közül néhányat a rendszer használhatatlanná tévő változásai, de csak követelje meg a kód viszonylag kis módosításait. Lásd: [frissítésére lépéseket](#UpgradeSteps) útmutatást a kód módosítása az új SDK-verzió használatához.
 
 > [!NOTE]
-> 4.0 – előzetes verzió vagy annál régebbi verzióját használja, ha meg kell először frissítse a 5-ös verzióját, majd utána frissítse a 9-es verzió. Lásd: [frissítését az Azure Search .NET SDK 5-ös verzió](search-dotnet-sdk-migration-version-5.md) útmutatást.
+> 4\.0 – előzetes verzió vagy annál régebbi verzióját használja, ha meg kell először frissítse a 5-ös verzióját, majd utána frissítse a 9-es verzió. Lásd: [frissítését az Azure Search .NET SDK 5-ös verzió](search-dotnet-sdk-migration-version-5.md) útmutatást.
 >
 > Az Azure Search-szolgáltatáspéldányhoz több REST API-verziók, többek között a legújabb buildszám támogatja. Továbbra is verzióját használja, amikor már nem a legújabb buildszám, de azt javasoljuk, hogy a legújabb verzió használatához kódok migrálása. A REST API használata esetén az api-version paraméter használatával minden kérésben meg kell adnia az API-verziót. A .NET SDK használatával, az SDK-t használ a verzióját határozza meg a megfelelő REST API-verzió. Ha egy régebbi SDK-t használja, továbbra is futtassa, hogy a kód módosítása nélkül, akkor is, ha a szolgáltatás frissítése egy újabb API-verzió támogatja.
 
@@ -43,8 +43,8 @@ Az Azure Search .NET SDK 9 verzióját célozza meg, a legújabb általánosan e
 * [Az automatikus kiegészítés](search-autocomplete-tutorial.md) egy alternatívát kínál a **javaslat** API a keresés –--beíráskor viselkedésének megvalósítása. Az automatikus kiegészítés "befejezése" szó vagy kifejezés, amely a felhasználó jelenleg éppen gépel.
 * [Elemzési mód JsonLines](search-howto-index-json-blobs.md)részét képező Azure BLOB indexelést, egy keresési új dokumentumot hoz létre egy JSON-entitás, amely egy új sor választja el egymástól.
 
-### <a name="new-preview-features-in-version-80-preview"></a>8.0. dátumú előzetes sémaverzióra az új előzetes verziójú funkciók
-8.0. dátumú előzetes sémaverzióra, az Azure Search .NET SDK API verziója 2017-11-11-Preview célozza. Ebben a verzióban ugyanazokat funkcióival verzió 9, továbbá:
+### <a name="new-preview-features-in-version-80-preview"></a>8\.0. dátumú előzetes sémaverzióra az új előzetes verziójú funkciók
+8\.0. dátumú előzetes sémaverzióra, az Azure Search .NET SDK API verziója 2017-11-11-Preview célozza. Ebben a verzióban ugyanazokat funkcióival verzió 9, továbbá:
 
 * [Ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) Szolgáltatásoldali titkosítás inaktív van egy új előzetes verziójú funkció. A beépített titkosítási inaktív a Microsoft felügyeli, mellett további, ahol Ön kizárólagos tulajdonosa, a kulcsok titkosítási réteget is alkalmazhat.
 
@@ -116,7 +116,7 @@ A 7.0-preview és a korábbi verziókban a különböző osztályok, amely magá
 
 A származtatott típusok általános típusú paraméter nélkül volt "dinamikusan típusmegadású" forgatókönyvekben használni kívánt és használatát feltételezi a `Document` típusa.
 
-8.0. dátumú előzetes sémaverzióra kezdve az alaposztályok és nem általános származtatott osztályainak összes el lettek távolítva. Dinamikusan gépelt forgatókönyvek esetén használható `IndexBatch<Document>`, `DocumentSearchResult<Document>`, és így tovább.
+8\.0. dátumú előzetes sémaverzióra kezdve az alaposztályok és nem általános származtatott osztályainak összes el lettek távolítva. Dinamikusan gépelt forgatókönyvek esetén használható `IndexBatch<Document>`, `DocumentSearchResult<Document>`, és így tovább.
  
 ### <a name="removed-extensibleenum"></a>Eltávolított ExtensibleEnum
 
@@ -173,7 +173,7 @@ A paraméterek sorrendje a `IndexAction` konstruktor változott, most, hogy ez a
 
 Ha frissít a 8.0. dátumú előzetes sémaverzióra 9-es verzió, vegye figyelembe, hogy a titkosítás, az ügyfél által felügyelt kulcsok el lett távolítva, mivel ez a funkció egyelőre előzetes verzióként érhető. Pontosabban a `EncryptionKey` tulajdonságainak `Index` és `SynonymMap` el lettek távolítva.
 
-Az alkalmazás maga rögzített ezt a szolgáltatást, ha nem tudja frissíteni az Azure Search .NET SDK 9 verziójára. 8.0. dátumú előzetes sémaverzióra használatához továbbra is. Ugyanakkor Kérjük vegye figyelembe, hogy **éles üzemi alkalmazások pedig az SDK-k előzetes verzió használata nem ajánlott**. Előzetes verziójú funkciók csak tesztelési és változhat.
+Az alkalmazás maga rögzített ezt a szolgáltatást, ha nem tudja frissíteni az Azure Search .NET SDK 9 verziójára. 8\.0. dátumú előzetes sémaverzióra használatához továbbra is. Ugyanakkor Kérjük vegye figyelembe, hogy **éles üzemi alkalmazások pedig az SDK-k előzetes verzió használata nem ajánlott**. Előzetes verziójú funkciók csak tesztelési és változhat.
 
 > [!NOTE]
 > Ha titkosított létrehozott indexek vagy a térképek 8.0. dátumú előzetes sémaverzióra az SDK használatával, hogy továbbra is képesek lesznek szinonimát használhat, és módosítsa a definíciójukat hátrányosan a titkosítási állapot 9-es verzió az SDK használatával. 9-es verzió az SDK ne küldjön a `encryptionKey` tulajdonság a REST API-t, és eredményként a REST API-t nem módosítja az erőforrás titkosítási állapotát. 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 4df8e5d4560a813c47319833a8cd91726abcb8e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60323759"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>A CDN-fájlok tömörítési hibáinak elhárítása
@@ -97,7 +97,7 @@ Keresse meg a végpont a [az Azure portal](https://portal.azure.com) , és katti
 
 A böngésző fejlesztői eszközök használatával, ellenőrizze a válaszfejlécek biztosításához a régióban, ahol éppen kérés gyorsítótárazza a fájlt.
 
-* Ellenőrizze a **kiszolgáló** válaszfejléc.  A fejléc kell rendelkeznie a formátum **platformmal (POP vagy kiszolgáló-azonosító)**, az alábbi példában látható módon.
+* Ellenőrizze a **kiszolgáló** válaszfejléc.  A fejléc kell rendelkeznie a formátum **platformmal (POP vagy kiszolgáló-azonosító)** , az alábbi példában látható módon.
 * Ellenőrizze a **X-gyorsítótár** válaszfejléc.  Beolvassa a fejléc **TALÁLATI**.  
 
 ![A CDN-válaszfejlécek](./media/cdn-troubleshoot-compression/cdn-response-headers.png)

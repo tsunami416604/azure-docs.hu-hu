@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.openlocfilehash: 3286ca3b9c85236ff322eb19324bc5ac7a904e22
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65605450"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>A Azure Data Lake tools for Visual Studio és a hortonworks – tesztkörnyezet használata
@@ -120,7 +120,7 @@ Egy több Hive-parancsfájlt tartalmazó projektet is létrehozhat. A projekt ha
 
 1. A Visual Studióban válassza ki a **fájl**, **új**, majd **projekt**.
 
-2. Bontsa ki a listából a projektek **sablonok**, bontsa ki a **az Azure Data Lake**, majd válassza ki **HIVE (HDInsight)**. A sablonok listájából válassza **minta Hive**. Adjon meg egy nevet és egy helyet, és válassza ki **OK**.
+2. Bontsa ki a listából a projektek **sablonok**, bontsa ki a **az Azure Data Lake**, majd válassza ki **HIVE (HDInsight)** . A sablonok listájából válassza **minta Hive**. Adjon meg egy nevet és egy helyet, és válassza ki **OK**.
 
     ![Képernyőfelvétel az új projekt ablakról, amelyen a az Azure Data Lake, a HIVE, a Hive-minta és az OK kiemelésével](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
 
@@ -130,7 +130,7 @@ A **minta Hive** -projekt tartalmazza a két parancsfájlok **WebLogAnalysis.hql
 
 Hive SQL-szerű nyelv biztosít a strukturált adatokkal dolgozik, a Pig átalakításokat végez az adatok alapján működik megfelelően. A Pig, amely lehetővé teszi, hogy egy folyamatot átalakítások fejlesztése nyelv (a Pig latin betűs) biztosít. A Pig használata a helyi fürthöz, kövesse az alábbi lépéseket:
 
-1. Nyissa meg a Visual Studiót, és válassza ki **fájl**, **új**, majd **projekt**. Bontsa ki a listából a projektek **sablonok**, bontsa ki a **az Azure Data Lake**, majd válassza ki **Pig (HDInsight)**. A sablonok listájából válassza **Pig alkalmazás**. Adja meg a nevét, helyét, és válassza ki **OK**.
+1. Nyissa meg a Visual Studiót, és válassza ki **fájl**, **új**, majd **projekt**. Bontsa ki a listából a projektek **sablonok**, bontsa ki a **az Azure Data Lake**, majd válassza ki **Pig (HDInsight)** . A sablonok listájából válassza **Pig alkalmazás**. Adja meg a nevét, helyét, és válassza ki **OK**.
 
     ![Képernyőfelvétel az új projekt ablakról, amelyen a az Azure Data Lake, a Pig, a Pig-alkalmazás és az OK kiemelésével](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
 

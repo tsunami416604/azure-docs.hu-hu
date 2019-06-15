@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7724d69a9294b420ca061d5ad26ad64826372203
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60453293"
 ---
 # <a name="how-to-improve-the-detection-accuracy"></a>kézikönyv: Az észlelési pontosságának növelése 
@@ -49,7 +49,7 @@ Mivel az észlelés a egy automatizált folyamattal, lehetséges, hogy az Azure 
 A visszajelzések dolgozza fel az észlelési eredmények pontosságának javítása az Azure ad-ben. Általában visszajelzést egy felhasználói kockázat és bejelentkezési kockázat vizsgálat részeként. További információkért lásd: [kockázatos felhasználók és bejelentkezések](howto-investigate-risky-users-signins.md).
 
 
-## <a name="confirm-compromised"></a>Feltörés megerősítése
+## <a name="confirm-compromised"></a>Győződjön meg róla sérült a biztonsága
 
 A bejelentkezési esemény megerősítése biztonsága sérült, jelzi az Azure AD, a bejelentkezés nem volt engedélyezett az identitás tulajdonosa. Amikor kiválasztja a "feltört megerősítése", az Azure AD fog
 
@@ -65,15 +65,15 @@ Sérült biztonságú bejelentkezési ellenőrzése:
 
 - **A kockázatos bejelentkezések jelentés** – Ez a beállítás lehetővé teszi, hogy meg kell erősítenie egy sérült biztonságú bejelentkezési egy vagy több bejelentkezési eseményeket.
 
-    ![Felhasználói kockázat elvetése](./media/howto-improve-detection-accuracy/07.png)
+    ![Felhasználói kockázat bezárása](./media/howto-improve-detection-accuracy/07.png)
 
 - **A Részletek nézetben, a kockázatos bejelentkezések jelentés** – Ez a beállítás lehetővé teszi, hogy erősítse meg a kockázatos bejelentkezések jelentés a kijelölt bejelentkezési esemény egy sérült biztonságú fiókot. 
 
-    ![Felhasználói kockázat elvetése](./media/howto-improve-detection-accuracy/04.png)
+    ![Felhasználói kockázat bezárása](./media/howto-improve-detection-accuracy/04.png)
 
 
  
-## <a name="confirm-safe"></a>Megerősítés biztonságosként
+## <a name="confirm-safe"></a>Biztonságos megerősítése
 
 
 Biztonságos jelek, az Azure AD-t a bejelentkezési esemény megerősítése, hogy a bejelentkezési **volt** által az adott identitás tulajdonosa. Ha "megerősítése biztonságos" lehetőséget választja, az Azure AD fog:
@@ -91,16 +91,16 @@ Egy biztonságos jelentkezzen be a ellenőrzése:
 
 - **A kockázatos bejelentkezések jelentés** – Ez a beállítás lehetővé teszi, hogy meg kell erősítenie a biztonságos bejelentkezés egy vagy több bejelentkezési eseményeket.
 
-    ![Felhasználói kockázat elvetése](./media/howto-improve-detection-accuracy/08.png)
+    ![Felhasználói kockázat bezárása](./media/howto-improve-detection-accuracy/08.png)
 
 - **A Részletek nézetben, a kockázatos bejelentkezések jelentés** – Ez a beállítás lehetővé teszi egy biztonságos bejelentkezési a kockázatos bejelentkezések jelentés a kijelölt bejelentkezési esemény megerősítéséhez. 
 
-    ![Felhasználói kockázat elvetése](./media/howto-improve-detection-accuracy/05.png)
+    ![Felhasználói kockázat bezárása](./media/howto-improve-detection-accuracy/05.png)
 
 
 
 
-## <a name="dismiss-user-risk"></a>Felhasználói kockázat elvetése
+## <a name="dismiss-user-risk"></a>Felhasználói kockázat bezárása
 
 Ha már elvégzett szervizelési műveletek kockázati felhasználó számára, vagy úgy érzi, hogy tévesen jelölt meg kockázatos, bezárhatja a felhasználói kockázat. A felhasználó kockázati elvetése visszaállítja a felhasználó nem kockázatos állapotba. Összes korábbi kockázatos bejelentkezések és a kockázati események a kiválasztott felhasználó fog eltűnik.
 
@@ -109,11 +109,11 @@ Bezárhatja a jelentett felhasználói kockázat:
 
 - **A kockázatos felhasználók jelentés** – Ez a beállítás lehetővé teszi, hogy a felhasználói kockázat bezárása egy vagy több kijelölt felhasználók.
 
-    ![Felhasználói kockázat elvetése](./media/howto-improve-detection-accuracy/02.png)
+    ![Felhasználói kockázat bezárása](./media/howto-improve-detection-accuracy/02.png)
 
 - **A részleteket megjelenítő nézetet** – Ez a beállítás engedélyezi, hogy a felhasználó kockázati jelentés a kiválasztott felhasználó a felhasználói kockázat bezárása. 
 
-    ![Felhasználói kockázat elvetése](./media/howto-improve-detection-accuracy/01.png)
+    ![Felhasználói kockázat bezárása](./media/howto-improve-detection-accuracy/01.png)
 
 
 **Tudnivalók:**

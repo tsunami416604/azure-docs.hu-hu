@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
 ms.openlocfilehash: fccc99f78d038a5f96b9dfe01b575dedcdcb4cdc
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65405614"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Tervezett karbantartásával kapcsolatos értesítések Windows virtuális gépek kezelése
@@ -159,7 +159,7 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 ```
 
 
-## <a name="faq"></a>gyakori kérdésekben
+## <a name="faq"></a>GYIK
 
 
 **K: Miért van szüksége, a virtual machines Újraindítás most?**

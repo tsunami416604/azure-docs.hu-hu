@@ -10,10 +10,10 @@ ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
 ms.openlocfilehash: 7117e7287f601b306893cb02dc5d7599d7c6224d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60453834"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Figyelési használat és becsült költségek az Azure monitorban
@@ -49,7 +49,7 @@ A 2018 április egy [új figyelési díjszabási modellt jelent](https://azure.m
 A Log Analytics vagy az Application Insights 2018. április 2., után ügyfelek bevezetéséhez az új díjszabási modellre az egyetlen lehetőség. Azok a vásárlóknak, akik már használják ezeket a szolgáltatásokat az új díjszabási modellre való megadása nem kötelező.
 
 ## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Az új díjszabási modell hatásának felmérése
-Az új díjszabási modell lesz a különböző hatással van a minden ügyfél saját figyelési használati minták alapján. 2018. április 2., mielőtt a Log Analytics vagy az Application Insights használó ügyfelek számára a **használat és becsült költségek** oldal az Azure monitorban bármilyen módosítás a költségek becslése, abban az esetben az új díjszabási modellre. Az előfizetés áthelyezése az új modellbe megoldást kínál. A legtöbb ügyfél számára előnyös lesz az új díjszabási modellre. A különösen magas használati mintái, illetve magasabb költségű régiókra rendelkező ügyfelek esetén ez nem lehet a helyzet.
+Az új díjszabási modell lesz a különböző hatással van a minden ügyfél saját figyelési használati minták alapján. 2018\. április 2., mielőtt a Log Analytics vagy az Application Insights használó ügyfelek számára a **használat és becsült költségek** oldal az Azure monitorban bármilyen módosítás a költségek becslése, abban az esetben az új díjszabási modellre. Az előfizetés áthelyezése az új modellbe megoldást kínál. A legtöbb ügyfél számára előnyös lesz az új díjszabási modellre. A különösen magas használati mintái, illetve magasabb költségű régiókra rendelkező ügyfelek esetén ez nem lehet a helyzet.
 
 Az előfizetések a költségeket, a választott becsült megtekintéséhez a **felhasználás és becsült költségek** lapra, jelölje be a kék szalagcím a lap tetején. Érdemes tennie ehhez az egy előfizetéshez egyszerre, mivel ez a szint, amelyen az új díjszabási modellben kell megoldania.
 

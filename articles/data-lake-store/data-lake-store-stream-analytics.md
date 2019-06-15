@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60194855"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Stream-adatokat az Azure Storage-Blobból az Azure Data Lake Storage Gen1 Azure Stream Analytics használatával
@@ -56,7 +56,7 @@ Hozzon létre egy Stream Analytics-feladatot, amely tartalmaz egy bemeneti forr�
 
    * A **bemeneti alias**, adjon meg egy egyedi nevet a feladat bemeneti.
    * A **adatforrástípust**válassza **adatfolyam**.
-   * A **forrás**válassza **a Blob storage-**.
+   * A **forrás**válassza **a Blob storage-** .
    * A **előfizetés**válassza **a blob storage aktuális előfizetésből**.
    * A **tárfiók**, válassza ki a létrehozott tárfiók az Előfeltételek részeként. 
    * A **tároló**, válassza ki a tárolót, amelyet a kiválasztott tárfiók.

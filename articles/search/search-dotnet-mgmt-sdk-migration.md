@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.openlocfilehash: 62c2ed555fcac56677f4950c10d38ded8fb0649d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65025174"
 ---
 # <a name="upgrading-to-the-azure-search-net-management-sdk-version"></a>Az Azure Search .NET SDK-t felügyeleti verziójára való frissítését 
@@ -24,12 +24,12 @@ ms.locfileid: "65025174"
 
 Ha 1.0.2-es verzióját használja, vagy a régebbi a [Azure Search .NET SDK-t felügyeleti](https://aka.ms/search-mgmt-sdk), ez a cikk segít az alkalmazás használhatja a 2. verzió frissítése.
 
-2. verzióját az Azure Search .NET SDK felügyeleti tartalmaz néhány módosítást korábbi verzióit. Ezek a leginkább kis, így a kód módosítása csak minimális erőfeszítéssel elvégzéséhez szükséges. Lásd: [frissítésére lépéseket](#UpgradeSteps) útmutatást a kód módosítása az új SDK-verzió használatához.
+2\. verzióját az Azure Search .NET SDK felügyeleti tartalmaz néhány módosítást korábbi verzióit. Ezek a leginkább kis, így a kód módosítása csak minimális erőfeszítéssel elvégzéséhez szükséges. Lásd: [frissítésére lépéseket](#UpgradeSteps) útmutatást a kód módosítása az új SDK-verzió használatához.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-2"></a>2-es verzió újdonságai
-2. verzióját az Azure Search .NET SDK felügyeleti célozza azonos általánosan elérhető verzióját az Azure Search felügyeleti REST API, SDK előző verziók, kifejezetten 2015-08-19. Az SDK-t a módosítások az SDK-t, a modulok használhatóságának fejlesztésében szigorúan ügyféloldali módosításai. Ezek a változások a következők:
+2\. verzióját az Azure Search .NET SDK felügyeleti célozza azonos általánosan elérhető verzióját az Azure Search felügyeleti REST API, SDK előző verziók, kifejezetten 2015-08-19. Az SDK-t a módosítások az SDK-t, a modulok használhatóságának fejlesztésében szigorúan ügyféloldali módosításai. Ezek a változások a következők:
 
 * `Services.CreateOrUpdate` az aszinkron verziókat most már automatikusan lekérdezik a kiépítés és `SearchService` és nem ad vissza, amíg a szolgáltatás kiépítése befejeződik. Ezzel takaríthat meg, nem kell saját kezűleg ilyen lekérdezési kód írása.
 * Ha továbbra is szeretné lekérdezni a manuális kiépítési szolgáltatás, akkor használhatja az új `Services.BeginCreateOrUpdate` metódus vagy egy annak aszinkron verzióit.

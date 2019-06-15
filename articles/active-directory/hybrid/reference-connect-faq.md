@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2caca430de5ad666f4f4341e0723bc3173d6d91a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65137789"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
@@ -62,7 +62,7 @@ Igen, ezt a forgatókönyvet. Tekintse meg [több tartomány](how-to-connect-ins
 **K: Az ugyanazon Active Directory-tartomány az Azure AD Connect több összekötőt is van?**  
 Az azonos AD-tartomány nem, több összekötők nem támogatottak. 
 
-**K: Helyezhetem át az Azure AD Connect-adatbázist a helyi adatbázis távoli SQL Server-példányra?**   
+**K: Helyezhetem át az Azure AD Connect-adatbázist a helyi adatbázis távoli SQL Server-példányra?**    
 Igen, az alábbi lépéseket ennek módjáról ad általános útmutatást. Jelenleg dolgozunk egy részletesebb dokumentumot.
 1. A LocalDB ADSync-adatbázis biztonsági mentése.
 Ennek legegyszerűbb módja, hogy használja az SQL Server Management Studio Azure AD connecttel ugyanarra a gépre telepítve. Csatlakozás *(LocalDb). \ADSync*, majd készítsen biztonsági mentést az ADSync-adatbázis.

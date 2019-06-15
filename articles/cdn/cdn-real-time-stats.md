@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: eb20630533735fb46ea7743be75448329281938a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60334559"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>A Microsoft Azure CDN Szolgáltatásban valós idejű statisztikák
@@ -51,7 +51,7 @@ A következő diagramok érhetők el:
 
 A gráfok mindegyike megjeleníti a kiválasztott időtartomány, amikor az oldal betöltött valós idejű statisztikák.  A gráfok néhány másodpercenként automatikusan frissül.  A **frissítése Graph** gombra, ha van ilyen, törli a gráf, amely után, csak azokat jeleníti meg a kijelölt adatokat.
 
-## <a name="bandwidth"></a>Bandwidth
+## <a name="bandwidth"></a>A sávszélesség
 ![A sávszélesség-grafikon](./media/cdn-real-time-stats/cdn-bandwidth.png)
 
 A **sávszélesség** grafikonon jeleníti meg az adott időtartam a jelenlegi platform használt sávszélesség mennyiségét. A gráf árnyékolt részének azt jelzi, hogy a sávszélesség-használat. A jelenleg használt sávszélesség pontos mennyisége közvetlenül a vonaldiagram alatt jelenik meg.

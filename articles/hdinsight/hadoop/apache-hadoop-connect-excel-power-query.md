@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.openlocfilehash: e35e86bee4dfee21d0a98867c3e0d1d7850ed0ec
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65762007"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Az Apache hadoop Excel csatlakoztatása a Power Query használatával
@@ -41,7 +41,7 @@ Excelhez készült Power Query beépülő megkönnyíti az adatok importálása 
 
    - Excel 2016
 
-     - Kattintson a **adatok** menüben kattintson a **adatok lekérése** származó a **adatok beolvasása és átalakítása** menüszalagra, majd **az Azure**, majd **Származó Azure HDInsight(HDFS)**.
+     - Kattintson a **adatok** menüben kattintson a **adatok lekérése** származó a **adatok beolvasása és átalakítása** menüszalagra, majd **az Azure**, majd **Származó Azure HDInsight(HDFS)** .
 
        ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
 
@@ -54,10 +54,10 @@ Excelhez készült Power Query beépülő megkönnyíti az adatok importálása 
        **Megjegyzés:** Ha nem látja a **Power Query** menüben nyissa meg **fájl** > **beállítások** > **bővítmények**, és válassza ki a  **COM-bővítmények** a legördülő listából **kezelés** be az oldal alján. Válassza ki a **Go...**  gombra, és győződjön meg arról, hogy a Power Query az Excel bővítmény be a ellenőrizte.
        
        **Megjegyzés:** Power Query is lehetővé teszi, hogy adatokat importáljon HDFS kattintva **egyéb forrásokból származó**.
-4. A **fióknév**, adja meg a fürthöz társított Azure Blob storage-fiók nevét, és kattintson **OK**. Ezt a fiókot az alapértelmezett tárfiókot, vagy egy társított storage-fiók lehet.  A formátum *https://&lt;StorageAccountName >.blob.core.windows.net/*.
+4. A **fióknév**, adja meg a fürthöz társított Azure Blob storage-fiók nevét, és kattintson **OK**. Ezt a fiókot az alapértelmezett tárfiókot, vagy egy társított storage-fiók lehet.  A formátum *https://&lt;StorageAccountName >.blob.core.windows.net/* .
 5. A **Fiókkulcs**, adja meg a Blob storage-fiók kulcsát, és kattintson **mentése**. (Kell adja meg a fiók csak az első információk ideje az áruház.)
 6. Az a **kezelő** a a Lekérdezésszerkesztő bal oldali ablaktáblán kattintson duplán a Blob storage-tároló nevének. Alapértelmezés szerint a tároló neve a neve megegyezik a fürt neve.
-7. Keresse meg **HiveSampleData.txt** a a **neve** oszlopban (a mappa elérési útja **... / hive/adatraktár-/ hivesampletable/**), és kattintson a **bináris** HiveSampleData.txt, a bal oldalon. A fürt összes HiveSampleData.txt tartalmaz. Ha szeretné a saját fájlt is használhat.
+7. Keresse meg **HiveSampleData.txt** a a **neve** oszlopban (a mappa elérési útja **... / hive/adatraktár-/ hivesampletable/** ), és kattintson a **bináris** HiveSampleData.txt, a bal oldalon. A fürt összes HiveSampleData.txt tartalmaz. Ha szeretné a saját fájlt is használhat.
    
     ![HDI.PowerQuery.ImportData][image-hdi-powerquery-importdata]
 8. Ha azt szeretné, átnevezheti az oszlopok neveit. Amikor elkészült, kattintson a **Bezárás és betöltés**.  A munkafüzet fel lett töltve az adatokat:

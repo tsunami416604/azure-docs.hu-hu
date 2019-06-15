@@ -18,17 +18,17 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d15d76f4c16fa89b41ebfc10c9617c4709203d38
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544725"
 ---
 # <a name="web-apps"></a>Webalkalmazások
 
 Web Apps alkalmazások olyan alkalmazások, amelyek egy webalkalmazást egy webböngészőben a felhasználó hitelesítéséhez. Ebben a forgatókönyvben a webes alkalmazás a felhasználó böngészőben jelentkezzen be őket az Azure AD irányítja. Az Azure AD választ jelentkezzen be a felhasználó böngészőjében, amely tartalmazza a biztonsági jogkivonat a felhasználóval kapcsolatos jogcímek keresztül. Ebben a forgatókönyvben támogatja a bejelentkezést az OpenID Connect, SAML 2.0 és WS-Federation protokollal.
 
-## <a name="diagram"></a>Diagram
+## <a name="diagram"></a>Ábra
 
 ![A böngészőben a webalkalmazás a hitelesítési folyamat](./media/authentication-scenarios/web_browser_to_web_api.png)
 
@@ -43,7 +43,7 @@ Web Apps alkalmazások olyan alkalmazások, amelyek egy webalkalmazást egy webb
 
 Tekintse meg a webes alkalmazás-forgatókönyvek a webböngésző Kódminták. És a új mintát gyakran hozzáadása során gyakran készítsen biztonsági ellenőrzést.
 
-## <a name="app-registration"></a>Appok regisztrálása
+## <a name="app-registration"></a>Alkalmazásregisztráció
 
 Webes alkalmazás regisztrálni, lásd: [alkalmazás regisztrálása](quickstart-register-app.md).
 

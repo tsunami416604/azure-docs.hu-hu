@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
 ms.openlocfilehash: 6619611bee96089e465feb6f50d38caeada06dd9
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65472489"
 ---
 # <a name="restore-system-state-to-windows-server"></a>A Windows Server rendszerállapotának visszaállítása
@@ -103,7 +103,7 @@ Ezeket a lépéseket a használt terminológiával tartalmazza:
 
 10. Az a **rendszer állapota helyreállítási mód kiválasztása** panelen adja meg a helyet, ahol állítható helyre, majd kattintson a rendszerállapot-fájlok **tovább**.
 
-    ![Titkosítás](./media/backup-azure-restore-system-state/recover-as-files.png)
+    ![Encryption](./media/backup-azure-restore-system-state/recover-as-files.png)
 
     A beállítás **példányt hoz létre, így mindkét verziót kell**, egyes fájlokon másolatát hozza létre a rendszerállapot fájl meglévő archívumot a a teljes rendszerállapot-archívum másolatot létrehozása helyett.
 

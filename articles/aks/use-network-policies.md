@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
 ms.openlocfilehash: a0512806ec797f43fc54d8a28a7cbadf86faf1d9
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65230015"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Podok hálózati házirendek segítségével az Azure Kubernetes Service (AKS) közötti adatforgalom védelme
@@ -62,7 +62,7 @@ A hálózati házirend csak együttműködik az Azure CNI (speciális) lehetős�
 | Támogatott platformok                      | Linux                      | Linux                       |
 | Támogatott hálózati beállítások             | Azure CNI                  | Azure CNI                   |
 | Kubernetes-specifikáció való megfelelés | Minden házirendtípus támogatott |  Minden házirendtípus támogatott |
-| További funkciók                      | Egyik sem                       | Kiterjesztett házirend modell globális hálózati házirend, a globális hálózati beállítása és a Gazdagéppel. További tájékoztatást a `calicoctl` kezelheti ezeket a funkciókat, kiterjesztett CLI lásd [calicoctl felhasználói referencia][calicoctl]. |
+| További funkciók                      | None                       | Kiterjesztett házirend modell globális hálózati házirend, a globális hálózati beállítása és a Gazdagéppel. További tájékoztatást a `calicoctl` kezelheti ezeket a funkciókat, kiterjesztett CLI lásd [calicoctl felhasználói referencia][calicoctl]. |
 | Támogatás                                  | Az Azure-támogatás és a mérnöki csapat által támogatott | Calico közösségi támogatás. További fizetős támogatási további információkért lásd: [projekt Calico támogatási lehetőségek][calico-support]. |
 | Naplózás                                  | Szabályok hozzáadása vagy törölve lesz, engedélyezze az IPTables a minden gazdagép alatt van bejelentkezve */var/log/azure-npm.log* | További információkért lásd: [Calico összetevő naplók][calico-logs] |
 

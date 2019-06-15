@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943558"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Az alkalmazás a közzétételi portál beállítása
@@ -47,7 +47,7 @@ Az ajánlat beállítások képernyő művelet egy alapszintű az ajánlat beál
 
 Ez a közzétevő-profilon belül az ajánlat egyedi azonosítója. Ezt az Azonosítót meg fognak jelenni a termék URL-címeket. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjellel, és legfeljebb 50 karakter hosszú lehet. Ez a mező után egy ajánlatot élesíti zárolva van.
 
-például, ha a kiadó **"contoso"** közzétevők ajánlatot hoz létre Ajánlatazonosítót **"minta-WebApp"**, ez fog megjelenni az appsource-ban, mint "https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
+például, ha a kiadó **"contoso"** közzétevők ajánlatot hoz létre Ajánlatazonosítót **"minta-WebApp"** , ez fog megjelenni az appsource-ban, mint "https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
 
 ### <a name="publisher-id"></a>Közzétevő azonosítója
 
@@ -77,7 +77,7 @@ A legtöbb közzétevők hagyja ezeket az alapértelmezett értékeket, a felhas
 A következő magyarázatot ezeket a mezőket:
 
 * A csomag neve: A fájl nevét a fenti lépésben létrehozott esetén a zip-fájl létrehozása, amely a CRM AppSource csomag. A fenti példában, a "Microsoft\_SamplePackage.zip".
-* A csomaghely URL-címe: Ez az URL-CÍMÉT az Azure Storage-fiókot, amely tartalmazza a fent megadott fájl nevét. 9. lépés a fenti szakaszban létrehozott URL-címe.
+* A csomaghely URL-címe: Ez az URL-CÍMÉT az Azure Storage-fiókot, amely tartalmazza a fent megadott fájl nevét. 9\. lépés a fenti szakaszban létrehozott URL-címe.
 * Van több crm-csomagot a csomag fájlban: Válassza az Igen **csak** Ha crm, a különböző csomagok több verzióját támogatja. A legtöbb partnerek számára ez lesz a "No". Ha az Igen lehetőséget választja, meg kell AppSource csomagok létrehozása a megoldás minden egyes verziója. _Megjegyzés: Ez azt nem kéri, ha azok több **zip** fájlokat. Ha több solution.zip fájlt, de csak egyetlen verziója, továbbra is választhat "nem" található. A csomagolás eszköz fog hozzák ezek automatikusan._
 
 ### <a name="crm-package-availability"></a>CRM-csomag rendelkezésre állása
@@ -104,7 +104,7 @@ Válassza ki az iparág legjobb igazított az alkalmazást. Ha az alkalmazás vo
 
 Válassza ki, amely az alkalmazás a kategóriák. Válasszon legfeljebb 3.
 
-### <a name="app-type"></a>Alkalmazástípus
+### <a name="app-type"></a>Alkalmazás típusa
 
 Válassza ki a próbaverziót, amely az alkalmazás lehetővé teszi az appsource-ban. "Ingyenes" azt jelenti, hogy az alkalmazás ingyenes. "Próbaverzió" azt jelenti, hogy ügyfeleink próbálhatja ki az alkalmazást az appsource-ban rövid idő. 'A próbaverzió kérése' Dynamics 365 for Customer Engagement alkalmazásokat nem támogatott. Válassza ezt a beállítást.
 

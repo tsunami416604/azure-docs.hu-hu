@@ -10,10 +10,10 @@ ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
 ms.openlocfilehash: 10a6e5c33f6a3c23d98e6eb3380de0d6dc6ac216
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544489"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>A helyszíni adatátjárót telepíthet az Azure Logic Apps
@@ -430,7 +430,7 @@ Más helyre, ahol megtalálhatja a különféle naplókból a következők:
 Az átjáró eseménynaplóit megkereséséhez kövesse az alábbi lépéseket:
 
 1. A számítógépen, amelyen a kapcsolódásiátjáró-telepítés, nyissa meg a **Eseménynapló**. 
-2. Bontsa ki a **Eseménynapló (helyi)** > **alkalmazások és szolgáltatásnaplók**. 
+2. Bontsa ki a **Eseménynapló (helyi)**  > **alkalmazások és szolgáltatásnaplók**. 
 3. Válassza ki **a helyszíni adatátjáró szolgáltatás**.
 
    ![Átjáró Eseménynapló megtekintése](./media/logic-apps-gateway-install/event-viewer.png)

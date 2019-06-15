@@ -12,10 +12,10 @@ ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8754eedc8284aab01006ea71bfd870064b91ea17
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65851126"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Kezelését és kérését kvóták az Azure-erőforrásokhoz
@@ -75,7 +75,7 @@ Rendelkezésre álló erőforrások:
 <sup>1</sup> maximális élettartamát hivatkozik, amely egy Futtatás elindításához, és a Befejezés után. Befejezett futtatások korlátlan ideig megőrződnek; a maximális élettartamon belül nem befejezett futtatások adatait nem érhető el.
 <sup>2</sup> csomóponton alacsony prioritású feladatok sikerült pre-empted bármikor kapacitás megkötés van. Javasoljuk, hogy a feladat végrehajtása a ellenőrzőpontok használata.
 
-### <a name="container-instances"></a>Tárolópéldányok
+### <a name="container-instances"></a>Container Instances szolgáltatásban
 
 Emellett van egy a container Instances szolgáltatásban, regisztrálhat egy adott időszakban (óránként hatóköre) vagy a teljes előfizetés számára vonatkozó határértéket.
 

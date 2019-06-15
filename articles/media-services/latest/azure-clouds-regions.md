@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409287"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Magánfelhők és régiók, mely az Azure Media Services v3 létezik
@@ -24,14 +24,14 @@ Az Azure Media Services v3-as globális Azure-ban, Azure Government, Azure Germa
 
 ## <a name="feature-availability-in-azure-clouds"></a>A szolgáltatás rendelkezésre állása az Azure-felhők
 
-| Szolgáltatás|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| Funkció|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
-| [Azure EventGrid](reacting-to-media-services-events.md) | Szabad | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
-| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Szabad | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
-| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Szabad | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
-| [StandardEncoderPreset](encoding-concept.md) | Szabad | Szabad | Szabad | Szabad |
-| [LiveEvents](live-streaming-overview.md) | Szabad | Szabad | Szabad | Szabad |
-| [Streamvégpontok](streaming-endpoint-concept.md) | Szabad | Szabad | Szabad | Szabad |
+| [Azure EventGrid](reacting-to-media-services-events.md) | Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
+| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
+| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
+| [StandardEncoderPreset](encoding-concept.md) | Elérhető | Elérhető | Elérhető | Elérhető |
+| [LiveEvents](live-streaming-overview.md) | Elérhető | Elérhető | Elérhető | Elérhető |
+| [Streamvégpontok](streaming-endpoint-concept.md) | Elérhető | Elérhető | Elérhető | Elérhető |
 
 ## <a name="regionsgeographieslocations"></a>Régiók és földrajzi területeken/helyek
 

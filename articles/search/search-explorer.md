@@ -10,10 +10,10 @@ ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 392699182859a090c13304f63d28a78b95a65ec7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024022"
 ---
 # <a name="search-explorer-for-querying-data-in-azure-search"></a>Az Azure Search adatok lekérdezése a keresési ablak 
@@ -29,7 +29,7 @@ Az első lépésekhez segítséget talál [indítsa el a keresési ablak](#start
 
 A következő példák azt feltételezik, hogy a beépített minta ingatlanindex. Ez az index létrehozását lásd [a rövid útmutató: Importálás, index és lekérdezése az Azure Portalon](search-get-started-portal.md).
 
-### <a name="example-1---empty-search"></a>1. példa – üres keresés
+### <a name="example-1---empty-search"></a>1\. példa – üres keresés
 
 Az első meg a tartalmat, hajtsa végre egy üres keresés kattintva **keresési** nincs a megadott feltételeket. Egy üres keresés hasznos első lekérdezésként, mert a teljes dokumentumot adja vissza, hogy áttekintheti, hogy a dokumentum az összeállításban. Az egy üres keresés nem nincs a keresési besorolás és a dokumentumok rendszer tetszőleges sorrendben adja vissza (`"@search.score": 1` tartozó összes dokumentumot). Alapértelmezés szerint 50 dokumentumok egy keresési kérelmet az adott vissza.
 
@@ -43,7 +43,7 @@ Egyenértékű egy üres keresés szintaxisa a következő `*` vagy `search=*`.
    
    ![Üres lekérdezés például](./media/search-explorer/search-explorer-example-empty.png "Unqualified vagy üres lekérdezési példa")
 
-### <a name="example-2---free-text-search"></a>2. példa – szabad szöveges keresés
+### <a name="example-2---free-text-search"></a>2\. példa – szabad szöveges keresés
 
 Szabad formátumú lekérdezéseket, és anélkül operátorok, számos felhasználó által definiált lekérdezések az Azure Search egy egyéni alkalmazás által küldött hasznosak. Figyelje meg, hogy ha Ön adja meg a lekérdezés feltételeket vagy kifejezéseket, keresési besorolás kerül play. Az alábbi példában látható, a szabad szöveges keresés.
 
@@ -70,7 +70,7 @@ Adjon hozzá **$count** beolvasni az indexben található egyezések számát. E
 
 ### <a name="example-4---restrict-fields-in-search-results"></a>4 – például korlátozhatja a mezőket a keresési eredmények között
 
-Adjon hozzá **$select** szeretné szűkíteni a explicit módon elnevezett mezők olvashatóbb kimeneti **keresési ablak**. A keresési karakterlánc tartani és **$count = true**, argumentumokat előtag **&**. 
+Adjon hozzá **$select** szeretné szűkíteni a explicit módon elnevezett mezők olvashatóbb kimeneti **keresési ablak**. A keresési karakterlánc tartani és **$count = true**, argumentumokat előtag **&** . 
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true

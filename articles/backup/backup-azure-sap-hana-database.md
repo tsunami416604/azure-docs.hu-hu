@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
 ms.openlocfilehash: 5ed41013535e4591d88bff5c017c1fcf4c4053cc
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65237807"
 ---
 # <a name="back-up-an-sap-hana-database"></a>Az SAP HANA-adatbázis biztonsági mentése
@@ -40,7 +40,7 @@ ms.locfileid: "65237807"
 - Biztonsági másolatot készíthet az adatbázisnaplók 15 percenként. Naplóalapú biztonsági mentések csak a flow, az adatbázis sikeres teljes biztonsági mentés befejezése után kezdődik.
 - Teljes és különbségi biztonsági másolatok is igénybe vehet. A növekményes biztonsági mentés jelenleg nem támogatott.
 - A biztonsági mentési szabályzat nem módosíthatók, az SAP HANA biztonsági mentésekhez való alkalmazása után. Ha szeretne biztonsági másolatot készíteni, eltérő beállításokkal, hozzon létre egy új szabályzatot, vagy egy másik szabályzat hozzárendelése. 
-    - Hozzon létre egy új szabályzatot, a tárolóban kattintson **házirendek** > **biztonsági mentési házirendek** > **+ Hozzáadás** > **az SAP HANA Az Azure virtuális gép**, és adja meg a házirend-beállításokat.
+    - Hozzon létre egy új szabályzatot, a tárolóban kattintson **házirendek** > **biztonsági mentési házirendek** >  **+ Hozzáadás** > **az SAP HANA Az Azure virtuális gép**, és adja meg a házirend-beállításokat.
     - A jelenlegi házirend nevére kattintva szabályzatot rendel egy másik, az adatbázis futó virtuális gép tulajdonságait. Ezután a a **biztonsági mentési szabályzat** lapon kiválaszthatja, hogy egy másik szabályzatot a biztonsági mentés használandó.
 
 
@@ -109,7 +109,7 @@ Megoldás előkészítése a nyilvános előzetes verzióban az alábbiak szerin
 
 Most már engedélyezheti a biztonsági mentés.
 
-1. 2. lépésben kattintson **biztonsági mentés konfigurálása**.
+1. 2\. lépésben kattintson **biztonsági mentés konfigurálása**.
 2. A **készíteni kívánt elemek kiválasztása**, válassza ki a védeni kívánt összes adatbázis > **OK**.
 3. A **biztonsági mentési szabályzat** > **biztonsági mentési házirend kiválasztása**, hozzon létre egy új biztonsági mentési szabályzatot, az adatbázisok, az alábbi utasítások szerint.
 4. A szabályzat létrehozását követően a **biztonsági mentési** menüben kattintson a **biztonsági mentés engedélyezése**.

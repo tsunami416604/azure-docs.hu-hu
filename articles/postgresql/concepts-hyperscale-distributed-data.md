@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 9020ee690d93a1b477471fac4a482a909fca5935
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65077335"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Elosztott adatok az Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió)
@@ -23,7 +23,7 @@ Azt mutatja, hogy az elosztott táblák tárolni szegmensek, valamint a szegmens
 
 Egy nagy kapacitású kiszolgálócsoport táblájában három típusa van, minden más célra szolgál.
 
-### <a name="type-1-distributed-tables"></a>1. típus: elosztott táblák
+### <a name="type-1-distributed-tables"></a>1\. típus: elosztott táblák
 
 Az első típusú, és a leggyakoribb, *elosztott* táblákat. Az SQL-utasítások a normál táblázatokhoz úgy tűnhet, de vannak vízszintesen *particionált* munkavégző csomópontok között. Ez azt jelenti, hogy a sorokat a tábla különböző csomópontokon nevű töredék táblákban tárolt *szegmensek*.
 
@@ -34,13 +34,13 @@ Nagy kapacitású fut, nem csak az SQL, de a tábla szegmensek frissíteni a fel
 Nagy kapacitású algoritmikus horizontális skálázási sorok hozzárendelése szegmenseket használ. A hozzárendelés nevű tábla oszlop értékét determinisztikus módon alapján történik a *elosztási oszlop.* A fürt rendszergazdája kell kijelölnie az oszlop, egy tábla terjesztésekor.
 Így a megfelelő választás fontos a teljesítmény- és funkciókat.
 
-### <a name="type-2-reference-tables"></a>2. típus: referencia táblák
+### <a name="type-2-reference-tables"></a>2\. típus: referencia táblák
 
 A referenciatábla olyan elosztott tábla, amelynek a teljes tartalmát is koncentrált be egyetlen szegmens. A szegmens minden feldolgozón, a rendszer replikálja, így minden worker-lekérdezéseket is hozzáférhetnek a helyileg, a referenciaadatok hálózati sorok kér egy másik csomópontjára anélkül. Referencia táblák nem elosztási oszlop van, mert a nem kell különbséget tenni a külön szegmensekben minden egyes sorára vonatkozóan.
 
 Referencia táblák általában kicsi, és az összes munkavégző csomóponton futó lekérdezések számára adatok tárolására szolgálnak. Például a felsorolt értékeket, mint a rendelési állapotot vagy termékkategóriák.
 
-### <a name="type-3-local-tables"></a>3. típus: helyi táblák
+### <a name="type-3-local-tables"></a>3\. típus: helyi táblák
 
 Nagy kapacitású használatakor a koordinátor-csomópont csatlakozik a rendszeres PostgreSQL-adatbázis. A koordinátor a szokványos táblák létrehozása, és nem szeretné a szegmensben őket.
 

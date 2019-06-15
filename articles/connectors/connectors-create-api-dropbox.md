@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/01/2019
 tags: connectors
 ms.openlocfilehash: 5a1bfe8ca38fc23f09b13195fb8ca5bd443a4afd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60312558"
 ---
 # <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Töltse fel, és a Dropboxban lévő fájlok kezelése az Azure Logic Apps használatával
@@ -31,7 +31,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat a Dropboxhoz, a logikai alkalmazást, �
 
 * Alapvető ismeretek szerezhetők [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ebben a példában szüksége lesz egy üres logikai alkalmazás.
 
-## <a name="add-trigger"></a>Eseményindító hozzáadása
+## <a name="add-trigger"></a>Trigger hozzáadása
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
@@ -57,7 +57,7 @@ A műveletek listából válassza a következő műveletet: **Fájl tartalmának
 
 1. Ha már nem jogosult az Azure Logic Apps Dropbox eléréséhez, engedélyezze a hozzáférést most.
 
-1. Tallózással keresse meg a használni kívánt, a fájl elérési útja a **fájl elérési útja** válassza ki azt a három pontra (**...** ) gombra. 
+1. Tallózással keresse meg a használni kívánt, a fájl elérési útja a **fájl elérési útja** válassza ki azt a három pontra ( **...** ) gombra. 
 
    Belül is kattinthat a **fájl elérési útja** mezőbe, és a dinamikus tartalmú listából válassza ki a **fájl elérési útja**, amelynek az értéke érhető el az eseményindítót az előző szakaszban hozzáadott kimenete.
 

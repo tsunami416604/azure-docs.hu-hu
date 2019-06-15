@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: zchia
 ms.openlocfilehash: f79bc083105f997b08f7cfa6f8e08a8f4f455455
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65470549"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása dinamikus jel konfigurálása
@@ -45,7 +45,7 @@ Mielőtt konfigurálná a az Azure AD-felhasználók automatikus dinamikus jel, 
 
 **Az Azure AD alkalmazáskatalógusában dinamikus jel hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
+1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -110,13 +110,13 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
     ![A dinamikus jel kiépítése](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
 
-7. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD dinamikus jel csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, a dinamikus jel fiókja rendelkezik rendszergazdai engedélyekkel, és próbálkozzon újra.
+7. 5\. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD dinamikus jel csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, a dinamikus jel fiókja rendelkezik rendszergazdai engedélyekkel, és próbálkozzon újra.
 
     ![Bérlői URL-cím + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
 8. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
 
-    ![Értesítő e-mail](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 9. Kattintson a **Save** (Mentés) gombra.
 
