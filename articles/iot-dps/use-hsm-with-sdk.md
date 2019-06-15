@@ -10,10 +10,10 @@ services: iot-dps
 manager: arjmands
 ms.custom: mvc
 ms.openlocfilehash: af59ccc6d14dce49d06e178aac3ecafc29bd982c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61248130"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Különböző igazolási mechanizmusok használata a Device Provisioning Service C-hez készült ügyféloldali SDK-jával

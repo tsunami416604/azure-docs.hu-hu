@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0dfbfa73009b5fa47dd7bb0804b612d0c2ad0a5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61062275"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Nem található az Azure-erőforrások hibák megoldása
@@ -80,7 +80,7 @@ Függőségi problémák megjelenésekor kell betekintést nyerhet az erőforrá
 
    ![egymást követő üzembe helyezési](./media/resource-manager-not-found-errors/deployment-events-sequence.png)
 
-## <a name="solution-2---get-resource-from-different-resource-group"></a>2. megoldás erőforrás le másik erőforráscsoportba
+## <a name="solution-2---get-resource-from-different-resource-group"></a>2\. megoldás erőforrás le másik erőforráscsoportba
 
 Ha az erőforrás már létezik egy másik erőforráscsoportban található, mint a folyamatban való üzembe helyezése, használja a [resourceId függvény](resource-group-template-functions-resource.md#resourceid) beolvasni az erőforrás a teljes nevet.
 

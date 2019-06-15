@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: 7f8638365b40395a5dd82457c40e5c15209ba1a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60882414"
 ---
 # <a name="replicas-and-instances"></a>Replikák és példányok 
@@ -116,11 +116,11 @@ A replika szerepkör nem szerepel megfelelő a készenléti állapotot.
 ## <a name="replica-role"></a>Replika szerepkör 
 A replika szerepkör meghatározza, hogy a függvény a replika:
 
-- **Elsődleges (P)**: Van egy elsődleges hajtják végre, a replika olvasási és írási műveletek. 
+- **Elsődleges (P)** : Van egy elsődleges hajtják végre, a replika olvasási és írási műveletek. 
 - **(S) ActiveSecondary**: Ezek a állapot frissítések fogadása az elsődleges, alkalmazza őket, és küldje vissza a nyugtázás a replikákat. A replikakészlet nincsenek több aktív másodlagos példány hozható létre. Ezek aktív másodlagos adatbázisok száma határozza meg, a hibák száma a szolgáltatás képes kezelni.
 - **(I) IdleSecondary**: Ezek a replikák szerint az elsődleges beépített folyamatban van. Ezek azért küldtük Önnek, állapota az elsődleges kiszolgálóról, mielőtt azok előléptetése aktív másodlagos. 
-- **Egyik sem (N)**: Ezeket a replikákat a replika nem rendelkezik a felelős.
-- **Ismeretlen (U)**: Ez a kezdeti replika szerepköre, mielőtt megkap minden **ChangeRole** API-hívás a Service Fabric.
+- **Egyik sem (N)** : Ezeket a replikákat a replika nem rendelkezik a felelős.
+- **Ismeretlen (U)** : Ez a kezdeti replika szerepköre, mielőtt megkap minden **ChangeRole** API-hívás a Service Fabric.
 
 A következő ábra szemlélteti a replika szerepkör átmenetek és néhány példa forgatókönyvet, amelyben fordulhat:
 

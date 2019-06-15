@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
 ms.openlocfilehash: f6d9e683e1feff670c26b01a31ce977557295bff
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62129059"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Azure-támogatáskérések létrehozása
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az Azure-ügyfelek létrehozása és kezelése az Azure Portalon, a támogatási kérések [ https://portal.azure.com ](https://portal.azure.com).
 
 > [!NOTE]
@@ -71,7 +71,7 @@ A varázsló második lépése gyűjti össze a további információkhoz juthat
 
 A virtuális gép kapcsolat például a fent folytatása, lenne hálózati kapcsolati hiba jelzi az űrlap kitöltésekor, és további információkhoz juthat a problémáról, beleértve azt a becsült időt, amikor a problémát tapasztal, biztosítja.
 
-![2. a probléma panel](./media/how-to-create-azure-support-request/Problem02.png)
+![2\. a probléma panel](./media/how-to-create-azure-support-request/Problem02.png)
 
 ## <a name="related-help"></a>Kapcsolódó súgó
 Probléma típusa és a kiválasztott kategória alapján, biztosítunk egy megoldás, amely segíthet a probléma megoldásához.
@@ -84,7 +84,7 @@ Is biztosítunk környezetfüggő önsegítő megoldások a probléma megoldás�
 
 A javasolt megoldásokat nem segít, ha továbbra is a folyamatot, hozzon létre egy támogatási kérést.
 
-![3. a probléma panel](./media/how-to-create-azure-support-request/Problem03.png)
+![3\. a probléma panel](./media/how-to-create-azure-support-request/Problem03.png)
 
 ## <a name="contact-information"></a>Kapcsolattartási adatok
 A varázsló az utolsó lépés megerősíti, hogy a kapcsolattartási beállítások és a kapcsolattartási adatokat, hogy tudjuk, hogyan lehet elérni Önt.

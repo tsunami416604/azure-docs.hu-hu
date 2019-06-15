@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 075d0e2471457e1a585f7fdea9b523b1d13499c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61388592"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Az Azure SQL Database-adatbázisok és a készletek a több-bérlős SaaS-alkalmazás teljesítményének figyelése és kezelése
@@ -178,7 +178,7 @@ A készlet felskálázása mellett másik lehetőségként létrehozhat egy más
    1. Kattintson a **adatbázisok hozzáadása** azon a kiszolgálón, lehet hozzáadni az adatbázisok listájának megtekintéséhez *Pool2*.
    1. Válassza ki, helyezze át ezeket az új készletbe, majd 10 adatbázisokhoz **kiválasztása**. Futtatja, a terhelésgenerátor, ha a szolgáltatás már tudja, hogy a teljesítmény profil nagyobb, mint az alapértelmezett 50 eDTU méretű készlet igényel, és javasolja, hogy egy 100 eDTU-beállítás kezdve.
 
-      ![ajánlás](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![Az ajánlás](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
    1. Ebben az oktatóanyagban hagyja meg az alapértelmezett 50 edtu-t, és kattintson a **kiválasztása** újra.
    1. Válassza ki **OK** hoz létre az új készletet és áthelyezhet abba a kiválasztott adatbázisokat.

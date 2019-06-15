@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: be66fd51b37c0e62b2b757a88ee1db9319b2093a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878834"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Adatok másolása az Azure Storage-blobokat az Azure Data Lake Storage Gen1
@@ -54,12 +54,12 @@ A szintaxist a paramétereket az alábbiakban tekintheti át:
 
 | Beállítás | Leírás |
 | --- | --- |
-| Forrás |A forrásadatok helyét adja meg az Azure storage-blobba. A forrás blob-tároló, blob vagy egy másik Data Lake Storage Gen1 fiók is lehet. |
+| source |A forrásadatok helyét adja meg az Azure storage-blobba. A forrás blob-tároló, blob vagy egy másik Data Lake Storage Gen1 fiók is lehet. |
 | Cél |Itt adhatja meg a Data Lake Storage Gen1 célhelyre másolja. |
 | SourceKey |Megadja a tárelérési kulcs az Azure storage blob forrás. Ez azért szükséges, csak ha a forrás blob-tároló vagy egy blobot. |
 | Fiók |**Választható**. Akkor használja, ha a másolási feladat futtatása az Azure Data Lake Analytics-fiókhoz használni kívánt. Ha a szintaxis a /Account beállítást használják, de ne adjon meg egy Data Lake Analytics-fiók, a AdlCopy egy alapértelmezett fiókot használja a feladat futtatásához. Is ha ezt a beállítást használja, hozzá kell adnia a forrás (Azure Storage-Blob) és a cél (az Azure Data Lake Storage Gen1) adatforrásként szolgálnak a Data Lake Analytics-fiók. |
 | Egység |Meghatározza a másolási feladathoz használandó Data Lake Analytics-egységek számát. Ez a beállítás akkor kötelező, ha a **illetve fiók** beállítással azt adhatja meg a Data Lake Analytics-fiók. |
-| Mintázat |Megadja egy Reguláriskifejezés-minta, amely azt jelzi, hogy mely blobok vagy a fájlok másolásához. Az AdlCopy használja a megfelelő kis-és nagybetűket. Ha nincs minta meg van adva alapértelmezett mintázatot, hogy az összes elem másolása. Több fájlminták megadása nem támogatott. |
+| Pattern |Megadja egy Reguláriskifejezés-minta, amely azt jelzi, hogy mely blobok vagy a fájlok másolásához. Az AdlCopy használja a megfelelő kis-és nagybetűket. Ha nincs minta meg van adva alapértelmezett mintázatot, hogy az összes elem másolása. Több fájlminták megadása nem támogatott. |
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-an-azure-storage-blob"></a>A szolgáltatásnévben AdlCopy (önálló) adatokat másol egy Azure Storage-blobba
 1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahol az AdlCopy telepítve van, általában `%HOMEPATH%\Documents\adlcopy`.

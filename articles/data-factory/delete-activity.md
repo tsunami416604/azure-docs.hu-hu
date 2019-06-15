@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61346343"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Az Azure Data Factory tevékenység törlése
@@ -82,7 +82,7 @@ Az alábbiakban a törlése tevékenység használatára vonatkozó ajánlásoka
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | Adatkészlet | Itt az adatkészlet-hivatkozásban, határozza meg, hogy mely fájlok vagy törlődnek mappa | Igen |
-| a rekurzív | Azt jelzi, hogy a fájlokat a törölt rekurzív módon az almappák vagy csak a megadott mappába.  | Nem. A mező alapértelmezett értéke: `false`. |
+| recursive | Azt jelzi, hogy a fájlokat a törölt rekurzív módon az almappák vagy csak a megadott mappába.  | Nem. A mező alapértelmezett értéke: `false`. |
 | maxConcurrentConnections | A storage áruház egyidejűleg mappára vagy fájlokra törlése csatlakozni a kapcsolatok száma.   |  Nem. A mező alapértelmezett értéke: `1`. |
 | EnableLogging | Azt jelzi, hogy kell-e rögzíteni a fájl vagy mappa nevét, amely törölve lett. Igaz értéke esetén szüksége további adjon meg egy tárfiókot, a naplófájl mentéséhez, hogy a naplófájl olvassa el a viselkedéseket a törlése tevékenység követheti nyomon. | Nem |
 | logStorageSettings | Csak érvényes akkor, ha enablelogging = true.<br/><br/>A megadott tárolótulajdonságok, amely egy csoportját, mentse a fájl vagy mappa törlése tevékenység által törölt nevét tartalmazó naplófájlt szeretné. | Nem |
@@ -115,7 +115,7 @@ Nincsenek két helyen, ahol megtekintheti és az eredmények a törlése tevéke
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Minta log fájl törlése tevékenység
 
-| Name (Név) | Category | status | Hiba |
+| Name (Név) | Category | Állapot | Hiba |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | Fájl | Törölve |  |
 | test2/hello789.txt | Fájl | Törölve |  |
@@ -143,7 +143,7 @@ Most már használja a Delete mappára vagy fájlokra törli az adatkészlet kü
 
 A folyamat rendszeres időközönként karbantartása az idő a particionált mappára vagy fájlokra is létrehozhat.  Például hasonló,-e a gyökérmappa-szerkezetében: `/mycontainer/2018/12/14/*.csv`.  Az ütemezési eseményindító azonosítására, mely mappára vagy fájlokra törölni kell minden egyes folyamatfuttatás az ADF rendszerváltozó használhatja. 
 
-#### <a name="sample-pipeline"></a>Minta feldolgozási sor
+#### <a name="sample-pipeline"></a>Minta folyamatot
 
 ```json
 {
@@ -263,7 +263,7 @@ A folyamat rendszeres időközönként karbantartása az idő a particionált ma
 
 Létrehozhat egy folyamatot, fájlszűrő attribútum kihasználva a régi vagy lejárt fájlok karbantartása: "LastModified" adatkészletben.  
 
-#### <a name="sample-pipeline"></a>Minta feldolgozási sor
+#### <a name="sample-pipeline"></a>Minta folyamatot
 
 ```json
 {
@@ -328,7 +328,7 @@ Fájl másolása másolási tevékenységgel és egy törlési tevékenységet a
 > [!NOTE]
 > Ha áthelyezi a mappát egy adatkészletet, amely tartalmazza a mappa elérési útja csak, és ezután egy másolási tevékenységgel és egy hivatkozást az ugyanahhoz az adatkészlethez egy mappába, amely a törlése tevékenység óvatosan kell. Győződjön meg arról, hogy nem lesz a mappába művelet másolása és törlése művelet között érkező új fájlokat, mert van.  Ha a mappa abban a pillanatban, amikor a másolási tevékenység csak a másolási feladat befejeződött, de a törlési tevékenységet nem lett stared érkező új fájlokat, is lehet, hogy a törlési tevékenységet törli az új beérkező fájlt, amely a destinati sem lett átmásolva még törlésével a teljes mappát. 
 
-#### <a name="sample-pipeline"></a>Minta feldolgozási sor
+#### <a name="sample-pipeline"></a>Minta folyamatot
 
 ```json
 {
@@ -573,4 +573,4 @@ Másolási tevékenység által használt adatok cél adatkészletet.
 
 További információ a fájlok áthelyezése az Azure Data Factoryban.
 
--   [Adatok másolása eszköz az Azure Data Factoryban](copy-data-tool.md)
+-   [Adatok másolása eszköz az Azure Data Factoryben](copy-data-tool.md)

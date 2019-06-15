@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
 ms.openlocfilehash: 4e9bb9bd86e22efa5dd514e742481911b09c5e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61088257"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
@@ -74,7 +74,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 ## <a name="workbooks"></a>Munkafüzetek
 [Munkafüzetek](../azure-monitor/app/usage-workbooks.md) adataihoz, vizsgálati és együttműködési belül a team betekintést nyújtó interaktív dokumentumok. Útmutatók és az incidens postmortem konkrét példákat, ahol munkafüzetek hasznosak hibaelhárítást.
 
-![Munkafüzet](media/visualizations/workbook.png)
+![A munkafüzet](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>Előnyök
 - Metrikák és naplók is támogatja.

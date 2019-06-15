@@ -9,10 +9,10 @@ ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: efd2fc9d164564126b7b641ef35bbb10c4834f49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60996402"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>A Log Analytics-riasztások kiterjesztése az Azure-riasztások
@@ -22,7 +22,7 @@ ms.locfileid: "60996402"
 
 Nemrég, amíg az Azure Log Analytics a saját riasztási funkcióval rendelkezik, amely sikerült proaktívan kaphat értesítést a Log Analytics-adatok alapuló feltételek tartalmazza. A Microsoft Operations Management Suite portál riasztási szabályok felügyelt. A riasztások új kezelőfelülete mostantól integrálva van riasztási között különböző szolgáltatások, Microsoft Azure-ban. Érhető el **riasztások** alatt az Azure Monitor az Azure Portalon, és támogatja a vizsgálati naplók, metrikák, a riasztások és a Log Analytics és az Azure Application Insights-naplók.
 
-Az Azure Government felhőalapú szolgáltatást használó ügyfeleink OMS-portálon is [önkéntesen terjeszthető ki a riasztási szabályok az Azure](alerts-extend-tool.md) a **2019. február 1.**. Kezdési **2019. március 1.** - Microsoft auto-kiterjeszti rendszeres módon minden meglévő riasztási szabályok az Azure Government - OMS-portálon az Azure-bA; a break a figyelésre és állásidő nélkül. Ekkor vagy később létrehozott minden új munkaterület **2019. március 1.** az Azure Government cloudban OMS portál lesz automatikus terjesztve az Azure-bA.
+Az Azure Government felhőalapú szolgáltatást használó ügyfeleink OMS-portálon is [önkéntesen terjeszthető ki a riasztási szabályok az Azure](alerts-extend-tool.md) a **2019. február 1.** . Kezdési **2019. március 1.** - Microsoft auto-kiterjeszti rendszeres módon minden meglévő riasztási szabályok az Azure Government - OMS-portálon az Azure-bA; a break a figyelésre és állásidő nélkül. Ekkor vagy később létrehozott minden új munkaterület **2019. március 1.** az Azure Government cloudban OMS portál lesz automatikus terjesztve az Azure-bA.
 
 ## <a name="benefits-of-extending-your-alerts"></a>A riasztások kiterjesztését az előnyei
 Nincsenek számos előnnyel jár. a létrehozása és kezelése például a riasztások az Azure Portalon:

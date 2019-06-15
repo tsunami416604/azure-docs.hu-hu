@@ -17,10 +17,10 @@ ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 72d1c4d2ea3adf7d8751adfbb013435f8f2530f0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125746"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Az Azure portal használatával egy virtuális gép (klasszikus) magánhálózati IP-címek konfigurálása
@@ -61,7 +61,7 @@ Nevű virtuális gép létrehozása *DNS01* a a *előtérbeli* nevű virtuális 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Hogyan kérheti le a statikus magánhálózati IP-címadatok egy virtuális géphez
 A statikus magánhálózati IP-címadatok a fenti lépésekkel létrehozott virtuális gép megtekintéséhez futtassa az alábbi lépéseket.
 
-1. Az Azure Portalon, válassza ki a **összes TALLÓZÁSA** > **virtuális gépek (klasszikus)** > **DNS01** > **összes beállítások** > **IP-címek** , és figyelje meg az IP-cím hozzárendelése és IP-cím, az alább látható módon.
+1. Az Azure Portalon, válassza ki a **összes TALLÓZÁSA** > **virtuális gépek (klasszikus)**  > **DNS01** > **összes beállítások** > **IP-címek** , és figyelje meg az IP-cím hozzárendelése és IP-cím, az alább látható módon.
    
     ![Virtuális gép létrehozása az Azure Portalon](./media/virtual-networks-static-ip-classic-pportal/figure06.png)
 

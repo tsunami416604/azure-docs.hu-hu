@@ -10,10 +10,10 @@ ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61305020"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Automation-runbook kezdve egy webhook
@@ -34,7 +34,7 @@ A következő táblázat ismerteti a tulajdonságokat, amelyeket konfigurálnia 
 |:--- |:--- |
 | Name (Név) |Egy webhook azt szeretné, mivel ez az ügyfél nem elérhetővé tett bármilyen nevet megadhat. Ez csak az Ön számára azonosítására szolgál a runbookot, az Azure Automationben. <br> Ajánlott eljárásként meg kell nevezze el a webhook az azokat használó ügyfél kapcsolatos. |
 | URL-cím |A webhook URL-címe az az egyedi cím, egy HTTP POST-indítani a runbookot, a webhook csatolva a meghívó ügyfél. A webhook létrehozásakor automatikusan létrejön. Egy egyéni URL-cím nem adható meg. <br> <br> Az URL-címet tartalmaz egy biztonsági jogkivonatot, amely lehetővé teszi a runbook által egy külső rendszer további hitelesítésre. Ezért azt kell kezelni, mint egy jelszó. Biztonsági okokból csak megtekintheti az URL-cím az Azure Portalon a webhook létrehozásakor. Megjegyzés: az URL-címet egy biztonságos helyre későbbi használat céljából. |
-| Lejárati dátum |Egy tanúsítványt, mint például az egyes webhookok van ekkor már nem használható lejárati dátuma. A lejárati dátum után a a webhook létrehozásakor mindaddig, amíg a webhook lejárt nem módosítható. |
+| Lejárat dátuma |Egy tanúsítványt, mint például az egyes webhookok van ekkor már nem használható lejárati dátuma. A lejárati dátum után a a webhook létrehozásakor mindaddig, amíg a webhook lejárt nem módosítható. |
 | Enabled |Webhook alapértelmezés szerint engedélyezve van, a létrehozásakor. Ha beállította azt le van tiltva, akkor nincs ügyfél is használhassák. Beállíthatja a **engedélyezve** tulajdonság a webhookot, vagy bármikor egyszer létrehozásakor jön létre. |
 
 ### <a name="parameters"></a>Paraméterek
@@ -95,7 +95,7 @@ A következő eljárással hozzon létre egy új webhook társított a runbookho
 4. Adjon meg egy **neve**, **lejárati dátum** a webhook, és hogy szabad engedélyezni. Lásd: [webhook részletei](#details-of-a-webhook) bővebben ezeket a tulajdonságokat.
 5. A Másolás ikonra, és nyomja le a Ctrl + C billentyűkombinációt a webhook URL-címét. Majd rögzítse azt egy biztonságos helyre. **Miután létrehozta a webhookot, újra nem sikerült beolvasni az URL-címet.**
 
-   ![Webhook URL-címe](media/automation-webhooks/copy-webhook-url.png)
+   ![Webhook URL](media/automation-webhooks/copy-webhook-url.png)
 
 1. Kattintson a **paraméterek** a runbook-paraméterek értékének megadására. Ha a runbook rendelkezik a kötelező paraméterekhez, majd, nem lesznek létre tudja hozni a webhookot, kivéve, ha az értékek.
 1. Kattintson a **létrehozás** a webhook létrehozása.

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: 50d0ed644b5afa744e8bce478199079fd4fb7432
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878964"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 használatának ajánlott eljárásai
@@ -45,7 +45,7 @@ Az Azure Active Directory-szolgáltatásnevek általában használják a szolgá
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>Az Azure-szolgáltatásokhoz a Data Lake Storage Gen1 tűzfal engedélyezése
 
-Data Lake Storage Gen1 ne tudják bekapcsolni a tűzfalat, és korlátozza a hozzáférést csak az Azure-szolgáltatás, amely ajánlott a külső behatolások elleni egy kisebb támadási felület támogatja. Tűzfal a Data Lake Storage Gen1 fiók az Azure Portalon keresztül is engedélyezhető a **tűzfal** > **tűzfal engedélyezése (bekapcsolva)** > **engedélyezi a hozzáférést az Azure-bA szolgáltatások** beállítások.
+Data Lake Storage Gen1 ne tudják bekapcsolni a tűzfalat, és korlátozza a hozzáférést csak az Azure-szolgáltatás, amely ajánlott a külső behatolások elleni egy kisebb támadási felület támogatja. Tűzfal a Data Lake Storage Gen1 fiók az Azure Portalon keresztül is engedélyezhető a **tűzfal** > **tűzfal engedélyezése (bekapcsolva)**  > **engedélyezi a hozzáférést az Azure-bA szolgáltatások** beállítások.
 
 ![A Data Lake Storage Gen1 tűzfalbeállítások](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "tűzfalbeállítások a Data Lake Storage Gen1")
 

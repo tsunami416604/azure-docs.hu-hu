@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: c64340491dba11870364610a6c2ff62e25c1328a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61001831"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Kapcsolódás az adatforrásokhoz
@@ -58,7 +58,7 @@ Hogy egyszerűbb legyen a felhasználók számára, akik adatforrásra, de nincs
 
  ![A kérelem hozzáférési utasításait kapcsolatadatok](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az adatforrás regisztrálása **Azure Data Catalog** lehetővé teszi az adatok felderíthető szerkezeti és leíró metaadatokat másolja az adatforrás a Catalog szolgáltatásba. Miután regisztrált egy adatforrást, és felderítése, a felhasználók kapcsolódhatnak az adatforrást a **Azure Data Catalog** portál "Megnyitás a..." " menü vagy tetszőleges eszközökkel az adatok.
 
 ## <a name="see-also"></a>Lásd még

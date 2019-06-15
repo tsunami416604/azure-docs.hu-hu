@@ -10,10 +10,10 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: f851fd2857650dd00e365abf71ec5f0199db6d57
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711588"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
@@ -39,7 +39,7 @@ Az Azure Automation Runbookjai futhat bármelyiken védőfal mögött az Azure-b
 |Üzemeltetési költségek minimálisra csökkentéséhez|Azure Sandbox|Nincs számítási terhelés, nem kell a virtuális gép van|
 |A hosszabb ideig futó parancsfájl|hibrid runbook-feldolgozó|Az Azure próbakörnyezetbe lefordítja rendelkezik [erőforrásokra vonatkozó korlátozás](../azure-subscription-service-limits.md#automation-limits)|
 |Együttműködhet a helyi szolgáltatás.|hibrid runbook-feldolgozó|Férhet közvetlenül a gazdagépen|
-|3. fél szoftver és végrehajtható fájlok|hibrid runbook-feldolgozó|Az operációs rendszer kezelése, és amelyekkel szoftver telepíthető|
+|3\. fél szoftver és végrehajtható fájlok|hibrid runbook-feldolgozó|Az operációs rendszer kezelése, és amelyekkel szoftver telepíthető|
 |Egy fájl vagy egy runbook-mappa figyelése|hibrid runbook-feldolgozó|Használja a [figyelőfeladat](automation-watchers-tutorial.md) egy hibrid Runbook-feldolgozón|
 |Nagy számításigényű script erőforrás|hibrid runbook-feldolgozó| Az Azure próbakörnyezetbe lefordítja rendelkezik [erőforrásokra vonatkozó korlátozás](../azure-subscription-service-limits.md#automation-limits)|
 |Modulok használata az adott követelményekhez| hibrid runbook-feldolgozó|Néhány példa:</br> **WinSCP** -winscp.exe függőség </br> **IISAdministration** -kell az IIS engedélyezve|
@@ -201,12 +201,12 @@ Runbook-feladatok futtatása Azure próbakörnyezetbe lefordítja a nincs hozzá
 
 Az alábbi táblázat bemutatja a feladatok különféle lehetséges állapotait. PowerShell kétféle típusú hibák megszakítást nem okozó hibákat tartalmaz. Megszakítást okozó hiba a runbook állapotának beállítása **sikertelen** Ha. Nem okozó még a bekövetkezésük után folytatja a parancsfájl engedélyezi. Egy nem megszakító hiba például használja a `Get-ChildItem` parancsmag és egy elérési út nem létezik. PowerShell látja, hogy az elérési út nem létezik, hibát jelez és továbbra is fennáll, a következő mappát. Ez a hiba nem a runbook állapotának beállítása **sikertelen** és lehetett megjelölni **befejezve**. Használhatja egy runbookot, hogy állítsa le az egy nem megszakító hibát kényszerítéséhez `-ErrorAction Stop` a parancsmagról.
 
-| status | Leírás |
+| Állapot | Leírás |
 |:--- |:--- |
 | Befejezve |A feladat sikeresen befejeződött. |
 | Meghiúsult |A [grafikus és a PowerShell-munkafolyamati runbookok](automation-runbook-types.md), a runbook fordítása sikertelen. A [PowerShell-parancsprogram runbookok](automation-runbook-types.md), a runbook nem indult el, vagy a feladat kivétel történt. |
 | Sikertelen volt a Várakozás az erőforrásokat, |A feladat sikertelen volt, mert elérte a [igazságos elosztás](#fair-share) háromszor korlátozhatja, és az azonos ellenőrzőpont vagy kezdete a forgatókönyv és minden alkalommal, amikor indított. |
-| Várakozási sorba helyezve |A feladat arra vár, hogy egy automatizálási feldolgozó erőforrásai felszabaduljanak, és elindulhasson. |
+| Várólistán |A feladat arra vár, hogy egy automatizálási feldolgozó erőforrásai felszabaduljanak, és elindulhasson. |
 | Indítás |A feladat hozzá lett rendelve egy feldolgozóhoz, és a rendszer elindítja. |
 | Folytatás |A rendszer folytatja a feladat felfüggesztését követően annak. |
 | Fut |A feladat fut. |

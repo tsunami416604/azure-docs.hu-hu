@@ -17,10 +17,10 @@ ms.date: 04/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9167a5ed72e6fec2ca03cc97d1d41dd6cd4aaba6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104583"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>Oktatóanyag: Titkos kulcs kiszolgálóval (helyszíni) az Azure Active Directory-integráció
@@ -61,7 +61,7 @@ Konfigurálja a titkos kulcs kiszolgáló (helyszíni) integrációja az Azure A
 
 **Titkos kulcs kiszolgáló (helyszíni) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -73,7 +73,7 @@ Konfigurálja a titkos kulcs kiszolgáló (helyszíni) integrációja az Azure A
 
     ![Az új alkalmazás gomb][3]
 
-1. A Keresés mezőbe írja be a **titkos kiszolgáló (helyszíni)**, jelölje be **titkos kiszolgáló (helyszíni)** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **titkos kiszolgáló (helyszíni)** , jelölje be **titkos kiszolgáló (helyszíni)** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredmények listájában titkos kiszolgáló (helyszíni)](./media/secretserver-on-premises-tutorial/tutorial_secretserver_addfromgallery.png)
 
@@ -191,7 +191,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés hozz
 
     ![Felhasználó hozzárendelése][201]
 
-1. Az alkalmazások listájában jelölje ki a **titkos kiszolgáló (helyszíni)**.
+1. Az alkalmazások listájában jelölje ki a **titkos kiszolgáló (helyszíni)** .
 
     ![A titkos kulcs kiszolgáló (helyszíni) hivatkozásra az alkalmazások listáját](./media/secretserver-on-premises-tutorial/tutorial_secretserver_app.png)
 

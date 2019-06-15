@@ -18,10 +18,10 @@ ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: 30d153863a20dcdddc702ee5a37c34a2938d7446
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61473909"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linuxos virtuális gép optimalizálása az Azure-ban
@@ -31,7 +31,7 @@ Linux rendszerű virtuális gépek (VM) a könnyű a parancssorból vagy a port�
 Ez a témakör azt feltételezi, hogy már rendelkezik egy működő Azure-előfizetés ([ingyenes próbaidőszakra](https://azure.microsoft.com/pricing/free-trial/)) és a már üzembe helyezett virtuális gépek az Azure-előfizetésben helyezi. Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-előfizetésbe [az bejelentkezési](/cli/azure/reference-index) előtt [hozzon létre egy virtuális Gépet](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Azure-OS lemez
-Miután létrehozott egy Linux rendszerű virtuális gép az Azure-ban, két lemezt társítva van. **/ dev/sda** az operációsrendszer-lemezt, **/dev/sdb** az ideiglenes lemez.  Ne használja a fő operációsrendszer-lemez (**/dev/sda**) kivételével az operációs rendszer, mert a gyors Virtuálisgép-rendszerindítás ideje van optimalizálva, és nem biztosít a számítási feladatokhoz megfelelő teljesítmény. Egy vagy több lemez csatolása a virtuális gép első állandó szeretné az adatok nem optimalizált. 
+Miután létrehozott egy Linux rendszerű virtuális gép az Azure-ban, két lemezt társítva van. **/ dev/sda** az operációsrendszer-lemezt, **/dev/sdb** az ideiglenes lemez.  Ne használja a fő operációsrendszer-lemez ( **/dev/sda**) kivételével az operációs rendszer, mert a gyors Virtuálisgép-rendszerindítás ideje van optimalizálva, és nem biztosít a számítási feladatokhoz megfelelő teljesítmény. Egy vagy több lemez csatolása a virtuális gép első állandó szeretné az adatok nem optimalizált. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Lemezek hozzáadása a méret és teljesítménycéljai
 A virtuális gép mérete alapján, a-sorozatú, a D sorozatú 32 lemezek akár 16 további lemez is csatlakoztatható, és a gépi 64 lemez a G sorozat – egyenként legfeljebb 1 TB-nál. A hely és IOps-követelmények igény szerint további lemezeket ad hozzá. Minden lemezhez tartozik egy 500 IOps teljesítményt célja Standard Storage és lemezenként 5000 IOps legfeljebb a Premium Storage számára.
@@ -51,7 +51,7 @@ Ha többé vesződnie a sérült magas IOps számítási feladatokat, és a leme
  
 
 ## <a name="your-vm-temporary-drive"></a>A virtuális gép ideiglenes meghajtó
-Alapértelmezés szerint ha egy virtuális Gépet hoz létre az Azure biztosít operációsrendszer-lemezt (**/dev/sda**) és a egy ideiglenes lemezt (**/dev/sdb**).  Minden további lemezek megjelenítése mentése másként hozzáadása **/dev/sdc**, **/dev/sdd**, **/dev/sde** és így tovább. Az ideiglenes lemezen lévő összes adatot (**/dev/sdb**) nem tartós, és elvesznek, ha az adott események például a virtuális gép átméretezése, újbóli üzembe helyezés, vagy egy karbantartási újraindítja a virtuális gép.  A telepítéskor kiválasztott Virtuálisgép-méretet a méretét és típusát az ideiglenes lemez kapcsolódik. Minden, a prémium szintű méretezés a virtuális gépek (DS, G és DS_V2 sorozat) az ideiglenes meghajtó élvezik legfeljebb 48 k további teljesítmény egy helyi SSD iops-t. 
+Alapértelmezés szerint ha egy virtuális Gépet hoz létre az Azure biztosít operációsrendszer-lemezt ( **/dev/sda**) és a egy ideiglenes lemezt ( **/dev/sdb**).  Minden további lemezek megjelenítése mentése másként hozzáadása **/dev/sdc**, **/dev/sdd**, **/dev/sde** és így tovább. Az ideiglenes lemezen lévő összes adatot ( **/dev/sdb**) nem tartós, és elvesznek, ha az adott események például a virtuális gép átméretezése, újbóli üzembe helyezés, vagy egy karbantartási újraindítja a virtuális gép.  A telepítéskor kiválasztott Virtuálisgép-méretet a méretét és típusát az ideiglenes lemez kapcsolódik. Minden, a prémium szintű méretezés a virtuális gépek (DS, G és DS_V2 sorozat) az ideiglenes meghajtó élvezik legfeljebb 48 k további teljesítmény egy helyi SSD iops-t. 
 
 ## <a name="linux-swap-file"></a>Linux lapozófájl
 Ha az Azure virtuális gép egy Ubuntu vagy a CoreOS rendszerképből, majd használhatja a CustomData a felhőkonfiguráció küldeni a cloud-init. Ha Ön [egyéni Linux-rendszerképek feltöltése](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , amely a cloud-Init eszközt használ, a cloud-init használata lapozó partíciót is konfigurálnia.

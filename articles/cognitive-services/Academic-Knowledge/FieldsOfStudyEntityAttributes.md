@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
 ms.openlocfilehash: e9d6badf76efd03c0520a728af7b3e47b25f200a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61339585"
 ---
 # <a name="field-of-study-entity"></a>Tanulmány entitás mezője
@@ -25,9 +25,9 @@ Name (Név)    |Leírás                            |Típus       | Műveletek
 ------- | ------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                              |Int64      |Egyenlő
 FN      |Tanulmány normalizált név mező         |String     |Egyenlő
-DFN     |Tanulmány megjelenítendő név mezőt            |String     |nincs
-Másolat      |A mező tanulmány idézetet teljes száma    |Int32      |nincs  
-ECC     |A mező teljes becsült idézetet száma|Int32      |nincs
+DFN     |Tanulmány megjelenítendő név mezőt            |String     |Egyik sem
+CC      |A mező tanulmány idézetet teljes száma    |Int32      |Egyik sem  
+ECC     |A mező teljes becsült idézetet száma|Int32      |Egyik sem
 FL      |Mezők tanulmány hierarchia szintű     |Int32      |Egyenlő, <br/>IsBetween
 FP.FN   |Tanulmány név mező             |String     |Egyenlő
 FP.FId  |Tanulmány azonosító mező               |Int64      |Egyenlő

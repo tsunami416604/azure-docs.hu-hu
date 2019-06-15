@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 40b633c4e51a34e6640a9557be49bbe30543daf5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61457651"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Hogyan lehet a Twilio használata Hanghívási és SMS-funkciókhoz Ruby nyelven
@@ -52,16 +52,16 @@ A Twilio-műveletek XML-címkéket, hogy mit kell tudniuk Twilio **tegye**. Ha p
 
 Az alábbiakban látható egy Twilio-műveletek listájához.
 
-* **&lt;Tárcsázás&gt;**: A hívó csatlakozik egy másik telefonon.
-* **&lt;Gyűjtse össze&gt;**: Gyűjti a telefon billentyűzeten beírt számjegyeket.
-* **&lt;Vonalbontás&gt;**: A hívás véget ér.
-* **&lt;Play&gt;**: Hang lejátszása.
-* **&lt;Felfüggesztés&gt;**: A megadott számú másodperc vár beavatkozás nélkül.
-* **&lt;Rekord&gt;**: A hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
-* **&lt;Redirect&gt;**: Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
-* **&lt;Elutasítás&gt;**: A Twilio-számra egy bejövő hívás elutasítása a számlázási, nélkül
-* **&lt;Tegyük fel, hogy&gt;**: Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
-* **&lt;SMS&gt;**: SMS üzenetet küld.
+* **&lt;Tárcsázás&gt;** : A hívó csatlakozik egy másik telefonon.
+* **&lt;Gyűjtse össze&gt;** : Gyűjti a telefon billentyűzeten beírt számjegyeket.
+* **&lt;Vonalbontás&gt;** : A hívás véget ér.
+* **&lt;Play&gt;** : Hang lejátszása.
+* **&lt;Felfüggesztés&gt;** : A megadott számú másodperc vár beavatkozás nélkül.
+* **&lt;Rekord&gt;** : A hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
+* **&lt;Redirect&gt;** : Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
+* **&lt;Elutasítás&gt;** : A Twilio-számra egy bejövő hívás elutasítása a számlázási, nélkül
+* **&lt;Tegyük fel, hogy&gt;** : Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
+* **&lt;SMS&gt;** : SMS üzenetet küld.
 
 A Twilio műveletek, az attribútumokat és TwiML kapcsolatos további információkért lásd: [TwiML][twiml]. A Twilio API-val kapcsolatos további információkért lásd: [Twilio API-t][twilio_api].
 

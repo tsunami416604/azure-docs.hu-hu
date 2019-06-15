@@ -3,18 +3,17 @@ title: A DPS – Azure IoT Edge a Linux rendszerű eszközök automatikus kiép�
 description: Linux rendszerű virtuális gép egy szimulált TPM-eszköz segítségével tesztelheti az Azure Device Provisioning Service az Azure IoT Edge-hez
 author: kgremban
 manager: philmea
-ms.author: v-yiso
-origin.date: 03/01/2019
-ms.date: 03/25/2019
+ms.author: kgremban
+ms.date: 03/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 9a549221a9e1864e1b7565f35139cb4c2a6ca65e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61248113"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Létrehozása és kiépítése az IoT Edge-eszköz, a Linux rendszerű virtuális gép virtuális TPM-mel
@@ -63,7 +62,7 @@ Ha hibába ütközik, az új virtuális kapcsoló létrehozása során, győződ
 
 3. Végezze el a **új virtuális gép varázsló** az alábbi konfigurációkkal:
 
-   1. **Adja meg a generáció**: Válassza ki **2. generációs**. 2. generációs virtuális gépek beágyazott virtualizálás engedélyezve van, azért szükség, az IoT Edge futtatása virtuális gépen.
+   1. **Adja meg a generáció**: Válassza ki **2. generációs**. 2\. generációs virtuális gépek beágyazott virtualizálás engedélyezve van, azért szükség, az IoT Edge futtatása virtuális gépen.
    2. **A hálózatkezelés konfigurálását**: Állítsa az értékét **kapcsolat** a virtuális kapcsolóhoz, amely az előző szakaszban létrehozott. 
    3. **Telepítési beállítások**: Válassza ki **operációs rendszer telepítése rendszerindító lemezkép-fájlból** és keresse meg a helyileg mentett lemezképfájllal.
 

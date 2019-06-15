@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 9049e0b25db37f296e27476fbb93418d13c4dcc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61001549"
 ---
 # <a name="document-data-sources"></a>Adatforrások dokumentálása
@@ -43,5 +43,5 @@ A dokumentáció szintjét a jellemzők és a egy tárolón belül táblaséma r
 * A dokumentum csak a táblák: Tartalom adott az adott objektumhoz, de a felhasználók rendelkeznek dokumentumok több helyen.
 * A dokumentum-tárolók és táblák: Legátfogóbb módszert használja, de előfordulhat, hogy a dokumentumok több karbantartási használ.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az adatforrások címkézésével **Azure Data Catalog** egy narratíva az adategységekre vonatkozó hozhat létre a lehető legtöbb részletet van szüksége.  Hivatkozások segítségével kapcsolat egy meglévő content tárház, amely egyesíti a már meglévő docs és adategységeket tárolt tartalmakhoz. Miután a felhasználók a megfelelő adategységek felderítése, dokumentáció teljes készletét is rendelkeznek.

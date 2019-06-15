@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 89623adbddce07cbc3c3ead811f5174d108c9b0e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62101625"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Always On rendelkezésre állási csoportok külső figyelő konfigurálása az Azure-ban
@@ -96,7 +96,7 @@ A rendelkezésre állási csoport figyelőjének létrehozása két lépésben. 
 
 ### <a name="configure-the-cluster-resources-in-powershell"></a>Konfigurálja a fürt erőforrásai a PowerShellben
 1. Külső terheléselosztás, be kell szereznie a felhőalapú szolgáltatás, amely tartalmazza a replikák nyilvános virtuális IP-cím. Jelentkezzen be az Azure Portalon. Keresse meg a felhőalapú szolgáltatás, amely tartalmazza a rendelkezésre állási csoport virtuális Gépet. Nyissa meg a **irányítópult** megtekintése.
-2. Vegye figyelembe a cím alatt látható **nyilvános virtuális IP-cím (VIP)**. Ha megoldását átnyúlik a virtuális hálózatok, ismételje meg ezt a lépést minden felhőszolgáltatás, amely tartalmazza a virtuális gép, amelyen replika.
+2. Vegye figyelembe a cím alatt látható **nyilvános virtuális IP-cím (VIP)** . Ha megoldását átnyúlik a virtuális hálózatok, ismételje meg ezt a lépést minden felhőszolgáltatás, amely tartalmazza a virtuális gép, amelyen replika.
 3. A virtuális gépek valamelyikére másolja az alábbi PowerShell-parancsprogram egy szövegszerkesztőbe, és állítsa be a változókat a korábban feljegyzett értékekre.
    
         # Define variables

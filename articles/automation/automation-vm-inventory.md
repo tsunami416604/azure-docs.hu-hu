@@ -11,17 +11,17 @@ ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 59f36595e0b6cc8b9d9ea0669c9ecb5be1e74b42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61304100"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Azure-beli virtuális gépek kezelése leltár használatával
 
 A leltár nyomon követése az egyes Azure-beli virtuális gépeken a gép erőforráslapján engedélyezhető. Összegyűjtheti a számítógépeken található szoftverek, fájlok, Linux-démonok, Windows-szolgáltatások és Windows-beállításkulcsok listáját, és leltárt készíthet belőlük. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a leltározás beállításához és konfigurálásához.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
@@ -58,7 +58,7 @@ Alapértelmezés szerint a szoftverek, a Windows-szolgáltatások és a Linux-d�
 
 Az alábbi táblázatok ismertetik minden állítható be a különböző kategóriák tulajdonság.
 
-### <a name="windows-registry"></a>Windows-beállításjegyzék
+### <a name="windows-registry"></a>Windows Registry
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
@@ -67,7 +67,7 @@ Az alábbi táblázatok ismertetik minden állítható be a különböző kateg�
 |Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
 |Windows-beállításkulcs   | Például ellenőrizze a fájl elérési útja: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj Folders\Common indítási"      |
 
-### <a name="windows-files"></a>Windows-fájlok
+### <a name="windows-files"></a>Windows Files
 
 |Tulajdonság  |Leírás  |
 |---------|---------|

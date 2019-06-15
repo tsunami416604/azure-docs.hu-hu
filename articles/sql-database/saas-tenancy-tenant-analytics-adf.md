@@ -13,10 +13,10 @@ ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485077"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Az Azure SQL Database, az SQL Data Warehouse, a Data Factory és a Power BI SaaS-analytics megismerése
@@ -87,7 +87,7 @@ Ez az oktatóanyag bemutatja a analytics jegy értékesítési adatok. Ebben a l
 ### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>Az SQL Data Warehouse, adat-előállító üzembe helyezése és a Blob Storage-ban 
 A Wingtip Tickets alkalmazás tranzakciós adatokat a bérlők számára sok adatbázis van elosztva. Az Azure Data Factory (ADF) segítségével előkészíthető a kinyerési, betöltési és átalakítási (ELT), ezeket az adatokat a data warehouse-bA. Adatok betöltése az SQL Data Warehouse leghatékonyabban, az ADF köztes blob fájlokba kinyeri az adatokat, majd [PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) az adatok betöltésére az adattárházba.   
 
-Ebben a lépésben üzembe helyezi a további erőforrások, a jelen oktatóanyagban használt: egy SQL Data Warehouse nevű _tenantanalytics_, egy Azure Data Factory nevű _dbtodwload -\<felhasználói\>_  , és a egy Azure storage-fiók _wingtipstaging\<felhasználói\>_. A storage-fiók segítségével kinyert adatok fájlok átmeneti tárolására blobként előtt be töltve a data warehouse-bA. Ez a lépés is üzembe helyezi az adatraktár sémájának és koordinálhatja az ELT folyamatok ADF folyamatok meghatározása.
+Ebben a lépésben üzembe helyezi a további erőforrások, a jelen oktatóanyagban használt: egy SQL Data Warehouse nevű _tenantanalytics_, egy Azure Data Factory nevű _dbtodwload -\<felhasználói\>_  , és a egy Azure storage-fiók _wingtipstaging\<felhasználói\>_ . A storage-fiók segítségével kinyert adatok fájlok átmeneti tárolására blobként előtt be töltve a data warehouse-bA. Ez a lépés is üzembe helyezi az adatraktár sémájának és koordinálhatja az ELT folyamatok ADF folyamatok meghatározása.
 1. A PowerShell ISE-ben nyissa meg a *...\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* és állítsa be:
     - **$DemoScenario** = **2** bérlői analitikai adattárház, a blob storage és az adat-előállító üzembe helyezése 
 1. Nyomja meg **F5** a bemutató-parancsfájl futtatásához, és az Azure-erőforrások üzembe helyezése. 
@@ -126,7 +126,7 @@ Az a [az Azure Portal](https://ms.portal.azure.com) az erőforráscsoportban, gy
  ![adf_portal](media/saas-tenancy-tenant-analytics/adf-data-factory-portal.png)
 
 Ez a szakasz ismerteti az adat-előállító létrehozása. Indítsa el a data factory az alábbi lépésekkel:
-1. A portálon kattintson a data factory nevű **dbtodwload -\<felhasználói\>**.
+1. A portálon kattintson a data factory nevű **dbtodwload -\<felhasználói\>** .
 2. Kattintson a **létrehozás és Monitorozás** csempére kattintva indítsa el a Data Factory-Tervező egy új lapon. 
 
 ## <a name="extract-load-and-transform-data"></a>Kinyerési, betöltési, és az adatok átalakítása

@@ -10,10 +10,10 @@ ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
 ms.openlocfilehash: 410727022b092e2dd8ab8b05e628e25fd60ab833
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61282210"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Az Azure Active Directory-identitások használatával találatok vágást biztonsági szűrők
@@ -64,7 +64,7 @@ Azonban ha nem rendelkezik meglévő felhasználók, használhatja a Microsoft G
 
 Felhasználó és csoport tagságának lehet nagyon képlékeny, különösen a nagy szervezetek is használnak. Kód, amely összeállítja a felhasználó- és identitások elég gyakran kell futnia a szervezet tagsági módosításainak életbe léptetéséhez. Hasonlóképpen az Azure Search-index az engedélyezett felhasználók és erőforrások aktuális állapotát tükröző hasonló frissítési ütemezést igényelnek.
 
-### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>1. lépés: Hozzon létre [AAD-csoport](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
+### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>1\. lépés: Hozzon létre [AAD-csoport](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -78,7 +78,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdocsmicrosoftcomgraphapiuser-post-usersviewgraph-rest-10"></a>2. lépés: Hozzon létre [AAD-felhasználó](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
+### <a name="step-2-create-aad-userhttpsdocsmicrosoftcomgraphapiuser-post-usersviewgraph-rest-10"></a>2\. lépés: Hozzon létre [AAD-felhasználó](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 ```csharp
 User user = new User()
 {
@@ -93,12 +93,12 @@ User user = new User()
 User newUser = await graph.Users.Request().AddAsync(user);
 ```
 
-### <a name="step-3-associate-user-and-group"></a>3. lépés: Felhasználók és csoportok hozzárendelése
+### <a name="step-3-associate-user-and-group"></a>3\. lépés: Felhasználók és csoportok hozzárendelése
 ```csharp
 await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
-### <a name="step-4-cache-the-groups-identifiers"></a>4. lépés: A csoportok azonosítók gyorsítótárazása
+### <a name="step-4-cache-the-groups-identifiers"></a>4\. lépés: A csoportok azonosítók gyorsítótárazása
 Igény szerint hálózati késés csökkentése érdekében gyorsítótárazhatja a felhasználócsoport-társítások úgy, hogy egy keresési kérelmet ad ki, amikor csoportokat a rendszer adja vissza a gyorsítótár mentése folyamatban van egy körbejárási aad-ben. Használhat [AAD Batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) több felhasználóval rendelkező egyetlen Http-kérés küldése és a gyorsítótár létrehozása.
 
 A Microsoft Graph úgy lett kialakítva, nagy mennyiségű kérelmet kezelni. Ha túlságosan sok kérelem fordul elő, a Microsoft Graph 429-es HTTP-állapotkód: a kérelem sikertelen lesz. További információkért lásd: [Microsoft Graph-szabályozás](https://developer.microsoft.com/graph/docs/concepts/throttling).
@@ -137,7 +137,7 @@ A biztonság tisztítás érdekében a biztonsági mezőt az indexben szereplő 
 
 A dokumentumok a kérést kiadó felhasználó csoportok alapján, a keresési eredmények szűréséhez, tekintse át az alábbi lépéseket.
 
-### <a name="step-1-retrieve-users-group-identifiers"></a>1. lépés: Felhasználói csoport azonosítók beolvasása
+### <a name="step-1-retrieve-users-group-identifiers"></a>1\. lépés: Felhasználói csoport azonosítók beolvasása
 
 Ha a felhasználói csoportok nem már lettek gyorsítótárazva, vagy lejárt a gyorsítótár, a [csoportok](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) kérelem
 ```csharp
@@ -165,7 +165,7 @@ private static async Task<List<string>> GetGroupIdsForUser(string userPrincipalN
 }
 ``` 
 
-### <a name="step-2-compose-the-search-request"></a>2. lépés: Állítsa össze a keresési kérelem
+### <a name="step-2-compose-the-search-request"></a>2\. lépés: Állítsa össze a keresési kérelem
 
 Feltételezve, hogy a felhasználói csoportok tagságát, a megfelelő szűrési értékekkel a keresési kérelem adhat ki.
 
@@ -179,7 +179,7 @@ SearchParameters parameters = new SearchParameters()
 
 DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<SecuredFiles>("*", parameters);
 ```
-### <a name="step-3-handle-the-results"></a>3. lépés: Az eredmények kezelése
+### <a name="step-3-handle-the-results"></a>3\. lépés: Az eredmények kezelése
 
 A válasz álló, amelyek a felhasználó jogosult megtekinteni, a dokumentumok szűrt listáját tartalmazza. Attól függően, hogyan hozhat létre a keresési eredmények oldalát előfordulhat, hogy szeretné, hogy a szűrt eredményhalmaz vizuális jelek közé tartozik.
 
