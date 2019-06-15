@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
 ms.openlocfilehash: fecf6759dd7b277dda10fa2656e6ae9407490370
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922967"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
@@ -77,7 +77,7 @@ A [engedélyezve van az Application Insights-integráció](#enable-application-i
 
 Láthatja, hogy rendelkezik-e a két lap egy **Futtatás az Application Insightsban** hivatkozás az Application Insights Analytics-lekérdezéshez, amely lekéri az adatokat.
 
-![Futtatás az Application Insightsban](media/functions-monitoring/run-in-ai.png)
+![Futtassa az Application insights szolgáltatásban](media/functions-monitoring/run-in-ai.png)
 
 A következő lekérdezés akkor jelenik meg. Láthatja, hogy a meghívási lista korlátozva az utolsó 30 nap. A lista mutatja azokat a 20-nál több sort (`where timestamp > ago(30d) | take 20`). A meghívás részletei Tranzakciólista nincs korlát az elmúlt 30 napra vonatkozóan.
 

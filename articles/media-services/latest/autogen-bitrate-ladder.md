@@ -15,10 +15,10 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60733317"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kódolás a egy automatikusan létrehozott skála
@@ -37,7 +37,7 @@ Egy példa a beállításkészlet módjáról, olvassa el [fájl Stream](stream-
 
 Ez a szakasz bemutatja a Media Services encoder eredményeként kódolás által előállított kimeneti videót rétegek három példák a **AdaptiveStreaming** beállításkészletet. Minden esetben a kimeneti sztereó hang kódolása, 128 kb/s a csak hangfájlt tartalmazó MP4 fájlt tartalmaz.
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 Forrás magasság "1080" és "29.970" képkockasebesség 6 videó rétegek hoz létre:
 
 |Réteg|Magasság|Szélesség|Átviteli sebesség (kbps)|
@@ -49,7 +49,7 @@ Forrás magasság "1080" és "29.970" képkockasebesség 6 videó rétegek hoz l
 |5|270|480|720|
 |6|180|320|380|
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 Forrás magasság "720" és "23.970" képkockasebesség 5 videó rétegek hoz létre:
 
 |Réteg|Magasság|Szélesség|Átviteli sebesség (kbps)|
@@ -60,7 +60,7 @@ Forrás magasság "720" és "23.970" képkockasebesség 5 videó rétegek hoz l�
 |4|270|480|600|
 |5|180|320|320|
 
-### <a name="example-3"></a>3. példa
+### <a name="example-3"></a>3\. példa
 Forrás magasság "360" és "29.970" képkockasebesség 3 videó rétegek hoz létre:
 
 |Réteg|Magasság|Szélesség|Átviteli sebesség (kbps)|

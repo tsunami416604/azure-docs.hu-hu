@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60657830"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Az Azure API Management API-sablonok
@@ -352,7 +352,7 @@ Ebben a szakaszban a sablonok lehetővé teszik az API a fejlesztői portál old
 |`operation`|[Művelet](api-management-template-data-model-reference.md#Operation)|A megjelenített műveletet.|  
 |`sampleUrl`|string|Az aktuális művelet URL-CÍMÉT.|  
 |`operationMenu`|[A művelet menü](api-management-template-data-model-reference.md#Menu)|Ez az API műveleteinek menü.|  
-|`consoleUrl`|URI|URI-JÁNAK a **kipróbálás** gombra.|  
+|`consoleUrl`|URI-T|URI-JÁNAK a **kipróbálás** gombra.|  
 |`samples`|A gyűjtemény [kódminta](api-management-template-data-model-reference.md#Sample) entitásokat.|Az aktuális művelet Kódminták...|  
   
 ### <a name="sample-template-data"></a>Mintaadatok sablon  

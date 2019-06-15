@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/1/2018
 ms.openlocfilehash: a52729adf8d6df3f4e44e561b45b854db433628c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60635180"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Fájlok másolása az Azure Data Factory használatával több tároló
@@ -51,7 +51,7 @@ A sablon meghatározza a két paramétert:
 
 3. Válassza ki **ezzel a sablonnal**.
 
-    ![Sablon használata](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
+    ![Ezzel a sablonnal](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
 4. A folyamat a következő példához hasonlóan jelenik meg:
 

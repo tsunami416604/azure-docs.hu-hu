@@ -10,10 +10,10 @@ ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
 ms.openlocfilehash: f28ea3dd2837a241c538057bd118409d4f5b858a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60643582"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(ELAVULT) A teljes CI/CD-folyamat egy többtárolós alkalmazást az Azure Container Service Docker Swarm használatával az Azure DevOps-szolgáltatásokkal való üzembe helyezéséhez
@@ -55,7 +55,7 @@ Az oktatóanyag elindítása előtt kell végrehajtani az alábbi feladatokat:
 
 A Docker telepítve van egy (14.04-es vagy 16.04) Ubuntu-gép is szükséges. Ezt a gépet az Azure-folyamatok folyamatok során használja az Azure DevOps-szolgáltatásokkal. Ez a gép létrehozásának egyik módja az, hogy az elérhető rendszerképet használja a [Azure Marketplace-en](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
 
-## <a name="step-1-configure-your-azure-devops-services-organization"></a>1. lépés: Az Azure DevOps-szolgáltatásokkal szervezet konfigurálása 
+## <a name="step-1-configure-your-azure-devops-services-organization"></a>1\. lépés: Az Azure DevOps-szolgáltatásokkal szervezet konfigurálása 
 
 Ebben a szakaszban az Azure DevOps-szolgáltatásokkal szervezet fog konfigurálni.
 
@@ -107,7 +107,7 @@ Az utolsó előtt a CI/CD-folyamat az első lépésekre külső kapcsolatok a t�
 
 Minden konfiguráció a most történik. Az alábbi lépésekkel hoz létre a CI/CD folyamatot, amely az alkalmazás a Docker Swarm-fürt létrehozása és telepítése. 
 
-## <a name="step-2-create-the-build-pipeline"></a>2. lépés: A létrehozási folyamat létrehozása
+## <a name="step-2-create-the-build-pipeline"></a>2\. lépés: A létrehozási folyamat létrehozása
 
 Ebben a lépésben egy buildelési folyamat beállítása az Azure DevOps-szolgáltatásokkal projekt és a build munkafolyamat definiálása a tárolólemezképek
 
@@ -172,7 +172,7 @@ Adjon hozzá két Docker lépéseket minden egyes képe, egyet a rendszerkép l�
 
 1. Kattintson a **mentése** és nevezze el a buildelési folyamat.
 
-## <a name="step-3-create-the-release-pipeline"></a>3. lépés: A kibocsátási folyamat létrehozása
+## <a name="step-3-create-the-release-pipeline"></a>3\. lépés: A kibocsátási folyamat létrehozása
 
 Azure DevOps-szolgáltatás lehetővé teszi, hogy [kiadások kezelheti a környezeteket](https://www.visualstudio.com/team-services/release-management/). Győződjön meg arról, hogy az alkalmazás üzemel, a különböző környezetekben (például fejlesztési, tesztelési, éles üzem előtti vagy éles) zökkenőmentes módon való folyamatos üzembe helyezés is engedélyezheti. Létrehozhat egy új környezetet, amely az Azure Container Service Docker Swarm-fürt jelöli.
 
@@ -180,7 +180,7 @@ Azure DevOps-szolgáltatás lehetővé teszi, hogy [kiadások kezelheti a körny
 
 ### <a name="initial-release-setup"></a>Kezdeti kiadás beállítása
 
-1. Kiadási folyamatok létrehozásához kattintson a **kiadásokban** > **+ kiadás**
+1. Kiadási folyamatok létrehozásához kattintson a **kiadásokban** >  **+ kiadás**
 
 1. Az összetevő-forrás konfigurálásához kattintson **összetevők** > **hivatkozás egy összetevő forrás**. Ez a kiadás új folyamat itt összekapcsolása a build, amelyet az előző lépésben megadott. Ha így tesz, a docker-compose.yml fájl érhető el a kibocsátási folyamat.
 
@@ -219,7 +219,7 @@ A kiadási munkafolyamat két feladatot a hozzáadott tevődik össze.
 >A központi telepítés tartalmazza a némi állásidőt jelent, mivel azt a régi szolgáltatások leállítása és futtatja az újat. Ennek elkerülése a kék-zöld üzembe helyezés végrehajtásával lehetőség.
 >
 
-## <a name="step-4-test-the-cicd-pipeline"></a>4. lépés A CI/CD-folyamat tesztelése
+## <a name="step-4-test-the-cicd-pipeline"></a>4\. lépés. A CI/CD-folyamat tesztelése
 
 Most, hogy végzett a konfiguráció, legyen az új CI/CD-folyamat teszteléséhez. A legegyszerűbben úgy, hogy tesztelje, hogy frissítse a forráskódot, és véglegesítse a módosításokat a GitHub-tárházba. Néhány másodperccel azután, küldje le a kódot, látni fogja a DevOps-szolgáltatásokkal az Azure-ban futó új build. Sikeres befejezést követően új kiadás indul, és az Azure Container Service-fürtön az alkalmazás új verzióját telepíti.
 

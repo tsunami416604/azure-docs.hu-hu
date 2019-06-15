@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
 ms.openlocfilehash: e5aeaa707c7a839483484c524e982204d6fe055c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60408555"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Létrehozása, figyelése és kezelése az FTP-fájlok Azure Logic Apps használatával
@@ -61,7 +61,7 @@ Használhatja az eseményindítókat, amelyek választ kaphat az FTP-kiszolgál�
    Műveletek listája alatt válassza ki a kívánt művelet.
 
    Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. 
-   Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+   Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
 
 1. Adja meg a szükséges adatokat a kapcsolatot, és válassza a **létrehozás**.
 
@@ -69,7 +69,7 @@ Használhatja az eseményindítókat, amelyek választ kaphat az FTP-kiszolgál�
 
 Fájl tartalmának kérésekor az eseményindító nem fájlok lekérése 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát:
 
-* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
+* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
 
 * Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**, és rendelkezik a művelet használata [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
 
@@ -77,7 +77,7 @@ Fájl tartalmának kérésekor az eseményindító nem fájlok lekérése 50 MB-
 
 <a name="file-added-modified"></a>
 
-### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-eseményindító: Fájl hozzáadásakor és módosításakor
+### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-eseményindító: Amikor felvesznek vagy módosítanak egy fájlt
 
 Ez az eseményindító a logikaialkalmazás-munkafolyamat az eseményindító észleli, ha egy fájl hozzáadásakor vagy módosítani az FTP-kiszolgálón kezdődik. Így például hozzáadhat egy feltételt, amely ellenőrzi a fájl tartalmát, és úgy dönt, hogy kapják meg a tartalmat a e tartalom megfelel-e a megadott feltétel alapján. Végül adjon hozzá egy műveletet, amely a fájl tartalmának beolvasása, és helyezi a tartalmat egy mappába az SFTP-kiszolgáló. 
 
@@ -85,7 +85,7 @@ Ez az eseményindító a logikaialkalmazás-munkafolyamat az eseményindító é
 
 Fájl tartalmának kérésekor eseményindítók nem olvasható be a fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
 
-* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
+* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
 
 * Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**, és rendelkezik a művelet használata [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
 
@@ -106,7 +106,7 @@ A következő példa bemutatja, ez az eseményindító: **Amikor felvesznek vagy
 
    ![FTP-kiszolgáló közötti kapcsolat létrehozása](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
-1. Mellett a **mappa** válassza ki a mappa ikont, így egy lista jelenik meg. Az új vagy módosított fájlokat a figyelni kívánt mappa megkereséséhez a derékszögű nyílra (**>**), és keresse meg azt a mappát, majd válassza ki a mappát.
+1. Mellett a **mappa** válassza ki a mappa ikont, így egy lista jelenik meg. Az új vagy módosított fájlokat a figyelni kívánt mappa megkereséséhez a derékszögű nyílra ( **>** ), és keresse meg azt a mappát, majd válassza ki a mappát.
 
    ![Keresse meg és válassza ki a mappa figyelése](./media/connectors-create-api-ftp/select-folder.png)  
 
@@ -124,7 +124,7 @@ Ez a művelet a tartalom egy fájlt egy FTP-kiszolgálón olvassa be, ha a fájl
 
 Fájl tartalmának kérésekor eseményindítók nem olvasható be a fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
 
-* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
+* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
 
 * Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**, és rendelkezik a művelet használata [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
 

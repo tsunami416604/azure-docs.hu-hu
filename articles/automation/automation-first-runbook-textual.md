@@ -11,10 +11,10 @@ ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1697f479cf013f2ef94dd5a8a2fc637d72e6e18a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60739957"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Az első PowerShell-alapú munkafolyamat-forgatókönyvem
@@ -35,7 +35,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * [Automation-fiók](automation-offering-get-started.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez.  Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
 * Egy Azure virtuális gép. Állítsa le és indítsa el ezt a gépet, hogy azt nem lehet egy éles környezetben lévő virtuális gép.
 
-## <a name="step-1---create-new-runbook"></a>1. lépés – Új forgatókönyv létrehozása
+## <a name="step-1---create-new-runbook"></a>1\. lépés – Új forgatókönyv létrehozása
 
 Először hozzon létre egy egyszerű runbookot, amely szöveget adja vissza *Hello World*.
 
@@ -49,7 +49,7 @@ Először hozzon létre egy egyszerű runbookot, amely szöveget adja vissza *He
 1. Ebben az esetben fog létrehozni egy [PowerShell-munkafolyamati forgatókönyv](automation-runbook-types.md#powershell-workflow-runbooks) ezért válassza **Powershell-munkafolyamat** a **Runbook típusa**.
 1. A forgatókönyv létrehozásához és a szöveges szerkesztő megnyitásához kattintson a **Létrehozás** gombra.
 
-## <a name="step-2---add-code-to-the-runbook"></a>2. lépés – Kód hozzáadása a forgatókönyvhöz
+## <a name="step-2---add-code-to-the-runbook"></a>2\. lépés – Kód hozzáadása a forgatókönyvhöz
 
 Beírhat közvetlenül a forgatókönyvbe kódot, vagy választhat parancsmagokat, forgatókönyveket és adategységeket a Könyvtár vezérlőből, majd hozzáadhatja őket a forgatókönyvhöz a kapcsolódó paraméterekkel együtt. Ez a forgatókönyv azt írja be közvetlenül a forgatókönyvbe.
 
@@ -72,7 +72,7 @@ Beírhat közvetlenül a forgatókönyvbe kódot, vagy választhat parancsmagoka
 
 1. A **Mentés** gombra kattintva mentse el a forgatókönyvet.
 
-## <a name="step-3---test-the-runbook"></a>3. lépés – A forgatókönyv tesztelése
+## <a name="step-3---test-the-runbook"></a>3\. lépés – A forgatókönyv tesztelése
 
 Mielőtt közzéteszi a runbookot, hogy éles üzemben is elérhető legyen, tesztelnie kell, hogy biztosan jól működik-e. Egy forgatókönyv tesztelésekor a **Piszkozat** verziót futtatja, és interaktív módon megtekinti a kimenetét.
 
@@ -88,7 +88,7 @@ Mielőtt közzéteszi a runbookot, hogy éles üzemben is elérhető legyen, tes
 
 1. A vászonra való visszatéréshez zárja be a Teszt panelt.
 
-## <a name="step-4---publish-and-start-the-runbook"></a>4. lépés: Közzététel és a forgatókönyv indítása
+## <a name="step-4---publish-and-start-the-runbook"></a>4\. lépés: Közzététel és a forgatókönyv indítása
 
 A létrehozott runbook még mindig Piszkozat módban van. Közzé kell tennie, mielőtt éles környezetben futtathatja. Amikor elérhetővé tesz egy forgatókönyvet, felülírja a Közzétett verziót a Piszkozattal. Az Ön esetében még nem rendelkezik közzétett verzió, mert az újonnan létrehozott, a runbookot.
 
@@ -121,7 +121,7 @@ A létrehozott runbook még mindig Piszkozat módban van. Közzé kell tennie, m
 
 1. Kattintson a erre a feladatra kattintva nyissa meg a ugyanazon feladat oldalát, amelyet már látott a runbook elindításakor. Ez a művelet lehetővé teszi, hogy az időben, és a egy adott forgatókönyvhöz létrehozott összes feladat részleteinek megtekintéséhez.
 
-## <a name="step-5---add-authentication-to-manage-azure-resources"></a>5. lépés – Hitelesítés hozzáadása az Azure-erőforrások kezeléséhez
+## <a name="step-5---add-authentication-to-manage-azure-resources"></a>5\. lépés – Hitelesítés hozzáadása az Azure-erőforrások kezeléséhez
 
 Most már befejeződött a runbook tesztelése és közzététele, de még nem csinál semmi hasznosat. Azt szeretnénk, hogy Azure-erőforrásokat kezeljen. Azt nem hajtható végre, amely azonban, ha az említett hitelesítő adatok használatával hitelesített, már a [Előfeltételek](#prerequisites). megteheti, hogy a a **Connect-AzureRmAccount** parancsmagot.
 
@@ -152,7 +152,7 @@ Most már befejeződött a runbook tesztelése és közzététele, de még nem c
 
    ![Hitelesítés](media/automation-first-runbook-textual/runbook-auth-output.png)
 
-## <a name="step-6---add-code-to-start-a-virtual-machine"></a>6. lépés: Kód hozzáadása a virtuális gép indításához
+## <a name="step-6---add-code-to-start-a-virtual-machine"></a>6\. lépés: Kód hozzáadása a virtuális gép indításához
 
 Most, hogy a runbook hitelesíti az Azure-előfizetéshez, erőforrások is kezelhetők. hozzáadhat egy parancs egy virtuális gép elindításához. Válassza ki bármelyik virtuális gépet az Azure-előfizetésben, és most ezt a nevet a runbook hardcoding végzett. Ha több előfizetést felügyel erőforrásokat, meg kell használnia a **- AzureRmContext** mentén paraméterrel [Get-AzureRmContext](/powershell/module/azurerm.profile/get-azurermcontext).
 
@@ -176,7 +176,7 @@ Most, hogy a runbook hitelesíti az Azure-előfizetéshez, erőforrások is keze
 1. Mentse a forgatókönyvet, és kattintson a **teszt panel** így tesztelheti.
 1. Kattintson az **Indítás** gombra a teszt elindításához. Ha kész, ellenőrizze, hogy a virtuális gép elindult-e.
 
-## <a name="step-7---add-an-input-parameter-to-the-runbook"></a>7. lépés – Bemeneti paraméter hozzáadása a forgatókönyvhöz
+## <a name="step-7---add-an-input-parameter-to-the-runbook"></a>7\. lépés – Bemeneti paraméter hozzáadása a forgatókönyvhöz
 
 a runbook jelenleg elindítja a virtuális gépet, hogy Ön szoftveresen kötött a runbook, de azt hasznosabb lenne, ha a virtuális gép határozhatja meg a forgatókönyv elindulásakor. A bemeneti paramétereket adhat hozzá a runbook funkció.
 

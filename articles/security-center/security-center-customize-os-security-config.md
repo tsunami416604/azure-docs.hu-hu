@@ -14,20 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: c0c37724e61490c8c33b5e2d37879549bbc6d7ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d9dc9f3a4ab964b66e3a2cb03f4aad442c5665e9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60705438"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64573608"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Testre szabhatja az operációs rendszer biztonsági konfigurációival az Azure Security Centerben (előzetes verzió)
 
 Ez az útmutató bemutatja, hogyan szabhatja testre az operációs rendszer biztonsági konfigurációs értékelések az Azure Security Centerben.
 
+> [!NOTE]
+> Operációs rendszer biztonsági konfigurációival testre szabhatók a 2019. július 31-én megszűnik. További információkat és más szolgáltatások: [a Security Center nyugdíjazási szolgáltatásokat (július 2019)](security-center-features-retirement-july2019.md#menu_securityconfigurations).
+
 ## <a name="what-are-os-security-configurations"></a>Mik azok az operációs rendszer biztonsági konfigurációival?
 
-Az Azure Security Center biztonsági konfigurációk figyeli egy alkalmazásával [több mint 150 ajánlott szabályok](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) az operációs rendszer korlátozására, például a szabályok kapcsolódó tűzfalak, naplózás, jelszóházirendek és egyéb. Ha egy gép sebezhető konfigurációval rendelkezik, a Security Center biztonsági javaslatot hoz létre.
+Az Azure Security Center a biztonsági konfigurációk monitorozásához egy [több mint 150 ajánlott szabályt](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) tartalmazó készletet alkalmaz az operációs rendszer védelmének fokozására – a készlet többek között a tűzfalakkal, a naplózással, a jelszószabályzatokkal kapcsolatos szabályokat biztosít. Ha egy gép konfigurációját sebezhetőnek találja, a Security Center egy biztonsági javaslatot állít elő.
 
 A szabályok testreszabásával, szervezetek szabályozhatja, hogy melyik konfigurációs lehetőségek a környezetnek jobban megfelelő. Testre szabott értékelés házirend beállítása, és alkalmazza azt az előfizetés összes érvényes gépeken.
 
@@ -275,7 +278,7 @@ Az összes lehetséges hibákat az alábbi táblázatban láthatók:
 
 | **Hiba történt**                                | **Leírás**                                                                                                                              |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BaselineConfigurationSchemaVersionError  | A tulajdonság *sémaverzióval* található érvénytelen vagy üres. Az értéket kell beállítani *{0}*.                                                         |
+| BaselineConfigurationSchemaVersionError  | A tulajdonság *sémaverzióval* található érvénytelen vagy üres. Az értéket kell beállítani *{0}* .                                                         |
 | BaselineInvalidStringError               | A tulajdonság *{0}* nem tartalmazhat  *\\n*.                                                                                                         |
 | BaselineNullRuleError                    | A referenciakonfiguráció konfigurációs szabályok listája tartalmaz egy szabályt az érték *null*.                                                                         |
 | BaselineRuleCceIdNotUniqueError          | A CCE-azonosító *{0}* , nem egyedi.                                                                                                                  |
@@ -290,12 +293,12 @@ Az összes lehetséges hibákat az alábbi táblázatban láthatók:
 | BaselineRuleNotInPlace                   | A szabály vonatkozzon, írja be az alapértelmezett szabály {0} és szerepel a {1} listája.                                                                       |
 | BaselineRulePropertyTooLong              | A tulajdonság *{0}* túl hosszú. Maximális megengedett hossz: {1}.                                                                                        |
 | BaselineRuleRegTypeInvalidError          | A várt értékkel *{0}* a definiált beállításazonosító típusa nem felel meg.                                                              |
-| BaselineRulesetAdded                     | A szabálykészletben azonosítójú *{0}* az alapértelmezett beállítás nem található. A ruleset nem adható hozzá.                                               |
+| BaselineRulesetAdded                     | A szabálykészletben azonosítóval *{0}* az alapértelmezett beállítás nem található. A ruleset nem adható hozzá.                                               |
 | BaselineRulesetIdMustBeUnique            | Az adott alaptervbe szabálykészletben *{0}* egyedinek kell lennie.                                                                                           |
 | BaselineRulesetNotFound                  | A szabálykészletben azonosítójú *{0}* és név *{1}* a megadott konfigurációban nem található. A ruleset nem lehet törölni.                                |
 | BaselineRuleSourceNotMatch               | A szabály azonosítójú *{0}* már definiálva van.                                                                                                       |
-| BaselineRuleTypeDoesntMatch              | Az alapértelmezett szabály típus *{0}*.                                                                                                              |
-| BaselineRuleTypeDoesntMatchError         | A szabály a tényleges típus *{0}*, de a *ruleType* tulajdonság *{1}*.                                                                          |
+| BaselineRuleTypeDoesntMatch              | Az alapértelmezett szabály típus *{0}* .                                                                                                              |
+| BaselineRuleTypeDoesntMatchError         | A szabály a tényleges típus *{0}* , de a *ruleType* tulajdonság *{1}* .                                                                          |
 | BaselineRuleUnpermittedChangesError      | Csak *expectedValue* és *állapot* tulajdonságok megengedettek módosítani.                                                                       |
 | BaselineTooManyRules                     | A legfeljebb engedélyezett testre szabott szabályokkal {0} szabályokat. A megadott konfiguráció tartalmazza {1} szabályok {2} alapértelmezett szabályokkal, és {3} testre szabott szabályokkal. |
 | ErrorNoConfigurationStatus               | Nincsenek konfigurációs állapot található. A szükségeskonfiguráció-állapot. állapot: *Alapértelmezett* vagy *egyéni*.                                    |

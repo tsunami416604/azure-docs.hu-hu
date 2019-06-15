@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
 ms.openlocfilehash: 46447bdbea93d1f99c5682cf878c2035e6f49b78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764322"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Az Azure Data Factoryban érvényesítési tevékenység
@@ -59,9 +59,9 @@ Használhatja egy érvényesítési a folyamat a folyamat csak zavartalan végre
 
 ## <a name="type-properties"></a>Tulajdonságok
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | Az "Ellenőrzés" tevékenység neve | String | Igen |
+name | Az "Ellenőrzés" tevékenység neve | String | Igen |
 type | Meg kell **érvényesítési**. | String | Igen |
 Adatkészlet | Tevékenység futtatásának letiltása, amíg az adatkészlet-hivatkozásban érvényesített létezik, és, hogy megfelel-e a megadott feltételeknek megfelelő, vagy elérte az időtúllépési lesz. A megadott adatkészlet támogatnia kell a "MinimumSize" vagy "ChildItems" tulajdonság. | Adatkészlet-hivatkozásban | Igen |
 timeout | Megadja a futtatni kívánt tevékenység időtúllépését. Ha nem ad meg értéket, az alapértelmezett érték: 7 nap ("7.00:00:00"). Formátuma d.hh:mm:ss | String | Nem |

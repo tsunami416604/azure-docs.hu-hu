@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
 ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60640378"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Dinamikus DNS használata a gazdagépek regisztrálásához a saját DNS-kiszolgáló
@@ -35,7 +35,7 @@ Tartományhoz csatlakoztatott Windows-ügyfelek IP-címeket a tartományvezérl�
 ## <a name="linux-clients"></a>Linux-ügyfelek
 Linux-ügyfelek általában nem regisztrálják magukat a DNS-kiszolgáló indításakor, elvégzi a DHCP-kiszolgáló azt feltételezik. Az Azure DHCP-kiszolgálók nem rendelkeznek a rekordokat a DNS-kiszolgáló regisztrálása a hitelesítő adatokat. Egy nevű eszközzel `nsupdate`, amely tartalmazza a kötés csomagban, DDNS-t küldeni a frissítések. Mivel a DDNS protokoll szabványosított, használhatja `nsupdate` még ha nem használ kötési a DNS-kiszolgálón.
 
-A hurkok a hostname-bejegyzést a DNS-kiszolgáló létrehozásához és kezeléséhez a DHCP-ügyfél által biztosított is használhatja. A DHCP ciklus során az ügyfél a parancsfájlok végrehajtása */etc/dhcp/dhclient-exit-hooks.d/*. A hurkok használatával regisztrálja az új IP cím használatával `nsupdate`. Példa:
+A hurkok a hostname-bejegyzést a DNS-kiszolgáló létrehozásához és kezeléséhez a DHCP-ügyfél által biztosított is használhatja. A DHCP ciklus során az ügyfél a parancsfájlok végrehajtása */etc/dhcp/dhclient-exit-hooks.d/* . A hurkok használatával regisztrálja az új IP cím használatával `nsupdate`. Példa:
 
 ```bash
 #!/bin/sh

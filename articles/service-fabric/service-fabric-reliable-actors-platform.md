@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
 ms.openlocfilehash: bc7569c9f230abb7677a8df9fc0cc0268e57296f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60725906"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Így használja a Reliable Actors a Service Fabric platformot
@@ -69,7 +69,7 @@ Aktorszolgáltatások a particionált állapotalapú szolgáltatások. Mindegyik
 
 A Reliable Services partíció kulcstartományokkal és különböző partíciósémák hozható létre. Aktorszolgáltatás actors leképezése partíciók Int64 particionálási sémát használ a teljes Int64 kulcstartományhoz.
 
-### <a name="actor-id"></a>Szereplő azonosítója
+### <a name="actor-id"></a>Aktor azonosítója
 A szolgáltatásban létrehozott minden egyes színész rendelkezik egy egyedi azonosító tartozik, képviseli a `ActorId` osztály. `ActorId` érték nem átlátszó azonosítója, amely használható az actors egyenletes elosztása a szolgáltatáspartíciók véletlenszerű azonosítók létrehozásával:
 
 ```csharp

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60578663"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>A StorSimple eszköz az EBOD-vezérlő cseréje
@@ -91,8 +91,8 @@ Az alábbi eljárást és táblázatot ismertetik a StorSimple-eszköz az EBOD-v
    | 1 |Elsődleges ház |
    | 2 |PCM 0 |
    | 3 |PCM 1 |
-   | 4 |0. vezérlő |
-   | 5 |1. vezérlő |
+   | 4 |Vezérlő 0 |
+   | 5 |Vezérlő 1 |
    | 6 |Az EBOD-vezérlő 0 |
    | 7 |Az EBOD-vezérlő 1 |
    | 8 |EBOD ház |

@@ -13,10 +13,10 @@ ms.reviewer: mathoma
 manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: c72c4d21f948d6d6c4d1d4598efa0e13de9705a6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926196"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Replikálás konfigurálása a egy Azure SQL Database felügyelt példány adatbázisa
@@ -51,7 +51,7 @@ A közzétevő és/vagy a forgalmazó adatbázisként működik, a felügyelt p�
 
 ## <a name="features"></a>Szolgáltatások
 
-A következőket támogatja:
+Támogatott rendszerek:
 
 - A helyszíni SQL Server és az Azure SQL Database felügyelt példány tranzakciós és pillanatkép-replikációs arányát.
 - A helyszíni SQL Server-adatbázisok, önálló adatbázisok és felügyelt példányok az Azure SQL Database vagy Azure SQL Database rugalmas készletei a készletezett adatbázisok előfizetőket is lehet.

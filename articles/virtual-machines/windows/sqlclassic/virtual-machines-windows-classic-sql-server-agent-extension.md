@@ -17,10 +17,10 @@ ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 2b719185aabd39cd70b9cb890a9599aa06ca4ff4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60334845"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Azure-beli virtuális gépeken az SQL Server ügynök bővítménnyel (klasszikus) felügyeleti feladatok automatizálása
@@ -85,7 +85,7 @@ Ha az SQL IaaS-ügynök bővítmény legújabb verziójára frissíti, a bővít
 > [!NOTE]
 > Az SQL Server IaaS-ügynök bővítmény csak a támogatott [SQL Server rendszerű virtuális gép katalógus rendszerképek](../sql/virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (használatalapú fizetés vagy bring-your-saját licenc). Ha manuálisan telepíti az SQL Server csak az operációs rendszer Windows Server virtuális gépen, vagy ha telepít egy testre szabott SQL Server virtuális gép virtuális merevlemez nem támogatott. Ezekben az esetekben, előfordulhat, hogy lehet telepíteni, és a bővítmény manuális kezelése PowerShell használatával, de erősen ajánlott egy SQL Server VM image z galerie telepítenie és testre szabni.
 
-## <a name="status"></a>status
+## <a name="status"></a>Állapot
 Egy győződjön meg arról, hogy telepítve van-e a bővítmény módja az ügynök állapotának megtekintése az Azure Portalon. Válassza ki a virtuális gép panelen felsorolt virtuális gépet, és kattintson a **bővítmények**. Megtekintheti a **SQLIaaSAgent** felsorolt bővítmény.
 
 ![Az SQL Server IaaS-ügynök bővítmény az Azure Portalon](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-portal.png)

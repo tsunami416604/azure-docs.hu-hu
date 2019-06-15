@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
 ms.openlocfilehash: 325bbee3f3d5ad5097f710cb56fe03baff97388a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60532820"
 ---
 # <a name="monitor-migration-activity"></a>A migrálási tevékenységek monitorozása
@@ -55,7 +55,7 @@ Az alábbi táblázat az adatbázisszintű panelen lévő mezők listája, és i
     </tr>
     <tr>
       <td rowspan="4" class="Status"><strong>Állapot</strong></td>
-      <td>Inicializálás</td>
+      <td>Inicializálása</td>
       <td>A DMS a migrálási folyamat beállítását.</td>
     </tr>
     <tr>
@@ -84,11 +84,11 @@ Az alábbi táblázat az adatbázisszintű panelen lévő mezők listája, és i
       <td>A rendszer kezdeti betöltés után DMS lezárásával befejezettként jelöli meg adatbázis-készen áll a megoldásról. Felhasználói ellenőrizni kell, ha adatok már szerepelnek a folyamatos szinkronizálás.</td>
     </tr>
     <tr>
-      <td>Az összes módosítás alkalmazva</td>
+      <td>Az összes alkalmazott módosítások</td>
       <td>Kezdeti betöltési és a folyamatos szinkronizálás is befejeződött. Ez az állapot akkor is jelentkezik, után az adatbázis sikeres átállás.</td>
     </tr>
     <tr>
-      <td>Lásd a hiba részleteit</td>
+      <td>Lásd a hiba részletei:</td>
       <td>Kattintson a hivatkozásra a hiba részleteinek megjelenítése.</td>
     </tr>
     <tr>

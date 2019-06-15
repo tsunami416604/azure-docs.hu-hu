@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
 ms.openlocfilehash: 3267d79387586f5ca8475d7ac0ed0f86d3f64f0d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60595046"
 ---
 # <a name="outbound-connections-classic"></a>Kimenő kapcsolatok (klasszikus)
@@ -108,7 +108,7 @@ Azure preallocates SNAT portok során egy példány van üzembe helyezve, hány 
 
 Az alábbi táblázat az SNAT port preallocations készletméretek háttér-szint esetében:
 
-| Példányok | Előzetesen lefoglalt SNAT portok példányonként |
+| példányok | Előzetesen lefoglalt SNAT portok példányonként |
 | --- | --- |
 | 1-50 | 1,024 |
 | 51-100 | 512 |

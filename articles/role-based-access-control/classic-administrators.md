@@ -15,10 +15,10 @@ ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9c3bd2480853f5c4134cd560c20a6007b044e138
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924654"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
@@ -38,7 +38,7 @@ Ez a cikk bemutatja, hogyan lehet a társ-rendszergazdaként, és a szolgáltat�
 
     Társadminisztrátorok csak az előfizetések szintjén is hozzárendelhető.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 
 1. Kattintson a **klasszikus rendszergazdák** fülre.
 
@@ -71,7 +71,7 @@ Vegye figyelembe, hogy a [beépített szerepkörök az Azure-erőforrások](../r
 
 1. Nyissa meg [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) , és válasszon ki egy előfizetést.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 
 1. Kattintson a **klasszikus rendszergazdák** fülre.
 
@@ -87,7 +87,7 @@ Vegye figyelembe, hogy a [beépített szerepkörök az Azure-erőforrások](../r
 
 Csak a fiók rendszergazdája módosíthatja az előfizetés szolgáltatás-rendszergazda. Alapértelmezés szerint az Azure-előfizetéssel, Regisztráljon a szolgáltatás-rendszergazda esetén ugyanaz, mint a fiók rendszergazdája. Nincs a felhasználóifiók-adminisztrátor szerepkörrel rendelkező felhasználó hozzáfér az Azure Portalon. A szolgáltatás-rendszergazdai szerepkörrel rendelkező felhasználó az Azure Portalra teljes hozzáféréssel rendelkezik. A felhasználóifiók-adminisztrátor és a szolgáltatás-rendszergazda nem ugyanaz a felhasználó és a egy másik felhasználó módosítja a szolgáltatás-rendszergazda, ha a fiók rendszergazdája elveszíti a hozzáférést az Azure Portalon. Azonban a fiók rendszergazdája mindig segítségével Fiókközpontban módosíthatja a szolgáltatás-rendszergazda vissza a saját magukat.
 
-Módosítsa a szolgáltatás-rendszergazda kétféleképpen történhet. Módosíthatja a **az Azure portal** vagy **Account Center**.
+A szolgáltatásadminisztrátort kétféleképpen módosíthatja. Módosíthatja a **az Azure portal** vagy **Account Center**.
 
 ### <a name="azure-portal"></a>Azure Portal
 

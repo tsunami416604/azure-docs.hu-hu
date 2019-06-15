@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
 ms.openlocfilehash: 3db5068943b88921d90697dd94be18c448e19d50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609194"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-ffiec-financial-services"></a>Azure biztonsági és megfelelőségi terv: Adatraktár FFIEC a pénzügyi szolgáltatások
@@ -76,7 +76,7 @@ A következő szakaszt az üzembe helyezés és a megvalósítás elemek részle
 
 **SQL Data Warehouse**: [Az SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) van egy vállalati adatok adattárház (EDW), amely ötvözi a nagymértékben párhuzamos feldolgozási (MPP) gyorsan több petabájtnyi adat, az összetett lekérdezések futtatásához így a felhasználók hatékony azonosítsa a pénzügyi adatokat. Felhasználók használhatják a egyszerű PolyBase T-SQL-lekérdezések big Data típusú adatok importálása az SQL Data Warehouse-ba, és a teljesítmény MPP nyújtotta lehetőségeket kiaknázva nagy teljesítményű elemzés futtatása felhasználását.
 
-**SQL Server Reporting Services (SSRS)**: [SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs) gyors létrehozása a jelentések biztosít a táblák, diagramokat, térképeket, mérőműszerek, mátrixokban és több Azure SQL Data Warehouse számára.
+**SQL Server Reporting Services (SSRS)** : [SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs) gyors létrehozása a jelentések biztosít a táblák, diagramokat, térképeket, mérőműszerek, mátrixokban és több Azure SQL Data Warehouse számára.
 
 **A Data Catalog**: [A Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) teszi az adatforrásokat könnyen felfedezhetővé és értelmezhetővé teszi azon felhasználók számára, aki kezelheti az adatokat. Általános adatforrások regisztrálva, címkézett és pénzügyi adatokat keresni. A data marad, a meglévő hely, de a metaadatok másolatát bekerül a Data Catalog szolgáltatást, az adatforrás helye mutató hivatkozásokkal együtt. A metaadatok indexelésének köszönhetően az adatforrások egy egyszerű keresés által felfedezhetővé és könnyen értelmezhetővé válnak a felhasználók számára.
 
@@ -107,7 +107,7 @@ A hálózati biztonsági csoportok rendelkezik bizonyos portokat és protokollok
 
 **Alhálózatok**: Minden egyes alhálózathoz társítva a megfelelő hálózati biztonsági csoporttal.
 
-### <a name="data-at-rest"></a>Inaktív adat
+### <a name="data-at-rest"></a>Inaktív adatok
 
 Az architektúra használatával több mértéket, beleértve a titkosítást és -adatbázis naplózási szolgáltatásával az inaktív adatok védi.
 

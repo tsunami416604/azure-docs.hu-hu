@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
 ms.openlocfilehash: 63852ccab842f11f30bcbe695206fedf72931911
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60706237"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Webalkalmazási tűzfal hozzáadása az Azure Security Centerben
@@ -49,7 +49,7 @@ A Security Center javasolja, hogy a WAF elleni támadásokat a webalkalmazások 
 
    ![Virtuálisgép-konfiguráció][4]
    
-8. Lépjen vissza **új webalkalmazási tűzfal** válassza **WAF-információk**. A **WAF-információk**, konfigurálja magát a WAF. 7. lépés lehetővé teszi, hogy konfigurálja a virtuális gép, amelyen a WAF fut, és 8. lépés lehetővé teszi, hogy helyezze üzembe a WAF magát.
+8. Lépjen vissza **új webalkalmazási tűzfal** válassza **WAF-információk**. A **WAF-információk**, konfigurálja magát a WAF. 7\. lépés lehetővé teszi, hogy konfigurálja a virtuális gép, amelyen a WAF fut, és 8. lépés lehetővé teszi, hogy helyezze üzembe a WAF magát.
 
 ## <a name="finalize-application-protection"></a>Alkalmazásvédelem véglegesítése
 1. Lépjen vissza **javaslatok**. Egy új bejegyzést jött létre, miután létrehozta a WAF nevű **alkalmazásvédelem véglegesítése**. Ez a bejegyzés jelzi, hogy ténylegesen ezzel elvégeztük a WAF az Azure virtuális hálózaton belül úgy, hogy az alkalmazás megvédheti a folyamat végrehajtásához szükséges.
@@ -59,7 +59,7 @@ A Security Center javasolja, hogy a WAF elleni támadásokat a webalkalmazások 
 2. Válassza ki **alkalmazásvédelem véglegesítése**. Egy új panel nyílik meg. Láthatja, hogy nincs-e egy webalkalmazást, amely átirányítva a forgalom rendelkeznie kell.
 3. Válassza ki a webes alkalmazást. Megnyílik egy panel, amely a webalkalmazási tűzfal beállításának véglegesítése vonatkozó lépéseket biztosít. Hajtsa végre a lépéseket, és válassza ki **korlátozzák a forgalmat**. A Security Center majd elvégzi a háttérszolgáltatást fel.
 
-   ![Forgalom korlátozása][6]
+   ![Korlátozzák a forgalmat.][6]
 
 > [!NOTE]
 > A Security Center több webalkalmazás védheti meg ezeket az alkalmazásokat a meglévő WAF-példányok hozzáadásával.

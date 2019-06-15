@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
 ms.openlocfilehash: f90140e9464ee72e9ceae8ca140bd060c51aade8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60597111"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Méretezési csoport áttelepítése a virtuális gépek Azure Site Recovery használatával
@@ -39,7 +39,7 @@ Mielőtt elkezdené, tegye a következőket kell:
     - Rendelkezésre állási csoport (ha szükséges)
     - Céloldali hálózati biztonsági csoport és az erőforráscsoport
 - Győződjön meg arról, hogy a cél virtuális gép tulajdonságainak döntött
-    - Céloldali virtuális gép neve
+    - Cél virtuális gép neve
     - Cél virtuális gép méretét az Azure-ban (születhet értékelése az Azure Migrate használatával)
     - Az elsődleges hálózati Adaptert a virtuális gép magánhálózati IP-címe
 - Töltse le a parancsfájlok [Azure PowerShell-minták](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) adattárat a Githubon

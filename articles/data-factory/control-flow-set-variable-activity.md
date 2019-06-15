@@ -12,10 +12,10 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 71abfdff629f36b278488851b546c7371353a4d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60767965"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Állítsa be a változó tevékenységhez az Azure Data Factoryban
@@ -24,9 +24,9 @@ A változó beállítása tevékenységhez használatával String, Bool, vagy eg
 
 ## <a name="type-properties"></a>Tulajdonságok
 
-Tulajdonság | Leírás | Kötelező
+Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
-név | A folyamat a tevékenység neve | Igen
+name | A folyamat a tevékenység neve | Igen
 description | A tevékenység leírása leíró szöveg | nem
 type | Tevékenység típus SetVariable | igen
 value | Szövegkonstans vagy kifejezés objektum használt karakterlánc-érték a megadott változó beállítása | igen

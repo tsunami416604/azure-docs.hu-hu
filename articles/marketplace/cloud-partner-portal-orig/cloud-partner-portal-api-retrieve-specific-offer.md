@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: bb6bbd457ff372ad46091f49cf4ae7e4b34b3d83
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935442"
 ---
 <a name="retrieve-a-specific-offer"></a>Egy adott ajánlat beolvasása
@@ -41,10 +41,10 @@ Is lekérni egy adott verzióját az ajánlatot, vagy a draft, nézetben vagy ü
 | **Name (Név)**    | **Leírás**                                                                          | **Adattípus** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | publisherId. Például Contoso                                                        | String        |
-| ajánlatazonosító     | GUID azonosítója, amely egyedileg azonosítja az ajánlatot.                                                 | String        |
+| offerId     | GUID azonosítója, amely egyedileg azonosítja az ajánlatot.                                                 | String        |
 | version     | Az ajánlat lekérése folyamatban verziója. Alapértelmezés szerint a rendszer lekéri a legújabb ajánlat. | Egész szám       |
 | Helyet      | A tárolóhely, amelyről a az ajánlatot, hogy a rendszer lekéri a egyike lehet:      <br/>  - `Draft` (alapértelmezett) az ajánlat verzió jelenleg a draft kérdezi le.  <br/>  -  `Preview` az ajánlat verzió jelenleg még előzetes verzióként kérdezi le.     <br/>  -  `Production` olvassa be az ajánlat verziója jelenleg éles környezetben.          |      Enum |
-| API-verzió | API legújabb verziója                                                                    | Dátum          |
+| api-version | API legújabb verziója                                                                    | Dátum          |
 |  |  |  |
 
 
@@ -175,7 +175,7 @@ Is lekérni egy adott verzióját az ajánlatot, vagy a draft, nézetben vagy ü
 |  status         | Az ajánlat állapotát. A lehetséges értékek listáját lásd: [stav Nabídky](#offer-status) alatt.                                  |
 |  Azonosító             | GUID, amely egyedileg azonosítja az ajánlatot                                                                                         |
 |  version        | Az ajánlat jelenlegi verziójával. A verzió tulajdonság nem lehet módosítani az ügyfél által. Azt minden egyes közzététel után.    |
-|  definíció     | A számítási feladatok tényleges meghatározása                                                                                               |
+|  Definíció     | A számítási feladatok tényleges meghatározása                                                                                               |
 |  changedTime    | Az ajánlat történt utolsó módosításának UTC dátum-idő                                                                                   |
 |  |  |
 
@@ -196,7 +196,7 @@ Is lekérni egy adott verzióját az ajánlatot, vagy a draft, nézetben vagy ü
 |  **Name (Név)**                   |   **Leírás**                             |
 | --------------------------- |  -------------------------------------------- |
 |  NeverPublished             | Az ajánlat soha nem lett közzétéve.               |
-|  Nincs elindítva                 | Az ajánlat új, de nem indult el.              |
+|  NotStarted                 | Az ajánlat új, de nem indult el.              |
 |  WaitingForPublisherReview  | Ajánlat közzétevője jóváhagyásra vár.      |
 |  Fut                    | Az ajánlat küldésének feldolgozása folyamatban van.          |
 |  Sikeres                  | Az ajánlat küldésének feldolgozása befejeződött.    |

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772382"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Vészhelyreállítás az Azure virtuális gépek Azure ExpressRoute integrálása
@@ -32,7 +32,7 @@ Az ExpressRoute segítségével kiterjesztheti helyszíni hálózatait a Microso
 - **Az Azure-régiók közötti feladatátvétel**: Ha valamilyen okból kimaradás lép fel, a rendszer átadja a feladatokat Azure virtuális gépek az elsődleges kiszolgálóról másodlagos Azure-régióba. Miután-ba irányuló feladatátvétel egy másodlagos régióba, a program több lépést ahhoz, hogy az ExpressRoute-tal tudjon másodlagos régióban az Azure virtuális gépek eléréséhez.
 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Mielőtt elkezdené, győződjön meg arról, hogy megértette a következő fogalmak:
 

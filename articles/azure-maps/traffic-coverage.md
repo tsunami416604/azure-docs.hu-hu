@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: ad7d4dceefcaa06effa6b2974b0a8a03ad641372
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60794028"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Az Azure Maps forgalmi lefedettség
@@ -69,7 +69,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 |Dánia     |✓         |✓         |
 |Észtország     |         | ✓        |
 |Finnország     |✓         |✓         |
-|+ Aland-szigetek      |✓         |✓         |
+|\+ Aland-szigetek      |✓         |✓         |
 |Franciaország     |✓         |✓         |
 |Monaco     |✓         |✓         |
 |Németország     |✓         |✓         |
@@ -89,7 +89,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 |Norvégia     |✓         |✓         |
 |Lengyelország     |✓         |✓         |
 |Portugália     |✓         |✓         |
-|+ Azori-szigetek és Madeira     |✓         |✓         |
+|\+ Azori-szigetek és Madeira     |✓         |✓         |
 |Románia     |✓         |✓         |
 |Orosz Föderáció     |✓         |✓         |
 |San Marino    |✓         |✓         |
@@ -97,16 +97,16 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 |Szlovénia     |✓         |✓         |
 |Spanyolország     |✓         |✓         |
 |+Andorra     |✓         |✓         |
-|+ Baleárok     |✓         |✓         |
-|+ Kanári-szigetek     |✓         |✓         |
+|\+ Baleárok     |✓         |✓         |
+|\+ Kanári-szigetek     |✓         |✓         |
 |Svédország     |✓         |✓         |
 |Svájc     |✓         |✓        |
 |Törökország     |✓         |✓         |
 |Ukrajna     |✓         |✓         |
 |Egyesült Királyság     |✓         |✓         |
-|+ Gibraltár     |✓         |✓         |
-|+ Guernsey & mez     |✓         |✓         |
-|+ Man-sziget     |✓         |✓         |
+|\+ Gibraltár     |✓         |✓         |
+|\+ Guernsey & mez     |✓         |✓         |
+|\+ Man-sziget     |✓         |✓         |
 |Vatikánváros   |✓         |✓         |
 
 

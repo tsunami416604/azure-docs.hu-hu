@@ -15,10 +15,10 @@ ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 296f1df9175f4595274a57ed936282abb73da18b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60679552"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Hozzon létre egy Azure CDN-végponthoz
@@ -44,7 +44,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
    
     ![Végpont-weblap hozzáadása](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. A **Név** mezőben adjon meg egy egyedi nevet a CDN-végpont számára. Ezt a nevet használja a tartomány a gyorsítótárazott erőforrások eléréséhez  _\<végpontneve >_. azureedge.net.
+3. A **Név** mezőben adjon meg egy egyedi nevet a CDN-végpont számára. Ezt a nevet használja a tartomány a gyorsítótárazott erőforrások eléréséhez  _\<végpontneve >_ . azureedge.net.
 
 4. A **forrástípus**, válasszon a következő forrás-típusok közül: 
    - **Tárolási** az Azure Storage szolgáltatáshoz
@@ -62,7 +62,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
    > Bizonyos típusú források – például az Azure Storage és a Web Apps – esetén az állomásfejlécnek egyeznie kell a forrás tartományával. Hacsak a forrás a tartománytól eltérő állomásfejléc használatát nem igényli, hagyja meg az alapértelmezett értéket.
    > 
     
-8. A **protokoll** és **forrásport**, adja meg a forráskiszolgáló az erőforrások eléréséhez használt portok és protokollok. Legalább egy protokollt (a HTTP vagy a HTTPS protokollt) ki kell választani. A CDN által biztosított tartományt (_\<végpontneve >_. azureedge.net) a HTTPS-tartalmak eléréséhez. 
+8. A **protokoll** és **forrásport**, adja meg a forráskiszolgáló az erőforrások eléréséhez használt portok és protokollok. Legalább egy protokollt (a HTTP vagy a HTTPS protokollt) ki kell választani. A CDN által biztosított tartományt ( _\<végpontneve >_ . azureedge.net) a HTTPS-tartalmak eléréséhez. 
    
    > [!NOTE]
    > A **forrásport** érték azt határozza meg, csak az a port, a végpontot használja az eredeti kiszolgálón lévő információk lekéréséhez. Magát a végpontot a végfelhasználók – a **Forrásport** értékétől függetlenül – csak az alapértelmezett HTTP- és HTTPS-porton (azaz a 80-as és a 443-as porton) érik el.  

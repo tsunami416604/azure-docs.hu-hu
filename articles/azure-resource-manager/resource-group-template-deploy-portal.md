@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
 ms.openlocfilehash: 7b28129a3afe9f78d0ef749fa0c7759082c5f758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60520579"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan használhatja a [az Azure portal](https://portal.azu
 
 1. Erőforráscsoportok, válassza a **Hozzáadás**.
 
-   ![Erőforráscsoport hozzáadása](./media/resource-group-template-deploy-portal/add-resource-group.png)
+   ![erőforráscsoport hozzáadása](./media/resource-group-template-deploy-portal/add-resource-group.png)
 
 1. Adjon meg egy nevet és egy helyet, és szükség esetén válasszon ki egy előfizetést. Meg kell adnia az erőforráscsoport helyét, mert az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Megfelelőségi okokból érdemes lehet, hogy ezekhez a metaadatokhoz helyének meghatározásához. Általában azt javasoljuk, hogy megad egy olyan helyre, ahol az erőforrások legnagyobb része helyezkednek el. Ugyanazon a helyen használatával egyszerűsítheti a sablon.
 
@@ -64,7 +64,7 @@ Miután létrehozott egy erőforráscsoport, a Marketplace-ről erőforrások te
 
    Azt is megteheti Ha dönt, hogy az erőforrások üzembe helyezésekor, hozzon létre egy erőforráscsoportot. Válassza ki **új létrehozása** , és adja meg az erőforráscsoport nevét.
 
-   ![Új erőforráscsoport létrehozása](./media/resource-group-template-deploy-portal/select-new-group.png)
+   ![Hozzon létre új erőforráscsoportot](./media/resource-group-template-deploy-portal/select-new-group.png)
 
 1. A központi telepítés megkezdődik. Az üzembe helyezés eltarthat néhány percig. Ha a telepítés véget ért, megjelenik egy értesítés.
 
@@ -72,7 +72,7 @@ Miután létrehozott egy erőforráscsoport, a Marketplace-ről erőforrások te
 
 1. Az erőforrások üzembe helyezése után is hozzáadhat további erőforrásokat az erőforráscsoport kiválasztásával **Hozzáadás**.
 
-   ![Erőforrás felvétele](./media/resource-group-template-deploy-portal/add-resource.png)
+   ![Erőforrás hozzáadása](./media/resource-group-template-deploy-portal/add-resource.png)
 
 ## <a name="deploy-resources-from-custom-template"></a>Egyéni sablon erőforrások üzembe helyezése
 

@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
 ms.openlocfilehash: 007b6c409dde248a4dde7a15fd16b543add234bc
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64870312"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>AWS-költségek és az Azure-beli használati kezelése
@@ -77,15 +77,15 @@ A következő táblázat ismerteti a rendelkezésre álló csoport és a költs�
 
 | Dimenzió | Amazon CUR header | Hatókörök | Megjegyzések |
 | --- | --- | --- | --- |
-| Rendelkezésre állási zóna | lineitem/AvailabilityZone | Összes |   |
+| Rendelkezésre állási zónában | lineitem/AvailabilityZone | Összes |   |
 | Location egység | termék/régió | Összes |   |
 | Forgalmi díj |   | Összes |   |
 | Fogyasztásmérő kategóriája | lineItem/ProductCode | Összes |   |
 | Fogyasztásmérő alkategóriája | lineitem/UsageType | Összes |   |
 | Művelet | lineItem/Operation | Összes |   |
-| Erőforrás | lineItem/ResourceId | Összes |   |
+| Resource | lineItem/ResourceId | Összes |   |
 | Erőforrás típusa | product/instanceType | Összes | Ha a termék/instanceType null értékű, lineItem/UsageType használatos. |
-| Erőforrás GUID azonosítója | – | Összes | Azure-mérőszámok GUID azonosítója. |
+| ResourceGuid | – | Összes | Azure-mérőszámok GUID azonosítója. |
 | Szolgáltatásnév | termék/ProductName | Összes | Ha a termék/ProductName null értékű, lineItem/ProductCode használatos. |
 | Szolgáltatásszint |   |   |   |
 | Előfizetés azonosítója | lineItem/UsageAccountId | Konszolidált fiók és a felügyeleti csoport |   |

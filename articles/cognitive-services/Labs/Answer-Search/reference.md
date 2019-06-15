@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60721011"
 ---
 # <a name="project-answer-search-v7-reference"></a>Projekt válaszkeresés v7-referencia
@@ -64,7 +64,7 @@ Az alábbiakban a fejlécek, köztük a kérést és választ.
   
 |Fejléc|Leírás|  
 |------------|-----------------|  
-|Elfogadás|Választható kérelemfejléc.<br /><br /> Az alapértelmezett adathordozó-típus az application/json. Adja meg, hogy a válasz a [JSON-LD](https://json-ld.org/), állítsa be az Accept fejléc alkalmazás/ld + json.|  
+|Fogadja el|Választható kérelemfejléc.<br /><br /> Az alapértelmezett adathordozó-típus az application/json. Adja meg, hogy a válasz a [JSON-LD](https://json-ld.org/), állítsa be az Accept fejléc alkalmazás/ld + json.|  
 |<a name="acceptlanguage" />Accept-Language|Választható kérelemfejléc.<br /><br /> Nyelvek vesszővel elválasztott listája a felhasználói felület sztringjeihez. A lista prioritás szerinti csökkenő sorrendben jelenik meg. További információért, például a várt formátummal kapcsolatos részletekért lásd: [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ez a fejléc és a [setLang](#setlang) lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt.<br /><br /> Ha ezt a fejlécet, a cc lekérdezési paramétert is meg kell. A megfelelő piac meghatározásához a Bing a listában talált első támogatott nyelvet használja, és kombinálja azt a `cc` paraméter értékével. Ha a lista nem tartalmaz támogatott nyelvet, a Bing megkeresi a kérelmet támogató legközelebbi nyelvet és piacot, vagy másik lehetőségként egy összesített vagy alapértelmezett piacot használ az eredmények beszerzéséhez. A Bing által használt piac meghatározásához tekintse meg a BingAPIs-Market fejlécet.<br /><br /> Csak akkor használja ezt a fejlécet és a `cc` lekérdezési paramétert, ha több nyelvet ad meg. Ellenkező esetben használja az [mkt](#mkt) és a [setLang](#setlang) lekérdezési paramétereket.<br /><br /> A felhasználóifelület-sztring egy olyan sztring, amelyet feliratként használnak a felhasználói felületen. A JSON-válaszobjektumok tartalmaznak néhány felhasználóifelület-sztringet. A válaszobjektumokban található, a Bing.com tulajdonságaira mutató hivatkozások a megadott nyelvet alkalmazzák.|  
 |<a name="market" />BingAPIs-Market|Válaszfejléc.<br /><br /> A kérelem által használt piac. A formátum a következő: \<languageCode\>-\<countryCode\>. Például: en-US.|  
 |<a name="traceid" />BingAPIs-TraceId|Válaszfejléc.<br /><br /> A kérelem részleteit tartalmazó naplóbejegyzés azonosítója. Ha hiba történik, rögzítse ezt az azonosítót. Ha nem tudja meghatározni és megoldani a problémát, foglalja bele a kérelembe ezt az azonosítót is a támogatási csoportnak megadott többi információval együtt.|  
@@ -131,7 +131,7 @@ Határozza meg a licenc, amely alatt a szöveges vagy fénykép használható.
   
 |Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
-|név|A licenc neve.|String|  
+|name|A licenc neve.|String|  
 |url|Egy webhely, ahol a felhasználó kaphat-e további információ a licenc URL-címe.<br /><br /> A nevét és URL-cím használatával hivatkozás létrehozása.|String|  
   
 
@@ -141,7 +141,7 @@ Licenc tesznek elérhetővé; ilyenek szerződéses szabályt definiálja.
 |Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Típus mutató LicenseAttribution értékre van állítva.|String|  
-|licenc|A licenc, amely alatt a tartalom is használható.|[Licenc](#license)|  
+|Licenc|A licenc, amely alatt a tartalom is használható.|[Licenc](#license)|  
 |licenseNotice|A licenc mellett a megcélzott mező megjelenítéséhez. Ha például "CC biztonsági Társítás licenc szöveg".<br /><br /> A licenc nevét és URL-címet használja a `license` mezőt, a webhely, amelyen a licenc részleteit mutató hivatkozás létrehozása. Ezután cserélje le a licenc neve az a `licenseNotice` karakterláncot (például CC-a-SA) az újonnan létrehozott hivatkozás.|String|  
 |mustBeCloseToContent|Logikai érték, amely meghatározza, hogy a szabály a tartalmát kell helyezni a közelében a mezőt, amely a szabály vonatkozik. Ha **igaz**, a tartalma közelében kell elhelyezni. Ha **hamis**, vagy ez a mező nem létezik, a tartalmát a hívó belátása szerint is elhelyezhető.|Boolean|  
 |targetPropertyName|Az a mező neve, amely a szabály vonatkozik.|String|  
@@ -188,7 +188,7 @@ Vegye figyelembe, hogy a közzétevő neve vagy a webhely vagy mindkét előford
   
 |Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
-|név|A közzétevő nevét.|String|  
+|name|A közzétevő nevét.|String|  
 |url|A kiadó webhelye URL-címe.<br /><br /> Vegye figyelembe, hogy a közzétevő nem ad egy webhelyet.|String|  
   
   
@@ -198,7 +198,7 @@ Meghatározza, milyen kapcsolatos információkat egy előzetes verzióban érhe
   
 |Name (Név)|Érték|Típus|  
 |----------|-----------|----------|
-|név|Az oldal címe, nem feltétlenül a HTML-cím|String|
+|name|Az oldal címe, nem feltétlenül a HTML-cím|String|
 |url|Az URL-cím, amely ténylegesen volt bejárt (kérelem előfordulhat, hogy felvette a átirányítások)|String|  
 |description|Az oldal és a tartalom rövid leírása|String|  
 |isFamilyFriendly|A legpontosabb a webes index; eleme valós idejű fetches tegye alapján kizárólag az URL-címet, és nem az oldal tartalmát az észlelés|logikai|
@@ -227,7 +227,7 @@ Határozza meg a keresési eredmények csoport, mint például mainline.
 
 |Name (Név)|Érték|Típus|  
 |-------------|-----------------|----------|
-|elem|Keresési eredmények megjelennek a csoport listája.|RankingItem|
+|items|Keresési eredmények megjelennek a csoport listája.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Határozza meg a keresési eredmény elemek megjelenítéséhez.
@@ -315,8 +315,8 @@ A következő értékeket a lehetséges hiba kód és a részleges hiba kódja.
 
 |Kód|SubCode|Leírás
 |-|-|-
-|Kiszolgálóhibái|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|HTTP-állapotkód: 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Letiltva|A Bing InvalidRequest adja vissza, ha bármelyik részét a kérés érvénytelen, nem. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke nem érvényes.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a a HTTP-állapotkód: 400.<br/><br/>Ha a HTTPS helyett a HTTP protokollt használja, a Bing HttpNotAllowed adja vissza, és a HTTP-állapotkód: 410.
+|Kiszolgálóhibái|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP-állapotkód: 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokkolt|A Bing InvalidRequest adja vissza, ha bármelyik részét a kérés érvénytelen, nem. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke nem érvényes.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a a HTTP-állapotkód: 400.<br/><br/>Ha a HTTPS helyett a HTTP protokollt használja, a Bing HttpNotAllowed adja vissza, és a HTTP-állapotkód: 410.
 |RateLimitExceeded|Nincsenek alárendelt kódok|Minden alkalommal, amikor a lekérdezések másodpercenkénti (lekérdezési QPS) és a lekérdezések száma (QPM) havi kvótát túllépi a Bing RateLimitExceeded adja vissza.<br/><br/>Ha túllépi QPS, a Bing adja vissza a 429-es HTTP-állapotkód:, és Ha elfogynak QPM, a Bing adja vissza a 403-as.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|A Bing InvalidAuthorization adja vissza, ha a Bing a hívó nem tudja hitelesíteni. Ha például a `Ocp-Apim-Subscription-Key` fejléc hiányzik, vagy az előfizetési kulcs nem érvényes.<br/><br/>A redundancia akkor fordul elő, ha egynél több hitelesítési módszer adja meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód: a 401-es.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|A Bing InsufficientAuthorization adja vissza, ha a hívó nem rendelkezik engedéllyel az erőforrás eléréséhez. Ez akkor fordulhat elő, ha az előfizetési kulcs le lett tiltva, vagy lejárt. <br/><br/>Ha a hiba InsufficientAuthorization, a HTTP-állapotkód: a 403-as.

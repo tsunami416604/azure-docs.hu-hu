@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 12/15/2016
-ms.author: v-yiso
-ms.date: 04/22/2019
+ms.date: 12/15/2016
+ms.author: apimpm
 ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60557943"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Az Azure API Management szolgáltatás a külső szolgáltatások használata
@@ -282,7 +281,6 @@ A teljes házirend a következőképpen néz ki:
 
 A konfigurációban a helyőrző művelet konfigurálhatja úgy az irányítópult erőforrás legalább egy órát a gyorsítótárba. 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az Azure API Management-szolgáltatás, amely a HTTP-forgalom szelektív módon alkalmazható rugalmas házirendek biztosít, és lehetővé teszi a háttérszolgáltatások összetételét. Hogy növelje a riasztási funkciók, ellenőrzés, ellenőrzési funkciókat az API-átjáró, vagy hozzon létre új összetett erőforrások több háttérszolgáltatással alapján szeretné a `send-request` és a kapcsolódó házirendek megnyissa a lehetőségek.
-
 

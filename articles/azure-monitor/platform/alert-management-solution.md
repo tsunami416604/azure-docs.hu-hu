@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60777013"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Az Azure Log Analytics felügyeleti megoldás riasztás
@@ -87,7 +87,7 @@ A riasztási felügyeleti megoldás elemzi a típusú rekordot **riasztási**.  
 
 A megoldás riasztások importálása a System Center Operations Manager és a egy megfelelő rekordot hoz létre az egyes típusú **riasztási** és SourceSystem **OpsManager**.  Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:  
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
 | Típus |*Riasztás* |
 | SourceSystem |*OpsManager* |

@@ -9,17 +9,17 @@ ms.service: site-recovery
 ms.date: 04/24/2019
 ms.author: dapatil
 ms.openlocfilehash: 2edf7ce3be1402a497ceab5b826a89ee43c5c39b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64927372"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Az Azure Site Recovery Deployment Planner verzióelőzményeinek
 
 Ez a cikk ismerteti az Azure Site Recovery Deployment Planner a javítások, ismert korlátozások minden és a kiadási dátum együtt minden verziójára előzményeit.
 
-## <a name="version-24"></a>2.4-es verzió
+## <a name="version-24"></a>2\.4-es verzió
 
 **Kiadás dátuma: 2019. április 17.**
 
@@ -33,7 +33,7 @@ Ez a cikk ismerteti az Azure Site Recovery Deployment Planner a javítások, ism
 
 
 
-## <a name="version-23"></a>2.3-as verzió
+## <a name="version-23"></a>2\.3-as verzió
 
 **Kiadás dátuma: 2018. december 3.**
 
@@ -41,7 +41,7 @@ Ez a cikk ismerteti az Azure Site Recovery Deployment Planner a javítások, ism
 
 - Kijavítva, amely ebben az esetben a Deployment Planner a megadott cél helye és előfizetése a jelentés elkészítése.
 
-## <a name="version-22"></a>2.2-es verzió 
+## <a name="version-22"></a>2\.2-es verzió 
 
 **Kiadás dátuma: 2018. április 25.**
 
@@ -57,7 +57,7 @@ Ez a cikk ismerteti az Azure Site Recovery Deployment Planner a javítások, ism
   - A kezdeti replikáció (IR) és a különbözeti replikációt (DR) tömörítési tényező frissítése.
   - A hozzáadott korlátozottan támogatja az SMB-tárolót.
 
-## <a name="version-21"></a>2.1-es verzió
+## <a name="version-21"></a>2\.1-es verzió
 
 **Kiadás dátuma: 2018. január 3.**
 
@@ -72,7 +72,7 @@ Ez a cikk ismerteti az Azure Site Recovery Deployment Planner a javítások, ism
 - Frissítve a VMware Azure és Hyper-V – Azure virtuális gép az adatváltozás virtuális gépenként korlátot. 
 - A virtuális gép listáját tartalmazó fájl elemzésekor megbízhatósága.
 
-## <a name="version-201"></a>2.0.1-es verziója
+## <a name="version-201"></a>2\.0.1-es verziója
 
 **Kiadás dátuma: 2017. december 7.**
 
@@ -80,7 +80,7 @@ Ez a cikk ismerteti az Azure Site Recovery Deployment Planner a javítások, ism
 
 - Az ajánlás hozzáadott a hálózati sávszélesség-optimalizálását.
 
-## <a name="version-20"></a>2.0-s verzió
+## <a name="version-20"></a>2\.0-s verzió
 
 **Kiadás dátuma: 2017. november 28.**
 
@@ -95,7 +95,7 @@ Ez a cikk ismerteti az Azure Site Recovery Deployment Planner a javítások, ism
 - A Hyper-V – Azure vészhelyreállítási, a virtuális gép nevét, amely tartalmazza a karaktereket, például: `,`, `"`, `[`, `]`, és ``` ` ``` nem támogatottak. Ha a profilkészítés során létrehozott, jelentéskészítés sikertelen lesz, vagy helytelen eredményt fog rendelkezni.
 - VMware – Azure vészhelyreállítási a virtuális gép nevét tartalmazó vesszővel tagolt nem támogatott. Ha a profilkészítés során létrehozott, jelentés generálása sikertelen, vagy helytelen eredményt fog rendelkezni.
 
-## <a name="version-131"></a>1.3.1 verzió
+## <a name="version-131"></a>1\.3.1 verzió
 
 **Kiadás dátuma: 2017. július 19.** 
 
@@ -104,7 +104,7 @@ Ez a cikk ismerteti az Azure Site Recovery Deployment Planner a javítások, ism
 - A jelentés létrehozásakor a nagyméretű lemezek (> 1 TB) támogatása. Most már használhatja a Deployment Planner, amelyek lemezmérete 1 TB-nál nagyobb virtuális gépek replikációjának megtervezéséhez (legfeljebb 4095 GB-ig).
 További információ a [Nagyméretű lemezek támogatásáról az Azure Site Recoveryben](https://azure.microsoft.com/blog/azure-site-recovery-large-disks/)
 
-## <a name="version-13"></a>1.3-as verzió
+## <a name="version-13"></a>1\.3-as verzió
 
 **Kiadás dátuma: 2017. május 9.**
 
@@ -112,7 +112,7 @@ További információ a [Nagyméretű lemezek támogatásáról az Azure Site Re
 
 - Támogatás hozzáadva a felügyelt lemezt a jelentés létrehozásakor. Egyetlen tárfiókba helyezhető virtuális gépek száma alapján számítják, ha a felügyelt lemez van kijelölve feladatátvételre/feladatátvételi tesztre.
 
-## <a name="version-12"></a>1.2-es verziója
+## <a name="version-12"></a>1\.2-es verziója
 
 **Kiadás dátuma: 2017. április 7.**
 
@@ -124,7 +124,7 @@ További információ a [Nagyméretű lemezek támogatásáról az Azure Site Re
 - A rendszer most már néhány új előfeltételt is ellenőriz a vCenter- és az ESXi-kiszolgálók esetében.
 - Kijavítva az első jönnek létre, ha a területi beállítása nem angol nyelvű hibás jelentéseket.
 
-## <a name="version-11"></a>1.1-es verzió
+## <a name="version-11"></a>1\.1-es verzió
 
 **Kiadás dátuma: 2017. március 9.**
 
@@ -133,7 +133,7 @@ További információ a [Nagyméretű lemezek támogatásáról az Azure Site Re
 - Kijavítva, amely ebben az esetben a virtuális gépek profiljának készítéséhez, ha két vagy több azonos nevű vagy IP-címet a virtuális gépek különböző vCenter ESXi-gazdagépek között.
 - Másolás és a keresés le kell tiltani a kompatibilis virtuális gépek és a nem kompatibilis virtuális gépek munkalapok okozó probléma kijavítva.
 
-## <a name="version-10"></a>1.0-s verzió
+## <a name="version-10"></a>1\.0-s verzió
 
 **Kiadás dátuma: 2017. február 23.**
 

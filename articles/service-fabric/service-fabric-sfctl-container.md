@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: a5037c535737946a50d8af6fa60d0815120276d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837312"
 ---
 # <a name="sfctl-container"></a>sfctl-tároló
@@ -29,7 +29,7 @@ Tároló futtatási kapcsolatos parancsok egy fürtcsomóponton.
 |Parancs|Leírás|
 | --- | --- |
 | invoke-api | Egy üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz tárolón a tároló API meghívásához. |
-| naplók | A tároló üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz tároló naplóinak beolvasása. |
+| logs | A tároló üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz tároló naplóinak beolvasása. |
 
 ## <a name="sfctl-container-invoke-api"></a>sfctl tároló invoke-api
 Egy üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz tárolón a tároló API meghívásához.
@@ -38,7 +38,7 @@ Egy üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz t�
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [kötelező] alkalmazás-azonosító | Az alkalmazás identitását. <br><br> Ez általában a nélkül az alkalmazás teljes nevét a "fabric\:" URI-séma. 6.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "\~" karaktert. Például, ha az alkalmazás neve "fabric\:/myapp/app1", az identitása lenne "myapp\~app1" 6.0 + és "myapp/app1" korábbi verzióiban. |
+| – [kötelező] alkalmazás-azonosító | Az alkalmazás identitását. <br><br> Ez általában a nélkül az alkalmazás teljes nevét a "fabric\:" URI-séma. 6\.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "\~" karaktert. Például, ha az alkalmazás neve "fabric\:/myapp/app1", az identitása lenne "myapp\~app1" 6.0 + és "myapp/app1" korábbi verzióiban. |
 | --code-package-példány-id [kötelező] | Amely egyedileg azonosítja az egy kódot csomag-példány üzembe helyezett egy service fabric-csomópont azonosítója. <br><br> "Szolgáltatás code-package-list" lekérhetők. |
 | – [kötelező] code-package-neve | A szolgáltatásjegyzék-alkalmazástípus a Service Fabric-fürt részeként regisztrált megadott kód csomag neve. |
 | --container-api-uri-elérési út [kötelező] | Tároló REST API-URI elérési út a(z) {id} használata helyett a tároló neve vagy azonosítója. |
@@ -66,7 +66,7 @@ A tároló üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsoma
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [kötelező] alkalmazás-azonosító | Az alkalmazás identitását. <br><br> Ez általában a nélkül az alkalmazás teljes nevét a "fabric\:" URI-séma. 6.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "\~" karaktert. Például, ha az alkalmazás neve "fabric\:/myapp/app1", az identitása lenne "myapp\~app1" 6.0 + és "myapp/app1" korábbi verzióiban. |
+| – [kötelező] alkalmazás-azonosító | Az alkalmazás identitását. <br><br> Ez általában a nélkül az alkalmazás teljes nevét a "fabric\:" URI-séma. 6\.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "\~" karaktert. Például, ha az alkalmazás neve "fabric\:/myapp/app1", az identitása lenne "myapp\~app1" 6.0 + és "myapp/app1" korábbi verzióiban. |
 | --code-package-példány-id [kötelező] | Kód csomag példány azonosítója, amelyet a "service code-package-list" lekérheti. |
 | – [kötelező] code-package-neve | A szolgáltatásjegyzék-alkalmazástípus a Service Fabric-fürt részeként regisztrált megadott kód csomag neve. |
 | --csomópontnév [kötelező] | A csomópont neve. |

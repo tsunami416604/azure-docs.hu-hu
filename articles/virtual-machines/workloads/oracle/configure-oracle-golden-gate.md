@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c8d2a948dd82fb2c04aceb24815e63be13e35919
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64722605"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Azure Linux virtuális Gépen futó Oracle Golden kapu megvalósítása 
@@ -795,7 +795,7 @@ A myVM1 állapota és előzményei megtekintéséhez futtassa a következő para
 Ezzel befejezte a telepítési és konfigurációs Golden kapu Oracle linux rendszeren.
 
 
-## <a name="delete-the-virtual-machine"></a>A virtuális gép törlése
+## <a name="delete-the-virtual-machine"></a>Törölje a következő virtuális gépet:
 
 Ha már nincs rá szükség, az alábbi parancs segítségével eltávolítható az erőforráscsoport, a virtuális gép és minden kapcsolódó erőforrás.
 

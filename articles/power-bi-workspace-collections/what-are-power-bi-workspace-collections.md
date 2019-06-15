@@ -11,10 +11,10 @@ ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: rkarlin
 ms.openlocfilehash: 7f23856363b337a361f329ed54e2152842faf26e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64705128"
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>Mik azok a Power BI munkaterületi gyűjtemények?
@@ -60,7 +60,7 @@ Gyorsítótárazott adatkészletek is használható.  Azonban nem lehet frissít
 
 ## <a name="authentication-and-authorization-with-app-tokens"></a>Hitelesítés és engedélyezés az alkalmazás-jogkivonatokról
 
-**A Microsoft Power BI-Munkaterületcsoportok** megfelel az alkalmazásnak, hogy az összes szükséges felhasználói hitelesítés és engedélyezés a. Esetében nem explicit követelmény, hogy a végfelhasználók számára legyen-e az ügyfelek az Azure Active Directory (Azure AD).  Ehelyett az alkalmazás fejezi ki, hogy **a Microsoft Power BI-Munkaterületcsoportok** megjelenítése a Power BI-jelentések használatával engedélyezési **alkalmazás hitelesítési jogkivonatok (alkalmazás-Jogkivonatokról)**.  Ezek **alkalmazási jogkivonatok** jönnek létre, akkor az alkalmazás szeretne megjeleníteni a jelentést.
+**A Microsoft Power BI-Munkaterületcsoportok** megfelel az alkalmazásnak, hogy az összes szükséges felhasználói hitelesítés és engedélyezés a. Esetében nem explicit követelmény, hogy a végfelhasználók számára legyen-e az ügyfelek az Azure Active Directory (Azure AD).  Ehelyett az alkalmazás fejezi ki, hogy **a Microsoft Power BI-Munkaterületcsoportok** megjelenítése a Power BI-jelentések használatával engedélyezési **alkalmazás hitelesítési jogkivonatok (alkalmazás-Jogkivonatokról)** .  Ezek **alkalmazási jogkivonatok** jönnek létre, akkor az alkalmazás szeretne megjeleníteni a jelentést.
 
 ![Alkalmazás tokenek használatát a diagram](media/what-are-power-bi-workspace-collections/app-tokens.png)
 

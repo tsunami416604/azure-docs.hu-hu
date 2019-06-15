@@ -10,10 +10,10 @@ ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
 ms.openlocfilehash: 8aa62e4ed65f8223071786ac165f8343cb6901d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60430421"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(ELAVULT) Az ACS-motor és a Docker Swarm módú Azure DevOps használatával üzembe helyezhető egy többtárolós alkalmazást az Azure Container Service a teljes CI/CD-folyamat
@@ -60,7 +60,7 @@ Az oktatóanyag elindítása előtt kell végrehajtani az alábbi feladatokat:
 > Az Azure Container Service Docker Swarm-vezénylője örökölt önálló Swarmot használ. Az integrált [Swarm mód](https://docs.docker.com/engine/swarm/) (a Docker 1.12-es és újabb verzióiban) jelenleg nem támogatott vezénylő az Azure Container Service-ben. Ezért használjuk a [ACS Engine](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md), Közösség által biztosított [gyorsindítási sablon](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/), vagy egy Docker-megoldást a [Azure Marketplace-en](https://azuremarketplace.microsoft.com).
 >
 
-## <a name="step-1-configure-your-azure-devops-organization"></a>1. lépés: Az Azure DevOps-szervezet konfigurálása 
+## <a name="step-1-configure-your-azure-devops-organization"></a>1\. lépés: Az Azure DevOps-szervezet konfigurálása 
 
 Ebben a szakaszban az Azure DevOps-szervezet konfigurálása. Az Azure fejlesztési és üzemeltetési szolgáltatások végpontjait, az Azure DevOps-projekt konfigurálásához kattintson a **beállítások** ikonra az eszköztárban, majd válassza a **szolgáltatások**.
 
@@ -94,7 +94,7 @@ Az utolsó előtt a CI/CD-folyamat az első lépésekre külső kapcsolatok a Do
 
 Minden konfiguráció a most történik. Az alábbi lépésekkel hoz létre a CI/CD folyamatot, amely az alkalmazás a Docker Swarm-fürt létrehozása és telepítése. 
 
-## <a name="step-2-create-the-build-pipeline"></a>2. lépés: A létrehozási folyamat létrehozása
+## <a name="step-2-create-the-build-pipeline"></a>2\. lépés: A létrehozási folyamat létrehozása
 
 Ebben a lépésben egy buildelési folyamat beállítása az Azure DevOps-projekt és a build munkafolyamat definiálása a tárolólemezképek
 
@@ -189,7 +189,7 @@ Szüksége lesz az egyes rendszerképek, egy a rendszerkép létrehozásához, �
 
    ![Az Azure DevOps - Build sikeres volt](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
-## <a name="step-3-create-the-release-pipeline"></a>3. lépés: A kibocsátási folyamat létrehozása
+## <a name="step-3-create-the-release-pipeline"></a>3\. lépés: A kibocsátási folyamat létrehozása
 
 Az Azure DevOps lehetővé teszi, hogy [kiadások kezelheti a környezeteket](https://www.visualstudio.com/team-services/release-management/). Győződjön meg arról, hogy az alkalmazás üzemel, a különböző környezetekben (például fejlesztési, tesztelési, éles üzem előtti vagy éles) zökkenőmentes módon való folyamatos üzembe helyezés is engedélyezheti. Létrehozhat olyan környezetet, amely az Azure Container Service Docker Swarm módú fürtöt jelöli.
 
@@ -197,7 +197,7 @@ Az Azure DevOps lehetővé teszi, hogy [kiadások kezelheti a környezeteket](ht
 
 ### <a name="initial-release-setup"></a>Kezdeti kiadás beállítása
 
-1. Kiadási folyamatok létrehozásához kattintson a **kiadásokban** > **+ kiadás**
+1. Kiadási folyamatok létrehozásához kattintson a **kiadásokban** >  **+ kiadás**
 
 2. Az összetevő-forrás konfigurálásához kattintson **összetevők** > **hivatkozás egy összetevő forrás**. Ez a kiadás új folyamat itt összekapcsolása a build, amelyet az előző lépésben megadott. Ezt követően a docker-compose.yml fájl érhető el a kibocsátási folyamat során.
 
@@ -245,7 +245,7 @@ A kiadási munkafolyamat két feladatot a hozzáadott tevődik össze.
      >
 3. Mentse az új kiadási folyamatot.
 
-## <a name="step-4-test-the-cicd-pipeline"></a>4. lépés: A CI/CD-folyamat tesztelése
+## <a name="step-4-test-the-cicd-pipeline"></a>4\. lépés: A CI/CD-folyamat tesztelése
 
 Most, hogy végzett a konfiguráció, legyen az új CI/CD-folyamat teszteléséhez. A legegyszerűbben úgy, hogy tesztelje, hogy frissítse a forráskódot, és véglegesítse a módosításokat a GitHub-tárházba. Néhány másodperccel azután, küldje le a kódot, látni fogja az Azure DevOps-ban futó új build. Sikeres befejezést követően új kiadás akkor aktiválódik, és az Azure Container Service-fürtön az alkalmazás új verziójának telepítése.
 

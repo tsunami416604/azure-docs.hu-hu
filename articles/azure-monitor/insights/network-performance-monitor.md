@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
 ms.openlocfilehash: a5d5a9e07c28ab3059872f4d187c96586456a200
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64916759"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
@@ -37,7 +37,7 @@ A Network Performance Monitor három széles körű lehetőségeket biztosítja:
 
     Ez a funkció segítségével hajtsa végre a tesztek alapján a HTTP, HTTPS, TCP és az ICMP figyelése a közel valós idejű és korábbi adatát a rendelkezésre állás és a szolgáltatás válaszideje. A hozzájárulását a hálózatot a csomagvesztés és a késés is figyelheti. A hálózati topológia térképek elkülönítheti a hálózati lassulást. Azonosíthatja a probléma területek, amely a hálózati elérési úton történik a csomópont a szolgáltatásba, az egyes ugrások késési adatokkal. Beépített tesztek segítségével figyelheti a hálózati kapcsolat az Office 365 és Dynamics CRM és minden előzetes beállítás nélkül. Ez a képesség figyelemmel kísérheti a hálózati kapcsolat bármely TCP-kompatibilis végpont, például a websites, a SaaS-alkalmazások, a PaaS-alkalmazások és az SQL-adatbázisok.
 
-* [ExpressRoute-figyelő](network-performance-monitor-expressroute.md): Figyelheti a végpontok közötti kapcsolatot és a teljesítményt az Azure ExpressRoute-on keresztül az Azure és a fiókirodák között.  
+* [ExpressRoute-figyelő](network-performance-monitor-expressroute.md): Az Azure expressroute-on keresztül figyelheti a végpontok közötti kapcsolatait és teljesítményét a fiókirodák és az Azure között.  
 
 További információ a különböző funkciók által támogatott [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) online is elérhető.
  
@@ -46,7 +46,7 @@ Az NPM figyelheti a hálózatok és a egy munkaterületről, amely a következő
 * Nyugat-Európa
 * USA nyugati középső régiója
 * USA keleti régiója
-* Kelet-Japán
+* Kelet-japán
 * Délkelet-Ázsia
 * Dél-kelet-Ausztrália
 * Dél-Egyesült Királyság

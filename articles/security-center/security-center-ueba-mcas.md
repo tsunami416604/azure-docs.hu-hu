@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
 ms.openlocfilehash: 7ffb9684045031c5bca7a79a15db7cb16fc99e9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60332397"
 ---
 # <a name="ueba-for-azure-resources-and-users"></a>Azure-erőforrások és -felhasználók UEBA-elemzése 
 
-A Microsoft Cloud App Securityvel ahhoz, hogy az Ön felhasználói és elemzését (UEBA) az Azure-erőforrások és a felhasználók számára (az Azure-tevékenység) alapuló riasztások partnerek az Azure Security Center. Ezek a riasztások a felhasználók viselkedésének rendellenességek észlelése, és felhasználói és az entitások viselkedésének elemzése és a machine learning (gépi tanulás), így azonnal futtathatja a fejlett fenyegetésészlelés az előfizetések tevékenységek között. Automatikusan engedélyezettek, mert az új anomáliadetektálási észlelések azonnali eredményeket azáltal, hogy azonnali észlelések, a felhasználók és az előfizetéséhez tartozó erőforrások között számos tevékenységbeli anomáliákat célzó adja meg. Ezek a riasztások Ezenkívül használhatja a további adatokat, hogy már megtalálható a Microsoft Cloud App Security motorban segítségével felgyorsíthatja a vizsgálat során, és tartalmazhat elleni folyamatos fenyegetések. 
+A Microsoft Cloud App Securityvel ahhoz, hogy az Ön felhasználói és elemzését (UEBA) az Azure-erőforrások és a felhasználók számára (az Azure-tevékenység) alapuló riasztások partnerek az Azure Security Center. Ezek a riasztások a felhasználók viselkedésének rendellenességeit észlelik, a felhasználók és entitások viselkedésének elemzésén és gépi tanuláson (ML) alapulnak, és a segítségükkel azonnal futtatható fejlett fenyegetésészlelés az előfizetések tevékenységein. Mivel automatikusan engedélyezve vannak, az új rendellenesség-észlelések azonnali eredményeket biztosítanak azáltal, hogy azonnal észlelik az előfizetéssel társított felhasználók és erőforrások számtalan viselkedésbeli rendellenességét. A riasztások ezenkívül további olyan adatokat is figyelembe vesznek, amelyek a Microsoft Cloud App Security észlelési motorban már megtalálhatók, és így segítenek felgyorsítani a vizsgálat folyamatát és megállítani a folyamatban lévő támadásokat. 
 
 > [!NOTE]
 > Azure Security Center, mellyel tárolhatja az ügyféladatok biztonsági másolatát, gyűjtött vagy (pl. virtuális gép vagy Azure Active Directory-bérlő) egy ügyfél erőforráshoz kapcsolódó: (a) a erőforrásként ugyanabban a földrajzi említett helyeken, kivéve ahol Microsoft még nem üzembe helyezése az Azure Security Center, amely esetben egy másolatot az ilyen adatok tárolni fogja az Egyesült Államokban; és (b) az Azure Security Center feldolgozni az adatokat egy másik, a Microsoft Online szolgáltatás használ, ahol az ilyen adatokat más Online szolgáltatás földrajzi hely meghatározásának szabályainak megfelelően tárolja.

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
 ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764288"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység az Azure Data Factoryban
@@ -63,14 +63,14 @@ A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A webes tevékenység neve | String | Igen
+name | A webes tevékenység neve | String | Igen
 type | Meg kell **WebActivity**. | String | Igen
 method | A céloldali végpont metódus REST API-t. | karakterlánc. <br/><br/>A támogatott típusok: "GET", "POST", "PUT" | Igen
 url | Céloldali végpont és az elérési út | Karakterlánc (vagy a resultType kifejezés karakterlánc). A tevékenység időtúllépést eredményeznek egy hiba miatt 1 perc, ha nem kapott választ a végpontról. | Igen
 A fejlécek | A kérelmet küldött fejlécek. Például állítsa be a nyelvet, és írja be egy kérelemre: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Karakterlánc (vagy a resultType kifejezés karakterlánc) | Igen, a Content-type fejléc szükség. `"headers":{ "Content-Type":"application/json"}`
-törzs | A tartalom a végpontnak küldött jelöli.  | Karakterlánc (vagy a resultType kifejezés karakterlánc). <br/><br/>A séma, a kérelem adattartalom [kérelem hasznos séma](#request-payload-schema) szakaszban. | POST és PUT-metódusok szükséges.
+Törzs | A tartalom a végpontnak küldött jelöli.  | Karakterlánc (vagy a resultType kifejezés karakterlánc). <br/><br/>A séma, a kérelem adattartalom [kérelem hasznos séma](#request-payload-schema) szakaszban. | POST és PUT-metódusok szükséges.
 hitelesítés | A végpont meghívására szolgáló használt hitelesítési módszert. Támogatott típusok a következők: "Basic vagy ClientCertificate." További információkért lásd: [hitelesítési](#authentication) szakaszban. Ha a hitelesítés nem szükséges, zárja ki ezt a tulajdonságot. | Karakterlánc (vagy a resultType kifejezés karakterlánc) | Nem
-adatkészletek | Adatkészletek listája a végpontnak átadott. | Adatkészlet hivatkozások tömbje. Lehet üres tömb. | Igen
+datasets | Adatkészletek listája a végpontnak átadott. | Adatkészlet hivatkozások tömbje. Lehet üres tömb. | Igen
 linkedServices | Társított szolgáltatások listájában végpontnak átadott. | Társított szolgáltatás hivatkozik tömbje. Lehet üres tömb. | Igen
 
 > [!NOTE]

@@ -17,11 +17,11 @@ ms.date: 03/27/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2dbebfa5fa7d9b255cc685696bfe8b3f61d5cf6b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123754"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64708933"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása Tableau Online konfigurálása
 
@@ -122,7 +122,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás konfigurálá
         > [!NOTE]
         > A **tartomány** eltérhet az itt láthatótól.
 
-7. 5. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** , győződjön meg arról, hogy az Azure AD a Tableau online-hoz csatlakozik. Ha a kapcsolat nem sikerül, ellenőrizze, hogy a Tableau Online-fiók rendszergazdai engedélyekkel rendelkezik, és próbálkozzon újra.
+7. 5\. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** , győződjön meg arról, hogy az Azure AD a Tableau online-hoz csatlakozik. Ha a kapcsolat nem sikerül, ellenőrizze, hogy a Tableau Online-fiók rendszergazdai engedélyekkel rendelkezik, és próbálkozzon újra.
 
     ![Kapcsolat a tableau Online tesztelése](./media/tableau-online-provisioning-tutorial/TestConnection.png)
 

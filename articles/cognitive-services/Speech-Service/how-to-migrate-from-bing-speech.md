@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
 ms.openlocfilehash: 6324da55c8af4934185fa39a106939844788adba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60653716"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech áttelepít a beszédszolgáltatás
@@ -37,7 +37,7 @@ A [beszéd SDK](speech-sdk.md) a Bing Speech-klienskódtárakkal működési hel
 
 A beszédszolgáltatások hasonlóak nagyrészt a Bing Speech, a következő eltérésekkel.
 
-Szolgáltatás | Bing – Beszédfelismerés | Beszédszolgáltatások | Részletek
+Funkció | Bing – Beszédfelismerés | Beszédszolgáltatások | Részletek
 -|-|-|-
 C++ SDK | : heavy_minus_sign: | :heavy_check_mark: | Beszédszolgáltatások támogatja a Windows és Linux rendszereken.
 Java SDK | :heavy_check_mark: | :heavy_check_mark: | Beszédszolgáltatások támogatja az Android- és beszédfelismerés eszközök.

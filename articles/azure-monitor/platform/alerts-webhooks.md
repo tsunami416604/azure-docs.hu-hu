@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
-ms.component: alerts
+ms.subservice: alerts
 ms.openlocfilehash: 264f3eb042a3c29523ed93df93dfa6d45c00ae87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60345778"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Klasszikus metrikariasztás értesítése egy webhook használatával nem Azure-beli system rendelkezik
@@ -73,12 +73,12 @@ A POST művelet a következő JSON-adattartalom és az összes mérőszám-alap�
 |:--- |:--- |:--- |:--- |
 | status |I |Aktivált, feloldva |A feltételek alapján a riasztás állapotának beállítása. |
 | Környezet |I | |A riasztás környezetét. |
-| időbélyeg |I | |Az idő, amelyen a riasztás lett elindítva. |
+| timestamp |I | |Az idő, amelyen a riasztás lett elindítva. |
 | id |I | |Minden riasztási szabály tartozik egy egyedi azonosítót. |
-| név |I | |A riasztás neve. |
+| name |I | |A riasztás neve. |
 | description |I | |A riasztás leírása. |
 | conditionType |I |A metrika esemény |A riasztások két típusok támogatottak: metrika- és esemény. Metrikákhoz kapcsolódó riasztások egy metrikai feltétel teljesülésekor alapulnak. Egy esemény a tevékenységnaplóban miatti riasztás alapul. Ez az érték használatával ellenőrizze-e a riasztás egy metrikát, illetve egy esemény alapul-e. |
-| feltétel |I | |Ellenőrizze, hogy az adott mezők alapján a **conditionType** értéket. |
+| condition |I | |Ellenőrizze, hogy az adott mezők alapján a **conditionType** értéket. |
 | MetricName |A metrikákhoz kapcsolódó riasztások | |A mérőszám, amely meghatározza, mit figyeli a szabály neve. |
 | metricUnit |A metrikákhoz kapcsolódó riasztások |Bájt, BytesPerSecond, Count, CountPerSecond, %, másodperc |Az egység a metrika az engedélyezett. Lásd: [megengedett értékek](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |A metrikákhoz kapcsolódó riasztások | |A metrika a riasztást kiváltó tényleges értéke. |
@@ -106,3 +106,4 @@ A POST művelet a következő JSON-adattartalom és az összes mérőszám-alap�
 * Ismerje meg, hogyan [Logic Apps-alkalmazás használatával küldjön SMS-t, Twilio-n keresztül az Azure riasztásból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
 * Ismerje meg, hogyan [Logic Apps-alkalmazás használatával egy Slack-üzenet küldése egy Azure-riasztásokból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
 * Ismerje meg, hogyan [üzenet küldése az Azure-üzenetsort származó Azure Logic Apps-alkalmazás használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).
+

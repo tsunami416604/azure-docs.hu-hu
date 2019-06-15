@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
 ms.openlocfilehash: 3c78aed2f30ea85f5bc16a8c0fb270bb1c761be8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60586032"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-fedramp-automation"></a>Azure biztonsági és megfelelőségi terv: A FedRAMP Automation Data warehouse-bA
@@ -53,7 +53,7 @@ Rendelkezésre állási csoportok
 -   (1) az active Directory-tartományvezérlők
 -   (1) fürtcsomópontok az SQL és a tanúsító
 
-Virtual Network
+Virtuális hálózat
 -   (4) alhálózatok
 -   (4) a hálózati biztonsági csoportok
 
@@ -104,7 +104,7 @@ Az NSG-k mindegyike rendelkezik az adott portokhoz és protokollokhoz meg, hogy 
 
 **Alhálózatok**: Minden egyes alhálózathoz társítva a megfelelő NSG-t.
 
-### <a name="data-at-rest"></a>Inaktív adat
+### <a name="data-at-rest"></a>Inaktív adatok
 Az architektúra a titkosítás, az adatbázis naplózási és más intézkedéseket az inaktív adatok védi.
 
 **Az Azure Storage** rest-követelményeket, a titkosított adatok kielégítése érdekében minden [Azure Storage](https://azure.microsoft.com/services/storage/) használ [a Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption).

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.openlocfilehash: 9154e5d58a36bde1827d63d11d57a77b4289a781
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64689374"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Video- és hangfájlok elemzése
@@ -146,14 +146,14 @@ Példa:
 |Name (Név)|Leírás|
 |---|---|
 |id|A face azonosítója.|
-|név|A face neve. "Ismeretlen #0", az azonosított hírességek vagy ügyfél betanított személy is lehet.|
+|name|A face neve. "Ismeretlen #0", az azonosított hírességek vagy ügyfél betanított személy is lehet.|
 |magabiztosan|Arcok azonosítása magabiztosan.|
 |description|A hírességek leírása. |
 |thumbnailId|A miniatűr képét, arc azonosítója.|
 |knownPersonId|Ha ez egy ismert személy, a belső azonosítója.|
 |referenceId|Ha a Bing hírességek, a Bing-azonosító.|
 |referenceType|Jelenleg csak a Bing.|
-|cím|Ha egy hírességek, akkor annak címe (például: "a Microsoft Vezérigazgatójával").|
+|title|Ha egy hírességek, akkor annak címe (például: "a Microsoft Vezérigazgatójával").|
 |imageUrl|Ha a hírességek, a kép URL-címe.|
 |példányok|Ezek a példányok, ahol az arcfelismerés jelent meg a megadott időtartományban. Minden példány egy thumbnailsId is tartalmaz. |
 
@@ -296,7 +296,7 @@ Példa:
 |Name (Név)|Leírás|
 |---|---|
 |id|A címke azonosítója.|
-|név|A címke nevét (például "Számítógép", "TV").|
+|name|A címke nevét (például "Számítógép", "TV").|
 |language|A címke neve nyelv, (Ha a fordítás melyik változatot). BCP-47|
 |példányok|Amikor ezt a címkét jelent meg időt a tartományok listája (címkék többször is megjelenhetnek). Minden példány egy megbízhatósági mező tartozik. |
 
@@ -350,7 +350,7 @@ Példa:
   ] 
 ```
 
-### <a name="keywords"></a>kulcsszavak
+### <a name="keywords"></a>a kulcsszavak
 
 |Name (Név)|Leírás|
 |---|---|

@@ -11,10 +11,10 @@ ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60646707"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Hozzon létre az Azure Recovery Services-tárolót a REST API használatával
@@ -35,8 +35,8 @@ A következő fejléceket szükség:
 
 | Kérelem fejléce   | Leírás |
 |------------------|-----------------|
-| *A Content-Type:*  | Kötelező. Állítsa be `application/json`. |
-| *Hitelesítés:* | Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Kötelező. Állítsa be `application/json`. |
+| *Authorization:* | Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 A kérés létrehozásával kapcsolatos további információkért lásd: [egy REST API-kérés/válasz összetevői](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -46,11 +46,11 @@ A következő gyakori definíciókat hozhat létre a kéréstörzs használható
 
 |Name (Név)  |Szükséges  |Típus  |Leírás  |
 |---------|---------|---------|---------|
-|az eTag     |         |   String      |  Az eTag nem kötelező       |
+|eTag     |         |   String      |  Az eTag nem kötelező       |
 |location     |  true       |String         |   Erőforrás helye      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tároló tulajdonságai       |
-|termékváltozat     |         |  [Termékváltozat](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Azonosítja az egyes Azure-erőforrások egyedi rendszerazonosítója     |
-|tags     |         | Object        |     Erőforráscímkék    |
+|sku     |         |  [Termékváltozat](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Azonosítja az egyes Azure-erőforrások egyedi rendszerazonosítója     |
+|címkék     |         | Object        |     Erőforráscímkék    |
 
 Vegye figyelembe, hogy a tároló neve és erőforráscsoport-név megtalálható-e a PUT URI-t. A kérelem törzsében a hely határozza meg.
 
@@ -68,7 +68,7 @@ A következő példa törzsében segítségével hozzon létre egy tárolót az 
 }
 ```
 
-## <a name="responses"></a>Válaszok
+## <a name="responses"></a>Responses
 
 Nincsenek a művelethez létrehozni vagy frissíteni a Recovery Services-tároló két sikeres válaszok:
 

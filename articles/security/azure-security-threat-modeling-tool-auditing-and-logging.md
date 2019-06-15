@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 4843828c89b04e36b0bcc73dcedf9c5735b73729
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610861"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Biztonsági keret: A vizsgálati és naplózási |} Megoldások 
@@ -36,7 +36,7 @@ ms.locfileid: "60610861"
 
 ## <a id="sensitive-entities"></a>Azonosítsa a bizalmas entitásokat a megoldásban, és változásának naplózása megvalósítása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
 | **SDL Phase**               | Felépítés |  
@@ -47,7 +47,7 @@ ms.locfileid: "60610861"
 
 ## <a id="auditing"></a>Győződjön meg arról, hogy az alkalmazás a vizsgálati és naplózási van kényszerítve
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -58,7 +58,7 @@ ms.locfileid: "60610861"
 
 ## <a id="log-rotation"></a>Győződjön meg arról, hogy naplóváltás és elkülönítése helyen
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -69,18 +69,18 @@ ms.locfileid: "60610861"
 
 ## <a id="log-sensitive-data"></a>Győződjön meg arról, hogy az alkalmazás nem naplózza a bizalmas felhasználói adatok
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések**                   | <p>Ellenőrizze, hogy egy felhasználó beküld bizalmas adatok nem jelentkezik a helyhez. Ellenőrizze, hogy szándékos naplózás, valamint a tervezési szempontokat által okozott mellékhatással. Bizalmas adatok közé:</p><ul><li>Felhasználó hitelesítő adatai</li><li>Társadalombiztosítási szám vagy egyéb azonosításra</li><li>Hitelkártyaszámokat és egyéb pénzügyi adatait</li><li>Egészségügyi információk</li><li>Titkos kulcsok vagy egyéb adatok, amelyek felhasználhatók a titkosított adatok visszafejtésére.</li><li>Rendszer vagy alkalmazás-információkat, amelyek segítségével hatékonyabban támadásokkal szemben az alkalmazás</li></ul>|
+| **Lépések**                   | <p>Ellenőrizze, hogy egy felhasználó beküld bizalmas adatok nem jelentkezik a helyhez. Ellenőrizze, hogy szándékos naplózás, valamint a tervezési szempontokat által okozott mellékhatással. Bizalmas adatok közé:</p><ul><li>Felhasználói hitelesítő adatok</li><li>Társadalombiztosítási szám vagy egyéb azonosításra</li><li>Hitelkártyaszámokat és egyéb pénzügyi adatait</li><li>Egészségügyi információk</li><li>Titkos kulcsok vagy egyéb adatok, amelyek felhasználhatók a titkosított adatok visszafejtésére.</li><li>Rendszer vagy alkalmazás-információkat, amelyek segítségével hatékonyabban támadásokkal szemben az alkalmazás</li></ul>|
 
 ## <a id="log-restricted-access"></a>Győződjön meg arról, hogy naplózási és a naplófájlok korlátozott hozzáféréssel rendelkezik
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -91,7 +91,7 @@ ms.locfileid: "60610861"
 
 ## <a id="user-management"></a>Győződjön meg arról, hogy felhasználói eseményt naplóz
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -102,7 +102,7 @@ ms.locfileid: "60610861"
 
 ## <a id="inbuilt-defenses"></a>Győződjön meg arról, hogy rendelkezik-e a rendszer a beépített, való visszaélés elleni védelem
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -113,7 +113,7 @@ ms.locfileid: "60610861"
 
 ## <a id="diagnostics-logging"></a>Az Azure App Service web Apps-alkalmazások diagnosztikai célú naplózásának engedélyezése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -124,7 +124,7 @@ ms.locfileid: "60610861"
 
 ## <a id="identify-sensitive-entities"></a>Győződjön meg arról, hogy bejelentkezési-naplózás engedélyezve van az SQL Server
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -135,7 +135,7 @@ ms.locfileid: "60610861"
 
 ## <a id="threat-detection"></a>Az Azure SQL fenyegetésészlelés engedélyezése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -146,7 +146,7 @@ ms.locfileid: "60610861"
 
 ## <a id="analytics"></a>Az Azure Storage-hozzáférés naplózása az Azure Storage Analytics használatával
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL Phase**               | Környezet |  
@@ -157,7 +157,7 @@ ms.locfileid: "60610861"
 
 ## <a id="sufficient-logging"></a>Elegendő naplózási megvalósítása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  
@@ -186,7 +186,7 @@ Az alábbiakban látható egy példa konfiguráció látható a naplózás enged
 
 ## <a id="audit-failure-handling"></a>Végrehajtja a megfelelő naplózási hiba kezelése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  
@@ -213,7 +213,7 @@ Konfigurálja a WCF értesíteni a program minden alkalommal, amikor nem tudja �
 
 ## <a id="logging-web-api"></a>Győződjön meg arról, hogy a vizsgálati és naplózási kényszerítve a webes API-hoz
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL Phase**               | Felépítés |  
@@ -224,7 +224,7 @@ Konfigurálja a WCF értesíteni a program minden alkalommal, amikor nem tudja �
 
 ## <a id="logging-field-gateway"></a>Győződjön meg arról, hogy megfelelő vizsgálati és naplózási megvalósul a helyszíni átjárók
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT helyszíni átjáró | 
 | **SDL Phase**               | Felépítés |  
@@ -235,7 +235,7 @@ Konfigurálja a WCF értesíteni a program minden alkalommal, amikor nem tudja �
 
 ## <a id="logging-cloud-gateway"></a>Győződjön meg arról, hogy megfelelő vizsgálati és naplózási megvalósul Felhőátjáró
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT Cloud Gateway | 
 | **SDL Phase**               | Felépítés |  

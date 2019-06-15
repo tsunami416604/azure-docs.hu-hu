@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60711571"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Az Azure virtuális gép vendég operációs rendszer tűzfal blokkolja a bejövő forgalom
@@ -51,7 +51,7 @@ A probléma megoldásához használja a módszer [táveszközök használata Azu
 
 Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Ha a soros konzol nincs engedélyezve a virtuális gépen, lépjen a "[javítsa ki a virtuális gép Offline](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
 
-#### <a name="mitigation-1"></a>1. megoldás
+#### <a name="mitigation-1"></a>1\. megoldás
 
 1.  Ha az Azure-ügynök telepítve van és megfelelően működik, a virtuális gépen, használhatja a "Csak a konfiguráció alaphelyzetbe állítása" lehetőség alatt **támogatás + hibaelhárítás** > **jelszó alaphelyzetbe állítása** a virtuális gép menüben.
 
@@ -100,7 +100,7 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
 
 5.  Próbálja meg egy RDP-kapcsolatot a virtuális gép eléréséhez.
 
-#### <a name="mitigation-2"></a>2. megoldás
+#### <a name="mitigation-2"></a>2\. megoldás
 
 1.  Határozza meg, akár a tűzfaltámogatás bejövő adatforgalmához szabályzat úgy van-e beállítva tűzfalprofilt lekérdezése *BlockInboundAlways*:
 
@@ -140,11 +140,11 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
 
 3.  Győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol. Vegye figyelembe a meghajtóbetűjelet, amely a csatolt rendszerlemez van rendelve.
 
-#### <a name="mitigation-1"></a>1. megoldás
+#### <a name="mitigation-1"></a>1\. megoldás
 
 Lásd: [hogyan engedélyezzen vagy tiltson le egy tűzfal, a vendég operációs rendszeren szabály](enable-disable-firewall-rule-guest-os.md).
 
-#### <a name="mitigation-2"></a>2. megoldás
+#### <a name="mitigation-2"></a>2\. megoldás
 
 1.  [A rendszer lemez csatolása egy helyreállítási virtuális Géphez](troubleshoot-recovery-disks-portal-windows.md).
 

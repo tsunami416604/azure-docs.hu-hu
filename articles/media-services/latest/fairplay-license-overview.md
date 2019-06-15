@@ -15,10 +15,10 @@ ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 6d4b7ba842d08723b90a4f2491d9e79e68dd932e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60733572"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay-licenc követelményeit és konfigurációját 
@@ -35,7 +35,7 @@ A következők szükségesek, Media Services használata közben, a HLS-tartalma
 * Apple szükséges a tartalom tulajdonosa beszerzése a [központi telepítési csomag](https://developer.apple.com/contact/fps/). Adja meg, hogy már megvalósította a kulcs biztonsági modul (KSM) a Media Services használatával, és, hogy a kért a végső FPS csomag. Nincsenek a végső FPS csomag létrehozása a hitelesítésszolgáltató, és szerezze be a titkos kulcs (?) témakör utasításait. Kérje meg a FairPlay konfigurálása használhatja.
 * Media Services kulcs kézbesítési oldalon be kell állítani a az alábbiakat:
 
-    * **Alkalmazás-tanúsítvány (AC)**: Ez az egy .pfx-fájlt, amely tartalmazza a titkos kulcsot. A fájl létrehozásához és a titkosítás, a jelszó. A .pfx-fájlt Base64 formátumban kell lennie.
+    * **Alkalmazás-tanúsítvány (AC)** : Ez az egy .pfx-fájlt, amely tartalmazza a titkos kulcsot. A fájl létrehozásához és a titkosítás, a jelszó. A .pfx-fájlt Base64 formátumban kell lennie.
 
         Az alábbi lépések bemutatják, hogyan hozhat létre egy .pfx formátumú tanúsítványfájlt a fairplay rendszerhez:
 
@@ -54,7 +54,7 @@ A következők szükségesek, Media Services használata közben, a HLS-tartalma
     
 * A következőkre FPS ügyféloldali be kell állítania:
 
-  * **Alkalmazás-tanúsítvány (AC)**: Ez az egy.cer/.der fájlt, amely tartalmazza a nyilvános kulcsot, amely az operációs rendszer néhány hasznos adat titkosítására használja. A Media Services kell ismernem, mert a a Windows Media Player. A kulcstovábbítást visszafejti a megfelelő titkos kulccsal.
+  * **Alkalmazás-tanúsítvány (AC)** : Ez az egy.cer/.der fájlt, amely tartalmazza a nyilvános kulcsot, amely az operációs rendszer néhány hasznos adat titkosítására használja. A Media Services kell ismernem, mert a a Windows Media Player. A kulcstovábbítást visszafejti a megfelelő titkos kulccsal.
 
 * A FairPlay titkosított stream lejátszás, első beolvasása egy valódi kérje meg, és ezután hozza létre a tanúsítványnak valódi. A folyamat hoz létre minden három részből áll:
 

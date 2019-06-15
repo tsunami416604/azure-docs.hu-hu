@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: ade7da25d2307a382c17e7a3cbb26b601c34ef78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60321546"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693238"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>A StorSimple Manager szolgáltatás használata kezelheti a hozzáférés-vezérlési rekordok
 
@@ -59,7 +59,7 @@ A következő lépésekkel adja hozzá egy ACR-t.
 
     1. Adjon meg egy nevet az ACR.
     
-    2. Adja meg a csoportban a Windows Server-állomás IQN neve **iSCSI kezdeményező neve (IQN)**.
+    2. Adja meg a csoportban a Windows Server-állomás IQN neve **iSCSI kezdeményező neve (IQN)** .
 
     3. Kattintson a **Hozzáadás** az ACR létrehozása.
 

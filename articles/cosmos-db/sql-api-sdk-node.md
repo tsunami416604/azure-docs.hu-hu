@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
 ms.openlocfilehash: 1cb6889305e5f6bce5728039712a1834dc2e9353
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626740"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Node.js SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
@@ -30,13 +30,13 @@ ms.locfileid: "60626740"
 > * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
-|Erőforrás  |Hivatkozás  |
+|Resource  |Hivatkozás  |
 |---------|---------|
 |SDK letöltése  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |Az API dokumentációja  |  [A JavaScript SDK-forrásdokumentáció](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |SDK telepítési utasításokat  |  [Telepítési utasítások](https://github.com/Azure/azure-cosmos-js#installation)
 |Hozzájárul az SDK-t | [GitHubon](https://github.com/Azure/azure-cosmos-js/tree/master)
-| Példák | [NODE.js-Kódminták](sql-api-nodejs-samples.md)
+| Minták | [NODE.js-Kódminták](sql-api-nodejs-samples.md)
 | Kezdeti lépéseket ismertető oktatóanyag | [A JavaScript SDK használatának első lépései](sql-api-nodejs-get-started.md)
 | Alapú webappokról szóló oktatóanyagunkat | [Az Azure Cosmos DB Node.js webalkalmazás létrehozása](sql-api-nodejs-application.md)
 | Aktuális támogatott platform | [NODE.js 6.x-es](https://nodejs.org/en/blog/release/v6.10.3/) – SDK 2.0.0-s verzió vagy újabb szükséges.<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
@@ -214,41 +214,41 @@ Egy kivont SDK Cosmos DB használatával bármely kérelem elutasítja a szolgá
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.0.0-3 (RC)](#2.0.0-3) |2018. augusztus 2. |--- |
-| [1.14.4](#1.14.4) |2018. május 03. |--- |
-| [1.14.3](#1.14.3) |2018. május 03. |--- |
-| [1.14.2](#1.14.2) |2017. december 21. |--- |
-| [1.14.1](#1.14.1) |2017. november 10. |--- |
-| [1.14.0](#1.14.0) |2017. november 9. |--- |
-| [1.13.0](#1.13.0) |2017. október 11. |--- |
-| [1.12.2](#1.12.2) |2017. augusztus 10. |--- |
-| [1.12.1](#1.12.1) |2017. augusztus 10. |--- |
-| [1.12.0](#1.12.0) |2017. május 10. |--- |
-| [1.11.0](#1.11.0) |2017. március 16. |--- |
-| [1.10.2](#1.10.2) |2017. január 27. |--- |
-| [1.10.1](#1.10.1) |2016. december 22. |--- |
-| [1.10.0](#1.10.0) |2016. október 03. |--- |
-| [1.9.0](#1.9.0) |2016. július 07. |--- |
-| [1.8.0](#1.8.0) |2016. június 14-én |--- |
-| [1.7.0](#1.7.0) |2016. április 26. |--- |
-| [1.6.0](#1.6.0) |2016. március 29-én |--- |
-| [1.5.6](#1.5.6) |2016. március 08 |--- |
-| [1.5.5](#1.5.5) |2016. február 02 |--- |
-| [1.5.4](#1.5.4) |2016. február 01. |--- |
-| [1.5.2](#1.5.2) |2016. január 26. |--- |
-| [1.5.2](#1.5.2) |2016. január 22. |--- |
-| [1.5.1](#1.5.1) |2016. január 4-én |--- |
-| [1.5.0](#1.5.0) |2015. december 31-ig. |--- |
-| [1.4.0](#1.4.0) |2015. október 06. |--- |
-| [1.3.0](#1.3.0) |2015. október 06. |--- |
-| [1.2.2](#1.2.2) |2015. szeptember 10. |--- |
-| [1.2.1](#1.2.1) |2015. augusztus 15. |--- |
-| [1.2.0](#1.2.0) |2015. augusztus 05 |--- |
-| [1.1.0](#1.1.0) |2015. július 09. |--- |
-| [1.0.3](#1.0.3) |2015. június 04. |--- |
-| [1.0.2](#1.0.2) |2015. május 23. |--- |
-| [1.0.1](#1.0.1) |2015. május 15. |--- |
-| [1.0.0](#1.0.0) |2015. április 08. |--- |
+| [2.0.0-3 (RC)](#2.0.0-3) |2018\. augusztus 2. |--- |
+| [1.14.4](#1.14.4) |2018\. május 03. |--- |
+| [1.14.3](#1.14.3) |2018\. május 03. |--- |
+| [1.14.2](#1.14.2) |2017\. december 21. |--- |
+| [1.14.1](#1.14.1) |2017\. november 10. |--- |
+| [1.14.0](#1.14.0) |2017\. november 9. |--- |
+| [1.13.0](#1.13.0) |2017\. október 11. |--- |
+| [1.12.2](#1.12.2) |2017\. augusztus 10. |--- |
+| [1.12.1](#1.12.1) |2017\. augusztus 10. |--- |
+| [1.12.0](#1.12.0) |2017\. május 10. |--- |
+| [1.11.0](#1.11.0) |2017\. március 16. |--- |
+| [1.10.2](#1.10.2) |2017\. január 27. |--- |
+| [1.10.1](#1.10.1) |2016\. december 22. |--- |
+| [1.10.0](#1.10.0) |2016\. október 03. |--- |
+| [1.9.0](#1.9.0) |2016\. július 07. |--- |
+| [1.8.0](#1.8.0) |2016\. június 14-én |--- |
+| [1.7.0](#1.7.0) |2016\. április 26. |--- |
+| [1.6.0](#1.6.0) |2016\. március 29-én |--- |
+| [1.5.6](#1.5.6) |2016\. március 08 |--- |
+| [1.5.5](#1.5.5) |2016\. február 02 |--- |
+| [1.5.4](#1.5.4) |2016\. február 01. |--- |
+| [1.5.2](#1.5.2) |2016\. január 26. |--- |
+| [1.5.2](#1.5.2) |2016\. január 22. |--- |
+| [1.5.1](#1.5.1) |2016\. január 4-én |--- |
+| [1.5.0](#1.5.0) |2015\. december 31-ig. |--- |
+| [1.4.0](#1.4.0) |2015\. október 06. |--- |
+| [1.3.0](#1.3.0) |2015\. október 06. |--- |
+| [1.2.2](#1.2.2) |2015\. szeptember 10. |--- |
+| [1.2.1](#1.2.1) |2015\. augusztus 15. |--- |
+| [1.2.0](#1.2.0) |2015\. augusztus 05 |--- |
+| [1.1.0](#1.1.0) |2015\. július 09. |--- |
+| [1.0.3](#1.0.3) |2015\. június 04. |--- |
+| [1.0.2](#1.0.2) |2015\. május 23. |--- |
+| [1.0.1](#1.0.1) |2015\. május 15. |--- |
+| [1.0.0](#1.0.0) |2015\. április 08. |--- |
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

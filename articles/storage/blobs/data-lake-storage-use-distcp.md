@@ -10,10 +10,10 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.openlocfilehash: 0e85d2b2c7e9a3022e7fea2063ffa0aa915abb53
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939057"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Adatok másolása az Azure Storage-blobokat és az Azure Data Lake Storage Gen2 között a DistCp használatával
@@ -42,7 +42,7 @@ A DistCp segédprogram, amely segítségével különböző forrásokból szárm
 
     A kimenet kell biztosítania a tároló tartalmának listáját.
 
-3. Ehhez hasonlóan ellenőrizze e képes-e a tárfiók eléréséhez hierarchikus névtér esetében engedélyezve van a fürtből. Futtassa az alábbi parancsot:
+3. Ehhez hasonlóan ellenőrizze e képes-e a tárfiók eléréséhez hierarchikus névtér esetében engedélyezve van a fürtből. Futtassa a következő parancsot:
 
         hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
 

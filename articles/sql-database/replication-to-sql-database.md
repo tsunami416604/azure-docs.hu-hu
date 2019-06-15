@@ -13,10 +13,10 @@ ms.reviewer: mathoma
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: b9d6569504b5352c6187afe12d903c986019c517
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60646798"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Egyetlen vagy készletezett adatbázisok SQL-adatbázis-replikáció
@@ -107,7 +107,7 @@ A következő beállítások nem támogatottak az Azure SQL Database-előfizeté
 Hozzon létre egy kiadvány és a egy leküldéses előfizetés. További információkért lásd:
   
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Hozzon létre egy leküldéses előfizetés](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) az előfizetők az Azure SQL Database-kiszolgáló neve használatával (például **N'azuresqldbdns.database.windows.net "**) és az Azure SQL-adatbázis nevét (a cél-adatbázisként Példa **AdventureWorks**).  
+- [Hozzon létre egy leküldéses előfizetés](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) az előfizetők az Azure SQL Database-kiszolgáló neve használatával (például **N'azuresqldbdns.database.windows.net "** ) és az Azure SQL-adatbázis nevét (a cél-adatbázisként Példa **AdventureWorks**).  
 
 ## <a name="see-also"></a>Lásd még:  
 

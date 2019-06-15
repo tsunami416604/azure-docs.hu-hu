@@ -10,10 +10,10 @@ ms.date: 05/11/2017
 ms.author: jasontang501
 ms.subservice: common
 ms.openlocfilehash: 9e786aed031d528b8ae574444b71753ac538cf47
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64728318"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>A párhuzamosság kezelése a Microsoft Azure Storage szolgáltatásban
@@ -106,7 +106,7 @@ A következő táblázat összefoglalja a blob-műveletek, például feltételes
 | A Blob lekérése |Igen |Igen |
 | A Blob tulajdonságainak lekérése |Igen |Igen |
 | A Blob tulajdonságainak megadása |Igen |Igen |
-| Blob metaadatainak beolvasása |Igen |Igen |
+| A Blob metaadatainak beolvasása |Igen |Igen |
 | Állítsa be a Blob metaadatai |Igen |Igen |
 | A Blobbérlet (*) |Igen |Igen |
 | Snapshot Blob |Igen |Igen |
@@ -163,7 +163,7 @@ A következő blob műveletek bérletek használatával pesszimista egyidejűsé
 * A Blob lekérése
 * A Blob tulajdonságainak lekérése
 * A Blob tulajdonságainak megadása
-* Blob metaadatainak beolvasása
+* A Blob metaadatainak beolvasása
 * Állítsa be a Blob metaadatai
 * Delete Blob
 * PUT letiltása
@@ -242,8 +242,8 @@ A következő táblázat összefoglalja, hogyan a tábla entitás műveletek ETa
 | Entitások frissítése |Igen |Igen |
 | Entitás egyesítése |Igen |Igen |
 | Entitás törlése |Nem |Igen |
-| Entitás beszúrása vagy cseréje |Igen |Nem |
-| Entitás beszúrása vagy egyesítése |Igen |Nem |
+| Helyezze be vagy cserélje le az entitás |Igen |Nem |
+| Helyezze be vagy Entity Merge |Igen |Nem |
 
 Vegye figyelembe, hogy a **entitás cseréje vagy beszúrása** és **vagy egyesítési entitás beszúrása** műveletek tegye *nem* bármely egyidejűségi ellenőrzések elvégzéséhez, mert a tábla nem küldenek egy ETag-érték a szolgáltatás.  
 

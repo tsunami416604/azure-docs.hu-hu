@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
 ms.openlocfilehash: 17428405a0be45854a2eaaef831864f529ed145a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60725284"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple biztonsági mentési célként Netbackuppal
@@ -303,8 +303,8 @@ Az alábbi ábrán egy tipikus kötetet a biztonsági mentési feladat hozzáren
 | Gyakorisága, illetve biztonsági mentési típusa | Korlátlan | Növekményes (1-5 nap)  |   
 |---|---|---|
 | Heti (1 – 4 hét) | Szombat | Hétfőtől péntekig |
-| Havonta  | Szombat  |   |
-| Évente | Szombat  |   |
+| Havi  | Szombat  |   |
+| Éves ütemezéshez | Szombat  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>StorSimple-kötetek hozzárendelése Netbackuppal biztonsági mentési feladat
 
@@ -408,14 +408,14 @@ Az alábbi táblázat bemutatja, hogyan futtathatók a helyi és a StorSimple-le
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS példa ütemezése: Elforgatás GFS heti, havi és éves ütemterv
 
-| Hét | Korlátlan | 1. nap növekményes | 2. napon növekményes | Növekményes naponta 3 | Növekményes naponta 4 | Növekményes nap 5 |
+| Hét | Korlátlan | 1\. nap növekményes | 2\. napon növekményes | Növekményes naponta 3 | Növekményes naponta 4 | Növekményes nap 5 |
 |---|---|---|---|---|---|---|
 | 1 hét | Helyi RAID kötetre  | Helyi RAID kötetre | Helyi RAID kötetre | Helyi RAID kötetre | Helyi RAID kötetre | Helyi RAID kötetre |
 | 2 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
 | 3 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
 | 4 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
-| Havonta | A StorSimple havi |   |   |   |   |   |
-| Évente | StorSimple évente  |   |   |   |   |   |
+| Havi | A StorSimple havi |   |   |   |   |   |
+| Éves ütemezéshez | StorSimple évente  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>StorSimple-kötetek hozzárendelése egy Netbackuppal archív és a párhuzamos feladat

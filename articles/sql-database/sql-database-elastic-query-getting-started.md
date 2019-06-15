@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: a73938c98ebaea310875f0db8b665d0f1aed55e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60556223"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Jelentéskészítés több kiterjesztett felhőalapú adatbázisok (előzetes verzió)
@@ -34,7 +34,7 @@ Töltse le és futtassa a [Ismerkedés az Elastic Database-eszközök minta](sql
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Hozzon létre egy szegmens a mintaalkalmazással kezelő
 Itt létrehozhat horizontálispartíció-térkép manager több szegmensben, majd az adatok beszúrását a szegmensekre együtt. Ha már rendelkezik a horizontálisan skálázott adatok szegmensek telepítő őket, az alábbi lépéseket kihagyhatja, és helyezze át a következő szakaszra.
 
-1. Hozza létre és futtassa a **Ismerkedés az Elastic Database-eszközök** mintaalkalmazást. Kövesse a lépéseket, amíg a szakasz a 7. lépés [töltse le és futtassa a mintaalkalmazást](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). 7. lépés végén jelenik meg a következő parancssort:
+1. Hozza létre és futtassa a **Ismerkedés az Elastic Database-eszközök** mintaalkalmazást. Kövesse a lépéseket, amíg a szakasz a 7. lépés [töltse le és futtassa a mintaalkalmazást](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). 7\. lépés végén jelenik meg a következő parancssort:
 
     ![parancssor][1]
 2. A parancssori ablakba írja be a "1", és nyomja le az **Enter**. Ez létrehozza a szegmens kezelő, és két szegmensek hozzáadása a kiszolgálóhoz. Ezután írja be a "3", és nyomja le az **Enter**; négyszer ismételje meg a műveletet. Ez a szegmensek minta adatsor szúr be.

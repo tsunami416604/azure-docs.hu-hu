@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 7ca7e653cc42323f4313ef955de40416154b4ecf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60335223"
 ---
 # <a name="split-merge-security-configuration"></a>Biztonság szétválasztás és egyesítés konfiguráció
@@ -421,9 +421,9 @@ Kövesse az alábbi lépéseket:
 1. Mmc.exe futtassa.
 2. File -> Add/Remove Snap-in…
 3. Válassza ki **tanúsítványok**.
-4. Kattintson a **Hozzáadás** parancsra.
+4. Kattintson a **Hozzáadás**lehetőségre.
 5. Válassza ki a tanúsítványtár helye.
-6. Kattintson a **Befejezés** gombra.
+6. Kattintson a **Befejezés**gombra.
 7. Kattintson az **OK** gombra.
 8. Bontsa ki a **tanúsítványok**.
 9. Bontsa ki a tanúsítványt tároló csomópontot.
@@ -443,7 +443,7 @@ Az a **tanúsítvány exportálása varázslóban**:
 8. Kattintson a **tovább**.
 9. Írja be vagy tallózással keresse meg a FileName paramétert a tanúsítvány tárolására (használja a. PFX-kiterjesztéssel).
 10. Kattintson a **tovább**.
-11. Kattintson a **Befejezés** gombra.
+11. Kattintson a **Befejezés**gombra.
 12. Kattintson az **OK** gombra.
 
 ## <a name="import-certificate"></a>Tanúsítvány importálása
@@ -461,7 +461,7 @@ A Tanúsítványimportáló varázslóban:
 5. Válassza ki a "Hely" tanúsítványok ebben a tárolóban
 6. Kattintson a **Browse** (Tallózás) gombra.
 7. Válassza ki a kívánt tárolót.
-8. Kattintson a **Befejezés** gombra.
+8. Kattintson a **Befejezés**gombra.
    
    * Ha a megbízható legfelső szintű hitelesítésszolgáltatóinak választotta, kattintson a **Igen**.
 9. Kattintson a **OK** párbeszédpanelen az összes windows rendszeren.

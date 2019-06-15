@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: barclayn
 ms.openlocfilehash: d7d76458601b2afecafc1313e334215bf08b6545
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713831"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Az Azure CLI használatával a Key Vault felügyelete 
@@ -147,7 +147,7 @@ Ha rendelkezik egy meglévő kulcs egy .pem fájlra, feltöltheti az Azure Key V
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-A kulcs, amelyet létrehozott, vagy az Azure Key Vaultba feltöltött, az URI használatával hivatkozhat. Használat **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** , mindig letöltheti a legfrissebb verziót. Használat https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] lekérni ezt a verziót. Például: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
+A kulcs, amelyet létrehozott, vagy az Azure Key Vaultba feltöltött, az URI használatával hivatkozhat. Használat **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** , mindig letöltheti a legfrissebb verziót. Használat https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] lekérni ezt a verziót. Például: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** . 
 
 Titkos kód hozzáadása a tárolóhoz, amely egy SQLPassword nevű jelszót, és, amely az Azure Key vault-Kulcstartók "hVFkk965BuUv" érték szerepel-e. 
 
@@ -155,7 +155,7 @@ Titkos kód hozzáadása a tárolóhoz, amely egy SQLPassword nevű jelszót, é
 az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
-Az URI használatával hivatkozhat az ezt a jelszót. Használat **https://ContosoVault.vault.azure.net/secrets/SQLPassword** mindig lekérni az aktuális verzióra, és https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] lekérni ezt a verziót. Például: **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**.
+Az URI használatával hivatkozhat az ezt a jelszót. Használat **https://ContosoVault.vault.azure.net/secrets/SQLPassword** mindig lekérni az aktuális verzióra, és https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] lekérni ezt a verziót. Például: **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** .
 
 Tanúsítvány importálása a használatával egy .pem- vagy .pfx-tárolóba.
 

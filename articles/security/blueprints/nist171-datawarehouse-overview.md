@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: a1850ecfbb21eb9495bb0e6de362dc8dee3026a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609597"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-warehouse-for-nist-sp-800-171"></a>Azure biztonsági és megfelelőségi terv – a NIST SP 800-171 Data warehouse-bA
@@ -101,7 +101,7 @@ Az NSG-k mindegyike rendelkezik bizonyos portokat és protokollokat nyissa meg, 
 
 **Alhálózatok**: Minden egyes alhálózathoz társítva a megfelelő NSG-t.
 
-### <a name="data-at-rest"></a>Inaktív adat
+### <a name="data-at-rest"></a>Inaktív adatok
 Az architektúra használatával több mértéket az inaktív adatok védi. Ezeket a mértékeket tartalmazzák, titkosítás és az adatbázis naplózási szolgáltatásával.
 
 **Az Azure Storage**: A titkosított adatok inaktív állapotban, igényeinek megfelelően minden [tárolási](https://azure.microsoft.com/services/storage/) használ [a Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption). Ez a funkció segít a szervezeti biztonsági kötelezettségeit és megfelelőségi követelmények támogatásához adatok biztonságos megőrzésében.

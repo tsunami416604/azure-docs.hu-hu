@@ -10,10 +10,10 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 57cda4d07315c6c37c2ce51f530fb081949b628c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939504"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Az Azure Blob fájlrendszer illesztőprogram (ABFS): Egy dedikált Azure Storage-illesztőprogram a Hadoophoz
@@ -64,4 +64,4 @@ A ABFS illesztőprogram teljes leírása itt található a [hivatalos Hadoop-dok
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure Databricks-fürt létrehozása](./data-lake-storage-quickstart-create-databricks-account.md)
-- [Használja az Azure Data Lake Storage Gen2 URI](./data-lake-storage-introduction-abfs-uri.md)
+- [Az Azure Data Lake Storage Gen2 URI használata](./data-lake-storage-introduction-abfs-uri.md)

@@ -16,10 +16,10 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fb09d91bb3204a1ab3dc4f9df71eabd2ee7d2bd1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60591316"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Egy Azure virtuális Gépen futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása Azure gyorsindítási sablonok használatával
@@ -48,7 +48,7 @@ Az Always On rendelkezésre állási csoport konfigurálása Azure gyorsindítá
 - A tartományi felhasználói fiók, amely az SQL Server szolgáltatás vezérli. 
 
 
-## <a name="step-1---create-the-wsfc-and-join-sql-server-vms-to-the-cluster-using-quickstart-template"></a>1. lépés – a WSFC létrehozása és az SQL Server rendszerű virtuális gépekhez csatlakozhat a fürthöz gyorsindítási sablon használatával 
+## <a name="step-1---create-the-wsfc-and-join-sql-server-vms-to-the-cluster-using-quickstart-template"></a>1\. lépés – a WSFC létrehozása és az SQL Server rendszerű virtuális gépekhez csatlakozhat a fürthöz gyorsindítási sablon használatával 
 Miután az SQL virtuális gép új erőforrás-szolgáltató az SQL Server virtuális gépek vannak regisztrálva, is csatlakozhat az SQL Server virtuális gépek az *SqlVirtualMachineGroups*. Ehhez az erőforráshoz határozza meg a metaadatok a verzió, edition, teljesen minősített tartománynevét, AD-fiókok kezelése a fürt és az SQL-szolgáltatás és a Storage-fiók a felhőben, beleértve a Windows feladatátvevő fürt tanúsító. Az SQL Server virtuális gépek hozzáadása a *SqlVirtualMachineGroups* erőforráscsoport csatlakoztatja a Windows feladatátvételi fürtszolgáltatás a fürt létrehozásához, és ezután csatlakozik a létrehozott fürtre az SQL Server virtuális gépeken. Ebben a lépésben az automatizált a **101-sql-vm-ag-telepítés** gyorssablon és kialakítható az alábbi lépéseket követve:
 
 1. Keresse meg a [ **101-sql-vm-ag-telepítés** ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) gyorsindítási sablon válassza **üzembe helyezés az Azure** elindíthatja a gyorsindítási sablon az Azure Portalon.
@@ -80,13 +80,13 @@ Miután az SQL virtuális gép új erőforrás-szolgáltató az SQL Server virtu
    > Sablon üzembe helyezése során megadott hitelesítő adatok a rendszer csak az üzemelő példány a megadott ideig tárolja. Üzembe helyezés befejezése után a rendszer eltávolítja ezeket a jelszavakat, és meg kell adnia, adja meg őket újra kell további SQL Server virtuális gépeket ad hozzá a fürtöt. 
 
 
-## <a name="step-2---manually-create-the-availability-group"></a>2. lépés – a rendelkezésre állási csoport kézi létrehozása 
+## <a name="step-2---manually-create-the-availability-group"></a>2\. lépés – a rendelkezésre állási csoport kézi létrehozása 
 A rendelkezésre állási csoport manuálisan létrehoznia, ahogy azt szokásosan tenné, segítségével [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell), vagy [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
 
   >[!IMPORTANT]
   > Tegye **nem** jelenleg figyelő létrehozása, mert által automatikusan végbemegy a **101-sql-vm-aglistener-telepítés** gyorsindítási sablon 4. lépés. 
 
-## <a name="step-3---manually-create-the-internal-load-balancer-ilb"></a>3. lépés – a belső Load Balancer (ILB) kézi létrehozása
+## <a name="step-3---manually-create-the-internal-load-balancer-ilb"></a>3\. lépés – a belső Load Balancer (ILB) kézi létrehozása
 Az Always On rendelkezésre állási csoport (rendelkezésre állási csoport) figyelőjét egy belső Azure Load Balancer (ILB) van szükség. Az ILB a rendelkezésre állási csoport figyelőjének, amely lehetővé teszi a gyorsabb feladatátvételt és újracsatlakozás egy "nem fix" IP-címet biztosít. Ha az SQL Server virtuális gépek rendelkezésre állási csoportban az azonos rendelkezésre állási csoport részét képezik, ezt követően használhatja az alapszintű Load Balancer; Ellenkező esetben azt kell használnia a Standard Load Balancer.  **Az ILB kell lennie az SQL Server Virtuálisgép-példányok megegyező virtuális hálózatba.** Az ILB csak kell létrehozni, a további konfigurálást (például a háttérkészlet, állapotadat-mintavétel és terheléselosztó szabályai) kezeli a **101-sql-vm-aglistener-telepítés** gyorsindítási sablon 4. lépés. 
 
 1. Az Azure Portalon nyissa meg az erőforráscsoport, amely tartalmazza az SQL Server-virtuálisgépek. 
@@ -114,7 +114,7 @@ Az Always On rendelkezésre állási csoport (rendelkezésre állási csoport) f
   >[!IMPORTANT]
   > Minden egyes SQL Server rendszerű virtuális gép nyilvános IP-erőforrásból rendelkeznie kell a standard Termékváltozat a Standard Load Balancer való kompatibilitás. A virtuális gép nyilvános IP-erőforrás-Termékváltozat határozza meg, lépjen a **erőforráscsoport**, jelölje be a **nyilvános IP-cím** erőforrás számára a kívánt SQL Server virtuális Gépet, és keresse meg az értéket **Termékváltozat**  , a **áttekintése** ablaktáblán. 
 
-## <a name="step-4---create-the-ag-listener-and-configure-the-ilb-with-the-quickstart-template"></a>4. lépés – a rendelkezésre állási csoport figyelőjének létrehozásához, és konfigurálja az ILB-gyorssablon
+## <a name="step-4---create-the-ag-listener-and-configure-the-ilb-with-the-quickstart-template"></a>4\. lépés – a rendelkezésre állási csoport figyelőjének létrehozásához, és konfigurálja az ILB-gyorssablon
 
 A rendelkezésre állási csoport figyelőjének létrehozása és konfigurálása automatikusan a belső Load Balancer (ILB) a **101-sql-vm-aglistener-telepítés** gyorsindítási sablon, mert a Microsoft.SqlVirtualMachine/ építi ki. SqlVirtualMachineGroups/AvailabilityGroupListener erőforrás. A **101-sql-vm-aglistener-telepítés** rövid sablon, keresztül az SQL virtuális gép erőforrás-szolgáltató által a következő műveleteket:
 

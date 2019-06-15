@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: be3c31951c4721a861f9239c5220419dec11b6bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60799147"
 ---
 # <a name="extending-geojson-geometries"></a>Kiterjesztése GeoJSON geometriája
@@ -40,10 +40,10 @@ A `Circle` geometriai nem támogatja a [GeoJSON specifikációja][1]. Használju
 
 A `Circle` geometriai jelölt használatával a `GeoJSON Feature` objektum __kell__ tartalmazhatja a következő:
 
-1. Középre
+1. Központ
    >A kör center jelölt használatával egy `GeoJSON Point` típusa.
 
-2. Sugár
+2. RADIUS
    >A kör `radius` használatával jelölt `GeoJSON Feature`a tulajdonságai. A radius-érték _mérőszámok_ típusúnak kell lennie, és `double`.
 
 3. SubType

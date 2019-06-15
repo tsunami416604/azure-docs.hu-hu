@@ -3,16 +3,16 @@ title: Az Azure IoT Hub Device Provisioning Service reprovisioning eszköz fogal
 description: Ismerteti az Azure IoT Hub Device Provisioning Service fogalmak reprovisioning eszköz
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/14/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.openlocfilehash: fa8cb29f145c7658227f93d08a990c98563a0cfc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60730022"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub Device reprovisioning fogalmak

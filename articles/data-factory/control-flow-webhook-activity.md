@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
 ms.openlocfilehash: 6ec43b06ce266b9ceaddb5dd21cbf52f509d6596
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764305"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-tevékenység az Azure Data Factoryban
@@ -56,12 +56,12 @@ A web hook tevékenység segítségével szabályozhatja a folyamatok végrehajt
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A web hook tevékenység neve | String | Igen |
+name | A web hook tevékenység neve | String | Igen |
 type | Meg kell **WebHook**. | String | Igen |
 method | A céloldali végpont metódus REST API-t. | karakterlánc. A támogatott típusok: "POST" | Igen |
 url | Céloldali végpont és az elérési út | Karakterlánc (vagy a resultType kifejezés karakterlánc). | Igen |
 A fejlécek | A kérelmet küldött fejlécek. Például állítsa be a nyelvet, és írja be egy kérelemre: "fejlécek": {"Accept-nyelv": "en-us", "Content-Type": "application/json"}. | Karakterlánc (vagy a resultType kifejezés karakterlánc) | Igen, a Content-type fejléc szükség. "headers":{ "Content-Type":"application/json"} |
-törzs | A tartalom a végpontnak küldött jelöli. | A törzsben átadott vissza a visszahívás URI azonosítója nem egy érvényes JSON. A séma, a kérelem adattartalom [kérelem hasznos séma](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) szakaszban. | Igen |
+Törzs | A tartalom a végpontnak küldött jelöli. | A törzsben átadott vissza a visszahívás URI azonosítója nem egy érvényes JSON. A séma, a kérelem adattartalom [kérelem hasznos séma](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) szakaszban. | Igen |
 hitelesítés | A végpont meghívására szolgáló használt hitelesítési módszert. Támogatott típusok a következők "Alapszintű" vagy "ClientCertificate." További információkért lásd: [hitelesítési](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0) szakaszban. Ha a hitelesítés nem szükséges, zárja ki ezt a tulajdonságot. | Karakterlánc (vagy a resultType kifejezés karakterlánc) | Nem |
 timeout | Mennyi ideig fog várni a tevékenység a &#39;visszahívási URI&#39; meg kell hívni. Mennyi ideig a tevékenység várakozik a "visszahívási URI" meg kell hívni. Alapértelmezett értéke 10mins ("00: 10:00"). Formátuma, azaz d.hh:mm:ss időtartam | String | Nem |
 

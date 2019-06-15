@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
 ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60629757"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Rendellenes ismétlődő feladat hibaelhárítása
@@ -27,17 +27,17 @@ Ismétlődő feladatok ugyanazon lekérdezés logikája és a hasonló bemeneti 
 
 **Kapcsolódó feladat nézet** az Azure Data Lake Tools for Visual Studio segítségével felgyorsíthatja a hibaelhárítási folyamat mindkét esetben a.
 
-## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>1. lépés: Ismétlődő feladatok megtalálhatja és megnyithatja a kapcsolódó feladat megtekintése
+## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>1\. lépés: Ismétlődő feladatok megtalálhatja és megnyithatja a kapcsolódó feladat megtekintése
 
 Ismétlődő feladat probléma hibaelhárításához kapcsolódó feladat nézet használatához meg kell először keresse meg az ismétlődő feladat a Visual Studióban, és nyissa meg a kapcsolódó feladat megtekintése.
 
-### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>1. eset: Az URL-cím, az ismétlődő feladat van
+### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>1\. eset: Az URL-cím, az ismétlődő feladat van
 
 Keresztül **eszközök** > **Data Lake** > **Feladatnézetben**, beillesztheti a feladat nézet megnyitásához a Visual Studióban a feladat URL-CÍMÉT. Válassza ki **kapcsolódó feladatok megtekintése** kapcsolódó feladat nézet megnyitásához.
 
 ![A Data Lake Analytics Tools nézethivatkozás kapcsolódó feladatok](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  
-### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>2. eset: Az ismétlődő feladat, de nem az URL-cím tartozó folyamatra van
+### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>2\. eset: Az ismétlődő feladat, de nem az URL-cím tartozó folyamatra van
 
 A Visual Studio Server Explorer eszközével folyamat böngészőben megnyithatja > az Azure Data Lake Analytics-fiók > **folyamatok**. (Ha ez a csomópont nem találja a Server Explorerben [töltse le a legújabb beépülő modul](https://aka.ms/adltoolsvs).) 
 
@@ -47,7 +47,7 @@ Folyamat böngészőben a bal oldalon felsorolt összes folyamatokat a Data Lake
 
 ![Jelölje ki a folyamatot, és a kapcsolódó feladat nézet megnyitása](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-view.png)
 
-## <a name="step-2-analyze-a-statistics-report"></a>2. lépés: Egy statisztikai jelentés elemzése
+## <a name="step-2-analyze-a-statistics-report"></a>2\. lépés: Egy statisztikai jelentés elemzése
 
 Összegzése és a egy szinkronizálásistatisztika-jelentésről kapcsolódó feladat nézet tetején jelennek meg. Itt megtalálhatja a probléma lehetséges kiváltó okát. 
 
@@ -56,7 +56,7 @@ Folyamat böngészőben a bal oldalon felsorolt összes folyamatokat a Data Lake
 
 ![Folyamat diagramja statisztikai adatainak ellenőrzése](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-metrics-debugging-flow.png)
 
-## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>3. lépés: Hasonlítsa össze a rendellenes feladat egy normál feladathoz
+## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>3\. lépés: Hasonlítsa össze a rendellenes feladat egy normál feladathoz
 
 Megtalálhatja az összes elküldött, ismétlődő feladatokat a feladatlistában kapcsolódó feladat nézet alján keresztül. További elemzések és a lehetséges megoldások kereséséhez kattintson a jobb gombbal a rendellenes feladat. A feladat Diff nézet segítségével összehasonlíthatja a rendellenes normál egy korábbi feladatban.
 

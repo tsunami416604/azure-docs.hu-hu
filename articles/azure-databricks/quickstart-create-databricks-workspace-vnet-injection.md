@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 295b64b10f9f78ca6224d60fb84c6d1310aaa42e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60770605"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Gyors útmutató: Azure Databricks-munkaterület létrehozása egy virtuális hálózaton belül
@@ -34,7 +34,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
     |Beállítás|Ajánlott érték|Leírás|
     |-------|---------------|-----------|
     |Name (Név)|databricks-quickstart|Válassza ki a virtuális hálózat nevét.|
-    |Címtér|10.1.0.0/16|A virtuális hálózat címtartománya CIDR formátumban.|
+    |Címtér|10.1.0.0/16|A virtuális hálózat címtartománya a CIDR-jelölésrendszerben.|
     |Előfizetés|\<Az Ön előfizetése\>|Válassza ki a használni kívánt Azure-előfizetést.|
     |Erőforráscsoport|databricks-quickstart|Válassza ki **hozzon létre új** , és adja meg egy új erőforráscsoport neve a fiókjához.|
     |Location egység|\<Válassza ki a felhasználóihoz legközelebb eső régiót\>|Válasszon egy földrajzi hely, ahol a virtuális hálózat is üzemeltethet. A felhasználókhoz legközelebb eső helyet használja.|
@@ -61,7 +61,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
     |Location egység|\<Válassza ki a felhasználóihoz legközelebb eső régiót\>|Válassza ki a virtuális hálózattal megegyező helyen.|
     |Tarifacsomag|Válassza a Standard vagy prémium szint között.|A tarifacsomagokkal kapcsolatos további információkért lásd: a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).|
     |A virtuális hálózat az Azure Databricks-munkaterület üzembe helyezése|Igen|Ezzel a beállítással telepítheti a virtuális hálózat az Azure Databricks-munkaterületet.|
-    |Virtual Network|databricks-quickstart|Válassza ki a virtuális hálózat az előző szakaszban létrehozott.|
+    |Virtuális hálózat|databricks-quickstart|Válassza ki a virtuális hálózat az előző szakaszban létrehozott.|
     |Nyilvános alhálózat neve|public-subnet|Használja az alapértelmezett nyilvános alhálózat neve.|
     |Nyilvános alhálózat CIDR-tartományt|10.179.64.0/18|Az alhálózat CIDR-tartományt /18 és/26-os között kell lennie.|
     |Privát alhálózat neve|private-subnet|Használja az alapértelmezett magánhálózati alhálózat neve.|
@@ -84,7 +84,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Térjen vissza az Azure Databricks szolgáltatást, és válassza ki **munkaterület indítása** a a **áttekintése** lapot.
 
-2. Válassza ki **fürtök** > **+ a fürt létrehozása**. Majd hozzon létre a fürt nevét, például *a rövid útmutatóban a databricks-fürt*, és fogadja el a többi alapértelmezett beállítást. Válassza ki **-fürt létrehozása**.
+2. Válassza ki **fürtök** >  **+ a fürt létrehozása**. Majd hozzon létre a fürt nevét, például *a rövid útmutatóban a databricks-fürt*, és fogadja el a többi alapértelmezett beállítást. Válassza ki **-fürt létrehozása**.
 
     ![Az Azure Databricks-fürt létrehozása](./media/quickstart-create-databricks-workspace-vnet-injection/create-cluster.png)
 

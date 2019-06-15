@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: 51632b8b68640814fc113a94925b6d6deaca4c5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482566"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64682486"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>A StorSimple Snapshot Manager használatával csatlakozhat, és a StorSimple-eszközök kezelése
 ## <a name="overview"></a>Áttekintés
@@ -36,7 +36,7 @@ Attól függően, a **nézet** beállításokat is, a **eredmények** panel megj
 | Name (Név) |A klasszikus Azure portálon konfigurált eszköz nevét |
 | Modell |Az eszköz modellszáma |
 | Version |Az eszközön telepített szoftver verziója |
-| status |Az eszköz-e elérhető |
+| Állapot |Az eszköz-e elérhető |
 | A legutóbbi szinkronizálásra |Dátum és idő, amikor az eszköz legutóbb szinkronizálva |
 | Sorozatszám |Az eszköz sorozatszámát |
 
@@ -140,7 +140,7 @@ Az alábbi eljárás segítségével megtekintheti a StorSimple eszköz részlet
 * Kattintson a **újraszinkronizálása** szinkronizálni az eszközt.
 * Kattintson a **OK** vagy **Mégse** a párbeszédpanel bezárásához.
   
-  ![Eszköz adatai](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
+  ![Eszköz részletei](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
 
 ## <a name="refresh-an-individual-device"></a>Egy-egy eszköz frissítése
 A következő eljárás használatával szinkronizálja újra egy-egy StorSimple eszköz StorSimple Snapshot Manager alkalmazással.

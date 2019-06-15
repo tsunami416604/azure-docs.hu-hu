@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: bwren
 ms.openlocfilehash: a1a605bc733597430f64dceeb6c485db0abf657b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60589244"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>az Azure Monitor lekérdezés App() kifejezés
@@ -35,11 +35,11 @@ A `app` kifejezés szerepel az Azure Monitor lekérdezés adatokat lekérni egy 
 
 - *Azonosító*: Azonosítja az alkalmazást, az alábbi táblázat a formátumok valamelyikével.
 
-| Azonosító | Leírás | Példa
+| azonosító | Leírás | Példa
 |:---|:---|:---|
 | Erőforrás neve | Az alkalmazás (AVAGY "összetevő neve") emberi olvasható neve | app("fabrikamapp") |
 | Minősített név | A képernyőn az alkalmazás teljes név: "subscriptionName/resourceGroup/componentName" | app('AI-Prototype/Fabrikam/fabrikamapp') |
-| ID (Azonosító) | Az alkalmazás GUID azonosítója | app("988ba129-363e-4415-8fe7-8cbab5447518") |
+| azonosító | Az alkalmazás GUID azonosítója | app("988ba129-363e-4415-8fe7-8cbab5447518") |
 | Azure-erőforrás azonosítója | Az Azure-erőforrás azonosítója |App("/Subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/Providers/Microsoft.insights/Components/fabrikamapp") |
 
 

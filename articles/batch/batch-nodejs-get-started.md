@@ -12,10 +12,10 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
 ms.openlocfilehash: bb0bfa5eac3dd9031718fb12f270f5fc03bbaea6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60775230"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Ismerkedés a Node.js-hez készült Batch SDK-val
@@ -52,7 +52,7 @@ A Node.js-ügyfél üzembe helyez egy előkészítő feladattal ellátott Batch-
 
 Az alábbiakban lépésenként követjük a Node.js-ügyfél felépítésének folyamatát:
 
-### <a name="step-1-install-azure-batch-sdk"></a>1. lépés: Azure Batch SDK telepítése
+### <a name="step-1-install-azure-batch-sdk"></a>1\. lépés: Azure Batch SDK telepítése
 
 A Node.js-hez készült Azure Batch SDK telepítése az npm install paranccsal történik.
 
@@ -65,7 +65,7 @@ Ezzel a paranccsal telepítheti az Azure Batch Node SDK legújabb verzióját.
 >
 >
 
-### <a name="step-2-create-an-azure-batch-account"></a>2. lépés: Az Azure Batch-fiók létrehozása
+### <a name="step-2-create-an-azure-batch-account"></a>2\. lépés: Az Azure Batch-fiók létrehozása
 
 A fiókot az [Azure Portalon](batch-account-create-portal.md) vagy a parancssorból ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)) hozhatja létre.
 
@@ -85,7 +85,7 @@ Minden egyes Batch-fiók megfelelő hozzáférési kulcsokkal rendelkezik. Ezekr
 
 Másolja és mentse a következő lépésekben használni kívánt kulcsot.
 
-### <a name="step-3-create-an-azure-batch-service-client"></a>3. lépés: Az Azure Batch-szolgáltatásügyfél létrehozása
+### <a name="step-3-create-an-azure-batch-service-client"></a>3\. lépés: Az Azure Batch-szolgáltatásügyfél létrehozása
 Az alábbi kódrészlet először importálja az Azure Batch Node.js modult, majd létrehoz egy Batch-szolgáltatásügyfelet. Először létre kell hoznia egy SharedKeyCredentials objektumot az előző lépésből átmásolt Batch-fiókkulccsal.
 
 ```nodejs
@@ -119,7 +119,7 @@ Tekintse meg a következő képernyőképet:
 
 
 
-### <a name="step-4-create-an-azure-batch-pool"></a>4. lépés: Azure Batch-készlet létrehozása
+### <a name="step-4-create-an-azure-batch-pool"></a>4\. lépés: Azure Batch-készlet létrehozása
 Az Azure Batch-készlet több virtuális gépből áll (ezek Batch-csomópontokként is ismertek). Az Azure Batch-szolgáltatás elvégzi a feladatok központi telepítését ezeken a csomópontokon, és kezeli azokat. A készlet esetében az alábbi konfigurációs paramétereket adhatja meg.
 
 * A virtuális gép rendszerképének típusa
@@ -254,7 +254,7 @@ Az alábbiakban a pool.get függvény által visszaadott objektumra láthat pél
 ```
 
 
-### <a name="step-4-submit-an-azure-batch-job"></a>4. lépés: Az Azure Batch-feladatok elküldése
+### <a name="step-4-submit-an-azure-batch-job"></a>4\. lépés: Az Azure Batch-feladatok elküldése
 Az Azure Batch-feladatok hasonló feladatok logikai csoportjai. Ebben az esetben ez a következő: „CSV – JSON feldolgozás”. Minden egyes itt szereplő feladat képes az Azure Storage-tárolókban lévő CSV-fájlok feldolgozására.
 
 E feladatok párhuzamosan futtathatók és több csomóponton üzembe helyezhetők, a vezénylésüket az Azure Batch-szolgáltatás végzi.
@@ -311,7 +311,7 @@ Ha a feladatok futtatásához nem szükséges előfeltételeket telepíteni, kih
 ```
 
 
-### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>5. lépés: Egy feladat az Azure Batch-feladatok elküldése
+### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>5\. lépés: Egy feladat az Azure Batch-feladatok elküldése
 
 A CSV-feldolgozási feladat létrehozását követően hozzunk létre tevékenységeket ehhez a feladathoz. Feltételezve, hogy négy tárolóval rendelkezünk, négy tevékenységet hozunk létre – minden tárolóhoz egyet.
 

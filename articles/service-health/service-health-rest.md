@@ -8,10 +8,10 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
 ms.openlocfilehash: 6d83aed6910127ceb34b9a694f48ca9c19ab6d18
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60790912"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>A REST API használatával a Resource Health beolvasása 
@@ -34,15 +34,15 @@ A következő fejléceket szükség:
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
-|*A Content-Type:*|Kötelező. Állítsa be `application/json`.|  
-|*Hitelesítés:*|Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Content-Type:*|Kötelező. Állítsa be `application/json`.|  
+|*Authorization:*|Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>URI-paraméterek
 
 | Name (Név) | Leírás |
 | :--- | :---------- |
 | subscriptionId | Az előfizetés-azonosítója, amely azonosítja az Azure-előfizetéssel. Ha több előfizetéssel rendelkezik, tekintse meg [több előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
-| API-verzió | A használandó a kérelem API-verzió.<br /><br /> Ez a dokumentum ismerteti az api-version `2015-04-01`, a fenti URL-címe megtalálható.  |
+| api-version | A használandó a kérelem API-verzió.<br /><br /> Ez a dokumentum ismerteti az api-version `2015-04-01`, a fenti URL-címe megtalálható.  |
 | $filter | A szűrési a beállítással úgy csökkenthető a kapott találatok közül készletét. Ez a paraméter a megengedett minták érhetők el [a hivatkozás a vizsgálati naplók művelethez](/rest/api/monitor/activitylogs/list#uri-parameters). A példában látható rögzíti eseményeit a 2018-05-16. és 2018-06-20 időtartomány |
 | &nbsp; | &nbsp; |
 

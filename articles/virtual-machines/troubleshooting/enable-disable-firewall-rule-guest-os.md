@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: ed3d89bc15f960947a48ac4364bd14f3fdf50cc2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60505560"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Engedélyezheti vagy tilthatja le egy tűzfalszabályt egy Azure virtuális gép vendég operációs rendszeren
@@ -35,7 +35,7 @@ A tűzfalszabályok konfigurálását hogyan attól függ, hogy a virtuális gé
 
 ### <a name="online-troubleshooting"></a>Online hibáinak elhárítása 
 
-#### <a name="mitigation-1-custom-script-extension"></a>1. megoldás: Egyéni szkriptbővítmény
+#### <a name="mitigation-1-custom-script-extension"></a>1\. megoldás: Egyéni szkriptbővítmény
 
 1.  Hozzon létre a parancsfájlt az alábbi sablon használatával.
 
@@ -51,7 +51,7 @@ A tűzfalszabályok konfigurálását hogyan attól függ, hogy a virtuális gé
 
 2.  Ezt a szkriptet az Azure portal használatával töltse fel a [egyéni szkriptek futtatására szolgáló bővítmény](../extensions/custom-script-windows.md) funkció. 
 
-#### <a name="mitigation-2-remote-powershell"></a>2. megoldás: Remote PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>2\. megoldás: Remote PowerShell
 
 Ha a virtuális gép online állapotban, és a egy másik virtuális Géphez ugyanazon a virtuális hálózaton elérhetők, akkor is használhatja az alábbi megoldások a többi virtuális gép használatával.
 
@@ -73,7 +73,7 @@ Ha a virtuális gép online állapotban, és a egy másik virtuális Géphez ugy
         exit
         ```
 
-#### <a name="mitigation-3-pstools-commands"></a>3. megoldás: PSTools parancsok
+#### <a name="mitigation-3-pstools-commands"></a>3\. megoldás: PSTools parancsok
 
 Ha a virtuális gép online állapotban, és a egy másik virtuális Géphez ugyanazon a virtuális hálózaton elérhetők, akkor is használhatja az alábbi megoldások a többi virtuális gép használatával.
 
@@ -93,7 +93,7 @@ Ha a virtuális gép online állapotban, és a egy másik virtuális Géphez ugy
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
         ```
 
-#### <a name="mitigation-4-remote-registry"></a>4. megoldás: Remote Registry
+#### <a name="mitigation-4-remote-registry"></a>4\. megoldás: Remote Registry
 
 Ha a virtuális gép online állapotban, és a egy másik virtuális Géphez ugyanazon a virtuális hálózaton elérhetők, [távoli beállításjegyzék](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) a többi virtuális gépen.
 

@@ -9,10 +9,10 @@ ms.date: 03/18/2019
 ms.topic: conceptual
 manager: peterpr
 ms.openlocfilehash: ec7033719316bb186408ea78f6dabac43c383491
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60519227"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Hozzon létre és futtathat feladatokat az Azure IoT központi alkalmazás
@@ -74,9 +74,9 @@ Egy feladat létrehozása után a **állapot** oszlop frissítések a feladat le
 
 | Állapotüzenet       | Állapot jelentése                                          |
 | -------------------- | ------------------------------------------------------- |
-| Befejezve            | Ez a feladat végrehajtását követően az összes eszközön.              |
+| Befejeződött            | Ez a feladat végrehajtását követően az összes eszközön.              |
 | Meghiúsult               | Ez a feladat nem sikerült és az eszközökön nincs teljes egészében végrehajtani.  |
-| Függőben              | Ez a feladat még nem kezdődött végrehajtása az eszközökön.         |
+| Függőben lévő              | Ez a feladat még nem kezdődött végrehajtása az eszközökön.         |
 | Fut              | Ez a feladat végrehajtása folyamatban van az eszközökön.             |
 | Leállítva              | Ez a feladat a felhasználó manuálisan leállították.           |
 
@@ -93,9 +93,9 @@ A feladat és az érintett eszközök állapotának megtekintéséhez válassza 
 
 | Állapotüzenet       | Állapot jelentése                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
-| Befejezve            | A feladat végrehajtva az eszközön.                                     |
+| Befejeződött            | A feladat végrehajtva az eszközön.                                     |
 | Meghiúsult               | A feladat nem sikerült végrehajtani ezen az eszközön. A hibaüzenet további információkat jelenít meg.  |
-| Függőben              | A feladat még az eszköz még nem futottak.                                   |
+| Függőben lévő              | A feladat még az eszköz még nem futottak.                                   |
 
 > [!NOTE]
 > Ha egy eszköz törölve lett, nem választhat ki az eszközt, és azt jeleníti meg, mert törölték az eszköz azonosítójával. a

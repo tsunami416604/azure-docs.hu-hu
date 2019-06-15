@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: 386b4b8440c74f6599e7147996b5843ea0f67e68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60623952"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Hogyan lehet a Twilio használata Hanghívási és SMS-funkciókhoz Java nyelven
@@ -42,17 +42,17 @@ Az API-t felhasznál Twilio műveleteket; Ha például a **&lt;Say&gt;** művele
 
 Az alábbiakban látható egy Twilio-műveletek listájához.
 
-* **&lt;Tárcsázás&gt;**: A hívó csatlakozik egy másik telefonon.
-* **&lt;Gyűjtse össze&gt;**: Gyűjti a telefon billentyűzeten beírt számjegyeket.
-* **&lt;Vonalbontás&gt;**: A hívás véget ér.
-* **&lt;Play&gt;**: Hang lejátszása.
-* **&lt;Queue&gt;**: Adja hozzá a hívók egy üzenetsorba.
-* **&lt;Felfüggesztés&gt;**: A megadott számú másodperc vár beavatkozás nélkül.
-* **&lt;Rekord&gt;**: A hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
-* **&lt;Redirect&gt;**: Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
-* **&lt;Elutasítás&gt;**: A Twilio-számra bejövő hívás elutasítja, számlázási nélkül.
-* **&lt;Tegyük fel, hogy&gt;**: Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
-* **&lt;SMS&gt;**: SMS üzenetet küld.
+* **&lt;Tárcsázás&gt;** : A hívó csatlakozik egy másik telefonon.
+* **&lt;Gyűjtse össze&gt;** : Gyűjti a telefon billentyűzeten beírt számjegyeket.
+* **&lt;Vonalbontás&gt;** : A hívás véget ér.
+* **&lt;Play&gt;** : Hang lejátszása.
+* **&lt;Queue&gt;** : Adja hozzá a hívók egy üzenetsorba.
+* **&lt;Felfüggesztés&gt;** : A megadott számú másodperc vár beavatkozás nélkül.
+* **&lt;Rekord&gt;** : A hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
+* **&lt;Redirect&gt;** : Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
+* **&lt;Elutasítás&gt;** : A Twilio-számra bejövő hívás elutasítja, számlázási nélkül.
+* **&lt;Tegyük fel, hogy&gt;** : Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
+* **&lt;SMS&gt;** : SMS üzenetet küld.
 
 ### <a id="TwiML"></a>TwiML
 TwiML XML-alapú utasítások alapján a Twilio-műveleteket tartalmazó tájékoztatja a hívás feldolgozása Twilio vagy SMS.
@@ -158,7 +158,7 @@ A következő példa használatával SMS üzenet küldése a **üzenet** osztál
 További információ az átadott paraméterek a **Message.creator** metódus, lásd: [ https://www.twilio.com/docs/api/rest/sending-sms ] [ twilio_rest_sending_sms].
 
 ## <a id="howto_provide_twiml_responses"></a>kézikönyv: Adja meg a saját webhelyén TwiML válaszok
-Ha az alkalmazás kezdeményezi a hívást a Twilio API-hoz, például keresztül a **CallCreator.create** metódus, Twilio a kérelmet küld egy URL-címet, amely várhatóan egy TwiML választ adja vissza. A fenti példában a Twilio-megadott URL-címet használ [ https://twimlets.com/message ] [ twimlet_message_url]. (Amíg TwiML használata webszolgáltatások lett tervezve, megtekintheti a TwiML a böngészőben. Kattintson például [ https://twimlets.com/message ] [ twimlet_message_url] megtekintéséhez egy üres **&lt;válasz&gt;** elem; másik példaként, kattintson a [ https://twimlets.com/message?Message%5B0%5D=Hello%20World%21 ] [ twimlet_message_url_hello_world] megtekintéséhez egy **&lt;válasz&gt;** elem, amely tartalmazza a **&lt;Say&gt;** elem.)
+Ha az alkalmazás kezdeményezi a hívást a Twilio API-hoz, például keresztül a **CallCreator.create** metódus, Twilio a kérelmet küld egy URL-címet, amely várhatóan egy TwiML választ adja vissza. A fenti példában a Twilio-megadott URL-címet használ [ https://twimlets.com/message ] [ twimlet_message_url]. (Amíg TwiML használata webszolgáltatások lett tervezve, megtekintheti a TwiML a böngészőben. Kattintson például [ https://twimlets.com/message ] [ twimlet_message_url] megtekintéséhez egy üres **&lt; válasz&gt;** elem; másik példaként, kattintson a [ https://twimlets.com/message?Message%5B0%5D=Hello%20World%21 ] [ twimlet_message_url_hello_world] megtekintéséhez egy **&lt; válasz&gt;** elem, amely tartalmazza a **&lt; Say&gt;** elem.)
 
 Így nem kell hagyatkoznia a Twilio-megadott URL-címet, a saját URL-címet a hely által visszaadott HTTP-válaszok is létrehozhat. A hely által visszaadott HTTP-válaszok; bármilyen nyelven hozhat létre Ez a témakör azt feltételezi, hogy fogja üzemeltetni a JSP-oldal URL-CÍMÉT.
 

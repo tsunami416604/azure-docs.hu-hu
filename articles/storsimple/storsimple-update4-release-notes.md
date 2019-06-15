@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60530990"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64698640"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>A StorSimple 8000 Series Update 4 kibocsátási megjegyzései
 
@@ -27,12 +27,12 @@ ms.locfileid: "60530990"
 
 A következő kiadási megjegyzések az új funkciók ismertetik, és a StorSimple 8000 Series Update 4 a kritikus fontosságú megoldatlan problémák azonosításához. Ebben a kiadásban a StorSimple szoftver frissítések listáját is tartalmaznak. 
 
-4. frissítéssel bármilyen kiadásban elérhetővé tétel (GA) vagy 0.1-es frissítés keresztül frissítés 3.1-et futtató StorSimple-eszközre alkalmazhatók. Az eszközhöz társított Update 4 verziószáma 6.3.9600.17820.
+4\. frissítéssel bármilyen kiadásban elérhetővé tétel (GA) vagy 0.1-es frissítés keresztül frissítés 3.1-et futtató StorSimple-eszközre alkalmazhatók. Az eszközhöz társított Update 4 verziószáma 6.3.9600.17820.
 
 Tekintse át a kibocsátási megjegyzések a StorSimple-megoldásban a frissítés telepítése előtt található információkat.
 
 > [!IMPORTANT]
-> * 4. frissítéssel eszköz szoftverének, USM belső vezérlőprogram, LSI-illesztőprogram és a belső vezérlőprogram, lemezfirmware, Storport és Spaceport, biztonsági és más operációs rendszer frissítése rendelkezik. Ez a frissítés körülbelül 4 óra vesz igénybe. Lemezfirmware-frissítés zavart okozó frissítést, és az eszköz egy állásidőt eredményez. Azt javasoljuk, hogy alkalmazza-e az eszköz naprakészen tartani Update 4. 
+> * 4\. frissítéssel eszköz szoftverének, USM belső vezérlőprogram, LSI-illesztőprogram és a belső vezérlőprogram, lemezfirmware, Storport és Spaceport, biztonsági és más operációs rendszer frissítése rendelkezik. Ez a frissítés körülbelül 4 óra vesz igénybe. Lemezfirmware-frissítés zavart okozó frissítést, és az eszköz egy állásidőt eredményez. Azt javasoljuk, hogy alkalmazza-e az eszköz naprakészen tartani Update 4. 
 > * Az új kiadásokhoz, akkor előfordulhat, hogy nem jelenik meg frissítések azonnal, mivel egy fázisokra bontva történő bevezetéséhez a frissítések végzünk. Néhány napot várni, és ezeket újra, majd frissítéskeresés hamarosan elérhetővé válik.
 
 ## <a name="whats-new-in-update-4"></a>What's new in Update 4
@@ -66,14 +66,14 @@ A következő kulcsfontosságú fejlesztések és hibajavítások az Update 4 ke
 
 Az alábbi táblázat a Update 4 javított hibák összegzését tartalmazza.    
 
-| Nem | Szolgáltatás | Probléma | Fizikai eszköz vonatkozik | Virtuális eszköz vonatkozik |
+| Nem | Funkció | Probléma | Fizikai eszköz vonatkozik | Virtuális eszköz vonatkozik |
 | --- | --- | --- | --- | --- |
 | 1 |Feladatátvétel |A korábbi kiadásokban a feladatátvétel után hiba történt az ügyfél telephelyén megfigyelt tisztítással kapcsolatos. Ebben a kiadásban a probléma megoldódik. |Igen |Igen |
 | 2 |Helyileg rögzített kötetek |A korábbi változatban hiba történt a kapcsolódó kötetek létrehozását a helyileg rögzített kötetekhez, amely a kötet létrehozása hibákat eredményez. Ez a probléma alapvető oka volt, és javítva a kiadásban. |Igen |Nem |
 | 3 |Támogatási csomag |Az előző verzió, a támogatási csomagot, amely egy System.OutOfMemory kivétel vagy egyéb támogatási csomag létrehozása hibát eredményez hibákat eredményez kapcsolatos problémák voltak. A programhibákat ebben a kiadásban. |Igen |Igen |
 | 4 |Figyelés |Az előző verzió, a hiba diagramok helyileg monitoring szolgáltatással kapcsolatos probléma rögzített kötetekről ahol EB fogyasztás volt látható. Ez a hiba megoldódott-e ebben a kiadásban. |Igen |Igen |
 | 5 |Migrálás |Előző kiadásban számos, a 8000-es sorozatú eszközökön 5000 – 7000 sorozatú áttelepítési megbízhatóságát kapcsolatos problémák voltak. Ezek a problémák rendelkezik foglalkoztak ebben a kiadásban. |Igen |Igen |
-| 6 |Frissítés |A korábbi kiadásokban, ha egy frissítési hiba lépett fel, a tartományvezérlők akkor lépnek helyreállítási módba, és ezért a felhasználó a frissítés nem folytatható, és forduljon a Microsoft Support kellene. <br> Ez a viselkedés ebben a kiadásban módosítva lett. Ha a felhasználó rendelkezik frissítési hiba fordul elő, ha mindkét vezérlő ugyanazt a verziót (4-es frissítést) futnak, a vezérlők nem lépnek helyreállítási módba. Ha a felhasználó ezt a hibát észlel, azt javasoljuk, hogy Várjon, amíg egy kis, és próbálkozzon újra a frissítést. Az újrapróbálkozás telepítés sikeres lehet. Ha az újrapróbálkozás nem sikerül, majd, forduljon a Microsoft Support. |Igen |Igen |
+| 6 |frissítés |A korábbi kiadásokban, ha egy frissítési hiba lépett fel, a tartományvezérlők akkor lépnek helyreállítási módba, és ezért a felhasználó a frissítés nem folytatható, és forduljon a Microsoft Support kellene. <br> Ez a viselkedés ebben a kiadásban módosítva lett. Ha a felhasználó rendelkezik frissítési hiba fordul elő, ha mindkét vezérlő ugyanazt a verziót (4-es frissítést) futnak, a vezérlők nem lépnek helyreállítási módba. Ha a felhasználó ezt a hibát észlel, azt javasoljuk, hogy Várjon, amíg egy kis, és próbálkozzon újra a frissítést. Az újrapróbálkozás telepítés sikeres lehet. Ha az újrapróbálkozás nem sikerül, majd, forduljon a Microsoft Support. |Igen |Igen |
 
 
 ## <a name="known-issues-in-update-4-from-previous-releases"></a>A korábbi kiadások Update 4 ismert problémái

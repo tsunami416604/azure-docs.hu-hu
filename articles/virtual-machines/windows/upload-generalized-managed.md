@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: b1ad5aa074a7719dbe6000301c8cd04e6e1ad632
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: ee2fe91d915faf7e09dee004891edfc6bef38d6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984545"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64685401"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Általános VHD feltöltése és ezzel hozzon létre új virtuális gépeket az Azure-ban
 
@@ -33,7 +33,7 @@ Mintaparancsprogram lásd [mintaparancsfájl VHD feltöltése az Azure-ba, és h
 - Minden olyan VHD feltöltése az Azure-ba, mielőtt követendő [készítse elő a Windows VHD vagy VHDX, az Azure-bA feltöltendő](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Felülvizsgálat [tervezze meg a migrálás a Managed Disks szolgáltatásba](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) az áttelepítés megkezdése előtt [Managed Disks](managed-disks-overview.md).
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>A forrásoldali virtuális gép általánosításához használja a Sysprep
@@ -49,7 +49,7 @@ Ellenőrizze, hogy a Sysprep a gépen futó kiszolgálói szerepkörök támogat
 
 1. Jelentkezzen be a Windows virtuális gép.
 2. Nyissa meg a parancsablakot rendszergazdaként. Lépjen a % windir%\system32\sysprep, és futtassa `sysprep.exe`.
-3. Az a **rendszer-előkészítő eszköz** párbeszédpanelen jelölje ki **adja meg System Out-of-Box élmény (OOBE)**, és ellenőrizze, hogy a **Generalize** jelölőnégyzet.
+3. Az a **rendszer-előkészítő eszköz** párbeszédpanelen jelölje ki **adja meg System Out-of-Box élmény (OOBE)** , és ellenőrizze, hogy a **Generalize** jelölőnégyzet.
 4. A **leállítási beállítások**válassza **leállítási**.
 5. Kattintson az **OK** gombra.
    

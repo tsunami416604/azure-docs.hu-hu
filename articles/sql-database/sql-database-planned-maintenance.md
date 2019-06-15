@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/30/2019
 ms.openlocfilehash: 928338a911efae051df7164239dbd19f9317338a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60584607"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Az Azure SQL Database Azure karbantartási események tervezése
@@ -37,7 +37,7 @@ Minden olyan éles ügyfélalkalmazás, amely csatlakozik egy felhőbeli adatbá
 
 ## <a name="frequency"></a>Gyakoriság
 
-1.7 tervezett karbantartási események átlagosan havonta fordulhat elő.
+1\.7 tervezett karbantartási események átlagosan havonta fordulhat elő.
 
 ## <a name="resource-health"></a>Resource Health
 

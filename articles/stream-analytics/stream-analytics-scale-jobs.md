@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.openlocfilehash: f4307da2e74846507cafb9f767a6ccae855e42a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60816814"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Azure Stream Analytics-feladat, növelheti a teljesítményt méretezése
@@ -22,7 +22,7 @@ Egy előfeltétel szükség lehet az alábbi cikkekben:
 -   [A streamelési egységek ismertetése és módosítása](stream-analytics-streaming-unit-consumption.md)
 -   [Párhuzamosítható feladatok létrehozása](stream-analytics-parallelization.md)
 
-## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>1. – a lekérdezés funkcióban természetüknél fogva teljes párhuzamosítható bemeneti partíciók között
+## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>1\. – a lekérdezés funkcióban természetüknél fogva teljes párhuzamosítható bemeneti partíciók között
 Ha a bemeneti partíciók között a lekérdezés teljes természetüknél fogva párhuzamosítható, követheti a következő lépéseket:
 1.  A lekérdezés kell zavaróan párhuzamos használatával hozhat létre **PARTITION BY** kulcsszót. További információkért keresse fel a zavaróan párhuzamos feladatok területén [ezen az oldalon](stream-analytics-parallelization.md).
 2.  A lekérdezésben használt kimeneti típusokat, attól függően néhány kimeneti előfordulhat, hogy vagy nem lehet párhuzamosítható, vagy további konfiguráció zavaróan párhuzamos van szüksége. Ha például SQL, az SQL dw-vel és a Power bi kimenetek nem, párhuzamosítható. A kimeneti fogadónak küldése előtt mindig egyesítésekor kimenetek. Blobok, táblák, ADLS, Service Bus és Azure-függvény automatikus méretezésnek megfelelően. Cosmos DB és az Eseményközpont kell rendelkeznie a PartitionKey konfiguráció beállítva, hogy az egyezzen a **PARTITION BY** (általában PartitionId) mezőt. Az Eseményközpontok felé is figyelmet extra az összes bemenetet és felett partíciók között elkerülése érdekében minden kimenetet a partíciók számának megfelelően. 
@@ -38,7 +38,7 @@ Ha a bemeneti partíciók között a lekérdezés teljes természetüknél fogva
 > A 6 mért például 4 SU feladat érhető el, 4 MB/s feldolgozási sebesség és a bemeneti partíciók száma. Kiválaszthatja, hogy a feladat futtatásához 12 SU körülbelül 8 MB/s-feldolgozási sebesség eléréséhez, vagy 24 SU elérése érdekében 16 MB/s. Ezután eldöntheti, mikor növelje az SU milyen érték, a feladat a bemeneti forgalom továbbítása.
 
 
-## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>2. Ha a lekérdezés nem zavaróan párhuzamos eset.
+## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>2\. Ha a lekérdezés nem zavaróan párhuzamos eset.
 Ha a lekérdezés nem zavaróan párhuzamos, követheti a következő lépéseket.
 1.  Nem a lekérdezés kezdő **PARTITION BY** először a elkerülése érdekében a particionálás összetettségét, és futtassa a lekérdezés 6 SU és mérhető, mint a maximális terhelés [1. eset](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions).
 2.  A várható terhelés átviteli távon érhet el, ha az elkészült. Azt is megteheti választhatja mérésére SU és 1 SU, a SU, a forgatókönyv esetén használható minimális száma: 3 futó ugyanazt a feladatot.
@@ -65,7 +65,7 @@ Miután particionálva, a lépés minden partíció esetében legfeljebb 6 SU, m
 > [!Note]
 > Ha a lekérdezés nem lehet particionálni, további további SU több lépést lekérdezésben előfordulhat, hogy mindig növelhető az átviteli sebesség. Teljesítmény eléréséhez egyik módja, hogy minimalizálható a kezdeti lépések, helyi és globális összesített mintát, használja a fenti 5. lépésében leírtak szerint.
 
-## <a name="case-3---you-are-running-lots-of-independent-queries-in-a-job"></a>3. eset független lekérdezések rengeteg fut egy feladat.
+## <a name="case-3---you-are-running-lots-of-independent-queries-in-a-job"></a>3\. eset független lekérdezések rengeteg fut egy feladat.
 Az egyes Szoftverszállítói használati esetek, ahol a szolgáltatás több költséghatékony több bérlő egyetlen feladatban adatok feldolgozásához, minden bérlő, külön bemeneti és kimeneti-fordulhatnak elő még néhány (például 20) futó független lekérdezések egyetlen feladatban. Feltételezzük, minden egyes ilyen segédlekérdezés terhelés viszonylag kis. Ebben az esetben is kövesse az alábbi lépéseket.
 1.  Ebben az esetben ne használjon **PARTITION BY** a lekérdezésben
 2.  Csökkentse a bemeneti partíciók száma a legkisebb lehetséges értéke 2, Event Hub használatakor.

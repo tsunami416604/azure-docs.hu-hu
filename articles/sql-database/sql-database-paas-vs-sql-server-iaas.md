@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/11/2019
 ms.openlocfilehash: d9cd5ba0b697cbf67f943eb49d66010745d8561e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60584853"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure"></a>Válassza ki a jobb oldalon az SQL Server beállítása az Azure-ban
@@ -25,7 +25,7 @@ ms.locfileid: "60584853"
 Az Azure-ban, az SQL Server számítási feladatok egy szolgáltatott infrastruktúra (IaaS) futtatja, vagy egy üzemeltetett szolgáltatást futtató rendelkezhet ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)). Belül PaaS hogy több központi telepítési beállítások és szolgáltatási szinteken belül minden egyes üzembe helyezési lehetőség. A legfontosabb kérdés, lépjen kapcsolatba a PaaS vagy IaaS közötti meghatározásakor az szeretné az adatbázis kezelése, -javítások alkalmazása, készítsen biztonsági másolatokat, vagy szeretne delegálni ezeket a műveleteket az Azure-bA?
 Attól függően, a válasz a következő lehetőségek állnak rendelkezésére:
 
-- [Azure SQL Database](sql-database-technical-overview.md): Egy teljes körűen felügyelt SQL-adatbázismotor, a legújabb stabil Enterprise Edition, SQL Server-alapú. Ez az egy relációs adatbázis--szolgáltatásként (DBaaS), amely az iparági kategóriába esik az Azure felhőalapú *Platform--szolgáltatásként (PaaS)*. Az SQL database több központi telepítési beállítások, amelyek mindegyike épül szabványos hardvereken és szoftvereken rendszer tulajdonában lévő üzemeltetett és a Microsoft által karbantartott rendelkezik. Az SQL Database beépített szolgáltatásai és funkciói széles körű konfigurációt az SQL Server használatakor igénylő használhatja (a helyszínen vagy egy Azure virtuális gépen). Az SQL Database használatalapú fizetéssel működik, emellett a teljesítményigény növekedése esetére lehetőség van vertikális vagy horizontális felskálázásra is. Az SQL Database további funkciók, amelyek nem érhetők el az SQL Server, például a beépített magas rendelkezésre állást, intelligenciát és felügyeleti rendelkezik. Az Azure SQL Database kínál az alábbi telepítési lehetőségek közül:
+- [Azure SQL Database](sql-database-technical-overview.md): Egy teljes körűen felügyelt SQL-adatbázismotor, a legújabb stabil Enterprise Edition, SQL Server-alapú. Ez az egy relációs adatbázis--szolgáltatásként (DBaaS), amely az iparági kategóriába esik az Azure felhőalapú *Platform--szolgáltatásként (PaaS)* . Az SQL database több központi telepítési beállítások, amelyek mindegyike épül szabványos hardvereken és szoftvereken rendszer tulajdonában lévő üzemeltetett és a Microsoft által karbantartott rendelkezik. Az SQL Database beépített szolgáltatásai és funkciói széles körű konfigurációt az SQL Server használatakor igénylő használhatja (a helyszínen vagy egy Azure virtuális gépen). Az SQL Database használatalapú fizetéssel működik, emellett a teljesítményigény növekedése esetére lehetőség van vertikális vagy horizontális felskálázásra is. Az SQL Database további funkciók, amelyek nem érhetők el az SQL Server, például a beépített magas rendelkezésre állást, intelligenciát és felügyeleti rendelkezik. Az Azure SQL Database kínál az alábbi telepítési lehetőségek közül:
   
   - Mint egy [önálló adatbázis](sql-database-single-database.md) saját erőforráskészlettel felügyelt SQL Database-kiszolgálón keresztül. Önálló adatbázis hasonlít egy [tartalmazott adatbázisok](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) az SQL Server. Ez a beállítás a felhőben született alkalmazásokhoz új probléma a modern alkalmazások fejlesztése van optimalizálva.
   - Egy [rugalmas készlet](sql-database-elastic-pool.md), azaz egy SQL Database-kiszolgálón keresztül felügyelt közös erőforráskészlettel az adatbázis-gyűjtemény. Önálló adatbázisok áthelyezhetők, és a egy rugalmas készletből. Ez a beállítás a modern alkalmazásnak a több-bérlős SaaS-alkalmazás használatával új felhőben született alkalmazások fejlesztését van optimalizálva.

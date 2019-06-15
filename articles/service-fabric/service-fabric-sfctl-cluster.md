@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 7bb399472d7e0ab14e6399fc8652d2eb132a866a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837320"
 ---
 # <a name="sfctl-cluster"></a>sfctl-fürt
@@ -30,20 +30,20 @@ Válassza ki, kezelése és üzemeltetése a Service Fabric-fürtök.
 | --- | --- |
 | kód-verziók | Service Fabric-fürtben üzembe helyezett kód verziók fabric listáját kéri le. |
 | config-versions | Service Fabric-fürtben üzembe helyezett konfigurációs verziók fabric listáját kéri le. |
-| egészségügy | Service Fabric-fürt állapotának beolvasása. |
-| Manifest | A Service Fabric fürtjegyzék beolvasása. |
+| health | Service Fabric-fürt állapotának beolvasása. |
+| manifest | A Service Fabric fürtjegyzék beolvasása. |
 | művelet – Mégse | Egy felhasználó által előidézett hibák művelet megszakítása. |
 | művelet – lista | A megadott adatok alapján szűrt felhasználó által előidézett hibák műveletek listájának beolvasása. |
-| üzembe helyezése | A Service Fabric-fürt kódírásra vagy konfigurálásra csomagok üzembe helyezése. |
+| provision | A Service Fabric-fürt kódírásra vagy konfigurálásra csomagok üzembe helyezése. |
 | recover-system | Azt jelzi, hogy a Service Fabric-fürthöz, hogy kell próbálnia jelenleg ragadnak kvórumveszteségben rendszerszolgáltatások helyreállítani. |
 | report-health | A Service Fabric-fürt állapotának jelentést küld. |
-| kiválasztás | A Service Fabric-fürt végpontja csatlakozik. |
+| Válassza ki | A Service Fabric-fürt végpontja csatlakozik. |
 | show-connection | Bemutatják, milyen Service Fabric-fürtön az sfctl-példányhoz csatlakozik. |
 | unprovision | A Service Fabric-fürt kódírásra vagy konfigurálásra csomagok telepítésének visszavonása. |
-| frissítés | Indítsa el a Service Fabric-fürt kódírásra vagy konfigurálásra verzió frissítése. |
-| frissítés-folytatása | Győződjön meg a fürt frissítésének léphet tovább a következő frissítési tartományra. |
-| frissítés-visszaállítás | Állítsa vissza a Service Fabric-fürt frissítését. |
-| frissítés – állapot | Lekérdezi az aktuális fürt frissítésének előrehaladása. |
+| upgrade | Indítsa el a Service Fabric-fürt kódírásra vagy konfigurálásra verzió frissítése. |
+| upgrade-resume | Győződjön meg a fürt frissítésének léphet tovább a következő frissítési tartományra. |
+| upgrade-rollback | Állítsa vissza a Service Fabric-fürt frissítését. |
+| upgrade-status | Lekérdezi az aktuális fürt frissítésének előrehaladása. |
 | upgrade-update | Frissítés a Service Fabric-fürt frissítése frissítési paramétereit. |
 
 ## <a name="sfctl-cluster-code-versions"></a>sfctl cluster code-verziók

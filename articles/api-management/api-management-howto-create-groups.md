@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 5392cf5463dd0b11d1ce53856c8e4e2e788892b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60658437"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Hogyan hozhat létre és csoportok használata az Azure API Management fejlesztői fiókok kezelése
@@ -87,10 +87,10 @@ Ez a szakasz bemutatja, hogyan csoportok társítása a tagokat.
 1. Válassza ki a **csoportok** lapon, a képernyő bal oldalán.
 2. Válassza ki **tagok**.
 
-    ![Tag hozzáadása](./media/api-management-howto-create-groups/groups005.png)
+    ![Egy tag hozzáadása](./media/api-management-howto-create-groups/groups005.png)
 3. Nyomja meg **+ Hozzáadás** , és jelöljön ki egy tagot.
 
-    ![Tag hozzáadása](./media/api-management-howto-create-groups/groups006.png)
+    ![Egy tag hozzáadása](./media/api-management-howto-create-groups/groups006.png)
 4. Nyomja meg **kiválasztása**.
 
 A fejlesztői és a csoport között. a társítás hozzáadása után megtekintheti azt a **felhasználók** fülre.

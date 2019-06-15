@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/19/2019
 ms.author: robinsh
 ms.openlocfilehash: 26637468f44e12f7ad66f907e0f6be3d907e578f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126207"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64719338"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT távoli figyelés és értesítések az Azure Logic Apps csatlakoztatása az IoT hub és a postaláda
 
@@ -78,7 +78,7 @@ Hozzon létre egy Service Bus-névteret és üzenetsort. Ez a témakör később
 
    ![Az Azure Portalon adjon hozzá egy service bus-üzenetsorba](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
 
-1. Lépjen vissza a **Service Bus-Namespace** panel alatt **entitások**, jelölje be **üzenetsorok**. Nyissa meg a Service Bus-üzenetsorba a listából, és válassza ki **megosztott elérési házirendek** > **+ Hozzáadás**.
+1. Lépjen vissza a **Service Bus-Namespace** panel alatt **entitások**, jelölje be **üzenetsorok**. Nyissa meg a Service Bus-üzenetsorba a listából, és válassza ki **megosztott elérési házirendek** >  **+ Hozzáadás**.
 
 1. Adjon meg egy nevet a házirendet, jelölőnégyzet **kezelés**, majd válassza ki **létrehozás**.
 
@@ -214,7 +214,7 @@ Az előző szakaszban beállíthatja az IoT hub egy hőmérséklet-értesítés 
 
    1. Az a **smtp API-kapcsolat** panel alatt **általános**válassza **szerkesztése API-kapcsolat**.
 
-   1. Az a **API-kapcsolat szerkesztése** ablaktáblán válassza **SSL engedélyezése?**, írja be újra az e-mail-fiók jelszavát, és válassza ki **mentése**.
+   1. Az a **API-kapcsolat szerkesztése** ablaktáblán válassza **SSL engedélyezése?** , írja be újra az e-mail-fiók jelszavát, és válassza ki **mentése**.
 
       ![A logikai alkalmazás az Azure Portalon lévő SMTP API-kapcsolat szerkesztése](media/iot-hub-monitoring-notifications-with-azure-logic-apps/re-enable-smtp-connection-ssl.png)
 

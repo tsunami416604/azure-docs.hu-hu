@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 8fb3b4ac748fcae2e3aad5b3bfb2a893340dc61a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60694822"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Virtuális hálózat konfigurálása az Azure DevTest Labs szolgáltatásban
@@ -39,7 +39,7 @@ A következő lépések végigvezetik hozzáadása egy meglévő virtuális hál
 1. Válassza a **+ Hozzáadás** lehetőséget.
    
     ![Meglévő virtuális hálózat hozzáadása a tesztkörnyezethez](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
-1. Az a **virtuális hálózati** ablaktáblán válassza **[válassza ki virtuális hálózatot]**.
+1. Az a **virtuális hálózati** ablaktáblán válassza **[válassza ki virtuális hálózatot]** .
    
     ![Válassza ki a meglévő virtuális hálózaton](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
 1. Az a **válasszon egy virtuális hálózatot** ablaktáblán válassza ki a kívánt virtuális hálózatot. Egy listában látható a virtuális hálózatok ugyanabban a régióban a lab mint az előfizetés alatt álló összes.

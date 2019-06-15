@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 10/17/2017
 ms.author: alkohli
 ms.openlocfilehash: 602514df69977891167f341db0ab20913bcacc9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60634562"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>A StorSimple-Eszközkezelő szolgáltatás használata a StorSimple-eszköz figyelése
@@ -40,11 +40,11 @@ A kiépített és a fennmaradó kapacitás rétegzett és a helyileg rögzített
 ## <a name="usage"></a>Használat
 **Használati** nyomon követi a kötetek, kötettárolók, vagy az eszköz által használt adatok tárolási terület mennyisége kapcsolatos metrikákat. A tárolókapacitás kihasználtságát az elsődleges tárolási, a felhőalapú tárolás vagy az eszköz tárhelyén alapuló jelentéseket hozhat létre. Kapacitás kihasználtsága egy adott kötet, egy adott kötettároló vagy minden kötettároló mérhető.
 Alapértelmezés szerint a használat az elmúlt 24 órában jelentett. Módosítsa az időtartamot, amelyen a használati jelentett, válassza ki a diagram szerkesztheti:
-* Az elmúlt 24 óra
+* Elmúlt 24 óra
 * Elmúlt 7 nap
 * Elmúlt 30 nap
 * Elmúlt 90 nap
-* Az elmúlt év
+* Elmúlt év
 
 Két fő metrices, a növekedési és a tartomány jelenti, hogy a használat diagramok. Hivatkozik a maximális érték és a használat, a kijelölt időintervallumban (fő példány, elmúlt 7 napon) keresztül jelentett minimális értékét.
 

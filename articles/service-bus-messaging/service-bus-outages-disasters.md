@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
 ms.openlocfilehash: 24611e265788cf046aa0733bc423917aaf305427
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60589727"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Ajánlott eljárások az alkalmazások a Service Bus leállásainak és katasztrófákkal szembeni szigetelő
@@ -27,7 +27,7 @@ A vészhelyreállítási számít, ha a végleges adatvesztést egy Service Bus 
 ## <a name="protecting-against-outages-and-disasters---service-bus-premium"></a>Leállások és katasztrófák kezelése – a Service Bus prémium szintű elleni védelme
 Az Azure Service Bus prémium szintű, ugyanabban a régióban (keresztül a rendelkezésre állási zónák) egyaránt be van építve a magas rendelkezésre állás és a vész-helyreállítási fogalmak és (a Geo-Disaster Recovery) keresztül különböző régiók között.
 
-### <a name="geo-disaster-recovery"></a>Georeplikációs vészhelyreállítás
+### <a name="geo-disaster-recovery"></a>GEO-Disaster Recovery
 
 Prémium szintű Service Bus Geo-disaster recovery, a névterek szintjén támogatja. További információkért lásd: [Azure Service Bus Geo-disaster recovery](service-bus-geo-dr.md). A vész helyreállítási funkció, elérhető a [prémium szintű Termékváltozat](service-bus-premium-messaging.md) csak, metaadatok vész-helyreállítási valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterek támaszkodik.
 

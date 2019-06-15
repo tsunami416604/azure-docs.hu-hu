@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
 ms.openlocfilehash: cefb83d5336bb99fd09001b5ea369a0b8fc4b942
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60596633"
 ---
 # <a name="views-in-management-solutions-preview"></a>Nézetek az eszközkezelési megoldások (előzetes verzió)
@@ -95,8 +95,8 @@ Egy Resource Manager-sablonban definiált összes Log Analytics erőforrás rend
 
 | Munkaterület-verzió | API-verzió | Lekérdezés |
 |:---|:---|:---|
-| V1 (örökölt)   | 2015. 11. 01-előzetes verzió | Örökölt formátum.<br> Példa: Type=Event EventLevelName = Error  |
-| v2 (frissítve) | 2015. 11. 01-előzetes verzió | Örökölt formátum.  Telepítse a frissített formátumra alakítja át.<br> Példa: Type=Event EventLevelName = Error<br>Konvertálva: Esemény &#124; ahol Error == "Error"  |
+| V1 (örökölt)   | 2015\. 11. 01-előzetes verzió | Örökölt formátum.<br> Példa: Type=Event EventLevelName = Error  |
+| v2 (frissítve) | 2015\. 11. 01-előzetes verzió | Örökölt formátum.  Telepítse a frissített formátumra alakítja át.<br> Példa: Type=Event EventLevelName = Error<br>Konvertálva: Esemény &#124; ahol Error == "Error"  |
 | v2 (frissítve) | 2017-03-03-előzetes verzió | Frissítési formátum. <br>Példa: Esemény &#124; ahol Error == "Error"  |
 
 

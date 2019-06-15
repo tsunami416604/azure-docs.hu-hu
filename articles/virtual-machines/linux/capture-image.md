@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.openlocfilehash: 5022d765b5dfa4f1f973b7fb4370d5314bb887b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60542869"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Hogyan hozhat létre virtuális gépet vagy virtuális merevlemez képe
@@ -43,7 +43,7 @@ Mielőtt létrehozná a lemezképet a következőkre lesz szüksége:
 Ez a cikk egy egyszerűsített verziója, valamint a teszteléshez, kiértékelése, vagy az Azure-beli virtuális gépek megismerésére, lásd: [egy Azure virtuális gép egyéni rendszerképének létrehozása a parancssori felület használatával](tutorial-custom-images.md).
 
 
-## <a name="step-1-deprovision-the-vm"></a>1. lépés: A virtuális gép megszüntetése
+## <a name="step-1-deprovision-the-vm"></a>1\. lépés: A virtuális gép megszüntetése
 A virtuális gép első számítógép-specifikus fájlok és adatok törlése az Azure-beli Virtuálisgép-ügynök használatával fogjuk megszüntetéséhez. Használja a `waagent` parancsot a `-deprovision+user` paraméter a forrás Linux rendszerű virtuális gép. További információk: [Azure Linux-ügynök – felhasználói útmutató](../extensions/agent-linux.md).
 
 1. A Linux rendszerű virtuális egy SSH-ügyfél csatlakozhat.
@@ -58,7 +58,7 @@ A virtuális gép első számítógép-specifikus fájlok és adatok törlése a
 3. Adja meg **y** folytatásához. Hozzáadhat a `-force` paraméter a megerősítési lépés elkerülése érdekében.
 4. A parancs befejeződése után adja meg a **kilépéshez** gombra kattintva zárja be az SSH-ügyfél.
 
-## <a name="step-2-create-vm-image"></a>2. lépés: Virtuális gép rendszerképének létrehozása
+## <a name="step-2-create-vm-image"></a>2\. lépés: Virtuális gép rendszerképének létrehozása
 Az Azure CLI segítségével jelölje meg a virtuális gép általánosként és a lemezképének rögzítése. A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők *myResourceGroup*, *myVnet*, és *myVM*.
 
 1. Szabadítsa fel a virtuális Gépet, amely a – figyelmeztetés megszüntetésről [az vm deallocate](/cli/azure/vm). Az alábbi példa felszabadítja a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup*.
@@ -90,7 +90,7 @@ Az Azure CLI segítségével jelölje meg a virtuális gép általánosként és
    >
    > Ha szeretné tárolni a rendszerkép zóna rugalmas tárolás, egy régióban, amely támogatja a létrehozásához szükséges [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `--zone-resilient true` paraméter.
 
-## <a name="step-3-create-a-vm-from-the-captured-image"></a>3. lépés: A rögzített lemezképet a virtuális gép létrehozása
+## <a name="step-3-create-a-vm-from-the-captured-image"></a>3\. lépés: A rögzített lemezképet a virtuális gép létrehozása
 Virtuális gép létrehozása a létrehozott lemezképpel [az virtuális gép létrehozása](/cli/azure/vm). A következő példában létrehozunk egy nevű virtuális Gépet *myVMDeployed* rendszerkép *myImage*.
 
 ```azurecli
@@ -124,7 +124,7 @@ az vm create \
 ```
 
 
-## <a name="step-4-verify-the-deployment"></a>4. lépés: Az üzemelő példány ellenőrzése
+## <a name="step-4-verify-the-deployment"></a>4\. lépés: Az üzemelő példány ellenőrzése
 
 SSH-t a virtuális géphez, ellenőrizze a telepítési és elkezdheti az új virtuális Géphez létrehozott. SSH-n keresztül csatlakozni, keresse meg az IP-címét vagy teljes Tartománynevét, a virtuális gép [az vm show](/cli/azure/vm#az-vm-show).
 

@@ -12,10 +12,10 @@ ms.workload: genomics
 ms.topic: article
 ms.date: 10/29/2018
 ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60790504"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
@@ -23,7 +23,7 @@ ms.locfileid: "60790504"
 Íme néhány hibaelhárítási tippek a gyakori problémák, amelyek a Microsoft Genomics MSGEN szolgáltatás használata esetén előfordulhat, hogy között.
 
  A GYIK, hibaelhárítás, nem kapcsolódó témakör [gyakori kérdésekre](frequently-asked-questions-genomics.md).
-## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>1. lépés: Keresse meg a munkafolyamathoz társított hibakódok
+## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>1\. lépés: Keresse meg a munkafolyamathoz társított hibakódok
 
 A munkafolyamat által társított hibaüzenetek keresheti meg:
 
@@ -93,7 +93,7 @@ Keresse meg a szóban forgó munkafolyamat a kimeneti tárolóhoz. MSGEN létreh
 Hibaelhárítási, vizsgálja meg a standardoutput.txt tartalmát, és jegyezze fel a megjelenő hibaüzeneteket.
 
 
-## <a name="step-2-try-recommended-steps-for-common-errors"></a>2. lépés: Próbálja ki a gyakori hibák elhárításához ajánlott lépéseket
+## <a name="step-2-try-recommended-steps-for-common-errors"></a>2\. lépés: Próbálja ki a gyakori hibák elhárításához ajánlott lépéseket
 
 Ez a szakasz röviden kiemeli a gyakori hibák kimeneti (msgen) a Microsoft Genomics szolgáltatásba, és a problémák megoldásához használható stratégiákról. 
 
@@ -116,7 +116,7 @@ Ezek a hibák a gyakorlatban hasznosítható felhasználói. Fájl és hibakód 
 
 | Fájltípus | Hibakód | Hibaüzenet                                                                           | Javasolt hibaelhárítási lépések                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Bármelyik          | 701        | Olvassa el [readId] [numberOfBases] bázisok rendelkezik, de a korlát [maxReadLength]           | Ez a hiba leggyakoribb oka két olvasási összefűzésén vezető fájl sérülése. Ellenőrizze a bemeneti fájlokat. |
+| Bármely          | 701        | Olvassa el [readId] [numberOfBases] bázisok rendelkezik, de a korlát [maxReadLength]           | Ez a hiba leggyakoribb oka két olvasási összefűzésén vezető fájl sérülése. Ellenőrizze a bemeneti fájlokat. |
 | BAM          | 200        |   Nem sikerült beolvasni a fájlt a(z) "[yourFileName]".                                                                                       | Ellenőrizze a BAM-fájl formátumát. Küldje el a munkafolyamat újra egy megfelelően formázott fájllal.                                                                           |
 | BAM          | 201        |  Nem sikerült beolvasni a BAM-fájlból [fájlnév].                                                                                      |Ellenőrizze a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelő formátumú fájlt.                                                                            |
 | BAM          | 202        | Nem sikerült beolvasni a BAM-fájlból [fájlnév]. Túl kicsi és a hiányzó fejléc.                                                                                        | Ellenőrizze a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelő formátumú fájlt.                                                                            |
@@ -137,7 +137,7 @@ Ezek a hibák a gyakorlatban hasznosítható felhasználói. Fájl és hibakód 
 | FASTQ        | 308        |  FASTQ olvasási hiba. Mindkét olvasási eltérően válaszolt. Döntött a megfelelő FASTQ-fájlokat?                                                                                       | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                         |
 |        |       |                                                                                        |                                                                           |
 
-## <a name="step-3-contact-microsoft-genomics-support"></a>3. lépés: Forduljon a Microsoft Genomics-támogatás
+## <a name="step-3-contact-microsoft-genomics-support"></a>3\. lépés: Forduljon a Microsoft Genomics-támogatás
 
 Ha továbbra is a sikertelen feladatok rendelkezik, vagy ha más kérdése van, forduljon a Microsoft Genomics-támogatás az Azure Portalról. Egy támogatási kérést szeretne beküldeni kapcsolatos további információ található [Itt](file-support-ticket-genomics.md).
 

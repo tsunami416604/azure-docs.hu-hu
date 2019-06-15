@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant-msft
 ms.openlocfilehash: 5319b0ac06c4ddf1a7627a4e7fe0bfb2694f79f6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64706604"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása egy Zscaler konfigurálása
@@ -113,7 +113,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás konfigurálá
 
     b. Válassza ki **Enable SCIM-Based kiépítés** úgy szerezheti be a beállítások a **alap URL-cím** és **tulajdonosi jogkivonat**. Mentse a beállításokat. Másolás a **alap URL-cím** beállítást **bérlői URL-cím** az Azure Portalon. Másolás a **tulajdonosi jogkivonat** beállítást **titkos jogkivonat** az Azure Portalon.
 
-7. 5. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** győződjön meg arról, hogy az Azure AD is képes csatlakozni Zscaler egy. Ha a kapcsolat nem sikerül, ellenőrizze, hogy rendszergazdai engedélyekkel rendelkező a Zscaler egy fiókot, és próbálkozzon újra.
+7. 5\. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** győződjön meg arról, hogy az Azure AD is képes csatlakozni Zscaler egy. Ha a kapcsolat nem sikerül, ellenőrizze, hogy rendszergazdai engedélyekkel rendelkező a Zscaler egy fiókot, és próbálkozzon újra.
 
     ![Zscaler-kapcsolat egy tesztelése](./media/zscaler-one-provisioning-tutorial/test-connection.png)
 

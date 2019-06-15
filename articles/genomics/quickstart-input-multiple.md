@@ -10,10 +10,10 @@ ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.openlocfilehash: 399b1ed735ce1b7a3fca1d27155863f6bfa18776
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60780878"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Munkafolyamat elküldése azonos mintából származó több bemenet használatával
@@ -28,7 +28,7 @@ Ez a cikk feltételezi, hogy már telepítette és futtatta az `msgen` ügyfelet
 ## <a name="multiple-bam-files"></a>Több BAM-fájl
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Bemeneti fájlok feltöltése az Azure Storage-ba
-Tegyük fel, hogy a bemenet több BAM-fájlból áll (*reads.bam*, *additional_reads.bam*, és *yet_more_reads.bam*), amelyeket feltöltött saját *myaccount* nevű tárfiókjába az Azure-ban. Emellett rendelkezik az API URL-címével és a hozzáférési kulccsal. Azt szeretné, hogy a kimenetek a következő helyre kerüljenek: **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
+Tegyük fel, hogy a bemenet több BAM-fájlból áll (*reads.bam*, *additional_reads.bam*, és *yet_more_reads.bam*), amelyeket feltöltött saját *myaccount* nevű tárfiókjába az Azure-ban. Emellett rendelkezik az API URL-címével és a hozzáférési kulccsal. Azt szeretné, hogy a kimenetek a következő helyre kerüljenek: **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** .
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>Feladat elküldése az `msgen`-ügyfélnek 
@@ -91,7 +91,7 @@ Küldje el a `config.txt` fájlt a következő hívással: `msgen submit -f conf
 ## <a name="multiple-paired-fastq-files"></a>Több párosított FASTQ-fájl
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Bemeneti fájlok feltöltése az Azure Storage-ba
-Tegyük fel, hogy a bemenet több párosított FASTQ-fájlból áll: *reads_1.fq.gz* és *reads_2.fq.gz*,  *additional_reads_1.fq.gz* és *additional_reads_2.fq.gz*, valamint *yet_more_reads_1.fq.gz* és *yet_more_reads_2.fq.gz*. Az említett fájlokat már feltöltötte *myaccount* nevű Azure-beli tárfiókjába, valamint rendelkezik az API URL-címével és a hozzáférési kulccsal. Azt szeretné, hogy a kimenetek a következő helyre kerüljenek: **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
+Tegyük fel, hogy a bemenet több párosított FASTQ-fájlból áll: *reads_1.fq.gz* és *reads_2.fq.gz*,  *additional_reads_1.fq.gz* és *additional_reads_2.fq.gz*, valamint *yet_more_reads_1.fq.gz* és *yet_more_reads_2.fq.gz*. Az említett fájlokat már feltöltötte *myaccount* nevű Azure-beli tárfiókjába, valamint rendelkezik az API URL-címével és a hozzáférési kulccsal. Azt szeretné, hogy a kimenetek a következő helyre kerüljenek: **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** .
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>Feladat elküldése az `msgen`-ügyfélnek 

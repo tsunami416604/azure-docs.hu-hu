@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: 1a70d1b2ea504d0ccfba925810a2d19d0c7583cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759605"
 ---
 # <a name="language-support-for-computer-vision"></a>Számítógépes Látástechnológia nyelvi támogatás
@@ -60,7 +60,7 @@ Optikai Karakterfelismerés automatikusan észleli a nyelvet a bemeneti anyag, �
 
 Az egyes műveletek a [elemzése – kép](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API más nyelven, a megadott adhat vissza eredményt a `language` lekérdezési paraméter. Egyéb műveletek adja vissza az eredményeket angol függetlenül attól, milyen nyelven van megadva, és mások kivételt nem támogatott nyelvekhez. Műveletek vannak megadva, a `visualFeatures` és `details` lekérdezési paramétereket; lásd: a [áttekintése](home.md) képelemzés elvégezhető összes műveletet listáját.
 
-|Nyelv | Nyelvkód | Categories | Címkék | Leírás | Felnőtt tartalom | Márkák | Szín | Arcok | Képtípus | Objektumok | Hírességek | Arcrész |
+|Nyelv | Nyelvkód | Categories | Tags | Leírás | Felnőtt tartalom | Márkák | Szín | Arcok | Képtípus | Objektumok | Hírességek | Arcrész |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |kínai | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angol | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

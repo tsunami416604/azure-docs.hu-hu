@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: b30094e264086f018acbf84144300df46c60ac4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610291"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-nist-sp-800-171"></a>Azure biztonsági és megfelelőségi terv – IaaS-webalkalmazás NIST 800-171-SP rendszerhez
@@ -93,10 +93,10 @@ Egy dedikált NSG minden egyes alhálózatban van:
 - Egy NSG-t az SQL Server-kiszolgálók és a Felhőbeli tanúsító (SQLNSG)
 - Egy NSG-t webes réteg (WEBNSG)
 
-### <a name="data-in-transit"></a>Az átvitt adatok
+### <a name="data-in-transit"></a>Átvitt adatok
 Az Azure és az Azure adatközpontok bemenő kommunikáció alapértelmezés szerint titkosítja. Emellett az Azure Portalon keresztül a tárolási tranzakciók HTTPS-kapcsolaton keresztül történik.
 
-### <a name="data-at-rest"></a>Inaktív adat
+### <a name="data-at-rest"></a>Inaktív adatok
 Az architektúra használatával több mértéket az inaktív adatok védi. Ezeket a mértékeket tartalmazzák, titkosítás és az adatbázis naplózási szolgáltatásával.
 
 **Az Azure Storage**: A titkosított adatok inaktív állapotban, igényeinek megfelelően minden [tárolási](https://azure.microsoft.com/services/storage/) használ [a Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption). Ez a funkció segít a szervezeti biztonsági kötelezettségeit, és a NIST 800-171 SP által meghatározott megfelelőségi követelmények támogatásához adatok biztonságos megőrzésében.

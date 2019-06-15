@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 ms.openlocfilehash: 0f6ee8729cbed9cb8baf3668f7b1a332bc5eddc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60538132"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>A kérések és válaszok összetevői használatának első lépései
@@ -86,9 +86,9 @@ Az alábbi táblázatok ismertetik az adatbeviteli mezők az eseményindító é
 #### <a name="request-trigger"></a>Kérelem típusú trigger
 Az alábbiakban látható egy beviteli mező, az eseményindító a bejövő HTTP-kérelemből.
 
-| Megjelenített név | Tulajdonság neve | Leírás |
+| Display name | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| JSON-sémája |séma |A HTTP-kérés törzse JSON-sémája |
+| JSON-sémája |schema |A HTTP-kérés törzse JSON-sémája |
 
 <br>
 
@@ -104,11 +104,11 @@ A kérelem kimenet részletei az alábbiakban.
 #### <a name="response-action"></a>Válaszművelet
 Az alábbiakban a HTTP-válasz művelet beviteli mezőket. A * azt jelenti, hogy egy kötelező mező.
 
-| Megjelenített név | Tulajdonság neve | Leírás |
+| Display name | Tulajdonság neve | Leírás |
 | --- | --- | --- |
 | Állapot kód * |statusCode |A HTTP-állapotkód: |
 | Fejlécek |A fejlécek |Bármely közé tartozik a válaszfejlécek JSON-objektum |
-| Törzs |törzs |A válasz törzse |
+| Törzs |Törzs |A válasz törzse |
 
 ## <a name="next-steps"></a>További lépések
 Most, próbálja ki a platformot és [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb elérhető összekötők a logic apps megtekintésével megismerheti a [API-k listája](apis-list.md).

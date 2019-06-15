@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: ff822e87bfec5daa161172c0d47975eb06cc2808
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935644"
 ---
 # <a name="appsource-package-preparation"></a>AppSource Package Preparation
@@ -116,7 +116,7 @@ Itt látható példa kód input.xml. A definíciók lásd az alábbi táblázatb
 |Területi beállítások|Ebben a csomópontban az előnyben részesített megoldás UX a támogatni kívánt UX nyelvenként egy példánya Ez a csomópont tartalmazza, amelyek ismertetik a területi beállítás, a embléma és az egyes nyelvekhez gyermekek|
 |Területi beállítások: PackageLocale.Code|Ebben a csomópontban a nyelv LCID. Példa: Amerikai angol érték 1033|
 |Területi beállítások: PackageLocale.IsDefault|Azt jelzi, hogy ez az alapértelmezett nyelvet. Ez csökkenése használatos biztonsági nyelv, ha az ügyfél által választott UX nyelve nem érhető el.|
-|Területi beállítások: Embléma|Ez Ha az embléma szeretné a csomaghoz használni. Ikon mérete 32 x 32. Engedélyezett formátumok a következők PNG és JPG|
+|Területi beállítások: embléma|Ez Ha az embléma szeretné a csomaghoz használni. Ikon mérete 32 x 32. Engedélyezett formátumok a következők PNG és JPG|
 |Locales:Terms: PackageTerm.File|Ez a fájl nevét a HTML-dokumentumot, amely tartalmazza a licencfeltételeket.|
 
 Itt látható, ahol megjelenik a portálon:

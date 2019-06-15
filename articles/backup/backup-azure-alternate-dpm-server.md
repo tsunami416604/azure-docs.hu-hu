@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: kasinh
 ms.openlocfilehash: d1fb3434f0d3954a07980963866bcd7cce004379
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60650897"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Adatok helyreállítása az Azure Backup Serverről
@@ -65,7 +65,7 @@ Adatok helyreállítása az Azure Backup Server:
      Azonosítsa-e egy **értesítési** érkezik, a helyreállítás sikeres befejeződése után.
 
      ![Külső DPM-helyreállítási értesítések](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. A **összefoglalás** képernyő, amennyiben a kiválasztott beállítások listája. Miután rákattint **"Helyreállítása"**, a állítja helyre a rendszer a megfelelő helyszíni helyre.
+9. A **összefoglalás** képernyő, amennyiben a kiválasztott beállítások listája. Miután rákattint **"Helyreállítása"** , a állítja helyre a rendszer a megfelelő helyszíni helyre.
 
     ![Külső DPM-helyreállítási beállítások összegzése](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 

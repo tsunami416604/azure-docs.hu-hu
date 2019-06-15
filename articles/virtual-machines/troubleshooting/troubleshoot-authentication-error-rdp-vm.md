@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 47d3b827099d3a4a7520ac66765d2928795b6e49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60594926"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Hitelesítési hibák elhárítása Azure virtuális géphez csatlakozni RDP használatakor
@@ -83,7 +83,7 @@ Távolról csatlakozhat a virtuális Gépet, használja a módszer [táveszköz�
 
 ### <a name="group-policy-client-service"></a>Csoportházirend-ügyfél szolgáltatás
 
-Ha ez egy tartományhoz csatlakoztatott virtuális Gépet, először állítsa le a csoportházirend-ügyfél szolgáltatás megakadályozza, hogy minden olyan Active Directory-házirend módosítások felülírása. Ehhez futtassa az alábbi parancsot:
+Ha ez egy tartományhoz csatlakoztatott virtuális Gépet, először állítsa le a csoportházirend-ügyfél szolgáltatás megakadályozza, hogy minden olyan Active Directory-házirend módosítások felülírása. Ehhez futtassa a következő parancsot:
 
 ```cmd
 REM Disable the member server to retrieve the latest GPO from the domain upon start
@@ -204,13 +204,13 @@ A beállításazonosító alapján, kövesse az alábbi lépéseket:
 
 * 4 (FIPS): Lépjen a [ellenőrizze FIPS szabványnak megfelelő algoritmus kapcsolatok](#fips-compliant).
 
-* 3. (128 bites titkosítás): A súlyosság beállítása **2** a következő parancs futtatásával:
+* 3\. (128 bites titkosítás): A súlyosság beállítása **2** a következő parancs futtatásával:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2. (titkosítási lehető legmagasabb, az ügyfél által előírtaknak megfelelően): Próbálkozzon a titkosítás minimális értékét állítsa **1** a következő parancs futtatásával:
+* 2\. (titkosítási lehető legmagasabb, az ügyfél által előírtaknak megfelelően): Próbálkozzon a titkosítás minimális értékét állítsa **1** a következő parancs futtatásával:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f

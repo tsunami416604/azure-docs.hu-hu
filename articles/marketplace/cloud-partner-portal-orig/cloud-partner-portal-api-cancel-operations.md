@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 70ffd13be4ba934b423e3bb5344eea0a9c36886c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935551"
 ---
 # <a name="cancel-operation"></a>A művelet megszakítása 
@@ -28,8 +28,8 @@ A kérelem hozzá lehet adni e-mail címeket vesszővel tagolt listáját, és a
 |  **Name (Név)**    |      **Leírás**                                  |    **Adattípus**  |
 | ------------ |     ----------------                                  |     -----------   |
 | publisherId  |  Közzétevő azonosítója, például `contoso`         |   String          |
-| ajánlatazonosító      |  Ajánlat azonosítója                                     |   String          |
-| API-verzió  |  API jelenlegi verziója                               |    Dátum           |
+| offerId      |  Ajánlat azonosítója                                     |   String          |
+| api-version  |  API jelenlegi verziója                               |    Dátum           |
 |  |  |  |
 
 
