@@ -9,10 +9,10 @@ ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: 809c98c1e2e51ae51d7fe03f2165a5d9eecb05cc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64681803"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek a riasztási szabály
@@ -29,7 +29,7 @@ Webhook-műveletek az alábbi táblázatban szereplő tulajdonságok szükséges
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Webhook URL-címe |A webhook URL-címe |
+| Webhook URL |A webhook URL-címe |
 | Egyéni JSON-adattartalmat |Egyéni tartalom használatával küldhet a webhookot, ha ezt a lehetőséget választja a riasztás létrehozásakor. A részletek [riasztások kezelése](alerts-log.md) |
 
 > [!NOTE]

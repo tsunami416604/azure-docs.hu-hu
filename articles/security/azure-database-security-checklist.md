@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: 424453e70e5b62e408f408cd5ae8169cddb14dd7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62121691"
 ---
 # <a name="azure-database-security-checklist"></a>Azure database biztonsági ellenőrzőlista
@@ -34,7 +34,7 @@ Ezek a következők:
 -   Access management használata
 -   Adattitkosítás
 -   Az SQL Database naplózási funkciója
--   SQL Database-fenyegetések észlelése
+-   Az SQL Database fenyegetések észlelése
 
 ## <a name="introduction"></a>Bevezetés
 A felhőalapú számítástechnika új biztonsági paradigmákat, amely számos alkalmazás felhasználói számára, adatbázis-rendszergazdák és programozók ismeri igényel. Ennek eredményeképpen, amelyek végrehajtása egy felhő-infrastruktúra az észlelt biztonsági kockázatok miatt felügyeletéhez szívesen. Azonban nagy része a veszélyt elháríthatók, hogy a Microsoft Azure, Microsoft Azure SQL Database beépített biztonsági funkciók révén.

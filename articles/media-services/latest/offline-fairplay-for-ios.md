@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 58315e639a54b67bdef6751004b7a768e4f92224
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937513"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay Streaming iOS-hez 
@@ -48,7 +48,7 @@ Az iOS 10-es és újabb eszközön a fairplay rendszerhez megvalósítása offli
 * Tekintse át az online tartalom védelmét a fairplay rendszerhez: 
 
     - [Apple FairPlay-licencek követelményei és konfigurálása](fairplay-license-overview.md)
-    - [A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata](protect-with-drm.md)
+    - [DRM a dinamikus titkosítás és a licenc kézbesítési szolgáltatás használata](protect-with-drm.md)
     - Egy .NET-minta, amely tartalmazza az online FPS streamelési konfiguráció: [ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
 * Szerezze be a FPS SDK-t az Apple Developer Network. A FPS SDK két összetevőkből áll:
 

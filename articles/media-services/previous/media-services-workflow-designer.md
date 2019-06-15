@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako;johndeu;anilmur
 ms.openlocfilehash: 0ade52d3ae9714f2b370308253e455bcde7ac7a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60825132"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel  
@@ -46,7 +46,7 @@ Az alapértelmezett [munkafolyamatok közzétett](media-services-workflow-design
 A következő videók bemutatják, hogyan lehet a tervező.
 
 ### <a name="day-1--getting-started"></a>Naponta 1 – első lépések
-1. napi videó mutatja be:
+1\. napi videó mutatja be:
 
 * Modelltervező – áttekintés
 * Alapszintű munkafolyamatok – a "Hello World"
@@ -56,8 +56,8 @@ A következő videók bemutatják, hogyan lehet a tervező.
 > 
 > 
 
-### <a name="day-2"></a>2. napon
-2. napon a videó ismerteti:
+### <a name="day-2"></a>2\. napon
+2\. napon a videó ismerteti:
 
 * Különböző forrás fájlelérési helyzetben – hang kezelése
 * Fejlett logika munkafolyamatok

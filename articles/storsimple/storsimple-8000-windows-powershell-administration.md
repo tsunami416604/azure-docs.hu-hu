@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
 ms.openlocfilehash: 564c121aa90746498a94022fd0fb8d8529142c91
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64698400"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Eszköz felügyelete a storsimple-höz készült Windows PowerShell használatával
@@ -97,12 +97,12 @@ Az alábbi képen látható a különböző futási térben lehetőségek, amely
 
 A következő beállítások közül választhat:
 
-1. **Jelentkezzen be a teljes hozzáféréssel** Ez a beállítás lehetővé teszi, hogy csatlakozni (a szükséges hitelesítő adatokat), a **SSAdminConsole** futási térben a helyi tartományvezérlőn. (A helyi tartományvezérlő a tartományvezérlővel, amely jelenleg a StorSimple-eszköz soros konzolon keresztül Ön hozzáfér.) Ezt a lehetőséget is, hogy Support eléréséhez nem korlátozott futási térrel (egy támogatási munkamenetet) esetleges lehetséges problémák megoldásához használható. 1. lehetőség használatával jelentkezzen be, miután a Microsoft Support mérnök, nem korlátozott futási térrel eléréséhez egy adott parancsmag futtatásával engedélyezheti. Részletekért tekintse meg a [indítson el egy támogatási munkamenetet](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple).
+1. **Jelentkezzen be a teljes hozzáféréssel** Ez a beállítás lehetővé teszi, hogy csatlakozni (a szükséges hitelesítő adatokat), a **SSAdminConsole** futási térben a helyi tartományvezérlőn. (A helyi tartományvezérlő a tartományvezérlővel, amely jelenleg a StorSimple-eszköz soros konzolon keresztül Ön hozzáfér.) Ezt a lehetőséget is, hogy Support eléréséhez nem korlátozott futási térrel (egy támogatási munkamenetet) esetleges lehetséges problémák megoldásához használható. 1\. lehetőség használatával jelentkezzen be, miután a Microsoft Support mérnök, nem korlátozott futási térrel eléréséhez egy adott parancsmag futtatásával engedélyezheti. Részletekért tekintse meg a [indítson el egy támogatási munkamenetet](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple).
    
 2. **Jelentkezzen be a teljes hozzáféréssel rendelkező társ vezérlő** Ez a lehetőség ugyanaz, mint 1. lehetőség – akkor, azzal a különbséggel, hogy csatlakozhasson (a szükséges hitelesítő adatokat) a **SSAdminConsole** futási térben a társ-vezérlőn. Mivel a két vezérlőn egy aktív / passzív konfigurációt a magas rendelkezésre állású eszköz, a StorSimple-eszköz társ hivatkozik az eszköz soros konzolon keresztül elérő a másik vezérlőre).
    Hasonló az 1. lehetőség, ezt a lehetőséget is használható, hogy a Microsoft Support társ tartományvezérlőn nem korlátozott futási térrel eléréséhez.
 
-3. **Korlátozott hozzáférésű csatlakozás** ezzel a beállítással Windows PowerShell felületét korlátozott módban eléréséhez. Nem kéri a hozzáférési hitelesítő adatokat. Ez a beállítás 1. és 2 beállítások képest nagyobb korlátozott futási térrel csatlakozik.  1. lehetőség keresztül elérhető feladatokat, amelyek **nem* végezhető el a futási térben van:
+3. **Korlátozott hozzáférésű csatlakozás** ezzel a beállítással Windows PowerShell felületét korlátozott módban eléréséhez. Nem kéri a hozzáférési hitelesítő adatokat. Ez a beállítás 1. és 2 beállítások képest nagyobb korlátozott futási térrel csatlakozik.  1\. lehetőség keresztül elérhető feladatokat, amelyek **nem* végezhető el a futási térben van:
    
    * A gyári beállításainak visszaállítása
    * A jelszó módosítása

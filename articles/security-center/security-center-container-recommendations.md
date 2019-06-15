@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
 ms.openlocfilehash: 782c769bc7825dc9b6bd3ba3b8e36885bf150eaa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60705273"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Az Azure Security Center tároló kapcsolatos javaslatok megértése
@@ -32,11 +32,11 @@ Az Azure Security Center segítségével biztosíthatja a tárolókat az alábbi
     ![tároló lap](./media/security-center-container-recommendations/docker-recommendation.png)
 
 
-- **Biztonsági javaslatok alapján CIS referenciaalap dockerhez**<br>A Security Center megvizsgálja a Docker-konfigurációk, és azáltal, hogy az összes sikertelen szabályok sikeresen vizsgált konfigurációs hibáinak betekintést nyújt. A Security Center segít a problémák gyors megoldásához, és ezzel időt takaríthat vonatkozó útmutatást tartalmazza. A Security Center folyamatosan értékeli a Docker-konfigurációkat, és amelyről az állapotukat.
+- **Biztonsági javaslatok alapján CIS referenciaalap dockerhez**<br>A Security Center megvizsgálja a Docker-konfigurációkat, és egy listát készít az összes átvizsgált hibás szabályról, így láthatóvá teszi a konfigurációs hibákat. A Security Center segít a problémák gyors megoldásához, és ezzel időt takaríthat vonatkozó útmutatást tartalmazza. A Security Center folyamatosan értékeli a Docker-konfigurációkat, és tájékoztatja a legfrissebb állapotukról.
 
     ![tároló lap](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Valós idejű tároló fenyegetésészlelés**<br> A Security Center AuditD összetevővel Linuxos gépeken a tárolókhoz a valós idejű fenyegetésészlelés biztosít. A riasztások azonosítják a Docker gyanús tevékenységek például a gazdagépen, arra utalhat, hogy a Secure Shell (SSH) kiszolgáló belüli egy Docker-tárolót, vagy a titkosítási használja használatát egy emelt szintű tároló létrehozása. Ez az információ segítségével gyorsan biztonsági problémák elhárítására és a tárolók biztonságának fokozása érdekében.
+- **Valós idejű tároló fenyegetésészlelés**<br> A Security Center AuditD összetevővel Linuxos gépeken a tárolókhoz a valós idejű fenyegetésészlelés biztosít. A riasztások azonosítják a Docker gyanús tevékenységek például a gazdagépen, arra utalhat, hogy a Secure Shell (SSH) kiszolgáló belüli egy Docker-tárolót, vagy a titkosítási használja használatát egy emelt szintű tároló létrehozása. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
 
     ![tároló lap](./media/security-center-container-recommendations/docker-threat-detection.png)
 
@@ -45,13 +45,13 @@ Használja az alábbi táblázatokban referenciaként segítenek megérteni a re
 
 | Ajánlás | Leírás | Szervizelés |
 | --- | --- | --- |
-|Biztonsági rések javítása a tároló biztonsági konfigurációiban |A biztonsági rések tároló biztonsági konfigurációk alapján konfigurálási eljárásoknak megfelelő beállításában.| A biztonsági rések a tároló biztonsági konfigurációk:<br>1. Tekintse át a nem teljesített szabályok listáját.<br>2. Javítsa ki a szabályban megadott utasítások szerint.|
+|A biztonsági rések tároló biztonsági konfigurációk |A biztonsági rések tároló biztonsági konfigurációk alapján konfigurálási eljárásoknak megfelelő beállításában.| A biztonsági rések a tároló biztonsági konfigurációk:<br>1. Tekintse át a nem teljesített szabályok listáját.<br>2. Javítsa ki a szabályban megadott utasítások szerint.|
 
 
 ## <a name="next-steps"></a>További lépések
 Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
 
-* [Identitás és hozzáférés figyelése az Azure Security Centerben](security-center-identity-access.md)
+* [Identitás és hozzáférés az Azure Security Center figyelése](security-center-identity-access.md)
 * [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
 * [Az Azure SQL-szolgáltatás az Azure Security Center védelme](security-center-sql-service-recommendations.md)
 

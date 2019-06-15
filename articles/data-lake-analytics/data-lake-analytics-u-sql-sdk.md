@@ -9,10 +9,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
 ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813476"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Futtatása és tesztelése a U-SQL az Azure Data Lake U-SQL SDK-val
@@ -223,7 +223,7 @@ Az alábbiakban a nem kötelező argumentumok **végrehajtása**:
 
 Az alkalmazásprogramozási felület a LocalRunHelper.exe mappában találhatók. Integrálható a U-SQL SDK és a C# teszt keretrendszer méretezése a U-SQL parancsfájl helyi tesztelése működése használhatja őket. Ez a cikk e bemutatják, hogyan használhatja ezeket az adaptereket a U-SQL-parancsprogram teszteléséhez használja a szabványos C# egység tesztelő projektet.
 
-### <a name="step-1-create-c-unit-test-project-and-configuration"></a>1. lépés: Hozzon létre C# egység projekt és a konfiguráció tesztelése
+### <a name="step-1-create-c-unit-test-project-and-configuration"></a>1\. lépés: Hozzon létre C# egység projekt és a konfiguráció tesztelése
 
 - Hozzon létre egy C# egység tesztelő projektet fájl > Új > Projekt > Visual C# > tesztelése > egység tesztelése projekt.
 - LocalRunHelper.exe hozzáadása a projekt hivatkozásként. A LocalRunHelper.exe \build\runtime\LocalRunHelper.exe Nuget-csomagot a következő helyen található.
@@ -240,7 +240,7 @@ Az alkalmazásprogramozási felület a LocalRunHelper.exe mappában találhatók
 
 - Ellenőrizze, hogy a projekt munkakönyvtár, amely általában a ProjectFolder\bin\x64\Debug NugetPackage\build\runtime\ található összes függőséget fájlt másolja.
 
-### <a name="step-2-create-u-sql-script-test-case"></a>2. lépés: U-SQL parancsfájl tesztelési eset létrehozása
+### <a name="step-2-create-u-sql-script-test-case"></a>2\. lépés: U-SQL parancsfájl tesztelési eset létrehozása
 
 Az alábbi, a U-SQL parancsfájl tesztelési mintakódot. A vizsgálat, készítse elő a parancsfájlok, a bemeneti fájlok és a várt kimeneti fájlok kell.
 
@@ -346,8 +346,8 @@ nyilvános LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |CurrentDir|string|Aktuális címtár|
 |DataRoot|string|Adatok elérési útjának gyökeréhez|
 |DebuggerMailPath|string|A hibakereső mailslot elérési útja|
-|GenerateUdoRedirect|logikai|Szeretnénk szerelvénybetöltési átirányítás felülbírálás konfiguráció létrehozása|
-|HasCodeBehind|logikai|Ha a parancsfájl mögötti kódban|
+|GenerateUdoRedirect|bool|Szeretnénk szerelvénybetöltési átirányítás felülbírálás konfiguráció létrehozása|
+|HasCodeBehind|bool|Ha a parancsfájl mögötti kódban|
 |InputDir|string|Bemeneti adataihoz tartozó könyvtár|
 |MessagePath|string|Üzenet memóriakép-fájl elérési útja|
 |OutputDir|string|A kimeneti adatokat könyvtár|
@@ -356,7 +356,7 @@ nyilvános LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |ResultPath|string|Eredmény memóriakép-fájl elérési útja|
 |RuntimeDir|string|Futásidejű könyvtár|
 |ScriptPath|string|Hol találhatók a parancsprogram|
-|Sekély|logikai|Fordítási sekély, vagy sem|
+|Sekély|bool|Fordítási sekély, vagy sem|
 |TempDir|string|Átmeneti könyvtár|
 |UseDataBase|string|Adja meg az ideiglenes szerelvényregisztráló, alapértelmezés szerint fő háttérkód használni kívánt adatbázis|
 |WorkDir|string|Előnyben részesített munkakönyvtár|
@@ -364,7 +364,7 @@ nyilvános LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
 **Metódus**
 
-|Módszer|Leírás|Visszatérési érték|Paraméter|
+|Módszer|Leírás|a visszaadandó|Paraméter|
 |------|-----------|------|---------|
 |public bool DoCompile()|A U-SQL parancsfájl összeállítása|Sikeres művelet igaz| |
 |public bool DoExec()|Hajtsa végre a lefordított eredménye|Sikeres művelet igaz| |
@@ -374,7 +374,7 @@ nyilvános LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
 ## <a name="faq-about-common-issue"></a>Gyakori probléma – gyakori kérdések
 
-### <a name="error-1"></a>1. hiba:
+### <a name="error-1"></a>1\. hiba:
 E_CSC_SYSTEM_INTERNAL: Belső hiba! Nem sikerült betölteni a fájl vagy a "ScopeEngineManaged.dll" szerelvény vagy a hozzá tartozó függőségek egyike. A megadott modul nem található.
 
 Ellenőrizze a következőket:

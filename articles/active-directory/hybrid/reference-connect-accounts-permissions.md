@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919170"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
@@ -46,9 +46,9 @@ E három fiókok Azure AD Connect futtatásához használt mellett is szüksége
 
 - **Az Azure AD globális rendszergazdai fiókját**: az Azure AD-összekötő fiók létrehozása és konfigurálása az Azure ad-ben.
 
-- **SQL-rendszergazdai fiók (nem kötelező)**: SQL Server teljes verziójának használatakor az ADSync-adatbázis létrehozásához használt.  Az SQL-kiszolgáló helyi vagy távoli, az Azure AD Connect telepítés lehet.  Ez a fiók lehet ugyanazt a fiókot, a vállalati rendszergazda engedélyezte.  Most kiépítése az adatbázis is lehet az SQL-rendszergazda által sávon kívül végrehajtott és csak utána települ az Azure AD Connect rendszergazdája az adatbázis-tulajdonosi jogosultságok.  Kapcsolatos információkért lásd a [SQL meghatalmazott rendszergazdai engedélyek használatával telepítse az Azure AD Connect](how-to-connect-install-sql-delegation.md)
+- **SQL-rendszergazdai fiók (nem kötelező)** : SQL Server teljes verziójának használatakor az ADSync-adatbázis létrehozásához használt.  Az SQL-kiszolgáló helyi vagy távoli, az Azure AD Connect telepítés lehet.  Ez a fiók lehet ugyanazt a fiókot, a vállalati rendszergazda engedélyezte.  Most kiépítése az adatbázis is lehet az SQL-rendszergazda által sávon kívül végrehajtott és csak utána települ az Azure AD Connect rendszergazdája az adatbázis-tulajdonosi jogosultságok.  Kapcsolatos információkért lásd a [SQL meghatalmazott rendszergazdai engedélyek használatával telepítse az Azure AD Connect](how-to-connect-install-sql-delegation.md)
 
-## <a name="installing-azure-ad-connect"></a>Azure AD Connect telepítése
+## <a name="installing-azure-ad-connect"></a>Az Azure AD Connect telepítése
 Az Azure AD Connect telepítővarázsló két különböző elérési kínálja:
 
 * A Gyorsbeállítások használatához a varázsló további jogosultságokra van szüksége.  Ez azért szükséges, állíthat be a konfigurációt, anélkül, hogy a felhasználók létrehozása vagy -engedélyek konfigurálása.
@@ -80,7 +80,7 @@ Az AD DS-összekötő fiók jön létre olvasását és írását a Windows Serv
 | Olvasási/írási összes tulajdonságok iNetOrgPerson |Importálás és az Exchange hibrid |
 | Olvasási/írási csoportban az összes tulajdonság |Importálás és az Exchange hibrid |
 | Olvasási/írási forduljon az összes tulajdonság |Importálás és az Exchange hibrid |
-| Új jelszó létrehozása |Felkészülés a jelszóvisszaírás engedélyezése |
+| Másik jelszó kérése |Felkészülés a jelszóvisszaírás engedélyezése |
 
 ### <a name="express-installation-wizard-summary"></a>Az Expressz telepítés varázsló összefoglalás
 
@@ -129,7 +129,7 @@ A szükséges engedélyeket is kell rendelkeznie. A telepítővarázsló ellenő
 
 Engedélyezi a választható funkciókat függ, hogy milyen engedélyeket van szüksége. Ha több tartományom van, az erdőben lévő összes tartományban a engedélyt kell biztosítani. Ha nem engedélyezi az ezek a szolgáltatások, az alapértelmezett **tartományi felhasználó** elegendő.
 
-| Szolgáltatás | Engedélyek |
+| Funkció | Engedélyek |
 | --- | --- |
 | MS-DS-ConsistencyGuid funkció |Írási engedélyekkel az ms-DS-ConsistencyGuid attribútum dokumentált [tervezési alapelvei – az ms-DS-ConsistencyGuid használata sourceanchorként](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Jelszókivonat-szinkronizálás |<li>Címtárváltozások replikálása</li>  <li>Replikálás könyvtár összes változik |
@@ -146,7 +146,7 @@ Amikor frissít egy verziójáról az Azure AD Connect új kiadása, a következ
 >Build 1.1.484 verziótól kezdődően az Azure AD Connect bevezetett egy regressziós hiba, amely az SQL-adatbázis frissítéséhez rendszergazdai engedélyekkel kell rendelkeznie.  Build 1.1.647 javítja ezt a hibát.  Ha frissíti a buildre, szüksége lesz a sysadmin (rendszergazda) engedélyekkel.  Dbo engedélyek nem elegendőek.  Azure AD Connect frissítése a rendszergazdai engedélyek nélkül kísérli meg, ha a frissítés sikertelen lesz, és az Azure AD Connect már nem működik megfelelően, ezt követően.  A Microsoft tisztában, és dolgozik azon, hogy a probléma megoldása.
 
 
-| Rendszerbiztonsági tag | Szükséges engedélyek | Alkalmazási cél |
+| Egyszerű szolgáltatásnév | Szükséges engedélyek | Alkalmazási cél |
 | --- | --- | --- |
 | A felhasználó a telepítési varázsló futtatása |A helyi kiszolgáló rendszergazdája |Bináris fájlok frissítése. |
 | A felhasználó a telepítési varázsló futtatása |ADSyncAdmins tagja |Szinkronizálási szabályok és egyéb konfigurációs módosítások. |
@@ -154,7 +154,7 @@ Amikor frissít egy verziójáról az Azure AD Connect új kiadása, a következ
 
 ## <a name="more-about-the-created-accounts"></a>A létrehozott fiókokkal kapcsolatos további információkért
 ### <a name="ad-ds-connector-account"></a>Az AD DS-összekötő fiók
-Ha a gyorsbeállítások használata, majd egy fiókot az Active Directoryban, a szinkronizáláshoz használt jön létre. A létrehozott fiókot az erdő gyökértartományának a felhasználók a tárolóban található, és rendelkezik a neve előtaggal van ellátva **MSOL_**. A fiók létrejön egy hosszú összetett jelszót, amely nem jár le. Ha olyan jelszóházirendet a tartományban van, győződjön meg arról, hogy hosszú és összetett jelszavak szeretne engedélyezni ehhez a fiókhoz.
+Ha a gyorsbeállítások használata, majd egy fiókot az Active Directoryban, a szinkronizáláshoz használt jön létre. A létrehozott fiókot az erdő gyökértartományának a felhasználók a tárolóban található, és rendelkezik a neve előtaggal van ellátva **MSOL_** . A fiók létrejön egy hosszú összetett jelszót, amely nem jár le. Ha olyan jelszóházirendet a tartományban van, győződjön meg arról, hogy hosszú és összetett jelszavak szeretne engedélyezni ehhez a fiókhoz.
 
 ![AD-fiók](./media/reference-connect-accounts-permissions/adsyncserviceaccount.png)
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
 ms.openlocfilehash: 5bb5f39ef5f5bce09a8639ba9eedc6d042e60c1d
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942352"
 ---
 # <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 Customer Engagement-alkalmazás Tesztverziós lap
@@ -54,7 +54,7 @@ Ha a mezők rendelkezik a következő célokra.  Kötelező mezőt csillag (*) r
 
 |      Mező                    |    Leírás                  |
 |    ---------                  |  ---------------                |
-| Test Drive típusa\*            | Válasszon **Microsoft üzemeltetett (Dynamics 365 for Customer Engagement)**.  |
+| Test Drive típusa\*            | Válasszon **Microsoft üzemeltetett (Dynamics 365 for Customer Engagement)** .  |
 | Max. egyidejű tesztverziók\*    | Egy aktív Test Drive time lekérdezhet egyidejű példányainak számát. Minden felhasználó fog felhasználni a Dynamics-licenc, amíg a Test Drive aktív, így biztosíthatja, hogy a felhasználók a Test Drive legalább ennyi Dynamics licenceket kell. Ajánlott érték 3 – 5.  |
 | Tesztelje a meghajtó időtartama (óra)\*   | Órák maximális száma a felhasználó Test Drive-példány lesz aktív. Miután ez az időszak túllépése esetén a példány – a bérlőről figyelmeztetés megszüntetésről. Javasolt érték 2 – 24 óra alkalmazásához összetettségétől függően. A felhasználó mindig kérheti egy másik Test Drive, ha elfogy a ideje, és újra ki kell számítani.  |
 | Példány URL-címe\*                  | URL-cím a Test Drive először nyitja meg. Ez általában a Dynamics 365-példány, amelyen az alkalmazás URL-CÍMÉT és mintaadatok telepítve.  |

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
 ms.openlocfilehash: 0d7c792c5230a5d82e97f4598a5dcfb864cead74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60861175"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Az alapszintű nyilvános Load Balancer az Azure Monitor naplóira
@@ -62,7 +62,7 @@ A megadott tárfiók diagnosztikai menti a Table Storage. Ha a naplókat a rends
 > [!NOTE]
 > Auditnaplók nem igényel külön tárfiókot. A használati esemény- és egészségügyi tárhelyet mintavételi naplózási szolgáltatás díjat számolunk.
 
-## <a name="audit-log"></a>Napló
+## <a name="audit-log"></a>Auditnapló
 
 Alapértelmezés szerint a napló jön létre. A naplók az Azure-eseménynaplók áruházbeli 90 napig megőrződnek. További információ a naplók olvassa el a [és naplók megtekintése, események](../monitoring-and-diagnostics/insights-debugging-with-events.md) cikk.
 

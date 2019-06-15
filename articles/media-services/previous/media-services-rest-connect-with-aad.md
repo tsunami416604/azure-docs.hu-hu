@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: willzhan;juliako;johndeu
 ms.openlocfilehash: 6284a1aa0cc3a49291553309b058e4d9f65b24c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64701017"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Az Azure AD-hitelesítés használata a Media Services API REST-tel eléréséhez
@@ -63,7 +63,7 @@ Media Services API eléréséhez kell gyűjtenie a következő adatpontokhoz.
 
 |Beállítás|Példa|Leírás|
 |---|-------|-----|
-|Azure Active Directory-bérlői tartomány|microsoft.onmicrosoft.com|Az Azure AD-végpontként Secure Token Service (STS) jön létre a következő formátumban: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Az Azure AD kibocsát egy JWT (hozzáférési jogkivonat) erőforrások eléréséhez.|
+|Az Azure Active Directory-bérlői tartomány|microsoft.onmicrosoft.com|Az Azure AD-végpontként Secure Token Service (STS) jön létre a következő formátumban: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Az Azure AD kibocsát egy JWT (hozzáférési jogkivonat) erőforrások eléréséhez.|
 |REST API-végpont|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Ez az a végpont elleni melyik összes Media Services REST API hívások az alkalmazásban végrehajtott.|
 |Ügyfél-azonosító (Alkalmazásazonosító)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Az Azure AD-alkalmazás (ügyfél) azonosítója. A hozzáférési jogkivonat beszerzése az ügyfél-azonosító szükséges. |
 |Titkos ügyfélkulcs|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Az Azure AD alkalmazás kulcsainak (ügyfél titkos kódot). A hozzáférési jogkivonat lekérése szükséges az ügyfél titkos kulcsát.|

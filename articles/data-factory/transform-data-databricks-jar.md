@@ -13,10 +13,10 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: d299a785d50657ef40c0c49cb2dce33b8939fd02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60860985"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Adatok átalakítása egy Jar tevékenység futtatja az Azure Databricksben
@@ -58,12 +58,12 @@ A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulaj
 
 |Tulajdonság|Leírás|Szükséges|
 |:--|---|:-:|
-|név|A folyamat a tevékenység neve.|Igen|
+|name|A folyamat a tevékenység neve.|Igen|
 |description|A tevékenység leírása leíró szöveg.|Nem|
 |type|Databricks Jar tevékenységhez a tevékenység típus DatabricksSparkJar.|Igen|
 |linkedServiceName|A Jar-tevékenység fut, amelyen a Databricks társított szolgáltatás neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.|Igen|
 |mainClassName|Az osztály, amely tartalmazza a fő módszert hajtható végre teljes neve. Ez az osztály egy JAR kódtárként megadott tartalmaznia kell.|Igen|
-|paraméterek|A fő metódusnak átadott paraméterek.  Ez a karakterláncok tömbje.|Nem|
+|parameters|A fő metódusnak átadott paraméterek.  Ez a karakterláncok tömbje.|Nem|
 |Kódtárak|Telepíteni a fürt, amely végrehajtja a feladat a könyvtárak listáját. Álló tömb lehet < karakterlánc, objektum >|Igen (legalább egy tartalmazó mainClassName módszer)|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks-tevékenységek támogatott kódtárak

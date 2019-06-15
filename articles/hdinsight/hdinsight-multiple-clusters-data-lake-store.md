@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: b580890b1663aa6ce742443e927e4d760585d4ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700294"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Több HDInsight-fürt használata az Azure Data Lake Storage-fiók
@@ -36,9 +36,9 @@ Ahhoz, hogy a HDInsight-fürtök által ténylegesen használt mappaszerkezet, a
 
 |Mappa  |Engedélyek  |Tulajdonos felhasználó  |Tulajdonoscsoport  | Nevesített felhasználó | Névvel ellátott felhasználói engedélyek | Nevesített csoportra | Elnevezett biztonságicsoport-engedélyeit |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |admin |admin  |Szolgáltatásnév |--x  |FINGRP   |r-x         |
-|/Clusters | rwxr-x--x |admin |admin |Szolgáltatásnév |--x  |FINGRP |r-x         |
-|/ fürtök/Pénzügy | rwxr-x--t |admin |FINGRP  |Szolgáltatásnév |rwx  |-  |-     |
+|/ | rwxr-x--x  |admin |admin  |Egyszerű szolgáltatás |--x  |FINGRP   |r-x         |
+|/Clusters | rwxr-x--x |admin |admin |Egyszerű szolgáltatás |--x  |FINGRP |r-x         |
+|/ fürtök/Pénzügy | rwxr-x--t |admin |FINGRP  |Egyszerű szolgáltatás |rwx  |-  |-     |
 
 A tábla
 
@@ -50,14 +50,14 @@ Hogyan hozhat létre egy AAD-alkalmazás (amely szintén létrehoz egy egyszerű
 
 Néhány alapvető szempontokat kell figyelembe venni.
 
-- A két szint mappastruktúra (**/fürtök/pénzügyi/**) kell létrehozni és a megfelelő engedélyekkel a Data Lake Storage rendszergazda által üzembe helyezett **előtt** fürtök esetén a tárfiók használatával. Ez a struktúra nem jön automatikusan fürtök létrehozása során.
+- A két szint mappastruktúra ( **/fürtök/pénzügyi/** ) kell létrehozni és a megfelelő engedélyekkel a Data Lake Storage rendszergazda által üzembe helyezett **előtt** fürtök esetén a tárfiók használatával. Ez a struktúra nem jön automatikusan fürtök létrehozása során.
 - A fenti példa javasolja a tulajdonoscsoportját beállítás **/fürtök/pénzügyi** , **FINGRP** lehetővé tevő és **r-x** FINGRP hozzáférést a teljes mappát hierarchiába indítása a legfelső szintű. Ez biztosítja, hogy FINGRP tagjai navigálhat a gyökérmappa-szerkezetében kezdve a legfelső szintű.
 - Abban az esetben, ha különböző AAD-szolgáltatásnevek hozhat létre alá tartozó fürtök **/fürtök/pénzügyi**, a ragadós (ha van beállítva a a **pénzügyi** mappa) biztosítja, hogy a mappák létrehozása egy szolgáltatásnév nem lehet törölni a többi.
-- A mappastruktúra és az engedélyek vannak érvényben, ha HDInsight-fürt létrehozását létrehoz egy fürtre jellemző tárolási helyére **/fürtök/pénzügyi/**. A név fincluster01 a fürthöz a tároló lehet például **/clusters/finance/fincluster01**. A tulajdonosi és a HDInsight-fürt által létrehozott mappákra vonatkozó engedélyek Itt a táblázatban látható.
+- A mappastruktúra és az engedélyek vannak érvényben, ha HDInsight-fürt létrehozását létrehoz egy fürtre jellemző tárolási helyére **/fürtök/pénzügyi/** . A név fincluster01 a fürthöz a tároló lehet például **/clusters/finance/fincluster01**. A tulajdonosi és a HDInsight-fürt által létrehozott mappákra vonatkozó engedélyek Itt a táblázatban látható.
 
     |Mappa  |Engedélyek  |Tulajdonos felhasználó  |Tulajdonoscsoport  | Nevesített felhasználó | Névvel ellátott felhasználói engedélyek | Nevesített csoportra | Elnevezett biztonságicsoport-engedélyeit |
     |---------|---------|---------|---------|---------|---------|---------|---------|
-    |/Clusters/finanace/fincluster01 | rwxr-x---  |Egyszerű szolgáltatás |FINGRP  |- |-  |-   |-  | 
+    |/Clusters/finanace/fincluster01 | rwxr-x---  |Szolgáltatásnév |FINGRP  |- |-  |-   |-  | 
    
 
 
@@ -88,7 +88,7 @@ Ezeket a beállításokat egy adott HDInsight használati eset a rögzített ér
 A YARN JIRA társított korábban, miközben nyilvános erőforrások, azaz az a lokalizáló azt ellenőrzi, hogy a kért erőforrások nyilvánosak valóban az engedélyeit a távoli fájlrendszerben ellenőrzésével. Bármely, amely nem felel meg a feltételhez LocalResource a honosításra elutasítva. A jelölőnégyzet engedélyeket, az "egyéb" magában foglalja a fájl írásvédett. Ebben a forgatókönyvben nem működik – a – beépített üzemeltetése az Azure Data Lake a HDInsight-fürtök, mivel az Azure Data Lake minden megtagadja "egyéb" esetén legfelső szintű mappa szintjén.
 
 #### <a name="workaround"></a>Áthidaló megoldás
-Set olvasási-végrehajtási engedélyeket **mások** a hierarchián keresztül, például **/**, **/fürtök** és   **/fürtök/pénzügyi** a fenti táblázatban látható módon.
+Set olvasási-végrehajtási engedélyeket **mások** a hierarchián keresztül, például **/** , **/fürtök** és   **/fürtök/pénzügyi** a fenti táblázatban látható módon.
 
 ## <a name="see-also"></a>Lásd még
 

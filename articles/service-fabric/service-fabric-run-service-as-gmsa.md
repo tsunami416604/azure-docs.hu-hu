@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.openlocfilehash: 5c3781c2111fff7483a7fb65bd7b2e69c2011d18
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837742"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Szolgáltatás futtatása csoportosan felügyelt szolgáltatásfiókként
 Egy Windows Server önálló fürtön egy szolgáltatás csoportosan felügyelt szolgáltatásfiókok (gMSA) futtató házirend segítségével is futtathatja.  Alapértelmezés szerint Service Fabric-alkalmazásokat, amely a Fabric.exe folyamatban fut, a fiók alatt fut. Futó alkalmazások a különböző fiókok, még akkor is, a közös üzemeltetési környezetben teszi őket egy biztonságosabb. Vegye figyelembe, hogy az Active Directory a helyszíni tartomány és a nem az Azure Active Directory (Azure AD) használja. Csoportosan felügyelt szolgáltatásfiókot használ, nincs jelszót vagy az alkalmazásjegyzékben tárolt titkosított jelszót.  Szolgáltatásként is futtathatja egy [Active Directory-felhasználó vagy csoport](service-fabric-run-service-as-ad-user-or-group.md).
 
-Az alábbi példa bemutatja, hogyan hozhat létre csoportosan felügyelt szolgáltatásfiókok nevű *svc-tesztelési$*; a fürtcsomópontok; központi telepítése a felügyelt szolgáltatásfiókok, és hogyan konfigurálhatja az egyszerű felhasználónév.
+Az alábbi példa bemutatja, hogyan hozhat létre csoportosan felügyelt szolgáltatásfiókok nevű *svc-tesztelési$* ; a fürtcsomópontok; központi telepítése a felügyelt szolgáltatásfiókok, és hogyan konfigurálhatja az egyszerű felhasználónév.
 
 Előfeltételek:
 - A tartományhoz kell KDS-gyökérkulcs.

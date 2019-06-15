@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.openlocfilehash: 673f4935dce28b30c10e6abf4c7d22e00c1dd73a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60762202"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Az Azure Stream Analytics tools for Visual Studio telepítése
@@ -43,7 +43,7 @@ Engedélyezze a **Azure-fejlesztési** számítási feladat látható módon:
 * Telepítse a Microsoft Azure SDK for .NET 2.7.1-es vagy újabb használatával a [webplatform-telepítő](https://www.microsoft.com/web/downloads/platform.aspx).
 * Telepítés [Azure Stream Analytics tools for Visual Studio](https://www.microsoft.com/en-us/download/details.aspx?id=49504).
 
-## <a name="update"></a>Frissítés
+## <a name="update"></a>frissítés
 
 ### <a name="visual-studio-2019-and-2017"></a>Visual Studio 2019 and 2017
 Az új verzió emlékeztető megjelenik-e a Visual Studio értesítést.

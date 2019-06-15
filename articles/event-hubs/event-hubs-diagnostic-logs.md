@@ -17,18 +17,18 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60822354"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Állítsa be az Azure event hub diagnosztikai naplók
 
 Az Azure Event hubs két típusú naplók tekintheti meg:
 
-* **[A Tevékenységnaplók](../azure-monitor/platform/activity-logs-overview.md)**: Ezek a naplók rendelkezik egy feladat végrehajtott műveletekkel kapcsolatos információk. A naplók mindig engedélyezve van.
-* **[Diagnosztikai naplók](../azure-monitor/platform/diagnostic-logs-overview.md)**: A feladat minden, a egy részletesebb nézet, amely akkor fordul elő, a diagnosztikai naplók segítségével konfigurálhat. Diagnosztikai naplók cover tevékenységek a feladat jön létre, amíg a feladat törli, beleértve a frissítéseket és a tevékenységek a feladat futása közben előforduló kezdve.
+* **[A Tevékenységnaplók](../azure-monitor/platform/activity-logs-overview.md)** : Ezek a naplók rendelkezik egy feladat végrehajtott műveletekkel kapcsolatos információk. A naplók mindig engedélyezve van.
+* **[Diagnosztikai naplók](../azure-monitor/platform/diagnostic-logs-overview.md)** : A feladat minden, a egy részletesebb nézet, amely akkor fordul elő, a diagnosztikai naplók segítségével konfigurálhat. Diagnosztikai naplók cover tevékenységek a feladat jön létre, amíg a feladat törli, beleértve a frissítéseket és a tevékenységek a feladat futása közben előforduló kezdve.
 
 ## <a name="enable-diagnostic-logs"></a>Diagnosztikai naplók engedélyezése
 

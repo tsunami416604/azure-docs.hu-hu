@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: afd8e6b47fb86985acde062af1fb38ec3af4e902
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60711422"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Telepítse és konfigurálja a MongoDB egy Windows virtuális gépen az Azure-ban
@@ -47,7 +47,7 @@ Telepítése és konfigurálása a MongoDB, a kezdéshez [jelentkezzen be a Wind
      
      ![Az Internet Explorer biztonsági beállítások konfigurálása](./media/install-mongodb/configure-internet-explorer-security.png)
 4. Keresse meg a [MongoDB - letöltések](https://www.mongodb.com/downloads) lap (https://www.mongodb.com/downloads).
-5. Ha szükséges, válassza ki a **Community Server** edition, és válassza ki a legújabb aktuális stabil kibocsátási*Windows Server 2008 R2 64 bites és újabb verziók*. A telepítő letöltéséhez kattintson **letöltése (msi)**.
+5. Ha szükséges, válassza ki a **Community Server** edition, és válassza ki a legújabb aktuális stabil kibocsátási*Windows Server 2008 R2 64 bites és újabb verziók*. A telepítő letöltéséhez kattintson **letöltése (msi)** .
    
     ![Töltse le a MongoDB-telepítő](./media/install-mongodb/download-mongodb.png)
    

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.openlocfilehash: 0cf5aa45e1e8a28dfcdadac0ea32658e5993d06c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60591671"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>A terheléselosztás több IP-konfiguráció az Azure portal használatával
@@ -58,7 +58,7 @@ Több hálózati adapterrel rendelkező virtuális gépek létrehozásával kapc
 
 Fejezze be a következő lépésekkel érhető el a következő cikkben ismertetett forgatókönyvet.
 
-### <a name="step-1-configure-the-secondary-nics"></a>1. lépés: Konfigurálja a másodlagos hálózati adapterekhez
+### <a name="step-1-configure-the-secondary-nics"></a>1\. lépés: Konfigurálja a másodlagos hálózati adapterekhez
 
 Az egyes virtuális Gépekhez a virtuális hálózaton adja hozzá a másodlagos hálózati adapter IP-konfiguráció:  
 
@@ -82,7 +82,7 @@ Az egyes virtuális Gépekhez a virtuális hálózaton adja hozzá a másodlagos
 
 A második IP-konfiguráció után a másodlagos hálózati adapter van végzett, megjelenik a **IP-konfigurációk** beállításait az adott hálózati adapteren.
 
-### <a name="step-2-create-the-load-balancer"></a>2. lépés: A terheléselosztó létrehozása
+### <a name="step-2-create-the-load-balancer"></a>2\. lépés: A terheléselosztó létrehozása
 
 A terheléselosztó a konfiguráció létrehozása:
 
@@ -98,7 +98,7 @@ A terheléselosztó a konfiguráció létrehozása:
 
 A terheléselosztó üzembe helyezéséhez elindul. Üzembe helyezés eltarthat néhány perc alatt sikeresen befejeződik. Üzembe helyezés befejezése után a terheléselosztó az erőforráscsoportban erőforrásként jelenik meg.
 
-### <a name="step-3-configure-the-front-end-ip-pool"></a>3. lépés: Az előtérbeli IP-címkészlet konfigurálása
+### <a name="step-3-configure-the-front-end-ip-pool"></a>3\. lépés: Az előtérbeli IP-címkészlet konfigurálása
 
 Minden olyan webhelyhez (contoso.com és fabrikam.com) adja meg a terheléselosztó előtérbeli IP-címkészlet:
 
@@ -130,7 +130,7 @@ Minden olyan webhelyhez (contoso.com és fabrikam.com) adja meg a terheléselosz
 
 Az előtérkészlet konfigurálása után az IP-címek jelennek meg a terheléselosztó alatt **előtérbeli IP-konfiguráció** beállításait. 
     
-### <a name="step-4-configure-the-back-end-pool"></a>4. lépés: A háttérkészlet konfigurálása
+### <a name="step-4-configure-the-back-end-pool"></a>4\. lépés: A háttérkészlet konfigurálása
 
 Minden olyan webhelyhez (contoso.com és fabrikam.com) a háttér-címkészletet konfigurálja a terheléselosztó:
         
@@ -156,7 +156,7 @@ Minden olyan webhelyhez (contoso.com és fabrikam.com) a háttér-címkészletet
 
 A háttérkészlet-beállítások konfigurálása után a címek jelennek meg a terheléselosztó alatt **háttérkészlet** beállításait.
 
-### <a name="step-5-configure-the-health-probe"></a>5. lépés: Az állapotadat-mintavétel konfigurálása
+### <a name="step-5-configure-the-health-probe"></a>5\. lépés: Az állapotadat-mintavétel konfigurálása
 
 Adja meg a terheléselosztó egy állapotminta:
 
@@ -168,7 +168,7 @@ Adja meg a terheléselosztó egy állapotminta:
 
 4. Adjon meg egy nevet az állapotminta (például **HTTP**). Kattintson az **OK** gombra.
 
-### <a name="step-6-configure-load-balancing-rules"></a>6. lépés: Terheléselosztási szabályok konfigurálása
+### <a name="step-6-configure-load-balancing-rules"></a>6\. lépés: Terheléselosztási szabályok konfigurálása
 
 Minden olyan webhelyhez (contoso.com és fabrikam.com) a terheléselosztási szabályok konfigurálása:
     
@@ -188,7 +188,7 @@ Minden olyan webhelyhez (contoso.com és fabrikam.com) a terheléselosztási sza
 
 A szabályok konfigurálása után, a terheléselosztó területen megjelenített **terheléselosztási szabályok** beállításait.
 
-### <a name="step-7-configure-dns-records"></a>7. lépés: DNS-rekordok konfigurálása
+### <a name="step-7-configure-dns-records"></a>7\. lépés: DNS-rekordok konfigurálása
 
 Utolsó lépésként konfigurálja a DNS-erőforrásrekordok a terheléselosztó megfelelő előtér-IP-címekre mutassanak. You can host your domains in Azure DNS. Azure DNS használata a Load Balancer kapcsolatos további információkért lásd: [Azure DNS használata más Azure-szolgáltatásokkal](../dns/dns-for-azure-services.md).
 

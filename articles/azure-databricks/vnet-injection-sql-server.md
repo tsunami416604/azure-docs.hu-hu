@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 345e07fac30f4ad0c8e9918cb8a1ff0fb8aeb811
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60770789"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Oktatóanyag: A lekérdezés egy SQL Server Linux Docker-tárolót egy virtuális hálózaton lévő az Azure Databricks-jegyzetfüzet
@@ -64,8 +64,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     
     |Beállítás|Ajánlott érték|Leírás|
     |-------|---------------|-----------|
-    |Forrás|IP-címek|IP-címek Megadja, hogy egy adott forrás IP-cím lesz engedélyezett vagy letiltott Ez a szabály érkező bejövő forgalmat.|
-    |Forrás IP-címek|< a nyilvános IP-cím\>|Adja meg a a nyilvános IP-címet. Látogasson el a nyilvános IP-cím megkereséséhez [bing.com](https://www.bing.com/) kifejezésre való kereséssel **"saját IP-cím"**.|
+    |source|IP-címek|IP-címek Megadja, hogy egy adott forrás IP-cím lesz engedélyezett vagy letiltott Ez a szabály érkező bejövő forgalmat.|
+    |Forrás IP-címek|< a nyilvános IP-cím\>|Adja meg a a nyilvános IP-címet. Látogasson el a nyilvános IP-cím megkereséséhez [bing.com](https://www.bing.com/) kifejezésre való kereséssel **"saját IP-cím"** .|
     |Forrásporttartományok|*|Bármely porton érkező adatforgalom engedélyezéséhez.|
     |Cél|IP-címek|IP-címek megadja a kimenő forgalmat egy adott forrás IP-cím lesz engedélyezett vagy letiltott a szabály által.|
     |Destination IP addresses|< a virtuális gép nyilvános IP-cím\>|Adja meg a virtuális gép nyilvános IP-címet. A megtalálhatja a **áttekintése** a virtuális gép oldalán.|
@@ -80,7 +80,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     |Beállítás|Ajánlott érték|Leírás|
     |-------|---------------|-----------|
-    |Forrás|IP-címek|IP-címek Megadja, hogy egy adott forrás IP-cím lesz engedélyezett vagy letiltott Ez a szabály érkező bejövő forgalmat.|
+    |source|IP-címek|IP-címek Megadja, hogy egy adott forrás IP-cím lesz engedélyezett vagy letiltott Ez a szabály érkező bejövő forgalmat.|
     |Forrás IP-címek|10.179.0.0/16|Adja meg a címtartományt a virtuális hálózat.|
     |Forrásporttartományok|*|Bármely porton érkező adatforgalom engedélyezéséhez.|
     |Cél|IP-címek|IP-címek megadja a kimenő forgalmat egy adott forrás IP-cím lesz engedélyezett vagy letiltott a szabály által.|

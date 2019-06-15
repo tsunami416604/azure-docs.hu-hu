@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
 ms.openlocfilehash: 87bdfcc827155e5dd0a02ffb1640bf7e9cd4e479
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60859124"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Hitelesítés és engedélyezés az Azure App Service-mobilalkalmazásokhoz
@@ -53,7 +53,7 @@ Ha nem szeretne egy SDK-szolgáltató beállítása, a Mobile Apps szolgáltatá
 Ez a folyamat elindításához a kód a hitelesítési oktatóanyagának az egyes platformokra vonatkozó tartalmazza. A folyamat végén az ügyfél-SDK tartalmaz egy App Service-tokent, és a jogkivonat automatikusan csatlakozik az alkalmazás háttérrendszerével minden kérelemhez.
 
 A hitelesítési folyamat további információkért lásd: [App Service-hitelesítési folyamat](../app-service/overview-authentication-authorization.md#authentication-flow). 
-## <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További források
 
 Az alábbi oktatóanyagok bemutatják, hogyan hitelesítés hozzáadása a mobil ügyfélprogramok használatával a [kiszolgáló által vezérelt folyamat](../app-service/overview-authentication-authorization.md#authentication-flow):
 

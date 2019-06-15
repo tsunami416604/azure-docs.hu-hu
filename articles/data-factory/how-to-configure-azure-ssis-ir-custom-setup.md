@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: cfa9d6a1a287281bec91facf04c73506db81f84a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711568"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>A telepítő az Azure-SSIS integrációs modul testreszabása
@@ -66,7 +66,7 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
 1. Töltse le, telepítse és indítsa el a [Azure Storage Explorer](https://storageexplorer.com/).
 
-   1. A **(helyi és csatolt)**, a jobb gombbal válassza **Tárfiókok** válassza **csatlakozás az Azure storage**.
+   1. A **(helyi és csatolt)** , a jobb gombbal válassza **Tárfiókok** válassza **csatlakozás az Azure storage**.
 
       ![Csatlakozás az Azure Storage-hoz](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
@@ -122,7 +122,7 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
 1. Példák az egyéb egyéni beállítás, a nyilvános előzetes verzióban tárolóhoz, az Azure Storage Explorer csatlakoztatása.
 
-   a.  Alatt **(helyi és csatolt)**, kattintson a jobb gombbal **Tárfiókok**válassza **csatlakozás az Azure storage**, jelölje be **kapcsolati karakterlánc vagy közös hozzáférésű jogosultságkód URI Azonosítójának**, majd válassza ki **tovább**.
+   a.  Alatt **(helyi és csatolt)** , kattintson a jobb gombbal **Tárfiókok**válassza **csatlakozás az Azure storage**, jelölje be **kapcsolati karakterlánc vagy közös hozzáférésű jogosultságkód URI Azonosítójának**, majd válassza ki **tovább**.
 
       ![Csatlakozás az Azure storage és a közös hozzáférésű jogosultságkód igénylése](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 

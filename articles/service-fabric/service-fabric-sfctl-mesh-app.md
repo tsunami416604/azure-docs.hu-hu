@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: fb812412c7dd07800c1e2231c9472a122ab7d7d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837283"
 ---
 # <a name="sfctl-mesh-app"></a>sfctl mesh alkalmazás
@@ -29,7 +29,7 @@ Töltse le és alkalmazás-erőforrások törlése.
 |Parancs|Leírás|
 | --- | --- |
 | delete | Az alkalmazás-erőforrás törlése. |
-| lista | Az alkalmazás-erőforrások listája. |
+| list | Az alkalmazás-erőforrások listája. |
 | Show | Lekérdezi a megadott nevű alkalmazás-erőforrás. |
 
 ## <a name="sfctl-mesh-app-delete"></a>sfctl-háló alkalmazás törlése

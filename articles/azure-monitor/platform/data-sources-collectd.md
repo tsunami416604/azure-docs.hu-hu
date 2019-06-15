@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
 ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764944"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Összegyűjtött adatok gyűjtésére a Linux-ügynökök az Azure monitorban
@@ -95,7 +95,7 @@ Az alábbiakban az összegyűjtött adatok gyűjtésének konfigurálása az Azu
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
 
     >[!NOTE]
-    >5.5-ös összegyűjtött verziókban kell a címkék módosításához `oms.conf` jelennek meg.
+    >5\.5-ös összegyűjtött verziókban kell a címkék módosításához `oms.conf` jelennek meg.
     >
 
 2. Collectd.conf a kívánt munkaterület omsagent konfigurációs könyvtárba másolja.
@@ -114,7 +114,7 @@ Egy jól ismert modell között már a Linuxhoz készült Log Analytics-ügynök
 |:--|:--|
 | `host` | Computer |
 | `plugin` | None |
-| `plugin_instance` | Példány neve<br>Ha **plugin_instance** van *null* majd InstanceName = "*_Total*" |
+| `plugin_instance` | Példány neve<br>Ha **plugin_instance** van *null* majd InstanceName = " *_Total*" |
 | `type` | Objektumnév |
 | `type_instance` | CounterName<br>Ha **type_instance** van *null* majd CounterName =**üres** |
 | `dsnames[]` | CounterName |

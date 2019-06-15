@@ -16,10 +16,10 @@ ms.date: 08/24/2018
 ms.author: mahender,cephalin
 ms.custom: seodec18
 ms.openlocfilehash: d914e3ad3043b2671e154d1616c6800f34415c11
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60835600"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
@@ -108,7 +108,7 @@ Az alábbi táblázat a hitelesítési folyamat lépéseit.
 | Lépés | Szolgáltatói SDK nélkül | SDK-szolgáltatóval |
 | - | - | - |
 | 1. A bejelentkezési felhasználói | Átirányítja az ügyfelet, hogy `/.auth/login/<provider>`. | Ügyfélkód felhasználó jelentkezik be közvetlenül a szolgáltató SDK-val, és a egy hitelesítési tokent kap. Információ a szolgáltató dokumentációjában talál. |
-| 2. Utóhitelesítés | Szolgáltató átirányítja az ügyfelet, hogy `/.auth/login/<provider>/callback`. | Ügyfélkód [szolgáltatótól származó jogkivonat bejegyzések](app-service-authentication-how-to.md#validate-tokens-from-providers) való `/.auth/login/<provider>` ellenőrzés céljából. |
+| 2. Hitelesítés utáni | Szolgáltató átirányítja az ügyfelet, hogy `/.auth/login/<provider>/callback`. | Ügyfélkód [szolgáltatótól származó jogkivonat bejegyzések](app-service-authentication-how-to.md#validate-tokens-from-providers) való `/.auth/login/<provider>` ellenőrzés céljából. |
 | 3. Hitelesített munkamenet létrehozása | App Service-ben hitelesített cookie ad választ. | App Service-ben a saját hitelesítési jogkivonat ügyféloldali kódot ad vissza. |
 | 4. Hitelesített tartalmat szolgálnak ki | Ügyfél hitelesítési cookie-k tartalmazza (a böngésző automatikusan kezeli) későbbi kérelmeket. | Ügyfélkód megadja a hitelesítési jogkivonat `X-ZUMO-AUTH` (automatikusan kezeli a Mobile Apps-ügyfél SDK-k) fejléc. |
 
@@ -132,7 +132,7 @@ Válassza ezt a lehetőséget, ha már nincs szüksége, hitelesítési és enge
 
 ### <a name="allow-only-authenticated-requests"></a>Csak hitelesített kérések engedélyezése
 
-A beállítás **bejelentkezés a következővel \<szolgáltató >**. Az App Service összes névtelen kérelem átirányítja `/.auth/login/<provider>` , válassza ki a szolgáltató. Ha a névtelen kérelem érkezik egy natív mobilalkalmazásból, van-e a visszaadott válasz egy `HTTP 401 Unauthorized`.
+A beállítás **bejelentkezés a következővel \<szolgáltató >** . Az App Service összes névtelen kérelem átirányítja `/.auth/login/<provider>` , válassza ki a szolgáltató. Ha a névtelen kérelem érkezik egy natív mobilalkalmazásból, van-e a visszaadott válasz egy `HTTP 401 Unauthorized`.
 
 Ezzel a beállítással nem kell hitelesítési kód írása az alkalmazásban. Kifinomultabb engedélyezési, például a szerepkör-specifikus engedélyezési, tudja kezelni vizsgálatával szerezheti be a felhasználói jogcímek (lásd: [eléréséhez a felhasználói jogcímek](app-service-authentication-how-to.md#access-user-claims)).
 
@@ -142,7 +142,7 @@ A beállítás **engedélyezése névtelen kérelmek**. Ezt a beállítást kapc
 
 Ez a beállítás a névtelen kérelmek kezelése nagyobb rugalmasságot nyújt. Ha például lehetővé teszi, hogy [található több bejelentkezési szolgáltatók](app-service-authentication-how-to.md#use-multiple-sign-in-providers) a felhasználók számára. Azonban a kódot kell írnia. 
 
-## <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További források
 
 [Oktatóanyag: Hitelesítés és engedélyezés felhasználóknak-végpontok az Azure App Service-ben (Windows)](app-service-web-tutorial-auth-aad.md)  
 [Oktatóanyag: Hitelesítése és engedélyezése a felhasználók teljes körű az Azure App Service Linux rendszeren](containers/tutorial-auth-aad.md)  

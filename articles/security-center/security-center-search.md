@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 6cbf3d70bd835ce1b838b19c93507f7d9487a418
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90dbb33fa516d3a831d4e60969ac6b6c8312d539
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332610"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64574140"
 ---
 # <a name="azure-security-center-search"></a>Az Azure Security Center keresési
+
+> [!NOTE]
+> A Security Center Search-irányítópultján a 2019. július 31-én megszűnik. További információkat és más szolgáltatások: [a Security Center nyugdíjazási szolgáltatásokat (július 2019)](security-center-features-retirement-july2019.md#menu_search).
+
 Használja az Azure Security Center [Azure Monitor naplózza a keresési](../log-analytics/log-analytics-log-searches.md) lekérésére és a biztonsági adatok elemzéséhez. Az Azure Monitor naplóira lekérdezési nyelv segítségével gyorsan és vonhat össze adatokat tartalmaz. A Security Centerből kihasználhatja az Azure Monitor naplók keresési lekérdezéseket hozhat létre, és elemezheti az összegyűjtött adatokat.
 
 Keresés az ingyenes szint és a Standard szintű Security Centerben érhető el.  Elérhető a naplókeresések a adat szolgáltatás függ a alkalmazni a munkaterülethez réteg szerinti szintjére.  Tekintse meg a Security Center [díjszabását ismertető lapon](../security-center/security-center-pricing.md) további információt.
@@ -39,13 +43,13 @@ Keresés az ingyenes szint és a Standard szintű Security Centerben érhető el
 
 2. A Security Center az összes munkaterület alatt az Azure-előfizetések sorolja fel. Jelöljön ki egy munkaterületet. (Ha csak egy munkaterületet, a munkaterület-választó nem jelenik meg.)
 
-   ![Válasszon munkaterületet][2]
+   ![Válasszon ki egy munkaterületet][2]
 
 3. **Naplóbeli keresés** nyílik meg. A kijelölt munkaterület alatt további adatokat kérhet, adja meg a példa lekérdezés:
 
    SecurityEvent |} ahol eseményazonosító 4625-ös számú == |} count() by TargetAccount összefoglalója
 
-   Eredmény látható összes fiókot, amely nem sikerült a bejelentkezés (4625-ös számú esemény).
+   Eredmény látható összes fiókot, amely nem sikerült bejelentkezni (4625-ös számú esemény).
 
    ![Keresési eredmények][3]
 

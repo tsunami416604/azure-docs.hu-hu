@@ -4,18 +4,17 @@ description: Kódminták adatok művelet művelet definíciók az Azure Logic Ap
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
-ms.author: v-yiso
+ms.author: estfan
 manager: jeconnoc
 ms.topic: reference
-origin.date: 07/25/2018
-ms.date: 12/10/2018
+ms.date: 07/25/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 8de70e8df50b79f27c19c74307d9321ff8cd1eb5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128549"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Adatok művelet kódja minták az Azure Logic Apps
@@ -96,7 +95,7 @@ Szeretné kipróbálni a [ **összeállítás** művelet példa](../logic-apps/l
 
 <a name="create-csv-table-action-example"></a>
 
-## <a name="create-csv-table"></a>CSV-tábla létrehozása
+## <a name="create-csv-table"></a>CSV-táblázat létrehozása
 
 Szeretné kipróbálni a [ **CSV-táblázat létrehozása** művelet példa](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action), az alábbiakban a művelet-definíciók is használhatja:
 
@@ -141,7 +140,7 @@ Szeretné kipróbálni a [ **CSV-táblázat létrehozása** művelet példa](../
 
 <a name="create-html-table-action-example"></a>
 
-## <a name="create-html-table"></a>HTML-tábla létrehozása
+## <a name="create-html-table"></a>HTML-táblázat létrehozása
 
 Szeretné kipróbálni a [ **HTML-táblázat létrehozása** művelet példa](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action), az alábbiakban a művelet-definíciók is használhatja:
 

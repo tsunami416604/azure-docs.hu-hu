@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
 ms.openlocfilehash: 728a2f8cf61bbe0691350b9de45a5fab6b90cadb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60563069"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Egy Azure által felügyelt identitás hitelesítésére és egy Azure container registry használata 
@@ -106,7 +106,7 @@ Kövesse a [Azure CLI telepítése az Apt használatával](/cli/azure/install-az
 
 Lépjen ki az SSH-munkamenetből.
 
-## <a name="example-1-access-with-a-user-assigned-identity"></a>1. példa: Hozzáférés egy felhasználó által hozzárendelt identitással
+## <a name="example-1-access-with-a-user-assigned-identity"></a>1\. példa: Hozzáférés egy felhasználó által hozzárendelt identitással
 
 ### <a name="create-an-identity"></a>Hozzon létre egy azonosítót
 
@@ -182,7 +182,7 @@ Megjelenik egy `Login succeeded` üzenet. Ezután futtassa a `docker` parancsok 
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 
-## <a name="example-2-access-with-a-system-assigned-identity"></a>2. példa Hozzáférés a rendszer által hozzárendelt identitással
+## <a name="example-2-access-with-a-system-assigned-identity"></a>2\. példa Hozzáférés a rendszer által hozzárendelt identitással
 
 ### <a name="configure-the-vm-with-a-system-managed-identity"></a>Konfigurálja a virtuális Gépet egy rendszer által felügyelt identitással
 

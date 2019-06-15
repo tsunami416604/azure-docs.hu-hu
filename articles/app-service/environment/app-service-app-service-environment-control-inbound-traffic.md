@@ -16,15 +16,15 @@ ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 84575dcb67845a074ce19cf9d819e1dda3f90e20
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130789"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Az App Service-környezet bejövő forgalom szabályozása
 ## <a name="overview"></a>Áttekintés
-Az App Service-környezet hozható létre **vagy** egy Azure Resource Managerbeli virtuális hálózat **vagy** klasszikus telepítési modell [virtuális hálózat] [ virtualnetwork].  App Service-környezet létrehozásakor egy új virtuális hálózat és egy új alhálózatot kell meghatározni.  Azt is megteheti App Service-környezet is létrehozható egy már meglévő virtuális hálózat és a meglévő alhálózat.  2016. június egyik módosítását az ASE is üzembe helyezhetők a címtartomány nyilvános, vagy az RFC1918 címterek (azaz a magánhálózati címek) használó virtuális hálózatokra.  További részleteket az App Service-környezet létrehozása [App Service-környezet létrehozása][HowToCreateAnAppServiceEnvironment].
+Az App Service-környezet hozható létre **vagy** egy Azure Resource Managerbeli virtuális hálózat **vagy** klasszikus telepítési modell [virtuális hálózat] [ virtualnetwork].  App Service-környezet létrehozásakor egy új virtuális hálózat és egy új alhálózatot kell meghatározni.  Azt is megteheti App Service-környezet is létrehozható egy már meglévő virtuális hálózat és a meglévő alhálózat.  2016\. június egyik módosítását az ASE is üzembe helyezhetők a címtartomány nyilvános, vagy az RFC1918 címterek (azaz a magánhálózati címek) használó virtuális hálózatokra.  További részleteket az App Service-környezet létrehozása [App Service-környezet létrehozása][HowToCreateAnAppServiceEnvironment].
 
 App Service-környezet mindig belül kell létrehoznia egy alhálózathoz, mert az alhálózat biztosít egy hálózathatárt, amely zárolhat rétegbeli eszközök és szolgáltatások mögötti bejövő forgalmat, hogy az adott csak elfogadja a HTTP és HTTPS-forgalom használható felsőbb rétegbeli IP-címeket.
 

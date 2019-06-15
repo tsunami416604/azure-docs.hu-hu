@@ -16,10 +16,10 @@ ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
 ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60853066"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató csomópont-alkalmazásokhoz az Azure App Service Windows
@@ -276,7 +276,7 @@ Sikertelen kérelmek Eseménytárolási win32 hibakód megtekintéséhez az alka
 
 NODE.exe van egy nevű beállítás `NODE_PENDING_PIPE_INSTANCES`. Az Azure App Service-ben ez az érték 5000-es értéke. Ami azt jelenti, hogy node.exe is 5000-es kérelmek fogadásához egy időben a nevesített cső. Ez az érték esetén a legtöbb csomópont-alkalmazásokhoz az Azure App Service-ben futó használatos kell lennie. Nem kell megjelennie 503.1003 az Azure App Service nagy értéke miatt a `NODE_PENDING_PIPE_INSTANCES`
 
-## <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További források
 
 Az alábbi hivatkozásokból tudhat meg többet az Azure App Service node.js-alkalmazások.
 

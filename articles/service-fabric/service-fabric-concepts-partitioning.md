@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/30/2017
 ms.author: atsenthi
 ms.openlocfilehash: 833d87dab59890b9903ea8eecf2334d7dd1c7436
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60711892"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>A Service Fabric reliable services particionálása
@@ -28,7 +28,7 @@ Ez a cikk mutatja be az Azure Service Fabric reliable services particionálása 
 A particionálás nem egyedi a Service Fabric. Ez valójában egy alapvető szerkezet méretezhető szolgáltatások. Tágabb értelemben azt gondolja át a particionálás egy osztani állapota (adatok) fogalmát és számítási méretezhetőséget és a teljesítmény javítása érdekében kisebb elérhető egységekbe. Egy jól ismert űrlap particionálás [adatparticionálás][wikipartition], más néven horizontális skálázás.
 
 ### <a name="partition-service-fabric-stateless-services"></a>A Service Fabric állapotmentes szolgáltatások partíció
-Az állapotmentes szolgáltatások esetében is gondolja folyamatban van egy logikai egységet, a szolgáltatás egy vagy több példányt tartalmazó partíció. 1. ábra állapotmentes szolgáltatás öt példányban elosztva a több partíciót egy fürtöt mutat be.
+Az állapotmentes szolgáltatások esetében is gondolja folyamatban van egy logikai egységet, a szolgáltatás egy vagy több példányt tartalmazó partíció. 1\. ábra állapotmentes szolgáltatás öt példányban elosztva a több partíciót egy fürtöt mutat be.
 
 ![Az állapotmentes szolgáltatás](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
@@ -48,7 +48,7 @@ A folyamat, amely meghatározza, hogy egy adott szolgáltatás partíció felel�
 Hogy egy példa, tegyük fel, hogy először a egy 5 csomópontos fürt és a egy szolgáltatás, amely 10 partíciók és a egy cél összesen három replikapéldány van konfigurálva. Ebben az esetben a Service Fabric elosztása és a replikák szét a fürt és lenne kialakított két elsődleges [replikák](service-fabric-availability-services.md) csomópontonkénti.
 Ha most szeretné a 10 csomópont-fürt horizontálisan, a Service Fabric lenne újraegyensúlyozására az elsődleges [replikák](service-fabric-availability-services.md) minden 10 csomópont között. Hasonlóan ha vissza az 5 csomópont van ellátva, a Service Fabric lenne újraegyensúlyozására minden replika 5 csomópontjai között.  
 
-2. ábra 10 partíciók előtt és után a fürt méretezése elosztását mutatja.
+2\. ábra 10 partíciók előtt és után a fürt méretezése elosztását mutatja.
 
 ![Állapotalapú szolgáltatás](./media/service-fabric-concepts-partitioning/partitions.png)
 
@@ -59,7 +59,7 @@ Egy szolgáltatás-k megvalósítása előtt minden esetben fontolja meg a szük
 
 Egy jó módszer, gondolja át az állapot, amely lehet particionálni első lépéseként meg kell a struktúra.
 
-Vessünk egy egyszerű példa. Ha egy szolgáltatás megye kiterjedő voksát egy szavazáson hozhat létre, létrehozhat egy partíció mindegyik városhoz a megyét. Ezután minden egyes személy számára a szavazatok tárolhatja az a partíció, amely megfelel a várost az városa. 3. ábra azt szemlélteti, személyek és a város, amelyben található.
+Vessünk egy egyszerű példa. Ha egy szolgáltatás megye kiterjedő voksát egy szavazáson hozhat létre, létrehozhat egy partíció mindegyik városhoz a megyét. Ezután minden egyes személy számára a szavazatok tárolhatja az a partíció, amely megfelel a várost az városa. 3\. ábra azt szemlélteti, személyek és a város, amelyben található.
 
 ![Egyszerű partíció](./media/service-fabric-concepts-partitioning/cities.png)
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 5a3724729f85b7917b1559ce2ac3d859881e0de8
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935143"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>A cloud partner Portalon felhasználók kezelése
@@ -22,17 +22,17 @@ A Cloud Partner portálra szerepköralapú hozzáféréssel rendelkező felhaszn
 
 A **felhasználók hozzáadása és szerepkörök hozzárendelése** ajánlat közzététele, kövesse az alábbi lépéseket:
 
-<a name="step-1-to-add-users-and-assign-roles-click-the-users-tab-on-the-left-side-navigation-pane"></a>1. lépés Felhasználók hozzáadása és a szerepkörök hozzárendelésére, kattintson a felhasználók lapon a bal oldali navigációs ablaktáblán.
+<a name="step-1-to-add-users-and-assign-roles-click-the-users-tab-on-the-left-side-navigation-pane"></a>1\.lépés Felhasználók hozzáadása és a szerepkörök hozzárendelésére, kattintson a felhasználók lapon a bal oldali navigációs ablaktáblán.
 --------------------------------------------------------------------------------------------
 
 ![Felhasználók lapra](./media/cloud-partner-portal-how-to-manage-users/userstab.png)
 
-<a name="step-2-click-add-user"></a>2. lépés Kattintson a felhasználó hozzáadása.
+<a name="step-2-click-add-user"></a>2\.lépés Kattintson a felhasználó hozzáadása.
 -----------------------
 
 ![Felhasználó hozzáadása kiválasztása](./media/cloud-partner-portal-how-to-manage-users/adduser.png)
 
-<a name="step-3-type-email-address-and-select-a-role-assignment"></a>3. lépés Írja be az e-mail címet, és válassza ki a szerepkör-hozzárendelés.
+<a name="step-3-type-email-address-and-select-a-role-assignment"></a>3\. lépés. Írja be az e-mail címet, és válassza ki a szerepkör-hozzárendelés.
 --------------------------------------------------------
 
 A "tulajdonos" vagy "közreműködői" új felhasználót is hozzáadhat.
@@ -50,7 +50,7 @@ o győződjön meg arról, hogy az e-mail a Cloud Partner portálra szóló azon
 
 Jelenleg csak a tulajdonosok az Insights lapjait Azure kifizetések és az Azure-ügyfelek hozzáférhetnek.
 
-<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>4. lépés Válassza ki a közzétevő neve szeretné hozzáadni az új felhasználót, majd a Hozzáadás gombra kattintva fejezze be a felhasználó hozzáadása.
+<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>4\. lépés. Válassza ki a közzétevő neve szeretné hozzáadni az új felhasználót, majd a Hozzáadás gombra kattintva fejezze be a felhasználó hozzáadása.
 ----------------------------------------------------------------------------------------------------------------------------
 
 > [!NOTE]

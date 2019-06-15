@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
 ms.openlocfilehash: ac0edf2de4337154b665b8f3898134a7c2fd1f4c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64712398"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Részletes bemutatása – speciális elemzés
@@ -23,7 +23,7 @@ HDInsight lehetővé teszi a nagy mennyiségű strukturált és strukturálatlan
 
 ## <a name="advanced-analytics-process"></a>Fejlett analitikai folyamat
 
-![Feldolgozás](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![Process](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
 
 Után, az üzleti probléma azonosítása és gyűjtése elindította, és az adatok feldolgozása, létrehoz egy modellt, amely a kérdést kell előre jelezni kívánt. A modell egy vagy több gépi tanulási algoritmusok használatával győződjön meg a legjobban az Ön üzleti igényeinek előrejelzése típusát.  A legtöbb az adatokat a modell betanításához teszteléséhez vagy kiértékeléséhez, a többi használandó. 
 
@@ -46,7 +46,7 @@ A legjobban záró aránytól kiválasztásával, valamint kell érdemes-e meg k
 | Algoritmus kategória| Használat | Tanulási típusa | Algoritmusok |
 | --- | --- | --- | -- |
 | Besorolás | Személyek vagy dolgot besorolása csoportokba | Csak felügyelt eszköz | Döntési fákat, a logisztikai regressziós, a Neurális hálózatokkal |
-| Fürtözés | Példák készletét osztásával homogén csoportokba | Felügyeletlen | K-közép-fürtözés |
+| Fürtszolgáltatás | Példák készletét osztásával homogén csoportokba | Felügyeletlen | K-közép-fürtözés |
 | A minta észlelése | Az adatok gyakran társítások azonosítása | Felügyeletlen | Társítási szabályok |
 | Regresszió | Numerikus eredmények előrejelzése | Csak felügyelt eszköz | Lineáris regresszió, a Neurális hálózatokkal |
 | Megerősítése | A robotok optimális viselkedés meghatározása | Megerősítése | Monte Carlo Simulations, DeepMind |

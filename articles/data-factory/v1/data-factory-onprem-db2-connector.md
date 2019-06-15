@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60824014"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Adatok áthelyezése az Azure Data Factory másolási tevékenység használatával DB2
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-onprem-db2-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-db2.md)
 
@@ -79,7 +79,7 @@ A következő szakaszok konkrétan egy DB2-adattárat a Data Factory-entitások 
 ## <a name="db2-linked-service-properties"></a>DB2-beli társított szolgáltatás tulajdonságai
 Az alábbi táblázat jellemző egy DB2-beli társított szolgáltatás JSON-tulajdonságokat.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **type** |Ezt a tulajdonságot állítsa **OnPremisesDb2**. |Igen |
 | **server** |A DB2-kiszolgáló neve. |Igen |
@@ -104,9 +104,9 @@ A szakaszok és másolási tevékenységek definiálását tulajdonságok listá
 
 A másolási tevékenység, ha a forrás típusa **RelationalSource** (amely tartalmazza a DB2), a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| **Lekérdezés** |Az egyéni lekérdezés használata az adatok olvasásához. |SQL-lekérdezési karakterláncot. Például:`"query": "select * from "MySchema"."MyTable""` |Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
+| **query** |Az egyéni lekérdezés használata az adatok olvasásához. |SQL-lekérdezési karakterláncot. Például:`"query": "select * from "MySchema"."MyTable""` |Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
 
 > [!NOTE]
 > Séma-és tábla-és nagybetűk. A lekérdezési utasítás az idézőjelek közé kell tenni a tulajdonságnevek használatával "" (dupla idézőjel).
@@ -319,19 +319,19 @@ A következő hozzárendeléseket használják, amikor a másolási tevékenysé
 | Numeric |Decimal |
 | Dátum |DateTime |
 | Time |TimeSpan |
-| Időbélyeg |DateTime |
+| Timestamp |DateTime |
 | Xml |Byte[] |
-| char |String |
+| Char |String |
 | VarChar |String |
 | LongVarChar |String |
 | DB2DynArray |String |
 | binary |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Kép |String |
+| Graphic |String |
 | VarGraphic |String |
 | LongVarGraphic |String |
-| CLOB |String |
+| Clob |String |
 | Blob |Byte[] |
 | DbClob |String |
 | SmallInt |Int16 |
@@ -345,9 +345,9 @@ A következő hozzárendeléseket használják, amikor a másolási tevékenysé
 | Numeric |Decimal |
 | Dátum |DateTime |
 | Time |TimeSpan |
-| Időbélyeg |DateTime |
+| Timestamp |DateTime |
 | Xml |Byte[] |
-| char |String |
+| Char |String |
 
 ## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
 A forrásadatkészlet oszlopok leképezése a fogadó-adatkészlet az oszlopok kapcsolatban lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).

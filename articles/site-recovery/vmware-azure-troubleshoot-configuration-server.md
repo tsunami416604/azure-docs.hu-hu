@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: f08d7bb2087ef4f30b325b3796a13e387ccdea22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60725567"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Konfigurációs kiszolgáló hibáinak elhárítása
@@ -53,7 +53,7 @@ A forrásgép a konfigurációs kiszolgálót regisztrálja a mobilitási ügyn�
     c. Nyissa meg a Installation_Directory/Fx/uninstall.sh fájlt, és tegye megjegyzésbe a teljes szakasz-e a Fx szolgáltatás leállításához.
     d. [Távolítsa el](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) a mobilitási ügynök. A sikeres eltávolítása után indítsa újra a rendszert, és próbálja meg újra a mobilitási ügynök.
 
-## <a name="installation-failure-failed-to-load-accounts"></a>Telepítési hiba: A fiókok betöltése nem sikerült
+## <a name="installation-failure-failed-to-load-accounts"></a>Telepítési hiba: Fiókok betöltése nem sikerült
 
 Ez a hiba akkor fordul elő, ha a szolgáltatás nem tudja olvasni az átviteli kapcsolatból származó adatokat, amikor a mobilitási ügynök telepítése, és regisztrálja a konfigurációs kiszolgálóval. A probléma megoldásához, győződjön meg arról, hogy a TLS 1.0 engedélyezve van-e a forrásgépen.
 

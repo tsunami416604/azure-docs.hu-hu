@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 4d854aef62af1004faacf73c11bb417cf508a727
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64727140"
 ---
 # <a name="azure-maps-supported-categories"></a>Az Azure Maps támogatott kategóriák
@@ -45,7 +45,7 @@ Amikor egy [kategória keresési](https://docs.microsoft.com/rest/api/maps/searc
 | COLLEGE\_UNIVERSITY | beosztott főiskolák és egyéb felsőoktatási intézmények, főiskolai és egyetemi, főiskolák, egyetem előkészítő iskola, university |
 | COMMERCIAL\_BUILDING | épület, kereskedelmi park központ létrehozása |
 | KÖZÖSSÉGI\_CENTER | közösségi center |
-| VÁLLALAT | adózási Electronics, gyártási, a számítógép adatszolgáltatások, közegészségügyi technológiák, változatos financials, állat megóvja, légitársaság, berendezések bérleti, szolgáltatás, levelezési/csomag/árufuvarozási kézbesítési, busz sorok, otthoni készülék javítása, szolgáltatások, oem, tisztítása szolgáltatások, olaj, gáz, jogi szolgáltatások, konstrukció, telekommunikációs, átviteli, autó gyártási, chemicals, temetési szolgáltatás mortuaries, híd alagút műveletek, automobile, gépi mérnöki csapathoz, szolgáltatások, befektetés-tanácsadók hirdetés/marketing, áthelyezése a storage, megtakarítás intézmény, biztosítási, számítógépes szoftverek, pharmaceuticals, vendéglátás, lakodalmát szolgáltatások, mezőgazdasági technológia, ingatlan, taxi, limousine shuttle szolgáltatás busz-bérleti bérlését, adatbányászati, közzététele technológiák, kábel telefonon, importálási/exportálási terjesztési, vállalati, menedékjog, szén mine(s), estate(s), brewery cégeknél, gold mine(s) |
+| VÁLLALATI | adózási Electronics, gyártási, a számítógép adatszolgáltatások, közegészségügyi technológiák, változatos financials, állat megóvja, légitársaság, berendezések bérleti, szolgáltatás, levelezési/csomag/árufuvarozási kézbesítési, busz sorok, otthoni készülék javítása, szolgáltatások, oem, tisztítása szolgáltatások, olaj, gáz, jogi szolgáltatások, konstrukció, telekommunikációs, átviteli, autó gyártási, chemicals, temetési szolgáltatás mortuaries, híd alagút műveletek, automobile, gépi mérnöki csapathoz, szolgáltatások, befektetés-tanácsadók hirdetés/marketing, áthelyezése a storage, megtakarítás intézmény, biztosítási, számítógépes szoftverek, pharmaceuticals, vendéglátás, lakodalmát szolgáltatások, mezőgazdasági technológia, ingatlan, taxi, limousine shuttle szolgáltatás busz-bérleti bérlését, adatbányászati, közzététele technológiák, kábel telefonon, importálási/exportálási terjesztési, vállalati, menedékjog, szén mine(s), estate(s), brewery cégeknél, gold mine(s) |
 | COURTHOUSE | courthouse |
 | KULTURÁLIS\_CENTER | kulturális központ |
 | DENTIST | dentist |

@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 3f8e46f063d3e725e2174fd907169f3e0167586a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60836945"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh titkos kódjának értéke
@@ -29,7 +29,7 @@ GET és delete háló secretvalue erőforrásokat.
 |Parancs|Leírás|
 | --- | --- |
 | delete | A megadott értéket az elnevezett titkos erőforrás törlése. |
-| lista | Az összes érték a megadott titkos erőforrás nevét. |
+| list | Az összes érték a megadott titkos erőforrás nevét. |
 | Show | Kérje le az értéket, a titkos erőforrás adott verzióját. |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl-háló secretvalue delete

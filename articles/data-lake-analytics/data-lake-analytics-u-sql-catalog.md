@@ -10,10 +10,10 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: conceptual
 ms.date: 05/09/2017
 ms.openlocfilehash: a6faa7037ccbacc0547401dd52bb3b19abd1c474
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813348"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>A U-SQL katalógus az Azure Data Lake Analytics használatának első lépései
@@ -108,7 +108,7 @@ OUTPUT @res
     USING Outputters.Csv();
 ```
 
-## <a name="create-tables"></a>Táblázatok létrehozása
+## <a name="create-tables"></a>Táblák létrehozása
 Relációs adatbázis-táblákkal, U-SQL-lel is hozzon létre egy táblát egy előre definiált sémával, vagy hozzon létre egy táblát, amely kikövetkezteti a használandó sémát a lekérdezésből, amelyek a tábla (más néven CREATE TABLE AS SELECT vagy a CTAS) tölti fel.
 
 Hozzon létre egy adatbázis és a két táblázatot a következő parancsfájl használatával:

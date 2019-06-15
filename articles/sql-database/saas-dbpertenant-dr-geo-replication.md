@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: b6f0d25f621768f79e8262f38617152e91692a23
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62129862"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Egy több-bérlős SaaS-alkalmazás, adatbázis-replikációval geo-vészhelyreállítás
@@ -90,7 +90,7 @@ Később egy különálló hazatelepítési lépésben átadja a feladatokat az 
 ## <a name="review-the-healthy-state-of-the-application"></a>Az alkalmazás kifogástalan állapotának áttekintése
 
 A helyreállítási folyamat megkezdése előtt tekintse át az alkalmazás normál kifogástalan állapotát.
-1. A böngészőben nyissa meg a Wingtip Tickets Eseményközpontot (http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net - cserélje le &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel).
+1. A böngészőben nyissa meg a Wingtip Tickets Eseményközpontot (http://events.wingtip-dpt.&lt ; felhasználó&gt;. trafficmanager.net - cserélje le &lt; felhasználói&gt; az üzemelő példány felhasználói értékkel).
     * Görgessen a lap aljára, és figyelje meg, hogy a katalógus-kiszolgáló nevét és helyét a láblécben. A hely az a régió, amelyben az alkalmazás üzembe helyezésekor.
     *TIPP: Vigye az egérmutatót megjelenítéséhez nagyítsa fel a helyet. * 
      ![Események központ megfelelő állapotba eredeti régióban](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
@@ -207,7 +207,7 @@ Az alkalmazás végpont le van tiltva a Traffic Managerben, amíg az alkalmazás
  
      ![Eseményközpont offline](media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
-   * Ha közvetlenül egy offline bérlői események lapot megnyitni, "offline bérlői" értesítést jelenít meg. Ha például a Contoso Concert Hall offline állapotban, ha megpróbálja megnyitni http://events.wingtip-dpt.&lt; felhasználó&gt;.trafficmanager.net/contosoconcerthall ![Contoso Offline lap](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
+   * Ha közvetlenül egy offline bérlői események lapot megnyitni, "offline bérlői" értesítést jelenít meg. Ha például a Contoso Concert Hall offline állapotban, ha megpróbálja megnyitni http://events.wingtip-dpt.&lt ; felhasználó&gt;.trafficmanager.net/contosoconcerthall ![ Contoso Offline lap](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
 
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>A helyreállítási régióban új bérlő kiépítése
 A meglévő bérlői adatbázisok rendelkezik a feladatátvétel előtt is telepíthet az új bérlők számára a helyreállítási régióban.  
@@ -256,7 +256,7 @@ Ebben a feladatban frissítenie a bérlői adatbázisok közül.
 2. Az a *PowerShell ISE-ben*, Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájl ...\Learning állítsa be a következő értéket:
     * **$DemoScenario = 5** esemény a helyreállítási régióban egy bérlő törlése
 3. Nyomja meg **F5** a szkript
-4. Frissítse a Contoso Concert Hall események lapot (http://events.wingtip-dpt.&lt; felhasználó&gt;.trafficmanager.net/contosoconcerthall - helyettesítse &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel), és figyelje meg, hogy az utolsó esemény törölve lett.
+4. Frissítse a Contoso Concert Hall események lapot (http://events.wingtip-dpt.&lt ; felhasználó&gt;.trafficmanager.net/contosoconcerthall - helyettesítse &lt; felhasználói&gt; az üzemelő példány felhasználói értékkel), és figyelje meg, hogy az utolsó esemény törölve lett.
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>Az alkalmazás az eredeti éles régióba települni
 
@@ -289,7 +289,7 @@ Most tegyük fel, hogy a szolgáltatáskimaradás elhárítása után fog állni
     * Nyomja meg **F5** egy új PowerShell-ablakban a helyreállítási szkript futtatásához.  Hazatelepítési több percet vesz igénybe, és a PowerShell-ablakban figyelhető.
     ![Hazatelepítési folyamat](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
-4. A parancsfájl futása közben az események Eseményközpontba oldal frissítése (http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net)
+4. A parancsfájl futása közben az események Eseményközpontba oldal frissítése (http://events.wingtip-dpt.&lt ; felhasználó&gt;. trafficmanager.net)
     * Figyelje meg, hogy a bérlők számára online állapotúak és elérhetők a folyamat során.
 
 5. Áll befejezése után frissítse az eseményközpontot, és nyissa meg az események Hawthorn Hall lapját. Figyelje meg, hogy az adatbázis az eredeti régióba fogalommeghatározás-e.

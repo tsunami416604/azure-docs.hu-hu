@@ -13,10 +13,10 @@ ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 80d2e995a18a2d6dafbb8d92fdd5996b10eab17c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60783738"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch parancssori felületi sablonjainak és fájlátviteli
@@ -285,7 +285,7 @@ az batch file download --file-group ffmpeg-output --local-path
 
 Készlet és -feladat sablonok lehetővé teszik a fájlcsoportok másolási alakzatot a készlet csomópontjain, és térjen vissza egy készlet csomópontjainak ki kell adni a tárolt fájljaihoz. Ha például a feladat sablon korábban megadott, a fájlcsoport *ffmpeg-bemenet* másolja le a csomópontot átkódolása videó forrásfájljainak helyét, a feladat Factory van megadva. A fájlcsoport *ffmpeg-kimenet* az a hely, ahol a átkódolt kimeneti fájlok másolását a csomópont minden egyes feladat futtatása.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Sablon és a fájl átvitele támogatási jelenleg csak az Azure CLI-vel való lettek hozzáadva. A cél, hogy a felhasználók számára, akiknek nincs szükségük a Batch API-k, például kutatói és informatikai felhasználók kód fejlesztéséhez használhatja a kötegelt célközönség bontsa ki. Nélkül kódolási, az Azure Batch és a Batch által futtatandó alkalmazások felhasználók hozhatnak létre a készlet és -feladat létrehozásához. A sablon paramétereit a felhasználók kötegelt és a részletes ismerete nélkül használhatják a sablonok.
 

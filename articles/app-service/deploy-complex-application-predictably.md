@@ -16,10 +16,10 @@ ms.date: 01/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: e6d18222e15f62f12592362827b6dbc4a3d7dfbc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60766919"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Létrehozhatja és üzembe helyezheti a mikroszolgáltatások kiszámítható módon az Azure-ban
@@ -192,8 +192,8 @@ Ha egy alkalmazás részletezéssel, láthatja a hasonló az alkalmazás-konfigu
 ## <a name="deploy-the-resource-group-template-yourself"></a>Az erőforráscsoport sablonjának saját kezűleg üzembe helyezése
 A **üzembe helyezés az Azure** gomb nagyszerű, de lehetővé teszi az azuredeploy.json erőforrás csoport sablon üzembe helyezése, csak akkor, ha már rendelkezik leküldött azuredeploy.json GitHub. Az Azure .NET SDK-t is biztosít az eszközök üzembe helyezését bármely JSON-sablonfájlt közvetlenül a helyi gépről. Ehhez kövesse az alábbi lépéseket:
 
-1. A Visual Studióban kattintson a **File (Fájl)** > **New (Új)** > **Project (Projekt)** parancsra.
-2. Kattintson a **Visual C#** > **felhőalapú** > **Azure-erőforráscsoport**, majd kattintson a **OK**.
+1. A Visual Studióban kattintson a **File (Fájl)**  > **New (Új)**  > **Project (Projekt)** parancsra.
+2. Kattintson a **Visual C#**  > **felhőalapú** > **Azure-erőforráscsoport**, majd kattintson a **OK**.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. A **Azure-sablon kiválasztása**válassza **üres sablon** kattintson **OK**.
@@ -254,12 +254,12 @@ Az utolsó lépés egyszerű végzi el egy PowerShell-parancsmagot. Mi a Visual 
 
 Az utolsó parancsmag `New-AzureResourceGroup`, amelyet az végrehajtja a műveletet. Mindez bizonyítania kell, hogy, eszközök segítségével, azaz viszonylag egyszerű, kiszámítható módon a felhőalapú alkalmazások üzembe helyezése. Minden alkalommal, amikor futtatja a parancsmagot ugyanazt a sablont a paraméter ugyanebben a fájlban, meg fogjuk elérhető ugyanaz az eredmény.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Fejlesztés és üzemeltetés ismételhetőség és kiszámíthatóságot kulcsok mikroszolgáltatásokból álló, nagy méretű alkalmazás sikeres környezethez. Ebben az oktatóanyagban telepítette az Azure Resource Manager-sablon használatával egyetlen erőforráscsoportot, az Azure-ban két-mikroszolgáltatás-alkalmazás. Remélhetőleg Ez a példa adott a Tudásbázis van szüksége ahhoz, hogy indítsa el az Azure-ban az alkalmazás átalakítása sablon üzembe helyezése és is kiszámítható módon telepítheti. 
 
 <a name="resources"></a>
 
-## <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További források
 * [Az Azure Resource Manager-sablon nyelve](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Az Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Az Azure Resource Manager-Sablonfüggvények](../azure-resource-manager/resource-group-template-functions.md)

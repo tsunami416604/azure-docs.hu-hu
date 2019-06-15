@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 6bf61e2afd96e3923938ac4f815d34ae08f7c618
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64694224"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosító csatolása az Azure-fiókok
@@ -34,7 +34,7 @@ A Partnerazonosítóra kapcsol, mielőtt az ügyfél kell hozzáférést biztos�
 
 - **Egyszerű szolgáltatás**: Az ügyfél hozzáadhat egy alkalmazást vagy szkriptet a szervezet a címtárban, és bármely RBAC szerepkör hozzárendelése. Az alkalmazást vagy szkriptet identitását egy egyszerű szolgáltatást is nevezik.
 
-## <a name="link-to-a-partner-id"></a>Csatolás partnerazonosítóhoz
+## <a name="link-to-a-partner-id"></a>A Partnerazonosítóra mutató hivatkozás
 
 Az ügyfél-erőforrásokhoz való hozzáférést, ha használja az Azure portal, PowerShell vagy az Azure CLI a felhasználói azonosító vagy az egyszerű szolgáltatás a Microsoft Partner Network-azonosító (MPN-azonosító) mutat. Hivatkozás a Partnerazonosítót. minden egyes ügyfél-bérlőben.
 

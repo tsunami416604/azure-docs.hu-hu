@@ -41,7 +41,7 @@ sections:
           - title: Historikus táblák
             href: /azure/sql-database/sql-database-temporal-tables
             html: '<p>Nyomon követheti és elemezheti a teljes előzménylistáját, amikor az adatok változásait.</p>'
-  - title: További erőforrások
+  - title: További források
     items:
       - type: list
         style: ordered

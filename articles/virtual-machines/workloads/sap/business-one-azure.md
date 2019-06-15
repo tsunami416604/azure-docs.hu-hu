@@ -17,10 +17,10 @@ ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 101710b5a57faa37be77ff4b059fa0d494f4e617
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60835651"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One az Azure Virtual Machinesban
@@ -130,7 +130,7 @@ Telepítése az SQL Server adatbázis-kezelő, egy üzleti, látogasson el a dok
 
 Az SQL Server adatbázis-kezelő oldalán hozzávetőleges méretezési becsléseket a következők:
 
-| Felhasználók száma | Virtuális magok | Memory (Memória) | Példa virtuális gépek típusai |
+| Felhasználók száma | vCPUs | Memory (Memória) | Példa virtuális gépek típusai |
 | --- | --- | --- | --- |
 | legfeljebb 20 | 4 | 16 GB | D4s_v3, E4s_v3 |
 | akár 40 | 8 | 32 GB | D8s_v3, E8s_v3 |
@@ -150,7 +150,7 @@ Az SAP Hana biztonsági mentését és visszaállítását stratégiák, érdeme
 ### <a name="business-one-client-server"></a>Üzleti egy ügyfél-kiszolgáló
 Ezeknek az összetevőknek a tárterülettel kapcsolatos szempontok nem tartoznak az elsődleges szempont. Mindazonáltal szeretné megbízható platformon. Ezért használjon az Azure Premium Storage virtuális géphez, az alap virtuális merevlemez esetén is. Méretezés a virtuális gép a megadott adatokat [SAP Business egy hardver Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). Azure-ban hogy a dokumentum 2.4 fejezetben ismertetett követelményeknek kiszámítása, és szüksége. Számít a követelményeknek, mivel kell őket hasonlítani az Ön számára ideális megoldás a virtuális gép található a következő dokumentumokat:
 
-- [Az Azure-beli Windows virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
+- [A Windows rendszerű virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 - [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 Hasonlítsa össze a processzorokat és memóriát, mi a Microsoft dokumentált szükséges számát. Azt is hálózati átviteli sebesség vegye figyelembe a virtuális gépek kiválasztásakor.

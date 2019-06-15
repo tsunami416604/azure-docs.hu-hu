@@ -2,20 +2,19 @@
 title: A számítási feladat monitorozása DMV |} A Microsoft Docs
 description: Ismerje meg, a számítási feladatok DMV-k figyelése.
 services: sql-data-warehouse
-author: WenJason
-manager: digimobile
+author: ronortloff
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-origin.date: 04/12/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 04/12/2019
+ms.author: rortloff
 ms.reviewer: igorstan
 ms.openlocfilehash: ff1f613dfdfb5c43b727bcc9c7f7a1f0afca0975
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60748772"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
@@ -46,7 +45,7 @@ Az SQL Data warehouse-bA végrehajtott összes lekérdezés a rendszer naplózza
 
 Az alábbiakban a lekérdezések végrehajtási tervét, és többször egy adott lekérdezésre vonatkozó utasításokat.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>1. LÉPÉS: A vizsgálni kívánt lekérdezés azonosítása
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>1\. LÉPÉS: A vizsgálni kívánt lekérdezés azonosítása
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -81,7 +80,7 @@ OPTION (LABEL = 'My Query')
 ;
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>2. LÉPÉS: A lekérdezésterv vizsgálata
+### <a name="step-2-investigate-the-query-plan"></a>2\. LÉPÉS: A lekérdezésterv vizsgálata
 A kérés Azonosítóját használatával lekérheti az elosztott SQL (DSQL) csomagot a lekérdezés az [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
@@ -283,5 +282,3 @@ DMV-vel kapcsolatos további információkért lásd: [rendszernézetek][System 
 [DBCC PDW_SHOWEXECUTIONPLAN]: https://msdn.microsoft.com/library/mt204017.aspx
 [DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
 [LABEL]: https://msdn.microsoft.com/library/ms190322.aspx
-
-<!-- Update_Description: update meta properties, wording update -->

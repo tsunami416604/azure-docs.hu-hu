@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 6efdb1c28777d9230727066fdba03d2850be62b0
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935907"
 ---
 <a name="private-skus-and-plans"></a>Privát termékváltozatok és csomagok
@@ -44,7 +44,7 @@ Ha a Termékváltozat személyesként van megjelölve, és az ajánlat a többi 
 >[!NOTE]
 >Miután közzé van téve, nem hajtható végre saját nyilvános Termékváltozat.
 
-<a name="select-an-image"></a>Kép kiválasztása
+<a name="select-an-image"></a>Válasszon képet
 ------------------
 
 Adja meg az új lemezeket privát termékváltozat vagy újból felhasználhatja a megadott már egy másik SKU, csak a díjszabás módosítása vagy leírás azonos lemezek is. Újból felhasználhatja a lemezeket, jelölje be **Igen** az "Ez a Termékváltozat újra felhasználhatja kép Does egy nyilvános termékváltozatból" kérdésre adott válaszként.
@@ -55,7 +55,7 @@ Követően, győződjön meg arról, hogy a Termékváltozat újból felhasznál
 
 A következő képernyőn megjelenő utasításokat a privát Termékváltozat azonosítása lenne újra felhasználhatja a képeket a kiválasztott Termékváltozat show rögzítése:
 
-![Kép kiválasztása](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
+![Válasszon képet](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
 
 Az ajánlat közzétételekor a képeket a kiválasztott Termékváltozat érhető el az egyéni díjszabás és használati privát SKU-azonosítója alapján kerül sor. A privát Termékváltozat csak akkor látható a célközönséghez.
 

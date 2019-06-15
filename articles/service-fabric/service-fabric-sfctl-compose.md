@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 4b5cbb4a24b61de7e64a52ef950deedab3eec263
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837266"
 ---
 # <a name="sfctl-compose"></a>sfctl-összeállítás
@@ -28,13 +28,13 @@ Létrehozása, törlése és a Docker Compose alkalmazások kezeléséhez.
 
 |Parancs|Leírás|
 | --- | --- |
-| létrehozás | Létrehoz egy Service Fabric compose üzemelő példánya. |
-| lista | Lekérdezi listájának összeállítása a Service Fabric-fürtben létrehozott központi telepítések. |
-| eltávolítás | Törli a meglévő Service Fabric compose üzemelő példánya fürtből. |
+| create | Létrehoz egy Service Fabric compose üzemelő példánya. |
+| list | Lekérdezi listájának összeállítása a Service Fabric-fürtben létrehozott központi telepítések. |
+| eltávolítása | Törli a meglévő Service Fabric compose üzemelő példánya fürtből. |
 | status | A compose üzemelő példánya a Service Fabric információ beolvasása. |
-| frissítés | Elindítja a frissíti compose központi telepítés a Service Fabric-fürtben. |
-| frissítés-visszaállítás | Visszaállítása egy új üzembe helyezési útmutatók frissítése a Service Fabric-fürtben. |
-| frissítés – állapot | A compose üzemelő példánya a legújabb frissítés a Service Fabric végrehajtott részleteinek beolvasása. |
+| upgrade | Elindítja a frissíti compose központi telepítés a Service Fabric-fürtben. |
+| upgrade-rollback | Visszaállítása egy új üzembe helyezési útmutatók frissítése a Service Fabric-fürtben. |
+| upgrade-status | A compose üzemelő példánya a legújabb frissítés a Service Fabric végrehajtott részleteinek beolvasása. |
 
 ## <a name="sfctl-compose-create"></a>sfctl-összeállítás létrehozása
 Létrehoz egy Service Fabric compose üzemelő példánya.

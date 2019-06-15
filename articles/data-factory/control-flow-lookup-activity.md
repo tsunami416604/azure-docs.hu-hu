@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
 ms.openlocfilehash: 4f0662a71ee14af3c2c1aafee210641fc8b51f1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60768654"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység az Azure Data Factoryban
@@ -70,7 +70,7 @@ firstRowOnly | Azt jelzi, hogy csak az első sort vagy minden sort adja vissza. 
 
 A keresési eredményt adja vissza a `output` szakaszában a tevékenységfuttatás eredményét.
 
-* **Amikor `firstRowOnly` értékre van állítva `true` (alapértelmezett)**, a kimenet formátuma a következő kódban látható módon. A Keresés eredménye szerint egy rögzített `firstRow` kulcsot. Az eredmény a soron következő tevékenysége használatához használja a következő mintát, `@{activity('MyLookupActivity').output.firstRow.TableName}`.
+* **Amikor `firstRowOnly` értékre van állítva `true` (alapértelmezett)** , a kimenet formátuma a következő kódban látható módon. A Keresés eredménye szerint egy rögzített `firstRow` kulcsot. Az eredmény a soron következő tevékenysége használatához használja a következő mintát, `@{activity('MyLookupActivity').output.firstRow.TableName}`.
 
     ```json
     {

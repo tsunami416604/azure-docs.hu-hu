@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: manayar
 ms.openlocfilehash: 3846815dabdc9e351f3d8449feb88affb9c6efdb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60803529"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikális automatikus méretezés a virtuálisgép-méretezési csoportok
@@ -162,7 +162,7 @@ Riasztások létrehozásával kapcsolatos további információkért tekintse me
 * [Az Azure Monitor PowerShell rövid minták](../azure-monitor/platform/powershell-quickstart-samples.md)
 * [Az Azure platformfüggetlen parancssori figyelő rövid minták](../azure-monitor/platform/cli-samples.md)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ez a cikk bemutatta, egyszerű vertikális méretezési példákat. Ezek építőelemei – Automation-fiók, runbookok, a webhookok, riasztások - az egyéni műveletek egy csoportját, gazdag különféle eseményekre is kapcsolódni.
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 45c521fd044fa258b8052a3f0de48784cf4160e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60584393"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>A StorSimple Cloud Appliance átadása
@@ -46,15 +46,15 @@ A következő lépésekkel állíthatja vissza az eszköz StorSimple Cloud Appli
     ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
 3. Válassza ki, majd kattintson a forráseszközt. A forráseszköz kötettárolók, amelyeket szeretne a feladatátvételt. Lépjen a **beállítások > Kötettárolók**.
 
-    ![Válasszon eszközt](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
+    ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
     
 4. Válassza ki a kötettárolót, amely átadja a feladatokat egy másik eszközön szeretné. Kattintson a kötettároló ebben a tárolóban lévő kötetek listájának megjelenítéséhez. Válassza ki a kötetet, kattintson a jobb gombbal, majd kattintson **Offline állapotba** a kötet offline állapotba.
 
-    ![Válasszon eszközt](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
+    ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
 
 5. A kötettároló a minden kötet esetében ismételje meg a folyamatot.
 
-     ![Válasszon eszközt](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
+     ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
 
 6. Ismételje meg az előző lépésben, átadja a feladatokat egy másik eszközön szeretné kötettárolók.
 
@@ -81,7 +81,7 @@ A következő lépésekkel állíthatja vissza az eszköz StorSimple Cloud Appli
 
     1. Válassza ki az eszközt, hogy a feladatátvételhez célként használt.
 
-       ![Válasszon eszközt](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
     2. Kattintson a **Kötettárolók**. Minden kötettárolók, a köteteket a régi eszközről, együtt kell szerepelnie.
 

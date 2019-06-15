@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 638703e4d67cbd004f0bd616ba31475f507dfd8a
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64873425"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD integrálása
@@ -186,14 +186,14 @@ A távoli asztali kapcsolat engedélyezési házirendek (RD CAPs) adja meg a tá
 
 1. Nyissa meg az RD átjárókiszolgáló **Kiszolgálókezelő**.
 1. Kattintson a menü **eszközök**, mutasson a **távoli asztali szolgáltatások**, és kattintson a **távoli asztali átjárókezelő**.
-1. A távoli asztali átjáró Managerben, kattintson a jobb gombbal  **\[kiszolgálónév\] (helyi)**, és kattintson a **tulajdonságok**.
+1. A távoli asztali átjáró Managerben, kattintson a jobb gombbal  **\[kiszolgálónév\] (helyi)** , és kattintson a **tulajdonságok**.
 1. A Tulajdonságok párbeszédpanelen válassza ki a **RD CAP Store** fülre.
 1. Válassza ki az RD CAP Store lapon **NPS-t futtató központi kiszolgáló**. 
 1. Az a **adja meg egy nevet vagy IP-címet a hálózati házirend-kiszolgáló** mezőbe írja be a kiszolgáló, amelyre telepítve van az NPS-bővítményének IP-cím vagy a kiszolgáló nevét.
 
    ![Adja meg a nevét vagy IP-címet a hálózati házirend-kiszolgáló](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. Kattintson a **Hozzáadás** parancsra.
+1. Kattintson a **Hozzáadás**lehetőségre.
 1. Az a **közös titkos kulcsot** párbeszédpanelen adja meg a közös titkos kulcsot, és kattintson **OK**. Győződjön meg arról, jegyezze fel a közös titkos kulcsot, és tárolja biztonságos helyen a rekordot.
 
    >[!NOTE]
@@ -254,7 +254,7 @@ Ebben a forgatókönyvben megfelelő működéséhez, az NPS-kiszolgáló regisz
 
 1. Nyissa meg a hálózati házirend-kiszolgáló **Kiszolgálókezelő**.
 1. A Kiszolgálókezelőben kattintson a **eszközök**, és kattintson a **hálózati házirend-kiszolgáló**.
-1. A hálózati házirend-kiszolgáló-konzolon kattintson a jobb gombbal **hálózati házirend-kiszolgáló (helyi)**, és kattintson a **kiszolgáló regisztrálása az Active Directoryban**.
+1. A hálózati házirend-kiszolgáló-konzolon kattintson a jobb gombbal **hálózati házirend-kiszolgáló (helyi)** , és kattintson a **kiszolgáló regisztrálása az Active Directoryban**.
 1. Kattintson a **OK** kétszer.
 
    ![A hálózati házirend-kiszolgáló regisztrálása az Active Directoryban](./media/howto-mfa-nps-extension-rdg/image16.png)
@@ -327,7 +327,7 @@ A hitelesítés sikerült a másodlagos hitelesítési módszerrel, miután beje
 
 A sikeres bejelentkezési események megtekintése a Windows-eseménynaplók, adja ki a következő Windows PowerShell-parancsot a Windows Terminálszolgáltatások és a Windows biztonsági naplók lekérdezése.
 
-Sikeres bejelentkezési események az átjáró műveleti naplókban lekérdezéséhez _(esemény eseménynapló\alkalmazás- és szolgáltatások Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_, használja a következő PowerShell-parancsokat:
+Sikeres bejelentkezési események az átjáró műveleti naplókban lekérdezéséhez _(esemény eseménynapló\alkalmazás- és szolgáltatások Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ , használja a következő PowerShell-parancsokat:
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '300'} | FL`
 * Ez a parancs azt mutatják be, a felhasználó teljesíti az erőforrás-engedélyezési házirend követelményeinek (RD RAP), és hozzáférést Windows-eseményeket jeleníti meg.

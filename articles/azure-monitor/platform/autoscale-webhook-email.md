@@ -9,10 +9,10 @@ ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787297"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Automatikus skálázási műveletek segítségével szeretne küldeni az e-mailt és webhookot riasztási értesítéseket az Azure monitorban
@@ -62,7 +62,7 @@ A REST API vagy a Resource Manager-sablon használatakor közé tartozik az ért
 
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
-| művelet |igen |Az értéknek kell lennie a "Méretezés" |
+| A művelet |igen |Az értéknek kell lennie a "Méretezés" |
 | sendToSubscriptionAdministrator |igen |érték lehet "igaz" vagy "false" |
 | sendToSubscriptionCoAdministrators |igen |érték lehet "igaz" vagy "false" |
 | customEmails |igen |érték lehet null értékű [] vagy e-mailek karakterlánc tömbje |
@@ -106,12 +106,12 @@ Ha az automatikus skálázási értesítés jön létre, a webhook hasznos adata
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
 | status |igen |Az állapot, amely azt jelzi, hogy létrejött-e egy automatikus skálázási műveletet |
-| művelet |igen |Példányok tervezni "Horizontális Felskálázás" lesz, és példányok csökkenését, a "Méretezés a" |
+| A művelet |igen |Példányok tervezni "Horizontális Felskálázás" lesz, és példányok csökkenését, a "Méretezés a" |
 | Környezet |igen |Az automatikus skálázási művelet környezet |
-| időbélyeg |igen |Időbélyeg, ha az automatikus skálázási műveletet |
+| timestamp |igen |Időbélyeg, ha az automatikus skálázási műveletet |
 | id |Igen |Automatikus skálázási beállítás erőforrás-kezelő azonosítója |
-| név |Igen |Az automatikus skálázási beállítás neve |
-| részletek |Igen |A művelet az autoscale szolgáltatás igénybe vett és a példányszám módosítása ismertetése |
+| name |Igen |Az automatikus skálázási beállítás neve |
+| Részletek |Igen |A művelet az autoscale szolgáltatás igénybe vett és a példányszám módosítása ismertetése |
 | subscriptionId |Igen |A célként megadott erőforrás méretezése folyamatban van, előfizetés-azonosítója |
 | resourceGroupName |Igen |A célként megadott erőforrás méretezése folyamatban van, az erőforráscsoport neve |
 | resourceName |Igen |A célként megadott erőforrás folyamatban méretezett neve |

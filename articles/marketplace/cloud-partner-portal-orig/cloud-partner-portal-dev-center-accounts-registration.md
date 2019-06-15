@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 4fde5d81fb97bec23fdb46ff53b05874c88d9d67
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935865"
 ---
 <a name="create-a-microsoft-developer-account"></a>A Microsoft Developer-fiók létrehozása
@@ -19,7 +19,7 @@ ms.locfileid: "64935865"
 
 Ez a cikk azt ismerteti, hogyan válhat Azure piactér közzétételre egy engedélyezett Microsoft Developer.
 
-## <a name="create-a-microsoft-account"></a>Microsoft-fiók létrehozása
+## <a name="create-a-microsoft-account"></a>Microsoft-fiók regisztrálása
 
 A közzétételi folyamat indításához kell végezze el a **Microsoft Developer Center** regisztráció. Használja ugyanazt a regisztrált fiókot lévő a **[Cloud Partner Portalon](https://cloudpartner.azure.com/)** a közzétételi folyamat elindításához.
 

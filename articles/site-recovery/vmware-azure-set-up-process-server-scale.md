@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925488"
 ---
 # <a name="scale-with-additional-process-servers"></a>További folyamatkiszolgálók méretezés
@@ -24,7 +24,7 @@ Alapesetben, amikor replikál a VMware virtuális gépek vagy fizikai kiszolgál
 
 Győződjön meg arról, hogy végre [kapacitástervezés](site-recovery-plan-capacity-vmware.md) a VMware replikálásához. Ennek segítségével azonosíthatja módjának és további folyamatkiszolgálók üzembe kell helyeznie.
 
-9.24 verzióról útmutató során az új replikációk folyamatkiszolgáló választott egészül ki. Folyamatkiszolgáló kifogástalan, figyelmeztetési és kritikus bizonyos feltételek alapján lesznek megjelölve. Különböző helyzetekben, amely befolyásolhatja a folyamatkiszolgáló állapotát, tekintse át a [kiszolgálóriasztások feldolgozni](vmware-physical-azure-monitor-process-server.md#process-server-alerts).
+9\.24 verzióról útmutató során az új replikációk folyamatkiszolgáló választott egészül ki. Folyamatkiszolgáló kifogástalan, figyelmeztetési és kritikus bizonyos feltételek alapján lesznek megjelölve. Különböző helyzetekben, amely befolyásolhatja a folyamatkiszolgáló állapotát, tekintse át a [kiszolgálóriasztások feldolgozni](vmware-physical-azure-monitor-process-server.md#process-server-alerts).
 
 > [!NOTE]
 > Klónozott Folyamatkiszolgáló összetevő nem támogatott. Kövesse a jelen cikk egyes PS horizontális felskálázást.

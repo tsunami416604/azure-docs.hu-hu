@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
 ms.openlocfilehash: c3592529d20680c6920e569887effee4ffe38344
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443839"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64684006"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Virtuális gép indítási elakadt a "Getting Windows készen áll. Ne kapcsolja ki a számítógép"az Azure-ban
 
@@ -121,7 +121,7 @@ Pillanatkép létrehozása lépésekkel [lemez pillanatképének elkészítése]
 
 Kövesse a [gyűjtése az operációs rendszer memóriakép](troubleshoot-common-blue-screen-error.md#collect-memory-dump-file) egy operációs rendszer memóriakép gyűjtése, ha a virtuális gép konfigurációs megakadt szakasz.
 
-## <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
+## <a name="contact-microsoft-support"></a>Forduljon a Microsoft ügyfélszolgálatához
 
 Miután összegyűjtötte a memóriakép-fájl, lépjen kapcsolatba [a Microsoft támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az alapvető ok elemzését.
 

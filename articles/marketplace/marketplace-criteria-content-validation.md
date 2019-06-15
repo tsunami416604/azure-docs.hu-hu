@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
 ms.openlocfilehash: 3345dd82a1de4f9144cdeb5acd5d3e506dc55de8
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937828"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Az Azure Marketplace piactéren irányelvek
@@ -28,7 +28,7 @@ Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.
 |:--- |:--- |:--- |:--- |
 | 1 | Cél vezethet | Egy érdeklődő cél konfigurálva van| OCP Catalog képes a érdeklődő cél CRM adatait is szerepel a partneri megoldás lap | 
 | 2 | Az ajánlat címe | Leíró megoldás ajánlat. A partner webhelyére megoldás egyezések online előléptetése | Kulcs keresett szavakat tartalmaz |
-| 3 | Embléma | Embléma megfelelően megjelenik-e | Embléma megfelelően megjelenik-e, és tartalmazza a [fő kép](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish) Ez az a nagy formátumú képet, az Azure Portalon |
+| 3 | embléma | Embléma megfelelően megjelenik-e | Embléma megfelelően megjelenik-e, és tartalmazza a [fő kép](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish) Ez az a nagy formátumú képet, az Azure Portalon |
 | 4 |  Az ajánlat leírása | <br>• 2-3 bekezdést <br>• Szolgáltatásajánlat könnyen megérthető egyetlen pillantással <br>• Ajánlat leírása díjmentes, helyesírási és nyelvhelyességi korrekciók hibákkal <br>• Ajánlat leírása átfogó, és rögzíti: célközönsége, a felhasználó, hogy értékes típusa (érték prop) <br>Bekezdés nyújt narratíva formájában a mondatok rövid, könnyen érthető van • ajánlat leírása | <br>• Cél iparági vázolja (Ha releváns) <br>• Jó alapuló mindegyik egy-a mondat vagy kifejezés, amely a következő tartalom és listajele magában foglaló összefoglalójához bekezdés fejléccel formázás mutat (ha szükséges) fő előnyöket emelje ki. Itt célja az olvasó tudni, hogy az ajánlat egy könnyen formátum megtekintheti, és nem kell olvasni a bekezdések egy pillanat. <br>• Nincs minden bekezdés és a egy autó ismertetőben például olvasási közötti térközt. Tehát nem technikai funkciók vagy nyelvjárás, de az ajánlat egyszerűen fogalmazva leíró code, és átfogó. | 
 | 5 | Kategóriák & iparágak | <br>• Kategóriák képességeket kínál megoldást felel meg. <br>• Terjed ki a kategóriát, amely a megoldás nem fér el <br>• Optimális iparági, vagy minden ágazat kiválasztva (Ha nem optimális iparágak) | <br>• Max. 3 kategóriák <br>• Max. 3 iparágak |
 | 6 | Képek | <br>• Nincs kép szükséges, de ha a megadott kell megjelenítendő és a egy nagy felbontású képet. <br>• A rendszerképre vonatkozó követelmények CPP szerepelnek, és itt is <br>• A képernyőképen szereplő szöveg jól olvasható, a kép törlése | Szolgáltatásajánlat könnyen megérthető egyetlen pillantással |
@@ -70,7 +70,7 @@ Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.
 |  | Elem listázása | Alap követelmények | Optimális követelmények | 
 |:--- |:--- |:--- |:--- |
 |1 |Ajánlat beállításai | <br>• Ajánlat azonosítója: Legfeljebb 50 karakter <br>• Publisher ID: Válassza ki a legördülő listából <br>• Neve: Max. 50 karakter lehet | Már elérhető a leírás - címében nem szeretné, a tükör hosszú címek. | 
-| 2 | Termékváltozatok | Partner gombra kattint, az új termékváltozatokra| Már elérhető a leírás - címében nem szeretné, a tükör hosszú címek.  |
+| 2 | SKU-k | Partner gombra kattint, az új termékváltozatokra| Már elérhető a leírás - címében nem szeretné, a tükör hosszú címek.  |
 | 3 | Marketplace-összetevők | Emblémák hibásan jelennek meg |<br>• Embléma tartalmazza a "fő képet," a nagy formátumú képet, az Azure Portalon <br>• Emblémát: Kicsi (48 x 48) és a nagy (216 x 216) követelmények érvényesek. <br>• Hero a rendszerképre vonatkozó követelmények: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• Képernyőkép (max. 5):  CPP feloldási 1280 x 720 között egy .png lemezkép szükséges.|
 | 4 | Felügyeleti vezethet |<br>• A felügyeleti nyújtják: Válassza ki az érdeklődőket a rendszer hol tárolja a rendszer. <br>• Megtudhatja, hogyan csatlakozhat a CRM-rendszerbe [Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) | |
 

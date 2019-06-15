@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
 ms.openlocfilehash: ca014e4f5fbc4a5695dbc5fedc85826c71a2a906
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60863980"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell (klasszikus) használatával virtuális hálózati átjáró törlése
@@ -56,7 +56,7 @@ Ebben a példában a hálózati konfigurációs fájlt a C:\AzureNet helyre expo
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-Nyissa meg a fájlt egy szövegszerkesztőben, és tekintse meg a nevet a klasszikus virtuális hálózat számára. Az Azure Portalon hoz létre egy virtuális hálózathoz, amikor a teljes Azure használó név nem látható a portálon. Virtuális hálózat neve "ClassicVNet1" az Azure Portalon megjelenő például rendelkezhet egy sokkal hosszabb nevet a hálózat konfigurációs fájljában. Neve a következőhöz hasonló: 'Csoport ClassicRG1 ClassicVNet1'. Virtuális hálózat nevei jelennek meg **"VirtualNetworkSite name ="**. A hálózati konfigurációs fájlt a neveket használja, ha futtatja a PowerShell-parancsmagokat.
+Nyissa meg a fájlt egy szövegszerkesztőben, és tekintse meg a nevet a klasszikus virtuális hálózat számára. Az Azure Portalon hoz létre egy virtuális hálózathoz, amikor a teljes Azure használó név nem látható a portálon. Virtuális hálózat neve "ClassicVNet1" az Azure Portalon megjelenő például rendelkezhet egy sokkal hosszabb nevet a hálózat konfigurációs fájljában. Neve a következőhöz hasonló: 'Csoport ClassicRG1 ClassicVNet1'. Virtuális hálózat nevei jelennek meg **"VirtualNetworkSite name ="** . A hálózati konfigurációs fájlt a neveket használja, ha futtatja a PowerShell-parancsmagokat.
 
 ## <a name="delete"></a>3. lépés: A virtuális hálózati átjáró törlése
 

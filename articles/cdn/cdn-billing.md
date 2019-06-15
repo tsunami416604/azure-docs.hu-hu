@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: magattus
 ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60782060"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Az Azure CDN számlázásának ismertetése
@@ -28,15 +28,15 @@ Ez a GYIK az Azure Content Delivery Network (CDN) tárolt tartalom számlázási
 ## <a name="what-is-a-billing-region"></a>Mi az, hogy egy számlázási régióban?
 A számlázási régióban egy földrajzi területen határozza meg, milyen díjjal díjszabásának kézbesítési objektumok az Azure CDN szolgáltatással. A jelenlegi számlázási zónák és a régiók a következők:
 
-- 1. zóna: Észak-Amerika, Európa, Közel-Kelet és Afrika
+- 1\. zóna: Észak-Amerika, Európa, Közel-Kelet és Afrika
 
-- Zone 2: (2. zóna) Ázsia Csendes-óceáni (és japán)
+- Zone 2: (2. zóna) Ázsia és a Csendes-óceáni térség (és Japán)
 
-- 3. zóna: Dél-Amerika
+- 3\. zóna: Dél-Amerika
 
-- 4. zóna: Ausztrália és Új-Zéland
+- 4\. zóna: Ausztrália és Új-Zéland
 
-- 5. zóna: India
+- 5\. zóna: India
 
 Jelenléti pontok (POP) régiókkal kapcsolatos információkért lásd: [Azure CDN POP-helyek régiónként](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Mexikói található POP például Észak-amerikai régióban található, és ezért része a 1. zóna. 
 

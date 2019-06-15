@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 04/24/2019
 ms.author: tomfitz
 ms.openlocfilehash: 21b3972a96c1601b15c403275474d58873753b08
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64712991"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Az Azure-erőforrások teljes üzemmód telepítéseit törlését
@@ -44,10 +44,10 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | ------------- | ----------- |
 | aadsupportcases | Nem | 
 | addsservices | Nem | 
-| ügynökök | Nem | 
+| Ügynökök | Nem | 
 | anonymousapiusers | Nem | 
 | konfiguráció | Nem | 
-| naplók | Nem | 
+| logs | Nem | 
 | jelentések | Nem | 
 | services | Nem | 
 
@@ -56,7 +56,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | ------------- | ----------- |
 | Konfigurációk | Nem | 
 | generateRecommendations | Nem | 
-| javaslatok | Nem | 
+| Javaslatok | Nem | 
 | suppressions | Nem | 
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
@@ -74,7 +74,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| kiszolgáló | Igen | 
+| Kiszolgálók | Igen | 
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | Erőforrás típusa | Törlés Teljes mód esetén |
@@ -243,7 +243,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | reservationOrders/felosztása | Nem | 
 | reservationOrders/lapozófájl-kapacitás | Nem | 
 | foglalások | Nem | 
-| erőforrások | Nem | 
+| Erőforrások | Nem | 
 | validateReservationOrder | Nem | 
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
@@ -305,7 +305,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Képességek | Nem | 
-| lemezek | Nem | 
+| Lemezek | Nem | 
 | images | Nem | 
 | osImages | Nem | 
 | osPlatformImages | Nem | 
@@ -332,13 +332,13 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | availabilitySets | Igen | 
-| lemezek | Igen | 
+| Lemezek | Igen | 
 | images | Igen | 
 | restorePointCollections | Igen | 
 | restorePointCollections/restorePoints | Nem | 
 | sharedVMImages | Igen | 
 | sharedVMImages/versions | Igen | 
-| pillanatképek | Igen | 
+| snapshots | Igen | 
 | virtuális gép | Igen | 
 | virtualMachines/diagnosticSettings | Nem | 
 | virtualMachines/extensions | Igen | 
@@ -363,12 +363,12 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | sok | Nem | 
 | Piactér | Nem | 
 | Pricesheets | Nem | 
-| termék | Nem | 
+| Termékek | Nem | 
 | ReservationDetails | Nem | 
 | ReservationRecommendations | Nem | 
 | ReservationSummaries | Nem | 
 | ReservationTransactions | Nem | 
-| Címkék | Nem | 
+| Tags | Nem | 
 | Fogalmak | Nem | 
 | UsageDetails | Nem | 
 
@@ -427,7 +427,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Riasztások | Nem | 
 | billingAccounts | Nem | 
 | Összekötők | Igen | 
-| Részlegek | Nem | 
+| Szervezeti egységek | Nem | 
 | Dimenziók | Nem | 
 | enrollmentAccounts | Nem | 
 | Lekérdezés | Nem | 
@@ -455,7 +455,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| feladatok | Igen | 
+| Feladatok | Igen | 
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | Erőforrás típusa | Törlés Teljes mód esetén |
@@ -465,7 +465,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| munkaterületek | Igen | 
+| Munkaterületek | Igen | 
 | workspaces/virtualNetworkPeerings | Nem | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -511,21 +511,21 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| kiszolgáló | Igen | 
+| Kiszolgálók | Igen | 
 | servers/recoverableServers | Nem | 
 | servers/virtualNetworkRules | Nem | 
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| kiszolgáló | Igen | 
+| Kiszolgálók | Igen | 
 | servers/recoverableServers | Nem | 
 | servers/virtualNetworkRules | Nem | 
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| kiszolgáló | Igen | 
+| Kiszolgálók | Igen | 
 | kiszolgálók/tanácsadók | Nem | 
 | kiszolgálók/queryTexts | Nem | 
 | servers/recoverableServers | Nem | 
@@ -616,7 +616,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | myareas/területek/galleryitems | Nem | 
 | myareas/galleryitems | Nem | 
 | Regisztráció | Nem | 
-| erőforrások | Nem | 
+| Erőforrások | Nem | 
 | retrieveresourcesbyid | Nem | 
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
@@ -639,7 +639,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| feladatok | Igen | 
+| Feladatok | Igen | 
 
 ## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
 | Erőforrás típusa | Törlés Teljes mód esetén |
@@ -658,7 +658,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | alertrules | Igen | 
 | automatedExportSettings | Nem | 
 | autoscalesettings beállítás | Igen | 
-| alapterv | Nem | 
+| Alapkonfiguráció | Nem | 
 | calculatebaseline | Nem | 
 | Összetevők | Igen | 
 | összetevő/események | Nem | 
@@ -671,7 +671,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | extendedDiagnosticSettings | Nem | 
 | logDefinitions | Nem | 
 | logprofiles | Nem | 
-| naplók | Nem | 
+| logs | Nem | 
 | metricAlerts | Igen |
 | migrateToNewPricingModel | Nem | 
 | myWorkbooks | Nem | 
@@ -733,7 +733,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| naplók | Nem | 
+| logs | Nem | 
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | Erőforrás típusa | Törlés Teljes mód esetén |
@@ -766,7 +766,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| munkaterületek | Igen | 
+| Munkaterületek | Igen | 
 | munkaterületek és számítási erőforrások | Nem | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
@@ -780,7 +780,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | ------------- | ----------- |
 | getEntities | Nem | 
 | managementGroups | Nem | 
-| erőforrások | Nem | 
+| Erőforrások | Nem | 
 | startTenantBackfill | Nem | 
 | tenantBackfillStatus | Nem | 
 
@@ -802,7 +802,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | offerTypes/publishers/offers/plans/configs | Nem | 
 | offerTypes/publishers/offers/plans/configs/importImage | Nem | 
 | privategalleryitems | Nem | 
-| termék | Nem | 
+| Termékek | Nem | 
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 | Erőforrás típusa | Törlés Teljes mód esetén |
@@ -849,7 +849,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | azureFirewallFqdnTags | Nem | 
 | azureFirewalls | Igen | 
 | bgpServiceCommunities | Nem | 
-| kapcsolatok | Igen | 
+| Kapcsolatok | Igen | 
 | ddosCustomPolicies | Igen | 
 | ddosProtectionPlans | Igen | 
 | dnsOperationStatuses | Nem | 
@@ -868,7 +868,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | dnszones/TXT | Nem | 
 | expressRouteCircuits | Igen | 
 | expressRouteServiceProviders | Nem | 
-| frontdoorok | Igen | 
+| frontdoors | Igen | 
 | frontdoorWebApplicationFirewallPolicies | Igen | 
 | getDnsResourceReference | Nem | 
 | interfaceEndpoints | Igen | 
@@ -914,7 +914,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | eszközök | Nem | 
 | linkTargets | Nem | 
 | storageInsightConfigs | Nem | 
-| munkaterületek | Igen | 
+| Munkaterületek | Igen | 
 | workspaces/dataSources | Nem | 
 | workspaces/linkedServices | Nem | 
 | munkaterületek és lekérdezési | Nem | 
@@ -925,7 +925,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | managementassociations | Nem | 
 | managementconfigurations | Igen | 
 | megoldások | Igen | 
-| megtekintés | Igen | 
+| Nézetek | Igen | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 | Erőforrás típusa | Törlés Teljes mód esetén |
@@ -976,7 +976,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| erőforrások | Nem | 
+| Erőforrások | Nem | 
 | subscriptionsStatus | Nem | 
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
@@ -987,19 +987,19 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | childResources | Nem | 
 | események | Nem | 
 | impactedResources | Nem | 
-| értesítések | Nem | 
+| Értesítések | Nem | 
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| üzemelő példányok | Nem | 
+| Központi telepítések | Nem | 
 | Az operations központi telepítések | Nem | 
 | Hivatkozások | Nem | 
 | notifyResourceJobs | Nem | 
 | Szolgáltatók | Nem | 
 | resourceGroups | Nem | 
-| erőforrások | Nem | 
-| előfizetés | Nem | 
+| Erőforrások | Nem | 
+| Előfizetések | Nem | 
 | Az előfizetések és szolgáltatók | Nem | 
 | előfizetés/resourceGroups | Nem | 
 | előfizetés/resourcegroups/erőforrások | Nem | 
@@ -1017,7 +1017,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| forgalom | Igen | 
+| folyamatok | Igen | 
 | feladatgyűjtemények | Igen | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1041,11 +1041,11 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | externalSecuritySolutions | Nem | 
 | InformationProtectionPolicies | Nem | 
 | jitNetworkAccessPolicies | Nem | 
-| figyelés | Nem | 
+| Figyelés | Nem | 
 | figyelés és kártevők elleni | Nem | 
 | figyelés és referenciakonfiguráció | Nem | 
 | figyelési/patch | Nem | 
-| házirendek | Nem | 
+| Szabályzatok | Nem | 
 | díjcsoportokkal | Nem | 
 | securityContacts | Nem | 
 | securitySolutions | Nem | 
@@ -1094,7 +1094,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | alkalmazások | Igen | 
 | Átjárók | Igen | 
 | Hálózatok | Igen | 
-| titkos kódok | Igen | 
+| Titkos kulcsok | Igen | 
 | volumes | Igen | 
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
@@ -1124,7 +1124,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | managedInstances/keys | Nem |
 | managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nem |
 | managedInstances/vulnerabilityAssessments | Nem |
-| kiszolgáló | Igen | 
+| Kiszolgálók | Igen | 
 | kiszolgálók és a rendszergazdák | Nem | 
 | servers/communicationLinks | Nem | 
 | kiszolgálók és adatbázisok | Igen (lásd az alábbi megjegyzést) | 
@@ -1197,7 +1197,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | providerRegistrations | Igen | 
-| erőforrások | Igen | 
+| Erőforrások | Igen | 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Erőforrás típusa | Törlés Teljes mód esetén |
@@ -1228,9 +1228,9 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | apiManagementAccounts/connectionAcls | Nem | 
 | apiManagementAccounts/connections | Nem | 
 | billingMeters | Nem | 
-| tanúsítványok | Igen | 
+| Tanúsítványok | Igen | 
 | connectionGateways | Igen | 
-| kapcsolatok | Igen | 
+| Kapcsolatok | Igen | 
 | customApis | Igen | 
 | deletedSites | Nem | 
 | functions | Nem | 
@@ -1240,7 +1240,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | hostingEnvironments/workerPools | Nem | 
 | hostingEnvironments/workerPools/instances | Nem | 
 | publishingUsers | Nem | 
-| javaslatok | Nem | 
+| Javaslatok | Nem | 
 | resourceHealthMetadata | Nem | 
 | modulok | Nem | 
 | Kiszolgálófarmok | Igen | 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
 ms.openlocfilehash: 7fa903f65a6c7d244ff424eae4a0def258b50bbc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60803264"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>A rendelkezésre állási zónák használó virtuális gép méretezési csoport létrehozása
@@ -48,7 +48,7 @@ Amikor telepít egy méretezési csoportot, akkor is telepíteni egyetlen [elhel
 Végül a méretezési csoportok több zónában üzembe helyezett, akkor is "ajánlott beavatkozást zónák kiegyensúlyozásáról" vagy "szigorú zónák kiegyensúlyozásáról" lehetőséget. Egy méretezési csoportot számít az "elosztott terhelésű" Ha az egyes virtuális gépek azonos számú zóna vagy +\\– 1 virtuális gép a méretezési csoport más zónákban. Példa:
 
 - Elosztott terhelésű zónában 1, 2 és 3 virtuális gépeket a 3. zóna számít zónában 3 virtuális gépek 2 virtuális gépet tartalmazó méretezési. Van egy másik virtuális gépek száma csak egy zónát pedig csak 1 kisebb, mint a más zónákban. 
-- Egy méretezési 1 virtuális gép az 1. zóna, 2 és 3 virtuális gépeket a 3. zóna számít zónában 3 virtuális gépet kiegyensúlyozatlan. 1. zóna 2 zónák 2. és 3-nál kevesebb virtuális gépet tartalmaz.
+- Egy méretezési 1 virtuális gép az 1. zóna, 2 és 3 virtuális gépeket a 3. zóna számít zónában 3 virtuális gépet kiegyensúlyozatlan. 1\. zóna 2 zónák 2. és 3-nál kevesebb virtuális gépet tartalmaz.
 
 Akkor lehet, hogy a méretezési csoportban lévő virtuális gépek létrehozása sikeresen megtörtént, de a bővítményt a virtuális gépek sikertelen üzembe helyezéséhez. Ezek a virtuális gépek-bővítményekkel kapcsolatos hibák továbbra is számításba vesszük, ha egy méretezési csoportot kiegyensúlyozott meghatározásakor. Például egy méretezési csoportot 3 virtuális gépeket az 1. zónába, a 2. zóna 3 virtuális gépet, és 3 virtuális gépeket a 3. zóna számít, még akkor is, ha az összes bővítmény nem sikerült az 1. zóna elosztott terhelésű, és az összes bővítmény zónákban sikeres volt, 2. és 3.
 

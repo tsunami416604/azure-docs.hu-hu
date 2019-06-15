@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 95a530ea57237453a3b0d7d8dd42963f4b9c3dde
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713039"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Az Azure HDInsight kibocsátási megjegyzései
@@ -20,7 +20,7 @@ ms.locfileid: "64713039"
 > [!IMPORTANT]  
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight versioning cikk](hdinsight-component-versioning.md).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Azure HDInsight a legnépszerűbb szolgáltatások nagyvállalati ügyfelek körében a nyílt forráskódú Apache Spark és Apache Hadoop analytics az Azure-ban egyike.
 
@@ -28,7 +28,7 @@ Az Azure HDInsight a legnépszerűbb szolgáltatások nagyvállalati ügyfelek k
 
 Az új frissítések és funkciók esik, a következő kategóriákban:
 
-*  ***Frissítse a Hadoop- és más nyílt forráskódú projektek*** – 1000 + hibajavítások között 20 + nyílt forráskódú projektek, a frissítés egy új verzióját tartalmazó mellett **Spark (2.3-as)** és **Kafka (1.0)**.
+*  ***Frissítse a Hadoop- és más nyílt forráskódú projektek*** – 1000 + hibajavítások között 20 + nyílt forráskódú projektek, a frissítés egy új verzióját tartalmazó mellett **Spark (2.3-as)** és **Kafka (1.0)** .
 
     a.  [**Az Apache Spark 2.3 új funkciói**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
@@ -822,73 +822,73 @@ Ez a szakasz az összes gyakori biztonsági rések és Exposures (CVE) ebben a k
 
 ### <a name="cve-2017-7676"></a>**CVE-2017-7676**
 
-| **Összefoglalás:** Apache Ranger szabályzat-kiértékelés figyelmen kívül hagyja a karakter után "\*" helyettesítő karakter |
+| **Összefoglalás:**  Apache Ranger szabályzat-kiértékelés figyelmen kívül hagyja a karakter után "\*" helyettesítő karakter |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Súlyosság:** kritikus                                                                           |
-| **Szállító:** Hortonworks                                                                          |
-| **Érintett verziók:** többek között az Apache Ranger verziók 0.5.x/0.6.x/0.7.0 HDInsight 3.6-os verzió     |
-| **Érintett felhasználók:** környezeteket, amelyek a Ranger-házirendek használata karakter után "\*" helyettesítő karakterek – például saját\*tesztelése, tesztelheti\*.txt |
-| **Hatás:** házirend erőforrás megfeleltetőben megadott figyelmen kívül hagyja a karakter után "\*" helyettesítő karakter, ami nem kívánt viselkedést eredményezhet.      |
-| **Javítsa ki a részletes:** frissült a Ranger-házirendet erőforrás megfeleltetőben megadott helyettesítő karakteres egyezések megfelelően kezeli.           |
-| **Javasolt művelet:** frissítése a HDI 3.6-os (az Apache Ranger 0.7.1+).                                |
+| **Súlyosság:**  kritikus                                                                           |
+| **Szállító:**  Hortonworks                                                                          |
+| **Érintett verziók:**  többek között az Apache Ranger verziók 0.5.x/0.6.x/0.7.0 HDInsight 3.6-os verzió     |
+| **Érintett felhasználók:**  környezeteket, amelyek a Ranger-házirendek használata karakter után "\*" helyettesítő karakterek – például saját\*tesztelése, tesztelheti\*.txt |
+| **Hatás:**  házirend erőforrás megfeleltetőben megadott figyelmen kívül hagyja a karakter után "\*" helyettesítő karakter, ami nem kívánt viselkedést eredményezhet.      |
+| **Javítsa ki a részletes:**  frissült a Ranger-házirendet erőforrás megfeleltetőben megadott helyettesítő karakteres egyezések megfelelően kezeli.           |
+| **Javasolt művelet:**  frissítése a HDI 3.6-os (az Apache Ranger 0.7.1+).                                |
 
 ### <a name="cve-2017-7677"></a>**CVE-2017-7677**
 
-| **Összefoglalás:** Apache Ranger Hive-hitelesítő ellenőrizze RWX-engedélyt Ha külső helyre van megadva. |
+| **Összefoglalás:**  Apache Ranger Hive-hitelesítő ellenőrizze RWX-engedélyt Ha külső helyre van megadva. |
 |--------------------------------------------------------------------------------------------------|
-| **Súlyosság:** kritikus                                                                           |
-| **Szállító:** Hortonworks                                                                          |
-| **Érintett verziók:** többek között az Apache Ranger verziók 0.5.x/0.6.x/0.7.0 HDInsight 3.6-os verzió |
-| **Érintett felhasználók:** olyan környezetekben, amelyek külső helyre a hive-táblákban |
-| **Hatás:** olyan környezetekben, amelyek külső helyre a hive-táblákat, az Apache Ranger Hive hitelesítő ellenőrizze a külső tábla létrehozása a megadott hely RWX-engedélyt. |
-| **Javítsa ki a részletes:** frissült a Ranger Hive-hitelesítő megfelelően kezeli a külső hely jogosultság-ellenőrzést. |
-| **Javasolt művelet:** felhasználók (az Apache Ranger 0.7.1+) a HDI 3.6 frissítsen. |
+| **Súlyosság:**  kritikus                                                                           |
+| **Szállító:**  Hortonworks                                                                          |
+| **Érintett verziók:**  többek között az Apache Ranger verziók 0.5.x/0.6.x/0.7.0 HDInsight 3.6-os verzió |
+| **Érintett felhasználók:**  olyan környezetekben, amelyek külső helyre a hive-táblákban |
+| **Hatás:**  olyan környezetekben, amelyek külső helyre a hive-táblákat, az Apache Ranger Hive hitelesítő ellenőrizze a külső tábla létrehozása a megadott hely RWX-engedélyt. |
+| **Javítsa ki a részletes:**  frissült a Ranger Hive-hitelesítő megfelelően kezeli a külső hely jogosultság-ellenőrzést. |
+| **Javasolt művelet:**  felhasználók (az Apache Ranger 0.7.1+) a HDI 3.6 frissítsen. |
 
 ### <a name="cve-2017-9799"></a>**CVE-2017-9799**
 
-| **Összefoglalás:** Apache Storm a helytelen felhasználói kód potenciális végrehajtása |
+| **Összefoglalás:**  Apache Storm a helytelen felhasználói kód potenciális végrehajtása |
 |--------------------------------------------------------------------------------------------------|
-|**Súlyosság:** fontos |
-| **Szállító:** Hortonworks |
-| **Érintett verziók:** HDP 2.4.0, HDP-2.5.0, HDP-2.6.0 |
-| **Érintett felhasználók:** alatt futó Storm használható biztonságos módban, és elosztása topológiában blobtárhely használ felhasználók összetevők vagy a topológia erőforrásokat osztja a blobtárhely használata alapján. |
-| **Hatás:** bizonyos helyzetekben és konfigurációk Storm-topológia egy másik, a nem gyökér, felhasználói feldolgozó indítása a felügyelő felhasználót tulajdonosának elméletileg lehetőség. A legrosszabb esetben vezethet biztonságos feltörését más felhasználó hitelesítő adatait. A biztonsági rés csak biztonság engedélyezve van az Apache Storm-telepítésekre vonatkozik. |
-| **Megoldás:** HDP-2.6.2.1 frissítsen, mert jelenleg nincs megkerülő megoldások.  |
+|**Súlyosság:**  fontos |
+| **Szállító:**  Hortonworks |
+| **Érintett verziók:**  HDP 2.4.0, HDP-2.5.0, HDP-2.6.0 |
+| **Érintett felhasználók:**  alatt futó Storm használható biztonságos módban, és elosztása topológiában blobtárhely használ felhasználók összetevők vagy a topológia erőforrásokat osztja a blobtárhely használata alapján. |
+| **Hatás:**  bizonyos helyzetekben és konfigurációk Storm-topológia egy másik, a nem gyökér, felhasználói feldolgozó indítása a felügyelő felhasználót tulajdonosának elméletileg lehetőség. A legrosszabb esetben vezethet biztonságos feltörését más felhasználó hitelesítő adatait. A biztonsági rés csak biztonság engedélyezve van az Apache Storm-telepítésekre vonatkozik. |
+| **Megoldás:**  HDP-2.6.2.1 frissítsen, mert jelenleg nincs megkerülő megoldások.  |
 
 ### <a name="cve-2016-4970"></a>**CVE-2016-4970**
 
-| **Összefoglalás:** handler/ssl/OpenSslEngine.java Netty 4.0.x előtt 4.0.37.Final és 4.1.x előtt 4.1.1.Final lehetővé teszi, hogy a távoli támadók (végtelen ciklust) szolgáltatásmegtagadást okozhat a |
+| **Összefoglalás:**  handler/ssl/OpenSslEngine.java Netty 4.0.x előtt 4.0.37.Final és 4.1.x előtt 4.1.1.Final lehetővé teszi, hogy a távoli támadók (végtelen ciklust) szolgáltatásmegtagadást okozhat a |
 |--------------------------------------------------------------------------------------------------|
 | **Súlyosság:** Mérsékelt  |
-| **Szállító:** Hortonworks  |
-| **Érintett verziók:** HDP 2.x.x 2.3.x óta  |
-| **Érintett felhasználók:** HDFS használó összes felhasználó. |
-| **Hatás:** hatása alacsony, Hortonworks, nem használja a OpenSslEngine.java közvetlenül a Hadoop kódbázis.     |
-| **Javasolt művelet:** HDP 2.6.3 frissítése.   |
+| **Szállító:**  Hortonworks  |
+| **Érintett verziók:**  HDP 2.x.x 2.3.x óta  |
+| **Érintett felhasználók:**  HDFS használó összes felhasználó. |
+| **Hatás:**  hatása alacsony, Hortonworks, nem használja a OpenSslEngine.java közvetlenül a Hadoop kódbázis.     |
+| **Javasolt művelet:**  HDP 2.6.3 frissítése.   |
 
 ### <a name="cve-2016-8746"></a>**CVE-2016-8746**
 
-| **Összefoglalás:** Apache Ranger elérésiút-megfeleltetéssel problémát a szabályzat-kiértékelés                                                                    |
+| **Összefoglalás:**  Apache Ranger elérésiút-megfeleltetéssel problémát a szabályzat-kiértékelés                                                                    |
 |----------------------------------------------------------------------------------------------------------------------------------------|
-| **Súlyosság:** normál                                                                                                                   |
+| **Súlyosság:**  normál                                                                                                                   |
 | **Szállító:** Hortonworks                                                                                                                |
-| **Érintett verziók:** többek között az Apache Ranger verziók 0.6.0/0.6.1/0.6.2 minden HDP 2.5-ös verzió                                         |
-| **Érintett felhasználók:** a ranger-házirendet felügyeleti eszköz összes felhasználója.                                                                         |
-| **Hatás:** Ranger házirendmotor helytelenül megfelel bizonyos feltételek szereplő elérési utakat, ha a házirendek tartalmazzák a helyettesítő karaktereket és a rekurzív. |
+| **Érintett verziók:**  többek között az Apache Ranger verziók 0.6.0/0.6.1/0.6.2 minden HDP 2.5-ös verzió                                         |
+| **Érintett felhasználók:**  a ranger-házirendet felügyeleti eszköz összes felhasználója.                                                                         |
+| **Hatás:**  Ranger házirendmotor helytelenül megfelel bizonyos feltételek szereplő elérési utakat, ha a házirendek tartalmazzák a helyettesítő karaktereket és a rekurzív. |
 | **Javítsa ki a részletei:** Rögzített házirend kiértékelési logika                                                                                          |
-| **Javasolt művelet:** felhasználók frissítsen a HDP 2.5.4+ (az Apache Ranger 0.6.3+) vagy HDP 2.6 (az Apache Ranger 0.7.0+)         |
+| **Javasolt művelet:**  felhasználók frissítsen a HDP 2.5.4+ (az Apache Ranger 0.6.3+) vagy HDP 2.6 (az Apache Ranger 0.7.0+)         |
 
 ### <a name="cve-2016-8751"></a>**CVE-2016-8751**
 
-| **Összefoglalás:** Apache Ranger tárolt webhelyek közötti parancsfájl-kezelési probléma  |
+| **Összefoglalás:**  Apache Ranger tárolt webhelyek közötti parancsfájl-kezelési probléma  |
 |--------------------------------------------------------------------------------------------------|
-| **Súlyosság:** normál |
-| **Szállító:** Hortonworks |
-| **Érintett verziók:** többek között az Apache Ranger verziók 0.5.x/0.6.0/0.6.1/0.6.2 minden HDP 2.3/2.4/2.5 verzió  |
-| **Érintett felhasználók:** a ranger-házirendet felügyeleti eszköz összes felhasználója. |
-| **Hatás:** Apache Ranger ki téve a tárolt többhelyes parancsfájlt egyéni házirend feltételei megadásakor. Rendszergazda felhasználók tárolhatnak tetszőleges javascript code hajtható végre, ha a normál felhasználók jelentkezzen be, és hozzáférési házirendek. |
-| **Javítsa ki a részletes:** hozzáadott logikát, a felhasználói bevitel megtisztítása.  |
-| **Javasolt művelet:** felhasználók frissítsen a HDP 2.5.4+ (az Apache Ranger 0.6.3+) vagy HDP 2.6 (az Apache Ranger 0.7.0+)  |
+| **Súlyosság:**  normál |
+| **Szállító:**  Hortonworks |
+| **Érintett verziók:**  többek között az Apache Ranger verziók 0.5.x/0.6.0/0.6.1/0.6.2 minden HDP 2.3/2.4/2.5 verzió  |
+| **Érintett felhasználók:**  a ranger-házirendet felügyeleti eszköz összes felhasználója. |
+| **Hatás:**  Apache Ranger ki téve a tárolt többhelyes parancsfájlt egyéni házirend feltételei megadásakor. Rendszergazda felhasználók tárolhatnak tetszőleges javascript code hajtható végre, ha a normál felhasználók jelentkezzen be, és hozzáférési házirendek. |
+| **Javítsa ki a részletes:**  hozzáadott logikát, a felhasználói bevitel megtisztítása.  |
+| **Javasolt művelet:**  felhasználók frissítsen a HDP 2.5.4+ (az Apache Ranger 0.6.3+) vagy HDP 2.6 (az Apache Ranger 0.7.0+)  |
 
 ## <a name="fixed-issues-for-support"></a>Támogatási rögzített problémái
 
@@ -1007,7 +1007,7 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | BUG-100436             | [RANGER-2060](https://issues.apache.org/jira/browse/RANGER-2060)                                                                                                                                           | Knox-sso-val Knox proxy nem működik a rangerhez                                                                    |
 | HIBA – 101038             | [SPARK-24062](https://issues.apache.org/jira/browse/SPARK-24062)                                                                                                                                           | A Zeppelin % Spark interpret "Kapcsolat elutasítva" hiba "egy titkos kulcsot kötelező..." Hiba történt a HiveThriftServer |
-| BUG-101359             | [ACCUMULO-4056](https://issues.apache.org/jira/browse/ACCUMULO-4056)                                                                                                                                       | 3.2.2 kiadásakor commons-gyűjtemény frissített verziójára                                                           |
+| BUG-101359             | [ACCUMULO-4056](https://issues.apache.org/jira/browse/ACCUMULO-4056)                                                                                                                                       | 3\.2.2 kiadásakor commons-gyűjtemény frissített verziójára                                                           |
 | HIBA – 54240              | [HIVE-18879](https://issues.apache.org/jira/browse/HIVE-18879)                                                                                                                                             | Ne engedélyezze a beágyazott elem UDFXPathUtil kell működik, ha az osztályútvonal xercesImpl.jar                                |
 | BUG-79059              | [OOZIE-3109](https://issues.apache.org/jira/browse/OOZIE-3109)                                                                                                                                             | HTML-specifikus karaktereket escape-naplóstreamelés a                                                                       |
 | HIBA – 90041              | [OOZIE-2723](https://issues.apache.org/jira/browse/OOZIE-2723)                                                                                                                                             | JSON.org licenc már CatX                                                                                          |
@@ -1433,7 +1433,7 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 
     -   <https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations>
 
-## <a name="upgrading"></a>Frissítés
+## <a name="upgrading"></a>A frissítés
 
 Ezek a funkciók érhetők el a HDInsight 3.6-ot. Válassza ki a Spark, Kafka, Machine Learning Services verziója a Spark, Kafka és az R Server (Machine Learning-szolgáltatások) legújabb verziójának beszerzéséhez, amikor, [hozzon létre egy HDInsight 3.6-fürt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Az ADLS segítségre van szüksége, kiválaszthatja az ADLS tárolótípus beállítás. Meglévő fürtök nem frissül ezen verziója automatikusan.
 

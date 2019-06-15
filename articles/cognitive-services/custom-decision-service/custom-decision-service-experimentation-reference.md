@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
 ms.openlocfilehash: b5f8c853218a1db53f4dd23e7254b35990a7132b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60829174"
 ---
 # <a name="experimentation"></a>Kísérletezés
@@ -80,7 +80,7 @@ Az eredmények naplózása a rendszer hozzáfűzi a *mwt-ds/DataScience/experime
 | Input (Bemenet) | Leírás | Alapértelmezett |
 | --- | --- | --- |
 | `-h`, `--help` | Súgóüzenet megjelenítése, és zárja be. | |
-| `-f FILE_PATH`, `--file_path FILE_PATH` | Adatok elérési útja (`.json` vagy `.json.gz` -formátum – minden sorban van egy `dsjson`). | Kötelező |  
+| `-f FILE_PATH`, `--file_path FILE_PATH` | Adatok elérési útja (`.json` vagy `.json.gz` -formátum – minden sorban van egy `dsjson`). | Szükséges |  
 | `-b BASE_COMMAND`, `--base_command BASE_COMMAND` | Alap Vowpal Wabbit parancsot.  | `vw --cb_adf --dsjson -c` |  
 | `-p N_PROC`, `--n_proc N_PROC` | Használandó párhuzamos folyamatok száma. | Logikai processzorok |  
 | `-s SHARED_NAMESPACES, --shared_namespaces SHARED_NAMESPACES` | A szolgáltatás névterek megosztott (például `abc` azt jelenti, hogy a névterek `a`, `b`, és `c`).  | Automatikus észlelésű adatfájlból |  

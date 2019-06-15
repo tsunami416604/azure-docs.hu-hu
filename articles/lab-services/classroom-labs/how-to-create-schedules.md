@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 34bc8263053cd4a701c16ee1832cf1b27340a345
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60695996"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Létrehozása és kezelése az Azure Lab Services osztályterem-tesztkörnyezetek ütemezését 
@@ -47,8 +47,8 @@ ms.locfileid: "60695996"
 
     ![Az ütemezések lapon ütemezés gomb hozzáadása](../media/how-to-create-schedules/add-schedule-button.png)
 2. Az a **Hozzáadás ütemezés** lapon, váltson **heti** tetején. 
-3. A **ütemezett nap (kötelező)**, válassza ki azokat a napokat, amelyeken az ütemezés érvénybe szeretné. A következő példában hétfőtől péntekig van kiválasztva. 
-4. Az a **a** mezőbe írja be a **ütemezett kezdési dátum** válasszon dátumot kiválasztásával, vagy a **naptár** gombra. Ezt a mezőt kötelező kitölteni. 
+3. A **ütemezett nap (kötelező)** , válassza ki azokat a napokat, amelyeken az ütemezés érvénybe szeretné. A következő példában hétfőtől péntekig van kiválasztva. 
+4. Az a **a** mezőbe írja be a **ütemezett kezdési dátum** válasszon dátumot kiválasztásával, vagy a **naptár** gombra. Ez a mező kitöltése kötelező. 
 5. A **az ütemezéshez záró dátumot**adja meg vagy válassza ki a befejező dátum, amelyen a virtuális gépek vannak, le kell állítani. 
 6. A **kezdési idő**, válassza ki az időpontot, amelyeknél szeretné elindítani a virtuális gépeket. A kezdési időpontját kötelező megadni, ha nincs beállítva a leállítási ideje. Válassza ki **Remove esemény indítása** Ha meg szeretné határozni a csak a leállítási ideje. Ha a **kezdési idő** van válassza le van tiltva, **Hozzáadás indítása esemény** mellett a legördülő listából válassza ki az engedélyezéshez. 
 7. A **leállítási ideje**, válassza ki az idő, amelyeknél szeretné a virtuális gépek leállítását. A leállási idő megadása kötelező, ha a kezdési időpont nincs beállítva. Válassza ki **Remove leállási esemény** Ha adja meg a kezdő időpont csak szeretné. Ha a **leállítási ideje** van válassza le van tiltva, **Hozzáadás leállási esemény** mellett a legördülő listából válassza ki az engedélyezéshez.

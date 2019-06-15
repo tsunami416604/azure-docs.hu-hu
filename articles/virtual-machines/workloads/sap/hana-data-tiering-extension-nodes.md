@@ -15,16 +15,16 @@ ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b5868aaf29d6b57ea608763840a08f1991a982e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60628591"
 ---
 # <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA rétegezést és bővítmény csomópontok használata
 
 SAP az SAP BW a különböző SAP NetWeaver-kiadások és az SAP BW/4HANA rétegezési adatmodellt támogatja. Az adatmodell rétegezési kapcsolatos további információkért lásd: az SAP-dokumentum [SAP BW/4hana-t és az SAP BW on HANA, SAP HANA-bővítmény csomóponttal rendelkező](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#).
-Nagyméretű HANA-példány, az SAP HANA-bővítmény csomópontok konfigurációja – 1. lehetőség – gyakori kérdések és az SAP blog dokumentumok leírtak is használhatja. 2. lehetőség konfigurációk beállíthatja az a következő HANA nagyméretű példány termékváltozatok: S72m, S192, S192m, S384, and S384m. 
+Nagyméretű HANA-példány, az SAP HANA-bővítmény csomópontok konfigurációja – 1. lehetőség – gyakori kérdések és az SAP blog dokumentumok leírtak is használhatja. 2\. lehetőség konfigurációk beállíthatja az a következő HANA nagyméretű példány termékváltozatok: S72m, S192, S192m, S384, and S384m. 
 
 Ha a dokumentáció, azt az előnyt esetleg nem láthatók azonnal. De ha az SAP méretezési irányelveket tekinti meg, megjelenik egy nagy előnnyel jár beállítás-1. és 2. lehetőség SAP HANA-bővítmény csomópontok használatával. Az alábbiakban példákat:
 

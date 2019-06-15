@@ -16,10 +16,10 @@ ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 99c4f0f99af61196cf1a12f2f68a7d10d8b2e6c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61477161"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az az Azure Virtual Machines szolgáltatásban futó SQL Server? (Windows)
@@ -74,7 +74,7 @@ A Linux rendszerhez elérhető SQL Server-virtuálisgépek rendszerképeivel kap
 ### <a id="BYOL"></a> Saját licenc használata
 Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül.  Saját licence használatával hosszú távon pénzt takaríthat meg a folyamatos éles számítási feladatok esetében. A lehetőség követelményeivel kapcsolatos információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md#byol).
 
-A saját licenc használata, vagy átalakíthatja a meglévő fizetési-per-használat az SQL virtuális gép, vagy telepíthet egy olyan rendszerképre a előtaggal rendelkező **{BYOL}**. Licencelési modelljének használatalapú-per-használat és a BYOL közötti váltás kapcsolatos további információkért lásd: [SQL virtuális gép licencelési modelljét módosítása](virtual-machines-windows-sql-ahb.md). 
+A saját licenc használata, vagy átalakíthatja a meglévő fizetési-per-használat az SQL virtuális gép, vagy telepíthet egy olyan rendszerképre a előtaggal rendelkező **{BYOL}** . Licencelési modelljének használatalapú-per-használat és a BYOL közötti váltás kapcsolatos további információkért lásd: [SQL virtuális gép licencelési modelljét módosítása](virtual-machines-windows-sql-ahb.md). 
 
 | Version | Operációs rendszer | Kiadás |
 | --- | --- | --- |

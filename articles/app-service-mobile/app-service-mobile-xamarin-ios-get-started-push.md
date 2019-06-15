@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: de24b64ecd95eec79d7508f978acda9f0ae5a8d6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62097521"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>Leküldéses értesítések Xamarin.iOS-alkalmazás hozzáadása
@@ -147,7 +147,7 @@ Az alkalmazás most már frissül, és támogatja a leküldéses értesítéseke
    > [!NOTE]
    > Az alkalmazásból explicit módon el kell fogadnia a leküldéses értesítések. Ezt a kérelmet csak akkor történik meg, amely az alkalmazás első alkalommal.
 
-2. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz (**+**) ikonra.
+2. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz ( **+** ) ikonra.
 3. Győződjön meg arról, hogy értesítés érkezik, majd kattintson a **OK** az értesítés elvetéséhez.
 4. Ismételje meg a 2. lépés azonnal zárja be az alkalmazást, majd győződjön meg arról, hogy egy értesítés jelenik meg.
 

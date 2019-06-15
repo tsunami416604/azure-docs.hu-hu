@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60718068"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>VMware-vészhelyreállításhoz az Azure CSP-bA több-bérlős támogatásának áttekintése
@@ -24,11 +24,11 @@ Ez a cikk megvalósítása és kezelése az Azure-bA több-bérlős VMware átte
 
 Nincsenek három fő több-bérlős modell:
 
-* **Üzemeltetési Megosztottkeresőszolgáltatás-ellátó (HSP)**: A partner tulajdonában lévő fizikai infrastruktúráját, és használja a megosztott erőforrások (vCenter, adatközpontok, fizikai tároló és így tovább) több bérlő virtuális gépek üzemeltetéséhez ugyanazon az infrastruktúrán. A partner is képes a globálisnév vész-helyreállítási felügyelt szolgáltatás, vagy a bérlő is saját vész-helyreállítási önkiszolgáló megoldást.
+* **Üzemeltetési Megosztottkeresőszolgáltatás-ellátó (HSP)** : A partner tulajdonában lévő fizikai infrastruktúráját, és használja a megosztott erőforrások (vCenter, adatközpontok, fizikai tároló és így tovább) több bérlő virtuális gépek üzemeltetéséhez ugyanazon az infrastruktúrán. A partner is képes a globálisnév vész-helyreállítási felügyelt szolgáltatás, vagy a bérlő is saját vész-helyreállítási önkiszolgáló megoldást.
 
 * **Dedikált szolgáltatás szolgáltató**: A partner a fizikai infrastruktúra tulajdonosa, de dedikált erőforrásokat (több vCenters, fizikai adattárolók, és így tovább) használja a külön infrastruktúra minden egyes bérlő-alapú virtuális gépek üzemeltetéséhez. A partner is képes a globálisnév vész-helyreállítási felügyelt szolgáltatás, vagy a bérlő is saját, önkiszolgáló megoldás.
 
-* **Felügyelt szolgáltatások szolgáltatói (MSP)**: Az ügyfél a tulajdonosa a virtuális gépeket üzemeltető fizikai infrastruktúráját, és a partner által biztosított a vész-helyreállítási engedélyezését és felügyelet.
+* **Felügyelt szolgáltatások szolgáltatói (MSP)** : Az ügyfél a tulajdonosa a virtuális gépeket üzemeltető fizikai infrastruktúráját, és a partner által biztosított a vész-helyreállítási engedélyezését és felügyelet.
 
 ## <a name="shared-hosting-services-provider-hsp"></a>A megosztott üzemeltetési szolgáltatásokat szolgáltató (HSP)
 
@@ -110,7 +110,7 @@ Korlátozni vész-helyreállítási művelet csak feladatátvételi másnapi (az
 ### <a name="deploy-resources-to-the-tenant-subscription"></a>A bérlői előfizetéshez erőforrások üzembe helyezése
 
 1. Az Azure Portalon hozzon létre egy erőforráscsoportot, és a Recovery Services-tároló, a szokásos folyamatonként telepíteni.
-2. Töltse le a tároló regisztrációs kulcsát.
+2. Töltse le a tárolóregisztrációs kulcsot.
 3. A CS regisztrálja a bérlő által a tároló regisztrációs kulcsát használja.
 4. Adja meg a két hozzáférési fiókokat, a fiók a vCenter-kiszolgálóhoz való hozzáféréshez és eléri a virtuális Gépet a fiók hitelesítő adatait.
 

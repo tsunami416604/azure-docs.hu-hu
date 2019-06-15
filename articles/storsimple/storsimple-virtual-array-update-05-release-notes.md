@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 385d9126d578250064659153f6f0f54eec696790
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60870672"
 ---
 # <a name="storsimple-virtual-array-update-05-release-notes"></a>A StorSimple Virtual Array frissítés 0,5 kibocsátási megjegyzései
@@ -29,14 +29,14 @@ A következő kiadási megjegyzések a kritikus fontosságú megoldatlan problé
 
 A kibocsátási megjegyzésekben folyamatosan frissülnek, és ahogy ismertté kritikus problémák adódnak. A StorSimple Virtual Array üzembe helyezése, előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
 
-0.5-ös frissítés felel meg a szoftververzió **10.0.10290.0**.
+0\.5-ös frissítés felel meg a szoftververzió **10.0.10290.0**.
 
 > [!NOTE]
 > Azok zavart okozó frissítések, és indítsa újra az eszközt. I/o van folyamatban, ha az eszköz leállást. A frissítés alkalmazása részletes utasításokért ugorjon [0.5-ös frissítés telepítése](storsimple-virtual-array-install-update-05.md).
 
 
-## <a name="whats-new-in-the-update-05"></a>0.5-ös frissítés újdonságai
-0.5-ös frissítés elsősorban hibajavítás build. A fő fejlesztéseket és hibajavítások – a következők:
+## <a name="whats-new-in-the-update-05"></a>0\.5-ös frissítés újdonságai
+0\.5-ös frissítés elsősorban hibajavítás build. A fő fejlesztéseket és hibajavítások – a következők:
 
 - **Biztonsági mentés rugalmasság fejlesztései** – ebben a kiadásban rendelkezik, amelyek javítják a biztonsági mentési rugalmasság javításokat. A korábbi kiadásokban a biztonsági mentések újrapróbált csak bizonyos kivételekhez. Ebben a kiadásban a biztonsági mentési kivételek újrapróbálkozik, és ellenállóbbá teszi a biztonsági másolatok.
 
@@ -47,18 +47,18 @@ A kibocsátási megjegyzésekben folyamatosan frissülnek, és ahogy ismertté k
 
 Az alábbi táblázat hibáinak javításai ebben a kiadásban összegzését tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma |
+| Nem. | Funkció | Probléma |
 | --- | --- | --- |
 | 1 |Biztonsági mentési rugalmasság| A korábbi kiadásokban a biztonsági mentések újrapróbált csak bizonyos kivételekhez. Ebben a kiadásban a biztonsági mentési kivételek való ismételt megkísérlésével rugalmasabb biztonsági másolatok készítése javítást tartalmaz.|
 | 2 |Figyelés| A tároló a használat monitorozása a StorSimple virtuális eszköz sorozat elavulttá válik 2017. június 30. indítása. Ez a művelet hatással van a futó virtuális StorSimple-tömbök StorSimple-Eszközkezelő szolgáltatásban a figyelési diagramjait (1200-as modell). Ebben a kiadásban a frissítések, amelyek lehetővé teszik a storage a virtuális tömbök túli 2017. június 30. a használat monitorozása használatának folytatásához a felhasználó rendelkezik.|
 | 3 |Fájlkiszolgáló| A korábbi kiadásokban a felhasználó sikerült véletlenül titkosított fájlok másolása a virtuális tömb. Ez a kiadás, amely nem teszik lehetővé a virtuális tömb a titkosított fájlok másolását a javítást tartalmaz. Ha az eszköz meglévő titkosított fájlok, a frissítés előtt, biztonsági mentések továbbra is sikertelen lesz mindaddig, amíg a titkosított fájlok törlődnek a rendszerből. |
 
 
-## <a name="known-issues-in-the-update-05"></a>0.5-ös frissítés ismert problémái
+## <a name="known-issues-in-the-update-05"></a>0\.5-ös frissítés ismert problémái
 
 Az alábbi táblázat a StorSimple Virtual Array az ismert problémák összegzését tartalmazza, és a kiadási jelezve a korábbi kiadásokban a problémák tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma | Megkerülő megoldás és megjegyzések |
+| Nem. | Funkció | Probléma | Megkerülő megoldás és megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |Az előzetes kiadásban létrehozott virtuális eszközre nem lehet frissíteni egy támogatott általánosan elérhető verzióra. |Ezek a virtuális eszközök feladatátvételt kell végrehajtani a végleges kiadás vész-helyreállítási munkafolyamat használatával. |
 | **2.** |Kiépített adatlemez |Miután ellátta bizonyos megadott méretű adatlemez és a megfelelő virtuális StorSimple-eszközt hozott létre, meg kell nem tartalomtól az adatlemezt. Elvesztését eredményezi, a helyi rétegeken az eszköz összes adatának tegye kísérletet. | |

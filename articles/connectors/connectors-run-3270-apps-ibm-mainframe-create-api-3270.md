@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
 ms.openlocfilehash: 7388dc0c61dad9c31da0c178febcee4c8481bc50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60538863"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>IBM Nagyszámítógépek 3270 képernyő adatvezérelt alkalmazások integrálása az Azure-ral IBM 3270 és az Azure Logic Apps-összekötő használatával
@@ -221,7 +221,7 @@ Feltételezve, hogy ismételje meg a lépéseket, de helytelen adatokat adja meg
 
 * MSG-10
 * Üdvözli a CICS
-* Üres
+* üres
 * WBGB_1 (input)
 * WBGB_2 (hiba)
 * Empty_1
@@ -355,7 +355,7 @@ Amikor befejezte az ezeket a lépéseket, a művelettel a logikai alkalmazást, 
    ![3270 művelet kiválasztása](./media/connectors-create-api-3270/select-3270-action.png)
 
    Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. 
-   Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+   Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
 
 1. Ha nincs kapcsolat még létezik, adja meg a szükséges információkat a kapcsolat, és válassza a **létrehozás**.
 
@@ -364,7 +364,7 @@ Amikor befejezte az ezeket a lépéseket, a művelettel a logikai alkalmazást, 
    | **Kapcsolat neve** | Igen | <*kapcsolat neve*> | A kapcsolat neve |
    | **Integrációs fiók azonosítója** | Igen | <*integration-account-name*> | Az integrációs fiók nevét |
    | **Integrációs fiók SAS URL-címe** | Igen | <*integration-account-SAS-URL*> | Az integrációs fiók közös hozzáférésű Jogosultságkód (SAS) URL-cím, amely is létrehozhat az Azure Portalon az integrációs fiók beállításait. <p>1. A az integrációs fiók menü alatt **beállítások**válassza **visszahívási URL-Címének**. <br>2. A jobb oldali ablaktáblán, másolja a **generált visszahívási URL-Címének** értéket. |
-   | **Kiszolgáló** | Igen | <*TN3270-server-name*> | A kiszolgáló nevét a TN3270 szolgáltatás |
+   | **Server** | Igen | <*TN3270-server-name*> | A kiszolgáló nevét a TN3270 szolgáltatás |
    | **Port** | Nem | <*TN3270-server-port*> | A TN3270-kiszolgáló által használt port. Ha üresen hagyja, az összekötő használja `23` az alapértelmezett érték. |
    | **Eszköz típusa** | Nem | <*IBM-terminal-model*> | Az a modell neve vagy az IBM terminál emulálása érdekében. Ha üresen hagyja, az összekötőt az alapértelmezett értékeket használja. |
    | **Znaková Stránka** | Nem | <*code-page-number*> | A kód oldal száma a gazdagép számára. Ha üresen hagyja, az összekötő használja `37` az alapértelmezett érték. |

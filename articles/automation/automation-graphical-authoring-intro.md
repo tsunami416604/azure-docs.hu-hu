@@ -10,10 +10,10 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60740670"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus létrehozás az Azure Automationben
@@ -44,7 +44,7 @@ A vászon alján a vezérlők használatával nagyíthat és.
 
 A könyvtár vezérlőben, ahol ki kell választania [tevékenységek](#activities) hozzáadása a runbookhoz. Hozzáadja őket a vásznon, ahol Ön csatlakoztathatja őket a többi tevékenység. Tartalmazza az alábbi táblázatban ismertetett négy részből áll:
 
-| Section | Leírás |
+| `Section` | Leírás |
 |:--- |:--- |
 | Parancsmagok |A runbook felhasználható összes parancsmagot tartalmazza. Parancsmagok modul szerint vannak rendszerezve. A modulokat az automation-fiókban telepített összes érhetők el. |
 | Runbookok |Tartalmazza a forgatókönyvek az automation-fiók. Ezek a runbookok gyermek runbookként használható vásznon lehet hozzáadni. Csak az azonos core típusú, a runbook szerkesztett forgatókönyvek jelennek meg; a grafikus runbookok csak PowerShell-alapú forgatókönyvek jelennek meg, amíg a grafikus PowerShell-munkafolyamati runbookok csak PowerShell-munkafolyamat-alapú forgatókönyvek jelennek meg. |
@@ -111,7 +111,7 @@ Ha megad egy értéket a paraméterhez, ki kell választania egy adatforrás hat
 
 | Adatforrás | Leírás |
 |:--- |:--- |
-| Konstans érték |Adja meg a paraméter értékét. Ez a tulajdonság csak a következő adattípusokat érhető el: Int32, Int64, String, logikai értéket, DateTime, váltson. |
+| Állandó érték |Adja meg a paraméter értékét. Ez a tulajdonság csak a következő adattípusokat érhető el: Int32, Int64, String, logikai értéket, DateTime, váltson. |
 | Tevékenység kimenete |Egy tevékenységgel, amely szerepel az aktuális tevékenység a munkafolyamat kimenetét. Az összes érvényes tevékenységek jelennek meg. Válassza ki a csak a tevékenység kimenetét használja a paraméter értéke. Ha a tevékenység kimenete egy több tulajdonsággal rendelkező objektumot, majd beírhatja be a tulajdonság nevét a tevékenység kiválasztása után. |
 | Forgatókönyv-bemenet |Válassza ki a forgatókönyv bemeneti paramétere a tevékenység-paraméter bemeneteként. |
 | Változóeszköz |Válassza ki a egy automatizálási változó bemenetként. |
@@ -119,11 +119,11 @@ Ha megad egy értéket a paraméterhez, ki kell választania egy adatforrás hat
 | Tanúsítványobjektum |Válassza ki az Automation-tanúsítvány bemenetként. |
 | Kapcsolatobjektum |Válassza ki az automatizálási kapcsolat bemenetként. |
 | PowerShell-kifejezés |Adja meg az egyszerű [PowerShell-kifejezés](#powershell-expressions). A kifejezés előtt a tevékenység és az eredmény a paraméter értéke a használt lesz kiértékelve. Változók használatával tekintse meg a kimeneti tevékenység vagy a forgatókönyv bemeneti paramétere. |
-| Nincs beállítva |Törli a korábban beállított értéket. |
+| Nincs konfigurálva |Törli a korábban beállított értéket. |
 
 #### <a name="optional-additional-parameters"></a>További nem kötelező paraméterek
 
-Minden parancsmag lehetősége a további paramétereket adja meg. Ezek a PowerShell általános paramétereivel vagy más egyéni paraméterek. Megnyílik egy szövegmező, ahol megadhatja a paramétereket a PowerShell-szintaxis használatával. Használja például a **részletes** általános paramétert kell megadni **"-Verbose: $True"**.
+Minden parancsmag lehetősége a további paramétereket adja meg. Ezek a PowerShell általános paramétereivel vagy más egyéni paraméterek. Megnyílik egy szövegmező, ahol megadhatja a paramétereket a PowerShell-szintaxis használatával. Használja például a **részletes** általános paramétert kell megadni **"-Verbose: $True"** .
 
 ### <a name="retry-activity"></a>Ismételje meg a tevékenység
 
@@ -194,7 +194,7 @@ Válassza ki a hivatkozásra kattintva konfigurálja a tulajdonságait, a konfig
 | Hivatkozás típusa | Leírás |
 |:--- |:--- |
 | Folyamat |A céltevékenység fut egyszer minden egyes objektum kimeneti a forrásoldali tevékenységnek. A céltevékenység nem működik, ha a forrásoldali tevékenységnek nincs kimenet eredményez. A forrásoldali tevékenység kimenete objektumként érhető el. |
-| Szekvencia |A céltevékenység csak egyszer fut le. A forrásoldali tevékenység Eszközindítási objektumokból álló tömb. A forrásoldali tevékenység kimenete objektumok tömbjeként érhető el. |
+| Feladatütemezés |A céltevékenység csak egyszer fut le. A forrásoldali tevékenység Eszközindítási objektumokból álló tömb. A forrásoldali tevékenység kimenete objektumok tömbjeként érhető el. |
 
 ### <a name="starting-activity"></a>Kezdő tevékenység
 
@@ -249,7 +249,7 @@ Az alábbi példa egy runbookot, amely elindítja a virtuális gépek egyidejűl
 
 Egy ciklus akkor, ha egy cél tevékenység hivatkozások vissza a forrásoldali tevékenység vagy egy másik tevékenység hivatkozó végül forrásként. Ciklusok jelenleg nem engedélyezett a grafikus létrehozásról. Ha a runbook egy ciklust, megfelelően menti, de hibaüzenetet kap, futtatásakor.
 
-![Ciklikus](media/automation-graphical-authoring-intro/runbook-cycle.png)
+![Ciklus](media/automation-graphical-authoring-intro/runbook-cycle.png)
 
 ### <a name="sharing-data-between-activities"></a>Tevékenységek között adatokat megosztó
 
@@ -268,7 +268,7 @@ $ActivityOutput['Activity Label']
 $ActivityOutput['Activity Label'].PropertyName
 ```
 
-### <a name="checkpoints"></a>Ellenőrzőpontok
+### <a name="checkpoints"></a>Az ellenőrzőpontok
 
 Beállíthat [ellenőrzőpontok](automation-powershell-workflow.md#checkpoints) a grafikus PowerShell-munkafolyamati runbook kiválasztásával *ellenőrzőpont-forgatókönyv* minden olyan tevékenységnél. Ennek hatására a tevékenység futtatása után kell beállítani egy ellenőrzőpontot.
 

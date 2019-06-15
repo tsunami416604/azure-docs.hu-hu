@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 8cc529fbf9b24335be1bec07f81c732ced7a2b72
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60773842"
 ---
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet alapszintű szabályzatok kezelése
@@ -60,7 +60,7 @@ Az automatikus leállítási a szabályzattal meggyőződhetnek labor hatékonys
 
 1. A laborgyakorlat **Konfigurace a zásady** ablaktáblán válassza előbb **automatikus leállítási**.
    
-    ![Automatikus leállítás](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
+    ![Automatické vypnutí](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 
 1. Válassza ki **a** ahhoz, hogy ezt a házirendet, és **ki** letiltja azt.
 

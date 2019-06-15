@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
 ms.openlocfilehash: 0ca22cfe99e77cd2ed3c5a966fb2412444103d71
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922444"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>A Batch szolgáltatási megoldások és az Active Directory hitelesítést
@@ -138,7 +138,7 @@ Kövesse az alábbi lépéseket az Azure Portalon:
 Egyszerű szolgáltatás hitelesítése, kell egy RBAC szerepkör hozzárendelése az alkalmazáshoz. Kövesse az alábbi lépéseket:
 
 1. Az Azure Portalon lépjen a Batch-fiókot, amelyet az alkalmazás.
-2. Az a **beállítások** a Batch-fiókhoz, válassza a panel **hozzáférés-vezérlés (IAM)**.
+2. Az a **beállítások** a Batch-fiókhoz, válassza a panel **hozzáférés-vezérlés (IAM)** .
 3. Kattintson a **szerepköreinek hozzárendeléseit** fülre.
 4. Kattintson a **szerepkör-hozzárendelés hozzáadása** gombra. 
 5. Az a **szerepkör** legördülő menüben válassza a _közreműködői_ vagy _olvasó_ az alkalmazás-szerepkör. Ezen szerepkörökkel kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon – első lépések](../role-based-access-control/overview.md).  

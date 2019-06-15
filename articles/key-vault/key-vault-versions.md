@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: e452313934c6a3076a3801b70019048090f2c6d1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64685441"
 ---
 # <a name="key-vault-versions"></a>Key Vault-verziók
@@ -60,7 +60,7 @@ Frissítve a következő feladatokat:
 - Frissítse a titkos kulcs - címkék hozzáadva opcionális információk.
 - Módosult a titkos kulcsok maximális méret 10 ezer 25 kilobájt. Látható, [kapcsolatos kulcsok, titkos kódok és tanúsítványok](about-keys-secrets-and-certificates.md).
 
-## <a name="2014-12-08-preview"></a>2014. 12-08-előzetes verzió
+## <a name="2014-12-08-preview"></a>2014\. 12-08-előzetes verzió
 
 Első előzetes verziója 2014-12-08-preview, 2015. január 8 jelentettük be.
 

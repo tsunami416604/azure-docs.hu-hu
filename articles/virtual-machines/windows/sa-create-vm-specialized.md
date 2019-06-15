@@ -17,11 +17,11 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: f2110a749c41f59b11a6d400faa2e42e751305fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60251077"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693819"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Virtuális gép létrehozása a tárfiókban lévő speciális virtuális merevlemezből
 
@@ -110,7 +110,7 @@ A hálózati kapcsolat és a VHD-fájl méretétől függően ez a parancs is ig
 
 Virtuális merevlemez másolhatja, amikor egy új, ismétlődő virtuális Gépet hoz létre egy másik tárfiókba.
 
-### <a name="before-you-begin"></a>Előzetes teendők
+### <a name="before-you-begin"></a>Előkészületek
 Győződjön meg arról, hogy Ön:
 
 * Kapcsolatos információkkal rendelkezzen a **forrás- és storage-fiókok**. A forrás virtuális gép szüksége lesz a storage-fiók és a tároló nevét. Általában a tároló neve lesz **VHD-k**. Emellett szüksége lesz a cél tárfiók. Ha még nem rendelkezik egy, létrehozhat egyet vagy a portál használatával (**minden szolgáltatás** > tárfiókok > hozzáadása) vagy a [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) parancsmagot. 
@@ -126,7 +126,7 @@ Szabadítsa fel a virtuális Gépet, így Önnek be kell másolni a virtuális m
 Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
 ```
 
-A **állapot** a virtuális gép az Azure Portalon a változik **leállítva** való **leállítva (felszabadítva)**.
+A **állapot** a virtuális gép az Azure Portalon a változik **leállítva** való **leállítva (felszabadítva)** .
 
 ### <a name="get-the-storage-account-urls"></a>A storage-fiók URL-címek lekérése
 Szüksége lesz a forrás- és storage-fiókok URL-címei. Az URL-címek néz ki: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Ha már ismeri a tárolási fiók és a tároló nevét, egyszerűen lecserélheti az adatok az URL-cím létrehozása a zárójelek között. 

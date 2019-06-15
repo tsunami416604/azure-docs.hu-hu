@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64575358"
 ---
 # <a name="glossary"></a>Szószedet
@@ -37,7 +37,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="antimeridian"></a> **Antimeridian**: Más néven a 180<sup>th</sup> délkörének az a pont, ahol-180 fok és hosszúság 180 fokos felel meg. Ez az ellentétes a szélességi jelöl.
 
-<a name="application-programming-interface-api"></a> **Alkalmazás programozási felületét (API)**: A szabvány, amely lehetővé teszi a fejlesztők számára az alkalmazások.
+<a name="application-programming-interface-api"></a> **Alkalmazás programozási felületét (API)** : A szabvány, amely lehetővé teszi a fejlesztők számára az alkalmazások.
 
 <a name="api-key"></a> **API-kulcs**: Tekintse meg az Azure Maps-kulcsot.
 
@@ -51,7 +51,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="autosuggest"></a> **Automatikus kiegészítés**: Az alkalmazás egyik szolgáltatása a előrejelzi a Mi a felhasználó beírja logikai lehetőségeit.
 
-<a name="azure-location-based-services-lbs"></a> **Az Azure Location Based Services (LBS)**: Ha az előzetes verzióban elérhető volt az Azure Maps korábbi neve.
+<a name="azure-location-based-services-lbs"></a> **Az Azure Location Based Services (LBS)** : Ha az előzetes verzióban elérhető volt az Azure Maps korábbi neve.
 
 <a name="azure-maps-key"></a> **Az Azure Maps kulcs**: Az Azure Maps kulcs egy egyedi karakterlánccá, amellyel a felhasználó az Azure Maps alkalmazás vagy a szolgáltatási kérelem hitelesítéséhez. 
 
@@ -75,7 +75,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="camera"></a> **Kamera**: Egy interaktív térkép vezérlőelem kontextusában a fényképezőgép határozza meg a maps mező meg. A nézőpont a kamera több leképezési paraméterek; alapján határozza meg központ, nagyítási szintjét, lényegét, szem előtt. 
 
-<a name="centroid"></a> **Középpont –**: Egy szolgáltatás geometriai közepén. A középpont – egy vonal a középponti lenne, amíg a sokszög középpontját lenne a középső terület.
+<a name="centroid"></a> **Középpont –** : Egy szolgáltatás geometriai közepén. A középpont – egy vonal a középponti lenne, amíg a sokszög középpontját lenne a középső terület.
 
 <a name="choropleth-map"></a> **Térkép Choropleth**: Tematikus térkép, amelyben a következő területekre árnyékolt folyamatban van a térképen megjelenített statisztikai változó mérés arányosan. Ha például igazodóvá a határ az Egyesült Államok egyes az összes többi részére relatív sokaság alapján.
 
@@ -91,7 +91,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="coordinate-system"></a> **Koordináta-rendszerére**: Referencia-keretrendszer definiáló pontoknak két vagy három dimenziók a területen.
 
-<a name="country-code"></a> **Országkód:**: Egy ország/régió, ISO szabvány alapján egyedi azonosítója. ISO2 egy ország (például USA), mely ISO3 jelöli három karakteres kód (például Egyesült Államok) két karakterből álló kódot.
+<a name="country-code"></a> **Országkód:** : Egy ország/régió, ISO szabvány alapján egyedi azonosítója. ISO2 egy ország (például USA), mely ISO3 jelöli három karakteres kód (például Egyesült Államok) két karakterből álló kódot.
 
 <a name="country-subdivision"></a> **Ország felosztása**: Ország/régió, állam vagy megye gyakran nevezik első szintű része.
 
@@ -109,7 +109,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="dbf-file"></a> **A DBF-fájl**: Egy adatbázis fájlformátum-Alakzatfájlok (SHP) együtt használják.
 
-<a name="degree-minutes-seconds-dms"></a> **Párhuzamossági perc, másodperc (DMS)**: A szélességi és hosszúsági leíró mértékegysége. Olyan mértékű 1/360<sup>th</sup> egy kör. Olyan mértékű tovább oszthatók 60 perc, és a egy perc van felosztva 60 másodperc.
+<a name="degree-minutes-seconds-dms"></a> **Párhuzamossági perc, másodperc (DMS)** : A szélességi és hosszúsági leíró mértékegysége. Olyan mértékű 1/360<sup>th</sup> egy kör. Olyan mértékű tovább oszthatók 60 perc, és a egy perc van felosztva 60 másodperc.
 
 <a name="delaunay-triangulation"></a> **Delaunay keresztárfolyam**: Összefüggő, nem átfedő háromszögek háló létrehozásához egy adatkészletből pontok módszer. Minden egyes háromszög circumscribing kör nincs pontokat az adatkészletből a saját belső tartalmaz.
 
@@ -117,7 +117,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="destination"></a> **Cél**: A záró pontot vagy a helyét, amelyben valaki utazik.
 
-<a name="digital-elevation-model-dem"></a> **Digitális jogosultságszint-emelési modell (DEM-)**: Jogosultságszint-emelés értékek kapcsolatos egy felület egy közös datum használatával rendszeres időközönként terület fölé rögzített adatkészlet. DEMs jellemzően terep mentesség ábrázolására használják.
+<a name="digital-elevation-model-dem"></a> **Digitális jogosultságszint-emelési modell (DEM-)** : Jogosultságszint-emelés értékek kapcsolatos egy felület egy közös datum használatával rendszeres időközönként terület fölé rögzített adatkészlet. DEMs jellemzően terep mentesség ábrázolására használják.
 
 <a name="dijkstra's-algorithm"></a> **A Dijkstra algoritmus**: Megvizsgálja két pont közötti legrövidebb útvonal megkeresése a hálózat csatlakoztatásához algoritmus.
 
@@ -273,7 +273,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="point"></a> **Pont**: Egy geometriai, amely a térképen egy egyetlen pozíciót jelöli. 
 
-<a name="points-of-interest-poi"></a> **Hasznos helyek (KOORDINÁTÁIIG)**: Egy üzleti, tereptárgyak vagy a lényeges közös helyen.
+<a name="points-of-interest-poi"></a> **Hasznos helyek (KOORDINÁTÁIIG)** : Egy üzleti, tereptárgyak vagy a lényeges közös helyen.
 
 <a name="polygon"></a> **Sokszög**: Egy szilárd geometry, amely egy térkép egy területét jelöli. 
 
@@ -297,7 +297,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="quadtree"></a> **Quadtree**: Olyan adatszerkezet, ahol egyes csomópontok rendelkezik pontosan négy gyermekekkel. Az Azure Maps-használt mozaik elrendezés rendszer quadtree szerkezetet használ, úgy, hogy egy felhasználó közeledik egy szinttel, mivel egyes térképcsempét bontja négy alárendelt csempék.  További információkért lásd: [nagyítási szintek és csemperács](zoom-levels-and-tile-grid.md) dokumentációjában talál további információt.
 
-<a name="queries-per-second-qps"></a> **Lekérdezések másodpercenkénti (lekérdezési QPS)**: Lekérdezések vagy az, hogy egy szolgáltatás vagy a platform egy második belüli kérelmek száma. 
+<a name="queries-per-second-qps"></a> **Lekérdezések másodpercenkénti (lekérdezési QPS)** : Lekérdezések vagy az, hogy egy szolgáltatás vagy a platform egy második belüli kérelmek száma. 
 
 ## <a name="r"></a>R
 
@@ -321,7 +321,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="route"></a> **Útvonal**: Két vagy több hely, előfordulhat, hogy a további információk, például az útvonalon waypoints vonatkozó utasításokat is többek között az elérési útja.
 
-<a name="requests-per-second-rps"></a> **Kérelmek / másodperc (RPS)**: Lásd: [lekérdezések másodpercenkénti (lekérdezési QPS)](#queries-per-second-qps). 
+<a name="requests-per-second-rps"></a> **Kérelmek / másodperc (RPS)** : Lásd: [lekérdezések másodpercenkénti (lekérdezési QPS)](#queries-per-second-qps). 
 
 <a name="rss"></a> **RSS**: Kifejezés mozaikszava az igazán egyszerű tartalomtípus-gyűjtési, erőforrás leírása keretrendszer (RDF) hely összefoglalás vagy gazdag hely összegzése, attól függően, a forrás. Egy egyszerű, strukturált XML formátumú tartalommegosztás különböző webhelyek között. RSS-dokumentumok tartalmazzák a fő metaadatok elemek, például a szerző, dátum, cím, egy rövid leírást és egy hivatkozásra kattintva. Ezen információ segítségével a felhasználó (vagy egy RSS-közzétevő szolgáltatás) döntse el, mi anyagok érdemes további vizsgálatra.
 
@@ -329,9 +329,9 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="satellite-imagery"></a> **Műholdas képanyag**: Rögzített síkok, és rögtön a lefelé mutató szatellit képeken.
 
-<a name="software-development-kit-sdk"></a> **Szoftverfejlesztői készlet (SDK)**: Dokumentációt, mintakódokat és mintaalkalmazások egy fejlesztői használata API-alkalmazások készítése érdekében gyűjteménye.
+<a name="software-development-kit-sdk"></a> **Szoftverfejlesztői készlet (SDK)** : Dokumentációt, mintakódokat és mintaalkalmazások egy fejlesztői használata API-alkalmazások készítése érdekében gyűjteménye.
 
-<a name="shapefile-shp"></a> **Alakzatfájl (SHP)**: Más néven az ESRI-Alakzatfájlra egy vektoros adatok tárolási formátum tárolásához, a hely, alakzat és földrajzi funkciókat attribútumai. Egy alakzatfájl a kapcsolódó fájlokat tárolja.
+<a name="shapefile-shp"></a> **Alakzatfájl (SHP)** : Más néven az ESRI-Alakzatfájlra egy vektoros adatok tárolási formátum tárolásához, a hely, alakzat és földrajzi funkciókat attribútumai. Egy alakzatfájl a kapcsolódó fájlokat tárolja.
 
 <a name="spherical-mercator-projection"></a> **Gömbös Mercator vetületet**: Lásd: [Mercator webes](#web-mercator). 
 
@@ -364,7 +364,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="transformation"></a> **Átalakítás**: A különböző földrajzi koordináta rendszerek közötti átalakítás folyamatán. Előfordulhat például, néhány adat, amely az Egyesült Királyságban rögzített, és a földrajzi koordináta-rendszerére OSGB 1936 alapján. Az Azure Maps használja a [EPSG:3857](https://epsg.io/3857) WGS84 koordináta referencia rendszer változatát. Ilyen megfelelően megjeleníteni az adatokat, akkor kell rendelkeznie a rendszer a másikra alakította át koordinátái.
 
-<a name="traveling-salesmen-problem-tsp"></a> **Traveling eladók probléma (TSP)**:  Hamiltonian kapcsolatcsoport probléma, amelyben egy értékesítő meg kell találnia a leghatékonyabb látogasson el egy sorozatát leáll, majd térjen vissza a kiindulási helyét.  
+<a name="traveling-salesmen-problem-tsp"></a> **Traveling eladók probléma (TSP)** :  Hamiltonian kapcsolatcsoport probléma, amelyben egy értékesítő meg kell találnia a leghatékonyabb látogasson el egy sorozatát leáll, majd térjen vissza a kiindulási helyét.  
 
 <a name="trilateration"></a> **Trilateration**: A folyamat megvizsgálja, hogy minden három pont közötti pozícióját a föld felszínén megállapodást két más pontok pont meghatározására.
 
@@ -376,7 +376,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="vector-tile"></a> **Vektor csempe**: Az open data specifikáció az azonos csempe rendszert használ, a térkép vezérlőelem földrajzi vektoros adatok tárolására. Lásd még: [mozaikréteg](#tile-layer).
 
-<a name="vehicle-routing-problem-vrp"></a> **Járműtelemetria útválasztási problémát (VRP)**: Egy osztály problémák, amelyben egy járműflotta járművek rendezett útvonalak készletét kiszámítása során beállított megkötések, figyelembe véve. Ezek a korlátozások közé tartozik többek között például a szállítási időt a windows, több útvonal kapacitás, és utazás időtartama megkötések.
+<a name="vehicle-routing-problem-vrp"></a> **Járműtelemetria útválasztási problémát (VRP)** : Egy osztály problémák, amelyben egy járműflotta járművek rendezett útvonalak készletét kiszámítása során beállított megkötések, figyelembe véve. Ezek a korlátozások közé tartozik többek között például a szállítási időt a windows, több útvonal kapacitás, és utazás időtartama megkötések.
 
 <a name="voronoi-diagram"></a> **Voronoi diagram**: Egy partíciót, területek vagy cellák terület, körülvevő geometriai objektumok (általában pont funkciók) egy készlete. E cellák és poligonok, meg kell felelniük Delaunay háromszögek feltételeit. Minden hely egy területen belül közelebb az az objektum bekeretezze, mint bármely más objektumot a készletben. Voronoi diagramok gyakran használják a földrajzi szolgáltatások köré befolyásoló területeit ábrázolni. 
 
@@ -386,7 +386,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="waypoint-optimization"></a> **Waypoint optimalizálási**: Waypoints minimalizálása érdekében az utazási idő vagy a távolság egy készletét átrendezése folyamata szükséges az összes megadott waypoints áthaladását. Más néven a [Traveling eladók probléma](#traveling-salesmen-problem-tsp) vagy [jármű útválasztási problémát](#vehicle-routing-problem-vrp) optimalizálása összetettségétől függően.
 
-<a name="web-map-service-wms"></a> **Térkép webszolgáltatás (WMS)**: WMS az Open földrajzi Consortium (OGC) szabványa, amely meghatározza a térkép lemezkép-alapú szolgáltatások. WMS-szolgáltatások képek egy térképet, igény szerinti belül meghatározott területek adja meg. Lemezképek előre megjelenített Jelképrendszer tartalmazza, és a egy elnevezett stílusokat is előfordulhat, hogy megjelenítésre, ha a szolgáltatás által definiált.
+<a name="web-map-service-wms"></a> **Térkép webszolgáltatás (WMS)** : WMS az Open földrajzi Consortium (OGC) szabványa, amely meghatározza a térkép lemezkép-alapú szolgáltatások. WMS-szolgáltatások képek egy térképet, igény szerinti belül meghatározott területek adja meg. Lemezképek előre megjelenített Jelképrendszer tartalmazza, és a egy elnevezett stílusokat is előfordulhat, hogy megjelenítésre, ha a szolgáltatás által definiált.
 
 <a name="web-mercator"></a> **Webalkalmazás-Mercator**: Más néven gömbös Mercator Vetületet a Mercator vetületet, elsősorban a webes leképezés programok használt egyik enyhe variant. Az azonos képleteket, a standard szintű Mercator vetületet használt semmibe maps használ. Azonban a webes Mercator használja a gömbös képletek minden méretezhető, mivel általában nagy méretű Mercator képezi le a képernyőn ellipszoid a leképezés. Eltérést észrevétlen a globális méretekben, de a helyi területet ellipszoid Mercator leképezi az azonos méretű igaz némileg eltérnek a maps okoz.
 

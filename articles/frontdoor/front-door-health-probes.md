@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 59a3bac39437b91eeee3b005bd23476a34a308b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736581"
 ---
 # <a name="health-probes"></a>Állapotminták
@@ -29,7 +29,7 @@ Bejárati ajtajának küldő mintavételek támogatja a HTTP vagy HTTPS protokol
 
 ## <a name="health-probe-responses"></a>Állapot-mintavételi válaszok
 
-| Válaszok  | Leírás | 
+| Responses  | Leírás | 
 | ------------- | ------------- |
 | Állapot meghatározása  |  Egy 200 OK állapotkód: azt jelzi, hogy a háttérrendszer állapota kifogástalan. Minden más sikertelennek van tekintve. Ha bármilyen okból (beleértve a hálózati hiba) egy érvényes HTTP-válasz nem érkezik meg a mintavétel, a mintavételi hiba fog számítani.|
 | Mérési késés  | Késés az az időpont-alapú idő, attól a pillanattól kezdve azonnal, mielőtt a pillanatban, amikor a válasz utolsó bájtját adatigénylési küldjük az állapotminta iránti kérelem mérni. Használjuk a új TCP-kapcsolat az egyes kérések, ez a mérték nem torzítatlan meglévő meleg kapcsolatok-alapú háttérkomponensek felé.  |

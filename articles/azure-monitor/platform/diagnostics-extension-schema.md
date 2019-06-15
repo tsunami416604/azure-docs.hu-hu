@@ -10,10 +10,10 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60527318"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Az Azure Diagnostics bővítmény konfigurációs séma verziók és előzményei
@@ -118,7 +118,7 @@ Ezután konfigurálhatja a teljesítményszámlálók, az Azure Monitor-fogadó 
 Támogatás hozzáadva a Docker.
 
 
-### <a name="diagnostics-extension-181"></a>1.8.1. a diagnosztikai bővítmény
+### <a name="diagnostics-extension-181"></a>1\.8.1. a diagnosztikai bővítmény
 Megadhatja a saját config tárfiókkulcs helyett SAS-jogkivonatát. SAS-token megadása esetén a tárfiók-kulcsot a rendszer figyelmen kívül hagyja.
 
 
@@ -177,7 +177,7 @@ Megjelent az EventHub irányíthatja.
 ### <a name="diagnostics-extension-15"></a>A diagnosztikai bővítmény 1.5-ös
 Hozzáadva az fogadóként elemet, és lehetővé teszi diagnosztikai adatok küldése [Application Insights](../../azure-monitor/app/cloudservices.md) megkönnyíti a problémák diagnosztizálása az alkalmazás, valamint a rendszer és az infrastruktúra szint között.
 
-### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>1.3-tól az Azure SDK 2.6-os és a diagnosztikai bővítmény
+### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>1\.3-tól az Azure SDK 2.6-os és a diagnosztikai bővítmény
 A Visual Studio Felhőszolgáltatás-projektek a következő változások történtek. (Ezek a változások is vonatkoznak az Azure SDK újabb verziói.)
 
 * A helyi emulátor mostantól támogatja a diagnosztikát. Ez a módosítás azt jelenti, hogy a diagnosztikai adatok gyűjtésére, és győződjön meg arról, az alkalmazás létrehozása a megfelelő nyomkövetések közben meg fejlesztése és tesztelése a Visual Studióban. A kapcsolati karakterlánc `UseDevelopmentStorage=true` lehetővé teszi diagnosztikai adatok gyűjtése a futtatása közben a felhőszolgáltatási projektet a Visual Studióban az Azure storage emulator használatával. Az összes diagnosztikai adatgyűjtés (fejlesztési tárterülettel) storage-fiókban.

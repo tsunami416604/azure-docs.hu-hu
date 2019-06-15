@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61472111"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Állítsa be az Azure Site Recovery használata vész-helyreállítási SharePoint Többrétegű alkalmazások vészhelyreállítása
@@ -51,7 +51,7 @@ A SharePoint egy vagy több kiszolgáló megfelel-e meghatározott célok és c�
 
 
 
-![1. telepítési minta](./media/site-recovery-sharepoint/sharepointarch.png)
+![1\. telepítési minta](./media/site-recovery-sharepoint/sharepointarch.png)
 
 
 ## <a name="site-recovery-support"></a>Site Recovery támogatása
@@ -65,7 +65,7 @@ Ez a cikk létrehozására, VMware virtuális gépeknek a Windows Server 2012 R2
 **Hyper-V** | Igen | Igen
 **VMware** | Igen | Igen
 **Fizikai kiszolgáló** | Igen | Igen
-**Azure** | NA | Igen
+**Azure** | n/a | Igen
 
 ### <a name="sharepoint-versions"></a>SharePoint-verziók
 A következő SharePoint server-verziók támogatottak.
@@ -93,7 +93,7 @@ Hajtsa végre a [Ez az útmutató](site-recovery-vmware-to-azure.md) elindítani
 
 ## <a name="networking-configuration"></a>Hálózati konfiguráció
 
-### <a name="network-properties"></a>Hálózat tulajdonságai
+### <a name="network-properties"></a>Hálózati tulajdonságok
 
 * Az alkalmazás és a webes szintű virtuális gépek hálózati beállítások konfigurálása az Azure Portalon, hogy a virtuális gépek beolvasása a megfelelő DR hálózathoz csatlakozik a feladatátvételt követően.
 

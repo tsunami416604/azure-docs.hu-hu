@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c5a76b9cee8fd6eb09ee4d24c1380202fd17cc6d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60836312"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Oracle-adatbázis tervezése és megvalósítása az Azure-ban
@@ -52,7 +52,7 @@ Az alábbi táblázat néhány egy helyszíni megvalósítás és a egy Oracle-a
 > | **Tervezett karbantartás** |Javítás/frissítése|[A rendelkezésre állási csoportok](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (javítás/frissítése az Azure által felügyelt) |
 > | **Erőforrás** |Dedikált  |Más ügyfelek megosztva|
 > | **Régiók** |Adatközpontok |[Régiópárok](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
-> | **Tárolás** |A SAN-ről/fizikai lemezek |[Azure által felügyelt tárolási](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Storage** |A SAN-ről/fizikai lemezek |[Azure által felügyelt tárolási](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Méretezés** |Függőleges méretezés |Horizontális skálázhatóság|
 
 

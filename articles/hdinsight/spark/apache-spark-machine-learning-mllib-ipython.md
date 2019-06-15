@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: 31755dcc247ea3be5fb38249afd98dc72dcbc544
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64717114"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Az Apache Spark MLlib segítségével hozhat létre a machine learning-alkalmazás, és a egy adatkészlet elemzése
@@ -24,7 +24,7 @@ MLlib egy Spark Alapkönyvtár, amely számos hasznos segédprogramokat biztosí
 
 * Besorolás
 * Regresszió
-* Fürtözés
+* Fürtszolgáltatás
 * A témakör modellezés
 * Egyetlen érték idősorfelbontási (SVD) és egyszerű összetevő elemzés (PEM)
 * Tesztelés és minta statisztikák kiszámításához elmélet
@@ -199,12 +199,12 @@ Kezdjük a megtapasztalhatja, az adatkészlet tartalmaz.
 
     Előre jelezni egy food ellenőrzési serkenti az eredményt, a szabálysértések alapuló modell fejlesztéshez szükséges. Mivel a logisztikai regressziós egy bináris osztályozási metódust, logikus csoportosítása az eredményadatok két kategóriába sorolhatók: **Sikertelen** és **átadni**:
 
-   - Sikeres
-       - Sikeres
+   - Fázis
+       - Fázis
        - Feltételek használatával adja át
    - Sikertelen
        - Sikertelen
-   - Elvetés
+   - Elvetése
        - Nem találhatók üzleti
        - Üzleti kívül
 

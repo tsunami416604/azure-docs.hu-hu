@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: jegeib
 ms.openlocfilehash: 4e08491ae898fef16af1e199a76a4c07a6c226b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610479"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>A Microsoft Fenyegetésmodellezési eszköz
@@ -33,7 +33,7 @@ Az eszköz lehetővé teszi a felhasználóknak:
 
 Az alábbiakban néhány eszközök képességei és innovációkról, csak hogy néhányat említsünk:
 
-* **Automatizálás:** Útmutatást és a egy modell rajzolási visszajelzés
+* **Automatizálás**: Útmutatást és a egy modell rajzolási visszajelzés
 * **Egy elem STRIDE:** Fenyegetések és megoldást, az interaktív elemzés
 * **Jelentéskészítés:** Biztonsági tevékenységek és az ellenőrzési fázisban tesztelése
 * **Egyedi módszert:** Lehetővé teszi a felhasználók jobban jelenítheti meg és fenyegetések ismertetése

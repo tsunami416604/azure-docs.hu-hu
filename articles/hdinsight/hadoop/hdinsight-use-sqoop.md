@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.openlocfilehash: 6764d8d812789c9f54fa59e10b2a3e416e583a9c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62129399"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Az Apache Sqoop használata a HDInsight Hadoop-keretrendszerrel
@@ -83,11 +83,11 @@ A fürt, az SQL database és más objektumok jönnek létre az Azure Portalon eg
     |Location egység |A legördülő listából válassza ki a régiót.|
     |Fürt neve |Adja meg a Hadoop-fürt nevét. Csak kisbetű használja.|
     |Fürt bejelentkezési felhasználóneve |Tartsa az előre megadott értéket `admin`.|
-    |Fürt bejelentkezési jelszava |Adja meg a jelszót.|
+    |Fürt bejelentkezési jelszava |Adjon meg egy jelszót.|
     |Ssh-felhasználónév |Tartsa az előre megadott értéket `sshuser`.|
-    |Ssh jelszó |Adja meg a jelszót.|
+    |Ssh jelszó |Adjon meg egy jelszót.|
     |SQL-rendszergazda felhasználóneve |Tartsa az előre megadott értéket `sqluser`.|
-    |Sql Admin Password |Adja meg a jelszót.|
+    |Sql Admin Password |Adjon meg egy jelszót.|
     |_artifacts helye | Használja az alapértelmezett értéket, hacsak nem szeretné használni a saját bacpac-fájlt egy másik helyen található.|
     |_artifacts hely Sas-jogkivonat |Hagyja üresen.|
     |Bacpac-fájl neve |Használja az alapértelmezett értéket, hacsak nem szeretné használni a saját bacpac-fájlba.|

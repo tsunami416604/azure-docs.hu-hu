@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 91fad34073d7505c596bedfb6c93946ee7393dd7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60825608"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>A videofájlok szöveges tartalom digitális szöveggé alakíthatja az Azure Médiaelemzés használatával  
@@ -107,12 +107,12 @@ A kimenet tartalmazza a következő attribútumokat:
 | --- | --- |
 | Időskála |"órajel során végbemenő" a videó másodpercenként |
 | Offset |az időbélyegekhez időeltolódás. Videó API-k 1.0-s verziójában ez mindig 0 lesz. |
-| Képkockasebesség |A képkockák másodpercenkénti a videó |
+| Framerate |A képkockák másodpercenkénti a videó |
 | Szélesség |szélességét (képpontban) a videó |
 | Magasság |magasságát (képpontban) |
-| Töredékek |időalapú adattömböket, amelybe a metaadatok adattömbökre osztotta videó tömbje |
+| Fragments |időalapú adattömböket, amelybe a metaadatok adattömbökre osztotta videó tömbje |
 | start |a "órajel során végbemenő" töredéket kezdete |
-| időtartam |a "órajel során végbemenő" töredéket hossza |
+| Időtartam |a "órajel során végbemenő" töredéket hossza |
 | interval |a megadott töredék belül az egyes eseményeket időköz |
 | események |Pole obsahující régiók |
 | régió |szavak vagy kifejezések objektumot képviselő észlelt |

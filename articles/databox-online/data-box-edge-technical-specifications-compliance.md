@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 52fb32a8b34c62fe94ab35e2c051d996ab8bef10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60755134"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Az Azure Data Box Edge műszaki specifikációk
@@ -86,7 +86,7 @@ Ez a szakasz felsorolja a ház környezetekben, például a hőmérséklet, a p�
 
 |     Rendszerház         |     Környezeti hőmérséklet-tartomány     |     Környezeti relatív páratartalom     |     Maximális harmatpontja     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    Működik        |    10 C – 35 C (50° F - 86° F)         |    80 %-os 10 %-os nem kicsapódó.         |    29°C (84°F)            |
+|    Működési        |    10 C – 35 C (50° F - 86° F)         |    80 %-os 10 %-os nem kicsapódó.         |    29°C (84°F)            |
 |    Nem működő    |    Tartsuk ott-40 C-65 C (tartsuk ott-40 ° F - 149 ° F)     |    95 %-os 5 %-os nem kicsapódó.          |    33°C (91°F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Légmozgás, tengerszint, megváltani, rezgés, tájolást, biztonsági és EMC

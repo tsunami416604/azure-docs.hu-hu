@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/06/2017
 ms.author: KumudD
 ms.openlocfilehash: 9f5206ef5348ee8fd7b3fe981a9cfe4afc1367fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60734541"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>Load Balancer-kihasználtsági mérőszámokat a REST API-val beolvasása
@@ -38,8 +38,8 @@ A következő fejléceket szükség:
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
-|*A Content-Type:*|Kötelező. Állítsa be `application/json`.|  
-|*Hitelesítés:*|Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Content-Type:*|Kötelező. Állítsa be `application/json`.|  
+|*Authorization:*|Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>URI-paraméterek
 
@@ -49,7 +49,7 @@ A következő fejléceket szükség:
 | resourceGroupName | Az erőforrást tartalmazó erőforráscsoport neve. Ez az érték az Azure Resource Manager API, a parancssori felület vagy a portál szerezhet. |
 | loadBalancerName | Az Azure Load Balancer neve. |
 | metricnames | Vesszővel tagolt listája érvényes [Load Balancer metrikái](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| API-verzió | A használandó a kérelem API-verzió.<br /><br /> Ez a dokumentum ismerteti az api-version `2018-01-01`, a fenti URL-címe megtalálható.  |
+| api-version | A használandó a kérelem API-verzió.<br /><br /> Ez a dokumentum ismerteti az api-version `2018-01-01`, a fenti URL-címe megtalálható.  |
 | TimeSpan | A lekérdezési időtartam. A karakterlánc a következő formátumú `startDateTime_ISO/endDateTime_ISO`. Ez nem kötelező paraméter értéke a példában egy nap alatt az adatok visszaadása. |
 | &nbsp; | &nbsp; |
 

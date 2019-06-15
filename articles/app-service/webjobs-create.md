@@ -16,10 +16,10 @@ ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
 ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60833471"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérfeladatok futtatása a WebJobs Azure App Service-ben
@@ -41,7 +41,7 @@ Az Azure Functions egy másik módot nyújt programok és szkriptek futtatásáh
 A következő táblázat ismerteti a közötti különbségeket *folyamatos* és *aktivált* webjobs-feladatok.
 
 
-|Folyamatos  |Triggerrel indított  |
+|Folyamatos  |Aktivált  |
 |---------|---------|
 | Kezdődik meg azonnal a webjobs-feladat jön létre. Ahhoz, hogy biztosítsa a feladat befejezési, a program vagy parancsfájl általában működik a végtelen ciklus belül. Ha a feladat, újraindíthatja azt. | Elindul, csak akkor, ha manuálisan vagy ütemezés szerint aktiválódik. |
 | A webes alkalmazást futtató összes példánya fut. Egyetlen példány igény szerint korlátozhatja a webjobs-feladatot. |Az Azure által az egyetlen példányán fut a terheléselosztás.|
@@ -124,7 +124,7 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **Név** | myTriggeredWebJob | Az App Service-alkalmazáson belül egyedi neve. Betűvel vagy számmal kell kezdődnie, és más, nem tartalmazhat különleges karaktereket "-" és "_".|
    | **Fájl feltöltése** | ConsoleApp.zip | A *.zip* fájlt, amely tartalmazza a végrehajtható fájlt vagy parancsfájlt, valamint minden kiegészítő fájlt, a program vagy parancsfájl futtatásához szükséges. A támogatott végrehajtható vagy parancsfájlokat fájltípusokat szerepelnek a [támogatott fájltípusok](#acceptablefiles) szakaszban. |
-   | **Típusa** | Triggerrel indított | A [webjobs-feladat típusok](#webjob-types) korábban ebben a cikkben ismertetett. |
+   | **Típusa** | Aktivált | A [webjobs-feladat típusok](#webjob-types) korábban ebben a cikkben ismertetett. |
    | **Eseményindítók** | Kézi | |
 
 4. Kattintson az **OK** gombra.
@@ -135,7 +135,7 @@ when making changes in one don't forget the other two.
 
 7. A webjobs-feladat futtatásához kattintson a jobb gombbal a listában a nevét, majd kattintson **futtatása**.
    
-    ![WebJobs-feladat futtatása](./media/web-sites-create-web-jobs/runondemand.png)
+    ![Run WebJob](./media/web-sites-create-web-jobs/runondemand.png)
 
 ## <a name="CreateScheduledCRON"></a> Az ütemezett webjobs-feladat létrehozása
 
@@ -162,7 +162,7 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **Név** | myScheduledWebJob | Az App Service-alkalmazáson belül egyedi neve. Betűvel vagy számmal kell kezdődnie, és más, nem tartalmazhat különleges karaktereket "-" és "_". |
    | **Fájl feltöltése** | ConsoleApp.zip | A *.zip* fájlt, amely tartalmazza a végrehajtható fájlt vagy parancsfájlt, valamint minden kiegészítő fájlt, a program vagy parancsfájl futtatásához szükséges. A támogatott végrehajtható vagy parancsfájlokat fájltípusokat szerepelnek a [támogatott fájltípusok](#acceptablefiles) szakaszban. |
-   | **Típusa** | Triggerrel indított | A [webjobs-feladat típusok](#webjob-types) korábban ebben a cikkben ismertetett. |
+   | **Típusa** | Aktivált | A [webjobs-feladat típusok](#webjob-types) korábban ebben a cikkben ismertetett. |
    | **Eseményindítók** | Ütemezett | Megbízható működés az ütemezéshez, az Always On funkció engedélyezéséhez. Always On csak a Basic, Standard és prémium szintű díjcsomagok árából érhető el.|
    | **CRON-kifejezés** | 0 0/20 * * * * | [CRON-kifejezések](#cron-expressions) a következő szakasz ismerteti. |
 

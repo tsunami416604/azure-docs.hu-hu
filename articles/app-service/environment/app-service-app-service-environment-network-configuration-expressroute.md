@@ -16,10 +16,10 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: e0fa87facec73efdfff1a9908dcba92838215425
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130670"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Hálózati konfiguráció részletei az App Service-környezet a powerapps szolgáltatásra, az Azure ExpressRoute használatával
@@ -102,13 +102,13 @@ Ez a szakasz bemutatja UDR konfiguráció például az App Service Environment-k
 > [!IMPORTANT]
 > App Service Environment-környezet csak telepíteni a konfigurációs lépések végrehajtása után. A lépések győződjön meg arról, kimenő hálózati kapcsolat érhető el, mielőtt megpróbálná üzembe helyezése az App Service Environment-környezet.
 
-### <a name="step-1-create-a-route-table"></a>1. lépés: Útválasztási táblázat létrehozása
+### <a name="step-1-create-a-route-table"></a>1\. lépés: Útválasztási táblázat létrehozása
 
 Hozzon létre egy útválasztási táblázatot nevű **DirectInternetRouteTable** a West US Azure-régióban, ebben a kódrészletben látható módon:
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-### <a name="step-2-create-routes-in-the-table"></a>2. lépés: A tábla útvonalak létrehozása
+### <a name="step-2-create-routes-in-the-table"></a>2\. lépés: A tábla útvonalak létrehozása
 
 Adja hozzá az útvonalakat az útvonaltáblához kimenő internet-hozzáférés engedélyezéséhez.  
 
@@ -127,13 +127,13 @@ Alternatív megoldásként letöltheti a CIDR-tartományt használja az Azure ak
 > Egyetlen UDR 100 útvonal alapértelmezett felső határral rendelkezik. "Összegzés" méretéhez igazítja a 100-route korlát Azure IP-címtartományokat kell. UDR által megadott útvonalak kell lennie, mint az ExpressRoute-kapcsolat által meghirdetett útvonalak pontosabb.
 > 
 
-### <a name="step-3-associate-the-table-to-the-subnet"></a>3. lépés: A táblázat az alhálózat társítása
+### <a name="step-3-associate-the-table-to-the-subnet"></a>3\. lépés: A táblázat az alhálózat társítása
 
 Társítsa az útválasztási táblázatot az alhálózathoz, ahol szeretné telepíteni az App Service Environment-környezet. Ezzel a paranccsal összekapcsolja a **DirectInternetRouteTable** táblázatból a **ASESubnet** alhálózatot, amelyet az App Service Environment-környezet tartalmazza.
 
 `Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'`
 
-### <a name="step-4-test-and-confirm-the-route"></a>4. lépés: Tesztelje, és ellenőrizze az útvonal
+### <a name="step-4-test-and-confirm-the-route"></a>4\. lépés: Tesztelje, és ellenőrizze az útvonal
 
 Miután az útválasztási táblázatot az alhálózathoz van kötve, tesztelje, és ellenőrizze az útvonal.
 

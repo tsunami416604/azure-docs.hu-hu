@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: xpouyat;anilmur;juliako
 ms.openlocfilehash: 608ca4bc3b58dd3c718d6239f90260154d2f6c3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61465542"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Több bemeneti fájlok és összetevő tulajdonságai párbeszédpanel használata a prémium szintű kódoló
@@ -268,7 +268,7 @@ A további keret pontos tisztítás:
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>1. példa: Kép a videó felett átfedő
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>1\. példa: Kép a videó felett átfedő
 
 ### <a name="presentation"></a>Bemutató
 Fontolja meg egy példa, amelyben meg szeretné átfedő a a bemeneti videó kattintanak, a videó kódolása közben. Ebben a példában a bemeneti videó neve "Microsoft_HoloLens_Possibilities_816p24.mp4", és az embléma "logo.png" nevű. Az alábbi lépéseket is végre kell hajtania:
@@ -428,7 +428,7 @@ A feladat befejezése után a MP4-fájlt a kimeneti adategység megjeleníti az 
 
 Letöltheti a minta munkafolyamat [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/).
 
-## <a name="example-2--multiple-audio-language-encoding"></a>2. példa: Több többnyelvű hang kódolása
+## <a name="example-2--multiple-audio-language-encoding"></a>2\. példa: Több többnyelvű hang kódolása
 
 Több többnyelvű hang kódolási munkafolyamatokat érhető el a példa [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
 
