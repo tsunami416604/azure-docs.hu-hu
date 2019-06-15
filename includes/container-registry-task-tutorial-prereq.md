@@ -4,12 +4,12 @@ ms.service: container-registry
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
-ms.openlocfilehash: 6e0175173f17ae0958522517360b94ee80f3b2f9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 40cc1856a5e943ca5596e7d11712febadd30e3ec
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148988"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133828"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,9 +27,12 @@ Egy véglegesítés a Git-tárházat a feladat indításához az ACR feladatok k
 
 1. Lépjen a GitHub PAT-létrehozási oldalára a https://github.com/settings/tokens/new címen.
 1. Adja meg a jogkivonat rövid **leírását**, például „ACR Tasks bemutatója”.
-1. A **repo** (adattár) területen jelölje be a **repo:status** és a **public_repo** lehetőséget.
+1. Válassza ki a hatókört az ACR-hez a tárház eléréséhez. Ebben az oktatóanyagban mint nyilvános adattár eléréséhez a **tárház**, engedélyezése **tárház: állapot** és **public_repo**
 
    ![A GitHub személyes hozzáférési jogkivonatok létrehozására szolgáló oldalának képernyőképe][build-task-01-new-token]
+
+   > [!NOTE]
+   > Egy PAT eléréséhez létrehozásához egy *privát* adattár, teljes hatókör kiválasztása **tárház** vezérlő.
 
 1. Kattintson a **Generate token** (Jogkivonat létrehozása) gombra (a rendszer kérheti a jelszó megadását).
 1. Másolja és mentse a létrehozott jogkivonatot egy **biztonságos helyre** (ezt a jogkivonatot egy feladat definiálására fogja használni a következő szakaszban).

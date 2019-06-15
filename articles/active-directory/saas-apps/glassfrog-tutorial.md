@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: c2b32d1c96a01282aa8cdbae1d55976a89abea81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a816cd6df8351a9b9daefd569d1fad2ec0763832
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60277737"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101546"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező GlassFrog
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a GlassFrog konfigurálásához hozzá kell GlassFrog 
 
 **GlassFrog hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: daec6e169805c193b48781dfecbabd9349bdc59b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd4eab2d8e877cac468097c0a6ed6aa3cfb750b9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278668"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102449"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Oktatóanyag: Az Azure Active Directory-integráció Five9 Plus-adaptert (PBX, ügyfél-Center-ügynökök)
 
@@ -53,7 +53,7 @@ Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) integrálásának konfigu
 
 **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -65,7 +65,7 @@ Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) integrálásának konfigu
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)**, jelölje be **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)** eredmény panelen kattintson a **Hozzáadás** az alkalmazás hozzáadására szolgáló gomb.
+4. A Keresés mezőbe írja be a **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)** , jelölje be **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)** eredmény panelen kattintson a **Hozzáadás** az alkalmazás hozzáadására szolgáló gomb.
 
      ![Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) a találatok listájában](common/search-new-app.png)
 
@@ -173,11 +173,11 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejelentkezést a hozzáférés biztosításával Five9 plusz adapterhez (PBX, ügyfél-Center-ügynökök).
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)** .
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)**.
+2. Az alkalmazások listájában jelölje ki a **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)** .
 
     ![A Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) hivatkozásra az alkalmazások listáját](common/all-applications.png)
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
 ms.openlocfilehash: d267ff3a43438d9fe6e4e21f0ac023cfa6675f19
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956305"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Az Azure Active Directoryval az Azure API Management fejlesztői fiókok engedélyezése
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan hozzáférés engedélyezése a felhasználók szám
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Fejlesztői fiókok engedélyezése az Azure AD-vel
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Kiválasztás ![nyíl](./media/api-management-howto-aad/arrow.png).
+2. Válassza ezt: ![nyíl](./media/api-management-howto-aad/arrow.png).
 3. Típus **api** kifejezést a keresőmezőbe.
 4. Válassza ki **API Management-szolgáltatások**.
 5. Válassza ki az API Management-szolgáltatáspéldányát.

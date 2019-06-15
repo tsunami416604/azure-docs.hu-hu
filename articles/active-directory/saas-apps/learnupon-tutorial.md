@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 574c21dc2713f10513ac296e7db538e20a94c9d6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ecdcd8c6024b3cacb422b556718bbbdbb5d601c2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406531"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098240"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező LearnUpon
 
@@ -58,7 +58,7 @@ Az Azure AD integrálása a LearnUpon konfigurálásához hozzá kell LearnUpon 
 
 **LearnUpon hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -165,9 +165,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés LearnUpon, hajtsa v�
 
      ![Egyszeri bejelentkezés konfigurálása](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
-    a. Az a **Utónév azonosító formátuma** szövegmezőbe írja be az érték, amely tudatja velünk, ahol a a SAML helyességi feltétel alkalmazása a felhasználók firstname található – például: `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    a. Az a **Utónév azonosító formátuma** szövegmezőbe írja be az érték, amely tudatja velünk, ahol a a SAML helyességi feltétel alkalmazása a felhasználók firstname található – például: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
   
-    b. Az a **utolsó azonosító formátumot** szövegmezőbe írja be az érték, amely tudatja velünk, ahol a a SAML helyességi feltétel alkalmazása a felhasználók lastname található – például: `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    b. Az a **utolsó azonosító formátumot** szövegmezőbe írja be az érték, amely tudatja velünk, ahol a a SAML helyességi feltétel alkalmazása a felhasználók lastname található – például: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -223,7 +223,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó LearnUpon jön létre. LearnUpon támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az LearnUpon, egy új jön létre a hitelesítés után. Hozzon létre egy felhasználót manuálisan kell, ha kapcsolatba kell [LearnUpon támogatási csapatának](https://www.learnupon.com/features/support/).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

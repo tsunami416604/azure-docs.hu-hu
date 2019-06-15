@@ -12,16 +12,16 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: b09182ef06c708e9c606173f02b006e7802f29ed
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7066b600cf50df583fbf8e9e674ef17d77b86183
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477819"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061384"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás az SQL Database és a Data warehouse-bA
 
-Transzparens adattitkosítás (TDE) segítségével az Azure Data Warehouse, Azure SQL Database és az Azure SQL felügyelt példánya a rosszindulatú tevékenység elleni. Valós idejű titkosítási és visszafejtési az adatbázis, azokhoz kapcsolódó biztonsági mentési és tranzakciós naplófájlokra inaktív azt végez anélkül, hogy a módosításokat. Minden újonnan üzembe helyezett Azure SQL-adatbázis alapértelmezés szerint engedélyezve van a TDE. TDE nem használható titkosításához a logikai **fő** SQL Database-adatbázis.  A **fő** adatbázis tartalmazza a felhasználói adatbázisok a TDE műveletek végrehajtásához szükséges objektumok.
+Transzparens adattitkosítás (TDE) segítségével elleni védelemhez az Azure Data Warehouse, Azure SQL Database és Azure SQL felügyelt példánya offline kártevő szándékú tevékenységek az inaktív adatok titkosításával. Valós idejű titkosítási és visszafejtési az adatbázis, azokhoz kapcsolódó biztonsági mentési és tranzakciós naplófájlokra inaktív azt végez anélkül, hogy a módosításokat. Minden újonnan üzembe helyezett Azure SQL-adatbázis alapértelmezés szerint engedélyezve van a TDE. TDE nem használható titkosításához a logikai **fő** SQL Database-adatbázis.  A **fő** adatbázis tartalmazza a felhasználói adatbázisok a TDE műveletek végrehajtásához szükséges objektumok.
 
 TDE az Azure SQL felügyelt példánya, régebbi adatbázisok az Azure SQL Database vagy az Azure SQL Data Warehouse manuálisan engedélyeznie kell.  
 

@@ -3,18 +3,18 @@ title: Szabályok és műveletek konfigurálása az Azure IoT Centralban | Micro
 description: Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan konfigurálhat telemetria-alapú szabályokat és műveleteket az Azure IoT Central alkalmazásban.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 01/28/2019
+ms.date: 06/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2bd22dec13e2dba63c512276a0b36d4fc50e05f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56ced4f5e2fd0fbf829f72cff2413998398a7a09
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60746769"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066015"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Oktatóanyag: Szabályok és műveletek az eszköz konfigurálása az Azure IoT Central
 
@@ -71,7 +71,7 @@ A szabályok definiálásakor egy műveletet is meghatároz, amely a szabályfel
 
     | Beállítás   | Érték                          |
     | --------- | ------------------------------ |
-    | Művelet        | Az Ön e-mail-címe             |
+    | Cél        | Az Ön e-mail-címe             |
     | Megjegyzések     | A légkondicionáló hőmérséklete túllépte a küszöbértéket. |
 
     > [!NOTE]

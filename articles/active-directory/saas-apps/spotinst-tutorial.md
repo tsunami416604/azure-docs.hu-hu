@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f0d42562b1c927fe0f87ddc87b5e097022d2be2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a5b3c9a0152144ac0d705c7d3f12c18cbc38398f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922078"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090153"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Spotinst
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Spotinst konfigurálásához hozzá kell Spotinst a 
 
 **Spotinst hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

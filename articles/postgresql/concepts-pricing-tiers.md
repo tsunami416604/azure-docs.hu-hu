@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: ed534f910fa1e44d3d53ab61ee86378eba788036
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 42f290109ca380464cb07ac9f684cdde25b8fdcd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240378"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063768"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Az Azure Database for PostgreSQL - kiszolgáló egyetlen tarifacsomagok
 
@@ -54,6 +54,26 @@ A tároló üzembe helyezi az érték a tárolási kapacitás érhető el az Azu
 Alatt és a kiszolgáló létrehozása után adja hozzá a további tárolókapacitás, és lehetővé teszi a rendszer storage tárolófelhasználásának a számítási feladat alapján automatikusan nő. Az alapszintű csomag nem biztosítanak az iops-t. Az általános célú és memóriahasználatra optimalizált tarifacsomagok az iops-t a kiépített tárhely méretére vonatkozik egy 3:1 arányt a skálázás.
 
 Az i/o-használat az Azure Portalon vagy Azure CLI-parancsok használatával követheti nyomon. A releváns metrikákat kíván monitorozni vannak [tárhelykorlátozás, tárolási százalékos aránya, felhasznált tárterület és i/o-százalék](concepts-monitoring.md).
+
+### <a name="large-storage-preview"></a>Nagy storage (előzetes verzió)
+
+A tárfiókok korlátai növeljük az általános célú és memóriahasználatra optimalizált szinten. Az újonnan létrehozott kiszolgálót, hogy vehetnek részt a preview helyezhet üzembe akár 16 TB tárhely. Az iops-t méretezni egy 3:1 arányban legfeljebb 20 000 iops-t. Az aktuális általánosan rendelkezésre álló tárhelyet, az annak a kiszolgálónak a létrehozása után adja hozzá a további tárolókapacitás, és lehetővé teszi a rendszer storage tárolófelhasználásának a számítási feladat alapján automatikusan nő.
+
+|              | **Általános célú** | **Memóriahasználatra optimalizált** |
+|:-------------|:--------------------|:---------------------|
+| Tárolási típus | Azure Premium Storage | Azure Premium Storage |
+| Tároló mérete | 32 GB és 16 TB| 32-16 TB |
+| Növekmény tárméret | 1 GB | 1 GB |
+| IO | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Legfeljebb 20 000 iops-érték| 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Legfeljebb 20 000 iops-érték |
+
+> [!IMPORTANT]
+> Nagy méretű tároló jelenleg nyilvános előzetes verzióban elérhető a következő régióban: USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA nyugati RÉGIÓJA, 2. nyugati RÉGIÓJA, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, kelet-japán, Korea középső régiója, Kelet-Ausztrália.
+>
+>A nagy méretű tároló előzetes jelenleg nem támogatja:
+>
+> * Virtuális hálózati Szolgáltatásvégpontok keresztüli bejövő kapcsolatok
+> * Georedundáns biztonsági mentés
+> * Adatbázisközi régió replikáció
 
 ### <a name="reaching-the-storage-limit"></a>Skálázhatósági méretkorlátot
 

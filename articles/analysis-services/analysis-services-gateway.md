@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b35977061b7e5806d15f4b7b0087fcafa4f291ef
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 190394481f17310784f87c9e2f642eeea0b2597f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141159"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062233"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz a helyszíni adatátjáróval
 A helyszíni adatátjáró a helyszíni adatforrások és a felhőben az Azure Analysis Services-kiszolgálók közötti biztonságos adatátvitelt biztosít. Mellett használata több Azure Analysis Services-kiszolgáló ugyanabban a régióban, az átjáró legújabb verzióját is használható az Azure Logic Apps, a Power bi-ban, a Power Apps és a Microsoft Flow. Egyetlen átjáró ugyanabban az előfizetésben és azonos régióban több szolgáltatást is társíthat. 
 
 A telepítő az átjáró első először az egy négyrészes folyamat:
 
-- **Töltse le és futtassa a telepítőt** – Ez a lépés telepíti egy átjárószolgáltatás a szervezet egyik számítógépén. Is jelentkezik be egy olyan fiókkal, az Azure-bA a [bérlő](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant) Azure ad-ben. Az Azure B2B (vendég) fiókok nem támogatottak.
+- **Töltse le és futtassa a telepítőt** – Ez a lépés telepíti egy átjárószolgáltatás a szervezet egyik számítógépén. Is jelentkezik be egy olyan fiókkal, az Azure-bA a [bérlő](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure ad-ben. Az Azure B2B (vendég) fiókok nem támogatottak.
 
 - **Az átjáró regisztrálásához** – ebben a lépésben megad egy nevet és a helyreállítási kulcsra az átjáró, és válassza ki a régiót, regisztrálja az átjárót az átjáró Felhőszolgáltatása. Az átjáró-erőforrás regisztrálni lehet bármelyik régióban, de javasoljuk, hogy azt az Analysis Services-kiszolgáló ugyanabban a régióban kell. 
 

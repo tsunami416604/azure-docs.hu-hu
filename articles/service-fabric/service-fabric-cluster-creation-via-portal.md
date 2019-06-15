@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 09/06/2018
 ms.author: aljo
 ms.openlocfilehash: 02312a19c687908b0e1c0e6417dc6b0a9df23912
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125085"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban az Azure portal használatával
@@ -178,13 +178,13 @@ Szüksége van a forrás key vaultnak, tanúsítvány URL-címe és tanúsítvá
 
 Ellenőrizze a **speciális beállítások konfigurálása** mezőben adja meg az ügyféltanúsítványok **rendszergazdai ügyfél** és **csak olvasható ügyfél**. Ezekben a mezőkben adja meg a rendszergazdai ügyféltanúsítvány ujjlenyomata és az olvasási jogosultsággal rendelkező felhasználó ügyféltanúsítvány ujjlenyomatát, ha van ilyen. A rendszergazdák próbál csatlakozni a fürthöz, amikor megkapják az itt megadott hozzáférés csak akkor, ha rendelkeznek, amely megfelel az ujjlenyomat-értékeket egy ujjlenyomattal rendelkező tanúsítvány.  
 
-### <a name="4-summary"></a>4. Összegzés
+### <a name="4-summary"></a>4. Összefoglalás
 
 Most már készen áll a fürt üzembe helyezéséhez. Mielőtt ezt megtenné, töltse le a tanúsítványt, keresse meg a hivatkozás a nagyméretű kék tájékoztató mezőben belül. Győződjön meg arról, hogy a tanúsítvány biztonságos helyen. szüksége lesz rá a fürthöz való csatlakozáshoz. Mivel a letöltött tanúsítvány nem rendelkezik a jelszót, javasolt egy hozzáadása.
 
 A fürt létrehozásának befejezéséhez kattintson a **létrehozás**. A sablon igény szerint töltheti le.
 
-![Összegzés]
+![Összefoglalás]
 
 A létrehozás folyamatát az értesítésekben követheti nyomon. (Kattintson a „Harang” ikonra az állapotsor mellett, a képernyő jobb felső részén.) Ha a fürt létrehozásakor **A kezdőpulton rögzít** lehetőségre kattintott, a **Service Fabric-fürt üzembe helyezése** a **Kezdőpultra** rögzítve látható. Ez a folyamat hosszabb időt vesz igénybe. 
 

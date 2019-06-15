@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/02/2018
 ms.author: spelluru
 ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60593339"
 ---
 # <a name="available-relay-apis"></a>Rendelkezésre álló Relay API-k
@@ -29,7 +29,7 @@ Az alábbi táblázat a jelenleg elérhető Relay futásidejű ügyfelek.
 
 A [további információkat](#additional-information) szakasz egyes futtatókörnyezeti kódtárának állapotával kapcsolatos további információkat tartalmaz.
 
-| Nyelv és Platform | Elérhető a szolgáltatásban | Ügyfélcsomag | Adattár |
+| Nyelv és Platform | Elérhető a szolgáltatásban | Ügyfélcsomag | Tárház |
 | --- | --- | --- | --- |
 | .NET Standard | Hibrid kapcsolatok | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHubon](https://github.com/azure/azure-relay-dotnet) |
 | .NET-keretrendszer | WCF-továbbító | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | – |

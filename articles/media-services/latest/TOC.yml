@@ -27,6 +27,7 @@
       items:
         - name: .NET-tel
           href: stream-live-tutorial-with-api.md
+          displayName: 'Live Events, Live Outputs, ingest'
     - name: Videó elemzése
       items:
         - name: .NET-tel
@@ -122,6 +123,7 @@
           href: live-streaming-overview.md
         - name: Élő események és élő kimenetek
           href: live-events-outputs-concept.md
+          displayName: 'vanity, ingest'
         - name: Ajánlott élő kódolók
           href: recommended-on-premises-live-encoders.md
         - name: Egy felhőalapú DVR használata

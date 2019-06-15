@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 1e67f3c7f9413382d169837eaba50d6af18552e6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 3777cf09ec669fe3df6bca13f6960f53c689767c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956672"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088270"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TurboRater
 
@@ -109,7 +109,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TurboRater, tegye a 
 
     1. Az a **válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe)** mezőbe írjon be egy URL-címet a következő minta használatával:
 
-       | Környezet | URL |
+       | Környezet | URL-cím |
        | ---------------| --------------- |
        | Tesztelés  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
        | Élő  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
@@ -151,7 +151,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
     1. Az a **neve** mezőbe írja be **BSimon**.
   
-    1. Az a **felhasználónév** mezőbe írja be **BSimon\@\<vállalati_tartomány >.\< bővítmény >**. Ha például **BSimon\@contoso.com**.
+    1. Az a **felhasználónév** mezőbe írja be **BSimon\@\<vállalati_tartomány >.\< bővítmény >** . Ha például **BSimon\@contoso.com**.
 
     1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
@@ -187,7 +187,7 @@ Ebben a szakaszban engedélyezze b Simon által biztosított a hozzáférés Tur
 
 Ebben a szakaszban egy felhasználói b Simon nevű TurboRater hoz létre. Együttműködik a [TurboRater támogatási csapatának](https://www.getitc.com/support) b Simon TurboRater felhasználóként hozzáadni. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
 

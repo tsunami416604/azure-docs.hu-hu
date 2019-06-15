@@ -8,10 +8,10 @@ ms.service: marketplace
 ms.topic: how-to
 ms.date: 05/30/2019
 ms.openlocfilehash: 5cb4caa6f0f8098e68d693be6cc2f33b5ccbeb32
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66752852"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>A Partner Center kereskedelmi Marketplace-fiók kezelése 
@@ -84,7 +84,7 @@ A küldenie jóváhagyásra cége kifizetési fiók beállítása, kell **társ�
 
 Most, hogy a Microsoft-Account társítva, egy küldenie jóváhagyásra cége kifizetési fiók hozzáadásához meg kell:
 - **Válasszon egy fizetési módot**: Banki vagy PayPal
-- **Adja meg a fizetési adatait**: Ez magában foglalhatja kiválasztása a fiók típusát (megtakarítási vagy), írja be a fiók tulajdonosa nevét, a fiók száma és útválasztási számát, számlázási címét, telefonszámát vagy PayPal e-mail címet. * További információ a fiók fizetési módként alkalmazott, és megtudhatja, hogy támogatott a piaci régióban PayPal használatáról: [PayPal info](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
+- **Adja meg a fizetési adatait**: Ez magában foglalhatja kiválasztása a fiók típusát (megtakarítási vagy), írja be a fiók tulajdonosa nevét, a fiók száma és útválasztási számát, számlázási címét, telefonszámát vagy PayPal e-mail címet. \* További információ a fiók fizetési módként alkalmazott, és megtudhatja, hogy támogatott a piaci régióban PayPal használatáról: [PayPal info](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
 
 > [!IMPORTANT]
 > A küldenie jóváhagyásra cége kifizetési fiók módosítása késleltetheti-e a fizetések fel egy fizetési ciklus szerint. Ez a késleltetés az oka, hogy ellenőriznünk kell a fiókját, ahogy tesszük először küldenie jóváhagyásra cége kifizetési fiók beállítása során. Meg fogjuk továbbra is lekérése fizetett a teljes összeget után a fiókját ellenőriztük; minden kifizetés miatt a jelenlegi fizetési ciklus a következő parancsot kell felvenni.  

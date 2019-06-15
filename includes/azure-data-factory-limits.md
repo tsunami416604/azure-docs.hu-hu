@@ -9,10 +9,10 @@ ms.date: 5/30/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: ac0747dcff4e74363a58dc9aaf6da4dbd4c6a1c7
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427611"
 ---
 Az Azure Data Factory egy több-bérlős szolgáltatás, amely a következő alapértelmezett korlátokkal rendelkeznek, hogy az ügyfél-előfizetések védettek, a többi összes számítási feladatokat a helyen. A korlátok a maximális az előfizetéshez tartozó növeléséhez forduljon az ügyfélszolgálathoz.
@@ -28,7 +28,7 @@ Az Azure Data Factory egy több-bérlős szolgáltatás, amely a következő ala
 | Egyidejű külső tevékenységfuttatások előfizetésenként [integrációs modul Azure-régió](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>Külső tevékenységeket az integrációs modul felügyelt, de végrehajtani a társított szolgáltatásokat, beleértve a Databricks, a tárolt eljárást, Hdinsight és mások.</small> | 3000 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Egyidejű folyamat tevékenységfuttatások előfizetésenként [integrációs modul Azure-régió](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) <br><small>Adatcsatorna tevékenységei integrációs modulban, beleértve a Lookup, GetMetadata, hajtsa végre, és törölni. </small>| 1000 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Szerzői műveletek előfizetésenként egyidejű [integrációs modul Azure-régió](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>Például kapcsolat tesztelése, a Tallózás a mappák listája és a tábla tekintse meg adatok. | 200 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Egyidejű adategységek integrációs<sup>1</sup> előfizetésenként és felhasználási [integrációs modul Azure-régió](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)| 1 csoport régió<sup>2</sup>: 6000<br>2. régió csoport<sup>2</sup>: 3000<br>3. csoport régió<sup>2</sup>: 1500 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Egyidejű adategységek integrációs<sup>1</sup> előfizetésenként és felhasználási [integrációs modul Azure-régió](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)| 1 csoport régió<sup>2</sup>: 6000<br>2\. régió csoport<sup>2</sup>: 3000<br>3\. csoport régió<sup>2</sup>: 1500 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Egy folyamatot, amely tartalmazza a tárolók a belső tevékenységek maximális tevékenységek | 40 | 40 |
 | Hozható létre a saját üzemeltetésű integrációs ellen társított integrációs modulok maximális száma | 100 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Egy folyamat maximális paraméterek | 50 | 50 |
@@ -52,8 +52,8 @@ Az Azure Data Factory egy több-bérlős szolgáltatás, amely a következő ala
 | Régió-csoport | Régiók | 
 | -------- | ------ |
 | 1 csoport régió | USA középső RÉGIÓJA, USA keleti RÉGIÓJA, USA 2. keleti régiója, Észak-Európa, Nyugat-Európa, USA nyugati RÉGIÓJA, USA 2. nyugati |
-| 2. csoport régió | Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, közép-India, kelet-japán, Northcentral Egyesült Államok, déli RÉGIÓJA, Délkelet-Ázsia, USA nyugati középső RÉGIÓJA |
-| 3. csoport régió | Canada Central, East Asia, France Central, Korea Central, UK South |
+| 2\. csoport régió | Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, közép-India, kelet-japán, Northcentral Egyesült Államok, déli RÉGIÓJA, Délkelet-Ázsia, USA nyugati középső RÉGIÓJA |
+| 3\. csoport régió | Canada Central, East Asia, France Central, Korea Central, UK South |
 
 <sup>3</sup> folyamat, adatkészlet és a társított szolgáltatás objektumok jelölik az alkalmazások és szolgáltatások logikai csoportosítása. Ezek az objektumok korlátai, áthelyezése és feldolgozása az Azure Data Factoryvel adatok mennyisége nem vonatkoznak. A Data Factory méretezhető, több petabájtnyi adat kezelésére szolgál.
 

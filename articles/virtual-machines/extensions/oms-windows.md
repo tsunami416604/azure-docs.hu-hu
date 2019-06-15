@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/29/2019
 ms.author: roiyz
-ms.openlocfilehash: 270b3ae49a815c9e12fce9377c8298192237f28a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fb931d5ce72b21cb17abbcd11095dbc8d611f0c9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790369"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064428"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>A figyelő a Windows Azure virtuális gépi bővítmény
 
@@ -38,17 +38,18 @@ A Log Analytics agent bővítmény Windows támogatja a Windows operációs rend
 - A Windows Server 2008 R2, 2012, 2012 R2, 2016 1709-es és 1803-as verzióban
 
 ### <a name="agent-and-vm-extension-version"></a>Az ügynök és a Virtuálisgép-bővítmény verziója
-Az alábbi táblázat tartalmazza az Azure Monitor Virtuálisgép-bővítmény és a Log Analytics ügynök csomag minden kiadott verziójáról. 
+Az alábbi táblázat tartalmazza a Windows Azure Monitor Virtuálisgép-bővítmény és a Log Analytics ügynök csomag minden kiadott verziójáról. 
 
-| Az Azure Monitor Linux rendszerű virtuális gép bővítmény verziója | Log Analytics-ügynököket csomag verziója | Kiadás dátuma | Kibocsátási megjegyzések |
+| Log Analytics Windows ügynök csomag verziója | Az Azure Monitor Windows VM-bővítmény verziója | Kiadás dátuma | Kibocsátási megjegyzések |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 8.0.11049.0 | 1.0.11049.1 | 2017. február | |
-| 8.0.11072.0 | 1.0.11072.1 | Szeptembertől 2017. | |
-| 8.0.11081.0 | 1.0.11081.5 | 2017. november | | 
-| 8.0.11103.0 | n/a |  2018. április | |
-| 8.0.11136.0 | n/a | Szeptembertől 2018. |  <ul><li> Támogatás hozzáadva az erőforrás-azonosító módosítását a virtuális gép áthelyezése észlelése </li><li> Támogatás hozzáadva a jelentési erőforrást azonosító használata nem bővítmény telepítése </li></ul>| 
-| 10.19.10006.0 | n/a | A 2018. december | <ul><li> Kisebb stabilizálása javításai </li></ul> | 
-| 10.19.13515.0 | 1.0.13515.1 | 2019. március | <ul><li>Kisebb stabilizálása javításai </li></ul> |
+| 10.20.18001 | 1.0.18001 | Június 2019 | <ul><li> Kisebb hibajavítások és stabilizált fejlesztései </li><li> A hozzáadott letiltási lehetőség alapértelmezett hitelesítő adatok, ha proxy-kapcsolat (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH támogatás) </li></ul>|
+| 10.19.13515 | 1.0.13515 | 2019\. március | <ul><li>Kisebb stabilizálása javításai </li></ul> |
+| 10.19.10006 | n/a | A 2018. december | <ul><li> Kisebb stabilizálása javításai </li></ul> | 
+| 8.0.11136 | n/a | Szeptembertől 2018. |  <ul><li> Támogatás hozzáadva az erőforrás-azonosító módosítását a virtuális gép áthelyezése észlelése </li><li> Támogatás hozzáadva a jelentési erőforrást azonosító használata nem bővítmény telepítése </li></ul>| 
+| 8.0.11103 | n/a |  2018\. április | |
+| 8.0.11081 | 1.0.11081 | 2017\. november | | 
+| 8.0.11072 | 1.0.11072 | Szeptembertől 2017. | |
+| 8.0.11049 | 1.0.11049 | 2017\. február | |
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
@@ -97,7 +98,7 @@ A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti me
 
 \* A munkaterület azonosítója a consumerId nevezzük a Log Analytics API-ban.
 
-## <a name="template-deployment"></a>Sablon telepítése
+## <a name="template-deployment"></a>Sablonalapú telepítés
 
 Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletes JSON-sémája a Log Analytics-ügynök bővítmény futtatása során egy Azure Resource Manager-sablon üzembe helyezése Azure Resource Manager-sablon is használható. A Log Analytics ügynök Virtuálisgép-bővítményt tartalmazó mintát sablon megtalálható a [Azure gyors üzembe helyezési katalógus](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 
@@ -180,7 +181,7 @@ Set-AzVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
-### <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
+### <a name="troubleshoot"></a>Hibaelhárítás
 
 Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure PowerShell-modul segítségével. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure PowerShell modullal.
 

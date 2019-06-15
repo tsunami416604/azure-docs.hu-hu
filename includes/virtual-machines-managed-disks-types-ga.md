@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c7b73cad200666db9e926d8e808eaa4a8dccffb2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2bc5602011ed64b11b1b8c96b7e69a8d5ee9bf32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66248972"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133022"
 ---
 ## <a name="premium-ssd"></a>Prémium SSD
 
@@ -45,7 +45,7 @@ Standard SSD-k, az egyes i/o műveletek kisebb vagy egyenlő, mint 256 átviteli
 
 ## <a name="standard-hdd"></a>Standard HDD
 
-Az Azure standard szintű HDD biztosíthat a virtuális gépek megbízható, költséghatékony lemeztámogatás késleltetést toleráló-alapú számítási feladatait. A standard szintű storage merevlemezes (HDD) meghajtók tárolják az adatokat. Mint a korábban megszokott lemezek SSD-alapú késés, IOPS és átviteli sebesség a standard szintű HDD lemezek szélesebb körben változhat. Az virtuális gépek használatakor is HDD a standard szintű lemezek használhatja fejlesztési és tesztelési célra, a kevésbé kritikus fontosságú számítási feladatokhoz. Standard HDD-k minden Azure-régióban érhető el, és az összes Azure-alapú virtuális gépekhez használható.
+Az Azure standard szintű HDD biztosíthat a virtuális gépek megbízható, költséghatékony lemeztámogatás késleltetést toleráló-alapú számítási feladatait. A standard szintű storage merevlemezes (HDD) meghajtók tárolják az adatokat. Mint a korábban megszokott lemezek SSD-alapú késés, IOPS és átviteli sebesség a standard szintű HDD lemezek szélesebb körben változhat. Standard HDD-lemezek írási késése mellett 10ms elküldésére, és olvassa el a legtöbb i/o-műveletek, a 20 MS késések tervezték, azonban a tényleges teljesítmény az i/o-mérete és a számítási feladatok minta függvénye. Az virtuális gépek használatakor is HDD a standard szintű lemezek használhatja fejlesztési és tesztelési célra, a kevésbé kritikus fontosságú számítási feladatokhoz. Standard HDD-k minden Azure-régióban érhető el, és az összes Azure-alapú virtuális gépekhez használható.
 
 ### <a name="disk-size"></a>Lemezméret
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]

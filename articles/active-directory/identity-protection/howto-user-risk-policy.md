@@ -17,23 +17,23 @@ ms.date: 03/14/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b94e9b7267c956c07f4171f8cce46c6159affd90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 942f7e43a549b5aa1a21284949ffc12ef3c8d75f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60459706"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108916"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>kézikönyv: A felhasználói kockázati szabályzat konfigurálása
 
-A felhasználói kockázat, az Azure AD észleli a valószínűsége annak, hogy egy felhasználói fiókot feltörték-e. Rendszergazdaként konfigurálhatja a felhasználói kockázati feltételes hozzáférési szabályzatot, az automatikusan, egy adott felhasználói kockázat szintjének megfelelően válaszolnak.
+A felhasználói kockázat, az Azure AD észleli a valószínűsége annak, hogy egy felhasználói fiókot feltörték-e. Rendszergazdaként konfigurálhatja a felhasználói kockázat feltételes hozzáférési szabályzatot, az automatikusan, egy adott felhasználói kockázat szintjének megfelelően válaszolnak.
  
 Ez a cikk egy felhasználói kockázati házirend konfigurálásához szükséges információkat biztosít.
 
 
 ## <a name="what-is-a-user-risk-policy"></a>Mi az felhasználói kockázati házirendet?
 
-Azure ad-ben elemzi az egyes bejelentkezési felhasználói. Az elemzés célja, észleli a gyanús tevékenységeket és a bejelentkezési származnak. Az Azure ad-ben a rendszer képes észlelni a gyanús tevékenységeket is ismertek kockázati események. Miközben néhány kockázati események valós idejű észlelése, még nincsenek több időt igénylő kockázati események. Például egy bejelentkezés szokatlan helyekről való lehetetlen utazás észlelése, a rendszer egy normál felhasználói viselkedés megismeréséhez 14 napos betanulási időszakra igényel. Többféle módon oldja meg az észlelt kockázati eseményeket. Például egyes kockázati események manuális oldható meg, vagy megtekintheti a bejelentkezési kockázat vagy feltételes hozzáférési szabályzat felhasználói kockázat használatával oldja fel őket.
+Azure ad-ben elemzi az egyes bejelentkezési felhasználói. Az elemzés célja, észleli a gyanús tevékenységeket és a bejelentkezési származnak. Az Azure ad-ben a rendszer képes észlelni a gyanús tevékenységeket is ismertek kockázati események. Miközben néhány kockázati események valós idejű észlelése, még nincsenek több időt igénylő kockázati események. Például egy bejelentkezés szokatlan helyekről való lehetetlen utazás észlelése, a rendszer egy normál felhasználói viselkedés megismeréséhez 14 napos betanulási időszakra igényel. Többféle módon oldja meg az észlelt kockázati eseményeket. Például egyes kockázati események manuális oldható meg, vagy megtekintheti a bejelentkezési kockázat vagy egy felhasználói kockázat feltételes hozzáférési szabályzat használatával oldja fel őket.
 
 Az összes kockázati események, amelyek az észlelt felhasználó számára, és nem megfogalmazott aktív kockázati események nevezzük. Az aktív kockázati események, amelyek a felhasználóval társított felhasználói kockázat nevezzük. A felhasználói kockázat alapján, az Azure ad-ben a valószínűség (alacsony, közepes, magas), hogy feltörték-e egy felhasználó számítja ki. A valószínűsége annak a felhasználói kockázati szint neve.
 
@@ -64,7 +64,7 @@ A bejelentkezési kockázati házirend konfigurálásakor kell beállítani:
 
 - Milyen típusú hozzáférést szeretne kényszeríti ki a bejelentkezési kockázati szint teljesülésekor:  
 
-    ![Hozzáférés](./media/howto-user-risk-policy/13.png)
+    ![Access](./media/howto-user-risk-policy/13.png)
 
 - A szabályzat állapotát:
 

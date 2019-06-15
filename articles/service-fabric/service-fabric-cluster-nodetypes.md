@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
 ms.openlocfilehash: a5f8735df2b230de2b0ddcdcccff09430bada9e3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64684693"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Az Azure Service Fabric-csomóponttípusok és virtuálisgép-méretezési csoportokban
@@ -34,7 +34,7 @@ Az előző ábrán látható, a méretezési csoport példányaihoz számozása 
 Amikor egy méretezési csoportot, egy új példánya jön létre. Az új méretezési csoportot példány neve általában a méretezési csoport nevét, valamint a következő példányok számát. Ebben a példában BackEnd_5.
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Méretezési csoport terheléselosztók leképezése csomóponttípusok és méretezési csoportok
-Ha a fürtöt az Azure Portalon, illetve a minta az Azure Resource Manager-sablont használja, minden erőforrás egy erőforráscsoportba tartozó jelennek meg. Láthatja, hogy az egyes méretezési készlet vagy csomópont a terheléselosztók. A terheléselosztó neve a következő formátumot használja: **LB -&lt;csomóponttípus neve&gt;**. Ilyen például, az LB-sfcluster4doc-0, az alábbi ábrán látható módon:
+Ha a fürtöt az Azure Portalon, illetve a minta az Azure Resource Manager-sablont használja, minden erőforrás egy erőforráscsoportba tartozó jelennek meg. Láthatja, hogy az egyes méretezési készlet vagy csomópont a terheléselosztók. A terheléselosztó neve a következő formátumot használja: **LB -&lt;csomóponttípus neve&gt;** . Ilyen például, az LB-sfcluster4doc-0, az alábbi ábrán látható módon:
 
 ![További források][Resources]
 
@@ -82,7 +82,7 @@ A tulajdonság leírása a következők:
 | publisher | Microsoft.Azure.ServiceFabric | --- | a Service Fabric által közzétevő neve |
 | clusterEndpont | string | --- | URI:port felügyeleti végpontja |
 | nodeTypeRef | string | --- | NodeType csomóponttípus neve |
-| durabilityLevel | bronz, ezüst, arany, platinum | --- | nem módosítható az Azure-infrastruktúra szüneteltetésére engedélyezett idő |
+| tartóssági szint | bronz, ezüst, arany, platinum | --- | nem módosítható az Azure-infrastruktúra szüneteltetésére engedélyezett idő |
 | enableParallelJobs | IGAZ vagy hamis | --- | Compute ParallelJobs, távolítsa el a virtuális gép és a virtuális Gépet a párhuzamos azonos méretezési engedélyezése |
 | nicPrefixOverride | string | --- | Például a "10.0.0.0/24" alhálózati előtag |
 | commonNames | String] | --- | Fürtben telepített tanúsítványok köznapi nevek |

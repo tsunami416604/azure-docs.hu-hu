@@ -16,10 +16,10 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 18350337ba44d969173d518a4bc8dfe40185de21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66112711"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Felügyelt identitások az Azure-erőforrások konfigurálása a REST API hívásait használja, az Azure virtuális Gépekhez
@@ -35,7 +35,7 @@ Ebben a cikkben az Azure Resource Manager REST-végponthoz, hívásokat a CURL h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)**.
+- Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)** .
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - Ha Windows használ, telepítse a [a Linux Windows alrendszere](https://msdn.microsoft.com/commandline/wsl/about) vagy használja a [Azure Cloud Shell](../../cloud-shell/overview.md) az Azure Portalon.
 - [A helyi Azure CLI-konzol telepítése](/cli/azure/install-azure-cli), ha a [a Linux Windows alrendszere](https://msdn.microsoft.com/commandline/wsl/about) vagy egy [linuxos](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
@@ -83,7 +83,7 @@ Egy Azure virtuális gép létrehozása felügyelt rendszer által hozzárendelt
    
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
    
    **Kérelem törzse**
@@ -172,7 +172,7 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg an�
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
    
    **Kérelem törzse**
@@ -204,7 +204,7 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg an�
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
 
    **Kérelem törzse**
@@ -239,7 +239,7 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg an�
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
 
    **Kérelem törzse**
@@ -282,7 +282,7 @@ A virtuális gép felügyelt identitás alapértelmezett letiltásához a fiókn
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
 
    **Kérelem törzse**
@@ -297,7 +297,7 @@ A virtuális gép felügyelt identitás alapértelmezett letiltásához a fiókn
 
    Egy virtuális gépet, amely felhasználó által hozzárendelt felügyelt identitások felügyelt identitás alapértelmezett eltávolításához távolítsa el `SystemAssigned` származó a `{"identity":{"type:" "}}` értéket, miközben megtartja a `UserAssigned` érték és a `userAssignedIdentities` szótár értékek használata **API-verzió a 2018-06-01**. Ha használ **API 2017-12-01-es verzió** vagy korábbi, hagyja a `identityIds` tömb.
 
-## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
+## <a name="user-assigned-managed-identity"></a>felhasználó által hozzárendelt felügyelt identitás
 
 Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhasználó által hozzárendelt felügyelt identitás-beli virtuális gépen az Azure Resource Manager REST-végponton való meghíváshoz a CURL használatával.
 
@@ -341,7 +341,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
 
    **Kérelem törzse**
@@ -422,7 +422,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
 
    **Kérelem törzse**
@@ -534,7 +534,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        |
  
    **Kérelem törzse**
@@ -566,7 +566,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
 
    **Kérelem törzse**
@@ -602,7 +602,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
 
    **Kérelem törzse**
@@ -641,7 +641,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
 
    **Kérelem törzse**
@@ -682,7 +682,7 @@ Egy felhasználó által hozzárendelt identitással virtuális Géphez való el
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.
  
    Ha a virtuális géphez hozzárendelt identitások rendelkezik felügyelt, ezek a válaszban szereplő jelennek az `identity` érték.
@@ -705,7 +705,7 @@ Egy felhasználó által hozzárendelt identitással virtuális Géphez való el
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
 
    **Kérelem törzse**
@@ -737,7 +737,7 @@ Egy felhasználó által hozzárendelt identitással virtuális Géphez való el
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
 
    **Kérelem törzse**
@@ -767,7 +767,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
-|*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+|*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
 |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
 **Kérelem törzse**
@@ -794,7 +794,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
-|*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+|*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
 |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.| 
 
 **Kérelem törzse**

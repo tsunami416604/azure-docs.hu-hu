@@ -8,18 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/28/2019
+ms.date: 06/06/2019
 ms.author: yluiu
-ms.openlocfilehash: 63f705061db7c89a80578e741d02ab8f8b1041c2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a7667f94d3f4dea2901c4b4b0e2b2c893b9f535e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917096"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074097"
 ---
 # <a name="face-api-release-notes"></a>Face API kibocsátási megjegyzései
 
 Ez a cikk a Face API szolgáltatás 1.0-s verziója vonatkozik.
+
+### <a name="release-changes-in-june-2019"></a>Június 2019 kiadás változásai
+
+* Adjon hozzá egy új face modell rendelkező kis, oldal-nézet, occluded és határozatlan arcok a pontosság jobb legyen. Használja azt a [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [LargeFaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [is lehet PersonGroup személy – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) és [LargePersonGroup személy – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42) az új arcok észlelése modell név megadásával `detection_02` a `detectionModel` paraméter. További információk: [megadása egy modell](Face-API-How-to-Topics/specify-detection-model.md).
 
 ### <a name="release-changes-in-april-2019"></a>Április 2019 kiadás változásai
 
@@ -27,7 +31,7 @@ Ez a cikk a Face API szolgáltatás 1.0-s verziója vonatkozik.
 
 * Továbbfejlesztett sebességétől [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [LargeFaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [is lehet PersonGroup személy – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) és [ Személy LargePersonGroup – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42).
 
-### <a name="release-changes-in-march-2019"></a>2019. márciusi kiadás változásai
+### <a name="release-changes-in-march-2019"></a>2019\. márciusi kiadás változásai
 
 * Arcok felismerése új modell hozzáadva a pontosság jobb legyen. Használja azt a [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b), [LargeFaceList – hozzon létre](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc), [is lehet PersonGroup - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) és [ LargePersonGroup – hozzon létre](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d) arcok felismerése új modell nevének megadásával `recognition_02` a `recognitionModel` paraméter. További információk: [megadása egy modell több](Face-API-How-to-Topics/specify-recognition-model.md).
 
@@ -35,17 +39,17 @@ Ez a cikk a Face API szolgáltatás 1.0-s verziója vonatkozik.
 
 * Pillanatkép funkció hozzáadott előfizetések közötti adatok áttelepítésének támogatásához: [Pillanatkép](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get). További információk: [hogyan telepítheti át az arcfelismerési adatokat Face másik előfizetésbe való](Face-API-How-to-Topics/how-to-migrate-face-data.md).
 
-### <a name="release-changes-in-october-2018"></a>2018. október kiadás változásai
+### <a name="release-changes-in-october-2018"></a>2018\. október kiadás változásai
 
 * Leírását alakítva `status`, `createdDateTime`, `lastActionDateTime`, és `lastSuccessfulTrainingDateTime` a [is lehet PersonGroup - képzési állapotának beolvasása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247), [LargePersonGroup – képzési állapotának beolvasása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae32c6ac60f11b48b5aa5), és [ LargeFaceList – Get képzési állapot](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a1582f8d2de3616c086f2cf).
 
-### <a name="release-changes-in-may-2018"></a>2018. május kiadás változásai
+### <a name="release-changes-in-may-2018"></a>2018\. május kiadás változásai
 
 * Továbbfejlesztett `gender` attribútum is és jelentős mértékben továbbfejlesztett `age`, `glasses`, `facialHair`, `hair`, `makeup` attribútumok. Használatukhoz keresztül [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` paraméter. 
 
 * Nagyobb bemeneti kép fájl mérete legfeljebb 4 MB, a 6 MB-ra [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [LargeFaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [személy is lehet PersonGroup - hozzáadása Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) és [személy LargePersonGroup – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42).
 
-### <a name="release-changes-in-march-2018"></a>2018. márciusi kiadás változásai
+### <a name="release-changes-in-march-2018"></a>2018\. márciusi kiadás változásai
 
 * A hozzáadott millió méretű tároló: [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc) és [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d). További információk: [a nagy méretű szolgáltatás használata](Face-API-How-to-Topics/how-to-use-large-scale.md).
 
@@ -61,20 +65,20 @@ Ez a cikk a Face API szolgáltatás 1.0-s verziója vonatkozik.
 
 * Támogatott egyidejűségi az arcok különböző Facelist és az is lehet PersonGroup más személyek hozzáadásával és eltávolításával.
 
-### <a name="release-changes-in-march-2017"></a>2017. márciusi kiadás változásai
+### <a name="release-changes-in-march-2017"></a>2017\. márciusi kiadás változásai
 * Hozzáadott `emotion` attribútum [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` paraméter.
 
 * Kijavítva a face nem lehet észlel, a téglalap által visszaadott [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) , `targetFace` a [FaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) és [is lehet PersonGroup személy – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
 
 * Kijavítva a észlelhető oldallal méretét róla, hogy szigorúan 36 x 36, 4096 x 4096 képpont között.
 
-### <a name="release-changes-in-november-2016"></a>2016. November kiadás változásai
+### <a name="release-changes-in-november-2016"></a>2016\. November kiadás változásai
 * Face Storage Standard előfizetésre megőrzött képeket tárolhat további használatakor hozzáadott [is lehet PersonGroup személy – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) vagy [FaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) objectet vagy hasonlóság megfelelő. A tárolt képek díja 1000 arconként 0,5 dollár és a díjszabás napi lebontású. Ingyenes szint előfizetések legfeljebb 1000 teljes személyek továbbra is.
 
-### <a name="release-changes-in-october-2016"></a>2016. október kiadás változásai
+### <a name="release-changes-in-october-2016"></a>2016\. október kiadás változásai
 * A hibaüzenet több felületen a "Tartoznak-e egynél több arcok a képen" "Van egynél több arcok a képen" a targetFace a módosított [FaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) és [is lehet PersonGroup személy -Facehozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
 
-### <a name="release-changes-in-july-2016"></a>2016. júliusi kiadás változásai
+### <a name="release-changes-in-july-2016"></a>2016\. júliusi kiadás változásai
 * Face személy objektum hitelesítés a támogatott [arc - ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
 
 * Hozzáadott választható `mode` kétféle működő kiválasztásának engedélyezése a paraméter: `matchPerson` és `matchFace` a [arc - hasonló](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) és az alapértelmezett érték a `matchPerson`.

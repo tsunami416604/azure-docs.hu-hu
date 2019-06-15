@@ -16,10 +16,10 @@ ms.date: 11/10/2017
 ms.author: jennile
 ms.custom: seodec18
 ms.openlocfilehash: 3e304df51133d53adad50e672249bde6c9960712
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65539800"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Az Azure App Service – diagnosztika áttekintése
@@ -38,7 +38,7 @@ Az Azure Functions, nyissa meg a függvényalkalmazást, és a felső navigáci�
 
 Az App Service-ben diagnosztikai kezdőlapjának választhatja ki a kategóriát, amely a legjobban ismerteti a problémát, az alkalmazás kezdőlapjára csempéket a kulcsszavak használatával. Ez az oldal is, ahol megtalálja **diagnosztikai eszközök** Windows-alkalmazások. Lásd: [diagnosztikai eszközök (csak a Windows-alkalmazás)](#diagnostic-tools-only-for-windows-app).
 
-![Kezdőlap](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
+![Homepage](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
 
 ## <a name="interactive-interface"></a>Interaktív felület
 

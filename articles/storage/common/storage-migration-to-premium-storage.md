@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
 ms.openlocfilehash: 5cfb96bd3115c8f3116a28926e93df89dff54351
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153765"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>(Nem felügyelt lemezek) az Azure Premium Storage-ba való migrálás
@@ -111,7 +111,7 @@ Meglévő Azure virtuális gépeket telepít át, ha a virtuális gép leállít
 
 A virtuális gép kell lennie a teljes mértékben lefelé áttelepíteni a tiszta állapotot. Lesz használható az áttelepítés befejeződéséig.
 
-#### <a name="step-1-prepare-vhds-for-migration"></a>1. lépés Virtuális merevlemezek előkészítése az áttelepítésre
+#### <a name="step-1-prepare-vhds-for-migration"></a>1\.lépés Virtuális merevlemezek előkészítése az áttelepítésre
 Ha a meglévő Azure virtuális gépeket telepít át a Premium Storage, a VHD-t lehet:
 
 * Általánosított operációs rendszer lemezképének elkészítése
@@ -149,7 +149,7 @@ Ha az adatlemezeket az Azure-ban kell áttelepíteni, biztosítsa, állítsa le 
 
 Másolja a VHD-t az Azure Premium Storage és a kiépített adatlemezként regisztrálása alább leírt lépésekkel.
 
-#### <a name="step-2-create-the-destination-for-your-vhd"></a>2. lépés A cél a virtuális merevlemez létrehozása
+#### <a name="step-2-create-the-destination-for-your-vhd"></a>2\.lépés A cél a virtuális merevlemez létrehozása
 Hozzon létre egy storage-fiók karbantartása a virtuális merevlemezeket. A virtuális merevlemezek tárolási helyének megtervezésekor, vegye figyelembe a következőket:
 
 * A cél Premium storage-fiók.
@@ -180,11 +180,11 @@ AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül
 
     Az alábbiakban az AzCopy-parancsban használt paraméterek leírását:
 
-   * **/ Forrás:  *&lt;forrás&gt;:*** A mappa vagy a storage tárolót tartalmazó URL-cím a virtuális merevlemez helye.
-   * **/ SourceKey:  *&lt;forrás-fiókkulcs&gt;:*** A forrás tárfiókban tárfiókkulcs.
-   * **/ Cél:  *&lt;cél&gt;:*** Tárolási tároló URL-cím a virtuális merevlemez másolása.
-   * **/ DestKey:  *&lt;dest fiókkulcs&gt;:*** A cél tárfiók tárfiók kulcsa.
-   * **/ Minta:  *&lt;Fájlnév&gt;:*** Adja meg a virtuális merevlemez másolása a fájl nevét.
+   * **/ Forrás:  *&lt;forrás&gt;:* ** A mappa vagy a storage tárolót tartalmazó URL-cím a virtuális merevlemez helye.
+   * **/ SourceKey:  *&lt;forrás-fiókkulcs&gt;:* ** A forrás tárfiókban tárfiókkulcs.
+   * **/ Cél:  *&lt;cél&gt;:* ** Tárolási tároló URL-cím a virtuális merevlemez másolása.
+   * **/ DestKey:  *&lt;dest fiókkulcs&gt;:* ** A cél tárfiók tárfiók kulcsa.
+   * **/ Minta:  *&lt;Fájlnév&gt;:* ** Adja meg a virtuális merevlemez másolása a fájl nevét.
 
 Eszköz AzCopy használatával kapcsolatos részletekért, lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md).
 
@@ -219,7 +219,7 @@ C:\PS> Start-AzStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext
 ### <a name="scenario2"></a>2. forgatókönyv: "Tudom vagyok-ről virtuális gépek más platformokon az Azure Premium Storage."
 Ha az áttelepítés VHD-t a nem – az Azure felhőalapú tárolás az Azure-ba, először exportálnia kell a virtuális Merevlemezt egy helyi könyvtárba. A teljes forrásának elérési útvonala a helyi könyvtárban virtuális Merevlemezt tároló praktikus rendelkezik, és az AzCopy segítségével töltse fel az Azure Storage.
 
-#### <a name="step-1-export-vhd-to-a-local-directory"></a>1. lépés Exportálja a virtuális Merevlemezt egy helyi könyvtárba
+#### <a name="step-1-export-vhd-to-a-local-directory"></a>1\.lépés Exportálja a virtuális Merevlemezt egy helyi könyvtárba
 ##### <a name="copy-a-vhd-from-aws"></a>Másolja a VHD-t az AWS-től
 1. AWS használja, ha exportálja az EC2-példánynak az Amazon S3 gyűjtőt a virtuális merevlemez. Az Exportálás Amazon EC2-példányokon telepítse az Amazon EC2-é parancssori felület (CLI) eszközt, és futtassa a create-példány-export-tevékenység parancsot az EC2-példány exportálni egy VHD-fájl az Amazon dokumentációjában leírt lépésekkel. Ügyeljen arra, hogy **VHD** a lemez&#95;kép&#95;formátum változó futtatásakor a **-példány-export-feladat létrehozása** parancsot. Az exportált VHD-fájlt a Amazon S3 gyűjtőt jelöl ki, hogy a folyamat során a rendszer menti.
 
@@ -238,7 +238,7 @@ Ha az áttelepítés VHD-t a nem – az Azure felhőalapú tárolás az Azure-ba
 ##### <a name="copy-a-vhd-from-on-premises"></a>A helyi virtuális merevlemez másolása
 Virtuális merevlemez telepít át egy helyszíni környezetből, ha szüksége lesz a virtuális Merevlemezt tároló teljes forrásútvonalát. A forrás elérési útja lehet egy kiszolgáló helye vagy a fájlmegosztásnak.
 
-#### <a name="step-2-create-the-destination-for-your-vhd"></a>2. lépés A cél a virtuális merevlemez létrehozása
+#### <a name="step-2-create-the-destination-for-your-vhd"></a>2\.lépés A cél a virtuális merevlemez létrehozása
 Hozzon létre egy storage-fiók karbantartása a virtuális merevlemezeket. A virtuális merevlemezek tárolási helyének megtervezésekor, vegye figyelembe a következőket:
 
 * A célként megadott tárfiók lehet standard vagy prémium szintű storage alkalmazás igényektől függően.
@@ -247,7 +247,7 @@ Hozzon létre egy storage-fiók karbantartása a virtuális merevlemezeket. A vi
 
 Erősen ajánlott, a prémium szintű storage használata éles számítási feladatok minden adat áthelyezése.
 
-#### <a name="step-3-upload-the-vhd-to-azure-storage"></a>3. lépés A virtuális merevlemez feltöltése az Azure Storage
+#### <a name="step-3-upload-the-vhd-to-azure-storage"></a>3\. lépés. A virtuális merevlemez feltöltése az Azure Storage
 Most, hogy a VHD-t a helyi könyvtárban, az AzCopy vagy AzurePowerShell használhatja a .vhd fájl feltöltése az Azure Storage. Két lehetőség áll rendelkezésre a itt:
 
 ##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>Option 1: Azure PowerShell Add-AzureVhd segítségével a .vhd-fájl feltöltése
@@ -277,12 +277,12 @@ AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül
 
     Az alábbiakban az AzCopy-parancsban használt paraméterek leírását:
 
-   * **/ Forrás:  *&lt;forrás&gt;:*** A mappa vagy a storage tárolót tartalmazó URL-cím a virtuális merevlemez helye.
-   * **/ SourceKey:  *&lt;forrás-fiókkulcs&gt;:*** A forrás tárfiókban tárfiókkulcs.
-   * **/ Cél:  *&lt;cél&gt;:*** Tárolási tároló URL-cím a virtuális merevlemez másolása.
-   * **/ DestKey:  *&lt;dest fiókkulcs&gt;:*** A cél tárfiók tárfiók kulcsa.
+   * **/ Forrás:  *&lt;forrás&gt;:* ** A mappa vagy a storage tárolót tartalmazó URL-cím a virtuális merevlemez helye.
+   * **/ SourceKey:  *&lt;forrás-fiókkulcs&gt;:* ** A forrás tárfiókban tárfiókkulcs.
+   * **/ Cél:  *&lt;cél&gt;:* ** Tárolási tároló URL-cím a virtuális merevlemez másolása.
+   * **/ DestKey:  *&lt;dest fiókkulcs&gt;:* ** A cél tárfiók tárfiók kulcsa.
    * **/ BlobType: lap:** Megadja, hogy a cél egy lapblob.
-   * **/ Minta:  *&lt;Fájlnév&gt;:*** Adja meg a virtuális merevlemez másolása a fájl nevét.
+   * **/ Minta:  *&lt;Fájlnév&gt;:* ** Adja meg a virtuális merevlemez másolása a fájl nevét.
 
 Eszköz AzCopy használatával kapcsolatos részletekért, lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md).
 

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc81f0a5c75d9aeee39f0633521d692c8d30c474
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 4b1c68d9254b0da2e5296c83d8dd4c95091fde1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823473"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111801"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Az Azure Active Directoryban (előzetes verzió) konfigurálható jogkivonatok élettartama
 
@@ -77,7 +77,7 @@ Egy házirend használatával adja meg, miután az első munkamenet-azonosító 
 A jogkivonat élettartama házirend egy csoportházirend-objektum, amely tartalmazza a jogkivonat élettartama szabályok típusú. A házirend tulajdonságainak segítségével szabályozza a megadott jogkivonat élettartama. Ha nincs beállítva szabályzat, a rendszer érvényesíti az alapértelmezett élettartam érték.
 
 ### <a name="configurable-token-lifetime-properties"></a>Konfigurálható jogkivonat élettartama tulajdonságai
-| Tulajdonság | A házirend tulajdonság karakterlánc | Hatással van | Alapértelmezett | Minimum | Maximum |
+| Tulajdonság | A házirend tulajdonság karakterlánc | Hatással van | Alapértelmezett | Minimális | Maximum |
 | --- | --- | --- | --- | --- | --- |
 | Hozzáférési jogkivonat élettartama |AccessTokenLifetime |Hozzáférési jogkivonatok, azonosító-jogkivonatokat, egy SAML2 jogkivonatok |1 óra |10 perc |1 nap |
 | Frissítési jogkivonat maximális inaktív időpont |MaxInactiveTime |Frissítési jogkivonatok |90 nap |10 perc |90 nap |

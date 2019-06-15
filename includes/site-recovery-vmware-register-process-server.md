@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: cf39baf34096691144181332566cf567ebc02310
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66169992"
 ---
 1. A folyamatkiszolgáló futtató gép távoli asztali kapcsolatot létesíteni. 
@@ -16,10 +16,10 @@ ms.locfileid: "66169992"
     - Az eszköz automatikusan elindítja az első alkalommal jelentkezik be a folyamatkiszolgáló.
     - Ha ez nem nyílik meg automatikusan, kattintson a parancsikonnal az asztalról.
 
-3. A **konfigurációs kiszolgáló teljes Tartományneve vagy IP-**, adja meg a nevét vagy IP-cím, amellyel a folyamatkiszolgáló regisztrálása konfigurációs kiszolgáló.
+3. A **konfigurációs kiszolgáló teljes Tartományneve vagy IP-** , adja meg a nevét vagy IP-cím, amellyel a folyamatkiszolgáló regisztrálása konfigurációs kiszolgáló.
 4. A **konfigurációs kiszolgáló portja**, győződjön meg arról, hogy a 443-as porton van megadva. Ez az a port, amelyen a konfigurációs kiszolgálót a kéréseket figyeli.
 5. A **kapcsolat hozzáférési kódja**, adja meg a konfigurációs kiszolgáló beállításakor megadott jelszót. A hozzáférési kód keresése:
-    -  A Site Recovery telepítési mappáját a konfigurációs kiszolgálón, lépjen **\home\svssystems\bin\**. 
+    -  A Site Recovery telepítési mappáját a konfigurációs kiszolgálón, lépjen * *\home\svssystems\bin\** . 
     - Futtassa a következő parancsot: **genpassphrase.exe.n**. Ez bemutatja, a jelszót, majd jegyezze fel, amelyek helyét.
 
 6. A **adatátviteli Port**, hagyja bejelölve az alapértelmezett érték, ha megadott egy egyéni portot.

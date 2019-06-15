@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8d377db827a6548c380128624c21f4ae7896aff
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: fd2da6baecdce3ab85a45347f27f573bf814445d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075325"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055752"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Démon alkalmazások, hogy a hívások webes API-k – helykódot
 
@@ -39,9 +39,11 @@ Démon alkalmazások támogatása a Microsoft-kódtárakat a következők:
 
 ## <a name="configuration-of-the-authority"></a>A szolgáltató konfigurációja
 
-Tekintettel arra, hogy a démon alkalmazások ne használja a delegált engedélyeket, de az Alkalmazásengedélyek, azok *támogatott fióktípus* nem lehet *bármely szervezeti directory fiókok és a személyes Microsoft-fiókok () Ha például a Skype, Xbox, Outlook.com)*. Valójában nincs nincs Bérlői rendszergazda hozzájárulását a démon alkalmazás személyes Microsoft-fiókok. Válassza ki kell *fiókokat a szervezet* vagy *bármely szervezeti fiókok*.
+Tekintettel arra, hogy a démon alkalmazások ne használja a delegált engedélyeket, de az Alkalmazásengedélyek, azok *támogatott fióktípus* nem lehet *bármely szervezeti directory fiókok és a személyes Microsoft-fiókok () Ha például a Skype, Xbox, Outlook.com)* . Valójában nincs nincs Bérlői rendszergazda hozzájárulását a démon alkalmazás személyes Microsoft-fiókok. Válassza ki kell *fiókokat a szervezet* vagy *bármely szervezeti fiókok*.
 
-Ezért a jogosultságokat az alkalmazás konfigurációjában megadott bérlő-ed (a bérlő Azonosítóját vagy a szervezetéhez tartozó tartománynév megadása) kell lennie. Amennyiben, ISV, és adjon meg egy több-bérlős eszközt szeretne, használhat `organizations`. De vegye figyelembe, hogy az ügyfelek számára bemutatják, hogyan biztosítson rendszergazdai jóváhagyás is kell. Lásd: [hozzájárulás kérése egy teljes bérlő](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) részletekért
+Ezért a jogosultságokat az alkalmazás konfigurációjában megadott bérlő-ed (a bérlő Azonosítóját vagy a szervezetéhez tartozó tartománynév megadása) kell lennie.
+
+Amennyiben, ISV, és adjon meg egy több-bérlős eszközt szeretne, használhat `organizations`. De vegye figyelembe, hogy az ügyfelek számára bemutatják, hogyan biztosítson rendszergazdai jóváhagyás is kell. Lásd: [hozzájárulás kérése egy teljes bérlő](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) részleteiről. Emellett van egy korlátozás az MSAL, amely `organizations` csak akkor engedélyezett, ha az ügyfél-hitelesítő adatok egy alkalmazás titkos kulcs (a tanúsítvány nem). Lásd: [#891 MSAL.NET hiba](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
 
 ## <a name="application-configuration-and-instantiation"></a>Az alkalmazások konfigurálásával és a példányosítás
 

@@ -12,10 +12,10 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.openlocfilehash: d0a12bde119e9dae3f950603fac4bce060bb5f91
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66172265"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Az alkalmazásproxy-alkalmazás kapcsolatos problémák megoldásában 
@@ -41,7 +41,7 @@ Ez a folyamatábra végigvezeti a gyakori problémák a csatlakozást az alkalma
 
 |  | Műveletek | Leírás | 
 |---------|---------|---------|
-|1. | Nyisson meg egy böngészőt, az alkalmazás eléréséhez, és adja meg hitelesítő adatait | Jelentkezzen be az alkalmazást, és ellenőrizze a felhasználóval kapcsolatos hibákat, például a hitelesítő adatok használatával próbálja [vállalati alkalmazás nem érhető el](application-proxy-sign-in-bad-gateway-timeout-error.md). |
+|1 | Nyisson meg egy böngészőt, az alkalmazás eléréséhez, és adja meg hitelesítő adatait | Jelentkezzen be az alkalmazást, és ellenőrizze a felhasználóval kapcsolatos hibákat, például a hitelesítő adatok használatával próbálja [vállalati alkalmazás nem érhető el](application-proxy-sign-in-bad-gateway-timeout-error.md). |
 |2 | Ellenőrizze az alkalmazás a felhasználó-hozzárendelés | Győződjön meg arról, hogy a felhasználói fiók rendelkezik hozzáféréssel az alkalmazást a vállalati hálózaton belül, és tesztelje a lépéseket követve jelentkezik be az alkalmazás [az alkalmazás tesztelése](application-proxy-add-on-premises-application.md#test-the-application). Bejelentkezési problémák továbbra is fennállnak, ha [bejelentkezési kapcsolatos hibák elhárítása](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-troubleshoot-sign-in-errors).  |
 |3 | Nyisson meg egy böngészőt, és próbálja meg elérni az alkalmazást | Ha hibaüzenet jelenik meg azonnal, ellenőrizze, hogy az alkalmazásproxy megfelelően van konfigurálva. További információk konkrét hibaüzeneteket: [problémák elhárítása az Application Proxy és hibaüzenetek](application-proxy-troubleshoot.md).  |
 |4 | Ellenőrizze az egyéni tartomány beállítása, vagy a hiba elhárítása | Ha az oldal összes már nem jeleníti meg, ellenőrizze, hogy az egyéni tartomány megfelelően van-e konfigurálva áttekintésével [egyéni tartományok használata](application-proxy-configure-custom-domain.md).<br></br>Ha az oldal nem tölt be, és a egy hibaüzenet jelenik meg, a lépésként tekintse át a hiba elhárítása [problémák elhárítása az Application Proxy és hibaüzenetek](application-proxy-troubleshoot.md). <br></br>Ha egy hibaüzenet jelenik meg, a 20 másodpercnél tovább tart, kapcsolódási probléma okozhatja. Nyissa meg a [hibakeresése az alkalmazásproxy-összekötők](application-proxy-debug-connectors.md) hibaelhárításról szóló cikket.  |

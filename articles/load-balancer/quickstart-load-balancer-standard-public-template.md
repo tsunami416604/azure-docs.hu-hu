@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 0e47560ca43b23f4779da701f3e6f11f53a6b1ce
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c418041c5de343d7210dbd153ebe6cea0af95c42
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480399"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066813"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Gyors útmutató: Hozzon létre egy Standard Load Balancer virtuális gépek terhelésének elosztásához az Azure Resource Manager-sablon használatával
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ebben a szakaszban egy Standard Load Balancer, amellyel a virtuális gépek terheléselosztása hoz létre. A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Amikor létrehoz egy Standard Load Balancert, létre kell hoznia egy új standard nyilvános IP-címet is, amely a Standard Load Balancer előtereként van konfigurálva (alapértelmezés szerint *LoadBalancerFrontend* néven). Számos módon használható standard load balancer létrehozása. Ebben a rövid útmutatóban az Azure PowerShell használatával üzembe helyezése egy [Resource Manager-sablon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-load-balancer-standard-create/azuredeploy.json). A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. Üzembe helyezése és kezelése az Azure-megoldások kapcsolatos fogalmak megismeréséhez tekintse meg [Azure Resource Manager dokumentációjában](/azure/azure-resource-manager/). További kapcsolódó Azure Load Balancer-sablonnal kapcsolatban [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
-A sablon üzembe helyezéséhez válassza **kipróbálás** nyissa meg az Azure Cloud shellt, és illessze be a következő PowerShell-parancsfájlt a shell ablakába. Illessze be a kódot, kattintson a jobb gombbal a rendszerhéj ablakát, és jelölje ki **illessze be**.
+A sablon üzembe helyezéséhez válassza **kipróbálás** nyissa meg az Azure Cloud shellt, és illessze be a következő PowerShell-parancsfájlt a shell ablakába. Illessze be a kódot, kattintson a jobb gombbal a rendszerhéj ablakát, és jelölje ki **illessze be**. Azure-beli virtuális gépek rendelkezésre állási zónában támogató régiók listáját lásd: [Itt](../availability-zones/az-overview.md).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name with 12 or less letters or numbers that is used to generate Azure resource names"
@@ -45,9 +45,13 @@ $templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -location $location -adminUsername $adminUsername -adminPassword $adminPassword
+
+Write-Host "Press [ENTER] to continue."
+
 ```
 
-Figyelje meg az erőforráscsoport neve a projekt nevére a **rg** hozzáfűzve. Az erőforráscsoport nevét a következő szakaszban van szüksége.  Az erőforrások létrehozása néhány percet vesz igénybe.
+ >[!NOTE]
+ >Az erőforráscsoport neve a projekt nevére a **rg** hozzáfűzve. Az erőforráscsoport nevét a következő szakaszban van szüksége.  Az erőforrások létrehozása néhány percet vesz igénybe.
 
 ## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
 

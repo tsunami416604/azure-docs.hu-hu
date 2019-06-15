@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: c3fb1f430076b26f7b5dd83e167371ac6d957ac4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967235"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Áttelepítés a nagyvállalati szerződés a Microsoft ügyfél-megállapodás API-k
@@ -90,8 +90,8 @@ A [egyenleg összefoglaló lekérése](/rest/api/billing/enterprise/billing-ente
 - Egyenlegek
 - Új vásárlások
 - Az Azure Marketplace szolgáltatási díjai
-- Korrekciók
-- A szolgáltatás kerettúllépési díjai
+- Adjustments (Módosító tételek)
+- Keretet túllépő szolgáltatási díjak
 
 Összes használat API-t használó Azure ad-ben a hitelesítéshez és engedélyezéshez, natív Azure API-k helyébe lép. Azure REST API-k kapcsolatos további információkért lásd: [REST – első lépések](/rest/api/azure/#create-the-request).
 
@@ -129,7 +129,7 @@ Használat részletei API, csakúgy, mint az összes a Cost Management API-k, é
 | Típus | Azonosító formátuma |
 | --- | --- |
 | Számlázási fiók | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
-| Számlázási profil | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
+| Számlázási profilja | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
 | Előfizetés | `/subscriptions/{subscriptionId}` |
 | Erőforráscsoport | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
 
@@ -172,54 +172,54 @@ A tulajdonság nevét, amely tartalmazza a használati rekordokból álló tömb
 
 | Régi tulajdonság | Új tulajdonság | Megjegyzések |
 | --- | --- | --- |
-| Fiókazonosító | – | Az előfizetés létrehozója nem követi nyomon. InvoiceSectionId (azonos departmentId) használja. |
+| AccountId | – | Az előfizetés létrehozója nem követi nyomon. InvoiceSectionId (azonos departmentId) használja. |
 | AccountNameAccountOwnerId és AccountOwnerEmail | – | Az előfizetés létrehozója nem követi nyomon. InvoiceSectionName (azonos departmentName) használja. |
-| További információk | additionalInfo | &nbsp;  |
-| Külön számlázott díjak | isAzureCreditEligible | Vegye figyelembe, hogy ezek a Tulajdonságok opposites. IsAzureCreditEnabled értéke igaz, ha ChargesBilledSeparately false (hamis) lesz. |
-| Felhasznált mennyiség | MENNYISÉG | &nbsp; |
-| Használt szolgáltatás | consumedService | Pontos karakterlánc-értékek eltérőek lehetnek. |
-| Használt szolgáltatás azonosítója | Egyik sem | &nbsp; |
-| Költséghely | costCenter | &nbsp; |
+| AdditionalInfo | additionalInfo | &nbsp;  |
+| ChargesBilledSeparately | isAzureCreditEligible | Vegye figyelembe, hogy ezek a Tulajdonságok opposites. IsAzureCreditEnabled értéke igaz, ha ChargesBilledSeparately false (hamis) lesz. |
+| ConsumedQuantity | Mennyiség | &nbsp; |
+| ConsumedService | consumedService | Pontos karakterlánc-értékek eltérőek lehetnek. |
+| ConsumedServiceId | None | &nbsp; |
+| CostCenter | costCenter | &nbsp; |
 | Dátum- és usageStartDate | date | &nbsp;  |
-| nap | Egyik sem | Kezdő dátum naponta elemzi. |
-| Részleg azonosítója | invoiceSectionId | Pontos értékek eltérőek. |
+| Nap | None | Kezdő dátum naponta elemzi. |
+| DepartmentId | invoiceSectionId | Pontos értékek eltérőek. |
 | Részleg neve | invoiceSectionName | Pontos karakterlánc-értékek eltérőek lehetnek. Szükség esetén konfigurálja a számla szakaszok a részlegek, megfelelően. |
 | ExtendedCost és költség | costInBillingCurrency | &nbsp;  |
-| Példány azonosítója | resourceId | &nbsp;  |
-| Ismétlődő költség | Egyik sem | &nbsp;  |
-| Location egység | hely | &nbsp;  |
-| Fogyasztásmérő kategóriája | meterCategory | Pontos karakterlánc-értékek eltérőek lehetnek. |
-| Fogyasztásmérő azonosítója | meterId | Pontos karakterlánc-értékek eltérnek. |
-| Fogyasztásmérő neve | meterName | Pontos karakterlánc-értékek eltérőek lehetnek. |
-| Fogyasztásmérő régiója | meterRegion | Pontos karakterlánc-értékek eltérőek lehetnek. |
-| Fogyasztásmérő alkategóriája | meterSubCategory | Pontos karakterlánc-értékek eltérőek lehetnek. |
-| hónap | Egyik sem | Kezdő dátum a hónap elemzi. |
-| Ajánlat neve | Egyik sem | Közzétevő neve és productOrderName használni. |
-| Ajánlat azonosítója | Egyik sem | &nbsp;  |
-| Megrendelés száma | Egyik sem | &nbsp;  |
-| Cikkszám | Egyik sem | Használja a meterId és productOrderName árakat egyedi azonosításához. |
+| InstanceId | resourceId | &nbsp;  |
+| Ismétlődő díjat kell fizetni | None | &nbsp;  |
+| Location egység | location | &nbsp;  |
+| MeterCategory | MeterCategory | Pontos karakterlánc-értékek eltérőek lehetnek. |
+| MeterId | meterId | Pontos karakterlánc-értékek eltérnek. |
+| MeterName | MeterName | Pontos karakterlánc-értékek eltérőek lehetnek. |
+| MeterRegion | MeterRegion | Pontos karakterlánc-értékek eltérőek lehetnek. |
+| MeterSubCategory | meterSubCategory | Pontos karakterlánc-értékek eltérőek lehetnek. |
+| Hónap | None | Kezdő dátum a hónap elemzi. |
+| Csomag neve | None | Közzétevő neve és productOrderName használni. |
+| OfferId | None | &nbsp;  |
+| Sorszám | None | &nbsp;  |
+| PartNumber | None | Használja a meterId és productOrderName árakat egyedi azonosításához. |
 | Csomag neve | productOrderName | &nbsp;  |
 | Product | Product |   |
 | Termékazonosító | productId | Pontos karakterlánc-értékek eltérnek. |
 | Közzétevő neve | publisherName | &nbsp;  |
-| Erőforráscsoport | resourceGroupName | &nbsp;  |
-| Erőforrás GUID azonosítója | meterId | Pontos karakterlánc-értékek eltérnek. |
-| Erőforrás helye | resourceLocation | &nbsp;  |
-| Erőforrás helyének azonosítója | Egyik sem | &nbsp;  |
-| Erőforrásdíj | effectivePrice | &nbsp;  |
-| Szolgáltatásadminisztrátor azonosítója | – | &nbsp;  |
-| 1. szolgáltatási információ | serviceInfo1 | &nbsp;  |
-| 2. szolgáltatási információ | serviceInfo2 | &nbsp;  |
-| ServiceName | meterCategory | Pontos karakterlánc-értékek eltérőek lehetnek. |
+| ResourceGroup | resourceGroupName | &nbsp;  |
+| ResourceGuid | meterId | Pontos karakterlánc-értékek eltérnek. |
+| resourceLocation | resourceLocation | &nbsp;  |
+| ResourceLocationId | None | &nbsp;  |
+| ResourceRate | effectivePrice | &nbsp;  |
+| ServiceAdministratorId | – | &nbsp;  |
+| ServiceInfo1 | serviceInfo1 | &nbsp;  |
+| ServiceInfo2 | serviceInfo2 | &nbsp;  |
+| ServiceName | MeterCategory | Pontos karakterlánc-értékek eltérőek lehetnek. |
 | ServiceTier | meterSubCategory | Pontos karakterlánc-értékek eltérőek lehetnek. |
-| Társzolgáltatás azonosítója | – | &nbsp;  |
-| Előfizetési GUID | subscriptionId | &nbsp;  |
-| Előfizetés-azonosító | subscriptionId | &nbsp;  |
-| Előfizetés neve | subscriptionName | &nbsp;  |
+| StoreServiceIdentifier | – | &nbsp;  |
+| subscriptionGuid | subscriptionId | &nbsp;  |
+| SubscriptionId | subscriptionId | &nbsp;  |
+| SubscriptionName | subscriptionName | &nbsp;  |
 | Tags | címkék | A tags tulajdonságnak gyökérobjektum, hogy a beágyazott properties tulajdonság nem érvényes. |
-| Mértékegység | unitOfMeasure | Pontos karakterlánc-értékek eltérnek. |
+| UnitOfMeasure | UnitOfMeasure | Pontos karakterlánc-értékek eltérnek. |
 | usageEndDate | date | &nbsp;  |
-| év | Egyik sem | Kezdő dátum az év elemzi. |
+| Év | None | Kezdő dátum az év elemzi. |
 | (új) | billingCurrency | A díj használt pénznem. |
 | (új) | billingProfileId | A számlázási profilja (megegyezik a regisztrációs) egyedi azonosítója. |
 | (új) | billingProfileName | A számlázási profilja (megegyezik a regisztrációs) neve. |
@@ -371,12 +371,12 @@ Az alábbi táblázat a régebbi vállalati első ár lap API mezőket mutatja. 
 | --- | --- | --- |
 | billingPeriodId  | _Nem alkalmazható_ | Nem alkalmazható. A Microsoft ügyfél-megállapodások esetén a számlák és a kapcsolódó árlista helyett billingPeriodId fogalma. |
 | meterId  | meterId | &nbsp;  |
-| unitOfMeasure  | unitOfMeasure | Pontos karakterlánc-értékek eltérőek lehetnek. |
+| UnitOfMeasure  | UnitOfMeasure | Pontos karakterlánc-értékek eltérőek lehetnek. |
 | includedQuantity  | includedQuantity | A szolgáltatás a Microsoft ügyfél-szerződés nem alkalmazható. |
-| cikkszám  | _Nem alkalmazható_ | Ehelyett használjon productOrderName (azonos offerId) és meterid kombinációja. |
-| egységár  | egységár | Egységár a Microsoft vevői szerződés keretében igénybe vett vonatkozik. |
+| PartNumber  | _Nem alkalmazható_ | Ehelyett használjon productOrderName (azonos offerId) és meterid kombinációja. |
+| Egységár  | Egységár | Egységár a Microsoft vevői szerződés keretében igénybe vett vonatkozik. |
 | Pénznemkód  | pricingCurrency | A Microsoft ügyfél-szerződések díjszabása és számlázási pénznemben az ár reprezentációinak rendelkezik. A Microsoft ügyfél-szerződés pricingCurrency felel meg a pénznemkód. |
-| ajánlatazonosító | productOrderName | Helyett OfferId productOrderName is használhat, de nem ugyanaz, mint OfferId. Azonban productOrderName és az érték határozza meg örökölt regisztrációk meterId és Offerid kapcsolódó díjszabás a Microsoft ügyfél-szerződés. |
+| offerId | productOrderName | Helyett OfferId productOrderName is használhat, de nem ugyanaz, mint OfferId. Azonban productOrderName és az érték határozza meg örökölt regisztrációk meterId és Offerid kapcsolódó díjszabás a Microsoft ügyfél-szerződés. |
 
 ## <a name="consumption-price-sheet-api-operations"></a>Fogyasztási ár lap API-műveletek
 
@@ -430,17 +430,17 @@ A régebbi tulajdonságokat [Azure Resource Manager ár árlista API-k](/rest/ap
 
 | Régi Azure Resource Manager ár API tulajdonság  | A Microsoft vevői szerződés ár lap API új tulajdonság   | Leírás |
 | --- | --- | --- |
-| Fogyasztásmérő azonosítója | _meterId_ | A mérő egyedi azonosítója. Ugyanaz, mint meterId. |
-| Fogyasztásmérő neve | meterName | A mérő neve. Fogyasztásmérő jelöli az Azure-szolgáltatás üzembe helyezhető erőforrásra. |
+| Meter ID (Mérési azonosító) | _meterId_ | A mérő egyedi azonosítója. Ugyanaz, mint meterId. |
+| Fogyasztásmérő neve | MeterName | A mérő neve. Fogyasztásmérő jelöli az Azure-szolgáltatás üzembe helyezhető erőforrásra. |
 | Fogyasztásmérő kategóriája  | szolgáltatás | A mérőszám a besorolási kategória neve. Ugyanaz, mint a szolgáltatás a Microsoft vevői szerződés árlista. Pontos karakterlánc-értékek eltérnek. |
 | Fogyasztásmérő alkategóriája | meterSubCategory | A mérőszám subclassification kategória nevét. A szolgáltatás magas szintű szolgáltatásainak set differenciálás besorolása alapján. Ha például alapszintű SQL DB és a Standard SQL DB |
-| Fogyasztásmérő régiója | meterRegion | &nbsp;  |
+| Fogyasztásmérő régiója | MeterRegion | &nbsp;  |
 | Unit (Egység) | _Nem alkalmazható_ | A unitOfMeasure elemezhető. |
-| Mértékegység | unitOfMeasure | &nbsp;  |
+| Mértékegység | UnitOfMeasure | &nbsp;  |
 | Cikkszám | _Nem alkalmazható_ | PartNumber, helyett használja a productOrderName és MeterId díja a számlázási profil egyedi azonosításához. Mezők helyett a partNumber MCA számlák MCA számlán jelennek meg. |
-| Egységár | egységár | A Microsoft Ügyfélszerződéséhez egységár. |
+| Egységár | Egységár | A Microsoft Ügyfélszerződéséhez egységár. |
 | Pénznemkód | pricingCurrency | A Microsoft ügyfél-szerződések díjai pénznem árak és számlázás pénzneme az képviseli. Pénznemkód megegyezik a pricingCurrency a Microsoft ügyfél-szerződés. |
-| Szolgáltatási keret | includedQuantity | A Microsoft ügyfél-szerződés szolgáltatások nem alkalmazható. A nulla értékeket tartalmazó megjelenítése. |
+| Included quantity (Bennefoglalt mennyiség) | includedQuantity | A Microsoft ügyfél-szerződés szolgáltatások nem alkalmazható. A nulla értékeket tartalmazó megjelenítése. |
 |  Ajánlat azonosítója  | productOrderName | Helyett OfferId productOrderName használja. Nem ugyanaz, mint OfferId, azonban a productOrderName és az érték határozza meg, a Microsoft ügyfél-szerződés díjszabása. Örökölt regisztrációk meterId és Offerid kapcsolatban. |
 
 Az ár a Microsoft ügyfél-megállapodások esetén működnek, mint a nagyvállalati szerződések van meghatározva. A nagyvállalati beléptetés a szolgáltatások árát termék, PartNumber, mérőszámok és az ajánlat egyedi rendelkezik. A PartNumber Microsoft ügyfél-megállapodások nincs használatban.
@@ -460,9 +460,9 @@ A következő mezőket is, vagy nem érhető el a Microsoft vevői szerződés �
 |Kivont mező| Leírás|
 |---|---|
 | billingPeriodId | Nem alkalmazható. InvoiceId MCA a felel meg. |
-| ajánlatazonosító | Nem alkalmazható. A MCA productOrderName felel meg. |
-| meterCategory  | Nem alkalmazható. Szolgáltatás a MCA felel meg. |
-| egység | Nem alkalmazható. A unitOfMeasure elemezhető. |
+| offerId | Nem alkalmazható. A MCA productOrderName felel meg. |
+| MeterCategory  | Nem alkalmazható. Szolgáltatás a MCA felel meg. |
+| Egység | Nem alkalmazható. A unitOfMeasure elemezhető. |
 | Pénznemkód | Ugyanaz, mint a pricingCurrency MCA a. |
 | meterLocation | Ugyanaz, mint a meterRegion MCA a. |
 | partNumber partnumber | Nem használható, mert cikkszám nem szerepel a MCA számlákat. Partnumber, helyett használja a meterId és productOrderName kombinációja árakat egyedi azonosításához. |

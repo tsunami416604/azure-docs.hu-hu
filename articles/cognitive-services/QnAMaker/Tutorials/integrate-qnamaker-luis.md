@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 06/11/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: fa79f519c8f3eb8baeaab04870f22a1cfefa59ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1792cf2359caef3211b4ce1ac86928eeb85d682b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431311"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053160"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>A robot használata a QnA Maker és a LUIS terjeszteni a Tudásbázis
 A QnA Maker Tudásbázis növekedésével nagy válik nehezen fenntartható, monolitikus egységes és a egy kell a Tudásbázis ossza fel kisebb logikai adattömböket.
@@ -27,7 +27,7 @@ Ez a cikk a Bot Framework v3 SDK-t használja. Tekintse meg a [Bot Framework cik
 
 ## <a name="architecture"></a>Architektúra
 
-![A QnA Maker luis-architektúra](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![A QnA Maker Language Understanding architektúrával](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
 Ebben az esetben QnA Maker először a bejövő kérdés szándéka olvas be egy LUIS-modellnek, és használja a QnA Maker megfelelő Tudásbázis irányítja.
 
@@ -51,7 +51,7 @@ Ebben az esetben QnA Maker először a bejövő kérdés szándéka olvas be egy
 
 ## <a name="web-app-bot"></a>Web app Bot
 
-1. [Hozzon létre egy Web App bot](https://docs.microsoft.com/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample) a LUIS-sablonnal. Válassza ki a 3.x SDK-t és a C# programozási nyelv.
+1. [Hozzon létre egy "Alapszintű" Web App bot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) mely automatikusan tartalmazza a LUIS-alkalmazásokon. Válassza ki a 4.x-es SDK-t és a C# programozási nyelv.
 
 1. Az Azure Portalon, a web app bot létrehozása után válassza ki a web app bot.
 1. Válassza ki **Alkalmazásbeállítások** Web app bot service navigációs sávján görgessen le a **Alkalmazásbeállítások** rendelkezésre álló beállítások szakaszában.

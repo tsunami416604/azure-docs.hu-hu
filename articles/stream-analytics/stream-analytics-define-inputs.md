@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 1822bfe9f2d6d337db74ba94d43644b0b3567c71
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66455616"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data bemeneti Stream analyticsbe
@@ -149,7 +149,7 @@ A következő táblázat ismerteti az egyes tulajdonságait a **új bemenet** ol
 | **Storage-fiók** | Hol találhatók a blob fájlokat a storage-fiók neve. |
 | **Tárfiók kulcsa** | A storage-fiókhoz társított titkos kulcs. Ez a beállítás automatikusan kitölti, kivéve, ha azt választja, adja meg a Blob storage beállításainak manuális. |
 | **Tároló** | A tárolót a bemeneti BLOB. Tárolók biztosítják a Microsoft Azure Blob service-ben tárolt blobok logikai jellegű csoportosítását. Az Azure Blob storage szolgáltatáshoz feltölt egy blobot, ha meg kell adnia egy adott blob-tárolót. Választhat **meglévő használata** tároló vagy **új létrehozása** szeretné, hogy létrehozott egy új tárolót.|
-| **Elérésiút-minta** (nem kötelező) | A fájl elérési útja, az a megadott tárolóban található blobok helyének azonosításához használt. Az elérési útban a következő három változó egy vagy több példányát adhatja: `{date}`, `{time}`, vagy `{partition}`<br/><br/>1. példa: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>2. példa: `cluster1/logs/{date}`<br/><br/>A `*` karakter nem megengedett érték az az elérési út előtagja. Csak érvényes <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">az Azure blob-karakterek</a> engedélyezettek. Nem tartalmazza a tároló nevének vagy fájlneveket. |
+| **Elérésiút-minta** (nem kötelező) | A fájl elérési útja, az a megadott tárolóban található blobok helyének azonosításához használt. Az elérési útban a következő három változó egy vagy több példányát adhatja: `{date}`, `{time}`, vagy `{partition}`<br/><br/>1\. példa: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>2\. példa: `cluster1/logs/{date}`<br/><br/>A `*` karakter nem megengedett érték az az elérési út előtagja. Csak érvényes <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">az Azure blob-karakterek</a> engedélyezettek. Nem tartalmazza a tároló nevének vagy fájlneveket. |
 | **Dátumformátum** (nem kötelező) | Ha a dátum változó az útvonalban, a dátumformátum, amelyben a fájlok vannak rendszerezve. Például: `YYYY/MM/DD` |
 | **Időformátum** (nem kötelező) |  Ha a idő változó az elérési út, az időformátum, amelyben a fájlok vannak rendszerezve. Jelenleg az egyetlen támogatott érték `HH` órán keresztül. |
 | **Eseményszerializációs formátum** | A szerializálási formátum (JSON, CSV- vagy Avro) a bejövő adatfolyam.  Győződjön meg arról, a JSON-formátumban a Specification igazítja, és nem tartalmazza a tizedes vezető 0. |

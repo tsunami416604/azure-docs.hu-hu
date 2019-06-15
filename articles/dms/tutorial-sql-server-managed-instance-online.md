@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/22/2019
-ms.openlocfilehash: 1229ff3221deb49601dec3cd40b556ea367fc4c9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/14/2019
+ms.openlocfilehash: 4e45251147561f2376ac4b044ebdf3a599092dcf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240703"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67126104"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server migrálása az Azure SQL Database felügyelt példány DMS online használatával
 
@@ -72,6 +72,10 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Győződjön meg arról, hogy a forrásként szolgáló SQL Server-példányt futtató szolgáltatásfiók írási, a forrásként szolgáló kiszolgáló számítógépes fiókja pedig olvasási és írási jogosultságokkal rendelkezik az Ön által létrehozott hálózati megosztáson.
 * Jegyezzen fel egy olyan Windows-felhasználót (és jelszót), amely teljes körű jogosultságokkal rendelkezik az Ön által korábban létrehozott hálózati megosztáson. Az Azure Database Migration Service megszemélyesíti a felhasználói hitelesítő adatokat, hogy fel tudja tölteni a biztonsági mentési fájlokat az Azure Storage-tárolóba a visszaállítási művelethez.
 * Hozzon létre egy Azure Active Directory-Alkalmazásazonosító, amely létrehozza az Alkalmazásazonosító kulcs, amely a DMS-szolgáltatás használatával kapcsolódni a cél Azure Database felügyelt példány és az Azure Storage-tárolóba. További információ: [Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozása a portálon erőforrások eléréséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+
+  > [!NOTE]
+  > A DMS az előfizetés közreműködői engedélyt igényel az adott alkalmazás azonosítóját. Aktívan dolgozunk ezen engedélyek követelmények csökkentése érdekében.
+
 * Hozzon létre vagy jegyezzen fel egy **standard teljesítményszintű** Azure Storage-fiókot, amelybe a DMS-szolgáltatás feltöltheti az adatbázis biztonsági mentési fájljait, majd felhasználhatja azokat az adatbázisok migrálásakor.  Ügyeljen arra, hogy az Azure Storage-tárfiók ugyanabban a régióban legyen, mint a létrehozott DMS-szolgáltatás.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
@@ -179,11 +183,11 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 4. Kattintson a **Mentés** gombra.
 
-## <a name="select-source-databases"></a>Válassza ki a forrásadatbázisokat
+## <a name="select-source-databases"></a>Forrásadatbázisok kiválasztása
 
 1. A **Forrásadatbázisok kiválasztása** képernyőn válassza ki a migrálni kívánt forrásadatbázist.
 
-    ![Válassza ki a forrásadatbázisokat](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
+    ![Forrásadatbázisok kiválasztása](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
 2. Kattintson a **Mentés** gombra.
 

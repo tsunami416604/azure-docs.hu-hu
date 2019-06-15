@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 manager: craigg
-ms.date: 04/17/2019
-ms.openlocfilehash: ec9f5aa8163ea9bb838b1a95ab8ad49233a72643
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.openlocfilehash: a88842802759a5c3ae7af7334bbe125344c978ea
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392659"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066916"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL Database
 
@@ -62,7 +62,7 @@ Alapértelmezés szerint a fürt a csomópontok a prémium szintű rendelkezésr
 Mivel a zóna zónaredundáns adatbázisok az egyes távolságát különböző adatközpontokban replikával rendelkeznek, a hálózati késés növelheti a véglegesítés ideje, és így hatással az egyes OLTP számítási feladatok teljesítményére. Mindig visszatérhet az Egyzónás konfiguráció a zóna redundancia beállítás letiltásával. Ez a folyamat hasonló a normál szint frissítése egy online művelet. A folyamat végén az adatbázis vagy készlet való áttelepítése a zóna redundáns kört a zónában kört vagy fordítva.
 
 > [!IMPORTANT]
-> Zóna zónaredundáns adatbázisok és rugalmas készletek jelenleg csak a prémium és üzletileg kritikus szolgáltatási szinten támogatott. Alapértelmezés szerint biztonsági mentések és a naplózási bejegyzések az RA-GRS storage tárolja, és ezért nem lehet automatikusan elérhető egy zóna kiterjedő szolgáltatáskimaradás esetén. 
+> Zóna zónaredundáns adatbázisok és rugalmas készletek jelenleg csak a prémium és üzletileg kritikus szolgáltatási szinten egyes régiókban támogatott. Üzletileg kritikus használatakor a zóna redundáns konfigurációs csak akkor használható a Gen5 számítási hardver kiválasztásakor. A zóna zónaredundáns adatbázisok támogató régiók naprakész kapcsolatban lásd: [Services támogatja a régiók szerint](../availability-zones/az-overview.md#services-support-by-region).  
 
 A magas rendelkezésre állású architektúra redundáns zóna verziója által az alábbi ábra mutatja be:
 

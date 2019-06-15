@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
 ms.openlocfilehash: 976bb43fd3e6d6fdb19c733affd4afa2e49e482c
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967685"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Mi a teendő, ha meghibásodik egy Azure-szolgáltatás megszakadása, ami hatással van az Azure Cloud Services
@@ -54,7 +54,7 @@ Az alkalmazás-adatforrások, attól függően szükség lehet az alkalmazás ad
 * SQL-adatbázis-forrásokhoz, olvassa el a [áttekintése: A felhő üzleti folytonossági és adatbázis katasztrófa utáni helyreállítás az SQL Database](../sql-database/sql-database-business-continuity.md) ellenőrizze az elérhető lehetőségek a kiválasztott replikációs modell az alkalmazás alapján.
 
 
-## <a name="option-3-wait-for-recovery"></a>3. lehetőség: Várjon, amíg a helyreállítási
+## <a name="option-3-wait-for-recovery"></a>3\. lehetőség: Várjon, amíg a helyreállítási
 Ebben az esetben az Ön részéről semmit nem kell, de a szolgáltatás nem lesz elérhető a régióban visszaállításáig. A szolgáltatás aktuális állapotát megtekintheti a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/).
 
 ## <a name="next-steps"></a>További lépések

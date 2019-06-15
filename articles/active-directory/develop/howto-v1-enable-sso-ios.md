@@ -17,10 +17,10 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 19b010091ebd909745b272fca704bb87adf7924b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65962623"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Útmutató: IOS-es adal-t használó alkalmazások közötti SSO engedélyezése
@@ -253,7 +253,7 @@ A követendő lépések a következők:
 3. Regisztrálás egy URL-sémát.
 4. Az info.plist fájlban adja hozzá egy engedélyt.
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>1. lépés: Az alkalmazás a közvetítő mód engedélyezése
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>1\. lépés: Az alkalmazás a közvetítő mód engedélyezése
 
 Lehetővé teszi, hogy az alkalmazás a közvetítő használata be van kapcsolva a "környezet" vagy a kezdeti beállítás és a hitelesítési objektum létrehozásakor. Ehhez beállítás a hitelesítő adatok típusa a kódban:
 
@@ -263,7 +263,7 @@ Lehetővé teszi, hogy az alkalmazás a közvetítő használata be van kapcsolv
 ```
 A `AD_CREDENTIALS_AUTO` beállítás lehetővé teszi az SDK-t hívja a közvetítőn próbál `AD_CREDENTIALS_EMBEDDED` megakadályozza, hogy az SDK hívása a közvetítőn.
 
-#### <a name="step-2-registering-a-url-scheme"></a>2. lépés: Regisztrálás egy URL-séma
+#### <a name="step-2-registering-a-url-scheme"></a>2\. lépés: Regisztrálás egy URL-séma
 
 Az identity platform indítja el a közvetítő, és visszatér a vezérlő az alkalmazásnak URL-címeket használ. Befejezés adott adatváltási egy URL-sémát, az identity platform ismert lesz az alkalmazás regisztrálva van szükség. Ez lehet kívül más alkalmazás rendszerek lehet, hogy korábban már regisztrált az alkalmazását.
 
@@ -288,7 +288,7 @@ Alább egy példát, hogyan Ez jelenik meg a projekt konfigurációs van. Előfo
 </array>
 ```
 
-#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>3. lépés: Új átirányítási URI az az URL-séma létrehozása
+#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>3\. lépés: Új átirányítási URI az az URL-séma létrehozása
 
 Győződjön meg arról, hogy a Microsoft bármikor visszatérhet a hitelesítőadat-jogkivonatokat a megfelelő alkalmazáshoz, kell, hogy vissza úgy, hogy az iOS operációs rendszer ellenőrizheti az alkalmazás nevezzük. Az iOS operációs rendszer a jelentések a Microsoft-közvetítő alkalmazások hívása, az alkalmazás Csomagazonosítóját. Ez a nem egy engedélyezetlen alkalmazás megtévesztésre. Ezért azt használja ki a Ez az URI-t, győződjön meg arról, hogy a megfelelő alkalmazáshoz a jogkivonatokat a rendszer visszairányítja a közvetítő alkalmazás együtt. Kérjük, az egyedi átirányítási URI-t mind az alkalmazás és átirányítási URI-t a fejlesztői portálon állítja be.
 
@@ -308,7 +308,7 @@ Támogatás Tanúsítványalapú hitelesítés egy második "msauth" regisztrál
 
 ex: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
-#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>4. lépés: Egy konfigurációs paraméter hozzáadása az alkalmazáshoz
+#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>4\. lépés: Egy konfigurációs paraméter hozzáadása az alkalmazáshoz
 
 Adal-t használ – canOpenURL: Ellenőrizze, hogy ha az ügynök telepítve van-e az eszközön. Az iOS 9-on az Apple zárolva mi kérdezhetők le egy rendszerek. Az Info.plist szakaszt az "msauth" hozzá kell adnia a `info.plist file`.
 

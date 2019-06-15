@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: asgang
 ms.openlocfilehash: 69122ffe9cefa3e1b9c6c8fbadfa80492ebebbde
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64928062"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Egy lemezt hozzá egy Azure virtuális gép replikálásának engedélyezése
@@ -36,7 +36,7 @@ Amikor egy új lemezt ad hozzá egy Azure virtuális Gépen, amely egy másik Az
 
 Ez a cikk azt feltételezi, hogy már beállította vész-helyreállítási a virtuális gép, amelyhez adja hozzá a lemezt. Ha még nem, kövesse a [Azure-bA vész-helyreállítási oktatóanyag](azure-to-azure-tutorial-enable-replication.md). 
 
-## <a name="enable-replication-for-an-added-disk"></a>Egy hozzáadott lemezt a replikáció engedélyezése 
+## <a name="enable-replication-for-an-added-disk"></a>Replikáció engedélyezése a hozzáadott lemezen 
 
 Egy hozzáadott lemezt replikálásának engedélyezéséhez, tegye a következőket:
 

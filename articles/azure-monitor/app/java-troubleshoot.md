@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/14/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: eaade5f9ec9db7e8d224305147dafc264916d9c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c55828244d73e612da7a7da2d050252cce04aa2c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60899499"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061143"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Hibaelhárítás, kérdések és válaszok: Application Insights Java-hoz
 Kérdések és problémák [Azure Application Insights Java nyelven][java]? Íme néhány tipp.
@@ -50,7 +50,7 @@ Kérdések és problémák [Azure Application Insights Java nyelven][java]? Íme
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Felfedezhetem minden adat nem látható
 * Nyissa meg a használat és becsült költségek lapon és ellenőrizze hogy [mintavételi](../../azure-monitor/app/sampling.md) van folyamatban. (100 %-os továbbítása azt jelenti, hogy a mintavétel a művelet nem.) Az Application Insights szolgáltatás beállítható csak töredéke alatt az alkalmazásból érkező telemetriai adatok fogadására. Ez lehetővé teszi a telemetria havi kvótán belül.
 * SDK mintavételi engedélyezve van? Ha igen, akkor az adatok a alkalmazni típusokhoz adott díjak mintát venni.
-* A Java SDK egy régebbi verzióját futtatja? 2.0.1-es verziójával kezdődően bevezettük a tartalék tolerancia mechanizmus, amellyel kezelni az időszakos hálózati és a háttér-hibák, valamint az adatmegőrzést a helyi meghajtókon.
+* A Java SDK egy régebbi verzióját futtatja? 2\.0.1-es verziójával kezdődően bevezettük a tartalék tolerancia mechanizmus, amellyel kezelni az időszakos hálózati és a háttér-hibák, valamint az adatmegőrzést a helyi meghajtókon.
 * Vannak, első miatt szabályozza a túl sok telemetriát? Ha bekapcsolja a naplózási adatokat, látni fogja a napló "Alkalmazás szabályozva" üzenet. Az aktuális korlát 32 ezer telemetriai tétel/másodperc.
 
 ### <a name="java-agent-cannot-capture-dependency-data"></a>A Java ügynököt nem függőségi adatok rögzítéséhez.

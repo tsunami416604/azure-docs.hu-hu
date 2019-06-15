@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 5b70edd4f65538b52c70881258bc500a34b04d80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60826564"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Folyamatok figyelése és felügyelete az Azure Data Factory a Monitoring and Management app használatával
@@ -160,7 +160,7 @@ Tevékenységablakok lehet a következő állapotok valamelyikében:
 
 <table>
 <tr>
-    <th align="left">status</th><th align="left">A részállapot</th><th align="left">Leírás</th>
+    <th align="left">Állapot</th><th align="left">A részállapot</th><th align="left">Leírás</th>
 </tr>
 <tr>
     <td rowspan="8">Várakozás</td><td>ScheduleTime</td><td>Az idő a tevékenység időszak futtatásához nem jár.</td>
@@ -188,7 +188,7 @@ Tevékenységablakok lehet a következő állapotok valamelyikében:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Folyamatban</td><td>Érvényesítés</td><td>Érvényesítés folyamatban van.</td>
+<td rowspan="2">InProgress</td><td>Ellenőrzése</td><td>Érvényesítés folyamatban van.</td>
 </tr>
 <td>-</td>
 <td>A tevékenységek ablak feldolgozása folyamatban van.</td>
@@ -200,7 +200,7 @@ Tevékenységablakok lehet a következő állapotok valamelyikében:
 <td>Megszakítva</td><td>A tevékenységek ablak felhasználói művelet megszakította.</td>
 </tr>
 <tr>
-<td>Ellenőrzés</td><td>Az érvényesítés nem sikerült.</td>
+<td>Ellenőrzés</td><td>Sikertelen volt.</td>
 </tr>
 <tr>
 <td>-</td><td>A tevékenységek ablak létrehozott vagy érvényesített nem sikerült.</td>

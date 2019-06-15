@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 05/15/2019
+ms.date: 06/13/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: cb586be1a139b331c259a1197cc62e7ca4f25666
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 813c8e92907a60046c2e53f97d4dd05125076241
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238138"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133281"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások érvényesek, csak a hálózati erőforrások kezelhető a **klasszikus** előfizetésenként üzemi modellel. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
@@ -81,7 +81,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Erőforrásonként alapszintű szabályok | 250 |
 | Erőforrásonként Standard szabályok | 1,500 | 
 | Szabályok száma IP-konfiguráció | 299 |
-| Szabályok száma hálózati adapter | 500 |
+| Szabályok száma hálózati adapter | 300 |
 | Előtérbeli IP-konfigurációk, alapszintű | 200 |
 | Előtérbeli IP-konfigurációk, Standard | 600 |
 | Háttérkészlet-, Basic | 100, egyetlen rendelkezésre állási csoportban |

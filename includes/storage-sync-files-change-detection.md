@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: beb08c29587e4ce522131142fd61925b5af45fa9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66114560"
 ---
 Az Azure-fájlmegosztás az Azure portal vagy az SMB használatával végzett módosítások azonnal nem észlelt, és például a kiszolgálói végpont módosításait replikálva. Az Azure Files még nem rendelkezik változási értesítéseket vagy a naplózást, így semmilyen módon nem lehet automatikusan elindítja a szinkronizálási munkamenet, amikor megváltoznak a fájlokat. Windows Server, az Azure File Sync használja [Windows USN naplózási](https://msdn.microsoft.com/library/windows/desktop/aa363798.aspx) , automatikusan elindítja a szinkronizálási munkamenet, ha módosítja a fájlokat.<br /><br /> Az Azure-fájlmegosztás módosítások észleléséhez az Azure File Sync nevű egy ütemezett feladatot rendelkezik egy *észlelési feladat módosítása*. A módosítás észlelési feladat számba veszi a fájlmegosztás található összes fájlról, és összehasonlítja a Sync szolgáltatás verzióját, hogy a fájl. A módosítás észlelése határozza meg, hogy a fájlok változtak-e, ha az Azure File Sync egy szinkronizálási munkamenet indítja el. A módosítás észlelése 24 óránként indul. A módosítás észlelése számbavétele az Azure-fájlmegosztás az összes fájlt úgy működik, mert címváltozásának felderítését hosszabb időt vesz igénybe, mint a kisebb névterek nagyobb névterekben. A nagy névterek hosszabb, mint 24 óránként meghatározni, hogy mely fájlok változtak is eltarthat.<br /><br />

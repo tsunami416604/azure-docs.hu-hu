@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: dobett
 ms.openlocfilehash: c95bca125ea70cf32acad0d5ea67c3ad195ed704
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66146563"
 ---
-## <a name="automatic-device-management"></a>Automatikus eszközkezelés
+## <a name="automatic-device-management"></a>Az automatikus kezelés
 Az Azure IoT Hub automatikus kezelés automatizálja az ismétlődő és összetett feladatok nagy eszköz flották kezelésének azok életciklusának teljes keresztül. Automatikus felügyeleti (MDM) cél az eszközök a hozzájuk tartozó tulajdonságok alapján, a kívánt konfiguráció definiálása és frissítheti az eszközeit, amikor hatókör lépnek az IoT Hub segítségével.  Áll [automatikus eszközkonfigurációk](../articles/iot-hub/iot-hub-auto-device-config.md) és [automatikus IoT Edge-telepítések](../articles/iot-edge/how-to-deploy-monitor.md).
 
 ## <a name="iot-edge"></a>IoT Edge
@@ -38,7 +38,7 @@ A modul a modul-kommunikációhoz (felé az IoT Hub) felsőbb és alsóbb réteg
 ## <a name="iot-edge-leaf-device"></a>Levél IoT Edge-eszköz
 IoT Edge-eszköz nem alsóbb rétegbeli eszközzel. 
 
-## <a name="iot-edge-module"></a>IoT Edge-modul
+## <a name="iot-edge-module"></a>IoT Edge module
 Az IoT Edge-modul Docker-tároló, amely IoT Edge-eszközökre telepíti központilag is. Egy adott feladat, például egy üzenetet az eszközről tölt, egy üzenet átalakítása vagy egy üzenetet küld az IoT hub hajtja végre. Ez más modulokkal kommunikál, és adatokat küld az IoT Edge-futtatókörnyezet. [A követelmények és az eszközök IoT Edge-modulok megismerése](https://docs.microsoft.com/azure/iot-edge/module-development).
 
 ## <a name="iot-edge-module-identity"></a>IoT Edge-modul identitás
@@ -60,4 +60,4 @@ IoT Edge-futtatókörnyezet tartalmaz mindent, ami egy IoT Edge-eszközön telep
 Másolja át az egyik eszközről egy IoT Edge-jegyzékfájl a tartalmat egy műveletet ' ikermodul. A mögöttes API egy általános "konfiguráció alkalmazása", amely egyszerűen fogadja bemenetként egy IoT Edge-jegyzékfájlt.
 
 ## <a name="iot-edge-target-condition"></a>IoT Edge célfeltétel
-Célfeltétel IoT Edge-példányban, az eszközök ikerállapotának címkékre, például az üzembe helyezés céleszközeinek kiválasztásához bármely logikai feltétel **tag.environment éles =**. A célfeltétel a rendszer folyamatosan értékeli a követelményeknek megfelelő új eszközök, vagy távolítsa el az eszközöket, amelyek többé nem. Tudjon meg többet [feltétel cél](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)
+Célfeltétel IoT Edge-példányban, az eszközök ikerállapotának címkékre, például az üzembe helyezés céleszközeinek kiválasztásához bármely logikai feltétel **tag.environment éles =** . A célfeltétel a rendszer folyamatosan értékeli a követelményeknek megfelelő új eszközök, vagy távolítsa el az eszközöket, amelyek többé nem. Tudjon meg többet [feltétel cél](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)

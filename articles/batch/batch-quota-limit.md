@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 05/28/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 820eddff7da3bb52ca94ea0cb7e2361d89892a4a
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: de32ae16ea4d3c52b8017f35ae5af6009ab59205
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595337"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080905"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -32,12 +32,13 @@ Több Batch számítási feladatot is futtathat egyetlen Batch-fiókon, de el is
 
 Ha azt tervezi, éles számítási feladatok futtatása a Batchben, szükség lehet egy vagy több az alapértelmezettnél eggyel a kvóták növelése érdekében. Ha szeretné a kvóta növeléséhez, akkor megnyithatja az online [támogatási kérést](#increase-a-quota) díjmentesen.
 
-> [!NOTE]
-> Kvóta kreditjét, nem kapacitás garantálja. Ha nagyméretű kapacitásigények, lépjen kapcsolatba az Azure-támogatás.
-
 ## <a name="resource-quotas"></a>Erőforráskvóták
-[!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
+Kvóta kreditjét, nem kapacitás garantálja. Ha nagyméretű kapacitásigények, lépjen kapcsolatba az Azure-támogatás.
+
+Emellett vegye figyelembe, hogy a kvóták nem garantált értékeket. Kvóták módosításokat a Batch szolgáltatás vagy egy felhasználói kérelem kvóta érték módosítása függően változhat.
+
+[!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Magkvóták felhasználói előfizetési módban
 
@@ -45,18 +46,22 @@ Ha beállítása készletlefoglalási móddal létrehozott Batch-fiók **felhasz
 
 ## <a name="pool-size-limits"></a>Készlet blobméretének korlátjai
 
+Készlet méretbeli korlátokat úgy vannak beállítva, a Batch szolgáltatás által. Ellentétben [erőforráskvóták](#resource-quotas), ezeket az értékeket nem lehet módosítani. A csomópontok közötti kommunikáció és az egyéni rendszerképek egyetlen címkészleteknek különbözik a standard kvóta korlátozások.
+
 | **Erőforrás** | **Felső korlát** |
 | --- | --- |
 | **Számítási csomópontok [készletben a csomópontok közötti kommunikáció engedélyezve](batch-mpi.md)**  ||
 | A Batch szolgáltatás készletlefoglalási mód | 100 |
 | Előfizetés készletlefoglalási móddal a Batch | 80 |
-| **Számítási csomópontok [egyéni Virtuálisgép-rendszerkép használatával létrehozott készlet](batch-custom-images.md)**<sup>1</sup> ||
+| **Számítási csomópontok [egyéni Virtuálisgép-rendszerkép használatával létrehozott készlet](batch-custom-images.md)** <sup>1</sup> ||
 | Dedikált csomópontok | 2000 |
 | Alacsony prioritású csomópontok | 1000 |
 
 <sup>1</sup> készletek, amelyek nem a csomópontok közötti kommunikáció engedélyezve van.
 
 ## <a name="other-limits"></a>Egyéb korlátok
+
+További korlátozások a Batch szolgáltatás határozza meg. Ellentétben [erőforráskvóták](#resource-quotas), ezeket az értékeket nem lehet módosítani.
 
 | **Erőforrás** | **Felső korlát** |
 | --- | --- |
@@ -84,7 +89,7 @@ Kövesse az alábbi lépéseket egy kvótát a Batch-fiók vagy az előfizetés 
 
 ### <a name="increase-cores-quota-in-batch"></a>A Batch szolgáltatásban magkvóta növeléséhez 
 
-1. Válassza ki a **súgó + támogatás** csempét az irányítópulton, vagy a kérdőjel (**?**) a portál jobb felső sarkában.
+1. Válassza ki a **súgó + támogatás** csempét az irányítópulton, vagy a kérdőjel ( **?** ) a portál jobb felső sarkában.
 1. Válassza ki **új támogatási kérelem** > **alapjai**.
 1. A **alapjai**:
    

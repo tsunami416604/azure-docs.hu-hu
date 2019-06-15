@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/19/2018
 ms.author: robb
 ms.openlocfilehash: 96183e22f0aeafc681a782e7d3d8bd29a6ec9617
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65914705"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik azok a Microsoft Azure klasszikus riasztások?
@@ -81,7 +81,7 @@ Azonban a régebbi metrikákhoz kapcsolódó riasztások nem Műveletcsoportok h
 
 Webhookok lehetővé teszi, hogy automation és a szervizeléshez, például használatával:
 - Azure Automation-runbook
-- Azure-függvény
+- Azure Function
 - Azure Logic App
 - Egy külső szolgáltatás
 

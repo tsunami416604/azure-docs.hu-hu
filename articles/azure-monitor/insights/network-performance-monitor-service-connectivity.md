@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: absha
-ms.openlocfilehash: 5b1c0212205575f1d40f320fb959d98e55d87fb9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: c5285ac95a2f5813949f22aae3849fd7f55b1ada
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65963591"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052087"
 ---
-# <a name="service-connectivity-monitor"></a>Szolgáltatás-összekapcsolhatósági monitor
+# <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
 
 A szolgáltatás Kapcsolatfigyelő funkciót is használhatja [Network Performance Monitor](network-performance-monitor.md) bármely végpont, amely egy nyitott TCP-port van hálózati kapcsolat figyeléséhez. Ilyen végpontok közé tartoznak a websites, a SaaS-alkalmazások, a PaaS-alkalmazások és az SQL-adatbázisok. 
 
@@ -33,7 +33,7 @@ A következő függvényeket, a szolgáltatás Kapcsolatfigyelő végezheti el:
 - A hotspotok a hálózaton, amelyek gyenge teljesítményt okozza az egyes ugrások meg topológia százalékaránya késés megtekintésével azonosíthatja.
 
 
-![Szolgáltatás-összekapcsolhatósági monitor](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
+![Szolgáltatáskapcsolati monitor](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfiguráció 
@@ -129,7 +129,7 @@ Ha egy rendellenesség megfigyelte, kövesse az alábbi lépéseket:
 * Ha az alkalmazás lassan fut, megállapítható, hogy van-e a gyenge alkalmazásteljesítményt a hálózaton vagy az alkalmazás szolgáltatója End probléma miatt.
 
 ## <a name="gcc-office-urls-for-us-government-customers"></a>Az USA kormányzati ügyfeleinek GCC Office URL-címek
-US Government Virginia régióban csak DOD URL-címek olyan beépített npm-et. Hozzon létre egyéni teszteket, és adja hozzá az egyes URL-cím inidividually kell GCC URL-címeket használó ügyfelek.
+US Government Virginia régióban csak DOD URL-címek olyan beépített npm-et. Hozzon létre egyéni teszteket, és adja hozzá a URL-CÍMEK külön-külön kell GCC URL-címeket használó ügyfelek.
 
 | Mező | GCC |
 |:---   |:--- |

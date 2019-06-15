@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező CorpTax |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és CorpTax között.
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Corptax |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Corptax között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,27 +8,28 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: fdad2893-41f4-4056-b6d2-ec3d050eb350
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/17/2018
+ms.date: 04/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f150522c8ea4d3bcb69b7ffe274f1d40d831ab2b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7cd09a35d5796cdc4267c9d01a901b4e3b812d7c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57864915"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104397"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-corptax"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező CorpTax
+# <a name="tutorial-azure-active-directory-integration-with-corptax"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Corptax
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan CorpTax integrálása az Azure Active Directory (Azure AD).
-CorpTax integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja, hogyan Corptax integrálása az Azure Active Directory (Azure AD).
+Corptax integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-* Szabályozhatja, ki férhet hozzá CorpTax Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve CorpTax (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Szabályozhatja, ki férhet hozzá Corptax Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Corptax (egyszeri bejelentkezés) az Azure AD-fiókjukat.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
 Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,24 +37,24 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-CorpTax az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Corptax az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* CorpTax egyszeri bejelentkezés engedélyezve van az előfizetés
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
+* Corptax egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-* Támogatja a CorpTax **SP** által kezdeményezett egyszeri bejelentkezés
+* Támogatja a Corptax **SP** által kezdeményezett egyszeri bejelentkezés
 
-## <a name="adding-corptax-from-the-gallery"></a>CorpTax hozzáadása a katalógusból
+## <a name="adding-corptax-from-the-gallery"></a>Corptax hozzáadása a katalógusból
 
-Az Azure AD integrálása a CorpTax konfigurálásához hozzá kell CorpTax a katalógusból a felügyelt SaaS-alkalmazások listájára.
+Az Azure AD integrálása a Corptax konfigurálásához hozzá kell Corptax a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**CorpTax hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Corptax hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select_azuread.png)
 
@@ -65,31 +66,31 @@ Az Azure AD integrálása a CorpTax konfigurálásához hozzá kell CorpTax a ka
 
     ![Az új alkalmazás gomb](common/add_new_app.png)
 
-4. A Keresés mezőbe írja be a **CorpTax**válassza **CorpTax** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Corptax**válassza **Corptax** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Az eredmények listájában CorpTax](common/search_new_app.png)
+    ![Az eredmények listájában Corptax](common/search_new_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az CorpTax nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó CorpTax hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Corptax nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Corptax hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezés az CorpTax tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés az Corptax tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[CorpTax egyszeri bejelentkezés konfigurálása](#configure-corptax-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **[Corptax egyszeri bejelentkezés konfigurálása](#configure-corptax-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre CorpTax tesztfelhasználót](#create-corptax-test-user)**  – egy megfelelője a Britta Simon CorpTax, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Corptax tesztfelhasználót](#create-corptax-test-user)**  – egy megfelelője a Britta Simon Corptax, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés CorpTax, hajtsa végre az alábbi lépéseket:
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Corptax, hajtsa végre az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **CorpTax** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **Corptax** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select_sso.png)
 
@@ -103,17 +104,17 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés CorpTax, hajtsa vég
 
 4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![CorpTax tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp_intiated.png)
+    ![Corptax tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp_intiated.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:  `https://asp.corptax.com`
 
-8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez **összevonási metaadatainak XML** , és mentse a számítógépre.
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez **összevonási metaadatainak XML** , és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-### <a name="configure-corptax-single-sign-on"></a>CorpTax egyszeri bejelentkezés konfigurálása
+### <a name="configure-corptax-single-sign-on"></a>Corptax egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **CorpTax** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** való [CorpTax támogatási csapatának](mailto:bgraves@corptax.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **Corptax** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** való [Corptax támogatási csapatának](https://connect.corptax.com/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -133,7 +134,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a `brittasimon\@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -142,15 +143,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés CorpTax Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Corptax Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **CorpTax**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Corptax**.
 
     ![Vállalati alkalmazások panelen](common/enterprise_applications.png)
 
-2. Az alkalmazások listáját, írja be, és válassza ki **CorpTax**.
+2. Az alkalmazások listáját, írja be, és válassza ki **Corptax**.
 
-    ![Az alkalmazások listáját a CorpTax hivatkozásra](common/all_applications.png)
+    ![Az alkalmazások listáját a Corptax hivatkozásra](common/all_applications.png)
 
 3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
@@ -166,18 +167,18 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-### <a name="create-corptax-test-user"></a>CorpTax tesztfelhasználó létrehozása
+### <a name="create-corptax-test-user"></a>Corptax tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű CorpTax hoz létre. Együttműködve [CorpTax támogatási csapatának](mailto:bgraves@corptax.com) a felhasználók hozzáadása az CorpTax platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Corptax hoz létre. Együttműködve [Corptax támogatási csapatának](https://connect.corptax.com/) a felhasználók hozzáadása az Corptax platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
-Ha a hozzáférési panelen a CorpTax csempére kattint, a rendszer átirányítja a CorpTax oldalon: 
+Ha a hozzáférési panelen a Corptax csempére kattint, a rendszer átirányítja a Corptax oldalon: 
 
 ![image](media/corptax-tutorial/corptaxlogin.png)
 
-A **környezet** szövegbeviteli mezőben írja be a megfelelő környezet, meg kell hogy automatikusan jelentkezzenek be a CorpTax, amelynek beállítása egyszeri Bejelentkezéssel való. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+A **környezet** szövegbeviteli mezőben írja be a megfelelő környezet, meg kell hogy automatikusan jelentkezzenek be a Corptax, amelynek beállítása egyszeri Bejelentkezéssel való. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

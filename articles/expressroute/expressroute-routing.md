@@ -2,18 +2,18 @@
 title: 'Útválasztási követelmények – ExpressRoute: Azure | Microsoft Docs'
 description: Ez az oldal ExpressRoute-kapcsolatcsoportok útválasztási konfigurálásának és kezelésének részletes követelményeit ismerteti.
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/11/2019
-ms.author: ganesr
+ms.date: 06/12/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9a4b99e311a65435595c9cb0455b0411b7c09324
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd5f01c915c658903e87a91992753065c59dfa63
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883113"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054273"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -154,47 +154,53 @@ A geopolitikai régiók, a hozzájuk rendelt Azure-régiók és a megfelelő Exp
 
 Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat. Több kapcsolattal jelentős előnyöket szerezhet a magas rendelkezésre állás és a földrajzi alapú redundancia területén. Azokban az esetekben, ahol több ExpressRoute-kapcsolatcsoporttal rendelkezik ugyanazokat az előtagkészletet hirdeti meg a Microsoft a Microsoft társviszony-létesítés és a nyilvános társviszony-létesítési útvonalakon fog kapni. Ez azt jelenti, hogy a hálózatából több útvonal fog irányulni a Microsoft felé. Emiatt előfordulhat, hogy a hálózaton belüli útvonalválasztási döntések nem lesznek optimálisak. Ez az optimálisnál rosszabb csatlakozási teljesítményt okozhat a különböző szolgáltatások esetében. A közösségértékek alapján megfelelő útválasztási döntéseket hozhat, amelyekkel [optimális útválasztást kínálhat a felhasználóknak](expressroute-optimize-routing.md).
 
-| **Microsoft Azure-régió** | **Regionális BGP-Közösség** | **Tárolási BGP-Közösség** | **SQL BGP-Közösség** | 
-| --- | --- | --- | --- |
+| **Microsoft Azure-régió** | **Regionális BGP-Közösség** | **Tárolási BGP-Közösség** | **SQL BGP-Közösség** | **Cosmos DB BGP-Közösség** |
+| --- | --- | --- | --- | --- |
 | **Észak-Amerika** | |
-| USA keleti régiója | 12076:51004 | 12076:52004 | 12076:53004 |
-| USA 2. keleti régiója | 12076:51005 | 12076:52005 | 12076:53005 |
-| USA nyugati régiója | 12076:51006 | 12076:52006 | 12076:53006 |
-| USA nyugati régiója, 2. | 12076:51026 | 12076:52026 | 12076:53026 |
-| USA nyugati középső régiója | 12076:51027 | 12076:52027 | 12076:53027 |
-| USA északi középső régiója | 12076:51007 | 12076:52007 | 12076:53007 |
-| USA déli középső régiója | 12076:51008 | 12076:52008 | 12076:53008 |
-| USA középső régiója | 12076:51009 | 12076:52009 | 12076:53009 |
-| Közép-Kanada | 12076:51020 | 12076:52020 | 12076:53020 |
-| Kelet-Kanada | 12076:51021 | 12076:52021 | 12076:53021 |
+| USA keleti régiója | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
+| USA 2. keleti régiója | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
+| USA nyugati régiója | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
+| USA nyugati régiója, 2. | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
+| USA nyugati középső régiója | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
+| USA északi középső régiója | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
+| USA déli középső régiója | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
+| USA középső régiója | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
+| Közép-Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
+| Kelet-Kanada | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
 | **Dél-Amerika** | |
-| Dél-Brazília | 12076:51014 | 12076:52014 | 12076:53014 |
+| Dél-Brazília | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
 | **Európa** | |
-| Észak-Európa | 12076:51003 | 12076:52003 | 12076:53003 |
-| Nyugat-Európa | 12076:51002 | 12076:52002 | 12076:53002 |
-| Az Egyesült Királyság déli régiója | 12076:51024 | 12076:52024 | 12076:53024 |
-| Az Egyesült Királyság nyugati régiója | 12076:51025 | 12076:52025 | 12076:53025 |
-| Közép-Franciaország | 12076:51030 | 12076:52030 | 12076:53030 |
-| Dél-Franciaország | 12076:51031 | 12076:52031 | 12076:53031 |
+| Észak-Európa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 |
+| Nyugat-Európa | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 |
+| Az Egyesült Királyság déli régiója | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
+| Az Egyesült Királyság nyugati régiója | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
+| Közép-Franciaország | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
+| Dél-Franciaország | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
 | **Ázsia és a Csendes-óceáni térség** | |
-| Kelet-Ázsia | 12076:51010 | 12076:52010 | 12076:53010 |
-| Délkelet-Ázsia | 12076:51011 | 12076:52011 | 12076:53011 |
+| Kelet-Ázsia | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
+| Délkelet-Ázsia | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
 | **Japán** | |
-| Kelet-Japán | 12076:51012 | 12076:52012 | 12076:53012 |
-| Nyugat-Japán | 12076:51013 | 12076:52013 | 12076:53013 |
+| Kelet-Japán | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 |
+| Nyugat-Japán | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 |
 | **Ausztrália** | |
-| Kelet-Ausztrália | 12076:51015 | 12076:52015 | 12076:53015 |
-| Délkelet-Ausztrália | 12076:51016 | 12076:52016 | 12076:53016 |
+| Kelet-Ausztrália | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 |
+| Délkelet-Ausztrália | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 |
 | **Ausztrália kormánya** | |
-| Ausztrália középső régiója | 12076:51032 | 12076:52032 | 12076:53032 |
-| Ausztrália 2. középső régiója | 12076:51033 | 12076:52033 | 12076:53033 |
+| Ausztrália középső régiója | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 |
+| Ausztrália 2. középső régiója | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 |
 | **India** | |
-| Dél-India | 12076:51019 | 12076:52019 | 12076:53019 |
-| Nyugat-India | 12076:51018 | 12076:52018 | 12076:53018 |
-| Közép-India | 12076:51017 | 12076:52017 | 12076:53017 |
+| Dél-India | 12076:51019 | 12076:52019 | 12076:53019 | 12076:54019 |
+| Nyugat-India | 12076:51018 | 12076:52018 | 12076:53018 | 12076:54018 |
+| Közép-India | 12076:51017 | 12076:52017 | 12076:53017 | 12076:54017 |
 | **Korea** | |
-| Korea déli régiója | 12076:51028 | 12076:52028 | 12076:53028 |
-| Korea középső régiója | 12076:51029 | 12076:52029 | 12076:53029 |
+| Korea déli régiója | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
+| Korea középső régiója | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
+| **Dél-Afrika**| |
+| Dél-Afrika északi régiója | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
+| Dél-Afrika nyugati régiója | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
+| **AZ EGYESÜLT ARAB EMÍRSÉGEK**| |
+| Az Egyesült Arab Emírségek északi régiója | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
+| Az Egyesült Arab Emírségek középső régiója | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
 
 A Microsoft által hirdetett összes útvonal a megfelelő közösségértéket tartalmazó címkével lesz ellátva. 
@@ -215,7 +221,7 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Az Azure globális szolgáltatások * | 12076:5050 |
 | Egyéb Office 365-szolgáltatások | 12076:5100 |
 
-* Az azure globális szolgáltatások jelenleg csak az Azure DevOps tartalmazza.
+\* Az azure globális szolgáltatások jelenleg csak az Azure DevOps tartalmazza.
 
 
 > [!NOTE]

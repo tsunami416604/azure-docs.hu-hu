@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: e3f5cb726dddbdbfbd1b1f48c800ac681e7a174c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/06/2019
+ms.openlocfilehash: e747f39ca84bb859b37550efef51e01cffd96876
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696549"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056749"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Az Apache Spark használata Apache HBase-adatok írására és olvasására
 
@@ -21,11 +21,11 @@ Az Apache HBase jellemzően az alacsony szintű API (vizsgálatokat, lekérdezi 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Legalább két különálló a HDInsight-fürtökkel, a egy HBase és a egy Spark-és Spark 2.1-es (HDInsight 3.6) telepítve van.
-* A Spark-fürt közvetlenül kommunikálhat a HBase-fürt minimális késéssel, így az ajánlott konfiguráció az azonos virtuális hálózatba mindkét fürt üzembe helyezése kell. További információkért lásd: [a HDInsight az Azure portal használatával Linux-alapú fürtök](hdinsight-hadoop-create-linux-clusters-portal.md).
-* Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](hdinsight-hadoop-linux-use-ssh-unix.md).
-* A [URI-séma](hdinsight-hadoop-linux-information.md#URI-and-scheme) a fürtök elsődleges tárhelyeként. Ez akkor lehet wasb: / / az Azure Blob Storage, abfs: / / az Azure Data Lake Storage Gen2 vagy adl: / / az Azure Data Lake Storage Gen1. Biztonságos átvitel engedélyezve van a Blob Storage vagy a Data Lake Storage Gen2, ha az URI a wasbs lesz: / / vagy abfss: / /, illetve lásd még a [biztonságos átvitelre](../storage/common/storage-require-secure-transfer.md).
+* Két különálló ugyanazon a virtuális hálózaton üzembe helyezett HDInsight-fürtök. Egy HBase, és a egy Spark, legalább a Spark 2.1-es (HDInsight 3.6) telepítve van. További információkért lásd: [a HDInsight az Azure portal használatával Linux-alapú fürtök](hdinsight-hadoop-create-linux-clusters-portal.md).
 
+* Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](hdinsight-hadoop-linux-use-ssh-unix.md).
+
+* A [URI-séma](hdinsight-hadoop-linux-information.md#URI-and-scheme) a fürtök elsődleges tárhelyeként. Ez akkor lehet wasb: / / az Azure Blob Storage, abfs: / / az Azure Data Lake Storage Gen2 vagy adl: / / az Azure Data Lake Storage Gen1. Biztonságos átvitel engedélyezve van a Blob Storage vagy a Data Lake Storage Gen2, ha az URI a wasbs lesz: / / vagy abfss: / /, illetve lásd még a [biztonságos átvitelre](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Általános folyamata
 
@@ -40,38 +40,47 @@ A Spark-fürt lekérdezni a HDInsight-fürt engedélyezése magas szintű folyam
 
 ## <a name="prepare-sample-data-in-apache-hbase"></a>Adatmintavétel az Apache HBase előkészítése
 
-Ebben a lépésben létrehozásához, és az Apache HBase, amely ezután lekérdezheti a Spark használatával egy egyszerű táblázat feltöltéséhez.
+Ebben a lépésben hozzon létre, és az Apache HBase, amely ezután lekérdezheti a Spark használatával egy tábla feltöltése adatokkal.
 
-1. Csatlakozzon az SSH-val HBase-fürt főcsomópontjához. További információkért lásd: [HDInsight SSH használatával csatlakozhat](hdinsight-hadoop-linux-use-ssh-unix.md).  Az alábbi parancsot szerkesztése lecserélésével `HBASECLUSTER` a HBase-fürt nevére `sshuser` az az ssh felhasználói fiók neve, és írja be a parancsot.
+1. Használja a `ssh` paranccsal csatlakozhat a HBase-fürtöt. Az alábbi parancsot szerkesztése lecserélésével `HBASECLUSTER` a HBase nevére a fürt, és írja be a parancsot:
 
-    ```
+    ```cmd
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Adja meg az alábbi parancsot a HBase rendszerhéj elindításához:
+2. Használja a `hbase shell` parancsot a HBase interaktív shell elindításához. Adja meg az SSH-kapcsolatot a következő parancsot:
 
-        hbase shell
+    ```bash
+    hbase shell
+    ```
 
-3. Adja meg az alábbi parancsot hozhat létre egy `Contacts` tábla a oszlopcsaláddal `Personal` és `Office`:
+3. Használja a `create` egy HBase tábla létrehozásához két oszlopcsaláddal parancsot. Írja be a következő parancsot:
 
-        create 'Contacts', 'Personal', 'Office'
+    ```hbase
+    create 'Contacts', 'Personal', 'Office'
+    ```
 
-4. Adja meg a minta néhány sornyi adatot betölteni az alábbi parancsokat:
+4. Használja a `put` értékeket beszúrni egy megadott oszlop, egy adott tábla egy megadott sorának a következő parancsot. Írja be a következő parancsot:
 
-        put 'Contacts', '1000', 'Personal:Name', 'John Dole'
-        put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
-        put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
-        put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
-        put 'Contacts', '8396', 'Personal:Name', 'Calvin Raji'
-        put 'Contacts', '8396', 'Personal:Phone', '230-555-0191'
-        put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
-        put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
+    ```hbase
+    put 'Contacts', '1000', 'Personal:Name', 'John Dole'
+    put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
+    put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
+    put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
+    put 'Contacts', '8396', 'Personal:Name', 'Calvin Raji'
+    put 'Contacts', '8396', 'Personal:Phone', '230-555-0191'
+    put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
+    put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
+    ```
 
-5. Adja meg a kilépéshez a HBase rendszerhéj az alábbi parancsot:
+5. Használja a `exit` parancs használatával állítsa le a HBase interaktív kezelőfelület. Írja be a következő parancsot:
 
-        exit 
+    ```hbase
+    exit
+    ```
 
 ## <a name="copy-hbase-sitexml-to-spark-cluster"></a>Hbase-site.xml átmásolása a Spark-fürt
+
 A hbase-site.xml másolja a helyi tárolóból a Spark-fürt alapértelmezett tárolója gyökerében.  Szerkessze az alábbi parancsot, hogy a konfigurációját tükrözzék.  Ezt követően SSH-munkamenetből a megnyitott, a HBase-fürtnek, adja meg a parancsot:
 
 | Szintaxis-érték | Új érték|
@@ -80,9 +89,11 @@ A hbase-site.xml másolja a helyi tárolóból a Spark-fürt alapértelmezett t�
 |`SPARK_STORAGE_CONTAINER`|Cserélje le a Spark-fürt használt alapértelmezett tároló nevét.|
 |`SPARK_STORAGE_ACCOUNT`|Cserélje le a használt Spark-fürt alapértelmezett tárfiókneve.|
 
-```
+```bash
 hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
 ```
+
+Zárja be az ssh a HBase-fürthöz való csatlakozás.
 
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Hbase-site.xml helyezi a Spark-fürthöz
 
@@ -90,13 +101,15 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 2. Adja meg az alábbi parancsot a másolandó `hbase-site.xml` a Spark 2 konfigurációt tartalmazó mappa a helyi tárban a fürtön a Spark-fürt alapértelmezett storage-ból:
 
-        sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
+    ```bash
+    sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
+    ```
 
 ## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Futtassa a Spark-Shell hivatkozik a Spark a HBase-összekötő
 
 1. SSH-munkamenetből a nyissa meg a Spark-fürthöz adja meg az alábbi parancsot egy spark-shell elindításához:
 
-    ```
+    ```bash
     spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
     ```  
 
@@ -185,12 +198,14 @@ Ebben a lépésben megadhat egy katalógus objektum, amely leképezi a séma az 
 
 9. Az alábbiakhoz hasonló eredményt kell látnia:
 
-        +-------------+--------------------+
-        | personalName|       officeAddress|
-        +-------------+--------------------+
-        |    John Dole|1111 San Gabriel Dr.|
-        |  Calvin Raji|5415 San Gabriel Dr.|
-        +-------------+--------------------+
+    ```output
+    +-------------+--------------------+
+    | personalName|       officeAddress|
+    +-------------+--------------------+
+    |    John Dole|1111 San Gabriel Dr.|
+    |  Calvin Raji|5415 San Gabriel Dr.|
+    +-------------+--------------------+
+    ```
 
 ## <a name="insert-new-data"></a>Szúrjon be új adatokat
 
@@ -229,13 +244,21 @@ Ebben a lépésben megadhat egy katalógus objektum, amely leképezi a séma az 
 
 5. A következőhöz hasonló kimenetnek kell megjelennie:
 
-        +------+--------------------+--------------+------------+--------------+
-        |rowkey|       officeAddress|   officePhone|personalName| personalPhone|
-        +------+--------------------+--------------+------------+--------------+
-        |  1000|1111 San Gabriel Dr.|1-425-000-0002|   John Dole|1-425-000-0001|
-        | 16891|        40 Ellis St.|  674-555-0110|John Jackson|  230-555-0194|
-        |  8396|5415 San Gabriel Dr.|  230-555-0191| Calvin Raji|  230-555-0191|
-        +------+--------------------+--------------+------------+--------------+
+    ```output
+    +------+--------------------+--------------+------------+--------------+
+    |rowkey|       officeAddress|   officePhone|personalName| personalPhone|
+    +------+--------------------+--------------+------------+--------------+
+    |  1000|1111 San Gabriel Dr.|1-425-000-0002|   John Dole|1-425-000-0001|
+    | 16891|        40 Ellis St.|  674-555-0110|John Jackson|  230-555-0194|
+    |  8396|5415 San Gabriel Dr.|  230-555-0191| Calvin Raji|  230-555-0191|
+    +------+--------------------+--------------+------------+--------------+
+    ```
+
+6. Zárja be a spark-shell a következő parancs beírásával:
+
+    ```scala
+    :q
+    ```
 
 ## <a name="next-steps"></a>További lépések
 

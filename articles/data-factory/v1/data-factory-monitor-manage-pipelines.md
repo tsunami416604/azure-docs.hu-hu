@@ -14,10 +14,10 @@ ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122676"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Folyamatok figyelése és felügyelete az Azure Data Factory az Azure portal és a PowerShell használatával
@@ -49,7 +49,7 @@ Ez a szakasz azt is ismerteti, hogyan adatkészletet szelet átvált egy állapo
 
 ### <a name="navigate-to-your-data-factory"></a>Keresse meg az adat-előállító
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a **adat-előállítók** a a bal oldali menüben. Ha nem látja, kattintson a **további szolgáltatások >**, és kattintson a **adat-előállítók** alatt a **INTELLIGENCIA és elemzés** kategória.
+2. Kattintson a **adat-előállítók** a a bal oldali menüben. Ha nem látja, kattintson a **további szolgáltatások >** , és kattintson a **adat-előállítók** alatt a **INTELLIGENCIA és elemzés** kategória.
 
    ![Összes tallózása > adat-előállítók](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
 3. Az a **adat-előállítók** panelen válassza ki az Önt érdeklő adat-előállítóban.
@@ -63,7 +63,7 @@ Ez a szakasz azt is ismerteti, hogyan adatkészletet szelet átvált egy állapo
 #### <a name="diagram-view-of-your-data-factory"></a>Az adat-előállító diagramnézete
 A **Diagram** adat-előállító nézetét biztosítja tekinthesse felügyelhető és kezelhető a data factory és az eszközök. Megtekintheti a **Diagram** tekintse meg az adat-előállító, kattintson **Diagram** a data Factory kezdőlapján.
 
-![Diagram nézet](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
+![Diagramnézet](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
 Nagyítás, Kicsinyítés, szélességhez, kicsinyíthet, 100 %, a diagram elrendezését zárolása és automatikusan elhelyezheti a folyamatokat és adatkészletek nagyítás. Megtekintheti az adatok leszármaztatási információkat is (azaz megjelenítése a kijelölt elemek fölérendelt vagy alárendelt elemeinek).
 
@@ -89,7 +89,7 @@ Az adatkészlet szeleteit adat-előállító a következő állapotok egyike leh
 
 <table>
 <tr>
-    <th align="left">Állapot</th><th align="left">Alállapot</th><th align="left">Leírás</th>
+    <th align="left">Állapot</th><th align="left">Alállapota</th><th align="left">Leírás</th>
 </tr>
 <tr>
     <td rowspan="8">Várakozás</td><td>ScheduleTime</td><td>Az idő a szelet futtatásának még nem érkezett.</td>
@@ -101,35 +101,35 @@ Az adatkészlet szeleteit adat-előállító a következő állapotok egyike leh
 <td>ComputeResources</td><td>A számítási erőforrások nem érhetők el.</td>
 </tr>
 <tr>
-<td>ConcurrencyLimit</td> <td>Az összes tevékenységpéldány más szeletek futtatásával van elfoglalva.</td>
+<td>ConcurrencyLimit</td> <td>Az összes Tevékenységpéldány más szeletek futtatásával foglalt.</td>
 </tr>
 <tr>
 <td>ActivityResume</td><td>A tevékenység szüneteltetve van, és nem tudja futtatni a szeletet, amíg a tevékenység folytatása.</td>
 </tr>
 <tr>
-<td>Ismét</td><td>Tevékenység-végrehajtási lesz hajtva.</td>
+<td>Retry</td><td>Tevékenység-végrehajtási lesz hajtva.</td>
 </tr>
 <tr>
-<td>Érvényesítés</td><td>Érvényesítés még nem indul el.</td>
+<td>Ellenőrzés</td><td>Érvényesítés még nem indul el.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Érvényesítés újrapróbálására vár.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Folyamatban</td><td>Érvényesítés</td><td>Érvényesítés folyamatban van.</td>
+<td rowspan="2">InProgress</td><td>Ellenőrzése</td><td>Érvényesítés folyamatban van.</td>
 </tr>
 <td>-</td>
-<td>A szelet feldolgozása folyamatban van.</td>
+<td>A szelet feldolgozás alatt áll.</td>
 </tr>
 <tr>
-<td rowspan="4">Sikertelen</td><td>TimedOut</td><td>A tevékenység-végrehajtási a tevékenység által engedélyezett hosszabb időt vett igénybe.</td>
+<td rowspan="4">Meghiúsult</td><td>TimedOut</td><td>A tevékenység-végrehajtási a tevékenység által engedélyezett hosszabb időt vett igénybe.</td>
 </tr>
 <tr>
 <td>Megszakítva</td><td>A szelet felhasználói művelet megszakította.</td>
 </tr>
 <tr>
-<td>Érvényesítés</td><td>Az érvényesítés nem sikerült.</td>
+<td>Ellenőrzés</td><td>Sikertelen volt.</td>
 </tr>
 <tr>
 <td>-</td><td>A szelet generált kell és/vagy érvényesítése nem sikerült.</td>
@@ -137,10 +137,10 @@ Az adatkészlet szeleteit adat-előállító a következő állapotok egyike leh
 <td>Kész</td><td>-</td><td>A szelet készen áll a felhasználásra.</td>
 </tr>
 <tr>
-<td>Kihagyva</td><td>Egyik sem</td><td>A szelet feldolgozás alatt nem.</td>
+<td>Kihagyva</td><td>None</td><td>A szelet feldolgozás alatt nem.</td>
 </tr>
 <tr>
-<td>Egyik sem</td><td>-</td><td>A szelet használt létezett egy eltérő állapottal, de azt vissza lett állítva.</td>
+<td>None</td><td>-</td><td>A szelet használt létezett egy eltérő állapottal, de azt vissza lett állítva.</td>
 </tr>
 </table>
 
@@ -156,7 +156,7 @@ Ha több alkalommal végre lett hajtva a szeletet, láthatja, a több sort a **t
 
 Ha a szelet nem szerepel a **készen áll** állapot, láthatja a fölérendelt szeleteket, amely nem áll készen, és végrehajtja az aktuális szelet forgalomszűrők blokkolják a a **fölérendelt szeleteket, amelyek nem állnak készen** lista. Ez a funkció akkor hasznos, ha a szelet **Várakozás** állapota, és azt szeretné tudni, hogy a szelet vár a fölérendelt függőségek.
 
-![Nem kész állapotú felfelé irányuló szeletek](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
+![Fölérendelt szeleteket, amelyek nem áll készen](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
 ### <a name="dataset-state-diagram"></a>Adatkészlet állapot diagramja
 Miután telepít egy adat-előállítót, és a folyamatok rendelkezik egy érvényes aktív időszak, az adatkészlet egyik állapotból átmenet szeletekre egy másikba. Jelenleg a szelet állapotát követi a következő ábra állapot:
